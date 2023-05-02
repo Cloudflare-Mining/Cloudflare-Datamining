@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<p><em>This is a guest post by Igor Krestov and Dan Taylor. Igor is a lead software developer at SALT.agency, and Dan a lead technical SEO consultant, and has also been credited with <a href="https://searchengineland.com/service-workers-and-seo-seo-for-developers-311292" target="_blank">coining the term “edge SEO”</a>. <a href="https://salt.agency/" target="_blank">SALT.agency</a> is a technical SEO agency with offices in London, Leeds, and Boston, offering bespoke consultancy to brands around the world. You can reach them both via <a href="https://twitter.com/salt_agency" target="_blank">Twitter</a>.</em></p>
-	<p>With this post we illustrate the potential applications of <a href="https://www.cloudflare.com/en-gb/products/cloudflare-workers/" target="_blank">Cloudflare Workers</a> in relation to search engine optimization, which is more commonly referred to as ‘SEO’ using our research and testing over the past year making Sloth.</p>
+	<p><em>This is a guest post by Igor Krestov and Dan Taylor. Igor is a lead software developer at SALT.agency, and Dan a lead technical SEO consultant, and has also been credited with <a href="https://searchengineland.com/service-workers-and-seo-seo-for-developers-311292?ref=blog.cloudflare.com" target="_blank">coining the term “edge SEO”</a>. <a href="https://salt.agency/?ref=blog.cloudflare.com" target="_blank">SALT.agency</a> is a technical SEO agency with offices in London, Leeds, and Boston, offering bespoke consultancy to brands around the world. You can reach them both via <a href="https://twitter.com/salt_agency?ref=blog.cloudflare.com" target="_blank">Twitter</a>.</em></p>
+	<p>With this post we illustrate the potential applications of <a href="https://www.cloudflare.com/en-gb/products/cloudflare-workers/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a> in relation to search engine optimization, which is more commonly referred to as ‘SEO’ using our research and testing over the past year making Sloth.</p>
 	<p>This post is aimed at readers who are both proficient in writing performant JavaScript, as well as complete newcomers, and less technical stakeholders, who haven’t really written many lines of code before.</p>
 	<h2 id="endless-practical-applications-to-overcome-obstacles">Endless practical applications to overcome obstacles</h2>
 	<p>Working with various clients and projects over the years we’ve continuously encountered the same problems and obstacles in getting their websites to a point of “technical SEO excellence”. A lot of these problems come from platform restriction at an enterprise level, legacy tech stacks, incorrect builds, and years of patching together various services and infrastructures.</p>
@@ -17,7 +17,7 @@
 		<li>Response body modification – injecting/changing content e.g. canonicals, robots and JSON-LD</li>
 	</ul>
 	<p>We wanted to generate lean Worker code, which would enable us to keep each functionality contained and independent of another, and went with an idea of filter chains, which can be used to compose fairly complex request processing.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/03/request-filter-chain.png" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/03/request-filter-chain.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>A request chain depicting the path of a request as it is transformed while moving from client to origin server and back again.</figcaption>
 	</figure>
 	<p>A key accessibility issue we identified from a non-technical perspective was the goal trying of making this serverless technology accessible to all in SEO, because with understanding comes buy-in from stakeholders. In order to do this, we had to make Workers:</p>
@@ -93,14 +93,14 @@ requestFilterHandle.append(new RedirectRequestFilter({
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>You can see it live in Cloudflare’s playground <a href="https://cloudflareworkers.com/#f59a71db84c026a5d2bee72170113f26:https://sloth.cloud/old-homepage" target="_blank">here</a>.</p>
+	<p>You can see it live in Cloudflare’s playground <a href="https://cloudflareworkers.com/?ref=blog.cloudflare.com#f59a71db84c026a5d2bee72170113f26:https://sloth.cloud/old-homepage" target="_blank">here</a>.</p>
 	<p>The one implemented in Sloth supports basic path matching, hostname matching and query string matching, as well as wildcards.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/03/sloth-redirect-manager.png" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/03/sloth-redirect-manager.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>The Sloth dashboard for visually creating and modifying redirects.&nbsp;</figcaption>
 	</figure>
 	<p>It is all well and good when you do not have a lot of redirects to manage, but what do you do when size of redirects starts to take up significant memory available to Worker? This is where we faced another scaling issue, in taking a small handful of possible redirects, to the tens of thousands.</p>
 	<h2 id="managing-redirects-with-workers-kv-and-cuckoo-filters">Managing Redirects with Workers KV and Cuckoo Filters</h2>
-	<p>Well, here is one way you can solve it by using <a href="https://developers.cloudflare.com/workers/kv/" target="_blank">Workers KV</a> - a key-value data store.<br><br>Instead of hard coding redirects inside Worker code, we will store them inside Workers KV. Naive approach would be to check redirect for each URL. But Workers KV, maximum performance is not reached until a key is being read on the order of once-per-second in any given data center.<br><br>Alternative could be using a probabilistic data structure, like <a href="https://en.wikipedia.org/wiki/Cuckoo_hashing" target="_blank">Cuckoo Filters</a>, stored in KV, possibly split between a couple of keys as KV is limited to 64KB. Such filter flow would be:</p>
+	<p>Well, here is one way you can solve it by using <a href="https://developers.cloudflare.com/workers/kv/?ref=blog.cloudflare.com" target="_blank">Workers KV</a> - a key-value data store.<br><br>Instead of hard coding redirects inside Worker code, we will store them inside Workers KV. Naive approach would be to check redirect for each URL. But Workers KV, maximum performance is not reached until a key is being read on the order of once-per-second in any given data center.<br><br>Alternative could be using a probabilistic data structure, like <a href="https://en.wikipedia.org/wiki/Cuckoo_hashing?ref=blog.cloudflare.com" target="_blank">Cuckoo Filters</a>, stored in KV, possibly split between a couple of keys as KV is limited to 64KB. Such filter flow would be:</p>
 	<ol>
 		<li>Retrieve frequently read filter key.</li>
 		<li>Check whether full url (or only pathname) is in the filter.</li>
@@ -110,7 +110,7 @@ requestFilterHandle.append(new RedirectRequestFilter({
 	<h2 id="body-filter-hreflang-injection">Body filter - Hreflang Injection</h2>
 	<p>Hreflang meta tags need to be placed inside HTML <em>&lt;head&gt;</em> element, so before actually injecting them, we need to find either start or end of the head HTML tag, which in itself is a streaming search problem. </p>
 	<p>The caveat here is that naive method decoding UTF-8 into JavaScript string, performing search, re-encoding back into UTF-8 is fairly slow. Instead, we attempted pure JavaScript search on bytes strings (<em>Uint8Array</em>), which straight away showed promising results. </p>
-	<p>For our use case, we picked the <a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore%E2%80%93Horspool_algorithm" target="_blank">Boyer-Moore-Horspool</a> algorithm as a base of our streaming search, as it is simple, has great average case performance and only requires a pre-processing search pattern, with manual prefix/suffix matching at chunk boundaries.</p>
+	<p>For our use case, we picked the <a href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore%E2%80%93Horspool_algorithm?ref=blog.cloudflare.com" target="_blank">Boyer-Moore-Horspool</a> algorithm as a base of our streaming search, as it is simple, has great average case performance and only requires a pre-processing search pattern, with manual prefix/suffix matching at chunk boundaries.</p>
 	<p>Here is comparison of methods we have tested on Node v10.15.0:</p>
 	<pre><code>| Chunk Size | Method                               | Ops/s               |
 |------------|--------------------------------------|---------------------|
@@ -127,7 +127,7 @@ requestFilterHandle.append(new RedirectRequestFilter({
 | 4096 bytes | **precomputed BMH over byte array**  | **117,010 ops/sec** |
 | 4096 bytes | decode utf8 into strings &amp; indexOf() | 25,835 ops/sec      |</code></pre>
 	<h2 id="can-we-do-better">Can we do better?</h2>
-	<p>Having achieved decent performance improvement with pure JavaScript search over naive method, we wanted to see whether we can do better. As Workers support <a href="https://developers.cloudflare.com/workers/api/resource-bindings/webassembly-modules/" target="_blank">WASM</a>, we used rust to build a simple WASM module, which exposed standard rust string search.</p>
+	<p>Having achieved decent performance improvement with pure JavaScript search over naive method, we wanted to see whether we can do better. As Workers support <a href="https://developers.cloudflare.com/workers/api/resource-bindings/webassembly-modules/?ref=blog.cloudflare.com" target="_blank">WASM</a>, we used rust to build a simple WASM module, which exposed standard rust string search.</p>
 	<pre><code>| Chunk Size | Method                              | Ops/s               |
 |------------|-------------------------------------|---------------------|
 |            |                                     |                     |
@@ -145,5 +145,5 @@ requestFilterHandle.append(new RedirectRequestFilter({
 	<h2 id="what-s-next">What’s next?</h2>
 	<p>We believe that Workers and serverless applications can open up new opportunities to overcome a lot of issues faced by the SEO community when working with legacy tech stacks, platform limitations, and heavily congested development queues.</p>
 	<p>We are also investigating whether Workers can allow us to make a more efficient Tag Manager, which bundles and pushes only matching Tags with their code, to minimize number of external requests caused by trackers and thus reduce load on user browser.</p>
-	<p>You can experiment with Cloudflare Workers yourself through <a href="https://sloth.cloud/" target="_blank">Sloth</a>, even if you don’t know how to write JavaScript.</p>
+	<p>You can experiment with Cloudflare Workers yourself through <a href="https://sloth.cloud/?ref=blog.cloudflare.com" target="_blank">Sloth</a>, even if you don’t know how to write JavaScript.</p>
 </div>

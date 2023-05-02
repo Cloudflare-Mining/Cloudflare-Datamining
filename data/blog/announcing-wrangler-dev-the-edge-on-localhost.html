@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<p>Cloudflare Workers — our serverless platform — allows developers around the world to run their applications from our network of 200 datacenters, as close as possible to their users. </p>
-	<p>A few weeks ago <a href="https://blog.cloudflare.com/making-magic-reimagining-developer-experiences-for-the-world-of-serverless/">we announced</a> a release candidate for <code>wrangler dev</code> — today, we're excited to take <code>wrangler dev</code>, the world’s first edge-based development environment, to GA with the release of <a href="https://github.com/cloudflare/wrangler/releases/tag/v1.11.0?ref=blog.cloudflare.com" target="_blank">wrangler 1.11</a>.</p>
+	<p>A few weeks ago <a href="https://blog.cloudflare.com/making-magic-reimagining-developer-experiences-for-the-world-of-serverless/">we announced</a> a release candidate for <code>wrangler dev</code> — today, we're excited to take <code>wrangler dev</code>, the world’s first edge-based development environment, to GA with the release of <a href="https://github.com/cloudflare/wrangler/releases/tag/v1.11.0" target="_blank">wrangler 1.11</a>.</p>
 	<h3 id="think-locally-develop-globally">Think locally, develop globally</h3>
 	<p>It was once assumed that to successfully run an application on the web, one had to go and acquire a server, set it up (in a data center that hopefully you had access to), and then maintain it on an ongoing basis. Luckily for most of us, that assumption was challenged with the emergence of the cloud. The cloud was always assumed to be centralized — large data centers in a single region (“us-east-1”), reserved for compute. The edge? That was for caching static content. </p>
 	<p>Again, assumptions are being challenged. </p>
@@ -14,18 +14,18 @@
 	<p><code>wrangler dev</code> provides all the convenience of a local development environment, without the headache of trying to reproduce the reality of production locally — and then having to keep the two environments in sync. </p>
 	<p>By running at the edge, it provides a high fidelity, consistent experience for all developers, without sacrificing the speedy feedback loop of a local development environment. </p>
 	<h3 id="live-reloading">Live reloading</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/Announcing--wrangler-dev----the-Edge-on-localhost1.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/Announcing--wrangler-dev----the-Edge-on-localhost1.gif" class="kg-image"></figure>
 	<p>As you update your code, <code>wrangler dev</code> will detect changes, and push the new version of your code to the edge. </p>
 	<h3 id="console-log-at-your-fingertips">console.log() at your fingertips</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/Announcing--wrangler-dev----the-Edge-on-localhost2.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/Announcing--wrangler-dev----the-Edge-on-localhost2.gif" class="kg-image"></figure>
 	<p>Previously to extract your console logs from the Workers runtime, you had to have the Workers Preview open in a browser window at all times. With <code>wrangler dev</code>, you can receive your own logs, directly to your terminal of choice. </p>
 	<h3 id="cache-api-kv-and-more-">Cache API, KV, and more!</h3>
 	<p>Since <code>wrangler dev</code> runs on the edge, you can now easily test the state of a cache.put(), without having to deploy your Worker to production. </p>
 	<p><code>wrangler dev</code> will spin up a new KV namespace for development, so you don’t have to worry about affecting your production data. </p>
-	<p>And if you’re looking to test out some of the features provided on <a href="https://developers.cloudflare.com/workers/runtime-apis/request?ref=blog.cloudflare.com#incomingrequestcfproperties" target="_blank"><code>request.cf</code></a> that provide rich information about the request such as geo-location — they will all be provided from the Cloudflare data center.</p>
+	<p>And if you’re looking to test out some of the features provided on <a href="https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties" target="_blank"><code>request.cf</code></a> that provide rich information about the request such as geo-location — they will all be provided from the Cloudflare data center.</p>
 	<h3 id="get-started">Get started</h3>
 	<p><code>wrangler dev</code> is now available in the latest version of Wrangler, the official Cloudflare Workers CLI. </p>
-	<p>To get started, follow our installation instructions <a href="https://developers.cloudflare.com/workers/cli-wrangler/install-update?ref=blog.cloudflare.com#update" target="_blank">here</a>.</p>
+	<p>To get started, follow our installation instructions <a href="https://developers.cloudflare.com/workers/cli-wrangler/install-update#update" target="_blank">here</a>.</p>
 	<h3 id="what-s-next">What’s next?</h3>
 	<p><code>wrangler dev</code> is just our first foray into giving our developers more visibility and agility with their development process. </p>
 	<p>We recognize that we have a lot more work to do to meet our developers needs, including providing an easy testing framework for Workers, and allowing our customers to observe their Workers’ behavior in production.</p>

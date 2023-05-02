@@ -2,11 +2,11 @@
 	<!--kg-card-begin: markdown-->
 	<p>Recently, a new brute force attack method for WordPress instances was identified by Sucuri. This latest technique allows attackers to try a large number of WordPress username and password login combinations in a single HTTP request.</p>
 	<p>The vulnerability can easily be abused by a simple script to try a significant number of username and password combinations with a relatively small number of HTTP requests. The following diagram shows a 4-fold increase in login attempts to HTTP requests, but this can trivially be expanded to a thousand logins.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/10/wordpress-xmlrpc-brute-force-amplification.png" alt="WordPress XML-RPC Brute Force Amplification Attack"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/10/wordpress-xmlrpc-brute-force-amplification.png" alt="WordPress XML-RPC Brute Force Amplification Attack" loading="lazy"></p>
 	<p>This form of brute force attack is harder to detect, since you won’t necessarily see a flood of requests. Fortunately, all CloudFlare paid customers have the option to enable a Web Application Firewall ruleset to stop this new attack method.</p>
 	<h3 id="whatisxmlrpc">What is XML-RPC?</h3>
 	<p>To understand the vulnerability, it’s important to understand the basics of the XML remote procedure protocol (XML-RPC).</p>
-	<p>XML-RPC uses XML encoding over HTTP to provide a remote procedure call protocol. It’s commonly used to execute various <a href="https://codex.wordpress.org/XML-RPC_WordPress_API" target="_blank">functions in a WordPress instance</a> for APIs and other automated tasks. Requests that modify, manipulate, or view data using XML-RPC require user credentials with sufficient permissions.</p>
+	<p>XML-RPC uses XML encoding over HTTP to provide a remote procedure call protocol. It’s commonly used to execute various <a href="https://codex.wordpress.org/XML-RPC_WordPress_API?ref=blog.cloudflare.com" target="_blank">functions in a WordPress instance</a> for APIs and other automated tasks. Requests that modify, manipulate, or view data using XML-RPC require user credentials with sufficient permissions.</p>
 	<p>Here is an example that requests a list of the user’s blogs:</p>
 	<pre><code>&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
 &lt;methodCall&gt;
@@ -109,7 +109,7 @@
 	<p>When using CloudFlare with a Pro level plan or higher, you have the ability to turn on the Web Application Firewall (WAF) and take advantage of the new WordPress ruleset I created to mitigate this attack—all without any major interaction or supervision on your end.</p>
 	<p>Our WAF works by checking HTTP requests for consistencies that line up with known attacks and malicious activities. If a request does appear to be malicious, we drop it at the edge so it never even reaches the customer’s origin server.</p>
 	<p>To enable the rule, navigate to your CloudFlare Firewall dashboard, and reference the rule named "Blocks amplified brute force attempts to xmlrpc.php" with the rule ID WP0018.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/10/enabling-xmlrpc-waf-rule.png" alt="Enabling WordPress XML-RPC WAF Rule"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/10/enabling-xmlrpc-waf-rule.png" alt="Enabling WordPress XML-RPC WAF Rule" loading="lazy"></p>
 	<p>That’s all there is to it. Now you are protected from the new WordPress XML-RPC brute force amplification attack.</p>
 	<h3 id="themanualsolution">The Manual Solution</h3>
 	<p>Another way to mitigate this attack is by disabling the ability to call the<br>

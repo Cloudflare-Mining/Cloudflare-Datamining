@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-51.png" class="kg-image" alt="Navigating the changing data localization landscape with Cloudflare’s Data Localization Suite"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-51.png" class="kg-image" alt="Navigating the changing data localization landscape with Cloudflare’s Data Localization Suite" loading="lazy"></figure>
 	<p>Cloudflareでは、効果的なサイバーセキュリティ対策を導入することが個人情報のプライバシーを<a href="https://blog.cloudflare.com/investing-in-security-to-protect-data-privacy/">保護するための最良の方法</a>であり、情報が特定の管轄区域内にとどまることを確認するよりも効果的であると考えています。しかし、ヨーロッパ、インド、オーストラリア、日本、その他多くの地域のお客様からは、プライバシープログラムの一環として、規制上の義務を果たすためにデータをローカライズするためのソリューションが必要であるとの声が寄せられています。</p>
 	<p>そのため、1月28日に迫った「データプライバシーデー」について考えるとき、私たちは、データのローカライズがより良いデータプライバシーの代用になると考える人たちとは意見が一致しませんが、一定の規制に従わなければならないお客様をサポートしたいという興味深い立場にあります。</p>
 	<p>このため、私たちは2020年に<a href="https://blog.cloudflare.com/ja-jp/introducing-the-cloudflare-data-localization-suite-ja-jp/">Data Localization Suite（DLS）を導入</a>し、データのローカライゼーションにますます焦点を当てたデータ保護の状況をナビゲートできるよう、お客様を支援します。DLSを利用することで、お客様はCloudflareの強力なグローバルネットワークとセキュリティ対策を利用してビジネスを保護しながら、お客様に代わって当社が処理するデータをローカルに保持できます。発売以来、多くのお客様にData Localization Suiteを採用していただいています。このブログでは、DLSをより包括的に、より使いやすくするための最新情報をお伝えしたいと思います。</p>
@@ -15,7 +15,7 @@
 		<li>ログやメタデータが管轄地域外に転送されないようにするにはどうしたらよいですか？</li>
 	</ol>
 	<p>これらの懸念に対応するため、当社のDLSは、暗号化キーコンポーネント、転送中のコンテンツが終了し検査される場所に対処するコンポーネント、およびメタデータをお客様の管轄地域内に保持するコンポーネントを備えています。</p>
-	<p><strong>1. 暗号化キー</strong><br>Cloudflareは以前から、<a href="https://www.cloudflare.com/ssl/keyless-ssl/" target="_blank">Keyless SSL</a>および<a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/">Geo Key Manager</a>を提供しており、プライベートSSL/TLSキー素材が決してEUの外に出ないことを保証しています。Geo Key Managerをご利用のお客様は、お客様が指定した地域のデータセンターのみに暗号化キーを保管するよう選択することができます。Keyless SSLでは、Cloudflareがプライベートキーの素材を所有することは一切ありません。Geo Key Managerでは、キーが暗号アクセス制御で保護され、指定された地域でのみ使用することができます。</p>
+	<p><strong>1. 暗号化キー</strong><br>Cloudflareは以前から、<a href="https://www.cloudflare.com/ssl/keyless-ssl/?ref=blog.cloudflare.com" target="_blank">Keyless SSL</a>および<a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/">Geo Key Manager</a>を提供しており、プライベートSSL/TLSキー素材が決してEUの外に出ないことを保証しています。Geo Key Managerをご利用のお客様は、お客様が指定した地域のデータセンターのみに暗号化キーを保管するよう選択することができます。Keyless SSLでは、Cloudflareがプライベートキーの素材を所有することは一切ありません。Geo Key Managerでは、キーが暗号アクセス制御で保護され、指定された地域でのみ使用することができます。</p>
 	<p><strong>2. </strong><a href="https://blog.cloudflare.com/introducing-regional-services/"><strong>リージョナルサービス</strong></a><strong>：</strong><br>リージョナルサービスでは、Cloudflareはお客様が選択した地域内のHTTPSトラフィックのコンテンツのみを復号化および検査できることを保証します。リージョナルサービスを有効にすると、どのデータセンターのトラフィックが最初に当社のグローバルネットワークに到達するかにかかわらず、最初のデータセンターで復号化するのではなく、TCPストリームを暗号化した形式で転送します。そして、お客様が指定した地域内のデータセンターに到着した後、復号化し、アプリケーション層のセキュリティ対策を適用して、悪意のあるトラフィックがお客様のWebサイトに到達することを防止しています。</p>
 	<p><strong>3. </strong><a href="https://blog.cloudflare.com/ja-jp/introducing-the-customer-metadata-boundary-ja-jp/"><strong>Customer Metadata Boundary</strong></a><strong>：</strong><br>このオプションを有効にすると、Cloudflareがお客様に代わって処理するエンドユーザーのトラフィックログ（IPアドレスを含む）は、お客様が選択した地域から出ることはありません（現在、EUと米国のみで利用可能です）。</p>
 	<h3 id="data-localization-suite--1">Data Localization Suiteを新地域に拡大</h3>
@@ -26,11 +26,11 @@
 	<p>リージョナルサービスとCustomer Metadata Boundaryは、お客様を守るための重要な機能ですが、これまで使いにくいものでした。どちらもCloudflareのチームによる手作業が必要で、公開APIもわかりにくい（あるいは公開されていない）ものでした。</p>
 	<p>今日、私たちはその問題を解決します。このたび、ユーザビリティに関する2つの大きな改善点を発表できることを、嬉しく思っています。</p>
 	<ol>
-		<li>リージョナルサービスのお客様には、リージョナルサービスを有効にするための専用のUIと<a href="https://developers.cloudflare.com/data-localization/regional-services/get-started/#regional-services-via-api" target="_blank">APIが用意</a>され、DNSタブから直接アクセスできるようになりました。これで、ホスト名単位で異なる地域を設定できるようになります。</li>
-		<li>Metadata Boundaryを使用したいお客様は、<a href="https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/" target="_blank">当社のセルフサービスAPI</a>を使用して有効化することができます。</li>
+		<li>リージョナルサービスのお客様には、リージョナルサービスを有効にするための専用のUIと<a href="https://developers.cloudflare.com/data-localization/regional-services/get-started/?ref=blog.cloudflare.com#regional-services-via-api" target="_blank">APIが用意</a>され、DNSタブから直接アクセスできるようになりました。これで、ホスト名単位で異なる地域を設定できるようになります。</li>
+		<li>Metadata Boundaryを使用したいお客様は、<a href="https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/?ref=blog.cloudflare.com" target="_blank">当社のセルフサービスAPI</a>を使用して有効化することができます。</li>
 	</ol>
 	<p>Data Localization Suiteをより使いやすくし、トラフィックのどの部分をどのようにローカライズするか、お客様がより正確に制御できるようになることを嬉しく思います。</p>
 	<h3 id="--2">今後の展開は？</h3>
-	<p>Data Localization Suiteは、本日より企業のお客様にもご利用いただけるようになりました。ご興味のある方はアカウント担当者までチャットでご連絡ください。設定方法については、<a href="https://developers.cloudflare.com/data-localization/" target="_blank">こちら</a>の開発者向けドキュメントから詳細をご覧ください。</p>
+	<p>Data Localization Suiteは、本日より企業のお客様にもご利用いただけるようになりました。ご興味のある方はアカウント担当者までチャットでご連絡ください。設定方法については、<a href="https://developers.cloudflare.com/data-localization/?ref=blog.cloudflare.com" target="_blank">こちら</a>の開発者向けドキュメントから詳細をご覧ください。</p>
 	<p>Data Localization Suiteは、今年も多くのことを計画しています。リージョナルサービスとMetadata Boundaryについては、今後もさらに多くの地域をサポートしていく予定です。また、Zero Trustの全製品においても、データローカライゼーションを完全にサポートする予定です。今後もさらに、ブログにご注目ください。</p>
 </div>

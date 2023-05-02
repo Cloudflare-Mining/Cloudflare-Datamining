@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-6.png" class="kg-image" alt="How Cloudflare helps secure the inboxes of democracy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-6.png" class="kg-image" alt="How Cloudflare helps secure the inboxes of democracy" loading="lazy"></figure>
 	<p>Cloudflare 相信，每一位候选人，无论其政治立场如何，都应该能够在不担心网络攻击风险的情况下开展竞选活动。恶意攻击者——如国家威胁行为者、寻求金钱回报者或过于空闲的人——往往不认同我们的使命，并致力于破坏民主过程。 </p>
 	<h3 id="-">保护电子邮件收件箱是阻止攻击的关键所在</h3>
 	<p>在过去的几年里，这些恶意行为者在试图破坏竞选活动时，都将电子邮件作为他们的主要威胁手段。在网上快速搜索一下，就会发现攻击者仍然在试图侵入选举官员的电子邮件收件箱。1 任何组织遭受的损害 90% 以上都是由网络钓鱼攻击造成的，因此保护电子邮件收件箱成为一个重点。精心设计的钓鱼邮件配对，或错误的点击都可能让攻击者有机会看到敏感信息，向选民传播虚假信息，或窃取竞选捐款。 </p>
@@ -7,25 +7,25 @@
 	<h3 id="--1">政治竞选活动持续遭到攻击</h3>
 	<p>某些竞选活动受到更严重的攻击。例如，现任参议员竞选连任时，团队的工作人员平均每天收到超过 35 封恶意电子邮件。攻击者不仅仅提取通过钓鱼窃取凭据，还会试图冒充官员。在三个月内，我们发现超过 1 万封电子邮件在未经允许的情况下使用了那些公职竞选人的名字。</p>
 	<p>一位参议员的竞选活动经常成为攻击者钓鱼活动的目标，以下是我们看到的指标：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image4-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image4-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>对于一位美国众议院竞选人，我们发现其竞选团队工作人员收到一封题为“员工薪酬审查”的电邮，要求他/她们访问一个文件链接。 </p>
 	<p>从电邮来看，很难将其与合法的内部电邮区分开来。其中包含一个有效的电子邮件页脚以及该竞选活动一致的品牌。然而，Area 1 模型发现该电邮中的元数据中存在几处差异，将其标记为恶意。 </p>
 	<p>我们的模型发现，发送这些电子邮件的域名是可疑的，因为它与代表的实际竞选活动电子邮件非常相似。我们将此称作域邻近性。此外，分析电子邮件中的链接还发现它是最近注册的，进一步增加了对电子邮件有效性的怀疑。 </p>
 	<p>通过综合考虑以上数据点，Area 1 确保该电子邮件不会到达任何竞选工作人员的邮箱，预防了数据和金钱损失。 </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>另一种常见的攻击活动使用恶意附件。这些附件有可能包含勒索软件或数据上传程序等。目的是拖慢政治家的竞选活动步伐，或窃取敏感数据。 </p>
 	<p>攻击者会使用误导手段：改变所附文件的扩展名，或在电子邮件正文中提及附件是其他较为无害的东西。我们在另一个竞选活动中看到了这种做法：一位工作人员收到一封有针对性的电子邮件，要求其下载一份采购订单。 </p>
 	<p>对于那些每天处理数百张采购订单的人来说，他们没有时间彻底检查每封电子邮件，而是专注于付款以避免业务运营中断。Area 1 的模型为该工作人员节省了时间，并确定这封电子邮件是恶意的。 </p>
 	<p>我们的模型首先注意到附件是一个名为 PO567.7z 的 7-Zip 文件。大多数采购订单都是以 PDF 格式发送的，所以看到它作为 7z 压缩文件发送引起担忧。被模型评估为异常的另一个数据点是糟糕的情绪。这封邮件不仅有明显的语法错误(例如 “Dear Info”)，而且缺乏合法采购订单邮件中常见的信息，导致邮件带有糟糕的语气。 </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-9.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-9.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>以上所有信号，加上这是收件人首次从该发件人收到通信，促使 Area 1 阻止该电子邮件进入任何邮箱。 </p>
 	<p>这些例子说明了竞选活动对 Cloudflare 的信任。我们有能力扫描数以百万计的电子邮件，防止危险的邮件进入邮箱，同时让安全的邮件不受干扰地到达预期的收件人，这就是为什么如此多的竞选活动选择 Cloudflare 的 Area 1 产品来保护他们的邮箱，进而保护我们的民主制度。 </p>
 	<h3 id="cloudflare-area-1-">Cloudflare 的 Area 1 的解决方案 </h3>
 	<p>这一切之所以成为可能，是因为 Area 1 采用了先发制人的攻击活动发现和机器学习算法，可以分析从电子邮件中附件到发件人域到电子邮件本身情绪的各种威胁信号，以评估电子邮件是否存在恶意。 </p>
 	<p>Area 1 也非常易于部署，确保竞选活动立即得到保护，无需花费时间配置硬件、代理或设备。Cloudflare 也知道，竞选活动难以按照行业标准(如 SPF/DKIM/ DMARC)规定，应用适当的电子邮件卫生和身份验证控制措施。 </p>
 	<p>这些措施非常复杂，需要时间实施，而新竞选活动周期很短，更难设置符合行业最佳实践的正确电子邮件身份验证控制。有鉴于此，确保对网络钓鱼和基于电子邮件的攻击部署强有力的入站技术控制显得尤为重要；让竞选活动专注于最重要的事情——以最有效和最安全的方式向选民传播其信息。<br>我们知道，竞选公职的人会成为寻求破坏民主过程者的目标。</p>
-	<p>Cloudflare 致力于创造更好的互联网，那意味着确保收件箱的安全。如果希望进一步了解 Area 1 如何工作以及我们保护收件箱的其他方法，请在<a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank">这里</a>浏览 Area 1 产品页面。</p><!--kg-card-begin: markdown-->
+	<p>Cloudflare 致力于创造更好的互联网，那意味着确保收件箱的安全。如果希望进一步了解 Area 1 如何工作以及我们保护收件箱的其他方法，请在<a href="https://www.cloudflare.com/products/zero-trust/email-security/?ref=blog.cloudflare.com" target="_blank">这里</a>浏览 Area 1 产品页面。</p><!--kg-card-begin: markdown-->
 	<p><small>...<br>
-			<sup>1)</sup> <a href="https://www.cbsnews.com/feature/election-hacking/" target="_blank">https://www.cbsnews.com/feature/election-hacking/</a></small></p>
+			<sup>1)</sup> <a href="https://www.cbsnews.com/feature/election-hacking/?ref=blog.cloudflare.com" target="_blank">https://www.cbsnews.com/feature/election-hacking/</a></small></p>
 	<!--kg-card-end: markdown-->
 </div>

@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image3-8.png" class="kg-image" alt="Using Apache Kafka to process 1 trillion messages" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image3-8.png" class="kg-image" alt="Using Apache Kafka to process 1 trillion messages"></figure>
 	<p>Cloudflare has been using Kafka in production since 2014. We have come a long way since then, and currently run 14 distinct Kafka clusters, across multiple data centers, with roughly 330 nodes. Between them, over a trillion messages have been processed over the last eight years.</p>
 	<p>Cloudflare uses Kafka to decouple microservices and communicate the creation, change or deletion of various resources via a common data format in a fault-tolerant manner. This decoupling is one of many factors that enables Cloudflare engineering teams to work on multiple features and products concurrently.</p>
 	<p>We learnt a lot about Kafka on the way to one trillion messages, and built some interesting internal tools to ease adoption that will be explored in this blog post. The focus in this blog post is on inter-application communication use cases alone and not logging (we have other Kafka clusters that power the dashboards where customers view statistics that handle more than one trillion messages <em>each day</em>). I am an engineer on the Application Services team and our team has a charter to provide tools/services to product teams, so they can focus on their core competency which is delivering value to our customers.</p>
@@ -11,16 +11,16 @@
 		<li>Enable services to communicate more clearly with basically zero integration cost (more on how we achieved this below);</li>
 		<li>Encourage the use of a self-documenting communication format and therefore removing the problem of out of date documentation.</li>
 	</ul>
-	<p>To make it as easy to use as possible and to encourage adoption, the Application Services team created two internal projects. The first is unimaginatively named Messagebus-Client. Messagebus-Client is a Go library that wraps the fantastic <a href="https://github.com/Shopify/sarama?ref=blog.cloudflare.com" target="_blank">Shopify Sarama</a> library with an opinionated set of configuration options and the ability to manage the rotation of mTLS certificates.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed1-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>To make it as easy to use as possible and to encourage adoption, the Application Services team created two internal projects. The first is unimaginatively named Messagebus-Client. Messagebus-Client is a Go library that wraps the fantastic <a href="https://github.com/Shopify/sarama" target="_blank">Shopify Sarama</a> library with an opinionated set of configuration options and the ability to manage the rotation of mTLS certificates.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed1-2.png" class="kg-image"></figure>
 	<p>The success of this project is also somewhat its downfall. By providing a ready-to-go Kafka client, we ensured teams got up and running quickly, but we also abstracted some core concepts of Kafka a little too much, meaning that small unassuming configuration changes could have a big impact.</p>
 	<p>One such example led to partition skew (a large portion of messages being directed towards a single partition, meaning we were not processing messages in real time; see the chart below). One drawback of Kafka is you can only have one consumer per partition, so when incidents do occur, you can’t trivially scale your way to faster throughput.</p>
 	<p>That also means before your service hits production it is wise to do some back of the napkin math to figure out what throughput might look like, otherwise you will need to add partitions later. We have since amended our library to make events like the below less likely.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-14.png" class="kg-image"></figure>
 	<p>The reception for the Messagebus-Client has been largely positive. We spent time as a team to understand what the predominant use cases were, and took the concept one step further to build out what we call the connector framework.</p>
 	<h3 id="connectors">Connectors</h3>
 	<p>The connector framework is based on Kafka-connectors and allows our engineers to easily spin up a service that can read from a system of record and push it somewhere else (such as Kafka, or even Cloudflare’s own <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a>). To make this as easy as possible, we use Cookiecutter templating to allow engineers to enter a few parameters into a CLI and in return receive a ready to deploy service.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed2-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed2-3.png" class="kg-image"></figure>
 	<p>We provide the ability to configure data pipelines via environment variables. For simple use cases, we provide the functionality out of the box. However, extending the readers, writers and transformations is as simple as satisfying an interface and “registering” the new entry.</p>
 	<p>For example, adding the environment variables:</p><!--kg-card-begin: markdown-->
 	<pre><code>READER=kafka
@@ -36,11 +36,11 @@ WRITER=quicksilver
 	</ul>
 	<p>Connectors come readily baked with basic metrics and alerts, so teams know they can move to production quickly but with confidence.</p>
 	<p>Below is a diagram of how one team used our connector framework to read from the Messagebus cluster and write to various other systems. This is orchestrated by a system the Application Service team runs called Communication Preferences Service (CPS). Whenever a user opts in/out of marketing emails or changes their language preferences on cloudflare.com, they are calling CPS which ensures those settings are reflected in all the relevant systems.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed3-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed3-2.png" class="kg-image"></figure>
 	<h3 id="strict-schemas">Strict Schemas</h3>
 	<p>Alongside the Messagebus-Client library, we also provide a repo called Messagebus Schema. This is a schema registry for all message types that will be sent over our Messagebus cluster. For message format, we use protobuf and have been very happy with that decision. Previously, our team had used JSON for some of our kafka schemas, but we found it much harder to enforce forward and backwards compatibility, as well as message sizes being substantially larger than the protobuf equivalent. Protobuf provides strict message schemas (including type safety), the forward and backwards compatibility we desired, the ability to generate code in multiple languages as well as the files being very human-readable.</p>
 	<p>We encourage heavy commentary before approving a merge. Once merged, we use prototool to do breaking change detection, enforce some stylistic rules and to generate code for various languages (at time of writing it's just Go and Rust, but it is trivial to add more).</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image6-8.png" class="kg-image" alt="An example Protobuf message in our schema" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image6-8.png" class="kg-image" alt="An example Protobuf message in our schema">
 		<figcaption><em>An example Protobuf message in our schema</em></figcaption>
 	</figure>
 	<p>Furthermore, in Messagebus Schema we store a mapping of proto messages to a team, alongside that team’s chat room in our internal communication tool. This allows us to escalate issues to the correct team easily when necessary.</p>
@@ -54,7 +54,7 @@ WRITER=quicksilver
 		<li>Your consumer is misbehaving and not acknowledging messages.</li>
 	</ul>
 	<p>For metrics, we use Prometheus and display them with Grafana. For each new topic created, we automatically provide a view into production rate, consumption rate and partition skew by producer/consumer. If an engineering team is called out, within the alert message is a link to this Grafana view.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image7-cropped.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image7-cropped.png" class="kg-image"></figure>
 	<p>In our Messagebus-Client, we expose some metrics automatically and users get the ability to extend them further. The metrics we expose by default are:</p>
 	<p>For producers:</p>
 	<ul>
@@ -76,8 +76,8 @@ WRITER=quicksilver
 		<li>Emit a message to our alert topic when an event of interest takes place.</li>
 	</ul>
 	<p>That’s it! The producer team now has a means for customers to configure granular alerting policies for their new alert that includes being able to dispatch them via Slack, Google Chat or a custom webhook, PagerDuty or email (by both API and dashboard). Retrying and dead letter messages are managed for them, and a whole host of metrics are made available, all by making some very small changes.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed4.png" class="kg-image"></figure>
 	<h3 id="what-s-next">What’s Next?</h3>
 	<p>Usage of Kafka (and our Messagebus tools) is only going to increase at Cloudflare as we continue to grow, and as a team we are committed to making the tooling around Messagebus easy to use, customizable where necessary and (perhaps most importantly) easy to observe. We regularly take feedback from other engineers to help improve the Messagebus-Client (we are on the fifth version now) and are currently experimenting with abstracting the intricacies of Kafka away completely and allowing teams to use gRPC to stream messages to Kafka. Blog post on the success/failure of this to follow!</p>
-	<p>If you're interested in building scalable services and solving interesting technical problems, we are hiring engineers on our team in<em> <a href="https://boards.greenhouse.io/cloudflare/jobs/3252504?gh_jid=3252504&amp;ref=blog.cloudflare.com" target="_blank">Austin</a>, and <a href="https://boards.greenhouse.io/cloudflare/jobs/3252504?gh_jid=3252504&amp;ref=blog.cloudflare.com" target="_blank">Remote US</a>.</em></p>
+	<p>If you're interested in building scalable services and solving interesting technical problems, we are hiring engineers on our team in<em> <a href="https://boards.greenhouse.io/cloudflare/jobs/3252504?gh_jid=3252504" target="_blank">Austin</a>, and <a href="https://boards.greenhouse.io/cloudflare/jobs/3252504?gh_jid=3252504" target="_blank">Remote US</a>.</em></p>
 </div>

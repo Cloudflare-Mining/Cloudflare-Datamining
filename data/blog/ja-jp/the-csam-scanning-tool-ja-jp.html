@@ -1,21 +1,21 @@
 <div class="post-content lh-copy gray1">
-	<p>2週間前、当社は<a href="https://blog.cloudflare.com/cloudflares-response-to-csam-online/">児童性的虐待コンテンツ（CSAM）に対するCloudflareのアプローチ</a>について書きました。2010年に当社の創設を公開して数ヶ月後から行方不明者および搾取された子どもたちのためのセンター（NCMEC）と協力を始めました。この組織は、米国に拠点を置き、忌まわしいコンテンツを削除するための情報センターとして活動しています。過去9年以上にわたって、当社のTrust &amp; Safetyチームは、<a href="http://www.missingkids.com/" target="_blank">NCMEC</a>や<a href="https://www.interpol.int/en/Crimes/Crimes-against-children" target="_blank">インターポール</a>、世界で約60の公共機関や民間機関とプログラムをデザインしてきました。そして、インターネットからCSAMを排除するために行ってきた仕事を誇りに思います。</p>
+	<p>2週間前、当社は<a href="https://blog.cloudflare.com/cloudflares-response-to-csam-online/">児童性的虐待コンテンツ（CSAM）に対するCloudflareのアプローチ</a>について書きました。2010年に当社の創設を公開して数ヶ月後から行方不明者および搾取された子どもたちのためのセンター（NCMEC）と協力を始めました。この組織は、米国に拠点を置き、忌まわしいコンテンツを削除するための情報センターとして活動しています。過去9年以上にわたって、当社のTrust &amp; Safetyチームは、<a href="http://www.missingkids.com/?ref=blog.cloudflare.com" target="_blank">NCMEC</a>や<a href="https://www.interpol.int/en/Crimes/Crimes-against-children?ref=blog.cloudflare.com" target="_blank">インターポール</a>、世界で約60の公共機関や民間機関とプログラムをデザインしてきました。そして、インターネットからCSAMを排除するために行ってきた仕事を誇りに思います。</p>
 	<p>ある意味で、忌まわしい事例ほど、対処しやすいと言えるかもしれません。Cloudflareが他社がホストするコンテンツを削除することはできませんが、サイトがCSAMを共有していると明らかになった場合やWebサイトの運営者とホストがCSAMコンテンツを停止するための適切な措置を講じない場合、Webサイトへのサービスを終了する措置を取ります。Webサイトを終了した場合、当社はキャッシュを消去します。数秒で世界中で消去を有効にし、そのWebサイトはCloudflareのネットワークを二度と使うことができないようにブロックします。</p>
 	<h3 id="-">難しいケースに対処する</h3>
 	<p>難しいケースとは、当社のお客様が運営するサービスでユーザーが討論フォーラムのようなコンテンツを生成することができたり、ユーザーがCSAMをアップロードしたりした場合、またはハッキングされたり、悪意のある従業員が自社のサーバーにCSAMを保存した場合です。正しいことを意図としたはずのサービスが隙をつかれて、最終的にサイトにCSAMを入れてしまったケースを数多く見てきました。こうした場合は故意でもなく悪意もないのですが、こうしたコンテンツは迅速に特定し、削除する必要があります。</p>
 	<p>本日こうした難しいケースに対処するために一歩踏み出せることを誇りに思います。本日より、Cloudflareのすべてのお客様はダッシュボードにログインして、CSAMScanning Tool にアクセスできるようになります。CSAMScanning Tool が開発から生産へ移行すると、ツールは違法なコンテンツに対処するCSAMスキャニングツールが有効になったインターネットプロパティすべてをチェックします。CSAMコンテンツであるとフラグがつくと、Cloudflareは自動的に通知を送信し、ステータスコード 451「法的理由によりブロックされました」を出して、コンテンツのアクセスをブロックします。そして、法的義務を順守し、コンテンツの適切な報告をサポートする措置をとります。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/02/csam-tool.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/02/csam-tool.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>CSAM スキャニングはプランレベルに関係なく、すべてのお客様に無料でCloudflareのダッシュボードからご利用いただけます。このツールは、ダッシュボードの「Caching」タブにあります。このツールをすべてのお客様にご利用いただくことで、当社がオンラインでCSAMに対抗するために役立つことができ、CSAMが企業にもたらす法的リスクや風評被害からお客様を保護できることを期待しています。</p>
 	<p>当社をご利用いただく何百万ものユーザーにこのサービスを提供するとお約束できるまで、長い時間がかかりました。当社が行なっていることと、それが技術的にもポリシーの観点においてもどれだけ難しいことなのかをご理解いただくために、最高水準のCSAMのトラッキング技術について少しご説明しましょう。</p>
 	<h3 id="--1">類似画像を見つける</h3>
 	<p>Cloudflareが立ち上げ時期だった2009年、Dartmouth大学のHany Farid教授はNCMECが保有するハッシュのリストに照らし合わせて画像を比較できるソフトウェアに取り組んでいました。Microsoftは自動的にCSAMを識別するというFarid教授の研究を使ったPhotoDNAというツールの開発を進めていました。</p>
-	<p>初期の頃、Microsoftは社内サービスでPhotoDNAを使っていましたが、2009年後半に<a href="http://blogs.msdn.com/b/microsoftuseducation/archive/2009/12/17/microsoft-donates-photodna-technology-to-make-the-internet-safer-for-kids.aspx" target="_blank">NCMECにこの技術を寄付し</a>他の組織でも使えるように支援しました。ソーシャルネットワークも最初の頃から採用を始めていて、2011年、<a href="http://www.huffingtonpost.com/2011/05/20/facebook-photodna-microsoft-child-pornography_n_864695.html" target="_blank">Facebookは、虐待への対処方法としてこの技術の実装を展開</a>しました。<a href="https://www.theguardian.com/technology/2013/jul/22/twitter-photodna-child-abuse" target="_blank">Twitterは2014年に取り入れています</a>。</p>
+	<p>初期の頃、Microsoftは社内サービスでPhotoDNAを使っていましたが、2009年後半に<a href="http://blogs.msdn.com/b/microsoftuseducation/archive/2009/12/17/microsoft-donates-photodna-technology-to-make-the-internet-safer-for-kids.aspx?ref=blog.cloudflare.com" target="_blank">NCMECにこの技術を寄付し</a>他の組織でも使えるように支援しました。ソーシャルネットワークも最初の頃から採用を始めていて、2011年、<a href="http://www.huffingtonpost.com/2011/05/20/facebook-photodna-microsoft-child-pornography_n_864695.html?ref=blog.cloudflare.com" target="_blank">Facebookは、虐待への対処方法としてこの技術の実装を展開</a>しました。<a href="https://www.theguardian.com/technology/2013/jul/22/twitter-photodna-child-abuse?ref=blog.cloudflare.com" target="_blank">Twitterは2014年に取り入れています</a>。</p>
 	<p>この処理は、ファジーハッシュと呼ばれています。MD5、SHA1、SHA256のような従来のハッシュアルゴリズムは、任意長のファイル（画像やドキュメントなど）を持ち、固定長の数値を出力します。これは、事実上ファイルの電子指紋（デジタルフィンガープリント）です。たとえば、この写真のMD5を取ると、フィンガープリントは605c83bf1bba62e85f4f5fccc56bc128となります。</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/base-image.jpg" class="kg-image">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/base-image.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption>ベースの画像</figcaption>
 	</figure>
 	<p>この写真の単一のピクセルを変更して純粋な白よりも少し白みを下げる場合、視覚的には同じでもフィンガープリントは完全に変わって、42ea4fb30a440d8787477c6c37b9daedとなります。2つのフィンガープリントを見て分かるように、画像に少し変更を加えると、従来のハッシュ出力に大規模で予測不可能な変更が起こることになります。</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/base-image-pixel-changed.jpg" class="kg-image">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/base-image-pixel-changed.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption>単一のピクセルの変更があったベースの画像</figcaption>
 	</figure>
 	<p>以前に見たドキュメントと完全に一致しているかどうかをしっかりと確認したい時にハッシングは最適です。たとえば、デジタル契約書で余分なゼロが追加されている場合、署名に使われるドキュメントのハッシュを無効にしたいと思うはずです。</p>
@@ -36,7 +36,7 @@
 1dd84436734e4a5c6e25332e507a8218
 6e3b89174e30372d</code></pre>
 	<p>この2枚は、ピクセルにわずかな違いがありますが、ファジーハッシュは全く同じです。</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/base-image-altered-2.jpeg" class="kg-image">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/base-image-altered-2.jpeg" class="kg-image" alt="" loading="lazy">
 		<figcaption>これは彩度を上げて、セピアに変更し、境界線を追加し、ランダムノイズを追加したベースの画像です。</figcaption>
 	</figure>
 	<p>ファジーハッシングは、非常に類似する画像を識別するために設計されています。たとえば、犬の色を鮮やかにしてからセピアにして、境界線をつけました。最後にランダムノイズを追加するという修正をしました。新しい画像のファジーハッシュは次のようになります。</p>
@@ -54,20 +54,20 @@
 d36fff4561aebb2f088a891208134202
 3e21ff5b594bff5eff5bff6c2bc9ff77
 1755ff511d14ff5b</code></pre>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/02/image-1.jpg" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/02/image-1.jpg" class="kg-image" alt="" loading="lazy"></figure>
 	<p>1枚目の写真のファジーハッシュです。</p>
 	<pre><code>062715154080356b8a52505955997751
 9d221f4624000209034f1227438a8c6a
 894e8b9d675a513873394a2f3d000722
 781407ff475a36f9275160ff6f231eff
 465a17f1224006ff</code></pre>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/02/image-2.jpg" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/02/image-2.jpg" class="kg-image" alt="" loading="lazy"></figure>
 	<p>2つのハッシュの距離は、713,061と計算されました。この実験を通して、2枚の写真が関連している可能性が高いと考えられるように距離に基づいたしきい値を設定することが可能です。</p>
 	<h3 id="--3">ファジーハッシングの意図的なブラックボックス</h3>
-	<p>どのような仕組みなのでしょうか。ファジーハッシングに関してたくさんの情報が公開されていますが、処理の内部構造は意図的に謎めいたものになっています。最近、New York Times紙が、こうしたテクノロジーの仕組みについて、最も公然と論じた<a href="https://www.nytimes.com/interactive/2019/11/09/us/internet-child-sex-abuse.html" target="_blank">記事</a>を掲載しました。問題として指摘されたのは、CSAMを作成·販売する犯罪者がこのツールの仕組みを完全に把握している場合、引っかからないために画像を修正する方法を巧妙に作り上げることができるのではないかということでした。誤解のないように言いますが、Cloudflareは、Webサイト運営者の代わりに、当社のセキュアなポイントオブプレゼンス内からCSAMスクリーニングツールを実行します。ユーザーに直接ソフトウェアを配布するようなことはしません。プラットフォームを不正使用しようとする動きに警戒し、必要に応じて迅速な行動をとります。</p>
+	<p>どのような仕組みなのでしょうか。ファジーハッシングに関してたくさんの情報が公開されていますが、処理の内部構造は意図的に謎めいたものになっています。最近、New York Times紙が、こうしたテクノロジーの仕組みについて、最も公然と論じた<a href="https://www.nytimes.com/interactive/2019/11/09/us/internet-child-sex-abuse.html?ref=blog.cloudflare.com" target="_blank">記事</a>を掲載しました。問題として指摘されたのは、CSAMを作成·販売する犯罪者がこのツールの仕組みを完全に把握している場合、引っかからないために画像を修正する方法を巧妙に作り上げることができるのではないかということでした。誤解のないように言いますが、Cloudflareは、Webサイト運営者の代わりに、当社のセキュアなポイントオブプレゼンス内からCSAMスクリーニングツールを実行します。ユーザーに直接ソフトウェアを配布するようなことはしません。プラットフォームを不正使用しようとする動きに警戒し、必要に応じて迅速な行動をとります。</p>
 	<h3 id="--4">検出もれと誤検知のトレードオフ</h3>
 	<p>Cloudflareは、多くの規制当局と協力して、お客様に向けてこの機能をどのように本格展開していくのが一番いいかを考えてきました。Cloudflareと同様に様々なお客様を持つネットワークには課題があり、その1つが適切はしきい値はファジーハッシュとの比較距離をどう設定するべきかということです。</p>
-	<p>しきい値が厳しすぎると（つまり、従来のハッシュに近く、2つの画像が一致するためには、ほぼ同一である必要があるということです）、たくさんの検出もれ（CSAMにフラグが付かない）が出る可能性が高くなります。しきい値がゆるすぎると、多くの誤検知が出てくる可能性が高くなります。誤検知は、それほど悪質でないように見えますが、検出もれの可能性を最大限に高めることで、限りのあるリソースを浪費し、さらに<a href="https://www.nytimes.com/interactive/2019/09/28/us/child-sex-abuse.html" target="_blank">既存のエコシステムを圧倒する</a>という当たり前の懸念もあります。エコシステムの継続的な有効性をサポートしつつ、CSAMスキャニングツールで繰り返し処理して、さらにきめ細かな制御をWebサイト所有者に提供します。現在、エコシステムのリソースを圧倒することなく、当社が迅速にCSAMにフラグをつけることができるオプションの優れた最初のセットをお客様にご提供できると確信しています。</p>
+	<p>しきい値が厳しすぎると（つまり、従来のハッシュに近く、2つの画像が一致するためには、ほぼ同一である必要があるということです）、たくさんの検出もれ（CSAMにフラグが付かない）が出る可能性が高くなります。しきい値がゆるすぎると、多くの誤検知が出てくる可能性が高くなります。誤検知は、それほど悪質でないように見えますが、検出もれの可能性を最大限に高めることで、限りのあるリソースを浪費し、さらに<a href="https://www.nytimes.com/interactive/2019/09/28/us/child-sex-abuse.html?ref=blog.cloudflare.com" target="_blank">既存のエコシステムを圧倒する</a>という当たり前の懸念もあります。エコシステムの継続的な有効性をサポートしつつ、CSAMスキャニングツールで繰り返し処理して、さらにきめ細かな制御をWebサイト所有者に提供します。現在、エコシステムのリソースを圧倒することなく、当社が迅速にCSAMにフラグをつけることができるオプションの優れた最初のセットをお客様にご提供できると確信しています。</p>
 	<h3 id="--5">お客様に合わせたしきい値</h3>
 	<p>同じようにきめ細かなアプローチを求める気持ちは、当社のお客様との会話にも反映されています。お客様にとって何が適しているかとお聞きしたところ、そのお返事は、事業タイプ、既存の不正利用対策の性能の高さ、サイトにCSAMが投稿された場合のリスクに対する露出レベルと耐性によって大きく異なっていました。</p>
 	<p>たとえば、あるソーシャルネットワーク企業はしっかりとした組織で、高度な不正利用対策チームを持っていて、Cloudflareを利用しています。このソーシャルネットワーク企業がしきい値をかなり緩く設定することを望むかもしれませんが、フラッグがついたものは全て手動で確認する人的資源を持っているため、コンテンツを自動的にブロックしたいわけではないかもしれません。</p>

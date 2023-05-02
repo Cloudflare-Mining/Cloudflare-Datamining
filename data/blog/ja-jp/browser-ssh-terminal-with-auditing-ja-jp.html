@@ -1,15 +1,15 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4-4.png" class="kg-image" alt="A Zero Trust terminal in your web browser"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4-4.png" class="kg-image" alt="A Zero Trust terminal in your web browser" loading="lazy"></figure>
 	<p>Cloudflare for Teamsでは、あらゆる規模の組織が、リソースやデータにZero Trust制御を追加しつつ、Cloudflareのネットワークでパフォーマンスを向上させることができます。本日より、同じプラットフォームでWebアプリケーション内で利用できる同じレベルの監査制御を使って、チームがブラウザ内部からシームレスに非HTTPリソースに接続できるようになります。</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 62.5%;"><iframe src="https://iframe.videodelivery.net/9e62cddf4ac40dc7237f4136f946fa12?preload=true&amp;loop=true&amp;autoplay=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
 	<p>Cloudflareのブラウザベースのターミナルは、ユーザーがワンクリックで起動できるフル機能のコンソールをレンダリングします。ユーザーは組織のSSOで認証を受け、アクセスするリソースに対してチームのZero Trustルールを満たしているかどうかをCloudflareのエッジがチェックします。</p>
 	<p>一度承認されると、ユーザーはクライアント側の設定やエージェントなしで、ネイティブのコマンドラインを使用しているかのようにSSH上でコマンドを実行することができます。Cloudflareのネットワークは、接続を高速化し、データ転送のルールを適用し、管理者が必要に応じて監査できるようにセッションを記録します。</p>
 	<p>私たちは、ブラウザの管理外のアプリケーションのセキュリティと配信に苦労しているお客様との会話に基づいて、Cloudflareのブラウザベースのターミナルを構築しました。開発者からは、SSHでマシンに接続したり、レガシーアプリケーションを多数のリモートワーカーに拡張するために、既存のワークフローを使用してサポートしなければならないという声が寄せられています。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image5-6.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image5-6.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>今回はSSHのユースケースのためにターミナルから始めていますが、Cloudflareのプラットフォームは、チームが必要とするほぼすべてのアプリケーションにブラウザベースのインターフェースを提供します。セキュリティチームは、Zero Trustルールを作成して、これらのリソースにアクセスできるユーザーとその方法を決定し、すべての接続をログに記録することができます。セッションを記録する高度なセキュリティ機能を追加し、データを検査してフィルタリングすることで、SSHや間もなく登場するRDPなどの非HTTP接続でインシデントが発生するのを防ぐことができるようになります。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/04/Tunnel-Diagram.png" class="kg-image"></figure>
-	<p>また、このプラットフォームは、お客様のエンドユーザー向けにアプリケーションの高速化を実現します。Cloudflareのネットワークは、どの地域でもお客様のサービスからチームへの接続を高速化します。既存のチームメンバーは、クライアント側の設定なしに<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trustモデル</a>に移行できます。新入社員は、Webアプリケーションだけでなく、必要なすべてのリソースを1箇所で見つけ、ワンクリックで起動できます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/04/Tunnel-Diagram.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>また、このプラットフォームは、お客様のエンドユーザー向けにアプリケーションの高速化を実現します。Cloudflareのネットワークは、どの地域でもお客様のサービスからチームへの接続を高速化します。既存のチームメンバーは、クライアント側の設定なしに<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trustモデル</a>に移行できます。新入社員は、Webアプリケーションだけでなく、必要なすべてのリソースを1箇所で見つけ、ワンクリックで起動できます。</p>
 	<h2 id="-web-">非Webアプリケーションの課題</h2>
 	<h3 id="zero-trust-">Zero Trust制御</h3>
 	<p>Webブラウザ、リバースプロキシ、ブラウザのCookieにより、IT部門がWebアプリケーションにZero Trust制御を簡単に追加できるようになりました。これまでプライベートネットワーク上にあったWebアプリケーションを、Cloudflareのようなリバースプロキシの背後にデプロイできます。ユーザーが任意のWebブラウザで公開DNSアドレスにアクセスすると、リバースプロキシがIDを確認します。Cloudflare Accessはこれらのツールに基づき、10分以内にすべてのWebアプリケーションにZero Trustルールを追加できる能力を提供します。</p>
@@ -32,10 +32,10 @@
 		<li><code>cloudflared</code>という軽量なデーモンを使用する、そのサービスからCloudflareのエッジへのセキュアな接続</li>
 		<li>CloudflareがSSHセッションをレンダリングするユーザーのブラウザ</li>
 	</ol>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/04/Tunnel-Diagram-with-the-Partners.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/04/Tunnel-Diagram-with-the-Partners.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-zero-trust-">あらゆるリソースにZero Trust制御を適用</h3>
 	<p>私たちは、コンプライアンス上の要件により、自社のセルフホスト型アプリケーションすべてに二要素認証を追加する必要がある企業と話したところ、そのための開発時間に数か月を見積もっていることが判明しました。Cloudflare Accessを利用すれば、お客様のチームはIDプロバイダーの二要素認証を要件として、あらゆる種類のアプリケーションに数分でアクセスできます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-21.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-21.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>これらのタイプのIDベースのルールは、Tanium、Carbon Black、Crowdstrikeなどプロバイダーとの統合を使用して、ユーザーが居住している国や<a href="https://blog.cloudflare.com/ja-jp/endpoint-partnerships-ja-jp/">デバイスの正常性</a>などの他のシグナルとレイヤー化できます。組織は、ユーザーが<a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">企業のデバイスからのみ接続</a>するように要求したり、GitHubやGoogleなどのパブリック認証オプションとともに、OktaやAzure ADなどのエンタープライズプロバイダーをサポートするログインフローを構築したりできます。</p>
 	<p>また、CloudflareのZero Trustプラットフォームは、長期間のSSHセキュリティキーのような時代遅れの認証プロセスからの脱却を支援します。このソリューションでは、ログイン時に発行されたJSON Webトークンを、マシン上でのユーザーのセッションを認証する短期間の証明書に変換します。</p>
 	<h3 id="--4">すべてのアプリケーションでセッションを監査し、データを安全に保護</h3>
@@ -54,7 +54,7 @@
 	<p>このアプローチは、Cloudflareブラウザを支えているリモートブラウザ分離技術を基に開始されます。Cloudflare Zero Trust Appsは、ブラウザ上でアプリケーションをネイティブアプリケーションのようにレンダリングします。ハイライト、コピー＆ペースト、ショートカットの利用が可能です。</p>
 	<p>次に、このソリューションでは、Cloudflareのネットワークを利用して、サーバーからエンドユーザーまでのトラフィックを高速化します。Cloudflareのグローバルバックボーン全体で最速のパスを決定し、100か国以上の200以上の都市にある近隣のデータセンターからお客様のチームにエクスペリエンスを提供します。</p>
 	<h2 id="--7">今後の展開は？</h2>
-	<p>本日のローンチは、SSHのサポートから始まります。私たちは、SSHの構造化されたコマンドログとフィルタリングに加えて、今後数か月の間にさらに多くのアプリケーションタイプのサポートを追加していく予定です。お客様のチームで、使い勝手の良くないリソースがありましたら<a href="https://forms.gle/a9EhhCj9dm2jY8EE8" target="_blank">お知らせください</a>。拡張の優先順位をつけるのに活用させていただきます。</p>
-	<p>お客様のチームがSSHフローにCloudflare Accessを使用している場合、1回の設定変更ですぐにZero Trust Appsを使い始めることができます。開始するには、<a href="https://community.cloudflare.com/t/feedback-for-cloudflares-zero-trust-browser-based-ssh-client/260745" target="_blank">こちらの手順に従ってください</a>。</p>
-	<p>Cloudflare for Teamsでは、<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">Cloudflare for Teams Freeプラン</a>の一環として、お客様の組織で最大50ユーザーまでCloudflare Zero Trust Appsを無料で使い始めることができます。セッション記録などの高度なセキュリティ機能は、Cloudflare for Teams Standardプランで利用できるようになる予定です。</p>
+	<p>本日のローンチは、SSHのサポートから始まります。私たちは、SSHの構造化されたコマンドログとフィルタリングに加えて、今後数か月の間にさらに多くのアプリケーションタイプのサポートを追加していく予定です。お客様のチームで、使い勝手の良くないリソースがありましたら<a href="https://forms.gle/a9EhhCj9dm2jY8EE8?ref=blog.cloudflare.com" target="_blank">お知らせください</a>。拡張の優先順位をつけるのに活用させていただきます。</p>
+	<p>お客様のチームがSSHフローにCloudflare Accessを使用している場合、1回の設定変更ですぐにZero Trust Appsを使い始めることができます。開始するには、<a href="https://community.cloudflare.com/t/feedback-for-cloudflares-zero-trust-browser-based-ssh-client/260745?ref=blog.cloudflare.com" target="_blank">こちらの手順に従ってください</a>。</p>
+	<p>Cloudflare for Teamsでは、<a href="https://dash.cloudflare.com/sign-up/teams?ref=blog.cloudflare.com" target="_blank">Cloudflare for Teams Freeプラン</a>の一環として、お客様の組織で最大50ユーザーまでCloudflare Zero Trust Appsを無料で使い始めることができます。セッション記録などの高度なセキュリティ機能は、Cloudflare for Teams Standardプランで利用できるようになる予定です。</p>
 </div>

@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=9ec064423ff0aa7f325c68aea02ad784" alt=""><br>
+	<p><img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=9ec064423ff0aa7f325c68aea02ad784" alt="" loading="lazy"><br>
 		<small>Photo by <a href="https://unsplash.com/@markusspiske?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank">Markus Spiske</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank">Unsplash</a></small>
 	</p>
 	<p>You hear about data breaches almost every day in the news these days. New regulations, such as GDPR, require companies to disclose data breaches within 72 hours of becoming aware. Becoming aware of and identifying data breaches as they happen, however, is not an easy task. It is often challenging for companies to become aware of their own data breaches and losses well-before they get picked up by the media.</p>
@@ -32,7 +32,7 @@
 	<p>In the example above, we are looking for a string that clearly should never be leaked. However, in some cases, it may be possible that you are looking to detect data that is valid for your application to respond with, but you still want to rate limit the number of times it is being accessed.</p>
 	<p>Cloudflare Rate Limiting allows you to create Rate Limiting rules based on response headers and response status codes.</p>
 	<p>By defining the rule below, and setting the X-Rate-Limiting response header to true, we can make sure each IP can only access this data once per minute:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-27-at-11.25.48-AM.png" alt="Screen-Shot-2018-08-27-at-11.25.48-AM"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-27-at-11.25.48-AM.png" alt="Screen-Shot-2018-08-27-at-11.25.48-AM" loading="lazy"></p>
 	<p>Adding the header in the Worker:</p>
 	<pre><code class="language-javascript">response = new Response(body, {status: response.status, headers: new Headers({'X-Rate-Limiting': true}})
 </code></pre>
@@ -134,7 +134,7 @@ async function createPagerDutyIncident(event) {
 </code></pre>
 	<h3 id="conclusion">Conclusion</h3>
 	<p>Cloudflare Workers give you full control over each request and response that flows through Cloudflare. Being able to inspect the body of the response means that you can identify, alert and modify content sent back by your origin, and thus use Workers for things such as data loss prevention.</p>
-	<p>You can check out more uses and recipes for Workers <a href="https://developers.cloudflare.com/workers/recipes/" target="_blank">here</a>.</p>
+	<p>You can check out more uses and recipes for Workers <a href="https://developers.cloudflare.com/workers/recipes/?ref=blog.cloudflare.com" target="_blank">here</a>.</p>
 	<p>As always, we would love to hear what you are doing with Workers.</p>
 	<!--kg-card-end: markdown-->
 </div>

@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/API-tokens@2x.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/API-tokens@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="cloudflare-api">CloudflareのAPI</h2>
-	<p>Cloudflareは本日、Cloudflare APIで使用するスケーラブルで安全性の高いAPIトークンの一般提供を発表します。Cloudflareは、より良いインターネットの実現を目指し、エッジにおける顧客のプレゼンスの管理の簡素化に努めています。その方法の1つが、当社のすべての製品とサービスをAPIで構成可能にすることです。パートナーから企業、開発者まで、さまざまなお客様がCloudflareの管理を自動化したいと考えています。自動化は、<a href="https://api.cloudflare.com/" target="_blank">APIを直接</a>経由して行われる場合と、当社も維持に関わっている<a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">Terraform provider</a>や<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Go library</a>などのオープンソースソフトウェアを経由する場合があります。Cloudflareの管理を自動化されるお客様にとって、Cloudflareサービスを可能な限りセキュアに維持できることが重要です。</p>
+	<p>Cloudflareは本日、Cloudflare APIで使用するスケーラブルで安全性の高いAPIトークンの一般提供を発表します。Cloudflareは、より良いインターネットの実現を目指し、エッジにおける顧客のプレゼンスの管理の簡素化に努めています。その方法の1つが、当社のすべての製品とサービスをAPIで構成可能にすることです。パートナーから企業、開発者まで、さまざまなお客様がCloudflareの管理を自動化したいと考えています。自動化は、<a href="https://api.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">APIを直接</a>経由して行われる場合と、当社も維持に関わっている<a href="https://www.terraform.io/docs/providers/cloudflare/?ref=blog.cloudflare.com" target="_blank">Terraform provider</a>や<a href="https://github.com/cloudflare/cloudflare-go?ref=blog.cloudflare.com" target="_blank">Cloudflare-Go library</a>などのオープンソースソフトウェアを経由する場合があります。Cloudflareの管理を自動化されるお客様にとって、Cloudflareサービスを可能な限りセキュアに維持できることが重要です。</p>
 	<h2 id="-">最低限の権限とそれが重要な理由</h2>
-	<p>ソフトウェアシステムのセキュリティ保護は困難な仕事です。ソフトウェアの実行範囲を制限することは、間違いや悪意ある行為による影響の拡大を防ぐ良い防御法です。<a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank">最小権限の原則</a>は、任意のシステムで動作を実行するために必要なアクセス数の指針として役立ちます。これはJerome Saltzerが提唱した、「すべてのプログラムとシステムのすべての権限を持つユーザーが行使する権限は、ジョブ実行のために必要な最小数でなければならない」という原則です。 Cloudflareの場合は、多くのお客様が様々なドメインを持ち、多様なサービスを活用してトラフィックをルーティングしています。悪意ある人がシステムに不正にアクセスした場合、この人はシステムが持つ全てのアクセスを利用することができ、さらなる損害や情報盗難につながります。</p>
+	<p>ソフトウェアシステムのセキュリティ保護は困難な仕事です。ソフトウェアの実行範囲を制限することは、間違いや悪意ある行為による影響の拡大を防ぐ良い防御法です。<a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege?ref=blog.cloudflare.com" target="_blank">最小権限の原則</a>は、任意のシステムで動作を実行するために必要なアクセス数の指針として役立ちます。これはJerome Saltzerが提唱した、「すべてのプログラムとシステムのすべての権限を持つユーザーが行使する権限は、ジョブ実行のために必要な最小数でなければならない」という原則です。 Cloudflareの場合は、多くのお客様が様々なドメインを持ち、多様なサービスを活用してトラフィックをルーティングしています。悪意ある人がシステムに不正にアクセスした場合、この人はシステムが持つ全てのアクセスを利用することができ、さらなる損害や情報盗難につながります。</p>
 	<p>APIトークンの機能が、この最小権限の原則にどのようにあてはまるのかを見ていきましょう。</p>
 	<h2 id="api-"><strong>APIトークンについて</strong></h2>
 	<p>APIトークンには、主に次の3つの機能があります。</p>
@@ -21,35 +21,35 @@
 	<p>複数のサービスの保護や高速化にCloudflareを使用する場合、CloudflareのAPIの変更は、異なるサーバーやVM、コンテナ、workerから行うことになります。サービスごとにAPIトークンを作成できるということは、各サービスは互いの変更に対して隔離された関係にあることを意味します。1つのAPIトークンがリークしたりローリングが必要になった場合にも、他のサービスのAPIトークンには影響しません。また、前述の機能は、各サービスに必要なアクションとリソースを正確にスコープ設定できることを意味します。これによりお客様は、APIによってCloudflareにアクセスする際に最小権限をより正しく実践することができます。</p>
 	<p>次に、APIトークンの作成および使用方法について説明します。</p>
 	<h2 id="api--1"><strong>APIトークンの使用</strong></h2>
-	<p>最初のAPIトークンを作成するには、次のユーザープロファイルの、「API Tokens」セクションに移動します。<a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">dash.cloudflare.com/profile/api-tokens</a></p>
+	<p>最初のAPIトークンを作成するには、次のユーザープロファイルの、「API Tokens」セクションに移動します。<a href="https://dash.cloudflare.com/profile/api-tokens?ref=blog.cloudflare.com" target="_blank">dash.cloudflare.com/profile/api-tokens</a></p>
 	<p>1.このページには、グローバルAPIキーとオリジンのCAのキーに加え、すべてのAPIトークンのリストも表示されます。</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_1_delay.gif" class="kg-image">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_1_delay.gif" class="kg-image" alt="" loading="lazy">
 		<figcaption>APIトークンの使い方 - トークンの作成</figcaption>
 	</figure>
 	<p>最初のAPIトークンを作成するには、「Create Token（トークンの作成）」を選択します。</p>
 	<hr>
 	<p>2.作成画面には、トークンを作成する方法が2つあります。「Custom（カスタム）」オプションを使用して最初から作成することも、「Start with a template（テンプレートから開始）」を選択して定義済みのテンプレートから開始することもできます。</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_2_delay.gif" class="kg-image">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_2_delay.gif" class="kg-image" alt="" loading="lazy">
 		<figcaption>APIトークンテンプレートの選択</figcaption>
 	</figure>
 	<p>この場合、「Edit zone DNS（ゾーンDNSの編集）」テンプレートを使用して、単一ゾーンのDNSレコードを編集できるAPIトークンを作成します。</p>
 	<hr>
 	<p>3.テンプレートを選択したら、スコープを設定するAPIトークンのゾーンを選択する必要があります。DNS編集権限が既に事前に選択されていることにご留意ください。</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_3_delay.gif" class="kg-image">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_3_delay.gif" class="kg-image" alt="" loading="lazy">
 		<figcaption>トークンがDNSを制御できるゾーンの指定</figcaption>
 	</figure>
 	<p>この場合、APIトークンがDNSレコードを編集できるCloudflareゾーンとして「garrettgalow.com」が選択されています。</p>
 	<hr>
 	<p>4.サマリーに進むを選択すると、選択内容を確認する機会が与えられます。この場合、リソースとアクセス許可はきわめて単純ですが、ここで作成前にAPIトークンに正しい数の権限を与えていることを確認することができます。</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_4_delay.gif" class="kg-image">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_4_delay.gif" class="kg-image" alt="" loading="lazy">
 		<figcaption>トークンの概要 - 確認</figcaption>
 	</figure>
 	<hr>
 	<p>5.作成されると、APIトークンが表示されます。この画面にしか表示されませんので、必ず安全な場所にこのシークレット情報を保管するようにしてください。このシークレットを持っている人は、リソースに許可されている操作を実行できるため、パスワード同様に保護してください。次のスクリーンショットでは、当然ながらシークレットは黒塗りにしています。このシークレットをうっかり紛失した場合でも、APIトークンテーブルから再生成することができますので、再度すべての許可を設定する必要はありません。</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_5_success.png" class="kg-image">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_5_success.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>トークンシークレットを使用したトークン作成の完了画面</figcaption>
 	</figure>
-	<p>シークレットに加えて、この画面には、トークンが正常に作成されたことを確認するために使用できる、curl要求の例が表示されます。また、直接HTTP要求に対してトークンを使用する方法の例も示されます。APIトークンは、<a href="https://tools.ietf.org/html/rfc6750#section-2.1" target="_blank">RFC Authorization Bearer標準</a>に基づいています。このAPIを呼び出すと、トークンが有効でアクティブであることを示す正常な応答が表示されます。</p>
+	<p>シークレットに加えて、この画面には、トークンが正常に作成されたことを確認するために使用できる、curl要求の例が表示されます。また、直接HTTP要求に対してトークンを使用する方法の例も示されます。APIトークンは、<a href="https://tools.ietf.org/html/rfc6750?ref=blog.cloudflare.com#section-2.1" target="_blank">RFC Authorization Bearer標準</a>に基づいています。このAPIを呼び出すと、トークンが有効でアクティブであることを示す正常な応答が表示されます。</p>
 	<pre><code class="language-js">~$ curl -X GET "https://api.cloudflare.com/client/v4/user/tokens/verify" \
 &gt;      -H "Authorization: Bearer vh9awGupxxxxxxxxxxxxxxxxxxx" \
 &gt;      -H "Content-Type:application/json" | jq
@@ -70,6 +70,6 @@
   ]
 }</code></pre>
 	<h2 id="--1"><strong>今後の予定</strong></h2>
-	<p>Cloudflare APIを使用しているユーザーには、前身のAPIキーからAPIトークン使用に移行されることをおすすめします。今回の発表をもって、当社は<a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">Terraformプロバイダー</a>、<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Goライブラリ</a>、および<a href="https://github.com/cloudflare/Cloudflare-WordPress" target="_blank">WordPressプラグイン</a>をすべて、APIトークン互換にアップデートします。他のライブラリにも間もなく更新が届きます。お客様が安全に移行できるように、APIトークンとAPIキーの両方が当分サポートされます。APIトークンには、トークン使用手順や使用時の安全性をより強化するための機能の追加を予定していますので、今後の発表にご期待ください。</p>
-	<p>ご意見や、APIのセキュリティに今後期待されることなど、<a href="https://community.cloudflare.com/" target="_blank">Cloudflareコミュニティ</a>までお寄せください。</p>
+	<p>Cloudflare APIを使用しているユーザーには、前身のAPIキーからAPIトークン使用に移行されることをおすすめします。今回の発表をもって、当社は<a href="https://www.terraform.io/docs/providers/cloudflare/?ref=blog.cloudflare.com" target="_blank">Terraformプロバイダー</a>、<a href="https://github.com/cloudflare/cloudflare-go?ref=blog.cloudflare.com" target="_blank">Cloudflare-Goライブラリ</a>、および<a href="https://github.com/cloudflare/Cloudflare-WordPress?ref=blog.cloudflare.com" target="_blank">WordPressプラグイン</a>をすべて、APIトークン互換にアップデートします。他のライブラリにも間もなく更新が届きます。お客様が安全に移行できるように、APIトークンとAPIキーの両方が当分サポートされます。APIトークンには、トークン使用手順や使用時の安全性をより強化するための機能の追加を予定していますので、今後の発表にご期待ください。</p>
+	<p>ご意見や、APIのセキュリティに今後期待されることなど、<a href="https://community.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflareコミュニティ</a>までお寄せください。</p>
 </div>
