@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-31.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-31.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>오늘, 최종 사용자 브라우저에서의 공격을 감지하는 데 이용할 수 있는 클라이언트측 보안 제품인 Page Shield를 출시하게 되어 기쁘게 생각합니다.</p>
-	<p>2015년부터 해커 집단 <a href="https://sansec.io/what-is-magecart" target="_blank">Magecart</a>는 악성 코드로 제3자 종속성을 감염시켜 온라인 상점에서 결제 자격 증명을 탈취했습니다. 감염 코드는 최종 사용자 브라우저에서 요청되며 그곳에서 웹 페이지의 사용자 정보를 실행 및 액세스하게 됩니다. 감염 코드는 정보를 입수한 후 해커들에게 보내게 되고, 해커들은 정보를 재판매하거나 신용 카드 사기 및 ID 도용 등의 추가 공격에 이용합니다.</p>
-	<p>그 이후로 이루어진 <a href="https://en.wikipedia.org/wiki/Supply_chain_attack" target="_blank">공급망 공격</a>의 대상으로는 Ticketmaster, Newegg, British Airways 등이 있었습니다. British Airways 공격은 자체 호스팅 JavaScript 파일 중 하나가 손상된 것에서 비롯되어 500,000건에 이르는 고객 데이터가 해커에게 노출되고 말았습니다. 이 공격의 결과로 GDPR 벌금이 부과되었으며 <a href="https://www.bloomberg.com/news/articles/2021-01-12/british-airways-faces-biggest-class-action-suit-over-data-breach" target="_blank">영국 역사상 가장 큰 규모의 개인정보 집단 소송이 이루어졌습니다</a>. 총 수백만 명의 사용자가 이 공격으로 영향을 받았습니다.</p>
+	<p>2015년부터 해커 집단 <a href="https://sansec.io/what-is-magecart?ref=blog.cloudflare.com" target="_blank">Magecart</a>는 악성 코드로 제3자 종속성을 감염시켜 온라인 상점에서 결제 자격 증명을 탈취했습니다. 감염 코드는 최종 사용자 브라우저에서 요청되며 그곳에서 웹 페이지의 사용자 정보를 실행 및 액세스하게 됩니다. 감염 코드는 정보를 입수한 후 해커들에게 보내게 되고, 해커들은 정보를 재판매하거나 신용 카드 사기 및 ID 도용 등의 추가 공격에 이용합니다.</p>
+	<p>그 이후로 이루어진 <a href="https://en.wikipedia.org/wiki/Supply_chain_attack?ref=blog.cloudflare.com" target="_blank">공급망 공격</a>의 대상으로는 Ticketmaster, Newegg, British Airways 등이 있었습니다. British Airways 공격은 자체 호스팅 JavaScript 파일 중 하나가 손상된 것에서 비롯되어 500,000건에 이르는 고객 데이터가 해커에게 노출되고 말았습니다. 이 공격의 결과로 GDPR 벌금이 부과되었으며 <a href="https://www.bloomberg.com/news/articles/2021-01-12/british-airways-faces-biggest-class-action-suit-over-data-breach?ref=blog.cloudflare.com" target="_blank">영국 역사상 가장 큰 규모의 개인정보 집단 소송이 이루어졌습니다</a>. 총 수백만 명의 사용자가 이 공격으로 영향을 받았습니다.</p>
 	<p>조직 내에서 보안 코드를 작성한다는 것은 타사 공급자를 생각하지 않더라도 쉽지 않은 일입니다. 많은 SaaS 플랫폼에서 수백만 개의 사이트로 제3자 코드를 제공하기 때문에 단 하나의 손상만으로도 엄청난 결과가 초래될 수 있습니다. Page Shield는 고객이 이러한 잠재적 공격 벡터를 모니터링하는 것을 지원하고 기밀인 사용자 정보가 해커의 손에 들어가는 것을 방지합니다.</p>
 	<p>이번 주 초에 <a href="https://blog.cloudflare.com/browser-isolation-for-teams-of-all-sizes/">우리는 모두를 위한 원격 브라우저 격리 서비스를 발표했습니다</a>. 이는 직원들의 브라우저에서 이루어지는 클라이언트 측 공격을 완화하기 위함입니다. Page Shield는 클라이언트 측 보안을 위한 Cloudflare의 노력을 계속하여 여러분의 고객을 겨냥한 공격의 완화를 돕고 있습니다.</p>
 	<h3 id="-">배경</h3>
@@ -17,11 +17,11 @@
 	<h3 id="--1">스크립트 모니터는 어떻게 작동할까요?</h3>
 	<p>Cloudflare는 응용 프로그램 원본 서버와 최종 사용자 사이에서 독특한 위치를 점하고 있기 때문에 응답이 최종 사용자에게 이르기 전에 그 응답을 수정할 수 있습니다. 이 경우 Cloudflare는 페이지가 에지를 통과할 때 CSP 보고 전용이라는 헤더를 추가합니다. JavaScript 파일이 해당 페이지에서 실행되려 하면 브라우저가 다시 Cloudflare에 보고합니다. 보고 전용 헤더를 사용하기 때문에 응용 프로그램 소유자가 관련 인사이트에 대하여 허용 목록을 관리할 필요가 없습니다.</p>
 	<p>Cloudflare에서는 각각의 보고를 검토하면서 JavaScript 파일을 해당 영역의 기록된 종속성과 비교하여 새로운 파일인지 여부를 확인합니다. 새로운 파일인 경우 경보를 발동하여 해당 변화가 예상된 것인지 여부를 조사하여 판단할 수 있도록 합니다.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-40.png" class="kg-image" alt="The Script Monitor UI located under Firewall -> Page Shield">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-40.png" class="kg-image" alt="The Script Monitor UI located under Firewall -> Page Shield" loading="lazy">
 		<figcaption>방화벽 아래 위치한 Script Monitor UI -&gt; Page Shield</figcaption>
 	</figure>
 	<p>베타 서비스 참여자는 영역 대시보드의 방화벽 섹션 아래 Page Shield 탭을 볼 수 있습니다. 그곳에서 자기 영역의 JavaScript 종속성을 추적하는 스크립트 모니터 테이블을 찾을 수 있습니다. 각각의 종속성에 대하여 처음 발견된 날짜, 마지막으로 발견된 날짜, 감지된 호스트 도메인을 볼 수 있습니다.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-34.png" class="kg-image" alt="Email notification example for new JavaScript dependencies found">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-34.png" class="kg-image" alt="Email notification example for new JavaScript dependencies found" loading="lazy">
 		<figcaption>발견된 새 JavaScript 종속성에 대한 이메일 알림 예시</figcaption>
 	</figure>
 	<p>또한 대시보드에서 스크립트 모니터 알림을 구성할 수도 있습니다. 이 알림은 사이트에서 새로운 JavaScript 파일을 요청할 때마다 이메일이나 PagerDuty로 경보를 보냅니다.</p>
@@ -31,5 +31,5 @@
 	<p>코드 변화 감지 기능 다음으로는 JavaScript 파일에 대한 지능형 분석 기능을 선보일 것입니다. 물론 종속성에 변화가 생길 때 응용 프로그램 소유자에게 경보를 보냄으로써 관심 파일에 대한 인사이트를 제공할 수 있기는 하지만, 더 좋은 기능도 가능합니다. Cloudflare는 보안 파트너와 협업하여 Magecart JavaScript의 샘플을 얻었고 악의적 JavaScript 샘플을 정확히 분류할 수 있음을 입증했습니다. 이러한 기술을 더욱 개선하여 Page Shield 고객의 종속성이 악성이라는 판단이 들 때 경보를 보낼 수 있는 수준까지 올릴 계획입니다.</p>
 	<p>Cloudflare는 고객과의 대화를 통해 CSP 허용 목록 관리가 운영 측면에서 쉽지 않다는 사실을 이해하고 있습니다. 새로운 클라이언트 측 JavaScript가 허용 목록에 추가되지 않은 채로 배포될 경우 해당 새 코드는 브라우저에 의해 차단됩니다. 그래서 Cloudflare는 역방향 프록시로서의 위치를 활용하여 부정적 보안 모델 차단 기능을 배포하려 합니다. 이를 통해 응용 프로그램 소유자는 허용 목록을 관리하지 않고도 개별 스크립트를 차단할 수 있으며, 고객은 번거로운 간접비용 없이 새 코드를 배포할 수 있습니다.</p>
 	<h3 id="--3">베타 버전 등록</h3>
-	<p>오늘부터 모든 Business 및 Enterprise 요금제 고객은 <a href="https://www.cloudflare.com/waf/page-shield/" target="_blank">여기</a>에서 등록하여 Page Shield의 비공개 베타 서비스에 참여할 수 있습니다. 베타 서비스에 참여함으로써 고객은 스크립트 모니터 기능을 활성화하고 사이트의 JavaScript 모니터링을 시작할 수 있습니다.</p>
+	<p>오늘부터 모든 Business 및 Enterprise 요금제 고객은 <a href="https://www.cloudflare.com/waf/page-shield/?ref=blog.cloudflare.com" target="_blank">여기</a>에서 등록하여 Page Shield의 비공개 베타 서비스에 참여할 수 있습니다. 베타 서비스에 참여함으로써 고객은 스크립트 모니터 기능을 활성화하고 사이트의 JavaScript 모니터링을 시작할 수 있습니다.</p>
 </div>

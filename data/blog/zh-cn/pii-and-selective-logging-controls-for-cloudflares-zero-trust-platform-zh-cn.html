@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-18.png" class="kg-image" alt="Introducing PII and Selective Logging controls for Cloudflare’s Zero Trust platform"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-18.png" class="kg-image" alt="Introducing PII and Selective Logging controls for Cloudflare’s Zero Trust platform" loading="lazy"></figure>
 	<p>在 Cloudflare，我们认为您可安全性和隐私兼得。去年我们发布了 Cloudflare Gateway—这是一款全面的安全 Web 网关，可为您的组织提供内置的 Zero Trust 浏览控制。今天，我们很高兴与大家分享最新的一套隐私功能，管理员可借此根据团队的需要对时间进行记录和审核。</p>
 	<h3 id="-"><strong>保护您的组织</strong></h3>
 	<p>Cloudflare Gateway 帮助企业取代传统的防火墙，同时也帮助其用户执行 Zero Trust 控制。无论您的用户在哪里，该网关都能满足您的各种要求，都能将其连接到互联网，甚至是在运行 Cloudflare 上运行的私有网络。这扩大了安全范围，您也无需购买或维护任何额外的硬件盒子。</p>
@@ -15,16 +15,16 @@
 	<p>我们依然记得，有些客户希望同时减少存储的日志，我们也乐于助其解决这个问题。现在，管理员可以选择 Cloudflare 将代表其存储日志的级别。他们可以对每个组件、DNS、网络或 HTTP 进行控制，甚至可以选择仅限记录屏蔽事件。</p>
 	<p>该设置并不意味着您将失去所有的日志—仅意味着 Cloudflare 不会再存储这些日志。选择性日志记录与我们之前发布的 <a href="https://blog.cloudflare.com/export-logs-from-cloudflare-gateway-with-logpush/">Logpush 服务</a>相结合 ，允许用户停止在 Cloudflare 上存储日志，并在其选择的目的地和地点开启 Logpush 作业。</p>
 	<h3 id="--2"><strong>如何开始</strong></h3>
-	<p>若要开始使用，任何 Cloudflare Gateway 客户都可访问 <a href="https://dash.cloudflare.com/login?login_challenge=b0ebad462fa346de838dc2f4d4f8477f" target="_blank">Cloudflare for Teams 仪表板</a>并导航到“设置 &gt; 网络”。本页的第一个选项是指定活动记录的首选项。默认情况下，Gateway 将记录所有事件，包括 DNS 查询、HTTP 请求和网络会话。在网络设置页面，您随后可以完善要记录的事件类型。您将发现，Gateway 的每个组件都有三个选项：</p>
+	<p>若要开始使用，任何 Cloudflare Gateway 客户都可访问 <a href="https://dash.cloudflare.com/login?login_challenge=b0ebad462fa346de838dc2f4d4f8477f&amp;ref=blog.cloudflare.com" target="_blank">Cloudflare for Teams 仪表板</a>并导航到“设置 &gt; 网络”。本页的第一个选项是指定活动记录的首选项。默认情况下，Gateway 将记录所有事件，包括 DNS 查询、HTTP 请求和网络会话。在网络设置页面，您随后可以完善要记录的事件类型。您将发现，Gateway 的每个组件都有三个选项：</p>
 	<ol>
 		<li>全部捕获</li>
 		<li>仅捕获受屏蔽数据</li>
 		<li>不捕获</li>
 	</ol>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-10.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>此外，还有在默认情况下可编辑日志中所有 PII 的选项。该选项可编辑任何用于识别用户的信息，包括用户名、用户电子邮件、用户 ID、设备 ID、源 IP、URL、推荐者和用户代理。</p>
-	<p>我们还在 <a href="https://dash.cloudflare.com/" target="_blank">Cloudflare 仪表板</a>中加入了新功能，以便在对管理员访问 Access 或 Gateway 组件进行分区时，提供更好的细粒度。这些新功能将于 2022 年 1 月启用，可通过访问“账户主页 → 成员”对企业账户进行修改。</p>
-	<p>如果您还没有准备好创建账户，但却想了解我们的 Zero Trust 服务，<a href="https://www.cloudflare.com/teams/self-guided-tour-of-zero-trust-platform/" target="_blank">请查看我们的交互式演示</a>。您可以通过对关键用例的讲解，自行对平台有一个大概的了解，包括用 Cloudflare Gateway 设置 DNS 和 HTTP 过滤。</p>
+	<p>我们还在 <a href="https://dash.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare 仪表板</a>中加入了新功能，以便在对管理员访问 Access 或 Gateway 组件进行分区时，提供更好的细粒度。这些新功能将于 2022 年 1 月启用，可通过访问“账户主页 → 成员”对企业账户进行修改。</p>
+	<p>如果您还没有准备好创建账户，但却想了解我们的 Zero Trust 服务，<a href="https://www.cloudflare.com/teams/self-guided-tour-of-zero-trust-platform/?ref=blog.cloudflare.com" target="_blank">请查看我们的交互式演示</a>。您可以通过对关键用例的讲解，自行对平台有一个大概的了解，包括用 Cloudflare Gateway 设置 DNS 和 HTTP 过滤。</p>
 	<h3 id="--3"><strong>下一步</strong></h3>
-	<p>展望未来，我们很高兴能继续增添越来越多的隐私功能，让您和您的团队能实现对环境更精细的粒度控制。今天公布的功能适用于任何计划的用户；您的团队可访问链接以<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">立即开始使用</a>。</p>
+	<p>展望未来，我们很高兴能继续增添越来越多的隐私功能，让您和您的团队能实现对环境更精细的粒度控制。今天公布的功能适用于任何计划的用户；您的团队可访问链接以<a href="https://dash.cloudflare.com/sign-up/teams?ref=blog.cloudflare.com" target="_blank">立即开始使用</a>。</p>
 </div>

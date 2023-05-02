@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-62.png" class="kg-image" alt="How Cloudflare instruments services using Workers Analytics Engine"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-62.png" class="kg-image" alt="How Cloudflare instruments services using Workers Analytics Engine" loading="lazy"></figure>
 	<p>Workers Analytics Engine 是<a href="https://blog.cloudflare.com/workers-analytics-engine/">今年早些时候宣布的</a>一个新工具，帮助开发人员和产品团队构建关于任何事物的时间序列分析，具有高维度、高基数和轻松扩展的特性。我们为团队构建了 Analytics Engine，以深入了解团队在 Workers 中运行的代码，向终端客户提供分析，甚至构建基于使用量的计费方式。</p>
 	<p>本篇博客文章将介绍我们如何使用 Analytics Engine 来构建 Analytics Engine。我们使用 Analytics Engine 本身检测了我们自己的 Analytics Engine SQL API，并使用这些数据来发现错误，确定新增产品功能的优先顺序。希望这可以给其他正在想办法测量自己产品和收集反馈的团队一些启发。</p>
 	<h3 id="-analytics-engine-">我们为什么需要 Analytics Engine？</h3>
-	<p>使用 Analytics Engine，<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/" target="_blank">只需几行代码</a>就能从 Workers 生成事件（或“数据点”）。您可以使用 GraphQL 或 <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/" target="_blank">SQL API</a> 查询这些事件，并创建关于业务或技术栈的有用见解。更多关于如何开始使用 Analytics Engine 的信息，请查阅我们的<a href="https://developers.cloudflare.com/analytics/analytics-engine/" target="_blank">开发人员文档</a>。</p>
+	<p>使用 Analytics Engine，<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/?ref=blog.cloudflare.com" target="_blank">只需几行代码</a>就能从 Workers 生成事件（或“数据点”）。您可以使用 GraphQL 或 <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/?ref=blog.cloudflare.com" target="_blank">SQL API</a> 查询这些事件，并创建关于业务或技术栈的有用见解。更多关于如何开始使用 Analytics Engine 的信息，请查阅我们的<a href="https://developers.cloudflare.com/analytics/analytics-engine/?ref=blog.cloudflare.com" target="_blank">开发人员文档</a>。</p>
 	<p>自 9 月份发布了 <a href="https://blog.cloudflare.com/zh-cn/analytics-engine-open-beta-zh-cn/">Analytics Engine 公测版</a>以来，我们一直在根据开发人员的反馈快速添加新功能。然而，我们在产品可见性方面存在两大空白。</p>
 	<p>首先，我们的工程团队需要回答经典的可观察性问题，例如：我们收到了多少请求，其中有多少请求导致了错误，这些错误的性质如何，等等。他们需要既能查看汇总数据（例如平均错误率，或 P99 响应时间），又能深入研究单个事件。</p>
 	<p>第二，由于是新推出的产品，我们还在寻找产品见解。通过检测 SQL API，我们可以了解客户编写的查询、发现的错误，这有助于我们确定所缺功能的优先顺序。</p>
@@ -12,34 +12,34 @@
 	<h2 id="-sql-api-">为我们的 SQL API 添加工具</h2>
 	<p>Analytics Engine 的 SQL API 让您可以使用与普通数据库相同的方式查询事件数据。几十年来，SQL 一直是数据查询最常用的语言。我们希望提供一个界面，让您能够立即开始就您的数据提问，而不必学习新的查询语言。</p>
 	<p>我们的 SQL API 解析、转换并验证用户的 SQL 查询，然后在后端数据库服务器执行。然后，我们将查询信息写入 Analytics Engine，以便我们可以运行自己的 Analytics。</p>
-	<p>从 Cloudflare Worker 向 Analytics Engine 写入数据非常简单，<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/" target="_blank">我们在文档中也介绍过</a>。我们检测 SQL API 的方式与用户相同，这段代码摘要展示了我们写入 Analytics Engine 的数据。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon--3--1.png" class="kg-image"></figure>
+	<p>从 Cloudflare Worker 向 Analytics Engine 写入数据非常简单，<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/?ref=blog.cloudflare.com" target="_blank">我们在文档中也介绍过</a>。我们检测 SQL API 的方式与用户相同，这段代码摘要展示了我们写入 Analytics Engine 的数据。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon--3--1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>这些数据现在存储在 Analytics Engine 中，我们可以就报告的每个字段提取见解。</p>
 	<h2 id="-">查询见解</h2>
 	<p>将我们的 Analytics 存入 SQL 数据库中，您可以自由地编写您可能想要的任何查询。与使用通常为预定义和特定目的的指标相比，您可以定义任何想要的自定义数据集，并轻松质询您的数据，以提出新的问题。</p>
-	<p>我们需要支持包括数万亿数据点的数据集。为实现这一目标，我们实施了名为<a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/">自适应比特率</a> (ABR) 的抽样方法。实施 ABR 方法时，如果数据量很大，您的查询可能会返回被抽样的事件，以便在合理时间内作出响应。如果数据量比较常规，Analytics Engine 将查询您的所有数据。您便可运行任何想要的查询，且仍在短时间内得到响应。现在，您必须<a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/#sampling" target="_blank">考虑抽样的查询方式</a>，但我们还在探索自动抽样。</p>
-	<p>可用任何数据可视化工具将您的 Analytics 可视化。在 Cloudflare，我们大力使用 Grafana（<a href="https://developers.cloudflare.com/analytics/analytics-engine/grafana/" target="_blank">您也可以！</a>）。这对可观察性用例特别有用。</p>
+	<p>我们需要支持包括数万亿数据点的数据集。为实现这一目标，我们实施了名为<a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/">自适应比特率</a> (ABR) 的抽样方法。实施 ABR 方法时，如果数据量很大，您的查询可能会返回被抽样的事件，以便在合理时间内作出响应。如果数据量比较常规，Analytics Engine 将查询您的所有数据。您便可运行任何想要的查询，且仍在短时间内得到响应。现在，您必须<a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/?ref=blog.cloudflare.com#sampling" target="_blank">考虑抽样的查询方式</a>，但我们还在探索自动抽样。</p>
+	<p>可用任何数据可视化工具将您的 Analytics 可视化。在 Cloudflare，我们大力使用 Grafana（<a href="https://developers.cloudflare.com/analytics/analytics-engine/grafana/?ref=blog.cloudflare.com" target="_blank">您也可以！</a>）。这对可观察性用例特别有用。</p>
 	<h3 id="--1">观察查询响应时间</h3>
 	<p>我们注意到有个查询为我们提供了后端数据库集群性能的相关信息。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-45.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-45.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>如图所示，99 分位（对应执行最复杂的 1% 的查询）有时会飙升到 300ms 左右。我们后端对查询的平均响应时间在 100ms 内。</p>
 	<p>这种可视化本身是由 SQL 查询生成的。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon--2-.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon--2-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--2">从高基数数据中了解客户见解</h3>
 	<p>Analytics Engine 的另一个用途是，从客户行为中提取见解。我们的 SQL API 特别适合于此，因为您可以充分利用 SQL 的力量。借助 ABR 技术，也可以针对超大型数据集进行超出阈值的查询。</p>
 	<p>我们使用这种能力来帮助确定 Analytics Engine 各方面改进的优先顺序。我们的 SQL API 支持非常标准的 SQL 方言，但功能还不完善。如果用户在 SQL 查询中尝试一些不支持的操作，他们会得到一条结构化的错误消息。错误信息会报告到 Analytics Engine 中。我们能够汇总客户遇到的各种错误，帮助确定下一步需要优先考虑哪些功能。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-36.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-36.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>SQL API 返回错误的格式是：<code>type of error: more details</code>，我们可以从冒号前的内容得知错误类型。我们按错误类型分组，就可以知道这种错误发生了多少次，波及多少用户。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Screenshot-2022-11-18-at-08.33.57.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Screenshot-2022-11-18-at-08.33.57.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>为了使用普通的指标系统执行上述查询，我们需要使用不同的指标来表示每种错误类型。从每项微服务中报告那么多指标会带来可扩展性方面的挑战。Analytics Engine 不会出现这个问题，因为它专为处理高基数数据而设计。</p>
 	<p>Analytics Engine 这样的高基数存储库的另一大优势是，您可以深入挖掘具体细节。如果 SQL 错误大量激增，我们可能想找出哪些客户面临问题，以便帮助或确定他们想使用什么功能。这可通过另一个 SQL 查询轻松实现：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon-3.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>在 Cloudflare 内部，我们历来依靠查询后端数据库服务器来获取此类信息。Analytics Engine 的 SQL API 让我们能够向客户开放我们的技术，让他们可以轻松收集任何规模的服务见解！</p>
 	<h2 id="--3">结论和下一步工作</h2>
-	<p>我们收集的 SQL API 使用见解对产品优先级决策非常有用。我们已经添加了对上述可视化中使用的 <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/" target="_blank"><code>substring</code> 和 <code>position</code> 函数的支持</a>。</p>
+	<p>我们收集的 SQL API 使用见解对产品优先级决策非常有用。我们已经添加了对上述可视化中使用的 <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/?ref=blog.cloudflare.com" target="_blank"><code>substring</code> 和 <code>position</code> 函数的支持</a>。</p>
 	<p>仔细观察顶层 SQL 错误，我们可以看到许多与选择列有关的错误。这些错误主要来自与 Grafana 插件有关的一些可用性问题。增加对 DESCRIBE 函数的支持应该可以缓解这个问题，因为没有这项支持，Grafana 插件就无法理解表的结构。这项支持以及对 Grafana 插件的其他改进都在我们的计划之中。</p>
 	<p>我们还可以看到，用户在尝试查询不再存在的较旧数据的时间范围。这表明，我们的客户可能希望延长数据的保留时间。最近，我们将保留时间从 31 天延长为 92 天，我们将持续关注这一问题，看看是否应该提供进一步延长。</p>
 	<p>我们发现许多错误与常见错误有关，或是因为对正确的 SQL 语法理解有误。这表明我们可以在文档中提供更好的例子或错误解释，帮助用户解决查询问题。</p>
-	<p>请继续关注我们的<a href="https://developers.cloudflare.com/analytics/analytics-engine/" target="_blank">开发人员文档</a>，及时了解我们的产品迭代和新增功能。</p>
-	<p>您现在就可以开始使用 Workers Analytics Engine！Analytics Engine 现处于公测阶段，可免费保留 90 天。<a href="https://dash.cloudflare.com/?to=/:account/workers/analytics-engine" target="_blank">立即开始使用</a>或<a href="https://discord.gg/cloudflaredev" target="_blank">加入我们的 Discord 社区</a>与团队探讨。<br></p>
+	<p>请继续关注我们的<a href="https://developers.cloudflare.com/analytics/analytics-engine/?ref=blog.cloudflare.com" target="_blank">开发人员文档</a>，及时了解我们的产品迭代和新增功能。</p>
+	<p>您现在就可以开始使用 Workers Analytics Engine！Analytics Engine 现处于公测阶段，可免费保留 90 天。<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fanalytics-engine&amp;ref=blog.cloudflare.com" target="_blank">立即开始使用</a>或<a href="https://discord.gg/cloudflaredev?ref=blog.cloudflare.com" target="_blank">加入我们的 Discord 社区</a>与团队探讨。<br></p>
 </div>

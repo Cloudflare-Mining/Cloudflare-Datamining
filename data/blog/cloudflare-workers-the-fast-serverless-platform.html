@@ -1,26 +1,26 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image5-3.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image5-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Just about four years ago, we announced Cloudflare Workers, a serverless platform that runs directly on the edge.</p>
 	<p>Throughout this week, we will talk about the many ways Cloudflare is helping make applications that already exist on the web faster. But if today is the day you decide to make your idea come to life, building your project on the Cloudflare edge, and deploying it directly to the tubes of the Internet is the best way to guarantee your application will always be fast, for every user, regardless of their location.</p>
 	<p>It’s been a few years <a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda/">since we talked about</a> how Cloudflare Workers compares to other serverless platforms when it comes to performance, so we decided it was time for an update. While most of our work on the Workers platform over the past few years has gone into making the platform more powerful: introducing new features, APIs, storage, debugging and observability tools, performance has not been neglected.</p>
 	<p>Today, <strong>Workers is 30% faster than it was three years ago at P90</strong>. And<strong> it is 210% faster than Lambda@Edge, and 298% faster than Lambda</strong>.</p>
 	<p>Oh, and also, we <a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/">eliminated cold starts</a>.</p>
 	<h3 id="how-do-you-measure-the-performance-of-serverless-platforms">How do you measure the performance of serverless platforms?</h3>
-	<p>I’ve run hundreds of performance benchmarks between CDNs in the past — the formula is simple: we use a tool called <a href="https://www.catchpoint.com/" target="_blank">Catchpoint</a>, which makes requests from nodes all over the world to the same asset, and reports back on the time it took for each location to return a response.</p>
+	<p>I’ve run hundreds of performance benchmarks between CDNs in the past — the formula is simple: we use a tool called <a href="https://www.catchpoint.com/?ref=blog.cloudflare.com" target="_blank">Catchpoint</a>, which makes requests from nodes all over the world to the same asset, and reports back on the time it took for each location to return a response.</p>
 	<p>Measuring serverless performance is a bit different — since the thing you’re comparing is the performance of compute, rather than a static asset, we wanted to make sure all functions performed the same operation.</p>
 	<p>In our 2018 blog on speed testing, we had each function simply return the current time. For the purposes of this test, “serverless” products that were not able to meet the minimum criteria of being able to perform this task were disqualified. Serverless products used in this round of testing executed the same function, of identical computational complexity, to ensure accurate and fair results.</p>
 	<p>It’s also important to note <em>what</em> it is that we’re measuring. The reason performance matters, is because it impacts the experience of actual end customers. It doesn’t matter what the source of latency is: DNS, network congestion, cold starts… the customer doesn’t care what the source is, they care about wasting time waiting for their application to load.</p>
 	<p>It is therefore important to measure performance in terms of the end user experience — end to end, which is why we use global benchmarks to measure performance.</p>
 	<p>The result below shows tests run from 50 nodes all over the world, across North America, South America, Europe, Asia and Oceania. </p>
 	<p>Blue: Cloudflare Workers<br>Red: Lambda@Edge<br>Green: Lambda</p>
-	<p>(<a href="https://p.catchpoint.com/ui/Entry/PC/V/ARLX-C-D-K39F4jZcluZ8gAA" target="_blank">Link to results</a>).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image3-4.png" class="kg-image"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image4-4.png" class="kg-image"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-8.png" class="kg-image"></figure>
+	<p>(<a href="https://p.catchpoint.com/ui/Entry/PC/V/ARLX-C-D-K39F4jZcluZ8gAA?ref=blog.cloudflare.com" target="_blank">Link to results</a>).</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image3-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image4-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-8.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>As you can see from the results, no matter where users are in the world, when it comes to speed, Workers can guarantee the best experience for customers.</p>
 	<p>In the case of Workers, getting the best performance globally requires no additional effort on the developers’ part. Developers do not need to do any additional load balancing, or configuration of regions. Every deployment is instantly live on Cloudflare’s extensive edge network.</p>
 	<p>Even if you’re not seeking to address a global audience, and your customer base is conveniently located on the East coast of the United States, Workers is able to guarantee the fastest response on all requests.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Above, we have the results just from Washington, DC, as close as we could get to us-east-1. And again, without any optimization, Workers is 34% faster.</p>
 	<p>Why is that?</p>
 	<h3 id="what-defines-the-performance-of-a-serverless-platform">What defines the performance of a serverless platform?</h3>
@@ -34,7 +34,7 @@
 	<h3 id="what-makes-workers-so-fast">What makes Workers so fast?</h3>
 	<p>Workers was designed from the ground up for an edge-first serverless model. Since Cloudflare started with a distributed edge network, rather than trying to push compute from large centralized data centers out into the edge, working under those constraints forced us to innovate.</p>
 	<p>In one of our previous blog posts, we’ve discussed how this innovation translated to a new paradigm shift with <a href="https://blog.cloudflare.com/cloud-computing-without-containers/">Workers’ architecture</a> being built on lightweight V8 isolates that can spin up quickly, without introducing a cold start on every request.</p>
-	<p>Not only has running isolates given us advantage out of the box, but as V8 gets better, so does our platform. For example, when <a href="https://v8.dev/blog/liftoff" target="_blank">V8 announced Liftoff</a>, a compiler for WASM, all WASM Workers instantly got faster.</p>
+	<p>Not only has running isolates given us advantage out of the box, but as V8 gets better, so does our platform. For example, when <a href="https://v8.dev/blog/liftoff?ref=blog.cloudflare.com" target="_blank">V8 announced Liftoff</a>, a compiler for WASM, all WASM Workers instantly got faster.</p>
 	<p>Similarly, whenever improvements are made to Cloudflare’s network (for example, when we add new data centers) or stack (e.g., supporting new, faster protocols like HTTP/3), Workers instantly benefits from it.</p>
 	<p>Additionally, we’re always seeking to make improvements to Workers itself to make the platform even faster. For example, last year, we released an improvement that helped <a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/"><em>eliminate</em></a> cold starts for our customers.</p>
 	<p>One key advantage that helps Workers identify and address performance gaps is the scale at which it operates. Today, Workers services hundreds of thousands of developers, ranging from hobbyists to enterprises all over the world, serving millions of requests per second. Whenever we make improvements for a single customer, the entire platform gets faster.</p>
@@ -47,7 +47,7 @@
 	<p>Of course, it’s not just the deployment time itself that’s important, but the efficiency of the full development cycle, which is why <a href="https://blog.cloudflare.com/making-magic-reimagining-developer-experiences-for-the-world-of-serverless/">we’re always seeking to improve it</a> at every step: from sign up to debugging.</p>
 	<h3 id="don-t-just-take-our-word-for-it-">Don’t just take our word for it!</h3>
 	<p>Needless to say, much as we try to remain neutral, we’re always going to be just a little biased. Luckily, you don’t have to take our word for it.</p>
-	<p>We invite you to sign up and deploy <a href="https://workers.cloudflare.com" target="_blank">your first Worker today</a> — it’ll just take a few minutes!</p>
+	<p>We invite you to sign up and deploy <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">your first Worker today</a> — it’ll just take a few minutes!</p>
 	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/d4e0ceda17365978936cfd3f55765557?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

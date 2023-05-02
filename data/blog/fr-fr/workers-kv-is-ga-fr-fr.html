@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
 	<p>Aujourd’hui, nous sommes heureux d’annoncer que Workers KV est mis à votre disposition et est prêt à être utilisé pour la production !</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/sQHNQkFQJgc_PObOxT8oDYlcJVL4mkkG4hu1GABpbeDlTnIXiWNmpUd-8TiVLX39gVNGLcbNkHVRXtYch7EYw8lEQdqES1LBHTrM0noBdbLi2tk6D6KmVewFmw-Lg6xkLWuS9xw" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/sQHNQkFQJgc_PObOxT8oDYlcJVL4mkkG4hu1GABpbeDlTnIXiWNmpUd-8TiVLX39gVNGLcbNkHVRXtYch7EYw8lEQdqES1LBHTrM0noBdbLi2tk6D6KmVewFmw-Lg6xkLWuS9xw" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="qu-est-ce-que-workers-kv"><strong>Qu'est-ce que Workers KV ?</strong></h3>
-	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a> est un magasin largement distribué, voire cohérent, de valeurs clés qui s'étend à la périphérie mondiale de Cloudflare. Il vous permet de stocker des milliards de paires clé-valeur et de les lire avec une latence ultra-faible partout dans le monde. Vous pouvez désormais créer des applications entières avec les performances d'un cache statique CDN.</p>
+	<p><a href="https://www.cloudflare.com/products/workers-kv/?ref=blog.cloudflare.com" target="_blank">Workers KV</a> est un magasin largement distribué, voire cohérent, de valeurs clés qui s'étend à la périphérie mondiale de Cloudflare. Il vous permet de stocker des milliards de paires clé-valeur et de les lire avec une latence ultra-faible partout dans le monde. Vous pouvez désormais créer des applications entières avec les performances d'un cache statique CDN.</p>
 	<h3 id="comment-l-avons-nous-construit"><strong>Comment l'avons-nous construit ?</strong></h3>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a> est une plateforme qui vous permet d'exécuter JavaScript sur la périphérie mondiale de plus de 175 centres de données Cloudflare. Avec seulement quelques lignes de programmation, vous pouvez acheminer des requêtes HTTP, modifier des réponses ou même créer de nouvelles réponses sans serveur d'origine.</p><!--kg-card-begin: markdown-->
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/?ref=blog.cloudflare.com" target="_blank">Workers</a> est une plateforme qui vous permet d'exécuter JavaScript sur la périphérie mondiale de plus de 175 centres de données Cloudflare. Avec seulement quelques lignes de programmation, vous pouvez acheminer des requêtes HTTP, modifier des réponses ou même créer de nouvelles réponses sans serveur d'origine.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// A Worker that handles a single redirect,
 // such a humble beginning...
 addEventListener("fetch", event =&gt; {
@@ -53,14 +53,14 @@ async function handleBillionsOfRedirects(request) {
 	<!--kg-card-end: markdown-->
 	<p>Avec seulement quelques changements par rapport à notre exemple précédent, nous sommes passés d'une redirection à des milliards. Ce n'est qu'un avant-goût de ce que vous pouvez créer avec Workers KV.</p>
 	<h3 id="comment-a-marche"><strong>Comment ça marche ?</strong></h3>
-	<p>Les entrepôts de données répartis sont souvent conçus à l'aide du <a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank">théorème de CAP</a>, qui indique que les systèmes distribués ne peuvent choisir qu'entre 2 des 3 garanties suivantes :</p>
+	<p>Les entrepôts de données répartis sont souvent conçus à l'aide du <a href="https://en.wikipedia.org/wiki/CAP_theorem?ref=blog.cloudflare.com" target="_blank">théorème de CAP</a>, qui indique que les systèmes distribués ne peuvent choisir qu'entre 2 des 3 garanties suivantes :</p>
 	<ul>
 		<li>Cohérence : mes données sont-elles les mêmes partout ?</li>
 		<li>Disponibilité : mes données sont-elles accessibles tout le temps ?</li>
 		<li>Tolérance aux partitions : mes données sont-elles résistantes face aux pannes régionales ?</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/eOY4tWddgCtHQEy0WSMbkERCP9WHaCiyyE4_gjTGpQn2v084rVBWoB97Kuxl2HqFOLTKuZCRaBdk5UBldZW5BPVdm9zmaaO-MvvTWqLoHDrT5xw4ned6cuwM72trXj9fcvRhzWU" class="kg-image"></figure>
-	<p>Workers KV choisit de garantir la disponibilité et la tolérance de partitionnement. Cette combinaison est connue sous le nom de <a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank">cohérence éventuelle</a>, ce qui offre à Workers KV deux avantages concurrentiels uniques :</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/eOY4tWddgCtHQEy0WSMbkERCP9WHaCiyyE4_gjTGpQn2v084rVBWoB97Kuxl2HqFOLTKuZCRaBdk5UBldZW5BPVdm9zmaaO-MvvTWqLoHDrT5xw4ned6cuwM72trXj9fcvRhzWU" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Workers KV choisit de garantir la disponibilité et la tolérance de partitionnement. Cette combinaison est connue sous le nom de <a href="https://en.wikipedia.org/wiki/Eventual_consistency?ref=blog.cloudflare.com" target="_blank">cohérence éventuelle</a>, ce qui offre à Workers KV deux avantages concurrentiels uniques :</p>
 	<ul>
 		<li>Les lectures sont ultra rapides (médiane de 12 ms) car elles sont alimentées par notre technologie de mise en cache.</li>
 		<li>Les données sont disponibles dans plus de 175 centres de données périphériques et résistent aux pannes régionales.</li>
@@ -90,11 +90,11 @@ async function handleBillionsOfRedirects(request) {
 		<li>Magasin de fichiers périphérique : héberger de grandes quantités de petits fichiers.</li>
 	</ul>
 	<p>Nous avons souligné plusieurs de ces cas d'utilisation dans notre précédent <a href="https://blog.cloudflare.com/building-with-workers-kv/">article de blog</a>. Nous avons également quelques revues générales plus détaillées du code, y compris un article de blog récemment publié sur la création d'une <a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv/">liste de tâches en ligne avec Workers KV</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/LX2gUZI5xj95NmrCW4AIrYu0VuIYsxguvSYyON6a1VOTrF1CMRDD-b0cSvevXJ6JZ9B14XgzWBCbLJotUZyaQgO0mTM1hNa3KZYG3I-7ylM-oBW5bCWtX7OrZrBu2YAgUfgsAmg" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/LX2gUZI5xj95NmrCW4AIrYu0VuIYsxguvSYyON6a1VOTrF1CMRDD-b0cSvevXJ6JZ9B14XgzWBCbLJotUZyaQgO0mTM1hNa3KZYG3I-7ylM-oBW5bCWtX7OrZrBu2YAgUfgsAmg" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="quoi-de-neuf-depuis-b-ta"><strong>Quoi de neuf depuis bêta ?</strong></h3>
 	<p>Notre demande la plus pressante et la plus courante était de faciliter l’écriture de données sur Workers KV. C'est pourquoi nous proposons trois nouvelles méthodes pour rendre cette expérience encore meilleure :</p>
 	<h4 id="1-criture-en-masse"><strong>1. Écriture en masse</strong></h4>
-	<p>Si vous souhaitez importer vos données existantes dans Workers KV, vous ne voudriez pas avoir à envoyer une requête HTTP pour <em>chaque </em>paire clé-valeur. C'est pourquoi nous avons ajouté un <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">point de terminaison de masse</a> à l'API de Cloudflare. Vous pouvez maintenant télécharger jusqu'à 10 000 paires (jusqu'à 100 Mo de données) en une seule requête PUT.</p><!--kg-card-begin: markdown-->
+	<p>Si vous souhaitez importer vos données existantes dans Workers KV, vous ne voudriez pas avoir à envoyer une requête HTTP pour <em>chaque </em>paire clé-valeur. C'est pourquoi nous avons ajouté un <a href="https://api.cloudflare.com/?ref=blog.cloudflare.com#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">point de terminaison de masse</a> à l'API de Cloudflare. Vous pouvez maintenant télécharger jusqu'à 10 000 paires (jusqu'à 100 Mo de données) en une seule requête PUT.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">curl "https://api.cloudflare.com/client/v4/accounts/ \
      $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/bulk" \
   -X PUT \
@@ -108,7 +108,7 @@ async function handleBillionsOfRedirects(request) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Étudions un exemple d'utilisation : vous souhaitez transférer la traduction de votre site Web vers Workers. Étant donné que vous lisez fréquemment les clés de traduction et que vous ne les mettez à jour que de temps en temps, cette application fonctionne bien avec le modèle de cohérence éventuel de Workers KV.</p>
-	<p>Dans cet exemple, nous nous sommes connectés à <a href="https://crowdin.com/" target="_blank">Crowdin</a>, une plateforme populaire de gestion des données de traduction. Ce Worker répond à un point de terminaison de /traduction, télécharge toutes vos clés de traduction et les écrit en bloc dans Workers KV, afin que vous puissiez les lire plus tard sur notre périphérie :</p><!--kg-card-begin: markdown-->
+	<p>Dans cet exemple, nous nous sommes connectés à <a href="https://crowdin.com/?ref=blog.cloudflare.com" target="_blank">Crowdin</a>, une plateforme populaire de gestion des données de traduction. Ce Worker répond à un point de terminaison de /traduction, télécharge toutes vos clés de traduction et les écrit en bloc dans Workers KV, afin que vous puissiez les lire plus tard sur notre périphérie :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
   if (event.request.url.pathname === "/translate") {
     event.respondWith(uploadTranslations())
@@ -220,7 +220,7 @@ async function handleRequest(request) {
 	<!--kg-card-end: markdown-->
 	<h4 id="3-grandes-valeurs"><strong>3. Grandes valeurs</strong></h4>
 	<p>Nous avons augmenté notre taille limite des valeurs de 64 Ko à 2 Mo. Ceci est très utile si vous devez stocker des données tampons ou fichiers dans Workers KV.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/3uLKAterSnoEdOjkglAhz9xNTj5yFFb31XLh9_bWrWrpn0BDnAsO59sdHBIunEgWwkp7uPxU5Z_4n3OuyYJ8ljW4f9al2Flp1_sTLznxzeuVqcTRa7knglPr0lCjIP3UbvKBonw" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/3uLKAterSnoEdOjkglAhz9xNTj5yFFb31XLh9_bWrWrpn0BDnAsO59sdHBIunEgWwkp7uPxU5Z_4n3OuyYJ8ljW4f9al2Flp1_sTLznxzeuVqcTRa7knglPr0lCjIP3UbvKBonw" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Considérez cette éventualité : vous voulez permettre à vos utilisateurs de charger leur GIF préféré dans leur profil sans avoir à stocker ces GIF en tant que fichiers binaires dans votre base de données ou à gérer un <em>autre </em>compartiment de stockage dans le cloud.</p>
 	<p>Workers KV convient parfaitement à ce cas d'utilisation ! Vous pouvez créer un espace de noms Workers KV pour les GIF de vos utilisateurs, qui soit rapide et fiable où que vos clients se trouvent.</p>
 	<p>Dans cet exemple, les utilisateurs téléchargent un lien vers leur GIF préféré, puis un travailleur le télécharge et le stocke à Workers KV.</p><!--kg-card-begin: markdown-->
@@ -277,6 +277,6 @@ async function getGif(username) {
 		<li>Nombre illimité de lectures par seconde et par clé</li>
 	</ul>
 	<h3 id="essayez-le-maintenant-"><strong>Essayez-le maintenant !</strong></h3>
-	<p>Désormais ouvert à tous les clients, vous pouvez commencer à utiliser <a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a> dès aujourd’hui à partir de votre tableau de bord Cloudflare sous l'onglet Workers . Vous pouvez également consulter notre <a href="https://developers.cloudflare.com/workers/kv/" target="_blank">documentation mise à jour.</a></p>
+	<p>Désormais ouvert à tous les clients, vous pouvez commencer à utiliser <a href="https://www.cloudflare.com/products/workers-kv/?ref=blog.cloudflare.com" target="_blank">Workers KV</a> dès aujourd’hui à partir de votre tableau de bord Cloudflare sous l'onglet Workers . Vous pouvez également consulter notre <a href="https://developers.cloudflare.com/workers/kv/?ref=blog.cloudflare.com" target="_blank">documentation mise à jour.</a></p>
 	<p>Nous sommes vraiment impatients de voir ce que vous pouvez tous construire avec Workers KV !<a href="https://blog.cloudflare.com/tag/serverless/">Sans serveur</a> <a href="https://blog.cloudflare.com/tag/workers/">Workers</a> <a href="https://blog.cloudflare.com/tag/workers-kv/">Workers KV</a> <a href="https://blog.cloudflare.com/tag/javascript/">JavaScript</a> <a href="https://blog.cloudflare.com/tag/bash/">Bash</a></p>
 </div>

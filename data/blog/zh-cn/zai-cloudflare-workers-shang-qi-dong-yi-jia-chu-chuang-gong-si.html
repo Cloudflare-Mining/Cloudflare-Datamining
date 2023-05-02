@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/tP04mOJyy0P2m2sYCESZ1ME2Q-KcW9ERsTFu6O4flDLFDYbaPer8-VtUeFiamvHecXSVQppe73_KlJjzu38zETOmup5DGJbhXt010I8-a8hFE-N4eeu5MR8kKP8cEj2IXq5MHAUQ" class="kg-image" alt="Launching a Startup on Cloudflare Workers"></figure>
-	<p>本周<a href="https://blog.cloudflare.com/tag/developer-spotlight/">开发人员聚焦</a>系列最后的故事将由 Tejas Mehta 来讲述，他将分享其制作 <a href="https://cclip.app/" target="_blank">cClip</a> 的过程。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/tP04mOJyy0P2m2sYCESZ1ME2Q-KcW9ERsTFu6O4flDLFDYbaPer8-VtUeFiamvHecXSVQppe73_KlJjzu38zETOmup5DGJbhXt010I8-a8hFE-N4eeu5MR8kKP8cEj2IXq5MHAUQ" class="kg-image" alt="Launching a Startup on Cloudflare Workers" loading="lazy"></figure>
+	<p>本周<a href="https://blog.cloudflare.com/tag/developer-spotlight/">开发人员聚焦</a>系列最后的故事将由 Tejas Mehta 来讲述，他将分享其制作 <a href="https://cclip.app/?ref=blog.cloudflare.com" target="_blank">cClip</a> 的过程。</p>
 	<p>cClip 是一款很棒的工具，可让您在任何设备之间“复制/粘贴”及传输文件，无论其运行何种操作系统。</p>
 	<p>cClip 的有趣之处在于，这是一款构建在 Workers 和 KV 基础上的完全无服务器应用程序，但又并非仅限于此。它使用 Firebase 进行身份验证，使用 RevenueCat 获得对 Apple 和 Google Play Store 的整合视图，并使用 Stripe 来进行所有其他计费相关工作。<br></p>
 	<p>这是对将来应用程序开发的展望。在将来，我们可以轻松地“导入”其他 SaaS 应用程序，就如现在从软件包管理器导入程序包一样。而且不仅仅是在该外部应用程序上调用 API 的单向操作，而是通过事件与 Webhooks 进行双向通信。</p>
@@ -10,14 +10,14 @@
 	<p>于是我制作了 cClip，这是一款简单的传输工具，能够从我的手机发送图片和链接到我的笔记本电脑。在一些朋友看到这款工具后，他们也想使用它，于是我意识到，它可以提高生产力，并为众多虚拟工作区带来与平台无关的流动性。</p>
 	<p>在添加端到端加密、实时更新和订阅模式后，我将 cClip 推向大众。</p>
 	<h2 id="-"><strong>架构</strong></h2>
-	<p>正如 Erwin 所提到的，cClip 的架构并不仅仅是 Workers，还集成了一些其他的 SaaS 产品。我使用 <a href="https://www.revenuecat.com/" target="_blank">RevenueCat</a> 轻松集成了移动应用商店，并通过 Webhooks 集成了 Stripe。Firebase 同时用于身份验证和消息传递，最后，使用 B2 作为云存储。（至少在 R2 可用之前！）</p>
+	<p>正如 Erwin 所提到的，cClip 的架构并不仅仅是 Workers，还集成了一些其他的 SaaS 产品。我使用 <a href="https://www.revenuecat.com/?ref=blog.cloudflare.com" target="_blank">RevenueCat</a> 轻松集成了移动应用商店，并通过 Webhooks 集成了 Stripe。Firebase 同时用于身份验证和消息传递，最后，使用 B2 作为云存储。（至少在 R2 可用之前！）</p>
 	<p>当然，每一个平台都需要客户端。</p>
 	<p>大概可以用下面的示意图来表示：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-54.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-54.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--1"><strong>客户端</strong></h3>
 	<p>一个重大挑战是为每个操作系统和平台创建客户端。我们至少需要一个 iOS 和 Android 应用程序，一个 Windows、Mac 和一个 Web 应用程序。</p>
 	<h4 id="flutter-"><strong>Flutter 解决了问题</strong></h4>
-	<p><a href="https://flutter.dev/" target="_blank">Flutter</a> 是一个跨平台应用程序开发框架。使用该框架，我为 UI 和大部分逻辑设置了一个单一代码库，同时允许某些特定部分（如加密）与特定于平台的库进行交互。</p>
+	<p><a href="https://flutter.dev/?ref=blog.cloudflare.com" target="_blank">Flutter</a> 是一个跨平台应用程序开发框架。使用该框架，我为 UI 和大部分逻辑设置了一个单一代码库，同时允许某些特定部分（如加密）与特定于平台的库进行交互。</p>
 	<p>Flutter 能够很好地支持 iOS 和 Android，但 Flutter Web 相对较新。对于加密等任务，我需要使用大量 JavaScript，因为 Flutter Web 还不支持 WebWorker，以及文件上传和下载。我想要使用 StreamSaver.js 对下载进行流式解密，以节省大型文件的内存消耗。</p>
 	<p>此外，使用 Flutter Web 让我能够为 Windows 或 Linux 用户创建一个 Electron 应用程序，当用户想要一款用于 cClip 的原生应用程序而不是访问网站时，便可以使用该应用程序。</p>
 	<h4 id="mac-os"><strong>Mac OS</strong></h4>

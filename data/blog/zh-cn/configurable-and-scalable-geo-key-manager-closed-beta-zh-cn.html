@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-35.png" class="kg-image" alt="A new, configurable and scalable version of Geo Key Manager, now available in Closed Beta"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-35.png" class="kg-image" alt="A new, configurable and scalable version of Geo Key Manager, now available in Closed Beta" loading="lazy"></figure>
 	<p>如今，互联网上的流量通过使用公钥和私钥对传输的数据进行加密。Cloudflare 管理让这些数据受到保护的加密密钥，帮助确保数百万个网站的安全。为了提供闪电般的快速服务，Cloudflare 将这些密钥存储在我们覆盖 150 多个国家/地区的数据中心网络中。然而，有些法规要求私钥只能存储在特定的地理位置。</p>
 	<p>2017 年，我们<a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/">推出</a> Geo Key Manager, 该产品允许客户在不同的地理位置存储和管理其域的加密密钥，以满足法规要求并保障数据安全。我们在《通用数据保护条例》(GDPR)生效前几个月推出了该产品，支持三个地区：美国、欧盟和一组采用最高安全措施的顶级数据中心。从那时起，类似 GDPR 的法律迅速扩展，目前已有超过 15 个国家/地区制定了类似的数据保护法律或法规，其中包括对跨国界数据传输和/或某一边界内数据本地化的限制。</p>
-	<p>Cloudflare 希望为未来做好准备。我们要为客户提供工具，使他们能够在不断变化的环境中维持合规性。因此，我们隆重推出 Geo Key Manager 的新版本。它允许客户按国家(“只在印度存储我的私钥”)、按地区（“只在欧盟存储我的私钥”）或按标准（如“只在 FIPS 兼容的数据中心存储我的私钥”）定义边界。该新版本现在已进入封闭测试，<a href="https://www.cloudflare.com/lp/geo-key-manager/" target="_blank">在此</a>注册。</p>
+	<p>Cloudflare 希望为未来做好准备。我们要为客户提供工具，使他们能够在不断变化的环境中维持合规性。因此，我们隆重推出 Geo Key Manager 的新版本。它允许客户按国家(“只在印度存储我的私钥”)、按地区（“只在欧盟存储我的私钥”）或按标准（如“只在 FIPS 兼容的数据中心存储我的私钥”）定义边界。该新版本现在已进入封闭测试，<a href="https://www.cloudflare.com/lp/geo-key-manager/?ref=blog.cloudflare.com" target="_blank">在此</a>注册。</p>
 	<h3 id="geo-key-manager-v1-">Geo Key Manager v1 提供的经验</h3>
 	<p>Geo Key Manager 已经推出好几年了，我们利用这段时间来收集了客户的反馈。随着对更灵活系统的需求不断增长，我们决定从头开始，创建一个新的 Geo Key Manager，以更好地满足客户的需求。</p>
 	<p>我们最初发布 Geo Key Manager 时，提供对美国、欧盟和最高安全数据中心的支持。在当时，这些区域已经足够了，但在选择国家和地区时，在其他司法管辖区处理数据本地化义务的客户需要更大的灵活性。一些客户希望能够设置限制以在某个国家维护他们的私钥，一些客户希望密钥存储在除特定国家之外的所有地方，还有一些客户可能希望混合匹配规则，要求“存储在 X 和 Y 中，但不存储在 Z 中”。我们了解到，客户需要灵活性，这将使他们能够跟上不断变化的规则和政策——这就是我们计划要做到的。</p>
@@ -10,12 +10,12 @@
 	<p>以我们目前的规模，自动化和扩张是必然之举。我们的新系统需要在每次从网络中加入或移除数据中心时动态扩展，而无需任何人工干预或大规模改造。</p>
 	<p>最后，我们最大的经验之一是客户会犯错误，例如定义的区域太小，以至于可用性成为问题。我们的工作是防止客户做出我们知道会对他们产生负面影响的更改。</p>
 	<h3 id="-geo-key-manager-">使用新版 Geo Key Manager 定义自己的地理限制</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-21.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-21.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Cloudflare 在过去几年中显著增长，我们的国际客户群体也在不断扩大。客户需要使其流量保持区域化。这个区域可以广阔如大陆，例如：亚洲。也可以是特定的国家，例如：日本。</p>
 	<p>从我们与客户的对话中，客户表示希望能够自己定义这些区域。这就是为什么我们今天很高兴地宣布，客户将能够使用 Geo Key Manager 来创建我们所称的“策略”。</p>
 	<p>策略可以是一个单独的国家或地区，由两个字母组成(ISO 3166)的国家代码定义。策略可以是一个区域，例如代表欧盟的“EU”，或者大洋洲。策略可以是以上两者的组合，例如：“country:US or region: EU”。</p>
 	<p>我们基于策略的新版 Geo Key Manager 允许客户创建国家/地区和受支持区域的允许或阻止列表，以便控制私钥可以存储的边界范围。客户也可以在全球范围内存储私钥但排除某些国家。</p>
-	<p>如果想在欧盟和美国存储私钥，请进行如下 <a href="https://api.cloudflare.com/#custom-ssl-for-a-zone-create-ssl-configuration" target="_blank">API</a> 调用：</p><!--kg-card-begin: markdown-->
+	<p>如果想在欧盟和美国存储私钥，请进行如下 <a href="https://api.cloudflare.com/?ref=blog.cloudflare.com#custom-ssl-for-a-zone-create-ssl-configuration" target="_blank">API</a> 调用：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-JSON">curl -X POST "https://api.cloudflare.com/client/v4/zones/zone_id/custom_certificates" \
      -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: auth-key" \
@@ -37,14 +37,14 @@
 	<p>在冗余方面，我们最关心的问题之一是，如果客户选择的区域过小，在一个数据中心因维护而被移除时，可用性就会受到严重影响。为了保护客户，我们增加了冗余限制。这可以防止我们的客户设置数据中心太少的区域，确保策略内的所有数据中心都可以提供高可用性和冗余。</p>
 	<p>不仅如此，在过去几年内，我们还提高了支撑 Geo Key Manager 的网络能力。如需进一步了解我们如何做到这一点，敬请关注有关 Geo Key Manager 的技术深度剖析。</p>
 	<h3 id="--1">性能很重要</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-39.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-39.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>通过初始区域(美国、欧盟和最高安全性的数据中心)，我们了解到，客户可能会忽略在将 Geo Key Manager 定义到特定区域时可能发生的延迟影响。例如，如果您将私钥存储在美国。对于在亚洲的客户而言，由于请求需要绕过半个地球，将面临一定的延迟影响。现在，鉴于客户能够定义更精细的区域，我们希望确保一点：在客户进行更改时，能够看到更改的影响。</p>
 	<p>对电子商务平台而言，性能始终是放在第一位的。我们现在正在做的一件事是，不但就 Geo Key Manager 策略提供区域角度的性能指标——“对亚洲客户的延迟影响是什么?”，也提供全球角度的性能指标——“对世界上的任何人来说，这项策略的平均影响是什么?”</p>
 	<p>通过看到延迟影响，如果您发现这个影响是不可接受的，就可能会希望为您的服务另外创建一个特定于该区域的域。</p>
 	<h3 id="--2">封测现已启动！</h3>
-	<p>有兴趣尝试 Geo Key Manager 的最新版本吗？请填写这个<a href="https://www.cloudflare.com/lp/geo-key-manager/" target="_blank">表单</a>。</p>
+	<p>有兴趣尝试 Geo Key Manager 的最新版本吗？请填写这个<a href="https://www.cloudflare.com/lp/geo-key-manager/?ref=blog.cloudflare.com" target="_blank">表单</a>。</p>
 	<h3 id="--3">即将推出！</h3>
 	<p>Geo Key Manager 仅可通过 API 使用。但是，我们正在打造一个易于使用的用户界面，以便客户可以轻松地管理他们的策略和地区。此外，当发现性能或冗余出现任何下降时，我们会提供性能测量数据和警告，以确保客户在设置策略时有所注意。</p>
 	<p>另外，我们还计划让 Geo Key Manager 支持上传的自定义证书。将来，通过 Advanced Certificate Manager 或 SSL for SaaS 颁发的证书将允许为密钥存储添加基于策略的限制。</p>
-	<p>最后，我们希望添加更多默认区域，以简化客户的选择过程。如果您希望我们支持任何区域，或者对 Geo Key Manager 有一般性反馈或功能相关请求，欢迎通过这个<a href="https://www.cloudflare.com/lp/geo-key-manager/" target="_blank">表单</a>告诉我们。我们乐意听到客户的意见。</p>
+	<p>最后，我们希望添加更多默认区域，以简化客户的选择过程。如果您希望我们支持任何区域，或者对 Geo Key Manager 有一般性反馈或功能相关请求，欢迎通过这个<a href="https://www.cloudflare.com/lp/geo-key-manager/?ref=blog.cloudflare.com" target="_blank">表单</a>告诉我们。我们乐意听到客户的意见。</p>
 </div>

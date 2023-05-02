@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-32.png" class="kg-image" alt="Cloudflare is joining the AS112 project to help the Internet deal with misdirected DNS queries"></figure>
-	<p>今天，我们隆重宣布加入 <a href="https://www.as112.net/" target="_blank">AS112 项目</a>，成为这个由社区运营、松散协调的任播 DNS 服务器部署的运营商，这些 DNS 服务器主要应答被错误定向并在互联网上造成大量不必要负载的反向 DNS 查找查询。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-32.png" class="kg-image" alt="Cloudflare is joining the AS112 project to help the Internet deal with misdirected DNS queries" loading="lazy"></figure>
+	<p>今天，我们隆重宣布加入 <a href="https://www.as112.net/?ref=blog.cloudflare.com" target="_blank">AS112 项目</a>，成为这个由社区运营、松散协调的任播 DNS 服务器部署的运营商，这些 DNS 服务器主要应答被错误定向并在互联网上造成大量不必要负载的反向 DNS 查找查询。</p>
 	<p>随着 Cloudflare 全球网络的加入，我们可以极大地提升这个分布式公共服务的稳定性、可靠性和性能。</p>
 	<h2 id="-as112">什么是 AS112</h2>
 	<p>AS112 项目是一个社区运营的重要网络服务，旨在处理私有使用地址的反向 DNS 查询（这些地址永远不会出现在公共 DNS 系统中）。例如，在这篇博客文章发表之前的 7 天里，Cloudflare 的 1.1.1.1 解析器收到了超过 980 亿次此类查询—— <em>这些查询在域名系统中都没有有用的应答</em>。</p>
 	<p>为了帮助理解，让我们回顾一下有关历史。互联网协议(IP)地址对于网络通信至关重要。许多网络使用保留为私有的 IPv4 地址，网络上的设备可以通过网络地址转换(NAT)连接到互联网，这个过程在传输信息之前将一个或多个本地的私有地址映射到一个或多个全球 IP 地址，反之亦然。</p>
 	<p>您的家庭网络路由器很可能在为您做这件事。您可能会发现，在家里，您的电脑有一个类似 192.168.1.42 的 IP 地址。这是一个私有地址的例子，它可以在家里使用，但不能在公共互联网上使用。您的家庭路由器将它通过 NAT 转换为 ISP 分配给您的家庭并可在互联网上使用的地址。</p>
-	<p>以下是 <a href="https://www.rfc-editor.org/rfc/rfc1918" target="_blank">RFC 1918</a> 指定的“私有”地址。</p><!--kg-card-begin: html-->
+	<p>以下是 <a href="https://www.rfc-editor.org/rfc/rfc1918?ref=blog.cloudflare.com" target="_blank">RFC 1918</a> 指定的“私有”地址。</p><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -36,8 +36,8 @@
 	<center><small>(保留的私有 IPv4 网络地址范围)</small></center><!--kg-card-end: html-->
 	<p>尽管保留的地址本身被屏蔽，永远不会出现在公共互联网上，但私有环境中的设备和程序偶尔也会发起与这些地址对应的 DNS 查询。这种查询被称为“反向查找”，因为它们在询问 DNS 是否存在一个与某个地址相关的名称。</p>
 	<h3 id="-dns-">反向 DNS 查找</h3>
-	<p>反向 DNS 查找是与更常用的 DNS 查找相反的过程(后者每天被用于将 <a href="https://www.cloudflare.com/" target="_blank">www.cloudflare.com</a> 这样的地址转换为对应的 IP 地址)。这种查询用于查找与给定 IP 地址相关联的域名，特别是与路由器和交换机相关联的那些地址。例如，网络管理员和研究人员使用反向查找来帮助理解数据包在网络中经过的路径，而理解有意义的名称比理解无意义的数字要容易得多。</p>
-	<p>反向查找是通过向 DNS 服务器查询指针记录 (<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/" target="_blank">PTR</a>)来完成的。PTR 记录中，IP 地址的各段被反向存储 ，并在末尾加上“.in-addr.arpa”。例如，IP 地址 192.0.2.1 会有一个以 1.2.0.192.in-addr.arpa 形式存储的 PTR 记录。在 IPv6 中，PTR 记录存储在 “.ip6.arpa”域内，而不是“.in-addr. Arpa”。下面是使用 dig 命令行工具进行的一些查询示例。</p><!--kg-card-begin: markdown-->
+	<p>反向 DNS 查找是与更常用的 DNS 查找相反的过程(后者每天被用于将 <a href="https://www.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">www.cloudflare.com</a> 这样的地址转换为对应的 IP 地址)。这种查询用于查找与给定 IP 地址相关联的域名，特别是与路由器和交换机相关联的那些地址。例如，网络管理员和研究人员使用反向查找来帮助理解数据包在网络中经过的路径，而理解有意义的名称比理解无意义的数字要容易得多。</p>
+	<p>反向查找是通过向 DNS 服务器查询指针记录 (<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/?ref=blog.cloudflare.com" target="_blank">PTR</a>)来完成的。PTR 记录中，IP 地址的各段被反向存储 ，并在末尾加上“.in-addr.arpa”。例如，IP 地址 192.0.2.1 会有一个以 1.2.0.192.in-addr.arpa 形式存储的 PTR 记录。在 IPv6 中，PTR 记录存储在 “.ip6.arpa”域内，而不是“.in-addr. Arpa”。下面是使用 dig 命令行工具进行的一些查询示例。</p><!--kg-card-begin: markdown-->
 	<pre><code># 查找与 IPv4 地址 172.64.35.46 关联的域名
 # “+short” 选项使其仅输出简短的结果
 $ dig @1.1.1.1 PTR 46.35.64.172.in-addr.arpa +short
@@ -81,10 +81,10 @@ hunts.ns.cloudflare.com.
 168.192.in-addr.arpa.	10800	IN	SOA	168.192.in-addr.arpa. nobody.localhost. 42 86400 43200 604800 10800
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>在项目开始时，节点运营商以直接委托的方式设置服务 (<a href="https://datatracker.ietf.org/doc/html/rfc7534" target="_blank">RFC 7534</a>)。然而，向该服务添加委托需要更新所有 AS112 服务器，这在一个仅松散协调的系统中很难确保。随后通过 <a href="https://datatracker.ietf.org/doc/html/rfc7535" target="_blank">RFC 7535</a> 引入了另一种使用 DNAME 重定向的方法，允许在不重新配置黑洞服务器的情况下向系统添加新区域。</p>
+	<p>在项目开始时，节点运营商以直接委托的方式设置服务 (<a href="https://datatracker.ietf.org/doc/html/rfc7534?ref=blog.cloudflare.com" target="_blank">RFC 7534</a>)。然而，向该服务添加委托需要更新所有 AS112 服务器，这在一个仅松散协调的系统中很难确保。随后通过 <a href="https://datatracker.ietf.org/doc/html/rfc7535?ref=blog.cloudflare.com" target="_blank">RFC 7535</a> 引入了另一种使用 DNAME 重定向的方法，允许在不重新配置黑洞服务器的情况下向系统添加新区域。</p>
 	<h4 id="-"><strong>直接代理</strong></h4>
 	<p>在这种方法中，DNS 区域直接委托给黑洞服务器。</p>
-	<p><a href="https://datatracker.ietf.org/doc/html/rfc7534" target="_blank">RFC 7534</a> 定义了反向查找区域的静态集合，AS112 名称服务器应该权威地应答这些反向查找区域。如下：</p>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc7534?ref=blog.cloudflare.com" target="_blank">RFC 7534</a> 定义了反向查找区域的静态集合，AS112 名称服务器应该权威地应答这些反向查找区域。如下：</p>
 	<ul>
 		<li>10.in-addr-arpa</li>
 		<li>16.172.in-addr.arpa</li>
@@ -146,7 +146,7 @@ hunts.ns.cloudflare.com.
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<h4 id="dname-"><strong>DNAME 重定向</strong></h4>
-	<p>首先，什么是 DNAME？ 由 <a href="https://www.rfc-editor.org/rfc/rfc6672" target="_blank">RFC 6672</a> 引入的 DNAME 记录，即委托名称记录，为域名树的一整个子树创建一个别名。相比之下，CNAME 记录为单个域而不是其子域创建别名。对于接收到的 DNS 查询， DNAME 记录指示名称服务器将出现在左手边的全部信息(所有者名称)替换为右手边的信息(别名名称)。被替换的查询名称，如 CNAME，可能位于区域内，也可能位于区域外。</p>
+	<p>首先，什么是 DNAME？ 由 <a href="https://www.rfc-editor.org/rfc/rfc6672?ref=blog.cloudflare.com" target="_blank">RFC 6672</a> 引入的 DNAME 记录，即委托名称记录，为域名树的一整个子树创建一个别名。相比之下，CNAME 记录为单个域而不是其子域创建别名。对于接收到的 DNS 查询， DNAME 记录指示名称服务器将出现在左手边的全部信息(所有者名称)替换为右手边的信息(别名名称)。被替换的查询名称，如 CNAME，可能位于区域内，也可能位于区域外。</p>
 	<p>类似于 CNAME 记录，DNS 查找将继续使用替换后的名称重新查找。例如，如果有如下两个 DNS 区域：</p><!--kg-card-begin: markdown-->
 	<pre><code># zone: example.com
 www.example.com.	A		203.0.113.1
@@ -189,7 +189,7 @@ bar.example.net.	A		203.0.113.3
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p><a href="https://datatracker.ietf.org/doc/html/rfc7535" target="_blank">RFC 7535</a> 指定添加另一个特殊区域，empty.as112.arpa，以支持 AS112 节点的 DNAME 重定向。当有新域要添加时，AS112 节点运营商不需要更新其配置：相反，该区域的的父节点将为新域建立目标域 empty.as112.arpa 的 DNAME 记录。这种重定向(可以被缓存和重用)会导致客户端将未来的查询发送到对目标区域具有权威的黑洞服务器。</p>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc7535?ref=blog.cloudflare.com" target="_blank">RFC 7535</a> 指定添加另一个特殊区域，empty.as112.arpa，以支持 AS112 节点的 DNAME 重定向。当有新域要添加时，AS112 节点运营商不需要更新其配置：相反，该区域的的父节点将为新域建立目标域 empty.as112.arpa 的 DNAME 记录。这种重定向(可以被缓存和重用)会导致客户端将未来的查询发送到对目标区域具有权威的黑洞服务器。</p>
 	<p>注意，黑洞服务器本身不需要支持 DNAME 记录，但它们需要配置根服务器将查询重定向到的新区域。考虑到可能存在现有节点运营商由于某些原因没有更新其名称服务器配置的情况，为了不造成服务中断，该区域被委托给一个新的黑洞服务器——blackhole.as112.arpa。</p>
 	<p>这个名称服务器使用了一对新的 IPv4 和 IPv6 地址，192.31.196.1 和 2001:4:112::1，以便涉及 DNAME 重定向的查询将只会到达那些也设置了新名称服务器的实体运营的节点。因为没有必要让所有的 AS112 参与者重新配置他们的服务器以服务 empty.as112.arpa，以便这一新服务器为这个系统工作，这一方法兼容系统整体的松散协调。</p>
 	<p>empty.as112.arpa 的区域文件定义如下：</p><!--kg-card-begin: markdown-->
@@ -226,7 +226,7 @@ bar.example.net.	A		203.0.113.3
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<h4 id="--1"><strong>节点识别</strong></h4>
-	<p><a href="https://datatracker.ietf.org/doc/html/rfc7534" target="_blank">RFC 7534</a> 建议每个 AS112 节点也承载以下元数据区域：hostname.as112.net 和 hostname.as112.arpa。</p>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc7534?ref=blog.cloudflare.com" target="_blank">RFC 7534</a> 建议每个 AS112 节点也承载以下元数据区域：hostname.as112.net 和 hostname.as112.arpa。</p>
 	<p>这些分区仅承载 TXT 记录，用于查询有关 AS112 节点的元数据信息。Cloudflare 节点的区域文件看起来是这样的：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ORIGIN hostname.as112.net.
 ;
@@ -270,7 +270,7 @@ $TTL    604800
 	<h2 id="--2">我们的网络是如何打造的</h2>
 	<p>我们过去曾数次公开谈论过 Cloudflare 内部构建的权威 DNS 服务器软件 rrDNS，但没有详细介绍我们为驱动 Cloudflare 公共解析器 1.1.1.1 而打造的软件。趁此机会，我们希望简单介绍下用于打造 1.1.1.1 的软件，因为这个 AS112 服务是在同一平台上建立起来的。</p>
 	<h3 id="-dns--2">用于 DNS 工作负载的平台</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-32.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-32.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>我们创建了一个运行 DNS 工作负载的平台。今天，这个平台驱动着 1.1.1.1、1.1.1.1 for Families、Oblivious DNS over HTTPS (ODoH)、Cloudflare WARP 和 Cloudflare Gateway。</p>
 	<p>平台的核心部分是一台非传统的 DNS 服务器，它有一个内置的 DNS 递归解析器和一个转发器，负责向其他服务器转发查询。它由四个关键模块组成：</p>
 	<ol>
@@ -293,9 +293,9 @@ $TTL    604800
 		<li>发送应用日志、指标数据点和范围/事件</li>
 	</ul>
 	<p>DNS 请求的生命周期分为几个阶段。请求阶段是处理过程中的一个阶段，此时可以调用沙盒应用程序来改变请求解析的过程。每个访客应用程序都可以为每个阶段注册回调函数。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-20.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-20.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="as112--1">AS112 访客应用程序</h3>
-	<p>AS112 服务是一个用 Rust 编写并编译为 WebAssembly 的访客应用程序。<a href="https://www.rfc-editor.org/rfc/rfc7534" target="_blank">RFC 7534</a> 和 <a href="https://www.rfc-editor.org/rfc/rfc7535" target="_blank">RFC 7535</a> 中列出的区域被加载为内存中的静态区域加载，并作为树形数据结构进行索引。传入的查询通过在区域树中查找项目在本地回答。</p>
+	<p>AS112 服务是一个用 Rust 编写并编译为 WebAssembly 的访客应用程序。<a href="https://www.rfc-editor.org/rfc/rfc7534?ref=blog.cloudflare.com" target="_blank">RFC 7534</a> 和 <a href="https://www.rfc-editor.org/rfc/rfc7535?ref=blog.cloudflare.com" target="_blank">RFC 7535</a> 中列出的区域被加载为内存中的静态区域加载，并作为树形数据结构进行索引。传入的查询通过在区域树中查找项目在本地回答。</p>
 	<p>应用清单文件中添加了一个路由器设置，用于告诉主机，访客应用程序应该处理什么类型的 DNS 查询。还添加了一个 fallback_action 设置，声明预期的回退行为。</p><!--kg-card-begin: markdown-->
 	<pre><code># 声明应用程序处理的查询类型。
 router = [
@@ -309,9 +309,9 @@ fallback_action = "fail"
 	<!--kg-card-end: markdown-->
 	<p>然后，客户应用程序及其清单文件将通过部署管道进行编译和部署，后者利用 <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a> 在全球范围内存储和复制资产。</p>
 	<p>访客应用程序现在已经启动并运行，但是指向新 IP 前缀的 DNS 查询流量如何到达 DNS 服务器呢？每次添加新的访客应用程序时都必须重启 DNS 服务器吗？当然不必。我们使用之前开发和部署的一个软件，叫做 <a href="https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf/">Tubular</a>。它允许我们动态更改服务的地址。借助 Tubular，目的地为 AS112 业务 IP 地址前缀的传入数据包被分配到正确的 DNS 服务器进程，而不需要对 DNS 服务器本身进行任何更改或发布。</p>
-	<p>同时，为了让错误定向的 DNS 查询到达 Cloudflare 网络，我们使用 <a href="https://developers.cloudflare.com/byoip/" target="_blank">BYOIP</a> (自带 IP 到 Cloudflare，这是一个 Cloudflare 产品，允许在 Cloudflare 的所有地点宣告客户自己的 IP)。4 个 AS112 IP 前缀被加入到 BYOIP 系统，并由它宣告到全球。</p>
+	<p>同时，为了让错误定向的 DNS 查询到达 Cloudflare 网络，我们使用 <a href="https://developers.cloudflare.com/byoip/?ref=blog.cloudflare.com" target="_blank">BYOIP</a> (自带 IP 到 Cloudflare，这是一个 Cloudflare 产品，允许在 Cloudflare 的所有地点宣告客户自己的 IP)。4 个 AS112 IP 前缀被加入到 BYOIP 系统，并由它宣告到全球。</p>
 	<h3 id="--3">测试</h3>
-	<p>在向公共互联网宣告之前，我们如何确保我们建立的服务正确运行呢？1.1.1.1 每天处理超过 130 亿个这样的错误定向查询，并实施了逻辑直接在本地为它们返回 NXDOMAIN，这是 <a href="https://www.rfc-editor.org/rfc/rfc7534" target="_blank">RFC 7534</a>的推荐做法。</p>
+	<p>在向公共互联网宣告之前，我们如何确保我们建立的服务正确运行呢？1.1.1.1 每天处理超过 130 亿个这样的错误定向查询，并实施了逻辑直接在本地为它们返回 NXDOMAIN，这是 <a href="https://www.rfc-editor.org/rfc/rfc7534?ref=blog.cloudflare.com" target="_blank">RFC 7534</a>的推荐做法。</p>
 	<p>但是，我们可以使用动态规则来改变 Cloudflare 测试位置中处理错误定向查询的方式。例如，类似如下的规则：</p><!--kg-card-begin: markdown-->
 	<blockquote>
 		<p><code>phase = post-cache and qtype in { PTR } and colo in { test1 test2 } and qname-suffix in { 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa 254.169.in-addr.arpa } forward 192.175.48.6:53</code></p>
@@ -331,7 +331,7 @@ fallback_action = "fail"
 		<li>有 DNSSEC 支持的查询数量</li>
 		<li>按 ASN/数据中心分的查询数量</li>
 	</ul>
-	<p>我们将在 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 网站上提供以上公共统计页面。我们仍在努力实现页面所需的后端 API 和前端——一旦可用，我们将分享到此页面的链接。</p>
+	<p>我们将在 <a href="https://radar.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Radar</a> 网站上提供以上公共统计页面。我们仍在努力实现页面所需的后端 API 和前端——一旦可用，我们将分享到此页面的链接。</p>
 	<h2 id="--5">接下来？</h2>
 	<p>我们将从 2022 年 12 月 15 日开始宣告 AS112 前缀。</p>
 	<p>该服务启动后，您可以运行一个 dig 命令来检查是否到达了 Cloudflare 运行的一个 AS112 节点上，例如：</p><!--kg-card-begin: markdown-->

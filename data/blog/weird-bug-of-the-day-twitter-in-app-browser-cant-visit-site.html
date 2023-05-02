@@ -2,9 +2,9 @@
 	<!--kg-card-begin: markdown-->
 	<p>We keep a close eye on tweets that mention CloudFlare because sometimes we get early warning about odd errors that we are not seeing ourselves through our monitoring systems.</p>
 	<p>Towards the end of August we saw a small number of tweets like this one:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/Screen-Shot-2015-09-07-at-14-18-42.png" alt=""></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/09/Screen-Shot-2015-09-07-at-14-18-42.png" alt="" loading="lazy"></p>
 	<p>indicating that trying to browse to a CloudFlare customer web site using the Twitter in-app browser was resulting in an error page. Which was <em>very odd</em> because it was clearly only happening occasionally: <em>very</em> occasionally.</p>
-	<p>Luckily, the person who tweeted that was in the same timezone as me and able to help debug together (thanks <a href="https://twitter.com/jamesrwhite" target="_blank">James White</a>!); we discovered that the following sequence of events was necessary to reproduce the bug:</p>
+	<p>Luckily, the person who tweeted that was in the same timezone as me and able to help debug together (thanks <a href="https://twitter.com/jamesrwhite?ref=blog.cloudflare.com" target="_blank">James White</a>!); we discovered that the following sequence of events was necessary to reproduce the bug:</p>
 	<ol>
 		<li>
 			<p>Click on a link in a tweet to a web site that is using an <em>https</em> URL and open in the Twitter in-app browser (not mobile Safari). This site may or may not be a CloudFlare customer.</p>
@@ -17,7 +17,7 @@
 		</li>
 	</ol>
 	<p>That explained why this happened very rarely, but the question became... why did it happen at all? After some debugging it appeared to happen in recent versions of both iOS and the Twitter app (including the iOS 9 beta).</p>
-	<p>To figure out what was going on I turned to <a href="http://www.charlesproxy.com/" target="_blank">Charles Proxy</a> and used it to intercept the communication between my iPhone and CloudFlare. Happily, Charles Proxy can <a href="http://www.charlesproxy.com/documentation/faqs/ssl-connections-from-within-iphone-applications/" target="_blank">intercept SSL connections</a> by installing a custom certificate on a phone. I ran Charles Proxy on my laptop, pointed my iPhone it at (to use it as a proxy) and clicked on a tweet to a site that I had set up specially for testing.</p>
+	<p>To figure out what was going on I turned to <a href="http://www.charlesproxy.com/?ref=blog.cloudflare.com" target="_blank">Charles Proxy</a> and used it to intercept the communication between my iPhone and CloudFlare. Happily, Charles Proxy can <a href="http://www.charlesproxy.com/documentation/faqs/ssl-connections-from-within-iphone-applications/?ref=blog.cloudflare.com" target="_blank">intercept SSL connections</a> by installing a custom certificate on a phone. I ran Charles Proxy on my laptop, pointed my iPhone it at (to use it as a proxy) and clicked on a tweet to a site that I had set up specially for testing.</p>
 	<p>Charles Proxy showed that the request that generated an error looked like this:</p>
 	<pre><code>GET /test HTTP/1.1\r\n
 Host: www.example.com\r\n
@@ -32,7 +32,7 @@ User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/
 	<p>At first glance this looked pretty normal but on a second look something really stuck out:</p>
 	<pre><code>Referer: \r\n
 </code></pre>
-	<p><a href="https://tools.ietf.org/html/rfc7231#section-5.5.2" target="_blank">RFC7231</a> clearly states that if the Referer header is present it must contain a URI:</p>
+	<p><a href="https://tools.ietf.org/html/rfc7231?ref=blog.cloudflare.com#section-5.5.2" target="_blank">RFC7231</a> clearly states that if the Referer header is present it must contain a URI:</p>
 	<blockquote>
 		<p>The "Referer" [sic] header field allows the user agent to specify a<br>
 			URI reference for the resource from which the target URI was obtained<br>
@@ -49,9 +49,9 @@ User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 8_4_1 like Mac OS X) AppleWebKit/
 			unsecured HTTP request if the referring page was received with a<br>
 			secure protocol.</p>
 	</blockquote>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/Screen-Shot-2015-09-07-at-14-48-07.png" alt=""></p>
-	<p>CloudFlare's <a href="https://support.cloudflare.com/hc/en-us/articles/200170086-What-does-the-Browser-Integrity-Check-do-" target="_blank">Browser Integrity Check</a> was verifying that the Referer header was well formed and generating the error (since there's a Referer, but it's empty) and it looks like the Twitter app in-app browser (and, we later discovered, the Facebook app in-app browser) are, instead of removing the header, blanking it out.</p>
-	<p>This is a good example of how it's not always easy to be "strictly" RFC-compliant. <a href="https://en.wikipedia.org/wiki/Robustness_principle" target="_blank">Postel's Law</a> tells us that in this case CloudFlare needs to relax its check.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/09/Screen-Shot-2015-09-07-at-14-48-07.png" alt="" loading="lazy"></p>
+	<p>CloudFlare's <a href="https://support.cloudflare.com/hc/en-us/articles/200170086-What-does-the-Browser-Integrity-Check-do-?ref=blog.cloudflare.com" target="_blank">Browser Integrity Check</a> was verifying that the Referer header was well formed and generating the error (since there's a Referer, but it's empty) and it looks like the Twitter app in-app browser (and, we later discovered, the Facebook app in-app browser) are, instead of removing the header, blanking it out.</p>
+	<p>This is a good example of how it's not always easy to be "strictly" RFC-compliant. <a href="https://en.wikipedia.org/wiki/Robustness_principle?ref=blog.cloudflare.com" target="_blank">Postel's Law</a> tells us that in this case CloudFlare needs to relax its check.</p>
 	<p>We reported this problem to both Twitter and Facebook and rolled out a fix that allows this behavior on the part of these clients and will turn the strict checking back on when it makes sense.</p>
 	<p>But watch your software if you validate the Referer header. You might be running into this oddness.</p>
 	<!--kg-card-end: markdown-->

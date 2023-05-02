@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image11-3.png" class="kg-image" alt="Cloudflare servers don't own IPs anymore – so how do they connect to the Internet?"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image11-3.png" class="kg-image" alt="Cloudflare servers don't own IPs anymore – so how do they connect to the Internet?" loading="lazy"></figure>
 	<p>Cloudflareの技術の多くはドキュメント化されています。たとえば、アイボール（クライアント）とサーバー間のトラフィックをどのように処理するかは、以下のようにこのブログで何度も取り上げてきました。<a href="https://blog.cloudflare.com/a-brief-anycast-primer/">「エニーキャスト入門書」（2011）</a>、<a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p/">「ロードバランサーを使用しない負荷分散」（2013）</a>、<a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice/">「Path MTUディスカバリーの実践」（2015）</a>、<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/">「Cloudflareのエッジロードバランサー」（2020）</a>、<a href="https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf/">「BSDソケットAPIの修正方法について」 (2022)</a>。</p>
 	<p>しかし、ネットワーク設定の第二部分、つまりサーバーがどのようにインターネットからコンテンツを取得するかについては、あまり触れてきませんでした。本記事ではその点について書いていきたいと思います。インターネットからデータを取得するために使用されるCloudflare IPアドレスをいかに管理するか、当社の送信ネットワーク設計はどのように進化してきたのか、利用可能なIPスペースを最大限に活用するためにどのように最適化したのかについてご説明します。</p>
 	<p>準備はよろしいですか？お伝えしたいことがたくさんあるんです。</p>
 	<h3 id="-">まずは用語解説から</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Cloudflareの各サーバーでは、さまざまな種類のネットワークトラフィックを処理していますが、大きく分けて2つのカテゴリがあります。</p>
 	<ul>
 		<li><em>インターネットからのトラフィック</em>ーアイボールから当社サーバーへのインバウンド接続。本記事ではこれらを「<strong>イングレス</strong>接続」と呼びます。</li>
@@ -13,25 +13,25 @@
 	<p>これまでエグレスの部分についてはあまり取り上げてきませんでしたが、当社のオペレーションにとってかなり重要な存在です。サーバーはジョブを完了するために発信接続を開始しなければなりません。たとえば次のように。</p>
 	<ul>
 		<li>当社の CDN 製品ではコンテンツがキャッシュされる前に、オリジンサーバーからフェッチされます。「<a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/">Pingora、Cloudflareをインターネットに接続するプロキシ」（2022）</a>、<a href="https://blog.cloudflare.com/argo-v2/">Argo</a>および<a href="https://blog.cloudflare.com/tiered-cache-smart-topology/">階層型キャッシュ</a>を参照してください。</li>
-		<li><a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a>製品の場合、各イングレスTCP接続は、1つのエグレス接続になります。</li>
-		<li><a href="https://workers.cloudflare.com/" target="_blank">Worker</a>は複数のサブリクエストを実行して HTTP レスポンスを構築することがよくあります。それらのいくつかは、インターネットの 1 つの出口接続に対してサーバーにクエリーを送信している可能性があります。</li>
+		<li><a href="https://www.cloudflare.com/products/cloudflare-spectrum/?ref=blog.cloudflare.com" target="_blank">Spectrum</a>製品の場合、各イングレスTCP接続は、1つのエグレス接続になります。</li>
+		<li><a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Worker</a>は複数のサブリクエストを実行して HTTP レスポンスを構築することがよくあります。それらのいくつかは、インターネットの 1 つの出口接続に対してサーバーにクエリーを送信している可能性があります。</li>
 		<li>また、当社ではWARPやCloudflare Gatewayなど、クライアント向けのフォワードプロキシ製品も運用しています。これらのプロキシはインターネット宛てのアイボール接続を処理します。当社のサーバーはユーザーに代わってインターネットへの接続を確立する必要があります。</li>
 	</ul>
 	<p>などです。</p>
 	<h3 id="--1">イングレス側エニーキャスト、エグレス側ユニキャスト</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-3.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>当社のイングレスネットワークアーキテクチャは、エグレスネットワークアーキテクチャとはまったく異なるものです。イングレスではインターネットからの接続は、当社のエニーキャストIP範囲によってのみ処理されます。エニーキャストは各データセンターが「アナウンス」し、同じ IP 範囲を処理できるテクノロジーです。多くの宛先が考えられる中、インターネットはどのようにパケットの経路を決めているのでしょうか？アイボールのパケットはインターネットBGPメトリックに基づいて最も近いデータセンターに向かってルーティングされますが、地理的に最も近いデータセンターであることが多いです。通常、BGPルートはあまり変更されず、各アイボールIPは単一のデータセンターにルーティングされると予想されます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image10-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image10-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>ただし、エニーキャストはイングレス方向ではうまく機能しますが、エグレスでは動作しません。エニーキャストIPからの発信接続の確立は機能しないのです。応答パケットはどうでしょうか。送信元のデータセンターではなく、送信者に地理的に最も近いデータセンターにルーティングされる可能性があります。</p>
 	<p>このため、最近までは単純かつ従来の方法で発信接続を確立していました。それは各サーバーに独自のユニキャストIPアドレスを割り当てていたのです。「ユニキャストIP」とはそのアドレスを使用するサーバーが世界に1つしかないことを意味します。リターンパケットは正常に動作し、ユニキャストIPで識別される正しいサーバーに正確に返されます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-16.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-16.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-ip-">イグジットIPに基づくトラフィックセグメンテーション</h3>
-	<p>当初、Cloudflareをソースとする接続は、ほとんどがインターネット上のオリジンサーバーに向かうHTTPフェッチでした。当社の製品ラインが成長するにつれ、トラフィックの種類も増えていきました。最も顕著な例は、<a href="https://blog.cloudflare.com/ja-jp/1111-warp-better-vpn-ja-jp/">当社のWARPアプリ</a>です。WARPの場合、当社のサーバーはフォワードプロキシを操作し、エンドユーザーデバイスから送信されたトラフィックを処理します。これはCDN製品と同じ程度の仲介なしで行われ、問題を引き起こします。インターネット上のサードパーティサーバー（オリジンサーバーなど）は、Cloudflareサービスからの接続と当社のWARPユーザーからの接続を区別できなければならないのです。このようなトラフィックのセグメンテーションは、従来、トラフィックタイプごとに異なるIPレンジを使用することで行われてきました（ただし、最近では<a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/" target="_blank">Authenticated Origin Pulls</a>などのより堅牢な技術を導入しています）。</p>
+	<p>当初、Cloudflareをソースとする接続は、ほとんどがインターネット上のオリジンサーバーに向かうHTTPフェッチでした。当社の製品ラインが成長するにつれ、トラフィックの種類も増えていきました。最も顕著な例は、<a href="https://blog.cloudflare.com/ja-jp/1111-warp-better-vpn-ja-jp/">当社のWARPアプリ</a>です。WARPの場合、当社のサーバーはフォワードプロキシを操作し、エンドユーザーデバイスから送信されたトラフィックを処理します。これはCDN製品と同じ程度の仲介なしで行われ、問題を引き起こします。インターネット上のサードパーティサーバー（オリジンサーバーなど）は、Cloudflareサービスからの接続と当社のWARPユーザーからの接続を区別できなければならないのです。このようなトラフィックのセグメンテーションは、従来、トラフィックタイプごとに異なるIPレンジを使用することで行われてきました（ただし、最近では<a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/?ref=blog.cloudflare.com" target="_blank">Authenticated Origin Pulls</a>などのより堅牢な技術を導入しています）。</p>
 	<p>信頼できるトラフィックプールと信頼できないトラフィックプールの区別の問題を回避するために、各サーバーに信頼できないWARP IPアドレスを追加しました。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-30.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-30.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-ip--1">国別タグ付きエグレスIPアドレス</h3>
 	<p>必要なタグは信頼できるタグと信頼できないタグだけではないことがすぐに明らかになりました。WARPサービスには国別タグも必要です。たとえば英国を拠点とするWARPユーザーならば、bbc.comのウェブサイトがきちんと表示されていればそれでいいのです。しかし、BBCのサービスはその多くが英国国内だけに限定されています。</p>
-	<p>これはパブリックIPアドレスを国にマッピングするデータベースを使用し、英国のもののみを許可する<em>ジオフェンシング</em>によって行われます。ジオフェンシングは今日のインターネットで広く普及しています。ジオフェンシングの問題を回避するために、WARPユーザーのロケーションに応じて、適切な国のタグが付いた特定のイグジットアドレスを選択する必要があります。インターネット上の他の多くの当事者と同様に、当社も国コードのタグを付けてジオフィードとして公開しています（<a href="https://mask-api.icloud.com/egress-ip-ranges.csv" target="_blank">この</a>ように）。公開されたジオフィードは単なるデータでし。IP がsay UKとしてタグ付けされているという事実は、それが英国から提供されていることを意味するのではなく、オペレーターが英国に地理的に配置されることを望んでいることを意味します. インターネット上の多くのものと同様に、それは信頼に基づいています。</p>
+	<p>これはパブリックIPアドレスを国にマッピングするデータベースを使用し、英国のもののみを許可する<em>ジオフェンシング</em>によって行われます。ジオフェンシングは今日のインターネットで広く普及しています。ジオフェンシングの問題を回避するために、WARPユーザーのロケーションに応じて、適切な国のタグが付いた特定のイグジットアドレスを選択する必要があります。インターネット上の他の多くの当事者と同様に、当社も国コードのタグを付けてジオフィードとして公開しています（<a href="https://mask-api.icloud.com/egress-ip-ranges.csv?ref=blog.cloudflare.com" target="_blank">この</a>ように）。公開されたジオフィードは単なるデータでし。IP がsay UKとしてタグ付けされているという事実は、それが英国から提供されていることを意味するのではなく、オペレーターが英国に地理的に配置されることを望んでいることを意味します. インターネット上の多くのものと同様に、それは信頼に基づいています。</p>
 	<p>この時点で3つの独立した地名タグがあります。</p>
 	<ul>
 		<li>WARPユーザーの国別タグ - IPを接続するアイボール</li>
@@ -39,7 +39,7 @@
 		<li>エグレスIPの国別タグ</li>
 	</ul>
 	<p>最高のサービスのために、国タグがアイボールIPの国と一致するように、エグレスIPを選択します。しかし、特定の国でタグ付けされたIPからの送信は困難です。当社のデータセンターは世界中のユーザーにサービスを提供しています。注意：エニーキャストであるため、イングレスのルーティングを直接制御することはできません。インターネットの地理はからなずしも物理的な地理と一致するとは限りません。たとえば、ロンドンのデータセンターには、英国国内だけでなく、アイルランドやサウジアラビアのユーザーからもトラフィックが届いています。その結果、ロンドンにある当社のサーバーは、多くの国に関連する多くのWARPのエグレスアドレスを必要とします。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-52.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-52.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>これはどのような結果につながるでしょうか。問題空間が爆発的に広がります。各サーバーに1つか2つのエグレスIPアドレスが必要だったのが、今ではそれが数十個になっています。IPv4アドレスは安価ではありません。この設計では1台のサーバーに多くのアドレスが必要となり、数千台のサーバーを運用することになります。実に高価なアーキテクチャです。</p>
 	<h3 id="--2">問題はエニーキャストにあるのか</h3>
 	<p>要約すると、エニーキャストイングレスでは、ユーザーがどのデータセンターにルーティングされるかを制御できません。したがって、当社の各データセンターは、考えられるあらゆるタグを持つアドレスから外に出ることができなければなりません。また、データセンター内では接続先のサーバーを制御することはできません。タグ、データセンター、データセンター内のサーバーが数多く存在する可能性があります。</p>
@@ -54,9 +54,9 @@
 	<p>以上のような理由から、イングレスのエニーキャストを維持したいのです。私たちは送信アドレスのカーディナリティの問題を別の方法で解決することにしました。</p>
 	<h3 id="100-">100万ドルの問題を解決する</h3>
 	<p>私たちが運用する何千台ものサーバーのうち、どのサーバーも、可能な限りのタグを持つエグレスIPを使用できなければなりません。この解決策を説明するには、まず2つの極端なデザインを示すのが一番わかりやすいでしょう。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-10.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><strong>各サーバーは必要なIPをすべて所有</strong>：各サーバーは必要なタグを持つすべての専用エグレスIPを所有します。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image12-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image12-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><strong>あるサーバーが必要なIPを所有</strong>：特定のタグを持つ専用のエグレスIPが一箇所に存在し、他のサーバーはそのIPにトラフィックを転送します。</p>
 	<p>いずれの選択肢にも長所と短所がそれぞれあります。</p><!--kg-card-begin: html-->
 	<table>
@@ -114,9 +114,9 @@
 	<h3 id="-ip--2">データセンター内のIP共有</h3>
 	<p>サーバー間でIPを共有するという考え方は新しいものではありません。ルーター上のSource-NATで実現してきた方法です。残念なことに、必要なエグレスIPの数が非常に多く、また運用のサイズも大きいため、ルーターレベルでステートフルファイアウォールまたはNATに依存できません。また、当社は共有状態を好まないので、NATの分散インストールは避けたいところです。</p>
 	<p>代わりに選択したのは、<strong>ポート範囲</strong>によるサーバー間におけるエグレスIPの分割です。特定のエグレスIP に対して、各サーバーは使用可能な送信元ポートのごく一部（ポートスライス）を所有します。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-68.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-68.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>インターネットからリターンパケットが届くと、それを正しいマシンに戻すルーティングをしなければなりません。このタスクのために、L4 XDPベースのロードバランサーである "Unimog "をカスタマイズしました。当社のL4 XDPベースのロードバランサー（「<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/"> Unimog, Cloudflareのロードバランサー」（2020）</a>は、これにより完璧に動作しています。</p>
-	<p>たとえば 2,048 ポートのポートスライスを使用すると、31 台のサーバー間で 1 つの IP を共有できます。ただし、ポートが不足する可能性は常にあります。これに対処するために、エグレスポートを効率的に再利用できるよう工夫を重ねてきました。<a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections/">「 ポート不足を解消する方法」（2022）</a>、「<a href="https://lpc.events/event/16/contributions/1349/" target="_blank">IPv4アドレスを共有する方法」（2022）</a>、および当社の<a href="https://cloudflare.tv/event/oZKxMJg4" target="_blank"> Cloudflare.TV セグメント</a>を参考にご覧ください。</p>
+	<p>たとえば 2,048 ポートのポートスライスを使用すると、31 台のサーバー間で 1 つの IP を共有できます。ただし、ポートが不足する可能性は常にあります。これに対処するために、エグレスポートを効率的に再利用できるよう工夫を重ねてきました。<a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections/">「 ポート不足を解消する方法」（2022）</a>、「<a href="https://lpc.events/event/16/contributions/1349/?ref=blog.cloudflare.com" target="_blank">IPv4アドレスを共有する方法」（2022）</a>、および当社の<a href="https://cloudflare.tv/event/oZKxMJg4?ref=blog.cloudflare.com" target="_blank"> Cloudflare.TV セグメント</a>を参考にご覧ください。</p>
 	<p>これが実にうまくいきました。各サーバーは所有するIPアドレスとポートスライスを認識しています。インバウンドルーティングの場合、Unimogはポートを検査し、パケットを適切なマシンにディスパッチします。</p>
 	<h3 id="--4">データセンター間のサブネット共有</h3>
 	<p>しかし、お話はまだ続きます。単一の/32アドレスをデータセンターにルーティングする方法についての説明がまだ終わっていません。従来、パブリックインターネットにおいて/24または256の IPアドレスの粒度でサブネットをルーティングすることしかできませんでした。当社ではこれがIPスペースの大きな浪費につながっていたのです。</p>
@@ -128,7 +128,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>この設計では、リターンパケットがどのデータセンターに送信されるかは問題ではありません。Unimogがいつでもを修正し、データを適切な場所に転送してくれます。基本的にBGP レイヤーではエニーキャストを使用していますが、設計上、IPはセマンティックとしてデータセンターを識別し、IPとポート範囲は特定のマシンを識別します。その動作はほぼユニキャストと変わりません。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-6.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-6.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>私たちはこのテクノロジースタックを「<strong>ソフトユニキャスト</strong>」と呼んでいます。なんだか魔法のようですね。BGPレイヤーのエニーキャスト上にソフトウェアでユニキャストを行ったようなものです。</p>
 	<h3 id="--5">ほとんど魔法のようなソフトユニキャスト</h3>
 	<p>このセットアップにより、大きなメリットを得ることができます。</p>
@@ -136,7 +136,7 @@
 		<li><strong>多数のサーバ間</strong>で/32のエグレスIPを共有することができる。</li>
 		<li>単一のサブネットを<strong>多数のデータセンターに分散でき</strong>、その場で簡単に変更できます。これにより、エグレスIPv4範囲を完全に使用できるようになる。</li>
 		<li><strong>同様のIPアドレスをグループ化</strong>することができる。たとえば、 UKタグでタグ付けされたすべての IPアドレスは、1 つの連続した範囲を形成する場合がある。これにより、公開されるジオフィードのサイズが縮小される。</li>
-		<li>お客様のIPのように、新しい<strong>エグレスIP範囲をオンボードする</strong>のが簡単。これは<a href="https://www.cloudflare.com/ja-jp/products/zero-trust/" target="_blank">Cloudflare Zero Trust</a>など、当社の一部の製品に便利。</li>
+		<li>お客様のIPのように、新しい<strong>エグレスIP範囲をオンボードする</strong>のが簡単。これは<a href="https://www.cloudflare.com/ja-jp/products/zero-trust/?ref=blog.cloudflare.com" target="_blank">Cloudflare Zero Trust</a>など、当社の一部の製品に便利。</li>
 	</ul>
 	<p>しかも、性能と信頼性を損なわず、合理的なコストで実現。</p>
 	<ul>
@@ -147,7 +147,7 @@
 	<h3 id="ip-">IPアドレスが本当にある場所は"クラウド"</h3>
 	<p>ソフトユニキャストによって大きな効率を得ることができるようになった一方で、いくつかの問題に直面しました。「このIPは物理的にどこに所在しているのですか?」という質問を受けることがあります。残念ながらその答えはありません。物理的には、当社のエグレスIPはどこにも存在しないのです。BGP の観点からすると、送信範囲はエニーキャストであるため、どこにでも存在すると言えます。論理的には各アドレスは1つのデータセンターで同時に使用されますが、オンデマンドで移動できます。</p>
 	<h3 id="--6">コンテンツ配信ネットワークはユーザーに誤った誘導をする</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-43.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-43.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>もう一つの問題例として、サードパーティのCDNで発生したある問題をご紹介します。先ほどもお伝えしたように、当社のパイプラインには3つの国別タグがあります。</p>
 	<ul>
 		<li>アイボールが接続しているIPの国別タグ。</li>

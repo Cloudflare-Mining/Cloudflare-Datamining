@@ -1,22 +1,22 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-23.png" class="kg-image" alt="Announcing D1: Our first SQL database"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-23.png" class="kg-image" alt="Announcing D1: Our first SQL database" loading="lazy"></figure>
 	<p>我们在 2017 年<a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">推出</a>了 Cloudflare Workers，让开发人员能够在我们的网络上进行计算。我们对这一产品解锁的可能性感到兴奋，但我们很快意识到——大多数现实世界的应用程序都是有状态的。从那时起，我们交付了 KV、Durable Objects 和 R2，让开发人员可以访问各种类型的存储。</p>
 	<p>今天，我们很高兴地宣布推出 D1，这是我们的第一个 SQL 数据库。</p>
-	<p>虽然等待测试版的时间应该不会太久——我们最早会在 6 月开始让人们使用（<a href="https://www.cloudflare.com/lp/d1/" target="_blank">在此处注册</a>），但我们很高兴能详细分享一些即将发生的事情。</p>
+	<p>虽然等待测试版的时间应该不会太久——我们最早会在 6 月开始让人们使用（<a href="https://www.cloudflare.com/lp/d1/?ref=blog.cloudflare.com" target="_blank">在此处注册</a>），但我们很高兴能详细分享一些即将发生的事情。</p>
 	<h2 id="d1-cloudflare-workers-">D1，为 Cloudflare Workers 设计的数据库</h2>
-	<p>D1 基于 SQLite 构建。SQLite 不仅是世界上最普遍的数据库，每天被数十亿台设备使用，它还是第一个<em>无服务器</em>数据库。惊讶吗？SQLite 太超前了，在该术语获得云服务的内涵之前，它称自己为“<a href="https://www.sqlite.org/serverless.html" target="_blank">无服务器</a>”，最初的字面意思是“不涉及服务器”。</p>
+	<p>D1 基于 SQLite 构建。SQLite 不仅是世界上最普遍的数据库，每天被数十亿台设备使用，它还是第一个<em>无服务器</em>数据库。惊讶吗？SQLite 太超前了，在该术语获得云服务的内涵之前，它称自己为“<a href="https://www.sqlite.org/serverless.html?ref=blog.cloudflare.com" target="_blank">无服务器</a>”，最初的字面意思是“不涉及服务器”。</p>
 	<p>由于 Workers 本身在服务器和客户端之间运行，并且受到为客户端构建的技术的启发，SQLite 似乎非常适合作为我们进入数据库领域的入口。</p>
 	<p>那么您可以用 D1 构建什么？真正的答案是“几乎任何东西！”，这可能对激发想象力没有多大帮助，那么看一下演示怎么样？</p>
 	<h2 id="d1-northwind-traders">D1 演示：Northwind Traders</h2>
-	<p>您可以尝试此处运行的演示来查看 D1 的示例：<a href="https://northwind.d1sql.com/" target="_blank">northwind.d1sql.com</a>。</p>
+	<p>您可以尝试此处运行的演示来查看 D1 的示例：<a href="https://northwind.d1sql.com/?ref=blog.cloudflare.com" target="_blank">northwind.d1sql.com</a>。</p>
 	<p>如果您想知道“Northwind Traders 是谁？”，Northwind Traders 就是“Hello，World！” 数据库，这是 Microsoft 将与 Microsoft Access 一起提供的示例数据库，以用作他们自己的教程。它于 25 年前的 1997 年首次出现，您可以在互联网上找到许多使用它的示例。</p>
 	<p>它是一个典型的业务应用程序，具有真实的架构，具有许多外键，跨越许多不同的表——这是真正永恒的数据表示。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-13.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-13.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>最近订购的 Queso Cabrales 是什么时候发货的？在哪艘船上？您可以快速找到答案。有人打电话来想要订购一些茶？好的，Exotic Liquids 中还有 39 件库存，每件仅售 18 美元。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-14.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-14.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>我们欢迎您来玩耍，并乐于回答您对 Northwind Trading 业务的任何问题。</p>
 	<p>Northwind Traders 演示还具有一个仪表板，您可以在其中找到有关幕后发生的 D1 SQL 查询的详细信息和指标。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-5.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="-d1-">您可以用 D1 构建什么？</h2>
 	<p>回到演示之前我们最初的问题，您可以用 D1 构建什么？</p>
 	<p>虽然您自己可能没有运行 Northwind Traders，但您可能在某个地方运行了一个非常相似的软件。甚至在 Cloudflare 服务的核心部分也是一个数据库，一个充满表、物化视图和大量存储过程的 SQL 数据库。每次客户与我们的仪表板交互时，他们最终都会更改该数据库中的状态。</p>
@@ -27,7 +27,7 @@
 	<p>为了让您了解它，接下来将介绍如何开始使用 D1。</p>
 	<h3 id="-d1--1">创建您的第一个 D1 数据库</h3>
 	<p>使用 D1，只需单击几下鼠标，定义表格、插入或上传一些数据，即可创建数据库，无需记住任何命令（除非您需要）。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>当然，如果命令行是您的难点，本周早些时候，我们还推出了<a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/">新的和改进的 Wrangler 2</a>，它是管理和部署 Workers 的最佳工具，很快也会成为您部署 D1 的工具。Wrangler 还将附带原生 D1 支持，因此您可以使用一些简单的命令创建和管理数据库：</p>
 	<h3 id="-worker-d1">从您的 Worker 访问 D1</h3>
 	<p>将 D1 附加到您的 Worker 就像创建新绑定一样简单。您附加到 Worker 的每个 D1 数据库都在 env 参数上附加了自己的绑定：</p><!--kg-card-begin: html-->
@@ -81,5 +81,5 @@ export default {
 	<p>虽然 D1 已经支持 SQLite API，让您能够轻松编写查询，但您可能还需要数据来运行它们。如果您不是创建全新的应用程序，则可能会想要从另一个源或数据库导入现有数据集，这就是为什么我们会努力让您将自己的数据导入 D1。</p>
 	<p>同样，SQLite 的优势之一是它的可移植性。例如，如果您的应用程序有一个专用的暂存环境，您将能够将该数据的快照克隆到您的本地机器上进行开发。我们将增加更多的灵活性，例如为 Pages 项目中的每个新请求创建一个包含一组测试数据的新数据库的能力。</p>
 	<h2 id="--5">后续计划</h2>
-	<p>几乎每一个 Cloudflare 公告中，我们都会得出“我们才刚刚开始！”的结论。事实如此，我们的确才刚刚开始！我们对全球网络的开放所能够带来的所有强大可能性感到非常兴奋。您是否已经在考虑要使用 D1 和 Workers 构建什么？我们也在思考同样的问题。<a href="https://www.cloudflare.com/lp/d1/" target="_blank">向我们提供您的详细信息</a>，我们会尽快为您提供访问权限——请留意最早将从 2022 年 6 月开始发出的测试版邀请！</p>
+	<p>几乎每一个 Cloudflare 公告中，我们都会得出“我们才刚刚开始！”的结论。事实如此，我们的确才刚刚开始！我们对全球网络的开放所能够带来的所有强大可能性感到非常兴奋。您是否已经在考虑要使用 D1 和 Workers 构建什么？我们也在思考同样的问题。<a href="https://www.cloudflare.com/lp/d1/?ref=blog.cloudflare.com" target="_blank">向我们提供您的详细信息</a>，我们会尽快为您提供访问权限——请留意最早将从 2022 年 6 月开始发出的测试版邀请！</p>
 </div>
