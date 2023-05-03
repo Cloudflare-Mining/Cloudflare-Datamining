@@ -1,20 +1,20 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-31.png" class="kg-image" alt="How to augment or replace your VPN with Cloudflare"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-31.png" class="kg-image" alt="How to augment or replace your VPN with Cloudflare" loading="lazy"></figure>
 	<blockquote><em>“从不信任，始终验证”</em></blockquote>
-	<p>如今，几乎所有与我们交谈过的人都理解并同意 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 这一原则。那么是什么在阻止人们呢？ 我们听到的最大抱怨是：他们根本不知道从哪里开始。安全工具和网络基础设施通常已经存在多年，涉及人们每天工作所依赖的应用程序的模糊实现过程可能会让人心生恐惧。</p>
-	<p>虽然没有通用的答案，但我们的一些客户都认同，将关键应用程序从传统的 VPN 转移到类似 Cloudflare Access 的云原生 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">Zero Trust 网络访问</a> (ZTNA) 解决方案是一个很好的开始，这为他们的企业提供可行、有意义的升级。</p><!--kg-card-begin: markdown-->
+	<p>如今，几乎所有与我们交谈过的人都理解并同意 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust</a> 这一原则。那么是什么在阻止人们呢？ 我们听到的最大抱怨是：他们根本不知道从哪里开始。安全工具和网络基础设施通常已经存在多年，涉及人们每天工作所依赖的应用程序的模糊实现过程可能会让人心生恐惧。</p>
+	<p>虽然没有通用的答案，但我们的一些客户都认同，将关键应用程序从传统的 VPN 转移到类似 Cloudflare Access 的云原生 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/?ref=blog.cloudflare.com" target="_blank">Zero Trust 网络访问</a> (ZTNA) 解决方案是一个很好的开始，这为他们的企业提供可行、有意义的升级。</p><!--kg-card-begin: markdown-->
 	<p>事实上，Gartner<sup>Ⓡ</sup> 预测，“到 2025 年，至少 70% 的新远程访问部署将主要由 ZTNA 支持，而非 VPN 服务，而 2021 年底这一比例还不到 10%。<sup>1</sup> 通过优先部署 ZTNA 项目， IT 和安全高管可以更好地保护他们的业务免受勒索软件等攻击，同时改善员工的日常工作流程。在安全与用户体验之间进行权衡是一种过时的世界观；如果选择 ZTNA 路线，组织就可以真正同时提升这两者。</p>
 	<!--kg-card-end: markdown-->
-	<p>您可以在<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">这里</a>开始免费使用 Cloudflare Access，本指南将告诉您为什么和怎么做。</p>
+	<p>您可以在<a href="https://dash.cloudflare.com/sign-up/teams?ref=blog.cloudflare.com" target="_blank">这里</a>开始免费使用 Cloudflare Access，本指南将告诉您为什么和怎么做。</p>
 	<h3 id="-vpn">为什么没有人喜欢他们的 VPN</h3>
 	<p>VPN 授予的网络级访问和默认信任带来了网络内横向移动的可能性，形成了可避免的安全漏洞。攻击者在窃取凭据后，可能会通过不那么敏感的入口点进入您的网络，然后遍历查找更多业务关键信息以利用。面对不断增长的攻击，这里的威胁非常真实，不容忽视，而缓解的途径也是触手可及的。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-31.png" class="kg-image" alt="With network-level access, attackers can spread from an entry point to the rest of the network"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-31.png" class="kg-image" alt="With network-level access, attackers can spread from an entry point to the rest of the network" loading="lazy"></figure>
 	<p>与此同时，VPN 的性能感觉还停留在 90 年代，但并不是令人愉快和怀旧的事情。员工们忍受着缓慢而不可靠的连接，这些连接根本不适合今天的远程访问规模。在“大洗牌”时代和当前的招聘形势下，为团队提供基于传统技术的低水平体验不能带来高投资回报率。当 IT/安全从业人员有大量其他现成的工作机会时，他们可能不想忍受源自过时技术堆栈的手动、可避免的任务。从安全性和可用性的角度来看，转向 VPN 替代是非常值得追求的。</p>
 	<h3 id="-">使最小权限访问成为默认设置</h3>
 	<p>ZTNA 实施或“软件定义的边界”针对每个资源授权访问，而不是对用户进行身份验证后提供对公司网络上所有内容的访问权限，从而有效地消除了横向移动的可能性。对于每次访问尝试，系统都会根据基于身份、设备态势、地理位置和其他上下文信息的 Zero Trust 规则进行评估。随着上下文的变化，不断地重新评估用户，并且记录所有事件，以帮助提高对所有类型应用程序的可见性。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-20.png" class="kg-image" alt="ZTNA helps prevent dangerous lateral movement on an organization’s corporate network"></figure>
-	<p><a href="https://www.cloudflare.com/case-studies/udaan-access/" target="_blank">Udaan</a> 联合创始人 Amod Malviya 指出，“VPN 令人沮丧，并导致员工和支持他们的 IT 人员浪费了时间。此外，传统的 VPN 会让人们产生一种虚假的安全感。借助 Cloudflare Access，我们有了更可靠、更直观、更安全的解决方案，可以基于每个用户、每次访问运行。我认为它是身份验证 2.0——甚至是 3.0”。</p>
-	<p>更高的安全性<em>和</em>更佳的用户体验并不总是共存的，但 ZTNA 的基本架构确实比传统 VPN 更好。无论您的用户是访问 Office 365 还是自定义的本地人力资源应用程序，每次登录体验都是相同的。鉴于 Zero Trust 规则在幕后检查，突然之间，每个应用程序对最终用户来说都感觉如同 SaaS 应用。我们在 <a href="https://www.cloudflare.com/case-studies/onetrust/" target="_blank">OneTrust</a> 的朋友实施 ZTNA 时就表示， “员工可以连接到他们需要的工具，团队甚至不知道 Cloudflare 正在为背后提供支持。非常有效。”</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-20.png" class="kg-image" alt="ZTNA helps prevent dangerous lateral movement on an organization’s corporate network" loading="lazy"></figure>
+	<p><a href="https://www.cloudflare.com/case-studies/udaan-access/?ref=blog.cloudflare.com" target="_blank">Udaan</a> 联合创始人 Amod Malviya 指出，“VPN 令人沮丧，并导致员工和支持他们的 IT 人员浪费了时间。此外，传统的 VPN 会让人们产生一种虚假的安全感。借助 Cloudflare Access，我们有了更可靠、更直观、更安全的解决方案，可以基于每个用户、每次访问运行。我认为它是身份验证 2.0——甚至是 3.0”。</p>
+	<p>更高的安全性<em>和</em>更佳的用户体验并不总是共存的，但 ZTNA 的基本架构确实比传统 VPN 更好。无论您的用户是访问 Office 365 还是自定义的本地人力资源应用程序，每次登录体验都是相同的。鉴于 Zero Trust 规则在幕后检查，突然之间，每个应用程序对最终用户来说都感觉如同 SaaS 应用。我们在 <a href="https://www.cloudflare.com/case-studies/onetrust/?ref=blog.cloudflare.com" target="_blank">OneTrust</a> 的朋友实施 ZTNA 时就表示， “员工可以连接到他们需要的工具，团队甚至不知道 Cloudflare 正在为背后提供支持。非常有效。”</p>
 	<h3 id="-ztna-">编制 ZTNA 项目计划</h3>
 	<p>VPN 在组织的基础设施中根深蒂固，完全替换一个 VPN 可能需要相当长的时间，这取决于所服务的用户和应用程序的总数。然而，逐步取得进展仍然具有重要的商业价值。您可以按照自己的节奏从 VPN 迁移，并让 ZTNA 和您的 VPN 共存一段时间，但重要的是至少要开始。</p>
 	<p>考虑您的 VPN 背后哪一两个应用程序对 ZTNA 试点最有价值，例如一个已有投诉或无数 IT 支持工单的应用。否则，考虑那些被特别挑剔或高风险用户频繁使用或访问的内部应用程序。如果您的 VPN 有任何即将到来的硬件升级或许可证更新计划，相关基础设施背后的应用程序也可能是进行现代化试点的合理选择。</p>
@@ -30,22 +30,21 @@
 	<p>原生使用传统单点登录工具的遗留本地应用尤其难以实施 MFA。使用 Cloudflare Access 作为反向代理有助于提供一个聚合层，以简化 MFA 到所有资源的部署，无论它们位于何处。</p>
 	<p><strong>第四步：立即测试无客户端访问</strong><br>在将应用程序连接到 Cloudflare 并配置所需级别的授权规则后，最终用户大多数情况下可以在不使用设备客户端的情况下测试 Web、SSH 或 VNC 访问。由于不需要下载或移动设备管理(MDM)，这有助于加速关键应用程序采用 ZTNA，对于启用第三方访问尤其有用。</p>
 	<p>请注意，设备客户端仍然可以用于解锁其他用例，如保护 SMB 或厚客户端应用程序、验证设备态势或启用专用路由。Cloudflare Access 可以处理任何 L4-7 TCP 或 UDP 流量，通过连接 WAN 即服务，它可以代替 VPN 用例，如 ICMP 或服务器到客户端发起的协议流量，如 VoIP。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-22.png" class="kg-image" alt="Cloudflare Access helps connect all of an organization’s users to business resources, verifying every login and request with contextual factors"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-22.png" class="kg-image" alt="Cloudflare Access helps connect all of an organization’s users to business resources, verifying every login and request with contextual factors" loading="lazy"></figure>
 	<p>在试点应用的这个阶段，您已经开始使用 ZTNA 了！可以按照自己感到舒适的步伐，每次从 VPN 转移一个高优先级应用，以帮助现代化您的访问安全。不过，增强和完全取代 VPN 是完全不同的两件事。</p>
 	<h3 id="-vpn-">向完全 VPN 替代迈进</h3>
-	<p>虽然贵公司很清楚应该从 VPN 转移哪几个最主要的资源，但整体而言规模可能令人不知所措，需要考虑数千个内部 IP 和域。您可以在 Cloudflare Access 内配置本地域回退项，以指向选定的<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/private-hostnames-ips/" target="_blank">内部主机名</a>。这可以帮助您更有效地传播对内部网上可用资源的访问。</p>
+	<p>虽然贵公司很清楚应该从 VPN 转移哪几个最主要的资源，但整体而言规模可能令人不知所措，需要考虑数千个内部 IP 和域。您可以在 Cloudflare Access 内配置本地域回退项，以指向选定的<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/private-hostnames-ips/?ref=blog.cloudflare.com" target="_blank">内部主机名</a>。这可以帮助您更有效地传播对内部网上可用资源的访问。</p>
 	<p>对于管理员来说，要详细地了解他们当前 VPN 使用的全部范围也很困难。撇开潜在的可见性问题不谈，应用程序和用户的整个范围可能处于动态变化之中，尤其是在大型组织中。您可以使用 Cloudflare Access 内的<a href="https://blog.cloudflare.com/zh-cn/introducing-network-discovery-zh-cn/">专用网络发现</a>报告来被动检查自己网络上随时间变化的流量状态。对于需要更多保护的已发现应用程序，Access 工作流可帮助您根据需要强化 Zero Trust 规则。</p>
 	<p>这两种功能都可以帮助减少有关完全退役 VPN 的焦虑。通过开始在 Cloudflare 网络之上构建您的专用网络，您将使组织更接近实现 Zero Trust 安全。</p>
 	<h3 id="--2">客户正在看到的影响</h3>
-	<p>通过从 VPN 卸载应用程序并转向 ZTNA，即使在短期内也可以为您的业务带来可衡量的好处。我们的许多客户都表示，IT 团队的效率得到了提高，新员工的入职速度更快，花在访问相关支持工单上的时间更少。例如，在实施 Cloudflare Access 后，<a href="https://www.cloudflare.com/case-studies/eteacher-group/" target="_blank">eTeacher Group</a> 将员工入职时间减少了 60%，帮助所有团队更快适应新环境。</p>
+	<p>通过从 VPN 卸载应用程序并转向 ZTNA，即使在短期内也可以为您的业务带来可衡量的好处。我们的许多客户都表示，IT 团队的效率得到了提高，新员工的入职速度更快，花在访问相关支持工单上的时间更少。例如，在实施 Cloudflare Access 后，<a href="https://www.cloudflare.com/case-studies/eteacher-group/?ref=blog.cloudflare.com" target="_blank">eTeacher Group</a> 将员工入职时间减少了 60%，帮助所有团队更快适应新环境。</p>
 	<p>即使您计划与您的 VPN 共存，同时采用较慢的现代化节奏，您仍然可以跟踪已过渡到 ZTNA 的特定应用程序的 IT 工单，以帮助量化影响。总体工单数量是否下降了？解决时间是否减少了？随着时间的推移，您还可以与人力资源合作，通过员工敬业度调查获得定性反馈。员工是否感觉通过当前的工具集得到了赋能？他们是否觉得自己的工作效率提高了，或者抱怨得到了解决?</p>
 	<p>当然，安全状况的改善也有助于降低代价高昂的数据泄露风险及其对品牌声誉的持续破坏性影响。在这里，为每一个细微改进的成本收益精确定位狭窄的因果关系可能感觉更像是艺术而不是科学，因为有太多的变量需要考虑。尽管如此，降低对 VPN 的依赖是减少攻击面的重要一步，有助于您的宏观投资回报，无论你的完全 Zero Trust 之旅可能持续多长时间。</p>
 	<h3 id="-vpn--1">立即计划替代 VPN 的工作</h3>
 	<p>我们对产品简单性的痴迷已经帮助我们的许多客户淘汰了 VPN，我们迫不及待地要做更多事情。</p>
-	<p>您可以在<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">这里</a>开始免费使用 Cloudflare Access，从而开始增强您的 VPN。按照上面列出的步骤处理您确定的优先 ZTNA 测试用例。要进一步了解更大范围的时间需求，您可以制定自己的 <a href="https://zerotrustroadmap.org/" target="_blank">Zero Trust 路线图</a>并确定下一步应该进行的项目。</p>
-	<p>有关 Cloudflare One Week 的完整总结和最新内容，欢迎参加我们的<a href="https://gateway.on24.com/wcc/eh/2153307/lp/3824611/the-evolution-of-cloudflare-one?partnerref=blog" target="_blank">总结网络研讨会</a>。</p><!--kg-card-begin: markdown-->
-	<p><small>___</small></p><small>
-	</small>
-	<p><small><sup>1</sup>Nat Smith，Mark Wah，Christian Canales。 (2022 年 4 月 8 日)。新兴技术：Zero Trust 网络访问的采用增长洞察。GARTNER 是 GARTNER, Inc.和/或其关联公司在美国和国际上的注册商标和服务标志，并经许可在此使用。保留一切权利。</small></p>
+	<p>您可以在<a href="https://dash.cloudflare.com/sign-up/teams?ref=blog.cloudflare.com" target="_blank">这里</a>开始免费使用 Cloudflare Access，从而开始增强您的 VPN。按照上面列出的步骤处理您确定的优先 ZTNA 测试用例。要进一步了解更大范围的时间需求，您可以制定自己的 <a href="https://zerotrustroadmap.org/?ref=blog.cloudflare.com" target="_blank">Zero Trust 路线图</a>并确定下一步应该进行的项目。</p>
+	<p>有关 Cloudflare One Week 的完整总结和最新内容，欢迎参加我们的<a href="https://gateway.on24.com/wcc/eh/2153307/lp/3824611/the-evolution-of-cloudflare-one?partnerref=blog&amp;ref=blog.cloudflare.com" target="_blank">总结网络研讨会</a>。</p><!--kg-card-begin: markdown-->
+	<p><small>___</small></p>
+	<p><sup>1</sup>Nat Smith，Mark Wah，Christian Canales。 (2022 年 4 月 8 日)。新兴技术：Zero Trust 网络访问的采用增长洞察。GARTNER 是 GARTNER, Inc.和/或其关联公司在美国和国际上的注册商标和服务标志，并经许可在此使用。保留一切权利。</p>
 	<!--kg-card-end: markdown-->
 </div>

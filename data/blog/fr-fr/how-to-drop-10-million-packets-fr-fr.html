@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<p>En interne, notre équipe d’atténuation des attaques DDoS est parfois appelée « les supprimeurs de paquets ». Tandis que d’autres équipes créent des produits passionnants permettant de gérer intelligemment le trafic transitant par notre réseau, nous prenons plaisir à découvrir de nouvelles façons de le supprimer.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/07/38464589350_d00908ee98_b.jpg" class="kg-image" alt="38464589350_d00908ee98_b" loading="lazy">
-		<figcaption><a href="https://www.flickr.com/photos/beegee49/38464589350?ref=blog.cloudflare.com" target="_blank">Image</a> par <a href="https://creativecommons.org/licenses/by-sa/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY-SA 2.0</a>par <a href="https://www.flickr.com/photos/beegee49?ref=blog.cloudflare.com" target="_blank">Brian Evans</a></figcaption>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/07/38464589350_d00908ee98_b.jpg" class="kg-image" alt="38464589350_d00908ee98_b">
+		<figcaption><a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank">Image</a> par <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a>par <a href="https://www.flickr.com/photos/beegee49" target="_blank">Brian Evans</a></figcaption>
 	</figure>
 	<p>Il est très important de pouvoir éliminer rapidement les paquets pour résister aux attaques DDoS.</p>
 	<p>Supprimer des paquets sur nos serveurs, aussi simple que cela puisse paraître, peut être fait sur plusieurs couches. Chaque technique a ses avantages et ses limites. Dans cet article de blog, nous examinerons toutes les techniques que nous avons essayées jusqu'à présent.</p>
@@ -35,7 +35,7 @@ p_raw  UNCONN     525157 0      *:vlan100          users:(("tcpdump",pid=23683,f
 	<p>Enfin, nous allons désactiver la fonctionnalité Intel Turbo Boost sur la machine :</p>
 	<p><code>echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo</code></p>
 	<p>Bien que Turbo Boost soit agréable et augmente le débit d'au moins 20 %, il aggrave également l'écart-type de nos tests de manière considérable. Avec le turbo activé, nous avions un écart de ± 1,5 % dans nos chiffres. Avec la désactivation de Turbo, ce pourcentage tombe à 0,25 %.<br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/07/layers.JPG" class="kg-image" alt="layers" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/07/layers.JPG" class="kg-image" alt="layers"></figure>
 	<h4 id="-tape-1-supprimer-les-paquets-dans-l-application"><strong>Étape 1. Supprimer les paquets dans l’application</strong></h4>
 	<p>Commençons par l’idée de livrer des paquets à une application et de les ignorer dans le code de l’espace utilisateur. Pour la configuration du test, assurons-nous que nos iptables n’affectent pas les performances :</p>
 	<pre><code>iptables -I PREROUTING -t mangle -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
@@ -47,7 +47,7 @@ iptables -I INPUT -t filter -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
 s.bind(("0.0.0.0", 1234))
 while True:
     s.recvmmsg([...])</code></pre>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c?ref=blog.cloudflare.com" target="_blank">Nous avons préparé le code</a>, pour l'exécuter :</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c" target="_blank">Nous avons préparé le code</a>, pour l'exécuter :</p>
 	<pre><code>$ ./dropping-packets/recvmmsg-loop
 packets=171261 bytes=1940176</code></pre>
 	<p>Cette configuration permet au noyau de recevoir un maigre 175kpps de la file d'attente de réception matérielle, mesuré par ethtool et à l'aide de notre <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram/">simple</a> outil <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram/">mmwatch</a> :</p>
@@ -93,7 +93,7 @@ packets=331008 bytes=5296128</code></pre>
 	<p>PS. Avec <code>SO_BUSY_POLL</code>, nous pouvons ramener les nombres à 470 kpps, mais réservons ce sujet pour une autre fois.</p>
 	<h4 id="-tape-3-suppression-bpf-sur-une-socket"><strong>Étape 3. Suppression BPF sur une socket</strong></h4>
 	<p>De plus, quelle peut bien être l’utilité livrer des paquets à une application utilisateur ? Même si cette technique est rare, nous pouvons rattacher un filtre BPF classique à un socket <code>SOCK_DGRAM</code> avec setsockopt ( <code>SO_ATTACH_FILTER</code> &nbsp;) et programmer le filtre pour éliminer les paquets dans l’espace noyau.</p>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c?ref=blog.cloudflare.com" target="_blank">Voir le code</a>, pour l'exécuter :</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c" target="_blank">Voir le code</a>, pour l'exécuter :</p>
 	<pre><code>$ ./bpf-drop
 packets=0 bytes=0</code></pre>
 	<p>Avec des suppressions BPF (l’eBPF classique et étendu ont des performances similaires), nous traitons environ 512 kpps. Tous sont supprimés dans le filtre BPF en mode d'interruption logicielle, ce qui nous évite le processeur nécessaire pour réactiver l'application utilisateur.</p>
@@ -116,7 +116,7 @@ Chain INPUT (policy DROP 0 packets, 0 bytes)
 	<p>Il s’agit d’un saut de performance assez important et je ne le comprends pas bien. Soit notre couche de routage est inhabituellement complexe, soit il y a un bogue dans la configuration de notre serveur.</p>
 	<p>Dans tous les cas, la table iptables « raw » est nettement plus rapide.</p>
 	<h4 id="-tape-6-suppression-nftables-avant-conntrack"><strong>Étape 6. SUPPRESSION nftables avant CONNTRACK</strong></h4>
-	<p>Iptables est considéré comme dépassé de nos jours. Le nouveau gamin en ville est nftables. Regardez cette <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c&amp;ref=blog.cloudflare.com" target="_blank">vidéo pour une explication technique</a> de la supériorité de nftables. Nftables promet d’être plus rapide que iptables aux cheveux grisonnants pour de nombreuses raisons, notamment une rumeur selon laquelle les retpolines (c'est-à-dire pas de spéculation sur les sauts indirects) perturbent sérieusement iptables.</p>
+	<p>Iptables est considéré comme dépassé de nos jours. Le nouveau gamin en ville est nftables. Regardez cette <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c" target="_blank">vidéo pour une explication technique</a> de la supériorité de nftables. Nftables promet d’être plus rapide que iptables aux cheveux grisonnants pour de nombreuses raisons, notamment une rumeur selon laquelle les retpolines (c'est-à-dire pas de spéculation sur les sauts indirects) perturbent sérieusement iptables.</p>
 	<p>Comme cet article ne compare pas la vitesse de nftables à celle d'iptables, essayons uniquement la suppression la plus rapide que j'ai pu trouver :</p>
 	<pre><code>nft add table netdev filter
 nft -- add chain netdev filter input { type filter hook ingress device vlan100 priority -500 \; policy accept \; }
@@ -135,7 +135,7 @@ table netdev filter {
 	<p>rendements de crochet d’« entrée » Nftables autour de 1,53 mpps. Ceci est légèrement plus lent que iptables dans la couche <code>PREROUTING</code>. Ce constat a de quoi surprendre. En théorie, l’« entrée » se produit avant le <code>PREROUTING</code>, elle devrait donc être plus rapide.</p>
 	<p>Dans notre test, nftables était légèrement plus lent que iptables, mais pas beaucoup. Nftables est toujours mieux :P</p>
 	<h4 id="-tape-7-suppression-du-gestionnaire-d-entr-e-tc"><strong>Étape 7. SUPPRESSION du gestionnaire d’entrée tc</strong></h4>
-	<p>Un fait quelque peu surprenant est qu’un raccordement d’entrée tc (contrôle de trafic) se produit avant même le <code>PREROUTING</code>. Avec tc, il est possible de sélectionner des paquets en fonction des critères de base et les supprimer effectivement. La syntaxe est plutôt difficile. Il est donc recommandé d'<a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh?ref=blog.cloudflare.com" target="_blank">utiliser ce script</a> pour le configurer. Nous avons besoin d'une correspondance de tc un peu plus complexe. Voici la ligne de commande :</p>
+	<p>Un fait quelque peu surprenant est qu’un raccordement d’entrée tc (contrôle de trafic) se produit avant même le <code>PREROUTING</code>. Avec tc, il est possible de sélectionner des paquets en fonction des critères de base et les supprimer effectivement. La syntaxe est plutôt difficile. Il est donc recommandé d'<a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh" target="_blank">utiliser ce script</a> pour le configurer. Nous avons besoin d'une correspondance de tc un peu plus complexe. Voici la ligne de commande :</p>
 	<pre><code>tc qdisc add dev vlan100 ingress
 tc filter add dev vlan100 parent ffff: prio 4 protocol ip u32 match ip protocol 17 0xff match ip dport 1234 0xffff match ip dst 198.18.0.0/24 flowid 1:1 action drop
 tc filter add dev vlan100 parent ffff: protocol ipv6 u32 match ip6 dport 1234 0xffff match ip6 dst fd00::/64 flowid 1:1 action drop
@@ -158,17 +158,17 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 	<p>Un crochet d’entrée tc avec correspondance de u32 nous permet de supprimer 1,8 ppm sur un seul processeur. C'est génial !</p>
 	<p>Mais nous pouvons aller encore plus vite...</p>
 	<h4 id="-tape-8-xdp_drop"><strong>Étape 8. XDP_DROP</strong></h4>
-	<p>Enfin, l'arme ultime est XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP/?ref=blog.cloudflare.com" target="_blank">eXpress Data Path</a>. Avec XDP, nous pouvons exécuter le code eBPF dans le contexte d’un pilote réseau. Plus important encore, ceci est avant l’attribution de la mémoire skbuff, ce qui permet de grandes vitesses.</p>
+	<p>Enfin, l'arme ultime est XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP/" target="_blank">eXpress Data Path</a>. Avec XDP, nous pouvons exécuter le code eBPF dans le contexte d’un pilote réseau. Plus important encore, ceci est avant l’attribution de la mémoire skbuff, ce qui permet de grandes vitesses.</p>
 	<p>Habituellement, les projets XDP ont deux parties :</p>
 	<ul>
 		<li>le code eBPF chargé dans le contexte du noyau</li>
 		<li>le chargeur d'espace utilisateur, qui charge le code sur la bonne carte réseau et le gère</li>
 	</ul>
-	<p>L'écriture du chargeur est assez difficile. Nous pouvons donc plutôt utiliser la <a href="https://cilium.readthedocs.io/en/latest/bpf/?ref=blog.cloudflare.com#iproute2" target="_blank">nouvellefonctionnalitéiproute2</a> et charger le code avec cette commande triviale :</p>
+	<p>L'écriture du chargeur est assez difficile. Nous pouvons donc plutôt utiliser la <a href="https://cilium.readthedocs.io/en/latest/bpf/#iproute2" target="_blank">nouvellefonctionnalitéiproute2</a> et charger le code avec cette commande triviale :</p>
 	<pre><code>ip link set dev ext0 xdp obj xdp-drop-ebpf.o
 </code></pre>
 	<p>Tadam !</p>
-	<p>Le code source du <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c?ref=blog.cloudflare.com" target="_blank">programme eBPF XDP chargé est disponible ici</a>. Le programme analyse les paquets IP et recherche les caractéristiques souhaitées : Transport IP, protocole UDP, sous-réseau cible et port de destination souhaités :</p>
+	<p>Le code source du <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c" target="_blank">programme eBPF XDP chargé est disponible ici</a>. Le programme analyse les paquets IP et recherche les caractéristiques souhaitées : Transport IP, protocole UDP, sous-réseau cible et port de destination souhaités :</p>
 	<pre><code class="language-python">if (h_proto == htons(ETH_P_IP)) {
     if (iph-&gt;protocol == IPPROTO_UDP
         &amp;&amp; (htonl(iph-&gt;daddr) &amp; 0xFFFFFF00) == 0xC6120000 // 198.18.0.0/24
@@ -189,21 +189,21 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
      rx2_xdp_drop:        10.1m/s
 </code></pre>
 	<p>Whooa ! Avec XDP, nous pouvons supprimer 10 millions de paquets par seconde sur un seul processeur.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://www.flickr.com/photos/afiler/225821241/?ref=blog.cloudflare.com" target="_blank">Image</a><a href="https://creativecommons.org/licenses/by-sa/2.0/?ref=blog.cloudflare.com" target="_blank"> CC BY-SA 2.0</a> par<a href="https://www.flickr.com/photos/afiler/?ref=blog.cloudflare.com" target="_blank">Andrew Filer</a></figcaption>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image-1.png" class="kg-image">
+		<figcaption><a href="https://www.flickr.com/photos/afiler/225821241/" target="_blank">Image</a><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank"> CC BY-SA 2.0</a> par<a href="https://www.flickr.com/photos/afiler/" target="_blank">Andrew Filer</a></figcaption>
 	</figure>
 	<h3 id="r-sum-"><strong>Résumé</strong></h3>
 	<p>Nous les avons répété pour IPv4 et IPv6 et avons préparé ce tableau :</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-2.png" class="kg-image"></figure>
 	<p>De manière générale, dans notre configuration, IPv6 présentait des performances légèrement inférieures. N'oubliez pas que les paquets IPv6 sont légèrement plus volumineux. Par conséquent, une certaine différence de performances est inévitable.</p>
 	<p>Linux possède de nombreux crochets qui peuvent être utilisés pour filtrer les paquets, chacun avec des performances et des caractéristiques de facilité d'utilisation différentes.</p>
 	<p>Pour ce qui est de DDoS, il peut être parfaitement raisonnable de simplement recevoir les paquets dans l'application et de les traiter dans l'espace utilisateur. Des applications correctement réglées peuvent obtenir des chiffres assez satisfaisants.</p>
 	<p>Pour les attaques DDoS avec des adresses IP source aléatoires/ usurpées, il peut être rentable de désactiver conntrack pour gagner un peu de vitesse. Attention toutefois : il existe des attaques pour lesquelles conntrack est très utile.</p>
 	<p>Dans d'autres circonstances, il peut être judicieux d'intégrer le pare-feu Linux à la chaîne d'atténuation des attaques DDoS. Dans ces cas-là, n'oubliez pas de placer les atténuations dans une couche « -t raw PREROUTING », car elle est nettement plus rapide que la table « filtre ».</p>
 	<p>Pour des charges de travail encore plus exigeantes, nous avons toujours XDP. Et dieu que c'est puissant ! Voici le même tableau que ci-dessus, mais avec XDP :</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Si vous souhaitez reproduire ces chiffres, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md?ref=blog.cloudflare.com" target="_blank">consultez le fichier README où nous avons tout documenté</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-3.png" class="kg-image"></figure>
+	<p>Si vous souhaitez reproduire ces chiffres, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md" target="_blank">consultez le fichier README où nous avons tout documenté</a>.</p>
 	<p>Ici, chez Cloudflare, nous utilisons... presque toutes ces techniques. Certaines astuces de l’espace utilisateur sont intégrées à nos applications. La couche iptables est gérée par notre <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">pipeline Gatebot DDoS</a>. Enfin, nous travaillons au remplacement de notre solution propriétaire de déchargement de noyau par XDP.</p>
 	<p>Vous voulez nous aider à supprimer plus de paquets ? Nous recrutons pour de nombreux postes, y compris des supprimeurs de paquets, des ingénieurs systèmes et plus encore !</p>
-	<p><em>J’aimerais adresser un remerciement </em>spécial à <a href="https://twitter.com/JesperBrouer?ref=blog.cloudflare.com" target="_blank"><em>Jesper Dangaard Brouer</em></a><em> pour sa contribution à ce travail.</em></p>
+	<p><em>J’aimerais adresser un remerciement </em>spécial à <a href="https://twitter.com/JesperBrouer" target="_blank"><em>Jesper Dangaard Brouer</em></a><em> pour sa contribution à ce travail.</em></p>
 </div>

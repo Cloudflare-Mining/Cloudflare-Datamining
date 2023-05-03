@@ -1,22 +1,22 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-32.png" class="kg-image" alt="API-based email scanning"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-32.png" class="kg-image" alt="API-based email scanning" loading="lazy"></figure>
 	<p>メールセキュリティを取り巻く環境は刻々と変化し続けていますが、脅威キャンペーンの大半が開始点としてメールに依存しているという点は今も変わりません。攻撃者は多くの場合、成功した場合にデータの流出、金銭の搾取、その他の悪意ある活動に活用できるフィッシングキャンペーンを開始して従業員の資格情報を収集します。この脅威は、企業がメール環境をMicrosoft 365やGoogle Workspaceなどのプロバイダーを使用したクラウドに移行した後も依然として存在し続けています。 </p>
 	<p>Cloudflareは、より優れたインターネットの構築とオンラインの脅威への対処を支援するために、クラウドからオンプレミスまで、あらゆる種類のメールトレイを保護する電子メールセキュリティを「Area 1」製品を通じて提供しています。「Area 1」製品は、組織が受信するすべての電子メールを分析し、当社の脅威モデルを使用してそのメッセージがお客様に危険を及ぼすものであるかどうかを評価します。メッセージが悪意があるものであると判断された場合、Area 1プラットフォームによってメールが受信者の受信トレイへの配信が阻止され、攻撃の成功の可能性が排除されます。 &nbsp;</p>
 	<p>私たちはお客様に、最も簡単な方法でデプロイできる柔軟性とともに当社のソリューションを提供するよう努めています。当社のソリューションを可能な限り完成した状態にするようこの追求を続けた結果、Microsoft Graph APIを介したMicrosoft 365ドメインオンボーディングのオープンベータを発表できることを嬉しく思います。私たちは、APIを介してオンボーディングされたドメインが、より迅速な展開時間と柔軟性を提供することを知っています。このオンボーディング方式は数ある方法の一つであり、お客様は「Area 1」の保護を失うことなく、適切な方法でドメインをデプロイできるようになります。 </p>
 	<h2 id="api-microsoft-365-">APIによるMicrosoft 365ドメインのオンボーディング</h2>
-	<p>Cloudflare Area 1は、お客様に多くの<a href="https://developers.cloudflare.com/email-security/deployment/" target="_blank">デプロイメントオプション</a>をご用意しています。Journaling + BCC（お客様が各メールのコピーをArea 1に送信）、Inline/MXレコード（MXレコードを介して別のホップを追加）、Secure Email Gateway Connectors（Area 1がSEGと直接対話）など、Area 1はお客様が希望されるソリューションのデプロイ方法を柔軟に提供します。その中で、私たちはお客様に対してMXレコードを使用してデプロイすることを常に推奨しています。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-21.png" class="kg-image"></figure>
+	<p>Cloudflare Area 1は、お客様に多くの<a href="https://developers.cloudflare.com/email-security/deployment/?ref=blog.cloudflare.com" target="_blank">デプロイメントオプション</a>をご用意しています。Journaling + BCC（お客様が各メールのコピーをArea 1に送信）、Inline/MXレコード（MXレコードを介して別のホップを追加）、Secure Email Gateway Connectors（Area 1がSEGと直接対話）など、Area 1はお客様が希望されるソリューションのデプロイ方法を柔軟に提供します。その中で、私たちはお客様に対してMXレコードを使用してデプロイすることを常に推奨しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-21.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>さらなるホップを追加してドメインがArea 1を指すようにすることで、サービスはシンクホールによる保護を提供し、悪意のある電子メールが宛先のメールボックスにまで到達しないようにします。ただし、Area 1をファーストホップとして設定（MXレコードの変更）するには、組織内の他のチームからのサインオフが必要となり、追加のサイクルが発生する可能性があることを認識しています。また、組織はこのインライン変更のDNS反映を待機（DNS伝播時間と呼ばれます）させられることにもなります。私たちは、お客様がこれらの必要な調整を行う間、できる限り早急な保護を望んでいることを理解しています。</p>
 	<p>Microsoft 365のオンボーディングでは、保護を追加するプロセスに必要な設定手順と待機時間が短縮されます。ここでは、Microsoft Graph APIを使用して、ドメインに関連付けられているすべてのメッセージを評価します。これにより、運用チームがArea 1をより柔軟にデプロイできるようになります。 </p>
 	<p>たとえば、業界の性質上M&amp;Aに巻き込まれることが多いArea 1のお客様の場合、Microsoft APIを使用してArea 1を迅速にデプロイできるというメリットがあります。APIによるオンボーディング以前は、ITチームは様々な買収資産の引き渡しに時間を時間を費やしていました。新しいアクセス権の割り当て、所有権の引き渡し、その他のタスクの実行に時間がかかり、メールボックスが保護されないままになっていました。しかし現在では、お客様が新しい事業体を取得する際、APIオンボーディングを使用して、取得したばかりのドメインに対する保護を迅速に追加することができます。これにより、新しいドメインに関連付けられた電子メールアドレスを保護しながら、手持ちの他の業務を完了させることができます。APIオンボーディングプロセスの仕組みは以下のとおりです。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-16.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-16.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Microsoft 365からの受信メッセージの読み取りが許可されると、電子メールの処理と疑わしい電子メールの検出が開始されます。この新しいオンボーディングプロセスは、大幅に高速化され、数回のクリックで開始することができます。 </p>
 	<p>このプロセスを開始するには、API経由でオンボーディングするドメインを選択します。その後、UI内で設定内の「ドメインとルーティング」に移動します。新しいドメインを追加し、APIスキャンを選択した後、セットアップウィザードに従ってArea 1を認証すると、メッセージの読み取りを開始することができます。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-12.png" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-12.png" class="kg-image" alt="" loading="lazy">
 		<figcaption><strong>APIスキャン</strong></figcaption>
 	</figure>
 	<p>承認後およそ数分で、お客様の組織のArea 1による保護が開始されます。 </p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-20.png" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-20.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Ready to scan <span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
 	</figure>
 	<h2 id="-">将来を見据える</h2>

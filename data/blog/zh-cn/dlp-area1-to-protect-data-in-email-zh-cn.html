@@ -1,21 +1,21 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image6-3.png" class="kg-image" alt="How Cloudflare Area 1 and DLP work together to protect data in email"></figure>
-	<p>威胁防护并不只是阻止外部行为者进入，还需要防止敏感数据外泄。大部分组织并没有意识到其电子邮件收件箱中有多少机密信息。员工每天处理海量的敏感数据（例如知识产权、内部文档、PII 或支付信息），并经常通过电子邮件在内部分享这些信息，电子邮件因此成为公司存储机密信息的主要地方。难怪各大组织都为如何防止意外或恶意泄漏敏感数据而担忧，为此还经常制定强有力的数据丢失防护策略。Cloudflare 使用 <a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank">Area 1</a> 电子邮件安全和 <a href="https://www.cloudflare.com/cloudflare-one" target="_blank">Cloudflare One</a>，帮助客户轻松管理电子邮件收件箱中的数据。</p>
-	<p>Cloudflare One 是我们的 SASE 平台，使用原生内置的 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust 安全性</a>提供网络即服务 (NaaS)，将用户与企业资源连接起来，并提供各种各样的机会来保护企业流量，包括检查传输到企业电子邮箱的数据。Area 1 电子邮件安全作为我们的可组合 Cloudflare One 平台的组成部分，为您的收件箱提供最完整的数据保护，并在包括数据丢失防护 (DLP) 等其他服务时提供聚合解决方案。凭借轻松按需利用和实施 Zero Trust 服务的能力，客户可以根据自己最关键的用例，灵活实施防御。如果结合使用 Area 1 + DLP，则可以先发制人，共同应对组织最紧迫的高风险暴露用例。结合使用这些产品可深度防护企业数据。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image6-3.png" class="kg-image" alt="How Cloudflare Area 1 and DLP work together to protect data in email" loading="lazy"></figure>
+	<p>威胁防护并不只是阻止外部行为者进入，还需要防止敏感数据外泄。大部分组织并没有意识到其电子邮件收件箱中有多少机密信息。员工每天处理海量的敏感数据（例如知识产权、内部文档、PII 或支付信息），并经常通过电子邮件在内部分享这些信息，电子邮件因此成为公司存储机密信息的主要地方。难怪各大组织都为如何防止意外或恶意泄漏敏感数据而担忧，为此还经常制定强有力的数据丢失防护策略。Cloudflare 使用 <a href="https://www.cloudflare.com/products/zero-trust/email-security/?ref=blog.cloudflare.com" target="_blank">Area 1</a> 电子邮件安全和 <a href="https://www.cloudflare.com/cloudflare-one?ref=blog.cloudflare.com" target="_blank">Cloudflare One</a>，帮助客户轻松管理电子邮件收件箱中的数据。</p>
+	<p>Cloudflare One 是我们的 SASE 平台，使用原生内置的 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust 安全性</a>提供网络即服务 (NaaS)，将用户与企业资源连接起来，并提供各种各样的机会来保护企业流量，包括检查传输到企业电子邮箱的数据。Area 1 电子邮件安全作为我们的可组合 Cloudflare One 平台的组成部分，为您的收件箱提供最完整的数据保护，并在包括数据丢失防护 (DLP) 等其他服务时提供聚合解决方案。凭借轻松按需利用和实施 Zero Trust 服务的能力，客户可以根据自己最关键的用例，灵活实施防御。如果结合使用 Area 1 + DLP，则可以先发制人，共同应对组织最紧迫的高风险暴露用例。结合使用这些产品可深度防护企业数据。</p>
 	<h3 id="-http-">通过 HTTP 防止云电子邮件数据外泄</h3>
 	<p>电子邮件很容易外泄企业数据，那为何一开始要在电子邮件中包含敏感数据呢？员工可能在客户的电子邮件中意外附加了内部文件而非公开白皮书，甚至可能在电子邮件附件中包含了错误客户的信息。</p>
 	<p>利用 Cloudflare 数据丢失防护 (DLP)，您可以防止将 PII 或知识产权等敏感数据上传到企业电子邮件中。</p>
 	<p>DLP 是 Cloudflare One 的组成部分，而 Cloudflare One 通过 Cloudflare 网络处理来自数据中心、办公室和远程用户的流量。随着流量遍历 Cloudflare，我们提供各种保护，包括验证身份和设备态势，并过滤企业流量。</p>
 	<p> </p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-7.png" class="kg-image"></figure>
-	<p>Cloudflare One 提供 HTTP(s) 过滤，让您可以检查流量并将其路由到企业应用程序。Cloudflare 数据丢失防护 (DLP) 利用了 Cloudflare One 的 HTTP 过滤功能。您可以对您的企业流量应用一些规则，并根据 HTTP 请求中的信息路由流量。包括各种各样的<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/" target="_blank">过滤选项</a>，例如域、URL、应用程序、HTTP 方法，等等。您可以使用这些选项对想要进行 DLP 扫描的流量分段。所有这些都可以利用我们全球网络的性能来完成，并通过一个控制平面进行管理。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Cloudflare One 提供 HTTP(s) 过滤，让您可以检查流量并将其路由到企业应用程序。Cloudflare 数据丢失防护 (DLP) 利用了 Cloudflare One 的 HTTP 过滤功能。您可以对您的企业流量应用一些规则，并根据 HTTP 请求中的信息路由流量。包括各种各样的<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/?ref=blog.cloudflare.com" target="_blank">过滤选项</a>，例如域、URL、应用程序、HTTP 方法，等等。您可以使用这些选项对想要进行 DLP 扫描的流量分段。所有这些都可以利用我们全球网络的性能来完成，并通过一个控制平面进行管理。</p>
 	<p>您可以将 DLP 策略应用于企业电子邮件应用程序，例如 Google Suite 或 O365。当员工试图将附件上传到电子邮件时，系统会检查上传内容中是否含有敏感数据，然后根据您的策略允许或阻止上传。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-17.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-17.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>使用 Area 1，通过以下方式扩展更多核心数据保护原则：</p>
 	<h3 id="-">在合作伙伴之间强制实施数据安全</h3>
-	<p>利用 Cloudflare 的 Area 1，您还可以强制实施强 TLS 标准。配置 TLS 可额外增加一个安全层，因为这可确保将电子邮件加密，防止任何攻击者在拦截传输中的电子邮件后读取敏感信息和更改消息(<a href="https://www.cloudflare.com/learning/security/threats/on-path-attack/" target="_blank">在途攻击</a>)。对于在面临被窥视风险的情况下仍将内部电子邮件发送到整个互联网的 G Suite 客户，或根据合约有义务使用 SSL/TLS 与合作伙伴通信的客户，这一点尤其有用。 </p>
+	<p>利用 Cloudflare 的 Area 1，您还可以强制实施强 TLS 标准。配置 TLS 可额外增加一个安全层，因为这可确保将电子邮件加密，防止任何攻击者在拦截传输中的电子邮件后读取敏感信息和更改消息(<a href="https://www.cloudflare.com/learning/security/threats/on-path-attack/?ref=blog.cloudflare.com" target="_blank">在途攻击</a>)。对于在面临被窥视风险的情况下仍将内部电子邮件发送到整个互联网的 G Suite 客户，或根据合约有义务使用 SSL/TLS 与合作伙伴通信的客户，这一点尤其有用。 </p>
 	<p>利用 Area 1 可以轻松地实施 SSL/TLS 检查。您可以从 Area 1 门户配置合作伙伴域 TLS：在<em>“Domains &amp; Routing”</em>（域和路由）中找到<em>“Partner Domains TLS”</em>（合作伙伴域 TLS），并添加您想实施 TLS 的合作伙伴域。如果将 TLS 配置为必需，那么从该域发出的所有未使用 TLS 的电子邮件都将自动丢弃。我们的 TLS 会确保强有力的 TLS，而不是尽可能确保所有流量都使用高强度密码进行加密，防止恶意攻击者解密任何被拦截的电子邮件。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-13.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-13.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--1">防止被动丢失电子邮件数据</h3>
 	<p>组织常常忽略了一点，那就是即使不发送任何电子邮件，也可能发生外泄。攻击者如果能够破坏公司账户，那就只用袖手旁观，就能监控所有通信，并手动挑选信息。 </p>
 	<p>一旦攻击者到达这个阶段，就极难发现帐户遭到了入侵、哪些信息受到跟踪。电子邮件数量、IP 地址更改及其他指标发挥不了作用，因为攻击者并没有采取任何会引起怀疑的行动。Cloudflare 强烈主张在发生帐户接管之前就加以预防，让任何攻击者无所遁形。 </p>
@@ -26,11 +26,11 @@
 	<h3 id="--3">阻止勒索软件</h3>
 	<p>攻击者有许多攻击武器可用于攻击员工账户。如上所述，网络钓鱼是一种常见的威胁手段，但绝非唯一。Area 1 还积极阻止勒索软件的传播。 </p>
 	<p>攻击者用于传播勒索软件的一种常见机制是重命名，然后伪装成附件。勒索软件有效负载可能从 petya.7z 重命名为 Invoice.pdf，企图诱骗员工下载该文件。如果电子邮件内容让该发票看起来很紧急，员工就有可能盲目地试图在计算机上打开该附件，导致组织遭遇勒索软件攻击。Area 1 的模型可检测这些不匹配情况，阻止恶意附件进入攻击目标的电子邮件收件箱。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-26.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-26.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>成功的勒索软件活动不仅可能妨碍任何公司的日常运营，还可能在加密无法逆转的情况下造成本地数据丢失。Cloudflare 的 Area 1 产品有专用的有效负载模型，不仅会分析附件扩展名，还会分析附件的哈希值，将其与已知勒索软件活动进行比较。一旦 Area 1 认为某附件是勒索软件，我们便会禁止该电子邮件继续传输。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-15.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-15.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="cloudflare-dlp-">Cloudflare 的 DLP 愿景</h3>
 	<p>我们的目标是通过 Cloudflare 产品为您提供所需的分层安全防御，保护您的组织防范外部闯入的恶意企图以及敏感数据外泄。随着电子邮件继续作为最大的企业数据面，对于公司来说，实施强有力的 DLP 策略，防止数据丢失至关重要。通过 Area 1 与 Cloudflare One 的紧密合作，Cloudflare 能让组织更加信任其 DLP 策略。</p>
-	<p>如果您有兴趣了解这些电子邮件安全或 DLP 服务，请<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">联系我们</a>，与我们交流您的安全和数据保护需要。</p>
+	<p>如果您有兴趣了解这些电子邮件安全或 DLP 服务，请<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/?ref=blog.cloudflare.com" target="_blank">联系我们</a>，与我们交流您的安全和数据保护需要。</p>
 	<p>如果您当前订阅了 Cloudflare 服务，可考虑联系您的 Cloudflare 客户成功经理，探讨添加更多电子邮件安全或 DLP 保护策略。</p>
 </div>
