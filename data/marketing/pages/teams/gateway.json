@@ -3263,6 +3263,68 @@
 						]
 					},
 					{
+						"contentfulId": "5AE8PLvZKEO7JszHIZZXmR",
+						"title": "Faster Internet access",
+						"copy": "- Existing firewall or [secure web gateway](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/) solutions haul user requests to centralized scrubbing centers for inspections, slowing down user access.\n- Cloudflare's edge network operates in %{DataCenterCount} locations around the world, which means it's always close to your users and the resources on the Internet they need. \n- It uses Anycast with a 100% uptime SLA, which means you never have to configure where user-initiated traffic is routed or worry about outages. ",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nri6CpBvw0n8DL16J7XOs/4c9afe9f2a555fe020002ca07a9d9f23/twitter-shared-link.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "45e9d794-9046-55aa-ba9d-8c25fa485628",
+							"altText": "teams-gateway-speedup-cost-down",
+							"title": "teams-gateway-speedup-cost-down",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nri6CpBvw0n8DL16J7XOs/4c9afe9f2a555fe020002ca07a9d9f23/twitter-shared-link.png"
+								}
+							},
+							"brandfolderAsset": {
+								"size": 5008,
+								"height": 3560,
+								"width": 3560,
+								"filename": "teams-gateway-speedup-cost-down-spot-illustration.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/teams-gateway-speedup-cost-down-spot-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
 						"contentfulId": "4NyfRSGiXAhztAeaI9Gv9o",
 						"title": "SaaS application control",
 						"copy": "- Cloudflare's logging capabilities allow you to discover unsanctioned use of SaaS applications, and easily build a policy to block access to such applications. \n- Integrate users and role-based groups from your identity provider into Cloudflare to limit access to specific subdomains and functions of SaaS applications. ",
@@ -3427,7 +3489,46 @@
 							"text": "Contact Sales",
 							"url": null,
 							"loggedInUrl": null,
-							"modal": null,
+							"modal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "32lRbGoNPloHxSaXZJnGh6",
+								"modalName": "Teams Ent Plan - Contact Us ",
+								"modalId": "teams-ent-plan-contact-us",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "1ujDGExdXSfyindmg265xQ",
+									"bladeName": "Teams Ent Plan - Contact us",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Teams Contact Us - Ent Plan",
+									"marketoFormHeaderText": "Cloudflare Zero Trust",
+									"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
+									"showCommentBox": true,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": null,
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": "Contact us",
+									"marketoFormSubmitButtonColor": "blue",
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Request a Zero Trust discussion",
+								"regularCopy": "Fill out the form below, and an expert from our team will get in touch to schedule a customized discussion of your Zero Trust journey and how Cloudflare may be able to help.",
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
@@ -3836,7 +3937,48 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "32lRbGoNPloHxSaXZJnGh6",
+						"modalName": "Teams Ent Plan - Contact Us ",
+						"modalId": "teams-ent-plan-contact-us",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "1ujDGExdXSfyindmg265xQ",
+							"bladeName": "Teams Ent Plan - Contact us",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Teams Contact Us - Ent Plan",
+							"marketoFormHeaderText": "Cloudflare Zero Trust",
+							"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
+							"showCommentBox": true,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": null,
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": "Contact us",
+							"marketoFormSubmitButtonColor": "blue",
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Request a Zero Trust discussion",
+						"regularCopy": "Fill out the form below, and an expert from our team will get in touch to schedule a customized discussion of your Zero Trust journey and how Cloudflare may be able to help.",
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {

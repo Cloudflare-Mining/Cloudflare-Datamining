@@ -2867,24 +2867,7 @@
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/33GNJqvGvxFGKoIUAnvthw/58e8866ef112382d56676902de021782/icon_connect-3_blue_48px.svg"
 									}
 								},
-								"iconAssetFile": {
-									"id": "80c8640e-3262-5b63-ade4-ade5469f0f71",
-									"altText": "Connect 3 blue",
-									"title": "Connect 3 blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 875,
-										"height": 192,
-										"width": 192,
-										"filename": "connect-3-blue.svg",
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/connect-3-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -3430,7 +3413,48 @@
 					}
 				],
 				"noindex": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "32lRbGoNPloHxSaXZJnGh6",
+						"modalName": "Teams Ent Plan - Contact Us ",
+						"modalId": "teams-ent-plan-contact-us",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "1ujDGExdXSfyindmg265xQ",
+							"bladeName": "Teams Ent Plan - Contact us",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Teams Contact Us - Ent Plan",
+							"marketoFormHeaderText": "Cloudflare Zero Trust",
+							"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
+							"showCommentBox": true,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": null,
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": "Contact us",
+							"marketoFormSubmitButtonColor": "blue",
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Request a Zero Trust discussion",
+						"regularCopy": "Fill out the form below, and an expert from our team will get in touch to schedule a customized discussion of your Zero Trust journey and how Cloudflare may be able to help.",
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
