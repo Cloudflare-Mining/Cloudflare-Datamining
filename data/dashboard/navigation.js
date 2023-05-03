@@ -55,6 +55,13 @@ const navigation = {
 		url: "/",
 		iconType: "internet-browser"
 	}, {
+		title: "navigation.account.discover",
+		url: "/discover",
+		iconType: "discover",
+		hasPermission: function(l) {
+			return (0, n.z1)("dx-product-discovery-page")(l) === "experiment"
+		}
+	}, {
 		title: function(l) {
 			return (0, n.z1)("registrar-account-home-copy-experiment")(l) === "registrar" ? "navigation.account.registrar" : "navigation.account.registrar.buy_domains"
 		},
@@ -348,7 +355,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(l) {
 				var L = (0, s.tJ)(l);
-				return !(0, i.ky)(L, [h.uD.UnboundEnterpriseTrial])
+				return !(0, i.ky)(L, [b.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -383,7 +390,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(l) {
 				var L = (0, s.tJ)(l);
-				return !(0, i.ky)(L, [h.uD.UnboundEnterpriseTrial])
+				return !(0, i.ky)(L, [b.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -562,7 +569,7 @@ const navigation = {
 		iconType: "applications",
 		labels: ["beta"],
 		hasPermission: function(l) {
-			return (0, r.iY)(l) && (0, b.dU)(l)
+			return (0, r.iY)(l) && (0, h.dU)(l)
 		}
 	}],
 	zone: [{
@@ -649,7 +656,7 @@ const navigation = {
 		navigationType: "both",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: P.bB,
+		tabs: w.bB,
 		hasPermission: function(l) {
 			return !(0, u.yD)(l) && (0, d.m7)(l)
 		}
@@ -715,10 +722,10 @@ const navigation = {
 		hasPermission: function(l) {
 			var L = (0, f.nA)(l);
 			if ((0, u.yD)(l) || !(0, r.wB)(l, "zone_settings", "spectrum.app") || !L) return !1;
-			var z = !!((0, R.l8)(l) || (0, f.DQ)(l)),
-				w = !!(0, f.ZB)(l, "spectrum", "enabled"),
+			var W = !!((0, z.l8)(l) || (0, f.DQ)(l)),
+				P = !!(0, f.ZB)(l, "spectrum", "enabled"),
 				j = !!(0, f.Ns)(L);
-			return w || z || !j
+			return P || W || !j
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -794,7 +801,7 @@ const navigation = {
 		}, {
 			title: "navigation.zone.security.bots",
 			url: "/security/bots",
-			navigationType: "version"
+			navigationType: "both"
 		}, {
 			title: "navigation.zone.security.data",
 			url: "/security/data",
@@ -923,7 +930,7 @@ const navigation = {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: x
+			tabs: N
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			labels: ["beta"],
@@ -1057,8 +1064,8 @@ const navigation = {
 		navigationType: "global-settings",
 		labels: function(l) {
 			var L = [],
-				z = (0, f.nA)(l);
-			return z && !(0, f.tU)(z, "pro") && L.push("beta"), L
+				W = (0, f.nA)(l);
+			return W && !(0, f.tU)(W, "pro") && L.push("beta"), L
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
@@ -1087,8 +1094,8 @@ const navigation = {
 			url: "/zaraz/consent",
 			labels: function(l) {
 				var L = [],
-					z = (0, f.nA)(l);
-				return z && (0, f.tU)(z, "pro") && L.push("beta"), L
+					W = (0, f.nA)(l);
+				return W && (0, f.tU)(W, "pro") && L.push("beta"), L
 			}
 		}, {
 			title: "navigation.zone.zaraz.settings",
@@ -1103,8 +1110,8 @@ const navigation = {
 		labels: ["new"],
 		hasPermission: function(l) {
 			var L = (0, a.uF)(l),
-				z = (L == null ? void 0 : L.roles) || [];
-			return z.includes("Trust and Safety") ? !1 : !(0, u.yD)(l)
+				W = (L == null ? void 0 : L.roles) || [];
+			return W.includes("Trust and Safety") ? !1 : !(0, u.yD)(l)
 		}
 	}],
 	zeroTrust: [{
