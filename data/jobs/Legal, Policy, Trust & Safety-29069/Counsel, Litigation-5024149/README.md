@@ -5,21 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Technical Program Manager - Developer Platform&nbsp;</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is seeking a talented and passionate Technical Program Manager to lead and manage various company-wide initiatives and programs spanning multiple quarters and teams within the ETI (Emerging Technology and Incubation) department, including Developer Platform suite of products. This position will be based in Austin, Tx or Remote, USA. You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</span></p>
-<p><strong>Responsibilities</strong><span style="font-weight: 400;"><br></span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">Your main role will be to partner with product, engineering, </span><span style="font-weight: 400;">design, marketing, and technical operations teams to plan, track, and manage the execution of various ETI related programs and initiatives.&nbsp;</span><span style="font-weight: 400;">Technical Program Management at Cloudflare provides you with a myriad of opportunities to effectively define, scope, and accomplish strategic goals. You will be the driving force to make things happen.&nbsp;</span><span style="font-weight: 400;">You will also be working with various parts of the organization to deliver Cloudflare services to customers around the globe. You will actively partner with various team members on quarterly planning, process improvements, dogfooding cutting edge products, running innovation weeks, and supporting exciting new developments and initiatives, with multiple senior leads to guide you. The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</span></p>
-<p><strong>Requirements</strong></p>
+<h4>About the department</h4>
+<p><span style="font-weight: 400;">Cloudflare provides cutting edge security and performance services to a significant portion of the Internet, which can sometimes make it a target for litigation. We’re looking for a Litigation Counsel to join our team that is responsible for responding to the diverse array of litigation matters and legal requests Cloudflare encounters.&nbsp;</span></p>
+<p><span style="font-weight: 400;">As Litigation Counsel, you will be Cloudflare’s point person on all things litigation. You’ll be responsible for working with our internal legal team, external counsel, and stakeholders across the company to handle ongoing lawsuits, respond to litigation threats, and assist in broader legal strategy. The ideal candidate has the passion to keep pace with a fast moving docket, the curiosity to dive deep into evolving technology and Internet law, and the initiative to help scale our litigation function alongside a fast growing company.&nbsp;</span></p>
+<h4>What you'll do</h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">10 + years experience in technical program management.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with key decision makers to develop executive reporting materials (e.g., executive steer co, weekly updates, key artifacts, etc.).</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid knowledge in technical program management and a desire for continuous improvement.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent oral and written communication, proven track record of effective communication at various levels including executive level.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong competency with project management tools (admin-level experience strongly preferred for Confluence, JIRA) and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc).</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven track record on creating realistic project plans, and overseeing execution to meet commitments and deliver with predictability.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable managing tight deadlines, changing priorities, and ambiguity.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Role is based in Austin or Remote US, and you will be working with teams in various time zones.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Formulate and implement litigation strategies relating to emerging litigation areas;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Evaluate and respond to litigation threats and legal matters;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Select, onboard, and manage outside counsel on all aspects of litigation (including discovery, depositions, motions, trial prep, etc.)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with our paralegal and Legal Operations team to improve and implement processes related to litigation holds, case management, billings and budget management, and factual investigations and record collection; and</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate with business leaders across the company about ongoing litigation matters, and provide training and resources to address future litigation risks.</span></li>
 </ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">JD degree with strong academic credentials and admitted to practice law in at least one U.S. jurisdiction.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of law firm, government, or in-house experience (preferably with technology companies).&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong communication skills and cooperative team player. Lead with empathy and understanding while embracing diverse points of view. Flexibility to adapt and thrive in a fast paced environment.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work cross-functionally, with lawyers and non-lawyers, to establish principled, thoughtful, and effective solutions efficiently and in an amenable manner.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to organize, prioritize, and manage many tasks on complex projects.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">An ambitious mindset that enables you to successfully work independently and autonomously with limited guidance, but also to use good judgment and call out issues when needed.</span></li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
