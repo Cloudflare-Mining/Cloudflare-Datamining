@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image11-1.png" class="kg-image" alt="Cloudflare is faster than Zscaler"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image11-1.png" class="kg-image" alt="Cloudflare is faster than Zscaler" loading="lazy"></figure>
 	<p>Innovation Week마다 Cloudflare에서는 당사 네트워크의 성능을 다른 경쟁사와 비교해봅니다. 지난 몇 주간은 Akamai 같은 역방향 프록시, 또는 Fastly 및 AWS처럼 당사의 Supercloud와 유사한 에지 컴퓨팅을 판매하는 플랫폼과 비교하여 당사가 얼마나 빠른지 알아보는 데 집중했습니다. CIO Week 기간에는 정방향 프록시 서비스를 제공하는 경쟁사와 Cloudflare 네트워크가 어떻게 비교되는지 소개하고자 합니다. 이 제품들은 고객 웹 사이트를 외부 사용자로부터 보호하는 당사의 역방향 프록시와 반대로 공개 인터넷에 안전한 애플리케이션 및 인터넷 경험을 제공하는 데 도움을 주는 당사 Zero Trust 플랫폼의 일부입니다.</p>
 	<p>우리는 일련의 테스트를 통해 당사의 Zero Trust 서비스를 Zscaler와 비교해 보았습니다. 당사의 ZT 애플리케이션 보호 제품인 Cloudflare Access를 Zscaler Private Access(ZPA)와 비교했습니다. 당사의 보안 웹 게이트웨이인 Cloudflare Gateway를 Zscaler Internet Access(ZIA)와 비교하고, 최종적으로 당사 원격 브라우저 격리 제품인 Cloudflare Browser Isolation을 Zscaler Cloud Browser Isolation과 비교했습니다. 우리는 테스트를 통해 Cloudflare Gateway가 ZIA보다 58% 더 빠르고, Cloudflare Access가 전 세계에서 ZPA보다 38% 더 빠르며, Cloudflare Browser Isolation이 전 세계에서 Zscaler Cloud Browser Isolation보다 45% 더 빠르다는 사실을 알아냈습니다. 비교할 때에는 95번째 백분위수 첫 번째 바이트 시간(TTFB) 및 Response 테스트를 이용해 사용자가 요청을 하고 응답이 시작되는 시간(첫 번째 바이트 시간), 그리고 응답이 종료되는 시간(Response)을 측정했습니다. 이 테스트는 최조 사용자 관점에서 성능을 측정하기 위해 마련되었습니다.</p>
 	<p>이 블로그에서는 이 각각의 제품마다 왜 성능이 중요한지를 알아보고, 당사 제품이 더 빠르다는 것을 보여주기 위해 어떤 성능을 측정했는지 좀 더 자세히 살펴보며, 각 제품의 성능을 측정한 방법도 살펴볼까 합니다.</p>
 	<h3 id="-">왜 성능이 중요할까요?</h3>
 	<p>성능이 중요한 이유는 직원들의 경험과 업무 능력에 영향을 미치기 때문입니다. 보안 웹 게이트웨이를 통해 공개 인터넷에 접속하는 액세스 제어 제품을 통해 서비스에 액세스하든, 원격 브라우저 격리를 통해 외부 사이트의 위험으로부터 보호하든, 그 모든 경험은 원활해야 합니다.</p>
-	<p>Acme Corporation의 Anna가 시드니에서 Microsoft 365 또는 Teams에 접속하여 업무를 처리한다고 가정해보겠습니다. Acme의 보안 웹 게이트웨이가 Anna와 멀리 떨어진 싱가포르에 있다면 Anna의 트래픽은 시드니에서 싱가포르로 갔다가 다시 시드니로 돌아오면서 이메일을 불러와야 합니다. Acme Corporation이 다른 많은 회사와 마찬가지로 Anna에게 Microsoft Outlook을 온라인 모드로 사용하도록 한다면 성능이 심하게 느려져 이메일을 주고받는 동안 한참 기다려야 할 수도 있습니다. <a href="https://learn.microsoft.com/en-us/microsoft-365/enterprise/best-practices-for-using-office-365-on-a-slow-network?view=o365-worldwide" target="_blank">Microsoft 365는</a> 대기 시간은 최대한 짧게, 대역폭은 최대한 높게 유지하는 것을 권장합니다. 하지만 Anna는 게이트웨이를 통해 먼 거리를 건너뛰어야 하기 때문에 처리량이 감소하고 대기 시간이 증가하면서 결국 Anna의 경험은 나빠지게 됩니다.</p>
+	<p>Acme Corporation의 Anna가 시드니에서 Microsoft 365 또는 Teams에 접속하여 업무를 처리한다고 가정해보겠습니다. Acme의 보안 웹 게이트웨이가 Anna와 멀리 떨어진 싱가포르에 있다면 Anna의 트래픽은 시드니에서 싱가포르로 갔다가 다시 시드니로 돌아오면서 이메일을 불러와야 합니다. Acme Corporation이 다른 많은 회사와 마찬가지로 Anna에게 Microsoft Outlook을 온라인 모드로 사용하도록 한다면 성능이 심하게 느려져 이메일을 주고받는 동안 한참 기다려야 할 수도 있습니다. <a href="https://learn.microsoft.com/en-us/microsoft-365/enterprise/best-practices-for-using-office-365-on-a-slow-network?view=o365-worldwide&amp;ref=blog.cloudflare.com" target="_blank">Microsoft 365는</a> 대기 시간은 최대한 짧게, 대역폭은 최대한 높게 유지하는 것을 권장합니다. 하지만 Anna는 게이트웨이를 통해 먼 거리를 건너뛰어야 하기 때문에 처리량이 감소하고 대기 시간이 증가하면서 결국 Anna의 경험은 나빠지게 됩니다.</p>
 	<p>다른 예를 들어볼까요? Anna가 티켓 처리를 위해 Jira 같은 호스팅 형식의 보호되는 애플리케이션에 접속한다고 가정하면 페이지가 로드되거나 요청이 인증될 때까지 계속해서 기다리고 싶지는 않을 것입니다. 액세스 제어 형식의 애플리케이션에서 접속을 위해 가장 먼저 할 일은 로그인입니다. 이 로그인이 오래 걸리면 동료가 무작위로 보내는 메시지에 정신을 빼앗길 수도 있고, 어떤 업무를 처리할 의욕 자체가 사라질 수도 있습니다. 인증을 받을 때도 전반적인 애플리케이션 경험은 빠르고 매끄럽길 바랄 것입니다. 최선의 상황에서는 Zero Trust 제품이 작동 중이라는 사실 자체를 느낄 수 없어야 합니다.</p>
 	<p>이렇게 제품이나 경험이 느려지면 사용자들이 불만을 제기하는 것을 넘어 제품을 그냥 꺼버리거나 우회하여 귀사를 위험에 빠뜨리는 등의 더 안 좋은 일이 발생할 수도 있습니다. Zero Trust 제품군은 느리다는 이유로 누구도 사용하지 않는다면 그 효과를 완전히 상실합니다. Zero Trust의 빠른 속도는 Zero Trust 솔루션이 효과를 발휘하기 위한 필수 조건입니다. 직원들이 이 솔루션을 꺼서 위험한 상황을 초래하지 않도록 하려면 직원들이 그 존재를 거의 인식할 수 없어야 합니다.</p>
 	<p>Zscaler 같은 서비스는 많은 구식 솔루션을 능가하지만, 그 네트워크는 Cloudflare 네트워크가 보이는 최대한의 성능과 최적화 수치에 미치지 못합니다. 우리는 당사의 모든 Zero Trust 제품을 Zscaler의 제품들과 비교했으며, 우리가 더 빠르다는 결과를 얻었습니다. 그럼 그 데이터를 좀 더 자세히 살펴보고, 세 가지 중요 Zero Trust 시나리오를 통해 우리가 얼마나 왜 더 빠른지 말씀 드리겠습니다. Zscaler Internet Access(ZIA)와 비교한 보안 웹 게이트웨이인 Cloudflare Gateway부터 시작합니다.</p>
@@ -13,7 +13,7 @@
 	<p>보안 웹 게이트웨이는 조직의 모든 인터넷 종속 트래픽이 모이는 깔때기 역할을 하기 때문에 빨라야 합니다. 보안 웹 게이트웨이가 느리면 인터넷으로 향하는 모든 트래픽이 느려집니다. 인터넷 트래픽이 느리면 게이트웨이를 끄라는 메시지가 표시될 수 있고, 실제로 게이트웨이를 끄면 조직이 공격에 취약해집니다.</p>
 	<p>사용자와 가까워야 할 뿐 아니라, 고성능 웹 게이트웨이는 인터넷 전체와 잘 피어링되어 사용자가 액세스하려는 웹 사이트로의 느린 경로를 피할 수 있어야 합니다. 보안 웹 게이트웨이를 통과하는 트래픽은 정방향 프록시 경로를 따른다는 점을 기억하십시오. 즉, 사용자가 프록시에 접속하면 프록시가 사용자가 액세스하려는 웹 사이트에 접속하는 방식입니다. 따라서 프록시가 잘 연결되어 있어야 사용자 트래픽이 원하는 목적지까지 최대한 빠르게 도달할 수 있습니다.</p>
 	<p>보안 웹 게이트웨이를 비교할 때는 Cloudflare Gateway 및 WARP 클라이언트를 같은 기능의 Zscaler Internet Access(ZIA)와 비교했습니다. Cloudflare 사용자에게는 다행스럽게도 Gateway 및 Cloudflare 네트워크는 사용자와 가까운 라스트 마일 네트워크에 임베드되어 있을 뿐만 아니라 세계에서 가장 잘 피어링되어 있는 네트워크이기도 합니다. Gateway 사용자 시나리오에서 가장 잘 피어링되어 있는 당사 네트워크의 경우 ZIA보다 55% 더 빠릅니다. 아래는 Cloudflare, Zscaler, 그리고 게이트웨이를 아예 사용하지 않은 컨트롤 세트의 95번째 백분위수 응답 시간을 보여주는 그래프입니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/1-2.png" class="kg-image" title="Chart"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/1-2.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -43,10 +43,10 @@
 	<p>이 데이터는 Gateway 시나리오에서 Cloudflare가 Zscaler보다 훨씬 빠르다는 것뿐 아니라 Cloudflare가 Zscaler보다 오히려 보안 웹 게이트웨이를 아예 사용하지 않는 경우와 더 근접하다는 것을 보여줍니다.</p>
 	<p>최종 사용자의 Gateway 경험을 가장 정확히 측정하기 위해 우리는 최종 사용자로부터의 95번째 백분위수 응답 시간을 대상으로 삼았습니다. 사용자가 프록시에 접속하고, 프록시가 인터넷 웹 사이트에 대한 요청을 하며, 최종적으로 응답을 반환하는 데 걸리는 시간을 측정하는 것입니다. 이 측정값은 사용자의 관점을 정확하게 반영하는 것이기 때문에 중요합니다.</p>
 	<p>Zscaler와 비교할 때 우리는 최종 사용자 클라이언트를 Azure에서 호스팅하는 웹 사이트, Cloudflare가 보호하는 Worker, Google, Slack, Zoom 등 사용자들이 정기적으로 접속하는 다섯 가지 웹 사이트에 액세스하도록 했습니다. 각 시나리오에서 Cloudflare는 Zscaler보다 나은 성능을 보여주었고, Cloudflare가 보호하는 Worker의 경우 Gateway는 95번째 백분위수 응답 시간에서 컨트롤 세트보다도 앞선 성능을 보여주었습니다. 다음은 테스트에서 쿼리한 여러 엔드포인트별로 95번째 백분위수 응답 시간을 분석한 결과입니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/2-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/2-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>인터넷에서 어디를 접속하든 Cloudflare의 Gateway가 엔드투엔드 응답 시간 면에서 Zscaler Internet Access(ZIA)보다 우월한 성능을 나타냈습니다. 그렇다면 왜 우리가 Zscaler보다 훨씬 빠른 것일까요? 그 해답은 Zscaler에서 프록시 대기 시간이라고 부르는 것과 관련이 있습니다.</p>
-	<p><a href="https://www.zscaler.com/blogs/product-insights/do-you-understand-your-slas-guide-demystifying-cloud-security-slas" target="_blank">프록시 대기 시간</a>은 사용자 요청이 목적지로 전송되었다가 다시 사용자에게 돌아오기까지 Zscaler 시스템에 머무는 시간을 말합니다. 사용자가 Zscaler에 접속하고, Zscaler가 목적지에 도달하는 데 걸리는 시간은 완전히 배제하면서 Zscaler가 요청을 처리하는 데 걸리는 시간(밀리초)만 측정한 것입니다.</p>
-	<p>Zscaler의 <a href="https://www.zscaler.com/legal/sla-support" target="_blank">대기 시간 SLA</a>는 요청의 95%가 Zscaler 장치에서 소요되는 시간이 100ms 이하라고 말합니다. Zscaler는 에지에서 측정할 수 있는 대기 시간이 사용자 요청의 95%를 대상으로 100ms 이하라고 장담합니다(실제 중요한 엔드투엔드 대기 시간도 아닙니다). Zscaler의 Digital Experience에서 이 수치를 확인하여 직접 측정해볼 수도 있습니다. Zscaler 로그에서 이 프록시 대기 시간을 가져와 Cloudflare의 대기 시간과 비교할 수 있다면 우리가 Zscaler의 SLA에서 말하는 수치보다 얼마나 우월한지 볼 수 있을 것입니다. 이 수치가 아직 고객에게 공개되어 있진 않지만, Cloudflare에서의 추적을 활성화하여 Cloudflare 프록시 대기 시간을 측정할 수 있었습니다.</p>
+	<p><a href="https://www.zscaler.com/blogs/product-insights/do-you-understand-your-slas-guide-demystifying-cloud-security-slas?ref=blog.cloudflare.com" target="_blank">프록시 대기 시간</a>은 사용자 요청이 목적지로 전송되었다가 다시 사용자에게 돌아오기까지 Zscaler 시스템에 머무는 시간을 말합니다. 사용자가 Zscaler에 접속하고, Zscaler가 목적지에 도달하는 데 걸리는 시간은 완전히 배제하면서 Zscaler가 요청을 처리하는 데 걸리는 시간(밀리초)만 측정한 것입니다.</p>
+	<p>Zscaler의 <a href="https://www.zscaler.com/legal/sla-support?ref=blog.cloudflare.com" target="_blank">대기 시간 SLA</a>는 요청의 95%가 Zscaler 장치에서 소요되는 시간이 100ms 이하라고 말합니다. Zscaler는 에지에서 측정할 수 있는 대기 시간이 사용자 요청의 95%를 대상으로 100ms 이하라고 장담합니다(실제 중요한 엔드투엔드 대기 시간도 아닙니다). Zscaler의 Digital Experience에서 이 수치를 확인하여 직접 측정해볼 수도 있습니다. Zscaler 로그에서 이 프록시 대기 시간을 가져와 Cloudflare의 대기 시간과 비교할 수 있다면 우리가 Zscaler의 SLA에서 말하는 수치보다 얼마나 우월한지 볼 수 있을 것입니다. 이 수치가 아직 고객에게 공개되어 있진 않지만, Cloudflare에서의 추적을 활성화하여 Cloudflare 프록시 대기 시간을 측정할 수 있었습니다.</p>
 	<p>그 결과 95번째 백분위수에서 Zscaler는 SLA의 수치를 넘어서고 있었고, Cloudflare 프록시 대기 시간은 7ms였습니다. 더구나 우리의 프록시 대기 시간은 100ms(Zscaler SLA의 값)였던 반면, Zscaler의 프록시 대기 시간은 그 10배를 넘었습니다. Zscaler의 프록시 대기 시간은 95번째 백분위수에서 보았던 성능 차이를 보여주는 것으로, 각 사이트에서 Cloudflare보다 140~240ms 느렸습니다. 다음은 모든 사이트에서 테스트한 여러 백분위수에서의 Zscaler 프록시 대기 시간으로, 각 사이트별로 분석한 것입니다.</p><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
@@ -175,13 +175,13 @@
 	</table><!--kg-card-end: html-->
 	<p>99.957 백분위수를 여기에 넣는 것은 이상해 보일 수 있지만, 이 값은 Cloudflare의 프록시 대기 시간이 간신히 100ms를 초과한 때의 백분위수입니다. Cloudflare의 99.957 백분위수 프록시 대기 시간은 심지어 Zscaler의 90번째 백분위수 프록시 대기 시간보다도 훨씬 빠릅니다. 고객이 신경 쓰지 않는 수치인데도 Zscaler가 신경 쓰고 자부심을 갖고 있는 프록시 대기 시간에서조차 Cloudflare가 더 빠른 것입니다.</p>
 	<p>이 데이터를 파악하는 일은 쉽지 않았습니다. Catchpoint 같은 기존의 테스트 방식은 적합하지 않았습니다. 성능 테스트를 위해서는 ZIA 클라이언트 또는 WARP 클라이언트를 테스트 엔드포인트에서 실행해야 하기 때문입니다. 또한, 성능을 최대한 정확하게 측정하려면 Cloudflare 테스트와 Zscaler 테스트를 같은 위치의 유사한 시스템에서 진행해야 했습니다. 테스트를 통해 두 가지 테스트 환경을 모두 실행한 동일한 위치에서의 엔드투엔드 응답 시간을 측정할 수 있습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image7.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>당사 환경에서는 VM 세 대를 클라우드에 나란히 배치했습니다. 한 대는 Gateway에 접속하는 Cloudflare WARP를 실행하고, 또 한 대는 ZIA를, 또 다른 한 대는 컨트롤 세트로 아무 프록시도 실행하지 않았습니다. 이 VM에서 3분마다 위에 언급한 서로 다른 다섯 개 엔드포인트로 요청을 전송했고, HTTP 브라우저 타이밍을 기록해서 각 요청에 소요된 시간을 측정했습니다. 이를 바탕으로 사용자 관점에서 유의미한 성능을 파악할 수 있습니다.</p>
 	<p>지금까지의 결과를 요약하면, 최종 사용자 관점에서 Cloudflare는 보안 웹 게이트웨이를 통해 공개 인터넷의 위험으로부터 사용자를 보호하면서도 Zscaler보다 빠르다는 것입니다. 보안 웹 게이트웨이를 이용할 때의 성능에 대한 Zscaler의 소극적인 정의에서 볼 때도 Cloudflare는 Zscaler보다 훨씬 빠릅니다. 그럼, Zero Trust 액세스를 통해 특정 애플리케이션에 액세스해야 할 때의 시나리오를 살펴보겠습니다.</p>
 	<h3 id="cloudflare-access-zero-trust-">Cloudflare Access: 가장 빠른 Zero Trust 프록시</h3>
 	<p>액세스 제어는 매끄럽고 사용자에게 투명하게 이루어져야 합니다. 최선의 Zero Trust 솔루션이란 직원들이 그 존재를 거의 인식하기 어려운 솔루션입니다. Cloudflare Access 및 Zscaler Private Access(ZPA) 같은 서비스는 사용자가 공급자 네트워크에 인증 정보를 캐싱할 수 있도록 합니다. 덕분에 사용자는 애플리케이션에 안전하고 빠르게 액세스하면서 매끄러운 경험을 할 수 있습니다. 로그인 횟수를 최소화하는 동시에 애플리케이션 요청 대기 시간을 줄이면 인터넷 경험이 즉각적이고 반응 속도도 빨라집니다.</p>
 	<p>Cloudflare Access는 이 모든 일을 Zscaler Private Access(ZPA)보다 38% 빠르게 해냄으로써 사용자가 세계 어디에 있든 빠르고 안전한 애플리케이션 경험을 누릴 수 있도록 합니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/4-1.png" class="kg-image" title="Chart"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/4-1.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -205,11 +205,11 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>데이터를 자세히 살펴보면 Cloudflare가 세계 어디서에서든 일관되게 더 빠르다는 것을 알 수 있습니다. 도쿄를 예로 들면, Cloudflare의 95번째 백분위수 첫 번째 바이트 시간까지의 시간은 Zscaler보다 22% 더 빠릅니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/5.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>애플리케이션 액세스 시나리오에서 Cloudflare를 Zscaler와 비교 평가할 때는 각각 따로 측정해야 하는 두 가지 고유한 시나리오를 고려해 볼 수 있습니다. 첫 번째 시나리오는 사용자가 애플리케이션에 로그인할 때 인증을 해야 하는 시나리오입니다. 이 경우, Zero Trust Access 서비스가 사용자를 로그인 페이지로 리디렉션하고, 사용자가 인증을 거친 다음, 다시 애플리케이션으로 리디렉션됩니다.</p>
 	<p>인증 정보가 Access 네트워크에 캐싱되거나 저장되지 않으므로 이 시나리오를 새 세션이라고 합니다. 두 번째 시나리오는 기존 세션이라고 하며, 여기에서는 사용자가 이미 인증된 상태이고 인증 정보가 캐싱될 수 있습니다. 보통은 이 두 번째 시나리오가 훨씬 더 빠른데, 로그인을 위해 ID 공급자를 추가로 호출할 필요가 없기 때문입니다.</p>
 	<p>새 세션과 기존 세션을 조합하는 경우에는 95번째 백분위수 값을 검토할 때 거의 항상 새 세션을 검토하게 되므로 우리는 이 시나리오를 각각 따로 측정했습니다. 하지만 두 시나리오 모두 Cloudflare가 모든 지역에서 일관되게 더 빠른 결과를 보입니다. 다음은 Zscaler의 피어링 환경이 더 뛰어날 수 있는 지역을 확인할 경우 이 데이터가 어떻게 나타나는지를 보여줍니다. 여기에서는 사용자들이 일리노이주 시카고에 있고, 미국 중부에서 호스팅되는 애플리케이션에 접속했습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/6-1.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/6-1.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -236,12 +236,12 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Cloudflare가 역시 전체적으로 더 빠릅니다. 다음은 새 접속의 전반적인 95번째 백분위수 응답 시간에 대한 히스토그램입니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/7.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Cloudflare 네트워크가 로그인 시 실제로 더 뛰어난 성능을 제공함으로써 인증 공급자에게 돌아가 로그인 정보를 불러올 최적의 경로를 찾을 수 있도록 해준다는 것을 볼 수 있습니다. 이 테스트에서 Cloudflare는 로그인 응답을 반환하는 데 결코 2.5초 이상 걸리지 않지만, Zscaler의 95번째 백분위수 응답은 그 절반 가량이 약 4초로, 거의 두 배의 시간이 걸립니다. 이를 볼 때 Zscaler의 네트워크는 피어링 성능이 좋지 않아 초기 대기 시간을 유발한다고 생각할 수 있습니다. 물론 연결이 잘 구축되고 모든 것을 캐싱한다면 Zscaler가 더 나은 성능을 발휘할 수도 있을 것입니다. 하지만 기존 연결에서도 Cloudflare는 똑같이 우월한 성능을 보여줍니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/8.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/8.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Zscaler와 Cloudflare는 좀 더 낮은 대기 시간 버킷에서는 보다 대등한 모습을 보이지만, Cloudflare의 응답 시간이 훨씬 더 일관된 수치를 보여주고 있고, Zscaler는 절반 정도의 응답이 로드되기까지 거의 1초가 걸리는 모습을 볼 수 있습니다. 이는 Cloudflare가 얼마나 잘 연결되어 있는지를 다시 한 번 여실히 보여줍니다. 당사는 더 많은 위치에 배치되어 있고, 더 나은 애플리케이션 경험을 제공하며, 높은 대기 시간 및 열악한 애플리케이션 성능을 보여주는 에지 사례가 많지 않기 때문입니다.</p>
 	<p>비교를 제대로 하려면 유사한 요청 경로를 검토하는 것이 중요하므로 새 세션과 기존 세션을 구별해야 합니다. 예를 들어, 기존 세션에서의 Zscaler를 통한 요청을 새 세션에서의 Cloudflare를 통한 요청과 비교한다면 인증 필요성으로 인해 Cloudflare가 Zscaler보다 훨씬 느리게 나올 것입니다. 그래서 이 테스트를 설계해 줄 제삼자와 계약할 때에는 이 점을 고려하도록 했습니다.</p>
-	<p>Cloudflare는 제삼자인 Miercom과 계약을 맺고 Cloudflare 또는 Zscaler가 보호하는 리소스에 접속하는 최종 사용자의 시나리오를 재현하기 위한 일련의 테스트를 진행했습니다. Miercom은 전 세계 14개 위치에 애플리케이션 인스턴스를 설정하고, 다양한 Zero Trust 공급자를 통해 애플리케이션에 로그인하여 특정 콘텐츠에 액세스하는 테스트를 준비했습니다. 이 테스트 방식은 다음과 같이 묘사할 수 있으며, <a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">여기</a>에 있는 Miercom 전체 보고서에서 자세한 테스트 방법을 참고할 수도 있습니다.</p>
+	<p>Cloudflare는 제삼자인 Miercom과 계약을 맺고 Cloudflare 또는 Zscaler가 보호하는 리소스에 접속하는 최종 사용자의 시나리오를 재현하기 위한 일련의 테스트를 진행했습니다. Miercom은 전 세계 14개 위치에 애플리케이션 인스턴스를 설정하고, 다양한 Zero Trust 공급자를 통해 애플리케이션에 로그인하여 특정 콘텐츠에 액세스하는 테스트를 준비했습니다. 이 테스트 방식은 다음과 같이 묘사할 수 있으며, <a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/?ref=blog.cloudflare.com" target="_blank">여기</a>에 있는 Miercom 전체 보고서에서 자세한 테스트 방법을 참고할 수도 있습니다.</p>
 	<ul>
 		<li>사용자가 Catchpoint 인스턴스를 본뜬 브라우저에서 애플리케이션에 접속합니다 - 새 세션</li>
 		<li>사용자가 ID 공급자를 통해 인증받습니다</li>
@@ -253,7 +253,7 @@
 	<h3 id="cloudflare-browser-isolation-">Cloudflare Browser Isolation: 모두에게 친화적 이웃인 웹 브라우저</h3>
 	<p>원격 브라우저 격리 제품은 공개 인터넷에 대한 매우 강한 종속성을 지닙니다. 브라우저 격리 제품에 대한 접속이 원활하지 않으면 브라우저 경험이 이상하고 느리게 느껴질 것입니다. 원격 브라우저 격리가 사용자에게 매끄럽고 원활하게 느껴지려면 성능이 특히 더 중요합니다. 모든 것이 기대만큼 빠르면 사용자는 브라우저 격리 제품의 존재 자체를 느끼지 못할 것입니다. 이 테스트를 위해 우리는 Cloudflare Browser Isolation을 Zscaler Cloud Browser Isolation과 비교했습니다.</p>
 	<p>그리고 원격 브라우저 격리 성능에서도 Cloudflare가 역시 Zscaler보다 빠릅니다. 95번째 백분위수 첫 번째 바이트 시간을 비교했을 때 Cloudflare는 모든 지역에서 Zscaler보다 45% 더 빠릅니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/9.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/9.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -277,7 +277,7 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>총 응답 시간 또는 브라우저 격리 제품이 전체 응답을 사용자에게 다시 보내는 성능을 비교했을 때에도 Cloudflare가 Zscaler보다 39% 더 빠릅니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/10.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/10.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -301,9 +301,9 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Cloudflare의 네트워크는 최고의 사용자 경험을 고객에게 제공하는 데 있어 진정 빛을 발합니다. Cloudflare의 네트워크는 최종 사용자 장치 가까이에서 놀랍도록 잘 피어링되어 있기 때문에 우리는 첫 번째 바이트 시간 및 응답 시간을 줄임으로써 최종 사용자 경험을 개선할 수 있습니다.</p>
-	<p>이를 측정하기 위해 우리는 다시 Miercom의 도움을 받아 전 세계 동일한 14개 위치에서 Cloudflare Browser Isolation 및 Zscaler Cloud Browser Isolation에 Catchpoint 노드를 연결하고, 클라이언트 역할을 하는 장치가 각 위치에서 브라우저 격리 제품을 통해 애플리케이션에 접속하도록 함으로써 필요한 데이터를 확보했습니다. 자세한 테스트 방식은 <a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">여기</a>에 있는 Miercom 보고서를 참조하세요.</p>
+	<p>이를 측정하기 위해 우리는 다시 Miercom의 도움을 받아 전 세계 동일한 14개 위치에서 Cloudflare Browser Isolation 및 Zscaler Cloud Browser Isolation에 Catchpoint 노드를 연결하고, 클라이언트 역할을 하는 장치가 각 위치에서 브라우저 격리 제품을 통해 애플리케이션에 접속하도록 함으로써 필요한 데이터를 확보했습니다. 자세한 테스트 방식은 <a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/?ref=blog.cloudflare.com" target="_blank">여기</a>에 있는 Miercom 보고서를 참조하세요.</p>
 	<h3 id="zero-trust-">Zero Trust 세계의 차세대 성능</h3>
-	<p>비-Zero Trust 세계에서는 귀사와 귀사 IT 팀이 네트워크 사업자로서 성능을 제어할 수 있었습니다. 이 제어 권한은 편하기는 했지만, 사무실과 리소스 간 미들 마일 연결을 관리해야 하는 IT 팀에게는 엄청난 부담이었습니다. 하지만 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 세계에서는 귀사 네트워크가 이제 공개 인터넷입니다. 즉, 귀사 팀이 할 일은 줄었지만, Zero Trust 공급자는 사용자 한 명, 한 명을 위해 성능을 관리해야 하는 더 큰 책임을 가지게 됩니다. Zero Trust 공급자가 엔드투엔드 성능을 개선하는 능력이 좋을수록 귀사 사용자들의 경험이 개선되고 귀사가 위험에 노출될 가능성이 줄어듭니다. 인증 및 보안 웹 게이트웨이 같은 실시간 애플리케이션의 경우 깔끔한 사용자 경험이 핵심입니다.</p>
+	<p>비-Zero Trust 세계에서는 귀사와 귀사 IT 팀이 네트워크 사업자로서 성능을 제어할 수 있었습니다. 이 제어 권한은 편하기는 했지만, 사무실과 리소스 간 미들 마일 연결을 관리해야 하는 IT 팀에게는 엄청난 부담이었습니다. 하지만 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust</a> 세계에서는 귀사 네트워크가 이제 공개 인터넷입니다. 즉, 귀사 팀이 할 일은 줄었지만, Zero Trust 공급자는 사용자 한 명, 한 명을 위해 성능을 관리해야 하는 더 큰 책임을 가지게 됩니다. Zero Trust 공급자가 엔드투엔드 성능을 개선하는 능력이 좋을수록 귀사 사용자들의 경험이 개선되고 귀사가 위험에 노출될 가능성이 줄어듭니다. 인증 및 보안 웹 게이트웨이 같은 실시간 애플리케이션의 경우 깔끔한 사용자 경험이 핵심입니다.</p>
 	<p>Zero Trust 공급자는 공개 인터넷에서 사용자를 보호해야 할 뿐 아니라 공개 인터넷을 최적화하여 사용자가 계속 보호되도록 해야 합니다. Zero Trust로 옮겨가면 기업 네트워크의 필요성이 감소할 뿐 아니라 사용자 트래픽이 보다 자연스럽게 리소스로 흘러가는 효과도 있습니다. 하지만 Zero Trust 공급자가 모든 사용자, 모든 애플리케이션에 대한 게이트키퍼가 될 것이라는 점을 고려하면 그 성능을 평가하여 사용자를 위해 마찰을 줄이고, 사용자가 불편을 느끼고 생산성이 감소해 결국 솔루션을 꺼버릴 가능성을 줄이는 것이 매우 중요합니다. Cloudflare는 지속적인 네트워크 개선을 통해 사용자들이 항상 최고의 경험을 누리도록 합니다. 여기에는 단순히 픽스를 배포하는 데 그치지 않고 피어링을 확장하고 새로운 위치를 추가하는 노력까지 포함됩니다. 이처럼 끊임없는 노력이야말로 Cloudflare가 가장 빠른 Zero Trust 공급자가 된 비결입니다.</p>
-	<p>당사 <a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">비교 페이지</a>에서 Cloudflare 네트워크 아키텍처가 Zscaler보다 얼마나 뛰어난지 자세한 내용을 참고하세요.</p>
+	<p>당사 <a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/?ref=blog.cloudflare.com" target="_blank">비교 페이지</a>에서 Cloudflare 네트워크 아키텍처가 Zscaler보다 얼마나 뛰어난지 자세한 내용을 참고하세요.</p>
 </div>
