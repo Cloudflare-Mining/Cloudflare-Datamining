@@ -5,10 +5,10 @@
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h2 id="whatisconntrack">What is conntrack?</h2>
 	<p>"Conntrack" is a part of Linux network stack, specifically part of the firewall subsystem. To put that into perspective: early firewalls were entirely stateless. They could express only basic logic, like: allow SYN packets to port 80 and 443, and block everything else.</p>
-	<p>The stateless design gave some basic <a href="https://www.cloudflare.com/learning/network-layer/network-security/?ref=blog.cloudflare.com" target="_blank">network security</a>, but was quickly deemed insufficient. You see, there are certain things that can't be expressed in a stateless way. The canonical example is assessment of ACK packets - it's impossible to say if an ACK packet is legitimate or part of a port scanning attempt, without tracking the connection state.</p>
+	<p>The stateless design gave some basic <a href="https://www.cloudflare.com/learning/network-layer/network-security/" target="_blank">network security</a>, but was quickly deemed insufficient. You see, there are certain things that can't be expressed in a stateless way. The canonical example is assessment of ACK packets - it's impossible to say if an ACK packet is legitimate or part of a port scanning attempt, without tracking the connection state.</p>
 	<p>To fill such gaps all the operating systems implemented connection tracking inside their firewalls. This tracking is usually implemented as a big table, with at least 6 columns: protocol (usually TCP or UDP), source IP, source port, destination IP, destination port and connection state. On Linux this subsystem is called "conntrack" and is often enabled by default. Here's how the table looks on my laptop inspected with "conntrack -L" command:</p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image5-2.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image5-2.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p>The obvious question is how large this state tracking table can be. This setting is under "/proc/sys/net/nf_conntrack_max":</p>
 	<pre><code class="language-.sh">$ cat /proc/sys/net/nf_conntrack_max
 262144
@@ -41,7 +41,7 @@ conntrack -L
 iptables -nvx -t raw -L PREROUTING
 iptables -nvx -t mangle -L PREROUTING
 </code></pre>
-	<p>This bash script is shortened for readability. See the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-04-conntrack-syn/test-1.bash?ref=blog.cloudflare.com" target="_blank">full version here</a>. The accompanying "send_syn.py" is just sending 10 SYN packets over "tun0" interface. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-04-conntrack-syn/send_syn.py?ref=blog.cloudflare.com" target="_blank">Here is the source</a> but allow me to paste it here - showing off "scapy" is always fun:</p>
+	<p>This bash script is shortened for readability. See the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-04-conntrack-syn/test-1.bash" target="_blank">full version here</a>. The accompanying "send_syn.py" is just sending 10 SYN packets over "tun0" interface. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-04-conntrack-syn/send_syn.py" target="_blank">Here is the source</a> but allow me to paste it here - showing off "scapy" is always fun:</p>
 	<pre><code class="language-.py">tun = TunTapInterface("tun0", mode_tun=True)
 tun.open()
 
@@ -51,27 +51,27 @@ for i in range(10000,10000+10):
     send(ip/tcp, verbose=False, inter=0.01, socket=tun)
 </code></pre>
 	<p>The bash script above contains a couple of gems. Let's walk through them.</p>
-	<p>First, please note that we can't just inject packets into the loopback interface using <a href="http://man7.org/linux/man-pages/man7/raw.7.html?ref=blog.cloudflare.com" target="_blank">SOCK_RAW sockets</a>. The Linux networking stack is a complex beast. The semantics of sending packets over a SOCK_RAW are different then delivering a packet over a real interface. We'll discuss this later, but for now, to avoid triggering unexpected behaviour, we will deliver packets over a tun/tap device which better emulates a real interface.</p>
+	<p>First, please note that we can't just inject packets into the loopback interface using <a href="http://man7.org/linux/man-pages/man7/raw.7.html" target="_blank">SOCK_RAW sockets</a>. The Linux networking stack is a complex beast. The semantics of sending packets over a SOCK_RAW are different then delivering a packet over a real interface. We'll discuss this later, but for now, to avoid triggering unexpected behaviour, we will deliver packets over a tun/tap device which better emulates a real interface.</p>
 	<p>Then we need to make sure the conntrack is active in the network namespace we wish to use for testing. Traditionally, just loading the kernel module would have done that, but in the brave new world of containers and network namespaces, a method had to be found to allow conntrack to be active in some and inactive in other containers. Hence this is tied to usage - rules referencing conntrack must exist in the namespace's iptables for conntrack to be active inside the container.</p>
-	<p>As a side note, <a href="https://lwn.net/Articles/740455/?ref=blog.cloudflare.com" target="_blank">containers triggering host to load kernel modules</a> is an <a href="https://github.com/weaveworks/go-odp/blob/6b0aa22550d9325eb8f43418185859e13dc0de1d/odp/dpif.go?ref=blog.cloudflare.com#L67-L90" target="_blank">interesting subject</a>.</p>
+	<p>As a side note, <a href="https://lwn.net/Articles/740455/" target="_blank">containers triggering host to load kernel modules</a> is an <a href="https://github.com/weaveworks/go-odp/blob/6b0aa22550d9325eb8f43418185859e13dc0de1d/odp/dpif.go#L67-L90" target="_blank">interesting subject</a>.</p>
 	<p>After the "-t raw -A PREROUTING" rule, which we added "-t mangle -A PREROUTING" rule, but notice - it doesn't have any action! This syntax is allowed by iptables and it is pretty useful to get iptables to report rule counters. We'll need these counters soon. A careful reader might suggest looking at "policy" counters in iptables to achieve our goal. Sadly, "policy" counters (increased for each packet entering a chain), work only if there is at least one rule inside it.</p>
 	<p>The rest of the steps are self-explanatory. We set up "tcpdump" in the background, send 10 SYN packets to 127.0.0.1:80 using the "scapy" Python library. Then we print the conntrack table and iptables counters.</p>
 	<p>Let's run this script in action. Remember to run it under networking namespace as fake root with "unshare -Ur -n":</p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image6.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image6.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p>This is all nice. First we see a "tcpdump" listing showing 10 SYN packets. Then we see the conntrack table state, showing 10 created flows. Finally, we see iptables counters in two rules we created, each showing 10 packets processed.</p>
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h2 id="canconntracktablefillup">Can conntrack table fill up?</h2>
 	<p>Given that the conntrack table is size constrained, what exactly happens when it fills up? Let's check it out. First, we need to drop the conntrack size. As mentioned it's controlled by a global toggle - it's necessary to tune it on the host side. Let's reduce the table size to 7 entries, and repeat our test:</p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image4-3.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image4-3.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p>This is getting interesting. We still see the 10 inbound SYN packets. We still see that the "-t raw PREROUTING" table received 10 packets, but this is where similarities end. The "-t mangle PREROUTING" table saw only 7 packets. Where did the three missing SYN packets go?</p>
 	<p>It turns out they went where all the dead packets go. They were hard dropped. Conntrack on overfill does exactly that. It even complains in the "dmesg":</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2020/04/image1-1.png" alt="image1-1" loading="lazy"></p>
-	<p>This is confirmed by our iptables counters. Let's review the <a href="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg?ref=blog.cloudflare.com" target="_blank">famous iptables</a> diagram:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/04/image1-1.png" alt="image1-1"></p>
+	<p>This is confirmed by our iptables counters. Let's review the <a href="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg" target="_blank">famous iptables</a> diagram:</p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/image7.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://commons.wikimedia.org/wiki/File:Netfilter-packet-flow.svg?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://commons.wikimedia.org/wiki/User_talk:Jengelh?ref=blog.cloudflare.com" target="_blank">Jan Engelhardt</a> CC BY-SA 3.0</figcaption>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/image7.png" class="kg-image">
+		<figcaption><a href="https://commons.wikimedia.org/wiki/File:Netfilter-packet-flow.svg" target="_blank">image</a> by <a href="https://commons.wikimedia.org/wiki/User_talk:Jengelh" target="_blank">Jan Engelhardt</a> CC BY-SA 3.0</figcaption>
 	</figure><!--kg-card-begin: markdown-->
 	<p>As we can see, the "-t raw PREROUTING" happens before conntrack, while "-t mangle PREROUTING" is just after it. This is why we see 10 and 7 packets reported by our iptables counters.</p>
 	<p>Let me emphasize the gravity of our discovery. We showed three completely valid SYN packets being implicitly dropped by "conntrack". There is no explicit "-j DROP" iptables rule. There is no configuration to be toggled. Just the fact of using "conntrack" means that, when it's full, packets creating new flows will be dropped. No questions asked.</p>
@@ -99,7 +99,7 @@ iptables -A INPUT -j DROP
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h2 id="fullconntrackcauseswitheperm">Full Conntrack causes with EPERM</h2>
 	<p>Recently we hit a case when a "sendto()" syscall on UDP socket from one of our applications was erroring with EPERM. This is pretty weird, and not documented in the man page. My colleague had no doubts:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2020/04/image9-1.png" alt="image9-1" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/04/image9-1.png" alt="image9-1"></p>
 	<p>I'll save you the gruesome details, but indeed, the full conntrack table will do that to your new UDP flows - you will get EPERM. Beware. Funnily enough, it's possible to get EPERM if an outbound packet is dropped on OUTPUT firewall in other ways. For example:</p>
 	<pre><code>marek:~$ sudo iptables -I OUTPUT -p udp --dport 53 --dst 192.0.2.8 -j DROP
 marek:~$ strace -e trace=write nc -vu 192.0.2.8 53
@@ -117,7 +117,7 @@ HPING 192.0.2.1 (lo 192.0.2.1): S set, 40 headers + 0 data bytes
 	<h2 id="fullconntrackcanhappenonasynflood">Full conntrack can happen on a SYN flood</h2>
 	<p>There is one more caveat. During a SYN flood, the conntrack entries will totally be created for the spoofed flows. Take a look at second test case we prepared, this time correctly listening on port 80, and sending SYN+ACK:</p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image8.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image8.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p>We can see 7 SYN+ACK's flying out of the port 80 listening socket. The final three SYN's go nowhere as they are dropped by conntrack.</p>
 	<p>This has important implications. If you use conntrack on publicly accessible ports, during SYN flood <a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild/">mitigation technologies like SYN Cookies</a> won't help. You are still at risk of running out of conntrack space and therefore affecting legitimate connections.</p>
 	<p>For this reason, as a general rule consider avoiding conntrack on inbound connections (-j NOTRACK). Alternatively having some reasonable rate limits on iptables layer, doing "-j DROP". This will work well and won't create new flows, as we discussed above. The best method though, would be to trigger SYN Cookies from a layer before conntrack, like XDP. But this is a subject for another time.</p>

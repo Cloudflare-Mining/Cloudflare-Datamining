@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-20.png" class="kg-image" alt="A New Hope for Object Storage: R2 enters open beta" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-20.png" class="kg-image" alt="A New Hope for Object Storage: R2 enters open beta"></figure>
 	<p>En septiembre, <a href="https://blog.cloudflare.com/introducing-r2-object-storage/">anunciamos</a> que estábamos desarrollando Cloudflare R2, nuestra propia solución de almacenamiento de objetos. R2 es nuestra respuesta a las desorbitadas tarifas de salida de los proveedores de soluciones en la nube tradicionales, que permite a los desarrolladores almacenar todos los datos que quieran sin preocuparse por el coste de acceder a ellos.</p>
 	<p>La respuesta ha sido abrumadora.</p>
 	<ul>
@@ -7,15 +7,15 @@
 		<li><strong>Las grandes empresas</strong> descartaron el almacenamiento multinube y, por tanto, los propios entornos multinube, como algo inalcanzable. Vinieron a presentarnos entusiasmados nuevos productos que integraban datos con empresas asociadas.</li>
 		<li><strong>Las organizaciones de investigación sin ánimo de lucro</strong> pagaban tarifas de salida abusivas solo para compartir datos experimentales entre ellas. Las tarifas de salida estaban teniendo un impacto real en su capacidad de colaboración, creando deficiencias de comunicación entre las organizaciones y restringiendo los experimentos y análisis que podían realizar.</li>
 	</ul>
-	<p>La misión de Cloudflare es ayudar a mejorar Internet. Hoy, contribuimos a dotar a Internet de la herramienta que merece, nuestra solución R2, disponible ya en versión <a href="https://developers.cloudflare.com/r2/get-started/?ref=blog.cloudflare.com" target="_blank">beta abierta</a>.</p>
+	<p>La misión de Cloudflare es ayudar a mejorar Internet. Hoy, contribuimos a dotar a Internet de la herramienta que merece, nuestra solución R2, disponible ya en versión <a href="https://developers.cloudflare.com/r2/get-started/" target="_blank">beta abierta</a>.</p>
 	<p>Los clientes en régimen de autogestión pueden activar R2 en el panel de control de Cloudflare. Las cuentas de empresa pueden ponerse en contacto con su gestor de Customer Success para incorporar esta solución.</p>
 	<h2 id="api-internas-y-externas">API internas y externas</h2>
-	<p>R2 tiene dos API. Una API accesible solo desde Workers, que llamamos In-Worker (API integrada en Worker), y una API compatible con S3, que expone tu depósito en una URL con la siguiente forma: <a href="http://account.r2.cloudflarestorage.com/bucket?ref=blog.cloudflare.com" target="_blank">bucket.account.r2storage.com</a>. Antes de que puedas hacer solicitudes a R2, necesitarás autenticarte. Los depósitos de R2 son privados de manera predeterminada.</p>
+	<p>R2 tiene dos API. Una API accesible solo desde Workers, que llamamos In-Worker (API integrada en Worker), y una API compatible con S3, que expone tu depósito en una URL con la siguiente forma: <a href="http://account.r2.cloudflarestorage.com/bucket" target="_blank">bucket.account.r2storage.com</a>. Antes de que puedas hacer solicitudes a R2, necesitarás autenticarte. Los depósitos de R2 son privados de manera predeterminada.</p>
 	<h3 id="api-in-worker">API In-Worker</h3>
 	<p>Con la API integrada en Worker, un depósito está "enlazado" a un Worker específico, que puede realizar operaciones PUT, GET, DELETE y LIST en el depósito.</p>
 	<h3 id="api-compatible-con-s3">API compatible con S3</h3>
 	<p>En cuanto a la API compatible con S3, la autenticación se realiza de la misma manera que en S3: SigV4 en una URL de R2. SigV4 firma las solicitudes utilizando una clave secreta para autenticarlas en R2. Esto significa que el acceso público a R2 a través de Internet solo es posible hoy en día alojando un Worker, conectándolo a R2, y enrutando las solicitudes a través de él.</p>
-	<p>La forma más fácil de probar la API compatible con S3 es utilizar un cliente de S3. Uno de los clientes de S3 más populares es el SDK para <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html?ref=blog.cloudflare.com" target="_blank">boto3</a>.</p>
+	<p>La forma más fácil de probar la API compatible con S3 es utilizar un cliente de S3. Uno de los clientes de S3 más populares es el SDK para <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" target="_blank">boto3</a>.</p>
 	<p>En Python, copia el siguiente script y rellena los campos <code>account_id</code>, <code>access_key</code> y <code>secret_access_key</code> con las credenciales de tu cuenta R2.</p><!--kg-card-begin: markdown-->
 	<pre><code>main.py
 import boto3
@@ -50,7 +50,7 @@ for item in bucket.objects.all():
 		<li>Las operaciones de clase A (incluidas escrituras y listas) cuestan 4,50 USD/millón.</li>
 		<li>Las operaciones de clase B cuestan 0,36 USD /millón.</li>
 	</ul>
-	<p>Las operaciones de clase A tienden a mutar el estado, como la creación de un depósito, el listado de objetos en un depósito o la escritura de un objeto. Las operaciones de clase B tienden a leer el estado existente, por ejemplo, la lectura de un objeto de un depósito. Puedes consultar más información sobre los precios y una lista completa de los tipos de operaciones en los <a href="https://developers.cloudflare.com/r2/platform/pricing/?ref=blog.cloudflare.com" target="_blank">documentos</a>.</p>
+	<p>Las operaciones de clase A tienden a mutar el estado, como la creación de un depósito, el listado de objetos en un depósito o la escritura de un objeto. Las operaciones de clase B tienden a leer el estado existente, por ejemplo, la lectura de un objeto de un depósito. Puedes consultar más información sobre los precios y una lista completa de los tipos de operaciones en los <a href="https://developers.cloudflare.com/r2/platform/pricing/" target="_blank">documentos</a>.</p>
 	<p>Por supuesto, no facturamos el ancho de banda de salida de R2. Puedes acceder a tu depósito a tu antojo.</p>
 	<p>El nivel gratuito para siempre de R2 incluye:</p>
 	<ul>
@@ -74,5 +74,5 @@ for item in bucket.objects.all():
 		<li>Compatibilidad para URL prefirmadas, que delegan el acceso de lectura y escritura para una clave específica a un token.</li>
 		<li>Integración con la caché de Cloudflare, para escalar las solicitudes de lectura y proporcionar una distribución global de los datos.</li>
 	</ul>
-	<p>Si te gustaría que incorporáramos otras funciones que no están en la lista anterior, queremos saber de ti. Únete a <a href="https://discord.gg/Z29YjNjxhQ?ref=blog.cloudflare.com" target="_blank">Discord</a> y comparte lo que necesitas para hacer de R2 tu nuevo almacén de objetos de salida sin coste en el canal r2-beta-abierta.</p>
+	<p>Si te gustaría que incorporáramos otras funciones que no están en la lista anterior, queremos saber de ti. Únete a <a href="https://discord.gg/Z29YjNjxhQ" target="_blank">Discord</a> y comparte lo que necesitas para hacer de R2 tu nuevo almacén de objetos de salida sin coste en el canal r2-beta-abierta.</p>
 </div>

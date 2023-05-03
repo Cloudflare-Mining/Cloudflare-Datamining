@@ -3,7 +3,7 @@
 	<p><em>For an introduction to DNSSEC, see our <a href="https://blog.cloudflare.com/dnssec-an-introduction/">previous post</a></em></p>
 	<p>Today is a big day for Cloudflare! We are publishing our first DNSSEC signed zone for the community to analyze and give feedback on:</p>
 	<ul>
-		<li><a href="https://www.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">www.cloudflare.com</a>- a fully signed zone managed by Cloudflare</li>
+		<li><a href="https://www.cloudflare.com" target="_blank">www.cloudflare.com</a>- a fully signed zone managed by Cloudflare</li>
 	</ul>
 	<p>We've been testing our implementation internally for some time with great results, so we now want to know from outside users how it’s working!</p>
 	<p>Here’s an example of what you should see if you pull the records of, for example, www.cloudflare.com</p>
@@ -31,12 +31,12 @@ www.cloudflare.com.	294	IN	A	104.16.124.96
 </code></pre>
 	<p>This is a big step towards our goal of doing with DNSSEC what we did with TLS: making it <strong>easy and widespread</strong>. We’re working on that and will get there soon.</p>
 	<p>DNSSEC presents <a href="https://blog.cloudflare.com/dnssec-complexities-and-considerations/">many complexities</a> that we are addressing doing DNSSEC in a <strong>modern</strong> way: for example by <strong>signing on the fly</strong> we can prevent NSEC records from <a href="https://blog.cloudflare.com/dnssec-complexities-and-considerations/#zonecontentexposure">revealing all zone’s subdomains</a>; by using <strong>ECDSA</strong> we make DNS answers smaller and reduce the risk of <a href="https://blog.cloudflare.com/dnssec-complexities-and-considerations/#reflectionamplificationthreat">reflection attacks</a>; and finally by providing a fully <strong>managed</strong> solution we take away all the complexity from you.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/01/www-cloudflare-dnssec-auth-com---DNSViz-2015-01-29-01-47-50.png" alt="A visualization of the signatures on our domain." loading="lazy"><br>
-		<em>A visualization of the signatures on our domain. Source: <a href="http://dnsviz.net/d/www.cloudflare-dnssec-auth.com/dnssec/?ref=blog.cloudflare.com" target="_blank">DNSViz</a></em>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/01/www-cloudflare-dnssec-auth-com---DNSViz-2015-01-29-01-47-50.png" alt="A visualization of the signatures on our domain."><br>
+		<em>A visualization of the signatures on our domain. Source: <a href="http://dnsviz.net/d/www.cloudflare-dnssec-auth.com/dnssec/" target="_blank">DNSViz</a></em>
 	</p>
 	<p>So let us know how those two domains load and validate for you. We’ll make sure to get you some stickers if you find some obscure bug!</p>
 	<p><i>UPDATE: The beta is full, thanks for all who are participating.</i></p>
-	<p><s>P.S. If you are a DNSSEC enthusiast and you want to be part of the public beta, just send an email to <a href="mailto:dnssec-beta@cloudflare.com?ref=blog.cloudflare.com" target="_blank">dnssec-beta@cloudflare.com</a> with the name of your website and the answer to this question - first ten people get in:</s></p>
+	<p><s>P.S. If you are a DNSSEC enthusiast and you want to be part of the public beta, just send an email to <a href="mailto:dnssec-beta@cloudflare.com" target="_blank">dnssec-beta@cloudflare.com</a> with the name of your website and the answer to this question - first ten people get in:</s></p>
 	<blockquote>
 		<p>~~ What is the DNSSEC algorithm number for ECDSAP256SHA256? ~~</p>
 	</blockquote>

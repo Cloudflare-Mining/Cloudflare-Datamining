@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-20.png" class="kg-image" alt="A New Hope for Object Storage: R2 enters open beta" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-20.png" class="kg-image" alt="A New Hope for Object Storage: R2 enters open beta"></figure>
 	<p>Au mois de septembre, nous avons <a href="https://blog.cloudflare.com/introducing-r2-object-storage/">annoncé</a> que nous étions en train de développer notre propre solution de stockage d'objets : Cloudflare R2. Le service R2 constitue notre réponse aux frais de trafic sortant exorbitants imposés par les fournisseurs de cloud actuels. Il permet aux développeurs de stocker autant de données qu'ils le souhaitent, sans se soucier des coûts liés à l'accès à ces dernières.</p>
 	<p>Les réactions à cette annonce se sont avérées extrêmement positives.</p>
 	<ul>
@@ -7,15 +7,15 @@
 		<li><strong>Les grandes entreprises</strong> avaient relégué le stockage multicloud (et, par extension, le multicloud lui-même) au rang de chimère. Elles se sont adressées à nous avec enthousiasme, afin de nous présenter de nouveaux produits intégrant les données aux entreprises partenaires.</li>
 		<li><strong>Les organisations de recherche à but non lucratif</strong> dépensaient des fortunes en frais de trafic sortant dans le seul but de partager des données d'expérimentation les unes avec les autres. Ces frais avaient des répercussions réelles sur leur capacité à collaborer. Ils encourageaient ainsi le cloisonnement des recherches, tout en limitant les expériences et les analyses que les organisations pouvaient réaliser.</li>
 	</ul>
-	<p>Cloudflare a pour objectif de contribuer à bâtir un Internet meilleur. Le réseau Internet bénéficie aujourd'hui d'un outil bien mérité, car la solution R2 est désormais en <a href="https://developers.cloudflare.com/r2/get-started/?ref=blog.cloudflare.com" target="_blank">bêta ouverte</a>.</p>
+	<p>Cloudflare a pour objectif de contribuer à bâtir un Internet meilleur. Le réseau Internet bénéficie aujourd'hui d'un outil bien mérité, car la solution R2 est désormais en <a href="https://developers.cloudflare.com/r2/get-started/" target="_blank">bêta ouverte</a>.</p>
 	<p>Les clients en libre-service peuvent activer le service R2 dans le tableau de bord Cloudflare. Les titulaires de comptes Enterprise, quant à eux, peuvent contacter leur CSM afin de procéder à leur intégration.</p>
 	<h2 id="api-internes-et-externes">API internes et externes</h2>
-	<p>La solution R2 dispose de deux API : une API uniquement accessible depuis Workers, que nous appelons l'API In-Worker (intra-Worker), et une API compatible S3, qui expose votre compartiment au sein d'une URL se présentant sous la forme <a href="http://account.r2.cloudflarestorage.com/bucket?ref=blog.cloudflare.com" target="_blank">compartiment.compte.r2storage.com</a>. Vous devrez en outre vous authentifier avant d'effectuer des requêtes au service R2. En effet, les compartiments R2 sont privés par défaut.</p>
+	<p>La solution R2 dispose de deux API : une API uniquement accessible depuis Workers, que nous appelons l'API In-Worker (intra-Worker), et une API compatible S3, qui expose votre compartiment au sein d'une URL se présentant sous la forme <a href="http://account.r2.cloudflarestorage.com/bucket" target="_blank">compartiment.compte.r2storage.com</a>. Vous devrez en outre vous authentifier avant d'effectuer des requêtes au service R2. En effet, les compartiments R2 sont privés par défaut.</p>
 	<h3 id="api-in-worker">API In-Worker</h3>
 	<p>Dans le cadre de l'API In-Worker, un compartiment est « lié » à un Worker spécifique, qui peut alors exécuter des opérations PUT, GET, DELETE et LIST sur ce dernier.</p>
 	<h3 id="api-compatible-s3">API compatible S3</h3>
 	<p>Pour l'API compatible S3, l'authentification s'effectue de la même manière que sur S3 : en analysant une URL R2 selon le processus SigV4. Le processus SigV4 signe les requêtes à l'aide d'une clé secrète afin de les authentifier auprès du service R2. Cette opération implique que l'accès public à la solution R2 par Internet n'est aujourd'hui possible qu'en hébergeant un Worker, en le connectant à R2 et en routant les requêtes via ce dernier.</p>
-	<p>Le moyen le plus simple de tester l'API compatible S3 consiste à utiliser un client S3. Le SDK <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html?ref=blog.cloudflare.com" target="_blank">boto3</a> constitue l'un des clients S3 les plus populaires.</p>
+	<p>Le moyen le plus simple de tester l'API compatible S3 consiste à utiliser un client S3. Le SDK <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" target="_blank">boto3</a> constitue l'un des clients S3 les plus populaires.</p>
 	<p>Dans Python, copiez le script suivant et renseignez les <code>account_id</code>, <code>access_key</code>, et <code>secret_access_key</code> avec les identifiants de votre compte R2.</p><!--kg-card-begin: markdown-->
 	<pre><code>main.py
 import boto3
@@ -50,7 +50,7 @@ for item in bucket.objects.all():
 		<li>Les opérations de classe A (dont les opérations de lecture/écriture) coûtent 4,50 USD par million.</li>
 		<li>Les opérations de classe B sont facturées 0,36 USD par million.</li>
 	</ul>
-	<p>Les opérations de classe A ont tendance à impliquer une mutation d'état, comme la création d'un compartiment, l'énumération des objets au sein d'un compartiment ou l'écriture d'un objet. Les opérations de classe B, quant à elles, tendent à lire un état existant (par exemple, la lecture d'un objet depuis un compartiment). Vous trouverez plus d'informations sur la tarification, ainsi qu'une liste complète des types d'opérations, dans les <a href="https://developers.cloudflare.com/r2/platform/pricing/?ref=blog.cloudflare.com" target="_blank">documents</a>.</p>
+	<p>Les opérations de classe A ont tendance à impliquer une mutation d'état, comme la création d'un compartiment, l'énumération des objets au sein d'un compartiment ou l'écriture d'un objet. Les opérations de classe B, quant à elles, tendent à lire un état existant (par exemple, la lecture d'un objet depuis un compartiment). Vous trouverez plus d'informations sur la tarification, ainsi qu'une liste complète des types d'opérations, dans les <a href="https://developers.cloudflare.com/r2/platform/pricing/" target="_blank">documents</a>.</p>
 	<p>Bien entendu, la solution R2 ne facture aucuns frais de bande passante sortante. Vous pouvez accéder à votre compartiment autant que vous le souhaitez.</p>
 	<p>Le niveau de tarification perpétuellement gratuit inclut ce qui suit :</p>
 	<ul>
@@ -74,5 +74,5 @@ for item in bucket.objects.all():
 		<li>Prise en charge des URL présignées, afin de déléguer les accès en lecture/écriture d'une clé spécifique à un jeton.</li>
 		<li>Intégration au cache de Cloudflare, afin d'assurer la mise à l'échelle des requêtes de lecture et la distribution mondiale des données.</li>
 	</ul>
-	<p>Si vous avez d'autres requêtes de fonctionnalités supplémentaires à formuler que celles qui figurent dans la liste ci-dessus, n'hésitez pas à nous en faire part ! Rejoignez notre <a href="https://discord.gg/Z29YjNjxhQ?ref=blog.cloudflare.com" target="_blank">Discord</a> et partagez avec nous (sur le canal r2-open-beta) ce dont vous avez besoin pour faire du service R2 votre nouvelle solution de stockage d'objets sans frais de trafic sortant.</p>
+	<p>Si vous avez d'autres requêtes de fonctionnalités supplémentaires à formuler que celles qui figurent dans la liste ci-dessus, n'hésitez pas à nous en faire part ! Rejoignez notre <a href="https://discord.gg/Z29YjNjxhQ" target="_blank">Discord</a> et partagez avec nous (sur le canal r2-open-beta) ce dont vous avez besoin pour faire du service R2 votre nouvelle solution de stockage d'objets sans frais de trafic sortant.</p>
 </div>

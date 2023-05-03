@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-8-2.png" class="kg-image" alt="Intelligent, automatic restarts for unhealthy Kafka consumers" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-8-2.png" class="kg-image" alt="Intelligent, automatic restarts for unhealthy Kafka consumers"></figure>
 	<p>Cloudflare 采取各种措施，确保能够防止基础设施所有层级的故障。其中包括 Kafka，我们在关键工作流中使用这个系统，例如发送时间敏感的电子邮件和警报。</p>
 	<p>在保持我们利用 Kafka 的应用使用健康并始终正常运行方面，我们学到了很多。众所周知，应用运行状况检查很难实现：是什么决定应用是否健康？我们如何保持服务始终正常运行？</p>
 	<p>这些可通过多种方式实现。我们将讨论一种方法，它允许我们显著减少不健康的应用相关事件，且要求更少人工干预。</p>
@@ -7,37 +7,37 @@
 	<p><a href="https://blog.cloudflare.com/using-apache-kafka-to-process-1-trillion-messages/">Cloudflare 大量采用 Kafka</a>。由于 Kafka 的异步特性和可靠性，我们使用它来解耦服务。它允许不同的团队有效地工作，而不会相互依赖。有关其他 Cloudflare 团队如何使用 Kafka，详见<a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/">这篇</a>文章。</p>
 	<p>Kafka 用于发送和接收消息。消息代表某种事件，例如信用卡支付，或在平台中创建的新用户的详细信息。这些消息可以用多种方式表示：JSON、Protobuf、Avro 等等。</p>
 	<p>Kafka 以主题形式组织消息。主题是事件的有序日志，其中每条消息都用累进偏移量标记。当由外部系统写入一个事件时，它将被追加到该主题的末尾。默认情况下，这些事件不会从主题中删除(可以应用保留)。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/1-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/1-4.png" class="kg-image"></figure>
 	<p>主题作为日志文件存储在磁盘上，大小有限。分区是一种系统方法，用于将一个主题日志文件分解为多个日志，每个日志可以托管在单独的服务器上，从而支持扩展主题。</p>
 	<p>主题由 Kafka 集群中的代理节点管理。它们负责向分区写入新事件，支持读取，并在它们之间复制分区。</p>
 	<p>消息可以由单个消费者或协调的消费者组消费。</p>
 	<p>消费者使用唯一的 id (消费者 id)，这个 id 允许代理将它们识别为消费特定主题的应用。<br><br>每个主题都可以被无限数量的消费者阅读，只要他们使用不同的 id。每个消费者可以根据需要重播相同的消息。</p>
 	<p>当使用者开始从一个主题消费时，它将从每个分区的选定偏移量开始处理所有消息。通过消费者组，分区可在组中的每个消费者之间划分。这一划分由消费者组领导者决定。这个领导者将接收关于组中其他消费者的信息，并决定哪些消费者将从哪个分区接收消息(分区策略)。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/2-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/2-3.png" class="kg-image"></figure>
 	<p>消费者提交的偏移量可以证明消费者是否按预期工作。提交已处理的偏移量是使用者及其消费者组向代理报告它们已处理特定消息的方式。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/unnamed-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/unnamed-6.png" class="kg-image"></figure>
 	<p>衡量消费者处理速度是否足够快的一个标准是滞后(lag)。我们用它来衡量我们落后最新消息的程度。这将跟踪消息写入主题和从主题读取消息之间的时间间隔。当一项服务滞后时，意味着消费的速度比新消息产生的速度慢。</p>
 	<p>由于 Cloudflare 的规模，消息速率往往非常高，大量请求是时间敏感的，因此监控这一点至关重要。</p>
 	<p>Cloudflare 使用 Kafka 的应用作为 Kubernetes 上的微服务部署。</p>
 	<h3 id="kubernetes-">Kubernetes 应用的运行状况检查</h3>
-	<p>Kubernetes 使用<a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/?ref=blog.cloudflare.com" target="_blank">探针 (probe)</a> 来了解某一项服务是否正常运行，并准备好接收流量以开始运行。当一个存活探针失败且重试次数被超过时，Kubernete 将重新启动该服务。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/4-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kubernetes 使用<a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/" target="_blank">探针 (probe)</a> 来了解某一项服务是否正常运行，并准备好接收流量以开始运行。当一个存活探针失败且重试次数被超过时，Kubernete 将重新启动该服务。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/4-3.png" class="kg-image"></figure>
 	<p>当一个就绪探针失败且重试次数被超过时，它将停止向目标 pod 发送 HTTP 流量。对 Kafka 应用而言，这是不相关的，因为它们不运行 http 服务器。为此，我们仅介绍存活检查。</p>
 	<p>对消费者进行的经典 Kafka 存活探针检查与代理之间的连接状态。最佳实践通常是使这些检查保持简单，并执行一些基本操作——例如，在本例中的列出主题。如果由于任何原因，检查始终失败，例如代理返回 TLS 错误，Kubernetes 将终止服务并启动相同服务的新 pod，从而强制建立新连接。简单的 Kafka 存活检查可以很好地了解与代理的连接是否不健康。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/5-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/5-2.png" class="kg-image"></figure>
 	<h3 id="kafka-">Kafka 运行状况检查的问题</h3>
 	<p>由于 Cloudflare 的规模，我们的许多 Kafka 主题被划分为多个分区(在某些情况下可能多达数百个！)而且在许多情况下，我们消费的服务的副本计数并不一定符合 Kafka 主题上的分区数。这可能意味着在许多情况下，这种简单的运行状况检查方法是不足够的。</p>
 	<p>对于消费 Kafka 主题的微服务而言，如果它们在消息发布到主题时定期消费和提交偏移量，就表明其运行正常。当这样的服务没有按照预期提交偏移量时，意味着消费者处于不良状态，并将开始积累滞后。我们经常采取的一种方法是手动终止并重新启动 Kubernetes 中的服务，这将导致重新连接和重新平衡。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/lag.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/lag.png" class="kg-image"></figure>
 	<p>当消费者加入或离开消费者组时，将触发重新平衡，消费者组领导者必须重新分配哪些消费者将从哪些分区读取。</p>
 	<p>当重新平衡发生时，每个消费者都被通知停止消费。一些消费者可能会被收回分配给它们的分区，并重新分配给另一个消费者。我们注意到这种情况发生在我们的库实现中；如果使用者不确认此指令，它将无限期地等待从不再分配给它的分区消费新消息，最终导致死锁。通常需要手动重新启动故障的客户端应用程序来恢复处理。</p>
 	<h3 id="-">智能运行状况检查</h3>
 	<p>当我们看到消费者报告“健康”但不进行任何工作时，我们就会想到，也许我们在运行状况中把注意力放在错误的地方上了。仅仅因为服务连接到 Kafka 代理并可以从主题中读取，并不意味着消费者正在积极地处理消息。</p>
 	<p>因此，我们意识到应该专注于消息摄取，使用偏移量来确保向前进展。</p>
 	<h4 id="pagerduty-">PagerDuty 方式</h4>
-	<p>PagerDuty 就这个问题写了一篇精彩的<a href="https://www.pagerduty.com/eng/kafka-health-checks/?ref=blog.cloudflare.com" target="_blank">博客文章</a>，在我们考虑自己的解决方案时提供了灵感。</p>
+	<p>PagerDuty 就这个问题写了一篇精彩的<a href="https://www.pagerduty.com/eng/kafka-health-checks/" target="_blank">博客文章</a>，在我们考虑自己的解决方案时提供了灵感。</p>
 	<p>他们的方法使用当前(最新)偏移量和提交的偏移量。当前偏移量表示发送到主题的最后一条消息，而提交的偏移量是由消费者处理的最后一条消息。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0-4.png" class="kg-image"></figure>
 	<p>通过确保最新的偏移量正在改变(接收新消息)和提交的偏移量也在改变(处理新消息)，从而确认消费者正在向前移动。</p>
 	<p>因此，我们想到的解决方案如下：</p>
 	<ul>
@@ -46,7 +46,7 @@
 		<li>如果提交偏移量==当前偏移量，存活探针通过。</li>
 		<li>如果自上次运行运行状况检查以来提交的偏移量的值没有更改，则存活探针失败。</li>
 	</ul>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--1--3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--1--3.png" class="kg-image"></figure>
 	<p>为了测量提交的偏移量是否在发生变化，我们需要存储前一次运行的值，我们使用分区号为键的内存映射来实现这一点。这意味着我们服务的每个实例仅拥有当前正在从中消费的分区的视图，并将为每个分区进行运行状况检查。</p>
 	<h4 id="--1">问题</h4>
 	<p>当我们第一次推出智能运行状况检查时，发布后不久就开始注意到级联失败。在初步调查之后，我们意识到，这种情况发生在出现重新平衡时。它最初会影响一个副本，然后很快导致其他副本报告为不健康。</p>

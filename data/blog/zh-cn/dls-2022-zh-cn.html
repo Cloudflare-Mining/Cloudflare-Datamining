@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-51.png" class="kg-image" alt="Navigating the changing data localization landscape with Cloudflare’s Data Localization Suite" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-51.png" class="kg-image" alt="Navigating the changing data localization landscape with Cloudflare’s Data Localization Suite"></figure>
 	<p>Cloudflare 相信，部署有效的网络安全措施是保护个人信息隐私的<a href="https://blog.cloudflare.com/investing-in-security-to-protect-data-privacy/">最佳方式</a>，比确保信息留在特定司法管辖区内更有效。然而，欧洲、印度、澳大利亚、日本和许多其他地区的客户对我们表示，作为他们隐私计划的一部分，他们需要解决方案来本地化数据，以满足监管义务。</p>
 	<p>1 月 28 日的数据隐私日即将到来之际，我们处于一个耐人寻味的地位：尽管不认同数据本地化代表了更好的数据隐私，但也想为必须遵守某些法规的客户提供支持。</p>
 	<p>为此，我们在 2020 年<a href="https://blog.cloudflare.com/zh-cn/introducing-the-cloudflare-data-localization-suite-zh-cn/">推出了数据本地化</a> (DLS)，以帮助客户驾驭日益专注于数据本地化的环境。通过 DLS，客户可以利用 Cloudflare 强大的全球网络和安全措施来保护他们的业务，同时将我们代表其处理的数据保留在本地。自从发布以来，我们的很多客户已经采用了 DLS。本文分享我们如何使 DLS 更全面、更易使用的更新。</p>
@@ -15,7 +15,7 @@
 		<li>如何确保日志和元数据永远不会转移到我的司法管辖区之外？</li>
 	</ol>
 	<p>为了解决这些问题，我们的 DLS 拥有一个加密密钥组件，一个解决传输中内容在何处终止和检查的组件，以及一个将元数据保存在客户司法管辖区内的组件：</p>
-	<p><strong>1. 加密密钥</strong><br>Cloudflare 已长期提供 <a href="https://www.cloudflare.com/ssl/keyless-ssl/?ref=blog.cloudflare.com" target="_blank">Keyless SSL</a> 和 <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/">Geo Key Manager</a>，确保私有 SSL/TLS 密钥材料从不离开欧盟。使用 Geo Key Manager 的客户可以选择将加密密钥仅存储在客户指定地区的数据中心。Keyless SSL 确保 Cloudflare 从不拥有私钥资料；Geo Key Manager 确保密钥受到加密访问控制的保护，以便密钥只能在指定的地区使用。</p>
+	<p><strong>1. 加密密钥</strong><br>Cloudflare 已长期提供 <a href="https://www.cloudflare.com/ssl/keyless-ssl/" target="_blank">Keyless SSL</a> 和 <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/">Geo Key Manager</a>，确保私有 SSL/TLS 密钥材料从不离开欧盟。使用 Geo Key Manager 的客户可以选择将加密密钥仅存储在客户指定地区的数据中心。Keyless SSL 确保 Cloudflare 从不拥有私钥资料；Geo Key Manager 确保密钥受到加密访问控制的保护，以便密钥只能在指定的地区使用。</p>
 	<p><strong>2. </strong><a href="https://blog.cloudflare.com/introducing-regional-services/"><strong>Regional Services</strong></a>:<br> Regional Services 确保 Cloudflare 只能在客户选择的地区解密和检查 HTTPS 通信的内容。Regional Services 启用时，无论流量首先到达我们全球网络上哪一个数据中心，我们都以加密的形式转发 TCP 流，而不是在第一个数据中心对其解密。一旦它到达客户所选地区的数据中心，就会对其进行解密并应用我们的第 7 层安全措施，以防止恶意流量到达客户网站。</p>
 	<p><strong>3. </strong><a href="https://blog.cloudflare.com/zh-cn/introducing-the-customer-metadata-boundary-zh-cn/"><strong>Customer Metadata Boundary</strong></a>：<br>启用该选项后，Cloudflare 代表客户处理的最终用户流量日志(包含 IP 地址)将不会离开客户所选择的地区。(目前仅在欧盟和美国可用。)</p>
 	<h3 id="-dls-">将 DLS 扩展到新的地区</h3>
@@ -26,11 +26,11 @@
 	<p>Regional Services 和 Customer Metadata Boundary 为我们的客户提供了重要的保护——但它们一直难以使用。两者都需要 Cloudflare 团队手动操作，而且都有令人困惑的(或没有)公共 API。</p>
 	<p>今天，我们将解决这个问题！隆重宣布可用性方面的两项重大改进：</p>
 	<ol>
-		<li>现在有一个专门的 UI <a href="https://developers.cloudflare.com/data-localization/regional-services/get-started/?ref=blog.cloudflare.com#regional-services-via-api" target="_blank">和 API 来启用这项服务</a>，可直接从 DNS 选项卡进入。现在可以对每个主机名设置不同的地区。</li>
-		<li>客户可以使用<a href="https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/?ref=blog.cloudflare.com" target="_blank">我们的自助服务 API</a> 来启用 Metadata Boundary。</li>
+		<li>现在有一个专门的 UI <a href="https://developers.cloudflare.com/data-localization/regional-services/get-started/#regional-services-via-api" target="_blank">和 API 来启用这项服务</a>，可直接从 DNS 选项卡进入。现在可以对每个主机名设置不同的地区。</li>
+		<li>客户可以使用<a href="https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/" target="_blank">我们的自助服务 API</a> 来启用 Metadata Boundary。</li>
 	</ol>
 	<p>我们很高兴能够简化数据本地化套件的使用，并让客户能够更准确地控制如何本地化流量的哪些部分。</p>
 	<h3 id="--3">下一步</h3>
-	<p>The Data Localization Suite 目前面向 Enterprise 客户提供。如您有意使用，请联系帐户代表。您可在<a href="https://developers.cloudflare.com/data-localization/?ref=blog.cloudflare.com" target="_blank">这里找到有关配置的更多信息</a>。</p>
+	<p>The Data Localization Suite 目前面向 Enterprise 客户提供。如您有意使用，请联系帐户代表。您可在<a href="https://developers.cloudflare.com/data-localization/" target="_blank">这里找到有关配置的更多信息</a>。</p>
 	<p>今年，我们对数据本地化套件有更多计划。我们计划为 Regional Services 和 Metadata Boundary 支持更多地区。我们还计划为我们的所有 Zero Trust 提供全面的数据本地化支持。请持续关注本博客。</p>
 </div>

@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image5-1.png" class="kg-image" alt="Manage and control the use of dedicated egress IPs with Cloudflare Zero Trust" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image5-1.png" class="kg-image" alt="Manage and control the use of dedicated egress IPs with Cloudflare Zero Trust"></figure>
 	<p>アイデンティティ主導のZero Trustルールができる前は、公衆インターネット上の一部のSaaSアプリケーションは、セキュリティモデルとして接続ユーザーのIPアドレスに依存していました。ユーザーは、固定IPアドレスの範囲で、既知のオフィスから接続し、SaaSアプリケーションは、ログイン認証に加えて、そのアドレスをチェックしていました。</p>
 	<p>今でも多くのシステムがその2段階認証方式を採用しています。Cloudflare Oneのお客様は、Zero Trustモデルへの移行に伴い、この目的のために専用のエグレスIPを使用することができます。他のソリューションと異なり、このオプションを利用するお客様は、自らインフラストラクチャをデプロイする必要がありません。しかし、すべてのトラフィックがそれらの専用エグレスIPを使用する必要があるわけではありません。</p>
 	<p>本日、CloudflareがエグレスIPを使用するタイミングを管理者がコントロールできるようにするポリシーを発表しました。具体的には、管理者はCloudflareダッシュボードのルールビルダーを使用して、ID、アプリケーション、IPアドレス、ジオロケーションなどの属性に基づいて、いつ、どのエグレスIPを使用するかを決定することができます。この機能は、Zero Trustのサブスクリプションに専用エグレスIPを追加する企業契約のお客様であれば、どなたでもご利用いただけます。</p>
 	<h3 id="-">なぜ、これを作ったのか？</h3>
-	<p>今日のハイブリッドな職場環境において、企業はオフィス、データセンター、ローミングユーザーから出る従業員のトラフィックを管理するために、より一貫したセキュリティとITエクスペリエンスを実現することを切望しています。より合理的なエクスペリエンスを提供するために、多くの組織が<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/?ref=blog.cloudflare.com" target="_blank">Secure Web Gateways</a>（SWG）のような最新のクラウド配信型プロキシサービスを採用し、オンプレミスアプライアンスの複雑な組み合わせから脱却しつつあります。</p>
+	<p>今日のハイブリッドな職場環境において、企業はオフィス、データセンター、ローミングユーザーから出る従業員のトラフィックを管理するために、より一貫したセキュリティとITエクスペリエンスを実現することを切望しています。より合理的なエクスペリエンスを提供するために、多くの組織が<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">Secure Web Gateways</a>（SWG）のような最新のクラウド配信型プロキシサービスを採用し、オンプレミスアプライアンスの複雑な組み合わせから脱却しつつあります。</p>
 	<p>これらのレガシーツールの従来の利点の1つは、静的なソースIPに基づいて許可リストポリシーを作成する機能でした。ユーザーが一箇所に集中しているときは、エグレスロケーションに基づきトラフィックを確認することは簡単で、十分な信頼性がありました。多くの企業は、ユーザーが一箇所にとどまることなく移動しても、このようなトラフィック検証方法を維持することを望んでいるか、あるいは要求しています。</p>
-	<p>これまでCloudflareは、当社のプロキシである<a href="https://www.cloudflare.com/ja-jp/products/zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trustサービス</a>のアドオンとして専用エグレスIPを提供することでこれらの組織をサポートしてきました。デフォルトのエグレスIPとは異なり、これらの専用エグレスIPは他のGatewayアカウントと共有されず、指定されたアカウントのプロキシトラフィックをエグレスするためにのみ使用されます。</p>
+	<p>これまでCloudflareは、当社のプロキシである<a href="https://www.cloudflare.com/ja-jp/products/zero-trust/" target="_blank">Zero Trustサービス</a>のアドオンとして専用エグレスIPを提供することでこれらの組織をサポートしてきました。デフォルトのエグレスIPとは異なり、これらの専用エグレスIPは他のGatewayアカウントと共有されず、指定されたアカウントのプロキシトラフィックをエグレスするためにのみ使用されます。</p>
 	<p><a href="https://blog.cloudflare.com/ja-jp/gateway-dedicated-egress-policies-ja-jp/">以前のブログ記事</a>で述べたように、お客様はすでにCloudflareの専用エグレスIPを使用して、ユーザーのプロキシードトラフィックを識別したり、サードパーティプロバイダの許可リストにこれらを追加したりしてVPN使用を非推奨としています。これらの組織は、固定された既知のIPを引き続き使用するというシンプルさの恩恵を受け、トラフィックは従来のオンプレミスアプライアンスのボトルネックやバックホールを回避することができます。</p>
 	<h3 id="--1">エグレスポリシーを使用する場合</h3>
 	<p>Gatewayエグレスポリシービルダーは、ユーザーのアイデンティティ、デバイスのポスチャー、送信元/送信先IPアドレスなどに基づいて、管理者が柔軟かつ具体的にエグレストラフィックを設定できるよう支援します。</p>
@@ -17,14 +17,14 @@
 	<h3 id="--2">エグレスポリシーの構築</h3>
 	<p>管理者がポリシーを設定するのがいかに簡単かを示すために、最後のシナリオを説明しましょう。私の組織はサードパーティーのサービスを使用しており、ユーザー名とパスワードによるログインに加え、ドメインにアクセスするために静的な送信元IPまたはネットワーク範囲を使用することを要求されます。</p>
 	<p>これを設定するには、Zero TrustダッシュボードのGatewayの下にある[エグレスポリシー]に移動するだけで良いのです。 そこで、「エグレスポリシーを作成」をクリックして設定を行います。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image3-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image3-1.png" class="kg-image"></figure>
 	<p>私の組織では、このサードパーティーのサービスにアクセスするユーザーのほとんどがポルトガルに住んでいるので、ポルトガルのモンティージョに割り当てられた専用のエグレスIPを使用することにしています。ユーザーは203.0.113.10にホストされているexample.comにアクセスするので、このサイトにすべてのトラフィックを一致させるために、宛先IPセレクタを使用します。ポリシー設定は以下の通りです：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image2.png" class="kg-image"></figure>
 	<p>ポリシーが作成されたら、このサードパーティサービスに関連しない宛先のために専用のエグレスIPを使用しないように、組織用の「その他すべてのトラフィック」用のポリシーを設定します。このポリシーの追加は、共有のエンタープライズIPプールを経由してトラフィックを出すことで、ユーザーのプライバシーを維持しながら、最もパフォーマンスの高いネットワーク体験をユーザーに提供するためのカギとなります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image4.png" class="kg-image"></figure>
 	<p>エグレスポリシーリストを見てみると、両方のポリシーが有効になっていることがわかります。これで、ユーザーがexample.comにアクセスしようとすると、エグレスIPとしてプライマリまたはセカンダリの専用IPv4またはIPv6範囲のいずれかが使用されるようになります。また、それ以外のトラフィックには、デフォルトのCloudflareエグレスIPが使用されます。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image1-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image1-3.png" class="kg-image"></figure>
 	<h3 id="--3">次のステップ</h3>
 	<p>Cloudflareは、オンプレミスアプライアンスから移行する企業は、クラウドセキュリティスタックを介してより多くのトラフィックをプロキシする際に、引き続きシンプルさと制御性を求めていることを認識しています。Gatewayのエグレスポリシーにより、管理者は、ますます分散する従業員のトラフィックフローを制御することができます。</p>
-	<p>Cloudflareの専用エグレスIPを利用したポリシー構築にご興味のある方は、<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/?ref=blog.cloudflare.com" target="_blank">Cloudflare Zero Trust Enterpriseプラン</a>に追加するか、アカウントマネージャにお問い合わせください。</p>
+	<p>Cloudflareの専用エグレスIPを利用したポリシー構築にご興味のある方は、<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">Cloudflare Zero Trust Enterpriseプラン</a>に追加するか、アカウントマネージャにお問い合わせください。</p>
 </div>

@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image11-1.png" class="kg-image" alt="How we built it: the technology behind Cloudflare Radar 2.0" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image11-1.png" class="kg-image" alt="How we built it: the technology behind Cloudflare Radar 2.0"></figure>
 	<p><a href="https://blog.cloudflare.com/radar2/">Radar 2.0</a> Radar 1.0の学習に基づいて構築され、先月のCloudflareのバースデーウィークに完全な製品刷新として発表されました。当社は、ユーザーがインサイトの発見やデータをナビゲートをより簡単できるようにし、また、全体においてこれまで以上に質が高く高速になったユーザー体験を提供したいと考えていました。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image16.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image16.png" class="kg-image"></figure>
 	<p>当社は目下のところ<a href="https://blog.cloudflare.com/ja-jp/welcome-to-the-supercloud-and-developer-week-2022-ja-jp/">Supercloud</a>の構築に取り組んでいます。Cloudflareの製品は現在、ネットワーキング、セキュリティ、アクセスコントロール、コンピューティング、ストレージなどにおいて数百もの機能を備えています。</p>
 	<p>本記事では新しいRadarの構築プロセスをエンジニアリングの観点から説明しようと思います。Radarの構築は、厳しい要件と複数のアーキテクチャレイヤーを含む多少複雑なウェブサイトの構築を当社のスタック上に行うことが、誰にでもできてしかも簡単であることを示すことを目的としていました。</p>
 	<p>他の開発者が従来のソフトウェア・アーキテクチャから転換し、より効率的な最新技術を使ってアプリケーションを構築するきっかけになればと願っています。</p>
@@ -12,14 +12,14 @@
 		<li>Cloudflareのネットワークレイヤーは、Radarをホストして実行し、公開APIを提供する場所です。</li>
 		<li>クライアントレイヤーは基本的にブラウザで実行される、その他のすべてのものとなります。私たちはこれをRadar Webアプリと呼んでいます。</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-31.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-31.png" class="kg-image"></figure>
 	<p>ご覧の通り、Cloudflareの製品<em>はさまざまなところで目にすることができます</em>。Cloudflare製品はコードを大きなスケールでホストし安全に実行するための基盤となるリソースだけでなく、アプリケーションをエンドツーエンドで実行するために必要な、その他のビルディングブロックも提供しています。</p>
 	<p>これらの機能はワンクリックと数行のコードの距離で、すぐに利用可能であり、当社のエコシステムとツールに緊密に統合されているため、エンジニアリングチームは何度も土台から再開発する必要がなく、本質的なもの、つまりアプリのロジックに時間がかけられます。</p>
 	<p>それでは詳しい内容に入りましょう。</p>
 	<h2 id="cloudflare-pages">Cloudflare Pages</h2>
-	<p>Radar 2.0 は<a href="https://pages.cloudflare.com/?ref=blog.cloudflare.com" target="_blank"> Cloudflare Pages</a>という開発者向けのウェブサイトホスティングプラットフォームを使用してデプロイされています。初期の頃は静的アセットのみをPagesでホストすることができました。これは、 <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/?ref=blog.cloudflare.com" target="_blank"> Hugo</a> 、<a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-jekyll-site/?ref=blog.cloudflare.com" target="_blank"> Jekyll</a>、<a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-gatsby-site/?ref=blog.cloudflare.com" target="_blank">Gatsby</a> といった静的サイト生成ツールに統合する場合などに役に立ちました。それでも、アプリケーションにサーバーサイドの何らかのコンピューティングや高度なロジックが必要な場合、1つのデプロイメントで解決できるわけではありません。</p>
-	<p>そこへ、Pagesは最近カスタムWorkerスクリプトを実行するためのサポートを追加しました。<a href="https://developers.cloudflare.com/pages/platform/functions/?ref=blog.cloudflare.com" target="_blank">関数</a> で、サーバーサイドのコードを実行し、通常は別の Workerを使って実装するようなあらゆる種類の動的機能を有効にすることができるようになったのです。</p>
-	<p>Cloudflare Page関数は通常のWorkerと同じように、<a href="https://developers.cloudflare.com/workers/learning/using-durable-objects/?ref=blog.cloudflare.com" target="_blank">Durable Objects</a>、<a href="https://developers.cloudflare.com/workers/runtime-apis/kv/?ref=blog.cloudflare.com" target="_blank">KV</a>、<a href="https://developers.cloudflare.com/r2/?ref=blog.cloudflare.com" target="_blank">R2</a>、<a href="https://developers.cloudflare.com/d1?ref=blog.cloudflare.com" target="_blank">D1</a>を使用することもできます。これを行う方法に関する<a href="https://developers.cloudflare.com/pages/platform/functions/?ref=blog.cloudflare.com" target="_blank">優れたドキュメント</a>と、開発者向けドキュメントの詳細もご覧いただけます。さらに、すべての手順を詳細に説明する<a href="https://blog.cloudflare.com/ja-jp/building-full-stack-with-pages-ja-jp/">フルスタックアプリケーションの構築方法</a>に関して書いた記事もあります。</p>
+	<p>Radar 2.0 は<a href="https://pages.cloudflare.com/" target="_blank"> Cloudflare Pages</a>という開発者向けのウェブサイトホスティングプラットフォームを使用してデプロイされています。初期の頃は静的アセットのみをPagesでホストすることができました。これは、 <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/" target="_blank"> Hugo</a> 、<a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-jekyll-site/" target="_blank"> Jekyll</a>、<a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-gatsby-site/" target="_blank">Gatsby</a> といった静的サイト生成ツールに統合する場合などに役に立ちました。それでも、アプリケーションにサーバーサイドの何らかのコンピューティングや高度なロジックが必要な場合、1つのデプロイメントで解決できるわけではありません。</p>
+	<p>そこへ、Pagesは最近カスタムWorkerスクリプトを実行するためのサポートを追加しました。<a href="https://developers.cloudflare.com/pages/platform/functions/" target="_blank">関数</a> で、サーバーサイドのコードを実行し、通常は別の Workerを使って実装するようなあらゆる種類の動的機能を有効にすることができるようになったのです。</p>
+	<p>Cloudflare Page関数は通常のWorkerと同じように、<a href="https://developers.cloudflare.com/workers/learning/using-durable-objects/" target="_blank">Durable Objects</a>、<a href="https://developers.cloudflare.com/workers/runtime-apis/kv/" target="_blank">KV</a>、<a href="https://developers.cloudflare.com/r2/" target="_blank">R2</a>、<a href="https://developers.cloudflare.com/d1" target="_blank">D1</a>を使用することもできます。これを行う方法に関する<a href="https://developers.cloudflare.com/pages/platform/functions/" target="_blank">優れたドキュメント</a>と、開発者向けドキュメントの詳細もご覧いただけます。さらに、すべての手順を詳細に説明する<a href="https://blog.cloudflare.com/ja-jp/building-full-stack-with-pages-ja-jp/">フルスタックアプリケーションの構築方法</a>に関して書いた記事もあります。</p>
 	<p>Radar 2.0がサーバーサイドの機能を必要とする理由は2つあります。</p>
 	<ul>
 		<li>それはRadarをレンダリングし、Remixのサーバーサイドを動作させること。</li>
@@ -27,9 +27,9 @@
 	</ul>
 	<h2 id="remix-">Remixとサーバーサイドレンダリング</h2>
 	<p>当社ではRemix with Cloudflare Pages on Radar 2.0を使用しています。</p>
-	<p><a href="https://remix.run/?ref=blog.cloudflare.com" target="_blank">Remix</a>はサーバーまたはクライアントモデルを採用しており、ユーザーのネットワークは制御できない前提で動作します。そのため、ウェブアプリケーションは、有線を通じて送信するJavascript、CSS、JSONの量を減らす必要があります。そのために、ロジックの一部をサーバーに移します。</p>
-	<p>この場合、クライアントブラウザはプリレンダリングされたDOMコンポーネントと、UIのニーズに合わせて適切に調整されたJSON、Javascript、CSSのコードでプリフェッチされたAPI呼び出しの結果を取得することになります。以下、 <a href="https://remix.run/docs/en/v1/pages/technical-explanation?ref=blog.cloudflare.com" target="_blank"> 技術的な説明</a> に、より詳細な説明があります。</p>
-	<p>通常、Remixはこれらすべてを行うためにNode.jsサーバーを必要としますが、Cloudflare WorkersとPages上で<a href="https://developers.cloudflare.com/pages/framework-guides/remix/?ref=blog.cloudflare.com" target="_blank">実行することも可能なのです。</a></p>
+	<p><a href="https://remix.run/" target="_blank">Remix</a>はサーバーまたはクライアントモデルを採用しており、ユーザーのネットワークは制御できない前提で動作します。そのため、ウェブアプリケーションは、有線を通じて送信するJavascript、CSS、JSONの量を減らす必要があります。そのために、ロジックの一部をサーバーに移します。</p>
+	<p>この場合、クライアントブラウザはプリレンダリングされたDOMコンポーネントと、UIのニーズに合わせて適切に調整されたJSON、Javascript、CSSのコードでプリフェッチされたAPI呼び出しの結果を取得することになります。以下、 <a href="https://remix.run/docs/en/v1/pages/technical-explanation" target="_blank"> 技術的な説明</a> に、より詳細な説明があります。</p>
+	<p>通常、Remixはこれらすべてを行うためにNode.jsサーバーを必要としますが、Cloudflare WorkersとPages上で<a href="https://developers.cloudflare.com/pages/framework-guides/remix/" target="_blank">実行することも可能なのです。</a></p>
 	<p>以下はCloudflare Pagesを使って、Workers上でRemixサーバを動作させるためのコードです。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import { createPagesFunctionHandler } from "@remix-run/cloudflare-pages";
 import * as build from "@remix-run/dev/server-build";
@@ -65,9 +65,9 @@ const handler: ExportedHandler&lt;Env&gt; = {
 };
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Remixにおいて、<a href="https://remix.run/docs/en/v1/guides/api-routes?ref=blog.cloudflare.com" target="_blank">routes</a> はユーザーがアプリとやりとりして変更する（たとえば、メニューオプションをクリックする）ときの変更を処理します。Remix のルーティングは <a href="https://remix.run/docs/en/v1/guides/data-loading?ref=blog.cloudflare.com" target="_blank"> <em>loader</em></a>、<a href="https://remix.run/docs/en/v1/guides/data-writes?ref=blog.cloudflare.com" target="_blank"><em>action</em></a>、<a href="https://remix.run/docs/en/v1/api/conventions?ref=blog.cloudflare.com#root-layout-route" target="_blank"> <em>default</em></a> exportを持つことができます。<em>loader</em>はデータを取得するためのAPIコールを処理します（GETメソッド）。 <em> アクション</em>はサーバーへの送信（POST、PUT、PATCH、DELETEメソッド）を処理して応答を返します。<em>default</em>export はそのルーティングに対して返される React のUIコードを処理します。<em> default</em>エクスポートがないルーティングはデータのみを返します。</p>
+	<p>Remixにおいて、<a href="https://remix.run/docs/en/v1/guides/api-routes" target="_blank">routes</a> はユーザーがアプリとやりとりして変更する（たとえば、メニューオプションをクリックする）ときの変更を処理します。Remix のルーティングは <a href="https://remix.run/docs/en/v1/guides/data-loading" target="_blank"> <em>loader</em></a>、<a href="https://remix.run/docs/en/v1/guides/data-writes" target="_blank"><em>action</em></a>、<a href="https://remix.run/docs/en/v1/api/conventions#root-layout-route" target="_blank"> <em>default</em></a> exportを持つことができます。<em>loader</em>はデータを取得するためのAPIコールを処理します（GETメソッド）。 <em> アクション</em>はサーバーへの送信（POST、PUT、PATCH、DELETEメソッド）を処理して応答を返します。<em>default</em>export はそのルーティングに対して返される React のUIコードを処理します。<em> default</em>エクスポートがないルーティングはデータのみを返します。</p>
 	<p>Remixはサーバとクライアントの両方で動作するため、機能が高まっていきます。何がサーバサイドでプリフェッチされ計算され、何がネットワーク接続を経由しなければならないかを知ることができ、パフォーマンスと応答性のためにすべてを最適化することができるのです。</p>
-	<p>こちらは<a href="https://radar.cloudflare.com/outage-center?ref=blog.cloudflare.com" target="_blank">Outage Center</a>のページで、読みやすくするために簡略化した Radar ルートの例です。</p><!--kg-card-begin: markdown-->
+	<p>こちらは<a href="https://radar.cloudflare.com/outage-center" target="_blank">Outage Center</a>のページで、読みやすくするために簡略化した Radar ルートの例です。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import type { MetaFunction } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { type LoaderArgs } from "@remix-run/server-runtime";
@@ -107,45 +107,45 @@ export default function Outages() {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>その結果がこちらです。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image18.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>RemixとSSRは<a href="https://developer.chrome.com/docs/lighthouse/overview/?ref=blog.cloudflare.com" target="_blank">Lighthouse</a>のスコアとSEOにも役立ちます。<a href="https://web.dev/cls/?ref=blog.cloudflare.com" target="_blank">CLS（累積レイアウトシフト）</a>、<a href="https://web.dev/fcp/?ref=blog.cloudflare.com" target="_blank">First Contentful Paint</a>、<a href="https://web.dev/lcp/?ref=blog.cloudflare.com" target="_blank">Largest Contentful Paint</a>のようなメトリクスを、サーバからブラウザへのフェッチと情報の移動回数を減らし、DOMをプリレンダリングすることで大幅に改善することができるのです。</p>
-	<p>Remixにアプリを移植している別のプロジェクトは<a href="https://cloudflare.tv/?ref=blog.cloudflare.com" target="_blank">Cloudflare TV</a>です。メトリクスが変更前と変更後にどのように変化したかを示しています。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image18.png" class="kg-image"></figure>
+	<p>RemixとSSRは<a href="https://developer.chrome.com/docs/lighthouse/overview/" target="_blank">Lighthouse</a>のスコアとSEOにも役立ちます。<a href="https://web.dev/cls/" target="_blank">CLS（累積レイアウトシフト）</a>、<a href="https://web.dev/fcp/" target="_blank">First Contentful Paint</a>、<a href="https://web.dev/lcp/" target="_blank">Largest Contentful Paint</a>のようなメトリクスを、サーバからブラウザへのフェッチと情報の移動回数を減らし、DOMをプリレンダリングすることで大幅に改善することができるのです。</p>
+	<p>Remixにアプリを移植している別のプロジェクトは<a href="https://cloudflare.tv/" target="_blank">Cloudflare TV</a>です。メトリクスが変更前と変更後にどのように変化したかを示しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image12.png" class="kg-image"></figure>
 	<p>RadarのDesktop Lighthouseスコアはパフォーマンス、アクセシビリティ、ベストプラクティス、SEOでほぼ100%の結果となりました。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image14.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Radar 2.0で多用しているCloudflare製品としては、<a href="https://www.cloudflare.com/en-gb/website-optimization/?ref=blog.cloudflare.com" target="_blank">Speed</a>も挙げられます。ここではその中でも<a href="https://blog.cloudflare.com/early-hints/">Early Hints</a>機能の説明をしたいと思います。Early Hints は、新しいWeb<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103?ref=blog.cloudflare.com" target="_blank">標準</a>で、サーバーがウェブページのレンダリングに必要なアセットを、リクエスト中にブラウザへ通知するための新しい HTTP 103 ヘッダーを定義しており、読み込み時間を大幅に改善します。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-42.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image14.png" class="kg-image"></figure>
+	<p>Radar 2.0で多用しているCloudflare製品としては、<a href="https://www.cloudflare.com/en-gb/website-optimization/" target="_blank">Speed</a>も挙げられます。ここではその中でも<a href="https://blog.cloudflare.com/early-hints/">Early Hints</a>機能の説明をしたいと思います。Early Hints は、新しいWeb<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103" target="_blank">標準</a>で、サーバーがウェブページのレンダリングに必要なアセットを、リクエスト中にブラウザへ通知するための新しい HTTP 103 ヘッダーを定義しており、読み込み時間を大幅に改善します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-42.png" class="kg-image"></figure>
 	<p><a href="https://blog.cloudflare.com/early-hints-on-cloudflare-pages/">Cloudflare Pages with Early Hints</a>を利用することができます。</p>
 	<h2 id="api">API</h2>
 	<p>Radarには2つのAPIがあります。データソースに直接アクセスできるバックエンドと、インターネット上で利用可能なフロントエンドです。</p>
 	<h3 id="-api">バックエンドAPI</h3>
-	<p>バックエンドAPIは、<a href="https://www.python.org/?ref=blog.cloudflare.com" target="_blank">Python</a>、<a href="https://pandas.pydata.org/?ref=blog.cloudflare.com" target="_blank">Pandas</a>、<a href="https://fastapi.tiangolo.com/?ref=blog.cloudflare.com" target="_blank">FastAPI</a>を使用して記述され、<a href="https://developers.cloudflare.com/cloudflare-one/policies/access/?ref=blog.cloudflare.com" target="_blank">Cloudflare Access</a>、<a href="https://developers.cloudflare.com/cloudflare-one/identity/authorization-cookie/validating-json/?ref=blog.cloudflare.com" target="_blank">JWTトークン</a>、 &nbsp;、<a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/?ref=blog.cloudflare.com" target="_blank">認証されたオリジンプル</a>(AOP)構成によって保護されています 。Pythonを使用するとチーム、エンジニア、データサイエンティストの誰もが簡単に共同作業ができるようになり、APIの改善と拡張に貢献できます。当社のデータサイエンスチームは、データ探索ワークフローの一部として<a href="https://jupyter.org/hub?ref=blog.cloudflare.com" target="_blank">JupyterHub</a>と<a href="https://docs.jupyter.org/en/latest/start/index.html?ref=blog.cloudflare.com" target="_blank">Jupyter Notebooks</a>を使用しているので、コード、アルゴリズム、モデルのプロトタイピングと再利用が特に簡単かつ迅速になります。</p>
-	<p>その後、<a href="https://strawberry.rocks/?ref=blog.cloudflare.com" target="_blank">Strawberry</a>ベースのGraphQLサーバーを介して、上流のフロントエンドAPIと接続します。<a href="https://graphql.org/?ref=blog.cloudflare.com" target="_blank">GraphQL</a>を使用すれば、複雑なクエリーを簡単に作成でき、社内ユーザーやアナリストが当社の膨大なデータコレクションを使ってレポートを作成する際に必要となる柔軟性を得ることができます。</p>
+	<p>バックエンドAPIは、<a href="https://www.python.org/" target="_blank">Python</a>、<a href="https://pandas.pydata.org/" target="_blank">Pandas</a>、<a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a>を使用して記述され、<a href="https://developers.cloudflare.com/cloudflare-one/policies/access/" target="_blank">Cloudflare Access</a>、<a href="https://developers.cloudflare.com/cloudflare-one/identity/authorization-cookie/validating-json/" target="_blank">JWTトークン</a>、 &nbsp;、<a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/" target="_blank">認証されたオリジンプル</a>(AOP)構成によって保護されています 。Pythonを使用するとチーム、エンジニア、データサイエンティストの誰もが簡単に共同作業ができるようになり、APIの改善と拡張に貢献できます。当社のデータサイエンスチームは、データ探索ワークフローの一部として<a href="https://jupyter.org/hub" target="_blank">JupyterHub</a>と<a href="https://docs.jupyter.org/en/latest/start/index.html" target="_blank">Jupyter Notebooks</a>を使用しているので、コード、アルゴリズム、モデルのプロトタイピングと再利用が特に簡単かつ迅速になります。</p>
+	<p>その後、<a href="https://strawberry.rocks/" target="_blank">Strawberry</a>ベースのGraphQLサーバーを介して、上流のフロントエンドAPIと接続します。<a href="https://graphql.org/" target="_blank">GraphQL</a>を使用すれば、複雑なクエリーを簡単に作成でき、社内ユーザーやアナリストが当社の膨大なデータコレクションを使ってレポートを作成する際に必要となる柔軟性を得ることができます。</p>
 	<h3 id="-api-1">フロントエンドAPI</h3>
-	<p>私たちはRadarのフロントエンドAPIをCloudflare<a href="https://developers.cloudflare.com/workers/?ref=blog.cloudflare.com" target="_blank">Worker</a>上に構築しました。このworkerには主に2つの機能があります。</p>
+	<p>私たちはRadarのフロントエンドAPIをCloudflare<a href="https://developers.cloudflare.com/workers/" target="_blank">Worker</a>上に構築しました。このworkerには主に2つの機能があります。</p>
 	<ul>
 		<li>GraphQLを使ってバックエンドAPIからデータを取得し変換する。</li>
-		<li>公開されている<a href="https://developers.cloudflare.com/radar?ref=blog.cloudflare.com" target="_blank">Radarを含むREST API</a>を提供し、誰でも利用することができるようにする。</li>
+		<li>公開されている<a href="https://developers.cloudflare.com/radar" target="_blank">Radarを含むREST API</a>を提供し、誰でも利用することができるようにする。</li>
 	</ul>
 	<p>コアAPIの前でworkerを使うことで、マイクロサービスの追加や分離が容易になり、それと同時に次のような注目すべき機能が追加されます。</p>
 	<ul>
-		<li>Cloudflareの<a href="https://developers.cloudflare.com/workers/runtime-apis/cache/?ref=blog.cloudflare.com" target="_blank">Cache API</a>では、何をどれくらいの期間キャッシュするかをより細かく制御でき、POSTリクエストとカスタマイズ可能なキャッシュコントロールヘッダをサポートしており、当社でも使用しています。</li>
-		<li><a href="https://developers.cloudflare.com/r2/?ref=blog.cloudflare.com" target="_blank">R2</a>を使ったステイルレスポンス。バックエンド APIが何らかの理由でリクエストに応答できず、かつキャッシュされた古い応答がある場合、R2から直接応答されるので、エンドユーザはより良いエクスペリエンスを得ることができます。</li>
-		<li><a href="https://en.wikipedia.org/wiki/Comma-separated_values?ref=blog.cloudflare.com" target="_blank">CSV</a> と<a href="https://en.wikipedia.org/wiki/JSON?ref=blog.cloudflare.com" target="_blank">JSON</a>出力形式です。CSV形式は使い勝手がよく、データサイエンティストやアナリストなどのAPI使用や、他のツールから直接当社のAPIデータ利用が容易になります。</li>
+		<li>Cloudflareの<a href="https://developers.cloudflare.com/workers/runtime-apis/cache/" target="_blank">Cache API</a>では、何をどれくらいの期間キャッシュするかをより細かく制御でき、POSTリクエストとカスタマイズ可能なキャッシュコントロールヘッダをサポートしており、当社でも使用しています。</li>
+		<li><a href="https://developers.cloudflare.com/r2/" target="_blank">R2</a>を使ったステイルレスポンス。バックエンド APIが何らかの理由でリクエストに応答できず、かつキャッシュされた古い応答がある場合、R2から直接応答されるので、エンドユーザはより良いエクスペリエンスを得ることができます。</li>
+		<li><a href="https://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">CSV</a> と<a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a>出力形式です。CSV形式は使い勝手がよく、データサイエンティストやアナリストなどのAPI使用や、他のツールから直接当社のAPIデータ利用が容易になります。</li>
 	</ul>
 	<h3 id="openapi-3-">OpenAPI 3スキーマジェネレータとバリデータのオープンソース化</h3>
-	<p>フロントエンドAPIの最後の特徴として、<a href="https://spec.openapis.org/oas/latest.html?ref=blog.cloudflare.com" target="_blank">OpenAPI 3</a>のサポートがあります。OpenAPIのスキーマを自動的に生成し、ユーザーの入力を検証します。これは当社開発の<a href="https://github.com/kwhitley/itty-router?ref=blog.cloudflare.com" target="_blank">itty-router</a>上に構築したカスタムライブラリによって行われ、私たちもを使用しています。こちらは現在オープンソースとなっています。</p>
-	<p><a href="https://github.com/cloudflare/itty-router-openapi?ref=blog.cloudflare.com" target="_blank">itty-router-openapi</a>では、Cloudflare Workers 用の勘弁かつコンパクトなOpenAPI 3スキーマ生成および検証ツールが使用できます。 <a href="https://github.com/cloudflare/itty-router-openapi?ref=blog.cloudflare.com" target="_blank">GitHubリポジトリ</a> で詳細な情報や使い方をご確認ください。</p>
+	<p>フロントエンドAPIの最後の特徴として、<a href="https://spec.openapis.org/oas/latest.html" target="_blank">OpenAPI 3</a>のサポートがあります。OpenAPIのスキーマを自動的に生成し、ユーザーの入力を検証します。これは当社開発の<a href="https://github.com/kwhitley/itty-router" target="_blank">itty-router</a>上に構築したカスタムライブラリによって行われ、私たちもを使用しています。こちらは現在オープンソースとなっています。</p>
+	<p><a href="https://github.com/cloudflare/itty-router-openapi" target="_blank">itty-router-openapi</a>では、Cloudflare Workers 用の勘弁かつコンパクトなOpenAPI 3スキーマ生成および検証ツールが使用できます。 <a href="https://github.com/cloudflare/itty-router-openapi" target="_blank">GitHubリポジトリ</a> で詳細な情報や使い方をご確認ください。</p>
 	<h3 id="--1">開発者ドキュメント</h3>
-	<p>本日、<a href="https://developers.cloudflare.com/radar?ref=blog.cloudflare.com" target="_blank">Radar APIの開発者向けドキュメントページ</a>も公開しました。当社のデータライセンス、基本概念、利用開始方法、利用できるAPIメソッドに関する詳細な情報をご覧いただけます。Cloudflare RadarのAPIは無料となっており、学者やデータ研究者、その他のウェブ愛好家が、当社のグローバルネットワークからのデータに基づいて、世界中のインターネット利用状況の調査ができるようになりました。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-7.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>APIを使いやすくするために、<a href="https://colab.research.google.com/github/cloudflare/radar-notebooks/blob/main/notebooks/example.ipynb?ref=blog.cloudflare.com" target="_blank">Colab Notebookテンプレート</a> も用意しましたので、コピーして、ユースケースに合わせて拡張して使ってみてください。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>本日、<a href="https://developers.cloudflare.com/radar" target="_blank">Radar APIの開発者向けドキュメントページ</a>も公開しました。当社のデータライセンス、基本概念、利用開始方法、利用できるAPIメソッドに関する詳細な情報をご覧いただけます。Cloudflare RadarのAPIは無料となっており、学者やデータ研究者、その他のウェブ愛好家が、当社のグローバルネットワークからのデータに基づいて、世界中のインターネット利用状況の調査ができるようになりました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-7.png" class="kg-image"></figure>
+	<p>APIを使いやすくするために、<a href="https://colab.research.google.com/github/cloudflare/radar-notebooks/blob/main/notebooks/example.ipynb" target="_blank">Colab Notebookテンプレート</a> も用意しましたので、コピーして、ユースケースに合わせて拡張して使ってみてください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-4.png" class="kg-image"></figure>
 	<h2 id="radar-">Radarアプリ</h2>
 	<p>Radarアプリはブラウザ上で動作するコードです。ここまでRemixの話をしてきましたが、それ以外に使用しているものについても触れたいと思います。</p>
-	<p>Radarは多くの<strong>データ可視化</strong>に依存しています。チャートやマップのようなものは、私たちにとって不可欠なものです。当社では他の2つのフレームワークの上に、再利用可能な視覚化コンポーネントのライブラリを構築することにしました。「React用の表現力豊かな低レベルの視覚化プリミティブのコレクション」である<a href="https://airbnb.io/visx/?ref=blog.cloudflare.com" target="_blank">visx</a>、データに基づいてDOMを操作するための強力なJavaScriptライブラリである<a href="https://d3js.org/?ref=blog.cloudflare.com" target="_blank">D3</a>、オープンソースの地図視覚化スタックである<a href="https://maplibre.org/?ref=blog.cloudflare.com" target="_blank">MapLibre</a>があります。</p>
+	<p>Radarは多くの<strong>データ可視化</strong>に依存しています。チャートやマップのようなものは、私たちにとって不可欠なものです。当社では他の2つのフレームワークの上に、再利用可能な視覚化コンポーネントのライブラリを構築することにしました。「React用の表現力豊かな低レベルの視覚化プリミティブのコレクション」である<a href="https://airbnb.io/visx/" target="_blank">visx</a>、データに基づいてDOMを操作するための強力なJavaScriptライブラリである<a href="https://d3js.org/" target="_blank">D3</a>、オープンソースの地図視覚化スタックである<a href="https://maplibre.org/" target="_blank">MapLibre</a>があります。</p>
 	<p>ここではビジュアライゼーションコンポーネントの1つをご紹介します。当社ではこれを「PewPewマップ」と呼んでいます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-12.png" class="kg-image"></figure>
 	<p>そして、これをページ内で使用する必要が際のRemix Reactのコードは以下の通りです。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">&lt;Card.Section
     title={t("card.attacks.title")}
@@ -173,12 +173,12 @@ export default function Outages() {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="svg">SVG</h3>
-	<p>Radarのもうひとつの変更点は画像やグラフィックアセットを<a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics?ref=blog.cloudflare.com" target="_blank"> Scalable Vector Graphics</a>に切り替えたことです。SVGは本質的に宣言的なグラフィックス言語であるため非常に優れており、ベクトル情報を持つXMLテキストファイルです。そしてもちろん、どんなサイズでもレンダリングでき、どんなデバイスや解像度でも、美しく鮮明な結果を生み出します。</p>
-	<p>また、SVGはビットマップ形式に比べてサイズが非常に小さく効率的で、<a href="https://www.w3.org/TR/SVGTiny12/i18n.html?ref=blog.cloudflare.com" target="_blank"> 国際化に対応</a>していて、他の言語への翻訳（ローカライズ）が容易になるため、さらに優れた<a href="https://www.a11yproject.com/?ref=blog.cloudflare.com" target="_blank"> アクセシビリティ</a>が実現します。</p>
+	<p>Radarのもうひとつの変更点は画像やグラフィックアセットを<a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_blank"> Scalable Vector Graphics</a>に切り替えたことです。SVGは本質的に宣言的なグラフィックス言語であるため非常に優れており、ベクトル情報を持つXMLテキストファイルです。そしてもちろん、どんなサイズでもレンダリングでき、どんなデバイスや解像度でも、美しく鮮明な結果を生み出します。</p>
+	<p>また、SVGはビットマップ形式に比べてサイズが非常に小さく効率的で、<a href="https://www.w3.org/TR/SVGTiny12/i18n.html" target="_blank"> 国際化に対応</a>していて、他の言語への翻訳（ローカライズ）が容易になるため、さらに優れた<a href="https://www.a11yproject.com/" target="_blank"> アクセシビリティ</a>が実現します。</p>
 	<p>レーダーバブルチャートの例です。SVGコードと文字列が埋め込まれているのがわかるかと思います。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image17.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image17.png" class="kg-image"></figure>
 	<h3 id="cosmos">Cosmos</h3>
-	<p><a href="https://reactcosmos.org/?ref=blog.cloudflare.com" target="_blank">React Cosmos</a>は、UIコンポーネントを分離して開発およびテストするための「サンドボックス」です。このプロジェクトに最適だろうと考え、Radar 2.0でCosmosを使用することにしました。</p>
+	<p><a href="https://reactcosmos.org/" target="_blank">React Cosmos</a>は、UIコンポーネントを分離して開発およびテストするための「サンドボックス」です。このプロジェクトに最適だろうと考え、Radar 2.0でCosmosを使用することにしました。</p>
 	<ol>
 		<li>ビジュアルコンポーネントを数多く持ち、中には複雑でさまざまな設定オプションや機能があるものも存在します。</li>
 		<li>このコンポーネントは異なるコンテキスト、異なるデータの複数のページで高い再利用性を発揮します。</li>
@@ -186,27 +186,27 @@ export default function Outages() {
 	</ol>
 	<p>Cosmosはシンプルなボタンから複雑なチャートまで、すぐに使えるビジュアライゼーションやウィジェットのパレットを見ることができるコンポーネントライブラリとして機能し、リアルタイムでそのオプションを操作して何が起こるかを確認することができるのです。デザイナーやエンジニアだけでなく、それ以外のプロジェクト関係者にも可能です。そのおかげでチームのコミュニケーションが効果的に改善され、貢献とイテレーションが迅速に行えるようになりました。</p>
 	<p>当社でCosmosを使用したときの画面がこちらです。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-57.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-57.png" class="kg-image"></figure>
 	<h2 id="--2">継続的インテグレーションと開発</h2>
-	<p>継続的インテグレーションは最新のソフトウェアを開発するすべてのチームにとって重要事項です。Cloudflare Pagesには直接アップロードを使用するCIツールと連携するための複数のオプションがあります。 <a href="https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/?ref=blog.cloudflare.com" target="_blank"> ドキュメントと例</a> GitHub Actions、CircleCI、Travis でそれを行う方法を載せていますが、それだけではありません。</p>
+	<p>継続的インテグレーションは最新のソフトウェアを開発するすべてのチームにとって重要事項です。Cloudflare Pagesには直接アップロードを使用するCIツールと連携するための複数のオプションがあります。 <a href="https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/" target="_blank"> ドキュメントと例</a> GitHub Actions、CircleCI、Travis でそれを行う方法を載せていますが、それだけではありません。</p>
 	<p>当社では社内でBitBucketとTeamCityを使ってリリースのビルドとデプロイを行っています。ワークフローは承認されたPRとフォローアップ・マージに基づき、Radar 2.0を数分以内に自動的にビルド、テスト、デプロイを行います。</p>
-	<p>ユニットテストは<a href="https://vitest.dev/?ref=blog.cloudflare.com" target="_blank"> Vitest</a> で行い、E2Eテストは<a href="https://playwright.dev/?ref=blog.cloudflare.com" target="_blank"> Playwright</a>で行います。Visual Regressionテストが計画中で、 <a href="https://playwright.dev/docs/test-snapshots?ref=blog.cloudflare.com" target="_blank"> Playwrightもそのサポートに活用できます</a>。</p>
+	<p>ユニットテストは<a href="https://vitest.dev/" target="_blank"> Vitest</a> で行い、E2Eテストは<a href="https://playwright.dev/" target="_blank"> Playwright</a>で行います。Visual Regressionテストが計画中で、 <a href="https://playwright.dev/docs/test-snapshots" target="_blank"> Playwrightもそのサポートに活用できます</a>。</p>
 	<p>さらに本番稼動前にリリースのステージングとテストをするための環境を複数あります。CI/CDの設定により、ある環境から別の環境への切り替えや、望ましくないデプロイメントのロールバックが簡単に行えます。</p>
-	<p>またCloudflare Pagesでは、<a href="https://developers.cloudflare.com/pages/platform/preview-deployments/?ref=blog.cloudflare.com" target="_blank">Preview deployments</a>、aliases、<a href="https://developers.cloudflare.com/pages/platform/branch-build-controls/?ref=blog.cloudflare.com" target="_blank">Branch build controls</a>を使用すればそれも簡単です。通常のWorkerでも<a href="https://developers.cloudflare.com/workers/platform/environments/?ref=blog.cloudflare.com" target="_blank">Environments</a>を使えば同じことが言えます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image19.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>またCloudflare Pagesでは、<a href="https://developers.cloudflare.com/pages/platform/preview-deployments/" target="_blank">Preview deployments</a>、aliases、<a href="https://developers.cloudflare.com/pages/platform/branch-build-controls/" target="_blank">Branch build controls</a>を使用すればそれも簡単です。通常のWorkerでも<a href="https://developers.cloudflare.com/workers/platform/environments/" target="_blank">Environments</a>を使えば同じことが言えます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image19.png" class="kg-image"></figure>
 	<h3 id="--3">高速プレビューと通知</h3>
 	<p>かつてのRadar 1.0はCI/CDのスピードがそれほど速かったわけではありません。クイックフィックスでもコードをコミットしてからデプロイするまで30分ほどかかることもあり、悔しい思いをしました。</p>
 	<p>そこで私たちは新しいCIが速く、効率的で、猛烈な勢いで行われるよう心血を注ぎました。</p>
 	<p>最終的にはコード・リポジトリにプッシュされたすべてのコミットに高速プレビュー・リンクを付けるという最高の結果を得ることができたのです。ビルド時のインテリジェントなキャッシュと、コミットが通常のリリースブランチの外にある場合の非同期テストの組み合わせにより、デプロイ時間を数秒に短縮することが可能となりました。</p>
 	<p>これは誰かが任意のブランチにコードをプッシュしたときに、チャットに表示される通知です。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-2.png" class="kg-image"></figure>
 	<p>誰でもチャットで特定のブランチのスレッドを追うことができ、新たな変更があった場合には通知が届きます。</p>
 	<p>ビルドの高速化、プレビューリンク、通知機能はゲームチェンジャーと言えるでしょう。エンジニアはアイデアやクイックフィックスから始まり、その結果をプロダクトマネージャーや他のチームメンバーにリンクで提示できます。リンクをクリックすれば、誰でもすぐに完全に動作するエンドツーエンド版のRadarの変更を確認できるのです。</p>
 	<h2 id="--4">アクセシビリティとローカライゼーション</h2>
 	<p>Cloudflareではウェブアクセシビリティに取り組んでいます。最近、CloudflareのDashboardをアップグレードした方法についての発表がありました。<a href="https://blog.cloudflare.com/project-a11y/">業界のアクセシビリティ標準に準拠</a>したものですが、この前提は当社の全プロパティに当てはまります。ローカライゼーションについても同様です。2020年、当社はダッシュボードを<a href="https://blog.cloudflare.com/internationalizing-the-cloudflare-dashboard/">国際化</a>し、新しい言語とロケールのサポートを始めました。</p>
-	<p>アクセシビリティとローカライゼーションは両立するものであり、どちらも重要ですが、同時に別種のものでもあります。<a href="https://www.w3.org/TR/WCAG21/?ref=blog.cloudflare.com" target="_blank"> Web Content Accessibility Guidelines</a>は <a href="https://color.cloudflare.design/?ref=blog.cloudflare.com" target="_blank">色</a> とコントラスト、タグ、SVG、ショートカット、ジェスチャー、その他多くの使用など、アクセシビリティに関するさまざまなベストプラクティスを定義しています。<a href="https://www.a11yproject.com/?ref=blog.cloudflare.com" target="_blank">A11Yプロジェクトページ</a> はさらに学習するための優れたリソースです。</p>
-	<p><a href="https://en.wikipedia.org/wiki/Internationalization_and_localization?ref=blog.cloudflare.com" target="_blank">L10n</a>とも呼ばれるローカリゼーションは、新しいプロジェクトを開始する際に必要な技術的な要件と言えます。それはエンジニアリングの依存関係やコードの書き換えなしに、新しい翻訳を簡単に追加できるようなライブラリやフレームワークのセットを適切に選択することです。</p>
-	<p>Radarには両方の面で優れたパフォーマンスを発揮して欲しいと考えていました。当社のデザインシステムはCloudflareのデザインとブランド<a href="https://cloudflare.design/?ref=blog.cloudflare.com" target="_blank">ガイドライン</a>に真剣に取り組み、できるだけ多くのA11Yグッドプラクティスを加え、アプリはページとUIコンポーネント全体でローカライズ文字列を完全に考慮しています。</p>
+	<p>アクセシビリティとローカライゼーションは両立するものであり、どちらも重要ですが、同時に別種のものでもあります。<a href="https://www.w3.org/TR/WCAG21/" target="_blank"> Web Content Accessibility Guidelines</a>は <a href="https://color.cloudflare.design/" target="_blank">色</a> とコントラスト、タグ、SVG、ショートカット、ジェスチャー、その他多くの使用など、アクセシビリティに関するさまざまなベストプラクティスを定義しています。<a href="https://www.a11yproject.com/" target="_blank">A11Yプロジェクトページ</a> はさらに学習するための優れたリソースです。</p>
+	<p><a href="https://en.wikipedia.org/wiki/Internationalization_and_localization" target="_blank">L10n</a>とも呼ばれるローカリゼーションは、新しいプロジェクトを開始する際に必要な技術的な要件と言えます。それはエンジニアリングの依存関係やコードの書き換えなしに、新しい翻訳を簡単に追加できるようなライブラリやフレームワークのセットを適切に選択することです。</p>
+	<p>Radarには両方の面で優れたパフォーマンスを発揮して欲しいと考えていました。当社のデザインシステムはCloudflareのデザインとブランド<a href="https://cloudflare.design/" target="_blank">ガイドライン</a>に真剣に取り組み、できるだけ多くのA11Yグッドプラクティスを加え、アプリはページとUIコンポーネント全体でローカライズ文字列を完全に考慮しています。</p>
 	<p>新しい言語の追加は1つのJSONファイルを翻訳するのと同じくらい簡単な作業です。以下はデフォルトのアメリカ英語の文字列を含むen-US.jsonファイルのスニペットです。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-JSON">{
   "abbr.asn": "Autonomous System Number",
@@ -231,27 +231,27 @@ export default function Outages() {
 	<!--kg-card-end: markdown-->
 	<p>近々、他の言語でもRadarをリリースする予定ですので、ぜひご期待ください。</p>
 	<h2 id="radar-reports-jupyter-">Radar ReportsとJupyterノートブック</h2>
-	<p><a href="https://radar.cloudflare.com/reports?ref=blog.cloudflare.com" target="_blank">Radar Reports</a>はデータ探索とストーリーテリングを駆使して、特定のテーマを深く分析したドキュメントです。レポートによっては更新をしばしば行う傾向があります。Radar Reportsの例としては、四半期ごとの<a href="https://radar.cloudflare.com/reports/ddos-2022-q3?ref=blog.cloudflare.com" target="_blank"> DDoS攻撃動向</a>や、<a href="https://radar.cloudflare.com/reports/ipv6?ref=blog.cloudflare.com" target="_blank">IPv6採用</a>があります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-23.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>これらのReportのソースは<a href="https://jupyter.org/?ref=blog.cloudflare.com" target="_blank">Jupyter Notebooks</a>です。データサイエンスチームは社内ツールJupyter Hubを使って、他のステークホルダーと一緒にユースケースやテーマに取り組んでいます。すべてのイテレーションと探索が行われて作業が終了すると、ノートブックが作成されます。</p>
-	<p>Jupyter Notebookは<a href="https://ipython.org/ipython-doc/3/notebook/nbformat.html?ref=blog.cloudflare.com" target="_blank">JSONドキュメント</a>テキスト、ソースコード、画像やチャートなどのリッチメディア、その他のメタデータを含むものです。データサイエンス・プロジェクトを表現するためのデファクトスタンダードであり、すべてのデータサイエンティストが使用しています。</p>
+	<p><a href="https://radar.cloudflare.com/reports" target="_blank">Radar Reports</a>はデータ探索とストーリーテリングを駆使して、特定のテーマを深く分析したドキュメントです。レポートによっては更新をしばしば行う傾向があります。Radar Reportsの例としては、四半期ごとの<a href="https://radar.cloudflare.com/reports/ddos-2022-q3" target="_blank"> DDoS攻撃動向</a>や、<a href="https://radar.cloudflare.com/reports/ipv6" target="_blank">IPv6採用</a>があります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-23.png" class="kg-image"></figure>
+	<p>これらのReportのソースは<a href="https://jupyter.org/" target="_blank">Jupyter Notebooks</a>です。データサイエンスチームは社内ツールJupyter Hubを使って、他のステークホルダーと一緒にユースケースやテーマに取り組んでいます。すべてのイテレーションと探索が行われて作業が終了すると、ノートブックが作成されます。</p>
+	<p>Jupyter Notebookは<a href="https://ipython.org/ipython-doc/3/notebook/nbformat.html" target="_blank">JSONドキュメント</a>テキスト、ソースコード、画像やチャートなどのリッチメディア、その他のメタデータを含むものです。データサイエンス・プロジェクトを表現するためのデファクトスタンダードであり、すべてのデータサイエンティストが使用しています。</p>
 	<p>Radar 1.0ではJupyterノートブックからRadarページへの変換は、多くのエンジニアリングとデザインリソースを含む長時間の手動プロセスで、関係者に多大なフラストレーションを与えていました。すでに公開されているノートブックを更新するだけでも、問題が発生することがよくあります。</p>
-	<p>Radar 2.0がこの状況を一新しました。現在ではJupyter Notebookを取り込んで、完全に自動化されたプロセスを実現しています。簡単なルールと社内ガイドラインに沿ってデザインされていれば、自動的に変換し、出来上がったHTMLとアセットをR2バケットにホスティングし、<a href="https://radar.cloudflare.com/reports?ref=blog.cloudflare.com" target="_blank">Report</a>ページで公開することができます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>HTMLへの変換は当社のデザインシステムとUIコンポーネントを考慮して行われます。その結果、通常は長い形式の<a href="https://radar.cloudflare.com/reports/ddos-2022-q3?ref=blog.cloudflare.com" target="_blank">美しいドキュメント</a>が作成され、Radar のルック・アンド・フィールに完全に一致します。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Radar 2.0がこの状況を一新しました。現在ではJupyter Notebookを取り込んで、完全に自動化されたプロセスを実現しています。簡単なルールと社内ガイドラインに沿ってデザインされていれば、自動的に変換し、出来上がったHTMLとアセットをR2バケットにホスティングし、<a href="https://radar.cloudflare.com/reports" target="_blank">Report</a>ページで公開することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-2.png" class="kg-image"></figure>
+	<p>HTMLへの変換は当社のデザインシステムとUIコンポーネントを考慮して行われます。その結果、通常は長い形式の<a href="https://radar.cloudflare.com/reports/ddos-2022-q3" target="_blank">美しいドキュメント</a>が作成され、Radar のルック・アンド・フィールに完全に一致します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image13.png" class="kg-image"></figure>
 	<p>このツールはいずれオープンソース化して誰でも使えるようになる予定です。</p>
 	<h2 id="cloudflare-">Cloudflareの機会を増やして、心配を減らす</h2>
 	<p>ビジネスやロジックの枝葉を省いて、次世代アプリを構築するためにCloudflareの製品や機能を活用する例を紹介してきました。それでもカバーしきれなかったこともあります。</p>
-	<p>アプリを稼働させたら悪質なトラフィックや悪意ある行為から保護する必要があります。Cloudflareならば<a href="https://www.cloudflare.com/en-gb/ddos/?ref=blog.cloudflare.com" target="_blank">DDoS</a>、<a href="https://www.cloudflare.com/en-gb/waf/?ref=blog.cloudflare.com" target="_blank">WAF</a>、<a href="https://www.cloudflare.com/en-gb/products/bot-management/?ref=blog.cloudflare.com" target="_blank">Bot Management</a>の保護をクリック一回で行えます。</p>
+	<p>アプリを稼働させたら悪質なトラフィックや悪意ある行為から保護する必要があります。Cloudflareならば<a href="https://www.cloudflare.com/en-gb/ddos/" target="_blank">DDoS</a>、<a href="https://www.cloudflare.com/en-gb/waf/" target="_blank">WAF</a>、<a href="https://www.cloudflare.com/en-gb/products/bot-management/" target="_blank">Bot Management</a>の保護をクリック一回で行えます。</p>
 	<p>セキュリティルールの一例をご紹介します。これはCloudflareが検出し、当社のルールに従って処理するため、アプリでは心配する必要のないトラフィックです。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image10-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>もう一つ気にかけなくてもいいのは、旧サイトから新サイトへのリダイレクトです。Cloudflareには<a href="https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/?ref=blog.cloudflare.com" target="_blank">Bulk Redirects</a>という機能があり、ダッシュボードで直接簡単にリダイレクトリストを作成することができます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image15.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>また、ダッシュボードを使用して何ができるかについて話をするときには、実際には、<a href="https://api.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">CloudflareのAPI</a>を使用してまったく同じことができるのだと説明するのも重要です。当社のダッシュボードはCloudflareのAPI上に完全に構築されています。そして、あなたがコードのような人としてのインフラストラクチャであるとするならば、当社がお応えします。つまり、<a href="https://developers.cloudflare.com/terraform/tutorial/?ref=blog.cloudflare.com" target="_blank">Cloudflare Terraformプロバイダー</a>を使用できるということです。</p>
-	<p>Worker、R2バケット、ページサイトのデプロイと管理もちゃんとスクリプトが可能です。 <a href="https://github.com/cloudflare/wrangler?ref=blog.cloudflare.com" target="_blank">Wrangler</a>はそれ以上のことを行うためのコマンドラインツールであり、デプロイ前にコンピューター上でスタックをエミュレートして、アプリ全体を<a href="https://developers.cloudflare.com/workers/wrangler/commands/?ref=blog.cloudflare.com#dev" target="_blank">ローカルで</a>実行できるようにします。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image10-1.png" class="kg-image"></figure>
+	<p>もう一つ気にかけなくてもいいのは、旧サイトから新サイトへのリダイレクトです。Cloudflareには<a href="https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/" target="_blank">Bulk Redirects</a>という機能があり、ダッシュボードで直接簡単にリダイレクトリストを作成することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image15.png" class="kg-image"></figure>
+	<p>また、ダッシュボードを使用して何ができるかについて話をするときには、実際には、<a href="https://api.cloudflare.com/" target="_blank">CloudflareのAPI</a>を使用してまったく同じことができるのだと説明するのも重要です。当社のダッシュボードはCloudflareのAPI上に完全に構築されています。そして、あなたがコードのような人としてのインフラストラクチャであるとするならば、当社がお応えします。つまり、<a href="https://developers.cloudflare.com/terraform/tutorial/" target="_blank">Cloudflare Terraformプロバイダー</a>を使用できるということです。</p>
+	<p>Worker、R2バケット、ページサイトのデプロイと管理もちゃんとスクリプトが可能です。 <a href="https://github.com/cloudflare/wrangler" target="_blank">Wrangler</a>はそれ以上のことを行うためのコマンドラインツールであり、デプロイ前にコンピューター上でスタックをエミュレートして、アプリ全体を<a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev" target="_blank">ローカルで</a>実行できるようにします。</p>
 	<h2 id="--5">最後に</h2>
 	<p>Radarチームの本記事を楽しんでいただき、<a href="https://blog.cloudflare.com/ja-jp/welcome-to-the-supercloud-and-developer-week-2022-ja-jp/">Supercloud</a>上に次のアプリを構築するヒントを得てもらえたら嬉しいです。当社はRadar 2.0の新機能の改善とイノベーションを続け、私たちの発見を共有するとともに、ツールをオープンソースとして使ってもらいたいと思っています。</p>
-	<p>同時に<a href="https://discord.gg/cloudflaredev?ref=blog.cloudflare.com" target="_blank">Radar room</a>を当社のDevelopers Discord Server上に開設しました。ぜひルームに<a href="https://discord.gg/cloudflaredev?ref=blog.cloudflare.com" target="_blank">参加</a>していただき、質問も残してもらえたらとお思います。フィードバックを受け、ウェブテクノロジーについて議論することをチーム一同楽しみにしています。</p>
-	<p>また<a href="https://twitter.com/cloudflareradar?ref=blog.cloudflare.com" target="_blank">Twitter</a>のアカウントをフォローしていただくと、さまざｍなRadarの最新情報を入手することができます。</p>
+	<p>同時に<a href="https://discord.gg/cloudflaredev" target="_blank">Radar room</a>を当社のDevelopers Discord Server上に開設しました。ぜひルームに<a href="https://discord.gg/cloudflaredev" target="_blank">参加</a>していただき、質問も残してもらえたらとお思います。フィードバックを受け、ウェブテクノロジーについて議論することをチーム一同楽しみにしています。</p>
+	<p>また<a href="https://twitter.com/cloudflareradar" target="_blank">Twitter</a>のアカウントをフォローしていただくと、さまざｍなRadarの最新情報を入手することができます。</p>
 </div>
