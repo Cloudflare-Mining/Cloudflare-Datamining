@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/unnamed-5.png" class="kg-image" alt="The Linux Kernel Key Retention Service and why you should use it in your next application"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/unnamed-5.png" class="kg-image" alt="The Linux Kernel Key Retention Service and why you should use it in your next application" loading="lazy"></figure>
 	<p>当社が目指すのはデジタルデータの安全性の確保です。ウェブサイトの訪問、銀行の詳細の送信、パスワードの入力、オンラインでの文書署名、リモートコンピュータへのログイン、データベースへの保存前のデータ暗号化。それらを誰からも改ざんされない状態にしたいのです。暗号技術により高度なデータセキュリティは実現できますが、それでも暗号化キーの保護が必要です。</p>
 	<p>とはいえ、キーを安全な場所に書き込んでおいて、たまにアクセスするだけというわけにもいきません。むしろ逆で、暗号演算を行うすべてのリクエストに関わっているのですから。サイトがTLSをサポートしている場合、プライベートキーは各接続を確立するために使用されます。</p>
 	<p>残念ながら、暗号キーは漏洩するケースもあり、そうなれば大きな問題となります。漏洩の多くは原因はソフトウェアのバグやセキュリティの脆弱性なのです。この記事ではLinuxカーネルがどのようにして潜在的なセキュリティ脆弱性であるメモリアクセス違反から暗号キーを守っているのかをご説明します。</p>
 	<h3 id="-">メモリアクセス違反</h3>
-	<p><a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues/" target="_blank">NSA</a>によると、マイクロソフトとグーグルのコードの脆弱性における約70%は、メモリ安全性の問題に関連しているそうです。不正なメモリアクセスの結果として生じるものの1つが、（暗号キーを含む）セキュリティデータの漏洩です。暗号キーはメモリ上に保存された（主にランダムな）データであるため、他のインメモリデータと同様にメモリリークの対象となる可能性があります。以下の例では、スタックメモリの再利用により、暗号キーが誤って漏洩してしまう可能性があることを示しています。</p>
+	<p><a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues/?ref=blog.cloudflare.com" target="_blank">NSA</a>によると、マイクロソフトとグーグルのコードの脆弱性における約70%は、メモリ安全性の問題に関連しているそうです。不正なメモリアクセスの結果として生じるものの1つが、（暗号キーを含む）セキュリティデータの漏洩です。暗号キーはメモリ上に保存された（主にランダムな）データであるため、他のインメモリデータと同様にメモリリークの対象となる可能性があります。以下の例では、スタックメモリの再利用により、暗号キーが誤って漏洩してしまう可能性があることを示しています。</p>
 	<p>broken.c</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cpp">#include &lt;stdio.h&gt;
 #include &lt;stdint.h&gt;
@@ -44,7 +44,7 @@ not important, just fyi: hunter2
 		<li>バグのあるロギング機能がプロセス内のいずれのメモリにもアクセスできてしまう</li>
 	</ul>
 	<p>1つ目の問題はコードを追加することで簡単に解決できるでしょう。しかし、2つ目の問題はオペレーティングシステムの内部でソフトウェアがどのように動作するかという本質的な結果です。</p>
-	<p>各プロセスにはオペレーティングシステムから連続した仮想メモリのブロックが与えられます。これにより、カーネルは同時に実行されている複数のプロセス間で、限られたコンピュータ資源を共有することができます。この方法は<a href="https://en.wikipedia.org/wiki/Virtual_memory" target="_blank">仮想メモリ管理</a>と呼ばれています。仮想メモリの内部でプロセスは独自のアドレス空間を持ち、他のプロセスのメモリにはアクセスできませんが、そのアドレス空間内にあるメモリにどれでもアクセス可能です。この例ではスタックと呼ばれるプロセスメモリの一部に注目しています。</p>
+	<p>各プロセスにはオペレーティングシステムから連続した仮想メモリのブロックが与えられます。これにより、カーネルは同時に実行されている複数のプロセス間で、限られたコンピュータ資源を共有することができます。この方法は<a href="https://en.wikipedia.org/wiki/Virtual_memory?ref=blog.cloudflare.com" target="_blank">仮想メモリ管理</a>と呼ばれています。仮想メモリの内部でプロセスは独自のアドレス空間を持ち、他のプロセスのメモリにはアクセスできませんが、そのアドレス空間内にあるメモリにどれでもアクセス可能です。この例ではスタックと呼ばれるプロセスメモリの一部に注目しています。</p>
 	<p>スタックはスタックフレームで構成されています。スタックフレームは現在実行中の関数のために動的に割り当てられたスペースです。この関数には関数のローカル変数、引数、リターンアドレスが含まれます。関数をコンパイルする際、コンパイラはどれだけのメモリを割り当てる必要があるかを計算し、そのサイズのスタックフレームを要求します。関数の実行が終了するとスタックフレームは空き領域としてマークされ、再び使用することができるようになります。スタックフレームは論理ブロックであり、境界チェックを行わず、消去もせず、ただ空きとマークされるだけです。さらに、仮想メモリはアドレスの連続したブロックです。どちらもマルウェアやバグコードが、仮想メモリ内のどこからでもデータにアクセスできる可能性があることを意味しています。</p>
 	<p>当社のプログラムである<code>broken.c</code>のスタックは次のようになります。</p><!--kg-card-begin: html-->
 	<center><img src="https://imagedelivery.net/52R3oh4H-57qkVChwuo3Ag/3526edee-ce7e-4f98-a2bf-ff1efd2fc800/public"></center><!--kg-card-end: html-->
@@ -58,14 +58,14 @@ Traceback (most recent call last):
 IndexError: Replacement index 2 out of range for positional args tuple
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>しかし、これは（現時点で）36件ある<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-10210/opov-1/Python.html" target="_blank">脆弱性</a>の1つからの引用です。</p>
+	<p>しかし、これは（現時点で）36件ある<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-10210/opov-1/Python.html?ref=blog.cloudflare.com" target="_blank">脆弱性</a>の1つからの引用です。</p>
 	<blockquote><em>Python 2.7.14 にはHeap-Buffer-OverflowおよびHeap-Use-After-Freeの脆弱性が存在します。</em></blockquote>
-	<p>Golangは<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-14185/opov-1/Golang.html" target="_blank"> オーバーフローの脆弱性</a>、<a href="https://pkg.go.dev/unsafe" target="_blank"> 安全でないパッケージ</a>の独自のリストがあります。その名が表している通り、通常のルールとチェックはこのパッケージの中では機能しません。</p>
+	<p>Golangは<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-14185/opov-1/Golang.html?ref=blog.cloudflare.com" target="_blank"> オーバーフローの脆弱性</a>、<a href="https://pkg.go.dev/unsafe?ref=blog.cloudflare.com" target="_blank"> 安全でないパッケージ</a>の独自のリストがあります。その名が表している通り、通常のルールとチェックはこのパッケージの中では機能しません。</p>
 	<h3 id="heartbleed">Heartbleed</h3>
 	<p>2014年にHeartbleedバグが発見されました。（当時）最も使用されていた暗号化ライブラリOpenSSLからプライベートキーが漏洩したのです。当社も<a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed/">例外ではありませんでした</a>。</p>
 	<h3 id="--1">軽減</h3>
 	<p>そう、メモリバグは日常茶飯事であり、完全に安全ということはあり得ないのです。しかし、暗号キーは他のデータよりもはるかに重要性が高いことを考えると、せめてキーの保護だけでも改善できないものでしょうか。</p>
-	<p>すでに述べたように、通常、メモリアドレス空間はプロセスに関連付けられます。そして、2つの異なるプロセスはデフォルトではメモリを共有しないので、当然ながら互いに隔離されています。したがって、あるプロセスで潜在的なメモリバグが発生しても、他のプロセスから暗号キーが誤って漏洩することはありません。ssh-agent のセキュリティはこの原理に基づいています。クライアントまたはリクエスタと<a href="https://linux.die.net/man/1/ssh-agent" target="_blank">エージェント</a>の2つのプロセスが常に関与しています。</p>
+	<p>すでに述べたように、通常、メモリアドレス空間はプロセスに関連付けられます。そして、2つの異なるプロセスはデフォルトではメモリを共有しないので、当然ながら互いに隔離されています。したがって、あるプロセスで潜在的なメモリバグが発生しても、他のプロセスから暗号キーが誤って漏洩することはありません。ssh-agent のセキュリティはこの原理に基づいています。クライアントまたはリクエスタと<a href="https://linux.die.net/man/1/ssh-agent?ref=blog.cloudflare.com" target="_blank">エージェント</a>の2つのプロセスが常に関与しています。</p>
 	<blockquote><em>エージェントはリクエストチャンネルでプライベートキーを送信することはありません。その代わり、プライベートキーを必要とする操作はエージェントが実行し、結果はリクエスタに返されます。この方法では、プライベートキーがエージェントを使用するクライアントに公開されません。</em></blockquote>
 	<p>リクエスタは通常、ネットワークに接続するプロセスまたは信頼できない入力を処理するプロセスですしたがって、リクエスタはメモリ関連の脆弱性の影響をかなり受けやすいのですが、このスキームでは暗号化キーにアクセスできないので（キーは別のプロセスアドレス空間に存在するため）、漏洩することはありません。</p>
 	<p>Cloudflareでは同じ原理を<a href="https://blog.cloudflare.com/heartbleed-revisited/">Keyless SSL</a>に採用しています。お客様のプライベートキーは隔離された環境に保管され、インターネット接続から保護されます。</p>
@@ -85,7 +85,7 @@ IndexError: Replacement index 2 out of range for positional args tuple
 		<li>カーネルオブジェクトにさまざまなACLを適用することができる</li>
 		<li>しかも別のアドレス空間で動作している</li>
 	</ul>
-	<p>ありがたいことに<a href="https://www.kernel.org/doc/html/v6.0/security/keys/core.html" target="_blank">Linux Kernel Key Retention Service</a>は、典型的なエージェントプロセスのすべての機能、おそらくそれ以上の機能を実行することができます。</p>
+	<p>ありがたいことに<a href="https://www.kernel.org/doc/html/v6.0/security/keys/core.html?ref=blog.cloudflare.com" target="_blank">Linux Kernel Key Retention Service</a>は、典型的なエージェントプロセスのすべての機能、おそらくそれ以上の機能を実行することができます。</p>
 	<p>もともとはdm-crypt/ecryptfsのようなカーネルサービス用に設計されたものですが、後にユーザー空間プログラムでも使用できるように開放されました。それは当社にもメリットがあります。</p>
 	<ul>
 		<li>キーがプロセスのアドレス空間の外に格納されている</li>
@@ -95,14 +95,14 @@ IndexError: Replacement index 2 out of range for positional args tuple
 	</ul>
 	<p>Linux Kernel Key Retention Service は、キーとキーリングの2類のエンティティで動作します。キーリングは特別なタイプのキーです。ファイルやディレクトリに例えるなら、キーがファイルで、キーホルダーはディレクトリと言えるでしょう。さらに、ファイルシステムのツリー階層に似たキー階層を表しています。キーリングはキーや他のキーリングを参照しますが、実際のデータを保持するファイルと同様に、実際の暗号化マテリアルを保持できるのはキーだけです。</p>
 	<p>キーにはいくつかの種類があります。キーの種類によって、キーに対して実行できる操作が決まります。たとえば、ユーザー型とログオン型のキーは任意のブロブデータを保持できますが、ログオンキーはユーザー空間に読み込まれることはなく、カーネル内サービスによって排他的に使用されます。</p>
-	<p>エージェントプロセスの代わりにカーネルを使用する目的において、最も興味深いキーの種類なのは<a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html" target="_blank">非対称タイプ</a>です。これはカーネル内にプライベートキーを保持でき、許可されたアプリケーションがキーを使用して一部のデータを復号化または署名できるようにします。現在はRSAキーのみをサポートしていますが、 <a href="https://lore.kernel.org/lkml/20221014100737.94742-2-ignat@cloudflare.com/" target="_blank">ECDSAキーのサポート</a>を追加する作業が進行中です。</p>
+	<p>エージェントプロセスの代わりにカーネルを使用する目的において、最も興味深いキーの種類なのは<a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html?ref=blog.cloudflare.com" target="_blank">非対称タイプ</a>です。これはカーネル内にプライベートキーを保持でき、許可されたアプリケーションがキーを使用して一部のデータを復号化または署名できるようにします。現在はRSAキーのみをサポートしていますが、 <a href="https://lore.kernel.org/lkml/20221014100737.94742-2-ignat@cloudflare.com/?ref=blog.cloudflare.com" target="_blank">ECDSAキーのサポート</a>を追加する作業が進行中です。</p>
 	<p>キーはカーネル内の暗号化マテリアルを保護する役割を果たしますが、キーリングはキーの有効期間と共有アクセスを決定します。最も単純な形式では、特定のキーリングが破棄されると、そのキーリングにのみリンクされているすべてのキーも安全に破棄されます。カスタムキーホルダーを手動で作成することもできますが、このサービスの最も強力な機能の1つは、「スペシャルキーホルダー」でしょう。</p>
-	<p>これらのキーリングはカーネルによって暗黙的に作成され、その寿命はプロセスやユーザーのような別のカーネルオブジェクトの寿命に束縛されています。(現在「暗黙の」<a href="https://man7.org/linux/man-pages/man7/keyrings.7.html" target="_blank"> キーリング</a>の4つのカテゴリがありますが、本記事の目的では、最も広く使われている2つのカテゴリ、プロセスキーリングとユーザーキーリングに注目します。</p>
+	<p>これらのキーリングはカーネルによって暗黙的に作成され、その寿命はプロセスやユーザーのような別のカーネルオブジェクトの寿命に束縛されています。(現在「暗黙の」<a href="https://man7.org/linux/man-pages/man7/keyrings.7.html?ref=blog.cloudflare.com" target="_blank"> キーリング</a>の4つのカテゴリがありますが、本記事の目的では、最も広く使われている2つのカテゴリ、プロセスキーリングとユーザーキーリングに注目します。</p>
 	<p>ユーザーキーリングの有効期間は特定のユーザーの存在にバインドされており、このキーリングは同じUIDのすべてのプロセス間で共有されます。したがって、あるプロセスがキーをユーザーキーリングに保存し、同じユーザーとして実行されている別のプロセスがキーを取得または使用などが可能です。UIDがシステムから削除されると、関連するユーザーキーリングの下にあるすべてのキー（およびその他のキーリング） がカーネルによって安全に破棄されます。</p>
 	<p>プロセスキーリングはいくつかのプロセスにバインドされており、セマンティクスが異なる3つのタイプ（プロセス、スレッド、セッション） である可能性があります。プロセスのキーリングは特定のプロセスにバインドされ、非公開です。したがって、したがって、プロセス内のコードはキーリングにキーを保存または使用できますが、他のプロセス （同じユーザーIDまたは子プロセスであっても）はアクセスできません。そして、プロセスが終了するとキーリングと関連するキーは安全に破棄されます。プライベートキーを分離されたアドレス空間に保存するという利点に加えて、プロセスキーリングにより、プロセス終了の理由に関係なく、キーが破棄されることが保証されます。クリーンアップコードを実行する機会が与えられずにアプリケーションが激しくクラッシュした場合でも、キーはカーネルによって安全に破棄されます。</p>
 	<p>スレッドキーリングはプロセスキーリングと似ていますが、プライベートで特定のスレッドにバインドされています。たとえば、複数のプライベートキーを使用してTLS接続を提供できるマルチスレッドWebサーバーを構築できます。また、あるスレッドの接続またはコードが別のスレッドに関連付けられているプライベートキーを使用できないことを確認できます （たとえば、別のドメイン名を提供しています）。</p>
-	<p>セッションキーリングは、そのキーを現在のプロセスとそのすべての子プロセスで使用できるようにします。最上位のプロセスが存在している間、最上位のプロセスが終了し、子プロセスがキーを保存またはアクセスできるようになると、破棄されます。シェルや対話型の環境では、カーネルのシステムコールインターフェースではなく、 <a href="https://man7.org/linux/man-pages/man1/keyctl.1.html" target="_blank">keyctl tool</a>を使ってLinux Kernel Key Retention Serviceにアクセスするときに、主に役に立ちます。シェルでは、実行されるすべてのコマンドが新しいプロセスを作成するため、通常プロセスキーリングは使用できません。したがって、コマンドラインからプロセスキーリングにキーを追加すると、コマンドの実行が終了すると「追加」プロセスが終了するため、そのキーはすぐに破棄されます。実際に<code><a href="https://github.com/iovisor/bpftrace" target="_blank">bpftrace</a></code> で確認してみましょう。</p>
-	<p>1つのターミナルで、コマンドの実行が終了すると「追加」プロセスが終了するため、ユーザーキーの削除を担当する<code><a href="https://elixir.bootlin.com/linux/v5.19.17/source/security/keys/user_defined.c#L146" target="_blank">user_destroy</a></code>関数をトレースします。</p><!--kg-card-begin: markdown-->
+	<p>セッションキーリングは、そのキーを現在のプロセスとそのすべての子プロセスで使用できるようにします。最上位のプロセスが存在している間、最上位のプロセスが終了し、子プロセスがキーを保存またはアクセスできるようになると、破棄されます。シェルや対話型の環境では、カーネルのシステムコールインターフェースではなく、 <a href="https://man7.org/linux/man-pages/man1/keyctl.1.html?ref=blog.cloudflare.com" target="_blank">keyctl tool</a>を使ってLinux Kernel Key Retention Serviceにアクセスするときに、主に役に立ちます。シェルでは、実行されるすべてのコマンドが新しいプロセスを作成するため、通常プロセスキーリングは使用できません。したがって、コマンドラインからプロセスキーリングにキーを追加すると、コマンドの実行が終了すると「追加」プロセスが終了するため、そのキーはすぐに破棄されます。実際に<code><a href="https://github.com/iovisor/bpftrace?ref=blog.cloudflare.com" target="_blank">bpftrace</a></code> で確認してみましょう。</p>
+	<p>1つのターミナルで、コマンドの実行が終了すると「追加」プロセスが終了するため、ユーザーキーの削除を担当する<code><a href="https://elixir.bootlin.com/linux/v5.19.17/source/security/keys/user_defined.c?ref=blog.cloudflare.com#L146" target="_blank">user_destroy</a></code>関数をトレースします。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo bpftrace -e 'kprobe:user_destroy { printf("destroying key %d\n", ((struct key *)arg0)-&gt;serial) }'
 Att
 </code></pre>
@@ -125,9 +125,9 @@ keyctl_read_alloc: Required key not available
 	<!--kg-card-end: markdown-->
 	<p>つまり、上記の例では、<code>keyctl add user mykey hunter2 @p</code>を実行しているサブシェルのプロセスキーリングにキー「mykey」が追加されたことになります。しかし、サブシェルのプロセスはコマンドを実行した瞬間に終了したため、そのプロセスのキーリングと追加されたキーの両方が破棄されました。</p>
 	<p>その代わり、セッションキーリングによって、対話的コマンドは現在のシェル環境にキーを追加し、後続のコマンドはそれを消費することができます。キーはメインシェルプロセスが終了したとき (システムからログアウトしたときかもしれません）に安全に破棄されます。</p>
-	<p>そのため、適切なキーホルダータイプを選択することで、不要になったキーを安全に破棄することができます。仮にアプリがクラッシュしたときでもです。非常に簡単な紹介になりますが、全体のコンテキストについての例をいくつかお試しいただけます。<a href="https://www.kernel.org/doc/html/v5.8/security/keys/core.html" target="_blank">公式ドキュメント</a>をご利用ください。</p>
+	<p>そのため、適切なキーホルダータイプを選択することで、不要になったキーを安全に破棄することができます。仮にアプリがクラッシュしたときでもです。非常に簡単な紹介になりますが、全体のコンテキストについての例をいくつかお試しいただけます。<a href="https://www.kernel.org/doc/html/v5.8/security/keys/core.html?ref=blog.cloudflare.com" target="_blank">公式ドキュメント</a>をご利用ください。</p>
 	<h3 id="ssh-agent-linux-kernel-key-retention-service-">ssh-agentをLinux Kernel Key Retention Serviceに置き換える</h3>
-	<p>ここまで2つの分離されたプロセスをLinux Kernel Retention Service に置き換える方法について、詳しく説明してきました。それでは当社のワードをコードに入れていきましょう。ssh-agentについても説明したので、エージェントのメモリに保存されているプライベートキーをカーネル内のものに置き換える良い練習になります。私たちは最も人気のあるSSH実装<a href="https://github.com/openssh/openssh-portable.git" target="_blank">OpenSSH</a> を対象にしました。</p>
+	<p>ここまで2つの分離されたプロセスをLinux Kernel Retention Service に置き換える方法について、詳しく説明してきました。それでは当社のワードをコードに入れていきましょう。ssh-agentについても説明したので、エージェントのメモリに保存されているプライベートキーをカーネル内のものに置き換える良い練習になります。私たちは最も人気のあるSSH実装<a href="https://github.com/openssh/openssh-portable.git?ref=blog.cloudflare.com" target="_blank">OpenSSH</a> を対象にしました。</p>
 	<p>カーネルからキーを取得する機能を追加するため、若干のコード変更が必要です。</p><!--kg-card-begin: markdown-->
 	<p>openssh.patch</p>
 	<pre><code>diff --git a/ssh-rsa.c b/ssh-rsa.c
@@ -350,7 +350,7 @@ $ make
 …
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>libkeyutils Linux Kernel Key Retention Serviceにアクセスするための便利なラッパーを提供する<code><a href="https://man7.org/linux/man-pages/man3/keyctl.3.html" target="_blank">libkeyutils</a></code>と追加でリンクするようにビルドシステムに指示しています。さらに、このコードには `libkeyutils` と同じ名前の関数があり、名前の衝突があるため、PKCS11 のサポートを無効にする必要がありました。この点については、もっと良い修正があるかもしれませんが、本記事のテーマ外の内容ですね。</p>
+	<p>libkeyutils Linux Kernel Key Retention Serviceにアクセスするための便利なラッパーを提供する<code><a href="https://man7.org/linux/man-pages/man3/keyctl.3.html?ref=blog.cloudflare.com" target="_blank">libkeyutils</a></code>と追加でリンクするようにビルドシステムに指示しています。さらに、このコードには `libkeyutils` と同じ名前の関数があり、名前の衝突があるため、PKCS11 のサポートを無効にする必要がありました。この点については、もっと良い修正があるかもしれませんが、本記事のテーマ外の内容ですね。</p>
 	<p>さて、パッチを適用したOpenSSHを手に入れたので、テストしてみましょう。まず、システムへのアクセスに使用する新しいSSH RSAキーを生成する必要があります。LinuxカーネルはPKCS8形式のプライベートキーしかサポートしていないので、（OpenSSHのデフォルト形式ではなく）最初からこの形式を使うことにします。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ./ssh-keygen -b 4096 -m PKCS8
 Generating public/private rsa key pair.

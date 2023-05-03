@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-28.png" class="kg-image" alt="The most programmable Supercloud with Cloudflare Snippets"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-28.png" class="kg-image" alt="The most programmable Supercloud with Cloudflare Snippets" loading="lazy"></figure>
 	<h2 id="-">您的流量，您感觉如何</h2>
-	<p>Cloudflare 的客户群高度多元化。我们提供简单易用的产品，用于执行各种任务，从设置 HTTP 标头到重写 URI 路径和执行 URL 重定向。有时，客户需要的不仅仅是开箱即用的功能，不仅仅是添加一个 HTTP 标头，而是执行一些高级计算来创建输出。如今，他们可能需要创建一个功能请求，然后等待推出该功能；编写一个 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Worker</a>；或在他们自己的基础设施（即源站）上保留这些修改。</p>
+	<p>Cloudflare 的客户群高度多元化。我们提供简单易用的产品，用于执行各种任务，从设置 HTTP 标头到重写 URI 路径和执行 URL 重定向。有时，客户需要的不仅仅是开箱即用的功能，不仅仅是添加一个 HTTP 标头，而是执行一些高级计算来创建输出。如今，他们可能需要创建一个功能请求，然后等待推出该功能；编写一个 <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Worker</a>；或在他们自己的基础设施（即源站）上保留这些修改。</p>
 	<p>为了简化这一过程，我们兴奋地宣布推出 Cloudflare Snippets。Snippets 是一种执行流量修改的新方法，适用于用户无法通过我们的产品化服务执行流量修改，或希望以编程方式进行修改的情况。最重要的是什么？绝大多数客户在使用 Snippets 时无需支付任何<em>额外费用</em>。</p>
 	<p>用户现在有了选择。通过一个规则执行行动。或者，如果需要更多的功能，写一个Snippet。两者都不意味着等待。两者都不会产生额外费用（尽管将适用高额的公平使用上限）。Snippets 为用户解除了障碍，让他们在想做的时候做他们想做的事。都在 Cloudflare 上。</p>
 	<p>Snippets 将支持导入用各种语言编写的代码，如 JavaScript（现代）、VCL（传统）和 Apache .htaccess。文件（遗留）。这使客户能够将传统的操作代码迁移到我们的平台上--同时也巩固了他们的JavaScript操作。</p>
@@ -11,18 +11,18 @@
 	<p>总有一些用例，一个产品不能提供客户在其特定情况下需要的功能。例如，尽管我们成千上万的客户现在都在使用 Transform Rules 来解决他们的 HTTP 头修改用例，但仍有少数用例是不可能的，例如用 cookie 设置动态的过期时间或用密钥散列 token。</p>
 	<p>这就是 Cloudflare Snippets 的帮助所在。客户将不再需要使用完整的 Cloudflare Workers 平台来实现这些相对简单的用例。他们也不需要等待我们来建立他们的功能要求。取而代之的是，他们将能够运行 JavaScript 的 Snippet。</p>
 	<h2 id="-snippets">将传统代码迁移到 Snippets</h2>
-	<p><a href="https://varnish-cache.org/docs/trunk/users-guide/vcl.html" target="_blank">Varnish 控制语言</a> (VCL) 只在 Varnish 的范围内使用。大约在 16 年前推出，它在历史上被用来配置流量和内容交付网络的路由，因为它可以扩展到广泛的使用情况。</p>
+	<p><a href="https://varnish-cache.org/docs/trunk/users-guide/vcl.html?ref=blog.cloudflare.com" target="_blank">Varnish 控制语言</a> (VCL) 只在 Varnish 的范围内使用。大约在 16 年前推出，它在历史上被用来配置流量和内容交付网络的路由，因为它可以扩展到广泛的使用情况。</p>
 	<p>现在仍有相当多的企业在使用 VCL 来执行路由和流量修改动作。虽然其他供应商正在废除对 VCL 的支持，但我们希望确保你们中那些使用它的人仍然得到支持。</p>
 	<p>Snippets 不会运行纯 VCL。相反，我们将把 VCL 转换成易于维护的规则或Snippets。为了实现这个目标，我们正在建立一个简单易用的自助式 VCL 转换器，分析上传的 VCL 代码并自动生成建议的 Snippets，如果我们能找到匹配的，还能生成建议的产品规则，如 Transform Rule s或 Cache Rules。</p>
 	<p>这个话题最初是通过 <a href="https://blog.cloudflare.com/announcing-turpentine/">Project Turpentine</a> 处理的，Cloudflare 员工使用这套工具将客户的 VCL 解析为建议的 JavaScript 配置。然后可将该 JavaScript 加载到一个或一系列 Worker 中。</p>
 	<p>Snippets 将松节油的理念和原则更进一步。更进一步。通过在仪表板中直接建立一个分析器，它将权力直接交到用户手中，并给他们一个选择。你可以告诉我们把所有能迁移的东西都迁移到 Rules 中，剩下的代码迁移到 Snippets 中，或者，你可以选择告诉我们把所有东西都迁移到离散的 Snippets 中。这是你的决定。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-55.png" class="kg-image"></figure>
-	<p>我们将为 Apache <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess" target="_blank">htaccess</a> 和 NGINX <a href="https://www.nginx.com/resources/wiki/start/topics/examples/full/" target="_blank">配置文件</a>提供相同的处理方式。目标是用户只需从他们的网站 Apache 或 NGINX 配置上传文件，我们就会生成建议的 Snippets 和/或规则。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-55.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>我们将为 Apache <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess?ref=blog.cloudflare.com" target="_blank">htaccess</a> 和 NGINX <a href="https://www.nginx.com/resources/wiki/start/topics/examples/full/?ref=blog.cloudflare.com" target="_blank">配置文件</a>提供相同的处理方式。目标是用户只需从他们的网站 Apache 或 NGINX 配置上传文件，我们就会生成建议的 Snippets 和/或规则。</p>
 	<p>不得不使用遗留代码进行操作任务的日子即将结束。Snippets 允许用户将这些工作负载迁移到 Cloudflare，并让他们专注于业务的更大问题与维护传统系统。</p>
 	<h2 id="snippets-workers-">Snippets 和 Workers 的区别</h2>
 	<p>大多数读者已经熟悉 Cloudflare Workers，我们强大的开发者平台，允许企业在 Cloudflare 的全球网络上运行和构建整个产品和解决方案。Snippets 也建立在这个平台上，但有几个关键的区别。</p>
-	<p>第一个主要区别是，Snippet 将作为<a href="https://developers.cloudflare.com/ruleset-engine/" target="_blank">规则集引擎</a>的一部分运行作为专用的新<em>阶段</em> ，类似于转换规则和缓存规则。客户将能够根据任何<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields" target="_blank">规则集引擎过滤器</a>，选择和执行一个 Snippet。这允许客户对每个请求运行一个 Snippet，或根据我们提供的字段过滤特定的 HTTP 流量，如具有某种机器人得分的流量，来自特定国家的流量，或具有特定 cookie 的流量。Snippet 将是加法的，这意味着用户可以使用一个 Snippet 来添加 HTTP 头，另一个 Snippet 来重写 URL，如果两者匹配，将执行。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-39.png" class="kg-image"></figure>
+	<p>第一个主要区别是，Snippet 将作为<a href="https://developers.cloudflare.com/ruleset-engine/?ref=blog.cloudflare.com" target="_blank">规则集引擎</a>的一部分运行作为专用的新<em>阶段</em> ，类似于转换规则和缓存规则。客户将能够根据任何<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields?ref=blog.cloudflare.com" target="_blank">规则集引擎过滤器</a>，选择和执行一个 Snippet。这允许客户对每个请求运行一个 Snippet，或根据我们提供的字段过滤特定的 HTTP 流量，如具有某种机器人得分的流量，来自特定国家的流量，或具有特定 cookie 的流量。Snippet 将是加法的，这意味着用户可以使用一个 Snippet 来添加 HTTP 头，另一个 Snippet 来重写 URL，如果两者匹配，将执行。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-39.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>另一个主要区别是 - Cloudflare Snippets 适用于所有计划级别，不需要额外费用。99% 的用户不会支付一分钱，永远不会，使用这个解决方案。这使客户能够将其简单的工作负载从传统的解决方案（如 VCL）迁移到 Cloudflare 平台，并积极减少其每月的支出。</p><!--kg-card-begin: html-->
 	<table>
 		<thead>
@@ -135,7 +135,7 @@
 	<h2 id="-cloudflare-snippets-">您可以利用 Cloudflare Snippets 做些什么？</h2>
 	<p>Snippets 将允许客户将其现有工作负载迁移到 Cloudflare。它们还将为客户开辟一些新的可能使用案例。我们在下面强调了三个常见的例子，然而还有更多的例子可以选择。</p>
 	<h3 id="-1-">示例 1：将可疑的自动程序发送到蜜罐</h3>
-	<p>在创建 Snippets 时，客户将能够访问 Workers 运行时中可用的 Cloudflare <a href="https://developers.cloudflare.com/workers/runtime-apis/request/" target="_blank">功能</a>，例如僵尸分数字段。这使客户能够将 HTTP 请求转发到一个蜜罐，或使用正则 Javascript 功能，在流量被分配到低于某个阈值时，改变被送回最终用户的 URL 结构，例如：<a href="https://developers.cloudflare.com/bots/concepts/bot-score/#:~:text=A%20bot%20score%20is%20a,request%20came%20from%20a%20human." target="_blank">29 和更低</a>。</p><!--kg-card-begin: markdown-->
+	<p>在创建 Snippets 时，客户将能够访问 Workers 运行时中可用的 Cloudflare <a href="https://developers.cloudflare.com/workers/runtime-apis/request/?ref=blog.cloudflare.com" target="_blank">功能</a>，例如僵尸分数字段。这使客户能够将 HTTP 请求转发到一个蜜罐，或使用正则 Javascript 功能，在流量被分配到低于某个阈值时，改变被送回最终用户的 URL 结构，例如：<a href="https://developers.cloudflare.com/bots/concepts/bot-score/?ref=blog.cloudflare.com#:~:text=A%20bot%20score%20is%20a,request%20came%20from%20a%20human." target="_blank">29 和更低</a>。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">…
 if (request.cf.botManagement.score &lt; 30) {
 const honeypot = "https://example.com/";
@@ -179,6 +179,6 @@ if (userAgent.includes("Facebook")) {
 	<p>这听起来可能很明显--但功能改进的一个核心组成部分是与客户交谈。 与 Snippet 用户交谈将帮助我们了解 Snippet 帮助解决了哪些现实生活中的用例，并突出我们产品套件中的功能差距。然后，我们可以审查是否有必要将该用例产品化，或将其留给Snippets使用。</p>
 	<p>我们也明白，不是每个人都是软件开发人员。因此，我们正在探索如何使 Snippets对所有人开放，方法是在一个库中创建可选择的模板，客户可以复制和修改，只需要最少的编码知识。 有了 Snippets，强大的功能并不意味着困难。</p>
 	<h2 id="-cloudflare-snippets">访问 Cloudflare Snippets</h2>
-	<p>Snippets 目前正在开发中，如需访问体验，您可<a href="https://www.cloudflare.com/lp/cloudflare-snippets/" target="_blank">在此</a>注册，加入等候名单。</p>
+	<p>Snippets 目前正在开发中，如需访问体验，您可<a href="https://www.cloudflare.com/lp/cloudflare-snippets/?ref=blog.cloudflare.com" target="_blank">在此</a>注册，加入等候名单。</p>
 	<p>我们希望在 2023 年初开始接纳用户参加封测，随后再进行公测。</p>
 </div>

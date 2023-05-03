@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-4.png" class="kg-image" alt="Durable Objects — 现已正式发布"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-4.png" class="kg-image" alt="Durable Objects — 现已正式发布" loading="lazy"></figure>
 	<p>Full Stack Week 旨在介绍开发人员如何拥抱 Cloudflare 网络的力量，打造默认全球性的完整应用。Workers 的承诺不仅仅是改善了延迟——而是从根本上改变了编程范式，使开发人员更轻松，应用程序更有韧性。</p>
 	<p>去年 <a href="https://blog.cloudflare.com/durable-objects-open-beta/">我们发布了 Durable Objects</a> — 用于对在 Cloudflare 边缘上运行的 Workers 的状态进行协调。通过 Durable Objects，仅需几行代码，开发人员就能实施过去比较复杂的应用程序，例如协作白板、游戏服务器或全球队列。</p>
 	<p>今天，我们宣布 Durable Objects 已普遍可用，并可用于生产环境。</p>
@@ -11,14 +11,14 @@
 	<p>首先，我们一直致力于提高可靠性和性能。Durable Objects 支持 Cloudflare 正在开发的多个产品，包括 <a href="https://blog.cloudflare.com/zh-cn/introducing-r2-object-storage-zh-cn/">R2 存储</a>和<a href="https://blog.cloudflare.com/zh-cn/cloudflare-waiting-room-zh-cn/">Cloudflare 等候室</a>。 </p>
 	<p>具体来说，等候室使用 Durable Objects 就试图访问特定站点的当前用户数量提供一个强一致性视图。将这种频繁更新的状态存储在传统数据库中将难以扩展，在全球规模上内运行则要困难得多。</p>
 	<p>我们的客户也拥抱了 Durable Objects。我们已经看到一家大型游戏公司在 Durable Objects 对象上构建了他们新的后端架构——协调个人游戏状态和多人游戏大厅。Durable Object 具有无需管理服务器或数据库而动态扩展的能力，使其成为他们的一个简单选择，让他们凭借一个相对较小的团队来开发自己的游戏。</p>
-	<p>客户已经构建了更多的应用——从状态页面监视器到协作白板应用程序。我们已经看到了在 WebSockets 中使用 Durable Objects 来创建完全响应式应用的特别兴趣，并且已经发布了一个<a href="https://github.com/cloudflare/dog" target="_blank">参考架构</a>来帮助客户进一步发展。</p>
+	<p>客户已经构建了更多的应用——从状态页面监视器到协作白板应用程序。我们已经看到了在 WebSockets 中使用 Durable Objects 来创建完全响应式应用的特别兴趣，并且已经发布了一个<a href="https://github.com/cloudflare/dog?ref=blog.cloudflare.com" target="_blank">参考架构</a>来帮助客户进一步发展。</p>
 	<p>我们在运行系统方面也做得更好了，尤其是在响应大量请求的情况下。Durable Objects 现在可以在对象之间处理每秒数十万个请求，在单一对象上每秒处理数百个请求，这使得它们甚至能满足最苛刻的客户的生产要求。</p>
 	<p>我们已经发布了 <a href="https://blog.cloudflare.com/supporting-jurisdictional-restrictions-for-durable-objects/">Jurisdictional Restrictions</a>（司法管辖区限制） ，让开发人员能为 Durable Object 添加区域标记，确保它在该区域中处理和存储数据，从而使 Durable Object 的扩展变得简单。</p>
 	<p>我们在 Durable Object 存储请求前<a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/">添加了一个缓存</a>，使读写操作迅如闪电，也使编写正确的并发代码更加容易。</p>
-	<p>除此之外，我们还做了一些较小的改进，包括：<a href="https://developers.cloudflare.com/workers/learning/using-durable-objects#uploading-a-durable-object-worker" target="_blank">简化新 Durable Objects 类的上传</a>，仪表板 UI，以及支持 `wrangler dev` 和 `wrangler tail` 进行实时调试。</p>
+	<p>除此之外，我们还做了一些较小的改进，包括：<a href="https://developers.cloudflare.com/workers/learning/using-durable-objects?ref=blog.cloudflare.com#uploading-a-durable-object-worker" target="_blank">简化新 Durable Objects 类的上传</a>，仪表板 UI，以及支持 `wrangler dev` 和 `wrangler tail` 进行实时调试。</p>
 	<h3 id="durable-objects-">Durable Objects 下一步发展是什么？</h3>
 	<p>我们继续致力于使 Durable Objects 成为构建无限扩展应用的最简单平台。</p>
-	<p>现在，在对象可被分区时，Durable Objects 能很好地扩展，但个别对象被限制于单一执行线程。很多工作负载可在多个线程中扩展，提供对某个对象的状态的只读访问，并仅在状态发生变化时进行同步。我们将此称为 Durable Objects 的复制。我们正在开发这个功能。<br><br>我们也在为添加一个 API 来获得对某个 Durable Object 的保证回调，让开发人员在未来指定的时间唤醒一个 Durable Object 来运行一个函数。这简化了生命周期管理，使得在 Durable Object 上构建可靠队列等基元变得容易。<br><br>我们还在研究如何更好地在地理上分布对象，包括我们在最初宣布时谈到的对象自动迁移愿景。<br><br>如果您有任何功能希望我们添加，欢迎给我们<a href="mailto:workers-product@cloudflare.com" target="_blank">写邮件</a>或<a href="https://info.cloudflare.com/rs/713-XSC-918/images/CF_China_QRcode.png?mkt_tok=NzEzLVhTQy05MTgAAAGAoxnAXUTroz-mJhALF3_p704Z9sCJJEiege0TluB4X6DnMaiJ5y6vMf_gi1M-PVjhhdCFQHi2YfzhUlfZ2kY" target="_blank">扫码关注</a>微信公众号进一步交流。</p>
+	<p>现在，在对象可被分区时，Durable Objects 能很好地扩展，但个别对象被限制于单一执行线程。很多工作负载可在多个线程中扩展，提供对某个对象的状态的只读访问，并仅在状态发生变化时进行同步。我们将此称为 Durable Objects 的复制。我们正在开发这个功能。<br><br>我们也在为添加一个 API 来获得对某个 Durable Object 的保证回调，让开发人员在未来指定的时间唤醒一个 Durable Object 来运行一个函数。这简化了生命周期管理，使得在 Durable Object 上构建可靠队列等基元变得容易。<br><br>我们还在研究如何更好地在地理上分布对象，包括我们在最初宣布时谈到的对象自动迁移愿景。<br><br>如果您有任何功能希望我们添加，欢迎给我们<a href="mailto:workers-product@cloudflare.com?ref=blog.cloudflare.com" target="_blank">写邮件</a>或<a href="https://info.cloudflare.com/rs/713-XSC-918/images/CF_China_QRcode.png?mkt_tok=NzEzLVhTQy05MTgAAAGAoxnAXUTroz-mJhALF3_p704Z9sCJJEiege0TluB4X6DnMaiJ5y6vMf_gi1M-PVjhhdCFQHi2YfzhUlfZ2kY&amp;ref=blog.cloudflare.com" target="_blank">扫码关注</a>微信公众号进一步交流。</p>
 	<h3 id="-durable-objects--1">我们如何使用 Durable Objects？</h3>
-	<p>在 Cloudflare 仪表板中启用 Durable Objects 并选择定价，然后在这里查看我们的<a href="https://github.com/cloudflare/workers-chat-demo" target="_blank">示例聊天应用</a>和<a href="https://github.com/cloudflare/dog" target="_blank">参考架构</a>。<br><br>祝您构建之旅愉快！</p>
+	<p>在 Cloudflare 仪表板中启用 Durable Objects 并选择定价，然后在这里查看我们的<a href="https://github.com/cloudflare/workers-chat-demo?ref=blog.cloudflare.com" target="_blank">示例聊天应用</a>和<a href="https://github.com/cloudflare/dog?ref=blog.cloudflare.com" target="_blank">参考架构</a>。<br><br>祝您构建之旅愉快！</p>
 </div>

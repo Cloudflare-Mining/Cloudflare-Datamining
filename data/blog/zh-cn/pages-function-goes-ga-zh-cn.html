@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-37.png" class="kg-image" alt="Spice up static sites on Cloudflare Pages with Page Functions"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-37.png" class="kg-image" alt="Spice up static sites on Cloudflare Pages with Page Functions" loading="lazy"></figure>
 	<p>在 2021 年 4 月推出 Pages 之前，我们就知道这将迎来某种神奇的变化——一种“恰到好处”的体验。我们设想的是简单而又流畅的体验，让<em><strong>任何开发人员</strong></em>都可以在几秒钟内推出一个网站，并通过 Cloudflare 生态系统的其他部分为其添加更多内容。</p>
 	<p>几个月后，2021 年 11 月我们宣布 Pages 是一个全栈平台时，这一愿景成为了现实。我们的 Pages 梦想并不止于创建一个静态网站开发平台。由于 Cloudflare Workers 已经集成到我们的生态系统中，我们知道还有许多潜力有待开发。随着 Pages Functions 的推出，开发人员能够开发任何静态网站，并利用 Cloudflare Workers 的强大功能轻松添加动态内容。</p>
 	<p>去年 Functions 进入公测以来，我们一直在深入探索开发人员在项目中需要什么样的全栈功能，并着手对 Functions 的体验进行微调，于是才有了今天的样貌。</p>
@@ -22,35 +22,35 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>来接收控制台和异常日志的实时信息，以了解您的 Function 收到的每个请求。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-52.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-52.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-functions-">获得实时 Functions 指标</h3>
 	<p>在仪表板上，Pages 以请求成功/错误指标和调用状态等形式为您的 Functions 汇总数据。您可以参考指标仪表板，这不仅有助于更好地了解每个项目的使用情况，还可以通过捕捉成功/错误数量来检查您的 Functions 的运行状况。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-20.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-20.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-cloudflare-">与 Cloudflare 生态系统快速集成</h3>
 	<h4 id="--1"><strong>存储绑定</strong></h4>
 	<p>想要实现真正的全栈化？我们知道，找到一个适合自己需求和生态系统的存储解决方案并非易事，但也不一定困难重重！</p>
-	<p>借助 Functions，您可以充分利用我们的各种存储产品，包括 Workers KV、Durable Objects、R2、D1 以及即将推出的 <a href="https://developers.cloudflare.com/queues/" target="_blank">Queues</a> 和 <a href="https://developers.cloudflare.com/analytics/analytics-engine/" target="_blank">Workers Analytics Engine</a>！只需创建您的命名空间、存储桶或数据库，并在 Pages 仪表板中添加您的绑定，只需点击几下即可完善并运行您的全栈站点。</p>
+	<p>借助 Functions，您可以充分利用我们的各种存储产品，包括 Workers KV、Durable Objects、R2、D1 以及即将推出的 <a href="https://developers.cloudflare.com/queues/?ref=blog.cloudflare.com" target="_blank">Queues</a> 和 <a href="https://developers.cloudflare.com/analytics/analytics-engine/?ref=blog.cloudflare.com" target="_blank">Workers Analytics Engine</a>！只需创建您的命名空间、存储桶或数据库，并在 Pages 仪表板中添加您的绑定，只需点击几下即可完善并运行您的全栈站点。</p>
 	<p>从嵌入快速评论系统到推出自己的身份验证，再到创建数据库支持的电子商务网站，与我们的开发人员平台中的现有产品集成，这些功能为您的站点提供了无数用例。</p>
 	<h4 id="--2"><strong>秘密捆绑</strong></h4>
 	<p>除添加了在构建时和运行时可用于项目的环境变量之外，现在还可以向您的项目添加“秘密”。这些都是加密的环境变量，任何仪表板界面均无法查看，是 API 令牌或密码等敏感数据的理想存储场所。</p>
 	<h3 id="--3">与第三方服务整合</h3>
-	<p>Pages 的目标始终是主动帮助您构建喜欢使用的工具。在公测期间，我们也发现了您使用 Functions 与常见的第三方服务集成的一致模式。我们现成的代码片段 <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/" target="_blank">Pages Plugins </a> 为您提供即插即用的体验，构建心仪的应用程序生态系统。</p>
+	<p>Pages 的目标始终是主动帮助您构建喜欢使用的工具。在公测期间，我们也发现了您使用 Functions 与常见的第三方服务集成的一致模式。我们现成的代码片段 <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/?ref=blog.cloudflare.com" target="_blank">Pages Plugins </a> 为您提供即插即用的体验，构建心仪的应用程序生态系统。</p>
 	<p>从本质上讲，Pages Plugin 是一个可重复使用、可自定义的运行时代码块，可集成到 Pages 应用程序的任何位置。它是一个“可组合”的 Pages Function，让 Plugins 全面利用 Functions 的强大功能（即 Workers），包括设置中间件、参数化路由和静态资产的能力。</p>
-	<p>借助 Pages 插件，您可以与大量第三方应用程序集成——包括官方支持的 <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/sentry/" target="_blank">Sentry</a>、<a href="https://developers.cloudflare.com/pages/platform/functions/plugins/honeycomb/" target="_blank">Honeycomb</a>、<a href="https://developers.cloudflare.com/pages/platform/functions/plugins/stytch/" target="_blank">Stytch</a>、<a href="https://developers.cloudflare.com/pages/platform/functions/plugins/mailchannels/" target="_blank">MailChannels</a> 等。</p>
+	<p>借助 Pages 插件，您可以与大量第三方应用程序集成——包括官方支持的 <a href="https://developers.cloudflare.com/pages/platform/functions/plugins/sentry/?ref=blog.cloudflare.com" target="_blank">Sentry</a>、<a href="https://developers.cloudflare.com/pages/platform/functions/plugins/honeycomb/?ref=blog.cloudflare.com" target="_blank">Honeycomb</a>、<a href="https://developers.cloudflare.com/pages/platform/functions/plugins/stytch/?ref=blog.cloudflare.com" target="_blank">Stytch</a>、<a href="https://developers.cloudflare.com/pages/platform/functions/plugins/mailchannels/?ref=blog.cloudflare.com" target="_blank">MailChannels</a> 等。</p>
 	<h3 id="--4">使用最喜欢的全栈框架</h3>
 	<p>我们旨在满足开发人员需求的精神也体现在 Javascript 框架上。我们不仅大力支持已广泛采用的框架，也支持尚未诞生的新框架，我们的团队与大量框架作者合作，让您有机会使用他们的新技术，即时在 Pages 上进行部署。</p>
 	<h4 id="-next-js-13-">现已与 Next.js 13 等框架兼容！</h4>
 	<p>最近，我们宣布了支持选择加入 Edge Runtime 的 <a href="https://blog.cloudflare.com/next-on-pages/">Next.js 应用程序</a>。今天，我们兴奋地宣布，我们现已与 Next.js 13 兼容。Next.js 13 为 Next.js 框架提供了最常请求的现代范式，包括嵌套路由、React 18's Server Components 和流传输。</p>
 	<p>有不同的框架偏好？没问题。</p>
-	<p>使用 Pages 实现全栈化，以充分利用服务器端渲染 (SSR) 和与其他官方支持的许多框架，例如 <a href="https://remix.run/" target="_blank">Remix</a>、<a href="https://kit.svelte.dev/" target="_blank">SvelteKit</a>、<a href="https://qwik.builder.io/qwikcity/overview/" target="_blank">QwikCity、</a><a href="https://start.solidjs.com/getting-started/what-is-solidstart" target="_blank">SolidStart</a>、<a href="https://astro.build/" target="_blank">Astro</a> 和 <a href="https://nuxtjs.org/" target="_blank">Nuxt</a>。您可以<a href="https://blog.cloudflare.com/pages-full-stack-frameworks">查看我们的相关博客文章，其中介绍了 Pages 上的 SSR 支持</a>以及如何开始使用其中一些框架。</p>
+	<p>使用 Pages 实现全栈化，以充分利用服务器端渲染 (SSR) 和与其他官方支持的许多框架，例如 <a href="https://remix.run/?ref=blog.cloudflare.com" target="_blank">Remix</a>、<a href="https://kit.svelte.dev/?ref=blog.cloudflare.com" target="_blank">SvelteKit</a>、<a href="https://qwik.builder.io/qwikcity/overview/?ref=blog.cloudflare.com" target="_blank">QwikCity、</a><a href="https://start.solidjs.com/getting-started/what-is-solidstart?ref=blog.cloudflare.com" target="_blank">SolidStart</a>、<a href="https://astro.build/?ref=blog.cloudflare.com" target="_blank">Astro</a> 和 <a href="https://nuxtjs.org/?ref=blog.cloudflare.com" target="_blank">Nuxt</a>。您可以<a href="https://blog.cloudflare.com/pages-full-stack-frameworks">查看我们的相关博客文章，其中介绍了 Pages 上的 SSR 支持</a>以及如何开始使用其中一些框架。</p>
 	<h3 id="--5">利用高级模式快速部署</h3>
-	<p>虽然 Pages Functions 是由 Workers 提供支持，但我们理解，从表面上来看，它们并不完全相同。不过，对于那些可能正在使用 Workers 并希望试用 Cloudflare Pages 的现有用户，我们<a href="https://developers.cloudflare.com/pages/platform/functions/advanced-mode/" target="_blank">提供了一条直接路径</a>，助您快速入门。</p>
-	<p>如果您已有一个单一的 Worker，并想用简单的方法在 Pages 上实现全栈化，您可以使用 Pages Function 的“高级模式”。在您项目的输出目录中生成一个名为 <code>_worker.js</code> 的<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#syntax-module-worker" target="_blank">ES 模块 Worker</a>，然后进行部署！</p>
+	<p>虽然 Pages Functions 是由 Workers 提供支持，但我们理解，从表面上来看，它们并不完全相同。不过，对于那些可能正在使用 Workers 并希望试用 Cloudflare Pages 的现有用户，我们<a href="https://developers.cloudflare.com/pages/platform/functions/advanced-mode/?ref=blog.cloudflare.com" target="_blank">提供了一条直接路径</a>，助您快速入门。</p>
+	<p>如果您已有一个单一的 Worker，并想用简单的方法在 Pages 上实现全栈化，您可以使用 Pages Function 的“高级模式”。在您项目的输出目录中生成一个名为 <code>_worker.js</code> 的<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/?ref=blog.cloudflare.com#syntax-module-worker" target="_blank">ES 模块 Worker</a>，然后进行部署！</p>
 	<p>对于框架作者，或许还有更复杂的用例，不适用我们基于文件的路由器，这可能会特别有帮助。</p>
 	<h2 id="--6">无限扩展</h2>
 	<p>因此，今天我们兴奋地宣布，Functions 已普遍可用，实现流量可扩展。在公测期间，我们限制每天 10 万个免费请求，让您试用该功能。虽然现在也有每天 10 万个免费请求的限制，但现在您可以通过付费来实现真正的无限扩展。</p>
 	<p>由于 Functions 只是“特殊”的 Workers，这一公告发布后，您的 Functions 使用量将开始反映在您的 Workers 付费订阅账单或 Workers Enterprise 合同账单上。与 Workers 一样，如果加入付费计划，我们有两种使用模式供您选择——Bundled 和 Unbound，并相应计费。</p>
-	<p>作为 Cloudflare“给互联网的礼物”，使用 Pages 品牌，您将可无限请求免费静态资产，且将主要按动态请求计费。您可以<a href="https://developers.cloudflare.com/pages/platform/functions/pricing/" target="_blank"> 阅读</a>我们的文档，进一步了解 Functions 的计费方式。</p>
+	<p>作为 Cloudflare“给互联网的礼物”，使用 Pages 品牌，您将可无限请求免费静态资产，且将主要按动态请求计费。您可以<a href="https://developers.cloudflare.com/pages/platform/functions/pricing/?ref=blog.cloudflare.com" target="_blank"> 阅读</a>我们的文档，进一步了解 Functions 的计费方式。</p>
 	<h2 id="--7">立即开始使用</h2>
-	<p>要开始体验 JAM，请访问 <a href="https://developers.cloudflare.com/pages/platform/functions/" target="_blank">Pages Functions 文档</a>并<a href="https://blog.cloudflare.com/pages-full-stack-frameworks">查阅我们的博客</a>，了解可用来部署您的第一个全栈应用程序的最佳框架。开始构建项目时，请务必在 <a href="https://discord.gg/cloudflaredev" target="_blank">Cloudflare Developers Discord</a> 页面下的 <a href="https://discord.com/channels/595317990191398933/910978223968518144" target="_blank">#functions 频道</a>告知我们。祝您构建愉快！</p>
+	<p>要开始体验 JAM，请访问 <a href="https://developers.cloudflare.com/pages/platform/functions/?ref=blog.cloudflare.com" target="_blank">Pages Functions 文档</a>并<a href="https://blog.cloudflare.com/pages-full-stack-frameworks">查阅我们的博客</a>，了解可用来部署您的第一个全栈应用程序的最佳框架。开始构建项目时，请务必在 <a href="https://discord.gg/cloudflaredev?ref=blog.cloudflare.com" target="_blank">Cloudflare Developers Discord</a> 页面下的 <a href="https://discord.com/channels/595317990191398933/910978223968518144?ref=blog.cloudflare.com" target="_blank">#functions 频道</a>告知我们。祝您构建愉快！</p>
 </div>

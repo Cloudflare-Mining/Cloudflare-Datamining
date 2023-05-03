@@ -4,8 +4,8 @@
 	<p>That got me thinking. While I agree that 50kpps per core is probably the limit for any practical application, what <em>is</em> the Linux networking stack capable of? Let's rephrase that to make it more fun:</p>
 	<p><em>On Linux, how hard is it to write a program that receives 1 million UDP packets per second?</em></p>
 	<p>Hopefully, answering this question will be a good lesson about the design of a modern networking stack.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/06/3208129302_7e14f00492_z.jpg" alt=""><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/mccaffrey_uk/3208129302" target="_blank">image</a> by <a href="https://www.flickr.com/photos/mccaffrey_uk" target="_blank">Bob McCaffrey</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/06/3208129302_7e14f00492_z.jpg" alt="" loading="lazy"><br>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/mccaffrey_uk/3208129302?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/mccaffrey_uk?ref=blog.cloudflare.com" target="_blank">Bob McCaffrey</a></small>
 	</p>
 	<p>First, let us assume:</p>
 	<ul>
@@ -25,7 +25,7 @@
 			<p>They both have two six core 2GHz Xeon processors. With hyperthreading (HT) enabled that counts to 24 processors on each box. The boxes have a multi-queue 10G network card by Solarflare, with 11 receive queues configured. More on that later.</p>
 		</li>
 		<li>
-			<p>The source code of the test programs is available here: <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-million-packets/udpsender.c" target="_blank"><code>udpsender</code></a>, <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-million-packets/udpreceiver1.c" target="_blank"><code>udpreceiver</code></a>.</p>
+			<p>The source code of the test programs is available here: <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-million-packets/udpsender.c?ref=blog.cloudflare.com" target="_blank"><code>udpsender</code></a>, <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-million-packets/udpreceiver1.c?ref=blog.cloudflare.com" target="_blank"><code>udpreceiver</code></a>.</p>
 		</li>
 	</ul>
 	<h3 id="prerequisites">Prerequisites</h3>
@@ -51,7 +51,7 @@ fd.connect(("192.168.254.1", 4321))
 while True:
     fd.sendmmsg(["\x00" * 32] * 1024)
 </code></pre>
-	<p>While we could have used the usual <code>send</code> syscall, it wouldn't be efficient. Context switches to the kernel have a cost and it is be better to avoid it. Fortunately a handy syscall was recently added to Linux: <a href="http://man7.org/linux/man-pages/man2/sendmmsg.2.html" target="_blank"><code>sendmmsg</code></a>. It allows us to send many packets in one go. Let's do 1,024 packets at once.</p>
+	<p>While we could have used the usual <code>send</code> syscall, it wouldn't be efficient. Context switches to the kernel have a cost and it is be better to avoid it. Fortunately a handy syscall was recently added to Linux: <a href="http://man7.org/linux/man-pages/man2/sendmmsg.2.html?ref=blog.cloudflare.com" target="_blank"><code>sendmmsg</code></a>. It allows us to send many packets in one go. Let's do 1,024 packets at once.</p>
 	<p>The receiver pseudo code:</p>
 	<pre><code class="language-.python">fd = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 fd.bind(("0.0.0.0", 4321))
@@ -59,7 +59,7 @@ while True:
     packets = [None] * 1024
     fd.recvmmsg(packets, MSG_WAITFORONE)
 </code></pre>
-	<p>Similarly, <a href="http://man7.org/linux/man-pages/man2/recvmmsg.2.html" target="_blank"><code>recvmmsg</code></a> is a more efficient version of the common <code>recv</code> syscall.</p>
+	<p>Similarly, <a href="http://man7.org/linux/man-pages/man2/recvmmsg.2.html?ref=blog.cloudflare.com" target="_blank"><code>recvmmsg</code></a> is a more efficient version of the common <code>recv</code> syscall.</p>
 	<p>Let's try it out:</p>
 	<pre><code class="language-.bash">sender$ ./udpsender 192.168.254.1:4321
 receiver$ ./udpreceiver1 0.0.0.0:4321
@@ -113,11 +113,11 @@ receiver$ taskset -c 1 ./udpreceiver1 0.0.0.0:4321
 </code></pre>
 	<p>Through these stats, the NIC reports that it had successfully delivered around 350kpps to RX queue number #4. The <code>rx_nodesc_drop_cnt</code> is a Solarflare specific counter saying the NIC failed to deliver 450kpps to the kernel.</p>
 	<p>Sometimes it's not obvious why the packets weren't delivered. In our case though, it's very clear: the RX queue #4 delivers packets to CPU #4. And CPU #4 can't do any more work - it's totally busy just reading the 350kpps. Here's how that looks in <code>htop</code>:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/06/htop-onecpu.png" alt="htop one cpu"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/06/htop-onecpu.png" alt="htop one cpu" loading="lazy"></p>
 	<h3 id="crashcoursetomultiqueuenics">Crash course to multi-queue NICs</h3>
 	<p>Historically, network cards had a single RX queue that was used to pass packets between hardware and kernel. This design had an obvious limitation - it was impossible to deliver more packets than a single CPU could handle.</p>
 	<p>To utilize multicore systems, NICs began to support multiple RX queues. The design is simple: each RX queue is pinned to a separate CPU, therefore, by delivering packets to all the RX queues a NIC can utilize all CPUs. But it raises a question: given a packet, how does the NIC decide to which RX queue to push it?</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/06/multiqueue.png" alt="multiqueue nic"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/06/multiqueue.png" alt="multiqueue nic" loading="lazy"></p>
 	<p>Round-robin balancing is not acceptable, as it might introduce reordering of packets within a single connection. An alternative is to use a hash from packet to decide the RX queue number. The hash is usually counted from a tuple (src IP, dst IP, src port, dst port). This guarantees that packets for a single flow will always end up on exactly the same RX queue, and reordering of packets within a single flow can't happen.</p>
 	<p>In our case, the hash could have been used like this:</p>
 	<pre><code class="language-.bash">RX_queue_number = hash('192.168.254.30', '192.168.254.1', 65400, 4321) % number_of_queues
@@ -138,7 +138,7 @@ Cannot change RX network flow hashing options: Operation not supported
 </code></pre>
 	<p>Unfortunately our NIC doesn't support it - we are constrained to (src IP, dst IP) hashing.</p>
 	<h3 id="anoteonnumaperformance">A note on NUMA performance</h3>
-	<p>So far all our packets flow to only one RX queue and hit only one CPU. Let's use this as an opportunity to benchmark the performance of different CPUs. In our setup the receiver host has two separate processor banks, each is a different <a href="https://en.wikipedia.org/wiki/Non-uniform_memory_access" target="_blank">NUMA node</a>.</p>
+	<p>So far all our packets flow to only one RX queue and hit only one CPU. Let's use this as an opportunity to benchmark the performance of different CPUs. In our setup the receiver host has two separate processor banks, each is a different <a href="https://en.wikipedia.org/wiki/Non-uniform_memory_access?ref=blog.cloudflare.com" target="_blank">NUMA node</a>.</p>
 	<p>We can pin the single-threaded receiver to one of four interesting CPUs in our setup. The four options are:</p>
 	<ol>
 		<li>
@@ -207,13 +207,13 @@ receiver$ taskset -c 1,2 ./udpreceiver1 0.0.0.0:4321 2
   0.461M pps  14.071MiB / 118.038Mb
   0.486M pps  14.820MiB / 124.322Mb
 </code></pre>
-	<p>The receiving performance is down compared to a single threaded program. That's caused by a lock contention on the UDP receive buffer side. Since both threads are using the same socket descriptor, they spend a disproportionate amount of time fighting for a lock around the UDP receive buffer. <a href="http://www.jcc2014.ucm.cl/jornadas/WORKSHOP/WSDP%202014/WSDP-4.pdf" target="_blank">This paper</a> describes the problem in more detail.</p>
+	<p>The receiving performance is down compared to a single threaded program. That's caused by a lock contention on the UDP receive buffer side. Since both threads are using the same socket descriptor, they spend a disproportionate amount of time fighting for a lock around the UDP receive buffer. <a href="http://www.jcc2014.ucm.cl/jornadas/WORKSHOP/WSDP%202014/WSDP-4.pdf?ref=blog.cloudflare.com" target="_blank">This paper</a> describes the problem in more detail.</p>
 	<p>Using many threads to receive from a single descriptor is not optimal.</p>
 	<ol start="5">
 		<li>SO_REUSEPORT</li>
 	</ol>
 	<hr>
-	<p>Fortunately, there is a workaround recently added to Linux: <a href="https://lwn.net/Articles/542629/" target="_blank">the SO_REUSEPORT flag</a>. When this flag is set on a socket descriptor, Linux will allow many processes to bind to the same port. In fact, any number of processes will be allowed to bind and the load will be spread across them.</p>
+	<p>Fortunately, there is a workaround recently added to Linux: <a href="https://lwn.net/Articles/542629/?ref=blog.cloudflare.com" target="_blank">the SO_REUSEPORT flag</a>. When this flag is set on a socket descriptor, Linux will allow many processes to bind to the same port. In fact, any number of processes will be allowed to bind and the load will be spread across them.</p>
 	<p>With <code>SO_REUSEPORT</code> each of the processes will have a separate socket descriptor. Therefore each will own a dedicated UDP receive buffer. This avoids the contention issues previously encountered:</p>
 	<pre><code class="language-.bash">receiver$ taskset -c 1,2,3,4 ./udpreceiver1 0.0.0.0:4321 4 1
   1.114M pps  34.007MiB / 285.271Mb
@@ -222,7 +222,7 @@ receiver$ taskset -c 1,2 ./udpreceiver1 0.0.0.0:4321 2
 </code></pre>
 	<p>This is more like it! The throughput is decent now!</p>
 	<p>More investigation will reveal further room for improvement. Even though we started four receiving threads, the load is not being spread evenly across them:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/06/port-uneven.png" alt="port uneven"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/06/port-uneven.png" alt="port uneven" loading="lazy"></p>
 	<p>Two threads received all the work and the other two got no packets at all. This is caused by a hashing collision, but this time it is at the <code>SO_REUSEPORT</code> layer.</p>
 	<h3 id="finalwords">Final words</h3>
 	<p>I've done some further tests, and with perfectly aligned RX queues and receiver threads on a single NUMA node it was possible to get 1.4Mpps. Running receiver on a different NUMA node caused the numbers to drop achieving at best 1Mpps.</p>
@@ -241,6 +241,6 @@ receiver$ taskset -c 1,2 ./udpreceiver1 0.0.0.0:4321 2
 		</li>
 	</ul>
 	<p>While we had shown that it is technically possible to receive 1Mpps on a Linux machine, the application was not doing any actual processing of received packets - it didn't even look at the content of the traffic. Don't expect performance like that for any practical application without a lot more work.</p>
-	<p><em>Interested in this sort of low-level, high-performance packet wrangling? CloudFlare is <a href="https://www.cloudflare.com/join-our-team" target="_blank">hiring</a> in London, San Francisco and Singapore</em>.</p>
+	<p><em>Interested in this sort of low-level, high-performance packet wrangling? CloudFlare is <a href="https://www.cloudflare.com/join-our-team?ref=blog.cloudflare.com" target="_blank">hiring</a> in London, San Francisco and Singapore</em>.</p>
 	<!--kg-card-end: markdown-->
 </div>
