@@ -15,13 +15,13 @@
 	<p>Traffic Manager is designed to be flexible, and we want to share some of the many supported use cases.</p>
 	<p>We had three primary scenarios in mind: load balancing, failover, and geo-steering. Underpinning these choices is our health checking functionality, which allows you to define what a healthy origin means to you. We can probe your origin web servers from every Cloudflare data center (or selected regions) over HTTP(S), check for status codes you define as healthy, parse the response body for specific text, and timeout as you see fit. We'll also send you email notifications as we detect availability changes, so you're able to pin down exactly when we saw that server fail.</p>
 	<p>Round robin configuration (“active-active”) load balancing, where load is distributed across all healthy servers. When a server is identified as unavailable through health checks, we'll seamlessly avoid routing traffic to it until it's available again.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/load-balancing.png" alt="Load Balancing"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/09/load-balancing.png" alt="Load Balancing" loading="lazy"></p>
 	<p>Failover configuration ("primary-secondary"), where we route traffic to a specific server or pool of servers, and failover completely to a secondary server or pool when the primary is identified as unavailable. Being able to failover between your own datacenter, AWS regions, or even across major cloud providers are all supported (and easy to configure).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/failover.png" alt="Failover"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/09/failover.png" alt="Failover" loading="lazy"></p>
 	<p>Geo-steering configuration, which directs traffic to the nearest origin based on region. For example: European clients to your Berlin datacenter, East Coast US clients to your New York datacenter, and Oceanic clients to your Singaporean datacenter (as a simple example!).</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/geo-steering.png" alt="Geo-steering"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/09/geo-steering.png" alt="Geo-steering" loading="lazy"></p>
 	<p>Of course, all of these approaches can be combined: you can load-balance across multiple locations in a specific region, failing over to the next-nearest datacenter should the first (or second) fail. You can also fine-tune what you consider to be a failure mode: given a pool of five servers, you might be able to sustain two unhealthy ones, but a third failure might be the trigger to steer traffic to your next data center.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/09/overview-map.png" alt="Combining approaches"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/09/overview-map.png" alt="Combining approaches" loading="lazy"></p>
 	<h3 id="howwereusingit">How We're Using It</h3>
 	<p>In fact, we're currently combining the above ourselves: the new Cloudflare website combines both failover and geo-steering configurations so we can serve one half of the world from Europe, and the other half from the US.</p>
 	<p>We've associated each origin web server with their respective regions, and Traffic Manager then automatically directs neighboring regions to those origins without further configuration - e.g. users in Africa are steered to our EU origin, and similarly, users in Asia Pacific and South America are automatically geo-steered to our US origin.</p>
@@ -30,6 +30,6 @@
 	<p>Our own website is critical to our business, and we know our customers feel the same way about their own web properties. We trust Traffic Manager to keep our website available despite what the Internet might throw at us!</p>
 	<h3 id="earlyaccess">Early Access</h3>
 	<p>Starting right now, we are accepting participants in our Early Access program, before we bring this service to all Cloudflare customers. Early Access requires some additional technical savvy, at first, and a willingness to share your feedback with us. For the duration of the Early Access program, Traffic Manager is free to use, with no charges. When introduced generally later this year, Traffic Manager will be available to all customers on all plans, with usage-based charges.</p>
-	<p>Fit the criteria? Fill out the <a href="https://www.cloudflare.com/traffic-manager/" target="_blank">Early Access form</a> and we'll reach out with the details. We're keen to show off what Traffic Manager can do.</p>
+	<p>Fit the criteria? Fill out the <a href="https://www.cloudflare.com/traffic-manager/?ref=blog.cloudflare.com" target="_blank">Early Access form</a> and we'll reach out with the details. We're keen to show off what Traffic Manager can do.</p>
 	<!--kg-card-end: markdown-->
 </div>

@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-45.png" class="kg-image" alt="How Cloudflare implemented FIDO2 and Zero Trust to prevent phishing" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-45.png" class="kg-image" alt="How Cloudflare implemented FIDO2 and Zero Trust to prevent phishing"></figure>
 	<p>数年前のCloudflareのセキュリティアーキテクチャは、古典的な「城と堀」のVPNアーキテクチャでした。社員は企業内VPNを利用して、すべての社内アプリケーションやサーバーに接続し、業務を行っていました。VPNにログインする際には、Google AuthenticatorやAuthyのような認証アプリを使用して、タイムベースのワンタイムパスコード（TOTP）による二要素認証を強制適用しましたが、2層目の認証を持つ内部アプリケーションはごく少数でした。そのアーキテクチャは、外見は強そうですが、セキュリティモデルは弱いのです。私たちは最近、<a href="https://blog.cloudflare.com/ja-jp/2022-07-sms-phishing-attacks-ja-jp/">私たちが防いだフィッシング攻撃の仕組みについて詳しくまとめました。</a>攻撃者が、TOTPなどの二要素認証方式で「保護」されているアプリケーションをどのようにフィッシングすることができるかを説明したものです。幸いなことに、私たちは既にTOTPを廃止し、ハードウェアセキュリティキーとCloudflare Accessに置き換えていました。このブログでは、その方法について詳しく説明します。</p>
-	<p>フィッシング問題の解決策は、<em> FIDO2/WebAuthn</em>と呼ばれる<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication/?ref=blog.cloudflare.com" target="_blank">多要素認証（MFA）</a>プロトコルを介して行われます。現在、Cloudflareの社員は全員、FIDO2を安全な多要素認証として利用してログインし、当社独自のZero Trust製品を使って当社のシステムに対し認証を行っています。私たちの新しいアーキテクチャはフィッシングに強く、最小権限アクセス制御をより簡単に強制適用することができます。</p>
+	<p>フィッシング問題の解決策は、<em> FIDO2/WebAuthn</em>と呼ばれる<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication/" target="_blank">多要素認証（MFA）</a>プロトコルを介して行われます。現在、Cloudflareの社員は全員、FIDO2を安全な多要素認証として利用してログインし、当社独自のZero Trust製品を使って当社のシステムに対し認証を行っています。私たちの新しいアーキテクチャはフィッシングに強く、最小権限アクセス制御をより簡単に強制適用することができます。</p>
 	<h3 id="-">セキュリティキーの用語と使用内容について</h3>
-	<p>2018年、私たちはフィッシングに強いMFAに移行したいと考えました。<a href="https://github.com/kgretzky/evilginx2?ref=blog.cloudflare.com" target="_blank">evilginx2</a>と、フィッシングのプッシュ型モバイル認証ツール、TOTPをめぐる成熟を目の当たりにしていたからです。ソーシャルエンジニアリングや認証情報の盗難攻撃に耐えるフィッシング耐性MFAは、FIDO標準を実装したセキュリティキーだけでした。FIDOベースのMFAは、FIDO2、WebAuthn、ハード（ウェア）キー、セキュリティキー、そして特にYubiKey（ハードウェアキーの有名なメーカーの名前）などの新しい用語を導入し、この記事を通して参照します。</p>
-	<p><strong>WebAuthn</strong>は<a href="https://www.w3.org/TR/webauthn-2/?ref=blog.cloudflare.com" target="_blank">ウェブ認証標準</a>を指し、そのプロトコルの仕組みについては<a href="https://blog.cloudflare.com/cloudflare-now-supports-security-keys-with-web-authentication-webauthn/">Cloudflareダッシュボードでのセキュリティキー対応</a>をリリースした際に詳しく書いています。</p>
+	<p>2018年、私たちはフィッシングに強いMFAに移行したいと考えました。<a href="https://github.com/kgretzky/evilginx2" target="_blank">evilginx2</a>と、フィッシングのプッシュ型モバイル認証ツール、TOTPをめぐる成熟を目の当たりにしていたからです。ソーシャルエンジニアリングや認証情報の盗難攻撃に耐えるフィッシング耐性MFAは、FIDO標準を実装したセキュリティキーだけでした。FIDOベースのMFAは、FIDO2、WebAuthn、ハード（ウェア）キー、セキュリティキー、そして特にYubiKey（ハードウェアキーの有名なメーカーの名前）などの新しい用語を導入し、この記事を通して参照します。</p>
+	<p><strong>WebAuthn</strong>は<a href="https://www.w3.org/TR/webauthn-2/" target="_blank">ウェブ認証標準</a>を指し、そのプロトコルの仕組みについては<a href="https://blog.cloudflare.com/cloudflare-now-supports-security-keys-with-web-authentication-webauthn/">Cloudflareダッシュボードでのセキュリティキー対応</a>をリリースした際に詳しく書いています。</p>
 	<p><strong>CTAP1（U2F）およびCTAP2</strong>は、ソフトウェアまたはハードウェアデバイスがWebAuthnプロトコルを実行するプラットフォームとどのように相互作用するかを詳述する、クライアントから認証子へのプロトコルを指します。</p>
 	<p><strong>FIDO2</strong>は、これら2つのプロトコルが認証に使用されているものをまとめたものです。区別は重要ではありませんが、命名規則が混乱のもととなる可能性があります。</p>
 	<p>最も重要なことは、これらのプロトコルや標準はすべて、フィッシングに強く、ハードウェアデバイスで実装可能なオープンな認証プロトコルを作成するために開発されたものであるということです。ソフトウェアでは、Face ID、Touch ID、Windowsアシスタントなどで実装されています。ハードウェアでは、USB、Lightning、NFCによる認証にYubiKeyなど別の物理デバイスを使用します。</p>
@@ -13,25 +13,25 @@
 	<p>2018年末には、全社イベントでセキュリティキーを配布しました。全社員にキーの登録、キーでの認証、デバイスに関する質問などを簡単なワークショップで行ってもらいました。プログラムは大成功でしたが、まだ粗削りで、WebAuthnで動作しないアプリケーションもありました。セキュリティキーの完全な強制適用はまだ準備ができておらず、問題を解決するための中間的なソリューションが必要だったのです。</p>
 	<h3 id="-cloudflare-zero-trust-">始まり：Cloudflare Zero Trustによる選択的セキュリティキーの強制適用</h3>
 	<p>私たちが保守を担当しているアプリケーションやサーバーは数千台あり、それらはVPNで保護されていました。これらのアプリケーションをZero Trustアクセスプロキシに移行し始めたのは、社員にセキュリティキー一式を発行したのと同じ時期でした。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-24.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-24.png" class="kg-image"></figure>
 	<p>Cloudflare Accessにより、社員はかつてVPNで保護されていたサイトへ安全にアクセスできるようになりました。各社内サービスでは、署名された認証情報を検証してユーザーを認証し、ユーザーが当社のIDプロバイダーにサインインしていることを確認しました。Cloudflare Accessは、セキュリティキーの展開に<em>必要でした。</em>セキュリティキーによる認証を必要とする最初のいくつかの社内アプリケーションを選択的に強制適用するためのツールを提供してくれたからです。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image6-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image6-13.png" class="kg-image"></figure>
 	<p>私たちはアプリケーションをZero Trust製品に導入する際にTerraformを使用しました。これは私たちが最初にセキュリティキーを強制適用したCloudflareのアクセスポリシーです。Cloudflare AccessがIDプロバイダーと統合する際にOAuth2を使用するように設定し、IDプロバイダーはOAuthフローの一部としてどのタイプの二段階認証が使用されたかをAccessに通知します。</p>
-	<p>この場合、<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-amr-values-04?ref=blog.cloudflare.com" target="_blank">swk</a>は、セキュリティキーを所有していることを証明するものです。もし誰かがログインしてセキュリティキーを使わなかった場合、再度ログインし、プロンプトが表示されたらセキュリティキーを押すように指示する親切なエラーメッセージが表示されるでしょう。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-62.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>この場合、<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-amr-values-04" target="_blank">swk</a>は、セキュリティキーを所有していることを証明するものです。もし誰かがログインしてセキュリティキーを使わなかった場合、再度ログインし、プロンプトが表示されたらセキュリティキーを押すように指示する親切なエラーメッセージが表示されるでしょう。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-62.png" class="kg-image"></figure>
 	<p>選択的な強制適用は、セキュリティキーの展開の流れを瞬時に変えました。2020年7月29日に単一サービスでの強制適用を開始し、その後の2カ月間でセキュリティキーによる認証が大量に増えました。このステップは、従業員が新しい技術に慣れるために非常に重要でした。選択的強制の期間は、休暇中の人を考慮すると少なくとも1カ月は必要ですが、今にして思えば、それ以上長くする必要はないでしょう。</p>
 	<p>アプリケーションをZero Trust製品に移行し、VPNから切り離すことで、他にどのようなセキュリティ上の利点があったのでしょうか。レガシーアプリケーションやSAMLを実装していないアプリケーションでは、ロールベースのアクセス制御と最小特権の原則を強制するために、この移行が必要でした。VPNはネットワークトラフィックを認証しますが、すべてのアプリケーションは、そのネットワークトラフィックが誰のものであるかを知ることができません。私たちのアプリケーションは、複数のレベルの権限を強制するのに苦労し、それぞれが独自の認証スキームを再発明する必要がありました。</p>
 	<p>Cloudflare Accessを導入した際、RBACを強制適用するためにグループを作成し、各人が持つべき権限レベルをアプリケーションに伝えました。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-23.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-23.png" class="kg-image"></figure>
 	<p>ここでは、ACL-CFA-CFDATA-argo-config-admin-svcグループのメンバーだけがアクセスできるサイトを紹介します。ログイン時に社員が自分のセキュリティキーを使用したことを強制適用し、そのための複雑なOAuthやSAML連携は必要ありませんでした。これと同じパターンを使っている社内サイトが600以上あり、すべてでセキュリティキーを強制適用しています。</p>
 	<h3 id="-cloudflare-totp-">選択的実施の終わり：CloudflareがTOTPを完全中止した日</h3>
 	<p>2021年2月、当社の従業員がソーシャルエンジニアリングの試みをセキュリティチームに報告するようになりました。当社のIT部門を名乗る人物から電話がかかってきており、警戒していたのです。そこで、社員がソーシャルエンジニアリング攻撃の犠牲にならないよう、すべての認証にセキュリティキーを使用することを義務付けることにしたのです。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-74.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-74.png" class="kg-image"></figure>
 	<p>WebAuthnを除く他のすべてのMFA（SMS、TOTPなど）を無効にした後、正式にFIDO2のみとなりました。ただし、「ソフトトークン」（TOTP）は、このグラフでは完全にゼロにはなっていません。これは、セキュリティキーを紛失したり、アカウントからロックアウトされた場合、別の方法でログインできる安全なオフライン回復プロセスを経る必要があるためです。このような事態に備え、従業員には複数のセキュリティキーを配布し、バックアップを取れるようにしておくことがベストプラクティスです。</p>
 	<p>全従業員がYubiKeyを使用してフィッシングに強いMFAを実現したところで、もう終わりでしょうか？では、SSHやHTTP以外のプロトコルはどうでしょうか？私たちは、IDとアクセス管理のための統一されたアプローチを求めていたので、セキュリティキーを他のプロトコルの任意のものにすることが次の検討事項でした。</p>
 	<h3 id="ssh-">SSHでセキュリティキーを使用する</h3>
-	<p>SSH接続にセキュリティキーを導入することをサポートするために、私たちは<a href="https://www.cloudflare.com/products/tunnel/?ref=blog.cloudflare.com" target="_blank">Cloudflare Tunnel</a>をすべての本番環境インフラに配備しました。Cloudflare Tunnelはトンネルを通過するプロトコルに関係なくCloudflare Accessとシームレスに統合され、トンネルを実行するにはトンネルクライアント<a href="https://github.com/cloudflare/cloudflared?ref=blog.cloudflare.com" target="_blank">cloudflared</a>を必要とします。つまり、全てのインフラにcloudflaredバイナリをデプロイし、各マシンにトンネルを作成し、セキュリティキーが必要なCloudflare Accessポリシーを作成し、ssh接続にはCloudflare Accessを通してセキュリティキーが必要になるということです。</p>
-	<p>Zero Trustデベロッパー向けドキュメントには、<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/ssh-cert-bastion/?ref=blog.cloudflare.com" target="_blank">素晴らしいチュートリアル</a>が掲載されています。私たちの各サーバーは、トンネルを開始するために必要な設定ファイルを持っています。Systemdはcloudflaredを起動し、トンネルを開始する際にこの（または類似の）設定ファイルを使用します。</p><!--kg-card-begin: markdown-->
+	<p>SSH接続にセキュリティキーを導入することをサポートするために、私たちは<a href="https://www.cloudflare.com/products/tunnel/" target="_blank">Cloudflare Tunnel</a>をすべての本番環境インフラに配備しました。Cloudflare Tunnelはトンネルを通過するプロトコルに関係なくCloudflare Accessとシームレスに統合され、トンネルを実行するにはトンネルクライアント<a href="https://github.com/cloudflare/cloudflared" target="_blank">cloudflared</a>を必要とします。つまり、全てのインフラにcloudflaredバイナリをデプロイし、各マシンにトンネルを作成し、セキュリティキーが必要なCloudflare Accessポリシーを作成し、ssh接続にはCloudflare Accessを通してセキュリティキーが必要になるということです。</p>
+	<p>Zero Trustデベロッパー向けドキュメントには、<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/ssh-cert-bastion/" target="_blank">素晴らしいチュートリアル</a>が掲載されています。私たちの各サーバーは、トンネルを開始するために必要な設定ファイルを持っています。Systemdはcloudflaredを起動し、トンネルを開始する際にこの（または類似の）設定ファイルを使用します。</p><!--kg-card-begin: markdown-->
 	<pre><code>tunnel: 37b50fe2-a52a-5611-a9b1-ear382bd12a6
 credentials-file: /root/.cloudflared/37b50fe2-a52a-5611-a9b1-ear382bd12a6.json
 
@@ -46,8 +46,8 @@ ingress:
     ProxyCommand /usr/local/bin/cloudflared access ssh –hostname %h.ssh.cloudflare.com
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>OpenSSHは<a href="https://www.openssh.com/txt/release-8.2?ref=blog.cloudflare.com" target="_blank">バージョン8.2</a>からFIDO2をサポートしています。しかし、すべてのアクセスリスト制御を一箇所で管理するアクセス制御への統一されたアプローチには、利点があることがわかりました。</p>
+	<p>OpenSSHは<a href="https://www.openssh.com/txt/release-8.2" target="_blank">バージョン8.2</a>からFIDO2をサポートしています。しかし、すべてのアクセスリスト制御を一箇所で管理するアクセス制御への統一されたアプローチには、利点があることがわかりました。</p>
 	<h3 id="--1">私たちが学んだこと、私たちの経験がどのようにお客様のお役に立てるか</h3>
 	<p>この数ヶ月の間に、認証の未来はFIDO2とWebAuthnとなったことに疑問の余地はないでしょう。FIDOベースの認証で近代化を図ろうとする他の組織にとって、これらの学習が役立つことを願っています。</p>
-	<p>セキュリティキーの導入にご興味のあるお客様、またはCloudflareのZero Trust製品にご興味のあるお客様は、securitykeys@cloudflare.comまでご連絡ください。今回のフィッシングやソーシャルエンジニアリングによる攻撃には、私たちの予防的な取り組みが役に立ったようですが、次に起こることを防止するために、私たちの<a href="https://www.cloudflare.com/careers/jobs/?department=Security&amp;ref=blog.cloudflare.com" target="_blank">セキュリティチーム</a>はまだ成長を続けています。</p>
+	<p>セキュリティキーの導入にご興味のあるお客様、またはCloudflareのZero Trust製品にご興味のあるお客様は、securitykeys@cloudflare.comまでご連絡ください。今回のフィッシングやソーシャルエンジニアリングによる攻撃には、私たちの予防的な取り組みが役に立ったようですが、次に起こることを防止するために、私たちの<a href="https://www.cloudflare.com/careers/jobs/?department=Security" target="_blank">セキュリティチーム</a>はまだ成長を続けています。</p>
 </div>
