@@ -2,7 +2,7 @@
 	<!--kg-card-begin: markdown-->
 	<p>CloudFlare <a href="https://blog.cloudflare.com/introducing-http2/">released HTTP/2 support</a> for all customers on December 3rd, 2015. Now, two months later, it's time to take a look at the impact of this release on the HTTP/2 "universe" and also at what has changed from a HTTP/2 vs. SPDY vs. HTTP 1.1 traffic ratio perspective.</p>
 	<h3 id="http2usage">HTTP/2 Usage</h3>
-	<p>Previously, we showcased browser market share data from our <a href="https://www.cloudflare.com" target="_blank">own website</a>. Using these numbers, we predicted the ratio of HTTP/2 traffic that we expected to see once enabled. Now, we can compare this original data set with updated data from the last 48 hours.</p>
+	<p>Previously, we showcased browser market share data from our <a href="https://www.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">own website</a>. Using these numbers, we predicted the ratio of HTTP/2 traffic that we expected to see once enabled. Now, we can compare this original data set with updated data from the last 48 hours.</p>
 	<p>Below is the market share of HTTP/2 capable browsers that we saw on our website during a 48 hour period. The first one was before our HTTP/2 launch, the other one was last week. Both data sets were pulled from Google Analytics, and user agents were analyzed for HTTP/2 support.</p>
 	<table>
 		<tbody>
@@ -108,7 +108,7 @@
 		Therefore it was a good choice to keep supporting this protocol version.</p>
 	<h3 id="numberofhttp2poweredwebsites">Number of HTTP/2-Powered Websites</h3>
 	<p>So far, we have looked at what an individual HTTP/2 enabled site on CloudFlare could expect to see with regards to traffic and different browser versions. Let’s shift gears a bit and have a look at how many websites we have actually enabled with HTTP/2 so far:</p>
-	<p>The website <a href="http://isthewebhttp2yet.com/about.html" target="_blank">isthewebhttp2yet.com</a> is a great tool for finding an answer to this question. It is created and maintained by researchers at <a href="http://tid.es/" target="_blank">Telefónica Research</a>, <a href="http://www.case.edu/" target="_blank">Case Western Reserve University</a>, and <a href="http://www.cmu.edu/" target="_blank">Carnegie Mellon University</a>, and provides an overview of how many websites from the <a href="http://www.alexa.com/" target="_blank">Alexa</a> 1M list are enabled with HTTP/2.</p>
+	<p>The website <a href="http://isthewebhttp2yet.com/about.html?ref=blog.cloudflare.com" target="_blank">isthewebhttp2yet.com</a> is a great tool for finding an answer to this question. It is created and maintained by researchers at <a href="http://tid.es/?ref=blog.cloudflare.com" target="_blank">Telefónica Research</a>, <a href="http://www.case.edu/?ref=blog.cloudflare.com" target="_blank">Case Western Reserve University</a>, and <a href="http://www.cmu.edu/?ref=blog.cloudflare.com" target="_blank">Carnegie Mellon University</a>, and provides an overview of how many websites from the <a href="http://www.alexa.com/?ref=blog.cloudflare.com" target="_blank">Alexa</a> 1M list are enabled with HTTP/2.</p>
 	<p>The website differentiates between:</p>
 	<ul>
 		<li>
@@ -123,27 +123,27 @@
 	</ul>
 	<p>In this post, we will only focus on websites with "True Support"—since that’s what you get with CloudFlare—and will ignore the other two metrics.</p>
 	<p>Looking at the HTTP/2 adoption curve for the Alexa 1 million shows quite an interesting picture:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/02/image_0.png" alt="graph of http/2 support over time"><br>
-		<small><a href="http://isthewebhttp2yet.com/measurements/adoption.html" target="_blank">Source</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/02/image_0.png" alt="graph of http/2 support over time" loading="lazy"><br>
+		<small><a href="http://isthewebhttp2yet.com/measurements/adoption.html?ref=blog.cloudflare.com" target="_blank">Source</a></small>
 	</p>
 	<p>You can see a sharp increase of domains with "True Support" in December 2015, bringing the number of domains with “True Support” from 14,017 (December 1st, 2015) to 75,288 (December 31st, 2015).</p>
 	<p>According to isthewebhttp2yet.com, 58,591 of these domains run through CloudFlare. That means CloudFlare more than quadrupled the number of HTTP/2 sites with the December 2015 release.</p>
-	<p>We’d like to give a big shout-out to the team of isthewebhttp2yet.com. They worked with our engineers to update their measurement method to include the <a href="https://en.wikipedia.org/wiki/Server_Name_Indication" target="_blank">Server Name Indication (SNI)</a> TLS extension when they probe sites for HTTP/2 support. By doing so, the site is able to identify all CloudFlare-powered sites. You can see this measurement change kicking in within the above graph at the sharp increase from 24,947 domains to 74,271 domains.</p>
+	<p>We’d like to give a big shout-out to the team of isthewebhttp2yet.com. They worked with our engineers to update their measurement method to include the <a href="https://en.wikipedia.org/wiki/Server_Name_Indication?ref=blog.cloudflare.com" target="_blank">Server Name Indication (SNI)</a> TLS extension when they probe sites for HTTP/2 support. By doing so, the site is able to identify all CloudFlare-powered sites. You can see this measurement change kicking in within the above graph at the sharp increase from 24,947 domains to 74,271 domains.</p>
 	<h3 id="http2marketposition">HTTP/2 Market Position</h3>
-	<p>Another website measuring the adoption of HTTP/2 on the server side is <a href="http://w3techs.com/about" target="_blank">W3 Techs</a>. While the graph generated by W3 Techs for <a href="http://w3techs.com/technologies/details/ce-http2/all/all" target="_blank">HTTP/2 adoption</a> is much more coarse grained on the time axis, the increase of HTTP/2 enabled websites due to CloudFlare is nevertheless clearly visible.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/02/image_1.png" alt="graph of http/2 traffic over time (coarse)"><br>
-		<small><a href="http://w3techs.com/technologies/details/ce-http2/all/all" target="_blank">Source</a></small>
+	<p>Another website measuring the adoption of HTTP/2 on the server side is <a href="http://w3techs.com/about?ref=blog.cloudflare.com" target="_blank">W3 Techs</a>. While the graph generated by W3 Techs for <a href="http://w3techs.com/technologies/details/ce-http2/all/all?ref=blog.cloudflare.com" target="_blank">HTTP/2 adoption</a> is much more coarse grained on the time axis, the increase of HTTP/2 enabled websites due to CloudFlare is nevertheless clearly visible.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/02/image_1.png" alt="graph of http/2 traffic over time (coarse)" loading="lazy"><br>
+		<small><a href="http://w3techs.com/technologies/details/ce-http2/all/all?ref=blog.cloudflare.com" target="_blank">Source</a></small>
 	</p>
 	<p>With our wide support of HTTP/2 for all CloudFlare customers, we have also helped to improve the market position—with regards to popularity and traffic—of HTTP/2 close to that of SPDY.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/02/image_2.png" alt="HTTP/2 vs SPDY market share"><br>
-		<small><a href="http://w3techs.com/technologies/details/ce-http2/all/all" target="_blank">Source</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/02/image_2.png" alt="HTTP/2 vs SPDY market share" loading="lazy"><br>
+		<small><a href="http://w3techs.com/technologies/details/ce-http2/all/all?ref=blog.cloudflare.com" target="_blank">Source</a></small>
 	</p>
-	<p>Want to help us grow our software engineering team and increase our protocol support? Check out our <a href="https://www.cloudflare.com/join-our-team/" target="_blank">available roles</a>.</p>
+	<p>Want to help us grow our software engineering team and increase our protocol support? Check out our <a href="https://www.cloudflare.com/join-our-team/?ref=blog.cloudflare.com" target="_blank">available roles</a>.</p>
 	<h3 id="enablinghttp2">Enabling HTTP/2</h3>
 	<p>As a reminder, if you are a customer on the Free or Pro plan, there is no need to do anything at all. Both SPDY and HTTP/2 are already enabled for you. With this improvement, your website’s audience will always use the fastest protocol version when accessing your site over TLS/SSL.</p>
 	<p>Customers on Business and Enterprise plans can enable HTTP/2 within the "Network" application of the CloudFlare Dashboard. In the last two months, the web still hasn't exploded while running HTTP/2. With that in mind, it's probably safe for you to head over an enable HTTP/2 now. You will be in great company with many other sites.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/02/image_3.png" alt="enabling HTTP/2 in the CloudFlare dashboard"></p>
-	<p>If you are not yet a customer of CloudFlare, <a href="https://www.cloudflare.com/a/sign-up" target="_blank">sign up</a> now and you’ll be able to leverage HTTP/2 within a few minutes.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/02/image_3.png" alt="enabling HTTP/2 in the CloudFlare dashboard" loading="lazy"></p>
+	<p>If you are not yet a customer of CloudFlare, <a href="https://www.cloudflare.com/a/sign-up?ref=blog.cloudflare.com" target="_blank">sign up</a> now and you’ll be able to leverage HTTP/2 within a few minutes.</p>
 	<p>Stay tuned for more additions to our HTTP/2 capabilities!</p>
 	<!--kg-card-end: markdown-->
 </div>

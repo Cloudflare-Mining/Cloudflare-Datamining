@@ -4,8 +4,8 @@
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<hr>
 	<p>사내에서 DDoS 대응팀은 종종 "패킷 버리는 사람들"이라 불립니다. 다른 팀이 우리 네트워크를 통해 지나가는 트래픽으로 스마트한 일을 하며 신나할 때 우리는 그걸 버리는 여러가지 방법을 찾아가며 즐거워 합니다.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/38464589350_d00908ee98_b.jpg" alt=""></p>
-	<p><small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank">image</a> by <a href="https://www.flickr.com/photos/beegee49" target="_blank">Brian Evans</a></small></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/07/38464589350_d00908ee98_b.jpg" alt="" loading="lazy"></p>
+	<p><small><a href="https://creativecommons.org/licenses/by-sa/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/beegee49?ref=blog.cloudflare.com" target="_blank">Brian Evans</a></small></p>
 	<p>DDoS 공격을 견뎌내기 위해서는 빠르게 패킷을 버릴 수 있는 능력이 매우 중요합니다.</p>
 	<p>쉽게 들리겠지만 서버에 도달한 패킷을 버리는 것은 여러 단계에서 가능합니다. 각 기법은 장점과 한계점이 있습니다. 이 블로그 글에서는 지금까지 시도해 본 기법들을 모두 정리해 보도록 하겠습니다.</p>
 	<h3 id="">테스트 벤치마크</h3>
@@ -42,7 +42,7 @@ p_raw  UNCONN     525157 0      *:vlan100          users:(("tcpdump",pid=23683,f
 	<pre><code>echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo
 </code></pre>
 	<p>Turbo Boost 기능은 성능을 20% 정도 늘려 주는 좋은 기능이지만 이 테스트에서는 표준 편차를 매우 나쁘게 합니다. 이 기능이 활성화되어 있으면 성능 지표에서 ±1.5% 의 편차를 갖습니다만 끄고 나면 적절한 숫자인 0.25%가 됩니다.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/layers.JPG" alt=""></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/07/layers.JPG" alt="" loading="lazy"></p>
 	<h4 id="1">1단계: 어플리케이션에서 패킷 버리기</h4>
 	<p>패킷이 어플리케이션에 전달 되면 사용자 공간 코드에서 버리는 것부터 시작해 봅시다. 테스트 셋업을 위해서 <code>iptables</code>가 성능에 영향이 없는지 확인합니다:</p>
 	<pre><code>iptables -I PREROUTING -t mangle -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
@@ -55,7 +55,7 @@ s.bind(("0.0.0.0", 1234))
 while True:
     s.recvmmsg([...])
 </code></pre>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c" target="_blank">코드</a>가 준비되었으면 실행해 봅시다:</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c?ref=blog.cloudflare.com" target="_blank">코드</a>가 준비되었으면 실행해 봅시다:</p>
 	<pre><code>$ ./dropping-packets/recvmmsg-loop
 packets=171261 bytes=1940176
 </code></pre>
@@ -107,7 +107,7 @@ packets=331008 bytes=5296128
 	<p>PS. SO_BUSY_POLL 을 사용하면 470kpps로 올릴 수 있습니다만 이번에 다루지는 않도록 하겠습니다.</p>
 	<h4 id="3bpf">3단계: 소켓에서 BPF로 버리기</h4>
 	<p>더 나아가서, 왜 패킷을 사용자 공간까지 전달해야 할까요? 많이 사용되지는 않지만 기존의 BPF필터를 <code>setsockopt(SO_ATTACH_FILTER)</code>를 사용하여 <code>SOCK_DGRAM</code> 소켓에 붙일 수 있는데 이렇게 하면 커널 공간에서 패킷을 버리는 필터를 프로그래밍할 수 있습니다.</p>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c" target="_blank">코드는 여기</a>에 있습니다. 실행해 보도록 합니다:</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c?ref=blog.cloudflare.com" target="_blank">코드는 여기</a>에 있습니다. 실행해 보도록 합니다:</p>
 	<pre><code>$ ./bpf-drop
 packets=0 bytes=0
 </code></pre>
@@ -133,7 +133,7 @@ Chain INPUT (policy DROP 0 packets, 0 bytes)
 	<p>이것으로 성능이 매우 향상 됩니다만 이유는 잘 이해되지 않습니다. 아마도 라우팅 계층이 비정상적으로 복잡하거나 서버 설정의 버그로 생각이 됩니다.</p>
 	<p>어떤 경우에도 <code>iptables</code>의 <code>raw</code> 테이블에 추가하는 것이 매우 빠릅니다.</p>
 	<h4 id="6conntracknftablesdrop">6단계: CONNTRACK이전에 nftables DROP</h4>
-	<p>요즘 iptables는 구식으로 여겨지고 있습니다. 새로운 유행은 nftables입니다. 왜 nftables가 더 나은지에 대해서는 <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c" target="_blank">기술적인 설명 비디오</a>을 보기 바랍니다. nftables는 오래된 iptables보다 여러가지 이유에서 더 빠릅니다만 그 중의 한가지 소문은 retpolines (간접 점프를 예측하지 않음) 기능이 iptables의 성능을 크게 약화시킨다는 것입니다.</p>
+	<p>요즘 iptables는 구식으로 여겨지고 있습니다. 새로운 유행은 nftables입니다. 왜 nftables가 더 나은지에 대해서는 <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c&amp;ref=blog.cloudflare.com" target="_blank">기술적인 설명 비디오</a>을 보기 바랍니다. nftables는 오래된 iptables보다 여러가지 이유에서 더 빠릅니다만 그 중의 한가지 소문은 retpolines (간접 점프를 예측하지 않음) 기능이 iptables의 성능을 크게 약화시킨다는 것입니다.</p>
 	<p>이 글은 nftables와 iptables의 속도 비교가 아니므로, 생각해 볼 수 있는 가장 빠른 패킷 버리기만을 시도해 보도록 합니다:</p>
 	<pre><code>nft add table netdev filter
 nft -- add chain netdev filter input { type filter hook ingress device vlan100 priority -500 \; policy accept \; }
@@ -153,7 +153,7 @@ table netdev filter {
 	<p>nftables의 "ingress" 후크는 약 1.53mpps를 달성하였습니다. 이것은 iptables의 PREROUTING 계층보다 약간 느린 것입니다. 이건 잘 이해되지 않는데 기술적으로 "ingress"는 PREROUTING 이전에 처리 되므로 더 빨라야 하기 때문입니다.</p>
 	<p>이 테스트에서 nftables는 iptables보다 아주 약간 느렸습니다. 그래도 nftables가 더 나을 겁니다. :P</p>
 	<h4 id="7tcingressdrop">7단계: tc ingress 처리에서 DROP</h4>
-	<p>약간 의외의 사실은 tc (traffic control) ingress 후크는 PREROUTING보다도 이전에 실행된다는 것입니다. tc는 기본적인 규칙에 기반해서 패킷을 선택 가능하고 심지어 버릴 수도(action drop) 있습니다. 문법은 다소 깔끔하지 않으므로 <a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh" target="_blank">이 스크립트</a>를 이용해서 설정하는 것을 권장합니다. 약간 복잡한 tc 규칙 설정이 필요한데 명령행으로는 다음과 같습니다:</p>
+	<p>약간 의외의 사실은 tc (traffic control) ingress 후크는 PREROUTING보다도 이전에 실행된다는 것입니다. tc는 기본적인 규칙에 기반해서 패킷을 선택 가능하고 심지어 버릴 수도(action drop) 있습니다. 문법은 다소 깔끔하지 않으므로 <a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh?ref=blog.cloudflare.com" target="_blank">이 스크립트</a>를 이용해서 설정하는 것을 권장합니다. 약간 복잡한 tc 규칙 설정이 필요한데 명령행으로는 다음과 같습니다:</p>
 	<pre><code>tc qdisc add dev vlan100 ingress
 tc filter add dev vlan100 parent ffff: prio 4 protocol ip u32 match ip protocol 17 0xff match ip dport 1234 0xffff match ip dst 198.18.0.0/24 flowid 1:1 action drop
 tc filter add dev vlan100 parent ffff: protocol ipv6 u32 match ip6 dport 1234 0xffff match ip6 dst fd00::/64 flowid 1:1 action drop
@@ -176,18 +176,18 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 	<p>tc ingress 후크의 u32 매칭을 하면 단일 CPU에서 1.8mpps로 버릴 수 있게 되었습니다. 이것 멋지네요!</p>
 	<p>하지만 더 빠를 수 있습니다...</p>
 	<h4 id="8xdp_drop">8단계: XDP_DROP</h4>
-	<p>마지막으로 최종 병기는 XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP/" target="_blank">eXpress Data Path</a>입니다.<br>
+	<p>마지막으로 최종 병기는 XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP/?ref=blog.cloudflare.com" target="_blank">eXpress Data Path</a>입니다.<br>
 		XDP를 사용하면 네트워크 드라이버 수준에서 eBPF코드를 실행할 수 있습니다. 더 중요한 것은 이 단계는 <code>skbuff</code> 메모리 할당 이전에 일어나므로 매우 빠르게 수행 됩니다.</p>
 	<p>일반적으로 XDP프로젝트는 두 가지로 구성 됩니다.</p>
 	<ul>
 		<li>커널 문맥으로 읽어들여지는 eBPF 코드</li>
 		<li>코드를 지정한 네트워크 카드에 적재하고 관리하는 사용자 공간 로더</li>
 	</ul>
-	<p>로더를 작성하는 건 꽤 어려우므로 그 대신에 <a href="https://cilium.readthedocs.io/en/latest/bpf/#iproute2" target="_blank">새로 나온 <code>iproute2</code> 기능</a>을 이용해서 코드를 간단하게 적재하도록 하겠습니다:</p>
+	<p>로더를 작성하는 건 꽤 어려우므로 그 대신에 <a href="https://cilium.readthedocs.io/en/latest/bpf/?ref=blog.cloudflare.com#iproute2" target="_blank">새로 나온 <code>iproute2</code> 기능</a>을 이용해서 코드를 간단하게 적재하도록 하겠습니다:</p>
 	<pre><code>ip link set dev ext0 xdp obj xdp-drop-ebpf.o
 </code></pre>
 	<p>짜잔!</p>
-	<p>적재된 eBPF XDP 프로그램의 <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c" target="_blank">소스 코드는 여기</a>서 구할 수 있습니다. 이 프로그램은 IP 패킷을 파싱해서 IP 패킷, UDP 패킷, 지정된 서브넷과 포트의 조건에 맞는 패킷을 찾습니다:</p>
+	<p>적재된 eBPF XDP 프로그램의 <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c?ref=blog.cloudflare.com" target="_blank">소스 코드는 여기</a>서 구할 수 있습니다. 이 프로그램은 IP 패킷을 파싱해서 IP 패킷, UDP 패킷, 지정된 서브넷과 포트의 조건에 맞는 패킷을 찾습니다:</p>
 	<pre><code class="language-c">if (h_proto == htons(ETH_P_IP)) {
     if (iph-&gt;protocol == IPPROTO_UDP
         &amp;&amp; (htonl(iph-&gt;daddr) &amp; 0xFFFFFF00) == 0xC6120000 // 198.18.0.0/24
@@ -209,22 +209,22 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
      rx2_xdp_drop:        10.1m/s
 </code></pre>
 	<p>와! XDP를 이용하면 단일 CPU에서 초당 천만개의 패킷을 버릴 수 있습니다.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/225821241_ed5da2da91_o.jpg" alt=""><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241/" target="_blank">image</a> by <a href="https://www.flickr.com/photos/afiler/" target="_blank">Andrew Filer</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/07/225821241_ed5da2da91_o.jpg" alt="" loading="lazy"><br>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241/?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/afiler/?ref=blog.cloudflare.com" target="_blank">Andrew Filer</a></small>
 	</p>
 	<h3 id="">요약</h3>
 	<p>IPv4와 IPv6 두가지를 테스트해서 다음 차트로 요약 하였습니다:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/numbers-noxdp.png" alt=""></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/07/numbers-noxdp.png" alt="" loading="lazy"></p>
 	<p>IPv6 설정이 일반적으로 약간 낮은 성능을 보여 줍니다. IPv6 패킷이 약간 더 크므로 일부 성능 차이는 불가피하다는 점을 기억하도록 합시다.</p>
 	<p>리눅스에는 패킷을 필터링하기 위한 여러가지 방법이 있는데 각각은 서로 다른 성능 및 사용의 편의성이 다릅니다.</p>
 	<p>DDoS 방어 목적을 위해서는 사용자 공간에서 처리해서 어플리케이션에서 패킷을 수신하는 것 만으로 충분할 수 있습니다. 적절히 튜닝된 어플리케이션은 꽤 괜찮은 숫자를 보여 줍니다.</p>
 	<p>임의 또는 조작된 소스 IP의 DDoS공격의 경우 conntrack을 끄면 성능을 더 얻을 수 있습니다. 하지만 conntrack이 방어에 매우 유용한 공격들이 있다는 점도 주의하세요.</p>
 	<p>다른 경우에는 리눅스 방화벽을 DDoS 방어 파이프라인에 통합하는 것도 괜찮을 수 있습니다. 이런 경우 <code>filter</code> 테이블 보다 매우 더 빠른 <code>-t raw PREROUTING</code> 계층에서 대응하도록 해 주세요.</p>
 	<p>더 큰 규모의 경우 XDP를 이용할 수 있습니다. 이건 정말 강력합니다. 위 차트에 XDP를 포함하면 다음과 같습니다:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/07/numbers-xdp-1.png" alt=""></p>
-	<p>이 숫자를 재현해 보고자 한다면 <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md" target="_blank">문서로 잘 정리된 README</a>를 읽어 보세요.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/07/numbers-xdp-1.png" alt="" loading="lazy"></p>
+	<p>이 숫자를 재현해 보고자 한다면 <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md?ref=blog.cloudflare.com" target="_blank">문서로 잘 정리된 README</a>를 읽어 보세요.</p>
 	<p>여기 Cloudflare에서는 이런 기법을 거의 모두 사용하고 있습니다. 사용자 공간의 트릭 중 일부는 어플리케이션에서 이용하고 있습니다. iptables 계층은 <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot DDoS 파이프라인</a>에서 관리하고 있습니다. 마지막으로 기존의 독자적인 커널 오프로드 솔루션을 XDP로 대체하는 작업을 하고 있습니다.</p>
 	<p>패킷을 더 버리는 것을 돕고 싶다고요? 패킷 버리기, 시스템 엔지어링 등 많은 분야에서 채용 중입니다!</p>
-	<p><em>이 작업을 도와주신 <a href="https://twitter.com/JesperBrouer" target="_blank">Jesper Dangaard Brouer</a>에게 특별히 감사 드립니다.</em></p>
+	<p><em>이 작업을 도와주신 <a href="https://twitter.com/JesperBrouer?ref=blog.cloudflare.com" target="_blank">Jesper Dangaard Brouer</a>에게 특별히 감사 드립니다.</em></p>
 	<!--kg-card-end: markdown-->
 </div>

@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-40.png" class="kg-image" alt="Making static sites dynamic with Cloudflare D1"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-40.png" class="kg-image" alt="Making static sites dynamic with Cloudflare D1" loading="lazy"></figure>
 	<h3 id="einleitung">Einleitung</h3>
 	<p>Sie können Daten auf viele Arten in Ihren Anwendungen speichern. In Cloudflare Workers-Anwendungen ermöglichen beispielsweise Workers KV die Speicherung der Schlüssel-Werte, und Durable Objects erledigen eine koordinierte Speicherung in Echtzeit, ohne Kompromisse bei der Konsistenz. Außerhalb des Cloudflare-Ökosystems können Sie auch andere Tools wie NoSQL- und Graphdatenbanken einbinden.</p>
 	<p>Aber manchmal brauchen Sie SQL. Mit einem Index können wir Daten schnell abrufen. Mit Joins beschreiben wir komplexe Beziehungen zwischen verschiedenen Tabellen. SQL beschreibt deklarativ, wie die Daten unserer Anwendung validiert, erstellt und performant abgefragt werden.</p>
 	<p><a href="https://blog.cloudflare.com/d1-open-alpha">D1 ist seit heute in der offenen Alpha-Phase</a> und zur Feier des Tages möchte ich meine Erfahrungen mit der Erstellung von Apps mit D1 teilen; insbesondere die ersten Schritte und warum ich mich darüber freue, dass D1 in die umfangreiche Palette der Tools aufgenommen wurde, mit denen Sie Apps auf Cloudflare bauen können.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-24.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-24.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>D1 ist deshalb so beeindruckend, weil es unmittelbar einen Mehrwert für Anwendungen bietet, und zwar ohne dass wir neue Tools brauchen oder das Cloudflare-Ökosystem verlassen müssen. Mit Wrangler können wir unsere Workers-Anwendungen lokal entwickeln, und mit D1 in Wrangler entwickeln wir jetzt auch richtige Stateful-Anwendungen lokal. Wenn die Anwendung dann bereitgestellt werden soll, können wir mit Wrangler sowohl auf Ihre D1-Datenbank als auch auf Ihre API selbst zugreifen und Befehle ausführen.</p>
 	<h3 id="was-wir-bauen">Was wir bauen</h3>
 	<p>In diesem Blogbeitrag wird erläutert, wie mit D1 einer statischen Blog-Website Kommentare hinzugefügt werden können. Dafür werden wir eine neue D1-Datenbank erstellen und eine einfache JSON-API entwickeln, mit der sich Kommentare verfassen und abrufen lassen.</p>
@@ -112,8 +112,8 @@ create index idx_comments_post_id on comments (post_slug);
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In diesem Beispiel haben wir eine Kommentar-API für einen Blog erstellt. Den Quellcode für diese von D1 betriebene Kommentar-API finden Sie unter <a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api" target="_blank">cloudflare/templates/worker-d1-api</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-31.png" class="kg-image"></figure>
+	<p>In diesem Beispiel haben wir eine Kommentar-API für einen Blog erstellt. Den Quellcode für diese von D1 betriebene Kommentar-API finden Sie unter <a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api?ref=blog.cloudflare.com" target="_blank">cloudflare/templates/worker-d1-api</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-31.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="fazit">Fazit</h3>
 	<p>Einer der spannendsten Punkte an D1 ist die Möglichkeit, bestehende Anwendungen oder Websites mit dynamischen, relationalen Daten zu erweitern. Als ehemaliger Ruby on Rails-Entwickler vermisse ich in der Welt der JavaScript- und Serverless-Entwicklungstools vor allem die Möglichkeit, in kurzer Zeit vollständige datengesteuerte Anwendungen zu erstellen, ohne ein Experte für die Verwaltung von Datenbankinfrastruktur zu sein. Mit D1 und seiner einfachen Anbindung an SQL-basierte Daten können wir echte datengesteuerte Anwendungen erstellen, ohne bei der Performance oder der Entwicklererfahrung Abstriche machen zu müssen.</p>
 	<p>Diese Verschiebung passt gut zur Verbreitung von statischen Websites in den letzten Jahren (mit Tools wie Hugo oder Gatsby). Ein Blog, der mit einem statischen Website-Generator wie Hugo erstellt wurde, ist unglaublich leistungsfähig – er wird in Sekundenschnelle mit kleinen Assets erstellt.</p>

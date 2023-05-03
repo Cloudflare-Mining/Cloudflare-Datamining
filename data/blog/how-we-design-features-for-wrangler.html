@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/wrangler-header@2x.png" class="kg-image"></figure>
-	<p>The most recent update to Wrangler, <a href="https://github.com/cloudflare/wrangler/releases/tag/v1.3.1" target="_blank">version 1.3.1</a>, introduces important new features for developers building <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a> — from built-in deployment environments to first class support for <a href="https://developers.cloudflare.com/workers/reference/storage/overview/" target="_blank">Workers KV</a>. Wrangler is Cloudflare’s first officially supported CLI. Branching into this field of software has been a novel experience for us engineers and product folks on the Cloudflare Workers team.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/wrangler-header@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>The most recent update to Wrangler, <a href="https://github.com/cloudflare/wrangler/releases/tag/v1.3.1?ref=blog.cloudflare.com" target="_blank">version 1.3.1</a>, introduces important new features for developers building <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a> — from built-in deployment environments to first class support for <a href="https://developers.cloudflare.com/workers/reference/storage/overview/?ref=blog.cloudflare.com" target="_blank">Workers KV</a>. Wrangler is Cloudflare’s first officially supported CLI. Branching into this field of software has been a novel experience for us engineers and product folks on the Cloudflare Workers team.</p>
 	<p>As part of the 1.3.1 release, the folks on the Workers Developer Experience team dove into the thought process that goes into building out features for a CLI and thinking like users. Because while we wish building a CLI were as easy as our teammate Avery tweeted...</p>
 	<figure class="kg-card kg-embed-card">
 		<blockquote class="twitter-tweet">
-			<p lang="en" dir="ltr">If I were programming a CLI, I would simply design it in a way that is not controversial and works for every type of user.</p>— avery harnish (@SmoothAsSkippy) <a href="https://twitter.com/SmoothAsSkippy/status/1166842441711980546?ref_src=twsrc%5Etfw" target="_blank">August 28, 2019</a>
+			<p lang="en" dir="ltr">If I were programming a CLI, I would simply design it in a way that is not controversial and works for every type of user.</p>— avery harnish (@SmoothAsSkippy) <a href="https://twitter.com/SmoothAsSkippy/status/1166842441711980546?ref_src=twsrc%5Etfw&amp;ref=blog.cloudflare.com" target="_blank">August 28, 2019</a>
 		</blockquote>
 		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</figure>
@@ -67,7 +67,7 @@ $ wrangler kv write bulk ./path/to/assets
 # delete bulk pairs; same input functionality as above
 $ wrangler kv delete bulk ./path/to/assets</code></pre>
 	<p>Given the breadth of new functionality we planned to introduce, we also built out a taxonomy of new subcommands to ensure that invocations for different resources — namespaces, keys, and bulk sets of key-value pairs — were consistent:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Attempt2Diagram.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Attempt2Diagram.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Designing invocations with taxonomies became a crucial part of our development process going forward, and gave us a clear look at the “big picture” of our new KV features.</p>
 	<p>This approach was closer to what we wanted. It offered bulk put and bulk delete operations that would read multiple key-value pairs from a JSON file. After specifying an action subcommand (e.g. <code>delete</code>), users now explicitly stated which resource an action applied to (<code>namespace</code> , <code>key</code>, <code>bulk</code>) and reduced confusion about which action applied to which KV component.</p>
 	<p>This draft, however, was still not as explicit as we wanted it to be. The distinction between operations on <code>namespaces</code> versus <code>keys</code> was not as obvious as we wanted, and we still feared the possibility of different <code>delete</code> operations accidentally producing unwanted deletes (a possibly disastrous outcome!)</p>
@@ -91,7 +91,7 @@ $ wrangler kv:key list &lt;binding&gt; [--env]
 $ wrangler kv:bulk write &lt;binding&gt; ./path/to/data.json [--env]
 $ wrangler kv:bulk delete &lt;binding&gt; ./path/to/data.json [--env]</code></pre>
 	<p>And ultimately ended up with this topology:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Attempt3Diagram.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Attempt3Diagram.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>We were even closer to our desired usage pattern; the object acted upon was explicit to users, and the action applied to the object was also clear. </p>
 	<p>There was one usage issue left. Supplying <code>namespace-id</code>s--a field that specifies which Workers KV namespace to perform an action to--required users to get their clunky KV <code>namespace-id</code> (a string like <code>06779da6940b431db6e566b4846d64db</code>) and provide it in the command-line under the <code>namespace-id</code> option. This <code>namespace-id</code> value is what our Workers KV API expects in requests, but would be cumbersome for users to dig up and provide, let alone frequently use.</p>
 	<p>The solution we came to takes advantage of the <code>wrangler.toml</code> present in every Wrangler-generated Worker. To publish a Worker that uses a Workers KV store, the following field is needed in the Worker’s <code>wrangler.toml</code>:</p>
@@ -110,7 +110,7 @@ $ wrangler kv:bulk delete &lt;binding&gt; ./path/to/data.json [--env]</code></pr
 		<li><strong>Use other CLIs for inspiration and validation</strong>. Drawing logic from popular CLIs helped us confirm our assumptions about what users like, and learn established patterns for complex CLI invocations.</li>
 		<li><strong>Avoid logic that requires passing in raw ID strings</strong>. Testing CLIs a lot means that remembering and re-pasting ID values gets very tedious very quickly. Emphasizing a set of purely human-readable CLI commands and arguments makes for a far more intuitive experience. When possible, taking advantage of configuration files (like we did with <code>wrangler.toml</code>) offers a straightforward way to provide mappings of human-readable names to complex IDs.</li>
 	</ol>
-	<p>We’re excited to continue using these design principles we’ve learned and documented as we grow Wrangler into a one-stop <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a> shop. </p>
-	<p>If you’d like to try out Wrangler, <a href="https://github.com/cloudflare/wrangler" target="_blank">check it out on GitHub</a> and let us know what you think! We would love your feedback.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/WranglerCrab-1.png" class="kg-image"></figure>
+	<p>We’re excited to continue using these design principles we’ve learned and documented as we grow Wrangler into a one-stop <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a> shop. </p>
+	<p>If you’d like to try out Wrangler, <a href="https://github.com/cloudflare/wrangler?ref=blog.cloudflare.com" target="_blank">check it out on GitHub</a> and let us know what you think! We would love your feedback.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/WranglerCrab-1.png" class="kg-image" alt="" loading="lazy"></figure>
 </div>

@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/OG-localized-8.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/OG-localized-8.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>ここでご紹介する「Cloudflare Data Localization Suite」の発表は、私にとっても大変喜ばしいことです。企業のお客様は、Cloudflareのグローバルネットワークが持つパフォーマンスおよびセキュリティのメリットを享受しながら、エッジで簡単にルールを設定して、データを保管および保護する場所を制御できるようになります。</p>
 	<p>Data Localization Suiteは、Enterpriseプランのお客様にアドオンとして今すぐご利用いただけます。</p>
 	<p>Cloudflareのネットワークはプライベートであり、法律に準拠しています。エンドユーザーのプライバシーを保護することは、より良いインターネットを構築するというCloudflareの使命の中核です。当社は、当社ネットワークを利用されるお客様やエンドユーザーに関する個人データを販売することはありません。GDPRなどの法律を遵守し、ISO-27001などの認証を維持しています。</p>
@@ -23,24 +23,24 @@
 	<p>Cloudflareは、通常はディスクレベルの暗号化を用いてすべての格納データを暗号化します。当社のエッジネットワーク上の<a href="https://blog.cloudflare.com/speeding-up-linux-disk-encryption/">キャッシュされたファイル</a>から当社のコアデータセンター内のデータベースの設定状態まで、すべての格納データは暗号化されています。</p>
 	<h3 id="tls-">TLSプライベートキーがアクセスできる場所をコントロールする</h3>
 	<p>暗号化の重要性を考慮すると、お客様がCloudflareを信頼して保護対策を任せる機密性が最も高いデータの1つは、データの復号化を可能にする暗号化キーです。特定の場所でのみ、プライベートキーにアクセスできるようにするため、Cloudflareではお客様に2つの方法をご提供しています。</p>
-	<p><a href="https://www.cloudflare.com/ssl/keyless-ssl/" target="_blank"><strong>Keyless SSL</strong></a>により、お客様はご自分が選択した外部のインフラストラクチャを使用する際に、Cloudflareを使って各自のSSLプライベートキーを保管／管理することができます。また、ハードウェアセキュリティモジュール（HSM）、バーチャルサーバー、お客様が制御する環境内に格納されているUnix/LinuxやWindowsを実行するハードウェアを含む、さまざまなシステムをキーストアに使用することができます。CloudflareがKeyless SSLでプライベートキーにアクセスすることは決してありません。</p>
+	<p><a href="https://www.cloudflare.com/ssl/keyless-ssl/?ref=blog.cloudflare.com" target="_blank"><strong>Keyless SSL</strong></a>により、お客様はご自分が選択した外部のインフラストラクチャを使用する際に、Cloudflareを使って各自のSSLプライベートキーを保管／管理することができます。また、ハードウェアセキュリティモジュール（HSM）、バーチャルサーバー、お客様が制御する環境内に格納されているUnix/LinuxやWindowsを実行するハードウェアを含む、さまざまなシステムをキーストアに使用することができます。CloudflareがKeyless SSLでプライベートキーにアクセスすることは決してありません。</p>
 	<p><a href="https://blog.cloudflare.com/geo-key-manager-how-it-works/"><strong>Geo Key Manager</strong></a>は、キーをどの場所で保管すべきかについて、きめ細かな制御を可能にします。たとえば、お客様は、トラフィックの調査が必要なプライベートキーに関して、ヨーロッパ連合（EU）内にあるデータセンターに限りアクセスできるものを選択することができます。</p>
 	<h3 id="https-https-">HTTPSリクエストとHTTPSレスポンスを検査する場所を管理する</h3>
 	<p>CloudflareのWAFをデプロイするため、あるいは悪意のあるボットトラフィックを検出するため、Cloudflareは、エッジデータセンター内のTLSを終了して、HTTPSリクエストおよびHTTPSレスポンスのペイロードを検査する必要があります。</p>
 	<p><a href="https://blog.cloudflare.com/introducing-regional-services/"><strong>Regional Services</strong></a>により、企業はトラフィックを検査する場所を制御することができます。Regional Servicesを有効にすると、トラフィックはクライアントに最も近い場所にあるCloudflareのグローバルエニーキャストネットワークに取り込まれて、L3／L4 DDoS攻撃対策が提供されます。このトラフィックは、データセンターにてHTTPレベルで検査される代わりに、お客様が選択した地域内のCloudflareデータセンターに安全に転送され、そこで処理されます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image1-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image1-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--2">トラフィックによって生成されたログと分析を制御する</h3>
 	<p>お客様のインフラストラクチャおよびチームの迅速性、安全性、信頼性を向上させることに加えて、Cloudflareは、当社のサービスがもたらした結果およびサービスをより有効に活用する方法についてのインサイトを提供します。当社のエッジデータセンターを通過するトラフィックに関するメタデータを収集し、そのデータを用いてネットワークの運用を改善します。たとえば、最新の攻撃をブロックするためのWAFルールを確立する、または悪意のあるボットを検出するために機械学習モデルを構築する、といったことを行います。また、こうしたデータをログや分析という形でお客様が利用できるようにします。</p>
 	<p>このために必要なのは、メタデータのサブセットを米国／EUにあるデータセンターで処理することです。このデータには、処理されたリクエスト数、送信されたデータ量、リクエストの処理時間、ネットワークの運用に必要なそのほかの情報などが含まれます。</p>
 	<p><strong>Edge Log Delivery</strong>を使用することにより、お客様はエッジから選択したパートナー（希望する地域内のAzureストレージバケットやオンプレミスのデータセンター上で実行するSplunkのインスタンスなど）に直接ログを送信できます。このオプションにより、こうしたログが最初に米国またはEUのコアデータセンターを通過することなく、お客様は希望する地域内で完全なログを取得することができます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/edge-log-delivery-before-copy@3x-5.png" class="kg-image"></figure>
-	<p>現在、Edge Log DeliveryはEnterpriseのお客様向けの早期ベータ版で提供されています。詳細については、<a href="https://www.cloudflare.com/data-localization" target="_blank">当社製品ページをご参照</a>ください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/edge-log-delivery-before-copy@3x-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>現在、Edge Log DeliveryはEnterpriseのお客様向けの早期ベータ版で提供されています。詳細については、<a href="https://www.cloudflare.com/data-localization?ref=blog.cloudflare.com" target="_blank">当社製品ページをご参照</a>ください。</p>
 	<p>最終的にお客様が各自のメタデータの保管場所および保管期間を完全に制御できるように取り組んでいます。来年には、どのフィールドを保管するか、どれくらい長く保管するか、どの場所に保管するかを選択できるようにする予定です。</p>
 	<h3 id="--3">位置認識アプリケーションを一から構築する</h3>
 	<p>ここまで、既存のキー、アプリケーションデータ、メタデータをローカルに保管しながら、Cloudflareの製品がどのようにグローバルなパフォーマンスソリューションおよびセキュリティソリューションをお客様に提供できるかについて説明しました。</p>
 	<p>ただ、Cloudflareは、お客様が既存／従来のクラウドシステムを使用してデータ局所性を確保することに苦労していることも認識しています。既存のプラットフォームにより、コードやデータを特定の地域にデプロイすることはできますが、各地域にアプリケーションのコピーを置き、様々な地域の状態を管理することは、上手く行ったケースであっても困難を極め、最悪の場合は不可能という結論になります。</p>
 	<p>サーバーレスの最大の目的は、開発者が「コードがどこで実行しているかを気にしません。拡張させるだけです」と言えるようにすることでした。しかし、次第に「コードが実行されるのがどこかに注意を払っており、コンプライアンス部を納得させるために一層の制御が必要です」という開発者のニーズを満たすことも必要となっていくでしょう。Cloudflare Workersは、瞬時のスケーリング機能、世界100か国以上に広がるロケーション、そして必要なものを必要な分だけ選ぶことができるきめ細やかさを備え、どちらの状況にも対応するベストなサービスを提供します。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/unnamed2-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/unnamed2-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Cloudflareは、お客様によってアプリケーションがデータを保管する場所の制御ができるように大幅な改善を発表しました。Workers Durable ObjectsはJurisdiction Restrictionsをサポートします。Durable Objectsは、 Cloudflare Workersプラットフォーム上で実行するサーバーレスアプリケーションに対して全世界で一貫性のある状態と調整を実現します。Jurisdiction Restrictionsにより、ユーザーはDurable Objectsが所定の管轄区域以外の場所でデータを保管しない、または実行しないように設定することができます。これにより、グローバルレベルのパフォーマンスとローカルレベルのコンプライアンスを組み合わせたアプリケーションを容易に構築できるようになります。Durable Objectsの自動移行を使用することにより、Durable Objects一式にタグを追加するだけで、新しいルールに適応できるようになります。</p>
 	<h3 id="--4">長距離のために構築する</h3>
 	<p>データローカリゼーションの情勢は絶えず進化し続けています。当社がData Localization Suiteの仕事を開始して以来、欧州データ保護会議は、EU／米国間でデータを転送する方法に関する新しいガイダンスを発表しました。そして、当社はこれが始まりに過ぎないことを知っています。時間の経過とともに、より多くの地域や業界がデータローカリゼーションの要件を持つことになるでしょう。</p>

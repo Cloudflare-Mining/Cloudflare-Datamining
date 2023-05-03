@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Cloudflare-Gateway-now-protects-teams--wherever-they-are-thumbnail-top-page.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Cloudflare-Gateway-now-protects-teams--wherever-they-are-thumbnail-top-page.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams/">2020 年 1 月</a>，我们发布了 Cloudflare for Teams，这是一种在不牺牲性能的前提下保护组织及其遍布全球的员工的新方式。Cloudflare for Teams 内含 Cloudflare Access 和 Cloudflare Gateway 这两大和核心产品。</p>
 	<p><a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway/">2020 年 3 月</a>，Cloudflare 发布了 Cloudflare Gateway 的首个功能 —— 由全球最快 DNS 解析器提供支持的安全 DNS 过滤解决方案。Gateway 的 DNS 过滤功能通过阻止对可能涉及恶意软件、网络钓鱼或勒索软件等威胁的有害目的地的 DNS 查询来确保用户安全。组织只需更改办公室中的路由器设置，便可确保整个团队的安全，用时只需大约五分钟。</p>
 	<p>发布后不久，许多公司开始全员撤离办公室。用户联网上线的家庭办公室原本是临时使用，在过去几个月中却变为固定办公地点了。保护用户和数据已从单一办公室级设置，变成需要对成百上千个地点的用户和设备进行管理。</p>
@@ -36,7 +36,7 @@
 		<tbody>
 			<tr>
 				<td>URL、路径和/或查询字符串</td>
-				<td><a href="https://www.myurl.com/path?query" target="_blank">https://www.myurl.com/path?query</a></td>
+				<td><a href="https://www.myurl.com/path?query=&amp;ref=blog.cloudflare.com" target="_blank">https://www.myurl.com/path?query</a></td>
 			</tr>
 			<tr>
 				<td>HTTP 方法</td>
@@ -64,15 +64,15 @@
 	<p></p>
 	<p>若要补充 DNS 过滤策略，IT 管理员现在可以创建 L7 防火墙规则来对 HTTP 流量应用细化的策略。</p>
 	<p>例如，管理员可能想要允许用户浏览 Reddit 的有用部分，但阻止不需要的部分。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-12.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-12.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>或者，为了预防数据丢失，管理员可能会创建一条规则，允许用户接收来自流行云存储提供商的内容，但禁止他们从企业设备上传特定文件类型。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-7.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>另一名管理员可能想要防止恶意文件通过 zip 文件下载潜入进来，因而可能会决定通过配置规则来阻止下载压缩文件类型。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-6.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-6.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>使用我们的 DNS 过滤类别来保护内部用户之后，管理员可能想根据完整 URL 的分类来简单地阻止安全威胁。恶意软件有效载荷经常从云存储传播，使用 DNS 过滤，时，管理员必须选择是允许还是拒绝给定存储提供商访问整个域。URL 过滤使管理员能够过滤对恶意软件有效载荷所驻留的确切 URL 的请求，以便客户能够继续发挥所选存储提供商的用处。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image7-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image7-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>而且，由于 Cloudflare for Teams 客户端可以实现所有这些功能，因此具有漫游客户端的分布式工作者不论身在何处，都可以通过与距离最近的 Cloudflare 数据中心的安全连接来获得这种保护。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-7.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>通过检查 HTTP 流量，我们能够为浏览互联网的团队提供保护，但是非 HTTP 流量呢？今年晚些时候，我们将通过使用 L4 云防火墙添加对 IP、端口和协议过滤的支持来扩展 Cloudflare Gateway。这样，管理员可以将规则应用到所有流向互联网的流量，例如允许出站 SSH 的规则，或决定是否将到达非标准端口的 HTTP 流量发送到 L7 防火墙以进行 HTTP 检查的规则。</p>
 	<p>发布之后，Cloudflare Gateway 将允许管理员创建策略来过滤组织中所有用户之间的 DNS 和 HTTP 通信。这为安全性奠定了良好的基础。但是，凡事都有例外：一刀切的内容与安全策略实施方法极少能满足所有用户的具体需求。</p>
 	<p>为解决这个问题，我们正在努力将 Cloudflare Access 与客户现有的身份提供商集成，以支持基于用户和组身份的规则。这将使管理员能够创建细化的规则，利用与用户相关的上下文，例如：</p>
@@ -85,5 +85,5 @@
 	<p>人们开办企业不是为了应对信息技术和安全性的细枝末节。他们有着远大的理想，将自己的产品或服务推向全世界，我们希望能够让他们回到正轨为实现理想而奋斗。我们可以帮助消除与实施高级安全工具的难点，这些工具通常是为更大型、更复杂的组织而保留的，我们希望所有团队不论规模大小都可以使用它们。</p>
 	<p>Cloudflare for Teams 客户端和 L7 防火墙的发布为先进的安全 Web 网关奠定了基础，它将集成防病毒扫描、CASB 和远程浏览器隔离等诸多功能，并且一切都在 Cloudflare 边缘执行。很高兴分享这些信息，揭开我们团队所建设未来的一角 —— 这条道路才刚刚起步。</p>
 	<h3 id="--3">立即开始使用</h3>
-	<p>这些新功能全部准备就绪，马上供您享用。L7 防火墙通过独立版 Gateway、Teams Standard 和 Teams Enterprise 计划提供。只需<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">注册 Gateway 帐户</a>并完成<a href="https://developers.cloudflare.com/gateway/about" target="_blank">入门培训</a>，即可开始使用。</p>
+	<p>这些新功能全部准备就绪，马上供您享用。L7 防火墙通过独立版 Gateway、Teams Standard 和 Teams Enterprise 计划提供。只需<a href="https://dash.cloudflare.com/sign-up/teams?ref=blog.cloudflare.com" target="_blank">注册 Gateway 帐户</a>并完成<a href="https://developers.cloudflare.com/gateway/about?ref=blog.cloudflare.com" target="_blank">入门培训</a>，即可开始使用。</p>
 </div>

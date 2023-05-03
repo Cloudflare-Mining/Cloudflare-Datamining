@@ -1,14 +1,14 @@
 <div class="post-content lh-copy gray1">
-	<p><em>This is a guest post by Cristhian Motoche of <a href="https://www.stackbuilders.com/" target="_blank">Stack Builders</a>.</em></p>
-	<p>At <a href="https://www.stackbuilders.com/" target="_blank">Stack Builders</a>, we believe that Haskell’s system of expressive static types offers many benefits to the software industry and the world-wide community that depends on our services. In order to fully realize these benefits, it is necessary to have proper training and access to an ecosystem that allows for reliable deployment of services. In exploring the tools that help us run our systems based on Haskell, our developer Cristhian Motoche has created a tutorial that shows how to compile Haskell to WebAssembly using Asterius for deployment on Cloudflare.</p>
+	<p><em>This is a guest post by Cristhian Motoche of <a href="https://www.stackbuilders.com/?ref=blog.cloudflare.com" target="_blank">Stack Builders</a>.</em></p>
+	<p>At <a href="https://www.stackbuilders.com/?ref=blog.cloudflare.com" target="_blank">Stack Builders</a>, we believe that Haskell’s system of expressive static types offers many benefits to the software industry and the world-wide community that depends on our services. In order to fully realize these benefits, it is necessary to have proper training and access to an ecosystem that allows for reliable deployment of services. In exploring the tools that help us run our systems based on Haskell, our developer Cristhian Motoche has created a tutorial that shows how to compile Haskell to WebAssembly using Asterius for deployment on Cloudflare.</p>
 	<h3 id="what-is-a-cloudflare-worker"><br>What is a Cloudflare Worker?</h3>
-	<p><a href="https://developers.cloudflare.com/workers/" target="_blank">Cloudflare Workers</a> is a serverless platform that allows us to run our code on the edge of the Cloudflare infrastructure. It's built on Google V8, so it’s possible to write functionalities in JavaScript or any other language that targets WebAssembly.</p>
-	<p><a href="https://webassembly.org/" target="_blank">WebAssembly</a> is a portable binary instruction format that can be executed fast in a memory-safe sandboxed environment. For this reason, it’s especially useful for tasks that need to perform resource-demanding and self-contained operations.</p>
+	<p><a href="https://developers.cloudflare.com/workers/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a> is a serverless platform that allows us to run our code on the edge of the Cloudflare infrastructure. It's built on Google V8, so it’s possible to write functionalities in JavaScript or any other language that targets WebAssembly.</p>
+	<p><a href="https://webassembly.org/?ref=blog.cloudflare.com" target="_blank">WebAssembly</a> is a portable binary instruction format that can be executed fast in a memory-safe sandboxed environment. For this reason, it’s especially useful for tasks that need to perform resource-demanding and self-contained operations.</p>
 	<h3 id="why-use-haskell-to-target-webassembly">Why use Haskell to target WebAssembly?</h3>
-	<p>Haskell is a pure functional<a href="https://github.com/appcypher/awesome-wasm-langs" target="_blank"> language</a> that can target WebAssembly. As such, It helps developers break down complex tasks into small functions that can later be composed to do complex tasks. Additionally, it’s statically typed and has type inference, so it will complain if there are type errors at compile time. Because of that and<a href="https://wiki.haskell.org/Why_Haskell_matters" target="_blank"> much more</a>, Haskell is a good source language for targeting WebAssembly.</p>
+	<p>Haskell is a pure functional<a href="https://github.com/appcypher/awesome-wasm-langs?ref=blog.cloudflare.com" target="_blank"> language</a> that can target WebAssembly. As such, It helps developers break down complex tasks into small functions that can later be composed to do complex tasks. Additionally, it’s statically typed and has type inference, so it will complain if there are type errors at compile time. Because of that and<a href="https://wiki.haskell.org/Why_Haskell_matters?ref=blog.cloudflare.com" target="_blank"> much more</a>, Haskell is a good source language for targeting WebAssembly.</p>
 	<h3 id="from-haskell-to-webassembly">From Haskell to WebAssembly</h3>
-	<p>We’ll use<a href="https://asterius.netlify.app/" target="_blank"> Asterius</a> to target WebAssembly from Haskell. It’s a well documented tool that is updated often and supports a lot of Haskell features.</p>
-	<p>First, as suggested in the<a href="https://asterius.netlify.app/images.html#using-prebuilt-container-images" target="_blank"> documentation</a>, we’ll use podman to pull the Asterius prebuilt container from Docker hub. In this tutorial, we will use Asterius version<a href="https://hub.docker.com/layers/terrorjack/asterius/200617/images/sha256-8e6009198c3940d1b4938b0ab6c0b119d4fce3d7ac0f6336214e758f66887b80?context=explore" target="_blank"> 200617</a>, which works with GHC 8.8.</p><!--kg-card-begin: markdown-->
+	<p>We’ll use<a href="https://asterius.netlify.app/?ref=blog.cloudflare.com" target="_blank"> Asterius</a> to target WebAssembly from Haskell. It’s a well documented tool that is updated often and supports a lot of Haskell features.</p>
+	<p>First, as suggested in the<a href="https://asterius.netlify.app/images.html?ref=blog.cloudflare.com#using-prebuilt-container-images" target="_blank"> documentation</a>, we’ll use podman to pull the Asterius prebuilt container from Docker hub. In this tutorial, we will use Asterius version<a href="https://hub.docker.com/layers/terrorjack/asterius/200617/images/sha256-8e6009198c3940d1b4938b0ab6c0b119d4fce3d7ac0f6336214e758f66887b80?context=explore&amp;ref=blog.cloudflare.com" target="_blank"> 200617</a>, which works with GHC 8.8.</p><!--kg-card-begin: markdown-->
 	<pre><code>podman run -it --rm -v $(pwd):/workspace -w /workspace terrorjack/asterius:200617
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -24,7 +24,7 @@ fact n = go n 1
 foreign export javascript "fact" fact :: Int -&gt; Int
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In this module, we define a pure function called <code>fact</code>, optimized with tail recursion and exported using the<a href="https://asterius.netlify.app/jsffi.html" target="_blank"> Asterius JavaScript FFI</a>, so that it can be called when a WebAssembly module is instantiated in JavaScript.</p>
+	<p>In this module, we define a pure function called <code>fact</code>, optimized with tail recursion and exported using the<a href="https://asterius.netlify.app/jsffi.html?ref=blog.cloudflare.com" target="_blank"> Asterius JavaScript FFI</a>, so that it can be called when a WebAssembly module is instantiated in JavaScript.</p>
 	<p>Next, we’ll create a JavaScript file called <code>fact_node.mjs</code> that contains the following code:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import * as rts from "./rts.mjs";
 import module from "./fact.wasm.mjs";
@@ -164,7 +164,7 @@ executable cabal-cfw-example
   default-language:    Haskell2010
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>It’s a simple cabal file, except for the <code>-optl--export-function=handleReq</code> ghc flag. This is<a href="https://github.com/tweag/asterius/issues/362#issuecomment-561576162" target="_blank"> necessary</a> when exporting a function from a cabal project.</p>
+	<p>It’s a simple cabal file, except for the <code>-optl--export-function=handleReq</code> ghc flag. This is<a href="https://github.com/tweag/asterius/issues/362?ref=blog.cloudflare.com#issuecomment-561576162" target="_blank"> necessary</a> when exporting a function from a cabal project.</p>
 	<p>In this example, we’ll define a simple <code>User</code> record, and we’ll define its instance automatically using Template Haskell!</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-haskell">{-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell   #-}
@@ -192,7 +192,7 @@ data User =
 $(deriveJSON defaultOptions 'User)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><strong>NOTE:</strong> It’s not necessary to create a Cabal project for this example, because the prebuilt container comes with a lot of<a href="https://github.com/tweag/asterius/issues/354" target="_blank"> prebuilt packages</a> (aesona included). Nevertheless, it will help us show the potential of <code>ahc-cabal</code> and <code>ahc-dist</code>.</p>
+	<p><strong>NOTE:</strong> It’s not necessary to create a Cabal project for this example, because the prebuilt container comes with a lot of<a href="https://github.com/tweag/asterius/issues/354?ref=blog.cloudflare.com" target="_blank"> prebuilt packages</a> (aesona included). Nevertheless, it will help us show the potential of <code>ahc-cabal</code> and <code>ahc-dist</code>.</p>
 	<p>Next, we’ll define <code>handleReq</code>, which we’ll export using JavaScript FFI just like we did before.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-haskell">handleReq :: JSString -&gt; JSString -&gt; IO JSObject
 handleReq method rawBody =
@@ -237,9 +237,9 @@ addEventListener("fetch", event =&gt; {
 	<!--kg-card-end: markdown-->
 	<p>Finally, we can deploy our code to Workers by defining a <code>metadata.json</code> file and uploading the script and the WebAssembly module using Workers API as we did before.</p>
 	<h3 id="caveats">Caveats</h3>
-	<p>Workers<a href="https://developers.cloudflare.com/workers/about/limits/#script-size" target="_blank"> limits</a> your JavaScript and WebAssembly in file size. Therefore, you need to be careful with any dependencies you add.</p>
+	<p>Workers<a href="https://developers.cloudflare.com/workers/about/limits/?ref=blog.cloudflare.com#script-size" target="_blank"> limits</a> your JavaScript and WebAssembly in file size. Therefore, you need to be careful with any dependencies you add.</p>
 	<h3 id="conclusion">Conclusion</h3>
 	<p>Stack Builders builds better software for better living through technologies like expressive static types. We used Asterius to compile Haskell to WebAssembly and deployed it to Cloudflare Workers using the Workers API. Asterius supports a lot of Haskell features (e.g. Template Haskell) and it provides an easy-to-use JavaScript FFI to interact with JavaScript. Additionally, it provides prebuilt containers that contain a lot of Haskell packages, so you can start writing a script right away.</p>
 	<p>Following this approach, we can write functional type-safe code in Haskell, target it to WebAssembly, and publish it to Workers, which runs on the edge of the Cloudflare infrastructure.</p>
-	<p>For more content check our <a href="https://www.stackbuilders.com/news/page/1" target="_blank">blogs</a> and <a href="https://www.stackbuilders.com/tutorials/" target="_blank">tutorials</a>!</p>
+	<p>For more content check our <a href="https://www.stackbuilders.com/news/page/1?ref=blog.cloudflare.com" target="_blank">blogs</a> and <a href="https://www.stackbuilders.com/tutorials/?ref=blog.cloudflare.com" target="_blank">tutorials</a>!</p>
 </div>

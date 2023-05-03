@@ -1,17 +1,17 @@
 {
 	"author": {
 		"name": "Patrick R. Donahue",
-		"url": "https://blog.cloudflare.com/author/patrick/",
+		"url": "http://blog.cloudflare.com/author/patrick/",
 		"sameAs": [
 			"https://www.cloudflare.com",
 			"https://twitter.com/prdonahue"
 		]
 	},
 	"headline": "Stream Firewall Events directly to your SIEM with Cloudflare Logs",
-	"url": "https://blog.cloudflare.com/stream-firewall-events-directly-to-your-siem/",
+	"url": "http://blog.cloudflare.com/stream-firewall-events-directly-to-your-siem/",
 	"datePublished": "2020-04-24T11:00:00.000Z",
 	"dateModified": "2021-12-15T17:13:34.000Z",
-	"image": "https://blog.cloudflare.com/content/images/2020/04/firewall-event-log@2x.png",
+	"image": "http://blog.cloudflare.com/content/images/2020/04/firewall-event-log@2x.png",
 	"keywords": "Firewall, Firewall Events, Logs, Log Push, Terraform, SIEM",
 	"description": "As of today, customers using Cloudflare Logs can create Logpush jobs that send only Firewall Events. These events arrive much faster than our existing HTTP requests logs: they are typically delivered to your logging platform within 60 seconds of sending the response to the client."
 }

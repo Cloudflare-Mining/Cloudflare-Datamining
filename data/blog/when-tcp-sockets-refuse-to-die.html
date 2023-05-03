@@ -1,13 +1,13 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>While working on our <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum server</a>, we noticed something weird: the TCP sockets which we thought should have been closed were lingering around. We realized we don't really understand when TCP sockets are supposed to time out!</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2019/09/Tcp_state_diagram_fixed_new.svga.png" alt="Tcp_state_diagram_fixed_new.svga"></p>
-	<center><small><a href="https://commons.wikimedia.org/wiki/File:Tcp_state_diagram_fixed_new.svg" target="_blank">Image</a> by Sergiodc2 CC BY SA 3.0</small></center>
-	<p>In our code, we wanted to make sure we don't hold connections to dead hosts. In our early code we naively thought enabling TCP keepalives would be enough... but it isn't. It turns out a fairly modern <a href="https://tools.ietf.org/html/rfc5482" target="_blank">TCP_USER_TIMEOUT</a> socket option is equally as important. Furthermore it interacts with TCP keepalives in subtle ways. <a href="http://codearcana.com/posts/2015/08/28/tcp-keepalive-is-a-lie.html" target="_blank">Many people</a> are confused by this.</p>
+	<p>While working on our <a href="https://www.cloudflare.com/products/cloudflare-spectrum/?ref=blog.cloudflare.com" target="_blank">Spectrum server</a>, we noticed something weird: the TCP sockets which we thought should have been closed were lingering around. We realized we don't really understand when TCP sockets are supposed to time out!</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2019/09/Tcp_state_diagram_fixed_new.svga.png" alt="Tcp_state_diagram_fixed_new.svga" loading="lazy"></p>
+	<center><small><a href="https://commons.wikimedia.org/wiki/File:Tcp_state_diagram_fixed_new.svg?ref=blog.cloudflare.com" target="_blank">Image</a> by Sergiodc2 CC BY SA 3.0</small></center>
+	<p>In our code, we wanted to make sure we don't hold connections to dead hosts. In our early code we naively thought enabling TCP keepalives would be enough... but it isn't. It turns out a fairly modern <a href="https://tools.ietf.org/html/rfc5482?ref=blog.cloudflare.com" target="_blank">TCP_USER_TIMEOUT</a> socket option is equally as important. Furthermore it interacts with TCP keepalives in subtle ways. <a href="http://codearcana.com/posts/2015/08/28/tcp-keepalive-is-a-lie.html?ref=blog.cloudflare.com" target="_blank">Many people</a> are confused by this.</p>
 	<p>In this blog post, we'll try to show how these options work. We'll show how a TCP socket can timeout during various stages of its lifetime, and how TCP keepalives and user timeout influence that. To better illustrate the internals of TCP connections, we'll mix the outputs of the <code>tcpdump</code> and the <code>ss -o</code> commands. This nicely shows the transmitted packets and the changing parameters of the TCP connections.</p>
 	<h2 id="synsent">SYN-SENT</h2>
 	<p>Let's start from the simplest case - what happens when one attempts to establish a connection to a server which discards inbound SYN packets?</p>
-	<p>The scripts used here <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives" target="_blank">are available on our Github</a>.</p>
+	<p>The scripts used here <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives?ref=blog.cloudflare.com" target="_blank">are available on our Github</a>.</p>
 	<pre style="font-size:70%">$ sudo ./test-syn-sent.py
 # all packets dropped
 00:00.000 IP host.2 &gt; host.1: Flags [S] # initial SYN
@@ -105,7 +105,7 @@ State Recv-Q Send-Q Local:Port Peer:Port
 ESTAB 11     0      host:1     host:2
 ESTAB 0      0      host:2     host:1
 </pre>
-	<p>The server socket remained in the SYN-RECV state even after receiving the final TCP-handshake ACK. It has a funny "on" timer, with the counter stuck at 0 retries. It is converted to ESTAB - and moved from the SYN to the accept queue - after the client sends a data packet or after the TCP_DEFER_ACCEPT timer expires. Basically, with DEFER ACCEPT the SYN-RECV mini-socket <a href="https://marc.info/?l=linux-netdev&amp;m=118793048828251&amp;w=2" target="_blank">discards the data-less inbound ACK</a>.</p>
+	<p>The server socket remained in the SYN-RECV state even after receiving the final TCP-handshake ACK. It has a funny "on" timer, with the counter stuck at 0 retries. It is converted to ESTAB - and moved from the SYN to the accept queue - after the client sends a data packet or after the TCP_DEFER_ACCEPT timer expires. Basically, with DEFER ACCEPT the SYN-RECV mini-socket <a href="https://marc.info/?l=linux-netdev&amp;m=118793048828251&amp;w=2&amp;ref=blog.cloudflare.com" target="_blank">discards the data-less inbound ACK</a>.</p>
 	<h2 id="idleestabisforever">Idle ESTAB is forever</h2>
 	<p>Let's move on and discuss a fully-established socket connected to an unhealthy (dead) peer. After completion of the handshake, the sockets on both sides move to the ESTABLISHED state, like:</p>
 	<pre style="font-size:70%">State Recv-Q Send-Q Local:Port Peer:Port
@@ -138,13 +138,13 @@ ESTAB 0      0      host:2     host:1  timer:(keepalive,2.992ms,0)
 	<p>Indeed! We can clearly see the first probe sent at the 5s mark, two remaining probes 3s apart - exactly as we specified. After a total of three sent probes, and a further three seconds of delay, the connection dies with ETIMEDOUT, and final the RST is transmitted.</p>
 	<p>For keepalives to work, the send buffer must be empty. You can notice the keepalive timer active in the "timer:(keepalive)" line.</p>
 	<h2 id="keepaliveswithtcp_user_timeoutareconfusing">Keepalives with TCP_USER_TIMEOUT are confusing</h2>
-	<p>We mentioned the TCP_USER_TIMEOUT option before. It sets the maximum amount of time that transmitted data may remain unacknowledged before the kernel forcefully closes the connection. On its own, it doesn't do much in the case of idle connections. The sockets will remain ESTABLISHED even if the connectivity is dropped. However, this socket option does change the semantics of TCP keepalives. <a href="https://linux.die.net/man/7/tcp" target="_blank">The tcp(7) manpage</a> is somewhat confusing:</p>
+	<p>We mentioned the TCP_USER_TIMEOUT option before. It sets the maximum amount of time that transmitted data may remain unacknowledged before the kernel forcefully closes the connection. On its own, it doesn't do much in the case of idle connections. The sockets will remain ESTABLISHED even if the connectivity is dropped. However, this socket option does change the semantics of TCP keepalives. <a href="https://linux.die.net/man/7/tcp?ref=blog.cloudflare.com" target="_blank">The tcp(7) manpage</a> is somewhat confusing:</p>
 	<p><i>Moreover, when used with the TCP keepalive (SO_KEEPALIVE) option, TCP_USER_TIMEOUT will override keepalive to determine when to close a connection due to keepalive failure.</i></p>
 	<p>The original commit message has slightly more detail:</p>
 	<ul>
-		<li><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dca43c75e7e545694a9dd6288553f55c53e2a3a3" target="_blank">tcp: Add TCP_USER_TIMEOUT socket option</a></li>
+		<li><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dca43c75e7e545694a9dd6288553f55c53e2a3a3&amp;ref=blog.cloudflare.com" target="_blank">tcp: Add TCP_USER_TIMEOUT socket option</a></li>
 	</ul>
-	<p>To understand the semantics, we need to look at the <a href="https://github.com/torvalds/linux/blob/b41dae061bbd722b9d7fa828f35d22035b218e18/net/ipv4/tcp_timer.c#L693-L697" target="_blank">kernel code in linux/net/ipv4/tcp_timer.c:693</a>:</p>
+	<p>To understand the semantics, we need to look at the <a href="https://github.com/torvalds/linux/blob/b41dae061bbd722b9d7fa828f35d22035b218e18/net/ipv4/tcp_timer.c?ref=blog.cloudflare.com#L693-L697" target="_blank">kernel code in linux/net/ipv4/tcp_timer.c:693</a>:</p>
 	<pre style="font-size:70%">if ((icsk-&gt;icsk_user_timeout != 0 &amp;&amp;
     elapsed &gt;= msecs_to_jiffies(icsk-&gt;icsk_user_timeout) &amp;&amp;
     icsk-&gt;icsk_probes_out &gt; 0) ||
@@ -219,7 +219,7 @@ ESTAB 0      11     host:2     host:1    timer:(on,1.304ms,3)
 	<pre style="font-size:70%">$ sysctl net.ipv4.tcp_retries2
 net.ipv4.tcp_retries2 = 15
 </pre>
-	<p>From the <a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt" target="_blank"><code>ip-sysctl.txt</code></a> documentation:</p>
+	<p>From the <a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt?ref=blog.cloudflare.com" target="_blank"><code>ip-sysctl.txt</code></a> documentation:</p>
 	<i>
 		The default value of 15 yields a hypothetical timeout of 924.6 seconds and is a lower bound for the effective timeout. TCP will effectively time out at the first RTO which exceeds the hypothetical timeout.
 	</i>
@@ -291,7 +291,7 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)
     else:
         # socket is too slow...
 </pre>
-	<p>There are ways to further improve this logic. We could use <a href="https://lwn.net/Articles/560082/" target="_blank"><code>TCP_NOTSENT_LOWAT</code></a>, although it's generally only useful for situations where the send buffer is relatively empty. Then we could use the <a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank"><code>SO_TIMESTAMPING</code></a> interface for notifications about when data gets delivered. Finally, if we are done sending the data to the socket, it's possible to just call <code>close()</code> and defer handling of the socket to the operating system. Such a socket will be stuck in FIN-WAIT-1 or LAST-ACK state until it correctly drains.</p>
+	<p>There are ways to further improve this logic. We could use <a href="https://lwn.net/Articles/560082/?ref=blog.cloudflare.com" target="_blank"><code>TCP_NOTSENT_LOWAT</code></a>, although it's generally only useful for situations where the send buffer is relatively empty. Then we could use the <a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt?ref=blog.cloudflare.com" target="_blank"><code>SO_TIMESTAMPING</code></a> interface for notifications about when data gets delivered. Finally, if we are done sending the data to the socket, it's possible to just call <code>close()</code> and defer handling of the socket to the operating system. Such a socket will be stuck in FIN-WAIT-1 or LAST-ACK state until it correctly drains.</p>
 	<h2 id="summary">Summary</h2>
 	<p>In this post we discussed five cases where the TCP connection may notice the other party going away:</p>
 	<ul>
@@ -304,7 +304,7 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)
 	<p>Especially the last two ESTABLISHED cases can be customized with TCP_USER_TIMEOUT, but this setting also affects other situations. Generally speaking, it can be thought of as a hint to the kernel to abort the connection after so-many seconds since the last good packet. This is a dangerous setting though, and if used in conjunction with TCP keepalives should be set to a value slightly lower than <code>TCP_KEEPIDLE + TCP_KEEPINTVL * TCP_KEEPCNT</code>. Otherwise it will affect, and potentially cancel out, the TCP_KEEPCNT value.</p>
 	<p>In this post we presented scripts showing the effects of timeout-related socket options under various network conditions. Interleaving the <code>tcpdump</code> packet capture with the output of <code>ss -o</code> is a great way of understanding the networking stack. We were able to create reproducible test cases showing the "on", "keepalive" and "persist" timers in action. This is a very useful framework for further experimentation.</p>
 	<p>Finally, it's surprisingly hard to tune a TCP connection to be confident that the remote host is actually up. During our debugging we found that looking at the send buffer size and currently active TCP timer can be very helpful in understanding whether the socket is actually healthy. The bug in our Spectrum application turned out to be a wrong TCP_USER_TIMEOUT setting - without it sockets with large send buffers were lingering around for way longer than we intended.</p>
-	<p>The scripts used in this article <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives" target="_blank">can be found on our Github</a>.</p>
-	<p>Figuring this out has been a collaboration across three Cloudflare offices. Thanks to <a href="https://twitter.com/Hirenpanchasara" target="_blank">Hiren Panchasara</a> from San Jose, <a href="https://twitter.com/warrncn" target="_blank">Warren Nelson</a> from Austin and <a href="https://twitter.com/jkbs0" target="_blank">Jakub Sitnicki</a> from Warsaw. Fancy joining the team? <a href="https://www.cloudflare.com/careers/departments/?utm_referrer=blog" target="_blank">Apply here!</a></p>
+	<p>The scripts used in this article <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives?ref=blog.cloudflare.com" target="_blank">can be found on our Github</a>.</p>
+	<p>Figuring this out has been a collaboration across three Cloudflare offices. Thanks to <a href="https://twitter.com/Hirenpanchasara?ref=blog.cloudflare.com" target="_blank">Hiren Panchasara</a> from San Jose, <a href="https://twitter.com/warrncn?ref=blog.cloudflare.com" target="_blank">Warren Nelson</a> from Austin and <a href="https://twitter.com/jkbs0?ref=blog.cloudflare.com" target="_blank">Jakub Sitnicki</a> from Warsaw. Fancy joining the team? <a href="https://www.cloudflare.com/careers/departments/?utm_referrer=blog&amp;ref=blog.cloudflare.com" target="_blank">Apply here!</a></p>
 	<!--kg-card-end: markdown-->
 </div>
