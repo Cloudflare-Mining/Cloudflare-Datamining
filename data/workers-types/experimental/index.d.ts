@@ -49,6 +49,7 @@ declare class DOMException extends Error {
 declare type WorkerGlobalScopeEventMap = {
   fetch: FetchEvent;
   scheduled: ScheduledEvent;
+  queue: QueueEvent;
   unhandledrejection: PromiseRejectionEvent;
   rejectionhandled: PromiseRejectionEvent;
 };
@@ -187,7 +188,8 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   ExtendableEvent: typeof ExtendableEvent;
   PromiseRejectionEvent: typeof PromiseRejectionEvent;
   FetchEvent: typeof FetchEvent;
-  TraceEvent: typeof TraceEvent;
+  TailEvent: typeof TailEvent;
+  TraceEvent: typeof TailEvent;
   ScheduledEvent: typeof ScheduledEvent;
   MessageEvent: typeof MessageEvent;
   CloseEvent: typeof CloseEvent;
@@ -299,6 +301,11 @@ declare type ExportedHandlerFetchHandler<
   env: Env,
   ctx: ExecutionContext
 ) => Response | Promise<Response>;
+declare type ExportedHandlerTailHandler<Env = unknown> = (
+  events: TraceItem[],
+  env: Env,
+  ctx: ExecutionContext
+) => void | Promise<void>;
 declare type ExportedHandlerTraceHandler<Env = unknown> = (
   traces: TraceItem[],
   env: Env,
@@ -325,10 +332,11 @@ declare interface ExportedHandler<
   CfHostMetadata = unknown
 > {
   fetch?: ExportedHandlerFetchHandler<Env, CfHostMetadata>;
+  tail?: ExportedHandlerTailHandler<Env>;
   trace?: ExportedHandlerTraceHandler<Env>;
   scheduled?: ExportedHandlerScheduledHandler<Env>;
   test?: ExportedHandlerTestHandler<Env>;
-  queue?: ExportedHandlerQueueHandler<Env, QueueMessage>;
+  queue?: ExportedHandlerQueueHandler<Env, Message>;
 }
 declare interface StructuredSerializeOptions {
   transfer?: any[];
@@ -360,6 +368,10 @@ declare interface DurableObjectNamespace {
   idFromName(name: string): DurableObjectId;
   idFromString(id: string): DurableObjectId;
   get(
+    id: DurableObjectId,
+    options?: DurableObjectNamespaceGetDurableObjectOptions
+  ): DurableObjectStub;
+  getExisting(
     id: DurableObjectId,
     options?: DurableObjectNamespaceGetDurableObjectOptions
   ): DurableObjectStub;
@@ -453,6 +465,7 @@ declare interface DurableObjectStorage {
   ): Promise<void>;
   deleteAlarm(options?: DurableObjectSetAlarmOptions): Promise<void>;
   sync(): Promise<void>;
+  sql: SqlStorage;
 }
 declare interface DurableObjectListOptions {
   start?: string;
@@ -1049,10 +1062,20 @@ declare interface RequestInit<Cf = CfProperties> {
 }
 declare abstract class Fetcher {
   fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+  connect(address: SocketAddress | string, options?: SocketOptions): Socket;
+  queue(
+    queueName: string,
+    messages: ServiceBindingQueueMessage[]
+  ): Promise<QueueResponse>;
 }
 declare interface FetcherPutOptions {
   expiration?: number;
   expirationTtl?: number;
+}
+declare interface ServiceBindingQueueMessage<Body = unknown> {
+  id: string;
+  timestamp: Date;
+  body: Body;
 }
 declare interface KVNamespaceListKey<Metadata, Key extends string = string> {
   name: Key;
@@ -1160,6 +1183,40 @@ declare interface KVNamespacePutOptions {
 declare interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
   value: Value | null;
   metadata: Metadata | null;
+}
+declare interface Queue<Body> {
+  send(message: Body): Promise<void>;
+  sendBatch(messages: Iterable<MessageSendRequest<Body>>): Promise<void>;
+}
+declare interface QueueSendOptions {}
+declare interface MessageSendRequest<Body = unknown> {
+  body: Body;
+}
+declare interface QueueResponse {
+  outcome: number;
+  retryAll: boolean;
+  ackAll: boolean;
+  explicitRetries: string[];
+  explicitAcks: string[];
+}
+declare interface Message<Body = unknown> {
+  readonly id: string;
+  readonly timestamp: Date;
+  readonly body: Body;
+  retry(): void;
+  ack(): void;
+}
+declare interface QueueEvent<Body = unknown> extends ExtendableEvent {
+  readonly messages: readonly Message<Body>[];
+  readonly queue: string;
+  retryAll(): void;
+  ackAll(): void;
+}
+declare interface MessageBatch<Body = unknown> {
+  readonly messages: readonly Message<Body>[];
+  readonly queue: string;
+  retryAll(): void;
+  ackAll(): void;
 }
 declare interface R2Error extends Error {
   readonly name: string;
@@ -1594,7 +1651,8 @@ declare interface QueuingStrategyInit {
    */
   highWaterMark: number;
 }
-declare abstract class TraceEvent extends ExtendableEvent {
+declare abstract class TailEvent extends ExtendableEvent {
+  readonly events: TraceItem[];
   readonly traces: TraceItem[];
 }
 declare interface TraceItem {
@@ -1816,6 +1874,37 @@ declare const WebSocketPair: {
     1: WebSocket;
   };
 };
+declare interface SqlStorage {
+  exec(query: string, ...bindings: any[]): SqlStorageCursor;
+  prepare(query: string): SqlStorageStatement;
+  Cursor: typeof SqlStorageCursor;
+  Statement: typeof SqlStorageStatement;
+}
+declare abstract class SqlStorageStatement {}
+declare abstract class SqlStorageCursor {
+  raw(): IterableIterator<((ArrayBuffer | string | number) | null)[]>;
+  [Symbol.iterator](): IterableIterator<
+    Record<string, (ArrayBuffer | string | number) | null>
+  >;
+}
+declare interface Socket {
+  get readable(): ReadableStream;
+  get writable(): WritableStream;
+  get closed(): Promise<void>;
+  close(): Promise<void>;
+  startTls(options?: TlsOptions): Socket;
+}
+declare interface SocketOptions {
+  secureTransport?: string;
+  allowHalfOpen: boolean;
+}
+declare interface SocketAddress {
+  hostname: string;
+  port: number;
+}
+declare interface TlsOptions {
+  expectedServerHostname?: string;
+}
 declare interface BasicImageTransformations {
   /**
    * Maximum width in image pixels. The value must be an integer.
@@ -2205,8 +2294,7 @@ declare interface IncomingRequestCfPropertiesBase
 declare interface IncomingRequestCfPropertiesBotManagementBase {
   /**
    * Cloudflare’s [level of certainty](https://developers.cloudflare.com/bots/concepts/bot-score/) that a request comes from a bot,
-   * represented as an integer percentage between `1` (almost certainly human)
-   * and `99` (almost certainly a bot).
+   * represented as an integer percentage between `1` (almost certainly a bot) and `99` (almost certainly human).
    *
    * @example 54
    */
@@ -2951,75 +3039,12 @@ declare interface JsonWebKeyWithKid extends JsonWebKey {
   // Key Identifier of the JWK
   readonly kid: string;
 }
-/**
- * A message that is sent to a consumer Worker.
- */
-declare interface Message<Body = unknown> {
+// https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/
+declare interface DispatchNamespace {
   /**
-   * A unique, system-generated ID for the message.
+   * @param name Name of the Worker script.
+   * @returns A Fetcher object that allows you to send requests to the Worker script.
+   * @throws If the Worker script does not exist in this dispatch namespace, an error will be thrown.
    */
-  readonly id: string;
-  /**
-   * A timestamp when the message was sent.
-   */
-  readonly timestamp: Date;
-  /**
-   * The body of the message.
-   */
-  readonly body: Body;
-  /**
-   * Marks message to be retried.
-   */
-  retry(): void;
-  /**
-   * Marks message acknowledged.
-   */
-  ack(): void;
-}
-/**
- * A batch of messages that are sent to a consumer Worker.
- */
-declare interface MessageBatch<Body = unknown> {
-  /**
-   * The name of the Queue that belongs to this batch.
-   */
-  readonly queue: string;
-  /**
-   * An array of messages in the batch. Ordering of messages is not guaranteed.
-   */
-  readonly messages: readonly Message<Body>[];
-  /**
-   * Marks every message to be retried in the next batch.
-   */
-  retryAll(): void;
-  /**
-   * Marks every message acknowledged in the batch.
-   */
-  ackAll(): void;
-}
-/**
- * A wrapper class used to structure message batches.
- */
-declare type MessageSendRequest<Body = unknown> = {
-  /**
-   * The body of the message.
-   */
-  body: Body;
-};
-/**
- * A binding that allows a producer to send messages to a Queue.
- */
-declare interface Queue<Body = any> {
-  /**
-   * Sends a message to the Queue.
-   * @param message The message can be any type supported by the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types), as long as its size is less than 128 KB.
-   * @returns A promise that resolves when the message is confirmed to be written to disk.
-   */
-  send(message: Body): Promise<void>;
-  /**
-   * Sends a batch of messages to the Queue.
-   * @param messages Each item in the input must be supported by the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types). A batch can contain up to 100 messages, though items are limited to 128 KB each, and the total size of the array cannot exceed 256 KB.
-   * @returns A promise that resolves when the messages are confirmed to be written to disk.
-   */
-  sendBatch(messages: Iterable<MessageSendRequest<Body>>): Promise<void>;
+  get(name: string): Fetcher;
 }
