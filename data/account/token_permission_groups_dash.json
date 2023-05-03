@@ -972,15 +972,6 @@
 		"label": "load_balancing_monitors_and_pools_write"
 	},
 	{
-		"id": "c4a30cd58c5d42619c86a3c36c441e2d",
-		"name": "Logs Read",
-		"description": "Grants read access to logs and logpush jobs",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		],
-		"label": "logs_read"
-	},
-	{
 		"id": "6a315a56f18441e59ed03352369ae956",
 		"name": "Logs Read",
 		"description": "Grants read access to logs and logpush jobs",
@@ -990,13 +981,13 @@
 		"label": "account_logs_read"
 	},
 	{
-		"id": "3e0b5820118e47f3922f7c989e673882",
-		"name": "Logs Write",
-		"description": "Grants write access to logpush jobs",
+		"id": "c4a30cd58c5d42619c86a3c36c441e2d",
+		"name": "Logs Read",
+		"description": "Grants read access to logs and logpush jobs",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
 		],
-		"label": "logs_write"
+		"label": "logs_read"
 	},
 	{
 		"id": "96163bd1b0784f62b3e44ed8c2ab1eb6",
@@ -1006,6 +997,15 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "account_logs_write"
+	},
+	{
+		"id": "3e0b5820118e47f3922f7c989e673882",
+		"name": "Logs Write",
+		"description": "Grants write access to logpush jobs",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "logs_write"
 	},
 	{
 		"id": "3a46c728a0a040d5a65cd8e2f3bc6935",
