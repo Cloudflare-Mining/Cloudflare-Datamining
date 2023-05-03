@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/How-we-built-DMARC-Management.png" class="kg-image" alt="How we built DMARC Management"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/How-we-built-DMARC-Management.png" class="kg-image" alt="How we built DMARC Management" loading="lazy"></figure>
 	<h3 id="dmarc-">DMARC 보고서란</h3>
-	<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/" target="_blank">DMARC</a>는 도메인 기반 메시지 인증, 보고, 적합성을 의미합니다. 이는 이메일 <a href="https://www.cloudflare.com/en-gb/learning/access-management/phishing-attack/" target="_blank">피싱</a> 및 <a href="https://www.cloudflare.com/en-gb/learning/email-security/what-is-email-spoofing/" target="_blank">스푸핑</a> 방어에 도움이 되는 이메일 인증 프로토콜입니다.</p>
-	<p>DMARC를 사용하면 이메일을 전송할 때 <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/" target="_blank">SPF</a>(발신자 정책 프레임워크), <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/" target="_blank">DKIM</a>(도메인키 식별 메일) 등 인증 방법을 지정하는 DNS 레코드를 설정하여 이메일의 진위 여부를 확인할 수 있습니다. 이메일이 이러한 인증 검사에 실패하면 DMARC는 수신자의 이메일 공급자가 메시지를 격리하거나 완전히 거부하여 메시지를 처리하는 방법을 알려줍니다.</p>
+	<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/?ref=blog.cloudflare.com" target="_blank">DMARC</a>는 도메인 기반 메시지 인증, 보고, 적합성을 의미합니다. 이는 이메일 <a href="https://www.cloudflare.com/en-gb/learning/access-management/phishing-attack/?ref=blog.cloudflare.com" target="_blank">피싱</a> 및 <a href="https://www.cloudflare.com/en-gb/learning/email-security/what-is-email-spoofing/?ref=blog.cloudflare.com" target="_blank">스푸핑</a> 방어에 도움이 되는 이메일 인증 프로토콜입니다.</p>
+	<p>DMARC를 사용하면 이메일을 전송할 때 <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/?ref=blog.cloudflare.com" target="_blank">SPF</a>(발신자 정책 프레임워크), <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/?ref=blog.cloudflare.com" target="_blank">DKIM</a>(도메인키 식별 메일) 등 인증 방법을 지정하는 DNS 레코드를 설정하여 이메일의 진위 여부를 확인할 수 있습니다. 이메일이 이러한 인증 검사에 실패하면 DMARC는 수신자의 이메일 공급자가 메시지를 격리하거나 완전히 거부하여 메시지를 처리하는 방법을 알려줍니다.</p>
 	<p>이메일 피싱과 스푸핑 공격이 점점 더 정교해지며 널리 퍼지고 있는 오늘날의 인터넷 환경에서 DMARC의 중요성은 점점 더 커지고 있습니다. 도메인 소유자는 DMARC를 구현하면 이러한 공격으로 인해 발생하는 신뢰 상실, 평판 손상, 재정 손실 등의 부정적인 영향으로부터 브랜드와 고객을 보호할 수 있습니다.</p>
-	<p>DMARC는 피싱 및 스푸핑 공격으로부터의 방어하는 기능 외에도 <a href="https://www.rfc-editor.org/rfc/rfc7489" target="_blank">보고</a> 기능도 제공합니다. 도메인 소유자는 어떤 메시지가 DMARC 검사를 통과했고 통과하지 못했는지, 메시지의 출처가 어디인지 등 이메일 인증 활동에 대한 보고서를 받을 수 있습니다.</p>
+	<p>DMARC는 피싱 및 스푸핑 공격으로부터의 방어하는 기능 외에도 <a href="https://www.rfc-editor.org/rfc/rfc7489?ref=blog.cloudflare.com" target="_blank">보고</a> 기능도 제공합니다. 도메인 소유자는 어떤 메시지가 DMARC 검사를 통과했고 통과하지 못했는지, 메시지의 출처가 어디인지 등 이메일 인증 활동에 대한 보고서를 받을 수 있습니다.</p>
 	<p>DMARC 관리에는 도메인에 DMARC 정책을 구성하고 유지 관리하는 활동이 포함됩니다. DMARC를 효과적으로 관리하려면 이메일 인증 활동을 모니터링하고 분석하며 필요 시 DMARC 정책을 조정하거나 업데이트해야 합니다.</p>
 	<p>효과적인 DMARC 관리에 필요한 몇 가지 주요 구성 요소는 다음과 같습니다.</p>
 	<ul>
@@ -20,8 +20,8 @@
 	<p>오늘 Cloudflare에서는 <a href="https://blog.cloudflare.com/dmarc-management">DMARC 관리</a>를 출시했습니다. 구축 방법은 다음과 같습니다.</p>
 	<h3 id="-">구축 방법</h3>
 	<p>Cloudflare에서는 클라우드 기반 보안과 성능 솔루션의 선두 공급업체로서 특별한 접근 방식으로 제품을 테스트합니다. 자사 도구와 서비스를 "시험적으로 사용"합니다. 즉, 우리 사업을 운영하는 데 사용합니다. 이를 통해 어떠한 문제나 버그가 발생하여 고객에게 영향을 미치기 전에 이를 파악할 수 있습니다.</p>
-	<p>Cloudflare에서는 개발자가 전역 네트워크에서 코드를 실행할 수 있는 서버리스 플랫폼인 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> 등 자사 제품을 내부적으로 사용하고 있습니다. 2017년 플랫폼 출시 이후 Workers 생태계는 크게 성장했습니다. 현재 수천 명의 개발자가 이 플랫폼에서 애플리케이션을 구축하고 배포하고 있습니다. Workers 생태계의 힘은 개발자가 이전에는 불가능했거나 비현실적이었던 정교한 애플리케이션을 구축하여 클라이언트와 가까운 곳에서 실행할 수 있다는 점입니다. Workers를 사용하면 API를 구축하고 동적 콘텐츠를 생성하고 실시간 처리를 수행할 수 있습니다. 가능성은 사실상 무한합니다. Cloudflare에서는 Workers를 사용하여 <a href="https://blog.cloudflare.com/technology-behind-radar2/">Radar 2.0</a>과 같은 서비스나 <a href="https://blog.cloudflare.com/welcome-to-wildebeest-the-fediverse-on-cloudflare/">Wildebeest</a>와 같은 소프트웨어 패키지를 구동했습니다.</p>
-	<p>최근 Cloudflare의 <a href="https://developers.cloudflare.com/email-routing/" target="_blank">이메일 라우팅</a> 제품이 Workers와 통합되어 Workers 스크립트를 통해 <a href="https://blog.cloudflare.com/announcing-route-to-workers/">수신 이메일 처리</a>가 가능합니다. <a href="https://developers.cloudflare.com/email-routing/email-workers/" target="_blank">문서</a> 내용: “Email Workers를 사용하면 Cloudflare Workers의 강력한 기능을 활용하여 이메일을 처리하고 복잡한 규칙을 생성하는 데 필요한 로직을 구현할 수 있습니다. 이러한 규칙에 따라 이메일을 수신했을 때 어떤 일이 발생하는지가 결정됩니다.” 규칙과 확인된 주소는 모두 Cloudflare <a href="https://developers.cloudflare.com/api/operations/email-routing-destination-addresses-list-destination-addresses" target="_blank">API</a>를 통해 구성할 수 있습니다. </p>
+	<p>Cloudflare에서는 개발자가 전역 네트워크에서 코드를 실행할 수 있는 서버리스 플랫폼인 <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a> 등 자사 제품을 내부적으로 사용하고 있습니다. 2017년 플랫폼 출시 이후 Workers 생태계는 크게 성장했습니다. 현재 수천 명의 개발자가 이 플랫폼에서 애플리케이션을 구축하고 배포하고 있습니다. Workers 생태계의 힘은 개발자가 이전에는 불가능했거나 비현실적이었던 정교한 애플리케이션을 구축하여 클라이언트와 가까운 곳에서 실행할 수 있다는 점입니다. Workers를 사용하면 API를 구축하고 동적 콘텐츠를 생성하고 실시간 처리를 수행할 수 있습니다. 가능성은 사실상 무한합니다. Cloudflare에서는 Workers를 사용하여 <a href="https://blog.cloudflare.com/technology-behind-radar2/">Radar 2.0</a>과 같은 서비스나 <a href="https://blog.cloudflare.com/welcome-to-wildebeest-the-fediverse-on-cloudflare/">Wildebeest</a>와 같은 소프트웨어 패키지를 구동했습니다.</p>
+	<p>최근 Cloudflare의 <a href="https://developers.cloudflare.com/email-routing/?ref=blog.cloudflare.com" target="_blank">이메일 라우팅</a> 제품이 Workers와 통합되어 Workers 스크립트를 통해 <a href="https://blog.cloudflare.com/announcing-route-to-workers/">수신 이메일 처리</a>가 가능합니다. <a href="https://developers.cloudflare.com/email-routing/email-workers/?ref=blog.cloudflare.com" target="_blank">문서</a> 내용: “Email Workers를 사용하면 Cloudflare Workers의 강력한 기능을 활용하여 이메일을 처리하고 복잡한 규칙을 생성하는 데 필요한 로직을 구현할 수 있습니다. 이러한 규칙에 따라 이메일을 수신했을 때 어떤 일이 발생하는지가 결정됩니다.” 규칙과 확인된 주소는 모두 Cloudflare <a href="https://developers.cloudflare.com/api/operations/email-routing-destination-addresses-list-destination-addresses?ref=blog.cloudflare.com" target="_blank">API</a>를 통해 구성할 수 있습니다. </p>
 	<p>간단한 Email Worker의 모습은 다음과 같습니다.</p>
 	<pre><code class="language-js">export default {
   async email(message, env, ctx) {
@@ -40,15 +40,15 @@
 		<li>분석 관련 플랫폼에 관련 세부 정보 게시</li>
 		<li>원시 보고서 저장</li>
 	</ol>
-	<p>Email Workers를 사용하면 첫 번째 기능은 쉽게 수행할 수 있습니다. email() 핸들러가 있는 worker를 생성하기만 하면 됩니다. 이 핸들러는 <a href="https://www.rfc-editor.org/rfc/rfc5321" target="_blank">SMTP</a> 봉투 요소, 사전 구문 분석된 버전의 이메일 헤더, 전체 원시 이메일을 읽을 수 있는 스트림을 수신합니다.</p>
-	<p>두 번째 기능의 경우에도 Workers 플랫폼을 살펴보면 <a href="https://developers.cloudflare.com/analytics/analytics-engine/" target="_blank">Workers Analytics 엔진</a>을 확인할 수 있습니다. 보고서의 내용과 이후에 수행하려는 쿼리에 따라 적절한 스키마를 정의하기만 하면 됩니다. 그런 다음 <a href="https://developers.cloudflare.com/analytics/graphql-api/" target="_blank">GraphQL</a> 또는 <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/" target="_blank">SQL</a> API를 사용하여 데이터를 쿼리할 수 있습니다.</p>
-	<p>세 번째 기능의 경우 <a href="https://www.cloudflare.com/en-gb/products/r2/" target="_blank">R2</a> 개체 스토리지만 살펴보면 됩니다. Worker에서 R2를 액세스하는 것은 <a href="https://developers.cloudflare.com/r2/examples/demo-worker/" target="_blank">단순</a>합니다. 이메일에서 보고서를 추출한 후 나중을 위해 R2에 저장합니다.</p>
+	<p>Email Workers를 사용하면 첫 번째 기능은 쉽게 수행할 수 있습니다. email() 핸들러가 있는 worker를 생성하기만 하면 됩니다. 이 핸들러는 <a href="https://www.rfc-editor.org/rfc/rfc5321?ref=blog.cloudflare.com" target="_blank">SMTP</a> 봉투 요소, 사전 구문 분석된 버전의 이메일 헤더, 전체 원시 이메일을 읽을 수 있는 스트림을 수신합니다.</p>
+	<p>두 번째 기능의 경우에도 Workers 플랫폼을 살펴보면 <a href="https://developers.cloudflare.com/analytics/analytics-engine/?ref=blog.cloudflare.com" target="_blank">Workers Analytics 엔진</a>을 확인할 수 있습니다. 보고서의 내용과 이후에 수행하려는 쿼리에 따라 적절한 스키마를 정의하기만 하면 됩니다. 그런 다음 <a href="https://developers.cloudflare.com/analytics/graphql-api/?ref=blog.cloudflare.com" target="_blank">GraphQL</a> 또는 <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/?ref=blog.cloudflare.com" target="_blank">SQL</a> API를 사용하여 데이터를 쿼리할 수 있습니다.</p>
+	<p>세 번째 기능의 경우 <a href="https://www.cloudflare.com/en-gb/products/r2/?ref=blog.cloudflare.com" target="_blank">R2</a> 개체 스토리지만 살펴보면 됩니다. Worker에서 R2를 액세스하는 것은 <a href="https://developers.cloudflare.com/r2/examples/demo-worker/?ref=blog.cloudflare.com" target="_blank">단순</a>합니다. 이메일에서 보고서를 추출한 후 나중을 위해 R2에 저장합니다.</p>
 	<p>이 기능을 영역에서 사용할 수 있는 관리형 서비스로 구축했고 편의성을 위해 대시보드 인터페이스에 추가했지만, 실제로는 서버, 확장성 성능을 걱정할 필요 없이 자신의 계정에서 Cloudflare Workers상에 나만의 DMARC 보고서 프로세서를 배포할 수 있습니다.</p>
 	<h3 id="--1">아키텍처</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-16-at-4.18.08-PM.png" class="kg-image"></figure>
-	<p><a href="https://developers.cloudflare.com/email-routing/email-workers/" target="_blank">Email Workers</a>는 이메일 라우팅 제품의 주요 기능입니다. 이메일 라우팅 구성 요소는 모든 노드에서 실행되므로 어떤 노드에서도 수신 이메일을 처리할 수 있으며, 이는 모든 Cloudflare 데이터 센터의 Email 수신 BGP 접두사를 알려주므로 중요합니다. Email Worker에 이메일을 보내는 것은 이메일 라우팅 대시보드에서 규칙을 설정하는 것만큼 쉽습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--3.png" class="kg-image"></figure>
-	<p>이메일 라우팅 구성 요소가 Worker에 전달할 규칙과 일치하는 이메일을 수신하면, 최근에 오픈 소스로 지원하고 모든 노드에서도 실행되는 자사 버전의 <a href="https://github.com/cloudflare/workerd" target="_blank">workerd</a> 런타임에 연결됩니다. 이 상호 작용을 관장하는 RPC 스키마는 <a href="https://github.com/capnproto/capnproto" target="_blank">Capnproto</a> 스키마에 정의되어 있으며, 이메일 본문을 읽을 때 Edgeworker로 스트리밍될 수 있습니다. Worker 스크립트가 이 이메일로 전달하기로 결정한 경우 Edgeworker는 원본 요청에서 전송된 기능을 사용하여 이메일 라우팅에 연결합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-16-at-4.18.08-PM.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p><a href="https://developers.cloudflare.com/email-routing/email-workers/?ref=blog.cloudflare.com" target="_blank">Email Workers</a>는 이메일 라우팅 제품의 주요 기능입니다. 이메일 라우팅 구성 요소는 모든 노드에서 실행되므로 어떤 노드에서도 수신 이메일을 처리할 수 있으며, 이는 모든 Cloudflare 데이터 센터의 Email 수신 BGP 접두사를 알려주므로 중요합니다. Email Worker에 이메일을 보내는 것은 이메일 라우팅 대시보드에서 규칙을 설정하는 것만큼 쉽습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>이메일 라우팅 구성 요소가 Worker에 전달할 규칙과 일치하는 이메일을 수신하면, 최근에 오픈 소스로 지원하고 모든 노드에서도 실행되는 자사 버전의 <a href="https://github.com/cloudflare/workerd?ref=blog.cloudflare.com" target="_blank">workerd</a> 런타임에 연결됩니다. 이 상호 작용을 관장하는 RPC 스키마는 <a href="https://github.com/capnproto/capnproto?ref=blog.cloudflare.com" target="_blank">Capnproto</a> 스키마에 정의되어 있으며, 이메일 본문을 읽을 때 Edgeworker로 스트리밍될 수 있습니다. Worker 스크립트가 이 이메일로 전달하기로 결정한 경우 Edgeworker는 원본 요청에서 전송된 기능을 사용하여 이메일 라우팅에 연결합니다.</p>
 	<pre><code class="language-js">jsg::Promise&lt;void&gt; ForwardableEmailMessage::forward(kj::String rcptTo, jsg::Optional&lt;jsg::Ref&lt;Headers&gt;&gt; maybeHeaders) {
   auto req = emailFwdr-&gt;forwardEmailRequest();
   req.setRcptTo(rcptTo);
@@ -75,19 +75,19 @@
 	<pre><code>const accountInfoRaw = await env.KV_DMARC_REPORTS.get(dmarc:${ruaID})
 </code></pre>
 	<ol start="3">
-		<li>이 시점에서 전체 이메일을 구문 분석하기 위해 arrayBuffer로 읽어야 합니다. 보고서의 크기에 따라 무료 Workers 요금제의 한도에 도달할 수 있습니다. 이 경우 문제가 없는 <a href="https://www.cloudflare.com/en-gb/workers-unbound-beta/" target="_blank">Workers Unbound</a> 리소스 모델로 전환하는 것이 좋습니다.</li>
+		<li>이 시점에서 전체 이메일을 구문 분석하기 위해 arrayBuffer로 읽어야 합니다. 보고서의 크기에 따라 무료 Workers 요금제의 한도에 도달할 수 있습니다. 이 경우 문제가 없는 <a href="https://www.cloudflare.com/en-gb/workers-unbound-beta/?ref=blog.cloudflare.com" target="_blank">Workers Unbound</a> 리소스 모델로 전환하는 것이 좋습니다.</li>
 	</ol>
 	<pre><code>const rawEmail = new Response(message.raw)
 const arrayBuffer = await rawEmail.arrayBuffer()
 </code></pre>
 	<ol start="4">
-		<li>원시 이메일 구문 분석에는 무엇보다도 MIME 부분의 구문 분석이 포함됩니다. 구문 분석 수행에 사용할 수 있는 여러 라이브러리가 있습니다. 예를 들어, <a href="https://www.npmjs.com/package/postal-mime" target="_blank">postal-mime</a>을 사용할 수 있습니다.</li>
+		<li>원시 이메일 구문 분석에는 무엇보다도 MIME 부분의 구문 분석이 포함됩니다. 구문 분석 수행에 사용할 수 있는 여러 라이브러리가 있습니다. 예를 들어, <a href="https://www.npmjs.com/package/postal-mime?ref=blog.cloudflare.com" target="_blank">postal-mime</a>을 사용할 수 있습니다.</li>
 	</ol>
 	<pre><code>const parser = new PostalMime.default()
 const email = await parser.parse(arrayBuffer)
 </code></pre>
 	<ol start="5">
-		<li>이메일을 구문 분석했으므로 이제 첨부 파일에 액세스할 수 있습니다. 이 첨부 파일은 DMARC 보고서 자체이며 압축할 수 있습니다. 장기 보관을 위해 가장 먼저 압축된 형태로 <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/" target="_blank">R2</a>에 저장합니다. 이들 에메일은 이후 관심이 있는 보고서를 재처리하거나 조사할 때 유용하게 사용할 수 있습니다. 이 작업은 R2 바인딩에서 put()을 호출하는 것만큼 간단합니다. 이후 쉽게 검색할 수 있도록 현재 시간을 기준으로 보고서 파일을 여러 디렉터리에 분산하는 것을 권장합니다.</li>
+		<li>이메일을 구문 분석했으므로 이제 첨부 파일에 액세스할 수 있습니다. 이 첨부 파일은 DMARC 보고서 자체이며 압축할 수 있습니다. 장기 보관을 위해 가장 먼저 압축된 형태로 <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/?ref=blog.cloudflare.com" target="_blank">R2</a>에 저장합니다. 이들 에메일은 이후 관심이 있는 보고서를 재처리하거나 조사할 때 유용하게 사용할 수 있습니다. 이 작업은 R2 바인딩에서 put()을 호출하는 것만큼 간단합니다. 이후 쉽게 검색할 수 있도록 현재 시간을 기준으로 보고서 파일을 여러 디렉터리에 분산하는 것을 권장합니다.</li>
 	</ol>
 	<pre><code>await env.R2_DMARC_REPORTS.put(
     `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${attachment.filename}`,
@@ -96,10 +96,10 @@ const email = await parser.parse(arrayBuffer)
 </code></pre>
 	<ol start="6">
 		<li>
-			<p>이제 첨부 파일 mime 유형을 살펴볼 필요가 있습니다. DMARC 보고서의 원시 형식은 XML이지만, 압축할 수 있습니다. 이 경우 먼저 보고서의 압축을 풀어야 합니다. DMARC 리포터 파일은 여러 압축 알고리즘을 사용할 수 있습니다. 어떤 알고리즘을 사용하는지 MIME 유형으로 확인합니다.<a href="https://en.wikipedia.org/wiki/Zlib" target="_blank">Zlib</a>로 압축된 보고서의 경우 <a href="https://www.npmjs.com/package/pako" target="_blank">pako</a>를 사용할 수 있고 ZIP으로 압축된 보고서의 경우 <a href="https://www.npmjs.com/package/unzipit" target="_blank">unzipit</a>를 선택하는 것이 좋습니다.</p>
+			<p>이제 첨부 파일 mime 유형을 살펴볼 필요가 있습니다. DMARC 보고서의 원시 형식은 XML이지만, 압축할 수 있습니다. 이 경우 먼저 보고서의 압축을 풀어야 합니다. DMARC 리포터 파일은 여러 압축 알고리즘을 사용할 수 있습니다. 어떤 알고리즘을 사용하는지 MIME 유형으로 확인합니다.<a href="https://en.wikipedia.org/wiki/Zlib?ref=blog.cloudflare.com" target="_blank">Zlib</a>로 압축된 보고서의 경우 <a href="https://www.npmjs.com/package/pako?ref=blog.cloudflare.com" target="_blank">pako</a>를 사용할 수 있고 ZIP으로 압축된 보고서의 경우 <a href="https://www.npmjs.com/package/unzipit?ref=blog.cloudflare.com" target="_blank">unzipit</a>를 선택하는 것이 좋습니다.</p>
 		</li>
 		<li>
-			<p>보고서의 원시 XML 형식을 확보했다면 구문 분석할 때 <a href="https://www.npmjs.com/package/fast-xml-parser" target="_blank">fast-xml-parser</a>가 잘 작동한 것입니다. DMARC 보고서 XML의 모습은 다음과 같습니다.</p>
+			<p>보고서의 원시 XML 형식을 확보했다면 구문 분석할 때 <a href="https://www.npmjs.com/package/fast-xml-parser?ref=blog.cloudflare.com" target="_blank">fast-xml-parser</a>가 잘 작동한 것입니다. DMARC 보고서 XML의 모습은 다음과 같습니다.</p>
 		</li>
 	</ol>
 	<pre><code>&lt;feedback&gt;
@@ -149,14 +149,14 @@ const email = await parser.parse(arrayBuffer)
 &lt;/feedback&gt;
 </code></pre>
 	<ol start="8">
-		<li>이제 보고서의 데이터를 모두 손에 넣었습니다. 지금부터는 데이터를 표시하려는 방법에 따라 많이 달라집니다. Cloudflare의 목표는 보고서에서 추출한 의미 있는 데이터를 대시보드에 표시하는 것이었습니다. 그래서 풍부한 데이터를 푸시할 수 있는 분석 플랫폼이 필요했습니다. 그것이 바로 <a href="https://developers.cloudflare.com/analytics/analytics-engine/" target="_blank">Workers Analytics Engine</a>입니다. 이 분석 엔진을 사용하면 worker에서 데이터를 엔진으로 <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/#3-write-data-from-your-worker" target="_blank">전송</a>할 수 있고, <a href="https://developers.cloudflare.com/analytics/graphql-api/" target="_blank">GraphQL API</a>를 노출하여 이후 데이터와 상호 작용할 수 있으므로 이 작업에 완벽합니다. 여기까지가 바로 대시보드에 표시할 데이터를 얻는 방법입니다.</li>
+		<li>이제 보고서의 데이터를 모두 손에 넣었습니다. 지금부터는 데이터를 표시하려는 방법에 따라 많이 달라집니다. Cloudflare의 목표는 보고서에서 추출한 의미 있는 데이터를 대시보드에 표시하는 것이었습니다. 그래서 풍부한 데이터를 푸시할 수 있는 분석 플랫폼이 필요했습니다. 그것이 바로 <a href="https://developers.cloudflare.com/analytics/analytics-engine/?ref=blog.cloudflare.com" target="_blank">Workers Analytics Engine</a>입니다. 이 분석 엔진을 사용하면 worker에서 데이터를 엔진으로 <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/?ref=blog.cloudflare.com#3-write-data-from-your-worker" target="_blank">전송</a>할 수 있고, <a href="https://developers.cloudflare.com/analytics/graphql-api/?ref=blog.cloudflare.com" target="_blank">GraphQL API</a>를 노출하여 이후 데이터와 상호 작용할 수 있으므로 이 작업에 완벽합니다. 여기까지가 바로 대시보드에 표시할 데이터를 얻는 방법입니다.</li>
 	</ol>
 	<!--kg-card-end: markdown-->
-	<p>향후에는 보고서를 비동기적으로 처리하고 클라이언트가 처리를 완료할 때까지 기다리지 않도록 워크플로우에서 <a href="https://developers.cloudflare.com/queues/" target="_blank">Queues</a>를 통합하는 방안도 고려하고 있습니다.</p>
+	<p>향후에는 보고서를 비동기적으로 처리하고 클라이언트가 처리를 완료할 때까지 기다리지 않도록 워크플로우에서 <a href="https://developers.cloudflare.com/queues/?ref=blog.cloudflare.com" target="_blank">Queues</a>를 통합하는 방안도 고려하고 있습니다.</p>
 	<p>Workers 인프라에만 의존하여 엔드투엔드 방식으로 이 프로젝트를 구현했으므로 확장성, 성능, 스토리지, 보안 문제를 걱정하지 않고 단순하지 않은 앱을 구축하는 것이 가능하며 유리하다는 점을 증명했습니다.</p>
 	<h3 id="--2">오픈 소스</h3>
-	<p>앞서 언급했듯이 Cloudflaredptj는 활성화하여 사용할 수 있는 관리형 서비스를 구축했으므로 대신 관리해 드리겠습니다. 하지만 계정에서 직접 배포하신 후 자체 DMARC 보고서를 관리할 수도 있습니다. 쉽고 무료입니다. 이를 지원하기 위해 위에서 설명한 방식대로 DMARC 보고서를 처리하는 오픈 소스 버전의 Worker를 출시합니다. <a href="https://github.com/cloudflare/dmarc-email-worker" target="_blank">https://github.com/cloudflare/dmarc-email-worker</a></p>
-	<p>데이터를 표시할 대시보드가 없는 경우에도 Worker에서 분석 엔진을 <a href="https://developers.cloudflare.com/analytics/analytics-engine/worker-querying/" target="_blank">쿼리</a>할 수 있습니다. 또는 관계형 데이터베이스에 저장하려는 경우 <a href="https://developers.cloudflare.com/d1/platform/client-api/" target="_blank">D1</a>을 사용할 수 있습니다. 가능성은 무궁무진하며 이러한 도구로 무엇을 구축하실지 기대가 됩니다.</p>
+	<p>앞서 언급했듯이 Cloudflaredptj는 활성화하여 사용할 수 있는 관리형 서비스를 구축했으므로 대신 관리해 드리겠습니다. 하지만 계정에서 직접 배포하신 후 자체 DMARC 보고서를 관리할 수도 있습니다. 쉽고 무료입니다. 이를 지원하기 위해 위에서 설명한 방식대로 DMARC 보고서를 처리하는 오픈 소스 버전의 Worker를 출시합니다. <a href="https://github.com/cloudflare/dmarc-email-worker?ref=blog.cloudflare.com" target="_blank">https://github.com/cloudflare/dmarc-email-worker</a></p>
+	<p>데이터를 표시할 대시보드가 없는 경우에도 Worker에서 분석 엔진을 <a href="https://developers.cloudflare.com/analytics/analytics-engine/worker-querying/?ref=blog.cloudflare.com" target="_blank">쿼리</a>할 수 있습니다. 또는 관계형 데이터베이스에 저장하려는 경우 <a href="https://developers.cloudflare.com/d1/platform/client-api/?ref=blog.cloudflare.com" target="_blank">D1</a>을 사용할 수 있습니다. 가능성은 무궁무진하며 이러한 도구로 무엇을 구축하실지 기대가 됩니다.</p>
 	<p>기여해 주시고 직접 만들어시면 귀 기울여 듣겠습니다.</p>
 	<h3 id="--3">마지막 한마디</h3>
 	<p>이 게시물을 통해 Workers 플랫폼에 대한 이해가 한층 더 깊어졌기를 바랍니다. 현재 Cloudflare는 이 플랫폼을 활용하여 당사 서비스 대부분을 구축하고 있으며 귀사에서도 가능하다고 생각합니다.</p>

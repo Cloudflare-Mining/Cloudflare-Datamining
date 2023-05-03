@@ -1,44 +1,44 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/DDoS-protection-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>이번 주말에는 기록적인 <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/?ref=blog.cloudflare.com" target="_blank">DDoS 공격</a>이 발생했습니다. 주말 동안 Cloudflare에서는 수십 건의 <em>초대규모</em> DDoS 공격을 감지하고 완화했습니다. 대부분의 공격은 초당 5,000만~7,000만 요청(rps) 범위에서 정점을 찍었으며, 가장 큰 공격은 7,100만 rps를 초과했습니다. 이는 사상 최대 규모의 HTTP DDoS 공격으로, 2022년 6월에 보고된 이전 기록인 4,600만 rps보다 54% 이상 높은 수치입니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/DDoS-protection-1.png" class="kg-image"></figure>
+	<p>이번 주말에는 기록적인 <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS 공격</a>이 발생했습니다. 주말 동안 Cloudflare에서는 수십 건의 <em>초대규모</em> DDoS 공격을 감지하고 완화했습니다. 대부분의 공격은 초당 5,000만~7,000만 요청(rps) 범위에서 정점을 찍었으며, 가장 큰 공격은 7,100만 rps를 초과했습니다. 이는 사상 최대 규모의 HTTP DDoS 공격으로, 2022년 6월에 보고된 이전 기록인 4,600만 rps보다 54% 이상 높은 수치입니다.</p>
 	<p>이 공격은 HTTP/2 기반이었으며 Cloudflare에서 보호하는 웹 사이트를 표적으로 삼았습니다. 이 공격의 출처는 30,000여 개의 IP 주소였습니다. 공격을 받은 웹 사이트 중에는 인기 게임 공급자, 암호화폐 회사, 호스팅 공급자, 클라우드 컴퓨팅 플랫폼이 포함되어 있었습니다. 이 공격은 수많은 클라우드 공급자로부터 시작되었으며, 우리는 봇넷에 대처하기 위해 이들과 협력하고 있습니다.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-1.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-1.png" class="kg-image">
 		<figcaption>기록적인 공격: 초당 7,100만 요청을 초과하는 DDoS 공격<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
 	</figure>
-	<p>지난 한 해 동안 클라우드 컴퓨팅 공급자로부터 시작된 공격이 더 많이 발생했습니다. 따라서 우리는 자체 자율 시스템을 소유한 서비스 공급자에게 <a href="https://blog.cloudflare.com/botnet-threat-feed-for-isp/">무료 봇넷 위협 피드</a>를 제공할 예정입니다. 이 피드는 서비스 공급자에게 자체 IP 공간에 대한 위협 인텔리전스, 즉 자율 시스템 내에서 발생하는 공격에 대한 정보를 제공합니다. 자체 IP 공간을 운영하는 서비스 공급자는 이제 초기 액세스 대기자 명단에 <a href="https://www.cloudflare.com/lp/botnet-threat-feed/?ref=blog.cloudflare.com" target="_blank">등록</a>할 수 있습니다.</p>
+	<p>지난 한 해 동안 클라우드 컴퓨팅 공급자로부터 시작된 공격이 더 많이 발생했습니다. 따라서 우리는 자체 자율 시스템을 소유한 서비스 공급자에게 <a href="https://blog.cloudflare.com/botnet-threat-feed-for-isp/">무료 봇넷 위협 피드</a>를 제공할 예정입니다. 이 피드는 서비스 공급자에게 자체 IP 공간에 대한 위협 인텔리전스, 즉 자율 시스템 내에서 발생하는 공격에 대한 정보를 제공합니다. 자체 IP 공간을 운영하는 서비스 공급자는 이제 초기 액세스 대기자 명단에 <a href="https://www.cloudflare.com/lp/botnet-threat-feed/" target="_blank">등록</a>할 수 있습니다.</p>
 	<h3 id="-killnet-">이것이 슈퍼볼이나 Killnet과 관련이 있나요?</h3>
 	<p>아니요. 이 공격 캠페인은 <a href="https://blog.cloudflare.com/uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks/">의료 웹 사이트를 표적으로 삼은 Killnet DDoS 캠페인</a> 이후 2주도 채 지나지 않은 시점에 발생했습니다. 공격 방법과 대상을 고려할 때, 최근의 공격은 의료 캠페인과 관련이 없다고 생각됩니다. 또한, 어제 미국 슈퍼볼이 열렸기 때문에 이번 공격 캠페인이 게임 이벤트와 관련이 있다고 생각되지도 않습니다.</p>
 	<h3 id="ddos-">DDoS 공격이란 무엇일까요?</h3>
-	<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/?ref=blog.cloudflare.com" target="_blank">분산 서비스 거부 공격</a> 은 인터넷 자산을 다운시켜 사용자가 사용할 수 없게 만드는 것을 목표로 하는 사이버 공격입니다. 이러한 유형의 사이버 공격은 보호되지 않은 웹 사이트를 대상으로 매우 효율적일 수 있으며 공격을 실행하는 비용이 아주 저렴할 수 있습니다. </p>
-	<p>HTTP DDoS 공격에는 일반적으로 공격 대상 웹 사이트를 향한 <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack/?ref=blog.cloudflare.com" target="_blank">HTTP 요청</a>의 폭주가 수반됩니다. 공격자의 목적은 웹 사이트가 처리할 수 있는 것보다 더 많은 요청을 쏟아붓는 것입니다. 요청이 충분히 많으면 웹 사이트 서버에서는 <em>합법적인 </em>사용자 요청과 함께 모든 공격 요청을 처리할 수 없게 됩니다. 사용자는 웹 사이트 로딩 지연과 제한 시간 초과를 겪고, 결국 원하는 웹 사이트에 전혀 연결할 수 없는 상황을 경험하게 됩니다. </p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-2.png" class="kg-image" alt="" loading="lazy">
+	<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">분산 서비스 거부 공격</a> 은 인터넷 자산을 다운시켜 사용자가 사용할 수 없게 만드는 것을 목표로 하는 사이버 공격입니다. 이러한 유형의 사이버 공격은 보호되지 않은 웹 사이트를 대상으로 매우 효율적일 수 있으며 공격을 실행하는 비용이 아주 저렴할 수 있습니다. </p>
+	<p>HTTP DDoS 공격에는 일반적으로 공격 대상 웹 사이트를 향한 <a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack/" target="_blank">HTTP 요청</a>의 폭주가 수반됩니다. 공격자의 목적은 웹 사이트가 처리할 수 있는 것보다 더 많은 요청을 쏟아붓는 것입니다. 요청이 충분히 많으면 웹 사이트 서버에서는 <em>합법적인 </em>사용자 요청과 함께 모든 공격 요청을 처리할 수 없게 됩니다. 사용자는 웹 사이트 로딩 지연과 제한 시간 초과를 겪고, 결국 원하는 웹 사이트에 전혀 연결할 수 없는 상황을 경험하게 됩니다. </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-2.png" class="kg-image">
 		<figcaption>DDoS 공격 예시</figcaption>
 	</figure>
-	<p>공격자는 공격을 더 크고 복잡하게 만들려고 일반적으로 봇 네트워크(<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/?ref=blog.cloudflare.com" target="_blank"><em>봇넷</em></a>)를 활용합니다. 공격자는 봇넷을 오케스트레이션하여 피해자의 웹 사이트에 HTTP 요청을 쏟아붓습니다. 봇넷이 충분히 크고 강력할 경우 이 사례에서처럼 아주 큰 규모의 공격을 실행할 수 있습니다.</p>
+	<p>공격자는 공격을 더 크고 복잡하게 만들려고 일반적으로 봇 네트워크(<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/" target="_blank"><em>봇넷</em></a>)를 활용합니다. 공격자는 봇넷을 오케스트레이션하여 피해자의 웹 사이트에 HTTP 요청을 쏟아붓습니다. 봇넷이 충분히 크고 강력할 경우 이 사례에서처럼 아주 큰 규모의 공격을 실행할 수 있습니다.</p>
 	<p>하지만 봇넷을 구축하고 운영하려면 많은 투자를 해야 하고 전문 지식이 있어야 합니다. 평범한 사람이라면 어떻게 하나요? 웹 사이트를 대상으로 DDoS 공격을 시작하려는 일반 사용자라면 처음부터 시작할 필요가 없습니다. 월 30달러의 저렴한 비용으로 수많은 서비스형 DDoS 플랫폼 중 하나를 고용할 수 있습니다. 더 많은 비용을 지불할수록 더 규모가 크고 더 긴 공격을 실행할 수 있습니다.</p>
 	<h3 id="-ddos-">왜 DDoS 공격일까요?</h3>
 	<p>지난 몇 년 동안 공격자 및 청부 공격자를 고용한 공격자들이 DDoS 공격을 더 쉽고 저렴하게, 더 접근이 쉽게 시작할 수 있게 되었습니다. 하지만 공격자들이 쉽게 공격할 수 있게 된 만큼, 우리는 모든 규모의 조직에서 방어자들이 모든 유형의 DDoS 공격으로부터 더욱 쉽게 그리고 무료로 자체를 보호할 수 있도록 하려고 노력합니다. </p>
-	<p><a href="https://www.cloudflare.com/learning/security/ransomware/what-is-ransomware/?ref=blog.cloudflare.com" target="_blank">랜섬웨어</a> 공격과는 달리 <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/?ref=blog.cloudflare.com" target="_blank">랜섬 DDoS 공격</a>에는 공격 대상 네트워크에 실제로 시스템 침입을 하거나 거점을 확보할 필요가 없습니다. 일반적으로 랜섬웨어 공격은 직원이 맬웨어를 설치하고 전파하는 이메일 링크를 순진하게 클릭하는 순간 시작됩니다. DDoS 공격은 그럴 필요가 없습니다. 히트앤런 공격과 비슷합니다. DDoS 공격자는 웹 사이트의 주소 및/또는 IP 주소만 알면 됩니다.</p>
+	<p><a href="https://www.cloudflare.com/learning/security/ransomware/what-is-ransomware/" target="_blank">랜섬웨어</a> 공격과는 달리 <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">랜섬 DDoS 공격</a>에는 공격 대상 네트워크에 실제로 시스템 침입을 하거나 거점을 확보할 필요가 없습니다. 일반적으로 랜섬웨어 공격은 직원이 맬웨어를 설치하고 전파하는 이메일 링크를 순진하게 클릭하는 순간 시작됩니다. DDoS 공격은 그럴 필요가 없습니다. 히트앤런 공격과 비슷합니다. DDoS 공격자는 웹 사이트의 주소 및/또는 IP 주소만 알면 됩니다.</p>
 	<h3 id="ddos--1">DDoS 공격이 증가했나요?</h3>
 	<p>예. 지난 몇 달 동안 공격의 규모, 정교함, 빈도가 증가하고 있습니다. 최근 <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-2022-q4-ko-kr/">DDoS 위협 보고서</a>에서 HTTP DDoS 공격의 양이 전년 대비 79% 증가한 것을 확인했습니다. 또한 100Gbps를 초과하는 볼류메트릭 공격의 양은 전 분기 대비 67% 증가했으며, 3시간 이상 지속되는 공격의 수는 전 분기 대비 87% 증가했습니다.</p>
-	<p>하지만 여기서 끝이 아닙니다. 공격자들은 점점 더 대담해지고 있습니다. 최신 DDoS 위협 보고서에서 우리는 <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/?ref=blog.cloudflare.com" target="_blank">랜섬 DDoS 공격</a>이 연중 꾸준히 증가했음을 확인했습니다. 2022년 11월에는 조사 대상 고객 4명 중 1명이 랜섬 DDoS 공격을 받거나 위협을 받은 적이 있다고 답해 공격이 정점을 찍었습니다.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-3.png" class="kg-image" alt="" loading="lazy">
+	<p>하지만 여기서 끝이 아닙니다. 공격자들은 점점 더 대담해지고 있습니다. 최신 DDoS 위협 보고서에서 우리는 <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">랜섬 DDoS 공격</a>이 연중 꾸준히 증가했음을 확인했습니다. 2022년 11월에는 조사 대상 고객 4명 중 1명이 랜섬 DDoS 공격을 받거나 위협을 받은 적이 있다고 답해 공격이 정점을 찍었습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-3.png" class="kg-image">
 		<figcaption>월별 랜섬 DDoS 공격 분포</figcaption>
 	</figure>
 	<h3 id="ddos--2">DDoS 공격을 우려해야 하나요?</h3>
 	<p>예. 웹 사이트, 서버,는 네트워크가 자동 감지 및 완화 기능을 제공하는 클라우드 서비스를 사용하여 볼류메트릭 DDoS 공격으로부터 보호되지 않는다면 이를 고려하는 것을 적극 권장합니다. </p>
 	<p>Cloudflare 고객은 우려할 필요는 없지만, 이를 인지하고 대비해야 합니다. 다음은 보안 상태를 최적화하기 위한 권장 조치 목록입니다.</p>
 	<h3 id="ddos--3">DDoS 공격을 방어하려면 어떤 조치를 취해야 하나요?</h3>
-	<p>Cloudflare의 시스템에서는 이러한 DDoS 공격을 자동으로 감지하고 <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation/?ref=blog.cloudflare.com" target="_blank">완화</a>해 왔습니다. </p>
+	<p>Cloudflare의 시스템에서는 이러한 DDoS 공격을 자동으로 감지하고 <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation/" target="_blank">완화</a>해 왔습니다. </p>
 	<p>Cloudflare에서는 고객이 이미 액세스 권한이 있지만 사용하지 않을 수 있는 많은 기능을 제공합니다. 따라서 추가적인 예방 조치로 이러한 기능을 활용하여 보안 상태를 개선하고 최적화하는 것을 권장합니다.</p>
 	<ol>
-		<li>최적의 DDoS 활성화를 위해 <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/?ref=blog.cloudflare.com" target="_blank">DDoS 관리형 규칙</a>이 모두 기본 설정(고감도 수준 및 완화 조치)으로 설정되어 있는지 확인합니다.</li>
-		<li>고급 DDoS 보호 서비스에 가입한 Cloudflare Enterprise 고객은 고유한 트래픽 패턴을 기반으로 공격을 더욱 지능적으로 완화하는 <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/?ref=blog.cloudflare.com" target="_blank">적응형 DDoS 방어</a>를 활성화하는 것을 고려해야 합니다.</li>
-		<li><a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/?ref=blog.cloudflare.com" target="_blank">방화벽 규칙</a> 및 속도 <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/?ref=blog.cloudflare.com" target="_blank">레이트 리미팅 규칙</a>을 배포하여 포지티브 및 네거티브 보안 모델을 결합하여 적용합니다. 알려진 사용량에 따라 웹 사이트에 허용되는 트래픽을 줄이세요.</li>
-		<li>원본이 공용 인터넷에 노출되지 않도록 하세요(즉, <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/allow-cloudflare-ip-addresses/?ref=blog.cloudflare.com" target="_blank">Cloudflare IP 주소에 대한 액세스만 사용하도록 설정</a>). 추가적인 보안 예방 조치로, 과거에 직접 표적이 된 적이 있는 경우 호스팅 공급자에게 연락하여 새로운 원본 서버 IP를 요청하는 것을 권장합니다.</li>
-		<li><a href="https://developers.cloudflare.com/fundamentals/global-configurations/lists/ip-lists/?ref=blog.cloudflare.com#managed-ip-lists" target="_blank">관리형 IP 목록</a>에 액세스할 수 있는 고객은 방화벽 규칙에서 해당 목록을 활용하는 것을 고려해야 합니다. <a href="https://developers.cloudflare.com/bots/get-started/bm-subscription/?ref=blog.cloudflare.com" target="_blank">봇 관리</a>를 사용하는 고객은 방화벽 규칙 내에서 봇 점수를 활용하는 것을 고려해야 합니다.</li>
-		<li><a href="https://developers.cloudflare.com/cache/?ref=blog.cloudflare.com" target="_blank">캐싱</a>을 최대한 활성화하여 오리진 서버의 부담을 줄이고, <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Workers</a>를 사용할 때는 필요 이상으로 많은 하위 요청으로 원본 서버에 과부하가 걸리지 않도록 하세요.</li>
-		<li><a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/?ref=blog.cloudflare.com" target="_blank">DDoS 알림</a>을 활성화하여 응답 시간을 개선하세요.</li>
+		<li>최적의 DDoS 활성화를 위해 <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/" target="_blank">DDoS 관리형 규칙</a>이 모두 기본 설정(고감도 수준 및 완화 조치)으로 설정되어 있는지 확인합니다.</li>
+		<li>고급 DDoS 보호 서비스에 가입한 Cloudflare Enterprise 고객은 고유한 트래픽 패턴을 기반으로 공격을 더욱 지능적으로 완화하는 <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/" target="_blank">적응형 DDoS 방어</a>를 활성화하는 것을 고려해야 합니다.</li>
+		<li><a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/" target="_blank">방화벽 규칙</a> 및 속도 <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/" target="_blank">레이트 리미팅 규칙</a>을 배포하여 포지티브 및 네거티브 보안 모델을 결합하여 적용합니다. 알려진 사용량에 따라 웹 사이트에 허용되는 트래픽을 줄이세요.</li>
+		<li>원본이 공용 인터넷에 노출되지 않도록 하세요(즉, <a href="https://developers.cloudflare.com/fundamentals/get-started/setup/allow-cloudflare-ip-addresses/" target="_blank">Cloudflare IP 주소에 대한 액세스만 사용하도록 설정</a>). 추가적인 보안 예방 조치로, 과거에 직접 표적이 된 적이 있는 경우 호스팅 공급자에게 연락하여 새로운 원본 서버 IP를 요청하는 것을 권장합니다.</li>
+		<li><a href="https://developers.cloudflare.com/fundamentals/global-configurations/lists/ip-lists/#managed-ip-lists" target="_blank">관리형 IP 목록</a>에 액세스할 수 있는 고객은 방화벽 규칙에서 해당 목록을 활용하는 것을 고려해야 합니다. <a href="https://developers.cloudflare.com/bots/get-started/bm-subscription/" target="_blank">봇 관리</a>를 사용하는 고객은 방화벽 규칙 내에서 봇 점수를 활용하는 것을 고려해야 합니다.</li>
+		<li><a href="https://developers.cloudflare.com/cache/" target="_blank">캐싱</a>을 최대한 활성화하여 오리진 서버의 부담을 줄이고, <a href="https://workers.cloudflare.com/" target="_blank">Workers</a>를 사용할 때는 필요 이상으로 많은 하위 요청으로 원본 서버에 과부하가 걸리지 않도록 하세요.</li>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/" target="_blank">DDoS 알림</a>을 활성화하여 응답 시간을 개선하세요.</li>
 	</ol>
 	<h3 id="-ddos--1">다음 DDoS 공격에 대비하기</h3>
 	<p>DDoS 공격에 대한 방어는 모든 규모의 조직에 매우 중요합니다. 공격은 사람이 시작할 수도 있지만, 봇에 의해 실행되며, 게임에서 승리하려면 봇과 봇으로 싸워야 합니다. 감지 및 완화는 가능한 한 자동화되어야 합니다. 실시간으로 방어하는 데 사람에게만 의존하면 방어자가 불리한 상황에 처할 수 있기 때문입니다. Cloudflare의 자동화된 시스템은 고객을 위해 DDoS 공격을 지속해서 감지하고 완화하므로 고객이 직접 방어할 필요가 없습니다. 고객은 이처럼 자동화된 접근 방식과 광범위한 보안 기능을 결합하여 필요에 따라 보호 기능을 맞춤 설정할 수 있습니다.</p>

@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/1-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/1-1.png" class="kg-image"></figure>
 	<p>At Cloudflare, we produce all types of video content, ranging from recordings of our Weekly All-Hands to product demos. Being able to stream video on demand has two major advantages when compared to live video:</p>
 	<ol>
 		<li>It encourages asynchronous communication within the organization</li>
@@ -12,13 +12,13 @@
 		<li>Security: make sure the videos are access controlled and not publicly accessible</li>
 		<li>Authentication: ensure the application can only be accessed by Cloudflare employees</li>
 		<li>Tagging: allow the videos to be categorized so they can be found easily</li>
-		<li>Originless: build the entire backend using <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Workers</a> and <a href="https://www.cloudflare.com/products/cloudflare-stream/?ref=blog.cloudflare.com" target="_blank">Stream</a> so we don’t need separate infrastructure for encoding, storage and delivery</li>
+		<li>Originless: build the entire backend using <a href="https://workers.cloudflare.com/" target="_blank">Workers</a> and <a href="https://www.cloudflare.com/products/cloudflare-stream/" target="_blank">Stream</a> so we don’t need separate infrastructure for encoding, storage and delivery</li>
 	</ul>
 	<h3 id="securing-the-videos-using-signed-urls">Securing the videos using signed URLs</h3>
 	<p>Every video uploaded to Cloudflare Stream can be locked down by requiring signed URLs. A Stream video can be marked as requiring signed URLs using the UI or by making an API call:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/2-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/2-2.png" class="kg-image"></figure>
 	<p>Once locked down in this way videos can’t be accessed directly. Instead, they can only be accessed using a temporary token.</p>
-	<p>In order to create signed tokens, we must first make an <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys?ref=blog.cloudflare.com#12345682" target="_blank">API call</a> to create a key:</p>
+	<p>In order to create signed tokens, we must first make an <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys#12345682" target="_blank">API call</a> to create a key:</p>
 	<pre><code>curl -X POST -H "X-Auth-Email: {$EMAIL}" -H "X-Auth-Key: {$AUTH_KEY}"  "https://api.cloudflare.com/client/v4/accounts/{$ACCOUNT_ID}/media/keys"</code></pre>
 	<p>The API call will return a JSON object similar to this:</p>
 	<pre><code>{
@@ -63,7 +63,7 @@ var exp_time = Math.round((new Date()).getTime() / 1000)+3600;
 	<h3 id="fetching-video-data-using-workers">Fetching Video Data using Workers</h3>
 	<p>The heart of the UI is a list of videos. How do we get this list of videos programmatically? Stream provides an endpoint that returns all the videos and any metadata associated with them.</p>
 	<p>First, we set up environment variables for our Worker:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/3-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/3-3.png" class="kg-image"></figure>
 	<p>Next, we wrote a simple Workers function to call the Stream API and return a list of videos, eliminating the need for an origin:</p>
 	<pre><code>async function getVideos() {
     const headers = {
@@ -78,7 +78,7 @@ var exp_time = Math.round((new Date()).getTime() / 1000)+3600;
     return video_list;
 }</code></pre>
 	<p>Lastly, we set up a zone and within the zone, we set up a Worker routes pointing to our Workers script. This can be done from the Workers tab:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/4-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/4-2.png" class="kg-image"></figure>
 	<h3 id="authenticating-using-cloudflare-access">Authenticating using Cloudflare Access</h3>
 	<p>Finally, we want to restrict access to CloudflareTV to people within the organization. We can do this using Cloudflare Access, available under the <strong>Access</strong> tab.</p>
 	<p>To restrict access to CloudflareTV, we must do two things: </p>
@@ -87,17 +87,17 @@ var exp_time = Math.round((new Date()).getTime() / 1000)+3600;
 		<li>Add an access policy</li>
 	</ol>
 	<p>To add a new login method, click the “+” icon and choose your identity provider. In our case, we chose Google:<br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/5-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/5-1.png" class="kg-image"></figure>
 	<p>You will see a pop up asking for information including <strong>Client ID</strong> and <strong>Client Secret</strong>, both key pieces of information required to set up Google as the identity provider.</p>
 	<p>Once we add an identity provider, we want to tell Access “who specifically should be allowed to access our application?” This is done by creating an <strong>Access Policy.</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/6-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/6-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/7.png" class="kg-image"></figure>
 	<p>We set up an Access Policy to only allow emails ending in our domain name. This effectively makes CloudflareTV only accessible by our team!</p>
 	<h3 id="what-s-next">What’s next?</h3>
 	<p>If you have interesting ideas around video, Cloudflare Stream lets you focus on your idea while it handles storage, encoding and the viewing experience for your users. Coupled that with Access and Workers, you can build powerful applications. Here are the docs to help you get started:</p>
 	<ul>
-		<li><a href="https://developers.cloudflare.com/stream/getting-started/?ref=blog.cloudflare.com" target="_blank">Cloudflare Stream Developer Docs</a></li>
-		<li><a href="https://developers.cloudflare.com/access/setting-up-access/?ref=blog.cloudflare.com" target="_blank">Setting up Cloudflare Access</a></li>
-		<li><a href="https://developers.cloudflare.com/workers/quickstart?ref=blog.cloudflare.com" target="_blank">Workers Quick Start</a></li>
+		<li><a href="https://developers.cloudflare.com/stream/getting-started/" target="_blank">Cloudflare Stream Developer Docs</a></li>
+		<li><a href="https://developers.cloudflare.com/access/setting-up-access/" target="_blank">Setting up Cloudflare Access</a></li>
+		<li><a href="https://developers.cloudflare.com/workers/quickstart" target="_blank">Workers Quick Start</a></li>
 	</ul>
 </div>

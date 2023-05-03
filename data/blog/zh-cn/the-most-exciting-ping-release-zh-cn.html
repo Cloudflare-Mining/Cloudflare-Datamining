@@ -1,30 +1,30 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-35.png" class="kg-image" alt="Give us a ping. (Cloudflare) One ping only" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-35.png" class="kg-image" alt="Give us a ping. (Cloudflare) One ping only"></figure>
 	<p>Ping 诞生于 1983 年，当时互联网需要一种简单有效的方式来衡量可达性和距离。简而言之，ping（以及随后的实用工具，例如 traceroute 和 MTR）为用户提供了一种快捷方法，用于验证一台机器是否能与另一台机器通信。如今，这些网络实用工具已经无处不在。它们不仅是现在排除连接和网络性能问题的实际标准，而且还通过作为通用工具套件提高了我们的整体生活质量，几乎所有互联网用户都能在日常角色和职责中使用自如。</p>
 	<p>网络实用工具按预期运行对我们至关重要，特别是现在有越来越多客户在 Cloudflare 上构建自己的专用网络。现在有超过 10,000 个团队在 Cloudflare 上运行专用网络。这些团队中，有些是全球大型企业，有些是小团队，还有一些是业余爱好者，但他们都想知道，网络的可达性如何？</p>
-	<p>为此，今天我们很高兴地宣布，我们广泛使用的 Cloudflare Zero Trust 故障排除工具包将纳入对这些实用工具的支持。如何开始使用：<a href="https://forms.gle/gpfGAJW2jsxykC6y9?ref=blog.cloudflare.com" target="_blank">注册</a>即可获得测试版访问权限，并开始使用我们众所周知且钟爱的调试工具（例如 ping、traceroute 和 MTR）来测试与在 Tunnel 后面运行的专用网络目的地的连接性。</p>
+	<p>为此，今天我们很高兴地宣布，我们广泛使用的 Cloudflare Zero Trust 故障排除工具包将纳入对这些实用工具的支持。如何开始使用：<a href="https://forms.gle/gpfGAJW2jsxykC6y9" target="_blank">注册</a>即可获得测试版访问权限，并开始使用我们众所周知且钟爱的调试工具（例如 ping、traceroute 和 MTR）来测试与在 Tunnel 后面运行的专用网络目的地的连接性。</p>
 	<h2 id="cloudflare-zero-trust">Cloudflare Zero Trust</h2>
 	<p>利用 Cloudflare Zero Trust，在 Cloudflare 上构建自己的专用网络变得<a href="https://blog.cloudflare.com/zh-cn/ridiculously-easy-to-use-tunnels-zh-cn/">极其简单</a>。事实上，只需要三个步骤就可以开始使用。首先，下载 Cloudflare 的设备客户端 WARP，将您的用户连接到 Cloudflare。然后，创建身份和设备感知策略，确定哪些人能访问您网络中的哪些内容。最后，直接从 Zero Trust 仪表板上使用 Tunnel 将您的网络连接到 Cloudflare。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>我们将 Cloudflare Zero Trust 设计为您组织的单一管理面板。这意味着，只要部署了我们的 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust</a> 解决方案的<em>任何</em>部分，无论是 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/?ref=blog.cloudflare.com" target="_blank">ZTNA</a> 还是 <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/?ref=blog.cloudflare.com" target="_blank">SWG</a>，您都只需点击几下（而不是花费几个月时间），即可部署<a href="https://www.cloudflare.com/products/zero-trust/browser-isolation/?ref=blog.cloudflare.com" target="_blank">浏览器隔离</a>、<a href="https://www.cloudflare.com/products/zero-trust/dlp/?ref=blog.cloudflare.com" target="_blank">数据丢失防护</a>、<a href="https://www.cloudflare.com/products/zero-trust/casb/?ref=blog.cloudflare.com" target="_blank">云访问安全代理</a>和<a href="https://www.cloudflare.com/products/zero-trust/email-security/?ref=blog.cloudflare.com" target="_blank">电子邮件安全</a>。而市面上的其他解决方案可能需要不同的实现方式，或服务组合之间的互操作性受限，与我们形成了鲜明对比。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled-1.png" class="kg-image"></figure>
+	<p>我们将 Cloudflare Zero Trust 设计为您组织的单一管理面板。这意味着，只要部署了我们的 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 解决方案的<em>任何</em>部分，无论是 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">ZTNA</a> 还是 <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">SWG</a>，您都只需点击几下（而不是花费几个月时间），即可部署<a href="https://www.cloudflare.com/products/zero-trust/browser-isolation/" target="_blank">浏览器隔离</a>、<a href="https://www.cloudflare.com/products/zero-trust/dlp/" target="_blank">数据丢失防护</a>、<a href="https://www.cloudflare.com/products/zero-trust/casb/" target="_blank">云访问安全代理</a>和<a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank">电子邮件安全</a>。而市面上的其他解决方案可能需要不同的实现方式，或服务组合之间的互操作性受限，与我们形成了鲜明对比。</p>
 	<p>就是这么简单！但若想获得更多规范性指导，请观看我们下面的演示，开始使用：</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 54.961832061068705%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/3a8e2191f0580961e6320c2d24e01294/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F3a8e2191f0580961e6320c2d24e01294%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
 	<p>首先，请注册，抢先体验封闭测试。如有兴趣进一步了解其工作原理，以及我们未来还将推出其他哪些产品，请继续浏览下文。</p>
 	<h2 id="-">那么，这些网络实用工具实际上是如何运作的？</h2>
-	<p>Ping、traceroute 和 MTR 均由同一底层<a href="https://www.cloudflare.com/learning/network-layer/what-is-a-protocol/?ref=blog.cloudflare.com" target="_blank">协议</a> ICMP 提供支持。每个 <a href="https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/?ref=blog.cloudflare.com" target="_blank">ICMP</a> 消息都有 8 位类型和代码字段，定义消息的目的和语义。ICMP 有许多消息类型，例如前述网络诊断工具具体使用的消息类型是回显请求和回显应答。</p>
+	<p>Ping、traceroute 和 MTR 均由同一底层<a href="https://www.cloudflare.com/learning/network-layer/what-is-a-protocol/" target="_blank">协议</a> ICMP 提供支持。每个 <a href="https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/" target="_blank">ICMP</a> 消息都有 8 位类型和代码字段，定义消息的目的和语义。ICMP 有许多消息类型，例如前述网络诊断工具具体使用的消息类型是回显请求和回显应答。</p>
 	<p>每个 ICMP 消息都有类型、代码和校验和。您可能已经通过名字猜到了，回显应答是为响应收到的回显请求生成的，关键是，请求和应答的标识符 (ID) 和序列号是匹配的。请在心里牢记这一事实，因为这是下文有用的背景信息。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/ICMP-header-format.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/ICMP-header-format.png" class="kg-image"></figure>
 	<h2 id="ping-traceroute-mtr-">ping、traceroute 和 MTR 速成课程</h2>
 	<p>您可能会想，这些实用工具各自都有其独特的细微差别，但别担心。在讨论最根本的细节之前，我们将快速复习一下各个工具。</p>
 	<h3 id="ping">Ping</h3>
 	<p>Ping 的工作原理是向目的地发送一系列回显请求数据包。在发送方和目的地之间的每一个路由跃点，包含 ICMP 消息的 IP 数据包 TTL 字段会减少，并将数据包转发给下一个跃点。如果在到达目的地之前，某个跃点的 TTL 减至 0，或者没有下一跃点可以转发，则将向发送方返回一个 ICMP 错误消息：“超过 TTL”或“目的地主机不可达”。一个 ICMP 支持的目的地将接收这些回显请求数据包，并向发送方返回匹配的回显应答。返回过程中也会发生同样的路由过程和 TTL 递减。在发送方的机器上，ping 报告这些应答的最终 TTL，以及发送和接收 ICMP 消息到目的地的往返时延。利用这些信息，用户可以确定自己与源服务器之间的距离，可用网络跃点数或时间来衡量。</p>
 	<h3 id="traceroute-mtr">Traceroute 和 MTR</h3>
-	<p>如前文所述，ping 虽然有所帮助，但它提供的输出相对简单。它确实提供了一些有用的信息，但我们通常想用 traceroute 来跟进该请求，进一步了解到达指定目的地的具体路径。Traceroute 与 ping 类似，也是从发送 ICMP 回显请求开始。但它处理 TTL 的方式略有不同。您可以在我们的<a href="https://www.cloudflare.com/learning/?ref=blog.cloudflare.com" target="_blank">学习中心</a><a href="https://www.cloudflare.com/learning/network-layer/what-is-mtr/?ref=blog.cloudflare.com" target="_blank">进一步了解</a>为何如此，但关键要点是，这就是 traceroute 能够映射和捕获网络路径上每个唯一跃点的 IP 地址的原理。利用这些输出，traceroute 成为一个非常强大的工具，不仅可以了解一台机器<em>是否</em>可以与另一台机器连接，还可以了解它们是<em>如何</em>连接的。最后，我们将介绍 MTR。我们暂时将 traceroute 和 MTR 放在一起讲，因为它们的运作方式极其相似。简而言之，MTR 可输出 traceroute 能提供的一切信息，还能提供针对每个唯一跃点的一些额外的汇总统计。MTR 也会一直运行到明确停止，允许用户接收路径上每个跃点的统计平均值。</p>
+	<p>如前文所述，ping 虽然有所帮助，但它提供的输出相对简单。它确实提供了一些有用的信息，但我们通常想用 traceroute 来跟进该请求，进一步了解到达指定目的地的具体路径。Traceroute 与 ping 类似，也是从发送 ICMP 回显请求开始。但它处理 TTL 的方式略有不同。您可以在我们的<a href="https://www.cloudflare.com/learning/" target="_blank">学习中心</a><a href="https://www.cloudflare.com/learning/network-layer/what-is-mtr/" target="_blank">进一步了解</a>为何如此，但关键要点是，这就是 traceroute 能够映射和捕获网络路径上每个唯一跃点的 IP 地址的原理。利用这些输出，traceroute 成为一个非常强大的工具，不仅可以了解一台机器<em>是否</em>可以与另一台机器连接，还可以了解它们是<em>如何</em>连接的。最后，我们将介绍 MTR。我们暂时将 traceroute 和 MTR 放在一起讲，因为它们的运作方式极其相似。简而言之，MTR 可输出 traceroute 能提供的一切信息，还能提供针对每个唯一跃点的一些额外的汇总统计。MTR 也会一直运行到明确停止，允许用户接收路径上每个跃点的统计平均值。</p>
 	<h2 id="--1">检查与源站的连接性</h2>
 	<p>现在我们已经快速复习了一遍，那我们假设，我不能连接到我的专用应用程序服务器。由于我的 Zero Trust 账户启用了 ICMP 支持，我可以运行一个 traceroute，检查服务器是否在线。</p>
 	<p>下面举一个我们实验室环境中的简单示例：</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/ICMP-support-for-Warp-to-Tunnel_d.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/ICMP-support-for-Warp-to-Tunnel_d.png" class="kg-image"></figure>
 	<p>如果我的服务器在线，traceroute 应该输出如下内容：</p><!--kg-card-begin: markdown-->
 	<pre><code>traceroute -I 172.16.10.120
 traceroute to 172.16.10.120 (172.16.10.120), 64 hops max, 72 byte packets
@@ -33,7 +33,7 @@ traceroute to 172.16.10.120 (172.16.10.120), 64 hops max, 72 byte packets
  3  172.16.10.120 (172.16.10.120)  40.158 ms  55.719 ms  27.603 ms
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>我们来更深入地研究一下。这里，第一个跃点是 Cloudflare 数据中心，我的 Cloudflare WARP 设备通过我们的 <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network/?ref=blog.cloudflare.com" target="_blank">Anycast</a> 网络与之连接。请记住，这个 IP 可能会有所不同，取决于您的位置。第二个跃点将是运行 cloudflared 的服务器。最后一个跃点是我的应用程序服务器。</p>
+	<p>我们来更深入地研究一下。这里，第一个跃点是 Cloudflare 数据中心，我的 Cloudflare WARP 设备通过我们的 <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network/" target="_blank">Anycast</a> 网络与之连接。请记住，这个 IP 可能会有所不同，取决于您的位置。第二个跃点将是运行 cloudflared 的服务器。最后一个跃点是我的应用程序服务器。</p>
 	<p>相反，如果我不能连接到我的应用程序服务器，traceroute 预计会输出以下内容：</p><!--kg-card-begin: markdown-->
 	<pre><code>traceroute -I 172.16.10.120
 traceroute to 172.16.10.120 (172.16.10.120), 64 hops max, 72 byte packets
@@ -42,7 +42,7 @@ traceroute to 172.16.10.120 (172.16.10.120), 64 hops max, 72 byte packets
  3  * * *
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>在上述示例中，这意味着 ICMP 回显请求没有到达 cloudflared。为了排除故障，首先，我将检查 <a href="https://dash.teams.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">ZeroTrust 仪表板</a>中 Tunnel 的状态，确保 cloudflared 正在运行。然后，我将检查该 Tunnel 是否有通往目的地 IP 的路由，这可以查看仪表板中 Tunnel 表的“Routes”（路由）栏。如果没有，我将向我的 Tunnel 添加一条路由，看看这是否会改变我的 traceroute 输出。</p>
+	<p>在上述示例中，这意味着 ICMP 回显请求没有到达 cloudflared。为了排除故障，首先，我将检查 <a href="https://dash.teams.cloudflare.com/" target="_blank">ZeroTrust 仪表板</a>中 Tunnel 的状态，确保 cloudflared 正在运行。然后，我将检查该 Tunnel 是否有通往目的地 IP 的路由，这可以查看仪表板中 Tunnel 表的“Routes”（路由）栏。如果没有，我将向我的 Tunnel 添加一条路由，看看这是否会改变我的 traceroute 输出。</p>
 	<p>确认 cloudflared 正在运行，且 Tunnel 有通往我的应用程序服务器的路由后，traceroute 将显示以下内容：</p><!--kg-card-begin: markdown-->
 	<pre><code>raceroute -I 172.16.10.120
 traceroute to 172.16.10.120 (172.16.10.120), 64 hops max, 72 byte packets
@@ -54,7 +54,7 @@ traceroute to 172.16.10.120 (172.16.10.120), 64 hops max, 72 byte packets
 	<p>然而，我们看起来仍然不能完全到达应用程序服务器。这意味着，ICMP 回显请求到达了 cloudflared，但我的应用程序服务器没有返回回显应答。现在，我可以把问题缩小到我的应用程序服务器上，或者缩小到 cloudflared 和应用程序服务器之间的通信上。也许机器需要重启，或者存在一个防火墙规则，无论是哪种情况，我们都已经知道需要如何开始排除最后一个跃点的故障。在 ICMP 的支持下，我们现在有很多可用的网络工具来排除端到端的连接问题。</p>
 	<p>请注意，cloudflared 到源站的路由总是显示为一个单一跃点，即使它们之间有一个或多个路由器。这是因为 cloudflared 创建了自己对源站的回显请求，而不是转发原始数据包。我们将在下一节解释其背后的技术原因。</p>
 	<h2 id="-icmp-">是什么让 ICMP 流量独一无二？</h2>
-	<p>几个季度前，Cloudflare Zero Trust <a href="https://blog.cloudflare.com/zh-cn/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns-zh-cn/">也扩展了对 UDP</a> 端到端的支持。由于 UDP 和 ICMP 都是基于数据报的协议，在 Cloudflare 网络中，我们可以重新使用相同基础设施来代理 UDP 和 ICMP 流量。为此，我们在 Cloudflare 和您网络中的 cloudflared 实例之间使用 <a href="https://datatracker.ietf.org/doc/html/rfc9221?ref=blog.cloudflare.com" target="_blank">QUIC 数据报</a>，通过 QUIC 连接发送任一协议的单个数据报。</p>
+	<p>几个季度前，Cloudflare Zero Trust <a href="https://blog.cloudflare.com/zh-cn/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns-zh-cn/">也扩展了对 UDP</a> 端到端的支持。由于 UDP 和 ICMP 都是基于数据报的协议，在 Cloudflare 网络中，我们可以重新使用相同基础设施来代理 UDP 和 ICMP 流量。为此，我们在 Cloudflare 和您网络中的 cloudflared 实例之间使用 <a href="https://datatracker.ietf.org/doc/html/rfc9221" target="_blank">QUIC 数据报</a>，通过 QUIC 连接发送任一协议的单个数据报。</p>
 	<p>通过 UDP，我们为每对客户端/目的地建立和维护一个<em>会话</em>，我们就能在数据报中<strong>只</strong>发送 UDP 有效负载和一个会话标识符。我们就不需要在每个数据包中发送 UDP 有效负载应该转发的 IP 和端口。</p>
 	<p>然而，对于 ICMP，我们认为建立此类会话开销太大，因为端点之间通常只交换少量 ICMP 数据包。相反，我们把整个 IP 数据包（内含 ICMP 有效负载）作为一个单一数据报发送。</p>
 	<p>这意味着，cloudflared 可以从其接收的 IP 标头中读取 ICMP 数据包的目的地。虽然这向 cloudflared 传达了数据包的最终目的地，但要实际发送数据包，还有一些工作要做。Cloudflared 不能简单地将其接收的 IP 数据包不经修改即发送出去，因为数据包中的源 IP 仍然是<em>原始</em>客户端 IP，不可路由到 cloudflared 实例本身。</p>
@@ -65,7 +65,7 @@ traceroute to 172.16.10.120 (172.16.10.120), 64 hops max, 72 byte packets
 		<li>将 ICMP 有效负载发送到目的地，意味着 ICMP 数据包的源地址将是 cloudflared 可以绑定的网络接口的 IP。</li>
 		<li>cloudflared 收到这个地址的应答时，必须将收到的数据包的目的地地址（目的地，因为数据包的方向已反转）重写为原始客户端的源地址</li>
 	</ul>
-	<p>针对 <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/?ref=blog.cloudflare.com" target="_blank">TCP</a> 和 UDP 的类似网络地址转换一直都在进行，但它们的情况要容易很多，因为可以使用端口来解释源 IP 和目的地 IP 相同的情况。由于 ICMP 数据包没有与之关联的端口，我们需要寻找一种方法，将从上游收到的数据包映射回向 cloudflared 发送这些数据包的原始源。</p>
+	<p>针对 <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" target="_blank">TCP</a> 和 UDP 的类似网络地址转换一直都在进行，但它们的情况要容易很多，因为可以使用端口来解释源 IP 和目的地 IP 相同的情况。由于 ICMP 数据包没有与之关联的端口，我们需要寻找一种方法，将从上游收到的数据包映射回向 cloudflared 发送这些数据包的原始源。</p>
 	<p>例如，设想两个客户端 192.0.2.1 和 192.0.2.2 都向目的地 10.0.0.8 发送了一个 ICMP 回显请求。如前所述，cloudflared 必须将这些数据包的源 IP 重写为其可以绑定的源地址。在这种情况下，返回回显应答时，IP 标头将会相同：源 = 10.0.0.8 目的地 = &lt;cloudflared 的 IP&gt;。那么，cloudflared 如何确定需要将哪个数据包的目的地重写为 192.0.2.1，哪个重写为 192.0.2.2？</p>
 	<p>为了解决这一问题，我们使用 ICMP 数据包的字段来跟踪数据包流，与 TCP/UDP NAT 中使用端口的方式相同。为此我们将使用的字段是 Echo ID（回显 ID，回显标识符）。收到回显请求时，合规的 ICMP 端点将返回一个与请求中收到的 ID 相同的回显应答。这意味着，我们可以向来自 192.0.2.1 的数据包发送 ID 23，向来自 192.0.2.2 的数据包发送 ID 45，当我们收到 ID 为 23 和 45 的应答时，我们就知道哪一个数据包对应哪个原始源。</p>
 	<p>当然，这种策略只适用于 ICMP 回显请求，在可用的 ICMP 消息类型中，回显请求所占比例相对较小。然而，出于安全原因，再加上这些消息类型足以实现我们一直追求的无处不在的 ping 和 traceroute 功能，回显请求是我们目前唯一支持的消息类型。我们将在下一节从安全性角度讨论这一选择。</p>
@@ -77,9 +77,9 @@ traceroute to 172.16.10.120 (172.16.10.120), 64 hops max, 72 byte packets
 	<h3 id="darwin">Darwin</h3>
 	<p>Darwin（基于 UNIX 的核心组件集，构成了 macOS）上的过程也相似，我们也可以使用同样的系统调用 <em><strong>socket(PF_INET, SOCK_DGRAM, PROT_ICMP)</strong></em>。但有一个重要的区别。在 Darwin 上，内核并没有为这个套接字分配一个概念“端口”，因此，发送 ICMP 回显请求时，内核并没有像在 Linux 上那样重写回显 ID。此外，对我们更重要的是，内核并不使用回显 ID 对发送相应请求的套接字多路分解 ICMP 回显应答。这意味着，在 macOS 上，我们实际上需要手动重写回显 ID。在实践中，这意味着在 macOS 上，cloudflared 收到回显请求时，必须为目的地选择一个唯一的回显 ID。然后，Cloudflared 将一个（所选回显 ID，目的地 IP）的密钥添加到它随后维护的映射中，其值为（原始回显 ID，原始源 IP）。Cloudflared 将回显请求数据包中的回显 ID 重写为所选 ID，并将其转发给目的地。收到应答时，它能够使用源 IP 地址和回显 ID 来查找客户端地址和原始回显 ID，并在应答数据包中重写回显 ID 和目的地地址，然后将其转发回客户端。</p>
 	<h3 id="windows">Windows</h3>
-	<p>最后，我们来讨论 Windows，它方便地提供了一个 Win32 API IcmpSendEcho，发送回显请求并返回回显应答、超时或错误。对于 ICMPv6，我们只需要使用 Icmp6SendEcho。这些 API 是用 C 语言编写的，但 cloudflared 可以通过 CGO 顺利调用它们。如果您也需要在 Go 程序中调用这些 API，请<a href="https://github.com/cloudflare/cloudflared/blob/master/ingress/icmp_windows.go?ref=blog.cloudflare.com" target="_blank">查阅我们的包装</a>汲取灵感。</p>
+	<p>最后，我们来讨论 Windows，它方便地提供了一个 Win32 API IcmpSendEcho，发送回显请求并返回回显应答、超时或错误。对于 ICMPv6，我们只需要使用 Icmp6SendEcho。这些 API 是用 C 语言编写的，但 cloudflared 可以通过 CGO 顺利调用它们。如果您也需要在 Go 程序中调用这些 API，请<a href="https://github.com/cloudflare/cloudflared/blob/master/ingress/icmp_windows.go" target="_blank">查阅我们的包装</a>汲取灵感。</p>
 	<p>好了，介绍完毕！以上就是我们 1983 年以来最令人兴奋的 Ping 版本的构建过程。总的来说，我们非常兴奋地推出这一新功能，并迫不及待地想得到您的反馈，了解我们该如何继续改进我们未来的实现。</p>
 	<h2 id="--2">下一步</h2>
 	<p>支持这些基于 ICMP 的实用工具，只是我们思考如何改进我们的 Zero Trust 管理员体验的开端。我们的目标是继续提供工具，让识别网络内部影响连接性和性能的问题变得简单易行。</p>
-	<p>展望未来，我们计划在 Zero Trust 平台上增加更多精确工具，提高可观察性，例如推出<a href="https://blog.cloudflare.com/zh-cn/introducing-digital-experience-monitoring-zh-cn/">数字体验监测</a>，帮助用户主动监测并对不断变化的网络条件保持警惕。同时，立即<a href="https://dash.cloudflare.com/sign-up?ref=blog.cloudflare.com" target="_blank">注册</a>即可免费试用，尝试将 Zero Trust 控制应用于您的专用网络。</p>
+	<p>展望未来，我们计划在 Zero Trust 平台上增加更多精确工具，提高可观察性，例如推出<a href="https://blog.cloudflare.com/zh-cn/introducing-digital-experience-monitoring-zh-cn/">数字体验监测</a>，帮助用户主动监测并对不断变化的网络条件保持警惕。同时，立即<a href="https://dash.cloudflare.com/sign-up" target="_blank">注册</a>即可免费试用，尝试将 Zero Trust 控制应用于您的专用网络。</p>
 </div>
