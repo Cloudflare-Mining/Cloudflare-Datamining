@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/Upgrading-the-Cloudflare-China-Network-blog-header-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/Upgrading-the-Cloudflare-China-Network-blog-header-1.png" class="kg-image"></figure>
 	<p>Cloudflare 的使命是帮助构建更好的互联网，我们的核心使命是让我们的客户能够轻松地提高其数字资产的性能、安全性和可靠性，无论他们身在何处。这包括中国大陆。自 2015 年以来，Cloudflare 在中国就有客户使用我们的服务，最近，我们通过与中国互联网巨头京东的云部门京东云合作，扩大了我们在中国的业务。几年来，我们还在北京设立了当地办事处，这让我们对中国互联网格局以及当地客户有了深入的了解。</p>
 	<p>与京东云合作建立的新 Cloudflare 中国网络已上线数月，与之前的国内网络相比，性能和安全性有了显着提升。今天，我们很高兴地介绍我们对 DNS 和 DDoS 系统所做的改进，并提供数据来证明客户所看到的性能提升。所有获准在中国运营的客户现在都可以从这些创新中受益，只需单击 Cloudflare Dashboard 中的按钮或通过 API。</p>
 	<h2 id="-dns"><strong>在中国境内服务 DNS</strong></h2>
-	<p>我们是<a href="https://w3techs.com/technologies/overview/dns_server?ref=blog.cloudflare.com" target="_blank">最大的 DNS</a> 提供商，互联网上超过 14% 的域使用 Cloudflare 的名称服务器。此外，我们一直以成为<a href="https://dnsperf.com/?ref=blog.cloudflare.com" target="_blank">最快的权威名称服务器</a>而自豪，平均每秒回答约 1200 万次 DNS 查询（2021 年第二季度）。我们通过在 100 多个国家/地区的 200 多个城市的<a href="https://www.cloudflare.com/zh-cn/network/?ref=blog.cloudflare.com" target="_blank">全局网络</a>上运行我们的 DNS 平台来实现这种规模和性能。</p>
+	<p>我们是<a href="https://w3techs.com/technologies/overview/dns_server" target="_blank">最大的 DNS</a> 提供商，互联网上超过 14% 的域使用 Cloudflare 的名称服务器。此外，我们一直以成为<a href="https://dnsperf.com/" target="_blank">最快的权威名称服务器</a>而自豪，平均每秒回答约 1200 万次 DNS 查询（2021 年第二季度）。我们通过在 100 多个国家/地区的 200 多个城市的<a href="https://www.cloudflare.com/zh-cn/network/" target="_blank">全局网络</a>上运行我们的 DNS 平台来实现这种规模和性能。</p>
 	<p>不久前，中国大陆用户使用 Cloudflare DNS 访问网站并没有充分受益于这些优势。他们的 DNS 查询必须离开中国，而且在大多数情况下，要跨越太平洋才能到达我们在中国境外的名称服务器。这种网络距离会引入延迟，有时甚至会导致丢包，从而导致用户体验不佳。</p>
 	<p>借助基于京东云基础结构的全新中国网络产品，客户现在可以在中国大陆为其 DNS 提供服务。这意味着 DNS 查询由京东云入网点 (PoPs) 之一直接回答，从而加快响应时间并提高可靠性。</p>
 	<p>一旦用户注册了一个域并选择在中国为其 DNS 提供服务，我们将从以下三个域中的两个域中分配两个名称服务器：</p><!--kg-card-begin: markdown-->
@@ -12,7 +12,7 @@ cf-ns.net
 cf-ns.tech
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>我们选择这些顶级域名 (TLD) 是因为它们在中国大陆提供了最佳性能。它们被选择为始终与使用它们的域的 TLD 不同。例如，example.com 将使用 .tech 和 .net TLD 分配名称服务器。这为我们提供了客户名称服务器的“无胶委托”，允许我们动态返回名称服务器 IP 地址而不是<a href="https://en.wikipedia.org/wiki/Domain_Name_System?ref=blog.cloudflare.com#Circular_dependencies_and_glue_records" target="_blank">静态粘合记录</a>。</p>
+	<p>我们选择这些顶级域名 (TLD) 是因为它们在中国大陆提供了最佳性能。它们被选择为始终与使用它们的域的 TLD 不同。例如，example.com 将使用 .tech 和 .net TLD 分配名称服务器。这为我们提供了客户名称服务器的“无胶委托”，允许我们动态返回名称服务器 IP 地址而不是<a href="https://en.wikipedia.org/wiki/Domain_Name_System#Circular_dependencies_and_glue_records" target="_blank">静态粘合记录</a>。</p>
 	<p>“粘合记录”（或简称 “粘合”）是名称服务器和 IP 之间的映射，由Registrar 添加，用于在域使用具有相同 TLD 的域名服务器时打破循环查找依赖性。例如，假设一个解析器询问 .comTLD 域名服务器：“我在哪里可以找到 example.com 的名称服务器？” 并且此域使用 ns1.example.com 和 ns2.example.com 作为名称服务器。If .com仅需回复：“去问问 ns1.example.com 或 ns2.example.com。” 解析器会带着同样的问题回到 .com，这永远不会停止。一种解决方案是在 .com 上添加胶水，因此答案可以是：“example.com 的名称服务器是 ns1.example.com 和 ns2.example.com，它们可以在 192.0.2.78 和 203.0.113.55 上访问。 ”。</p>
 	<p>如上所述，通过使用不同的 TLD，我们不需要依赖客户名称服务器的粘合记录。通过这种方式，我们可以确保始终从最近的入网点 (PoP) 回答查询，从而实现更快的 DNS 响应。提供动态名称服务器 IP 的另一个优势是能够在不同的 PoP 之间分发查询，这有助于更有效地分散负载并缓解攻击。</p>
 	<h2 id="-ddos-"><strong>减轻中国境内的 DDoS 攻击</strong></h2>
@@ -29,13 +29,13 @@ cf-ns.tech
 	<p>通过从客户端到我们的京东云 PoPs 的往返时间 (RTT) 衡量，延迟在所有文件大小的测试中至少减少了 30%。这随后减少了我们的首字节时间 (TTFB) 指标。减少延迟—并使其更加一致，即改善抖动—对其他性能指标的影响最大，因为延迟和慢启动过程是绝大多数 TCP 连接的瓶颈。</p>
 	<p>我们减少延迟的原因在于京东云网络的质量、他们在中国境内的 PoPs 位置以及我们将客户引导至最近的 PoP 的能力。随着我们未来继续与京东云合作增加更多容量和 PoPs，我们只希望我们的延迟指标会变得更好。</p>
 	<h3 id="--1"><strong>动态内容</strong></h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image3-8.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image3-8.png" class="kg-image"></figure>
 	<h3 id="--2"><strong>静态内容</strong></h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image4-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image4-7.png" class="kg-image"></figure>
 	<h3 id="dns-"><strong>DNS 响应时间</strong></h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image2-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image2-12.png" class="kg-image"></figure>
 	<h2 id="--3"><strong>期待并欢迎中国的新客户</strong></h2>
 	<p>Cloudflare 与京东云合作，在中国持续进行产品投资，与 2015 年首次推出的国内网络相比，性能和安全性有了显着提升。</p>
 	<p>具体而言，DNS 和 DDoS 缓解技术的创新，以及改进的网络设计和 PoPs 分布，为我们的客户带来了更好的安全性，并将性能提升了至少 30%。</p>
-	<p>这个新网络已开始营业，感兴趣的客户应该<a href="https://www.cloudflare.com/zh-cn/china-network/?ref=blog.cloudflare.com" target="_blank">联系以了解更多信息</a>。</p>
+	<p>这个新网络已开始营业，感兴趣的客户应该<a href="https://www.cloudflare.com/zh-cn/china-network/" target="_blank">联系以了解更多信息</a>。</p>
 </div>

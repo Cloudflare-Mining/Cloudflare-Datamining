@@ -4,7 +4,7 @@
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><em><small>This blog was published on 17 September, 2021. As we continue to optimize our network we're publishing regular updates, which are available <a href="https://blog.cloudflare.com/tag/network-performance-update/">here</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image20.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image20.png" class="kg-image"></figure>
 	<p>During Speed Week we’ve talked a lot about services that make the web faster. <a href="https://blog.cloudflare.com/argo-v2/">Argo 2.0</a> for better routing around bad Internet weather, <a href="https://blog.cloudflare.com/orpheus/">Orpheus</a> to ensure that origins are reachable from anywhere, <a href="https://blog.cloudflare.com/announcing-cloudflare-images/">image optimization</a> to send just the right bits to the client, <a href="https://blog.cloudflare.com/orpheus/">Tiered Cache</a> to maximize cache hit rates and get the most out of Cloudflare’s new 25% bigger network, our expanded <a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane/">fiber backbone</a> and <a href="https://blog.cloudflare.com/tag/speed-week/">more</a>.</p>
 	<p>Those things are all great.</p>
 	<p>But it’s vital that we also measure the performance of our network and benchmark ourselves against industry players large and small to make sure we are providing the best, fastest service.</p>
@@ -26,10 +26,10 @@
 	<p>There are roughly 70,000 ASNs in the global Internet and during the measurement period we saw traffic from about 21,000 (exact number: 20,728) of them. This makes sense since not all networks are “external” (as in the source of traffic to websites); many ASNs are intermediaries moving traffic around the Internet.</p>
 	<p>For the rest of this blog we simply say “network” instead of “ASN”.</p>
 	<h3 id="what-we-measured">What we measured</h3>
-	<p>Getting real user measurement data used to be hard but has been made easy for HTTP endpoints thanks to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API?ref=blog.cloudflare.com" target="_blank">Resource Timing API</a>, supported by most modern browsers. This API allows a page to measure network timing data of fetched resources using high-resolution timestamps, accurate to 5 µs (microseconds).</p>
+	<p>Getting real user measurement data used to be hard but has been made easy for HTTP endpoints thanks to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API" target="_blank">Resource Timing API</a>, supported by most modern browsers. This API allows a page to measure network timing data of fetched resources using high-resolution timestamps, accurate to 5 µs (microseconds).</p>
 	<p>The point of this API is to get timing information that shows how a real end-user experiences the Internet (and not a synthetic test that might measure a single component of all the things that happen when a user browses the web).</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image16.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The Resource Timing API is supported by pretty<a href="https://caniuse.com/resource-timing?ref=blog.cloudflare.com" target="_blank"> much every browser</a> enabling measurement on everything from old versions of Internet Explorer, to mobile browsers on iOS and Android to the latest version of Chrome. Using this API gives us a view of real world use on real world browsers.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image16.png" class="kg-image"></figure>
+	<p>The Resource Timing API is supported by pretty<a href="https://caniuse.com/resource-timing" target="_blank"> much every browser</a> enabling measurement on everything from old versions of Internet Explorer, to mobile browsers on iOS and Android to the latest version of Chrome. Using this API gives us a view of real world use on real world browsers.</p>
 	<p>We don't just instruct the browser to download an image too. To make sure that we're fair and replicate the real-life end-user experience, we make sure that no local caching was involved in the request, check if the object has been compressed by the server or not, take the HTTP headers size into account, and record if the connection has been pre-warmed or not, to name a few technical details.</p>
 	<p>Here's a high-level example on how this works:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">await fetch("https://example.com/100KB.png?r=7562574954", {
@@ -66,7 +66,7 @@ performance.getEntriesByType("resource");
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>To measure the performance of each CDN we downloaded an image from each, when a browser visited one of our special pages. Once every image is downloaded we record the measurements using a <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a> based API.</p>
+	<p>To measure the performance of each CDN we downloaded an image from each, when a browser visited one of our special pages. Once every image is downloaded we record the measurements using a <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> based API.</p>
 	<h3 id="the-three-measurements-tcp-connection-time-ttfb-and-ttlb">The three measurements: TCP connection time, TTFB and TTLB</h3>
 	<p>We focused on three measurements to illustrate how fast our network is: TCP connection time, TTFB and TTLB. Here’s why those three values matter.</p>
 	<p>TCP connection time is used to show how well-connected we are to the global Internet as it counts only the time taken for a machine to establish a connection to the remote host (before any higher level protocols are used). The TCP connection time is calculated as connectEnd - connectStart (see the diagram above).</p>
@@ -78,10 +78,10 @@ performance.getEntriesByType("resource");
 	<p>As this blog contains a lot of data, let’s start with a detailed look at a chart of results. We compared ourselves against industry giants Google and Amazon CloudFront, industry pioneer Akamai and up and comer Fastly.</p>
 	<p>For each network (represented by an ASN) and for each CDN we calculated which CDN had the best performance. Here, for example, is a count of the number of networks on which each CDN had the best performance for TTFB. This particular chart shows p95 and includes data from the top 1,000 networks (by number of IPv4 addresses advertised).</p>
 	<p>In these charts, longer bars are better; the bars indicate the number of networks for which that CDN had the lowest TTFB at p95.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image6-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image6-12.png" class="kg-image"></figure>
 	<p>This shows that Cloudflare had the lowest time to first byte (the TTFB, or the time it took the first byte of content to reach their browser) at the 95th percentile for the largest number of networks in the top 1,000 (based on the number IPv4 addresses they advertise). Google was next, then Fastly followed by Amazon CloudFront and Akamai.</p>
 	<p>All three measures, TCP connection time, time to first byte and time to last byte, matter to the user experience. For this example, I focused on time to first byte (TTFB) because it’s such a common measure of responsiveness of the web. It’s literally the time it takes a web server to start responding to a request from a browser for a web page.</p>
-	<p>To understand the data we gathered let’s look at two large US-based ISPs: Cox and Comcast. Cox serves about <a href="https://newsroom.cox.com/company-overview?ref=blog.cloudflare.com" target="_blank">6.5 million customers</a> and Comcast has about <a href="https://www.cmcsa.com/news-releases/news-release-details/comcast-reports-4th-quarter-and-full-year-2020-results?ref=blog.cloudflare.com" target="_blank">30 million customers</a>. We performed roughly 22,000 measurements on Cox’s network and 100,000 on Comcast’s. Below we’ll make use of measurement counts to rank networks by their size, here we see that our measurements and customer counts of Cox and Comcast track nicely.</p>
+	<p>To understand the data we gathered let’s look at two large US-based ISPs: Cox and Comcast. Cox serves about <a href="https://newsroom.cox.com/company-overview" target="_blank">6.5 million customers</a> and Comcast has about <a href="https://www.cmcsa.com/news-releases/news-release-details/comcast-reports-4th-quarter-and-full-year-2020-results" target="_blank">30 million customers</a>. We performed roughly 22,000 measurements on Cox’s network and 100,000 on Comcast’s. Below we’ll make use of measurement counts to rank networks by their size, here we see that our measurements and customer counts of Cox and Comcast track nicely.</p>
 	<p>Cox Communications has ASN 22773 and our data shows that the p95 TTFB for the five CDNs was as follows: Cloudflare 332.6ms, Fastly 357.6ms, Google 380.3ms, Amazon CloudFront 404.4ms and Akamai 441.5ms. In this case Cloudflare was the fastest and about 7% faster than the next CDN (Fastly) which was faster than Google and so on.</p>
 	<p>Looking at Comcast (with ASN 7922) we see p95 TTFB was 323.7ms (Fastly), 324.2ms (Cloudflare), 353.7ms (Google), 384.6ms (Akamai) and 418.8ms (Amazon CloudFront). Here Fastly (323.7ms) edged out Cloudflare (324.2ms) by 0.2%.</p>
 	<p>Figures like these go into determining which CDN is the fastest for each network for this analysis and the charts presented. At a granular level they matter to Cloudflare as we can then target networks and connectivity for optimization.</p>
@@ -97,18 +97,18 @@ performance.getEntriesByType("resource");
 	<table>
 		<thead>
 			<tr>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image1-21.png" alt="image1-18" loading="lazy"></th>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image21-3.png" alt="image4-17" loading="lazy"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image1-21.png" alt="image1-18"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image21-3.png" alt="image4-17"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image7-6.png" alt="image7-3" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image14-3.png" alt="image11" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image7-6.png" alt="image7-3"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image14-3.png" alt="image11"></td>
 			</tr>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image11-3.png" alt="image14" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image4-20.png" alt="image21" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image11-3.png" alt="image14"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image4-20.png" alt="image21"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -118,18 +118,18 @@ performance.getEntriesByType("resource");
 	<table>
 		<thead>
 			<tr>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image2-26.png" alt="image2-23" loading="lazy"></th>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image6-11.png" alt="image6-7" loading="lazy"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image2-26.png" alt="image2-23"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image6-11.png" alt="image6-7"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image5-18.png" alt="image5-15" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image9-3.png" alt="image15-1" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image5-18.png" alt="image5-15"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image9-3.png" alt="image15-1"></td>
 			</tr>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image10-3.png" alt="image12-1" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image12-4.png" alt="image10" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image10-3.png" alt="image12-1"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image12-4.png" alt="image10"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -139,18 +139,18 @@ performance.getEntriesByType("resource");
 	<table>
 		<thead>
 			<tr>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image18-3.png" alt="image18" loading="lazy"></th>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image8-5.png" alt="image3-21" loading="lazy"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image18-3.png" alt="image18"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image8-5.png" alt="image3-21"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image3-24.png" alt="image8-2" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image9-3.png" alt="image13" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image3-24.png" alt="image8-2"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image9-3.png" alt="image13"></td>
 			</tr>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image17-3.png" alt="image17" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image13-3.png" alt="image9" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image17-3.png" alt="image17"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image13-3.png" alt="image9"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -162,7 +162,7 @@ performance.getEntriesByType("resource");
 	<h3 id="where-s-the-world-map">Where’s the world map?</h3>
 	<p>It’s very common to present data about Internet performance on maps. World maps look good but they obscure information. The reason is very simple: world maps show geography (and, depending on the projection, a very skewed version of the world’s actual countries and land masses).</p>
 	<p>Here’s an example world map with countries colored by who had the lowest TTLB at p95. Cloudflare is in orange, Amazon CloudFront in yellow, Google in purple, Akamai in red and Fastly in blue.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image19.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image19.png" class="kg-image"></figure>
 	<p>What that doesn’t show is population. And Cloudflare is interested in how well we perform for people. Consider Russia and Indonesia. Indonesia has double the population of Russia and about 1/10th of the land.</p>
 	<p>By focusing on networks we can optimize for the people who use the Internet. For example, Biznet is a major ISP in Indonesia with ASN 17451. Looking at TTFB at p95 (the same statistics we discussed earlier for US ISPs Cox and Comcast) we see that for Biznet users Cloudflare has the fastest p95 TTFB at 677.7ms, Fastly 744.0ms, Google 872.8ms, Amazon CloudFront 1,239.9 and Akamai 1,248.9ms.</p>
 	<h3 id="what-s-next">What’s next</h3>

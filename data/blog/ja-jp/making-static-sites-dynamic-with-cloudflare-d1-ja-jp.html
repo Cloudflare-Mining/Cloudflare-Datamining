@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-40.png" class="kg-image" alt="Making static sites dynamic with Cloudflare D1"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-40.png" class="kg-image" alt="Making static sites dynamic with Cloudflare D1" loading="lazy"></figure>
 	<h3 id="-">はじめに</h3>
 	<p>アプリケーションでデータを保存する方法はたくさんあります。例えば、Cloudflare Workersアプリケーションでは、キーバリューストレージとしてWorkers KVを、一貫性を損なわずにリアルタイムで連携したストレージとしてDurable Objectsを用意しています。Cloudflareのエコシステムの外側では、NoSQLやグラフデータベースなどの他のツールもプラグインできます。</p>
 	<p>それでも、SQLが欲しくなることがあります。インデックスを使えば、データを素早く取り出せるようになりますし、Joinにより、異なるテーブル間の複雑な関係を記述することができます。SQLは、アプリケーションのデータがどのように検証され、作成され、パフォーマンスよくクエリーが行われるかを宣言的に記述します。</p>
 	<p><a href="https://blog.cloudflare.com/d1-open-alpha">D1は本日、オープンアルファ版</a>がリリースされました。これを記念して、D1を使ってアプリを構築した体験を共有したいと思います。具体的には、構築の始め方と、D1がCloudflareでアプリを構築するためのツールの仲間入りを果たしたことに私がワクワクしている理由です。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-24.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-24.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>D1は、新しいツールを必要とすることなく、Cloudflareのエコシステム内でアプリケーションに即座に付加価値を与えることができる点で注目に値します。Wranglerを使えばWorkersアプリケーションをローカルで開発できますし、WranglerにD1が追加されたことで、きちんとしたステートフルなアプリケーションもローカルで開発できるようになりました。そして、アプリケーションをデプロイするとき、WranglerによりD1データベースとAPI自体にアクセスしてコマンドを実行することができるようになるのです。</p>
 	<h3 id="cloudflare-">Cloudflareが構築しているもの</h3>
 	<p>こののブログ記事では、D1を使って静的なブログサイトにコメントを追加する方法を紹介します。説明用に、新しいD1データベースを構築し、コメントの作成と取得を可能にする単純なJSON APIを構築します。</p>
@@ -112,8 +112,8 @@ create index idx_comments_post_id on comments (post_slug);
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>この例では、ブログのためのコメントAPIを構築しています。このD1のコメントAPIのソースについては、<a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api" target="_blank">cloudflare/templates/worker-d1-api</a>をご覧ください。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-31.png" class="kg-image"></figure>
+	<p>この例では、ブログのためのコメントAPIを構築しています。このD1のコメントAPIのソースについては、<a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api?ref=blog.cloudflare.com" target="_blank">cloudflare/templates/worker-d1-api</a>をご覧ください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-31.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--2">まとめ</h3>
 	<p>D1で最もエキサイティングなことの1つは、既存のアプリケーションやWebサイトをダイナミックなリレーショナルデータで強化できることです。Ruby on Railsの元開発者として、JavaScriptやサーバーレス開発ツールの世界において、このフレームワークが最も恋しくなるのは、データベースインフラストラクチャの管理の専門家でなくても、データ駆動型アプリケーションを迅速にフル回転させることができる点です。D1とSQLベースのデータへの容易なアクセスにより、パフォーマンスや開発者の体験を犠牲にすることなく、真のデータ駆動型アプリケーションを構築できます。</p>
 	<p>この変化は、ここ数年のHugoやGatsbyといったツールを使った静的サイトの出現にうまく対応しています。Hugoのような静的サイトジェネレータで構築されたブログは非常にパフォーマンスが高く、アセットサイズを小さくしつつ、ほんの数秒で構築できます。</p>
