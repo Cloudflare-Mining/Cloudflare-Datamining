@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-45.png" class="kg-image" alt="How Cloudflare implemented FIDO2 and Zero Trust to prevent phishing" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-45.png" class="kg-image" alt="How Cloudflare implemented FIDO2 and Zero Trust to prevent phishing"></figure>
 	<p>几年前，Cloudflare 的安全架构是一个经典的“城堡+护城河” VPN 架构。员工使用企业 VPN 连接到所有内部应用程序和服务器来完成他们的工作。我们使用基于时间的一次性密码(TOTP)执行双因素身份验证，在登录到 VPN 时使用 Google Authenticator 或 Authy 等身份验证应用，但只有少数内部应用程序具有第二层身份验证。这种架构貌似强大，但安全模型非常弱。最近，我们<a href="https://blog.cloudflare.com/zh-cn/2022-07-sms-phishing-attacks-zh-cn/">对一次被我们挫败的网络钓鱼攻击的机制</a>做了详细介绍， 其中说明了攻击者如何尝试入侵被 TOTP 等第二因素身份验证方法“保护”的应用程序。幸运的是，我们早就放弃了 TOTP，取而代之的是硬件安全密钥和 Cloudflare Access。本文详细介绍了我们是如何做到的。</p>
-	<p>网络钓鱼问题的解决方案是通过一个名为<em> FIDO2/WebAuthn </em>的<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication/?ref=blog.cloudflare.com" target="_blank">多因素身份验证 (MFA)</a>协议。所有 Cloudflare 员工都使用我们的 Zero Trust 产品，以 FIDO2 作为安全多因素和身份验证来登录我们的系统。我们的新架构具备防网络钓鱼能力，允许我们更容易地实施最少特权访问控制。</p>
+	<p>网络钓鱼问题的解决方案是通过一个名为<em> FIDO2/WebAuthn </em>的<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication/" target="_blank">多因素身份验证 (MFA)</a>协议。所有 Cloudflare 员工都使用我们的 Zero Trust 产品，以 FIDO2 作为安全多因素和身份验证来登录我们的系统。我们的新架构具备防网络钓鱼能力，允许我们更容易地实施最少特权访问控制。</p>
 	<h3 id="-">简单介绍一下安全密钥术语以及我们所用的安全密钥</h3>
-	<p>在 2018，我们希望迁移到防网络钓鱼的 MFA 机制。我们看到 <a href="https://github.com/kgretzky/evilginx2?ref=blog.cloudflare.com" target="_blank">evilginx2</a> 以及基于网络钓鱼推送到移动验证器的成熟程度，还有 TOTP。唯一能够抵御社会工程和凭据窃取攻击的防钓鱼 MFA 是采用 FIDO 标准的安全密钥。基于 FIDO2 的 MFA 引入了新的术语，如 FIDO2、WebAuthn、硬(件)密钥、安全密钥，特别是 YubiKey (一家知名硬件密钥制造商的名称)。我们将在本文中引用这些术语。</p>
-	<p><strong>WebAuthn</strong> 指<a href="https://www.w3.org/TR/webauthn-2/?ref=blog.cloudflare.com" target="_blank"> Web 身份验证标准</a>，当我们在 <a href="https://blog.cloudflare.com/cloudflare-now-supports-security-keys-with-web-authentication-webauthn/">Cloudflare 仪表板中推出对安全密钥的支持时</a>，我们曾撰文深入介绍过这种协议的工作原理。</p>
+	<p>在 2018，我们希望迁移到防网络钓鱼的 MFA 机制。我们看到 <a href="https://github.com/kgretzky/evilginx2" target="_blank">evilginx2</a> 以及基于网络钓鱼推送到移动验证器的成熟程度，还有 TOTP。唯一能够抵御社会工程和凭据窃取攻击的防钓鱼 MFA 是采用 FIDO 标准的安全密钥。基于 FIDO2 的 MFA 引入了新的术语，如 FIDO2、WebAuthn、硬(件)密钥、安全密钥，特别是 YubiKey (一家知名硬件密钥制造商的名称)。我们将在本文中引用这些术语。</p>
+	<p><strong>WebAuthn</strong> 指<a href="https://www.w3.org/TR/webauthn-2/" target="_blank"> Web 身份验证标准</a>，当我们在 <a href="https://blog.cloudflare.com/cloudflare-now-supports-security-keys-with-web-authentication-webauthn/">Cloudflare 仪表板中推出对安全密钥的支持时</a>，我们曾撰文深入介绍过这种协议的工作原理。</p>
 	<p><strong>CTAP1(U2F) 和 CTAP2</strong> 指客户端到验证器协议，其中详细说明了软件或硬件设备如何与执行 WebAuthn 协议的平台交互。</p>
 	<p><strong>FIDO2 </strong>以上两种用于身份验证的协议的集合。区别并不重要，但这种命名法可能引起困惑。</p>
 	<p>最重要的是要知道，所有这些协议和标准都是为了创建开放的身份验证协议而开发的，这些协议可以防范网络钓鱼，并可通过硬件设备实施。在软件方面，它们是通过 Face ID、Touch ID、Windows Assistant 或类似功能实施的。硬件方面，YubiKey 或其他单独的物理设备通过 USB、雷电接口或 NFC 用于身份验证。</p>
@@ -13,25 +13,25 @@
 	<p>2018 年底，我们在一次公司全体活动中分发了安全密钥。在一个简短的研讨会上，我们要求所有员工登记他们的密钥，用它们进行身份验证，并询问有关设备的问题。这个计划取得了巨大的成功，但仍有不完善之处，部分应用程序不兼容 WebAuthn。当时我们还没有准备好全面实施安全密钥，在我们解决问题时需要一些中间解决方案。</p>
 	<h3 id="-cloudflare-zero-trust-">开始：Cloudflare Zero Trust 的选择性安全密钥实施</h3>
 	<p>我们负责维护数千个应用程序和服务器，它们由我们的 VPN 保护。我们开始将所有这些应用程序迁移到我们的 Zero Trust 访问代理，同时向员工发放了一组安全密钥。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-24.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-24.png" class="kg-image"></figure>
 	<p>Cloudflare Access 允许我们的员工安全地访问以往受 VPN 保护的站点。每个内部服务都将检查一个签名凭据，以验证用户的身份，并确保用户已通过我们的身份提供者登录。Cloudflare Access 对我们的安全密钥推出<em>是必要的</em>，因为它为我们提供了一个工具，可以选择性地对最初少数几个内部应用程序执行安全密钥验证。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image6-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image6-13.png" class="kg-image"></figure>
 	<p>将应用程序加入 Zero Trust 产品时，我们使用了 Terraform，这是我们首次强制使用安全密钥的 Cloudflare Access 策略。在与我们的身份提供者集成时，我们设置 Cloudflare Access 以使用 OAuth2。作为 OAuth 工作流程的一部分， 该身份提供者告知 Access 所使用的第二因素类型。</p>
-	<p>在我们的例子中， <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-amr-values-04?ref=blog.cloudflare.com" target="_blank">swk</a> 是拥有安全钥匙的证明。如果有人登录时没有使用安全密钥，就会看到一条有用的错误消息，告知他再次登录，并在看到提示时按下安全密钥。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-62.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>在我们的例子中， <a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-amr-values-04" target="_blank">swk</a> 是拥有安全钥匙的证明。如果有人登录时没有使用安全密钥，就会看到一条有用的错误消息，告知他再次登录，并在看到提示时按下安全密钥。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-62.png" class="kg-image"></figure>
 	<p>选择性实施立即改变了我们安全密钥推出的轨迹。我们于 2020 年 7 月 29 日在单一服务上开始实施，在接下来的两个月里，使用安全密钥的身份验证大幅增加了。这一步是至关重要的，给我们的员工提供了一个熟悉新技术的机会。选择性实施的窗口期应该是至少一个月，以考虑度假的人，但事后看来，不需要比这个时间长太多。</p>
 	<p>通过应用程序切换到使用我们的 Zero Trust 产品并放弃 VPN，我们还获得了其他哪些安全方面的好处呢？对于传统应用程序或未实施 SAML 的应用程序，这种迁移对于执行基于角色的访问控制和最小权限原则是必要的。VPN 将对您的网络流量进行身份验证，但您的所有应用程序都不知道网络流量属于谁。我们的应用程序难以执行多级权限，并且每个权限都必须重新构建自己的认证方案。</p>
 	<p>加入到 Cloudflare Access 时，我们创建了执行 RBAC 的组，并告诉我们的应用程序每个人应该拥有什么样的权限级别。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-23.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-23.png" class="kg-image"></figure>
 	<p>这是一个只有 ACL-CFA-CFDATA-argo-config-admin-svc 组成员才可以访问的站点。它强制员工在登录时使用他们的安全密钥，并且不需要复杂的 OAuth 或 SAML 集成。我们有超过 600 个内部站点使用相同的模式，全部都强制使用安全密钥。</p>
 	<h3 id="-cloudflare-totp">可选状态的结束：Cloudflare 完全放弃 TOTP</h3>
 	<p>2021 年 2 月，我们的员工开始向我们的安全团队报告社会工程攻击尝试。他们接到了自称是我们 IT 部门人员打来的电话，引起了我们的警觉。我们决定开始要求所有身份验证都使用安全密钥，以防止任何员工成为社会工程攻击的受害者。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-74.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-74.png" class="kg-image"></figure>
 	<p>在禁用了所有其他形式的 MFA (SMS, TOTP 等)后，除了 WebAuthn，我们开始正式仅使用 FIDO2。然而，如上图显示，“软令牌”（TOTP）使用并非完全为零。这是因为，对于那些丢失安全密钥或被锁定帐户，需要经历一个安全离线恢复过程的人，替代方法可以帮助其完成这一过程。最佳做法是为员工分发多个安全密钥，以便在出现这种情况时作为备份。</p>
 	<p>现在所有的员工都在使用他们的 YubiKey 执行防钓鱼 MFA，我们已经大功告成了吗？对了，SSH 和非 HTTP 协议如何处理呢？我们需要一种统一的身份和访问管理方法，因此将安全密钥引入任意其他协议是我们的下一个考虑。</p>
 	<h3 id="-ssh-">为 SSH 使用安全密钥</h3>
-	<p>为了支持将安全密钥引入到 SSH 连接，我们将 <a href="https://www.cloudflare.com/products/tunnel/?ref=blog.cloudflare.com" target="_blank">Cloudflare Tunnel</a> 部署到所有的生产基础设施。Cloudflare Tunnel 与 Cloudflare Access 无缝集成，无论通过隧道的是什么协议，同时运行隧道需要隧道客户端 <a href="https://github.com/cloudflare/cloudflared?ref=blog.cloudflare.com" target="_blank">cloudflared</a>。这意味着我们可以将 cloudflared 二进制文件部署到我们所有的基础设施中，并创建到每台机器的隧道，在需要安全密钥的地方创建 Cloudflare Access 策略，SSH 连接将开始通过 Cloudflare Access 要求使用安全密钥。</p>
-	<p>在实践中，这些步骤并没有听起来那么令人生畏，Zero Trust 开发文档中包含有关做到这一点的<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/ssh-cert-bastion/?ref=blog.cloudflare.com" target="_blank">优秀教程</a> 。我们的每个服务器都有启动隧道所需的配置文件。Systemd 调用 cloudflared，后者在启动隧道时使用这个(或类似的)配置文件。</p><!--kg-card-begin: markdown-->
+	<p>为了支持将安全密钥引入到 SSH 连接，我们将 <a href="https://www.cloudflare.com/products/tunnel/" target="_blank">Cloudflare Tunnel</a> 部署到所有的生产基础设施。Cloudflare Tunnel 与 Cloudflare Access 无缝集成，无论通过隧道的是什么协议，同时运行隧道需要隧道客户端 <a href="https://github.com/cloudflare/cloudflared" target="_blank">cloudflared</a>。这意味着我们可以将 cloudflared 二进制文件部署到我们所有的基础设施中，并创建到每台机器的隧道，在需要安全密钥的地方创建 Cloudflare Access 策略，SSH 连接将开始通过 Cloudflare Access 要求使用安全密钥。</p>
+	<p>在实践中，这些步骤并没有听起来那么令人生畏，Zero Trust 开发文档中包含有关做到这一点的<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/ssh-cert-bastion/" target="_blank">优秀教程</a> 。我们的每个服务器都有启动隧道所需的配置文件。Systemd 调用 cloudflared，后者在启动隧道时使用这个(或类似的)配置文件。</p><!--kg-card-begin: markdown-->
 	<pre><code>tunnel: 37b50fe2-a52a-5611-a9b1-ear382bd12a6
 credentials-file: /root/.cloudflared/37b50fe2-a52a-5611-a9b1-ear382bd12a6.json
 
@@ -45,8 +45,8 @@ ingress:
 	<pre><code>Host *.ssh.cloudflare.com
     ProxyCommand /usr/local/bin/cloudflared access ssh –hostname %h.ssh.cloudflare.com
 </code></pre>
-	<p>值得注意的是，OpenSSH 从<a href="https://www.openssh.com/txt/release-8.2?ref=blog.cloudflare.com" target="_blank"> 8.2 版</a>开始支持 FIDO2，但我们发现使用统一的访问控制方法(所有的访问控制列表都在单一地方维护)是有好处的。</p>
+	<p>值得注意的是，OpenSSH 从<a href="https://www.openssh.com/txt/release-8.2" target="_blank"> 8.2 版</a>开始支持 FIDO2，但我们发现使用统一的访问控制方法(所有的访问控制列表都在单一地方维护)是有好处的。</p>
 	<h3 id="--1">我们的收获以及我们的经验如何帮助你</h3>
 	<p>经过这几个月，毫无疑问，身份验证的未来是 FIDO2 和 WebAuthn。这个过程总共花了我们几年的时间，我们希望这些经验能够对其他希望使用基于 FIDO 的认证进行现代化的组织有所帮助。</p>
-	<p>如果您有意在自己的组织推出安全密钥，或者对 Cloudflare 的 Zero Trust 产品感兴趣，欢迎通过 securitykeys@cloudflare.com联系我们。我们的预防措施帮助抵御了最新一轮的网络钓鱼和社会工程攻击，让我们非常高兴，但我们的<a href="https://www.cloudflare.com/careers/jobs/?department=Security&amp;ref=blog.cloudflare.com" target="_blank">安全团队</a>仍在不断成长，以帮助预防接下来发生的任何事情。</p>
+	<p>如果您有意在自己的组织推出安全密钥，或者对 Cloudflare 的 Zero Trust 产品感兴趣，欢迎通过 securitykeys@cloudflare.com联系我们。我们的预防措施帮助抵御了最新一轮的网络钓鱼和社会工程攻击，让我们非常高兴，但我们的<a href="https://www.cloudflare.com/careers/jobs/?department=Security" target="_blank">安全团队</a>仍在不断成长，以帮助预防接下来发生的任何事情。</p>
 </div>

@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>Here's a small Go gotcha that it's easy to fall into when using goroutines and closures. Here's a simple program that prints out the numbers 0 to 9:</p>
-	<p>(You can play with this in the Go Playground <a href="https://play.golang.org/p/dLfrQ7JCf5?ref=blog.cloudflare.com" target="_blank">here</a>)</p>
+	<p>(You can play with this in the Go Playground <a href="https://play.golang.org/p/dLfrQ7JCf5" target="_blank">here</a>)</p>
 	<pre><code>package main
 
 import "fmt"
@@ -39,7 +39,7 @@ func main() {
 	wg.Wait()
 }
 </code></pre>
-	<p>(This code is in the Go Playground <a href="https://play.golang.org/p/VmW3H-xqsz?ref=blog.cloudflare.com" target="_blank">here</a>). If you're thinking concurrently then you'll likely predict that the output will be the numbers 0 to 9 in some random order depending on precisely when the 10 goroutines run.</p>
+	<p>(This code is in the Go Playground <a href="https://play.golang.org/p/VmW3H-xqsz" target="_blank">here</a>). If you're thinking concurrently then you'll likely predict that the output will be the numbers 0 to 9 in some random order depending on precisely when the 10 goroutines run.</p>
 	<p>But the output is actually:</p>
 	<pre><code>10 10 10 10 10 10 10 10 10 10
 </code></pre>
@@ -71,7 +71,7 @@ func main() {
 	wg.Wait()
 }
 </code></pre>
-	<p>(The code for that is <a href="https://play.golang.org/p/IeFgq5CNOk?ref=blog.cloudflare.com" target="_blank">here</a>). That works correctly.</p>
-	<p>This is such a common gotcha that it's also in the <a href="https://golang.org/doc/faq?ref=blog.cloudflare.com#closures_and_goroutines" target="_blank">FAQ</a>.</p>
+	<p>(The code for that is <a href="https://play.golang.org/p/IeFgq5CNOk" target="_blank">here</a>). That works correctly.</p>
+	<p>This is such a common gotcha that it's also in the <a href="https://golang.org/doc/faq#closures_and_goroutines" target="_blank">FAQ</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>

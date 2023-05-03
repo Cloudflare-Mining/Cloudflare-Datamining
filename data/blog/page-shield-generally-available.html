@@ -2,13 +2,13 @@
 	<!--kg-card-begin: markdown-->
 	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/page-shield-generally-available-zh-cn/">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/page-shield-generally-available-ja-jp/">日本語</a>, <a href="https://blog.cloudflare.com/id-id/page-shield-generally-available-id-id/">bahasa Indonesia</a>, <a href="https://blog.cloudflare.com/th-th/page-shield-generally-available-th-th/">ไทย</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-34.png" class="kg-image" alt="Page Shield is generally available" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-34.png" class="kg-image" alt="Page Shield is generally available"></figure>
 	<p>Supply chain attacks are a growing concern for CIOs and security professionals.</p>
 	<p>During a supply chain attack, an attacker compromises a third party tool or library that is being used by the target application. This normally results in the attacker gaining privileged access to the application’s environment allowing them to steal private data or perform subsequent attacks. For example, Magecart, is a very common type of supply chain attack, whereby the attacker skimms credit card data from e-commerce site checkout forms by compromising third party libraries used by the site.</p>
 	<p>To help identify and mitigate supply chain attacks in the context of web applications, today we are launching Page Shield in General Availability (GA).</p>
 	<p>With Page Shield you gain visibility on what scripts are running on your application and can be notified when they have been compromised or are showing malicious behaviour such as attempting to exfiltrate user data.</p>
 	<p>We’ve worked hard to make Page Shield easy to use: you can find it under the <strong>Firewall</strong> tab and turn it on with one simple click. No additional configuration required. Alerts can be set up separately on an array of different events.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-17.png" class="kg-image" alt="The Page Shield interface showing the list of scripts detected on the zone" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-17.png" class="kg-image" alt="The Page Shield interface showing the list of scripts detected on the zone"></figure>
 	<h2 id="what-is-page-shield">What is Page Shield?</h2>
 	<p>Back in March of this year, <a href="https://blog.cloudflare.com/introducing-page-shield/">we announced early access to Page Shield</a>, our solution to protect end user data from exploits targeting the browser.</p>
 	<p>Earlier today, we <a href="https://blog.cloudflare.com/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools">announced our acquisition of Zaraz</a>, a tool built on Workers that allows customers to easily load third-party tools on the cloud, instead of loading their JavaScript code in the browser, directly from the Cloudflare UI with immediate performance and security benefits. But not all applications use, or wish to use, a third-party manager. Nonetheless, we have got you covered.</p>
@@ -20,12 +20,12 @@
 	<h2 id="how-does-page-shield-work">How does Page Shield work?</h2>
 	<p>As with any security product, we can think of Page Shield as providing visibility, detection, mitigation, and prevention. The first step is visibility.</p>
 	<h3 id="visibility">Visibility</h3>
-	<p>When turned on, the current iteration of Page Shield uses a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP?ref=blog.cloudflare.com" target="_blank">content security policy</a> (CSP) deployed with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only?ref=blog.cloudflare.com" target="_blank">report-only directive</a> to collect information from the browser. This allows us to provide you with a list of all scripts running on your application.</p>
+	<p>When turned on, the current iteration of Page Shield uses a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">content security policy</a> (CSP) deployed with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only" target="_blank">report-only directive</a> to collect information from the browser. This allows us to provide you with a list of all scripts running on your application.</p>
 	<p>In HTTP terms, this is an HTTP response header added to a sample of page responses from the origin server back to the browser. The CSP header looks like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>content-security-policy-report-only: script-src 'none'; report-uri /cdn-cgi/script_monitor/report
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The above header instructs the browser that no scripts should be loaded &nbsp;(<code>script-src 'none'</code>) and to report any violation to the endpoint provided (<code>report-uri /cdn-cgi/script_monitor/report</code>). Also note that the violation report endpoint resolves to the <a href="https://www.cloudflare.com/network/?ref=blog.cloudflare.com" target="_blank">Cloudflare network</a> where it is processed, so no additional traffic reaches the origin server.</p>
+	<p>The above header instructs the browser that no scripts should be loaded &nbsp;(<code>script-src 'none'</code>) and to report any violation to the endpoint provided (<code>report-uri /cdn-cgi/script_monitor/report</code>). Also note that the violation report endpoint resolves to the <a href="https://www.cloudflare.com/network/" target="_blank">Cloudflare network</a> where it is processed, so no additional traffic reaches the origin server.</p>
 	<p>Each violation report sent by the browser, implemented as an HTTP POST request, provides us with information on the script. Here is an example:</p><!--kg-card-begin: markdown-->
 	<pre><code>{
    "csp-report":{
@@ -51,7 +51,7 @@
 		<li>The full link to the JavaScript file</li>
 		<li>The response code the browser received when loading the file. In the example above, the response code is 200, which indicates that the file was loaded successfully.</li>
 	</ul>
-	<p>By collating all the information provided in the reports and enhancing it with additional data, we are able to provide detailed information on every script being loaded by your application, both via the Cloudflare UI <a href="https://developers.cloudflare.com/page-shield/?ref=blog.cloudflare.com" target="_blank">and API</a>.</p>
+	<p>By collating all the information provided in the reports and enhancing it with additional data, we are able to provide detailed information on every script being loaded by your application, both via the Cloudflare UI <a href="https://developers.cloudflare.com/page-shield/" target="_blank">and API</a>.</p>
 	<p>All Cloudflare Pro zones have access to our Page Shield script reports. Additionally, Business and Enterprise zones have access to page attribution information, allowing you to quickly identify where a script is being loaded from within your application. Business and Enterprise zones can also set up alerts on a number of script change events.</p>
 	<h3 id="detection">Detection</h3>
 	<p>Application owners might be leveraging content security policies already to ensure only specific scripts are loaded. However, CSPs often tend to be too liberal, and browsers provide no native mechanisms to detect when JavaScript files show malicious behaviour. This includes JavaScript code that is allowed to be loaded according to a content security policy, highly reducing their effectiveness.</p>
@@ -73,6 +73,6 @@
 		<li>Blocking by leveraging our proxy to allow for malicious scripts to be removed inline from HTTP response bodies.</li>
 	</ul>
 	<h2 id="get-started">Get started</h2>
-	<p>If you already have a website on Cloudflare, upgrade to any of our paid plans to start leveraging Page Shield features today without any additional configuration required. You can also <a href="https://developers.cloudflare.com/page-shield/?ref=blog.cloudflare.com" target="_blank">use our API to leverage Page Shield features</a>.</p>
-	<p>If you do not have a website on Cloudflare, <a href="https://dash.cloudflare.com/sign-up?ref=blog.cloudflare.com" target="_blank">signing up</a> only takes 5 minutes!</p>
+	<p>If you already have a website on Cloudflare, upgrade to any of our paid plans to start leveraging Page Shield features today without any additional configuration required. You can also <a href="https://developers.cloudflare.com/page-shield/" target="_blank">use our API to leverage Page Shield features</a>.</p>
+	<p>If you do not have a website on Cloudflare, <a href="https://dash.cloudflare.com/sign-up" target="_blank">signing up</a> only takes 5 minutes!</p>
 </div>

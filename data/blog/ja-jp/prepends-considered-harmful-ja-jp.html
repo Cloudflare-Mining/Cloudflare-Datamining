@@ -1,19 +1,19 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>インターネットを最も純粋な形で表せば、独立したネットワーク（<a href="https://www.cloudflare.com/ja-jp/learning/network-layer/what-is-an-autonomous-system/?ref=blog.cloudflare.com" target="_blank">自律システム</a>（略してAS）とも呼ばれます）が緩く接続された図式になります。これらのネットワークは、<a href="https://www.cloudflare.com/ja-jp/learning/security/glossary/what-is-bgp/?ref=blog.cloudflare.com" target="_blank">BGP</a>（Border Gateway Protocol）と呼ばれる信号プロトコルを使用して、ネットワーク内およびネットワーク経由でIPプレフィックス（IPアドレスのグループ）の到達可能性をネイバー（ピアとも呼ばれます）に通知しています。この交換の一部には、ネットワークルーティングの決定に関する情報を提供するために使用される、IPプレフィックスに関する有用なメタデータが含まれています。メタデータの一例が完全なASパスで、IPパケットが目的地に到達するために通過する必要のある個別の自律システムで構成されています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-9.png" class="kg-image"></figure>
+	<p>インターネットを最も純粋な形で表せば、独立したネットワーク（<a href="https://www.cloudflare.com/ja-jp/learning/network-layer/what-is-an-autonomous-system/" target="_blank">自律システム</a>（略してAS）とも呼ばれます）が緩く接続された図式になります。これらのネットワークは、<a href="https://www.cloudflare.com/ja-jp/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a>（Border Gateway Protocol）と呼ばれる信号プロトコルを使用して、ネットワーク内およびネットワーク経由でIPプレフィックス（IPアドレスのグループ）の到達可能性をネイバー（ピアとも呼ばれます）に通知しています。この交換の一部には、ネットワークルーティングの決定に関する情報を提供するために使用される、IPプレフィックスに関する有用なメタデータが含まれています。メタデータの一例が完全なASパスで、IPパケットが目的地に到達するために通過する必要のある個別の自律システムで構成されています。</p>
 	<p>パケットができるだけ早く目的地に届いてほしいので、所定のプレフィックスに対して最短のASパスを選択するのが理想的です。そこで登場するのがプリペンドというものです。</p>
 	<h2 id="-">インターネットにおけるルーティング（入門編）</h2>
 	<p>詳細な説明に入る前に、インターネットの最も基本的な仕組みについて簡単に説明します。</p>
 	<p>インターネットの中心には、何千ものネットワークが相互接続された大規模なネットワークが存在します。各ネットワークは、2つの重要なものを所有しています。</p>
 	<p>1. ASN（Autonomous System Number）：ネットワークを一意に識別するための32ビット整数。例えば、CloudflareのASN（複数あります）の1つは13335です。</p>
 	<p>2. IPプレフィックス。IPプレフィックスはIPアドレスの範囲を示すもので、2つずつの組み合わせとなるものです。IPv4空間では、2つのアドレスで/31プレフィックス、4つのアドレスで/30プレフィックスとなり、/0までが「すべてのIPv4プレフィックス」と称されます。IPv6でも同様ですが、最大32ビットではなく、最大128ビットを集約することが可能です。下図は、このIPプレフィックス間の関係を逆から見たもので、/24は2つの/25を含み、/25は2つの/26を含むというようになります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-6.png" class="kg-image"></figure>
 	<p>インターネット上で通信を行うには目的地に到達する必要があります。そこで登場するのがルーティングプロトコルです。これにより、インターネット上の各ノードは、メッセージをどこに送ればよいのか（そして受信者はメッセージをどこに送り返せばよいのか）を知ることができます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-21.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-21.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p>前述したように、これらの目的地はIPアドレスで識別され、IPアドレスの連続した範囲はIPプレフィックスとして表わされます。IPプレフィックスは、ルーティング効率を最適化するために使用されます。IPv4で40億 (2<sup>32</sup>) ものIPアドレスを追跡するのは非常に複雑なことであり、多くのリソースを必要とします。プレフィックスを使用することで、その数を約100万個に減らすことができます。</p>
 	<!--kg-card-end: markdown-->
 	<p>ここで、自律システムは独立して運用・制御されるものであることを思い出してください。インターネットのネットワークにおいて、他のネットワークにいるソースAに、自分のネットワークにある（または経由して）目的地Bに行くための利用可能なパスがあることを伝えるにはどうすればよいでしょうか。そこでBGPの登場です。BGPとはBorder Gateway Protocolのことで、到達可能性の情報を伝えるために使用されます。ソースASNが生成する信号メッセージは、プレフィックス内のIPアドレスがオンラインで到達可能であることをインターネットに宣言するため、「アナウンスメント」と呼ばれます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-33.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-33.png" class="kg-image"></figure>
 	<p>上の図を見てください。ソースAは、2つの異なるネットワークを介して目的地Bに到達する方法がわかっています。</p>
 	<p>実際のBGPメッセージはこのような感じです。</p><!--kg-card-begin: markdown-->
 	<pre><code>BGP Message
@@ -42,7 +42,7 @@
 	<p>ネットワークが他の複数のネットワークやサービスプロバイダーに接続されている場合、それらのネットワークの多くから同じIPプレフィックスへのパス情報を受け取ることができますが、それぞれ属性が微妙に異なることになります。それから、BGPベストパス選択アルゴリズムを使用して「ベスト」のプレフィックス（およびルート）を選択し、これを使用してIPトラフィックを転送するかは、その情報を受け取ったネットワーク次第です。「ベスト」というのは主観的な条件なので、かっこで囲みました。「ベスト」が最短になることはよくありますが、自分のネットワークにとってベストでも、他のネットワークにとってベストな結果となるとは限りません。</p>
 	<p>BGPは受信したオプションをフィルタリングする際に、複数のプレフィックス属性を考慮します。しかし、BGPベストパス選択では、これらの属性を1つの選択基準にまとめるのではなく、属性を階層的に使用します。どの階層においても、利用可能な属性がベストパスを選択するのに十分であれば、アルゴリズムはその選択で終了します。</p>
 	<p>BGPベストパス選択アルゴリズムは、与えられたプレフィックスに対して利用可能なベストパスを選択する15の離散的なステップを含む広範囲なものです。多くのステップを考えると、できるだけ早い段階で最適なパスを決定することがネットワークの利益となるのです。最初の4つのステップは最も利用されていて影響力が大きく、下図に漏斗として描かれています。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-55.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-55.png" class="kg-image"></figure>
 	<p>通常は、可能な限り最短のパスを選択することが理想的であるため、「ASパス長」はアルゴリズムの初期に実行されるステップとなっています。しかし、上の図を見ると、「ASパス長」は最短のパスを見つけるための属性であるにもかかわらず、2番目に表示されています。では、最初のステップであるローカルプリファレンスについて説明しましょう。</p>
 	<p><strong>ローカルプリファレンス</strong><br> ローカルプリファレンスは、好みのルートとパスの組み合わせを選ぶことができるため、オペレータに好まれています。これは、任意のルート、ネイバー、ASパスの組み合わせに対して一意であるため、アルゴリズムの最初の属性となります。</p>
 	<p>ネットワークは、（ネイバーネットワークからルートを学習した）パスのインポート時にローカルプリファレンスを設定します。非遷移的であることは、EBGPメッセージで他のネットワークに送信されることのない属性であることを意味します。これは本質的に、例えばAS 64496のオペレータが、隣接するAS 64511内の自分自身の（または通過する）IPプレフィックスへのルートのローカルプリファレンスを設定できないことを意味します。このことが、EBGPによるインバウンドトラフィックエンジニアリングが難しくなる理由の1つです。</p>
@@ -84,14 +84,14 @@
 	<p>これは、クロスコネクトコスト（月額使用料（MRC）または1回限りの料金）と組み合わされます。PNIは、ポートの利用率が高いほど単価が下がるため、転送するメガビットあたりの総コストを削減して価値の最適化に役立つため、望ましいと言えます。</p>
 	<p>これは他の多くのネットワークにも当てはまり、トランジットネットワークでは非常に一般的なものです。BGPは、少なくともパフォーマンスと同程度にコストとビジネスポリシーに関わるものです。</p>
 	<h3 id="--4">トランジットローカルプリファレンス</h3>
-	<p>わかりやすくするために、トランジットと言う場合は<a href="https://en.wikipedia.org/wiki/Tier_1_network?ref=blog.cloudflare.com" target="_blank">従来のTier 1トランジットネットワーク</a>を指します。これらのネットワークは、その性質上2つの異なるネットワークピアのセットを持ちます。</p>
+	<p>わかりやすくするために、トランジットと言う場合は<a href="https://en.wikipedia.org/wiki/Tier_1_network" target="_blank">従来のTier 1トランジットネットワーク</a>を指します。これらのネットワークは、その性質上2つの異なるネットワークピアのセットを持ちます。</p>
 	<p>1. カスタマー（Cloudflareなど）<br>2.決済のないピア（他のTier 1ネットワークなど）</p>
 	<p>通常の場合、トランジットカスタマーには、決済のないピアに使用されるものよりも高いローカルプリファレンスが割り当てられます。これは、プレフィックスをいくらプリペンドしても、トラフィックがそのトランジットネットワークに入ると、<strong>常に</strong>そのトランジットネットワークとの相互接続に着地し、他のピアにオフロードされることはないということを意味します。</p>
 	<p>プリペンドは、1つのトランジットと複数の識別されたリンクがある場合に、1つのリンクからトラフィックを切り替え/オフロードしたい場合や、トラフィックのソースが複数のトランジットの背後でマルチホームされている場合（そして別のトランジットを優先する独自のローカルプリファレンスプレイブックを持っていない場合）にも使用できます。しかし、ASパスのプリペンドによって、あるトランジットポートから別のトランジットポートへトラフィックをエンジニアリングするインバウンドトラフィックは、大きなリターンの減少をもたらします。3つのプリペンドを過ぎると、その時点ではほとんど何も変わらないでしょう。</p>
 	<p><strong>例</strong></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-6.png" class="kg-image"></figure>
 	<p>上記のシナリオでは、CloudflareがAS 64496に向けてASパスを調整しても、ASパスの観点からOrigin A → Transit B → Transit A → Cloudflareのパスが短くても、トラフィックはTransit B &lt;&gt; Cloudflare相互接続を通じて流れ続けることになります。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-12.png" class="kg-image"></figure>
 	<p>このシナリオでは、あまり大きな変化はありませんが、Origin Aは2つのトランジットプロバイダーの背後にマルチホームされるようになりました。この場合、Origin A側で見られるパスは、プリペンドされたパスとされていないパスの両方であるため、ASパスのプリペンドが有効であったことになります。Origin Aがエグレストラフィックエンジニアリングを行っておらず、両方のトランジットネットワークを同等に扱っている限り、Origin A → Transit A → Cloudflareというパスが選択されます。</p>
 	<h3 id="--5">コミュニティベースのトラフィックエンジニアリング</h3>
 	<p>ここで、オペレータにとってのインターネットのエコシステム内の重要な問題が明らかになりました。つまり、上記のようなツールでは、トラフィックが自分のネットワークに流入するルートを正確に指示することは必ずしも可能ではなく（完全に不可能という人もいるかもしれません）、自律システムが自分のネットワークに対して持つ制御力が低下するということです。幸いなことに、この問題を解決する方法があります。それは、コミュニティベースのローカルプリファレンスです。</p>
@@ -146,7 +146,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-71.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-71.png" class="kg-image"></figure>
 	<p>Cloudflare ASNを2回プリペンドしたことでASパスが合計3つになっていますが、それでもCogentのリンクに多すぎるほどのトラフィックが流入していました。その時点で、エンジニアは別のプリペンドを追加できますが、Cloudflareのようによく接続されたネットワークでは、2つか3つのプリペンドであまり効果がない場合、4つか5つでも効果は変わりません。その代わりに、上記のCogentのコミュニティを活用して、Cogent内のルーティングを変更できます。</p><!--kg-card-begin: markdown-->
 	<pre><code>term ADV-SITELOCAL {
     from {
@@ -161,9 +161,9 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>上記の設定により、トラフィックのフローはこのように変化します。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-47.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-47.png" class="kg-image"></figure>
 	<p>これこそが当社が望んでいたものです。</p>
 	<h2 id="--6">まとめ</h2>
-	<p>ASパスのプリペンドはまだ有用であり、オペレータがトラフィックエンジニアリングを行うためのツールチェーンの一部として使用されていますが、今後は使用を控えるのがよいでしょう。<a href="https://ripe79.ripe.net/presentations/64-prepending_madory2.pdf?ref=blog.cloudflare.com" target="_blank">過剰なプリペンドはネットワークをより広範なルートハイジャックにさらす</a>ことになり、これは何としても避けたい事態です。そのため、コミュニティベースのイングレストラフィックエンジニアリングを使用することが大いに推奨されます。コミュニティが利用できない（またはカスタマートラフィックを制御できない）場合、プリペンドを適用することはできますが、オペレータはその効果を積極的に監視し、効果がない場合はロールバックすることをおすすめします。</p>
-	<p>余談ですが、P MarcosらはASパスのプリペンドに関する興味深い論文を発表しており、プリペンドに関連するいくつかの傾向について触れていますので、ぜひ一読をおすすめします。<a href="https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf?ref=blog.cloudflare.com" target="_blank"> https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf</a></p>
+	<p>ASパスのプリペンドはまだ有用であり、オペレータがトラフィックエンジニアリングを行うためのツールチェーンの一部として使用されていますが、今後は使用を控えるのがよいでしょう。<a href="https://ripe79.ripe.net/presentations/64-prepending_madory2.pdf" target="_blank">過剰なプリペンドはネットワークをより広範なルートハイジャックにさらす</a>ことになり、これは何としても避けたい事態です。そのため、コミュニティベースのイングレストラフィックエンジニアリングを使用することが大いに推奨されます。コミュニティが利用できない（またはカスタマートラフィックを制御できない）場合、プリペンドを適用することはできますが、オペレータはその効果を積極的に監視し、効果がない場合はロールバックすることをおすすめします。</p>
+	<p>余談ですが、P MarcosらはASパスのプリペンドに関する興味深い論文を発表しており、プリペンドに関連するいくつかの傾向について触れていますので、ぜひ一読をおすすめします。<a href="https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf" target="_blank"> https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf</a></p>
 </div>

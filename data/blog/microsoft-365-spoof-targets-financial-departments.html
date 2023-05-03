@@ -22,7 +22,7 @@
 	<p>It’s clear that the masterminds behind these attacks possess above-average skills compared to your typical credential harvesting schemers.</p>
 	<h3 id="a-not-so-secure-office-365-update-">A Not-So-Secure “Office 365 Update”</h3>
 	<p>The first credential harvesting campaign, which initially bypassed Microsoft’s defenses and other email security layers before being discovered by Area 1 Security, involved emails containing purported instructions for applying an Office 365 security update, as detailed in Figure 1.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image3.png" class="kg-image" alt="Figure 1. Phishing Message with Office 365 Brand Spoof" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image3.png" class="kg-image" alt="Figure 1. Phishing Message with Office 365 Brand Spoof">
 		<figcaption>Figure 1. Phishing Message with Office 365 Brand Spoof</figcaption>
 	</figure>
 	<p>A bulk of the phishing messages had the Subject, “Important Service Changes”, and contained a number of sender display names that ranged from generic “no-reply” addresses to company-specific names.</p>
@@ -36,7 +36,7 @@
 	<p>Ironically, fraudsters are constantly profiting off of angst surrounding ongoing cybersecurity scares, like the now-infamous SolarWinds breach, and they know that targets are likely to click out of fear that their noncompliance could be the source of another breach.</p>
 	<h3 id="see-attachment-to-apply-update-">See Attachment to “Apply Update”</h3>
 	<p>The phishing messages contained just enough details to lure unsuspecting targets into opening the attachment, which was either a PDF, HTML, or HTM file. Depicted in Figure 2 is an example of the PDF attachment, which contains redacted target information, including full name, email address, and company logo.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image5.png" class="kg-image" alt="Figure 2. Example PDF Attachment with Link to Office 365 Credential Harvester" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image5.png" class="kg-image" alt="Figure 2. Example PDF Attachment with Link to Office 365 Credential Harvester">
 		<figcaption>Figure 2. Example PDF Attachment with Link to Office 365 Credential Harvester</figcaption>
 	</figure>
 	<p>A majority of the targeted email accounts followed the format &lt;first name.last name&gt;@&lt;company domain&gt;, making the inclusion of full names in the attachments fairly effortless from an automated standpoint. However, even in cases where only initials appeared in the email address, the attackers still managed to include the target’s full name in the PDF attachment. This indicates that the threat actors conducted additional reconnaissance to carefully craft their phishing lures.</p>
@@ -63,19 +63,19 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>As shown in Figure 5, this URL links to the landing page for the credential harvester, which displays a very convincing Microsoft-themed “privacy policy” statement.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image2.png" class="kg-image" alt="Figure 5. Fake Microsoft Privacy Policy Statement" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image2.png" class="kg-image" alt="Figure 5. Fake Microsoft Privacy Policy Statement">
 		<figcaption>Figure 5. Fake Microsoft Privacy Policy Statement</figcaption>
 	</figure>
 	<p>In the upper-right corner of the page is a uniquely photoshopped image of the Microsoft logo. Area 1 Security researchers overlaid this image on a black background, as depicted below, to highlight where the attackers edited the original logo.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image6.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image6.png" class="kg-image">
 		<figcaption>Figure 6. Photoshopped Microsoft Logo</figcaption>
 	</figure>
 	<p>If the target clicks the “Accept” button on the privacy policy statement, they are further redirected to a fake Office 365 login page:</p><!--kg-card-begin: markdown-->
 	<pre><code>hxxps://microsoftofficeonlineservices[.]outlookprivacypolicy[.]online/common/oauth2-authorize/#client_id=4345a7b9-9a63-4910-a426-35363201d503&amp;response_mode=form_post&amp;response_type=code+id_token&amp;scope=openid+profile&amp;state=OpenIdConnect.AuthenticationProperties%3dKZeFMEdbUJBGtfhET_m7HpFINC_qWyaoYc_JS_C5znhJs0YOuquvhkEmzMzK3Ntri00CKVrHEJkyja-3DIXEvtgEaRE5mZ-jAKkVOhjSG4ud7eS1OSBeHlkBsB4tQsqP&amp;nonce=637037128007965152.ODZmZWY4MGMtYzYwNC00M2NjLThmZWEtYmE4OTJiNmI1MWE2OWQwYWVkZWQtMjE2My00ZDcyLWEwN2UtN2M3ODA3OGZiNWY3&amp;redirect_uri=https%3a%2f%2fwww[.]office[.]com%2f&amp;ui_locales=en-US&amp;mkt=en-US&amp;client-request-id=c36fe010-0bb6-4e01-94f8-a8683b752a6d 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The page looks identical to the legitimate login, and to appear all the more convincing, the logo associated with the domain of the targeted company is dynamically loaded. More specifically, the domain appearing in the target’s email address is used to grab the company logo from the site logo.clearbit.com (i.e., http://logo.clearbit.com/&lt;domain appearing in target email address&gt;). For demonstration purposes, the fake email “<a href="mailto:admin@google.com?ref=blog.cloudflare.com" target="_blank">admin@google[.]com</a>” was used to illustrate how the phishing kit displays the Google logo based on the “google.com” domain found in the “victim” email address.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image1.png" class="kg-image" alt="" loading="lazy">
+	<p>The page looks identical to the legitimate login, and to appear all the more convincing, the logo associated with the domain of the targeted company is dynamically loaded. More specifically, the domain appearing in the target’s email address is used to grab the company logo from the site logo.clearbit.com (i.e., http://logo.clearbit.com/&lt;domain appearing in target email address&gt;). For demonstration purposes, the fake email “<a href="mailto:admin@google.com" target="_blank">admin@google[.]com</a>” was used to illustrate how the phishing kit displays the Google logo based on the “google.com” domain found in the “victim” email address.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image1.png" class="kg-image">
 		<figcaption>Figure 7. Fake Office 365 Login</figcaption>
 	</figure>
 	<p>In some cases, the attackers were even more stealthy by prefetching the localized Office 365 sign-in:</p>
@@ -86,13 +86,13 @@
 	<p>If the victim entered their password, it would be sent to the attacker as form data via an HTTP POST request to:</p>
 	<p><code>hxxps://microsoftofficeonlineservices[.]outlookprivacypolicy[.]online/common/oauth2-authorize/index[.]php</code></p>
 	<p>At this point, the attacker could gain full access to the victim’s email account, and possibly other systems or services if the victim reused their password.</p>
-	<p>A closer look at the source code for the credential harvesting sites revealed that the threat actors used free-use licenses for front-end web development to assist in creating an <a href="https://www.bankinfosecurity.com/demand-for-phishing-kits-strong-report-a-14140?ref=blog.cloudflare.com" target="_blank">advanced phishing kit</a> to clone the Microsoft login page.</p>
+	<p>A closer look at the source code for the credential harvesting sites revealed that the threat actors used free-use licenses for front-end web development to assist in creating an <a href="https://www.bankinfosecurity.com/demand-for-phishing-kits-strong-report-a-14140" target="_blank">advanced phishing kit</a> to clone the Microsoft login page.</p>
 	<p>For some observed campaigns, the phishing kit created different subdomains based on the email address hardcoded in the URL. Altering the email address would break the link and cause a redirect to either a spoofed Microsoft Service Agreement page, the Google homepage, or simply a blank page.</p>
 	<p><strong>Unlike your typical run-of-the-mill credential harvesters where any email address can be entered as a URL parameter without affecting its functionality, this activity implies the threat actors were interested in a specific predetermined target list.</strong></p>
 	<p>Another major difference in this phishing campaign compared to typical credential harvesters — and basic phishing kits for that matter — was the use of websockets to send screenshots back to the attackers on each click, in particular when a victim clicked the “Next” button after entering their email address and password.</p>
 	<p>Figure 8 highlights how JavaScript is used to execute the screenshot functionality and encode the resulting image in Base64.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image7.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image7.png" class="kg-image">
 		<figcaption>Figure 8. Evidence of Phishing Kit Base64-Encoding Screenshots</figcaption>
 	</figure>
 	<p>It’s evident that the various campaigns observed by Area 1 Security leveraged an advanced phishing kit that used a variety of techniques as noted above, as well as a diverse set of phishing infrastructure.</p>

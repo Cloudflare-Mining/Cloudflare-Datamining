@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-28.png" class="kg-image" alt="The most programmable Supercloud with Cloudflare Snippets" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-28.png" class="kg-image" alt="The most programmable Supercloud with Cloudflare Snippets"></figure>
 	<h2 id="-">トラフィックをお好きなように</h2>
-	<p>Cloudflareは、非常に多様なお客様にご利用いただいています。HTTPヘッダーの設定から、URIパスの書き換え、URLリダイレクトの実行まで、シンプルで使いやすい製品を提供しています。時には、単にHTTPヘッダーを追加するだけでなく、高度な計算を行って出力を作成するなど、すぐに使える機能以上のものが必要となることもあります。その場合、お客様は機能のリクエストを作成してリリースされるのを待つか、<a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Worker</a>を書くか、この変更を「オンオリジン」、つまり自らのインフラストラクチャで維持する必要があります。</p>
+	<p>Cloudflareは、非常に多様なお客様にご利用いただいています。HTTPヘッダーの設定から、URIパスの書き換え、URLリダイレクトの実行まで、シンプルで使いやすい製品を提供しています。時には、単にHTTPヘッダーを追加するだけでなく、高度な計算を行って出力を作成するなど、すぐに使える機能以上のものが必要となることもあります。その場合、お客様は機能のリクエストを作成してリリースされるのを待つか、<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Worker</a>を書くか、この変更を「オンオリジン」、つまり自らのインフラストラクチャで維持する必要があります。</p>
 	<p>これを簡単に行うのがCloudflare Snippetsであり、リリースを発表できることをうれしく思います。Snippetsは、ユーザーが当社の製品化されたサービスでは不可能な、あるいはプログラム的に行いたいトラフィック修正を行うための新しい方法です。一番の利点は、大部分のお客様がSnippetsを使用するために<em>追加料金を支払う必要がない</em>ということです。</p>
 	<p>ユーザーが選択できるようになります。ルールでアクションを実行します。より多くの機能が必要な場合は、Snippetを書いてください。待つ必要がなく、追加費用は発生しません（ただし、高い公正利用限度額が適用されます）。Snippetsでは、ユーザーが好きなことを好きなときに、すべてCloudflareで行うことができます。</p>
 	<p>Snippetsは、JavaScript（モダン）、VCL（レガシー）、Apache .htaccessファイル（レガシー）など、様々な言語で書かれたコードのインポートをサポートします。これにより、お客様はレガシーな運用コードを当社のプラットフォームに移行でき、同時にJavaScriptの運用を統合できます。</p>
@@ -11,18 +11,18 @@
 	<p>お客様が必要とする機能を、製品が提供できていないユースケースは常に存在します。例えば、何千ものお客様がHTTPヘッダー修正のユースケースを解決するために変換ルールを使用している一方で、Cookieでの動的な有効期限の設定や、キーでのトークンのハッシュ化など、対応できないユースケースもわずかながら残っているのが現状です。</p>
 	<p>そこで役立つのがCloudflare Snippetsです。お客様は、これらの比較的単純なユースケースを実装するために、Cloudflare Workersのフルプラットフォームを使用する必要がなくなります。また、要望された機能を当社がリリースするまで待つ必要もありません。その代わりに、JavaScriptのSnippetを実行できるようになります。</p>
 	<h2 id="-snippets-">レガシーコードのSnippetsへの移行</h2>
-	<p><a href="https://varnish-cache.org/docs/trunk/users-guide/vcl.html?ref=blog.cloudflare.com" target="_blank">Varnish Control Language</a>（VCL）は、Varnishのコンテキスト内でのみ使用されています。約16年前にリリースされ、幅広いユースケースに拡張可能であったため、コンテンツ配信ネットワークのトラフィックとルーティングを設定するために使用されてきました。</p>
+	<p><a href="https://varnish-cache.org/docs/trunk/users-guide/vcl.html" target="_blank">Varnish Control Language</a>（VCL）は、Varnishのコンテキスト内でのみ使用されています。約16年前にリリースされ、幅広いユースケースに拡張可能であったため、コンテンツ配信ネットワークのトラフィックとルーティングを設定するために使用されてきました。</p>
 	<p>VCLを使ってルーティングやトラフィックの変更アクションを実行している企業は、かなりの数にのぼります。他のプロバイダーがVCLのサポートを打ち切る中、当社はVCLを使い慣れた人たちにサポートを提供したいと考えています。</p>
 	<p>Snippetsは純粋なVCLを実行しません。その代わり、VCLをメンテナンスしやすいルールやSnippetに変換します。そのために、アップロードされたVCLコードを解析し、Snippetの候補を自動生成し、一致するものがあれば、変換ルールやキャッシュルールなどの製品のルール候補も生成する、シンプルで使いやすいセルフサービスのVCLコンバータを構築中です。</p>
 	<p>このトピックは当初、<a href="https://blog.cloudflare.com/announcing-turpentine/">Project Turpentine</a>で取り扱われていました。これは、Cloudflareの従業員がお客様のVCLを解析し、推奨されるJavaScriptの構成を実現するために使用するツール群です。このJavaScriptは、Workerまたは一連のWorkerにロードすることができます。</p>
 	<p>Snippetsは、Turpentineのアイデアと原理をさらに推し進めたものです。ダッシュボードに直接パーサーを構築することで、ユーザーに選択を委ねることができます。可能な限りすべてをルールに移行し、残りのコードをSnippetsに移行するように指示することもできますし、すべてを個別のSnippetに移行するように指示することもできます。すべてはお客様次第です。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-55.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Apache <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess?ref=blog.cloudflare.com" target="_blank">htaccess</a>とNGINXの<a href="https://www.nginx.com/resources/wiki/start/topics/examples/full/?ref=blog.cloudflare.com" target="_blank">設定ファイル</a>は同様に扱われます。これは、ユーザーが自分のWebサイトのApacheやNGINXの設定からファイルをアップロードするだけで、Snippetやルールの候補を生成するためです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-55.png" class="kg-image"></figure>
+	<p>Apache <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess" target="_blank">htaccess</a>とNGINXの<a href="https://www.nginx.com/resources/wiki/start/topics/examples/full/" target="_blank">設定ファイル</a>は同様に扱われます。これは、ユーザーが自分のWebサイトのApacheやNGINXの設定からファイルをアップロードするだけで、Snippetやルールの候補を生成するためです。</p>
 	<p>運用業務にレガシーコードを使う必要がある時代は終わろうとしています。Snippetsにより、ユーザーはこれらのワークロードをCloudflareに移行し、レガシーシステムの維持ではなく、ビジネス上の大きな問題に集中できるようになります。</p>
 	<h2 id="snippets-workers-">SnippetsとWorkersの違い</h2>
 	<p>多くの読者がすでにご存じのことと思いますが、Cloudflare WorkersはCloudflareのグローバルネットワーク上で製品やソリューション全体を実行・構築できる強力な開発者向けプラットフォームです。Snippetsもこのプラットフォーム上に構築されていますが、重要な違いがいくつかあります。</p>
-	<p>1つ目の大きな違いは、専用の新しいフェーズとしてSnippetが<a href="https://developers.cloudflare.com/ruleset-engine/?ref=blog.cloudflare.com" target="_blank">ルールセットエンジン</a>の一部として、変換ルールやキャッシュルールと同様に実行されることです。ユーザーは、任意の<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields?ref=blog.cloudflare.com" target="_blank">ルールセットエンジンフィルタ</a>に基づいてSnippetを選択し、実行できるようになります。これにより、すべてのリクエストに対してSnippetを実行したり、特定のボットスコア、特定の国からのトラフィック、特定のCookieのトラフィックなど、当社が提供するフィールドに基づいて特定のHTTPトラフィックをフィルタリングしたりできます。Snippetは追加式で、HTTPヘッダーを追加するSnippetと、URLを書き換えるSnippetを用意し、両者が一致した場合に実行されるようになります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-39.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>1つ目の大きな違いは、専用の新しいフェーズとしてSnippetが<a href="https://developers.cloudflare.com/ruleset-engine/" target="_blank">ルールセットエンジン</a>の一部として、変換ルールやキャッシュルールと同様に実行されることです。ユーザーは、任意の<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields" target="_blank">ルールセットエンジンフィルタ</a>に基づいてSnippetを選択し、実行できるようになります。これにより、すべてのリクエストに対してSnippetを実行したり、特定のボットスコア、特定の国からのトラフィック、特定のCookieのトラフィックなど、当社が提供するフィールドに基づいて特定のHTTPトラフィックをフィルタリングしたりできます。Snippetは追加式で、HTTPヘッダーを追加するSnippetと、URLを書き換えるSnippetを用意し、両者が一致した場合に実行されるようになります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-39.png" class="kg-image"></figure>
 	<p>もう1つの大きな違いは、Cloudflare Snippetsがすべてのプランレベルで、追加費用なしで利用できることです。99％のユーザーは、このソリューションでお支払いが発生することはありません。これにより、お客様はシンプルなワークロードをVCLなどのレガシーソリューションからCloudflareプラットフォームに移行し、月額費用を積極的に削減できます。</p><!--kg-card-begin: html-->
 	<table>
 		<thead>
@@ -135,7 +135,7 @@
 	<h2 id="cloudflare-snippets-">Cloudflare Snippetsでお客様は何を構築できるか？</h2>
 	<p>Snippetsにより、お客様は既存のワークロードをCloudflareに移行することができます。また、お客様にとっても、新たなユースケースの可能性が広がります。以下に一般的な3つの例を挙げましたが、他にも多くの例があります。</p>
 	<h3 id="-1-">例1：疑わしいボットをハニーポットに送り込む</h3>
-	<p>Snippetを作成すると、ボットスコアフィールドなど、Workersランタイムで利用可能なCloudflare<a href="https://developers.cloudflare.com/workers/runtime-apis/request/?ref=blog.cloudflare.com" target="_blank">機能</a>にアクセスできるようになります。これにより、HTTPリクエストをハニーポットに転送したり、RegExp Javascript機能を使用して、トラフィックに特定の閾値（例：<a href="https://developers.cloudflare.com/bots/concepts/bot-score/?ref=blog.cloudflare.com#:~:text=A%20bot%20score%20is%20a,request%20came%20from%20a%20human." target="_blank">29以下</a>）以下のボットスコアが割り当てられたときにエンドユーザーに送り返されるURL構造を変更したりできます。</p><!--kg-card-begin: markdown-->
+	<p>Snippetを作成すると、ボットスコアフィールドなど、Workersランタイムで利用可能なCloudflare<a href="https://developers.cloudflare.com/workers/runtime-apis/request/" target="_blank">機能</a>にアクセスできるようになります。これにより、HTTPリクエストをハニーポットに転送したり、RegExp Javascript機能を使用して、トラフィックに特定の閾値（例：<a href="https://developers.cloudflare.com/bots/concepts/bot-score/#:~:text=A%20bot%20score%20is%20a,request%20came%20from%20a%20human." target="_blank">29以下</a>）以下のボットスコアが割り当てられたときにエンドユーザーに送り返されるURL構造を変更したりできます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">…
 if (request.cf.botManagement.score &lt; 30) {
 const honeypot = "https://example.com/";
@@ -179,6 +179,6 @@ if (userAgent.includes("Facebook")) {
 	<p>当然のように聞こえるかもしれませんが、機能改善の核となるのは、お客様との対話です。Snippetsのユーザーとの対話により、Snippetsが解決する実際のユースケースを理解し、当社の製品群にある機能のギャップを浮き彫りにすることができるのです。そして、そのユースケースを製品化することに意味があるのか、それともSnippetsに任せることに意味があるのかを検討します。</p>
 	<p>また、誰もがソフトウェア開発者であるわけではないことも理解しています。そこで、Snippetsにアクセスしやすくするために、お客様がコピーして変更できるテンプレートをライブラリとして作成し、必要最低限のコーディング知識で利用できるようにする方法を検討しています。Snippetsでは、パワフルであることが難しさに直結することはありません。</p>
 	<h2 id="cloudflare-snippets--1">Cloudflare Snippetsにアクセスする</h2>
-	<p>Snippetsは現在開発中です。順番待ちリストへの登録は、<a href="https://www.cloudflare.com/lp/cloudflare-snippets/?ref=blog.cloudflare.com" target="_blank">こちら</a>からサインアップしてください。</p>
+	<p>Snippetsは現在開発中です。順番待ちリストへの登録は、<a href="https://www.cloudflare.com/lp/cloudflare-snippets/" target="_blank">こちら</a>からサインアップしてください。</p>
 	<p>2023年初頭にはクローズドベータへのユーザーの受け入れを開始し、その後オープンベータの公開を予定しています。</p>
 </div>

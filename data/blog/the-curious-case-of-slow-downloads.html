@@ -3,8 +3,8 @@
 	<p>Some time ago we discovered that certain very slow downloads were getting abruptly terminated and began investigating whether that was a client (i.e. web browser) or server (i.e. us) problem.</p>
 	<p>Some users were unable to download a binary file a few megabytes in length. The story was simple—the download connection was abruptly terminated even though the file was in the process of being downloaded. After a brief investigation we confirmed the problem: somewhere in our stack there was a bug.</p>
 	<p>Describing the problem was simple, reproducing the problem was easy with a single <code>curl</code> command, but fixing it took surprising amount of effort.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/03/6784957048_4661ea7dfc_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jonicdao/6784957048/?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/jonicdao?ref=blog.cloudflare.com" target="_blank">jojo nicdao</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/03/6784957048_4661ea7dfc_z.jpg" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jonicdao/6784957048/" target="_blank">image</a> by <a href="https://www.flickr.com/photos/jonicdao" target="_blank">jojo nicdao</a></small>
 	</p>
 	<p>In this article I'll describe the symptoms we saw, how we reproduced it and how we fixed it. Hopefully, by sharing our experiences we will save others from the tedious debugging we went through.</p>
 	<h3 id="failingdownloads">Failing downloads</h3>
@@ -23,18 +23,18 @@ curl: (56) Recv failure: Connection reset by peer
 </code></pre>
 	<p>Clearly our server was doing something wrong. The RST packet coming from CloudFlare server is just bad. The client behaves, sends ACK packets politely, consumes the data at its own pace, and then we just abruptly cut the conversation.</p>
 	<h3 id="notourproblem">Not our problem</h3>
-	<p>We are a heavy users of NGINX. In order to isolate the problem we set up a basic off-the-shelf NGINX server. The issue was easily <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-03-slow-downloads/nginx.conf?ref=blog.cloudflare.com" target="_blank">reproducible locally</a>:</p>
+	<p>We are a heavy users of NGINX. In order to isolate the problem we set up a basic off-the-shelf NGINX server. The issue was easily <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-03-slow-downloads/nginx.conf" target="_blank">reproducible locally</a>:</p>
 	<pre><code>$ curl --limit-rate 10k  localhost:8080/large.bin &gt; /dev/null
 * Closing connection #0
 curl: (56) Recv failure: Connection reset by peer
 </code></pre>
 	<p>This proved the problem was not specific to our setup—it was a broader NGINX issue!</p>
-	<p>After some further poking we found two culprits. First, we were using the <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html?ref=blog.cloudflare.com#reset_timedout_connection" target="_blank"><code>reset_timedout_connection</code></a> setting. This causes NGINX to close connections abruptly. When NGINX wants to time out a connection it sets <code>SO_LINGER</code> without a timeout on a socket, followed by a <code>close()</code>. This triggers the RST packet, instead of a usual graceful TCP finalization. Here's an <code>strace</code> log from NGINX:</p>
+	<p>After some further poking we found two culprits. First, we were using the <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#reset_timedout_connection" target="_blank"><code>reset_timedout_connection</code></a> setting. This causes NGINX to close connections abruptly. When NGINX wants to time out a connection it sets <code>SO_LINGER</code> without a timeout on a socket, followed by a <code>close()</code>. This triggers the RST packet, instead of a usual graceful TCP finalization. Here's an <code>strace</code> log from NGINX:</p>
 	<pre><code>04:20:22 setsockopt(5, SOL_SOCKET, SO_LINGER, {onoff=1, linger=0}, 8) = 0
 04:20:22 close(5) = 0
 </code></pre>
 	<p>We could just have disabled the <code>reset_timedout_connection</code> setting, but that wouldn't have solved the underlying problem. Why was NGINX closing the connection in the first place?</p>
-	<p>After further investigation we looked at the <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html?ref=blog.cloudflare.com#send_timeout" target="_blank"><code>send_timeout</code></a> configuration option. The default value is 60 seconds, exactly the timeout we were seeing.</p>
+	<p>After further investigation we looked at the <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#send_timeout" target="_blank"><code>send_timeout</code></a> configuration option. The default value is 60 seconds, exactly the timeout we were seeing.</p>
 	<pre><code>http {
      send_timeout 60s;
      ...
@@ -75,16 +75,16 @@ net.ipv4.tcp_wmem = 4096 5242880 33554432
 	<p>Surprisingly, the last point is <em>not</em> true.</p>
 	<h3 id="differentcodepaths">Different code paths</h3>
 	<p>It's very important to realize that in the Linux Kernel, there are two separate code paths: one for sending data and another one for checking if a socket is writeable.</p>
-	<p>In order for <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp.c?v=4.5&amp;ref=blog.cloudflare.com#L1167" target="_blank"><code>send()</code></a> to succeed two conditions must be met:</p>
+	<p>In order for <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp.c?v=4.5#L1167" target="_blank"><code>send()</code></a> to succeed two conditions must be met:</p>
 	<ul>
-		<li>There must be <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v=4.5&amp;ref=blog.cloudflare.com#L1070" target="_blank">some space available in the send buffer</a>.</li>
-		<li>The amount of enqueued, not sent, data <a href="http://lxr.free-electrons.com/source/include/net/tcp.h?v=4.5&amp;ref=blog.cloudflare.com#L1691" target="_blank">must be lower than the LOWAT setting</a>. We will ignore the <a href="https://lwn.net/Articles/560082/?ref=blog.cloudflare.com" target="_blank">LOWAT setting</a> in this blog post.</li>
+		<li>There must be <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v=4.5#L1070" target="_blank">some space available in the send buffer</a>.</li>
+		<li>The amount of enqueued, not sent, data <a href="http://lxr.free-electrons.com/source/include/net/tcp.h?v=4.5#L1691" target="_blank">must be lower than the LOWAT setting</a>. We will ignore the <a href="https://lwn.net/Articles/560082/" target="_blank">LOWAT setting</a> in this blog post.</li>
 	</ul>
-	<p>On the other hand, the conditions for a socket to be reported as <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp.c?v=4.5&amp;ref=blog.cloudflare.com#L519" target="_blank">"writeable" by <code>poll</code></a> are slightly narrower:</p>
+	<p>On the other hand, the conditions for a socket to be reported as <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp.c?v=4.5#L519" target="_blank">"writeable" by <code>poll</code></a> are slightly narrower:</p>
 	<ul>
 		<li>There must be some space available in the send buffer.</li>
 		<li>The amount of enqueued, not sent, data must be lower than the LOWAT setting.</li>
-		<li>The amount of <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v4.5=&amp;ref=blog.cloudflare.com#L1079" target="_blank">free buffer space</a> in the send buffer must be greater than <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v.4.5=&amp;ref=blog.cloudflare.com#L785" target="_blank">half of the used send buffer space</a>.</li>
+		<li>The amount of <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v4.5#L1079" target="_blank">free buffer space</a> in the send buffer must be greater than <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v.4.5#L785" target="_blank">half of the used send buffer space</a>.</li>
 	</ul>
 	<p>The last condition is critical. This means that after you fill the socket send buffer to 100%, the socket will become writeable again only when it's drained below 66% of send buffer size.</p>
 	<p>Going back to our NGINX trace, the second <code>sendfile</code> we saw:</p>
@@ -109,11 +109,11 @@ net.ipv4.tcp_wmem = 4096 5242880 33554432
 	<p>One option is to increase the <code>send_timeout</code> to, say, 280 seconds. This would ensure that given the default send buffer size, consumers faster than 50Kbps will never time out.</p>
 	<p>Another choice is to reduce the <code>tcp_wmem</code> send buffers sizes.</p>
 	<p>The final option is to patch NGINX to react differently on timeout. Instead of closing the connection, we could inspect the amount of data remaining in the send buffer. We can do that with <code>ioctl(TIOCOUTQ)</code>. With this information we know exactly how quickly the connection is being drained. If it's above some configurable threshold, we could decide to grant the connection some more time.</p>
-	<p>My colleague Chris Branch prepared <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-03-slow-downloads/nginx_send_minimum_rate.patch?ref=blog.cloudflare.com" target="_blank">a Linux specific patch to NGINX</a>. It implements a <code>send_minimum_rate</code> option, which is used to specify the minimum permitted client throughput.</p>
+	<p>My colleague Chris Branch prepared <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-03-slow-downloads/nginx_send_minimum_rate.patch" target="_blank">a Linux specific patch to NGINX</a>. It implements a <code>send_minimum_rate</code> option, which is used to specify the minimum permitted client throughput.</p>
 	<h3 id="summary">Summary</h3>
 	<p>The Linux networking stack is very complex. While it usually works really well, sometimes it gives us a surprise. Even very experienced programmers don't fully understand all the corner cases. During debugging we learned that setting timeouts in the "write" path of the code requires special attention. You can't just treat the "write" timeouts in the same way as "read" timeouts.</p>
 	<p>It was a surprise to me that the semantics of a socket being "writeable" are not symmetrical to the "readable" state.</p>
 	<p>In past <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike/">we found that raising receive buffers</a> can have unexpected consequences. Now we know tweaking <code>wmem</code> values can affect something totally different—NGINX send timeouts.</p>
-	<p>Tuning a CDN to work well for all the users takes a lot of work. This write up is a result of hard work done by four engineers (special thanks to Chris Branch!). If this sounds interesting, <a href="https://www.cloudflare.com/join-our-team/?ref=blog.cloudflare.com" target="_blank">consider applying</a>!</p>
+	<p>Tuning a CDN to work well for all the users takes a lot of work. This write up is a result of hard work done by four engineers (special thanks to Chris Branch!). If this sounds interesting, <a href="https://www.cloudflare.com/join-our-team/" target="_blank">consider applying</a>!</p>
 	<!--kg-card-end: markdown-->
 </div>
