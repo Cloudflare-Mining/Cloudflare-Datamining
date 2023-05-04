@@ -21,7 +21,7 @@ dig: isc_socket_bind: address in use
 	<p>Back in 2014 Cloudflare announced support for WebSockets. We wrote two articles about it:</p>
 	<ul>
 		<li><a href="https://blog.cloudflare.com/cloudflare-now-supports-websockets/">Cloudflare Now Supports WebSockets</a></li>
-		<li><a href="https://idea.popcount.org/2014-04-03-bind-before-connect/?ref=blog.cloudflare.com" target="_blank">Bind before connect</a></li>
+		<li><a href="https://idea.popcount.org/2014-04-03-bind-before-connect/" target="_blank">Bind before connect</a></li>
 	</ul>
 	<p>If you skim these blogs, you'll notice we were totally fine with the WebSocket protocol, framing and operation. What worried us was our capacity to handle large numbers of concurrent outgoing connections towards the origin servers. Since WebSockets are long-lived, allowing them through our servers might greatly increase the concurrent connection count. And this did turn out to be a problem. It was possible to hit a ceiling for a total number of outgoing connections imposed by the Linux networking stack.</p>
 	<p>In a pessimistic case, each Linux connection consumes a local port (ephemeral port), and therefore the total connection count is limited by the size of the ephemeral port range.</p>
@@ -32,7 +32,7 @@ cd.connect(('104.1.1.229', 80))
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The operating system’s job is to figure out how to reach that destination, selecting an appropriate source address and source port to form the full 4-tuple for the connection:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image4-1.png" class="kg-image" alt="in outgoing connection 4-tuple, the src IP and src port are usually selected automatically by the kernel" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image4-1.png" class="kg-image" alt="in outgoing connection 4-tuple, the src IP and src port are usually selected automatically by the kernel"></figure>
 	<p>The operating system chooses the source IP based on the routing configuration. On Linux we can see which source IP will be chosen with <code>ip route get</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ip route get 104.1.1.229
 104.1.1.229 via 192.168.1.1 dev eth0 src 192.168.1.8 uid 1000
@@ -278,7 +278,7 @@ sd.connect( (dst_IP, dst_port) )
 	<p>Due to this API limitation, in this technique the source two-tuple can't be reused. Each connection effectively "locks" a source port, so the number of connections is constrained by the size of the ephemeral port range. Notice: one source port is used up for each connection, no matter how many destinations we have. This is bad, and is exactly the problem we were dealing with back in 2014 in the WebSockets articles mentioned above.</p>
 	<p>Fortunately, it's fixable.</p>
 	<h3 id="ip_bind_address_no_port">IP_BIND_ADDRESS_NO_PORT</h3>
-	<p>Back in 2014 we fixed the problem by setting the SO_REUSEADDR socket option and manually retrying <code>bind()</code>+ <code>connect()</code> a couple of times on error. This worked ok, but later in 2015 <a href="https://kernelnewbies.org/Linux_4.2?ref=blog.cloudflare.com#Networking" target="_blank">Linux introduced a proper fix: the IP_BIND_ADDRESS_NO_PORT socket option</a>. This option tells the kernel to delay reserving the source port:</p><!--kg-card-begin: markdown-->
+	<p>Back in 2014 we fixed the problem by setting the SO_REUSEADDR socket option and manually retrying <code>bind()</code>+ <code>connect()</code> a couple of times on error. This worked ok, but later in 2015 <a href="https://kernelnewbies.org/Linux_4.2#Networking" target="_blank">Linux introduced a proper fix: the IP_BIND_ADDRESS_NO_PORT socket option</a>. This option tells the kernel to delay reserving the source port:</p><!--kg-card-begin: markdown-->
 	<pre><code>sd = socket.socket(SOCK_STREAM)
 sd.setsockopt(IPPROTO_IP, IP_BIND_ADDRESS_NO_PORT, 1)
 sd.bind( (src_IP, 0) )
@@ -404,7 +404,7 @@ sd.connect( (dst_IP, dst_port) )
 	</table><!--kg-card-end: html-->
 	<p>Here, the user takes responsibility for handling conflicts, when an ESTABLISHED socket sharing the 4-tuple already exists. In such a case <code>connect</code> will fail with EADDRNOTAVAIL and the application should retry with another acceptable source port number.</p>
 	<h3 id="userspace-connectx-implementation">Userspace connectx implementation<br></h3>
-	<p>With these tricks, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-connectx/connectx.py?ref=blog.cloudflare.com#L93-L110" target="_blank">we can implement a common function and call it <code>connectx</code></a>. It will do what <code>bind()</code>+<code>connect()</code> should, but won't have the unfortunate ephemeral port range limitation. In other words, created sockets are able to share local two-tuples as long as they are going to distinct destinations:</p><!--kg-card-begin: markdown-->
+	<p>With these tricks, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-connectx/connectx.py#L93-L110" target="_blank">we can implement a common function and call it <code>connectx</code></a>. It will do what <code>bind()</code>+<code>connect()</code> should, but won't have the unfortunate ephemeral port range limitation. In other words, created sockets are able to share local two-tuples as long as they are going to distinct destinations:</p><!--kg-card-begin: markdown-->
 	<pre><code>def connectx((source_IP, source_port), (destination_IP, destination_port)):
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -465,8 +465,8 @@ sd.connect( (dst_IP, dst_port) )
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>The name we chose isn't an accident. MacOS (specifically the underlying Darwin OS) has exactly that function implemented <a href="https://www.manpagez.com/man/2/connectx?ref=blog.cloudflare.com" target="_blank">as a <code>connectx()</code> system call</a> (<a href="https://github.com/apple/darwin-xnu/blob/a1babec6b135d1f35b2590a1990af3c5c5393479/bsd/netinet/tcp_usrreq.c?ref=blog.cloudflare.com#L517" target="_blank">implementation</a>):</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image2.png" class="kg-image" alt="snippet from connectx() man page" loading="lazy"></figure>
+	<p>The name we chose isn't an accident. MacOS (specifically the underlying Darwin OS) has exactly that function implemented <a href="https://www.manpagez.com/man/2/connectx" target="_blank">as a <code>connectx()</code> system call</a> (<a href="https://github.com/apple/darwin-xnu/blob/a1babec6b135d1f35b2590a1990af3c5c5393479/bsd/netinet/tcp_usrreq.c#L517" target="_blank">implementation</a>):</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image2.png" class="kg-image" alt="snippet from connectx() man page"></figure>
 	<p>It's more powerful than our <code>connectx</code> code, since it supports TCP Fast Open.</p>
 	<p>Should we, Linux users, be envious? For TCP, it's possible to get the right kernel behaviour with the appropriate setsockopt/bind/connect dance, so a kernel syscall is not quite needed.</p>
 	<p>But for UDP things turn out to be much more complicated and a dedicated syscall might be a good idea.</p>
@@ -604,7 +604,7 @@ sd.connect( (dst_IP, dst_port) )
 	<p>In other words, we can't just set SO_REUSEADDR and move on, since we might hit a local 2-tuple that is already used in a connection against the same destination. We might already have an identical 4-tuple connected socket underneath. Most importantly, during such a conflict we won't be notified by any error. This is unacceptably bad.</p>
 	<h3 id="detecting-socket-conflicts-with-ebpf">Detecting socket conflicts with eBPF</h3>
 	<p>We thought a good solution might be to write an eBPF program to detect such conflicts. The idea was to put a code on the <code>connect()</code> syscall. Linux cgroups allow the BPF_CGROUP_INET4_CONNECT hook. The eBPF is called every time a process under a given cgroup runs the <code>connect()</code> syscall. This is pretty cool, and we thought it would allow us to verify if there is a 4-tuple conflict before moving the socket from UNCONNECTED to CONNECTED states.</p>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2022-02-connectx/ebpf_connect4?ref=blog.cloudflare.com" target="_blank">Here is how to load and attach our eBPF</a></p><!--kg-card-begin: markdown-->
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2022-02-connectx/ebpf_connect4" target="_blank">Here is how to load and attach our eBPF</a></p><!--kg-card-begin: markdown-->
 	<pre><code>bpftool prog load ebpf.o /sys/fs/bpf/prog_connect4  type cgroup/connect4
 bpftool cgroup attach /sys/fs/cgroup/unified/user.slice connect4 pinned /sys/fs/bpf/prog_connect4
 </code></pre>
@@ -665,7 +665,7 @@ bpftool cgroup attach /sys/fs/cgroup/unified/user.slice connect4 pinned /sys/fs/
 	<p>However, this solution is limited. First, it doesn't work for sockets with an automatically assigned source IP or source port, it only works when a user manually creates a 4-tuple connection from userspace. Then there is a second issue: a typical race condition. We don't grab any lock, so it's technically possible a conflicting socket will be created on another CPU in the time between our eBPF conflict check and the finish of the real <code>connect()</code> syscall machinery. In short, this lockless eBPF approach is better than nothing, but fundamentally racy.</p>
 	<h3 id="socket-traversal-sock_diag-ss-way">Socket traversal - SOCK_DIAG ss way </h3>
 	<p>There is another way to verify if a conflicting socket already exists: we can check for connected sockets in userspace. It's possible to do it without any privileges quite effectively with the SOCK_DIAG_BY_FAMILY feature of <code>netlink</code> interface. This is the same technique the <code>ss</code> tool uses to print out sockets available on the system.</p>
-	<p>The netlink code is not even all that complicated. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-connectx/connectx.py?ref=blog.cloudflare.com#L23" target="_blank">Take a look at the code</a>. Inside the kernel, it goes <a href="https://elixir.bootlin.com/linux/latest/source/net/ipv4/udp_diag.c?ref=blog.cloudflare.com#L28" target="_blank">quickly into a fast <code>__udp_lookup()</code> routine</a>. This is great - we can avoid iterating over all sockets on the system.</p>
+	<p>The netlink code is not even all that complicated. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-connectx/connectx.py#L23" target="_blank">Take a look at the code</a>. Inside the kernel, it goes <a href="https://elixir.bootlin.com/linux/latest/source/net/ipv4/udp_diag.c#L28" target="_blank">quickly into a fast <code>__udp_lookup()</code> routine</a>. This is great - we can avoid iterating over all sockets on the system.</p>
 	<p>With that function handy, we can draft our UDP code:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-python">sd = socket.socket(SOCK_DGRAM)
 sd.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -754,7 +754,7 @@ sd.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	<p>Sadly, this schema only works when we know the full 4-tuple, so we can't rely on kernel automatic source IP or port assignments.</p>
 	<h3 id="faking-source-ip-and-port-discovery">Faking source IP and port discovery</h3>
 	<p>In the case when the user calls 'connect' and specifies only target 2-tuple - destination IP and port, the kernel needs to fill in the missing bits - the source IP and source port. Unfortunately the described algorithm expects the full 4-tuple to be known in advance.</p>
-	<p>One solution is to implement source IP and port discovery in userspace. This turns out to be not that hard. For example, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-connectx/connectx.py?ref=blog.cloudflare.com#L204" target="_blank">here's a snippet of our code</a>:</p><!--kg-card-begin: markdown-->
+	<p>One solution is to implement source IP and port discovery in userspace. This turns out to be not that hard. For example, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-connectx/connectx.py#L204" target="_blank">here's a snippet of our code</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-python">def _get_udp_port(family, src_addr, dst_addr):
     if ephemeral_lo == None:
         _read_ephemeral()
@@ -822,7 +822,7 @@ sd.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-connectx/connectx.py?ref=blog.cloudflare.com#L116-L166" target="_blank">Take a look at the full code</a>.</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-connectx/connectx.py#L116-L166" target="_blank">Take a look at the full code</a>.</p>
 	<h3 id="summary">Summary</h3>
 	<p>This post described a problem we hit in production: running out of ephemeral ports. This was partially caused by our servers running numerous concurrent connections, but also because we used the Linux sockets API in a way that prevented source port reuse. It meant that we were limited to ~28,000 concurrent connections per protocol, which is not enough for us.</p>
 	<p>We explained how to allow source port reuse and prevent having this ephemeral-port-range limit imposed. We showed an userspace <code>connectx()</code> function, which is a better way of creating outgoing TCP and UDP connections on Linux.</p>
@@ -830,5 +830,5 @@ sd.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	<p>The <code>connectx()</code> functionality is valuable, and should be added to Linux one way or another. It's not trivial to get all its use cases right. Hopefully, this blog post shows how to achieve this in the best way given the operating system API constraints.</p>
 	<p>___</p>
 	<p>¹ On a side note, on the second cURL run it fails due to TIME-WAIT sockets: "bind failed with errno 98: Address already in use".</p>
-	<p>One option is to wait for the TIME_WAIT socket to die, or work around this with the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-connectx/killtw.py?ref=blog.cloudflare.com" target="_blank">time-wait sockets kill script</a>. Killing time-wait sockets is generally a bad idea, violating protocol, unneeded and sometimes doesn't work. But hey, in some extreme cases it's good to know what's possible. Just saying.</p>
+	<p>One option is to wait for the TIME_WAIT socket to die, or work around this with the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-02-connectx/killtw.py" target="_blank">time-wait sockets kill script</a>. Killing time-wait sockets is generally a bad idea, violating protocol, unneeded and sometimes doesn't work. But hey, in some extreme cases it's good to know what's possible. Just saying.</p>
 </div>

@@ -1,13 +1,13 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/BLOG-1004-header.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/BLOG-1004-header.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Here at Cloudflare we're constantly working on improving our service. Our engineers are looking at hundreds of parameters of our traffic, making sure that we get better all the time.</p>
 	<p>One of the core numbers we keep a close eye on is HTTP request latency, which is important for many of our products. We regard latency spikes as bugs to be fixed. One example is the 2017 story of <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">"Why does one NGINX worker take all the load?"</a>, where we optimized our TCP Accept queues to improve overall latency of TCP sockets waiting for accept().</p>
 	<p>Performance tuning is a holistic endeavor, and we monitor and continuously improve a range of other performance metrics as well, including throughput. Sometimes, tradeoffs have to be made. Such a case occurred in 2015, when a latency spike was discovered in our processing of HTTP requests. The solution at the time was to set tcp_rmem to 4 MiB, which minimizes the amount of time the kernel spends on TCP collapse processing. It was this collapse processing that was causing the latency spikes. Later in this post we discuss TCP collapse processing in more detail.</p>
 	<p>The tradeoff is that using a low value for tcp_rmem limits TCP throughput over high latency links. The following graph shows the maximum throughput as a function of network latency for a window size of 2 MiB. Note that the 2 MiB corresponds to a tcp_rmem value of 4 MiB due to the tcp_adv_win_scale setting in effect at the time.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image10-5.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image10-5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>For the Cloudflare products then in existence, this was not a major problem, as connections terminate and content is served from nearby servers due to our BGP anycast routing.</p>
 	<p>Since then, we have added new products, such as Magic WAN, WARP, Spectrum, Gateway, and others. These represent new types of use cases and traffic flows.</p>
-	<p>For example, imagine you're a typical Magic WAN customer. You have connected all of your worldwide offices together using the Cloudflare global network. While Time to First Byte still matters, Magic WAN office-to-office traffic also needs good throughput. For example, a lot of traffic over these corporate connections will be file sharing using protocols such as SMB. These are <a href="https://en.wikipedia.org/wiki/Elephant_flow" target="_blank">elephant flows</a> over <a href="https://datatracker.ietf.org/doc/html/rfc1072" target="_blank">long fat networks</a>. Throughput is the metric every eyeball watches as they are downloading files.</p>
+	<p>For example, imagine you're a typical Magic WAN customer. You have connected all of your worldwide offices together using the Cloudflare global network. While Time to First Byte still matters, Magic WAN office-to-office traffic also needs good throughput. For example, a lot of traffic over these corporate connections will be file sharing using protocols such as SMB. These are <a href="https://en.wikipedia.org/wiki/Elephant_flow?ref=blog.cloudflare.com" target="_blank">elephant flows</a> over <a href="https://datatracker.ietf.org/doc/html/rfc1072?ref=blog.cloudflare.com" target="_blank">long fat networks</a>. Throughput is the metric every eyeball watches as they are downloading files.</p>
 	<p>We need to continue to provide world-class low latency while simultaneously providing high throughput over high-latency connections.</p>
 	<p>Before we begin, let’s introduce the players in our game.</p>
 	<p><strong>TCP receive window </strong>is the maximum number of unacknowledged user payload bytes the sender should transmit (bytes-in-flight) at any point in time. The size of the receive window can and does go up and down during the course of a TCP session. It is a mechanism whereby the receiver can tell the sender to stop sending if the sent packets cannot be successfully received because the receive buffers are full. It is this receive window that often limits throughput over high-latency networks.</p>
@@ -71,9 +71,9 @@
 	<p><strong>skmem_rb</strong> is the maximum amount of memory that could be allocated by the socket for the receive buffer. This is higher than rcv_ssthresh to account for memory needed for packet processing that is not packet data. Autotuning can increase this value (up to tcp_rmem max) based on how fast the L7 application is able to read data from the socket and the RTT of the session. This is known within the kernel as sk_rcvbuf.</p>
 	<p><strong>rcv_space</strong> is the high water mark of the rate of the local application reading from the receive buffer during any RTT. This is used internally within the kernel to adjust sk_rcvbuf.</p>
 	<p>Earlier we mentioned a setting called tcp_rmem. <strong>net.ipv4.tcp_rmem</strong> consists of three values, but in this document we are always referring to the third value (except where noted). It is a global setting that specifies the maximum amount of memory that any TCP receive buffer can allocate, i.e. the maximum permissible value that autotuning can use for sk_rcvbuf. This is essentially just a failsafe for autotuning, and under normal circumstances should play only a minor role in TCP memory management.</p>
-	<p>It’s worth mentioning that receive buffer memory is not preallocated. Memory is allocated based on actual packets arriving and sitting in the receive queue. It’s also important to realize that filling up a receive queue is not one of the criteria that autotuning uses to increase sk_rcvbuf. Indeed, preventing this type of excessive buffering (<a href="https://en.wikipedia.org/wiki/Bufferbloat" target="_blank">bufferbloat</a>) is one of the benefits of autotuning.</p>
+	<p>It’s worth mentioning that receive buffer memory is not preallocated. Memory is allocated based on actual packets arriving and sitting in the receive queue. It’s also important to realize that filling up a receive queue is not one of the criteria that autotuning uses to increase sk_rcvbuf. Indeed, preventing this type of excessive buffering (<a href="https://en.wikipedia.org/wiki/Bufferbloat?ref=blog.cloudflare.com" target="_blank">bufferbloat</a>) is one of the benefits of autotuning.</p>
 	<h2 id="what-s-the-problem">What’s the problem?</h2>
-	<p>The problem is that we must have a large TCP receive window for high <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product" target="_blank">BDP</a> sessions. This is directly at odds with the latency spike problem mentioned above.</p>
+	<p>The problem is that we must have a large TCP receive window for high <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product?ref=blog.cloudflare.com" target="_blank">BDP</a> sessions. This is directly at odds with the latency spike problem mentioned above.</p>
 	<p>Something has to give. The laws of physics (speed of light in glass, etc.) dictate that we must use large window sizes. There is no way to get around that. So we are forced to solve the latency spikes differently.</p>
 	<h2 id="a-brief-recap-of-the-latency-spike-problem">A brief recap of the latency spike problem</h2>
 	<p>Sometimes a TCP session will fill up its receive buffers. When that happens, the Linux kernel will attempt to reduce the amount of memory the receive queue is using by performing what amounts to a “defragmentation” of memory. This is called collapsing the queue. Collapsing the queue takes time, which is what drives up HTTP request latency.</p>
@@ -133,7 +133,7 @@ net.ipv4.tcp_adv_win_scale = -2
 	<p>This has the effect of highlighting any issues in the handling of packets when the buffers repeatedly hit the limit.</p>
 	<h2 id="revisiting-default-linux-behavior">Revisiting default Linux behavior</h2>
 	<p>Taking a step back, let’s look at the default Linux behavior. The following is kernel v5.15.16.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.12.11.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.12.11.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The Linux kernel is effective at freeing up space in order to make room for incoming packets when the receive buffer memory limit is hit. As documented previously, the cost for saving these packets (i.e. not dropping them) is latency.</p>
 	<p>However, the latency spikes, in <em>milliseconds</em>, for tcp_try_rmem_schedule(), are:</p>
 	<p>tcp_rmem 170 MiB, tcp_adv_win_scale +2 (170p2):</p><!--kg-card-begin: markdown-->
@@ -181,25 +181,25 @@ net.ipv4.tcp_adv_win_scale = -2
 	<p>In hindsight, we should have noticed that tcp_prune_queue() actually raises sk_rcvbuf when it can. So we modified the patch in response to that, added a guard to allow the collapse to execute when sk_rmem_alloc is less than the threshold value.</p>
 	<p><code>net.ipv4.tcp_collapse_max_bytes = 6291456</code></p>
 	<p>The next section discusses how we arrived at this value for tcp_collapse_max_bytes.</p>
-	<p>The patch is available <a href="https://github.com/cloudflare/linux/blob/master/patches/0014-add-a-sysctl-to-enable-disable-tcp_collapse-logic.patch" target="_blank">here</a>.</p>
+	<p>The patch is available <a href="https://github.com/cloudflare/linux/blob/master/patches/0014-add-a-sysctl-to-enable-disable-tcp_collapse-logic.patch?ref=blog.cloudflare.com" target="_blank">here</a>.</p>
 	<p>The results with the new patch are as follows:</p>
 	<p>oscil – 300ms tests</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.35.26.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.35.26.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>oscil – 20ms tests</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.35.38.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.35.38.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>oscil – 0ms tests</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.36.44.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.36.44.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>iperf3 – 300 ms tests</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.38.17.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.38.17.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>iperf3 – 20 ms tests</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.39.07.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.39.07.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>iperf3 – 0ms tests</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.39.19.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.39.19.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>All tests are successful.</p>
 	<h2 id="setting-tcp_collapse_max_bytes">Setting tcp_collapse_max_bytes</h2>
 	<p>In order to determine this setting, we need to understand what the biggest queue we <em>can</em> collapse without incurring unacceptable latency.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image8-12.png" class="kg-image"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image7-13.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image8-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image7-13.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Using 6 MiB should result in a maximum latency of no more than 2 ms.</p>
 	<h2 id="cloudflare-production-network-results">Cloudflare production network results</h2>
 	<h3 id="current-production-settings-old-">Current production settings (“Old”)</h3><!--kg-card-begin: markdown-->
@@ -223,7 +223,7 @@ net.ipv4.tcp_notsent_lowat = 131072
 	<p>The middle value of tcp_rmem was changed as a result of separate work that found that Linux autotuning was setting receive buffers too high for localhost sessions. This updated setting reduces TCP memory usage for those sessions, but does not change anything about the type of TCP sessions that is the focus of this post.</p>
 	<p>For the following benchmarks, we used non-Cloudflare host machines in Iowa, US, and Melbourne, Australia performing data transfers to the Cloudflare data center in Marseille, France. In Marseille, we have some hosts configured with the existing production settings, and others with the system settings described in this post. Software used is perf3 version 3.9, kernel 5.15.32.</p>
 	<h3 id="throughput-results">Throughput results</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-36.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-36.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -253,35 +253,35 @@ net.ipv4.tcp_notsent_lowat = 131072
 	</table>
 	<!--kg-card-end: markdown-->
 	<p><strong>Iowa-Marseille throughput</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-16.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-16.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><strong>Iowa-Marseille receive window and bytes-in-flight</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-51.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-51.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><strong>Melbourne-Marseille throughput</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image9-10.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image9-10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><strong>Melbourne-Marseille receive window and bytes-in-flight</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-21.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-21.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Even with the new settings in place, the Melbourne to Marseille performance is limited by the receive window on the Cloudflare host. This means that further adjustments to these settings yield even higher throughput.</p>
 	<h3 id="latency-results">Latency results</h3>
 	<p>The Y-axis on these charts are the 99th percentile time for TCP collapse in seconds.</p>
 	<p><strong>Cloudflare hosts in Marseille running the current production settings</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image11-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image11-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><strong>Cloudflare hosts in Marseille running the new settings</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-59.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-59.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The takeaway in looking at these graphs is that maximum TCP collapse time for the new settings is no worse than with the current production settings. This is the desired result.</p>
 	<h3 id="send-buffers">Send Buffers</h3>
 	<p>What we have shown so far is that the receiver side seems to be working well, but what about the sender side?</p>
 	<p>As part of this work, we are setting tcp_wmem max to 512 MiB. For oscillating reader flows, this can cause the send buffer to become quite large. This represents bufferbloat and wasted kernel memory, both things that nobody likes or wants.</p>
-	<p>Fortunately, there is already a solution: <strong>tcp_notsent_lowat</strong>. This setting limits the size of unsent bytes in the write queue. More details can be found at <a href="https://lwn.net/Articles/560082/" target="_blank">https://lwn.net/Articles/560082</a>.</p>
+	<p>Fortunately, there is already a solution: <strong>tcp_notsent_lowat</strong>. This setting limits the size of unsent bytes in the write queue. More details can be found at <a href="https://lwn.net/Articles/560082/?ref=blog.cloudflare.com" target="_blank">https://lwn.net/Articles/560082</a>.</p>
 	<p>The results are significant:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-29.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-29.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The RTT for these tests was 466ms. Throughput is not negatively affected. Throughput is at full wire speed in all cases (1 Gbps). Memory usage is as reported by /proc/net/sockstat, TCP mem.</p>
 	<p>Our web servers already set tcp_notsent_lowat to 131072 for its sockets. All other senders are using 4 GiB, the default value. We are changing the sysctl so that 131072 is in effect for all senders running on the server.</p>
 	<h2 id="conclusion">Conclusion</h2>
 	<p>The goal of this work is to open the throughput floodgates for high BDP connections while simultaneously ensuring very low HTTP request latency.</p>
 	<p>We have accomplished that goal.</p><!--kg-card-begin: markdown-->
 	<p>...<br>
-		<em>We protect <a href="https://www.cloudflare.com/network-services/" target="_blank">entire corporate networks</a>, help customers build <a href="https://workers.cloudflare.com/" target="_blank">Internet-scale applications efficiently</a>, accelerate any <a href="https://www.cloudflare.com/performance/accelerate-internet-applications/" target="_blank">website or Internet application</a>, ward off <a href="https://www.cloudflare.com/ddos/" target="_blank">DDoS attacks</a>, keep <a href="https://www.cloudflare.com/application-security/" target="_blank">hackers at bay</a>, and can help you on <a href="https://www.cloudflare.com/products/zero-trust/" target="_blank">your journey to Zero Trust</a>.</em>
+		<em>We protect <a href="https://www.cloudflare.com/network-services/?ref=blog.cloudflare.com" target="_blank">entire corporate networks</a>, help customers build <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Internet-scale applications efficiently</a>, accelerate any <a href="https://www.cloudflare.com/performance/accelerate-internet-applications/?ref=blog.cloudflare.com" target="_blank">website or Internet application</a>, ward off <a href="https://www.cloudflare.com/ddos/?ref=blog.cloudflare.com" target="_blank">DDoS attacks</a>, keep <a href="https://www.cloudflare.com/application-security/?ref=blog.cloudflare.com" target="_blank">hackers at bay</a>, and can help you on <a href="https://www.cloudflare.com/products/zero-trust/?ref=blog.cloudflare.com" target="_blank">your journey to Zero Trust</a>.</em>
 	</p>
-	<p><em>Visit <a href="https://1.1.1.1/" target="_blank">1.1.1.1</a> from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start <a href="https://www.cloudflare.com/learning/what-is-cloudflare/" target="_blank">here</a>. If you’re looking for a new career direction, check out <a href="https://cloudflare.com/careers" target="_blank">our open positions</a>.</em></p>
+	<p><em>Visit <a href="https://1.1.1.1/?ref=blog.cloudflare.com" target="_blank">1.1.1.1</a> from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start <a href="https://www.cloudflare.com/learning/what-is-cloudflare/?ref=blog.cloudflare.com" target="_blank">here</a>. If you’re looking for a new career direction, check out <a href="https://cloudflare.com/careers?ref=blog.cloudflare.com" target="_blank">our open positions</a>.</em></p>
 	<!--kg-card-end: markdown-->
 </div>

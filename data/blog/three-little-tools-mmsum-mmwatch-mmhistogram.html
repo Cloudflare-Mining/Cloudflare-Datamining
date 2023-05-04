@@ -60,13 +60,13 @@ map auto_home          0B     0B     0B   100%        0       0  100%   /home
 	<pre><code>$ mmwatch 'df -H'
 </code></pre>
 	<p>Here's a short GIF showing it working:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/07/mmwatch.gif" alt=""></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/07/mmwatch.gif" alt="" loading="lazy"></p>
 	<h3 id="mmsum">mmsum</h3>
 	<p>And the final tool is <code>mmsum</code> that simply sums a list of floating point numbers (one per line).</p>
 	<p>Suppose you are downloading real-time rainfall data from the UK's Environment Agency and would like to know the total current rainfall. <code>mmsum</code> can help:</p>
 	<pre><code>$ curl -s 'https://environment.data.gov.uk/flood-monitoring/id/measures?parameter=rainfall' | jq -e '.items[].latestReading.value+0' | ./mmsum
 40.2
 </code></pre>
-	<p>All these tools can be found on the Cloudflare <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-06-29-ssdp/" target="_blank">Github</a>.</p>
+	<p>All these tools can be found on the Cloudflare <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-06-29-ssdp/?ref=blog.cloudflare.com" target="_blank">Github</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>
