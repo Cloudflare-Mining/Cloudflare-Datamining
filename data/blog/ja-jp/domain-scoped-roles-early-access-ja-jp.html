@@ -1,19 +1,19 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-30.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-30.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>本日、Cloudflareは、ドメイン群へのユーザーアクセスのスコープ設定を可能にすることで、Enterpriseアカウントをお持ちのお客様へチCloudflareに対するチームのアクセス管理を容易にします。ユーザーのアクセス権を必要な分にとどめることは非常に重要であり、ドメインスコープ指定ロールは大きな前進をもたらします。さらに、ドメイングループの導入により、アカウント所有者はユーザーにドメインへのアクセス権を個別ではなくグループ単位で付与することができます。これらのグループにドメインを追加または削除することができ、グループへのアクセス権を持つ人のアクセスは自動的に更新されます。これにより、ユーザーアクセス管理の手間が軽減されます。</p>
 	<p>ドメインスコープ指定ロールの最も一般的な使い方の1つは、一部のメンバーに限定して本番用ドメインへのアクセス権を開放し、その他のメンバーに開発用ドメインとステージング用のドメインを開放することです。この方法では、アクセス権が与えられていない限り、誰かが本番用ドメインに変更を加えることはできません。</p>
 	<h3 id="-">ドメインスコープ指定ロールの使い方</h3>
 	<p>企業のお客様は、CSMにご相談の上、ご登録をお願いします。なお、アカウントメンバーシップを変更するには、スーパーアドミニストレーターの権限が必要です。</p>
 	<p>ベータ版の利用が可能になった後の利用開始方法はこちらから：</p><!--kg-card-begin: markdown-->
 	<ul>
-		<li><a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a>にログインしてアカウントを選択し、<a href="https://dash.cloudflare.com/?account=members" target="_blank">メンバーページ</a>に移動してください。
+		<li><a href="https://dash.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">dash.cloudflare.com</a>にログインしてアカウントを選択し、<a href="https://dash.cloudflare.com/?account=members&amp;ref=blog.cloudflare.com" target="_blank">メンバーページ</a>に移動してください。
 			<ul>
 				<li>ここから、ドメインスコープ指定ロールを持つ新しいメンバーを招待するか、既存のユーザーの権限を変更することができます。今回は、新規ユーザーを招待することにします。</li>
 			</ul>
 		</li>
 	</ul>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-72.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-72.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
 	<ul>
 		<li>新メンバーを招待する場合、提供するものは3つあります：
 			<ul>
@@ -28,19 +28,19 @@
 		</li>
 	</ul>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/1a.png" class="kg-image" alt="Membership invitation page with users, scope, and role selection."></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/1a.png" class="kg-image" alt="Membership invitation page with users, scope, and role selection." loading="lazy"></figure>
 	<ul></ul><!--kg-card-begin: markdown-->
 	<ul>
 		<li>招待を送る前に、ユーザーやスコープ、ロールを確認することができます。</li>
 	</ul>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/1b.png" class="kg-image" alt="Membership invite confirmation screen."></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/1b.png" class="kg-image" alt="Membership invite confirmation screen." loading="lazy"></figure>
 	<h3 id="--1">ドメイングループ</h3>
-	<p>アカウント所有者は、ユーザーごとに手動で包含リストや除外リストを作成するだけでなく、ドメイングループを作成して、1人または複数のユーザーをドメインのグループに許可することもできます。ドメイングループは、メンバー招待フローから、またはアカウント設定 -&gt; <a href="https://dash.cloudflare.com/?account=configurations/lists" target="_blank">リスト</a>から直接作成できます。ドメイングループを作成する際、ユーザーは含めるドメインを選択し、その時点から、アカウントにユーザーを招待する際にそのグループを使用することができます。</p>
+	<p>アカウント所有者は、ユーザーごとに手動で包含リストや除外リストを作成するだけでなく、ドメイングループを作成して、1人または複数のユーザーをドメインのグループに許可することもできます。ドメイングループは、メンバー招待フローから、またはアカウント設定 -&gt; <a href="https://dash.cloudflare.com/?account=configurations%2Flists&amp;ref=blog.cloudflare.com" target="_blank">リスト</a>から直接作成できます。ドメイングループを作成する際、ユーザーは含めるドメインを選択し、その時点から、アカウントにユーザーを招待する際にそのグループを使用することができます。</p>
 	<h4 id="--2">ドメイングループ作成画面</h4>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-13.png" class="kg-image" alt="Domain Group creation screen showing two domains selected."></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-13.png" class="kg-image" alt="Domain Group creation screen showing two domains selected." loading="lazy"></figure>
 	<h4 id="--3">メンバー招待時のドメイングループ選択</h4>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-4.png" class="kg-image" alt="Member invite screen showing the scope of a user’s access being limited to a domain group named, “Test Domains”."></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-4.png" class="kg-image" alt="Member invite screen showing the scope of a user’s access being limited to a domain group named, “Test Domains”." loading="lazy"></figure>
 	<h3 id="bach-">Bachの紹介</h3>
 	<p>ドメインスコープ指定ロールが可能になったのは、Bachと呼ばれる新しい権限システムがあるからです。Bachは、Cloudflareのコントロールプレーンに対する承認を定義するための、ポリシーベースのシステムを提供します。承認とは、誰かがシステムで何ができるかを定義するものです。BachはこれまでAPI Tokensを支えてきましたが、今後はすべての承認にBachが使われるようになります。これにより、お客様はより詳細な権限とリソースのスコープ指定を定義することができるようになります。リソースとは、アカウント、ゾーン、ワーカー環境、DNSレコードなど、ユーザーが操作するあらゆるオブジェクトのことです。以前のCloudflareのRBACシステムは、各ロールがアカウント全体に適用される広範な権限を定義するロールのセットを割り当てることに依存していましたが、Bachのポリシーでは、リソースのセットにスコープすることができる、より深い権限付与を可能にします。</p>
 	<p>従来のシステムと、Bachがサポートするものを比較してみましょう。一般的に、ユーザーの権限は、割り当てられた「ロール」によって定義されます。これには、例えば「スーパーアドミニストレーター」、「アドミニストレーター」、「Cloudflare for Teams」および「Cloudflare Workers Admin」などが挙げられます。従来のシステムでは、これらはそれぞれ「workers:read」、「workers:edit」または「zones:edit」といった明示的で単純な権限のセットにマッピングされています。Cloudflare APIやCloudflareダッシュボードからリクエストがあると、CloudflareのAPI Gatewayは、リクエストされたエンドポイントに対して、アクターがそのアクションを実行するのに適切な権限を持っているかどうかを確認します。ゾーン設定を変更するためには、アクターは、多くのロールのうちの1つから付与できる「zone:edit」権限を持つ必要があります。以下は、従来のシステムで「DNS」権限のみを持つユーザーに付与されるものです：</p>

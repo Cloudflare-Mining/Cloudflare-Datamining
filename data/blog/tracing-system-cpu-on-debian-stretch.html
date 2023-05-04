@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p><em>This is a heavily truncated version of an internal blog post from August 2017. For more recent updates on Kafka, check out <a href="https://blog.cloudflare.com/squeezing-the-firehose/">another blog post on compression</a>, where we optimized throughput 4.5x for both disks and network.</em></p>
-	<p><img src="https://images.unsplash.com/photo-1511971523672-53e6411f62b9?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=79649c78f5bbe2b0beb5504eb08471b8" alt=""><br>
+	<p><img src="https://images.unsplash.com/photo-1511971523672-53e6411f62b9?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=79649c78f5bbe2b0beb5504eb08471b8" alt="" loading="lazy"><br>
 		<small>Photo by <a href="https://unsplash.com/@alex_povolyashko?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank">Alex Povolyashko</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank">Unsplash</a></small>
 	</p>
 	<h3 id="upgradingoursystemstodebianstretch">Upgrading our systems to Debian Stretch</h3>
@@ -10,13 +10,13 @@
 	<p>Thankfully, we were able to roll back the <code>http</code> cluster upgrade relatively easily, due to heavy versioning of both the OS and the higher level software stack. If there's one takeaway from this blog post, it's to take advantage of consistent versioning.</p>
 	<h3 id="highleveldifferences">High level differences</h3>
 	<p>We upgraded one Kafka <code>http</code> node, and it did not go as planned:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/1.png"><img src="https://blog.cloudflare.com/content/images/2018/04/1.png" alt="1"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/1.png"><img src="https://blog.cloudflare.com/content/images/2018/04/1.png" alt="1" loading="lazy"></a></p>
 	<p>Having 5x CPU usage was definitely an unexpected outcome. For control datapoints, we compared to a node where no upgrade happened, and an intermediary node that received a software stack upgrade, but not an OS upgrade. Neither of these two nodes experienced the same CPU saturation issues, even though their setups were practically identical.</p>
 	<p>For debugging CPU saturation issues, we call on <code>perf</code> to fish out details:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/2-3.png"><img src="https://blog.cloudflare.com/content/images/2018/04/2-3.png" alt="2-3"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/2-3.png"><img src="https://blog.cloudflare.com/content/images/2018/04/2-3.png" alt="2-3" loading="lazy"></a></p>
 	<p><em>The command used was: <code>perf top -F 99</code>.</em></p>
 	<h3 id="rcustalls">RCU stalls</h3>
-	<p>In addition to higher system CPU usage, we found secondary slowdowns, including <a href="http://www.rdrop.com/~paulmck/RCU/whatisRCU.html" target="_blank">read-copy update (RCU)</a> stalls:</p>
+	<p>In addition to higher system CPU usage, we found secondary slowdowns, including <a href="http://www.rdrop.com/~paulmck/RCU/whatisRCU.html?ref=blog.cloudflare.com" target="_blank">read-copy update (RCU)</a> stalls:</p>
 	<pre><code>[ 4909.110009] logfwdr (26887) used greatest stack depth: 11544 bytes left
 [ 4909.392659] oom_reaper: reaped process 26861 (logfwdr), now anon-rss:8kB, file-rss:0kB, shmem-rss:0kB
 [ 4923.462841] INFO: rcu_sched self-detected stall on CPU
@@ -122,35 +122,35 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	<ul>
 		<li>Jessie</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/9.png"><img src="https://blog.cloudflare.com/content/images/2018/04/9.png" alt="9"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/9.png"><img src="https://blog.cloudflare.com/content/images/2018/04/9.png" alt="9" loading="lazy"></a></p>
 	<ul>
 		<li>Stretch</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/10.png"><img src="https://blog.cloudflare.com/content/images/2018/04/10.png" alt="10"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/10.png"><img src="https://blog.cloudflare.com/content/images/2018/04/10.png" alt="10" loading="lazy"></a></p>
 	<p>At first it looked like Jessie was doing <code>writev</code> instead of <code>sendfile</code>, but the full flamegraphs revealed that Strech was executing <code>sendfile</code> a lot slower.</p>
 	<p>If you highlight <code>sendfile</code>:</p>
 	<ul>
 		<li>Jessie</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/11.png"><img src="https://blog.cloudflare.com/content/images/2018/04/11.png" alt="11"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/11.png"><img src="https://blog.cloudflare.com/content/images/2018/04/11.png" alt="11" loading="lazy"></a></p>
 	<ul>
 		<li>Stretch</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/12.png"><img src="https://blog.cloudflare.com/content/images/2018/04/12.png" alt="12"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/12.png"><img src="https://blog.cloudflare.com/content/images/2018/04/12.png" alt="12" loading="lazy"></a></p>
 	<p>And zoomed in:</p>
 	<ul>
 		<li>Jessie</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/13.png"><img src="https://blog.cloudflare.com/content/images/2018/04/13.png" alt="13"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/13.png"><img src="https://blog.cloudflare.com/content/images/2018/04/13.png" alt="13" loading="lazy"></a></p>
 	<ul>
 		<li>Stretch</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/14.png"><img src="https://blog.cloudflare.com/content/images/2018/04/14.png" alt="14"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/14.png"><img src="https://blog.cloudflare.com/content/images/2018/04/14.png" alt="14" loading="lazy"></a></p>
 	<p>These two look very different.</p>
 	<p>Some colleagues suggested that the differences in the graphs may be due to TCP offload being disabled, but upon checking our NIC settings, we found that the feature flags were identical.</p>
 	<p>We'll dive into the differences in the next section.</p>
 	<h3 id="anddeeper">And deeper</h3>
-	<p>To trace latency distributions of <code>sendfile</code> syscalls between Jessie and Stretch, we used <a href="https://github.com/iovisor/bcc/blob/master/tools/funclatency_example.txt" target="_blank"><code>funclatency</code></a> from <a href="https://iovisor.github.io/bcc/" target="_blank">bcc-tools</a>:</p>
+	<p>To trace latency distributions of <code>sendfile</code> syscalls between Jessie and Stretch, we used <a href="https://github.com/iovisor/bcc/blob/master/tools/funclatency_example.txt?ref=blog.cloudflare.com" target="_blank"><code>funclatency</code></a> from <a href="https://iovisor.github.io/bcc/?ref=blog.cloudflare.com" target="_blank">bcc-tools</a>:</p>
 	<ul>
 		<li>Jessie</li>
 	</ul>
@@ -245,7 +245,7 @@ lock_timer_base                        196895
 FUNC                                    COUNT
 lock_timer_base                        140085
 </code></pre>
-	<p>The Linux kernel includes debugging facilities for timers, which <a href="https://elixir.bootlin.com/linux/v4.9.43/source/kernel/time/timer.c#L1010" target="_blank">call</a> the <code>timer:timer_start</code> <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/trace/events/timer.h#L44" target="_blank">tracepoint</a> on every timer start. This allowed us to pull up timer names:</p>
+	<p>The Linux kernel includes debugging facilities for timers, which <a href="https://elixir.bootlin.com/linux/v4.9.43/source/kernel/time/timer.c?ref=blog.cloudflare.com#L1010" target="_blank">call</a> the <code>timer:timer_start</code> <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/trace/events/timer.h?ref=blog.cloudflare.com#L44" target="_blank">tracepoint</a> on every timer start. This allowed us to pull up timer names:</p>
 	<ul>
 		<li>Jessie</li>
 	</ul>
@@ -288,11 +288,11 @@ lock_timer_base                        140085
 	<ul>
 		<li>Jessie</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/15.png"><img src="https://blog.cloudflare.com/content/images/2018/04/15.png" alt="15"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/15.png"><img src="https://blog.cloudflare.com/content/images/2018/04/15.png" alt="15" loading="lazy"></a></p>
 	<ul>
 		<li>Stretch</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/16.png"><img src="https://blog.cloudflare.com/content/images/2018/04/16.png" alt="16"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/16.png"><img src="https://blog.cloudflare.com/content/images/2018/04/16.png" alt="16" loading="lazy"></a></p>
 	<p>We then traced the functions that were different:</p>
 	<ul>
 		<li>Jessie</li>
@@ -471,7 +471,7 @@ Tracing 1 functions for "tcp_push_one"... Hit Ctrl-C to end.
  kernel_sendpage
  sock_sendpage
 </code></pre>
-	<p>Let's look closer at <a href="https://elixir.bootlin.com/linux/v4.9.43/source/net/ipv4/tcp.c#L1012" target="_blank"><code>tcp_sendpage</code></a>:</p>
+	<p>Let's look closer at <a href="https://elixir.bootlin.com/linux/v4.9.43/source/net/ipv4/tcp.c?ref=blog.cloudflare.com#L1012" target="_blank"><code>tcp_sendpage</code></a>:</p>
 	<pre><code>int tcp_sendpage(struct sock *sk, struct page *page, int offset,
          size_t size, int flags)
 {
@@ -491,7 +491,7 @@ Tracing 1 functions for "tcp_push_one"... Hit Ctrl-C to end.
     return res;
 }
 </code></pre>
-	<p>It looks like we don't enter the <code>if</code> body. We looked up what <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/linux/netdev_features.h#L115" target="_blank">NET_F_SG</a> does: <a href="https://en.wikipedia.org/wiki/Large_send_offload" target="_blank">segmentation offload</a>. This difference is peculiar, since both OS'es should have this enabled.</p>
+	<p>It looks like we don't enter the <code>if</code> body. We looked up what <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/linux/netdev_features.h?ref=blog.cloudflare.com#L115" target="_blank">NET_F_SG</a> does: <a href="https://en.wikipedia.org/wiki/Large_send_offload?ref=blog.cloudflare.com" target="_blank">segmentation offload</a>. This difference is peculiar, since both OS'es should have this enabled.</p>
 	<h3 id="evendeepertothecrux">Even deeper, to the crux</h3>
 	<p>It turned out that we had segmentation offload enabled for only a few of our NICs: <code>eth2</code>, <code>eth3</code>, and <code>bond0</code>. Our network setup can be described as follows:</p>
 	<pre><code>eth2 --&gt;|              |--&gt; vlan10
@@ -573,22 +573,22 @@ udp-fragmentation-offload: on
         tx-tcp-ecn-segmentation: on
 </code></pre>
 	<p>The last missing piece we found was that offload changes are applied only during connection initiation, so we restarted Kafka, and we immediately saw a performance improvement (green line):</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/17.png"><img src="https://blog.cloudflare.com/content/images/2018/04/17.png" alt="17"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/17.png"><img src="https://blog.cloudflare.com/content/images/2018/04/17.png" alt="17" loading="lazy"></a></p>
 	<p>Not enabling offload features when possible seems like a pretty bad regression, so we filed a ticket for <code>systemd</code>:</p>
 	<ul>
-		<li><a href="https://github.com/systemd/systemd/issues/6629" target="_blank">https://github.com/systemd/systemd/issues/6629</a></li>
+		<li><a href="https://github.com/systemd/systemd/issues/6629?ref=blog.cloudflare.com" target="_blank">https://github.com/systemd/systemd/issues/6629</a></li>
 	</ul>
 	<p>In the meantime, we work around our upstream issue by enabling offload features automatically on boot if they are disabled on VLAN interfaces.</p>
 	<p>Having a fix enabled, we rebooted our <code>logs</code> Kafka cluster to upgrade to the latest kernel, and our 5 day CPU usage history yielded positive results:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/18.png"><img src="https://blog.cloudflare.com/content/images/2018/04/18.png" alt="18"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/18.png"><img src="https://blog.cloudflare.com/content/images/2018/04/18.png" alt="18" loading="lazy"></a></p>
 	<p>The DNS cluster also yielded positive results, with just 2 nodes rebooted (purple line going down):</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/19.png"><img src="https://blog.cloudflare.com/content/images/2018/04/19.png" alt="19"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2018/04/19.png"><img src="https://blog.cloudflare.com/content/images/2018/04/19.png" alt="19" loading="lazy"></a></p>
 	<h3 id="conclusion">Conclusion</h3>
 	<p>It was an error on our part to hit performance degradation without a good regression framework in place to catch the issue. Luckily, due to our heavy use of version control, we managed to bisect the issue rather quickly, and had a temp rollback in place while root causing the problem.</p>
 	<p>In the end, enabling offload also removed RCU stalls. It's not really clear whether it was the cause or just a catalyst, but the end result speaks for itself.</p>
 	<p>On the bright side, we dug pretty deep into Linux kernel internals, and although there were fleeting moments of giving up, moving to the woods to become a park ranger, we persevered and came out of the forest successful.</p>
 	<hr>
-	<p><em>If deep diving from high level symptoms to kernel/OS issues makes you excited, <a href="https://www.cloudflare.com/careers/" target="_blank">drop us a line</a>.</em></p>
+	<p><em>If deep diving from high level symptoms to kernel/OS issues makes you excited, <a href="https://www.cloudflare.com/careers/?ref=blog.cloudflare.com" target="_blank">drop us a line</a>.</em></p>
 	<hr>
 	<!--kg-card-end: markdown-->
 </div>

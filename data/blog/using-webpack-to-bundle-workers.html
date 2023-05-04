@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p><em>A brief introduction to bundling your Service Worker scripts.</em></p>
-	<p><img src="https://images.unsplash.com/photo-1523212727988-82c430c79c8e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=3559691819466e795dc97c7afd29aeb8" alt="" loading="lazy"><br>
+	<p><img src="https://images.unsplash.com/photo-1523212727988-82c430c79c8e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=3559691819466e795dc97c7afd29aeb8" alt=""><br>
 		<small>Photo by <a href="https://unsplash.com/@joyceromero?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank">Joyce Romero</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank">Unsplash</a></small>
 	</p>
 	<pre><code class="language-javascript">// The simplest Service Worker: A passthrough script
@@ -9,8 +9,8 @@ addEventListener('fetch', event =&gt; {
   event.respondWith(fetch(event.request))
 })
 </code></pre>
-	<p>The code above is simple and sweet: when a request comes into one of Cloudflare’s data centers, passthrough to the origin server. There is <em>absolutely no need</em> for us to introduce any complex tooling or dependencies. Nevertheless, introduce we will! The problem is, once your script grows even just a little bit, you’ll be tempted to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import?ref=blog.cloudflare.com" target="_blank">JavaScript’s fancy new module system</a>. However, in doing so, you’ll have a little bit of trouble uploading your script via our API (we only accept a single JS file).</p>
-	<p>Throughout this post, we’ll use contrived examples, shaky metaphors, and questionably accurate weather predictions to explain how to bundle your Service Worker with <a href="https://webpack.js.org/?ref=blog.cloudflare.com" target="_blank">Webpack</a>.</p>
+	<p>The code above is simple and sweet: when a request comes into one of Cloudflare’s data centers, passthrough to the origin server. There is <em>absolutely no need</em> for us to introduce any complex tooling or dependencies. Nevertheless, introduce we will! The problem is, once your script grows even just a little bit, you’ll be tempted to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank">JavaScript’s fancy new module system</a>. However, in doing so, you’ll have a little bit of trouble uploading your script via our API (we only accept a single JS file).</p>
+	<p>Throughout this post, we’ll use contrived examples, shaky metaphors, and questionably accurate weather predictions to explain how to bundle your Service Worker with <a href="https://webpack.js.org/" target="_blank">Webpack</a>.</p>
 	<h3 id="webpack">Webpack</h3>
 	<p>Let’s just say Webpack is a module bundler. That is, if you have code in multiple files, and you tie them together like this:</p>
 	<h4 id="appjs">app.js</h4>
@@ -21,7 +21,7 @@ import { FancyShoes } from './closet'
 	<p>Then you can tell webpack to follow all of those import statements to produce a single file. This is useful because Service Workers running on Cloudflare need to be a single file as well.</p>
 	<h3 id="showmethecode">Show me the code</h3>
 	<p>Remember when I said something about predicting weather? Let’s build a worker with TypeScript that responds with the current weather.</p>
-	<p>Make sure to have <a href="https://nodejs.org/?ref=blog.cloudflare.com" target="_blank">NodeJS</a> installed.</p>
+	<p>Make sure to have <a href="https://nodejs.org" target="_blank">NodeJS</a> installed.</p>
 	<pre><code class="language-bash"># Make a new project directory
 mkdir weather-worker
 cd weather-worker
@@ -99,9 +99,9 @@ module.exports = {
 	<blockquote>
 		<p>A note about <code>devtool: 'cheap-module-eval-source-map'</code>. Specifying this type of sourcemap is fast, lightweight, and results in stacktraces much more representative of your source code. They’re not exact (yet!), but we’re getting there.</p>
 	</blockquote>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-20-at-5.46.48-PM.png" alt="Fiddle Error" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-20-at-5.46.48-PM.png" alt="Fiddle Error"></p>
 	<p><em>Cloudflare fiddle devtools uses source maps to point you to the correct source file. Click through to see the problematic line.</em></p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-20-at-5.47.52-PM.png" alt="Fiddle error source" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-20-at-5.47.52-PM.png" alt="Fiddle error source"></p>
 	<h4 id="srcindexts">src/index.ts</h4>
 	<pre><code class="language-typescript">import { fetchWeather } from './fetch-weather'
 
@@ -155,7 +155,7 @@ export async function fetchWeather(location: string, unit = 'f') {
 	<pre><code class="language-bash">npm run build &amp;&amp; npm run preview
 </code></pre>
 	<p>This ought to build your script and open a page very similar to:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-20-at-5.51.19-PM.png" alt="Workers Fiddle Screenshot" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-20-at-5.51.19-PM.png" alt="Workers Fiddle Screenshot"></p>
 	<p>This is great, but instead of returning the weather for every single resource request, maybe we should only return the weather on pathnames that match a particular pattern. Something like:</p>
 	<pre><code>GET /weather/:city
 GET /weather/austin
@@ -163,7 +163,7 @@ GET /weather/toronto
 </code></pre>
 	<p>In that pattern, <code>city</code> is a variable. Anything that starts with <code>/weather/</code> will match, and everything after will be our city. This shouldn’t match a path like <code>/weather/austin/tatious</code>. Luckily there are off-the-shelf solutions on npm to handle exactly this sort of logic.</p>
 	<h3 id="loadingnodemodules">Loading node modules</h3>
-	<p>Webpack also understands how to import npm modules into your bundle. To illustrate this, we’re going to use the fantastic <a href="https://www.npmjs.com/package/path-to-regexp?ref=blog.cloudflare.com" target="_blank">path-to-regexp</a> module.</p>
+	<p>Webpack also understands how to import npm modules into your bundle. To illustrate this, we’re going to use the fantastic <a href="https://www.npmjs.com/package/path-to-regexp" target="_blank">path-to-regexp</a> module.</p>
 	<p>Install and save the module:</p>
 	<pre><code class="language-bash">npm install -S path-to-regexp
 </code></pre>
@@ -218,8 +218,8 @@ async function handleWeatherRequest(params: TWeatherRequestParams) {
 	<p>You should see the weather for Austin, TX displayed. Congrats!</p>
 	<h3 id="conclusion">Conclusion</h3>
 	<p>Webpack is an incredibly robust and configurable piece of technology. It’s not just a module bundler, but rather a general static asset build system for web development. Although it was built with front-end assets in mind, it’s a perfect fit for bundling Cloudflare Service Workers.</p>
-	<p>You can view the full source of our weather script here: <a href="https://github.com/jrf0110/weather-workers?ref=blog.cloudflare.com" target="_blank">github.com/jrf0110/weather-workers</a></p>
+	<p>You can view the full source of our weather script here: <a href="https://github.com/jrf0110/weather-workers" target="_blank">github.com/jrf0110/weather-workers</a></p>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange?ref=blog.cloudflare.com" target="_blank">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers?ref=blog.cloudflare.com" target="_blank">Cloudflare Community Forum</a>. </small></em></p>
+	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank">Cloudflare Community Forum</a>. </small></em></p>
 	<!--kg-card-end: markdown-->
 </div>
