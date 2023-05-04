@@ -30,7 +30,7 @@
 	<p>こうした特有の利点から、S2 Systemsを含めたブラウザ分離ソリューションの多くがクラウドベースのリモート分離を活用しています。適切に実装されたリモートブラウザ分離は、ブラウザの悪用、プラグイン、ゼロデイ脆弱性、マルウェア、Webコンテンツに埋め込まれた攻撃から組織を保護することができます。</p>
 	<h3 id="-rbi-">リモートブラウザ分離（RBI）の仕組み</h3>
 	<p>通常のクラウドベースのRBIシステム（下記の青い破線のボックス❶） では、個々のリモートブラウザ❷はクラウドで削除可能なコンテナインスタンスとして実行されます。通常ユーザー1人につき1つのインスタンスです。リモートブラウザは、特定のプロトコルとデータフォーマット❸を使って、Webページのレンダリングされたコンテンツをユーザーのエンドポイントデバイス❹に送信します。キーストローク、マウスコマンド、スクロールコマンドなどのユーザーの動作は、セキュアな暗号化チャンネルを介して分離サービスに送り返されます。その後で、リモートブラウザによって処理され、リモートブラウザのWebページへの変更はエンドポイントデバイスに送り返されます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image2-22.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image2-22.png" class="kg-image"></figure>
 	<p>実際、エンドポイントデバイスは、クラウドブラウザを「リモートコントロール」しています。既存のRBIシステムはローカルエンドポイントにインストールされている専用のクライアントを使います。一方、他のクライアントはエンドポイントでHTML5と互換性があるブラウザを活用し、「クライアントレス」と見なされます。</p>
 	<p>リモートブラウザで発生したデータ漏えいは、ローカルエンドポイントと企業ネットワークから分離されています。リモートブラウザインスタンスは全て、各セッションの後に侵害され処理されたかのように取り扱われます。新しいブラウザセッションが新しいインスタンスで開始します。言うまでもなく、RBIサービスはブラウザコンテナの外部からサービス自体にブラウザ侵害がもれるのを防ぐ必要があります。ほとんどのRBIシステムはファイルのダウンロードの不要にするリモートファイルビュアーを提供するだけでなく、ダウンロードを許可する前にマルウェアを検査する機能もあります。</p>
 	<p>上記のアーキテクチャで不可欠なコンポーネントはクラウドRBIサービスで採用されている特定のリモートテクノロジーです。リモートテクノロジーは運用コストとRBIサービスの拡張性、Webサイトの忠実度と互換性、帯域幅要件、エンドポイントハードウェア/ソフトウェア要件、ユーザー体験に大きな影響を与えます。リモーティングテクノロジーは、RBIシステムが提供するセキュリティの実効レベルも決定します。</p>
@@ -48,20 +48,20 @@
 		<li>セキュリティ。基盤となるテクノロジー（HTMLやCSS、Webフォントなど）はハッカーがエンドポイントを侵害するために活用する攻撃ベクトルです。悪意のあるコンテンツまたはコードを排除しようと試みることは、蚊を洗うようなものです。きれいにすることはできますが、危険で悪意のあるコンテンツ固有のキャリアであるという事実は変わりません。RBIシステムを通してもこうしたテクノロジーを悪用する手段をすべて、事前に特定することは不可能です。</li>
 		<li>Webサイトの忠実度。必然的に、悪意のあるアクティブなコードを削除し、HTML、CSS、最新Webサイトの再構築をしようとすると、適切にレンダリングしないまたは、全くレンダリングしない壊れたページが表示されます。今日動作しているWebサイトが、明日は動作しないこともあり得ます。それは、サイトパブリッシャーが毎日変更するサイトがDOM再構築を機能的に破壊する可能性があるからです。その結果、もぐらたたきゲームのように終わりのないゲームで重要なリソースを必要とする問題が永遠に続くことになります。マルウェアを含んだEメールが依然として、侵害の大きな原因であり続けているにもかかわらず、Google G SuiteやMicrosoft Office 365のように一般に普及しているエンタープライズサービスのサポートに、RBIソリューションは悪戦苦闘しています。</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image3-19.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image3-19.png" class="kg-image"></figure>
 	<p>お客様は、ユーザー体験が悪く運用コストが高い安全なソリューションか、より高速ではあるが安全性がずっと低くWebサイトを壊すソリューションのどちらかを選択するしかありません。このようなトレードオフは、一部のRBIプロバイダーが自社製品にリモートテクノロジー両方を実施する要因となっています。しかし、依然として根本的な問題を解決せずに、お客様に究極の選択をさせることになります。</p>
 	<p>RBIシステムで大きなトレードオフとなることを考えると、リスクの高い経営幹部、経理部、ビジネス開発部、人事部の従業員など組織で最も脆弱なユーザーだけにリモートブラウジング機能をデプロイするのが、お客様のためによく行われる最適化です。しかし、教室にいる生徒の半分だけにワクチン接種をするようなものでセキュリティに関する間違った考え方です。これでは、大きな組織を保護する上で、ほとんど効果がありません。</p>
 	<p>残念なことですが、最大の「ギャップ」は現行のリモートブラウザ分離システムによって作られており、基盤となる分離に関する概念の潜在的な可能性と利用可能なRBIシステムの実装における現実との間にできた隔たりなのです。</p>
 	<h3 id="s2-systems-">S2 Systemsのリモートブラウザ分離</h3>
 	<p>S2 Systemsのリモートブラウザ分離は、ネットワークベクトルレンダリング（NVR）と呼ばれるS2特許技術に基づいた、根本的に異なるアプローチです。</p>
 	<p>S2リモートブラウザは、Google ChromeのベースであるオープンソースのChromiumエンジンを使用しています。市場シェア最大70%[8]のGoogle Chromeに加えて、Chromiumは新しいMicrosoft Edgeブラウザを含む21のWebブラウザで活用されています。[9]その結果、Chromiumエンジンへの継続的な高額投資をすることで、高レベルのWebサイトサポート、互換性、継続的な改善の流れが保証されます。</p>
-	<p>Chromiumブラウザの主要なアーキテクチャ機能は、<a href="https://skia.org/?ref=blog.cloudflare.com" target="_blank">Skia</a>グラフィックライブラリーの使用です。Skiaは広く利用されるクロスプラットフォームグラフィックエンジンで、Android、Google Chrome、Chrome OS、Mozilla Firefox、Firefox OS、FitbitOS、Flutter、<a href="https://electronjs.org/?ref=blog.cloudflare.com" target="_blank">Electron</a>アプリケーションフレームワークとその他多数の製品で使用されています。Chromiumと同様に、Skiaの普及率は高いので、ハードウェアとプラットフォームの継続的かつ広範なサポートが保証されます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image4-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Chromiumブラウザの主要なアーキテクチャ機能は、<a href="https://skia.org/" target="_blank">Skia</a>グラフィックライブラリーの使用です。Skiaは広く利用されるクロスプラットフォームグラフィックエンジンで、Android、Google Chrome、Chrome OS、Mozilla Firefox、Firefox OS、FitbitOS、Flutter、<a href="https://electronjs.org/" target="_blank">Electron</a>アプリケーションフレームワークとその他多数の製品で使用されています。Chromiumと同様に、Skiaの普及率は高いので、ハードウェアとプラットフォームの継続的かつ広範なサポートが保証されます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image4-13.png" class="kg-image"></figure>
 	<p><em>Skia</em>コードフラグメント</p>
 	<p>Chromiumブラウザウインドウで表示されるものはすべてが、Skiaレンダリングレイヤーを通してレンダリングされます。これには、メニューなどのアプリケーションウインドウUI が含まれますが、もっと重要なことは、Webページウインドウのコンテンツ全体がSkiaを介してレンダリングされることです。Chromiumの構成、レイアウト、レンダリングは異なるコンテンツの種類、デバイス、コンテキストに最適化された複数のパラレルパスを伴って極端に複雑です。次の図は、S2の仕組みを説明するために、かなり簡略化したものです（Chromiumの専門家の皆さん、すみません）。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image5-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image5-10.png" class="kg-image"></figure>
 	<p>S2SystemsのNVRテクノロジーは、リモートChromiumブラウザのSkia描画コマンド❶をインターセプト（傍受）してからトークン化して圧縮し、そして暗号化してワイヤ❷を介して、ユーザーエンドポイントデスクトップまたはモバイル端末でローカルに実行するHTML5準拠のWebブラウザ❸（Chrome、Firefox、Safariなど）へと送信します。NVRにキャプチャされたSkia APIコマンドは事前にラスタ化されています。つまり非常にコンパクトだという意味です。</p>
-	<p>S2 RBIサービスは、初回使用時にNVR<a href="https://webassembly.org/?ref=blog.cloudflare.com" target="_blank">WebAssembly</a>（Wasm）ライブラリ❹を後で使用する場合のためにキャッシュするエンドポイントデバイスにあるローカルHTML5 Webブラウザへと透過的にプッシュします。NVR Wasmコードには埋め込まれたSkiaライブラリとアンパック、解読、リモートRBIサーバーからローカルブラウザウインドウへのSkiaからの描画コマンドに「返信する」ために必要なコードが含まれています。WebAssemblyの機能は「広範なプラットフォームで利用できる共通ハードウェア機能を巧みに活かして、ネイティブのスピードで実行する」[10]もので、ネイティブに近い描画パフォーマンスを実現します。</p>
+	<p>S2 RBIサービスは、初回使用時にNVR<a href="https://webassembly.org/" target="_blank">WebAssembly</a>（Wasm）ライブラリ❹を後で使用する場合のためにキャッシュするエンドポイントデバイスにあるローカルHTML5 Webブラウザへと透過的にプッシュします。NVR Wasmコードには埋め込まれたSkiaライブラリとアンパック、解読、リモートRBIサーバーからローカルブラウザウインドウへのSkiaからの描画コマンドに「返信する」ために必要なコードが含まれています。WebAssemblyの機能は「広範なプラットフォームで利用できる共通ハードウェア機能を巧みに活かして、ネイティブのスピードで実行する」[10]もので、ネイティブに近い描画パフォーマンスを実現します。</p>
 	<p>S2 リモートブラウザ分離サービスはクラウド内のChromiumベースのヘッドレスブラウザを使用し、描画レイヤー出力を透過的にインターセプトし、描画コマンドをWeb上で効率的かつ安全に送信し、ローカルHTML5ブラウザのウインドウで再描画します。このアーキテクチャは技術的な利点がたくさんあります。</p>
 	<p>(1)セキュリティ：基盤となるデータ転送は既存の攻撃ベクトルではなく、お客様はセキュリティとパフォーマンスの間でトレードオフを強いられることはありません。</p>
 	<p>(2) Webサイトの互換性：Webサイトの互換性問題がなく、進化するWebテクノロジー、新たに出現した脆弱性を追いかける長いテールもありません。</p>
@@ -78,11 +78,11 @@
 	<p>Cloudflare for Teamsスイートの高度なセキュリティ製品とされると、リモートブラウザ分離は、ブラウザの悪用、ゼロデイ脆弱性、マルウェア、Webコンテンツに埋め込まれたその他の攻撃から保護します。企業は、セキュリティかユーザー体験かのトレードオフをする必要がなく、全従業員のためにブラウザを安全にすることができます。サービスによってブラウザから送信される企業データのITコントロールとコンプライアンス監視を可能にできます。当社の製品とサービス全体でシームレスな統合することで、ユーザーも企業も恐怖心や結果を気にすることなく、Webを閲覧できるようになります。</p>
 	<p>Cloudflareはより良いインターネットの構築に貢献するというミッションを掲げています。インターネットで仕事をしたり遊んだりするため、ユーザーも企業も保護するということです。そして、インターネットアクセスを加速し、信頼性と透明性を持たせるということです。Webブラウジングの仕組みを再考して最新化することは、より良いインターネットの構築に貢献する上で重要な部分です。</p>
 	<hr>
-	<p>[1]<a href="https://time.com/21039/tim-berners-lee-web-proposal-at-25/?ref=blog.cloudflare.com" target="_blank"> </a><a href="https://www.w3.org/History/1989/proposal.html?ref=blog.cloudflare.com" target="_blank">https://www.w3.org/History/1989/proposal.html</a></p>
-	<p>[2] “<a href="https://www.internetworldstats.com/stats.htm?ref=blog.cloudflare.com" target="_blank">Internet World Stats</a>,”<a href="https://www.internetworldstats.com/?ref=blog.cloudflare.com" target="_blank">https://www.internetworldstats.com/</a>、情報取得日2019年12月21日</p>
-	<p>[6] “<a href="https://www.webroot.com/us/en/about/press-room/releases/2019-webroot-threat-report?ref=blog.cloudflare.com" target="_blank">2019 Webroot Threat Report: Forty Percent of Malicious URLs Found on Good Domains</a>”, 2019年2月28日</p>
+	<p>[1]<a href="https://time.com/21039/tim-berners-lee-web-proposal-at-25/" target="_blank"> </a><a href="https://www.w3.org/History/1989/proposal.html" target="_blank">https://www.w3.org/History/1989/proposal.html</a></p>
+	<p>[2] “<a href="https://www.internetworldstats.com/stats.htm" target="_blank">Internet World Stats</a>,”<a href="https://www.internetworldstats.com/" target="_blank">https://www.internetworldstats.com/</a>、情報取得日2019年12月21日</p>
+	<p>[6] “<a href="https://www.webroot.com/us/en/about/press-room/releases/2019-webroot-threat-report" target="_blank">2019 Webroot Threat Report: Forty Percent of Malicious URLs Found on Good Domains</a>”, 2019年2月28日</p>
 	<p>[7] “Kleiner Perkins 2018 Internet Trends”, Mary Meeker.</p>
-	<p>[8]<a href="https://www.statista.com/statistics/544400/market-share-of-internet-browsers-desktop/?ref=blog.cloudflare.com" target="_blank"> https://www.statista.com/statistics/544400/market-share-of-internet-browsers-desktop/</a>、情報取得日2019年12月21日</p>
-	<p>[9]<a href="https://en.wikipedia.org/wiki/Chromium_(web_browser)?ref=blog.cloudflare.com" target="_blank"> https://en.wikipedia.org/wiki/Chromium_(web_browser)</a>、情報取得日2019年12月29日</p>
-	<p>[10]<a href="https://webassembly.org/?ref=blog.cloudflare.com" target="_blank"> https://webassembly.org/</a>、情報取得日2019年12月30日</p>
+	<p>[8]<a href="https://www.statista.com/statistics/544400/market-share-of-internet-browsers-desktop/" target="_blank"> https://www.statista.com/statistics/544400/market-share-of-internet-browsers-desktop/</a>、情報取得日2019年12月21日</p>
+	<p>[9]<a href="https://en.wikipedia.org/wiki/Chromium_(web_browser)" target="_blank"> https://en.wikipedia.org/wiki/Chromium_(web_browser)</a>、情報取得日2019年12月29日</p>
+	<p>[10]<a href="https://webassembly.org/" target="_blank"> https://webassembly.org/</a>、情報取得日2019年12月30日</p>
 </div>

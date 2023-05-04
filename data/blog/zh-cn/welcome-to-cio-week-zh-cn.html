@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-25.png" class="kg-image" alt="欢迎来到 CIO Week 和企业网络的未来" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-25.png" class="kg-image" alt="欢迎来到 CIO Week 和企业网络的未来"></figure>
 	<p>首席信息官（CIO）的世界已经发生了变化，今天的企业网络与 5 年或 10 年前已完全不同，这些变化已经在可见性和安全性方面造成了空白，带来了高成本和运营负担，并导致网络脆弱不堪。</p>
 	<p>我们乐观地认为，CIO 们可以期待一个更光明的未来。互联网已经从一个研究项目发展为企业所依赖的必要基础设施，我们认为，要解决 CIO 今天所面临最具挑战性的问题，使互联网变得更好就是正确的前进道路。Cloudflare 正在帮助建设一个更快、更安全、更可靠、更私密、可编程性更高的互联网，通过这样做，组织将能够在我们的网络上构建他们的下一代网络。</p>
 	<p>本周，我们将展示 Cloudflare One —— 我们的Zero Trust 即服务——如何帮助 CIO 改造他们的企业网络。我们推出新的功能，以扩大 Cloudflare 平台的范围，满足 CIO 的现有和新出现的需求。但在我们进入这一周前，我们想花些时间谈谈我们有关未来企业网络的愿景。我们希望能明确一下意识到这个机会的厂商和分析师所用的术语和缩写（例如，Zero Trust 网络即服务是什么意思呢？），以及我们的创新方式如何实现以上愿景。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-30.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-30.png" class="kg-image"></figure>
 	<h2 id="-">第一代：城堡与护城河</h2>
 	<p>多年来，企业网络都是这样的：</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--1--18.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--1--18.png" class="kg-image"></figure>
 	<p>公司在主要办公地点内或附近自建或租用数据中心。他们在这些数据中心的服务上托管各种业务应用——电子邮件服务器、ERP 系统、CRM 等。办公室的员工通过局域网（LAN）或专用广域网（WAN）链路从分支机构连接到这些应用。每个数据中心都拥有一系列安全硬件（如防火墙），对所有进出流量实施安全保护。一旦进入企业网络，用户可以横向移动到其他连接的设备和托管的应用程序，但基本形式的网络认证和物理安全控制，如员工胸卡系统，通常可以防止不受信任的用户进入。</p>
 	<p>网络架构记分卡：第一代</p><!--kg-card-begin: markdown-->
 	<table>
@@ -63,7 +63,7 @@
 	<p>这一重大变化（使用复杂的混合式架构带来意料之外的成本增加）还不是全部，CIO 同时还要面临另一个挑战。互联网不仅改变了应用，也改变了用户。正如服务器不再需要放置于公司总部一样，员工也不需要身处办公室的局域网中才能访问他们的工具。VPN 允许办公室外的员工访问托管于公司网络的应用（无论是物理网络还是在云端）。</p>
 	<p>这些 VPN 允许远程用户访问企业网络，但它们速度缓慢、使用笨拙，并且只能支持数量有限的员工访问，以防性能下降至无法使用的地步。而且，从安全角度来看，VPN 是很可怕的——只要用户进入了 VPN，他们就能横向移动，发现和访问企业网络上的其他资源。对 CIO 和 CISO 而言，相比佩戴员工卡的员工在传统城堡加护城河办公室环境中使用的计算机，控制带有 VPN 访问权限的笔记本电脑难度就大得多了，这些笔记本电脑有可能被带到任何地方：公园、公共交通工具、酒吧等。</p>
 	<p>2020 年新冠疫情爆发后，这些有关 VPN 成本、性能和安全的新担忧变成影响到业务的关键性挑战，即使部分员工返回办公室，这种挑战仍将继续存在。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--2--7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--2--7.png" class="kg-image"></figure>
 	<h2 id="--2">第二代：单点解决方案的大杂烩</h2>
 	<p>市场上出现很多厂商来解决这些重大转变带来的挑战，它们往往仅关注一个或少数几个用例。一些供应商提供硬件设备的虚拟化版本，通过不同的云平台交付；其他供应商使用云原生方式来解决特定问题，例如应用访问或 web 过滤。但将这些单点解决方案拼凑起来给 CIO 造成了更大的麻烦，而且大多可用的产品仅关注增强身份、端点和应用安全，而没有真正解决网络安全问题。</p>
 	<h3 id="--3">可见性中的空白</h3>
@@ -155,7 +155,7 @@
 		<li>随着时间推移，从更开放的策略升级到更严格的策略：首先使用与传统架构一致的安全规则，然后，在能够看到谁访问什么内容后，利用分析和日志来实施更严格的策略。</li>
 		<li>使改变快速轻松：使用现代 SaaS 界面来设计您的下一代网络。</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--3--2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--3--2.png" class="kg-image"></figure>
 	<p>网络架构记分卡：第三代</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
@@ -206,7 +206,7 @@
 	<!--kg-card-end: markdown-->
 	<h2 id="cloudflare-one-">Cloudflare One 是第一个为下一代网络从零开始构建的统一平台。</h2>
 	<p>为了实现我们提出的宏伟愿景，CIO 们需要一个能结合 Zero Trust 和网络服务，并在一个世界级全球性网络上运行的平台。我们相信，Cloudflare One 是第一个能让 CIO 们完全实现这一愿景的平台。</p>
-	<p>我们利用通用硬件上运行的软件，在我们的<a href="https://www.cloudflare.com/zh-cn/network/?ref=blog.cloudflare.com" target="_blank">全球网络</a>上构建了我们的 Zero Trust 网络即服务平台——Cloudflare One。这个平台最初是为了满足我们自身 IT 和安全团队的需求。后来我们意识到，这个平台具备帮助其他公司改造其网络的潜力，因而逐步将相关能力提供给客户。Cloudflare 的每个服务都运行于分布在 250 多个城市的每一台服务器上，网络总容量超过 100 Tbps，提供前所未有的规模和性能。我们的安全服务本身也更快——我们的 DNS 过滤服务运行于世界最快的公共 DNS 解析器上，身份检查服务运行于 Cloudflare Workers 上，后者是最快的无服务器平台。</p>
+	<p>我们利用通用硬件上运行的软件，在我们的<a href="https://www.cloudflare.com/zh-cn/network/" target="_blank">全球网络</a>上构建了我们的 Zero Trust 网络即服务平台——Cloudflare One。这个平台最初是为了满足我们自身 IT 和安全团队的需求。后来我们意识到，这个平台具备帮助其他公司改造其网络的潜力，因而逐步将相关能力提供给客户。Cloudflare 的每个服务都运行于分布在 250 多个城市的每一台服务器上，网络总容量超过 100 Tbps，提供前所未有的规模和性能。我们的安全服务本身也更快——我们的 DNS 过滤服务运行于世界最快的公共 DNS 解析器上，身份检查服务运行于 Cloudflare Workers 上，后者是最快的无服务器平台。</p>
 	<p>利用来自每秒 2800 多万个请求以及上万个互连的洞察，我们为所有客户做出更智能的安全和性能决策。我们在单一平台上提供网络连接和安全服务，通过单次检查和单一面板管理来填补可见性的空白，提供的价值远远超过单点解决方案的总和。我们向 CIO 们提供一个全球分布、迅如闪电的智能网络，将其用作自身网络的扩展。</p>
 	<p>在本周，我们将就 Cloudflare One 进行回顾和扩大，介绍一些真实客户如何在 Cloudflare 上构建其下一代网络。我们将更深入地解析目前可用的各种能力，以及这些能力如何解决第二代网络中带来的问题，并介绍一些新的产品领域，这些产品将使 CIO 们更加轻松，它们将消除传统硬件的成本和复杂性，强化整个网络及各个角度的安全性，并进一步加速通过我们本就快速的网络路由的流量。</p>
 	<p>我们很高兴，能在这里分享我们正如何使有关企业网络未来的梦想成为现实，希望阅读本文的 CIO 们（和所有人！）也一样兴奋。<br></p>

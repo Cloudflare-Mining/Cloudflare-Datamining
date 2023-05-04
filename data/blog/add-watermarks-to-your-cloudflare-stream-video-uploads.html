@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image4-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image4-5.png" class="kg-image"></figure>
 	<p>Since the launch of Cloudflare Stream, our customers have been asking for a programmatic way to add watermarks to their videos. We built the Watermarks API to support a wide range of use cases: from customers who simply want to tell Stream “<em>can you put this watermark image to the top right of my video?</em>” to customers with more detailed asks such as “<em>can you put this watermark image in a way it doesn’t take up more than 10% of the original video and with 20% opacity?” </em>All that and more is now available at no additional cost through the Watermarks API.</p>
 	<h2 id="what-is-cloudflare-stream">What is Cloudflare Stream?</h2>
 	<p>Cloudflare Stream provides out-of-the-box video infrastructure so developers can bring their app ideas to market faster. While building a video streaming app, developers must ask themselves questions like</p>
@@ -17,7 +17,7 @@
 	</ul>
 	<h3 id="step-1-creating-a-watermark-profile">Step 1: Creating a Watermark Profile</h3>
 	<p>A watermark profile describes the nature of the watermark, including the image to use as a watermark and properties such as its positioning, padding and scale. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image3-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image3-5.png" class="kg-image"></figure>
 	<p>In this example, we are going to create a watermark profile that places the Cloudflare logo to the lower left of the video:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl --request POST \
   --url https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/watermarks \
@@ -57,7 +57,7 @@
 	<!--kg-card-end: markdown-->
 	<h3 id="step-2-apply-the-watermark">Step 2: Apply the Watermark</h3>
 	<p>We’ve created the watermark and are ready to use it. Below is a screengrab from the Built For This commercial. It contains no watermark:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image1-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image1-2.png" class="kg-image"></figure>
 	<p>We are going to upload the commercial and request Stream to add the logo from the previous step as a watermark:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl --request POST \
   --url https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/copy \
@@ -77,6 +77,6 @@
 	<stream src="fcfa5c97795ba90251cbbae1880a0e18" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=fcfa5c97795ba90251cbbae1880a0e18"></script><!--kg-card-end: html--><!--kg-card-begin: html--><br><!--kg-card-end: html-->
 	<h2 id="what-s-next">What’s next</h2>
-	<p>Read the detailed <a href="https://developers.cloudflare.com/stream/watermarks?ref=blog.cloudflare.com" target="_blank">Watermark API docs</a> covering different use cases.</p>
+	<p>Read the detailed <a href="https://developers.cloudflare.com/stream/watermarks" target="_blank">Watermark API docs</a> covering different use cases.</p>
 	<p>In future iterations, we plan to add support for animated watermarks. Additionally, we want to add Watermark support to the Stream Dashboard so you have a UI to manage and add watermarks.</p>
 </div>
