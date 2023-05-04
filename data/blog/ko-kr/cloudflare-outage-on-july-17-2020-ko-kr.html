@@ -5,7 +5,7 @@
 	<p>확실한 것은, 이번 사고는 어떠한 유형의 공격이나 보안 사고에 의해 발생한 것이 아닙니다.</p>
 	<p>이번 가동 중단에 대해 사과드리며, 이러한 사고가 재발하지 않도록 이미 백본 구성을 대폭 변경했다는 것을 알려드립니다.</p>
 	<h3 id="cloudflare-">Cloudflare 백본</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-9.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-9.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Cloudflare는 전 세계 많은 데이터 센터 사이에 <em>백본</em>을 운영하고 있습니다. 백본은 데이터 센터 사이에 있는 일련의 프라이빗 라인으로서 Cloudflare는 이를 사용하여 데이터 센터 사이에 더 빠르고 더 신뢰할 수 있는 경로를 구축합니다. Cloudflare는 이러한 경로를 통해 퍼블릭 인터넷을 사용하지 않고 다양한 데이터 센터 사이에 트래픽을 전달할 수 있습니다.</p>
 	<p>예를 들어, 뉴욕에 있는 웹사이트 원본 서버에 접촉하여 프라이빗 백본을 통해 캘리포니아주 새너제이는 물론 프랑크푸르트나 상파울루까지 요청을 전달합니다. 퍼블릭 인터넷을 피하기 위한 이러한 추가 옵션으로 고품질 서비스가 가능합니다. 프라이빗 네트워크를 사용하여 인터넷 정체 구간을 피할 수 있기 때문입니다. Cloudflare는 백본을 이용함으로써 인터넷 요청과 트래픽을 라우팅하는 장소와 방법에 대해 퍼블릭 인터넷보다 훨씬 강력하게 제어할 수 있습니다.</p>
 	<h3 id="-">사고 경과</h3>
@@ -23,7 +23,7 @@
 	</ul>
 	<p>Cloudflare의 내부 트래픽 관리자 도구가 파악한 영향은 다음과 같습니다. 상단의 빨간색과 주황색 영역은 CPU 사용이 과부하에 이른 애틀랜타를 표시하며, 흰색 영역은 영향을 받은 데이터 센터가 트래픽을 더 이상 처리할 수 없어서 CPU가 거의 0에 이른 곳입니다. 이 부분이 가동 중단 구간 입니다.</p>
 	<p>영향을 받지 않은 데이터 센터에서는 사고 시간 중 CPU 사용에 변화가 없었습니다. 해당 데이터 센터는 사고 시간 중 그대로 녹색이었다는 사실에서 이를 알 수 있습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-11.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-11.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--1">사고 내용 및 조치</h3>
 	<p>애틀랜타에 백본 정체가 발생하자 저희 팀은 애틀랜타의 백본 트래픽 일부를 제거하기로 결정했습니다. 하지만 백본에서 애틀랜타 경로를 제거하는 대신, 라우터 설정의 한 줄 변경으로 인해 BGP 경로가 백본으로 누출기 시작했습니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>{master}[edit]
