@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Cloudflare-Gateway-now-protects-teams--wherever-they-are-thumbnail-top-page.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Cloudflare-Gateway-now-protects-teams--wherever-they-are-thumbnail-top-page.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>In <a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams/">January 2020</a>, we launched Cloudflare for Teams—a new way to protect organizations and their employees globally, without sacrificing performance. Cloudflare for Teams centers around two core products - Cloudflare Access and Cloudflare Gateway.</p>
 	<p><a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway/">In March 2020</a>, Cloudflare launched the first feature of Cloudflare Gateway, a secure DNS filtering solution powered by the world’s fastest DNS resolver. Gateway’s DNS filtering feature kept users safe by blocking DNS queries to potentially harmful destinations associated with threats like malware, phishing, or ransomware. Organizations could change the router settings in their office and, in about five minutes, keep the entire team safe.</p>
 	<p>Shortly after that launch, entire companies began leaving their offices. Users connected from initially makeshift home offices that have become permanent in the last several months. Protecting users and data has now shifted from a single office-level setting to user and device management in hundreds or thousands of locations.</p>
@@ -10,7 +10,7 @@
 	<p>Our customers are largely distributed workforces with employees split between corporate offices and their homes. Due to the pandemic, this is their operating environment for the foreseeable future.</p>
 	<p>The fact that users aren’t located at fixed, known locations (with remote workers allowed by exception) has created challenges for already overworked IT staff:</p>
 	<ol>
-		<li>VPNs are an all-or-nothing approach to providing remote access to internal applications. We address this with Cloudflare Access and our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust approach</a> to security for internal applications and <a href="https://blog.cloudflare.com/cloudflare-access-for-saas/">now SaaS applications as well</a>.</li>
+		<li>VPNs are an all-or-nothing approach to providing remote access to internal applications. We address this with Cloudflare Access and our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust approach</a> to security for internal applications and <a href="https://blog.cloudflare.com/cloudflare-access-for-saas/">now SaaS applications as well</a>.</li>
 		<li>VPNs are slow and expensive. However, backhauling traffic to a centralized security boundary has been the primary approach to enforcing corporate content and security policies to protect roaming users. Cloudflare Gateway was created to tackle this problem for our customers.</li>
 	</ol>
 	<p>Until today, Cloudflare Gateway has provided security for our customers through DNS filtering. While this provides a level of security and content control that’s application-agnostic, it still leaves our customers with a few challenges:</p>
@@ -36,7 +36,7 @@
 		<tbody>
 			<tr>
 				<td>URL, path, and/or query string</td>
-				<td><a href="https://www.myurl.com/path?query" target="_blank">https://www.myurl.com/path?query</a></td>
+				<td><a href="https://www.myurl.com/path?query=&amp;ref=blog.cloudflare.com" target="_blank">https://www.myurl.com/path?query</a></td>
 			</tr>
 			<tr>
 				<td>HTTP method</td>
@@ -64,15 +64,15 @@
 	<p></p><!--kg-card-end: html-->
 	<p>To complement DNS filtering policies, IT admins can now create L7 firewall rules to apply granular policies on HTTP traffic.</p>
 	<p>For example, an admin may want to allow users to navigate to useful parts of Reddit, but block undesirable subreddits. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-12.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-12.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Or to prevent data loss, an admin could create a rule that allows users to receive content from popular cloud storage providers but not upload select file types from corporate devices. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-7.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Another admin might want to prevent malicious files from being smuggled in through zip file downloads, so they may decide to configure a rule to block downloads of compressed file types.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-6.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-6.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Having used our DNS filtering categories to protect internal users, an admin may want to simply block security threats based on the classification of full URLs. Malware payloads are frequently disseminated from cloud storage and with DNS filtering an admin has to choose whether to allow or deny access to the entire domain for a given storage provider. URL filtering gives admins the ability to filter requests for the exact URLs where malware payloads reside, allowing customers to continue to leverage the usefulness of their chosen storage provider.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image7-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image7-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>And because all of this is made possible with the Cloudflare for Teams client, distributed workforces with roaming clients receive this protection wherever they are through a secure connection to the Cloudflare data center nearest them.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-7.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>We’re excited to protect teams as they browse the Internet by inspecting HTTP traffic, but what about non-HTTP traffic? Later this year, we will extend Cloudflare Gateway by adding support for IP, port, and protocol filtering with a cloud L4 firewall. This will allow administrators to apply rules to all Internet-bound traffic, like rules that allow outbound SSH, or rules that determine whether to send HTTP traffic arriving on a non-standard port to the L7 firewall for HTTP inspection.</p>
 	<p>At launch, Cloudflare Gateway will allow administrators to create policies that filter DNS and HTTP traffic across all users in an organization. This creates a great baseline for security. However, exceptions are part of reality: a one-size-fits-all approach to content and security policy enforcement rarely matches the specific needs of all users.</p>
 	<p>To address this, we’re working on supporting rules based on user and group identity by integrating Cloudflare Access with a customer’s existing identity provider. This will let administrators create granular rules that also leverage context around the user, such as:</p>
@@ -85,5 +85,5 @@
 	<p>People do not start businesses to deal with the minutiae of information technology and security. They have a vision and a product or service they want to get out in the world, and we want to get them back to doing that. We can help eliminate the hard parts around implementing advanced security tools that are usually reserved for larger, more sophisticated organizations, and we want to make them available to teams regardless of size.</p>
 	<p>The launch of both the Cloudflare for Teams client and L7 firewall lays the foundation for an advanced Secure Web Gateway with integrations including anti-virus scanning, CASB, and remote browser isolation—all performed at the Cloudflare edge. We’re excited to share this glimpse of the future our team has built—and we’re just getting started.</p>
 	<h3 id="get-started-now">Get started now</h3>
-	<p>All of these new capabilities are ready for you to use today. The L7 firewall is available in Gateway standalone, Teams Standard, and Teams Enterprise plans. You can get started by <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">signing up for a Gateway account</a> and following the <a href="https://developers.cloudflare.com/gateway/about" target="_blank">onboarding directions</a>.</p>
+	<p>All of these new capabilities are ready for you to use today. The L7 firewall is available in Gateway standalone, Teams Standard, and Teams Enterprise plans. You can get started by <a href="https://dash.cloudflare.com/sign-up/teams?ref=blog.cloudflare.com" target="_blank">signing up for a Gateway account</a> and following the <a href="https://developers.cloudflare.com/gateway/about?ref=blog.cloudflare.com" target="_blank">onboarding directions</a>.</p>
 </div>
