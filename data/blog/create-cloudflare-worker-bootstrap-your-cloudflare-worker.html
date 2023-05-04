@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
-	<p><em>This is a guest post by Tejas Dinkar, who is the Head of Engineering at <a href="https://www.quintype.com" target="_blank">Quintype</a>, a platform for digital publishing. He’s continually looking for ways to make applications run faster and cheaper. You can find him on <a href="https://github.com/gja" target="_blank">Github</a> and <a href="https://twitter.com/tdinkar" target="_blank">Twitter</a>.</em></p>
+	<p><em>This is a guest post by Tejas Dinkar, who is the Head of Engineering at <a href="https://www.quintype.com/?ref=blog.cloudflare.com" target="_blank">Quintype</a>, a platform for digital publishing. He’s continually looking for ways to make applications run faster and cheaper. You can find him on <a href="https://github.com/gja?ref=blog.cloudflare.com" target="_blank">Github</a> and <a href="https://twitter.com/tdinkar?ref=blog.cloudflare.com" target="_blank">Twitter</a>.</em></p>
 	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/Screen-Shot-2019-01-18-at-11.46.36-AM.png" class="kg-image">
-		<figcaption><a href="https://www.pexels.com/photo/man-holding-ice-cream-cone-under-cloud-1262302/" target="_blank">Image</a> by <a href="https://www.pexels.com/@rakicevic-nenad-233369" target="_blank">Rakicefic Nenad</a>&nbsp;</figcaption>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/Screen-Shot-2019-01-18-at-11.46.36-AM.png" class="kg-image" alt="" loading="lazy">
+		<figcaption><a href="https://www.pexels.com/photo/man-holding-ice-cream-cone-under-cloud-1262302/?ref=blog.cloudflare.com" target="_blank">Image</a> by <a href="https://www.pexels.com/@rakicevic-nenad-233369?ref=blog.cloudflare.com" target="_blank">Rakicefic Nenad</a>&nbsp;</figcaption>
 	</figure>
 	<p></p>
-	<p>TL;DR: Check out <a href="https://github.com/gja/create-cloudflare-worker" target="_blank">create-cloudflare-worker</a>.</p>
+	<p>TL;DR: Check out <a href="https://github.com/gja/create-cloudflare-worker?ref=blog.cloudflare.com" target="_blank">create-cloudflare-worker</a>.</p>
 	<p>At Quintype, we are continually looking for new and innovative ways to use our CDN. Quintype moved to Cloudflare last year, partly because of the power of Cloudflare Workers. Workers have been a very important tool in our belt, and in this blog post we will talk a little bit about our worker development lifecycle.</p>
 	<p>Cloudflare Workers have drastically changed the way we architect and deploy things at Quintype. Quintype is a platform that powers many publishers, including many high volume ones like The Quint, BloombergQuint, Swarajya, and Fortune India. An average month sees hundreds of millions of page views come through our network.</p>
 	<p>Maintaining a healthy cache hit ratio is the key to scaling a content heavy app. Ensuring requests are served from Cloudflare is faster, and cheaper, as requests do not have to come through to an origin. We actively architect our apps to ensure that we maintain a healthy cache hit ratio, and every little thing that we can do to increase it really helps.<br></p>
@@ -21,8 +21,8 @@
 	</ul>
 	<p>In many ways, the Cloudflare Worker is the next evolution of serverless computing. The code we write is distributed to 100s of locations, and scales up as traffic increases. Cloudflare has even launched (in beta) a Key Value store, so we can store data at 100s of locations as well.</p>
 	<p>In fact, Workers can even handle traffic without ever forwarding to an upstream origin, creating a truly distributed computing platform. Last week, we went live with our first origin-less worker, which implements a metered paywall purely using KV Store to store information about which content a user has read.</p>
-	<p>The one thing we were looking to improve was the development workflow for a worker. The ability to start, build, test and deploy a worker from scratch. Enter <a href="https://github.com/gja/create-cloudflare-worker" target="_blank">create-cloudflare-worker</a>.</p>
-	<p><a href="https://github.com/gja/create-cloudflare-worker" target="_blank">create-cloudflare-worker</a> is a new framework that lets anyone bootstrap their CF worker. Just run</p>
+	<p>The one thing we were looking to improve was the development workflow for a worker. The ability to start, build, test and deploy a worker from scratch. Enter <a href="https://github.com/gja/create-cloudflare-worker?ref=blog.cloudflare.com" target="_blank">create-cloudflare-worker</a>.</p>
+	<p><a href="https://github.com/gja/create-cloudflare-worker?ref=blog.cloudflare.com" target="_blank">create-cloudflare-worker</a> is a new framework that lets anyone bootstrap their CF worker. Just run</p>
 	<pre><code>$ npm init cloudflare-worker your-worker-name</code></pre>
 	<p>and you are ready to go!</p>
 	<p>Your worker is located at `src/index.js`. By default, it doesn't do too much, it just forwards your request to the upstream origin, and adds a response header depending on the response status. You can run your worker locally, using a local app server as the upstream target.</p>
@@ -32,7 +32,7 @@
 	<pre><code>$ npm run build &amp;&amp; npm test</code></pre>
 	<p>Finally, create-cloudflare-worker also comes with npm scripts to deploy your worker to Cloudflare (via the REST API). This makes it suitable for a workflow where the worker is built and deployed via Circle CI, Github Actions, or any other CD pipeline. Deploying your worker is as easy as running</p>
 	<pre><code>$ CF_ACCOUNT=acct-id CF_WORKER_NAME=worker-name CF_EMAIL=you@you.com CF_AUTH_KEY=auth-key npm run deploy</code></pre>
-	<p>Please see <a href="https://github.com/gja/create-cloudflare-worker" target="_blank">the readme</a> on Github for a list of commands available today.</p>
+	<p>Please see <a href="https://github.com/gja/create-cloudflare-worker?ref=blog.cloudflare.com" target="_blank">the readme</a> on Github for a list of commands available today.</p>
 	<p>create-cloudflare-worker is stable enough for you to start working with it today, and we are still looking for help with supporting WebAssembly, and with filling out the readme with different recipes for building workers.</p>
 	<p>We hope that create-cloudflare-worker will significantly reduce your time to get started with Cloudflare Workers. Happy Hacking!</p>
 </div>

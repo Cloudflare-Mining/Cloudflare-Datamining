@@ -8,9 +8,9 @@
 	</ul>
 	<p>This changed a couple of days ago when we noticed an unusually large SSDP amplification. It's worth deeper investigation since it crossed the symbolic threshold of 100 Gbps.</p>
 	<p>The packets per second chart during the attack looked like this:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/06/7a9f87325c0e3921-qps-1.png" alt=""></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/06/7a9f87325c0e3921-qps-1.png" alt="" loading="lazy"></p>
 	<p>The bandwidth usage:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/06/7a9f87325c0e3921-bps-2.png" alt=""></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/06/7a9f87325c0e3921-bps-2.png" alt="" loading="lazy"></p>
 	<p>This packet flood lasted 38 minutes. According to our sampled netflow data it utilized 930k reflector servers. We estimate that the during 38 minutes of the attack each reflector sent 112k packets to Cloudflare.</p>
 	<p>The reflector servers are across the globe, with a large presence in Argentina, Russia and China. Here are the unique IPs per country:</p>
 	<pre><code>$ cat ips-nf-ct.txt|uniq|cut -f 2|sort|uniq -c|sort -nr|head
@@ -45,8 +45,8 @@
    ...
 </code></pre>
 	<h3 id="whatsssdpanyway">What's SSDP anyway?</h3>
-	<p>The attack was composed of UDP packets with source port 1900. This port is used by the <a href="https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol" target="_blank">SSDP</a> and is used by the UPnP protocols. UPnP is one of the <a href="https://en.wikipedia.org/wiki/Zero-configuration_networking#UPnP" target="_blank">zero-configuration networking</a> protocols. Most likely your home devices support it, allowing them to be easily discovered by your computer or phone. When a new device (like your laptop) joins the network, it can query the local network for specific devices, like internet gateways, audio systems, TVs, or printers. Read more on <a href="http://www.zeroconf.org/zeroconfandupnp.html" target="_blank">how UPnP compares to Bonjour</a>.</p>
-	<p><a href="http://www.upnp-hacks.org/upnp.html" target="_blank">UPnP</a> is poorly standardised, but here's a snippet from <a href="https://web.archive.org/web/20151107123618/http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v2.0.pdf" target="_blank">the spec</a> about the <code>M-SEARCH</code> frame - the main method for discovery:</p>
+	<p>The attack was composed of UDP packets with source port 1900. This port is used by the <a href="https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol?ref=blog.cloudflare.com" target="_blank">SSDP</a> and is used by the UPnP protocols. UPnP is one of the <a href="https://en.wikipedia.org/wiki/Zero-configuration_networking?ref=blog.cloudflare.com#UPnP" target="_blank">zero-configuration networking</a> protocols. Most likely your home devices support it, allowing them to be easily discovered by your computer or phone. When a new device (like your laptop) joins the network, it can query the local network for specific devices, like internet gateways, audio systems, TVs, or printers. Read more on <a href="http://www.zeroconf.org/zeroconfandupnp.html?ref=blog.cloudflare.com" target="_blank">how UPnP compares to Bonjour</a>.</p>
+	<p><a href="http://www.upnp-hacks.org/upnp.html?ref=blog.cloudflare.com" target="_blank">UPnP</a> is poorly standardised, but here's a snippet from <a href="https://web.archive.org/web/20151107123618/http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v2.0.pdf" target="_blank">the spec</a> about the <code>M-SEARCH</code> frame - the main method for discovery:</p>
 	<p><em>When a control point is added to the network, the UPnP discovery protocol allows that control point to search for devices of interest on the network. It does this by multicasting on the reserved address and port (239.255.255.250:1900) a search message with a pattern, or target, equal to a type or identifier for a device or service.</em></p>
 	<p>Responses to <code>M-SEARCH</code> frame:</p>
 	<p><em>To be found by a network search, a device shall send a unicast UDP response to the source IP address and port that sent the request to the multicast address. Devices respond if the ST header field of the <code>M-SEARCH</code> request is “ssdp:all”, “upnp:rootdevice”, “uuid:” followed by a UUID that exactly matches the one advertised by the device, or if the <code>M-SEARCH</code> request matches a device type or service type supported by the device.</em></p>
@@ -66,7 +66,7 @@ USER-AGENT: Google Chrome/58.0.3029.110 Windows
 		<li><code>upnp:rootdevice</code>: search for root devices</li>
 		<li><code>ssdp:all</code>: search for all UPnP devices and services</li>
 	</ul>
-	<p>To emulate these queries you can run this python script (based on <a href="https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python/" target="_blank">this work</a>):</p>
+	<p>To emulate these queries you can run this python script (based on <a href="https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python/?ref=blog.cloudflare.com" target="_blank">this work</a>):</p>
 	<pre><code class="language-.py">#!/usr/bin/env python2
 import socket
 import sys
@@ -184,7 +184,7 @@ LOCATION: http://192.168.2.1:40464/rootDesc.xml
 </code></pre>
 	<p>That target exposes 8x packet count amplification and 26x bandwidth amplification. Sadly, this is typical for SSDP.</p>
 	<h3 id="ipspoofing">IP Spoofing</h3>
-	<p>The final step for the attack is to fool the vulnerable servers to flood the target IP - not the attacker. For that the attacker needs to <a href="https://en.wikipedia.org/wiki/IP_address_spoofing" target="_blank">spoof the source IP address</a> on their queries.</p>
+	<p>The final step for the attack is to fool the vulnerable servers to flood the target IP - not the attacker. For that the attacker needs to <a href="https://en.wikipedia.org/wiki/IP_address_spoofing?ref=blog.cloudflare.com" target="_blank">spoof the source IP address</a> on their queries.</p>
 	<p>We probed the reflector IPs used in the shown 100 Gbps+ attack. We found that out of the 920k reflector IPs, only 350k (38%) still respond to SSDP probes.</p>
 	<p>Out of the reflectors that responded, each sent on average 7 packets:</p>
 	<pre><code>$ cat results-first-run.txt|cut -f 1|sort|uniq -c|sed -s 's#^ \+##g'|cut -d " " -f 1| ~/mmhistogram -t "Response packets per IP" -p
@@ -272,7 +272,7 @@ Response packets per IP:
 	<h3 id="openssdpisavulnerability">Open SSDP is a vulnerability</h3>
 	<p>It's not a novelty that allowing UDP port 1900 traffic from the Internet to your home printer or such is not a good idea. This problem has been known since at least January 2013:</p>
 	<ul>
-		<li><a href="https://community.rapid7.com/community/infosec/blog/2013/01/29/security-flaws-in-universal-plug-and-play-unplug-dont-play" target="_blank">"Security Flaws in Universal Plug and Play: Unplug, Don't Play"</a></li>
+		<li><a href="https://community.rapid7.com/community/infosec/blog/2013/01/29/security-flaws-in-universal-plug-and-play-unplug-dont-play?ref=blog.cloudflare.com" target="_blank">"Security Flaws in Universal Plug and Play: Unplug, Don't Play"</a></li>
 	</ul>
 	<p>Authors of SSDP clearly didn't give any thought to UDP amplification potential. There are a number of obvious recommendations about future use of SSDP protocol:</p>
 	<ul>
@@ -280,7 +280,7 @@ Response packets per IP:
 			<p>The authors of SSDP should answer if there is any real world use of unicast <code>M-SEARCH</code> queries. From what I understand <code>M-SEARCH</code> only makes practical sense as a multicast query in local area network.</p>
 		</li>
 		<li>
-			<p>Unicast <code>M-SEARCH</code> support should be either deprecated or at least rate limited, in similar way to <a href="http://www.redbarn.org/dns/ratelimits" target="_blank">DNS Response Rate Limit techniques</a>.</p>
+			<p>Unicast <code>M-SEARCH</code> support should be either deprecated or at least rate limited, in similar way to <a href="http://www.redbarn.org/dns/ratelimits?ref=blog.cloudflare.com" target="_blank">DNS Response Rate Limit techniques</a>.</p>
 		</li>
 		<li>
 			<p><code>M-SEARCH</code> responses should be only delivered to local network. Responses routed over the network make little sense and open described vulnerability.</p>
@@ -292,7 +292,7 @@ Response packets per IP:
 			<p>Network administrators should ensure inbound UDP port 1900 is blocked on firewall.</p>
 		</li>
 		<li>
-			<p>Internet service providers should <strong>never allow IP spoofing</strong> to be performed on their network. IP spoofing is the true root cause of the issue. See the infamous <a href="http://www.bcp38.info/index.php/Main_Page" target="_blank">BCP38</a>.</p>
+			<p>Internet service providers should <strong>never allow IP spoofing</strong> to be performed on their network. IP spoofing is the true root cause of the issue. See the infamous <a href="http://www.bcp38.info/index.php/Main_Page?ref=blog.cloudflare.com" target="_blank">BCP38</a>.</p>
 		</li>
 		<li>
 			<p>Internet service providers should allow their customers to use <strong>BGP flowspec</strong> to rate limit inbound UDP source port 1900 traffic, to relieve congestion during large SSDP attacks.</p>
@@ -309,12 +309,12 @@ Response packets per IP:
 	</ul>
 	<p>Furthermore, we prepared on online checking website. Click if you want to know if your public IP address has a vulnerable SSDP service:</p>
 	<ul>
-		<li><a href="https://badupnp.benjojo.co.uk/" target="_blank">https://badupnp.benjojo.co.uk/</a></li>
+		<li><a href="https://badupnp.benjojo.co.uk/?ref=blog.cloudflare.com" target="_blank">https://badupnp.benjojo.co.uk/</a></li>
 	</ul>
 	<p>Sadly, the most unprotected routers we saw in the described attack were from China, Russia and Argentina, places not historically known for the most agile internet service providers.</p>
 	<h3 id="summary">Summary</h3>
 	<p>Cloudflare customers are fully protected from SSDP and other L3 amplification attacks. These attacks are nicely deflected by <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks/">Cloudflare anycast</a> infrastructure and require no special action. Unfortunately the raising of SSDP attack sizes might be a tough problem for other Internet citizens. We should encourage our ISPs to stop IP spoofing within their network, support BGP flowspec and configure in netflow collection.</p>
 	<p><em>This article is a joint work of Marek Majkowski and Ben Cartwright-Cox.</em></p>
-	<p>Dealing with large attacks sounds like fun? <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank">Join our world famous DDoS team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland.</p>
+	<p>Dealing with large attacks sounds like fun? <a href="https://boards.greenhouse.io/cloudflare/jobs/589572?ref=blog.cloudflare.com" target="_blank">Join our world famous DDoS team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland.</p>
 	<!--kg-card-end: markdown-->
 </div>
