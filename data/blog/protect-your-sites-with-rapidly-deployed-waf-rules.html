@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><em>This blog post originally appeared as a <a href="http://www.rackspace.com/blog/protect-your-sites-with-rapidly-deployed-waf-rules/" target="_blank">guest post</a> on the <a href="http://www.rackspace.com/blog/" target="_blank">Rackspace blog</a></em></p>
+	<p><em>This blog post originally appeared as a <a href="http://www.rackspace.com/blog/protect-your-sites-with-rapidly-deployed-waf-rules/?ref=blog.cloudflare.com" target="_blank">guest post</a> on the <a href="http://www.rackspace.com/blog/?ref=blog.cloudflare.com" target="_blank">Rackspace blog</a></em></p>
 	<p>An attack on your site could be catastrophic. Even a small attack can have major implications. Responding quickly to an attack is imperative.</p>
-	<p>In August 2013, we at CloudFlare rolled out a new global <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Web Application Firewall</a> (WAF) that runs common sets of firewall rules such as the open source <a href="https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project" target="_blank">OWASP</a> rules that protect against SQL injection, cross-site scripting and more. But the WAF also has a custom rule language that CloudFlare’s support engineers use to write one-of-a-kind rules to protect specific customers or specific software.</p>
+	<p>In August 2013, we at CloudFlare rolled out a new global <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Web Application Firewall</a> (WAF) that runs common sets of firewall rules such as the open source <a href="https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project?ref=blog.cloudflare.com" target="_blank">OWASP</a> rules that protect against SQL injection, cross-site scripting and more. But the WAF also has a custom rule language that CloudFlare’s support engineers use to write one-of-a-kind rules to protect specific customers or specific software.</p>
 	<p>Since the deployment of the new WAF we’ve rolled out many global and customer-specific rules to protect websites from attacks. This blog post looks at a few of them and the process of getting a custom rule deployed.</p>
 	<h3 id="customrulesforcustomers">Custom Rules For Customers</h3>
 	<p>Commonly, a customer will complain of an attack that’s hitting their web site and will provide us with their web server logs showing the attack (or by giving us permission to examine the traffic going to their web site). The logs will often show a common pattern. For example, here’s an anonymized attack against a customer web site showing up in their logs:</p>
@@ -17,7 +17,7 @@
 12/30 01:42:14 23.75.345.200 example.com /index.php?6732828=-106444 WordPress/3.2.2
 </pre>
 	<p>The attacker was using a botnet to hit the script /index.php on example.com. To make each request different they are appending a query string in the form number=number where each number is randomly chosen. The User-Agent in the requests is spoofed to look like WordPress.</p>
-	<p><img alt="" src="https://blog.cloudflare.com/content/images/cloudflare.1.png"><noscript><img alt="" src="http://blog.cloudflare.com/content/images/cloudflare.1.png"></noscript></p>
+	<p><img alt="" src="https://blog.cloudflare.com/content/images/cloudflare.1.png"><noscript><img alt src="http://blog.cloudflare.com/content/images/cloudflare.1.png"></noscript></p>
 	<p>Although this attack doesn’t cause CloudFlare a problem it can cause the customer’s web server to become overloaded. The customer contacted us and we put in place a custom rule for them that blocks the attack. The rule looks like this:</p>
 	<pre>rule 12345678 WordPress Numbers Botnet
   REQUEST_HEADERS:User-Agent matches ^WordPress\/ and
@@ -47,11 +47,11 @@ ion%20Nous%20ne%20pardonnons%20pas%20Nous%20n%E2%80%99oublions%20pas
 	<p>As simple as that looks, it took the load off the customer’s web server and in the first 12 hours after deployment was activated over 27 million times!</p>
 	<h3 id="customglobalrules">Custom Global Rules</h3>
 	<p>Other attacks are likely to be much more widespread and not focused on a single customer. These attacks are often directed at specific technologies such as WordPress, Joomla or other software.</p>
-	<p>Back in October a <a href="http://blog.whmcs.com/?t=79427" target="_blank">zero-day exploit for WHMCS</a> (the popular web hosting management software) was released. CloudFlare patched that by <a href="https://blog.cloudflare.com/patching-a-whmcs-zero-day-on-day-zero">deploying</a> a complex WAF rule on the day the zero-day became public. The WHMCS maintainers also patched the problem.</p>
+	<p>Back in October a <a href="http://blog.whmcs.com/?t=79427&amp;ref=blog.cloudflare.com" target="_blank">zero-day exploit for WHMCS</a> (the popular web hosting management software) was released. CloudFlare patched that by <a href="https://blog.cloudflare.com/patching-a-whmcs-zero-day-on-day-zero">deploying</a> a complex WAF rule on the day the zero-day became public. The WHMCS maintainers also patched the problem.</p>
 	<p>Shortly after that, two new WHMCS vulnerabilities were found and we patched them as well by deploying or modifying WHMCS WAF rules.</p>
-	<p>We’ve also added custom rules to protect Plone-based web sites, a PHP 5.x <a href="https://www.exploit-db.com/exploits/29290/" target="_blank">remote code execution</a> exploit, and a number of other rules to protect against common botnets and other attack software.</p>
+	<p>We’ve also added custom rules to protect Plone-based web sites, a PHP 5.x <a href="https://www.exploit-db.com/exploits/29290/?ref=blog.cloudflare.com" target="_blank">remote code execution</a> exploit, and a number of other rules to protect against common botnets and other attack software.</p>
 	<p>All those are on top of the generic protection offered by the 2,372 other rules that CloudFlare’s WAF runs to check every request.</p>
 	<h3 id="conclusion">Conclusion</h3>
-	<p>The flexibility of the CloudFlare WAF language and the ability to deploy WAF rules in seconds means we can respond to attacks very rapidly. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">Web Application Firewalls</a>.</p>
+	<p>The flexibility of the CloudFlare WAF language and the ability to deploy WAF rules in seconds means we can respond to attacks very rapidly. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/?ref=blog.cloudflare.com" target="_blank">Web Application Firewalls</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>
