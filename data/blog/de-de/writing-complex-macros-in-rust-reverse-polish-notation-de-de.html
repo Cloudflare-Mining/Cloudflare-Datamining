@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
-	<p>(<em>Dies ist ein Crossposting eines Tutorials, das ursprünglich </em><a href="https://rreverser.com/writing-complex-macros-in-rust/?ref=blog.cloudflare.com" target="_blank"><em>in meinem persönlichen Blog veröffentlicht</em></a><em> wurde)</em></p>
+	<p>(<em>Dies ist ein Crossposting eines Tutorials, das ursprünglich </em><a href="https://rreverser.com/writing-complex-macros-in-rust/" target="_blank"><em>in meinem persönlichen Blog veröffentlicht</em></a><em> wurde)</em></p>
 	<p>Neben anderen interessanten Features verfügt Rust über ein leistungsfähiges Makrosystem. Leider hatte ich auch nach dem Lesen von <em>The Rust Programming Language</em> (aka The Book) und verschiedenen Tutorials noch zu kämpfen, als es darum ging, ein Makro zu implementieren, das die Verarbeitung komplexer Listen verschiedener Elemente beinhaltet. Ich hatte Schwierigkeiten zu verstehen, wie es gemacht werden sollte, und es dauerte einige Zeit, bis ich dieses Aha-Erlebnis hatte und anfing, Makros für alles zu missbrauchen :) <em>(Okay, nicht für alles wie bei diesem „Ich verwende Makros, weil ich keine Funktionen einsetzen und Typen und Lebensdauern spezifizieren will“-Alles, wie ich es bei einigen Leuten gesehen habe, sondern überall da, wo sie tatsächlich nützlich sind.)</em></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image-4.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/conchur/25057125240/in/photolist-EbdjmG-8NSN1q-qXhueG-YTYnm3-odaneQ-DxCKQA-228jg4t-DU8Axz-XTQfdD-4p6nJk-UKVzbn-YFeKcW-osZ2XM-e6qefx-Tb3a6Q-dCw1zk-Et3kKh-dbAR9x-zHP8TR-a9cqw4-9JQHRy-Et1Ag5-PqFtx1-7x3Ukq-67VJc6-cvoKSo-qH2S9L-zHJAr9-XmCLsL-8AMWXX-ZV2hHh-XGPiHq-ZKpFSB-yqd2P1-23hMiaC-zETYYa-Wj7BVi-PNP4YA-LCNm6c-8AnkrZ-KA7qmt-KjYPxC-SzQsZD-Cxwvqg-GuZ3nn-J4jBaA-TzyjpB-DcYJA1-YQYNA3-My1uu8?ref=blog.cloudflare.com" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/conchur/?ref=blog.cloudflare.com" target="_blank">Conor Lawless</a></figcaption>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image-4.png" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/conchur/25057125240/in/photolist-EbdjmG-8NSN1q-qXhueG-YTYnm3-odaneQ-DxCKQA-228jg4t-DU8Axz-XTQfdD-4p6nJk-UKVzbn-YFeKcW-osZ2XM-e6qefx-Tb3a6Q-dCw1zk-Et3kKh-dbAR9x-zHP8TR-a9cqw4-9JQHRy-Et1Ag5-PqFtx1-7x3Ukq-67VJc6-cvoKSo-qH2S9L-zHJAr9-XmCLsL-8AMWXX-ZV2hHh-XGPiHq-ZKpFSB-yqd2P1-23hMiaC-zETYYa-Wj7BVi-PNP4YA-LCNm6c-8AnkrZ-KA7qmt-KjYPxC-SzQsZD-Cxwvqg-GuZ3nn-J4jBaA-TzyjpB-DcYJA1-YQYNA3-My1uu8" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/conchur/" target="_blank">Conor Lawless</a></figcaption>
 	</figure>
-	<p>Also, hier ist mein Versuch einer Beschreibung der Prinzipien hinter dem Schreiben solcher Makros. Ich gehe davon aus, dass Sie den Abschnitt über <a href="https://doc.rust-lang.org/book/first-edition/macros.html?ref=blog.cloudflare.com" target="_blank">Makros</a> in The Book gelesen haben und mit grundlegenden Makro-Definitionen und Token-Typen vertraut sind.</p>
-	<p>Als Beispiel für dieses Tutorial nehme ich eine <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation?ref=blog.cloudflare.com" target="_blank">umgekehrte polnische Notation</a>. Sie ist interessant, weil sie relativ einfach ist und Sie sie vielleicht bereits aus der Schule kennen, aber um sie statisch zur Compile-Zeit zu implementieren, muss man bereits einen rekursiven Makroansatz verwenden.</p>
+	<p>Also, hier ist mein Versuch einer Beschreibung der Prinzipien hinter dem Schreiben solcher Makros. Ich gehe davon aus, dass Sie den Abschnitt über <a href="https://doc.rust-lang.org/book/first-edition/macros.html" target="_blank">Makros</a> in The Book gelesen haben und mit grundlegenden Makro-Definitionen und Token-Typen vertraut sind.</p>
+	<p>Als Beispiel für dieses Tutorial nehme ich eine <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank">umgekehrte polnische Notation</a>. Sie ist interessant, weil sie relativ einfach ist und Sie sie vielleicht bereits aus der Schule kennen, aber um sie statisch zur Compile-Zeit zu implementieren, muss man bereits einen rekursiven Makroansatz verwenden.</p>
 	<p>Die umgekehrte polnische Notation (auch Postfixnotation genannt) verwendet einen Stapel für alle Operationen, sodass jeder Operand auf den Stapel gelegt wird und jeder <em>[binäre]</em> Operator zwei Operanden aus dem Stapel nimmt, das Ergebnis auswertet und es zurücklegt. Ein Ausdruck wie der folgende:</p>
 	<p><code>2 3 + 4 *</code></p>
 	<p>lautet übersetzt:</p>
@@ -141,10 +141,10 @@ println!("{}", rpn!(2 3 + 4 *)); // 20</code></pre>
   };
 }</code></pre>
 	<p>Wenn Sie dieses Makro mit einem leeren Stapel und einem RPN-Ausdruck aufrufen, wird an diesem Punkt bereits ein korrektes Ergebnis erzielt:</p>
-	<p><a href="https://play.rust-lang.org/?gist=cd56f6d7335e2d27c05e7fa89545b2cd&amp;version=stable&amp;ref=blog.cloudflare.com" target="_blank">Playground</a></p>
+	<p><a href="https://play.rust-lang.org/?gist=cd56f6d7335e2d27c05e7fa89545b2cd&amp;version=stable" target="_blank">Playground</a></p>
 	<p><code>println!("{}", rpn!([] 2 3 + 4 *)); // 20</code></p>
 	<p>Unser Stapel ist jedoch ein Implementierungsdetail und wir wollen wirklich nicht, dass jeder Abnehmer einen leeren Stapel weitergibt. Also fügen wir am Ende einen weiteren Catch-all-Zweig hinzu, der als Eingangspunkt dient und automatisch [] hinzufügt:</p>
-	<p><a href="https://play.rust-lang.org/?gist=d94abc0e20aa5c7f689706af06fd1923&amp;version=stable&amp;ref=blog.cloudflare.com" target="_blank">Playground</a></p>
+	<p><a href="https://play.rust-lang.org/?gist=d94abc0e20aa5c7f689706af06fd1923&amp;version=stable" target="_blank">Playground</a></p>
 	<pre><code class="language-rust">macro_rules! rpn {
   // ...
 
@@ -154,7 +154,7 @@ println!("{}", rpn!(2 3 + 4 *)); // 20</code></pre>
 }
 
 println!("{}", rpn!(2 3 + 4 *)); // 20</code></pre>
-	<p>Unser Makro funktioniert sogar für komplexere Ausdrücke wie die <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation?ref=blog.cloudflare.com#Example" target="_blank">auf der Wikipedia-Seite über RPN</a>!</p>
+	<p>Unser Makro funktioniert sogar für komplexere Ausdrücke wie die <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation#Example" target="_blank">auf der Wikipedia-Seite über RPN</a>!</p>
 	<p><code>println!("{}", rpn!(15 7 1 1 + - / 3 * 2 1 1 + + -)); // 5</code></p>
 	<h3 id="fehlerbehandlung"><strong>Fehlerbehandlung</strong></h3>
 	<p>Nun scheint für korrekte RPN-Ausdrücke alles reibungslos zu funktionieren. Aber damit ein Makro produktionsreif ist, müssen wir sicherstellen, dass es auch ungültige Eingaben verarbeiten kann, und zwar mit einer vernünftigen Fehlermeldung.</p>
@@ -170,8 +170,8 @@ println!("{}", rpn!(2 3 + 4 *)); // 20</code></pre>
    = help: the trait `std::fmt::Display` is not implemented for `[{integer}; 2]`
    = note: required by `std::fmt::Display::fmt`</code></pre>
 	<p>Okay, das sieht definitiv nicht hilfreich aus, da es keine Informationen liefert, die für den eigentlichen Fehler im Ausdruck relevant sind.</p>
-	<p>Um herauszufinden, was passiert ist, müssen wir unsere Makros debuggen. Dazu verwenden wir eine <a href="https://doc.rust-lang.org/unstable-book/language-features/trace-macros.html?ref=blog.cloudflare.com" target="_blank"><code>trace_macros</code></a>-Funktion (dafür benötigen Sie wie für jede andere optionale Compiler-Funktion einen Nightly Release von Rust). Wir wollen den Aufruf <code>println!</code> nicht verfolgen, also separieren wir unsere RPN-Berechnung in einer Variablen:</p>
-	<p><a href="https://play.rust-lang.org/?gist=610bc0c241aacda3d30a916f89b244cd&amp;version=nightly&amp;ref=blog.cloudflare.com" target="_blank">Playground</a></p>
+	<p>Um herauszufinden, was passiert ist, müssen wir unsere Makros debuggen. Dazu verwenden wir eine <a href="https://doc.rust-lang.org/unstable-book/language-features/trace-macros.html" target="_blank"><code>trace_macros</code></a>-Funktion (dafür benötigen Sie wie für jede andere optionale Compiler-Funktion einen Nightly Release von Rust). Wir wollen den Aufruf <code>println!</code> nicht verfolgen, also separieren wir unsere RPN-Berechnung in einer Variablen:</p>
+	<p><a href="https://play.rust-lang.org/?gist=610bc0c241aacda3d30a916f89b244cd&amp;version=nightly" target="_blank">Playground</a></p>
 	<pre><code class="language-rust">#![feature(trace_macros)]
 
 macro_rules! rpn { /* ... */ }
@@ -219,9 +219,9 @@ fn main() {
    = note: to `rpn ! ( [  ] [ 3 + 7 * 4 , 2 ] )`</code></pre>
 	<p>Da <code>[ 3 + 7 * 4 , 2 ]</code> nicht von dem Zweig <code>([$result:expr]) =&gt; ...</code> als letzter Ausdruck abgeglichen wurde, wurde es stattdessen von unserem letzten Catch-all <code>($($tokens:tt)*) =&gt; ...</code> eingefangen, wobei ihm ein leerer Stapel <code>[]</code> vorangestellt wurde. Das Original <code>[ 3 + 7 * 4 , 2 ]</code> wurde dann vom generischen <code>$num:tt</code> abgeglichen und als einzelner Endwert auf den Stapel gelegt.</p>
 	<p>Um dies zu verhindern, fügen wir zwischen den beiden letzten einen weiteren Zweig ein, der jeden Stapel abgleicht.</p>
-	<p>Er wird nur dann getroffen, wenn uns die Token ausgehen und der Stapel nicht genau einen Endwert hat, sodass wir das als Kompilierungsfehler behandeln und eine hilfreichere Fehlermeldung mit dem integriertem <a href="https://doc.rust-lang.org/std/macro.compile_error.html?ref=blog.cloudflare.com" target="_blank"><code>compile_error!</code></a>-Makro erzeugen können.</p>
+	<p>Er wird nur dann getroffen, wenn uns die Token ausgehen und der Stapel nicht genau einen Endwert hat, sodass wir das als Kompilierungsfehler behandeln und eine hilfreichere Fehlermeldung mit dem integriertem <a href="https://doc.rust-lang.org/std/macro.compile_error.html" target="_blank"><code>compile_error!</code></a>-Makro erzeugen können.</p>
 	<p>Beachten Sie, dass wir format! in diesem Kontext nicht einsetzen können, da es Laufzeit-APIs verwendet, um eine Zeichenfolge zu formatieren. Stattdessen müssen wir uns auf integrierte <code>concat!</code>- und <code>stringify!</code>-Makros beschränken, um eine Nachricht zu formatieren:</p>
-	<p><a href="https://play.rust-lang.org/?gist=e56be9422387bcae54aab3b8405a11e7&amp;version=stable&amp;ref=blog.cloudflare.com" target="_blank">Playground</a></p>
+	<p><a href="https://play.rust-lang.org/?gist=e56be9422387bcae54aab3b8405a11e7&amp;version=stable" target="_blank">Playground</a></p>
 	<pre><code class="language-rust">macro_rules! rpn {
   // ...
 
@@ -251,7 +251,7 @@ fn main() {
    |                    ----------------- in this macro invocation
 </code></pre>
 	<p>Aber was ist, wenn uns stattdessen eine Zahl fehlt?</p>
-	<p><a href="https://play.rust-lang.org/?gist=ce40630b8c1aa610c46b94557fdc9905&amp;version=stable&amp;ref=blog.cloudflare.com" target="_blank">Playground</a></p>
+	<p><a href="https://play.rust-lang.org/?gist=ce40630b8c1aa610c46b94557fdc9905&amp;version=stable" target="_blank">Playground</a></p>
 	<p><code>println!("{}", rpn!(2 3 + *));</code></p>
 	<p>Leider ist das noch nicht allzu hilfreich:</p>
 	<pre><code class="language-rust">error: expected expression, found `@`
@@ -265,7 +265,7 @@ fn main() {
 </code></pre>
 	<p>Wenn Sie versuchen, trace_macros zu verwenden, wird der Stapel hier aus irgendeinem Grund nicht erweitert, aber glücklicherweise ist relativ klar, was passiert – <code>@op</code> hat sehr spezifische Bedingungen hinsichtlich dem, was abgeglichen werden soll (es erwartet mindestens zwei Werte auf dem Stapel), und wenn es nicht abgleichen kann, wird @ vom gleichen übergierigen <code>$num:tt</code> abgeglichen und auf den Stapel gelegt.</p>
 	<p>Um dies zu vermeiden, werden wir wieder einen weiteren Zweig hinzufügen, um alles abzugleichen, was mit <code>@ob</code> beginnt, nicht bereits abgeglichen wurde und einen Kompilierungsfehler erzeugt:</p>
-	<p><a href="https://play.rust-lang.org/?gist=8729a8f3c96fa58ed62d35804c48782d&amp;version=stable&amp;ref=blog.cloudflare.com" target="_blank">Playground</a></p>
+	<p><a href="https://play.rust-lang.org/?gist=8729a8f3c96fa58ed62d35804c48782d&amp;version=stable" target="_blank">Playground</a></p>
 	<pre><code class="language-rust">macro_rules! rpn {
   (@op [ $b:expr, $a:expr $(, $stack:expr)* ] $op:tt $($rest:tt)*) =&gt; {
     rpn!([ $a $op $b $(, $stack)* ] $($rest)*)
@@ -294,5 +294,5 @@ fn main() {
 </code></pre>
 	<p>Viel besser! Jetzt kann unser Makro jeden RPN-Ausdruck zur Compile-Zeit auswerten und behandelt die häufigsten Fehler elegant, also belassen wir es dabei und sagen, dass es produktionsreif ist :)</p>
 	<p>Es gibt noch viele weitere kleine Verbesserungen, die wir hinzufügen könnten, aber ich möchte sie außerhalb dieses Demo-Tutorials belassen.</p>
-	<p>Lassen Sie mich <a href="https://twitter.com/RReverser?ref=blog.cloudflare.com" target="_blank">auf Twitter</a> wissen, ob dies hier nützlich war und/oder welche Themen verstärkt behandelt haben wollen!<a href="https://blog.cloudflare.com/tag/rust/">Rust</a> <a href="https://blog.cloudflare.com/tag/developers/">Entwickler</a> <a href="https://blog.cloudflare.com/tag/programming/">Programmierung</a> <a href="https://blog.cloudflare.com/tag/polish/">Polish</a></p>
+	<p>Lassen Sie mich <a href="https://twitter.com/RReverser" target="_blank">auf Twitter</a> wissen, ob dies hier nützlich war und/oder welche Themen verstärkt behandelt haben wollen!<a href="https://blog.cloudflare.com/tag/rust/">Rust</a> <a href="https://blog.cloudflare.com/tag/developers/">Entwickler</a> <a href="https://blog.cloudflare.com/tag/programming/">Programmierung</a> <a href="https://blog.cloudflare.com/tag/polish/">Polish</a></p>
 </div>

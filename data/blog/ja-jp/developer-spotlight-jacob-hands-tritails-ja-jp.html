@@ -1,13 +1,13 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/jAzJD_kPdJiw3eWQ0JNXRO-mPcTyUNDlhsJUQrhw00xBnT3qofGxs2OByY_j6Y93sZ-PU-PGcsJLESmRDjSGqcMxPqXmwrLUusfadl0CBxJb6vbFCg1VPjA1NfbDgf_GRuXkV4NC" class="kg-image" alt="Developer Spotlight: Automating Workflows with Airtable and Cloudflare Workers" loading="lazy"></figure>
-	<p>次の<a href="https://blog.cloudflare.com/tag/developer-spotlight/">Developer Spotlight</a>は私のもう一つのお気に入りです。今日はJacob Hands氏の投稿です。Jacob氏は生鮮品である肉のオンラインストア<a href="http://tritailsbeef.com/?ref=blog.cloudflare.com" target="_blank">TriTails Premium Beef</a>を経営しています。そのため、彼は出荷に関する独特の問題を多く抱えています。ショップの成長に対応するため、開発者であるJacob氏は、多くのワークフローを自動化するためにAirtableおよびCloudflare Workersに頼っています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/jAzJD_kPdJiw3eWQ0JNXRO-mPcTyUNDlhsJUQrhw00xBnT3qofGxs2OByY_j6Y93sZ-PU-PGcsJLESmRDjSGqcMxPqXmwrLUusfadl0CBxJb6vbFCg1VPjA1NfbDgf_GRuXkV4NC" class="kg-image" alt="Developer Spotlight: Automating Workflows with Airtable and Cloudflare Workers"></figure>
+	<p>次の<a href="https://blog.cloudflare.com/tag/developer-spotlight/">Developer Spotlight</a>は私のもう一つのお気に入りです。今日はJacob Hands氏の投稿です。Jacob氏は生鮮品である肉のオンラインストア<a href="http://tritailsbeef.com/" target="_blank">TriTails Premium Beef</a>を経営しています。そのため、彼は出荷に関する独特の問題を多く抱えています。ショップの成長に対応するため、開発者であるJacob氏は、多くのワークフローを自動化するためにAirtableおよびCloudflare Workersに頼っています。</p>
 	<p>Jacobの次の言葉は私のお気に入りの1つです。</p>
 	<blockquote><em>「確かに、Cloudflare Workersを使用すると1日当たり数十億ものリクエストを計量することができます。でもそれが1日当たり数百のリクエストだとしてもすごいことです。」</em></blockquote>
 	<p>ここでJacob氏は、AirtableとWorkersを統合して完全なカスタマイズワークフローツールを一つにまとめるのに、数日しか掛からなかった経緯について話しています。そして、それにより毎日何時間も節約できることも説明します。</p>
 	<h2 id="-"><strong>出荷要件</strong></h2>
 	<p>生鮮品を出荷する新しい電子商取引ビジネスでは、業務が拡大するにつれ、いくつかの課題が生じます。最大の課題の一つは毎日の出荷能力が限られていることです。その原因の一部は、作業空間が小さいため同時に注文を梱包することができる従業員数が限られることです。また、UPS宅配便に指定した集荷時間があったとしても、配送業者が出発する前に、梱包担当者が手を休め慌てて対応する必要があります。また、梱包はテトリスゲームのようで、全ての商品を冷凍状態に保つために、必要な量のドライアイスと一緒に詰める必要があり、時間が掛かります。</p>
 	<p>レギュラーボックスは次のようなものです。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-3.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-3.jpg" class="kg-image"></figure>
 	<p>お客様の玄関先に到着した時の製品の冷凍状態を確実に保つためには、輸送時間をできるだけ短くする必要があります。この要求があるため、週末には荷物が輸送されないようにする必要があります。配送が1日遅れたことで、私たちは、それを身をもって知ったのです。このこと自体はそれほど悪くはありませんが、これによってそのパッケージは週末の間仕分けセンターに置かれることになり、これは困ったことでした。</p>
 	<p>幸いなことに、時間までにそれを見つけ、夜を徹してステーキセットの交換品を送り、ディナーパーティーに間に合わせることができました。ただしその後、私たちは正しいパッケージが適切な時間に配送されるように、注文の選別を始めました。</p>
 	<h2 id="--1"><strong>注文の選別、苦労</strong></h2>
@@ -22,7 +22,7 @@
 	<p>多くの場合、問題解決とは何を優先するかを判断することであり、このワークフローの自動化も例外ではありません。私たちの注文選別プロセスには多くの手順があり、それを処理する時間が制限されていたため、すべてのことを一度に自動化すること不可能でした。その代わり、一回につき一つの手順、最も優先順位の高い問題のみを解決することにしました。選別を選別するプロセスは、無理なくワークフロー全体の自動化に必要な全てを構築し、そこに至る各手順を効率化するのに役立ちました。</p>
 	<p>輸送時間の計算のAPIが機能しているため、次に自動化した部分は、毎回コピーと貼り付けるのではなく、APIを使用して、Shopifyから出荷する必要がある注文を取得することでした。ここにきて、Googleスプレッドシートの限界が明らかになり始めました。スプレッドシートでも自動化することはできましたが、すぐにハッキングされやすいブラックボックスになる可能性があります。そのため、より優れたプラットフォームに移行する段階になりました。でもどのプラットフォームが優れているでしょうか?</p>
 	<p>Airtableが2012年にリリースされてから頻繁にその噂を耳にし、何度か試してみたことはありましたが、その価格と制限のために私の使用事例には合わないと感じていました。ただし、毎回保存する必要があるデータは少量であったため、その使いやすいAPIと、スプレッドシートでは難しい厳格なセル形式をサポートしているので、試す価値があるように感じました。AirtableのUIは直感的に使用でき、必要なデータのタイプごとにカスタムフィールドを簡単に作成することができます。</p>
-	<p>Airtableに組み込み<a href="https://airtable.com/marketplace/blkQyAKhJoGKqnR0T/scripting?ref=blog.cloudflare.com" target="_blank">Scriptingアプリ</a>があることを知ってから、これが自分のジョブに最適なツールであることが明白になりました。</p>
+	<p>Airtableに組み込み<a href="https://airtable.com/marketplace/blkQyAKhJoGKqnR0T/scripting" target="_blank">Scriptingアプリ</a>があることを知ってから、これが自分のジョブに最適なツールであることが明白になりました。</p>
 	<h2 id="airtable-scripting-"><strong>Airtable Scriptingアプリの作成</strong></h2>
 	<p>Airtable ScriptingはJavaScriptを使用してAirtable内から機能を直接作成するための強力なツールです。残念ながら、一部の制限があります。例えば、コピーと貼り付けを使用せずに、Scriptingアプリの異なるインスタンス間でコードを共有することができません。また、ソース制御がないため、変更内容を元に戻すにはUndoボタンに頼ることになります。</p>
 	<p>一方、Cloudflare Workersは完全な開発者用プラットフォームです。ソース制御を簡単に使用することができ、WranglerおよびMiniflareを使用した優れた開発者エクスペリエンスがあるため、テストとデプロイが高速かつシームレスです。</p>
@@ -42,7 +42,7 @@
 	<p>次に、ボックスごとの詳細をこのAPIに送信するための別のAirtableスクリプトを作成しました。重量とサイズの設定に加え、注文には日付がタグ付けられているため、ShipStationでどの注文がラベル作成の準備ができているかを容易に識別することができます。最後に、ShipStationでラベルがまとめて作成および印刷され、それぞれのパッケージに貼り付けられます。</p>
 	<h2 id="--6"><strong>すべてを一つにまとめる</strong></h2>
 	<p>システム全体の概要は次のようになります。AirtableおよびAirtableと接続されたすべてのクライアントは、すべてのサードパーティーAPI間を接続および連携させる、Worker APIを呼び出します。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-27.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-27.png" class="kg-image"></figure>
 	<h2 id="workers-airtable-"><strong>WorkersおよびAirtableが共に機能する理由</strong></h2>
 	<p>このワークフロー全体をAirtableで作成することもできたかもしれませんが、Workersを統合することにより、Airtableスクリプト間および他のプラットフォームの両方でコードを作成、テスト、再利用するプロセスははるかに簡単になりました。</p>
 	<h3 id="--7"><strong>開発エクスペリエンス</strong></h3>

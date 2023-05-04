@@ -1,16 +1,16 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-67.png" class="kg-image" alt="All the Platform Improvements We’ve Made in 2021 to Make CIOs Lives Easier" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-67.png" class="kg-image" alt="All the Platform Improvements We’ve Made in 2021 to Make CIOs Lives Easier"></figure>
 	<p>CIO Week 充满新的产品创新，为首席信息官提供了保护和加速器网络所需的工具。在 Cloudflare，我们知道首席信息官看重的许多事情绝不仅限于新产品发布 — 还有改进平台本身的安全性和易用性。这些事情远不够直观，但仍然十分重要，可确保我们的客户能够可靠地采用标准和安全的方式使用我们提供的日益增加的服务。随着时间推移，最佳实践和技术都会发生变化，我们的目标是确保，我们的平台满足客户要求的安全需求和控制深度。本着这一精神，我们在过去一年内致力于升级我们的众多平台服务。</p>
 	<h3 id="-sso-"><strong>改进了 SSO 上线</strong></h3>
-	<p>客户需要 SSO 来确保他们可以安全地控制员工可以访问哪些应用程序。我们最初的 SSO 迭代是人工操作的，客户进行设置可能很耗时或容易出错。我们已<a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/dash-sso-apps?ref=blog.cloudflare.com" target="_blank">简化设置流程</a>，方法是利用 Cloudflare Access 中的 SaaS 应用程序以允许客户在 <a href="https://dash.teams.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare for Teams 仪表板</a>中管理其 SSO 设置。如果您是企业客户，并且尚未获得 SSO 的优势，请联系您的客户团队，以便我们可以帮您设置。明年我们会进一步深化对使用 SSO 时的用户管理的控制，敬请期待。</p>
+	<p>客户需要 SSO 来确保他们可以安全地控制员工可以访问哪些应用程序。我们最初的 SSO 迭代是人工操作的，客户进行设置可能很耗时或容易出错。我们已<a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/dash-sso-apps" target="_blank">简化设置流程</a>，方法是利用 Cloudflare Access 中的 SaaS 应用程序以允许客户在 <a href="https://dash.teams.cloudflare.com/" target="_blank">Cloudflare for Teams 仪表板</a>中管理其 SSO 设置。如果您是企业客户，并且尚未获得 SSO 的优势，请联系您的客户团队，以便我们可以帮您设置。明年我们会进一步深化对使用 SSO 时的用户管理的控制，敬请期待。</p>
 	<h3 id="-"><strong>区域范围的角色测试版</strong></h3>
 	<p>许多客户将生产和测试/暂存区域保留在一个帐户中。假定所有内容都在一个帐户的范围内，这可带来管理配置的优势。不过，客户会遇到的一个常见问题是，他们想要处理关键生产区域访问权的方式不同于其他区域。现在，我们提供了测试版程序，供客户尝试为此帐户中的成员设置区域范围的角色。利用区域范围的角色，可以向用户授予对帐户中一部分区域的访问权。这意味着，对生产区域的编辑访问权可以仅限于真正需要的用户。同时，其他所有人可以保留只读访问权，这样不会阻止他们进行调查。同样，对于想要试用区域范围的角色的客户，请联系客户团队以访问测试版。</p>
 	<h3 id="terraform-"><strong>Terraform 改进</strong></h3>
 	<p>客户继续投资于自动化，以便简化 Cloudflare 和其他提供商的管理。对于许多客户来说，Terraform 是首选解决方案，为其提供了管理他们日常使用的多个服务的单一方式。Cloudflare 继续投资于 Terraform 对我们服务的支持，以确保客户成功。</p>
 	<ul>
-		<li>在 2021 年，我们添加了 10 个新资源，使列表增长到 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs?ref=blog.cloudflare.com" target="_blank">51 个资源</a>。</li>
-		<li>这包括平台的重大新增内容，比如我们的<a href="https://developers.cloudflare.com/ruleset-engine/?ref=blog.cloudflare.com" target="_blank">规则集引擎</a>，它驱动了 <a href="https://developers.cloudflare.com/rules/transform?ref=blog.cloudflare.com" target="_blank">Transform 规则</a>、<a href="https://developers.cloudflare.com/waf/managed-rulesets?ref=blog.cloudflare.com" target="_blank">受管 WAF 规则集</a>和<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets?ref=blog.cloudflare.com" target="_blank">受管 DDoS 规则集</a>等功能</li>
-		<li>我们将<a href="https://blog.cloudflare.com/cloudflares-partnership-with-hashicorp-and-bootstrapping-terraform-with-cf-terraforming/">重大更新</a>发布到 <a href="https://github.com/cloudflare/cf-terraforming?ref=blog.cloudflare.com" target="_blank">cf-terraforming</a>，这是我们用于为刚开始使用 Terraform 的现有 Cloudflare 客户快速生成 Terraform 配置和状态的库</li>
+		<li>在 2021 年，我们添加了 10 个新资源，使列表增长到 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">51 个资源</a>。</li>
+		<li>这包括平台的重大新增内容，比如我们的<a href="https://developers.cloudflare.com/ruleset-engine/" target="_blank">规则集引擎</a>，它驱动了 <a href="https://developers.cloudflare.com/rules/transform" target="_blank">Transform 规则</a>、<a href="https://developers.cloudflare.com/waf/managed-rulesets" target="_blank">受管 WAF 规则集</a>和<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank">受管 DDoS 规则集</a>等功能</li>
+		<li>我们将<a href="https://blog.cloudflare.com/cloudflares-partnership-with-hashicorp-and-bootstrapping-terraform-with-cf-terraforming/">重大更新</a>发布到 <a href="https://github.com/cloudflare/cf-terraforming" target="_blank">cf-terraforming</a>，这是我们用于为刚开始使用 Terraform 的现有 Cloudflare 客户快速生成 Terraform 配置和状态的库</li>
 		<li>现在支持更多资源，并且我们修改了界面以更方便使用。</li>
 	</ul>
 	<h3 id="--1"><strong>通知与警报</strong></h3>
@@ -24,7 +24,7 @@
 		<li>新 Webhook 目的地</li>
 		<li>DataDog、Discord、OpsGenie 和 Splunk</li>
 		<li>这是对 Slack、Microsoft Teams、Google Chat 和自定义目的地的补充。</li>
-		<li><a href="https://api.cloudflare.com/?ref=blog.cloudflare.com#notification-history-properties" target="_blank">警报历史记录</a> 现在通过 API 提供，并且即将推出 UI 支持。</li>
+		<li><a href="https://api.cloudflare.com/#notification-history-properties" target="_blank">警报历史记录</a> 现在通过 API 提供，并且即将推出 UI 支持。</li>
 	</ul>
 	<p>同样，如果您想看到我们所做改进的所有详情，请跳转到<a href="https://blog.cloudflare.com/p/994d43fd-0267-4d17-a0e9-dc9ddcb356b2/blog.cloudflare.com/whats-new-with-notifications/">此处</a>！</p>
 	<h3 id="--2"><strong>数据保护和本地性</strong></h3>

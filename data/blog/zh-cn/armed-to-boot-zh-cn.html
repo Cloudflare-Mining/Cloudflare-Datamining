@@ -1,16 +1,16 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-45.png" class="kg-image" alt="Armed to Boot: an enhancement to Arm's Secure Boot chain" loading="lazy"></figure>
-	<p>在过去几年中，影响计算机启动方式的攻击越来越多。大多数现代计算机使用统一可扩展固件接口 (<a href="https://en.wikipedia.org/wiki/UEFI?ref=blog.cloudflare.com" target="_blank">UEFI</a>)——该规范定义了操作系统（例如 Windows）与平台固件（例如磁盘驱动器、显卡）之间的软件接口。UEFI 内置安全机制，确保平台固件可以加密验证，并通过启动加载程序安全启动。此固件存储在主板上的非易失性 <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface?ref=blog.cloudflare.com" target="_blank">SPI</a> 闪存中，因此，即使重装操作系统和更换驱动器，它也依然在系统中。</p>
-	<p>这创建了一个“信任锚”，用于验证启动过程的每个阶段，但糟糕的是，这个信任锚也是一个攻击目标。在此类 UEFI 攻击中，恶意操作会在启动过程的早期加载到目标设备上。这意味着，恶意软件可以改变配置数据，通过将自身“<a href="https://www.zdnet.com/article/chinese-apt-deploy-moonbounce-malware-in-uefi-firmware/?ref=blog.cloudflare.com" target="_blank">植入</a>”而持久存在，并可以绕过只在操作系统阶段加载的安全措施。因此，虽然 UEFI 锚定的安全启动可保护启动加载程序，使其免受启动加载程序攻击，但它并不能保护 UEFI 固件本身。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-45.png" class="kg-image" alt="Armed to Boot: an enhancement to Arm's Secure Boot chain"></figure>
+	<p>在过去几年中，影响计算机启动方式的攻击越来越多。大多数现代计算机使用统一可扩展固件接口 (<a href="https://en.wikipedia.org/wiki/UEFI" target="_blank">UEFI</a>)——该规范定义了操作系统（例如 Windows）与平台固件（例如磁盘驱动器、显卡）之间的软件接口。UEFI 内置安全机制，确保平台固件可以加密验证，并通过启动加载程序安全启动。此固件存储在主板上的非易失性 <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface" target="_blank">SPI</a> 闪存中，因此，即使重装操作系统和更换驱动器，它也依然在系统中。</p>
+	<p>这创建了一个“信任锚”，用于验证启动过程的每个阶段，但糟糕的是，这个信任锚也是一个攻击目标。在此类 UEFI 攻击中，恶意操作会在启动过程的早期加载到目标设备上。这意味着，恶意软件可以改变配置数据，通过将自身“<a href="https://www.zdnet.com/article/chinese-apt-deploy-moonbounce-malware-in-uefi-firmware/" target="_blank">植入</a>”而持久存在，并可以绕过只在操作系统阶段加载的安全措施。因此，虽然 UEFI 锚定的安全启动可保护启动加载程序，使其免受启动加载程序攻击，但它并不能保护 UEFI 固件本身。</p>
 	<p>由于此类攻击呈增长趋势，我们开始对<a href="https://blog.cloudflare.com/anchoring-trust-a-hardware-secure-boot-story/">我们的 UEFI 固件进行加密签名</a>，作为缓解步骤。我们现有的解决方案仅针对我们的 x86 AMD 服务器设备平台，没有针对 Arm 的类似的 UEFI 固件签名解决方案。为了确定缺少哪些内容，我们不得不深入研究 Arm 的安全启动过程。</p>
 	<p>继续阅读，了解 Arm 可信固件安全启动。</p>
 	<h2 id="arm-">Arm 可信固件安全启动</h2>
-	<p>Arm 通过一个名为<a href="https://developer.arm.com/documentation/den0006/d?ref=blog.cloudflare.com" target="_blank">可信开发板启动要求</a> (TBBR)（即 Arm 可信固件 (ATF) 安全启动）的架构定义了一个可信启动过程。TBBR 的工作原理是，验证一系列加密签名的二进制镜像，每个镜像都包含系统启动过程中需加载和执行的不同阶段或元素。每个启动加载程序 (BL) 阶段都会完成初始化过程中的不同阶段：</p>
+	<p>Arm 通过一个名为<a href="https://developer.arm.com/documentation/den0006/d" target="_blank">可信开发板启动要求</a> (TBBR)（即 Arm 可信固件 (ATF) 安全启动）的架构定义了一个可信启动过程。TBBR 的工作原理是，验证一系列加密签名的二进制镜像，每个镜像都包含系统启动过程中需加载和执行的不同阶段或元素。每个启动加载程序 (BL) 阶段都会完成初始化过程中的不同阶段：</p>
 	<p><strong>BL1</strong><br>BL1 定义了启动路径（冷启动还是暖启动），将架构初始化（异常向量、CPU 初始化和控制寄存器设置），并将平台初始化（启用 watchdog 流程、MMU 和 DDR 初始化）。</p>
 	<p><strong>BL2</strong><br>BL2 为 Arm 可信固件 (ATF) 的初始化做准备，ATF 是负责设置安全启动过程的栈。ATF 设置之后，控制台初始化，内存映射为 MMU，并为下一个启动加载程序设置消息缓冲区。</p>
 	<p><strong>BL3</strong><br>BL3 阶段包括多个环节，首先是运行时服务初始化，用于检测系统拓扑。初始化之后，在 ATF“安全世界”启动阶段和“正常世界”启动阶段之间切换，包括 UEFI 固件的设置。上下文的设置是为了确保安全状态的信息无法进入正常世界执行状态。</p>
 	<p>每个镜像都经公钥验证，公钥存储在已签名的证书中，并可追溯到存储在 SoC 上的一次性可编程 (OTP) 存储器中或 ROM 中的根密钥。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image9.png" class="kg-image"></figure>
 	<p>TBBR 最初是为手机设计的。这建立了关于如何构建“信任链”的参考架构，从第一步 ROM 执行 (BL1) 到“正常世界”固件交接 (BL3)。虽然这创建了一个经过验证的固件签名链，但需要注意的是：</p>
 	<ol>
 		<li>SoC 制造商大力参与安全启动链，而客户几乎没有参与。</li>
@@ -19,45 +19,45 @@
 		<li>除制造商外，不能扩展。</li>
 	</ol>
 	<p>这告诉我们，为手机构建的架构不能为服务器扩展。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-27.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-27.png" class="kg-image"></figure>
 	<p>如果我们 100% 参与制造流程，这就不是什么大问题，但我们是客户和消费者。作为客户，我们对服务器和区块设计有很大的控制权，所以我们希望设计合作伙伴会采用我们能够在 AMD 平台安全启动中实现的一些概念，并对其进行改进，以适应 Arm CPU。</p>
 	<h2 id="-">扩容</h2>
 	<p>我们与 Ampere 展开合作，测试了他们的 Altra Max <a href="https://blog.cloudflare.com/arms-race-ampere-altra-takes-on-aws-graviton2/">单插槽机架式服务器 CPU</a>（代号 Mystique），它性能极好，每个核心都能效极高，这正是我们为降低功耗而苦苦寻找的东西。这只是其中一小部分规格，Ampere 在 Altra Max 中引入了各种功能，特别是投机性攻击缓解措施，包括来自 Armv8.5 指令集架构的 Meltdown 和 Spectre（变体 1 和变体 2），因此，Altra 的 ISA 获得了“+”称号。</p>
 	<p>Ampere 确实实现了一个与上述 ATF 签名过程相似的签名启动过程，但略有不同。我们将简单解释一下，为我们所做的修改设定上下文。</p>
 	<h2 id="ampere-">Ampere 安全启动</h2>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-21.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-21.png" class="kg-image"></figure>
 	<p>Ampere 实现的 Arm 处理器启动顺序如上图所示。系统控制处理器 (SCP) 由系统管理处理器 (SMpro) 和电源管理处理器 (PMpro) 组成。SMpro 负责安全启动和 BMC 通信等功能，而 PMpro 负责动态频率缩放和片上热监控等电源功能。</p>
 	<p>上电复位时，SCP 从 ROM 中运行系统管理启动加载程序，并加载 SMpro 固件。初始化后，SMpro 在 PMpro 和 ATF 线程上生成电源管理栈。ATF BL2 和 BL31 调出处理器资源，例如 DRAM 和 PCIe。此后，控制权移交 BL33 BIOS。</p>
 	<h3 id="--1">身份验证流程</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image7-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image7-5.png" class="kg-image"></figure>
 	<p>开机时，SMpro 固件从 SCP EEPROM 中的 SMpro 密钥证书读取 Ampere 的公钥 (ROTPK)，计算哈希值，并将其与存储在 eFuse 中的 Ampere 公钥哈希值进行比较。通过验证后，使用 Ampere 的公钥依次将 SMpro、PMpro 和 ATF 固件的密钥和内容证书解密。</p>
 	<p>SMpro 公钥将用于验证 SMpro 和 PMpro 镜像和 ATF 密钥，ATF 密钥又将验证 ATF 镜像。这套级联验证始于 Ampere 根密钥，并存储在俗称电子保险丝（即 eFuse）的芯片中。eFuse 只能进行一次编程，内容设为只读，无法篡改或修改。</p>
 	<p>这是用于签名系统、安全世界固件的原始硬件信任根。参考了我们与 AMD PSB 的签名过程，且知道 SoC 内有一个足够大的一次性可编程 (OTP) 区域后，看到这里我们不禁想：我们为什么不能在这里插入密钥哈希值？</p>
 	<h2 id="--2">单域安全启动</h2>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image11-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image11-2.png" class="kg-image"></figure>
 	<p>单域安全启动采用相同的身份验证流程，并将客户公钥（本例中为 Cloudflare 固件签名密钥）的哈希值添加到 eFuse 域。因此可以通过一个硬件信任根来验证 UEFI 固件。此过程由 BL2 在经过验证的 ATF 固件中执行。我们的公钥 (dbb) 从 UEFI 安全变量存储中读取，计算出哈希值并与存储在 eFuse 中的公钥哈希值进行比较。如果相符，则使用经过验证的公钥将 BL33 内容证书解密，验证并启动 BIOS 和剩下的启动项。这是 SDSB 增加的关键功能。它通过处理器上的一个 eFuse 信任根来验证整个软件启动链。</p>
 	<h2 id="--3">构建基块</h2>
 	<p>在对单域安全启动的工作原理有了基本了解后，下一个合乎逻辑的问题是“如何实现？”。我们确保所有 UEFI 固件都在构建时签名，但如果把这个过程分成几步，则更有助于理解。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Building-Blocks-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Building-Blocks-1.png" class="kg-image"></figure>
 	<p>Ampere 是我们的原始设备制造商 (ODM)，我们在执行 SDSB 方面发挥了重要作用。首先，我们使用我们内部的安全 PKI 为公-私密钥对生成证书。以 UEFI 安全变量格式的 dbb.auth 和 dbb.auth 向 ODM 提供公钥端。Ampere 向 ODM 提供参考软件发布包 (SRP)，包括底板管理控制器、系统控制处理器、UEFI 和复杂可编程逻辑器件 (CPLD) 固件，ODM 为其平台自定义 SRP。ODM 生成一个描述硬件配置的开发板文件，并且还自定义 UEFI，旨在第一次启动时注册 dbb 和 dbu，确保变量存储安全。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Building-Blocks-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Building-Blocks-2.png" class="kg-image"></figure>
 	<p>完成这一步后，我们使用 ODM 的 UEFI ROM 镜像、Arm 可信固件 (ATF) 和开发板文件生成一个 UEFI.slim 文件。（注意：这与 AMD PSB 不同，因为整个镜像和 ATF 文件均已签名；在 AMD PSB 中，只有启动代码的第一个代码块已签名。）整个 .SLIM 文件使用我们的私钥签名，在文件中产生一个签名哈希值。这只能通过正确的公钥进行验证。最后，ODM 将 UEFI 打包成与其平台 BMC 兼容的 .HPM 格式。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Security-Provisioning-Firmware.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Security-Provisioning-Firmware.png" class="kg-image"></figure>
 	<p>同时，我们提供调试保险丝选择和我们 DER 格式的公钥的哈希值。Ampere 使用这些信息创建一个特殊版本的 SCP 固件，即安全供应 (SECPROV) .slim格式。该固件只运行一次，用于将调试保险丝设置和公钥哈希值编入 SoC eFuse。Ampere 将 SECPROV.slim文件提交给 ODM，ODM 将其打包成一个与 BMC 固件更新工具兼容的 .hpm文件。</p>
 	<h2 id="--4">融合密钥</h2>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/eFuse-Key-Provisioning.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/eFuse-Key-Provisioning.png" class="kg-image"></figure>
 	<p>在系统制造过程中，固件在置入主板之前，已预先编程到存储 IC 中。请注意，SCP EEPROM 包含 SECPROV 镜像，不是标准 SCP 固件。在系统首次开机后，向 BMC 发送一条 IPMI 命令，将 Ampere 处理器解除复位。这将允许 SECPROV 固件运行，使用我们的公钥哈希值和调试保险丝设置来刻录 SoC eFuse。</p>
 	<h2 id="--5">最终制造流程</h2>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Final-manufacturing-flow.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Final-manufacturing-flow.png" class="kg-image"></figure>
 	<p>配置我们的公钥后，就会通过使用常规固件重新编程 SCP EEPROM 继续制造流程。系统开机后，ATF 检测到安全变量存储中没有密钥，并允许 UEFI 固件启动，无论有无签名。由于是第一次 UEFI 启动，所以会将我们的公钥编入安全变量存储并重新启动。和平常一样，通过 Ampere 的公钥哈希值验证 ATF。由于我们的公钥存在于 dbb 中，因此对照 eFuse 中的公钥哈希值进行验证，并允许 UEFI 启动。</p>
 	<h2 id="--6">验证</h2>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Validation.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Validation.png" class="kg-image"></figure>
 	<p>第一部分验证要求观察到 eFuse 成功销毁。这将我们的公钥哈希值刻入一个不可改变的专用内存区域，不允许覆盖哈希值。自动或手动向 BMC 发出 IPMI OEM 命令后，BMC 观察到来自 SECPROV 固件的信号，表示 eFuse 编程结束。这可以通过 BMC 命令探测到。</p>
 	<p>eFuse 销毁之后，通过观察其他固件的启动链来继续验证。SCP、ATF 或 UEFI 固件的损坏会阻碍启动流程和启动身份验证，导致机器无法进入操作系统。固件就位后，就会从启动机器开始继续完成路径验证。</p>
 	<p>第一次启动后，固件按以下顺序启动：BMC、SCP、ATF 和 UEFI。可以通过各自的串行控制台观察 BMC、SCP 和 ATF 固件。UEFI 会自动将 dbb 和 dbb 文件注册到安全变量存储中，并触发系统复位。</p>
 	<p>观察复位后，如果正确执行了功能，机器应该会成功进入操作系统。为了进一步验证，我们可以使用 UEFI Shell 环境来提取 dbb 文件，并将哈希值与提交给 Ampere 的哈希值进行比较。成功验证密钥后，会闪存一个未签名的 UEFI 镜像。未签名的 UEFI 镜像导致启动加载程序 BL3-2 阶段身份验证失败。因此，ATF 固件经历了一个启动循环。使用不正确的密钥签名的 UEFI 镜像也会出现类似结果。</p>
 	<h2 id="--7">更新身份验证流程</h2>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/UEFI-Authentication.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/UEFI-Authentication.png" class="kg-image"></figure>
 	<p>在随后的所有启动循环中，ATF 将读取安全变量 dbb（我们的公钥），计算密钥的哈希值，并将其与 eFuse 中的只读 Cloudflare 公钥哈希值进行比较。如果计算出的哈希值和 eFuse 的哈希值相符，就可以信任我们的公钥变量，并用来验证已签名的 UEFI。此后，系统将进入操作系统。</p>
 	<h2 id="--8">启动吧！</h2><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/dbbc340a11bb62675865055203ecb118/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fdbbc340a11bb62675865055203ecb118%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D22s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
@@ -74,5 +74,5 @@
 	<p></p><!--kg-card-end: html-->
 	<h2 id="--9">任重道远</h2>
 	<p>近年来，服务器管理界面（例如 BMC）已经成为各种网络攻击的目标，包括勒索软件、植入工具和破坏性活动。访问 BMC 时，本地或远程访问均可。随着远程访问手段的开放，有可能通过网络接口在 BMC 上安装恶意软件。在 BMC 上的软件受到感染的情况下，恶意软件或间谍软件能在服务器上持久存在。攻击者可能会直接使用闪存工具（例如 flashrom 或 socflash）来更新 BMC，而不需要在 UEFI 层面构建相同级别的固件恢复能力。</p>
-	<p>未来的状态涉及到使用与主机 CPU 无关的基础设施，在启动时间之前启用加密安全的主机。我们将寻求纳入开放计算项目数据中心安全控制模块规范 (DC-SCM) 2.0 提出的模块化方法<a href="https://drive.google.com/file/d/13BxuseSrKo647hjIXjp087ei8l5QQVb0/view?ref=blog.cloudflare.com" target="_blank">规范</a>。然后，我们便能将我们的信任根标准化，签署我们的 BMC，并将基于物理不可克隆函数 (PUF) 的身份密钥分配给组件和外围设备，以限制 OTP 保险丝的使用。OTP 保险丝在试图“电子循环使用”或重复使用机器时出现故障，因为您无法真正删除一台机器的身份。</p>
+	<p>未来的状态涉及到使用与主机 CPU 无关的基础设施，在启动时间之前启用加密安全的主机。我们将寻求纳入开放计算项目数据中心安全控制模块规范 (DC-SCM) 2.0 提出的模块化方法<a href="https://drive.google.com/file/d/13BxuseSrKo647hjIXjp087ei8l5QQVb0/view" target="_blank">规范</a>。然后，我们便能将我们的信任根标准化，签署我们的 BMC，并将基于物理不可克隆函数 (PUF) 的身份密钥分配给组件和外围设备，以限制 OTP 保险丝的使用。OTP 保险丝在试图“电子循环使用”或重复使用机器时出现故障，因为您无法真正删除一台机器的身份。</p>
 </div>
