@@ -131,7 +131,7 @@ const truncateEnvVars = new Set([
 	'CF_PAGES_URL',
 ]);
 const deployID = results['deployments-create']?.result?.id;
-const logsReq = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/blank-index/deployments/${deployID}/history/logs`);
+const logsReq = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/blank-index/deployments/${deployID}/history/logs?size=10000000`);
 const logsRes = await logsReq.json();
 const logs = logsRes.result.data ?? [];
 

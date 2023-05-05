@@ -8,7 +8,7 @@ import {parse as parseLoose} from 'acorn-loose';
 import {full, fullAncestor} from 'acorn-walk';
 import isValidFilename from 'valid-filename';
 import filenamify from 'filenamify';
-import dataUriToBuffer from 'data-uri-to-buffer';
+import {dataUriToBuffer} from 'data-uri-to-buffer';
 import isValidCSSUnit from 'is-valid-css-unit';
 import hexColorRegex from 'hex-color-regex';
 import cssProperties from 'known-css-properties';
