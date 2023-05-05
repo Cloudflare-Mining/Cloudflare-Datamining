@@ -4,7 +4,7 @@
 	<p><br>We have seen many of our existing customers use Workers to enhance their usage of the Cloudflare cache, and we have seen many new customers join Cloudflare to take advantage of these unique benefits. </p>
 	<h2 id="-re-introducing-the-cache-api">(Re-)Introducing the Cache API</h2>
 	<p>You can always have more control, so today we are announcing support for the Cache API! As some of you may know, Cloudflare Workers are built against the existing Service Worker APIs. One of the reasons we originally chose to model Cloudflare Workers after Service Workers was due to the existing familiarity and audience of Service Workers, as well as documentation. </p>
-	<p>We’ve received overwhelming feedback and evidence from customers that there are many uses for supporting an implementation modeled after the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache" target="_blank">Service Workers Cache API</a>. Today we are opening up a beta to offer our customers the ability to explicitly read and write items in our cache from within their Workers. The capability to do this will allow them to implement virtually any cache semantics they might need.</p>
+	<p>We’ve received overwhelming feedback and evidence from customers that there are many uses for supporting an implementation modeled after the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache?ref=blog.cloudflare.com" target="_blank">Service Workers Cache API</a>. Today we are opening up a beta to offer our customers the ability to explicitly read and write items in our cache from within their Workers. The capability to do this will allow them to implement virtually any cache semantics they might need.</p>
 	<h2 id="so-what-can-you-do-with-the-cache-api">So what can you do with the Cache API?</h2>
 	<p></p>
 	<h4 id="cache-worker-output">Cache Worker output</h4>
@@ -42,7 +42,7 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<h4 id="set-cache-tag-headers-from-a-worker-enterprise-only-">Set Cache-Tag headers from a Worker (Enterprise only)</h4>
-	<p>One of the ways to purge assets within the Cloudflare cache is using <a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only-" target="_blank">Cache-Tags</a>. Cache-Tags allow you to group assets by category, version, etc and purge them all at once using a single API call. Cache-Tags were traditionally set using an origin Cache-Tag header. Some backends, however, don’t allow you control over the response headers that are sent, which makes it challenging to set Cache-Tags at the origin. With the Cache API, you can set Cache-Tags directly from a Worker, without having to modify any code at your origin.</p><!--kg-card-begin: markdown-->
+	<p>One of the ways to purge assets within the Cloudflare cache is using <a href="https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only-?ref=blog.cloudflare.com" target="_blank">Cache-Tags</a>. Cache-Tags allow you to group assets by category, version, etc and purge them all at once using a single API call. Cache-Tags were traditionally set using an origin Cache-Tag header. Some backends, however, don’t allow you control over the response headers that are sent, which makes it challenging to set Cache-Tags at the origin. With the Cache API, you can set Cache-Tags directly from a Worker, without having to modify any code at your origin.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
  event.respondWith(handleRequest(event))
 })
@@ -69,7 +69,7 @@ async function handleRequest(event) {
 	<!--kg-card-end: markdown-->
 	<p>These are just simple examples to get started, and we’ll be publishing many more in the coming weeks. We’re excited to see what everyone builds with the Cache API!</p>
 	<h2 id="how-to-get-access">How to get access</h2>
-	<p>We are super excited for you to start playing with the Cache API. <strong>You can find <a href="https://developers.cloudflare.com/workers/reference/cache-api/" target="_blank">documentation here</a>, and feel free to start using the APIs.</strong></p>
+	<p>We are super excited for you to start playing with the Cache API. <strong>You can find <a href="https://developers.cloudflare.com/workers/reference/cache-api/?ref=blog.cloudflare.com" target="_blank">documentation here</a>, and feel free to start using the APIs.</strong></p>
 	<p>We want to hear about all the cool ways you are using this. We also want to hear if you are having trouble or running into any issues.</p>
-	<p>Please feel free to contact us at <a href="mailto:cacheapibeta@cloudflare.com" target="_blank">cacheapibeta@cloudflare.com</a></p>
+	<p>Please feel free to contact us at <a href="mailto:cacheapibeta@cloudflare.com?ref=blog.cloudflare.com" target="_blank">cacheapibeta@cloudflare.com</a></p>
 </div>

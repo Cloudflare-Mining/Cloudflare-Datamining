@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-49.png" class="kg-image" alt="Introducing workerd: the Open Source Workers runtime"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-49.png" class="kg-image" alt="Introducing workerd: the Open Source Workers runtime" loading="lazy"></figure>
 	<p>Today I'm proud to introduce the first beta release of workerd, the JavaScript/Wasm runtime based on the same code that powers Cloudflare Workers. workerd is Open Source under the Apache License version 2.0.</p>
 	<p>workerd shares most of its code with the runtime that powers Cloudflare Workers, but with some changes designed to make it more portable to other environments. The name "workerd" (pronounced "worker dee") comes from the Unix tradition of naming servers with a "-d" suffix standing for "daemon". The name is not capitalized because it is a program name, which are traditionally lower-case in Unix-like environments.</p><!--kg-card-begin: html-->
 	<p>
@@ -18,14 +18,14 @@
 				background-color: #377af6;
 			}
 		</style>
-		<a href="https://github.com/cloudflare/workerd" open="_new" target="_blank"><button type="button" name="GitHubCTA">Find the code on GitHub</button></a>
+		<a href="https://github.com/cloudflare/workerd?ref=blog.cloudflare.com" open="_new" target="_blank"><button type="button" name="GitHubCTA">Find the code on GitHub</button></a>
 	</p><!--kg-card-end: html-->
 	<h2 id="what-it-s-for">What it's for</h2>
 	<h3 id="self-hosting-workers">Self-hosting Workers</h3>
 	<p>workerd can be used to self-host applications that you'd otherwise run on Cloudflare Workers. It is intended to be a production-ready web server for this purpose. workerd has been designed to be unopinionated about hosting environments, so that it should fit nicely into whatever server/VM/container hosting and orchestration system you prefer. It's just a web server.</p>
 	<p>Workers has always been based on standardized APIs, so that code is not locked into Cloudflare, and <a href="https://blog.cloudflare.com/introducing-the-wintercg/">we work closely with other runtimes to promote compatibility</a>. workerd provides another option to ensure that applications built on Workers can run anywhere, by leveraging the same underlying code to get exact, "bug-for-bug" compatibility.</p>
 	<h3 id="local-development-and-testing">Local development and testing</h3>
-	<p>workerd is also designed to facilitate realistic local testing of Workers. Up until now, this has been achieved using <a href="https://miniflare.dev/" target="_blank">Miniflare</a>, which simulated the Workers API within a Node.js environment. Miniflare has worked well, but in a number of cases its behavior did not exactly match Workers running on Cloudflare. With the release of workerd, Miniflare and the Wrangler CLI tool will now be able to provide a more accurate simulation by leveraging the same runtime code we use in production.</p>
+	<p>workerd is also designed to facilitate realistic local testing of Workers. Up until now, this has been achieved using <a href="https://miniflare.dev/?ref=blog.cloudflare.com" target="_blank">Miniflare</a>, which simulated the Workers API within a Node.js environment. Miniflare has worked well, but in a number of cases its behavior did not exactly match Workers running on Cloudflare. With the release of workerd, Miniflare and the Wrangler CLI tool will now be able to provide a more accurate simulation by leveraging the same runtime code we use in production.</p>
 	<h3 id="programmable-proxies">Programmable proxies</h3>
 	<p>workerd can act as an application host, a proxy, or both. It supports both forward and reverse proxy modes. In all cases, JavaScript code can be used to intercept and process requests and responses before forwarding them on. Traditional web servers and proxies have used bespoke configuration languages with quirks that are hard to master. Programming proxies in JavaScript instead provides more power while making the configuration easier to write and understand.</p>
 	<h2 id="what-it-is">What it is</h2>
@@ -82,7 +82,7 @@ env.AUTH_SERVICE.fetch("https://auth/api", {
 	<p>Overall, capability bindings allow simpler code that is secure by default, more composable, easier to test, and easier to understand and maintain.</p>
 	<h3 id="always-backwards-compatible">Always backwards compatible</h3>
 	<p>Cloudflare Workers has a hard rule against ever breaking a live Worker running in production. This same dedication to backwards compatibility extends to workerd.</p>
-	<p>workerd shares <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers/">Workers' compatibility date system</a> to manage breaking changes. Every Worker must be configured with a "compatibility date". The runtime then ensures that the API behaves exactly as it did on that date. At your leisure, you may <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank">check the documentation</a> to see if new breaking changes are introduced at a future date, and update your code for them. Most such changes are minor and most code won't require any changes. However, you are never obliged to update. Old dates will continue to be supported by newer versions of workerd. It is always safe to update workerd itself without updating your code.</p>
+	<p>workerd shares <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers/">Workers' compatibility date system</a> to manage breaking changes. Every Worker must be configured with a "compatibility date". The runtime then ensures that the API behaves exactly as it did on that date. At your leisure, you may <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates?ref=blog.cloudflare.com" target="_blank">check the documentation</a> to see if new breaking changes are introduced at a future date, and update your code for them. Most such changes are minor and most code won't require any changes. However, you are never obliged to update. Old dates will continue to be supported by newer versions of workerd. It is always safe to update workerd itself without updating your code.</p>
 	<h2 id="what-it-s-not">What it's not</h2>
 	<p>To avoid misleading or disappointing anyone, I need to take a moment to call out what workerd is not.</p>
 	<h3 id="workerd-is-not-a-secure-sandbox">workerd is not a Secure Sandbox</h3>
@@ -115,6 +115,6 @@ env.AUTH_SERVICE.fetch("https://auth/api", {
 				background-color: #377af6;
 			}
 		</style>
-		<a href="https://github.com/cloudflare/workerd" open="_new" target="_blank"><button type="button" name="GitHubCTA">Find the readme on GitHub</button></a>
+		<a href="https://github.com/cloudflare/workerd?ref=blog.cloudflare.com" open="_new" target="_blank"><button type="button" name="GitHubCTA">Find the readme on GitHub</button></a>
 	</p><!--kg-card-end: html-->
 </div>

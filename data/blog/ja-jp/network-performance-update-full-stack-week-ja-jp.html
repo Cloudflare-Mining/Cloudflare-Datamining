@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<p><em>このブログは2021年11月20日に公開されました。ネットワークの最適化を継続するため、定期的な更新を公開しています。これらの更新は、</em><a href="https://blog.cloudflare.com/tag/network-performance-update/"><em>こちら</em></a><em>から入手できます。</em></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Network-Performance-Update--Full-Stack-Week-header.png" class="kg-image" alt="Network Performance Update: Full Stack Week"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Network-Performance-Update--Full-Stack-Week-header.png" class="kg-image" alt="Network Performance Update: Full Stack Week" loading="lazy"></figure>
 	<p>2か月と少し前に、世界中のラストワンマイルネットワークの<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">広範なベンチマーク結果</a>を共有しました。さまざまなテスト （TCP接続時間、最初の1バイトを受信するまでの時間（TTFB）、最後の1バイトを受信するまでの時間（TTLB））、また、さまざまな測定（p95、平均）の結果は、Cloudflareが世界中の49％のネットワークで最速のプロバイダーであることを示しました。それ以来、当社はあらゆる場所で最速のプロバイダーになるまで、パフォーマンスの継続的な改善に取り組み、イノベーションウィークごとに当社が最速とするネットワークの数を10％増やすという<a href="https://blog.cloudflare.com/two-weeks-later-finding-and-eliminating-long-tail-latencies/">目標を設定し</a>、<a href="https://blog.cloudflare.com/tag/birthday-week/">バースデーウィーク</a>（2021年9月）の間にその目標を達成しました。</p>
 	<p>本日、<a href="https://blog.cloudflare.com/tag/full-stack-week/">Full Stack Week</a>（2021年11月）の目標を達成したことを報告できることを誇りに思います。Cloudflareは、世界の上位1,000のネットワークに対するパフォーマンスを測定しました（アドバタイズされたIPv4アドレスの数による）。これらのうち、Cloudflareは新たに79のネットワークで最速のプロバイダになりました。これは1,000あるネットワークのうち14%増にあたります。もちろん、まだ完了していませんが、最新の結果を共有し、どのようにそれを達成したかを説明したいと思います。</p>
 	<p>しかし、ネットワークパフォーマンスについて詳しく説明する前に、Workersプラットフォームに関する新しいパフォーマンス指標を共有したいと思います（Full Stack Weekと仮定）。Cloudflare WorkersとFastlyのCompute@Edgeの数を減らした結果、Workerの速度が196％増となりました。</p>
@@ -23,10 +23,10 @@ async function handleRequest(event) {
 	<!--kg-card-end: markdown-->
 	<p>オレンジ色: Cloudflare Workers</p>
 	<p>黒色: Compute@Edge</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image8-9.png" class="kg-image"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image7-9.png" class="kg-image"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image10-11.png" class="kg-image"></figure>
-	<p>ご自身で結果を探りたい方は、こちらに<a href="https://p.catchpoint.com/ui/Entry/PC/V/ARTO-C-D-K396AjZokq1JMAA" target="_blank">データへのリンク</a>があります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image8-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image7-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image10-11.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>ご自身で結果を探りたい方は、こちらに<a href="https://p.catchpoint.com/ui/Entry/PC/V/ARTO-C-D-K396AjZokq1JMAA?ref=blog.cloudflare.com" target="_blank">データへのリンク</a>があります。</p>
 	<p>私たちが絶えず加速し、分離をてこ入れし、<a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/">コールドスタートのゼロ化を推進している</a>グローバルなネットワーク上に構築することで、お客様に圧倒的な高速通信を提供することができるようになりました。</p>
 	<p>それでは、Cloudflareのより広範なネットワークパフォーマンスがどのように改善され続けているかについての最新情報に移りましょう！</p>
 	<h3 id="--1"><strong>重要なことの測定</strong></h3>
@@ -35,18 +35,18 @@ async function handleRequest(event) {
 	<p>私たちは常に、<em>なぜ</em>遅いのかを理解し、その後改善するというプロセスを繰り返しています。当社が直面した課題は、各ネットワークに固有のものであり、インターネットで蔓延しているさまざまな異なる問題を浮き彫りにしました。いくつかのネットワークを深く掘り下げて、どのように診断してパフォーマンスを向上させたかを示します。</p>
 	<p>でもその前に、過去2週間の取り組みの結果を以下に示します。</p>
 	<p>Cloudflareは、新たに79のネットワークのTCP接続時間で1位になりました。このグラフは、バースデーウィークと比較したFull Stack WeekのTCP接続時間で1位にランク付けされたネットワークの数を示しています。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/image13-6.png" class="kg-image" alt="*Performance is defined by TCP connection time across top 1000 networks in the world by number of IPv4 addresses advertised" title="Chart">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/image13-6.png" class="kg-image" alt="*Performance is defined by TCP connection time across top 1000 networks in the world by number of IPv4 addresses advertised" loading="lazy" title="Chart">
 		<figcaption><em>*Performance is defined by TCP connection time across top 1000 networks in the world by number of IPv4 addresses advertised</em></figcaption>
 	</figure>
 	<p><em><em>*パフォーマンスは、アドバタイズされたIPv4アドレスの数による世界の上位1000ネットワークにわたるTCP接続時間によって定義されます</em></em></p>
 	<p>私たちの取り組みの結果、79以上のネットワークで更なる高速化が実現でき、当社が最速だったネットワークで14％の成長を示しています。バースデーウィークとFull Stack Weekを比較したランキング分布を示すグラフは次のとおりです。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image12-9.png" class="kg-image" title="Chart"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image12-9.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
 	<p>これまで、どのように改善してきたかについて説明してきましたが、ここでは世界中で最高のパフォーマンスを追い求めたストーリーを共有しましょう。それぞれに異なる課題を抱えています。</p>
 	<h3 id="--2"><strong>ペルーにおけるトラフィックの適切な配置</strong></h3>
 	<p>ネットワークパフォーマンスを改善するために最初に訪れたのはペルーでした。リマにいる多くのユーザーが、サービスを受けために実際にはチリ共和国に送られていることがわかりました。Cloudflareはペルーに複数の拠点があるので、このようなことは起こらないはずです。チリにトラフィックを送信したことで、チリの特定のネットワークで4位にランクされました。当社のエンジニアは、１位を獲得するための最善の方法は、すべてのリマのトラフィックが国内に留まるようにすることであることを知っていたので、トラフィックの多くが国外にルーティングされている理由を調べることにしました。</p>
 	<p>非常に多くのトラフィックが国外にルーティングされていた理由は、ネットワークプロバイダーによるCloudflareのトラフィックの不均一な分布であり、1つの特定の場所に送信されたユーザーが多すぎたためでした。当社のネットワークには一連のチェック機能とフェイルセーフ機能があり、このようなことが発生した場合でも、ユーザーが引き続き優れたエクスペリエンスを得られるようにしています。リマでのトラフィックの不均一な分布のために、ここでチェックが行われていました。しかし、トラフィックは国外に送信されていました。</p>
 	<p>短期的に状況を修正するために、リマの各拠点で自動化を構築しつつ少し手動で負荷分散を行い、将来の手動操作の必要性を排除することにしました。トラフィックが最も多い場所の1つを取得し、その場所からプレフィックスのアドバタイズを停止しました。当社の仮説は、トラフィックがチリではなく他のリマの場所に流れるだけで、すべてが相殺され、国内のトラフィックを維持しながら、すべての人のTCP接続時間を改善するというものでした。当社は無料のトラフィックのごく一部に変更を加え始め、仮説が正しいことを証明しました。その時点で、変更をより広い範囲に展開し、P90クライアントのTCP RTTが240ミリ秒から60ミリ秒に低下しました。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image14-9.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image14-9.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>その結果、Cloudflareは現在ペルーのネットワークパフォーマンスにおいて1位を獲得しました。</p>
 	<h3 id="--3"><strong>スリランカでの遅延の削減</strong></h3>
 	<p>次の例は、地球の反対側にあるスリランカです。そこで、ユーザーからのリクエストをニューアークにルーティングしているネットワークプロバイダーを見つけました。</p><!--kg-card-begin: markdown-->
@@ -69,22 +69,22 @@ async function handleRequest(event) {
 	<!--kg-card-end: markdown-->
 	<p>これは当然のことながら重大な遅延の問題を引き起こし、その結果、Cloudflareはこのネットワークでスリランカで4位にランクされていました。コロンボは比較的小さな場所ですが、ユーザーエクスペリエンスを向上させ、ニューアークに送信される潜在的なトラフィック量を減らすために、できるだけ多くのトラフィックを移動させ、その場所を介してアドバタイズするようにしました。</p>
 	<p>これを行い、P90クライアントのTCP RTTが150ミリ秒から50ミリ秒に低下してういることに気付きました。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-60.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-60.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>しかし、コロンボを介してすべての範囲でアドバタイズし、全体としてパフォーマンスが向上したにもかかわらず、このプロバイダーは、未だに一部のCloudflareプレフィックスのトラフィックをニューアークに送信していました。私たちはプロバイダーに連絡し、ユーザーに影響を与えるこの変更について知らせました。</p>
 	<p>これらすべてを行った後、Cloudflareはスリランカで4位から1位になりました。</p>
 	<h3 id="--4"><strong>バースデーウィークでの更新</strong></h3>
 	<p>これらすべてのネットワークの変更とさらなる変更により、Cloudflareは以前よりも多くのネットワークでネットワークパフォーマンスの１位になることができました。バースデーウィーク中に、競合他社よりも多くのネットワークで高速化されたことを発表しました。世界の上位1,000のネットワーク（アドバタイズされたIPv4アドレスの数）の中で、バースデーウィーク中（2021年9月）にCloudflareがどれだけのことを成し遂げたかを次に示します。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image11-7.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image11-7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Full Stack Week（2021年11月）の時点で、新たな79のネットワークでより高速になるようにポジションをさらに改善しました。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image4-16.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image4-16.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>しかし、ラストワンマイルでパフォーマンスを向上させただけでなく、最後の1バイトを受信するまでの時間（TTLB）でもパフォーマンスを向上させました。バースデーウィーク（2021年9月）に至るまでの状況は次のとおりです。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image9-8.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image9-8.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>そして、現在（2021年11月）のネットワーク状況は次のとおりです。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image5-10.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image5-10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>また、Cloudflareはすべての国において最速のプロバイダーになることにも力を注いでいます。国別のネットワークパフォーマンスは動く目標であり、その日その時にアクセスしているユーザーによって大きく左右されます。また、国全体のネットワークパフォーマンスを長期間にわたって調査すると、大量のデータが抜け落ちる可能性があります。というわけで、これはバースデーウィーク（2021年9月）の期間中の国と最速のネットワークプロバイダーを示すデータを使用して作成された世界地図です。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image6-11.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image6-11.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>2か月後のFull Stack Week（2021年11月）の期間中の様子は次のとおりです。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-24.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-24.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--5"><strong>ロングテール遅延</strong></h3>
 	<p>これらのパフォーマンスの更新の実行テーマは、常に解決すべきロングテールの問題でした。ネットワーク上でこれらの問題を解消することは、私たちの成長とともに最高のパフォーマンスを確実に提供するために重要です。</p>
 	<p>当社のチームは多大な労力を費やし、いくつかの素晴らしい結果を生み出しましたが、より速くなるよう常に努めています。このようなパフォーマンスの問題の発見を自動化し、将来的にネットワークパフォーマンスのトップの座を維持するためにさまざまなクラスの問題を検出して修正するオートメーションを構築することを目指しています。</p>
