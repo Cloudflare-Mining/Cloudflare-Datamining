@@ -1,19 +1,19 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>互联网最纯粹的形式是一个由独立网络（也称为<a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/?ref=blog.cloudflare.com" target="_blank">自治系统</a> (AS)）组成的松散连接图。这些网络使用一种称为 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/?ref=blog.cloudflare.com" target="_blank">BGP</a>（边界网关协议）的信令协议，通知邻居（也称为对等体）IP 前缀（一组 IP 地址）在其网络中或通过其网络的可达性。部分交换包含有关 IP 前缀的有用元数据，用于通知网络路由决策。元数据的一个例子是完整 AS 路径，它由 IP 数据包到达目的地需要经过的不同自治系统组成。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-9.png" class="kg-image"></figure>
+	<p>互联网最纯粹的形式是一个由独立网络（也称为<a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/" target="_blank">自治系统</a> (AS)）组成的松散连接图。这些网络使用一种称为 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a>（边界网关协议）的信令协议，通知邻居（也称为对等体）IP 前缀（一组 IP 地址）在其网络中或通过其网络的可达性。部分交换包含有关 IP 前缀的有用元数据，用于通知网络路由决策。元数据的一个例子是完整 AS 路径，它由 IP 数据包到达目的地需要经过的不同自治系统组成。</p>
 	<p>由于我们都希望数据包尽快到达目的地，因此为给定前缀选择最短 AS 路径是一个好主意。这正是预置发挥作用的地方。</p>
 	<h2 id="-">互联网路由入门</h2>
 	<p>在深入讨论一些细节之前，我们来简单介绍互联网在最基本的层面上是如何工作的。</p>
 	<p>互联网的核心是一个由成千上万个网络组成的大型互联网络。每个网络都有两个至关重要的东西：</p>
 	<p>1. 自治系统编号 (ASN)：一个唯一标识网络的 32 位整数。例如，某个 Cloudflare ASN（我们有多个）是 13335。</p>
 	<p>2. IP 前缀：IP 前缀是一系列 IP 地址，以 2 的幂数组合而成。在 IPv4 空间，两个地址组成一个 /31 前缀，四个组成一个 /30，以此类推，一直到 /0，即“所有 IPv4 前缀”的缩写。IPv6 也是如此，但最高聚合不是 32 位，而是 128 位。下图显示了 IP 前缀之间的关系。反过来说，一个 /24 包含两个 /25，而一个 /25 又包含两个 /26，以此类推。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-6.png" class="kg-image"></figure>
 	<p>要在互联网上通信，必须能够到达目的地，这就是路由协议发挥作用的地方。它们使互联网上的每个节点都知道将消息发送到哪里（以及接收方如何返回消息）。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-21.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-21.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p>如前所述，这些目的地由 IP 地址识别，IP 地址的连续范围则表示为 IP 前缀。为优化效率，我们使用 IP 前缀进行路由：在 IPv4 中，跟踪 40 亿 (2<sup>32</sup>) 个 IP 地址的去向非常复杂，需要大量的资源。坚持使用前缀可以将这个数字减少到一百万左右。</p>
 	<!--kg-card-end: markdown-->
 	<p>现在回想一下，自治系统是独立运行和控制的。在互联网的网络中，我如何告诉其他网络中的来源 A，在我的网络中（或通过我的网络）有一条可以到达目的地 B 的路径？回答是 BGP！BGP 是边界网关协议，用来传递可达性信息。来源 ASN 产生的信号信息被称为"公告"，因为它们向互联网宣布前缀中的 IP 地址是在线和可达的。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-33.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-33.png" class="kg-image"></figure>
 	<p>请看上图。来源 A 现在应该知道如何通过 2 个不同的网络到达目的地 B 了!</p>
 	<p>实际的 BGP 消息如下所示：</p><!--kg-card-begin: markdown-->
 	<pre><code>BGP Message
@@ -42,7 +42,7 @@
 	<p>当网络连接到其他多个网络和服务提供商时，可以从许多网络中接收通往同一 IP 前缀的路径信息，每个网络的属性都略有不同。然后，该信息的接收网络使用 BGP 最佳路径选择算法选择“最佳”前缀（和路由），使用它转发 IP 流量。我给“最佳”打了引号，因为最佳是主观要求。“最佳”通常是最短路径，对我的网络来说最佳，但对另一个网络来说未必最佳。</p>
 	<p>BGP 在过滤收到的选项时会考虑多个前缀属性。但是，BGP 最佳路径选择不是将所有这些属性合并为一个选择标准，而是分层使用这些属性。在任何一层，如果可用属性足以选择最佳路径，则算法就以这个选择终止。</p>
 	<p>BGP 最佳路径选择算法非常广泛，包含 15 个为给定前缀选择最佳可用路径的离散步骤。鉴于步骤太多，尽早决定最佳路径符合网络的利益。前四步是最常用和最有影响力的，如下图的筛子所示。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-55.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-55.png" class="kg-image"></figure>
 	<p>选择可能的最短路径通常是一个好主意，所以“AS 路径长度”是在算法早期执行的一个步骤。然而，看上图，“AS 路径长度”出现在第二位，尽管它是寻找最短路径的属性。因此，我们来谈谈第一步：本地优先级。</p>
 	<p><strong>本地优先级</strong><br>本地优先级是运营商的最爱，因为它允许运营商选择所需的路由+路径组合。它是算法中的第一个属性，因为它对任何给定的路由+邻居+AS 路径组合都是唯一的。</p>
 	<p>网络在导入路由时设置本地优先级（从邻居网络学习该路由）。作为非传递属性，意味着这个属性永远不会通过 EBGP 消息发送到其他网络。这本质上意味着，例如，AS 64496 的运营商不能在邻近的 AS 64511 中将路由的本地优先级设置为自己（或中转网络）的 IP 前缀。无法做到这一点的部分原因是，通过 EBGP 实现入站流量工程非常困难。</p>
@@ -84,14 +84,14 @@
 	<p>这与互联成本相结合（可能是每月定期费用 (MRC) 或一次性费用）。PNI 更合适，因为它可以降低每兆传输的总成本，帮助优化价值，因为单位价格随着端口利用率提高而降低。</p>
 	<p>这种推论对于其他很多网络都类似，在中转网络中非常普遍。BGP 与成本和业务策略的相关性不亚于与性能的相关性。</p>
 	<h3 id="--4">中转本地优先级</h3>
-	<p>为简单起见，当提到中转点时，这是指<a href="https://en.wikipedia.org/wiki/Tier_1_network?ref=blog.cloudflare.com" target="_blank">传统 1 级中转网络</a>。由于这些网络的性质，它们有两套不同的网络对等体：</p>
+	<p>为简单起见，当提到中转点时，这是指<a href="https://en.wikipedia.org/wiki/Tier_1_network" target="_blank">传统 1 级中转网络</a>。由于这些网络的性质，它们有两套不同的网络对等体：</p>
 	<p>1. 客户（例如 Cloudflare）<br>2. 无结算对等体（如其他 1 级网络）</p>
 	<p>在正常情况下，中转客户分配的本地优先级比用于无结算对等体的本地优先级高。这意味着，无论预置多少前缀，如果流量进入该中转网络，流量<strong>始终</strong>落在您与该中转网络的互连上，不会被转移到另一个对等体。</p>
 	<p>如果您有多个不同的链接，想从一个链接切换/转移流量，或者如果流量来源是多个中转点后面的多宿主（并且他们没有自己的本地优先级），仍然可以使用预置。但是，通过 AS 路径预置实现从一个中转端口到另一个中转端口的入站流量工程流量收益明显递减：一旦超过三个预置前缀，在这一点上不太可能有什么变化。</p>
 	<p><strong>示例</strong></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-6.png" class="kg-image"></figure>
 	<p>在上述情况中，无论 Cloudflare 对前往 AS 64496 的 AS 路径中做任何调整，流量都会通过中转点 B &lt;&gt; Cloudflare 互连流动，尽管从 AS 路径的角度来看，来源 A → 中转点 B → 中转点 A → Cloudflare 的路径更短。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-12.png" class="kg-image"></figure>
 	<p>在这种情况下，没有什么变化，但来源 A 现在是两个中转提供商后面的多宿主。在这种情况下，AS 路径预置有效，因为在来源 A 侧看到的路径包括预置路径和非预置路径。只要来源 A 不做任何出口流量工程，并且平等对待两个中转网络，选择的路径则为来源 A → 中转点 A → Cloudflare。</p>
 	<h3 id="--5">基于社区的流量工程</h3>
 	<p>现在，我们发现了互联网生态系统中对运营商来说相当关键的问题：利用上述工具，并不总是能（有些人甚至会说完全不可能）准确指定流量进入自己网络的路径，减少了自治系统对自己网络的控制。幸运的是，这个问题有一个解决方案：基于社区的本地优先级。</p>
@@ -146,7 +146,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-71.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-71.png" class="kg-image"></figure>
 	<p>我们给 Cloudflare ASN 添加两个前缀，使 AS 路径总长为 3，但我们仍然看到大量（太多）流量进入我们的 Cogent 链接。在这种情况下，工程师可以再增加一个前缀，但对于 Cloudflare 这样连接良好的网络，如果两个前缀没有什么作用，那么三个、四个或五个也不会有什么作用。相反，我们可以利用上述 Cogent 社区更改 Cogent 内部的路由：</p><!--kg-card-begin: markdown-->
 	<pre><code>term ADV-SITELOCAL {
     from {
@@ -161,9 +161,9 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>上述配置将流量改变为如下所示：</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-47.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-47.png" class="kg-image"></figure>
 	<p>这正是我们想要的！</p>
 	<h2 id="--6">总结</h2>
-	<p>AS 路径预置仍然有用，并且作为运营商的流量工程工具，也有其用途，但应该谨慎使用。<a href="https://ripe79.ripe.net/presentations/64-prepending_madory2.pdf?ref=blog.cloudflare.com" target="_blank">过度预置会使网络受到更广泛的路由劫持</a>，应该不惜一切代价来避免这种情况。因此，使用基于社区的入口流量工程非常可取（并且推荐）。在没有社区（或无法引导客户流量）的情况下，可以使用预置，但我鼓励运营商积极监测效果，如果无效，则回退。</p>
-	<p>顺便一提，P Marcos 等人发表了一篇关于 AS 路径预置的有趣论文，深入探讨了预置方面的一些趋势。我强烈推荐大家阅读：<a href="https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf?ref=blog.cloudflare.com" target="_blank">https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf</a></p>
+	<p>AS 路径预置仍然有用，并且作为运营商的流量工程工具，也有其用途，但应该谨慎使用。<a href="https://ripe79.ripe.net/presentations/64-prepending_madory2.pdf" target="_blank">过度预置会使网络受到更广泛的路由劫持</a>，应该不惜一切代价来避免这种情况。因此，使用基于社区的入口流量工程非常可取（并且推荐）。在没有社区（或无法引导客户流量）的情况下，可以使用预置，但我鼓励运营商积极监测效果，如果无效，则回退。</p>
+	<p>顺便一提，P Marcos 等人发表了一篇关于 AS 路径预置的有趣论文，深入探讨了预置方面的一些趋势。我强烈推荐大家阅读：<a href="https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf" target="_blank">https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf</a></p>
 </div>

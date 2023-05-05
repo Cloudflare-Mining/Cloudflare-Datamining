@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Image_20201016_072224.jpeg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Image_20201016_072224.jpeg" class="kg-image"></figure>
 	<p>本日はCloudflareを通じて提供されるネットワークレベルのファイアウォール、Magic Firewall™ を発表いたします。このファイアウォールは、お客様の会社を保護します。Magic Firewallは、リモートユーザー、支社オフィス、データセンター、クラウドインフラストラクチャを保護します。その上、Magic Firewall は Cloudflare One™ と深く統合されており、ネットワーク上で起こっているすべてのことをワンストップで概観することができます。</p>
 	<p>Cloudflare Magic Transit™ は、Cloudflareが自社内のグローバルネットワークを安全に保つために構築したものと同じDDoS保護技術で、IPサブネットを保護します。これにより、ネットワークが攻撃から安全で、利用可能であることが保証され、制限のある物理アプライアンスから、Cloudflareのネットワークへと刷新されます。</p>
 	<p>それでもなお、別の機能（ファイアウォール）のために、いくつかのハードウェアがオンサイトに残されています。ネットワークは DDoS 攻撃からの保護だけを必要としているのではありません。管理者には、ネットワークに出入りするすべてのトラフィックに対してポリシーを設定する方法が必要です。Magic Firewall では、お客様のチームがこれらのネットワークファイアウォールアプライアンスを廃止し、その負担を Cloudflare グローバルネットワークへ移行するお手伝いをしたいと考えています。</p>
@@ -10,7 +10,7 @@
 	<p>ネットワークオペレータは、さまざまなベンダーのソリューションを結び付け、機能の組み合わせとマッチングを行い、ネットワーク全体にポリシーを同期してその状態を維持することに頭を悩ませています。これでは悩みが増え、コストも増すばかりです。</p>
 	<h3 id="--1">ハードウェアを増やすことは解決策ではありません</h3>
 	<p>組織によっては、さらに多くのベンダーに依頼し、追加のハードウェアを購入して、デプロイした寄せ集めのファイアウォールハードウェアを管理します。チームは、さらに多くのプラットフォームの管理を強いられ、更新サイクル、更新、およびEOF（End of Life）管理のバランスを取らなければなりません。これらは、根本的な問題を解決しない「一時しのぎ」のソリューションです。それではCloudflareでは、どのようにネットワーク全体の一つの画面上に表示し、何が起きているのか（良いことも悪いことも）を把握し、 <em> </em>ポリシーを瞬時にグローバル適用しているのでしょう？</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-18.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-18.png" class="kg-image">
 		<figcaption>従来のファイアウォールアーキテクチャ</figcaption>
 	</figure>
 	<h3 id="magic-firewall-">Magic Firewallのご紹介</h3>
@@ -84,11 +84,11 @@
 		<li>パケット長</li>
 		<li>ビットフィールドの一致</li>
 	</ul>
-	<p>ルールは <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html?ref=blog.cloudflare.com" target="_blank">Wireshark 構文で作成することができます </a> 。Wireshark構文は、ネットワーキングの世界で一般的なドメイン固有の言語であり、他の製品で使用するものと同じ構文です。この構文を使用すると、非常に強力なルールを簡単に作成して、ネットワーク内外のトラフィックを正確に許可または拒否できます。境界の内側または外側に悪い行為者がいる疑いがある場合は、ダッシュボードにログオンし、そのトラフィックをブロックするだけです。ルールは数秒でグローバルにプッシュされ、エッジで脅威をシャットダウンします。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>ルールは <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html" target="_blank">Wireshark 構文で作成することができます </a> 。Wireshark構文は、ネットワーキングの世界で一般的なドメイン固有の言語であり、他の製品で使用するものと同じ構文です。この構文を使用すると、非常に強力なルールを簡単に作成して、ネットワーク内外のトラフィックを正確に許可または拒否できます。境界の内側または外側に悪い行為者がいる疑いがある場合は、ダッシュボードにログオンし、そのトラフィックをブロックするだけです。ルールは数秒でグローバルにプッシュされ、エッジで脅威をシャットダウンします。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-13.png" class="kg-image"></figure>
 	<p>ファイアウォールの構成は、簡単で強力なものでなければなりません。Magic Firewall を使用すると、複雑なロジックを可能にする簡単な UI を使用してルールを設定できます。または、Wireshark フィルタ構文を使用してフィルタルールを手動で入力し、そのように設定するだけです。UIを触りたくない？ルールは API を使用して簡単に追加できます。</p>
 	<h3 id="--3">次は何が起きるでしょう？</h3>
 	<p>パケットを見るだけでは不十分です。ファイアウォールルールがあっても、チームはネットワーク上で何が実際に起きているのか、つまり、これらのデータストリームの内部で何が起こっているのかを把握する必要があります。これは正当なトラフィックなのか？それとも、悪質な行為をしている悪意のある行為者が、ネットワークの内側または外部にいるのか？Cloudflareをデプロイすれば、お客様の資産（インターネットにさらされている従業員のデバイスやサービス）のいずれかと対話する2つのアクターの間に立ち、トラフィックがどこから来たのか、またはトラフィックの内側には何があるかのいずれかに基づいて、ポリシーを適用することができます。トラフィックタイプに基づくポリシーの適用も近いうちに実現できるように計画しています。近い将来、データストリーム内で何が起こっているかに基づいて、侵入イベントを自動的に検出する機能を追加する予定です。</p>
 	<p>私たちはこの新しい旅にワクワクしています。Cloudflare Oneを作ることで、当社では、企業にとってネットワークとは何かを新たに考案しています。当社では、アクセス管理、セキュリティ機能、パフォーマンスを全面的に統合しています。これは、ネットワークの訪問者だけでなく、ネットワーク内の誰にとっても利用できるものです。これらはすべて<a href="https://blog.cloudflare.com/our-network-cloudflare-one"> #BuiltForThis </a>のためにつくられたネットワークの上に構築されています。</p>
-	<p>Magic Firewallは、はじめに既存のMagic Transitをご利用のお客様を対象とした限定ベータ版で公開する予定です。ご関心がありましたら<a href="https://www.cloudflare.com/lp/magic-firewall-beta/?ref=blog.cloudflare.com" target="_blank">弊社までお声がけください</a>。</p>
+	<p>Magic Firewallは、はじめに既存のMagic Transitをご利用のお客様を対象とした限定ベータ版で公開する予定です。ご関心がありましたら<a href="https://www.cloudflare.com/lp/magic-firewall-beta/" target="_blank">弊社までお声がけください</a>。</p>
 </div>

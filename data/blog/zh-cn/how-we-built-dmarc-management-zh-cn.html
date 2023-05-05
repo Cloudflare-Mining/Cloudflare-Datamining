@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/How-we-built-DMARC-Management.png" class="kg-image" alt="How we built DMARC Management" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/How-we-built-DMARC-Management.png" class="kg-image" alt="How we built DMARC Management"></figure>
 	<h3 id="dmarc-">DMARC 报告是什么</h3>
-	<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/?ref=blog.cloudflare.com" target="_blank">DMARC</a> 表示“基于域的消息认证、报告和一致性”。这是一个电子邮件认证协议，有助于防止电子邮件<a href="https://www.cloudflare.com/en-gb/learning/access-management/phishing-attack/?ref=blog.cloudflare.com" target="_blank">钓鱼</a>和<a href="https://www.cloudflare.com/en-gb/learning/email-security/what-is-email-spoofing/?ref=blog.cloudflare.com" target="_blank">欺骗</a>。</p>
-	<p>当一封电子邮件发出时，DMARC 允许域名所有者建立一个 DNS 记录，指定使用哪些认证方法来验证电子邮件的真实性，例如 <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/?ref=blog.cloudflare.com" target="_blank">SPF</a> (发件人策略框架) 和 <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/?ref=blog.cloudflare.com" target="_blank">DKIM</a> (域名密钥识别邮件 )。当电子邮件不能通过这些身份验证时，DMARC 指示收件人的电子邮件服务提供商如何处理该邮件，予以隔离或直接拒绝。</p>
+	<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/" target="_blank">DMARC</a> 表示“基于域的消息认证、报告和一致性”。这是一个电子邮件认证协议，有助于防止电子邮件<a href="https://www.cloudflare.com/en-gb/learning/access-management/phishing-attack/" target="_blank">钓鱼</a>和<a href="https://www.cloudflare.com/en-gb/learning/email-security/what-is-email-spoofing/" target="_blank">欺骗</a>。</p>
+	<p>当一封电子邮件发出时，DMARC 允许域名所有者建立一个 DNS 记录，指定使用哪些认证方法来验证电子邮件的真实性，例如 <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/" target="_blank">SPF</a> (发件人策略框架) 和 <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/" target="_blank">DKIM</a> (域名密钥识别邮件 )。当电子邮件不能通过这些身份验证时，DMARC 指示收件人的电子邮件服务提供商如何处理该邮件，予以隔离或直接拒绝。</p>
 	<p>当今的互联网上，随着电子邮件钓鱼和欺骗攻击变得越来越复杂和普遍，DMARC 中日益重要。通过实施 DMARC，域名所有者可以保护他们的品牌和客户免受这些攻击的负面影响，包括失去信任、声誉受损和经济损失。</p>
-	<p>除了防止网络钓鱼和欺骗攻击，DMARC 还提供了<a href="https://www.rfc-editor.org/rfc/rfc7489?ref=blog.cloudflare.com" target="_blank">报告</a>功能。域名所有者可以收到关于电子邮件身份验证活动的报告，包括哪些消息通过了，哪些消息 DMARC 检查失败，以及这些消息的来源。</p>
+	<p>除了防止网络钓鱼和欺骗攻击，DMARC 还提供了<a href="https://www.rfc-editor.org/rfc/rfc7489" target="_blank">报告</a>功能。域名所有者可以收到关于电子邮件身份验证活动的报告，包括哪些消息通过了，哪些消息 DMARC 检查失败，以及这些消息的来源。</p>
 	<p>DMARC 管理涉及域的 DMARC 策略配置和维护。有效的 DMARC 管理需要对电子邮件认证活动进行持续监控和分析，并能够根据需要对 DMARC 策略进行调整和更新。</p>
 	<p>有效的 DMARC 管理包括的一些关键组成部分如下：</p>
 	<ul>
@@ -20,8 +20,8 @@
 	<p>今天我们推出了 <a href="https://blog.cloudflare.com/zh-cn/dmarc-management-zh-cn/">DMARC 管理</a>。如下介绍我们如何打造这个功能。</p>
 	<h3 id="-">我们的网络是如何打造的</h3>
 	<p>作为云安全与性能解决方案的领先提供商，Cloudflare 采用一种特定的方法来测试我们的产品。我们会亲身使用我们自己的工具和服务，也就是用来运营我们的业务。这有助于我们在任何问题或 bug 影响到客户之前识别它们。</p>
-	<p>我们在内部使用自己的产品，例如 <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a>，这是一个无服务器平台，允许开发人员在我们的全球网络上运行自己的代码。自 2017 年推出以来，Workers 生态系统已经显著增长。今天，数以万计的开发人员在这个平台上构建和部署应用程序。Workers 生态系统的力量在于它能够让开发人员构建复杂的应用程序，这些应用程序在以前不可能或无法以可行的方式在如此接近客户的地方运行。Worker 可以用于构建 API、生成动态内容、优化图像、执行实时处理等。可能性几乎是无穷无尽的。我们使用 Workers 来驱动像 <a href="https://blog.cloudflare.com/zh-cn/technology-behind-radar2-zh-cn/">Radar 2.0</a> 这样的服务，或者像 <a href="https://blog.cloudflare.com/zh-cn/welcome-to-wildebeest-the-fediverse-on-cloudflare-zh-cn/">Wildebeest</a> 这样的软件包。</p>
-	<p>最近，我们的 <a href="https://developers.cloudflare.com/email-routing/?ref=blog.cloudflare.com" target="_blank">Email Routing（电子邮件路由）</a>与 Workers 携手合作，实现通过 Workers 脚本<a href="https://blog.cloudflare.com/announcing-route-to-workers/">处理传入电子邮件</a>的功能。正如<a href="https://developers.cloudflare.com/email-routing/email-workers/?ref=blog.cloudflare.com" target="_blank">文档</a>所述：“通过 Email Workers，您可以利用 Cloudflare Workers 的强大功能来实现处理电子邮件所需的任何逻辑和和创建复杂的规则。这些规则决定了您收到邮件后会发生什么。” 规则和经验证的地址都可以通过我们的 <a href="https://developers.cloudflare.com/api/operations/email-routing-destination-addresses-list-destination-addresses?ref=blog.cloudflare.com" target="_blank">API</a> 配置。 </p>
+	<p>我们在内部使用自己的产品，例如 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>，这是一个无服务器平台，允许开发人员在我们的全球网络上运行自己的代码。自 2017 年推出以来，Workers 生态系统已经显著增长。今天，数以万计的开发人员在这个平台上构建和部署应用程序。Workers 生态系统的力量在于它能够让开发人员构建复杂的应用程序，这些应用程序在以前不可能或无法以可行的方式在如此接近客户的地方运行。Worker 可以用于构建 API、生成动态内容、优化图像、执行实时处理等。可能性几乎是无穷无尽的。我们使用 Workers 来驱动像 <a href="https://blog.cloudflare.com/zh-cn/technology-behind-radar2-zh-cn/">Radar 2.0</a> 这样的服务，或者像 <a href="https://blog.cloudflare.com/zh-cn/welcome-to-wildebeest-the-fediverse-on-cloudflare-zh-cn/">Wildebeest</a> 这样的软件包。</p>
+	<p>最近，我们的 <a href="https://developers.cloudflare.com/email-routing/" target="_blank">Email Routing（电子邮件路由）</a>与 Workers 携手合作，实现通过 Workers 脚本<a href="https://blog.cloudflare.com/announcing-route-to-workers/">处理传入电子邮件</a>的功能。正如<a href="https://developers.cloudflare.com/email-routing/email-workers/" target="_blank">文档</a>所述：“通过 Email Workers，您可以利用 Cloudflare Workers 的强大功能来实现处理电子邮件所需的任何逻辑和和创建复杂的规则。这些规则决定了您收到邮件后会发生什么。” 规则和经验证的地址都可以通过我们的 <a href="https://developers.cloudflare.com/api/operations/email-routing-destination-addresses-list-destination-addresses" target="_blank">API</a> 配置。 </p>
 	<p>这里是一个简单的 Email Worker 示例：</p>
 	<pre><code class="language-js">export default {
   async email(message, env, ctx) {
@@ -40,15 +40,15 @@
 		<li>发布相关细节到分析平台</li>
 		<li>存储原始报告</li>
 	</ol>
-	<p>Email Workers 使我们能够轻松地做到第一点。我们只需要创建一个带有 email() 处理器的 Worker。该处理器将接收 <a href="https://www.rfc-editor.org/rfc/rfc5321?ref=blog.cloudflare.com" target="_blank">SMTP</a> 信封元素，预解析版本的电子邮件头，以及一个用于读取完整原始电子邮件的流。</p>
-	<p>对于第二点，我们也可以考虑 Workers 平台，我们将找到 <a href="https://developers.cloudflare.com/analytics/analytics-engine/?ref=blog.cloudflare.com" target="_blank">Workers Analytics Engine</a>。我们只需要定义一个适当的模式，这取决于报告中存在的内容和我们计划稍后执行的查询。之后，我们可以使用 <a href="https://developers.cloudflare.com/analytics/graphql-api/?ref=blog.cloudflare.com" target="_blank">GraphQL</a> 或 <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/?ref=blog.cloudflare.com" target="_blank">SQL</a> API 来查询数据。</p>
-	<p>对于第三点，我们的 <a href="https://www.cloudflare.com/en-gb/products/r2/?ref=blog.cloudflare.com" target="_blank">R2</a> 对象存储就完全可以胜任。从 Worker 访问 R2 <a href="https://developers.cloudflare.com/r2/examples/demo-worker/?ref=blog.cloudflare.com" target="_blank">是小菜一碟</a> 。从电子邮件中提取报告后，我们将它们存储在 R2 中以供后续使用。</p>
+	<p>Email Workers 使我们能够轻松地做到第一点。我们只需要创建一个带有 email() 处理器的 Worker。该处理器将接收 <a href="https://www.rfc-editor.org/rfc/rfc5321" target="_blank">SMTP</a> 信封元素，预解析版本的电子邮件头，以及一个用于读取完整原始电子邮件的流。</p>
+	<p>对于第二点，我们也可以考虑 Workers 平台，我们将找到 <a href="https://developers.cloudflare.com/analytics/analytics-engine/" target="_blank">Workers Analytics Engine</a>。我们只需要定义一个适当的模式，这取决于报告中存在的内容和我们计划稍后执行的查询。之后，我们可以使用 <a href="https://developers.cloudflare.com/analytics/graphql-api/" target="_blank">GraphQL</a> 或 <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/" target="_blank">SQL</a> API 来查询数据。</p>
+	<p>对于第三点，我们的 <a href="https://www.cloudflare.com/en-gb/products/r2/" target="_blank">R2</a> 对象存储就完全可以胜任。从 Worker 访问 R2 <a href="https://developers.cloudflare.com/r2/examples/demo-worker/" target="_blank">是小菜一碟</a> 。从电子邮件中提取报告后，我们将它们存储在 R2 中以供后续使用。</p>
 	<p>我们将此构建为一个托管服务，可在您的区域上启用，并添加了一个仪表板界面以便使用，但实际上，所有工具都提供给您使用，在您自己的帐户中， 在 Cloudflare Workers 基础上部署自己的 DMARC 报告处理器，无需不必担心服务器、可扩展性或性能。</p>
 	<h3 id="--1">架构</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-16-at-4.18.08-PM.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><a href="https://developers.cloudflare.com/email-routing/email-workers/?ref=blog.cloudflare.com" target="_blank">Email Workers</a> 是我们 Email Routing 产品的一个功能。Email Routing 组件在我们的所有节点中运行，因此它们中的任何一个都能够处理传入的邮件，这是很重要的，因为我们从所有数据中心宣布电子邮件的入口 BGP 前缀。向 Email Worker 发送电子邮件很容易，只需在 Email Routing 仪表板中设置一个规则。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>当该 Email Routing 组件收到与要发送给 Worker 的规则匹配的电子邮件时，它将联系我们最近开源的 <a href="https://github.com/cloudflare/workerd?ref=blog.cloudflare.com" target="_blank">workerd</a> 运行时的一个内部版本，后者也运行于所有节点上。管理这种交互的 RPC 模式在 <a href="https://github.com/capnproto/capnproto?ref=blog.cloudflare.com" target="_blank">Capnproto</a> 模式中定义，允许在读取电子邮件正文时将其流式传输给 Edgeworker。如果 Worker 脚本决定转发这封邮件，Edgeworker 将使用原始请求中发送的一个功能联系 Email Routing。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-16-at-4.18.08-PM.png" class="kg-image"></figure>
+	<p><a href="https://developers.cloudflare.com/email-routing/email-workers/" target="_blank">Email Workers</a> 是我们 Email Routing 产品的一个功能。Email Routing 组件在我们的所有节点中运行，因此它们中的任何一个都能够处理传入的邮件，这是很重要的，因为我们从所有数据中心宣布电子邮件的入口 BGP 前缀。向 Email Worker 发送电子邮件很容易，只需在 Email Routing 仪表板中设置一个规则。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--3.png" class="kg-image"></figure>
+	<p>当该 Email Routing 组件收到与要发送给 Worker 的规则匹配的电子邮件时，它将联系我们最近开源的 <a href="https://github.com/cloudflare/workerd" target="_blank">workerd</a> 运行时的一个内部版本，后者也运行于所有节点上。管理这种交互的 RPC 模式在 <a href="https://github.com/capnproto/capnproto" target="_blank">Capnproto</a> 模式中定义，允许在读取电子邮件正文时将其流式传输给 Edgeworker。如果 Worker 脚本决定转发这封邮件，Edgeworker 将使用原始请求中发送的一个功能联系 Email Routing。</p>
 	<pre><code class="language-js">jsg::Promise&lt;void&gt; ForwardableEmailMessage::forward(kj::String rcptTo, jsg::Optional&lt;jsg::Ref&lt;Headers&gt;&gt; maybeHeaders) {
   auto req = emailFwdr-&gt;forwardEmailRequest();
   req.setRcptTo(rcptTo);
@@ -75,19 +75,19 @@
 	<pre><code>const accountInfoRaw = await env.KV_DMARC_REPORTS.get(dmarc:${ruaID})
 </code></pre>
 	<ol start="3">
-		<li>此时，我们需要将整封电子邮件读取到 arrayBuffer 中以便解析。根据报告的大小，我们可能会遇到免费 Workers 计划的限制。如果发生这种情况，我们建议您切换到不存在这个问题的 <a href="https://www.cloudflare.com/en-gb/workers-unbound-beta/?ref=blog.cloudflare.com" target="_blank">Workers Unbound</a> 资源模型。</li>
+		<li>此时，我们需要将整封电子邮件读取到 arrayBuffer 中以便解析。根据报告的大小，我们可能会遇到免费 Workers 计划的限制。如果发生这种情况，我们建议您切换到不存在这个问题的 <a href="https://www.cloudflare.com/en-gb/workers-unbound-beta/" target="_blank">Workers Unbound</a> 资源模型。</li>
 	</ol>
 	<pre><code>const rawEmail = new Response(message.raw)
 const arrayBuffer = await rawEmail.arrayBuffer()
 </code></pre>
 	<ol start="4">
-		<li>解析原始电子邮件包括解析它的 MIME 部分。有多个可用的库允许这样做。例如，您可以使用 <a href="https://www.npmjs.com/package/postal-mime?ref=blog.cloudflare.com" target="_blank">postal-mime</a>:</li>
+		<li>解析原始电子邮件包括解析它的 MIME 部分。有多个可用的库允许这样做。例如，您可以使用 <a href="https://www.npmjs.com/package/postal-mime" target="_blank">postal-mime</a>:</li>
 	</ol>
 	<pre><code>const parser = new PostalMime.default()
 const email = await parser.parse(arrayBuffer)
 </code></pre>
 	<ol start="5">
-		<li>解析完电子邮件后，我们现在可以访问它的附件。这些附件是 DMARC 报告本身，可以被压缩。我们要做的第一件事是将它们以压缩形式存储在 <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/?ref=blog.cloudflare.com" target="_blank">R2</a> 以便长期存储。它们在以后重新处理或调查值得注意的报告时可能很有用。这个操作很简单，只需要在 R2 绑定上调用 put()。为了便于日后检索，我们建议您根据当前时间将报表文件分散到多个目录中。</li>
+		<li>解析完电子邮件后，我们现在可以访问它的附件。这些附件是 DMARC 报告本身，可以被压缩。我们要做的第一件事是将它们以压缩形式存储在 <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/" target="_blank">R2</a> 以便长期存储。它们在以后重新处理或调查值得注意的报告时可能很有用。这个操作很简单，只需要在 R2 绑定上调用 put()。为了便于日后检索，我们建议您根据当前时间将报表文件分散到多个目录中。</li>
 	</ol>
 	<pre><code>await env.R2_DMARC_REPORTS.put(
     `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${attachment.filename}`,
@@ -96,10 +96,10 @@ const email = await parser.parse(arrayBuffer)
 </code></pre>
 	<ol start="6">
 		<li>
-			<p>我们现在需要查看附件的 mime 类型。DMARC 报告的原始格式是 XML，但是可以被压缩。在这种情况下，我们需要先解压它们。DMARC 报告文件可以使用多种压缩算法。我们使用 MIME 类型来确定使用哪一个。对于 <a href="https://en.wikipedia.org/wiki/Zlib?ref=blog.cloudflare.com" target="_blank">Zlib</a> 压缩的报告，可使用 <a href="https://www.npmjs.com/package/pako?ref=blog.cloudflare.com" target="_blank">pako</a> ，而对于 ZIP 压缩报告，<a href="https://www.npmjs.com/package/unzipit?ref=blog.cloudflare.com" target="_blank">unzipit</a> 就是很好的选择。</p>
+			<p>我们现在需要查看附件的 mime 类型。DMARC 报告的原始格式是 XML，但是可以被压缩。在这种情况下，我们需要先解压它们。DMARC 报告文件可以使用多种压缩算法。我们使用 MIME 类型来确定使用哪一个。对于 <a href="https://en.wikipedia.org/wiki/Zlib" target="_blank">Zlib</a> 压缩的报告，可使用 <a href="https://www.npmjs.com/package/pako" target="_blank">pako</a> ，而对于 ZIP 压缩报告，<a href="https://www.npmjs.com/package/unzipit" target="_blank">unzipit</a> 就是很好的选择。</p>
 		</li>
 		<li>
-			<p>在获得报告的原始 XML 格式后，<a href="https://www.npmjs.com/package/fast-xml-parser?ref=blog.cloudflare.com" target="_blank">fast-xml-parser</a> 可以很好地为我们解析它们。下面是 DMARC 报告的XML 示例：</p>
+			<p>在获得报告的原始 XML 格式后，<a href="https://www.npmjs.com/package/fast-xml-parser" target="_blank">fast-xml-parser</a> 可以很好地为我们解析它们。下面是 DMARC 报告的XML 示例：</p>
 		</li>
 	</ol>
 	<pre><code>&lt;feedback&gt;
@@ -149,14 +149,14 @@ const email = await parser.parse(arrayBuffer)
 &lt;/feedback&gt;
 </code></pre>
 	<ol start="8">
-		<li>现在我们已经掌握了报告的所有数据。接下来要做什么很大程度上取决于我们想如何呈现数据。对我们来说，目标是从其中提取有意义的数据并显示在仪表板上。因此，我们需要一个分析平台来推送丰富的数据。<a href="https://developers.cloudflare.com/analytics/analytics-engine/?ref=blog.cloudflare.com" target="_blank">Workers Analytics Engine</a>登场了。该分析引擎非常适合完成这项任务，它允许我们从一个 Worker 向其<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/?ref=blog.cloudflare.com#3-write-data-from-your-worker" target="_blank">发送</a>数据，并公布一个 <a href="https://developers.cloudflare.com/analytics/graphql-api/?ref=blog.cloudflare.com" target="_blank">GraphQL API</a> 供后面与数据交互。这就是我们获取数据并在仪表板中显示的方式。</li>
+		<li>现在我们已经掌握了报告的所有数据。接下来要做什么很大程度上取决于我们想如何呈现数据。对我们来说，目标是从其中提取有意义的数据并显示在仪表板上。因此，我们需要一个分析平台来推送丰富的数据。<a href="https://developers.cloudflare.com/analytics/analytics-engine/" target="_blank">Workers Analytics Engine</a>登场了。该分析引擎非常适合完成这项任务，它允许我们从一个 Worker 向其<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/#3-write-data-from-your-worker" target="_blank">发送</a>数据，并公布一个 <a href="https://developers.cloudflare.com/analytics/graphql-api/" target="_blank">GraphQL API</a> 供后面与数据交互。这就是我们获取数据并在仪表板中显示的方式。</li>
 	</ol>
 	<!--kg-card-end: markdown-->
-	<p>将来，我们还考虑在工作流中集成 <a href="https://developers.cloudflare.com/queues/?ref=blog.cloudflare.com" target="_blank">Queues</a> 以异步处理报告，避免等待客户端完成。</p>
+	<p>将来，我们还考虑在工作流中集成 <a href="https://developers.cloudflare.com/queues/" target="_blank">Queues</a> 以异步处理报告，避免等待客户端完成。</p>
 	<p>我们仅依靠 Workers 基础设施就端到端实现了这个项目，这证明了，在不必担心可扩展性、性能、存储和安全问题的情况下，构建复杂的应用程序是可能的，也是有益的。</p>
 	<h3 id="--2">开源</h3>
-	<p>如前所述，我们构建了一个托管服务，供您启动和适用。但是，我们所做的一切也可以由您在自己的帐户中部署，以便管理自己的 DMARC 报告。这很简单，而且免费。为了帮助您完成这项工作，我们为按照以上方式处理 DMARC 报告的 Worker 发布了一个开源版本：<a href="https://github.com/cloudflare/dmarc-email-worker?ref=blog.cloudflare.com" target="_blank">https://github.com/cloudflare/dmarc-email-worker</a></p>
-	<p>如果您没有仪表板来显示数据，您也可以从一个 Worker <a href="https://developers.cloudflare.com/analytics/analytics-engine/worker-querying/?ref=blog.cloudflare.com" target="_blank">查询</a> Analytics Engine。或者，如果您想将其存储到一个关系数据库中，那么 <a href="https://developers.cloudflare.com/d1/platform/client-api/?ref=blog.cloudflare.com" target="_blank">D1</a> 就可以派上用场了。可能性是无限的，我们很想知道您将使用这些工具打造出什么。</p>
+	<p>如前所述，我们构建了一个托管服务，供您启动和适用。但是，我们所做的一切也可以由您在自己的帐户中部署，以便管理自己的 DMARC 报告。这很简单，而且免费。为了帮助您完成这项工作，我们为按照以上方式处理 DMARC 报告的 Worker 发布了一个开源版本：<a href="https://github.com/cloudflare/dmarc-email-worker" target="_blank">https://github.com/cloudflare/dmarc-email-worker</a></p>
+	<p>如果您没有仪表板来显示数据，您也可以从一个 Worker <a href="https://developers.cloudflare.com/analytics/analytics-engine/worker-querying/" target="_blank">查询</a> Analytics Engine。或者，如果您想将其存储到一个关系数据库中，那么 <a href="https://developers.cloudflare.com/d1/platform/client-api/" target="_blank">D1</a> 就可以派上用场了。可能性是无限的，我们很想知道您将使用这些工具打造出什么。</p>
 	<p>欢迎贡献，自行创作，我们将拭目以待。</p>
 	<h3 id="--3">结语</h3>
 	<p>我们希望本文能加深您对 Workers 平台的了解。今天 Cloudflare 利用这个平台来构建我们的大部分服务，我们认为您也应该这样做。</p>

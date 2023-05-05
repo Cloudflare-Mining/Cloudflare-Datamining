@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-20.png" class="kg-image" alt="A New Hope for Object Storage: R2 enters open beta" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-20.png" class="kg-image" alt="A New Hope for Object Storage: R2 enters open beta"></figure>
 	<p>去年 9 月，我们<a href="https://blog.cloudflare.com/zh-cn/introducing-r2-object-storage-zh-cn/">宣布</a>正在打造自己的对象存储解决方案：Cloudflare R2。R2 是我们对现有云服务提供商高昂出口收费的答案，允许开发人员按需存储尽可能多的数据，而无需担心访问数据的成本。</p>
 	<p>人们反应非常热烈。</p>
 	<ul>
@@ -7,15 +7,15 @@
 		<li><strong>大型企业</strong>已经将多云存储——以及多云本身——视为不切实际的梦想。他们兴奋地来找到我们，提出与合作公司集成数据的新产品。</li>
 		<li><strong>非营利研究机构</strong>支付巨额出口费用，只是为了在彼此之间分享实验数据。出口费用对他们的协作能力产生了切实的影响，在组织之间形成孤岛，限制他们能进行的实验和分析。</li>
 	</ul>
-	<p>Cloudflare 的存在就是为了构建更好的互联网。今天，互联网终于得偿所愿：R2 现已开放<a href="https://developers.cloudflare.com/r2/get-started/?ref=blog.cloudflare.com" target="_blank">公测</a>。</p>
+	<p>Cloudflare 的存在就是为了构建更好的互联网。今天，互联网终于得偿所愿：R2 现已开放<a href="https://developers.cloudflare.com/r2/get-started/" target="_blank">公测</a>。</p>
 	<p>自助客户可在 Cloudflare 仪表板中启用 R2。Enterprise 客户可联系 CSM 以启用。</p>
 	<h2 id="-api">内部及外部 API</h2>
-	<p>R2 有两个 API：其一只能从 Workers 内访问，我们称之为 In-Worker API，另一个是兼容 S3 的 API，将您的存储桶暴露在形如 <a href="http://account.r2.cloudflarestorage.com/bucket?ref=blog.cloudflare.com" target="_blank">bucket.account.r2storage.com</a> 的 URL 上。在对 R2 发出请求前，您将需要通过身份验证——R2 存储桶默认是私有的。</p>
+	<p>R2 有两个 API：其一只能从 Workers 内访问，我们称之为 In-Worker API，另一个是兼容 S3 的 API，将您的存储桶暴露在形如 <a href="http://account.r2.cloudflarestorage.com/bucket" target="_blank">bucket.account.r2storage.com</a> 的 URL 上。在对 R2 发出请求前，您将需要通过身份验证——R2 存储桶默认是私有的。</p>
 	<h3 id="in-worker-api">In-Worker API</h3>
 	<p>使用 In-Worker API 时，某个存储桶被绑定到特定 Worker，后者可针对该存储桶执行 PUT、GET、DELETE 和 LIST 操作。</p>
 	<h3 id="-s3-api">兼容 S3 的API</h3>
 	<p>对于兼容 S3 的 API，身份验证方式与在 S3 上相同：针对 R2 URL 的 SigV4。SigV4 使用一个密钥对请求进行签名，完成对 R2 的身份验证。这意味着，目前通过互联网对 R2 进行公开访问的唯一方式是托管一个 Worker，将其连接到 R2，并通过其路由请求。</p>
-	<p>要测试兼容 S3 的 API，最简单的方式是使用 S3 客户端。其中一个最流行的 S3 客户端是 <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html?ref=blog.cloudflare.com" target="_blank">boto3</a> SDK。</p>
+	<p>要测试兼容 S3 的 API，最简单的方式是使用 S3 客户端。其中一个最流行的 S3 客户端是 <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" target="_blank">boto3</a> SDK。</p>
 	<p>在 Python 中，复制如下脚本，并填入 R2 帐户凭据的 <code>account_id</code>、 <code>access_key</code> 和 <code>secret_access_key</code> 字段。</p><!--kg-card-begin: markdown-->
 	<pre><code>main.py
 import boto3
@@ -50,7 +50,7 @@ for item in bucket.objects.all():
 		<li>A 类操作（包括读取和列出）费用为 4.50 美元/百万次。</li>
 		<li>B 类操作费用为 0.36 美元/百万次。</li>
 	</ul>
-	<p>A 类操作会改变状态，例如创建存储桶、列出存储桶中的对象或写入对象。B 类操作会读取现有状态，例如读取存储桶中的对象。有关定价和操作类型的更多信息，请参阅<a href="https://developers.cloudflare.com/r2/platform/pricing/?ref=blog.cloudflare.com" target="_blank">文档</a>。</p>
+	<p>A 类操作会改变状态，例如创建存储桶、列出存储桶中的对象或写入对象。B 类操作会读取现有状态，例如读取存储桶中的对象。有关定价和操作类型的更多信息，请参阅<a href="https://developers.cloudflare.com/r2/platform/pricing/" target="_blank">文档</a>。</p>
 	<p>当然，R2 的出口带宽是免费的。您可以随心所欲地访问存储桶。</p>
 	<p>R2 的永远免费级别包含：</p>
 	<ul>
@@ -72,6 +72,6 @@ for item in bucket.objects.all():
 		<li>支持 TTL，以便能随时间推移而自动删除对象。</li>
 		<li>公共存储桶，以便能将存储桶暴露在互联网上，无需编写 Worker。</li>
 		<li>预签名 URL 支持，将特定键的读写权限授予一个令牌。</li>
-		<li>与 Cloudflare 缓存集成，以扩大读取请求的规模，提供数据的全球分布。如果您有这里没有列出的额外功能需求，欢迎告诉我们！加入我们的 <a href="https://discord.gg/Z29YjNjxhQ?ref=blog.cloudflare.com" target="_blank">Discord</a>，在 r2-open-beta 频道分享您的需求，以便使 R2 成为您的全新零出口费用对象存储。</li>
+		<li>与 Cloudflare 缓存集成，以扩大读取请求的规模，提供数据的全球分布。如果您有这里没有列出的额外功能需求，欢迎告诉我们！加入我们的 <a href="https://discord.gg/Z29YjNjxhQ" target="_blank">Discord</a>，在 r2-open-beta 频道分享您的需求，以便使 R2 成为您的全新零出口费用对象存储。</li>
 	</ul>
 </div>

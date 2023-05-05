@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<p><em>Cet article de blog a été publié le 17 septembre 2021. Tout comme nous continuons à optimiser notre réseau, nous publions des mises à jour régulières, disponibles </em><a href="https://blog.cloudflare.com/tag/network-performance-update/"><em>ici</em></a><em>.</em></p>
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/kX8fy-8Cyk2Lzpix-2jwRCDVZojzhlXamNkNMfu8c4GP0aMfIs3wdzm5RSuMAuWk94snw30hyU2uuL60y10OW6kZNWyVdTgDWo39kFeA5SCPJ18QTRMeSL7RKV4REPGBx7db2_gM" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/kX8fy-8Cyk2Lzpix-2jwRCDVZojzhlXamNkNMfu8c4GP0aMfIs3wdzm5RSuMAuWk94snw30hyU2uuL60y10OW6kZNWyVdTgDWo39kFeA5SCPJ18QTRMeSL7RKV4REPGBx7db2_gM" class="kg-image"></figure>
 	<p>Pendant la Speed Week, nous avons beaucoup parlé des services qui rendent le web plus rapide : <a href="https://blog.cloudflare.com/argo-v2/">Argo 2.0</a> pour un meilleur routage en cas de perturbations sur le réseau Internet, <a href="https://blog.cloudflare.com/orpheus/">Orpheus</a> pour assurer la disponibilité des serveurs d'origine depuis n'importe quel site, la fonctionnalité d'<a href="https://blog.cloudflare.com/announcing-cloudflare-images/">optimisation des images</a>, qui permet d'envoyer au client les visuels précisément requis, la fonction <a href="https://blog.cloudflare.com/orpheus/">Tiered Cache</a> (mise en cache par niveau) pour maximiser les taux d'accès au cache et tirer le meilleur parti du nouveau réseau Cloudflare (désormais 25 % plus vaste), sans oublier notre <a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane/">infrastructure fibre</a> plus étendue, parmi <a href="https://blog.cloudflare.com/tag/speed-week/">bien d'autres services</a>.</p>
 	<p>Ces services sont tous fantastiques.</p>
 	<p>Cependant, il est essentiel pour nous de mesurer également les performances de notre réseau et de nous comparer aux acteurs du secteur, grands et petits, afin de nous assurer que le service que nous fournissons est le meilleur et le plus rapide.</p>
@@ -22,10 +22,10 @@
 	<p>Le réseau Internet mondial compte près de 70 000 ASN, et nous avons observé le trafic d'environ 21 000 (nombre exact : 20 728) d'entre eux pendant la période de mesure. Ces chiffres se montrent cohérents, car tous les réseaux ne sont pas « externes » (c'est-à-dire, ils ne constituent pas nécessairement la source du trafic vers les sites web). De nombreux ASN sont en réalité des intermédiaires qui acheminent le trafic sur Internet.</p>
 	<p>Dans la suite de cet article, nous privilégierons l'utilisation du terme « réseau », plutôt que celle du terme « ASN ».</p>
 	<h3 id="ce-que-nous-avons-mesur-">Ce que nous avons mesuré</h3>
-	<p>L'obtention de données de mesure concernant des utilisateurs réels se révélait autrefois un exercice difficile. Toutefois, grâce à l'<a href="https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API?ref=blog.cloudflare.com" target="_blank">API Resource Timing</a>, prise en charge par la plupart des navigateurs modernes, cette procédure est devenue nettement plus simple pour les points de terminaison HTTP. L'API permet à une page de mesurer les données temporelles des ressources récupérées sur le réseau à l'aide d'informations d'horodatage à haute définition, avec une précision de 5 µs (microsecondes).</p>
+	<p>L'obtention de données de mesure concernant des utilisateurs réels se révélait autrefois un exercice difficile. Toutefois, grâce à l'<a href="https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API" target="_blank">API Resource Timing</a>, prise en charge par la plupart des navigateurs modernes, cette procédure est devenue nettement plus simple pour les points de terminaison HTTP. L'API permet à une page de mesurer les données temporelles des ressources récupérées sur le réseau à l'aide d'informations d'horodatage à haute définition, avec une précision de 5 µs (microsecondes).</p>
 	<p>L'objectif de cette API consiste à obtenir des informations temporelles capables de montrer un aperçu réel de la manière dont un utilisateur final agit sur Internet, plutôt qu'un test synthétique qui mesurerait une composante unique de l'ensemble des événements qui se déroulent lorsqu'un utilisateur navigue sur le web.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image16.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>L'API Resource Timing est prise en charge par <a href="https://caniuse.com/resource-timing?ref=blog.cloudflare.com" target="_blank">pratiquement tous les navigateurs</a>. Elle permet d'effectuer des mesures dans chacun d'eux, des anciennes versions d'Internet Explorer aux navigateurs mobiles sur iOS et Android, jusqu'à la toute dernière version de Chrome. L'utilisation de cette API nous donne un aperçu des cas d'utilisation réelle sur de véritables navigateurs.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image16.png" class="kg-image"></figure>
+	<p>L'API Resource Timing est prise en charge par <a href="https://caniuse.com/resource-timing" target="_blank">pratiquement tous les navigateurs</a>. Elle permet d'effectuer des mesures dans chacun d'eux, des anciennes versions d'Internet Explorer aux navigateurs mobiles sur iOS et Android, jusqu'à la toute dernière version de Chrome. L'utilisation de cette API nous donne un aperçu des cas d'utilisation réelle sur de véritables navigateurs.</p>
 	<p>En outre, nous ne demandons pas uniquement au navigateur de télécharger une image. Afin de nous assurer d'être équitables et de reproduire l'expérience réelle de l'utilisateur final, nous veillons à ce qu'aucune mise en cache locale ne soit impliquée dans la requête et vérifions si l'objet a été compressé ou non par le serveur. Nous tenons également compte de la taille des en-têtes HTTP, et enregistrons-le fait que la connexion a fait l'objet d'une initialisation préalable ou non, pour ne citer que quelques détails techniques.</p>
 	<p>Vous trouverez ci-dessous un exemple de haut niveau de la manière dont se déroule la procédure :</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">await fetch("https://example.com/100KB.png?r=7562574954", {
@@ -62,7 +62,7 @@ performance.getEntriesByType("resource");
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Pour mesurer les performances de chaque réseau CDN, nous avons téléchargé une image depuis chacun d'eux, lorsqu'un navigateur a consulté l'une de nos pages spéciales. Une fois chaque image téléchargée, nous avons enregistré les mesures à l'aide d'une API basée sur <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a>.</p>
+	<p>Pour mesurer les performances de chaque réseau CDN, nous avons téléchargé une image depuis chacun d'eux, lorsqu'un navigateur a consulté l'une de nos pages spéciales. Une fois chaque image téléchargée, nous avons enregistré les mesures à l'aide d'une API basée sur <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>.</p>
 	<h3 id="les-trois-mesures-temps-de-connexion-tcp-ttfb-et-ttlb">Les trois mesures : temps de connexion TCP, TTFB et TTLB</h3>
 	<p>Nous nous sommes concentrés sur trois mesures pour illustrer la rapidité de notre réseau : le temps de connexion TCP, le TTFB et le TTLB. Les lignes qui suivent montrent pourquoi ces trois valeurs se révèlent importantes.</p>
 	<p>Le temps de connexion TCP sert à démontrer la qualité de notre connexion au réseau Internet mondial, car il ne comptabilise que le temps d'établissement d'une connexion entre une machine et un hôte distant (avant l'utilisation de tout protocole de niveau supérieur). Le temps de connexion TCP se calcule de la manière suivante : connectEnd – connectStart (voir le diagramme ci-dessus).</p>
@@ -74,10 +74,10 @@ performance.getEntriesByType("resource");
 	<p>Comme cet article de blog comporte beaucoup de données, commençons par l'examen détaillé d'un graphique montrant les résultats. Nous avons comparé nos performances à celles des géants du secteur, comme Google et Amazon CloudFront, à celles du pionnier en la matière, Akamai, ainsi qu'à celles de la jeune entreprise Fastly.</p>
 	<p>Pour chaque réseau (représenté par un ASN) et chaque réseau CDN, nous avons calculé quel réseau CDN présentait les meilleures performances. Vous trouverez ci-dessous, par exemple, un décompte du nombre de réseaux sur lesquels chaque réseau CDN affichait les meilleures performances au regard du TTFB. Ce graphique particulier présente la valeur p95 et inclut les données des 1 000 premiers réseaux (par nombre d'adresses IPv4 annoncées).</p>
 	<p>Sur ces graphiques, plus les barres sont longues, meilleurs sont les résultats. Les barres indiquent le nombre de réseaux sur lesquels ce réseau CDN affichait le TTFB le plus bas à la valeur p95.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image6-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image6-12.png" class="kg-image"></figure>
 	<p>Il en ressort que Cloudflare présente le plus court temps jusqu'au premier octet (TTFB, soit le temps mis par le premier octet de contenu pour atteindre le navigateur) au 95e centile sur le plus grand nombre de réseaux parmi les 1 000 premiers (sur la base du nombre d'adresses IPv4 annoncées). Google arrive ensuite, suivi de Fastly, d'Amazon CloudFront et d'Akamai.</p>
 	<p>Les trois mesures (temps de connexion TCP, temps jusqu'au premier octet et temps jusqu'au dernier octet) sont importantes pour l'expérience utilisateur. Dans cet exemple, je me suis concentré sur le temps jusqu'au premier octet (TTFB), car il constitue une mesure courante de la réactivité du web. Il représente littéralement le temps mis par un serveur web pour commencer à répondre à une requête de page web provenant d'un navigateur.</p>
-	<p>Pour comprendre les données que nous avons recueillies, prenons le cas de deux grands fournisseurs d'accès Internet basés aux États-Unis : Cox et Comcast. Cox s'occupe d'environ <a href="https://newsroom.cox.com/company-overview?ref=blog.cloudflare.com" target="_blank">6,5 millions de clients</a> et Comcast en compte environ <a href="https://www.cmcsa.com/news-releases/news-release-details/comcast-reports-4th-quarter-and-full-year-2020-results?ref=blog.cloudflare.com" target="_blank">30 millions</a>. Nous avons réalisé près de 22 000 mesures sur le réseau de Cox et 100 000 sur celui de Comcast. Nous utiliserons ces mesures ci-dessous, afin de classer les réseaux en fonction de leur taille. Nous constatons ici que nos mesures, de même que le nombre de clients de Cox et de Comcast, se suivent de près.</p>
+	<p>Pour comprendre les données que nous avons recueillies, prenons le cas de deux grands fournisseurs d'accès Internet basés aux États-Unis : Cox et Comcast. Cox s'occupe d'environ <a href="https://newsroom.cox.com/company-overview" target="_blank">6,5 millions de clients</a> et Comcast en compte environ <a href="https://www.cmcsa.com/news-releases/news-release-details/comcast-reports-4th-quarter-and-full-year-2020-results" target="_blank">30 millions</a>. Nous avons réalisé près de 22 000 mesures sur le réseau de Cox et 100 000 sur celui de Comcast. Nous utiliserons ces mesures ci-dessous, afin de classer les réseaux en fonction de leur taille. Nous constatons ici que nos mesures, de même que le nombre de clients de Cox et de Comcast, se suivent de près.</p>
 	<p>Cox Communications possède l'ASN 22773. Nos données indiquent les valeurs suivantes en matière de TTFB au p95 pour les cinq réseaux CDN : Cloudflare 332,6 ms, Fastly 357,6 ms, Google 380,3 ms, Amazon CloudFront 404,4 ms et Akamai 441,5 ms. Dans ce cas précis, Cloudflare s'est révélé le plus rapide, environ 7 % plus que le réseau CDN suivant (Fastly), qui se montrait lui-même plus rapide que celui de Google, et ainsi de suite.</p>
 	<p>Dans le cas de Comcast (qui détient l'ASN 7922), nous constatons que le TTFB au p95 était de 323,7 ms (Fastly), 324,2 ms (Cloudflare), 353,7 ms (Google), 384,6 ms (Akamai) et 418,8 ms (Amazon CloudFront). Fastly (323,7 ms) devance ici Cloudflare (324,2 ms) de 0,2 %.</p>
 	<p>Ces chiffres contribuent à déterminer quel réseau CDN se montre le plus rapide pour chaque réseau dans le cadre de cette analyse et des graphiques présentés. À un niveau plus précis, ces valeurs se révèlent importantes pour Cloudflare, car elles nous permettent de cibler les réseaux et la connectivité en vue de les optimiser.</p>
@@ -93,18 +93,18 @@ performance.getEntriesByType("resource");
 	<table>
 		<thead>
 			<tr>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image1-21.png" alt="image1-18" loading="lazy"></th>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image21-3.png" alt="image4-17" loading="lazy"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image1-21.png" alt="image1-18"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image21-3.png" alt="image4-17"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image7-6.png" alt="image7-3" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image14-3.png" alt="image11" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image7-6.png" alt="image7-3"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image14-3.png" alt="image11"></td>
 			</tr>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image11-3.png" alt="image14" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image4-20.png" alt="image21" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image11-3.png" alt="image14"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image4-20.png" alt="image21"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -114,18 +114,18 @@ performance.getEntriesByType("resource");
 	<table>
 		<thead>
 			<tr>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image2-26.png" alt="image2-23" loading="lazy"></th>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image6-11.png" alt="image6-7" loading="lazy"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image2-26.png" alt="image2-23"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image6-11.png" alt="image6-7"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image5-18.png" alt="image5-15" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image9-3.png" alt="image15-1" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image5-18.png" alt="image5-15"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image9-3.png" alt="image15-1"></td>
 			</tr>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image10-3.png" alt="image12-1" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image12-4.png" alt="image10" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image10-3.png" alt="image12-1"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image12-4.png" alt="image10"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -135,18 +135,18 @@ performance.getEntriesByType("resource");
 	<table>
 		<thead>
 			<tr>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image18-3.png" alt="image18" loading="lazy"></th>
-				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image8-5.png" alt="image3-21" loading="lazy"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image18-3.png" alt="image18"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image8-5.png" alt="image3-21"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image3-24.png" alt="image8-2" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image9-3.png" alt="image13" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image3-24.png" alt="image8-2"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image9-3.png" alt="image13"></td>
 			</tr>
 			<tr>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image17-3.png" alt="image17" loading="lazy"></td>
-				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image13-3.png" alt="image9" loading="lazy"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image17-3.png" alt="image17"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image13-3.png" alt="image9"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -158,7 +158,7 @@ performance.getEntriesByType("resource");
 	<h3 id="o-est-la-carte-du-monde">Où est la carte du monde ?</h3>
 	<p>Il est très courant de présenter des données relatives aux performances d'Internet à l'aide de cartes. Les cartes du monde sont flatteuses, mais elles masquent certaines informations. La raison en est très simple : les cartes du monde constituent une représentation géographique (et, selon la projection, une version très déformée des pays et des masses terrestres du monde, par rapport à la réalité).</p>
 	<p>Vous trouverez ci-dessous un exemple de carte du monde, sur laquelle les pays sont colorés en fonction du TTLB le plus bas au p95. Cloudflare est en orange, Amazon CloudFront en jaune, Google en violet, Akamai en rouge et Fastly en bleu.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image19.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image19.png" class="kg-image"></figure>
 	<p>Toutefois, que cette carte ne montre pas, c'est la population. Or, Cloudflare s'intéresse à ses performances pour ses utilisateurs. Prenons l'exemple de la Russie et de l'Indonésie. L'Indonésie est deux fois plus peuplée que la Russie et mesure environ un dixième de sa superficie.</p>
 	<p>En nous concentrant sur les réseaux, nous pouvons optimiser ces derniers pour les utilisateurs d'Internet. Titulaire de l'ASN 17451, Biznet constitue, par exemple, un important fournisseur d'accès Internet en Indonésie. Si nous examinons le TTFB au p95 (les mêmes statistiques que nous avons étudiées précédemment pour les FAI américains Cox et Comcast), nous constatons que pour les utilisateurs de Biznet, Cloudflare affiche le TTFB le plus bas au p95, avec 677,7 ms, contre 744,0 ms pour Fastly, 872,8 ms pour Google, 1 239,9 ms pour Amazon CloudFront et 1 248,9 ms pour Akamai.</p>
 	<h3 id="et-maintenant">Et maintenant ?</h3>

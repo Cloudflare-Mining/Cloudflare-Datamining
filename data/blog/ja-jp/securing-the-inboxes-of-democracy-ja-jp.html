@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-6.png" class="kg-image" alt="How Cloudflare helps secure the inboxes of democracy" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-6.png" class="kg-image" alt="How Cloudflare helps secure the inboxes of democracy"></figure>
 	<p>私たちCloudflareは、政治的所属にかかわらず、すべての候補者がサイバー攻撃のリスクを心配することなく選挙キャンペーンを行えるようにすべきであると考えています。国家を脅かす者、金銭的な報酬を求める者、時間を持て余す者などの悪意のある攻撃者は、しばしば私たちの使命に反対し、民主主義のプロセスに大打撃を与えることを目的としています。 </p>
 	<h3 id="-">メール受信箱の保護が攻撃阻止のカギに</h3>
 	<p>過去数年間、選挙キャンペーンを妨害するために、これらの悪意ある攻撃者は電子メールを主な脅威ベクターとして利用してきました。ネットで検索してみると、攻撃者は今もなお、選挙関係者のメールボックスを危険にさらすことに積極的であることがわかります。1あらゆる組織が被る被害の90%以上はフィッシング攻撃によるものであり、電子メールの受信箱を保護することは重要な課題となっています。巧妙に作られたフィッシングメールや、誤ったクリックによって、攻撃者は機密情報を見たり、有権者に偽の情報を流したり、選挙キャンペーンの寄付を盗んだりする機会を得ることができるのです。</p>
@@ -7,25 +7,25 @@
 	<h3 id="--1">政治キャンペーンは一貫して攻撃されている</h3>
 	<p>キャンペーンによっては、より多くの対象者がいることが事実です。例えば、ある上院議員の再選を目指す現職の選挙キャンペーンでは、スタッフが1日平均35通以上の悪意のある電子メールを受け取っていたそうです。また、攻撃者は認証情報のフィッシングだけでなく、関係者になりすまそうとすることもありました。3ヵ月の間に1万通を超える電子メールが送信され、これらは選挙事務局の立候補者の名前を許可なく使用していました。</p>
 	<p>以下は、攻撃者が頻繁にフィッシングを試みたある上院議員の選挙キャンペーンで確認された指標です。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image4-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image4-4.png" class="kg-image"></figure>
 	<p>米国下院の議員を目指す人の場合、そのスタッフに「スタッフの給与のレビュー」という件名の電子メールが届き、書類のリンクにアクセスするよう求めました。 </p>
 	<p>電子メールを見ただけでは、正当な社内メールと区別するのは難しいでしょう。この電子メールには、有効なメールフッターと、キャンペーンと整合性のあるブランディングが含まれていました。しかし、Area 1のモデルは、電子メールのメタデータ内にいくつかの矛盾を発見し、悪意のある電子メールと判定しました。 </p>
 	<p>私たちのモデルは、これらの電子メールを送信しているドメインが、代表者の実際のキャンペーンメールと似ていることから、疑わしいことを発見しました。これをドメインプロクシミティと呼んでいます。また、電子メールに記載されていたリンクを解析したところ、最近登録されたものであることがわかり、電子メールの正当性をさらに疑わせる結果となりました。 </p>
 	<p>すべてのデータポイントを取り込み、Area 1はこの電子メールがキャンペーンスタッフのメールボックスに届かないようにし、データと資金の損失を防ぎました。 </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-1.png" class="kg-image"></figure>
 	<p>また、選挙キャンペーンの攻撃でよく見られるのが、悪意のある添付ファイルを利用した攻撃です。これらの添付ファイルは、ランサムウェアを含むものからデータアップロードを行うものまで、多岐に及びます。その目的は、政治家の選挙キャンペーンを鈍らせるか、機密情報を流出させることです。 </p>
 	<p>攻撃者は、添付ファイルの拡張子を変更したり、電子メールの本文で添付ファイルがより無害なものであることを記載することによって、ミスディレクション（注意を別の方向に向かせる）を行います。ある選挙キャンペーンで、スタッフ宛に発注書のダウンロードを促す電子メールが送信され、このような現象が起きました。 </p>
 	<p>1日に何百件もの発注書を処理する人にとって、すべての電子メールを徹底的に精査する時間はなく、代わりに業務を停止させないように金銭の支払いを受けることに集中します。Area 1のモデルは、スタッフの時間を節約し、この電子メールが悪意のあるものであると評価しました。 </p>
 	<p>当社のモデルはまず、添付ファイルが「PO567.7z」という7-Zipファイルであることに気づきました。注文書はPDFで送られることが多いので、7zの圧縮ファイルで送られてくるのは懸念点でした。もう一つ、モデルが異常と評価したデータポイントは、センチメントの悪さです。この電子メールには、文法的なミスが目立つだけでなく（すなわち、「Dear Info」）が、正規の発注電子メールによく見られる情報がないため、メッセージのトーンが良好ではないことが明らかでした。 </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-9.png" class="kg-image"></figure>
 	<p>これらのシグナルと、受信者が送信者からの通信を初めて受け取ったという事実が重なり、Area 1がその電子メールをどのメールボックスにも入れないようにするトリガーとなったのです。 </p>
 	<p>これらの例は、選挙キャンペーンがCloudflareに寄せる信頼を物語っています。何百万通もの電子メールをスキャンして、危険な電子メールがメールボックスに入るのを防ぎ、安全な電子メールは中断することなく目的の受信者に届けることができるのが、多くの選挙キャンペーンにおいてメールボックスの安全性、ひいては民主主義制度の安全性を確保するためにCloudflareのArea 1製品を選択する理由です。 </p>
 	<h3 id="cloudflare-area-1-">CloudflareのArea 1ソリューション </h3>
 	<p>これは、Area 1の先制的なキャンペーン発見と機械学習アルゴリズムによるもので、電子メールの添付ファイルから送信者のドメイン、電子メール内の感情まで様々な脅威シグナルを分析し、悪意のある電子メールかどうかを評価することが可能です。 </p>
 	<p>また、Area 1は簡単に導入できるため、ハードウェア、エージェント、アプライアンスの設定に時間をかけることなく、キャンペーンをすぐに保護することができます。また、Cloudflareは、選挙キャンペーンが業界標準（SPF/DKIM/DMARCなど）で規定されている適切な電子メールの衛生管理および認証管理の適用に苦慮していることも理解しています。 </p>
 	<p>これらは複雑で、導入に時間がかかる可能性があり、新しいキャンペーンのサイクルが早いため、業界のベストプラクティスに準拠した適切な電子メール認証制御を設定することが難しくなっています。そのため、フィッシングや電子メールベースの攻撃に対して、インバウンドの技術的な管理を徹底することがより重要です。キャンペーンは、最も重要なこと、つまり、最も効果的で安全な方法で有権者にメッセージを伝えることに集中できることが不可欠になっています。<br>私たちは、公務員になろうとする人々が、民主主義プロセスを混乱させようとする攻撃者から背後を狙われていることを知っています。</p>
-	<p>Cloudflareでは、より良いインターネットを創造することを信条としており、それは受信箱の安全性を確保することを意味します。Area 1の仕組みや、電子メールの受信箱を保護するその他の方法について詳しく知りたい方は、<a href="https://www.cloudflare.com/products/zero-trust/email-security/?ref=blog.cloudflare.com" target="_blank">こちら</a>から、Area 1の製品ページをご覧ください。</p><!--kg-card-begin: markdown-->
+	<p>Cloudflareでは、より良いインターネットを創造することを信条としており、それは受信箱の安全性を確保することを意味します。Area 1の仕組みや、電子メールの受信箱を保護するその他の方法について詳しく知りたい方は、<a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank">こちら</a>から、Area 1の製品ページをご覧ください。</p><!--kg-card-begin: markdown-->
 	<p><small>...<br>
-			<sup>1)</sup> <a href="https://www.cbsnews.com/feature/election-hacking/?ref=blog.cloudflare.com" target="_blank">https://www.cbsnews.com/feature/election-hacking/</a></small></p>
+			<sup>1)</sup> <a href="https://www.cbsnews.com/feature/election-hacking/" target="_blank">https://www.cbsnews.com/feature/election-hacking/</a></small></p>
 	<!--kg-card-end: markdown-->
 </div>

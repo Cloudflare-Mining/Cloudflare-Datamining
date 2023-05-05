@@ -3,10 +3,10 @@
 	<p>It is no secret that at CloudFlare we put a great effort into accelerating our customers' websites. One way to do it is to reduce the size of the images on the website. This is what our <a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati/">Polish</a> product is for. It takes various images and makes them smaller using open source tools, such as jpegtran, gifsicle and pngcrush.</p>
 	<p>However those tools are computationally expensive, and making them go faster, makes our servers go faster, and subsequently our customers' websites as well.</p>
 	<p>Recently, I noticed that we spent ten times as much time "polishing" jpeg images as we do when polishing pngs.</p>
-	<p>We already improved the performance of <a href="https://github.com/cloudflare/pngcrush?ref=blog.cloudflare.com" target="_blank">pngcrush</a> by using our supercharged version of <a href="https://blog.cloudflare.com/cloudflare-fights-cancer/">zlib</a>. So it was time to look what can be done for jpegtran (part of the <a href="http://www.ijg.org/?ref=blog.cloudflare.com" target="_blank">libjpeg</a> distribution).</p>
+	<p>We already improved the performance of <a href="https://github.com/cloudflare/pngcrush" target="_blank">pngcrush</a> by using our supercharged version of <a href="https://blog.cloudflare.com/cloudflare-fights-cancer/">zlib</a>. So it was time to look what can be done for jpegtran (part of the <a href="http://www.ijg.org/" target="_blank">libjpeg</a> distribution).</p>
 	<h3 id="quickprofiling">Quick profiling</h3>
 	<p>To get fast results I usually use the Linux perf utility. It gives a nice, if simple, view of the hotspots in the code. I used this image for my benchmark.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/10/print_poster_0025.jpg" alt="" loading="lazy"><small><a href="https://creativecommons.org/licenses/by/4.0/?ref=blog.cloudflare.com" target="_blank">CC BY 4.0</a> <a href="http://www.eso.org/public/products/print_posters/print_poster_0025/?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="http://www.eso.org/?ref=blog.cloudflare.com" target="_blank">ESO</a></small></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/10/print_poster_0025.jpg" alt=""><small><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a> <a href="http://www.eso.org/public/products/print_posters/print_poster_0025/" target="_blank">image</a> by <a href="http://www.eso.org/" target="_blank">ESO</a></small></p>
 	<p><code>perf record ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpeg </code></p>
 	<p>And we get:</p>
 	<p><code>perf report </code><br>
@@ -116,10 +116,10 @@
 	<p><code>40.78% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_refine </code><br>
 		<code>26.01% lt-jpegtran libjpeg.so.9.1.0 [.] encode_mcu_AC_first </code>
 	</p>
-	<p>We can see that the two functions we optimized still take a significant portion of the execution. But now it is just 67% of the entire program. If you are asking yourself how we got 2.25X speedup with those functions going from 83.5% to 67%, read about the <a href="https://en.wikipedia.org/wiki/Potato_paradox?ref=blog.cloudflare.com" target="_blank">Potato Paradox</a>.</p>
+	<p>We can see that the two functions we optimized still take a significant portion of the execution. But now it is just 67% of the entire program. If you are asking yourself how we got 2.25X speedup with those functions going from 83.5% to 67%, read about the <a href="https://en.wikipedia.org/wiki/Potato_paradox" target="_blank">Potato Paradox</a>.</p>
 	<p>It is definitely worth making further optimizations here. But it might be better looking outside the functions into how the data is arranged and passed around.</p>
 	<p>The bottom line is: optimizing code is fun, and using SIMD instructions can give you significant boost. Such as in this case.</p>
 	<p>We at CloudFlare make sure that our servers run at top notch performance, so our customers' websites do as well!.</p>
-	<p>You can find the final code on our GitHub repository: <a href="https://github.com/cloudflare/jpegtran?ref=blog.cloudflare.com" target="_blank">https://github.com/cloudflare/jpegtran</a></p>
+	<p>You can find the final code on our GitHub repository: <a href="https://github.com/cloudflare/jpegtran" target="_blank">https://github.com/cloudflare/jpegtran</a></p>
 	<!--kg-card-end: markdown-->
 </div>
