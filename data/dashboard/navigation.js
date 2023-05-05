@@ -497,7 +497,7 @@ const navigation = {
 			url: "/images/delivery-zones",
 			testId: "sidenav-delivery-zones-link",
 			hasPermission: function(l) {
-				return (0, r.IU)(l) && (0, _.b8)(l)
+				return (0, r.IU)(l) && (0, A.b8)(l)
 			},
 			labels: ["new"]
 		}]
@@ -930,7 +930,7 @@ const navigation = {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: L
+			tabs: w
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			labels: ["beta"],
@@ -1076,7 +1076,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: A.az
+			tabs: _.az
 		}, {
 			title: "navigation.zone.zaraz.history",
 			navigationType: "global-settings",
