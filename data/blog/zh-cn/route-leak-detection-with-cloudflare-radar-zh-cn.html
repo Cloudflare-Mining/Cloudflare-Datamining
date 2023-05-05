@@ -1,52 +1,52 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-19.png" class="kg-image" alt="How we detect route leaks and our new Cloudflare Radar route leak service"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-19.png" class="kg-image" alt="How we detect route leaks and our new Cloudflare Radar route leak service" loading="lazy"></figure>
 	<p>现在，我们将介绍 Cloudflare Radar 的路由泄漏数据和 API，让任何人都能获得整个互联网上的路由泄漏信息。我们构建了一个全面的系统，可获取公共来源的数据，以及 Cloudflare 基于我们巨大的全球网络总结的互联网观点。该系统现在正通过 API，在 Cloudflare Radar 的 ASN 页面上提供路由泄漏数据。</p>
 	<p>本篇博客文章包括两部分。首先讨论了 BGP 和路由泄漏问题，然后详细介绍我们的路由泄漏检测系统，以及它如何为 Cloudflare Radar 提供信息。</p>
 	<h2 id="-bgp-">关于 BGP 和路由泄密</h2>
-	<p>域间路由，即在网络间交换可达性信息，对互联网的安全和性能至关重要。<a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/" target="_blank">边界网关协议</a> (BGP) 实际上是路由协议，交换各组织和网络间的路由信息。BGP 的核心基础是假设交换的信息均真实无误、值得信任，但不幸的是，就当前的互联网而言，这个假设<a href="https://blog.cloudflare.com/rpki/">不再有效</a>。在许多情况下，网络可能会犯错或故意谎报可达性信息，并传播到互联网其他地方。这类事件会对互联网的正常运行造成重大干扰。这种破坏性事件有多种类型，包括<strong>路由泄漏</strong>。</p>
-	<p>我们认为，路由泄漏是指路由公告的传播超出了其预定范围 (<a href="https://www.rfc-editor.org/rfc/rfc7908.html" target="_blank">RFC7908</a>)。过去的许多著名事件告诉我们，路由泄漏可能会造成重大破坏，影响数百万互联网用户。例如，<a href="https://blog.cloudflare.com/zh-cn/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today-zh-cn/">2019 年 6 月，美国宾夕法尼亚州一个小型网络的错误配置 </a>(<a href="https://radar.cloudflare.com/traffic/as396531" target="_blank">AS396531</a> - Allegheny Technologies Inc) 意外地将一个 Cloudflare 前缀泄露给了 Verizon，Verizon 又将错误配置的路由传播给其他对等点和客户。结果，互联网的大部分流量都挤压在一个小型网络有限的链接容量中，导致网络拥塞，受影响 IP 范围的大部分 Cloudflare 流量均被阻止。</p>
-	<p>2018 年 11 月发生了一起类似事件，尼日利亚 ISP (<a href="https://radar.cloudflare.com/traffic/as37282" target="_blank">AS37282</a>-Mainone) 违反<a href="https://ieeexplore.ieee.org/document/974527" target="_blank">无谷底原则</a>，<a href="https://blog.cloudflare.com/how-a-nigerian-isp-knocked-google-offline/">意外泄露了</a>大量 Google IP 前缀给其对等点和提供商，导致 Google 服务大范围不可用。</p>
+	<p>域间路由，即在网络间交换可达性信息，对互联网的安全和性能至关重要。<a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/?ref=blog.cloudflare.com" target="_blank">边界网关协议</a> (BGP) 实际上是路由协议，交换各组织和网络间的路由信息。BGP 的核心基础是假设交换的信息均真实无误、值得信任，但不幸的是，就当前的互联网而言，这个假设<a href="https://blog.cloudflare.com/rpki/">不再有效</a>。在许多情况下，网络可能会犯错或故意谎报可达性信息，并传播到互联网其他地方。这类事件会对互联网的正常运行造成重大干扰。这种破坏性事件有多种类型，包括<strong>路由泄漏</strong>。</p>
+	<p>我们认为，路由泄漏是指路由公告的传播超出了其预定范围 (<a href="https://www.rfc-editor.org/rfc/rfc7908.html?ref=blog.cloudflare.com" target="_blank">RFC7908</a>)。过去的许多著名事件告诉我们，路由泄漏可能会造成重大破坏，影响数百万互联网用户。例如，<a href="https://blog.cloudflare.com/zh-cn/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today-zh-cn/">2019 年 6 月，美国宾夕法尼亚州一个小型网络的错误配置 </a>(<a href="https://radar.cloudflare.com/traffic/as396531?ref=blog.cloudflare.com" target="_blank">AS396531</a> - Allegheny Technologies Inc) 意外地将一个 Cloudflare 前缀泄露给了 Verizon，Verizon 又将错误配置的路由传播给其他对等点和客户。结果，互联网的大部分流量都挤压在一个小型网络有限的链接容量中，导致网络拥塞，受影响 IP 范围的大部分 Cloudflare 流量均被阻止。</p>
+	<p>2018 年 11 月发生了一起类似事件，尼日利亚 ISP (<a href="https://radar.cloudflare.com/traffic/as37282?ref=blog.cloudflare.com" target="_blank">AS37282</a>-Mainone) 违反<a href="https://ieeexplore.ieee.org/document/974527?ref=blog.cloudflare.com" target="_blank">无谷底原则</a>，<a href="https://blog.cloudflare.com/how-a-nigerian-isp-knocked-google-offline/">意外泄露了</a>大量 Google IP 前缀给其对等点和提供商，导致 Google 服务大范围不可用。</p>
 	<p>这些事件不仅说明路由泄漏会造成严重影响，也说明小型区域网络的错误配置会产生滚雪球效应，影响全球互联网。</p>
-	<p>及时发现和纠正路由泄漏至关重要，但往往只有用户开始报告明显的泄漏影响时才会发现泄漏。检测和防止路由泄漏极具挑战，因为 AS 业务关系和 BGP 路由策略通常<a href="https://ieeexplore.ieee.org/document/974523" target="_blank">未公开</a>，而且受影响的网络往往远离路由泄漏根源。</p>
-	<p>过去几年中提出了许多解决方案来防止泄露的路由继续传播。这类建议包括 <a href="https://datatracker.ietf.org/doc/rfc9234/" target="_blank">RFC9234</a>和 <a href="https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification" target="_blank">ASPA</a>，让 BGP 可以使用两个互联 AS 网络之间的关系类型来注释会话，以限制和预防路由泄露。</p>
-	<p>实施 BGP 角色类似信号的另一个建议是使用 <a href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol#Communities" target="_blank">BGP 社区</a>——BGP 公告中用于编码元数据的可传递属性。虽然从长远来看，这些建议可能有用，但它们尚处于非常初步的阶段，预计无法在短期内大规模采用。</p>
-	<p>在 Cloudflare，我们开发了一个系统来自动检测路由泄漏事件，并将通知发送到多个渠道，以提高可见性。随着我们继续努力<a href="https://developers.cloudflare.com/radar/" target="_blank">为公众提供更相关的数据</a>，我们很高兴地宣布，今天将启动一个<a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents" target="_blank">开放数据 API</a> 专门提供我们的路由泄漏检测结果，并将结果集成到 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 页面。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-32.png" class="kg-image"></figure>
+	<p>及时发现和纠正路由泄漏至关重要，但往往只有用户开始报告明显的泄漏影响时才会发现泄漏。检测和防止路由泄漏极具挑战，因为 AS 业务关系和 BGP 路由策略通常<a href="https://ieeexplore.ieee.org/document/974523?ref=blog.cloudflare.com" target="_blank">未公开</a>，而且受影响的网络往往远离路由泄漏根源。</p>
+	<p>过去几年中提出了许多解决方案来防止泄露的路由继续传播。这类建议包括 <a href="https://datatracker.ietf.org/doc/rfc9234/?ref=blog.cloudflare.com" target="_blank">RFC9234</a>和 <a href="https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification?ref=blog.cloudflare.com" target="_blank">ASPA</a>，让 BGP 可以使用两个互联 AS 网络之间的关系类型来注释会话，以限制和预防路由泄露。</p>
+	<p>实施 BGP 角色类似信号的另一个建议是使用 <a href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol?ref=blog.cloudflare.com#Communities" target="_blank">BGP 社区</a>——BGP 公告中用于编码元数据的可传递属性。虽然从长远来看，这些建议可能有用，但它们尚处于非常初步的阶段，预计无法在短期内大规模采用。</p>
+	<p>在 Cloudflare，我们开发了一个系统来自动检测路由泄漏事件，并将通知发送到多个渠道，以提高可见性。随着我们继续努力<a href="https://developers.cloudflare.com/radar/?ref=blog.cloudflare.com" target="_blank">为公众提供更相关的数据</a>，我们很高兴地宣布，今天将启动一个<a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents?ref=blog.cloudflare.com" target="_blank">开放数据 API</a> 专门提供我们的路由泄漏检测结果，并将结果集成到 <a href="https://radar.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Radar</a> 页面。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-32.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="-">路由泄漏的定义和类型</h2>
 	<p>介绍我们的系统设计之前，我们先快速了解一下什么是路由泄漏，以及为什么必须检测路由泄漏。</p>
-	<p>我们参考了已发布的 IETF RFC7908 文件 <a href="https://www.rfc-editor.org/rfc/rfc7908.html" target="_blank"><em>《BGP 路由泄漏的问题定义和分类》</em></a>，来定义什么是路由泄漏。</p>
+	<p>我们参考了已发布的 IETF RFC7908 文件 <a href="https://www.rfc-editor.org/rfc/rfc7908.html?ref=blog.cloudflare.com" target="_blank"><em>《BGP 路由泄漏的问题定义和分类》</em></a>，来定义什么是路由泄漏。</p>
 	<p>&gt; 路由泄漏是指路由公告的传播超出了其预定范围。</p>
-	<p><em>预定范围</em>的具体定义通常是指基于自治系统 (AS) 之间业务关系的域间路由策略。这些业务关系<a href="https://ieeexplore.ieee.org/document/974527" target="_blank">大致分为四类</a>：客户、中继提供商、对等点和兄弟，但可能还有其他更复杂的安排。</p>
+	<p><em>预定范围</em>的具体定义通常是指基于自治系统 (AS) 之间业务关系的域间路由策略。这些业务关系<a href="https://ieeexplore.ieee.org/document/974527?ref=blog.cloudflare.com" target="_blank">大致分为四类</a>：客户、中继提供商、对等点和兄弟，但可能还有其他更复杂的安排。</p>
 	<p>在客户-提供商关系中，客户 AS 与另一个网络达成了协议，将其流量传递到全球路由表。在对等关系中，两个 AS 同意自由进行双边流量交换，但只在他们自己的 IP 和客户的 IP 之间交换。最后，属于同一管理实体的 AS 视为兄弟关系，它们之间的流量交换通常不受限制。下面的图片说明了三种主要的关系类型如何转化为出口策略。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-7.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>通过对 AS 级关系的类型及其对 BGP 路由传播的影响进行分类，我们可以定义传播过程中前缀发起公告的多个阶段。</p>
 	<ul>
 		<li>上行：这一阶段的所有路径段都是<strong>客户到提供商</strong></li>
 		<li>对等互连：点对点路径段</li>
 		<li>下行：这一阶段的所有路径段都是<strong>提供商到客户</strong></li>
 	</ul>
-	<p>遵循<a href="https://ieeexplore.ieee.org/document/6363987" target="_blank">无谷底路由原则的 AS 路径</a>将包括<strong>上行、对等互连、下行</strong>等阶段，所有阶段均为可选阶段，但必须<strong>按照该顺序</strong>。符合无谷底路由的 AS 路径的示例如下。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image11-4.png" class="kg-image"></figure>
-	<p>在 RFC7908 文件<a href="https://www.rfc-editor.org/rfc/rfc7908.html" target="_blank"><em>《BGP 路由泄漏的问题定义和分类》</em></a>中，作者定义了六种路由泄漏类型，我们在系统设计中参考了这些定义。下面分别介绍每种路由泄漏类型。</p>
+	<p>遵循<a href="https://ieeexplore.ieee.org/document/6363987?ref=blog.cloudflare.com" target="_blank">无谷底路由原则的 AS 路径</a>将包括<strong>上行、对等互连、下行</strong>等阶段，所有阶段均为可选阶段，但必须<strong>按照该顺序</strong>。符合无谷底路由的 AS 路径的示例如下。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image11-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>在 RFC7908 文件<a href="https://www.rfc-editor.org/rfc/rfc7908.html?ref=blog.cloudflare.com" target="_blank"><em>《BGP 路由泄漏的问题定义和分类》</em></a>中，作者定义了六种路由泄漏类型，我们在系统设计中参考了这些定义。下面分别介绍每种路由泄漏类型。</p>
 	<h3 id="-1-">第 1 类：带有完整前缀的发夹弯</h3>
 	<p>&gt; 多宿主 AS 从上游 ISP 获得了一条路由，并简单地将其传播给另一个上游 ISP（这个弯基本上就像一个发夹）。更新中的前缀和 AS 路径都不会改变。</p>
 	<p>包含提供商-客户和客户-提供商段的 AS 路径为第 1 类泄漏。例如：AS4→AS5→AS6 属于第 1 类泄漏。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-5.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>第 1 类泄漏是最广为人知的路由泄漏类型，会产生严重影响。在许多情况下，客户路由比对等点或提供商路由更可取。在这个示例中，AS6 可能更愿意通过 AS5 而非其他对等点或提供商路由发送流量，导致 AS5 无意中成为一个中继提供商。这可能会大大影响与泄漏前缀有关的流量的性能，而如果泄漏的 AS 配置无法处理大量的流量涌入，则会导致中断。</p>
-	<p>2015 年 6 月，区域 ISP Malaysia Telekom (<a href="https://radar.cloudflare.com/traffic/as4788" target="_blank">AS4788</a>) 将来自提供商和对等点的超过 170,000 条路由泄露给了另一个提供商 Level3（AS3549，现名 Lumen）。Level3 接受了这些路由，并将它们进一步传播到其下游网络，进而给全球网络造成了严重问题。</p>
+	<p>2015 年 6 月，区域 ISP Malaysia Telekom (<a href="https://radar.cloudflare.com/traffic/as4788?ref=blog.cloudflare.com" target="_blank">AS4788</a>) 将来自提供商和对等点的超过 170,000 条路由泄露给了另一个提供商 Level3（AS3549，现名 Lumen）。Level3 接受了这些路由，并将它们进一步传播到其下游网络，进而给全球网络造成了严重问题。</p>
 	<h3 id="-2-isp-isp-isp-">第 2 类：ISP-ISP-ISP 横向泄漏</h3>
 	<p>第 2 类泄漏的定义为将从对等点获得的路由传播给另一对等点，创建两个或多个连续的点对点路径段。</p>
 	<p>例如：AS3→AS4→AS5 属于第 2 类泄漏。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-70.png" class="kg-image"></figure>
-	<p>这类泄漏的示例包括<a href="https://archive.nanog.org/meetings/nanog41/presentations/mauch-lightning.pdf" target="_blank">依次出现三个以上的非常大型的网络</a>。非常大型的网络（例如 Verizon 和 Lumen）不会相互从对方购买中继，如果路径中依次出现<a href="https://puck.nether.net/bgp/leakinfo.cgi/" target="_blank">三个以上的此类网络</a>，往往表明存在路由泄漏。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-70.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>这类泄漏的示例包括<a href="https://archive.nanog.org/meetings/nanog41/presentations/mauch-lightning.pdf?ref=blog.cloudflare.com" target="_blank">依次出现三个以上的非常大型的网络</a>。非常大型的网络（例如 Verizon 和 Lumen）不会相互从对方购买中继，如果路径中依次出现<a href="https://puck.nether.net/bgp/leakinfo.cgi/?ref=blog.cloudflare.com" target="_blank">三个以上的此类网络</a>，往往表明存在路由泄漏。</p>
 	<p>然而，在现实世界中，多个小型对等网络交换路由并相互传递的情况并不罕见。这类网络路径存在合法的商业理由。与第一类相比，我们不太担心这类路由泄漏。</p>
 	<h3 id="-3-4-">第 3 类和第 4 类：提供商路由到对等点；对等点路由到提供商</h3>
 	<p>这两类泄露涉及到从一个提供商或对等点向另一个对等点或提供商（而不是向客户）传播路由。下面介绍这两类泄漏：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image10-3.png" class="kg-image"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image13-1.png" class="kg-image"></figure>
-	<p>在<a href="https://blog.cloudflare.com/how-a-nigerian-isp-knocked-google-offline/">前面提到的例子</a>中，Google 的对等点尼日利亚 ISP 不小心将其路由泄露给了其提供商 <a href="https://radar.cloudflare.com/traffic/as4809" target="_blank">AS4809</a>，这属于第 4 类路由泄漏。由于通过客户的路由通常比其他路由更可取，因此，大型提供商 (AS4809) 通过其客户（即泄漏的 ASN）将其流量重新路由到 Google，压垮了这家小型 ISP，并导致 Google 瘫痪了一个多小时。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image10-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image13-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>在<a href="https://blog.cloudflare.com/how-a-nigerian-isp-knocked-google-offline/">前面提到的例子</a>中，Google 的对等点尼日利亚 ISP 不小心将其路由泄露给了其提供商 <a href="https://radar.cloudflare.com/traffic/as4809?ref=blog.cloudflare.com" target="_blank">AS4809</a>，这属于第 4 类路由泄漏。由于通过客户的路由通常比其他路由更可取，因此，大型提供商 (AS4809) 通过其客户（即泄漏的 ASN）将其流量重新路由到 Google，压垮了这家小型 ISP，并导致 Google 瘫痪了一个多小时。</p>
 	<h2 id="--1">路由泄漏总结</h2>
-	<p>现在，我们已经了解了 <a href="https://www.rfc-editor.org/rfc/rfc7908.html" target="_blank">RFC7908</a> 中定义的四类路由泄露。这四类路由泄漏的共同点是，它们都是使用 AS 关系（即对等点、客户和提供商）定义的。我们根据路由来自哪里和传播到哪里，对 AS 路径传播进行分类，总结泄漏类型。结果如下表所示。</p><!--kg-card-begin: html-->
+	<p>现在，我们已经了解了 <a href="https://www.rfc-editor.org/rfc/rfc7908.html?ref=blog.cloudflare.com" target="_blank">RFC7908</a> 中定义的四类路由泄露。这四类路由泄漏的共同点是，它们都是使用 AS 关系（即对等点、客户和提供商）定义的。我们根据路由来自哪里和传播到哪里，对 AS 路径传播进行分类，总结泄漏类型。结果如下表所示。</p><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -78,7 +78,7 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>整个表格可以总结为一条规则：<strong>来自非客户 AS 的路由只能传播给客户</strong>。</p>
-	<p><em>注：第 5 类和第 6 类路由泄露的定义为前缀重发和公布私有前缀。第 5 类与</em><a href="https://www.cloudflare.com/learning/security/glossary/bgp-hijacking/" target="_blank"><em>前缀劫持更密切相关</em></a><em>，我们的系统下一步计划将解决此类泄漏，而第 6 类泄漏则不在此限。有兴趣的读者可以参考 </em><a href="https://www.rfc-editor.org/rfc/rfc7908.html" target="_blank"><em>RFC7908</em></a><em> 第 3.5 和 3.6 节了解更多信息。</em></p>
+	<p><em>注：第 5 类和第 6 类路由泄露的定义为前缀重发和公布私有前缀。第 5 类与</em><a href="https://www.cloudflare.com/learning/security/glossary/bgp-hijacking/?ref=blog.cloudflare.com" target="_blank"><em>前缀劫持更密切相关</em></a><em>，我们的系统下一步计划将解决此类泄漏，而第 6 类泄漏则不在此限。有兴趣的读者可以参考 </em><a href="https://www.rfc-editor.org/rfc/rfc7908.html?ref=blog.cloudflare.com" target="_blank"><em>RFC7908</em></a><em> 第 3.5 和 3.6 节了解更多信息。</em></p>
 	<h2 id="cloudflare-radar-">Cloudflare Radar 路由泄漏系统</h2>
 	<p>现在我们知道了什么是路由泄漏，接下来谈谈我们的路由泄漏检测系统是如何设计的。</p>
 	<p>从非常高的层面来看，我们的系统可以分为三个不同的组成部分。</p>
@@ -91,35 +91,35 @@
 	<p>我们考虑了三类数据输入：</p><!--kg-card-begin: markdown-->
 	<ol>
 		<li>历史：BGP 将过去某个时间范围内的文件存档<br>
-			a. <a href="https://www.routeviews.org/routeviews/" target="_blank">RouteViews</a> 和 <a href="https://ris.ripe.net/docs/20_raw_data_mrt.html#name-and-location" target="_blank">RIPE RIS</a> 存档文件</li>
+			a. <a href="https://www.routeviews.org/routeviews/?ref=blog.cloudflare.com" target="_blank">RouteViews</a> 和 <a href="https://ris.ripe.net/docs/20_raw_data_mrt.html?ref=blog.cloudflare.com#name-and-location" target="_blank">RIPE RIS</a> 存档文件</li>
 		<li>半实时：文件一旦可用 BGP 便会立即存档，仅有 10-30 分钟的延迟。<br>
-			a. RouteViews 和 RIPE RIS 档案中的数据代理会定期检查新文件（例如：<a href="https://bgpkit.com/broker" target="_blank">BGPKIT 代理</a>）。</li>
+			a. RouteViews 和 RIPE RIS 档案中的数据代理会定期检查新文件（例如：<a href="https://bgpkit.com/broker?ref=blog.cloudflare.com" target="_blank">BGPKIT 代理</a>）。</li>
 		<li>实时：真正的实时数据源<br>
-			a. <a href="https://ris-live.ripe.net/" target="_blank">RIPE RIS Live</a><br>
+			a. <a href="https://ris-live.ripe.net/?ref=blog.cloudflare.com" target="_blank">RIPE RIS Live</a><br>
 			b. Cloudflare 内部 BGP 来源</li>
 	</ol>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-11.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-11.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>对于当前版本，我们使用检测系统的半实时数据源，即来自 RouteViews 和 RIPE RIS 的 BGP 更新文件。为了保证数据的完整性，我们对这两个项目的所有公共采集器（共 63 个采集器和 2400 多个采集器对等点）的数据进行了处理，并实施了一个能够在数据文件可用时处理 BGP 数据的管道。</p>
-	<p>为索引和处理数据文件，我们部署了一个本地 <a href="https://github.com/bgpkit/bgpkit-broker-backend" target="_blank">BGPKIT Broker 实例</a>，并启用了传递消息的 Kafka 功能，以及一个基于 <a href="https://github.com/bgpkit/bgpkit-parser" target="_blank">BGPKIT Parser</a> Rust SDK 的自定义并发 <a href="https://www.rfc-editor.org/rfc/rfc6396.html" target="_blank">MRT</a> 数据处理管道。数据收集模块处理 MRT 文件，并将结果转换为每天超过 20 亿条 BGP 消息（大约每秒 30,000 条消息）的 BGP 消息流。</p>
+	<p>为索引和处理数据文件，我们部署了一个本地 <a href="https://github.com/bgpkit/bgpkit-broker-backend?ref=blog.cloudflare.com" target="_blank">BGPKIT Broker 实例</a>，并启用了传递消息的 Kafka 功能，以及一个基于 <a href="https://github.com/bgpkit/bgpkit-parser?ref=blog.cloudflare.com" target="_blank">BGPKIT Parser</a> Rust SDK 的自定义并发 <a href="https://www.rfc-editor.org/rfc/rfc6396.html?ref=blog.cloudflare.com" target="_blank">MRT</a> 数据处理管道。数据收集模块处理 MRT 文件，并将结果转换为每天超过 20 亿条 BGP 消息（大约每秒 30,000 条消息）的 BGP 消息流。</p>
 	<h3 id="-route-leak-detection-">路由泄漏检测（Route Leak Detection）</h3>
 	<p>路由泄漏检测模块是在各个 BGP 公告层面起作用。检测组件一次调查一条 BGP 消息，并估计给定 BGP 消息是路由泄漏事件导致的的可能性。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-5.png" class="kg-image"></figure>
-	<p>我们的检测算法主要基于<a href="https://ieeexplore.ieee.org/document/6363987" target="_blank">无谷底模型</a>，我们认为该模型可以捕捉到大多数值得注意的路由泄露事件。如前所述，使用无谷底模型检测路由泄漏的误报率低，关键是因为有准确的 AS 级关系。虽然并不是每个 AS 都会公布这些关系类型，但使用公开观察的 BGP 数据推断关系类型已有超过 <a href="https://ieeexplore.ieee.org/document/6027863" target="_blank">20 年的研究经验</a>。</p>
-	<p>虽然研究已证明，最先进的关系推理算法<a href="https://dl.acm.org/doi/10.1145/2504730.2504735" target="_blank">高度准确</a>，但即使很小的误差范围仍然会导致路由泄漏检测不准确。为了减轻这些历史问题，我们综合了多个数据源来推断 AS 级关系，包括 <a href="https://www.caida.org/" target="_blank">CAIDA/UCSD</a> 的 <a href="https://www.caida.org/catalog/datasets/as-relationships/" target="_blank">AS 关系</a>数据和我们内部构建的 AS 关系数据集。在两个 AS 级关系之上，我们在每个前缀和每个对等点级别构建了一个更精细的数据集。改进后的数据集让我们能够回答一些问题，例如对于收集器对等点 X 观察到的前缀 P，AS1 和 AS2 之间的关系是什么。如果网络中多种不同关系，因不同前缀和地理位置而异，该数据集可消除大部分歧义，从而帮助我们减少系统中的误报次数。除 AS 关系数据集外，我们还应用了 <a href="https://ihr.iijlab.net/ihr/en-us/" target="_blank">IHR IIJ</a> 的 <a href="https://ihr.iijlab.net/ihr/en-us/documentation#AS_dependency" target="_blank">AS Hegemony 数据集</a>来进一步减少误报。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>我们的检测算法主要基于<a href="https://ieeexplore.ieee.org/document/6363987?ref=blog.cloudflare.com" target="_blank">无谷底模型</a>，我们认为该模型可以捕捉到大多数值得注意的路由泄露事件。如前所述，使用无谷底模型检测路由泄漏的误报率低，关键是因为有准确的 AS 级关系。虽然并不是每个 AS 都会公布这些关系类型，但使用公开观察的 BGP 数据推断关系类型已有超过 <a href="https://ieeexplore.ieee.org/document/6027863?ref=blog.cloudflare.com" target="_blank">20 年的研究经验</a>。</p>
+	<p>虽然研究已证明，最先进的关系推理算法<a href="https://dl.acm.org/doi/10.1145/2504730.2504735?ref=blog.cloudflare.com" target="_blank">高度准确</a>，但即使很小的误差范围仍然会导致路由泄漏检测不准确。为了减轻这些历史问题，我们综合了多个数据源来推断 AS 级关系，包括 <a href="https://www.caida.org/?ref=blog.cloudflare.com" target="_blank">CAIDA/UCSD</a> 的 <a href="https://www.caida.org/catalog/datasets/as-relationships/?ref=blog.cloudflare.com" target="_blank">AS 关系</a>数据和我们内部构建的 AS 关系数据集。在两个 AS 级关系之上，我们在每个前缀和每个对等点级别构建了一个更精细的数据集。改进后的数据集让我们能够回答一些问题，例如对于收集器对等点 X 观察到的前缀 P，AS1 和 AS2 之间的关系是什么。如果网络中多种不同关系，因不同前缀和地理位置而异，该数据集可消除大部分歧义，从而帮助我们减少系统中的误报次数。除 AS 关系数据集外，我们还应用了 <a href="https://ihr.iijlab.net/ihr/en-us/?ref=blog.cloudflare.com" target="_blank">IHR IIJ</a> 的 <a href="https://ihr.iijlab.net/ihr/en-us/documentation?ref=blog.cloudflare.com#AS_dependency" target="_blank">AS Hegemony 数据集</a>来进一步减少误报。</p>
 	<h3 id="--3">路由泄漏的存储和展示</h3>
-	<p>处理完每条 BGP 消息后，我们将生成的路由泄漏条目存储在数据库中，以便长期存储和浏览。我们还汇总了各个路由泄漏的 BGP 公告，并将短时间内来自同一泄漏 ASN 的相关泄漏归纳为<strong>路由泄漏事件</strong>。然后，Web UI（<a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents" target="_blank">API</a>或警报）等各种下游应用程序便可使用这些路由泄漏事件。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image12-2.png" class="kg-image"></figure>
+	<p>处理完每条 BGP 消息后，我们将生成的路由泄漏条目存储在数据库中，以便长期存储和浏览。我们还汇总了各个路由泄漏的 BGP 公告，并将短时间内来自同一泄漏 ASN 的相关泄漏归纳为<strong>路由泄漏事件</strong>。然后，Web UI（<a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents?ref=blog.cloudflare.com" target="_blank">API</a>或警报）等各种下游应用程序便可使用这些路由泄漏事件。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image12-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="cloudflare-radar--1">Cloudflare Radar 检测路由泄漏</h2>
 	<p>Cloudflare 的目标是帮助构建更好的互联网，包括分享我们在监测和保障互联网路由方面的成果。今天，我们将发布路由泄漏检测系统的公开测试版。</p>
 	<p>从今天开始，用户前往 Cloudflare Radar ASN 页面，就可以看到影响该 AS 的路由泄漏列表。我们认为，如果距离泄漏点 AS 仅一个跃点（无论方向如何，无论是之前还是之后），AS 便会受到影响。</p>
-	<p>可通过 <strong>https://radar.cloudflare.com/as{ASN}</strong> 直接访问 Cloudflare Radar ASN 页面。例如，可以访问 <a href="https://radar.cloudflare.com/as174" target="_blank">https://radar.cloudflare.com/as174</a> 查看 Cogent AS174 的概述页面。ASN 页面现在有一个专门的路由泄漏卡，显示在选定时间范围内检测到的与当前 ASN 相关的路由泄漏。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-54.png" class="kg-image"></figure>
-	<p>用户还可以开始使用我们的<a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents" target="_blank">公共数据 API </a>来查找关于任何给定 ASN 的路由泄漏事件。我们的 API 支持按时间范围和所涉 AS 筛选路由泄漏结果。下图为<a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation/">最近更新的 API 文档站点</a>上的<a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents" target="_blank">路由泄漏事件 API 文档页面</a>。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-44.png" class="kg-image"></figure>
+	<p>可通过 <strong>https://radar.cloudflare.com/as{ASN}</strong> 直接访问 Cloudflare Radar ASN 页面。例如，可以访问 <a href="https://radar.cloudflare.com/as174?ref=blog.cloudflare.com" target="_blank">https://radar.cloudflare.com/as174</a> 查看 Cogent AS174 的概述页面。ASN 页面现在有一个专门的路由泄漏卡，显示在选定时间范围内检测到的与当前 ASN 相关的路由泄漏。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-54.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>用户还可以开始使用我们的<a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents?ref=blog.cloudflare.com" target="_blank">公共数据 API </a>来查找关于任何给定 ASN 的路由泄漏事件。我们的 API 支持按时间范围和所涉 AS 筛选路由泄漏结果。下图为<a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation/">最近更新的 API 文档站点</a>上的<a href="https://developers.cloudflare.com/api/operations/radar_get_BGPRouteLeakEvents?ref=blog.cloudflare.com" target="_blank">路由泄漏事件 API 文档页面</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-44.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="--4">更多路由安全功能即将推出</h2>
 	<p>我们还有许多关于路由泄漏检测的计划。随着时间的推移，Cloudflare Radar 将陆续推出全局视图页面、路由泄漏通知、更高级的 API、自定义自动化脚本和历史存档数据集等更多功能。您的反馈和建议可以帮助我们继续改进检测结果，向公众提供更好的数据，因此对我们非常重要。</p>
 	<p>此外，我们将继续推进互联网路由安全方面的其他重要课题，包括全球 BGP 劫持检测（不局限于我们的客户网络）、RPKI 验证监测、开源工具和架构设计，以及集中式路由安全网络网关。我们的目标是向社区提供路由安全的最佳数据和工具，共同构建更好、更安全的互联网。</p>
-	<p>同时，我们的开发人员 Discord 服务器上开设了 <a href="https://discord.com/channels/595317990191398933/1035553707116478495" target="_blank">Radar 室</a>。欢迎<a href="https://discord.com/login?redirect_to=%2Fchannels%2F595317990191398933%2F1035553707116478495%3Fcf_target_id%3D91CB10D26FB3D1DD0B780D61972043D0" target="_blank">加入</a>与我们交流；团队渴望收到大家的反馈，乐意回答大家的问题。</p>
-	<p>请访问 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a>，了解更多互联网见解。您也可以在 <a href="https://twitter.com/CloudflareRadar" target="_blank">Twitter</a> 上关注我们，了解 Radar 的最新消息。</p>
+	<p>同时，我们的开发人员 Discord 服务器上开设了 <a href="https://discord.com/channels/595317990191398933/1035553707116478495?ref=blog.cloudflare.com" target="_blank">Radar 室</a>。欢迎<a href="https://discord.com/login?redirect_to=%2Fchannels%2F595317990191398933%2F1035553707116478495%3Fcf_target_id%3D91CB10D26FB3D1DD0B780D61972043D0&amp;ref=blog.cloudflare.com" target="_blank">加入</a>与我们交流；团队渴望收到大家的反馈，乐意回答大家的问题。</p>
+	<p>请访问 <a href="https://radar.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Radar</a>，了解更多互联网见解。您也可以在 <a href="https://twitter.com/CloudflareRadar?ref=blog.cloudflare.com" target="_blank">Twitter</a> 上关注我们，了解 Radar 的最新消息。</p>
 </div>

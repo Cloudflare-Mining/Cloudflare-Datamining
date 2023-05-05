@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-24.png" class="kg-image" alt="Infinitely extensible Access policies"></figure>
-	<p>Zero Trustアプリケーションセキュリティとは、一連の定義済みのセキュリティポリシーに合格しない限り、アプリケーションへのすべてのリクエストが拒否されることを意味します。ほとんどの<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>ソリューションでは、ユーザーのID、デバイス、位置情報を変数として使用して、これらのセキュリティポリシーを定義できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-24.png" class="kg-image" alt="Infinitely extensible Access policies" loading="lazy"></figure>
+	<p>Zero Trustアプリケーションセキュリティとは、一連の定義済みのセキュリティポリシーに合格しない限り、アプリケーションへのすべてのリクエストが拒否されることを意味します。ほとんどの<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust</a>ソリューションでは、ユーザーのID、デバイス、位置情報を変数として使用して、これらのセキュリティポリシーを定義できます。</p>
 	<p>お客様からは、Zero Trustポリシーを定義する際に、より細やかな制御やカスタマイズが必要という声が寄せられています。</p>
 	<p>本日より、アプリケーションへのユーザーアクセスを許可する前にあらゆることをAccessポリシーで考慮できるようになります。あらゆることとは、文字通り<em>あらゆること</em>を意味します。外部評価ルールオプションを通じて、無制限にカスタマイズ可能なポリシーを構築できるようになりました。このオプションにより、Accessポリシーの評価中に任意のAPIを呼び出すことができます。</p>
 	<h3 id="-">外部評価ルールを構築した理由</h3>
@@ -15,7 +15,7 @@
 	</ul>
 	<p>ユーザーがポリシーに合格すると、セッションが無効になるまでアプリケーションにアクセスできるCookieが付与されます。</p>
 	<p>他のカスタム基準でユーザーを評価するために、Accessポリシーに外部評価ルールを追加することができます。外部評価ルールは、呼び出すAPIエンドポイントと、リクエスト/応答が信頼できるソースからのものであることを検証するための鍵という2つの値を必要とします。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-25.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-25.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>ユーザーがIDプロバイダーで認証された後、ユーザー、デバイス、位置に関するすべての情報が外部APIに渡されます。APIはAccessに合格または不合格の応答を返し、Accessはそのユーザーのアクセスを許可または拒否します。</p>
 	<p>APIのロジック例は次のようになります。</p><!--kg-card-begin: markdown-->
 	<pre><code>/**
@@ -28,7 +28,7 @@ async function externalEvaluation(claims) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>ここで、claimsオブジェクトは、リクエストを行うユーザー、デバイス、ネットワークに関するすべての情報を含んでいます。この<code>externalEvaluation</code>関数は、任意のビジネスロジックを実行するように拡張することができます。<a href="https://github.com/cloudflare/workers-access-external-auth-example" target="_blank">オープンソースリポジトリ</a>を作成し、Access claimsを消費するためのサンプルコードとAccessからの署名鍵の検証を公開しています。</p>
+	<p>ここで、claimsオブジェクトは、リクエストを行うユーザー、デバイス、ネットワークに関するすべての情報を含んでいます。この<code>externalEvaluation</code>関数は、任意のビジネスロジックを実行するように拡張することができます。<a href="https://github.com/cloudflare/workers-access-external-auth-example?ref=blog.cloudflare.com" target="_blank">オープンソースリポジトリ</a>を作成し、Access claimsを消費するためのサンプルコードとAccessからの署名鍵の検証を公開しています。</p>
 	<p>これは本当に強力です。あらゆるAccessポリシーを無制限に拡張し、ユーザーのアクセスを許可する前にあらゆる情報を考慮できるようになりました。想定される例としては、以下のようなものがあります。</p>
 	<ul>
 		<li>エンドポイント保護ツールのAPIを確認するミドルウェアを構築することで、Cloudflareがまだ連携していないエンドポイント保護ツールと連携する。</li>
@@ -37,5 +37,5 @@ async function externalEvaluation(claims) {
 		<li>その他にも充実した機能。</li>
 	</ul>
 	<p>Accessポリシーの拡張はまだ始まったばかりです。将来的には、単にアクセスを許可または拒否するかだけでなく、アプリケーションにアクセスする前にユーザーをどのように扱うべきかをプログラムで簡単に決められるようにする予定です。</p>
-	<p>この機能は、本日よりCloudflare Zero Trustダッシュボードでご利用いただけます。開始するには<a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/" target="_blank">こちらのガイド</a>をご覧ください。</p>
+	<p>この機能は、本日よりCloudflare Zero Trustダッシュボードでご利用いただけます。開始するには<a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/?ref=blog.cloudflare.com" target="_blank">こちらのガイド</a>をご覧ください。</p>
 </div>

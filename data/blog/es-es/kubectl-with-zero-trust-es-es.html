@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Proxyless-KubeCTL-Support.png" class="kg-image" alt="Kubectl with Cloudflare Zero Trust"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Proxyless-KubeCTL-Support.png" class="kg-image" alt="Kubectl with Cloudflare Zero Trust" loading="lazy"></figure>
 	<p>Cloudflare utiliza con regularidad Kubernetes para las cargas de trabajo de ingeniería. Lo usa para activar el backend de nuestras API y para gestionar el procesamiento por lotes, como la agregación de análisis y la detección de bots, así como para las herramientas de ingeniería, como nuestros canales CI/CD. Sin embargo, entre los equilibradores de carga, los servidores de la API, etcd, los ingresos y los pods, la superficie que expone Kubernetes puede ser bastante grande.</p>
 	<p>En esta publicación, comentaremos cómo nuestro equipo de ingeniería prueba primero Cloudflare Zero Trust a nivel interno para proteger Kubernetes, y activa kubectl sin proxies.</p>
 	<h3 id="nuestro-enfoque-general-para-la-seguridad-de-kubernetes">Nuestro enfoque general para la seguridad de Kubernetes</h3>
@@ -7,7 +7,7 @@
 	<p>Estas restricciones de red incluyen el acceso al servidor de la API del clúster. Sin este acceso, los ingenieros de Cloudflare no podrían utilizar herramientas como kubectl para examinar los recursos de su equipo. Aunque creemos que las Implementaciones continuas y GitOps son buenas prácticas, permitir que los desarrolladores usen la API de Kubernetes ayuda en la solución de problemas y a aumentar la velocidad de los desarrolladores. No tener acceso hubiera sido un problema.</p>
 	<p>Usamos Cloudflare Zero Trust para satisfacer nuestros requisitos de seguridad, y queríamos contar cómo lo estamos utilizando, y el proceso que nos ha llevado hasta aquí.</p>
 	<h3 id="antes-de-zero-trust">Antes de Zero Trust</h3>
-	<p>En el entorno anterior a <a href="https://www.cloudflare.com/es-es/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>, los ingenieros podían acceder a la API de Kubernetes conectándose a un dispositivo VPN. Aunque es algo habitual en el sector, y permite el acceso a la API, también dejaba a los ingenieros como clientes en la red interna: tenían mucho más acceso a la red del necesario.</p>
+	<p>En el entorno anterior a <a href="https://www.cloudflare.com/es-es/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust</a>, los ingenieros podían acceder a la API de Kubernetes conectándose a un dispositivo VPN. Aunque es algo habitual en el sector, y permite el acceso a la API, también dejaba a los ingenieros como clientes en la red interna: tenían mucho más acceso a la red del necesario.</p>
 	<p>No nos gustaba esta situación, pero ese fue el statu quo durante varios años. A principios de 2020 retiramos nuestra VPN, y entonces el equipo de Kubernetes tuvo que encontrar otra solución.</p>
 	<h3 id="kubernetes-con-cloudflare-tunnels">Kubernetes con Cloudflare Tunnels</h3>
 	<p>En ese momento trabajamos estrechamente con el equipo que desarrolla Cloudflare Tunnels para que fuera posible gestionar las <a href="https://blog.cloudflare.com/releasing-kubectl-support-in-access/">conexiones kubectl utilizando Access</a> y los túneles cloudflared.</p>
@@ -16,9 +16,9 @@
 	<h3 id="kubernetes-con-zero-trust">Kubernetes con Zero Trust</h3>
 	<p>Desde el lanzamiento de Cloudflare One, hemos estado probando primero a nivel interno el agente Zero Trust en distintas configuraciones. Al principio, lo habíamos utilizado para implementar un DNS seguro con 1.1.1.1. Con el paso del tiempo, empezamos a utilizarlo para probar primero a nivel interno funciones adicionales de Zero Trust.</p>
 	<p>Ahora estamos aprovechando el enrutamiento de la red privada en Cloudflare Zero Trust para permitir que los ingenieros accedan a las API de Kubernetes sin que haya que configurar túneles cloudflared, o configurar kubectl y otras herramientas del ecosistema Kubernetes para usar túneles. Esto no es algo específico de Cloudflare, ¡puedes hacerlo hoy mismo para tu equipo!</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Kubectl-WIth-Warp-Diagram--2-.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Kubectl-WIth-Warp-Diagram--2-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="configurar-zero-trust">Configurar Zero Trust</h3>
-	<p>Para habilitar la infraestructura como código, utilizamos una <a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank">herramienta de gestión de la configuración</a> para nuestra configuración Zero Trust, que hemos adaptado a continuación. Sin embargo, es posible conseguir la misma configuración mediante el panel de control de Cloudflare Zero Trust.</p>
+	<p>Para habilitar la infraestructura como código, utilizamos una <a href="https://github.com/cloudflare/terraform-provider-cloudflare?ref=blog.cloudflare.com" target="_blank">herramienta de gestión de la configuración</a> para nuestra configuración Zero Trust, que hemos adaptado a continuación. Sin embargo, es posible conseguir la misma configuración mediante el panel de control de Cloudflare Zero Trust.</p>
 	<p>Lo primero que tenemos que hacer es crear un nuevo túnel. Se usará este túnel para conectar la red perimetral de Cloudflare a la API de Kubernetes. Ejecutamos los puntos de conexión del túnel en Kubernetes, utilizando la configuración que mostramos más adelante en esta publicación.</p>
 	<pre><code>resource "cloudflare_argo_tunnel" "k8s_zero_trust_tunnel" {
   account_id = var.account_id
@@ -63,7 +63,7 @@ resource "cloudflare_teams_rule" "k8s_apiserver_zero_trust_http" {
 }
 </code></pre>
 	<p>Como utilizamos TLS mutuo entre los clientes y el servidor de la API, y no todo el tráfico entre kubectl y los servidores de la API es HTTP, hemos desactivado la inspección de HTTP para estas conexiones.</p>
-	<p>Para personalizar aún más tu seguridad, puedes emparejar estas reglas con otras de Zero Trust, como <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/" target="_blank">confirmación de dispositivos</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions/" target="_blank">duración de la sesión</a> y políticas de acceso de <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors/" target="_blank">usuarios y grupos</a>.</p>
+	<p>Para personalizar aún más tu seguridad, puedes emparejar estas reglas con otras de Zero Trust, como <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/?ref=blog.cloudflare.com" target="_blank">confirmación de dispositivos</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions/?ref=blog.cloudflare.com" target="_blank">duración de la sesión</a> y políticas de acceso de <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors/?ref=blog.cloudflare.com" target="_blank">usuarios y grupos</a>.</p>
 	<h3 id="implementar-t-neles">Implementar túneles</h3>
 	<p>Una vez que hayas creado y configurado tus túneles, puedes implementar sus puntos de conexión en tu red. Hemos optado por implementar los túneles como pods, ya que esto nos permite utilizar las estrategias de implementación de Kubernetes para desplegar las actualizaciones y gestionar los fallos de nodos.</p>
 	<pre><code>apiVersion: v1
@@ -156,7 +156,7 @@ spec:
             name: tunnel-api-zt
           name: config</code></pre>
 	<h2 id="uso-de-kubectl-con-cloudflare-zero-trust">Uso de Kubectl con Cloudflare Zero Trust</h2>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screen-Shot-2022-06-23-at-3.43.37-PM.png" class="kg-image" alt="Screenshot of the Cloudflare WARP app showing it connected to Teams"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screen-Shot-2022-06-23-at-3.43.37-PM.png" class="kg-image" alt="Screenshot of the Cloudflare WARP app showing it connected to Teams" loading="lazy"></figure>
 	<p>Después de implementar el agente Cloudflare Zero Trust, los miembros de tu equipo podrán acceder a la API de Kubernetes sin tener que configurar ningún túnel SOCKS especial.</p>
 	<pre><code>kubectl version --short
 Client Version: v1.24.1

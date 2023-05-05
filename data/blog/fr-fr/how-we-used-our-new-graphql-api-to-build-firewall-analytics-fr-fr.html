@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image3-16.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image3-16.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Firewall Analytics est le premier produit du tableau de bord Cloudflare à utiliser la nouvelle API GraphQL Analytics. Tous les produits du tableau de bord Cloudflare sont construits en utilisant les mêmes API publiques que nous fournissons à nos clients, ce qui nous permet de comprendre les défis auxquels ils sont confrontés lorsque nos clients utilisent nos API comme interfaces. Cette parité nous aide à concevoir et à créer nos produits, tout récemment la nouvelle API GraphQL Analytics que nous avons le plaisir de lancer aujourd'hui.</p>
 	<p>En définissant les données que nous voulons, ainsi que le format de réponse, notre API GraphQL Analytics nous a permis de tester de nouvelles fonctionnalités et d'itérer rapidement à partir des avis laissés par nos utilisateurs bêta. Ceci nous aide à proposer à nos clients des outils d'analyse plus pertinents dans le tableau de bord Cloudflare.</p>
 	<p>Nos recherches et tests menés auprès des utilisateurs pour <a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/#new-firewall-analytics-for-analysing-events-and-maintaining-optimal-configurations">Firewall Analytics</a> ont révélé des cas d'utilisation courante dans le flux de travail de nos clients :</p>
@@ -11,8 +11,8 @@
 	<p>Nous pouvons traiter tous ces cas d'utilisation à l'aide de notre nouvelle API GraphQL Analytics.</p>
 	<h3 id="les-bases-de-graphql"><strong>Les bases de GraphQL</strong></h3>
 	<p>Avant de voir comment aborder chacun de ces cas d'utilisation, regardons le format d'une requête GraphQL et comment notre schéma est structuré.</p>
-	<p>Une requête GraphQL est composée d'un ensemble structuré de champs, pour lesquels le serveur fournit des valeurs correspondantes dans sa réponse. Le schéma définit les champs disponibles et leur type. Vous pouvez trouver plus d'informations sur la syntaxe et le format des requêtes GraphQL dans la <a href="https://graphql.org/learn/queries/" target="_blank">documentation officielle de GraphQL</a>.</p>
-	<p>Pour exécuter certaines requêtes GraphQL, nous vous recommandons de télécharger un client GraphQL, tel que <a href="https://electronjs.org/apps/graphiql" target="_blank">GraphiQL</a>, pour explorer notre schéma et exécuter certaines requêtes. Vous pouvez trouver de la documentation sur la façon de démarrer avec ce système dans notre <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/" target="_blank">documentation pour les développeurs</a>.</p>
+	<p>Une requête GraphQL est composée d'un ensemble structuré de champs, pour lesquels le serveur fournit des valeurs correspondantes dans sa réponse. Le schéma définit les champs disponibles et leur type. Vous pouvez trouver plus d'informations sur la syntaxe et le format des requêtes GraphQL dans la <a href="https://graphql.org/learn/queries/?ref=blog.cloudflare.com" target="_blank">documentation officielle de GraphQL</a>.</p>
+	<p>Pour exécuter certaines requêtes GraphQL, nous vous recommandons de télécharger un client GraphQL, tel que <a href="https://electronjs.org/apps/graphiql?ref=blog.cloudflare.com" target="_blank">GraphiQL</a>, pour explorer notre schéma et exécuter certaines requêtes. Vous pouvez trouver de la documentation sur la façon de démarrer avec ce système dans notre <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/?ref=blog.cloudflare.com" target="_blank">documentation pour les développeurs</a>.</p>
 	<p>Au niveau supérieur du schéma se trouve le champ viewer. Il représente le nœud de niveau supérieur de l'utilisateur qui exécute la requête. À l’intérieur de celui-ci, nous pouvons interroger le champ zones pour trouver les zones auxquelles l'utilisateur actuel a accès, en fournissant un argument de filtre, avec un zoneTag de l'identifiant de la zone que nous voudrions voir réduite.</p>
 	<pre><code>{
   viewer {
@@ -71,7 +71,7 @@
   }
 }</code></pre>
 	<p>Nous pouvons ensuite prendre ces groupes et tracer chacun d'eux comme un point sur un graphique de séries chronologiques. En mappant avec le champ firewallEventsAdaptiveGroups, nous pouvons utiliser la propriété count du groupe sur l'axe des y pour notre diagramme, puis utiliser les champs imbriqués dans l'objet dimensions, en utilisant action comme série unique et datetimeHour comme horodatage sur l'axe des x.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image2-17.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image2-17.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="n-principaux"><strong>N principaux</strong></h3>
 	<p>Après avoir identifié un pic d'activité, notre prochaine étape consistera à mettre en évidence les événements ayant des points communs dans leurs attributs. Par exemple, si une certaine adresse IP ou un agent utilisateur individuel est à l'origine de nombreux événements de pare-feu, cela peut indiquer qu'il s'agit d'un attaquant individuel ou qu'il s'agit d'un faux positif.</p>
 	<p>Comme auparavant, nous pouvons interroger des groupes agrégés d'événements de pare-feu à l’aide du champ firewallEventsAdaptiveGroups. Cependant, dans ce cas, au lieu de fournir action et datetimeHour aux dimensions du groupe, nous pouvons ajouter des champs individuels dont nous voulons trouver des groupes communs.</p>
@@ -110,7 +110,7 @@
   }
 }</code></pre>
 	<p><em>Remarque - nous pouvons ajouter le champ firewallEventsAdaptiveGroups plusieurs fois dans une requête unique, chaque fois avec un alias différent. Cela nous permet d'extraire plusieurs regroupements différents par différents champs, ou avec aucun regroupement. Dans ce cas, obtenir une liste des principales adresses IP, des principaux agents utilisateurs et la totalité des événements.</em></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image5-11.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image5-11.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Nous pouvons alors référencer chacun de ces alias dans l'IU, en les mappant avec leurs groupes respectifs pour rendre chaque ligne avec son compte, et une barre qui représente la proportion du nombre total d’événements, indiquant la proportion de tous les événements auxquels chaque ligne correspond.</p>
 	<h3 id="ces-v-nements-pare-feu-sont-ils-de-faux-positifs"><strong>Ces événements pare-feu sont-ils de faux positifs ?</strong></h3>
 	<p>Une fois que les utilisateurs ont identifié les pics, les anomalies et les attributs communs, nous avons voulu faire apparaître plus d'informations pour savoir s’ils ont été causés par un trafic malveillant ou s'il s'agit de faux positifs.</p>
@@ -138,8 +138,8 @@
     }
   }
 }</code></pre>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image4-11.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image4-11.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Une fois que nous avons nos événements individuels, nous pouvons rendre tous les champs individuels que nous avons demandés, en fournissant aux utilisateurs le contexte supplémentaire sur l'événement qu'ils cherchent à identifier comme étant un faux positif ou non.</p>
 	<p>C'est ainsi que nous avons utilisé notre nouvelle API GraphQL Analytics pour créer Firewall Analytics, en permettant de résoudre certains des cas d'utilisation de workflows de sécurité les plus courants chez nos clients. Nous sommes ravis de voir ce que vous construisez avec elle, et les problèmes que vous pouvez résoudre.</p>
-	<p>Vous trouverez les instructions pour interroger notre API GraphQL Analytics en utilisant GraphiQL dans notre <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/" target="_blank">documentation pour développeurs</a>, ou en savoir plus sur l'écriture de requêtes GraphQL dans la <a href="https://graphql.org/learn/queries/" target="_blank">documentation</a> officielle de la Fondation GraphQL.<br></p>
+	<p>Vous trouverez les instructions pour interroger notre API GraphQL Analytics en utilisant GraphiQL dans notre <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/?ref=blog.cloudflare.com" target="_blank">documentation pour développeurs</a>, ou en savoir plus sur l'écriture de requêtes GraphQL dans la <a href="https://graphql.org/learn/queries/?ref=blog.cloudflare.com" target="_blank">documentation</a> officielle de la Fondation GraphQL.<br></p>
 </div>

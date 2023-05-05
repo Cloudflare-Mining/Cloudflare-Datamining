@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/workers-social.png" alt="Edge computing for everyone."></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/03/workers-social.png" alt="Edge computing for everyone." loading="lazy"></p>
 	<p>ちょうど1年前の今日、Cloudflareは私にあるミッションを与えました。ユーザーがCloudflareのエッジ環境でコードを実行できるようにすることです。当時、私たちにはそれが何を意味するのかわかりませんでした。コンテナベースになるのか？新しいチューリング完全な領域の固有の言語か？Lua？「Functions」？たくさんのアイデアがありました。</p>
 	<p>最終的には、今では当たり前のように思える選択に落ち着きました。JavaScriptです。標準的なService Workers APIを使用してV8で構築された新しい環境で実行します。5ヶ月前、私たちは当社が構築しているものを<a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">お客様にプレビューで提供</a>し、ベータ版を開始しました。</p>
 	<p>現在では、Cloudflare Workersは何千ものスクリプトがデプロイされ、何十億ものリクエストが処理されているような、誰でも利用できるものになっています。</p>
@@ -94,14 +94,14 @@ async function handle(request) {
 	<p>もう一つ、スピードに関して言うと、Workerのデプロイも高速です。Workerはスクリプトを保存して有効にしてから<strong>30秒以内にグローバルにデプロイされます。</strong></p>
 	<h3 id="">料金設定</h3>
 	<p>Workersは、Cloudflareの有料アドオンです。価格はできるだけシンプルにしたかったので、以下のようにしました。</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/workers-pricing-text@4x.png" alt="$0.50 per million requests, with a $5 monthly minimum (covers your first 10 million requests)"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/03/workers-pricing-text@4x.png" alt="$0.50 per million requests, with a $5 monthly minimum (covers your first 10 million requests)" loading="lazy"></p>
 	<h3 id="">開始する</h3>
 	<ul style="font-size: 140%; margin-top: 1em; margin-bottom: 1em">
-		<li><a href="https://www.cloudflare.com/a/overview" target="_blank">Cloudflareのアカウントにログイン</a>して、「Workers」セクションにアクセスしてWorkersを設定します。</li>
-		<li><a href="https://cloudflareworkers.com/" target="_blank">PlaygroundでのWorkersの実験</a>に、アカウントは必要ありません。</li>
-		<li><a href="https://developers.cloudflare.com/workers/" target="_blank">ドキュメントをお読みいただき</a>、Workersの記述方法についてご確認ください。</li>
+		<li><a href="https://www.cloudflare.com/a/overview?ref=blog.cloudflare.com" target="_blank">Cloudflareのアカウントにログイン</a>して、「Workers」セクションにアクセスしてWorkersを設定します。</li>
+		<li><a href="https://cloudflareworkers.com/?ref=blog.cloudflare.com" target="_blank">PlaygroundでのWorkersの実験</a>に、アカウントは必要ありません。</li>
+		<li><a href="https://developers.cloudflare.com/workers/?ref=blog.cloudflare.com" target="_blank">ドキュメントをお読みいただき</a>、Workersの記述方法についてご確認ください。</li>
 		<li><a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">発表当初のブログ記事を参照して</a>、技術の詳細についてご確認ください。</li>
-		<li><a href="https://community.cloudflare.com/c/developers/workers" target="_blank">CloudflareコミュニティでWorkersについて議論する。</a></li>
+		<li><a href="https://community.cloudflare.com/c/developers/workers?ref=blog.cloudflare.com" target="_blank">CloudflareコミュニティでWorkersについて議論する。</a></li>
 	</ul>
 	<div style="padding: 1.5em; background-color: rgb(243, 243, 243); margin: 1em 0;">
 		<p style="font-size: 150%; font-style: italic; margin-bottom: 0.5em">「Cloudflare Workersのおかげで非常に時間を節約できています。 Workersなしでボットトラフィックを管理しようとすると、別の有意義な目的に利用できるはずの貴重な開発リソースやサーバーリソースを浪費してしまいます。」</p>
