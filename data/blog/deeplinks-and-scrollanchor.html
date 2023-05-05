@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<h3 id="what-are-deeplinks">What are DeepLinks?</h3>
-	<p>To directly quote <a href="https://en.wikipedia.org/wiki/Deep_linking?ref=blog.cloudflare.com" target="_blank">Wikipedia</a>:</p>
+	<p>To directly quote <a href="https://en.wikipedia.org/wiki/Deep_linking" target="_blank">Wikipedia</a>:</p>
 	<p><strong>“Deep linking</strong> is the use of a hyperlink that links to a specific, generally searchable or indexed, piece of web content on a website (e.g. <code>http://example.com/path/page</code>), rather than the website's home page (e.g., <code>http://example.com</code>). The URL contains all the information needed to point to a particular item.”</p>
 	<h3 id="why-deeplinks-in-dashboard">Why DeepLinks in Dashboard?</h3>
 	<p>There are many user experiences in Cloudflare’s Dashboard that are enhanced by the use of deep linking, such as:</p>
@@ -25,7 +25,7 @@ dash.cloudflare.com/&lt;accountId&gt;/&lt;zoneId&gt; -&gt; zone-level resources:
 		<li>A React component, ScrollAnchor, encapsulates a simple algorithm which scrolls its content into view when the DOM has “finished loading”.</li>
 	</ul>
 	<p>Just to prove that it works, here’s a GIF of us deep linking to the “TLS 1.3” setting on the security settings page: </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image1-1.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image1-1.gif" class="kg-image"></figure>
 	<p>It works! I was asked to select one of my several accounts, then our DeepLink routing component was smart enough to know that I have only one zone within that account and auto-filled the rest of the URL path. After the page was fully loaded, we were automatically scrolled to the TLS 1.3 setting. If you’re curious how all of this works and want to jump into the nitty gritty details, read on!</p>
 	<h3 id="how-are-deeplinks-exposed">How are DeepLinks exposed?</h3>
 	<p>If you were paying attention to the URL bar in the GIF above, you already know what’s coming. In order to deal with dynamic account/zone resolution, a deep link can use a to query parameter to specify a path into Dashboard. I think it reads quite nicely:</p><!--kg-card-begin: markdown-->
@@ -116,7 +116,7 @@ const finalUrl = resolvedParts.join(‘/’);
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>We already have a page in the dashboard with a zone list that looks like this.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image3-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image3-5.png" class="kg-image"></figure>
 	<p>What we need to do is give the resolver the ability to somehow show this page, and wait for the result of the user's interaction.You might be asking: “But how do we show this page? You just told me that DeepLink blocks the entire page!”That’s true!</p>
 	<p>We decided to block the React Router to prevent unnecessary API calls and DOM updates while a deep link is resolving. But there is no harm in showing some part of the UI, if needed. To be able to do that, we added two functions to context - unblockRouter and blockRouter. These functions just toggle the state that is gating our Router component.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">const zoneResolver: Resolver = async ctx =&gt; {
@@ -225,9 +225,9 @@ const finalUrl = resolvedParts.join(‘/’);
 &lt;/div&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image2-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image2-5.png" class="kg-image"></figure>
 	<p>This CSS trick alone would work for a static site with a fixed header, but the Dashboard is very dynamic. We found early on in testing that using a normal HTML ID anchor in a URL would cause the browser to jump to the tag <em>on page load</em> but the DOM would change in response to newly fetched information or re-rendering, and the anchored content would be pushed out of view.</p>
-	<p>A solution: scroll to the anchored content after the page content is fully loaded, i.e. after all API calls are resolved, spinners removed, content is rendered. Fortunately, there’s a good way to programmatically scroll a browser window: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView?ref=blog.cloudflare.com" target="_blank">Element.scrollIntoView()</a>. However, there isn’t a good way to tell <em>when</em> the DOM is finished changing, since it can be modified at any time after page load. Let’s consider two possible strategies for determining when to scroll anchored content into view.</p>
+	<p>A solution: scroll to the anchored content after the page content is fully loaded, i.e. after all API calls are resolved, spinners removed, content is rendered. Fortunately, there’s a good way to programmatically scroll a browser window: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView" target="_blank">Element.scrollIntoView()</a>. However, there isn’t a good way to tell <em>when</em> the DOM is finished changing, since it can be modified at any time after page load. Let’s consider two possible strategies for determining when to scroll anchored content into view.</p>
 	<p>Strategy #1: scroll after a fixed duration. If our goal is to make sure we only scroll to content after a page is “fully loaded”, we can simplify the problem by making some assumptions. Namely, we can assume a maximum amount of time it will take a given page to fetch resources from the backend and re-render the DOM. Let’s call this assumed max duration <code>M</code> milliseconds. We can then easily scroll to some content by running a timeout on page load:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-typescript">setTimeout(() =&gt; scrollTo(htmlId), M)
 </code></pre>

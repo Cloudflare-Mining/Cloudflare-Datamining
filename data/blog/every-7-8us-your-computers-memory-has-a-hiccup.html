@@ -1,20 +1,20 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2018/11/640px-2013_Transcend_TS512MLK72V6N--straightened-.jpg" alt="640px-2013_Transcend_TS512MLK72V6N--straightened-"><br>
-		<small>Modern DDR3 SDRAM. Source: <a href="https://en.wikipedia.org/wiki/DDR3_SDRAM#/media/File:2013_Transcend_TS512MLK72V6N-(straightened).jpg" target="_blank">BY-SA/4.0 by Kjerish</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/11/640px-2013_Transcend_TS512MLK72V6N--straightened-.jpg" alt="640px-2013_Transcend_TS512MLK72V6N--straightened-" loading="lazy"><br>
+		<small>Modern DDR3 SDRAM. Source: <a href="https://en.wikipedia.org/wiki/DDR3_SDRAM?ref=blog.cloudflare.com#/media/File:2013_Transcend_TS512MLK72V6N-(straightened).jpg" target="_blank">BY-SA/4.0 by Kjerish</a></small>
 	</p>
-	<p>During my recent visit to <a href="http://www.computerhistory.org/" target="_blank">the Computer History Museum</a> in Mountain View, I found myself staring at some ancient <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory" target="_blank">magnetic core memory</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/11/240px-KL_CoreMemory.jpg" alt="240px-KL_CoreMemory"><br>
-		<small>Source: <a href="https://en.wikipedia.org/wiki/File:KL_CoreMemory.jpg" target="_blank">BY-SA/3.0 by Konstantin Lanzet</a></small>
+	<p>During my recent visit to <a href="http://www.computerhistory.org/?ref=blog.cloudflare.com" target="_blank">the Computer History Museum</a> in Mountain View, I found myself staring at some ancient <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory?ref=blog.cloudflare.com" target="_blank">magnetic core memory</a>.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/11/240px-KL_CoreMemory.jpg" alt="240px-KL_CoreMemory" loading="lazy"><br>
+		<small>Source: <a href="https://en.wikipedia.org/wiki/File:KL_CoreMemory.jpg?ref=blog.cloudflare.com" target="_blank">BY-SA/3.0 by Konstantin Lanzet</a></small>
 	</p>
 	<p>I promptly concluded I had absolutely no idea on how these things could ever work. I wondered if the rings rotate (they don't), and why each ring has three wires woven through it (and I still don’t understand exactly how these work). More importantly, I realized I have very little understanding on how the modern computer memory - dynamic RAM - works!</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/11/cpumemory.8.png" alt="cpumemory.8"><br>
-		<small>Source: <a href="https://lwn.net/Articles/250967/" target="_blank">Ulrich Drepper's series about memory</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/11/cpumemory.8.png" alt="cpumemory.8" loading="lazy"><br>
+		<small>Source: <a href="https://lwn.net/Articles/250967/?ref=blog.cloudflare.com" target="_blank">Ulrich Drepper's series about memory</a></small>
 	</p>
-	<p>I was particularly interested in one of the consequences of how dynamic RAM works. You see, each bit of data is stored by the charge (or lack of it) on a tiny capacitor within the RAM chip. But these capacitors gradually lose their charge over time. To avoid losing the stored data, they must regularly get refreshed to restore the charge (if present) to its original level. This <a href="https://en.wikipedia.org/wiki/Memory_refresh" target="_blank">refresh process</a> involves reading the value of every bit and then writing it back. During this "refresh" time, the memory is busy and it can't perform normal operations like loading or storing bits.</p>
+	<p>I was particularly interested in one of the consequences of how dynamic RAM works. You see, each bit of data is stored by the charge (or lack of it) on a tiny capacitor within the RAM chip. But these capacitors gradually lose their charge over time. To avoid losing the stored data, they must regularly get refreshed to restore the charge (if present) to its original level. This <a href="https://en.wikipedia.org/wiki/Memory_refresh?ref=blog.cloudflare.com" target="_blank">refresh process</a> involves reading the value of every bit and then writing it back. During this "refresh" time, the memory is busy and it can't perform normal operations like loading or storing bits.</p>
 	<p>This has bothered me for quite some time and I wondered... is it possible to notice the refresh delay in software?</p>
 	<h2 id="dynamicramrefreshprimer">Dynamic RAM refresh primer</h2>
-	<p>Each DIMM module is composed of "cells" and "rows", "columns", "sides" and/or "ranks". This presentation from <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank">the University of Utah explains the nomenclature</a>. You can check the configuration of memory in your computer with <code>decode-dimms</code> command. Here's an example:</p>
+	<p>Each DIMM module is composed of "cells" and "rows", "columns", "sides" and/or "ranks". This presentation from <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf?ref=blog.cloudflare.com" target="_blank">the University of Utah explains the nomenclature</a>. You can check the configuration of memory in your computer with <code>decode-dimms</code> command. Here's an example:</p>
 	<pre><code>$ decode-dimms
 Size                                       4096 MB
 Banks x Rows x Columns x Bits              8 x 15 x 10 x 64
@@ -23,8 +23,8 @@ Ranks                                      2
 	<p>For today we don't need to get into the whole DDR DIMM layout, we just need to understand a single memory cell, storing one bit of information. Specifically we are only interested in how the refresh process is performed.</p>
 	<p>Let's review two sources:</p>
 	<ul>
-		<li><a href="https://utaharch.blogspot.com/2013/11/a-dram-refresh-tutorial.html" target="_blank">A DRAM Refresh Tutorial, from the University of Utah</a></li>
-		<li>And an awesome documentation of 1 gigabit cell from micron: <a href="https://www.micron.com/~/media/documents/products/technical-note/dram/tn4609.pdf" target="_blank">TN-46-09 Designing for 1Gb DDR SDRAM</a></li>
+		<li><a href="https://utaharch.blogspot.com/2013/11/a-dram-refresh-tutorial.html?ref=blog.cloudflare.com" target="_blank">A DRAM Refresh Tutorial, from the University of Utah</a></li>
+		<li>And an awesome documentation of 1 gigabit cell from micron: <a href="https://www.micron.com/~/media/documents/products/technical-note/dram/tn4609.pdf?ref=blog.cloudflare.com" target="_blank">TN-46-09 Designing for 1Gb DDR SDRAM</a></li>
 	</ul>
 	<p>Each bit stored in dynamic memory must be refreshed, typically every 64ms (called Static Refresh). This is a rather costly operation. To avoid one major stall every 64ms, this process is divided into 8192 smaller refresh operations. In each operation, the computer’s memory controller sends refresh commands to the DRAM chips. After receiving the instruction a chip will refresh 1/8192 of its cells. Doing the math - 64ms / 8192 = 7812.5 ns or 7.81 μs. This means:</p>
 	<ul>
@@ -52,9 +52,9 @@ Ranks                                      2
 		clock_gettime(CLOCK_MONOTONIC, &amp;ts);
     }
 </code></pre>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram.c" target="_blank">Full code is available on Github</a>.</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram.c?ref=blog.cloudflare.com" target="_blank">Full code is available on Github</a>.</p>
 	<p>The code is really straightforward. Perform a memory read. Flush data from CPU caches. Measure time.</p>
-	<p>(Note: in <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram-movntdqa.c#L113-L119" target="_blank">second experiment I attempted to use MOVNTDQA</a> to perform the data load, but this requires special uncacheable memory page, which needs root access.)</p>
+	<p>(Note: in <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram-movntdqa.c?ref=blog.cloudflare.com#L113-L119" target="_blank">second experiment I attempted to use MOVNTDQA</a> to perform the data load, but this requires special uncacheable memory page, which needs root access.)</p>
 	<p>On my computer it generates data like this:</p>
 	<pre><code># timestamp, loop duration
 3101895733,     134
@@ -71,12 +71,12 @@ Ranks                                      2
 	<p>Unfortunately, the data turns out to be very noisy. It's very hard to see if there is a noticeable delay related to the refresh cycles.</p>
 	<h2 id="fastfouriertransform">Fast Fourier Transform</h2>
 	<p>At some point it clicked. Since we want to find a fixed-interval event, we can feed the data into the FFT (fast fourier transform) algorithm, which deciphers the underlying frequencies.</p>
-	<p>I'm not the first one to think about this - Mark Seaborn of Rowhammer fame <a href="https://github.com/google/rowhammer-test/blob/master/refresh_timing/refresh_timing.cc" target="_blank">implemented this very technique</a> back in 2015. Even after peeking at Mark's code, getting FFT to work turned out to be harder than I anticipated. But finally I got all the pieces together.</p>
+	<p>I'm not the first one to think about this - Mark Seaborn of Rowhammer fame <a href="https://github.com/google/rowhammer-test/blob/master/refresh_timing/refresh_timing.cc?ref=blog.cloudflare.com" target="_blank">implemented this very technique</a> back in 2015. Even after peeking at Mark's code, getting FFT to work turned out to be harder than I anticipated. But finally I got all the pieces together.</p>
 	<p>First we need to prepare the data. FFT requires input data to be sampled with a constant sampling interval. We also want to crop the data to reduce noise. By trial and error I found the best results are when data is preprocessed:</p>
 	<ul>
 		<li>Small (smaller than average * 1.8) values of loop iterations are cut out, ignored, and replaced with readings of "0". We really don't want to feed the noise into the algorithm.</li>
 		<li>All the remaining readings are replaced with "1", since we really don't care about the amplitude of the delay caused by some noise.</li>
-		<li>I settled on sampling interval of 100ns, but any number up to <a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" target="_blank">a Nyquist value (double expected frequency) also work fine</a>.</li>
+		<li>I settled on sampling interval of 100ns, but any number up to <a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem?ref=blog.cloudflare.com" target="_blank">a Nyquist value (double expected frequency) also work fine</a>.</li>
 		<li>The data needs to be sampled with fixed timings before feeding to FFT. All reasonable sampling methods work ok, I ended up doing basic linear interpolation.</li>
 	</ul>
 	<p>The algorithm is roughly:</p>
@@ -108,9 +108,9 @@ F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
 		<li>F contains labels to what frequency bin lies in which place in vector C. We need to normalize it to Hz - by multiplying it by the input vector sampling frequency.</li>
 	</ul>
 	<p>The result can be charted:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/11/fft1a.png" alt="fft1a"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/11/fft1a.png" alt="fft1a" loading="lazy"></p>
 	<p>Y axis is unit-less since we normalized the delay times. Even though, it clearly shows spikes at some fixed frequency intervals. Let's zoom in:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/11/fft2a.png" alt="fft2a"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/11/fft2a.png" alt="fft2a" loading="lazy"></p>
 	<p>We can clearly see first three spikes. After a bit of wishy-washy arithmetic, involving filtering the reading at least 10 times the size of average, we can extract the underlying frequencies:</p>
 	<pre><code>127850.0
 127900.0
@@ -126,8 +126,8 @@ F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
 </code></pre>
 	<p>Doing the math: 1000000000 (ns/s) / 127900 (Hz) = 7818.6 ns</p>
 	<p>Hurray! The first frequency spike is indeed what we were looking for, and indeed does correlate with the refresh times.</p>
-	<p>The other spikes at 256kHz, 384kHz, 512kHz and so on, are multiplies of our base frequency of 128kHz called harmonics. These are a side effect of <a href="https://en.wikipedia.org/wiki/Square_wave" target="_blank">performing FFT on something like a square wave</a> and totally expected.</p>
-	<p>For easier experimentation, we <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank">prepared a command line version of this tool</a>. You can run the code yourself. Here is a sample run on my server:</p>
+	<p>The other spikes at 256kHz, 384kHz, 512kHz and so on, are multiplies of our base frequency of 128kHz called harmonics. These are a side effect of <a href="https://en.wikipedia.org/wiki/Square_wave?ref=blog.cloudflare.com" target="_blank">performing FFT on something like a square wave</a> and totally expected.</p>
+	<p>For easier experimentation, we <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh?ref=blog.cloudflare.com" target="_blank">prepared a command line version of this tool</a>. You can run the code yourself. Here is a sample run on my server:</p>
 	<pre><code>~/2018-11-memory-refresh$ make
 gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
 ./measure-dram | python3 ./analyze-dram.py
@@ -150,16 +150,16 @@ gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
 	<h2 id="finale">Finale</h2>
 	<p>There are two major takeaways from this work.</p>
 	<p>We've seen that the low level data is pretty hard to analyze and seem to be pretty noisy. Instead of trying to figure something out with naked eye, we can always employ good old FFT. Some wishful thinking is needed when preparing the data.</p>
-	<p>Most importantly, we showed it's often possible to measure subtle hardware behaviours from a simple userspace process. This kind of thinking led to the discovery of <a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html" target="_blank">the original Rowhammer</a> vulnerability, was used in Meltdown/Spectre attacks and showed again in <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections/" target="_blank">recent ECC-defeating reincarnation of Rowhammer</a>.</p>
+	<p>Most importantly, we showed it's often possible to measure subtle hardware behaviours from a simple userspace process. This kind of thinking led to the discovery of <a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html?ref=blog.cloudflare.com" target="_blank">the original Rowhammer</a> vulnerability, was used in Meltdown/Spectre attacks and showed again in <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections/?ref=blog.cloudflare.com" target="_blank">recent ECC-defeating reincarnation of Rowhammer</a>.</p>
 	<p>There is so much more to be said. We barely scratched the surface of the inner workings of the memory subsystem. I recommend further reading:</p>
 	<ul>
-		<li><a href="https://lackingrhoticity.blogspot.com/2015/04/l3-cache-mapping-on-sandy-bridge-cpus.html" target="_blank">L3 cache mapping on Sandy Bridge CPUs</a></li>
-		<li><a href="https://lackingrhoticity.blogspot.com/2015/05/how-physical-addresses-map-to-rows-and-banks.html" target="_blank">How physical address maps to rows and banks in DRAM</a></li>
-		<li><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd/" target="_blank">Hannu Hartikainen hacking DDR3 SO-DIMM to work... slower</a></li>
+		<li><a href="https://lackingrhoticity.blogspot.com/2015/04/l3-cache-mapping-on-sandy-bridge-cpus.html?ref=blog.cloudflare.com" target="_blank">L3 cache mapping on Sandy Bridge CPUs</a></li>
+		<li><a href="https://lackingrhoticity.blogspot.com/2015/05/how-physical-addresses-map-to-rows-and-banks.html?ref=blog.cloudflare.com" target="_blank">How physical address maps to rows and banks in DRAM</a></li>
+		<li><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd/?ref=blog.cloudflare.com" target="_blank">Hannu Hartikainen hacking DDR3 SO-DIMM to work... slower</a></li>
 	</ul>
 	<p>Finally, here is a good reading about the old magnetic core memory:</p>
 	<ul>
-		<li><a href="http://www.psych.usyd.edu.au/pdp-11/core.html" target="_blank">PDP-11 core memory explained by University of Sydney</a></li>
+		<li><a href="http://www.psych.usyd.edu.au/pdp-11/core.html?ref=blog.cloudflare.com" target="_blank">PDP-11 core memory explained by University of Sydney</a></li>
 	</ul>
 	<!--kg-card-end: markdown-->
 </div>

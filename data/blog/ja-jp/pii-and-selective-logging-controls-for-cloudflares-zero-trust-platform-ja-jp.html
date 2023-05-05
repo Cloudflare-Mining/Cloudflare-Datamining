@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-18.png" class="kg-image" alt="Introducing PII and Selective Logging controls for Cloudflare’s Zero Trust platform" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-18.png" class="kg-image" alt="Introducing PII and Selective Logging controls for Cloudflare’s Zero Trust platform"></figure>
 	<p>Cloudflareでは、セキュリティのためにプライバシーを妥協する必要はないと考えています。昨年、当社はCloudflare Gatewayを発表しました。これは、お客様の組織のためにZero Trustブラウジングコントロールを組み込んだ、包括的なセキュアWebゲートウェイです。本日は、管理者がチームのニーズに合わせてイベントを記録および監査するために利用できる一連の最新プライバシー機能を共有することを実に嬉しく思います。</p>
 	<h3 id="-"><strong>組織を守る</strong></h3>
 	<p>Cloudflare Gatewayは、組織がレガシーなファイアウォールを置き換えながら、ユーザーに対してZero Trust制御を実施することを支援します。Gatewayは、ユーザーがどこにいてもあなたに会い、インターネットやさらにはCloudflare上で動作するプライベートネットワークへの接続を可能にします。これにより、追加ボックスを購入したり維持したりすることなく、セキュリティ境界を広げることができます。</p>
@@ -15,16 +15,16 @@
 	<p>それでも、保存されるログを完全に減らしたいというお客様もいらっしゃいますので、その解決にも貢献できることをうれしく思います。現在、管理者はご自身に代わり、Cloudflareにどのレベルのロギングを保存してほしいかを選択できるようになっています。DNS、ネットワークまたはHTTPの各コンポーネントごとに制御でき、ブロックイベントのみの記録を選択することも可能です。</p>
 	<p>その設定は、すべてのログを失うということではなく、Cloudflareがログを保存しないことを意味します。選択的なロギングは、以前リリースした<a href="https://blog.cloudflare.com/export-logs-from-cloudflare-gateway-with-logpush/">Logpushサービス</a>と組み合わせることで、Cloudflare上のログのストレージを中止し、その上ユーザーが選んだ場所の選んだ宛先へのLogpushジョブをオンにすることが可能です。</p>
 	<h3 id="--2"><strong>使用開始手順</strong></h3>
-	<p>Cloudflare Gatewayをご利用のお客様は、<a href="https://dash.teams.cloudflare.com/settings/network?ref=blog.cloudflare.com" target="_blank">Cloudflare for Teamsダッシュボード</a>にアクセスし、設定 &gt; ネットワークに移動することで開始することができます。このページの最初のオプションは、アクティビティロギングのプリファレンスを指定するものです。デフォルトでは、ゲートウェイはDNSクエリ、HTTPリクエストおよびネットワークセッションを含むすべてのイベントを記録します。ネットワーク設定ページでは、記録したいイベントの種類を絞り込むことができます。Gatewayの各コンポーネントには、3つのオプションがあります。</p>
+	<p>Cloudflare Gatewayをご利用のお客様は、<a href="https://dash.teams.cloudflare.com/settings/network" target="_blank">Cloudflare for Teamsダッシュボード</a>にアクセスし、設定 &gt; ネットワークに移動することで開始することができます。このページの最初のオプションは、アクティビティロギングのプリファレンスを指定するものです。デフォルトでは、ゲートウェイはDNSクエリ、HTTPリクエストおよびネットワークセッションを含むすべてのイベントを記録します。ネットワーク設定ページでは、記録したいイベントの種類を絞り込むことができます。Gatewayの各コンポーネントには、3つのオプションがあります。</p>
 	<ol>
 		<li>すべてキャプチャ</li>
 		<li>ブロック済のみキャプチャ</li>
 		<li>キャプチャしない</li>
 	</ol>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-10.png" class="kg-image"></figure>
 	<p>さらに、デフォルトでログからすべてのPIIを非公開にするオプションも用意されています。これにより、ユーザー名、ユーザーメール、ユーザーID、デバイスID、送信元IP、URL、リファラーおよびユーザーエージェントなど、ユーザーを潜在的に特定するのに使用できるすべての情報を非公開にします。</p>
-	<p>また、<a href="https://dash.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflareダッシュボード</a>に新しいロールが追加され、AccessまたはGatewayコンポーネントへの管理者アクセスをパーティショニングする際に、よりきめ細かい設定ができるようになりました。これらの新しいロールは2022年1月に公開され、企業アカウントではアカウントホーム → メンバーで変更することができます。</p>
-	<p>まだアカウントを作成する準備はできていないけれど、当社のZero Trustサービスを検討したいという方は、<a href="https://www.cloudflare.com/teams/self-guided-tour-of-zero-trust-platform/?ref=blog.cloudflare.com" target="_blank">インタラクティブデモをご覧ください。</a>ここでは、Cloudflare GatewayによるDNSやHTTPフィルタリングのセットアップなど、主なユースケースのナレーション付きウォークスルーでプラットフォームのセルフガイドツアーに参加することができます。</p>
+	<p>また、<a href="https://dash.cloudflare.com/" target="_blank">Cloudflareダッシュボード</a>に新しいロールが追加され、AccessまたはGatewayコンポーネントへの管理者アクセスをパーティショニングする際に、よりきめ細かい設定ができるようになりました。これらの新しいロールは2022年1月に公開され、企業アカウントではアカウントホーム → メンバーで変更することができます。</p>
+	<p>まだアカウントを作成する準備はできていないけれど、当社のZero Trustサービスを検討したいという方は、<a href="https://www.cloudflare.com/teams/self-guided-tour-of-zero-trust-platform/" target="_blank">インタラクティブデモをご覧ください。</a>ここでは、Cloudflare GatewayによるDNSやHTTPフィルタリングのセットアップなど、主なユースケースのナレーション付きウォークスルーでプラットフォームのセルフガイドツアーに参加することができます。</p>
 	<h3 id="--3"><strong>次は何を？</strong></h3>
-	<p>今後も、お客様やお客様のチームの環境によりきめ細かな制御を提供するプライバシー機能をどんどん追加していくことを嬉しく思います。本日発表した機能は、どのプランのユーザーでもご利用可能です。お客様のチームは、このリンクををご覧いただき<a href="https://dash.cloudflare.com/sign-up/teams?ref=blog.cloudflare.com" target="_blank">今すぐ始める</a>ことができます。<br></p>
+	<p>今後も、お客様やお客様のチームの環境によりきめ細かな制御を提供するプライバシー機能をどんどん追加していくことを嬉しく思います。本日発表した機能は、どのプランのユーザーでもご利用可能です。お客様のチームは、このリンクををご覧いただき<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">今すぐ始める</a>ことができます。<br></p>
 </div>
