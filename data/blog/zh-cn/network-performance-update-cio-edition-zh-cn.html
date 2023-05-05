@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image11-1.png" class="kg-image" alt="Cloudflare is faster than Zscaler" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image11-1.png" class="kg-image" alt="Cloudflare is faster than Zscaler"></figure>
 	<p>每个创新周，Cloudflare 都会对比我们与竞争对手的网络性能。在过去的几周里，我们重点研究，与反向代理(如 Akamai )或类似我们 Supercloud 的边缘计算平台(如 Fastly 和 AWS)相比，我们的速度有多快。在 CIO Week，我们想向您展示我们的网络如何与提供前向代理服务的竞争对手一决高下。这些产品是我们的 Zero Trust 平台的一部分，这个平台帮助保护面向公共互联网的应用和互联网体验，相比之下，我们的反向代理保护您的网站不受外部用户的影响。</p>
 	<p>我们进行了一系列测试，将我们的 Zero Trust 服务与 Zscaler 进行比较。我们将我们的 ZT 应用保护产品 Cloudflare Access 与 Zscaler Private Access (ZPA)进行了比较。我们将我们的安全 Web 网关 Cloudflare Gateway 与 Zscaler Internet Access (ZIA) 进行了比较，最后，将我们的远程浏览器隔离产品 Cloudflare Browser Isolation 与 Zscaler Cloud Browser Isolation 进行了比较。我们发现，Cloudflare Gateway 在我们的测试中比 ZIA 快 58%，Cloudflare Access 在全球范围内比 ZPA 快 38%，Cloudflare Browser Isolation 在全球范围内比 Zscaler Cloud Browser Isolation 快 45%。对于这些测试，我们都使用了第 95 百分位首字节时间和响应时间测试，它们测量用户发出请求、获得响应开始(首字节时间)和响应结束(响应)所需的时间。这些测试的目的是从最终用户的角度测量性能。</p>
 	<p>本文将讨论为什么性能对这些产品的每一个都很重要，深入探讨我们正在测量什么来显示我们更快，并将讨论我们如何测量每个产品的性能。</p>
 	<h3 id="-">为什么性能很重要？</h3>
 	<p>性能之所以重要，因为它影响员工的体验，以及他们完成工作的能力。无论是通过访问控制产品访问服务，通过安全 Web 网关连接到公共互联网，还是通过远程浏览器隔离保护有风险的外部站点，所有这些体验都需要流畅无摩擦。</p>
-	<p>假设 Acme Corporation 的 Anna 正在从悉尼连接到 Microsoft 365 或 Teams 以完成一些工作。如果 Acme 的安全网络网关位于远离 Anna 的新加坡，那么 Anna 的流量可能从悉尼前往新加坡，然后回到悉尼以接收她的电子邮件。如果 Acme 像许多公司一样要求 Anna 在在线模式下使用 Microsoft Outlook，那么在等待电子邮件发送和接收时，她的性能可能会非常缓慢。<a href="https://learn.microsoft.com/en-us/microsoft-365/enterprise/best-practices-for-using-office-365-on-a-slow-network?view=o365-worldwide&amp;ref=blog.cloudflare.com" target="_blank">Microsoft 365 建议</a>保持尽可能低的延迟和尽可能高的带宽。 Anna 通过网关进行的额外一跳可能会降低吞吐量并增加延迟，给 Anna 带来糟糕的体验。</p>
+	<p>假设 Acme Corporation 的 Anna 正在从悉尼连接到 Microsoft 365 或 Teams 以完成一些工作。如果 Acme 的安全网络网关位于远离 Anna 的新加坡，那么 Anna 的流量可能从悉尼前往新加坡，然后回到悉尼以接收她的电子邮件。如果 Acme 像许多公司一样要求 Anna 在在线模式下使用 Microsoft Outlook，那么在等待电子邮件发送和接收时，她的性能可能会非常缓慢。<a href="https://learn.microsoft.com/en-us/microsoft-365/enterprise/best-practices-for-using-office-365-on-a-slow-network?view=o365-worldwide" target="_blank">Microsoft 365 建议</a>保持尽可能低的延迟和尽可能高的带宽。 Anna 通过网关进行的额外一跳可能会降低吞吐量并增加延迟，给 Anna 带来糟糕的体验。</p>
 	<p>在另一个例子中，如果 Anna 连接到一个托管的受保护应用(如 Jira)来完成一些任务，她不希望不断等待页面加载或验证她的请求。在访问受到控制的应用程序中，您连接时要做的第一件事就是登录。如果登录需要很长时间，您可能会被来自同事的随机消息分散注意力，或者可能根本不想处理任何工作。即使通过验证后，您依然希望正常的应用体验快速、流畅：在 Zero Trust 处于最佳状态时，用户应该完全不会察觉到其存在。</p>
 	<p>如果这些产品或体验缓慢，那么可能会发生比用户抱怨更糟糕的事情：他们可能会找到关闭产品或绕过它们的方法，这将使您的公司处于风险之中。如果因为速度缓慢而没有人使用，该 Zero Trust 产品套件就是完全无效的。确保 Zero Trust 快速对一个 Zero Trust 解决方案的有效性至关重要：如果员工根本不知道它的存在，他们就不会想要关闭它，让自己处于风险之中。</p>
 	<p>像 Zscaler 这样的服务的性能可能优于许多陈旧的解决方案，但它们的网络仍然无法比肩像 Cloudflare 这样的高性能、最优化网络。我们将自己的所有 Zero Trust 产品与 Zscaler 的同类产品一一进行了对比，结果展示我们更快。让我们深入剖析这些数据，并向您展示我们如何及为什么在三个关键的 Zero Trust 场景中更快。首先是安全 Web 网关：将 Cloudflare Gateway 与 Zscaler Internet Access (ZIA)进行比较。</p>
@@ -13,7 +13,7 @@
 	<p>安全 Web 网关需要速度快，因为它是组织所有互联网流量的必由之路。如果安全 Web 网关运行缓慢，那么用户任何前往互联网的流量将变慢。如果前往互联网的流量缓慢，用户就有可能关闭 Gateway，导致组织面临攻击风险。</p>
 	<p>但除了接近用户之外，高性能 Web 网关还需要与互联网的其他部分进行良好的对等连接，以避免用户前往目标网站的路径变慢。请记住，通过安全 Web 网关的流量遵循前向代理路径：用户连接到代理，代理连接到用户试图访问的网站。因此，为了确保用户流量能够尽快到达目的地，连接良好的代理是理所当然的。</p>
 	<p>在比较安全 Web 网关产品时，我们将 Cloudflare Gateway 和 WARP 客户端与 Zscaler Internet Access (ZIA)进行了比较，后者具备相同的功能。对于 Cloudflare 用户来说，幸运的是，Gateway 和 Cloudflare 的网络不仅深度嵌入到靠近用户的最后一英里网络中，而且是世界上对等连接程度最高的网络之一。利用我们对等连接程度最高的网络，在 Gateway 用户场景实现了比 ZIA 快 55% 的速度。如下箱线图显示 Cloudflare、Zscaler 和一个对照集（完全没有使用网关）的第 95 百分位响应时间：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/1-2.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/1-2.png" class="kg-image" title="Chart"></figure><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -43,10 +43,10 @@
 	<p>这些数据表明，Cloudflare 不仅在网关场景中比 Zscaler 快得多，而且 Cloudflare 实际上与完全不使用安全 Web 网关的情况而非 Zscaler &nbsp;更具可比性。</p>
 	<p>为了最好地测量最终用户的 Gateway 体验，我们查看来自最终用户的第 95 百分位响应时间：我们测量用户通过代理，让代理向互联网上的网站发出请求，并最终返回响应所需的时间。这个测量值很重要，因为它准确反映了用户的所见。</p>
 	<p>与 Zscaler 对比时，我们让最终用户客户端尝试访问 5 个不同的网站：一个托管在 Azure 上的网站、一个受 Cloudflare 保护的 Worker、Google、Slack 和 Zoom。这些是用户会经常连接的网站。在每一个实例中，Cloudflare 的性能都优于 Zscaler，对受 Cloudflare 保护的 Worker 而言，Gateway 的第 95 百分位响应时间上甚至优于对照集。如下箱线图显示了按我们测试中查询的不同端点细分的第 95 百分位响应时间：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/2-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/2-1.png" class="kg-image"></figure>
 	<p>无论访问互联网的什么位置，就端到端响应时间而言，Cloudflare 的 Gateway 性能均优于 Zscaler Internet Access (ZIA)。但是为什么我们远快于 Zscaler 呢？答案与 Zscaler 所称的代理延迟有关。</p>
-	<p><a href="https://www.zscaler.com/blogs/product-insights/do-you-understand-your-slas-guide-demystifying-cloud-security-slas?ref=blog.cloudflare.com" target="_blank">代理延迟</a>是用户请求发送到目的地再返回到用户前在 Zscaler 机器上花费的时间。这个数字完全排除了用户到达 Zscaler 所需的时间，以及 Zscaler 到达目的地所需的时间，并将测量限制为 Zscaler 处理请求所花费的毫秒数。</p>
-	<p>Zscaler 的<a href="https://www.zscaler.com/legal/sla-support?ref=blog.cloudflare.com" target="_blank">延迟 SLA</a> 表示，95% 的请求将在 Zscaler 设备上花费少于 100 ms。Zscaler 承诺，对于 95% 的用户请求，他们可在其边缘测量到的延迟（而非真正重要的端到端延迟）是 100 ms 或更少。您甚至可以在 Zscaler 的 Digital Experience(数字体验)中看到这些指标，以便自己测量。如果我们可以从 Zscaler 日志中获取代理延迟，并将其与 Cloudflare 的等效日志进行比较，我们就可以看到我们与 Zscaler 的 SLA 指标对比的情况。虽然我们还没有将这些指标提供给客户，但我们可以在 Cloudflare 上启用跟踪，以测量 Cloudflare 代理的延迟。</p>
+	<p><a href="https://www.zscaler.com/blogs/product-insights/do-you-understand-your-slas-guide-demystifying-cloud-security-slas" target="_blank">代理延迟</a>是用户请求发送到目的地再返回到用户前在 Zscaler 机器上花费的时间。这个数字完全排除了用户到达 Zscaler 所需的时间，以及 Zscaler 到达目的地所需的时间，并将测量限制为 Zscaler 处理请求所花费的毫秒数。</p>
+	<p>Zscaler 的<a href="https://www.zscaler.com/legal/sla-support" target="_blank">延迟 SLA</a> 表示，95% 的请求将在 Zscaler 设备上花费少于 100 ms。Zscaler 承诺，对于 95% 的用户请求，他们可在其边缘测量到的延迟（而非真正重要的端到端延迟）是 100 ms 或更少。您甚至可以在 Zscaler 的 Digital Experience(数字体验)中看到这些指标，以便自己测量。如果我们可以从 Zscaler 日志中获取代理延迟，并将其与 Cloudflare 的等效日志进行比较，我们就可以看到我们与 Zscaler 的 SLA 指标对比的情况。虽然我们还没有将这些指标提供给客户，但我们可以在 Cloudflare 上启用跟踪，以测量 Cloudflare 代理的延迟。</p>
 	<p>结果显示，在第 95 百分位，Zscaler 超过了他们的 SLA，而 Cloudflare 的代理延迟为 7 ms。此外，当我们的代理延迟为 100 ms(满足 Zscaler SLA)时，他们的代理延迟超过了我们的 10 倍。Zscaler 的代理延迟是我们在第 95 百分位上所见性能差异的主要原因，每个站点都比 Cloudflare 慢 140-240 ms。下面是测试过的所有站点在不同百分位上的 Zscaler 代理延迟值，并按站点细分。</p><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
@@ -175,13 +175,13 @@
 	</table><!--kg-card-end: html-->
 	<p>包含第 99.957 百分位可能看起来很奇怪，但它标志着 Cloudflare 代理延迟最终超过 100 ms 的百分位。Cloudflare 在第 99.957 百分位的代理延迟甚至比 Zscaler 的第 90 百分位代理延迟还要快。即使在 Zscaler 关心并负责的指标上，尽管代理延迟不是客户关心的指标，Cloudflare 还是更快。</p>
 	<p>获得这样的数据视图并不容易。现有的测试框架(如 Catchpoint)不适合这个任务，因为性能测试需要在测试端点上运行 ZIA 客户端或 WARP 客户端。我们还需要确保 Cloudflare 测试和 Zscaler 测试在相同位置的类似机器上运行，以尽可能好地测量性能。这允许我们测量来自两个测试环境运行的相同位置的端到端响应：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image7.png" class="kg-image"></figure>
 	<p>我们将云端并排放置三台虚拟机：其中一台运行 Cloudflare WARP，连接到我们的 Gateway；一台运行 ZIA；一台没有运行任何代理，作为对照集。这些虚拟机每三分钟向上述五个不同的端点发出请求，并记录 HTTP 浏览器对每个请求所花费时间的计时。根据这个方法，我们获得一个有意义的用户角度性能视图。</p>
 	<p>到现在为止的简单总结：从最终用户角度来看，通过安全 Web 网关对用户提供针对公共互联网的保护方面，Cloudflare 比 Zscaler 更快。根据 Zscaler 对安全 Web 网关性能的简单定义，Cloudflare 甚至比 Zscaler 更快。但是，让我们看一下需要通过 Zero Trust 解决方案访问特定应用的场景。</p>
 	<h3 id="cloudflare-access-zero-trust-">Cloudflare Access：最快的 Zero Trust 代理</h3>
 	<p>访问控制需要无缝且对用户透明：对 Zero Trust 解决方案的最好赞美就是员工几乎注意不到它的存在。像 Cloudflare Access 和 Zscaler Private Access (ZPA) 这样的服务允许用户在提供商的网络上缓存身份验证信息，确保应用可以安全、快速地访问，为用户提供他们想要的无缝体验。因此，如果网络能最大限度地减少所需登录次数，同时减少应用请求的延迟，将有助于使您的互联网体验保持快捷、灵敏。</p>
 	<p>Cloudflare Access 比 Zscaler Private Access (ZPA)快 38%，确保无论在世界任何地方，都能获得快速、安全的应用体验：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/4-1.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/4-1.png" class="kg-image" title="Chart"></figure><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -205,11 +205,11 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>深入研究数据时，我们发现 Cloudflare 在世界各地的速度始终更快。以东京为例，Cloudflare 的第 95 百分位首字节时间比 Zscaler 快 22%：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/5.png" class="kg-image"></figure>
 	<p>当就应用访问场景评估 Cloudflare 和 Zscaler 时，我们考虑两个需要单独测量的不同场景。第一个场景是：用户登录到应用时必须进行身份验证。在这种情况下，Zero Trust Access 服务将用户引导到登录页面，进行身份验证，然后重定向到他们的应用。</p>
 	<p>这被称为“新会话”，因为 Access 网络上没有缓存或存在任何身份验证信息。第二种场景是现有会话，此时用户已经通过身份验证，可以缓存身份验证信息。这种场景通常要快得多，因为它不需要额外调用身份提供商即可完成。</p>
 	<p>我们要单独衡量这些场景，因为当我们查看第 95 百分位值时，如果将新会话和现有会话合并起来，几乎总是看到新会话。但在两个场景中，Cloudflare 在每一个地区都始终更快。让我们看一下，在 Zscaler 更可能拥有良好对等连接的地点，数据看起来会怎样：位于伊利诺州芝加哥的用户，连接到托管于美国中部地区的一个应用。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/6-1.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/6-1.png" class="kg-image"></figure><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -236,12 +236,12 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>总体而言，Cloudflare 同样更快。以下直方图显示新连接总体的第 95 百分位响应时间：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/7.png" class="kg-image"></figure>
 	<p>您将看到 Cloudflare 网络在登录时确实提供了性能提升，帮助找到返回身份验证提供商以检索登录详细信息的最佳路径。在这个测试中，Cloudflare 返回登录响应的时间从不超过 2.5 秒，但 Zscaler 第 95 百分位响应中有一半需要几乎两倍时间，大约在 4 秒左右。这表明 Zscaler 的网络也没有对等连接，这导致了早期的延迟。但它也可能表明，当建立连接并缓存所有内容时，Zscaler 可能会做得更好。但在现有连接方面，Cloudflare 依然领先：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/8.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/8.png" class="kg-image"></figure>
 	<p>在较低延迟范围，Zscaler 和 Cloudflare 的差距确实更加均匀，但 Cloudflare 的响应时间一致程度要高得多，而且可以看到，Zscaler 有接近一半的响应需要接近 1 秒的加载时间。这进一步突显了我们的互连程度有多高：由于覆盖更多地方，我们能提供更佳的应用体验，而且我们在边缘上高延迟和应用性能欠佳的情况也没有那么多。</p>
 	<p>我们希望将这些新会话和现有会话分开，因为查看相似的请求路径以进行适当的比较非常重要。例如，如果我们比较一个现有会话上通过 Zscaler 的请求和一个新会话上通过 Cloudflare 的请求，我们会看到 Cloudflare 比 Zscaler 慢得多，因为需要进行身份验证。所以当我们与第三方签约设计这些测试时，我们确保他们考虑到这一点。</p>
-	<p>对于这些测试，Cloudflare 与第三方 Miercom 签订了合同。Miercom 执行了一组测试，旨在复制终端用户连接到 Cloudflare 或 Zscaler 保护的资源。Miercom 在世界各地的 14 个地方建立了应用实例，并设计了一个测试，可以通过各种 Zero Trust 提供商登录到应用中以访问特定内容。测试方法如下所示，但可以<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/?ref=blog.cloudflare.com" target="_blank">在此</a>查看 Miercom 详细说明其测试方法的完整报告。</p>
+	<p>对于这些测试，Cloudflare 与第三方 Miercom 签订了合同。Miercom 执行了一组测试，旨在复制终端用户连接到 Cloudflare 或 Zscaler 保护的资源。Miercom 在世界各地的 14 个地方建立了应用实例，并设计了一个测试，可以通过各种 Zero Trust 提供商登录到应用中以访问特定内容。测试方法如下所示，但可以<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">在此</a>查看 Miercom 详细说明其测试方法的完整报告。</p>
 	<ul>
 		<li>用户从一个由 Catchpoint 实例模拟的浏览器连接到应用 —— 新会话</li>
 		<li>用户通过其身份提供商进行身份验证</li>
@@ -253,7 +253,7 @@
 	<h3 id="cloudflare-browser-isolation-web-">Cloudflare Browser Isolation：在您附近的友好 Web 浏览器</h3>
 	<p>远程浏览器隔离产品高度依赖于公共互联网：如果您与浏览器隔离产品的连接不好，那么您的浏览器体验就会感觉奇怪和缓慢。远程浏览器隔离极其依赖于性能来为用户提供流畅、无缝的感觉：如果一切都达到应有的速度，用户甚至不应该注意到他们正在使用浏览器隔离。在这个测试中，我们将 Cloudflare Browser Isolation 与 Zscaler Cloud Browser Isolation 进行了对比。</p>
 	<p>Cloudflare 在远程浏览器隔离性能方面再次比 Zscaler 更快。在第 95 百分位首字节时间方面，Cloudflare 在所有地区都比 Zscaler 快 45%。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/9.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/9.png" class="kg-image"></figure><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -277,7 +277,7 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>比较浏览器隔离产品向用户提供完整响应的总响应时间或能力时，Cloudflare 仍然比 Zscaler 快 39%：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/10.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/10.png" class="kg-image"></figure><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -301,9 +301,9 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Cloudflare 的网络在这里表现非常出色，帮助向我们的客户提供最佳的用户体验。因为 Cloudflare 的网络非常接近最终用户设备，我们能够缩短首字节时间和响应时间，帮助改善最终用户体验。</p>
-	<p>为了测量这一点，我们再次联系 Miercom，让 Catchpoint 节点从全球相同的 14 个位置连接到 Cloudflare Browser Isolation 和 Zscaler Cloud Browser Isolation，并让设备模拟客户端在每个位置尝试通过这两个浏览器隔离产品访问应用，帮助我们获得所需的数据。关于测试方法的更多信息，请参考同样的 Miercom 报告，链接<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/?ref=blog.cloudflare.com" target="_blank">见此</a>。</p>
+	<p>为了测量这一点，我们再次联系 Miercom，让 Catchpoint 节点从全球相同的 14 个位置连接到 Cloudflare Browser Isolation 和 Zscaler Cloud Browser Isolation，并让设备模拟客户端在每个位置尝试通过这两个浏览器隔离产品访问应用，帮助我们获得所需的数据。关于测试方法的更多信息，请参考同样的 Miercom 报告，链接<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">见此</a>。</p>
 	<h3 id="zero-trust-">Zero Trust 世界的下一代性能</h3>
-	<p>在非 Zero Trust 的世界里，您和您的 IT 团队是就是网络运营者——这赋予您控制性能的能力。虽然这种控制令人安心，但对于必须管理办公室和资源之间中间一英里连接的 IT 团队而言，这也是一个巨大的负担。而在 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust</a> 世界中，您的网络……嗯，就是公共互联网。这意味着您的团队要做的工作减少了，但 Zero Trust 提供商要承担大得多的责任，它必须为您的每一个用户管理性能。Zero Trust 提供商在提高端到端性能方面做得越好，用户的体验就会越好，您面临的风险也就越小。对于像身份验证和安全 Web 网关这样的实时应用，拥有快速的用户体验是至关重要的。</p>
+	<p>在非 Zero Trust 的世界里，您和您的 IT 团队是就是网络运营者——这赋予您控制性能的能力。虽然这种控制令人安心，但对于必须管理办公室和资源之间中间一英里连接的 IT 团队而言，这也是一个巨大的负担。而在 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 世界中，您的网络……嗯，就是公共互联网。这意味着您的团队要做的工作减少了，但 Zero Trust 提供商要承担大得多的责任，它必须为您的每一个用户管理性能。Zero Trust 提供商在提高端到端性能方面做得越好，用户的体验就会越好，您面临的风险也就越小。对于像身份验证和安全 Web 网关这样的实时应用，拥有快速的用户体验是至关重要的。</p>
 	<p>Zero Trust 提供商不仅需要在公共互联网上保护您的用户，还需要优化公共互联网，以确保您的用户持续受到保护。转向 Zero Trust 不仅减少了对企业网络的需求，还允许用户流量更自然地流向资源。但是，考虑到 Zero Trust 提供商将成为所有用户和所有应用的守门人，性能需要评估的一个关键方面，以便为用户减少摩擦，降低用户抱怨、效率下降或关闭解决方案的可能性。Cloudflare 正在不断改进我们的网络，以确保用户始终拥有最佳的体验，这不仅来自于路由修复，还来自于扩展对等连接协议和增加新节点。正是这种孜孜不倦的努力，使我们成为最快的Zero Trust 提供商。</p>
-	<p>欢迎访问我们的<a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/?ref=blog.cloudflare.com" target="_blank">比较页面</a>，以了解有关 Cloudflare 网络架构与 Zscaler 对比的更多详情。</p>
+	<p>欢迎访问我们的<a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">比较页面</a>，以了解有关 Cloudflare 网络架构与 Zscaler 对比的更多详情。</p>
 </div>

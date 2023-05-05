@@ -1,14 +1,14 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image13-1.png" class="kg-image" alt="The state of application security in 2023" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image13-1.png" class="kg-image" alt="The state of application security in 2023"></figure>
 	<p>1년 전, Cloudflare는 <a href="https://blog.cloudflare.com/ko-kr/application-security-ko-kr/">첫 번째 애플리케이션 보안 보고서</a>를 발표했습니다. Security Week 2023에서는 트래픽, 봇, API 트래픽 완화 및 계정 탈취 공격과 관련된 인사이트와 동향을 업데이트하여 제공합니다.</p>
-	<p>Cloudflare는 지난 해 크게 성장했습니다. <a href="https://news.netcraft.com/archives/2023/02/28/february-2023-web-server-survey.html?ref=blog.cloudflare.com" target="_blank">2023년 2월,</a> Netcraft에 따르면 2023년 초에 Cloudflare는 상위 100만 개의 사이트 중 가장 많이 사용하는 웹 서버 벤더가 되었으며 2022년 2월의 시장 점유율이었던 19.4%에서 지속적으로 성장해 21.71%를 점유하게 되었습니다.</p>
+	<p>Cloudflare는 지난 해 크게 성장했습니다. <a href="https://news.netcraft.com/archives/2023/02/28/february-2023-web-server-survey.html" target="_blank">2023년 2월,</a> Netcraft에 따르면 2023년 초에 Cloudflare는 상위 100만 개의 사이트 중 가장 많이 사용하는 웹 서버 벤더가 되었으며 2022년 2월의 시장 점유율이었던 19.4%에서 지속적으로 성장해 21.71%를 점유하게 되었습니다.</p>
 	<p>Cloudflare는 지속적으로 성장하여 이제 평균적으로 초당 4,500만 건의 HTTP 요청을 처리하며(작년 3,200만 건에서 증가), 최대 초당 6,100만 건의 요청을 처리하기도 합니다. Cloudflare 네트워크가 처리하는 DNS 쿼리 수도 늘어나고 있어 이제는 초당 약 2,460만 개의 쿼리에 달합니다. 이러한 트래픽 흐름 덕분에 Cloudflare는 인터넷 동향을 전례없는 수준으로 파악할 수 있습니다.</p>
 	<p>시작하기 전에 용어를 정의하겠습니다.</p>
 	<h2 id="-">정의</h2>
 	<p>이 보고서에서는 다음과 같은 용어를 사용합니다.</p>
 	<ul>
-		<li><strong>완화된 트래픽</strong>: Cloudflare 플랫폼에서 "종료" 액션을 시행한 모든 확인용 HTTP* 요청을 말합니다. <code>BLOCK</code>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/?ref=blog.cloudflare.com#legacy-captcha-challenge" target="_blank"><code>CHALLENGE</code></a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/?ref=blog.cloudflare.com#js-challenge" target="_blank"><code>JS_CHALLENGE</code></a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/?ref=blog.cloudflare.com#managed-challenge-recommended" target="_blank"><code>MANAGED_CHALLENGE</code></a> 액션이 포함됩니다. <code>LOG</code>, <code>SKIP</code>, <code>ALLOW</code> 액션이 적용된 요청은 포함되지 않습니다. 작년과 비교하여 지금은 Cloudflare의 DDoS 완화 시스템에 따라 <code>CONNECTION_CLOSE</code> 및 <code>FORCE_CONNECTION_CLOSE</code> 액션이 적용된 요청은 제외됩니다. 엄밀히 말해 해당 액션은 연결 시작을 늦출 뿐이며, 요청 중 비교적 적은 비율에만 해당되기 때문입니다. 여기에 더해, 해결되지 않은 인증만을 완화된 것으로 계산하기 위해 <code>CHALLENGE</code>유형 액션과 관련된 연산을 개선했습니다. 자세한 <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions/?ref=blog.cloudflare.com" target="_blank">액션에 대한 설명</a>은 Cloudflare의 개발자 문서에서 확인할 수 있습니다.</li>
-		<li><strong>봇 트래픽/자동화 트래픽</strong>: Cloudflare의 <a href="https://www.cloudflare.com/products/bot-management/?ref=blog.cloudflare.com" target="_blank">봇 관리</a> 시스템에서 식별한 봇이 생성한 모든 HTTP* 요청입니다. <a href="https://developers.cloudflare.com/bots/concepts/bot-score/?ref=blog.cloudflare.com" target="_blank">봇 점수</a>가 <a href="https://developers.cloudflare.com/bots/concepts/bot-score/?ref=blog.cloudflare.com" target="_blank">1 이상 29 이하</a>인 요청이 포함됩니다. 작년 보고서에서 바뀌지 않았습니다.</li>
+		<li><strong>완화된 트래픽</strong>: Cloudflare 플랫폼에서 "종료" 액션을 시행한 모든 확인용 HTTP* 요청을 말합니다. <code>BLOCK</code>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#legacy-captcha-challenge" target="_blank"><code>CHALLENGE</code></a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#js-challenge" target="_blank"><code>JS_CHALLENGE</code></a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#managed-challenge-recommended" target="_blank"><code>MANAGED_CHALLENGE</code></a> 액션이 포함됩니다. <code>LOG</code>, <code>SKIP</code>, <code>ALLOW</code> 액션이 적용된 요청은 포함되지 않습니다. 작년과 비교하여 지금은 Cloudflare의 DDoS 완화 시스템에 따라 <code>CONNECTION_CLOSE</code> 및 <code>FORCE_CONNECTION_CLOSE</code> 액션이 적용된 요청은 제외됩니다. 엄밀히 말해 해당 액션은 연결 시작을 늦출 뿐이며, 요청 중 비교적 적은 비율에만 해당되기 때문입니다. 여기에 더해, 해결되지 않은 인증만을 완화된 것으로 계산하기 위해 <code>CHALLENGE</code>유형 액션과 관련된 연산을 개선했습니다. 자세한 <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions/" target="_blank">액션에 대한 설명</a>은 Cloudflare의 개발자 문서에서 확인할 수 있습니다.</li>
+		<li><strong>봇 트래픽/자동화 트래픽</strong>: Cloudflare의 <a href="https://www.cloudflare.com/products/bot-management/" target="_blank">봇 관리</a> 시스템에서 식별한 봇이 생성한 모든 HTTP* 요청입니다. <a href="https://developers.cloudflare.com/bots/concepts/bot-score/" target="_blank">봇 점수</a>가 <a href="https://developers.cloudflare.com/bots/concepts/bot-score/" target="_blank">1 이상 29 이하</a>인 요청이 포함됩니다. 작년 보고서에서 바뀌지 않았습니다.</li>
 		<li><strong>API 트래픽</strong>: 요청 콘텐츠 유형이 <code>XML</code> 혹은 <code>JSON</code>인 모든 HTTP* 요청입니다. 완화된 요청과 같이 요청 콘텐츠 유형을 사용할 수 없는 경우, 상응하는 <code>Accept</code> 콘텐츠 유형(사용자 에이전트에서 지정)이 대신 사용됩니다. 이 경우, API 트래픽을 완전히 반영할 수는 없지만 인사이트를 확보할 정도의 대표성은 충분합니다.</li>
 	</ul>
 	<p>별도의 언급이 없을 경우, 이 게시물의 평가 기간은 2022년 3월에 시작되어 2023년 2월에 종료되는 12개월 동안을 말합니다.</p>
@@ -18,13 +18,13 @@
 	<h2 id="--1">전역 트래픽 인사이트</h2>
 	<h3 id="-6-http-">매일 평균 6%의 HTTP 요청을 완화하고 있습니다</h3>
 	<p>Cloudflare 네트워크에서 프록시된 모든 HTTP 요청을 살펴보면, 완화된 요청 비율이 작년보다 2%p 감소해 6%로 떨어졌습니다. 2023년 현재까지의 비율을 보면 완화된 요청 비율은 더 떨어져 4-5% 정도입니다. 아래 차트의 급격하고 큰 증가세(예: 6월, 10월)는 대개 Cloudflare에서 완화했던 대규모 DDoS 공격에 해당합니다. 트래픽 완화 비율은 갈수록 감소했지만 아래 두 번째 차트와 같이 완화된 총 요청량은 비교적 일정했다는 점이 흥미롭습니다. 악의적인 트래픽의 절대적인 수가 감소한 것이 아니라 정상 트래픽 전체가 전반적으로 증가했다는 의미입니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-06-at-23.00.01.png" class="kg-image" alt="지난 12개월 간의 HTTP 요청 완화 비율" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0-7.png" class="kg-image" alt="지난 12개월 간의 일간 총 HTTP 요청 건수 및 HTTP 완화 요청 건수" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-06-at-23.00.01.png" class="kg-image" alt="지난 12개월 간의 HTTP 요청 완화 비율"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0-7.png" class="kg-image" alt="지난 12개월 간의 일간 총 HTTP 요청 건수 및 HTTP 완화 요청 건수"></figure>
 	<p>HTTP 완화 요청 중 81%는 바로 <code>BLOCK</code>되었으며, 나머지는 다양한 <code>CHALLENGE</code> 유형 액션에 분산되어 완화되었습니다.</p>
 	<h3 id="ddos-50-">DDoS 완화가 전체 완화된 트래픽의 50% 이상을 차지합니다</h3>
 	<p>고객은 Cloudflare에서 제공하는 다양한 보안 기능을 애플리케이션의 보안을 위해 설정할 수 있습니다. DDoS 완화는 아직도 완화된 제7계층(애플리케이션 계층)의 HTTP 요청 중 비율이 가장 큽니다. 놀랍지 않은 수치입니다. 바로 지난 달(2023년 2월)에만 해도, Cloudflare는 <a href="https://blog.cloudflare.com/ko-kr/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-ko-kr/">초당 HTTP 요청 수 기준 알려진 최대 규모로 DDoS 공격을 완화했다고</a> 보고했습니다(위 그래프는 하루 단위로 합계를 내며 공격이 약 5분간만 지속되었기 때문에 이 공격은 위 그래프에서 확인할 수 없습니다).</p>
 	<p>다만 작년과 비교했을 때 Cloudflare WAF로 완화된 건수는 크게 증가했으며 완화된 요청의 거의 41%를 차지합니다. 더 다양한 공격을 감지 및 차단할 수 있게 해 주는 <a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter/">Cloudflare WAF 기술이 발전</a>한 덕분이기도 합니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/out.png" class="kg-image" alt="HTTP 요청에서 마지막으로 완화된 액션에 해당하는 제품 그룹" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/out.png" class="kg-image" alt="HTTP 요청에서 마지막으로 완화된 액션에 해당하는 제품 그룹"></figure>
 	<p>참고 표:</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -102,14 +102,14 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>작년과 달리 이제는 위 표에서 마케팅 자료와 <a href="https://radar.cloudflare.com/year-in-review/2022?ref=blog.cloudflare.com" target="_blank">2022 Radar 연례 검토</a>에 사용된 분류에 맞게 제품을 분류하고 있습니다. 이 점은 WAF 사용자 지정 규칙, WAF 레이트 리미팅 규칙, WAF 관리형 규칙의 조합으로 이루어진 Cloudflare의 WAF 제품에 주로 영향을 미칩니다. 작년 보고서에서는 이 주요 기능 세 가지가 총 31%의 완화 사례에 해당했습니다.</p>
+	<p>작년과 달리 이제는 위 표에서 마케팅 자료와 <a href="https://radar.cloudflare.com/year-in-review/2022" target="_blank">2022 Radar 연례 검토</a>에 사용된 분류에 맞게 제품을 분류하고 있습니다. 이 점은 WAF 사용자 지정 규칙, WAF 레이트 리미팅 규칙, WAF 관리형 규칙의 조합으로 이루어진 Cloudflare의 WAF 제품에 주로 영향을 미칩니다. 작년 보고서에서는 이 주요 기능 세 가지가 총 31%의 완화 사례에 해당했습니다.</p>
 	<p>한 단계 더 깊이 파고들어 시간에 따라 WAF 요청 완화 건수가 늘어나는 상황을 파악해보면, Cloudflare 고객은 악의적인 트래픽을 완화하거나 비즈니스 논리를 도입할 때 WAF 사용자 지정 규칙(과거에는 방화벽 규칙으로 불림)을 확실히 더 많이 이용하고 있습니다. 아래 차트를 보면 주황색 선(<code>firewallrules</code>)은 갈수록 상승하지만 파란 선(<code>l7ddos</code>)은 확실히 내려갑니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--3.png" class="kg-image" alt="지난 12개월 동안의 일일 완화 요청 건수: DDoS vs WAF 사용자 지정 규칙" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--3.png" class="kg-image" alt="지난 12개월 동안의 일일 완화 요청 건수: DDoS vs WAF 사용자 지정 규칙"></figure>
 	<h3 id="http-waf-">HTTP 이상은 WAF에서 가장 자주 완화한 애플리케이션 계층 공격 벡터입니다</h3>
 	<p>2023년 3월, WAF 관리형 규칙으로 완화된 총 트래픽의 30%를 차지하는 HTTP 이상의 비율은 전년도 동시기와 비교했을 때 거의 25%p 줄었습니다. HTTP 이상의 예를 들면 메서드 이름이 잘못된 경우, 헤더에 null 바이트 문자가 포함된 경우, 비표준 포트, <code>POST</code> 요청에 콘텐츠 길이 0이 사용되는 경우 등이 있습니다. HTTP 이상 서명을 매칭하는 봇넷이 서서히 트래픽 패턴을 변화시켰기 때문에 나타나는 문제입니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--1.png" class="kg-image" alt="지난 12개월 간 HTTP 요청과 매칭된 WAF 관리형 규칙 카테고리" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--1.png" class="kg-image" alt="지난 12개월 간 HTTP 요청과 매칭된 WAF 관리형 규칙 카테고리"></figure>
 	<p>그래프에서 HTTP 이상 선을 제외하면 2023년 초의 공격 벡터는 훨씬 더 고르게 분포되어 있습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--3--1.png" class="kg-image" alt="지난 12개월 간 HTTP 요청과 매칭된 WAF 관리형 규칙 카테고리, HTTP 이상 제외" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--3--1.png" class="kg-image" alt="지난 12개월 간 HTTP 요청과 매칭된 WAF 관리형 규칙 카테고리, HTTP 이상 제외"></figure>
 	<p>참고 표(상위 10개 카테고리):</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -212,44 +212,44 @@
 		<li>Drupal - Anomaly:Header:X-Forwarded-For (id: <code>d6f6d394cb01400284cfb7971e7aed1e</code>)</li>
 		<li>Drupal - Anomaly:Header:X-Forwarded-Host (id: <code>d9aeff22f1024655937e5b033a61fbc5</code>)</li>
 	</ul>
-	<p>이 두 규칙은 <a href="https://nvd.nist.gov/vuln/detail/CVE-2018-14774?ref=blog.cloudflare.com" target="_blank">CVE-2018-14774</a>에도 태그되어 있는데, 패치되지 않았을 가능성이 있는 소프트웨어를 악용하려는 시도에서는 상대적으로 오래되고 알려져 있는 취약성까지 자주 목표로 삼는다는 의미입니다.</p>
+	<p>이 두 규칙은 <a href="https://nvd.nist.gov/vuln/detail/CVE-2018-14774" target="_blank">CVE-2018-14774</a>에도 태그되어 있는데, 패치되지 않았을 가능성이 있는 소프트웨어를 악용하려는 시도에서는 상대적으로 오래되고 알려져 있는 취약성까지 자주 목표로 삼는다는 의미입니다.</p>
 	<h2 id="--2">봇 트래픽 인사이트</h2>
-	<p>지난 12개월 동안 Cloudflare의 <a href="https://www.cloudflare.com/products/bot-management/?ref=blog.cloudflare.com" target="_blank">봇 관리</a> 솔루션을 대규모로 투자했습니다. 구성 가능 휴리스틱, JavaScript 감지 강화, 자동 머신 러닝 모델 업데이트, Cloudflare의 무료 캡차 대안인 <a href="https://www.cloudflare.com/products/turnstile/?ref=blog.cloudflare.com" target="_blank">Turnstile</a> 등 새로운 기능을 통해 인간 트래픽과 봇 트래픽을 매일 더 잘 구분할 수 있게 됩니다.</p>
+	<p>지난 12개월 동안 Cloudflare의 <a href="https://www.cloudflare.com/products/bot-management/" target="_blank">봇 관리</a> 솔루션을 대규모로 투자했습니다. 구성 가능 휴리스틱, JavaScript 감지 강화, 자동 머신 러닝 모델 업데이트, Cloudflare의 무료 캡차 대안인 <a href="https://www.cloudflare.com/products/turnstile/" target="_blank">Turnstile</a> 등 새로운 기능을 통해 인간 트래픽과 봇 트래픽을 매일 더 잘 구분할 수 있게 됩니다.</p>
 	<p>Cloudflare에서는 분류 결과를 매우 신뢰합니다. 2023년 2월 마지막 주의 전체 트래픽 중 봇 점수를 그래프로 그리면, 요청 대부분은 확실한 봇(30 이하)이거나 확실한 인간(80 이상)으로 분류되며 요청 대부분은 실제로 2보다 점수를 적게 받거나 95보다 점수를 높게 받는 등, 분포가 아주 명백합니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--1.png" class="kg-image" alt="확인용 트래픽의 봇 점수 분포" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--1.png" class="kg-image" alt="확인용 트래픽의 봇 점수 분포"></figure>
 	<h3 id="http-30-">HTTP 트래픽 중 30%는 자동화됩니다</h3>
 	<p>2023년 2월 마지막 주에는 Cloudflare HTTP 트래픽 중 30%가 자동화 트래픽으로 분류되었으며, Cloudflare 네트워크 상에서 초당 약 1,300만 건의 HTTP 요청에 해당합니다. 전년도 동일 시기 대비 8%p 낮습니다.</p>
-	<p>봇 트래픽만 살펴보면, 인증된 봇이 생성한 트래픽은 8%에 불과하고 전체 트래픽의 2%에 해당합니다. Cloudflare는 선량한(인증된) 봇의 목록을 유지해 고객들이 선량한 Google과 Facebook 등의 봇 제공자와, 잠재적으로 더 덜 알려지거나 의도하지 않은 봇을 쉽게 구분할 수 있도록 해 줍니다. 현재 <a href="https://radar.cloudflare.com/traffic/verified-bots?ref=blog.cloudflare.com" target="_blank">목록에는 봇이 171개 있습니다</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--5-.png" class="kg-image" alt="지난 12개월 동안 봇으로 분류된 HTTP 트래픽 백분율" loading="lazy"></figure>
+	<p>봇 트래픽만 살펴보면, 인증된 봇이 생성한 트래픽은 8%에 불과하고 전체 트래픽의 2%에 해당합니다. Cloudflare는 선량한(인증된) 봇의 목록을 유지해 고객들이 선량한 Google과 Facebook 등의 봇 제공자와, 잠재적으로 더 덜 알려지거나 의도하지 않은 봇을 쉽게 구분할 수 있도록 해 줍니다. 현재 <a href="https://radar.cloudflare.com/traffic/verified-bots" target="_blank">목록에는 봇이 171개 있습니다</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--5-.png" class="kg-image" alt="지난 12개월 동안 봇으로 분류된 HTTP 트래픽 백분율"></figure>
 	<h3 id="-http-16-">확인되지 않은 봇 HTTP 트래픽 중 16%가 완화되었습니다</h3>
 	<p>확인되지 않은 봇 트래픽에는 웹 상의 취약성을 지속적으로 찾는 취약성 스캐너가 포함된 경우가 많습니다. 이러한 도구를 통해 잠재적으로 얻을 수 있는 인사이트를 제한하길 바라는 고객도 있어, 이 트래픽 중 1/6가량은 완화됩니다.</p>
 	<p>googlebot 및 bingbot 등의 인증된 봇은 보통 유용한 것으로 여겨지고 고객 대부분은 이 봇을 허용하려고 하지만, 검증된 봇 트래픽의 일부분(1.5%) 역시 완화됩니다. 몇몇 사이트 관리자들은 사이트의 일부가 크롤링되지 않길 바라기도 하고, 고객들이 비즈니스 논리를 시행하기 위해 WAF 사용자 지정 규칙을 사용하기 때문입니다.</p>
 	<p>고객이 가장 흔하게 취하는 액션은 요청을 <code>BLOCK</code>하는 것입니다(13%). 긍정 오류 판정을 받은 인간이 필요하다면 요청을 완료할 수 있게 <code>CHALLENGE</code> 액션을 설정하는 고객도 있습니다(3%).</p>
 	<p>이와 유사하게, 아래 그림에서처럼 모든 완화 트래픽의 거의 80%가 봇으로 분류된다는 점은 흥미롭습니다. 인간으로 분류된 완화 트래픽 20%가 아직도 높은 수치라고 생각할 수도 있겠지만 완화된 인간 트래픽의 대부분은 WAF 사용자 지정 규칙에 의해 생성된 것으로 고객이 국가 수준의 조치나 기타 관련 법에 따른 차단 조치를 애플리케이션에 도입하며 발생하는 경우가 대부분입니다. 예를 들면 GDPR을 준수한다는 이유로 유럽 사용자의 접근을 차단하는 미국 기반 회사와 같은 상황에서 흔한 일입니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/Ms7yLEMZH9YTC2GfsGffgbk4rQwzHfpIwPlVe1dy7ZkNxLKe49WZHfope9X9Z-x9BZ0ygFBqay5NV5ipMU42-7uNt5QTYkv8VryoXr5QaJp4-ystQ7I7x6WIa2-cTSiPQ3qRfkel8OhUGFRtXr_8QYs" class="kg-image" alt="HTTP 완화 트래픽의 봇 점수 분포" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/Ms7yLEMZH9YTC2GfsGffgbk4rQwzHfpIwPlVe1dy7ZkNxLKe49WZHfope9X9Z-x9BZ0ygFBqay5NV5ipMU42-7uNt5QTYkv8VryoXr5QaJp4-ystQ7I7x6WIa2-cTSiPQ3qRfkel8OhUGFRtXr_8QYs" class="kg-image" alt="HTTP 완화 트래픽의 봇 점수 분포"></figure>
 	<h2 id="api-">API 트래픽 인사이트</h2>
 	<h3 id="-55-api-">동적(캐시 불가) 트래픽의 55%는 API와 관련됩니다</h3>
 	<p>봇 관리 솔루션과 마찬가지로 Cloudflare는 API 엔드포인트 보호용 도구에도 크게 투자하고 있습니다. <strong>많은</strong> HTTP 트래픽이 API와 관련되어 있기 때문입니다. 실제로 원본에 도달하며 캐시가 <strong>불가능한</strong> HTTP 요청만 따질 경우, 앞서 언급한 조건에 따라 최대 55%의 트래픽이 API와 관련되어 있습니다. 작년 보고서에서 사용한 방법론과 같고 55%라는 수치는 작년 대비 변화하지 않았습니다.</p>
-	<p>캐시된 HTTP 요청(캐시 상태가 <code>HIT</code>, <code>UPDATING</code>, <code>REVALIDATED</code>, EXPIRED인 <code>EXPIRED</code>)만 살펴보면, (놀라울 수도 있지만) 약 7%가 API와 관련되었다는 점을 알 수 있습니다. 실제로 Cloudflare의 API 게이트웨이/캐싱 기능 세트 등의 최신 API 엔드포인트 구현 및 프록시 시스템에서는 <a href="https://developers.cloudflare.com/cache/how-to/create-cache-keys/?ref=blog.cloudflare.com" target="_blank">사용자 지정 키에 캐싱</a>하고 캐시를 빠르게 재인증(<a href="https://developers.cloudflare.com/cache/about/edge-browser-cache-ttl/?ref=blog.cloudflare.com#:~:text=Edge%20Cache%20TTL%20(Time%20to,TTL%20depends%20on%20plan%20type.&amp;text=For%20more%20information%20on%20creating%20page%20rules%2C%20see%20Create%20page%20rules." target="_blank">최대 매초마다</a>)할 수 있을 정도로 유연한 캐시 논리를 이용할 수 있어, 개발자는 백엔드 엔드포인트에 가해지는 부하를 줄일 수 있습니다.</p>
+	<p>캐시된 HTTP 요청(캐시 상태가 <code>HIT</code>, <code>UPDATING</code>, <code>REVALIDATED</code>, EXPIRED인 <code>EXPIRED</code>)만 살펴보면, (놀라울 수도 있지만) 약 7%가 API와 관련되었다는 점을 알 수 있습니다. 실제로 Cloudflare의 API 게이트웨이/캐싱 기능 세트 등의 최신 API 엔드포인트 구현 및 프록시 시스템에서는 <a href="https://developers.cloudflare.com/cache/how-to/create-cache-keys/" target="_blank">사용자 지정 키에 캐싱</a>하고 캐시를 빠르게 재인증(<a href="https://developers.cloudflare.com/cache/about/edge-browser-cache-ttl/#:~:text=Edge%20Cache%20TTL%20(Time%20to,TTL%20depends%20on%20plan%20type.&amp;text=For%20more%20information%20on%20creating%20page%20rules%2C%20see%20Create%20page%20rules." target="_blank">최대 매초마다</a>)할 수 있을 정도로 유연한 캐시 논리를 이용할 수 있어, 개발자는 백엔드 엔드포인트에 가해지는 부하를 줄일 수 있습니다.</p>
 	<p>캐시 가능한 자산과 리디렉션 등 기타 요청을 총계에 포함하면 숫자는 줄지만 그래도 트래픽의 25%에 해당합니다. 아래 그래픽에서 API 트래픽을 두 관점으로 모두 확인할 수 있습니다.</p>
 	<ul>
 		<li>노란 선: 모든 HTTP 요청 중 API 트래픽의 백분율입니다. 리디렉션, 캐시된 자산, 총계에 포함된 모든 기타 HTTP 요청이 포함됩니다.</li>
 		<li>파란 선: HTTP 200 OK 응답 코드를 반환하는 동적 트래픽만 고려했을 때 API 트래픽의 백분율입니다.</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6-.png" class="kg-image" alt="지난 12개월 동안의 API 트래픽: 총 HTTP 요청의 백분율, 200 응답 캐시 불가 HTTP 요청의 백분율" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6-.png" class="kg-image" alt="지난 12개월 동안의 API 트래픽: 총 HTTP 요청의 백분율, 200 응답 캐시 불가 HTTP 요청의 백분율"></figure>
 	<h3 id="-api-65-">전역 API 트래픽 중 65%가 브라우저로 생성됩니다</h3>
-	<p>현재 "API 우선"적으로 구축되는 웹 애플리케이션의 수가 늘어나고 있습니다. 초기 HTML 페이지 부하는 그저 뼈대 레이아웃만을 제공하고, 별도의 API 호출(예를 들어 <a href="https://en.wikipedia.org/wiki/Ajax_(programming)?ref=blog.cloudflare.com" target="_blank">AJAX</a>)을 통해 대부분의 동적 컴포넌트와 데이터를 로드한다는 의미입니다. Cloudflare 대시보드가 이 방식을 사용합니다. API 트래픽의 봇 점수를 분석하면 이러한 구현 패러다임이 늘어나는 것을 확인할 수 있습니다. 아래 그림을 보면 Cloudflare 시스템 상에서는 "인간"으로 분류된 사용자 이용 브라우저를 통해 API 트래픽 대부분이 생성되며, 거의 2/3이 "인간" 범위에 해당하는 가장 높은 점수대에 몰려 있습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--2.png" class="kg-image" alt="API 트래픽의 봇 점수 분포" loading="lazy"></figure>
+	<p>현재 "API 우선"적으로 구축되는 웹 애플리케이션의 수가 늘어나고 있습니다. 초기 HTML 페이지 부하는 그저 뼈대 레이아웃만을 제공하고, 별도의 API 호출(예를 들어 <a href="https://en.wikipedia.org/wiki/Ajax_(programming)" target="_blank">AJAX</a>)을 통해 대부분의 동적 컴포넌트와 데이터를 로드한다는 의미입니다. Cloudflare 대시보드가 이 방식을 사용합니다. API 트래픽의 봇 점수를 분석하면 이러한 구현 패러다임이 늘어나는 것을 확인할 수 있습니다. 아래 그림을 보면 Cloudflare 시스템 상에서는 "인간"으로 분류된 사용자 이용 브라우저를 통해 API 트래픽 대부분이 생성되며, 거의 2/3이 "인간" 범위에 해당하는 가장 높은 점수대에 몰려 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--2.png" class="kg-image" alt="API 트래픽의 봇 점수 분포"></figure>
 	<p>Cloudflare에서는 요청을 원본 서버에 전송하지 않으므로 응답 콘텐츠 유형을 사용할 수 없고, 완화된 API 트래픽을 계산하기가 어렵습니다. 작년과 같은 계산 방식을 적용하면 API 트래픽 중 2% 조금 넘는 비율이 완화되며, 작년의 10.2%에서 감소한 값입니다.</p>
 	<h3 id="http-sqli-api-">HTTP 이상이 SQLi를 뛰어넘어 API 엔드포인트에 가장 흔한 공격 벡터가 되었습니다</h3>
 	<p>작년과 비교해 이제 HTTP 이상은 SQLi를 뛰어넘어 API 엔드포인트에 가장 흔한 공격 벡터가 되었습니다(작년 보고서를 게시했던 그래프 시작 부분에서 파란 선이 더 높이 위치합니다). API 트래픽에 대한 공격 벡터는 연중 일정하게 유지되지 않으며 전역 HTTP 트래픽과 비교했을 때 더 크게 변화합니다. 예를 들어, 2023년 초에는 파일 인클루전 공격이 시도된 수가 급격히 늘었습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--8-.png" class="kg-image" alt="지난 12개월 간 API 트래픽의 마지막 완화 액션에 상응하는 WAF 규칙 유형" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--8-.png" class="kg-image" alt="지난 12개월 간 API 트래픽의 마지막 완화 액션에 상응하는 WAF 규칙 유형"></figure>
 	<h3 id="--3">계정 탈취 공격 확인</h3>
 	<p><a href="https://blog.cloudflare.com/account-takeover-protection/">2021년 3월 이래, Cloudflare에서는 유출된 자격 증명 검사 기능을 WAF의 일부로 제공하고 있습니다</a>. 고객은 이 기능을 이용해 유출된 것으로 알려진 사용자명/비밀번호 조합을 사용한 인증 요청이 감지될 때마다 알림(HTTP 요청 헤더를 통해)을 받을 수 있습니다. 계정 탈취 무차별 대입 공격을 시행하는 봇넷을 감지하는 데 매우 효과적인 신호일 때가 많습니다.</p>
 	<p>고객은 유효한 사용자명/비밀번호 쌍 로그인 시도에 이 신호를 사용하여 2단계 인증이나 비밀번호 재설정을 시행하고, (일부 경우에는) 사용자가 자격 증명의 정당한 소유자가 아닌 경우 로그 빈도를 늘릴 수도 있습니다.</p>
 	<h3 id="--4">무차별 대입 계정 탈취 공격은 늘어나고 있습니다</h3>
 	<p>지난 12개월 동안 매칭된 요청 추세를 살펴보면, 2022년 하반기부터 증가 추세가 시작되고 있습니다. 로그인 엔드포인트에 부정한 활동이 늘어나고 있다는 의미입니다. 대규모 무차별 대입 공격 도중, 유출된 자격 증명을 분당 12,000회 이상의 빈도로 사용한 HTTP 요청과 매치되는 경우가 있었습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--9-.png" class="kg-image" alt="지난 12개월 간의 일일 계정 탈취 HTTP 요청 건수" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--9-.png" class="kg-image" alt="지난 12개월 간의 일일 계정 탈취 HTTP 요청 건수"></figure>
 	<p>유출된 자격 증명을 검사하는 기능에는 다음 시스템에 대한 인증 요청과 매치하는 규칙이 있습니다.</p>
 	<ul>
 		<li>Drupal</li>
@@ -263,11 +263,11 @@
 	</ul>
 	<p>이렇게 잠재적으로 손상된 계정에 "침입"하려는 (주로) 봇넷 형태의 악의적인 행위자의 활동을 비교할 수 있습니다.</p>
 	<h3 id="microsoft-exchange-wordpress-">Microsoft Exchange가 WordPress보다 공격을 더 많이 받습니다</h3>
-	<p><a href="https://w3techs.com/technologies/details/cm-wordpress?ref=blog.cloudflare.com" target="_blank">WordPress</a>는 널리 사용되기 때문에 무차별 대입 계정 탈취 공격을 받을 위험이 가장 높거나 가장 많이 공격 받는 애플리케이션일 것이라 생각할 수 있습니다. 하지만, 앞서 언급한 지원 시스템과의 규칙 매칭 결과를 살펴보면 일반적인 서명 다음으로 Microsoft Exchange 서명과의 매치가 가장 흔하게 나타납니다.</p>
+	<p><a href="https://w3techs.com/technologies/details/cm-wordpress" target="_blank">WordPress</a>는 널리 사용되기 때문에 무차별 대입 계정 탈취 공격을 받을 위험이 가장 높거나 가장 많이 공격 받는 애플리케이션일 것이라 생각할 수 있습니다. 하지만, 앞서 언급한 지원 시스템과의 규칙 매칭 결과를 살펴보면 일반적인 서명 다음으로 Microsoft Exchange 서명과의 매치가 가장 흔하게 나타납니다.</p>
 	<p>무차별 대입 공격을 겪는 애플리케이션 대부분은 주로 고가치 자산인 경우가 많습니다. Exchange 계정을 표적으로 삼을 확률이 가장 높다는 데이터는 이러한 경향을 반영합니다.</p>
 	<p>유출된 자격 증명 매치 트래픽을 출처 국가별로 살펴보면, 미국이 다른 국가들과 큰 차이를 보이며 1위입니다. 네트워크 크기가 큰데도 중국은 상위권이 아니라는 점이 눈에 띕니다. 2022년 상반기, 전쟁 초반부에 상위권을 차지했던 우크라이나가 유일한 다는 예외입니다. 아래 그림에서 노란색 선으로 나타나 있습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--10-.png" class="kg-image" alt="국가별 지난 12개월 간의 일일 계정 탈취 HTTP 요청 건수" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--10-.png" class="kg-image" alt="국가별 지난 12개월 간의 일일 계정 탈취 HTTP 요청 건수"></figure>
 	<h2 id="--5">앞으로의 전망</h2>
 	<p>Cloudflare가 전송하는 웹 트래픽의 양을 고려해보면 Cloudflare에서 관측하는 공격은 다양합니다. HTTP 이상, SQL 삽입 공격, 교차 사이트 스크립팅(XSS)에서 계정 탈취 시도와 악의적인 봇까지, 위협 환경은 지속적으로 변화합니다. 그렇기 때문에 온라인상에서 영업하는 모든 기업이 애플리케이션을 안전하게 보호하고, 더 중요한 최종 사용자의 데이터를 안전하게 보호할 수 있도록 가시성, 감지, 완화 기술에 투자해야 합니다.</p>
-	<p>본 보고서에 수록된 내용이 흥미로우셨기를 바랍니다. 적어도 현재 인터넷의 애플리케이션 보안 상태를 인식하게 되셨기를 바랍니다. 온라인에는 악성 행위자가 많고, 인터넷 보안이 수월해지고 있다고 보기는 어렵습니다.<br><br>제품 포트폴리오 전반에 걸친 추가적 데이터와 인사이트를 포함하여 본 보고서를 업데이트하려고 계획하고 있습니다. <a href="https://radar.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Radar</a>를 확인하셔서 애플리케이션 보안 보고서와 인사이트를 더 자주 확인해보세요.</p>
+	<p>본 보고서에 수록된 내용이 흥미로우셨기를 바랍니다. 적어도 현재 인터넷의 애플리케이션 보안 상태를 인식하게 되셨기를 바랍니다. 온라인에는 악성 행위자가 많고, 인터넷 보안이 수월해지고 있다고 보기는 어렵습니다.<br><br>제품 포트폴리오 전반에 걸친 추가적 데이터와 인사이트를 포함하여 본 보고서를 업데이트하려고 계획하고 있습니다. <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a>를 확인하셔서 애플리케이션 보안 보고서와 인사이트를 더 자주 확인해보세요.</p>
 </div>

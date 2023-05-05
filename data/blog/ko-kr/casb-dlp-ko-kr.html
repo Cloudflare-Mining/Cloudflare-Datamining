@@ -1,22 +1,22 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-12.png" class="kg-image" alt="How Cloudflare CASB and DLP work together to protect your data" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-12.png" class="kg-image" alt="How Cloudflare CASB and DLP work together to protect your data"></figure>
 	<p>Cloudflare의 클라우드 액세스 보안 브로커(CASB)는 SaaS 애플리케이션을 스캔하여 잘못된 구성, 승인되지 않은 사용자 활동, 섀도우 IT, 데이터 보안 문제를 확인합니다. 발견된 보안 위협을 IT 관리자와 보안 관리자에게 보고하고 적시에 교정하여 수많은 애플리케이션을 무한정으로 직접 검사해야 하는 부담을 덜어줍니다.</p>
 	<p>하지만 Cloudflare 고객은 잘못된 구성과 관련된 위험을 평가하려면 더 많은 정보가 필요하다고 밝혔습니다. 교내 발야구 일정이 공개되는 것은 고객 목록이 공개적으로 노출되는 것만큼 중요하지 않으므로, 고객은 각기 다른 방식으로 이러한 정보를 처리하려고 합니다. 고객은 중요한 데이터가 노출된 위치를 파악하도록 Cloudflare에 요청하여, 유출 및 인시던트 발생 시 평가 시간과 교정 시간을 단축했습니다. 이러한 피드백을 통해 Cloudflare는 적성을 발휘할 또 다른 기회를 알아냈습니다. 바로 Cloudflare 제품에서 제일 좋은 부분을 결합하여 고객 문제를 해결하는 것입니다.</p>
-	<p>지금 진행하고 있는 흥미로운 활동은 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust</a> 사용자에게 네트워크를 통해 전송되는 중요한 데이터에도 DLP 범위를 적용할 수 있는 방법을 제공하는 것입니다. 수백만 조직에서 사용하는 인기 있는 SaaS 앱에 저장된 데이터에 적용할 수 있는 SaaS DLP가 바로 그것입니다.</p>
+	<p>지금 진행하고 있는 흥미로운 활동은 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 사용자에게 네트워크를 통해 전송되는 중요한 데이터에도 DLP 범위를 적용할 수 있는 방법을 제공하는 것입니다. 수백만 조직에서 사용하는 인기 있는 SaaS 앱에 저장된 데이터에 적용할 수 있는 SaaS DLP가 바로 그것입니다.</p>
 	<p>고객은 곧 제공될 이 기능을 사용해 몇 번의 클릭만으로 SaaS 애플리케이션을 연결하고 스캔하여 문서, 스프레드시트, PDF, 기타 업로드된 데이터 파일에 중요한 데이터(PII, PCI, 사용자 정의 정규 표현식 등)가 저장되어 있는지 확인할 수 있습니다. 이는 고객이 주요 보안 위험을 신속하게 평가하고 해결할 수 있는 신호가 되어줍니다.</p>
 	<h3 id="casb-">CASB 이해하기</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2.jpg" class="kg-image"></figure>
 	<p>조직에서는 9월에 출시된 Cloudflare의 API CASB를 사용하여 빠르고 어려움 없이 SaaS 애플리케이션의 보안을 심층적으로 파악할 수 있었습니다. 여기에는 Google Workspace, Microsoft 365, 오늘 공개된 Salesforce와 Box를 비롯하여 Cloudflare에서 지원하는 기타 SaaS 앱 모두가 포함되어 있습니다. 오퍼레이터는 CASB를 사용하여 안전하지 않은 설정과 잘못된 구성, 부적절하게 공유된 파일, 사용자 액세스 위험과 모범 사례 미준수 등 조직과 직원을 위험에 빠뜨릴 수 있는 SaaS 보안 문제를 파악할 수 있었습니다.</p>
 	<p>“하지만 공동 작업 중인 파일 <em>안에</em> 저장된 중요한 데이터는 어떻게 하나요? 이 파일은 어떻게 알아낼 수 있을까요?”</p>
 	<h3 id="dlp-">DLP 이해하기</h3>
 	<p>9월에 출시된 전송 중인 데이터용 Cloudflare DLP는 Cloudflare의 보안 웹 게이트웨이(SWG)인 Gateway 사용자에게 중요한 정보가 기업 네트워크로 오가는 것을 관리하고 차단하는 방법을 제공하여, 중요한 데이터가 공격자에 손에 들어가지 않도록 방지해줍니다. 이 경우 직원이 신용 카드 번호, 주민등록번호와 같은 중요한 문자열을 문서에 포함시켜 Google Drive 업로드, Slack 메시지 전송 등 어떤 방식으로든 전달하려고 할 때 DLP가 이 중요한 문자열을 찾아낼 수 있습니다. Cloudflare DLP는 HTTP 요청이 목표한 애플리케이션에 도달하기 전에 차단합니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-14.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-25.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-14.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-25.png" class="kg-image"></figure>
 	<p>그런데 Cloudflare에는 이전과 같은 질문과 피드백이 또 다시 들어왔습니다.</p>
 	<p>“SaaS 앱에 있는 데이터는요? 여기에 저장된 정보는 네트워크를 통해 확인할 수 없어요.”</p>
 	<h3 id="-casb-dlp">함께 사용하면 더 좋은 CASB + DLP</h3>
 	<p>2023년 초, 고객이 SaaS 애플리케이션에 저장된 파일을 살펴보고 파일에 들어있는 특히 중요한 데이터를 모두 구분할 수 있는 새로운 제품 시너지를 Cloudflare Zero Trust에 도입할 예정입니다.</p>
 	<p>Google 문서의 신용 카드 번호요? 문제 없습니다. Excel 스프레드시트의 주민등록번호는 어떻냐고요? CASB가 알려드리겠습니다.</p>
 	<p>Cloudflare는 이러한 제품 협업을 통해 IT 관리자와 보안 관리자에게 중요한 보안 범위를 하나 더 제공하여 Cloudflare의 데이터 손실 방지 일대기를 완성하려고 합니다. 전송 중인 데이터에는 DLP가, 파일 공유 모니터링에는 CASB가, 사용 중인 데이터 DLP 및 이메일 DLP에는 원격 브라우저 격리(RBI)와 Area 1이 데이터 유출 및 오용과 관련하여 기반을 보호하므로 조직에서는 안심할 수 있습니다.</p>
-	<p>Cloudflare는 개발을 진행하는 동안 귀사와 같은 조직에서 이러한 종류의 기능을 어떻게 사용할 수 있는지 듣고 싶습니다. 이 제품이나 다음 제품을 자세히 알아보고 싶으신가요? 귀사의 계정 담당자에게 연락하시거나, Cloudflare를 아직 사용하지 않고 있다면 <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/?ref=blog.cloudflare.com" target="_blank">여기를 클릭하여 문의하세요</a>.</p>
+	<p>Cloudflare는 개발을 진행하는 동안 귀사와 같은 조직에서 이러한 종류의 기능을 어떻게 사용할 수 있는지 듣고 싶습니다. 이 제품이나 다음 제품을 자세히 알아보고 싶으신가요? 귀사의 계정 담당자에게 연락하시거나, Cloudflare를 아직 사용하지 않고 있다면 <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">여기를 클릭하여 문의하세요</a>.</p>
 </div>

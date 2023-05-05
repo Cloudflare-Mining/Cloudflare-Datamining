@@ -1,14 +1,14 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>To everyone in Cloudflare, account security is one of our most important tasks. We recognize that to every customer on our platform, we are critical infrastructure. We also know that the simplest attacks often lead to the most devastating of outcomes. Most people think that if they are going to get hacked it will be by some clever ”zero day”. The reality couldn’t be farther from the truth.</p>
-	<p>Attackers are smart and they have realized that even in 2018, the human is still the weakest link in the chain. <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2017_Report_en_xg.pdf?ref=blog.cloudflare.com" target="_blank">The 2017 Verizon breach report</a> identified that 81% of hacking related breaches occurred as a result of weak credentials or credential theft, an increase from the 63% reported in <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2016_Report_en_xg.pdf?ref=blog.cloudflare.com" target="_blank">2016’s breach report</a>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/Verizon-2017-DBR-Graph-2.png" alt="Verizon-2017-DBR-Graph-2" loading="lazy"><em></em></p>
+	<p>Attackers are smart and they have realized that even in 2018, the human is still the weakest link in the chain. <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2017_Report_en_xg.pdf" target="_blank">The 2017 Verizon breach report</a> identified that 81% of hacking related breaches occurred as a result of weak credentials or credential theft, an increase from the 63% reported in <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2016_Report_en_xg.pdf" target="_blank">2016’s breach report</a>.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/Verizon-2017-DBR-Graph-2.png" alt="Verizon-2017-DBR-Graph-2"><em></em></p>
 	<p align="center"><em>Source: Verizon 2017 data breach report</em></p>
 	<p></p>
 	<p>Your credentials are as important as your house or car keys. If someone copies or steals them, the repercussions can be catastrophic. If you suspect someone has access to your house keys you change your locks. If you aren’t fast enough, someone might break in.</p>
 	<p>Likewise if you realize that someone might have access to your password, the remedy is to change it. Too often, as with house keys, we are slow to change our passwords. This is why we see so many account compromises happen after a big public breach like Yahoo. As soon as the attacker gets their hands on a cache of credentials from a breach they immediately try them against every other account the user has. They know that a very high percentage of users still reuse the same credentials across multiple sites. So their chances of success are high - sometimes years after a breach has happened.</p>
-	<p>This is especially problematic with API keys because they often leak without anyone ever knowing it’s happened. Common examples include attackers who steal API keys by reversing client software, or using malicious code inside the browser to navigate and steal secrets - often long after the user has logged out. Some banking trojans such as the <a href="https://www.americanexpress.com/us/small-business/openforum/articles/vicious-malware-can-wipe-out-your-bank-account-in-secret/?ref=blog.cloudflare.com" target="_blank">infamous Zeus</a> even continue to browse after you have logged out, and display fake balance information to hide withdrawals it makes. This is why many banks now force you to re-authenticate often with 2FA when you log in and again when you perform any kind of financial transaction.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/trojan-horse-woodcut1.jpg" alt="trojan-horse-woodcut1" loading="lazy"><br>
+	<p>This is especially problematic with API keys because they often leak without anyone ever knowing it’s happened. Common examples include attackers who steal API keys by reversing client software, or using malicious code inside the browser to navigate and steal secrets - often long after the user has logged out. Some banking trojans such as the <a href="https://www.americanexpress.com/us/small-business/openforum/articles/vicious-malware-can-wipe-out-your-bank-account-in-secret/" target="_blank">infamous Zeus</a> even continue to browse after you have logged out, and display fake balance information to hide withdrawals it makes. This is why many banks now force you to re-authenticate often with 2FA when you log in and again when you perform any kind of financial transaction.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/trojan-horse-woodcut1.jpg" alt="trojan-horse-woodcut1"><br>
 		<em></em>
 	</p>
 	<p align="center"><em>The Trojan Horse. (It’s not a new attack)</em></p>
@@ -18,16 +18,16 @@
 	<p>Phishing emails remain the most popular method but they have now evolved and range from the mundane badly spelled email asking for your password or offering you a link to some unknown site...<br>
 		<br>
 	</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/cloudflare-phishing2.png" alt="cloudflare-phishing2" loading="lazy"><br>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/cloudflare-phishing2.png" alt="cloudflare-phishing2"><br>
 		<em></em>
 	</p>
 	<p align="center"><em>Common Cloudflare phishing email</em></p>
 	<p></p>
 	<br>
-	… to more sophisticated, professionally articulated fakes that deliver complex payloads which both harvest your sensitive data and compromise your system in a single devastating click. Cloudflare, like most security aware companies, will never send you an email that takes you to another site, or which asks you for your password or API key. If you see one, please report it to us through <a href="https://support.cloudflare.com/hc/en-us?ref=blog.cloudflare.com" target="_blank">support</a> or our <a href="https://www.cloudflare.com/abuse/form?ref=blog.cloudflare.com" target="_blank">abuse process</a>. That way we can work with hosting companies, ISPs and infrastructure providers dismantle the systems behind it and neutralize the campaign.
+	… to more sophisticated, professionally articulated fakes that deliver complex payloads which both harvest your sensitive data and compromise your system in a single devastating click. Cloudflare, like most security aware companies, will never send you an email that takes you to another site, or which asks you for your password or API key. If you see one, please report it to us through <a href="https://support.cloudflare.com/hc/en-us" target="_blank">support</a> or our <a href="https://www.cloudflare.com/abuse/form" target="_blank">abuse process</a>. That way we can work with hosting companies, ISPs and infrastructure providers dismantle the systems behind it and neutralize the campaign.
 	<br>
 	<br>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/cloudflare-phishing1.png" alt="cloudflare-phishing1" loading="lazy"><br>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/cloudflare-phishing1.png" alt="cloudflare-phishing1"><br>
 		<em></em>
 	</p>
 	<p align="center"><em>A more sophisticated Cloudflare phishing email</em></p><br>
@@ -38,7 +38,7 @@
 	<p>The most sophisticated of these are often targeted at a particular institution and know how to silently navigate to the credentials they wish to steal. Over the past couple of years we have seen several of these targeted specifically at Cloudflare customers. Below is an example of one such campaign from late last year involving a very popular Chrome extension called “Web Developer”.<br>
 		<br>
 	</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/WebDeveloperForChrome.png" alt="WebDeveloperForChrome" loading="lazy"><br>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/WebDeveloperForChrome.png" alt="WebDeveloperForChrome"><br>
 		<em></em>
 	</p>
 	<p align="center"><em>Web Developer for Chrome breach alert</em></p>
@@ -53,14 +53,14 @@
 			<br>
 		</li>
 	</ul>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/Screen-Shot-2018-02-09-at-11.49.05-PM.png" alt="Screen-Shot-2018-02-09-at-11.49.05-PM" loading="lazy"><br>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/Screen-Shot-2018-02-09-at-11.49.05-PM.png" alt="Screen-Shot-2018-02-09-at-11.49.05-PM"><br>
 		<em></em>
 	</p>
 	<p align="center"><em>Example code downloaded by the malicious version of Web Developer</em></p>
 	<p></p>
 	<br>
 	The code it downloads is heavily obfuscated. This is to make it even harder to detect what is going on. However if you decode it what you find is that this code designed to pull down yet more malicious payloads such as this one to navigate the Cloudflare dashboard site and retrieve a user’s API key. It literally waits for a user to log into Cloudflare and then steals the user’s API key by accessing sensitive pages behind their back. Some variants even do this after the user has logged out. They show the user a fake logged out page and then carry on silently pillaging the account for all its secrets.<br><br>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/API-Stealing-Code.png" alt="API-Stealing-Code" loading="lazy"><br>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/API-Stealing-Code.png" alt="API-Stealing-Code"><br>
 		<em></em>
 	</p>
 	<p align="center"><em>The Cloudflare API Key stealing payload downloaded by the malicious extension.</em></p>
@@ -78,12 +78,13 @@
 	<p>All these extensions have since been updated, but anyone with an older version should consider themselves at risk. How did this happen? Phishing of course:<br>
 		<br>
 	</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/Screen-Shot-2018-02-10-at-12.19.32-AM.png" alt="Screen-Shot-2018-02-10-at-12.19.32-AM" loading="lazy"><br>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/Screen-Shot-2018-02-10-at-12.19.32-AM.png" alt="Screen-Shot-2018-02-10-at-12.19.32-AM"><br>
 		<em></em>
 	</p>
-	<p align="center"><em>Phishing email sent to <a href="https://a9t9.com/blog/chrome-extension-adware/?ref=blog.cloudflare.com" target="_blank">Chrome developer a9t9.com</a></em></p>
-	<p></p>
-	<p>If you want to read more about this, our friends over at proofpoint <a href="https://www.proofpoint.com/us/threat-insight/post/threat-actor-goes-chrome-extension-hijacking-spree?ref=blog.cloudflare.com" target="_blank">have an in depth teardown</a> of all the other aspects of this particular campaign.</p>
+	<p align="center"><em>Phishing email sent to <a href="https://a9t9.com/blog/chrome-extension-adware/" target="_blank">Chrome developer a9t9.com</a></em></p>
+	<p></p><a href="https://a9t9.com/blog/chrome-extension-adware/" target="_blank">
+	</a>
+	<p><a href="https://a9t9.com/blog/chrome-extension-adware/" target="_blank">If you want to read more about this, our friends over at proofpoint </a><a href="https://www.proofpoint.com/us/threat-insight/post/threat-actor-goes-chrome-extension-hijacking-spree" target="_blank">have an in depth teardown</a> of all the other aspects of this particular campaign.</p>
 	<h2 id="howweprotectcredentials">How we protect credentials</h2>
 	<br>
 	<h3 id="whatwedotodayhowwestorethem">What we do today - how we store them.</h3>
@@ -101,28 +102,28 @@
 	<p>All connections are made over HTTPS and sensitive tokens or credentials are never exposed in transit.</p>
 	<p>In the User Interface<br>
 		To access your dashboard you need your account email, your password, and <a href="https://blog.cloudflare.com/you-can-now-use-google-authenticator/">assuming you enabled it</a>, (you <strong>really</strong> should if you haven’t) your 2FA code. If all of this is correct, and the IP you are using is one you are known to use, you are logged in. If the IP address isn’t known we send an email alert to your registered email address alerting you to the event.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/Cloudflare-IP-Alert.png" alt="Cloudflare-IP-Alert" loading="lazy"><br>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/Cloudflare-IP-Alert.png" alt="Cloudflare-IP-Alert"><br>
 		<em></em>
 	</p>
 	<p align="center"><em>Screenshot of an IP alert generated by accessing the dashboard</em></p>
 	<p></p>
 	<p>If your account is Pro, Business or Enterprise, that email also contains a “Multi Factor Authentication” or MFA code. Until this code is typed in, attempts to log-in are blocked.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/emfa-screenshot.png" alt="emfa-screenshot" loading="lazy"><br>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/emfa-screenshot.png" alt="emfa-screenshot"><br>
 		<em></em>
 	</p>
 	<p align="center"><em>MFA Alert generated by accessing the dashboard</em></p>
 	<p></p>
-	<p><a href="https://www.cloudflare.com/a/profile?ref=blog.cloudflare.com" target="_blank">Make sure the email registered to your Cloudflare account is correct</a> and that it is one whose emails you can quickly see for maximum benefit. The faster you react to an alert the better!</p>
+	<p><a href="https://www.cloudflare.com/a/profile" target="_blank">Make sure the email registered to your Cloudflare account is correct</a> and that it is one whose emails you can quickly see for maximum benefit. The faster you react to an alert the better!</p>
 	<h3 id="apikeys">API Keys</h3>
 	<p>API Keys are very sensitive things. They have as much power as your password but benefit from relatively few of the protections built into a modern browser. This is why we are deepening our investment to make our API even more secure.</p>
 	<p>Our first improvement, released last week, was to protect the API key against malicious software - such as a malicious browser extension - by adding a CAPTCHA to the “View API Key” feature. Below is a screenshot of the challenge you will now see when attempting to access your API Key. This change means that even if malicious software manages to steal your password, it cannot easily request and harvest your API Key.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/02/Screen-Shot-2018-02-09-at-11.30.22-PM.png" alt="Screen-Shot-2018-02-09-at-11.30.22-PM" loading="lazy"><em></em></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/Screen-Shot-2018-02-09-at-11.30.22-PM.png" alt="Screen-Shot-2018-02-09-at-11.30.22-PM"><em></em></p>
 	<p align="center"><em>Updated “View API Key” user experience</em></p>
 	<p></p>
 	<p>Next, we are looking at looked at scoped API keys. These are keys which can either be restricted to authorized IP addresses or limited in terms of what they can do. At the same time we will be adding the ability to turn the API off completely for your account. Finally, looking to the future, we are exploring options like other technical frameworks and token types, so that you have even better tools to build an API architecture that that is secure by design.</p>
 	<h3 id="howyoucanhelpkeepyouraccountsafe">How you can help keep your account safe</h3>
 	<ul>
-		<li><a href="https://www.cloudflare.com/a/profile?ref=blog.cloudflare.com" target="_blank">Turn on 2FA and ensure your email address is correct</a> The sooner you see an alert, the faster you can take action to lock your account down.<br>
+		<li><a href="https://www.cloudflare.com/a/profile" target="_blank">Turn on 2FA and ensure your email address is correct</a> The sooner you see an alert, the faster you can take action to lock your account down.<br>
 			Handle your credentials with care, NEVER enter them into a site other than Cloudflare.com if in doubt check the website certificate fingerprints:</li>
 	</ul>
 	<br>
@@ -138,7 +139,7 @@ SHA1 - D4 AD AB 1B 95 72 8D 3D 6E 26 4A 70 70 B1 1E 88 2F CA 71 67
 		<li>Do not store your API key (or any credentials for that matter) in public repositories. One way to ensure this is by making sure you don’t store your API key in your application source tree. A significant number of accidental leaks to GitHub happen because this gets overlooked.</li>
 		<li>Be very careful when embedding keys or credentials in clients that you will expose publically. Do not expose your account API key this way. Reverse engineering is not hard and many organizations have learnt this the hard way.</li>
 		<li>Review your code before you release it. Use a tool that’s part of your CI or Build processes to automatically check for accidental key leakage. How many times have we seen API Keys for major institutions leak because they were accidentally checked into GitHub? Don’t be that person.</li>
-		<li>IBM has some great additional security guidance for organizations building with APIs<a href="https://www.ibm.com/blogs/cloud-computing/2015/09/api-security-key-takeaways-from-recent-breaches/?ref=blog.cloudflare.com" target="_blank"> here,</a></li>
+		<li>IBM has some great additional security guidance for organizations building with APIs<a href="https://www.ibm.com/blogs/cloud-computing/2015/09/api-security-key-takeaways-from-recent-breaches/" target="_blank"> here,</a></li>
 		<li>Finally, it may seem obvious but take care when clicking on links in emails. Even experienced Chrome developers get tricked sometimes!</li>
 	</ul>
 	<!--kg-card-end: markdown-->
