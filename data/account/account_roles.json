@@ -8,6 +8,10 @@
 				"read": true,
 				"edit": true
 			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
 			"zone": {
 				"read": true,
 				"edit": false
@@ -427,6 +431,10 @@
 				"read": true,
 				"edit": false
 			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
 			"access": {
 				"read": true,
 				"edit": false
@@ -456,6 +464,10 @@
 		"description": "Can access Cloudflare for Zero Trust read only mode.",
 		"permissions": {
 			"dex": {
+				"read": true,
+				"edit": false
+			},
+			"analytics": {
 				"read": true,
 				"edit": false
 			},
@@ -494,6 +506,10 @@
 			"dex": {
 				"read": true,
 				"edit": true
+			},
+			"analytics": {
+				"read": true,
+				"edit": false
 			},
 			"teams": {
 				"read": true,
@@ -567,6 +583,10 @@
 				"read": true,
 				"edit": true
 			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": true
@@ -574,10 +594,6 @@
 			"dns_records": {
 				"read": true,
 				"edit": true
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
 			},
 			"worker": {
 				"read": true,
@@ -1145,15 +1161,15 @@
 				"read": true,
 				"edit": false
 			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": false
 			},
 			"dns_records": {
-				"read": true,
-				"edit": false
-			},
-			"analytics": {
 				"read": true,
 				"edit": false
 			},
@@ -1269,6 +1285,10 @@
 				"read": true,
 				"edit": true
 			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": true
@@ -1276,10 +1296,6 @@
 			"dns_records": {
 				"read": true,
 				"edit": true
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
 			},
 			"worker": {
 				"read": true,
