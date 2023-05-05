@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>On the WWW team, we’re responsible for Cloudflare’s REST APIs, account management services and the dashboard experience. We take security and <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance/?ref=blog.cloudflare.com" target="_blank">PCI compliance</a> seriously, which means we move quickly to stay up to date with regulations and relevant laws.</p>
+	<p>On the WWW team, we’re responsible for Cloudflare’s REST APIs, account management services and the dashboard experience. We take security and <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance/" target="_blank">PCI compliance</a> seriously, which means we move quickly to stay up to date with regulations and relevant laws.</p>
 	<p>A <a href="https://blog.cloudflare.com/deprecating-old-tls-versions-on-cloudflare-dashboard-and-api/">recent compliance project</a> had a requirement of detecting certain end user request data at the edge, and reacting to it both in API responses as well as visually in the dashboard. We realized that this was an excellent opportunity to dogfood Cloudflare Workers.</p>
 	<h3 id="deployingworkerstowwwcloudflarecomandapicloudflarecom">Deploying workers to www.cloudflare.com and api.cloudflare.com</h3>
 	<p>In this blog post, we’ll break down the problem we solved using a single worker that we shipped to multiple hosts, share the annotated source code of our worker, and share some best practices and tips and tricks we discovered along the way.</p>
@@ -12,7 +12,7 @@
 	<p>The Workers team made a modification to the core platform to ingest the TLS protocol version data sent from the edge, making it available in the workers environment as a property of the cf object available to the worker Javascript context (You can now use this property in your own workers).</p>
 	<p>With our workers able to inspect the TLS protocol versions of requests, we needed only to append a custom HTTP header containing this information before forwarding them into our application layer.</p>
 	<p>Our APIs use this data to add deprecation warnings to responses, and our UI uses it to display banners explaining the upcoming changes.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/05/tls-deprecation-banner.png" alt="tls-deprecation-banner" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/05/tls-deprecation-banner.png" alt="tls-deprecation-banner"></p>
 	<p>Let's now take a look at the source code for our worker.</p>
 	<h3 id="anatomyofafailopenworker">Anatomy of a fail open worker</h3>
 	<pre><code class="language-javascript">/**
@@ -148,7 +148,7 @@ async function requestWithTLSHeader(event) {
 	</ol>
 	<p>This pattern fixes a common race condition: if you don't leverage event.waitUntil, the runtime will race the passthrough subrequest and your logging subrequest.</p>
 	<p>If the passthrough subrequest completes significantly faster than your logging subrequest, the logging request could be cancelled. In practice, you'll notice this issue manifesting as dropped logging messages - whether or not a given exception will be logged properly becomes a roll of the dice on every request.</p>
-	<p>For additional insight, check out our <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips/?ref=blog.cloudflare.com" target="_blank">official guide to debugging Cloudflare workers</a>.</p>
+	<p>For additional insight, check out our <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips/" target="_blank">official guide to debugging Cloudflare workers</a>.</p>
 	<h3 id="failingopentoensureservicecontinuity">Failing open to ensure service continuity</h3>
 	<p>A key consideration when designing your worker is failure behavior. Depending on what your particular worker is accomplishing, you either want it to fail open or failed closed. Failing open means that if something goes horribly wrong, the original request will be passed through as if your worker did not exist, while failing closed means that a request that raises an exception in your worker will not be processed further.</p>
 	<p>If you are editing metadata, collecting metrics, or adding new non-critical HTTP headers, to name a few examples, you probably don't want an unhandled exception in your worker to prevent the request from being serviced.</p>
@@ -159,7 +159,7 @@ async function requestWithTLSHeader(event) {
 	<p>Now that you've done the work to get data from your worker logged to Sentry, you can leverage Sentry's PagerDuty integration to configure alerts for exceptions that occur in your workers.</p>
 	<p>This will increase your team's confidence in your worker-based solutions, and alert you immediately to any new issues that occur in production.</p>
 	<h3 id="shareyourworkerrecipes">Share your worker recipes</h3>
-	<p>You can find additional worker recipes and examples in our <a href="https://developers.cloudflare.com/workers/about/?ref=blog.cloudflare.com" target="_blank">official documentation</a>.</p>
-	<p>Have you written a worker that you'd like to share? <a href="mailto:community@cloudflare.com?ref=blog.cloudflare.com" target="_blank">Send it to us</a> and you might get featured on our blog or added to our <a href="https://developers.cloudflare.com/workers/recipes/a-b-testing/?ref=blog.cloudflare.com" target="_blank">Cloudflare worker recipe collection</a> with a credit.</p>
+	<p>You can find additional worker recipes and examples in our <a href="https://developers.cloudflare.com/workers/about/" target="_blank">official documentation</a>.</p>
+	<p>Have you written a worker that you'd like to share? <a href="mailto:community@cloudflare.com" target="_blank">Send it to us</a> and you might get featured on our blog or added to our <a href="https://developers.cloudflare.com/workers/recipes/a-b-testing/" target="_blank">Cloudflare worker recipe collection</a> with a credit.</p>
 	<!--kg-card-end: markdown-->
 </div>

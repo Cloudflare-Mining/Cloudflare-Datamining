@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-79.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-79.png" class="kg-image"></figure>
 	<p>Cloudflare 拦截<em>大量</em>各种各样的安全威胁，其中一些更引人注目的攻击目标是我们所保护的数千万互联网资产中的“长尾部分”。我们从攻击中收集的数据用于训练我们的机器学习模型，改善我们的网络和应用程序安全产品的有效性，但这些数据一直没有提供直接查询。在这一周，我们将改变这种状况。</p>
 	<p>所有客户即将能够访问我们全新的威胁调查门户网站：<em>Investigate</em>。这个门户位于 2021 年 12 月推出的 Cloudflare 安全中心中。此外，我们将在我们的分析平台上用这些情报来注释威胁，以简化安全工作流程并收紧反馈回路。</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 55%;"><iframe src="https://iframe.videodelivery.net/89d7bdad3765f4d0bf7977b13b56aef2?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F89d7bdad3765f4d0bf7977b13b56aef2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
@@ -10,7 +10,7 @@
 	<p>专门查询威胁数据非常有用，但能在日志和分析中直接标注有关数据，就是锦上添花了。本周起，我们将开始在仪表板中显示 <em>Investigate </em>中可用且与您的工作流相关的数据。我们将从您位于 Cloudflare 后的网站的 web 应用程序防火墙分析开始。</p>
 	<p>例如您要调查一个安全警报，涉及某个 web 应用程序防火墙规则拦截的大量请求。您可能会看到警报是一个 IP 地址触发的，它正在您的网站上探测常见的软件漏洞。如果该 IP 地址是一个云 IP 或被标记为匿名者，上下文情报将在分析页面直接显示相关信息。</p>
 	<p>这个上下文有助您看到模式。攻击是否来自匿名者或 Tor 网络？攻击是否来自云虚拟机？IP 地址只是一个 IP 地址。但看到来自匿名者的凭据填充攻击就是一种模式，它能够引发主动的反应：“我的机器人管理配置是否最新的？”</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-71.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-71.png" class="kg-image"></figure>
 	<h2 id="cloudflare-"><strong>Cloudflare 的网络优势及其如何为我们的数据提供信息</strong></h2>
 	<p>Cloudflare 运行的每个产品套件规模都非常惊人。在高峰期，Cloudflare 每秒处理 4400 万个 HTTP 请求，来自 <strong>100 多个国家/地区</strong>超过 <strong>250 个城市</strong>。Cloudflare 网络<strong>每日响应 1.2 万亿次 DNS 查询</strong>，它拥有 <strong>121 Tbps 的网络容量</strong>来服务流量，并缓解对所有产品的拒绝服务攻击。但是，除了如此庞大的规模外，Cloudflare 的架构还能够深入分析原始数据，并结合来自我们所有产品的情报，从而描绘出一张安全形势的整体图景。</p>
 	<p>我们从每个产品产生的原始数据中提炼出信号，与来自其他产品和能力的信号相结合，从而加强我们的网络和威胁数据能力。构建安全产品以在产品的用户中产生积极的飞轮效应，这是一种常见的范式。如果某个客户看到看到一个新的恶意软件，端点保护提供商就能部署一个更新，以便其他所有客户都能检测和拦截这个恶意软件。如果某个僵尸网络攻击一个客户，所提供的信息就能用于发现这个僵尸网络的特征并保护其他客户。如果某个设备参与了一次 DDoS（分布式拒绝服务）攻击，这个信息可用于使网络能更快检测和缓解未来的 DDoS 攻击。Cloudflare 产品阵容的广度意味着，对用户的飞轮效应不仅会在用户之间积累，<em>也会在产品之间</em>积累。</p>

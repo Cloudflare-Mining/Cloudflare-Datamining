@@ -1,19 +1,19 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-9.png" class="kg-image" alt="Network Performance Update: Developer Week 2022" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-9.png" class="kg-image" alt="Network Performance Update: Developer Week 2022"></figure>
 	<p>Cloudflareは、世界最速のネットワークを構築しています。ですが、この言葉をそのまま鵜呑みにしてもらいたいわけではありません。それを実証するために、私たちは絶えず自社と他社を比較して当社が最速であることを確認しています。開発者ウィークということで、競合製品に対する当社のWorkers製品のパフォーマンス、および全体的なネットワークパフォーマンスの最新情報をお伝えしたいと思います。</p>
 	<p>今年の初め、Fastly社のCompute@Edgeと比較したところ、全体的に当社の速度が勝っていました。今回は同様のテストを繰り返しただけでなく、さらに多くの競合他社との比較を示すために、AWS Lambda@Edgeも対象に追加しました。要約すると、当社は市場最速の開発者向けプラットフォームを提供しています。お客様の環境をより高速にするために私たちがどのようにネットワークを構築しているのか、また、それをどのように開発者向けプラットフォームに反映させているのかについて説明します。</p>
 	<h3 id="-">ネットワークパフォーマンスの最新情報</h3>
 	<p>一般的なネットワークパフォーマンスに関するデータと、WorkersをCompute@EdgeおよびLambda@Edgeと比較したデータの2つを用意しました。</p>
 	<p>グローバルなネットワークパフォーマンスを定量化するには、他のプロバイダーを使用した世界中の様々なネットワークで自分たちを比較した十分なデータを取得する必要があります。当社はReal User Measurements (RUM) を使用して、様々なプロバイダーから100kBのファイルを取得し、世界中のユーザーからさまざまなプロバイダーのパフォーマンスがレポートされています。データをレポートするユーザーが多いほど、信号の信用度は高くなります。目標は、さまざまなプロバイダーの中で速いのはどこか、さらに重要なことは、Cloudflareのどこを改善できるのかを正確に把握することです。その方法の詳細については、<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">こちら</a>のオリジナルのSpeed Weekブログ記事をご覧ください。</p>
 	<p>Cloudflare One ウィーク（2022年6月）では、最も多くの報告書に記載されているネットワークの多くで、当社が競合他社よりも高速であることをお伝えしました。世界のネットワーク上位3,000（アドバタイズされたIPv4アドレス数）のうち、各プロバイダーがp95 TCP接続時間で1位となったネットワーク数の内訳は次のとおりです。これは、あるネットワーク上のユーザーがプロバイダーに接続するのにかかった時間を表しています。以下のデータはCloudflare One ウィーク（2022年6月）のものです：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-5.png" class="kg-image"></figure>
 	<p>開発者ウィーク（2022年11月）のネットワーク上位3,000の分布は以下のとおりです：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-3.png" class="kg-image"></figure>
 	<p>Cloudflareは、一般利用されるネットワークで最速であるだけでなく、すべての国において最速のプロバイダーになることにも力を注いでいます。</p>
 	<p>Cloudflare One ウィーク（2022年6月）のネットワーク上位3,000のデータを世界地図で表すと、以下のようになります（Cloudflareはオレンジ色）。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-42.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-42.png" class="kg-image"></figure>
 	<p>また、開発者ウィーク（2022年11月）のネットワーク上位3,000を見てみると、世界では以下のようになります：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-29.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-29.png" class="kg-image"></figure>
 	<p>Cloudflareは、ロシア、ウクライナ、カザフスタン、インド、中国などのヨーロッパとアジアのより多くの国でNo .1になり、世界最速のネットワークという当社の使命をさらに果たす結果となりました。では、Supercloudを最速の開発者プラットフォームにするために、このネットワークがどのように支えているかについてお伝えしたいと思います。</p>
 	<h3 id="--1">開発者プラットフォームの比較方法</h3>
 	<p>最初のテストを公開してから6ヶ月が経ちましたが、ここで簡単におさらいしましょう。ネットワークへの接続時間、リクエスト完了に要した時間、全体の応答時間の計測結果を比較します。私たちはこれらの数字を「接続」、「待機」、「応答」と呼んでいます。これらの数字を選択した理由は、ユーザーの優れた体験のためにできるだけ高速であることが要求される重要な構成要素であるためです。当社は、可能な限りユーザーに近い場所でピアリングすることで、接続時間を短縮することができます。当社では、コードの実行速度が可能な限り高速になるよう最適化することで、待機時間を短縮することができます。この2つのプロセスを最適化すると、要求のエンドツーエンドのレイテンシーを表す応答時間が最適化されます。</p>
@@ -61,7 +61,7 @@
 	<p>また、テスト方法を、Fastly、Cloudflare、AWSの有料アカウントを使用するように変更しました。</p>
 	<h3 id="workers-compute-edge-lambda-edge-">Workers、Compute@Edge、Lambda@Edgeの比較</h3>
 	<p>今回は、エンドツーエンドでどのようなことを行っているかを示すために応答時間から見ていきましょう：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/1-6.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/1-6.png" class="kg-image"></figure><!--kg-card-begin: html-->
 	<table>
 		<thead>
 			<tr>
@@ -113,7 +113,7 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>すべてのケースで当社が最速です。次に、実際の演算処理が実行される前の、ユーザーがコンピュートプラットフォームに接続する速度を示す接続時間を見てみましょう。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/2-1.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/2-1.png" class="kg-image"></figure><!--kg-card-begin: html-->
 	<table>
 		<thead>
 			<tr>
@@ -166,7 +166,7 @@
 	</table><!--kg-card-end: html-->
 	<p>なお、これらの時間は、実行されているコードによって異なることは想定されていませんが、同じテストのセットから抽出しているため、ここで分割しています。</p>
 	<p>それでは、待機時間についてはどうでしょうか？待機時間はリクエストの<em>演算</em>にかかった時間を表しています。では、一番プラットフォームを最適化しているのはどこでしょうか？ハード関数によるRustテストではFastlyがまだわずかに優勢（さらなる最適化で打ち負かす予定です）ではあるものの、ここでもCloudflareです。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/3-1.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/3-1.png" class="kg-image"></figure><!--kg-card-begin: html-->
 	<table>
 		<thead>
 			<tr>
@@ -218,7 +218,7 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>これらの結果を検証するため、Catchpointの結果を当社独自のデータセットと比較しました。以下は、当社のデータから、Fastly、AWS、CloudflareのJavaScriptとRustのハード関数ループのp95 TTFBを示したものです：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/4-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/4-1.png" class="kg-image"></figure>
 	<p>CloudflareはJavaScriptとRustの呼び出しが高速です。これらの数字は、Rustの呼び出しにおけるFastlyのわずかな演算処理の優位性も裏付けています。</p>
 	<p>ここから得られる重要なポイントは、ほぼすべてのテストでリクエスト処理にかかる時間でCloudflareが高速であることに加えて、Cloudflareのネットワークとパフォーマンスの最適化全体で他と一線を画し、Workersプラットフォームをすべてにおいてさらに高速にできるという点です。もちろん、今後もこの状態を継続していく予定です。</p>
 	<h3 id="--3">あなたのアプリケーションを、より高速に</h3>

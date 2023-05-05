@@ -2,14 +2,14 @@
 	<!--kg-card-begin: markdown-->
 	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/the-as112-project-zh-cn/">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/the-as112-project-zh-tw/">繁體中文</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-32.png" class="kg-image" alt="Cloudflare is joining the AS112 project to help the Internet deal with misdirected DNS queries" loading="lazy"></figure>
-	<p>Today, we’re excited to announce that Cloudflare is participating in the <a href="https://www.as112.net/?ref=blog.cloudflare.com" target="_blank">AS112 project</a>, becoming an operator of this community-operated, loosely-coordinated anycast deployment of DNS servers that primarily answer reverse DNS lookup queries that are misdirected and create significant, unwanted load on the Internet.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-32.png" class="kg-image" alt="Cloudflare is joining the AS112 project to help the Internet deal with misdirected DNS queries"></figure>
+	<p>Today, we’re excited to announce that Cloudflare is participating in the <a href="https://www.as112.net/" target="_blank">AS112 project</a>, becoming an operator of this community-operated, loosely-coordinated anycast deployment of DNS servers that primarily answer reverse DNS lookup queries that are misdirected and create significant, unwanted load on the Internet.</p>
 	<p>With the addition of Cloudflare global network, we can make huge improvements to the stability, reliability and performance of this distributed public service.</p>
 	<h2 id="what-is-as112-project">What is AS112 project</h2>
 	<p>The AS112 project is a community effort to run an important network service intended to handle reverse DNS lookup queries for private-only use addresses that should never appear in the public DNS system. In the seven days leading up to publication of this blog post, for example, Cloudflare’s 1.1.1.1 resolver received more than 98 billion of these queries -- <em>all of which have no useful answer in the Domain Name System</em>.</p>
 	<p>Some history is useful for context. Internet Protocol (IP) addresses are essential to network communication. Many networks make use of IPv4 addresses that are reserved for private use, and devices in the network are able to connect to the Internet with the use of network address translation (NAT), a process that maps one or more local private addresses to one or more global IP addresses and vice versa before transferring the information.</p>
 	<p>Your home Internet router most likely does this for you. You will likely find that, when at home, your computer has an IP address like 192.168.1.42. That’s an example of a private use address that is fine to use at home, but can’t be used on the public Internet. Your home router translates it, through NAT, to an address your ISP assigned to your home and that can be used on the Internet.</p>
-	<p>Here are the reserved “private use” addresses designated in <a href="https://www.rfc-editor.org/rfc/rfc1918?ref=blog.cloudflare.com" target="_blank">RFC 1918</a>.</p><!--kg-card-begin: html-->
+	<p>Here are the reserved “private use” addresses designated in <a href="https://www.rfc-editor.org/rfc/rfc1918" target="_blank">RFC 1918</a>.</p><!--kg-card-begin: html-->
 	<table width="100%">
 		<thead>
 			<tr>
@@ -39,8 +39,8 @@
 	<center><small>(Reserved private IPv4 network ranges)</small></center><!--kg-card-end: html-->
 	<p>Although the reserved addresses themselves are blocked from ever appearing on the public Internet, devices and programs in private environments may occasionally originate DNS queries corresponding to those addresses. These are called “reverse lookups'' because they ask the DNS if there is a name associated with an address.</p>
 	<h3 id="reverse-dns-lookup">Reverse DNS lookup</h3>
-	<p>A reverse DNS lookup is an opposite process of the more commonly used DNS lookup (which is used every day to translate a name like <a href="https://www.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">www.cloudflare.com</a> to its corresponding IP address). It is a query to look up the domain name associated with a given IP address, in particular those addresses associated with routers and switches. For example, network administrators and researchers use reverse lookups to help understand paths being taken by data packets in the network, and it’s much easier to understand meaningful names than a meaningless number.</p>
-	<p>A reverse lookup is accomplished by querying DNS servers for a pointer record (<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-ptr-record/?ref=blog.cloudflare.com" target="_blank">PTR</a>). PTR records store IP addresses with their segments reversed, and by appending ".in-addr.arpa" to the end. For example, the IP address 192.0.2.1 will have the PTR record stored as 1.2.0.192.in-addr.arpa. In IPv6, PTR records are stored within the ".ip6.arpa" domain instead of ".in-addr.arpa.". Below are some query examples using the dig command line tool.</p><!--kg-card-begin: markdown-->
+	<p>A reverse DNS lookup is an opposite process of the more commonly used DNS lookup (which is used every day to translate a name like <a href="https://www.cloudflare.com" target="_blank">www.cloudflare.com</a> to its corresponding IP address). It is a query to look up the domain name associated with a given IP address, in particular those addresses associated with routers and switches. For example, network administrators and researchers use reverse lookups to help understand paths being taken by data packets in the network, and it’s much easier to understand meaningful names than a meaningless number.</p>
+	<p>A reverse lookup is accomplished by querying DNS servers for a pointer record (<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-ptr-record/" target="_blank">PTR</a>). PTR records store IP addresses with their segments reversed, and by appending ".in-addr.arpa" to the end. For example, the IP address 192.0.2.1 will have the PTR record stored as 1.2.0.192.in-addr.arpa. In IPv6, PTR records are stored within the ".ip6.arpa" domain instead of ".in-addr.arpa.". Below are some query examples using the dig command line tool.</p><!--kg-card-begin: markdown-->
 	<pre><code># Lookup the domain name associated with IPv4 address 172.64.35.46
 # “+short” option make it output the short form of answers only
 $ dig @1.1.1.1 PTR 46.35.64.172.in-addr.arpa +short
@@ -84,10 +84,10 @@ hunts.ns.cloudflare.com.
 168.192.in-addr.arpa.	10800	IN	SOA	168.192.in-addr.arpa. nobody.localhost. 42 86400 43200 604800 10800
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>At the beginning of the project, node operators set up the service in the direct delegation fashion (<a href="https://datatracker.ietf.org/doc/html/rfc7534?ref=blog.cloudflare.com" target="_blank">RFC 7534</a>). However, adding delegations to this service requires all AS112 servers to be updated, which is difficult to ensure in a system that is only loosely-coordinated. An alternative approach using DNAME redirection was subsequently introduced by <a href="https://datatracker.ietf.org/doc/html/rfc7535?ref=blog.cloudflare.com" target="_blank">RFC 7535</a> to allow new zones to be added to the system without reconfiguring the blackhole servers.</p>
+	<p>At the beginning of the project, node operators set up the service in the direct delegation fashion (<a href="https://datatracker.ietf.org/doc/html/rfc7534" target="_blank">RFC 7534</a>). However, adding delegations to this service requires all AS112 servers to be updated, which is difficult to ensure in a system that is only loosely-coordinated. An alternative approach using DNAME redirection was subsequently introduced by <a href="https://datatracker.ietf.org/doc/html/rfc7535" target="_blank">RFC 7535</a> to allow new zones to be added to the system without reconfiguring the blackhole servers.</p>
 	<h4 id="direct-delegation"><strong>Direct delegation</strong></h4>
 	<p>DNS zones are directly delegated to the blackhole servers in this approach.</p>
-	<p><a href="https://datatracker.ietf.org/doc/html/rfc7534?ref=blog.cloudflare.com" target="_blank">RFC 7534</a> defines the static set of reverse lookup zones for which AS112 name servers should answer authoritatively. They are as follows:</p>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc7534" target="_blank">RFC 7534</a> defines the static set of reverse lookup zones for which AS112 name servers should answer authoritatively. They are as follows:</p>
 	<ul>
 		<li>10.in-addr-arpa</li>
 		<li>16.172.in-addr.arpa</li>
@@ -149,7 +149,7 @@ hunts.ns.cloudflare.com.
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<h4 id="dname-redirection"><strong>DNAME redirection</strong></h4>
-	<p>Firstly, what is DNAME? Introduced by <a href="https://www.rfc-editor.org/rfc/rfc6672?ref=blog.cloudflare.com" target="_blank">RFC 6672</a>, a DNAME record or Delegation Name Record creates an alias for an entire subtree of the domain name tree. In contrast, the CNAME record creates an alias for a single name and not its subdomains. For a received DNS query, the DNAME record instructs the name server to substitute all those appearing in the left hand (owner name) with the right hand (alias name). The substituted query name, like the CNAME, may live within the zone or may live outside the zone.</p>
+	<p>Firstly, what is DNAME? Introduced by <a href="https://www.rfc-editor.org/rfc/rfc6672" target="_blank">RFC 6672</a>, a DNAME record or Delegation Name Record creates an alias for an entire subtree of the domain name tree. In contrast, the CNAME record creates an alias for a single name and not its subdomains. For a received DNS query, the DNAME record instructs the name server to substitute all those appearing in the left hand (owner name) with the right hand (alias name). The substituted query name, like the CNAME, may live within the zone or may live outside the zone.</p>
 	<p>Like the CNAME record, the DNS lookup will continue by retrying the lookup with the substituted name. For example, if there are two DNS zone as follows:</p><!--kg-card-begin: markdown-->
 	<pre><code># zone: example.com
 www.example.com.	A		203.0.113.1
@@ -192,7 +192,7 @@ bar.example.net.	A		203.0.113.3
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p><a href="https://datatracker.ietf.org/doc/html/rfc7535?ref=blog.cloudflare.com" target="_blank">RFC 7535</a> specifies adding another special zone, empty.as112.arpa, to support DNAME redirection for AS112 nodes. When there are new zones to be added, there is no need for AS112 node operators to update their configuration: instead, the zones’ parents will set up DNAME records for the new domains with the target domain empty.as112.arpa. The redirection (which can be cached and reused) causes clients to send future queries to the blackhole server that is authoritative for the target zone.</p>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc7535" target="_blank">RFC 7535</a> specifies adding another special zone, empty.as112.arpa, to support DNAME redirection for AS112 nodes. When there are new zones to be added, there is no need for AS112 node operators to update their configuration: instead, the zones’ parents will set up DNAME records for the new domains with the target domain empty.as112.arpa. The redirection (which can be cached and reused) causes clients to send future queries to the blackhole server that is authoritative for the target zone.</p>
 	<p>Note that blackhole servers do not have to support DNAME records themselves, but they do need to configure the new zone to which root servers will redirect queries at. Considering there may be existing node operators that do not update their name server configuration for some reasons and in order to not cause interruption to the service, the zone was delegated to a new blackhole server instead - blackhole.as112.arpa.</p>
 	<p>This name server uses a new pair of IPv4 and IPv6 addresses, 192.31.196.1 and 2001:4:112::1, so queries involving DNAME redirection will only land on those nodes operated by entities that also set up the new name server. Since it is not necessary for all AS112 participants to reconfigure their servers to serve empty.as112.arpa from this new server for this system to work, it is compatible with the loose coordination of the system as a whole.</p>
 	<p>The zone file for empty.as112.arpa is defined as:</p><!--kg-card-begin: markdown-->
@@ -229,7 +229,7 @@ bar.example.net.	A		203.0.113.3
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<h4 id="node-identification"><strong>Node identification</strong></h4>
-	<p><a href="https://datatracker.ietf.org/doc/html/rfc7534?ref=blog.cloudflare.com" target="_blank">RFC 7534</a> recommends every AS112 node also to host the following metadata zones as well: hostname.as112.net and hostname.as112.arpa.</p>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc7534" target="_blank">RFC 7534</a> recommends every AS112 node also to host the following metadata zones as well: hostname.as112.net and hostname.as112.arpa.</p>
 	<p>These zones only host TXT records and serve as identifiers for querying metadata information about an AS112 node. At Cloudflare nodes, the zone files look like this:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ORIGIN hostname.as112.net.
 ;
@@ -273,7 +273,7 @@ $TTL    604800
 	<h2 id="how-we-built-it">How we built it</h2>
 	<p>We’ve publicly talked about the Cloudflare in-house built authoritative DNS server software, rrDNS, several times in the past, but haven’t talked much about the software we built to power the Cloudflare public resolver - 1.1.1.1. This is an opportunity to shed some light on the technology we used to build 1.1.1.1, because this AS112 service is built on top of the same platform.</p>
 	<h3 id="a-platform-for-dns-workloads">A platform for DNS workloads</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-32.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-32.png" class="kg-image"></figure>
 	<p>We’ve created a platform to run DNS workloads. Today, it powers 1.1.1.1, 1.1.1.1 for Families, Oblivious DNS over HTTPS (ODoH), Cloudflare WARP and Cloudflare Gateway.</p>
 	<p>The core part of the platform is a non-traditional DNS server, which has a built-in DNS recursive resolver and a forwarder to forward queries to other servers. It consists of four key modules:</p>
 	<ol>
@@ -296,9 +296,9 @@ $TTL    604800
 		<li>Emit application logs, metric data points and tracing spans/events</li>
 	</ul>
 	<p>The DNS request lifecycle is broken down into phases. A request phase is a point in processing at which sandboxed apps can be called to change the course of request resolution. And each guest application can register callbacks for each phase.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-20.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-20.png" class="kg-image"></figure>
 	<h3 id="as112-guest-application">AS112 guest application</h3>
-	<p>The AS112 service is built as a guest application written in Rust and compiled to WebAssembly. The zones listed in <a href="https://www.rfc-editor.org/rfc/rfc7534?ref=blog.cloudflare.com" target="_blank">RFC 7534</a> and <a href="https://www.rfc-editor.org/rfc/rfc7535?ref=blog.cloudflare.com" target="_blank">RFC 7535</a> are loaded as static zones in memory and indexed as a tree data structure. Incoming queries are answered locally by looking up entries in the zone tree.</p>
+	<p>The AS112 service is built as a guest application written in Rust and compiled to WebAssembly. The zones listed in <a href="https://www.rfc-editor.org/rfc/rfc7534" target="_blank">RFC 7534</a> and <a href="https://www.rfc-editor.org/rfc/rfc7535" target="_blank">RFC 7535</a> are loaded as static zones in memory and indexed as a tree data structure. Incoming queries are answered locally by looking up entries in the zone tree.</p>
 	<p>A router setting in the app manifest is added to tell the host what kind of DNS queries should be processed by the guest application, and a fallback_action setting is added to declare the expected fallback behavior.</p><!--kg-card-begin: markdown-->
 	<pre><code># Declare what kind of queries the app handles.
 router = [
@@ -312,9 +312,9 @@ fallback_action = "fail"
 	<!--kg-card-end: markdown-->
 	<p>The guest application, along with its manifest, is then compiled and deployed through a deployment pipeline that leverages <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a> to store and replicate the assets worldwide.</p>
 	<p>The guest application is now up and running, but how does the DNS query traffic destined to the new IP prefixes reach the DNS server? Do we have to restart the DNS server every time we add a new guest application? Of course there is no need. We use software we developed and deployed earlier, called <a href="https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf/">Tubular</a>. It allows us to change the addresses of a service on the fly. With the help of Tubular, incoming packets destined to the AS112 service IP prefixes are dispatched to the right DNS server process without the need to make any change or release of the DNS server itself.</p>
-	<p>Meanwhile, in order to make the misdirected DNS queries land on the Cloudflare network in the first place, we use <a href="https://developers.cloudflare.com/byoip/?ref=blog.cloudflare.com" target="_blank">BYOIP</a> (Bringing Your Own IPs to Cloudflare), a Cloudflare product that can announce customer’s own IP prefixes in all our locations. The four AS112 IP prefixes are boarded onto the BYOIP system, and will be announced by it globally.</p>
+	<p>Meanwhile, in order to make the misdirected DNS queries land on the Cloudflare network in the first place, we use <a href="https://developers.cloudflare.com/byoip/" target="_blank">BYOIP</a> (Bringing Your Own IPs to Cloudflare), a Cloudflare product that can announce customer’s own IP prefixes in all our locations. The four AS112 IP prefixes are boarded onto the BYOIP system, and will be announced by it globally.</p>
 	<h3 id="testing">Testing</h3>
-	<p>How can we ensure the service we set up does the right thing before we announce it to the public Internet? 1.1.1.1 processes more than 13 billion of these misdirected queries every day, and it has logic in place to directly return NXDOMAIN for them locally, which is a recommended practice per <a href="https://www.rfc-editor.org/rfc/rfc7534?ref=blog.cloudflare.com" target="_blank">RFC 7534</a>.</p>
+	<p>How can we ensure the service we set up does the right thing before we announce it to the public Internet? 1.1.1.1 processes more than 13 billion of these misdirected queries every day, and it has logic in place to directly return NXDOMAIN for them locally, which is a recommended practice per <a href="https://www.rfc-editor.org/rfc/rfc7534" target="_blank">RFC 7534</a>.</p>
 	<p>However, we are able to use a dynamic rule to change how the misdirected queries are handled in Cloudflare testing locations. For example, a rule like following:</p><!--kg-card-begin: markdown-->
 	<blockquote>
 		<p><code>phase = post-cache and qtype in { PTR } and colo in { test1 test2 } and qname-suffix in { 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa 254.169.in-addr.arpa } forward 192.175.48.6:53</code></p>
@@ -334,7 +334,7 @@ fallback_action = "fail"
 		<li>Number of queries with DNSSEC support</li>
 		<li>Number of queries by ASN/Data center</li>
 	</ul>
-	<p>We’ll serve the public statistics page on the <a href="https://radar.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Radar</a> website. We are still working on implementing the required backend API and frontend of the page – we’ll share the link to this page once it is available.</p>
+	<p>We’ll serve the public statistics page on the <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> website. We are still working on implementing the required backend API and frontend of the page – we’ll share the link to this page once it is available.</p>
 	<h2 id="what-s-next">What’s next?</h2>
 	<p>We are going to announce the AS112 prefixes starting December 15, 2022.</p>
 	<p>After the service is launched, you can run a dig command to check if you are hitting an AS112 node operated by Cloudflare, like:</p><!--kg-card-begin: markdown-->
