@@ -2,10 +2,10 @@
 	<!--kg-card-begin: markdown-->
 	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/ko-kr/announcing-cloudflare-images-ko-kr/">한국어</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image3-16.png" class="kg-image" alt="Store, resize and deliver images with Cloudflare Images"></figure>
-	<p>Today, we are launching Cloudflare Images for all customers. Images is a single product that stores, resizes, optimizes and serves images. We built <a href="https://www.cloudflare.com/products/cloudflare-images/" target="_blank">Cloudflare Images</a> so customers of all sizes can build a scalable and affordable image pipeline in minutes.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image3-16.png" class="kg-image" alt="Store, resize and deliver images with Cloudflare Images" loading="lazy"></figure>
+	<p>Today, we are launching Cloudflare Images for all customers. Images is a single product that stores, resizes, optimizes and serves images. We built <a href="https://www.cloudflare.com/products/cloudflare-images/?ref=blog.cloudflare.com" target="_blank">Cloudflare Images</a> so customers of all sizes can build a scalable and affordable image pipeline in minutes.</p>
 	<h2 id="store-images-efficiently">Store images efficiently</h2>
-	<p>Many legacy image pipelines are architected to take an image and create multiple copies of it to account for different sizes and formats. These copies are then stored in a storage bucket and delivered using a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn/" target="_blank">CDN</a>. This architecture can be hard to maintain and adds infrastructure cost in unpredictable ways.</p>
+	<p>Many legacy image pipelines are architected to take an image and create multiple copies of it to account for different sizes and formats. These copies are then stored in a storage bucket and delivered using a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn/?ref=blog.cloudflare.com" target="_blank">CDN</a>. This architecture can be hard to maintain and adds infrastructure cost in unpredictable ways.</p>
 	<p>With Cloudflare Images, you don’t need to worry about <em>creating</em> and <em>storing</em> multiple versions of the same image in different sizes and formats. Cloudflare Images makes a clear distinction between your stored images and the variants. Once you upload an image, you can apply any defined variant to the uploaded image. The variants and different formats don’t count towards your stored images quota.</p>
 	<p>This means that when a user uploads a picture that you need to resize in three different ways and serve in two different formats, you pay for <em>one</em> stored image instead of seven different images (the original, plus three variants for each of the two formats.)</p>
 	<h2 id="built-in-access-control">Built-in access control</h2>
@@ -18,8 +18,8 @@
 	<!--kg-card-end: markdown-->
 	<h2 id="uploading-images">Uploading Images</h2>
 	<p>Cloudflare Images offers multiple ways to upload your images. We accept all the common file formats including JPEG, GIF and WEBP. Each image uploaded to Images can be up to 10 MB.</p>
-	<p>If you only have a few images or simply want a taste of the product, you can use the <a href="https://dash.cloudflare.com/?to=/:account/images" target="_blank">Images Dashboard</a>. Simply drag and drop one or more images:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-10.png" class="kg-image" alt="Cloudflare Images Dashboard">
+	<p>If you only have a few images or simply want a taste of the product, you can use the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fimages&amp;ref=blog.cloudflare.com" target="_blank">Images Dashboard</a>. Simply drag and drop one or more images:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-10.png" class="kg-image" alt="Cloudflare Images Dashboard" loading="lazy">
 		<figcaption><em>Cloudflare Images Dashboard</em></figcaption>
 	</figure>
 	<p>If you have an app that lets your users upload images, you can use the Direct Creator Uploads feature of Cloudflare Images.</p>
@@ -46,7 +46,7 @@
 	<p>Your client-side app can now upload the image directly to the <code>uploadURL</code> without exposing your account credentials to the client.</p>
 	<h2 id="resizing-with-variants">Resizing with Variants</h2>
 	<p>Cloudflare Images lets you define variants and apply them to your uploaded images. You can define up to 20 different variants to support different use cases. Each variant has properties including the width and height of resized images.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image4-11.png" class="kg-image" alt="Configure variants in Cloudflare Images">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image4-11.png" class="kg-image" alt="Configure variants in Cloudflare Images" loading="lazy">
 		<figcaption><em>Configure variants in Cloudflare Images</em></figcaption>
 	</figure>
 	<p>You can also configure the fit property to describe how the width and height dimensions should be interpreted.</p><!--kg-card-begin: markdown-->
@@ -81,22 +81,22 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>We plan to add more properties to give you maximum flexibility. If there is a particular property you’d love to see, <a href="https://docs.google.com/forms/d/1UmltETYpHIt0C9cZkr607ofcNUt53jgqk18Dh8vHxyU" target="_blank">let us know</a>.</p>
+	<p>We plan to add more properties to give you maximum flexibility. If there is a particular property you’d love to see, <a href="https://docs.google.com/forms/d/1UmltETYpHIt0C9cZkr607ofcNUt53jgqk18Dh8vHxyU?ref=blog.cloudflare.com" target="_blank">let us know</a>.</p>
 	<p>Once you define your variants, you can begin using them with any image. From the Dashboard, simply click on Variants to quickly preview how any image would be rendered using each of your variants.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-18.png" class="kg-image" alt="Previewing variants in Cloudflare Images">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-18.png" class="kg-image" alt="Previewing variants in Cloudflare Images" loading="lazy">
 		<figcaption><em>Previewing variants in Cloudflare Images</em></figcaption>
 	</figure>
 	<h2 id="optimized-image-delivery">Optimized image delivery</h2>
 	<p>Once you’ve uploaded your first image, you will see the Image Delivery URL in your Images Dashboard:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image5-9.png" class="kg-image" alt="Serving images with Cloudflare Images">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image5-9.png" class="kg-image" alt="Serving images with Cloudflare Images" loading="lazy">
 		<figcaption><em>Serving images with Cloudflare Images</em></figcaption>
 	</figure>
 	<p>A typical Image Delivery URL looks like this:</p>
-	<p><a href="https://imagedelivery.net/ZWd9g1K7eljCn_KDTu_OWA/:image_id/:variant_name" target="_blank"><code>https://imagedelivery.net/ZWd9g1K7eljCn_KDTu_OWA/:image_id/:variant_name</code></a></p>
+	<p><a href="https://imagedelivery.net/ZWd9g1K7eljCn_KDTu_OWA/:image_id/:variant_name?ref=blog.cloudflare.com" target="_blank"><code>https://imagedelivery.net/ZWd9g1K7eljCn_KDTu_OWA/:image_id/:variant_name</code></a></p>
 	<p>You can use this url template to form the final URL that returns any image and variant combination.</p>
 	<p>When a client requests an image, Cloudflare Images will pick the optimal format between WebP, PNG, JPEG and GIF. The format served to the eyeball is determined by client headers and the image type. Cloudflare Images will soon support AVIF, offering further compression. One of the best parts of using Cloudflare Images is that when we add support for newer formats such as AVIF, you will get the upside without needing to make any changes to your codebase.</p>
 	<h2 id="what-s-next">What’s next</h2>
-	<p>All Cloudflare customers can <a href="https://dash.cloudflare.com/?to=/:account/images" target="_blank">sign up to use Cloudflare Images</a> this week. We built Cloudflare Images for developers. Check out the <a href="https://developers.cloudflare.com/images/" target="_blank">Cloudflare Images developer docs</a> for examples of implementing common use-cases such as letting your users upload images directly to Images and using signed URLs to implement access control.</p>
+	<p>All Cloudflare customers can <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fimages&amp;ref=blog.cloudflare.com" target="_blank">sign up to use Cloudflare Images</a> this week. We built Cloudflare Images for developers. Check out the <a href="https://developers.cloudflare.com/images/?ref=blog.cloudflare.com" target="_blank">Cloudflare Images developer docs</a> for examples of implementing common use-cases such as letting your users upload images directly to Images and using signed URLs to implement access control.</p>
 	<p>We’re just getting started with Cloudflare Images. Here are some of the features we plan to support soon:</p>
 	<ul>
 		<li>AVIF support for even smaller file sizes and faster load times.</li>

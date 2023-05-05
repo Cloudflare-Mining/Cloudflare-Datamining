@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-11.png" class="kg-image" alt="Announcing SCIM support for Cloudflare Access &amp; Gateway"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-11.png" class="kg-image" alt="Announcing SCIM support for Cloudflare Access &amp; Gateway" loading="lazy"></figure>
 	<p>本日、Cloudflare Access and Gatewayが、System for Cross-domain Identity Management（SCIM）プロトコルのサポートを開始したことを発表できることを嬉しく思います。これが何を意味するのかを掘り下げる前に、SCIM、Access、Gatewayがそれぞれ何であるかを一度戻っておさらいしておきましょう。</p>
-	<p><a href="https://www.rfc-editor.org/rfc/rfc7642.txt" target="_blank">SCIM</a>は、組織が複数のシステムとドメインをまたいでユーザーIDとリソースへのアクセス権を管理するためのプロトコルです。多くの場合、ユーザーアカウントと権限の作成、更新、削除のプロセスを自動化し、これらのアカウントと権限を異なるシステム間で同期させるために使用されます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Access-SCIM-integration_JA-2.png" class="kg-image"></figure>
+	<p><a href="https://www.rfc-editor.org/rfc/rfc7642.txt?ref=blog.cloudflare.com" target="_blank">SCIM</a>は、組織が複数のシステムとドメインをまたいでユーザーIDとリソースへのアクセス権を管理するためのプロトコルです。多くの場合、ユーザーアカウントと権限の作成、更新、削除のプロセスを自動化し、これらのアカウントと権限を異なるシステム間で同期させるために使用されます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Access-SCIM-integration_JA-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>たとえば、ほとんどの組織は、名前、住所、役職などの従業員に関する情報を保存するOktaやAzure Active DirectoryなどのIDプロバイダーを保有しています。また、組織は高い確率で共同作業にクラウドベースのアプリケーションを使用しています。クラウドベースのアプリケーションにアクセスするには、従業員がアカウントを作成し、ユーザー名とパスワードでログインする必要があります。これらのアカウントを手動で作成・管理する代わりに、組織はSCIMを使用してプロセスを自動化することができます。オンプレミスのシステムとクラウドベースのアプリケーションの両方がSCIMに対応するように構成されています。 </p>
 	<p>新しい従業員がIDプロバイダーに追加または削除されると、SCIMはオンプレミスのシステムの情報を使用して、クラウドベースのアプリケーションにその従業員のアカウントを自動的に作成します。役職の変更など、IDプロバイダーで従業員の情報が更新されると、SCIMはクラウドベースのアプリケーションの対応する情報を自動的に更新します。従業員が退職する場合、SCIMを使用して両方のシステムからアカウントを削除することができます。 </p>
 	<p>SCIMによって、組織は複数のシステムをまたいでユーザーのIDとアクセス権を効率的に管理することができ、手動による介入の必要性を減らし、ユーザー情報が正確かつ最新のものであることを保証することができます。</p>
@@ -10,20 +10,20 @@
 	<p>同様に、Cloudflare Gatewayは包括的なセキュアWebゲートウェイ（SWG）です。Accessと同じIDプロバイダ構成を利用して、管理者がIDに基づいてDNS、ネットワーク、HTTP検査ポリシーを構築できるようにします。ユーザーがWARPクライアントを使用してIDプロバイダー経由でログインすると、そのIDが記録され、所属組織の管理者によって作成されたポリシーに照らし合わせた評価が実行されます。</p>
 	<h3 id="scim-">SCIM以前の課題</h3>
 	<p>SCIM以前は、（離職、セキュリティ侵害、その他の要因などで）ユーザーのプロビジョニングを解除する必要がある場合、管理者はIDプロバイダーとAccessの両方でユーザーのアクセス権を削除する必要がありました。これは、ユーザーがIDプロバイダー経由で再度ログインしようとするまで、ユーザーのCloudflare Zero Trustセッションがアクティブなままとなるためです。これは時間がかかり、エラーが発生しやすく、タイムリーにユーザーのアクセス権を削除しなければ、セキュリティ上の脆弱性の余地が残ってしまいます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/1@2x.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/1@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Cloudflare Access and Gatewayにあったもう1つの課題は、IDプロバイダーグループを手動で入力する必要があったことです。つまり、IDプロバイダーグループが変更された場合、管理者はそれらの変更を反映するためにCloudflare Zero trustの値を手動で更新する必要がありました。これは面倒で時間がかかり、更新を速やかに行わなければ不整合が発生してしまいました。さらに、このプロセスを効果的に管理するには、追加のリソースと専門知識が必要でした。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="scim-for-access-gateway">SCIM for Access &amp; Gateway</h3>
 	<p>現在、SCIMの統合により、Access and Gatewayは、自動的にIDプロバイダーで非アクティブ化されたユーザーをプロビジョニング解除してその情報をIDプロバイダーグループと同期することができるようになりました。これにより、適切なグループに所属するアクティブなユーザーのみが組織のリソースにアクセスできるようになり、ネットワークのセキュリティが向上します。</p>
 	<p>SCIMを介したユーザーのプロビジョニング解除では、IDプロバイダーでのユーザの非アクティブ化イベントをリッスンし、そのユーザーのすべてのアクティブセッションを無効化します。これにより、Accessで保護されているすべてのアプリケーションへのアクセスと、WARP for Gatewayを介したセッションが即座に遮断されます。 </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--1-.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>さらに、SCIMの統合により、AccessとGatewayのポリシーにおけるIDプロバイダーグループ情報を同期させることができます。つまり、すべてのIDプロバイダーグループがAccessとGatewayの両方のポリシービルダーで自動的に使用できるようになります。また、グループメンバーシップに変更があった場合、自動的に再認証を強制するオプションも用意されています。</p>
 	<p>例えば、example.comに関連する電子メールを持つユーザーで、リスクの高いユーザーグループ以外のユーザーにのみ適用されるアクセスポリシーを作成する場合、ドロップダウンからリスクの高いユーザーグループを選択するだけで、以下のようにポリシーを作成することができます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--2-.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>同様に、これらの同じユーザーに対してexample.comとそのすべてのサブドメインをブロックするGatewayポリシーを作成する場合、次のようにポリシーを作成します。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--3-.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-">今後の展開は？</h3>
 	<p>現在、SCIMのサポートは、Azure Active DirectoryとOkta for Self-Hosted Accessアプリケーションで利用可能です。将来的には、さらに多くのIDプロバイダーやAccess for SaaSへの対応拡張を予定しています。</p>
 	<h3 id="--1">今すぐお試しください！</h3>
-	<p>SCIMは現在、Zero Trustをご利用いただいているすべてのお客様が利用可能で、運用と全体的なセキュリティの向上にご利用いただけます。今すぐ<a href="https://one.dash.cloudflare.com/" target="_blank">SCIM for Access and Gateway</a>をお試しください。</p>
+	<p>SCIMは現在、Zero Trustをご利用いただいているすべてのお客様が利用可能で、運用と全体的なセキュリティの向上にご利用いただけます。今すぐ<a href="https://one.dash.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">SCIM for Access and Gateway</a>をお試しください。</p>
 </div>

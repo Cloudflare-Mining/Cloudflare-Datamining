@@ -35,7 +35,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>これは本当に簡単な実装です。私はこれがn 回ループするため好きではないのですが、視覚化するのを助けてくれます。たとえば、 <code>g == 4</code>と <code>n == 17</code>を考えてみます。このループは、グループの各エントリーを次のように埋めていきます（四角はグループの中のエントリーを表し、四角の中にある数字は、ループによって増加するi値を表します）。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>そして、グループは最終的に <code>[5, 4, 4, 4]</code>になります。これで視覚化されたのは、 <code>groups[i]</code>が何回増加したかは、i番目の要素で何回forループが、「ループ」しなければならなかったかによるということです。これは、ループを使用しなくても簡単に計算することができます。</p>
 	<p>というわけで、コードは以下のようなシンプルなものになりました。</p><!--kg-card-begin: markdown-->
 	<pre><code>    groups = [1+max(0,n-(i+1))//(n//g) for i in range(n//g)]

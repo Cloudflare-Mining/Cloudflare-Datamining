@@ -1,17 +1,17 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/1-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/1-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>今天，我们的 Tiered Cache （分层缓存）系统进行的更改导致用户的一些请求失败，状态码为 530。影响总共持续了接近 6 个小时。我们估计，高峰期约 5% 的请求没有得到响应。由于我们系统的复杂性和测试中的盲点，当更改发布到测试环境中时，我们没有发现这一点。</p>
 	<p>这一故障是由我们处理跨位置可缓存请求的方式产生的副作用导致的。乍一看，这些错误似乎是由另一个系统引起的，后者在一段时间前部署了新版本。我们的团队进行了多次尝试，以确定到底是什么导致了这些问题。一旦发现问题所在，我们加速进行了回滚，并在 87 分钟内完成。</p>
 	<p>对此故障我们表示抱歉，并正在采取措施以确保此类事件不再重现。</p>
 	<h3 id="-">背景</h3>
 	<p>Cloudflare 的产品之一是我们的内容分发网络（CDN）。该产品用于在全球缓存网站的资源。然而，某个数据中心不一定缓存了某个资源。该资源有可能是新的，已经过期，或已被清除。如果发生这种情况，当有用户请求该资源时，我们的 CDN 就需要从网站的源服务器获取新的副本。然而，用户正在访问的数据中心仍可能依然远离源服务器。这给客户带来了另一个问题：每次资源没有缓存在该数据中心时，我们都需要从源服务器获取新的副本。</p>
 	<p>为了提高命中率，我们引入了 <a href="https://blog.cloudflare.com/zh-cn/introducing-smarter-tiered-cache-topology-generation-zh-cn/">Tiered Cache</a>。通过使用 Tiered Cache，我们将 CDN 中的数据中心组织成一种层级结构，其中“下层”数据中心更接近最终用户，而“上层”数据中心更接近源服务器。当下层发生缓存不命中时，系统就会检查上层。如果上层有该资源的新副本，我们就能予以提供来响应请求。这提高了性能，并减少了 Cloudflare 为检索未缓存在下层的资源而不得不联系源服务器的次数。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/2-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/2-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--1">事件时间线和影响</h3>
 	<p>08:40 UTC (世界标准时间），某个 CDN 组件一个存在 bug 的软件版本开始慢慢推出。当用户访问某个配置了 Tiered Cache、Cloudflare Images 或 Bandwidth Alliance 的网站时，这个 bug 就会被触发。这个 bug 导致一部分客户收到 HTTP 状态码 530 —— 表示发生了错误。可从数据中心的本地缓存直接提供的内容不受影响。</p>
 	<p>在有问题的组件发布到一部分数据中心后，我们接到客户报告的 530 错误断续增加，随即展开调查。</p>
 	<p>随着该软件版本发布到全球范围内的其他数据中心，所触发的 530 错误大幅增加，并收到更多客户报告，于是我们宣布发生事件。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/3-2.png" class="kg-image" alt="请求导致状态码为 530 的响应">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/3-2.png" class="kg-image" alt="请求导致状态码为 530 的响应" loading="lazy">
 		<figcaption><em>请求导致状态码为 530 的响应</em></figcaption>
 	</figure>
 	<p>在 17:03 UTC，我们在一个数据中心回滚了该软件版本，从而证实错误是有问题的软件版本所致。回滚后，我们观察到 530 错误减少。得到证实后，我们加速在全球范围内的回滚，530 错误随之下降。所有配置为 Tiered Cache 上层的数据中心在 18:04 UTC 恢复到此前版本后，影响也结束了。</p>

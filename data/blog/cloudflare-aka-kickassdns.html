@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>One of the things we don't talk about much at CloudFlare is how we've built one of the largest, fastest, easiest, and most resilient authoritative DNS networks in the world. A <a href="http://www.solvedns.com/blog/major-dns-providers-speed-comparison/" target="_blank">report from SolveDNS</a> was just released that shows CloudFlare as the second fastest authoritative DNS provider, well ahead of companies EasyDNS, UltraDNS, and Verisign.</p>
+	<p>One of the things we don't talk about much at CloudFlare is how we've built one of the largest, fastest, easiest, and most resilient authoritative DNS networks in the world. A <a href="http://www.solvedns.com/blog/major-dns-providers-speed-comparison/?ref=blog.cloudflare.com" target="_blank">report from SolveDNS</a> was just released that shows CloudFlare as the second fastest authoritative DNS provider, well ahead of companies EasyDNS, UltraDNS, and Verisign.</p>
 	<table>
 		<thead>
 			<tr>
@@ -93,9 +93,16 @@
 				<td>62.08</td>
 				<td>Yes</td>
 			</tr>
+			<tr>
+				<td><small>Data from <a href="http://www.solvedns.com/blog/major-dns-providers-speed-comparison/?ref=blog.cloudflare.com" target="_blank">SolveDNS August 1, 2012 report</a></small></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
 		</tbody>
 	</table>
-	<p><small>Data from <a href="http://www.solvedns.com/blog/major-dns-providers-speed-comparison/" target="_blank">SolveDNS August 1, 2012 report</a></small></p>
 	<p>CloudFlare runs an authoritative DNS network in order to make provisioning our performance and security services as easy as possible. Because we're relentlessly focused on making the web faster, we built our DNS infrastructure to be as fast as possible. While we give you two name server domains when you sign up for CloudFlare, the reality is that those domains reference clusters of servers in each of our 17 (soon to be 23) data centers worldwide. That's quite different than the average registrar's DNS infrastructure, and part of the secret on how we're so fast.</p>
 	<h3 id="anyservercanansweranydnsquery">Any Server Can Answer Any DNS Query</h3>
 	<p>We've <a href="https://blog.cloudflare.com/a-brief-anycast-primer">written about Anycast before</a>, but it's an important technology we use to make DNS fast and highly available. Where traditionally, one IP corresponds to one server on the Internet, with<br>
@@ -109,7 +116,7 @@ KickassDNS)" src="http://blog.cloudflare.com/content/images/unicast_anycast.png.
 	<p><img alt="CloudFlare (aka. KickassDNS)" src="https://blog.cloudflare.com/content/images/cloudflare_dns_control_panel.png.scaled500.png" title="CloudFlare (aka. KickassDNS)"><noscript><img alt="CloudFlare (aka.
 KickassDNS)" src="http://blog.cloudflare.com/content/images/cloudflare_dns_control_panel.png.scaled500.png" title="CloudFlare (aka. KickassDNS)"></noscript></p>
 	<p>Beyond ease of use, the way that CloudFlare's DNS infrastructure works means updates are extremely fast. It takes less than a second for a change from the DNS control panel to be propagated across our entire network. And, since you can change your backend server's IP address without having to change the IP CloudFlare announces to the world, the result is you can change from one backend server to another <a href="https://blog.cloudflare.com/never-deal-with-dns-propagation-again">without having to wait for DNS propagation</a>. It's pretty slick.</p>
-	<p>We're continuing to make additional improvements to both our DNS infrastructure and how it is deployed by our customers. One of the requested features from businesses was that they wanted custom DNS servers that used their own domain name, not CloudFlare. As a result, that feature is now included with all <a href="https://www.cloudflare.com/business" target="_blank">Business and Enterprise plans</a>. Going forward, CloudFlare will begin offering its massive DNS infrastructure and custom name servers to <a href="https://www.cloudflare.com/hosting-partners" target="_blank">hosting provider partners</a> so they can ensure their customers have the fastest, most resilient DNS service without requiring any name server changes.</p>
-	<p>So while we don't talk about it much, we're spending a ton of time thinking about DNS. As <a href="https://twitter.com/jgrahamc" target="_blank">John Graham-Cumming</a> on our team just suggested, "We clearly need to change our name to something like KickassDNS." That's probably not going to happen. But, if you've ever hesitated to <a href="https://www.cloudflare.com/sign-up" target="_blank">sign up for CloudFlare</a> because you were concerned about changing your DNS, chances are we'll be significantly faster and more resilient than whatever you were using before.</p>
+	<p>We're continuing to make additional improvements to both our DNS infrastructure and how it is deployed by our customers. One of the requested features from businesses was that they wanted custom DNS servers that used their own domain name, not CloudFlare. As a result, that feature is now included with all <a href="https://www.cloudflare.com/business?ref=blog.cloudflare.com" target="_blank">Business and Enterprise plans</a>. Going forward, CloudFlare will begin offering its massive DNS infrastructure and custom name servers to <a href="https://www.cloudflare.com/hosting-partners?ref=blog.cloudflare.com" target="_blank">hosting provider partners</a> so they can ensure their customers have the fastest, most resilient DNS service without requiring any name server changes.</p>
+	<p>So while we don't talk about it much, we're spending a ton of time thinking about DNS. As <a href="https://twitter.com/jgrahamc?ref=blog.cloudflare.com" target="_blank">John Graham-Cumming</a> on our team just suggested, "We clearly need to change our name to something like KickassDNS." That's probably not going to happen. But, if you've ever hesitated to <a href="https://www.cloudflare.com/sign-up?ref=blog.cloudflare.com" target="_blank">sign up for CloudFlare</a> because you were concerned about changing your DNS, chances are we'll be significantly faster and more resilient than whatever you were using before.</p>
 	<!--kg-card-end: markdown-->
 </div>
