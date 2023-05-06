@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-23.png" class="kg-image" alt="Cloud CNI privately connects your clouds to Cloudflare"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-23.png" class="kg-image" alt="Cloud CNI privately connects your clouds to Cloudflare" loading="lazy"></figure>
 	<p>对 CIO 们来说，联网是一个常常变得难上加难的过程。企业网络需要连接的东西太多了，而且每一个都需要以不同的方式进行连接：用户设备需要通过安全 Web 网关进行受管连接，办公室需要使用公共互联网或专用连接进行连接，数据中心需要使用自己的专用或公共连接进行管理，除此以外，您还必须管理云连接！管理所有这些不同场景的连接性及其所有隐私和合规性需求可能会令人沮丧，而您只不过希望以一种非侵入性的方式让用户私密、安全地访问其资源。</p>
 	<p>Cloudflare 通过 Cloudflare One 帮助简化您的连接过程。今天，我们隆重推出通过 Cloudflare Network Interconnect (CNI)对直接云互连的支持，让 Cloudflare 成为您所有互连需求的一站式商店。 </p>
 	<p>使用 IBM Cloud、Google Cloud、Azure、Oracle Cloud Infrastructure 和 Amazon Web Services 的客户现在可从其私有云实例直接连接到 Cloudflare。本文将介绍：为什么直接云互连如此重要，Cloudflare 如何使其变得简单，Cloudflare 如何将直接云连接与我们现有的 Cloudflare One 产品集成，从而将您的企业网络安全性提升到新的水平。</p>
@@ -11,23 +11,23 @@
 	<h3 id="--1">公共互联网上的隐私</h3>
 	<p>但是，虽然 VPC 和直接云互连已经解决了基础设施迁移到云的问题，但随着企业网络脱离本地部署，云带来了一个全新的挑战：如果要淘汰连接所有资源的企业网络，我如何维持专用云连接？</p>
 	<p>让我们通过一家连接数据中心、办公室和 Azure 实例的示例公司说明。今天，这家公司可能有远程用户连接到驻留在数据中心、办公室或云实例中的应用程序。办公室的用户可以连接到云中的应用程序，现在所有这些都由公司管理。为此，他们可能会使用 VPN，在访问必要的应用程序之前将远程用户通过隧道连接到数据中心或办公室。办公室和数据中心往往通过从连接供应商租用的 MPLS 线路连接。然后还有通过 IBM DirectLink 连接的私有 IBM 实例。现在 CIO 已经需要管理三个不同的连接提供商，我们甚至还没有开始讨论内部应用程序的访问策略，跨建筑物网络的防火墙，以及在提供商基础上实施 MPLS 路由。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Cloudflare One 帮助简化这一过程，允许企业将 Cloudflare 作为适用于所有不同连接选项的网络。您需要做的就是管理到 Cloudflare 的连接，无需费神处理建筑物和云之间的连接。 </p>
 	<p>WARP 为远程用户管理连接，Cloudflare Network Interconnect 提供从数据中心和办公室到 Cloudflare 的专用连接，所有这些都可以通过监管应用程序的 Access 策略和 Magic WAN 来管理以提供路由，让您的用户到达他们需要去的地方。通过 Cloudflare One，我们成功将连接过程简化成如下的样子：</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--1--1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--1--1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>在此之前，对于拥有私有云的用户，要么将云实例暴露到公共互联网上，要么通过将私有云实例连接到他们的数据中心而不是直接连接到 Cloudflare 来维持非最优路由。这意味着，那些客户必须维护直接到数据中心的专用连接，这为本应更简单的解决方案增加了艰辛：</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--2--1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--2--1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>现在 CNI 已经支持云环境，该公司可打开一个直接到 Cloudflare 的专用云链路，而非接入其数据中心。这允许该公司使用 Cloudflare 作为其所有资源之间的真正中介，他们可以依靠 Cloudflare 管理所有资源的防火墙、访问策略和路由，将需要管理的路由供应商数目减少到一个：Cloudflare！</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--3--1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--3--1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>在一切都直连到 Cloudflare 后，这家公司就可以通过 Magic WAN 管理他们的跨资源路由和防火墙，直接在 Access 中设置用户策略，通过 Gateway 设置经 Cloudflare 250+ 数据中心中的任何一个到公共互联网的出口策略。所有办公室和云都在一个密不透风的网络上相互通信，没有公共访问或公共共享的对等连接链路，最重要的是，所有这些安全和隐私努力对用户是完全透明的。</p>
 	<p>让我们来谈谈如何让您的云与我们进行连接。</p>
 	<h3 id="--2">快速云连接</h3>
 	<p>云连接最重要的一点是它应有的简单程度：您不应该花费大量时间等待交叉连接出现、获取 LOA、监视光级别以及在配置连接时通常会做的所有事情。从云提供商获得连接应该是云原生的：您应该能够直接从现有门户配置云连接，并遵循现有的直接云连接步骤。 </p>
 	<p>这就是为什么我们的全新云支持使连接到 Cloudflare 更加容易。我们现在支持与 IBM、AWS、Azure、Google Cloud 和 OCI 的直接云连接，这样您就可以像连接数据中心一样，从您的云提供商直接连接到 Cloudflare。将专用连接转移到 Cloudflare 意味着你不必再维护自己的基础设施，Cloudflare 成为你的基础设施，这样您不必考虑为设备订购交叉连接，获得 LOA，或检查光级别。让我们通过一个使用 Google Cloud 的示例来演示这有多容易。</p>
 	<p>在任何云中配置连接的第一步是请求连接。对于 Google Cloud，在 VPC 网络详情中选择“专用服务连接”即可：</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>这将允许您选择一个合作伙伴连接或直接连接。对于使用 Cloudflare 的情况，您应该选择一个合作伙伴连接。按照说明选择连接区域和数据中心地点后，您会得到一个“连接 ID”，Google Cloud 和 Cloudflare 使用它来识别与您的 VPC 之间的专用连接：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled--1-.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled--1-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>在这个截图中，您会注意到它提示您需要在合作伙伴端配置连接。在这种情况下，您可以使用这个 key 在一个现有链路上自动配置一个虚拟连接。配置过程包括五个步骤：</p>
 	<ol>
 		<li>为您的连接分配唯一的 VLAN，以确保专用连接</li>
@@ -47,5 +47,5 @@
 	<p>虽然您可能要保护您的云服务，不被任何不在您的网络上的人访问，但有时您的云服务仍需要与公共互联网通信。幸运的是，Gateway 可以助您一臂之力。通过 Cloud CNI，您可以获得到 Cloudflare 的专用路径，Cloudflare 将管理您的所有出口策略，确保您可以在监测其他所有离开网络的流量的同一地方仔细观察您的云服务出站流量。</p>
 	<h3 id="cloud-cni-">Cloud CNI：安全、高性能、简易</h3>
 	<p>Cloudflare 致力于让 Zero Trust 和网络安全变得简易和低调。Cloud CNI 是确保您的网络像其他所有东西一样易于管理的另一个步骤，以便您可以停止关注如何构建您的网络，并开始关注其中发生的事情。</p>
-	<p>如果您对 Cloud CNI 感兴趣，欢迎<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">联系我们</a>，连接到一个无缝和简单的 Zero Trust 世界。</p>
+	<p>如果您对 Cloud CNI 感兴趣，欢迎<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/?ref=blog.cloudflare.com" target="_blank">联系我们</a>，连接到一个无缝和简单的 Zero Trust 世界。</p>
 </div>
