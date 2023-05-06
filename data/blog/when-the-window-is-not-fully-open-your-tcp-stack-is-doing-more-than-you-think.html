@@ -18,7 +18,7 @@
 		<li>The server doesn't <code>recv()</code> any data. We expect all the data to stay and wait in the receive queue.</li>
 		<li>We fix the SO_RCVBUF for better illustration.</li>
 	</ul>
-	<p>Simplified pseudocode might look like (<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-07-rmem-a/window.py" target="_blank">full code if you dare</a>):</p><!--kg-card-begin: markdown-->
+	<p>Simplified pseudocode might look like (<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-07-rmem-a/window.py?ref=blog.cloudflare.com" target="_blank">full code if you dare</a>):</p><!--kg-card-begin: markdown-->
 	<pre><code>sd = socket.socket(AF_INET, SOCK_STREAM, 0)
 sd.bind(('127.0.0.3', 1234))
 sd.listen(32)
@@ -39,8 +39,8 @@ while true:
 		<li>Assuming infinite bandwidth, what is the minimal time &nbsp;- measured in RTT - for the client to fill the receive buffer?</li>
 	</ul>
 	<h3 id="a-bit-of-theory">A bit of theory</h3>
-	<p>Let's start by establishing some common nomenclature. I'll follow the wording used by the <a href="https://man7.org/linux/man-pages/man8/ss.8.html" target="_blank"><code>ss</code> Linux tool from the <code>iproute2</code> package</a>.</p>
-	<p>First, there is the buffer budget limit. <a href="https://man7.org/linux/man-pages/man8/ss.8.html" target="_blank"><code>ss</code> manpage</a> calls it <strong>skmem_rb</strong>, in the kernel it's named <strong>sk_rcvbuf</strong>. This value is most often controlled by the Linux autotune mechanism using the <code>net.ipv4.tcp_rmem</code> setting:</p><!--kg-card-begin: markdown-->
+	<p>Let's start by establishing some common nomenclature. I'll follow the wording used by the <a href="https://man7.org/linux/man-pages/man8/ss.8.html?ref=blog.cloudflare.com" target="_blank"><code>ss</code> Linux tool from the <code>iproute2</code> package</a>.</p>
+	<p>First, there is the buffer budget limit. <a href="https://man7.org/linux/man-pages/man8/ss.8.html?ref=blog.cloudflare.com" target="_blank"><code>ss</code> manpage</a> calls it <strong>skmem_rb</strong>, in the kernel it's named <strong>sk_rcvbuf</strong>. This value is most often controlled by the Linux autotune mechanism using the <code>net.ipv4.tcp_rmem</code> setting:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sysctl net.ipv4.tcp_rmem
 net.ipv4.tcp_rmem = 4096 131072 6291456
 </code></pre>
@@ -53,7 +53,7 @@ net.core.wmem_max = 212992
 	<!--kg-card-end: markdown-->
 	<p><a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency/">The aforementioned blog post</a> discusses why manual buffer size management is problematic - relying on autotuning is generally preferable.</p>
 	<p>Here’s a diagram showing how <strong>skmem_rb</strong> budget is being divided:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-17.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-17.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>In any given moment, we can think of the budget as being divided into four parts:</p>
 	<ul>
 		<li><strong>Recv-q</strong>: part of the buffer budget occupied by actual application bytes awaiting <code>read()</code>.</li>
@@ -74,7 +74,7 @@ net.core.wmem_max = 212992
 		<li>The server has a fixed <strong>skmem_rb</strong> set at 64KiB.</li>
 		<li>The server has <strong><code>tcp_adv_win_scale=0</code></strong>.</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image6-10.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image6-10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>There are so many things here! Let's try to digest it. First, the X axis is an ingress packet number (we saw about 65). The Y axis shows the buffer sizes as seen on the receive path for every packet.</p>
 	<ul>
 		<li>First, the purple line is a buffer size limit in bytes - <strong>skmem_rb</strong>. In our experiment we called <code>setsockopt(SO_RCVBUF)=32K</code> and skmem_rb is double that value. Notice, by calling SO_RCVBUF we disabled the Linux autotune mechanism.</li>
@@ -100,19 +100,19 @@ TcpExtTCPRcvQDrop    13    0.0
 	<p>This results in an interesting situation. The receiver's window is open which might indicate it has resources to handle the data. But that's not always the case, like in our example when it runs out of the memory budget.</p>
 	<p>The sender will think it hit a network congestion packet loss and will run the usual retry mechanisms including exponential backoff. This behavior can be looked at as desired or undesired, depending on how you look at it. On one hand no data will be lost, the sender can eventually deliver all the bytes reliably. On the other hand the exponential backoff logic might stall the sender for a long time, causing a noticeable delay.</p>
 	<p>The root of the problem is straightforward - Linux kernel <strong>skmem_rb </strong>sets a memory budget for both the <strong>data</strong> and <strong>metadata </strong>which reside on the socket. In a pessimistic case each packet might incur a cost of a <strong>struct sk_buff</strong> + <strong>struct skb_shared_info</strong>, which on my system is 576 bytes, above the actual payload size, plus memory waste due to network card buffer alignment:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image7-10.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image7-10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>We now understand that Linux can't just advertise 100% of the memory budget as an advertised window. Some budget must be reserved for metadata and such. The upper limit of window size is expressed as a fraction of the "free" socket budget. It is controlled by <code>tcp_adv_win_scale</code>, with the following values:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image9-5.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image9-5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>By default, Linux sets the advertised window at most at 50% of the remaining buffer space.</p>
 	<p>Even with 50% of space "reserved" for metadata, the kernel is very smart and tries hard to reduce the metadata memory footprint. It has two mechanisms for this:</p>
 	<ul>
-		<li><strong>TCP Coalesce</strong> - on the happy path, Linux is able to throw away <strong>struct sk_buff</strong>. It can do so, by just linking the data to the previously enqueued packet. You can think about it as if it was <a href="https://www.spinics.net/lists/netdev/msg755359.html" target="_blank">extending the last packet on the socket</a>.</li>
+		<li><strong>TCP Coalesce</strong> - on the happy path, Linux is able to throw away <strong>struct sk_buff</strong>. It can do so, by just linking the data to the previously enqueued packet. You can think about it as if it was <a href="https://www.spinics.net/lists/netdev/msg755359.html?ref=blog.cloudflare.com" target="_blank">extending the last packet on the socket</a>.</li>
 		<li><strong>TCP Collapse</strong> - when the memory budget is hit, Linux runs "collapse" code. Collapse rewrites and defragments the receive buffer from many small skb's into a few very long segments - therefore reducing the metadata cost.</li>
 	</ul>
 	<p>Here's an extension to our previous chart showing these mechanisms in action:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image3-10.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image3-10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><strong>TCP Coalesce</strong> is a very effective measure and works behind the scenes at all times. In the bottom chart, the packets where the coalesce was engaged are shown with a pink line. You can see - the <strong>skmem_r</strong> bumps (blue line) are clearly correlated with a <strong>lack</strong> of coalesce (pink line)! The nstat TcpExtTCPRcvCoalesce counter might be helpful in debugging coalesce issues.</p>
-	<p>The <strong>TCP Collapse</strong> is a bigger gun. <a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency/">Mike wrote about it extensively</a>, and <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike/">I wrote a blog post years ago, when the latency of TCP collapse hit us hard</a>. In the chart above, the collapse is shown as a red circle. We clearly see it being engaged after the socket memory budget is reached - from packet number 63. The nstat TcpExtTCPRcvCollapsed counter is relevant here. This value growing is a bad sign and might indicate bad latency spikes - especially when dealing with larger buffers. Normally collapse is supposed to be run very sporadically. A <a href="https://lore.kernel.org/lkml/20120510173135.615265392@linuxfoundation.org/" target="_blank">prominent kernel developer describes</a> this pessimistic situation:</p>
+	<p>The <strong>TCP Collapse</strong> is a bigger gun. <a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency/">Mike wrote about it extensively</a>, and <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike/">I wrote a blog post years ago, when the latency of TCP collapse hit us hard</a>. In the chart above, the collapse is shown as a red circle. We clearly see it being engaged after the socket memory budget is reached - from packet number 63. The nstat TcpExtTCPRcvCollapsed counter is relevant here. This value growing is a bad sign and might indicate bad latency spikes - especially when dealing with larger buffers. Normally collapse is supposed to be run very sporadically. A <a href="https://lore.kernel.org/lkml/20120510173135.615265392@linuxfoundation.org/?ref=blog.cloudflare.com" target="_blank">prominent kernel developer describes</a> this pessimistic situation:</p>
 	<blockquote>This also means tcp advertises a too optimistic window for a given allocated rcvspace: When receiving frames, <code>sk_rmem_alloc</code> can hit <code>sk_rcvbuf</code> limit and we call <code>tcp_collapse()</code> too often, especially when application is slow to drain its receive queue [...] This is a major latency source.</blockquote>
 	<p>If the memory budget remains exhausted after the collapse, Linux will drop ingress packets. In our chart it's marked as a red "X". The nstat TcpExtTCPRcvQDrop counter shows the count of dropped packets.</p>
 	<h3 id="rcv_ssthresh-predicts-the-metadata-cost">rcv_ssthresh predicts the metadata cost</h3>
@@ -124,10 +124,10 @@ TcpExtTCPRcvQDrop    13    0.0
 		<li>L2 header size: things like ethernet, vlan tags, and tunneling can add up.</li>
 		<li>Cache line size: many kernel structs are cache line aligned. On systems with larger cache lines, they will use more memory (see P4 or S390X architectures).</li>
 	</ul>
-	<p>The first two factors are the most important. Here's a run when the sender was specially configured to make the metadata cost bad and the coalesce ineffective (the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-07-rmem-a/window.py#L90" target="_blank">details of the setup are messy</a>):</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-10.png" class="kg-image"></figure>
+	<p>The first two factors are the most important. Here's a run when the sender was specially configured to make the metadata cost bad and the coalesce ineffective (the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-07-rmem-a/window.py?ref=blog.cloudflare.com#L90" target="_blank">details of the setup are messy</a>):</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>You can see the kernel hitting TCP collapse multiple times, which is totally undesired. Each time a collapse kernel is likely to rewrite the full receive buffer. This whole kernel machinery, from reserving some space for metadata with tcp_adv_win_scale, via using coalesce to reduce the memory cost of each packet, up to the rcv_ssthresh limit, exists to avoid this very case of hitting collapse too often.</p>
-	<p>The kernel machinery most often works fine, and TCP collapse is rare in practice. However, we noticed that's not the case for certain types of traffic. One example is <a href="https://lore.kernel.org/lkml/CA+wXwBSGsBjovTqvoPQEe012yEF2eYbnC5_0W==EAvWH1zbOAg@mail.gmail.com/" target="_blank">websocket traffic with loads of tiny packets</a> and a slow reader. One <a href="https://elixir.bootlin.com/linux/latest/source/net/ipv4/tcp_input.c#L452" target="_blank">kernel comment talks about</a> such a case:</p><!--kg-card-begin: markdown-->
+	<p>The kernel machinery most often works fine, and TCP collapse is rare in practice. However, we noticed that's not the case for certain types of traffic. One example is <a href="https://lore.kernel.org/lkml/CA+wXwBSGsBjovTqvoPQEe012yEF2eYbnC5_0W==EAvWH1zbOAg@mail.gmail.com/?ref=blog.cloudflare.com" target="_blank">websocket traffic with loads of tiny packets</a> and a slow reader. One <a href="https://elixir.bootlin.com/linux/latest/source/net/ipv4/tcp_input.c?ref=blog.cloudflare.com#L452" target="_blank">kernel comment talks about</a> such a case:</p><!--kg-card-begin: markdown-->
 	<pre><code>* The scheme does not work when sender sends good segments opening
 * window and then starts to feed us spaghetti. But it should work
 * in common situations. Otherwise, we have to rely on queue collapsing.
@@ -136,22 +136,22 @@ TcpExtTCPRcvQDrop    13    0.0
 	<p>Notice that the <strong>rcv_ssthresh</strong> line dropped down on the TCP collapse. This variable is an internal limit to the advertised window. By dropping it the kernel effectively says: hold on, I mispredicted the packet cost, next time I'm given an opportunity I'm going to open a smaller window. Kernel will advertise a smaller window and be more careful - all of this dance is done to avoid the collapse.</p>
 	<h3 id="normal-run-continuously-updated-window">Normal run - continuously updated window</h3>
 	<p>Finally, here's a chart from a normal run of a connection. Here, we use the default <code>tcp_adv_win_wcale=1 (50%)</code>:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image5-13.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image5-13.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Early in the connection you can see <strong>rcv_win</strong> being continuously updated with each received packet. This makes sense: while the <strong>rcv_ssthresh</strong> and <strong>tcp_adv_win_scale</strong> restrict the advertised window to never exceed 32KiB, the window is sliding nicely as long as there is enough space. At packet 18 the receiver stops updating the window and waits a bit. At packet 32 the receiver decides there still is some space and updates the window again, and so on. At the end of the flow the socket has 56KiB of data. This 56KiB of data was received over a sliding window reaching at most 32KiB .</p>
 	<p>The saw blade pattern of rcv_win is enabled by delayed ACK (aka QUICKACK). You can see the "<strong>acked</strong>" bytes in red dashed line. Since the ACK's might be delayed, the receiver waits a bit before updating the window. If you want a smooth line, you can use <code>quickack 1</code> per-route parameter, but this is not recommended since it will result in many small ACK packets flying over the wire.</p>
 	<p>In normal connection we expect the majority of packets to be coalesced and the collapse/drop code paths never to be hit.</p>
 	<h3 id="large-receive-windows-rcv_ssthresh">Large receive windows - rcv_ssthresh</h3>
 	<p>For large bandwidth transfers over big latency links - big BDP case - it's beneficial to have a very wide advertised window. However, Linux takes a while to fully open large receive windows:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image8-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image8-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>In this run, the <strong>skmem_rb</strong> is set to 2MiB. As opposed to previous runs, the buffer budget is large and the receive window doesn't start with 50% of the skmem_rb! Instead it starts from 64KiB and grows linearly. It takes a while for Linux to ramp up the receive window to full size - ~800KiB in this case. The window is clamped by <strong>rcv_ssthresh</strong>. This variable starts at 64KiB and then grows at a rate of two full-MSS packets per each packet which has a "good" ratio of total size (truesize) to payload size.</p>
-	<p><a href="https://lore.kernel.org/lkml/CANn89i+mhqGaM2tuhgEmEPbbNu_59GGMhBMha4jnnzFE=UBNYg@mail.gmail.com/" target="_blank">Eric Dumazet writes</a> about this behavior:</p>
+	<p><a href="https://lore.kernel.org/lkml/CANn89i+mhqGaM2tuhgEmEPbbNu_59GGMhBMha4jnnzFE=UBNYg@mail.gmail.com/?ref=blog.cloudflare.com" target="_blank">Eric Dumazet writes</a> about this behavior:</p>
 	<blockquote>Stack is conservative about RWIN increase, it wants to receive packets to have an idea of the skb-&gt;len/skb-&gt;truesize ratio to convert a memory budget to &nbsp;RWIN.<br>Some drivers have to allocate 16K buffers (or even 32K buffers) just to hold one segment (of less than 1500 bytes of payload), while others are able to pack memory more efficiently.</blockquote>
-	<p>This behavior of slow window opening is fixed, and not configurable in vanilla kernel.<a href="https://lore.kernel.org/netdev/20220721151041.1215017-1-marek@cloudflare.com/#r" target="_blank"> We prepared a kernel patch that allows to start up with higher rcv_ssthresh</a> based on per-route option <code>initrwnd</code>:</p><!--kg-card-begin: markdown-->
+	<p>This behavior of slow window opening is fixed, and not configurable in vanilla kernel.<a href="https://lore.kernel.org/netdev/20220721151041.1215017-1-marek@cloudflare.com/?ref=blog.cloudflare.com#r" target="_blank"> We prepared a kernel patch that allows to start up with higher rcv_ssthresh</a> based on per-route option <code>initrwnd</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ip route change local 127.0.0.0/8 dev lo initrwnd 1000
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>With the patch and the route change deployed, this is how the buffers look:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image4-12.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image4-12.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The advertised window is limited to 64KiB during the TCP handshake, but with our kernel patch enabled it's quickly bumped up to 1MiB in the first ACK packet afterwards. In both runs it took ~1800 packets to fill the receive buffer, however it took different time. In the first run the sender could push only 64KiB onto the wire in the second RTT. In the second run it could immediately push full 1MiB of data.</p>
 	<p>This trick of aggressive window opening is not really necessary for most users. It's only helpful when:</p>
 	<ul>
@@ -169,5 +169,5 @@ TcpExtTCPRcvQDrop    13    0.0
 	<p>On my system it took five window updates - six RTTs in total - to fill the 128KiB receive buffer. In the first batch the sender sent ~64KiB of data (remember we hacked the <code>initcwnd</code> limit), and then the sender topped it up with smaller and smaller batches until the receive window fully closed.</p>
 	<p>I hope this blog post is helpful and explains well the relationship between the buffer size and advertised window on Linux. Also, it describes the often misunderstood rcv_ssthresh which limits the advertised window in order to manage the memory budget and predict the unpredictable cost of metadata.</p>
 	<p>In case you wonder, similar mechanisms are in play in QUIC. The QUIC/H3 libraries though are still pretty young and don't have so many complex and mysterious toggles.... yet.</p>
-	<p>As always, <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2022-07-rmem-a" target="_blank">the code and instructions on how to reproduce the charts are available at our GitHub</a>.</p>
+	<p>As always, <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2022-07-rmem-a?ref=blog.cloudflare.com" target="_blank">the code and instructions on how to reproduce the charts are available at our GitHub</a>.</p>
 </div>
