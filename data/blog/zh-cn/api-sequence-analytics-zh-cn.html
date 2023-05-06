@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-26.png" class="kg-image" alt="Detecting API abuse automatically using sequence analysis"></figure>
-	<p>今天，我们宣布推出 Cloudflare Sequence Analytics for API。使用 Sequence Analytics， 订阅 <a href="https://developers.cloudflare.com/api-shield/" target="_blank">API Gateway</a> 的客户可以查看对其端点的最重要的 API 请求序列。这个新功能可以帮助客户首先对最重要的端点<a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway/" target="_blank">应用保护</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-26.png" class="kg-image" alt="Detecting API abuse automatically using sequence analysis" loading="lazy"></figure>
+	<p>今天，我们宣布推出 Cloudflare Sequence Analytics for API。使用 Sequence Analytics， 订阅 <a href="https://developers.cloudflare.com/api-shield/?ref=blog.cloudflare.com" target="_blank">API Gateway</a> 的客户可以查看对其端点的最重要的 API 请求序列。这个新功能可以帮助客户首先对最重要的端点<a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway/?ref=blog.cloudflare.com" target="_blank">应用保护</a>。</p>
 	<p>什么是序列？它是一个按时间排序的列表，包含特定访问者在浏览网站、使用移动应用或通过 API 与 B2B 合作伙伴交互时发出 HTTP API 请求列表。例如，银行转账过程会产生序列，其中一部分可能看起来像这样：</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -85,9 +85,9 @@
 	</table><!--kg-card-end: html-->
 	<p>为什么关注序列对 API 安全性很重要？如果上面的 API 在没有任何先前请求的情况下收到 POST / API /v1/transferFunds 请求，那么就显得可疑了。想想看：在没有用户相关账户 id 的情况下，API 客户端如何在知道它们是什么？API 客户端如何知道有多少钱可供转账？虽然这个例子可能很明显，但对于任何给定的生产 API， API 请求的数量都非常庞大，以至于人类分析师很难发现可疑的使用。</p>
 	<p>在安全领域，对于无法由人类团队筛查的未知数量威胁，一种防御方法是建立<em>积极安全模型</em>。不是试图阻止所有可能存在威胁的流量，而是允许所有已知的正常或良性流量通过，并默认阻止其他所有流量。</p>
-	<p>客户已经可以使用 API 网关在两个主要领域创建积极安全模型：<a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/" target="_blank">大容量滥用防护</a>和<a href="https://developers.cloudflare.com/api-shield/security/schema-validation/" target="_blank">模式验证</a>。序列将构成 API 流量积极安全模型的第三个支柱。API Gateway 将能够在任何给定的 API 序列中强制端点的顺序。通过在 API 序列中建立顺序，API Gateway 将记录或阻止任何不匹配预期的流量，从而减少滥用流量。</p>
+	<p>客户已经可以使用 API 网关在两个主要领域创建积极安全模型：<a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/?ref=blog.cloudflare.com" target="_blank">大容量滥用防护</a>和<a href="https://developers.cloudflare.com/api-shield/security/schema-validation/?ref=blog.cloudflare.com" target="_blank">模式验证</a>。序列将构成 API 流量积极安全模型的第三个支柱。API Gateway 将能够在任何给定的 API 序列中强制端点的顺序。通过在 API 序列中建立顺序，API Gateway 将记录或阻止任何不匹配预期的流量，从而减少滥用流量。</p>
 	<h3 id="-">按序列检测滥用</h3>
-	<p>当攻击者试图以滥用的方式窃取数据时，他们很少遵循预期的 API 流量模式。攻击者通常使用特殊的软件<a href="https://owasp.org/www-community/Fuzzing" target="_blank">‘扰乱’</a> API，以不同的请求参数发送多个请求，希望从 API 中找到意外的响应，指示窃取数据的机会。攻击者还可以手动向 API 发送请求，试图欺骗 API 执行未经授权的操作， 例如通过<a href="https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa1-broken-object-level-authorization.md" target="_blank">失效对象级别身份验证攻击</a>提升攻击者的特权或对其授予数据访问权。通过速率限制来保护 API 是一种常见的最佳实践；然而，在上述两个例子中，攻击者都有可能故意缓慢地执行请求序列，以试图避开大容量滥用检测。</p>
+	<p>当攻击者试图以滥用的方式窃取数据时，他们很少遵循预期的 API 流量模式。攻击者通常使用特殊的软件<a href="https://owasp.org/www-community/Fuzzing?ref=blog.cloudflare.com" target="_blank">‘扰乱’</a> API，以不同的请求参数发送多个请求，希望从 API 中找到意外的响应，指示窃取数据的机会。攻击者还可以手动向 API 发送请求，试图欺骗 API 执行未经授权的操作， 例如通过<a href="https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa1-broken-object-level-authorization.md?ref=blog.cloudflare.com" target="_blank">失效对象级别身份验证攻击</a>提升攻击者的特权或对其授予数据访问权。通过速率限制来保护 API 是一种常见的最佳实践；然而，在上述两个例子中，攻击者都有可能故意缓慢地执行请求序列，以试图避开大容量滥用检测。</p>
 	<p>再次考虑上述请求序列，但这次假设攻击者复制了合法的资金转账请求并修改了请求的有效负载，以试图欺骗系统：</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -213,19 +213,19 @@
 	<h3 id="--1">序列创建的挑战</h3>
 	<p>序列分析带来了一些困难的技术挑战，因为会话可能长时间持续，可能包含许多请求。因此，仅通过会话标识符定义序列并不足够。取而代之，我们有必要开发一个解决方案，以便自动识别给定会话中发生的多个序列。此外，由于重要序列不一定只具有大容量特征，而且可能序列的集合很大，因此有必要开发一种能够识别<em>重要</em>序列的方法，而非仅仅显示<em>频繁的</em>序列。</p>
 	<p>为了展示这些挑战，以 api.cloudflare.com 为例，我们可以按会话对 API 请求进行分组，并绘制不同序列的数量与序列长度的关系：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/04/unnamed-1.png" class="kg-image" title="Chart"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/04/unnamed-1.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
 	<p>上图基于一个小时的快照，包含大约 8.8 万个会话和 2.6 亿个API 请求，涉及 302 个不同的 API 端点。通过对每个会话应用固定长度的滑动窗口来处理数据，然后统计应用滑动窗口后观察到的不同固定长度序列(‘n-grams’) 的总数。该图显示了窗口大小(‘n-gram length’) 在 1 到 10 个请求之间变化的结果。不同序列的数量范围从 301（对于一个请求的窗口大小）到大约 780,000（对于 10 个请求的窗口大小）。根据该图，我们观察到大量随着序列长度而增长的可能序列：随着我们增加滑动窗口大小，我们在样本中看到越来越大量的不同序列。这种平滑趋势可以通过以下事实来解释：我们应用了一个滑动窗口(会话本身可能包含许多序列)，结合了相对于序列长度的许多长会话。</p>
 	<p>考虑到大量可能的序列，试图找到滥用序列犹如“大海捞针”。</p>
 	<h3 id="--2">序列分析登场</h3>
 	<p>下面是 API Gateway 仪表板以序列分析为重点的截图：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image2-14.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image2-14.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>让我们逐个介绍截图中看到的新功能。</p>
 	<p>API Gateway 使用本文前面描述的方法智能地确定 API 使用者发出的请求序列。API Gateway 通过我们称为相关性分数(Correlation Score)的指标对序列进行评分。序列分析显示了最高相关分数的前 20 个序列，我们将这些序列称为最重要的序列。高重要性序列包含可能会按顺序一起发生的 API 请求。</p>
-	<p>您应该检查每个序列，以了解它们的相关性得分。高相关性得分序列可能包含很少使用的端点(潜在的异常用户行为)和常用的端点(可能的良性用户行为)组成。由于在这些序列中找到的端点通常一起发生，所以它们代表了 API 的真正使用模式。您应该对这些端点应用所有可能的 API Gateway 保护 (<a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/" target="_blank">速率限制建议</a>、<a href="https://developers.cloudflare.com/api-shield/security/schema-validation/" target="_blank">模式验证</a>、<a href="https://developers.cloudflare.com/api-shield/security/jwt-validation/" target="_blank">JWT 验证</a>和 <a href="https://developers.cloudflare.com/api-shield/security/mtls/" target="_blank">mTLS</a>) ，并与您的开发团队检查它们的特定端点顺序。</p>
+	<p>您应该检查每个序列，以了解它们的相关性得分。高相关性得分序列可能包含很少使用的端点(潜在的异常用户行为)和常用的端点(可能的良性用户行为)组成。由于在这些序列中找到的端点通常一起发生，所以它们代表了 API 的真正使用模式。您应该对这些端点应用所有可能的 API Gateway 保护 (<a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/?ref=blog.cloudflare.com" target="_blank">速率限制建议</a>、<a href="https://developers.cloudflare.com/api-shield/security/schema-validation/?ref=blog.cloudflare.com" target="_blank">模式验证</a>、<a href="https://developers.cloudflare.com/api-shield/security/jwt-validation/?ref=blog.cloudflare.com" target="_blank">JWT 验证</a>和 <a href="https://developers.cloudflare.com/api-shield/security/mtls/?ref=blog.cloudflare.com" target="_blank">mTLS</a>) ，并与您的开发团队检查它们的特定端点顺序。</p>
 	<p>我们知道客户希望明确地在他们的 API 上设置允许的行为，而不仅仅是今天 API Gateway 提供的主动保护。我们将很快发布序列顺序规则，并提供基于这些规则来阻止请求的功能。新的序列顺序规则将允许客户指定允许的 API 请求的确切顺序，这是另一种建立积极安全模型的方法，以保护您的 API 免受未知威胁。</p>
 	<h3 id="--3">如何开始</h3>
 	<p>所有 API Gateway 客户现在都可以使用序列分析。在 Cloudflare 仪表板中导航到一个区域，然后单击“安全”选项卡 &gt; API Gateway 选项卡 &gt; “序列”选项卡。您将看到 API 使用者请求的最重要序列。</p>
-	<p>尚未购买 API Gateway 的 Enterprise 客户可以通过在 Cloudflare 仪表板中<a href="https://dash.cloudflare.com/?to=/:account/:zone/security/api-shield" target="_blank">启用 API Gateway 试用</a>，或联系帐户经理。</p>
+	<p>尚未购买 API Gateway 的 Enterprise 客户可以通过在 Cloudflare 仪表板中<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield&amp;ref=blog.cloudflare.com" target="_blank">启用 API Gateway 试用</a>，或联系帐户经理。</p>
 	<h3 id="--4">下一步</h3>
 	<p>基于序列的检测是一种强大而独特的能力，它解锁了许多识别和阻止攻击的新机会。随着我们调优识别这些序列的方法并将其交付到我们的全球网络，我们将在未来的某个日期发布自定义序列匹配和实时缓解功能。我们还将确保您能向自己的团队提供可据以行动的情报，说明哪些 API 用户试图请求匹配策略的序列。</p>
 </div>

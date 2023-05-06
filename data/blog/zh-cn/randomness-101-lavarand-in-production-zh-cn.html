@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/lava-lamps.jpg" class="kg-image">
-		<figcaption>Cloudflare大堂的熔岩灯 图片来源<a href="https://twitter.com/mahtin/status/888251632550424577" target="_blank">@mahtin</a></figcaption>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/lava-lamps.jpg" class="kg-image" alt="" loading="lazy">
+		<figcaption>Cloudflare大堂的熔岩灯 图片来源<a href="https://twitter.com/mahtin/status/888251632550424577?ref=blog.cloudflare.com" target="_blank">@mahtin</a></figcaption>
 	</figure>
 	<p></p>
 	<h2 id="-">介绍</h2>
-	<p>你们当中的一些人应该知道，我们旧金山办公室的大厅里<a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps" target="_blank">有一堵用于密码学的熔岩灯墙</a>。在这篇文章中，我们将探讨它是如何工作的。本文不涉及技术背景知识。如果你想对有关技术细节做更深入的了解，请参阅 <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand in Production: The Nitty-Gritty Technical Details</a>。</p>
+	<p>你们当中的一些人应该知道，我们旧金山办公室的大厅里<a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps?ref=blog.cloudflare.com" target="_blank">有一堵用于密码学的熔岩灯墙</a>。在这篇文章中，我们将探讨它是如何工作的。本文不涉及技术背景知识。如果你想对有关技术细节做更深入的了解，请参阅 <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand in Production: The Nitty-Gritty Technical Details</a>。</p>
 	<h2 id="--1">背景</h2>
 	<h3 id="--2">密码学中的随机性</h3>
 	<p>正如我们<a href="https://blog.cloudflare.com/why-randomness-matters/">过去</a>讨论过的，密码学依赖于随机数的生成能力，这些随机数既不可预测又对任何对手保密。</p>
@@ -128,18 +128,18 @@
 	<h2 id="lavarand">LavaRand</h2>
 	<p>Cloudflare在全球数据中心拥有数千台计算机，这些计算机都需要随机性加密。过去这些计算机都是使用我们运行的操作系统Linux的默认机制来获得随机性。</p>
 	<p>但作为优秀的密码学家，我们总是试着去对冲。我们希望我们的系统可以确保，即使获得随机性的默认机制存在缺陷，我们仍然是安全的。我们就是这样设计出LavaRand的。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/lava-lamps-camera.jpg" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/lava-lamps-camera.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption>来自监控相机的视图</figcaption>
 	</figure>
 	<p>LavaRand是一个使用熔岩灯作为生产服务器辅助随机源的系统。旧金山办公室大厅的一盏熔岩灯墙为瞄准墙壁的摄像机提供了不可预测的输入。来自摄像机的视频馈送到CSPRNG，CSPRNG提供的随机值流可以作为我们的生产服务器的额外随机源。由于在熔岩灯内 “熔岩”的流动是非常难以预测的<sup>1</sup>，­因此通过取它们的镜头“测量”灯是一种获得不可预测的随机性的好方法。计算机将图像存储为非常大的数字，因此我们可以将它们用作CSPRNG的输入，就像任何其他数字一样。</p>
-	<p>我们不是第一个这样做的人。我们的LavaRand系统的灵感来自Silicon Graphics 首先<a href="https://en.wikipedia.org/wiki/Lavarand" target="_blank">提出并建立</a>的类似系统，该系统于1996年<a href="https://www.google.com/patents/US5732138" target="_blank">获得专利</a>（专利现已过期）。</p>
+	<p>我们不是第一个这样做的人。我们的LavaRand系统的灵感来自Silicon Graphics 首先<a href="https://en.wikipedia.org/wiki/Lavarand?ref=blog.cloudflare.com" target="_blank">提出并建立</a>的类似系统，该系统于1996年<a href="https://www.google.com/patents/US5732138?ref=blog.cloudflare.com" target="_blank">获得专利</a>（专利现已过期）。</p>
 	<p>希望我们永远不需要用到它。希望我们的生产服务器使用的随机性的主要来源仍然是安全的，而LavaRand除了为我们的办公室增添一些花样之外几乎没有用处。但如果事实证明我们错了，而且我们生产中的随机源实际上存在缺陷，那么LavaRand将成为我们的对冲工具，让攻击Cloudflare变得更加困难。</p>
 	<hr><!--kg-card-begin: html-->
 	<ol>
 		<li>
 			<font style="vertical-align: inherit;">
 				<font style="vertical-align: inherit;">Noll, L.C. and Mende, R.G. and Sisodiya, S.,</font>
-			</font><a href="https://www.google.com/patents/US5732138" target="_blank"><em>
+			</font><a href="https://www.google.com/patents/US5732138?ref=blog.cloudflare.com" target="_blank"><em>
 					<font style="vertical-align: inherit;">
 						<font style="vertical-align: inherit;">一种用混沌系统数字化的密码散列对接伪随机数生成器的方法</font>
 					</font>

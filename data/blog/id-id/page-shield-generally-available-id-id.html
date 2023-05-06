@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-34.png" class="kg-image" alt="Page Shield is generally available"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-34.png" class="kg-image" alt="Page Shield is generally available" loading="lazy"></figure>
 	<p>Serangan rantai pasokan menimbulkan kekhawatiran besar bagi CIO dan tenaga profesional keamanan.</p>
 	<p>Dalam serangan rantai pasokan, penyerang membobol alat atau perpustakaan pihak ketiga yang sedang digunakan oleh aplikasi target. Ini biasanya membuat penyerang merebut akses khusus ke lingkungan aplikasi yang membuat mereka dapat mencuri data pribadi atau melancarkan serangan lanjutan. Sebagai contoh, Magecart, adalah jenis serangan rantai pasokan yang umum. Dalam serangan ini, penyerang mencuri data kartu kredit dari formulir checkout situs e-commerce dengan membobol perpustakaan yang digunakan dalam situs.</p>
 	<p>Untuk membantu mengidentifikasi dan memitigasi serangan rantai pasokan dalam konteks aplikasi web, hari ini kami meluncurkan Page Shield dalam General Availability (GA).</p>
 	<p>Dengan Page Shield, Anda mendapatkan visibilitas terkait skrip yang berjalan di aplikasi Anda dan dapat diberi notifikasi saat skrip terinfeksi atau menunjukkan perilaku berbahaya, seperti mencoba menghapus data pengguna.</p>
 	<p>Kami bekerja keras agar Page Shield mudah digunakan: Anda dapat menemukannya pada tab Firewall dan mengaktifkannya dengan sekali klik. Tidak perlu konfigurasi tambahan. Peringatan dapat diatur secara terpisah untuk beragam peristiwa yang berbeda.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-17.png" class="kg-image" alt="The Page Shield interface showing the list of scripts detected on the zone"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-17.png" class="kg-image" alt="The Page Shield interface showing the list of scripts detected on the zone" loading="lazy"></figure>
 	<h2 id="apa-itu-page-shield"><strong>Apa itu Page Shield?</strong></h2>
 	<p>Bulan Maret tahun ini, <a href="https://blog.cloudflare.com/introducing-page-shield/">kami mengumumkan akses awal ke Page Shield</a>, solusi kami untuk melindungi data pengguna akhir dari pembobolan yang menyasar browser.</p>
 	<p>Hari ini, kami <a href="https://blog.cloudflare.com/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools">mengumumkan akuisisi Zaraz</a>, alat yang dibuat dalam Workers yang membuat pelanggan dapat dengan mudah memuat alat pihak ketiga di cloud, tanpa harus memuat kode JavaScript di browser, secara langsung dari UI Cloudflare dengan manfaat langsung dari segi kinerja dan keamanan. Namun, tidak semua aplikasi menggunakan, atau ingin menggunakan, pengelola pihak ketiga. Apa pun yang dibutuhkan, kami siap mendukung Anda.</p>
@@ -17,12 +17,12 @@
 	<h2 id="bagaimana-cara-kerja-page-shield"><strong>Bagaimana cara kerja Page Shield?</strong></h2>
 	<p>Seperti banyak produk keamanan, kami menganggap Page Shield sebagai penyedia layanan visibilitas, deteksi, mitigasi, dan pencegahan. Langkah pertama adalah visibilitas.</p>
 	<h3 id="visibilitas"><strong>Visibilitas</strong></h3>
-	<p>Apabila diaktifkan, pengulangan Page Shield saat ini menggunakan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">kebijakan keamanan konten</a> (CSP) yang diberlakukan dengan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only" target="_blank">petunjuk laporan saja</a> untuk mengumpulkan informasi dari browser. Ini membuat kami dapat menyediakan daftar semua skrip yang berjalan di aplikasi Anda.</p>
+	<p>Apabila diaktifkan, pengulangan Page Shield saat ini menggunakan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP?ref=blog.cloudflare.com" target="_blank">kebijakan keamanan konten</a> (CSP) yang diberlakukan dengan <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only?ref=blog.cloudflare.com" target="_blank">petunjuk laporan saja</a> untuk mengumpulkan informasi dari browser. Ini membuat kami dapat menyediakan daftar semua skrip yang berjalan di aplikasi Anda.</p>
 	<p>Dalam istilah HTTP, ini adalah header respons HTTP yang ditambahkan ke sampel respons halaman dari server asal ke browser. Header CSP terlihat seperti ini:</p><!--kg-card-begin: markdown-->
 	<pre><code>content-security-policy-report-only: script-src 'none'; report-uri /cdn-cgi/script_monitor/report
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Header di atas memberi tahu browser bahwa skrip tidak boleh dimuat &nbsp;<code>(script-src 'none')</code> dan melaporkan pelanggaran apa pun ke titik akhir yang disediakan <code>(report-uri /cdn-cgi/script_monitor/report)</code>. Perlu diperhatikan juga bahwa titik akhir laporan pelanggaran diarahkan ke <a href="https://www.cloudflare.com/network/" target="_blank">jaringan Cloudflare</a> dan diproses di sana, jadi tidak ada lalu lintas tambahan yang mencapai server asal.</p>
+	<p>Header di atas memberi tahu browser bahwa skrip tidak boleh dimuat &nbsp;<code>(script-src 'none')</code> dan melaporkan pelanggaran apa pun ke titik akhir yang disediakan <code>(report-uri /cdn-cgi/script_monitor/report)</code>. Perlu diperhatikan juga bahwa titik akhir laporan pelanggaran diarahkan ke <a href="https://www.cloudflare.com/network/?ref=blog.cloudflare.com" target="_blank">jaringan Cloudflare</a> dan diproses di sana, jadi tidak ada lalu lintas tambahan yang mencapai server asal.</p>
 	<p>Setiap laporan pelanggaran yang dikirim oleh browser dan diterapkan sebagai permintaan HTTP POST memberi kami informasi seputar skrip. Berikut contohnya:</p><!--kg-card-begin: markdown-->
 	<pre><code>{
    "csp-report":{
@@ -48,7 +48,7 @@
 		<li>Tautan lengkap ke file JavaScript</li>
 		<li>Kode respons yang diterima browser saat memuat file. Dalam contoh di atas, kode respons adalah 200, yang berarti file berhasil dimuat.</li>
 	</ul>
-	<p>Dengan mengumpulkan semua informasi yang disediakan dalam laporan dan menyempurnakannya menggunakan data tambahan, kami dapat menyediakan informasi yang mendetail terkait skrip yang dimuat oleh aplikasi Anda, baik dengan UI <a href="https://developers.cloudflare.com/page-shield/" target="_blank">maupun API Cloudflare</a>.</p>
+	<p>Dengan mengumpulkan semua informasi yang disediakan dalam laporan dan menyempurnakannya menggunakan data tambahan, kami dapat menyediakan informasi yang mendetail terkait skrip yang dimuat oleh aplikasi Anda, baik dengan UI <a href="https://developers.cloudflare.com/page-shield/?ref=blog.cloudflare.com" target="_blank">maupun API Cloudflare</a>.</p>
 	<p>Semua zona Cloudflare Pro dapat mengakses laporan skrip Page Shield kami. Selain itu, zona Bisnis dan Perusahaan dapat mengakses informasi atribusi halaman, sehingga Anda dapat dengan cepat mengidentifikasi lokasi skrip dimuat dari dalam aplikasi Anda. Zona Bisnis dan Perusahaan juga dapat menyiapkan peringatan terkait jumlah peristiwa perubahan skrip.</p>
 	<h3 id="deteksi"><strong>Deteksi</strong></h3>
 	<p>Pemilik aplikasi mungkin telah memanfaatkan kebijakan keamanan konten untuk memastikan hanya skrip tertentu yang dimuat. Namun, CSP sering kali bersifat terlalu luas dan browser tidak menyediakan mekanisme asli untuk mendeteksi saat file JavaScript menunjukkan perilaku berbahaya. Hal ini mencakup kode JavaScript yang diizinkan untuk dimuat sesuai dengan kebijakan keamanan konten, yang jauh mengurangi keefektifannya.</p>
@@ -70,6 +70,6 @@
 		<li>Pemblokiran yang memanfaatkan proxy kami agar skrip berbahaya dapat dihapus dari dalam bodi respons HTTP.</li>
 	</ul>
 	<h2 id="memulai"><strong>Memulai</strong></h2>
-	<p>Jika anda telah memiliki situs web di Cloudflare, upgrade ke paket berbayar apa pun untuk mulai memanfaatkan fitur Page Shield hari ini tanpa perlu konfigurasi tambahan. Anda juga dapat <a href="https://developers.cloudflare.com/page-shield/" target="_blank">menggunakan API kami untuk memanfaatkan fitur Page Shield</a>.</p>
-	<p>Jika Anda tidak memiliki situs web di Cloudflare, <a href="https://dash.cloudflare.com/sign-up" target="_blank">mendaftar</a> tidak memakan waktu lebih dari 5 menit!<br></p>
+	<p>Jika anda telah memiliki situs web di Cloudflare, upgrade ke paket berbayar apa pun untuk mulai memanfaatkan fitur Page Shield hari ini tanpa perlu konfigurasi tambahan. Anda juga dapat <a href="https://developers.cloudflare.com/page-shield/?ref=blog.cloudflare.com" target="_blank">menggunakan API kami untuk memanfaatkan fitur Page Shield</a>.</p>
+	<p>Jika Anda tidak memiliki situs web di Cloudflare, <a href="https://dash.cloudflare.com/sign-up?ref=blog.cloudflare.com" target="_blank">mendaftar</a> tidak memakan waktu lebih dari 5 menit!<br></p>
 </div>

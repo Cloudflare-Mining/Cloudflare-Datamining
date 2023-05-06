@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/terminal-worker-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/terminal-worker-1.png" class="kg-image"></figure>
 	<p>We recently wrote about unit testing Cloudflare Workers within a mock environment using CloudWorker (a Node.js based mock Cloudflare Worker environment created by Dollar Shave Club's engineering team). <a href="https://blog.cloudflare.com/unit-testing-worker-functions/">See Unit Testing Worker Functions.</a></p>
 	<p>Even though Cloudflare Workers deploy globally within seconds, software developers often choose to use local mock environments to have the fastest possible feedback loop while developing on their local machines. CloudWorker is perfect for this use case but as it is still a mock environment it does not guarantee an identical runtime or environment with all Cloudflare Worker APIs and features. This gap can make developers uneasy as they do not have 100% certainty that their tests will succeed in the production environment.</p>
 	<p>In this post, we're going to demonstrate how to generate a Cloudflare Worker compatible test harness which can execute mocha unit tests directly in the production Cloudflare environment.</p>
@@ -15,7 +15,7 @@
 	<p><code>npm install --save-dev mocha exports-loader webpack webpack-cli</code></p>
 	<p>This will install Mocha (the unit testing framework), Webpack (a tool used to package the code into a single Worker script) and Exports Loader (a tool used by Webpack to import the Worker script into the Worker based Mocha environment.</p>
 	<p><code>npm install --save-dev git+https://github.com/obezuk/mocha-loader.git</code></p>
-	<p>This will install a modified version of Webpack's mocha loader. It has been modified to support the Web Worker environment type. We are excited to see Web Worker support merged into Mocha Loader so please vote for our pull request here: <a href="https://github.com/webpack-contrib/mocha-loader/pull/77?ref=blog.cloudflare.com" target="_blank">https://github.com/webpack-contrib/mocha-loader/pull/77</a></p>
+	<p>This will install a modified version of Webpack's mocha loader. It has been modified to support the Web Worker environment type. We are excited to see Web Worker support merged into Mocha Loader so please vote for our pull request here: <a href="https://github.com/webpack-contrib/mocha-loader/pull/77" target="_blank">https://github.com/webpack-contrib/mocha-loader/pull/77</a></p>
 	<h3 id="example-script"><strong>Example Script</strong></h3>
 	<p>Create your Worker script in <code>./src/worker.js</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
@@ -161,7 +161,7 @@ Object.assign(global, require('exports-loader?handleRequest,addition!../../src/w
 	<p>In the project root directory run the command <code>npm run build-harness</code> to generate and bundle your Worker script, Mocha and your unit tests into <code>./dist/worker-mocha-harness.js</code>.</p>
 	<p>Upload this script to a test Cloudflare workers route and run <code>curl --fail https://test.example.org</code>. If the unit tests are successful it will return a <code>200</code> response, and if the unit tests fail a <code>500</code> response.</p>
 	<h2 id="integrating-into-an-existing-ci-cd-pipeline"><strong>Integrating into an existing CI/CD pipeline</strong></h2>
-	<p>You can integrate Cloudflare Workers and the test harness into your existing CI/CD pipeline by using our API: <a href="https://developers.cloudflare.com/workers/api/?ref=blog.cloudflare.com" target="_blank">https://developers.cloudflare.com/workers/api/</a>.</p>
+	<p>You can integrate Cloudflare Workers and the test harness into your existing CI/CD pipeline by using our API: <a href="https://developers.cloudflare.com/workers/api/" target="_blank">https://developers.cloudflare.com/workers/api/</a>.</p>
 	<p>The test harness returns detailed test reports in JSON format:</p>
 	<p><strong>Example Success Response</strong></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
