@@ -26,7 +26,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor's degree in a related field such as information systems, computer science, business, finance or accounting</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ year of experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A minimum 5 years of experience</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong quantitative and analytical skills, familiar with Coda or similar data modeling software a plus.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong oral and written communication skills</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent interpersonal and communication skills; ability to operate in a cross cultural and complex matrix environment with the ability to deliver consensus across functions.</span></li>

@@ -35,7 +35,7 @@
 </ul>
 <p><strong>Requirements</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">At least 4 years of relevant professional experience working with technology partners, alliances, or third-party vendors, ideally in the following disciplines: Data center Security Compliance, Access Management, audit administration at a leading high-tech company; offering management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A minimum 4 years of relevant professional experience working with technology partners, alliances, or third-party vendors, ideally in the following disciplines: Data center Security Compliance, Access Management, audit administration at a leading high-tech company; offering management</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Technical skills including the ability to understand (1) product roadmaps; (2) market trends and factors; and (3) complex partner requirements.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of Compliance programs such as SOC2, PCI, ISO, NIST and FedRAMP.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of exceptional performance at past roles</span></li>

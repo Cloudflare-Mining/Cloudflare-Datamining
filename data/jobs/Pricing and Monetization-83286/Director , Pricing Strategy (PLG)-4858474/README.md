@@ -22,7 +22,7 @@
 </ul>
 <h4><strong>Qualifications</strong></h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">8+ years of experience in pricing strategy leading software provider or top tier consulting firm, with at least 2 years of experience in product led growth strategies</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A minimum 8 years of experience in pricing strategy leading software provider or top tier consulting firm, with at least 2 years of experience in product led growth strategies</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor's degree required; MBA preferred</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to deconstruct a problem, understand root cause(s), identify and explore solutions, and develop a recommendation</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication and influence, both written and oral, across all levels of the organization (executive to manager, multiple functions)</span></li>

@@ -13,7 +13,7 @@
 <p><strong>Requirements</strong></p>
 <ul>
 	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>2+ years professional experience as a Software Developer/Engineer</li>
+	<li>A minimum 2 years professional experience as a Software Developer/Engineer</li>
 	<li>Knowledge of two or more mainstream programming languages (Go, C/C++, Python, PHP)</li>
 	<li>Proficiency with modern Unix/Linux operating systems/distributions</li>
 	<li>Experience with CI/CD, containers and/or virtualization, web servers, and databases</li>

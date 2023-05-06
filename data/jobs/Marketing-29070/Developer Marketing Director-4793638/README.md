@@ -33,7 +33,7 @@
 </ul>
 <p><strong>Requirements</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">15+ years of Enterprise SaaS experience targeting technical buyers and developer influencers.&nbsp; Functional marketing experience can include a range of: Developer Marketing, Demand Gen, Field Marketing, Growth Marketing, etc.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A minimum 15 years of Enterprise SaaS experience targeting technical buyers and developer influencers.&nbsp; Functional marketing experience can include a range of: Developer Marketing, Demand Gen, Field Marketing, Growth Marketing, etc.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">BS or advanced degree; CS or technical specialties strongly preferred.&nbsp; Ideal candidates will have background as a developer full time or as a personal passion in addition to functional marketing experience.&nbsp;&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building a function and leading a team in Developer Marketing, DevRel, or Advocacy programs.&nbsp;</span></li>
 </ul>

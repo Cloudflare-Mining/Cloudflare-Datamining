@@ -13,7 +13,7 @@
 <p><span style="font-weight: 400;">The ideal candidate is flexible and comfortable in playing multiple roles (diplomat, negotiator, coach, reporter, etc.), facilitating change for many large workstreams concurrently, and able to adapt to changing situations. We have a small team of Program Managers within Support, and we are looking for someone who can handle ambiguity, and help continue to define how programs are delivered within our organization.</span></p>
 <p><strong>Requirements</strong><span style="font-weight: 400;">:</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">8+ years experience in facilitating change management for technical programs, large-scale project management, or in a related function like Consulting or implementation</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A minimum 8 years experience in facilitating change management for technical programs, large-scale project management, or in a related function like Consulting or implementation</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficiency in stakeholder management, communications planning and development, and selling the benefits of your work</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience and knowledge of change management principles, methodologies and tools</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience defining and measuring success metrics and monitoring change progress</span></li>
