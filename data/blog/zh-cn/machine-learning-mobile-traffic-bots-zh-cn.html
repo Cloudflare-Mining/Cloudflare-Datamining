@@ -1,25 +1,25 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-61.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-61.png" class="kg-image"></figure>
 	<p>我们在三年前发布 Bot Management 时，一开始使用了我们第一个版本的 ML 检测模型。我们使用了常见的机器人用户代理训练我们的模型，识别恶意机器人。此模型即 ML1，它只要检测请求的属性就能判断是机器人还是人类发出的请求。此后，我们引入了一组试探算法，快速、准确地过滤掉有害流量中最容易去除的部分。我们有多种试探算法和数百种具体规则，它们基于请求的特定属性，其中许多属性都很难伪造。但机器学习是我们机器人管理工具集中非常重要的组成部分。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-12.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-12.png" class="kg-image"></figure>
 	<p>我们一开始使用了静态模型，因为我们是从零开始的，并且我们能够使用汇总的 HTTP 分析元数据快速进行试验。该模型发布后，我们立即从早期机器人管理客户收集了反馈，找出我们的优缺点。我们发现攻击者也更加狡猾了，于是我们生成了一组新的模型功能。我们的试探算法能够准确识别各种恶意机器人，为我们提供质量高很多的标记数据。我们的模型逐渐精进，适应了跨多个请求维度不断改变的机器人行为，即使该模型之前没有针对该类型的数据训练机器人。自那以后，我们又发布了五个模型，它们接受了一些元数据培训，这些元数据是通过理解我们整个网络中的流量模式而生成。</p>
 	<p>虽然我们的模型在不断精进，流量流经 Cloudflare 的模式也在变化。Cloudflare 诞生于桌面流量占主导地位的时代，但移动流量后来居上，如今占据我们网络流量的 54% 以上。移动流量已经占据网络流量的大半江山，我们需要调整策略，才能更好地检测假冒移动应用程序的机器人。虽然桌面流量都拥有许多相似点，且不论连接到哪种源站，但每个移动应用是围绕特定用途来创建的，并使用不同的定义模式在一组不同的 API 上构建。我们意识到，我们需要构建一种对拥有移动应用程序流量的网站更有效的模型。</p>
 	<h3 id="-">我们如何构建和部署模型</h3>
 	<p>在深入探讨我们如何更新模型吸引移动流量并让流量不断增加之前，我们首先应该探讨，我们构建和训练模型的总体思路。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-68.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-68.png" class="kg-image"></figure>
 	<h3 id="--1">数据收集和准备</h3>
 	<p>ML 模型的质量取决于训练所用的数据质量。我们可以利用网络上数量庞大、种类繁多的流量来创建训练数据集。</p>
 	<p>我们识别了明显是机器人的示例，即我们能够使用试探算法检测的示例，或者自证是机器人（例如，合法的搜索引擎爬网程序、广告机器人）的示例。</p>
 	<p>我们还可以识别明显不是机器人的示例。当机器人解决了难题或通过身份认证时，这些请求的分数就会很高。</p>
 	<h3 id="--2">数据分析和功能选择</h3>
-	<p>从此数据集，我们可以使用 ANOVA（方差分析）f 值识别可使用的最佳功能。我们想让我们的数据集中有各种具有代表性的操作系统、浏览器、设备类型、机器人类别和指纹。我们执行了<a href="https://catboost.ai/en/docs/concepts/python-reference_catboostregressor_calc_feature_statistics?ref=blog.cloudflare.com" target="_blank">功能的统计分析</a>，以了解这些功能在数据集内的分布情况，以及它们可能会对预测产生哪些影响。</p>
+	<p>从此数据集，我们可以使用 ANOVA（方差分析）f 值识别可使用的最佳功能。我们想让我们的数据集中有各种具有代表性的操作系统、浏览器、设备类型、机器人类别和指纹。我们执行了<a href="https://catboost.ai/en/docs/concepts/python-reference_catboostregressor_calc_feature_statistics" target="_blank">功能的统计分析</a>，以了解这些功能在数据集内的分布情况，以及它们可能会对预测产生哪些影响。</p>
 	<h3 id="--3">模型构建和评估</h3>
 	<p>获得数据之后，我们就可以开始训练模型。我们构建了 Airflow 支持的内部管道，使这个过程进行得更顺畅。为了训练模型，<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more/">我们选择了 Catboost 库。</a>根据我们的问题定义，我们训练了一个二元分类模型。</p>
-	<p>我们将训练数据拆分为一个训练集和一个测试集。为了选择最适合模型的超参数，我们使用 Catboost 库的<a href="https://catboost.ai/docs/concepts/python-reference_catboost_grid_search.html?ref=blog.cloudflare.com" target="_blank">网格搜索</a>和<a href="https://catboost.ai/docs/concepts/python-reference_catboost_randomized_search.html?ref=blog.cloudflare.com" target="_blank">随机搜索</a>算法。</p>
+	<p>我们将训练数据拆分为一个训练集和一个测试集。为了选择最适合模型的超参数，我们使用 Catboost 库的<a href="https://catboost.ai/docs/concepts/python-reference_catboost_grid_search.html" target="_blank">网格搜索</a>和<a href="https://catboost.ai/docs/concepts/python-reference_catboost_randomized_search.html" target="_blank">随机搜索</a>算法。</p>
 	<p>然后，我们使用所选超参数训练了模型。</p>
 	<p>我们逐渐开发了粒度数据集来测试我们的模型，确保我们准确检测到不同类型的机器人，但我们也想将误报率控制在最低水平。在将模型部署到任何客户流量之前，我们会执行<strong>离线监控</strong>。我们针对不同的浏览器、操作系统和设备运行了预测。然后，我们将当前训练的模型的预测与验证数据集上的生产模型进行比较。比较操作借助于通过我们 ML 管道创建的验证报告，该管道针对每个数据集包含了摘要统计数据，例如准确性、功能重要性。根据结果，要么进行迭代，要么继续进行部署。</p>
-	<p>如果我们需要迭代，我们想弄清楚哪些地方有待改进。为此，我们使用了 <a href="https://shap.readthedocs.io/en/latest/generated/shap.Explainer.html?ref=blog.cloudflare.com" target="_blank">SHAP Explainer</a>。SHAP Explainer 是一款不错的工具，可解释模型的预测结果。我们的管道根据我们的预测结果生成了 SHAP 图表。我们对其深入研究后，了解误报或漏报情况。这有助于我们理解如何以及在哪些地方可以改进训练数据或功能，以改进预测准确性。当试验表明，我们的大多数测试数据集相比之前的模型版本有所改进时，我们会决定是否应该部署客户流量试验。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>如果我们需要迭代，我们想弄清楚哪些地方有待改进。为此，我们使用了 <a href="https://shap.readthedocs.io/en/latest/generated/shap.Explainer.html" target="_blank">SHAP Explainer</a>。SHAP Explainer 是一款不错的工具，可解释模型的预测结果。我们的管道根据我们的预测结果生成了 SHAP 图表。我们对其深入研究后，了解误报或漏报情况。这有助于我们理解如何以及在哪些地方可以改进训练数据或功能，以改进预测准确性。当试验表明，我们的大多数测试数据集相比之前的模型版本有所改进时，我们会决定是否应该部署客户流量试验。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-14.png" class="kg-image"></figure>
 	<h3 id="--4">模型部署</h3>
 	<p>虽然离线分析模型能精准地指示模型性能，但最好针对更多种类的流量实时验证结果。为此，我们首先在<strong>影子模式</strong>下部署每个新模型。通过影子模式，我们可以实时记录流量的得分，而不会真正影响机器人管理客户流量。这样一来，我们可以执行<strong>在线监控</strong>，即针对流量实时评估模型的性能。我们使用一组 Grafana 仪表板按不同机器人、设备、浏览器、操作系统和客户类型进行细分，并验证模型准确性提升情况。</p>
 	<p>然后，我们开始在活动模式下测试。我们能够将模型推广到不同的客户计划，并按一定比例从请求或访问者中取样。首先，我们推广到免费计划的客户，例如启用 <a href="https://blog.cloudflare.com/introducing-im-under-attack-mode/">I’m Under Attack 模式</a>的客户。针对免费客户验证模型之后，我们逐渐过渡到<a href="https://blog.cloudflare.com/zh-cn/super-bot-fight-mode-zh-cn/">超级机器人攻击模式</a>客户。然后，我们允许想测试模型beta 版的客户加入进来，并使用该模型。如果客户对 beta 版满意，新模型将作为稳定版本正式发布。现有客户可以选择升级到该模型，默认所有新客户都能获得最新版本。</p>

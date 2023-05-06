@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Let’s pretend I own a service and I want to grant other services access to my service on behalf of my users. The familiar OAuth 2.0 is the industry standard used by the likes of <a href="https://developers.google.com/identity/protocols/OAuth2?ref=blog.cloudflare.com" target="_blank">Google sign in</a>, Facebook, etc. to communicate safely without inconveniencing users.</p>
-	<p>Implementing an OAuth Authentication server is conceptually simple but a pain in practice. We can leverage the power of <a href="https://cloudflareworkers.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a> to simplify the implementation, reduce latency, and segregate our service logic from the authentication layer.</p>
-	<p>For those unfamiliar with OAuth, I highly recommend reading a more in depth <a href="https://aaronparecki.com/oauth-2-simplified/?ref=blog.cloudflare.com" target="_blank">article</a>.</p>
+	<p>Let’s pretend I own a service and I want to grant other services access to my service on behalf of my users. The familiar OAuth 2.0 is the industry standard used by the likes of <a href="https://developers.google.com/identity/protocols/OAuth2" target="_blank">Google sign in</a>, Facebook, etc. to communicate safely without inconveniencing users.</p>
+	<p>Implementing an OAuth Authentication server is conceptually simple but a pain in practice. We can leverage the power of <a href="https://cloudflareworkers.com" target="_blank">Cloudflare Workers</a> to simplify the implementation, reduce latency, and segregate our service logic from the authentication layer.</p>
+	<p>For those unfamiliar with OAuth, I highly recommend reading a more in depth <a href="https://aaronparecki.com/oauth-2-simplified/" target="_blank">article</a>.</p>
 	<p>The steps of the OAuth 2.0 workflow are as follows:</p>
 	<ol>
 		<li>The consumer service redirects the user to a callback URL that was setup by the auth server. At this callback URL, the auth server asks the user to sign in and accept the consumer permissions requests.</li>
@@ -11,11 +11,11 @@
 		<li>The auth server gives the consumer the access token.</li>
 		<li>The consumer service can now use the access token to get resources on behalf of the user.</li>
 	</ol>
-	<p>In the rest of this post, I will be walking through my implementation of an OAuth Authentication server using a Worker. For simplicity, I will make the assumption the user has already logged in and obtained a session token in the form of a JWT that I will refer to as “token” herein. My <a href="https://github.com/victoriabernard92/OAuth-Server?ref=blog.cloudflare.com" target="_blank">full implementation</a> has a more thorough flow that includes initial user login and registration.</p>
+	<p>In the rest of this post, I will be walking through my implementation of an OAuth Authentication server using a Worker. For simplicity, I will make the assumption the user has already logged in and obtained a session token in the form of a JWT that I will refer to as “token” herein. My <a href="https://github.com/victoriabernard92/OAuth-Server" target="_blank">full implementation</a> has a more thorough flow that includes initial user login and registration.</p>
 	<h3 id="setup">Setup</h3>
-	<p>We must be able to reference valid user sessions, codes and login information. Because Workers do not maintain state between executions, we will store this information using <a href="https://developers.cloudflare.com/workers/writing-workers/storing-data/?ref=blog.cloudflare.com" target="_blank">Cloudflare Storage</a>. We setup up three namespaces called: USERS, CODES, and TOKENS .</p>
+	<p>We must be able to reference valid user sessions, codes and login information. Because Workers do not maintain state between executions, we will store this information using <a href="https://developers.cloudflare.com/workers/writing-workers/storing-data/" target="_blank">Cloudflare Storage</a>. We setup up three namespaces called: USERS, CODES, and TOKENS .</p>
 	<p>On your OAuth server domain, create two empty worker scripts called auth and token. Bind the three namespaces to the two workers scripts. Then configure the namespaces to the scripts so that your resources end up looking like:</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/12/Screen-Shot-2018-12-11-at-3.46.15-PM.png" alt="Screen-Shot-2018-12-11-at-3.46.15-PM" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/12/Screen-Shot-2018-12-11-at-3.46.15-PM.png" alt="Screen-Shot-2018-12-11-at-3.46.15-PM"></p>
 	<p>To put and get items from storage using KV Storage syntax:</p>
 	<pre><code class="language-javascript">// @ts-ignore 
 CODES.get(“user@ex.com”) 
@@ -181,7 +181,7 @@ Authorization: Bearer eyJhbGci..bGAqA
  return new Response(JSON.stringify(respBody), init)
 }
 </code></pre>
-	<p>The boundaries of serverless are pushed everyday, though if your app just needs to authorize users, you may be better off using <a href="https://www.cloudflare.com/products/cloudflare-access/?ref=blog.cloudflare.com" target="_blank">Cloudflare Access</a>. We've demonstrated that a full blown OAuth 2.0 authentication server implementation can be achieved with Cloudflare Workers and Storage.</p>
+	<p>The boundaries of serverless are pushed everyday, though if your app just needs to authorize users, you may be better off using <a href="https://www.cloudflare.com/products/cloudflare-access/" target="_blank">Cloudflare Access</a>. We've demonstrated that a full blown OAuth 2.0 authentication server implementation can be achieved with Cloudflare Workers and Storage.</p>
 	<p>Stay tuned for a follow-up blog post on an OAuth consumer implementation.</p>
 	<!--kg-card-end: markdown-->
 </div>

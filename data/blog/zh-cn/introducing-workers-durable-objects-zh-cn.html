@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/BDES-1018_Cloudflare_Object_Workers_Birthday_Week_Blog_Hero.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/BDES-1018_Cloudflare_Object_Workers_Birthday_Week_Blog_Hero.png" class="kg-image"></figure>
 	<p>在 <a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">2017 年推出 Cloudflare Workers®</a> 时，我们心怀着一个激进的愿景：在网络边缘运行的代码不仅要能够提高性能，而且比在单个数据中心运行的代码更容易部署，运行成本也要更低。这个愿景意味着，Workers 关乎的不仅是边缘计算，也体现了我们正在重新构想应用程序的构建方式。</p>
 	<p>使用“无服务器”方法让我们能够极大简化部署，使用<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">隔离技术</a>则使我们能够以更低的成本交付无服务器，而且没有令其他提供商却步的<a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/">漫长冷启动</a>。通过 <a href="https://blog.cloudflare.com/workers-kv-is-ga/">Workers KV</a>，我们为平台添加了易于使用并且最终一致的边缘存储。</p>
 	<p>但直到今天，依然无法彻底在边缘管理具有强一致性的状态，或者在多个客户端之间进行实时协调。因此，应用程序的这些部分仍然必须托管在其他位置。</p>
 	<p>Durable Object 为存储和状态带来了一种真正的无服务器方法：具有一致、低延迟和分布式的特点，而且维护和扩展也毫不费力。它们还提供了一种在客户端之间进行协调的简便方法，不论是特定聊天室中的用户、特定文档的编辑器，还是特定智能家居中的 IoT 设备。Durable Object 是 Workers 堆栈中缺少的部分，它使整个应用程序可以完全在边缘上运行，彻底摆脱集中式“源站”服务器。</p>
-	<p>今天，我们将启动 Durable Object 的封闭测试。</p><!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta?ref=blog.cloudflare.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">申请 Beta 测试邀请 » »</a><!--kg-card-end: html-->
+	<p>今天，我们将启动 Durable Object 的封闭测试。</p><!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">申请 Beta 测试邀请 » »</a><!--kg-card-end: html-->
 	<h3 id="-durable-object-">什么是“Durable Object”？</h3>
 	<p>坦率地说，为此产品取名颇为棘手，因为它与当今广泛使用的其他任何云技术都不一样。这个众所周知的事物披着许多层外衣，但最终我们决定采用“Unique Durable Object”，或简写为“Durable Object”。我来通过分解进行阐释：</p>
 	<ul>
@@ -20,7 +20,7 @@
 	</ul>
 	<p>敏锐的读者可能会注意到，许多协调用例都需要 WebSocket。实际上与之相反，大多数 WebSocket 用例都需要协调。由于这种互补关系，除了 Durable Object 测试版外，我们还为 Workers 添加了 WebSocket 支持。如需更多信息，<a href="https://blog.cloudflare.com/introducing-workers-durable-objects/#can-durable-objects-serve-websockets">请参见以下问答</a>。</p>
 	<h3 id="--1">区域：地球</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Earth-desktop-background-copy-2@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Earth-desktop-background-copy-2@2x.png" class="kg-image"></figure>
 	<p>使用 Durable Object 时，Cloudflare 会自动确定每个对象将驻留的 Cloudflare 数据中心，并可以根据需要在不同位置之间透明地迁移对象。</p>
 	<p>传统数据库和有状态基础结构通常需要您考虑地理“区域”，以便您确保将数据存储到使用位置附近。考虑区域通常可能是不尽人意的负担，尤其是对于非固有地理性的应用程序。</p>
 	<p>使用 Durable Object 后，您可以自己设计存储模型，以匹配应用程序的逻辑数据模型。例如，文档编辑器将为每个文档保留一个对象，而聊天应用程序将为每个聊天保留一个对象。创建成万上亿个对象也不会有问题，因为每个对象的开销都极小。</p>
@@ -95,7 +95,7 @@ let response = await COUNTER_NAMESPACE.get(id).fetch(request);
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="--4">演示：聊天</h3>
-	<p>聊天大概是最纯粹的实时协作。为此，我们制作了一个演示用的开源聊天应用，该应用使用 Durable Object 完全在边缘运行。</p><!--kg-card-begin: html--><a href="https://edge-chat-demo.cloudflareworkers.com/?ref=blog.cloudflare.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">尝试实时演示 »</a><!--kg-card-end: html--><!--kg-card-begin: html--><a href="https://github.com/cloudflare/workers-chat-demo?ref=blog.cloudflare.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">查看 GitHub 上的源代码 »</a><!--kg-card-end: html-->
+	<p>聊天大概是最纯粹的实时协作。为此，我们制作了一个演示用的开源聊天应用，该应用使用 Durable Object 完全在边缘运行。</p><!--kg-card-begin: html--><a href="https://edge-chat-demo.cloudflareworkers.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">尝试实时演示 »</a><!--kg-card-end: html--><!--kg-card-begin: html--><a href="https://github.com/cloudflare/workers-chat-demo" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">查看 GitHub 上的源代码 »</a><!--kg-card-end: html-->
 	<p>此聊天应用使用一个 Durable Object 来控制每个聊天室。用户使用 WebSockets 连接到这个对象。来自一个用户的消息广播到所有其他用户。聊天记录也存储在持久存储中，但这仅用作历史记录。实时消息直接从一个用户中继到其他用户，不经过存储层。</p>
 	<p>另外，此演示还使用 Durable Object 实现第二个目的：对来自任何特定 IP 的消息应用速率限制。每个 IP 都分配到一个 Durable Object，跟踪最近的请求频率，因此用户发送过多消息时可能会被暂时屏蔽，即使在多个聊天室发送也一样。有趣的是，这些对象实际上不存储任何持久状态，因为它们只关心最近的历史记录，并且速率限制器偶尔随机重设也无关紧要。因此，这些速率限制器对象是不带存储的纯协调对象的示例。</p>
 	<p>这个聊天应用只有几百行代码。部署配置也只有几行。但是，它可以无缝扩展到任意数量的聊天室，仅受 Cloudflare 可用资源的限制。当然，由于每个对象都是单线程的，任何个体聊天室的可扩展性存在限制。不过，这个限制远超人类参与者所及的范围。</p>
@@ -115,14 +115,14 @@ let response = await COUNTER_NAMESPACE.get(id).fetch(request);
 	<p>在我们看来，未来的边缘数据库可将每个“块”存储为一个 Durable Object。如此一来，我们就有可能构建彻底在边缘运行、完全分布式，而且没有区域或原籍的数据库。这样的数据库不必由我们构建；任何人都可以在 Durable Object 基础上构建它们。Durable Object 只是边缘存储之旅的第一步。</p>
 	<h3 id="-beta-">参与 Beta 测试</h3>
 	<p>存储数据是一项重要责任，不能掉以轻心。由于正确处理至关重要，我们必须审慎对待。我们会在未来几个月中逐步推出 Durable Object。</p>
-	<p>与所有 Beta 版本一样，这个产品仍在开发中，本文所述的某些功能尚未完全启用。有关 Beta 版限制的完整详情可以从<a href="https://developers.cloudflare.com/workers/learning/using-durable-objects?ref=blog.cloudflare.com" target="_blank">这些文档</a>中找到。</p>
+	<p>与所有 Beta 版本一样，这个产品仍在开发中，本文所述的某些功能尚未完全启用。有关 Beta 版限制的完整详情可以从<a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank">这些文档</a>中找到。</p>
 	<p>如果您要立即试用 Durable Object，请告诉我们您的用例。我们会选择最有趣的用例来提供早期访问。</p>
 	<h2 id="--7">问答</h2>
 	<h3 id="durable-object-websocket-">Durable Object 是否能服务 WebSocket？</h3>
 	<p>是。</p>
 	<p>作为 Durable Object 测试的一部分，我们使 Workers 能够充当 WebSocket 端点，包括担当客户端或服务器。在这之前，Workers 可以将 WebSocket 连接代理到后端服务器，但是不能直接表明协议。</p>
 	<p>尽管在技术上任何 Worker 都可以这种方式表明 WebSocket，但 WebSocket 只有与 Durable Object 结合才最有用处。当客户端使用 WebSocket 连接应用程序时，您需要一种方式，使服务器生成的事件发回到现有的套接字连接。若无 Durable Object，就无法将事件发送到保管 WebSocket 的特定 Worker。使用 Durable Object 后，您便可以将 WebSocket 转发到某个对象。然后，消息可以通过唯一 ID 寻址到这个对象，接着对象可以将这些消息通过 WebSocket 转发到客户端。</p>
-	<p>上文中的聊天应用演示使用了 WebSocket。您可以<a href="https://github.com/cloudflare/workers-chat-demo?ref=blog.cloudflare.com" target="_blank">查看源代码</a>来了解其工作方式。</p>
+	<p>上文中的聊天应用演示使用了 WebSocket。您可以<a href="https://github.com/cloudflare/workers-chat-demo" target="_blank">查看源代码</a>来了解其工作方式。</p>
 	<h3 id="-workers-kv-">这与 Workers KV 相比有何异同？</h3>
 	<p>两年前，我们推出了全局键值数据存储 Workers KV。KV 是一个相当简约的全局数据存储，可以很好地满足某些用户，但并非所有人都适合。KV 具有最终一致性；也就是说，在一个位置进行的写入可能无法立即在其他位置上看到。而且，它实施的是“最后写入为准”语义。这意味着，如果同时从世界上多个位置修改单个键，则这些写入很容易彼此覆盖。KV 采用这种设计方式，以支持对不常更改的数据进行低延迟读取。但是，这些设计决策使 KV 不适合频繁更改的状态，也不适合需要在全世界立即可见的更改。</p>
 	<p>相比之下，Durable Object 的主要功用不是存储产品，许多用例实际上并未利用持久存储。就它们确实提供存储的程度而言，Durable Object 在存储范围中位于和 KV 相对的另一端，特别适合需要事务保证和即时一致性的工作负载。不过，由于事务天生必须在单一位置上协调，并且由于光速的固有限制，位于和该位置相对的世界另一端的客户端会遭遇适度的延迟。Durable Object 通过自动迁移到靠近使用对象的地方来解决这个问题。</p>
@@ -136,7 +136,7 @@ let response = await COUNTER_NAMESPACE.get(id).fetch(request);
 	<p>总之，可以在 Durable Object 基础上使用 CRDT。如果对象的状态适合用 CRDT 来处理，则应用程序可以将该对象复制到为不同区域服务的多个对象中，然后通过 CRDT 同步其状态。如果值得，那么应用程序可以将它作为优化来实施。</p>
 	<h3 id="--8">最后一点，状态变为“无服务器”意味着什么？</h3>
 	<p>传统上看，无服务器专注于无状态计算。在无服务器架构中，计算的逻辑单元简化为一种细粒度的事务：单个事件，例如 HTTP请求。这特别有效，因为事件恰好是我们在设计服务器应用程序时考虑的逻辑工作单元。没有人以“服务器”、“容器”或“进程”为单位来考虑业务逻辑，我们考虑的是事件。正是由于这种语义上的一致，无服务器成功地将维护服务器的大量后勤负担从开发人员转交给云提供商。</p>
-	<p>然而，<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless/?ref=blog.cloudflare.com" target="_blank">无服务器架构</a>在传统上是无状态的。每个事件都独立执行。如果要存储数据，您必须连接到传统数据库。如果要在请求之间进行协调，您必须连接到提供该功能的其他服务。这些外部服务往往重新带来无服务器原本要避免的运营问题。开发人员和服务运营商不仅要操心扩展数据库以处理不断增加的负载，还要操心如何将其数据库拆分为“区域”以有效处理全局流量。后者可能会特别麻烦。</p>
+	<p>然而，<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless/" target="_blank">无服务器架构</a>在传统上是无状态的。每个事件都独立执行。如果要存储数据，您必须连接到传统数据库。如果要在请求之间进行协调，您必须连接到提供该功能的其他服务。这些外部服务往往重新带来无服务器原本要避免的运营问题。开发人员和服务运营商不仅要操心扩展数据库以处理不断增加的负载，还要操心如何将其数据库拆分为“区域”以有效处理全局流量。后者可能会特别麻烦。</p>
 	<p>那么，我们如何将无服务器理念运用到状态呢？正如无服务器计算将计算拆分为细粒度的片段，无服务器状态将状态拆分成细粒度的片段。同样，我们试图寻找一种状态单元来与应用程序中的逻辑单元相对应。应用程序中的逻辑状态单元不是“表”、“集合”或“图形”。相反，它取决于应用程序。聊天应用程序中的逻辑状态单元是聊天室，在线电子表格编辑器中的逻辑状态单元是电子表格，而在线商店中的逻辑状态单元是购物车。通过使存储层提供的物理存储单元与应用程序中固有的逻辑状态单元相匹配，我们可以允许底层存储提供者（Cloudflare）负责处理各种以前属于开发人员职责的诸多后勤问题，包括可扩展性和区域性。</p>
 	<p>这便是 Durable Object 的功用。</p>
 </div>

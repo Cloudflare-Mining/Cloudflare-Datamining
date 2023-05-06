@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed.png" class="kg-image" alt="New WAF intelligence feeds" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed.png" class="kg-image" alt="New WAF intelligence feeds"></figure>
 	<p>Cloudflare 将添加四个新的托管 IP 列表以用作任何自定义防火墙规则的一部分，从而扩展我们的 WAF 威胁情报能力。</p>
 	<p>托管列表由 Cloudflare 创建和维护，并基于通过分析互联网上观察到的模式和趋势所收集的威胁情报源进行构建。Enterprise 客户已经可以使用 Open SOCKS 代理列表（<a href="https://blog.cloudflare.com/zh-cn/protecting-apis-from-abuse-and-data-exfiltration-zh-cn/">于 2021 年 3 月推出</a>），如今我们将添加四个新的 IP 列表：“VPN”、“僵尸网络、命令和控制服务器”、“恶意软件”以及“匿名程序”。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh3.googleusercontent.com/XkegdawMtkmBmuCmAin8MIzby8BSozlKq1g_EJRwpKwYIkmx_e0t49a3yoc8YYNltTLJBQ3oFxDRmBFxP01RTytGgD-zCwQsfiQr5r2WyFChLu9wsmDjeAx5Rb0iN5qu4TXz-AYyJQmuPZirUeiwXw" class="kg-image" alt="You can check what rules are available in your plan by navigating to Manage Account -> Configuration -> Lists." loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh3.googleusercontent.com/XkegdawMtkmBmuCmAin8MIzby8BSozlKq1g_EJRwpKwYIkmx_e0t49a3yoc8YYNltTLJBQ3oFxDRmBFxP01RTytGgD-zCwQsfiQr5r2WyFChLu9wsmDjeAx5Rb0iN5qu4TXz-AYyJQmuPZirUeiwXw" class="kg-image" alt="You can check what rules are available in your plan by navigating to Manage Account -> Configuration -> Lists.">
 		<figcaption>您可以导航至“管理帐户”→“配置”→“列表”，查看您的计划中有哪些规则可用。</figcaption>
 	</figure>
 	<p>客户可以在创建自定义防火墙规则时或在<a href="https://blog.cloudflare.com/zh-cn/advanced-rate-limiting-zh-cn/">高级速率限制</a>中引用这些列表。例如，您可以选择阻止我们归类为 VPN 的 IP 所生成的所有流量，或对所有匿名程序生成的流量进行速率限制。您可以直接在功能强大的防火墙规则构建器中纳入托管 IP 列表。当然，您还可以使用自己的<a href="https://blog.cloudflare.com/introducing-ip-lists/">自定义 IP 列表</a>。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh6.googleusercontent.com/WsDGsltjclo0RVf5cZlM3yiQFzdDUIIteuM2jE80480j63zup6IMVvJtrazsG7VSaBTFSgnX0kYqZBpf3xzgqdLOX_VTpxX3sb398t_tj86gO-EiDKFwVoltRR85EF6CO1n1-wojGxV9tO2wh7IBLA" class="kg-image" alt="Managed IP Lists can be used in WAF rules to manage incoming traffic from these IPs." loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh6.googleusercontent.com/WsDGsltjclo0RVf5cZlM3yiQFzdDUIIteuM2jE80480j63zup6IMVvJtrazsG7VSaBTFSgnX0kYqZBpf3xzgqdLOX_VTpxX3sb398t_tj86gO-EiDKFwVoltRR85EF6CO1n1-wojGxV9tO2wh7IBLA" class="kg-image" alt="Managed IP Lists can be used in WAF rules to manage incoming traffic from these IPs.">
 		<figcaption>托管 IP 列表可以在 WAF 规则中用于管理来自这些 IP 的传入流量。</figcaption>
 	</figure>
 	<h3 id="-">这些源从何而来？</h3>
@@ -18,7 +18,7 @@
 	<h3 id="-ip-">仪表板内 IP 注释</h3>
 	<p>使用这些列表为这些 IP 部署预防性安全策略固然是好，但要是知道正在与您的网站或应用程序交互的某个 IP 属于僵尸网络或 VPN 的一部分该怎么办？我们在 Security Week 2022 活动中首次针对匿名程序发布了<a href="https://blog.cloudflare.com/zh-cn/security-center-investigate-zh-cn/">上下文信息</a>，但如今已将该功能扩展至覆盖所有新列表，从而让这件事更加圆满。</p>
 	<p>作为 Cloudflare 威胁情报源的一部分，我们直接将 IP 类别公开给仪表板。假设您要调查被 WAF 阻止的请求，这些请求企图探测您应用程序的已知软件漏洞。如果这些请求的源 IP 匹配我们的某个源（例如，VPN 的一部分），上下文信息将直接显示在分析页面上。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh3.googleusercontent.com/ba1SUQnRFtLMyaBYf580Fup-l4DJXdqOXEFrBm_KtT6egoEuFy0dh5HSZJvTSokZvDYC1d7US1dlhXMjn2jFgAgNr3Hmf455vhT6sT76JzXpI5ZyTO7bxGrXdj8oVmxCrRlnN9mIPqoa8snfYxx7PQ" class="kg-image" alt="When the source IP of a WAF event matches one of the threat feeds, we provide contextual information directly onto the Cloudflare dashboard." loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh3.googleusercontent.com/ba1SUQnRFtLMyaBYf580Fup-l4DJXdqOXEFrBm_KtT6egoEuFy0dh5HSZJvTSokZvDYC1d7US1dlhXMjn2jFgAgNr3Hmf455vhT6sT76JzXpI5ZyTO7bxGrXdj8oVmxCrRlnN9mIPqoa8snfYxx7PQ" class="kg-image" alt="When the source IP of a WAF event matches one of the threat feeds, we provide contextual information directly onto the Cloudflare dashboard.">
 		<figcaption>WAF 事件的源 IP 匹配某个威胁源时，我们会直接在 Cloudflare 仪表板内提供上下文信息。</figcaption>
 	</figure>
 	<p>此信息可以帮助您看清模式，并决定是否需要使用托管列表来以特定方式处理来自这些 IP 的流量，例如通过创建速率限制规则来减少这些行为者在一段时间内可以执行的请求数。</p>

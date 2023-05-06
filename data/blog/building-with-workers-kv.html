@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare-Workers-KV.svg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare-Workers-KV.svg" class="kg-image"></figure>
 	<p></p>
 	<p>Your Workers now have access to a low-latency key-value data store which lives inside our network all around the world!</p>
 	<p>For those who don’t know, Cloudflare Workers is a new type of compute platform, built on top of our global network of 152+ data centers around the world. It allows you to write serverless code which runs in the fabric of the Internet itself, allowing you to engage with your users faster than other platforms can even get a packet to where your code is running. It’s built on a new architecture which eliminates cold starts and dramatically reduces the memory overhead of keeping your code running when compared to a platform like Amazon Lambda.</p>
@@ -10,9 +10,9 @@
 	<p>That said, we do have some applications which we commonly see as a good entry point into writing code on the network itself. These use-cases combine a serious need for speed with a clean separation from the legacy components of your application which are stuck in a central location (for now!).</p>
 	<p>Here are just a few of those examples:</p>
 	<h3 id="api-gateway-and-access-tokens">API Gateway and Access Tokens</h3>
-	<p>An <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway/?ref=blog.cloudflare.com" target="_blank">API Gateway</a> sits between your visitors and your API. It commonly handles tasks which would be redundant, time consuming, or slow to implement in each and every service in your system. This includes tasks like rate limiting, access token validation, and routing. They work together to deliver only authenticated requests directly to the appropriate components of your system. It’s also the perfect entry point to developing code which runs everywhere. When you use Cloudflare Workers as an API Gateway, your access tokens get validated at the Cloudflare data center closest to the customer before the request is securely forwarded to your origin.</p>
+	<p>An <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway/" target="_blank">API Gateway</a> sits between your visitors and your API. It commonly handles tasks which would be redundant, time consuming, or slow to implement in each and every service in your system. This includes tasks like rate limiting, access token validation, and routing. They work together to deliver only authenticated requests directly to the appropriate components of your system. It’s also the perfect entry point to developing code which runs everywhere. When you use Cloudflare Workers as an API Gateway, your access tokens get validated at the Cloudflare data center closest to the customer before the request is securely forwarded to your origin.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Workers-KV-Blog.svg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Workers-KV-Blog.svg" class="kg-image"></figure>
 	<p></p>
 	<p>In this example your authentication system will store a token when a user logs in. I'm using <code>curl</code>, but the backend code for your system is more likely to use whatever interface it has for making HTTPS requests. This request stores a blob of JSON identifying this token in a Worker KV namespace <code>$NAMESPACE_ID</code> with a key of <code>$TOKEN_ID</code>:</p>
 	<p></p><!--kg-card-begin: markdown-->
@@ -153,7 +153,7 @@ async function handleRequest(request) {
    }
  }
 
- return new Response("?")
+ return new Response("👍")
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -170,8 +170,8 @@ async function handleRequest(request) {
 	</ul>
 	<p>We worked hard to make the pricing of Workers KV easy to understand and affordable for virtually any use case. Your $5 monthly Workers compute minimum includes 1 GB of KV storage and up to 10 million KV reads. If you use less than the 10 million included Worker requests now, you can use KV without paying a single cent more.</p>
 	<p>Beyond the minimums, Workers KV is billed at $0.50 per GB-month of additional storage and $0.50 per million additional KV reads.</p>
-	<p>To get beta access <a href="https://goo.gl/forms/1xd57PdiR9DdhxZs1?ref=blog.cloudflare.com" target="_blank">sign up here</a>, we can’t wait to see what you build!</p>
+	<p>To get beta access <a href="https://goo.gl/forms/1xd57PdiR9DdhxZs1" target="_blank">sign up here</a>, we can’t wait to see what you build!</p>
 	<p><em><a href="https://blog.cloudflare.com/subscribe/" rel="noopener noreferer">Subscribe to the blog</a> for daily updates on all of our announcements.</em></p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare-Birthday-Week-8.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare-Birthday-Week-8.png" class="kg-image"></figure>
 </div>

@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image6-12.png" class="kg-image" alt="Cloudflare Access is the fastest Zero Trust proxy" loading="lazy"></figure>
-	<p>Innovation Weekごとに、Cloudflareは競合他社に対するネットワークのパフォーマンスを調べます。過去数週間、私たちはAkamaiのような<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/?ref=blog.cloudflare.com" target="_blank">リバースプロキシ</a>や、Fastly や AWS のような<a href="https://blog.cloudflare.com/ja-jp/welcome-to-the-supercloud-and-developer-week-2022-ja-jp/">Supercloud</a>と比較してサーバーレスコンピューティングを販売するプラットフォームと比較して、どれだけ高速であるかに焦点を当ててきました。今週は、他のリバースプロキシとの比較に関する最新情報と、ZscalerおよびNetskopeと当社のアプリケーションサービスセキュリティ製品を比較した場合の最新情報を提供したいと思います。この製品は、外部ユーザーからWebサイトを保護するリバースプロキシとは対照的に、アプリケーションとインターネットエクスペリエンスをパブリックインターネットに保護するCloudflare Zero Trustプラットフォームの一部です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image6-12.png" class="kg-image" alt="Cloudflare Access is the fastest Zero Trust proxy"></figure>
+	<p>Innovation Weekごとに、Cloudflareは競合他社に対するネットワークのパフォーマンスを調べます。過去数週間、私たちはAkamaiのような<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/" target="_blank">リバースプロキシ</a>や、Fastly や AWS のような<a href="https://blog.cloudflare.com/ja-jp/welcome-to-the-supercloud-and-developer-week-2022-ja-jp/">Supercloud</a>と比較してサーバーレスコンピューティングを販売するプラットフォームと比較して、どれだけ高速であるかに焦点を当ててきました。今週は、他のリバースプロキシとの比較に関する最新情報と、ZscalerおよびNetskopeと当社のアプリケーションサービスセキュリティ製品を比較した場合の最新情報を提供したいと思います。この製品は、外部ユーザーからWebサイトを保護するリバースプロキシとは対照的に、アプリケーションとインターネットエクスペリエンスをパブリックインターネットに保護するCloudflare Zero Trustプラットフォームの一部です。</p>
 	<p><a href="https://blog.cloudflare.com/ja-jp/network-performance-update-cio-edition-ja-jp/">Zero TrustプラットフォームとZscalerの比較を示す以前の投稿</a>に加えて、世界中の3,000ラストマイルネットワークからのリバースプロキシの<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">広範なネットワークベンチマーク結果も以前に共有しました</a>。すべてのラストマイルネットワークで1位を獲得するまでの進捗状況を示してからしばらく経ちました。そのデータを示すとともに、CloudflareアクセスとZscalerプライベートアクセスおよびNetskopeプライベートアクセスを比較する一連のテストに関する情報をここで共有したいと思います。全体的なネットワークテストでは、Cloudflareは、最も報告された上位3,000のネットワークの47%で1位です。当社のアプリケーションセキュリティテストでは、CloudflareはZscalerよりも50%速く、Netskopeよりも75%速いことが示されています。</p>
 	<p>このブログ記事では、製品のパフォーマンスが重要である理由について説明し、測定しているものを深く掘り下げて、より高速であることを示すために、各製品のパフォーマンスをどのように測定したかについて説明します。</p>
 	<h3 id="-">なぜパフォーマンスが重要なのか？</h3>
@@ -11,9 +11,9 @@
 	<h3 id="cloudflare-access-zero-trust-">Cloudflare Access：最速のZero Trustプロキシ</h3>
 	<p>アクセスコントロールは、ユーザーにとってシームレスで透明である必要があります。Zero Trustソリューションに対する最高の賛辞は、従業員がその存在にほとんど気づかないことです。これらのサービスでは、プロバイダネットワーク上で認証情報をキャッシュすることができ、アプリケーションに安全かつ迅速にアクセスできるため、ユーザーが望むシームレスな体験を提供することができます。そのため、必要なログイン回数を最小限に抑えつつ、アプリケーションのリクエストの待ち時間を短縮するネットワークを用意することで、インターネットでの体験をきびきびとしたものにすることができます。</p>
 	<p>Cloudflare Accessは、Netskopeよりも75%、Zscalerよりも50%高速であるため、世界のどこにいても、高速で安全なアプリケーションエクスペリエンスを得ることができます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0-10.png" class="kg-image"></figure>
 	<p>Cloudflareは、香港、トロント、ヨハネスブルグ、サンパウロ、フェニックス、スイスの6つの異なるアプリケーションサーバーに接続している世界中の300の異なる場所から、当社、Zscaler、Netskope全体のアプリケーションアクセスを測定しました。これらの各ロケーションで、CloudflareのP95の応答時間はZscalerやNetskopeよりも速いことが示されました。アプリケーションがトロントでホストされている場合のデータを見てみましょう。トロントは、ZscalerやNetskopeのパフォーマンスに有利であると考えられる場所であり、相互接続が激しい地域である北米にあります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--8.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--8.png" class="kg-image"></figure><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -79,7 +79,7 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Cloudflareは、南米やアジア太平洋など、より多様な接続オプションを持つ地域で非常に際立っており、ZscalerはCloudflareよりもNetskopeと比較して優れています。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--5.png" class="kg-image"></figure>
 	<p>南米でローカルにホストされているアプリケーションサーバーを見ると、Cloudflareが際立っています。</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -211,7 +211,7 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Cloudflareのネットワークは、ユーザーを当社のネットワークにすばやく誘導し、世界中のアプリケーションホストに戻る最適なルートを見つけることができるため、ここで私たちを際立たせています。このSuperpowerのおかげで、CloudflareはZscalerの2倍、Netskopeの3倍の速さです。すべての異なるテストにおいて、Cloudflareの接続時間は300のテストノードすべてで一貫して高速です。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--3--5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--3--5.png" class="kg-image"></figure>
 	<p>前回の<a href="https://blog.cloudflare.com/ja-jp/network-performance-update-cio-edition-ja-jp/">ブログ記事</a>では、CloudflareとZscalerを比較する際に個別に測定する必要がある2つの異なるシナリオについて説明しました。最初のシナリオは、ユーザーがアプリケーションにログインし、認証する必要がある場合です。この場合、Zero Trustアクセスサービスはユーザーをログインページに誘導し、ユーザーが認証されてから、アプリケーションにリダイレクトされます。</p>
 	<p>これは、認証情報がキャッシュされておらず、Accessネットワーク上に存在しないため、新規セッションと呼ばれます。2番目のシナリオは、ユーザーがすでに認証されており、その認証方法をキャッシュできるため、既存セッションと呼ばれます。このシナリオでは、IDプロバイダへの余分な呼び出しが必要ないため、通常はより高速に処理されます。</p>
 	<p>新規セッションと既存セッションを合わせて95パーセンタイルの値を見ると、ほとんど新規セッションになってしまうので、これらのシナリオを別々に測定したいのです。しかし、どちらのシナリオでも、どの地域でも一貫してCloudflareの方が速いことが示されました。トロントでホストされているアプリケーションを見てみましょう。Cloudflareに接続するユーザーは、新規セッションと既存のセッションの両方でZscalerやNetskopeよりも高速な接続が可能です。</p><!--kg-card-begin: html-->
@@ -367,16 +367,16 @@
 	<p>ネットワークパフォーマンスを定量化するには、他のプロバイダーを使用した世界中の様々なネットワークで自分たちを比較した十分なデータを取得する必要があります。当社はReal User Measurements (RUM) を使用して、複数の異なるプロバイダから100 kbのファイルを取得し、世界中のユーザーからさまざまなプロバイダーのパフォーマンスがレポートされています。データをレポートするユーザーが多いほど、信号の信用度は高くなります。目標は、さまざまなプロバイダーのどこが速いのか、さらに重要なことは、Cloudflareのどこを改善できるのかを正確に把握することです。その方法の詳細については、<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">こちら</a>のオリジナルのSpeed Weekブログ記事をご覧ください。</p>
 	<p>私たちは常に、なぜ遅いのかを理解し、その後改善するというプロセスを繰り返しています。当社が直面した課題は、各ネットワークに固有のものであり、インターネットで蔓延しているさまざまな異なる問題を浮き彫りにしました。いくつかのネットワークを深く掘り下げて、どのように診断してパフォーマンスを向上させたかを示します。</p>
 	<p>でもその前に、最後に結果をご紹介したDeveloper Week 2022以来の最新の結果をご覧ください。世界のネットワーク上位3,000（アドバタイズされたIPv4アドレス数）のうち、各プロバイダーがp95 TCP接続時間で1位となったネットワーク数の内訳は次のとおりです。これは、あるネットワーク上のユーザーがプロバイダーに接続するのにかかった時間を表しています。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--4.png" class="kg-image"></figure>
 	<p>今週のSecurity Week 2023の時点でのこれらの数値は次のようになります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--5--2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--5--2.png" class="kg-image"></figure>
 	<p>ご覧のとおり、Cloudflareはより多くのネットワークで高速化することでリードを拡大しましたが、AkamaiやFastlyなど以前は高速だった他のネットワークはリードを失いました。これは、世界地図に表示される効果に変換されます。Developer Week 2022の世界地図は次のようになります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6--2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6--2.png" class="kg-image"></figure>
 	<p>Security Week 2023の現在の世界地図は次のようになります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--4.png" class="kg-image"></figure>
 	<p>ご覧のとおり、Cloudflareはブラジル、南アフリカ、エチオピア、ナイジェリアを含むアフリカの多くの国、アジアのインドネシア、ヨーロッパのノルウェー、スウェーデン、英国でより高速化しています。</p>
 	<p>これらの国の多くは、<a href="https://blog.cloudflare.com/how-cloudflare-helps-next-generation-markets/">Impact Weekのブログ記事</a>で説明したエッジパートナープログラムの恩恵を受けました。簡単なおさらいとして、エッジパートナープログラムでは、ラストワンマイルISPがCloudflareと提携して、ラストマイルISPに組み込まれているCloudflareロケーションを展開することを奨励しています。これにより、ラストマイルのRTTが向上し、Accessなどのパフォーマンスが向上します。前回このマップをお見せして以来、Cloudflareはナイジェリアやサウジアラビアなどの場所により多くのパートナーロケーションを展開しており、すべてのシナリオでユーザーのパフォーマンスが向上しています。エッジパートナープログラムなどの取り組みは、上記のようなZero Trustシナリオだけでなく、Cloudflareによって保護されたWebサイトを使用するエンドユーザーの一般的なWebブラウジングエクスペリエンスを改善するのにも役立ちます。</p>
 	<h3 id="zero-trust-">Zero Trustの世界における次世代パフォーマンス</h3>
 	<p>Zero Trustでない世界では、あなたとあなたのITチームがネットワークオペレーターであり、パフォーマンスをコントロールすることができました。この制御は快適ですが、オフィスとリソースの間のミドルマイル接続を管理しなければならないITチームには大きな負担となります。しかし、Zero Trustの世界では、ネットワークはもはや公共のインターネットです。このことは、あなたのチームの仕事が減ることを意味します。しかし、Zero Trustプロバイダーは、ユーザー一人ひとりのパフォーマンスを管理しなければならず、より多くの責任を負うことになります。エンドツーエンドのパフォーマンスを向上させるZero Trustプロバイダーが優れていればいるほど、ユーザーのエクスペリエンスが良くなり、リスクを軽減することができます。認証やセキュアWebゲートウェイなどのリアルタイムアプリケーションでは、迅速なユーザーエクスペリエンスを実現することが重要です。</p>
-	<p>Zero Trustプロバイダーは、公衆インターネット上でユーザーの安全を確保するだけでなく、公衆インターネットを最適化し、ユーザーが継続的に保護されていることを確認する必要があります。Zero Trustへの移行は、企業ネットワークの必要性を減らすだけでなく、ユーザーのトラフィックがより自然にリソースへ流れるようにします。しかし、Zero Trustプロバイダーがすべてのユーザーとすべてのアプリケーションのゲートキーパーになることを考えると、ユーザーの摩擦を減らし、ユーザーが不満を漏らしたり、生産性を低下させたり、ソリューションを停止したりする可能性を減らすために、パフォーマンスを評価することは重要な側面です。Cloudflareは、ユーザーが常に最高のエクスペリエンスを得られるよう、<a href="https://www.cloudflare.com/partners/peering-portal/?ref=blog.cloudflare.com" target="_blank">エッジパートナープログラム</a>などを通じて、ネットワークを絶えず改善しています。これは、ピアリングや相互接続の改善などを通じて行われています。私たちが最速のZero Trustプロバイダーであるのは、このたゆまぬ努力に基づいています。<br></p>
+	<p>Zero Trustプロバイダーは、公衆インターネット上でユーザーの安全を確保するだけでなく、公衆インターネットを最適化し、ユーザーが継続的に保護されていることを確認する必要があります。Zero Trustへの移行は、企業ネットワークの必要性を減らすだけでなく、ユーザーのトラフィックがより自然にリソースへ流れるようにします。しかし、Zero Trustプロバイダーがすべてのユーザーとすべてのアプリケーションのゲートキーパーになることを考えると、ユーザーの摩擦を減らし、ユーザーが不満を漏らしたり、生産性を低下させたり、ソリューションを停止したりする可能性を減らすために、パフォーマンスを評価することは重要な側面です。Cloudflareは、ユーザーが常に最高のエクスペリエンスを得られるよう、<a href="https://www.cloudflare.com/partners/peering-portal/" target="_blank">エッジパートナープログラム</a>などを通じて、ネットワークを絶えず改善しています。これは、ピアリングや相互接続の改善などを通じて行われています。私たちが最速のZero Trustプロバイダーであるのは、このたゆまぬ努力に基づいています。<br></p>
 </div>

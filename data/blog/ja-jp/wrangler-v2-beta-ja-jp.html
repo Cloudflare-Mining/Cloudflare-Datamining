@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-23-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-23-5.png" class="kg-image"></figure>
 	<p>開発者の仕事の多くは、一貫性と可用性、正しさとスピードなど、トレードオフの関係にあります。技術的には様々なトレードオフがあるでしょうが、開発者としては絶対にしてはいけないことがあると考えています。</p>
 	<p>その1つが、使いやすい開発環境です。新しい開発者をチームに迎え入れる場合でも、単に開発期間を短縮したい場合でも、どんなに小さなことでもスピードとシンプルさのために最適化されていることが重要です。</p>
 	<p>そのため、私たちはCloudflare Workers向けの第2世代の開発者ツールを発表することになりました。このツールは、すぐに使えて非常に高速で、ローカルマシン上でWorkersを実行することもできる、新しい開発者エクスペリエンスです。（やりました！）</p>
@@ -21,10 +21,10 @@
 	<h3 id="--2">ローカルモード？スイッチを切り換えるだけ</h3>
 	<p><strong>新しいデバッグ環境のもう一つの特徴は、ローカルマシン上でWorkerを実行する「ローカルモード」に切り替えられることです。</strong>実際、キーバインドショートカット1つで「ネットワーク」と「ローカル」のモード切り換えが簡単にできます。</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/9d1f091813399737dfeadaaaa01d26be?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p>どういった仕組みなのでしょうか。Cloudflareは最近、Node.jsでWorkerをローカルにエミュレートするプロジェクト<a href="https://github.com/cloudflare/miniflare?ref=blog.cloudflare.com" target="_blank">Miniflare</a>（<a href="https://twitter.com/_mrbbot?ref=blog.cloudflare.com" target="_blank">Brendan Coll</a>が作成）がCloudflare公式になったことを発表しました。Miniflareは、WorkersをNode.jsでローカルにエミュレートするプロジェクトで、単体テストやインターネット接続せずにWorkersをデバッグしたい場合に最適です。これをローカルの開発エクスペリエンスに直接統合したことにより、ネットワークとローカルホストの両方の利点を楽しむことができるようになりました。<br></p>
+	<p>どういった仕組みなのでしょうか。Cloudflareは最近、Node.jsでWorkerをローカルにエミュレートするプロジェクト<a href="https://github.com/cloudflare/miniflare" target="_blank">Miniflare</a>（<a href="https://twitter.com/_mrbbot" target="_blank">Brendan Coll</a>が作成）がCloudflare公式になったことを発表しました。Miniflareは、WorkersをNode.jsでローカルにエミュレートするプロジェクトで、単体テストやインターネット接続せずにWorkersをデバッグしたい場合に最適です。これをローカルの開発エクスペリエンスに直接統合したことにより、ネットワークとローカルホストの両方の利点を楽しむことができるようになりました。<br></p>
 	<h3 id="--3">ご感想をお聞かせください</h3>
 	<p>サーバーレスはシンプルであるべきです。Cloudflareでは、Workersの開発環境の改善ができたことを本当に嬉しく思います。これからもさらに多くのことを計画しています。</p>
-	<p>wrangler 2.0はまだ開発中ですが、“npm install wrangler@beta”を実行するか<a href="https://github.com/cloudflare/wrangler2?ref=blog.cloudflare.com" target="_blank">リポジトリ</a>にアクセスしてベータ版をお試しいただけます。すでにwranglerを使って既存のアプリケーションをデプロイしている場合は、2.0のリリースが正式に発表されるまで、wrangler 1.0を使い続けることをお勧めします。wrangler 1.0 の開発とメンテナンスは、2.0 の後方互換性が完了するまで継続します。</p>
-	<p>これからプロジェクトを始める方や、新しいエクスペリエンスを試してみたい方は、ぜひご意見をお聞かせください。wrangler 2.0で足りないもの、見たいものを教えてください。機能リクエストを作成したり、<a href="https://github.com/cloudflare/wrangler2?ref=blog.cloudflare.com" target="_blank">リポジトリ</a>でディスカッションを始めることができます。（2.0のベータテストが終了後は、既存のwranglerリポジトリと合体させます。）</p>
+	<p>wrangler 2.0はまだ開発中ですが、“npm install wrangler@beta”を実行するか<a href="https://github.com/cloudflare/wrangler2" target="_blank">リポジトリ</a>にアクセスしてベータ版をお試しいただけます。すでにwranglerを使って既存のアプリケーションをデプロイしている場合は、2.0のリリースが正式に発表されるまで、wrangler 1.0を使い続けることをお勧めします。wrangler 1.0 の開発とメンテナンスは、2.0 の後方互換性が完了するまで継続します。</p>
+	<p>これからプロジェクトを始める方や、新しいエクスペリエンスを試してみたい方は、ぜひご意見をお聞かせください。wrangler 2.0で足りないもの、見たいものを教えてください。機能リクエストを作成したり、<a href="https://github.com/cloudflare/wrangler2" target="_blank">リポジトリ</a>でディスカッションを始めることができます。（2.0のベータテストが終了後は、既存のwranglerリポジトリと合体させます。）</p>
 	<p>開発者の皆様に感謝します。皆様が今後開発されるものを楽しみにしています。</p>
 </div>

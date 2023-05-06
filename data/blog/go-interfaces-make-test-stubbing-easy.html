@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Go's "object-orientation" approach is through <a href="https://golang.org/doc/effective_go.html?ref=blog.cloudflare.com#interfaces" target="_blank">interfaces</a>. Interfaces provide a way of specifying the behavior expected of an object, but rather than saying what an object itself can do, they specify what's expected of an object. If any object meets the interface specification it can be used anywhere that interface is expected.</p>
+	<p>Go's "object-orientation" approach is through <a href="https://golang.org/doc/effective_go.html#interfaces" target="_blank">interfaces</a>. Interfaces provide a way of specifying the behavior expected of an object, but rather than saying what an object itself can do, they specify what's expected of an object. If any object meets the interface specification it can be used anywhere that interface is expected.</p>
 	<p>I was working on a new, small piece of software that does image compression for CloudFlare and found a nice use for interfaces when stubbing out a complex piece of code in the unit test suite. Central to this code is a collection of goroutines that run jobs. Jobs are provided from a priority queue and performed in priority order.</p>
 	<p>The jobs ask for images to be compressed in myriad ways and the actual package that does the work contained complex code for compressing JPEGs, GIFs and PNGs. It had its own unit tests that checked that the compression worked as expected.</p>
 	<p>But I wanted a way to test the part of the code that runs the jobs (and, itself, doesn't actually know what the jobs do). Because I only want to test if the jobs got run correctly (and not the compression) I don't want to have to create (and configure) the complex job type that gets used when the code really runs.</p>
@@ -55,5 +55,6 @@ func (j DummyJob) Do() error {
 </pre>
 	<p>It sets a <code>Done</code> flag when the <code>Worker</code>'s <code>do</code> function actually runs the <code>DummyJob</code>. Since <code>DummyJob</code> meets the <code>Job</code> interface it can be sent down the <code>w.In</code> channel to a <code>Worker</code> for processing.</p>
 	<p></p>
-	<p>Creating that <code>Job</code> interface totally isolated the interface that the <code>Worker</code> needs to be able to run jobs and hides any of the other details greatly simplifying the unit test suite. Most interesting of all, no changes <em>at all</em> were needed to <code>CompressionJob</code> to achieve this.<!--kg-card-end: markdown--></p>
+	<p>Creating that <code>Job</code> interface totally isolated the interface that the <code>Worker</code> needs to be able to run jobs and hides any of the other details greatly simplifying the unit test suite. Most interesting of all, no changes <em>at all</em> were needed to <code>CompressionJob</code> to achieve this.<!--kg-card-end: markdown-->
+	</p>
 </div>

@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<p><a href="https://dash.cloudflare.com/sign-up?ref=blog.cloudflare.com" target="_blank">Cloudflareのダッシュボード </a>は、現在新しく4言語（と複数のロケール）でご利用いただけます：スペイン語（国を特定するロケール：チリ、エクアドル、メキシコ、ペルー、スペイン）、ブラジルポルトガル語、中国語（繁体字）。当社のお客様はグローバルで多様性に富んでいます。誰にとってもより良いインターネットの構築に貢献する上で、どの言語でもお客様に製品とサービスをお届けするのは不可欠です。</p>
+	<p><a href="https://dash.cloudflare.com/sign-up" target="_blank">Cloudflareのダッシュボード </a>は、現在新しく4言語（と複数のロケール）でご利用いただけます：スペイン語（国を特定するロケール：チリ、エクアドル、メキシコ、ペルー、スペイン）、ブラジルポルトガル語、中国語（繁体字）。当社のお客様はグローバルで多様性に富んでいます。誰にとってもより良いインターネットの構築に貢献する上で、どの言語でもお客様に製品とサービスをお届けするのは不可欠です。</p>
 	<p>昨年からCloudflareはダッシュボードを国際化しようと取り組んできました。2019年末、米国英語以外の言語を使った初めてのダッシュボードをドイツ語から開始しました。そして、2020年3月にはフランス語、日本語、中国語（簡体字）の３言語をリリースしました。いずれかの言語でダッシュボードの使用を始めたい場合は、Cloudflare ダッシュボードの右上部にある使用言語を変更するだけです。選んだ言語は、全セッションを通じて保存、使用されます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image1-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image1-13.png" class="kg-image"></figure>
 	<p>このブログ記事を読んで、国際化とローカライゼーションに慣れていない方々にもその機能をご理解いただきたいと思います。当社がどのようにアプリケーションの国際化とローカライゼーションを標準かつ再現可能なプロセスにしたかという話をご紹介すると同時に、同じ作業をする場合に役立つヒントを少し共有したいと思います。</p>
 	<h3 id="-">旅の始まり</h3>
 	<p>国際化の最初のステップは、自分のアプリケーションの文字列を外部化することです。具体的には、ユーザーが読むことができるテキストをすべて取り出し、別のスタンドアロンファイルにアプリケーションコードを抽出するということです。これを行う理由がいくつかあります。</p>
@@ -68,7 +68,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>これで作業は完了し、エレガントなソリューションに見えるかもしれません。結局のところ、selected.prefixとpageRules.suffix文字列はリユースするようになっているようです。しかし、このように文を切り刻んでから翻訳されたビットを連結させると、国際化のための文字列の外部化する際に一つの大きな落とし穴となってしまいます。</p>
-	<p>この問題は、翻訳されると文を構成する様々な語がコンテクスト（単数形コンテクスト vs 複数形コンテクスト、女性形と男性形に起因、主語/述語の一致など）に基づいて、<a href="https://en.wikipedia.org/wiki/Inflection?ref=blog.cloudflare.com" target="_blank">さまざまな方法でモーフィングされる</a>ことです。これは、<a href="https://en.wikipedia.org/wiki/Word_order?ref=blog.cloudflare.com" target="_blank">語順</a>のように言語間で大きく異なります。英語を例にすると、We like themという文は、主語-動詞-目的語の順ですが、他の言語の語順に従うと、主語-目的語-述語（We them like）だったり、述語-主語-目的語（Like we them）だったり、他の語順に従うこともあります。言語間にはこうした微妙な違いがあるため、翻訳された句を連結させて1つの文にするのは、ほとんどの場合、ローカライゼーションエラーとなるのです。</p>
+	<p>この問題は、翻訳されると文を構成する様々な語がコンテクスト（単数形コンテクスト vs 複数形コンテクスト、女性形と男性形に起因、主語/述語の一致など）に基づいて、<a href="https://en.wikipedia.org/wiki/Inflection" target="_blank">さまざまな方法でモーフィングされる</a>ことです。これは、<a href="https://en.wikipedia.org/wiki/Word_order" target="_blank">語順</a>のように言語間で大きく異なります。英語を例にすると、We like themという文は、主語-動詞-目的語の順ですが、他の言語の語順に従うと、主語-目的語-述語（We them like）だったり、述語-主語-目的語（Like we them）だったり、他の語順に従うこともあります。言語間にはこうした微妙な違いがあるため、翻訳された句を連結させて1つの文にするのは、ほとんどの場合、ローカライゼーションエラーとなるのです。</p>
 	<p>上記のコード例は、「選択しました」と「ページルール」を別の文字列として提供した際に、当社の翻訳チームから戻された実際の翻訳です。この文は、さまざまな言語でレンダリングされたときにどのように見えるかの一例です。</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
@@ -212,14 +212,14 @@
 	<p>たとえば、3 Page Rulesを選択しました。はÝôú'Ʋè ƨèℓèçƭèδ 3 Þáϱè Rúℓèƨに変換されるかもしれません。</p>
 	<p>もう一つ便利な機能は、コンテンツ幅の違いを計画するために、一定の量だけ全ての文字列を短くしたり長くしたりでき、擬似ローカライゼーションモードで自由に使えます。ここでは同じ擬似ローカライズされた文「Ýôú'Ʋè ƨèℓèçƭèδ 3 Þáϱè Rúℓèƨ. ℓôřè₥ ïƥƨú₥ δô」を50%長くします。これは、エンジニアとデザイナーがコンテンツの長さが問題になる可能性がある場所を特定するのに役立ちます。この問題に最初に気づいたのは、英語よりも単語が長い傾向があるドイツ語のサポートを開始しようとしたときでした。</p>
 	<p>つまり、こちらの「追加」ボタンのようにページエレメントでテキストがオーバーフロー（文字あふれ）する箇所が多いということを意味しました。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image4-7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image4-7.png" class="kg-image"></figure>
 	<p>こういう種類の問題をユーザー体験を損なわずに、簡単に修正する方法は多くありません。</p>
 	<p>一番いい結果を得るには、可変コンテンツの幅はデザインそのものに含める必要があります。こうしたバグの修正は、新しい設計をリクエストするためにアップストリームに送り返すことを意味することがあるので、処理には時間がかかる傾向があります。コンテンツデザイン全般をそれほど考えていないなら、その時が国際化の取り組みを開始するのにいい時期かもしれません。ご自分のアプリで様々なエレメントに使用されるコピーでの標準と一貫性を持つことで、翻訳が必要な語数を減らすことができるだけでなく、新しい語句を使う際のコンテンツの長さに落とし穴がないか考え込む必要がなくなります。</p>
 	<p>我々が遭遇した落とし穴が、もう1つあります。特に、長くて繰り返しが多い翻訳IDが、タイプミスの影響を非常に受けやすいということです。</p>
 	<p>簡単なクイズを出しましょう。どちらの翻訳キーがアプリを壊すでしょうか。traffic.load_balancing.analytics.filters.origin_health_titleですか。それともtraffic.load_balancing.analytics.filters.origin_heath_titleでしょうか。</p>
 	<p>これは何百もの変更行の中にあって、コードレビューでは見つけるのが難しいです。ほとんどのアプリにはフォールバック機能があるので、翻訳が抜けていてもページの区切りエラーにはなりません。結果として、こうしたバグは非常に上手く隠れていると（ヘルプテキストのフライアウトなど）、完全に気付くことがないかもしれません。</p>
 	<p>ラッキーなことに、TypeScriptのコードベースの割合が増加し、コードを書くときに開発者にフィードバックを出すタイプチェッカーを活用することができました。こちらは、当社のコードエディターがIDプロパティが無効になっている（アルファベットの「l」が抜けているため）ことを示すために赤い下線を示している例です。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image5-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image5-4.png" class="kg-image"></figure>
 	<p>問題が明らかになっただけでなく、違反によってビルドが失敗し、コードベースに不正コードが入力されるのを防ぐことも示しました。</p>
 	<h3 id="--2">ロケールファイルの拡張</h3>
 	<p>おそらくサポートするロケールごとに1つの翻訳ファイルから始めることが多いでしょう。さらに、キーに使用する命名規制がややシンプルなままかもしれません。アプリが大きくなると、翻訳ファイルも大きくなりすぎて別のファイルに分ける必要が出てきます。ファイルが大きすぎると、Translation Management（翻訳管理）アプリケーションが圧倒され、チェックを外せば、コードエディターに負担がかかることになります。すべての翻訳文字列（キーを含まない）は、1つのファイルにまとめた場合、約50,000語です。ちなみに、これは『The Hitchhiker's Guide to the Galaxy（銀河ヒッチハイク·ガイド）』や『Slaughterhouse Five（スローターハウス5）』とほぼ同じサイズです。</p>
@@ -227,7 +227,7 @@
 	<p>機能ごとのカタログに加えて、当社はアプリケーション全体でリユースする文字列を維持する共通のカタログファイルがあります。これのおかげで、IDを短くすることができ（common.deletevssome_page.some_tab.some_feature.thing.delete）、新しい文字列を追加する前に開発者は共通カタログを確認する習慣があるため、重複する可能性も低くできます。</p>
 	<h3 id="--3">ライブラリ</h3>
 	<p>これまでのところ、当社の&lt;Trans&gt;コンポーネントとそれで何ができるかについて話してきましたが、ここでどのように構築されているのかという話に移りましょう。</p>
-	<p>驚くことではないと思いますが、当社はわざわざ一からやり直そうとしたのではなく、基本のi18nライブラリを最初から提案したかったわけでもありません。Backboneで書かれたアプリケーションのレガシー部分を国際化しようと以前から続けていた努力のため、当社はすでにAirbnbの<a href="https://airbnb.io/polyglot.js/?ref=blog.cloudflare.com" target="_blank">Polyglot library</a>、「tiny I18n helper library written in JavaScript（JavaScriptで記述された小さなI18nヘルパーライブラリ）」を使ってきました。これは、とりわけ「Backbone.jsとNode アプリにI18n機能を追加するAirbnbの経験に基づいて補間と複数形化のための簡単なソリューションを提供します」。</p>
+	<p>驚くことではないと思いますが、当社はわざわざ一からやり直そうとしたのではなく、基本のi18nライブラリを最初から提案したかったわけでもありません。Backboneで書かれたアプリケーションのレガシー部分を国際化しようと以前から続けていた努力のため、当社はすでにAirbnbの<a href="https://airbnb.io/polyglot.js/" target="_blank">Polyglot library</a>、「tiny I18n helper library written in JavaScript（JavaScriptで記述された小さなI18nヘルパーライブラリ）」を使ってきました。これは、とりわけ「Backbone.jsとNode アプリにI18n機能を追加するAirbnbの経験に基づいて補間と複数形化のための簡単なソリューションを提供します」。</p>
 	<p>Reactアプリケーションの国際化を目的に設計された最も人気のあるライブラリをいくつか調べましたが、最終的にPolyglotに決めました。Reactとのギャップを埋めるために&lt;Trans&gt;コンポーネントを作成しました。この方向性には、いくつか理由があります。</p>
 	<ul>
 		<li>新しいi18nサポートライブラリに移行するため、当社のアプリケーションでレガシーコードを再度国際化したくありませんでした。</li>
@@ -236,7 +236,7 @@
 	</ul>
 	<p>新規のReactベースウェブアプリでi18nを使い始めている場合、react-intlとi18n-nextの２つは人気ライブラリで、すでに述べたように&lt;Trans&gt;と類似したコンポーネントを提供します。</p>
 	<p>大まかに説明したように、&lt;Trans&gt;コンポーネントの最大の問題点は、文字列をソースコードとは別のファイルに入れなければならないことです。新規コードを作成したり、既存の機能を修正したりする際に複数のファイルを切り替えるのは面倒です。もし翻訳ファイルがディレクトリ構造から遠く離れたところにある場合、ディレクトリ内に存在する必要がある場合も多く、さらに面倒です。</p>
-	<p>新規のi18nライブラリには<a href="https://github.com/lingui/js-lingui?ref=blog.cloudflare.com" target="_blank">jslingui</a>といったものもあり、翻訳カタログを取り扱うための抽出ベースのアプローチをとることで、この問題を回避します。このスキームで、&lt;Trans&gt;コンポーネントをまだ使いますが、別のカタログではなく、コンポーネント自体に文字列を保持します。</p><!--kg-card-begin: markdown-->
+	<p>新規のi18nライブラリには<a href="https://github.com/lingui/js-lingui" target="_blank">jslingui</a>といったものもあり、翻訳カタログを取り扱うための抽出ベースのアプローチをとることで、この問題を回避します。このスキームで、&lt;Trans&gt;コンポーネントをまだ使いますが、別のカタログではなく、コンポーネント自体に文字列を保持します。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans&gt;Hmm... We couldn't find any matching websites.&lt;/Trans&gt;
 &lt;/span&gt;
@@ -265,7 +265,7 @@
 	<pre><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>適切に書式が設定されていなければ、小さな数値が正しく表示されても、何千という数になるとすぐにローカライゼーションの問題が発生します。桁をグループに分けて、シンボルで区切る方法は<a href="https://en.wikipedia.org/wiki/Decimal_separator?ref=blog.cloudflare.com" target="_blank">文化によって異なります</a>。ここで30万と300分の1が異なるロケールでどのようなフォーマットになるか示されています。</p><!--kg-card-begin: markdown-->
+	<p>適切に書式が設定されていなければ、小さな数値が正しく表示されても、何千という数になるとすぐにローカライゼーションの問題が発生します。桁をグループに分けて、シンボルで区切る方法は<a href="https://en.wikipedia.org/wiki/Decimal_separator" target="_blank">文化によって異なります</a>。ここで30万と300分の1が異なるロケールでどのようなフォーマットになるか示されています。</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -344,7 +344,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>日付をフォーマットする方法は<a href="https://en.wikipedia.org/wiki/Date_format_by_country?ref=blog.cloudflare.com" target="_blank">国ごとに大きく異なります</a>。米国のオーディエンスを念頭に置いてUIを開発した場合、他の国にいるユーザーにとって使い慣れていない日付の表示方法を使うことになります。とりわけ、日付のフォーマットはセパレーターの選択、一桁の場合にゼロが追加されている、日付は日/月/年という順番かという点において異なります。今年の3月4日が異なるロケールでどのようにフォーマットされるか紹介します。</p><!--kg-card-begin: markdown-->
+	<p>日付をフォーマットする方法は<a href="https://en.wikipedia.org/wiki/Date_format_by_country" target="_blank">国ごとに大きく異なります</a>。米国のオーディエンスを念頭に置いてUIを開発した場合、他の国にいるユーザーにとって使い慣れていない日付の表示方法を使うことになります。とりわけ、日付のフォーマットはセパレーターの選択、一桁の場合にゼロが追加されている、日付は日/月/年という順番かという点において異なります。今年の3月4日が異なるロケールでどのようにフォーマットされるか紹介します。</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -504,18 +504,18 @@
 	<p></p>
 	<h3 id="--4">数値、日付、時間を処理するライブラリ</h3>
 	<p>サポートするロケール全てで、こうしたデータを正確なフォーマットにすることは簡単な作業ではありません。幸いにも、役に立つライブラリが数多くあります。このライブラリは、成熟しており、実地経験も豊富です。</p>
-	<p>プロジェクトを開始した時、当社は<a href="https://momentjs.com/?ref=blog.cloudflare.com" target="_blank">moment.js</a>ライブラリをデータおよび時間のフォーマットに広く使用していました。この便利なライブラリは、長さが異なる日付のフォーマット（「20年7月9日」、「2020年7月9日」、vs 「木曜日」）を無視して、多数ある中から相対的な日（「2日前」）を表示します。ほぼすべての日付は、可読性を考慮してMoment.js経由ですでにフォーマットされており、Moment.jsは大多数のロケールでi18nがあります。つまり、スイッチを二つ切ることができ、影響をほとんど与えずに、適切に日付をローカライズできたということです。</p>
+	<p>プロジェクトを開始した時、当社は<a href="https://momentjs.com/" target="_blank">moment.js</a>ライブラリをデータおよび時間のフォーマットに広く使用していました。この便利なライブラリは、長さが異なる日付のフォーマット（「20年7月9日」、「2020年7月9日」、vs 「木曜日」）を無視して、多数ある中から相対的な日（「2日前」）を表示します。ほぼすべての日付は、可読性を考慮してMoment.js経由ですでにフォーマットされており、Moment.jsは大多数のロケールでi18nがあります。つまり、スイッチを二つ切ることができ、影響をほとんど与えずに、適切に日付をローカライズできたということです。</p>
 	<p>Mement.jsに関しては強い（大抵は誇張した）批判がありますが、すべての日付と時間をやり直す場合にかかるコストと比較すると、最終的にフットプリントが少ない代替品に切り替える方がメリットが得られます。</p>
 	<p>数値に関しては、話が違ってきます。すでにご想像されたかもしれませんが、ダッシュボード全体には何千もの未加工でフォーマットされていない数値がありました。そのすべてを追跡するのは骨が折れますし、手動による作業になることもありました。</p>
-	<p>実際の数値をフォーマット化するために、当社は<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl?ref=blog.cloudflare.com" target="_blank">Intl API</a>（the Internationalization library defined by the ECMAScript standard：ECMAScript標準で定義された国際化ライブラリ）を使用しました。</p><!--kg-card-begin: markdown-->
+	<p>実際の数値をフォーマット化するために、当社は<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl API</a>（the Internationalization library defined by the ECMAScript standard：ECMAScript標準で定義された国際化ライブラリ）を使用しました。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">var number = 300000.03;
 var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 // This probably works in the browser you're using right now!
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>ラッキーにも、Intlのブラウザサポートは、完全サポート付きの最新ブラウザになり、大きな発展を遂げています。</p>
-	<p>V8のような最新のJavaScriptエンジンの中には、C++ベースの組み込み関数を選び、こうしたライブラリのセルフホストJavaScriptを実装しなくなるものもあり、<a href="https://v8.dev/blog/intl?ref=blog.cloudflare.com" target="_blank">その結果として大幅なスピードアップにつながりました</a>。</p>
-	<p>古いブラウザのサポートは、やや欠けているものがありますが、ここで<a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a><a href="https://intl-formatting.jculvey.workers.dev/?ref=blog.cloudflare.com" target="_blank">https://intl-formatting.jculvey.workers.dev/</a>で構築された<a href="https://intl-formatting.jculvey.workers.dev/?ref=blog.cloudflare.com" target="_blank">シンプルなデモサイト</a>（<a href="https://github.com/jculvey/intl-formatting-worker?ref=blog.cloudflare.com" target="_blank">ソースコード</a>）を使って、いくつかのロケールで日付、時間、数値がどのようにレンダリングされているかをご紹介しましょう。</p>
+	<p>V8のような最新のJavaScriptエンジンの中には、C++ベースの組み込み関数を選び、こうしたライブラリのセルフホストJavaScriptを実装しなくなるものもあり、<a href="https://v8.dev/blog/intl" target="_blank">その結果として大幅なスピードアップにつながりました</a>。</p>
+	<p>古いブラウザのサポートは、やや欠けているものがありますが、ここで<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a><a href="https://intl-formatting.jculvey.workers.dev/" target="_blank">https://intl-formatting.jculvey.workers.dev/</a>で構築された<a href="https://intl-formatting.jculvey.workers.dev/" target="_blank">シンプルなデモサイト</a>（<a href="https://github.com/jculvey/intl-formatting-worker" target="_blank">ソースコード</a>）を使って、いくつかのロケールで日付、時間、数値がどのようにレンダリングされているかをご紹介しましょう。</p>
 	<p>古いブラウザとOSの組み合わせによっては、理想的とは言えない結果になるでしょう。こちらは、上記と同じ日付と時間がIE10を使うWindows 8でレンダリングされている例です。</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
@@ -561,17 +561,17 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 	<p>アプリケーションによっては、フォールバック動作がわずかに異なります。それは未加工の翻訳キー表示です（お使いのアプリで<em>some.funny.dot.delimited.strin</em>を見たことがあるかもしれません）。ここには速度と正確性にトレードオフがあり、速度と最小限のオーバーヘッドを最適化することを選択しました。アプリの中には、正確性が i18nの頻度を落とす十分な理由になるものもあります。この場合は、そうではありませんでした。</p>
 	<h3 id="--7">最後の仕上げをする</h3>
 	<p>新しくローカライズされたアプリケーションには、ユーザー体験を最適化するためにできることがいくつかあります。</p>
-	<p>まず、パフォーマンスの低下がないことを確認します。当社のアプリケーションに、ユーザーがページをレンダリングする前に翻訳済み文字列のすべてを取得させると、これが確実にできます。したがって、アプリケーションがページのコンテンツをレンダリングする必要がある場合に限り、翻訳カタログを非同期で取得すると、すべてが円滑に実行できます。<a href="https://parceljs.org/code_splitting.html?ref=blog.cloudflare.com" target="_blank">Parcel</a>や<a href="https://webpack.js.org/guides/code-splitting/?ref=blog.cloudflare.com" target="_blank">Webpack</a>のような動的インポートステートメントをサポートするモジュールバンドラーで利用できるコード分割機能で簡単にできるようになっています。</p>
-	<p>また、ユーザーがいろいろなCloudflareのプロパティにアクセスする際にいつも使用言語を選択しなければならないという問題を取り除きたいと考えました。それを実現させるために、ユーザーが<a href="https://www.cloudflare.com/fr-fr/?ref=blog.cloudflare.com" target="_blank">マーケティングサイト</a>または<a href="https://support.cloudflare.com/hc/fr-fr?ref=blog.cloudflare.com" target="_blank">サポートサイト</a>でユーザーが選ぶ言語設定が<a href="https://dash.cloudflare.com/login?lang=fr-fr&amp;ref=blog.cloudflare.com" target="_blank">ダッシュボード</a>を使うときに持続するようにしました（例示したすべてのリンクはフランス語です)。</p>
+	<p>まず、パフォーマンスの低下がないことを確認します。当社のアプリケーションに、ユーザーがページをレンダリングする前に翻訳済み文字列のすべてを取得させると、これが確実にできます。したがって、アプリケーションがページのコンテンツをレンダリングする必要がある場合に限り、翻訳カタログを非同期で取得すると、すべてが円滑に実行できます。<a href="https://parceljs.org/code_splitting.html" target="_blank">Parcel</a>や<a href="https://webpack.js.org/guides/code-splitting/" target="_blank">Webpack</a>のような動的インポートステートメントをサポートするモジュールバンドラーで利用できるコード分割機能で簡単にできるようになっています。</p>
+	<p>また、ユーザーがいろいろなCloudflareのプロパティにアクセスする際にいつも使用言語を選択しなければならないという問題を取り除きたいと考えました。それを実現させるために、ユーザーが<a href="https://www.cloudflare.com/fr-fr/" target="_blank">マーケティングサイト</a>または<a href="https://support.cloudflare.com/hc/fr-fr" target="_blank">サポートサイト</a>でユーザーが選ぶ言語設定が<a href="https://dash.cloudflare.com/login?lang=fr-fr" target="_blank">ダッシュボード</a>を使うときに持続するようにしました（例示したすべてのリンクはフランス語です)。</p>
 	<h3 id="--8">次は何を？</h3>
 	<p>ここまで様々なことを経験し、たくさんのことを学びました。i18nプロジェクトをすべて完了することは難しい（おそらく不可能）です。新しい言語での展開によって、隠れていたエラーが表面化し、新しい課題が明らかになるでしょう。コスト削減と効率性アップをして、予算面でのプレッシャーにも立ち向かわなければなりません。さらに、ユーザーのためにローカライズされた体験を向上する方法を見つけることも必要になります。</p>
 	<p>要改善のリストは長いですが、注目すべき点がいくつかあります。</p>
 	<ul>
 		<li>コレーション（照合順序）。文字列の比較は、言語によって大きく変わります。アプリでデータリストやデータ表を辞書学的に分類するために書いたコードが、ユーザーによっては誤ったものになるでしょう。これはアルファベット（英語やスペイン語など）のような言語と対照的に、表語文字体系を用いる言語（中国や日本語など）で特に顕著です。</li>
-		<li>アラビア語やヘブライ語のように<a href="https://en.wikipedia.org/wiki/Right-to-left?ref=blog.cloudflare.com" target="_blank">右から左に記述する言語</a>をサポートします。</li>
+		<li>アラビア語やヘブライ語のように<a href="https://en.wikipedia.org/wiki/Right-to-left" target="_blank">右から左に記述する言語</a>をサポートします。</li>
 		<li>API応答のローカライゼーションは、チーム間で取り組みを調整しなければならないため、ユーザーインターフェースで静的コピーをローカライズするよりも難しくなります。マイクロサービスの時代に、各サービスを回す無数のテックスタック全体で機能するソリューションを見つけることは、非常に困難なこともあります。</li>
 		<li>マップをローカライズします。マップベースの視覚化ですべてのコンテンツが翻訳されていることを確認する作業を行います。</li>
 		<li>機械翻訳は近年、大きく発展してきましたが、人の監視なしで当社の翻訳を行うところまでには至っていません。しかし、翻訳レビュー担当者が正確さと論調を確認する前の最初の通過地点として、機械翻訳をさらに試していきたいと考えています。</li>
 	</ul>
-	<p>Cloudflareがどのようにダッシュボードを国際化、ローカライズ化したのかに関する概要をお楽しみいだだけましたでしょうか。<a href="https://www.cloudflare.com/careers/jobs/?ref=blog.cloudflare.com" target="_blank">当社のキャリアページ</a>では、全世界の正規雇用やインターンシップの機会に関する詳細を掲載しています。ぜひご覧ください。</p>
+	<p>Cloudflareがどのようにダッシュボードを国際化、ローカライズ化したのかに関する概要をお楽しみいだだけましたでしょうか。<a href="https://www.cloudflare.com/careers/jobs/" target="_blank">当社のキャリアページ</a>では、全世界の正規雇用やインターンシップの機会に関する詳細を掲載しています。ぜひご覧ください。</p>
 </div>

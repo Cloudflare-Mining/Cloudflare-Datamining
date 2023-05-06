@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-26.png" class="kg-image" alt="China Express: Cloudflare partners to boost performance in China for corporate networks" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-26.png" class="kg-image" alt="China Express: Cloudflare partners to boost performance in China for corporate networks"></figure>
 	<p>Cloudflare 始终致力于帮助全球组织在全球范围内向其用户提供一致的体验。这也包括中国大陆，这一市场是我们的全球客户无法忽视的，但其又继续带来若干挑战，让基础设施团队难以为中国大陆境内外的应用程序和用户确保性能、安全性和可靠性。我们很高兴地推出 China Express，这是我们与合作伙伴中国移动国际有限公司 (CMI) 和天维信通联合开发的一整套全新的功能和最佳实践，可帮助解决上述某些性能挑战，并确保各个地区的客户和员工都能够获得一致的体验。</p>
-	<p>Cloudflare 自 2015 年以来一直向中国大陆的用户提供<a href="https://www.cloudflare.com/application-services/?ref=blog.cloudflare.com" target="_blank">应用程序服务</a>，使用国内数据中心和缓存提高性能和安全性。今天，我们在中国大陆的 30 个城市开展业务，这得益于我们与<a href="https://blog.cloudflare.com/cloudflare-partners-with-jd-cloud/">京东云</a>建立的战略合作伙伴关系。虽然这能够带来重大的性能提升，但某些请求仍需要返回可能位于中国大陆境外的源服务器。由于国际互联网网关有限，而且跨境监管又很严格，进出中国的国际流量存在非常高的延迟和丢包率。这就导致中国境内缓存的内容不一致，用户尝试访问的动态内容需要频繁访问源服务器时，从而造成较差的体验。</p>
+	<p>Cloudflare 自 2015 年以来一直向中国大陆的用户提供<a href="https://www.cloudflare.com/application-services/" target="_blank">应用程序服务</a>，使用国内数据中心和缓存提高性能和安全性。今天，我们在中国大陆的 30 个城市开展业务，这得益于我们与<a href="https://blog.cloudflare.com/cloudflare-partners-with-jd-cloud/">京东云</a>建立的战略合作伙伴关系。虽然这能够带来重大的性能提升，但某些请求仍需要返回可能位于中国大陆境外的源服务器。由于国际互联网网关有限，而且跨境监管又很严格，进出中国的国际流量存在非常高的延迟和丢包率。这就导致中国境内缓存的内容不一致，用户尝试访问的动态内容需要频繁访问源服务器时，从而造成较差的体验。</p>
 	<p>上个月，我们将我们的 Zero Trust 网络即服务平台 Cloudflare One 扩展到中国的用户和组织，并提供了额外的连接选项。客户对此表现出极大的兴趣，所以我们正在考虑可以做些别的什么事情，进一步为在中国有员工或办事处的客户改进用户体验。</p>
 	<h3 id="-china-express-">什么是 China Express？</h3>
 	<p>China Express 是一套连接与性能产品，旨在为中国用户简化连接并提高性能。为了更好地理解这些，我们来看一下 Acme Corp 的例子，这是一家跨国公司，在上海和北京有办事处，而源数据中心位于伦敦和阿什伯恩。我们来看看可以如何帮助他们的基础设施团队更好地为中国大陆的员工和用户提供服务。</p>
@@ -12,14 +12,14 @@
 	<h3 id="china-express-">China Express 私有链路</h3>
 	<p>虽然高级 DIA 为 Acme 带来了公共互联网的性能提升，但出于安全原因，他们可能希望将某些任务关键型应用程序流量保留在私有网络上。私有链路提供了 Acme 在中国的位置与其在中国境外的数据中心之间的专用私有隧道。私有链路还可以用于建立与 Salesforce 等 SaaS 数据中心的专用私有连接。</p>
 	<p>私有链路在中国是高度监管的领域，根据您的用例，要实施私有链路，我们的合作伙伴可能有一些额外要求。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-33.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-33.png" class="kg-image"></figure>
 	<h3 id="china-express-travel-sim">China Express Travel SIM</h3>
 	<p>Acme Corp 可能会有员工经常到访中国，并需要在手机和平板电脑等移动设备上访问其企业应用程序。其 IT 团队不仅需要为其用户采购和预配移动互联网连接，还需要实施一致的 Zero Trust 安全控制措施。</p>
 	<p>Cloudflare 很高兴地宣布，Cloudflare 的合作伙伴中国移动国际有限公司提供的 Travel SIM 会自动提供网络连接，并可与移动设备上的 Cloudflare Warp 客户端搭配使用，来提供 Cloudflare 的 Zero Trust 安全服务套件。使用分配给用户的相同 Zero Trust 配置文件，WARP 客户端将自动使用可用的 4G LTE 网络并建立到中国境外最接近的 Cloudflare 数据中心的 WireGuard 隧道。数据连接还可以使用移动设备上的热点功能与其他设备共享。</p>
 	<p>使用 Travel SIM，用户可以在去中国旅行时享受与全球其他地方相同的 Cloudflare 全球服务。IT 和安全团队不再需要考虑购买或部署额外 Zero Trust 席位和设备客户端，即可确保员工的互联网连接和安全策略实施。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-24.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-24.png" class="kg-image"></figure>
 	<h3 id="china-express-cloudflare-one-">China Express — 将 Cloudflare One 扩展到中国</h3>
 	<p>如之前的<a href="https://blog.cloudflare.com/zh-cn/cloudflare-one-in-china-zh-cn/">博客文章</a>所述，我们正在通过我们的战略合作伙伴关系将我们的 Zero Trust 网络即服务产品 Cloudflare One 扩展到中国大陆。Acme Corp 现在将能够确保其在中国境内外的员工都能够通过 Cloudflare WARP 设备客户端使用相同的 Zero Trust 安全策略。此外，他们还能够通过使用 Magic WAN 并在全球范围应用相同的安全策略，将其在中国的实体办公室连接到其全球私有 WAN。</p>
 	<h3 id="-">立即开始使用</h3>
-	<p>Cloudflare 很高兴能与我们的合作伙伴携手帮助我们的客户解决在中国大陆的连接和性能挑战。上述所有解决方案都可轻松快速部署，并且现已可用。如果您想开始部署，请在<a href="https://www.cloudflare.com/china-network/?ref=blog.cloudflare.com" target="_blank">此处</a>联系我们，或联系您的客户团队。<br></p>
+	<p>Cloudflare 很高兴能与我们的合作伙伴携手帮助我们的客户解决在中国大陆的连接和性能挑战。上述所有解决方案都可轻松快速部署，并且现已可用。如果您想开始部署，请在<a href="https://www.cloudflare.com/china-network/" target="_blank">此处</a>联系我们，或联系您的客户团队。<br></p>
 </div>
