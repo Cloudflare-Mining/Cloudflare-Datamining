@@ -64,6 +64,101 @@
 						"backgroundColor": "blue5"
 					},
 					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "jrU0xzMiWoIyZTBhzxeHb",
+						"menuTitle": "Network Security & Performance",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": null,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "SE9wW1S4rYweBvpsNm4iS",
+								"linkText": "Overview",
+								"page": null,
+								"url": "/network-services",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2feFD30rykZwK5T2K3WMsl",
+								"linkText": "Solutions",
+								"page": null,
+								"url": "/network-services/solutions",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "64xzQYEyF2uSL9GzQQ2mRF",
+								"linkText": "Products",
+								"page": null,
+								"url": "/network-services/products",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "6Q6Reub8nvlxlO4MsS47SS",
+								"linkText": "Resources",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "6j22klaocY7azpaK817Sgj",
+										"linkText": "Case Studies",
+										"page": null,
+										"url": "/case-studies?usecase=Protect+network+infrastructure"
+									},
+									{
+										"contentfulId": "5IO7qSjlfp2J1GxRmD3imT",
+										"linkText": "Analyst Reports",
+										"page": null,
+										"url": "/analysts/"
+									},
+									{
+										"contentfulId": "7gyBwojKuFLbJgXMuOL3pg",
+										"linkText": "Product Guides",
+										"page": null,
+										"url": "/resource-hub?resourcetype=Solution+%26+Product+Guides"
+									},
+									{
+										"contentfulId": "1AJLfXTkzeZiA8gyPaoAjH",
+										"linkText": "Whitepapers",
+										"page": null,
+										"url": "/resource-hub?resourcetype=Whitepaper"
+									},
+									{
+										"contentfulId": "35VHLGhP8NTR9paBHdcOMa",
+										"linkText": "Webinars",
+										"page": null,
+										"url": "/resource-hub?topic=Secure+Internet+Applications&resourcetype=Webinar"
+									},
+									{
+										"contentfulId": "1dommFVG7T7oQIncvNpArk",
+										"linkText": "Developer Docs",
+										"page": null,
+										"url": "https://developers.cloudflare.com/products/"
+									},
+									{
+										"contentfulId": "5Y8rQEmRrBZ32rekpkFLqG",
+										"linkText": "Industry Solution Use Cases",
+										"page": null,
+										"url": "/industry-solutions/"
+									}
+								]
+							},
+							{
+								"contentfulId": "3OgPzgZBJoCExI9lyrUGN3",
+								"linkText": "Cloudflare One (SASE)",
+								"page": null,
+								"url": "/cloudflare-one",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2Cbsajinzyq4JIHC9gmvEW",
+								"linkText": "Plans & Pricing",
+								"page": null,
+								"url": "plans/network-services",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
 						"contentfulId": "29usBMbCMyshs2qFh3aLQd",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Secure & Accelerate Networks",
@@ -412,24 +507,7 @@
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
-								"iconAssetFile": {
-									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale blue",
-									"title": "Network scale blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 5263,
-										"height": 192,
-										"width": 192,
-										"filename": "network-scale-blue.svg",
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/network-scale-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -791,20 +869,6 @@
 								"brandfolderAssetMobile": null
 							},
 							{
-								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
-								"altText": "Logo doordash trusted by gray",
-								"title": "Logo doordash trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3fy2mc73AF9xqD18C5760R/f46ab68d38c9adb30a639f69589d8af0/doordash_134.png"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
 								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
 								"altText": "Logo garmin trusted by gray",
 								"title": "Logo garmin trusted by gray",
@@ -869,20 +933,6 @@
 								"contentfulAsset": {
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lhZTNuuLxtB38r8n1VORb/9fbfad924669a02deb97668b9c8d163b/logo_lending-tree_color_32px-wrapper.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
-								"altText": "Logo labcorp trusted by gray",
-								"title": "Logo labcorp trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1AsuJijKk8EMH5s1ae56nx/b13406881aa864b7e17b2233a0d090ef/logo_labcorp_trusted-by_gray.svg"
 									}
 								},
 								"brandfolderAsset": null,
