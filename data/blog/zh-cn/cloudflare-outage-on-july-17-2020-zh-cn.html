@@ -5,7 +5,7 @@
 	<p>为避免疑义，故作此解释：这不是由任何类型的攻击或破坏造成的。</p>
 	<p>我们对此中断深感抱歉，并且已经对主干网配置进行了全局更改，以防中断再次发生。</p>
 	<h3 id="cloudflare-">Cloudflare 主干网</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/1a.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/1a.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Cloudflare 运营着<em>我们全球多家数据中心之间的主干网。</em>主干网是我们数据中心之间的一系列专用线路，我们使用这些线路在它们之间建立更快、更可靠的路径。这些链接让我们能在不同的数据中心之间传输流量，而无需通过公共互联网。</p>
 	<p>例如：我们用它来访问位于纽约的网站源服务器，通过我们的专用主干网将请求传送到加利福尼亚州的圣何塞，甚至法兰克福或圣保罗。这种避开公共互联网的额外方案可以实现更高质量的服务，因为专用网络可以用来避开互联网拥塞点。通过主干网，我们对于在何处和如何路由互联网请求和流量的控制方面优于公共互联网。</p>
 	<h3 id="-">时间表</h3>
@@ -23,7 +23,7 @@
 	</ul>
 	<p>这是关于 Cloudflare 内部流量管理工具影响的视图。顶部的红色和橙色区域显示亚特兰大的 CPU 利用率达到过载，白色区域则显示受影响的数据中心的 CPU 利用率降至接近零，因为它们不再处理流量。这就是中断期间的情况。</p>
 	<p>其他未受影响的数据中心在中断期间的 CPU 利用率没有发生变化。事实表明，在这些数据中心发生中断故障期间，绿色区域没有变化。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/tm.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/tm.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--1">事件描述以及我们的措施</h3>
 	<p>由于亚特兰大发生主干网拥塞，该团队决定移除亚特兰大的部分主干网流量。这原本一行的命令修改，本应将亚特兰大的路由从主干网中移除，但结果反而泄露了所有的 BGP 路由至主干网。</p>
 	<pre><code>{master}[edit]

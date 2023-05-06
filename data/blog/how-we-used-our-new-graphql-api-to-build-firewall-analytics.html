@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/analytics-API--copy@2x.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/analytics-API--copy@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Firewall Analytics is the first product in the Cloudflare dashboard to utilize the new GraphQL Analytics API. All Cloudflare dashboard products are built using the same public APIs that we provide to our customers, allowing us to understand the challenges they face when interfacing with our APIs. This parity helps us build and shape our products, most recently the new GraphQL Analytics API that we’re thrilled to release today.</p>
 	<p>By defining the data we want, along with the response format, our GraphQL Analytics API has enabled us to prototype new functionality and iterate quickly from our beta user feedback. It is helping us deliver more insightful analytics tools within the Cloudflare dashboard to our customers.</p>
 	<p>Our user research and testing for <a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/#new-firewall-analytics-for-analysing-events-and-maintaining-optimal-configurations">Firewall Analytics</a> surfaced common use cases in our customers' workflow:</p>
@@ -11,8 +11,8 @@
 	<p>We can address all of these use cases using our new GraphQL Analytics API.</p>
 	<h3 id="graphql-basics">GraphQL Basics</h3>
 	<p>Before we look into how to address each of these use cases, let's take a look at the format of a GraphQL query and how our schema is structured.</p>
-	<p>A GraphQL query is comprised of a structured set of fields, for which the server provides corresponding values in its response. The schema defines which fields are available and their type. You can find more information about the GraphQL query syntax and format in the <a href="https://graphql.org/learn/queries/" target="_blank">official GraphQL documentation</a>.</p>
-	<p>To run some GraphQL queries, we recommend downloading a GraphQL client, such as <a href="https://electronjs.org/apps/graphiql" target="_blank">GraphiQL</a>, to explore our schema and run some queries. You can find documentation on getting started with this in our <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/" target="_blank">developer docs</a>.</p>
+	<p>A GraphQL query is comprised of a structured set of fields, for which the server provides corresponding values in its response. The schema defines which fields are available and their type. You can find more information about the GraphQL query syntax and format in the <a href="https://graphql.org/learn/queries/?ref=blog.cloudflare.com" target="_blank">official GraphQL documentation</a>.</p>
+	<p>To run some GraphQL queries, we recommend downloading a GraphQL client, such as <a href="https://electronjs.org/apps/graphiql?ref=blog.cloudflare.com" target="_blank">GraphiQL</a>, to explore our schema and run some queries. You can find documentation on getting started with this in our <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/?ref=blog.cloudflare.com" target="_blank">developer docs</a>.</p>
 	<p>At the top level of the schema is the <code>viewer</code> field. This represents the top level node of the user running the query. Within this, we can query the <code>zones</code> field to find zones the current user has access to, providing a <code>filter</code> argument, with a <code>zoneTag</code> of the identifier of the zone we'd like narrow down to.</p>
 	<pre><code>{
   viewer {
@@ -74,7 +74,7 @@
 }
 </code></pre>
 	<p>We can then take these groups and plot each as a point on a time series chart. Mapping over the <code>firewallEventsAdaptiveGroups</code> array, we can use the group’s <code>count</code> property on the y-axis for our chart, then use the nested fields within the <code>dimensions</code> object, using <code>action</code> as unique series and the <code>datetimeHour</code> as the time stamp on the x-axis.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--1--3.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--1--3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="top-ns">Top Ns</h3>
 	<p>After identifying a spike in activity, our next step is to highlight events with commonality in their attributes. For example, if a certain IP address or individual user agent is causing many firewall events, this could be a sign of an individual attacker, or could be surfacing a false positive.</p>
 	<p>Similarly to before, we can query aggregate groups of firewall events using the <code>firewallEventsAdaptiveGroups</code> field. However, in this case, instead of supplying <code>action</code> and <code>datetimeHour</code> to the group’s <code>dimensions</code>, we can add individual fields that we want to find common groups of.</p>
@@ -114,7 +114,7 @@
 }
 </code></pre>
 	<p><em>Note - we can add the <code>firewallEventsAdaptiveGroups</code> field multiple times within a single query, each aliased differently. This allows us to fetch multiple different groupings by different fields, or with no groupings at all. In this case, getting a list of top IP addresses, top user agents, and the total events.</em></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--2--1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--2--1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>We can then reference each of these aliases in the UI, mapping over their respective groups to render each row with its count, and a bar which represents the proportion of total events, showing the proportion of all events each row equates to.</p>
 	<h3 id="are-these-firewall-events-false-positives">Are these firewall events false positives?</h3>
 	<p>After users have identified spikes, anomalies and common attributes, we wanted to surface more information as to whether these have been caused by malicious traffic, or are false positives.</p>
@@ -143,8 +143,8 @@
   }
 }
 </code></pre>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--3--1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--3--1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Once we have our individual events, we can render all of the individual fields we’ve requested, providing users the additional context on event they need to determine whether this is a false positive or not.</p>
 	<p>That’s how we used our new GraphQL Analytics API to build Firewall Analytics, helping solve some of our customers most common security workflow use cases. We’re excited to see what you build with it, and the problems you can help tackle.</p>
-	<p>You can find out how to get started querying our GraphQL Analytics API using GraphiQL in our <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/" target="_blank">developer documentation</a>, or learn more about writing GraphQL queries on the official GraphQL Foundation <a href="https://graphql.org/learn/queries/" target="_blank">documentation</a>.</p>
+	<p>You can find out how to get started querying our GraphQL Analytics API using GraphiQL in our <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/?ref=blog.cloudflare.com" target="_blank">developer documentation</a>, or learn more about writing GraphQL queries on the official GraphQL Foundation <a href="https://graphql.org/learn/queries/?ref=blog.cloudflare.com" target="_blank">documentation</a>.</p>
 </div>
