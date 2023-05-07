@@ -1,24 +1,24 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image5-8.png" class="kg-image" alt="One of our most requested features is here: DNS comments and tags" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image5-8.png" class="kg-image" alt="One of our most requested features is here: DNS comments and tags"></figure>
 	<p>从今天开始，我们将支持所有区域计划在 DNS 记录上添加自定义注释。Pro、Business 和 Enterprise 计划的用户也可以为 DNS 记录添加标记。</p>
 	<h3 id="dns-">DNS 记录很重要</h3>
-	<p><a href="https://www.cloudflare.com/learning/dns/dns-records/?ref=blog.cloudflare.com" target="_blank">DNS 记录</a>对于运营网站或 Web 应用非常重要。一般来说，它们用于将人类可读的主机名映射到机器可读的信息，最常见的是 IP 地址。除了将主机名映射到 IP 地址之外，它们还可以满足许多其他用例，例如：</p>
+	<p><a href="https://www.cloudflare.com/learning/dns/dns-records/">DNS 记录</a>对于运营网站或 Web 应用非常重要。一般来说，它们用于将人类可读的主机名映射到机器可读的信息，最常见的是 IP 地址。除了将主机名映射到 IP 地址之外，它们还可以满足许多其他用例，例如：</p>
 	<ul>
 		<li>通过设置 MX 记录，确保电子邮件可以到达你的收件箱。</li>
-		<li><a href="https://blog.cloudflare.com/zh-cn/tackling-email-spoofing-zh-cn/">通过以 TXT 记录形式</a>配置 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/?ref=blog.cloudflare.com" target="_blank">SPF</a>、<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/?ref=blog.cloudflare.com" target="_blank">DMARC</a> 和 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/?ref=blog.cloudflare.com" target="_blank">DKIM</a> 策略，防止电子邮件欺骗和网络钓鱼。</li>
+		<li><a href="https://blog.cloudflare.com/zh-cn/tackling-email-spoofing-zh-cn/">通过以 TXT 记录形式</a>配置 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/">SPF</a>、<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/">DMARC</a> 和 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/">DKIM</a> 策略，防止电子邮件欺骗和网络钓鱼。</li>
 		<li>通过添加 TXT (或 CNAME) 记录来验证 TLS 证书。</li>
 		<li>通过创建 CAA 记录来指定允许代表您的域签发证书的证书颁发机构。</li>
 		<li>为其他 Web 服务(网站托管、电子邮件托管、Web 存储等)验证域名的所有权——一般通过创建一个 TXT 记录。</li>
 		<li>以及更多。</li>
 	</ul>
 	<p>鉴于以上所有这些不同的用例，很容易忘记一个特定的 DNS 记录的用途，并且不总是可能从记录的名称、类型和内容推断出目的。验证 TXT 记录往往使用看似随意的名称，内容相当含糊。当您让多个可访问同一个域的人或团队一起创建和更新 DNS 记录时，可能很快就会有人修改甚至删除某个记录，导致值班人员半夜收到呼叫。</p>
-	<h3 id="-dns-">隆重登场：DNS 记录注释与标记 ?</h3>
-	<p>从今天开始，在 Cloudflare 拥有区域的任何人都可以<a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-create-dns-record?ref=blog.cloudflare.com" target="_blank">通过 API</a> 或 Cloudflare 仪表板添加自定义注释。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-26.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="-dns-">隆重登场：DNS 记录注释与标记 📝</h3>
+	<p>从今天开始，在 Cloudflare 拥有区域的任何人都可以<a href="https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-create-dns-record">通过 API</a> 或 Cloudflare 仪表板添加自定义注释。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/12/image3-26.png" class="kg-image"></figure>
 	<p>如要添加注释，只需单击相应 DNS 记录的编辑操作，并填写注释字段。点击保存后，记录名称旁边会出现一个小图标，提醒您该记录有注释。将鼠标悬停在图标上即可快速查看注释，不必打开编辑面板。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/unnamed-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/unnamed-2.png" class="kg-image"></figure>
 	<p>您还可以在上面的截图中看到新的标记字段。Pro、Business 或 Enterprise 的所有用户现在都可以选择在记录中添加自定义标记。这些标记可以是像“重要”这样的键，也可以是像“team:DNS”这样用冒号分隔的键值对。评论和标记对特定 DNS 记录的解析或传播都没有任何影响，而且它们只对有权访问该区域的人可见。</p>
-	<p>现在我们知道有些用户喜欢使用我们的 API 来进行自动化。因此，如果您想创建许多区域，并通过上传一个区域文件作为脚本的一部分来填充它们的所有 DNS 记录，您也可以直接在该区域文件中包含 DNS 记录注释和标记。当您导出一个区域文件时，无论是为了备份该区域的所有记录，还是为了方便地将该区域转移到 Cloudflare 上的另一个帐户，它也会包含注释和标记。有关导入和导出注释和标记的更多信息，请参阅我们的<a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/?ref=blog.cloudflare.com#dns-record-attributes" target="_blank">开发人员文档</a>。</p><!--kg-card-begin: markdown-->
+	<p>现在我们知道有些用户喜欢使用我们的 API 来进行自动化。因此，如果您想创建许多区域，并通过上传一个区域文件作为脚本的一部分来填充它们的所有 DNS 记录，您也可以直接在该区域文件中包含 DNS 记录注释和标记。当您导出一个区域文件时，无论是为了备份该区域的所有记录，还是为了方便地将该区域转移到 Cloudflare 上的另一个帐户，它也会包含注释和标记。有关导入和导出注释和标记的更多信息，请参阅我们的<a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/#dns-record-attributes">开发人员文档</a>。</p><!--kg-card-begin: markdown-->
 	<pre><code>;; A Records
 *.mycoolwebpage.xyz.     1      IN  A    192.0.2.3
 mycoolwebpage.xyz.       1      IN  A    203.0.113.1 ; Contact Hannes for details.
@@ -37,7 +37,7 @@ sub1.mycoolwebpage.xyz.  86400  IN  TXT  "hBeFxN3qZT40" ; Verification record fo
 	<h3 id="-">新的过滤器</h3>
 	<p>您的区域可能有成百上千个 DNS 记录，那么究竟如何找到属于同一个团队的所有记录，或者某个特定应用程序所需的所有记录呢？</p>
 	<p>为此，我们在仪表板中创建了一个新的过滤器选项。这不仅允许您过滤注释或标记，还可以过滤其他记录数据，如名称、类型、内容或代理状态。用于快速和更广泛搜索的通用搜索栏仍然可用，但它(还)不能与新的过滤器一起使用。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-55.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image1-55.png" class="kg-image"></figure>
 	<p>通过单击“添加过滤器”按钮，您可以选择通过逻辑与连接的单个过滤器。因此，如果我只想查看标记为重要的 TXT 记录，我会添加以下过滤器：</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 60.720411663807894%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/ffa4ddd6c2f1b11a0eb8e26fc7aee3a9/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fffa4ddd6c2f1b11a0eb8e26fc7aee3a9%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 	<h3 id="--1">另外</h3>
@@ -47,6 +47,6 @@ sub1.mycoolwebpage.xyz.  86400  IN  TXT  "hBeFxN3qZT40" ; Verification record fo
 	<p>“仪表板显示设置” 允许您选择用户界面中显示那些特别的记录类型。还有一个选项是，切换在各自的 DNS 记录下内联显示记录标记，还是仅显示一个图标（如果该记录有标记）。</p>
 	<p>最后但同样重要的是，作为本次发布的一部分，我们增加了 DNS 记录表的宽度。新表更好地利用了现有的水平空间，并允许用户查看 DNS 记录的更多细节，特别是在子域名或内容较长的情况下。</p>
 	<h3 id="--2">马上试试吧</h3>
-	<p>DNS 记录注释和标记今天已经可用。请在 Cloudflare 仪表板中进入区域的 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns&amp;ref=blog.cloudflare.com" target="_blank">DNS 选项卡</a>，即可创建您的第一条注释或标记。如果您还没有使用 Cloudflare DNS，欢迎<a href="https://dash.cloudflare.com/sign-up?ref=blog.cloudflare.com" target="_blank">免费注册</a>，只需几分钟。</p>
-	<p>如需进一步了解 DNS 记录注释和标记，请访问<a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/?ref=blog.cloudflare.com" target="_blank">开发人员文档</a>。</p>
+	<p>DNS 记录注释和标记今天已经可用。请在 Cloudflare 仪表板中进入区域的 <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns">DNS 选项卡</a>，即可创建您的第一条注释或标记。如果您还没有使用 Cloudflare DNS，欢迎<a href="https://dash.cloudflare.com/sign-up">免费注册</a>，只需几分钟。</p>
+	<p>如需进一步了解 DNS 记录注释和标记，请访问<a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/">开发人员文档</a>。</p>
 </div>

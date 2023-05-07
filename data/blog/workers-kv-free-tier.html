@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/Workers-KV-transparent.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>In May 2019, we launched <a href="https://www.cloudflare.com/products/workers-kv/?ref=blog.cloudflare.com" target="_blank">Workers KV</a>, letting developers store key-value data and make that data globally accessible from Workers running in Cloudflare’s over 200 data centers.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/Workers-KV-transparent.png" class="kg-image"></figure>
+	<p>In May 2019, we launched <a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a>, letting developers store key-value data and make that data globally accessible from Workers running in Cloudflare’s over 200 data centers.</p>
 	<p>Today, we’re announcing a Free Tier for Workers KV that opens up global, low-latency data storage to every developer on the Workers platform. Additionally, to expand Workers KV’s use cases even further, we’re also raising the maximum value size from 10 MB to 25 MB. You can now write an application that serves larger static files directly or JSON blobs directly from KV.</p>
 	<p>Together with our announcement of the <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects limited beta last month</a>, the Workers platform continues to move toward providing storage solutions for applications that are globally deployed as easily as an application running in a single data center today.</p>
 	<h3 id="what-are-the-new-free-tier-limits">What are the new free tier limits?</h3>
@@ -14,7 +14,7 @@
 	<h3 id="how-does-workers-kv-work">How does Workers KV work?</h3>
 	<p>Workers KV stores key-value pairs and caches hot keys in Cloudflare’s data centers around the world. When a request hits a Worker that uses KV, it retrieves the KV pair from Cloudflare’s local cache with low latency if the pair has been accessed recently.</p>
 	<p>While some programs running on the Workers platform are stateless, it is often necessary to distribute files or configuration data to running Workers. Workers KV allows you to persist data and access it across multiple Workers calls.</p>
-	<p>For example, let’s say I wanted to serve a static text file from Cloudflare’s edge. I could provision my own <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage/?ref=blog.cloudflare.com" target="_blank">object storage</a>, host it on my own domain, and put that domain behind Cloudflare.<br><br>With Workers KV, however, that reduces down to a few simple steps. First, I bind my KV namespace to my Workers code with Wrangler.</p><!--kg-card-begin: markdown-->
+	<p>For example, let’s say I wanted to serve a static text file from Cloudflare’s edge. I could provision my own <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage/" target="_blank">object storage</a>, host it on my own domain, and put that domain behind Cloudflare.<br><br>With Workers KV, however, that reduces down to a few simple steps. First, I bind my KV namespace to my Workers code with Wrangler.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">wrangler kv:namespace create "BUCKET"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -54,5 +54,5 @@ async function handleEvent(event) {
 	<p>While Workers KV provides low latency access across the globe, it may not return the most up-to-date data if updates to keys are happening more than once a minute or from multiple data centers simultaneously. For use cases that cannot tolerate stale data, Durable Objects is a better solution.</p>
 	<h3 id="get-started-with-workers-kv-today-for-free">Get started with Workers KV today, for free</h3>
 	<p>The free tier and increased limits are live now!</p>
-	<p>You can get started with Workers and Workers KV in the Cloudflare dash. To check out an example of how to use Workers KV, check out the <a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app?ref=blog.cloudflare.com" target="_blank">tutorial</a> in the Workers documentation.</p>
+	<p>You can get started with Workers and Workers KV in the Cloudflare dash. To check out an example of how to use Workers KV, check out the <a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank">tutorial</a> in the Workers documentation.</p>
 </div>

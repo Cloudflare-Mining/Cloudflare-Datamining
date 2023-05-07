@@ -15,7 +15,7 @@
 	// [...]
 }
 </code></pre>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/10/1280px-Mexican_Standoff.jpg" alt="Mexican Standoff" loading="lazy"><small><a href="https://www.flickr.com/photos/28293006@N05/8144747570?ref=blog.cloudflare.com" target="_blank">CC-BY-NC-ND image by Martin SoulStealer</a></small></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/10/1280px-Mexican_Standoff.jpg" alt="Mexican Standoff"><small><a href="https://www.flickr.com/photos/28293006@N05/8144747570" target="_blank">CC-BY-NC-ND image by Martin SoulStealer</a></small></p>
 	<p>The table changes often, so a background goroutine periodically reloads it from our distributed key-value store, acquires the lock (<code>f.IPTable.Lock()</code>), updates it and releases the lock (<code>f.IPTable.Unlock()</code>). This happens every 5 minutes.</p>
 	<p>Everything worked in tests, including multiple and concurrent requests.</p>
 	<p>Today we deployed to an off-production test machine and everything worked. For a few minutes. Then RRDNS stopped answering queries for the beta domains served by the new code.</p>
@@ -28,11 +28,11 @@
 }
 </code></pre>
 	<p><code>f.IPTable.RUnlock()</code> is never called. Whoops. But it's an RLock, so multiple <code>getCFAddr</code> calls should work, and only table reloading should break, no? Instead <code>getCFAddr</code> started blocking after a few minutes. To the docs!</p>
-	<p><em>To ensure that the lock eventually becomes available, a blocked Lock call excludes new readers from acquiring the lock.</em> <a href="https://golang.org/pkg/sync/?ref=blog.cloudflare.com#RWMutex.Lock" target="_blank">https://golang.org/pkg/sync/#RWMutex.Lock</a></p>
+	<p><em>To ensure that the lock eventually becomes available, a blocked Lock call excludes new readers from acquiring the lock.</em> <a href="https://golang.org/pkg/sync/#RWMutex.Lock" target="_blank">https://golang.org/pkg/sync/#RWMutex.Lock</a></p>
 	<p>So everything worked and RLocks piled up until the table reload function ran, then the pending Lock call caused all following RLock calls to block, breaking RRDNS answer generation.</p>
 	<p>In tests the table reload function never ran while answering queries, so <code>getCFAddr</code> kept piling up RLock calls but never blocked.</p>
 	<p>No customers were affected because A) the release was still being tested on off-production machines and B) no real customers run on the new code yet. Anyway it was a interesting way to cause a deferred deadlock.</p>
 	<p>In closing, there's probably space for a better tooling here. A static analysis tool might output a listing of all Lock/Unlock calls, and a dynamic analysis tool might report still [r]locked Mutex at the end of tests. (Or maybe these tools already exist, in which case let me know!)</p>
-	<p><em>Do you want to help (introduce <code>:)</code> and) fix bugs in the DNS server answering more than 50 billion queries every day? <a href="https://www.cloudflare.com/join-our-team?ref=blog.cloudflare.com" target="_blank">We are hiring in London, San Francisco and Singapore!</a></em></p>
+	<p><em>Do you want to help (introduce <code>:)</code> and) fix bugs in the DNS server answering more than 50 billion queries every day? <a href="https://www.cloudflare.com/join-our-team" target="_blank">We are hiring in London, San Francisco and Singapore!</a></em></p>
 	<!--kg-card-end: markdown-->
 </div>
