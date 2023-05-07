@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>With more and more platforms taking the necessary precautions against DDoS attacks like integrating DDoS mitigation services and increasing bandwidth at weak points, Layer 3 and 4 attacks are just not as effective anymore. For Cloudflare, we have fully automated Layer 3/4 based protections with our internal platform, <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a>. In the last 6 months we have seen a large upward trend of Layer 7 based DDoS attacks. The key difference to these attacks is they are no longer focused on using huge payloads (volumetric attacks), but based on Requests per Second to exhaust server resources (CPU, Disk and Memory). On a regular basis we see attacks that are over 1 million requests per second. The graph below shows the number of Layer 7 attacks Cloudflare has monitored, which is trending up. On average seeing around 160 attacks a day, with some days spiking up to over 1000 attacks.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/05/Screen-Shot-2018-05-21-at-10.36.27-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.27-AM"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/05/Screen-Shot-2018-05-21-at-10.36.27-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.27-AM" loading="lazy"></p>
 	<p>A year ago, Cloudflare released <a href="https://blog.cloudflare.com/rate-limiting/">Rate Limiting</a> and it is proving to be a hugely effective tool for customers to protect their web applications and APIs from all sorts of attacks, from “low and slow” DDoS attacks, through to bot-based attacks, such as credential stuffing and content scraping. We’re pleased about the success our customers are seeing with Rate Limiting and are excited to announce additional capabilities to give our customers further control.</p>
 	<h3 id="sowhatschanging">So what’s changing?</h3>
 	<p>There are times when you clearly know that traffic is malicious. In cases like this, our existing Block action is proving effective for our customers. But there are times when it is not the best option, and causes a negative user experience. Rather than risk a false negative, customers often want to challenge a client to ensure they are who they represent themselves to be, which is in most situations, human not a bot.</p>
 	<p><strong>Firstly</strong>, to help customers more accurately identify the traffic, we are adding Cloudflare JavaScript Challenge, and Google reCaptcha (Challenge) mitigation actions to the UI and API for Pro and Business plans. The existing Block and Simulate actions still exist. As a reminder, to test any rule, deploying in Simulate means that you will not be charged for any requests. This is a great way to test your new rules to make sure they have been configured correctly.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/05/Screen-Shot-2018-05-21-at-10.36.39-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.39-AM"><br>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/05/Screen-Shot-2018-05-21-at-10.36.39-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.39-AM" loading="lazy"><br>
 		<strong>Secondly</strong>, we’re making Rate Limiting more dynamically scalable. A new feature has been added which allows Rate Limiting to count on Origin Response Headers for Business and Enterprise customers. The way this feature works is by matching attributes which are returned by the Origin to Cloudflare.
 	</p>
 	<h3 id="thenewcapabilitiesinaction">The new capabilities - in action!</h3>
@@ -16,7 +16,7 @@
 	<p>Here are some example rate limits which you can configure to protect your application from credential stuffing.</p>
 	<p><strong>Basic</strong>:<br>
 		Cloudflare offers a “Protect My Login” feature out the box. Enter the URL for your login page and Cloudflare will create a rule such that clients that attempt to log in more than 5 times in 5 minutes will be blocked for 15 minutes.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/05/Screen-Shot-2018-05-21-at-10.36.47-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.47-AM"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/05/Screen-Shot-2018-05-21-at-10.36.47-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.47-AM" loading="lazy"></p>
 	<p>With the new Challenge capabilities of Rate Limiting, you can customize the response parameters for log in to more closely match the behavior pattern for bots you see on your site through a custom built rule.</p>
 	<p>Logging in four times in one minute is hard - I type fast, but couldn’t even do this. If I’m seeing this pattern in my logs, it is likely a bot. I can now create a Rate Limiting rule based on the following criteria:</p>
 	<style type="text/css">
@@ -150,7 +150,7 @@
 	<p>Enumeration attacks are proving to be increasingly popular and pesky to mitigate. With enumeration attacks, attackers identify an expensive operation in your app and hammer at it to tie up resources and slow or crash your app. For example, an app that offers the ability to look up a user profile requires a database lookup to validate whether the user exists. In a enumeration attack, attackers will send a random set of characters to that endpoint in quick succession, causing the database to ground to a halt.</p>
 	<p>Rate Limiting to the rescue!</p>
 	<p>One of our customers was hit with a huge enumeration attack on their platform earlier this year, where the aggressors were trying to do exactly what we described above, in an attempt to overload their database platform. Their Rate Limiting configuration blocked over 100,000,000 bad requests during the 6 hour attack.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/05/Screen-Shot-2018-05-21-at-10.36.57-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.57-AM"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/05/Screen-Shot-2018-05-21-at-10.36.57-AM.png" alt="Screen-Shot-2018-05-21-at-10.36.57-AM" loading="lazy"></p>
 	<p>When a query is sent to the app, and the user is not found, the app serves a 404 (page not found) . A very basic approach is to set a rate limit for 404s. If a user crosses a threshold of 404’s in a period of time, set the app to challenge the user to prove themselves to be a real person.</p>
 	<table class="table-with-last-column-right-aligned">
 		<tbody>
@@ -280,7 +280,7 @@
 		<li>Pro plans increase from 3 to 10 rules</li>
 		<li>Business plans increase from 3 to 15 rules</li>
 	</ul>
-	<p>As always, Cloudflare only charges for good traffic - requests that are allowed through Rate Limiting, not blocked. For more information click <a href="https://support.cloudflare.com/hc/en-us/articles/115000272247-Billing-for-Cloudflare-Rate-Limiting">here</a>.</p>
-	<p>The Rate-Limiting feature can be enabled within the Firewall tab on the Dashboard, or by visiting: <a href="https://www.cloudflare.com/a/firewall/">cloudflare.com/a/firewall</a></p>
+	<p>As always, Cloudflare only charges for good traffic - requests that are allowed through Rate Limiting, not blocked. For more information click <a href="https://support.cloudflare.com/hc/en-us/articles/115000272247-Billing-for-Cloudflare-Rate-Limiting?ref=blog.cloudflare.com" target="_blank">here</a>.</p>
+	<p>The Rate-Limiting feature can be enabled within the Firewall tab on the Dashboard, or by visiting: <a href="https://www.cloudflare.com/a/firewall/?ref=blog.cloudflare.com" target="_blank">cloudflare.com/a/firewall</a></p>
 	<!--kg-card-end: markdown-->
 </div>
