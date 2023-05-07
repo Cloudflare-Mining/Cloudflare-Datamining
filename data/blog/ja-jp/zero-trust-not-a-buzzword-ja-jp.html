@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-19-at-10.37.44-AM.png" class="kg-image" alt="Zero Trust — Not a Buzzword"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-19-at-10.37.44-AM.png" class="kg-image" alt="Zero Trust — Not a Buzzword" loading="lazy"></figure>
 	<p>ここ数年、「ゼロトラスト」という言葉が大きな注目を集めてきました。ゼロトラストとはForrester社の生み出した造語です。そもそも、ゼロトラストの核にあるのは、アクセス環境が外部か内部かを区別せず、ユーザーやロールなどを一切信頼しないネットワークアーキテクチャおよびセキュリティフレームワークです。</p>
 	<p>ゼロトラストモデル下では、ネットワークは認証され、許可されたユーザーとデバイスのみにアプリケーションとデータを提供するだけでなく、組織がアクセスした対象を可視化し、動作の分析をもとに制御を適用できるようにします。このモデルが人気を博した背景には、VPNシステムの誤用、悪用、搾取により起きた侵害、ネットワーク上の他システムへアクセスするためにエンドユーザーデバイスが悪用された不正行為、また、アクセスの悪用、あるいは悪意のあるコードを展開するためのソフトウェアリポジトリの侵害といった、サードパーティによる問題など、様々な不正行為をメディアがセンセーショナルに取り上げたという事実があります。これは、後に、社内システムでのさらなるアクセスを提供するためにも、ネットワークの境界内で環境にマルウェアや潜在的なランサムウェアを仕込むためにも使用できます。</p>
 	<p>初めてCISOにゼロトラストの話しを持ちかけたときには、流行りの「バズワード」らしく、ゼロトラストのソリューションを提供する様々なサイバーセキュリティベンダーから勧誘のメールがCISOのもとに押し寄せました。最近では、もう一つ、SASE（Secure Access Services Edge）という言葉がもてはやされています。こちらはGartner社のリリースしたフレームワークで、こうした言葉がこの混乱に油を注ぎました。</p>
@@ -11,9 +11,9 @@
 		<li>ゼロトラストの認識、採用、実装</li>
 		<li>ゼロトラストの採用を推進する要因と課題</li>
 	</ul>
-	<p>2021年8月、Cloudflareでは<a href="https://theleadingedge.com/" target="_blank">The Leading Edge</a>という調査会社に、こうしたトピックに触れるアンケート調査の実施を依頼しました。この調査は、オーストラリア、インド、日本、マレーシア、シンガポールの5か国で実施されました。対象となったのは、従業員数500名以上の企業のITおよびサイバーセキュリティ部門の意思決定者とインフルエンサーで、参加者数は1006名を超えました。</p>
+	<p>2021年8月、Cloudflareでは<a href="https://theleadingedge.com/?ref=blog.cloudflare.com" target="_blank">The Leading Edge</a>という調査会社に、こうしたトピックに触れるアンケート調査の実施を依頼しました。この調査は、オーストラリア、インド、日本、マレーシア、シンガポールの5か国で実施されました。対象となったのは、従業員数500名以上の企業のITおよびサイバーセキュリティ部門の意思決定者とインフルエンサーで、参加者数は1006名を超えました。</p>
 	<p>たとえば、企業の54%が、2021年にはセキュリティインシデントが前年に比べて増加したと回答しています。一方、セキュリティインシデントに直面した回答者の83%が、結果的にIT関連のセキュリティプロシージャの大々的な変更を強いられたと答えています。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/pasted-image-0.png" class="kg-image" alt="Chart showing increase in security incidents when compared to 2020">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/pasted-image-0.png" class="kg-image" alt="Chart showing increase in security incidents when compared to 2020" loading="lazy">
 		<figcaption>2020年に比べてセキュリティインシデントが増加。▲▼ サンプル全体より極めて高い/低い</figcaption>
 	</figure>
 	<p>APAC全体の結果だけでも非常に興味深いものですが、この5か国それぞれに固有の特徴を見ていくのも面白いのではないかと考えました。早速見てみましょう。</p>
@@ -46,5 +46,5 @@
 	</ul>
 	<p>これらの課題を解決するのは容易ではありません。また、これらに加えて、従業員のエクスペリエンスの改善、運用の複雑性の軽減、サードパーティによるアクティビティの可視化、セキュリティインシデントの増大に起因するコントロールの厳密化など、ITに対して極めて大きな責任を負っています。</p>
 	<p>Cloudflareが力を発揮できるのはそこです。Cloudflareでは従業員がパンデミックの最中、安全に働けるように支援しただけでなく、ユーザーがCloudflare Accessを通じてアプリケーションにアクセスする場合には、ITセキュリティの運用を合理化するために世界中の組織を支援したり、SaaSアプリケーションやブラウザ分離などの制御を含むSecure Web Gatewayサービスで、インターネットでのアクティビティを保護したりしてきました。そのすべてで、可能な限り最高のユーザーエクスペリエンスも確保されています。</p>
-	<p>皆様のお話しを<a href="https://www.cloudflare.com/lp/apac_zt_survey/" target="_blank">お待ちしています</a>！</p>
+	<p>皆様のお話しを<a href="https://www.cloudflare.com/lp/apac_zt_survey/?ref=blog.cloudflare.com" target="_blank">お待ちしています</a>！</p>
 </div>
