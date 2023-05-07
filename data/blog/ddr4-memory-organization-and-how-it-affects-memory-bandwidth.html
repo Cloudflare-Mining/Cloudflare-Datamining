@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/04/DDR4-memory-organization-and-how-it-affects-memory-bandwidth.png" class="kg-image" alt="DDR4 memory organization and how it affects memory bandwidth" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/04/DDR4-memory-organization-and-how-it-affects-memory-bandwidth.png" class="kg-image" alt="DDR4 memory organization and how it affects memory bandwidth"></figure>
 	<p>When shopping for DDR4 memory modules, we typically look at the memory density and memory speed. For example a 32GB DDR4-2666 memory module has 32GB of memory density, and the data rate transfer speed is 2666 mega transfers per second (MT/s).</p>
 	<p>If we take a closer look at the selection of DDR4 memories, we will then notice that there are several other parameters to choose from. One of them is rank x organization, for example 1Rx8, 2Rx4, 2Rx8 and so on. What are these and does memory module rank and organization have an effect on DDR4 module performance?</p>
 	<p>In this blog, we will study the concepts of memory rank and organization, and how memory rank and organization affect the memory bandwidth performance by reviewing some benchmarking test results.</p>
@@ -10,7 +10,7 @@
 	<p>A dual-rank (2R) memory module is similar to having two single-rank memory modules. It contains two sets of DRAM chips, therefore doubling the capacity of a single-rank module. The two ranks are selected one at a time through a chip select signal, therefore only one rank is accessible at a time.</p>
 	<p>Likewise, a quad-rank (4R) memory module contains four sets of DRAM chips. It is similar to having two dual-rank memories on one module, and it provides the greatest capacity. There are two chip select signals needed to access one of the four ranks. Again, only one rank is accessible at a time.</p>
 	<p>Figure 1 is a simplified view of the DQ signal flow on a dual-rank memory module. There are two identical sets of memory chips: set 1 and set 2. The 64-bit data I/O signals of each memory set are connected to a data I/O module. A single bit chip select (CS_n) signal controls which set of memory chips is accessed and the data I/O signals of the selected set will be connected to the DQ pins of the memory module.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/image4-5.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/image4-5.png" class="kg-image">
 		<figcaption>Figure 1: DQ signal path on a dual rank memory module</figcaption>
 	</figure>
 	<p>Dual-rank and quad-rank memory modules double or quadruple the memory capacity on a module, within the existing memory technology. Even though only one rank can be accessed at a time, the other ranks are not sitting idle. Multi-rank memory modules use a process called rank interleaving, where the ranks that are not accessed go through their refresh cycles in parallel. This pipelined process reduces memory response time, as soon as the previous rank completes data transmission, the next rank can start its transmission.</p>
@@ -21,7 +21,7 @@
 	<p>The width of memory chips are standard, they are either x4, x8 or x16. From here, we can calculate how many memory chips are in a 64-bit wide single rank memory. For example, with x4 memory chips, we will need 16 pieces (64 ÷ 4 = 16); and with x8 memory chips, we will only need 8 of them.</p>
 	<p>Let's look at the following two high-level block diagrams of 1Gbx8 and 2Gbx4 memory chips. The total memory capacity for both of them is 8Gb. Figure 2 describes the 1Gb x8 configuration, and Figure 3 describes the 2Gbx4 configuration. With DDR4, both x4 and x8 devices have 4 groups of 4 banks. x16 devices have 2 groups of 4 banks.</p>
 	<p>We can think of each memory chip as a library. Within that library, there are four bank groups, which are the four floors of the library. On each floor, there are four shelves, each shelf is similar to one of the banks. And we can locate each one of the memory cells by its row and column addresses, just like the library book call numbers. Within each bank, the row address MUX activates a line in the memory array through the Row address latch and decoder, based on the given row address. This line is also called the word line. When a word line is activated, the data on the word line is loaded on to the sense amplifiers. Subsequently, the column decoder accesses the data on the sense amplifier based on the given column address.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/pasted-image-0-3.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/pasted-image-0-3.png" class="kg-image">
 		<figcaption>Figure 2: 1Gbx8 block diagram</figcaption>
 	</figure>
 	<p>The capacity, or density of a memory chip is calculated as:</p>
@@ -36,7 +36,7 @@
 	<p><strong>Memory Depth</strong> = 65536 Rows * 1024 Columns * 16 Banks = 1Gb</p>
 	<p><strong>Total Memory Capacity</strong> = 1Gb * 8 = 8Gb</p>
 	<p>Figure 3 describes the function block diagram of a 2 Gb x 4 device.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/pasted-image-0--1--3.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/pasted-image-0--1--3.png" class="kg-image">
 		<figcaption>Figure 3: 2Gbx4 Block Diagram</figcaption>
 	</figure>
 	<p>Number of Row Address Bits = 17</p>
@@ -237,7 +237,7 @@
 	<h2 id="an-experiment-with-2rx4-and-2rx8-ddr4-modules">An experiment with 2Rx4 and 2Rx8 DDR4 modules</h2>
 	<p>To quantify the impact on memory performance from different memory device widths, an experiment has been conducted on our Gen11 servers with AMD EPYC 7713 Milan CPU. The Milan CPU has 64 cores, supports 8 memory channels.</p>
 	<p>Our production Gen11 servers are configured with 1 DIMM populated in each memory channel. In order to achieve 6GB/core memory per core ratio, the total memory for the Gen11 system is 64 core * 6 GB/core = 384 GB. This is achieved by installing four pieces of 32GB 2Rx8 and four pieces of 64GB 2Rx4 memory modules.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/Untitled.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/Untitled.png" class="kg-image">
 		<figcaption>Figure 5: Gen11 server memory configuration</figcaption>
 	</figure>
 	<p>To compare the bandwidth performance difference between 2Rx4 and 2Rx8 DDR4 modules, two test cases are needed. One with all 2Rx4 DDR4 modules, and another one with 2Rx8 DDR4 modules. Each test case populates eight pieces of 32GB 32Mbps DDR4 RDIMM memories in each memory channel (1DPC). As shown in the table below, the difference between the set up of the two test cases is: case A tests 2Rx4 memory modules, and case B tests 2Rx8 memory modules.</p><!--kg-card-begin: html-->
@@ -526,6 +526,6 @@
 	<p>Memory modules with x4 width require twice the number of memory devices on the memory module, as compared to memory modules with x8 width of the same capacity. More memory devices would consume more power. According to Micron's measurement data, 2Rx8 32GB memory modules using 16Gb devices consume 31% less power than 2Rx4 32GB memory modules using 8Gb devices. The substantial power saving of using x8 memory modules may outweigh the slight bandwidth performance impact.</p>
 	<p>Our Gen11 servers are configured with a mix of 2Rx4 and 2Rx8 DDR4 modules. For our future generations, we may consider using 2Rx8 memory where possible, in order to reduce overall system power consumption, with minimal impact to bandwidth performance.</p>
 	<h2 id="references">References</h2>
-	<p><a href="https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr4/8gb_ddr4_sdram.pdf?ref=blog.cloudflare.com" target="_blank">https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr4/8gb_ddr4_sdram.pdf</a></p>
-	<p><a href="https://www.systemverilog.io/ddr4-basics?ref=blog.cloudflare.com#:~:text=DRAM%20Page%20Size&amp;text=Since%20the%20column%20address%20is,it%20is%202KB%20per%20page" target="_blank">https://www.systemverilog.io/ddr4-basics#:~:text=DRAM%20Page%20Size&amp;text=Since%20the%20column%20address%20is,it%20is%202KB%20per%20page</a></p>
+	<p><a href="https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr4/8gb_ddr4_sdram.pdf" target="_blank">https://www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr4/8gb_ddr4_sdram.pdf</a></p>
+	<p><a href="https://www.systemverilog.io/ddr4-basics#:~:text=DRAM%20Page%20Size&amp;text=Since%20the%20column%20address%20is,it%20is%202KB%20per%20page" target="_blank">https://www.systemverilog.io/ddr4-basics#:~:text=DRAM%20Page%20Size&amp;text=Since%20the%20column%20address%20is,it%20is%202KB%20per%20page</a></p>
 </div>

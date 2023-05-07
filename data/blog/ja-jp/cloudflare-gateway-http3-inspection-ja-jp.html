@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--1-.png" class="kg-image" alt="HTTP/3 inspection on Cloudflare Gateway"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--1-.png" class="kg-image" alt="HTTP/3 inspection on Cloudflare Gateway" loading="lazy"></figure>
 	<p>本日は、当社の包括的なセキュアWebゲートウェイであるCloudflare Gatewayを介したHTTP/3の検証のサポートを公開します。HTTP/3は現在インターネットの25%で使われており、セキュリティを損なうことなく、より高速なブラウジングを実現しています。これまで、HTTP/3対応のWebサイトやAPIをフィルタリングして検証しようとする管理者は、HTTP/2にフォールバックすることでパフォーマンスについて妥協するか、検証をバイパスすることで可視性を失うかのどちらかを選択する必要がありました。Cloudflare GatewayのHTTP/3サポートにより、すべてのトラフィックを完全に可視化し、最速のブラウジング体験をユーザーに提供できます。</p>
 	<h3 id="-web-http-3-">なぜWebはHTTP/3に移行しているのか？</h3>
 	<p>HTTPは、インターネットを支える最も古い技術の1つです。1996年当時、セキュリティとパフォーマンスは後回しにされ、暗号化はトランスポート層に任されていました。このモデルは、現代のインターネットにおけるパフォーマンスのニーズに対応できないことから、HTTPは<a href="https://blog.cloudflare.com/ja-jp/http3-the-past-present-and-future-ja-jp/">HTTP/2、そして現在ではHTTP/3にアップグレードされています</a>。</p>
@@ -12,8 +12,8 @@
 	<p>HTTP/3に対して適切なセキュアWebゲートウェイのサポートが提供されていないため、管理者はユーザー向けのセキュリティとパフォーマンスのいずれか、またはその両方について妥協するよう迫られていました。セキュリティのトレードオフには、UDPトラフィックの検証が行われないことに加えて、インラインのウイルスのスキャン、データ損失防止、ブラウザ分離、トラフィックのロギングなどの重要なセキュリティ機能を使用できないことが含まれます。セキュリティ意識の高い企業にとって、セキュリティや可視性を放棄することは受け入れがたい選択であるため、管理者はエンドユーザーのデバイスでHTTP/3を積極的に無効化するようになりました。この場合、ユーザーのWebブラウザ内でQUICサポートを無効にする必要があるため、デプロイが複雑になり、パフォーマンスに影響が及びます。</p>
 	<h3 id="http-3--2">HTTP/3の検証を有効にする方法</h3>
 	<p>今年後半に一部のブラウザでHTTP/3の検証のサポート提供が可能になると、ダッシュボードからHTTP/3の検証を有効にすることができるようになります。Zero Trustダッシュボードにログインしたら、プロキシをオンに切り替え、UDPトラフィックのボックスをチェックし、 <strong>[Settings] &gt; [Network] &gt; [Firewall]</strong>でTLSの復号化を有効にする必要があります。これらの設定を有効にすると、HTTPポリシーを介して、組織のすべてのプロキシされたHTTPトラフィックにAVスキャン、リモートブラウザの分離、DLP、HTTPフィルタリングを適用できます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--2-.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-">得られるメリット</h3>
 	<p>管理者は、進化する技術的状況に根ざしているセキュリティのトレードオフを考える必要がなくなり、組織とチームを保護することに集中できるようになります。HTTP/3の検証が利用可能になった時点で、Cloudflare Oneのすべてのお客様に連絡いたします。これにより、管理者はセキュアWebゲートウェイのデプロイを簡素化できるようになります。</p>
-	<p>HTTP/3トラフィックの検証は、すべてのプランタイプの管理者が利用できるようになります。サインアップがお済みでない場合は、<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">ここをクリック</a>して開始してください。</p>
+	<p>HTTP/3トラフィックの検証は、すべてのプランタイプの管理者が利用できるようになります。サインアップがお済みでない場合は、<a href="https://dash.cloudflare.com/sign-up/teams?ref=blog.cloudflare.com" target="_blank">ここをクリック</a>して開始してください。</p>
 </div>
