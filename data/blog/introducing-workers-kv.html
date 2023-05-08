@@ -2,7 +2,7 @@
 	<p>In 1864 British computer pioneer Charles Babbage described the first key-value store. It was meant to be part of his Analytical Engine. Sadly, the Analytical Engine, which would have been the first programmable computer, was never built. But Babbage lays out clearly the design for his key-value store in his autobiography. He imagined a read-only store implemented as punched cards. He referred to these as Tables:<br></p>
 	<blockquote><em>I explained that the Tables to be used must, of course, be computed and punched on cards by the machine, in which case they would undoubtedly be correct. I then added that when the machine wanted a tabular number, say the logarithm of a given number, that it would ring a bell and then stop itself. On this, the attendant would look at a certain part of the machine, and find that it wanted the logarithm of a given number, say of 2303. The attendant would then go to the drawer containing the pasteboard cards representing its table of logarithms. From amongst these he would take the required logarithmic card, and place it in the machine. </em></blockquote>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Punch-Card-Example-2.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Punch-Card-Example-2.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><small><em>Punched card illustration from Babbage’s autobiography showing an integer key (2303) and value representing the decimal part of log10(2303) (0.3622939)</em></small></p>
 	<!--kg-card-end: markdown-->
 	<blockquote><em>Upon this the engine would first ascertain whether the assistant had or had not given him the correct logarithm of the number; if so, it would use it and continue its work. But if the engine found the attendant had given him a wrong logarithm, it would then ring a louder bell, and stop itself. On the attendant again examining the engine, he would observe the words, "Wrong tabular number," and then discover that he really had given the wrong logarithm, and of course he would have to replace it by the right one.</em></blockquote>
@@ -11,7 +11,7 @@
 	<p>Values are written into Workers KV via the standard Cloudflare API and they are available within seconds at every one of Cloudflare’s 150+ global PoPs. Stephen and Zack’s <a href="https://blog.cloudflare.com/building-with-workers-kv/">technical post</a> goes into more detail about how to use Workers KV. The values written are encrypted while at rest, in transit, and on local disk; they are only decrypted as needed.</p>
 	<p>Values can also be written from inside a Cloudflare Worker. Cloudflare takes care of synchronizing keys and values across our entire network.</p>
 	<h3 id="so-what-can-you-do-with-workers-kv">So, what can you do with Workers KV?</h3>
-	<p>Kenton Varda has taken the entire <a href="https://capnproto.org/?ref=blog.cloudflare.com" target="_blank">Cap’n Proto</a> web site and implemented it using Workers and Workers KV. The entire site is served from a Worker that accesses static assets stored using Workers KV. That’s pretty neat… his site is entirely ‘serverless’ or rather ‘originless’</p>
+	<p>Kenton Varda has taken the entire <a href="https://capnproto.org" target="_blank">Cap’n Proto</a> web site and implemented it using Workers and Workers KV. The entire site is served from a Worker that accesses static assets stored using Workers KV. That’s pretty neat… his site is entirely ‘serverless’ or rather ‘originless’</p>
 	<p>Others might not want to go quite so far but here are some use cases:</p>
 	<ul>
 		<li>Shopping cart storage: an e-commerce site can store a user’s entire shopping cart in a key/value pair using Workers KV. The e-commerce back end software can call the Cloudflare API to save (and retrieve, if necessary) the shopping cart contents. A Worker running on Cloudflare’s network can access the shopping cart from Workers KV and use it to show the visitor its contents and get them to checkout. <br><br>Storing the cart using Workers KV is more stable than trying to store it in the browser’s local storage (and can’t be cleared by the user) and completely offloads the storage from the e-commerce site’s engine. <br><br></li>
@@ -28,10 +28,10 @@
 	<h3 id="faascinating">FaaScinating</h3>
 	<p>The rise of Functions-as-a-Service (FaaS) has caused some confusion because anyone who has spent time with the lambda-calculus or purely functional languages will know that keeping state around turns out to be very, very useful. Truly writing code in a functional style is a big commitment and FaaS services really require state storage to fit in with the majority, imperative style of programming.</p>
 	<p>Of course, FaaS software can store state in external services and use API calls to get and update it. But that’s likely slow and error prone. Cloudflare Workers KV introduces FaaS-native storage in the form of a key-value store. Workers KV can be written and read externally via the Cloudflare API, or internally directly from a Cloudflare Worker. </p>
-	<p>We can’t wait to see what people build with Cloudflare Workers and Cloudflare Workers KV. Get hacking! If you want to get started today <a href="https://goo.gl/forms/1xd57PdiR9DdhxZs1?ref=blog.cloudflare.com" target="_blank">sign up here</a>.</p>
+	<p>We can’t wait to see what people build with Cloudflare Workers and Cloudflare Workers KV. Get hacking! If you want to get started today <a href="https://goo.gl/forms/1xd57PdiR9DdhxZs1" target="_blank">sign up here</a>.</p>
 	<p><strong>P.S.</strong> — &nbsp;And if you’d like to replicate Babbage’s log table (without the need for a bell and an assistant) here’s how I built a Worker that retrieves the base-10 logarithm of an integer from a Worker KV. If the logarithm was missing it updates the Worker KV store with the computed log.</p>
 	<p><strong>Step 1: Create a Namespace</strong></p>
-	<p>Here <code>CF_ACCT</code> contains the <a href="https://api.cloudflare.com/?ref=blog.cloudflare.com#getting-started-resource-ids" target="_blank">Cloudflare account ID</a>, <code>CF_EMAIL</code> the email address associated with the Cloudflare account and <code>CF_KEY</code> the API key. This call creates a namespace called <code>logcard</code> and returns its unique ID (which is needed later)</p>
+	<p>Here <code>CF_ACCT</code> contains the <a href="https://api.cloudflare.com/#getting-started-resource-ids" target="_blank">Cloudflare account ID</a>, <code>CF_EMAIL</code> the email address associated with the Cloudflare account and <code>CF_KEY</code> the API key. This call creates a namespace called <code>logcard</code> and returns its unique ID (which is needed later)</p>
 	<pre><code>$ curl "https://api.cloudflare.com/client/v4/accounts/$CF_ACCT/workers/namespaces" \
 -X POST \
 -H "X-Auth-Email: $CF_EMAIL" \
@@ -67,13 +67,13 @@
   "errors":   [],
   "messages": []
 }</code></pre>
-	<p>The code accesses the namespace and retrieves values with <code>const retrieved = await LOGCARD.get(paddedInt)</code>. &nbsp;The full code for the Worker can be found <a href="https://gist.github.com/jgrahamc/585fde79c56b1ffe6ae9633cf318ebdf?ref=blog.cloudflare.com" target="_blank">here</a>.</p>
+	<p>The code accesses the namespace and retrieves values with <code>const retrieved = await LOGCARD.get(paddedInt)</code>. &nbsp;The full code for the Worker can be found <a href="https://gist.github.com/jgrahamc/585fde79c56b1ffe6ae9633cf318ebdf" target="_blank">here</a>.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Screen-Shot-2018-09-28-at-10.46.09.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Screen-Shot-2018-09-28-at-10.46.09.png" class="kg-image"></figure>
 	<p></p>
-	<p>I've bound this Worker to the route <code>/logcard</code> on the site <a href="https://glowbeamtechnologies.com/?ref=blog.cloudflare.com" target="_blank">https://glowbeamtechnologies.com/</a>. The Worker takes a value between 1 and 9999 in the URI parameter <code>int</code> and outputs a representation of one of Babbage's punched cards containing the decimal part of the base-10 log of <code>int</code>. </p>
-	<p>It first tries to find the value in the Workers KV, if not found it calculates the value and stores it in the KV for later reuse. You can try it here: <a href="https://glowbeamtechnologies.com/logcard?int=2303&amp;ref=blog.cloudflare.com" target="_blank">https://glowbeamtechnologies.com/logcard?int=2303</a>. </p>
+	<p>I've bound this Worker to the route <code>/logcard</code> on the site <a href="https://glowbeamtechnologies.com/" target="_blank">https://glowbeamtechnologies.com/</a>. The Worker takes a value between 1 and 9999 in the URI parameter <code>int</code> and outputs a representation of one of Babbage's punched cards containing the decimal part of the base-10 log of <code>int</code>. </p>
+	<p>It first tries to find the value in the Workers KV, if not found it calculates the value and stores it in the KV for later reuse. You can try it here: <a href="https://glowbeamtechnologies.com/logcard?int=2303" target="_blank">https://glowbeamtechnologies.com/logcard?int=2303</a>. </p>
 	<p></p>
 	<p><em><a href="https://blog.cloudflare.com/subscribe/" rel="noopener noreferer">Subscribe to the blog</a> for daily updates on all of our announcements.</em></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare-Birthday-Week-8-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare-Birthday-Week-8-3.png" class="kg-image"></figure>
 </div>
