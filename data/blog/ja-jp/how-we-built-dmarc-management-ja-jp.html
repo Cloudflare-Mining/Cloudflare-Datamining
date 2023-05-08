@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/How-we-built-DMARC-Management.png" class="kg-image" alt="How we built DMARC Management"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/How-we-built-DMARC-Management.png" class="kg-image" alt="How we built DMARC Management" loading="lazy"></figure>
 	<h3 id="dmarc-">DMARCレポートとは</h3>
-	<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/" target="_blank">DMARC</a>は、 Domain-based Message Authentication, Reporting, and Conformance の略です。これは、電子メール<a href="https://www.cloudflare.com/en-gb/learning/access-management/phishing-attack/" target="_blank">フィッシング</a> および <a href="https://www.cloudflare.com/en-gb/learning/email-security/what-is-email-spoofing/" target="_blank">スプーフィング</a>に対する保護に役立つ電子メール認証プロトコルです。</p>
-	<p>電子メールの送信時に、DMARCにより、ドメイン所有者は、<a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/" target="_blank">SPF</a> (Sender Policy Framework) や <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/" target="_blank">DKIM</a> (DomainKeys Identified Mail)など、どの認証方式を使用して、電子メールの信頼性を検証するかを指定するDNSレコードを設定できます。電子メールがこれらの認証チェックに失敗した場合、DMARCは、受信者の電子メールプロバイダーに、そのメッセージを隔離するか、完全に拒否するかのいずれかの処理方法を指示します。</p>
+	<p><a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/?ref=blog.cloudflare.com" target="_blank">DMARC</a>は、 Domain-based Message Authentication, Reporting, and Conformance の略です。これは、電子メール<a href="https://www.cloudflare.com/en-gb/learning/access-management/phishing-attack/?ref=blog.cloudflare.com" target="_blank">フィッシング</a> および <a href="https://www.cloudflare.com/en-gb/learning/email-security/what-is-email-spoofing/?ref=blog.cloudflare.com" target="_blank">スプーフィング</a>に対する保護に役立つ電子メール認証プロトコルです。</p>
+	<p>電子メールの送信時に、DMARCにより、ドメイン所有者は、<a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/?ref=blog.cloudflare.com" target="_blank">SPF</a> (Sender Policy Framework) や <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/?ref=blog.cloudflare.com" target="_blank">DKIM</a> (DomainKeys Identified Mail)など、どの認証方式を使用して、電子メールの信頼性を検証するかを指定するDNSレコードを設定できます。電子メールがこれらの認証チェックに失敗した場合、DMARCは、受信者の電子メールプロバイダーに、そのメッセージを隔離するか、完全に拒否するかのいずれかの処理方法を指示します。</p>
 	<p>電子メールのフィッシングやスプーフィング攻撃がより巧妙化し、蔓延している今日のインターネットにおいて、DMARCは、ますます重要になってきています。DMARCを導入することで、ドメイン所有者は、信頼の喪失、風評被害、金銭的損失など、これらの攻撃による悪影響から自社ブランドと顧客を保護できます。</p>
-	<p>DMARCは、フィッシングやスプーフィング攻撃からの保護に加え、 <a href="https://www.rfc-editor.org/rfc/rfc7489" target="_blank">レポート</a>の機能も提供します。ドメイン所有者は、どのメッセージがDMARCチェックに合格したか、不合格になったか、およびこれらのメッセージの発信元など、メール認証アクティビティに関するレポートを受け取ることができます。</p>
+	<p>DMARCは、フィッシングやスプーフィング攻撃からの保護に加え、 <a href="https://www.rfc-editor.org/rfc/rfc7489?ref=blog.cloudflare.com" target="_blank">レポート</a>の機能も提供します。ドメイン所有者は、どのメッセージがDMARCチェックに合格したか、不合格になったか、およびこれらのメッセージの発信元など、メール認証アクティビティに関するレポートを受け取ることができます。</p>
 	<p>DMARC管理では、ドメインに対するDMARCポリシーの設定とメンテナンスを行います。効果的なDMARC管理には、メール認証活動の継続的な監視と分析、および必要に応じてDMARCポリシーの調整と更新を行う機能が必要です。</p>
 	<p>効果的なDMARC管理の主要な要素には、以下のものがあります：</p>
 	<ul>
@@ -20,8 +20,8 @@
 	<p>本日、 <a href="https://blog.cloudflare.com/ja-jp/dmarc-management-ja-jp/">DMARC管理</a>を開始しました。これが、構築方法です。</p>
 	<h3 id="-">構築方法</h3>
 	<p>クラウドベースのセキュリティおよびパフォーマンスソリューションのリーディングプロバイダーとして、私たちCloudflareは、製品のテストに特定のアプローチを採用しています。私たちは、当社独自のツールやサービスを「ドッグフーディング」し、つまり、そのツールやサービスを使用して、ビジネスを運営しているのです。これにより、お客様に影響を与える前に、問題やバグを特定できます。</p>
-	<p>開発者が当社のグローバルネットワーク上でコードを実行できるサーバーレスプラットフォームである<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>などの当社独自の製品を社内で使用しています。2017年の発売以来、Workersのエコシステムは大きく成長しました。現在、数千人もの開発者がこのプラットフォーム上でアプリを構築し、デプロイしています。Workersエコシステムの威力は、これまで、クライアントの近くで実行することが不可能、あるいは非現実的であった高度なアプリを開発者が構築できるようにする能力にあります。Workersは、APIの構築、動的コンテンツの生成、画像の最適化、リアルタイム処理の実行など、さまざまに使用することができます。その可能性は、事実上無限です。Workersを使用して、<a href="https://blog.cloudflare.com/ja-jp/technology-behind-radar2-ja-jp/">Radar 2.0</a>などのサービスや、<a href="https://blog.cloudflare.com/welcome-to-wildebeest-the-fediverse-on-cloudflare/">Wildebeest</a>などのソフトウェアパッケージを提供しました。</p>
-	<p>最近、当社の <a href="https://developers.cloudflare.com/email-routing/" target="_blank">Email Routing</a>の製品が Workers と提携し、Workersスクリプトを介し、<a href="https://blog.cloudflare.com/announcing-route-to-workers/">受信メールを処理</a>できるようになりました。 <a href="https://developers.cloudflare.com/email-routing/email-workers/" target="_blank">ドキュメント</a> に記載されている通りです：「Email Workersで、Cloudflare Workersの力を活用して、メールを処理し、複雑なルールを作成するために必要なロジックを実装できます。これらのルールは、お客様がメールを受信したときに何が起こるかを決定します。」ルールと検証済みアドレスはすべて、当社の <a href="https://developers.cloudflare.com/api/operations/email-routing-destination-addresses-list-destination-addresses" target="_blank">API</a>を介して設定できます。 </p>
+	<p>開発者が当社のグローバルネットワーク上でコードを実行できるサーバーレスプラットフォームである<a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a>などの当社独自の製品を社内で使用しています。2017年の発売以来、Workersのエコシステムは大きく成長しました。現在、数千人もの開発者がこのプラットフォーム上でアプリを構築し、デプロイしています。Workersエコシステムの威力は、これまで、クライアントの近くで実行することが不可能、あるいは非現実的であった高度なアプリを開発者が構築できるようにする能力にあります。Workersは、APIの構築、動的コンテンツの生成、画像の最適化、リアルタイム処理の実行など、さまざまに使用することができます。その可能性は、事実上無限です。Workersを使用して、<a href="https://blog.cloudflare.com/ja-jp/technology-behind-radar2-ja-jp/">Radar 2.0</a>などのサービスや、<a href="https://blog.cloudflare.com/welcome-to-wildebeest-the-fediverse-on-cloudflare/">Wildebeest</a>などのソフトウェアパッケージを提供しました。</p>
+	<p>最近、当社の <a href="https://developers.cloudflare.com/email-routing/?ref=blog.cloudflare.com" target="_blank">Email Routing</a>の製品が Workers と提携し、Workersスクリプトを介し、<a href="https://blog.cloudflare.com/announcing-route-to-workers/">受信メールを処理</a>できるようになりました。 <a href="https://developers.cloudflare.com/email-routing/email-workers/?ref=blog.cloudflare.com" target="_blank">ドキュメント</a> に記載されている通りです：「Email Workersで、Cloudflare Workersの力を活用して、メールを処理し、複雑なルールを作成するために必要なロジックを実装できます。これらのルールは、お客様がメールを受信したときに何が起こるかを決定します。」ルールと検証済みアドレスはすべて、当社の <a href="https://developers.cloudflare.com/api/operations/email-routing-destination-addresses-list-destination-addresses?ref=blog.cloudflare.com" target="_blank">API</a>を介して設定できます。 </p>
 	<p>簡単なEmail Workerとは、どのようなものかは、以下の通りです：</p>
 	<pre><code class="language-js">export default {
   async email(message, env, ctx) {
@@ -40,15 +40,15 @@
 		<li>関連する詳細を分析プラットフォームに公開</li>
 		<li>生レポートを保存</li>
 	</ol>
-	<p>Email Workerにより、#1を簡単に行うことができます。メール()ハンドラーを使用してワーカーを作成するだけです。このハンドラーは <a href="https://www.rfc-editor.org/rfc/rfc5321" target="_blank">SMTP</a> エンベロープ要素、メールヘッダーを事前に解析したバージョン、生の電子メール全体を読み取るストリームを受け取ります。</p>
-	<p>#2では、Workersプラットフォームも、調べることができ、<a href="https://developers.cloudflare.com/analytics/analytics-engine/" target="_blank">Workers Analytics Engine</a>を見つけることができます。適切なスキーマを定義する必要がありますが、これはレポートの中に含まれるものと、後で行う予定のクエリの両方に依存します。その後、<a href="https://developers.cloudflare.com/analytics/graphql-api/" target="_blank">GraphQL</a>または<a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/" target="_blank">SQL</a>API のいずれかを使用してデータをクエリーできます。</p>
-	<p>#3では、 <a href="https://www.cloudflare.com/en-gb/products/r2/" target="_blank">R2</a>オブジェクトストレージ以上のものを探す必要はありません。WorkersからR2にアクセスするのは<a href="https://developers.cloudflare.com/r2/examples/demo-worker/" target="_blank">簡単</a>です。電子メールからレポートを抽出した後、今後のためにR2に保存します。</p>
+	<p>Email Workerにより、#1を簡単に行うことができます。メール()ハンドラーを使用してワーカーを作成するだけです。このハンドラーは <a href="https://www.rfc-editor.org/rfc/rfc5321?ref=blog.cloudflare.com" target="_blank">SMTP</a> エンベロープ要素、メールヘッダーを事前に解析したバージョン、生の電子メール全体を読み取るストリームを受け取ります。</p>
+	<p>#2では、Workersプラットフォームも、調べることができ、<a href="https://developers.cloudflare.com/analytics/analytics-engine/?ref=blog.cloudflare.com" target="_blank">Workers Analytics Engine</a>を見つけることができます。適切なスキーマを定義する必要がありますが、これはレポートの中に含まれるものと、後で行う予定のクエリの両方に依存します。その後、<a href="https://developers.cloudflare.com/analytics/graphql-api/?ref=blog.cloudflare.com" target="_blank">GraphQL</a>または<a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/?ref=blog.cloudflare.com" target="_blank">SQL</a>API のいずれかを使用してデータをクエリーできます。</p>
+	<p>#3では、 <a href="https://www.cloudflare.com/en-gb/products/r2/?ref=blog.cloudflare.com" target="_blank">R2</a>オブジェクトストレージ以上のものを探す必要はありません。WorkersからR2にアクセスするのは<a href="https://developers.cloudflare.com/r2/examples/demo-worker/?ref=blog.cloudflare.com" target="_blank">簡単</a>です。電子メールからレポートを抽出した後、今後のためにR2に保存します。</p>
 	<p>これをゾーンで有効にできるマネージドサービスとして構築し、利便性のためにダッシュボードインターフェイスを追加しましたが、実際にはすべてのツールが利用可能で、サーバー、スケーラビリティ、パフォーマンスを心配することなく、お客様自身のアカウントで、Cloudflare Workers上に独自のDMARCレポートプロセッサをデプロイできます。</p>
 	<h3 id="--1">アーキテクチャ</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-16-at-4.18.08-PM.png" class="kg-image"></figure>
-	<p><a href="https://developers.cloudflare.com/email-routing/email-workers/" target="_blank">Email Workers</a> は、Email Routingの製品の機能です。Email Routingコンポーネントは全てのノードで実行されるため、ノードのうちのいずれかが、受信メールを処理できます。これは、全てのデータセンターからEmailイングレスBGPプレフィックスをアナウンスするため、重要です。Email Workerへのメールの送信は、Email Routingのダッシュボードでルールを設定するのと同じくらい簡単です。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--3.png" class="kg-image"></figure>
-	<p>Email Routingコンポーネントが、Workerに配信されるルールに一致する電子メールを受信すると、最近、オープンソース化された <a href="https://github.com/cloudflare/workerd" target="_blank">workerd</a> ランタイムの内部バージョンに接続し、すべてのノード上で実行されます。このインタラクションを管理するRPCスキーマは、 <a href="https://github.com/capnproto/capnproto" target="_blank">Capnproto</a> スキーマで定義されており、電子メールの本文の読み上げ時に、Edgeworkerにストリーミングできるようにします。Workerスクリプトがこの電子メールを転送することを決定した場合、Edgeworkerは、元のリクエストで送信された機能を使用して、Email Routingに接続します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-16-at-4.18.08-PM.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p><a href="https://developers.cloudflare.com/email-routing/email-workers/?ref=blog.cloudflare.com" target="_blank">Email Workers</a> は、Email Routingの製品の機能です。Email Routingコンポーネントは全てのノードで実行されるため、ノードのうちのいずれかが、受信メールを処理できます。これは、全てのデータセンターからEmailイングレスBGPプレフィックスをアナウンスするため、重要です。Email Workerへのメールの送信は、Email Routingのダッシュボードでルールを設定するのと同じくらい簡単です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Email Routingコンポーネントが、Workerに配信されるルールに一致する電子メールを受信すると、最近、オープンソース化された <a href="https://github.com/cloudflare/workerd?ref=blog.cloudflare.com" target="_blank">workerd</a> ランタイムの内部バージョンに接続し、すべてのノード上で実行されます。このインタラクションを管理するRPCスキーマは、 <a href="https://github.com/capnproto/capnproto?ref=blog.cloudflare.com" target="_blank">Capnproto</a> スキーマで定義されており、電子メールの本文の読み上げ時に、Edgeworkerにストリーミングできるようにします。Workerスクリプトがこの電子メールを転送することを決定した場合、Edgeworkerは、元のリクエストで送信された機能を使用して、Email Routingに接続します。</p>
 	<pre><code class="language-js">jsg::Promise&lt;void&gt; ForwardableEmailMessage::forward(kj::String rcptTo, jsg::Optional&lt;jsg::Ref&lt;Headers&gt;&gt; maybeHeaders) {
   auto req = emailFwdr-&gt;forwardEmailRequest();
   req.setRcptTo(rcptTo);
@@ -75,19 +75,19 @@
 	<pre><code>const accountInfoRaw = await env.KV_DMARC_REPORTS.get(dmarc:${ruaID})
 </code></pre>
 	<ol start="3">
-		<li>この時点で、解析するために電子メール全体をarrayBufferに読み込みます。レポートのサイズによっては、無料のWorkersプランの制限に引っかかるかもしれません。このような場合、この問題のない<a href="https://www.cloudflare.com/en-gb/workers-unbound-beta/" target="_blank">Workers Unbound</a>リソースモデルに切り替えることをお勧めします。</li>
+		<li>この時点で、解析するために電子メール全体をarrayBufferに読み込みます。レポートのサイズによっては、無料のWorkersプランの制限に引っかかるかもしれません。このような場合、この問題のない<a href="https://www.cloudflare.com/en-gb/workers-unbound-beta/?ref=blog.cloudflare.com" target="_blank">Workers Unbound</a>リソースモデルに切り替えることをお勧めします。</li>
 	</ol>
 	<pre><code>const rawEmail = new Response(message.raw)
 const arrayBuffer = await rawEmail.arrayBuffer()
 </code></pre>
 	<ol start="4">
-		<li>生の電子メールを解析するには、特にMIME部分の解析が含まれます。これを可能にするライブラリが複数利用可能です。例えば、<a href="https://www.npmjs.com/package/postal-mime" target="_blank">postal-mime</a>を使用することができます：</li>
+		<li>生の電子メールを解析するには、特にMIME部分の解析が含まれます。これを可能にするライブラリが複数利用可能です。例えば、<a href="https://www.npmjs.com/package/postal-mime?ref=blog.cloudflare.com" target="_blank">postal-mime</a>を使用することができます：</li>
 	</ol>
 	<pre><code>const parser = new PostalMime.default()
 const email = await parser.parse(arrayBuffer)
 </code></pre>
 	<ol start="5">
-		<li>電子メールを解析した結果、その添付ファイルにアクセスできるようになりました。これらの添付ファイルはDMARCレポートそのものであり、圧縮できます。最初にやることは、長期保存用に圧縮形式で<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/" target="_blank">R2</a>に保存します。後日、再処理や興味深いレポートの調査に役立ちます。これは、R2バインディングでput()を呼び出すのと同じくらい簡単です。後で検索しやすくするために、レポートファイルは現在の時刻に基づいて、ディレクトリに分散しておくことをお勧めします。</li>
+		<li>電子メールを解析した結果、その添付ファイルにアクセスできるようになりました。これらの添付ファイルはDMARCレポートそのものであり、圧縮できます。最初にやることは、長期保存用に圧縮形式で<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/?ref=blog.cloudflare.com" target="_blank">R2</a>に保存します。後日、再処理や興味深いレポートの調査に役立ちます。これは、R2バインディングでput()を呼び出すのと同じくらい簡単です。後で検索しやすくするために、レポートファイルは現在の時刻に基づいて、ディレクトリに分散しておくことをお勧めします。</li>
 	</ol>
 	<pre><code>await env.R2_DMARC_REPORTS.put(
     `${date.getUTCFullYear()}/${date.getUTCMonth() + 1}/${attachment.filename}`,
@@ -96,10 +96,10 @@ const email = await parser.parse(arrayBuffer)
 </code></pre>
 	<ol start="6">
 		<li>
-			<p>ここで、添付ファイルの MIME タイプを調べる必要があります。DMARCレポートの生の形式はXMLですが、圧縮することができます。この場合、最初に解凍する必要があります。DMARCレポーターファイルは、複数の圧縮アルゴリズムを使用することができます。MIMEタイプを使用して、どの圧縮アルゴリズムを使用すべきか、判断します。<a href="https://en.wikipedia.org/wiki/Zlib" target="_blank">Zlib</a>で圧縮されたレポートには、<a href="https://www.npmjs.com/package/pako" target="_blank">pako</a>が使用可能で、ZIPで圧縮されたレポートには、<a href="https://www.npmjs.com/package/unzipit" target="_blank">unzipit</a>が、良い選択です。</p>
+			<p>ここで、添付ファイルの MIME タイプを調べる必要があります。DMARCレポートの生の形式はXMLですが、圧縮することができます。この場合、最初に解凍する必要があります。DMARCレポーターファイルは、複数の圧縮アルゴリズムを使用することができます。MIMEタイプを使用して、どの圧縮アルゴリズムを使用すべきか、判断します。<a href="https://en.wikipedia.org/wiki/Zlib?ref=blog.cloudflare.com" target="_blank">Zlib</a>で圧縮されたレポートには、<a href="https://www.npmjs.com/package/pako?ref=blog.cloudflare.com" target="_blank">pako</a>が使用可能で、ZIPで圧縮されたレポートには、<a href="https://www.npmjs.com/package/unzipit?ref=blog.cloudflare.com" target="_blank">unzipit</a>が、良い選択です。</p>
 		</li>
 		<li>
-			<p>レポートの生の XML 形式を取得したので、<a href="https://www.npmjs.com/package/fast-xml-parser" target="_blank">fast-xml-parser</a>は、それらを解析する上でうまく機能しました。以下は、DMARCレポートのXMLがどういうものかは、以下の通りです：</p>
+			<p>レポートの生の XML 形式を取得したので、<a href="https://www.npmjs.com/package/fast-xml-parser?ref=blog.cloudflare.com" target="_blank">fast-xml-parser</a>は、それらを解析する上でうまく機能しました。以下は、DMARCレポートのXMLがどういうものかは、以下の通りです：</p>
 		</li>
 	</ol>
 	<pre><code>&lt;feedback&gt;
@@ -149,14 +149,14 @@ const email = await parser.parse(arrayBuffer)
 &lt;/feedback&gt;
 </code></pre>
 	<ol start="8">
-		<li>これで、レポート内のすべてのデータがすぐに利用できるようになりました。これからどうするかは、データをどのように表示したいかに大きく依存します。当社の場合、目標は、レポートから抽出した有意義なデータをダッシュボードに表示することでした。そのため、エンリッチされたデータをプッシュできる分析プラットフォームが必要でした。<a href="https://developers.cloudflare.com/analytics/analytics-engine/" target="_blank">Workers Analytics Engine</a>に入ります。Analytics Engineにより、Workersからデータを<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/#3-write-data-from-your-worker" target="_blank">送信</a>できるようになるため、このタスクに最適です。<a href="https://developers.cloudflare.com/analytics/graphql-api/" target="_blank">GraphQL API</a>を公開し、その後、データとやりとりができます。このようにして、ダッシュボードに表示するデータを取得します。</li>
+		<li>これで、レポート内のすべてのデータがすぐに利用できるようになりました。これからどうするかは、データをどのように表示したいかに大きく依存します。当社の場合、目標は、レポートから抽出した有意義なデータをダッシュボードに表示することでした。そのため、エンリッチされたデータをプッシュできる分析プラットフォームが必要でした。<a href="https://developers.cloudflare.com/analytics/analytics-engine/?ref=blog.cloudflare.com" target="_blank">Workers Analytics Engine</a>に入ります。Analytics Engineにより、Workersからデータを<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/?ref=blog.cloudflare.com#3-write-data-from-your-worker" target="_blank">送信</a>できるようになるため、このタスクに最適です。<a href="https://developers.cloudflare.com/analytics/graphql-api/?ref=blog.cloudflare.com" target="_blank">GraphQL API</a>を公開し、その後、データとやりとりができます。このようにして、ダッシュボードに表示するデータを取得します。</li>
 	</ol>
 	<!--kg-card-end: markdown-->
-	<p>将来的には、ワークフローに <a href="https://developers.cloudflare.com/queues/" target="_blank">Queues</a>を統合して、レポートを非同期的に処理し、クライアントがレポートの完成を待つのを回避することも検討しています。</p>
+	<p>将来的には、ワークフローに <a href="https://developers.cloudflare.com/queues/?ref=blog.cloudflare.com" target="_blank">Queues</a>を統合して、レポートを非同期的に処理し、クライアントがレポートの完成を待つのを回避することも検討しています。</p>
 	<p>Workersインフラストラクチャのみに依存してこのプロジェクトをエンドツーエンドで何とか実装を成し遂げ、スケーラビリティ、パフォーマンス、ストレージ、セキュリティの問題を心配することなく、重要なアプリケーションを構築することが可能であり、有利であることを証明できました。</p>
 	<h3 id="--2">オープンソーシング</h3>
-	<p>先に述べたように、お客様が有効化して、利用できるマネージドサービスを構築し、当社が、お客様に代わり、それを管理します。しかし、当社が行ったことはすべて、お客様のアカウントでデプロイできるため、お客様自身のDMARCレポートを管理できます。これは簡単で、無料です。これを支援するために、上記の方法でDMARCレポートを処理するWorkerのオープンソースバージョンを公開しています。 <a href="https://github.com/cloudflare/dmarc-email-worker" target="_blank">https://github.com/cloudflare/dmarc-email-worker</a></p>
-	<p>データを表示するダッシュボードがない場合は、 WorkerからAnalytics Engineに<a href="https://developers.cloudflare.com/analytics/analytics-engine/worker-querying/" target="_blank">クエリー</a>を行うことも可能です。また、リレーショナルデータベースに保存したい場合は、 <a href="https://developers.cloudflare.com/d1/platform/client-api/" target="_blank">D1</a> が役立ちます。可能性は無限であり、これらのツールで何を構築するのかを見いだせたら嬉しく思います。</p>
+	<p>先に述べたように、お客様が有効化して、利用できるマネージドサービスを構築し、当社が、お客様に代わり、それを管理します。しかし、当社が行ったことはすべて、お客様のアカウントでデプロイできるため、お客様自身のDMARCレポートを管理できます。これは簡単で、無料です。これを支援するために、上記の方法でDMARCレポートを処理するWorkerのオープンソースバージョンを公開しています。 <a href="https://github.com/cloudflare/dmarc-email-worker?ref=blog.cloudflare.com" target="_blank">https://github.com/cloudflare/dmarc-email-worker</a></p>
+	<p>データを表示するダッシュボードがない場合は、 WorkerからAnalytics Engineに<a href="https://developers.cloudflare.com/analytics/analytics-engine/worker-querying/?ref=blog.cloudflare.com" target="_blank">クエリー</a>を行うことも可能です。また、リレーショナルデータベースに保存したい場合は、 <a href="https://developers.cloudflare.com/d1/platform/client-api/?ref=blog.cloudflare.com" target="_blank">D1</a> が役立ちます。可能性は無限であり、これらのツールで何を構築するのかを見いだせたら嬉しく思います。</p>
 	<p>投稿してください、自身のものを作ってください、私たちは耳を傾けます。</p>
 	<h3 id="--3">最後に</h3>
 	<p>この記事で、Workersのプラットフォームの理解を深めていただけたら幸いです。 今日、Cloudflareはこのプラットフォームを活用して、ほとんどのサービスを構築しています。お客様もそうすべきだと思います。</p>
