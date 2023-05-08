@@ -97,7 +97,7 @@
 		"enabled": true
 	},
 	"bots-onboarding": {
-		"enabled": false
+		"enabled": true
 	},
 	"bots-user-feedback-loop": {
 		"enabled": true
@@ -193,7 +193,8 @@
 		"enabled": false,
 		"branches": [
 			"baseline",
-			"content-panel"
+			"content-panel",
+			"illustration"
 		]
 	},
 	"dx-welcome-page": {
@@ -440,6 +441,9 @@
 		]
 	},
 	"targeting-test-feature-flag": {
+		"enabled": false
+	},
+	"testt": {
 		"enabled": false
 	},
 	"total-tls": {
