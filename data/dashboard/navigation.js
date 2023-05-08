@@ -252,8 +252,8 @@ const navigation = {
 		url: "/network-security/ddos",
 		iconType: "cloudflare-security-network",
 		hasPermission: function(l) {
-			var x = !!(0, r.Wq)(l) && !!(0, r.fO)(l);
-			return !!(0, r.Tk)(l) || x
+			var R = !!(0, r.Wq)(l) && !!(0, r.fO)(l);
+			return !!(0, r.Tk)(l) || R
 		},
 		tabs: S.Dn
 	}, {
@@ -286,8 +286,8 @@ const navigation = {
 		title: "navigation.account.zero_trust",
 		url: function() {
 			var l = (0, c.e1)(),
-				x = "https://one.dash.cloudflare.com";
-			return l ? "".concat(x, "/").concat(l, "/") : x
+				R = "https://one.dash.cloudflare.com";
+			return l ? "".concat(R, "/").concat(l, "/") : R
 		},
 		iconType: "cloudflare-zero-trust",
 		labels: function(l) {
@@ -354,8 +354,8 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: function(l) {
-				var x = (0, s.tJ)(l);
-				return !(0, i.ky)(x, [E.uD.UnboundEnterpriseTrial])
+				var R = (0, s.tJ)(l);
+				return !(0, i.ky)(R, [M.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -389,8 +389,8 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: function(l) {
-				var x = (0, s.tJ)(l);
-				return !(0, i.ky)(x, [E.uD.UnboundEnterpriseTrial])
+				var R = (0, s.tJ)(l);
+				return !(0, i.ky)(R, [M.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -497,7 +497,7 @@ const navigation = {
 			url: "/images/delivery-zones",
 			testId: "sidenav-delivery-zones-link",
 			hasPermission: function(l) {
-				return (0, r.IU)(l) && (0, A.b8)(l)
+				return (0, r.IU)(l) && (0, _.b8)(l)
 			},
 			labels: ["new"]
 		}]
@@ -613,16 +613,16 @@ const navigation = {
 			url: "/analytics/originReachability",
 			navigationType: "global-settings",
 			hasPermission: function(l) {
-				var x = (0, g.nA)(l);
-				return x ? !!(!(0, u.yD)(l) && !!(0, g.ZB)(l, "origin_reachability_dash", "dash_view") && (0, g.tU)(x, "enterprise") && !!(0, b.Ek)(l, "httpRequestsAdaptiveGroups")) : !1
+				var R = (0, g.nA)(l);
+				return R ? !!(!(0, u.yD)(l) && !!(0, g.ZB)(l, "origin_reachability_dash", "dash_view") && (0, g.tU)(R, "enterprise") && !!(0, b.Ek)(l, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
 			url: "/analytics/edgeReachability",
 			navigationType: "global-settings",
 			hasPermission: function(l) {
-				var x = (0, g.nA)(l);
-				return x ? !!(!(0, u.yD)(l) && !!(0, g.ZB)(l, "edge_reachability_dash", "dash_view") && (0, g.tU)(x, "enterprise") && !!(0, b.Ek)(l, "nelReportsAdaptiveGroups")) : !1
+				var R = (0, g.nA)(l);
+				return R ? !!(!(0, u.yD)(l) && !!(0, g.ZB)(l, "edge_reachability_dash", "dash_view") && (0, g.tU)(R, "enterprise") && !!(0, b.Ek)(l, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -720,12 +720,12 @@ const navigation = {
 		iconType: "spectrum",
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: function(l) {
-			var x = (0, g.nA)(l);
-			if ((0, u.yD)(l) || !(0, r.wB)(l, "zone_settings", "spectrum.app") || !x) return !1;
-			var k = !!((0, z.l8)(l) || (0, g.DQ)(l)),
-				P = !!(0, g.ZB)(l, "spectrum", "enabled"),
-				R = !!(0, g.Ns)(x);
-			return P || k || !R
+			var R = (0, g.nA)(l);
+			if ((0, u.yD)(l) || !(0, r.wB)(l, "zone_settings", "spectrum.app") || !R) return !1;
+			var k = !!((0, j.l8)(l) || (0, g.DQ)(l)),
+				L = !!(0, g.ZB)(l, "spectrum", "enabled"),
+				N = !!(0, g.Ns)(R);
+			return L || k || !N
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -782,7 +782,7 @@ const navigation = {
 			url: "/security/analytics",
 			labels: ["beta"],
 			hasPermission: function(l) {
-				return (0, O.B_)(l)
+				return (0, T.B_)(l)
 			}
 		}, {
 			title: "navigation.zone.security.events",
@@ -792,12 +792,12 @@ const navigation = {
 			title: "navigation.zone.security.waf",
 			url: "/security/waf",
 			navigationType: "version",
-			tabs: M.gn
+			tabs: E.gn
 		}, {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
-			tabs: M.mt
+			tabs: E.mt
 		}, {
 			title: "navigation.zone.security.bots",
 			url: "/security/bots",
@@ -815,10 +815,10 @@ const navigation = {
 			labels: ["new"],
 			navigationType: "global-settings",
 			hasPermission: function(l) {
-				var x = (0, g.nA)(l);
-				return x ? !!(0, g.ZB)(l, "firewall", "api_shield_tab") && (0, g.tU)(x, "business") : !1
+				var R = (0, g.nA)(l);
+				return R ? !!(0, g.ZB)(l, "firewall", "api_shield_tab") && (0, g.tU)(R, "business") : !1
 			},
-			tabs: M.Dw
+			tabs: E.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
@@ -1063,9 +1063,9 @@ const navigation = {
 		url: "/zaraz",
 		navigationType: "global-settings",
 		labels: function(l) {
-			var x = [],
+			var R = [],
 				k = (0, g.nA)(l);
-			return k && !(0, g.tU)(k, "pro") && x.push("beta"), x
+			return k && !(0, g.tU)(k, "pro") && R.push("beta"), R
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
@@ -1076,7 +1076,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: _.az
+			tabs: A.az
 		}, {
 			title: "navigation.zone.zaraz.history",
 			navigationType: "global-settings",
@@ -1093,9 +1093,9 @@ const navigation = {
 			navigationType: "global-settings",
 			url: "/zaraz/consent",
 			labels: function(l) {
-				var x = [],
+				var R = [],
 					k = (0, g.nA)(l);
-				return k && (0, g.tU)(k, "pro") && x.push("beta"), x
+				return k && (0, g.tU)(k, "pro") && R.push("beta"), R
 			}
 		}, {
 			title: "navigation.zone.zaraz.settings",
@@ -1109,8 +1109,8 @@ const navigation = {
 		iconType: "web3",
 		labels: ["new"],
 		hasPermission: function(l) {
-			var x = (0, a.uF)(l),
-				k = (x == null ? void 0 : x.roles) || [];
+			var R = (0, a.uF)(l),
+				k = (R == null ? void 0 : R.roles) || [];
 			return k.includes("Trust and Safety") ? !1 : !(0, u.yD)(l)
 		}
 	}],
