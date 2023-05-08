@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>If you followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f/">part one</a>, I have an environment setup where I can write Typescript with tests and deploy to the Cloudflare Edge with <code>npm run upload</code>. For this post, I want to take one of the <a href="https://developers.cloudflare.com/workers/recipes/aggregating-multiple-requests/?ref=blog.cloudflare.com" target="_blank">Worker Recipes</a> further.</p>
-	<p>I'm going to build a mini HTTP request routing and handling framework, then use it to build a <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway/?ref=blog.cloudflare.com" target="_blank">gateway</a> to multiple cryptocurrency API providers. My point here is that in a single file, with no dependencies, you can quickly build pretty sophisticated logic and deploy fast and easily to the Edge. Furthermore, using modern Typescript with async/await and the rich type structure, you also write clean, async code.</p>
+	<p>If you followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f/">part one</a>, I have an environment setup where I can write Typescript with tests and deploy to the Cloudflare Edge with <code>npm run upload</code>. For this post, I want to take one of the <a href="https://developers.cloudflare.com/workers/recipes/aggregating-multiple-requests/" target="_blank">Worker Recipes</a> further.</p>
+	<p>I'm going to build a mini HTTP request routing and handling framework, then use it to build a <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway/" target="_blank">gateway</a> to multiple cryptocurrency API providers. My point here is that in a single file, with no dependencies, you can quickly build pretty sophisticated logic and deploy fast and easily to the Edge. Furthermore, using modern Typescript with async/await and the rich type structure, you also write clean, async code.</p>
 	<p>OK, here we go...</p>
 	<p>My API will look like this:</p>
 	<table>
@@ -152,7 +152,7 @@ export class NotFoundHandler implements IRouteHandler {
   }
 }
 </code></pre>
-	<p>So at this point, if you followed along with <a href="">Part 1</a>, you can do:</p>
+	<p>So at this point, if you followed along with <a http:="" blog.cloudflare.com="" cryptocurrency-api-gateway-typescript-workers="" href="">Part 1</a>, you can do:</p>
 	<pre><code class="language-bash">$ npm run upload
 $ curl https://cryptoserviceworker.com/api/ping
 pong
@@ -186,7 +186,7 @@ pong
   }
 }
 </code></pre>
-	<p>I'm cheating a bit here because I haven't shown you the code for <code>HandlerFactory</code> or the implementation of <code>handle</code> for each one. You can look up the full source <a href="https://github.com/stevenpack/cryptoserviceworker/blob/master/src/service-worker.ts?ref=blog.cloudflare.com" target="_blank">here</a>.</p>
+	<p>I'm cheating a bit here because I haven't shown you the code for <code>HandlerFactory</code> or the implementation of <code>handle</code> for each one. You can look up the full source <a href="https://github.com/stevenpack/cryptoserviceworker/blob/master/src/service-worker.ts" target="_blank">here</a>.</p>
 	<p>Take a moment here to appreciate just what's happening. You're writing very expressive async code that in a few lines, is able to multiplex a request to multiple endpoints and aggregate the results. Furthermore, it's running in a sandboxed environment in a data center very close to your end user. <strong>Edge-side code is a game changer.</strong></p>
 	<p>Let's see it in action.</p>
 	<pre><code>$ curl https://cryptoserviceworker.com/api/all/spot/btc-usd
@@ -254,6 +254,6 @@ pong
 	</ul>
 	<p>Stay tuned for more, and PRs welcome, particularly for more providers.</p>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange?ref=blog.cloudflare.com" target="_blank">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers?ref=blog.cloudflare.com" target="_blank">Cloudflare Community Forum</a>. </small></em></p>
+	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank">Cloudflare Community Forum</a>. </small></em></p>
 	<!--kg-card-end: markdown-->
 </div>
