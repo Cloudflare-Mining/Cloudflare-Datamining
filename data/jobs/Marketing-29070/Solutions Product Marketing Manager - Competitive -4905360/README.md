@@ -32,7 +32,7 @@
 </ul>
 <p><span style="font-weight: 400;">Requirements</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience in technology product marketing/product management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 4 years of experience in technology product marketing/product management</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience at one or more application performance/reliability vendors</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of how the Internet works, including web applications, CDN, HTTP, DNS, Load balancing</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including product management, sales, comms, and marketing</span></li>

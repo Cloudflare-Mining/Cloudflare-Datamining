@@ -24,7 +24,7 @@
 </ul>
 <p><strong>Requirements</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">8+ years of experience </span><span style="font-weight: 400;">in product marketing/product management</span><span style="font-weight: 400;"> in networking, security, and/or in a service provider.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 8 years of experience </span><span style="font-weight: 400;">in product marketing/product management</span><span style="font-weight: 400;"> in networking, security, and/or in a service provider.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Significant experience in B2B technology marketing with a keen understanding of the Internet ecosystem and technical audiences.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience at one or more network security vendors. Knowledge of TCP/IP, Internet Routing, SDN, MPLS, SD-WAN, SASE, Firewalls, DDoS, IDS, IPS, Cloud Networking.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience positioning technical products to both technical users and economic decision makers</span></li>

@@ -24,7 +24,7 @@
 </ul>
 <h4><strong>About You</strong></h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">10+ years experience with web marketing, user acquisition, and demand gen to analyze and produce marketing sourced leads and pipeline on a high volume website</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 10 years experience with web marketing, user acquisition, and demand gen to analyze and produce marketing sourced leads and pipeline on a high volume website</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience supporting both traditional enterprise and self-serve SaaS marketing pipeline and con, preferably for an organization with a complex portfolio</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience incorporating self serve/freemium consumption apparatus embedded within enterprise B2B web platform</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong ability to prioritize and make good trade-off decisions between multiple projects and competing priorities within the organization</span></li>

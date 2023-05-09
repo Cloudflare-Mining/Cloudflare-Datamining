@@ -22,7 +22,7 @@
 <p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">3-6 years working in Security Compliance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 3 years working in Security Compliance</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with all NIST 800-53 control families and FedRAMP requirements</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work closely with auditors and articulate technical concepts</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in auditing of network, operating system, and application security</span></li>

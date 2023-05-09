@@ -23,7 +23,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">12+ years of progressive experience in finance with prior experience in strategic finance business partnering, especially with technical teams. High growth, public company experience preferred</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 12 years of progressive experience in finance with prior experience in strategic finance business partnering, especially with technical teams. High growth, public company experience preferred</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated success in building and leading high performance finance teams with proven ability to identify and drive impactful financial outcomes</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Finance minded with strong operational focus to drive process and execution in a scalable and repeatable way. Experience building trust and aligning cross-functional stakeholders.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Intellectually curious with problem solving orientation. Strong analytical capabilities and business acumen with ability to apply rigorous logic and sound methods to solve multi-faceted problems. Not satisfied with easy or convenient answers</span></li>

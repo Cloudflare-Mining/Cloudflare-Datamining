@@ -22,9 +22,9 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor's Degree or higher in technology-related field or relevant experience in implementing Business systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of experience in implementations and ongoing operations of a Salesforce org in a Business systems analyst role</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years of experience in implementations and ongoing operations of a Salesforce org in a Business systems analyst role</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">An understanding of Post Sales Service/Success business processes&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of experience working with business applications (Salesforce Service Cloud, Chat, knowledge base, Survey tools)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years of experience working with business applications (Salesforce Service Cloud, Chat, knowledge base, Survey tools)</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Extraordinary problem solver with the ability to cross between detailed data and high-level insights.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to communicate effectively cross functionally with both executive management and end users.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in building strong working relationships with business partners, application users, project managers, internal IT team, external application consultants</span></li>

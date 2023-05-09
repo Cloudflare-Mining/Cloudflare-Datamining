@@ -21,7 +21,7 @@
 <p>&nbsp;</p>
 <p><strong>MIN REQUIREMENTS:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5 years of experience designing and implementing software systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years of experience designing and implementing software systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Advanced ability to design and implement software systems in Java.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Someone who enjoys security work focused on email detections that identify and protect our users.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Distributed systems experience in a Unix environment&nbsp;</span></li>

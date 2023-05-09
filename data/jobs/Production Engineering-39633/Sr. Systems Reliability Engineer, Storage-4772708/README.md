@@ -16,7 +16,7 @@
 <p><span style="font-weight: 400;">Read more on our blog!</span></p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">8+ years hands-on systems engineering experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 8 years hands-on systems engineering experience</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of Linux Storage IO stack</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Linux systems knowledge including performance tools and tuning</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">CS fundamentals and comfortable working in multiple languages and codebases</span></li>

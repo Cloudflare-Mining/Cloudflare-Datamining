@@ -24,7 +24,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <p><span style="font-weight: 400;">Bachelor's Degree or higher in technology-related field or relevant experience in implementing Business systems</span></p>
 <ul>
-	<li><span style="font-weight: 400;"> &nbsp; &nbsp; &nbsp; </span><span style="font-weight: 400;">10+ years’ experience in Workday supporting an employee base of 2000+ users and growing.&nbsp;</span></li>
+	<li><span style="font-weight: 400;">&nbsp; &nbsp; &nbsp; Minimum 10</span><span style="font-weight: 400;">&nbsp;years’ experience in Workday supporting an employee base of 2000+ users and growing.&nbsp;</span></li>
 	<li><span style="font-weight: 400;"> &nbsp; &nbsp; &nbsp; </span><span style="font-weight: 400;">Demonstrated ability to deliver on project requirements and lead operations support, by working with development, integration, and admin team.&nbsp;</span></li>
 	<li><span style="font-weight: 400;"> &nbsp; &nbsp; &nbsp; </span><span style="font-weight: 400;">Previous experience building teams and establishing agile development methodology&nbsp;</span></li>
 	<li><span style="font-weight: 400;"> &nbsp; &nbsp; &nbsp; </span><span style="font-weight: 400;">Experience in supporting internal and external auditors with SOX ITGC, SOD</span></li>

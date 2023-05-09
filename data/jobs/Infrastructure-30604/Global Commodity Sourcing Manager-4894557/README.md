@@ -20,7 +20,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">10+ years experience working with silicon vendors, networking (OEM’s) and server technology manufacturers (ODMs)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 10 years experience working with silicon vendors, networking (OEM’s) and server technology manufacturers (ODMs)</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Intellectual curiosity, particularly around technology&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Master’s Degree in Business, Supply Chain or engineering field or an equivalent amount of professional experience&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication skills; ability to communicate to both technical and non-technical stakeholders&nbsp;</span></li>

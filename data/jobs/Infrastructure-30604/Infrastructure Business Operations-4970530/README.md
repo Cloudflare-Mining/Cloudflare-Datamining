@@ -24,7 +24,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Basic understanding of how the Internet works on a physical and theoretical level, e.g., TCP/IP, DNS, BGP, peering, transit, transport, and content proxy caching</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Detail-oriented, curious, and a humble personality that is willing to work on both strategic and tactical projects</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication skills; the ability to articulate and distill nuanced contractual, technical, financial, and value points to a diverse range of people both in formal settings and quick emails</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">2-5 years experience at a top-tier management consulting firm, investing firm, and/or experience on a Product, Business Operations, or Internal Strategy team at a technology company</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 2 years experience at a top-tier management consulting firm, investing firm, and/or experience on a Product, Business Operations, or Internal Strategy team at a technology company</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong collaborator with a high level of personal integrity</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-directed and self-motivated</span></li>
 </ul>

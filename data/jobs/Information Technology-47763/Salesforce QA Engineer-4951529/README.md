@@ -23,7 +23,7 @@
 </ul>
 <p><strong>Required skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of work experience in Quality Assurance roles with automation testing experience.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 3 years of work experience in Quality Assurance roles with automation testing experience.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">QA Expert in the Salesforce.com platform.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">QA experience in Salesforce CPQ or any Quote to Cash system a plus</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with automation testing.</span></li>

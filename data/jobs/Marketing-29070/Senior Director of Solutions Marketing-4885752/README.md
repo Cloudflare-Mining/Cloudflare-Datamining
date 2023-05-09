@@ -22,8 +22,8 @@
 </ul>
 <p><strong>Qualifications</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">10+ years of experience leading product or solution marketing at fast-growing, high profile organization(s)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">8+ years experience managing a high-performing team across multiple functions and disciplines</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 10 years of experience leading product or solution marketing at fast-growing, high profile organization(s)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 8 years experience managing a high-performing team across multiple functions and disciplines</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Participated in the creation of a category-defining company that won in a competitive market, and is looking to do it again</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">A gift for storytelling and proven ability to craft compelling go-to-market stories, expressed in the form of executive presentations, keynotes, web copy, pitch decks, and more.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience positioning technical products to both technical and economic buyers.</span></li>

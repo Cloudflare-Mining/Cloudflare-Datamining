@@ -24,7 +24,7 @@
 <p><span style="font-weight: 400;">The above list is representative and additional responsibilities may be assigned, as required by the need for the compliance program to support Cloudflare’s Legal team with agility in a dynamic environment.</span></p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">6+ years of experience with US Federal government contracting; state and local government contracting a plus.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 6 years of experience with US Federal government contracting; state and local government contracting a plus.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with an in-house legal department preferred; experience at a tech company, especially as part of a compliance team, is a huge plus.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience as a people manager preferred.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working with sales and industry partners on opportunity capture is preferred.</span></li>

@@ -24,7 +24,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">JD degree and admitted to practice law in at least one U.S. jurisdiction.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of law firm and/or in-house experience as an IP attorney, preferably with technology companies.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years of law firm and/or in-house experience as an IP attorney, preferably with technology companies.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Technical background / expertise is required (preferably with networking and/or cybersecurity technologies).&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with patent and trademark portfolio management is required. Prior experience with prosecuting patent and trademark applications in front of the USPTO is desired.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with open source software licensing and compliance is desired.</span></li>

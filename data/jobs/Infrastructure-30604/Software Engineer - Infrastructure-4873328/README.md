@@ -23,12 +23,12 @@
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Intermediate level software development skills in Python and Go</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Linux systems administration experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">3 years of relevant Development experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 3 years of relevant Development experience</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong skills in network services, including Rest APIs and HTTP</span></li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5 years of relevant work experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years of relevant work experience</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong tooling and automations development experience</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Network fundamentals DHCP, ARP, subnetting, routing, firewalls, IPv6</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Configuration management systems such as Saltstack, Chef, Puppet or Ansible</span></li>

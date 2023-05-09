@@ -21,7 +21,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">12+ years of experience, in, or a combination of product management, partnerships, or technical Sales roles.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 12 years of experience, in, or a combination of product management, partnerships, or technical Sales roles.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor’s degree in a technical/engineering field, or specific technical experience preferred.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in the Cloud (SaaS/PaaS/IaaS) and Security (DDoS, firewalls) ecosystems preferred.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">An ambitious mindset that enables you to work independently with little guidance, but also work collaboratively across the org.</span></li>

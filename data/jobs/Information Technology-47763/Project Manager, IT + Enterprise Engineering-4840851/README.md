@@ -24,7 +24,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">6+ years of project management experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 6 years of project management experience</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong attention to detail, with a focus on analytical and problem solving skills&nbsp;</span></li>
 </ul>
 <ul>

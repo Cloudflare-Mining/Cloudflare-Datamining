@@ -18,7 +18,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">8+ years of experience, in a combination of technology partner management, partnerships, or go-to-market roles.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 8 years of experience, in a combination of technology partner management, partnerships, or go-to-market roles.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of successful commercial execution of partner or GTM programs through joint go-to-market activities &amp; cross-functional work across various internal teams.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor’s degree in a technical/engineering field, or specific technical experience preferred.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in the Cloud (SaaS/PaaS/IaaS) and Security (DDoS, firewalls) ecosystems preferred.&nbsp;</span></li>

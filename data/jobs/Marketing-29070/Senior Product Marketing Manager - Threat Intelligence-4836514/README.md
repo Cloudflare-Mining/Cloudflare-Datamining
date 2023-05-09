@@ -18,7 +18,7 @@
 </ul>
 <p><span style="font-weight: 400;">Requirements</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of experience in technology product marketing/product management.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years of experience in technology product marketing/product management.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience at a security vendor with a threat intelligence product/offering.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience creating marketing campaigns/pipeline from vendor threat research/threat intelligence findings.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of cyber security and how threat intelligence fits into a broader cyber security posture.&nbsp;</span></li>

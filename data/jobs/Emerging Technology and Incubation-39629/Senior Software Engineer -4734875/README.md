@@ -15,7 +15,7 @@
 <p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how KV processes and stores data, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust, and C++.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>7+ years of experience with (and love for) distributed systems and data</li>
+	<li>Minimum 7 years of experience with (and love for) distributed systems and data</li>
 </ul>
 <ul>
 	<li>Willing and eager to share knowledge, and mentor</li>

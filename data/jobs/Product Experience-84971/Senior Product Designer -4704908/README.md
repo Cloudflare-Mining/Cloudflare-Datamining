@@ -26,7 +26,7 @@
 <p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep understanding of human-centered design.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">8+ years working in professional UX, product design, or front-end engineering roles.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 8 years working in professional UX, product design, or front-end engineering roles.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent visual, written, and verbal communication skills.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Technical expertise and an understanding of network services are a plus.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding and interest in developer workflows and tools are a double plus.</span></li>

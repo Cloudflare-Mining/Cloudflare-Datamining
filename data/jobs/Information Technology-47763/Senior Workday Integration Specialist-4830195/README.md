@@ -14,13 +14,13 @@
 <p><span style="font-weight: 400;">You will help design, build, test and support our internal and external Workday integrations. The Engineer requires proficient technical knowledge of Workday HCM System. Experience supporting Workday HCM and the associated functional business area owners within People Teams. Duties include integrating Workday HCM with third party global payroll and benefit providers, integration configurable security, business processes and custom report development (including BIRT)</span></p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">6+ years of Software Development experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience developing Workday inbound and outbound Integrations</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience developing Workday custom reports, dashboards and calculated fields</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience developing Workday EIBs, Core Connectors, RaaS and Web Services</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience working with Workday Studio</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience developing XML, XSD, and XSLT transformations</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">2+ years of experience with Workday OX</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 6 years of Software Development experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 4 years of experience developing Workday inbound and outbound Integrations</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 4 &nbsp;years of experience developing Workday custom reports, dashboards and calculated fields</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 4 &nbsp;years of experience developing Workday EIBs, Core Connectors, RaaS and Web Services</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 4 &nbsp;years of experience working with Workday Studio</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 4 &nbsp;years of experience developing XML, XSD, and XSLT transformations</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 2 years of experience with Workday OX</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience monitoring and maintaining interfaces between Workday and internal/external vendor systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working with Workday HCM,&nbsp; Benefits, Compensation, Talent Management modules</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Workday Business Process Configuration and Configurable Security</span></li>
