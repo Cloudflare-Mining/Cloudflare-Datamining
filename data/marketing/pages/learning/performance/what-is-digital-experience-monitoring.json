@@ -1,25 +1,25 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/performance/why-minify-javascript-code/",
+	"path": "/learning/performance/what-is-digital-experience-monitoring/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "3H3xQ5yXFxBSRu0DUjfGx0",
-				"urlSlug": "performance/why-minify-javascript-code",
+				"contentfulId": "7oQ0NdC3nPQ9BPRs9xQtID",
+				"urlSlug": "performance/what-is-digital-experience-monitoring",
 				"metaTags": {
-					"metaTitle": "Why minify JavaScript code?",
-					"metaDescription": "Minification modifies JavaScript files and makes them compact, thereby improving website performance.",
+					"metaTitle": "What is digital experience monitoring (DEM)?",
+					"metaDescription": "Digital experience monitoring (DEM) is the process of tracking, discovering and optimizing internal or external end-user experiences. Learn more about the benefits of DEM.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4otLmvV5Jsz4sjBxyMNi5I/0b6516a150d683384d5364fe6c089d38/performance-lc.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/1c28d510cb5bb9a44e56916e37a889b6/Cloudflare_default_OG_.png"
 						}
 					},
 					"facebookCustomImage": null
 				},
-				"metaTitle": "Why Minify JavaScript Code?",
-				"metaDescription": "Minification modifies JavaScript files and makes them compact, thereby improving website performance.",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "3EXwEdnC7JnXLjoWOxHdT9",
@@ -499,26 +499,33 @@
 						]
 					}
 				},
-				"header": "Why minify JavaScript code?",
-				"blurbSubHeader": "By reducing file sizes, JavaScript minification can improve webpage performance.",
-				"objectivesHeader": "JS Minification",
+				"header": "What is digital experience monitoring (DEM)?",
+				"blurbSubHeader": "Digital experience monitoring (DEM) is the process of tracking, discovering, and optimizing internal or external end-user experiences.\n",
+				"objectivesHeader": "Learning Objectives",
 				"objectivesList": [
-					"Define JavaScript minification",
-					"Learn about uglification, obfuscation, and encryption"
+					"Explain what digital experience monitoring is",
+					"Understand how DEM works ",
+					"Learn how DEM can help organizations"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3n7LgS1F3I881eXiTOJVti",
-						"displayText": "What is an Image Optimizer?",
-						"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+						"contentfulId": "7moLeG9MM9pqBp3ACdPg1i",
+						"displayText": "Performance and Conversion Rates",
+						"url": "/learning/performance/more/website-performance-conversion-rates/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
-						"displayText": "Why Site Speed Matters",
-						"url": "/learning/performance/why-site-speed-matters/"
+						"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+						"displayText": "Core Web Vitals",
+						"url": "/learning/performance/what-are-core-web-vitals/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+						"displayText": "What is Latency?",
+						"url": "/learning/performance/glossary/what-is-latency/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
@@ -528,31 +535,25 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "787jBq0LeOM6UkZuvDQNQW",
-						"displayText": "Making a Site Mobile Friendly",
-						"url": "/learning/performance/how-to-make-a-site-mobile-friendly/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
-						"displayText": "Speed and Conversion Rates",
-						"url": "/learning/performance/more/website-performance-conversion-rates/"
+						"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+						"displayText": "Why Site Speed Matters",
+						"url": "/learning/performance/why-site-speed-matters/"
 					}
 				],
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is minification in JavaScript?</h2>\n\n<p>Minification, also known as minimization, is the process of removing all unnecessary characters from JavaScript source code without altering its functionality. This includes the removal of whitespace, comments, and semicolons, along with the use of shorter variable names and functions. Minification of JavaScript code results in compact file size.</p>\n\n<p>For example, here is a block of code before and after minification:</p>\n\n<p>Before minification: eight lines of code</p>\n\n<img src= \"https://www.cloudflare.com/img/learning/cdn/performance/cdn-code-before-minification.png\" class=\"responsive-image\" alt=\"JavaScript Without Minification\" itemprop=\"image\"/>\n\n<p>After minification: A single line of code</p>\n\n<img src= \"https://www.cloudflare.com/img/learning/cdn/performance/cdn-code-after-minification.png\" class=\"responsive-image\" alt=\"JavaScript With Minification\" itemprop=\"image\"/>\n\n<p>Minification speeds up webpage loading, thereby improving website experience, making both visitors and search engines happy.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How is minification different from obfuscation, compression, encryption, or uglification?</h2>\n\n<ul class=\"learning-list\">\n  <li><strong>Uglification:</strong> This essentially the same as minification. Uglify JS is a JavaScript library for minifying JavaScript files. To 'uglify' a JavaScript file is to minify it using Uglify. Uglification improves performance while reducing readability.</li>\n  <li><strong>Encryption:</strong> This is the process of translating data, called plain data, into encoded data. This encrypted, or encoded, data is known as ciphertext, and needs a secret key in order to decrypt it. The browser cannot execute encrypted code. Encryption is a security feature, and does not necessarily reduce the size of a file.\n</li>\n  <li><strong>Obfuscation:</strong> This process is employed in order to hide business logic. The code is modified such that it becomes unreadable by humans. This makes reverse engineering difficult. Obfuscation is different from encryption in that computers are still able to understand and execute the code. Obfuscation is accomplished by changing the names of variables, functions, and members. The resulting reduction in file size also improves performance, though this is not the primary goal of obfuscation.</li>\n  <li><strong>Compression:</strong> Data compression is a process that reduces the number of bits needed to represent data. Data compression can free up valuable space on hard drives, speed up file transfer, and decrease costs for network bandwidth. Some files, like Microsoft Word files, may be compressed to 90 percent of their original size.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why don't developers write minified code to begin with?</h2>\n\n<p>Minification results in compact files, which makes it a web performance best practice. So, why not write code that is already minified?</p>\n\n<p>JavaScript code is written for, and by, humans, who need whitespace, formatting, and comments to be able to understand and debug the code. After the code is written, minifying software can be used in order to improve performance. This is because browsers can execute code without needing to understand it.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the disadvantages of minification?</h2>\n\n<p>Minification can break complicated scripts because of site-dependent variables like themes, plugins, and server environment. Also, minification must be done in conjunction with other performance tuning. On its own, it might not provide significant gains. Minification can also introduce errors that are hard to debug.</p>\n\n<p>Despite these disadvantages, minification is usually worth attempting for potential performance gains. Learn how to <a href='/learning/performance/how-to-minify-css/'>minify CSS</a> as well.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is digital experience monitoring?</h2>\n<p>Digital experience monitoring (DEM) is software that enables organizations to track, discover, and optimize end-user experiences. DEM helps organizations observe the minute-by-minute experiences of their end users and allows organizations to identify and resolve issues quickly. DEM can be used for internal end-users, such as remote and in-office employees or for external end-users, such as customers.</p>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">How does digital experience monitoring work?</h2>\n  <p>DEM software helps IT leaders use historical and predictive data around network issues, performance slow-downs, and application outages that impact an employee's experience or a customer's interactions with the company's digital properties and products. These software solutions monitor various factors, such as website traffic, user behavior, and application performance.</p>\n  <p>By analyzing this data, organizations can identify areas where their products or services may be underperforming, or where usability issues may impact employee productivity or collaboration. This data-driven process enables organizations to then improve their product development and optimize business operations.</p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why do organizations need digital experience monitoring?</h2>\n\n<p>Organizations need DEM to gain visibility into the digital experiences of their employees or customers. Without this visibility, organizations may overlook critical vulnerabilities, struggle to identify the root cause when issues arise, and find themselves unequipped to resolve time-sensitive problems.</p>\n<p>With an accurate and real-time digital experience monitoring strategy, organizations can quickly identify, mitigate, and resolve potential issues.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Benefits of DEM</h2>\n<p>Digital experience monitoring is one tool organizations use to monitor, customize, and improve end-user experiences. Some of its key functions include the following:</p>\n\n<ul class=\"learning-list\">\n<li><strong>Define and monitor critical network resources.</strong> Organizations can use DEM to imitate traffic flows and measure and analyze controlled flows of data to public or private resources. This helps pinpoint issues before they impact the end users.</li>\n<li><strong>Understand the minute-by-minute user journey.</strong> Organizations can achieve a real-time view of data visualizations. This helps highlight potential anomalies in connectivity or performance.</li>\n<li><strong>Save IT leaders time in problem resolution.</strong> Implementing a comprehensive digital experience monitoring solution can save IT teams time by providing a step-by-step view into any issues employees or end users are facing. IT teams can quickly identify the root cause of these issues, so more time and effort can be spent on resolving them.</li>\n</ul>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">Does Cloudflare offer DEM?</h2>\n<p><a href='https://www.cloudflare.com/lp/digital-experience-monitoring/?ref=blog.cloudflare.com'>Cloudflare Digital Experience Monitoring</a> is an internal observability tool that provides predictive, historical, and real-time intelligence to keep employees productive wherever they are working. Customers can plug into Cloudflare's global network and equip their IT leadership with the granular visibility to simplify troubleshooting and resolve issues impacting internal end-user connectivity and hybrid work performance.</p>\n",
 				"availableLocales": null,
-				"localized": true,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -564,7 +565,7 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale",
 					"elGR": "English for Locale",
 					"nbNO": "English for Locale"
@@ -575,20 +576,11 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "3H3xQ5yXFxBSRu0DUjfGx0",
-			"pathname": "/learning/performance/why-minify-javascript-code/",
+			"contentfulId": "7oQ0NdC3nPQ9BPRs9xQtID",
+			"pathname": "/learning/performance/what-is-digital-experience-monitoring/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
