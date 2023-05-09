@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><em>The following is a guest post by <a href="https://ashcon.app/?ref=blog.cloudflare.com" target="_blank">Ashcon Partovi</a>, a computer science and business undergraduate at the University of British Columbia in Vancouver, Canada. He's the founder of a popular Minecraft multiplayer server, <a href="https://stratus.network/forums?ref=blog.cloudflare.com" target="_blank">stratus.network</a>, that provides competitive, team-based gameplay to thousands of players every week</em></p>
-	<p>If you've ever played a video game in the past couple of years, chances are you know about <a href="https://en.wikipedia.org/wiki/Minecraft?ref=blog.cloudflare.com" target="_blank"><em>Minecraft</em>.</a> You might be familiar with the game or even planted a tree or two, but what you might not know about is the vast number of <em>Minecraft</em> online communities. In this post, I'm going to describe how I used Cloudflare Workers to deploy and scale a production-grade API that solves a big problem for these <em>Minecraft</em> websites.</p>
+	<p><em>The following is a guest post by <a href="https://ashcon.app" target="_blank">Ashcon Partovi</a>, a computer science and business undergraduate at the University of British Columbia in Vancouver, Canada. He's the founder of a popular Minecraft multiplayer server, <a href="https://stratus.network/forums" target="_blank">stratus.network</a>, that provides competitive, team-based gameplay to thousands of players every week</em></p>
+	<p>If you've ever played a video game in the past couple of years, chances are you know about <a href="https://en.wikipedia.org/wiki/Minecraft" target="_blank"><em>Minecraft</em>.</a> You might be familiar with the game or even planted a tree or two, but what you might not know about is the vast number of <em>Minecraft</em> online communities. In this post, I'm going to describe how I used Cloudflare Workers to deploy and scale a production-grade API that solves a big problem for these <em>Minecraft</em> websites.</p>
 	<h3 id="introducingtheproblem">Introducing the Problem</h3>
-	<p>Here is an example of my <em>Minecraft</em> <a href="https://stratus.network/ElectroidFilms?ref=blog.cloudflare.com" target="_blank">player profile</a> from one of the many multiplayer websites. It shows some identity information such as my username, a bitmap of my avatar, and a preview of my friends. Although rendering this page with 49 bitmap avatars may seem like an easy task, it's far from trivial. In fact, it's unnecessarily complicated.</p>
+	<p>Here is an example of my <em>Minecraft</em> <a href="https://stratus.network/ElectroidFilms" target="_blank">player profile</a> from one of the many multiplayer websites. It shows some identity information such as my username, a bitmap of my avatar, and a preview of my friends. Although rendering this page with 49 bitmap avatars may seem like an easy task, it's far from trivial. In fact, it's unnecessarily complicated.</p>
 	<p>Here is the current workflow to render a player profile on a website given their username:</p>
 	<ol>
 		<li>Find the UUID from the player's username.</li>
@@ -57,7 +57,7 @@
 	<p>Yikes, that's 5 complex operations required to render a single avatar! But that's not all, in my example profile, there are 49 avatars, which would require a total of <code>5 * 49 = 245</code> operations.</p>
 	<p>And that's just <em>fetching</em> the data, we haven't even started to serve it to players! Then you have to setup a host to serve the web traffic, ensure that the service scales with demand, handle cache expiration of assets, and deploy across multiple regions. Then you have to deploy There has to be a better way!</p>
 	<h3 id="prototypingwithworkers">Prototyping with Workers</h3>
-	<p>I'm a strong believer in the future of serverless computing. So naturally, when I learned how <a href="https://developers.cloudflare.com/workers/about/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a> allow you to run JavaScript code in 150+ points of presence, I started to tinker with the possibilities of solving this problem. After looking at the documentation and using the <a href="https://cloudflareworkers.com/?ref=blog.cloudflare.com" target="_blank">Workers playground</a>, I quickly put together some JavaScript code that aggregated all that profile complexity into a single request.</p>
+	<p>I'm a strong believer in the future of serverless computing. So naturally, when I learned how <a href="https://developers.cloudflare.com/workers/about/" target="_blank">Cloudflare Workers</a> allow you to run JavaScript code in 150+ points of presence, I started to tinker with the possibilities of solving this problem. After looking at the documentation and using the <a href="https://cloudflareworkers.com" target="_blank">Workers playground</a>, I quickly put together some JavaScript code that aggregated all that profile complexity into a single request.</p>
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(renderPlayerBitmap(event.request))
 })
@@ -93,7 +93,7 @@ async function renderPlayerBitmap(request) {
 
 </code></pre>
 	<p>Within a couple minutes I had my first Workers implementation! I gave it my username and it was able to make all the necessary sub-requests to return my player's bitmap texture.</p>
-	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_playground.png" alt="worker_playground" loading="lazy"></p>
+	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_playground.png" alt="worker_playground"></p>
 	<p>After realizing the potential of Workers, I started to wonder if I could use it for more than just a single script. What if I could design and deploy a production-ready API for <em>Minecraft</em> that runs exclusively on Workers?</p>
 	<h3 id="designinganapi">Designing an API</h3>
 	<p>I wanted to address an essential problem for <em>Minecraft</em> developers: too many APIs with too many restrictions. The hassle of parsing multiple requests and handling errors prevents developers from focusing on creating great experiences for players. There needs to be a solution that requires only <strong>1 HTTP request with no rate limiting and no client-side caching.</strong> After looking at the various use-cases for the existing APIs, I created a JSON schema that encompassed all the essential data into a single response:</p>
@@ -125,7 +125,7 @@ async function renderPlayerBitmap(request) {
 </code></pre>
 	<p>One of the primary goals I had in mind was to minimize sub-requests by clients. For example, instead of giving developers a URL to a <code>image/png</code> static asset, why not fetch it for them and embed it as a base64 string? Now that's simplicity!</p>
 	<h3 id="gettingstarted">Getting Started</h3>
-	<p>For this project, I decided to use <a href="https://coffeescript.org/?ref=blog.cloudflare.com" target="_blank">CoffeeScript</a>, which transcompiles to JavaScript and has a simple syntax. We'll also need to use <a href="https://webpack.js.org/?ref=blog.cloudflare.com" target="_blank">Webpack</a> to bundle all of our code into a single JavaScript file to upload to Cloudflare.</p>
+	<p>For this project, I decided to use <a href="https://coffeescript.org" target="_blank">CoffeeScript</a>, which transcompiles to JavaScript and has a simple syntax. We'll also need to use <a href="https://webpack.js.org" target="_blank">Webpack</a> to bundle all of our code into a single JavaScript file to upload to Cloudflare.</p>
 	<pre><code class="language-coffeescript"># Welcome to CoffeeScript!
 
 str = "heyo! #{40+2}"    # 'heyo! 42'
@@ -197,7 +197,7 @@ route = (request) -&gt;
 npm run preview
 </code></pre>
 	<p>Your computer's default internet browser will open up a new window and preview the result of our Worker. If you see a JSON response, then everything is working properly and we're ready to go!</p>
-	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_example.png" alt="worker_example" loading="lazy"></p>
+	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_example.png" alt="worker_example"></p>
 	<h3 id="writingproductioncodeforworkers">Writing Production Code for Workers</h3>
 	<p>Now that we're setup with a working example, we can design our source code file structure. It's important that we break up our code into easily testable chunks, so I've gone ahead and outlined the approach that I took with this project:</p>
 	<pre><code>src/
@@ -289,7 +289,7 @@ export coerce = (code) -&gt;
     when 429 then tooManyRequests()
     else error("Unknown Response", code: code)
 </code></pre>
-	<p>The <code>cf</code> key can be used to control various Cloudflare features, including how sub-requests are cached. See the <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features/?ref=blog.cloudflare.com" target="_blank">Workers documentation</a> for a more in-depth explanation.</p>
+	<p>The <code>cf</code> key can be used to control various Cloudflare features, including how sub-requests are cached. See the <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features/" target="_blank">Workers documentation</a> for a more in-depth explanation.</p>
 	<pre><code class="language-coffeescript">cf:
   cacheTtl: 120 # Cache for 2 mins.
   # Pro+ only.
@@ -492,21 +492,21 @@ Object::isEmpty = -&gt;
 </code></pre>
 	<h3 id="analyzingaworkersdeployment">Analyzing a Workers Deployment</h3>
 	<p>I've had this code deployed and tested by real <em>Minecraft</em> users for the past few weeks. As a developer that has global web traffic, it's pivotal that players can quickly get access to my services. The essential advantage of Workers is that I don't need to deploy several replicas of my code to different cloud regions, it's everywhere! That means players from any part of the world get the same great web experience with minimal latency.</p>
-	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_world_dns.png" alt="worker_world_dns" loading="lazy"></p>
+	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_world_dns.png" alt="worker_world_dns"></p>
 	<p>As of today, the API is processing over <strong>400k requests per day</strong> from users all over the world! Cloudflare caches responses in the closest point of presence to the client, so I don't need to setup a database and developers don't need to worry about rate-limiting.</p>
-	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_success.png" alt="worker_success" loading="lazy"></p>
+	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_success.png" alt="worker_success"></p>
 	<p>Since each request to the API generates 4 to 5 additional sub-requests, it handles approximately <strong>1.8 million fetches per day</strong> with a 88% cache hit rate.</p>
-	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_requests.png" alt="worker_requests" loading="lazy"></p>
+	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_requests.png" alt="worker_requests"></p>
 	<h3 id="wrappingup">Wrapping Up</h3>
 	<p>Cloudflare Workers have enabled me to solve complex technical problems without worrying about host infrastructure or cloud regions. It's simple, easy to deploy, and works blazing fast all around the world. And for <strong>50 cents for every 1 million requests</strong>, it's incomparable to the other serverless solutions on the market.</p>
 	<p>If you're not already convinced to start using Workers, here's the deployment history of my API. I went from <strong>0 to 5 million requests</strong> with no scaling, no resizing, no servers, no clusters, and no containers. Just code.</p>
-	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_progress.png" alt="worker_progress" loading="lazy"></p>
-	<p>If you're interested in looking at all of the code used in the post, you can find it here:<br><a href="https://github.com/Electroid/mojang-api?ref=blog.cloudflare.com" target="_blank">https://github.com/Electroid/mojang-api</a></p>
+	<p><img src="https://ashcon.nyc3.digitaloceanspaces.com/blog/worker_progress.png" alt="worker_progress"></p>
+	<p>If you're interested in looking at all of the code used in the post, you can find it here:<br><a href="https://github.com/Electroid/mojang-api" target="_blank">https://github.com/Electroid/mojang-api</a></p>
 	<p>And if you're a <em>Minecraft</em> developer, my API is open for you to use for free:</p>
 	<pre><code>curl https://api.ashcon.app/mojang/v1/uuid/ElectroidFilms
 curl https://api.ashcon.app/mojang/v1/user/ElectroidFilms
 </code></pre>
-	<p>You can also use this <a href="https://github.com/Electroid/mojang-api/tree/master/avatar?ref=blog.cloudflare.com" target="_blank">extra goodie</a> that will crop just the face from a player texture:</p>
+	<p>You can also use this <a href="https://github.com/Electroid/mojang-api/tree/master/avatar" target="_blank">extra goodie</a> that will crop just the face from a player texture:</p>
 	<pre><code>curl https://api.ashcon.app/mojang/v1/avatar/ElectroidFilms &gt; avatar.png
 open avatar.png
 </code></pre>
