@@ -19,7 +19,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years experience working with server technology manufacturers (must have direct experience with server ODMs and network equipment manufacturers)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 3 years experience working with server technology manufacturers (must have direct experience with server ODMs and network equipment manufacturers)</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Intellectual curiosity, particularly around technology&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Master’s Degree in Business, Supply Chain or engineering field or an equivalent amount of professional experience&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication skills; ability to communicate to both technical and non-technical stakeholders&nbsp;</span></li>

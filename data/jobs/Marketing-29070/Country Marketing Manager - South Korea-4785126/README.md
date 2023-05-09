@@ -30,7 +30,7 @@
 <p><strong>Requirements</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Native and fluency in Korean language (both spoken and written) a must.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5-7 years proven experience in B2B marketing (enterprise software, SaaS, regional marketing and/or info security experience a plus)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years proven experience in B2B marketing (enterprise software, SaaS, regional marketing and/or info security experience a plus)</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">BA/BS in Marketing, Business, Economics, or other quantitative field</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">On the digital side, you will be responsible for the design, production, execution, and optimization of online marketing campaigns across multiple channels (e.g. SEM, organic/SEO, retargeting, email, webinars, social media, etc.). This person must be highly experienced in utilising platforms such as Facebook, YouTube, LinkedIn, Twitter and other marketing platforms and previous experience in running search engine campaigns using platforms like Google and Naver is mandatory.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">In addition, you must have experience creating strategy, planning, budgeting and managing trade shows, events, and conferences from start to finish</span></li>
