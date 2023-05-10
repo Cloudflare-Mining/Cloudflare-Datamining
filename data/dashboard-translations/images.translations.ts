@@ -441,7 +441,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	add_variant: "Add Variant",
 	export_image: "Export Image",
 	add_new_variant: "Add New Variant",
-	variant_page_title: (0, t.d)(d(), "variantName"),
+	variant_page_title: (0, t.d)(l(), "variantName"),
 	beta: "Beta",
 	guidance_and_feedback: "Guidance & Feedback",
 	guidance_description: "For <b>guidance</b> on Sourcing Kit\u2019s capabilities, refer to our developer documentation. For bug reporting or <b>feedback</b>, join the #images Discord channel, or use our Community board.",
@@ -480,7 +480,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	upgrade_modal: {
 		title: "Update Images Plan",
 		subtitle: "You\u2019re currently using the legacy plan for Image Resizing.",
-		info_text: (0, t.d)(l()),
+		info_text: (0, t.d)(d()),
 		license_print: `Agreeing to these additional features will not change the pricing for the existing features on your Images plan. Additional features are subject to our [Terms](https://cloudflare.com/terms).
 
 Your billing cycle will remain the same, including applicable automatic renewals that will continue until canceled.`,
@@ -488,6 +488,7 @@ Your billing cycle will remain the same, including applicable automatic renewals
 		total_due: "Total due now &nbsp;&nbsp;&nbsp;&nbsp; $0.00",
 		agree_to_terms: "Agree to terms"
 	},
+	images_delivered: "Images delivered",
 	delivery_zones_table_notice: "Want to configure Images related features for a website not listed? <0>Add a website to your account</0>",
 	delivery_zones: "Delivery zones",
 	image_resize_card_api_title_get: "Get Image Resizing settings",
