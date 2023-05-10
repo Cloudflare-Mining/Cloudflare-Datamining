@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/speedtest",
 	"dist-tags": {
-		"latest": "1.0.6"
+		"latest": "1.1.0"
 	},
 	"versions": {
 		"0.0.1": {
@@ -703,6 +703,49 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkSPflACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmptbxAAkw/MvE3SlY3IrUJ1EmcKVCYYIyIPxmtQYuZ+qmmziJheuPtR\r\nFy4u+vcaigdHMXp6h7JldxIQjUWz34hQP1gpkQUWZZqpv0fUMtmQYz9s/dwp\r\nBxlzMkwaia8MDUBr6FXt2I+MUZS5ZhK/NpJEM7l8TPGj6LaDSJqQjFYhnP8F\r\n1SsDnMQj2LcbIP/jKGQdcLOgos1TJRyA+m0fcSA2j3IMOZrs7r9KLKrqBtz5\r\n8sLpb98qJmH5BP4Be1+YvWtk6lotl5SYGgkeEAKarDkEcxJFEQLOTdXnzegT\r\nX8FXmMsBc0CTJFOlNMee3rrkXNrw5Q6mjTB/5cekC8OjDYw/eyJqvwFdzz5f\r\nOJD2h2PUKAGy8+PNh4yp8MzpwTgFszfIGcLi44rSIkOPcNBtFWogCFkpHhXo\r\ncKsOwlK8NRxcOdR3EaKzPvPFnVu/c9MUod0xvYAsUNldeS3v65VueWTdF9i/\r\nYlc/kaE6wROjVsFcenZcgT6wV/t8CSORWVZ0yOwVSuv7DTjq8zeX/X4S+jsc\r\nOHDM5p9t+G/EFnqwiloSCLWCaa0mqGF01W/g2LnEk3b5xOSRIwL/krhXF2wQ\r\nYO1OS5FGoYzpE5HiMzFRfekTcudLCQYDEv3/ZF2a3T1N3gDe/+hEAtWZ49Qb\r\nnlBWfHD0RFeMuOiDruiS29Edmbwv7mMN6H4=\r\n=/DQ9\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=12"
+			}
+		},
+		"1.1.0": {
+			"name": "@cloudflare/speedtest",
+			"version": "1.1.0",
+			"dependencies": {
+				"d3-scale": "^4.0.2",
+				"isomorphic-fetch": "^3.0.0",
+				"lodash.memoize": "^4.1.2"
+			},
+			"devDependencies": {
+				"@babel/core": "^7.21.8",
+				"@babel/preset-env": "^7.21.5",
+				"@rollup/plugin-babel": "^6.0.3",
+				"@rollup/plugin-node-resolve": "^15.0.2",
+				"eslint": "^8.40.0",
+				"eslint-plugin-compat": "^4.1.4",
+				"eslint-plugin-import": "^2.27.5",
+				"eslint-plugin-json": "^3.1.0",
+				"eslint-plugin-prettier": "^4.2.1",
+				"husky": "^8.0.3",
+				"lint-staged": "^13.2.2",
+				"prettier": "^2.8.8",
+				"rimraf": "^5.0.0",
+				"rollup": "^3.21.5",
+				"rollup-plugin-dts": "^5.3.0",
+				"typescript": "^5.0.4"
+			},
+			"dist": {
+				"integrity": "sha512-lRqRMraed+v/e8sgPH1v9Ikct6lwopGXVJGsybuDfJM2PMMI2392S231VkjelEEIiFk+wMwCn8brAFv+9vDARQ==",
+				"shasum": "ec9d315dd4709ef3c9d92c110493136e5e4a72ca",
+				"tarball": "https://registry.npmjs.org/@cloudflare/speedtest/-/speedtest-1.1.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 124531,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBIitfUf9zupNFZJvwpp+HREDa13g1TyO7W9bhgwNywkAiEA0EchA26gbkMBYCe8RjUrP7Sc/Fhdo0h57/KoOv0E30E="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=12"
