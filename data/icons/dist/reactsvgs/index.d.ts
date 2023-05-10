@@ -118,9 +118,11 @@ declare const _default: {
     'web-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     web3: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'workers-bundled': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'workers-constellation': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'workers-durable-objects': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'workers-for-platforms': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'workers-kv': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'workers-pages': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'workers-unbound': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     wrangler: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     wrench: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

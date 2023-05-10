@@ -114,9 +114,11 @@ import WaitingRoom from './WaitingRoom';
 import WebAnalyticsLogo from './WebAnalyticsLogo';
 import Web3 from './Web3';
 import WorkersBundled from './WorkersBundled';
+import WorkersConstellation from './WorkersConstellation';
 import WorkersDurableObjects from './WorkersDurableObjects';
 import WorkersForPlatforms from './WorkersForPlatforms';
 import WorkersKv from './WorkersKv';
+import WorkersPages from './WorkersPages';
 import WorkersUnbound from './WorkersUnbound';
 import Wrangler from './Wrangler';
 import Wrench from './Wrench';
@@ -244,9 +246,11 @@ export default {
   'web-analytics-logo': WebAnalyticsLogo,
   web3: Web3,
   'workers-bundled': WorkersBundled,
+  'workers-constellation': WorkersConstellation,
   'workers-durable-objects': WorkersDurableObjects,
   'workers-for-platforms': WorkersForPlatforms,
   'workers-kv': WorkersKv,
+  'workers-pages': WorkersPages,
   'workers-unbound': WorkersUnbound,
   wrangler: Wrangler,
   wrench: Wrench,

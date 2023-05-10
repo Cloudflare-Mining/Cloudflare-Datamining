@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.3.0
+
+### Minor Changes
+
+- e41b3ccd50: Added `workers-constellation` and `workers-pages` icons
+
 ## 11.2.1
 
 ### Patch Changes
