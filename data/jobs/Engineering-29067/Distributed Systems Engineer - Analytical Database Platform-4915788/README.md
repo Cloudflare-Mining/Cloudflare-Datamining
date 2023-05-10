@@ -6,8 +6,8 @@
 	</div>
 </div>
 <h3><span style="font-weight: 400;">About Role</span></h3>
-<p><span style="font-weight: 400;">We are looking for an experienced and highly motivated engineer to join our team and contribute to the enhancement of our analytical database platform. The platform is a critical component of Cloudflare Analytics and provides real-time visibility into the health and performance of Cloudflare customers' online properties.</span></p>
-<p><span style="font-weight: 400;">Our team’s focus is on building and maintaining a high-performance, scalable database platform powered by ClickHouse optimized for analytical workloads. We help our customers, both internal and external, to gain a deeper understanding of their online properties, identify trends and patterns, and make informed decisions about how to optimize their web performance, security, and other key metrics. Our mission is to empower customers to leverage their data to drive better outcomes for their business.</span></p>
+<p><span style="font-weight: 400;">We are looking for an experienced and highly motivated engineer to join our team and contribute to our analytical database platform. The platform is a critical component of Cloudflare Analytics which provides real-time visibility into the health and performance of Cloudflare customers' online properties.</span></p>
+<p><span style="font-weight: 400;">The team builds and maintains a high-performance, scalable database platform powered by ClickHouse, optimized for analytical workloads. We help our customers, both internal and external, to gain a deeper understanding of their online properties, identify trends and patterns, and make informed decisions about how to optimize their web performance, security, and other key metrics. Our mission is to empower customers to leverage their data to drive better outcomes for their business.</span></p>
 <p><span style="font-weight: 400;">As a Distributed systems engineer - Analytical Database Platform, you will:</span></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and implement new platform components for the Cloudflare Analytical Database Platform to improve functionality and performance.</span></li>
@@ -20,13 +20,14 @@
 </ul>
 <p><span style="font-weight: 400;">Key qualifications:</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of experience working in software development, with at least 1 year of experience specifically working with ClickHouse.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of experience working in software development covering distributed systems, and databases.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong programming skills (C++ is preferable), as well as a deep understanding of software development best practices and principles.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong knowledge of SQL and database internals, including experience with database design, optimization, and performance tuning.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">A solid foundation in computer science, including algorithms, data structures, distributed systems, and concurrency.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work collaboratively in a team environment, as well as communicate effectively with other teams across Cloudflare.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong analytical and problem-solving skills, as well as the ability to work independently and proactively identify and solve issues.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with SALT or Terraform is a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with ClickHouse is a plus.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with SALT or Terraform is a plus.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Linux container technologies, such as Docker and Kubernetes, is a plus.</span></li>
 </ul>
 <p><span style="font-weight: 400;">If you're passionate about building scalable and performant databases using cutting-edge technologies, and want to work with a world-class team of engineers, then we want to hear from you! Join us in our mission to help build a better internet for everyone!</span></p>
