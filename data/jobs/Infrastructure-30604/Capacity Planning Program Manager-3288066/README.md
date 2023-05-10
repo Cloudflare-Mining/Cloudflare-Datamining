@@ -26,7 +26,7 @@
 	<li>PL/SQL server development experience</li>
 	<li>Experience with object-oriented/object function scripting languages: Python, Java, C++, Scala</li>
 	<li>Degree in Operations Research, Statistics, Applied Mathematics, Computer Science, Engineering, MIS or closely related field</li>
-	<li>3+ years relevant work experience as a Capacity Planner, Supply Chain Analyst, Business Analyst, BI Engineer or Data Scientist</li>
+	<li>Minimum 3 years relevant work experience as a Capacity Planner, Supply Chain Analyst, Business Analyst, BI Engineer or Data Scientist</li>
 	<li>Demonstrated ability and experience to influence, develop productive working relationships, and lead technical teams and key stakeholders from different business functions</li>
 	<li>A diverse technical acumen--actively contribute to technical discussions, proactively identify challenges and risks, working closely with engineers and product manager on addressing challenges, and form mitigation plans</li>
 	<li>Excellent interpersonal, presentation and communication skills. Effective problem-solving skills</li>

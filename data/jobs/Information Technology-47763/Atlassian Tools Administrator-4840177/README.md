@@ -12,8 +12,8 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication and troubleshooting skills with the ability to triage and juggle tasks efficiently.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of Linux systems administration experience supporting highly available applications</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years administering Atlassian Datacenter tools on-prem (Jira, Confluence, Bitbucket)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years of Linux systems administration experience supporting highly available applications</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 3years administering Atlassian Datacenter tools on-prem (Jira, Confluence, Bitbucket)</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with database administration as it applies to Atlassian tools (we use Postgres)</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with IdP integrations to Atlassian such as Active Directory or Okta</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Expertise scripting and automating repetitive tasks with creativity and efficiency</span></li>

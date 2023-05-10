@@ -30,7 +30,7 @@
 <p><br><strong>Experience</strong></p>
 <ul>
 	<li>Bachelor’s degree required, with emphasis in Accounting or Finance preferred</li>
-	<li>5+ years of experience in Billing and A/R functions in a high volume<br>environment</li>
+	<li>Minimum 5 years of experience in Billing and A/R functions in a high volume<br>environment</li>
 	<li>Exposure to international operations preferred</li>
 	<li>Experience participating in system evaluation and implementation preferred.</li>
 </ul>
