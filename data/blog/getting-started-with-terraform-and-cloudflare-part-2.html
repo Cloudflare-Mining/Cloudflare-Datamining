@@ -38,7 +38,7 @@ Date:   Sun Apr 8 19:52:13 2018 -0700
 	<p>We'll get into more detail about reviewing and rolling back to prior versions of configuration <a href="#reviewingandrollingbackchanges">later in this post</a>, but for now let's review the current version.</p>
 	<p>In lines 1-4 below, we configured the Cloudflare Terraform provider. Initially we stored our email address and API key in the <code>cloudflare.tf</code> file, but for security reasons we removed them before committing to a git repository.</p>
 	<p>In lines 6-8, we define a <code>variable</code> that can be interpolated into <code>resources</code> definitions. Terraform can be used to mass configure multiple zones through the use of variables, as we'll explore in a future post.</p>
-	<p>Lines 10-16 tell Cloudflare to create a DNS <code>A</code> record for <code>www.${var.domain}</code> using IP address <code>203.0.113.10</code>. Later in this post, we'll explore <a href="">adding a second webserver and load balancing</a> between the two origins.</p>
+	<p>Lines 10-16 tell Cloudflare to create a DNS <code>A</code> record for <code>www.${var.domain}</code> using IP address <code>203.0.113.10</code>. Later in this post, we'll explore <a http:="" blog.cloudflare.com="" getting-started-with-terraform-and-cloudflare-part-2="" href="">adding a second webserver and load balancing</a> between the two origins.</p>
 	<p>Lines 18-26 apply zone-wide settings and lines 28-54 define a rate limiting rule to protect against credential stuffing and other brute force attacks.</p>
 	<pre><code>$ cat -n cloudflare.tf 
      1	provider "cloudflare" {
@@ -98,7 +98,7 @@ Date:   Sun Apr 8 19:52:13 2018 -0700
 </code></pre>
 	<h3 id="addingloadbalancing">Adding load balancing</h3>
 	<p>Thanks to the <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1#managingratelimits">rate limiting set up in part 1</a>, our login page is protected against credential brute force attacks. Now it's time to focus on performance and reliability. Imagine organic traffic has grown for your webserver, and this traffic is increasingly global. It’s time to spread these requests to your origin over multiple data centers.</p>
-	<p>Below we'll add a second origin for some basic round robining, and then use the <a href="https://www.cloudflare.com/load-balancing/?ref=blog.cloudflare.com" target="_blank">Cloudflare Load Balancing</a> product to fail traffic over as needed. We'll then enhance our load balancing configuration through the use of "geo steering" to serve results from an origin server that is geographically closest to your end users.</p>
+	<p>Below we'll add a second origin for some basic round robining, and then use the <a href="https://www.cloudflare.com/load-balancing/" target="_blank">Cloudflare Load Balancing</a> product to fail traffic over as needed. We'll then enhance our load balancing configuration through the use of "geo steering" to serve results from an origin server that is geographically closest to your end users.</p>
 	<h4 id="1addanotherdnsrecordforwww">1. Add another DNS record for <code>www</code></h4>
 	<p>To get started, we'll add a DNS record for a second web server, which is located in Asia. The IP address for this server is <code>198.51.100.15</code>.</p>
 	<pre><code>$ git checkout -b step5-loadbalance
@@ -182,12 +182,12 @@ Hello, this is 203.0.113.10!
 	<p>As you can see above, there is no discernible pattern for which origin receives the request. When Cloudflare connects to an origin with multiple DNS records, one of the IP addresses is selected at random. If both of these IPs are in the same data center and sessions can be shared (i.e., it doesn't matter if the same user hops between origin servers), this may work fine. However, for anything more complicated such as origins in different geographies or active health checks, you're going to want to use Cloudflare's Load Balancing product.</p>
 	<h4 id="4switchtousingcloudflareloadbalancing">4. Switch to using Cloudflare Load Balancing</h4>
 	<p>Before proceeding, make sure that your account is enabled for Load Balancing. If you're on an Enterprise plan, you should ask your Customer Success Manager to do this; otherwise, you can subscribe to Load Balancing within the Cloudflare Dashboard.</p>
-	<p>As described in the <a href="https://support.cloudflare.com/hc/en-us/articles/115000081911-Tutorial-How-to-Set-Up-Load-Balancing-Intelligent-Failover-on-Cloudflare?ref=blog.cloudflare.com" target="_blank">load balancing tutorial</a> on the Cloudflare Support site, you will need to do three things:</p>
+	<p>As described in the <a href="https://support.cloudflare.com/hc/en-us/articles/115000081911-Tutorial-How-to-Set-Up-Load-Balancing-Intelligent-Failover-on-Cloudflare" target="_blank">load balancing tutorial</a> on the Cloudflare Support site, you will need to do three things:</p>
 	<p>i. Create a monitor to run health checks against your origin servers<br>
 		ii. Create a pool of one or more origin servers that will receive load balanced traffic<br>
 		iii. Create a load balancer with an external hostname, e.g., www.example.com, and one or more pools</p>
 	<h5 id="idefineandcreatethehealthcheckmonitor">i. Define and create the health check ("monitor")</h5>
-	<p>To monitor our origins we're going to create a basic health check that makes a GET request to each origin on the URL <a href="https://www.example.com/?ref=blog.cloudflare.com" target="_blank">https://www.example.com</a>. If the origin returns the 200/OK status code within 5 seconds, we'll consider it healthy. If it fails to do so three (3) times in a row, we'll consider it unhealthy. This health check will be run once per minute from several regions, and send an email notification to <a href="mailto:you@example.com?ref=blog.cloudflare.com" target="_blank">you@example.com</a> if any failures are detected.</p>
+	<p>To monitor our origins we're going to create a basic health check that makes a GET request to each origin on the URL <a href="https://www.example.com" target="_blank">https://www.example.com</a>. If the origin returns the 200/OK status code within 5 seconds, we'll consider it healthy. If it fails to do so three (3) times in a row, we'll consider it unhealthy. This health check will be run once per minute from several regions, and send an email notification to <a href="mailto:you@example.com" target="_blank">you@example.com</a> if any failures are detected.</p>
 	<pre><code>$ git checkout step5-loadbalance
 Switched to branch 'step5-loadbalance'
 
@@ -206,7 +206,7 @@ resource "cloudflare_load_balancer_monitor" "get-root-https" {
 EOF
 </code></pre>
 	<h5 id="iidefineandcreatethepooloforigins">ii. Define and create the pool of origins</h5>
-	<p>We will call our pool "www-servers” and add two origins to it: <code>www-us</code> (<code>203.0.113.10</code>) and www-asia (<code>198.51.100.15</code>). For now, we'll skip any sort of <a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions?ref=blog.cloudflare.com" target="_blank">geo routing</a>.</p>
+	<p>We will call our pool "www-servers” and add two origins to it: <code>www-us</code> (<code>203.0.113.10</code>) and www-asia (<code>198.51.100.15</code>). For now, we'll skip any sort of <a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions" target="_blank">geo routing</a>.</p>
 	<p>Note that we reference the monitor we added in the last step. When applying this confirmation, Terraform will figure out that it first needs to create the monitor so that it can look up the ID and provide to the pool we wish to create.</p>
 	<pre><code>$ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
 resource "cloudflare_load_balancer_pool" "www-servers" {
@@ -228,7 +228,7 @@ resource "cloudflare_load_balancer_pool" "www-servers" {
 EOF
 </code></pre>
 	<h5 id="iiidefineandcreatetheloadbalancer">iii. Define and create the load balancer</h5>
-	<p>Note that when you create a load balancer (LB), it will <a href="https://support.cloudflare.com/hc/en-us/articles/115004954407-How-Does-a-Load-Balancer-Interact-with-Existing-DNS-Records-?ref=blog.cloudflare.com" target="_blank">replace any existing DNS records with the same name</a>. For example, when we create the "www.example.com" LB below, it will supersede the two www DNS records that you have previously defined. One benefit of leaving these DNS records in place is that if you temporarily disable load balancing, connections to this hostname will still be possible <a href="">as shown above</a>.</p>
+	<p>Note that when you create a load balancer (LB), it will <a href="https://support.cloudflare.com/hc/en-us/articles/115004954407-How-Does-a-Load-Balancer-Interact-with-Existing-DNS-Records-" target="_blank">replace any existing DNS records with the same name</a>. For example, when we create the "www.example.com" LB below, it will supersede the two www DNS records that you have previously defined. One benefit of leaving these DNS records in place is that if you temporarily disable load balancing, connections to this hostname will still be possible <a href="">as shown above</a>.</p>
 	<pre><code>$ cat &gt;&gt; cloudflare.tf &lt;&lt;'EOF'
 resource "cloudflare_load_balancer" "www-lb" {
   zone = "example.com"
@@ -379,8 +379,8 @@ Hello, this is 203.0.113.10!
 </code></pre>
 	<p>Great, we're now seeing each request load balanced evenly across the two origins we defined.</p>
 	<h3 id="usingpagerules">Using page rules</h3>
-	<p>Earlier we configured zone settings that apply to all of example.com. Now we're going to add an exception to these settings by using <a href="https://www.cloudflare.com/features-page-rules/?ref=blog.cloudflare.com" target="_blank">Page Rules</a>.</p>
-	<p>Specifically, we're going to turn increase the security level for a URL we know is expensive to render (and cannot be cached): <a href="https://www.example.com/expensive-db-call?ref=blog.cloudflare.com" target="_blank">https://www.example.com/expensive-db-call</a>. Additionally, we're going to add a redirect from the previous URL we used to host this page.</p>
+	<p>Earlier we configured zone settings that apply to all of example.com. Now we're going to add an exception to these settings by using <a href="https://www.cloudflare.com/features-page-rules/" target="_blank">Page Rules</a>.</p>
+	<p>Specifically, we're going to turn increase the security level for a URL we know is expensive to render (and cannot be cached): <a href="https://www.example.com/expensive-db-call" target="_blank">https://www.example.com/expensive-db-call</a>. Additionally, we're going to add a redirect from the previous URL we used to host this page.</p>
 	<h4 id="1createanewbranchandappendthepagerule">1. Create a new branch and append the page rule</h4>
 	<p>As usual we'll create a new branch and append our configuration.</p>
 	<pre><code>$ git checkout -b step6-pagerule
@@ -743,7 +743,7 @@ Apply complete! Resources: 0 added, 0 changed, 2 destroyed.
 </code></pre>
 	<p>Two resources destroyed, as expected. We've rolled back to the previous version.</p>
 	<h3 id="importingexistingstateandconfiguration">Importing existing state and configuration</h3>
-	<p>An important point to understand about Terraform is that it is only able to manage configuration that it created, or was explicitly told about after the fact. The reason for this limitation is that Terraform relies on a local <a href="https://www.terraform.io/docs/state/?ref=blog.cloudflare.com" target="_blank">state file</a> that maps the resource names defined in your configuration file, e.g., <code>cloudflare_load_balancer.www-lb</code> to the IDs generated by Cloudflare's API.</p>
+	<p>An important point to understand about Terraform is that it is only able to manage configuration that it created, or was explicitly told about after the fact. The reason for this limitation is that Terraform relies on a local <a href="https://www.terraform.io/docs/state/" target="_blank">state file</a> that maps the resource names defined in your configuration file, e.g., <code>cloudflare_load_balancer.www-lb</code> to the IDs generated by Cloudflare's API.</p>
 	<p>When Terraform makes calls to Cloudflare's API to create new resources , it persists those IDs to a state file; by default, the <code>terraform.tfstate</code> file in your directory is used, but this can be a remote location as will be discussed in a future blog post. These IDs are later looked up and refreshed when you call <code>terraform plan</code> and <code>terraform apply</code>.</p>
 	<p>If you've configured Cloudflare through other means, e.g., by logging into the Cloudflare Dashboard or making <code>curl</code> calls to <code>api.cloudflare.com</code>, Terraform does not (yet) have these resource IDs in the state file. To manage this preexisting configuration you will need to first i) reproduce the configuration in your config file and; ii) import resources one-by-one by providing their IDs and resource names.</p>
 	<h4 id="1reviewingyourcurrentstatefile">1. Reviewing your current state file</h4>
