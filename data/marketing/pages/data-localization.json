@@ -249,7 +249,7 @@
 					{
 						"contentfulId": "6Q1YzlBaOOrB0YhQIt8uvv",
 						"title": "How the Cloudflare Data Localization Suite works",
-						"copy": "Preserving end-user privacy is core to Cloudflare's mission of helping to build a better Internet. There are several ways Cloudflare ensures that your data stays as private as you want it to, and only goes where you want it to go:\n\n- DDoS attacks are detected and mitigated at the data center closest to the end user.\n- Data centers inside the preferred region decrypt TLS and apply HTTP services like WAF, CDN, and Cloudflare Workers.\n- Keyless SSL and Geo Key Manager store private SSL keys in a user-specified region.\n- Edge Log Delivery securely transmits logs from the inspection point to the log storage location of your choice.\n",
+						"copy": "Preserving end-user privacy is core to Cloudflare's mission of helping to build a better Internet. There are several ways Cloudflare ensures that your data stays as private as you want it to, and only goes where you want it to go:\n\n- DDoS attacks are detected and mitigated at the data center closest to the end user.\n- Data centers inside the preferred region decrypt TLS and apply HTTP services like WAF, CDN, and Cloudflare Workers.\n- Keyless SSL and Geo Key Manager store private SSL keys in a user-specified region.\n- Customer Metadata Boundary ensures that logs do not leave the specified region.\n",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -480,8 +480,8 @@
 					},
 					{
 						"contentfulId": "XHDa0dJhLFlTo5tH7eX4E",
-						"title": "Decide where log data is sent.",
-						"copy": "Logs can contain sensitive information that is subject to local regulations. Cloudflare Edge Log Delivery (Beta) allows you to send logs directly from the edge to your partner of choice — without passing through one of our core data centers first.",
+						"title": "Decide where data is sent.",
+						"copy": "The Customer Metadata Boundary allows you to comply with local laws by ensuring that data containing sensitive information does not leave your specified region.",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
