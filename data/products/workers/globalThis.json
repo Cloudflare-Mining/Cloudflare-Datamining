@@ -2025,6 +2025,15 @@
 			"__type": "string"
 		}
 	},
+	"performance": {
+		"now": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"timeOrigin": "number"
+	},
 	"queueMicrotask": {
 		"__proto": "function",
 		"__type": "function",
@@ -2074,6 +2083,12 @@
 		},
 		"D1_BINDING": {
 			"binding": {
+				"connect": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
 				"delete": {
 					"__proto": "function",
 					"__type": "function",
@@ -2190,6 +2205,12 @@
 			}
 		},
 		"MTLS_CERT_BINDING": {
+			"connect": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
 			"delete": {
 				"__proto": "function",
 				"__type": "function",
@@ -2282,6 +2303,12 @@
 			}
 		},
 		"SERVICE_BINDING": {
+			"connect": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
 			"delete": {
 				"__proto": "function",
 				"__type": "function",
@@ -2433,6 +2460,7 @@
 		"origin",
 		"parseFloat",
 		"parseInt",
+		"performance",
 		"queueMicrotask",
 		"removeEventListener",
 		"scheduler",
@@ -2507,6 +2535,7 @@
 		"origin",
 		"parseFloat",
 		"parseInt",
+		"performance",
 		"scheduler",
 		"self",
 		"undefined",
