@@ -184,6 +184,8 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   crypto: Crypto;
   caches: CacheStorage;
   scheduler: Scheduler;
+  performance: Performance;
+  readonly origin: string;
   Event: typeof Event;
   ExtendableEvent: typeof ExtendableEvent;
   PromiseRejectionEvent: typeof PromiseRejectionEvent;
@@ -283,6 +285,8 @@ declare const self: ServiceWorkerGlobalScope;
 declare const crypto: Crypto;
 declare const caches: CacheStorage;
 declare const scheduler: Scheduler;
+declare const performance: Performance;
+declare const origin: string;
 declare const navigator: Navigator;
 declare interface TestController {}
 declare interface ExecutionContext {
@@ -344,6 +348,11 @@ declare abstract class PromiseRejectionEvent extends Event {
 declare abstract class Navigator {
   readonly userAgent: string;
 }
+/** Provides access to performance-related information for the current page. It's part of the High Resolution Time API, but is enhanced by the Performance Timeline API, the Navigation Timing API, the User Timing API, and the Resource Timing API. */
+declare interface Performance {
+  readonly timeOrigin: number;
+  now(): number;
+}
 declare interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
   alarm?(): void | Promise<void>;
@@ -391,6 +400,8 @@ declare interface DurableObjectState {
   readonly id: DurableObjectId;
   readonly storage: DurableObjectStorage;
   blockConcurrencyWhile<T>(callback: () => Promise<T>): Promise<T>;
+  acceptWebSocket(ws: WebSocket, tags?: string[]): void;
+  getWebSockets(tag?: string): WebSocket[];
 }
 declare interface DurableObjectTransaction {
   get<T = unknown>(
@@ -566,6 +577,7 @@ declare class AbortController {
 declare abstract class AbortSignal extends EventTarget {
   static abort(reason?: any): AbortSignal;
   static timeout(delay: number): AbortSignal;
+  static any(signals: AbortSignal[]): AbortSignal;
   get aborted(): boolean;
   get reason(): any;
   throwIfAborted(): void;
@@ -1052,6 +1064,7 @@ declare interface RequestInit<Cf = CfProperties> {
 }
 declare abstract class Fetcher {
   fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+  connect(address: SocketAddress | string, options?: SocketOptions): Socket;
 }
 declare interface FetcherPutOptions {
   expiration?: number;
@@ -1835,6 +1848,8 @@ declare class WebSocket extends EventTarget<WebSocketEventMap> {
   accept(): void;
   send(message: (ArrayBuffer | ArrayBufferView) | string): void;
   close(code?: number, reason?: string): void;
+  serializeAttachment(attachment: any): void;
+  deserializeAttachment(): any | null;
   static readonly READY_STATE_CONNECTING: number;
   static readonly READY_STATE_OPEN: number;
   static readonly READY_STATE_CLOSING: number;
@@ -1850,6 +1865,24 @@ declare const WebSocketPair: {
     1: WebSocket;
   };
 };
+declare interface Socket {
+  get readable(): ReadableStream;
+  get writable(): WritableStream;
+  get closed(): Promise<void>;
+  close(): Promise<void>;
+  startTls(options?: TlsOptions): Socket;
+}
+declare interface SocketOptions {
+  secureTransport?: string;
+  allowHalfOpen: boolean;
+}
+declare interface SocketAddress {
+  hostname: string;
+  port: number;
+}
+declare interface TlsOptions {
+  expectedServerHostname?: string;
+}
 declare interface BasicImageTransformations {
   /**
    * Maximum width in image pixels. The value must be an integer.
