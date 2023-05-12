@@ -24,8 +24,8 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">7+ years experience in program and project management</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years proven experience in leading highly complex, enterprise-wide initiatives</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 7 years experience in program and project management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years proven experience in leading highly complex, enterprise-wide initiatives</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of delivering technical programs through the full end to end program management lifecycle, from conception to usability study</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Have a balance of people, organizational, and technical skills to deliver and guide decision making without authority</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Work independently in a dynamic and high-pressure environment with timely delivery despite ambiguous and changing business requirements</span></li>

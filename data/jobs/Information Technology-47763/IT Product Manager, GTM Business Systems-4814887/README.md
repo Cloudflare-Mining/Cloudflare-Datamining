@@ -26,7 +26,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of previous Product Manager, Business Owner or Business Analyst experience specifically in the areas of marketing and sales systems or related environments.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years of previous Product Manager, Business Owner or Business Analyst experience specifically in the areas of marketing and sales systems or related environments.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with sales (SFDC) and marketing systems (Marketo), and integrations with customer relationship management tools (SFDC, Gainsight), and related systems.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with the customer journey and sales methodologies to help develop and/or execute sales and marketing technology programs, with experience around needs assessment and systems rollout.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication skills both written and verbal with an ability to work at all levels of the organization including </span><span style="font-weight: 400;">technical and non-technical audiences.</span></li>

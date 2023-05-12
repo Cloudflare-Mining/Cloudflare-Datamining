@@ -20,7 +20,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">More than 5 years of experience building and managing high volume software applications; React and Typescript are a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years of experience building and managing high volume software applications; React and Typescript are a plus</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with A/B testing</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">You enjoy getting things done and have a bias for action: you're a builder and a creator and have contributed teams that deliver results</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing or contributing to build systems for large JavaScript projects and have contributed to open-source JavaScript tools and frameworks&nbsp;</span></li>

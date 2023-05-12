@@ -49,7 +49,7 @@
 				<br>
 				<p><span style="font-weight: 400;">Examples of desirable skills, knowledge and experience</span></p>
 				<ul>
-					<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of IT Support for platforms Zuora Revenue, NetSuite system (SuiteScript), Concur Highradius, Coupa, Avalara working experience in complex environments with multiple integrations. Any additional system knowledge is positive.</span></li>
+					<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 3 years of IT Support for platforms Zuora Revenue, NetSuite system (SuiteScript), Concur Highradius, Coupa, Avalara working experience in complex environments with multiple integrations. Any additional system knowledge is positive.</span></li>
 				</ul>
 				<ul>
 					<li style="font-weight: 400;"><span style="font-weight: 400;">High motivation: be self-starter, with initiative and ability to work independently with minimal supervision using sound business judgment.</span></li>
