@@ -351,6 +351,13 @@ const navigation = {
 				return !!(0, r.Le)(d, "workers", "cfsql_bindings")
 			}
 		}, {
+			title: "navigation.account.workers.constellation",
+			url: "/workers/constellation",
+			labels: ["beta"],
+			hasPermission: function(d) {
+				return !!(0, n.z1)("constellation-ui")(d)
+			}
+		}, {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: function(d) {
@@ -361,7 +368,7 @@ const navigation = {
 	}, {
 		title: "navigation.account.workers_and_pages",
 		url: "/workers-and-pages",
-		iconType: "edgeworker",
+		iconType: "workers-pages",
 		hasPermission: function(d) {
 			return !!(0, n.z1)("workers-and-pages-convergence")(d) && (0, o.iY)(d)
 		},
@@ -384,6 +391,13 @@ const navigation = {
 			labels: ["alpha"],
 			hasPermission: function(d) {
 				return !!(0, r.Le)(d, "workers", "cfsql_bindings")
+			}
+		}, {
+			title: "navigation.account.workers.constellation",
+			url: "/workers/constellation",
+			labels: ["beta"],
+			hasPermission: function(d) {
+				return !!(0, n.z1)("constellation-ui")(d)
 			}
 		}, {
 			title: "navigation.account.workers.plans",
