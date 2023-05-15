@@ -1,0 +1,152 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image4-6.png" class="kg-image" alt="Introducing Constellation, bringing AI to the Cloudflare stack" loading="lazy" width="1200" height="675"></figure>
+	<p>The Cloudflare Workers' ecosystem now features products and features ranging from compute, hosting, storage, databases, streaming, networking, security, and <a href="https://developers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">much more</a>. Over time, we've been trying to inspire others to switch from traditional software architectures, <a href="https://blog.cloudflare.com/welcome-to-wildebeest-the-fediverse-on-cloudflare/">proving</a> and <a href="https://blog.cloudflare.com/technology-behind-radar2/">documenting</a> how it's possible to build complex applications that scale globally on top of our stack.</p>
+	<p>Today, we're excited to welcome Constellation to the Cloudflare stack, enabling developers to run pre-trained machine learning models and inference tasks on Cloudflare's network.</p>
+	<h2 id="one-more-building-block-in-our-supercloud">One more building block in our Supercloud</h2>
+	<p><a href="https://en.wikipedia.org/wiki/Machine_learning?ref=blog.cloudflare.com" target="_blank">Machine learning</a> and AI have been hot topics lately, but the reality is that we have been using these technologies in our daily lives for years now, even if we do not realize it. Our mobile phones, computers, cars, and home assistants, to name a few examples, all have AI. It's everywhere.</p>
+	<p>But it isn't a commodity to developers yet, though. They often need to understand the mathematics behind it, the software and tools are dispersed and complex, and the hardware or cloud services to run the frameworks and data are expensive.</p>
+	<p><strong>Today we're introducing another feature to our stack, allowing everyone to run machine learning models and perform inference on top of Cloudflare Workers.</strong></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image2-8.png" class="kg-image" alt="" loading="lazy" width="1784" height="510"></figure>
+	<h2 id="introducing-constellation">Introducing Constellation</h2>
+	<p>Constellation allows you to run fast, low-latency inference tasks using pre-trained machine learning models natively with Cloudflare Workers scripts.</p>
+	<p>Some examples of applications that you can deploy leveraging Constellation are:</p>
+	<ul>
+		<li>Image or audio classification or object detection</li>
+		<li>Anomaly Detection in Data</li>
+		<li>Text translation, summarization, or similarity analysis</li>
+		<li>Natural Language Processing</li>
+		<li>Sentiment analysis</li>
+		<li>Speech recognition or text-to-speech</li>
+		<li>Question answering</li>
+	</ul>
+	<p>Developers can upload any supported model to Constellation. They can train them independently or download pre-trained models from machine learning hubs like <a href="https://huggingface.co/models?library=onnx&amp;sort=downloads&amp;ref=blog.cloudflare.com" target="_blank">HuggingFace</a> or <a href="https://github.com/onnx/models?ref=blog.cloudflare.com" target="_blank">ONNX Zoo</a>.</p>
+	<p>However, not everyone will want to train models or browse the Internet for models they didn't test yet. For that reason, Cloudflare will also maintain a catalog of verified and ready-to-use models.</p>
+	<p>We built Constellation with a great developer experience and simple-to-use APIs in mind. Here's an example to get you started.</p>
+	<h2 id="image-classification-application">Image classification application</h2>
+	<p>In this example, we will build an image classification app powered by the Constellation inference API and the <a href="https://github.com/onnx/models/blob/main/vision/classification/squeezenet/README.md?ref=blog.cloudflare.com" target="_blank">SqueezeNet</a> model, a convolutional neural network (CNN) that was pre-trained on more than one million images from the open-source <a href="https://www.image-net.org/?ref=blog.cloudflare.com" target="_blank">ImageNet</a> database and can classify images into no more than 1,000 categories.</p>
+	<p>SqueezeNet compares to <a href="https://en.wikipedia.org/wiki/AlexNet?ref=blog.cloudflare.com" target="_blank">AlexNet</a>, one of the original CNNs and benchmarks for image classification, by being much faster (~3x) and much smaller (~500x) while still achieving similar levels of accuracy. Its small footprint makes it ideal for running on portable devices with limited resources or custom hardware.</p>
+	<p>First, let's create a new Constellation project using the ONNX runtime. <a href="https://developers.cloudflare.com/workers/wrangler/?ref=blog.cloudflare.com" target="_blank">Wrangler</a> now has functionality for Constellation built-in with the <code>constellation</code> keyword.</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npx wrangler constellation project create "image-classifier" ONNX
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Now let’s create the <code>wrangler.toml</code> configuration file with the project binding:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-yaml"># Top-level configuration
+name = "image-classifier-worker"
+main = "src/index.ts"
+compatibility_date = "2022-07-12"
+
+constellation = [
+    {
+      binding = 'CLASSIFIER',
+      project_id = '2193053a-af0a-40a6-b757-00fa73908ef6'
+    },
+]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Installing the Constellation client API library:</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npm install @cloudflare/constellation --save-dev
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Upload the pre-trained SqueezeNet 1.1 ONNX model to the project.</p><!--kg-card-begin: markdown-->
+	<pre><code>$ wget https://github.com/microsoft/onnxjs-demo/raw/master/docs/squeezenet1_1.onnx
+$ npx wrangler constellation model upload "image-classifier" "squeezenet11" squeezenet1_1.onnx
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>As we said above, SqueezeNet classifies images into no more than 1,000 object classes. These classes are actually in the form of a list of synonym rings or synsets. A <a href="http://wordnet-rdf.princeton.edu/pwn30/01440764-n?ref=blog.cloudflare.com" target="_blank">synset</a> has an id and a label; it derives from Princeton's <a href="https://wordnet.princeton.edu/?ref=blog.cloudflare.com" target="_blank">WordNet</a> database <a href="https://wordnet.princeton.edu/documentation/?ref=blog.cloudflare.com" target="_blank">terminology</a>, the same used to label the <a href="https://www.image-net.org/about.php?ref=blog.cloudflare.com" target="_blank">ImageNet</a> image database.</p>
+	<p>To translate SqueezeNet's results into human-readable image classes, we need a file that maps the synset ids (what we get from the model) to their corresponding labels.</p><!--kg-card-begin: markdown-->
+	<pre><code>$ mkdir src; cd src
+$ wget https://raw.githubusercontent.com/microsoft/onnxjs-demo/master/src/data/imagenet.ts
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>And finally, let’s code and deploy our image classification script:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { imagenetClasses } from './imagenet';
+import { Tensor, run } from '@cloudflare/constellation';
+
+export interface Env {
+    CLASSIFIER: any,
+}
+
+export default {
+    async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+        const formData = await request.formData();
+        const file = formData.get("file");
+        const data = await file.arrayBuffer();
+        const result = await processImage(env, data);
+        return new Response(JSON.stringify(result));
+    },
+};
+
+async function processImage(env: Env, data: ArrayBuffer) {
+    const input = await decodeImage(data)
+
+    const tensorInput = new Tensor("float32", [1, 3, 224, 224], input)
+
+    const output = await run(env.CLASSIFIER, "MODEL-UUID", tensorInput);
+
+    const probs = output.squeezenet0_flatten0_reshape0.value
+    const softmaxResult = softmax(probs)
+    const results = imagenetClasses(softmaxResult, 5);
+    const topResult = results[0];
+    return topResult
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>This script reads an image from the request, decodes it into a multidimensional float32 tensor (right now we only decode PNGs, but we can add other formats), feeds it to the SqueezeNet model running in Constellation, gets the results, matches them with the ImageNet classes list, and returns the human-readable tags for the image.</p>
+	<p>Pretty simple, no? Let’s test it:</p><!--kg-card-begin: markdown-->
+	<pre><code>$ curl https://ai.cloudflare.com/demos/image-classifier -F file=@images/mountain.png | jq .name
+
+alp
+
+$ curl https://ai.cloudflare.com/demos/image-classifier -F file=@images/car.png | jq .name
+
+convertible
+
+$ curl https://ai.cloudflare.com/demos/image-classifier -F file=@images/dog.png | jq .name
+
+Ibizan hound
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/Screenshot-2023-05-15-at-12.55.21.png" class="kg-image" alt="" loading="lazy" width="1888" height="682"></figure>
+	<p>You can see the probabilities in action here. The model is quite sure about the Alp and the Convertible, but the Ibizan hound has a lower probability. Indeed, the dog in the picture is from another breed.</p>
+	<p>This small app demonstrates how easy and fast you can start using machine learning models and Constellation when building applications on top of Workers. Check the full source code <a href="https://developers.cloudflare.com/constellation/get-started/first-constellation-worker/?ref=blog.cloudflare.com" target="_blank">here</a> and deploy it yourself.</p>
+	<h2 id="transformers">Transformers</h2>
+	<p><a href="https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)?ref=blog.cloudflare.com" target="_blank">Transformers</a> were introduced by Google; they are deep-learning models designed to process sequential input data and are commonly used for natural language processing (NLP), like translations, summarizations, or sentiment analysis, and computer vision (CV) tasks, like image classification.</p>
+	<p><a href="https://github.com/xenova/transformers.js?ref=blog.cloudflare.com" target="_blank">Transformers.js</a> is a popular demo that loads transformer models from HuggingFace and runs them inside your browser using the ONNX Runtime compiled to <a href="https://developers.cloudflare.com/workers/platform/web-assembly/?ref=blog.cloudflare.com" target="_blank">WebAssembly</a>. We ported this demo to use Constellation APIs instead.</p>
+	<p>Here's the link to our version: <a href="https://transformers-js.pages.dev/?ref=blog.cloudflare.com" target="_blank">https://transformers-js.pages.dev/</a></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image3-5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1195"></figure>
+	<h2 id="interoperability-with-workers">Interoperability with Workers</h2>
+	<p>The other interesting element of Constellation is that because it runs natively in Workers, you can orchestrate it with other products and APIs in our stack. You can use KV, R2, D1, Queues, anything, even Email.</p>
+	<p>Here's an example of a Worker that <a href="https://developers.cloudflare.com/email-routing/email-workers/?ref=blog.cloudflare.com" target="_blank">receives</a> Emails for your domain on Cloudflare using <a href="https://developers.cloudflare.com/email-routing/?ref=blog.cloudflare.com" target="_blank">Email Routing</a>, runs Constellation using the <a href="https://huggingface.co/Xenova/t5-small/tree/main/onnx?ref=blog.cloudflare.com" target="_blank">t5-small</a> sentiment analysis model, adds a header with the resulting score, and forwards it to the destination address.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { Tensor, run } from '@cloudflare/constellation';
+import * as PostalMime from 'postal-mime';
+
+export interface Env {
+    SENTIMENT: any,
+}
+
+export default {
+  async email(message, env, ctx) {
+    const rawEmail = await streamToArrayBuffer(event.raw, event.rawSize);
+    const parser = new PostalMime.default();
+    const parsedEmail = await parser.parse(rawEmail);
+
+    const input = tokenize(parsedEmail.text)
+    const output = await run( env.SENTIMENT, "MODEL-UUID", input);
+
+
+    var headers = new Headers();
+    headers.set("X-Sentiment", idToLabel[output.label]);
+    await message.forward("gooddestination@example.com", headers);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Now you can use Gmail or any email client to apply a rule to your messages based on the 'X-Sentiment' header. For example, you might want to move all the angry emails outside your Inbox to a different folder on arrival.</p>
+	<h2 id="start-using-constellation">Start using Constellation</h2>
+	<p>Constellation starts today in private beta. To join the waitlist, please head to the dashboard, click the Workers tab under your account, and click the "Request access" button under the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fconstellation&amp;ref=blog.cloudflare.com" target="_blank">Constellation entry</a>. The team will be onboarding accounts in batches; you'll get an email when your account is enabled.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image1-25.png" class="kg-image" alt="" loading="lazy" width="1999" height="1426"></figure>
+	<p>In the meantime, you can read our <a href="https://developers.cloudflare.com/constellation/?ref=blog.cloudflare.com" target="_blank">Constellation Developer Documentation</a> and learn more about how it works and the APIs. Constellation can be used from Wrangler, our command-line tool for configuring, building, and deploying applications with Cloudflare developer products, or managed directly in the Dashboard UI.</p>
+	<p>We are eager to learn how you want to use ML/AI with your applications. Constellation will keep improving with higher limits, more supported runtimes, and larger models, but we want to hear from you. Your feedback will certainly influence our roadmap decisions.</p>
+	<p>One last thing: today, we've been talking about how you can write Workers that use Constellation, but here's an inception fact: Constellation itself was built using the power of WebAssembly, Workers, R2, and our APIs. We'll make sure to write a follow-up blog soon about how we built it; stay tuned.</p>
+	<p>As usual, you can talk to us on our <a href="https://discord.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Developers Discord</a> (join the #constellation channel) or the <a href="https://community.cloudflare.com/c/developers/constellation/97?ref=blog.cloudflare.com" target="_blank">Community forum</a>; the team will be listening.</p>
+</div>
