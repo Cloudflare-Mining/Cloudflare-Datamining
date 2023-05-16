@@ -26,6 +26,7 @@ import CloudflareZeroTrust from './CloudflareZeroTrust';
 import Copy from './Copy';
 import CreditCard from './CreditCard';
 import Discord from './Discord';
+import Discover from './Discover';
 import Documentation from './Documentation';
 import Download from './Download';
 import Drive from './Drive';
@@ -67,6 +68,7 @@ import Mail from './Mail';
 import Minus from './Minus';
 import More from './More';
 import NetworkAnalyticsLogo from './NetworkAnalyticsLogo';
+import NetworkSecurity from './NetworkSecurity';
 import Network from './Network';
 import Notifications from './Notifications';
 import OkSign from './OkSign';
@@ -98,6 +100,7 @@ import Spectrum from './Spectrum';
 import Speech from './Speech';
 import Stream from './Stream';
 import Subtract from './Subtract';
+import TailWorker from './TailWorker';
 import Teams from './Teams';
 import Terraform from './Terraform';
 import Time from './Time';
@@ -125,8 +128,6 @@ import Wrench from './Wrench';
 import Youtube from './Youtube';
 import Zaraz from './Zaraz';
 import ZerotrustCasbLogo from './ZerotrustCasbLogo';
-import Discover from './Discover';
-import NetworkSecurity from './NetworkSecurity';
 export default {
   dlp: Dlp,
   'account-analytics-logo': AccountAnalyticsLogo,
@@ -198,8 +199,8 @@ export default {
   minus: Minus,
   more: More,
   'network-analytics-logo': NetworkAnalyticsLogo,
-  network: Network,
   'network-security': NetworkSecurity,
+  network: Network,
   notifications: Notifications,
   'ok-sign': OkSign,
   ok: Ok,
@@ -230,6 +231,7 @@ export default {
   speech: Speech,
   stream: Stream,
   subtract: Subtract,
+  'tail-worker': TailWorker,
   teams: Teams,
   terraform: Terraform,
   time: Time,

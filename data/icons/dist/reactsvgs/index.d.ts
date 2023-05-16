@@ -70,8 +70,8 @@ declare const _default: {
     minus: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     more: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'network-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    network: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'network-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    network: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     notifications: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'ok-sign': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     ok: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -102,6 +102,7 @@ declare const _default: {
     speech: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     stream: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     subtract: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'tail-worker': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     teams: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     terraform: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
