@@ -16,12 +16,14 @@
 				{
 					"Key": "product",
 					"ComparisonOperator": "==",
-					"Optional": false
+					"Optional": false,
+					"AvailableValues": null
 				},
 				{
 					"Key": "limit",
 					"ComparisonOperator": ">=",
-					"Optional": false
+					"Optional": false,
+					"AvailableValues": null
 				}
 			]
 		}
@@ -35,7 +37,8 @@
 				{
 					"Key": "query_tag",
 					"ComparisonOperator": "==",
-					"Optional": true
+					"Optional": true,
+					"AvailableValues": null
 				}
 			]
 		}
@@ -49,7 +52,8 @@
 				{
 					"Key": "query_tag",
 					"ComparisonOperator": "==",
-					"Optional": true
+					"Optional": true,
+					"AvailableValues": null
 				}
 			]
 		}
@@ -71,12 +75,14 @@
 				{
 					"Key": "health_check_id",
 					"ComparisonOperator": "==",
-					"Optional": true
+					"Optional": true,
+					"AvailableValues": null
 				},
 				{
 					"Key": "status",
 					"ComparisonOperator": "==",
-					"Optional": false
+					"Optional": false,
+					"AvailableValues": null
 				}
 			]
 		}
@@ -90,17 +96,20 @@
 				{
 					"Key": "pool_id",
 					"ComparisonOperator": "==",
-					"Optional": true
+					"Optional": true,
+					"AvailableValues": null
 				},
 				{
 					"Key": "event_source",
 					"ComparisonOperator": "==",
-					"Optional": true
+					"Optional": true,
+					"AvailableValues": null
 				},
 				{
 					"Key": "new_health",
 					"ComparisonOperator": "==",
-					"Optional": true
+					"Optional": true,
+					"AvailableValues": null
 				}
 			]
 		},
@@ -112,12 +121,14 @@
 				{
 					"Key": "pool_id",
 					"ComparisonOperator": "==",
-					"Optional": true
+					"Optional": true,
+					"AvailableValues": null
 				},
 				{
 					"Key": "enabled",
 					"ComparisonOperator": "==",
-					"Optional": false
+					"Optional": false,
+					"AvailableValues": null
 				}
 			]
 		}
@@ -159,12 +170,14 @@
 				{
 					"Key": "airport_code",
 					"ComparisonOperator": "==",
-					"Optional": true
+					"Optional": true,
+					"AvailableValues": null
 				},
 				{
 					"Key": "event_type",
 					"ComparisonOperator": "==",
-					"Optional": true
+					"Optional": true,
+					"AvailableValues": null
 				}
 			]
 		}
@@ -186,17 +199,20 @@
 				{
 					"Key": "project_id",
 					"ComparisonOperator": "==",
-					"Optional": false
+					"Optional": false,
+					"AvailableValues": null
 				},
 				{
 					"Key": "environment",
 					"ComparisonOperator": "==",
-					"Optional": false
+					"Optional": false,
+					"AvailableValues": null
 				},
 				{
 					"Key": "event",
 					"ComparisonOperator": "==",
-					"Optional": false
+					"Optional": false,
+					"AvailableValues": null
 				}
 			]
 		}
@@ -326,12 +342,14 @@
 				{
 					"Key": "tunnel_id",
 					"ComparisonOperator": "==",
-					"Optional": true
+					"Optional": true,
+					"AvailableValues": null
 				},
 				{
 					"Key": "new_status",
 					"ComparisonOperator": "==",
-					"Optional": true
+					"Optional": true,
+					"AvailableValues": null
 				}
 			]
 		}
