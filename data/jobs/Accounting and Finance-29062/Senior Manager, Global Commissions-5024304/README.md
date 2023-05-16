@@ -29,6 +29,7 @@
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 10 years of either FP&amp;A, Consulting, Investment Banking, Sales Operations, Sales Compensation or Commissions experience. Experience in a growth technology company is a plus.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven track record of building strong relationships and influencing senior leadership. You are comfortable interfacing with senior leaders, and understand the rigor and caliber of deliverables required to work with them.</span></li>
+	<li>6+ years of management experience, building and retaining high-output teams</li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">You are a data-driven, truth seeker: analytics and data are your currency for facilitating informed decision making.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Firm grasp of the commission administrative process flow, including plan document distribution; transaction crediting; incentive calculations; payment file preparation; and issue resolution.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly proficient in Excel / GoogleSheets, system-based analytical tools</span></li>
