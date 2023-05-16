@@ -2,7 +2,7 @@
 	"name": "@cloudflare/next-on-pages",
 	"dist-tags": {
 		"latest": "0.10.1",
-		"beta": "0.0.0-e053756"
+		"beta": "0.0.0-39cfa74"
 	},
 	"versions": {
 		"0.1.0": {
@@ -4112,6 +4112,61 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQCo0z62WFSo/CyuMkG9e4MuW8rXtHZcIIu9WzLkh1KkiQIgeo5CVrklMqr07zE1azq3ZejSe/t5vlBRcnu5N1O5C4Q="
+					}
+				]
+			}
+		},
+		"0.0.0-39cfa74": {
+			"name": "@cloudflare/next-on-pages",
+			"version": "0.0.0-39cfa74",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"ast-types": "^0.14.2",
+				"chalk": "^5.2.0",
+				"chokidar": "^3.5.3",
+				"cookie": "^0.5.0",
+				"esbuild": "^0.15.3",
+				"js-yaml": "^4.1.0",
+				"pcre-to-regexp": "^1.1.0",
+				"zod": "^3.21.4",
+				"zodcli": "^0.0.4"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.26.0",
+				"@cloudflare/workers-types": "^4.20230404.0",
+				"@tsconfig/strictest": "^2.0.0",
+				"@types/cookie": "^0.5.1",
+				"@types/js-yaml": "^4.0.5",
+				"@types/mock-fs": "^4.13.1",
+				"@types/node": "^20.1.4",
+				"@typescript-eslint/eslint-plugin": "^5.58.0",
+				"@typescript-eslint/parser": "^5.58.0",
+				"dedent-tabs": "^0.10.3",
+				"eslint": "^8.35.0",
+				"mock-fs": "^5.2.0",
+				"p-limit": "^4.0.0",
+				"prettier": "^2.8.4",
+				"typescript": "^5.0.4",
+				"vitest": "^0.31.0",
+				"vitest-environment-miniflare": "^2.13.0"
+			},
+			"peerDependencies": {
+				"next-on-pages-vercel-cli": "29.3.0-next-on-pages-fix-1",
+				"wrangler": "^2.20.0"
+			},
+			"bin": {
+				"next-on-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-2w447sj6i2ppQlGJytC+Mz52cqz+ce1l5W1jl5bWftxnBhYGZtSnJ1Zzl6a7DP2ZUSbR1eEomiztdapjepq60A==",
+				"shasum": "6ba62cbc30030407dfc9ae4a505c61b3aaebc5f9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/next-on-pages/-/next-on-pages-0.0.0-39cfa74.tgz",
+				"fileCount": 14,
+				"unpackedSize": 473745,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFEN1KYDetae3XIOtVwWyu7aPCtjU4pAKM6DF2aaW3yXAiBpF/HBx34gTpoRuwAH1So6kZIpaWUY4cQq8t5l/azexw=="
 					}
 				]
 			}
