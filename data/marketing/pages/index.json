@@ -54,8 +54,8 @@
 				"psaBanner": {
 					"contentTypeId": "psaBanner",
 					"contentfulId": "5z1TKqaludjNTrs0ryzmIP",
-					"text": "__Developer Week 2023 | May 15-19__ - View all of the product announcements, news, blogs and more",
-					"learnMoreText": "Learn more",
+					"text": "__Developer Week 2023 | May 15-19__ - View all of the product announcements, news, blogs, and",
+					"learnMoreText": "learn more",
 					"learnMoreUrl": "developer-week",
 					"backgroundColor": null,
 					"hideCloseButton": null
@@ -164,7 +164,59 @@
 							"carouselSlidesToShow": null,
 							"carouselSlidesToScroll": null,
 							"locale": "en-US",
-							"features": []
+							"features": [
+								{
+									"contentTypeId": "feature",
+									"contentfulId": "5msdKMvsSZwDibkDgHc6Fm",
+									"title": "Outbound TCP Connections + Database Drivers",
+									"titleSize": "large",
+									"description": "Cloudflare announces a new API to connect directly to any TCP-based service from Cloudflare Workers",
+									"learnMoreUrl": "https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases/",
+									"learnMoreText": "Read the blog",
+									"displayBorder": true,
+									"openLinkInNewTab": true,
+									"icon": null,
+									"iconAssetFile": null,
+									"imageAssetFile": null,
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
+								},
+								{
+									"contentTypeId": "feature",
+									"contentfulId": "6XBexxA7o4Vcr75NGrwHuD",
+									"title": "Database Integrations",
+									"titleSize": "large",
+									"description": "New feature enables socket connections in the Workers runtime",
+									"learnMoreUrl": "https://blog.cloudflare.com/announcing-database-integrations/",
+									"learnMoreText": "Read the blog",
+									"displayBorder": true,
+									"openLinkInNewTab": true,
+									"icon": null,
+									"iconAssetFile": null,
+									"imageAssetFile": null,
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
+								},
+								{
+									"contentTypeId": "feature",
+									"contentfulId": "47s0IO7v1028RkVrCTtRZf",
+									"title": "Cloudflare adds more support to help migrate data from S3",
+									"titleSize": "large",
+									"description": "We've enhanced our R2 Super Slurper to provide developers even more support in helping to save costs of moving data off your existing storage provider.",
+									"learnMoreUrl": "https://blog.cloudflare.com/r2-super-slurper-ga/",
+									"learnMoreText": "Read the blog",
+									"displayBorder": true,
+									"openLinkInNewTab": true,
+									"icon": null,
+									"iconAssetFile": null,
+									"imageAssetFile": null,
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
+								}
+							]
 						},
 						{
 							"contentfulId": "3atTYdPqPFTFecneJHLmeQ",
