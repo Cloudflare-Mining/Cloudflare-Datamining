@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.4.0
+
+### Minor Changes
+
+- 49f125feb8: Add icon for Tail Workers
+
 ## 11.3.0
 
 ### Minor Changes
