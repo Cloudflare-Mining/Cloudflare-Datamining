@@ -2271,12 +2271,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = gn({}, {
-					branch: "hotfix/WP-316-edit-worker-sends-placement-config",
+					branch: "hotfix/WP-integrations",
 					isReleaseCandidate: "true",
-					commit: "f9a0c6a4ef2712cf677f689643a12ba3fec25995",
+					commit: "1f184729f78e633360fcf4f0643cf0aff900cedd",
 					env: "production",
-					builtAt: 1684243604894,
-					dashVersion: "c61990e04f1edcf3027c212f368ad626d76c2c0a",
+					builtAt: 1684250465475,
+					dashVersion: "601841e6bb62794f4904af7c8e59e8b227c93caf",
 					versions: {
 						"@cloudflare/app-dash": "25.151.1",
 						node: "16.16.0",
@@ -15653,4 +15653,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=a49d8dd3ac77344d5997.js.map
+//# sourceMappingURL=ee8636e2dc88528ba1a8.js.map
