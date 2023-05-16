@@ -28,7 +28,7 @@
 	<p>Data Localisation is challenging for customers because of the volume and variety of data they handle. When it comes to their Cloudflare traffic, we’ve found that customers are primarily concerned about three areas:</p>
 	<ol>
 		<li>How do I ensure my encryption keys stay in the EU?</li>
-		<li>How can I ensure that services like caching and WAF only run in the EU?</li>
+		<li>How can I ensure that services like caching and <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/?ref=blog.cloudflare.com" target="_blank">WAF</a> only run in the EU?</li>
 		<li>How can ensure that metadata is never transferred outside the EU?</li>
 	</ol>
 	<p>To address the first concern, Cloudflare has long offered <a href="https://www.cloudflare.com/ssl/keyless-ssl/?ref=blog.cloudflare.com" target="_blank">Keyless SSL</a> and <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/">Geo Key Manager</a>, which ensure that private SSL/TLS key material never leaves the EU. Keyless SSL ensures that Cloudflare never has possession of the private key material at all; Geo Key Manager uses Keyless SSL under the hood to ensure the keys never leave the specified region.</p>
