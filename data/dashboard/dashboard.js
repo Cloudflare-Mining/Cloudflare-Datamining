@@ -2271,12 +2271,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = gn({}, {
-					branch: "release-May.15.2023-1684159580",
+					branch: "hotfix/WP-257-integrations",
 					isReleaseCandidate: "true",
-					commit: "04be4fa3edd0cbc9714be0fee10ceb871f034294",
+					commit: "49771e62ea6edd48855feab555dfd47b7e067027",
 					env: "production",
-					builtAt: 1684190497733,
-					dashVersion: "b36d9b14d4c838dd0e289af8b132b84f209206dd",
+					builtAt: 1684207384905,
+					dashVersion: "bc8e137dde7aa426ab4dbe33f689f7fb7c014967",
 					versions: {
 						"@cloudflare/app-dash": "25.151.1",
 						node: "16.16.0",
@@ -15653,4 +15653,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=67471b3ad5b93536984a.js.map
+//# sourceMappingURL=f7075f8f479e461190b1.js.map
