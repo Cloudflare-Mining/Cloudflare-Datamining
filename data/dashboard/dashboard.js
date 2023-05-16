@@ -2273,12 +2273,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = gn({}, {
-					branch: "cina/DEVX-621-fix-translation-key",
+					branch: "nduarte/CONSN-40-fix",
 					isReleaseCandidate: "true",
-					commit: "d7eeb572105e272fd61b1c5b30927a374258ec75",
+					commit: "2b00ad9c1491cea869b57d8041b320d767e3d245",
 					env: "production",
-					builtAt: 1684264553834,
-					dashVersion: "2a7d3c7df6895b1317db4b948bb6a333d2871818",
+					builtAt: 1684268118150,
+					dashVersion: "7fe4f3a595269d450a96fbfa8d55ee5c9e39b6b0",
 					versions: {
 						"@cloudflare/app-dash": "25.151.1",
 						node: "16.16.0",
@@ -15659,4 +15659,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=bd7407b8d939a40da653.js.map
+//# sourceMappingURL=a465c2f18373cae7e1b7.js.map
