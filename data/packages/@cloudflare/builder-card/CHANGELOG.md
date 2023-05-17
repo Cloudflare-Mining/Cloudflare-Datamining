@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.1.12
+
+### Patch Changes
+
+- @cloudflare/component-card@7.2.14
+
 ## 7.1.11
 
 ### Patch Changes

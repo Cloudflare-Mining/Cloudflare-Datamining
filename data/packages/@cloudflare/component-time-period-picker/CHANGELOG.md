@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.7
+
+### Patch Changes
+
+- @cloudflare/component-calendar@6.0.7
+
 ## 5.0.6
 
 ### Patch Changes
