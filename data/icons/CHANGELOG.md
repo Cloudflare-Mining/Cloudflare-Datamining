@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.5.0
+
+### Minor Changes
+
+- c92c15a7f0: Update tail icon to respect color and stroke
+
 ## 11.4.0
 
 ### Minor Changes

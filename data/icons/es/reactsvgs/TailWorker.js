@@ -12,10 +12,7 @@ var SvgTailWorker = props => /*#__PURE__*/React.createElement("svg", _extends({}
 }), /*#__PURE__*/React.createElement("path", {
   d: "M7.337 2h-1.23l4.439 6.1L6.21 14h1.238l4.333-5.898L7.337 2Z"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M9.717 2H8.471l4.51 6.027L8.47 14h1.25L14 8.33v-.603L9.717 2Z"
-}), /*#__PURE__*/React.createElement("path", {
-  stroke: "#000",
-  d: "M5.5 8.51v1.256m1.255-2.511v2.511M8.01 6v3.766"
+  d: "M9.717 2H8.471l4.51 6.027L8.47 14h1.25L14 8.33v-.603L9.717 2ZM7.4 6h1v3.5h-1zM6.2 7h1v2.5h-1zM5 8h1v1.5H5z"
 }));
 
 export default SvgTailWorker;
