@@ -669,7 +669,7 @@ const navigation = {
 		navigationType: "both",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: R.bB,
+		tabs: k.bB,
 		hasPermission: function(m) {
 			return !(0, s.yD)(m) && (0, I.m7)(m)
 		}
@@ -1129,43 +1129,43 @@ const navigation = {
 	}],
 	zeroTrust: [{
 		url: function() {
-			return (0, k.Uj)("home")
+			return (0, R.Uj)("home")
 		},
 		title: "navigation.account.zero_trust",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, k.Uj)("analytics/access")
+			return (0, R.Uj)("analytics/access")
 		},
 		title: "navigation.account.zero_trust.analytics",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, k.Uj)("gateway/locations")
+			return (0, R.Uj)("gateway/locations")
 		},
 		title: "navigation.account.zero_trust.gateway",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, k.Uj)("access/apps")
+			return (0, R.Uj)("access/apps")
 		},
 		title: "navigation.account.zero_trust.access",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, k.Uj)("team/devices")
+			return (0, R.Uj)("team/devices")
 		},
 		title: "navigation.account.zero_trust.my_team",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, k.Uj)("logs/admin")
+			return (0, R.Uj)("logs/admin")
 		},
 		title: "navigation.account.zero_trust.logs",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, k.Uj)("settings")
+			return (0, R.Uj)("settings")
 		},
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"

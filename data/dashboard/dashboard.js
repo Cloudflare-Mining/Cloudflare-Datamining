@@ -2273,12 +2273,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = gn({}, {
-					branch: "hotfix-UI-5809",
+					branch: "release-May.17.2023-1684332449",
 					isReleaseCandidate: "true",
-					commit: "414717cadcfa5e60d987e88aa66b33258f294d72",
+					commit: "aba651aa26898b629dcca61024fc41533e580ed0",
 					env: "production",
-					builtAt: 1684303060422,
-					dashVersion: "81ab981bc32766e569fac628cea197248df4f4df",
+					builtAt: 1684346747275,
+					dashVersion: "72d7b7287a3b6cc82162d02ebc219d185922fdf1",
 					versions: {
 						"@cloudflare/app-dash": "25.151.1",
 						node: "16.16.0",
@@ -5693,6 +5693,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					entityType: "coveoCategoryResults"
 				}, {
 					entityType: "phoneSupportTwoFactor"
+				}, {
+					entityType: "supportOpenTickets"
 				}, {
 					entityType: "ticket"
 				}, {
@@ -13207,7 +13209,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function lt() {
-				var u = ee(["/", "/developer-platform/workers/onboarding"]);
+				var u = ee(["/", "/workers-and-pages/create"]);
 				return lt = function() {
 					return u
 				}, u
@@ -15659,4 +15661,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=df4c5f5800d6aa29fe02.js.map
+//# sourceMappingURL=24ca1ce91b8ebdde81c2.js.map
