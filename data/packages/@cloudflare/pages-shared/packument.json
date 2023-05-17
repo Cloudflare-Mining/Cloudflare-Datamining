@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-shared",
 	"dist-tags": {
-		"latest": "0.4.2"
+		"latest": "0.5.0"
 	},
 	"versions": {
 		"0.0.1": {
@@ -740,6 +740,33 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkUs1vACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmotdxAAkWexb0MLfFSyC3mWVWxsGNB1wmMJFazBmwxRBBw/qCbddUkd\r\nwb7ShYjxjplcjqhdAJEEaJgA3asp2KGURoyqBK0KlXSj0xoMZPVWVpcIJsgG\r\nF0QNXqZ5BL2JCtWdWVkQzxxDRV1hbnAJhmwd5QEkOKaZ70imBvI8rOevavjW\r\n6RjuStJySz2k88+ZPLgY9nzbJAbpvmIst/SJFNTOSlKiOo7ptUOeYbqM7AIS\r\naexeqfmBoB2KFB4uuAQr5tMGs3xexKyNOSAZEDlrSppNatGe9lh8xaTBP8Xl\r\nncQC2HCpThbYWXHKMDMD92r/l9LmQA+Lc0blxyeOPVBXehzZqOJCsIHlejLr\r\n/sZajT90ru11c2EsGlUgiYhT1y6HXzV1yuHPYNXDva4Y6WgwNkRHUS+/x/kL\r\n9Az6jDMDoOigCC3tLXZpBWB5TmM0oOwByBTkb1HbPPA3VI5zrxYj/t8C+WRj\r\n71BZVui4LWptVBN3+APGz9NPkZe3QG5nQJGqGe4P1VL0xqyWEQe7qoCmYePT\r\nYBffZAJRcmLUSPjBRi2gQ5XJnoVZjA+NJjnzRcV+E8J8RPIZC6WEjiY8FPAp\r\ntvbfB9Ha2MXXffGGFfO2P2j+vDwgp/9PxKSPETta2P+EFN0se8/F1J1h0WJE\r\n47gvUH14VAnUB0blOaq/fYrQ9zCQye/fa6c=\r\n=18a1\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.5.0": {
+			"name": "@cloudflare/pages-shared",
+			"version": "0.5.0",
+			"dependencies": {
+				"miniflare": "^3.0.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20230511.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"concurrently": "^7.3.0",
+				"glob": "^8.0.3",
+				"service-worker-mock": "^2.0.5"
+			},
+			"dist": {
+				"integrity": "sha512-Pt98EY6FqpmVY2fiDDpAoojdf1z/1aFH0SftlIQhDFohL0VAQeyOOSbt5r/jAwPOyHpZzHsHbJHfy/sHtxqsoA==",
+				"shasum": "a4916caf143542e2dd27dc4a2b9e007e2e1feb6e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.5.0.tgz",
+				"fileCount": 17,
+				"unpackedSize": 46772,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD71gBL+Hn9bpUmx1LKMrDlx5iap57bfrkP75pujgInuwIhAKiFM9F5GxksdVcFZiTHlYsbzSO0KNEe6qz2Rz8F20aV"
+					}
+				]
 			}
 		}
 	}
