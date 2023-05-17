@@ -11,13 +11,26 @@ $ yarn add @cloudflare/chart-map
 
 ```
 
+
+## Configuration
+All components in this package rely on [MapBox](https://docs.mapbox.com/) and require [access token](https://docs.mapbox.com/help/getting-started/access-tokens/) in order to talk to MapBox API. 
+
+Use `<MapProvider />` at the top of your component hierarchy to provide the access token along with other global configuration to all chart components. 
+
+`<MapProvider />` accepts the following props:
+
+- `accessToken`: [MapBox access token](https://docs.mapbox.com/help/getting-started/access-tokens/). Required by MapBox API to identify the client.
+- `referrerPolicy`: MapBox [requires referer header](https://docs.mapbox.com/accounts/guides/tokens/#requirements-and-limitations) along with the access token in order to identify clients. If a client website uses a referer policy that prevents the browsers from sending the `referer` header (e.g., `noreferrer` or `same-origin`), all requests to MapBox API fail with `403 Unauthorized` and prevent the chart components from rendering. This prop can be used to override the referrer policy for the requests to MapBox API. In the most cases you will want to set it to `strict-origin-when-cross-origin`. For more options, please refer to [fetch API specification](https://javascript.info/fetch-api). For more context about this problem, see: https://github.com/mapbox/mapbox-gl-js/pull/12590.
+
 ## Usage
 
 ```jsx
 import React from 'react';
 import { Box } from '@cloudflare/component-box';
-import { MapChoropleth, MapBubble, MapLinks, MapHeatmap } from '../../src';
+import { MapProvider, MapChoropleth, MapBubble, MapLinks, MapHeatmap } from '../../src';
 import ccs from './iso2-country-codes.json'; // ["AD","AE","AF","AG",...]
+
+const MAPBOX_ACCESS_TOKEN = '' // read from env 
 
 // Choropleth data
 const countryData = ccs.map(cc => ({
@@ -63,7 +76,7 @@ const heatmapData = [...Array(N_POINTS).keys()].map(() => ({
 }));
 
 const ViewComponent = () => (
-  <React.Fragment>
+  <MapProvider accessToken={MAPBOX_ACCESS_TOKEN}>
     <Box display="flex">
       <Box flex="1" margin="5px">
         <MapChoropleth
@@ -117,7 +130,7 @@ const ViewComponent = () => (
         />
       </Box>
     </Box>
-  </React.Fragment>
+  </MapProvider>
 );
 
 export default ViewComponent;

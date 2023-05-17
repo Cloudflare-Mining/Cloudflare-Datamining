@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.0.0
+
+### Major Changes
+
+- 12ded4504b: Remove hardcoded mapbox access token. Start requiring MapProvider to set access token. Add support for referrerPolicy overrides.
+
 ## 7.1.0
 
 ### Minor Changes
