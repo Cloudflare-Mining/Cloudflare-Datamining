@@ -42692,6 +42692,82 @@
 									"openInNewTab": false,
 									"locale": "en-US"
 								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "AddOn - Cache Reserve",
+								"contentfulId": "5TxM04ooPRqWm0z11aMTLZ",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "34b25a26-8efd-5aa4-bd47-facebc0adce4",
+									"altText": "Cache Reserve",
+									"title": "Cache Reserve",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Snx91INj9zhp6XXrKWttd/1b15853bf8b8620034b04a2bec26b5ed/server1.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Cache Reserve",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Improve cache hit ratios by automatically storing all cacheable files in Cloudflare's persistent object storage buckets and eliminate egress costs while saving your origin servers from unnecessary requests, ensuring faster performance and a better user experience.\n\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Performance",
+								"pricingText": "Cost based on total volume of data stored, along with two classes of operations on that data.",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6KlwskWDR41qqi9gQ9rmuj",
+									"elementName": "Cache Reserve",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://www.cloudflare.com/products/cache-reserve/",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "blue",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "7v8Y7HJS8csnqaX8XHPxst",
+									"elementName": "Cache Reserve - Dash Link",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
 							}
 						]
 					},
