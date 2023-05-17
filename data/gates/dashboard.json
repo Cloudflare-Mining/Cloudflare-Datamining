@@ -81,6 +81,9 @@
 			"variant-click-through"
 		]
 	},
+	"billing-google-pay-gate": {
+		"enabled": false
+	},
 	"billing-legacy-plan-pricing": {
 		"enabled": true
 	},
@@ -136,7 +139,7 @@
 		"enabled": true
 	},
 	"converged-usage-model": {
-		"enabled": false
+		"enabled": true
 	},
 	"custom-hostnames-acme-wildcard": {
 		"enabled": true
