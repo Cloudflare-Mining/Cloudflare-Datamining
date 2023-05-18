@@ -13,12 +13,12 @@ let index = await contents.get(“index.html”);
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Pretty straightforward. But as you can see from this example, you may store different kinds of content in KV, even if the type is identical. All of the values are strings, but one is HTML, one is CSS, and one is JavaScript. If we were going to serve this content to users, we would have to construct a response. And when we do, we have to let the client know what the content type of that request is: text/html for HTML, text/css for CSS, and text/javascript for JavaScript. If we serve the incorrect content type to our clients, they won’t display the pages correctly.</p>
-	<p>One possible solution to this problem is using the <a href="https://www.npmjs.com/package/mime?ref=blog.cloudflare.com" target="_blank">mime package from npm</a>. This lets us write code that looks like this:</p><!--kg-card-begin: markdown-->
+	<p>One possible solution to this problem is using the <a href="https://www.npmjs.com/package/mime" target="_blank">mime package from npm</a>. This lets us write code that looks like this:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// pathKey is a variable with a value like “index.html”
 const mimeType = mime.getType(pathKey) || ‘text/plain’
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Nice and easy. But there are some drawbacks. First of all, because we have to detect the content type at runtime which means we’re figuring this out on every request. It would be nicer to figure it out only once instead. Second, if we look at how the package implements getType, it does this by <a href="https://github.com/broofa/mime/blob/d97bfaeabf8b5ff0124692244f921836ea405c41/types/standard.js?ref=blog.cloudflare.com" target="_blank">including an array of possible extensions and their types</a>. This means that this array is included in our worker, taking up 9kb of space. That’s also less than ideal.</p>
+	<p>Nice and easy. But there are some drawbacks. First of all, because we have to detect the content type at runtime which means we’re figuring this out on every request. It would be nicer to figure it out only once instead. Second, if we look at how the package implements getType, it does this by <a href="https://github.com/broofa/mime/blob/d97bfaeabf8b5ff0124692244f921836ea405c41/types/standard.js" target="_blank">including an array of possible extensions and their types</a>. This means that this array is included in our worker, taking up 9kb of space. That’s also less than ideal.</p>
 	<p>But now, we have a better way. Workers KV will now allow you to add some extra JSON to each key/value pair, to use however you’d like. So we could start inserting the contents of those files like this, instead:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">await contents.put(“index.html”, someHtmlContent, {“Content-Type”: “text/html”});
 await contents.put(“index.css”, someCssContent, {“Content-Type”: “text/css”});
@@ -31,7 +31,7 @@ await contents.put(“index.js”, someJsContent, {“Content-Type”: “text/j
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Here, <code>value</code> would have the contents, like before. But <code>metadata</code> contains the JSON of the metadata that was stored: <code>metadata[“Content-Type”]</code>would return <code>“text/javascript”</code>. You’ll also see this metadata come back when you make a list request as well.</p>
-	<p>Given that you can store arbitrary JSON, it’s useful for more than just content types: we’ve had folks <a href="https://community.cloudflare.com/t/etag-and-content-type-support-in-kv-storage/150331?u=sklabnik&amp;ref=blog.cloudflare.com" target="_blank">post to the forums asking about etags</a>, for example. We’re excited to see what you do with this new capability!</p>
+	<p>Given that you can store arbitrary JSON, it’s useful for more than just content types: we’ve had folks <a href="https://community.cloudflare.com/t/etag-and-content-type-support-in-kv-storage/150331?u=sklabnik" target="_blank">post to the forums asking about etags</a>, for example. We’re excited to see what you do with this new capability!</p>
 	<h3 id="significantly-faster-writes">Significantly faster writes</h3>
 	<p>Our documentation states:</p>
 	<p><em>Very infrequently read values are stored centrally, while more popular values are maintained in all of our data centers around the world.</em></p>
