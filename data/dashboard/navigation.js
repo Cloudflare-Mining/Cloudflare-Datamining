@@ -208,7 +208,7 @@ const navigation = {
 		hasPermission: function(m) {
 			return !!(0, o.AB)(m)
 		},
-		tabs: P.DW
+		tabs: N.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -246,7 +246,7 @@ const navigation = {
 		hasPermission: function(m) {
 			return !!(0, o.zJ)(m)
 		},
-		tabs: P.$$
+		tabs: N.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
@@ -255,7 +255,7 @@ const navigation = {
 			var w = !!(0, o.Wq)(m) && !!(0, o.fO)(m);
 			return !!(0, o.Tk)(m) || w
 		},
-		tabs: P.Dn
+		tabs: N.Dn
 	}, {
 		title: "navigation.account.ip_addresses",
 		url: "/ip-addresses/ip-prefixes",
@@ -285,7 +285,7 @@ const navigation = {
 	}, {
 		title: "navigation.account.zero_trust",
 		url: function() {
-			var m = (0, N.e1)(),
+			var m = (0, P.e1)(),
 				w = "https://one.dash.cloudflare.com";
 			return m ? "".concat(w, "/").concat(m, "/") : w
 		},
@@ -735,10 +735,10 @@ const navigation = {
 		hasPermission: function(m) {
 			var w = (0, l.nA)(m);
 			if ((0, s.yD)(m) || !(0, o.wB)(m, "zone_settings", "spectrum.app") || !w) return !1;
-			var _ = !!((0, B.l8)(m) || (0, l.DQ)(m)),
-				U = !!(0, l.ZB)(m, "spectrum", "enabled"),
+			var _ = !!((0, U.l8)(m) || (0, l.DQ)(m)),
+				B = !!(0, l.ZB)(m, "spectrum", "enabled"),
 				K = !!(0, l.Ns)(w);
-			return U || _ || !K
+			return B || _ || !K
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
