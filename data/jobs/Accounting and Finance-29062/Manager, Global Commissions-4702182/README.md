@@ -6,36 +6,28 @@
 	</div>
 </div>
 <p><strong>What You'll Do</strong></p>
-<p><span style="font-weight: 400;">We are looking for a Sales Compensation Lead to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Sales Compensation Program &amp; Strategy.&nbsp;</span></p>
+<p><span style="font-weight: 400;">We are looking for a Sales Compensation Analyst to join our team within Global Sales Operations. As a key team member of a high-visibility organization, the Sales Compensation Analyst will provide data analysis, reporting and operational assistance in support of Cloudflare’s Global Sales Compensation Program. Working closely with the existing Sales Compensation team and partnering with Sales Finance, the Sales Compensation Analyst will play an active role in compensation plan administration, including data management within the Anaplan ICM platform, compensation plan distribution, commissions calculations and auditing, performance reporting, and data validation.&nbsp;</span></p>
+<p><span style="font-weight: 400;">This position also offers tremendous growth opportunity, with the successful candidate eventually playing a much larger role in Incentive Compensation Management (ICM) platform administration, process development/refinement,&nbsp; and the ongoing operational execution of Cloudflare’s Sales Compensation Program.&nbsp;</span></p>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Own accuracy and timely distribution of commission payments and statement releases for multiple areas of the Cloudflare Sales Team&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead data management within Cloudflare’s Incentive Compensation Management (ICM) platform</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Drive alignment and project manage timely assignment of compensation plan, coverage and quota</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Own sales performance analytics for multiple areas of the Cloudflare Sales Team, surfacing for regular review with our leadership team</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and maintain documentation or desktop procedures for all commissions processes</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Identify opportunities and propose additional controls, process standardization, or automation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead Sales Team Issue resolution, partnering with Sales Operations, GTM Finance &amp; Sales Leadership</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Participate and take a leadership role in key projects:</span></li>
-	<ul>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Enhancements to the Anaplan ICM Model</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Implementation of automated compensation plan distribution</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Implementation of Anaplan SPM</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Path to higher frequency commission payments &amp; statements</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">System-based analytics for GTM Finance, Sales Operations &amp; Sales Leadership&nbsp;</span></li>
-	</ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Data management (data entry, administration, ownership) within Cloudflare’s Incentive Compensation management platform</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee onboarding/off-boarding and change management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Compensation Plan document distribution and tracking</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Commission and incentive compensation calculations</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Sales performance reporting and visualization</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Data validation and auditing</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">General data analysis</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">General Sales Compensation Program support</span></li>
 </ul>
-<p><span style="font-weight: 400;">About You:</span></p>
+<p><strong>About You</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of Incentive Compensation program OR Commissions Finance experience in the High-Tech sector, with emphasis on program administration and tactical execution; experience with SaaS companies preferred</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with commissions-specific SOX Controls</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly proficient in Excel / GoogleSheets&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with SQL platforms and queries is a plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with sales compensation software and systems is a strong plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 8 years of&nbsp;FP&amp;A, Consulting, Investment Banking, Sales Operations, Sales Compensation or Commissions experience. Experience in a growth technology company is a plus.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Firm grasp of the Sales Comp administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly proficient in complex Excel / GoogleSheet files</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficient in additional analytics, reporting and data visualization tools/platforms</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Exceptionally motivated and driven self-starter, with the desire to learn and build a career</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated ability to multitask in a highly deadline-driven environment</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong verbal and written communication skills&nbsp;</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
