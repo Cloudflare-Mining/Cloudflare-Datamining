@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/security/what-is-remote-code-execution/",
+	"path": "/learning/security/what-is-cyber-security/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "3m71x7UUEIttRuzSnwnOq0",
-				"urlSlug": "security/what-is-remote-code-execution",
+				"contentfulId": "5iPlpzqmSWeiq90GuDBjdP",
+				"urlSlug": "security/what-is-cyber-security",
 				"metaTags": {
-					"metaTitle": "What is remote code execution?",
-					"metaDescription": "A remote code execution (RCE) attack is where an attacker runs malicious code on an organization's network.  Learn how it works and why it's important.\n",
+					"metaTitle": "What is cyber security?",
+					"metaDescription": "Cyber security is the practice of protecting networks, applications, sensitive information, and users from cyber attacks. Learn how different cyber security practices help defend against common threats.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -887,83 +887,76 @@
 						]
 					}
 				},
-				"header": "What is remote code execution?",
-				"blurbSubHeader": "A remote code execution (RCE) attack is where an attacker run malicious code on an organization's computers or network. The ability to execute attacker-controlled code can be used for various purposes, including deploying additional malware or stealing sensitive data.\n",
+				"header": "What is cyber security?",
+				"blurbSubHeader": "Cyber security is the practice of protecting networks, applications, sensitive data, and users from cyber attacks.",
 				"objectivesHeader": "Learning Objectives",
 				"objectivesList": [
-					"What is remote code execution",
-					"How remote code execution (RCE) attacks work",
-					"How attackers can use RCE",
-					"How to prevent remote code execution "
+					"Define cyber security",
+					"Explain why cyber security is important",
+					" Compare common cyber security threats and best practices"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3prZkikP0WPYdys6s0FypM",
-						"displayText": "Security monitoring fatigue puts organizations at risk",
-						"url": "/learning/insights-security-fatigue/"
+						"contentfulId": "7esVgOhtx4g1wc9j085HEg",
+						"displayText": "Web application security",
+						"url": "/learning/security/what-is-web-application-security/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6sXZSYzVxhxxquXfRdnlSj",
-						"displayText": "Threat hunting",
-						"url": "/learning/security/glossary/what-is-threat-hunting/"
+						"contentfulId": "7B34gNUdmG55POcpXlcGLo",
+						"displayText": "What Is Ransomware?",
+						"url": "/learning/security/ransomware/what-is-ransomware/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6XPhbYmE7dwzO6WII8TzfE",
-						"displayText": "Data breach",
+						"contentfulId": "3icyl9iMQn9zZDBiIp2C0e",
+						"displayText": "What is a Data Breach?",
 						"url": "/learning/security/what-is-a-data-breach/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "52yU1a7q2E6gaFa6THLqQK",
+						"displayText": "Buffer Overflow",
+						"url": "/learning/security/threats/buffer-overflow/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "69gWUkZLgad0t8LnwMSRXY",
 						"displayText": "Security operations center (SOC)",
 						"url": "/learning/security/glossary/what-is-a-security-operations-center-soc/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "7nYhsmOt8j2TMfIi6t2pOG",
-						"displayText": "The future of web application security",
-						"url": "https://www.cloudflare.com/insights-future-web-security/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "11BjITFi6r2hDV21rZPAFR",
-						"displayText": "Zero Trust security",
-						"url": "/learning/security/glossary/what-is-zero-trust/"
 					}
 				],
-				"desktopMainContent": "\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is remote code execution?</h2>\n<p>A remote code execution (RCE) attack is one where an attacker can run malicious code on an organization's computers or network. The ability to execute attacker-controlled code can be used for various purposes, including deploying additional malware or stealing sensitive data.</p>\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How remote code execution (RCE) attacks work</h2>\n<p>Remote code execution attacks generally occur via vulnerabilities in web applications and network infrastructure.</p>\n<p>Remote code execution vulnerabilities are flaws in software that allow an attacker to run malicious code on a target system. Several types of vulnerabilities can be used for RCE, including the following examples:</p>\n\n<ul class=\"learning-list\">\n<li><strong>Injection vulnerabilities:</strong> An injection vulnerability — such as SQL injection or command injection — is enabled by poor input sanitization. If a user provides a carefully-crafted, malicious input, some of their provided data will be interpreted as commands to be run. This allows the attacker to force the vulnerable system to execute attacker-provided code.</li>\n<li><strong>Insecure deserialization:</strong> Serialization simplifies the transmission of sets of data by packing it into a single string of bits to be unpacked by the recipient system. However, if the structure of serialized data is not well defined, an attacker may be able to craft an input that is misinterpreted when it is unpacked. Depending on how the data is stored and processed, this misinterpretation may allow the attacker to achieve code execution.</li>\n<li><strong>Out-of-bounds write:</strong> A buffer is a fixed-size piece of memory that is allocated to store data. Insecure data reads or writes could allow an attacker to place data where it would be interpreted as code or as important control flow information for the application.</li>\n <li><strong>File management:</strong> Some applications allow users to upload files to a server. The access that this provides may allow an attacker to upload a file containing malicious code and trick the application into executing it.</li>\n</ul>\n\n<p>Malware is attacker-provided code that is designed to be executed on a target system. An RCE vulnerability simply allows an attacker to deploy malware in different ways.</p>\n<p>As a result, RCE vulnerabilities can be used to achieve many of the same goals as traditional malware. RCE can be used to deploy malware on a vulnerable system, perform a denial-of-service (DoS) attack, or access sensitive information stored on a system.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How attackers can use RCE</h2>\n\n<p>Remote code execution is is dangerous because the ability to run malicious code provides an attacker with a variety of options. Some of the ways that RCE vulnerabilities can be used to further common attacks include the following:</p>\n<ul class=\"learning-list\">\n<li><strong>Remote access:</strong> RCE vulnerabilities are commonly used to give an attacker an initial foothold on a corporate network that they could then expand. For example, an RCE vulnerability could allow an attacker to steal login credentials that would allow them network access via a VPN.</li>\n<li><strong>Malware deployment:</strong> Though RCE vulnerabilities allow code execution, this code may be limited in scope. . To get around this limitation, attackers may use RCE to download  and execute other, more destructive malware. For example, RCE could be used to download and execute ransomware on a vulnerable system.</li>\n<li><strong>Data theft:</strong> RCE vulnerabilities could allow an attacker to run commands within a vulnerable application. This may provide access to the filesystem, databases, and other stores of sensitive corporate and customer data.</li>\n<li><strong>Data destruction:</strong> RCE vulnerabilities could allow an attacker to run DROP commands within a database or execute code within the system terminal. This access provides the same ability to delete files that a legitimate user would have</li>\n<li><strong>DoS attacks:</strong> Out-of-bounds write vulnerabilities allow an attacker to overwrite critical code, crashing an application. Other RCE vulnerabilities could allow the termination of processes or the deletion of vital data.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to prevent remote code execution</h2>\n<p>Remote code execution attacks are made possible by vulnerabilities in corporate web applications. Some of the methods companies can use to reduce their exposure to RCE attacks include the following:</p>\n<ul class=\"learning-list\">\n<li><strong>Vulnerability scanning: </strong> A combination of static code analysis — to identify well-known vulnerability patterns — and dynamic analysis like fuzzing can help developers identify and correct RCE vulnerabilities before they can be exploited.</li>\n<li><strong>Updating and patching:</strong> RCE vulnerabilities may be discovered in an application or the third-party libraries that it depends on. Promptly applying updates and patches reduces the window during which vulnerable code could be exploited.</li>\n<li><strong>Input validation:</strong> Most RCE vulnerabilities involve poor input validation, where an application makes assumptions about user-provided data. Robust input validation can eliminate the threat of most RCE vulnerabilities.</li>\n<li><strong>Network monitoring:</strong> Attempted RCE exploits can be detected and blocked by a web application and API protection (WAAP) solution. Deploying network security solutions in front of web applications can reduce the potential risks of unpatched vulnerabilities.</li>\n</ul>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">Protect against RCE with Cloudflare One</h2>\n  <p>As web applications increasingly move to cloud-based hosting, securing them against exploitation becomes more difficult. The <a href='https://www.cloudflare.com/waf/'>Cloudflare Web Application Firewall</a> uses a massive array of global threat intelligence to block remote code execution attempts.</p>\n   <p>In addition, <a href='https://www.cloudflare.com/cloudflare-one/'>Cloudflare One</a>, Cloudflare's Secure Access Service Edge (SASE) platform, provides robust security and monitoring for internal corporate applications.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is cyber security?</h2>\n<p>Cyber security is the practice of protecting networks, applications, confidential or sensitive data, and users from cyber attacks. Cyber attacks are malicious attempts by individuals or groups to gain unauthorized access to computer systems, networks, and devices in order to steal information, disrupt operations, or launch larger attacks. Common types of cyber attacks include, but are not limited to, <a href='/learning/email-security/how-to-identify-a-phishing-email/'>phishing</a>, <a href='/learning/ddos/glossary/malware/'>malware</a> (including ransomware), <a href='/learning/security/threats/social-engineering-attack/'>social engineering attacks</a>, and <a href='/learning/ddos/glossary/denial-of-service/'>denial-of-service (DoS)</a> and <a href='/learning/ddos/what-is-a-ddos-attack/'>distributed denial-of-service DDoS attacks</a>. </p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is cyber security important?</h2>\n<p>Cyber security is important because it allows you to reduce risk so that businesses can remain operational, be good stewards of their users' data and privacy, prevent revenue loss, and avoid regulatory consequences.</p>\n\n<p>Cyber  threats come in various forms, with different methods, targets, and purposes. Some of the most common threats include the following:</p>\n\n<ul class=\"learning-list\">\n<li><strong>Malware</strong> is software designed to disrupt normal operations of a device, and can refer to a wide range of attacks like worms, Trojans, adware, or spyware. </li>\n<li><strong>Ransomware</strong> is a type of malware that locks computer files until the victim pays a ransom fee, with attackers' goals ranging from purely monetary to taking the network offline.</li>\n<li><strong>Social engineering attacks</strong> manipulate victims into handing over sensitive information used for malicious purposes like fraud or account takeover.</li>\n<li><strong>Phishing attacks</strong> trick victims into sharing usernames, passwords, card numbers, bank account information, or other sensitive data.</li>\n<li><strong>DDoS attacks</strong> are malicious attempts to disrupt the flow of traffic to a server or network by overwhelming the targeted infrastructure with a flood of traffic, which renders them non-operational.</li>\n</ul>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the impact of a cyberattack?</h2>\n<p>The impact of a cyberattack can be far-reaching and devastating for businesses. One of the most significant impacts is economic costs, as cyberattacks can result in the loss of revenue, increased expenses for remediation and recovery, and supply chain disruption.</p>\n<p>Cyber attacks can also impact brand reputation. When organizations suffer a data breach or a temporary outage, their brand image may be affected — resulting in poor media coverage and the potential loss of current and future customers to competitors.</p>\n<p>Additionally, cyberattacks can result in regulatory costs, as companies may face fines for failing to protect user data in accordance with data protection laws such as <a href='/learning/privacy/what-is-the-gdpr/'>the GDPR</a> or HIPAA.</p>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">What are cyber security best practices?</h2>\n<p>There are a number of cyber security best practices that can be applied for both individual people and organizations.</p>\n\n <p><strong>For individuals:</strong></p>\n<ul class=\"learning-list\">\n<li>Use strong passwords</li>\n<li>Do not reuse the same passwords for different websites or apps</li>\n<li>Use <a href='/learning/access-management/what-is-multi-factor-authentication/'>multi-factor authentication</a> or 2FA whenever possible</li>\n<li>Avoid unsecure websites (many browsers will warn you if you are about to visit an unsecured website, or look for a padlock in the URL bar at the top to make sure the website uses <a href='/learning/ssl/transport-layer-security-tls/'>TLS</a> for encryption and authentication)</li>\n<li>Do not download or open unfamiliar files or links</li>\n<li>Know the signs of a <a href='/learning/email-security/how-to-identify-a-phishing-email/'>phishing email</a></li>\n</ul>\n\n <p><strong>For business:</strong></p>\n<ul class=\"learning-list\">\n<li>Enforce the above for all of your users</li>\n  <li>Have visibility into all infrastructure used in your organization, including <a href='/learning/access-management/what-is-shadow-it/'>shadow IT</a></li>\n  <li>Use DDoS protection to remain online</li>\n  <li>Use firewalls and WAFs to protect internal networks and external-facing websites</li>\n<li>Encrypt and back up data</li>\n<li>Find a third-party risk management solution to implement a <a href='/learning/security/glossary/what-is-zero-trust/'>Zero Trust approach</a>. </li>\n</ul>\n",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
-					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "English for Locale",
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
 				"proactivePopup": null,
 				"sidebarForm": null
@@ -971,20 +964,11 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "3m71x7UUEIttRuzSnwnOq0",
-			"pathname": "/learning/security/what-is-remote-code-execution/",
+			"contentfulId": "5iPlpzqmSWeiq90GuDBjdP",
+			"pathname": "/learning/security/what-is-cyber-security/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
