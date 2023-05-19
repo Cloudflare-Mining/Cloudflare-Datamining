@@ -1,0 +1,144 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/111.png" class="kg-image" alt="" loading="lazy" width="512" height="288"></figure>
+	<p>La creación de modelos de lenguaje de gran tamaño (LLM) y modelos de difusión que impulsan la IA generativa requiere una infraestructura masiva. El componente más evidente es el proceso, que requiere entre cientos y miles de unidades de procesamiento de gráficos (GPU). Sin embargo, un componente igualmente crítico (y a menudo ignorado) es la <strong>infraestructura de almacenamiento de datos</strong>. Los conjuntos de datos de entrenamiento pueden tener un tamaño de terabytes a petabytes, y miles de procesos deben leer estos datos en paralelo. Además, los puntos de control del modelo se deben guardar con frecuencia durante la ejecución de entrenamiento, y en el caso de los LLM, cada uno de estos puntos de control puede ocupar cientos de gigabytes.</p>
+	<p>Para gestionar los costes de almacenamiento y la escalabilidad, muchos equipos de trabajo dedicados al aprendizaje automático se han pasado al almacenamiento de objetos para alojar sus conjuntos de datos y puntos de control. Por desgracia, la mayoría de los proveedores de almacenamiento de objetos utilizan tarifas de salida para "mantener" a los usuarios en su plataforma. Esta práctica dificulta el uso de la capacidad de la GPU en varios proveedores de nube, o la ventaja de aprovechar los precios más bajos o dinámicos de otros proveedores, ya que la transferencia de los datos y los puntos de control del modelo es demasiada cara. En un momento en el que escasean las GPU en la nube y se están incorporando nuevas opciones de hardware en el mercado, es más importante que nunca ser flexible.</p>
+	<p>Además de las elevadas tarifas de salida, existe un obstáculo técnico para el entrenamiento del aprendizaje automático basado en el almacenamiento de objetos. La lectura y la escritura de datos entre el almacenamiento de objetos y los clústeres de proceso requieren un alto rendimiento, un uso eficiente del ancho de banda de la red, determinismo y flexibilidad (la capacidad de entrenar en distintas GPU). La creación de un software de entrenamiento que gestione todo esto de forma correcta y fiable es difícil.</p>
+	<p>Hoy nos complace mostrar cómo el uso conjunto de las herramientas de MosaicML y Cloudflare R2 puede afrontar estos desafíos. En primer lugar, con las bibliotecas de código abierto <a href="https://github.com/mosaicml/streaming?ref=blog.cloudflare.com" target="_blank">StreamingDataset</a> y <a href="https://github.com/mosaicml/composer?ref=blog.cloudflare.com" target="_blank">Composer</a> de MosaicML, puedes transmitir fácilmente datos de entrenamiento y leer/escribir puntos de control del modelo en R2. Todo lo que necesitas es una conexión a Internet. En segundo lugar, gracias a las tarifas gratuitas de ancho de banda de salida de R2, puedes iniciar/detener/mover/redimensionar trabajos en respuesta a la disponibilidad de la GPU y a los precios de los proveedores de proceso, sin pagar ninguna tarifa de transferencia de datos. La plataforma de entrenamiento MosaicML simplifica al máximo la organización de estos trabajos de entrenamiento en varias nubes.</p>
+	<p>Juntos, Cloudflare y MosaicML te dan la libertad de entrenar LLM en <em>cualquier</em> proceso, <em> en cualquier parte del mundo</em>, sin costes de conmutación. De esta forma, te beneficiarás de ejecuciones de entrenamiento más rápidas y más baratas, sin depender de proveedores.</p>
+	<blockquote><em>"Con la plataforma de entrenamiento MosaicML, los clientes pueden utilizar R2 de manera eficaz como backend de almacenamiento duradero para entrenar LLM en cualquier proveedor de proceso, sin costes de salida. Las empresas de IA se enfrentan a unos costes exorbitantes en la nube, y están buscando herramientas que puedan proporcionarles la velocidad y la flexibilidad que necesitan para entrenar su mejor modelo al mejor precio".</em><br>– <strong>Naveen Rao, consejero delegado y cofundador, MosaicML</strong></blockquote>
+	<h3 id="lectura-de-datos-desde-r2-con-streamingdataset">Lectura de datos desde R2 con StreamingDataset</h3>
+	<p>Para leer datos desde R2 de forma eficiente y determinista, puedes utilizar la biblioteca <a href="https://github.com/mosaicml/streaming?ref=blog.cloudflare.com" target="_blank">StreamingDataset</a> de MosaicML. En primer lugar, escribe tus datos de entrenamiento (imágenes, texto, vídeo, ¡lo que sea!) en archivos de partición `<code>.mds</code>` utilizando la API de Python proporcionada:</p>
+	<pre><code class="language-python">import numpy as np
+from PIL import Image
+from streaming import MDSWriter
+
+# Local or remote directory in which to store the compressed output files
+data_dir = 'path-to-dataset'
+
+# A dictionary mapping input fields to their data types
+columns = {
+    'image': 'jpeg',
+    'class': 'int'
+}
+
+# Shard compression, if any
+compression = 'zstd'
+
+# Save the samples as shards using MDSWriter
+with MDSWriter(out=data_dir, columns=columns, compression=compression) as out:
+    for i in range(10000):
+        sample = {
+            'image': Image.fromarray(np.random.randint(0, 256, (32, 32, 3), np.uint8)),
+            'class': np.random.randint(10),
+        }
+        out.write(sample)
+</code></pre>
+	<p>Una vez convertido tu conjunto de datos, puedes cargarlo a R2. A continuación, lo demostramos con la herramienta de línea de comandos `<code>awscli</code>`, pero también puedes utilizar `wrangler` o cualquier herramienta de tu elección compatible con S3. StreamingDataset también admitirá la escritura directa en la nube a R2 próximamente.</p>
+	<pre><code>$ aws s3 cp --recursive path-to-dataset s3://my-bucket/folder --endpoint-url $S3_ENDPOINT_URL
+</code></pre>
+	<p>Por último, puedes leer los datos en cualquier dispositivo que tenga acceso de lectura a tu bucket R2. Puedes capturar muestras individuales, configurar un bucle sobre el conjunto de datos e introducirlo en un cargador de datos PyTorch estándar. </p>
+	<pre><code class="language-python">from torch.utils.data import DataLoader
+from streaming import StreamingDataset
+
+# Make sure that R2 credentials and $S3_ENDPOINT_URL are set in your environment    
+# e.g. export S3_ENDPOINT_URL="https://[uid].r2.cloudflarestorage.com"
+
+# Remote path where full dataset is persistently stored
+remote = 's3://my-bucket/folder'
+
+# Local working dir where dataset is cached during operation
+local = '/tmp/path-to-dataset'
+
+# Create streaming dataset
+dataset = StreamingDataset(local=local, remote=remote, shuffle=True)
+
+# Let's see what is in sample #1337...
+sample = dataset[1337]
+img = sample['image']
+cls = sample['class']
+
+# Create PyTorch DataLoader
+dataloader = DataLoader(dataset)
+</code></pre>
+	<p>StreamingDataset no necesita configuración, ofrece alto rendimiento, determinismo elástico, reanudación rápida y soporte multiworker. También utiliza funciones inteligentes de orden y difusión para garantizar que se minimiza el ancho de banda de descarga. A través de una variedad de cargas de trabajo como LLM y modelos de difusión, encontramos que no hay impacto en el rendimiento del entrenamiento (no hay cuello de botella en el cargador de datos) cuando se entrena desde almacenes de objetos como R2. Para más información, ¡consulta el <a href="https://www.mosaicml.com/blog/mosaicml-streamingdataset?ref=blog.cloudflare.com" target="_blank">blog del anuncio</a> de StreamingDataset!</p>
+	<h3 id="lecturaescritura-de-puntos-de-control-del-modelo-en-r2-con-composer">Lectura/escritura de puntos de control del modelo en R2 con Composer</h3>
+	<p>La transmisión de datos en tu bucle de entrenamiento resuelve la mitad del problema, pero ¿cómo cargas/guardas los puntos de control de tu modelo? Por suerte, si utilizas una biblioteca de entrenamiento como <a href="https://github.com/mosaicml/composer?ref=blog.cloudflare.com" target="_blank">Composer</a>, es tan fácil como apuntar a una ruta R2. </p>
+	<pre><code class="language-Python">from composer import Trainer
+...
+
+# Make sure that R2 credentials and $S3_ENDPOINT_URL are set in your environment
+# e.g. export S3_ENDPOINT_URL="https://[uid].r2.cloudflarestorage.com"
+
+trainer = Trainer(
+        run_name='mpt-7b',
+        model=model,
+        train_dataloader=train_loader,
+        ...
+        save_folder=s3://my-bucket/mpt-7b/checkpoints,
+        save_interval='1000ba',
+        # load_path=s3://my-bucket/mpt-7b-prev/checkpoints/ep0-ba100-rank0.pt,
+    )
+</code></pre>
+	<p>Composer utiliza cargas asíncronas para minimizar el tiempo de espera mientras se guardan los puntos de control durante el entrenamiento. También es fácil de usar, con entrenamiento multi-GPU y multinodos, y <strong>no requiere un sistema de archivos compartido</strong>. Esto significa que puedes omitir la configuración de un sistema EFS/NFS caro para tu clúster de proceso, ahorrando así miles de dólares o más al mes en nubes públicas. Todo lo que necesitas es una conexión a Internet y las credenciales adecuadas. Tus puntos de control llegan a salvo a tu bucket R2, lo que te proporciona un almacenamiento escalable y seguro para tus modelos privados.</p>
+	<h3 id="mosaicml-y-r2-para-ejecutar-eficazmente-trabajos-de-entrenamiento-en-cualquier-lugar">MosaicML y R2 para ejecutar eficazmente trabajos de entrenamiento en cualquier lugar</h3>
+	<p>El uso de las herramientas anteriores junto con Cloudflare R2 permite a los usuarios ejecutar cargas de trabajo de entrenamiento en cualquier proveedor de procesos, con total libertad y sin costes de conmutación.</p>
+	<p>Como ejemplo, en la figura X utilizamos la plataforma de entrenamiento MosaicML para lanzar un trabajo de entrenamiento LLM que comienza en Oracle Cloud Infrastructure, con la transmisión de datos y la carga de puntos de control en R2. En el transcurso, interrumpimos el trabajo y lo reanudamos sin problemas en un conjunto diferente de GPU en Amazon Web Services. Composer carga las ponderaciones del modelo desde el último punto de control guardado en R2, y el cargador de datos de flujo se reanuda instantáneamente en el lote correcto. El entrenamiento continúa de forma determinista. Por último, nos trasladamos de nuevo a Google Cloud para finalizar la ejecución. </p>
+	<p>Como entrenamos nuestro LLM a través de tres proveedores de nube, los únicos costes que pagamos son los de proceso en la GPU y el almacenamiento de datos. ¡Sin tarifas de salida ni dependencias de proveedores gracias a Cloudflare R2!</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/05/image2-19.png" class="kg-image" alt="uso de la plataforma de entrenamiento MosaicML con Cloudflare R2 para ejecutar un trabajo de entrenamiento LLM a través de tres proveedores de nube diferentes, sin tarifas de salida." loading="lazy" width="1999" height="1304">
+		<figcaption><em>uso de la plataforma de entrenamiento MosaicML con Cloudflare R2 para ejecutar un trabajo de entrenamiento LLM a través de tres proveedores de nube diferentes, sin tarifas de salida.</em></figcaption>
+	</figure>
+	<pre><code>$ mcli get clusters
+NAME            PROVIDER      GPU_TYPE   GPUS             INSTANCE                   NODES
+mml-1            MosaicML   │  a100_80gb  8             │  mosaic.a100-80sxm.1        1    
+                            │  none       0             │  cpu                        1    
+gcp-1            GCP        │  t4         -             │  n1-standard-48-t4-4        -    
+                            │  a100_40gb  -             │  a2-highgpu-8g              -    
+                            │  none       0             │  cpu                        1    
+aws-1            AWS        │  a100_40gb  ≤8,16,...,32  │  p4d.24xlarge               ≤4   
+                            │  none       0             │  cpu                        1    
+oci-1            OCI        │  a100_40gb  8,16,...,64   │  oci.bm.gpu.b4.8            ≤8  
+                            │  none       0             │  cpu                        1    
+
+$ mcli create secret s3 --name r2-creds --config-file path/to/config --credentials-file path/to/credentials
+✔  Created s3 secret: r2-creds      
+
+$ mcli create secret env S3_ENDPOINT_URL="https://[uid].r2.cloudflarestorage.com"
+✔  Created environment secret: s3-endpoint-url      
+               
+$ mcli run -f mpt-125m-r2.yaml --follow
+✔  Run mpt-125m-r2-X2k3Uq started                                                                                    
+i  Following run logs. Press Ctrl+C to quit.                                                                            
+                                                                                                                        
+Cloning into 'llm-foundry'...
+</code></pre>
+	<p><em>Uso de la herramienta de línea de comandos MCLI para gestionar clústeres de proceso, secretos y enviar ejecuciones.</em></p>
+	<pre><code>### mpt-125m-r2.yaml ###
+# set up secrets once with `mcli create secret ...`
+# and they will be present in the environment in any subsequent run
+
+integrations:
+- integration_type: git_repo
+  git_repo: mosaicml/llm-foundry
+  git_branch: main
+  pip_install: -e .[gpu]
+
+image: mosaicml/pytorch:1.13.1_cu117-python3.10-ubuntu20.04
+
+command: |
+  cd llm-foundry/scripts
+  composer train/train.py train/yamls/mpt/125m.yaml \
+    data_remote=s3://bucket/path-to-data \
+    max_duration=100ba \
+    save_folder=s3://checkpoints/mpt-125m \
+    save_interval=20ba
+
+run_name: mpt-125m-r2
+
+gpu_num: 8
+gpu_type: a100_40gb
+cluster: oci-1  # can be any compute cluster!
+</code></pre>
+	<p><em>Una plantilla de trabajo MCLI. Especifica un nombre de ejecución, una imagen Docker, un conjunto de comandos y un clúster de proceso en el que ejecutarlo.</em></p>
+	<h3 id="%C2%A1empieza-hoy-mismo">¡Empieza hoy mismo!</h3>
+	<p>La plataforma MosaicML es una herramienta valiosa para llevar tu entrenamiento un paso más allá, y en esta publicación descubrimos cómo Cloudflare R2 te permite entrenar modelos con tus propios datos, con cualquier proveedor de procesos, o con todos ellos. Gracias a que no tiene tarifas de salida, el almacenamiento de R2 es un complemento muy rentable para el entrenamiento MosaicML, que proporciona la máxima autonomía y control. Con esta combinación, puedes cambiar entre proveedores de servicios en la nube para adaptarte a las necesidades de tu organización a lo largo del tiempo. <br><br>Si deseas más información sobre el uso de MosaicML para entrenar modelos de IA personalizados de última generación con tus propios datos, haz clic <a href="https://www.mosaicml.com/?ref=blog.cloudflare.com" target="_blank">aquí</a> o <a href="https://docs.google.com/forms/d/e/1FAIpQLSepW7QB3Xkv6T7GJRwrR9DmGAEjm5G2lBxJC7PUe3JXcBZYbw/viewform?ref=blog.cloudflare.com" target="_blank">ponte en contacto con nosotros</a>.</p>
+</div>

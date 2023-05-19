@@ -1,0 +1,150 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image4-7-2.png" class="kg-image" alt="" loading="lazy" width="1200" height="675"></figure>
+	<p>Cloudflare Workersのエコシステムには現在、コンピューティング、ホスティング、ストレージ、データベース、ストリーミング、ネットワーキング、セキュリティ、<a href="https://developers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">その他多く</a>の製品と機能が含まれています。当社はこれまで、従来のソフトウェアアーキテクチャからの移行に踏み切っていただけるよう、グローバルに拡張可能な複雑なアプリケーションを当社のスタック上に構築できることを<a href="https://blog.cloudflare.com/welcome-to-wildebeest-the-fediverse-on-cloudflare/">実証</a>し、<a href="https://blog.cloudflare.com/ja-jp/technology-behind-radar2-ja-jp/">文書化</a>してきました。</p>
+	<p>本日、CloudflareがそのスタックにConstellationを加え、開発者がトレーニング済みの機械学習モデルと推論タスクをCloudflareネットワーク上で実行できるようにすることを大変嬉しく思います。</p>
+	<h2 id="%E5%BD%93%E7%A4%BE%E3%81%AE%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%81%AB%E6%96%B0%E3%81%9F%E3%81%AA%E6%A7%8B%E6%88%90%E8%A6%81%E7%B4%A0%E3%82%92%E8%BF%BD%E5%8A%A0">当社のスーパークラウドに新たな構成要素を追加</h2>
+	<p>最近、<a href="https://en.wikipedia.org/wiki/Machine_learning?ref=blog.cloudflare.com" target="_blank">機械学習</a>とAIが盛んに取り沙汰されていますが、私たちは何年も前から日常生活でそれらのテクノロジーを使っています。知らずに使っていることもあります。例えば携帯電話、コンピューター、車、ホームアシスタントなどで、それらすべてにAIが使われています。AIは至るところにあるのです。</p>
+	<p>ただ、開発者にとってAIがコモディティ化しているとはまだ言えません。多くの場合、開発者はAIの背後にある数学を理解する必要があり、ソフトウェアやツールは複雑で散在しており、枠組みやデータを実行するハードウェアやクラウドサービスは高価です。</p>
+	<p><strong>本日、当社はスタックにもう1つ機能を追加し、誰もがCloudflare Workers上で機械学習モデルを実行し、推論を行えるようにします。</strong></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image2-8.png" class="kg-image" alt="" loading="lazy" width="1784" height="510"></figure>
+	<h2 id="constellation%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">Constellationについて</h2>
+	<p>Constellationを使用すると、Cloudflare Workersスクリプトでネイティブにトレーニング済みの機械学習モデルを使い、高速かつ低遅延の推論タスクを実行することができます。</p>
+	<p>Constellationでデプロイできるアプリケーションをいくつか例示します：</p>
+	<p>● 画像や音声の分類や物体検出</p>
+	<p>● データ異常検知</p>
+	<p>● テキストの翻訳、要約、類似性解析</p>
+	<p>● 自然言語処理</p>
+	<p>● 感情分析</p>
+	<p>● 音声認識や音声合成</p>
+	<p>● 質問応答</p>
+	<p>開発者は、対応モデルであればどんなモデルでもConstellationにアップロードできます。モデルは独自に訓練することもできますし、<a href="https://huggingface.co/models?library=onnx&amp;sort=downloads&amp;ref=blog.cloudflare.com" target="_blank">HuggingFace</a>や<a href="https://github.com/onnx/models?ref=blog.cloudflare.com" target="_blank">ONNX Zoo</a>といった機械学習ハブからトレーニング済みのモデルをダウンロードすることもできます。</p>
+	<p>しかし、モデルを訓練したり、自分でテストしていないモデルをインターネットで探すのは気が進まない人もいるでしょう。そこでCloudflareでは、検証済みですぐに使えるモデルのカタログも用意しています。</p>
+	<p>当社は、優れた開発者体験と使いやすいAPIの実現を目指してConstellationを構築しました。まずは、実例をご紹介しましょう。</p>
+	<h2 id="%E7%94%BB%E5%83%8F%E5%88%86%E9%A1%9E%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">画像分類アプリケーション</h2>
+	<p>この例では、Constellation推論APIと<a href="https://github.com/onnx/models/blob/main/vision/classification/squeezenet/README.md?ref=blog.cloudflare.com" target="_blank">SqueezeNet</a>モデルで動く画像分類アプリを構築します。SqueezeNetは、オープンソースの<a href="https://www.image-net.org/?ref=blog.cloudflare.com" target="_blank">ImageNet</a>データベースの画像100万枚以上を使って事前トレーニングした畳み込みニューラルネットワーク（CNN）で、画像を1000カテゴリーに分類できます。</p>
+	<p>SqueezeNetは、CNN元祖の1つで画像分類のベンチマークでもある<a href="https://en.wikipedia.org/wiki/AlexNet?ref=blog.cloudflare.com" target="_blank">AlexNet</a>に比べて遥かに速く（最高3倍）遥かに小さい（最小500分の1）ですが、同等の確度を得ることができます。フットプリントが小さいため、リソースに制約のある携帯デバイスやカスタムハードウェアでの実行に理想的です。</p>
+	<p>まず、ONNX Runtimeを使ってConstellationプロジェクトを新規作成してみましょう。WranglerにConstellationの機能が組み込まれています。キーワードは「constellation」です。</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npx wrangler constellation project create "image-classifier" ONNX
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>では、wrangler.tomlという設定ファイルをプロジェクトバインディングで作成してみましょう：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-yaml"># Top-level configuration
+name = "image-classifier-worker"
+main = "src/index.ts"
+compatibility_date = "2022-07-12"
+
+constellation = [
+    {
+      binding = 'CLASSIFIER',
+      project_id = '2193053a-af0a-40a6-b757-00fa73908ef6'
+    },
+]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>ConstellationクライアントAPIライブラリのインストール：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npm install @cloudflare/constellation --save-dev
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>トレーニング済みのSqueezeNet 1.1 ONNXモデルをプロジェクトにアップロードします。</p><!--kg-card-begin: markdown-->
+	<pre><code>$ wget https://github.com/microsoft/onnxjs-demo/raw/master/docs/squeezenet1_1.onnx
+$ npx wrangler constellation model upload "image-classifier" "squeezenet11" squeezenet1_1.onnx
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上述の通り、SqueezeNetは画像を1000の物体クラスに分類します。クラスは、実際はシノニムリング（synset）のリストの形になっています。<a href="http://wordnet-rdf.princeton.edu/pwn30/01440764-n?ref=blog.cloudflare.com" target="_blank">synset</a>にはIDとラベルがあって、プリンストン大学の<a href="https://wordnet.princeton.edu/?ref=blog.cloudflare.com" target="_blank">WordNet</a>データベースの<a href="https://wordnet.princeton.edu/documentation/?ref=blog.cloudflare.com" target="_blank">語彙</a>を基にしています。<a href="https://www.image-net.org/about.php?ref=blog.cloudflare.com" target="_blank">ImageNet</a>の画像データベースでラベル付けに使われているのと同じものです。</p>
+	<p>SqueezeNetの結果を人間が読める画像クラスに変換するには、synset ID（このモデルで生成されるもの）を対応するラベルにマッピングするファイルが必要になります。</p><!--kg-card-begin: markdown-->
+	<pre><code>$ mkdir src; cd src
+$ wget https://raw.githubusercontent.com/microsoft/onnxjs-demo/master/src/data/imagenet.ts
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>最後に、画像分類スクリプトをコーディングしてデプロイしましょう：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { imagenetClasses } from './imagenet';
+import { Tensor, run } from '@cloudflare/constellation';
+
+export interface Env {
+    CLASSIFIER: any,
+}
+
+export default {
+    async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+        const formData = await request.formData();
+        const file = formData.get("file");
+        const data = await file.arrayBuffer();
+        const result = await processImage(env, data);
+        return new Response(JSON.stringify(result));
+    },
+};
+
+async function processImage(env: Env, data: ArrayBuffer) {
+    const input = await decodeImage(data)
+
+    const tensorInput = new Tensor("float32", [1, 3, 224, 224], input)
+
+    const output = await run(env.CLASSIFIER, "MODEL-UUID", tensorInput);
+
+    const probs = output.squeezenet0_flatten0_reshape0.value
+    const softmaxResult = softmax(probs)
+    const results = imagenetClasses(softmaxResult, 5);
+    const topResult = results[0];
+    return topResult
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>このスクリプトは、リクエストから画像を読み込み、それを復号化して多次元テンソルfloat32にし（現在はPNGの復号化のみですが、他フォーマットの追加が可能）、Comstellationで実行するSqueezeNetモデルにフィードして結果を得、それをImageNetのクラスリストと照合して、人間が読める画像タグを返します。</p>
+	<p>極めてシンプルでしょう？ではテストしてみましょう：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ curl https://ai.cloudflare.com/demos/image-classifier -F file=@images/mountain.png | jq .name
+
+alp
+
+$ curl https://ai.cloudflare.com/demos/image-classifier -F file=@images/car.png | jq .name
+
+convertible
+
+$ curl https://ai.cloudflare.com/demos/image-classifier -F file=@images/dog.png | jq .name
+
+Ibizan hound
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/Screenshot-2023-05-15-at-12.55.21.png" class="kg-image" alt="" loading="lazy" width="1888" height="682"></figure>
+	<p>ここではクラス確率を実際に見ることができます。このモデルでは、アルプス（Alp）とコンバーチブル（Convertible）については高確率、イビザンハウンド（Ibizan hound）ハウンドについては低確率になっています。実際、写真の犬は他の犬種です。</p>
+	<p>この小規模なアプリから、Workers上にアプリケーションを構築すれば機械学習モデルとConstellationの使用を簡単に、すばやく始められることがわかります。完全なソースコードは<a href="https://developers.cloudflare.com/constellation/get-started/first-constellation-worker/?ref=blog.cloudflare.com" target="_blank">こちら</a>です。ご自分でデプロイしてください。</p>
+	<h2 id="transformers">Transformers</h2>
+	<p><a href="https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)?ref=blog.cloudflare.com" target="_blank">Transformers</a>はGoogleが発表したもので、時系列入力データを処理するために設計された深層学習モデルです。翻訳、要約、感情分析や、画像分類を含むコンピュータービジョン（CV）分野のタスクなど、自然言語処理（NLP）によく用いられます。</p>
+	<p><a href="https://github.com/xenova/transformers.js?ref=blog.cloudflare.com" target="_blank">Transformers.js</a>は、HuggingFaceからTransformerモデルを読み込んで、<a href="https://developers.cloudflare.com/workers/platform/web-assembly/?ref=blog.cloudflare.com" target="_blank">WebAssembly</a>にコンパイルしたONNX Runtimeを使ってブラウザー内で実行する人気のデモです。当社はこのデモを移植し、代わりにConstellation APIを使うようにしました。</p>
+	<p>当社バージョンへのリンクはこちら：<a href="https://transformers-js.pages.dev/?ref=blog.cloudflare.com" target="_blank">https://transformers-js.pages.dev/</a></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image3-5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1195"></figure>
+	<h2 id="workers%E3%81%A8%E3%81%AE%E7%9B%B8%E4%BA%92%E9%81%8B%E7%94%A8%E6%80%A7">Workersとの相互運用性</h2>
+	<p>Constellationのもう1つの興味深い要素は、Workersでネイティブに実行するため、当社スタックの他の製品やAPIと連携させることができる点です。KV、R2、D1、Queuesはもちろん、メールも含めたあらゆるものが使えます。</p>
+	<p>下記はWorkerの使用例です。<a href="https://developers.cloudflare.com/email-routing/?ref=blog.cloudflare.com" target="_blank">Email Routing</a>を使ってお客様のドメインへのメールをCloudflareで<u>受信</u>し、感情分析モデル <a href="https://huggingface.co/Xenova/t5-small/tree/main/onnx?ref=blog.cloudflare.com" target="_blank">t5-small</a> でConstellationを実行し、結果スコアを含めたヘッダーを追加して送信先アドレスへ転送しています。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { Tensor, run } from '@cloudflare/constellation';
+import * as PostalMime from 'postal-mime';
+
+export interface Env {
+    SENTIMENT: any,
+}
+
+export default {
+  async email(message, env, ctx) {
+    const rawEmail = await streamToArrayBuffer(event.raw, event.rawSize);
+    const parser = new PostalMime.default();
+    const parsedEmail = await parser.parse(rawEmail);
+
+    const input = tokenize(parsedEmail.text)
+    const output = await run( env.SENTIMENT, "MODEL-UUID", input);
+
+
+    var headers = new Headers();
+    headers.set("X-Sentiment", idToLabel[output.label]);
+    await message.forward("gooddestination@example.com", headers);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>このようにすれば、Gmailや他のあらゆるメールクライアントを使って、「X-Sentiment」ヘッダーに基づいてメッセージにルールを適用することができます。例えば、怒気を含むメールを到着時にすべて受信箱から出して別フォルダーに仕分けしたい場合などです。</p>
+	<h2 id="constellation%E3%81%AE%E5%88%A9%E7%94%A8%E9%96%8B%E5%A7%8B">Constellationの利用開始</h2>
+	<p>Constellationは本日、プライベートベータ版として提供を開始します。順番待ちリストへのご登録は、ダッシュボードを開き、Your AccountからWorkersタブをクリックし、【アクセスをリクエスト（Request Access）】ボタンをクリックしてください。アカウントのオンボーディングはバッチにまとめて実施します。お客様のアカウントが有効化されましたら、メールで通知します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image1-25.png" class="kg-image" alt="" loading="lazy" width="1999" height="1426"></figure>
+	<p>それまでに、<a href="https://developers.cloudflare.com/constellation/?ref=blog.cloudflare.com" target="_blank">Constellationの開発者向けドキュメント</a>を読んで仕組みやAPIの詳細をご確認いただけます。Constellationは、Cloudflareの開発者向け製品でアプリケーションの設定、構築、展開を行うコマンドラインツールWranglerから利用可能ですし、ダッシュボードUIで直接管理することもできます。</p>
+	<p>お客様が機械学習やAIをアプリケーションにどう活かしたいとお考えか、ぜひお聞かせください。Constellationは今後も上限の引き上げ、ランタイムの延長サポート、モデルの大型化など、改良を重ねていきます。ご意見、ご要望などをお聞かせください。お客様のフィードバックは、ロードマップの決断にもちろん影響を与えます。</p>
+	<p>最後に一言：本日は、Constellationを使うWorkersの書き方についてお話してきましたが、そもそもConstellation自体がWebAssembly、Workers、R2、Cloudflare APIの力を使って構築されています。構築のしかたについてフォローアップのブログをまもなく書きますので、どうぞお見逃しなく。</p>
+	<p>いつものように、当社へのご相談は<a href="https://discord.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Developers Discord</a>（#constellationチャンネル経由）または<a href="https://community.cloudflare.com/c/developers/constellation/97?ref=blog.cloudflare.com" target="_blank">コミュニティフォーラム</a>で。当社チームが拝聴しています。</p>
+</div>

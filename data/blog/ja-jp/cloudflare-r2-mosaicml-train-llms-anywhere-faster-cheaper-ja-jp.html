@@ -1,0 +1,144 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/111.png" class="kg-image" alt="" loading="lazy" width="512" height="288"></figure>
+	<p>生成AIを支える大規模言語モデル（LLM）と拡散モデルの構築には、大規模なインフラスストラクチャが必要です。最も明白なコンポーネントは数百から数千のGPUによるコンピューティングですが、同様に重要な（そしてしばしば見落とされる）コンポーネントは、 <strong>データストレージインフラストラクチャです。 </strong>トレーニングデータセットのサイズはテラバイトからペタバイトになる可能性があり、このデータは数千のプロセスで並行して読み取る必要があります。さらに、モデルのチェックポイントはトレーニングの実行中に頻繁に保存する必要があり、LLMの場合、これらのチェックポイントはそれぞれ数百ギガバイトになることがあります！</p>
+	<p>ストレージコストとスケーラビリティを管理するために、多くの機械学習チームがデータセットとチェックポイントをホストするためにオブジェクトストレージに移行してきました。残念ながら、ほとんどのオブジェクトストアプロバイダーは、ユーザーを自社のプラットフォームに「ロックイン」するために、エグレス料金を使用しています。このことより、データやモデルのチェックポイントを移動させるにはコストがかかりすぎるため、複数のクラウドプロバイダーでGPUの能力を活用したり、他の場所で低価格や動的な価格設定を利用することは非常に困難です。クラウドGPUが不足し、新しいハードウェアオプションが市場に参入している今、柔軟性を保つことはこれまで以上に重要です。</p>
+	<p>高いエグレス料金に加え、オブジェクトストア中心の機械学習トレーニングには技術的な障壁があります。オブジェクトストレージとコンピューティングクラスター間のデータの読み込み/書き込みには、高いスループット、ネットワーク帯域幅の効率的な使用、決定性、弾力性（異なる数のGPUでトレーニングする能力）などが求められます。これらを正しく、確実に処理するためのトレーニングソフトを作るのは大変です！</p>
+	<p>本日は、MosaicMLのツールとCloudflare R2を併用することで、これらの課題にどのように対処できるかをご紹介します。第一に、MosaicMLのオープンソースである<a href="https://github.com/mosaicml/streaming?ref=blog.cloudflare.com" target="_blank">StreamingDataset</a>と<a href="https://github.com/mosaicml/composer?ref=blog.cloudflare.com" target="_blank">Composer</a>ライブラリを使えば、トレーニングデータのストリームインやモデルのチェックポイントをR2に読み込み/書き込みを簡単に戻すことができます。必要なのは、インターネット接続だけです。第二に、R2のゼロエグレス料金により、データ転送料を支払うことなく、コンピューティングプロバイダー間のGPUの利用可能性と価格に応じてジョブを開始/停止/移動/リサイズすることができます。MosaicMLのトレーニングプラットフォームは、複数のクラウドにまたがるトレーニングジョブのオーケストレーションを非常に簡単に行うことができます。</p>
+	<p>CloudflareとMosaicMLが一丸となり、切り替えコストゼロで世界中<em>どこでもあらゆる</em>コンピューティングパワーでLLMを訓練する自由が実現します。これにより、よりスピーディに、低い訓練実施コストで、ベンダーロックイン根絶が実現します。</p>
+	<blockquote><em>「MosaicMLトレーニングプラットフォームを使用することで、お客様はR2を耐久性のあるストレージバックエンドとして効率的に使用し、あらゆるコンピューティングプロバイダー上でLLMをトレーニングすることができ、さらにエグレス料金はゼロです。AI企業は法外なクラウドコストに直面しており、最高のモデルを最高の価格でトレーニングするためのスピードと柔軟性を提供できるツールを求めています。」</em><br>– <strong>Naveen Rao（MosaicML社CEO兼共同創業者</strong></blockquote>
+	<h3 id="streamingdataset%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fr2%E3%81%8B%E3%82%89%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">StreamingDatasetを使ったR2からのデータ読み込み</h3>
+	<p>R2から効率的かつ決定論的にデータを読み込むには、MosaicML <a href="https://github.com/mosaicml/streaming?ref=blog.cloudflare.com" target="_blank">StreamingDataset</a>ライブラリを使用することができます。まず、トレーニングデータ（画像、テキスト、動画、何でもOKです！）を、提供されているPython APIを使って `<code>.mds</code>` シャードファイルに書き込みます。</p>
+	<pre><code class="language-python">import numpy as np
+from PIL import Image
+from streaming import MDSWriter
+
+# Local or remote directory in which to store the compressed output files
+data_dir = 'path-to-dataset'
+
+# A dictionary mapping input fields to their data types
+columns = {
+    'image': 'jpeg',
+    'class': 'int'
+}
+
+# Shard compression, if any
+compression = 'zstd'
+
+# Save the samples as shards using MDSWriter
+with MDSWriter(out=data_dir, columns=columns, compression=compression) as out:
+    for i in range(10000):
+        sample = {
+            'image': Image.fromarray(np.random.randint(0, 256, (32, 32, 3), np.uint8)),
+            'class': np.random.randint(10),
+        }
+        out.write(sample)
+</code></pre>
+	<p>データセットが変換されたら、R2にアップロードできます。以下では、`<code>awscli</code>`コマンドラインツールを使って説明しますが、`wrangler`やお好みのS3互換ツールを使うこともできます。StreamingDatasetは、近日中にR2へのクラウド直接書き込みにも対応する予定です！</p>
+	<pre><code>$ aws s3 cp --recursive path-to-dataset s3://my-bucket/folder --endpoint-url $S3_ENDPOINT_URL
+</code></pre>
+	<p>最後に、R2バケットへの読み込みアクセス権を持つデバイスにデータを読み込むことができます。個々のサンプルをフェッチし、データセット上でループし、標準的なPyTorchのデータローダーにフィードできます。 </p>
+	<pre><code class="language-python">from torch.utils.data import DataLoader
+from streaming import StreamingDataset
+
+# Make sure that R2 credentials and $S3_ENDPOINT_URL are set in your environment    
+# e.g. export S3_ENDPOINT_URL="https://[uid].r2.cloudflarestorage.com"
+
+# Remote path where full dataset is persistently stored
+remote = 's3://my-bucket/folder'
+
+# Local working dir where dataset is cached during operation
+local = '/tmp/path-to-dataset'
+
+# Create streaming dataset
+dataset = StreamingDataset(local=local, remote=remote, shuffle=True)
+
+# Let's see what is in sample #1337...
+sample = dataset[1337]
+img = sample['image']
+cls = sample['class']
+
+# Create PyTorch DataLoader
+dataloader = DataLoader(dataset)
+</code></pre>
+	<p>StreamingDatasetは、高いパフォーマンス、弾力的な決定性、高速な再開、マルチワーカーサポート機能を備えており、すぐに利用できます。また、ダウンロードの帯域幅を最小限に抑えるために、スマートシャッフリングと分散を使用しています。LLMや拡散モデルなどのさまざまなワークロードにおいて、R2のようなオブジェクトストアからトレーニングする場合、トレーニングスループットに影響がない（dataloaderのボトルネックがない）ことが分かっています。詳細は、StreamingDatasetの<a href="https://www.mosaicml.com/blog/mosaicml-streamingdataset?ref=blog.cloudflare.com" target="_blank">発表をお知らせするブログ</a>をご確認ください！</p>
+	<h3 id="composer%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fr2%E3%81%B8%E3%81%AE%E3%83%A2%E3%83%87%E3%83%AB%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">Composerを使ったR2へのモデルチェックポイントの読み込み/書き込みについて</h3>
+	<p>トレーニングループにデータをストリーミングすることで問題の半分は解決しますが、モデルのチェックポイントをどのようにロード/保存するのでしょうか？幸い、 <a href="https://github.com/mosaicml/composer?ref=blog.cloudflare.com" target="_blank">Composer</a>のようなトレーニングライブラリを使用すれば、R2パスを指定するのと同じくらい簡単です！ </p>
+	<pre><code class="language-Python">from composer import Trainer
+...
+
+# Make sure that R2 credentials and $S3_ENDPOINT_URL are set in your environment
+# e.g. export S3_ENDPOINT_URL="https://[uid].r2.cloudflarestorage.com"
+
+trainer = Trainer(
+        run_name='mpt-7b',
+        model=model,
+        train_dataloader=train_loader,
+        ...
+        save_folder=s3://my-bucket/mpt-7b/checkpoints,
+        save_interval='1000ba',
+        # load_path=s3://my-bucket/mpt-7b-prev/checkpoints/ep0-ba100-rank0.pt,
+    )
+</code></pre>
+	<p>Composerは非同期アップロードを使用して、トレーニング中にチェックポイントが保存される際の待ち時間を最小限に抑えます。また、マルチGPUやマルチノードのトレーニングでもすぐに動作し、 <strong>共有ファイルシステムを必要としません。</strong>つまり、コンピューティングクラスターに高価なEFS/NFSシステムを設定する必要がなく、パブリッククラウドで毎月数千ドル以上を節約できることを意味します。インターネット接続と適切な認証情報さえあれば、チェックポイントはR2バケットに安全に到達し、プライベートモデル用のスケーラブルで安全なストレージを提供します。</p>
+	<h3 id="mosaicml%E3%81%A8r2%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%80%81%E3%81%A9%E3%81%93%E3%81%A7%E3%82%82%E5%8A%B9%E7%8E%87%E3%82%88%E3%81%8F%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B">MosaicMLとR2を使って、どこでも効率よくトレーニングができる</h3>
+	<p>上記のツールとCloudflare R2を併用することで、ユーザーはトレーニング用ワークロードをあらゆるコンピューティングプロバイダー上で自由に実行でき、切り替えコストもゼロになります。</p>
+	<p>図Xでは、MosaicMLトレーニングプラットフォームを使って、Oracle Cloud Infrastructure上でLLMトレーニングジョブを起動し、データをストリームインし、チェックポイントをR2にアップロードしています。途中でジョブを一時停止し、Amazon Web Services上の別のGPUセットでシームレスに再開します。Composerは、R2で最後に保存したチェックポイントからモデルの重みをロードし、ストリーミングデータローダーは瞬時に正しいバッチに再開されます。トレーニングは決定的に続きます。最後に、再びGoogle Cloudに移動して実行を終了します。 </p>
+	<p>3つのクラウドプロバイダーでLLMをトレーニングするため、私たちが支払うコストはGPUコンピューティングとデータストレージのみです。Cloudflare R2により、エグレス料金は発生せず、ロックインを避けることができます！</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/05/image2-19.png" class="kg-image" alt="MosaicMLトレーニングプラットフォームとCloudflare R2を使用して、3つの異なるクラウドプロバイダー間でゼロエグレス料金でLLMトレーニングジョブを実行。" loading="lazy" width="1999" height="1304">
+		<figcaption><em>MosaicMLトレーニングプラットフォームとCloudflare R2を使用して、3つの異なるクラウドプロバイダー間でゼロエグレス料金でLLMトレーニングジョブを実行。</em></figcaption>
+	</figure>
+	<pre><code>$ mcli get clusters
+NAME            PROVIDER      GPU_TYPE   GPUS             INSTANCE                   NODES
+mml-1            MosaicML   │  a100_80gb  8             │  mosaic.a100-80sxm.1        1    
+                            │  none       0             │  cpu                        1    
+gcp-1            GCP        │  t4         -             │  n1-standard-48-t4-4        -    
+                            │  a100_40gb  -             │  a2-highgpu-8g              -    
+                            │  none       0             │  cpu                        1    
+aws-1            AWS        │  a100_40gb  ≤8,16,...,32  │  p4d.24xlarge               ≤4   
+                            │  none       0             │  cpu                        1    
+oci-1            OCI        │  a100_40gb  8,16,...,64   │  oci.bm.gpu.b4.8            ≤8  
+                            │  none       0             │  cpu                        1    
+
+$ mcli create secret s3 --name r2-creds --config-file path/to/config --credentials-file path/to/credentials
+✔  Created s3 secret: r2-creds      
+
+$ mcli create secret env S3_ENDPOINT_URL="https://[uid].r2.cloudflarestorage.com"
+✔  Created environment secret: s3-endpoint-url      
+               
+$ mcli run -f mpt-125m-r2.yaml --follow
+✔  Run mpt-125m-r2-X2k3Uq started                                                                                    
+i  Following run logs. Press Ctrl+C to quit.                                                                            
+                                                                                                                        
+Cloning into 'llm-foundry'...
+</code></pre>
+	<p><em>MCLIコマンドラインツールを使用して、コンピュートクラスタ、シークレット、サブミットランを管理する。</em></p>
+	<pre><code>### mpt-125m-r2.yaml ###
+# set up secrets once with `mcli create secret ...`
+# and they will be present in the environment in any subsequent run
+
+integrations:
+- integration_type: git_repo
+  git_repo: mosaicml/llm-foundry
+  git_branch: main
+  pip_install: -e .[gpu]
+
+image: mosaicml/pytorch:1.13.1_cu117-python3.10-ubuntu20.04
+
+command: |
+  cd llm-foundry/scripts
+  composer train/train.py train/yamls/mpt/125m.yaml \
+    data_remote=s3://bucket/path-to-data \
+    max_duration=100ba \
+    save_folder=s3://checkpoints/mpt-125m \
+    save_interval=20ba
+
+run_name: mpt-125m-r2
+
+gpu_num: 8
+gpu_type: a100_40gb
+cluster: oci-1  # can be any compute cluster!
+</code></pre>
+	<p><em>MCLIジョブテンプレート。実行名、Dockerイメージ、コマンドセット、実行するコンピューティングクラスターの指定。</em></p>
+	<h3 id="%E4%BB%8A%E3%81%99%E3%81%90%E5%A7%8B%E3%82%81%E3%81%BE%E3%81%97%E3%82%87%E3%81%86">今すぐ始めましょう</h3>
+	<p>MosaicMLプラットフォームは、トレーニングを次のレベルに引き上げるための貴重なツールです。この記事では、Cloudflare R2が、あらゆるコンピューティングプロバイダー（あるいはそのすべて）を利用して、独自のデータでモデルをトレーニングできるようにする方法を探りました。R2のストレージはエグレス料金を排除することで、MosaicMLのトレーニングを補完し、最大限の自律性と制御を実現する非常に費用対効果の高い製品です。この組み合わせなら、時間の経過とともに組織のニーズに合わせてクラウドサービスプロバイダーを切り替えていくことが可能です。 <br><br>MosaicMLを使用して、お客様のデータでカスタムの最先端AIをトレーニングする方法については、 <a href="https://www.mosaicml.com/?ref=blog.cloudflare.com" target="_blank">こちら</a>をご覧いただくか、<a href="https://docs.google.com/forms/d/e/1FAIpQLSepW7QB3Xkv6T7GJRwrR9DmGAEjm5G2lBxJC7PUe3JXcBZYbw/viewform?ref=blog.cloudflare.com" target="_blank">当社までお問い合わせください</a>。</p>
+</div>

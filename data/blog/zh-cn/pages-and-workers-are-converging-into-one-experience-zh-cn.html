@@ -1,0 +1,61 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image4-13-6.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<p>今天，我们荣幸地宣布，Pages 和 Workers 将加入单一产品体验行列！ </p>
+	<p>我们都有过这样的经历。在灵感爆发时，脑海中想象着想要构建的应用程序，每个部分都如此清晰–也许是服务器端渲染的前端和后端 SQLite 数据库。当来到电脑前，坐在转椅上时。您知道只要使用合适的工具，自己可以将它构建出来。您登录了 Cloudflare 仪表板，但是此时需要面临一个艰难的决定： </p>
+	<p><em>选择 Cloudflare Workers 还是 Pages？ </em></p>
+	<p>这两种工具乍看之下非常相似，但是细节上却有所不同，那么哪一种工具可以将您的想法变为现实呢？如果选错了怎么办？这两种工具该如何取舍？这些问题本不该由用户来思考，但现实是，他们经常要面临这些考虑。与广大用户和客户群体进行交谈时，我们自己也听到了这样的声音！在 Pages 和 Workers 之间很难做出选择，因为这两项产品都是专为构建无服务器应用程序而设计。 </p>
+	<p>简而言之，我们不希望我们的用户继续面临这样的窘境，特别是灵思喷涌之际或者构思宏大创意之时。这就是为什么我们会如此激动地展示第一个里程碑，这是我们将这两项深受喜爱的产品—Workers 和 Pages 的优点融合至<strong>一个强大开发平台中！</strong>从此刻起，这两项产品有了相同的命运。借此机会，我们将为您介绍这样做的原因、现今可以使用的功能以及接下来的计划。</p>
+	<h2 id="%E6%9B%B4%E5%A4%9A%E2%80%9C%E5%8E%9F%E5%9B%A0%E2%80%9D">更多“原因”</h2>
+	<p>Pages 和 Workers 的关系相互交织。直至今天，我们也始终认为它们同宗同源，彼此具有各自鲜明的特征，但是都能够支持用户构建丰富强大的应用程序。这两种产品都有自己的使用情境。 </p>
+	<p>Workers 最初是拓展 <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn/" target="_blank">CDN</a> 的一种方式，后来成为高度可配置的通用计算平台。Pages 最初是静态 web 托管，后来拓展到 <a href="https://www.cloudflare.com/zh-cn/learning/performance/what-is-jamstack/" target="_blank">Jamstack</a> 领域。渐渐地，Pages 开始拥有更多 Workers 的强大计算功能，而 Workers 也开始加入 Pages 丰富的开发者功能。所以，这两项产品的界限变得模糊，让用户很难辨别其中的差别，从而很难根据自己的应用程序需求来选择正确的产品。</p>
+	<p>我们意识到我们可以做得更好，从而帮助您解决选择困难，加快您的开发进程。</p>
+	<h2 id="%E8%BF%99%E5%BE%88%E6%A3%92%EF%BC%8C%E4%BD%86%E6%98%AF%E6%82%A8%E6%83%B3%E8%A6%81%E8%A1%A8%E8%BE%BE%E4%BB%80%E4%B9%88%EF%BC%9F">这很棒，但是您想要表达什么？</h2>
+	<p>我们希望您能够同时利用两项产品的优势，而不需要被迫在两者之间做出取舍：我们将推出单一的开发平台，同时拥有强大的计算能力和超快的静态资产托管 – 与我们的存储产品组合（如 R2、Queues、D1 等）进行集成，提供丰富的工具，如 CI/CD、git-ops 工作流程、实时预览和灵活的环境配置。</p>
+	<h3 id="%E4%B8%80%E6%89%8B%E6%8E%8C%E6%8F%A1%E6%89%80%E6%9C%89%E7%BB%86%E8%8A%82">一手掌握所有细节</h3>
+	<p>现在，我们的很多开发人员都在同时使用 Pages 和 Workers 来构建应用程序。但是，Pages 和 Workers 仍然处于 Cloudflare 仪表板的不同位置，并未从一个变为另一个，因此很难进行应用栈的合并和追踪。虽然我们仍在对外观和感觉进行设想，但是我们正计划支持用户在一个集中区域管理所有的应用程序。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image1-44.png" class="kg-image" alt="" loading="lazy" width="1208" height="543"></figure>
+	<p>不必再在仪表板上到处寻找应用程序，所需项目信息均可触手可得。</p>
+	<h3 id="%E5%8E%9F%E8%AF%AD">原语</h3>
+	<p>由于 Pages 和 Workers 进行了融合，我们也将重新定义“项目”，引入空白画布，实现即插即用。在项目中，您将能够添加 (1) 静态资产、(2) 无服务器功能 (Workers)、(3) 资源或 (4)任意功能的组合 </p>
+	<p>要释放应用程序的全部潜力，我们正对项目功能进行探索，项目功能允许您自动配置并直接整合资源，如 KV、Durable Objects、R2 和 D1。更重要的是，如果这些原语都能够集中在一个项目上，您将能够安全地执行回滚和预览操作，因为我们将在每次部署时保持资产、功能和资源的版本同步。不必担心部署之后它们会过时。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image5-8.png" class="kg-image" alt="" loading="lazy" width="1208" height="592"></figure>
+	<h3 id="%E9%83%A8%E7%BD%B2">部署</h3>
+	<p>Pages 最显著的特征是以 git-ops 为中心的部署。在我们的融合平台中，您将能够选择性地连接、构建和部署 git 存储库，其中包含静态资产、无服务器功能和资源绑定的任意组合，以及利用当今 Pages 中已有的高性能 CI 系统。 </p>
+	<p>与 Pages 相同，您将能够通过 Cloudflare Access 中受保护的 URL 预览项目部署，此功能可通过 PR 和 Wrangler 命令获得。我们深知伟大的构想在发布前需要进行大量检查，因此我们也将提供一流的环境，可以在不同的设置下进行测试。</p>
+	<h3 id="%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91">本地开发</h3>
+	<p>可以说，我们要考虑的最重要的部分之一，就是如何在后融合时代进行本地部署。这类开发人员经验应该与我们融合产品的方式没有什么不同。未来使用我们的 Wrangler CLI 工作时，您将能够在项目中使用一套统一的和可预测的命令，例如简单的 “wrangler dev”和“wrangler deploy”。通过使用适用整个项目和所有组成部分的配置文件，您可以保证命令将用于整个项目，而不是其中的一部分！</p>
+	<h2 id="%E4%BC%98%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">优点是什么？</h2>
+	<p>通过 Workers 和 Pages 的融合，我们不仅将每项产品的绝佳功能集中于一个开发平台上。我们还具备了所有的性能、成本和负载优势。包括： </p>
+	<ul>
+		<li><strong>超低延迟</strong>，全球 95% 的互联网人口只需 50ms 就能够在我们的网络中使用全球分布的静态资产和计算。</li>
+		<li><strong>免费出口</strong>和免费静态资产托管。</li>
+		<li><strong>基于标准的 JavaScript 运行时</strong>与您所熟悉的程序包和库完美兼容。</li>
+	</ul>
+	<h2 id="%E4%B8%BA%E6%89%80%E6%9C%89%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BE%9B%E6%97%A0%E7%BC%9D%E8%BF%81%E7%A7%BB">为所有项目提供无缝迁移</h2>
+	<p>如果您已经是 Pages 或 Workers 的用户，并担忧此次变化会对您拥有的工具产生影响，完全不用担心。构建该合并架构时，无缝迁移是我们的首要考虑事项，也是统一开发平台每个构建步骤的指导中心。Pages 和 Workers 上的现有项目将继续运行，用户无需进行任何操作。相反，无论开始使用的是哪项产品，您都会发现可以使用的功能越来越多，从而丰富了您现有项目和工作流程<strong>。</strong></p>
+	<h2 id="%E7%8E%B0%E5%9C%A8%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B0%E5%8F%98%E5%8C%96%EF%BC%9F">现在有什么新变化？</h2>
+	<p>我们将努力在明年实现对 Pages 和 Workers 合二为一，同时将产品、工程和设计团队进行融合，而不仅仅是融合产品本身。</p>
+	<p>虽然我们已迫不及待地欢迎您进入全新的融合时代，但是此次变革不会一蹴而就。我们计划在接下来的几个季度中渐进式地实现重大突破，从而顺利实现融合的过渡，我们很高兴能在 Developer Week 迈出实现融合的第一步。仪表板可能会有一些变化！</p>
+	<h3 id="%E5%90%8C%E6%97%B6%E5%90%AF%E7%94%A8">同时启用</h3>
+	<p>如果在一个流程中合并登入 Pages 和 Workers，在创建项目时您会发现仪表板上有一些变化。我们通过对创建流程进行统一，支持您在同一个窗口创建 Pages 或 Workers 项目，从而渐渐缩小两项产品的差别。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image2-25.png" class="kg-image" alt="" loading="lazy" width="1208" height="582"></figure>
+	<h3 id="%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87">使用模板提高效率</h3>
+	<p>我们理解通常开发者都会迫切想要立刻亲自操作并逐步实现设想。我们正努力简化这个过程，在 Cloudflare 网络上更加轻松地实现构想成为应用程序的蜕变。只需几个简单操作，您就可以完成入门模板的部署，包括从简单的 Hello World Worker 到 ChatGPT 插件。未来，我们将在仪表板上加入 Pages 模板，允许您自动创建新的存储库并通过几个按钮部署入门全栈应用。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image6-8.png" class="kg-image" alt="" loading="lazy" width="1208" height="304"></figure>
+	<h3 id="%E6%82%A8%E6%9C%80%E5%96%9C%E7%88%B1%E7%9A%84%E5%85%A8%E6%A0%88%E6%A1%86%E6%9E%B6%E8%A7%A6%E6%89%8B%E5%8F%AF%E5%8F%8A">您最喜爱的全栈框架触手可及</h3>
+	<p>我们不会止步与静态模板或仪表板。加入您所选择的框架并不意味着您需要抛弃已熟知和喜爱的工具。如果您很想了解我们所说的“使用您最喜爱的全栈框架进行部署”或“了解 Workers 的力量”是指什么，只需在您的终端执行以下操作：</p><!--kg-card-begin: markdown-->
+	<pre><code>npm create cloudflare@latest
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>尽情体验吧！<a href="https://blog.cloudflare.com/making-cloudflare-for-web">http://blog.cloudflare.com/making-cloudflare-for-web全新 CLI 集成了</a>一流、稳固支持的全栈框架的 CLI，如 Angular、Next、Qwik 和 Remix，让您可以全面掌控新项目的创建。在此工具中，您还可以使用强大的入门模板部署各种 Workers，类似向导一样的功能。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/729d2f3c66c717696b784e01b30d6e64/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F729d2f3c66c717696b784e01b30d6e64%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p><!--kg-card-end: html-->
+	<h3 id="%E4%B8%80%E5%A4%84%E5%8D%B3%E5%8F%AF%E6%89%BE%E5%88%B0%E6%89%80%E6%9C%89%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F">一处即可找到所有应用程序</h3>
+	<p>通过将 Pages 和 Workers 项目列表仪表板进行融合，我们向统一体验又迈进一步。部署应用程序之后，您会发现所有的 Pages 和 Workers 出现在一个页面上，无需导航到仪表板的其他部分。一处即可追踪 Workers/Pages Functions 的使用分析。未来，这些标签卡不再显示为 Pages 和 Workers，而是带有资产、功能和资源组合的“项目”！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image3-14.png" class="kg-image" alt="" loading="lazy" width="1554" height="824"></figure>
+	<h2 id="%E6%8E%A5%E4%B8%8B%E6%9D%A5%EF%BC%9F">接下来？</h2>
+	<p>在我们开始执行此变革后，我们会解锁每个平台的功能，您会发现这两项产品越来越相似，直至可以成为同一项产品，例如 Worker 的 git 集成和 Pages 项目的配置文件！</p>
+	<p>请关注<a href="https://twitter.com/CloudflareDev" target="_blank"> Twitter</a>，了解最新功能和更多关于里程碑项目的内容。</p>
+	<h2 id="%E4%BB%BB%E4%BD%95%E6%84%8F%E8%A7%81%EF%BC%9F">任何意见？</h2>
+	<p>当然，我们会积极听取社群的声音，这样才能打造卓越的平台。事实上，<a href="https://docs.google.com/forms/d/1I48UoUpCH6GS1pkZJ_B0W-lTXqn1LeoHp8ILJlRo5dY/viewform?edit_requested=true" target="_blank">我们已经发起一项调查</a>来收集关于用户的更多信息以及接受客户的改进反馈。如果您有几分钟的时间，可以填写调查或通过 <a href="https://discord.com/invite/cloudflaredev" target="_blank">Cloudflare Developers Discord</a> 或 <a href="https://twitter.com/CloudflareDev" target="_blank">Twitter @CloudflareDev</a> 联系我们。</p>
+</div>

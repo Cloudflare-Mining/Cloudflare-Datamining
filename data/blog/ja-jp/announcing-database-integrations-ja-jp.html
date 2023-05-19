@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image1-29.png" class="kg-image" alt="Announcing database integrations: four clicks to connect to Neon, PlanetScale and Supabase on Workers" loading="lazy" width="1600" height="900"></figure>
+	<p>開発者としての最高の喜びのひとつは、自分のアイデアが実現するのを見ることです。迅速に移行したい場合、Cloudflareの開発者プラットフォームは、数分以内にアプリケーションを0から100にするためのツールを提供します。 </p>
+	<p>開発者の士気を落とすことの1つは、次のような質問です：<em>「Workers で使用できるデータベースは何ですか？」</em>です。Workersが接続できるデータベース、Workersと互換性のある適切なライブラリやドライバを見つけること、定型文の例を当社の開発者プラットフォームで実行可能なものに変換するなどという場合に、開発者はつまずきます。</p>
+	<p>本日、Database Integrationsを発表しました–Workers上で選択したデータベースとシームレスに接続できるようになります。まず、HTTP接続をサポートする最も人気のあるデータベースをいくつか追加しました：Neon、PlanetScale、Supabaseを追加し、今後も（Prisma、Fauna、MongoDB Atlasなど）追加していく予定です！</p>
+	<h2 id="%E8%A8%AD%E5%AE%9A%E3%82%88%E3%82%8A%E3%82%82%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E9%87%8D%E7%82%B9%E3%82%92%E7%BD%AE%E3%81%8D%E3%81%BE%E3%81%99">設定よりもコードに重点を置きます</h2>
+	<p>当社のサーバーレスSQLデータベース、D1は、昨年オープンアルファ版として発売され、生産準備に引き続き投資をしています（今週末のエキサイティングなアップデートにご注目ください！）。また、データベースには多くの種類があることを認識しており、開発者が自分にとって最適なものを自由に選択し、それを当社の強力なコンピューティング製品と組み合わせることができるようにしたいと考えています。 </p>
+	<p>Developer Week 2023の2日目では、データが脚光を浴びています。当社は、Workersからのデータベースへの接続を可能にし、より高性能にするという大きな一歩を踏み出しています（ネタばれ注意！）：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases/">Cloudflare WorkersからTCP経由であらゆるサービスと通信をします</a> </li>
+		<li><a href="https://blog.cloudflare.com/announcing-database-integrations/">Smart Placementは、遅延を最小限に抑えコードを自動的に実行します</a></li>
+	</ul>
+	<p>それを可能にし、高性能にすることは始まりにすぎません。また、データベースに簡単に接続できるようにしたいと考えています。データベースには、立ち上げて稼働させるために理解する必要がある特定のプロトコル、ドライバー、API、およびベンダー固有の機能があります。Database Integrationsで、このプロセスをきわめて簡単なものにしたいと考えています。</p>
+	<p>初めてのプロジェクトの取り組みでも、100回目のプロジェクトの取り組みでも、目をつぶっていても、選択したデータベースに接続できるようにする必要があります。Database Integrationsで、設定に集中する時間を減らし、好きなことをする–アプリケーションの構築により多くの時間を費やすことができます！</p>
+	<h2 id="%E3%81%93%E3%81%AE%E4%BD%93%E9%A8%93%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E3%82%82%E3%81%AE%E3%81%AA%E3%81%AE%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%81%8B%EF%BC%9F">この体験はどのようなものなのでしょうか？</h2>
+	<h3 id="%E7%99%BA%E8%A6%8B%E5%8F%AF%E8%83%BD%E6%80%A7">発見可能性</h3>
+	<p>ゼロからプロジェクトを開始する場合、またはWorkersを既存のデータベースに接続したい場合、<em>「私の選択肢は何ですか？」</em>を知りたいのです。</p>
+	<p>Workersは、HTTP経由で豊富なデータベースプロバイダーへの接続をサポートします。新しくリリースされた<a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases/">アウトバウンドTCPサポート</a>により、Workers上で接続可能なデータベースは増える一方です！</p>
+	<p>新しい[統合]タブでは、当社がサポートするすべてのデータベースを表示でき、ここから直接Workerに統合を追加できます。まず、Neon、PlanetScale、Supabaseをサポートし、さらに多くのサポートをしていく予定です。 &nbsp;</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image2-10.png" class="kg-image" alt="Cloudflareダッシュボード上のDatabase Integrations" loading="lazy" width="1999" height="1247"></figure>
+	<h3 id="%E8%AA%8D%E8%A8%BC">認証</h3>
+	<p>データベースの認証情報や接続文字列の他の部分をコピー＆ペーストする必要はありません。</p>
+	<p>[統合の追加]をクリックすると、データベースプロバイダーから適切な設定を自動的に取得し、暗号化された環境変数としてWorkersに追加するOAuth2フローをご案内します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/integration-flow.png" class="kg-image" alt="データベースとWorker間の統合を設定します" loading="lazy" width="1714" height="1594"></figure>
+	<p>認証情報を設定したら、データプラットフォームのクライアントライブラリの使用を開始する方法の例に関する当社の<a href="https://developers.cloudflare.com/workers/learning/integrations/databases/?ref=blog.cloudflare.com#native-database-integrations-beta" target="_blank">ドキュメンテーション</a>を確認してください。さらに–より早く開始できるようにテンプレートも用意しています！</p>
+	<p>以上です！Database Integrationsを使用すると、数回クリックするだけでWorkerをデータベースに接続できます。[Worker ] &gt; [設定] &gt; [統合]に移動して、今すぐお試しください。</p>
+	<h2 id="%E4%BB%8A%E5%BE%8C%E3%81%AE%E5%B1%95%E9%96%8B%E3%81%AF%EF%BC%9F">今後の展開は？</h2>
+	<p>Database Integrationsは、ほんの始まりにすぎず、まもなくさらに多くを追加していく予定です！</p>
+	<p>当社は、引き続き、より人気のあるデータプラットフォームのサポートを追加していきますが、移り変わる状況についていくことは不可能であることも承知しています。あらゆるデータベースプロバイダーが、Workersとの独自の統合を簡単に構築できるように、統合プラットフォームに取り組んできました。開発者として、これは、次の新しいデータベースをWorkers上ですぐに利用を開始できることを意味します。 </p>
+	<p>さらに、CLIから直接統合の作成ができるように、wranglerサポートの追加に取り組んでいます。また、アカウント内のWorker全体で統合を共有するために、アカウントレベルの環境変数のサポートを追加する予定です。 <br><br>当社は、ここでの可能性と、開発者たちの新しい作品を見ることをとても嬉しく思います！必ず<a href="https://discord.gg/cloudflaredev?ref=blog.cloudflare.com" target="_blank">Cloudflare開発者Discord</a>に参加して、お客様のプロジェクトを共有してください。構築おめでとうございます！</p>
+</div>
