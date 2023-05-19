@@ -1,25 +1,29 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/performance/why-minify-javascript-code/",
+	"path": "/learning/performance/glossary/what-is-image-compression/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "3H3xQ5yXFxBSRu0DUjfGx0",
-				"urlSlug": "performance/why-minify-javascript-code",
+				"contentfulId": "3SIXxuIRJgjnTj8g2hlqF8",
+				"urlSlug": "performance/glossary/what-is-image-compression",
 				"metaTags": {
-					"metaTitle": "Why minify JavaScript code?",
-					"metaDescription": "Minification modifies JavaScript files and makes them compact, thereby improving website performance.",
+					"metaTitle": "What is image compression?",
+					"metaDescription": "Image compression is a process that makes image files smaller. Learn how to compress an image, and the difference between lossy and lossless image compression.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4otLmvV5Jsz4sjBxyMNi5I/0b6516a150d683384d5364fe6c089d38/performance-lc.png"
 						}
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4otLmvV5Jsz4sjBxyMNi5I/0b6516a150d683384d5364fe6c089d38/performance-lc.png"
+						}
+					}
 				},
-				"metaTitle": "Why Minify JavaScript Code?",
-				"metaDescription": "Minification modifies JavaScript files and makes them compact, thereby improving website performance.",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "3EXwEdnC7JnXLjoWOxHdT9",
@@ -523,12 +527,14 @@
 						]
 					}
 				},
-				"header": "Why minify JavaScript code?",
-				"blurbSubHeader": "By reducing file sizes, JavaScript minification can improve webpage performance.",
-				"objectivesHeader": "JS Minification",
+				"header": "What is image compression?",
+				"blurbSubHeader": "Compressing an image reduces its file size. Image compression can be either lossy or lossless.",
+				"objectivesHeader": "Image Compression",
 				"objectivesList": [
-					"Define JavaScript minification",
-					"Learn about uglification, obfuscation, and encryption"
+					"Define image compression",
+					"Explain why compression is important for image optimization",
+					"Contrast lossy vs. lossless image compression",
+					"Understand common image compression methods and algorithms"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
@@ -540,43 +546,43 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
-						"displayText": "Why Site Speed Matters",
-						"url": "/learning/performance/why-site-speed-matters/"
+						"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+						"displayText": "What is Latency?",
+						"url": "/learning/performance/glossary/what-is-latency/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
-						"displayText": "How Site Speed Boosts SEO",
-						"url": "/learning/performance/how-website-speed-boosts-seo/"
+						"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+						"displayText": "What is Load Balancing?",
+						"url": "/learning/performance/what-is-load-balancing/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "787jBq0LeOM6UkZuvDQNQW",
-						"displayText": "Making a Site Mobile Friendly",
-						"url": "/learning/performance/how-to-make-a-site-mobile-friendly/"
+						"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+						"displayText": "Core Web Vitals",
+						"url": "/learning/performance/what-are-core-web-vitals/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
-						"displayText": "Speed and Conversion Rates",
+						"contentfulId": "7moLeG9MM9pqBp3ACdPg1i",
+						"displayText": "Performance and Conversion Rates",
 						"url": "/learning/performance/more/website-performance-conversion-rates/"
 					}
 				],
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is minification in JavaScript?</h2>\n\n<p>Minification, also known as minimization, is the process of removing all unnecessary characters from JavaScript source code without altering its functionality. This includes the removal of whitespace, comments, and semicolons, along with the use of shorter variable names and functions. Minification of JavaScript code results in compact file size.</p>\n\n<p>For example, here is a block of code before and after minification:</p>\n\n<p>Before minification: eight lines of code</p>\n\n<img src= \"https://www.cloudflare.com/img/learning/cdn/performance/cdn-code-before-minification.png\" class=\"responsive-image\" alt=\"JavaScript Without Minification\" itemprop=\"image\"/>\n\n<p>After minification: A single line of code</p>\n\n<img src= \"https://www.cloudflare.com/img/learning/cdn/performance/cdn-code-after-minification.png\" class=\"responsive-image\" alt=\"JavaScript With Minification\" itemprop=\"image\"/>\n\n<p>Minification speeds up webpage loading, thereby improving website experience, making both visitors and search engines happy.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How is minification different from obfuscation, compression, encryption, or uglification?</h2>\n\n<ul class=\"learning-list\">\n  <li><strong>Uglification:</strong> This essentially the same as minification. Uglify JS is a JavaScript library for minifying JavaScript files. To 'uglify' a JavaScript file is to minify it using Uglify. Uglification improves performance while reducing readability.</li>\n  <li><strong>Encryption:</strong> This is the process of translating data, called plain data, into encoded data. This encrypted, or encoded, data is known as ciphertext, and needs a secret key in order to decrypt it. The browser cannot execute encrypted code. Encryption is a security feature, and does not necessarily reduce the size of a file.\n</li>\n  <li><strong>Obfuscation:</strong> This process is employed in order to hide business logic. The code is modified such that it becomes unreadable by humans. This makes reverse engineering difficult. Obfuscation is different from encryption in that computers are still able to understand and execute the code. Obfuscation is accomplished by changing the names of variables, functions, and members. The resulting reduction in file size also improves performance, though this is not the primary goal of obfuscation.</li>\n  <li><strong>Compression:</strong> Data compression is a process that reduces the number of bits needed to represent data. Data compression can free up valuable space on hard drives, speed up file transfer, and decrease costs for network bandwidth. Some files, like Microsoft Word files, may be compressed to 90 percent of their original size.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why don't developers write minified code to begin with?</h2>\n\n<p>Minification results in compact files, which makes it a web performance best practice. So, why not write code that is already minified?</p>\n\n<p>JavaScript code is written for, and by, humans, who need whitespace, formatting, and comments to be able to understand and debug the code. After the code is written, minifying software can be used in order to improve performance. This is because browsers can execute code without needing to understand it.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the disadvantages of minification?</h2>\n\n<p>Minification can break complicated scripts because of site-dependent variables like themes, plugins, and server environment. Also, minification must be done in conjunction with other performance tuning. On its own, it might not provide significant gains. Minification can also introduce errors that are hard to debug.</p>\n\n<p>Despite these disadvantages, minification is usually worth attempting for potential performance gains. Learn how to <a href='/learning/performance/how-to-minify-css/'>minify CSS</a> as well.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is image compression?</h2>\n\n<p>Image compression is a process that makes image files smaller. Image compression most often works either by removing bytes of information from the image, or by using an image compression algorithm to rewrite the image file in a way that takes up less storage space. Compressing an image is an effective way to ensure that the image loads quickly when a user interacts with a website or application. It is an important part of <a href='/learning/performance/glossary/what-is-an-image-optimizer/'>image optimization</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is image compression important?</h2>\n\n<p>Compressed images load faster than uncompressed images. This matters because the speed at which webpages and applications load has a huge impact on <a href='/learning/performance/how-website-speed-boosts-seo/'>SEO</a>, <a href='/learning/performance/more/website-performance-conversion-rates/'>conversion rates</a>, the user's <a href='/learning/performance/what-is-digital-experience-monitoring/'>digital experience</a>, and other crucial metrics. Improving <a href='/learning/performance/why-site-speed-matters/'>web performance</a> is one of the major ways that developers optimize websites.</p>\n\n<p>Image compression is typically used alongside <a href='/learning/performance/speed-up-a-website/'>other methods</a> for improving web performance as well. For instance, a <a href='/learning/cdn/what-is-a-cdn/'>CDN</a> caches content to deliver it more quickly to end users. <a href='/learning/performance/what-is-load-balancing/'>Load balancing</a> helps prevent web servers from becoming overloaded. The use of <a href='/learning/performance/what-is-lazy-loading/'>lazy loading</a> can allow the most important content of a webpage to load even faster. Overall, however, image compression is often one of the quickest ways of fixing slow page performance.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is lossy image compression?</h2>\n\n<p>Consider a traveler packing clothes for a trip. It is possible for the traveler to pack everything in their closet, from shoes to hats to formalwear. But such an approach results in a large amount of luggage that the traveler needs to carry around, slowing them down and perhaps costing more money to transport. Instead, the traveler selects the most important clothing items and packs them into a single suitcase.</p>\n\n<p>Just as our traveler did not need to pack their entire wardrobe, people rarely need to view an entire image in its maximum resolution and largest dimensions. (The most-used desktop screen size is 1680x1050 pixels, and the most-used mobile screen size is even smaller, at 360x800 pixels. Even at those dimensions, it is rare that an image takes up the entire screen.) Usually, an image can be reduced in quality and size in a way that is not noticeable to the typical viewer — an approach that is called \"lossy\" image compression.</p>\n\n<p>Lossy image compression retains the most significant information for the image without keeping every single pixel. There are several types of lossy compression algorithms, described in more detail below. But all work by removing information from the image file so that the file is comprised of fewer bytes.</p>\n\n<h4 class=\"learning-content-h4\">Lossy image compression methods</h4>\n\n<p>Many images hosted on the web are in a file format that uses lossy compression. This ensures the images load quickly and do not use too much bandwidth. Common examples of lossy compression methods include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>JPEG:</strong> This file format, named after the Joint Photographic Experts Group, is perhaps the most widely used image compression method. It can usually compress files by a ratio of 10:1 with a minimal reduction in image quality. More recent versions of JPEG include JPEG 2000 and JPEG XR, but many browsers do not support these formats.</li>\n  <li><strong>WebP:</strong> While WebP also supports lossless compression, it is more commonly used for lossy image compression. Google originally developed WebP to replace the JPEG, PNG, and GIF file formats.</li>\n  <li><strong>High Efficiency Image Format (HEIF):</strong> The High Efficiency Image Format (HEIF) is a type of container file for compressed images. Images compressed with this method are sometimes called HEIC files.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is lossless image compression?</h2>\n\n<p>If our traveler's desired clothes do not fit in the suitcase, they may try re-folding and rearranging the clothes to make them fit better. Similarly, \"lossless\" image compression uses mathematical algorithms to rewrite an image file without removing any information. An image treated with lossless compression should appear basically identical to the original, but should have a much smaller file size.</p>\n\n<p>While lossless compression can reduce image file sizes by as much as 40%, it is still less effective than lossy compression for reducing file size and optimizing images for the web. Website builders should carefully consider the needs of their end users and <a href='/learning/performance/test-the-speed-of-a-website/'>test the speed of their websites</a> when deciding between lossy and lossless image compression.</p>\n\n<h4 class=\"learning-content-h4\">Lossless compression methods</h4>\n\n<p>Widely used lossless compression methods include:</p>\n\n<ul class=\"learning-list\">\n  <li><em>Portable Network Graphics (PNG)</em>, which is sometimes used on the web instead of JPEG or WebP.</li>\n  <li><em>Graphics Interchange Format (GIF)</em>, often used on the web as well.</li>\n  <li><em>Bitmap (BMP)</em> files are usually too large for practical use on the web.</li>\n  <li><em>RAW</em> images are not compressed at all. Digital cameras shoot photos in RAW, but the photos should be converted to another format and compressed before they are used on a website (unless the website is specifically intended for displaying extremely high-quality images).</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are some common image compression algorithms?</h2>\n\n<p>Both lossy and lossless compression methods use various image compression algorithms (an algorithm is a set of rules for a computer to follow) to achieve smaller file sizes. Transform coding, run-length encoding, arithmetic coding, LZW, flate/deflate, and Huffman coding are all examples of image compression algorithms.</p>\n\n<p><strong>Transform coding</strong> is a lossy image compression algorithm that often uses a technique called discrete cosine transform (DCT), which is a way to mathematically represent a file using less information. JPEG relies on transform coding.</p>\n\n<p><strong>Run-length encoding (RLE)</strong> is a lossless compression algorithm that encodes repeated pixels. For instance, if there are eight white pixels in a row, instead of writing out all eight pixels (like WWWWWWWW), it records the number of pixels (like 8W).</p>\n\n<p><strong>Arithmetic coding</strong> is another kind of lossless compression algorithm. Like any digital file, digital images are represented on lower computational levels with a string of characters. Arithmetic coding encodes frequently used characters in an image file with fewer bits and less-used characters with more bits. The result is fewer bits overall compared to the original string of characters.</p>\n\n<p><strong>Huffman coding</strong> is somewhat similar to arithmetic encoding, but usually does not reduce file size by quite as much.</p>\n\n<p><strong>LZW</strong> — the Lempel–Ziv–Welch algorithm is a lossless compression method based on LZ77 and LZ78, two older compression algorithms. </p>\n\n<p><strong>Flate/deflate</strong> is a lossless compression algorithm based on Huffman coding and LZ77 compression.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to compress an image using Cloudflare</h2>\n\n<p>Cloudflare offers three products for storing, caching, optimizing, and resizing images to ensure they load as quickly as possible:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/products/cloudflare-images/' target='_blank'>Cloudflare Images</a></li>\n  <li><a href='https://developers.cloudflare.com/images/image-resizing/' target='_blank'>Cloudflare Image Resizing</a></li>\n  <li><a href='https://developers.cloudflare.com/images/polish/' target='_blank'>Cloudflare Polish</a></li>\n</ul>\n\n<p>With these services, website owners can optimize images with a click, convert images to compressed file formats like WebP, and customize which image sizes load for which devices. Learn more about these services in the links above, or <a href='/plans/'>get started with a Cloudflare plan here</a>.</p>",
 				"availableLocales": null,
-				"localized": true,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -588,7 +594,7 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale",
 					"elGR": "English for Locale",
 					"nbNO": "English for Locale"
@@ -599,20 +605,11 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "3H3xQ5yXFxBSRu0DUjfGx0",
-			"pathname": "/learning/performance/why-minify-javascript-code/",
+			"contentfulId": "3SIXxuIRJgjnTj8g2hlqF8",
+			"pathname": "/learning/performance/glossary/what-is-image-compression/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
