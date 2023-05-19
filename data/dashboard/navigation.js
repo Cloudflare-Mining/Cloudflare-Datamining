@@ -141,13 +141,13 @@ const navigation = {
 		url: "/security-center",
 		iconType: "product-security-center",
 		hasPermission: function(m) {
-			return (0, o.iY)(m) && (0, O.xU)(m)
+			return (0, o.iY)(m) && (0, C.xU)(m)
 		},
 		pages: [{
 			title: "navigation.account.security_center.security_insights",
 			url: "/security-center",
 			hasPermission: function(m) {
-				return (0, o.iY)(m) && (0, O.sL)(m)
+				return (0, o.iY)(m) && (0, C.sL)(m)
 			}
 		}, {
 			title: "navigation.account.security_center.security_analytics",
@@ -167,33 +167,33 @@ const navigation = {
 			title: "navigation.account.security_center.infrastructure",
 			url: "/security-center/inventory",
 			hasPermission: function(m) {
-				return (0, o.iY)(m) && (0, O.sL)(m)
+				return (0, o.iY)(m) && (0, C.sL)(m)
 			}
 		}, {
 			title: "navigation.account.security_center.investigate",
 			url: "/security-center/investigate",
 			hasPermission: function(m) {
-				return (0, o.iY)(m) && (0, O.TT)(m)
+				return (0, o.iY)(m) && (0, C.TT)(m)
 			}
 		}, {
 			title: "navigation.account.security_center.reports",
 			url: "/security-center/reports",
 			labels: ["beta"],
 			hasPermission: function(m) {
-				return (0, o.iY)(m) && (0, O.jD)(m)
+				return (0, o.iY)(m) && (0, C.jD)(m)
 			}
 		}, {
 			title: "navigation.account.security_center.brand_protection",
 			url: "/security-center/brand-protection",
 			labels: ["beta"],
 			hasPermission: function(m) {
-				return (0, o.iY)(m) && (0, O.BU)(m)
+				return (0, o.iY)(m) && (0, C.BU)(m)
 			}
 		}, {
 			title: "navigation.account.security_center.cfone",
 			url: "/cloudforce-one",
 			hasPermission: function(m) {
-				return (0, o.iY)(m) && (0, O.sK)(m)
+				return (0, o.iY)(m) && (0, C.sK)(m)
 			}
 		}]
 	}, {
@@ -510,7 +510,7 @@ const navigation = {
 			url: "/images/delivery-zones",
 			testId: "sidenav-delivery-zones-link",
 			hasPermission: function(m) {
-				return (0, o.IU)(m) && (0, C.b8)(m)
+				return (0, o.IU)(m) && (0, O.b8)(m)
 			},
 			labels: ["new"]
 		}]

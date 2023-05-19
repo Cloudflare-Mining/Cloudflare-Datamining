@@ -124,8 +124,8 @@ You will only be billed each month based on how many minutes you stream. If you 
 	country: "Country",
 	video_link: "Video Link",
 	storage: {
-		usage: (0, t.d)(M(), "currentMins"),
-		video_count: (0, t.d)(j()),
+		usage: (0, t.d)(j(), "currentMins"),
+		video_count: (0, t.d)(M()),
 		inadequateProposedPlan: (0, t.d)(U(), "minumumRequired", "currentMinutes"),
 		inputGreaterThanZero: "Please enter a number greater than zero",
 		inputWholeNumber: "Please enter a whole number",
@@ -525,6 +525,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/stream/).`
 	developer_resources: "Developer Resources",
 	get_help: "Get Help",
 	creator: "Creator",
+	mediaType: "Media Type",
 	direct_creator_uploads: "Direct Creator Uploads",
 	webhooks: "Webhooks",
 	player_api: "Player API",

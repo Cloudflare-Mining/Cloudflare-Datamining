@@ -888,7 +888,8 @@ If no alternative CAs are valid within the trust store, Cloudflare will not be a
 		order_success: "Your Advanced certificate has been created will be automatically deployed to our edge and served to your visitors once it has been validated",
 		order_success_autodcv: "Your Advanced certificate has been created will be automatically validated and deployed to our edge and served to your visitors.",
 		blocked_ent: "Please contact your Customer Success Manager to purchase ACM.",
-		current_plan_paranthetical: " (current plan)"
+		current_plan_paranthetical: " (current plan)",
+		banner: "Advanced Certificate Manager: Unlock more control and flexibility for your Certificates and SSL/TLS settings. <0>Activate></0>"
 	},
 	api: {
 		get_certificate_packs: "List Certificate Packs"
