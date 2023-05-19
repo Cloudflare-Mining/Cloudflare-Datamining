@@ -2023,7 +2023,8 @@
 	"navigator": {
 		"userAgent": {
 			"__proto": "object",
-			"__type": "string"
+			"__type": "string",
+			"__value": "Cloudflare-Workers"
 		}
 	},
 	"origin": {
@@ -3060,6 +3061,84 @@
 					"name": "undefined",
 					"prototype": "undefined"
 				}
+			}
+		},
+		"path": {
+			"resolve": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"normalize": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"isAbsolute": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"join": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"relative": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"toNamespacedPath": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"dirname": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"basename": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"extname": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"format": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"parse": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"sep": {
+				"__proto": "object",
+				"__type": "string",
+				"__value": "/"
+			},
+			"delimiter": {
+				"__proto": "object",
+				"__type": "string",
+				"__value": ":"
 			}
 		},
 		"process": {
