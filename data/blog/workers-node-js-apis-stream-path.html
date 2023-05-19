@@ -1,0 +1,133 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image2-33.png" class="kg-image" alt="More Node.js APIs in Cloudflare Workers — Streams, Path, StringDecoder" loading="lazy" width="1999" height="1125"></figure>
+	<p>Today we are announcing support for three additional APIs from Node.js in Cloudflare Workers. This increases compatibility with the existing ecosystem of open source npm packages, allowing you to use your preferred libraries in Workers, even if they depend on APIs from Node.js.</p>
+	<p>We recently<a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage/"> added support</a> for AsyncLocalStorage, EventEmitter, Buffer, assert and parts of util. Today, we are adding support for:</p>
+	<ul>
+		<li>Node.js <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams" target="_blank">Streams</a></li>
+		<li><a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/path" target="_blank">Path</a></li>
+		<li><a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/string-decoder/" target="_blank">StringDecoder</a></li>
+	</ul>
+	<p>We are also sharing a preview of a new module type, available in the <a href="https://github.com/cloudflare/workerd" target="_blank">open-source Workers runtime</a>, that mirrors a Node.js environment more closely by making some APIs available as globals, and allowing imports without the node: specifier prefix.</p>
+	<p>You can start using these APIs today, in the <a href="https://github.com/cloudflare/workerd" target="_blank">open-source runtime</a> that powers Cloudflare Workers, in local development, and when you deploy your Worker. Get started by <a href="https://developers.cloudflare.com/workers/platform/nodejs-compatibility/" target="_blank">enabling the nodejs_compat compatibility flag</a> for your Worker.</p>
+	<h3 id="stream">Stream</h3>
+	<p>The <a href="https://nodejs.org/dist/latest-v20.x/docs/api/stream.html" target="_blank">Node.js streams API</a> is the original API for working with streaming data in JavaScript that predates the <a href="https://streams.spec.whatwg.org/" target="_blank">WHATWG ReadableStream standard</a>. Now, a full implementation of Node.js streams (based directly on the <a href="https://www.npmjs.com/package/readable-stream" target="_blank">official implementation</a> provided by the Node.js project) is available within the Workers runtime.</p>
+	<p>Let's start with a quick example:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import {
+  Readable,
+  Transform,
+} from 'node:stream';
+
+import {
+  text,
+} from 'node:stream/consumers';
+
+import {
+  pipeline,
+} from 'node:stream/promises';
+
+// A Node.js-style Transform that converts data to uppercase
+// and appends a newline to the end of the output.
+class MyTransform extends Transform {
+  constructor() {
+    super({ encoding: 'utf8' });
+  }
+  _transform(chunk, _, cb) {
+    this.push(chunk.toString().toUpperCase());
+    cb();
+  }
+  _flush(cb) {
+    this.push('\n');
+    cb();
+  }
+}
+
+export default {
+  async fetch() {
+    const chunks = [
+      "hello ",
+      "from ",
+      "the ",
+      "wonderful ",
+      "world ",
+      "of ",
+      "node.js ",
+      "streams!"
+    ];
+
+    function nextChunk(readable) {
+      readable.push(chunks.shift());
+      if (chunks.length === 0) readable.push(null);
+      else queueMicrotask(() =&gt; nextChunk(readable));
+    }
+
+    // A Node.js-style Readable that emits chunks from the
+    // array...
+    const readable = new Readable({
+      encoding: 'utf8',
+      read() { nextChunk(readable); }
+    });
+
+    const transform = new MyTransform();
+    await pipeline(readable, transform);
+    return new Response(await text(transform));
+  }
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>In this example we create two Node.js stream objects: one stream.Readable and one stream.Transform. The stream.Readable simply emits a sequence of individual strings, piped through the stream.Transform which converts those to uppercase and appends a new-line as a final chunk.</p>
+	<p>The example is straightforward and illustrates the basic operation of the Node.js API. For anyone already familiar with using standard WHATWG streams in Workers the pattern here should be recognizable.</p>
+	<p>The Node.js streams API is used by countless numbers of modules published on <a href="https://www.npmjs.com/" target="_blank">npm</a>. Now that the Node.js streams API is available in Workers, many packages that depend on it can be used in your Workers. For example, the <a href="https://www.npmjs.com/package/split2" target="_blank">split2 module</a> is a simple utility that can break a stream of data up and reassemble it so that every line is a distinct chunk. While simple, the module is downloaded over 13 million times each week and has over a thousand direct dependents on npm (and many more indirect dependents). Previously it was not possible to use split2 within Workers without also pulling in a large and complicated polyfill implementation of streams along with it. Now split2 can be used directly within Workers with no modifications and no additional polyfills. This reduces the size and complexity of your Worker by thousands of lines.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import {
+  PassThrough,
+} from 'node:stream';
+
+import { default as split2 } from 'split2';
+
+const enc = new TextEncoder();
+
+export default {
+  async fetch() {
+    const pt = new PassThrough();
+    const readable = pt.pipe(split2());
+
+    pt.end('hello\nfrom\nthe\nwonderful\nworld\nof\nnode.js\nstreams!');
+    for await (const chunk of readable) {
+      console.log(chunk);
+    }
+
+    return new Response("ok");
+  }
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="path">Path</h3>
+	<p>The <a href="https://nodejs.org/api/path.html" target="_blank">Node.js Path API</a> provides utilities for working with file and directory paths. For example:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import path from "node:path"
+path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
+
+// Returns: '/foo/bar/baz/asdf'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Note that in the Workers implementation of path, the <a href="https://nodejs.org/api/path.html#pathwin32" target="_blank">path.win32</a> variants of the path API are not implemented, and will throw an exception.</p>
+	<h3 id="stringdecoder">StringDecoder</h3>
+	<p>The <a href="https://nodejs.org/dist/latest-v20.x/docs/api/string_decoder.html" target="_blank">Node.js StringDecoder API</a> is a simple legacy utility that predates the <a href="https://encoding.spec.whatwg.org/" target="_blank">WHATWG standard TextEncoder/TextDecoder API</a> and serves roughly the same purpose. It is used by Node.js' stream API implementation as well as a number of popular npm modules for the purpose of decoding UTF-8, UTF-16, Latin1, Base64, and Hex encoded data.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { StringDecoder } from 'node:string_decoder';
+const decoder = new StringDecoder('utf8');
+
+const cent = Buffer.from([0xC2, 0xA2]);
+console.log(decoder.write(cent));
+
+const euro = Buffer.from([0xE2, 0x82, 0xAC]);
+console.log(decoder.write(euro)); 
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>In the vast majority of cases, your Worker should just keep on using the standard TextEncoder/TextDecoder APIs, but the StringDecoder is available directly for workers to use now without relying on polyfills.</p>
+	<h3 id="nodejs-compat-modules">Node.js Compat Modules</h3>
+	<p>One Worker can already be a <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#bundling" target="_blank">bundle of multiple assets</a>. This allows a single Worker to be made up of multiple individual ESM modules, CommonJS modules, JSON, text, and binary data files.</p>
+	<p>Soon there will be a new type of module that can be included in a Worker bundles: the NodeJsCompatModule.</p>
+	<p>A NodeJsCompatModule is designed to emulate the Node.js environment as much as possible. Within these modules, common Node.js global variables such as process, Buffer, and even __filename will be available. More importantly, it is possible to require() our Node.js core API implementations without using the node: specifier prefix. This maximizes compatibility with existing NPM packages that depend on globals from Node.js being present, or don’t import Node.js APIs using the node: specifier prefix.</p>
+	<p>Support for this new module type has landed in the open source <a href="https://github.com/cloudflare/workerd" target="_blank">workerd</a> runtime, with deeper integration with Wrangler coming soon.</p>
+	<h3 id="what%E2%80%99s-next">What’s next</h3>
+	<p>We’re adding support for more Node.js APIs each month, and as we introduce new APIs, they will be added under the <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/#nodejs-compatibility-flag" target="_blank">nodejs_compat compatibility flag</a> — no need to take any action or update your <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/" target="_blank">compatibility date</a>.</p>
+	<p>Have an NPM package that you wish worked on Workers, or an API you’d like to be able to use? Join the <a href="https://discord.com/invite/cloudflaredev" target="_blank">Cloudflare Developers Discord</a> and tell us what you’re building, and what you’d like to see next.</p>
+</div>
