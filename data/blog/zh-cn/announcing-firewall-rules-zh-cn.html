@@ -32,7 +32,7 @@
 	<h2 id="--2">匹配：确定规则的范围</h2>
 	<p>Cloudflare防火墙规则允许客户访问HTTP请求的属性，包括引用者（referer）、用户代理（user-agent）、cookies、Cloudflare威胁评分(IP信誉评分)以及更多。</p>
 	<p>所有受支持的头都可以通过许多操作符匹配，包括部分匹配(包含)、完整字符串或整数匹配(等于)，以及对于我们的业务和企业客户有模式匹配(匹配)。是的，您没有看错，我们现在提供使用正则表达式的模式匹配，直接通过控制面板和API即可完成!</p>
-	<p>防火墙规则最大的优点是Cloudflare可以灵活地选择字段；例如，Cloudflare的威胁情报（负责驱动控制面板上的安全级别）将成为客户可用的字段。Cloudflare引入的最重要的域之一是我们的cf.client.bot段，它通过反向DNS验证已知的好机器人。在我们的最初版本中，我们为客户提供了对“已知的好机器人”的一般分类的访问。这些机器人列表的详细信息可以在<a href="https://developers.cloudflare.com/firewall/known-issues-and-faq/?ref=blog.cloudflare.com#which-bots-or-crawlers-are-detected-in-firewall-rules" target="_blank">此处</a>找到。Cloudflare过去一直代表我们的客户将谷歌列入白名单，并利用Web应用程序防火墙规则来阻止欺骗的爬虫程序，这些规则只为专业及以上客户可用。有了防火墙规则，所有客户现在都可以得到这些保护。由于Cloudflare已经删除了白名单功能，因此重要的是客户的允许规则里直接包含cf.client.bot段，以避免无意中阻塞良好的网络爬虫，否则这可能会影响您的搜索引擎优化和监测。</p>
+	<p>防火墙规则最大的优点是Cloudflare可以灵活地选择字段；例如，Cloudflare的威胁情报（负责驱动控制面板上的安全级别）将成为客户可用的字段。Cloudflare引入的最重要的域之一是我们的cf.client.bot段，它通过反向DNS验证已知的好机器人。在我们的最初版本中，我们为客户提供了对“已知的好机器人”的一般分类的访问。这些机器人列表的详细信息可以在<a href="https://developers.cloudflare.com/firewall/known-issues-and-faq/#which-bots-or-crawlers-are-detected-in-firewall-rules" target="_blank">此处</a>找到。Cloudflare过去一直代表我们的客户将谷歌列入白名单，并利用Web应用程序防火墙规则来阻止欺骗的爬虫程序，这些规则只为专业及以上客户可用。有了防火墙规则，所有客户现在都可以得到这些保护。由于Cloudflare已经删除了白名单功能，因此重要的是客户的允许规则里直接包含cf.client.bot段，以避免无意中阻塞良好的网络爬虫，否则这可能会影响您的搜索引擎优化和监测。</p>
 	<h2 id="--3">操作：对请求应用哪些操作</h2>
 	<p>所有标准的Cloudflare操作，如JavaScript Challenge、Challenge和Block都是可用的。</p>
 	<p>标准缓解列表中增加了一个新功能，即允许的操作，它让客户可以去创建规则，以说明“如果匹配此标准，则停止处理进一步的规则”。</p>

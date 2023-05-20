@@ -6,11 +6,11 @@
 	<p>我们对此次事件的失误和造成的影响深感歉意。</p>
 	<h3 id="--1">背景</h3>
 	<p>在过去 18 个月内，Cloudflare 一直在努力将我们所有最忙碌的数据中心转换为更灵活、更具弹性的架构。这一次，我们已将 19 个数据中心转换为这种架构，内部名称为 Multi-Colo PoP（MCP），包括：阿姆斯特丹、亚特兰大、阿什本、芝加哥、法兰克福、伦敦、洛杉矶、马德里、曼彻斯特、迈阿密、米兰、孟买、纽瓦克、大阪、圣保罗、圣何塞、新加坡、悉尼、东京。</p>
-	<p>这个新架构的一个关键部分被称为 <a href="https://en.wikipedia.org/wiki/Clos_network?ref=blog.cloudflare.com" target="_blank">Clos 网络</a>，这是一个额外的路由层，可以方便网络链接。这种网络连接让我们能轻松地禁用和启用数据中心内部网络的某些部分，以便进行修复或者处理某个问题。下面这张图中的网络主干就代表了这个 Clos 网络。</p>
+	<p>这个新架构的一个关键部分被称为 <a href="https://en.wikipedia.org/wiki/Clos_network" target="_blank">Clos 网络</a>，这是一个额外的路由层，可以方便网络链接。这种网络连接让我们能轻松地禁用和启用数据中心内部网络的某些部分，以便进行修复或者处理某个问题。下面这张图中的网络主干就代表了这个 Clos 网络。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-27.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>这种新的架构为我们提供了显著的可靠性改进，并允许我们在不中断客户通信的情况下在这些位置进行维护。由于这些数据中心也承载着 Cloudflare 的很大一部分流量，这里的任何问题都可能产生非常广泛的影响，不幸的是，这就是今天发生的情况。</p>
 	<h3 id="-utc-">事件时间线（按 UTC）和影响</h3>
-	<p>为了保证 Internet 可达性，Cloudflare 利用了一种称为 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/?ref=blog.cloudflare.com" target="_blank">BGP</a> 的协议。作为该协议的一部分，管理员可以定义一些策略来确定哪些前缀（一个连续的 IP 地址的集合）广播给对等网络（它们连接到的其他网络）或从对等网络接受哪些前缀</p>
+	<p>为了保证 Internet 可达性，Cloudflare 利用了一种称为 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a> 的协议。作为该协议的一部分，管理员可以定义一些策略来确定哪些前缀（一个连续的 IP 地址的集合）广播给对等网络（它们连接到的其他网络）或从对等网络接受哪些前缀</p>
 	<p>这些策略由互相独立的单元构成，它们会被按照顺序进行独立评估。最终结果是，任何特定的前缀要么被广播，要么不被广播。策略的变化可能意味着以前广播的前缀不再被广播，在这种情况下，该前缀会被撤销，这些 IP 地址在互联网上将不可再访问。<br></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-27.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>在部署前缀广播策略更改时，一个配置语句的顺序调整导致我们撤销了一个关键的前缀子集。</p>
