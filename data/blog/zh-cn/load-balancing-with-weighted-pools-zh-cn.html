@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-1.png" class="kg-image" alt="Load Balancing with Weighted Pools" loading="lazy"></figure>
-	<p>任何人都可以利用 Cloudflare 范围广泛的网络来保护和加速其在线业务。我们拥有的<a href="https://www.cloudflare.com/network/" target="_blank">大量数据中心</a>靠近世界各地的互联网用户，让我们能够保护并加速客户的互联网应用程序、API 和网站。即使是使用<a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server/" target="_blank">单个源服务器</a>的简单服务也能利用遍布 270 多个城市的大规模 Cloudflare 网络。使用 Cloudflare 缓存，不必购买新服务器，就能支持更多的请求和用户。</p>
+	<p>任何人都可以利用 Cloudflare 范围广泛的网络来保护和加速其在线业务。我们拥有的<a href="https://www.cloudflare.com/network/?ref=blog.cloudflare.com" target="_blank">大量数据中心</a>靠近世界各地的互联网用户，让我们能够保护并加速客户的互联网应用程序、API 和网站。即使是使用<a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server/?ref=blog.cloudflare.com" target="_blank">单个源服务器</a>的简单服务也能利用遍布 270 多个城市的大规模 Cloudflare 网络。使用 Cloudflare 缓存，不必购买新服务器，就能支持更多的请求和用户。</p>
 	<p>无论是通过冗余来保障高可用性，还是支持更多动态内容，越来越多的服务需要多个源服务器。借助 Cloudflare 负载平衡器，客户的服务能够保持高可用性，并且易于在多个源服务器之间分散请求。今天，我们很高兴地宣布为我们的负载平衡器推出大家盼望已久的功能 – 加权池！</p>
 	<h2 id="-">什么是加权池？</h2>
 	<p>要回答这个问题，首先来简单考察一下负载平衡器的工作原理，并理清几个术语：</p>
@@ -10,7 +10,7 @@
 	<p><strong>池权重</strong> - 这是一个数字值，用于说明发送到某个池的请求相对于其他池应占多少百分比。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image6.png" class="kg-image" alt="Diagram showing a request arriving at Cloudflare and two load balancer origin pools with equal weights" loading="lazy"></figure>
 	<p>访问者的请求到达附加有负载平衡器的主机名的 Cloudflare 网络时，该负载平衡器必须决定该请求应转发到何处。客户可以使用流量转向策略配置此行为。</p>
-	<p>Cloudflare 负载平衡器现已支持<a href="https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/" target="_blank">标准转向、地理转向、动态转向和邻近转向</a>。上述每个相应的流量转向策略控制请求如何在源池之间分布。加权池是对标准随机转向策略的延伸，而标准随机转向策略可指定应将多少相对百分比的请求发送到每个相应的池。</p>
+	<p>Cloudflare 负载平衡器现已支持<a href="https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/?ref=blog.cloudflare.com" target="_blank">标准转向、地理转向、动态转向和邻近转向</a>。上述每个相应的流量转向策略控制请求如何在源池之间分布。加权池是对标准随机转向策略的延伸，而标准随机转向策略可指定应将多少相对百分比的请求发送到每个相应的池。</p>
 	<p>在上例中，我们的负载平衡器有两个源池，即 “las-vegas-bldg1”（客户运营的数据中心）和 “us-east-cloud”（包含多个虚拟服务器的公共云提供商）。每个池的权重为 0.5，因此应向每个相应的池发送 50% 的请求。</p>
 	<h2 id="--1">为什么要将权重分配给源池？</h2>
 	<p>在我们构建加权池之前，这一直是我们的客户盼望已久的功能。我们如此热衷于此功能，一部分原因是，可以将其用于解决许多类型的问题。</p>
@@ -55,6 +55,6 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>我们很高兴地推出这项简单而又强大的功能。加权池可以通过不计其数的各种创意新思路加以利用，以便解决负载平衡难题。拥有负载平衡器的所有客户现在就可以使用该功能！</p>
-	<p>开发人员文档：<br><a href="https://developers.cloudflare.com/load-balancing/how-to/create-load-balancer/#create-a-load-balancer" target="_blank">https://developers.cloudflare.com/load-balancing/how-to/create-load-balancer/#create-a-load-balancer</a></p>
-	<p>API 文档：<br><a href="https://api.cloudflare.com/#load-balancers-create-load-balancer" target="_blank">https://api.cloudflare.com/#load-balancers-create-load-balancer</a></p>
+	<p>开发人员文档：<br><a href="https://developers.cloudflare.com/load-balancing/how-to/create-load-balancer/?ref=blog.cloudflare.com#create-a-load-balancer" target="_blank">https://developers.cloudflare.com/load-balancing/how-to/create-load-balancer/#create-a-load-balancer</a></p>
+	<p>API 文档：<br><a href="https://api.cloudflare.com/?ref=blog.cloudflare.com#load-balancers-create-load-balancer" target="_blank">https://api.cloudflare.com/#load-balancers-create-load-balancer</a></p>
 </div>
