@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>We extensively monitor our network and use multiple systems that give us visibility including external monitoring and internal alerts when things go wrong. One of the most useful systems is <a href="http://grafana.org/" target="_blank">Grafana</a> that allows us to quickly create arbitrary dashboards. And a heavy user of Grafana we are: at last count we had 645 different Grafana dashboards configured in our system!</p>
+	<p>We extensively monitor our network and use multiple systems that give us visibility including external monitoring and internal alerts when things go wrong. One of the most useful systems is <a href="http://grafana.org/?ref=blog.cloudflare.com" target="_blank">Grafana</a> that allows us to quickly create arbitrary dashboards. And a heavy user of Grafana we are: at last count we had 645 different Grafana dashboards configured in our system!</p>
 	<pre><code>grafana=&gt; select count(1) from dashboard;
  count
 -------
@@ -18,13 +18,13 @@
 	<p>The client had sent some binary junk to our HTTP server on port 80; they weren't even sending a fake GET or POST line!</p>
 	<p>Our server politely responded with HTTP 400 error. This explains why it wasn't caught by our attack mitigation systems. Invalid HTTP requests don't trigger our HTTP DDoS mitigations - it makes no sense to mitigate traffic which is never accepted by NGINX in the first place!</p>
 	<h3 id="thepayload">The payload</h3>
-	<p>At first glance the payload sent to HTTP servers seems random. A colleague of mine, <a href="https://twitter.com/chrisbranch" target="_blank">Chris Branch</a>, investigated and proved me wrong. The payload has patterns.</p>
+	<p>At first glance the payload sent to HTTP servers seems random. A colleague of mine, <a href="https://twitter.com/chrisbranch?ref=blog.cloudflare.com" target="_blank">Chris Branch</a>, investigated and proved me wrong. The payload has patterns.</p>
 	<p>Let me show what's happening. Here are the first 24 bytes of the mentioned payload:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/12/hp1.png" alt="" loading="lazy"></p>
 	<p>If you look closely, the pattern will start to emerge. Let's add some colors and draw it in not eight, but seven bytes per row:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/12/hp2-1.png" alt="" loading="lazy"></p>
 	<p>This checkerboard-like pattern, is exhibited in most of the requests with payload sizes below 512 bytes.</p>
-	<p>Another <a href="https://twitter.com/jgrahamc" target="_blank">engineer</a> pointed out there appear to actually be two separate sequences generated in the same fashion. Starting with the <code>a6</code> and the <code>cb</code> take alternating bytes</p>
+	<p>Another <a href="https://twitter.com/jgrahamc?ref=blog.cloudflare.com" target="_blank">engineer</a> pointed out there appear to actually be two separate sequences generated in the same fashion. Starting with the <code>a6</code> and the <code>cb</code> take alternating bytes</p>
 	<pre><code>a6 ef 39 82 cb 15 5e a7 f0 3a 83 cc 16 5f
 cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b
 </code></pre>
@@ -104,8 +104,8 @@ cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b
 	<p>It's hard to draw conclusions, but we can imagine two possible scenarios. It is possible these spikes were an attack intended to break our HTTP servers.</p>
 	<p>A second possibility is that these spikes were legitimate connection attempts by some weird, obfuscated protocol. For some reason the clients were connecting to port 80/TCP and retried precisely every 80 minutes.</p>
 	<p>We are continuing our investigation. In the meantime we are looking for clues. Please do let us know if you have encountered this kind of TCP/IP payload. We are puzzled by these large spikes.</p>
-	<p>If you'd like to work on this type of problem <a href="https://www.cloudflare.com/join-our-team/" target="_blank">we're hiring</a> in London, San Francisco, Austin, Champaign and Singapore.</p>
-	<p><em>Update</em> A <a href="https://twitter.com/GGreg/status/818462582998704128" target="_blank">Twitter user</a> pointed out that the sequence <code>a6 ef 39 82 cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code> appears in this set of <a href="https://github.com/gvanas/KeccakCodePackage/blob/master/TestVectors/KetjeJr.txt" target="_blank">test vectors</a> so we contacted the <a href="http://gva.noekeon.org/" target="_blank">author</a> who was kind enough to reply and point us to the <a href="https://github.com/gvanas/KeccakCodePackage/blob/master/Tests/testKetje.c#L46" target="_blank">code</a> that generated those vectors.</p>
+	<p>If you'd like to work on this type of problem <a href="https://www.cloudflare.com/join-our-team/?ref=blog.cloudflare.com" target="_blank">we're hiring</a> in London, San Francisco, Austin, Champaign and Singapore.</p>
+	<p><em>Update</em> A <a href="https://twitter.com/GGreg/status/818462582998704128?ref=blog.cloudflare.com" target="_blank">Twitter user</a> pointed out that the sequence <code>a6 ef 39 82 cb 15 5e a7 f0 3a 83 cc 16 5f a8 f1 3b</code> appears in this set of <a href="https://github.com/gvanas/KeccakCodePackage/blob/master/TestVectors/KetjeJr.txt?ref=blog.cloudflare.com" target="_blank">test vectors</a> so we contacted the <a href="http://gva.noekeon.org/?ref=blog.cloudflare.com" target="_blank">author</a> who was kind enough to reply and point us to the <a href="https://github.com/gvanas/KeccakCodePackage/blob/master/Tests/testKetje.c?ref=blog.cloudflare.com#L46" target="_blank">code</a> that generated those vectors.</p>
 	<pre><code>static void generateSimpleRawMaterial(unsigned char* data, unsigned int length, unsigned char seed1, unsigned int seed2)
 {
     unsigned int i;

@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>In <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode">a recent article</a> I described the basic concepts behind the use of Berkeley Packet Filter (aka BSD Packet filter or BPF) bytecode for high performance packet filtering, and the <a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c" target="_blank">xt_bpf</a> iptables module. In this post I'll explain how we use BPF and xt_bpf as one tool to deal with large scale DDoS attacks.</p>
+	<p>In <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode">a recent article</a> I described the basic concepts behind the use of Berkeley Packet Filter (aka BSD Packet filter or BPF) bytecode for high performance packet filtering, and the <a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c?ref=blog.cloudflare.com" target="_blank">xt_bpf</a> iptables module. In this post I'll explain how we use BPF and xt_bpf as one tool to deal with large scale DDoS attacks.</p>
 	<p>And, today, CloudFlare is open sourcing the tools we've created to generate and deploy BPF rules.</p>
 	<h3 id="thecode">The Code</h3>
-	<p>Our BPF Tools are now available on the CloudFlare Github: <a href="https://github.com/cloudflare/bpftools" target="_blank">https://github.com/cloudflare/bpftools</a></p>
-	<p>For installation instructions review the <a href="https://github.com/cloudflare/bpftools#bpf-tools" target="_blank">README</a>, but typing <code>make</code> should do most of the work:</p>
+	<p>Our BPF Tools are now available on the CloudFlare Github: <a href="https://github.com/cloudflare/bpftools?ref=blog.cloudflare.com" target="_blank">https://github.com/cloudflare/bpftools</a></p>
+	<p>For installation instructions review the <a href="https://github.com/cloudflare/bpftools?ref=blog.cloudflare.com#bpf-tools" target="_blank">README</a>, but typing <code>make</code> should do most of the work:</p>
 	<pre>$ git clone https://github.com/cloudflare/bpftools.git
 $ cd bpftools
 $ make
@@ -17,12 +17,12 @@ $ make
 		<li><code>filter</code></li>
 		<li><code>iptables_bpf</code>, <code>iptables_bpf_chain</code></li>
 	</ul>
-	<p>We rely on the BPF assembler from the Linux Kernel <a href="https://github.com/torvalds/linux/tree/master/tools/net" target="_blank"><code>/tools/net</code></a> directory. To make your life easier we ship a copy in <code>linux_tools</code>.</p>
-	<p>Here at CloudFlare we run a very large number of <a href="https://en.wikipedia.org/wiki/Domain_Name_System#Authoritative_name_server" target="_blank">authoritative DNS servers</a> and we constantly deal with malicious actors flooding our servers with, amongst other things, DNS requests. So no surprise that our current BPF Tools focus on DNS traffic, although they are easily adaptable to any other stateless floods.</p>
+	<p>We rely on the BPF assembler from the Linux Kernel <a href="https://github.com/torvalds/linux/tree/master/tools/net?ref=blog.cloudflare.com" target="_blank"><code>/tools/net</code></a> directory. To make your life easier we ship a copy in <code>linux_tools</code>.</p>
+	<p>Here at CloudFlare we run a very large number of <a href="https://en.wikipedia.org/wiki/Domain_Name_System?ref=blog.cloudflare.com#Authoritative_name_server" target="_blank">authoritative DNS servers</a> and we constantly deal with malicious actors flooding our servers with, amongst other things, DNS requests. So no surprise that our current BPF Tools focus on DNS traffic, although they are easily adaptable to any other stateless floods.</p>
 	<p>The BPF Tools should be usable and in working order, but don't expect too much. These small utilities were written to be easily hackable and they will be in a state of constant flux: this <em>is</em> our toolkit after all. Please expect some degree of code instability.</p>
 	<h3 id="itallstartswithapcap">It all starts with a pcap</h3>
 	<p>Here's a concrete example of using these tools to identify and filter a DNS attack. This is based on a real world attack but the actual details have been changed for anonymization.</p>
-	<p>To start you need a <a href="http://www.tcpdump.org/manpages/pcap-savefile.5.txt" target="_blank">pcap savefile</a> containing a traffic dump. For example to capture a pcap of DNS requests we run:</p>
+	<p>To start you need a <a href="http://www.tcpdump.org/manpages/pcap-savefile.5.txt?ref=blog.cloudflare.com" target="_blank">pcap savefile</a> containing a traffic dump. For example to capture a pcap of DNS requests we run:</p>
 	<pre>$ sudo tcpdump -pni eth0 -s0 -w example.pcap -vv -c 10000 \
        "ip and dst port 53"
 listening on eth0, link-type EN10MB (Ethernet)
@@ -87,7 +87,7 @@ adf53a1a84a00035003b4a99e25c00000001000000000001076969766c69
     tax
 ...
 </pre>
-	<p>The generated code is way too long to post and explain here, I strongly recommend looking at the <code>bpftools/gen_dns.py</code> file and reviewing the kernel <a href="https://github.com/torvalds/linux/blob/master/Documentation/networking/filter.txt" target="_blank"><code>networking/filter.txt</code></a> documentation.</p>
+	<p>The generated code is way too long to post and explain here, I strongly recommend looking at the <code>bpftools/gen_dns.py</code> file and reviewing the kernel <a href="https://github.com/torvalds/linux/blob/master/Documentation/networking/filter.txt?ref=blog.cloudflare.com" target="_blank"><code>networking/filter.txt</code></a> documentation.</p>
 	<p>For more details about the <code>bpfgen</code> tool and its features see the documentation:</p>
 	<pre>$ ./bpfgen --help
 $ ./bpfgen dns -- --help
