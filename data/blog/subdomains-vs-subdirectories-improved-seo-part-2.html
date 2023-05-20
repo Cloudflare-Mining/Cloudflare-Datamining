@@ -3,11 +3,11 @@
 	<p>In <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1/">Part 1</a>, the merits and tradeoffs of <em>subdirectories</em> and <em>subdomains </em>were discussed. &nbsp;The subdirectory strategy is typically superior to subdomains because subdomains suffer from <em>keyword</em> and <em>backlink dilution</em>. &nbsp;The subdirectory strategy more effectively boosts a site's search rankings by ensuring that every keyword is attributed to the root domain instead of diluting across subdomains.</p>
 	<h4 id="subdirectory-strategy-without-the-nginx">Subdirectory Strategy without the NGINX</h4>
 	<p>In the <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1/">first part</a>, our friend Bob set up a hosted Ghost blog at <em>bobtopia.coolghosthost.com</em> that he connected to <em>blog.bobtopia.com </em>using a <code>CNAME</code> DNS record. &nbsp;But what if he wanted his blog to live at <em>bobtopia.com/blog</em> to gain the SEO advantages of subdirectories?</p>
-	<p>A reverse proxy like NGINX is normally needed to route traffic from subdirectories to remotely hosted services. &nbsp;We'll demonstrate how to implement the subdirectory strategy with Cloudflare Workers and eliminate our dependency on NGINX. (Cloudflare Workers are <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless/?ref=blog.cloudflare.com" target="_blank">serverless</a> functions that run on the Cloudflare global network.)</p>
+	<p>A reverse proxy like NGINX is normally needed to route traffic from subdirectories to remotely hosted services. &nbsp;We'll demonstrate how to implement the subdirectory strategy with Cloudflare Workers and eliminate our dependency on NGINX. (Cloudflare Workers are <a href=" https://www.cloudflare.com/learning/serverless/what-is-serverless/" target="_blank">serverless</a> functions that run on the Cloudflare global network.)</p>
 	<h4 id="back-to-bobtopia">Back to Bobtopia</h4>
 	<p>Let's write a Worker that proxies traffic from a subdirectory – <em>bobtopia.com/blog – </em>to a remotely hosted platform – <em>bobtopia.coolghosthost.com</em>. &nbsp;This means that if I go to <em>bobtopia.com/blog</em>, I should see the content of <em>bobtopia.coolghosthost.com,</em> but my browser should still think it's on <em>bobtopia.com</em>.</p>
 	<h4 id="configuration-options">Configuration Options</h4>
-	<p>In the <a href="https://dash.cloudflare.com/?zone=workers&amp;ref=blog.cloudflare.com" target="_blank">Workers</a> editor, we'll start a new script with some basic configuration options.</p>
+	<p>In the <a href="https://dash.cloudflare.com/?zone=workers" target="_blank">Workers</a> editor, we'll start a new script with some basic configuration options.</p>
 	<p></p>
 	<pre><code>// keep track of all our blog endpoints here
 const myBlog = {
@@ -128,9 +128,9 @@ addEventListener("fetch", event =&gt; {
 	<h4 id="conclusion">Conclusion</h4>
 	<p>Bob is now enjoying the same SEO advantages as Alice after converting his subdomains to subdirectories using Cloudflare Workers. &nbsp;Bobs of the world, rejoice!</p>
 	<hr><!--kg-card-begin: markdown-->
-	<p><small>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev/?ref=blog.cloudflare.com" target="_blank">workers.dev</a>. <em>If you’re already a Cloudflare customer, you can add Workers to your existing website</em> <a href="https://dash.cloudflare.com/workers?ref=blog.cloudflare.com" target="_blank"><em>here</em></a>.</small></p>
+	<p><small>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev" target="_blank">workers.dev</a>. <em>If you’re already a Cloudflare customer, you can add Workers to your existing website</em> <a href="https://dash.cloudflare.com/workers" target="_blank"><em>here</em></a>.</small></p>
 	<p align="center">
-		<a class="btn btn-warning" href="https://workers.dev/?ref=blog.cloudflare.com" target="_blank">Reserve a workers.dev subdomain</a>
+		<a class="btn btn-warning" href="https://workers.dev" target="_blank">Reserve a workers.dev subdomain</a>
 	</p><!--kg-card-end: markdown-->
 	<hr>
 </div>

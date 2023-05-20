@@ -29,7 +29,7 @@
 	<p>我们认为，Cloudflare One 的架构优势使其成为一个超强的防火墙，其使用量的增加恰恰证明了这一点。但真正使我们的网络及其综合安全功能与众不同的是，我们能够在同一网络中提供 Zero Trust 控制，使 CIO 们能够去考虑保护应用程序和用户的安全，而不是 IP 地址和 TCP 端口。</p>
 	<h3 id="-192-000-"><strong>客户保护了 192,000 多款应用程序</strong></h3>
 	<p>传统的专用网络和 VPN 客户端提供的连接很脆弱，无法实现真正的安全性。在大多数部署中，除非明确禁止，否则专用网络中的用户可以随意连接到任何资源。安全团队没有基于身份的控制措施，且缺乏对网络的可见性，而 IT 团队则苦于处理那些求助台问题单。</p>
-	<p><a href="https://www.cloudflare.com/teams/access/" target="_blank">Cloudflare Access</a> 通过<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank"> Zero Trust 模型</a>取代了专用网络安全功能，使任何内部应用程序感觉就好像是互联网上最快的 SaaS 应用程序一样。客户可以在不破坏防火墙的情况下将其内部资源连接到 Cloudflare 的网络。连接后，管理员可以建立全局规则和针对每个资源的规则，以控制登录人和连接方式。用户只需点击一下就可启动应用程序，由 Cloudflare 的网络执行这些规则，并在全世界范围内加速其流量。</p>
+	<p><a href="https://www.cloudflare.com/teams/access/?ref=blog.cloudflare.com" target="_blank">Cloudflare Access</a> 通过<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank"> Zero Trust 模型</a>取代了专用网络安全功能，使任何内部应用程序感觉就好像是互联网上最快的 SaaS 应用程序一样。客户可以在不破坏防火墙的情况下将其内部资源连接到 Cloudflare 的网络。连接后，管理员可以建立全局规则和针对每个资源的规则，以控制登录人和连接方式。用户只需点击一下就可启动应用程序，由 Cloudflare 的网络执行这些规则，并在全世界范围内加速其流量。</p>
 	<p>在过去一年中，客户通过 Cloudflare 中的 Zero Trust 规则保护了 192,000 多款应用程序。这些应用程序包括为业务提供动力的关键任务工具、保存公司最敏感数据的管理面板以及下一个版本的新营销网站等。自去年发布 Cloudflare One 以来，我们还在浏览器中引入了非 HTTP 用例，在未使用任何额外客户端软件的情况下，对 <a href="https://blog.cloudflare.com/browser-ssh-terminal-with-auditing/">SSH</a> 和 <a href="https://blog.cloudflare.com/browser-vnc-with-zero-trust-rules/">VNC 客户端</a>进行了渲染。</p>
 	<p>无论保护什么，客户都可以对规则进行分层，从“只有我的团队可以登录”到“只允许<a href="https://blog.cloudflare.com/zh-cn/two-clicks-to-enable-regional-zero-trust-compliance-zh-cn/">来自这些国家/地区</a>的这组用户通过<a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">公司设备</a>上的<a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access/">物理硬键</a>进行连接。”我们也知道，有时需要第二种方法来实现安全性。今年早些时候，我们推出了多种新功能 <a href="https://blog.cloudflare.com/access-purpose-justification/">以提示用户</a>输入其连接资源的原因， <a href="https://blog.cloudflare.com/announcing-access-temporary-authentication/">并要求第二个管理员实时签署</a>该请求。</p>
 	<p>我们还认为安全性<a href="https://blog.cloudflare.com/the-zero-trust-platform-built-for-speed/">决不应破坏性能</a>。客户使用我们的 Zero Trust 产品保护的应用程序受益于一些互联网大型网站所使用的同一种路由加速。我们还让安全决策更贴近用户，以避免减慢他们的工作速度 - Cloudflare 的网络在我们全球所有 250 个数据中心中执行 Zero Trust 规则，通过在我们自己的无服务器计算平台上运行，而让速度变得更快。</p>
@@ -44,13 +44,13 @@
 	<h3 id="--1"><strong>所有这些都是通过一个不断扩大的全局网络来实现的，其目的是为了扩大规模</strong></h3>
 	<p>所有这些功能均通过 Cloudflare 拥有的裸机硬件在我们的整个全局网络上交付，并在全球 250 多座城市中运行。我们不会使用任何公共云，我们所有的服务都在世界各个地点的各个服务器上运行。无论是物理的还是虚拟的，都不存在硬件尺寸的位置选择。所有服务器都能处理客户的数据包。</p>
 	<p>这种独特的架构使我们能够快速有效地创建可靠的产品。我们的网络目前每天最多可以处理 1.69Tbps 的转发代理流量。我们最大的客户在单个虚拟接口上传输的流量以每秒数百千兆比特的速度计算。</p>
-	<p>客户既能从我们提供的连接性、安全性和可视性产品中获得利益，也能通过我们其他客户的网络获得价值。大多数 Cloudflare One 客户与连接到 Cloudflare 的其他客户网络有着重要的互动关系，其中很多客户通过世界各地的<a href="https://www.peeringdb.com/asn/13335" target="_blank"> 158 个对等设施</a>提供的直接物理连接进行互联。</p>
+	<p>客户既能从我们提供的连接性、安全性和可视性产品中获得利益，也能通过我们其他客户的网络获得价值。大多数 Cloudflare One 客户与连接到 Cloudflare 的其他客户网络有着重要的互动关系，其中很多客户通过世界各地的<a href="https://www.peeringdb.com/asn/13335?ref=blog.cloudflare.com" target="_blank"> 158 个对等设施</a>提供的直接物理连接进行互联。</p>
 	<h2 id="-cloudflare-one-"><strong>客户如何使用 Cloudflare One？</strong></h2>
 	<p>在过去一年中，数以万计的客户使用 Cloudflare One 解决了大量问题。我们还想特别介绍几个组织，以及其在此模型自去年发布以来的具体迁移历程。</p>
 	<h3 id="--2"><strong>防止美国联邦政府受到攻击</strong></h3>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>在美国国土安全部内，网络安全和基础设施安全局 (CISA) 作为“国家的风险顾问”展开工作。CISA 与公共和私有部门的团队合作，以确保联邦政府以及州、地方、部落与领土机构和部门的关键基础设施的安全。</p>
-	<p>CISA <a href="https://media.defense.gov/2021/Mar/03/2002593055/-1/-1/0/CSI_Selecting-Protective-DNS_UOO11765221.PDF" target="_blank">反复强调</a>的一个风险是来自于恶意主机名、恶意链接钓鱼邮件和不可信任的上游域名系统解析器的威胁。攻击者可在骗过这些终端后，向某个特定主机名发送 DNS 查询来破坏设备和用户。当用户连接到该解析查询背后的目的地时，攻击者就可以窃取密码、数据，并在设备上安装恶意软件。</p>
+	<p>CISA <a href="https://media.defense.gov/2021/Mar/03/2002593055/-1/-1/0/CSI_Selecting-Protective-DNS_UOO11765221.PDF?ref=blog.cloudflare.com" target="_blank">反复强调</a>的一个风险是来自于恶意主机名、恶意链接钓鱼邮件和不可信任的上游域名系统解析器的威胁。攻击者可在骗过这些终端后，向某个特定主机名发送 DNS 查询来破坏设备和用户。当用户连接到该解析查询背后的目的地时，攻击者就可以窃取密码、数据，并在设备上安装恶意软件。</p>
 	<p>今年年初，CISA 和美国国家安全局 (NSA) 建议相关团队部署保护性 DNS 解析器，以防止这些攻击得逞。与标准 DNS 解析器不同，保护性 DNS 解析器可检查被查询的主机名，进而确定目的地是否存在恶意。如果主机名有风险，该解析器可通过不回答 DNS 查询来阻止连接。</p>
 	<p>今年年初，CISA 宣布其不仅建议使用保护性 DNS 解析器 — 而且还向其中一个合作伙伴机构提供了一款解析器。<a href="https://blog.cloudflare.com/helping-keep-governments-safe-and-secure/">CISA 选择 Cloudflare 和 Accenture Federal Services</a> 提供一个联合解决方案，以此帮助政府抵御网络攻击。</p>
 	<h3 id="--3"><strong>确保硬件制造商劳动力的安全性和生产效率</strong></h3>
@@ -62,7 +62,7 @@
 	<h3 id="-blockfi-"><strong>保护构建 BlockFi 的团队</strong></h3>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-15.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>BlockFi 的使命是为传统上服务不足的市场带来金融授权。BlockFi 的利息帐户、加密货币支持贷款、奖励卡和加密交易平台让数十万个用户能够使用新的金融工具。截至 2021 年 6 月 30 日，BlockFi 支持超过 450,000 名资金客户并管理超过 100 亿美元的资产。</p>
-	<p>面对他们增长过程中所带来的新挑战，使其服务保持可用且安全。在注册 API 上遇到重大 DDoS 攻击之后，<a href="https://www.cloudflare.com/case-studies/blockfi/" target="_blank">BlockFi 开始其 Cloudflare One 之旅</a>。BlockFi 团队联系了 Cloudflare，我们能够帮助缓解 DDoS 和 API 攻击，在几小时内使其系统恢复启动并运行。然后，BlockFi 能够在添加 Cloudflare 的自动程序管理平台的第一天阻止大约 1000 万个恶意自动程序。</p>
+	<p>面对他们增长过程中所带来的新挑战，使其服务保持可用且安全。在注册 API 上遇到重大 DDoS 攻击之后，<a href="https://www.cloudflare.com/case-studies/blockfi/?ref=blog.cloudflare.com" target="_blank">BlockFi 开始其 Cloudflare One 之旅</a>。BlockFi 团队联系了 Cloudflare，我们能够帮助缓解 DDoS 和 API 攻击，在几小时内使其系统恢复启动并运行。然后，BlockFi 能够在添加 Cloudflare 的自动程序管理平台的第一天阻止大约 1000 万个恶意自动程序。</p>
 	<p>一旦公共 Web 基础结构再次启动并运行，BlockFi 开始评估如何提高其内部用户和应用程序的安全性。BlockFi 依赖使用 IP 地址阻止或允许用户连接的私有网络，花费预留维修时间专门维护 IP 列表。当用户离开办公室时，该模型崩溃了。</p>
 	<p>BlockFi 将其旧版网络替换为 Cloudflare One，以将身份驱动的 Zero Trust 控制引入其内部资源，从而解决了该挑战。团队成员从任何位置连接，并通过其单点登录进行身份验证。</p>
 	<p>其安全团队并不止步于此。为了保护员工免受网络钓鱼和恶意软件攻击，BlockFi 部署了 Cloudflare One 的 DNS 过滤和安全 Web 网关，以阻止针对其全体员工或特定员工的攻击。</p>
@@ -73,5 +73,5 @@
 	<p>Cloudflare 的网络非常擅长驱动和保护那些毫秒必争、可靠性至上的性能关键型工作负载。</p>
 	<h2 id="--4"><strong>接下来？</strong></h2>
 	<p>在本周之内，我们将分享利用 Cloudflare One 解决新问题的几十个新公告。我们刚刚开始构建下一代企业网络，本周敬请关注，了解更多信息。</p>
-	<p>自去发布以来，许多组织给予我们充分信任，采用 Cloudflare One 作为企业网络，对此我们也深表感激。如果您的团队打算开启这段旅程，请关注<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">此链接</a>，立即开始行动。<br></p>
+	<p>自去发布以来，许多组织给予我们充分信任，采用 Cloudflare One 作为企业网络，对此我们也深表感激。如果您的团队打算开启这段旅程，请关注<a href="https://dash.cloudflare.com/sign-up/teams?ref=blog.cloudflare.com" target="_blank">此链接</a>，立即开始行动。<br></p>
 </div>
