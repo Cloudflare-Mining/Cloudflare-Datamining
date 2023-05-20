@@ -4,7 +4,7 @@
 	<p>我们致力于帮助打造更好的互联网并应对在线威胁，Cloudflare 通过我们的 Area 1 产品提供电子邮件安全，以保护所有类型的电子邮件收件箱，从云端到本地，无一例外。Area 1 产品会分析组织收到的每一封电子邮件，并使用我们的威胁模型评估邮件是否对客户带来风险。对于被视为具有恶意的邮件，Area 1 平台甚至会防止该电子邮件进入收件人的收件箱，确保攻击企图没有机会得逞。 &nbsp;</p>
 	<p>我们努力让客户能够灵活地以他们认为最轻松的任意方式部署我们的解决方案。我们一直致力于使我们的解决方案尽量像“交钥匙”那样可立即使用，现在我们很高兴地推出通过 Microsoft Graph API 载入 Microsoft 365 域的开放测试。我们知道，通过 API 载入的域可更快速、更灵活地部署。这种载入方法是许多方法中的一种，所以客户现在可以视情况而定选择合适的方法部署域，而不会失去 Area 1 防护。 </p>
 	<h2 id="-api-microsoft-365-">通过 API 载入 Microsoft 365 域</h2>
-	<p>Cloudflare Area 1 为客户提供了许多<a href="https://developers.cloudflare.com/email-security/deployment/" target="_blank">部署选项</a>。无论是日志 + BCC（其中客户将每封电子邮件的副本发送给 Area 1）、内联/MX 记录（其中通过 MX 记录添加另一个跃点）还是安全电子邮件网关连接器（其中 Area 1 直接与 SEG 交互），客户都可以使用 Area 1 灵活地选择如何部署我们的解决方案。但是，我们始终推荐客户使用 MX 记录进行部署。</p>
+	<p>Cloudflare Area 1 为客户提供了许多<a href="https://developers.cloudflare.com/email-security/deployment/?ref=blog.cloudflare.com" target="_blank">部署选项</a>。无论是日志 + BCC（其中客户将每封电子邮件的副本发送给 Area 1）、内联/MX 记录（其中通过 MX 记录添加另一个跃点）还是安全电子邮件网关连接器（其中 Area 1 直接与 SEG 交互），客户都可以使用 Area 1 灵活地选择如何部署我们的解决方案。但是，我们始终推荐客户使用 MX 记录进行部署。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-21.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>添加这一额外的跃点并让域指向 Area 1，服务就能够提供对 Sinkhole 的防护，确保恶意电子邮件不会到达目的地电子邮件收件箱。但是，我们意识到，将 Area 1 配置为第一个跃点（即更改 MX 记录）可能需要组织内的其他团队签核，并可能带来更多周期。组织还需要等待这一内联更改在 DNS 中反映出来（称为 DNS 传播时间）。我们知道我们的客户想在做出这些必要调整时尽快受到保护。</p>
 	<p>利用 Microsoft 365 载入，可以减少添加防护过程所需的配置步骤和等待时间。现在我们使用 Microsoft Graph API 评估与域关联的所有邮件。这样一来，运营团队就可以更灵活地部署 Area 1。 </p>
