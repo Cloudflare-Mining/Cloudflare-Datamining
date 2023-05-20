@@ -10,10 +10,10 @@
 		<li>我们如何使用 IPv6 地址，这是否会影响 IPv6 的其他用途？</li>
 		<li>对了，迁移需要什么周密的计划、检查、时间和人员呢?</li>
 	</ul>
-	<p>不得已停下来并担忧 IP 地址问题是非常浪费时间、金钱和资源的。鉴于 40 多年前 <a href="https://datatracker.ietf.org/doc/html/rfc791" target="_blank">IP 地址面世</a>时就具有远见且富有韧性，这可能令人觉得意外。根据设计，IP 地址应该是任何网络必须考虑的最后一件事。然而，如果互联网暴露了任何东西，那就是，任何细小或看起来不重要的弱点——通常在设计时看不见或不可能看到——总是以足够大的规模出现。有一件事我们是知道的：“更多地址”永远不应该是答案。在 IPv4 中，这种想法只会加剧其稀缺性，进一步推高其市场价格。IPv6 是绝对必要的，但只是解决方案的一部分。</p><!--kg-card-begin: markdown-->
+	<p>不得已停下来并担忧 IP 地址问题是非常浪费时间、金钱和资源的。鉴于 40 多年前 <a href="https://datatracker.ietf.org/doc/html/rfc791?ref=blog.cloudflare.com" target="_blank">IP 地址面世</a>时就具有远见且富有韧性，这可能令人觉得意外。根据设计，IP 地址应该是任何网络必须考虑的最后一件事。然而，如果互联网暴露了任何东西，那就是，任何细小或看起来不重要的弱点——通常在设计时看不见或不可能看到——总是以足够大的规模出现。有一件事我们是知道的：“更多地址”永远不应该是答案。在 IPv4 中，这种想法只会加剧其稀缺性，进一步推高其市场价格。IPv6 是绝对必要的，但只是解决方案的一部分。</p><!--kg-card-begin: markdown-->
 	<p>例如，在 IPv6 中，最佳实践称，最小的分配仅供个人使用，是 /56，也就是 2<sup>72</sup>，即 4,722,000,000,000,000,000,000 个地址。我肯定无法理解那么大的数字。您可以吗？</p>
 	<!--kg-card-end: markdown-->
-	<p>在本博文中，我们会解释为什么 IP 地址会是 web 服务的一个问题，根本原因是什么，并说明一个我们称为“寻址敏捷性（Addressing Agility)”的创新解决方案，以及我们已经学到的经验教训。其中最好的部分可能是寻址敏捷性支持的各种新系统和架构。完整的细节可参阅我们最近在 ACM SIGCOMM 2021 发表的<a href="https://research.cloudflare.com/publications/Fayed2021/" target="_blank">论文</a>。作为预览，如下概述我们所学到的一些东西：</p>
+	<p>在本博文中，我们会解释为什么 IP 地址会是 web 服务的一个问题，根本原因是什么，并说明一个我们称为“寻址敏捷性（Addressing Agility)”的创新解决方案，以及我们已经学到的经验教训。其中最好的部分可能是寻址敏捷性支持的各种新系统和架构。完整的细节可参阅我们最近在 ACM SIGCOMM 2021 发表的<a href="https://research.cloudflare.com/publications/Fayed2021/?ref=blog.cloudflare.com" target="_blank">论文</a>。作为预览，如下概述我们所学到的一些东西：</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>这是真的！任何一个地址上出现的名称数量是无限的；<em>在任何地方</em>任何名称的的地址可随每一次查询而变化；改变地址可能出于任何原因，可能是因为服务配置，策略或性能评估，或其他我们还没有遇到的原因……，</p>
 	<p>下面解释了为什么这一切都是真的，我们如何做到，以及为何这些教训对<em>任何规模</em>的 HTTP 和 TLS 服务都很重要。我们依据的关键洞察：在互联网协议（IP）设计中，就像全球邮政系统一样，地址从来没有，永远不应该，也绝不需要代表名称。只不过，我们有时对待它们的方式就像它们代表名称。相反，这项工作显示，所有名称都应该共享它们的所有地址，任何地址集，或甚至仅一个地址。</p>
@@ -24,18 +24,18 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed--1-.png" class="kg-image" alt="IP addresses bind to names and, separately, IP addresses bind to interfaces and sockets. This creates a transitive relationship where changing either can affect the other. The transitive nature is hard to follow or reason about, which hinders innovation." loading="lazy"></figure>
 	<p>这种传递锁定难以打破，因为改变其中任一个都会影响到另一个。此外，服务提供商常常使用 IP 地址来代表策略和服务层，而这些策略和服务级别本身是独立于名称存在的。最终，IP 绑定是需要考虑的另一件事——而且这种做法并没有很好的理由。</p>
 	<p>让我们换一种说法。当考虑新的设计，新的架构，或者只是更好的资源分配时，第一组问题永远不应该是“我们使用哪些IP地址?”或者“我们有IP地址用于这个吗?” 诸如此类的问题及其回答会延缓发展和创新。</p>
-	<p>我们意识到，IP 绑定不仅是人为的，而且根据最初富有远见的 <a href="https://datatracker.ietf.org/doc/html/rfc791#section-2.3" target="_blank">RFC </a>和标准，也是不正确的。事实上，IP 地址代表可达性以外的任何其他东西这一想法与其最初设计背道而驰。在最初的 RFC 和相关草稿中，架构是明确的，“名称指示我们寻找的东西。地址指示其所在位置。路由指示如何到达。” 任何将 IP 与更高层协议的 SNI 或 HTTP 主机关联的做法都是明显违反分层原则的。</p>
+	<p>我们意识到，IP 绑定不仅是人为的，而且根据最初富有远见的 <a href="https://datatracker.ietf.org/doc/html/rfc791?ref=blog.cloudflare.com#section-2.3" target="_blank">RFC </a>和标准，也是不正确的。事实上，IP 地址代表可达性以外的任何其他东西这一想法与其最初设计背道而驰。在最初的 RFC 和相关草稿中，架构是明确的，“名称指示我们寻找的东西。地址指示其所在位置。路由指示如何到达。” 任何将 IP 与更高层协议的 SNI 或 HTTP 主机关联的做法都是明显违反分层原则的。</p>
 	<p>当然，我们的任何工作都不是孤立存在的。但它确实完成了一个长期进行的演变，将 IP 地址与其传统用途脱钩，这个演变过程包括<a href="https://blog.cloudflare.com/cloudflare-research-two-years-in/">站在</a>巨人的肩膀上。</p>
 	<h3 id="--1">回顾演变过程……</h3>
 	<p>回望过去20年，不难看到，对寻址敏捷性的追求已经进行了一段时间，Cloudflare 也也在这个方面进行了大量投入。</p>
-	<p>IP 与网卡长达数十年的一对一绑定在几年前首次被打破： Google 的 <a href="https://research.google/pubs/pub44824/" target="_blank">Maglev </a>结合等价多路径（ECMP）和一致哈希值，从单一“虚拟” IP 地址在多个服务器之间传播流量。</p>
+	<p>IP 与网卡长达数十年的一对一绑定在几年前首次被打破： Google 的 <a href="https://research.google/pubs/pub44824/?ref=blog.cloudflare.com" target="_blank">Maglev </a>结合等价多路径（ECMP）和一致哈希值，从单一“虚拟” IP 地址在多个服务器之间传播流量。</p>
 	<p>自那以来，很多类似的系统在 GitHub、Facebook 和其他地方出现，包括我们自己的 <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/">Unimog</a>。最近，Cloudflare设计了一种新的可编程套接字架构，称为<a href="https://blog.cloudflare.com/its-crowded-in-here/">bpf_sk_lookup</a>，用于将 IP 地址与套接字和进程脱钩。</p>
 	<p>但哪些名称怎么处理呢？1997 年， HTTP 1.1 将主机字段定义为强制字段，确立了“虚拟主机托管”的价值。这是第一次正式承认多个名称可在单一 IP 地址上共存，并且必须由 TLS 在服务器名称指示（Server Name Indication）字段中复制。由于可能的名称数量超过 IP 地址的数量，这些要求都是绝对必要的。</p>
 	<h3 id="--2">……预示敏捷的未来</h3>
 	<p>展望未来，莎士比亚曾经聪明的问道，“名字有什么意义呢？”如果当时互联网能够说话，它可能会说，“我们用任何其他地址标记的名字都是可以到达的。”</p>
 	<p>如果莎翁的问题改为，“地址有什么意义呢？”，那么互联网会以同样的方式回答，“我们用任何其他名称标记的地址都是可以到达的。”</p>
 	<p>以上答案中可以看出一个强烈的暗示：名称和地址之间的映射是任意对任意的。若然如此，任何地址都可以用来访问一个名称，只要名称可在某个地址上到达。</p>
-	<p>事实上，自从 1995 年推出基于 <a href="https://datatracker.ietf.org/doc/html/rfc1794" target="_blank">DNS </a>的负载平衡以来，一种多地址对应一个名称的版本就已经存在。那么，为何不能所有地址对应所有名称，或任何地址在任何时间对应所有名称呢？或者，正如我们即将发现的那样，一个地址对应所有名称！但首先让我们谈一下实现寻址敏捷性的方式。</p>
+	<p>事实上，自从 1995 年推出基于 <a href="https://datatracker.ietf.org/doc/html/rfc1794?ref=blog.cloudflare.com" target="_blank">DNS </a>的负载平衡以来，一种多地址对应一个名称的版本就已经存在。那么，为何不能所有地址对应所有名称，或任何地址在任何时间对应所有名称呢？或者，正如我们即将发现的那样，一个地址对应所有名称！但首先让我们谈一下实现寻址敏捷性的方式。</p>
 	<h2 id="--3">实现寻址敏捷性：忽略名称、映射策略</h2>
 	<p>实现敏捷性的关键是权威 DNS——但不是以某种形式的记录或查找表存储的静态名称到 IP 映射。从任何客户端的角度来看，绑定只出现在“查询中”。对于映射的所有实际应用，查询的响应是某个请求生存期中最后一个名称可与地址绑定的时刻。</p>
 	<p>这让人想到，名称映射实际上不是在某个记录或分区文件中进行，而是在响应返回时进行。这是一个微妙但重要的区别。今天的 DNS 使用名称来查找一组地址，然后有时使用某种策略来决定返回哪个特定的地址。下图显示了这个概念。当查询到达时，查询显示与该名称相关联的地址，然后返回其中一个或多个地址。DNS 常常会使用额外的策略或逻辑过滤器来缩小地址选择范围，例如服务级别或地理区域覆盖。重要的细节是先用名称识别地址，然后才应用策略。</p>
@@ -109,7 +109,7 @@
 	<p>反对绑定到单个 IPv6 地址的一个理由是没有必要，因为地址不太可能耗尽。这是一个在 CIDR（无类域间路由）前的立场，我们认为，这种说法往好里说是善意的，往坏里说是不负责任的。如上所述，IPv6 地址的数量使得对它们的推理变得困难。与其问为什么使用一个 IPv6 地址，我们应该问，“为何不呢?”</p>
 	<h3 id="--10">是否会对上游产生影响呢？是的，还会带来机会！</h3>
 	<p>Ao1揭示了一系列完全不同于 IP 随机化的含义，可以说，通过放大看似微小的行动可能产生的影响，为我们打开了一扇通向互联网路由和可达性未来的窗口。</p>
-	<p>为什么呢？宇宙中可能的可变长度名称的数量总是会超过固定长度地址的数量。也就是说，按照<a href="https://en.wikipedia.org/wiki/Pigeonhole_principle" target="_blank">鸽巢原理（又名抽屉原理）</a>，单一 IP 地址必须由多个名称和来自不相关方的不同内容共享。</p>
+	<p>为什么呢？宇宙中可能的可变长度名称的数量总是会超过固定长度地址的数量。也就是说，按照<a href="https://en.wikipedia.org/wiki/Pigeonhole_principle?ref=blog.cloudflare.com" target="_blank">鸽巢原理（又名抽屉原理）</a>，单一 IP 地址必须由多个名称和来自不相关方的不同内容共享。</p>
 	<p>Ao1 放大的可能上游效应值得讨论，如下所述。然而，到目前为止，我们在评估中没有看到这方面的影响，在与上游网络的通信中也没有出现。</p>
 	<ul>
 		<li>上游路由错误是即时和全局的。如果所有流量到达单一地址（或前缀），那么上游路由错误会对所有内容产生同等的影响。（因此，Cloudflare 返回非连续地址范围的两个地址。）但是，请注意，对威胁拦截也是如此。</li>
@@ -120,19 +120,19 @@
 	<ul>
 		<li>IPv4 NAT 中的端口耗尽可能会加速，并由 IPv6 解决!从客户端到一个地址的允许并发连接数量是由传输协议的端口字段大小决定的，例如 TCP 中大约是 65K。</li>
 	</ul>
-	<p>例如，Linux 上的 TCP 中，直到最近这还是一个问题。（查看这个 <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=90c337da1524863838658078ec34241f45d8394d" target="_blank">提交</a> 以及 <a href="https://www.man7.org/linux/man-pages/man7/ip.7.html" target="_blank">ip(7) man page</a> 中的 SO_BIND_ADDRESS_NO_PORT。）在 QUIC 中，连接标识符可以防止端口耗尽，但必须使用它们。然而，到目前为止，我们还没有看到任何证据表明这是一个问题。</p>
+	<p>例如，Linux 上的 TCP 中，直到最近这还是一个问题。（查看这个 <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=90c337da1524863838658078ec34241f45d8394d&amp;ref=blog.cloudflare.com" target="_blank">提交</a> 以及 <a href="https://www.man7.org/linux/man-pages/man7/ip.7.html?ref=blog.cloudflare.com" target="_blank">ip(7) man page</a> 中的 SO_BIND_ADDRESS_NO_PORT。）在 QUIC 中，连接标识符可以防止端口耗尽，但必须使用它们。然而，到目前为止，我们还没有看到任何证据表明这是一个问题。</p>
 	<p>即使如此——这是最棒的部分——据我们所知，<em>这是单一地址使用的唯一风险</em>，并可通过迁移到 IPv6 来马上得到解决。（因此，ISP 和网络管理员，事不宜迟，马上实施 IPv6 吧！）</p>
 	<h2 id="--11">我们才刚刚开始！</h2>
 	<p>就这样，我们又回到开始所说的问题。如果任何单个 IP 地址可对应无限数量的名称，具备可对每个查询改变地址的能力，无论出于什么原因，那么<em>您</em>会创造什么东西呢？</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed--5-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>我们其实还只是刚刚起步！寻址敏捷性具备灵活性和未来适应性，让我们能够想象、设计和构建新的系统和架构。我们正在计划针对任播系统的 BGP 路由泄漏监测和缓解，测量平台，等等。</p>
-	<p>欢迎查看这篇<a href="https://research.cloudflare.com/publications/Fayed2021/" target="_blank">论文</a>和这个<a href="https://youtu.be/zg6944L-B3M?t=2137" target="_blank">短视频介绍</a>，其中包括有关以上内容的更多技术细节，并向所有使这一切成为可能的人致谢。即使有了这些新的可能性，挑战依然存在。有许多悬而未决的问题，包括但不限于以下：</p>
+	<p>欢迎查看这篇<a href="https://research.cloudflare.com/publications/Fayed2021/?ref=blog.cloudflare.com" target="_blank">论文</a>和这个<a href="https://youtu.be/zg6944L-B3M?t=2137&amp;ref=blog.cloudflare.com" target="_blank">短视频介绍</a>，其中包括有关以上内容的更多技术细节，并向所有使这一切成为可能的人致谢。即使有了这些新的可能性，挑战依然存在。有许多悬而未决的问题，包括但不限于以下：</p>
 	<ul>
 		<li>哪些策略可合理地表达或实施？</li>
 		<li>是否有一种抽象的语法来表达它们?</li>
 		<li>我们能否使用正式的方法和验证来预防错误或冲突的策略？</li>
 	</ul>
 	<p>寻址敏捷面向每个人，这甚至是这些想法更广泛地获得成功的必要条件。有任何想法或建议，请发送到 ask-research@cloudflare.com。</p>
-	<p>如果您是在读博士研究生或参与同等研究项目，正在寻找 2022 年在<a href="https://boards.greenhouse.io/cloudflare/jobs/1976547?gh_jid=1976547" target="_blank">美国或加拿大</a>和<a href="https://boards.greenhouse.io/cloudflare/jobs/2525989?gh_jid=2525989" target="_blank">欧盟或英国</a>的实习机会。</p>
-	<p>如果您有兴趣为这样的项目做出贡献，或帮助 Cloudflare 开发其流量和地址管理系统，<a href="https://boards.greenhouse.io/cloudflare/jobs/2428325" target="_blank">我们的寻址工程团队正在招聘</a>！</p>
+	<p>如果您是在读博士研究生或参与同等研究项目，正在寻找 2022 年在<a href="https://boards.greenhouse.io/cloudflare/jobs/1976547?gh_jid=1976547&amp;ref=blog.cloudflare.com" target="_blank">美国或加拿大</a>和<a href="https://boards.greenhouse.io/cloudflare/jobs/2525989?gh_jid=2525989&amp;ref=blog.cloudflare.com" target="_blank">欧盟或英国</a>的实习机会。</p>
+	<p>如果您有兴趣为这样的项目做出贡献，或帮助 Cloudflare 开发其流量和地址管理系统，<a href="https://boards.greenhouse.io/cloudflare/jobs/2428325?ref=blog.cloudflare.com" target="_blank">我们的寻址工程团队正在招聘</a>！</p>
 </div>
