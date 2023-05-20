@@ -21,7 +21,7 @@
 	<p>鉴于以上默认规则，每一个用户帐号都造成更大的数据丢失攻击面——但很难甚至不可能找到替代方案。在每个应用程序中配置基于角色的访问控制（RBAC）非常繁琐。更糟糕的是，一些应用程序完全不具备创建 RBAC 规则的能力。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-19.png" class="kg-image" alt="Configuring role-based access controls (RBAC) in every application is tedious. Even worse, some applications lack the ability to create RBAC rules altogether." loading="lazy"></figure>
 	<p>如今，针对您所有内部管理的应用程序和 SaaS 应用程序，您可以部署 Cloudflare 零信任网络，以便在单一位置构建保密规则。在很多情况下，这些规则的第一个目标是组织的客户关系管理（CRM）系统。CRM 包含买家、账户和收入相关数据。其中部分记录的敏感性远远高于其他，但其他团队（例如营销、法务和财务）的用户也能访问应用程序中的任何信息。</p>
-	<p>您现在可以使用 Cloudflare 的安全 Web 网关来<a href="https://blog.cloudflare.com/gateway-swg-2/">创建规则</a>，利用您的身份验证提供程序来限制谁可访问任何应用程序的特定部分，不管这个应用程序是否支持 RBAC 控制。如果您要允许团队成员访问记录但不能下载数据，您也可通过文件上传/下载策略来<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/block-uploads?ref=blog.cloudflare.com" target="_blank">控制</a>谁有权将数据保存到本地。</p>
+	<p>您现在可以使用 Cloudflare 的安全 Web 网关来<a href="https://blog.cloudflare.com/gateway-swg-2/">创建规则</a>，利用您的身份验证提供程序来限制谁可访问任何应用程序的特定部分，不管这个应用程序是否支持 RBAC 控制。如果您要允许团队成员访问记录但不能下载数据，您也可通过文件上传/下载策略来<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/block-uploads" target="_blank">控制</a>谁有权将数据保存到本地。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-36.png" class="kg-image" alt="If you want to allow team members to reach a record, but prevent users from downloading data, you can also control who has permission to save data locally with file upload/download policies." loading="lazy"></figure>
 	<p>一些应用程序支持这个级别的 RBAC，但我们也听到有客户反映，需要对特定数据集进行更详细的检查。一个例子是要求将 hard key 作为第二因素方法。您也可以使用 Cloudflare 零信任平台来为用户连接到特定应用程序添加额外要求，例如强制使用 hard key，或指定允许的国家/地区。</p>
 	<p>我们知道 URL 路径不一定是标准的，应用程序也会发展。很快，您的团队将能向任何应用程序中的数据应用同样类型的零信任控制。请继续阅读，以详细了解下一步以及这些规则如何与 Cloudflare 的数据检查集成。</p>
@@ -44,7 +44,7 @@
 	<p>不同于传统的数据丢失单点解决方案，Cloudflare DLP 在加速您的互联网流量相同硬件上内联运行。Cloudflare 不仅能帮助您的团队作为一个企业网络迁移到互联网，它也比互联网更快。我们的网络是与运营商无关的，具备优异的连接性和对等性，在全球交付相同的一套服务。在每一个入口中，我们都加上了基于本公司 Argo Smart Routing 技术的更佳路由，实际应用证明可将延迟缩短 30% 或以上。</p>
 	<p>当您的用户在互联网上连接一个应用程序时，Cloudflare WARP 代理或 Magic Transit 入口会建立一个到位于世界 200 多个城市的 Cloudflare 数据中心的安全连接。这些数据中心会根据阻止安全威胁的规则检查流量，记录事件，并扫描数据以寻找模式或准确条件，然后使用我们的全球专用骨干网加速到其目的地的连接。</p>
 	<h3 id="--3">下一步是什么？</h3>
-	<p>您的团队今天就可以开始在 <a href="https://www.cloudflare.com/zh-cn/teams-pricing/?ref=blog.cloudflare.com" target="_blank">Cloudflare for Teams</a> 中记录每一个请求并对任何应用程序应用 RBAC 控制。对于使用 Teams Free 计划的组织，最多 50 个用户可享用所需的每一项功能。</p>
-	<p>有意扫描所有数据流吗？数据扫描将在今年晚些时候加入到 Cloudflare for Teams。立即加入<a href="https://www.cloudflare.com/zh-cn/teams/lp/dlp/?ref=blog.cloudflare.com" target="_blank">等候名单</a>。</p>
+	<p>您的团队今天就可以开始在 <a href="https://www.cloudflare.com/zh-cn/teams-pricing/" target="_blank">Cloudflare for Teams</a> 中记录每一个请求并对任何应用程序应用 RBAC 控制。对于使用 Teams Free 计划的组织，最多 50 个用户可享用所需的每一项功能。</p>
+	<p>有意扫描所有数据流吗？数据扫描将在今年晚些时候加入到 Cloudflare for Teams。立即加入<a href="https://www.cloudflare.com/zh-cn/teams/lp/dlp/" target="_blank">等候名单</a>。</p>
 	<p>Cloudflare 网络可帮助解决贵组织面对的多种风险，数据丢失只是其中之一。敬请继续关注我们本周内陆续宣布的新功能，这些功能可在不影响性能或不增加硬件的情况下保障您团队的安全。</p>
 </div>
