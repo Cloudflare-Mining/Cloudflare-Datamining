@@ -30,7 +30,7 @@
 	<!--kg-card-end: markdown-->
 	<h3 id="-2-">ステップ2 - カスタムメタデータをカスタムホスト名に関連付ける</h3>
 	<p>次に、カスタムホスト名（顧客ドメイン）と、それに付けるファイアウォールルールセットの関連付けを行います。 </p>
-	<p>これは、JSON blobをカスタムホスト名に関連付けることで行います。当社製品の<a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata/?ref=blog.cloudflare.com" target="_blank">Custom Metadata</a>であれば、API を介して簡単に関連付けることができます。</p>
+	<p>これは、JSON blobをカスタムホスト名に関連付けることで行います。当社製品の<a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata/" target="_blank">Custom Metadata</a>であれば、API を介して簡単に関連付けることができます。</p>
 	<p>以下の例では、2つのフィールド（「customer_id」と「security_level」）を持つJSON blobが、<code>*.example.com</code>と<code>example.com</code>の各リクエストに関連付けられます。</p>
 	<p>カスタムメタデータには、あらかじめ決められたスキーマはありません。フィールド名や構造は、お客様のニーズに合わせて自由にカスタマイズすることができます。この例では、「security_level」というタグを選択し、3つの値（低、中、高）を割り当てることを想定しています。これによって、3つの異なるルールセットが起動されます。</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -sXPATCH "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"\
@@ -70,7 +70,7 @@
           }}'
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Advanced Rate Limitingについては、Cloudflareの<a href="https://developers.cloudflare.com/waf/rate-limiting-rules/?ref=blog.cloudflare.com" target="_blank">ドキュメン</a>トに詳細を記載しています。</p>
+	<p>Advanced Rate Limitingについては、Cloudflareの<a href="https://developers.cloudflare.com/waf/rate-limiting-rules/" target="_blank">ドキュメン</a>トに詳細を記載しています。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-30.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="--2">まとめ</h2>
 	<p>当社は、SaaSを提供するお客様のインフラニーズを満たすプロバイダーであることを嬉しく思います。カスタムドメインからTLS証明書、Webアプリケーションファイアウォールまで、当社でお手伝いできます。Cloudflare for SaaSを今すぐ使い始めましょう。Enterpriseを既にお使いのお客様であれば、担当のアカウントチームに連絡してWAF for SaaSの利用を開始してください。</p>
