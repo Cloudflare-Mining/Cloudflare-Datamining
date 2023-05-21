@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Announcing-Cloudflare-s-Data-Loss-Prevention-platform-OG-blog-body-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>API 流量正在迅速增长。仅在去年，我们边缘节点的 API 流量增长比 Web 流量快 300%。API 驱动移动和 Web 应用程序，传输各种各样的指令，例如“使用这张信用卡从我最喜欢的餐厅点一个披萨“，或者“进行一笔加密货币交易，这是我的个人信息”等等，因此 API 很容易成为数据盗窃和滥用的目标。（<a href="https://owasp.org/www-project-api-security/?ref=blog.cloudflare.com" target="_blank">2019 年十大 API 安全威胁</a>）。API 流量增长和数据攻击更趋频繁，要求新的安全解决方案。</p>
+	<p>API 流量正在迅速增长。仅在去年，我们边缘节点的 API 流量增长比 Web 流量快 300%。API 驱动移动和 Web 应用程序，传输各种各样的指令，例如“使用这张信用卡从我最喜欢的餐厅点一个披萨“，或者“进行一笔加密货币交易，这是我的个人信息”等等，因此 API 很容易成为数据盗窃和滥用的目标。（<a href="https://owasp.org/www-project-api-security/" target="_blank">2019 年十大 API 安全威胁</a>）。API 流量增长和数据攻击更趋频繁，要求新的安全解决方案。</p>
 	<p>Cloudflare 的安全工具箱始终旨在保护 Web 和 API 流量。然而，经过与数百位客户交谈后，我们意识到需要在单一界面中提供一个易于部署和配置的 API 安全工具。为满足这一需求，我们在 2020 年 10 月发布了 <a href="https://blog.cloudflare.com/zh-cn/introducing-api-shield-zh-cn/">API ShieldTM</a>，这个新产品旨在将为 API 流量设计的所有安全解决方案整合在一起。我们首先向所有 Cloudflare 用户免费提供 mTLS 身份验证，gRPC 支持和模式验证（beta 版）。我们也计划在未来发布具备更高安全功能的新版本。如今，我们很高兴能扩展我们的产品，提供旨在保护您的 API 以免暴露敏感数据的新功能。</p>
 	<p>今天，我们发布帮助减少渗漏攻击影响的四个功能：面向所有 Enterprise 客户的模式验证，允许您阻止开放代理流量的托管 IP 列表，对证书生命周期的更多控制，以及一个数据丢失防护解决方案。本周后期，我们也将宣布一些功能和方法，帮助发现在您网络上运行但您不一定知晓的 API，以及识别偏离预定用途的异常请求。</p>
 	<h3 id="-"><strong>模式验证全面开放</strong></h3>
 	<p>在发布 API Shield 时，我们引入了模式验证，仅向少数客户提供。过去几个月来，我们一直与这些早期使用者合作以增加更多功能，并将一个易用的界面直接构建到仪表板中。现在您可以导航到 “API Shield” 选项卡，通过 UI 直接部署 API 安全产品。部署流将很快扩大到包括位于仪表板中其他地方的更多功能，例如 mTLS 和速率限制。我们也将整合 API 异常检测等新功能，以便于反馈循环。</p>
-	<p>模式验证通过创建一个基于 API “模式”的正面安全模型来工作。API 模式用于定义其使用方式，指导开发者将 API 集成到其系统中。不同于负面安全模型（其规则定义某个请求必须触发一种行动的特征），模式验证旨在允许已被认证为符合要求的请求，并对其他一切请求采取行动。模式验证接受遵守 OpenAPI v3 规范 （也称为 Swagger 规范，是定义 RESTful 接口的一种标准）的模式（<a href="https://swagger.io/solutions/getting-started-with-oas/?ref=blog.cloudflare.com" target="_blank">在此页进一步了解</a>）。</p>
+	<p>模式验证通过创建一个基于 API “模式”的正面安全模型来工作。API 模式用于定义其使用方式，指导开发者将 API 集成到其系统中。不同于负面安全模型（其规则定义某个请求必须触发一种行动的特征），模式验证旨在允许已被认证为符合要求的请求，并对其他一切请求采取行动。模式验证接受遵守 OpenAPI v3 规范 （也称为 Swagger 规范，是定义 RESTful 接口的一种标准）的模式（<a href="https://swagger.io/solutions/getting-started-with-oas/" target="_blank">在此页进一步了解</a>）。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-32.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>模式验证根据 API 模式对每个请求进行评估，记录或阻止不符合的请求。</figcaption>
 	</figure>
@@ -15,13 +15,13 @@
 	</figure>
 	<p>用户可根据UI的指引完成配置步骤，包括指定 API Shield 部署和上传模式文件的主机名和基本路径。在部署了带模式验证的 API Shield 后，就可以看到防护了哪些端点以及提供什么级别的保护。在页面中可以看到有两组端点：受保护的和不受保护的。前者列出其模式受支持的所有端点和方法，后者指出其定义不受支持或不明确的任何端点。为避免拆分指向模式文件中未列出的端点的流量，我们包含一个最终规则，以匹配指向任何未受保护端点的流量。</p>
 	<p>每当模式验证识别出不符合要求的请求，并采取阻止或记录之类的操作时，就会创建一个带有源 “API Shield” 标记的新事件，并将其添加到防火墙日志中。用户可前往概述页查看分析和日志，GraphQL 驱动的仪表板提供的灵活性允许用户向下钻取数据。</p>
-	<p>模式验证对路径、路径变量、查询参数、标头和 cookie 执行检查，并允许记录不符合规则的流量。模式规则 Beta 版现已向所有 Enterprise 客户开放 — <a href="https://www.cloudflare.com/zh-cn/waf/api-shield?ref=blog.cloudflare.com" target="_blank">请填写本表单</a>以开始使用。</p>
+	<p>模式验证对路径、路径变量、查询参数、标头和 cookie 执行检查，并允许记录不符合规则的流量。模式规则 Beta 版现已向所有 Enterprise 客户开放 — <a href="https://www.cloudflare.com/zh-cn/waf/api-shield" target="_blank">请填写本表单</a>以开始使用。</p>
 	<h3 id="--1"><strong>数据丢失防护</strong></h3>
 	<p>数据丢失是影响大大小小组织的最大安全问题之一，也影响到个人及其隐私。敏感数据的丢失会对公司产生巨大影响，包括财务冲击、品牌价值侵蚀和最新数据保护法律遵守。最后，个人的敏感数据丢失也会造成金钱损失和隐私问题。</p>
 	<p>今日早些时候，我们推出了数据丢失（DLP）产品套件；我们正在对其进行扩展，以识别在某个 HTTP 或 API 请求的响应阶段离开源服务器的敏感数据。该解决方案评估出口流量，根据敏感数据的常见模式检查负载。其中包括个人身份信息，如社保号码和金融信息，包括信用卡号码、银行信息等。在第一版本中，用户将能记录 DLP 触发的任何匹配。我们计划增加其他行动，例如模糊化和阻止敏感数据离开 Cloudflare 后的源服务器。接下来，我们计划让客户自定义规则来识别其应用程序的特定敏感数据。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/DLP-Diagram.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>我们开发 DLP 时考虑到了简单性，以便每一个客户都无需复杂耗时的设置就能得到保护。我们将 DLP 作为托管规则集的方式发布，可通过防火墙托管规则集（Firewall Managed Rules）选项卡开启。DLP 可以作为某个反向代理 WAF 的一部分，也可作为零信任配置中集成数据保护的 Cloudflare for Teams 的一部分使用。这种紧密的集成可以更好地控制谁能访问贵组织内部的敏感数据。</p>
-	<p>DLP 处于 beta 阶段，目前向部分早期采用者客户开放。请<a href="https://www.cloudflare.com/zh-cn/waf/api-shield?ref=blog.cloudflare.com" target="_blank">填写本表单</a>以加入等候名单。</p>
+	<p>DLP 处于 beta 阶段，目前向部分早期采用者客户开放。请<a href="https://www.cloudflare.com/zh-cn/waf/api-shield" target="_blank">填写本表单</a>以加入等候名单。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image22-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>数据丢失防护可作为托管数据集开启。</p>
 	<h3 id="-ip-cloudflare-"><strong>托管 IP 列表：Cloudflare 的威胁情报</strong></h3>
