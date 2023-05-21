@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<p>If you were not aware, Cloudflare Workers lets you run Javascript in all 165+ of our Data Centers. We’re delighted to see some of the creative applications of Workers. As the use cases grow in complexity, the need to smoke test your code also grows. &nbsp;</p>
 	<p>More specifically, if your Worker includes a number of functions, it’s important to ensure each function does what it’s intended to do in addition to ensuring the output of the entire Worker returns as expected.</p>
-	<p>In this post, we’re going to demonstrate how to unit test Cloudflare Workers, and their individual functions, with <a href="https://github.com/dollarshaveclub/cloudworker" target="_blank">Cloudworker</a>, created by the Dollar Shave Club engineering team. </p>
+	<p>In this post, we’re going to demonstrate how to unit test Cloudflare Workers, and their individual functions, with <a href="https://github.com/dollarshaveclub/cloudworker?ref=blog.cloudflare.com" target="_blank">Cloudworker</a>, created by the Dollar Shave Club engineering team. </p>
 	<p>Dollar Shave Club is a Cloudflare customer, and they created Cloudworker, a mock for the Workers runtime, for testing purposes. We’re really grateful to them for this. They were kind enough to <a href="https://blog.cloudflare.com/cloudworker-a-local-cloudflare-worker-runner/">post on our blog</a> about it.</p>
 	<p>This post will demonstrate how to abstract away Cloudworker, and test Workers with the same syntax you write them in. </p>
 	<h3 id="example-script">Example Script</h3>
