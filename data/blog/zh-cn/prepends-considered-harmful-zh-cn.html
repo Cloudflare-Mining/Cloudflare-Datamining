@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>互联网最纯粹的形式是一个由独立网络（也称为<a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/" target="_blank">自治系统</a> (AS)）组成的松散连接图。这些网络使用一种称为 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a>（边界网关协议）的信令协议，通知邻居（也称为对等体）IP 前缀（一组 IP 地址）在其网络中或通过其网络的可达性。部分交换包含有关 IP 前缀的有用元数据，用于通知网络路由决策。元数据的一个例子是完整 AS 路径，它由 IP 数据包到达目的地需要经过的不同自治系统组成。</p>
+	<p>互联网最纯粹的形式是一个由独立网络（也称为<a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/?ref=blog.cloudflare.com" target="_blank">自治系统</a> (AS)）组成的松散连接图。这些网络使用一种称为 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/?ref=blog.cloudflare.com" target="_blank">BGP</a>（边界网关协议）的信令协议，通知邻居（也称为对等体）IP 前缀（一组 IP 地址）在其网络中或通过其网络的可达性。部分交换包含有关 IP 前缀的有用元数据，用于通知网络路由决策。元数据的一个例子是完整 AS 路径，它由 IP 数据包到达目的地需要经过的不同自治系统组成。</p>
 	<p>由于我们都希望数据包尽快到达目的地，因此为给定前缀选择最短 AS 路径是一个好主意。这正是预置发挥作用的地方。</p>
 	<h2 id="-">互联网路由入门</h2>
 	<p>在深入讨论一些细节之前，我们来简单介绍互联网在最基本的层面上是如何工作的。</p>
@@ -84,7 +84,7 @@
 	<p>这与互联成本相结合（可能是每月定期费用 (MRC) 或一次性费用）。PNI 更合适，因为它可以降低每兆传输的总成本，帮助优化价值，因为单位价格随着端口利用率提高而降低。</p>
 	<p>这种推论对于其他很多网络都类似，在中转网络中非常普遍。BGP 与成本和业务策略的相关性不亚于与性能的相关性。</p>
 	<h3 id="--4">中转本地优先级</h3>
-	<p>为简单起见，当提到中转点时，这是指<a href="https://en.wikipedia.org/wiki/Tier_1_network" target="_blank">传统 1 级中转网络</a>。由于这些网络的性质，它们有两套不同的网络对等体：</p>
+	<p>为简单起见，当提到中转点时，这是指<a href="https://en.wikipedia.org/wiki/Tier_1_network?ref=blog.cloudflare.com" target="_blank">传统 1 级中转网络</a>。由于这些网络的性质，它们有两套不同的网络对等体：</p>
 	<p>1. 客户（例如 Cloudflare）<br>2. 无结算对等体（如其他 1 级网络）</p>
 	<p>在正常情况下，中转客户分配的本地优先级比用于无结算对等体的本地优先级高。这意味着，无论预置多少前缀，如果流量进入该中转网络，流量<strong>始终</strong>落在您与该中转网络的互连上，不会被转移到另一个对等体。</p>
 	<p>如果您有多个不同的链接，想从一个链接切换/转移流量，或者如果流量来源是多个中转点后面的多宿主（并且他们没有自己的本地优先级），仍然可以使用预置。但是，通过 AS 路径预置实现从一个中转端口到另一个中转端口的入站流量工程流量收益明显递减：一旦超过三个预置前缀，在这一点上不太可能有什么变化。</p>
@@ -164,6 +164,6 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-47.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>这正是我们想要的！</p>
 	<h2 id="--6">总结</h2>
-	<p>AS 路径预置仍然有用，并且作为运营商的流量工程工具，也有其用途，但应该谨慎使用。<a href="https://ripe79.ripe.net/presentations/64-prepending_madory2.pdf" target="_blank">过度预置会使网络受到更广泛的路由劫持</a>，应该不惜一切代价来避免这种情况。因此，使用基于社区的入口流量工程非常可取（并且推荐）。在没有社区（或无法引导客户流量）的情况下，可以使用预置，但我鼓励运营商积极监测效果，如果无效，则回退。</p>
-	<p>顺便一提，P Marcos 等人发表了一篇关于 AS 路径预置的有趣论文，深入探讨了预置方面的一些趋势。我强烈推荐大家阅读：<a href="https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf" target="_blank">https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf</a></p>
+	<p>AS 路径预置仍然有用，并且作为运营商的流量工程工具，也有其用途，但应该谨慎使用。<a href="https://ripe79.ripe.net/presentations/64-prepending_madory2.pdf?ref=blog.cloudflare.com" target="_blank">过度预置会使网络受到更广泛的路由劫持</a>，应该不惜一切代价来避免这种情况。因此，使用基于社区的入口流量工程非常可取（并且推荐）。在没有社区（或无法引导客户流量）的情况下，可以使用预置，但我鼓励运营商积极监测效果，如果无效，则回退。</p>
+	<p>顺便一提，P Marcos 等人发表了一篇关于 AS 路径预置的有趣论文，深入探讨了预置方面的一些趋势。我强烈推荐大家阅读：<a href="https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf?ref=blog.cloudflare.com" target="_blank">https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf</a></p>
 </div>
