@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<p>最近，在布拉格Linux网络会议<a href="https://www.netdevconf.org/0x13/schedule.html?ref=blog.cloudflare.com" target="_blank">Netdev 0x13</a>上，我做了<a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives=&amp;ref=blog.cloudflare.com" target="_blank">一个简短的演讲，题目是“Cloudflare上的Linux”</a>。<a href="https://speakerdeck.com/majek04/linux-at-cloudflare?ref=blog.cloudflare.com" target="_blank">演讲</a>最后主要是关于BPF（柏克莱封包过滤器）的。似乎，不管问题是什么——BPF都是答案。</p>
+	<p>最近，在布拉格Linux网络会议<a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13</a>上，我做了<a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives" target="_blank">一个简短的演讲，题目是“Cloudflare上的Linux”</a>。<a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">演讲</a>最后主要是关于BPF（柏克莱封包过滤器）的。似乎，不管问题是什么——BPF都是答案。</p>
 	<p>下面是这次演讲的稍作调整的笔录。</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/01_edge-network-locations-100.jpg" class="kg-image" alt="" loading="lazy"></figure>
@@ -40,16 +40,16 @@
 	<ul>
 		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop: XDP &nbsp; &nbsp; &nbsp;DDoS缓解</a></li>
 		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap: XDP数据包捕获</a></li>
-		<li>Arthur Fabre的演讲：<a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation=&amp;ref=blog.cloudflare.com" target="_blank">基于XDP的DoS缓解</a></li>
-		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf?ref=blog.cloudflare.com" target="_blank">实践中的XDP：将XDP集成到我们的DDoS缓解通道中</a> (PDF)</li>
+		<li>Arthur Fabre的演讲：<a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">基于XDP的DoS缓解</a></li>
+		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">实践中的XDP：将XDP集成到我们的DDoS缓解通道中</a> (PDF)</li>
 	</ul>
-	<p>在这个项目中，我们遇到了许多eBPF/XDP限制。其中之一是缺乏并发原语。实现无竞争令牌桶之类的东西非常困难。后来，我们发现<a href="http://vger.kernel.org/lpc-bpf2018.html?ref=blog.cloudflare.com#session-9" target="_blank">Facebook工程师Julia Kartseva</a>遇到了同样的问题。在2月份，这个问题已经通过引入bpf_spin_lock helper得到了解决。</p>
+	<p>在这个项目中，我们遇到了许多eBPF/XDP限制。其中之一是缺乏并发原语。实现无竞争令牌桶之类的东西非常困难。后来，我们发现<a href="http://vger.kernel.org/lpc-bpf2018.html#session-9" target="_blank">Facebook工程师Julia Kartseva</a>遇到了同样的问题。在2月份，这个问题已经通过引入bpf_spin_lock helper得到了解决。</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-26.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>虽然我们现代的容量DoS防御是在XDP层完成的，但我们仍然依赖iptables来减轻应用层（第7层）的影响。在这里，更高级别防火墙的特性起着很大的作用：connlimit、hashlimit和ipset。我们还使用xt_bpf iptables模块在iptables中运行cBPF，从而匹配数据包有效负载。我们以前讨论过这个问题：</p>
 	<ul>
-		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible?ref=blog.cloudflare.com" target="_blank">抵御不可抗力的经验教训</a> (PPT)</li>
+		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible" target="_blank">抵御不可抗力的经验教训</a> (PPT)</li>
 		<li><a href="https://blog.cloudflare.com/introducing-the-bpf-tools/">介绍BPF工具</a></li>
 	</ul>
 	<hr>
@@ -81,7 +81,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-29.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>为了解决这个问题，我们开发了一个自定义内核补丁，其中添加了<a href="http://patchwork.ozlabs.org/patch/602916/?ref=blog.cloudflare.com" target="_blank">一个<code>SO_BINDTOPREFIX</code>socket选项</a>。顾名思义——它允许我们在选定的IP前缀上调用bind()。这解决了多个应用程序共享流行端口（如53或80）的问题。</p>
+	<p>为了解决这个问题，我们开发了一个自定义内核补丁，其中添加了<a href="http://patchwork.ozlabs.org/patch/602916/" target="_blank">一个<code>SO_BINDTOPREFIX</code>socket选项</a>。顾名思义——它允许我们在选定的IP前缀上调用bind()。这解决了多个应用程序共享流行端口（如53或80）的问题。</p>
 	<p>然后我们遇到另一个问题。对于我们的Spectrum产品，我们需要监听所有总共65535个端口。运行这么多监听套接字不是一个好主意（请参阅<a href="https://blog.cloudflare.com/revenge-listening-sockets/">我们过去的战争故事博客</a>），因此我们不得不寻找另一种方法。经过一些实验，我们学会了使用一个鲜有人知的iptables模块——TPROXY——来达到这个目的。点击这里进行阅读：</p>
 	<ul>
 		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum/">滥用Linux防火墙：允许我们构建Spectrum的黑客行为</a></li>
@@ -95,7 +95,7 @@
 		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP——未来的TCP粘合</a></li>
 	</ul>
 	<p>这项技术在改善我们许多软件堆栈的尾部延迟方面具有巨大潜力。当前的SOCKMAP实施尚未准备好完全发挥其作用，但它的潜力是巨大的。</p>
-	<p>同样，新的<a href="https://netdevconf.org/2.2/papers/brakmo-tcpbpf-talk.pdf?ref=blog.cloudflare.com" target="_blank">TCP-BPF又名BPF_SOCK_OPS</a>挂载为检查TCP流的性能参数提供了一种很好的方法。此功能对我们的性能表现团队非常有用。</p>
+	<p>同样，新的<a href="https://netdevconf.org/2.2/papers/brakmo-tcpbpf-talk.pdf" target="_blank">TCP-BPF又名BPF_SOCK_OPS</a>挂载为检查TCP流的性能参数提供了一种很好的方法。此功能对我们的性能表现团队非常有用。</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/12_prometheus-ebpf_exporter-100.jpg" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -103,7 +103,7 @@
 	<p>我们的解决方案是使用eBPF探针直接从内核中抽取数字。我的同事Ivan Babrou编写了一个名为“ebpf_exporter”的Prometheus指标导出器，以便进行此操作。了解更多请继续阅读：</p>
 	<ul>
 		<li><a href="https://blog.cloudflare.com/introducing-ebpf_exporter/">ebpf_exporter简介</a></li>
-		<li><a href="https://github.com/cloudflare/ebpf_exporter?ref=blog.cloudflare.com" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></li>
+		<li><a href="https://github.com/cloudflare/ebpf_exporter" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></li>
 	</ul>
 	<p>使用“ebpf_exporter”，我们可以生成所有形式的详细指标。它非常强大，并在许多情况下极大地帮助了我们。</p>
 	<hr>
@@ -118,7 +118,7 @@
 		<li>用于运行应用帮助进程的eBPF，例如用于TCP套接字粘合的SOCKMAP和用于TCP测量的TCP-BPF</li>
 		<li>用于获取精细指标的“ebpf_exporter”</li>
 	</ul>
-	<p>我们才刚刚开始!很快，我们将在基于eBPF的套接字调度、在<a href="https://linux.die.net/man/8/tc?ref=blog.cloudflare.com" target="_blank">Linux TC（</a><u>流量控制）</u>层上运行的eBPF以及与控制组eBPF挂载的更多集成上完成更多的工作。然后，我们的SRE团队将维护不断增长的<a href="https://github.com/iovisor/bcc?ref=blog.cloudflare.com" target="_blank">BCC脚本</a>列表，这些脚本对于调试非常有用。</p>
+	<p>我们才刚刚开始!很快，我们将在基于eBPF的套接字调度、在<a href="https://linux.die.net/man/8/tc" target="_blank">Linux TC（</a><u>流量控制）</u>层上运行的eBPF以及与控制组eBPF挂载的更多集成上完成更多的工作。然后，我们的SRE团队将维护不断增长的<a href="https://github.com/iovisor/bcc" target="_blank">BCC脚本</a>列表，这些脚本对于调试非常有用。</p>
 	<p>感觉就像Linux停止了开发新的API一样，所有的新特性都要通过eBPF挂载和帮助进程来实现。这很好，并且具有强大的优势。升级eBPF程序比重新编译内核模块更容易、更安全。如果没有eBPF，那么像TCP-BPF之类展现大量性能跟踪数据的东西可能是无法实现的。</p>
 	<p>有的人说：“软件正在占据世界”，但我想说：“BPF正在占据软件”。</p>
 </div>
