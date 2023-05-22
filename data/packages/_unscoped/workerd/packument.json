@@ -2,7 +2,7 @@
 	"name": "workerd",
 	"dist-tags": {
 		"latest": "1.20230512.0",
-		"beta": "0.20230512.0"
+		"beta": "0.20230518.0"
 	},
 	"versions": {
 		"0.0.1": {
@@ -951,6 +951,36 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIDMLijMRQzQjHAgIaGG/jqEqb+YxBXGXE/RLLqNCNmk5AiEA3ptztKi3hZ9Unm/s46CYuxsA6E9W6pq4mfvp7DMM5nI="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"0.20230518.0": {
+			"name": "workerd",
+			"version": "0.20230518.0",
+			"dependencies": {
+				"@cloudflare/workerd-darwin-arm64": "0.20230518.0",
+				"@cloudflare/workerd-darwin-64": "0.20230518.0",
+				"@cloudflare/workerd-linux-arm64": "0.20230518.0",
+				"@cloudflare/workerd-linux-64": "0.20230518.0",
+				"@cloudflare/workerd-windows-64": "0.20230518.0"
+			},
+			"bin": {
+				"workerd": "bin/workerd"
+			},
+			"dist": {
+				"integrity": "sha512-n2Exwj/irhRo9cyqHrvKoWJ0R8ZFhbt9fXCMkiGEPuTGfoYcxfqJqkIVSu1wzHgeCw4L0Qjmo2+0JKcw8WpjzA==",
+				"shasum": "749200c52e45ab53df915557f47828194b3393d5",
+				"tarball": "https://registry.npmjs.org/workerd/-/workerd-0.20230518.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 22245,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC4YW75fvR9ORNXazAr3Y9o5oZqekfZrURsJm6inkj4dAIhAPKlCn0noL92M+XCJ8P7KOfr4cVjOsLyMAjdb+tHnDQK"
 					}
 				]
 			},
