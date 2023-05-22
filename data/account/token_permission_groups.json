@@ -1312,6 +1312,22 @@
 		]
 	},
 	{
+		"id": "6a018a9f2fc74eb6b293b0c548f38b39",
+		"name": "Workers R2 Storage Bucket Item Read",
+		"description": "Grants read access to Cloudflare R2 Bucket Scoped Storage",
+		"scopes": [
+			"com.cloudflare.edge.r2.bucket"
+		]
+	},
+	{
+		"id": "2efd5506f9c8494dacb1fa10a3e7d5b6",
+		"name": "Workers R2 Storage Bucket Item Write",
+		"description": "Grants write access to Cloudflare R2 Bucket Scoped Storage",
+		"scopes": [
+			"com.cloudflare.edge.r2.bucket"
+		]
+	},
+	{
 		"id": "b4992e1108244f5d8bfbd5744320c2e1",
 		"name": "Workers R2 Storage Read",
 		"description": "Grants read access to Cloudflare R2 Storage",
