@@ -2,19 +2,19 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-9.png" class="kg-image" alt="Version and Stage Configuration Changes with HTTP Applications in Beta" loading="lazy"></figure>
 	<p>我们今天隆重宣布有关一个 HTTP 应用程序的封测。这是对 HTTP 流量进行安全测试和部署更改的新方式。HTTP 应用程序引入了配置版本控制，以及控制何时在 Cloudflare 的全球边缘网络上对 HTTP 流量进行更改的能力。寻求更大控制权的企业客户应联系他们的客户成功经理以获得访问权。</p>
 	<h3 id="-"><strong>管理配置时遇到的问题</strong></h3>
-	<p>自 Cloudflare 成立之初，网站和网络应用的管理一直通过我们所说的"区域"来完成，这源自于 <a href="https://www.cloudflare.com/zh-cn/learning/dns/glossary/dns-zone/?ref=blog.cloudflare.com" target="_blank">DNS 区域</a>的概念。虽然这种模式多年来为客户提供了很好的服务，但也确实在管理边缘配置方面造成了困难，即：</p>
+	<p>自 Cloudflare 成立之初，网站和网络应用的管理一直通过我们所说的"区域"来完成，这源自于 <a href="https://www.cloudflare.com/zh-cn/learning/dns/glossary/dns-zone/" target="_blank">DNS 区域</a>的概念。虽然这种模式多年来为客户提供了很好的服务，但也确实在管理边缘配置方面造成了困难，即：</p>
 	<ol>
 		<li>客户需手动设置暂存环境。</li>
 		<li>生产和暂存之间的配置存在偏移风险。</li>
 	</ol>
 	<p>在软件开发过程中，您想在一个安全的环境中测试变化，以便在进入生产或影响实时流量之前对其进行验证。在很多常见的软件开发生命周期中，这意味着将更改部署到暂存或预生产环境中进行测试和验证。现在，客户在 Cloudflare 上执行此操作的最常见方式是使用由这些区域的主机名表示的两个区域，例如：一个用于暂存，名为 <em>staging.example.com</em>，一个用于生产，名为 <em>example.com</em>。这样通过更改隔离解决了核心问题。在暂存区的错误不会影响生产流量。</p>
-	<p>然而，为了将已在暂存区成功验证的变更应用到生产中，客户必须手动复制这些变更—或通过使用 Cloudflare 的 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs?ref=blog.cloudflare.com" target="_blank">Terraform Provider</a> 创建自动化处理程序。对很多客户来说，需要执行一个手动的“变更请求”过程。在此过程中，需要将所做的变更记录在工单上。然后，会有人（通常是不同的人）收集工单，并必须根据人工提供的指示准确地复制相同变更。这个过程很容易出错：其中的每处错误都可能会导致中断，具体取决于所涉及的变更。此外，暂存配置和生产配置之间的配置偏差可能会导致更大的复杂性。</p>
+	<p>然而，为了将已在暂存区成功验证的变更应用到生产中，客户必须手动复制这些变更—或通过使用 Cloudflare 的 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">Terraform Provider</a> 创建自动化处理程序。对很多客户来说，需要执行一个手动的“变更请求”过程。在此过程中，需要将所做的变更记录在工单上。然后，会有人（通常是不同的人）收集工单，并必须根据人工提供的指示准确地复制相同变更。这个过程很容易出错：其中的每处错误都可能会导致中断，具体取决于所涉及的变更。此外，暂存配置和生产配置之间的配置偏差可能会导致更大的复杂性。</p>
 	<p>我们希望客户能够在 Cloudflare 上安全可靠地管理其服务。为了解决上述问题，我们发布了相关 HTTP 应用程序和路由规则。</p>
 	<h3 id="http-"><strong>HTTP 应用程序</strong></h3>
 	<p>HTTP 应用程序是一种根据使用情况（而不是按主机名）管理边缘配置的方式。无论是处理营销网站配置，还是处理内部应用程序，每个 HTTP 应用程序都有目的。所有 HTTP 应用程序均由各个版本的配置组成，每个版本代表着管理流量的设置快照—页面规则、防火墙规则、缓存设置等。HTTP 应用程序内部的每个版本的配置都与其他版本相独立，但当创建新版本时，其将作为之前版本的副本进行初始化。</p>
 	<h3 id="--1"><strong>路由规则</strong></h3>
-	<p>与区域不同，HTTP 应用程序的每个版本都与任何特定的主机名相独立。那么，如果版本不像区域那样与主机名绑定，那么您如何确定哪个版本的 HTTP 应用程序会影响一组特定的流量呢？答案是路由规则。通过路由规则，您可确定适用于流量的 HTTP 应用程序的版本，也就是主机名。路由规则由 Cloudflare 的<a href="https://developers.cloudflare.com/ruleset-engine/?ref=blog.cloudflare.com" target="_blank">规则集引擎</a>提供支持，依靠使用条件性的“if then”规则，将 Cloudflare 账户中控制的主机名映射到配置版本中。例如，如果请求的主机名与“www.example.com”相匹配，那么就应用第 2 版的营销 HTTP 应用程序。当此规则在边缘执行时，边缘将不应用 <a href="http://www.example.com/?ref=blog.cloudflare.com" target="_blank">www.example.com</a> 的常规区域配置，而是使用第 2 版 HTTP 应用程序中定义的配置。</p>
-	<p>路由规则支持两种规则 — 暂存规则和生产规则。如上所述，两者均采用主机名列表，但在创建暂存规则时，我们会额外使用一个过滤器，以便仅在流量发送到我们边缘的特定 IP 时执行该规则。这意味着您可在客户不受影响的情况下，将流量发送到暂存 IP 处的 <a href="http://www.example.com/?ref=blog.cloudflare.com" target="_blank">www.example.com</a>，以便安全地测试更改。更好的是，一旦您通过创建生产路由规则验证了您的更改，完全相同的配置将应用于您所有客户的生产。</p>
+	<p>与区域不同，HTTP 应用程序的每个版本都与任何特定的主机名相独立。那么，如果版本不像区域那样与主机名绑定，那么您如何确定哪个版本的 HTTP 应用程序会影响一组特定的流量呢？答案是路由规则。通过路由规则，您可确定适用于流量的 HTTP 应用程序的版本，也就是主机名。路由规则由 Cloudflare 的<a href="https://developers.cloudflare.com/ruleset-engine/" target="_blank">规则集引擎</a>提供支持，依靠使用条件性的“if then”规则，将 Cloudflare 账户中控制的主机名映射到配置版本中。例如，如果请求的主机名与“www.example.com”相匹配，那么就应用第 2 版的营销 HTTP 应用程序。当此规则在边缘执行时，边缘将不应用 <a href="http://www.example.com/" target="_blank">www.example.com</a> 的常规区域配置，而是使用第 2 版 HTTP 应用程序中定义的配置。</p>
+	<p>路由规则支持两种规则 — 暂存规则和生产规则。如上所述，两者均采用主机名列表，但在创建暂存规则时，我们会额外使用一个过滤器，以便仅在流量发送到我们边缘的特定 IP 时执行该规则。这意味着您可在客户不受影响的情况下，将流量发送到暂存 IP 处的 <a href="http://www.example.com/" target="_blank">www.example.com</a>，以便安全地测试更改。更好的是，一旦您通过创建生产路由规则验证了您的更改，完全相同的配置将应用于您所有客户的生产。</p>
 	<p>说的够多了 —让我们来看看实际效果吧！</p>
 	<h3 id="-http-"><strong>使用 HTTP 应用程序安全地测试和部署更改</strong></h3>
 	<p>在这次演示中，我将扮演一位现有客户的角色。我有一个为客户提供服务的现有区域，想做出一些转换规则的更改，以便重写我的资产位置。然而，我并不擅长使用 regex，如果犯错，很可能会破坏我所有客户的网站！我们将使用 HTTP 应用程序和路由规则来制定、测试和推出更改，而不是直接在区域中做出更改。</p>
@@ -50,7 +50,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-15.png" class="kg-image" alt="Creating a staging Routing Rule that will match when requests match example.com and the edge IP is 192.168.1.1 or 192.168.2.2 and apply the configuration of Version 1" loading="lazy">
 		<figcaption>创建暂存路由规则，该规则将在请求匹配 example.com 并且边缘 IP 为 192.168.1.1 或 192.168.2.2 时匹配，并将应用版本 1 的配置</figcaption>
 	</figure>
-	<p>创建规则后，我可对计算机进行配置，将请求发送至 example.com 的 IP。Rackspace 有一个<a href="https://docs.rackspace.com/support/how-to/modify-your-hosts-file/?ref=blog.cloudflare.com" target="_blank">全面的指南</a>，介绍如何更改本地机器的主机文件来做到这一点。现在，当我访问 example.com 时，系统将执行新的转换规则，但对于访问该网站的其他所有人来说，没有任何变化。</p>
+	<p>创建规则后，我可对计算机进行配置，将请求发送至 example.com 的 IP。Rackspace 有一个<a href="https://docs.rackspace.com/support/how-to/modify-your-hosts-file/" target="_blank">全面的指南</a>，介绍如何更改本地机器的主机文件来做到这一点。现在，当我访问 example.com 时，系统将执行新的转换规则，但对于访问该网站的其他所有人来说，没有任何变化。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image10-3.png" class="kg-image" alt="Routing Rules for the Example Application showing one rule for staging has been created." loading="lazy">
 		<figcaption>Example Application 的路由规则，显示已创建一个暂存规则。</figcaption>
 	</figure>

@@ -5,7 +5,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-1.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>攻击快照——峰值为754 Mpps。图中两种不同颜色的曲线表示两个独立系统丢弃的数据包。</figcaption>
 	</figure>
-	<p>在这四天中，攻击利用了<a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/?ref=blog.cloudflare.com" target="_blank">TCP</a>协议上三个攻击向量的组合：<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/?ref=blog.cloudflare.com" target="_blank">SYN泛洪</a>，<a href="https://www.cloudflare.com/learning/ddos/what-is-an-ack-flood/?ref=blog.cloudflare.com" target="_blank">ACK泛洪</a>和SYN-ACK泛洪。攻击活动以每秒4亿到6亿封包的速率持续了数个小时，并多次达到700Mpps的高峰，最高峰值为754Mpps。面对持续的高封包速率攻击，我们的边缘仍能在攻击期间持续为客户提供服务，性能完全不受影响。</p>
+	<p>在这四天中，攻击利用了<a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" target="_blank">TCP</a>协议上三个攻击向量的组合：<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN泛洪</a>，<a href="https://www.cloudflare.com/learning/ddos/what-is-an-ack-flood/" target="_blank">ACK泛洪</a>和SYN-ACK泛洪。攻击活动以每秒4亿到6亿封包的速率持续了数个小时，并多次达到700Mpps的高峰，最高峰值为754Mpps。面对持续的高封包速率攻击，我们的边缘仍能在攻击期间持续为客户提供服务，性能完全不受影响。</p>
 	<h3 id="ddos-">DDoS攻击的三种类型：比特，数据包和请求</h3>
 	<p>高比特率的攻击旨在通过每秒发送超过链路处理能力的带宽，使互联网链路饱和。缓解比特密集型洪水就像在容量有限的运河中，用大坝堵住喷涌而出的流水，只允许其中的一部分通过。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-2.png" class="kg-image" alt="" loading="lazy">

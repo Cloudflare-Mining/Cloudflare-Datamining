@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/jAzJD_kPdJiw3eWQ0JNXRO-mPcTyUNDlhsJUQrhw00xBnT3qofGxs2OByY_j6Y93sZ-PU-PGcsJLESmRDjSGqcMxPqXmwrLUusfadl0CBxJb6vbFCg1VPjA1NfbDgf_GRuXkV4NC" class="kg-image" alt="Developer Spotlight: Automating Workflows with Airtable and Cloudflare Workers" loading="lazy"></figure>
-	<p><a href="https://blog.cloudflare.com/tag/developer-spotlight/">开发人员聚焦</a>接下来要介绍的是我很喜欢的另一个人。今天的帖子由 Jacob Hands 撰写。Jacob 经营 <a href="http://tritailsbeef.com/?ref=blog.cloudflare.com" target="_blank">TriTails Premium Beef</a>，这是一个网上商店，销售肉类这种极易变质的商品。因此他在运输方面会遇到许多独特挑战。为了应对他们的发展，Jacob 作为一名开发人员，借助 Airtable 和 Cloudflare Workers 来自动化他们的大量工作流程。</p>
+	<p><a href="https://blog.cloudflare.com/tag/developer-spotlight/">开发人员聚焦</a>接下来要介绍的是我很喜欢的另一个人。今天的帖子由 Jacob Hands 撰写。Jacob 经营 <a href="http://tritailsbeef.com/" target="_blank">TriTails Premium Beef</a>，这是一个网上商店，销售肉类这种极易变质的商品。因此他在运输方面会遇到许多独特挑战。为了应对他们的发展，Jacob 作为一名开发人员，借助 Airtable 和 Cloudflare Workers 来自动化他们的大量工作流程。</p>
 	<p>我非常喜欢 Jacob 曾说过的一句话：</p>
 	<blockquote><em>“诚然，Cloudflare Workers 能够让您一天处理数十亿个请求，但一天处理几百个请求也同样很了不起。”</em></blockquote>
 	<p>下面，Jacob 将讲述他如何通过集成 Airtable 和 Workers，在短短几天时间内组合了一个完全定制的工作流工具，以及该工具如何帮助他们每天节省几个小时的时间。</p>
@@ -22,7 +22,7 @@
 	<p>解决问题通常就是要找出需要优先处理的事情，自动化该工作流程也同样如此。我们的订单分类过程有许多步骤，一次性自动化整个过程显然不可能，因为存在时间限制。因此，我决定仅解决优先级最高的问题，一次解决一个步骤。再分类过程帮助我构建了自动化整个工作流程所需的一切，而不会让人感到难以承受，并在此过程中的每一步都提高了效率。</p>
 	<p>随着运送时间计算 API 开始工作，接下来我想自动化的部分是，通过 API 从 Shopify 获取需要运输的订单，而不是每次都需要复制粘贴。从这一步开始，Google Sheets 的限制开始变得明显。尽管自动化可以在 Sheets 中完成，但它很快可能变成满是黑客的盲盒。所以，是时候转移到更好的平台了。但是，选择哪个平台呢？</p>
 	<p>自从 2012 年 Airtable 推出以来，我经常听到这个名字，也试着用过几次，但是它的定价和限制看起来并不适合我的任何一个用例。不过由于我们每次只需要存储少量的数据，它似乎值得一试，因为它有易于使用的 API，且支持严格的单元格格式，这在 Sheets 中要难得多。Airtable 有着直观的 UI，且很容易为所需的每个数据类型创建自定义字段。</p>
-	<p>在我发现 Airtable 具有一个内置 <a href="https://airtable.com/marketplace/blkQyAKhJoGKqnR0T/scripting?ref=blog.cloudflare.com" target="_blank">Scripting App</a> 后，很显然这就是适合我们工作的工具。</p>
+	<p>在我发现 Airtable 具有一个内置 <a href="https://airtable.com/marketplace/blkQyAKhJoGKqnR0T/scripting" target="_blank">Scripting App</a> 后，很显然这就是适合我们工作的工具。</p>
 	<h2 id="-airtable-scripting-apps"><strong>构建 Airtable Scripting Apps</strong></h2>
 	<p>Airtable Scripting 是一款强大的工具，用于直接在 Airtable 内使用 JavaScript 构建功能。遗憾的是，存在一些限制。例如，如果不复制粘贴，就无法在不同的 Scripting App 实例之间共享代码。这里也没有源代码管理，因此还原更改依赖于“撤消”按钮。</p>
 	<p>而另一方面，Cloudflare Workers 是一个完整的开发人员平台。您可以轻松使用源代码管理，而且它在 Wrangler 和 Miniflare 上有很好的开发人员体验，可以快速且无缝地测试和部署。</p>

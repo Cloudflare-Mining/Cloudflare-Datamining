@@ -3,7 +3,7 @@
 	<p>Google Fonts is one of the most common third-party resources on the web, but carries with it significant user-facing performance issues. Cloudflare Workers running at the edge is a great solution for fixing these performance issues, without having to modify the publishing system for every site using Google Fonts.</p>
 	<p>This post walks through the implementation details for how to fix the performance of Google Fonts with Cloudflare Workers. More importantly, it also provides code for doing high-performance content modification at the edge using Cloudflare Workers.</p>
 	<h3 id="googlefontsareslow">Google fonts are SLOW</h3>
-	<p>First, some background. <a href="https://fonts.google.com/?ref=blog.cloudflare.com" target="_blank">Google Fonts</a> provides a rich selection of royalty-free fonts for sites to use. You select the fonts you want to use, and end up with a simple stylesheet URL to include on your pages, as well as styles to use for applying the fonts to parts of the page:</p>
+	<p>First, some background. <a href="https://fonts.google.com/" target="_blank">Google Fonts</a> provides a rich selection of royalty-free fonts for sites to use. You select the fonts you want to use, and end up with a simple stylesheet URL to include on your pages, as well as styles to use for applying the fonts to parts of the page:</p>
 	<p>
 	</p>
 	<pre><code class="language-html">&lt;link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab"
@@ -28,7 +28,7 @@ h1 {
 	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/before-competing.png" alt="Network waterfall showing CSS and font download competing with low-priority images for bandwidth.">
 		<figcaption style="font-size:smaller;line-height:1em;">CSS and font download competing with low-priority images for bandwidth.</figcaption>
 	</figure><br>
-	<p>Users will see the images and skeleton for the page <a href="https://www.webpagetest.org/video/view.php?id=181016_befafeb79a563c08a7c4012ec10379ccb1c2f755&amp;ref=blog.cloudflare.com" target="_blank">long before</a> the actual text is displayed:</p>
+	<p>Users will see the images and skeleton for the page <a href="https://www.webpagetest.org/video/view.php?id=181016_befafeb79a563c08a7c4012ec10379ccb1c2f755" target="_blank">long before</a> the actual text is displayed:</p>
 	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/b1-image-paint.png" alt="The page starts painting at 3.3 seconds with partial images and no text.">
 		<figcaption style="font-size:smaller;line-height:1em;">The page starts painting at 3.3 seconds with partial images and no text.</figcaption>
 	</figure><br>
@@ -61,11 +61,11 @@ h1 {
 	</p>
 	<p>That way, when they arrive at the edge, the worker can look at the path of a request and know right away that it is a proxy request for a Google font. At this point, rewriting the original URL is trivial. On the extremely odd chance that a page on your site actually has a path that starts with /fonts.gstatic.com/, those resources would break and something else should be appended to the URL to make sure they are unique.</p>
 	<h4 id="optimizationresults">Optimization Results</h4>
-	<p>In practice, the results can be quite dramatic. On <a href="https://www.perftests.com/googlefonts/?ref=blog.cloudflare.com" target="_blank">this test page</a> for example, the wait time for fonts to become available dropped from 5.5 seconds to 1 second (an 81% improvement!):</p>
+	<p>In practice, the results can be quite dramatic. On <a href="https://www.perftests.com/googlefonts/" target="_blank">this test page</a> for example, the wait time for fonts to become available dropped from 5.5 seconds to 1 second (an 81% improvement!):</p>
 	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/after.png" alt="Network waterfall diagram showing the fonts loading immediately after the HTML.">
 		<figcaption style="font-size:smaller;line-height:1em;">The fonts load immediately after the HTML.</figcaption>
 	</figure><br>
-	<p>Visually, the improvement to the user experience is also <a href="https://www.webpagetest.org/video/view.php?id=181016_040e1e2365d95c4c7836281c9cf713ccc8aed3f5&amp;ref=blog.cloudflare.com" target="_blank">quite dramatic</a>. Instead of seeing a skeleton page of images followed by the text eventually appearing, the text is available (and correctly styled) immediately and the user can start consuming the content right away:</p>
+	<p>Visually, the improvement to the user experience is also <a href="https://www.webpagetest.org/video/view.php?id=181016_040e1e2365d95c4c7836281c9cf713ccc8aed3f5" target="_blank">quite dramatic</a>. Instead of seeing a skeleton page of images followed by the text eventually appearing, the text is available (and correctly styled) immediately and the user can start consuming the content right away:</p>
 	<figure style="text-align:center; margin:1em"><img src="https://blog.cloudflare.com/content/images/2018/11/1-initial-text.png" alt="The first paint happens much sooner at 2.5 seconds with all of the text displayed while the original page is still blank.">
 		<figcaption style="font-size:smaller;line-height:1em;">The first paint happens much sooner at 2.5 seconds with all of the text displayed while the original page is still blank.</figcaption>
 	</figure><br>
@@ -80,7 +80,7 @@ h1 {
 	</figure><br>
 	<p>One thing that I didn’t notice in the initial testing and only discovered when looking at the side-by-side video is that the fonts are only correctly styled in the optimized case. In the original case it took longer than Chrome’s 3-second timeout for the fonts to load and it fell back to the system fonts. Not only was the experience much faster; it was also styled correctly with the custom fonts right from the beginning.</p>
 	<h3 id="optimizinggooglefontswithacloudflareworker">Optimizing Google fonts with a Cloudflare worker</h3>
-	<p>The full Cloudflare worker code for implementing the font optimization is available on <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/fast-google-fonts?ref=blog.cloudflare.com" target="_blank">GitHub here</a>. Buckle-in because this is quite a bit more involved than most of the samples in the documentation.</p>
+	<p>The full Cloudflare worker code for implementing the font optimization is available on <a href="https://github.com/cloudflare/worker-examples/tree/master/examples/fast-google-fonts" target="_blank">GitHub here</a>. Buckle-in because this is quite a bit more involved than most of the samples in the documentation.</p>
 	<p>At a high level this code:</p>
 	<ul>
 		<li>Filters all requests and determines if a request is for a proxied font or HTML (and passes all other requests through unmodified).</li>
@@ -178,7 +178,7 @@ h1 {
 </code></pre>
 	<p>
 	</p>
-	<p>In addition to filtering the request headers we also filter the response headers sent back to the browser. If you’re not careful you could end up in a situation where a third-party is setting cookies on your origin or even turning on something like <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security?ref=blog.cloudflare.com" target="_blank">HTTP Strict Transport Security</a> for your site.</p>
+	<p>In addition to filtering the request headers we also filter the response headers sent back to the browser. If you’re not careful you could end up in a situation where a third-party is setting cookies on your origin or even turning on something like <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security" target="_blank">HTTP Strict Transport Security</a> for your site.</p>
 	<h4 id="streaminghtmlprocessing">Streaming HTML Processing</h4>
 	<p>The HTML path is more complicated because we are going to intercept and modify the content itself.</p>
 	<p>In processing the HTML request, the first thing we want to do is make sure it is actually an HTML response. If it is something else, then we should get out of the way and let the response stream back to the browser as it does normally. It is very possible that a PDF document, file download, or even a directly opened image, has a Accept of text/html. It is critical to check the actual content that is being responded with to make sure it is something we want to inspect and possibly modify.</p>
@@ -205,7 +205,7 @@ h1 {
 	<p>This works reasonably well if you are sure that all of the HTML is UTF-8 (or ascii), and the server returns all of the HTML at once, but there are some pretty serious concerns with doing it this way:</p>
 	<ul>
 		<li>The memory use can be unbounded and only limited by the size of the largest HTML response (possibly causing the worker to be terminated for using too much memory).</li>
-		<li>Significant delay will be added to any pages where the server <a href="https://www.stevesouders.com/blog/2009/05/18/flushing-the-document-early/?ref=blog.cloudflare.com" target="_blank">flushes the initial content early</a> and then does some expensive/slow work before returning the rest of the HTML.</li>
+		<li>Significant delay will be added to any pages where the server <a href="https://www.stevesouders.com/blog/2009/05/18/flushing-the-document-early/" target="_blank">flushes the initial content early</a> and then does some expensive/slow work before returning the rest of the HTML.</li>
 		<li>This only works if the text content uses an encoding that JavaScript can decode directly as UTF-8. Any other character encodings will fail to decode.</li>
 	</ul>
 	<p>For our worker we are going to process the HTML stream incrementally as it arrives from the server and pass it through to the browser as soon as possible (and pass-through any content that isn’t utf-8 unmodified).</p>
@@ -523,7 +523,7 @@ h1 {
 </code></pre>
 	<p>
 	</p>
-	<p>The fetching (and modifying) of the CSS is a little more complicated than a straight passthrough because we want to cache the result when possible. We cache the responses locally using the worker’s <a href="https://developers.cloudflare.com/workers/reference/cache-api/?ref=blog.cloudflare.com" target="_blank">Cache API</a>. Since the response is browser-specific, and we don’t want to fragment the cache too crazily, we create a custom cache key based on the browser user agent string that is basically browser+version+mobile.</p>
+	<p>The fetching (and modifying) of the CSS is a little more complicated than a straight passthrough because we want to cache the result when possible. We cache the responses locally using the worker’s <a href="https://developers.cloudflare.com/workers/reference/cache-api/" target="_blank">Cache API</a>. Since the response is browser-specific, and we don’t want to fragment the cache too crazily, we create a custom cache key based on the browser user agent string that is basically browser+version+mobile.</p>
 	<p>Some plans have access to named cache storage, but to work with all plans it is easiest if we just modify the font URL that gets stored in cache and append the cache key to the end of the URL as a query parameter. The cache URL never gets sent to a server but is useful for local caching of different content that shares the same URL. For example:</p>
 	<p>
 	</p>
@@ -649,7 +649,7 @@ h1 {
 	<p>
 	</p>
 	<h3 id="profit">Profit!</h3>
-	<p>Any site served through Cloudflare can implement workers to rewrite their content but for something like Google fonts or other third-party resources it gets much more interesting when someone implements it once and everyone else can benefit. With <a href="https://www.cloudflare.com/apps/developer/docs/getting-started?ref=blog.cloudflare.com" target="_blank">Cloudflare Apps’</a> new <a href="https://blog.cloudflare.com/introducing-apps-with-workers/">worker support</a> you can bundle up and deliver complex worker logic for anyone else to consume and publish it to the Apps marketplace.</p>
+	<p>Any site served through Cloudflare can implement workers to rewrite their content but for something like Google fonts or other third-party resources it gets much more interesting when someone implements it once and everyone else can benefit. With <a href="https://www.cloudflare.com/apps/developer/docs/getting-started" target="_blank">Cloudflare Apps’</a> new <a href="https://blog.cloudflare.com/introducing-apps-with-workers/">worker support</a> you can bundle up and deliver complex worker logic for anyone else to consume and publish it to the Apps marketplace.</p>
 	<p>If you are a third-party content provider for sites, think about what you might be able to do to leverage workers for your content for sites that are served through Cloudflare.</p>
 	<p>I get excited thinking about the performance implications of something like a tag manager running entirely on the edge without the sites having to change their published pages and without browsers having to fetch heavy JavaScript to do the page modifications. It can be done dynamically for every request directly on the edge!</p>
 	<!--kg-card-end: markdown-->
