@@ -480,6 +480,7 @@ export interface DurableObjectStorage {
   deleteAlarm(options?: DurableObjectSetAlarmOptions): Promise<void>;
   sync(): Promise<void>;
   sql: SqlStorage;
+  transactionSync<T>(closure: () => T): T;
 }
 export interface DurableObjectListOptions {
   start?: string;
@@ -1774,10 +1775,10 @@ export declare class URLSearchParams {
   );
   get size(): number;
   append(name: string, value: string): void;
-  delete(name: string): void;
+  delete(name: string, value?: any): void;
   get(name: string): string | null;
   getAll(name: string): string[];
-  has(name: string): boolean;
+  has(name: string, value?: any): boolean;
   set(name: string, value: string): void;
   sort(): void;
   entries(): IterableIterator<[key: string, value: string]>;
@@ -1898,8 +1899,6 @@ export interface SqlStorage {
   exec(query: string, ...bindings: any[]): SqlStorageCursor;
   prepare(query: string): SqlStorageStatement;
   get databaseSize(): number;
-  get voluntarySizeLimit(): number;
-  set voluntarySizeLimit(value: number);
   Cursor: typeof SqlStorageCursor;
   Statement: typeof SqlStorageStatement;
 }
@@ -3053,11 +3052,41 @@ export interface JsonWebKeyWithKid extends JsonWebKey {
   readonly kid: string;
 }
 // https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/
+export interface DynamicDispatchLimits {
+  /**
+   * Limit CPU time in milliseconds.
+   */
+  cpuMs?: number;
+  /**
+   * Limit number of subrequests.
+   */
+  subRequests?: number;
+}
+export interface DynamicDispatchOptions {
+  /**
+   * Limit resources of invoked Worker script.
+   */
+  limits?: DynamicDispatchLimits;
+  /**
+   * Arguments for outbound Worker script, if configured.
+   */
+  outbound?: {
+    [key: string]: any;
+  };
+}
 export interface DispatchNamespace {
   /**
    * @param name Name of the Worker script.
+   * @param args Arguments to Worker script.
+   * @param options Options for Dynamic Dispatch invocation.
    * @returns A Fetcher object that allows you to send requests to the Worker script.
    * @throws If the Worker script does not exist in this dispatch namespace, an error will be thrown.
    */
-  get(name: string): Fetcher;
+  get(
+    name: string,
+    args?: {
+      [key: string]: any;
+    },
+    options?: DynamicDispatchOptions
+  ): Fetcher;
 }
