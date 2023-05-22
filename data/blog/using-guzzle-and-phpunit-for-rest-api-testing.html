@@ -10,7 +10,7 @@
 $ composer require guzzlehttp/guzzle
 $ composer update
 </code></pre>
-	<p>When we ran <code>composer require</code> for each of the two packages, Composer went ahead and actually downloaded the packages we want, these are stored in the <code>vendor</code> directory. Additionally when we ran <code>composer update</code>, Composer updated it’s <a href="http://www.php-fig.org/psr/psr-4/?ref=blog.cloudflare.com" target="_blank">PSR-4</a> autoload script that allows us to pull in all the dependencies we’ve required with one file include, you can find this in <code>vendor/autoload.php</code>.</p>
+	<p>When we ran <code>composer require</code> for each of the two packages, Composer went ahead and actually downloaded the packages we want, these are stored in the <code>vendor</code> directory. Additionally when we ran <code>composer update</code>, Composer updated it’s <a href="http://www.php-fig.org/psr/psr-4/" target="_blank">PSR-4</a> autoload script that allows us to pull in all the dependencies we’ve required with one file include, you can find this in <code>vendor/autoload.php</code>.</p>
 	<p>With our dependencies in place, we can now configure PHPUnit to use Guzzle. In order to do this, we need to tell PHPUnit where our Composer autoload file is, but also where our tests are located. We can do this through writing a <code>phpunit.xml</code> in the root directory of our project:</p>
 	<pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;phpunit bootstrap="vendor/autoload.php"&gt;
@@ -81,7 +81,7 @@ class UserAgentTest extends PHPUnit_Framework_TestCase
 	<p>Next time we run PHPUnit, we can see if our tests pass successfully and also get insight into some statistics surrounding the execution of these tests:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/12/Screen-Shot-2016-12-28-at-08.36.57.png" alt="Running composer test, terminal indicating that 2 tests have been run with 4 assertions" loading="lazy"></p>
 	<h2 id="conclusion">Conclusion</h2>
-	<p>That’s all there is to this simple approach to API testing. If you want some insight into the overall code, feel free to review the project files in the <a href="https://github.com/IcyApril/Test-the-REST?ref=blog.cloudflare.com" target="_blank">Github repository</a>.</p>
-	<p>If you find yourself using this testing set-up, be sure to review the <a href="http://docs.guzzlephp.org/en/latest/request-options.html?ref=blog.cloudflare.com" target="_blank">Guzzle Request Options</a> to learn what kind of HTTP requests you can run with Guzzle and also check out the <a href="https://phpunit.de/manual/current/en/appendixes.assertions.html?ref=blog.cloudflare.com" target="_blank">types of assertions</a> of you can run with PHPUnit.</p>
+	<p>That’s all there is to this simple approach to API testing. If you want some insight into the overall code, feel free to review the project files in the <a href="https://github.com/IcyApril/Test-the-REST" target="_blank">Github repository</a>.</p>
+	<p>If you find yourself using this testing set-up, be sure to review the <a href="http://docs.guzzlephp.org/en/latest/request-options.html" target="_blank">Guzzle Request Options</a> to learn what kind of HTTP requests you can run with Guzzle and also check out the <a href="https://phpunit.de/manual/current/en/appendixes.assertions.html" target="_blank">types of assertions</a> of you can run with PHPUnit.</p>
 	<!--kg-card-end: markdown-->
 </div>
