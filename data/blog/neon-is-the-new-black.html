@@ -19,7 +19,7 @@ sys     0m0.225s
 	<p>In this case, however, I was disappointed to discover an almost 4X slowdown.</p>
 	<p>Not one to despair, I figured out that applying the same optimizations I did for Intel would be trivial. Surely the NEON instructions map neatly to the SSE instructions I used before?</p>
 	<p><img src="https://farm4.staticflickr.com/3063/2535574361_30730d9a7b_o_d.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/vizzzual-dot-com/2535574361/in/photolist-4S4tVk-8yutL-ge8Q-5fXXRQ-wJcRY-yrvgf-9vXGvq-hGx4N-4NZ4L-5cjA7-iJrnwJ-7VXhaz-866BCb-auGuG-68BjeT-92L4-9rXsu-3Pfaz-5GZs6n-oAKSY-LhdKa-7BLZ96-VRGZ2H-ofm5ZJ-8xC1bv-5DePNQ-ZouKg-afu4r-49ThBC-7VyeQT-qfr6P3-4zpUM8-hgPbs-naTubk-S7khvM-6hTftH-ByLAg-9sNftz-8G4os2-zsq8-oBEf6L-5y1nxR-7aTZfD-9fYMH-wJcnp-8yhgk-wJcDS-qsPXVn-kbW5A6-bPx3gX" target="_blank">image</a> by <a href="https://www.flickr.com/photos/vizzzual-dot-com/" target="_blank">viZZZual.com</a></small>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/vizzzual-dot-com/2535574361/in/photolist-4S4tVk-8yutL-ge8Q-5fXXRQ-wJcRY-yrvgf-9vXGvq-hGx4N-4NZ4L-5cjA7-iJrnwJ-7VXhaz-866BCb-auGuG-68BjeT-92L4-9rXsu-3Pfaz-5GZs6n-oAKSY-LhdKa-7BLZ96-VRGZ2H-ofm5ZJ-8xC1bv-5DePNQ-ZouKg-afu4r-49ThBC-7VyeQT-qfr6P3-4zpUM8-hgPbs-naTubk-S7khvM-6hTftH-ByLAg-9sNftz-8G4os2-zsq8-oBEf6L-5y1nxR-7aTZfD-9fYMH-wJcnp-8yhgk-wJcDS-qsPXVn-kbW5A6-bPx3gX?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/vizzzual-dot-com/?ref=blog.cloudflare.com" target="_blank">viZZZual.com</a></small>
 	</p>
 	<h3 id="whatisneon">What is NEON</h3>
 	<p>NEON is the ARMv8 version of SIMD, Single Instruction Multiple Data instruction set, where a single operation performs (generally) the same operation on several operands.</p>
@@ -204,7 +204,7 @@ sys     0m0.241s
 	<p>While going over the ARMv8 NEON instruction set, I found several unique instructions, that have no equivalent in SSE.</p>
 	<p>The first such instruction is <code>TBL</code>. It works as a lookup table, that can lookup 8 or 16 bytes from one to four consecutive registers. In the single register variant it is similar to the <code>pshufb</code> SSE instruction. In the four register variant, however, it can simultaneously lookup 16 bytes in a 64 byte table! What sorcery is that?</p>
 	<p>The intrinsic to use the 4 register variant is <code>vqtbl4q_u8</code>. Interestingly there is an instruction that can lookup 64 bytes in AVX-512, but we don't want to <a href="https://blog.cloudflare.com/on-the-dangers-of-intels-frequency-scaling/">use that</a>.</p>
-	<p>The next interesting thing I found, are instructions that can load or store and de/interleave data at the same time. They can load or store up to four registers simultaneously, while de/interleaving two, three or even four elements, of any supported width. The specifics are well presented in <a href="https://community.arm.com/processors/b/blog/posts/coding-for-neon---part-1-load-and-stores" target="_blank">here</a>. The load intrinsics used are of the form: <code>vldNq_uW</code>, where N can be 1,2,3,4 to indicate the interleave factor and W can be 8, 16, 32 or 64. Similarly <code>vldNq_sW</code> is used for signed types.</p>
+	<p>The next interesting thing I found, are instructions that can load or store and de/interleave data at the same time. They can load or store up to four registers simultaneously, while de/interleaving two, three or even four elements, of any supported width. The specifics are well presented in <a href="https://community.arm.com/processors/b/blog/posts/coding-for-neon---part-1-load-and-stores?ref=blog.cloudflare.com" target="_blank">here</a>. The load intrinsics used are of the form: <code>vldNq_uW</code>, where N can be 1,2,3,4 to indicate the interleave factor and W can be 8, 16, 32 or 64. Similarly <code>vldNq_sW</code> is used for signed types.</p>
 	<p>Finally very interesting instructions are the shift left/right and insert <code>SLI</code> and <code>SRI</code>. What they do is they shift the elements left or right, like a regular shift would, however instead of shifting in zero bits, the zeros are replaced with the original bits of the destination register! An intrinsic for that would look like <code>vsliq_n_u16</code> or <code>vsriq_n_u32</code>.</p>
 	<h4 id="applyingthenewinstructions">Applying the new instructions</h4>
 	<p>It might not be visible at first how those new instruction can help. Since I didn't have much time to dig into libjpeg or the jpeg spec, I had to resolve to heuristics.</p>
@@ -506,13 +506,13 @@ k += skip;
 	<h2 id="conclusion">Conclusion</h2>
 	<p>It is evident that the Qualcomm Centriq is a powerful processor, that definitely provides a good bang for a buck. However, years of Intel leadership in the server and desktop space mean that a lot of software is better optimized for Intel processors.</p>
 	<p>For the most part writing optimizations for ARMv8 is not difficult, and we will be adjusting our software as needed, and publishing our efforts as we go.</p>
-	<p>You can find the updated code on our <a href="https://github.com/cloudflare/jpegtran" target="_blank">Github</a> page.</p>
+	<p>You can find the updated code on our <a href="https://github.com/cloudflare/jpegtran?ref=blog.cloudflare.com" target="_blank">Github</a> page.</p>
 	<h3 id="usefulresources">Useful resources</h3>
 	<ul>
-		<li><a href="https://developer.arm.com/docs/100069/latest" target="_blank">Arm Compiler armasm User Guide</a></li>
-		<li><a href="http://infocenter.arm.com/help/topic/com.arm.doc.ihi0055b/IHI0055B_aapcs64.pdf" target="_blank">Procedure Call Standard for the ARM 64-bit Architecture</a></li>
-		<li><a href="http://infocenter.arm.com/help/topic/com.arm.doc.ihi0073a/IHI0073A_arm_neon_intrinsics_ref.pdf" target="_blank">ARM NEON Intrinsics Reference</a></li>
-		<li><a href="https://community.arm.com/processors/b/blog/posts/coding-for-neon---part-1-load-and-stores" target="_blank">Coding for NEON</a></li>
+		<li><a href="https://developer.arm.com/docs/100069/latest?ref=blog.cloudflare.com" target="_blank">Arm Compiler armasm User Guide</a></li>
+		<li><a href="http://infocenter.arm.com/help/topic/com.arm.doc.ihi0055b/IHI0055B_aapcs64.pdf?ref=blog.cloudflare.com" target="_blank">Procedure Call Standard for the ARM 64-bit Architecture</a></li>
+		<li><a href="http://infocenter.arm.com/help/topic/com.arm.doc.ihi0073a/IHI0073A_arm_neon_intrinsics_ref.pdf?ref=blog.cloudflare.com" target="_blank">ARM NEON Intrinsics Reference</a></li>
+		<li><a href="https://community.arm.com/processors/b/blog/posts/coding-for-neon---part-1-load-and-stores?ref=blog.cloudflare.com" target="_blank">Coding for NEON</a></li>
 	</ul>
 	<!--kg-card-end: markdown-->
 </div>
