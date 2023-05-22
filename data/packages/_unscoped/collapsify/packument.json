@@ -1,7 +1,7 @@
 {
 	"name": "collapsify",
 	"dist-tags": {
-		"latest": "0.7.2"
+		"latest": "0.8.0"
 	},
 	"versions": {
 		"0.1.1": {
@@ -707,6 +707,43 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi18DLACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpNvA/5ADA1AOLpefVWJIksGS8F9vYEro9gZz9pr3ixTu+pQr3yVMqZ\r\nxTbjCTgWvM/MsEkevd19yoNqKhWldIfHb3j6O/rwOQWSVWjDg3M6oWzPi1U8\r\ne4SCpP+vECJljt3fgfxu7wwLHdL+uZUamOEI0At5AYhRiOxD33THOIt76iqN\r\ntX5aaP/q7IisB/69MyuTzQEiR4RQlzjHIK/lqPTUmApdGGXIJBM9HPKhPCTz\r\n1hQCYMkJtKSbYCnyLdp4W58MJlY7BKXejXYYUeGZXM972bCdlHbyEcoGmC4c\r\ncvouTVciczHcpkNTuUIbCBwk483Wrp5rfRO7SnBcTsXi7L4J2+RcbY3kgxRq\r\nYfazNqKqI9C5oCizIeR/hPNVadK0bvNWYoN0xw0eKNEkkhY+fxJa2qbZZ1IC\r\nE/BJgMBBbJzTFK9e+zWexpVIiZxSl/nydNla8L0DlY/GdtOV1ZoG0VpOQLC7\r\neuOBrkbRbMywBIA75LKYBVezOs+pOF495h6cSEtlcUkt5KPcsJJh//gYZhoY\r\nR4nmKCLCqebVn1J0XjyxZxdkzmloeEQHKTEweqTmPgAnPwdCks3Uz5959KiJ\r\n3gfDOd/+6eBmwLzi1p6u2WepvLRqfvgQwtmuzlXMQcpFdCKWWN27k6xAv8GP\r\nTk6kVoWWHOzmXwrsHS7J3517MAcYnMKozF0=\r\n=An7J\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.8.0": {
+			"name": "collapsify",
+			"version": "0.8.0",
+			"dependencies": {
+				"base64-js": "^1.5.1",
+				"bole": "^3.0.2",
+				"cliclopts": "^1.1.0",
+				"cssnano": "^5.1.7",
+				"html-rewriter-wasm": "^0.4.1",
+				"minimist": "^1.1.0",
+				"postcss": "^8.2.15",
+				"postcss-value-parser": "^4.2.0",
+				"terser": "^5.14.2"
+			},
+			"devDependencies": {
+				"mocha": "^10.0.0",
+				"power-assert": "^1.6.0",
+				"typescript": "^5.0.4",
+				"xo": "^0.54.2"
+			},
+			"bin": {
+				"collapsify": "built/bin/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-IfZyyB/O3bTeu87/mIgcgWjU/DnMUCDMarB0RsCu8qzNVo2yOt3esGskNh9ga/pvwlpZQQh8wmwIonT1YQQvqw==",
+				"shasum": "0e3a739899261b6fb99715e1e98455e9098864b5",
+				"tarball": "https://registry.npmjs.org/collapsify/-/collapsify-0.8.0.tgz",
+				"fileCount": 40,
+				"unpackedSize": 25102,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDTqlYEbDMvNjYMl2dfMCchHApeFaxxlCeTeuH2gRDNKwIhAM05CuHpwM/sNRlu6Bwy8hx8BDVSLMr6NCF47dKH5poF"
+					}
+				]
 			}
 		}
 	}
