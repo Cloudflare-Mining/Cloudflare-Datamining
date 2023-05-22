@@ -35,6 +35,9 @@
 	"api-gateway-sequences": {
 		"enabled": true
 	},
+	"api-shield-developer-portal": {
+		"enabled": false
+	},
 	"api-shield-flyfishing": {
 		"enabled": true
 	},
@@ -106,7 +109,7 @@
 		"enabled": true
 	},
 	"branched-onb-flows-experiment": {
-		"enabled": true
+		"enabled": false
 	},
 	"bulk-redirects-feedback-survey": {
 		"enabled": false
@@ -166,6 +169,9 @@
 	"domain-connect-sig-and-key-fix": {
 		"enabled": true
 	},
+	"dx-discover-personalisation-engine": {
+		"enabled": false
+	},
 	"dx-onboarding-workers-experiment-2": {
 		"enabled": false,
 		"branches": [
@@ -177,7 +183,7 @@
 		"enabled": true
 	},
 	"dx-product-discovery-page": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
