@@ -84,11 +84,11 @@
 		<li>패킷 길이</li>
 		<li>비트 필드 일치</li>
 	</ul>
-	<p>네트워킹 세계에서 흔히 사용하는 도메인 특정 언어이며 Cloudflare가 기타 제품에서 사용하는 <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html" target="_blank">Wireshark 구문</a>으로 규칙을 만들 수 있습니다. 이 구문을 사용하면 네트워크 안팎의 모든 트래픽을 정확하게 허용하거나 거부하는 아주 강력한 규칙을 손쉽게 만들 수 있습니다. 경계 내부나 외부에 악의적 행위자가 있을 것 같다면, 대시보드에 로그인해 의심되는 트래픽을 차단하기만 하면 됩니다. 규칙은 몇 초 만에 전역적으로 푸시되고 위협은 에지에서 차단됩니다.</p>
+	<p>네트워킹 세계에서 흔히 사용하는 도메인 특정 언어이며 Cloudflare가 기타 제품에서 사용하는 <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html?ref=blog.cloudflare.com" target="_blank">Wireshark 구문</a>으로 규칙을 만들 수 있습니다. 이 구문을 사용하면 네트워크 안팎의 모든 트래픽을 정확하게 허용하거나 거부하는 아주 강력한 규칙을 손쉽게 만들 수 있습니다. 경계 내부나 외부에 악의적 행위자가 있을 것 같다면, 대시보드에 로그인해 의심되는 트래픽을 차단하기만 하면 됩니다. 규칙은 몇 초 만에 전역적으로 푸시되고 위협은 에지에서 차단됩니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-13.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>방화벽 구성은 쉽고 강력해야 합니다. Magic Firewall을 사용하면 복잡한 논리도 가능하며 간단한 UI를 사용하여 규칙을 구성할 수 있습니다. 또는, 간단히 Wireshark 필터 구문을 사용하여 필터 규칙을 직접 입력하고 구성하세요. UI에는 손대고 싶지 않나요? API만을 통해 규칙을 쉽게 추가할 수 있습니다.</p>
 	<h2 id="--3">다음은 무엇일까요?</h2>
 	<p>그냥 패킷을 확인하는 것으로는 부족합니다... 방화벽 규칙이 있어도, 네트워크에서 <em>실제로</em> 일어나는 일을 팀이 확인할 수 있어야 합니다. 데이터 스트림 내부에서 무슨 일이 일어나고 있는지, 합법적인 트래픽인지, 아니면 네트워크 내부 또는 외부에서 범죄를 저지르는 악의적 행위자가 있는지 확인할 수 있어야 합니다. 고객의 자산(직원 장치 또는 인터넷에 노출된 서비스)과 상호 작용하는 두 행위자 사이에 Cloudflare를 배포하면 트래픽이 유발된 위치나 트래픽 내용에 관계없이 Cloudflare가 모든 정책을 어디에나 시행할 수 있습니다. 곧 트래픽 유형을 기반으로 정책을 적용할 수 있게 됩니다. 데이터 스트림 내부에서 발생하는 상황에 따라 침입 이벤트를 자동 감지하는 기능을 곧 추가할 계획임을 기쁜 마음으로 발표합니다.</p>
 	<p>이러한 새 여정이 기대됩니다. Cloudflare는 Cloudflare One으로 기업용 네트워크의 모습을 다시 만들어나가고 있습니다. Cloudflare는 네트워크 방문자뿐만 아니라 네트워크 내부의 모든 사용자에게 액세스 관리, 보안 기능, 성능 전반을 통합합니다. 이 모든 것은 <a href="https://blog.cloudflare.com/our-network-cloudflare-one">#BuiltForThis</a>라는 목적의 네트워크에 구축되었습니다.</p>
-	<p>기존 Magic Transit 고객부터, 제한 베타로 Magic Firewall을 공개할 예정입니다. 관심이 있다면 <a href="https://www.cloudflare.com/lp/magic-firewall-beta/" target="_blank">알려주세요</a>.</p>
+	<p>기존 Magic Transit 고객부터, 제한 베타로 Magic Firewall을 공개할 예정입니다. 관심이 있다면 <a href="https://www.cloudflare.com/lp/magic-firewall-beta/?ref=blog.cloudflare.com" target="_blank">알려주세요</a>.</p>
 </div>
