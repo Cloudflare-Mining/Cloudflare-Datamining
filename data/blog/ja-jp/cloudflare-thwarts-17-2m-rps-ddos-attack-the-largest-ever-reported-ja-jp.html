@@ -21,7 +21,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image13-1.png" class="kg-image" alt="8万RPSの攻撃のグラフ" loading="lazy">
 		<figcaption>8万RPSの攻撃のグラフ</figcaption>
 	</figure>
-	<p>その2週間前には、<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/mirai-botnet/?ref=blog.cloudflare.com" target="_blank">Miraiの亜種ボットネット</a>が10数件を超えるUDPおよびTCPベースのDDoS攻撃を行い、ピーク時には1 Tbps超えが複数回観測され、最大ピーク時には約1.2 Tbpsに達しました。また、最初のHTTP攻撃が、<a href="https://www.cloudflare.com/ja-jp/waf/?ref=blog.cloudflare.com" target="_blank">WAF/CDNサービス</a>を利用するCloudflareのお客様を標的としていた一方、1 Tbpsを超えるネットワーク層の攻撃は、<a href="https://www.cloudflare.com/ja-jp/magic-transit/?ref=blog.cloudflare.com" target="_blank">Magic Transit</a>と<a href="https://www.cloudflare.com/ja-jp/products/cloudflare-spectrum/?ref=blog.cloudflare.com" target="_blank">Spectrum</a>サービスを利用するCloudflareのお客様が標的となりました。このときに狙われた1社は、APACに拠点を置くインターネットサービス、テレコミュニケーション、ホスティングプロバイダーでした。もう1社はゲーム会社で、いずれのケースでも、攻撃は自動的に検知され、人手を介さずに緩和されました。</p>
+	<p>その2週間前には、<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/mirai-botnet/" target="_blank">Miraiの亜種ボットネット</a>が10数件を超えるUDPおよびTCPベースのDDoS攻撃を行い、ピーク時には1 Tbps超えが複数回観測され、最大ピーク時には約1.2 Tbpsに達しました。また、最初のHTTP攻撃が、<a href="https://www.cloudflare.com/ja-jp/waf/" target="_blank">WAF/CDNサービス</a>を利用するCloudflareのお客様を標的としていた一方、1 Tbpsを超えるネットワーク層の攻撃は、<a href="https://www.cloudflare.com/ja-jp/magic-transit/" target="_blank">Magic Transit</a>と<a href="https://www.cloudflare.com/ja-jp/products/cloudflare-spectrum/" target="_blank">Spectrum</a>サービスを利用するCloudflareのお客様が標的となりました。このときに狙われた1社は、APACに拠点を置くインターネットサービス、テレコミュニケーション、ホスティングプロバイダーでした。もう1社はゲーム会社で、いずれのケースでも、攻撃は自動的に検知され、人手を介さずに緩和されました。</p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image17.png" class="kg-image" alt="1.2 Tbpsでピークに達したMiraiボットネット攻撃のグラフ" loading="lazy">
 		<figcaption>1.2 Tbpsでピークに達したMiraiボットネット攻撃のグラフ</figcaption>
 	</figure>
@@ -31,7 +31,7 @@
 		<figcaption>MiraiベースのDDoS攻撃の月別変化のグラフ</figcaption>
 	</figure>
 	<h4 id="mirai--1">Miraiへの回帰</h4>
-	<p>日本語の「未来」と同じ発音の<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/mirai-botnet/?ref=blog.cloudflare.com" target="_blank">Mirai</a>は、マルウェアのコードネームで、2016年に非営利のセキュリティ研究ワークグループである<a href="https://en.wikipedia.org/wiki/MalwareMustDie?ref=blog.cloudflare.com" target="_blank">MalwareMustDie</a>によって発見されました。このマルウェアは、セキュリティカメラやルーターなどのLinuxで動作する機器に感染することで広がります。そして、開いているTelnet用の23番ポートおよび2323番ポートをスキャンして自己増殖します。開いているポートが見つかると、<a href="https://www.cloudflare.com/ja-jp/learning/bots/brute-force-attack/?ref=blog.cloudflare.com" target="_blank">ブルートフォース</a>により工場出荷時のユーザー名やパスワードなどの既知の認証情報を用いて、脆弱な機器へのアクセスを試みます。また、Miraiの後期の亜種は、ルーターなどの機器に存在するゼロデイエクスプローラーを利用しています。感染すると、機器はコマンド&amp;コントロール（C2）サーバーを監視し、攻撃対象などの指示を待ちます。</p>
+	<p>日本語の「未来」と同じ発音の<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai</a>は、マルウェアのコードネームで、2016年に非営利のセキュリティ研究ワークグループである<a href="https://en.wikipedia.org/wiki/MalwareMustDie" target="_blank">MalwareMustDie</a>によって発見されました。このマルウェアは、セキュリティカメラやルーターなどのLinuxで動作する機器に感染することで広がります。そして、開いているTelnet用の23番ポートおよび2323番ポートをスキャンして自己増殖します。開いているポートが見つかると、<a href="https://www.cloudflare.com/ja-jp/learning/bots/brute-force-attack/" target="_blank">ブルートフォース</a>により工場出荷時のユーザー名やパスワードなどの既知の認証情報を用いて、脆弱な機器へのアクセスを試みます。また、Miraiの後期の亜種は、ルーターなどの機器に存在するゼロデイエクスプローラーを利用しています。感染すると、機器はコマンド&amp;コントロール（C2）サーバーを監視し、攻撃対象などの指示を待ちます。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image8-3.png" class="kg-image" alt="ボットネットのオペレーターがボットネットを制御してWebサイトを攻撃している図" loading="lazy">
 		<figcaption>ボットネットのオペレーターがボットネットを制御してWebサイトを攻撃している図</figcaption>
 	</figure>
@@ -40,13 +40,13 @@
 	<p>さらに、持続時間の短さは、長時間にわたって持続的なレベルのトラフィックを送り続けるボットネットの能力を示唆しているように感じるかもしれませんが、人間がそれに間に合うように反応するのは至難の業で、ほぼ不可能といえます。このようなケースでは、セキュリティエンジニアがトラフィックを分析したり、待機中のDDoS攻撃対策システムを作動させたりする前に、攻撃は完了しています。この種の攻撃は、自動化された常時稼働の攻撃対策の必要性を浮き彫りにしています。</p>
 	<h4 id="--2">自社のビジネスとインターネットプロパティを守る方法</h4>
 	<ol>
-		<li><a href="https://dash.cloudflare.com/sign-up?ref=blog.cloudflare.com" target="_blank">Cloudflareへのオンボーディングで</a>貴社のインターネットプロパティを保護する。</li>
-		<li>DDoS対策はデフォルトで保護が有効で、<a href="https://support.cloudflare.com/hc/ja/articles/200172676-Cloudflare%E3%81%AEDDoS%E6%94%BB%E6%92%83%E5%AF%BE%E7%AD%96%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B?ref=blog.cloudflare.com" target="_blank">保護設定のカスタマイズも可能です</a>。</li>
-		<li>予防的な<a href="https://support.cloudflare.com/hc/en-us/articles/200170166-Best-Practices-DDoS-preventative-measures?ref=blog.cloudflare.com" target="_blank">ベストプラクティス</a> に従って、お客様のCloudflare設定とオリジンサーバー設定の両方が最適化されるようにしてください。例として、<a href="https://www.cloudflare.com/ja-jp/ips/?ref=blog.cloudflare.com" target="_blank">CloudflareのIPレンジ</a>からのトラフィックのみを許可するようにします。理想的には、上流のインターネットサービスプロバイダー（ISP）にアクセスコントロールリスト（ACL）を適用してもらうことです。そうしないと、攻撃者がお客様のサーバーのIPアドレスを直接ターゲットにして、保護を回避してしまう可能性があります。</li>
+		<li><a href="https://dash.cloudflare.com/sign-up" target="_blank">Cloudflareへのオンボーディングで</a>貴社のインターネットプロパティを保護する。</li>
+		<li>DDoS対策はデフォルトで保護が有効で、<a href="https://support.cloudflare.com/hc/ja/articles/200172676-Cloudflare%E3%81%AEDDoS%E6%94%BB%E6%92%83%E5%AF%BE%E7%AD%96%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B" target="_blank">保護設定のカスタマイズも可能です</a>。</li>
+		<li>予防的な<a href="https://support.cloudflare.com/hc/en-us/articles/200170166-Best-Practices-DDoS-preventative-measures" target="_blank">ベストプラクティス</a> に従って、お客様のCloudflare設定とオリジンサーバー設定の両方が最適化されるようにしてください。例として、<a href="https://www.cloudflare.com/ja-jp/ips/" target="_blank">CloudflareのIPレンジ</a>からのトラフィックのみを許可するようにします。理想的には、上流のインターネットサービスプロバイダー（ISP）にアクセスコントロールリスト（ACL）を適用してもらうことです。そうしないと、攻撃者がお客様のサーバーのIPアドレスを直接ターゲットにして、保護を回避してしまう可能性があります。</li>
 	</ol>
 	<h4 id="-iot-">家とIoT家電を保護するための推奨事項</h4>
 	<ol>
 		<li>スマートカメラやルーターなど、インターネットに接続されている機器のデフォルトのユーザー名とパスワードを変更する。これにより、MiraiのようなマルウェアがルーターやIoT機器にアクセスするリスクを減少させることができます。</li>
-		<li><a href="https://developers.cloudflare.com/1.1.1.1/1.1.1.1-for-families?ref=blog.cloudflare.com" target="_blank">Cloudflare for Families</a>でご自宅をマルウェアから守りましょう。Cloudflare for Familiesは、各家庭から悪意のあるウェブサイトやマルウェアの通信へのトラフィックを自動的にブロックする無料サービスです。</li>
+		<li><a href="https://developers.cloudflare.com/1.1.1.1/1.1.1.1-for-families" target="_blank">Cloudflare for Families</a>でご自宅をマルウェアから守りましょう。Cloudflare for Familiesは、各家庭から悪意のあるウェブサイトやマルウェアの通信へのトラフィックを自動的にブロックする無料サービスです。</li>
 	</ol>
 </div>
