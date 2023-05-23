@@ -48,7 +48,6 @@ export const DNSRecord = eg.object({
     eg.literal('NS'),
     eg.literal('PTR'),
     eg.literal('SRV'),
-    eg.literal('SPF'),
     eg.literal('TXT'),
     eg.literal('SMIMEA'),
     eg.literal('SSHFP'),
@@ -70,8 +69,12 @@ export const DNSFirewallCluster = eg.object({
   maximum_cache_ttl: eg.number,
   minimum_cache_ttl: eg.number,
   deprecate_any_requests: eg.boolean,
-  origin_ips: eg.array(eg.string),
-  dns_firewall_ips: eg.array(eg.string)
+  upstream_ips: eg.array(eg.string),
+  origin_ips: eg.array(eg.string).optional,
+  dns_firewall_ips: eg.array(eg.string),
+  attack_mitigation: eg.object({
+    only_when_origin_unhealthy: eg.boolean.optional
+  }).optional
 });
 
 export type DNSFirewallCluster = TypeFromCodec<typeof DNSFirewallCluster>;

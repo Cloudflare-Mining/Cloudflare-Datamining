@@ -34,7 +34,13 @@ export type BFResponse = TypeFromCodec<typeof BFResponse>;
 
 export const PaymentMethodType = eg.union([
   eg.literal('PAYPAL'),
-  eg.literal('CREDIT_CARD')
+  eg.literal('CREDIT_CARD'),
+  eg.literal('APPLE_PAY'),
+  eg.literal('GOOGLE_PAY'),
+  eg.literal('ACH_DIRECT_DEBIT'),
+  eg.literal('SEPA_DEBIT'),
+  eg.literal('CASHAPP'),
+  eg.literal('LINK')
 ]);
 
 export type PaymentMethodType = TypeFromCodec<typeof PaymentMethodType>;
@@ -43,7 +49,10 @@ export const PaymentMethod = eg.object({
   id: eg.string,
   type: PaymentMethodType.optional,
   last_four: eg.string,
-  expiration_date: eg.string,
+  bank_name: eg.string.optional,
+  payment_account_email: eg.string.optional,
+  cashapp_cash_tag: eg.string.optional,
+  expiration_date: eg.string.optional,
   first_name: eg.string.optional,
   last_name: eg.string.optional,
   address: eg.string.optional,

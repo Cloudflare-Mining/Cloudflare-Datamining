@@ -281,3 +281,13 @@ export const PagesTail = eg.object({
 });
 
 export type PagesTailResult = TypeFromCodec<typeof PagesTail>;
+
+export const PlacementMode = eg.union([eg.literal('off'), eg.literal('smart')]);
+
+export type PlacementMode = TypeFromCodec<typeof PlacementMode>;
+
+export const Placement = eg.object({
+  mode: PlacementMode
+});
+
+export type Placement = TypeFromCodec<typeof Placement>;
