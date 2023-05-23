@@ -9,7 +9,7 @@ import Table from '../components/Table.astro';
 import {marked} from 'marked';
 
 
-interface workerdFlagInfo {
+interface WorkerdFlagInfo {
 	name: string;
 	annotations: {
 		compatEnableFlag?: string | null;
@@ -19,7 +19,7 @@ interface workerdFlagInfo {
 	}
 }
 
-interface flagStatus {
+interface FlagStatus {
 	[flag: string]: {
 		success: boolean;
 		already_default: boolean;
@@ -27,7 +27,7 @@ interface flagStatus {
 		error_message?: string;
 	}
 }
-interface flagInfo {
+interface FlagInfo {
 	name: string;
 	friendly_name: string | null;
 	description: string | null;
@@ -39,7 +39,7 @@ interface flagInfo {
 	usable: boolean;
 }
 
-interface remoteFlagInfoType {
+interface RemoteFlagInfoType {
 	name: string;
 	description: string;
 	disable_flag: string | null;
@@ -58,18 +58,18 @@ for(const struct of workerdData.structs) {
 if(!flagsInfo) { throw new Error('Could not find flags info!'); }
 
 const flagStatusRes = await fetch('https://compat-date-testing-dump.jross.workers.dev/status');
-const flagStatus: flagStatus = await flagStatusRes.json();
+const flagStatus: FlagStatus = await flagStatusRes.json();
 
 const remoteFlagInfoRes = await fetch('https://developers.cloudflare.com/workers/platform/compatibility-dates.json');
-const remoteFlagInfo: remoteFlagInfoType[] = await remoteFlagInfoRes.json();
+const remoteFlagInfo: RemoteFlagInfoType[] = await remoteFlagInfoRes.json();
 
 const flags = [];
-for(const flag of flagsInfo as workerdFlagInfo[]) {
+for(const flag of flagsInfo as WorkerdFlagInfo[]) {
 	const enableFlag = flag.annotations?.compatEnableFlag;
 	if(!enableFlag) { continue; }
 	const remoteFlag = remoteFlagInfo.find(rf => rf.enable_flag === enableFlag);
 
-	const flagInfo: flagInfo = {
+	const flagInfo: FlagInfo = {
 		name: flag.name,
 		friendly_name: null,
 		description: null,
@@ -124,7 +124,7 @@ for(const flag of flagsInfo as workerdFlagInfo[]) {
 	{flags.map(flag => (
 		<>
 			<h3 class="mt-4 break-all text-lg font-semibold">{flag.friendly_name ?? flag.name}</h3>
-			<div class="prose dark:prose-invert mt-2 max-w-full">
+			<div class="prose mt-2 max-w-full dark:prose-invert">
 				<dl>
 					{
 						flag.enable_date &&

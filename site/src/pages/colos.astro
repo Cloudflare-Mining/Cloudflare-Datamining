@@ -27,7 +27,7 @@ const additionalTags: {
 
 const DOColosRes = await fetch('https://colo-route.jross.dev/colo-route/colos');
 const DOColos = await DOColosRes.json();
-for (const colo of DOColos) {
+for(const colo of DOColos) {
 	if(!additionalTags[colo]) {
 		additionalTags[colo] = [];
 	}

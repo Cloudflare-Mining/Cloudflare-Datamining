@@ -27,9 +27,9 @@ const {id, headers, data, widths} = Astro.props;
 								{item.map((value: string | string[], index: number) => (
 									<td class={['whitespace-nowrap py-2 pl-2 first:pl-4 pr-3 text-sm text-gray-500 dark:text-gray-300 truncate font-mono', widths?.[index]].join(' ').trim()}>
 										{!Array.isArray(value) ? value : (
-											<ul class="list-none list-inside">
+											<ul class="list-inside list-none">
 												{value.map((item: string) => (
-													<li class="text-sm text-gray-500 dark:text-gray-300 truncate font-mono inline after:content-[',_'] last:after:content-['']">{item}</li>
+													<li class="inline truncate font-mono text-sm text-gray-500 after:content-[',_'] last:after:content-[''] dark:text-gray-300">{item}</li>
 												))}
 											</ul>
 										)}
