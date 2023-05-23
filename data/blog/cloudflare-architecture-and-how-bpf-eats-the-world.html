@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<p>Recently at <a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13</a>, the Conference on Linux Networking in Prague, I gave <a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives" target="_blank">a short talk titled "Linux at Cloudflare"</a>. The <a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">talk</a> ended up being mostly about BPF. It seems, no matter the question - BPF is the answer.</p>
+	<p>Recently at <a href="https://www.netdevconf.org/0x13/schedule.html?ref=blog.cloudflare.com" target="_blank">Netdev 0x13</a>, the Conference on Linux Networking in Prague, I gave <a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives=&amp;ref=blog.cloudflare.com" target="_blank">a short talk titled "Linux at Cloudflare"</a>. The <a href="https://speakerdeck.com/majek04/linux-at-cloudflare?ref=blog.cloudflare.com" target="_blank">talk</a> ended up being mostly about BPF. It seems, no matter the question - BPF is the answer.</p>
 	<p>Here is a transcript of a slightly adjusted version of that talk.</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/01_edge-network-locations-100.jpg" class="kg-image" alt="" loading="lazy"></figure>
@@ -35,15 +35,15 @@
 	<ul>
 		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop: XDP DDoS Mitigations</a></li>
 		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap: XDP Packet Capture</a></li>
-		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">XDP based DoS mitigation</a> talk by Arthur Fabre</li>
-		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">XDP in practice: integrating XDP into our DDoS mitigation pipeline</a> (PDF)</li>
+		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation=&amp;ref=blog.cloudflare.com" target="_blank">XDP based DoS mitigation</a> talk by Arthur Fabre</li>
+		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf?ref=blog.cloudflare.com" target="_blank">XDP in practice: integrating XDP into our DDoS mitigation pipeline</a> (PDF)</li>
 	</ul>
-	<p>During this project we encountered a number of eBPF/XDP limitations. One of them was the lack of concurrency primitives. It was very hard to implement things like race-free token buckets. Later we found that <a href="http://vger.kernel.org/lpc-bpf2018.html#session-9" target="_blank">Facebook engineer Julia Kartseva</a> had the same issues. In February this problem has been addressed with the introduction of <code>bpf_spin_lock</code> helper.</p>
+	<p>During this project we encountered a number of eBPF/XDP limitations. One of them was the lack of concurrency primitives. It was very hard to implement things like race-free token buckets. Later we found that <a href="http://vger.kernel.org/lpc-bpf2018.html?ref=blog.cloudflare.com#session-9" target="_blank">Facebook engineer Julia Kartseva</a> had the same issues. In February this problem has been addressed with the introduction of <code>bpf_spin_lock</code> helper.</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-26.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>While our modern volumetric DoS defenses are done in XDP layer, we still rely on <code>iptables</code> for application layer 7 mitigations. Here, a higher level firewall’s features are useful: connlimit, hashlimits and ipsets. We also use the <code>xt_bpf</code> iptables module to run cBPF in iptables to match on packet payloads. We talked about this in the past:</p>
 	<ul>
-		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible" target="_blank">Lessons from defending the indefensible</a> (PPT)</li>
+		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible?ref=blog.cloudflare.com" target="_blank">Lessons from defending the indefensible</a> (PPT)</li>
 		<li><a href="https://blog.cloudflare.com/introducing-the-bpf-tools/">Introducing the BPF tools</a></li>
 	</ul>
 	<hr>
@@ -72,7 +72,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-29.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>In order to fix this, we developed a custom kernel patch which adds <a href="http://patchwork.ozlabs.org/patch/602916/" target="_blank">a <code>SO_BINDTOPREFIX</code> socket option</a>. As the name suggests - it allows us to call <code>bind()</code> on a selected IP prefix. This solves the problem of multiple applications sharing popular ports like 53 or 80.</p>
+	<p>In order to fix this, we developed a custom kernel patch which adds <a href="http://patchwork.ozlabs.org/patch/602916/?ref=blog.cloudflare.com" target="_blank">a <code>SO_BINDTOPREFIX</code> socket option</a>. As the name suggests - it allows us to call <code>bind()</code> on a selected IP prefix. This solves the problem of multiple applications sharing popular ports like 53 or 80.</p>
 	<p>Then we run into another problem. For our Spectrum product we need to listen on all 65535 ports. Running so many listen sockets is not a good idea (see <a href="https://blog.cloudflare.com/revenge-listening-sockets/">our old war story blog</a>), so we had to find another way. After some experiments we learned to utilize an obscure iptables module - TPROXY - for this purpose. Read about it here:</p>
 	<ul>
 		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum/">Abusing Linux's firewall: the hack that allowed us to build Spectrum</a></li>
@@ -85,7 +85,7 @@
 		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP - TCP splicing of the future</a></li>
 	</ul>
 	<p>This technique has a great potential for improving tail latency across many pieces of our software stack. The current SOCKMAP implementation is not quite ready for prime time yet, but the potential is vast.</p>
-	<p>Similarly, the new <a href="https://netdevconf.org/2.2/papers/brakmo-tcpbpf-talk.pdf" target="_blank">TCP-BPF aka BPF_SOCK_OPS</a> hooks provide a great way of inspecting performance parameters of TCP flows. This functionality is super useful for our performance team.</p>
+	<p>Similarly, the new <a href="https://netdevconf.org/2.2/papers/brakmo-tcpbpf-talk.pdf?ref=blog.cloudflare.com" target="_blank">TCP-BPF aka BPF_SOCK_OPS</a> hooks provide a great way of inspecting performance parameters of TCP flows. This functionality is super useful for our performance team.</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/12_prometheus-ebpf_exporter-100.jpg" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -93,7 +93,7 @@
 	<p>Our solution is to use eBPF probes to extract the numbers directly from the kernel. My colleague Ivan Babrou wrote a Prometheus metrics exporter called "ebpf_exporter" to facilitate this. Read on:</p>
 	<ul>
 		<li><a href="https://blog.cloudflare.com/introducing-ebpf_exporter/">Introducing ebpf_exporter</a></li>
-		<li><a href="https://github.com/cloudflare/ebpf_exporter" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></li>
+		<li><a href="https://github.com/cloudflare/ebpf_exporter?ref=blog.cloudflare.com" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></li>
 	</ul>
 	<p>With "ebpf_exporter" we can generate all manner of detailed metrics. It is very powerful and saved us on many occasions.</p>
 	<hr>
@@ -108,7 +108,7 @@
 		<li>eBPFs running application helpers like SOCKMAP for TCP socket splicing, and TCP-BPF for TCP measurements</li>
 		<li>"ebpf_exporter" for granular metrics</li>
 	</ul>
-	<p>And we're just getting started! Soon we will be doing more with eBPF based socket dispatch, eBPF running on <a href="https://linux.die.net/man/8/tc" target="_blank">Linux TC (Traffic Control)</a> layer and more integration with cgroup eBPF hooks. Then, our SRE team is maintaining ever-growing list of <a href="https://github.com/iovisor/bcc" target="_blank">BCC scripts</a> useful for debugging.</p>
+	<p>And we're just getting started! Soon we will be doing more with eBPF based socket dispatch, eBPF running on <a href="https://linux.die.net/man/8/tc?ref=blog.cloudflare.com" target="_blank">Linux TC (Traffic Control)</a> layer and more integration with cgroup eBPF hooks. Then, our SRE team is maintaining ever-growing list of <a href="https://github.com/iovisor/bcc?ref=blog.cloudflare.com" target="_blank">BCC scripts</a> useful for debugging.</p>
 	<p>It feels like Linux stopped developing new API's and all the new features are implemented as eBPF hooks and helpers. This is fine and it has strong advantages. It's easier and safer to upgrade eBPF program than having to recompile a kernel module. Some things like TCP-BPF, exposing high-volume performance tracing data, would probably be impossible without eBPF.</p>
 	<p>Some say "software is eating the world", I would say that: "BPF is eating the software".</p>
 </div>

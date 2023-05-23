@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-10.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Cloudflareは、毎秒3200万件のHTTPリクエストを処理しており、<a href="https://w3techs.com/technologies/details/ws-cloudflare" target="_blank">W3Techs</a>で把握しているWebサーバーが提供するWebサイトの22%以上で利用されています。インターネットプロパティの5分の1についてトラフィックを保護するというユニークな立場にあるおかげで、発生した脅威を都度特定し、脅威の進化・変異を追跡することができます。 <br></p>
-	<p>Webアプリケーションファイアウォール（WAF）は Cloudflare のセキュリティツールボックスの中核であり、マネージドルールは<a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">WAF</a>の主要機能です。マネージドルールは、Cloudflareのアナリストチームが作成したルールの集合体で、既知の攻撃パターンを示すリクエストをブロックします。これらのマネージドルールは、偽陰性（攻撃の検出漏れ）と偽陽性（攻撃がないのにあると誤検知）の両方を最小限に抑えるために広範にテストされているため、確立された攻撃ベクトルのパターンに対しては非常によく機能します。しかし、静的な正規表現に基づくルールは、たとえばファジング技術によってもたらされるシグネチャのバリエーションに対して本質的に敏感であるため、マネージドルールはしばしば攻撃のバリエーション（バイパスとしても知られる）を見落とします。<br></p>
+	<p>Cloudflareは、毎秒3200万件のHTTPリクエストを処理しており、<a href="https://w3techs.com/technologies/details/ws-cloudflare?ref=blog.cloudflare.com" target="_blank">W3Techs</a>で把握しているWebサーバーが提供するWebサイトの22%以上で利用されています。インターネットプロパティの5分の1についてトラフィックを保護するというユニークな立場にあるおかげで、発生した脅威を都度特定し、脅威の進化・変異を追跡することができます。 <br></p>
+	<p>Webアプリケーションファイアウォール（WAF）は Cloudflare のセキュリティツールボックスの中核であり、マネージドルールは<a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf/?ref=blog.cloudflare.com" target="_blank">WAF</a>の主要機能です。マネージドルールは、Cloudflareのアナリストチームが作成したルールの集合体で、既知の攻撃パターンを示すリクエストをブロックします。これらのマネージドルールは、偽陰性（攻撃の検出漏れ）と偽陽性（攻撃がないのにあると誤検知）の両方を最小限に抑えるために広範にテストされているため、確立された攻撃ベクトルのパターンに対しては非常によく機能します。しかし、静的な正規表現に基づくルールは、たとえばファジング技術によってもたらされるシグネチャのバリエーションに対して本質的に敏感であるため、マネージドルールはしばしば攻撃のバリエーション（バイパスとしても知られる）を見落とします。<br></p>
 	<p>当社はこの問題を、<a href="https://blog.cloudflare.com/exploitation-of-cve-2021-44228-before-public-disclosure-and-evolution-of-waf-evasion-patterns/">log4j の保護</a>をリリースした際に目撃しました。脆弱性が公表された後の数日間、攻撃者がWAFをバイパスしようとしたため、バリエーションや変異に合わせて常にルールを更新する必要があったのです。しかも、ルールの最適化には多大な人的介入が必要な上、最適化が機能するのはたいていバイパスの特定や悪用が行われた後であるため、保護はプロアクティブ（事前予防的）というよりリアクティブ（事後対処的）なものになります。<br></p>
 	<p>本日、悪用される前に人手を介さずバイパスや悪意あるペイロードを識別することを目的とし、マネージドルールセット（OWASPやCloudflare Managedなど）を補完する新ツールを提供できることを嬉しく思います。お客様は、マネージドルールや拡張データで分類したトラフィックの良・悪を覚え込ませた機械学習モデルからのシグナルにアクセスして、新旧の幅広い攻撃に対してより優れた保護を提供することができるようになりました。 <br></p>
 	<p>新登場の機械学習WAF検出をお試しください <br></p>
-	<p>Enterprise、Pro、Bizのお客様向けに、この新しい検出機能への早期アクセスを提供します。試してみたい方は、<a href="https://jira.cfops.it/browse/MOE-4523" target="_blank">順番待ちリストに登録</a>してください。長期的には、より上位のお客様にもご利用いただけるようになる予定です。</p>
+	<p>Enterprise、Pro、Bizのお客様向けに、この新しい検出機能への早期アクセスを提供します。試してみたい方は、<a href="https://jira.cfops.it/browse/MOE-4523?ref=blog.cloudflare.com" target="_blank">順番待ちリストに登録</a>してください。長期的には、より上位のお客様にもご利用いただけるようになる予定です。</p>
 	<h2 id="-waf">はじめての自己学習型WAF</h2>
 	<p>新しい検出システムは、既存のマネージドルールセットを補完するもので、主に次の3つの利点があります。</p>
 	<ol>
