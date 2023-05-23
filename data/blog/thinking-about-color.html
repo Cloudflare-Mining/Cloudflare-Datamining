@@ -41,7 +41,7 @@
 		<figcaption>Above - our product palette. Below - our marketing palette.</figcaption>
 	</figure>
 	<h3 id="a-time-machine-for-color">A time machine for color</h3>
-	<p>As we first started to identify the scale of our color problems, we tried to think outside the box on how we might explore the problem space. After an initial brainstorming session we combined the <a href="https://archive.org/web/" target="_blank">Internet Archive's Wayback Machine</a> with the <a href="https://cssstats.com/?ref=blog.cloudflare.com" target="_blank">Css Stats</a> <a href="https://cssstats.com/docs/api?ref=blog.cloudflare.com" target="_blank">API </a>to build an audit tool that shows how our various websites visual properties change over time. We can dynamically select which sites we want to compare and scrub through time to see changes.</p>
+	<p>As we first started to identify the scale of our color problems, we tried to think outside the box on how we might explore the problem space. After an initial brainstorming session we combined the <a href="https://archive.org/web/" target="_blank">Internet Archive's Wayback Machine</a> with the <a href="https://cssstats.com" target="_blank">Css Stats</a> <a href="https://cssstats.com/docs/api" target="_blank">API </a>to build an audit tool that shows how our various websites visual properties change over time. We can dynamically select which sites we want to compare and scrub through time to see changes.</p>
 	<p>Below is a visualization of palettes from 9 different websites changing over a period of 6 years. Above the palettes is a component that spits out common colors, across all of these sites. The only two common colors across all properties (appearing for only a brief flash) were #ffffff (white) and transparent. Over time we haven’t been very consistent with ourselves.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/palette-over-time.gif" class="kg-image" alt="" loading="lazy"></figure>
 	<p>If we drill in to look at our marketing site compared to our dashboard app - it looks like the video below. We see a bit more overlap at first and then a significant divergence at the 16 second mark when our product palette grew significantly. At the 22 second mark you can see the marketing palette completely change as a result of the rebrand while our product palette stays the same. As time goes on you can see us becoming more and more inconsistent across the two code bases.</p>
@@ -54,14 +54,14 @@
 	<p>Our logo is made up of two oranges. Both of these seemed like prime candidates to generate a palette from.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/logo.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>We played around with a number of algorithms that took a single color and created a palette. From the initial color we generated an array scales for each hue. Initial attempts found us applying the exact same curves for luminosity to each hue, but as visual perception of hues is so different, this resulted in wildly different contrasts at each step of the scale.</p>
-	<p>Below are a few of our initial attempts at palette generation.<a href="https://uxplanet.org/designing-systematic-colors-b5d2605b15c?ref=blog.cloudflare.com" target="_blank"> Jeeyoung Jung did a brilliant writeup around designing palettes last year</a>. </p>
+	<p>Below are a few of our initial attempts at palette generation.<a href="https://uxplanet.org/designing-systematic-colors-b5d2605b15c" target="_blank"> Jeeyoung Jung did a brilliant writeup around designing palettes last year</a>. </p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/12/peaks-of-color.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption>Visualizing peaks of intensity across hues</figcaption>
 	</figure>
 	<p>We can see the intensity of the colors change across hue in peaks, with yellow and green being the most dominant. One of the downsides of this, is when you are rapidly iterating through theming options, the inconsistent relationships between steps across hues can make it time consuming or impossible to keep visual harmony in your interface.</p>
 	<p>The video below is another way to visualize this phenomenon. The dividing line in the color picker indicates which part of the palette will be accessible with black and white. Notice how drastically the line changes around green and yellow. And then look back at the charts above.</p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/colors.gif" class="kg-image" alt="" loading="lazy">
-		<figcaption>Demo of <a href="https://kevingutowski.github.io/color.html?ref=blog.cloudflare.com" target="_blank">https://kevingutowski.github.io/color.html</a></figcaption>
+		<figcaption>Demo of <a href="https://kevingutowski.github.io/color.html" target="_blank">https://kevingutowski.github.io/color.html</a></figcaption>
 	</figure>
 	<p>After fiddling with a few different generative algorithms (we made a lot of ugly palettes…) we decided to try a more manual approach. We pursued creating custom curves for each hue in an effort to keep the contrast scales as optically balanced as possible.</p>
 	<figure class="kg-card kg-gallery-card kg-width-wide">
@@ -88,16 +88,16 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/old-vs-new.png" class="kg-image" alt="Generated palette above a set of components previewing the old and new palette for comparison" loading="lazy">
 		<figcaption>Generated palette above a set of components previewing the old and new palette for comparison</figcaption>
 	</figure>
-	<p>Sometime during our exploration in this space, <a href="https://twitter.com/paniq/status/1036299654378467329?ref=blog.cloudflare.com" target="_blank">we stumbled across this tweet thread</a> about building a palette for pixel art. There are a lot of places web and product designers can draw inspiration from game designers. </p>
+	<p>Sometime during our exploration in this space, <a href="https://twitter.com/paniq/status/1036299654378467329" target="_blank">we stumbled across this tweet thread</a> about building a palette for pixel art. There are a lot of places web and product designers can draw inspiration from game designers. </p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/palettes-for-pixel-art.jpeg" class="kg-image" alt="Two color palettes visualized to create 3d objects" loading="lazy">
-		<figcaption><a href="https://twitter.com/paniq/status/1036299654378467329?ref=blog.cloudflare.com" display="inline-block" color="gray.2" class="css-1krjaj4 e18iy6k30" style="display: inline-block; background-color: transparent; color: rgb(78, 82, 85); box-sizing: border-box; text-decoration: underline; transition: opacity 0.25s ease-in-out 0s; opacity: 1;" target="_blank">Two color palettes visualized to create 3d objects</a></figcaption>
+		<figcaption><a href="https://twitter.com/paniq/status/1036299654378467329" display="inline-block" color="gray.2" class="css-1krjaj4 e18iy6k30" style="display: inline-block; background-color: transparent; color: rgb(78, 82, 85); box-sizing: border-box; text-decoration: underline; transition: opacity 0.25s ease-in-out 0s; opacity: 1;" target="_blank">Two color palettes visualized to create 3d objects</a></figcaption>
 	</figure>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/pixel-art-palette-concept.jpeg" class="kg-image" alt="A color palette applied in a few different contexts" loading="lazy">
-		<figcaption><a href="https://twitter.com/paniq/status/1037406840999567360?ref=blog.cloudflare.com" display="inline-block" color="gray.2" class="css-1krjaj4 e18iy6k30" style="display: inline-block; background-color: transparent; color: rgb(78, 82, 85); box-sizing: border-box; text-decoration: underline; transition: opacity 0.25s ease-in-out 0s; opacity: 1;" target="_blank">A color palette applied in a few different contexts</a></figcaption>
+		<figcaption><a href="https://twitter.com/paniq/status/1037406840999567360" display="inline-block" color="gray.2" class="css-1krjaj4 e18iy6k30" style="display: inline-block; background-color: transparent; color: rgb(78, 82, 85); box-sizing: border-box; text-decoration: underline; transition: opacity 0.25s ease-in-out 0s; opacity: 1;" target="_blank">A color palette applied in a few different contexts</a></figcaption>
 	</figure>
 	<p>Here we see a similar concept where a number of different palettes are applied to the same component. This view shows us two things, the different ways a single palette can be applied to a sphere, and also the different aesthetics across color palettes.</p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/multiple-palettes-applied.png" class="kg-image" alt="Different color palettes previewed against a common component" loading="lazy">
-		<figcaption><a href="https://twitter.com/JstFredrik/status/1145753143852064768?ref=blog.cloudflare.com" display="inline-block" color="gray.2" class="css-1krjaj4 e18iy6k30" style="display: inline-block; background-color: transparent; color: rgb(78, 82, 85); box-sizing: border-box; text-decoration: underline; transition: opacity 0.25s ease-in-out 0s; opacity: 1;" target="_blank">Different color palettes previewed against a common component</a></figcaption>
+		<figcaption><a href="https://twitter.com/JstFredrik/status/1145753143852064768" display="inline-block" color="gray.2" class="css-1krjaj4 e18iy6k30" style="display: inline-block; background-color: transparent; color: rgb(78, 82, 85); box-sizing: border-box; text-decoration: underline; transition: opacity 0.25s ease-in-out 0s; opacity: 1;" target="_blank">Different color palettes previewed against a common component</a></figcaption>
 	</figure>
 	<p>It’s almost surprising that the default way to construct a color palette for apps and sites isn’t to build it while previewing its application against the most common UI patterns. As designers, there are a lot of consistent uses of color we could have baselines for. Many enterprise apps are centered around white background with blue as the primary color with mixtures of grays to add depth around cards and page sections. Red is often used for destructive actions like deleting some type of record. Gray for secondary actions. Maybe it’s an outline button with the primary color for secondary actions. Either way - the margins between the patterns aren’t that large in the grand scheme of things.</p>
 	<p>Consider the use case of designing UI while the palette or usage of color hasn't been established. Given a single palette, you might want to experiment with applying that palette in a variety of ways that will output a wide variety of aesthetics. Alternatively you may need to test out several different palettes. These are two different modes of exploration that can be extremely time consuming to work through . It can be non-trivial to keep an in progress design synced with several different options for color application, even with the best use of layer comps or symbols.</p>
@@ -111,10 +111,10 @@
 				<div class="kg-gallery-image"><img src="https://blog.cloudflare.com/content/images/2019/11/pixel-art-palette-1.png" width="464" height="125" loading="lazy" alt=""></div>
 			</div>
 		</div>
-		<figcaption><a href="https://lospec.com/palette-list/sweetie-16?ref=blog.cloudflare.com" target="_blank">https://lospec.com/palette-list/sweetie-16</a></figcaption>
+		<figcaption><a href="https://lospec.com/palette-list/sweetie-16" target="_blank">https://lospec.com/palette-list/sweetie-16</a></figcaption>
 	</figure>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/random-palette-1.png" class="kg-image" alt="https://lospec.com/palette-list/vines-flexible-linear-ramps" loading="lazy">
-		<figcaption><a href="https://lospec.com/palette-list/vines-flexible-linear-ramps?ref=blog.cloudflare.com" display="inline-block" color="gray.2" class="css-1krjaj4 e18iy6k30" style="display: inline-block; background-color: transparent; color: rgb(78, 82, 85); box-sizing: border-box; text-decoration: underline; transition: opacity 0.25s ease-in-out 0s; opacity: 1;" target="_blank">https://lospec.com/palette-list/vines-flexible-linear-ramps</a></figcaption>
+		<figcaption><a href="https://lospec.com/palette-list/vines-flexible-linear-ramps" display="inline-block" color="gray.2" class="css-1krjaj4 e18iy6k30" style="display: inline-block; background-color: transparent; color: rgb(78, 82, 85); box-sizing: border-box; text-decoration: underline; transition: opacity 0.25s ease-in-out 0s; opacity: 1;" target="_blank">https://lospec.com/palette-list/vines-flexible-linear-ramps</a></figcaption>
 	</figure>
 	<p>One method of visualization is to define a common set of primitive ui elements and show each one of them with a single set of colors applied. In isolation this can be helpful. This mode would make it easy to vet a single combination of colors and which ui elements it might be best applied to.</p>
 	<p>Alternatively we might want to see a composed interface with the closest colors from the palette applied. Consider a set of buttons that includes red, green, blue, and gray button styles. Seeing all of these together can help us visualize the relative nature of these buttons side by side. Given a baseline palette for common UI, we could swap to a new palette and replace each color with the "closest" color. This isn't always a full-proof solution as there are many edge cases to cover. e.g. what happens when replacing a palette of 134 colors with a palette of 24 colors? Even still, this could allow us to quickly take a stab at automating how existing interfaces would change their appearance given a change to the underlying system. Whether locally or against a live site, this mode of working would allow for designers to view a color in multiple contets to truly asses its quality.</p>
@@ -188,8 +188,8 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/generative-charts.gif" class="kg-image" alt="" loading="lazy">
 		<figcaption>Stress testing the application of a palette to many shapes and sizes</figcaption>
 	</figure>
-	<p>We’ve begun to <a href="https://cloudflare.design/color?ref=blog.cloudflare.com" target="_blank">package up some of this work into a web app</a> others can use to create or import a palette and preview multiple depths of accessible combinations against a set of UI elements. </p>
-	<p>The goal is to make it easier for <a href="https://cloudflare.design/color/about?ref=blog.cloudflare.com" target="_blank">anyone to work seamlessly with color</a> and build beautiful interfaces with accessible color contrasts.</p>
+	<p>We’ve begun to <a href="https://cloudflare.design/color" target="_blank">package up some of this work into a web app</a> others can use to create or import a palette and preview multiple depths of accessible combinations against a set of UI elements. </p>
+	<p>The goal is to make it easier for <a href="https://cloudflare.design/color/about" target="_blank">anyone to work seamlessly with color</a> and build beautiful interfaces with accessible color contrasts.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/12/color-tool.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption>Color by Cloudflare Design</figcaption>
 	</figure>
@@ -238,12 +238,12 @@ ColorBlindFilter.defaultProps = {
 
 export default ColorBlindFilter
 </code></pre>
-	<p><a href="https://www.figma.com/blog/behind-the-plugins-sam-mason-de-caires-cloudflare/?ref=blog.cloudflare.com" target="_blank">We’ve also released a Figma plugin that simulates this visualization for a component</a>.</p>
+	<p><a href="https://www.figma.com/blog/behind-the-plugins-sam-mason-de-caires-cloudflare/" target="_blank">We’ve also released a Figma plugin that simulates this visualization for a component</a>.</p>
 	<p>After quite a few iterations, we had finally come up with a color palette. Each scale was optically aligned with our brand colors. The 5th step in each scale is the closest to the original brand color, but adjusted slightly so it’s accessible with both black and white.</p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/palette-desaturated.png" class="kg-image" alt="Palette preview as both fully saturated and desaturated" loading="lazy">
 		<figcaption>Our preview panel for palette development, showing a fully desaturated version of the palette for reference</figcaption>
 	</figure>
-	<p><a href="https://design.lyft.com/re-approaching-color-9e604ba22c88and?ref=blog.cloudflare.com" target="_blank">Lyft’s writeup <strong>“Re-approaching color”</strong></a> and <a href="https://uxplanet.org/designing-systematic-colors-b5d2605b15c?ref=blog.cloudflare.com" target="_blank">Jeeyoung Jung’s “<strong>Designing Systematic Colors</strong>”</a> are some of the best write-ups on how to work with color at scale you can find.</p>
+	<p><a href="https://design.lyft.com/re-approaching-color-9e604ba22c88and" target="_blank">Lyft’s writeup <strong>“Re-approaching color”</strong></a> and <a href="https://uxplanet.org/designing-systematic-colors-b5d2605b15c" target="_blank">Jeeyoung Jung’s “<strong>Designing Systematic Colors</strong>”</a> are some of the best write-ups on how to work with color at scale you can find.</p>
 	<h2 id="color-migrations">Color migrations</h2>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/palette-migration.png" class="kg-image" alt="A visual representation of how the legacy palette colors would translate to the new scales." loading="lazy">
 		<figcaption>A visual representation of how the legacy palette colors would translate to the new scales.</figcaption>
@@ -316,29 +316,29 @@ export default ColorBlindFilter
 	<p>Some of our favorite materials and resources we found while exploring this problem space.</p>
 	<h3 id="apps">Apps</h3>
 	<ul>
-		<li><a href="https://cloudflare.design/color?ref=blog.cloudflare.com" target="_blank">Color - Cloudflare Design</a></li>
-		<li><a href="https://color.method.ac/?ref=blog.cloudflare.com" target="_blank">Color matching game - Method</a></li>
-		<li><a href="http://colorbox.io/?ref=blog.cloudflare.com" target="_blank">Colorbox - Lyft</a> </li>
-		<li><a href="https://jxnblk.github.io/colorable/demos/matrix/?ref=blog.cloudflare.com" target="_blank">Colorable - Brent Jackson</a></li>
-		<li><a href="https://kevingutowski.github.io/color.html?ref=blog.cloudflare.com" target="_blank">Color contrast picker - Kevin Gutowski</a></li>
+		<li><a href="https://cloudflare.design/color" target="_blank">Color - Cloudflare Design</a></li>
+		<li><a href="https://color.method.ac/" target="_blank">Color matching game - Method</a></li>
+		<li><a href="http://colorbox.io" target="_blank">Colorbox - Lyft</a> </li>
+		<li><a href="https://jxnblk.github.io/colorable/demos/matrix/" target="_blank">Colorable - Brent Jackson</a></li>
+		<li><a href="https://kevingutowski.github.io/color.html" target="_blank">Color contrast picker - Kevin Gutowski</a></li>
 	</ul>
 	<h3 id="writing">Writing</h3>
 	<ul>
-		<li><a href="https://stripe.com/en-ca/blog/accessible-color-systems?ref=blog.cloudflare.com" target="_blank">Designing accessible color systems - Stripe</a></li>
-		<li><a href="https://design.lyft.com/re-approaching-color-9e604ba22c88?ref=blog.cloudflare.com" target="_blank">Re-approaching Color - Lyft </a></li>
-		<li><a href="http://www.psy.ritsumei.ac.jp/~akitaoka/colorconstancy7e.html?ref=blog.cloudflare.com" target="_blank">Color constancy - Akiyoshi Kitaoka</a></li>
-		<li><a href="https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law?ref=blog.cloudflare.com" target="_blank">Weber-Fechner law</a></li>
+		<li><a href="https://stripe.com/en-ca/blog/accessible-color-systems" target="_blank">Designing accessible color systems - Stripe</a></li>
+		<li><a href="https://design.lyft.com/re-approaching-color-9e604ba22c88" target="_blank">Re-approaching Color - Lyft </a></li>
+		<li><a href="http://www.psy.ritsumei.ac.jp/~akitaoka/colorconstancy7e.html" target="_blank">Color constancy - Akiyoshi Kitaoka</a></li>
+		<li><a href="https://en.wikipedia.org/wiki/Weber–Fechner_law" target="_blank">Weber-Fechner law</a></li>
 	</ul>
 	<h3 id="code">Code</h3>
 	<ul>
-		<li><a href="https://github.com/jxnblk/colorable?ref=blog.cloudflare.com" target="_blank">Colorable</a></li>
-		<li><a href="https://vis4.net/chromajs/?ref=blog.cloudflare.com" target="_blank">Chroma.js </a></li>
-		<li><a href="https://github.com/lyft/coloralgorithm?ref=blog.cloudflare.com" target="_blank">Color algorithm</a></li>
+		<li><a href="https://github.com/jxnblk/colorable" target="_blank">Colorable</a></li>
+		<li><a href="https://vis4.net/chromajs/" target="_blank">Chroma.js </a></li>
+		<li><a href="https://github.com/lyft/coloralgorithm" target="_blank">Color algorithm</a></li>
 	</ul>
 	<h3 id="videos">Videos</h3>
 	<ul>
-		<li><a href="https://www.youtube.com/watch?v=AbpS3Z3xXE0&amp;ref=blog.cloudflare.com" target="_blank">Interaction of color systems - Diana Mounter, GitHub</a></li>
-		<li><a href="https://www.youtube.com/watch?v=bmeo_13QtrU&amp;ref=blog.cloudflare.com" target="_blank">Designing a comprehensive color system - Linda Dong, Lyft</a></li>
+		<li><a href="https://www.youtube.com/watch?v=AbpS3Z3xXE0" target="_blank">Interaction of color systems - Diana Mounter, GitHub</a></li>
+		<li><a href="https://www.youtube.com/watch?v=bmeo_13QtrU" target="_blank">Designing a comprehensive color system - Linda Dong, Lyft</a></li>
 	</ul>
 	<p></p>
 	<p></p>

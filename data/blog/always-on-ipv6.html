@@ -8,7 +8,7 @@
 	<p>Cloudflare has always been a gateway for visitors on IPv6 connections to access sites and applications hosted on legacy IPv4-only infrastructure. Connections to Cloudflare are terminated on either IP version and then proxied to the backend over whichever IP version the backend infrastructure can accept.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/05/ipv4-ipv6-translation-gateway.png" alt="" loading="lazy"></p>
 	<p>That means that a v6-only mobile phone (looking at you, T-Mobile users) can establish a clean path to any site or mobile app behind Cloudflare instead of doing an expensive 464XLAT protocol translation as part of the connection (shaving milliseconds and conserving very precious battery life).</p>
-	<p>That IPv6 gateway is set by a simple toggle that for a while now has been default-on. And to make up for the time lost before the toggle was default on, in August 2016 we went back retroactively and enabled IPv6 for those millions of domains that joined before IPv6 was the default. Over those next few months, we <a href="https://blog.cloudflare.com/98-percent-ipv6/">enabled IPv6 for nearly four million domains</a> –– you can see Cloudflare’s <a href="https://www.vyncke.org/ipv6status/plotsite.php?metric=w&amp;global=legacy&amp;pct=y&amp;ref=blog.cloudflare.com" target="_blank">dent in the IPv6 universe</a> below –– and by the time we were done, 98.1% of all of our domains had IPv6 connectivity.</p>
+	<p>That IPv6 gateway is set by a simple toggle that for a while now has been default-on. And to make up for the time lost before the toggle was default on, in August 2016 we went back retroactively and enabled IPv6 for those millions of domains that joined before IPv6 was the default. Over those next few months, we <a href="https://blog.cloudflare.com/98-percent-ipv6/">enabled IPv6 for nearly four million domains</a> –– you can see Cloudflare’s <a href="https://www.vyncke.org/ipv6status/plotsite.php?metric=w&amp;global=legacy&amp;pct=y" target="_blank">dent in the IPv6 universe</a> below –– and by the time we were done, 98.1% of all of our domains had IPv6 connectivity.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/05/plotsite.png" alt="" loading="lazy"></p>
 	<p>As an interim step, we added an extra feature –– when you turn off IPv6 in our dashboard, we remind you just how archaic we think that is.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/05/modal.png" alt="" loading="lazy"></p>
@@ -44,6 +44,6 @@ $
 2400:cb00:2048:1::6810:c03d
 $
 </code></pre>
-	<p>We believe in proving concepts in code and through the <a href="https://ietf.org/?ref=blog.cloudflare.com" target="_blank">IETF</a> standards process. We’re currently working on an experiment with OpenDNS and will translate our learnings to an Internet Draft we will submit to the IETF to become an RFC. We’re sure this is just the beginning to faster, better deployed IPv6.</p>
+	<p>We believe in proving concepts in code and through the <a href="https://ietf.org/" target="_blank">IETF</a> standards process. We’re currently working on an experiment with OpenDNS and will translate our learnings to an Internet Draft we will submit to the IETF to become an RFC. We’re sure this is just the beginning to faster, better deployed IPv6.</p>
 	<!--kg-card-end: markdown-->
 </div>

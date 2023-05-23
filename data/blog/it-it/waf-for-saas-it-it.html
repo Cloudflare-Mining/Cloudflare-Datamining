@@ -30,7 +30,7 @@
 	<!--kg-card-end: markdown-->
 	<h3 id="fase-2-associazione-dei-metadati-personalizzati-a-un-nome-host-personalizzato">Fase 2: Associazione dei metadati personalizzati a un nome host personalizzato</h3>
 	<p>Successivamente, è necessario creare un'associazione tra i nomi host personalizzati (il dominio del cliente) e il set di regole del firewall che vorresti allegare. </p>
-	<p>Questo viene fatto associando un blob JSON a un nome host personalizzato. Il nostro prodotto, <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata/?ref=blog.cloudflare.com" target="_blank">Custom Metadata</a> consente ai clienti di completare facilmente questa operazione tramite un'API. </p>
+	<p>Questo viene fatto associando un blob JSON a un nome host personalizzato. Il nostro prodotto, <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata/" target="_blank">Custom Metadata</a> consente ai clienti di completare facilmente questa operazione tramite un'API. </p>
 	<p>Nell'esempio seguente, un blob JSON con due campi ("customer_id" e "security_level") verrà associato a ogni richiesta per <code>*.example.com</code> e <code>example.com</code>.</p>
 	<p>Non esiste uno schema predeterminato per i metadati personalizzati. I nomi e la struttura dei campi sono completamente personalizzabili in base alle esigenze dei nostri clienti. In questo esempio abbiamo scelto il tag "security_level" a cui ci aspettiamo di assegnare tre valori (basso, medio o alto). Questi valori, a loro volta, attiveranno tre diversi set di regole.</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -sXPATCH "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"\
@@ -70,7 +70,7 @@
           }}'
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Per ulteriori informazioni sulla limitazione della frequenza avanzata, consulta la <a href="https://developers.cloudflare.com/waf/custom-rules/rate-limiting/?ref=blog.cloudflare.com" target="_blank">documentazione</a> Cloudflare.</p>
+	<p>Per ulteriori informazioni sulla limitazione della frequenza avanzata, consulta la <a href="https://developers.cloudflare.com/waf/custom-rules/rate-limiting/" target="_blank">documentazione</a> Cloudflare.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-30.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="conclusioni">Conclusioni</h2>
 	<p>Siamo lieti di essere il fornitore per le esigenze di infrastruttura dei nostri clienti SaaS. Dai domini personalizzati ai certificati TLS al Web Application Firewall, siamo qui per aiutarti. Inizia oggi stesso con Cloudflare per SaaS oppure, se sei un cliente Enterprise, contatta l'account team per iniziare a utilizzare WAF per SaaS.</p>
