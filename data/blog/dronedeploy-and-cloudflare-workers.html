@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image4.jpg" alt="image4" loading="lazy"><small>Images courtesty of <a href="https://www.dronedeploy.com/?ref=blog.cloudflare.com" target="_blank">DroneDeploy</a></small></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image4.jpg" alt="image4" loading="lazy"><small>Images courtesty of <a href="https://www.dronedeploy.com/" target="_blank">DroneDeploy</a></small></p>
 	<p>When we launched <a href="https://blog.cloudflare.com/cloudflare-workers-is-now-on-open-beta/">Workers</a> a few months ago, much of the focus was on use cases surrounding websites running on origins that needed extra oomph. With Workers you can easily take a site, introduce a raft of personalization capabilities, A/B test changes or even aggregate a set of API responses around a range of services. In short by layering in Cloudflare Workers we can take origin websites and do transformational things.</p>
-	<p>One of the joys of a platform, is that you never know where you are going to see the next use case. Enter <a href="https://www.dronedeploy.com/?ref=blog.cloudflare.com" target="_blank">DroneDeploy</a></p>
+	<p>One of the joys of a platform, is that you never know where you are going to see the next use case. Enter <a href="https://www.dronedeploy.com/" target="_blank">DroneDeploy</a></p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image3.png" alt="image3" loading="lazy"><br>
 		DroneDeploy is a cloud platform that makes it easy to collect and analyze drone imagery and data. Simply install DroneDeploy on your mobile device and connect to a DJI drone. DroneDeploy flies the drone, collects the imagery, then stitches the photos into maps.</p>
 	<p>The maps can show things like crop conditions &amp; stress, construction project progress, or even thermal temperature ranges across vast solar farms or for search and rescue situations.</p>
@@ -21,7 +21,7 @@
 		<p><em>Cloudflare Workers provided us with flexibility when we ran into limitations with the shared capabilities of our primary infrastructure providers CDNs. Unique enterprise requirements around authentication, data security, and locality require us to have flexibility at our routing layer. From just the work we’ve done around authentication to date, we see an exciting and productive relationship with Cloudflare.</em></p>
 	</blockquote>
 	<p>Let's peel back the layers and understand how they use Workers.</p>
-	<p>DroneDeploy uses standard JWT authentication - if you are not sure what a JWT Token is, read more <a href="https://jwt.io/?ref=blog.cloudflare.com" target="_blank">here</a>. So the general flow requires the Worker to:</p>
+	<p>DroneDeploy uses standard JWT authentication - if you are not sure what a JWT Token is, read more <a href="https://jwt.io/" target="_blank">here</a>. So the general flow requires the Worker to:</p>
 	<ol>
 		<li>Intercept requests for images from the DroneDeploy mobile app or website. These requests can number in the hundreds or thousands of image tiles all of which are needed to render a typical map or 3D model and are stored on either S3 or Google Cloud Storage.</li>
 		<li>Ensure the correct JSON Web Token (JWT) is present.</li>
@@ -179,6 +179,6 @@ function createMessage(url, headers) {
 	<h4 id="sowheretofromhere">So where to from here?</h4>
 	<p>This Worker is the first of a few DroneDeploy are exploring. In next generation Workers, DroneDeploy is looking to deliver a range of improvements all with a view of optimizing their customers experience by using Cloudflare’s cache in addition to other features Cloudflare has to offer. We’ll update the blog at that time.</p>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange?ref=blog.cloudflare.com" target="_blank">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers?ref=blog.cloudflare.com" target="_blank">Cloudflare Community Forum</a>. </small></em><br></p>
+	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank">Cloudflare Community Forum</a>. </small></em><br></p>
 	<!--kg-card-end: markdown-->
 </div>
