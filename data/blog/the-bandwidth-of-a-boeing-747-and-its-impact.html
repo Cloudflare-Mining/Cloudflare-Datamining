@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p><img alt="The bandwidth of a Boeing 747 and its impact on web browsing" src="https://blog.cloudflare.com/content/images/6058320343_383e2a2c46.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"><noscript><img alt="The bandwidth of a Boeing 747 and its impact on web browsing" src="http://blog.cloudflare.com/content/images/6058320343_383e2a2c46.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"></noscript><br>
-		<small>Image credit: <a href="http://www.flickr.com/photos/markyharky/?ref=blog.cloudflare.com" target="_blank">markyharky</a></small>
+		<small>Image credit: <a href="http://www.flickr.com/photos/markyharky/" target="_blank">markyharky</a></small>
 	</p>
 	<p>This is the first in a series of posts looking at what makes the web slow and what to do about it.</p>
 	<p>Suppose you needed to transfer 1TB of data (perhaps your home movie collection) from San Francisco to London. What would be the fastest route? Put the disk on British Airways flight 286 at SFO, or transfer it across the Internet using a 100 Mbps connection?</p>
@@ -15,7 +15,7 @@
 	<p>(If airlines experienced aircraft loss at the rate the Internet sees packet loss there'd be 28 crashes per day in the US alone).</p>
 	<p><img alt="The bandwidth of a Boeing 747 and its impact on web browsing" src="https://blog.cloudflare.com/content/images/5080064040_cfa89f55d2.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"><noscript><img alt="The bandwidth of a Boeing 747 and its impact on web
 browsing" src="http://blog.cloudflare.com/content/images/5080064040_cfa89f55d2.jpeg.scaled500.jpg" title="The bandwidth of a Boeing 747 and its impact on web browsing"></noscript><br>
-		<small>Image credit: <a href="http://www.flickr.com/photos/ronniechan/?ref=blog.cloudflare.com" target="_blank">El Ronzo</a></small>
+		<small>Image credit: <a href="http://www.flickr.com/photos/ronniechan/" target="_blank">El Ronzo</a></small>
 	</p>
 	<p>To ensure reliability, TCP breaks data to be sent up into chunks (which are further broken down into packets) and sends chunks of data and then waits for an acknowledgement that the chunk was successfully received. It's while waiting for the acknowledgement that the speed of light comes into play.</p>
 	<p>Imagine that a 65kB chunk of data has been sent across a link with a latency of 150ms. The 65kB take 150ms to reach their destination and the receiving machine sends an acknowledgement that takes a further 150ms to arrive. So 0.3s is taken up making sure that 65KB have arrived successfully; that number is called the Round Trip Time.</p>

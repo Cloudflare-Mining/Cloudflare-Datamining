@@ -34,7 +34,7 @@
 	<h2 id="what-is-the-end-user-experience">What is the end user experience?</h2>
 	<p>Cloudflare Access’ SSH feature is entirely transparent to the end user and does not require any unique SSH commands, wrappers, or flags. Instead, Access requires that your team members take a couple one-time steps to get started:</p>
 	<h4 id="1-install-the-cloudflared-daemon">1. Install the cloudflared daemon</h4>
-	<p>The same lightweight software that runs on the target server is used to proxy SSH connections from your team members’ devices through Cloudflare. Users can install it with popular package managers like brew or at the link available <a href="https://developers.cloudflare.com/access/cli/installing-cli-tool/?ref=blog.cloudflare.com" target="_blank">here</a>. Alternatively, the software is open-source and can be built and distributed by your administrators.</p>
+	<p>The same lightweight software that runs on the target server is used to proxy SSH connections from your team members’ devices through Cloudflare. Users can install it with popular package managers like brew or at the link available <a href="https://developers.cloudflare.com/access/cli/installing-cli-tool/" target="_blank">here</a>. Alternatively, the software is open-source and can be built and distributed by your administrators.</p>
 	<h4 id="2-print-ssh-configuration-update-and-save">2. Print SSH configuration update and save</h4>
 	<p>Once an end user has installed <code>cloudflared</code>, they need to run one command to generate new lines to add to their SSH config file:</p>
 	<pre><code class="language-ssh">cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</code></pre>
@@ -52,5 +52,5 @@ Host cfpipe-vm.example.com
 	<stream src="bb9667207c9686037858c6534ff7d6bc" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=bb9667207c9686037858c6534ff7d6bc"></script><!--kg-card-end: html-->
 	<h2 id="what-s-next">What’s next?</h2>
-	<p>With short-lived certificates, Access can become a single SSO-integrated gateway for your team and infrastructure in any environment. Users can SSH directly to a given machine and administrators can replace their jumphosts altogether, removing that overhead. The feature is available today for all Access customers. You can get started by following the documentation available <a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server/?ref=blog.cloudflare.com" target="_blank">here</a>.</p>
+	<p>With short-lived certificates, Access can become a single SSO-integrated gateway for your team and infrastructure in any environment. Users can SSH directly to a given machine and administrators can replace their jumphosts altogether, removing that overhead. The feature is available today for all Access customers. You can get started by following the documentation available <a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server/" target="_blank">here</a>.</p>
 </div>
