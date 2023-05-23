@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>The conventional wisdom in web performance circles is that you want to <a href="http://developer.yahoo.com/performance/rules.html#num_http" target="_blank">combine multiple javascript and CSS files</a>. The reason for this is that there is significant overhead every time you setup a new HTTP request. More requests, more wasted overhead.</p>
+	<p>The conventional wisdom in web performance circles is that you want to <a href="http://developer.yahoo.com/performance/rules.html?ref=blog.cloudflare.com#num_http" target="_blank">combine multiple javascript and CSS files</a>. The reason for this is that there is significant overhead every time you setup a new HTTP request. More requests, more wasted overhead.</p>
 	<h3 id="whyminimizehttprequests">Why Minimize HTTP Requests?</h3>
 	<p>This problem is magnified on mobile devices. Your smart phone can stream video from YouTube without stuttering, because it is a single HTTP connection, but it often falters on seemingly simple web pages, because they are made up of a number of separate objects that need to all be loaded through their own HTTP requests. Mobile networks have reasonable bandwidth once a connection is established, but each new connection has a probability of failing that can block page loading.</p>
 	<p>Combining Javascript and CSS seems like a sensible solution, but it runs into multiple problems:</p>
@@ -8,7 +8,7 @@
 		<li>Combined Javascript or CSS can clobber the namespace of other scripts and create unpredictable bugs. </li>
 		<li>Combined Javascript or CSS can become large and unwieldy with all code that is needed site-wide leading to a slow initial-load time.</li>
 		<li>One change to any part of the combined Javascript and CSS file invalidates the whole file in the browser's cache and requires a slow re-download.</li>
-		<li>Combined files can lose the benefits of cross-site Javascript CDNs (like <a href="https://www.cdnjs.com" target="_blank">CDNJS.com</a>) which effectively pre-load common scripts into the visitor's cache before they arrive at your site.</li>
+		<li>Combined files can lose the benefits of cross-site Javascript CDNs (like <a href="https://www.cdnjs.com/?ref=blog.cloudflare.com" target="_blank">CDNJS.com</a>) which effectively pre-load common scripts into the visitor's cache before they arrive at your site.</li>
 		<li>It can be difficult or impossible to combine third party scripts like those used for things like Google AdSense, Facebook's Like Button, or the Twitter Follow Button.</li>
 	</ul>
 	<p>At CloudFlare, we decided that while the goal of reducing the number of HTTP requests was important for improving web performance, there had to be a better way than naively concatenating Javascript and CSS.</p>
@@ -27,6 +27,6 @@
 	<blockquote>
 		\&lt;script data-cfasync="false" src="/example.js" /&gt;]</blockquote>
 	<h3 id="solvetherealproblem">Solve the Real Problem</h3>
-	<p>Rocket Loader is a great example of technology that CloudFlare has developed to solve a real problem the right way rather than sheepishly following the conventional wisdom. Rocket Loader leverages CloudFlare's global CDN platform in order to get the best possible performance for our users. We have big plans on how to expand Rocket Loader and help reduce the number of HTTP requests even more. Because it makes such a difference in web performance, we include Rocket Loader for free for every CloudFlare website. You can activate it from your CloudFlare Settings page with a single click, or learn more about <a href="https://www.cloudflare.com/features-optimizer.html" target="_blank">all the ways CloudFlare can help optimizes your site</a>.</p>
+	<p>Rocket Loader is a great example of technology that CloudFlare has developed to solve a real problem the right way rather than sheepishly following the conventional wisdom. Rocket Loader leverages CloudFlare's global CDN platform in order to get the best possible performance for our users. We have big plans on how to expand Rocket Loader and help reduce the number of HTTP requests even more. Because it makes such a difference in web performance, we include Rocket Loader for free for every CloudFlare website. You can activate it from your CloudFlare Settings page with a single click, or learn more about <a href="https://www.cloudflare.com/features-optimizer.html?ref=blog.cloudflare.com" target="_blank">all the ways CloudFlare can help optimizes your site</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>
