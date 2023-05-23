@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-core@1.12.0...@cloudflare/intl-core@1.12.1) (2023-05-23)
+
+**Note:** Version bump only for package @cloudflare/intl-core
+
+
+
+
+
+# [1.12.0](http://bitbucket.cfdata.org:7999/fe/stratus/compare/@cloudflare/intl-core@1.11.3...@cloudflare/intl-core@1.12.0) (2023-05-23)
+
+
+### Bug Fixes
+
+* **intl-core:** UI-5742 re-enable dev errors for translation keys ([3fd8b55](http://bitbucket.cfdata.org:7999/fe/stratus/commits/3fd8b55))
+
+
+### Features
+
+* **intl-core:** UI-5743 add TranslatorError for bettery Sentry tracking ([b5cd829](http://bitbucket.cfdata.org:7999/fe/stratus/commits/b5cd829))
+
+
+
+
+
 ## [1.11.3](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-core@1.11.2...@cloudflare/intl-core@1.11.3) (2023-03-28)
 
 **Note:** Version bump only for package @cloudflare/intl-core
