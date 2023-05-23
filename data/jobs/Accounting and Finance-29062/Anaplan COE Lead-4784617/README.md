@@ -6,37 +6,30 @@
 	</div>
 </div>
 <h4><strong>What you'll do</strong></h4>
-<p>This role will be the first hire as Cloudflare establishes its Anaplan Center of Excellence. The successful candidate will partner with both the business and IT in designing, implementing and supporting critical business solutions and processes on the Anaplan platform. This is a key position in a fast-paced high-tech company, utilizing a leading-edge technology environment. You will maintain various models, provide architectural guidance and establish best practices on Anaplan for initiatives across the company. You will have a deep understanding of the Anaplan platform as well as end to end Financial Planning and Sales processes.&nbsp;</p>
+<p><span style="font-weight: 400;">As the leader of our Anaplan COE team you will be responsible for evolving Cloudflare’s use of the platform to drive maximum value for stakeholders.&nbsp; The ideal candidate is flexible and comfortable working in a fast paced environment, playing multiple roles (diplomat, moderator, negotiator, reporter, coach, etc.), leading projects, and is able to adapt to changing situations.&nbsp; Combined with technical expertise, you have the ability to define and manage processes, set standards, and build trust and partnership at various levels with Finance, IT, and Business teams.</span></p>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Responsible for end to end solution architecture across the Anaplan platform</li>
-	<li>Provide direction and leadership in promoting and implementing best-practice solutions in Anaplan (business processes and application functionality)</li>
-	<li>Demonstrate a hands-on approach to model building, configuration and maintenance in order to develop technical solutions for business problems</li>
-	<li>E2E Anaplan architect across all models/functions (See the big picture)</li>
-	<li>Defines Methodology, Standards &amp; Best practices in Anaplan</li>
-	<li>Manage Data Integrations &amp; Data HUB - Partner with extended BI/IT teams</li>
-	<li>Anaplan platform owner - Oversight on all Anaplan Models cross functions (Best practice, Sign off, Standards etc.)</li>
-	<li>Provides technical direction in the implementation of large-scale, Anaplan projects.</li>
-	<li>Work closely with business partners to fully understand the pain points and areas of improvements across the platform.</li>
-	<li>Validate or challenge the way things have always been done and identify areas for process and/or support tool improvements and efficiencies</li>
-	<li>Leverage business process knowledge and expertise in Anaplan area to drive business process improvements</li>
-	<li>Identify business requirements, requirements management, functional design, prototyping, process design (including scenario design, flow mapping), testing, training, defining support procedures and supporting implementations within Anaplan platform</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Craft &amp; deliver the roadmap for Anaplan in collaboration with business stakeholders and ensure that it aligns with the overall finance and company vision</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead, develop, and motivate an inclusive, engaged, and high performing team</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Define and clearly communicate the team’s engagement and operating model to ensure timely and consistent execution of quality deliverables, manage expectations, and mediate risks while maintaining the ability to adapt as needed</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with business partners to fully understand their pain points and assess potential solutions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage full life-cycle of project management including requirements, design, development, testing and deployment</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Continually improve our use of Anaplan including automating processes, identifying areas for improvement, and enabling scale for end-users&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Succinctly and effectively communication to executives stakeholders</span></li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Deep experience with the Anaplan application and other solutions related to planning</li>
-	<li>Experience and understanding of a SAAS business environment</li>
-	<li>At least 2 years’ Anaplan experience preferably in the software / SaaS companies</li>
-	<li>Minimum 5 years’ experience in designing and building planning solutions like SAP BPC or Hyperion or Cognos</li>
-	<li>Understanding of how to translate what business wants to do in Anaplan, not just taking an existing poor process done in excel or other tool and re-creating it in Anaplan</li>
-	<li>Minimum 5 years supporting FP&amp;A or Accounting or Sales Finance business function</li>
-	<li>Certified in Anaplan and preferably a master Anaplanner</li>
-	<li>Working knowledge of end-to-end business processes as it pertains to Finance &amp; Sales</li>
-	<li>Excellent communication skills with the ability to impart ideas in both technical and user-friendly language</li>
-	<li>Highly motivated and driven, with keen attention to detail and the ability to multi task in a self-managed environment</li>
-	<li>Demonstrated lead experience in systems integration. Experience in integrations with CRM, HCM, Financial Planning, etc. is a plus.</li>
-	<li>Customer-centric and service minded</li>
-	<li>Ability to develop documentation for training and user proceed</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A Bachelor’s degree and 8+ years of progressive experience with finance systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Relevant Anaplan certifications&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of performance in a high growth, dynamic environment. Bias toward action with strong analytical skills and solid business judgment</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Intellectually curious with problem solving orientation. Not satisfied with easy or convenient answers</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven ability to build strong collaborative working relationships with business partners and executives. Seen as a trusted and objective advisor&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience aligning cross-functional stakeholders with demonstrated aptitude in working effectively within a matrixed team across multiple functional areas</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Player/coach with ability to both lead and execute. Willingness to play “up and down the stack” diving into the details as well as managing Executive level communications</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Expert communication and presentation skills with the ability and confidence to articulate, present and debate your recommendations</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to balance and prioritize multiple work streams for different stakeholders</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to translate functional requirements into technical requirements and leverage best practice to drive towards the best result</span></li>
+	<li>&nbsp;</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
