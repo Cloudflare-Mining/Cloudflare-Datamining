@@ -879,7 +879,7 @@
 	"account.network_firewall_analytics.event_log.header.protocol.gre": "Generic routing encapsulation protocol",
 	"account.network_firewall_analytics.event_log.header.protocol.icmp": "Internet control message protocol",
 	"account.network_firewall_analytics.event_log.header.protocol.tcp": "Transmission control protocol, src port: %{sourcePort}, dst port: %{destinationPort}, seq: %{tcpSequenceNumber}, ack: %{tcpAcknowledgementNumber}, len: %{ipHeaderLength}",
-	"account.network_firewall_analytics.event_log.header.protocol.udp": "User data gram protocol, src port: %{sourcePort}, dst port: %{destinationPort}",
+	"account.network_firewall_analytics.event_log.header.protocol.udp": "User datagram protocol, src port: %{sourcePort}, dst port: %{destinationPort}",
 	"account.network_firewall_analytics.event_log.header.tcp_maximum_segment_size": "Maximum segment size",
 	"account.network_firewall_analytics.event_log.header.tcp_selective_ack_block": "Selective ACK block",
 	"account.network_firewall_analytics.event_log.header.tcp_selective_ack_permitted": "Selective ACK permitted",
