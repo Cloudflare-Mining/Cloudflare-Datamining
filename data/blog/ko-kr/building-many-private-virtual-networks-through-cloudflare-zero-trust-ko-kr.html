@@ -10,7 +10,7 @@
 	<h3 id="-">네트워크 중복 문제</h3>
 	<p>위의 이미지에서, 사용자는 사설 서비스의 네트워크 내에 물리적으로 위치해있는 것처럼 모든 사설 서비스에 액세스할 수 있습니다. 예를 들어 브라우저에 <em>jira.intra</em>라고 입력하거나 사설 IP <em><code>10.1.2.3</code></em>에 SSH로 연결하면 사설 서비스를 인터넷에 공개하지 않아도 원활하게 작동시킬 수 있습니다.</p>
 	<p>하지만, 여기엔 중요한 가정이 있습니다. 고객 계정에서 Cloudflare에 연결된 사설 네트워크에 기본 사설 IP는 고유해야 한다는 것입니다.</p>
-	<p>이제, 일반적으로 <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing?ref=blog.cloudflare.com" target="_blank">CIDR</a>이라고 하는 동일한 IP 공간(예: <code>10.1.0.0/16</code>)을 사용하는 데이터 센터 두 곳(또는 그 이상)을 팀에서 이용하고 있다고 가정해보세요. 하나는 현재 기본 데이터 센터이고, 다른 하나는 보조 역할로 서로 복제됩니다. 이러한 예시 상황에서는 두 데이터 센터 각각에 IP(<em><code>10.1.2.3</code></em>)가 같은 시스템이 있을 것입니다.</p>
+	<p>이제, 일반적으로 <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">CIDR</a>이라고 하는 동일한 IP 공간(예: <code>10.1.0.0/16</code>)을 사용하는 데이터 센터 두 곳(또는 그 이상)을 팀에서 이용하고 있다고 가정해보세요. 하나는 현재 기본 데이터 센터이고, 다른 하나는 보조 역할로 서로 복제됩니다. 이러한 예시 상황에서는 두 데이터 센터 각각에 IP(<em><code>10.1.2.3</code></em>)가 같은 시스템이 있을 것입니다.</p>
 	<p>지금까지는 Cloudflare를 통해 이렇게 설정할 수 없었습니다. 데이터 센터 1을 &nbsp;<code>10.1.0.0/16</code>으로 향하는 트래픽을 처리할 Cloudflare 터널에 연결한 다음 데이터 센터 2에도 같은 작업을 수행하려 했겠지만, 모호한 IP 경로를 생성할 수 없다는 오류가 나타났을 것입니다.</p>
 	<pre><code>$ cloudflared tunnel route ip add 10.1.0.0/16 dc-2-tunnel
 
@@ -52,5 +52,5 @@ Successfully added route for 10.1.0.0/16 over tunnel 150ef29f-2fb0-43f8-b56f-de0
 	<p>사설 인프라에 중복 IP가 없는 경우에는 조치할 필요가 없습니다.</p>
 	<h2 id="--2">다음 단계</h2>
 	<p>Cloudflare의 개별 가상 네트워크 지원은 이제 막 시작되었습니다. 확인하셨을 수도 있지만, 지난 주 Cloudflare는 Zero Trust 대시보드에서 직접 Cloudflare Tunnel을 생성, 배포, 관리하는 기능을 발표했습니다. 현재 가상 네트워크는 cloudflared CLI를 통해서만 지원됩니다. 하지만 가상 네트워크 관리도 대시보드에 통합할 예정입니다.</p>
-	<p>다음 단계는 Cloudflare Gateway가 이러한 가상 네트워크를 인식하여 중복 IP 범위에 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust 정책</a>을 적용할 수 있게 만드는 것입니다. Gateway가 이러한 가상 네트워크를 인식할 수 있게 되면 네트워크 로깅에도 이 개념을 도입해 감사 가능성을 제공하고 문제 해결을 진행해 나갈 것입니다.</p>
+	<p>다음 단계는 Cloudflare Gateway가 이러한 가상 네트워크를 인식하여 중복 IP 범위에 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust 정책</a>을 적용할 수 있게 만드는 것입니다. Gateway가 이러한 가상 네트워크를 인식할 수 있게 되면 네트워크 로깅에도 이 개념을 도입해 감사 가능성을 제공하고 문제 해결을 진행해 나갈 것입니다.</p>
 </div>
