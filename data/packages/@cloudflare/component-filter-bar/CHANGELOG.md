@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.0.9
+
+### Patch Changes
+
+- Updated dependencies [ff3d3f803f]
+  - @cloudflare/component-time-period-picker@5.0.8
+  - @cloudflare/component-forms@5.2.13
+
 ## 6.0.8
 
 ### Patch Changes

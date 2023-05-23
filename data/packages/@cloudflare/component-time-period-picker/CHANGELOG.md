@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.8
+
+### Patch Changes
+
+- ff3d3f803f: Update listbox version
+
 ## 5.0.7
 
 ### Patch Changes
