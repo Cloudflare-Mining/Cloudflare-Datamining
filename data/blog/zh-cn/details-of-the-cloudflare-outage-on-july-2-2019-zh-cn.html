@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<p>大约九年前，Cloudflare 还是一家小公司，我也还是一名客户，而不是员工。当时，Cloudflare 在一个月前刚成立，有一天警报消息显示，我的小网站 <a href="http://jgc.org/?ref=blog.cloudflare.com" rel="noopener nofollow noreferrer" target="_blank">j</a><a href="http://jgc.org/?ref=blog.cloudflare.com" rel="noopener nofollow noreferrer" target="_blank">gc.org</a>的DNS不再正常运行。原来是Cloudflare针对Protocol Buffers刚推送了一个更新，而这个更新弄坏了DNS。</p>
-	<p>我直接给 Matthew Prince 写了一封题为“我的 DNS 在哪儿？”的邮件，他回复了一封篇幅很长、内容详实的技术性解答邮件（<a href="https://gist.github.com/jgrahamc/6bb02a6f7c3799a1590b3cdb901f8e08?ref=blog.cloudflare.com" target="_blank">您可以点击此</a>处查看往来邮件的全部内容），我对该邮件的回复是：</p><!--kg-card-begin: markdown-->
+	<p>大约九年前，Cloudflare 还是一家小公司，我也还是一名客户，而不是员工。当时，Cloudflare 在一个月前刚成立，有一天警报消息显示，我的小网站 <a href="http://jgc.org/" rel="noopener nofollow noreferrer" target="_blank">j</a><a href="http://jgc.org/" rel="noopener nofollow noreferrer" target="_blank">gc.org</a>的DNS不再正常运行。原来是Cloudflare针对Protocol Buffers刚推送了一个更新，而这个更新弄坏了DNS。</p>
+	<p>我直接给 Matthew Prince 写了一封题为“我的 DNS 在哪儿？”的邮件，他回复了一封篇幅很长、内容详实的技术性解答邮件（<a href="https://gist.github.com/jgrahamc/6bb02a6f7c3799a1590b3cdb901f8e08" target="_blank">您可以点击此</a>处查看往来邮件的全部内容），我对该邮件的回复是：</p><!--kg-card-begin: markdown-->
 	<pre><code>发件人：John Graham-Cumming
 日期：2010 年 10 月 7 日星期四上午 9:14
 主题：回复：我的 DNS 在哪儿？
@@ -51,7 +51,7 @@
 	<p>尽管正则表达式本身成为很多人关注的焦点（下文将进行详细讨论），但 Cloudflare 服务中断 27 分钟的真实情况要比“正则表达式出错”复杂得多。我们已经花时间写下了导致中断并使我们无法快速响应的一系列事件。如果您想了解更多关于正则表达式回溯以及如何处理该问题的信息，可在本文末尾的附录中查找。</p>
 	<h3 id="-">发生了什么情况</h3>
 	<p>我们按事情发生的先后次序讲述。本博客中的所有时间均为协调世界时 (UTC)。</p>
-	<p>在 13:42，防火墙团队的一名工程师通过一个自动过程对 <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting/?ref=blog.cloudflare.com" target="_blank">XSS</a> 检测规则进行了微小改动。这生成了变更请求票证。我们使用 Jira 管理这些票证，下面是截图。</p>
+	<p>在 13:42，防火墙团队的一名工程师通过一个自动过程对 <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting/" target="_blank">XSS</a> 检测规则进行了微小改动。这生成了变更请求票证。我们使用 Jira 管理这些票证，下面是截图。</p>
 	<p>三分钟后，第一个 PagerDuty 页面出现，显示 WAF 故障。这是一项综合测试，从 Cloudflare 外部检查 WAF 的功能（我们会进行数百个此类测试），以确保其正常工作。紧接着出现了多个页面，显示许多其他的 Cloudflare 服务端到端测试失败、全球流量下降警报、众多的 502 错误，之后便是我们在全球各城市的网点 (PoP) 发来的大量指示 CPU 耗尽的报告。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/pager-duty-1345.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><br></p>
@@ -168,7 +168,7 @@
 	<p>这次第一个 <code>.*</code> 只匹配第一个 <code>x</code>。但第二个 <code>.*</code> 执行贪婪匹配，匹配 <code>=x</code>。您可以看到接下来会发生什么。引擎尝试匹配文本 = 时失败，再次回溯。</p>
 	<p>第一个 <code>.*</code> 依旧只匹配第一个 <code>x</code>。现在，第二个 <code>.*</code> 只匹配 <code>=</code>。但您猜对了，引擎无法匹配文本 <code>=</code>，因为第二个 <code>.*</code> 已经与它匹配。因此，引擎再次回溯。请记住，这一切都是为了匹配一个拥有三个字符的字符串。</p>
 	<p>最后，只有第一个 <code>.*</code> 仅匹配第一个 <code>x</code>，第二个 .* 匹配零个字符，引擎才能将表达式中的文本 <code>=</code> 与字符串中的 <code>=</code> 匹配。引擎继续，最末的 <code>.*</code> 匹配最后的 <code>x</code>。</p>
-	<p>综上，通过这 23 步完成了 <code>x=x</code> 匹配。下面是一段使用 Perl <a href="https://metacpan.org/pod/Regexp::Debugger?ref=blog.cloudflare.com" target="_blank">Regexp::Debugger</a> 的短视频，展示了这些步骤以及步骤发生时的回溯。</p>
+	<p>综上，通过这 23 步完成了 <code>x=x</code> 匹配。下面是一段使用 Perl <a href="https://metacpan.org/pod/Regexp::Debugger" target="_blank">Regexp::Debugger</a> 的短视频，展示了这些步骤以及步骤发生时的回溯。</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/23-steps-1.gif" class="kg-image" alt="" loading="lazy"></figure>
 	<p><br></p>
@@ -192,7 +192,7 @@
 	<p><br>在这种情况下，使用惰性匹配而不是贪婪匹配有助于控制回溯的数量。如果将原始表达式更改为 <code>.*?.*?=.*?</code>，则匹配 <code>x=x</code> 需要 11 步（而不是 23 步），匹配 <code>x=xxxxxxxxxxxxxxxxxxxx</code> 也是如此。这是因为 <code>.*</code> 后的 <code>?</code> 指示引擎在继续之前首先匹配最小的字符数。</p>
 	<p>但惰性匹配并不是这种回溯行为的全面解决方案。将灾难性实例 <code>.*.*=.*;</code> 更改为 <code>.*?.*?=.*?;</code> 根本不会改变它的运行时间。匹配 <code>x=x</code> 仍需要 555 步，匹配 <code>x=</code> 后跟 20 个 <code>x</code> 也仍需要 5,353 步。</p>
 	<p>唯一真正的解决方案（除非完全重写模式以使其更具体）是使用这种回溯机制摆脱正则表达式引擎。这将是我们在未来几周的工作内容。</p>
-	<p>自 1968 年 Ken Thompson 写了一篇名为“编程技术：正则表达式搜索算法”(<a href="https://dl.acm.org/citation.cfm?doid=363347.363387&amp;ref=blog.cloudflare.com" target="_blank">Programming Techniques:Regular expression search algorithm</a>) 的论文以来，这一问题的解决方案早就广为人知。这篇论文介绍了一种机制，它可以将正则表达式转换为非确定性有限状态自动机 (NFA)，然后使用一种按匹配字符串大小的时间线性执行的算法，跟踪 NFA 中的状态转换。</p>
+	<p>自 1968 年 Ken Thompson 写了一篇名为“编程技术：正则表达式搜索算法”(<a href="https://dl.acm.org/citation.cfm?doid=363347.363387" target="_blank">Programming Techniques:Regular expression search algorithm</a>) 的论文以来，这一问题的解决方案早就广为人知。这篇论文介绍了一种机制，它可以将正则表达式转换为非确定性有限状态自动机 (NFA)，然后使用一种按匹配字符串大小的时间线性执行的算法，跟踪 NFA 中的状态转换。</p>
 	<p><br></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/thompson-1968.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>

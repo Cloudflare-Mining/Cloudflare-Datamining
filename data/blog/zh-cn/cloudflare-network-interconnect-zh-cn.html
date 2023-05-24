@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/Cloudflare-Network-Interconnect-@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>今天，我们很高兴地宣布 <a href="https://www.cloudflare.com/network-interconnect?ref=blog.cloudflare.com" target="_blank">Cloudflare Network Interconnect</a>（CNI）上线运营。CNI 使我们的客户无论身在何处都可以将分支机构和总部直接与 Cloudflare 互连，将 Cloudflare 的全套网络功能引入他们的物理网络边缘。与使用公共互联网连接到 Cloudflare 相比，使用 CNI 进行互连具有安全性、可靠性和性能上的优势。此外，由于 Cloudflare 的网络覆盖世界各地，无论您的基础设施和员工位于地球上的哪个地方，都可以轻松连接到我们的网络。</p>
+	<p>今天，我们很高兴地宣布 <a href="https://www.cloudflare.com/network-interconnect" target="_blank">Cloudflare Network Interconnect</a>（CNI）上线运营。CNI 使我们的客户无论身在何处都可以将分支机构和总部直接与 Cloudflare 互连，将 Cloudflare 的全套网络功能引入他们的物理网络边缘。与使用公共互联网连接到 Cloudflare 相比，使用 CNI 进行互连具有安全性、可靠性和性能上的优势。此外，由于 Cloudflare 的网络覆盖世界各地，无论您的基础设施和员工位于地球上的哪个地方，都可以轻松连接到我们的网络。</p>
 	<p>在最基本的层面上，互连是两个网络之间的一条链路。现阶段，我们为客户提供如下选项与 Cloudflare 网络进行互连：</p>
 	<ul>
 		<li>通过专用网络互连（PNI）。连接两个网络的物理电缆（或虚拟“伪线”；稍后会详细介绍）。</li>
@@ -42,7 +42,7 @@
 	<ul>
 		<li>减少威胁暴露。公司可以采取许多措施来提高网络安全性，但一些对风险敏感的组织还是选择彻底不将端点开放给公共互联网。CNI 使 Cloudflare 能够化解这种风险，并通过真正私密的接口（利用 Magic Transit）仅转发干净流量。</li>
 		<li>提高可靠性。通过公共互联网传输的流量会受到您无法控制的因素的影响，这包括中间网络造成的延迟和数据包丢失。消除 Cloudflare 网络与您的网络之间的步骤意味着，Magic Transit 在处理流量后会将其直接可靠地转发到您的网络。</li>
-		<li>简化配置。不久之后，Magic Transit + CNI 客户将能够选择在引入服务时跳过对 MSS（最大分段大小）的更改，这是 GRE-over-Internet 所必需的步骤，也是需要同时考虑下游客户 MSS 的客户面临的一个挑战（例如，<a href="https://www.cloudflare.com/magic-transit/service-providers/?ref=blog.cloudflare.com" target="_blank">服务提供商</a>）。</li>
+		<li>简化配置。不久之后，Magic Transit + CNI 客户将能够选择在引入服务时跳过对 MSS（最大分段大小）的更改，这是 GRE-over-Internet 所必需的步骤，也是需要同时考虑下游客户 MSS 的客户面临的一个挑战（例如，<a href="https://www.cloudflare.com/magic-transit/service-providers/" target="_blank">服务提供商</a>）。</li>
 	</ul>
 	<h3 id="-penguin-corp-cloudflare-for-teams-magic-transit-cni-"><strong>示例部署：Penguin Corp 使用 Cloudflare for Teams、Magic Transit 和 CNI 来保护分支和核心网络以及员工。</strong></h3>
 	<p>假设有一家虚构的公司 Penguin Corp，他们拥有连接完善的专用 MPLS 网络。维护其网络并非易事，他们组建了一个网络工程师团队来专门负责这项工作。他们目前投入了大量资金来运行自己的私有云。为最大程度降低成本，他们将其网络出口点限制为两个。这给用户造成一个严重的性能问题，他们的数据必须传输很长一段路才能完成基本任务，同时仍然要穿越 Penguin 的网络边界。</p>
@@ -67,15 +67,15 @@
 	<h2 id="--3"><strong>如何互连</strong></h2>
 	<p>客户可以通过以下三种方式之一与 Cloudflare 互连：专用网络互连（PNI）、互联网交换中心（IX），或我们的某一家互连平台合作伙伴。我们与全球合作伙伴建立了紧密合作，根据我们客户所在的地点和具体的要求来满足他们的各项需求。</p>
 	<h3 id="--4"><strong>专用网络互连</strong></h3>
-	<p><a href="https://www.peeringdb.com/net/4224?ref=blog.cloudflare.com" target="_blank">我们列出的所有专用对等连接设施</a>都提供专用网络互连。与 Cloudflare 建立物理连接非常简单：指定要连接的地点、端口速度和目标 VLAN。之后，我们会进行授权，您再下达订单，然后由我们完成其余的工作。如果客户想要比虚拟连接或通过 IX 连接更高的吞吐量，或者希望从互连中剔除尽可能多的中介，那么客户应选择 PNI 作为其连接选项。</p>
+	<p><a href="https://www.peeringdb.com/net/4224" target="_blank">我们列出的所有专用对等连接设施</a>都提供专用网络互连。与 Cloudflare 建立物理连接非常简单：指定要连接的地点、端口速度和目标 VLAN。之后，我们会进行授权，您再下达订单，然后由我们完成其余的工作。如果客户想要比虚拟连接或通过 IX 连接更高的吞吐量，或者希望从互连中剔除尽可能多的中介，那么客户应选择 PNI 作为其连接选项。</p>
 	<h3 id="--5"><strong>互联网交换中心</strong></h3>
-	<p>如果客户想要使用现有的互联网交换中心（IX），可以在我们参与的<a href="https://bgp.he.net/AS13335?ref=blog.cloudflare.com#_ix" target="_blank">超过 235 个互联网交换中心的任何一处</a>与我们互连。要通过 IX 与 Cloudflare 互连，只需按照 IX 的说明进行连接，Cloudflare 会在我们这一边开启连接。如果客户已在 IX 建立了对等连接，或者想要与没有互连平台的地方进行互连，那么客户应选择互联网交换中心作为其连接选项。</p>
+	<p>如果客户想要使用现有的互联网交换中心（IX），可以在我们参与的<a href="https://bgp.he.net/AS13335#_ix" target="_blank">超过 235 个互联网交换中心的任何一处</a>与我们互连。要通过 IX 与 Cloudflare 互连，只需按照 IX 的说明进行连接，Cloudflare 会在我们这一边开启连接。如果客户已在 IX 建立了对等连接，或者想要与没有互连平台的地方进行互连，那么客户应选择互联网交换中心作为其连接选项。</p>
 	<h3 id="--6"><strong>互连平台合作伙伴</strong></h3>
 	<p>Cloudflare 有幸与 Equinix、Megaport、PCCW ConsoleConnect、PacketFabric 和 Zayo <a href="https://blog.cloudflare.com/cloudflare-network-interconnect-partner-program">建立了合作关系</a>，携手为您提供多种便利的方式，协助您在任何合作伙伴支持的地点与我们建立虚拟互连。如果客户已经在使用这些提供商，或者想要一种快速简便的方法来获得安全的云体验，那么应该选择通过互连平台进行连接。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>若有兴趣了解更多信息，请参阅<a href="https://blog.cloudflare.com/cloudflare-peering-portal-beta/">这篇博客文章</a>来了解所有不同的互连方式。对于上述所有互连方法，BGP 会话建立和 IP 路由都是相同的。唯一的区别是我们与其他网络互连的物理方式。</p>
 	<h3 id="--7">如何找到最佳的互连位置？</h3>
-	<p>我们的 CNI <a href="https://www.cloudflare.com/network-interconnect?ref=blog.cloudflare.com" target="_blank">产品页面</a>上提供了工具，可以协助您更好地了解我们双方网络互连的恰当位置。客户可以使用此数据来帮助确定最优的互连位置，从总体上最佳化与其他云提供商及其他 ISP 的连接。</p>
+	<p>我们的 CNI <a href="https://www.cloudflare.com/network-interconnect" target="_blank">产品页面</a>上提供了工具，可以协助您更好地了解我们双方网络互连的恰当位置。客户可以使用此数据来帮助确定最优的互连位置，从总体上最佳化与其他云提供商及其他 ISP 的连接。</p>
 	<h3 id="cni--1">CNI 和对等连接之间有何区别？</h3>
 	<p>从技术上讲，对等连接和 CNI 在幕后使用类似的机制和技术实施。</p>
 	<p>多年来，我们对任何网络都抱持开放的对等连接政策，并且将继续秉持这项政策：如此，我们能够将不同网络互连在一起，从而面向所有人建设更加美好的互联网，使互联网变得更加可靠。传统网络使用互连/对等技术为客户提供更好的性能和连接性，同时降低成本。通过 CNI，我们对外开放自己的基础设施，让我们的客户也享受到同样的优势。</p>

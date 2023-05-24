@@ -24,7 +24,7 @@
 	<h3 id="--3">日志</h3>
 	<p>日志用于查看有关事件的特定细节。日志包含时间戳和描述事件的字段，用于在需要详细信息时获得细粒度级别的可见性。</p>
 	<p>在我们每一个数据集中，一个事件都测量不同的东西。例如，在 HTTP 请求日志中，一个事件是指某个最终用户从服务器请求内容或向服务器发送内容。对防火墙日志而言，在防火墙对一个 HTTP 请求采取一个操作时就发生一个事件。每个 HTTP 请求可能有多个防火墙事件。</p>
-	<p>今天，我们的客户使用 Logpull、Logpush 或 Instant logs 访问日志。Logpull 和 Logpush 非常适用于想要将日志发送到第三方（例如我们的<a href="https://www.cloudflare.com/partners/analytics/" target="_blank">分析合作伙伴</a>)以存储、分析和关联其他数据源的客户。使用 Instant Logs，我们的客户可直接从仪表板或 CLI 实时监控流量并排除故障。我们计划开发更多功能来挖掘 Cloudflare 日志。我们正在努力开发<a href="https://blog.cloudflare.com/zh-cn/store-your-cloudflare-logs-on-r2-zh-cn/">在 R2 上存储日志</a>——但下一步是什么呢？</p>
+	<p>今天，我们的客户使用 Logpull、Logpush 或 Instant logs 访问日志。Logpull 和 Logpush 非常适用于想要将日志发送到第三方（例如我们的<a href="https://www.cloudflare.com/partners/analytics/?ref=blog.cloudflare.com" target="_blank">分析合作伙伴</a>)以存储、分析和关联其他数据源的客户。使用 Instant Logs，我们的客户可直接从仪表板或 CLI 实时监控流量并排除故障。我们计划开发更多功能来挖掘 Cloudflare 日志。我们正在努力开发<a href="https://blog.cloudflare.com/zh-cn/store-your-cloudflare-logs-on-r2-zh-cn/">在 R2 上存储日志</a>——但下一步是什么呢？</p>
 	<p>我们听到客户反馈说，防火墙分析仪表板上的活动日志非常有用。我们要继续把日志的力量带到仪表板上，为我们所有产品提供同样的功能。对于将在 Cloudflare R2 上存储日志的客户而言，这意味着我们能最大限度减少采样数据的使用。</p>
 	<p>如果您在寻找一些非常具体的信息，日志查询也很重要，这就是取证的作用。目标是让您从高级别的分析一直向下调查，直至其中的每一条日志条目。给定一个唯一的标识符，例如 ray ID，您应该能够查找到某个请求，然后将其与所有其他相关活动关联起来。找出该 ray ID 的客户端 IP，这里可以产生丰富的用例：有哪些来自这个 IP 的请求是恶意的？该客户端使用了什么路径？</p>
 	<h3 id="--4">跟踪</h3>
