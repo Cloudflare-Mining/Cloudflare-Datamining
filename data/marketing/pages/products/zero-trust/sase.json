@@ -125,6 +125,64 @@
 						}
 					},
 					{
+						"contentfulId": "5LgI2gvlYiUnPmDhGIGC8H",
+						"title": "Redefining network infrastructure",
+						"copy": "The old model of network infrastructure — centralized corporate data centers secured by an on-premise network perimeter — doesn't work for today's modern enterprises. Data that used to live in data centers now lives in the cloud and SaaS applications.\n\nWith the rise of distributed workforces, users need to be able to connect to resources from anywhere in the world, challenging enterprises to provide network access and a secure, straight-line path to the Internet without adopting complex workarounds or increasing latency.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "501e6cf8-4e5d-58af-9a64-497bd450add7",
+							"altText": "Hub and spoke network model: connection through central data center",
+							"title": "SASE - Hub and spoke network model",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kQzCzSutAZmZU7g2sqik/c34f748b57eeedf7606a23dbabd88fac/hub-and-spoke-network-model.svg"
+								}
+							},
+							"brandfolderAsset": {
+								"size": 45557,
+								"height": 802,
+								"width": 1365,
+								"filename": "pre-SASE-network-infrastructure-diagram.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/pre-SASE-network-infrastructure-diagram.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-gray",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "medium",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
 						"contentfulId": "OxjhgGnjESMfCUvBakWge",
 						"title": null,
 						"copy": "Secure access service edge (SASE) implementation simplifies traditional network architecture by merging network and security services on one global network. Instead of bottlenecking all traffic and users through a single, on-premise access point, SASE allows enterprises to route, inspect, and secure traffic in a single pass at the Internet edge.\n\nCloudflare is built on cloud-native infrastructure that we refer to as our global network. Our globally-distributed edge locations create a network fabric that brings security and performance capabilities as close to end users as possible, helping enterprises reduce latency, mitigate attacks close to the source, and seamlessly apply security controls to user connections.",
@@ -183,6 +241,122 @@
 						"bladeBorder": "none",
 						"imagePosition": true,
 						"imageSize": "medium",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"contentfulId": "2qZnIPFSnCSGwo69OjoQIQ",
+						"title": "Network security at the edge",
+						"copy": "SASE consolidates and delivers network security services — cloud access security brokers (CASB), secure web gateways (SWG), Firewall-as-a-Service (FWaaS), and more — from a unified and large-scale cloud network.\n\nInstead of patching together disparate security services from multiple vendors, enterprises can adopt a single SASE architecture to help streamline complex and costly configurations and gain more visibility and control across their entire network infrastructure.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UjeYdM4Zs1NB8seWP5Od9/562b60b98c6966034b5d38118ca833f1/illustration_teams_zero-trust_png.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "edfb3ef1-ef91-5aae-a192-63f8a1d8749e",
+							"altText": "Teams access zero trust spot illustration",
+							"title": "Teams access zero trust spot illustration",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 16004,
+								"height": 2272,
+								"width": 2996,
+								"filename": "teams-access-zero-trust-spot-illustration.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/teams-access-zero-trust-spot-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"contentfulId": "2pnsdr4B7SUFXWhDu3OQIG",
+						"title": "Identity-based network access",
+						"copy": "Outdated infrastructure models required enterprises to secure the network perimeter with clunky, on-premise hardware. VPNs granted access to users outside the network perimeter, but often increased latency and expanded security vulnerabilities.\n\nSASE moves network access from the network perimeter to the user. Access is determined by a granular, Zero Trust, policy-based model that verifies based on user identity and additional contextual factors.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6gPFLhq52VkUQ58qtmqZAs/5a93385456b5f6d0e068326c587f61fa/illustration_teams_vpn_png.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "126f6625-02ca-52a0-adec-1a85fc5c68a0",
+							"altText": "Teams access improvement plan spot illustration",
+							"title": "Teams access improvement plan spot illustration",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 37345,
+								"height": 4400,
+								"width": 4939,
+								"filename": "teams-access-improvement-plan-spot-illustration.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/teams-access-improvement-plan-spot-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
 						"imageTextAlignment": null,
 						"togglesTo": null
 					},
