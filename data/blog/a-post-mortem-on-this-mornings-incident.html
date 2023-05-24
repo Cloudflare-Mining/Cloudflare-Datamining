@@ -2,7 +2,7 @@
 	<!--kg-card-begin: markdown-->
 	<p>We would like to share more details with our customers and readers on the internet outages that occurred this morning and earlier in the week, and what we are doing to prevent these from happening again.</p>
 	<h3 id="june17incident">June 17 incident</h3>
-	<p>On June 17, at 08:32 UTC, our systems detected a significant packet loss between multiple destinations on one of our major transit provider backbone networks, <a href="http://www.teliacarrier.com" target="_blank">Telia Carrier</a>.<br>
+	<p>On June 17, at 08:32 UTC, our systems detected a significant packet loss between multiple destinations on one of our major transit provider backbone networks, <a href="http://www.teliacarrier.com/?ref=blog.cloudflare.com" target="_blank">Telia Carrier</a>.<br>
 		In the timeframe where the incident was being analysed by our engineers, the loss became intermittent and finally disappeared.<br>
 		<img src="https://blog.cloudflare.com/content/images/2016/06/Screenshot-2016-06-20-14-16-27.png" alt="alt" loading="lazy"><br>
 		<small><em>Packet loss on Telia Carrier (AS1299)</em></small>
@@ -13,7 +13,7 @@
 		<small><em>Packet loss on Telia Carrier (AS1299)</em></small>
 	</p>
 	<p>Typically, transit providers are very reliable and transport all of our packets from one point of the globe to the other without loss - that’s what we pay them for. In this case, our packets (and that of other Telia customers), were being dropped.</p>
-	<p>While Internet users usually take it for granted that they can reach any destination in the world from their homes and businesses, the reality is harsher than that. Our planet is big, and the Internet pipes are not always reliable. Fortunately, the Internet is mostly built on the <a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol" target="_blank">TCP protocol</a> which allows lost packets to be retransmitted. That is especially useful on lossy links. In most cases, you won’t notice these packets being lost and retransmitted, however, when the loss is too significant, as was the case this morning, your browser can’t do much.</p>
+	<p>While Internet users usually take it for granted that they can reach any destination in the world from their homes and businesses, the reality is harsher than that. Our planet is big, and the Internet pipes are not always reliable. Fortunately, the Internet is mostly built on the <a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol?ref=blog.cloudflare.com" target="_blank">TCP protocol</a> which allows lost packets to be retransmitted. That is especially useful on lossy links. In most cases, you won’t notice these packets being lost and retransmitted, however, when the loss is too significant, as was the case this morning, your browser can’t do much.</p>
 	<p>Our systems caught the problem instantly and recorded it. Here is an animated map of the packet loss being detected during the event:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/06/telia-outage-6-20-2016--1-.gif" alt="alt" loading="lazy"><br>
 		<small><em>CloudFlare detects packet loss (denoted by thickness)</em></small>

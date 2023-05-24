@@ -10,7 +10,7 @@
 	<h3 id="-">重複するネットワークの問題</h3>
 	<p>上の画像では、ユーザーはあたかも物理的にそのプライベートサービスのネットワーク内にいるかのように、どのプライベートサービスにもアクセスできます。つまり、ブラウザで<em>jira.intra</em>と入力したり、プライベートIP<em><code>10.1.2.3</code></em>にSSH接続したりしても、いずれのプライベートサービスもインターネットに公開されていないにかかわらず、シームレスに動作します。</p>
 	<p>ただし、これには大きな前提条件があります。それらの基盤となるプライベートIPが、お客様のアカウントでCloudflareに接続されているプライベートネットワークで一意であることです。</p>
-	<p>現在、お客様のチームに、通常<a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing?ref=blog.cloudflare.com" target="_blank">CIDR</a>と呼ばれる同じIP空間（<code>10.1.0.0/16</code>など）を使用する2つかそれ以上のデータセンターがあるとします。1つが現在のプライマリ、もう1つがセカンダリで、相互に複製し合っています。このような例では、これら2つのデータセンターのそれぞれに、同じIP<em><code>10.1.2.3</code></em>を持つマシンが存在することになります。</p>
+	<p>現在、お客様のチームに、通常<a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">CIDR</a>と呼ばれる同じIP空間（<code>10.1.0.0/16</code>など）を使用する2つかそれ以上のデータセンターがあるとします。1つが現在のプライマリ、もう1つがセカンダリで、相互に複製し合っています。このような例では、これら2つのデータセンターのそれぞれに、同じIP<em><code>10.1.2.3</code></em>を持つマシンが存在することになります。</p>
 	<p>今日まで、Cloudflareを経由してそのように設定することはできませんでした。データセンター1を、<code>10.1.0.0/16</code>へのトラフィックを担当するCloudflare Tunnelと接続します。データセンター2で同じことをすると、曖昧なIPルートの作成を禁じるエラーが表示されます。</p>
 	<pre><code>$ cloudflared tunnel route ip add 10.1.0.0/16 dc-2-tunnel
 
@@ -52,5 +52,5 @@ Successfully added route for 10.1.0.0/16 over tunnel 150ef29f-2fb0-43f8-b56f-de0
 	<p>プライベートインフラストラクチャでIPが重複していない場合は、何もする必要はありません。</p>
 	<h2 id="--2">今後の展開は？</h2>
 	<p>これは、Cloudflareにおける個別の仮想ネットワークへのサポート提供の始まりに過ぎません。先週、Zero Trustダッシュボードから直接Cloudflare Tunnelsを作成、デプロイ、管理する機能を発表しましたので、ご確認ください。現在、仮想ネットワークはcloudflared CLIでのみサポートされていますが、仮想ネットワークの管理もダッシュボードに統合することを視野に入れています。</p>
-	<p>次のステップでは、Cloudflare Gatewayがこれらの仮想ネットワークを認識できるようにして、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trustポリシー</a>を重複するIP領域に適用できるようにします。Gatewayがこれらの仮想ネットワークを認識できるようになれば、ネットワークロギングにもこの概念を導入し、監査可能性とトラブルシューティングを改善する予定です。</p>
+	<p>次のステップでは、Cloudflare Gatewayがこれらの仮想ネットワークを認識できるようにして、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trustポリシー</a>を重複するIP領域に適用できるようにします。Gatewayがこれらの仮想ネットワークを認識できるようになれば、ネットワークロギングにもこの概念を導入し、監査可能性とトラブルシューティングを改善する予定です。</p>
 </div>
