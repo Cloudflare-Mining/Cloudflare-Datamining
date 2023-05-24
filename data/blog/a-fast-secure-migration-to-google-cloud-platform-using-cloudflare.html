@@ -61,7 +61,7 @@
 		<img src="https://blog.cloudflare.com/content/images/2017/10/Security-Checklist-1.jpg" alt="" loading="lazy">
 	</p>
 	<p><strong>Asad Baheri</strong><br>
-		Google also has a series of <a href="https://support.google.com/webmasters/answer/6073543?hl=en" target="_blank">SSL best practices</a> for anyone who's using SSL; it'll walk you through how to create the right type of key requests, where you want to load it, etc. And when using Cloudflare, where does the SSL session terminate?</p>
+		Google also has a series of <a href="https://support.google.com/webmasters/answer/6073543?hl=en&amp;ref=blog.cloudflare.com" target="_blank">SSL best practices</a> for anyone who's using SSL; it'll walk you through how to create the right type of key requests, where you want to load it, etc. And when using Cloudflare, where does the SSL session terminate?</p>
 	<p><strong>Trey Guinn</strong><br>
 		Cloudflare will terminate the SSL session at the Cloudflare network edge, and we'll make sure that you have the best SSL. If you check your SSL grade, you'll get an A or an A+ with our SSL. We decrypt because we need to be able to protect against layer 7 attacks and look within the application layer. Then we re-encrypt we go back to the origin, so it sits and it's encrypted as it goes across the network.</p>
 	<p><strong>Asad Baheri</strong><br>

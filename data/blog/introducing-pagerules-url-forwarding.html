@@ -26,11 +26,11 @@
 		<li><code>http://www.example.com/blog/+</code> <em>[extra directory before the +]</em></li>
 		<li><code>http://www.example.com+</code> <em>[no trailing slash]</em></li>
 	</ul>
-	<p>Once I've created the pattern that matches what I want, click the Forwarding toggle. That exposes a field where I can enter the address I want requests forwarded to. <a href="https://plus.google.com/117631136894743822101" target="_blank">My Google+ profile</a> is at the following URL:</p>
+	<p>Once I've created the pattern that matches what I want, click the Forwarding toggle. That exposes a field where I can enter the address I want requests forwarded to. <a href="https://plus.google.com/117631136894743822101?ref=blog.cloudflare.com" target="_blank">My Google+ profile</a> is at the following URL:</p>
 	<ul>
 		<li><code>https://plus.google.com/117631136894743822101</code></li>
 	</ul>
-	<p>If I enter that in the forwarding box and click the Add Rule button within a few seconds any requests that match the pattern I entered will automatically be forwarded with a <a href="https://en.wikipedia.org/wiki/HTTP_302" target="_blank">302 redirect</a> to the new URL. It's slick.</p>
+	<p>If I enter that in the forwarding box and click the Add Rule button within a few seconds any requests that match the pattern I entered will automatically be forwarded with a <a href="https://en.wikipedia.org/wiki/HTTP_302?ref=blog.cloudflare.com" target="_blank">302 redirect</a> to the new URL. It's slick.</p>
 	<h3 id="theadvancedexample">The Advanced Example</h3>
 	<p>Basic forwarding is good for something like redirecting traffic to Google+, but what if you want to do something like force all traffic to your root domain to use the www subdomain. If you use a basic redirect, then you lose anything else in the URL.</p>
 	<p>For example, you could setup the pattern:</p>

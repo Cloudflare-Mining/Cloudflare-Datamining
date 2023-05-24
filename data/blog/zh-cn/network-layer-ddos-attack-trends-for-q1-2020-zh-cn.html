@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>在进行 2020 年一季度的总结时，我们着手去了解 <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS 攻击</a>趋势在全球避难这种史无前例的时刻有无发生变化，具体发生了怎样的变化。许多国家或地区的流量自那时起<a href="https://blog.cloudflare.com/recent-trends-in-internet-traffic/">增长了 50％ 以上</a>，但DDoS 攻击是不是同样也有增多？</p>
+	<p>在进行 2020 年一季度的总结时，我们着手去了解 <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/?ref=blog.cloudflare.com" target="_blank">DDoS 攻击</a>趋势在全球避难这种史无前例的时刻有无发生变化，具体发生了怎样的变化。许多国家或地区的流量自那时起<a href="https://blog.cloudflare.com/recent-trends-in-internet-traffic/">增长了 50％ 以上</a>，但DDoS 攻击是不是同样也有增多？</p>
 	<p>流量增加通常见于假日季节。在假日期间，人们可能会花更多时间上网；或者购物、订餐、玩在线游戏，或者从事其他各类网上活动。对于提供各种在线服务的公司而言，使用量增多将转化为每分钟收入的增长。</p>
-	<p>这些高峰时段如果发生停机或服务质量下降，可能会导致用户流失，并在很短时间内损失大量收入。<a href="https://itic-corp.com/blog/2019/05/hourly-downtime-costs-rise-86-of-firms-say-one-hour-of-downtime-costs-300000-34-of-companies-say-one-hour-of-downtime-tops-1million/" target="_blank">ITIC 估计</a>，服务中断的平均成本为每分钟 5,600 美元，这可推算为每小时超过 30 万美元。因此，攻击者在假日发动更多 DDoS 攻击来借机牟利也不足为奇了。</p>
+	<p>这些高峰时段如果发生停机或服务质量下降，可能会导致用户流失，并在很短时间内损失大量收入。<a href="https://itic-corp.com/blog/2019/05/hourly-downtime-costs-rise-86-of-firms-say-one-hour-of-downtime-costs-300000-34-of-companies-say-one-hour-of-downtime-tops-1million/?ref=blog.cloudflare.com" target="_blank">ITIC 估计</a>，服务中断的平均成本为每分钟 5,600 美元，这可推算为每小时超过 30 万美元。因此，攻击者在假日发动更多 DDoS 攻击来借机牟利也不足为奇了。</p>
 	<p>当前的疫情有着类似的因果关系。人们不得不宅在家里，越来越依赖网络服务来完成日常事务，使互联网流量和 DDoS 攻击急剧攀升。</p>
 	<h3 id="-">兴起规模较小、为时较短的攻击</h3>
 	<p>按比特率衡量，2020 年一季度观察到的攻击大多规模相对较小。如下图所示，2020 年一季度有 92％ 的攻击低于 10 Gbps，而 2019 年四季度则是 84％。</p>
-	<p>深入分析就会发现，一季度 10 Gbps 以下攻击分布与上季度相比发生了一个有趣的变化。在四季度，47％ 的<a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks/" target="_blank">网络层 DDoS 攻击</a>的峰值低于 500 Mbps，而一季度则上升到了 64％。</p>
+	<p>深入分析就会发现，一季度 10 Gbps 以下攻击分布与上季度相比发生了一个有趣的变化。在四季度，47％ 的<a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks/?ref=blog.cloudflare.com" target="_blank">网络层 DDoS 攻击</a>的峰值低于 500 Mbps，而一季度则上升到了 64％。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>就数据包速率而言，大多数攻击的峰值都低于每秒 100 万 pps（包/秒）。从这个速率和比特率来看，攻击者不再将精力和资源集中在生成高速率洪水上（每秒比特数或数据包数）。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-8.png" class="kg-image" alt="" loading="lazy"></figure>
@@ -14,7 +14,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-9.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>这三种趋势可以作如下解释：</p>
 	<ul>
-		<li>发动 DDoS 攻击的代价很低，也不需要太多技术背景。DDoS 即服务工具为几无技术专长的不良行为者提供了一个潜在途径，让他们能够以经济高效的方式借助有限的带宽来快速、轻松地发动 DDoS 攻击。根据 <a href="https://securityaffairs.co/wordpress/57429/cyber-crime/cost-ddos-attack-service.html" target="_blank">Kaspersky</a> 的数据，DDoS 攻击服务的费用低至 300 秒攻击（5 分钟）只需 5 美元。另外，业余攻击者可以轻松利用免费工具生成大量数据包。正如我们将在下一部分中所见，在一季度的所有 DDoS 攻击中，有将近 4％ 是使用公开可用的Mirai 代码变体生成的。</li>
+		<li>发动 DDoS 攻击的代价很低，也不需要太多技术背景。DDoS 即服务工具为几无技术专长的不良行为者提供了一个潜在途径，让他们能够以经济高效的方式借助有限的带宽来快速、轻松地发动 DDoS 攻击。根据 <a href="https://securityaffairs.co/wordpress/57429/cyber-crime/cost-ddos-attack-service.html?ref=blog.cloudflare.com" target="_blank">Kaspersky</a> 的数据，DDoS 攻击服务的费用低至 300 秒攻击（5 分钟）只需 5 美元。另外，业余攻击者可以轻松利用免费工具生成大量数据包。正如我们将在下一部分中所见，在一季度的所有 DDoS 攻击中，有将近 4％ 是使用公开可用的Mirai 代码变体生成的。</li>
 		<li>虽然 10 Gbps 以下的攻击看起来规模很小，但仍然足以影响防护不力的互联网资产。小而快的攻击或许已证实能为攻击者带来高投资回报，他们以勒索公司赎金为目标，而不是破坏互联网资产可用性。</li>
 	</ul>
 	<h3 id="--1">大规模攻击仍然存在，尽管数量变少</h3>
@@ -40,5 +40,5 @@
 		<li>越来越多的 <a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">DDoS 攻击被局部化</a>，这意味着采用清理中心方法的传统 DDoS 解决方案不再可行，它们的全局覆盖范围存在限制，而且会成为阻塞点，因为 DDoS 流量需要从这些中心回传往返。Cloudflare 独特的分布式架构为其遍布全球 200 个城市的每个数据中心提供支持，提供完整的 DDoS 缓解功能。</li>
 		<li>大型分布式容量耗尽攻击仍然存在，老奸巨猾的攻击者会在寻得机会时加以利用。将来可能会出现超过 1 Tbps 的攻击，因此缓解大型 DDoS 攻击的能力是当今 DDoS 解决方案的关键要素。Cloudflare 拥有世界上互连程度最高的网络之一，容量超过 35 Tbps，即使规模最大的 DDoS 攻击也能自如应对。庞大的网络容量与全球分布式体系结构相结合，使 Cloudflare 可以缓解规模大小不等的攻击，而且能更靠近源头。</li>
 	</ul>
-	<p>要了解有关 Cloudflare 的 DDoS 解决方案的更多信息，请<a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">联系我们</a>或<a href="https://dash.cloudflare.com/sign-up" target="_blank">开始使用</a>。</p>
+	<p>要了解有关 Cloudflare 的 DDoS 解决方案的更多信息，请<a href="https://www.cloudflare.com/plans/enterprise/contact/?ref=blog.cloudflare.com" target="_blank">联系我们</a>或<a href="https://dash.cloudflare.com/sign-up?ref=blog.cloudflare.com" target="_blank">开始使用</a>。</p>
 </div>

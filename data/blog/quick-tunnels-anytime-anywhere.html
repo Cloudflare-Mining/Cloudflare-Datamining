@@ -26,7 +26,7 @@
 	<!--kg-card-end: markdown-->
 	<p>You can do this with IP addresses or URLs, as well. Anything that <code>cloudflared</code> can reach can be made available through this service.</p>
 	<h3 id="how-does-it-work">How does it work?</h3>
-	<p>Cloudflare quick Tunnels is powered by Cloudflare <a href="https://workers.cloudflare.com/" target="_blank">Workers</a>, giving us a serverless compute deployment that puts Tunnel management in a Cloudflare data center closer to you instead of a centralized location.</p>
+	<p>Cloudflare quick Tunnels is powered by Cloudflare <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Workers</a>, giving us a serverless compute deployment that puts Tunnel management in a Cloudflare data center closer to you instead of a centralized location.</p>
 	<p>When you run the command <code>cloudflared tunnel</code>, your instance of <code>cloudflared</code> initiates an outbound-only connection to Cloudflare. Since that connection was initiated without any account details, we treat it as a quick Tunnel.</p>
 	<p>A Cloudflare Worker, which we call the quick Tunnel Worker, receives a request that a new quick Tunnel should be created. The Worker generates the random subdomain and returns that to the instance of <code>cloudflared</code>. That instance of <code>cloudflared</code> can now establish a connection for that subdomain.</p>
 	<p>Meanwhile, a complementary service running on Cloudflare’s edge receives that subdomain and the identification number of the instance of <code>cloudflared</code>. That service uses that information to create a DNS record in Cloudflare’s authoritative DNS which maps the randomly-generated hostname to the specific Tunnel you created.</p>
