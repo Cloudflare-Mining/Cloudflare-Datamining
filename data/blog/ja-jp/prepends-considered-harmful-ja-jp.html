@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-9.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>インターネットを最も純粋な形で表せば、独立したネットワーク（<a href="https://www.cloudflare.com/ja-jp/learning/network-layer/what-is-an-autonomous-system/" target="_blank">自律システム</a>（略してAS）とも呼ばれます）が緩く接続された図式になります。これらのネットワークは、<a href="https://www.cloudflare.com/ja-jp/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a>（Border Gateway Protocol）と呼ばれる信号プロトコルを使用して、ネットワーク内およびネットワーク経由でIPプレフィックス（IPアドレスのグループ）の到達可能性をネイバー（ピアとも呼ばれます）に通知しています。この交換の一部には、ネットワークルーティングの決定に関する情報を提供するために使用される、IPプレフィックスに関する有用なメタデータが含まれています。メタデータの一例が完全なASパスで、IPパケットが目的地に到達するために通過する必要のある個別の自律システムで構成されています。</p>
+	<p>インターネットを最も純粋な形で表せば、独立したネットワーク（<a href="https://www.cloudflare.com/ja-jp/learning/network-layer/what-is-an-autonomous-system/?ref=blog.cloudflare.com" target="_blank">自律システム</a>（略してAS）とも呼ばれます）が緩く接続された図式になります。これらのネットワークは、<a href="https://www.cloudflare.com/ja-jp/learning/security/glossary/what-is-bgp/?ref=blog.cloudflare.com" target="_blank">BGP</a>（Border Gateway Protocol）と呼ばれる信号プロトコルを使用して、ネットワーク内およびネットワーク経由でIPプレフィックス（IPアドレスのグループ）の到達可能性をネイバー（ピアとも呼ばれます）に通知しています。この交換の一部には、ネットワークルーティングの決定に関する情報を提供するために使用される、IPプレフィックスに関する有用なメタデータが含まれています。メタデータの一例が完全なASパスで、IPパケットが目的地に到達するために通過する必要のある個別の自律システムで構成されています。</p>
 	<p>パケットができるだけ早く目的地に届いてほしいので、所定のプレフィックスに対して最短のASパスを選択するのが理想的です。そこで登場するのがプリペンドというものです。</p>
 	<h2 id="-">インターネットにおけるルーティング（入門編）</h2>
 	<p>詳細な説明に入る前に、インターネットの最も基本的な仕組みについて簡単に説明します。</p>
@@ -84,7 +84,7 @@
 	<p>これは、クロスコネクトコスト（月額使用料（MRC）または1回限りの料金）と組み合わされます。PNIは、ポートの利用率が高いほど単価が下がるため、転送するメガビットあたりの総コストを削減して価値の最適化に役立つため、望ましいと言えます。</p>
 	<p>これは他の多くのネットワークにも当てはまり、トランジットネットワークでは非常に一般的なものです。BGPは、少なくともパフォーマンスと同程度にコストとビジネスポリシーに関わるものです。</p>
 	<h3 id="--4">トランジットローカルプリファレンス</h3>
-	<p>わかりやすくするために、トランジットと言う場合は<a href="https://en.wikipedia.org/wiki/Tier_1_network" target="_blank">従来のTier 1トランジットネットワーク</a>を指します。これらのネットワークは、その性質上2つの異なるネットワークピアのセットを持ちます。</p>
+	<p>わかりやすくするために、トランジットと言う場合は<a href="https://en.wikipedia.org/wiki/Tier_1_network?ref=blog.cloudflare.com" target="_blank">従来のTier 1トランジットネットワーク</a>を指します。これらのネットワークは、その性質上2つの異なるネットワークピアのセットを持ちます。</p>
 	<p>1. カスタマー（Cloudflareなど）<br>2.決済のないピア（他のTier 1ネットワークなど）</p>
 	<p>通常の場合、トランジットカスタマーには、決済のないピアに使用されるものよりも高いローカルプリファレンスが割り当てられます。これは、プレフィックスをいくらプリペンドしても、トラフィックがそのトランジットネットワークに入ると、<strong>常に</strong>そのトランジットネットワークとの相互接続に着地し、他のピアにオフロードされることはないということを意味します。</p>
 	<p>プリペンドは、1つのトランジットと複数の識別されたリンクがある場合に、1つのリンクからトラフィックを切り替え/オフロードしたい場合や、トラフィックのソースが複数のトランジットの背後でマルチホームされている場合（そして別のトランジットを優先する独自のローカルプリファレンスプレイブックを持っていない場合）にも使用できます。しかし、ASパスのプリペンドによって、あるトランジットポートから別のトランジットポートへトラフィックをエンジニアリングするインバウンドトラフィックは、大きなリターンの減少をもたらします。3つのプリペンドを過ぎると、その時点ではほとんど何も変わらないでしょう。</p>
@@ -164,6 +164,6 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-47.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>これこそが当社が望んでいたものです。</p>
 	<h2 id="--6">まとめ</h2>
-	<p>ASパスのプリペンドはまだ有用であり、オペレータがトラフィックエンジニアリングを行うためのツールチェーンの一部として使用されていますが、今後は使用を控えるのがよいでしょう。<a href="https://ripe79.ripe.net/presentations/64-prepending_madory2.pdf" target="_blank">過剰なプリペンドはネットワークをより広範なルートハイジャックにさらす</a>ことになり、これは何としても避けたい事態です。そのため、コミュニティベースのイングレストラフィックエンジニアリングを使用することが大いに推奨されます。コミュニティが利用できない（またはカスタマートラフィックを制御できない）場合、プリペンドを適用することはできますが、オペレータはその効果を積極的に監視し、効果がない場合はロールバックすることをおすすめします。</p>
-	<p>余談ですが、P MarcosらはASパスのプリペンドに関する興味深い論文を発表しており、プリペンドに関連するいくつかの傾向について触れていますので、ぜひ一読をおすすめします。<a href="https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf" target="_blank"> https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf</a></p>
+	<p>ASパスのプリペンドはまだ有用であり、オペレータがトラフィックエンジニアリングを行うためのツールチェーンの一部として使用されていますが、今後は使用を控えるのがよいでしょう。<a href="https://ripe79.ripe.net/presentations/64-prepending_madory2.pdf?ref=blog.cloudflare.com" target="_blank">過剰なプリペンドはネットワークをより広範なルートハイジャックにさらす</a>ことになり、これは何としても避けたい事態です。そのため、コミュニティベースのイングレストラフィックエンジニアリングを使用することが大いに推奨されます。コミュニティが利用できない（またはカスタマートラフィックを制御できない）場合、プリペンドを適用することはできますが、オペレータはその効果を積極的に監視し、効果がない場合はロールバックすることをおすすめします。</p>
+	<p>余談ですが、P MarcosらはASパスのプリペンドに関する興味深い論文を発表しており、プリペンドに関連するいくつかの傾向について触れていますので、ぜひ一読をおすすめします。<a href="https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf?ref=blog.cloudflare.com" target="_blank"> https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf</a></p>
 </div>

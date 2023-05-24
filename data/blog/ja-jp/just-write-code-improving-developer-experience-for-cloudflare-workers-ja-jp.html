@@ -13,7 +13,7 @@
 	<p>Wranglerは、もともとWorkers用のオープンソースのRust CLIだったものを正式なWokers CLIに格上げし、現在Workersの展開に関わるすべてのニーズに対応しています。</p>
 	<p>Wranglerをインストールして開始</p>
 	<p><code>npm install -g @cloudflare/wrangler</code><br></p>
-	<p><a href="https://workers.cloudflare.com/docs/templates" target="_blank">テンプレート</a>ギャラリーから、最初のプロジェクトを生成します</p>
+	<p><a href="https://workers.cloudflare.com/docs/templates?ref=blog.cloudflare.com" target="_blank">テンプレート</a>ギャラリーから、最初のプロジェクトを生成します</p>
 	<p><code>wrangler generate &lt;name&gt; &lt;template&gt; --type=["webpack", "javascript", "rust"]</code></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/worker_generate.gif" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Wranglerは、プロジェクトのウェブパック、WebAssemblyへのコンパイル、プロジェクトのWorkersへのアップロードを、1つのシンプルな手順で行います。</p>
@@ -25,15 +25,15 @@
 		<li>単一ファイルまたは複数ファイルのJavaScriptアプリケーションを作成する</li>
 		<li>NPM依存関係をインストールする（webpackは弊社で行います）</li>
 		<li>KV名前空間とバインディングを追加する</li>
-		<li>あらかじめ作成済みの<a href="https://workers.cloudflare.com/docs/templates/" target="_blank">テンプレート</a>で開始する</li>
+		<li>あらかじめ作成済みの<a href="https://workers.cloudflare.com/docs/templates/?ref=blog.cloudflare.com" target="_blank">テンプレート</a>で開始する</li>
 	</ul>
 	<h3 id="-"><strong>新しいドキュメントと改良されたドキュメント</strong></h3>
 	<p>ドキュメントを更新し（Wranglerを使用）、Workersでの最初のアプリケーションの展開開始がこれまでになく容易になりました。</p>
 	<p>新しいチュートリアルをご確認ください。</p>
 	<ul>
-		<li><a href="https://workers.cloudflare.com/docs/tutorials/build-an-application/" target="_blank">Workersを使用したSlackボットの展開</a></li>
-		<li><a href="https://workers.cloudflare.com/docs/tutorials/build-a-serverless-function/" target="_blank">QRコードジェネレータの構築</a></li>
-		<li><a href="https://workers.cloudflare.com/docs/tutorials/configure-your-cdn" target="_blank">クラウドストレージからのファイルの提供とキャッシュ</a></li>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/build-an-application/?ref=blog.cloudflare.com" target="_blank">Workersを使用したSlackボットの展開</a></li>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/build-a-serverless-function/?ref=blog.cloudflare.com" target="_blank">QRコードジェネレータの構築</a></li>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/configure-your-cdn?ref=blog.cloudflare.com" target="_blank">クラウドストレージからのファイルの提供とキャッシュ</a></li>
 	</ul>
 	<h3 id="--1"><strong>誰でも使えるマルチスクリプト</strong></h3>
 	<p>皆様から寄せられる質問にも耳を傾けました。Workers導入時、なるべくシンプルなものを作ろうと考えました。開発者は、コードを論理的なコンポーネントに分割したいのです。モノリシックなスクリプトを1つ用意するのではなく、使う方にとって意味ある方法でコードを配置できるようにしたいと考えています。</p>
@@ -44,12 +44,12 @@
 	<h3 id="--2"><strong>実験に使える無料利用枠</strong></h3>
 	<p>素晴らしい製品が常に素晴らしいアイデアから生まれるとは限らず、いろいろやってみる自由があるために生まれることも多くあります。私たちは、ちょっとした作業にでも値段が付けば、たとえ5ドルでも、皆さんの実験の自由を制限してしまうことに気がついたのです。</p>
 	<p>そこで本日より、Workersに無料利用枠を設定することを発表します。</p>
-	<p>無料利用枠では、ご自身のドメインでもworkers.devでも、1日あたり最大100,000リクエストまで使用することができます。詳しい制限については、<a href="https://workers.cloudflare.com/docs/reference/runtime/limits/" target="_blank">こちら</a>からご覧ください。</p>
+	<p>無料利用枠では、ご自身のドメインでもworkers.devでも、1日あたり最大100,000リクエストまで使用することができます。詳しい制限については、<a href="https://workers.cloudflare.com/docs/reference/runtime/limits/?ref=blog.cloudflare.com" target="_blank">こちら</a>からご覧ください。</p>
 	<h3 id="-ui"><strong>新たに機能向上したUI</strong></h3>
 	<p>Workersへのサインアップから展開までが2分以内の、クリーンで使いやすいパッケージを作りました。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/get-started.gif" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="cloudflare-"><strong>Cloudflareのコミットメント</strong></h3>
 	<p>まだまだこの先には長い道のりがあります。開発者にとっての使いやすさについては、現段階に留まることなく、さらに私たちの使命を果たしていきたいと考えています。共同創業者であるMichelleがよく言うように、「私たちはまだ始まったばかり」です。</p>
-	<p>目の前にはすることがたくさんあるし、この先ももっと色々なことが待っています。<a href="https://workers.cloudflare.com/" target="_blank">workers.cloudflare.com</a>にアクセスすると詳細情報をご覧いただけるほか、実際に使用される場合には同じページからサインアップすることができます。</p>
+	<p>目の前にはすることがたくさんあるし、この先ももっと色々なことが待っています。<a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">workers.cloudflare.com</a>にアクセスすると詳細情報をご覧いただけるほか、実際に使用される場合には同じページからサインアップすることができます。</p>
 	<p>皆様の積極的なご利用をお待ちしています。</p>
 </div>
