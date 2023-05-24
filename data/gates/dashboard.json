@@ -349,6 +349,13 @@
 	"queues-ui": {
 		"enabled": true
 	},
+	"r2-purchase-call-to-action": {
+		"enabled": false,
+		"branches": [
+			"purchase-r2",
+			"activate-r2"
+		]
+	},
 	"regional-tiered-cache": {
 		"enabled": false
 	},
