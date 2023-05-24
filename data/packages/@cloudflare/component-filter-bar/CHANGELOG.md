@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.10
+
+### Patch Changes
+
+- 28e2e55575: Fix gap to right of time picker
+
 ## 6.0.9
 
 ### Patch Changes
