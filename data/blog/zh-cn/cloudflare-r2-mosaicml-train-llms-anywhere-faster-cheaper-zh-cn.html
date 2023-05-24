@@ -3,11 +3,11 @@
 	<p>构建支持生成式人工智能的大型语言模型(LLM)和扩散模型需要庞大的基础架构。最明显的组成部分是计算——数百到数千个 GPU，但同样关键(而且往往被忽视)的组成部分是<strong>数据存储基础设施。</strong>训练数据集的大小可以达到 TB 到 PB 的规模，这些数据需要由数千个进程并行读取。此外，在训练过程中需要经常保存模型检查点，对于 LLM 来说，每个检查点的大小可能都达到数百 GB！</p>
 	<p>为了管理存储成本和可扩展性，许多机器学习团队已经开始使用对象存储来托管其数据集和检查点。不幸的是，大多数对象存储提供商通过出口费用来将用户“锁定”在其平台上。这样一来，利用多个云提供商的 GPU 容量，或者利用其他地方更低/动态的价格变得非常困难，因为数据和模型检查点的移动成本太高。在云 GPU 稀缺、新硬件选项进入市场之际，保持灵活性比以往任何时候都更加重要。</p>
 	<p>除了高昂的出口费用之外，以对象存储为中心的机器学习训练还存在一个技术障碍。在对象存储和计算集群之间读写数据需要高吞吐量、高效利用网络带宽、确定性和弹性（能够使用不同数量的 GPU 进行训练）。构建能够正确、可靠地处理所有这些问题的训练软件并非易事！</p>
-	<p>今天，我们怀着兴奋之情，向大家展示如何结合使用 MosaicML 的工具和 Cloudflare R2 来解决以上挑战。首先，利用 MosaicML 开源的 <a href="https://github.com/mosaicml/streaming" target="_blank">StreamingDataset</a> 和 <a href="https://github.com/mosaicml/composer" target="_blank">Composer</a> 库，您可以轻松地流式传输训练数据，并将模型检查点读/写回 R2。您只需要互联网连接。其次，得益于 R2 的零出口费用，您可以根据计算提供商的 GPU 可用性和价格的变化启动/停止/移动/调整作业，而无需支付任何数据传输费用。MosaicML 训练平台使得在多个云之间编排此类训练作业变得非常简单。</p>
+	<p>今天，我们怀着兴奋之情，向大家展示如何结合使用 MosaicML 的工具和 Cloudflare R2 来解决以上挑战。首先，利用 MosaicML 开源的 <a href="https://github.com/mosaicml/streaming?ref=blog.cloudflare.com" target="_blank">StreamingDataset</a> 和 <a href="https://github.com/mosaicml/composer?ref=blog.cloudflare.com" target="_blank">Composer</a> 库，您可以轻松地流式传输训练数据，并将模型检查点读/写回 R2。您只需要互联网连接。其次，得益于 R2 的零出口费用，您可以根据计算提供商的 GPU 可用性和价格的变化启动/停止/移动/调整作业，而无需支付任何数据传输费用。MosaicML 训练平台使得在多个云之间编排此类训练作业变得非常简单。</p>
 	<p>Cloudflare 和 MosaicML 相结合使您能够在全球<em>任何地方</em>、<em>任何</em>计算资源上训练 LLM，而且零切换成本。这意味着训练速度更快，成本更低，而且避免了供应商锁定 :) </p>
 	<blockquote><em>“通过 MosaicML 训练平台，客户可以高效使用 R2 作为持久性存储后端，在任何计算提供商上训练 LLM，而且没有任何出口费用。AI 公司面临着惊人的云成本，正在寻找能够为自己提供速度和灵活性的工具，以最优惠的价格训练出最好的模型。”</em><br>– <strong>Naveen Rao，CEO 兼联合创始人，MosaicML</strong></blockquote>
 	<h3 id="%E4%BD%BF%E7%94%A8-streamingdataset-%E4%BB%8E-r2-%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE">使用 StreamingDataset 从 R2 读取数据</h3>
-	<p>要高效、确定地从 R2 读取数据，可以使用 MosaicML 的 <a href="https://github.com/mosaicml/streaming" target="_blank">StreamingDataset</a> 库。首先，使用提供的 Python API 将训练数据(图像、文本、视频等任何内容)写入 '<code>.mds</code>' shard 文件中：</p>
+	<p>要高效、确定地从 R2 读取数据，可以使用 MosaicML 的 <a href="https://github.com/mosaicml/streaming?ref=blog.cloudflare.com" target="_blank">StreamingDataset</a> 库。首先，使用提供的 Python API 将训练数据(图像、文本、视频等任何内容)写入 '<code>.mds</code>' shard 文件中：</p>
 	<pre><code class="language-python">import numpy as np
 from PIL import Image
 from streaming import MDSWriter
@@ -60,9 +60,9 @@ cls = sample['class']
 # Create PyTorch DataLoader
 dataloader = DataLoader(dataset)
 </code></pre>
-	<p>StreamingDataset 库内置了高性能、具有弹性确定性、快速恢复和多 worker 支持。它还使用智能混洗和分发来确保最小化下载带宽。在各种工作负载(例如 LLMs 和扩散模型)中，我们发现从像 R2 这样的对象存储中进行训练时，没有对训练吞吐量产生影响(没有数据加载器瓶颈)。如果您想了解更多信息，请查看 StreamingDataset <a href="https://www.mosaicml.com/blog/mosaicml-streamingdataset" target="_blank">公告博客</a>！</p>
+	<p>StreamingDataset 库内置了高性能、具有弹性确定性、快速恢复和多 worker 支持。它还使用智能混洗和分发来确保最小化下载带宽。在各种工作负载(例如 LLMs 和扩散模型)中，我们发现从像 R2 这样的对象存储中进行训练时，没有对训练吞吐量产生影响(没有数据加载器瓶颈)。如果您想了解更多信息，请查看 StreamingDataset <a href="https://www.mosaicml.com/blog/mosaicml-streamingdataset?ref=blog.cloudflare.com" target="_blank">公告博客</a>！</p>
 	<h3 id="%E4%BD%BF%E7%94%A8-composer-%E8%AF%BB%E5%8F%96%E5%86%99%E5%85%A5%E6%A8%A1%E5%9E%8B%E6%A3%80%E6%9F%A5%E7%82%B9%E5%88%B0-r2">使用 Composer 读取/写入模型检查点到 R2</h3>
-	<p>将数据流式传输到您的训练循环中解决了一半的问题，但是如何加载/保存您的模型检查点呢？幸运的是，如果您使用像 <a href="https://github.com/mosaicml/composer" target="_blank">Composer</a> 这样的训练库，只需指向一个 R2 路径即可！ </p>
+	<p>将数据流式传输到您的训练循环中解决了一半的问题，但是如何加载/保存您的模型检查点呢？幸运的是，如果您使用像 <a href="https://github.com/mosaicml/composer?ref=blog.cloudflare.com" target="_blank">Composer</a> 这样的训练库，只需指向一个 R2 路径即可！ </p>
 	<pre><code class="language-Python">from composer import Trainer
 ...
 
@@ -140,5 +140,5 @@ cluster: oci-1  # can be any compute cluster!
 </code></pre>
 	<p><em>一个 MCLI 指定运行名称、Docker 镜像、一组命令以及要用于运行的计算集群。</em></p>
 	<h3 id="%E7%AB%8B%E5%8D%B3%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8%EF%BC%81">立即开始使用！</h3>
-	<p>MosaicML 平台是一个非常有用的工具，帮助将您的训练提升到一个新的水平。本文探讨了 Cloudflare R2 如何让您能够在任何或所有计算提供商上使用自己的数据训练模型。通过消除数据出口费用，R2 存储成为 MosaicML训练一个极具成本效益的补充，提供最大的自主权和控制。结合这两个工具，您可以随时在云服务提供商之间切换，以适应组织需求随时间的变化。 <br><br>如果希望进一步了解如何使用 MosaicML 在自己的数据上训练定制的最先进人工智能模型，请访问<a href="https://www.mosaicml.com/" target="_blank">这里</a>或<a href="https://docs.google.com/forms/d/e/1FAIpQLSepW7QB3Xkv6T7GJRwrR9DmGAEjm5G2lBxJC7PUe3JXcBZYbw/viewform" target="_blank">联系我们</a>。</p>
+	<p>MosaicML 平台是一个非常有用的工具，帮助将您的训练提升到一个新的水平。本文探讨了 Cloudflare R2 如何让您能够在任何或所有计算提供商上使用自己的数据训练模型。通过消除数据出口费用，R2 存储成为 MosaicML训练一个极具成本效益的补充，提供最大的自主权和控制。结合这两个工具，您可以随时在云服务提供商之间切换，以适应组织需求随时间的变化。 <br><br>如果希望进一步了解如何使用 MosaicML 在自己的数据上训练定制的最先进人工智能模型，请访问<a href="https://www.mosaicml.com/?ref=blog.cloudflare.com" target="_blank">这里</a>或<a href="https://docs.google.com/forms/d/e/1FAIpQLSepW7QB3Xkv6T7GJRwrR9DmGAEjm5G2lBxJC7PUe3JXcBZYbw/viewform?ref=blog.cloudflare.com" target="_blank">联系我们</a>。</p>
 </div>
