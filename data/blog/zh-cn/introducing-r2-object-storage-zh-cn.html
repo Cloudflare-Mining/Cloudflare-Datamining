@@ -10,7 +10,7 @@
 	<p>R2 应运而生。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed-1.png" class="kg-image" alt="Cloudflare R2 意味着取消离谱的费用" loading="lazy"></figure>
 	<p>传统的对象存储向开发者收取三项费用：带宽、存储大小和存储操作。</p>
-	<p>R2 基于 Cloudflare 对<a href="https://www.cloudflare.com/zh-cn/bandwidth-alliance/" target="_blank">带宽联盟</a>的承诺而构建，为存储对象提供零成本出口，与您的请求率无关。出口带宽通常是开发人员使用对象存储的最大费用，也是最难预测的费用。消除这项费用是对存储在云端的数据开放访问的巨大胜利。</p>
+	<p>R2 基于 Cloudflare 对<a href="https://www.cloudflare.com/zh-cn/bandwidth-alliance/?ref=blog.cloudflare.com" target="_blank">带宽联盟</a>的承诺而构建，为存储对象提供零成本出口，与您的请求率无关。出口带宽通常是开发人员使用对象存储的最大费用，也是最难预测的费用。消除这项费用是对存储在云端的数据开放访问的巨大胜利。</p>
 	<p>这并不表示我们将带宽费用转嫁到别处。Cloudflare R2 的价格将定为每月每 GB 存储的数据 0.015 美元，比主流供应商便宜得多。 </p>
 	<p>对于提供商来说，对对象访问不频繁时通常微不足道，但每次操作都会产生相同的费用。我们认为，典型的对象存储要求开发人员每秒发出一个请求时的价格与企业每秒发出数千个请求的价格相同是非常不公平的（当考虑协商的批量折扣时，开发人员经常面临更高的价格）。<br><br>另一方面，为不频繁访问而设计的提供商通常无法扩展到大量使用。</p>
 	<p>R2 将在某个阈值下对不频繁的存储操作实现零费率，目前计划将阈值设在每秒个位数请求范围内。此范围以上，R2 的每项操作收费将明显低于主要提供商。我们的对象存储对于不频繁的访问情况将非常便宜，但在规模上比主要的现有提供商更有能力和更便宜。</p>
@@ -32,6 +32,6 @@
 	<p>R2 也是存储 CDN 资源和大型媒体文件的理想场所。对于大型文件，R2 可以大幅延长缓存生命周期，同时大大削减出口费用。结合 Cache API 和 Workers，可对内容进行动态缓存，实现全球范围内的低延迟访问。</p>
 	<p>最重要的是，R2 没有出口带宽费用，因此是存储不频繁访问内容的理想选择。如今，R2 的规模能够妥善处理繁重的请求负载，对您的对象进行动态分级，以最低的成本带来最高的性能。有了这种动态分级，我们可以提供最低的价格，并支持最高的性能，而且无需用户进行任何配置。</p>
 	<h3 id="-cloudflare-r2">使用 Cloudflare R2</h3>
-	<p>R2 目前正在开发之中，您可以在<a href="https://www.cloudflare.com/zh-cn/r2-storage" target="_blank">这里</a>报名以加入等候名单。我们非常乐意与广大早期用户合作，对产品进行调优和测试。我们很快会进行公测，届时任何用户都能报名体验服务。</p>
-	<p>我们很高兴能继续打造这款产品并推向公测，也对 Cloudflare 边缘存储的未来有着美好憧憬。如果您是分布式系统工程师并想帮助我们共创边缘之未来，那就<a href="https://www.cloudflare.com/zh-cn/careers/jobs/?department=Emerging%20Technology%20and%20Incubation&amp;location=default" target="_blank">加入我们吧</a>！</p>
+	<p>R2 目前正在开发之中，您可以在<a href="https://www.cloudflare.com/zh-cn/r2-storage?ref=blog.cloudflare.com" target="_blank">这里</a>报名以加入等候名单。我们非常乐意与广大早期用户合作，对产品进行调优和测试。我们很快会进行公测，届时任何用户都能报名体验服务。</p>
+	<p>我们很高兴能继续打造这款产品并推向公测，也对 Cloudflare 边缘存储的未来有着美好憧憬。如果您是分布式系统工程师并想帮助我们共创边缘之未来，那就<a href="https://www.cloudflare.com/zh-cn/careers/jobs/?department=Emerging+Technology+and+Incubation&amp;location=default&amp;ref=blog.cloudflare.com" target="_blank">加入我们吧</a>！</p>
 </div>
