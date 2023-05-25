@@ -356,7 +356,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(f) {
 				var w = (0, h.tJ)(f);
-				return !(0, O.ky)(w, [T.uD.UnboundEnterpriseTrial])
+				return !(0, z.ky)(w, [T.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -455,7 +455,7 @@ const navigation = {
 			url: "/images/delivery-zones",
 			testId: "sidenav-delivery-zones-link",
 			hasPermission: function(f) {
-				return (0, o.IU)(f) && (0, C.b8)(f)
+				return (0, o.IU)(f) && (0, O.b8)(f)
 			},
 			labels: ["new"]
 		}]
@@ -614,7 +614,7 @@ const navigation = {
 		navigationType: "both",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: k.bB,
+		tabs: R.bB,
 		hasPermission: function(f) {
 			return !(0, s.yD)(f) && (0, I.m7)(f)
 		}
@@ -1074,43 +1074,43 @@ const navigation = {
 	}],
 	zeroTrust: [{
 		url: function() {
-			return (0, R.Uj)("home")
+			return (0, k.Uj)("home")
 		},
 		title: "navigation.account.zero_trust",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, R.Uj)("analytics/access")
+			return (0, k.Uj)("analytics/access")
 		},
 		title: "navigation.account.zero_trust.analytics",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, R.Uj)("gateway/locations")
+			return (0, k.Uj)("gateway/locations")
 		},
 		title: "navigation.account.zero_trust.gateway",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, R.Uj)("access/apps")
+			return (0, k.Uj)("access/apps")
 		},
 		title: "navigation.account.zero_trust.access",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, R.Uj)("team/devices")
+			return (0, k.Uj)("team/devices")
 		},
 		title: "navigation.account.zero_trust.my_team",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, R.Uj)("logs/admin")
+			return (0, k.Uj)("logs/admin")
 		},
 		title: "navigation.account.zero_trust.logs",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, R.Uj)("settings")
+			return (0, k.Uj)("settings")
 		},
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
