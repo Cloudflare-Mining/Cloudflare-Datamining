@@ -6,11 +6,11 @@
 	<p>가동 중단이 발생하게 되어 정말 죄송합니다. 이는 Cloudflare 측의 오류이며 공격이나 악의적 활동으로 발생하지 않았습니다.</p>
 	<h3 id="--1">배경</h3>
 	<p>지난 18개월 동안 Cloudflare는 가장 규모가 큰 데이터 센터들의 아키텍처를 더 확실히 이중화하기 위해 노력해 왔습니다. 이번에는 내부적으로 MCP(Multi-Colo PoP)라고 부르는 이 아키텍처를 암스테르담, 애틀랜타, 애쉬번, 시카고, 프랑크푸르트, 런던, 로스앤젤레스, 마드리드, 맨체스터, 마이애미, 밀라노, 뭄바이, 뉴어크, 오사카, 상파울루, 새너제이, 싱가포르, 시드니, 도쿄까지 총 19곳의 데이터 센터에 적용했습니다.</p>
-	<p><a href="https://en.wikipedia.org/wiki/Clos_network?ref=blog.cloudflare.com" target="_blank">Clos 네트워크</a>로 설계된 이 새로운 아키텍처의 핵심 요소는 연결 메시를 생성하도록 추가된 라우팅 계층입니다. 이 메시를 사용하면 유지 관리를 수행하거나 문제를 처리하기 위해 데이터 센터의 내부 네트워크의 일부를 쉽게 비활성화하고 활성화할 수 있습니다. 이 계층은 다음 다이어그램에서 스파인으로 표현되어 있습니다.</p>
+	<p><a href="https://en.wikipedia.org/wiki/Clos_network" target="_blank">Clos 네트워크</a>로 설계된 이 새로운 아키텍처의 핵심 요소는 연결 메시를 생성하도록 추가된 라우팅 계층입니다. 이 메시를 사용하면 유지 관리를 수행하거나 문제를 처리하기 위해 데이터 센터의 내부 네트워크의 일부를 쉽게 비활성화하고 활성화할 수 있습니다. 이 계층은 다음 다이어그램에서 스파인으로 표현되어 있습니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-27.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>이 새로운 아키텍처는 안정성을 크게 높일 뿐만 아니라, 데이터 센터에서 고객 트래픽을 방해하지 않고도 유지 관리를 실행할 수 있게 해줍니다. 이와 같은 데이터 센터는 Cloudflare 트래픽의 상당 부분을 처리하기 때문에 이곳에서 문제가 발생한다면 어떤 문제든 매우 광범위하게 영향을 미칠 수 있습니다. 이로 인해 오늘 중단이 발생하게 되었습니다.</p>
 	<h3 id="-utc-">사고 타임라인(UTC) 및 영향</h3>
-	<p>Cloudflare와 같은 네트워크는 인터넷으로 연결할 수 있도록 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/?ref=blog.cloudflare.com" target="_blank">BGP</a>라는 프로토콜을 사용합니다. 이 프로토콜의 일환으로 운영자는 피어(연결하려는 다른 네트워크)에 알릴 접두사(인접한 IP 주소 모음)나 피어에서 수락하게 될 피어를 결정하는 정책을 정의합니다. </p>
+	<p>Cloudflare와 같은 네트워크는 인터넷으로 연결할 수 있도록 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a>라는 프로토콜을 사용합니다. 이 프로토콜의 일환으로 운영자는 피어(연결하려는 다른 네트워크)에 알릴 접두사(인접한 IP 주소 모음)나 피어에서 수락하게 될 피어를 결정하는 정책을 정의합니다. </p>
 	<p>이러한 정책에는 순차적 방식으로 평가하는 개별 구성 요소가 있습니다.주어진 접두사를 알리거나 알리지 않는 것으로 최종 결과가 나타납니다. 정책을 변경하면 이전에 알리던 접두사를 더 이상 알리지 않게 될 수 있습니다. &nbsp;이 경우 접두사를 철회하며 해당 IP 주소에 인터넷으로 연결할 수 없게 됩니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-27.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>접두사 알림 정책에 대한 변경 사항을 배포하는 동안, 항을 재정렬하면서 접두사의 필수 하위 집합을 철회하게 되었습니다.</p>

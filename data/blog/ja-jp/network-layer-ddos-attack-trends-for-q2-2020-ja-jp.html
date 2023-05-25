@@ -34,7 +34,7 @@
 	<p>しかし、各Cloudflareデータセンターで軽減された総攻撃バイト数を見ると、米国は依然としてトップですが（34.9%）、次いで香港（6.6%）、ロシア（6.5%）、ドイツ（4.5%）、コロンビア（3.7%）の順になっています。順位に変化が生じた理由は、各攻撃で生成された帯域幅の合計量によります。例えば、香港で観測された攻撃数は比較的少なく（1.8％）、上位10位内にランクインしなかったのに対し、攻撃の規模は非常に大きく、攻撃トラフィックが多かったため、香港は別のランキングで2位に浮上しています。</p>
 	<p>L3/4 DDoS攻撃を分析する際、トラフィックはソース IPの場所ではなく、Cloudflareエッジデータセンターの場所によってバケットされます。なぜなら、攻撃者がL3/4 攻撃を開始すると、攻撃元を難読化するために送信元のIPアドレスを「スプーフィング」（改ざん）できるからです。スプーフィングされたソースIPに基づいて国を割り出しても、偽装された国名が得られるだけです。Cloudflareは、偽装IPの課題を克服することができます。攻撃が観測されたCloudflareのデータセンターの場所別に攻撃データを表示できるためです。世界200以上の都市にCloudflareのデータセンターがあるため、レポートには地理的正確さを反映できます。</p>
 	<h3 id="-2-l3-4-ddos-57-syn-">第2四半期の全L3/4 DDoS攻撃の57%がSYNフラッド攻撃でした</h3>
-	<p>攻撃ベクトルは、攻撃方法を指す用語です。第2四半期には、L3/4 DDoS攻撃で攻撃者が使用するベクトルの数が増加しました。第2四半期では合計39種類の攻撃ベクトルが使用され、第1四半期では34種類の攻撃ベクトルが使用されました。<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYNフラッド攻撃</a>が、シェアの57%以上を占め、次にRST（13％）、<a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack/" target="_blank"> &nbsp;UDP &nbsp;</a>（ 7％）、<a href="https://blog.cloudflare.com/reflections-on-reflections/"> CLDAP</a>（6％）、そして<a href="https://blog.cloudflare.com/ssdp-100gbps/"> SSDP </a> （3%）攻撃の順になります。</p>
+	<p>攻撃ベクトルは、攻撃方法を指す用語です。第2四半期には、L3/4 DDoS攻撃で攻撃者が使用するベクトルの数が増加しました。第2四半期では合計39種類の攻撃ベクトルが使用され、第1四半期では34種類の攻撃ベクトルが使用されました。<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/?ref=blog.cloudflare.com" target="_blank">SYNフラッド攻撃</a>が、シェアの57%以上を占め、次にRST（13％）、<a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack/?ref=blog.cloudflare.com" target="_blank"> &nbsp;UDP &nbsp;</a>（ 7％）、<a href="https://blog.cloudflare.com/reflections-on-reflections/"> CLDAP</a>（6％）、そして<a href="https://blog.cloudflare.com/ssdp-100gbps/"> SSDP </a> （3%）攻撃の順になります。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image1-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>SYNフラッド攻撃は、TCP 接続のハンドシェイクプロセスを悪用しようと試みます &nbsp;。同期フラグ（SYN）を使用して初期接続要求パケットを繰り返し送信することにより、攻撃者はTCP接続の状態を追跡するルーターの接続テーブルに過負荷をかけようとします。ルーターは、同期確認フラグ（SYN-ACK）を含むパケットで応答し、特定の接続ごとに一定量のメモリーを割り当てて、クライアントが最終確認（ACK）で応答するのを誤って待ってしまいます。ルーターのメモリーを占有する十分な数のSYNがあると、ルーターは正規のクライアントに対してさらにメモリーを割り当てることができず、サービス拒否を引き起こします。</p>
 	<p>Cloudflare は、攻撃ベクトルに関係なく、自社製のDDoS保護システムで構成された3つの保護アプローチを使用して、ステートフルまたはステートレスなDDoS攻撃を自動的に検出し、軽減します。</p>
@@ -45,15 +45,15 @@
 	</ul>
 	<p>Cloudflareは自動化されたDDoS保護システムに加えて、攻撃を自動的に軽減するリアルタイムの脅威インテリジェンスを生成します。Cloudflareはさらに、カスタマイズの選択肢を広げ、保護の最適化を行うために、顧客に対してファイアウォール、レート制限、追加のツールを提供します。</p>
 	<h3 id="cloudflare-ddos-">CloudflareのDDoS対策</h3>
-	<p>企業や個人向けインターネット利用が進化し続けているのに合わせて、DDoS戦術もさらに精鋭化することが予測されます。Cloudflareは攻撃の洗練さの度合いに関わらず、あらゆる規模、種類のDDoS攻撃から、<a href="https://www.cloudflare.com/ddos" target="_blank">Webサイト</a>、<a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank">アプリケーション</a> 、そして<a href="https://www.cloudflare.com/magic-transit" target="_blank"> ネットワーク全体</a>を保護します。</p>
+	<p>企業や個人向けインターネット利用が進化し続けているのに合わせて、DDoS戦術もさらに精鋭化することが予測されます。Cloudflareは攻撃の洗練さの度合いに関わらず、あらゆる規模、種類のDDoS攻撃から、<a href="https://www.cloudflare.com/ddos?ref=blog.cloudflare.com" target="_blank">Webサイト</a>、<a href="https://www.cloudflare.com/products/cloudflare-spectrum?ref=blog.cloudflare.com" target="_blank">アプリケーション</a> 、そして<a href="https://www.cloudflare.com/magic-transit?ref=blog.cloudflare.com" target="_blank"> ネットワーク全体</a>を保護します。</p>
 	<p>当社の顧客と業界アナリストは、次の3つの主な理由により、Cloudflareの包括的なソリューションを推奨しています。</p>
 	<ul>
 		<li>ネットワークの規模：Cloudflareの37 Tbpsネットワークで、あらゆる規模、種類、高度なレベルの攻撃を簡単にブロックできます。Cloudflareネットワークには、競合他社4社を合算したものよりも高いDDoS軽減能力があります。</li>
 		<li>軽減までの時間：Cloudflareは、ほとんどのネットワーク層攻撃をグローバルに10秒未満で軽減し、静的ルールが事前設定されている場合は即座に軽減します (0 秒)。Cloudflare は、そのグローバルプレゼンスを活用して、最小限のレイテンシーでソースに近い攻撃を緩和します。場合によっては、トラフィックは公共のインターネットを経由するよりもさらに高速になります。</li>
 		<li>脅威インテリジェンス：CloudflareのDDoS対策は、2,700万を超えるインターネットプロパティを活用した脅威インテリジェンスによって実現されます。さらに、脅威インテリジェンスは、顧客向けファイアウォールやツールに組み込まれ、顧客を支援します。</li>
 	</ul>
-	<p>Cloudflare は、独自のネットワークアーキテクチャにより、比類なき規模と、速度、スマートな機能を合わせもつDDoS対策を実現できます。Cloudflareのネットワークはフラクタル（幾何学模様）のようです。すべてのサービスは、<a href="https://www.cloudflare.com/network" target="_blank">世界200都市</a>以上にまたがるすべてのCloudflareデータセンターのすべてのサーバー上で実行されます 。これにより、Cloudflareは、サイズ、送信元、または攻撃の種類に関係なく、配信元に近い攻撃を検出して軽減できます。</p>
+	<p>Cloudflare は、独自のネットワークアーキテクチャにより、比類なき規模と、速度、スマートな機能を合わせもつDDoS対策を実現できます。Cloudflareのネットワークはフラクタル（幾何学模様）のようです。すべてのサービスは、<a href="https://www.cloudflare.com/network?ref=blog.cloudflare.com" target="_blank">世界200都市</a>以上にまたがるすべてのCloudflareデータセンターのすべてのサーバー上で実行されます 。これにより、Cloudflareは、サイズ、送信元、または攻撃の種類に関係なく、配信元に近い攻撃を検出して軽減できます。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image10.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>CloudflareのDDoSソリューションの詳細は、<a href="https://www.cloudflare.com/plans/enterprise/" target="_blank">こちらにお問い合わせ</a>いただくか、<a href="https://dash.cloudflare.com/" target="_blank">今すぐ始めましょう</a>。</p>
-	<p>お客様は今後開催されるライブウェビナーに参加することも可能です。このセミナーでは、DDoS攻撃の傾向や、DDoS攻撃に対抗し、ネットワークをオンラインに保ち、高速に保つために企業が実装可能な戦略についてご説明します。<a href="https://onlinexperiences.com/Launch/QReg/ShowUUID=43F66E2A-9532-44CF-9852-59324105F8E0&amp;LangLocaleID=1033" target="_blank">登録はこちらから</a>。</p>
+	<p>CloudflareのDDoSソリューションの詳細は、<a href="https://www.cloudflare.com/plans/enterprise/?ref=blog.cloudflare.com" target="_blank">こちらにお問い合わせ</a>いただくか、<a href="https://dash.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">今すぐ始めましょう</a>。</p>
+	<p>お客様は今後開催されるライブウェビナーに参加することも可能です。このセミナーでは、DDoS攻撃の傾向や、DDoS攻撃に対抗し、ネットワークをオンラインに保ち、高速に保つために企業が実装可能な戦略についてご説明します。<a href="https://onlinexperiences.com/Launch/QReg/ShowUUID=43F66E2A-9532-44CF-9852-59324105F8E0&amp;LangLocaleID=1033?ref=blog.cloudflare.com" target="_blank">登録はこちらから</a>。</p>
 </div>
