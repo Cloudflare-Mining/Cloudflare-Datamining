@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Yesterday Cloudflare launched <a href="https://developers.cloudflare.com/argo-tunnel/" target="_blank">Argo Tunnel</a>. In the words of the product team:</p>
+	<p>Yesterday Cloudflare launched <a href="https://developers.cloudflare.com/argo-tunnel/?ref=blog.cloudflare.com" target="_blank">Argo Tunnel</a>. In the words of the product team:</p>
 	<blockquote>
 		<p>Argo Tunnel exposes applications running on your local web server, on any network with an Internet connection, without adding DNS records or configuring a firewall or router. It just works.</p>
 	</blockquote>
@@ -34,7 +34,7 @@ pi@raspberrypi:~ $
 	<pre><code>pi@raspberrypi:~ $ cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//'
 a22082
 </code></pre>
-	<p>Then look up the value in the <a href="https://elinux.org/RPi_HardwareHistory" target="_blank">Raspbery Pi revision history</a>. I have Raspberry Pi 3 Model B</p>
+	<p>Then look up the value in the <a href="https://elinux.org/RPi_HardwareHistory?ref=blog.cloudflare.com" target="_blank">Raspbery Pi revision history</a>. I have Raspberry Pi 3 Model B</p>
 	<h3 id="internetconnectivity">Internet connectivity</h3>
 	<p>OK, so we have a Pi connected to our router. Let's make 100% sure it can connect to the Internet.</p>
 	<pre><code>pi@raspberrypi:~$ $ curl -I https://www.cloudflare.com
@@ -56,7 +56,7 @@ cf-ray: 3febc2914beb7f06-SFO-DOG
 </code></pre>
 	<p>That first line HTTP/2 200 is the OK status code, which is enough to tell us we can connect out to the Internet. Normally this wouldn't be particularly exciting, as it's allowing connections <strong>in</strong> that causes problems. That's the promise of Argo Tunnels however, it says on the tin we don't need to poke any firewall holes or configure any DNS. Big claim, let's test it.</p>
 	<h3 id="installtheagent">Install the Agent</h3>
-	<p>Go to <a href="https://developers.cloudflare.com/argo-tunnel/downloads/" target="_blank">https://developers.cloudflare.com/argo-tunnel/downloads/</a> to get the url for the ARM build for your Pi. At the time of writing it was <a href="https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz" target="_blank">https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz</a></p>
+	<p>Go to <a href="https://developers.cloudflare.com/argo-tunnel/downloads/?ref=blog.cloudflare.com" target="_blank">https://developers.cloudflare.com/argo-tunnel/downloads/</a> to get the url for the ARM build for your Pi. At the time of writing it was <a href="https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz?ref=blog.cloudflare.com" target="_blank">https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz</a></p>
 	<pre><code>$ wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz
 Resolving bin.equinox.io (bin.equinox.io)... 54.243.137.45, 107.22.233.132, 50.19.252.69, ...
 Connecting to bin.equinox.io (bin.equinox.io)|54.243.137.45|:443... connected.
@@ -89,7 +89,7 @@ https://www.cloudflare.com/a/warp?callback=&lt;some token&gt;
 If the browser failed to open, open it yourself and visit the URL above.
 </code></pre>
 	<p>Our headless Pi doesn't have a web browser, so let's copy the url from the console into the browser on our host dev machine.</p>
-	<p><mark>This part assumes you already have a domain on Cloudflare</mark> If you don't go to the <a href="https://support.cloudflare.com/hc/en-us/articles/201720164" target="_blank">setup guide</a> to get started.</p>
+	<p><mark>This part assumes you already have a domain on Cloudflare</mark> If you don't go to the <a href="https://support.cloudflare.com/hc/en-us/articles/201720164?ref=blog.cloudflare.com" target="_blank">setup guide</a> to get started.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/authorize-choose-domain.png" alt="authorize-choose-domain" loading="lazy"></p>
 	<p>We're being asked which domain we want this tunnel to sit behind. I've chosen <strong>pacman.wiki</strong>. Click Authorize.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/authorize-confirm.png" alt="authorize-confirm" loading="lazy"></p>
@@ -111,7 +111,7 @@ INFO[0010] Connected to SFO-DOG
 INFO[0012] Connected to LAX                             
 INFO[0012] Connected to SFO-DOG  
 </code></pre>
-	<p>Huh, interesting. So, we've connected to my nearest POP(s). I'm in the San Francisco Bay Area, so SJC and LAX seems reasonable. What now though? Surely that's not it? If I'm reading this right, I can go to my browser, enter <a href="https://tunnel.pacman.wiki" target="_blank">https://tunnel.pacman.wiki</a> and I'll get a hello world page... surely not.</p>
+	<p>Huh, interesting. So, we've connected to my nearest POP(s). I'm in the San Francisco Bay Area, so SJC and LAX seems reasonable. What now though? Surely that's not it? If I'm reading this right, I can go to my browser, enter <a href="https://tunnel.pacman.wiki/?ref=blog.cloudflare.com" target="_blank">https://tunnel.pacman.wiki</a> and I'll get a hello world page... surely not.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/success-1.png" alt="Success!" loading="lazy"><br>
 		And back on the Pi</p>
 	<pre><code>INFO[0615] GET https://127.0.0.1:62627/ HTTP/1.1 CF-RAY=4067701b598e8184-LAX
@@ -121,15 +121,15 @@ INFO[0615] 200 OK  CF-RAY=4067701b598e8184-LAX
 	<ol>
 		<li>The agent on the Pi created a secure tunnel (a persistent http2 connection) back to the nearest Cloudflare Argo Tunnels server</li>
 		<li>The tunnel was secured with the certificate generated by the agent.</li>
-		<li>A request for <a href="https://tunnel.pacman.wiki" target="_blank">https://tunnel.pacman.wiki</a> went from my browser out through the Internet and was routed to the nearest Cloudflare <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network/" target="_blank">datacenter</a></li>
+		<li>A request for <a href="https://tunnel.pacman.wiki/?ref=blog.cloudflare.com" target="_blank">https://tunnel.pacman.wiki</a> went from my browser out through the Internet and was routed to the nearest Cloudflare <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network/?ref=blog.cloudflare.com" target="_blank">datacenter</a></li>
 		<li>Cloudflare received the request, saw the domain was Cloudflare managed and saw a tunnel set up to that hostname</li>
 		<li>The request got routed over that http2 connection back to my Pi</li>
 	</ol>
 	<p>I'm serving traffic over the Internet, from my Pi, with no ports opened on my home router. That is so cool.</p>
 	<h3 id="morethanhelloworld">More than hello world</h3>
 	<p>If you're reading this, I've won my battle with the Cloudflare blog editing team about long form vs short form content :p</p>
-	<p>Serving hello world is great, but I want to expose a real web server. If you're like me, if you can find any vaguely relevant reason to use Rust, then you use Rust. If you're also like me, you want to try one of these async web servers the cool kids talk about on <a href="https://www.reddit.com/r/rust/" target="_blank">/r/rust</a> like <a href="https://gotham.rs/" target="_blank">gotham</a>. Let's do it.</p>
-	<p>First, install rust using <a href="https://www.rustup.rs/" target="_blank">rustup</a>.</p>
+	<p>Serving hello world is great, but I want to expose a real web server. If you're like me, if you can find any vaguely relevant reason to use Rust, then you use Rust. If you're also like me, you want to try one of these async web servers the cool kids talk about on <a href="https://www.reddit.com/r/rust/?ref=blog.cloudflare.com" target="_blank">/r/rust</a> like <a href="https://gotham.rs/?ref=blog.cloudflare.com" target="_blank">gotham</a>. Let's do it.</p>
+	<p>First, install rust using <a href="https://www.rustup.rs/?ref=blog.cloudflare.com" target="_blank">rustup</a>.</p>
 	<p><code>$ curl https://sh.rustup.rs -sSf | sh</code></p>
 	<p>When prompted, just hit enter</p>
 	<pre><code>1) Proceed with installation (default)
@@ -182,7 +182,7 @@ INFO[0000] Failed to copy user configuration. Before running the service,
 ensure that /etc/cloudflared contains two files, cert.pem and config.yml  
 error="open cert.pem: no such file or directory"
 </code></pre>
-	<p>Nice error! OK, the product team have helpfully documented what to put in that file <a href="https://developers.cloudflare.com/argo-tunnel/reference/config/" target="_blank">here</a></p>
+	<p>Nice error! OK, the product team have helpfully documented what to put in that file <a href="https://developers.cloudflare.com/argo-tunnel/reference/config/?ref=blog.cloudflare.com" target="_blank">here</a></p>
 	<pre><code>$ sudo cp ~/.cloudflared/cert.pem /etc/cloudflared
 $ sudo nano /etc/cloudflared/config.yml
 </code></pre>

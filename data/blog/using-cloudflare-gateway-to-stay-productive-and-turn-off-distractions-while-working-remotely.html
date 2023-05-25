@@ -2,20 +2,20 @@
 	<p>This week, like many of you reading this article, I am working from home. I don’t know about you, but I’ve found it hard to stay focused when the Internet is full of news related to the coronavirus. </p>
 	<p>CNN. Twitter. Fox News. It doesn’t matter where you look, everyone is vying for your attention. It’s totally riveting…</p>
 	<p>… and it’s really hard not to get distracted.</p>
-	<p>It got me annoyed enough that I decided to do something about it. Using Cloudflare’s <a href="https://teams.cloudflare.com/gateway/index.html" target="_blank">new product, Cloudflare Gateway,</a> I removed all the online distractions I normally get snared by — at least during working hours.</p>
+	<p>It got me annoyed enough that I decided to do something about it. Using Cloudflare’s <a href="https://teams.cloudflare.com/gateway/index.html?ref=blog.cloudflare.com" target="_blank">new product, Cloudflare Gateway,</a> I removed all the online distractions I normally get snared by — at least during working hours.</p>
 	<p>This blog post isn’t very long, but that’s a function of how easy it is to get Gateway up and running!</p>
 	<h2 id="getting-started">Getting Started</h2>
-	<p>To get started, you’ll want to set up Gateway under your Cloudflare account. Head to the <a href="https://dash.teams.cloudflare.com" target="_blank">Cloudflare for Teams dashboard</a> to set it up for free (if you don’t already have a Cloudflare account, hit the ‘Sign up’ button beneath the login form).</p>
+	<p>To get started, you’ll want to set up Gateway under your Cloudflare account. Head to the <a href="https://dash.teams.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare for Teams dashboard</a> to set it up for free (if you don’t already have a Cloudflare account, hit the ‘Sign up’ button beneath the login form).</p>
 	<p>If you are using Gateway for the first time, the dashboard will take you through an onboarding experience:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/1.gif" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The onboarding flow will help you set up your first location. A location is usually a physical entity like your home, office, store or a data center. </p>
-	<p>When you are setting up your location, the dashboard will automatically identify your IP address and create a location using that IP. Gateway will associate requests from your router or device by matching requests with your location by using the linked IP address of your location (for an IPv4 network). If you are curious, you can read more about how Gateway determines your location <a href="https://developers.cloudflare.com/gateway/locations/match-query-to-location/" target="_blank">here</a>.</p>
+	<p>When you are setting up your location, the dashboard will automatically identify your IP address and create a location using that IP. Gateway will associate requests from your router or device by matching requests with your location by using the linked IP address of your location (for an IPv4 network). If you are curious, you can read more about how Gateway determines your location <a href="https://developers.cloudflare.com/gateway/locations/match-query-to-location/?ref=blog.cloudflare.com" target="_blank">here</a>.</p>
 	<p>Before you complete the setup you will have to change your router’s DNS settings by removing the existing DNS resolvers and adding Cloudflare Gateway’s recursive DNS resolvers:</p>
 	<ul>
 		<li>172.64.36.1</li>
 		<li>172.64.36.2</li>
 	</ul>
-	<p>How you configure your DNS settings may vary by router or a device, so we <a href="https://developers.cloudflare.com/gateway/locations/setup-instructions/" target="_blank">created a page</a> to show you how to change DNS settings for different devices.</p>
+	<p>How you configure your DNS settings may vary by router or a device, so we <a href="https://developers.cloudflare.com/gateway/locations/setup-instructions/?ref=blog.cloudflare.com" target="_blank">created a page</a> to show you how to change DNS settings for different devices.</p>
 	<p>You can also watch this video to learn how to setup Gateway:</p>
 	<figure class="kg-card kg-embed-card"><iframe width="459" height="344" src="https://www.youtube.com/embed/PoipmvkOUrU?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
 	<h2 id="deep-work">Deep Work</h2>
