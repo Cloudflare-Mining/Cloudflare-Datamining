@@ -17,13 +17,13 @@
 	<p>Cloudflare 数据本地化套件试图回答这些问题。</p>
 	<p>到目前为止，想要本地化数据的客户必须选择将其应用程序限制在一个数据中心或一个云提供商的区域内。这是一种脆弱的方法，充满了性能、可靠性和安全性方面的挑战。Cloudflare 正在创造一个新的范例:客户应该能够从我们的全球网络中获得性能和安全方面的好处，同时毫不费力地将数据保存在本地。</p>
 	<h3 id="--1">加密是隐私的支柱</h3>
-	<p>在讨论数据局部性之前，我们应该讨论一下加密。没有强加密就不可能有<a href="https://www.cloudflare.com/learning/privacy/what-is-data-privacy/?ref=blog.cloudflare.com" target="_blank">隐私</a>; 否则，任何人都可能窥探客户的数据，而不管数据存储在哪里。</p>
+	<p>在讨论数据局部性之前，我们应该讨论一下加密。没有强加密就不可能有<a href="https://www.cloudflare.com/learning/privacy/what-is-data-privacy/" target="_blank">隐私</a>; 否则，任何人都可能窥探客户的数据，而不管数据存储在哪里。</p>
 	<p>数据常被描述为“传输中”和“静止中”。两者都要加密，这一点至关重要。“传输中”的数据指的是在电线上移动的数据，无论是本地网络还是公共互联网。“静止”通常意味着存储在某个磁盘上，无论是旋转的 HDD 还是现代的 SSD。</p>
 	<p>在传输过程中，Cloudflare 可以强制终端用户的所有通信使用现代 TLS ，并获得可能的最高级别加密。我们还可以强制所有返回到客户源服务器的通信总是加密的。我们所有边缘和核心数据中心之间的通信总是加密的。</p>
 	<p>Cloudflare 对我们在静止状态下处理的所有数据进行加密，通常采用磁盘级加密。从边缘网络上的<a href="https://blog.cloudflare.com/speeding-up-linux-disk-encryption/">缓存文件</a>，到核心数据中心数据库中的配置状态—每个字节在静止时都被加密。</p>
 	<h3 id="-tls-">控制可访问TLS私钥的位置</h3>
 	<p>考虑到加密的重要性，我们的客户信任我们来保护的最敏感的数据之一是他们的加密密钥，它使数据能够被解密。Cloudflare 为客户提供了两种方法，以确保他们的私钥只能在指定的位置访问。</p>
-	<p><a href="https://www.cloudflare.com/ssl/keyless-ssl/?ref=blog.cloudflare.com" target="_blank">无密钥 SSL</a> 允许客户存储和管理他们自己的 SSL 秘钥，以便在他们选择的任何外部基础设施上与 Cloudflare 一起使用。客户可以为其密钥存储库使用各种系统，包括硬件安全模块(“ HSMs ”)、虚拟服务器和运行在客户控制环境中的 Unix/Linux 和Windows 的硬件。Cloudflare 永远无法使用无密钥 SSL 访问私钥。</p>
+	<p><a href="https://www.cloudflare.com/ssl/keyless-ssl/" target="_blank">无密钥 SSL</a> 允许客户存储和管理他们自己的 SSL 秘钥，以便在他们选择的任何外部基础设施上与 Cloudflare 一起使用。客户可以为其密钥存储库使用各种系统，包括硬件安全模块(“ HSMs ”)、虚拟服务器和运行在客户控制环境中的 Unix/Linux 和Windows 的硬件。Cloudflare 永远无法使用无密钥 SSL 访问私钥。</p>
 	<p><a href="https://blog.cloudflare.com/geo-key-manager-how-it-works/">Geo 密钥管理</a>为客户提供了详细的控制，可以在哪些位置存储密钥。例如，客户可以选择流量检查所需的私钥，使其只能在位于欧盟的数据中心内访问。</p>
 	<h3 id="-https-">管理检查 HTTPS 请求和响应的位置</h3>
 	<p>为了部署我们的 WAF，或检测恶意的机器人流量，Cloudflare 必须终止我们边缘数据中心的 TLS，并检查 HTTPS 请求和响应有效负载。</p>
@@ -34,7 +34,7 @@
 	<p>这只需要在我们位于美国/欧盟的核心数据中心处理元数据的子集。该数据包含有关服务了多少请求、发送了多少数据、请求花了多长时间以及其他对网络操作至关重要的信息。</p>
 	<p>有了<strong>边缘日志交付</strong>，客户可以直接从边缘发送日志到他们选择的合作伙伴—例如，他们首选区域的 Azure 存储桶，或者运行在本地数据中心的 Splunk 实例。有了这个选项，客户仍然可以在他们的首选区域获得完整的日志，而不需要这些日志首先流经我们的美国或欧盟核心数据中心。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/edge-log-delivery-before-copy@3x-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>边缘日志交付是在企业客户的早期测试版今天-请<a href="https://www.cloudflare.com/data-localization?ref=blog.cloudflare.com" target="_blank">访问我们的产品页面</a>以获取更多信息。</p>
+	<p>边缘日志交付是在企业客户的早期测试版今天-请<a href="https://www.cloudflare.com/data-localization" target="_blank">访问我们的产品页面</a>以获取更多信息。</p>
 	<p>最终，我们的目标是让客户完全控制他们的元数据在哪里存储，以及存储多长时间。在接下来的一年里，我们计划让客户能够选择存储哪些字段、存储多长时间以及在什么位置。</p>
 	<h3 id="--3">从头开始构建位置感知应用程序</h3>
 	<p>到目前为止，我们已经讨论了 Cloudflare 的产品如何为我们的客户提供全球性能和安全解决方案，同时将他们现有的密钥、应用程序数据和元数据保存在本地。</p>
@@ -46,5 +46,5 @@
 	<h2 id="--4">长期建设</h2>
 	<p>数据本地化领域在不断发展。自从我们开始开发数据本地化套件以来，欧洲数据保护委员会( European Data Protection Board )就发布了关于欧盟和美国之间如何传输数据的新指南--我们知道这只是一个开始，随着时间的推移，更多的地区和行业将会有数据本地化的需求。</p>
 	<p>在 Cloudflare，我们始终掌握数据保护方面的最新发展，因此我们的客户不必这样做。数据本地化套件为我们的客户提供工具，在数据存储和保护的边缘设置规则和控制，同时利用我们的全球网络。</p>
-	<p>要了解更多信息，请访问我们的<a href="https://www.cloudflare.com/privacyweek?ref=blog.cloudflare.com" target="_blank">隐私和合规周页面</a>。</p>
+	<p>要了解更多信息，请访问我们的<a href="https://www.cloudflare.com/privacyweek" target="_blank">隐私和合规周页面</a>。</p>
 </div>
