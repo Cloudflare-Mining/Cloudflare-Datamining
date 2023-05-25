@@ -1371,7 +1371,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					var d, P = o.userIsAuthed;
 					return cr(), ur(), dr(), c().createElement(f.Suspense, {
 						fallback: c().createElement(or, null)
-					}, c().createElement(mt.Switch, null, !P && c().createElement(mt.Route, {
+					}, c().createElement(mt.Switch, null, !P && !0 && c().createElement(mt.Route, {
 						exact: !0,
 						path: ["/", "/login"]
 					}, c().createElement(fr, null)), c().createElement(mt.Route, {
@@ -2273,12 +2273,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = hn({}, {
-					branch: "release-May.24.2023-1684937318",
+					branch: "UI-5816-fix-memberships-invite",
 					isReleaseCandidate: "true",
-					commit: "6b2b0fcaeee2b8ffd3ed10c9482d028368e19276",
+					commit: "262e8087b0f8136db7e4d3e249b496baf1f3a7b3",
 					env: "production",
-					builtAt: 1684940123501,
-					dashVersion: "00b4f4b77f85961d2e7cfb2c67777de30a20008d",
+					builtAt: 1684975469290,
+					dashVersion: "c0ccc020c4ea4b2a279a9194c4f721485e7f3f1f",
 					versions: {
 						"@cloudflare/app-dash": "25.152.0",
 						node: "16.16.0",
@@ -4755,7 +4755,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			var ut;
 			me.Z.setChangeListener(function(F) {
 				var f;
-				ut && ((f = ut) === null || f === void 0 ? void 0 : f.replaceReducer) && ut.replaceReducer(Et(F))
+				ut && ((f = ut) === null || f === void 0 ? void 0 : f.replaceReducer) && (ut.replaceReducer(Et(F)), (0, p.p5)(ut))
 			});
 
 			function Ct() {
@@ -15725,4 +15725,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=3fdc50f02c8a8271002a.js.map
+//# sourceMappingURL=a1fd734240cdc357e066.js.map
