@@ -12,13 +12,13 @@
 	<p>我们识别了明显是机器人的示例，即我们能够使用试探算法检测的示例，或者自证是机器人（例如，合法的搜索引擎爬网程序、广告机器人）的示例。</p>
 	<p>我们还可以识别明显不是机器人的示例。当机器人解决了难题或通过身份认证时，这些请求的分数就会很高。</p>
 	<h3 id="--2">数据分析和功能选择</h3>
-	<p>从此数据集，我们可以使用 ANOVA（方差分析）f 值识别可使用的最佳功能。我们想让我们的数据集中有各种具有代表性的操作系统、浏览器、设备类型、机器人类别和指纹。我们执行了<a href="https://catboost.ai/en/docs/concepts/python-reference_catboostregressor_calc_feature_statistics" target="_blank">功能的统计分析</a>，以了解这些功能在数据集内的分布情况，以及它们可能会对预测产生哪些影响。</p>
+	<p>从此数据集，我们可以使用 ANOVA（方差分析）f 值识别可使用的最佳功能。我们想让我们的数据集中有各种具有代表性的操作系统、浏览器、设备类型、机器人类别和指纹。我们执行了<a href="https://catboost.ai/en/docs/concepts/python-reference_catboostregressor_calc_feature_statistics?ref=blog.cloudflare.com" target="_blank">功能的统计分析</a>，以了解这些功能在数据集内的分布情况，以及它们可能会对预测产生哪些影响。</p>
 	<h3 id="--3">模型构建和评估</h3>
 	<p>获得数据之后，我们就可以开始训练模型。我们构建了 Airflow 支持的内部管道，使这个过程进行得更顺畅。为了训练模型，<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more/">我们选择了 Catboost 库。</a>根据我们的问题定义，我们训练了一个二元分类模型。</p>
-	<p>我们将训练数据拆分为一个训练集和一个测试集。为了选择最适合模型的超参数，我们使用 Catboost 库的<a href="https://catboost.ai/docs/concepts/python-reference_catboost_grid_search.html" target="_blank">网格搜索</a>和<a href="https://catboost.ai/docs/concepts/python-reference_catboost_randomized_search.html" target="_blank">随机搜索</a>算法。</p>
+	<p>我们将训练数据拆分为一个训练集和一个测试集。为了选择最适合模型的超参数，我们使用 Catboost 库的<a href="https://catboost.ai/docs/concepts/python-reference_catboost_grid_search.html?ref=blog.cloudflare.com" target="_blank">网格搜索</a>和<a href="https://catboost.ai/docs/concepts/python-reference_catboost_randomized_search.html?ref=blog.cloudflare.com" target="_blank">随机搜索</a>算法。</p>
 	<p>然后，我们使用所选超参数训练了模型。</p>
 	<p>我们逐渐开发了粒度数据集来测试我们的模型，确保我们准确检测到不同类型的机器人，但我们也想将误报率控制在最低水平。在将模型部署到任何客户流量之前，我们会执行<strong>离线监控</strong>。我们针对不同的浏览器、操作系统和设备运行了预测。然后，我们将当前训练的模型的预测与验证数据集上的生产模型进行比较。比较操作借助于通过我们 ML 管道创建的验证报告，该管道针对每个数据集包含了摘要统计数据，例如准确性、功能重要性。根据结果，要么进行迭代，要么继续进行部署。</p>
-	<p>如果我们需要迭代，我们想弄清楚哪些地方有待改进。为此，我们使用了 <a href="https://shap.readthedocs.io/en/latest/generated/shap.Explainer.html" target="_blank">SHAP Explainer</a>。SHAP Explainer 是一款不错的工具，可解释模型的预测结果。我们的管道根据我们的预测结果生成了 SHAP 图表。我们对其深入研究后，了解误报或漏报情况。这有助于我们理解如何以及在哪些地方可以改进训练数据或功能，以改进预测准确性。当试验表明，我们的大多数测试数据集相比之前的模型版本有所改进时，我们会决定是否应该部署客户流量试验。</p>
+	<p>如果我们需要迭代，我们想弄清楚哪些地方有待改进。为此，我们使用了 <a href="https://shap.readthedocs.io/en/latest/generated/shap.Explainer.html?ref=blog.cloudflare.com" target="_blank">SHAP Explainer</a>。SHAP Explainer 是一款不错的工具，可解释模型的预测结果。我们的管道根据我们的预测结果生成了 SHAP 图表。我们对其深入研究后，了解误报或漏报情况。这有助于我们理解如何以及在哪些地方可以改进训练数据或功能，以改进预测准确性。当试验表明，我们的大多数测试数据集相比之前的模型版本有所改进时，我们会决定是否应该部署客户流量试验。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-14.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--4">模型部署</h3>
 	<p>虽然离线分析模型能精准地指示模型性能，但最好针对更多种类的流量实时验证结果。为此，我们首先在<strong>影子模式</strong>下部署每个新模型。通过影子模式，我们可以实时记录流量的得分，而不会真正影响机器人管理客户流量。这样一来，我们可以执行<strong>在线监控</strong>，即针对流量实时评估模型的性能。我们使用一组 Grafana 仪表板按不同机器人、设备、浏览器、操作系统和客户类型进行细分，并验证模型准确性提升情况。</p>

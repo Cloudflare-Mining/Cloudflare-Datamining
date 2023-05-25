@@ -44,7 +44,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<h3 id="bgp-"><strong>BGPハイジャック攻撃の種類</strong></h3>
 	<p>サーバーがクライアントと安全に通信するためには、証明書の発行が必要です。このため、証明書の発行を担当するプロセスもセキュアであることが、とても重要なのです。残念ながら、これは常に当てはまるとは限りません。</p>
 	<p>プリンストン大学の研究者が最近、一般的なDCVメソッドには、悪意のある第三者がネットワークレベルで実施する攻撃に対する脆弱性があることを発見しました。ボーダーゲートウェイプロトコル（BGP）が、インターネットの「郵便サービス」として、最も効率的なルートを介してデータを配信する責任を王とすると、自律システム（AS）は1 組織が運営するインターネットネットワークの業務を担う個々の郵便局の支店に相当します。ネットワークレベルの悪意のある第三者は、そのトラフィックにドメインの証明書のような重要な内容が含まれているような場合にBGP経由で不正なルートをアドバタイズしてトラフィックを盗もうとすることがあります。</p>
-	<p><a href="https://www.princeton.edu/~pmittal/publications/bgp-tls-usenix18.pdf" target="_blank"><em>BGPにより認証局を欺く</em></a>は、DCVプロセスの間に企てられる可能性のある、悪意のある第三者が所有していないドメインの証明書を入手しようとする5種の攻撃を取り上げています。これらの攻撃を実装した後、作者は（倫理的に）、自分が所有していないドメインの証明書を下記の、上位5つのCAから取得できました。Let’s Encrypt、GoDaddy、Comodo、Symantec、GlobalSignですがどのように行ったのでしょうか？</p>
+	<p><a href="https://www.princeton.edu/~pmittal/publications/bgp-tls-usenix18.pdf?ref=blog.cloudflare.com" target="_blank"><em>BGPにより認証局を欺く</em></a>は、DCVプロセスの間に企てられる可能性のある、悪意のある第三者が所有していないドメインの証明書を入手しようとする5種の攻撃を取り上げています。これらの攻撃を実装した後、作者は（倫理的に）、自分が所有していないドメインの証明書を下記の、上位5つのCAから取得できました。Let’s Encrypt、GoDaddy、Comodo、Symantec、GlobalSignですがどのように行ったのでしょうか？</p>
 	<h3 id="dcv-"><strong>DCVプロセスへの攻撃</strong></h3>
 	<p>BGPハイジャックを使用したDCVプロセスの攻撃方法には、主に次の2通りの方法があります。</p>
 	<ol>
@@ -89,9 +89,9 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<blockquote>「分析から、複数のバンテージポイントからドメイン認証を行うことで、局所的なBGP攻撃の影響を著しく軽減することが示されました。当社ではWebセキュリティを強化するため、すべての認証局でこのアプローチを採用することをお勧めします。Cloudflareが実装するこの防御の特に魅力的な特徴は、Cloudflareがインターネット上の膨大な数のバンテージポイントを利用可能であり、DCVの堅牢性を大幅に向上させることができる点です。」と書いています。</blockquote>
 	<p>当社のDCVチェッカーは、インターネットの信頼性を広めるべきであるとの当社の信念に基づいて、第三者による分析（Cloudflareが提供するような）によって徹底的に吟味して、安定性とセキュリティを確保しています。このツールは、当社の<a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus/">既存の証明書透過性モニター</a>をサービス一式としてまとめたものであり、CAが証明書発行の責任向上のために使用することができます。</p>
 	<h3 id="--2"><strong>試用の機会</strong></h3>
-	<p>マルチパスDCVチェッカーの構築においては、複数のCloudflare製品を<a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food" target="_blank"><em>ドッグフーディング（試用）</em></a>することができました。</p>
-	<p>シンプルな収集および集計ツールとしてのDCVオーケストレーターは、<a href="https://developers.cloudflare.com/workers/" target="_blank">Cloudflare Workers</a>の優秀な候補でした。<a href="https://blog.cloudflare.com/generating-documentation-for-typescript-projects/">こちらの記事</a>を参考にこのオーケストレーターをTypeScriptに実装し、展開および繰り返しが容易な、型指定された信頼性の高いオーケストレーターサービスを作成しました。当社独自のDCVオーケストレーター用サーバーの維持が不要なことには、たいへん満足しています。</p>
-	<p>当社では<a href="https://developers.cloudflare.com/argo-tunnel/" target="_blank">Argo Tunnel</a>を使用し、Cloudflare WorkersがDCVエージェントと通信できるようにしています。Argo Tunnelを使用することで、当社のDCVエージェントをWorkers環境に容易かつセキュアに公開することができます。CloudflareにはDCVエージェントを実行するデータセンターが約175か所あるため、Argo Tunnelを通して多数のサービスを公開しており、パワーユーザーとして様々な送信元からArgo Tunnelの負荷をテストする機会がありました。Argo Tunnelは、しっかりとこの新しい送信元からの流入を処理してくれました。</p>
+	<p>マルチパスDCVチェッカーの構築においては、複数のCloudflare製品を<a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food?ref=blog.cloudflare.com" target="_blank"><em>ドッグフーディング（試用）</em></a>することができました。</p>
+	<p>シンプルな収集および集計ツールとしてのDCVオーケストレーターは、<a href="https://developers.cloudflare.com/workers/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a>の優秀な候補でした。<a href="https://blog.cloudflare.com/generating-documentation-for-typescript-projects/">こちらの記事</a>を参考にこのオーケストレーターをTypeScriptに実装し、展開および繰り返しが容易な、型指定された信頼性の高いオーケストレーターサービスを作成しました。当社独自のDCVオーケストレーター用サーバーの維持が不要なことには、たいへん満足しています。</p>
+	<p>当社では<a href="https://developers.cloudflare.com/argo-tunnel/?ref=blog.cloudflare.com" target="_blank">Argo Tunnel</a>を使用し、Cloudflare WorkersがDCVエージェントと通信できるようにしています。Argo Tunnelを使用することで、当社のDCVエージェントをWorkers環境に容易かつセキュアに公開することができます。CloudflareにはDCVエージェントを実行するデータセンターが約175か所あるため、Argo Tunnelを通して多数のサービスを公開しており、パワーユーザーとして様々な送信元からArgo Tunnelの負荷をテストする機会がありました。Argo Tunnelは、しっかりとこの新しい送信元からの流入を処理してくれました。</p>
 	<h3 id="-dcv-"><strong>マルチパスDCVチェッカーへのアクセス取得</strong></h3>
 	<p>個人や企業でDCVチェッカーにご興味のある方は、dcv@cloudflare.comまでお問い合わせください。当社では、皆様の証明書発行に関するセキュリティを、このマルチパスクエリや認証でいかに向上できるかについて、皆様からのご意見をお待ちしています。</p>
 	<p>新しい種類のBGPおよびIPスプーフィング攻撃は、PKIの基盤を損なう恐れがあり、Webサイトの所有者が、証明書の発行を受ける時にマルチパス検証を求めることも重要です。Cloudflareによるか、自社かに関わらず、すべてのCAでマルチパス検証を使用することをお勧めします。Let’s Encryptのテクニカルリード、Jacob Hoffman-Andrewsが、次のように書いています。</p>

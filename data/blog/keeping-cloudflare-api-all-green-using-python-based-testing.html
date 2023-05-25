@@ -9,7 +9,7 @@
 	<p>We built Scout to overcome all these difficulties. We wanted the developer experience to be easy and we wanted Scout to be fast and reliable while spotting any live API issue.</p>
 	<h3 id="a-scout-test-example">A Scout test example</h3>
 	<p>Scout is built in Python and leverages the functionalities of Pytest. Before diving into the exact capabilities of Scout and its architecture, let’s have a quick look at how to use it!</p>
-	<p>Following is an example of a Scout test on the Rulesets API (the docs are available <a href="https://developers.cloudflare.com/ruleset-engine/about/" target="_blank">here</a>):</p><!--kg-card-begin: markdown-->
+	<p>Following is an example of a Scout test on the Rulesets API (the docs are available <a href="https://developers.cloudflare.com/ruleset-engine/about/?ref=blog.cloudflare.com" target="_blank">here</a>):</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-python">from scout import requires, validate, Account, Zone
 
 @validate(schema="rulesets", ignorePaths=["accounts/[^/]+/rules/lists"])
