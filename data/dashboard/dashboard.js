@@ -2275,12 +2275,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = hn({}, {
-					branch: "release-May.25.2023-1685023624",
+					branch: "penalosa/fix-wildcard",
 					isReleaseCandidate: "true",
-					commit: "457772df84015b4a36ed3b7eefc2e79e04837f92",
+					commit: "cd6d3545240d5cc288a3cd05c1b1f4c5f6808a3a",
 					env: "production",
-					builtAt: 1685038406976,
-					dashVersion: "9f995b270aa12f1a486f6575673f3972cafa9454",
+					builtAt: 1685046304848,
+					dashVersion: "d519c6751a8fe60d7cdac42c327030777d46a8dc",
 					versions: {
 						"@cloudflare/app-dash": "25.152.0",
 						node: "16.16.0",
@@ -15727,4 +15727,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=9d887174e16ea04e595b.js.map
+//# sourceMappingURL=c8afda69cb1186e2410e.js.map
