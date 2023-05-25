@@ -6,7 +6,7 @@
 	<p>This form of brute force attack is harder to detect, since you won’t necessarily see a flood of requests. Fortunately, all CloudFlare paid customers have the option to enable a Web Application Firewall ruleset to stop this new attack method.</p>
 	<h3 id="whatisxmlrpc">What is XML-RPC?</h3>
 	<p>To understand the vulnerability, it’s important to understand the basics of the XML remote procedure protocol (XML-RPC).</p>
-	<p>XML-RPC uses XML encoding over HTTP to provide a remote procedure call protocol. It’s commonly used to execute various <a href="https://codex.wordpress.org/XML-RPC_WordPress_API" target="_blank">functions in a WordPress instance</a> for APIs and other automated tasks. Requests that modify, manipulate, or view data using XML-RPC require user credentials with sufficient permissions.</p>
+	<p>XML-RPC uses XML encoding over HTTP to provide a remote procedure call protocol. It’s commonly used to execute various <a href="https://codex.wordpress.org/XML-RPC_WordPress_API?ref=blog.cloudflare.com" target="_blank">functions in a WordPress instance</a> for APIs and other automated tasks. Requests that modify, manipulate, or view data using XML-RPC require user credentials with sufficient permissions.</p>
 	<p>Here is an example that requests a list of the user’s blogs:</p>
 	<pre><code>&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
 &lt;methodCall&gt;
