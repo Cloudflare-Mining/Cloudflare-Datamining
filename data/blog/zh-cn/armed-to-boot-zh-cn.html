@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-45.png" class="kg-image" alt="Armed to Boot: an enhancement to Arm's Secure Boot chain" loading="lazy"></figure>
-	<p>在过去几年中，影响计算机启动方式的攻击越来越多。大多数现代计算机使用统一可扩展固件接口 (<a href="https://en.wikipedia.org/wiki/UEFI?ref=blog.cloudflare.com" target="_blank">UEFI</a>)——该规范定义了操作系统（例如 Windows）与平台固件（例如磁盘驱动器、显卡）之间的软件接口。UEFI 内置安全机制，确保平台固件可以加密验证，并通过启动加载程序安全启动。此固件存储在主板上的非易失性 <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface?ref=blog.cloudflare.com" target="_blank">SPI</a> 闪存中，因此，即使重装操作系统和更换驱动器，它也依然在系统中。</p>
-	<p>这创建了一个“信任锚”，用于验证启动过程的每个阶段，但糟糕的是，这个信任锚也是一个攻击目标。在此类 UEFI 攻击中，恶意操作会在启动过程的早期加载到目标设备上。这意味着，恶意软件可以改变配置数据，通过将自身“<a href="https://www.zdnet.com/article/chinese-apt-deploy-moonbounce-malware-in-uefi-firmware/?ref=blog.cloudflare.com" target="_blank">植入</a>”而持久存在，并可以绕过只在操作系统阶段加载的安全措施。因此，虽然 UEFI 锚定的安全启动可保护启动加载程序，使其免受启动加载程序攻击，但它并不能保护 UEFI 固件本身。</p>
+	<p>在过去几年中，影响计算机启动方式的攻击越来越多。大多数现代计算机使用统一可扩展固件接口 (<a href="https://en.wikipedia.org/wiki/UEFI" target="_blank">UEFI</a>)——该规范定义了操作系统（例如 Windows）与平台固件（例如磁盘驱动器、显卡）之间的软件接口。UEFI 内置安全机制，确保平台固件可以加密验证，并通过启动加载程序安全启动。此固件存储在主板上的非易失性 <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface" target="_blank">SPI</a> 闪存中，因此，即使重装操作系统和更换驱动器，它也依然在系统中。</p>
+	<p>这创建了一个“信任锚”，用于验证启动过程的每个阶段，但糟糕的是，这个信任锚也是一个攻击目标。在此类 UEFI 攻击中，恶意操作会在启动过程的早期加载到目标设备上。这意味着，恶意软件可以改变配置数据，通过将自身“<a href="https://www.zdnet.com/article/chinese-apt-deploy-moonbounce-malware-in-uefi-firmware/" target="_blank">植入</a>”而持久存在，并可以绕过只在操作系统阶段加载的安全措施。因此，虽然 UEFI 锚定的安全启动可保护启动加载程序，使其免受启动加载程序攻击，但它并不能保护 UEFI 固件本身。</p>
 	<p>由于此类攻击呈增长趋势，我们开始对<a href="https://blog.cloudflare.com/anchoring-trust-a-hardware-secure-boot-story/">我们的 UEFI 固件进行加密签名</a>，作为缓解步骤。我们现有的解决方案仅针对我们的 x86 AMD 服务器设备平台，没有针对 Arm 的类似的 UEFI 固件签名解决方案。为了确定缺少哪些内容，我们不得不深入研究 Arm 的安全启动过程。</p>
 	<p>继续阅读，了解 Arm 可信固件安全启动。</p>
 	<h2 id="arm-">Arm 可信固件安全启动</h2>
-	<p>Arm 通过一个名为<a href="https://developer.arm.com/documentation/den0006/d?ref=blog.cloudflare.com" target="_blank">可信开发板启动要求</a> (TBBR)（即 Arm 可信固件 (ATF) 安全启动）的架构定义了一个可信启动过程。TBBR 的工作原理是，验证一系列加密签名的二进制镜像，每个镜像都包含系统启动过程中需加载和执行的不同阶段或元素。每个启动加载程序 (BL) 阶段都会完成初始化过程中的不同阶段：</p>
+	<p>Arm 通过一个名为<a href="https://developer.arm.com/documentation/den0006/d" target="_blank">可信开发板启动要求</a> (TBBR)（即 Arm 可信固件 (ATF) 安全启动）的架构定义了一个可信启动过程。TBBR 的工作原理是，验证一系列加密签名的二进制镜像，每个镜像都包含系统启动过程中需加载和执行的不同阶段或元素。每个启动加载程序 (BL) 阶段都会完成初始化过程中的不同阶段：</p>
 	<p><strong>BL1</strong><br>BL1 定义了启动路径（冷启动还是暖启动），将架构初始化（异常向量、CPU 初始化和控制寄存器设置），并将平台初始化（启用 watchdog 流程、MMU 和 DDR 初始化）。</p>
 	<p><strong>BL2</strong><br>BL2 为 Arm 可信固件 (ATF) 的初始化做准备，ATF 是负责设置安全启动过程的栈。ATF 设置之后，控制台初始化，内存映射为 MMU，并为下一个启动加载程序设置消息缓冲区。</p>
 	<p><strong>BL3</strong><br>BL3 阶段包括多个环节，首先是运行时服务初始化，用于检测系统拓扑。初始化之后，在 ATF“安全世界”启动阶段和“正常世界”启动阶段之间切换，包括 UEFI 固件的设置。上下文的设置是为了确保安全状态的信息无法进入正常世界执行状态。</p>
@@ -74,5 +74,5 @@
 	<p></p><!--kg-card-end: html-->
 	<h2 id="--9">任重道远</h2>
 	<p>近年来，服务器管理界面（例如 BMC）已经成为各种网络攻击的目标，包括勒索软件、植入工具和破坏性活动。访问 BMC 时，本地或远程访问均可。随着远程访问手段的开放，有可能通过网络接口在 BMC 上安装恶意软件。在 BMC 上的软件受到感染的情况下，恶意软件或间谍软件能在服务器上持久存在。攻击者可能会直接使用闪存工具（例如 flashrom 或 socflash）来更新 BMC，而不需要在 UEFI 层面构建相同级别的固件恢复能力。</p>
-	<p>未来的状态涉及到使用与主机 CPU 无关的基础设施，在启动时间之前启用加密安全的主机。我们将寻求纳入开放计算项目数据中心安全控制模块规范 (DC-SCM) 2.0 提出的模块化方法<a href="https://drive.google.com/file/d/13BxuseSrKo647hjIXjp087ei8l5QQVb0/view?ref=blog.cloudflare.com" target="_blank">规范</a>。然后，我们便能将我们的信任根标准化，签署我们的 BMC，并将基于物理不可克隆函数 (PUF) 的身份密钥分配给组件和外围设备，以限制 OTP 保险丝的使用。OTP 保险丝在试图“电子循环使用”或重复使用机器时出现故障，因为您无法真正删除一台机器的身份。</p>
+	<p>未来的状态涉及到使用与主机 CPU 无关的基础设施，在启动时间之前启用加密安全的主机。我们将寻求纳入开放计算项目数据中心安全控制模块规范 (DC-SCM) 2.0 提出的模块化方法<a href="https://drive.google.com/file/d/13BxuseSrKo647hjIXjp087ei8l5QQVb0/view" target="_blank">规范</a>。然后，我们便能将我们的信任根标准化，签署我们的 BMC，并将基于物理不可克隆函数 (PUF) 的身份密钥分配给组件和外围设备，以限制 OTP 保险丝的使用。OTP 保险丝在试图“电子循环使用”或重复使用机器时出现故障，因为您无法真正删除一台机器的身份。</p>
 </div>
