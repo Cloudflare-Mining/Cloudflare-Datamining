@@ -12,15 +12,15 @@
 	<p>在编程理论中，超粒度的存在已经有一段时间了。C.A.R. Hoare 的 CSP 模型由执行任务和传递数据的微小流程组成（有助于激发 Go 语言）；Actor 模型在改变内部状态的众多参与者之间传递消息；甚至 lambda 演算也是作用于数据的离散函数。</p>
 	<h3 id="-">超级云的基础</h3>
 	<p>几年前，NoSQL 运动开发了不依赖于数据库的存储和处理数据的新方法。键值存储和文档存储蓬勃发展，因为它们在代码和数据之间建立了简单的连接，而不是以数据库、表甚至行的粒度来考虑数据。</p>
-	<p>您可以将 NoSQL 视为一种向超粒度发展的驱动力，而且起到了推动的作用。NoSQL 存储、KV、对象存储（如 R2）比比皆是。用于处理数据的 <a href="https://en.wikipedia.org/wiki/MapReduce?ref=blog.cloudflare.com" target="_blank">MapReduce</a> 的兴起也与超粒度有关；通过将数据处理分解为易于缩放的部分（地图和缩小），可以有效地处理大量数据，并根据需要进行缩放。</p>
+	<p>您可以将 NoSQL 视为一种向超粒度发展的驱动力，而且起到了推动的作用。NoSQL 存储、KV、对象存储（如 R2）比比皆是。用于处理数据的 <a href="https://en.wikipedia.org/wiki/MapReduce" target="_blank">MapReduce</a> 的兴起也与超粒度有关；通过将数据处理分解为易于缩放的部分（地图和缩小），可以有效地处理大量数据，并根据需要进行缩放。</p>
 	<p>云代码也是如此。正如程序员不想考虑数据库规模的块一样，他们也不应该考虑 VM 或容器规模的块。这样会导致效率低下，与编写代码创建服务的实际工作无关。这是不必要的工作，会分散人们对编程真正价值的注意力。</p>
-	<p>在分布式编程理论中，粒度的存在已经有一段时间了。<a href="https://en.wikipedia.org/wiki/Communicating_sequential_processes?ref=blog.cloudflare.com" target="_blank">CSP 模型</a>由执行任务和传递数据的微小流程组成（有助于激发 Go 语言）；<a href="https://en.wikipedia.org/wiki/Actor_model?ref=blog.cloudflare.com" target="_blank">Actor 模型</a>在改变内部状态的众多参与者之间传递消息；甚至 <a href="https://en.wikipedia.org/wiki/Lambda_calculus?ref=blog.cloudflare.com" target="_blank">lambda 演算</a>也是作用于数据的离散函数。</p>
-	<p>面向对象的编程让开发人员对对象（而非虚拟机或磁盘）进行推理。在 <a href="https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture?ref=blog.cloudflare.com" target="_blank">CORBA</a> 及类似系统中，有一个<a href="https://en.wikipedia.org/wiki/Object_request_broker?ref=blog.cloudflare.com" target="_blank">对象请求代理</a>的概念，允许用户在分布式系统中远程运行和访问对象，而不必了解对象的执行位置和执行方式等细节。</p>
+	<p>在分布式编程理论中，粒度的存在已经有一段时间了。<a href="https://en.wikipedia.org/wiki/Communicating_sequential_processes" target="_blank">CSP 模型</a>由执行任务和传递数据的微小流程组成（有助于激发 Go 语言）；<a href="https://en.wikipedia.org/wiki/Actor_model" target="_blank">Actor 模型</a>在改变内部状态的众多参与者之间传递消息；甚至 <a href="https://en.wikipedia.org/wiki/Lambda_calculus" target="_blank">lambda 演算</a>也是作用于数据的离散函数。</p>
+	<p>面向对象的编程让开发人员对对象（而非虚拟机或磁盘）进行推理。在 <a href="https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture" target="_blank">CORBA</a> 及类似系统中，有一个<a href="https://en.wikipedia.org/wiki/Object_request_broker" target="_blank">对象请求代理</a>的概念，允许用户在分布式系统中远程运行和访问对象，而不必了解对象的执行位置和执行方式等细节。</p>
 	<p>计算理论偏离专用（虚拟或真实）机器，而指向在超级云上运行的代码和数据，从而自动有效地处理代码执行和数据定位的细节。</p>
 	<p>因此，无论是通过将代码分解为函数来编写代码，还是发布大量功能或完整程序，超级云的基础都意味着您的代码将从其效率受益。还有更多的益处。</p>
 	<h3 id="--1">超级云的优势</h3>
 	<p>超级云使扩展变得容易，因为没有人需要考虑要配置多少虚拟机，也没有人需要保持热备用虚拟机，以防出现大量访问者。正如 MapReduce（延续了 lambda 演算）可以上下扩展一样，通用计算也应如此。</p>
-	<p>而且这不仅仅是扩展的问题。超级云允许代码和数据在网络中移动。将数据附加到代码（例如使用 <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects?ref=blog.cloudflare.com" target="_blank">Durable Objects</a>；hello Actor 模型），您就有基础让应用程序扩展到任何规模并根据需要移动到用户附近，以提供最佳性能。</p>
+	<p>而且这不仅仅是扩展的问题。超级云允许代码和数据在网络中移动。将数据附加到代码（例如使用 <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank">Durable Objects</a>；hello Actor 模型），您就有基础让应用程序扩展到任何规模并根据需要移动到用户附近，以提供最佳性能。</p>
 	<p>如果您的数据是不可移动的，无论需要访问多少次，我们都可以将您的代码移到更靠近您的数据的位置。</p>
 	<p>不仅如此，在该灵活性层面上工作意味着，执行有关数据处理或存储位置的数据隐私或数据驻留法的代码可以在具体用户或对象的层面上运行。同一代码的执行可能会有所不同，甚至可以在完全不同的国家/地区执行，具体取决于相关数据的存储位置。</p>
 	<p>超级云对运行程序的成本会产生两个有趣的影响。首先，更经济，因为只运行所需要的代码。不再需要随时待命的虚拟机，也不需要部署以防万一而付费的空闲机器。代码只有运行或者不运行两种选择。可以根据需要上下扩展。只需要为自己所需的功能支付费用。</p>
@@ -37,5 +37,5 @@
 	<p>和所有的创新周一样，我们很高兴又开始了一周的公告，能够在超级云上构建越来越多的用例。事实上，这是建立在 Workers 开发人员平台上的，让我们能够继续为用户提供新构建块。本周，我们不仅要告诉您可以使用的所有新工具，还要告诉您我们是如何构建这些工具的，以及您如何使用这些工具，还有我们的客户目前在生产中使用这些工具构建的内容。</p>
 	<h3 id="-cloudflare-tv-">在 Cloudflare TV 上观看</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/b409bc4dd863a0cdb9f7156c13a02be3/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fb409bc4dd863a0cdb9f7156c13a02be3%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p>您可以点击此处观看或以音频/播客形式收听我们每周节目<a href="https://cloudflare.tv/shows/this-week-in-net?ref=blog.cloudflare.com" target="_blank"> <em>This Week in Net</em></a> 的完整部分。</p>
+	<p>您可以点击此处观看或以音频/播客形式收听我们每周节目<a href="https://cloudflare.tv/shows/this-week-in-net" target="_blank"> <em>This Week in Net</em></a> 的完整部分。</p>
 </div>

@@ -23,7 +23,7 @@
 	<p>Cloudflareは、通常はディスクレベルの暗号化を用いてすべての格納データを暗号化します。当社のエッジネットワーク上の<a href="https://blog.cloudflare.com/speeding-up-linux-disk-encryption/">キャッシュされたファイル</a>から当社のコアデータセンター内のデータベースの設定状態まで、すべての格納データは暗号化されています。</p>
 	<h3 id="tls-">TLSプライベートキーがアクセスできる場所をコントロールする</h3>
 	<p>暗号化の重要性を考慮すると、お客様がCloudflareを信頼して保護対策を任せる機密性が最も高いデータの1つは、データの復号化を可能にする暗号化キーです。特定の場所でのみ、プライベートキーにアクセスできるようにするため、Cloudflareではお客様に2つの方法をご提供しています。</p>
-	<p><a href="https://www.cloudflare.com/ssl/keyless-ssl/?ref=blog.cloudflare.com" target="_blank"><strong>Keyless SSL</strong></a>により、お客様はご自分が選択した外部のインフラストラクチャを使用する際に、Cloudflareを使って各自のSSLプライベートキーを保管／管理することができます。また、ハードウェアセキュリティモジュール（HSM）、バーチャルサーバー、お客様が制御する環境内に格納されているUnix/LinuxやWindowsを実行するハードウェアを含む、さまざまなシステムをキーストアに使用することができます。CloudflareがKeyless SSLでプライベートキーにアクセスすることは決してありません。</p>
+	<p><a href="https://www.cloudflare.com/ssl/keyless-ssl/" target="_blank"><strong>Keyless SSL</strong></a>により、お客様はご自分が選択した外部のインフラストラクチャを使用する際に、Cloudflareを使って各自のSSLプライベートキーを保管／管理することができます。また、ハードウェアセキュリティモジュール（HSM）、バーチャルサーバー、お客様が制御する環境内に格納されているUnix/LinuxやWindowsを実行するハードウェアを含む、さまざまなシステムをキーストアに使用することができます。CloudflareがKeyless SSLでプライベートキーにアクセスすることは決してありません。</p>
 	<p><a href="https://blog.cloudflare.com/geo-key-manager-how-it-works/"><strong>Geo Key Manager</strong></a>は、キーをどの場所で保管すべきかについて、きめ細かな制御を可能にします。たとえば、お客様は、トラフィックの調査が必要なプライベートキーに関して、ヨーロッパ連合（EU）内にあるデータセンターに限りアクセスできるものを選択することができます。</p>
 	<h3 id="https-https-">HTTPSリクエストとHTTPSレスポンスを検査する場所を管理する</h3>
 	<p>CloudflareのWAFをデプロイするため、あるいは悪意のあるボットトラフィックを検出するため、Cloudflareは、エッジデータセンター内のTLSを終了して、HTTPSリクエストおよびHTTPSレスポンスのペイロードを検査する必要があります。</p>
@@ -34,7 +34,7 @@
 	<p>このために必要なのは、メタデータのサブセットを米国／EUにあるデータセンターで処理することです。このデータには、処理されたリクエスト数、送信されたデータ量、リクエストの処理時間、ネットワークの運用に必要なそのほかの情報などが含まれます。</p>
 	<p><strong>Edge Log Delivery</strong>を使用することにより、お客様はエッジから選択したパートナー（希望する地域内のAzureストレージバケットやオンプレミスのデータセンター上で実行するSplunkのインスタンスなど）に直接ログを送信できます。このオプションにより、こうしたログが最初に米国またはEUのコアデータセンターを通過することなく、お客様は希望する地域内で完全なログを取得することができます。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/edge-log-delivery-before-copy@3x-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>現在、Edge Log DeliveryはEnterpriseのお客様向けの早期ベータ版で提供されています。詳細については、<a href="https://www.cloudflare.com/data-localization?ref=blog.cloudflare.com" target="_blank">当社製品ページをご参照</a>ください。</p>
+	<p>現在、Edge Log DeliveryはEnterpriseのお客様向けの早期ベータ版で提供されています。詳細については、<a href="https://www.cloudflare.com/data-localization" target="_blank">当社製品ページをご参照</a>ください。</p>
 	<p>最終的にお客様が各自のメタデータの保管場所および保管期間を完全に制御できるように取り組んでいます。来年には、どのフィールドを保管するか、どれくらい長く保管するか、どの場所に保管するかを選択できるようにする予定です。</p>
 	<h3 id="--3">位置認識アプリケーションを一から構築する</h3>
 	<p>ここまで、既存のキー、アプリケーションデータ、メタデータをローカルに保管しながら、Cloudflareの製品がどのようにグローバルなパフォーマンスソリューションおよびセキュリティソリューションをお客様に提供できるかについて説明しました。</p>

@@ -4,8 +4,8 @@
 	<p>The answer to that is absolutely yes, awareness is at an all-time high. Awareness, however, does not always result in positive action. The fallacy which is often assumed is "surely, if I keep my software up to date with all the patches, that's more than enough to keep me safe?". It's true, keeping software up to date does defend against known vulnerabilities, but it's a very reactive stance. The more important part is protecting against the unknown.</p>
 	<p>Something every engineer will agree on is that security is hard, and maintaining systems is even harder. Patching or upgrading systems can lead to unforeseen outages or unexpected behaviour due to other fixes which may be applied. This, in most cases, can cause huge delays in the deployment of patches or upgrades, due to requiring either regression testing or deployment in a staging environment. Whilst processes are followed, and tests are done, systems are sat vulnerable, ready to be exploited if they are exposed to the internet.</p>
 	<p>Looking at the wider landscape, an increase in security research has created a surge of CVEs (Common Vulnerability and Exposures) being announced. This compounded by GDPR, NIST and other new data protection legislation, businesses are now forced to pay much more attention to security vulnerabilities that potentially could affect their software, and ultimately put them on the forever growing list of victims of data breaches.</p>
-	<p><a href="https://public.tableau.com/profile/nela7296?ref=blog.cloudflare.com#!/vizhome/CommonVulnerabilitiesandExposurescvedetails_com/Sheet2" target="_blank"><img src="https://blog.cloudflare.com/content/images/2017/11/cve2.png" alt="" loading="lazy"></a><br>
-		Stats from <a href="https://www.cvedetails.com/?ref=blog.cloudflare.com" target="_blank">cvedetails.com</a> <em>(November 2017)</em></p>
+	<p><a href="https://public.tableau.com/profile/nela7296#!/vizhome/CommonVulnerabilitiesandExposurescvedetails_com/Sheet2" target="_blank"><img src="https://blog.cloudflare.com/content/images/2017/11/cve2.png" alt="" loading="lazy"></a><br>
+		Stats from <a href="https://www.cvedetails.com" target="_blank">cvedetails.com</a> <em>(November 2017)</em></p>
 	<p>Dissecting the Equifax tragedy, in testimony from the CEO, he mentions that the reason for the breach was that there was one single person within the organisation who was responsible for communicating the availability of the patch for Apache Struts, the software at the heart of the breach. The crucial lesson learned from Equifax is that we are all human, and that mistakes can happen, however having multiple people responsible for communicating and notifying teams about threats is crucial. In this case, the mistake almost destroyed one of the largest credit agencies in the world.</p>
 	<p>How could attacks and breaches like Equifax be avoided? First is about understanding how these attacks happen. There are some key attacks which are often the source of data exfiltration through vulnerable software.</p>
 	<ul>
@@ -17,14 +17,14 @@
 		</li>
 	</ul>
 	<h3 id="remotecodeexecution">Remote Code Execution</h3>
-	<p>The Struts vulnerability, <a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5638?ref=blog.cloudflare.com" target="_blank">CVE-2017-5638</a>, which is protected by rule 100054 in Cloudflare Specials, was quite simple. In a payload targeted at the web-server, a specific command could be executed which can be seen in the example below:</p>
+	<p>The Struts vulnerability, <a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5638" target="_blank">CVE-2017-5638</a>, which is protected by rule 100054 in Cloudflare Specials, was quite simple. In a payload targeted at the web-server, a specific command could be executed which can be seen in the example below:</p>
 	<pre><code>"(#context.setMemberAccess(#dm))))."
 "(#cmd='touch /tmp/hacked')."
 "(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win')))."
 "(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd}))."
 "(#p=new java.lang.ProcessBuilder(#cmds))."
 </code></pre>
-	<p>More critically however, further to this CVE, Apache Struts also announced another vulnerability earlier this year (<a href="https://nvd.nist.gov/vuln/detail/CVE-2017-9805?ref=blog.cloudflare.com" target="_blank">CVE-2017-9805</a>), which works by delivering a payload against the REST plugin combined with the Xstream handler, which provides an XML ingest capability. By delivering an specially crafted XML payload, a shell command can be embedded, and will be executed.</p>
+	<p>More critically however, further to this CVE, Apache Struts also announced another vulnerability earlier this year (<a href="https://nvd.nist.gov/vuln/detail/CVE-2017-9805" target="_blank">CVE-2017-9805</a>), which works by delivering a payload against the REST plugin combined with the Xstream handler, which provides an XML ingest capability. By delivering an specially crafted XML payload, a shell command can be embedded, and will be executed.</p>
 	<pre><code>&lt;next class="java.lang.ProcessBuilder"&gt;
    &lt;command&gt;
       "touch /tmp/hacked".

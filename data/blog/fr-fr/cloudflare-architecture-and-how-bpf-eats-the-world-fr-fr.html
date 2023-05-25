@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<p>Récemment à la<a href="https://www.netdevconf.org/0x13/schedule.html?ref=blog.cloudflare.com" target="_blank">Netdev 0x13</a>, lors de la conférence sur les réseaux Linux à Prague, je suis<a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives=&amp;ref=blog.cloudflare.com" target="_blank">brièvement intervenu sur « Linux chez Cloudflare »</a>. La <a href="https://speakerdeck.com/majek04/linux-at-cloudflare?ref=blog.cloudflare.com" target="_blank">discussion</a> a surtout porté sur BPF. Il semble, peu importe la question, que la réponse soit BPF.</p>
+	<p>Récemment à la<a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13</a>, lors de la conférence sur les réseaux Linux à Prague, je suis<a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives" target="_blank">brièvement intervenu sur « Linux chez Cloudflare »</a>. La <a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">discussion</a> a surtout porté sur BPF. Il semble, peu importe la question, que la réponse soit BPF.</p>
 	<p>Voici une transcription d'une version légèrement modifiée de cette discussion.</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/01_edge-network-locations-100.jpg" class="kg-image" alt="" loading="lazy"></figure>
@@ -35,15 +35,15 @@
 	<ul>
 		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop : Atténuations XDP DDoS</a></li>
 		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap : Capture de paquets XDP</a></li>
-		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation=&amp;ref=blog.cloudflare.com" target="_blank">Discours sur l'atténuation DoS basée sur XDP</a> par Arthur Fabre</li>
-		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf?ref=blog.cloudflare.com" target="_blank">XDP en pratique : intégration de XDP dans notre pipeline d’atténuation des attaques DDoS</a> (PDF)</li>
+		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">Discours sur l'atténuation DoS basée sur XDP</a> par Arthur Fabre</li>
+		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">XDP en pratique : intégration de XDP dans notre pipeline d’atténuation des attaques DDoS</a> (PDF)</li>
 	</ul>
-	<p>Au cours de ce projet, nous avons rencontré un certain nombre de limitations eBPF/XDP. L'une d'elles était le manque de primitives de concurrence. Il était très difficile de mettre en œuvre des choses comme des « seaux à jetons sans course ». Plus tard, nous avons découvert que <a href="http://vger.kernel.org/lpc-bpf2018.html?ref=blog.cloudflare.com#session-9" target="_blank">Julia Kartseva, ingénieure chez Facebook</a>, avait les mêmes problèmes. En février, ce problème a été résolu avec l'introduction de l’assistant bpf_spin_lock.</p>
+	<p>Au cours de ce projet, nous avons rencontré un certain nombre de limitations eBPF/XDP. L'une d'elles était le manque de primitives de concurrence. Il était très difficile de mettre en œuvre des choses comme des « seaux à jetons sans course ». Plus tard, nous avons découvert que <a href="http://vger.kernel.org/lpc-bpf2018.html#session-9" target="_blank">Julia Kartseva, ingénieure chez Facebook</a>, avait les mêmes problèmes. En février, ce problème a été résolu avec l'introduction de l’assistant bpf_spin_lock.</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-26.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Bien que nos défenses DoS volumétriques modernes soient réalisées dans la couche XDP, nous dépendons toujours d’iptables pour les atténuations de la couche d'application 7. Ici, les fonctionnalités d’un pare-feu de niveau supérieur sont utiles : connlimit, hashlimits et ipsets. Nous utilisons également le module xt_bpf iptables pour exécuter cBPF dans iptables, afin de faire correspondre les charges utiles des paquets. Nous en avons parlé par le passé :</p>
 	<ul>
-		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible?ref=blog.cloudflare.com" target="_blank">Leçons à tirer de la défense de l'indéfendable </a>(PPT)</li>
+		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible" target="_blank">Leçons à tirer de la défense de l'indéfendable </a>(PPT)</li>
 		<li><a href="https://blog.cloudflare.com/introducing-the-bpf-tools/">Présentation des outils BPF</a></li>
 	</ul>
 	<hr>
@@ -71,7 +71,7 @@
 	<p>Il est relativement facile de convaincre Linux de router les paquets correctement avec <a href="https://blog.cloudflare.com/how-we-built-spectrum">l’astuce « AnyIP »</a>. S'assurer que les paquets sont envoyés à la bonne application est un autre problème. Malheureusement, la logique de répartition des sockets Linux standard n’est pas suffisamment flexible pour répondre à nos attentes. Pour les ports populaires, tels que TCP/80, nous souhaitons partager le port entre plusieurs applications, chacune le gérant sur une plage d'adresses IP différente. Linux ne prend pas cela en charge dans d’autres contextes. Vous pouvez appeler bind () soit sur une adresse IP spécifique, soit sur toutes les adresses IP (avec 0.0.0.0).</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-29.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Afin de résoudre ce problème, nous avons développé un correctif de noyau personnalisé qui ajoute <a href="http://patchwork.ozlabs.org/patch/602916/?ref=blog.cloudflare.com" target="_blank">uneoption de socketSO_BINDTOPREFIX</a>. Comme son nom l'indique, cela nous permet d'appeler bind () sur un préfixe IP sélectionné. Cela résout le problème de plusieurs applications partageant des ports populaires tels que 53 ou 80.</p>
+	<p>Afin de résoudre ce problème, nous avons développé un correctif de noyau personnalisé qui ajoute <a href="http://patchwork.ozlabs.org/patch/602916/" target="_blank">uneoption de socketSO_BINDTOPREFIX</a>. Comme son nom l'indique, cela nous permet d'appeler bind () sur un préfixe IP sélectionné. Cela résout le problème de plusieurs applications partageant des ports populaires tels que 53 ou 80.</p>
 	<p>Ensuite, nous rencontrons un autre problème. Pour notre produit Spectrum, nous devons écouter sur tous les 65 535 ports. Utiliser autant de sockets d’écoute n’est pas une bonne idée (voir <a href="https://blog.cloudflare.com/revenge-listening-sockets/">notre vieux blog d’histoire de guerre</a>), nous avons donc dû trouver une autre astuce. Après quelques expériences, nous avons appris à utiliser un module inconnu iptables TPROXY à cet effet. Lisez à ce sujet ici :</p>
 	<ul>
 		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum/">Abuser du pare-feu de Linux : le piratage qui nous a permis de construire Spectrum</a></li>
@@ -84,14 +84,14 @@
 		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP - Épissure TCP de l'avenir</a></li>
 	</ul>
 	<p>Cette technique offre un grand potentiel pour améliorer la latence de la file d’attente sur de nombreux composants de notre pile logicielle. L'implémentation du SOCKMAP actuel n'est pas encore prête pour le moment idéal, mais le potentiel est vaste.</p>
-	<p>De même, les nouveaux crochets <a href="https://netdevconf.org/2.2/papers/brakmo-tcpbpf-talk.pdf?ref=blog.cloudflare.com" target="_blank">TCP-BPF aka BPF_SOCK_OPS</a>offrent un excellent moyen d'inspecter les paramètres de performance des flux TCP. Cette fonctionnalité est extrêmement utile pour notre équipe performance.</p>
+	<p>De même, les nouveaux crochets <a href="https://netdevconf.org/2.2/papers/brakmo-tcpbpf-talk.pdf" target="_blank">TCP-BPF aka BPF_SOCK_OPS</a>offrent un excellent moyen d'inspecter les paramètres de performance des flux TCP. Cette fonctionnalité est extrêmement utile pour notre équipe performance.</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/12_prometheus-ebpf_exporter-100.jpg" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Certaines fonctionnalités de Linux n'ont pas bien vieilli et nous devons les contourner. Par exemple, nous atteignons les limites des métriques de réseau. Ne vous méprenez pas, les métriques de réseau sont impressionnantes. Malheureusement, elles ne sont pas assez granulaires. Des éléments comme TcpExtListenDrops et TcpExtListenOverflows sont signalés en tant que compteurs globaux, alors que nous devons les connaître en fonction des applications.</p>
 	<p>Notre solution consiste à utiliser des sondes eBPF pour extraire les nombres directement à partir du noyau. Mon collègue Ivan Babrou a mis sur pied un exportateur de métriques Prometheus appelé « ebpf_exporter » pour faciliter ce travail. À lire :</p>
 	<ul>
 		<li><a href="https://blog.cloudflare.com/introducing-ebpf_exporter/">Présentation d’ebpf_exporter</a></li>
-		<li><a href="https://github.com/cloudflare/ebpf_exporter?ref=blog.cloudflare.com" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></li>
+		<li><a href="https://github.com/cloudflare/ebpf_exporter" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></li>
 	</ul>
 	<p>Avec « ebpf_exporter », nous pouvons générer toutes sortes de métriques détaillées. Il est très puissant et nous a sauvés à de nombreuses reprises.</p>
 	<hr>
@@ -105,7 +105,7 @@
 		<li>eBPF exécutant des assistants d'application tels que SOCKMAP pour l'épissure de sockets TCP et TCP-BPF pour les mesures TCP</li>
 		<li>« ebpf_exporter » pour les métriques granulaires</li>
 	</ul>
-	<p>Et nous ne faisons que commencer ! Bientôt, nous en ferons plus avec la répartition de socket basée sur eBPF, eBPF fonctionnant sur la couche <a href="https://linux.die.net/man/8/tc?ref=blog.cloudflare.com" target="_blank">Linux TC (Traffic Control)</a> et davantage d'intégration avec les points d’encrages cgroup eBPF. Ensuite, notre équipe SRE gère une liste de plus en plus longue de <a href="https://github.com/iovisor/bcc?ref=blog.cloudflare.com" target="_blank">scripts BCC</a>utiles au débogage.</p>
+	<p>Et nous ne faisons que commencer ! Bientôt, nous en ferons plus avec la répartition de socket basée sur eBPF, eBPF fonctionnant sur la couche <a href="https://linux.die.net/man/8/tc" target="_blank">Linux TC (Traffic Control)</a> et davantage d'intégration avec les points d’encrages cgroup eBPF. Ensuite, notre équipe SRE gère une liste de plus en plus longue de <a href="https://github.com/iovisor/bcc" target="_blank">scripts BCC</a>utiles au débogage.</p>
 	<p>On a l'impression que Linux a cessé de développer de nouvelles API et que toutes les nouvelles fonctionnalités sont implémentées en tant que crochets et assistants eBPF. C'est bien et cela présente de gros avantages. Il est plus facile et plus sûr de mettre à niveau le programme eBPF que de recompiler un module du noyau. Des fonctionnalités comme TCP-BPF, exposant des données de traçage de performance de volume élevé, seraient probablement impossibles à mettre en œuvre sans eBPF.</p>
 	<p>Certains disent que « les logiciels dévorent le monde », je dirais que : « BPF dévore le logiciel ».</p>
 </div>
