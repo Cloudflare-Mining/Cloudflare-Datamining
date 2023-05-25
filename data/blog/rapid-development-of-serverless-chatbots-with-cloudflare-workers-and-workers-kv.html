@@ -29,7 +29,7 @@ x 260 work days
 		<tbody>
 			<tr>
 				<td>Add</td>
-				<td>@ownerbot add Jira IT <a href="https://chat.google.com/room/ABC123?ref=blog.cloudflare.com" target="_blank">http://chat.google.com/room/ABC123</a></td>
+				<td>@ownerbot add Jira IT <a href="https://chat.google.com/room/ABC123" target="_blank">http://chat.google.com/room/ABC123</a></td>
 				<td>Service added</td>
 			</tr>
 			<tr>
@@ -40,7 +40,7 @@ x 260 work days
 			<tr>
 				<td>Question</td>
 				<td>@ownerbot Kibana</td>
-				<td>SRE Core owns Kibana. The room is: <a href="https://chat.google.com/ABC123?ref=blog.cloudflare.com" target="_blank">http://chat.google.com/ABC123</a></td>
+				<td>SRE Core owns Kibana. The room is: <a href="https://chat.google.com/ABC123" target="_blank">http://chat.google.com/ABC123</a></td>
 			</tr>
 			<tr>
 				<td>Export</td>
@@ -50,10 +50,10 @@ x 260 work days
 		</tbody>
 	</table>
 	<h3 id="helloownerbot">Hello @ownerbot</h3>
-	<p>Following the <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?ref=blog.cloudflare.com" target="_blank">Hangouts Chat API Guide</a>, let's start with a hello world bot.</p>
+	<p>Following the <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop" target="_blank">Hangouts Chat API Guide</a>, let's start with a hello world bot.</p>
 	<ol>
 		<li>
-			<p>To configure the bot, go to the <a href="https://developers.google.com/hangouts/chat/how-tos/bots-publish?ref=blog.cloudflare.com" target="_blank">Publish</a> page and scroll down to the <strong>Enable The API</strong> button:</p>
+			<p>To configure the bot, go to the <a href="https://developers.google.com/hangouts/chat/how-tos/bots-publish" target="_blank">Publish</a> page and scroll down to the <strong>Enable The API</strong> button:</p>
 		</li>
 		<li>
 			<p>Enter the bot name</p>
@@ -62,7 +62,7 @@ x 260 work days
 			<p>Download the private key json file</p>
 		</li>
 		<li>
-			<p>Go to the <a href="https://console.developers.google.com/?ref=blog.cloudflare.com" target="_blank">API Console</a></p>
+			<p>Go to the <a href="https://console.developers.google.com/" target="_blank">API Console</a></p>
 		</li>
 		<li>
 			<p>Search for the <strong>Hangouts Chat API</strong> (<em>Note: not the Google+ Hangouts API</em>) <br><br><br>
@@ -75,7 +75,7 @@ x 260 work days
 		<li>
 			<p>Fill out the form as per below <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
 			<ul>
-				<li>Use a hard to guess URL. I <a href="https://www.guidgenerator.com/online-guid-generator.aspx?ref=blog.cloudflare.com" target="_blank">generate a guid</a> and use that in the url.</li>
+				<li>Use a hard to guess URL. I <a href="https://www.guidgenerator.com/online-guid-generator.aspx" target="_blank">generate a guid</a> and use that in the url.</li>
 				<li>The URL will be the route you associate with your Worker in the Dashboard<br>
 					<img src="https://blog.cloudflare.com/content/images/2019/04/bot-configuration-1.png" alt="bot-configuration-1" loading="lazy">
 				</li>
@@ -189,7 +189,7 @@ function process(request) {
     }
 }
 </code></pre>
-	<p>The nice thing about the <a href="https://en.wikipedia.org/wiki/Command_pattern?ref=blog.cloudflare.com" target="_blank">Command</a> pattern for chatbots, is you can encapsulate the logic of each command for testing, as well as compose series of commands together to test out conversations. Later, we could extend it to support undo. Let's test the <code>AddCommand</code></p>
+	<p>The nice thing about the <a href="https://en.wikipedia.org/wiki/Command_pattern" target="_blank">Command</a> pattern for chatbots, is you can encapsulate the logic of each command for testing, as well as compose series of commands together to test out conversations. Later, we could extend it to support undo. Let's test the <code>AddCommand</code></p>
 	<pre><code class="language-javascript">  it('requires all args', async function() {
             let addCmd = new AddCommand("add AdminPanel 'Internal Tools' 'Internal Tools'", dir, kv); //missing url            
             let res = await addCmd.respond();
@@ -241,7 +241,7 @@ function process(request) {
 })
 </code></pre>
 	<h3 id="demo">Demo</h3>
-	<p>A lot of the code as been elided for brevity, but you can view the <a href="https://github.com/stevenpack/ownerbot?ref=blog.cloudflare.com" target="_blank">full source on Github</a>. Let's take it for a spin!</p>
+	<p>A lot of the code as been elided for brevity, but you can view the <a href="https://github.com/stevenpack/ownerbot" target="_blank">full source on Github</a>. Let's take it for a spin!</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2019/04/ownerbot1-1.gif" alt="ownerbot1-1" loading="lazy"></p>
 	<h3 id="learnings">Learnings</h3>
 	<p>Some of the things I learned during the development of @ownerbot were:</p>
@@ -255,7 +255,7 @@ function process(request) {
 	<section class="footnotes">
 		<ol class="footnotes-list">
 			<li id="fn1" class="footnote-item">
-				<p>For simplicity, I'm going to use a static shared key, but Google have recently rolled out a more <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?hl=en_US&amp;ref=blog.cloudflare.com#verifying_bot_authenticity" target="_blank">secure method</a> for verifying the caller's authenticity, which we'll expand on in Part 2. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+				<p>For simplicity, I'm going to use a static shared key, but Google have recently rolled out a more <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?hl=en_US#verifying_bot_authenticity" target="_blank">secure method</a> for verifying the caller's authenticity, which we'll expand on in Part 2. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 			</li>
 			<li id="fn2" class="footnote-item">
 				<p>This UI is the multiscript version available to Enterprise customers. You can still implement the bot with a single Worker, you'll just need to recognize and route requests to your chatbot code. <a href="#fnref2" class="footnote-backref">↩︎</a></p>

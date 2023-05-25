@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<p>이번 주 초, 우리는 포괄적인 클라우드 기반 서비스로서의 네트워크(NaaS) 솔루션인 Cloudflare One™을 <a href="https://blog.cloudflare.com/introducing-cloudflare-one/">발표했습니다</a>. <a href="https://blog.cloudflare.com/cloudflare-one/">Cloudflare One</a>은 네트워크 성능과 보안을 강화하는 동시에 규모와 상관없이 모든 기업의 비용 및 복잡성을 줄여줍니다.</p>
 	<p>Cloudflare One은 가장 큰 기업 네트워크의 규모와 복잡성을 처리하도록 설계되었습니다. 하지만 네트워크 보안 및 성능과 관련하여 업계는 상당한 예산과 기술 팀을 보유한 최대 규모의 고객에게만 너무 자주 초점을 맞춰 왔습니다. Cloudflare는 모두에게 양질의 서비스를 제공하고 모든 규모의 회사가 더 나은 인터넷 환경의 혜택을 누릴 수 있도록 돕는 것이 우리의 기회이자 책임이라고 믿습니다.</p>
-	<p>그 의의를 담은 것이 Cloudflare의 Zero Trust Week로 <a href="https://blog.cloudflare.com/teams-plans/">모두를 위한 Zero Trust</a>라는 우리의 비전에 대해서는 이미 여러 번 얘기한 바 있죠. 간단히 되새겨보자면, Zero Trust는 모든 네트워크, 장치 및 인터넷 목적지가 태생적으로 손상되어 있기 때문에 신뢰할 수 없다는 가정을 전제로 하는 보안 프레임워크입니다. Cloudflare One은 사용자가 대규모로 기업 애플리케이션 및 인터넷에 연결하는 방식 자체를 안전하게 보호함으로써 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust 보안</a>을 촉진합니다.</p>
+	<p>그 의의를 담은 것이 Cloudflare의 Zero Trust Week로 <a href="https://blog.cloudflare.com/teams-plans/">모두를 위한 Zero Trust</a>라는 우리의 비전에 대해서는 이미 여러 번 얘기한 바 있죠. 간단히 되새겨보자면, Zero Trust는 모든 네트워크, 장치 및 인터넷 목적지가 태생적으로 손상되어 있기 때문에 신뢰할 수 없다는 가정을 전제로 하는 보안 프레임워크입니다. Cloudflare One은 사용자가 대규모로 기업 애플리케이션 및 인터넷에 연결하는 방식 자체를 안전하게 보호함으로써 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust 보안</a>을 촉진합니다.</p>
 	<p>소규모 비즈니스 네트워크 관리자는 기본적으로 장치, 애플리케이션 및 네트워크 자체의 세 가지를 보호해야 합니다. 아래에서는 장치가 사무실에 있을 때 보호하는 방법(DNS 필터링), 원격으로 사용할 때 보호하는 방법(WARP+ 및 Gateway), 그리고 Zero Trust 보안 모델로 이동하여 애플리케이션 및 네트워크를 보호하는 방법(Access)을 설명해 보겠습니다.</p>
 	<p>기본적으로 Cloudflare One은 모든 규모의 팀에서 액세스할 수 있습니다. 거창한 IT 부서나 포춘지 500 수준의 예산이 없어도 필요한 도구에 접속할 수 있죠. 지난 화요일에는 DNS 필터링, Zero Trust 액세스, 관리 대시보드 등 Cloudflare One의 다양한 기능을 최대 50명의 사용자에게 무료로 제공하는 새로운 무료 요금제를 <a href="https://blog.cloudflare.com/teams-plans/">발표했습니다</a>.</p>
 	<p>바로 지금부터 여러분의 팀은 몇 가지 간단한 단계를 거쳐 조직에 Cloudflare One 배포를 시작할 수 있습니다.</p>
@@ -14,8 +14,8 @@
 		<li>DNS 쿼리가 악의적인 호스트 이름으로 해석될 수 있습니다. 팀원들이 피싱 공격이나 맬웨어 다운로드로 이어지는 링크를 클릭할 수 있습니다.</li>
 	</ul>
 	<p>Cloudflare One은 첫 번째 쿼리를 비공개로 유지하고 장치가 알려진 악의적인 호스트 이름을 부주의하게 요청하는 것을 방지하는 데 도움이 될 수 있습니다.</p>
-	<p>먼저 Cloudflare 계정에 가입하고 Cloudflare for <a href="https://dash.teams.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Teams 대시보드</a>로 이동하세요.</p>
-	<p>다음으로, 위치를 설정하세요. 오피스 네트워크의 DNS 쿼리를 보호하고 싶은 경우 그렇게 할 수 있는 <a href="https://developers.cloudflare.com/gateway/getting-started-new/onboarding-gateway/?ref=blog.cloudflare.com" target="_blank">위치를 생성하라는 메시지가 나타납니다</a>. 그러면 <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/initial-setup/dns/?ref=blog.cloudflare.com" target="_blank">할당된</a> Gateway IP 주소를 가리키도록 네트워크 라우터를 변경하여 오피스에 대한 Gateway DNS 필터링을 배포하면 됩니다.</p>
+	<p>먼저 Cloudflare 계정에 가입하고 Cloudflare for <a href="https://dash.teams.cloudflare.com/" target="_blank">Teams 대시보드</a>로 이동하세요.</p>
+	<p>다음으로, 위치를 설정하세요. 오피스 네트워크의 DNS 쿼리를 보호하고 싶은 경우 그렇게 할 수 있는 <a href="https://developers.cloudflare.com/gateway/getting-started-new/onboarding-gateway/" target="_blank">위치를 생성하라는 메시지가 나타납니다</a>. 그러면 <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/initial-setup/dns/" target="_blank">할당된</a> Gateway IP 주소를 가리키도록 네트워크 라우터를 변경하여 오피스에 대한 Gateway DNS 필터링을 배포하면 됩니다.</p>
 	<p>Cloudflare는 세계에서 가장 빠른 DNS 확인자인 1.1.1.1을 운영합니다. Cloudflare Gateway의 DNS 필터링 도구들은 동일한 아키텍처를 기반으로 구축되었기 때문에 여러분의 팀은 더 빠르고 안전한 DNS를 사용할 수 있습니다.</p>
 	<p>이제 Gateway DNS 정책을 쉽게 생성하여 보안 위협 또는 특정 콘텐츠 범주를 필터링할 수 있습니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image9-4.png" class="kg-image" alt="" loading="lazy"></figure>
@@ -28,8 +28,8 @@
 	<p>Cloudflare One의 Cloudflare WARP를 이용하면 모든 팀원의 트래픽을 암호화 및 가속화된 경로를 통해 인터넷으로 라우팅할 수 있습니다. Cloudflare WARP는 팀원들이 macOS, Windows, iOS 및 Android에 설치해서 사용할 수 있는 애플리케이션입니다. 이 클라이언트는 직원들이 사용하는 장치의 모든 트래픽을 WireGuard라고 하는 Cloudflare의 <a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust/">기술 솔루션</a>을 통해 가까운 Cloudflare 데이터 센터로 라우팅합니다.</p>
 	<p>연결 시 Cloudflare One은 Argo Smart Routing 서비스 기반 WARP 솔루션인 WARP+를 사용하여, 글로벌 데이터 센터 네트워크를 통해 사용자의 목적지까지 도달하는 최단 경로를 찾습니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-8.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>여러분의 팀은 오늘 바로 Cloudflare WARP 사용을 시작할 수 있습니다. Cloudflare for Teams 대시보드로 이동하여 Cloudflare Gateway 또는 Cloudflare for Teams Standard 요금제를 구입하세요. 구입하고 나면 <a href="https://developers.cloudflare.com/gateway/connecting-to-gateway/with-client?ref=blog.cloudflare.com" target="_blank">규칙을 생성</a>하여 조직에서 Cloudflare WARP를 사용할 권한을 가질 사용자를 지정하면 됩니다.</p>
-	<p>최종 사용자는 클라이언트를 실행하고 팀의 조직명을 입력하고 로그인하여 WARP+ 사용을 시작할 수 있습니다. 아니면 JAMF 또는 InTune 등의 장치 관리 솔루션을 사용하도록 사전 구성되어 있는 설정을 이용해 <a href="https://developers.cloudflare.com/warpclient/teams?ref=blog.cloudflare.com" target="_blank">애플리케이션을 배포</a>해도 됩니다.</p>
+	<p>여러분의 팀은 오늘 바로 Cloudflare WARP 사용을 시작할 수 있습니다. Cloudflare for Teams 대시보드로 이동하여 Cloudflare Gateway 또는 Cloudflare for Teams Standard 요금제를 구입하세요. 구입하고 나면 <a href="https://developers.cloudflare.com/gateway/connecting-to-gateway/with-client" target="_blank">규칙을 생성</a>하여 조직에서 Cloudflare WARP를 사용할 권한을 가질 사용자를 지정하면 됩니다.</p>
+	<p>최종 사용자는 클라이언트를 실행하고 팀의 조직명을 입력하고 로그인하여 WARP+ 사용을 시작할 수 있습니다. 아니면 JAMF 또는 InTune 등의 장치 관리 솔루션을 사용하도록 사전 구성되어 있는 설정을 이용해 <a href="https://developers.cloudflare.com/warpclient/teams" target="_blank">애플리케이션을 배포</a>해도 됩니다.</p>
 	<p>Cloudflare WARP는 Gateway의 DNS 필터링과 매끄럽게 통합되어 로밍 장치에 안전하고 암호화된 DNS 확인 기능을 제공합니다. 사용자는 어디에서 일하든 해당 위치의 DoH 하위 도메인을 여러분의 Cloudflare for Teams 계정에 입력하여 조직의 DNS 필터링 설정을 사용할 수 있습니다.</p>
 	<h3 id="3-vpn-cloudflare-access-">3. VPN을 Cloudflare Access로 교체합니다</h3>
 	<p>우리가 소규모 팀이고 VPN에 의존했을 때에는 IT 헬프 데스크가 VPN에 대해 불평하는 수백 건의 티켓을 받았었습니다. 그 티켓에 적힌 설명 중에는 익숙해 보이는 것들도 있을 수 있죠.</p>
@@ -45,7 +45,7 @@
 	<p>Cloudflare WARP를 사용하면 장치에서 나가는 모든 트래픽이 이제 Cloudflare의 네트워크를 통해 라우팅됩니다. 그러나 위협 및 데이터 손실은 트래픽 안에 숨을 수도 있죠. 팀이 Cloudflare WARP 사용 시 Cloudflare Gateway의 HTTP 필터링을 추가하면 위협 및 파일 손실을 차단할 수 있습니다. 예를 들어, 팀에서 Box를 사용하는 경우 모든 파일 업로드를 다른 클라우드 기반 스토리지 서비스로 제한함으로써 모든 파일이 승인된 한 장소에 저장되도록 할 수 있죠.</p>
 	<p>시작하려면 Cloudflare for Teams 대시보드의 정책(Policies) 섹션으로 이동하세요. HTTP 탭을 선택하여 알려진 악의적 URL 또는 미승인 목적지로의 파일 업로드 같은 잠재적인 문제가 없는지 트래픽을 검사하는 규칙을 작성하세요.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-16.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>트래픽을 검사하려면 등록된 장치에 인증서를 <a href="https://developers.cloudflare.com/gateway/connecting-to-gateway/with-client?ref=blog.cloudflare.com" target="_blank">다운로드하고 설치</a>해야 합니다. 설치를 마치면 정책(Policies) 탭에서 HTTP 필터링을 활성화하여 생성한 정책을 시행하고 이벤트 로그를 캡처할 수 있습니다.</p>
+	<p>트래픽을 검사하려면 등록된 장치에 인증서를 <a href="https://developers.cloudflare.com/gateway/connecting-to-gateway/with-client" target="_blank">다운로드하고 설치</a>해야 합니다. 설치를 마치면 정책(Policies) 탭에서 HTTP 필터링을 활성화하여 생성한 정책을 시행하고 이벤트 로그를 캡처할 수 있습니다.</p>
 	<h3 id="5-saas-zero-trust-">5. SaaS 애플리케이션으로 Zero Trust 규칙을 가져옵니다</h3>
 	<p>자체 호스팅 애플리케이션이 없거나 SaaS 애플리케이션을 사용 중인 경우에도 <a href="https://blog.cloudflare.com/cloudflare-access-for-saas/">Cloudflare Access for SaaS</a>를 이용하여 어디에서든 팀이 사용하는 모든 SaaS 애플리케이션으로 동일한 Zero Trust 규칙을 가져올 수 있죠. Access for SaaS를 통해 기업은 이제 사용자 액세스를 중앙에서 관리하고 모든 애플리케이션의 보안을 모니터링할 수 있습니다.</p>
 	<p>Cloudflare Access를 SAML SSO를 지원하는 모든 SaaS 애플리케이션에 ID 공급자로 통합할 수 있습니다. 이 통합은 모든 로그인 시도를 Cloudflare의 네트워크를 통해 구성된 ID 공급자에게 전송하고, 여러분이 제어하는 규칙을 시행합니다.</p>
@@ -58,5 +58,5 @@
 	<p>오늘날 세계에서 가장 큰 여러 기업도 Magic Transit에 의존하여 비즈니스를 공격으로부터 안전하게 보호하고 있습니다. 우리는 향후 릴리즈에서 더 소규모 네트워크를 운영하는 팀에게까지 동일한 수준의 보호 및 연결 성능을 확장할 계획입니다.</p>
 	<h3 id="-">다음 단계</h3>
 	<p>Cloudflare One은 기업 네트워크의 미래에 대한 우리의 비전을 상징하며, 팀이 해당 모델로 이동하는 데 도움이 되는 제품과 기능들도 추가하기 시작했습니다. 여러분의 팀은 지금 바로 Cloudflare를 통해 연결을 시작하고 Cloudflare 네트워크를 통해 데이터와 애플리케이션을 보호할 수 있습니다.</p>
-	<p>시작하려면 <a href="https://dash.cloudflare.com/sign-up/teams?ref=blog.cloudflare.com" target="_blank">Cloudflare 계정에 가입</a>하고 위 단계에 따라 진행하세요. 소규모 비즈니스 또는 대기업으로 Cloudflare One 설정에 관해 궁금한 점이 있으시면 본 커뮤니티 포럼 게시물을 통해 말씀해 주세요.</p>
+	<p>시작하려면 <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">Cloudflare 계정에 가입</a>하고 위 단계에 따라 진행하세요. 소규모 비즈니스 또는 대기업으로 Cloudflare One 설정에 관해 궁금한 점이 있으시면 본 커뮤니티 포럼 게시물을 통해 말씀해 주세요.</p>
 </div>
