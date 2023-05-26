@@ -7,7 +7,6 @@ import {tryAndPush, cfRequest} from '../utils.js';
 
 const dir = path.resolve('../data/products/integrations');
 await fs.ensureDir(dir);
-await fs.emptyDir(dir);
 
 const integrations = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/integrations?per_page=1000`);
 const integrationsJson = await integrations.json();
