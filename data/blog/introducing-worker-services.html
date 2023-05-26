@@ -32,7 +32,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-25.png" class="kg-image" alt="Service Bindings allow for separation of concerns" loading="lazy"></figure>
-	<p>Service bindings use the standard <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch?ref=blog.cloudflare.com" target="_blank">fetch</a> API, so you can continue to use your existing utilities and libraries. You can also change the environment of a service binding, so you can test a new version of a service. In the next example, 1% of requests are routed to a “canary” deployment of a service. If a request to the canary fails, it’s sent to the production deployment for another chance.</p><!--kg-card-begin: markdown-->
+	<p>Service bindings use the standard <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank">fetch</a> API, so you can continue to use your existing utilities and libraries. You can also change the environment of a service binding, so you can test a new version of a service. In the next example, 1% of requests are routed to a “canary” deployment of a service. If a request to the canary fails, it’s sent to the production deployment for another chance.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export default {
   canRetry(request) {
     return request.method === "GET" || request.method === "HEAD";
@@ -57,8 +57,8 @@
 	<p>You can also create and deploy code to multiple “preview” environments, as part of the open-beta launch. We’re still working on service bindings and versioning, and we’ll provide an update as soon as you can start using them.</p>
 	<p>For more information about Services, check out any of the resources below:</p>
 	<ul>
-		<li>Go to the <a href="https://workers.new/?ref=blog.cloudflare.com" target="_blank">dashboard</a> and create your first service!</li>
-		<li>Sign up for the <a href="https://www.cloudflare.com/service-bindings-closed-beta-sign-up?ref=blog.cloudflare.com" target="_blank">early-access</a> to service bindings.</li>
+		<li>Go to the <a href="https://workers.new" target="_blank">dashboard</a> and create your first service!</li>
+		<li>Sign up for the <a href="https://www.cloudflare.com/service-bindings-closed-beta-sign-up" target="_blank">early-access</a> to service bindings.</li>
 	</ul>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Lego.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->

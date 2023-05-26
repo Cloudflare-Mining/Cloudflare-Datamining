@@ -4,7 +4,7 @@
 	<!--kg-card-end: markdown-->
 	<p>When considering website performance, the term TTFB - time to first byte - crops up regularly. Often we see measurements from cURL and Chrome, and this article will show what timings those tools can produce, including time to first byte, and discuss whether this is the measurement you are really looking for.</p>
 	<h3 id="timing-with-curl">Timing with cURL</h3>
-	<p><a href="https://curl.haxx.se/?ref=blog.cloudflare.com" target="_blank">cURL</a> is an excellent tool for debugging web requests, and it includes the ability to take timing measurements. Let’s take an example website www.zasag.mn (the Mongolian government), and measure how long a request to its home page takes:</p>
+	<p><a href="https://curl.haxx.se/" target="_blank">cURL</a> is an excellent tool for debugging web requests, and it includes the ability to take timing measurements. Let’s take an example website www.zasag.mn (the Mongolian government), and measure how long a request to its home page takes:</p>
 	<p>First configure the output format for cURL in <code>~/.curlrc</code>:</p>
 	<pre><code>$ cat .curlrc
 -w "dnslookup: %{time_namelookup} | connect: %{time_connect} | appconnect: %{time_appconnect} | pretransfer: %{time_pretransfer} | starttransfer: %{time_starttransfer} | total: %{time_total} | size: %{size_download}\n"</code></pre>
@@ -18,14 +18,14 @@ starttransfer: 2.506 | total: 3.001 | size: 53107</code></pre>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-16-at-14.51.29-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<ul>
-		<li><strong>time_namelookup</strong> in this example takes a long time. To exclude DNS resolver performance from the figures, you can resolve the IP for cURL: <code>--resolve www.zasag.mn:443:218.100.84.167</code>. It may also be worth looking for a <a href="https://www.dnsperf.com/?ref=blog.cloudflare.com#!dns-resolvers" target="_blank">faster</a> <a href="https://1.1.1.1/?ref=blog.cloudflare.com" target="_blank">resolver</a> :).</li>
-		<li><strong>time_connect</strong> is the TCP three-way handshake from the client’s perspective. It ends just after the client sends the ACK - it doesn't include the time taken for that ACK to reach the server. It should be close to the <a href="https://en.wikipedia.org/wiki/Round-trip_delay_time?ref=blog.cloudflare.com" target="_blank">round-trip time</a> (RTT) to the server. In this example, RTT looks to be about 200 ms.</li>
+		<li><strong>time_namelookup</strong> in this example takes a long time. To exclude DNS resolver performance from the figures, you can resolve the IP for cURL: <code>--resolve www.zasag.mn:443:218.100.84.167</code>. It may also be worth looking for a <a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank">faster</a> <a href="https://1.1.1.1/" target="_blank">resolver</a> :).</li>
+		<li><strong>time_connect</strong> is the TCP three-way handshake from the client’s perspective. It ends just after the client sends the ACK - it doesn't include the time taken for that ACK to reach the server. It should be close to the <a href="https://en.wikipedia.org/wiki/Round-trip_delay_time" target="_blank">round-trip time</a> (RTT) to the server. In this example, RTT looks to be about 200 ms.</li>
 		<li><strong>time_appconnect</strong> here is TLS setup. The client is then ready to send it’s HTTP GET request.</li>
 		<li><strong>time_starttransfer</strong> is just before cURL reads the first byte from the network (it hasn't actually read it yet). <code>time_starttransfer - time_appconnect</code> is practically the same as Time To First Byte (TTFB) from this client - 250 ms in this example case. This includes the round trip over the network, so you might get a better guess of how long the server spent on the request by calculating <code>TTFB - (time_connect - time_namelookup)</code>, so in this case, the server spent only a few milliseconds responding, the rest of the time was the network.</li>
 		<li><strong>time_total</strong> is just after the client has sent the FIN connection tear down.</li>
 	</ul>
 	<h3 id="timing-with-chrome">Timing with Chrome</h3>
-	<p>Chrome, and some other testing tools, use the <a href="https://www.w3.org/TR/resource-timing/?ref=blog.cloudflare.com" target="_blank">W3C Resource Timing standard</a> for measurements. In Chrome developer tools this looks like this:</p>
+	<p>Chrome, and some other testing tools, use the <a href="https://www.w3.org/TR/resource-timing/" target="_blank">W3C Resource Timing standard</a> for measurements. In Chrome developer tools this looks like this:</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-08-04-at-12.07.37--1-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
