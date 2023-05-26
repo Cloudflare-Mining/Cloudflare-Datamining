@@ -3,9 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [3.0.6](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@3.0.5...@cloudflare/component-payment-form@3.0.6) (2023-05-26)
+## [3.0.7](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@3.0.5...@cloudflare/component-payment-form@3.0.7) (2023-05-26)
 
-**Note:** Version bump only for package @cloudflare/component-payment-form
+
+### Bug Fixes
+
+* **stratus:** UI-0000 yarn update-packages-with-wrong-version ([96e6548](http://stash.cfops.it:7999/fe/stratus/commits/96e6548))
 
 
 
