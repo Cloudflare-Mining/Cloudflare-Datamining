@@ -226,15 +226,13 @@ for(const url of [...blogURLs].sort()) {
 					}else{
 						url = new URL(href);
 					}
-					if(url.searchParams.has('ref')) {
-						url.searchParams.delete('ref');
-						let fixedUrl = url.toString();
-						// remove trailing slash to normalise
-						if(fixedUrl.endsWith('/')) {
-							fixedUrl = fixedUrl.slice(0, -1);
-						}
-						el.attr('href', fixedUrl);
+					url.searchParams.delete('ref');
+					let fixedUrl = url.toString();
+					// remove trailing slash to normalise
+					if(fixedUrl.endsWith('/')) {
+						fixedUrl = fixedUrl.slice(0, -1);
 					}
+					el.attr('href', fixedUrl);
 				}catch(err) {
 					console.error('Failed to parse URL', href, err);
 				}
