@@ -16,7 +16,7 @@
 	<p><a href="https://blog.cloudflare.com/content/images/2018/04/2-3.png"><img src="https://blog.cloudflare.com/content/images/2018/04/2-3.png" alt="2-3" loading="lazy"></a></p>
 	<p><em>The command used was: <code>perf top -F 99</code>.</em></p>
 	<h3 id="rcustalls">RCU stalls</h3>
-	<p>In addition to higher system CPU usage, we found secondary slowdowns, including <a href="http://www.rdrop.com/~paulmck/RCU/whatisRCU.html?ref=blog.cloudflare.com" target="_blank">read-copy update (RCU)</a> stalls:</p>
+	<p>In addition to higher system CPU usage, we found secondary slowdowns, including <a href="http://www.rdrop.com/~paulmck/RCU/whatisRCU.html" target="_blank">read-copy update (RCU)</a> stalls:</p>
 	<pre><code>[ 4909.110009] logfwdr (26887) used greatest stack depth: 11544 bytes left
 [ 4909.392659] oom_reaper: reaped process 26861 (logfwdr), now anon-rss:8kB, file-rss:0kB, shmem-rss:0kB
 [ 4923.462841] INFO: rcu_sched self-detected stall on CPU
@@ -150,7 +150,7 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	<p>Some colleagues suggested that the differences in the graphs may be due to TCP offload being disabled, but upon checking our NIC settings, we found that the feature flags were identical.</p>
 	<p>We'll dive into the differences in the next section.</p>
 	<h3 id="anddeeper">And deeper</h3>
-	<p>To trace latency distributions of <code>sendfile</code> syscalls between Jessie and Stretch, we used <a href="https://github.com/iovisor/bcc/blob/master/tools/funclatency_example.txt?ref=blog.cloudflare.com" target="_blank"><code>funclatency</code></a> from <a href="https://iovisor.github.io/bcc/?ref=blog.cloudflare.com" target="_blank">bcc-tools</a>:</p>
+	<p>To trace latency distributions of <code>sendfile</code> syscalls between Jessie and Stretch, we used <a href="https://github.com/iovisor/bcc/blob/master/tools/funclatency_example.txt" target="_blank"><code>funclatency</code></a> from <a href="https://iovisor.github.io/bcc/" target="_blank">bcc-tools</a>:</p>
 	<ul>
 		<li>Jessie</li>
 	</ul>
@@ -245,7 +245,7 @@ lock_timer_base                        196895
 FUNC                                    COUNT
 lock_timer_base                        140085
 </code></pre>
-	<p>The Linux kernel includes debugging facilities for timers, which <a href="https://elixir.bootlin.com/linux/v4.9.43/source/kernel/time/timer.c?ref=blog.cloudflare.com#L1010" target="_blank">call</a> the <code>timer:timer_start</code> <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/trace/events/timer.h?ref=blog.cloudflare.com#L44" target="_blank">tracepoint</a> on every timer start. This allowed us to pull up timer names:</p>
+	<p>The Linux kernel includes debugging facilities for timers, which <a href="https://elixir.bootlin.com/linux/v4.9.43/source/kernel/time/timer.c#L1010" target="_blank">call</a> the <code>timer:timer_start</code> <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/trace/events/timer.h#L44" target="_blank">tracepoint</a> on every timer start. This allowed us to pull up timer names:</p>
 	<ul>
 		<li>Jessie</li>
 	</ul>
@@ -471,7 +471,7 @@ Tracing 1 functions for "tcp_push_one"... Hit Ctrl-C to end.
  kernel_sendpage
  sock_sendpage
 </code></pre>
-	<p>Let's look closer at <a href="https://elixir.bootlin.com/linux/v4.9.43/source/net/ipv4/tcp.c?ref=blog.cloudflare.com#L1012" target="_blank"><code>tcp_sendpage</code></a>:</p>
+	<p>Let's look closer at <a href="https://elixir.bootlin.com/linux/v4.9.43/source/net/ipv4/tcp.c#L1012" target="_blank"><code>tcp_sendpage</code></a>:</p>
 	<pre><code>int tcp_sendpage(struct sock *sk, struct page *page, int offset,
          size_t size, int flags)
 {
@@ -491,7 +491,7 @@ Tracing 1 functions for "tcp_push_one"... Hit Ctrl-C to end.
     return res;
 }
 </code></pre>
-	<p>It looks like we don't enter the <code>if</code> body. We looked up what <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/linux/netdev_features.h?ref=blog.cloudflare.com#L115" target="_blank">NET_F_SG</a> does: <a href="https://en.wikipedia.org/wiki/Large_send_offload?ref=blog.cloudflare.com" target="_blank">segmentation offload</a>. This difference is peculiar, since both OS'es should have this enabled.</p>
+	<p>It looks like we don't enter the <code>if</code> body. We looked up what <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/linux/netdev_features.h#L115" target="_blank">NET_F_SG</a> does: <a href="https://en.wikipedia.org/wiki/Large_send_offload" target="_blank">segmentation offload</a>. This difference is peculiar, since both OS'es should have this enabled.</p>
 	<h3 id="evendeepertothecrux">Even deeper, to the crux</h3>
 	<p>It turned out that we had segmentation offload enabled for only a few of our NICs: <code>eth2</code>, <code>eth3</code>, and <code>bond0</code>. Our network setup can be described as follows:</p>
 	<pre><code>eth2 --&gt;|              |--&gt; vlan10
@@ -576,7 +576,7 @@ udp-fragmentation-offload: on
 	<p><a href="https://blog.cloudflare.com/content/images/2018/04/17.png"><img src="https://blog.cloudflare.com/content/images/2018/04/17.png" alt="17" loading="lazy"></a></p>
 	<p>Not enabling offload features when possible seems like a pretty bad regression, so we filed a ticket for <code>systemd</code>:</p>
 	<ul>
-		<li><a href="https://github.com/systemd/systemd/issues/6629?ref=blog.cloudflare.com" target="_blank">https://github.com/systemd/systemd/issues/6629</a></li>
+		<li><a href="https://github.com/systemd/systemd/issues/6629" target="_blank">https://github.com/systemd/systemd/issues/6629</a></li>
 	</ul>
 	<p>In the meantime, we work around our upstream issue by enabling offload features automatically on boot if they are disabled on VLAN interfaces.</p>
 	<p>Having a fix enabled, we rebooted our <code>logs</code> Kafka cluster to upgrade to the latest kernel, and our 5 day CPU usage history yielded positive results:</p>
@@ -588,7 +588,7 @@ udp-fragmentation-offload: on
 	<p>In the end, enabling offload also removed RCU stalls. It's not really clear whether it was the cause or just a catalyst, but the end result speaks for itself.</p>
 	<p>On the bright side, we dug pretty deep into Linux kernel internals, and although there were fleeting moments of giving up, moving to the woods to become a park ranger, we persevered and came out of the forest successful.</p>
 	<hr>
-	<p><em>If deep diving from high level symptoms to kernel/OS issues makes you excited, <a href="https://www.cloudflare.com/careers/?ref=blog.cloudflare.com" target="_blank">drop us a line</a>.</em></p>
+	<p><em>If deep diving from high level symptoms to kernel/OS issues makes you excited, <a href="https://www.cloudflare.com/careers/" target="_blank">drop us a line</a>.</em></p>
 	<hr>
 	<!--kg-card-end: markdown-->
 </div>

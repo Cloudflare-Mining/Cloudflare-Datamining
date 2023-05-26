@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<p>最近，在布拉格Linux网络会议<a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13</a>上，我做了<a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives" target="_blank">一个简短的演讲，题目是“Cloudflare上的Linux”</a>。<a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">演讲</a>最后主要是关于BPF（柏克莱封包过滤器）的。似乎，不管问题是什么——BPF都是答案。</p>
+	<p>最近，在布拉格Linux网络会议<a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13</a>上，我做了<a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives=" target="_blank">一个简短的演讲，题目是“Cloudflare上的Linux”</a>。<a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">演讲</a>最后主要是关于BPF（柏克莱封包过滤器）的。似乎，不管问题是什么——BPF都是答案。</p>
 	<p>下面是这次演讲的稍作调整的笔录。</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/01_edge-network-locations-100.jpg" class="kg-image" alt="" loading="lazy"></figure>
@@ -40,7 +40,7 @@
 	<ul>
 		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop: XDP &nbsp; &nbsp; &nbsp;DDoS缓解</a></li>
 		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap: XDP数据包捕获</a></li>
-		<li>Arthur Fabre的演讲：<a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">基于XDP的DoS缓解</a></li>
+		<li>Arthur Fabre的演讲：<a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation=" target="_blank">基于XDP的DoS缓解</a></li>
 		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">实践中的XDP：将XDP集成到我们的DDoS缓解通道中</a> (PDF)</li>
 	</ul>
 	<p>在这个项目中，我们遇到了许多eBPF/XDP限制。其中之一是缺乏并发原语。实现无竞争令牌桶之类的东西非常困难。后来，我们发现<a href="http://vger.kernel.org/lpc-bpf2018.html#session-9" target="_blank">Facebook工程师Julia Kartseva</a>遇到了同样的问题。在2月份，这个问题已经通过引入bpf_spin_lock helper得到了解决。</p>

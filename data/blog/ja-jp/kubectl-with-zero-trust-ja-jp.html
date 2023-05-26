@@ -7,7 +7,7 @@
 	<p>これらのネットワーク制限には、クラスターのAPIサーバーへのアクセスも含まれます。アクセスできない場合、Cloudflareのエンジニアはkubectlのようなツールを使ってチームのリソースを省みることができません。ベストプラクティスは継続的デプロイとGitOpsですが、開発者がKubernetes APIを使えるようにすることで、トラブルシューティングと開発者の速度を向上させることができます。アクセスできないことは、契約違反になります。</p>
 	<p>Cloudflareではセキュリティ要件を満たすためにCloudflare Zero Trustを使用していますが、その使用方法と、ここに至るまでの過程を紹介したいと思います。</p>
 	<h3 id="zero-trust-">Zero Trust以前</h3>
-	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust</a>以前の世界では、エンジニアはVPNアプライアンスに接続することでKubernetes APIにアクセスできました。これは、業界では一般的な手法であり、APIへのアクセスを許可するものですが、エンジニアをクライアントとして内部ネットワークに落とし込んでしまい、必要以上にネットワークにアクセスすることになっていました。</p>
+	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>以前の世界では、エンジニアはVPNアプライアンスに接続することでKubernetes APIにアクセスできました。これは、業界では一般的な手法であり、APIへのアクセスを許可するものですが、エンジニアをクライアントとして内部ネットワークに落とし込んでしまい、必要以上にネットワークにアクセスすることになっていました。</p>
 	<p>この状況に満足していたわけではありませんが、数年間はこの状態が続いていました。2020年初頭にVPNを廃止したため、Kubernetesチームは別のソリューションを見つける必要がありました。</p>
 	<h3 id="cloudflare-tunnel-kubernetes">Cloudflare Tunnelを利用したKubernetes</h3>
 	<p>当時、私たちはCloudflare Tunnelの開発チームと密接に協力し、<a href="https://blog.cloudflare.com/releasing-kubectl-support-in-access/">Accessを使用したkubectl接続</a>とCloudflareトンネルの処理のサポートを追加しました。</p>
@@ -18,7 +18,7 @@
 	<p>今では、Cloudflare Zero Trustのプライベートネットワークルーティングを活用することで、Cloudflareトンネルをセットアップしたり、kubectlなどのKubernetesエコシステムのツールがトンネルを使用するように設定したりしなくても、エンジニアがKubernetes APIにアクセスできるようになりました。これはCloudflareに限ったことではなく、お客様のチームでも今すぐできることです。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Kubectl-WIth-Warp-Diagram--2-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="zero-trust--1">Zero Trustの設定</h3>
-	<p>私たちは<a href="https://github.com/cloudflare/terraform-provider-cloudflare?ref=blog.cloudflare.com" target="_blank">構成管理ツール</a>を使って、コードとしてのインフラストラクチャを実現するためのZero Trustの構成を行っており、以下にそれをご紹介します。ただし、Cloudflare Zero Trustダッシュボードを使用しても同じ構成を行うことができます。</p>
+	<p>私たちは<a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank">構成管理ツール</a>を使って、コードとしてのインフラストラクチャを実現するためのZero Trustの構成を行っており、以下にそれをご紹介します。ただし、Cloudflare Zero Trustダッシュボードを使用しても同じ構成を行うことができます。</p>
 	<p>まず最初に、新しいトンネルを作成する必要があります。このトンネルは、CloudflareのエッジネットワークをKubernetes APIに接続するために使用されます。後述する構成で、Kubernetes内でトンネルエンドポイントを実行します。</p>
 	<pre><code>resource "cloudflare_argo_tunnel" "k8s_zero_trust_tunnel" {
   account_id = var.account_id
@@ -63,7 +63,7 @@ resource "cloudflare_teams_rule" "k8s_apiserver_zero_trust_http" {
 }
 </code></pre>
 	<p>クライアントとAPIサーバー間では相互TLSを使用しており、kubectlとAPIサーバー間のトラフィックはすべてHTTPではないため、これらの接続についてはHTTPインスペクションを無効にしています。</p>
-	<p>これらのルールを、<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/?ref=blog.cloudflare.com" target="_blank">デバイスアテステーション</a>、<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions/?ref=blog.cloudflare.com" target="_blank">セッションの存続時間</a>、<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors/?ref=blog.cloudflare.com" target="_blank">ユーザーとグループ</a>のアクセスポリシーなどの追加のZero Trustルールと組み合わせることで、さらにセキュリティをカスタマイズできます。</p>
+	<p>これらのルールを、<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/" target="_blank">デバイスアテステーション</a>、<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions/" target="_blank">セッションの存続時間</a>、<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors/" target="_blank">ユーザーとグループ</a>のアクセスポリシーなどの追加のZero Trustルールと組み合わせることで、さらにセキュリティをカスタマイズできます。</p>
 	<h3 id="-">トンネルのデプロイ</h3>
 	<p>トンネルの作成と設定が完了したら、そのエンドポイントをネットワークにデプロイできます。トンネルをポッドとしてデプロイすることにより、アップグレードのロールアウトやノード障害の処理にKubernetesのデプロイメント戦略を利用できるようになります。</p>
 	<pre><code>apiVersion: v1

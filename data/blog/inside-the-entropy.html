@@ -11,7 +11,7 @@
 	<p></p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image9-2.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>During Crypto week, Cloudflare is releasing a new <a href="https://blog.cloudflare.com/league-of-entropy">public randomness beacon</a> as part of the launch of the <a href="https://leagueofentropy.com" target="_blank">League of Entropy</a>. The League of Entropy is a network of beacons that produces <em>distributed</em>, <em>publicly verifiable</em> random outputs for use in applications where the nature of the randomness must be publicly audited. The underlying cryptographic architecture is based on the <a href="https://github.com/dedis/drand" target="_blank">drand project</a>.</p><!--kg-card-begin: markdown-->
+	<p>During Crypto week, Cloudflare is releasing a new <a href="https://blog.cloudflare.com/league-of-entropy">public randomness beacon</a> as part of the launch of the <a href="https://leagueofentropy.com/" target="_blank">League of Entropy</a>. The League of Entropy is a network of beacons that produces <em>distributed</em>, <em>publicly verifiable</em> random outputs for use in applications where the nature of the randomness must be publicly audited. The underlying cryptographic architecture is based on the <a href="https://github.com/dedis/drand" target="_blank">drand project</a>.</p><!--kg-card-begin: markdown-->
 	<p>Verifiable randomness is essential for ensuring trust in various institutional decision-making processes such as <a href="https://blog.cloudflare.com/league-of-entropy">elections and lotteries</a>. There are also cryptographic applications that require verifiable randomness. In the land of decentralized consensus mechanisms, the <a href="https://dfinity.org/static/dfinity-consensus-0325c35128c72b42df7dd30c22c41208.pdf" target="_blank">DFINITY approach</a> uses random seeds to decide the outcome of leadership elections. In this setting, it is essential that the randomness is publicly verifiable so that the outcome of the leadership election is trustworthy. Such a situation arises more generally in <a href="https://en.wikipedia.org/wiki/Sortition" target="_blank">Sortitions</a>: an election where leaders are selected as a random individual (or subset of individuals) from a larger set.</p>
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p>In this blog post, we will give a technical overview behind the cryptography used in the distributed randomness beacon, and how it can be used to generate publicly verifiable randomness. We believe that distributed randomness beacons have a huge amount of utility in realizing the <a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019/">Internet of the Future</a>; where we will be able to rely on distributed, decentralized solutions to problems of a global-scale.</p>
@@ -94,10 +94,10 @@
 	<p>The randomness beacons are synchronised in rounds. At each round, a beacon produces a new signature <code>u_i</code> using its private key <code>sk_i</code> on the previous signature generated and the round ID. These signatures are usually broadcast on the URL <code>drand.&lt;host&gt;.com/api/public</code>. These signatures can be verified using the keys <code>vk_i</code> and over the same data that is signed. By signing the previous signature and the current round identifier, this establishes a chain of trust for the randomness beacon that can be traced back to the original signature value.</p>
 	<p>The randomness can be retrieved by combining the signatures from each of the beacons using the threshold property of the scheme. This reconstruction of the signature <code>u</code> from each intermediate signature <code>u_i</code> is done internally by the League of Entropy nodes. Each beacon broadcasts the entire signature <code>u</code>, that can be accessed over the HTTP endpoint above.</p>
 	<h2 id="the-drand-beacon">The drand beacon</h2>
-	<p>As we mentioned at the start of this blog post, Cloudflare has launched our <a href="https://blog.cloudflare.com/league-of-entropy">distributed randomness beacon</a>. This beacon is part of a network of beacons from different institutions around the globe that form the <a href="https://leagueofentropy.com" target="_blank">League of &nbsp;Entropy</a>.</p>
+	<p>As we mentioned at the start of this blog post, Cloudflare has launched our <a href="https://blog.cloudflare.com/league-of-entropy">distributed randomness beacon</a>. This beacon is part of a network of beacons from different institutions around the globe that form the <a href="https://leagueofentropy.com/" target="_blank">League of &nbsp;Entropy</a>.</p>
 	<p>The Cloudflare beacon uses <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details/">LavaRand</a> as its internal source of randomness for the DKG. Other League of Entropy drand beacons have their own sources of randomness.</p>
 	<h3 id="give-me-randomness-">Give me randomness!</h3>
-	<blockquote>The below API endpoints are obsolete. Please see <a href="https://drand.love" target="_blank">https://drand.love</a> for the most up-to-date documentation.</blockquote>
+	<blockquote>The below API endpoints are obsolete. Please see <a href="https://drand.love/" target="_blank">https://drand.love</a> for the most up-to-date documentation.</blockquote>
 	<p>The drand beacon allows you to retrieve the latest random value from the League of Entropy using a simple HTTP request:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">curl https://drand.cloudflare.com/api/public
 </code></pre>
@@ -120,16 +120,16 @@
 	<!--kg-card-end: markdown-->
 	<p>There are eight collaborators in the League of Entropy. You can learn the current round of randomness (or the system’s public key) by querying these beacons on the HTTP endpoints listed above.</p>
 	<ul>
-		<li><a href="https://drand.cloudflare.com:443" target="_blank">https://drand.cloudflare.com:443</a></li>
-		<li><a href="https://random.uchile.cl:8080" target="_blank">https://random.uchile.cl:8080</a></li>
-		<li><a href="https://drand.cothority.net:7003" target="_blank">https://drand.cothority.net:7003</a></li>
-		<li><a href="https://drand.kudelskisecurity.com:443" target="_blank">https://drand.kudelskisecurity.com:443</a></li>
-		<li><a href="https://drand.lbarman.ch:443" target="_blank">https://drand.lbarman.ch:443</a></li>
-		<li><a href="https://drand.nikkolasg.xyz:8888" target="_blank">https://drand.nikkolasg.xyz:8888</a></li>
-		<li><a href="https://drand.protocol.ai:8080" target="_blank">https://drand.protocol.ai:8080</a></li>
-		<li><a href="https://drand.zerobyte.io:8888" target="_blank">https://drand.zerobyte.io:8888</a></li>
+		<li><a href="https://drand.cloudflare.com/" target="_blank">https://drand.cloudflare.com:443</a></li>
+		<li><a href="https://random.uchile.cl:8080/" target="_blank">https://random.uchile.cl:8080</a></li>
+		<li><a href="https://drand.cothority.net:7003/" target="_blank">https://drand.cothority.net:7003</a></li>
+		<li><a href="https://drand.kudelskisecurity.com/" target="_blank">https://drand.kudelskisecurity.com:443</a></li>
+		<li><a href="https://drand.lbarman.ch/" target="_blank">https://drand.lbarman.ch:443</a></li>
+		<li><a href="https://drand.nikkolasg.xyz:8888/" target="_blank">https://drand.nikkolasg.xyz:8888</a></li>
+		<li><a href="https://drand.protocol.ai:8080/" target="_blank">https://drand.protocol.ai:8080</a></li>
+		<li><a href="https://drand.zerobyte.io:8888/" target="_blank">https://drand.zerobyte.io:8888</a></li>
 	</ul>
 	<h2 id="randomness-the-future">Randomness &amp; the future</h2>
-	<p>Cloudflare will continue to take an active role in the drand project, both as a contributor and by running a randomness beacon with the League of Entropy. The League of Entropy is a worldwide joint effort of individuals and academic institutions. We at Cloudflare believe it can help us realize the mission of helping Build a Better Internet. For more information on Cloudflare's participation in the League of Entropy, visit <a href="https://leagueofentropy.com" target="_blank">https://leagueofentropy.com</a> or read <a href="https://blog.cloudflare.com/league-of-entropy">Dina's blog post</a>.</p>
+	<p>Cloudflare will continue to take an active role in the drand project, both as a contributor and by running a randomness beacon with the League of Entropy. The League of Entropy is a worldwide joint effort of individuals and academic institutions. We at Cloudflare believe it can help us realize the mission of helping Build a Better Internet. For more information on Cloudflare's participation in the League of Entropy, visit <a href="https://leagueofentropy.com/" target="_blank">https://leagueofentropy.com</a> or read <a href="https://blog.cloudflare.com/league-of-entropy">Dina's blog post</a>.</p>
 	<p>Cloudflare would like to thank all of their collaborators in the League of Entropy; from EPFL, UChile, Kudelski Security and Protocol Labs. This work would not have been possible without the work of those who contributed to the <a href="https://github.com/dedis/drand" target="_blank">open-source drand project</a>. We would also like to thank and appreciate the work of Gabbi Fisher, Brendan McMillion, and Mahrud Sayrafi in launching the Cloudflare randomness beacon.</p>
 </div>

@@ -31,9 +31,9 @@
 	<p>Die bestehende Benennungsregel respektiert bereits den Namen und den Pfad des Quellbildes. Nehmen wir also an, dass Sie das Bild eines Welpen abrufen wollen:</p>
 	<p><code><a href="https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png" target="_blank">https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png</a></code></p>
 	<p>Wenn Sie es ohne Pfadpräfix importieren, finden Sie das Bild unter</p>
-	<p><code><a href="https://imagedelivery.net/<AccountId>/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png</a></code></p>
+	<p><code><a href="https://imagedelivery.net/%3CAccountId%3E/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png</a></code></p>
 	<p>Nun möchten Sie vielleicht einen zusätzlichen Pfadpräfix erstellen, um die Quelle zu identifizieren, z. B. indem Sie erwähnen, dass dieser Bucket aus der Abteilung Technische Redaktion stammt. Im Fall des Welpen würde das Ergebnis lauten:</p>
-	<p><code><a href="https://imagedelivery.net/<AccountId>/techwriting/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/<strong>techwriting</strong>/folderA/puppy.png</a></code></p>
+	<p><code><a href="https://imagedelivery.net/%3CAccountId%3E/techwriting/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/<strong>techwriting</strong>/folderA/puppy.png</a></code></p>
 	<p>Benutzerdefinierte Pfadpräfixe helfen auch, Namenskonflikte mit anderen Quellen zu vermeiden.</p>
 	<p>Dennoch wird es Fälle geben, in denen Kunden darauf verzichten möchten. Und wenn Sie die Quelle zum Importieren von Bildern wiederverwenden, kann es zu Konflikten mit dem gleichen Pfad und Dateinamen kommen. </p>
 	<p>Standardmäßig überschreiben wir vorhandene Bilder nicht, aber Sie können diese Option auswählen und Ihren Katalog in der Cloudflare-Pipeline aktualisieren.</p>
@@ -48,6 +48,6 @@
 	<p>Mit der Beta-Version des Cloudflare Images Sourcing Kit werden Sie AWS S3-Buckets als Quelle für die Importe definieren können. In den folgenden Versionen werden wir Definitionen für andere gängige Repositories ermöglichen, wie z. B. die von Azure Storage Accounts oder Google Cloud Storage.</p>
 	<p>Und obwohl wir unsere Benutzeroberfläche einfach halten wollen, planen wir auch, alles über die CLI verfügbar zu machen: von der Definition der Repository-URL über den Start des Upload-Prozesses bis hin zum Abrufen des endgültigen Berichts.</p>
 	<h3 id="bewerben-sie-sich-f-r-die-beta-version">Bewerben Sie sich für die Beta-Version</h3>
-	<p>Wir werden in den nächsten Wochen die Beta-Version dieses Kits veröffentlichen, die es Ihnen ermöglicht, Ihre Bilder von Drittanbieter-Repositories zu Cloudflare zu übertragen. Wenn Sie das Sourcing Kit als Erster nutzen möchten, können Sie sich auf dem <a href="https://dash.cloudflare.com/?to=/:account/images" target="_blank">Dashboard von Cloudflare Images</a> auf die Warteliste eintragen.</p>
+	<p>Wir werden in den nächsten Wochen die Beta-Version dieses Kits veröffentlichen, die es Ihnen ermöglicht, Ihre Bilder von Drittanbieter-Repositories zu Cloudflare zu übertragen. Wenn Sie das Sourcing Kit als Erster nutzen möchten, können Sie sich auf dem <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fimages" target="_blank">Dashboard von Cloudflare Images</a> auf die Warteliste eintragen.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-39.png" class="kg-image" alt="" loading="lazy"></figure>
 </div>
