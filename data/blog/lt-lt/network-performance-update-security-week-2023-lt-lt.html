@@ -1,0 +1,382 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image6-11-3.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<p>Kiekvienos inovacijų savaitės metu "Cloudflare" išbando savo tinklo našumą, palyginti su konkurentais. Praėjusiomis savaitėmis daugiausia dėmesio skyrėme tam, kiek esame greiti, palyginti su atvirkštiniais <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/" target="_blank">tarpiniais serveriais</a>, tokiais kaip "Akamai", arba platformomis, parduodančiomis beserverius skaičiavimus, kurie prilygsta mūsų "<a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022/">Supercloud</a>", tokiomis kaip "Fastly" ir AWS. Šią savaitę norėtume pateikti atnaujintą informaciją apie tai, kaip mus galima palyginti su kitais atvirkštiniais tarpiniais serveriais, taip pat atnaujinti mūsų taikomųjų paslaugų saugumo produkto palyginimą su "Zscaler" ir "Netskope". Šis produktas yra mūsų "Zero Trust" platformos dalis, kuri padeda apsaugoti taikomąsias programas ir interneto patirtį viešajame internete, priešingai nei mūsų atvirkštinis tarpinis serveris, kuris apsaugo jūsų svetaines nuo išorės naudotojų.</p>
+	<p>Be ankstesnio straipsnio, <a href="https://blog.cloudflare.com/network-performance-update-cio-edition/">kuriame lyginome mūsų "Zero Trust" platformą su "Zscaler",</a> anksčiau taip pat dalijomės išsamiais atvirkštinių proxy serverių <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">tinklo lyginamosios analizės rezultatais</a> iš 3000 paskutinės mylios tinklų visame pasaulyje. Praėjo nemažai laiko nuo tada, kai parodėme jums savo pažangą siekiant tapti Nr. 1 kiekviename paskutinės mylios tinkle. Norime jums parodyti šiuos duomenis, taip pat dar kartą peržiūrėti savo lyginamųjų analizių seriją, kurioje lyginome "Cloudflare" prieigą su "Zscaler Private Access" ir "Netskope Private Access". Mūsų bendruose tinklo testuose "Cloudflare" užima pirmąją vietą 47 % iš 3000 geriausių tinklų. Mūsų taikomųjų programų saugumo testuose "Cloudflare" yra 50 % greitesnė už "Zscaler" ir 75 % greitesnė už "Netskope".</p>
+	<p>Šiame tinklaraštyje kalbėsime apie tai, kodėl mūsų produktams svarbus našumas, gilinsimės į tai, ką matuojame, kad parodytume, jog esame greitesni, ir papasakosime, kaip matavome kiekvieno produkto našumą.</p>
+	<h3 id="kod%C4%97l-veiklos-rezultatai-yra-svarb%C5%ABs">Kodėl veiklos rezultatai yra svarbūs?</h3>
+	<p>Apie tai kalbėjome <a href="https://blog.cloudflare.com/network-performance-update-cio-edition/">paskutiniame tinklaraštyje</a>, tačiau veiklos rezultatai yra svarbūs, nes jie daro įtaką darbuotojų patirčiai ir jų gebėjimui atlikti savo darbą. Nesvarbu, ar tai būtų prieiga prie paslaugų naudojant prieigos kontrolės produktus, ar prisijungimas prie viešojo interneto naudojant <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">saugius interneto vartus</a>, ar rizikingų išorinių svetainių apsauga naudojant nuotolinės <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/" target="_blank">naršyklės izoliavimo funkciją</a>, visa tai turi būti sklandu.</p>
+	<p>Apibendrinant: tarkime, Bobas iš "Acme Corporation" prisijungia iš Johanesburgo prie "Slack" arba "Zoom", kad atliktų tam tikrą darbą. Jei "Acme" saugūs interneto vartai yra toli nuo Bobo Londone, Bobo duomenų srautas gali būti nukreipiamas iš Johanesburgo į Londoną, o tada atgal į Johanesburgą, kad galėtų pasiekti savo el. paštą. Jei Bobas bando atlikti kažką panašaus į balso skambutį per "Slack" ar "Zoom", jo patirtis gali būti labai lėta, nes jis laukia, kol bus išsiųsti ir gauti jo el. laiškai. Norint pasiekti optimalų našumą, tiek "Zoom", tiek "Slack" rekomenduoja nedidelį vėlavimą. Šis papildomas šuolis, kurį Bobas turi atlikti per savo šliuzą, gali sumažinti pralaidumą ir padidinti vėlavimą, todėl Bobo patirtis gali pablogėti.</p>
+	<p>Kaip aptarėme anksčiau, jei šie produktai ar patirtis yra lėti, gali nutikti kai kas blogiau nei tai, kad jūsų naudotojai skundžiasi: jie gali rasti būdų, kaip išjungti produktus arba juos apeiti, taip sukeldami pavojų jūsų įmonei. Produktų rinkinys "Zero Trust" yra visiškai neveiksmingas, jei niekas juo nesinaudoja, nes jis lėtas. Užtikrinti, kad "Zero Trust" būtų greitas, yra labai svarbu "Zero Trust" sprendimo veiksmingumui: darbuotojai nenorės jo išjungti ir rizikuoti, jei nežinos, kad jis apskritai yra.</p>
+	<p>Kaip ir "Zscaler", "Netskope" gali pranokti daugelį senesnių sprendimų, tačiau jų tinklas vis tiek negali prilygti tokiam didelio našumo optimizuotam tinklui kaip "Cloudflare". Visus savo "Zero Trust" produktus išbandėme su "Netskope" analogiškais produktais ir netgi sugrąžinome "Zscaler", kad parodytume jums, kaip "Zscaler" atrodo. Taigi, įsigilinkime į duomenis ir parodykime, kaip ir kodėl esame greitesni kritiniu "Zero Trust" scenarijumi, lygindami "Cloudflare Access" su "Zscaler Private Access" ir "Netskope Private Access".</p>
+	<h3 id="cloudflare-access-grei%C4%8Diausias-zero-trust-tarpinis-serveris">"Cloudflare Access": greičiausias "Zero Trust" tarpinis serveris</h3>
+	<p>Prieigos kontrolė turėtų būti sklandi ir skaidri naudotojui: geriausias komplimentas "nulinio pasitikėjimo" sprendimui yra tai, kad darbuotojai beveik nepastebi, jog jis yra. Šios paslaugos leidžia naudotojams talpinti autentifikavimo informaciją paslaugų teikėjo tinkle, suteikia saugią ir greitą prieigą prie taikomųjų programų, kad naudotojams būtų užtikrinta norima sklandi patirtis. Taigi, turint tinklą, kuris sumažina reikalingų prisijungimų skaičių, taip pat sumažina taikomųjų programų užklausų vėlavimą, padės išlaikyti momentinę ir greitą interneto patirtį.</p>
+	<p>Visa tai "Cloudflare Access" atlieka 75 % greičiau nei "Netskope" ir 50 % greičiau nei "Zscaler", užtikrindama, kad nesvarbu, kurioje pasaulio vietoje esate, gausite greitą ir saugią taikomųjų programų naudojimo patirtį:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>"Cloudflare" matavo mūsų, "Zscaler" ir "Netskope" programėlių prieigą iš 300 skirtingų pasaulio vietų, jungdamasi prie 6 atskirų programėlių serverių Honkonge, Toronte, Johanesburge, San Paule, Finikse ir Šveicarijoje. Kiekvienoje iš šių vietų "Cloudflare P95" atsako laikas buvo greitesnis nei "Zscaler" ir "Netskope". Pažvelkime į duomenis, kai programa talpinama Toronte - regione, kuriame "Zscaler" ir "Netskope" turėtų pasirodyti gerai, nes šiame regione yra stiprus tarpusavio ryšys: Šiaurės Amerika.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--8.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0pky" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access - Atsiliepimo laikas (95-asis procentilis) - Torontas</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95-osios procentilės atsakas (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2 182</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4 071</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5 139</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>"Cloudflare" išsiskiria įvairesnio ryšio regionuose, pavyzdžiui, Pietų Amerikoje ar Azijos ir Ramiojo vandenyno regione, kur "Zscaler" lyginama su "Netskope" geriau nei "Cloudflare":</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Nagrinėjant taikomųjų programų serverius, prieglobą turinčius Pietų Amerikoje, išsiskiria "Cloudflare":</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0pky" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access - Reagavimo laikas (95-asis procentilis) - Pietų Amerika</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95-osios procentilės atsakas (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2 961</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9 271</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8 223</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Čia išsiskiria "Cloudflare" tinklas, leidžiantis mums pristatyti ryšius šalia naudotojų. Tuo galite įsitikinti pažvelgę į Pietų Amerikoje esančio ryšio trukmę:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0pky" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access - Reagavimo laikas (95-asis procentilis) - Pietų Amerika</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95-asis procentilis ryšys (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">369</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 753</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 160</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>"Cloudflare" tinklas čia mus išskiria, nes galime greičiau perkelti naudotojus į savo tinklą ir rasti geriausius maršrutus visame pasaulyje atgal į programos prieglobos įrenginį. Dėl šios supergalimybės esame dukart greitesni už "Zscaler" ir triskart greitesni už "Netskope". Visuose skirtinguose lyginamuosiuose tyrimuose "Cloudflare" ryšio laikas visuose 300 testuotų mazgų yra nuosekliai greitesnis.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--3--5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p><a href="https://blog.cloudflare.com/network-performance-update-cio-edition/">Paskutiniame tinklaraštyje</a> nagrinėjome du skirtingus scenarijus, kuriuos reikia vertinti atskirai lyginant "Cloudflare" ir "Zscaler". Pirmasis scenarijus - kai naudotojas prisijungia prie savo taikomosios programos ir turi patvirtinti savo tapatybę. Šiuo atveju "Zero Trust Access" paslauga nukreips naudotoją į prisijungimo puslapį, naudotojas patvirtins savo tapatybę ir bus nukreiptas į savo taikomąją programą.</p>
+	<p>Tai vadinama nauja sesija, nes autentifikavimo informacija nėra įrašyta į talpyklą arba neegzistuoja "Access" tinkle. Antrasis scenarijus vadinamas esama sesija, kai naudotojas jau buvo autentifikuotas ir ši autentifikavimo informacija gali būti įrašyta į talpyklą. Šis scenarijus paprastai yra daug greitesnis, nes jam užbaigti nereikia papildomo skambučio tapatybės paslaugų teikėjui.</p>
+	<p>Šiuos scenarijus mėgstame vertinti atskirai, nes, kai vertiname 95-ojo procentilio reikšmes, beveik visada vertiname naujas sesijas, jei sujungiame naujas ir esamas sesijas. Tačiau pagal abu scenarijus "Cloudflare" yra nuosekliai greitesnė visuose regionuose. Grįžkime ir pažvelkime į Toronte patalpintą taikomąją programą, prie kurios prisijungę naudotojai yra greitesni už "Zscaler" ir "Netskope" tiek naujų, tiek esamų sesijų atveju.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0pky" colspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access – Reagavimo laikas (95-asis procentilis) – Torontas</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Naujos sesijos (ms)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Esamos sesijos (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 276</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 022</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2 415</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 797</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5 741</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 822</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Kaip ir tikėtasi, naujos sesijos paprastai būna lėtesnės, tačiau "Cloudflare" tinklas ir optimizuota programinė įranga užtikrina nuolatinę greitą naudotojo patirtį. Scenarijuose, kuriuose ryšys "nuo galo iki galo" gali būti sudėtingesnis, "Cloudflare" demonstruoja dar didesnę naudą. Įsivaizduokite, kad naudotojai Azijoje jungiasi prie programos Honkonge.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0pky" colspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access – Reagavimo laikas (95-asis procentilis) – Hong Kongas</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Naujos sesijos (ms)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Esamos sesijos (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2 582</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2 075</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4 956</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3 617</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5 139</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3 902</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Įdomu tai, kad nors "Cloudflare" tinklas yra itin optimizuotas našumui užtikrinti, "Zscaler" pagal našumą artimesnis "Netskope" nei "Cloudflare". Netskope taip pat prastai veikia naujų sesijų metu, o tai rodo, kad jų paslauga nereaguoja, kai naudotojai sukuria naujas sesijas.</p>
+	<p>Mums patinka atskirti šias naujas ir esamas sesijas, nes norint tinkamai palyginti, svarbu nagrinėti panašius užklausų kelius. Pavyzdžiui, jei palygintume užklausą per "Zscaler" esamos sesijos metu su užklausa per "Cloudflare" naujos naujos sesijos metu, pamatytume, kad "Cloudflare" buvo daug lėtesnė nei "Zscaler" dėl reikalingo autentifikavimo. Taigi, kai samdėme trečiąją šalį šiems bandymams parengti, įsitikinome, kad ji į tai atsižvelgė.</p>
+	<p>Šiems bandymams atlikti "Cloudflare" sukūrė penkis programos egzempliorius, kurie buvo patalpinti Toronte, Los Andžele, San Paule, Johanesburge ir Honkonge. Tada "Cloudflare" naudojo 300 skirtingų "Catchpoint" mazgų iš viso pasaulio, kad imituotų naršyklės autentiškumo nustatymą taip: </p>
+	<ul>
+		<li>Vartotojas prisijungia prie programos iš naršyklės, kurią imituoja "Catchpoint" instancija - nauja sesija</li>
+		<li>Naudotojas autentifikuojasi su savo tapatybės paslaugų teikėju</li>
+		<li>Naudotojas gauna prieigą prie ištekliaus</li>
+		<li>Naudotojas atnaujina naršyklės puslapį ir bando pasiekti tą patį išteklių, tačiau naudodamasis esamais įgaliojimais - esama sesija.</li>
+	</ul>
+	<p>Tai leidžia mums palyginti "Cloudflare" su visais kitais produktais pagal naujų ir esamų sesijų taikomųjų programų našumą, ir mes įrodėme, kad esame greitesni. Kaip minėjome, už tai daug kuo esame dėkingi savo tinklui ir tam, kaip priartėjame prie naudotojų. Taigi dabar kalbėsime apie tai, kaip mes lyginame su kitais dideliais tinklais ir kaip priartėjame prie jūsų.</p>
+	<h3 id="tinklo-poveikis-pagerina-naudotojo-patirt%C4%AF">Tinklo poveikis pagerina naudotojo patirtį</h3>
+	<p>Priartėjus prie naudotojų, pagerėja paskutinės mylios laikas (RTT). Kaip aptarėme prieigos palyginime, mažas RTT pagerina klientų našumą, nes naujoms ir esamoms sesijoms nereikia keliauti labai toli, kad pasiektų "Cloudflare Zero Trust" tinklą. Integracija į šiuos paskutinės mylios tinklus padeda mums priartėti prie naudotojų, o tai ne tik prisideda prie "Zero Trust" efektyvumo, bet ir <a href="https://blog.cloudflare.com/network-performance-update-security-week/">pagerina žiniatinklio</a> ir <a href="https://blog.cloudflare.com/network-performance-update-developer-week/">kūrėjų našumą</a>, kaip aptarėme ankstesniuose tinklaraščiuose.</p>
+	<p>Norėdami kiekybiškai įvertinti tinklo našumą, turime gauti pakankamai duomenų iš viso pasaulio, iš skirtingų tinklų, lygindami save su kitais paslaugų teikėjais. Naudodami "Real User Measurements" (RUM), gavome 100 KB failą iš kelių skirtingų paslaugų teikėjų. Vartotojai iš viso pasaulio praneša apie skirtingų paslaugų teikėjų našumą. Kuo daugiau naudotojų praneša duomenis, tuo tikslesnis signalas. Tikslas - pateikti tikslų vaizdą, kur skirtingų paslaugų teikėjai veikia greičiau ir, dar svarbiau, kur "Cloudflare" gali tobulėti. Daugiau informacijos apie metodiką galite rasti originaliame 2021 m. "Speed Week 2021" tinklaraščio įraše <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">čia</a>.</p>
+	<p>Nuolat vyksta procesas, kurio metu išsiaiškiname, kodėl esame lėti, ir tada tobulėjame. Iššūkiai, su kuriais susidūrėme, buvo unikalūs kiekvienam tinklui ir išryškino įvairias problemas, kurios būdingos visam internetui. Apžvelgsime kai kurias pastangas, kurių imamės, kad pagerintume našumą savo naudotojams.</p>
+	<p>Tačiau prieš tai pateikiame mūsų pastangų rezultatus, pasiektus per "Developer Week 2022", kai paskutinį kartą rodėme šiuos skaičius. Iš 3000 didžiausių pasaulio tinklų (pagal reklamuojamų IPv4 adresų skaičių) čia pateikiame tinklų, kuriuose kiekvienas interneto paslaugų teikėjas užima pirmąją vietą pagal p95 TCP ryšio laiką, kuris rodo laiką, per kurį naudotojas tam tikrame tinkle prisijungia prie interneto paslaugų teikėjo, pasiskirstymą:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Štai kaip šie skaičiai atrodo šią savaitę, 2023 m. saugumo savaitę</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--5--2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kaip matote, "Cloudflare" padidino savo pranašumą daugiau tinklų, o kiti tinklai, kurie anksčiau buvo greitesni, pavyzdžiui, "Akamai" ir "Fastly", prarado savo pranašumą. Tai turi tokį poveikį, kokį matome pasaulio žemėlapyje. Štai kaip tas pasaulio žemėlapis atrodė 2022 m. per Kūrėjų savaitės 2022 m" metu:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6--2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Taip atrodo pasaulio žemėlapis 2023 m. saugumo savaitės metu:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kaip matote, "Cloudflare" tapo greitesnė Brazilijoje, daugelyje Afrikos šalių, įskaitant Pietų Afriką, Etiopiją ir Nigeriją, taip pat Indonezijoje Azijoje ir Norvegijoje, Švedijoje bei Jungtinėje Karalystėje Europoje.</p>
+	<p>Daugelis šių šalių pasinaudojo "Edge Partner" programa, kurią aptarėme savo <a href="https://blog.cloudflare.com/how-cloudflare-helps-next-generation-markets/">"Poveikio savaitės" tinklaraštyje</a>. Trumpas atnaujinimas: "Edge Partner" programa skatina paskutinės mylios interneto paslaugų teikėjus bendradarbiauti su "Cloudflare" ir įrengti "Cloudflare" padalinius paskutinės mylios paslaugų teikėjo viduje. Tai pagerina paskutinės mylios RTT ir pagerina tokių paslaugų, kaip prieiga, našumą. Nuo tada, kai paskutinį kartą rodėme šį žemėlapį, "Cloudflare" įdiegė daugiau partnerių vietų tokiose šalyse kaip Nigerija ir Saudo Arabija, todėl pagerėjo naudotojų našumas visuose scenarijuose. Tokios pastangos, kaip "Edge" partnerių programa, padeda pagerinti ne tik pirmiau aprašytus "nulinio pasitikėjimo" scenarijus, bet ir bendrą galutinių naudotojų, besinaudojančių "Cloudflare" apsaugotomis svetainėmis, naršymo internete patirtį.</p>
+	<h3 id="naujos-kartos-na%C5%A1umas-zero-trust-pasaulyje">Naujos kartos našumas "Zero Trust" pasaulyje</h3>
+	<p>Pasaulyje be nulinio pasitikėjimo tinklo operatoriumi būtumėte jūs ir jūsų IT komandos, todėl galėtumėte kontroliuoti našumą. Nors ši kontrolė buvo patogi, jūsų IT komandoms taip pat teko didžiulė našta valdyti ryšius tarp biurų ir išteklių. Tačiau "Zero Trust" pasaulyje jūsų tinklas dabar yra... viešasis internetas. Tai reiškia, kad mažiau darbo jūsų komandoms, bet daug daugiau atsakomybės jūsų "Zero Trust" paslaugų teikėjui, kuris turi valdyti kiekvieno atskiro naudotojo našumą. Kuo geriau jūsų "Zero Trust" paslaugų teikėjui pavyks pagerinti galutinį našumą, tuo geresnė bus jūsų naudotojų patirtis ir tuo mažiau rizikuosite. Realaus laiko taikomosioms programoms, pavyzdžiui, autentifikavimo ir saugių interneto vartų, labai svarbu, kad naudotojų patirtis būtų momentinė.</p>
+	<p>Nulinio pasitikėjimo paslaugų teikėjas turėtų ne tik apsaugoti jūsų naudotojus viešajame žiniatinklyje, bet ir optimizuoti viešąjį žiniatinklį, kad jūsų naudotojai visada išliktų apsaugoti. Perėjimas prie "Zero Trust" ne tik sumažina įmonių tinklų poreikį, bet ir leidžia naudotojų srautui natūraliau tekėti į išteklius. Tačiau atsižvelgiant į tai, kad "Zero Trust" paslaugų teikėjas bus visų jūsų naudotojų ir visų jūsų programų sargas, našumas yra labai svarbus aspektas, kurį reikia įvertinti, siekiant sumažinti naudotojų trikdžius ir tikimybę, kad jie skųsis, bus mažiau produktyvūs arba išjungs sprendimą. Nuolat tobuliname savo tinklą, kad naudotojams suteiktume geriausią įmanomą patirtį, vykdydami tokias programas kaip "<a href="https://www.cloudflare.com/partners/peering-portal/" target="_blank">Edge Partner Programme</a>" ir nuolat tobulindami savo lygiavertiškumą bei tarpusavio sujungimą. Būtent dėl šių nenuilstamų pastangų esame sparčiausiai augantis "Zero Trust" paslaugų teikėjas.</p>
+</div>

@@ -91,8 +91,8 @@ await fetch(url, {
 	<p>As an additional improvement it is worth noting that an Elastic Stack uses <a href="https://www.elastic.co/webinars/getting-started-kibana" target="_blank">Kibana</a> as a front end visualisation interface available over HTTP/S. The Kibana endpoint (let's assume <code>kibana.example.com</code>) can also be proxied via Cloudflare, but it is normally used only internally within an organization. The origin therefore needs to be protected and made accessible only to colleagues.</p>
 	<p>We can use two Cloudflare features to improve the Kibana deployment:</p>
 	<ul>
-		<li><a href="https://www.cloudflare.com/products/argo-tunnel" target="_blank">Argo Tunnel</a> allows the Kibana origin to reach out directly to Cloudflare, avoiding the need of a publicly accessible IP address or hostname;</li>
-		<li><a href="https://www.cloudflare.com/products/cloudflare-access" target="_blank">Cloudflare Access</a> allows you to integrate Cloudflare with your Identity and Access Management tool, and define rules that specify which users or groups have access to the Kibana instance;</li>
+		<li><a href="https://www.cloudflare.com/products/argo-tunnel/" target="_blank">Argo Tunnel</a> allows the Kibana origin to reach out directly to Cloudflare, avoiding the need of a publicly accessible IP address or hostname;</li>
+		<li><a href="https://www.cloudflare.com/products/cloudflare-access/" target="_blank">Cloudflare Access</a> allows you to integrate Cloudflare with your Identity and Access Management tool, and define rules that specify which users or groups have access to the Kibana instance;</li>
 	</ul>
 	<h3 id="logsforeveryone">Logs for Everyone</h3>
 	<p>Before we launched Workers, retrieving raw logs from Cloudflare was only available to enterprise customers. With a little technical effort you can now start receiving logs from the edge by leveraging Workers regardless of which plan you are using. Workers are available starting on a pay per usage model and the ELK stack is open source.</p>

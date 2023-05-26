@@ -7,7 +7,7 @@
 		<li><strong>大型企业</strong>已经将多云存储——以及多云本身——视为不切实际的梦想。他们兴奋地来找到我们，提出与合作公司集成数据的新产品。</li>
 		<li><strong>非营利研究机构</strong>支付巨额出口费用，只是为了在彼此之间分享实验数据。出口费用对他们的协作能力产生了切实的影响，在组织之间形成孤岛，限制他们能进行的实验和分析。</li>
 	</ul>
-	<p>Cloudflare 的存在就是为了构建更好的互联网。今天，互联网终于得偿所愿：R2 现已开放<a href="https://developers.cloudflare.com/r2/get-started" target="_blank">公测</a>。</p>
+	<p>Cloudflare 的存在就是为了构建更好的互联网。今天，互联网终于得偿所愿：R2 现已开放<a href="https://developers.cloudflare.com/r2/get-started/" target="_blank">公测</a>。</p>
 	<p>自助客户可在 Cloudflare 仪表板中启用 R2。Enterprise 客户可联系 CSM 以启用。</p>
 	<h2 id="-api">内部及外部 API</h2>
 	<p>R2 有两个 API：其一只能从 Workers 内访问，我们称之为 In-Worker API，另一个是兼容 S3 的 API，将您的存储桶暴露在形如 <a href="http://account.r2.cloudflarestorage.com/bucket" target="_blank">bucket.account.r2storage.com</a> 的 URL 上。在对 R2 发出请求前，您将需要通过身份验证——R2 存储桶默认是私有的。</p>
@@ -50,7 +50,7 @@ for item in bucket.objects.all():
 		<li>A 类操作（包括读取和列出）费用为 4.50 美元/百万次。</li>
 		<li>B 类操作费用为 0.36 美元/百万次。</li>
 	</ul>
-	<p>A 类操作会改变状态，例如创建存储桶、列出存储桶中的对象或写入对象。B 类操作会读取现有状态，例如读取存储桶中的对象。有关定价和操作类型的更多信息，请参阅<a href="https://developers.cloudflare.com/r2/platform/pricing" target="_blank">文档</a>。</p>
+	<p>A 类操作会改变状态，例如创建存储桶、列出存储桶中的对象或写入对象。B 类操作会读取现有状态，例如读取存储桶中的对象。有关定价和操作类型的更多信息，请参阅<a href="https://developers.cloudflare.com/r2/platform/pricing/" target="_blank">文档</a>。</p>
 	<p>当然，R2 的出口带宽是免费的。您可以随心所欲地访问存储桶。</p>
 	<p>R2 的永远免费级别包含：</p>
 	<ul>

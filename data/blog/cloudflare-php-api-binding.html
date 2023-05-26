@@ -70,7 +70,7 @@ $pageRules-&gt;createPageRule($zoneID, $pageRulesTarget, $pageRulesConfig, true,
 		<li>Building out coverage of endpoints on our API</li>
 		<li>Building out test coverage of those endpoint classes</li>
 	</ol>
-	<p>The PHP-FIG (PHP Framework Interop Group) put together a standard on how HTTP responses can be represented in an interface, this is described in the <a href="http://www.php-fig.org/psr/psr-7" target="_blank">PSR-7 standard</a>. This response interface is utilised by our HTTP <code>Adapter</code> interface in which responses to API requests are type hinted to this interface (<code>Psr\Http\Message\ResponseInterface</code>).</p>
+	<p>The PHP-FIG (PHP Framework Interop Group) put together a standard on how HTTP responses can be represented in an interface, this is described in the <a href="http://www.php-fig.org/psr/psr-7/" target="_blank">PSR-7 standard</a>. This response interface is utilised by our HTTP <code>Adapter</code> interface in which responses to API requests are type hinted to this interface (<code>Psr\Http\Message\ResponseInterface</code>).</p>
 	<p>By using this standard, it's easier to add further abstractions for additional HTTP clients and mock HTTP responses for unit testing. Let's assume the JSON response is stored in the <code>$response</code> variable and we want to test the <code>listIPs</code> method in the <code>IPs</code> Endpoint class:</p>
 	<pre><code class="language-php">public function testListIPs() {
   $stream = GuzzleHttp\Psr7\stream_for($response);

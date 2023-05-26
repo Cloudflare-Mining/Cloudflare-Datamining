@@ -1,0 +1,880 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image13-1-1.png" class="kg-image" alt="" loading="lazy" width="1201" height="675"></figure><!--kg-card-begin: markdown-->
+	<p>Internet on muutunud oluliseks teguriks geopoliitilistes konfliktides, näiteks käimasolevas sõjas Ukrainas. Homme möödub üks aasta Venemaa sissetungist sellesse riiki. Selles postituses antakse ülevaade internetist ja arutletakse selle üle, kuidas Ukraina internet püsis vastupidavana hoolimata kümnetest häiretest konflikti kolmes erinevas etapis.</p>
+	<!--kg-card-end: markdown-->
+	<p>Peamised järeldused:</p>
+	<ul>
+		<li>Interneti-liikluse nihked Ukrainas on selgelt nähtavad idast läände, kuna ukrainlased põgenesid sõja eest, kusjuures kogu riigi liiklus langes pärast 24. veebruari 2022 koguni 33%.</li>
+		<li>Oktoobris alanud õhurünnakud energiainfrastruktuurile põhjustasid ulatuslikke Interneti-häireid, mis jätkuvad ka 2023. aastal.</li>
+		<li>Rakenduskihi küberrünnakud Ukrainas kasvasid 2022. aasta märtsi alguses sõjaeelse tasemega võrreldes 1300%. </li>
+		<li>Kõige rohkem rünnakuid Ukraina vastu oli suunatud valitsemissektori, finantsteenuste ja meedia vastu.</li>
+		<li>Juunist oktoobrini suunati mitmete Hersoni võrkude liiklus ümber läbi Venemaa, mis allutas liikluse Venemaa piirangutele ja piirangutele, sealhulgas sisu filtreerimisele. Isegi pärast seda, kui liikluse ümbersuunamine läbi Venemaa lõppes, esines nendes Ukraina võrkudes vähemalt aasta lõpuni suuri katkestusi, samas kui kaks võrku on endiselt võrguühenduseta. </li>
+		<li>Tänu kohapealsetele jõupingutustele kahjustatud kiudoptika parandamiseks ja elektrienergia taastamiseks on Ukraina võrgud püsinud vastupidavad nii infrastruktuuri kui ka marsruutimise seisukohast. See on osaliselt tingitud Ukraina laialdasest ühenduvusest väljaspool riiki asuvate võrkudega ja suurest arvust IXPdest.</li>
+		<li>Starlinki liiklus Ukrainas kasvas märtsi keskpaigast kuni mai keskpaigani üle 500% ja jätkas kasvu mai keskpaigast kuni novembri keskpaigani, kasvades selle kuue kuu jooksul peaaegu 300%. Kogu ajavahemikul märtsi keskpaigast (kaks nädalat pärast selle kättesaadavaks tegemist) kuni detsembri keskpaigani oli kasv üle 1600%, langedes pärast seda veidi.</li>
+	</ul>
+	<h2 id="interneti-muutused-ja-h%C3%A4ired">Interneti muutused ja häired</h2>
+	<h3 id="interneti-%C5%A1okk-p%C3%A4rast-24-veebruari-2022">Interneti-šokk pärast 24. veebruari 2022</h3>
+	<p>Ukrainas vähenes inimeste internetiliiklus 24. veebruarile järgnenud nädalatel koguni 33%. Järgmine graafik näitab Cloudflare'i vaatenurka igapäevase liikluse kohta (päringute arvu järgi).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Järgnevate kuude jooksul taastusid internetiliikluse tasemed, sealhulgas suur kasv septembris ja oktoobris, kui paljud Ukraina pagulased <a href="https://en.wikipedia.org/wiki/2022%E2%80%932023_Ukrainian_refugee_crisis" target="_blank">naasid</a> riiki. Siiski esines ka üleriigilisi katkestusi, peamiselt pärast oktoobrit, mida käsitletakse allpool.</p>
+	<p>14% kogu Ukrainast (sealhulgas Krimmist ja teistest okupeeritud piirkondadest) lähtuvast liiklusest oli võimalikuks rünnakuks, samas kui 10% kogu Ukrainasse suunduvast liiklusest oli viimase 12 kuu jooksul võimalikuks rünnakuks. </p>
+	<p>Enne 24. veebruari 2022 saavutas Ukraina tüüpiline internetiliiklus argipäeviti algselt tipptaseme pärast lõunat, umbes kell 15:00 kohaliku aja järgi, langes 17:00 ja 18:00 vahel (kooskõlas inimeste töölt lahkumisega) ning saavutas päeva suurima tipptaseme umbes kell 21:00 (tõenäoliselt pärast õhtusööki mobiiliside ja voogedastuse puhul). </p>
+	<p>Pärast sissetungi algust täheldasime päeva jooksul vähem varieeruvust, mis on selge muutus tavapärases mustris, arvestades teatatud häireid ja "<a href="https://www.france24.com/en/europe/20220226-exodus-from-ukraine-a-night-spent-with-civilians-fleeing-war-russia-s-invasion" target="_blank">väljarännet</a>" riigist. Esimestel päevadel pärast sissetungi algust oli liikluskoormuse tipptase umbes kell 19:00, mil paljud linnades, näiteks Kiievis, veetsid ööd improviseeritud maa-alustes <a href="https://www.newyorker.com/magazine/2022/03/14/inside-kyivs-metro-a-citywide-bomb-shelter" target="_blank">punkrites</a>. Märtsi lõpuks oli 21:00 tipptase taastunud, kuid varajane õhtune liikluse langus ei taastunud enne maid. </p>
+	<p>Kui vaadata Ukraina internetipäringuid liikluse liikide kaupa alloleval graafikul (alates 10. veebruarist 2022 kuni veebruarini 2023), siis näeme, et kuigi nii mobiil- kui ka lauaarvutite liiklus langes pärast sissetungi, on mobiilseadmete päringute maht jäänud viimase aasta jooksul suuremaks. Enne sõda moodustasid mobiilseadmed umbes 53% liiklusest, kuid sissetungi esimestel nädalatel kasvas see ligikaudu 60%ni. Aprilli lõpuks oli see langenud tagasi sõjaeelsele tasemele, langedes tagasi umbes 54%-ni liikluse osakaalust. Samuti on märgatav detsembrikuu langus/väljalangemine, mida käsitleme allpool.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="ukrainas-liiguvad-miljonid-idast-l%C3%A4%C3%A4nde">Ukrainas liiguvad miljonid idast läände</h3>
+	<p>Invasioon tõi kaasa rünnakuid ja infrastruktuuri rikkeid mitmes linnas, kuid algusaegadel ei olnud sihtmärgiks riigi energiainfrastruktuur, nagu see oli oktoobris 2022. Sõja esimestel nädalatel olid <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022/">internetiliikluse muutused</a> suures osas tingitud konfliktitsoonist koos peredega evakueeruvatest inimestest. Esimese kolme kuu jooksul lahkus riigist üle <a href="https://en.wikipedia.org/wiki/2022%E2%80%932023_Ukrainian_refugee_crisis" target="_blank">kaheksa miljoni</a> ukrainlase ja palju rohkem inimesi kolis riigisiseselt turvalisematesse linnadesse, kuigi paljud pöördusid 2022. aasta suvel tagasi. Internet mängis selle pagulaskriisi ajal kriitilist rolli, toetades muu hulgas kommunikatsiooni ja juurdepääsu reaalajas saadavale teabele, mis võis päästa elusid, ning teenuseid pakkuvatele rakendustele. </p>
+	<p>Samuti suurenes liiklus Ukraina lääneosas, näiteks Lvivis (mis on konfliktipiirkondadest kaugemal), ja vähenes idas, näiteks Harkivis, kuhu saabus Vene sõjavägi ja kus rünnakud olid pidevaks ohuks. Alljärgneval joonisel on näha, kuidas muutus internetiliiklus Ukrainas sõja algusele järgnenud nädalal (tumedam roosa värvus tähistab liikluse vähenemist - kuni 60% -, tumedam roheline värvus aga internetiliikluse suurenemist - kuni 50%).</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled-1.png" class="kg-image" alt="" loading="lazy">
+		<figcaption>Source: <a href="https://datawrapper.dwcdn.net/dsUSJ/2/" target="_blank">https://datawrapper.dwcdn.net/dsUSJ/2/</a></figcaption>
+	</figure>
+	<p>Suurimad Interneti-liikluse vähenemised Ukrainas sõja esimestel päevadel olid idas Harkivi oblastis ja põhjas Tšernihivis, kus mõlema puhul oli langus 60%, ning seejärel Kiievi oblastis, kus liiklus oli 2. märtsil 2022 võrreldes 23. veebruariga 40% väiksem. </p>
+	<p>Lääne-Ukrainas kasvas liiklus hüppeliselt. Kõige suurema täheldatud liikluse kasvuga piirkonnad olid Rivne (50%), Volõõnia (30%), Lviv (28%), Tšernivtsi (25%) ja Zakarpatsija (15%).</p>
+	<p>Linnade tasandil annab Ukraina internetiliikluse analüüs meile mõningase ülevaate interneti kasutamisest ja internetiühenduse kättesaadavusest neil esimestel nädalatel, kusjuures märkimisväärsed katkestused esinesid kohtades, kus toimus otsene konflikt või mis olid juba Vene sõdurite poolt okupeeritud.</p>
+	<p>Kiievist põhja pool asuvas <strong>Tšernõiivi</strong> linnas vähenes liiklus oluliselt sõja esimesel nädalal ja märtsikuu keskpaigaks oli liikluse jäägid ning liiklus elavnes alles pärast venelaste taandumist aprilli alguses.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/che-2023-02-16-at-14.04.32.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Pealinnas <strong>Kiievis</strong> on kohe pärast sõja algust ilmnenud selged häired internetiliikluses, mis võivad olla põhjustatud inimeste lahkumisest, rünnakutest ja maa-aluste varjendite kasutamisest.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--1-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kiievi lähistel täheldasime märtsi alguses selget katkestust <strong>Buchas</strong>. Pärast 1. aprilli, kui venelased taganesid, hakkas internetiliiklus taastuma paar nädalat hiljem.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<p><strong>Irpinis</strong>, mis asub Kiievi lähistel, Hostomeli lennujaama ja Bucha lähedal, täheldati Buchaga sarnast katkestuste mustrit. Liiklus hakkas selgemalt taastuma alles mai lõpus.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--2-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Idas, <strong>Harkovi</strong> linnas, vähenes liiklus 3. märtsil 50%, samasugune stsenaarium ei olnud kaugel ka Sumõs. Häired olid seotud inimeste lahkumisega ja ka elektrikatkestustega, mis mõjutasid mõningaid võrke.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--3-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Teistes Lõuna-Ukraina linnades, nagu Berdjansk, oli elektrikatkestusi. See graafik näitab Enerhodari, väikelinna, kus asub Euroopa suurim tuumaelektrijaam, <a href="https://en.wikipedia.org/wiki/Zaporizhzhia_Nuclear_Power_Plant" target="_blank">Zaporižja tuumajaam</a>, jääkliiklust võrreldes varasemaga.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--4-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Ukraina lõunaosas asuvates linnades esinesid selged Interneti-häired. Venelased <a href="https://en.wikipedia.org/wiki/Siege_of_Mariupol" target="_blank">piirasid</a> 24. veebruaril Mariupoli. Energiainfrastruktuuri streigid ja sulgemised mõjutasid kohalikke võrke ja internetiliiklust, mis langes 1. märtsiks minimaalsele tasemele. Hinnanguliselt hävitati <a href="https://web.archive.org/web/20220418203018/https:/www.cnbc.com/2022/04/17/russia-ukraine-live-updates.html" target="_blank">95%</a> linna hoonetest ja mai keskpaigaks oli linn täielikult Venemaa kontrolli all. Kuigi aprilli lõpuks oli liiklus veidi suurenenud, ulatus see vaid ~22%-ni sellest, mis oli enne sõja algust.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--5-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Ukraina Interneti-teenuse pakkujaid või nende kasutatavaid autonoomseid süsteeme (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/" target="_blank">ASN</a>) vaadeldes täheldasime sõja esimestel kuudel teatavates piirkondades rohkem kohalikke häireid, kuid taastumine oli tavaliselt kiire. <a href="https://radar.cloudflare.com/as6849" target="_blank">AS6849 (Ukrtel)</a> koges märtsi keskel probleeme väga lühiajaliste katkestustega. <a href="https://radar.cloudflare.com/as13188" target="_blank">AS13188 (Triolan)</a>, mis teenindab Kiievit, Tšernihivi ja Harkivi, oli teine teenusepakkuja, kellel esines probleeme (nad <a href="https://t.me/triolan_me/630" target="_blank">teatasid</a> küberrünnakust 9. märtsil), nagu võib täheldada järgmisel graafikul:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--6-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Me ei täheldanud Ukraina peamise Interneti-teenusepakkuja <a href="https://radar.cloudflare.com/as15895" target="_blank">AS15895 (Kyivstar)</a> selget riiklikku katkestust enne oktoobris-novembris toimunud rünnakuid energiainfrastruktuurile, mis näitab ka Ukraina võrkude varajast vastupidavust.</p>
+	<h3 id="ukraina-vastupealetung-ja-selle-m%C3%B5ju-internetile">Ukraina vastupealetung ja selle mõju internetile</h3>
+	<p>Kuna Venemaa väed taganesid Ukraina põhjarindelt, siis nihutasid nad pärast aprilli lõppu oma jõupingutused idas (<a href="https://en.wikipedia.org/wiki/Battle_of_Donbas_(2022%E2%80%93present)" target="_blank">Donbassi lahing</a>) ja lõunas (<a href="https://en.wikipedia.org/wiki/Russian_occupation_of_Kherson_Oblast" target="_blank">Hersoni piirkonna</a> okupeerimine). See tõi kaasa Interneti-häireid ja liikluse <a href="https://blog.cloudflare.com/tracking-shifts-in-internet-connectivity-in-kherson-ukraine/">nihkeid</a>, mida käsitletakse üksikasjalikumalt alljärgnevas osas. Siiski oli Interneti-liiklus Hersoni piirkonnas katkendlik ja sisaldas katkestusi pärast maid, arvestades võitlust Interneti kontrolli eest. <a href="https://www.bloomberg.com/news/articles/2022-06-21/ukrainian-telecom-workers-damage-own-equipment-to-thwart-russia" target="_blank">Juunikuu</a> uudistest selgus, et internetiteenuse pakkujate töötajad kahjustasid oma seadmeid, et nurjata Venemaa püüdlusi Ukraina interneti kontrollimiseks. </p>
+	<p>Enne septembri Ukraina vastupealetungi toimus suvel veel üks näide sõja mõjust ühe linna internetiliiklusele, kui Venemaa väed hõivasid <a href="https://www.cnn.com/2022/07/03/europe/russia-ukraine-luhansk-lysychansk-intl/index.html" target="_blank">juuli</a> alguses Ida-Ukrainas asuva Lysychanski pärast seda, mis sai tuntuks kui <a href="https://en.wikipedia.org/wiki/Battle_of_Lysychansk" target="_blank">Lysychanski lahing</a>. Internetiliiklus Lysychanskis vähenes pärast sõja algust selgelt. See langus jätkub pärast aprilli toimunud intensiivsete <a href="https://en.wikipedia.org/wiki/Battle_of_Lysychansk" target="_blank">lahingute</a> ajal, mille tõttu <a href="https://news.yahoo.com/12-000-lysychansk-residents-remain-194356536.html?fr=sycsrp_catchall" target="_blank">lahkus</a> enamik linna elanikest. Maiks oli liiklus peaaegu jääk (mai keskel mõne päeva lühiajalise tõusuga).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Lysychansk.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Septembri alguses algas Ukraina <a href="https://en.wikipedia.org/wiki/2022_Kharkiv_counteroffensive" target="_blank">vastupealetung</a> idas, kuigi meedia <a href="https://www.euronews.com/2022/08/29/ukraine-launches-counter-offensive-to-retake-kherson-say-authorities" target="_blank">teatas</a> esialgu, et lõunapoolne pealetung <a href="https://en.wikipedia.org/wiki/2022_Kherson_counteroffensive" target="_blank">Hersoni oblastis</a> oli "<a href="https://mwi.usma.edu/the-kherson-ruse-ukraine-and-the-art-of-military-deception/" target="_blank">pettus</a>". Hersoni pealetung sai teoks alles oktoobri lõpus ja novembri alguses. Ukraina suutis septembris tagasi vallutada üle 500 asula ja 12 000 ruutkilomeetrit territooriumi Harkovi piirkonnas. Sel ajal oli mitmes neist asulates internetiühendus välja lülitatud. </p>
+	<p>Vastuseks Ukraina edukale vastupealetungile põhjustasid Venemaa õhurünnakud piirkonnas elektrikatkestusi ja internetikatkestusi. Nii oli see <a href="https://twitter.com/CloudflareRadar/status/1569055256889147394" target="_blank">Harkovis</a> 11., 12. ja 13. septembril. Alljärgneval joonisel on näidatud 12-tunnine peaaegu täielik katkestus 11. septembril, millele järgnesid veel kaks perioodi, mil liiklus vähenes.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="kui-saabuvad-tuumainspektorid-siis-ka-internetikatkestused">Kui saabuvad tuumainspektorid, siis ka internetikatkestused</h3>
+	<p>Ka Zaporižžja piirkonnas oli elektrikatkestusi. 1. septembril 2022, päeval, mil Rahvusvahelise Aatomienergiaagentuuri (IAEA) inspektorid <a href="https://www.cnn.com/2022/09/01/europe/ukraine-zaporizhzhia-iaea-inspectors-intl/index.html" target="_blank">saabusid</a> Venemaa kontrolli all olevasse In Zaporižžja tuumaelektrijaama Enerhodaris, esinesid internetikatkestused kahes kohalikus ASNis, mis teenindavad seda piirkonda: <a href="https://radar.cloudflare.com/as199560" target="_blank">AS199560 (Engrup)</a> ja <a href="https://radar.cloudflare.com/as197002" target="_blank">AS197002 (OOO Tenor)</a>. Need katkestused kestsid kuni 10. septembrini, nagu on näidatud alljärgnevatel graafikutel.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image5-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image2-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Enerhodari linnas, kus asub tuumaelektrijaam, oli pärast 6. septembrit neljapäevane elektrikatkestus.</p>
+	<h3 id="septembri-keskel-v%C3%A4henes-liiklus-krimmis">Septembri keskel vähenes liiklus Krimmis</h3>
+	<p>Septembri keskel, pärast Ukraina vastupealetungi, tekkis küsimus, millal Ukraina väed võivad Krimmi sihtmärgiks võtta, kusjuures <a href="https://twitter.com/KyivIndependent/status/1569659989417152515?s=20" target="_blank">uudisteadete</a> kohaselt toimus 13. septembri paiku Krimmi venelaste evakueerimine. Nägime sel teisipäeval võrreldes eelmise päevaga selget liikluse vähenemist, nagu on näha allpool esitatud Krimmi kaardil (punane on liikluse vähenemine, roheline on suurenemine).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--8-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="oktoober-toob-energiainfrastruktuuri-r%C3%BCnnakuid-ja-%C3%BCleriigilisi-h%C3%A4ireid">Oktoober toob energiainfrastruktuuri rünnakuid ja üleriigilisi häireid</h3>
+	<p>Nagu me nägime, algasid Venemaa õhurünnakud kriitilise tähtsusega energiainfrastruktuuri vastu septembris vastumeetmena Ukraina vasturünnakule. Järgmisel kuul, laupäeval, 8. oktoobril toimunud <a href="https://en.wikipedia.org/wiki/Crimean_Bridge_explosion" target="_blank">Krimmi silla plahvatus</a> (kui veoauto pomm hävitas osa sillast) tõi kaasa rohkem õhurünnakuid, mis mõjutasid võrke ja internetiliiklust kogu Ukrainas.</p>
+	<p>Esmaspäeval, 10. oktoobril ärkas Ukraina üles energiainfrastruktuuri vastu suunatud õhurünnakute tõttu ning koges tõsiseid elektri- ja internetikatkestusi. Kell 07:35 UTC oli liiklus riigis eelmise nädalaga võrreldes 35% madalamal tasemel ja taastus täielikult alles rohkem kui 24 tundi hiljem. Mõju oli eriti märkimisväärne sellistes piirkondades nagu Harkiv, kus liiklus vähenes umbes 80%, ja Lviv, kus see langes umbes 60%. Allpool olev graafik näitab, kuidas uued õhurünnakud Lvivi oblastis järgmisel päeval mõjutasid internetiliiklust.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Internetiühenduses esinesid selged häired mitmes piirkonnas 17. oktoobril, aga ka <a href="https://twitter.com/CloudflareRadar/status/1583102832810790920" target="_blank">20. oktoobril</a>, kui mitme Kiievi elektrijaama hävimise tõttu vähenes Kiievi linna internetiliiklus 25% võrreldes kahe eelneva nädalaga. See kestis 12 tundi ja sellele järgnes järgmisel päeval lühem osaline katkestus, nagu on näha allpool esitatud graafikul.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--4-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Oktoobri lõpus hävis Ukraina ametnike <a href="https://www.politico.eu/article/russia-strike-several-energy-power-station-ukraine-cause-outage-zelenskyy/" target="_blank">sõnul</a> 30% Ukraina elektrijaamadest. Selle hävitamise tõttu iseenda poolt kehtestatud elektrienergia piirangud põhjustasid Interneti-liikluse vähenemise, mida täheldati näiteks Kiievis ja seda ümbritsevas piirkonnas. </p>
+	<p>Mitmenädalase Interneti-katkestuse algust Hersoni oblastis võib näha alloleval graafikul, mis näitab ~70% väiksemat liiklust kui eelnevatel nädalatel. Katkestus algas laupäeval, 22. oktoobril, kui ukrainlased Hersoni oblastis võimutsesid.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--5-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Liiklus hakkas taastuma pärast seda, kui Ukraina väed <a href="https://en.wikipedia.org/wiki/2022_Kherson_counteroffensive" target="_blank">võtsid 11. novembril 2022 Hersoni linna</a>. Allpool olev graafik näitab nädala võrdlust Hersoni oblastis 7. novembri, 28. novembri ja 19. detsembri nädalatel, et graafikus paremini visualiseerida, näidates samal ajal arengut seitsmenädalase perioodi jooksul.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--6-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="k%C3%A4imasolevad-streigid-ja-interneti-h%C3%A4ired">Käimasolevad streigid ja Interneti-häired</h3>
+	<p>Kogu ülejäänud aasta ja kuni 2023. aastani on Ukrainas jätkuvalt olnud aeg-ajalt Interneti-ühenduse häireid. <a href="https://twitter.com/CloudflareRadar/status/1595419978282733573" target="_blank">23. novembril</a> 2022 esinesid riigis pärast Venemaa streike ulatuslikud elektrikatkestused, mis põhjustasid Ukrainas peaaegu 50%-lise internetiliikluse vähenemise. See katkestus kestis peaaegu poolteist päeva, rõhutades veelgi konflikti jätkuvat mõju Ukraina infrastruktuurile.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--5--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kuigi pärast novembri lõpu seisakut toimus taastumine, tundus liiklus vaid mõned päevad hiljem olevat normaalsele tasemele lähemal. Allpool on esitatud graafik Ukraina internetiliikluse arengust nädalate lõikes nii riiklikul kui ka kohalikul tasandil sel ajal:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--1-.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kiievi piirkonnas:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--7-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Odessa piirkonnas:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--8-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Ja Harkov (kus <a href="https://twitter.com/CloudflareRadar/status/1603750187058561024" target="_blank">16. detsembri</a> katkestus on samuti selge - rohelisel joonel):</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh6.googleusercontent.com/M-2axCRAh672FEYZnaQYK7QR5xcNVGYUKmQBa3jSQaC6p08PlhumoaevZzzrcH3z3hhvirRz5jfPUSSFaqov2FT9eOOK3cEsdyluH_9l9OvfFsCriHKo8p6YfuwfBMAjFKZ_WZcd4EFnXiHKVUQ1KqM" class="kg-image" alt="" loading="lazy"></figure>
+	<p><a href="https://twitter.com/CloudflareRadar/status/1603750187058561024" target="_blank">16. detsembril</a> toimus järjekordne riigi tasandil Interneti-ühenduse katkestus, mille põhjustasid õhurünnakud, mis olid suunatud energiainfrastruktuuri vastu. Riigi tasandil vähenes liiklus eelmise nädalaga võrreldes koguni 13%, kuid Ukraina võrke mõjutas see veelgi rohkem. <a href="https://radar.cloudflare.com/as13188" target="_blank">AS13188 (Triolan)</a> liikluse vähenemine oli 70% ja <a href="https://radar.cloudflare.com/as15895" target="_blank">AS15895 (Kyivstar)</a> 40%, mõlemad on näidatud allpool esitatud joonistel.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--7--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--8--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Jaanuaris 2023 põhjustasid õhurünnakud täiendavaid Interneti-häireid. Üks selline hiljutine sündmus oli <a href="https://twitter.com/CloudflareRadar/status/1618602213965692930" target="_blank">Odessas</a>, kus 18-tunnise katkestuse ajal langes liiklus võrreldes eelmise nädalaga koguni 54%.</p>
+	<h2 id="%C3%BClemaailmse-m%C3%B5juga-k%C3%BCbers%C3%B5da">Ülemaailmse mõjuga kübersõda</h2>
+	<h3 id="kilbid-%C3%BCles-k%C3%BCberr%C3%BCnnakute-vastu">"Kilbid üles" küberrünnakute vastu</h3>
+	<p><a href="https://www.usatoday.com/story/tech/2022/02/28/russia-cyber-attack-ukraine-invasion-protect-yourself/6976490001/" target="_blank">USA valitsus</a> ja <a href="https://edition.cnn.com/2022/02/24/tech/russia-ukraine-us-sanctions-cyberattacks/index.html" target="_blank">FBI</a> hoiatasid märtsis kõiki kodanikke, ettevõtteid ja organisatsioone riigis, samuti liitlasi ja partnereid, et nad oleksid teadlikud vajadusest "suurendada küberturvalisust". USA küberturbe- ja infrastruktuuriturbeamet (CISA) käivitas algatuse "<a href="https://www.cisa.gov/shields-up" target="_blank">Shields Up</a>", märkides, et "Venemaa sissetung Ukrainasse võib mõjutada organisatsioone nii piirkonnas kui ka väljaspool seda". Hoiatusi esitasid muu hulgas ka <a href="https://blog.cloudflare.com/shields-up-free-cloudflare-services-to-improve-your-cyber-readiness/#:~:text=National%20Cyber%20Security%20Center">Ühendkuningriik</a> ja <a href="https://www.meti.go.jp/press/2021/02/20220221003/20220221003.html" target="_blank">Jaapan</a>. </p>
+	<p>Järgnevalt arutame veebirakenduste tulemüüri (WAF) leevendamist ja DDoS-rünnakuid. WAF aitab kaitsta veebirakendusi, filtreerides ja jälgides veebirakenduse ja Interneti vahelist <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/" target="_blank">HTTP</a>-liiklust. WAF on protokolli <a href="https://www.cloudflare.com/learning/ddos/what-is-layer-7/" target="_blank">7. kihi</a> kaitse (<a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI mudelis</a>) ja see ei ole mõeldud kõikide rünnakutüüpide vastu kaitsmiseks. Distributed Denial of Service (DDoS) rünnakud on küberrünnakud, mille eesmärk on lammutada Interneti-omadusi ja muuta need kasutajate jaoks kättesaamatuks.</p>
+	<h3 id="k%C3%BCberr%C3%BCnnakud-kasvasid-ukrainas-m%C3%A4rtsi-alguseks-1300-v%C3%B5rra">Küberrünnakud kasvasid Ukrainas märtsi alguseks 1300% võrra</h3>
+	<p>Allpool olevad graafikud põhinevad normaliseeritud andmetel ja näitavad meie <a href="https://www.cloudflare.com/waf/" target="_blank">WAF</a>-i abil leevendatud ohte.</p>
+	<p>Meie WAFi poolt blokeeritud rakenduskihi tõrjutud ohud tõusid pärast sõja algust 24. veebruaril hüppeliselt. Leevendatud taotlused olid esmaspäeval, 28. veebruaril 105% suuremad kui eelneval (sõjaeelsel) esmaspäeval ning saavutasid tipptaseme 8. märtsil, jõudes 1300% kõrgemale sõjaeelsest tasemest. </p>
+	<p>Veebruarist 2022 kuni veebruarini 2023 oli keskmiselt 10% kogu Ukrainasse suunduvast liiklusest potentsiaalsete rünnakute leevendused.</p>
+	<p>Allpool olev graafik näitab igapäevast protsendimäära rakenduskihi liiklusest Ukrainasse, mida Cloudflare leevendas potentsiaalsete rünnakutena. Märtsi alguses oli 30% kogu liiklusest leevendatud. See langes aprillis ja jäi mitmeks kuuks madalaks, kuid tõusis septembri alguses Ukraina vastupealetungi ajal Ida- ja Lõuna-Ukrainas. Tipptase saavutati 29. oktoobril, kui DDoS-rünnakute liiklus moodustas 39% kogu Cloudflare'i Ukraina klientide veebisaitide liiklusest.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--9-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>See suundumus on ilmsem, kui vaadata kogu liiklust tippdomeeni ".ua" saitidele (Cloudflare'i seisukohast). Allpool olevast graafikust nähtub, et 2022. aasta märtsi alguses moodustas DDoS-rünnakute liiklus üle 80% kogu liiklusest. Esimesed selged piigid esinesid 16. ja 19. veebruaril, mil umbes 25% liiklusest leevendati. Pärast sõja algust ei olnud ühtegi puhkehetke, välja arvatud novembri lõpus ja detsembris, kuid rünnakud jätkusid vahetult enne jõule. Keskmiselt 13% kogu ".ua" liiklusest oli 2022. aasta veebruarist kuni 2023. aasta veebruarini potentsiaalsete rünnakute leevendused. Järgnev graafik annab tervikliku ülevaate ".ua" saitidele suunatud DDoS-rakenduskihi rünnakutest:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--10-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Liikudes edasi tooterühmade kasutatud (.ua" saitidega seotud) leevenduste tüüpide juurde, nagu on näha järgmisel graafikul, umbes 57% tehti reeglistikuga, mis tuvastab ja leevendab automaatselt HTTP DDoS rünnakuid (DDoS Mitigation), 31% leevendati kehtestatud tulemüürireeglitega (WAF) ja 10% blokeeris päringuid meie IP-ohtude maine andmebaasi (IP Reputation) alusel (IP Reputation).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--11-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Oluline on märkida, et ülaltoodud graafikus olevad <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">WAF</a>-reeglid on seotud ka klientide poolt kohandatud tulemüürireeglitega, et pakkuda individuaalsemat kaitset. "DDoS Mitigation" (rakenduskihi DDoS-kaitse) ja "Access Rules" (kiiruse piiramine) kasutatakse spetsiaalselt DDoS-kaitseks.</p>
+	<p>Erinevalt käesoleva osa esimesest graafikust, kus vaadeldi Ukrainale suunatud leevendatud ründeliiklus, võime vaadata ka Ukrainast pärit leevendatud ründeliiklus. Allpool olev graafik näitab samuti, et Ukrainast pärineva leevendatud liikluse osakaal suurenes märkimisväärselt pärast sissetungi algust.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--12-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="parimad-r%C3%BCnnatud-t%C3%B6%C3%B6stusharud-alates-valitsusest-kuni-uudismeediani">Parimad rünnatud tööstusharud: alates valitsusest kuni uudismeediani</h3>
+	<p>Tööstusharud, kus <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">WAF</a>-i leevenduste osakaal oli suurem, olid valitsemissektor, finantsteenused ja meedia, mis moodustasid peaaegu poole kõigist Ukrainale suunatud WAF-i leevendustest 2022. aastal.</p>
+	<p>Kui vaadata DDoS-rünnakuid, siis 2022. aasta jooksul toimus Ukrainas meedia- ja kirjastusettevõtete vastu suunatud rünnakute hüppeline kasv. Ukraina ettevõtete vastu suunatud üksused näisid olevat keskendunud teabega seotud veebisaitidele. Viis enim rünnatud tööstusharu Ukrainas 2022. aasta esimeses kahes kvartalis olid kõik ringhäälingu-, interneti-, online-meedia- ja kirjastustegevuses, mis moodustasid peaaegu 80% kõigist Ukrainale suunatud DDoS-rünnakutest.</p>
+	<p>Järgmised kaks graafikut annavad ülevaate leevendatud rakenduskihi rünnakutest ".ua" saitide tüübi järgi, mida oleme aidanud kaitsta, et vaadata täpsemalt, milliseid veebisaite Cloudflare on kogu sõja jooksul kaitsnud. Sõja esimestel päevadel täheldati leevenduspiike uudisteenuse, telekanali, valitsuse veebisaidi ja panga puhul.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--9-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Juulikuus täheldati ka teist tüüpi ".ua" veebisaitide, sealhulgas toidu kohaletoimetamise, e-kaubanduse, autovaruosade, uudiste ja valitsuse veebisaitide puhul piigid.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--10-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Hiljuti, veebruaris 2023, olid leevenduste piigid mõnevõrra sarnased sellega, mida nägime aasta tagasi, sealhulgas elektroonika, e-kaubanduse, IT ja hariduse veebisaitide puhul.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--13-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="126-v%C3%B5rgukihi-liiklusest-oli-ddos-aktiivsus-i-kvartalis-2022">12,6% võrgukihi liiklusest oli DDoS-aktiivsus I kvartalis 2022</h3>
+	<p>Võrgukihi (3. ja 4. kihi) liiklust on raskem seostada konkreetse domeeni või sihtmärgiga, sest IP-aadressid jagunevad erinevate klientide vahel. Vaadates meie Kiievi andmekeskust tabavat DDoS-liiklust võrgutasandil, nägime märtsi alguses DDoS-liikluse tippu, mis oli suurem kui enne sõda, kuid juunis ja augustis oli see palju suurem.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--11-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Meie 2022. aasta esimese kvartali <a href="https://radar.cloudflare.com/reports/ddos-2022-q1" target="_blank">DDoS-raportis</a> märkisime ka, et <a href="https://radar.cloudflare.com/reports/ddos-2022-q1" target="_blank">12,6% Ukraina liiklusest oli DDoS-tegevus</a>, võrreldes 1%-ga eelmises kvartalis, mis tähendab 1160% kasvu kvartaliga võrreldes. <br>Mitmed meie 2022. aasta kvartali <a href="https://blog.cloudflare.com/tag/ddos/">DDoS-aruanded</a> sisaldavad Ukraina sõjaga seotud rünnakute suundumusi koos kvartalite vaheliste <a href="https://radar.cloudflare.com/reports?q=DDoS" target="_blank">interaktiivsete</a> võrdlustega.</p>
+	<h2 id="v%C3%B5rgu-%C3%BCmbersuunamine-hersonis">Võrgu ümbersuunamine Hersonis</h2>
+	<p>24. veebruaril 2022 <a href="https://en.wikipedia.org/wiki/Southern_Ukraine_campaign" target="_blank">tungisid</a> Vene väed Ukraina Hersoni oblastisse. Hersoni linn vallutati 2. märtsil, olles esimene suurem linn ja ainus piirkondlik pealinn, mille Vene väed esialgse sissetungi käigus vallutasid. <a href="https://en.wikipedia.org/wiki/Russian_occupation_of_Kherson_Oblast" target="_blank">Venemaa okupatsioon Hersoni oblastis</a> kestis kuni Ukraina väed võtsid 11. novembril taas kontrolli alla pärast augustikuu lõpus toimunud vastupealetungi alustamist.</p>
+	<p>4. mail 2022 avaldasime blogipostituse " <a href="https://blog.cloudflare.com/tracking-shifts-in-internet-connectivity-in-kherson-ukraine/">Internetiühenduse muutuste jälgimine Hersonis, Ukrainas</a>", mis käsitles ümberjuhtimise sündmust, mis mõjutas Hersoni oblastis asuvat telekommunikatsiooniteenuse pakkujat <a href="https://radar.cloudflare.com/as47598" target="_blank">AS47598 (Khersontelecom)</a>. Järgnevalt teeme kokkuvõtte sellest sündmusest ja uurime sarnast tegevust teiste Hersoni teenusepakkujate puhul, mis on sellest ajast alates toimunud.</p>
+	<p>1. mail 2022 täheldasime Ukraina võrgu <a href="https://radar.cloudflare.com/as47598" target="_blank">AS47598 (Kherson.Telecom)</a> poolt teatatud <a href="https://bgpview.io/prefix/91.206.110.0/23" target="_blank">IPv4-eesliite</a> marsruutimise muutust. Aprilli jooksul jõudis see internetti mitme teise Ukraina võrguteenuse osutaja, sealhulgas <a href="https://radar.cloudflare.com/as12883" target="_blank">AS12883 (Vega Telecom)</a> ja <a href="https://radar.cloudflare.com/as3326" target="_blank">AS3326 (Datagroup)</a> kaudu. Kuid pärast üleminekut näitas selle marsruutimise tee nüüd Venemaa võrku, <a href="https://radar.cloudflare.com/as201776" target="_blank">AS201776 (Miranda-Media)</a>, kui ainukest ülesvoolu teenusepakkujat. Kuna KhersonTelecomi liiklus läbis Venemaa võrku, kehtisid selle suhtes piirangud ja piirangud, mis on kehtestatud igasugusele Venemaa võrku läbivale liiklusele, sealhulgas sisufiltreerimine. </p>
+	<p>Liiklusvool Hersonist. Telecom enne ja pärast 1. maid, koos ümbersuunamisega Venemaa võrguteenuse osutaja Miranda-Media kaudu, on näidatud alljärgneval joonisel. See konkreetne marsruutimisjuhtum oli lühiajaline, sest 4. mail uuendati marsruutimist AS47598 jaoks, misjärel jõudis see taas teiste Ukraina teenusepakkujate kaudu internetti.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--14-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Meie analüüsi aluseks oli 15 autonoomse süsteemi numbri (ASN) nimekiri, mis kuulub Hersoni oblastis asuvatele võrkudele. Seda nimekirja kasutades analüüsisime route-views2 abil kogutud marsruutimisandmeid viimase aasta jooksul, alates 1. veebruarist 2022 kuni 15. veebruarini 2023. Route views2 on BGP marsruudikoguja, <a href="https://www.routeviews.org/routeviews/" target="_blank">mida haldab Oregoni Ülikooli Route Views Project</a>. Pange tähele, et käesolevas ja järgmises osas toimuvate ASNide arutelude puhul käsitleme neid võrdselt ja ei ole neis analüüsides konkreetselt arvestanud hinnangulist kasutajate arvu. </p>
+	<p>Alljärgnev joonis illustreerib selle analüüsi tulemust, mis näitab, et Hersoni võrguteenuse osutajate (loetletud y-teljel) ümbersuunamine Venemaa eelnevate võrkude kaudu oli üsna laialt levinud ja mõne võrgu puhul on see jätkunud kuni aastani 2023. Analüüsi ajal oli kolm peamist Venemaa võrku, mis ilmusid ülesvoolu teenusepakkujatena: <a href="https://radar.cloudflare.com/as201776" target="_blank">AS201776 (Miranda-Media)</a>, <a href="https://radar.cloudflare.com/as52091" target="_blank">AS52091 (Level-MSK Ltd.)</a> ja <a href="https://radar.cloudflare.com/as8492" target="_blank">AS8492 (OBIT Ltd.)</a>. </p>
+	<p>Graafiku mustad tulbad tähistavad ajavahemikke, mil ASN tegelikult internetist kadus; valged segmendid näitavad, et ASN sõltus teistest Ukraina võrkudest kui vahetutest ülesvoolu pakkujatest; ja punane tähistab Venemaa võrkude olemasolu ülesvoolu pakkujate hulgas. Punase varjutuse intensiivsus vastab nende teatatud eesliidete protsendile, mille marsruutimisrajal on väljaspool Ukrainat asuvatest võrkudest täheldatud Venemaa võrguteenuse osutaja. Helepunane varjutamine, mis vastab legendis "1", näitab, et Venemaa teenusepakkuja on olemas kõigis teatatud eesliidete marsruutimisradades.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--12-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Eespool lingitud blogipostituses viitame 30. aprillil alanud katkestusele. See on joonisel selgelt näha musta ribana, mis kestab mitu päeva kõigis loetletud ASNides. Antud juhul taastus AS47598 (Kherson.Telecom) päev hiljem, kuid saatis liiklust läbi <a href="https://radar.cloudflare.com/as49168" target="_blank">AS201776 (Miranda-Media)</a>, mis on Venemaa teenusepakkuja, nagu eespool kirjeldatud.</p>
+	<p>Teine Ukraina võrk, AS49168 (Brok-X), taastus katkestusest 2. mail ja saatis samuti liiklust Miranda-Media kaudu. Enamik teisi Hersoni võrke oli 4. maiks katkestusest taastunud ning nii AS47598 kui ka AS49168 kasutasid taas Ukraina võrke otseste eelkasutajatena. Marsruutimine jäi "normaalseks" kuni 30. maini. Seejärel algas ulatuslikum üleminek liikluse suunamisele Venemaa teenusepakkujate kaudu, kuigi tundub, et sellele üleminekule eelnes lühiajaline katkestus mõne võrgu puhul. Enamasti kestis see ümberorienteerumine kogu suve ja oktoobrini. Mõnedes võrkudes esines lühiajaline katkestus 17. oktoobril, kuid enamik võrke lõpetas 22. oktoobriks otse Venemaa kaudu suunamise.</p>
+	<p>Sellele Venemaalt eemaldumisele järgnesid siiski pikemaajalised katkestused. Kherson.Telecom kannatas sellise katkestuse all ja on alates oktoobrist olnud võrguühenduseta, välja arvatud novembri esimesel nädalal, mil kogu liiklus suunati läbi Venemaa. Paljud teised võrgud läksid detsembri alguses uuesti internetti, tuginedes internetiühenduse saamiseks peamiselt teistele Ukraina teenusepakkujatele. Kuid alates detsembri algusest on <a href="https://radar.cloudflare.com/as204485" target="_blank">AS204485 (PE Berislav Cable Television)</a>, <a href="https://radar.cloudflare.com/as56359" target="_blank">AS56359 (CHP Melnikov Roman Sergeevich)</a> ja <a href="https://radar.cloudflare.com/as49465" target="_blank">AS49465 (Teleradiocompany RubinTelecom Ltd.)</a> jätkanud Miranda-Media kui ülesvoolu teenusepakkuja kasutamist, lisaks on neil olnud mitu lühiajalist katkestust. Lisaks on <a href="https://radar.cloudflare.com/as25082" target="_blank">AS25082 (Viner Telecom)</a> viimase paari kuu jooksul kasutanud nii Ukraina võrku kui ka Miranda-Media't ülesvoolu teenusepakkujana.</p>
+	<h2 id="interneti-vastupanuv%C3%B5ime-ukrainas">Interneti vastupanuvõime Ukrainas</h2>
+	<p>Interneti kontekstis viitab "<a href="https://csrc.nist.gov/glossary/term/network_resilience" target="_blank">vastupidavus</a>" võrgu võimele toimida pidevalt viisil, mis on väga vastupidav häiretele. See hõlmab võrgu võimet: (1) töötada kahjustuste korral halvenenud režiimis, (2) kiiresti taastuda, kui esineb rike, ja (3) laieneda, et rahuldada kiireid või ettearvamatuid nõudmisi. Kogu Venemaa-Ukraina konflikti ajal on meediakajastused (<a href="https://www.vice.com/en/article/qjbapv/diy-volunteers-are-repairing-ukraines-destroyed-internet-infrastructure" target="_blank">VICE</a>, <a href="https://www.bloomberg.com/news/features/2022-11-17/ukraine-stays-online-during-war-thanks-to-repair-crews#xj4y7vzkg" target="_blank">Bloomberg</a>, <a href="https://www.washingtonpost.com/technology/2022/03/29/ukraine-internet-faq/" target="_blank">Washington Post</a>) rõhutanud Ukrainas tehtud tööd kahjustatud kiudoptiliste kaablite ja mobiilsidevõrgu infrastruktuuri parandamiseks, et hoida riik võrgus. See töö on olnud Ukraina Interneti-infrastruktuuri vastupidavuse säilitamiseks äärmiselt oluline.</p>
+	<p><a href="https://www.peeringdb.com/advanced_search?country__in=UA&amp;reftag=ix" target="_blank">PeeringDB</a> andmetel on 2023. aasta veebruari seisuga Ukrainas 25 internetivahetuspunkti (IXP) ja 50 ühenduspunkti. (IXP võib hõlmata mitut füüsilist rajatist.) IXPde hulgas on praegu enam kui pooltes neist üle poole rahvusvahelistele teenusepakkujatele kuuluvad autonoomsed süsteemid (ASid). Ukrainas asuvate rajatiste, IXPde ja rahvusvaheliste kõrvalsüsteemide arv viitab paindlikule võrkudevahelise ühendamise struktuurile, kus nii riigisisesed kui ka rahvusvahelised teenusepakkujad saavad liiklust vahetada mitmes kohas.</p>
+	<p>Nende rahvusvaheliste ühenduste paremaks mõistmiseks analüüsime kõigepealt Ukraina kõrvalsüsteemide ühenduvust ning liigitame ühendused riigisisesteks võrkudeks (ühendused, kus mõlemad kõrvalsüsteemid on registreeritud Ukrainas) ja rahvusvahelisteks võrkudeks (ühendused Ukraina kõrvalsüsteemide ja väljaspool Ukrainat asuvate kõrvalsüsteemide vahel). Selleks, et teha kindlaks, millised kõrvalsüsteemid on Ukrainas riigisisesed, saame kasutada teavet, mis pärineb Ukrainat hõlmava <a href="https://www.nro.net/about/rirs/" target="_blank">piirkondliku internetiregistri</a> <a href="https://ftp.ripe.net/pub/stats/ripencc/2023/" target="_blank">Réseaux IP Européens Network Coordination Centre (RIPE NCC)</a> laiendatud delegatsiooniaruannetest. Samuti analüüsisime kogutud BGP-andmeid, et eraldada Ukraina kõrvalsüsteemide ja teises riigis registreeritud kõrvalsüsteemide vahelised AS-tasandi lingid, ning loeme neid kodumaiste kõrvalsüsteemide rahvusvaheliseks ühenduvuseks.</p>
+	<p><a href="https://www.economist.com/science-and-technology/2022/03/26/the-degrading-treatment-of-ukraines-internet" target="_blank">Märtsis 2022 ilmunud The Economist'i artiklis</a> märgiti, et "<em>Ukrainas on ebatavaliselt palju internetiteenuste pakkujaid - ühe hinnangu kohaselt on Ukraina maailma neljandaks vähim koondunud internetiturg. See tähendab, et võrgus on vähe lämmatuskohti, mistõttu on seda raske välja lülitada.</em>" Selle blogipostituse kirjutamise ajal on Ukrainas registreeritud 2190 ASi (UA ASid) ja neist 1574 ASi on BGP marsruutimistabelis aktiivsed. Need arvud toetavad artikli iseloomustust ning allpool arutame mitmeid täiendavaid tähelepanekuid, mis tugevdavad Ukraina Interneti vastupidavust.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--13-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Ülaltoodud joonisel on kumulatiivne jaotusfunktsioon, mis näitab Ukraina riigisiseste kõrvalsüsteemide osakaalu, millel on otsene ühendus rahvusvaheliste võrkudega. Veebruaris 2023 oli umbes 50%-l rohkem kui üks (100) rahvusvaheline ühendus, umbes 10%-l rohkem kui 10 ja umbes 2%-l 100 või rohkem. Kuigi need arvud on viimase aasta jooksul veidi langenud, rõhutavad nad Ukraina interneti tsentraalsete lämmatuskohtade puudumist.</p>
+	<p>Rahvusvahelise ühendusega võrkude puhul võime vaadata ka "järgmise hüppeliigutuse" riikide - riikide, millega need rahvusvahelised võrgud on seotud - jaotust. (Pange tähele, et mõnedel võrkudel võib olla ülemaailmne jalajälg ja nende puhul on seotud riik see, mis on registreeritud nende autonoomse süsteemi registreerimisel). Alljärgnevate korroptikaartide võrdlemine näitab, kuidas see riikide kogum ja nende osakaal rahvusvahelistes liinides on muutunud 2022. aasta veebruari ja 2023. aasta veebruari vahelisel ajal. Nende kaartide aluseks olevatest andmetest nähtub, et rahvusvaheline ühenduvus Ukrainast jaguneb 18 riigi vahel - üllatuslikult enamasti Euroopas.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/UA-2022-fraction-of-next-hop-ases-by-country.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Veebruaris 2022 moodustasid need riigid/asukohad 77% Ukraina järgmise vahemaandumisega rahvusvahelistest marsruutidest. Neli esimest olid igaüks 7,8%. Veebruaris 2023 langes aga 10 suurima edasiliikumise riigi/asukoha osakaal veidi, 76%ni rahvusvahelistest marsruutidest. Kuigi see on vaid väike muutus võrreldes eelmise aastaga, on riikide/paikade ja paljude nende osakaalude osas toimunud märkimisväärne muutus.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-xt05 {
+			background-color: #D9D9D9;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-xqm4 {
+			background-color: #D9D9D9;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<p>Venemaa osakaal suurenes aastaga 50% võrra 11,6%ni, mis andis talle suurima osakaalu järgmise hüppe kõrvalsüsteemide seas. Saksamaa osakaal kasvas samuti, moodustades enam kui 11% marsruutidest.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/UA-2023-fraction-of-next-hop-ases-by-country.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2 id="satelliitside-interneti-%C3%BChendus">Satelliitside Interneti-ühendus</h2>
+	<p>Cloudflare täheldas Starlinki ASN (<a href="https://radar.cloudflare.com/traffic/as14593?range=28d" target="_blank">AS14593</a>) liikluse kiiret kasvu Ukrainasse 2022. aastal ja 2023. aastal. Märtsi keskpaigast kuni mai keskpaigani kasvas Starlinki liiklus riigis üle 530% ja jätkas kasvu alates mai keskpaigast kuni novembri keskpaigani, kasvades selle kuue kuu jooksul peaaegu 300% - märtsi keskpaigast kuni detsembri keskpaigani oli kasvuprotsent üle 1600%. Pärast seda liiklus stabiliseerus ja 2023. aasta jaanuaris isegi veidi vähenes.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--15-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Meie andmed näitavad, et 2022. aasta novembrist detsembrini moodustas Starlink 0,22% kuni 0,3% Ukraina liiklusest, kuid see arv on nüüd alla 0,2%.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--16-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2 id="kokkuv%C3%B5te">Kokkuvõte</h2>
+	<p>Aasta pärast sõda Ukrainas on võtnud kujuteldamatult suuri humanitaarseid tagajärgi. Ka Ukraina internet on muutunud lahinguväljaks, kus on toimunud rünnakuid, ümberpaigutusi ja häireid. Siiski on see osutunud erakordselt vastupidavaks, taastudes korduvalt igast tagasilöögist.</p>
+	<p>Me teame, et vajadus turvalise ja usaldusväärse interneti järele on seal tähtsam kui kunagi varem. Cloudflare'i eesmärk on jätkuvalt pakkuda vahendeid, mis kaitsevad internetiteenuseid küberrünnakute eest, parandavad piirkonnas tegutsevate isikute turvalisust ning jagavad teavet internetiühenduse ja marsruutimise kohta Ukrainas.</p>
+	<div class="pv2 ph0-l mw7 center" id="social-buttons">
+		<div class="mt5-l mt2 mb4 f2 flex flex-row-ns flex-column flex-wrap">
+			<a id="social-button-twitter" title="Discuss on Twitter" href="https://twitter.com/Cloudflare" target="_blank" class="mr2-ns mb0-l white link b pv3 ph3 mb3 dn" style="background-color:#0055DC;">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+					<path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path>
+				</svg>
+				<span class="v-mid">Discuss on Twitter</span>
+			</a>
+			<a id="social-button-hn" title="Discuss on Hacker News" href="https://hn.algolia.com/?dateRange=all&amp;page=0&amp;prefix=false&amp;query=blog.cloudflare.com&amp;sort=byDate&amp;type=story" target="_blank" class="mr2-ns mb0-l white link b pv3 ph3 mb3 dn" style="background-color:#0055DC;">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+					<g>
+						<path d="M31,31v450h450V31H31z M270.1,287.6v94.9h-28.1v-94.9L165,143.5h31.9L256,254.3l59.1-110.8H347
+		C347,143.5,270.1,287.6,270.1,287.6z">
+						</path>
+					</g>
+				</svg> <span class="v-mid">Discuss on Hacker News</span>
+			</a>
+			<a id="social-button-reddit" title="Discuss on Reddit" href="https://www.reddit.com/r/CloudFlare/" target="_blank" class="mr2-ns mb0-l white link b pv3 ph3 mb3 dn" style="background-color:#0055DC;">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-.797.793-2.048 1.179-3.824 1.179l-.013-.003-.013.003c-1.777 0-3.028-.386-3.824-1.179-.145-.144-.145-.379 0-.523.145-.145.381-.145.526 0 .65.647 1.729.961 3.298.961l.013.003.013-.003c1.569 0 2.648-.315 3.298-.962.145-.145.381-.144.526 0 .145.145.145.379 0 .524zm-.189-3.095c-.872 0-1.581-.706-1.581-1.574 0-.868.709-1.575 1.581-1.575s1.581.707 1.581 1.575-.709 1.574-1.581 1.574z"></path>
+				</svg> <span class="v-mid">Discuss on Reddit</span>
+			</a>
+		</div>
+	</div><a href="/tag/ukraina/" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2">Ukraina</a><a href="/tag/katkestus/" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2">Katkestus</a><a href="/tag/projekt-galileo-2/" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2">Projekt Galileo</a><a href="/tag/trendid/" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2">Trendid</a><a href="/tag/venemaa/" class="dib pl2 pr2 pt1 pb1 mb2 bg-gray8 no-underline blue3 f2">Venemaa</a>
+	<div class="ph3 pv3">
+		<div class=" flex flex-row flex-wrap mw7 center">
+			<div class="w-100 bt b--gray8">
+				<p class="black fw5 f4 mt4">Follow on Twitter</p>
+			</div>
+			<div class="w-100 pb2">
+				<span>João Tomé</span>
+				<span class="ph1">|</span><a href="https://twitter.com/@emot" class="no-underline" target="_blank">@emot </a>
+			</div>
+			<div class="w-100 pb2">
+				<span>David Belson</span>
+				<span class="ph1">|</span><a href="https://twitter.com/@dbelson" class="no-underline" target="_blank">@dbelson </a>
+			</div>
+			<div class="w-100 pb2">
+				<span>Kristin Berdan</span>
+				<span class="ph1">|</span><a href="https://twitter.com/@kjberdan" class="no-underline" target="_blank">@kjberdan </a>
+			</div>
+			<div class="w-100 pb2">
+				<span>Cloudflare</span>
+				<span class="ph2">|</span><a href="https://twitter.com/Cloudflare" class="no-underline" target="_blank">Cloudflare</a>
+			</div>
+		</div>
+	</div>
+	<div class="pv4 ph3 ph0-l flex flex-row flex-wrap mw7 center">
+		<div class="w-100 bt b--gray8">
+			<p class="orange fw5 f4 mt4 ttu">Related Posts</p>
+		</div>
+		<article class="w-100 w-100-m w-50-l ph3 mb4">
+			<p class="f3 fw5 gray5" data-iso-date="2023-02-23T11:58:00Z">February 23, 2023 11:58AM</p>
+			<a href="/lt-lt/one-year-of-war-in-ukraine-lt-lt/" class="no-underline gray1 f4 fw5">
+				<h2 class="gray1 f4 fw5 mt2">Karo metai Ukrainoje: Interneto tendencijos, išpuoliai ir atsparumas</h2>
+			</a>
+			<p class="gray1 lh-copy">Šiame straipsnyje aprašome, ką matėme ir kuo dalijomės internete per istorinį karą Europoje, ir aptariame, kaip Ukrainos internetas išliko atsparus nepaisant dešimčių trikdžių trimis skirtingais konflikto etapais...</p>
+			<ul class="flex pl0 fw6 f2">
+				<span>By&nbsp;</span>
+				<li class="list flex items-center">
+					<div class="author-name-tooltip">
+
+						<a href="/author/joao-tome/" class="fw5 f2 black no-underline">João Tomé</a>
+					</div>
+				</li>
+				<li class="list flex items-center">
+					<div class="author-name-tooltip">
+						<span class="fw5 f2 black no-underline">,&nbsp;</span>
+						<a href="/author/david-belson/" class="fw5 f2 black no-underline">David Belson</a>
+					</div>
+				</li>
+				<li class="list flex items-center">
+					<div class="author-name-tooltip">
+						<span class="fw5 f2 black no-underline">,&nbsp;</span>
+						<a href="/author/kristin/" class="fw5 f2 black no-underline">Kristin Berdan</a>
+					</div>
+				</li>
+			</ul>
+			<div class="flex flex-row flex-wrap">
+
+				<a href="/tag/cloudflare-radaras/" class="no-underline f1 fw2 blue3 underline-hover">"Cloudflare" radaras</a>
+				<span class="f1 fw2 blue3 no-underline underline-hover">,&nbsp;</span>
+				<a href="/tag/ukraina/" class="no-underline f1 fw2 blue3 underline-hover">Ukraina</a>
+				<span class="f1 fw2 blue3 no-underline underline-hover">,&nbsp;</span>
+				<a href="/tag/sutrikimas/" class="no-underline f1 fw2 blue3 underline-hover">sutrikimas</a>
+				<span class="f1 fw2 blue3 no-underline underline-hover">,&nbsp;</span>
+				<a href="/tag/projektas-galileo/" class="no-underline f1 fw2 blue3 underline-hover">projektas "Galileo"</a>
+				<span class="f1 fw2 blue3 no-underline underline-hover">,&nbsp;</span>
+				<a href="/tag/tendencijos/" class="no-underline f1 fw2 blue3 underline-hover">tendencijos</a>
+			</div>
+		</article>
+		<article class="w-100 w-100-m w-50-l ph3 mb4">
+			<p class="f3 fw5 gray5" data-iso-date="2023-02-23T15:58:00Z">February 23, 2023 3:58PM</p>
+			<a href="/lv-lv/one-year-of-war-in-ukraine-lv-lv/" class="no-underline gray1 f4 fw5">
+				<h2 class="gray1 f4 fw5 mt2">Kara gads Ukrainā: Interneta tendences, uzbrukumi un noturība</h2>
+			</a>
+			<p class="gray1 lh-copy">Šajā rakstā mēs aprakstām, ko redzējām un ar ko dalījāmies tiešsaistē vēsturiskā kara laikā Eiropā, un apspriežam, kā Ukrainas internets saglabāja elastību, neraugoties uz desmitiem traucējumu trīs dažādos konflikta posmos...</p>
+			<ul class="flex pl0 fw6 f2">
+				<span>By&nbsp;</span>
+				<li class="list flex items-center">
+					<div class="author-name-tooltip">
+
+						<a href="/author/joao-tome/" class="fw5 f2 black no-underline">João Tomé</a>
+					</div>
+				</li>
+				<li class="list flex items-center">
+					<div class="author-name-tooltip">
+						<span class="fw5 f2 black no-underline">,&nbsp;</span>
+						<a href="/author/david-belson/" class="fw5 f2 black no-underline">David Belson</a>
+					</div>
+				</li>
+				<li class="list flex items-center">
+					<div class="author-name-tooltip">
+						<span class="fw5 f2 black no-underline">,&nbsp;</span>
+						<a href="/author/kristin/" class="fw5 f2 black no-underline">Kristin Berdan</a>
+					</div>
+				</li>
+			</ul>
+			<div class="flex flex-row flex-wrap">
+
+				<a href="/tag/cloudflare-radar-lv/" class="no-underline f1 fw2 blue3 underline-hover">Cloudflare Radar (LV)</a>
+				<span class="f1 fw2 blue3 no-underline underline-hover">,&nbsp;</span>
+				<a href="/tag/partraukums/" class="no-underline f1 fw2 blue3 underline-hover">pārtraukums</a>
+				<span class="f1 fw2 blue3 no-underline underline-hover">,&nbsp;</span>
+				<a href="/tag/project-galileo-lv/" class="no-underline f1 fw2 blue3 underline-hover">Project Galileo (LV)</a>
+				<span class="f1 fw2 blue3 no-underline underline-hover">,&nbsp;</span>
+				<a href="/tag/krievija/" class="no-underline f1 fw2 blue3 underline-hover">Krievija</a>
+				<span class="f1 fw2 blue3 no-underline underline-hover">,&nbsp;</span>
+				<a href="/tag/ukraina/" class="no-underline f1 fw2 blue3 underline-hover">Ukraina</a>
+			</div>
+		</article>
+	</div>
+	<footer class="pt4 pb4 pl1 pr1 main-footer">
+		<div class="mw8 center dn db-l ph3">
+			<div class="flex flex-row justify-between">
+				<div class="main-footer__menu-group">
+					<ul id="sales-menu" class="list pl0">
+						<li class="pt1 pb1 f1" data-submenu="sales-menu">
+							Sales
+							<i class="icon-caret-down"></i>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/plans/enterprise/contact/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="enterprise_sales" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Enterprise Sales
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/partners/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="become_a_partner" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Become a Partner
+							</a>
+						</li>
+					</ul>
+					<p class="phone f1 blue3 no-underline underline-hover">
+					</p>
+					<p class="tel f1 blue3 no-underline underline-hover">Contact Sales:</p>
+					<p><a data-i18n-phonenumber="" class="tel f1 blue3 no-underline underline-hover" href="tel:+18889935273" target="_blank">+1
+							(888) 99 FLARE</a></p>
+
+					<noscript><a class="phone f1 blue3 no-underline underline-hover" href="tel:+16503198930">+1 650 319
+							8930</a></noscript>
+					<p></p>
+				</div>
+				<div class="main-footer__menu-group">
+					<ul id="getting-started-menu" class="list pl0">
+						<li class="pt1 pb1 f1" data-submenu="getting-started-menu">
+							Getting Started
+							<i class="icon-caret-down"></i>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/plans/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="plans" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Pricing
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/case-studies/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="case_studies" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Case Studies
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/resources/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="white_papers" class="f1 blue3 no-underline underline-hover" target="_blank">
+								White Papers
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/webinars/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="webinars" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Webinars
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/learning/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="learning_center" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Learning Center
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="main-footer__menu-group">
+					<ul id="community-menu" class="list pl0">
+						<li class="pt1 pb1 f1" data-submenu="community-menu">
+							Community
+							<i class="icon-caret-down"></i>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://community.cloudflare.com" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="community_hub" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Community Hub
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://blog.cloudflare.com" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="blog" class="f1 blue3 no-underline underline-hover">
+								Blog
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/galileo/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="galileo" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Project Galileo
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/athenian/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="athenian" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Athenian Project
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.tv/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="tv" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Cloudflare TV
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="main-footer__menu-group">
+					<ul id="developers-menu" class="list pl0">
+						<li class="pt1 pb1 f1" data-submenu="developers-menu">
+							Developers
+							<i class="icon-caret-down"></i>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://developers.cloudflare.com" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="developer_hub" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Developer Hub
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/technical-resources/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="technical_resources" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Technical Resources
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/products/cloudflare-workers/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="cloudflare_workers" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Cloudflare Workers
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/integrations/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="integrations" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Integrations
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="main-footer__menu-group">
+					<ul id="support-menu" class="list pl0">
+						<li class="pt1 pb1 f1" data-submenu="support-menu">
+							Support
+							<i class="icon-caret-down"></i>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://support.cloudflare.com" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="support" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Support
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://www.cloudflarestatus.com" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="status" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Cloudflare Status
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/compliance/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="compliance" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Compliance
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/gdpr/introduction/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="gdpr" class="f1 blue3 no-underline underline-hover" target="_blank">
+								GDPR
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="main-footer__menu-group">
+					<ul id="company-menu" class="list pl0">
+						<li class="pt1 pb1 f1" data-submenu="company-menu">
+							Company
+							<i class="icon-caret-down"></i>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/about-overview/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="overview" class="f1 blue3 no-underline underline-hover" target="_blank">
+								About Cloudflare
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/people/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="our_team" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Our Team
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/press/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="press" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Press
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/analysts/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="analysts" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Analysts
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/careers/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="careers" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Careers
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/logo/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="logo" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Logo
+							</a>
+						</li>
+						<li class="pt1 pb1">
+							<a href="https://cloudflare.com/network/" data-tracking-category="footer" data-tracking-action="click" data-tracking-label="network_map" class="f1 blue3 no-underline underline-hover" target="_blank">
+								Network Map
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="mw8 center ph3">
+			<div class="flex flex-row flex-wrap justify-between pt4 items-center">
+				<div class="flex flex-row items-start w-100 w-25-l pb4 pb0-l">
+					<a target="_blank" rel="noopener" href="https://www.facebook.com/Cloudflare/" class="w-20"><img src="https://cloudflare.com/img/footer/facebook.svg" class="w-60"></a>
+					<a target="_blank" rel="noopener" href="https://twitter.com/Cloudflare" class="w-20"><img src="https://cloudflare.com/img/footer/twitter.svg" class="w-60"></a>
+					<a target="_blank" rel="noopener" href="https://www.linkedin.com/company/cloudflare" class="w-20"><img src="https://cloudflare.com/img/footer/linkedin.svg" class="w-60"></a>
+					<a target="_blank" rel="noopener" href="https://www.youtube.com/cloudflare" class="w-20"><img src="https://cloudflare.com/img/footer/youtube.svg" class="w-60"></a>
+					<a target="_blank" rel="noopener" href="https://www.instagram.com/cloudflare" class="w-20"><img src="https://cloudflare.com/img/footer/instagram.svg" class="w-60"></a>
+				</div>
+				<div class="w-100 w-75-l tr-l tl-ns">
+					<div>
+						<span class="main-footer__copyright f1">© 2023 Cloudflare, Inc.</span>
+						<span class="main-footer__copyright f1">|</span>
+						<a href="https://cloudflare.com/privacypolicy/" class="main-footer__copyright f1 no-underline underline-hover" target="_blank">Privacy
+							Policy</a>
+						<span class="main-footer__copyright f1">|</span>
+						<a href="https://cloudflare.com/website-terms/" class="main-footer__copyright f1 no-underline underline-hover" target="_blank">Terms of Use</a>
+						<span class="main-footer__copyright f1">|</span>
+						<a href="#cookie-settings" id="ot-sdk-btn" class="ot-sdk-show-settings main-footer__copyright f1 no-underline underline-hover">
+							Cookie Settings
+						</a>
+						<span class="main-footer__copyright f1">|</span>
+						<a href="https://cloudflare.com/abuse/" class="main-footer__copyright f1 no-underline underline-hover" target="_blank">Trust &amp; Safety</a>
+						<span class="main-footer__copyright f1">|</span>
+						<a href="https://cloudflare.com/trademark/" class="main-footer__copyright f1 no-underline underline-hover" target="_blank">Trademark</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer><noscript><iframe src="https://tr.www.cloudflare.com/ns.html?id=GTM-PKQFGQB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<table class="tg" width="100%">
+		<thead>
+		</thead>
+		<thead>
+			<tr>
+				<th class="tg-xt05"></th>
+				<th class="tg-xqm4" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> Veebruar 2022</span></th>
+				<th class="tg-xqm4" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Veebruar 2023</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Saksamaa</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.85%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Venemaa</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11.62%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Madalmaad</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.85%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Saksamaa</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11.43%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ühendkuningriik</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.83%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hong Kongi</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.38%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hong Kongi</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.81%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Poola</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.93%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rootsi</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.77%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Itaalia</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.75%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rumeenia</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.72%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Türgi</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6.86%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Venemaa</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.67%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bulgaaria</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6.20%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Itaalia</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.64%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Madalmaad</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5.31%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Poola</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.60%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ühendkuningriik</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5.30%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ungari</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.54%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rootsi</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5.26%</span></td>
+			</tr>
+		</tbody><!--kg-card-end: html-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<style>
+			#cloudflare-tv-embed {
+				height: 16rem
+			}
+
+			@media (min-width: 625px) {
+				#cloudflare-tv-embed {
+					height: 10rem
+				}
+			}
+		</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<script>
+			var createQre = (expression, modifier) => {
+				var qre = "";
+				if (expression && modifier) {
+					qre = "$qre(expression:'" + expression + "', modifier:'" + modifier + "')";
+				}
+				return qre;
+			};
+		</script>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', async () => {
+				if (window.Coveo) {
+					Coveo.Logger.level = 6;
+					Coveo.SearchEndpoint.configureCloudEndpoint('cloudflareproduction7iy98g48', 'xx37b7bfe4-2b6c-4720-a42a-11e9e88f5315');
+
+					const blogWeight = createQre("@customer_facing_source==\"Blog\"", "200");
+					const englishWeight = createQre("@language==\"English\"", "200");
+					const searchBoxRoot = document.getElementById("searchbox");
+					const searchResultsPage = document.getElementById("searchResults")
+
+					if (searchResultsPage) {
+						Coveo.init(searchResultsPage, {
+							SearchInterface: {
+								expression: blogWeight + englishWeight
+							},
+							Searchbox: {
+								enableSearchAsYouType: true
+							},
+							externalComponents: [
+								searchBoxRoot
+							]
+						});
+					} else if (searchBoxRoot) {
+						Coveo.initSearchbox(searchBoxRoot, "/searchresults");
+					}
+				}
+			});
+		</script>
+
+		<script>
+			function removeTrailingSlashFromUrl(url) {
+				return url.startsWith('/') ? url.slice(1) : url;
+			}
+		</script>
+
+
+
+		<script type="text/javascript">
+			document.addEventListener('DOMContentLoaded', async () => {
+				(function() {
+					// Social media, make request to worker
+					var urlObj = new URL(window.location.href);
+					var currenturl = urlObj.origin + urlObj.pathname;
+					try {
+						$.get("https://api.blog.cloudflare.com/social?u=" + currenturl, function(res) {
+							if (!res.data.twitter && !res.data.hn && !res.data.reddit) {
+								$("#social-buttons").hide();
+							}
+
+							if (res.data.twitter) {
+								var twitterurl = "https://twitter.com/intent/tweet?in_reply_to=" + res.data.twitter.id;
+								$("#social-button-twitter").attr("href", twitterurl);
+								$("#social-button-twitter").show()
+							}
+
+							if (!res.data.hn) {
+								$("#social-button-hn").attr("href", "https://news.ycombinator.com/submitlink?u=" + currenturl);
+								$("#social-button-hn").show();
+							}
+
+							if (res.data.hn) {
+								$("#social-button-hn").attr("href", res.data.hn.comments_link);
+								$("#social-button-hn").show();
+							}
+
+							if (res.data.reddit) {
+								$("#social-button-reddit").attr("href", res.data.reddit.comments_link);
+								$("#social-button-reddit").show();
+							}
+						});
+					} catch (err) {
+						console.error(err);
+						$("#social-buttons").hide();
+					}
+				})();
+			})
+		</script>
+
+		<script>
+			! function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0],
+					p = /^http:/.test(d.location) ? 'http' : 'https';
+				if (!d.getElementById(id)) {
+					js = d.createElement(s);
+					js.id = id;
+					js.src = p + '://platform.twitter.com/widgets.js';
+					fjs.parentNode.insertBefore(js, fjs);
+				}
+			}(document, 'script', 'twitter-wjs');
+		</script>
+		<script>
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=596756540369391";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
+		<script src="//platform.linkedin.com/in.js" type="text/javascript">
+			lang: en_US
+		</script>
+		<script type="text/javascript">
+			(function() {
+				var po = document.createElement('script');
+				po.type = 'text/javascript';
+				po.async = true;
+				po.src = 'https://apis.google.com/js/platform.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(po, s);
+			})();
+		</script>
+
+		<script>
+			! function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0],
+					p = /^http:/.test(d.location) ? 'http' : 'https';
+				if (!d.getElementById(id)) {
+					js = d.createElement(s);
+					js.id = id;
+					js.src = p + '://platform.twitter.com/widgets.js';
+					fjs.parentNode.insertBefore(js, fjs);
+				}
+			}(document, 'script', 'twitter-wjs');
+		</script>
+		<script>
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=596756540369391";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
+		<script src="//platform.linkedin.com/in.js" type="text/javascript">
+			lang: en_US
+		</script>
+		<script type="text/javascript">
+			(function() {
+				var po = document.createElement('script');
+				po.type = 'text/javascript';
+				po.async = true;
+				po.src = 'https://apis.google.com/js/platform.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(po, s);
+			})();
+		</script>
+
+
+		<!-- Google Tag Manager (noscript) -->
+
+		<!-- End Google Tag Manager (noscript) -->
+		<script>
+			var links = document.links;
+
+			for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+				if (links[i].hostname != window.location.hostname) {
+					links[i].target = '_blank';
+				}
+			}
+		</script>
+
+
+
+
+	</table>
+</div>

@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<p>在公司内部，我们的DDoS缓解团队有时被称为“丢包者”。其他团队在构建令人兴奋的产品来处理通过我们网络的流量，而我们却乐于发现丢弃这些流量的新方法。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/12/38464589350_d00908ee98_b.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><span class="-mobiledoc-kit__atom">‌‌</span><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank">图片</a>作者<a href="https://www.flickr.com/photos/beegee49" target="_blank">Brian Evans</a></figcaption>
+		<figcaption><span class="-mobiledoc-kit__atom">‌‌</span><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank">图片</a>作者<a href="https://www.flickr.com/photos/beegee49" target="_blank">Brian Evans</a></figcaption>
 	</figure>
 	<p></p>
 	<p>快速丢弃数据包对于抵御DDoS攻击非常重要。</p>
@@ -153,7 +153,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 	<p>通过tc的ingress hook的u32匹配，可以让我们实现单核1.8mpps的丢包能力。这实在太棒了！</p>
 	<p>但是，我们还可以更快……</p>
 	<h4 id="-8-xdp_drop">阶段8. XDP_DROP</h4>
-	<p>最后，我们的终极武器是XDP – <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP" target="_blank">eXpress数据路径</a>。通过XDP，我们可以在网络驱动程序环境中运行eBPF代码。最重要的是，这发生在skbuff内存分配之前，可以提高速度。</p>
+	<p>最后，我们的终极武器是XDP – <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP/" target="_blank">eXpress数据路径</a>。通过XDP，我们可以在网络驱动程序环境中运行eBPF代码。最重要的是，这发生在skbuff内存分配之前，可以提高速度。</p>
 	<p>通常，XDP项目包含两个部分：</p>
 	<ul>
 		<li>eBPF代码加载到内核环境中</li>
@@ -182,7 +182,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
      rx2_xdp_drop:        10.1m/s</code></pre>
 	<p>哇哦！使用XDP，我们可以在单核CPU上每秒丢弃1000万个数据包。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/12/225821241_ed5da2da91_o.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/afiler/225821241" target="_blank">图片</a>作者<a href="https://www.flickr.com/photos/afiler" target="_blank">Andrew Filer</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/afiler/225821241/" target="_blank">图片</a>作者<a href="https://www.flickr.com/photos/afiler/" target="_blank">Andrew Filer</a></figcaption>
 	</figure>
 	<h2 id="--1">总结</h2>
 	<p>我们针对IPv4和IPv6重复了这些试验，并绘制了以下图表：</p>

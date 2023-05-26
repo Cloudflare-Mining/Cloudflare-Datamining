@@ -1,0 +1,388 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image6-11-1.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<p><br></p>
+	<p>Igal innovatsiooninädalal testib Cloudflare meie võrgu jõudlust võrreldes konkurentidega. Viimastel nädalatel oleme keskendunud sellele, kui kiire me oleme võrreldes <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/" target="_blank">pöördproksiidega</a>, nagu Akamai, või platvormidega, mis müüvad serverivaba arvutust, mis on võrreldavad meie <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022/">Supercloudiga</a>, nagu Fastly ja AWS. Sel nädalal soovime anda ülevaate, kuidas me võrdleme teiste pöördproksiidega, samuti ajakohastame meie rakendusteenuste turvatoote võrdlust Zscaleri ja Netskope'iga. See toode on osa meie Zero Trust platvormist, mis aitab kaitsta rakendusi ja internetikogemusi avalikus internetis, erinevalt meie pöördproxy'st, mis kaitseb teie veebisaite väliste kasutajate eest.</p>
+	<p>Lisaks meie <a href="https://blog.cloudflare.com/network-performance-update-cio-edition/">eelmisele artiklile, milles võrreldakse meie Zero Trust platvormi ja Zscaleri vahel</a>, jagasime <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">varem ka ulatuslikke võrkude võrdlusuuringute tulemusi</a> 3000 viimase miili võrgu kohta üle maailma. Sellest on juba mõnda aega möödas, kui me näitasime teile meie edusamme, et saada #1 igas viimase miili võrgus. Tahame teile neid andmeid näidata, samuti vaadata uuesti meie võrdlusuuringute sarja, milles võrreldakse Cloudflare'i juurdepääsu Zscaler Private Accessi ja Netskope Private Accessiga. Meie üldistes võrgutestides on Cloudflare esikohal 47% 3000 parima võrgu hulgas. Meie rakenduste turvalisuse testides on Cloudflare 50% kiirem kui Zscaler ja 75% kiirem kui Netskope.</p>
+	<p>Selles blogis räägime sellest, miks meie toodete jõudlus on oluline, sukeldume sügavale sellesse, mida me mõõdame, et näidata, et oleme kiiremad, ja räägime sellest, kuidas me iga toote jõudlust mõõtsime.</p>
+	<h3 id="miks-on-tulemuslikkus-oluline">Miks on tulemuslikkus oluline?</h3>
+	<p>Rääkisime sellest oma eelmises <a href="https://blog.cloudflare.com/network-performance-update-cio-edition/">blogis</a>, kuid tulemuslikkus on oluline, sest see mõjutab teie töötajate kogemust ja nende võimet oma tööd teha. Ükskõik, kas tegemist on juurdepääsuga teenustele juurdepääsukontrollitoodete kaudu, ühendumisega avalikku Internetti turvalise veebivärava kaudu või riskantsete väliste saitide kaitsmisega Remote Browser Isolation'i abil, kõik see peab olema sujuv.</p>
+	<p>Kokkuvõttes: oletame, et Bob Acme Corporationist ühendub Johannesburgist Slacki või Zoomiga, et teha tööd. Kui Acme'i turvaline veebivärav asub Bobist kaugel Londonis, võib Bobi liiklus suunata Johannesburgist Londonisse ja sealt tagasi Johannesburgi, et pääseda ligi oma e-postile. Kui Bob üritab Slackis või Zoomis teha näiteks häälkõnet, võib tema kogemus olla väga aeglane, kuna ta ootab oma e-kirjade saatmist ja vastuvõtmist. Zoom ja Slack soovitavad mõlemad optimaalse jõudluse saavutamiseks madalat latentsust. See täiendav hüpe, mille Bob peab tegema oma värava kaudu, võib vähendada läbilaskevõimet ja suurendada latentsust, halvendades Bobi kogemust.</p>
+	<p>Nagu me varem arutasime, kui need tooted või kogemused on aeglased, võib juhtuda midagi hullemat kui teie kasutajate kaebamine: nad võivad leida viise, kuidas need tooted välja lülitada või neid ümber käia, seades teie ettevõtte ohtu. Zero Trust tootepakett on täiesti ebaefektiivne, kui keegi seda ei kasuta, sest see on aeglane. Zero Trust lahenduse tõhususe seisukohalt on ülioluline tagada, et Zero Trust oleks kiire: töötajad ei taha seda välja lülitada ja end ohtu seada, kui nad ei tea, et see üldse olemas on.</p>
+	<p>Netskope suudab sarnaselt Zscaleriga ületada paljusid vanu lahendusi, kuid nende võrk ei suuda siiski võistelda sellise suure jõudlusega optimeeritud võrguga nagu Cloudflare'i võrk. Me oleme testinud kõiki meie Zero Trust tooteid Netskope'i eakaaslastega ning toome isegi Zscaleri tagasi, et näidata, kuidas Zscaleriga võrrelda. Niisiis, kaevume andmetesse ja näitame teile, kuidas ja miks me oleme kriitilises Zero Trust stsenaariumis kiiremad, võrreldes Cloudflare Accessi Zscaler Private Accessi ja Netskope Private Accessiga.</p>
+	<h3 id="cloudflare-access-kiireim-zero-trust-proxy-server">Cloudflare Access: kiireim Zero Trust proxy server</h3>
+	<p>Juurdepääsukontroll peaks olema sujuv ja kasutaja jaoks läbipaistev: parim kompliment Zero Trust lahendusele on see, et töötajad vaevu märkavad selle olemasolu. Need teenused võimaldavad kasutajatel autentimisandmeid teenusepakkuja võrgus vahemällu salvestada, pakkudes turvalist ja kiiret juurdepääsu rakendustele, et anda kasutajatele soovitud sujuv kogemus. Seega aitab võrgu olemasolu, mis minimeerib vajalike sisselogimiste arvu ning vähendab rakenduste päringute latentsust, hoida veebikogemust koheselt ja kiiresti.</p>
+	<p>Cloudflare Access teeb seda kõike 75% kiiremini kui Netskope ja 50% kiiremini kui Zscaler, tagades, et olenemata sellest, kus sa oled maailmas, saad kiire ja turvalise rakenduskogemuse:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Cloudflare mõõtis meie, Zscaleri ja Netskope'i jaoks rakenduste juurdepääsu 300 erinevast asukohast üle maailma, ühendudes 6 eraldi rakendusserveriga Hongkongis, Torontos, Johannesburgis, São Paulos, Phoenixis ja Šveitsis. Kõigis neis kohtades oli Cloudflare P95 reageerimisaeg kiirem kui Zscaleril ja Netskope'il. Vaatame andmeid, kui rakendus asub Torontos, piirkonnas, kus Zscaler ja Netskope peaksid hästi toimima, kuna see on tugeva ühenduvusega piirkond: Põhja-Ameerika.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--8.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95. protsentiili vastus (ms)</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Esošās sesijas (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2 182</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2 075</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4 071</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3 617</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6 072</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3 902</span></td>
+			</tr>
+
+		</thead>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare paistab silma piirkondades, kus ühenduvus on mitmekesisem, näiteks Lõuna-Ameerikas või Aasia ja Vaikse ookeani piirkonnas, kus Zscaler on Netskope'iga võrreldes parem kui Cloudflare:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kui me vaatame Lõuna-Ameerikas kohapeal asuvaid rakendusservereid, siis paistab Cloudflare silma:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0pky" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access - Vastusaeg (95. protsentiil) - Lõuna-Ameerika</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95. protsentiili vastus (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2 961</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9 271</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8 223</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare'i võrk paistab siin silma, võimaldades meil tutvustada ühendusi kasutajate lähedal. Seda näete, kui vaatate Lõuna-Ameerika ühendusajad:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0pky" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access - Ühendusaeg (95. protsentiil) - Lõuna-Ameerika</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95. protsentiili ühenduvus (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">369</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 753</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 160</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare'i võrk eristab meid siinkohal, sest me suudame tuua kasutajad kiiremini meie võrku ja leida parimad marsruudid üle maailma tagasi rakenduse vastuvõtjani. Tänu sellele ülivõimsusele oleme kaks korda kiiremad kui Zscaler ja kolm korda kiiremad kui Netskope. Kõikide erinevate võrdlusuuringute puhul on Cloudflare'i ühendusajad kõigis 300 testitud sõlmpunktis järjepidevalt kiiremad.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--3--5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Viimases <a href="https://blog.cloudflare.com/network-performance-update-cio-edition/">blogis</a> vaatlesime kahte erinevat stsenaariumi, mida tuleb Cloudflare'i ja Zscaleri võrdlemisel eraldi mõõta. Esimene stsenaarium on see, kui kasutaja logib oma rakendusse sisse ja peab autentimist tegema. Sellisel juhul suunab Zero Trust Access teenus kasutaja sisselogimislehele, kasutaja autentib end ja seejärel suunatakse ümber oma rakendusse.</p>
+	<p>Seda nimetatakse uueks seansiks, sest autentimisandmed ei ole vahemällu salvestatud või ei ole Accessi võrgus olemas. Teist stsenaariumi nimetatakse olemasolevaks seansiks, kus kasutaja on juba autenditud ja autentimisandmed on võimalik vahemällu salvestada. See stsenaarium on tavaliselt palju kiirem, sest selle lõpuleviimiseks ei ole vaja täiendavat ühendust identiteediteenuse pakkujaga.</p>
+	<p>Meile meeldib neid stsenaariume eraldi mõõta, sest kui me vaatame 95. protsentiili väärtusi, vaatleme peaaegu alati uusi seansse, kui me kombineerime uusi ja olemasolevaid seansse. Kuid mõlema stsenaariumi puhul on Cloudflare igas piirkonnas järjepidevalt kiirem. Läheme tagasi ja vaatame Torontos asuvat rakendust, kus meiega ühendust võtvad kasutajad on nii uute kui ka olemasolevate seansside puhul kiiremad kui Zscaler ja Netskope.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="tg-0pky" colspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access – Reageerimisaeg (95. protsentiil) - Toronto</span></th>
+			</tr>
+
+		</tbody>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Uued sessioonid (ms)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Olemasolevad seansid (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 276</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 022</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2 415</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 797</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5 741</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 822</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Näete, et uued seansid on üldiselt aeglasemad, nagu oligi oodata, kuid Cloudflare'i võrk ja optimeeritud tarkvara tagavad järjepidevalt kiire kasutajakogemuse. Stsenaariumites, kus otsepoolne ühenduvus võib olla keerulisem, paistab Cloudflare veelgi enam silma. Vaatleme Aasias asuvaid kasutajaid, kes ühenduvad Hongkongis asuva rakendusega.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0pky" colspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT Access – Reageerimisaeg (95. protsentiil) - Hongkong</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Uued sessioonid (ms)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Olemasolevad seansid (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2 582</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2 075</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4 956</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3 617</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5 139</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3 902</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Huvitav on see, et kuigi Cloudflare'i võrk on hüperoptimeeritud jõudluse osas, on Zscaler jõudluse poolest lähemal Netskope'ile kui Cloudflare'ile. Netskope'i tulemused on ka uute seansside puhul kehvad, mis näitab, et nende teenus ei reageeri, kui kasutajad loovad uusi seansse.</p>
+	<p>Meile meeldib neid uusi ja olemasolevaid seansse eraldada, sest korraliku võrdluse jaoks on oluline vaadata sarnaseid päringuteid. Näiteks kui me võrdleme päringut läbi Zscaleri olemasoleva seansi ajal päringuga läbi Cloudflare'i uue, uue seansi ajal, näeme, et Cloudflare oli palju aeglasem kui Zscaler, sest autentimine on nõutav. Nii et kui me palkasime nende testide väljatöötamiseks kolmanda osapoole, siis hoolitsesime selle eest, et nad seda arvesse võtaksid.</p>
+	<p>Nende testide jaoks seadistas Cloudflare viis rakenduse instantsi, mis asusid Torontos, Los Angeleses, São Paulos, Johannesburgis ja Hongkongis. Seejärel kasutas Cloudflare 30</p>
+	<ul>
+		<li>Kasutaja ühendub rakendusega Catchpointi instantsi poolt simuleeritud brauserist - uus seanss;</li>
+		<li>Kasutaja autentib end oma identiteedipakkuja juures;</li>
+		<li>Kasutaja saab juurdepääsu ressursile;</li>
+		<li>Kasutaja uuendab brauseri lehekülge ja üritab pääseda samale ressursile, kuid olemasolevate volitustega - olemasoleva seansiga.</li>
+	</ul>
+	<p>See võimaldab meil võrrelda Cloudflare'i kõigi teiste toodetega nii uute kui ka olemasolevate seansside rakenduste jõudluse osas ja me oleme näidanud, et oleme kiiremad. Nagu me mainisime, võlgneme selle suuresti meie võrgule ja sellele, kuidas me kasutajatele lähedale jõuame. Nii et nüüd räägime sellest, kuidas me võrdleme end teiste suurte võrkudega ja kuidas me teile lähemale jõuame.</p>
+	<h3 id="v%C3%B5rgustiku-m%C3%B5ju-parandab-kasutajakogemust">Võrgustiku mõju parandab kasutajakogemust</h3>
+	<p>Kasutajatele lähemale jõudmine parandab viimase miili aega (RTT). Nagu me arutasime juurdepääsu võrdluses, parandab madal RTT klientide jõudlust, sest uued ja olemasolevad sessioonid ei pea Cloudflare Zero Trust'i võrku jõudmiseks väga kaugele sõitma. Nende viimase miili võrkudesse integreerumine aitab meil kasutajatele lähemale jõuda, mis mitte ainult ei aita kaasa Zero Trusti tõhususele, vaid parandab ka <a href="https://blog.cloudflare.com/network-performance-update-security-week/">veebi</a> ja <a href="https://blog.cloudflare.com/network-performance-update-developer-week/">arendajate jõudlust</a>, nagu oleme arutanud eelmistes blogides.</p>
+	<p>Võrgu jõudluse kvantifitseerimiseks peame saama piisavalt andmeid kogu maailmast, erinevatest võrkudest, võrreldes end teiste teenusepakkujatega. Me kasutasime Real User Measurements (RUM), et saada 100 KB suurune fail mitmetelt erinevatelt teenusepakkujatelt. Kasutajad üle kogu maailma annavad aru erinevate teenusepakkujate jõudlusest. Mida rohkem kasutajaid andmeid teatab, seda täpsem on signaal. Eesmärk on anda täpne ülevaade sellest, kus erinevad teenusepakkujad on kiiremad ja mis veelgi olulisem, kus Cloudflare saab parandada. Lisateavet metoodika kohta saate lugeda Speed Week 2021 algsest blogipostitusest <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">siin</a>.</p>
+	<p>Me käime pidevalt läbi protsessi, et välja selgitada, miks me oleme aeglased, ja seejärel parandada. Probleemid, millega silmitsi seisime, olid iga võrgu puhul ainulaadsed ja tõid esile erinevaid probleeme, mis on ühised kogu internetis. Anname ülevaate mõningatest jõupingutustest, mida teeme, et parandada meie kasutajate jaoks jõudlust.</p>
+	<p>Kuid enne seda on siin meie jõupingutuste tulemused 2022. aasta arendusnädalast, kui me viimati neid numbreid näitasime. Maailma 3000 parima võrgu hulgas (reklaamitud IPv4-aadresside arvu järgi) on siin esitatud nende võrkude arv, kus iga ISP on esikohal p95 TCP-ühenduse aja poolest, mis näitab aega, mis kulub kasutajal konkreetses võrgus ISP-ga ühenduse loomiseks:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Sellised on need numbrid selle nädala, 2023. aasta turvalisuse nädal:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--5--2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Nagu näete, on Cloudflare suurendanud oma eelist rohkemates võrkudes, samal ajal kui teised varem kiiremad võrgud, nagu Akamai ja Fastly, on oma eelise kaotanud. Sellel on mõju, mida me näeme maailmakaardil. Siin on näha, milline see maailmakaart välja nägi Developer Week 2022 ajal:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6--2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Selline näeb maailmakaart täna välja julgeolekunädala 2023 ajal:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Nagu näete, on Cloudflare muutunud kiiremaks Brasiilias, paljudes Aafrika riikides, sealhulgas Lõuna-Aafrikas, Etioopias ja Nigeerias, samuti Aasias Indoneesias ning Euroopas Norras, Rootsis ja Ühendkuningriigis.</p>
+	<p>Paljud neist riikidest on saanud kasu Edge Partner Program, mida me arutasime oma <a href="https://blog.cloudflare.com/how-cloudflare-helps-next-generation-markets/">Impact Weeki blogis</a>. Kiire ajakohastus: Edge Partner Program julgustab viimase miili internetiteenuse pakkujaid tegema Cloudflare'iga koostööd, et võtta kasutusele Cloudflare'i asukohad, mis on integreeritud viimase miili teenusepakkujasse. See parandab viimase miili RTT-d ja parandab selliste teenuste, nagu juurdepääs, jõudlust. Pärast seda, kui me teile viimati seda kaarti näitasime, on Cloudflare võtnud kasutusele rohkem partnerkohti sellistes riikides nagu Nigeeria ja Saudi Araabia, mis on parandanud kasutajate jõudlust kõigis stsenaariumides. Sellised jõupingutused nagu Edge Partner Programme aitavad parandada mitte ainult eespool kirjeldatud Zero Trust stsenaariume, vaid ka Cloudflare'i kaitstud veebisaite kasutavate lõppkasutajate üldist veebi sirvimiskogemust.</p>
+	<h3 id="j%C3%A4rgmise-p%C3%B5lvkonna-j%C3%B5udlus-zero-trust-maailmas">Järgmise põlvkonna jõudlus Zero Trust maailmas</h3>
+	<p>Zero Trust maailmas oleksid teie ja teie IT-meeskonnad võrguoperaatorid, mis annaks teile kontrolli tulemuslikkuse üle. Kuigi see kontroll oli mugav, oli teie IT-meeskondadele ka suur koormus kontorite ja ressursside vaheliste ühenduste haldamine. Kuid Zero Trusti maailmas on teie võrk nüüd... avalik internet. See tähendab vähem tööd teie meeskondadele, kuid palju rohkem vastutust Zero Trust teenusepakkujale, kes peab haldama iga kasutaja jõudlust. Mida paremini suudab teie Zero Trust teenusepakkuja parandada otsest jõudlust, seda parem on teie kasutajate kogemus ja seda vähem riske võtate. Reaalajas töötavate rakenduste, näiteks autentimise ja turvaliste veebiväravate puhul on kriitilise tähtsusega kohene kasutajakogemus.<br></p>
+	<p>Zero Trust teenusepakkuja ei peaks mitte ainult kaitsma teie kasutajaid avalikus veebis, vaid ka optimeerima avalikku veebi, et tagada kasutajate pidev kaitse. Zero Trust'ile üleminek ei vähenda mitte ainult vajadust ettevõtte võrgu järele, vaid võimaldab ka kasutajate liiklust loomulikumalt ressurssidele suunata. Arvestades aga, et teie Zero Trust teenusepakkuja on kõigi teie kasutajate ja kõigi rakenduste väravavalvur, on jõudlus kriitiline aspekt, mida tuleb hinnata, et vähendada kasutajate häireid ja tõenäosust, et nad kaebavad, on vähem produktiivsed või lülitavad lahenduse välja. Me täiustame pidevalt oma võrku, et pakkuda kasutajatele parimat võimalikku kogemust selliste programmide kaudu nagu <a href="https://www.cloudflare.com/partners/peering-portal/" target="_blank">Edge Partner Programme</a> ja täiustame pidevalt oma peeringut ja ühenduvust. Just need väsimatud jõupingutused teevad meist kõige kiiremini kasvava Zero Trust teenusepakkuja.</p>
+</div>

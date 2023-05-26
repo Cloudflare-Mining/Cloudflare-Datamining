@@ -1,0 +1,296 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image13-1-2.png" class="kg-image" alt="" loading="lazy" width="1201" height="675"></figure><!--kg-card-begin: markdown-->
+	<p>Internetas tapo svarbiu geopolitinių konfliktų, pavyzdžiui, vykstančio karo Ukrainoje, veiksniu. Rytoj sukanka vieneri metai nuo Rusijos invazijos į šią šalį. Šiame pranešime apžvelgiami interneto statistiniai duomenys ir aptariama, kaip Ukrainos internetas išliko atsparus nepaisant dešimčių sutrikimų per tris skirtingus konflikto etapus.</p>
+	<!--kg-card-end: markdown-->
+	<p>Pagrindinės išvados:</p>
+	<ul>
+		<li>Ukrainoje interneto srautas aiškiai persikėlė iš rytų į vakarus, nes ukrainiečiai bėgo nuo karo, o po 2022 m. vasario 24 d. visoje šalyje interneto srautas sumažėjo 33 %.</li>
+		<li>Spalio mėn. prasidėję oro antskrydžiai prieš energetikos infrastruktūrą sukėlė plataus masto interneto sutrikimus, kurie tęsis ir 2023 m.</li>
+		<li>Taikomųjų programų lygmens kibernetinių atakų skaičius Ukrainoje 2022 m. kovo pradžioje, palyginti su prieš karą buvusiu lygiu, išaugo 1300 %. </li>
+		<li>Nuo atakų Ukrainoje labiausiai nukentėjo vyriausybinės agentūros, finansų įstaigos ir žiniasklaida.</li>
+		<li>Nuo birželio iki spalio mėn. srautas iš kelių Chersono tinklų buvo nukreiptas per Rusiją, todėl srautui buvo taikomi Rusijos apribojimai, įskaitant turinio filtravimą. Net ir nustojus srautą nukreipti per Rusiją, šių Ukrainos tinklų veikla buvo labai sutrikdyta bent jau iki metų pabaigos, o du tinklai vis dar neveikia. </li>
+		<li>Dėl pastangų vietoje taisyti pažeistą šviesolaidį ir atkurti elektros energijos tiekimą Ukrainos tinklai išlieka atsparūs tiek infrastruktūros, tiek maršruto parinkimo požiūriu. Tai iš dalies lemia platus Ukrainos ryšys su tinklais už šalies ribų ir didelis IXP skaičius.</li>
+		<li>Nuo kovo vidurio iki gegužės vidurio "Starlink" srautas Ukrainoje išaugo daugiau nei 500 %, o nuo gegužės vidurio iki lapkričio vidurio toliau augo ir per šiuos šešis mėnesius padidėjo beveik 300 %. Nuo kovo vidurio (praėjus dviem savaitėms po to, kai tapo prieinamas) iki gruodžio vidurio jis išaugo daugiau kaip 1600 %, o po to šiek tiek sumažėjo.</li>
+	</ul>
+	<h2 id="interneto-poky%C4%8Diai-ir-trikd%C5%BEiai">Interneto pokyčiai ir trikdžiai</h2>
+	<h3 id="interneto-%C5%A1okas-po-2022-m-vasario-24-d">Interneto šokas po 2022 m. vasario 24 d.</h3>
+	<p>Ukrainoje žmonių interneto srautas per kelias savaites po vasario 24 d. sumažėjo 33 %. Toliau pateiktoje diagramoje parodytas dienos srautas (pagal užklausų skaičių) iš "Cloudflare" perspektyvos.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Per kitus kelis mėnesius interneto srautas atsigavo, o rugsėjį ir spalį, kai į šalį <a href="https://en.wikipedia.org/w/index.php?title=2022%E2%80%93present_Ukrainian_refugee_crisis" target="_blank">grįžo</a> daug Ukrainos pabėgėlių, jis gerokai padidėjo. Tačiau visoje šalyje, daugiausia po spalio mėn., taip pat buvo sutrikimų, kurie aptariami toliau.</p>
+	<p>14 % viso srauto iš Ukrainos (įskaitant srautą iš Krymo ir kitų okupuotų teritorijų) buvo apribotas kaip galimų atakų, o 10 % viso srauto į Ukrainą per pastaruosius 12 mėnesių buvo apribotas kaip galimų atakų. </p>
+	<p>Iki 2022 m. vasario 24 d. tipinis verslo interneto srautas Ukrainoje iš pradžių būdavo didžiausias po pietų, apie 15 val. vietos laiku, sumažėdavo tarp 17 ir 18 valandos (kai žmonės išeidavo iš darbo), o didžiausią dienos piką pasiekdavo apie 21 valandą (galbūt po vakarienės, kai buvo naudojamasi mobiliuoju ryšiu ir transliacijomis). </p>
+	<p>Prasidėjus invazijai, stebėjome mažesnius svyravimus visą dieną - tai akivaizdus įprasto modelio pokytis, atsižvelgiant į pranešimus apie pažeidimus ir "<a href="https://www.france24.com/en/europe/20220226-exodus-from-ukraine-a-night-spent-with-civilians-fleeing-war-russia-s-invasion" target="_blank">išvykimą</a>" iš šalies. Pirmosiomis dienomis po invazijos pradžios eismo intensyvumas pasiekė piką 19:00, kai daugelis naktų tokiuose miestuose kaip Kijevas buvo praleistos <a href="https://www.newyorker.com/magazine/2022/03/14/inside-kyivs-metro-a-citywide-bomb-shelter" target="_blank">laikinose bombų slėptuvėse</a>. Kovo pabaigoje 21:00 val. pikas sugrįžo, tačiau eismo sumažėjimas ankstyvą vakarą nesugrįžo iki pat gegužės mėn. </p>
+	<p>Toliau pateiktoje diagramoje (nuo 2022 m. vasario 10 d. iki 2023 m. vasario mėn.) analizuodami Ukrainos interneto užklausas pagal duomenų srauto tipą, matome, kad nors po invazijos sumažėjo srautas tiek iš mobiliųjų, tiek iš stacionariųjų įrenginių, užklausų iš mobiliųjų įrenginių apimtis per pastaruosius metus išliko didesnė. Prieškariniu laikotarpiu apie 53 % srauto buvo gaunama iš mobiliųjų įrenginių, o pirmosiomis invazijos savaitėmis šis skaičius išaugo iki maždaug 60 %. Iki balandžio pabaigos šis rodiklis grįžo į įprastą prieškario lygį ir sumažėjo iki maždaug 54 % srauto. Taip pat pastebimas gruodžio mėn. sumažėjimas / atsijungimas, kurį aptarsime toliau.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="milijonai-%C5%BEmoni%C5%B3-persik%C4%97l%C4%97-i%C5%A1-ukrainos-ryt%C5%B3-%C4%AF-vakarus">Milijonai žmonių persikėlė iš Ukrainos rytų į vakarus</h3>
+	<p>Invazijos metu buvo užpulta ir sunaikinta infrastruktūra daugelyje miestų, tačiau pirmosiomis dienomis šalies energetikos infrastruktūra nebuvo atakuojama, kaip tai buvo padaryta 2022 m. spalio mėn. Pirmosiomis karo savaitėmis <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022/">interneto srauto pokyčius</a> daugiausia lėmė žmonių su šeimomis evakuacija iš konflikto zonų. Per pirmuosius tris mėnesius iš šalies pabėgo daugiau kaip <a href="https://en.wikipedia.org/w/index.php?title=2022%E2%80%93present_Ukrainian_refugee_crisis" target="_blank">aštuoni milijonai</a> ukrainiečių, dar daugiau persikėlė į saugesnius miestus šalies viduje, nors daugelis jų grįžo 2022 m. vasarą. Per šią pabėgėlių krizę internetas atliko lemiamą vaidmenį, be kita ko, padėdamas palaikyti ryšius ir prieigą prie realiuoju laiku teikiamos gyvybiškai svarbios informacijos ir paslaugų programų. </p>
+	<p>Taip pat padidėjo interneto srautas vakarinėje Ukrainos dalyje, tokiuose regionuose kaip Lvovas (toliau nuo konflikto zonų), ir sumažėjo rytuose, tokiuose regionuose kaip Charkovas, kur atvyko Rusijos kariuomenė ir nuolat kilo išpuolių grėsmė. Toliau pateiktame paveikslėlyje parodyta, kaip pasikeitė interneto srautas Ukrainoje per savaitę nuo karo pradžios (tamsesnė rožinė spalva rodo, kad srautas sumažėjo iki 60 %, o tamsesnė žalia - kad padidėjo iki 50 %).</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled-1.png" class="kg-image" alt="" loading="lazy">
+		<figcaption>Source: <a href="https://datawrapper.dwcdn.net/dsUSJ/2/" target="_blank">https://datawrapper.dwcdn.net/dsUSJ/2/</a></figcaption>
+	</figure>
+	<p>Pirmosiomis karo dienomis interneto srautas Ukrainoje labiausiai sumažėjo Charkovo srityje rytuose ir Černigovo srityje šiaurėje (abiejose srityse - 60 %), po to Kijevo srityje, kur 2022 m. kovo 2 d. interneto srautas buvo 40 % mažesnis nei vasario 23 d. </p>
+	<p>Vakarų Ukrainoje eismas padidėjo. Tarp regionų, kuriuose eismo srautas padidėjo labiausiai, buvo Rivnės (50 %), Voluinės (30 %), Lvovo (28 %), Černivcių (25 %) ir Užkarpatės (15 %) regionai.</p>
+	<p>Interneto srauto Ukrainoje analizė miestų lygmeniu leidžia suprasti, kaip pirmosiomis savaitėmis buvo naudojamasi internetu ir kaip jis buvo prieinamas; pastebimi sutrikimai tose vietose, kur vyko tiesioginis konfliktas arba kurias jau buvo užėmę Rusijos kariai.</p>
+	<p>Į šiaurę nuo Kijevo esančiame <strong>Černigovo</strong> mieste pirmąją karo savaitę eismas smarkiai sumažėjo, o iki kovo vidurio išliko, ir tik balandžio pradžioje rusams atsitraukus, eismas pagyvėjo.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/che-2023-02-16-at-14.04.32.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p><strong>Kijevo</strong> mieste iš karto prasidėjus karui buvo pastebimi aiškūs interneto srauto sutrikimai, kuriuos greičiausiai sukėlė išvykstantys žmonės, išpuoliai ir naudojimasis požeminėmis slėptuvėmis.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--1-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kovo pradžioje už Kijevo ribų, <strong>Bučoje</strong>, matėme akivaizdų gedimą. Po balandžio 1 d., kai rusai atsitraukė, interneto srautas po kelių savaičių vėl pradėjo veikti.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<p><strong>Irpino</strong> mieste, esančiame netoli Kijevo, netoli Gostomelio ir Bučos oro uostų, situacija klostėsi panašiai kaip ir Bučoje. Eismas pradėjo ryškiau atsigauti tik gegužės pabaigoje.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--2-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Rytuose kovo 3 d. <strong>Charkovo</strong> mieste eismas sumažėjo 50 proc., panašus scenarijus buvo stebimas ir netoli esančiame Sumų mieste. Pokyčius lėmė žmonių persikėlimas, taip pat elektros energijos tiekimo sutrikimai kai kuriuose tinkluose.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--3-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Sutriko ir kituose Ukrainos pietuose esančiuose miestuose, pavyzdžiui, Berdianske. Šioje diagramoje pavaizduotas Enerhodaras, nedidelis miestas, kuriame yra didžiausia Europoje <a href="https://en.wikipedia.org/wiki/Zaporizhzhia_Nuclear_Power_Plant" target="_blank">Zaporožės atominė elektrinė</a>, su likusiais eismo srautais, palyginti su prieškariniu lygiu.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--4-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Ukrainos pietuose esančiuose miestuose labai sutriko interneto ryšys. Vasario 24 d. rusai pradėjo Mariupolio <a href="https://en.wikipedia.org/wiki/Siege_of_Mariupol" target="_blank">apgultį</a>. Išpuoliai ir energetikos infrastruktūros atjungimas paveikė vietos tinklus ir interneto srautą, kuris iki kovo 1 d. sumažėjo iki minimumo. Apytikriai <a href="https://web.archive.org/web/20220418203018/https://www.cnbc.com/2022/04/17/russia-ukraine-live-updates.html" target="_blank">95 proc.</a> miesto pastatų buvo sugriauti, o gegužės viduryje miestą visiškai kontroliavo Rusija. Nors iki balandžio pabaigos duomenų srautas šiek tiek padidėjo, jis siekė tik ~22 % prieškarinio lygio.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--5-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kalbant apie Ukrainos interneto paslaugų teikėjus (IPT) arba autonomines sistemas (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank">ASN</a>), pirmaisiais karo mėnesiais tam tikruose regionuose pastebėta daugiau vietinių sutrikimų, tačiau beveik visada pavykdavo greitai atsigauti. <a href="https://radar.cloudflare.com/as6849" target="_blank">AS6849 (Ukrtele)</a> kovo viduryje patyrė labai trumpalaikių sutrikimų. <a href="https://radar.cloudflare.com/as13188" target="_blank">AS13188 ("Triolan")</a>, kuris aptarnauja Kijevą, Černigovą ir Charkovą, buvo dar vienas paslaugų teikėjas, susidūręs su problemomis (kovo 9 d. jis <a href="https://t.me/triolan_me/630" target="_blank">pranešė</a> apie kibernetinę ataką), kurios matomos toliau pateiktoje diagramoje:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--6-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Iki spalio-lapkričio mėn. atakų prieš energetikos infrastruktūrą nepastebėjome akivaizdaus nacionalinio masto pagrindinio Ukrainos interneto paslaugų teikėjo <a href="https://radar.cloudflare.com/as15895" target="_blank">AS15895 ("Kyivstar")</a> sutrikimo, o tai taip pat rodo tam tikrą ankstyvą Ukrainos tinklų atsparumą.</p>
+	<h3 id="ukrainos-kontrpuolimas-ir-jo-poveikis-internetui">Ukrainos kontrpuolimas ir jo poveikis internetui</h3>
+	<p>Kai Rusijos kariai pasitraukė iš šiaurinio Ukrainos fronto, balandžio pabaigoje jie ėmėsi stiprinti pozicijas rytuose (<a href="https://en.wikipedia.org/wiki/Battle_of_Donbas_(2022%E2%80%93present)" target="_blank">Donbaso mūšis</a>) ir pietuose (<a href="https://en.wikipedia.org/wiki/Russian_occupation_of_Kherson_Oblast" target="_blank">Chersono srities užėmimas</a>). Dėl to sutriko interneto ryšys ir pasikeitė duomenų <a href="https://blog.cloudflare.com/tracking-shifts-in-internet-connectivity-in-kherson-ukraine/">srautas</a>, kurie išsamiau aptariami toliau. Tačiau interneto srautas Chersono srityje buvo nepastovus, o po gegužės mėnesio, atsižvelgiant į kovą dėl interneto kontrolės, pasitaikydavo sutrikimų. <a href="https://www.bloomberg.com/news/articles/2022-06-21/ukrainian-telecom-workers-damage-own-equipment-to-thwart-russia?leadSource=uverify+wall" target="_blank">Birželio</a> mėn. naujienų pranešimai atskleidė, kad interneto paslaugų teikėjų darbuotojai sugadino savo pačių įrangą, kad sutrukdytų Rusijos bandymams kontroliuoti Ukrainos internetą. </p>
+	<p>Prieš rugsėjo mėnesio Ukrainos kontrpuolimą dar vienas karo poveikio miestų interneto srautui pavyzdys buvo vasarą, kai <a href="https://edition.cnn.com/2022/07/03/europe/russia-ukraine-luhansk-lysychansk-intl/index.html" target="_blank">liepos</a> pradžioje Rusijos pajėgos užėmė Lysičansko miestą Rytų Ukrainoje, kuris tapo žinomas kaip <a href="https://en.wikipedia.org/wiki/Battle_of_Lysychansk" target="_blank">Lysičansko mūšis</a>. Prasidėjus karui interneto srautas Lysychanske akivaizdžiai sumažėjo. Šis sumažėjimas tęsėsi ir per intensyvias <a href="https://en.wikipedia.org/wiki/Battle_of_Lysychansk" target="_blank">kovas</a>, kurios prasidėjo balandžio mėn. ir dėl kurių dauguma miesto gyventojų <a href="https://news.yahoo.com/12-000-lysychansk-residents-remain-194356536.html?fr=sycsrp_catchall&amp;guccounter=1" target="_blank">pabėgo</a>. Gegužės mėn. duomenų srautas buvo beveik išlikęs (su trumpalaikiu kelių dienų padidėjimu gegužės viduryje).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Lysychansk.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Rugsėjo pradžioje prasidėjo Ukrainos <a href="https://en.wikipedia.org/wiki/2022_Kharkiv_counteroffensive" target="_blank">kontrpuolimas</a> rytuose, nors iš pradžių žiniasklaida <a href="https://www.euronews.com/2022/08/29/ukraine-launches-counter-offensive-to-retake-kherson-say-authorities" target="_blank">pranešė</a> apie puolimą Chersono srities pietuose, tačiau tai buvo "apgaulingas" žingsnis. Chersono puolimas baigėsi tik spalio pabaigoje ir lapkričio pradžioje. Rugsėjį Ukrainai pavyko atgauti daugiau kaip 500 gyvenviečių ir 12 000 kvadratinių kilometrų <a href="https://twitter.com/CloudflareRadar/status/1569055256889147394" target="_blank">Charkovo</a> srities. Tuo metu keliose iš šių gyvenviečių buvo sutrikdytas interneto ryšys.</p>
+	<p>Atsakydami į sėkmingą Ukrainos kontrpuolimą, Rusijos oro antskrydžiai sukėlė elektros energijos ir interneto tiekimo sutrikimus regione. Rugsėjo 11, 12 ir 13 d. taip nutiko <a href="https://twitter.com/CloudflareRadar/status/1569055256889147394" target="_blank">Charkove</a>. Toliau pateiktame paveikslėlyje parodytas rugsėjo 11 d. beveik 12 valandų trukęs beveik visiškas interneto ryšio sutrikimas, po kurio dar du kartus sumažėjo duomenų srautas.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="kai-atvyksta-branduoliniai-inspektoriai-nutr%C5%ABksta-ir-interneto-ry%C5%A1ys">Kai atvyksta branduoliniai inspektoriai, nutrūksta ir interneto ryšys</h3>
+	<p>Elektros energijos tiekimo sutrikimų buvo ir Zaporožės regione. 2022 m. rugsėjo 1 d., t. y. tą dieną, kai Tarptautinės atominės energijos agentūros (TATENA) inspektoriai <a href="https://edition.cnn.com/2022/09/01/europe/ukraine-zaporizhzhia-iaea-inspectors-intl/index.html" target="_blank">atvyko</a> į Rusijos kontroliuojamą Zaporožės atominę elektrinę Enerhodare, dviejose vietos ASN, aptarnaujančiose šį regioną, sutriko interneto ryšys: <a href="https://radar.cloudflare.com/as199560" target="_blank">AS199560 ("Engrup")</a> ir <a href="https://radar.cloudflare.com/as197002" target="_blank">AS197002 ("Tenor Ribotos Atsakomybės Bendrovė ")</a>. Kaip parodyta toliau pateiktose diagramose, šie sutrikimai truko iki rugsėjo 10 d.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image5-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image2-10.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kalbant plačiau, po rugsėjo 6 d. Enerhodaro mieste, kuriame yra atominė elektrinė, keturias dienas buvo nutrauktas elektros energijos tiekimas.</p>
+	<h3 id="rugs%C4%97jo-viduryje-eismas-kryme-suma%C5%BE%C4%97jo">Rugsėjo viduryje eismas Kryme sumažėjo</h3>
+	<p>Rugsėjo viduryje, Ukrainai pradėjus kontrpuolimą, kilo klausimų, kada Ukrainos pajėgos gali nusitaikyti į Krymą. Naujienose <a href="https://twitter.com/KyivIndependent/status/1569659989417152515?s=20" target="_blank">pasirodė</a> pranešimų, kad apie rugsėjo 13 d. iš Krymo buvo evakuoti Rusijos gyventojai. Tą antradienį, palyginti su ankstesne diena, matėme akivaizdžiai sumažėjusį srautą, kaip matyti toliau pateiktame Krymo žemėlapyje (raudona spalva reiškia sumažėjusį srautą, žalia - padidėjusį srautą).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--8-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="spalio-m%C4%97n-%C5%A1alyje-%C4%AFvykdyti-i%C5%A1puoliai-prie%C5%A1-energetikos-infrastrukt%C5%ABr%C4%85-ir-nutr%C5%ABko-elektros-energijos-tiekimas">Spalio mėn. šalyje įvykdyti išpuoliai prieš energetikos infrastruktūrą ir nutrūko elektros energijos tiekimas.</h3>
+	<p>Kaip matome, Rusijos oro antskrydžiai prieš svarbiausią energetikos infrastruktūrą prasidėjo rugsėjo mėn., atsakant į Ukrainos kontrpuolimą. Kitą mėnesį, spalio 8 d., šeštadienį, įvykus sprogimui <a href="https://en.wikipedia.org/wiki/Crimean_Bridge_explosion" target="_blank">ant Krymo tilto</a> (kai sunkvežimyje sumontuota bomba sugriovė dalį tilto), buvo surengta daugiau oro smūgių, kurie paveikė tinklus ir interneto srautą visoje Ukrainoje.</p>
+	<p>Spalio 10 d., pirmadienį, Ukraina atsibudo nuo oro antskrydžių prieš energetikos infrastruktūrą ir patyrė didelių elektros energijos ir interneto tiekimo sutrikimų. 07:35 UTC duomenimis, duomenų srautas šalyje buvo 35 % mažesnis nei įprastai, palyginti su praėjusia savaite, ir visiškai atsistatė tik po 24 valandų. Ypač didelis poveikis buvo jaučiamas tokiuose regionuose kaip Charkovas, kur duomenų srautas sumažėjo apie 80 %, ir Lvovas, kur jis sumažėjo apie 60 %. Toliau pateiktoje diagramoje parodyta, kaip kitą dieną Lvovo regione surengti nauji oro antskrydžiai paveikė interneto srautą.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Spalio 17 d. keliuose regionuose akivaizdžiai sutriko interneto ryšys, taip pat <a href="https://twitter.com/CloudflareRadar/status/1583102832810790920" target="_blank">spalio 20</a> d., kai dėl kelių Kijevo elektrinių sugriovimo interneto srautas iš Kijevo sumažėjo 25 %, palyginti su ankstesnėmis dviem savaitėmis. Tai truko 12 valandų, o kitą dieną įvyko trumpesnis dalinis sutrikimas, kaip parodyta toliau pateiktoje diagramoje.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--4-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Spalio pabaigoje, Ukrainos pareigūnų <a href="https://www.politico.eu/article/russia-strike-several-energy-power-station-ukraine-cause-outage-zelenskyy" target="_blank">duomenimis</a>, buvo sugriauta 30 proc. Ukrainos elektrinių. Dėl šio sunaikinimo savaime apribojus elektros energijos vartojimą, Kijeve ir jo apylinkėse sumažėjo interneto srautas. </p>
+	<p>Kelias savaites trukusio interneto tiekimo nutraukimo pradžią Chersono srityje galima matyti toliau pateiktoje diagramoje, kurioje matyti ~70 % mažesnis duomenų srautas nei ankstesnėmis savaitėmis. Nutrūkimas prasidėjo šeštadienį, spalio 22 d., Ukrainos kariuomenei įsitvirtinant Chersono srityje.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--5-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Eismas pradėjo atsigauti po to, kai 2022 m. lapkričio 11 d. Ukrainos pajėgos išlaisvino Chersoną. Toliau pateiktoje diagramoje, siekiant geriau vizualizuoti grafike, pateiktas lapkričio 7 d., lapkričio 28 d. ir gruodžio 19 d. Chersono regiono savaitės palyginimas, kuriame matyti pokyčiai per septynių savaičių laikotarpį.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--6-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="nuolatin%C4%97s-atakos-interneto-ry%C5%A1io-pertr%C5%ABkiai">Nuolatinės atakos, interneto ryšio pertrūkiai</h3>
+	<p>Visą likusį metų laikotarpį ir 2023 m. Ukrainoje toliau buvo stebimi periodiniai interneto ryšio sutrikimai. 2022 m. <a href="https://twitter.com/CloudflareRadar/status/1595419978282733573" target="_blank">lapkričio 23 d</a>. po Rusijos smūgių šalyje įvyko masiniai elektros energijos tiekimo sutrikimai, dėl kurių interneto srautas Ukrainoje sumažėjo beveik 50 %. Šie sutrikimai truko beveik pusantros paros, taip dar labiau pabrėžiant tebesitęsiantį konflikto poveikį Ukrainos infrastruktūrai.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--5--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Nors po lapkričio pabaigoje įvykusio gedimo srautas atsigavo, prireikė kelių dienų, kad vėl pasiektų įprastą lygį. Toliau pateikiama savaitinių interneto srauto pokyčių Ukrainoje per šį laikotarpį nacionaliniu ir vietiniu lygmenimis diagrama:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--1-.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kijevo srityje:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--7-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Odesos srityje:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--8-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Taip pat Charkove (kur <a href="https://twitter.com/CloudflareRadar/status/1603750187058561024" target="_blank">gruodžio 16 d</a>. nutrūkęs elektros energijos tiekimas taip pat aiškiai matomas - žalia linija):</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh6.googleusercontent.com/M-2axCRAh672FEYZnaQYK7QR5xcNVGYUKmQBa3jSQaC6p08PlhumoaevZzzrcH3z3hhvirRz5jfPUSSFaqov2FT9eOOK3cEsdyluH_9l9OvfFsCriHKo8p6YfuwfBMAjFKZ_WZcd4EFnXiHKVUQ1KqM" class="kg-image" alt="" loading="lazy"></figure>
+	<p>On <a href="https://twitter.com/CloudflareRadar/status/1603750187058561024" target="_blank">December 16</a>, there was another country-level Internet disruption caused by air strikes targeting energy infrastructure. Traffic at a national level dropped as much as 13% compared with the previous week, but Ukrainian networks were even more affected. <a href="https://radar.cloudflare.com/as13188" target="_blank">AS13188 (Triolan)</a> had a 70% drop in traffic, and <a href="https://radar.cloudflare.com/as15895" target="_blank">AS15895 (Kyivstar)</a> a 40% drop, both shown in the figures below.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--7--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--8--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>In January 2023, air strikes caused additional Internet disruptions. One such recent event was in <a href="https://twitter.com/CloudflareRadar/status/1618602213965692930" target="_blank">Odessa</a>, where traffic dropped as low as 54% compared with the previous week during an 18-hour disruption.</p>
+	<h2 id="visuotin%C4%AF-poveik%C4%AF-darantis-kibernetinis-karas">Visuotinį poveikį darantis kibernetinis karas</h2>
+	<h3 id="%C2%ABshields-up%C2%BB-skydai-auk%C5%A1tyn-nuo-kibernetini%C5%B3-atak%C5%B3">«Shields Up» "Skydai aukštyn" nuo kibernetinių atakų</h3>
+	<p>Kovo mėn. kelios šalys, <a href="https://eu.usatoday.com/story/tech/2022/02/28/russia-cyber-attack-ukraine-invasion-protect-yourself/6976490001/" target="_blank">Jungtinės Valstijos</a> ir <a href="https://edition.cnn.com/2022/02/24/tech/russia-ukraine-us-sanctions-cyberattacks/index.html" target="_blank">FTB</a> įspėjo visus šalies piliečius, įmones ir organizacijas, taip pat sąjungininkus ir partnerius apie būtinybę "didinti kibernetinį saugumą". JAV kibernetinio saugumo ir infrastruktūros saugumo agentūra (CISA) pradėjo iniciatyvą "<a href="https://www.cisa.gov/shields-up" target="_blank">Shields Up</a>", pažymėdama, kad "Rusijos įsiveržimas į Ukrainą gali paveikti organizacijas regione ir už jo ribų". Be kita ko, įspėjimus paskelbė ir <a href="https://blog.cloudflare.com/shields-up-free-cloudflare-services-to-improve-your-cyber-readiness/#:~:text=National%20Cyber%20Security%20Center">Jungtinė Karalystė</a> bei <a href="https://www.meti.go.jp/press/2021/02/20220221003/20220221003.html" target="_blank">Japonija</a>. </p>
+	<p>Toliau aptarsime žiniatinklio taikomųjų programų ugniasienės (WAF) poveikio mažinimą ir DDoS atakas. <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf" target="_blank">WAF</a> padeda apsaugoti žiniatinklio programas filtruodama ir stebėdama <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http" target="_blank">HTTP</a> srautą tarp žiniatinklio programos ir interneto. WAF yra <a href="https://www.cloudflare.com/learning/ddos/what-is-layer-7" target="_blank">7 lygmens</a> protokolas (<a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank">pagal OSI modelį</a>) ir nėra skirtas apsaugoti nuo visų tipų atakų. <a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack" target="_blank">Paskirstytosios atsisakymo aptarnauti atakos (DDoS)</a> - tai kibernetinės atakos, kuriomis siekiama sutrikdyti interneto išteklių darbą ir padaryti juos neprieinamus naudotojams.</p>
+	<h3 id="nuo-kovo-prad%C5%BEios-kibernetini%C5%B3-atak%C5%B3-skai%C4%8Dius-ukrainoje-i%C5%A1augo-1300-proc">Nuo kovo pradžios kibernetinių atakų skaičius Ukrainoje išaugo 1300% proc.</h3>
+	<p>Toliau pateiktos diagramos yra pagrįstos normalizuotais duomenimis ir rodo grėsmes, kurias riboja mūsų <a href="https://www.cloudflare.com/waf" target="_blank">WAF</a>.</p>
+	<p>Vasario 24 d. prasidėjus karui, kai prasidėjo karas, smarkiai išaugo mūsų WAF apribotų taikomųjų programų lygmens grėsmių skaičius. Vasario 28 d., pirmadienį, apribotų paraiškų skaičius buvo 105 % didesnis nei ankstesnį (prieš karą) pirmadienį, o kovo 8 d. pasiekė aukščiausią tašką - 1300 % viršijo prieš karą buvusį lygį. </p>
+	<p>Nuo 2022 m. vasario mėn. iki 2023 m. vasario mėn. vidutiniškai 10 % viso srauto į Ukrainą buvo nukreipta į galimų atakų poveikio ribojimą.</p>
+	<p>Toliau pateiktame grafike parodyta kasdienė taikomojo lygmens srauto į Ukrainą procentinė dalis, kurią "Cloudflare" apribojo kaip galimų atakų poveikį. Kovo pradžioje buvo apribota 30 % viso srauto. Balandžio mėn. šis skaičius sumažėjo ir kelis mėnesius išliko nedidelis, tačiau rugsėjo pradžioje, maždaug tuo metu, kai prasidėjo Ukrainos kontrpuolimas rytų ir pietų Ukrainoje, padidėjo. Didžiausias srautas buvo pasiektas spalio 29 d., kai DDoS srautas sudarė 39 % viso "Cloudflare" Ukrainos klientų svetainių srauto.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--9-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Ši tendencija dar akivaizdesnė, kai analizuojamas visas srautas į ".ua" aukščiausiojo lygio domeno svetaines (iš "Cloudflare" perspektyvos). Iš toliau pateiktos diagramos matyti, kad 2022 m. kovo pradžioje DDoS srautas sudarė daugiau kaip 80 % viso srauto. Pirmieji aiškūs šuoliai įvyko vasario 16 ir 19 d., kai buvo apribota apie 25 % srauto. Prasidėjus karui, nebuvo nė vienos ramybės akimirkos, išskyrus lapkričio pabaigą ir gruodį, tačiau prieš pat Kalėdas atakos vėl atsinaujino. Nuo 2022 m. vasario iki 2023 m. vasario mėn. vidutiniškai 13 % viso srauto į ".ua" domenus buvo ribojama kaip galimos atakos. Toliau pateiktame grafike pateikiamas išsamus taikomųjų programų lygmens DDoS atakų prieš ".ua" domenų svetaines vaizdas:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--10-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Kaip matyti iš toliau pateiktos diagramos, apie 57 % atvejų buvo atlikta naudojant taisyklių rinkinį, kuris automatiškai aptinka ir užkerta kelią HTTP DDoS atakoms ("DDoS Mitigation"), 31 % - naudojant nustatytas ugniasienės taisykles ("WAF"), o 10 % - blokuojant užklausas pagal mūsų IP reputacijos duomenų bazę.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--11-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Svarbu pažymėti, kad pirmiau pateiktame paveikslėlyje pavaizduotos <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf" target="_blank">WAF</a> taisyklės taip pat yra susietos su klientų sukurtomis pasirinktinėmis ugniasienės taisyklėmis, kad būtų užtikrinta labiau pritaikyta apsauga. "DDoS Mitigation" (taikomosios programos lygio apsauga nuo DDoS) ir "Prieigos taisyklės" (greičio ribojimas) naudojamos būtent DDoS apsaugai.</p>
+	<p>Priešingai nei pirmajame šiame skyriuje pateiktame grafike, kuriame buvo nagrinėjamas ribotas atakų srautas, nukreiptas į Ukrainą, galime pažvelgti ir į ribotą atakų srautą iš Ukrainos. Iš toliau pateikto grafiko taip pat matyti, kad prasidėjus invazijai gerokai padidėjo ir ribojamo srauto iš Ukrainos dalis.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--12-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="labiausiai-puolamos-pramon%C4%97s-%C5%A1akos-nuo-vyriausyb%C4%97s-iki-%C5%BEiniasklaidos">Labiausiai puolamos pramonės šakos: nuo vyriausybės iki žiniasklaidos</h3>
+	<p>Didžiausią <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank">WAF</a> apribojimų dalį sudaro viešojo administravimo, finansinių paslaugų ir žiniasklaidos sektoriai, kuriems 2022 m. teko beveik pusė visų Ukrainai taikomų WAF apribojimų.</p>
+	<p>Kalbant apie DDoS atakas, 2022 m. Ukrainoje padaugėjo atakų prieš žiniasklaidos ir leidybos namus. Paaiškėjo, kad prieš Ukrainos įmones nukreipti veikėjai daugiausia dėmesio skyrė informacinėms interneto svetainėms. Penkios labiausiai atakuojamos pramonės šakos Ukrainoje per pirmuosius du 2022 m. ketvirčius buvo transliacijos, internetas, internetinė žiniasklaida ir leidyba, kurioms teko beveik 80 % visų į Ukrainą nukreiptų DDoS atakų.</p>
+	<p>Atidžiau pažvelgus į svetainių, kurias "Cloudflare" apsaugojo karo metu, tipus, toliau pateiktose dviejose diagramose matyti, kaip mažėjo taikomųjų programų lygmens atakų pagal svetainių, esančių ".ua" domene, kurį padėjome apsaugoti, tipą. Pirmosiomis karo dienomis atakų apribojimų šuoliai buvo pastebėti naujienų tarnyboms, televizijos kanalams, vyriausybinėms svetainėms ir bankams.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--9-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Liepos mėn. padaugėjo apribojimų kitų tipų ".ua" svetainėms, įskaitant maisto pristatymo, apsipirkimo internetu, automobilių dalių, naujienų ir vyriausybines svetaines.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--10-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Dar 2023 m. vasario mėn. apribojimų šuoliai buvo šiek tiek panašūs į tuos, kuriuos matėme prieš metus, įskaitant elektronikos, apsipirkimo internetu, IT sektoriaus ir švietimo svetaines.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--13-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="2022-m-pirm%C4%85j%C4%AF-ketvirt%C4%AF-126-proc-tinklo-lygmens-duomen%C5%B3-srauto-sudar%C4%97-ddos-veikla">2022 m. pirmąjį ketvirtį 12,6 proc. tinklo lygmens duomenų srauto sudarė DDoS veikla</h3>
+	<p>Tinklo lygmens srautą (3 ir 4 lygmenys) sunkiau priskirti konkrečiam domenui ar taikiniui, nes IP adresais dalijasi įvairūs klientai. Žvelgdami į tinklo DDoS srautą, patekusį į mūsų Kijevo duomenų centrą, matome, kad kovo pradžioje DDoS srauto pikas buvo didesnis nei prieš karą, tačiau birželį ir rugpjūtį jis buvo daug didesnis.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--11-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Savo 2022 m. I <a href="https://radar.cloudflare.com/reports/ddos-2022-q1" target="_blank">ketvirčio DDoS ataskaitoje</a> taip pat pažymėjome, kad <a href="https://radar.cloudflare.com/reports/ddos-2022-q1" target="_blank">12,6 % duomenų srauto Ukrainoje sudarė DDoS veikla</a>, palyginti su 1 % ankstesnį ketvirtį, t. y. per ketvirtį padidėjo 1160 %. </p>
+	<p>Keliose mūsų 2022 m. <a href="https://blog.cloudflare.com/tag/ddos/">ketvirtinėse DDoS ataskaitose</a> pateikiamos su karu Ukrainoje susijusios atakų tendencijos ir <a href="https://radar.cloudflare.com/reports?q=DDoS" target="_blank">interaktyvūs</a> atskirų ketvirčių palyginimai.</p>
+	<h2 id="tinklo-peradresavimas-khersone">Tinklo peradresavimas Khersone</h2>
+	<p>2022 m. vasario 24 d. Rusijos pajėgos įsiveržė į Ukrainos Khersono regioną. Kovo 2 d. buvo užimtas Khersono miestas - pirmasis didelis miestas ir vienintelė regiono sostinė, kurią Rusijos pajėgos užėmė per pradinę invaziją. Rusijos okupacija Khersono regione truko iki lapkričio 11 d., kol Ukrainos pajėgos, rugpjūčio pabaigoje pradėjusios kontrpuolimą, susigrąžino kontrolę.</p>
+	<p>2022 m. gegužės 4 d. paskelbtame tinklaraščio įraše "Interneto ryšio pokyčių Khersone, Ukrainoje stebėjimas" nagrinėjamas pertvarkymas, kuris paveikė Khersono srities telekomunikacijų paslaugų teikėją AS47598 ("Kherson.Telecom"). Toliau pateikiame šio įvykio santrauką ir nagrinėjame panašią kitų Chersono interneto paslaugų teikėjų veiklą, kuri buvo vykdoma nuo to laiko.</p>
+	<p>2022 m. gegužės 1 d. pastebėjome Ipv4 prefikso maršruto keitimą, apie kurį pranešė Ukrainos tinklas AS47598 (Khersontelecom). Balandžio mėn. jis prie interneto jungėsi per kelis kitus Ukrainos paslaugų teikėjus, įskaitant AS12883 ("Vega Telecom") ir AS3326 ("Datagroup"). Tačiau, pakeitus maršruto parinkimą, jo maršrutas dabar rodė Rusijos tinklą AS201776 ("Miranda-Media") kaip vienintelį tiekėją. Kadangi srautas iš "Kherson.Telecom" buvo nukreipiamas per Rusijos tinklą, jam buvo taikomi apribojimai ir draudimai, taikomi bet kokiam srautui, nukreipiamam per Rusijos tinklus, įskaitant turinio filtravimą. </p>
+	<p>Toliau pateiktoje diagramoje parodytas srautas iš "Kherson.Telecom" prieš ir po gegužės 1 d., nukreiptas per Rusijos tinklo paslaugų teikėją "Miranda Media". Šis konkretus peradresavimo atvejis buvo trumpalaikis, nes gegužės 4 d. atnaujinus AS47598 maršrutizatorių, jis vėl pradėjo naudotis internetu per kitus Ukrainos interneto paslaugų teikėjus.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--14-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Analizei naudojome 15 autonominių sistemų numerių (ASN), priklausančių Chersono regiono tinklams, sąrašą. Remdamiesi šiuo sąrašu analizavome maršruto nustatymo informaciją, surinktą "route-views "2 per pastaruosius metus, nuo 2022 m. vasario 1 d. iki 2023 m. vasario 15 d. route-views2 yra BGP maršrutų rinkiklis, kurį valdo <a href="https://www.routeviews.org/routeviews" target="_blank">Oregono universiteto projektas Route Views</a>. Atkreipkite dėmesį, kad šiame ir tolesniuose skyriuose aptardami ASN, juos laikome lygiaverčiais ir į šią analizę specialiai neįtraukėme apskaičiuoto naudotojų skaičiaus. </p>
+	<p>Toliau pateiktame paveikslėlyje pavaizduoti šios analizės rezultatai, iš kurių matyti, kad Chersono paslaugų teikėjų (pavaizduota abscisėje) nukreipimas per Rusijos aukštutinius tinklus buvo gana dažnas, o kai kuriuose tinkluose jis tęsėsi ir 2023 m. Analizuojamu laikotarpiu buvo trys pagrindiniai Rusijos tinklai, kurie atsirado kaip aukštesnio lygmens paslaugų teikėjai: <a href="https://radar.cloudflare.com/as201776" target="_blank">AS201776 ("Miranda-Media")</a>, <a href="https://radar.cloudflare.com/as52091" target="_blank">AS52091 ("Level-MSK Ltd.")</a> ir <a href="https://radar.cloudflare.com/as8492" target="_blank">AS8492 ("OBIT Ltd.")</a>. </p>
+	<p>Diagramoje juodi stulpeliai žymi laikotarpius, kai ASN iš tikrųjų išnyko iš interneto; balti segmentai rodo, kad ASN priklausė nuo kitų Ukrainos tinklų kaip tiesioginių tiekėjų; raudona spalva žymi Rusijos tinklų buvimą tiekėjų grupėje. Raudono atspalvio intensyvumas atitinka paskelbtų prefiksų, kurių maršrute yra Rusijos paslaugų teikėjas, procentinę dalį, kaip pastebėta iš tinklų už Ukrainos ribų. Ryškiai raudonas atspalvis, legendoje atitinkantis skaičių "1", rodo, kad Rusijos paslaugų teikėjas yra visuose paskelbtų prefiksų maršrutizavimo keliuose.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--12-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Aukščiau pateiktame tinklaraščio įraše paminėjome balandžio 30 d. prasidėjusį sutrikimą. Paveikslėlyje jis aiškiai matomas kaip juoda juosta, kuri kelias dienas tęsiasi per visus išvardytus ASN. Šiuo atveju AS47598 ("Kherson.Telecom") vėl pradėjo veikti po dienos, tačiau, kaip aptarta pirmiau, srautą siuntė per AS201776 ("Miranda Media"), Rusijos paslaugų teikėją.</p>
+	<p>Kitas Ukrainos tinklas, <a href="https://radar.cloudflare.com/as49168" target="_blank">AS49168 ("Brok-X")</a>, atsigavo po gegužės 2 d. sutrikimo ir taip pat siuntė srautą per "Miranda-Media". Iki gegužės 4 d. dauguma kitų Chersono tinklų atsigavo po sutrikimų, o AS47598 ir AS49168 vėl naudojosi Ukrainos tinklais kaip tiesioginiais paslaugų teikėjais. Maršrutas išliko "normalus" iki gegužės 30 d. Po to buvo pradėta plačiau naudoti Rusijos paslaugų teikėjų maršrutus, nors prieš tai, atrodo, buvo trumpam nutrūkęs kelių tinklų darbas. Dažniausiai šis peradresavimas tęsėsi visą vasarą ir spalio mėn. Spalio 17 d. kai kurie tinklai trumpam sutriko, tačiau dauguma jų iki spalio 22 d. nustojo nukreipti srautą per Rusiją.</p>
+	<p>Tačiau šį atsijungimą nuo Rusijos lydėjo ilgi elektros energijos tiekimo nutraukimo laikotarpiai. "Kherson.Telecom" patyrė tokį atjungimą ir nuo spalio mėnesio, išskyrus pirmąją lapkričio savaitę, kai visas jos duomenų srautas buvo nukreiptas per Rusiją, buvo atjungta. Daugelis kitų tinklų gruodžio pradžioje vėl prisijungė prie interneto, daugiausia pasikliaudami kitais Ukrainos interneto ryšio tiekėjais. Tačiau nuo gruodžio pradžios <a href="https://radar.cloudflare.com/as204485" target="_blank">AS204485 (privati įmonė "Beryslavske Cable TV"), AS56359 (CHP "Melnikov Roman Sergejevič")</a> ir <a href="https://radar.cloudflare.com/as49465" target="_blank">AS49465 (televizijos ir radijo kompanija "RubinTelecom Ribotos Atsakomybės Bendrovė")</a> ir toliau naudojosi "Miranda-Media" kaip pirminio ryšio tiekėju, taip pat patyrė keletą trumpalaikių interneto ryšio sutrikimų. Be to, pastaruosius kelis mėnesius <a href="https://radar.cloudflare.com/as25082" target="_blank">AS25082 ("Viner Telecom") </a>naudojosi ir Ukrainos tinklu, ir "Miranda-Media", kaip "upstream" paslaugų teikėjais.</p>
+	<h2 id="interneto-atsparumas-ukrainoje">Interneto atsparumas Ukrainoje</h2>
+	<p>Interneto kontekste "<a href="https://csrc.nist.gov/glossary/term/network_resilience" target="_blank">atsparumas</a>" reiškia tinklo gebėjimą nuolat veikti taip, kad jis būtų labai atsparus trikdžiams. Tai apima tinklo gebėjimą: 1) veikti pablogėjusiu režimu sutrikimo atveju; 2) greitai atsistatyti, jei sutrikimas vis dėlto įvyksta; 3) plėstis, kad būtų patenkinti greitai atsirandantys ar nenumatyti poreikiai. Per Rusijos ir Ukrainos konfliktą žiniasklaidoje (<a href="https://www.vice.com/en/article/qjbapv/diy-volunteers-are-repairing-ukraines-destroyed-internet-infrastructure" target="_blank">VICE</a>, <a href="https://www.bloomberg.com/news/features/2022-11-17/ukraine-stays-online-during-war-thanks-to-repair-crews#xj4y7vzkg" target="_blank">Bloomberg</a>, <a href="https://www.washingtonpost.com/technology/2022/03/29/ukraine-internet-faq" target="_blank">Washington Post)</a> buvo pabrėžiamas Ukrainoje atliktas darbas atkuriant pažeistus šviesolaidinius kabelius ir mobiliojo ryšio infrastruktūrą, kad šalis išliktų prisijungusi prie interneto. Šis darbas buvo labai svarbus Ukrainos interneto infrastruktūros atsparumui išlaikyti.</p>
+	<p><a href="https://www.peeringdb.com/advanced_search?country__in=UA&amp;reftag=ix" target="_blank">PeeringDB</a> duomenimis, 2023 m. vasario mėn. duomenimis, Ukrainoje yra 25 interneto mainų punktai (IXP) ir 50 sujungimo įrenginių (IXP gali apimti kelis fizinius objektus). 2023 m. vasario mėn. duomenimis, daugiau nei pusėje šių IXP šiuo metu veikia tarptautiniams paslaugų teikėjams priklausančios autonominės sistemos (AS). Įrenginių, IXP ir tarptautinių AS skaičius Ukrainoje rodo, kad sujungimo struktūra, kurioje nacionaliniai ir tarptautiniai paslaugų teikėjai gali keistis srautu keliuose taškuose, yra patikima.</p>
+	<p>Kad geriau suprastume šias tarptautines jungtis, pirmiausia analizuojame Ukrainos išorinių paslaugų teikėjų jungtis ir skirstome jungtis į vietinius tinklus (jungtys, kai abi išorinės paslaugų teikėjos registruotos Ukrainoje) ir tarptautinius tinklus (jungtys tarp Ukrainos išorinių paslaugų teikėjų ir už Ukrainos ribų esančių išorinių paslaugų teikėjų). Norėdami nustatyti, kurie AS yra Ukrainos nacionaliniai, galime naudoti informaciją, gautą iš išplėstinės delegacijos iš <a href="https://ftp.ripe.net/pub/stats/ripencc/2023" target="_blank">Réseaux IP Européens Network Coordination Centre (RIPE NCC)</a>, <a href="https://www.nro.net/about/rirs" target="_blank">regioninio interneto registro</a>, apimančio Ukrainą, ataskaitų. Taip pat analizavome surinktus BGP duomenis, kad gautume AS lygmens ryšius tarp Ukrainos AS ir kitose šalyse registruotų AS, ir laikome juos tarptautiniais vietinių AS ryšiais.</p>
+	<p>2022 m. kovo mėn. <a href="https://www.economist.com/science-and-technology/2022/03/26/the-degrading-treatment-of-ukraines-internet" target="_blank">žurnale "The Economist"</a> išspausdintame straipsnyje rašoma, kad "<em>pirma, Ukrainoje yra neįprastai daug interneto paslaugų teikėjų - vienais skaičiavimais, ši šalis yra ketvirta pagal interneto paslaugų teikėjų koncentraciją pasaulyje. Tai reiškia, kad tinkle yra nedaug trukdžių, todėl jį sunku išjungti</em>". Šiuo metu Ukrainoje yra 2 190 registruotų autonominių sistemų (UA AS), o 1 574 iš jų yra įtrauktos į BGP maršrutizavimo lentelę kaip aktyvios. Šie skaičiai patvirtina straipsnyje pateiktą charakteristiką, o toliau aptariame keletą papildomų pastebėjimų, kurie sustiprina Ukrainos interneto atsparumą.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/Untitled--13-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Aukščiau pateiktame paveikslėlyje pavaizduota kumuliacinė pasiskirstymo funkcija, rodanti Ukrainos vidaus AS, turinčių tiesioginį ryšį su tarptautiniais tinklais, dalį. 2023 m. vasario mėn. maždaug 50 % turėjo daugiau nei vieną (100) tarptautinį ryšį, maždaug 10 % - daugiau nei 10, o maždaug 2 % - 100 ir daugiau. Nors šie skaičiai per pastaruosius metus šiek tiek sumažėjo, jie rodo, kad Ukrainos internete nėra centralizuotų kliūčių.</p>
+	<p>Kalbant apie tarptautinį ryšį turinčius tinklus, taip pat galime pažvelgti į "kito šuolio" šalių pasiskirstymą - šalis, su kuriomis šie tarptautiniai tinklai yra sujungti (Atkreipkite dėmesį, kad kai kurie tinklai gali būti pasaulinio masto, ir jiems sujungta šalis yra ta, kuri užregistruota jų autonominės sistemos registracijoje). Toliau pateiktas foninio žemėlapio palyginimas rodo, kaip šis šalių rinkinys ir jų tarptautinių kelių dalis keitėsi nuo 2022 m. vasario mėn. iki 2023 m. vasario mėn. Iš šių žemėlapių pagrindo duomenų matyti, kad tarptautinis ryšys iš Ukrainos pasiskirstė 18 šalių - tikėtina, daugiausia Europoje.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/UA-2022-fraction-of-next-hop-ases-by-country.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>2022 m. vasario mėn. šios šalys ir (arba) vietos sudarė 77 % tarptautinių maršrutų iš Ukrainos. Keturios populiariausios šalys sudarė po 7,8 %. Tačiau 2023 m. vasario mėn. kitų 10 populiariausių šalių / krypčių šuolių dalis šiek tiek sumažėjo ir sudarė 76 % tarptautinių maršrutų. Nors tai tik nedidelis pokytis, palyginti su ankstesniais metais, šalių / paskirties vietų rinkinys ir daugelis jų atitinkamų dalių labai pasikeitė.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-xt05 {
+			background-color: #D9D9D9;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-xqm4 {
+			background-color: #D9D9D9;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-kg9c"></th>
+				<th class="tg-7jy7" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> Vasaris 2022</span></th>
+				<th class="tg-7jy7" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Vasaris 2023</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Vokietija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,85%</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rusija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11,62%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nyderlandai</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,85%</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Vokietija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11,43%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Jungtinė Karalystė</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,83%</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hong Kongas</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8,38%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hong Kongas</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,81%</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Lenkija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,93%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Švedija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,77%</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Italija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,75%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rumunija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,72%</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Turkija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6,86%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rusija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,67%</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bulgarija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6,20%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Italija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,64%</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nyderlandai</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5,31%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Lenkija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,60%</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Jungtinė Karalystė</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5,30%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Vengrija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,54%</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Švedija</span></td>
+				<td class="tg-c3ow"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5,26%</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Rusijos dalis išaugo 50 proc. iki 11,6 proc. ir tapo didžiausia "AS next hop" dalimi. Vokietijos dalis taip pat padidėjo ir sudaro daugiau kaip 11 % maršrutų.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/UA-2023-fraction-of-next-hop-ases-by-country.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2 id="palydovinis-interneto-ry%C5%A1ys">Palydovinis Interneto ryšys</h2>
+	<p>"Cloudflare" pastebėjo spartų "ASN Starlink" (<a href="https://radar.cloudflare.com/traffic/as14593?range=28d" target="_blank">AS14593</a>) srauto į Ukrainą augimą 2022 m. ir 2023 m. Nuo kovo vidurio iki gegužės vidurio "Starlink" srautas šalyje išaugo daugiau nei 530 %, o nuo gegužės vidurio iki lapkričio vidurio toliau augo ir per šį šešių mėnesių laikotarpį padidėjo beveik 300 % - nuo kovo vidurio iki gruodžio vidurio procentinis padidėjimas siekė daugiau nei 1600 %. Vėliau srautas stabilizavosi, o 2023 m. sausio mėn. net šiek tiek sumažėjo.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--15-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Mūsų duomenys rodo, kad 2022 m. lapkričio-gruodžio mėn. "Starlink" sudarė nuo 0,22 % iki 0,3 % srauto iš Ukrainos, o dabar šis skaičius nesiekia 0,2 %.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/pasted-image-0--16-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h2 id="i%C5%A1vados">Išvados</h2>
+	<p>Praėjus vieneriems metams po karo Ukrainoje humanitarinė žala neįtikėtinai didelė. Internetas Ukrainoje taip pat tapo mūšio lauku, kuriame vyksta išpuoliai, peradresavimas ir trikdžiai. Tačiau internetas pasirodė esąs itin atsparus ir po kiekvienos nesėkmės vėl ir vėl atsigauna.</p>
+	<p>Žinome, kad saugaus ir patikimo interneto poreikis yra didesnis nei bet kada anksčiau. Bendrovėje "Cloudflare" esame įsipareigoję ir toliau teikti priemones, kurios apsaugo interneto paslaugas nuo kibernetinių atakų, didina regione dirbančių asmenų saugumą ir dalijasi informacija apie interneto ryšį ir maršruto parinkimą Ukrainoje.<br></p>
+</div>

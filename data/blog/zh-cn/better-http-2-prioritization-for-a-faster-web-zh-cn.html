@@ -6,7 +6,7 @@
 	<h2 id="-">背景</h2>
 	<p>网站页面由<a href="https://discuss.httparchive.org/t/whats-the-distribution-of-requests-per-page/21/10?u=patmeenan" target="_blank">数十个（有时候是数百个）</a>独立的资源组成，浏览器将这些资源加载并组装到最终显示的内容中。这包括用户与之交互的可见内容（HTML、CSS、图像）以及站点本身的应用程序逻辑（JavaScript）、广告、跟踪站点使用情况的分析和市场跟踪指向标。加载这些资源的顺序对用户查看内容和与页面交互所需的时间有很大影响。</p>
 	<p>浏览器基本上是一个HTML处理引擎，它遍历HTML文档，按照从HTML开始到结束的顺序执行指令，并在此过程中构建页面。对样式表（CSS）的引用告诉浏览器如何设置页面内容的样式，浏览器将延迟显示内容，直到完成样式表的加载（这样它便知道如何设置将要显示的内容的样式）。文档中引用的脚本可以有几种不同的行为。如果脚本被标记为“async（异步）”或“defer（延迟）”，则浏览器可以继续处理文档并运行脚本代码（只要脚本可用）。如果脚本没有被标记为“async（异步）”或“defer（延迟）”，那么浏览器必须停止处理文档，直到脚本被下载和执行之后才能继续。这些脚本被称为“阻塞”脚本，因为它们阻止浏览器继续处理文档，直到它们被加载和执行。</p>
-	<p>HTML文档分为两部分。&lt;head&gt;在文档的开头，包含浏览器显示内容所需的样式表、脚本和其他指令。文档的&lt;body&gt;位于标题之后，它包含在浏览器窗口中显示的实际页面内容（然而脚本和样式表也可以在body中显示）。在浏览器处理到文档主体之前，用户看不到任何显示内容，页面将保持空白，所以尽快通过文档头部是很重要的。如果你想更深入地了解细节，“HTML5 rocks”将提供一个<a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork" target="_blank">很棒的教程</a>，介绍浏览器的工作原理。</p>
+	<p>HTML文档分为两部分。&lt;head&gt;在文档的开头，包含浏览器显示内容所需的样式表、脚本和其他指令。文档的&lt;body&gt;位于标题之后，它包含在浏览器窗口中显示的实际页面内容（然而脚本和样式表也可以在body中显示）。在浏览器处理到文档主体之前，用户看不到任何显示内容，页面将保持空白，所以尽快通过文档头部是很重要的。如果你想更深入地了解细节，“HTML5 rocks”将提供一个<a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank">很棒的教程</a>，介绍浏览器的工作原理。</p>
 	<p>浏览器通常负责确定加载构建页面以及继续处理文档所需的不同资源的顺序。在使用HTTP / 1.x的情况下，浏览器一次性向一台服务器请求的内容数受限（通常为6个连接，而每个连接一次只能请求一个资源），因此，浏览器按事物的需求严格控制着加载顺序。而使用HTTP / 2，事情会有很大改变。浏览器可以立即请求所有资源（至少可以在知道这些资源后立即请求），并且它向服务器提供了有关如何交付资源的<a href="https://hpbn.co/http2/#stream-prioritization" target="_blank">详细说明</a>。</p>
 	<h2 id="--1">最佳资源排序</h2>
 	<p>在页面加载的大部分环节中，我们可以找到一种对资源的最优排序，从而带来最快的用户体验（并且优化与不优化之间的差异可能很大——改善幅度高达50％或更多）。</p>
@@ -99,7 +99,7 @@
 		<li>在最后的8秒内，其余的产品图片将被加载，以便用户滚动时可以查看它们。</li>
 	</ul>
 	<h2 id="--3">当前浏览器的优先级</h2>
-	<p>当前所有的浏览器引擎都执行<a href="https://calendar.perfplanet.com/2018/http2-prioritization" target="_blank">不同的优先级排序策略</a>，但这些都不是最优的。</p>
+	<p>当前所有的浏览器引擎都执行<a href="https://calendar.perfplanet.com/2018/http2-prioritization/" target="_blank">不同的优先级排序策略</a>，但这些都不是最优的。</p>
 	<p><strong>Microsoft Edge和Internet Explorer </strong><a href="https://calendar.perfplanet.com/2018/http2-prioritization/#microsoft_edge_internet_explorer" target="_blank">不支持优先级排序</a>，因此所有内容都回到HTTP / 2默认值，该默认值是并行加载所有内容，并在所有内容之间平均分配带宽。Microsoft Edge将在未来的Windows版本中使用Chromium浏览器引擎，这将有助于改善这种情况。我们的示例页面说明了浏览器的大部分加载时间都被卡在了头部，因为图像减慢了阻塞脚本和样式表的传输速度。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/edge-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>这在视觉上造成了一种相当痛苦的体验：在大多数内容显示之前，人们需要盯着空白屏幕19秒，然后延迟1秒显示文本。观看加载进度动画时人们需要有耐心，因为在这19秒的空白屏幕上，你可能会觉得什么事都没有发生（尽管它确实发生了）：</p>

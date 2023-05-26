@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>As opposed to the <a href="https://en.wikipedia.org/wiki/Public_switched_telephone_network" target="_blank">public telephone network</a>, the internet has a <a href="https://en.wikipedia.org/wiki/Packet_switching" target="_blank">Packet Switched</a> design. But just how big can these packets be?</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/8093997590_02d7ec3713_z.jpg" alt="" loading="lazy"><small> CC BY 2.0 <a href="https://www.flickr.com/photos/ajmexico/8093997590" target="_blank">image</a> by <a href="https://www.flickr.com/photos/ajmexico" target="_blank">ajmexico</a>, <a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6" target="_blank">inspired by</a></small></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/08/8093997590_02d7ec3713_z.jpg" alt="" loading="lazy"><small> CC BY 2.0 <a href="https://www.flickr.com/photos/ajmexico/8093997590" target="_blank">image</a> by <a href="https://www.flickr.com/photos/ajmexico/" target="_blank">ajmexico</a>, <a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6/" target="_blank">inspired by</a></small></p>
 	<p>This is an old question and the IPv4 RFCs answer it pretty clearly. The idea was to split the problem into two separate concerns:</p>
 	<ul>
 		<li>
@@ -12,7 +12,7 @@
 		</li>
 	</ul>
 	<p>When a packet is too big for a physical link, an intermediate router might chop it into multiple smaller datagrams in order to make it fit. This process is called "forward" IP fragmentation and the smaller datagrams are called IP fragments<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/08/fragments.jpg" alt="" loading="lazy"><small>Image by <a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation" target="_blank">Geoff Huston</a>, reproduced with permission</small></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/08/fragments.jpg" alt="" loading="lazy"><small>Image by <a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation/" target="_blank">Geoff Huston</a>, reproduced with permission</small></p>
 	<p>The IPv4 specification defines the minimal requirements. From <a href="https://tools.ietf.org/html/rfc791" target="_blank">the RFC791</a>:</p>
 	<pre><code>Every internet destination must be able to receive a datagram
 of 576 octets either in one piece or in fragments to
@@ -44,12 +44,12 @@ octets without further fragmentation. [...]
 	</ul>
 	<p>A more elaborate description of IP fragmentation problems can be found in these articles by Geoff Huston:</p>
 	<ul>
-		<li><a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation" target="_blank">Evaluating IPv4 and IPv6 packet fragmentation</a></li>
-		<li><a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6" target="_blank">Fragmenting IPv6</a></li>
+		<li><a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation/" target="_blank">Evaluating IPv4 and IPv6 packet fragmentation</a></li>
+		<li><a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6/" target="_blank">Fragmenting IPv6</a></li>
 	</ul>
 	<h3 id="dontfragmenticmppackettoobig">Don't fragment - ICMP Packet too big</h3>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/08/df.jpg" alt="" loading="lazy"><br>
-		<small>Image by <a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation" target="_blank">Geoff Huston</a>, reproduced with permission</small>
+		<small>Image by <a href="https://blog.apnic.net/2016/01/28/evaluating-ipv4-and-ipv6-packet-frangmentation/" target="_blank">Geoff Huston</a>, reproduced with permission</small>
 	</p>
 	<p>A solution to these problems was included in the IPv4 protocol. A sender can set the DF (Don't Fragment) flag in the IP header, asking intermediate routers never to perform fragmentation of a packet. Instead a router with a link having a smaller MTU will send an ICMP message "backward" and inform the sender to reduce the MTU for this connection.</p>
 	<p>The TCP protocol always sets the DF flag. The network stack looks carefully for incoming "Packet too big"<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> ICMP messages and keeps track of the "path MTU" characteristic for every connection<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>. This technique is called "path MTU discovery", and it is mostly commonly used for TCP, although it can also be applied to other IP-based protocols. Being able to deliver the ICMP "Packet too big" messages is critical in keeping the TCP stack working optimally.</p>

@@ -1,0 +1,274 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image13-2.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<p>Prieš metus paskelbėme <a href="https://blog.cloudflare.com/application-security/">pirmąją programėlių saugumo ataskaitą</a>. 2023 m. saugumo savaitėje pateikiame atnaujintus statistinius duomenis ir tendencijas apie ribojamą srautą, botų ir API srautą bei paskyros perėmimo atakas.</p>
+	<p>Per praėjusius metus "Cloudflare" smarkiai išaugo. Bendrovė "Netcraft" pažymėjo, <a href="https://news.netcraft.com/archives/2023/02/28/february-2023-web-server-survey.html" target="_blank">kad 2023 m</a>. vasario mėn. pradžioje "Cloudflare" tapo dažniausiai naudojamu žiniatinklio serverių tiekėju tarp milijono populiariausių svetainių ir toliau auga, pasiekdama 21,71 % rinkos dalį, palyginti su 19,4 % 2022 m. vasario mėn.</p>
+	<p>Dėl šio nuolatinio augimo "Cloudflare" vidutiniškai apdoroja daugiau kaip 45 mln. HTTP užklausų per sekundę (pernai buvo 32 mln.), o piko metu - daugiau kaip 61 mln. užklausų per sekundę. Tinklo tvarkomų DNS užklausų skaičius taip pat auga ir siekia maždaug 24,6 mln. užklausų per sekundę. Visi šie srautai suteikia mums precedento neturintį vaizdą apie interneto tendencijas.</p>
+	<p>Prieš pradedant nagrinėti, reikia apibrėžti sąvokas.</p>
+	<h2 id="apibr%C4%97%C5%BEimas">Apibrėžimas.</h2>
+	<p>Šioje ataskaitoje bus vartojamos šios sąvokos:</p>
+	<ul>
+		<li><strong>Apribotas duomenų srautas: </strong>bet kokia pastebima HTTP* užklausa, kuriai "Cloudflare" pritaikė sustabdymo veiksmą. Tai apima šiuos veiksmus: BLOCK, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#legacy-captcha-challenge" target="_blank">CHALLENGE</a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#js-challenge" target="_blank">JS_CHALLENGE</a> ir <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#managed-challenge-recommended" target="_blank">MANAGED_CHALLENGE</a>. Tai neapima užklausų, kurioms taikomi šie veiksmai: LOG, SKIP, ALLOW. Skirtingai nei praėjusiais metais, neįtraukiame užklausų, kurioms mūsų apsaugos nuo DDoS sistema taikė veiksmus CONNECTION_CLOSE ir FORCE_CONNECTION_CLOSE, nes techniškai jie tik sulėtina ryšio inicijavimą. Be to, jie sudarė palyginti nedidelę užklausų dalį. Be to, patobulinome CHALLENGE tipo veiksmų skaičiavimą, kad tik neišspręsti skambučiai būtų skaičiuojami kaip apriboti. Išsamų <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions/" target="_blank">veiksmų aprašymą galite</a> rasti mūsų kūrėjų dokumentuose.</li>
+		<li><strong>Botų srautas / automatinis srautas</strong>: bet kokia HTTP* užklausa, kurią "Cloudflare <a href="https://www.cloudflare.com/products/bot-management/" target="_blank">Bot Management</a>" nustatė kaip sukurtą boto. Tai apima užklausas, kurių <a href="https://developers.cloudflare.com/bots/concepts/bot-score/" target="_blank">boto</a> reitingas yra nuo <a href="https://developers.cloudflare.com/bots/concepts/bot-score/" target="_blank">1 iki 29</a> imtinai. Šis rodiklis nepakito, palyginti su praėjusių metų ataskaita.</li>
+		<li><strong>API duomenų srautas:</strong> bet kokia HTTP* užklausa su XML arba JSON atsakymo turinio tipu. Jei atsakymo turinio tipas nepasiekiamas, pavyzdžiui, riboto naudojimo užklausoms, vietoj jo naudojamas lygiavertis Accept turinio tipas (nurodytas naudotojo agento). Pastaruoju atveju API srautas nebus visiškai apskaitytas, tačiau jis vis tiek yra geras atvaizdavimas informacijos paieškos tikslais.</li>
+	</ul>
+	<p>Jei nenurodyta kitaip, šiame leidinyje vertinamas 12 mėnesių laikotarpis nuo 2022 m. kovo mėn. iki 2023 m. vasario mėn. imtinai.</p>
+	<p>Galiausiai atkreipkite dėmesį, kad duomenys apskaičiuoti remiantis tik "Cloudflare" tinkle užfiksuotu srautu ir nebūtinai atspindi bendras HTTP srauto internete tendencijas.</p><!--kg-card-begin: markdown-->
+	<p><small><sup>*</sup>When referring to HTTP traffic we mean both HTTP and HTTPS.</small></p>
+	<!--kg-card-end: markdown-->
+	<h2 id="pasaulin%C4%97-eismo-statistika">Pasaulinė eismo statistika</h2>
+	<h3 id="vidutini%C5%A1kai-6-kasdieni%C5%B3-http-u%C5%BEklaus%C5%B3-yra-ribotos">Vidutiniškai 6 % kasdienių HTTP užklausų yra ribotos</h3>
+	<p>Nagrinėdami visas HTTP užklausas, perduodamas per "Cloudflare" tinklo tarpinį serverį, nustatėme, kad ribojamų užklausų dalis sumažėjo iki 6 %, t. y. dviem procentiniais punktais mažiau nei pernai. Nagrinėdami laikotarpį nuo 2023 m. pradžios iki šiandienos matome, kad ribojamų užklausų dalis sumažėjo dar labiau - iki 4-5 %. Toliau pateiktoje diagramoje matomi dideli šuoliai, tokie kaip birželio ir spalio mėnesiais, dažnai koreliuoja su didelėmis DDoS atakomis, kurios apsiriboja "Cloudflare". Įdomu pastebėti, kad nors riboto duomenų srauto procentinė dalis laikui bėgant mažėjo, bendras riboto duomenų srauto užklausų kiekis buvo palyginti stabilus, kaip parodyta antroje diagramoje, o tai rodo, kad bendras grynasis duomenų srautas visame pasaulyje didėjo, o ne absoliučiai mažėjo kenkėjiškas duomenų srautas.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-06-at-23.00.01.png" class="kg-image" alt="Percentage of mitigated HTTP requests over the last 12 months" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0-7.png" class="kg-image" alt="Daily total and mitigated HTTP requests over the last 12 months" loading="lazy"></figure>
+	<p>81 % HTTP užklausų, kurioms taikomi apribojimai, buvo tiesiogiai taikomas veiksmas BLOCK, o likusioms užklausoms apribojimai buvo paskirstyti įvairiais veiksmais CHALLENGE.</p>
+	<h3 id="ddos-atak%C5%B3-apribojimai-sudaro-daugiau-nei-50-viso-apriboto-duomen%C5%B3-srauto">DDoS atakų apribojimai sudaro daugiau nei 50 % viso apriboto duomenų srauto</h3>
+	<p>"Cloudflare" teikia įvairias saugumo funkcijas, kurias klientai gali konfigūruoti savo programoms apsaugoti. Nenuostabu, kad DDoS mažinimas vis dar yra svarbiausias veiksnys, ribojantis HTTP užklausas iki 7 sluoksnio (taikomojo sluoksnio). Tik praėjusį mėnesį (2023 m. vasario mėn.) pranešėme apie didžiausią <a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack/">mums žinomą DDoS ataką pagal apribotų HTTP užklausų per sekundę</a> skaičių (ši konkreti ataka nematoma pirmiau pateiktuose grafikuose, nes jie apibendrinti kasdien, o pati ataka truko tik ~5 minutes).</p>
+	<p>Tačiau nuo praėjusių metų apribotų "Cloudflare WAF" užklausų skaičius gerokai padidėjo ir dabar sudaro beveik 41 % apribotų užklausų. Tai iš dalies galima <a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter/">paaiškinti mūsų WAF technologijos</a> patobulinimais, kurie leidžia aptikti ir blokuoti įvairesnes atakas.<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/out.png" class="kg-image" alt="Product group corresponding to the last mitigated action on a HTTP request" loading="lazy"></figure>
+	<p>Lentelės formatas - nuoroda:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-x5ou {
+			background-color: #F3F3F3;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-oa05"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Šaltinis.</span></th>
+				<th class="tg-oa05"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Procentas %</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">DDoS Mitigation/ DDoS poveikio mažinimas</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">52%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">WAF</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">41%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IP reputation /IP reputacija</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Access Rules /Prieigos taisyklės</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kita</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1%</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Atkreipkite dėmesį, kad pirmiau pateiktoje lentelėje, skirtingai nei praėjusiais metais, dabar savo produktus grupuojame pagal rinkodaros <a href="https://radar.cloudflare.com/year-in-review/2022" target="_blank">medžiagą ir 2022 m</a>. radarų apžvalgoje naudotas grupes. Tai daugiausia susiję su mūsų WAF produktu, kurį sudaro WAF Custom Rules, WAF Rate Limiting Rules ir WAF Managed Rules. Praėjusių metų ataskaitoje šios trys funkcijos sudarė 31 % apribojimų.</p>
+	<p>Kad suprastume, kaip laikui bėgant daugėja apribotų WAF užklausų, galime pažvelgti vienu lygmeniu giliau, kur tampa aišku, kad "Cloudflare" klientai vis dažniau pasikliauja WAF pasirinktinėmis taisyklėmis (anksčiau vadintomis ugniasienės taisyklėmis), siekdami apriboti kenkėjišką duomenų srautą arba priversti vykdyti verslo logikos blokus. Pažiūrėkite, kaip toliau pateiktoje diagramoje oranžinė linija (firewallrules) laikui bėgant palaipsniui didėja, o mėlyna linija (l7ddos) turi aiškią tendenciją mažėti.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--3.png" class="kg-image" alt="Daily mitigated requests over the last 12 months: DDoS vs WAF Custom Rules" loading="lazy"></figure>
+	<h3 id="http-anomalija-yra-da%C5%BEniausias-7-sluoksnio-atak%C5%B3-vektorius-kuris-riboja-waf">HTTP anomalija yra dažniausias 7 sluoksnio atakų vektorius, kuris riboja WAF.</h3>
+	<p>2023 m. kovo mėn. HTTP anomalijų dalis sumažėjo beveik 25 procentiniais punktais, nes 2023 m. kovo mėn. naudojant WAF valdomas taisykles šis srautas buvo sumažintas 30 %. HTTP anomalijų pavyzdžiai: netinkamai suformuoti metodų pavadinimai, nulinio baito simboliai antraštėse, nestandartiniai prievadai arba nulinis turinio ilgis POST užklausose. Tai galima paaiškinti tuo, kad HTTP anomalijų požymius atitinkantys botnetai lėtai keičia duomenų srauto modelius.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--1.png" class="kg-image" alt="WAF Managed Rule category matching HTTP requests over the last 12 months" loading="lazy"></figure>
+	<p>Iš diagramos pašalinus HTTP anomalijos liniją, matome, kad 2023 m. pradžioje atakų vektorių pasiskirstymas atrodo daug tolygesnis.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--3--1.png" class="kg-image" alt="WAF Managed Rule category matching HTTP requests w/o HTTP Anomaly over the last 12 months" loading="lazy"></figure>
+	<p>Lentelės formatas (10 svarbiausių kategorijų):</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-x5ou {
+			background-color: #F3F3F3;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-oa05"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Šaltinis</span></th>
+				<th class="tg-oa05"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Procentai % (per pastaruosius 12 mėnesių)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">HTTP Anomaly</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">30%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Directory Traversal</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SQLi</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">File Inclusion</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">12%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Software Specific</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">XSS</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Broken Authentication</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Command Injection</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Common Attack</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CVE </span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1%</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Ypač atkreiptinas dėmesys į 2023 m. vasario mėn. pabaigoje pastebėtą oranžinės linijos šuolį (CVE kategorija). Šis šuolis atsirado dėl staigaus dviejų mūsų WAF valdomų taisyklių padidėjimo:</p>
+	<ul>
+		<li>Drupal - Anomaly:Header:X-Forwarded-For (id: d6f6d394cb01400284cfb7971e7aed1e)</li>
+		<li>Drupal - Anomaly:Header:X-Forwarded-Host (id: d9aeff22f1024655937e5b033a61fbc5)</li>
+	</ul>
+	<p>Šios dvi taisyklės taip pat prieštarauja <a href="https://nvd.nist.gov/vuln/detail/CVE-2018-14774" target="_blank">CVE-2018-14774</a>, kuri rodo, kad net palyginti senos ir žinomos pažeidžiamosios vietos vis dar dažnai tampa potencialiai neištaisytos programinės įrangos piktavališko išnaudojimo objektu.</p>
+	<h2 id="informacija-apie-bot%C5%B3-sraut%C4%85">Informacija apie botų srautą</h2>
+	<p>Per pastaruosius dvylika mėnesių į "Cloudflare <a href="https://www.cloudflare.com/products/bot-management/" target="_blank">Bot Management</a>" sprendimą buvo investuota daug lėšų. Naujos funkcijos, tokios kaip pritaikoma euristika, patobulintas "JavaScript" aptikimas, automatinis mašininio mokymosi modelio atnaujinimas ir "Cloudflare" nemokamas CAPTCHA pakaitalas "<a href="https://www.cloudflare.com/products/turnstile/" target="_blank">Turnstile</a>", kasdien gerina žmonių ir robotų srauto klasifikavimą.</p>
+	<p>Mūsų pasitikėjimas klasifikavimo rezultatais yra labai didelis. Jei nubraižytume 2023 m. vasario mėn. paskutinės savaitės botų srauto procentinę dalį, pamatytume labai aiškų pasiskirstymą, kai dauguma užklausų yra klasifikuojamos kaip neabejotinai gautos iš botų (mažiau nei 30) arba neabejotinai gautos iš žmonių (daugiau nei 80), o dauguma užklausų iš tikrųjų yra įvertintos 2 arba daugiau nei 95.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--1.png" class="kg-image" alt="Bot score distribution of eyeball traffic" loading="lazy"></figure>
+	<h3 id="30-http-srauto-yra-automatizuotas">30 % HTTP srauto yra automatizuotas</h3>
+	<p>Paskutinę 2023 m. vasario mėn. savaitę 30 % "Cloudflare" HTTP srauto buvo klasifikuojama kaip automatinis, o tai reiškia, kad "Cloudflare" tinkle buvo atliekama maždaug 13 mln. HTTP užklausų per sekundę. Palyginti su tuo pačiu praėjusių metų laikotarpiu, šis skaičius sumažėjo 8 procentiniais punktais.</p>
+	<p>Nagrinėdami tik botų srautą, nustatėme, kad tik 8 % srauto generavo patikrinti botai, o tai sudaro 2 % viso srauto. Cloudflare" tvarko žinomų gerų (patikrintų) botų sąrašą, kad klientai galėtų lengvai atskirti gerai besielgiančius botų tiekėjus, tokius kaip "Google" ir "Facebook", nuo galimai mažiau žinomų ar nepageidaujamų botų. Šiuo metu sąraše <a href="https://radar.cloudflare.com/traffic/verified-bots" target="_blank">yra 171 botas</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--5-.png" class="kg-image" alt="HTTP Traffic percentage classified as bot over the last 12 months" loading="lazy"></figure>
+	<h3 id="16-nepatikrint%C5%B3-robot%C5%B3-http-srauto-yra-ribojamas">16 % nepatikrintų robotų HTTP srauto yra ribojamas</h3>
+	<p>Nepatikrintas botų srautas dažnai apima pažeidžiamumų skenerius, kurie nuolat ieško išnaudojimo internete, todėl beveik šeštadalis šio srauto yra ribojamas, nes kai kurie klientai pageidauja apriboti informacijos, kurią tokios priemonės gali gauti, kiekį.</p>
+	<p>Nors patikrinti robotai, pavyzdžiui, "googlebot" ir "bingbot", paprastai laikomi naudingais ir dauguma klientų nori juos leisti, taip pat matome, kad nedidelė dalis (1,5 %) patikrintų robotų srauto yra ribojama. Taip yra todėl, kad kai kurie svetainių administratoriai nenori, kad tam tikros jų svetainių dalys būtų nuskaitytos, o klientai dažnai pasikliauja WAF pasirinktinėmis taisyklėmis, kad užtikrintų šią verslo logiką.</p>
+	<p>Dažniausiai klientai naudoja veiksmą BLOKUOTI šias užklausas (13 %), nors yra klientų, kurie konfigūruoja veiksmą IŠVYKDYTI (3 %), kad užtikrintų, jog prireikus būtų galima įvykdyti bet kokias klaidingai teigiamas žmonių užklausas.</p>
+	<p>Taip pat įdomu pastebėti, kad beveik 80 % viso ribojamo srauto priskiriama botų srautui, kaip parodyta toliau pateiktame paveikslėlyje. Kai kas gali pastebėti, kad 20 % ribojamo srauto, klasifikuojamo kaip žmonių, vis dar yra labai daug, tačiau didžiąją dalį žmonių srauto ribojimo sukuria WAF pasirinktinės taisyklės ir dažnai dėl to, kad klientai savo programose įdiegia šalies lygmens blokavimą arba kitą susijusį teisinį blokavimą. Tai įprasta, pavyzdžiui, kai JAV įmonės blokuoja prieigą Europos naudotojams dėl atitikties GDPR reikalavimams.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/Ms7yLEMZH9YTC2GfsGffgbk4rQwzHfpIwPlVe1dy7ZkNxLKe49WZHfope9X9Z-x9BZ0ygFBqay5NV5ipMU42-7uNt5QTYkv8VryoXr5QaJp4-ystQ7I7x6WIa2-cTSiPQ3qRfkel8OhUGFRtXr_8QYs" class="kg-image" alt="Bot score distribution of mitigated HTTP traffic" loading="lazy"></figure>
+	<h2 id="api-srauto-statistika">API srauto statistika</h2>
+	<h3 id="55-dinaminio-ne-talpyklose-saugomo-duomen%C5%B3-srauto-yra-susij%C4%99-su-api">55 % dinaminio (ne talpyklose saugomo) duomenų srauto yra susiję su API</h3>
+	<p>Kaip ir botų valdymo sprendime, daug investuojame į API galinių taškų apsaugos įrankius. Taip yra todėl, kad didelė dalis HTTP srauto yra susijusi su API. Tiesą sakant, jei skaičiuosite tik tas HTTP užklausas, kurios pasiekia šaltinį ir yra neišsaugotos, iki 55 % srauto yra susiję su API, kaip apibrėžta anksčiau. Tai ta pati metodika, naudota praėjusių metų ataskaitoje, ir 55 % rodiklis kasmet nesikeičia.</p>
+	<p>Jei vertinsime tik HTTP užklausas, įrašytas į spartinančiąją atmintinę (užklausos, kurių spartinančiosios atmintinės būsenos yra HIT, UPDATING, REVALIDATED ir EXPIRED), pastebėsime, kad netikėtai beveik 7 % jų yra susijusios su API. Šiuolaikinės API galinių taškų įgyvendinimo priemonės ir tarpininkai, įskaitant mūsų pačių API vartų / spartinimo funkcijų rinkinį, iš tikrųjų leidžia taikyti labai lanksčią spartinimo logiką, <a href="https://developers.cloudflare.com/cache/how-to/create-cache-keys/" target="_blank">leidžiančią ir vartotojo rakto spartinimą</a>, ir greitą spartinimo patikrinimą (<a href="https://developers.cloudflare.com/cache/about/edge-browser-cache-ttl/#:~:text=Edge%20Cache%20TTL%20(Time%20to,TTL%20depends%20on%20plan%20type.&amp;text=For%20more%20information%20on%20creating%20page%20rules%2C%20see%20Create%20page%20rules." target="_blank">pavyzdžiui, kas sekundę</a>), todėl kūrėjai gali sumažinti serverio galinių taškų apkrovą.</p>
+	<p>Į bendrą skaičių įtraukus talpyklos turtą ir kitas užklausas, pavyzdžiui, nukreipimus, šis skaičius sumažėja, bet vis tiek sudaro 25 % srauto. Toliau pateiktoje diagramoje pateikiame abu API srauto vaizdus:</p>
+	<ul>
+		<li>Geltona linija: API srauto % visų HTTP užklausų. Į ją bus įtraukti nukreipimai, spartieji ištekliai ir visos kitos HTTP užklausos;</li>
+		<li>Mėlyna linija: % API srauto, palyginti su dinaminiu srautu, kuris grąžina tik 200 OK HTTP atsakymo kodą;</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6-.png" class="kg-image" alt="API traffic over the last 12 months: % of total HTTP requests and % of 200 response non cacheable HTTP requests" loading="lazy"></figure>
+	<h3 id="65-pasaulinio-api-srauto-generuoja-nar%C5%A1ykl%C4%97s">65 % pasaulinio API srauto generuoja naršyklės</h3>
+	<p>Šiandien vis daugiau interneto programų kuriama pagal principą "pirmiausia API". Tai reiškia, kad iš pradžių įkeliamas tik HTML puslapio maketas, o dauguma dinaminių komponentų ir duomenų įkeliami per atskirus API skambučius (pvz., <a href="https://en.wikipedia.org/wiki/Ajax_(programming)" target="_blank">AJAX</a>). Taip yra ir pačios "Cloudflare" prietaisų skydelio atveju. Šią augančią įgyvendinimo paradigmą galima pastebėti analizuojant botų srauto procentinę dalį, palyginti su API srautu. Toliau pateiktame paveikslėlyje matome, kad didelę dalį API srauto generuoja naudotojo valdomos naršyklės, kurias mūsų sistema klasifikuoja kaip "žmogaus", o beveik du trečdaliai srauto sutelkta "žmogaus" diapazono viršuje.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--2.png" class="kg-image" alt="Bot score distribution of API traffic" loading="lazy"></figure>
+	<p>Apskaičiuoti ribotą API srautą yra sudėtinga, nes mes neperduodame užklausos į pradinius serverius, todėl negalime remtis atsakymo turinio tipu. Taikant tą patį praėjusiais metais naudotą skaičiavimą, šiek tiek daugiau nei 2 % API srauto yra ribotas, palyginti su 10,2 % praėjusiais metais.</p>
+	<h3 id="http-anomalija-pranoko-sqli-kaip-da%C5%BEniausiai-pasitaikantis-atak%C5%B3-prie%C5%A1-api-galinius-ta%C5%A1kus-vektorius">HTTP anomalija pranoko SQLi kaip dažniausiai pasitaikantis atakų prieš API galinius taškus vektorius</h3>
+	<p>Palyginti su praėjusiais metais, dabar HTTP anomalijos aplenkė SQLi kaip populiariausias atakų prieš API galinius taškus vektorius (atkreipkite dėmesį, kad praėjusių metų ataskaitos pradžioje mėlyna linija buvo aukštesnė). API duomenų srauto atakų vektoriai nėra pastovūs visus metus ir pasižymi didesniais svyravimais, palyginti su visuotiniu HTTP duomenų srautu. Pavyzdžiui, atkreipkite dėmesį į bandymų įkelti failą šuolį 2023 m. pradžioje.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--8-.png" class="kg-image" alt="WAF rule category corresponding to the last mitigation action on API traffic over the last 12 months" loading="lazy"></figure>
+	<h3 id="paskyros-per%C4%97mimo-atak%C5%B3-nagrin%C4%97jimas">Paskyros perėmimo atakų nagrinėjimas</h3>
+	<p><a href="https://blog.cloudflare.com/account-takeover-protection/">Nuo 2021 m. kovo mėn. "Cloudflare" teikia įgaliojimų nutekėjimo aptikimo funkciją kaip savo WAF dalį</a>. Tai leidžia klientams gauti pranešimą (per HTTP užklausos antraštę), kai tik aptinkama autentifikavimo užklausa su vartotojo vardo ir slaptažodžio pora, kuri, kaip žinoma, yra nutekinta. Paprastai tai yra itin veiksmingas signalas, leidžiantis aptikti botnetus, kurie vykdo grubios jėgos atakas, siekdami perimti paskyrą.</p>
+	<p>Klientai taip pat naudoja šį signalą, kai bando prisijungti su galiojančia vartotojo vardo ir slaptažodžio pora dviejų veiksnių autentifikavimui, slaptažodžio atstatymui arba kai kuriais atvejais stipresniems prisijungimo bandymams, jei naudotojas nėra teisėtas įgaliojimų savininkas.</p>
+	<h3 id="vis-da%C5%BEniau-vykdomos-grubios-paskyros-per%C4%97mimo-atakos">Vis dažniau vykdomos grubios paskyros perėmimo atakos</h3>
+	<p>Jei pažvelgtume į susijusių užklausų tendenciją per pastaruosius 12 mėnesių, matytume, kad nuo 2022 m. antrojo pusmečio jų padaugėjo, o tai rodo, kad daugėja nesąžiningos veiklos prieš galutinius taškus. Didelių brutalios jėgos atakų metu stebėjome atitikimus HTTP užklausoms su įgaliojimų nutekėjimu, kurių sparta viršijo 12 KB per minutę.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--9-.png" class="kg-image" alt="Daily account takeover HTTP requests over the last 12 months" loading="lazy"></figure>
+	<p>Mūsų įgaliojimų nutekėjimo aptikimo funkcija turi taisykles, kurios atitinka šių sistemų autentifikavimo užklausas:</p>
+	<ul>
+		<li>Drupal</li>
+		<li>Ghost</li>
+		<li>Joomla</li>
+		<li>Magento</li>
+		<li>Plone</li>
+		<li>WordPress</li>
+		<li>Microsoft Exchange</li>
+		<li>Bendros taisyklės, atitinkančios bendrus autentiškumo patvirtinimo galinio taško formatus</li>
+	</ul>
+	<p>Tai leidžia palyginti užpuolikų veiksmus, kurie paprastai būna botnetų, bandančių "nulaužti" galimai pažeistas paskyras, pavidalu.</p>
+	<h3 id="microsoft-exchange-patiria-daugiau-atak%C5%B3-nei-wordpress%E2%80%9C">"Microsoft Exchange" patiria daugiau atakų nei "WordPress“</h3>
+	<p>Daugiausia dėl jos populiarumo galima tikėtis, kad "<a href="https://w3techs.com/technologies/details/cm-wordpress" target="_blank">WordPress</a>" yra programa, kuriai kyla didžiausia rizika ir (arba) kuri turi didžiausią brutalios jėgos paskyros perėmimo srautą. Tačiau analizuodami pirmiau išvardytų palaikomų sistemų taisyklių atitikmenis, matome, kad po mūsų tipinių parašų dažniausias atitikmuo yra "Microsoft Exchange".</p>
+	<p>Dauguma taikomųjų programų, kurios patiria "brute force" atakas, paprastai yra didelės vertės turtas, o "Exchange" paskyros, kurios, kaip rodo mūsų duomenys, yra labiausiai tikėtinas taikinys, atspindi šią tendenciją.</p>
+	<p>Jei pažvelgtume į duomenų nutekėjimo srautą pagal šaltinio šalį, JAV pirmauja didele persvara. Galbūt verta atkreipti dėmesį į tai, kad tarp pagrindinių pretendentų nėra Kinijos, atsižvelgiant į jos tinklo dydį. Vienintelė išimtis yra Ukraina, kuri pirmavo 2022 m. pirmąjį pusmetį prieš prasidedant karui - toliau pateiktame paveikslėlyje ji pažymėta geltona linija.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--10-.png" class="kg-image" alt="Daily account takeover HTTP requests by country over the last 12 months" loading="lazy"></figure>
+	<h2 id="%C5%BEvelgiant-%C4%AF-ateit%C4%AF">Žvelgiant į ateitį</h2>
+	<p>Atsižvelgdami į "Cloudflare" perduodamo žiniatinklio srauto apimtį, matome įvairių atakų. Grėsmės nuolat kinta: nuo HTTP anomalijų, SQL injekcijų ir kryžminio svetainių skriptavimo (XSS) atakų iki užgrobimo bandymų ir kenkėjiškų botų. Todėl labai svarbu, kad bet kuri internete veikianti įmonė investuotų į atakų matomumo, aptikimo ir mažinimo technologijas, kad užtikrintų savo programų ir, dar svarbiau, galutinių naudotojų duomenų saugumą.</p>
+	<p>Tikimės, kad šios ataskaitos rezultatai jums pasirodė įdomūs ir kad ji leido bent šiek tiek susipažinti su programinės įrangos saugumo internete būkle. Internete yra daugybė užpuolikų, ir nėra jokių ženklų, kad interneto saugumas taptų lengvesnis.</p>
+	<p>Jau dabar planuojame atnaujinti šią ataskaitą, papildydami ją papildomais duomenimis ir analitiniais duomenimis apie mūsų produktų portfelį. Sekite "<a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a>", kad dažniau gautumėte programėlių saugumo ataskaitas ir analizę.</p>
+</div>
