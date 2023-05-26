@@ -212,6 +212,30 @@ for(const url of [...blogURLs].sort()) {
 			});
 		}
 
+		// normalise links and remove `ref` query param
+		const links = dom('a[href]');
+		if(links) {
+			links.each((i, link) => {
+				const el = dom(link);
+				const href = el.attr('href');
+				try{
+					// if relative, contruct with base
+					let url;
+					if(!href.startsWith('http')) {
+						url = new URL(href, 'https://blog.cloudflare.com');
+					}else{
+						url = new URL(href);
+					}
+					if(url.searchParams.has('ref')) {
+						url.searchParams.delete('ref');
+						el.attr('href', url.toString());
+					}
+				}catch(err) {
+					console.error('Failed to parse URL', href, err);
+				}
+			});
+		}
+
 		// get application/ld+json
 		const rawDom = cheerio.load(data.body);
 		const ldJson = rawDom('script[type="application/ld+json"]');
