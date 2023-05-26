@@ -8,7 +8,7 @@
 	<p>通过 Magic WAN，您可安全地将任何流量来源——数据中心、办公室、设备和云资产——连接到 Cloudflare 的网络，并配置路由策略来将数据传输到它们所需去的地方，全部在一个 SaaS 解决方案中完成。不再需要投资购置 MPLS 并等待部署，不再蒙受流量“长号”效应带来的性能损失，不再需要经历管理一堆过时解决方案的噩梦：取而代之，使用 Cloudflare 的 Anycast 网络来延伸您的网络，获得更佳的性能和内建的可见性。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-24.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>一旦您的流量连入 Cloudflare，如何控制您的网络中的哪些实体可彼此交互或与互联网交互呢？这就是 Magic Firewall 发挥作用的时候了。Magic Firewall 允许您集中管理您整个网络中的策略，全部以服务的形式在边缘运行。Magic Firewall 让您精细地控制哪些数据可以进出您的网络，或在您的网络内传输。更妙的是，您能通过单一仪表板掌握流量具体如何流经您的网络。</p>
-	<p>Magic WAN 为 Cloudflare One所包含的一整套功能组件提供了基础，这些功能组件都是在软件中从零构建的，可无缝扩展和集成。Magic Firewall 在 Magic WAN 可供直接使用，客户能轻松启用额外的零信任安全和性能特性，例如我们包含远程浏览器隔离的<a href="https://www.cloudflare.com/zh-cn/teams/?ref=blog.cloudflare.com" target="_blank">安全 Web 网关（SWG）</a>、<a href="https://blog.cloudflare.com/zh-cn/one-more-zero-trust-thing-cloudflare-intrusion-detection-zh-cn/">IDS</a>、Smart Routing 等。</p>
+	<p>Magic WAN 为 Cloudflare One所包含的一整套功能组件提供了基础，这些功能组件都是在软件中从零构建的，可无缝扩展和集成。Magic Firewall 在 Magic WAN 可供直接使用，客户能轻松启用额外的零信任安全和性能特性，例如我们包含远程浏览器隔离的<a href="https://www.cloudflare.com/zh-cn/teams/" target="_blank">安全 Web 网关（SWG）</a>、<a href="https://blog.cloudflare.com/zh-cn/one-more-zero-trust-thing-cloudflare-intrusion-detection-zh-cn/">IDS</a>、Smart Routing 等。</p>
 	<blockquote>云采用日渐兴盛，加上人们最近向远程工作转移，导致互联网、SaaS 和 IaaS 流量增多，给 MPLS 等传统网络架构造成巨大压力。对于希望提高运营敏捷性和降低总体拥有成本的组织而言，提供全球规模的WAN 架构、集成的企业网络安全功能以及与远程用户的直接安全连接，这一切至关重要。<br>— Ghassan Abdo，IDC Research 全球电信、虚拟化和 CDN 副总裁</blockquote>
 	<p>具体是怎样的呢？让我们通过示例客户 Acme Corp 探索如何使用 Magic WAN 和 Magic Firewall 来解决企业网络和安全方面的问题。</p>
 	<h3 id="-mpls">取代分支机构与数据中心之间的 MPLS</h3>
@@ -16,7 +16,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-11.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>随着 Acme 发展，其网络团队最一致的痛点之一是管理和维护其 MPLS 连接性。MPLS 成本高昂且部署费时，限制了 Acme 扩张到新地点（尤其是国际上）或对通过收购而增加的办公室提供支持的速度。Acme 办公室中连接到云提供商和 SaaS 应用程序的员工面临令人沮丧的延迟，因为流量必须先挤过 Acme 数据中心由一堆硬件盒子执行的安全策略，然后才能发送到目的地。办公室之间的流量，例如 IP 电话和视频会议，没有应用任何安全策略，代表了 Acme 安全态势中的一个缺口。</p>
 	<p>就在 Acme 努力迁移到云计算和云储存之际，该公司希望摆脱这些专用链接，改为以安全的方式利用互联网来建立连接。他们考虑在互联网上建立全网状站到站 IPSec VPN 隧道，但其复杂性使其网络团队和异构路由器部署均捉襟见肘。Magic WAN 已经准备好满足他们今天的需求，简化网络管理并立即带来性能裨益，并使 Acme 能逐步摆脱 MPLS。</p>
-	<p>在这个 Magic WAN 示例部署中，Acme 通过 Anycast GRE 隧道将每个办公室和 VPC 连接到 Cloudflare。通过这个架构，Acme 只需要为每个站点/互联网连接建立单一隧道，就能自动获得对 Cloudflare 整个全球网络（遍布全球 100 多个国家的 200 多个城市）的连接——就像轮辐式架构，只是这个中心点无处不在。Acme 也选择使用 <a href="https://www.cloudflare.com/zh-cn/network-interconnect/?ref=blog.cloudflare.com" target="_blank">Cloudflare Network Interconnect</a> 从其数据中心建立专用连接，通过 Cloudflare <a href="https://www.peeringdb.com/net/4224?ref=blog.cloudflare.com" target="_blank">高度互联</a>的网络实现甚至更加安全和可靠的流量交付和对其他网络/云提供商的更佳连接性。</p>
+	<p>在这个 Magic WAN 示例部署中，Acme 通过 Anycast GRE 隧道将每个办公室和 VPC 连接到 Cloudflare。通过这个架构，Acme 只需要为每个站点/互联网连接建立单一隧道，就能自动获得对 Cloudflare 整个全球网络（遍布全球 100 多个国家的 200 多个城市）的连接——就像轮辐式架构，只是这个中心点无处不在。Acme 也选择使用 <a href="https://www.cloudflare.com/zh-cn/network-interconnect/" target="_blank">Cloudflare Network Interconnect</a> 从其数据中心建立专用连接，通过 Cloudflare <a href="https://www.peeringdb.com/net/4224" target="_blank">高度互联</a>的网络实现甚至更加安全和可靠的流量交付和对其他网络/云提供商的更佳连接性。</p>
 	<p>一旦建立了这些隧道，Acme 就能为其私有网络（RFC 1918 空间）中的流量配置允许的路线，Cloudflare 将流量引导至需要前往的地方，提供弹性和流量优化。只用完成数小时的简单设置过程，Acme Corp 就能开始从 MPLS 迁移出来。随着 QoS 和 Argo for Networks 等 Cloudflare One 新功能的引入，Acme 的网络性能和可靠性将继续提高。</p>
 	<h3 id="--2">保护远程员工对私有网络的访问</h3>
 	<p>去年 Acme Corp 员工因新冠疫情而突然转移到远程工作时，Acme 的 IT 部门匆忙寻找短期应对措施来维持员工对内部资源的访问。他们的传统 VPN 不堪使用——由于设备负荷超过设计极限，居家工作的 Acme 员工遭遇到了连接性、可靠性和性能问题。</p>
@@ -30,7 +30,7 @@
 	<p>通过 Magic Firewall，客户获得在边缘运行的单一防火墙即服务，替代在分支机构或数据中心安装的笨重硬件。Magic Firewall 不但允许他们轻松管理配置，也能简化合规审计。 </p>
 	<p>要控制访问，客户可部署策略，确定具体哪些流量可前往何处。例如，Acme 希望流量通过端口 80 和 443 从互联网流向数据中心内的 web 服务器，但希望锁定 SSH 访问仅限于分支机构内的特定私有网络。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-32.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>如果 Acme 希望进一步锁定网络，他们可采用一种零信任访问模型，使用 <a href="https://www.cloudflare.com/zh-cn/teams/access/?ref=blog.cloudflare.com" target="_blank">Access</a> and <a href="https://www.cloudflare.com/zh-cn/teams/gateway/?ref=blog.cloudflare.com" target="_blank">Gateway</a> 来在通过 Cloudflare 的全部流量中控制谁能及如何访问什么内容。随着 Cloudflare 推出新的过滤和控制功能，例如我们即将发布的 IDS/IPS 和 DLP 解决方案，只需点击几下鼠标，Acme 就能启用它们并进一步增强安全性。</p>
+	<p>如果 Acme 希望进一步锁定网络，他们可采用一种零信任访问模型，使用 <a href="https://www.cloudflare.com/zh-cn/teams/access/" target="_blank">Access</a> and <a href="https://www.cloudflare.com/zh-cn/teams/gateway/" target="_blank">Gateway</a> 来在通过 Cloudflare 的全部流量中控制谁能及如何访问什么内容。随着 Cloudflare 推出新的过滤和控制功能，例如我们即将发布的 IDS/IPS 和 DLP 解决方案，只需点击几下鼠标，Acme 就能启用它们并进一步增强安全性。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-25.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Acme 的长期目标是将全部安全和性能功能转移到云，作为服务使用。Magic WAN 为这一迁移铺平了道路，允许他们在淘汰传统硬件的同时逐步深化其安全态势。</p>
 	<blockquote>数字化转型向传统网络架构发起了挑战，导致笨拙的“螺栓固定式”安全实践全然不适用于当今的全球企业。随着越来越多智能移向边缘，企业必须利用现代 WAN 技术来提供广泛的、以云交付的内置安全服务。如今，企业真正需要的是具有强大安全性的快速边缘全局连接。<br>— Christopher Rodriguez，IDC Research 网络安全产品经理</blockquote>
@@ -42,5 +42,5 @@
 		<li><strong><strong><strong>从头构建，协同工作：</strong>我们的产品是在软件中从零开发的，以便能轻松集成。在我们的产品构建和发展过程中，我们不断思考它们能如何集成来互相促进。</strong></strong></li>
 	</ul>
 	<h3 id="--4">立即开始使用</h3>
-	<p>Magic WAN 目前作为限量测试版提供，Magic Firewall 提供给所有 <a href="https://www.cloudflare.com/zh-cn/magic-transit?ref=blog.cloudflare.com" target="_blank">Magic Transit</a> 客户使用（并包含于 Magic WAN 即开即用）。如果您有兴趣测试 Magic WAN，或者希望进一步了解 Cloudflare 能如何帮助贵组织替代传统 MPLS 架构、保障远程员工的安全访问并深化您的安全态势，同时降低总体拥有成本，请联系我们 <a href="https://forms.gle/jh47DMukPq4kexue7?ref=blog.cloudflare.com" target="_blank">注册表链接</a>！</p>
+	<p>Magic WAN 目前作为限量测试版提供，Magic Firewall 提供给所有 <a href="https://www.cloudflare.com/zh-cn/magic-transit" target="_blank">Magic Transit</a> 客户使用（并包含于 Magic WAN 即开即用）。如果您有兴趣测试 Magic WAN，或者希望进一步了解 Cloudflare 能如何帮助贵组织替代传统 MPLS 架构、保障远程员工的安全访问并深化您的安全态势，同时降低总体拥有成本，请联系我们 <a href="https://forms.gle/jh47DMukPq4kexue7" target="_blank">注册表链接</a>！</p>
 </div>

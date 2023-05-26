@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image8-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><a href="https://blog.cloudflare.com/announcing-cloudflare-images-beta/">Cloudflare Imagesを世界に</a>発表したとき、製品内に画像を保存する方法を紹介しました。そして、Cloudflare経由で配信するにあたってリモートソースを使用する際に発生するエグレス料金から、お客様が脱却できるよう支援しました。</p>
-	<p>Cloudflareに画像を保存するには、<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/dashboard-upload/?ref=blog.cloudflare.com" target="_blank">UIを介して</a>簡単なドラッグアンドドロップでアップロードできます。もしくは、多数のオブジェクトがありアップロードプロセスをスクリプトで実行する場合は、<a href="https://developers.cloudflare.com/images/cloudflare-images/api-request/?ref=blog.cloudflare.com" target="_blank">APIを介して</a>アップロードできます。</p>
-	<p>画像のインポート方法に柔軟性を持たせるために、<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/upload-via-url/?ref=blog.cloudflare.com" target="_blank">URL経由でアップロード</a>、または<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/custom-id/?ref=blog.cloudflare.com" target="_blank">画像のカスタム名やパスを定義</a>して、お客様のリポジトリとCloudflareのオブジェクト間の簡単なマッピングを可能にする機能も追加されました。また、<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/?ref=blog.cloudflare.com#serving-images-from-custom-domains" target="_blank">カスタムホスト名から配信する</a>ことで、エンドユーザーがどのようにパスを見ているかを柔軟に設定したり、TLSネゴシエーションの必要性をなくして配信パフォーマンスを向上させたり、URLに一貫性を持たせてブランド認知を向上させたりすることも可能です。</p>
+	<p>Cloudflareに画像を保存するには、<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/dashboard-upload/" target="_blank">UIを介して</a>簡単なドラッグアンドドロップでアップロードできます。もしくは、多数のオブジェクトがありアップロードプロセスをスクリプトで実行する場合は、<a href="https://developers.cloudflare.com/images/cloudflare-images/api-request/" target="_blank">APIを介して</a>アップロードできます。</p>
+	<p>画像のインポート方法に柔軟性を持たせるために、<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/upload-via-url/" target="_blank">URL経由でアップロード</a>、または<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/custom-id/" target="_blank">画像のカスタム名やパスを定義</a>して、お客様のリポジトリとCloudflareのオブジェクト間の簡単なマッピングを可能にする機能も追加されました。また、<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/#serving-images-from-custom-domains" target="_blank">カスタムホスト名から配信する</a>ことで、エンドユーザーがどのようにパスを見ているかを柔軟に設定したり、TLSネゴシエーションの必要性をなくして配信パフォーマンスを向上させたり、URLに一貫性を持たせてブランド認知を向上させたりすることも可能です。</p>
 	<p>それでも、これが私たちの製品を伝えるシンプルな言葉です：<em>「このリポジトリURLには何千万枚もの画像があります。アクセスして私から全部取っていってください。」</em></p>
 	<p>ある状況はお客様がで、Cloudflare Imagesにアップロードする何百万もの画像を含むバケットを持っていることがあります。彼らの目標は、1回のプロセスですべてのオブジェクトをCloudflareに移行し、外部ストレージを完全に削除できるようにすることです。</p>
 	<p>もう一つのよくある状況は、大企業の異なる部署が、様々なストレージリポジトリで構成された独立したシステムを使用しており、それらのすべてが、特定の時間に不均一なアップロード量を送り込むことです。そして、Cloudflareで新しい画像を取得するために定義を再利用できれば、ポートフォリオを最新に保つことができ、複数のストレージプロバイダからパブリックにむけて直接提供することで、膨大なエグレス料金を支払う必要がありません。</p>
@@ -29,11 +29,11 @@
 	<p>最初のオプションは、オプションのプレフィックスパスです。プレフィックスを定義すると、この特定のソースからアップロードされた画像に一意の識別子を付けることができ、このソースからインポートされた画像を区別できます。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-19.png" class="kg-image" alt="define a path prefix to easily identify all images imported from this source" loading="lazy"></figure>
 	<p>設置されたネーミングルールは、ソース画像名とパスをすでに考慮しており、そのためここで取得する子犬の画像があると仮定します。</p>
-	<p><code><a href="https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png?ref=blog.cloudflare.com" target="_blank">https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png</a></code></p>
+	<p><code><a href="https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png" target="_blank">https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png</a></code></p>
 	<p>パスプレフィックスを付けずにインポートした場合、画像の場所は次のように表示されます：</p>
-	<p><code><a href="https://imagedelivery.net/%3CAccountId%3E/folderA/puppy.png?ref=blog.cloudflare.com" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png</a></code></p>
+	<p><code><a href="https://imagedelivery.net/<AccountId>/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png</a></code></p>
 	<p>ここで、例えばこのバケットがTechnical Writing部門のものであることを示すなど、ソースを識別するためのパスプレフィックスを追加で作成したい場合があります。この子犬の場合、結果は次のようになります。</p>
-	<p><code><a href="https://imagedelivery.net/%3CAccountId%3E/techwriting/folderA/puppy.png?ref=blog.cloudflare.com" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/<strong>techwriting</strong>/folderA/puppy.png</a></code></p>
+	<p><code><a href="https://imagedelivery.net/<AccountId>/techwriting/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/<strong>techwriting</strong>/folderA/puppy.png</a></code></p>
 	<p>カスタムパスプレフィックスは、他のソースから来る名前の衝突を防止するための手段でもあります。</p>
 	<p>それでも、お客様が利用したくないと思うことはあるでしょう。そうすると、ソースを再利用して画像をインポートする場合、同じパス＋ファイル名の宛先が衝突することがあります。 </p>
 	<p>デフォルトでは既存の画像を上書きしませんが、そのオプションを選択して、Cloudflareパイプラインに存在するカタログを更新することができます。</p>
@@ -49,6 +49,6 @@
 	<p>また、シンプルなUIを目指しており、リポジトリのURLの定義からアップロード処理の開始、最終レポートの取得まで、すべてCLIで利用できるようにする予定です。</p>
 	<h3 id="--1">ベータ版を申し込む</h3>
 	<p>サードパーティのリポジトリからCloudflareに画像を提供できるように、このキットのベータ版を数週間のうちにリリースする予定です。</p>
-	<p>最初に使用したい場合は、ベータ版のキャンセル待ちリストに参加できるよう、こちらの<a href="https://dash.cloudflare.com/login?ref=blog.cloudflare.com" target="_blank">Cloudflare Images dashboard</a>からリクエストしてください。</p>
+	<p>最初に使用したい場合は、ベータ版のキャンセル待ちリストに参加できるよう、こちらの<a href="https://dash.cloudflare.com/login" target="_blank">Cloudflare Images dashboard</a>からリクエストしてください。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-39.png" class="kg-image" alt="" loading="lazy"></figure>
 </div>
