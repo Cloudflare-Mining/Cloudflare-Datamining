@@ -6,7 +6,7 @@
 	<p>After doing a lot of reading, and asking a lot more questions, it was time to start coding. I set up a Cloudflare account with a Workers subscription, and was greeted with a page that looked something like this:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image3-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>I was able to change the code in the text area on the left, click “Update”, and the changes would be reflected on the right — fairly self-explanatory. There was also a testing tab which allowed me to handcraft HTTP requests with different methods and custom headers. So far so good.</p>
-	<p>As my project evolved, it became clear that I needed to leave the Workers editor behind. Anything more than a one-off script tends to require JavaScript modules and multiple files. I spent some time setting up a local development environment for myself with <a href="https://npmjs.com" target="_blank">npm</a> and <a href="https://webpack.js.org/" target="_blank">webpack</a> (see, purgatory: a place or state of temporary suffering. <a href="https://www.merriam-webster.com/dictionary/purgatory" target="_blank">merriam-webster.com</a>).</p>
+	<p>As my project evolved, it became clear that I needed to leave the Workers editor behind. Anything more than a one-off script tends to require JavaScript modules and multiple files. I spent some time setting up a local development environment for myself with <a href="https://npmjs.com/" target="_blank">npm</a> and <a href="https://webpack.js.org/" target="_blank">webpack</a> (see, purgatory: a place or state of temporary suffering. <a href="https://www.merriam-webster.com/dictionary/purgatory" target="_blank">merriam-webster.com</a>).</p>
 	<p>After I finally got everything working, my iteration cycle looked a bit like this:</p><!--kg-card-begin: markdown-->
 	<ol>
 		<li>Make a change to my code</li>
@@ -101,7 +101,7 @@ async function handleRequest(request) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>If you’d like to follow along, you can paste that script into the editor at <a href="https://cloudflareworkers.com" target="_blank">cloudflareworkers.com</a> using Google Chrome.</p>
+	<p>If you’d like to follow along, you can paste that script into the editor at <a href="https://cloudflareworkers.com/" target="_blank">cloudflareworkers.com</a> using Google Chrome.</p>
 	<p>This is what the Preview editor looks like when that script is run:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image2-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>You can see that <code>Hello, World!</code> has been printed to the console. This may not be the most useful example, but in more complex applications logging different variables is helpful for debugging. If you’re following along, try changing <code>console.log(message)</code> to something more interesting, like <code>console.log(request.url)</code>.</p>

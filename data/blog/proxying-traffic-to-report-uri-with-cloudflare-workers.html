@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><em>The following is a guest post by Scott Helme, a Security Researcher, international speaker, and <a href="https://scotthelme.co.uk/" target="_blank">blogger</a>. He's also the founder of the popular <a href="https://securityheaders.com" target="_blank">securityheaders.com</a> and <a href="https://report-uri.com" target="_blank">report-uri.com</a>, free tools to help people deploy better security.</em></p>
+	<p><em>The following is a guest post by Scott Helme, a Security Researcher, international speaker, and <a href="https://scotthelme.co.uk/" target="_blank">blogger</a>. He's also the founder of the popular <a href="https://securityheaders.com/" target="_blank">securityheaders.com</a> and <a href="https://report-uri.com/" target="_blank">report-uri.com</a>, free tools to help people deploy better security.</em></p>
 	<p>With the continued growth of Report URI we're seeing a larger and larger variety of sites use the service. With that diversity comes additional requirements that need to be met, some of them simple and some of them less so. Here's a quick look at those challenges and how they can be solved easily with a Cloudflare Worker.<!--more--></p>
 	<h4 id="sendingcspreports">Sending CSP Reports</h4>
 	<p>When a browser sends a CSP report for us to collect at Report URI, we receive the JSON payload sent to us but we also have access to two other pieces of information, the client IP and the User Agent string. We never store, collect or analyse the client IP, we simply don't need or want to, and all we do with the UA string is extract the browser name like Chrome or Firefox. Most site operators are perfectly happy with our approach here and things work just fine. There are however some issues when the site operator simply doesn't want to have us to have this information and some cases have come up where they can't allow us to have access to that information because of restrictions placed on them by a regulator. The other common thing that comes up, which I honestly never anticipated, was simply the perception of the reporting endpoint being a 3rd party address. There are various different ways we can and do tackle these problems.</p>
@@ -63,9 +63,7 @@ https://report-uri.example.com/r/d/csp/enforce
 	<p>If you want to save your quota on Report URI, maybe you're early in the process of deploying CSP and it's quite noisy, no problem. The worker can select a random downsample of reports to forward on so you can still receive reports but not eat your quota quite as quickly. Make the following change to the start of the <code>forwardReport()</code> function to randomly drop 50% of reports.</p>
 	<br>
 	<pre><code class="javascript">async function forwardReport(req) {
-  if(Math.floor((Math.random() * 100) + 1) &lt;= 50) {
-    return new Response("discarded")
-  }</code></pre>
+  if(Math.floor((Math.random() * 100) + 1) &lt;= 50) { return new response("discarded") }&lt; code&gt;<!--=--></code></pre>
 	<br>
 	<h5 id="hidetheuastring">Hide the UA string</h5>
 	<p>If you did want to hide the UA string from Report URI and not let us see that either, you simply need to remove the following line of code.</p>

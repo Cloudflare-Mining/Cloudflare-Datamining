@@ -102,7 +102,7 @@ service1.query.consul. 30 IN A 192.0.2.1
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>We lowered <em>serve-expired-ttl</em> to 40 to help testing the issue and we were able to see that as soon as the A entry was deemed not serve-able, the CNAME was also not returned, which is the behaviour that we want.</p>
-	<p>One last thing that we wanted to test was if the cache was really refreshed in the background while the stale entry was returned. <a href="https://developer.apple.com/download/more/?q=Additional%20Tools" target="_blank">Network Link Conditioner</a> was used to simulate high latency:</p>
+	<p>One last thing that we wanted to test was if the cache was really refreshed in the background while the stale entry was returned. <a href="https://developer.apple.com/download/more/?q=Additional+Tools" target="_blank">Network Link Conditioner</a> was used to simulate high latency:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image16.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
 	<pre><code>➜ dig service1.service.consul @CONSUL_ADDRESS
  

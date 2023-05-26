@@ -2,7 +2,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/Early-Hints.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Want to know a secret about Internet performance? Browsers spend an inordinate amount of time twiddling their thumbs waiting to be told what to do. This waiting impacts page load performance. Today, we’re excited to announce support for Early Hints, which dramatically improves browser page load performance and reduces thumb-twiddling time.</p>
 	<p>In initial tests using Early Hints, we have observed more than 30% improvement to page load time for browsers visiting a website for the first time. </p>
-	<p>Early Hints is available in beta today — Cloudflare customers can request access to Early Hints in the dashboard’s <a href="https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization#sxg-card" target="_blank">Speed tab</a>. <strong>It’s free for all customers because we think the web should be fast!</strong></p>
+	<p>Early Hints is available in beta today — Cloudflare customers can request access to Early Hints in the dashboard’s <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization#sxg-card" target="_blank">Speed tab</a>. <strong>It’s free for all customers because we think the web should be fast!</strong></p>
 	<h2 id="early-hints-in-a-nutshell">Early Hints in a nutshell</h2>
 	<p>Browsers need instructions for what to render and what resources need to be fetched to complete “painting” a given web page. These instructions come from a server response. But the servers sending these responses often need time to compile these resources — this is known as “server think time.” While the servers are busy during this time… browsers sit idle and wait.</p>
 	<p>Early Hints takes advantage of “server think time” to asynchronously send instructions to the browser to begin loading resources while the origin server is compiling the full response. By sending these hints to a browser before the full response is prepared, the browser can figure out what it needs to do to load the webpage faster for the end user. Faster page loads and lower user-perceived latency means happier users!</p>
@@ -85,7 +85,7 @@ Host: example.com</code></pre>
 	<p><code>open /Applications/Google\ Chrome\ Dev.app --args --enable-features=EarlyHintsPreloadForNavigation</code></p>
 	<h3 id="testing-early-hints-with-web-page-test">Testing Early Hints with Web Page Test</h3>
 	<ol>
-		<li>Open <a href="https://webpagetest.org" target="_blank">webpagetest.org</a> (a free performance testing tool).</li>
+		<li>Open <a href="https://webpagetest.org/" target="_blank">webpagetest.org</a> (a free performance testing tool).</li>
 		<li>Specify the desired test URL. It should have the necessary preload/preconnect <em>rel</em> types in the Link header of the response.</li>
 		<li>Choose <strong>Chrome Canary</strong> (or any Chrome version higher than 94) for the browser</li>
 		<li>Under <strong>advanced settings</strong>, select <strong>Chromium</strong>.</li>
@@ -109,12 +109,12 @@ Host: example.com</code></pre>
 	<p>How to sign up for Cloudflare’s Early Hints beta:</p>
 	<ol>
 		<li>Sign in to your <strong>Cloudflare Account</strong></li>
-		<li>In the dashboard, navigate to <a href="https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization#sxg-card" target="_blank"><strong>Speed</strong> tab</a></li>
+		<li>In the dashboard, navigate to <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization#sxg-card" target="_blank"><strong>Speed</strong> tab</a></li>
 		<li>Click on the <strong>Optimization</strong> section</li>
 		<li>Locate the <strong>Early Hints beta</strong> sign up card and request access. We’re enabling access for users on the beta list in batches.</li>
 	</ol>
 	<p>Early Hints holds tremendous promise to speed up everyone’s experience on the web. It’s exactly the kind of product we like working on at Cloudflare and exactly the kind of feature we think should be free, for everyone. Be sure to check out the beta and let us know what you think. </p>
-	<p>You can explore our beta implementation in the <a href="https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization#sxg-card" target="_blank"><strong>Speed tab</strong></a>. And if you’re an engineer interested in improving the performance of the web for all, <a href="https://cloudflare.com/jobs" target="_blank">come join us</a>!</p>
+	<p>You can explore our beta implementation in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization#sxg-card" target="_blank"><strong>Speed tab</strong></a>. And if you’re an engineer interested in improving the performance of the web for all, <a href="https://cloudflare.com/jobs" target="_blank">come join us</a>!</p>
 	<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/5ccf48ad5a519abd91543a6f3cfe482f?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

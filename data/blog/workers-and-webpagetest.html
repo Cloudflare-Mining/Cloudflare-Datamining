@@ -13,7 +13,7 @@
 	<h3 id="setting-up-a-worker">Setting up a worker</h3>
 	<p>It is really quick and easy to <a href="https://workers.cloudflare.com/" target="_blank">sign up</a> for a free subdomain at <code>workers.dev</code> which provides you with 100,000 free requests per day. There is a quick-start guide available <a href="https://developers.cloudflare.com/workers/quickstart/" target="_blank">here</a>.To be able to run the examples in this post you will need to <a href="https://github.com/cloudflare/wrangler#installation" target="_blank">install Wrangler</a>, the CLI tool for deploying workers. Once Wrangler is installed run the following command to download the example worker project: &nbsp; &nbsp; </p>
 	<pre><code>wrangler generate wpt-proxy https://github.com/xtuc/WebPageTest-proxy</code></pre>
-	<p><a href="https://github.com/xtuc/WebPageTest-proxyYou" target="_blank">You</a> will then need to update the <code>wrangler.toml</code> with your account_id, which can be found in the <a href="https://dash.cloudflare.com" target="_blank">dashboard</a> in the right sidebar. Then configure an API key with the command:</p>
+	<p><a href="https://github.com/xtuc/WebPageTest-proxyYou" target="_blank">You</a> will then need to update the <code>wrangler.toml</code> with your account_id, which can be found in the <a href="https://dash.cloudflare.com/" target="_blank">dashboard</a> in the right sidebar. Then configure an API key with the command:</p>
 	<p><code>wrangler config</code></p>
 	<p>Finally, you can publish the worker with: &nbsp; </p>
 	<p><code>wrangler publish</code> </p>

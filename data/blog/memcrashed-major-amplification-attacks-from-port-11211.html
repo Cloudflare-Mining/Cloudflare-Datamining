@@ -75,7 +75,7 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 └─────┴─────────┴──────────────────────────────────────────────┘
 </code></pre>
 	<p>Most of the memcached servers we've seen were coming from AS16276 - OVH, AS14061 - Digital Ocean and AS7684 - Sakura.</p>
-	<p>In total we've seen only 5,729 unique source IPs of memcached servers. We're expecting to see much larger attacks in future, as <a href="https://www.shodan.io" target="_blank">Shodan</a> reports 88,000 open memcached servers:</p>
+	<p>In total we've seen only 5,729 unique source IPs of memcached servers. We're expecting to see much larger attacks in future, as <a href="https://www.shodan.io/" target="_blank">Shodan</a> reports 88,000 open memcached servers:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/02/memcached-shodan.png" alt="memcached-shodan" loading="lazy"></p>
 	<h3 id="letsfixitup">Let's fix it up</h3>
 	<p>It's necessary to fix this and prevent further attacks. Here is a list of things that should be done.</p>

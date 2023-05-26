@@ -31,9 +31,9 @@
 	<p>設置されたネーミングルールは、ソース画像名とパスをすでに考慮しており、そのためここで取得する子犬の画像があると仮定します。</p>
 	<p><code><a href="https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png" target="_blank">https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png</a></code></p>
 	<p>パスプレフィックスを付けずにインポートした場合、画像の場所は次のように表示されます：</p>
-	<p><code><a href="https://imagedelivery.net/%3CAccountId%3E/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png</a></code></p>
+	<p><code><a href="https://imagedelivery.net/<AccountId>/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png</a></code></p>
 	<p>ここで、例えばこのバケットがTechnical Writing部門のものであることを示すなど、ソースを識別するためのパスプレフィックスを追加で作成したい場合があります。この子犬の場合、結果は次のようになります。</p>
-	<p><code><a href="https://imagedelivery.net/%3CAccountId%3E/techwriting/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/<strong>techwriting</strong>/folderA/puppy.png</a></code></p>
+	<p><code><a href="https://imagedelivery.net/<AccountId>/techwriting/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/<strong>techwriting</strong>/folderA/puppy.png</a></code></p>
 	<p>カスタムパスプレフィックスは、他のソースから来る名前の衝突を防止するための手段でもあります。</p>
 	<p>それでも、お客様が利用したくないと思うことはあるでしょう。そうすると、ソースを再利用して画像をインポートする場合、同じパス＋ファイル名の宛先が衝突することがあります。 </p>
 	<p>デフォルトでは既存の画像を上書きしませんが、そのオプションを選択して、Cloudflareパイプラインに存在するカタログを更新することができます。</p>

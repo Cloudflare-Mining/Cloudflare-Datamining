@@ -192,12 +192,12 @@ To: &lt;my_personal_email_address&gt;
 	<p>这表明我们还有很大的改进空间。</p>
 	<h2 id="-dns-">进入：电子邮件安全 DNS 向导</h2>
 	<p>那么，我们要怎样做才能增加 SPF、DKIM 和 DMARC 的采用率并应对电子邮件欺骗和网络钓鱼？进入新的 Cloudflare <em>电子邮件安全 DNS 向导</em>。</p>
-	<p>从今天开始，当您浏览到 Cloudflare 仪表盘的 <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns" target="_blank">DNS 标签</a>时，您会看到两个新功能：</p>
+	<p>从今天开始，当您浏览到 Cloudflare 仪表盘的 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank">DNS 标签</a>时，您会看到两个新功能：</p>
 	<p>1) 新增的电子邮件安全部分</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh4.googleusercontent.com/7yW39Yx6BIcxLPOaHCJJkQHMCfihi6ZI1TeIw26hoYNslR0Dpm0E0A2QT7zA-78TWXvK_wAxbxcFdK815bu-2xx8046O5rOgVavTZLPT8k6pWoMMfSvjc0LDN5d8MweayzEuD3fg=s0" class="kg-image" alt="" loading="lazy"></figure>
 	<p>2) 新增的关于不安全配置的警告</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>为了开始使用<em>电子邮件安全 DNS 向导</em>，您可以直接点击警告中的链接（引导您进入向导的相关部分）或点击新的<a href="https://dash.cloudflare.com/?to=/:account/:zone/dns/wizard" target="_blank">电子邮件安全部分</a>中的<strong>配置</strong>。后者将向您显示以下可用选项：</p>
+	<p>为了开始使用<em>电子邮件安全 DNS 向导</em>，您可以直接点击警告中的链接（引导您进入向导的相关部分）或点击新的<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns%2Fwizard" target="_blank">电子邮件安全部分</a>中的<strong>配置</strong>。后者将向您显示以下可用选项：</p>
 	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/HTcq6CITW8kzRBSoK23qWiekQRf2cfGwKp_aNoIcIdJOSw7ZeNXAoR3UtJ2-jZ9RDgweHIZQqrpDzLvy210kwRNjRT8lBeS1cUd0D4LLawcOJ_xT-6v4SY81-shQYxUkch2oVOQI=s0" class="kg-image" alt="" loading="lazy"></figure>
 	<p>有两种情况。您使用您的域名发送电子邮件，或没有这样做。如果是前者，您可以通过以下几个简单的步骤配置 SPF、DKIM 和 DMARC 记录。这里是针对 SPF 的步骤： </p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 57.28155339805825%;"><iframe src="https://iframe.videodelivery.net/256d8b89df970f4e8157692599e7e81f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
@@ -211,6 +211,6 @@ _dmarc.example.com.		TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h2 id="--2">帮助应对电子邮件欺骗和网络钓鱼</h2>
-	<p>确保您的域名是安全的，能够防止电子邮件欺骗和网络钓鱼。只需前往 Cloudflare 仪表盘上的 <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns" target="_blank">DNS 标签</a>，或者，如果您还没有使用 Cloudflare DNS，只需在 <a href="https://www.cloudflare.com/" target="_blank">cloudflare.com</a> 上花几分钟时间进行免费注册。</p>
+	<p>确保您的域名是安全的，能够防止电子邮件欺骗和网络钓鱼。只需前往 Cloudflare 仪表盘上的 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank">DNS 标签</a>，或者，如果您还没有使用 Cloudflare DNS，只需在 <a href="https://www.cloudflare.com/" target="_blank">cloudflare.com</a> 上花几分钟时间进行免费注册。</p>
 	<p>如果您想了解关于 SPF、DKIM 和 DMARC 的更多信息，请查阅我们关于电子邮件相关 DNS 记录的<a href="https://www.cloudflare.com/zh-cn/learning/dns/dns-records/dns-txt-record/" target="_blank">新学习页面</a>。</p>
 </div>

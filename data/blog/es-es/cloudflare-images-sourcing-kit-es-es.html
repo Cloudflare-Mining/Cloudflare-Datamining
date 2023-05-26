@@ -31,9 +31,9 @@
 	<p>La regla de nomenclatura establecida ya respeta el nombre y la ruta de la imagen de origen, así que supongamos que hay una imagen de un cachorro que hay que recuperar:</p>
 	<p><code><a href="https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png" target="_blank">https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png</a></code></p>
 	<p>Cuando se importa sin ningún prefijo de ruta, encontrarás la imagen en:</p>
-	<p><code><a href="https://imagedelivery.net/<AccountId>/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png</a></code></p>
+	<p><code><a href="https://imagedelivery.net/%3CAccountId%3E/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png</a></code></p>
 	<p>Ahora, es posible que quieras crear un prefijo de ruta adicional para identificar el origen, por ejemplo, mencionando que este depósito procede del departamento de Redacción técnica. En el ejemplo del cachorro, el resultado sería:</p>
-	<p><code><a href="https://imagedelivery.net/<AccountId>/techwriting/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/<strong>techwriting</strong>/folderA/puppy.png</a></code></p>
+	<p><code><a href="https://imagedelivery.net/%3CAccountId%3E/techwriting/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/<strong>techwriting</strong>/folderA/puppy.png</a></code></p>
 	<p>Los prefijos de ruta personalizados también proporcionan una forma de evitar los conflictos de nombres procedentes de otros orígenes.</p>
 	<p>Aun así, habrá ocasiones en las que los clientes no quieran utilizarlas. Además, al reutilizar el origen para importar imágenes, se puede producir un conflicto de destinos de la misma ruta+nombre de archivo. </p>
 	<p>Por defecto, no sobrescribimos las imágenes existentes, pero te permitimos seleccionar esa opción y actualizar tu catálogo presente en la cartera de Cloudflare.</p>
@@ -49,6 +49,6 @@
 	<p>Aunque pretendemos que sea una interfaz de usuario sencilla, también tenemos previsto que todo esté disponible a través de la CLI, desde la definición de la URL del repositorio hasta el inicio del proceso de carga y la obtención del informe final.</p>
 	<h3 id="solicita-la-versi-n-beta">Solicita la versión beta</h3>
 	<p>En las próximas semanas lanzaremos la versión beta de este kit, que te permitirá obtener tus imágenes de repositorios de terceros e importarlas a Cloudflare. </p>
-	<p>Si quieres ser el primero en utilizar Sourcing Kit, únete a la lista de espera de nuestra versión beta en el <a href="https://dash.cloudflare.com/?to=/:account/images" target="_blank">panel de control de Cloudflare Images</a>.</p>
+	<p>Si quieres ser el primero en utilizar Sourcing Kit, únete a la lista de espera de nuestra versión beta en el <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fimages" target="_blank">panel de control de Cloudflare Images</a>.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-39.png" class="kg-image" alt="" loading="lazy"></figure>
 </div>

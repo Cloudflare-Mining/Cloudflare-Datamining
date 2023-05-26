@@ -84,7 +84,7 @@ net.ipv4.tcp_wmem = 4096 5242880 33554432
 	<ul>
 		<li>There must be some space available in the send buffer.</li>
 		<li>The amount of enqueued, not sent, data must be lower than the LOWAT setting.</li>
-		<li>The amount of <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v4.5#L1079" target="_blank">free buffer space</a> in the send buffer must be greater than <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v.4.5#L785" target="_blank">half of the used send buffer space</a>.</li>
+		<li>The amount of <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v4.5=#L1079" target="_blank">free buffer space</a> in the send buffer must be greater than <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v.4.5=#L785" target="_blank">half of the used send buffer space</a>.</li>
 	</ul>
 	<p>The last condition is critical. This means that after you fill the socket send buffer to 100%, the socket will become writeable again only when it's drained below 66% of send buffer size.</p>
 	<p>Going back to our NGINX trace, the second <code>sendfile</code> we saw:</p>

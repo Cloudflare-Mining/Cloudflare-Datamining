@@ -140,7 +140,7 @@ async function handleRequest(event) {
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Chart1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>Cloudflare provides <a href="https://www.google.com/url?q=https://developers.cloudflare.com/workers/writing-workers/debugging-tips/&amp;sa=D&amp;ust=1547151883991000" target="_blank">Debugging Tips</a>. I followed the section “Make subrequests to your debug server” and decided to incorporate <a href="https://www.google.com/url?q=https://www.loggly.com/&amp;sa=D&amp;ust=1547151883991000" target="_blank">Loggly</a>. I could now catch the exceptions and send it to Loggly by running a POST using <code>fetch</code> to the URL provided by Loggly. With this I quickly determined what the problem was and corrected the issue.</p>
+	<p>Cloudflare provides <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fworkers%2Fwriting-workers%2Fdebugging-tips%2F&amp;sa=D&amp;ust=1547151883991000" target="_blank">Debugging Tips</a>. I followed the section “Make subrequests to your debug server” and decided to incorporate <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.loggly.com%2F&amp;sa=D&amp;ust=1547151883991000" target="_blank">Loggly</a>. I could now catch the exceptions and send it to Loggly by running a POST using <code>fetch</code> to the URL provided by Loggly. With this I quickly determined what the problem was and corrected the issue.</p>
 	<p>Another problem that came up was a plethora of 403s. This was highly visible in the Workers &gt; Status Code graph (the green).</p>
 	<p></p>
 	<p></p>
