@@ -1,20 +1,20 @@
 <div class="post-content lh-copy gray1">
 	<p>Ces derniers jours, nous avons constaté une forte augmentation d'un dangereux vecteur d'attaque par amplification utilisant le <a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt" target="_blank">protocole memcached</a>, provenant du port UDP 11211.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/04/mem1.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0 </a>&nbsp;<a href="https://www.flickr.com/photos/trawin/3829936641/" target="_blank">&nbsp;image </a>&nbsp;de David Trawin</figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0 </a>&nbsp;<a href="https://www.flickr.com/photos/trawin/3829936641" target="_blank">&nbsp;image </a>&nbsp;de David Trawin</figcaption>
 	</figure>
 	<p>Nous avons beaucoup parlé par le passé des attaques par amplification sur internet. Voici nos deux derniers articles à ce sujet :</p>
 	<ul>
 		<li><a href="https://blog.cloudflare.com/ssdp-100gbps/">Amplifications SSDP dépassant les 100 Gbits/s</a>. Curieusement, depuis lors, nous étions la cible d’une attaque SSDP à 196 Gbits/s.</li>
 		<li><a href="https://blog.cloudflare.com/reflections-on-reflections/">Statistiques générales concernant les différentes attaques par amplification que nous observons</a>.</li>
 	</ul>
-	<p>L'idée générale derrière toutes les attaques par amplification est la même. <a href="https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing/" target="_blank">Un intrus en mesure d'usurper les adresses IP </a> envoie de fausses requêtes à un serveur UDP vulnérable. Ignorant que la requête est falsifiée, le serveur UDP prépare poliment la réponse. Cela se produit lorsque des milliers de réponses sont envoyées à un hôte cible non averti, ce qui écrase ses ressources, le plus souvent le réseau lui-même.</p>
+	<p>L'idée générale derrière toutes les attaques par amplification est la même. <a href="https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing" target="_blank">Un intrus en mesure d'usurper les adresses IP </a> envoie de fausses requêtes à un serveur UDP vulnérable. Ignorant que la requête est falsifiée, le serveur UDP prépare poliment la réponse. Cela se produit lorsque des milliers de réponses sont envoyées à un hôte cible non averti, ce qui écrase ses ressources, le plus souvent le réseau lui-même.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/spoofing-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Les attaques par amplification sont efficaces, car souvent les paquets de réponse sont beaucoup plus volumineux que les paquets de requêtes. Une technique soigneusement préparée permet à un assaillant ayant une capacité d'usurpation d'adresse IP limitée (par exemple 1 Gbits/s) de lancer des attaques très importantes (atteignant 100 Gbits/s) en « amplifiant » sa bande passante.</p>
 	<h3 id="memcrashed"><strong>Memcrashed</strong></h3>
 	<p>Les attaques par amplification se produisent sans cesse. Il est fréquent de voir des paquets « chargen » ou « call of duty » attaquer nos serveurs.</p>
 	<p>Il est cependant rare que l'on découvre un nouveau vecteur d'amplification permettant une très grande amplification. Ce nouveau DDoS UDP memcached se classe incontestablement dans cette catégorie.</p>
-	<p>Le <a href="https://ddosmon.net/insight/" target="_blank">DDosMon de Qihoo 360</a> surveille les vecteurs d'attaque d'amplification et ce graphique montre les récentes attaques memcached/11211 :</p>
+	<p>Le <a href="https://ddosmon.net/insight" target="_blank">DDosMon de Qihoo 360</a> surveille les vecteurs d'attaque d'amplification et ce graphique montre les récentes attaques memcached/11211 :</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/memcached-ddosmon.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Le nombre d'attaques memcached était relativement stable jusqu'à ce qu'il commence à augmenter il y a seulement quelques jours. Nos graphiques le confirment également, voici les attaques regroupées en paquets par seconde au cours des quatre derniers jours :</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/memcached-pps.png" class="kg-image" alt="" loading="lazy"></figure>
@@ -80,7 +80,7 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>La plupart des serveurs memcached que nous avons vus venaient de AS16276 - OVH, AS14061 - Digital Ocean et AS7684 - Sakura.</p>
-	<p>Au total, nous n'avons vu que 5 729 adresses IP sources uniques sur des serveurs memcached. Nous nous attendons à voir des attaques beaucoup plus importantes à l'avenir, car <a href="https://www.shodan.io/" target="_blank">Shodan</a> fait état de 88 000 serveurs memcached ouverts :</p>
+	<p>Au total, nous n'avons vu que 5 729 adresses IP sources uniques sur des serveurs memcached. Nous nous attendons à voir des attaques beaucoup plus importantes à l'avenir, car <a href="https://www.shodan.io" target="_blank">Shodan</a> fait état de 88 000 serveurs memcached ouverts :</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/memcached-shodan.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="faisons-le-n-cessaire-pour-rem-dier-la-situation"><strong>Faisons le nécessaire pour remédier à la situation</strong></h3>
 	<p>Il est indispensable de remédier à cette situation et d'empêcher de nouvelles attaques. Voici une liste de mesures à prendre.</p>

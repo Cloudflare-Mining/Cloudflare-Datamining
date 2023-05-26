@@ -4,7 +4,7 @@
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><strong>UPDATE 2018/3/13:</strong> <a href="https://blog.cloudflare.com/cloudflare-workers-unleashed/">Cloudflare Workers is now available to everyone.</a></p>
 	<p><strong>TL;DR:</strong> You'll soon be able to deploy JavaScript to Cloudflare's edge, written against an API similar to Service Workers.</p>
-	<p style="text-align: center"><a class="btn btn-warning" href="https://cloudflareworkers.com/" target="_blank">Try writing a Worker in the playground »</a></p>
+	<p style="text-align: center"><a class="btn btn-warning" href="https://cloudflareworkers.com" target="_blank">Try writing a Worker in the playground »</a></p>
 	<h3 id="introduction">Introduction</h3>
 	<p>Every technology, when sufficiently complicated, becomes programmable.</p>
 	<p>You see this everywhere, but as a lifelong gamer, my personal favorite example is probably graphics cards. In the '90s, graphics hardware generally provided a fixed set of functionality. The OpenGL standard specified that the geometry pipeline would project points from 3D space onto your viewport, then the raster pipeline would draw triangles between them, with gradient shading and perhaps a texture applied. You could only use one texture at a time. There was only one lighting algorithm, which more or less made every surface look like plastic. If you wanted to do anything else, you often had to give up the hardware entirely and drop back to software.</p>
@@ -122,8 +122,8 @@ async function fetchAndInclude(request) {
   })
 }</code></pre>
 	<h4 id="playwithityourself">Play with it yourself!</h4>
-	<p>We've created the Cloudflare Workers playground at <a href="https://cloudflareworkers.com/" target="_blank">cloudflareworkers.com</a> where you can try writing your own script and applying it to your site.</p>
-	<p style="text-align: center"><a class="btn btn-warning" href="https://cloudflareworkers.com/" target="_blank">Try it out now »</a></p>
+	<p>We've created the Cloudflare Workers playground at <a href="https://cloudflareworkers.com" target="_blank">cloudflareworkers.com</a> where you can try writing your own script and applying it to your site.</p>
+	<p style="text-align: center"><a class="btn btn-warning" href="https://cloudflareworkers.com" target="_blank">Try it out now »</a></p>
 	<h3 id="questionsandanswers">Questions and Answers</h3>
 	<h4 id="isitcloudflareworkersorcloudflareserviceworkers">Is it "Cloudflare Workers" or "Cloudflare Service Workers"?</h4>
 	<p>A "Cloudflare Worker" is JavaScript you write that runs on Cloudflare's edge. A "Cloudflare Service Worker" is specifically a worker which handles HTTP traffic and is written against the Service Worker API. Currently, this is the only kind of worker we've implemented, but in the future we may introduce other worker types for certain specialized tasks.</p>

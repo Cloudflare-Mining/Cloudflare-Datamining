@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-47.png" class="kg-image" alt="Improving Workers TypeScript support: accuracy, ergonomics and interoperability" loading="lazy"></figure>
-	<p><a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a>は、プログラム実行前に型エラーを検出することで、開発者がクラッシュが起こらないコードを簡単に書けるようにするものです。私たちは開発者にこのツールを活用してもらいたいと考え、1年前に<a href="https://blog.cloudflare.com/automatically-generated-types/"> &nbsp;Cloudflare Workersランタイム用のTypeScript型</a>を自動生成するシステムを構築しました。これにより開発者はWorkers API のコード補完をIDEで確認し、デプロイ前にコードをタイプチェックすることができるようになりました。毎週、 <a href="https://github.com/cloudflare/workers-types/pull/210" target="_blank"> 最新の変更を反映した新しいバージョンの型が公開されます</a> &nbsp;。</p>
+	<p><a href="https://www.typescriptlang.org" target="_blank">TypeScript</a>は、プログラム実行前に型エラーを検出することで、開発者がクラッシュが起こらないコードを簡単に書けるようにするものです。私たちは開発者にこのツールを活用してもらいたいと考え、1年前に<a href="https://blog.cloudflare.com/automatically-generated-types/"> &nbsp;Cloudflare Workersランタイム用のTypeScript型</a>を自動生成するシステムを構築しました。これにより開発者はWorkers API のコード補完をIDEで確認し、デプロイ前にコードをタイプチェックすることができるようになりました。毎週、 <a href="https://github.com/cloudflare/workers-types/pull/210" target="_blank"> 最新の変更を反映した新しいバージョンの型が公開されます</a> &nbsp;。</p>
 	<p>この1年間、お客様や社内のチームから、どのようにすれば型を改善できるかについてさまざまなフィードバックをいただきました。ランタイムのオープンソース化に向けて<a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime/">Bazelビルドシステムに切り替えたことをきっかけに</a>、さらに正確で使いやすく、生成もシンプルな型に作り直すことができたのです。本日、多数の新機能を備えた<code>@cloudflare/workers-types</code>の次のメジャーリリースと、<a href="https://github.com/cloudflare/workerd/tree/main/types" target="_blank">完全リライトの自動生成スクリプト</a>のオープンソースを発表できることを嬉しく思います。</p>
 	<h3 id="worker-typescript-">WorkerでのTypeScriptの使用方法</h3>
-	<p>WorkersでTypeScriptをセットアップするのは簡単です。Workersを使い始めたばかりなら、<a href="https://nodejs.org/" target="_blank">Node.js</a>をインストールし、ターミナルで<code>npx wrangler init</code>を実行して、新しいプロジェクトを生成することができます。既存のWorkersプロジェクトがあり、改良された型付けを利用したい場合は、<code>npm install --save-dev typescript @cloudflare/workers-types@latest</code>で最新バージョンのTypeScriptと<code>@cloudflare/workers-types</code>をインストールし、以下の内容の <code>tsconfig.json</code>ファイルを作成してください。</p><!--kg-card-begin: markdown-->
+	<p>WorkersでTypeScriptをセットアップするのは簡単です。Workersを使い始めたばかりなら、<a href="https://nodejs.org" target="_blank">Node.js</a>をインストールし、ターミナルで<code>npx wrangler init</code>を実行して、新しいプロジェクトを生成することができます。既存のWorkersプロジェクトがあり、改良された型付けを利用したい場合は、<code>npm install --save-dev typescript @cloudflare/workers-types@latest</code>で最新バージョンのTypeScriptと<code>@cloudflare/workers-types</code>をインストールし、以下の内容の <code>tsconfig.json</code>ファイルを作成してください。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "compilerOptions": {
     "target": "esnext",
@@ -19,7 +19,7 @@
 		<figcaption><code>put</code>コマンドの代わりに<code>set</code>コマンドの誤った使用を強調表示し、コード補完を行うエディタ</figcaption>
 	</figure>
 	<h3 id="-">標準型による相互運用性向上</h3>
-	<p>Cloudflare Workersはブラウザと同じランタイムAPIを多く実装しており、当社では<a href="https://blog.cloudflare.com/introducing-the-wintercg/"> WinterCG</a>で標準準拠をさらなる改善を進めています。しかし、ブラウザと Workerでできることの間には、基本的な相違がかならず生じます。例えば、ブラウザはオーディオファイルを再生することができますが、Workersは世界各地に分散しているデータ保存のためにCloudflareのネットワークへ直接アクセスすることができるのです。このミスマッチは、各プラットフォームが提供するランタイム API と型が異なることを意味し、ひいてはCloudflareネットワークとブラウザで同じファイルを実行する<a href="https://remix.run/" target="_blank">Remix</a>のようなフレームワークでWorkersの型を使用することを困難にしているのです。これらのファイルは<a href="https://raw.githubusercontent.com/microsoft/TypeScript/main/lib/lib.dom.d.ts" target="_blank"><code>lib.dom.d.ts</code></a>に対する型チェックが必要であり、当社の型と互換性がありません。</p>
+	<p>Cloudflare Workersはブラウザと同じランタイムAPIを多く実装しており、当社では<a href="https://blog.cloudflare.com/introducing-the-wintercg/"> WinterCG</a>で標準準拠をさらなる改善を進めています。しかし、ブラウザと Workerでできることの間には、基本的な相違がかならず生じます。例えば、ブラウザはオーディオファイルを再生することができますが、Workersは世界各地に分散しているデータ保存のためにCloudflareのネットワークへ直接アクセスすることができるのです。このミスマッチは、各プラットフォームが提供するランタイム API と型が異なることを意味し、ひいてはCloudflareネットワークとブラウザで同じファイルを実行する<a href="https://remix.run" target="_blank">Remix</a>のようなフレームワークでWorkersの型を使用することを困難にしているのです。これらのファイルは<a href="https://raw.githubusercontent.com/microsoft/TypeScript/main/lib/lib.dom.d.ts" target="_blank"><code>lib.dom.d.ts</code></a>に対する型チェックが必要であり、当社の型と互換性がありません。</p>
 	<p>この問題を解決するために、<code>tsconfig.json</code>の<code>types</code>をフィールドに<code>@cloudflare/workers-types</code>を含めなくても、選択的にインポートできる別バージョンのtypesを生成するようになりました。以下がその例です。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ts">import type { KVNamespace } from "@cloudflare/workers-types";
 
@@ -28,7 +28,7 @@ declare const USERS_NAMESPACE: KVNamespace;
 	<!--kg-card-end: markdown-->
 	<p>さらに、TypeScriptの<a href="https://raw.githubusercontent.com/microsoft/TypeScript/main/lib/lib.webworker.d.ts" target="_blank"><code>lib.webworker.d.ts</code></a>に対する型のdiff を自動的に生成しています。今後、これを利用して、仕様準拠をさらに改善できる部分を特定していきます。</p>
 	<h3 id="--1">互換性のある日付での互換性を改善</h3>
-	<p>Cloudflareでは、当社が提供しているすべてのAPIについて、強力な後方互換性のPromiseを維持しています。<a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/" target="_blank"> 互換性フラグと日付</a> を使用し、後方互換性のある方法でいくつかの変更を行います。これらの互換性フラグによって型が変更されることもあります。たとえば、<a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#global-navigator" target="_blank"><code>global_navigator</code></a> フラグは新しい<code>navigator</code> globalを追加し、<a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#new-url-parser-implementation" target="_blank"><code>url_standard</code></a>フラグは <code>URLSearchParams</code>コンストラクタのシグネチャを変更します。</p>
+	<p>Cloudflareでは、当社が提供しているすべてのAPIについて、強力な後方互換性のPromiseを維持しています。<a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank"> 互換性フラグと日付</a> を使用し、後方互換性のある方法でいくつかの変更を行います。これらの互換性フラグによって型が変更されることもあります。たとえば、<a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#global-navigator" target="_blank"><code>global_navigator</code></a> フラグは新しい<code>navigator</code> globalを追加し、<a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#new-url-parser-implementation" target="_blank"><code>url_standard</code></a>フラグは <code>URLSearchParams</code>コンストラクタのシグネチャを変更します。</p>
 	<p>互換性のある日付に合わせた型のバージョンを選択できるようになったので、実行時にサポートされない機能を使用していないことが確認できます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ts">{
   "compilerOptions": {
@@ -57,7 +57,7 @@ declare module "*.txt" {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="--2">統合されたドキュメントと変更履歴の改善</h3>
-	<p>コード補完により、Workersプラットフォームを初めて使う開発者はAPIサーフェスを便利に知ることができるようになりました。現在、当社はTypeScriptの公式型から、標準APIのドキュメントを型に含めるようにしました。 <a href="https://developers.cloudflare.com/workers/runtime-apis/" target="_blank"> &nbsp;Cloudflare固有のAPI</a>のドキュメントを型に含める作業も始めています。</p>
+	<p>コード補完により、Workersプラットフォームを初めて使う開発者はAPIサーフェスを便利に知ることができるようになりました。現在、当社はTypeScriptの公式型から、標準APIのドキュメントを型に含めるようにしました。 <a href="https://developers.cloudflare.com/workers/runtime-apis" target="_blank"> &nbsp;Cloudflare固有のAPI</a>のドキュメントを型に含める作業も始めています。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-27.png" class="kg-image" alt="docs in types shown with code completions" loading="lazy"></figure>
 	<p>すでにWorkersプラットフォームを使用している開発者にとっては、 <code>@cloudflare/workers-types</code>の各リリースで型がどのように変化しているかを確認するのが難しいと感じることもあるでしょう。型エラーを回避し、新機能を強調するために、各リリースで<a href="https://github.com/cloudflare/workers-types/pull/291#issuecomment-1274541965" target="_blank">新規、変更、削除された定義を分割した詳細な変更履歴を生成するようになりました</a>。</p>
 	<h3 id="--3">型生成の仕組みについて</h3>

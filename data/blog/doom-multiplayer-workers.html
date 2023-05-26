@@ -114,7 +114,7 @@ emscripten_websocket_set_onmessage_callback(websocket, (void *)45, WebSocketMess
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Finally we use <a href="https://github.com/cloudflare/doom-wasm/blob/main/src/net_websockets.c#L200" target="_blank">NET_Websockets_SendPacket()</a> and <a href="http://emscripten_websocket_send_binary/" target="_blank">emscripten_websocket_send_binary</a>() to send the traffic out. The messages are sent through the WebSocket using a simple envelope that contains the “From” and the “To” fake IPs, 4 bytes each (UInt32 little-endian), and the original packet from the Doom protocol.</p><!--kg-card-begin: markdown-->
+	<p>Finally we use <a href="https://github.com/cloudflare/doom-wasm/blob/main/src/net_websockets.c#L200" target="_blank">NET_Websockets_SendPacket()</a> and <a href="http://emscripten_websocket_send_binary" target="_blank">emscripten_websocket_send_binary</a>() to send the traffic out. The messages are sent through the WebSocket using a simple envelope that contains the “From” and the “To” fake IPs, 4 bytes each (UInt32 little-endian), and the original packet from the Doom protocol.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">NET_Websockets_SendPacket(net_addr_t *addr, net_packet_t *packet)
 {
     char *wspacket = malloc(packet-&gt;len + 8);
@@ -243,10 +243,10 @@ doom: 3, we're out of client addresses
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h2 id="game-setup">Game setup</h2>
-	<p>The game setup is as easy as it can be. You go to <a href="https://silentspacemarine.com/" target="_blank">silentspacemarine.com</a>, start a multiplayer game, get a unique game permalink, share it with your friends online, wait for them to join, and start playing. The person who starts the game becomes "the server" in the network, but we handle that for you; there's no need to worry about technical details.</p>
+	<p>The game setup is as easy as it can be. You go to <a href="https://silentspacemarine.com" target="_blank">silentspacemarine.com</a>, start a multiplayer game, get a unique game permalink, share it with your friends online, wait for them to join, and start playing. The person who starts the game becomes "the server" in the network, but we handle that for you; there's no need to worry about technical details.</p>
 	<p>If you receive one of these permalink invites, all you need to do is click on it, choose your name, wait for your host to start the game, and that's it.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image6.gif" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The source and Worker Pages wrangler configuration for the <a href="https://silentspacemarine.com/" target="_blank">silentspacemarine.com</a> website can be found in this <a href="https://github.com/cloudflare/doom-workers" target="_blank">repo</a>.</p>
+	<p>The source and Worker Pages wrangler configuration for the <a href="https://silentspacemarine.com" target="_blank">silentspacemarine.com</a> website can be found in this <a href="https://github.com/cloudflare/doom-workers" target="_blank">repo</a>.</p>
 	<h2 id="conclusion">Conclusion</h2>
 	<p>You can play our demo at <a href="https://silentspacemarine.com/" target="_blank">https://silentspacemarine.com/</a>.</p>
 	<p>Our Wasm Doom with WebSockets implementation runs in the browser, supports mouse, sound and fullscreen (press F during the game), works on the desktop and mobile phones (using virtual gamepads) and supports real-time networked multiplayer (up to four players) on top of the Cloudflare edge.</p>

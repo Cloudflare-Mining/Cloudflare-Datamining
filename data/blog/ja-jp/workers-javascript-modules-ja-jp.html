@@ -23,7 +23,7 @@ import { getDate } from "./util.js"
 console.log("Today’s date:", getDate());
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>以上は基本ですが、モジュールでできることは他にもたくさんあります。これにより、格調高い方法でコードの整理、保守、再利用を、簡単に行うことができます。ここでは、モジュールの<em>すべて</em> の側面について説明することはできませんが、詳細については、モジュールに関する <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank">MDNガイド</a> またはLin Clarkによる<a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/" target="_blank">技術的な詳細</a>をご覧になることをお勧めします。</p>
+	<p>以上は基本ですが、モジュールでできることは他にもたくさんあります。これにより、格調高い方法でコードの整理、保守、再利用を、簡単に行うことができます。ここでは、モジュールの<em>すべて</em> の側面について説明することはできませんが、詳細については、モジュールに関する <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank">MDNガイド</a> またはLin Clarkによる<a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive" target="_blank">技術的な詳細</a>をご覧になることをお勧めします。</p>
 	<h3 id="workers-"><strong>Workersでモジュールを使用するにはどうすればよいですか？</strong></h3>
 	<p>Workerを表すデフォルトのモジュールをエクスポートできます。「addEventListener」を使用する代わりに、各イベントハンドラーはそのモジュールの関数として定義されます。現在、cronトリガーでは、HTTPおよびWebSocketリクエストの「<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank">fetch</a>」と、「<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker" target="_blank">scheduled</a>」をサポートしています。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export default {
@@ -140,7 +140,7 @@ export default {
 	<!--kg-card-end: markdown-->
 	<h3 id="-"><strong>開始方法</strong></h3>
 	<p>モジュールを使い始めるには多くの方法があります。</p>
-	<p>まず、 <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev" target="_blank">プレイグラウンド</a> （アカウントは不要）またはダッシュボードの <a href="https://workers.new/" target="_blank">クイックエディタ</a>を使用して、ブラウザでモジュールを試すことができます。ブラウザは、モジュールを使用していることを自動的に検出しサービスWorker APIからシームレスに切り替えることができます。現在のところ、ブラウザで作成できるJavaScriptモジュールは1つだけですが、間もなく複数のモジュールの作成が可能になる予定です。</p>
+	<p>まず、 <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev" target="_blank">プレイグラウンド</a> （アカウントは不要）またはダッシュボードの <a href="https://workers.new" target="_blank">クイックエディタ</a>を使用して、ブラウザでモジュールを試すことができます。ブラウザは、モジュールを使用していることを自動的に検出しサービスWorker APIからシームレスに切り替えることができます。現在のところ、ブラウザで作成できるJavaScriptモジュールは1つだけですが、間もなく複数のモジュールの作成が可能になる予定です。</p>
 	<p>冒険心があり、モジュールを使用して<em>新しい</em> プロジェクトを始めてみたい方は、Workers向けの次世代コマンドラインインターフェイス（CLI）である<a href="https://blog.cloudflare.com/ja-jp/wrangler-v2-beta-ja-jp/">wrangler 2.0</a>のベータリリースをお試しいただけます。</p>
 	<p>既存のプロジェクトでは、<a href="https://github.com/cloudflare/wrangler" target="_blank">wrangler 1.0</a> （リリース1.17以降）を使用することをお勧めします。モジュールを有効にするには、「<a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules" target="_blank">wrangler.toml</a>」構成を次の例に合わせます：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-toml">name = "my-worker"
@@ -161,7 +161,7 @@ globs = ["**/*.js"]
 # command = "npm run build"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank">モジュール</a>の詳細を説明するために<a href="https://developers.cloudflare.com/workers/" target="_blank">ドキュメント</a>を更新しました。ただし、両方の形式を紹介するように移行するため、一部では引き続きサービスWorker APIを使用します。（おまけとしてTypeScriptもあります！）</p>
+	<p><a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank">モジュール</a>の詳細を説明するために<a href="https://developers.cloudflare.com/workers" target="_blank">ドキュメント</a>を更新しました。ただし、両方の形式を紹介するように移行するため、一部では引き続きサービスWorker APIを使用します。（おまけとしてTypeScriptもあります！）</p>
 	<p>モジュールで何か問題が発生したり、お気づきの点がある場合は、私たちにお知らせください。確認させていただきます。コーディングをお楽しみいただき、あなたがモジュールを使用して作成されるものを楽しみにしています！</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-11.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->

@@ -94,7 +94,7 @@ function g() {
 	<p>Another part is what produces that initial AST - the parser. Interestingly, unlike the encoder, it's implemented in JavaScript.</p>
 	<p>Unfortunately, there is currently no battle-tested native JavaScript parser with an open API, let alone implemented in Rust. There have been a few attempts, but, given the complexity of JavaScript grammar, it’s better to wait a bit and make sure they’re well-tested before incorporating it into the production encoder.</p>
 	<p>On the other hand, over the last few years the JavaScript ecosystem grew to extensively rely on developer tools implemented in JavaScript itself. In particular, this gave a push to rigorous parser development and testing. There are several JavaScript parser implementations that have been proven to work on thousands of real-world projects.</p>
-	<p>With that in mind, it makes sense that the BinaryAST implementation chose to use one of them - in particular, <a href="https://shift-ast.org/" target="_blank">Shift</a> - and integrated it with the Rust encoder, instead of attempting to use a native parser.</p>
+	<p>With that in mind, it makes sense that the BinaryAST implementation chose to use one of them - in particular, <a href="https://shift-ast.org" target="_blank">Shift</a> - and integrated it with the Rust encoder, instead of attempting to use a native parser.</p>
 	<h3 id="connecting-rust-and-javascript">Connecting Rust and JavaScript</h3>
 	<p>Integration is where things get interesting.</p>
 	<p>Rust is a native language that can compile to an executable binary, but JavaScript requires a separate engine to be executed. To connect them, we need some way to transfer data between the two without sharing the memory.</p>

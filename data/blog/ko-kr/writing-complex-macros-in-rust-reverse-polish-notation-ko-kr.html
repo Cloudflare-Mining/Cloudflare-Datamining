@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<hr>
-	<p>(이 글은 제 <a href="https://rreverser.com/writing-complex-macros-in-rust/" target="_blank">개인 블로그에 게시된 튜토리얼</a>을 다시 올린 것입니다)</p>
+	<p>(이 글은 제 <a href="https://rreverser.com/writing-complex-macros-in-rust" target="_blank">개인 블로그에 게시된 튜토리얼</a>을 다시 올린 것입니다)</p>
 	<p>Rust에는 흥미로운 기능이 많지만 그중에도 강력한 매크로 시스템이 있습니다. 불행히도 The Book<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>과 여러가지 튜토리얼을 읽고 나서도 서로 다른 요소의 복잡한 리스트를 처리하는 매크로를 구현하려고 하면 저는 여전히 어떻게 만들어야 하는지를 이해하는데 힘들어 하며, 좀 시간이 지나서 머리속에 불이 켜지는 듯한 느낌이 들면 그제서야 이것저것 매크로를 마구 사용하기 시작 합니다. :) <em>(맞아요, 난-매크로를-써요-왜냐하면-함수나-타입-지정이나-생명주기를-쓰고-싶어하지-않아서 처럼과 같은 이유는 아니지만 다른 사람들이 쓰는걸 봤었고 실제로 유용한 곳이라면 말이죠)</em></p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/01/25057125240_939a41249f_z.jpg" alt="Rust with a macro lens" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/conchur/25057125240/in/photolist-EbdjmG-8NSN1q-qXhueG-YTYnm3-odaneQ-DxCKQA-228jg4t-DU8Axz-XTQfdD-4p6nJk-UKVzbn-YFeKcW-osZ2XM-e6qefx-Tb3a6Q-dCw1zk-Et3kKh-dbAR9x-zHP8TR-a9cqw4-9JQHRy-Et1Ag5-PqFtx1-7x3Ukq-67VJc6-cvoKSo-qH2S9L-zHJAr9-XmCLsL-8AMWXX-ZV2hHh-XGPiHq-ZKpFSB-yqd2P1-23hMiaC-zETYYa-Wj7BVi-PNP4YA-LCNm6c-8AnkrZ-KA7qmt-KjYPxC-SzQsZD-Cxwvqg-GuZ3nn-J4jBaA-TzyjpB-DcYJA1-YQYNA3-My1uu8" target="_blank">image</a> by <a href="https://www.flickr.com/photos/conchur/" target="_blank">Conor Lawless</a></small>
+		<small><a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/conchur/25057125240/in/photolist-EbdjmG-8NSN1q-qXhueG-YTYnm3-odaneQ-DxCKQA-228jg4t-DU8Axz-XTQfdD-4p6nJk-UKVzbn-YFeKcW-osZ2XM-e6qefx-Tb3a6Q-dCw1zk-Et3kKh-dbAR9x-zHP8TR-a9cqw4-9JQHRy-Et1Ag5-PqFtx1-7x3Ukq-67VJc6-cvoKSo-qH2S9L-zHJAr9-XmCLsL-8AMWXX-ZV2hHh-XGPiHq-ZKpFSB-yqd2P1-23hMiaC-zETYYa-Wj7BVi-PNP4YA-LCNm6c-8AnkrZ-KA7qmt-KjYPxC-SzQsZD-Cxwvqg-GuZ3nn-J4jBaA-TzyjpB-DcYJA1-YQYNA3-My1uu8" target="_blank">image</a> by <a href="https://www.flickr.com/photos/conchur" target="_blank">Conor Lawless</a></small>
 	</p>
 	<p>그래서 이 글에서는 제가 생각하는 그런 매크로를 쓰는 데 필요한 원칙을 설명하고자 합니다. 이 글에서는 The Book의 <a href="https://doc.rust-lang.org/book/first-edition/macros.html" target="_blank">매크로</a> 섹션을 읽어 보았고 기본적인 매크로 정의와 토큰 타입에 대해 익숙하다고 가정하겠습니다.</p>
 	<p>이 튜토리얼에서는 <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank">역폴란드 표기법 (Reverse Polish Notation, RPN)</a>을 예제로 사용합니다. 충분히 간단하기 때문에 흥미롭기도 하고, 학교에서 이미 배워서 익숙할 지도 모르고요. 하지만 컴파일 시간에 정적으로 구현하기 위해서는 재귀적인 매크로를 사용해야 할 것입니다.</p>
@@ -318,7 +318,7 @@ fn main() {
 	<section class="footnotes">
 		<ol class="footnotes-list">
 			<li id="fn1" class="footnote-item">
-				<p>(역주) <a href="https://doc.rust-lang.org/book/" target="_blank">The Rust Programming Language</a>를 가리키는 말입니다 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+				<p>(역주) <a href="https://doc.rust-lang.org/book" target="_blank">The Rust Programming Language</a>를 가리키는 말입니다 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 			</li>
 		</ol>
 	</section>

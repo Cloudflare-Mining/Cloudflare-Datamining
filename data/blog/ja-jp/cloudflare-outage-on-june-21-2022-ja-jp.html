@@ -10,7 +10,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-27.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>この新しいアーキテクチャは、信頼性を大幅に向上させ、お客様のトラフィックを妨げることなく、これらの拠点でメンテナンスを実行することができるようにするものです。これらの拠点はCloudflareのトラフィックの大半を占めているため、ここで問題が発生すると非常に広範囲に影響を及ぼす可能性があり、残念ながら本日そのような事態が発生してしまいました。</p>
 	<h3 id="-utc-">インシデントのタイムライン（UTC）と影響について</h3>
-	<p>Cloudflareのようなネットワークでは、インターネット上で到達可能であるために<a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a>と呼ばれるプロトコルを使用しています。このプロトコルの一部として、オペレータは、どのプレフィックス（隣接するIPアドレスの集合）をピア（接続する他のネットワーク）にアドバタイズするか、またはピアから受け入れるかを決定するポリシーを定義します。</p>
+	<p>Cloudflareのようなネットワークでは、インターネット上で到達可能であるために<a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp" target="_blank">BGP</a>と呼ばれるプロトコルを使用しています。このプロトコルの一部として、オペレータは、どのプレフィックス（隣接するIPアドレスの集合）をピア（接続する他のネットワーク）にアドバタイズするか、またはピアから受け入れるかを決定するポリシーを定義します。</p>
 	<p>これらのポリシーには個々のコンポーネントがあり、順次評価されます。最終結果として、与えられたプレフィックスがアドバタイズされる、またはアドバタイズされないということになります。ポリシーを変更することで、以前アドバタイズされたプレフィックスがアドバタイズされなくなる場合があります。その場合そのプレフィックスが失われ、それらのIPアドレスがインターネット上に到達できなくなります。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-27.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>プレフィックスについてアドバタイズポリシーの変更をデプロイした際、条件の並べ替えにより、重要なプレフィックスのサブセットが削除されてしまいました。</p>

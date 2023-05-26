@@ -2,7 +2,7 @@
 	<!--kg-card-begin: markdown-->
 	<p>Today we are <a href="https://blog.cloudflare.com/spectrum/">introducing Spectrum</a>: a new Cloudflare feature that brings DDoS protection, load balancing, and content acceleration to any TCP-based protocol.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/04/13334109713_0b32435032_z.jpg" alt="13334109713_0b32435032_z" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank">image</a> by <a href="https://www.flickr.com/photos/liftarn" target="_blank">Staffan Vilcans</a></small>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank">image</a> by <a href="https://www.flickr.com/photos/liftarn" target="_blank">Staffan Vilcans</a></small>
 	</p>
 	<p>Soon after we started building Spectrum, we hit a major technical obstacle: Spectrum requires us to accept connections on any valid TCP port, from 1 to 65535. On our Linux edge servers it's impossible to "accept inbound connections on <em>any</em> port number". This is not a Linux-specific limitation: it's a characteristic of the BSD sockets API, the basis for network applications on most operating systems. Under the hood there are two overlapping problems that we needed to solve in order to deliver Spectrum:</p>
 	<ul>
@@ -11,7 +11,7 @@
 	</ul>
 	<h3 id="assigningmillionsofipstoaserver">Assigning millions of IPs to a server</h3>
 	<p>Cloudflare’s edge servers have an almost identical configuration. In our early days, we used to assign specific /32 (and /128) IP addresses to the loopback network interface<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. This worked well when we had dozens of IP addresses, but failed to scale as we grew.</p>
-	<p>Along came the <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine/" target="_blank">"AnyIP" trick</a>. AnyIP allows us to assign whole IP prefixes (subnets) to the loopback interface, expanding from specific IP addresses. There is already common use of AnyIP: your computer has 127.0.0.0/8 assigned to the loopback interface. From the point of view of your computer, all IP addresses from 127.0.0.1 to 127.255.255.254 belong to the local machine.</p>
+	<p>Along came the <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine" target="_blank">"AnyIP" trick</a>. AnyIP allows us to assign whole IP prefixes (subnets) to the loopback interface, expanding from specific IP addresses. There is already common use of AnyIP: your computer has 127.0.0.0/8 assigned to the loopback interface. From the point of view of your computer, all IP addresses from 127.0.0.1 to 127.255.255.254 belong to the local machine.</p>
 	<p>This trick is applicable to more than the 127.0.0.1/8 block. To treat the whole range of 192.0.2.0/24 as assigned locally, run:</p>
 	<pre><code>ip route add local 192.0.2.0/24 dev lo
 </code></pre>
@@ -43,7 +43,7 @@
 </code></pre>
 	<p>Had we opened 65k ports, lookups to this table would slow drastically: each hash table bucket would contain two thousand items.</p>
 	<p>Another way to solve our problem would be to use iptables’ rich NAT features: we could rewrite the destination of inbound packets to some specific address/port, and our application would bind to that.</p>
-	<p>We didn't want to do this though, since it requires enabling the iptables <code>conntrack</code> module. Historically we found some <a href="http://patchwork.ozlabs.org/cover/810566/" target="_blank">performance edge cases</a>, and conntrack cannot cope with some of the large DDoS attacks that we encounter.</p>
+	<p>We didn't want to do this though, since it requires enabling the iptables <code>conntrack</code> module. Historically we found some <a href="http://patchwork.ozlabs.org/cover/810566" target="_blank">performance edge cases</a>, and conntrack cannot cope with some of the large DDoS attacks that we encounter.</p>
 	<p>Additionally, with the NAT approach we would lose destination IP address information. To remediate this, there exists a poorly known <code>SO_ORIGINAL_DST</code> socket option, but <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank">the code doesn't look encouraging</a>.</p>
 	<p>Fortunately, there is a way to achieve our goals that does not involve binding to all 65k ports, or use <code>conntrack</code>.</p>
 	<h3 id="firewalltotherescue">Firewall to the rescue</h3>
@@ -92,7 +92,7 @@ advanced routing rules.
 	<p>This line assigns a socket <code>struct sock</code> to an inbound packet - completing the dispatch.</p>
 	<h3 id="pullingtherabbitfromthehat">Pulling the rabbit from the hat</h3>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/04/3649474619_3b800400e9_z-1.jpg" alt="3649474619_3b800400e9_z-1" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank">image</a> by <a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank">Angela Boothroyd</a></small>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank">image</a> by <a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank">Angela Boothroyd</a></small>
 	</p>
 	<p>Armed with <code>TPROXY</code>, we can perform the bind-to-all-ports trick very easily. Here's the configuration:</p>
 	<pre><code># Set 192.0.2.0/24 to be routed locally with AnyIP.

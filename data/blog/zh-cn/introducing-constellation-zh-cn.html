@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image4-6.png" class="kg-image" alt="Introducing Constellation, bringing AI to the Cloudflare stack" loading="lazy" width="1200" height="675"></figure>
-	<p>Cloudflare Workers 生态系统现已提供广泛的产品和功能，涵盖计算、托管、存储、数据库、流式传输、联网、安全<a href="https://developers.cloudflare.com/" target="_blank">等等</a>。一直以来，我们不断尝试鼓励其他人从传统软件架构转移出来，并<a href="https://blog.cloudflare.com/zh-cn/welcome-to-wildebeest-the-fediverse-on-cloudflare-zh-cn/">证明</a>和<a href="https://blog.cloudflare.com/zh-cn/technology-behind-radar2-zh-cn/">记录</a>在我们的技术栈上构建可全球扩展的复杂应用程序是可行的。</p>
+	<p>Cloudflare Workers 生态系统现已提供广泛的产品和功能，涵盖计算、托管、存储、数据库、流式传输、联网、安全<a href="https://developers.cloudflare.com" target="_blank">等等</a>。一直以来，我们不断尝试鼓励其他人从传统软件架构转移出来，并<a href="https://blog.cloudflare.com/zh-cn/welcome-to-wildebeest-the-fediverse-on-cloudflare-zh-cn/">证明</a>和<a href="https://blog.cloudflare.com/zh-cn/technology-behind-radar2-zh-cn/">记录</a>在我们的技术栈上构建可全球扩展的复杂应用程序是可行的。</p>
 	<p>今天，我们高兴地欢迎 Constellation 加入到 Cloudflare 技术栈中，使开发人员能够在 Cloudflare 网络上运行预先训练好的机器学习模型和推理任务。</p>
 	<h2 id="%E6%88%91%E4%BB%AC%E7%9A%84-supercloud-%E5%86%8D%E6%B7%BB%E7%A0%96%E7%93%A6">我们的 Supercloud 再添砖瓦</h2>
 	<p><a href="https://en.wikipedia.org/wiki/Machine_learning" target="_blank">机器学习</a>和人工智能最近成为了热门话题，但事实上，我们多年来一直在日常生活中使用这些技术，即使我们没有意识到。例如，我们的手机、电脑、汽车和家庭助手等都拥有人工智能。它已经无处不在。</p>
@@ -23,7 +23,7 @@
 	<p>然而，并不是每个人都想训练模型或浏览互联网以获取他们尚未测试过的模型。因此，Cloudflare 也将维护一个经过验证和可供使用的模型目录。</p>
 	<p>我们打造的 Constellation 提供卓越的开发人员体验和易于使用的 API。以下是一个示例，可帮助您开始使用。</p>
 	<h2 id="%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F">图像分类应用程序</h2>
-	<p>在这个例子中，我们将构建一个由 Constellation 推理 API 和 <a href="https://github.com/onnx/models/blob/main/vision/classification/squeezenet/README.md" target="_blank">SqueezeNet</a> 模型驱动的图像分类应用程序。SqueezeNet 是一个卷积神经网络(CNN)，在开源的 <a href="https://www.image-net.org/" target="_blank">ImageNet</a> 数据库上使用超过 100 万张图像进行预先训练，可将图像分类到不超过 1000 个类别中。</p>
+	<p>在这个例子中，我们将构建一个由 Constellation 推理 API 和 <a href="https://github.com/onnx/models/blob/main/vision/classification/squeezenet/README.md" target="_blank">SqueezeNet</a> 模型驱动的图像分类应用程序。SqueezeNet 是一个卷积神经网络(CNN)，在开源的 <a href="https://www.image-net.org" target="_blank">ImageNet</a> 数据库上使用超过 100 万张图像进行预先训练，可将图像分类到不超过 1000 个类别中。</p>
 	<p>与最早的图像分类 CNN 和基准之一 <a href="https://en.wikipedia.org/wiki/AlexNet" target="_blank">AlexNet</a> 相比，Constellation 速度要快得多（约 3 倍），体积小得多（约 1/500 ），同时依然达到类似的准确性水平。其小尺寸尤其适合在资源有限的便携式设备或自定义硬件上运行。</p>
 	<p>首先，让我们使用 ONNX 运行时创建一个新的 Constellation 项目。现在，Wrangler 已经内置 Constellation 相关功能，可以使用 `constellation` 关键字调用。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ npx wrangler constellation project create "image-classifier" ONNX
@@ -52,7 +52,7 @@ constellation = [
 $ npx wrangler constellation model upload "image-classifier" "squeezenet11" squeezenet1_1.onnx
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>如前所述，SqueezeNet 将图像分类到不超过 1000 个对象类别中。这些类别实际上是一组同义词集即 synset 的形式。每个 <a href="http://wordnet-rdf.princeton.edu/pwn30/01440764-n" target="_blank">synset</a> 具有一个 id 和一个标签；它源于普林斯顿大学的 <a href="https://wordnet.princeton.edu/" target="_blank">WordNet</a> 数据库<a href="https://wordnet.princeton.edu/documentation/" target="_blank">术语</a>，也用于标记 <a href="https://www.image-net.org/about.php" target="_blank">ImageNet</a> 图像数据库。</p>
+	<p>如前所述，SqueezeNet 将图像分类到不超过 1000 个对象类别中。这些类别实际上是一组同义词集即 synset 的形式。每个 <a href="http://wordnet-rdf.princeton.edu/pwn30/01440764-n" target="_blank">synset</a> 具有一个 id 和一个标签；它源于普林斯顿大学的 <a href="https://wordnet.princeton.edu" target="_blank">WordNet</a> 数据库<a href="https://wordnet.princeton.edu/documentation" target="_blank">术语</a>，也用于标记 <a href="https://www.image-net.org/about.php" target="_blank">ImageNet</a> 图像数据库。</p>
 	<p>为了将 SqueezeNet 的结果转换为人类可读的图像类别，我们需要一个将 synset ID(从模型获得)映射到对应标签的文件。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ mkdir src; cd src
 $ wget https://raw.githubusercontent.com/microsoft/onnxjs-demo/master/src/data/imagenet.ts
@@ -108,15 +108,15 @@ Ibizan hound
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/Screenshot-2023-05-15-at-12.55.21.png" class="kg-image" alt="" loading="lazy" width="1888" height="682"></figure>
 	<p>可在此看到概率的不同水平。模型对阿尔卑斯山和敞篷车的分类非常确定，但伊比赞猎犬的概率较低。照片中的狗确实是另一个品种。</p>
-	<p>这个小应用程序演示了，使用机器学习模型和 Constellation 在 Workers 上构建应用程序时是多么容易和快捷。您可以在<a href="https://developers.cloudflare.com/constellation/get-started/first-constellation-worker/" target="_blank">这里</a>在此处查看完整的源代码并自行部署该应用程序。</p>
+	<p>这个小应用程序演示了，使用机器学习模型和 Constellation 在 Workers 上构建应用程序时是多么容易和快捷。您可以在<a href="https://developers.cloudflare.com/constellation/get-started/first-constellation-worker" target="_blank">这里</a>在此处查看完整的源代码并自行部署该应用程序。</p>
 	<h2 id="%E5%8F%98%E6%8D%A2%E5%99%A8">变换器</h2>
 	<p><a href="https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)" target="_blank">变换器(Transformer)</a> 是由 Google 推出的深度学习模型，旨在处理序列输入数据，常用于自然语言处理(NLP)任务，例如翻译、摘要或情感分析，以及计算机视觉(CV)任务，例如图像分类。</p>
-	<p><a href="https://github.com/xenova/transformers.js" target="_blank">Transformers.js</a> 是一个流行的演示，它从 HuggingFace 加载变换器模型，并在您的浏览器内使用编译为 <a href="https://developers.cloudflare.com/workers/platform/web-assembly/" target="_blank">WebAssembly</a> ONNX Runtime 来运行它们。我们将这个演示移植到使用 Constellation API 来运行。</p>
-	<p>如下链接打开我们的版本：<a href="https://transformers-js.pages.dev/" target="_blank">https://transformers-js.pages.dev/</a></p>
+	<p><a href="https://github.com/xenova/transformers.js" target="_blank">Transformers.js</a> 是一个流行的演示，它从 HuggingFace 加载变换器模型，并在您的浏览器内使用编译为 <a href="https://developers.cloudflare.com/workers/platform/web-assembly" target="_blank">WebAssembly</a> ONNX Runtime 来运行它们。我们将这个演示移植到使用 Constellation API 来运行。</p>
+	<p>如下链接打开我们的版本：<a href="https://transformers-js.pages.dev" target="_blank">https://transformers-js.pages.dev/</a></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image3-5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1195"></figure>
 	<h2 id="%E4%B8%8E-workers-%E7%9A%84%E4%BA%92%E6%93%8D%E4%BD%9C%E6%80%A7">与 Workers 的互操作性</h2>
 	<p>Constellation 另一个有趣的元素是，由于它原生运行在 Workers 中，您可以将其与我们堆栈中的其他产品和 API 进行编排。您可以使用 KV、R2、D1、Queues 等任何产品，甚至电子邮件。</p>
-	<p>以下 Worker 示例通过<a href="https://developers.cloudflare.com/email-routing/" target="_blank">电子邮件路由</a>从您在 Cloudflare 上的域<a href="https://developers.cloudflare.com/email-routing/email-workers/" target="_blank">接收</a>电子邮件， 使用 <a href="https://huggingface.co/Xenova/t5-small/tree/main/onnx" target="_blank">t5-small</a> 情感分析模型运行 Constellation，添加一个带有结果得分的标题，并将其转发到目标地址。</p><!--kg-card-begin: markdown-->
+	<p>以下 Worker 示例通过<a href="https://developers.cloudflare.com/email-routing" target="_blank">电子邮件路由</a>从您在 Cloudflare 上的域<a href="https://developers.cloudflare.com/email-routing/email-workers" target="_blank">接收</a>电子邮件， 使用 <a href="https://huggingface.co/Xenova/t5-small/tree/main/onnx" target="_blank">t5-small</a> 情感分析模型运行 Constellation，添加一个带有结果得分的标题，并将其转发到目标地址。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import { Tensor, run } from '@cloudflare/constellation';
 import * as PostalMime from 'postal-mime';
 
@@ -145,7 +145,7 @@ export default {
 	<h2 id="%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8-constellation">开始使用 Constellation</h2>
 	<p>Constellation 今天启动内测。如果想加入 Constellation 的等待列表，请前往仪表板，点击账户下的 “Workers” 选项卡，然后点击“请求访问”按钮。我们的团队将分批开通权限，您的帐户获得使用权限后将收到电子邮件通知。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image1-25.png" class="kg-image" alt="" loading="lazy" width="1999" height="1426"></figure>
-	<p>与此同时，您可以阅读我们的 <a href="https://developers.cloudflare.com/constellation/" target="_blank">Constellation 开发人员文档</a> 进一步了解其工作原理和 API。Constellation 可以通过 Wrangler 使用，也可以直接在仪表板 UI 中进行管理。Wrangler 是我们的命令行工具，用于配置、构建和部署使用 Cloudflare 开发人员产品的应用程序。</p>
+	<p>与此同时，您可以阅读我们的 <a href="https://developers.cloudflare.com/constellation" target="_blank">Constellation 开发人员文档</a> 进一步了解其工作原理和 API。Constellation 可以通过 Wrangler 使用，也可以直接在仪表板 UI 中进行管理。Wrangler 是我们的命令行工具，用于配置、构建和部署使用 Cloudflare 开发人员产品的应用程序。</p>
 	<p>我们非常期待了解您如何在应用程序中使用机器学习/人工智能。Constellation 将不断改进，提供更高的限制、支持更多运行时和更大的模型，但我们希望听取您的意见。您的反馈将对我们的路线图决策产生重要影响。</p>
-	<p>最后要说的是：今天，我们一直在讨论如何编写使用 Constellation 的 Workers 脚本，但这里有一个关于 Constellation 本身的事实：Constellation 本身就是通过WebAssembly、Workers、R2 和我们的 API 构建的。Workers我们将很快发布一篇后续博客文章，介绍我们是如何构建 Constellation。欢迎继续关注。<br><br>一如既往，您可以通过<a href="https://discord.cloudflare.com/" target="_blank">开发人员 Discord</a> (加入 #constellation 频道) 或<a href="https://community.cloudflare.com/c/developers/constellation/97" target="_blank">社区论坛</a>与我们交流；我们的团队将倾听您的声音。</p>
+	<p>最后要说的是：今天，我们一直在讨论如何编写使用 Constellation 的 Workers 脚本，但这里有一个关于 Constellation 本身的事实：Constellation 本身就是通过WebAssembly、Workers、R2 和我们的 API 构建的。Workers我们将很快发布一篇后续博客文章，介绍我们是如何构建 Constellation。欢迎继续关注。<br><br>一如既往，您可以通过<a href="https://discord.cloudflare.com" target="_blank">开发人员 Discord</a> (加入 #constellation 频道) 或<a href="https://community.cloudflare.com/c/developers/constellation/97" target="_blank">社区论坛</a>与我们交流；我们的团队将倾听您的声音。</p>
 </div>

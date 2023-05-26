@@ -9,7 +9,7 @@
 	<p>位置感知 DDoS 防护还利用 Cloudflare 的<a href="https://developers.cloudflare.com/bots/concepts/bot-score/#machine-learning" target="_blank">机器学习模型</a>来识别很可能是自动化的流量。这用作额外的信号来提供更准确的保护。</p>
 	<h3 id="-ddos-">启用位置感知 DDoS 防护</h3>
 	<p>订阅高级 DDoS 服务的 Enterprise 客户可以自定义并启用位置感知 DDoS 防护系统。默认情况下，系统仅显示根据最近 7 天 P95 比率判断为可疑的流量，并按客户端国家和地区分类（每 24 小时重新计算一次）。</p>
-	<p>客户可以在 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity" target="_blank">“<strong>安全性概述</strong>” 仪表板</a>中查看系统标记的内容。</p>
+	<p>客户可以在 <a href="https://dash.cloudflare.com/?to=/:account/:zone/security" target="_blank">“<strong>安全性概述</strong>” 仪表板</a>中查看系统标记的内容。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-4.png" class="kg-image" alt="Screenshot of Cloudflare’s Security Overview analytics dashboard showing the traffic that was flagged by the Location-Aware DDoS Protection rule" loading="lazy"></figure>
 	<p>位置感知 DDoS 防护作为现有规则集内的新 HTTP DDoS 托管规则公开给客户。若要将其启用，请将操作更改为<em>托管质询</em>或<em>阻止</em>。客户可以调整其敏感度水平，定义您针对偏离正常地理区域的流量允许的容忍度。敏感度越低，容忍度越高。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image5-3.png" class="kg-image" alt="Screenshot of Cloudflare’s dashboard showing the Location-Aware DDoS Protection rule" loading="lazy"></figure>

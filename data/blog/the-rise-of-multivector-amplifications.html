@@ -31,7 +31,7 @@
 	<ul>
 		<li><a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/">Memcrashed - Major amplification attacks from UDP port 11211</a></li>
 	</ul>
-	<p>Initially the attacks were scary, starting at 260Gbps when first reported, reaching a <a href="https://githubengineering.com/ddos-incident-report/" target="_blank">terabit a day later</a>. But after the initial hype the attacks have weakened - the industry reacted rapidly and cleaned up the vulnerable servers. Nowadays, we don't see very large attacks of this type. Here is a chart for the last 30 days, with memcached reaching 80Gbps tops:</p>
+	<p>Initially the attacks were scary, starting at 260Gbps when first reported, reaching a <a href="https://githubengineering.com/ddos-incident-report" target="_blank">terabit a day later</a>. But after the initial hype the attacks have weakened - the industry reacted rapidly and cleaned up the vulnerable servers. Nowadays, we don't see very large attacks of this type. Here is a chart for the last 30 days, with memcached reaching 80Gbps tops:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/11/memcached.png" alt="memcached" loading="lazy"></p>
 	<h2 id="multivectoramplifications">Multivector amplifications</h2>
 	<p>About two months ago, we started observing a new interesting trend. Instead of trying to do much damage using one amplification type - like SSDP or memcached, attackers started pooling them. We saw attacks employing many different amplification categories hitting us all at once.</p>

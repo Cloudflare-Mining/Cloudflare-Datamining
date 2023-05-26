@@ -70,7 +70,7 @@
 	<h2 id="--3">底层实现</h2>
 	<p>添加 <code>--post-quantum</code> 标记时，<code>cloudflared</code> 限制其自身的 QUIC 传输隧道连接到我们的网络，只允许后量子混合密钥 <code>X25519Kyber512Draft00</code> 和 <code>X25519Kyber768Draft00</code> 与 TLS 标识符 <code>0xfe30</code> 和 <code>0xfe31</code> 分别交换。这些是经典 <a href="https://cr.yp.to/ecdh.html" target="_blank">X25519</a> 和后量子安全 <a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a> 之间的<a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank">混合</a>密钥交换。因此，即使证明 Kyber 不安全，X25519 的非后量子安全性。这些是我们网络支持的相同的密钥交换。</p>
 	<p><code>cloudflared</code> 在这两种密钥交换中随机选择一种。因为后者通常使用 TLS <em>ClientHello</em> 的两个初始数据包，而前者只需要一个。这样，我们可以测试碎片化 <em>ClientHello</em> 是否会有问题。</p>
-	<p>当 <code>cloudflared</code> 无法建立后量子连接时，它会将尝试的密钥交换、<code>cloudflared</code> 版本和错误报告给 <a href="https://pqtunnels.cloudflareresearch.com/" target="_blank">pqtunnels.cloudflareresearch.com</a>，以便我们了解网络问题。查看该页了解后量子隧道部署的最新进展。</p>
+	<p>当 <code>cloudflared</code> 无法建立后量子连接时，它会将尝试的密钥交换、<code>cloudflared</code> 版本和错误报告给 <a href="https://pqtunnels.cloudflareresearch.com" target="_blank">pqtunnels.cloudflareresearch.com</a>，以便我们了解网络问题。查看该页了解后量子隧道部署的最新进展。</p>
 	<p><code>cloudflared</code> 和我们网络之间的隧道的控制连接和身份验证尚不具备后量子安全性。它没有隧道上的数据<em>先存储再解密</em>问题那么紧急。</p>
 	<p>我们在 Go 中为这些后量子 QUIC 密钥交换提供了<a href="https://github.com/cloudflare/qtls-pq" target="_blank">开源</a>支持。</p>
 	<h2 id="--4">前景</h2>

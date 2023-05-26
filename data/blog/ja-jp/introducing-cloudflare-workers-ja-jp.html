@@ -2,7 +2,7 @@
 	<!--kg-card-begin: markdown-->
 	<p><strong>更新 2018/3/13:</strong> <a href="https://blog.cloudflare.com/cloudflare-workers-unleashed/">Cloudflare Workersが、誰でも利用できるようになりました。</a></p>
 	<p><strong>TL;DR:</strong> Service Workersに似たAPIで書かれたJavaScriptが、近いうちにCloudflareのエッジ環境にデプロイできるようになります。</p>
-	<p style="text-align: center"><a class="btn btn-warning" href="https://cloudflareworkers.com/" target="_blank">playgroundでWorkerを記述してみましょう »</a></p>
+	<p style="text-align: center"><a class="btn btn-warning" href="https://cloudflareworkers.com" target="_blank">playgroundでWorkerを記述してみましょう »</a></p>
 	<h3 id="">はじめに</h3>
 	<p>すべての技術は、ある程度複雑化が進むと、プログラム可能になります。</p>
 	<p>いたるところで見られる光景ですが、生粋のゲーマーである私が個人的に気に入っている例は、グラフィックカードです。90年代のグラフィックスハードウェアは、決まった機能セットを提供するのが一般的でした。OpenGLの規格では、ジオメトリパイプラインが3D空間の点をビューポートに投影し、ラスタパイプラインが点と点の間に三角形を描き、グラデーションシェーディングと、テクスチャを適用することになっていました。一度に使用できるテクスチャは1つだけです。ただ一つのライティングアルゴリズムがあっただけで、それによってあらゆる面がプラスチックのように見えていました。他に何かやりたいことがあれば、ハードウェアを完全にあきらめて、ソフトウェアに戻らなければならないこともよくありました。</p>
@@ -120,8 +120,8 @@ async function fetchAndInclude(request) {
   })
 }</code></pre>
 	<h4 id="">自分で遊んでみよう！</h4>
-	<p><a href="https://cloudflareworkers.com/" target="_blank">cloudflareworkers.com</a>に、ご自身でスクリプトを書いてサイトに適用してみることができるCloudflare Workersのplaygroundを作りました。</p>
-	<p style="text-align: center"><a class="btn btn-warning" href="https://cloudflareworkers.com/" target="_blank">今すぐ試してみる »</a></p>
+	<p><a href="https://cloudflareworkers.com" target="_blank">cloudflareworkers.com</a>に、ご自身でスクリプトを書いてサイトに適用してみることができるCloudflare Workersのplaygroundを作りました。</p>
+	<p style="text-align: center"><a class="btn btn-warning" href="https://cloudflareworkers.com" target="_blank">今すぐ試してみる »</a></p>
 	<h3 id="">質問と回答</h3>
 	<h4 id="cloudflareworkerscloudflareserviceworkers">これは「Cloudflare Workers」または「Cloudflare Service Workers」ですか？</h4>
 	<p>「Cloudflare Worker」は、お客様が書いたJavaScriptがCloudflareのエッジ環境の上で動作するものです。「Cloudflare Service Worker」は、特にHTTPトラフィックを処理するワーカーで、Service Worker APIに対して記述します。現在、当社が実装しているワーカーの種類はこれだけですが、将来的には特定の特殊なタスクのために他の種類のワーカーを導入する可能性もあります。</p>

@@ -150,7 +150,7 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	<p>Some colleagues suggested that the differences in the graphs may be due to TCP offload being disabled, but upon checking our NIC settings, we found that the feature flags were identical.</p>
 	<p>We'll dive into the differences in the next section.</p>
 	<h3 id="anddeeper">And deeper</h3>
-	<p>To trace latency distributions of <code>sendfile</code> syscalls between Jessie and Stretch, we used <a href="https://github.com/iovisor/bcc/blob/master/tools/funclatency_example.txt" target="_blank"><code>funclatency</code></a> from <a href="https://iovisor.github.io/bcc/" target="_blank">bcc-tools</a>:</p>
+	<p>To trace latency distributions of <code>sendfile</code> syscalls between Jessie and Stretch, we used <a href="https://github.com/iovisor/bcc/blob/master/tools/funclatency_example.txt" target="_blank"><code>funclatency</code></a> from <a href="https://iovisor.github.io/bcc" target="_blank">bcc-tools</a>:</p>
 	<ul>
 		<li>Jessie</li>
 	</ul>
@@ -588,7 +588,7 @@ udp-fragmentation-offload: on
 	<p>In the end, enabling offload also removed RCU stalls. It's not really clear whether it was the cause or just a catalyst, but the end result speaks for itself.</p>
 	<p>On the bright side, we dug pretty deep into Linux kernel internals, and although there were fleeting moments of giving up, moving to the woods to become a park ranger, we persevered and came out of the forest successful.</p>
 	<hr>
-	<p><em>If deep diving from high level symptoms to kernel/OS issues makes you excited, <a href="https://www.cloudflare.com/careers/" target="_blank">drop us a line</a>.</em></p>
+	<p><em>If deep diving from high level symptoms to kernel/OS issues makes you excited, <a href="https://www.cloudflare.com/careers" target="_blank">drop us a line</a>.</em></p>
 	<hr>
 	<!--kg-card-end: markdown-->
 </div>

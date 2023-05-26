@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-47.png" class="kg-image" alt="Improving Workers TypeScript support: accuracy, ergonomics and interoperability" loading="lazy"></figure>
-	<p><a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a> 可在程序运行前发现一些类型错误，让开发人员能够轻松编写出不会崩溃的代码。我们希望开发人员充分利用这一工具，因此，一年前我们<a href="https://blog.cloudflare.com/zh-cn/automatically-generated-types-zh-cn/">构建了一个系统，在Cloudflare Workers 运行时自动生成 TypeScript 类型</a>。这让开发人员能够在其 IDE 中观察到 Workers API 的代码完成情况，并在部署之前检查代码类型。每周<a href="https://github.com/cloudflare/workers-types/pull/210" target="_blank">都会发布新的类型版本</a>，反映最近的变更。</p>
+	<p><a href="https://www.typescriptlang.org" target="_blank">TypeScript</a> 可在程序运行前发现一些类型错误，让开发人员能够轻松编写出不会崩溃的代码。我们希望开发人员充分利用这一工具，因此，一年前我们<a href="https://blog.cloudflare.com/zh-cn/automatically-generated-types-zh-cn/">构建了一个系统，在Cloudflare Workers 运行时自动生成 TypeScript 类型</a>。这让开发人员能够在其 IDE 中观察到 Workers API 的代码完成情况，并在部署之前检查代码类型。每周<a href="https://github.com/cloudflare/workers-types/pull/210" target="_blank">都会发布新的类型版本</a>，反映最近的变更。</p>
 	<p>过去一年来，我们从客户和内部团队收到了很多关于如何改进这些类型的反馈。随着切换到 Bazel 构建系统，<a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime/">准备开放运行时源代码</a>，我们看到了重构类型的机会，使类型更准确、更易用、更容易生成。今天，我们隆重宣布推出 <code>@cloudflare/workers-types</code> 的下一个主要版本，其中包括许多新的功能，并开放了<a href="https://github.com/cloudflare/workerd/tree/main/types" target="_blank">完全重写的自动生成脚本的源代码</a>。</p>
 	<h3 id="-workers-typescript">如何在 Workers 中使用 TypeScript</h3>
-	<p>在 Workers 中设置 TypeScript 非常简单！如果您才刚开始使用 Workers，请安装 <a href="https://nodejs.org/" target="_blank">Node.js</a>，然后在终端运行 <code>npx wrangler init</code>，以生成新项目。如果您有一个现有的 Workers 项目，并希望利用我们改进的类型，请安装最新版本的 TypeScript 和 <code>@cloudflare/workers-types</code> 与 <code>npm install --save-dev typescript</code> <code>@cloudflare/workers-types@latest</code>，然后创建一个 <code>tsconfig.json</code> 文件，文件内容如下：</p><!--kg-card-begin: markdown-->
+	<p>在 Workers 中设置 TypeScript 非常简单！如果您才刚开始使用 Workers，请安装 <a href="https://nodejs.org" target="_blank">Node.js</a>，然后在终端运行 <code>npx wrangler init</code>，以生成新项目。如果您有一个现有的 Workers 项目，并希望利用我们改进的类型，请安装最新版本的 TypeScript 和 <code>@cloudflare/workers-types</code> 与 <code>npm install --save-dev typescript</code> <code>@cloudflare/workers-types@latest</code>，然后创建一个 <code>tsconfig.json</code> 文件，文件内容如下：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "compilerOptions": {
     "target": "esnext",
@@ -19,7 +19,7 @@
 		<figcaption>编辑器会突出显示 <code>set</code>（而不是 <code>put</code>）使用不正确的地方，并补全代码</figcaption>
 	</figure>
 	<h3 id="-">使用标准类型提高互操作性</h3>
-	<p>Cloudflare Workers 实施了许多与浏览器相同的运行时 API，我们还在使用 <a href="https://blog.cloudflare.com/zh-cn/introducing-the-wintercg-zh-cn/">WinterCG</a> 进一步提高我们标准的合规性。然而，浏览器和 Workers 能做的事情始终存在根本区别。例如，浏览器可以播放音频文件，而 Workers 可以直接访问 Cloudflare 的网络，以存储分布在全球的数据。这种不匹配意味着，每个平台提供的运行时 API 和类型并不相同，这反过来又使 Workers 类型难以与在 Cloudflare 网络和浏览器中运行相同文件的框架（例如 <a href="https://remix.run/" target="_blank">Remix</a>）一起使用。这些文件需要对照 &nbsp;<a href="https://raw.githubusercontent.com/microsoft/TypeScript/main/lib/lib.dom.d.ts" target="_blank"><code>lib.dom.d.ts</code></a>（与我们的类型不兼容）检查类型。</p>
+	<p>Cloudflare Workers 实施了许多与浏览器相同的运行时 API，我们还在使用 <a href="https://blog.cloudflare.com/zh-cn/introducing-the-wintercg-zh-cn/">WinterCG</a> 进一步提高我们标准的合规性。然而，浏览器和 Workers 能做的事情始终存在根本区别。例如，浏览器可以播放音频文件，而 Workers 可以直接访问 Cloudflare 的网络，以存储分布在全球的数据。这种不匹配意味着，每个平台提供的运行时 API 和类型并不相同，这反过来又使 Workers 类型难以与在 Cloudflare 网络和浏览器中运行相同文件的框架（例如 <a href="https://remix.run" target="_blank">Remix</a>）一起使用。这些文件需要对照 &nbsp;<a href="https://raw.githubusercontent.com/microsoft/TypeScript/main/lib/lib.dom.d.ts" target="_blank"><code>lib.dom.d.ts</code></a>（与我们的类型不兼容）检查类型。</p>
 	<p>为了解决这一问题，我们现在生成了一个单独的类型版本，可以选择性导入，而不必在 <code>tsconfig.json</code> 的 <code>types</code> 字段中包括 <code>@cloudflare/workers-types</code>。示例如下：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ts">import type { KVNamespace } from "@cloudflare/workers-types";
 
@@ -28,7 +28,7 @@ declare const USERS_NAMESPACE: KVNamespace;
 	<!--kg-card-end: markdown-->
 	<p>此外，我们还自动生成我们的类型与 TypeScript 的 <a href="https://raw.githubusercontent.com/microsoft/TypeScript/main/lib/lib.webworker.d.ts" target="_blank"><code>lib.webworker.d.ts</code></a> 之间的差异。未来我们还将用此来发现我们可以在哪些方面提高合规性。</p>
 	<h3 id="--1">与兼容性日期更加兼容</h3>
-	<p>Cloudflare 对我们提供的所有 API 保持强大的向后兼容性承诺。我们使用<a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/" target="_blank">兼容性标志和日期</a>，以向后兼容的方式进行重大更改。有时这些兼容性标志会更改类型。例如，<a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#global-navigator" target="_blank"><code>global_navigator</code></a> 标志添加了一个新的全局 <code>navigator</code>，而 <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#new-url-parser-implementation" target="_blank"><code>url_standard</code></a> 标志更改了 <code>URLSearchParams</code> 构造函数签名。</p>
+	<p>Cloudflare 对我们提供的所有 API 保持强大的向后兼容性承诺。我们使用<a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank">兼容性标志和日期</a>，以向后兼容的方式进行重大更改。有时这些兼容性标志会更改类型。例如，<a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#global-navigator" target="_blank"><code>global_navigator</code></a> 标志添加了一个新的全局 <code>navigator</code>，而 <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates#new-url-parser-implementation" target="_blank"><code>url_standard</code></a> 标志更改了 <code>URLSearchParams</code> 构造函数签名。</p>
 	<p>现在您可以选择与您的兼容性日期相匹配的类型版本，让您可以确保没有使用运行时不支持的功能。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-ts">{
   "compilerOptions": {
@@ -57,7 +57,7 @@ declare module "*.txt" {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="--2">进一步集成文档和变更日志</h3>
-	<p>代码补全功能为刚开始使用 Workers 平台的开发人员提供了探索 API 表面的好方式。我们现已将 TypeScript 官方类型中的标准 API 文档纳入了我们的类型。我们还在着手将 <a href="https://developers.cloudflare.com/workers/runtime-apis/" target="_blank">Cloudflare 特定 API 的文档</a>也纳入其中。</p>
+	<p>代码补全功能为刚开始使用 Workers 平台的开发人员提供了探索 API 表面的好方式。我们现已将 TypeScript 官方类型中的标准 API 文档纳入了我们的类型。我们还在着手将 <a href="https://developers.cloudflare.com/workers/runtime-apis" target="_blank">Cloudflare 特定 API 的文档</a>也纳入其中。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-27.png" class="kg-image" alt="docs in types shown with code completions" loading="lazy"></figure>
 	<p>对于已经使用 Workers 平台的开发人员来说，可能很难看出类型如何随 <code>@cloudflare/workers-types</code> 的每个版本变化。为了避免类型错误，并突出显示新功能，我们现将随每个版本生成一份详细的变更日志，<a href="https://github.com/cloudflare/workers-types/pull/291#issuecomment-1274541965" target="_blank">将新的、变更的和删除的定义拆分出来</a>。</p>
 	<h3 id="--3">类型生成是如何在底层实现的？</h3>

@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/Flowtrackd-network-namespaces-fix-1.png" class="kg-image" alt="A story about AF_XDP, network namespaces and a cookie" loading="lazy"></figure>
-	<p>A crash in a development version of <a href="https://blog.cloudflare.com/announcing-flowtrackd/">flowtrackd</a> (the daemon that powers our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/tcp-protection/" target="_blank">Advanced TCP Protection</a>) highlighted the fact that <a href="https://www.mankier.com/3/libxdp" target="_blank">libxdp</a> (and specifically the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank">AF_XDP</a> part) was not Linux <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html" target="_blank">network namespace</a> aware.</p>
+	<p>A crash in a development version of <a href="https://blog.cloudflare.com/announcing-flowtrackd/">flowtrackd</a> (the daemon that powers our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/tcp-protection" target="_blank">Advanced TCP Protection</a>) highlighted the fact that <a href="https://www.mankier.com/3/libxdp" target="_blank">libxdp</a> (and specifically the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank">AF_XDP</a> part) was not Linux <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html" target="_blank">network namespace</a> aware.</p>
 	<p>This blogpost describes the debugging journey to find the bug, as well as a fix.</p>
-	<p><a href="https://blog.cloudflare.com/announcing-flowtrackd/">flowtrackd</a> is a volumetric denial of service defense mechanism that sits in the <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a> customer’s data path and protects the network from complex randomized TCP floods. It does so by challenging TCP connection establishments and by verifying that TCP packets make sense in an ongoing flow.</p>
+	<p><a href="https://blog.cloudflare.com/announcing-flowtrackd/">flowtrackd</a> is a volumetric denial of service defense mechanism that sits in the <a href="https://www.cloudflare.com/magic-transit" target="_blank">Magic Transit</a> customer’s data path and protects the network from complex randomized TCP floods. It does so by challenging TCP connection establishments and by verifying that TCP packets make sense in an ongoing flow.</p>
 	<p>It uses the Linux kernel <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank">AF_XDP</a> feature to transfer packets from a network device in kernel space to a memory buffer in user space without going through the network stack. We use most of the helper functions of the <a href="https://github.com/libbpf/libbpf/tree/v0.8.0" target="_blank">C libbpf</a> with the <a href="https://github.com/libbpf/libbpf-sys" target="_blank">Rust bindings</a> to interact with AF_XDP.</p>
 	<p>In our setup, both the ingress and the egress network interfaces are in different network namespaces. When a packet is determined to be valid (after a challenge or under some thresholds), it is forwarded to the second network interface.</p>
 	<p>For the rest of this post the network setup will be the following:</p>
@@ -414,11 +414,11 @@ struct sockaddr_xdp {
 	<ul>
 		<li>Compile a Linux kernel version closer to the one used on our servers (5.15) with debug symbols.</li>
 		<li>Generate a root filesystem for the kernel to boot.</li>
-		<li>Boot in <a href="https://www.qemu.org/" target="_blank">QEMU</a>.</li>
+		<li>Boot in <a href="https://www.qemu.org" target="_blank">QEMU</a>.</li>
 		<li>Attach gdb to it and set a breakpoint on the syscall.</li>
 		<li>Check where the EINVAL value is returned.</li>
 	</ul>
-	<p>We could have used <a href="https://buildroot.org/" target="_blank">buildroot</a> with a minimal reproduction code, but it wasn't funny enough. Instead, we install a minimal Ubuntu and load our custom kernel. This has the benefit of having a package manager if we need to install other debugging tools.</p>
+	<p>We could have used <a href="https://buildroot.org" target="_blank">buildroot</a> with a minimal reproduction code, but it wasn't funny enough. Instead, we install a minimal Ubuntu and load our custom kernel. This has the benefit of having a package manager if we need to install other debugging tools.</p>
 	<p>Let's install a minimal Ubuntu server 21.10 (with ext4, no LVM and a ssh server selected in the installation wizard):</p><!--kg-card-begin: markdown-->
 	<pre><code>qemu-img create -f qcow2 ubuntu-21.10-live-server-amd64.qcow2 20G
  
@@ -517,10 +517,10 @@ make -j$(nproc) bzImage
 		<li>Explain our use case to the libbpf maintainers and see how the API for the <code>xsk_socket__create_shared()</code> function should change. It could be possible to pass an opaque "cookie" as a parameter at the socket creation and pass it to the functions that access the socket contexts.</li>
 		<li>Take our chances and look for Linux patches that contain the words “netns” and “cookie”</li>
 	</ul>
-	<p>Well, well, well: <a href="https://lore.kernel.org/bpf/c47d2346982693a9cf9da0e12690453aded4c788.1585323121.git.daniel@iogearbox.net/" target="_blank">[PATCH bpf-next 3/7] bpf: add netns cookie and enable it for bpf cgroup hooks</a></p>
+	<p>Well, well, well: <a href="https://lore.kernel.org/bpf/c47d2346982693a9cf9da0e12690453aded4c788.1585323121.git.daniel@iogearbox.net" target="_blank">[PATCH bpf-next 3/7] bpf: add netns cookie and enable it for bpf cgroup hooks</a></p>
 	<p>This is almost what we need! This patch adds a kernel function named <code>bpf_get_netns_cookie()</code> that would get us the network namespace cookie linked to a socket:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image15-3.png" class="kg-image" alt="bpf_get_netns_cookie manual page" loading="lazy"></figure>
-	<p>A <a href="https://patchwork.kernel.org/project/linux-parisc/patch/20210210120425.53438-2-lmb@cloudflare.com/" target="_blank">second patch</a> enables us to get this cookie from userspace:</p>
+	<p>A <a href="https://patchwork.kernel.org/project/linux-parisc/patch/20210210120425.53438-2-lmb@cloudflare.com" target="_blank">second patch</a> enables us to get this cookie from userspace:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image17-2.png" class="kg-image" alt="add SO_NETNS_COOKIE socket option patch" loading="lazy"></figure>
 	<p>I know this Lorenz from somewhere :D</p>
 	<p>Note that this patch was shipped with the Linux <strong>v5.14</strong> release.</p>
