@@ -46,7 +46,7 @@ async function run() {
 			document.querySelector('button[type=submit]').click();
 		});
 		// wait for Pages nav to load - good indication nav is ready
-		await page.waitForSelector('a[href*="/pages"]', {
+		await page.waitForSelector('a[href*="/workers-and-pages"]', {
 			visible: true,
 		});
 
