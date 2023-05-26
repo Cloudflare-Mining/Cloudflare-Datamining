@@ -28,12 +28,12 @@
 	<p>在其他情形中，攻击者发动小型 DDoS 攻击，以此为证明来警告目标组织，他们有能力在稍后造成真正的破坏。通常会随后向目标发送勒索信，要求其通过支付赎金来避免遭受可能更彻底破坏网络基础设施的攻击。</p>
 	<p>无论动机是什么，任何规模或持续时间的 DDoS 攻击都不会很快消失。DDoS 攻击时间再短也会造成危害，因此对于任何在线业务来说，落实自动实时防御机制是至关重要的。</p>
 	<h3 id="--3"><strong>攻击手段</strong></h3>
-	<p><a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/?ref=blog.cloudflare.com" target="_blank">SYN 洪水</a>在第三季度观察到的所有攻击中占了将近 65%，RST 洪水和 UDP 洪水分别名列第二和第三位。这与前几个季度的观察结果相对一致，凸显了攻击者在 DDoS 攻击手段方面的偏好。</p>
+	<p><a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 洪水</a>在第三季度观察到的所有攻击中占了将近 65%，RST 洪水和 UDP 洪水分别名列第二和第三位。这与前几个季度的观察结果相对一致，凸显了攻击者在 DDoS 攻击手段方面的偏好。</p>
 	<p>尽管 SYN 和 RST 洪水等基于 TCP 的攻击仍然流行，但针对特定UDP 协议的攻击（如 mDNS、Memcached 和 Jenkins）与上一季度相比呈爆发式增长。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-5.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image13-1.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
 	<p>多播 DNS（mDNS）是基于 UDP 的协议，在本地网络中用于服务和设备发现。易受攻击的 mDNS 服务器响应源自本地网络外的单播查询，这些查询“伪装”（篡改）成受害者的源地址，造成 DNS 放大攻击。在第三季度，我们注意到 mDNS 攻击出现激增。具体而言，与上一季度相比增长了 2,680％。</p>
-	<p>位列其后的是 <a href="https://www.cloudflare.com/learning/ddos/memcached-ddos-attack?ref=blog.cloudflare.com" target="_blank">Memcached</a> 和 Jenkins 攻击。Memcached 是一种键值数据库。攻击者可以假冒攻击目标的源地址通过 UDP 协议发出请求。请求的键中存储的值大小影响放大系数，可造成 DDoS 放大攻击。类似地，由于 UDP 具有无状态性质，基于 Jenkins、NTP、Ubiquity 和其他 UDP 型协议的攻击在本季度有大幅增加。旧版本（<a href="https://nvd.nist.gov/vuln/detail/CVE-2020-2100?ref=blog.cloudflare.com" target="_blank">Jenkins 2.218</a> 及更早版本）中的一个漏洞被用来发动 DDoS 攻击。Jenkins 2.219 中通过默认禁用 UDP 多播/广播修复了这个漏洞。但是，仍然有许多存在漏洞并且暴露的设备运行基于 UDP 的服务，而被用来发动容量耗尽型放大攻击。</p>
+	<p>位列其后的是 <a href="https://www.cloudflare.com/learning/ddos/memcached-ddos-attack" target="_blank">Memcached</a> 和 Jenkins 攻击。Memcached 是一种键值数据库。攻击者可以假冒攻击目标的源地址通过 UDP 协议发出请求。请求的键中存储的值大小影响放大系数，可造成 DDoS 放大攻击。类似地，由于 UDP 具有无状态性质，基于 Jenkins、NTP、Ubiquity 和其他 UDP 型协议的攻击在本季度有大幅增加。旧版本（<a href="https://nvd.nist.gov/vuln/detail/CVE-2020-2100" target="_blank">Jenkins 2.218</a> 及更早版本）中的一个漏洞被用来发动 DDoS 攻击。Jenkins 2.219 中通过默认禁用 UDP 多播/广播修复了这个漏洞。但是，仍然有许多存在漏洞并且暴露的设备运行基于 UDP 的服务，而被用来发动容量耗尽型放大攻击。</p>
 	<h3 id="--4"><strong>攻击的国家/地区分布情况</strong></h3>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-9.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image4-8.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
@@ -54,7 +54,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/11/BDES-1247_DDoS_Trends_Report_Q32020-16.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
 	<h3 id="-ddos-"><strong>有关近期 DDoS 勒索攻击的备注</strong></h3>
 	<p>过去几个月，Cloudflare 观察到又一种令人不安的趋势：越来越多的 DDoS 勒索攻击（RDDoS）将世界各地的组织作为攻击目标。虽然 RDDoS 威胁并不一定会真正发动攻击，但近几个月的案例表明，攻击者团伙乐意实施威胁，发动大规模 DDoS 攻击来摧毁缺乏妥善防护的组织。在一些攻击中，最初的预告攻击有可能足以对没有云端 DDoS 保护服务的组织造成不利影响。</p>
-	<p>在 RDDoS 攻击中，恶意攻击者向个人或组织发出威胁，除非他们支付赎金，否则会发动网络攻击来使其网络、网站或应用程序断线一定时间。您可以从<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/?ref=blog.cloudflare.com" target="_blank">此处</a>阅读有关 RDDoS 攻击的更多内容。</p>
+	<p>在 RDDoS 攻击中，恶意攻击者向个人或组织发出威胁，除非他们支付赎金，否则会发动网络攻击来使其网络、网站或应用程序断线一定时间。您可以从<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">此处</a>阅读有关 RDDoS 攻击的更多内容。</p>
 	<p>自称 Fancy Bear、Cozy Bear 和 Lazarus 的团伙威胁要对各个组织的网站和网络基础设施发动 DDoS 攻击，除非在截止日期前收到赎金。此外，勒索电子邮件常常伴有最初的“预告”DDoS 攻击，以此作为一种演示。演示攻击通常是 UDP 反射攻击，利用各种不同的协议，持续时间为大约 30 分钟（或以下）。</p>
 	<p>收到威胁时应怎么做：</p>
 	<ol>
@@ -70,5 +70,5 @@
 		<li>性能：Cloudflare 经过精心架构，客户不会因为遭受攻击而有性能损失。我们从各个 Cloudflare 数据中心（而不是传统的清理中心或内部硬件设备）提供 DDoS 保护，因而能够在最靠近源头的位置缓解攻击。Cloudflare 分析偏离路径的流量，确保我们的 DDoS 缓解解决方案不会给合法流量增加任何延迟。在 Linux 堆栈中效果最佳的位置应用规则，实施具有成本效益的缓解措施，确保不会有性能损失。</li>
 		<li>全球威胁情报：如同免疫系统一样，我们的网络缓解针对任何客户发动的攻击并从中学习，让客户免受所有攻击的危害。借助威胁情报（TI），自动阻止攻击并部署到面向客户的功能中（“机器人抵御”模式、防火墙规则和安全级别）。用户创建自定义规则，基于流量属性过滤器以及利用 ML 模型生成的威胁和机器人分数缓解攻击，防范机器人/僵尸网络/DDoS。</li>
 	</ul>
-	<p>要了解有关 Cloudflare 的 DDoS 解决方案的更多信息，请<a href="https://www.cloudflare.com/plans/enterprise/?ref=blog.cloudflare.com" target="_blank">联系我们</a>或<a href="https://dash.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">开始使用</a>。</p>
+	<p>要了解有关 Cloudflare 的 DDoS 解决方案的更多信息，请<a href="https://www.cloudflare.com/plans/enterprise/" target="_blank">联系我们</a>或<a href="https://dash.cloudflare.com/" target="_blank">开始使用</a>。</p>
 </div>

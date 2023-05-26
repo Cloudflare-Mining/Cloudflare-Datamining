@@ -20,7 +20,7 @@
 	<p>由于 Cloudflare 的规模，消息速率往往非常高，大量请求是时间敏感的，因此监控这一点至关重要。</p>
 	<p>Cloudflare 使用 Kafka 的应用作为 Kubernetes 上的微服务部署。</p>
 	<h3 id="kubernetes-">Kubernetes 应用的运行状况检查</h3>
-	<p>Kubernetes 使用<a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/?ref=blog.cloudflare.com" target="_blank">探针 (probe)</a> 来了解某一项服务是否正常运行，并准备好接收流量以开始运行。当一个存活探针失败且重试次数被超过时，Kubernete 将重新启动该服务。</p>
+	<p>Kubernetes 使用<a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/" target="_blank">探针 (probe)</a> 来了解某一项服务是否正常运行，并准备好接收流量以开始运行。当一个存活探针失败且重试次数被超过时，Kubernete 将重新启动该服务。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/4-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>当一个就绪探针失败且重试次数被超过时，它将停止向目标 pod 发送 HTTP 流量。对 Kafka 应用而言，这是不相关的，因为它们不运行 http 服务器。为此，我们仅介绍存活检查。</p>
 	<p>对消费者进行的经典 Kafka 存活探针检查与代理之间的连接状态。最佳实践通常是使这些检查保持简单，并执行一些基本操作——例如，在本例中的列出主题。如果由于任何原因，检查始终失败，例如代理返回 TLS 错误，Kubernetes 将终止服务并启动相同服务的新 pod，从而强制建立新连接。简单的 Kafka 存活检查可以很好地了解与代理的连接是否不健康。</p>
@@ -35,7 +35,7 @@
 	<p>当我们看到消费者报告“健康”但不进行任何工作时，我们就会想到，也许我们在运行状况中把注意力放在错误的地方上了。仅仅因为服务连接到 Kafka 代理并可以从主题中读取，并不意味着消费者正在积极地处理消息。</p>
 	<p>因此，我们意识到应该专注于消息摄取，使用偏移量来确保向前进展。</p>
 	<h4 id="pagerduty-">PagerDuty 方式</h4>
-	<p>PagerDuty 就这个问题写了一篇精彩的<a href="https://www.pagerduty.com/eng/kafka-health-checks/?ref=blog.cloudflare.com" target="_blank">博客文章</a>，在我们考虑自己的解决方案时提供了灵感。</p>
+	<p>PagerDuty 就这个问题写了一篇精彩的<a href="https://www.pagerduty.com/eng/kafka-health-checks/" target="_blank">博客文章</a>，在我们考虑自己的解决方案时提供了灵感。</p>
 	<p>他们的方法使用当前(最新)偏移量和提交的偏移量。当前偏移量表示发送到主题的最后一条消息，而提交的偏移量是由消费者处理的最后一条消息。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>通过确保最新的偏移量正在改变(接收新消息)和提交的偏移量也在改变(处理新消息)，从而确认消费者正在向前移动。</p>

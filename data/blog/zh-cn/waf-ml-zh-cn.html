@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-1.png" class="kg-image" alt="Improving the WAF with Machine Learning" loading="lazy"></figure>
-	<p>Cloudflare 每秒处理3200 万次 HTTP 请求，22% web 服务器为 <a href="https://w3techs.com/technologies/details/ws-cloudflare?ref=blog.cloudflare.com" target="_blank">W3Techs</a> 所知的网站使用 Cloudflare。Cloudflare 为五分之一的互联网资产保护其流量，因而具备独特的优势，得以在威胁出现时就加以识别，并跟踪其进化和变异。</p>
-	<p>Web 应用程序防火墙（WAF）处于 Cloudflare 安全工具箱的核心位置，而托管规则是 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/web-application-firewall-waf/?ref=blog.cloudflare.com" target="_blank">WAF</a> 的关键功能。托管规则是 Cloudflare 分析师团队创建的一组规则，用于阻止显示已知攻击模式的请求。这些托管规则攻击对于现有攻击手段的模式非常有效，因为它们已经过广泛测试，能最大限度减少误报。托管规则的不足之处是，常常会错过攻击的变体（也称为绕过），因为基于静态正则表达式的规则本质上对引入的特征变体（如通过模糊技术）敏感。</p>
+	<p>Cloudflare 每秒处理3200 万次 HTTP 请求，22% web 服务器为 <a href="https://w3techs.com/technologies/details/ws-cloudflare" target="_blank">W3Techs</a> 所知的网站使用 Cloudflare。Cloudflare 为五分之一的互联网资产保护其流量，因而具备独特的优势，得以在威胁出现时就加以识别，并跟踪其进化和变异。</p>
+	<p>Web 应用程序防火墙（WAF）处于 Cloudflare 安全工具箱的核心位置，而托管规则是 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">WAF</a> 的关键功能。托管规则是 Cloudflare 分析师团队创建的一组规则，用于阻止显示已知攻击模式的请求。这些托管规则攻击对于现有攻击手段的模式非常有效，因为它们已经过广泛测试，能最大限度减少误报。托管规则的不足之处是，常常会错过攻击的变体（也称为绕过），因为基于静态正则表达式的规则本质上对引入的特征变体（如通过模糊技术）敏感。</p>
 	<p>发布<a href="https://blog.cloudflare.com/zh-cn/exploitation-of-cve-2021-44228-before-public-disclosure-and-evolution-of-waf-evasion-patterns-zh-cn/">针对 log4j 的保护</a>时，我们就见证了这个问题。在该漏洞曝光后的几天内，由于攻击者尝试绕过 WAF，我们必须不断更新规则来匹配变种。此外，优化规则需要大量的人工干预，而且通常要在绕过被识别或甚至被利用后才能起作用，导致保护变得被动。</p>
 	<p>今天，我们隆重推出托管规则集（例如 OWASP 和 Cloudflare 托管规则集）的增强功能，提供一个新工具，旨在无需人工干预的情况下识别绕过和恶意负载，以防其造成破坏。现在客户能够从一个机器学习模型中获取信号，这个模型根据托管规则和分类的善意/恶意流量和增强数据来训练，从而针对更大范围的新老攻击提供更佳的保护。 </p>
 	<p>全新机器学习 WAF 检测隆重登场！ </p>
-	<p>这一全新检测功能现已向 Enterprise、Pro 和 Biz 客户开放提前体验。若您有意尝试，请加入<a href="https://jira.cfops.it/browse/MOE-4523?ref=blog.cloudflare.com" target="_blank">等候列表</a>。长期而言，该功能将向更高级别的客户提供。</p>
+	<p>这一全新检测功能现已向 Enterprise、Pro 和 Biz 客户开放提前体验。若您有意尝试，请加入<a href="https://jira.cfops.it/browse/MOE-4523" target="_blank">等候列表</a>。长期而言，该功能将向更高级别的客户提供。</p>
 	<h3 id="-waf">第一个自我学习的 WAF</h3>
 	<p>全新检测系统增强现有的托管规则集，提供三大优势：</p>
 	<ol>
