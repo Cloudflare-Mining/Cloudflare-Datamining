@@ -71,7 +71,7 @@
 	<h2 id="--3">機器の中身</h2>
 	<p><code>--post-quantum</code>フラグが指定された場合、<code>cloudflared</code>は、ネットワークへのトンネル接続を QUICトランスポートに制限し、それぞれTLS識別子<code>0xfe30</code>と<code>0xfe31</code>を持つポスト量子ハイブリッド鍵交換<code>X25519Kyber512Draft00</code>と<code>X25519Kyber768Draft00</code>のみを許可します。これらは、古典的な<a href="https://cr.yp.to/ecdh.html" target="_blank">X25519</a>とポスト量子セキュア<a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a>の間の<a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank">ハイブリッド</a>鍵交換です。Kyberが安全でないことが判明した場合でも、X25519の非ポスト量子セキュリティに依存することができます。これらの鍵交換は、私たちのネットワークでサポートされているものと同じです。</p>
 	<p><code>cloudflared</code>は、この2つの鍵交換のいずれかをランダムに1つ選択します。後者は通常TLSの初期パケットを2つ必要とする<em>ClientHello</em>に対し、前者は1つで済むためです。これにより、断片化された<em>ClientHello</em>が問題を起こすかどうかをテストすることができます。</p>
-	<p><code>cloudflared</code>がポスト量子接続の確立に失敗すると、試行されたキー交換、<code>cloudflared</code>のバージョン、エラーを<a href="https://pqtunnels.cloudflareresearch.com/" target="_blank">pqtunnels.cloudflareresearch.com</a>に報告し、ネットワークの問題を可視化することができるようにします。量子トンネル導入後のアップデートについては、そちらのページをご覧ください。</p>
+	<p><code>cloudflared</code>がポスト量子接続の確立に失敗すると、試行されたキー交換、<code>cloudflared</code>のバージョン、エラーを<a href="https://pqtunnels.cloudflareresearch.com" target="_blank">pqtunnels.cloudflareresearch.com</a>に報告し、ネットワークの問題を可視化することができるようにします。量子トンネル導入後のアップデートについては、そちらのページをご覧ください。</p>
 	<p><code>cloudflared</code>と当社のネットワークの間のトンネルの制御接続と認証は、まだポスト量子的な安全性ではありません。ここでは、トンネル自体のデータの<em>store-now-decrypt-later</em>に対する問題よりも緊急性はありません。</p>
 	<p>Goでは、これらのポスト量子QUIC鍵交換を<a href="https://github.com/cloudflare/qtls-pq" target="_blank">オープンソース</a>でサポートしています。</p>
 	<h2 id="--4">展望</h2>

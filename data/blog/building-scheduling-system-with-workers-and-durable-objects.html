@@ -139,7 +139,7 @@ export default {
 	<pre><code class="language-bash">wrangler dev --local</code></pre>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The development server is listening on localhost:8787, which we will use for scheduling our first request. The JSON request payload should match the TypeScript schema we defined in the beginning – required URL, and optional <code>triggerEverySeconds</code> number or <code>triggerAt</code> unix timestamp. When only the required URL is passed, the request will be dispatched right away.</p>
-	<p>An example of request payload that will send a GET request to <a href="https://example.com/" target="_blank">https://example.com</a> every 30 seconds.</p>
+	<p>An example of request payload that will send a GET request to <a href="https://example.com" target="_blank">https://example.com</a> every 30 seconds.</p>
 	<pre><code class="language-JSON">{
 	"url":  "https://example.com",
 	"triggerEverySeconds": 30,
