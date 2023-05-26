@@ -4,7 +4,7 @@
 	<p>とはいえ、キーを安全な場所に書き込んでおいて、たまにアクセスするだけというわけにもいきません。むしろ逆で、暗号演算を行うすべてのリクエストに関わっているのですから。サイトがTLSをサポートしている場合、プライベートキーは各接続を確立するために使用されます。</p>
 	<p>残念ながら、暗号キーは漏洩するケースもあり、そうなれば大きな問題となります。漏洩の多くは原因はソフトウェアのバグやセキュリティの脆弱性なのです。この記事ではLinuxカーネルがどのようにして潜在的なセキュリティ脆弱性であるメモリアクセス違反から暗号キーを守っているのかをご説明します。</p>
 	<h3 id="-">メモリアクセス違反</h3>
-	<p><a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues/" target="_blank">NSA</a>によると、マイクロソフトとグーグルのコードの脆弱性における約70%は、メモリ安全性の問題に関連しているそうです。不正なメモリアクセスの結果として生じるものの1つが、（暗号キーを含む）セキュリティデータの漏洩です。暗号キーはメモリ上に保存された（主にランダムな）データであるため、他のインメモリデータと同様にメモリリークの対象となる可能性があります。以下の例では、スタックメモリの再利用により、暗号キーが誤って漏洩してしまう可能性があることを示しています。</p>
+	<p><a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues" target="_blank">NSA</a>によると、マイクロソフトとグーグルのコードの脆弱性における約70%は、メモリ安全性の問題に関連しているそうです。不正なメモリアクセスの結果として生じるものの1つが、（暗号キーを含む）セキュリティデータの漏洩です。暗号キーはメモリ上に保存された（主にランダムな）データであるため、他のインメモリデータと同様にメモリリークの対象となる可能性があります。以下の例では、スタックメモリの再利用により、暗号キーが誤って漏洩してしまう可能性があることを示しています。</p>
 	<p>broken.c</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cpp">#include &lt;stdio.h&gt;
 #include &lt;stdint.h&gt;
@@ -62,13 +62,13 @@ IndexError: Replacement index 2 out of range for positional args tuple
 	<blockquote><em>Python 2.7.14 にはHeap-Buffer-OverflowおよびHeap-Use-After-Freeの脆弱性が存在します。</em></blockquote>
 	<p>Golangは<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-14185/opov-1/Golang.html" target="_blank"> オーバーフローの脆弱性</a>、<a href="https://pkg.go.dev/unsafe" target="_blank"> 安全でないパッケージ</a>の独自のリストがあります。その名が表している通り、通常のルールとチェックはこのパッケージの中では機能しません。</p>
 	<h3 id="heartbleed">Heartbleed</h3>
-	<p>2014年にHeartbleedバグが発見されました。（当時）最も使用されていた暗号化ライブラリOpenSSLからプライベートキーが漏洩したのです。当社も<a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed/">例外ではありませんでした</a>。</p>
+	<p>2014年にHeartbleedバグが発見されました。（当時）最も使用されていた暗号化ライブラリOpenSSLからプライベートキーが漏洩したのです。当社も<a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">例外ではありませんでした</a>。</p>
 	<h3 id="--1">軽減</h3>
 	<p>そう、メモリバグは日常茶飯事であり、完全に安全ということはあり得ないのです。しかし、暗号キーは他のデータよりもはるかに重要性が高いことを考えると、せめてキーの保護だけでも改善できないものでしょうか。</p>
 	<p>すでに述べたように、通常、メモリアドレス空間はプロセスに関連付けられます。そして、2つの異なるプロセスはデフォルトではメモリを共有しないので、当然ながら互いに隔離されています。したがって、あるプロセスで潜在的なメモリバグが発生しても、他のプロセスから暗号キーが誤って漏洩することはありません。ssh-agent のセキュリティはこの原理に基づいています。クライアントまたはリクエスタと<a href="https://linux.die.net/man/1/ssh-agent" target="_blank">エージェント</a>の2つのプロセスが常に関与しています。</p>
 	<blockquote><em>エージェントはリクエストチャンネルでプライベートキーを送信することはありません。その代わり、プライベートキーを必要とする操作はエージェントが実行し、結果はリクエスタに返されます。この方法では、プライベートキーがエージェントを使用するクライアントに公開されません。</em></blockquote>
 	<p>リクエスタは通常、ネットワークに接続するプロセスまたは信頼できない入力を処理するプロセスですしたがって、リクエスタはメモリ関連の脆弱性の影響をかなり受けやすいのですが、このスキームでは暗号化キーにアクセスできないので（キーは別のプロセスアドレス空間に存在するため）、漏洩することはありません。</p>
-	<p>Cloudflareでは同じ原理を<a href="https://blog.cloudflare.com/heartbleed-revisited/">Keyless SSL</a>に採用しています。お客様のプライベートキーは隔離された環境に保管され、インターネット接続から保護されます。</p>
+	<p>Cloudflareでは同じ原理を<a href="https://blog.cloudflare.com/heartbleed-revisited">Keyless SSL</a>に採用しています。お客様のプライベートキーは隔離された環境に保管され、インターネット接続から保護されます。</p>
 	<h3 id="linux-kernel-key-retention-service">Linux Kernel Key Retention Service</h3>
 	<p>クライアントまたはリクエスタと、エージェントのアプローチは、プライベートキーまたは暗号化キーの保護を強化しますが、いくつかの欠点があります。</p>
 	<ul>
@@ -95,7 +95,7 @@ IndexError: Replacement index 2 out of range for positional args tuple
 	</ul>
 	<p>Linux Kernel Key Retention Service は、キーとキーリングの2類のエンティティで動作します。キーリングは特別なタイプのキーです。ファイルやディレクトリに例えるなら、キーがファイルで、キーホルダーはディレクトリと言えるでしょう。さらに、ファイルシステムのツリー階層に似たキー階層を表しています。キーリングはキーや他のキーリングを参照しますが、実際のデータを保持するファイルと同様に、実際の暗号化マテリアルを保持できるのはキーだけです。</p>
 	<p>キーにはいくつかの種類があります。キーの種類によって、キーに対して実行できる操作が決まります。たとえば、ユーザー型とログオン型のキーは任意のブロブデータを保持できますが、ログオンキーはユーザー空間に読み込まれることはなく、カーネル内サービスによって排他的に使用されます。</p>
-	<p>エージェントプロセスの代わりにカーネルを使用する目的において、最も興味深いキーの種類なのは<a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html" target="_blank">非対称タイプ</a>です。これはカーネル内にプライベートキーを保持でき、許可されたアプリケーションがキーを使用して一部のデータを復号化または署名できるようにします。現在はRSAキーのみをサポートしていますが、 <a href="https://lore.kernel.org/lkml/20221014100737.94742-2-ignat@cloudflare.com/" target="_blank">ECDSAキーのサポート</a>を追加する作業が進行中です。</p>
+	<p>エージェントプロセスの代わりにカーネルを使用する目的において、最も興味深いキーの種類なのは<a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html" target="_blank">非対称タイプ</a>です。これはカーネル内にプライベートキーを保持でき、許可されたアプリケーションがキーを使用して一部のデータを復号化または署名できるようにします。現在はRSAキーのみをサポートしていますが、 <a href="https://lore.kernel.org/lkml/20221014100737.94742-2-ignat@cloudflare.com" target="_blank">ECDSAキーのサポート</a>を追加する作業が進行中です。</p>
 	<p>キーはカーネル内の暗号化マテリアルを保護する役割を果たしますが、キーリングはキーの有効期間と共有アクセスを決定します。最も単純な形式では、特定のキーリングが破棄されると、そのキーリングにのみリンクされているすべてのキーも安全に破棄されます。カスタムキーホルダーを手動で作成することもできますが、このサービスの最も強力な機能の1つは、「スペシャルキーホルダー」でしょう。</p>
 	<p>これらのキーリングはカーネルによって暗黙的に作成され、その寿命はプロセスやユーザーのような別のカーネルオブジェクトの寿命に束縛されています。(現在「暗黙の」<a href="https://man7.org/linux/man-pages/man7/keyrings.7.html" target="_blank"> キーリング</a>の4つのカテゴリがありますが、本記事の目的では、最も広く使われている2つのカテゴリ、プロセスキーリングとユーザーキーリングに注目します。</p>
 	<p>ユーザーキーリングの有効期間は特定のユーザーの存在にバインドされており、このキーリングは同じUIDのすべてのプロセス間で共有されます。したがって、あるプロセスがキーをユーザーキーリングに保存し、同じユーザーとして実行されている別のプロセスがキーを取得または使用などが可能です。UIDがシステムから削除されると、関連するユーザーキーリングの下にあるすべてのキー（およびその他のキーリング） がカーネルによって安全に破棄されます。</p>

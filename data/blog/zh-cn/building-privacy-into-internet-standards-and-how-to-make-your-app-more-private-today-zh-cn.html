@@ -2,12 +2,12 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-14.png" class="kg-image" alt="Building privacy into Internet standards and how to make your app more private today" loading="lazy"></figure>
 	<p>如果在互联网上运行一个注重隐私的应用程序或服务，用以证明用户隐私受到保护的方法非常有限。您可以尽量减少日志和数据收集，但即使如此，在网络层面，每个 HTTP 请求必有一个<em>来源。</em>HTTP 请求产生的信息（例如用户的 IP 地址和 TLS 指纹）可能是敏感信息，特别是与应用程序数据组合在一起时。</p>
 	<p>要实质性提高用户隐私性，需要改变 HTTP 请求从客户端设备发送到运行您应用程序逻辑的服务器的方式。这就是 Privacy Gateway 的动机：在客户端和应用程序服务器之间转发加密的 HTTP 请求和响应。借助 Privacy Gateway，Cloudflare 知道请求的来源，但不知道其内容，而应用程序可以看到请求的内容，但不知道其来源。<strong>Cloudflare 和应用程序服务器都不了解全部信息</strong>，提高了最终用户的隐私性。</p>
-	<p>我们最近为一流的女性健康应用程序 <a href="https://flo.health/" target="_blank">Flo Health Inc.</a> 部署了 Privacy Gateway，帮助他们推出<a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank">匿名模式</a>。部署 Privacy Gateway 后，匿名模式用户的所有请求数据在应用程序用户和 Flo 之间传输时都会加密，Flo 将无法看到用户的 IP 地址，Cloudflare 也无法看到请求数据的内容。</p>
+	<p>我们最近为一流的女性健康应用程序 <a href="https://flo.health" target="_blank">Flo Health Inc.</a> 部署了 Privacy Gateway，帮助他们推出<a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank">匿名模式</a>。部署 Privacy Gateway 后，匿名模式用户的所有请求数据在应用程序用户和 Flo 之间传输时都会加密，Flo 将无法看到用户的 IP 地址，Cloudflare 也无法看到请求数据的内容。</p>
 	<p>借助 Privacy Gateway，其他一些隐私要求很高的应用程序也成为可能：</p>
 	<ul>
 		<li>浏览器开发人员在收集用户的遥测数据时，可以更尊重隐私（安装了哪些扩展程序，用户可能改变了哪些默认值），同时从中删除潜在的个人可识别信息（IP 地址）。</li>
 		<li>用户可以访问医疗保健网站报告 Covid-19 接触情况，不必担心网站会跟踪他们的 IP 地址和/或位置。</li>
-		<li>DNS 解析器可以提供 DNS 查询，无需将请求者与其正在访问的网站联系起来——我们利用 <a href="https://blog.cloudflare.com/oblivious-dns/">Oblivious DNS</a> 来实现这一点。<br>Privacy Gateway 基于<a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp/" target="_blank">新兴的 IETF 标准 Oblivious HTTP (OHTTP)</a>，根据标准<a href="https://datatracker.ietf.org/doc/html/rfc9180" target="_blank">混合公钥密码学</a>构建。</li>
+		<li>DNS 解析器可以提供 DNS 查询，无需将请求者与其正在访问的网站联系起来——我们利用 <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS</a> 来实现这一点。<br>Privacy Gateway 基于<a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp" target="_blank">新兴的 IETF 标准 Oblivious HTTP (OHTTP)</a>，根据标准<a href="https://datatracker.ietf.org/doc/html/rfc9180" target="_blank">混合公钥密码学</a>构建。</li>
 	</ul>
 	<h2 id="-">工作原理</h2>
 	<p>除基本的代理服务外，Oblivious HTTP 标准的主要创新是将这些消息<em>对应用程序服务器</em>加密，因此，Privacy Gateway 只知道每条消息的来源和目的地，对应用程序数据一无所知。</p>
@@ -26,7 +26,7 @@
 		<li>客户端<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.1" target="_blank">使用应用程序服务器的公钥将 HTTP 请求</a>封装起来，并通过 HTTPS 连接将其发送给 Privacy Gateway。</li>
 		<li>Privacy Gateway 通过其自身与应用程序服务器的独立 HTTPS 连接将请求转发给服务器。</li>
 		<li>应用程序服务器将请求解封装，将其转发给可以产生响应的目标服务器。</li>
-		<li>应用程序服务器向 Privacy Gateway 返回一个<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2" target="_blank">封装的响应</a>，然后将结果转发给客户端。<br>按照协议的规定，从客户端到服务器的请求使用最先进的公钥加密标准 HPKE（您可<a href="https://blog.cloudflare.com/hybrid-public-key-encryption/">在此</a>进一步了解）进行加密。我们已经采取了额外的措施来确保 OHTTP 使用 HPKE 是安全的，例如我们对该协议进行了<a href="https://blog.cloudflare.com/zh-cn/stronger-than-a-promise-proving-oblivious-http-privacy-properties-zh-cn/">形式分析</a>，计划在未来几周发表更深入的分析。</li>
+		<li>应用程序服务器向 Privacy Gateway 返回一个<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2" target="_blank">封装的响应</a>，然后将结果转发给客户端。<br>按照协议的规定，从客户端到服务器的请求使用最先进的公钥加密标准 HPKE（您可<a href="https://blog.cloudflare.com/hybrid-public-key-encryption">在此</a>进一步了解）进行加密。我们已经采取了额外的措施来确保 OHTTP 使用 HPKE 是安全的，例如我们对该协议进行了<a href="https://blog.cloudflare.com/zh-cn/stronger-than-a-promise-proving-oblivious-http-privacy-properties-zh-cn">形式分析</a>，计划在未来几周发表更深入的分析。</li>
 	</ol>
 	<h2 id="privacy-gateway-">Privacy Gateway 如何提高最终用户的隐私性</h2>
 	<p>这种交互存在两类隐私，我们通俗地称之为<em>请求隐私</em>和<em>客户端隐私</em>。</p>
@@ -63,7 +63,7 @@
 		<figcaption>Privacy Gateway 配置客户端匿名集的大小为 k</figcaption>
 	</figure>
 	<p>这就是请求隐私。关于客户端位置和身份的所有信息都对应用程序服务器不可见。关于应用程序数据的所有细节都对 Privacy Gateway 不可见。对于 DNS 等敏感应用程序和协议，将此类元数据与应用程序数据分开是提高最终用户隐私性的重要步骤。</p>
-	<p>此外，应用程序应注意，切勿在其个人请求中透露每个客户端的敏感信息。Privacy Gateway 不能保证应用程序没有在请求正文中发送可识别信息（例如电子邮件地址、全名等），因为它看不到明文的应用程序数据。应用程序在请求中透露用户的可识别信息可能会侵犯客户端隐私，但不会侵犯请求隐私。因此，不同于我们完整的<a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier/">应用程序级别隐私代理</a>产品，Privacy Gateway 并<em>不</em>是用作任意应用程序和流量的基于通用代理的协议，而是要成为敏感应用程序的特殊目的的协议，包括 DNS（证据示例 <a href="https://blog.cloudflare.com/oblivious-dns/">Oblivious DNS-over-HTTPS</a>）、遥测数据或上述通用 API 请求。</p>
+	<p>此外，应用程序应注意，切勿在其个人请求中透露每个客户端的敏感信息。Privacy Gateway 不能保证应用程序没有在请求正文中发送可识别信息（例如电子邮件地址、全名等），因为它看不到明文的应用程序数据。应用程序在请求中透露用户的可识别信息可能会侵犯客户端隐私，但不会侵犯请求隐私。因此，不同于我们完整的<a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier">应用程序级别隐私代理</a>产品，Privacy Gateway 并<em>不</em>是用作任意应用程序和流量的基于通用代理的协议，而是要成为敏感应用程序的特殊目的的协议，包括 DNS（证据示例 <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS-over-HTTPS</a>）、遥测数据或上述通用 API 请求。</p>
 	<h2 id="-privacy-gateway-">将 Privacy Gateway 集成到您的应用程序中</h2>
 	<p>与 Privacy Gateway 集成需要应用程序实施 OHTTP 协议的客户端和服务器端。我们简要了解下需要些什么。</p>
 	<h3 id="--1">服务器集成</h3>
@@ -180,5 +180,5 @@ fmt.Println(response)
 	<!--kg-card-end: markdown-->
 	<p>如果您已有现成的应用程序，这类独立客户端对您可能不是很有用。为帮助与您的现有应用程序集成，我们创建了一个 <a href="https://github.com/cloudflare/app-relay-client-library" target="_blank">OHTTP 客户端库示例</a>，可与 iOS 和 macOS 应用程序兼容。此外，如果希望有语言或平台支持来帮助简化客户端或服务器端的集成，请告诉我们！</p>
 	<h2 id="--3">是否感兴趣？</h2>
-	<p>Privacy Gateway 目前处于提前体验阶段，精选注重隐私的公司和合作伙伴参与体验。如有兴趣，<a href="https://www.cloudflare.com/lp/privacy-edge/" target="_blank">请联系我们</a>。</p>
+	<p>Privacy Gateway 目前处于提前体验阶段，精选注重隐私的公司和合作伙伴参与体验。如有兴趣，<a href="https://www.cloudflare.com/lp/privacy-edge" target="_blank">请联系我们</a>。</p>
 </div>

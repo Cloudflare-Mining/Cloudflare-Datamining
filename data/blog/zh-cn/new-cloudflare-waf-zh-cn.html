@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-16.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Cloudflare <a href="https://www.cloudflare.com/zh-cn/waf/" target="_blank">Web 应用程序防火墙（WAF）</a>每天阻止超过 570 亿次 HTTP 请求，按照没秒计算可达到65万次。过滤这些流量的原始代码是由 Cloudflare 现任 CTO 编写的，迄今 WAF 已享誉无数，包括<a href="https://www.cloudflare.com/zh-cn/gartner-mq-waf-2020/" target="_blank">在 2020 年度 Gartner Magic Quadrant WAF 评测中获得“执行能力”最高分</a>。</p>
+	<p>Cloudflare <a href="https://www.cloudflare.com/zh-cn/waf" target="_blank">Web 应用程序防火墙（WAF）</a>每天阻止超过 570 亿次 HTTP 请求，按照没秒计算可达到65万次。过滤这些流量的原始代码是由 Cloudflare 现任 CTO 编写的，迄今 WAF 已享誉无数，包括<a href="https://www.cloudflare.com/zh-cn/gartner-mq-waf-2020" target="_blank">在 2020 年度 Gartner Magic Quadrant WAF 评测中获得“执行能力”最高分</a>。</p>
 	<p>由于我们非常重视在代码不便于维护、性能下降或无法扩展时对代码进行替换，我们经常重写 Cloudflare 堆栈的关键部分。这样做很有必要，因为我们的快速成长使得昨日的解决方案不再可行。一段时间以来，我们一直努力将 <a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">John 编写的原始 LuaJIT 代码</a>替换为用 Rust 编写的新代码，并改进了用户界面。</p>
 	<p>我们很高兴能推出全新的 Cloudflare Web 应用程序防火墙。</p>
 	<p>今天开始，Cloudflare 上新建帐户的 10% 在开通 Pro 或以上计划时即可使用全新 WAF。这个比例将在 4 月期间增加到 100%，然后将开始对现有客户进行迁移。Enterprise 客户可以联系其帐户团队以提前迁移。</p>
@@ -8,7 +8,7 @@
 	<p>Web 应用程序防火墙（WAF）是 Cloudflare 平台的核心组成部分。作为组合中最常用的产品之一，我们从大规模运行中获得了很多反馈和经验，在这次重大迭代中给我们提供了指引。全新 WAF 提供：</p>
 	<ul>
 		<li><em><strong>更佳的规则浏览和配置</strong> </em>—— 轻松一键部署但不失强大的工具：高级过滤、批量编辑、规则标记等。打开所有 Wordpress 规则、将所有 Cloudflare 托管规则设置为 LOG 或找出哪些规则没有运行现已变得轻而易举。</li>
-		<li><em><strong>全新匹配引擎</strong></em> —— 以 Rust 编写，支持 <a href="https://blog.cloudflare.com/how-we-made-firewall-rules/">wirefilter</a> 语法 —— 与自定义防火墙规则所用语法相同。这个引擎让我们加快托管规则的部署，并允许 WAF 部署到更多流量上，从而扩展到下一个级别。与此同时，性能和安全性都得以改善。</li>
+		<li><em><strong>全新匹配引擎</strong></em> —— 以 Rust 编写，支持 <a href="https://blog.cloudflare.com/how-we-made-firewall-rules">wirefilter</a> 语法 —— 与自定义防火墙规则所用语法相同。这个引擎让我们加快托管规则的部署，并允许 WAF 部署到更多流量上，从而扩展到下一个级别。与此同时，性能和安全性都得以改善。</li>
 		<li><em><strong>更新的规则集</strong> —— </em>全新 WAF 附带更新的规则集，提供更佳的控制以将规则状态与操作分开。Cloudflare OWASP 核心规则集也已基于 OWASP 核心规则集最新版本（截至撰写时为 v3.3），与当前版本相比，增加了 paranoia 级别，并改善了误报率。</li>
 		<li><em><strong>全球配置</strong> —— </em>在您的整个帐户部署相同的配置。将规则以规则集的方式分组，并使用原生版本控制和回滚能力。</li>
 	</ul>
@@ -42,11 +42,11 @@
 		<li>提供了更佳的过滤和匹配能力，实现灵活部署，更易处理异常</li>
 		<li>采用 wirefilter 语法作为托管规则集的基础以统一产品功能集</li>
 	</ul>
-	<p>最后一点对我们和我们的用户来说都是特别重要的，因为这种语法已经在我们的自定义<a href="https://developers.cloudflare.com/firewall/" target="_blank">防火墙规则</a>中使用，后者甚至使用同样的基础 Rust 库来执行过滤器。</p>
-	<p>新引擎是在 <a href="https://www.rust-lang.org/" target="_blank">Rust</a> 中实现的，在<a href="https://blog.cloudflare.com/tag/rust/">本博客中</a>我们已经多次提到我们对这种语言的热爱。我们也在努力确保新的实现不仅改善安全，也能提高速度，有关详情将在日后的博文中详细介绍。</p>
+	<p>最后一点对我们和我们的用户来说都是特别重要的，因为这种语法已经在我们的自定义<a href="https://developers.cloudflare.com/firewall" target="_blank">防火墙规则</a>中使用，后者甚至使用同样的基础 Rust 库来执行过滤器。</p>
+	<p>新引擎是在 <a href="https://www.rust-lang.org" target="_blank">Rust</a> 中实现的，在<a href="https://blog.cloudflare.com/tag/rust">本博客中</a>我们已经多次提到我们对这种语言的热爱。我们也在努力确保新的实现不仅改善安全，也能提高速度，有关详情将在日后的博文中详细介绍。</p>
 	<h3 id="-cloudflare-">更新的 Cloudflare 规则集</h3>
 	<p>Cloudflare 规则集已更新并移植到新的 WAF 上。值得注意的是，该规则集目前使用 wirefilter 语法，且规则状态与规则操作分离，使您能独立配置两者。</p>
-	<p>Cloudflare OWASP 核心规则集也获得了独立于引擎的一次重大更新。当前 Cloudflare WAF 实施 <a href="https://owasp.org/www-project-modsecurity-core-rule-set/" target="_blank">OWASP ModSecurity 核心规则集</a>的 2.x 版。在新 WAF 中，Cloudflare OWASP 核心规则集直接基于 <a href="https://github.com/SpiderLabs/owasp-modsecurity-crs" target="_blank">GitHub 库</a>上可用的最新 3.3 版。</p>
+	<p>Cloudflare OWASP 核心规则集也获得了独立于引擎的一次重大更新。当前 Cloudflare WAF 实施 <a href="https://owasp.org/www-project-modsecurity-core-rule-set" target="_blank">OWASP ModSecurity 核心规则集</a>的 2.x 版。在新 WAF 中，Cloudflare OWASP 核心规则集直接基于 <a href="https://github.com/SpiderLabs/owasp-modsecurity-crs" target="_blank">GitHub 库</a>上可用的最新 3.3 版。</p>
 	<p>与现有系统相比，新的 Cloudflare OWASP 核心规则集以及新增的引擎功能带来了一些改进：</p>
 	<ul>
 		<li>更少误报，更强大的应用程序通用规则</li>
@@ -61,7 +61,7 @@
 	<p>为了协助将最新版本的 OWASP ModSecurity 核心规则集转换为 Cloudflare 部署，我们的团队还构建了一个 ModSecurity 到 wirefilter 语法转换器。这将使我们能在上游发布任何改进后的短时间内轻松部署和更新规则集，以确保客户始终获得最新版本。我们也计划将来开源并在用户界面中公布转换器，以便客户能更易从基于 ModSecurity 的 WAF 迁移到 Cloudflare。</p>
 	<h3 id="--3">全球配置</h3>
 	<p>从一开始，Cloudflare 一直在基于站点的模型上运行 Cloudflare WAF。这种方式非常适用于简单的用例，即客户保护少量应用程序，或者在每个站点的应用程序类型非常多样化。</p>
-	<p>更复杂或统一的跨站点部署通常通过利用 <a href="https://api.cloudflare.com/" target="_blank">API </a>或自动化工具来实现，如我们的<a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank"> Cloudflare Terraform 提供商</a>。</p>
+	<p>更复杂或统一的跨站点部署通常通过利用 <a href="https://api.cloudflare.com" target="_blank">API </a>或自动化工具来实现，如我们的<a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank"> Cloudflare Terraform 提供商</a>。</p>
 	<p>通过新 WAF，可在单一帐户下的任意流量过滤器上进行规则集部署。例如：</p>
 	<ul>
 		<li>在我的所有站点中部署 Cloudflare 托管规则集。</li>

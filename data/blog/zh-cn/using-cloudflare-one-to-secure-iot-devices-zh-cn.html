@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-IoT.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>您的房子里可能有一个不安全的设备，带有可被利用的漏洞。还有您的办公室。甚至是您孩子的学校。相机、打印机、音箱、门禁读卡器、温度计和甚至心脏监控器……这些设备都是或可能是物联网（IoT）设备。这些物联网设备无缝集成到我们的现代生活中，以提高效率和对我们环境的控制——但它们出了名的不安全。这是因为设备硬件本质上受到约束且计算能力有限，往往导致最低程度的访问控制、硬编码的密码且无法远程打补丁。</p>
-	<p>这一威胁的现实有可能产生严重后果。例如，在 2016 年的 <a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/">Mirai 僵尸网络攻击</a>中，黑客利用数百万个物联网设备来组成一个大规模的僵尸网络，足以发动能导致互联网大部分瘫痪的 DDoS 攻击，包括推特、英国卫报和 CNN。这种攻击绝不罕见。Cloudflare 在 2021 年 3 月亲身体验了这一现实，当时我们潜在的物理安全摄像头供应商之一 Verkada 遭到入侵，一名黑客得以访问 Verkada 远程管理摄像头的内部支持工具，从而能够横向移动到网络中的其他设备。庆幸的是，Cloudflare 使用的一个 Zero Trust 模型<a href="https://blog.cloudflare.com/about-the-march-8-9-2021-verkada-camera-hack/">阻止了黑客的横向移动</a>；这次事件仅影响到摄像头，而非任何其他东西。</p>
+	<p>这一威胁的现实有可能产生严重后果。例如，在 2016 年的 <a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis">Mirai 僵尸网络攻击</a>中，黑客利用数百万个物联网设备来组成一个大规模的僵尸网络，足以发动能导致互联网大部分瘫痪的 DDoS 攻击，包括推特、英国卫报和 CNN。这种攻击绝不罕见。Cloudflare 在 2021 年 3 月亲身体验了这一现实，当时我们潜在的物理安全摄像头供应商之一 Verkada 遭到入侵，一名黑客得以访问 Verkada 远程管理摄像头的内部支持工具，从而能够横向移动到网络中的其他设备。庆幸的是，Cloudflare 使用的一个 Zero Trust 模型<a href="https://blog.cloudflare.com/about-the-march-8-9-2021-verkada-camera-hack">阻止了黑客的横向移动</a>；这次事件仅影响到摄像头，而非任何其他东西。</p>
 	<p>但即使我们没有受到影响，我们也将这一事件视为一个挑战，进一步推进我们的安全产品。因此，我们自问：能否使用我们自己的产品来保护物联网设备本身——即使它们与生产系统位于同一个网络上——从而确保这些出名不安全的设备一旦遭到入侵时会被隔离？使用 Cloudflare One，答案是肯定的。</p>
 	<h3 id="-"><strong>当前解决方案：充满复杂性的安全</strong></h3>
 	<h3 id="zero-trust-">Zero Trust 模型</h3>

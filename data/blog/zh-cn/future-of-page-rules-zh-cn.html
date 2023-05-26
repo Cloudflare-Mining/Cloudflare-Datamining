@@ -4,7 +4,7 @@
 	<p>页面规则只能在 URL 或 URL 模式上触发。每个区域最多有 125 个页面规则。页面规则也很难调试。甚至“页面”的概念现在听起来也比较过时。</p>
 	<p>我们将用四种新的专用产品替换页面规则，从而提供更多的规则配额、更多的功能和更细的粒度。这些产品可立即用于测试。页面规则并未下架，但我们预计能够很快正式开始报废流程。</p>
 	<h3 id="-">为什么要更改？</h3>
-	<p>自<a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co/">推出</a>以来的 10 年里，页面规则已成为一款成熟的产品，并且被广泛采用。仅在过去三个月中就部署了 <em>100 万个</em>页面规则。</p>
+	<p>自<a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">推出</a>以来的 10 年里，页面规则已成为一款成熟的产品，并且被广泛采用。仅在过去三个月中就部署了 <em>100 万个</em>页面规则。</p>
 	<p>页面规则用于调整文件应缓存多长时间，用于覆盖某些 URL 的区域范围设置，用于创建简单的 URL 重定向，用于选择性地添加/删除 HTTP 标头。页面规则就是如同<em>多刀工具</em>一样的产品。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-33.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Photo by <a href="https://unsplash.com/@zelebb?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Andrey Matveev</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Unsplash</a></figcaption>
@@ -33,7 +33,7 @@
 	<p>其每个“功能”具有离散、独立的区域，从而更轻松地可视化 HTTP 请求的流程：</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-58.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>现在不再是单个页面规则，我们可以看到，Origin Rules 将最先运行，然后是 Cache Rules，然后是 Configuration Rules，最后是 Dynamic Redirects。这意味着我们将先修改主机标头，然后再调整缓存设置。我们将会先调整缓存参数，然后再修改为特定流量启用哪些设置。</p>
-	<p>我们已将这些新产品集成到<a href="https://blog.cloudflare.com/traffic-sequence-which-product-runs-first/">流量序列</a>仪表板元素中。</p>
+	<p>我们已将这些新产品集成到<a href="https://blog.cloudflare.com/traffic-sequence-which-product-runs-first">流量序列</a>仪表板元素中。</p>
 	<p>（对于同时使用页面规则和这套新产品的区域：新产品将优先于页面规则。这意味着如果发生冲突，页面规则将被覆盖）。</p>
 	<h3 id="-125-">我需要超过 125 个页面规则</h3>
 	<p>页面规则的限制之一是如何在我们的后端架构上存储和执行每个页面规则。我们最多只能为每个区域提供 125 个页面规则，超过此数字，就会出现性能下降 — HTTP 请求的延迟时间开始增加，因为评估它们与页面规则需要的时间越来越长。为了克服这一限制，用户将简单的工作负载转移到了 Workers，或者将区域分成多个子域，每个子域都有 125 个页面规则配额。这些都不是客户的理想选择。</p>

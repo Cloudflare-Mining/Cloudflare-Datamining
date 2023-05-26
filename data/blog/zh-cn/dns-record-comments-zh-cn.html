@@ -2,10 +2,10 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image5-8.png" class="kg-image" alt="One of our most requested features is here: DNS comments and tags" loading="lazy"></figure>
 	<p>从今天开始，我们将支持所有区域计划在 DNS 记录上添加自定义注释。Pro、Business 和 Enterprise 计划的用户也可以为 DNS 记录添加标记。</p>
 	<h3 id="dns-">DNS 记录很重要</h3>
-	<p><a href="https://www.cloudflare.com/learning/dns/dns-records/" target="_blank">DNS 记录</a>对于运营网站或 Web 应用非常重要。一般来说，它们用于将人类可读的主机名映射到机器可读的信息，最常见的是 IP 地址。除了将主机名映射到 IP 地址之外，它们还可以满足许多其他用例，例如：</p>
+	<p><a href="https://www.cloudflare.com/learning/dns/dns-records" target="_blank">DNS 记录</a>对于运营网站或 Web 应用非常重要。一般来说，它们用于将人类可读的主机名映射到机器可读的信息，最常见的是 IP 地址。除了将主机名映射到 IP 地址之外，它们还可以满足许多其他用例，例如：</p>
 	<ul>
 		<li>通过设置 MX 记录，确保电子邮件可以到达你的收件箱。</li>
-		<li><a href="https://blog.cloudflare.com/zh-cn/tackling-email-spoofing-zh-cn/">通过以 TXT 记录形式</a>配置 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/" target="_blank">SPF</a>、<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/" target="_blank">DMARC</a> 和 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/" target="_blank">DKIM</a> 策略，防止电子邮件欺骗和网络钓鱼。</li>
+		<li><a href="https://blog.cloudflare.com/zh-cn/tackling-email-spoofing-zh-cn">通过以 TXT 记录形式</a>配置 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record" target="_blank">SPF</a>、<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record" target="_blank">DMARC</a> 和 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record" target="_blank">DKIM</a> 策略，防止电子邮件欺骗和网络钓鱼。</li>
 		<li>通过添加 TXT (或 CNAME) 记录来验证 TLS 证书。</li>
 		<li>通过创建 CAA 记录来指定允许代表您的域签发证书的证书颁发机构。</li>
 		<li>为其他 Web 服务(网站托管、电子邮件托管、Web 存储等)验证域名的所有权——一般通过创建一个 TXT 记录。</li>
@@ -47,6 +47,6 @@ sub1.mycoolwebpage.xyz.  86400  IN  TXT  "hBeFxN3qZT40" ; Verification record fo
 	<p>“仪表板显示设置” 允许您选择用户界面中显示那些特别的记录类型。还有一个选项是，切换在各自的 DNS 记录下内联显示记录标记，还是仅显示一个图标（如果该记录有标记）。</p>
 	<p>最后但同样重要的是，作为本次发布的一部分，我们增加了 DNS 记录表的宽度。新表更好地利用了现有的水平空间，并允许用户查看 DNS 记录的更多细节，特别是在子域名或内容较长的情况下。</p>
 	<h3 id="--2">马上试试吧</h3>
-	<p>DNS 记录注释和标记今天已经可用。请在 Cloudflare 仪表板中进入区域的 <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns" target="_blank">DNS 选项卡</a>，即可创建您的第一条注释或标记。如果您还没有使用 Cloudflare DNS，欢迎<a href="https://dash.cloudflare.com/sign-up" target="_blank">免费注册</a>，只需几分钟。</p>
-	<p>如需进一步了解 DNS 记录注释和标记，请访问<a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/" target="_blank">开发人员文档</a>。</p>
+	<p>DNS 记录注释和标记今天已经可用。请在 Cloudflare 仪表板中进入区域的 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank">DNS 选项卡</a>，即可创建您的第一条注释或标记。如果您还没有使用 Cloudflare DNS，欢迎<a href="https://dash.cloudflare.com/sign-up" target="_blank">免费注册</a>，只需几分钟。</p>
+	<p>如需进一步了解 DNS 记录注释和标记，请访问<a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes" target="_blank">开发人员文档</a>。</p>
 </div>

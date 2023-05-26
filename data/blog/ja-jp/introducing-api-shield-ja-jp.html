@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
 	<p>APIは、インターネットに接続された最新アプリケーションの生命線です。ミリ秒の単位で、APIはモバイルアプリケーションからのリクエストを運びます。例えば、このフードデリバリーの注文をする、この写真に「いいね」をつけるなど。そして、IoT デバイスに向けて指示を出します。たとえば、自動車のロックを解除します、洗濯を開始します、ユーザーが5キロ走り終えましたなど、この他にも数えきれないほどのコールがあります。</p>
 	<p>また、APIは不正行為やデータの漏えいを狙う広範な攻撃の対象となることが増えています。Gartnerによると、「2021年までに、Web対応アプリケーションの 90%がUIではなく公開APIの形で攻撃対象領域を増やし、2019年の40％から増加した」とのことです。「Gartnerは、2022年までに、APIの悪用が頻度の低い攻撃ベクトルから頻度の高い攻撃ベクトルに移行し、その結果、エンタープライズ Web アプリケーションのデータ漏えいが発生すると予測しています」[1] [2]。Cloudflare のネットワークを横断する毎秒1,800万リクエストのうち、50% はAPIに向けられ、これらのリクエストの大半は悪意のあるものとしてブロックされています。</p>
-	<p>これらの脅威に対処するために、Cloudflareは強力なクライアント証明書ベースのIDと厳格なスキーマベースの検証を使用して、APIの保護をシンプルにしています。本日付で、これらの機能は、新しい「API Shield」サービス内のすべてのプランで無料で利用できます。さらに本日付けで、セキュリティ上のメリットは、JSONではなくプロトコルバッファなどのバイナリ形式を使用する<a href="https://blog.cloudflare.com/announcing-grpc/">gRPCベースのAPIにも広がり</a>、お客様の間で人気が高まっています。</p>
+	<p>これらの脅威に対処するために、Cloudflareは強力なクライアント証明書ベースのIDと厳格なスキーマベースの検証を使用して、APIの保護をシンプルにしています。本日付で、これらの機能は、新しい「API Shield」サービス内のすべてのプランで無料で利用できます。さらに本日付けで、セキュリティ上のメリットは、JSONではなくプロトコルバッファなどのバイナリ形式を使用する<a href="https://blog.cloudflare.com/announcing-grpc">gRPCベースのAPIにも広がり</a>、お客様の間で人気が高まっています。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>新機能の詳細については、引き続きこの記事をお読みください。または、「デモンストレーション」の段落にジャンプして、最初の API Shield ルールの設定を開始する方法の例を参照してください。</p>
 	<h3 id="-">ポジティブセキュリティモデルとクライアント証明書</h3>
 	<p>「ポジティブセキュリティ」モデルは、既知の動作とIDのみを許可し、他のすべてを拒否するモデルです。これは、Webアプリケーションファイアウォール（WAF）によって適用される、従来の「ネガティブセキュリティ」モデルとは逆です。ネガティブセキュリティモデルでは、問題のあるIP、ASN、国、または問題のある署名を持つリクエスト（SQLインジェクションの試み、など）以外のリクエストはすべて許可します。</p>
-	<p>API にポジティブセキュリティモデルを実装することは、クレデンシャルスタッフィング攻撃やその他の自動スキャンツールのノイズを除去する最も直接的な方法です。また、ポジティブモデルへの第一歩は、相互 TLS 認証などの強力な認証を展開することです。この認証は、 <a href="https://spycloud.com/2020-annual-credential-exposure-report/" target="_blank">パスワードの再利用や共有</a>に対して脆弱ではありません。</p>
+	<p>API にポジティブセキュリティモデルを実装することは、クレデンシャルスタッフィング攻撃やその他の自動スキャンツールのノイズを除去する最も直接的な方法です。また、ポジティブモデルへの第一歩は、相互 TLS 認証などの強力な認証を展開することです。この認証は、 <a href="https://spycloud.com/2020-annual-credential-exposure-report" target="_blank">パスワードの再利用や共有</a>に対して脆弱ではありません。</p>
 	<p>2014年に Universal SSL を使用してサーバー証明書の発行を簡素化したように、API Shieldでは、クライアント証明書の発行プロセスを減らして、Cloudflare ダッシュボードのいくつかのボタンをクリックするだけで済むようになりました。完全にホストされたパブリックキーインフラストラクチャ (PKI) を提供することで、独自の認証局 (CA) を操作してセキュリティで保護するのではなく、アプリケーションと機能に集中できます。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_Mutual_TLS.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--1">スキーマ検証による有効なリクエストの実行</h3>
@@ -20,7 +20,7 @@
 	<p>どちらの場合も、API は実際には Cloudflare Workers® と Workers KV を使用して構築されていますが、インターネットにアクセスできるエンドポイントに置き換えることができます。</p>
 	<h3 id="1-api-">1.APIの設定</h3>
 	<p>APIで安全に通信できるように、IoT デバイスおよびモバイルアプリケーションを設定する前に、API エンドポイントをブートストラップする必要があります。例をシンプルに保ちながら、追加のカスタマイズも可能にするために、API を Cloudflare Worker として実装しました (<a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank">To-Do リストのチュートリアル </a>からコードを借用)。</p>
-	<p>この例では、temperatureはソースIPアドレスをキーとして使用して Workers KV に格納されますが、これは<a href="https://developers.cloudflare.com/access/service-auth/mtls-headers/" target="_blank">クライアント証明書の値</a>と簡単に置き換えることができます (例:フィンガープリント)。以下に示すコードでは、POSTが作られたときにtemperatureとタイムスタンプを KV に保存し、GETリクエストが行われたときに最新の 5 つのtemperatureを返します。</p>
+	<p>この例では、temperatureはソースIPアドレスをキーとして使用して Workers KV に格納されますが、これは<a href="https://developers.cloudflare.com/access/service-auth/mtls-headers" target="_blank">クライアント証明書の値</a>と簡単に置き換えることができます (例:フィンガープリント)。以下に示すコードでは、POSTが作られたときにtemperatureとタイムスタンプを KV に保存し、GETリクエストが行われたときに最新の 5 つのtemperatureを返します。</p>
 	<pre><code>const defaultData = { temperatures: [] }
 
 const getCache = key =&gt; TEMPERATURES.get(key)
@@ -282,9 +282,9 @@ Verifying - Enter Export Password:</code></pre>
 	<h4 id="ios-">iOS アプリケーションに証明書バンドルを追加する</h4>
 	<p>XCode内で、ファイルをクリック → [プロジェクト名] にファイルを追加して、pfxファイルを選択します。「ターゲットに追加する」をチェックした後、確定してください。</p>
 	<h4 id="-url-">クライアント証明書を使用するためにURLセッションコードを変更します。</h4>
-	<p><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift/" target="_blank">本稿</a>ではPKCS#11 クラスと<a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate" target="_blank">URLセッションの権限</a>を使って、アプリケーションを操作し、APIとの接続に必要なTLS相互認証を完了する方法をご紹介しました。</p>
+	<p><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift" target="_blank">本稿</a>ではPKCS#11 クラスと<a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate" target="_blank">URLセッションの権限</a>を使って、アプリケーションを操作し、APIとの接続に必要なTLS相互認証を完了する方法をご紹介しました。</p>
 	<h3 id="--4">今後の予定</h3>
-	<p>今後数か月で、APIトラフィックを保護するために設計されたAPI Shieldをさらに拡張し、多数の追加機能を搭載する予定です。独自のPKIの使用を希望されるお客様のために、Cloudflare Accessの一部として <a href="https://developers.cloudflare.com/access/service-auth/mtls/" target="_blank">本日からご利用いただける</a>独自のCAをインポートする機能を提供します。</p>
+	<p>今後数か月で、APIトラフィックを保護するために設計されたAPI Shieldをさらに拡張し、多数の追加機能を搭載する予定です。独自のPKIの使用を希望されるお客様のために、Cloudflare Accessの一部として <a href="https://developers.cloudflare.com/access/service-auth/mtls" target="_blank">本日からご利用いただける</a>独自のCAをインポートする機能を提供します。</p>
 	<p>スキーマ検証ベータに関するフィードバックを受け取り次第、すべてのお客様に向けてこの機能を一般提供する予定です。ベータ版をお試しになり、共有したいことがありましたら、フィードバックをお送りください。</p>
 	<p>証明書やスキーマの検証に加えて、API をよりよく理解できるように、API セキュリティ機能の追加と詳細な分析を提供できることをうれしく思います。さらに希望される機能がある場合は、以下のコメントでお知らせください！</p>
 	<p></p>

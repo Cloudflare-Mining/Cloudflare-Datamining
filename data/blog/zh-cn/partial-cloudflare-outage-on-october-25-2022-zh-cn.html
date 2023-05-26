@@ -5,7 +5,7 @@
 	<p>对此故障我们表示抱歉，并正在采取措施以确保此类事件不再重现。</p>
 	<h3 id="-">背景</h3>
 	<p>Cloudflare 的产品之一是我们的内容分发网络（CDN）。该产品用于在全球缓存网站的资源。然而，某个数据中心不一定缓存了某个资源。该资源有可能是新的，已经过期，或已被清除。如果发生这种情况，当有用户请求该资源时，我们的 CDN 就需要从网站的源服务器获取新的副本。然而，用户正在访问的数据中心仍可能依然远离源服务器。这给客户带来了另一个问题：每次资源没有缓存在该数据中心时，我们都需要从源服务器获取新的副本。</p>
-	<p>为了提高命中率，我们引入了 <a href="https://blog.cloudflare.com/zh-cn/introducing-smarter-tiered-cache-topology-generation-zh-cn/">Tiered Cache</a>。通过使用 Tiered Cache，我们将 CDN 中的数据中心组织成一种层级结构，其中“下层”数据中心更接近最终用户，而“上层”数据中心更接近源服务器。当下层发生缓存不命中时，系统就会检查上层。如果上层有该资源的新副本，我们就能予以提供来响应请求。这提高了性能，并减少了 Cloudflare 为检索未缓存在下层的资源而不得不联系源服务器的次数。</p>
+	<p>为了提高命中率，我们引入了 <a href="https://blog.cloudflare.com/zh-cn/introducing-smarter-tiered-cache-topology-generation-zh-cn">Tiered Cache</a>。通过使用 Tiered Cache，我们将 CDN 中的数据中心组织成一种层级结构，其中“下层”数据中心更接近最终用户，而“上层”数据中心更接近源服务器。当下层发生缓存不命中时，系统就会检查上层。如果上层有该资源的新副本，我们就能予以提供来响应请求。这提高了性能，并减少了 Cloudflare 为检索未缓存在下层的资源而不得不联系源服务器的次数。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/2-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--1">事件时间线和影响</h3>
 	<p>08:40 UTC (世界标准时间），某个 CDN 组件一个存在 bug 的软件版本开始慢慢推出。当用户访问某个配置了 Tiered Cache、Cloudflare Images 或 Bandwidth Alliance 的网站时，这个 bug 就会被触发。这个 bug 导致一部分客户收到 HTTP 状态码 530 —— 表示发生了错误。可从数据中心的本地缓存直接提供的内容不受影响。</p>

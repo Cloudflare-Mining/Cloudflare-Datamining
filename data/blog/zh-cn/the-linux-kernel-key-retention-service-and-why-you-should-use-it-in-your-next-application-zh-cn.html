@@ -4,7 +4,7 @@
 	<p>同时，我们不能安全地把密钥写在某处，并非只是偶尔使用一下。恰恰相反，密钥涉及我们进行加密操作的每个请求。如果一个网站支持 TLS，就会使用私钥建立每个连接。</p>
 	<p>不幸的是，加密密钥有时会泄漏，一旦发生泄漏，就会导致严重的后果。许多泄漏事件的发生是源于软件缺陷和安全漏洞。本文我们将学习 Linux 内核如何帮助保护加密密钥抵御这类潜在安全漏洞：内存访问违规。</p>
 	<h3 id="-">内存访问违规</h3>
-	<p>根据 <a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues/" target="_blank">NSA</a> 的研究，Microsoft 和 Google 的代码中，约 70% 的漏洞都与内存安全问题有关。内存访问错误的后果很多，包括泄露安全数据（包括加密密钥）。加密密钥只是内存中存储的一些（大部分为随机）数据，因此可能和其他内存数据一样遭遇内存泄漏。以下示例展示了加密密钥如何通过重用栈内存发生意外泄漏。</p>
+	<p>根据 <a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues" target="_blank">NSA</a> 的研究，Microsoft 和 Google 的代码中，约 70% 的漏洞都与内存安全问题有关。内存访问错误的后果很多，包括泄露安全数据（包括加密密钥）。加密密钥只是内存中存储的一些（大部分为随机）数据，因此可能和其他内存数据一样遭遇内存泄漏。以下示例展示了加密密钥如何通过重用栈内存发生意外泄漏。</p>
 	<p>broken.c</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cpp">#include &lt;stdio.h&gt;
 #include &lt;stdint.h&gt;
@@ -62,13 +62,13 @@ IndexError: Replacement index 2 out of range for positional args tuple
 	<blockquote><em>Python 2.7.14 容易受 Heap-Buffer-Overflow 和 Heap-Use-After-Free 的影响。</em></blockquote>
 	<p>Golang 有其自己的<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-14185/opov-1/Golang.html" target="_blank">溢出漏洞</a>列表，并有一个<a href="https://pkg.go.dev/unsafe" target="_blank">非安全包</a>。从包的名称可知，常见规则和检查在这个包中是不起作用的。</p>
 	<h3 id="heartbleed">Heartbleed</h3>
-	<p>2014 年发现了心脏出血漏洞。（当时）最常用的密码学库 OpenSSL 泄露了私钥。我们<a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed/">也</a>遭遇了这个漏洞攻击。</p>
+	<p>2014 年发现了心脏出血漏洞。（当时）最常用的密码学库 OpenSSL 泄露了私钥。我们<a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed">也</a>遭遇了这个漏洞攻击。</p>
 	<h3 id="--1">缓解</h3>
 	<p>因此，内存缺陷是必须面对的事实，我们无法真正完全保护自己免受其害。但是，加密密钥比其他数据更具价值，我们是否至少可以更好地保护密钥？</p>
 	<p>如前所述，内存地址空间通常与进程相关。在默认情况下，两个不同的进程不会共用内存，它们的内存地址天然相互隔离。因此，其中一个进程的潜在内存缺陷不会意外泄露另一个进程的加密密钥。ssh-agent 安全协议便是基于这个原理。总是涉及两个进程：客户端/请求者和<a href="https://linux.die.net/man/1/ssh-agent" target="_blank">代理</a>。</p>
 	<blockquote><em>代理绝不会通过其请求通道发送私钥。而需要私钥的操作将由代理执行，结果则会返回给请求者。因此，私钥不会泄露给使用代理的客户端。</em></blockquote>
 	<p>请求者通常是一个面向网络的进程和/或处理不可信的输入。因此，请求者更可能受到内存相关漏洞的影响，但在这个模式中，它永远无法访问加密密钥（因为密钥存储在一个单独的进程地址空间中），因此绝不会泄露。</p>
-	<p>在 Cloudflare，我们在<a href="https://blog.cloudflare.com/heartbleed-revisited/">无密钥 SSL</a> 中采用同样的原则。客户的私钥安全存储在一个隔离的环境中，不受面向互联网的连接影响。</p>
+	<p>在 Cloudflare，我们在<a href="https://blog.cloudflare.com/heartbleed-revisited">无密钥 SSL</a> 中采用同样的原则。客户的私钥安全存储在一个隔离的环境中，不受面向互联网的连接影响。</p>
 	<h3 id="linux-">Linux 内核密钥保留服务</h3>
 	<p>客户端/请求者和代理的模式为私密或加密密钥提供了更好的保护，但它也存在一些缺点：</p>
 	<ul>
@@ -95,7 +95,7 @@ IndexError: Replacement index 2 out of range for positional args tuple
 	</ul>
 	<p>Linux 内核密钥保留服务使用两类实体进行操作：密钥和密钥环，其中密钥环是一种特殊类型的密钥。如果与文件和目录类比，我们可以说密钥是文件，密钥环是目录。此外，它们的密钥层次结构与文件系统的树状层次结构相似：密钥环引用密钥和其他密钥环，但只有密钥持有实际的加密资料，就像只有文件持有实际数据。</p>
 	<p>密钥有多种类型。密钥的类型决定了可以在密钥上执行哪些操作。例如，用户和注册类的密钥可以持有任意数据块，但注册类密钥永远无法再被用户空间读取，只有内核内服务可以使用。</p>
-	<p>使用内核取代代理进程时，最有趣的密钥类型是<a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html" target="_blank">非对称类</a>。它们可以在内核内保留私钥，让获得许可的应用程序有能力解密或使用密钥签署一些数据。目前仅支持 RSA 密钥，但正在努力增加对 <a href="https://lore.kernel.org/lkml/20221014100737.94742-2-ignat@cloudflare.com/" target="_blank">ECDSA 密钥的支持</a>。</p>
+	<p>使用内核取代代理进程时，最有趣的密钥类型是<a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html" target="_blank">非对称类</a>。它们可以在内核内保留私钥，让获得许可的应用程序有能力解密或使用密钥签署一些数据。目前仅支持 RSA 密钥，但正在努力增加对 <a href="https://lore.kernel.org/lkml/20221014100737.94742-2-ignat@cloudflare.com" target="_blank">ECDSA 密钥的支持</a>。</p>
 	<p>虽然密钥负责保护内核内的加密资料，但密钥环决定了密钥的生存期和共享访问权限。举个最简单的例子，特定密钥环被销毁时，仅与该密钥环关联的所有密钥也被安全销毁。我们可以手动创建自定义密钥环，但该服务最强大的功能之一可能是“特殊密钥环”。</p>
 	<p>这些密钥环由内核隐式创建，其生存期与不同内核对象（例如进程或用户）的生存期相关。(目前有四类“隐式”<a href="https://man7.org/linux/man-pages/man7/keyrings.7.html" target="_blank">密钥环</a>），但本文我们仅讨论使用最广泛的两类密钥环：进程密钥环和用户密钥环。</p>
 	<p>用户密钥环的生存期与特定用户的存在绑定在一起，同一 UID 的所有进程共用该密钥环。例如，进程可以在用户密钥环中存储密钥，以同一用户身份运行的另一个进程也可以检索/使用该密钥。从系统中删除 UID 时，内核会将相关用户密钥环下的所有密钥（和其他密钥环）安全销毁。</p>

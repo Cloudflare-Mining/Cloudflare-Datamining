@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>CloudFlare <a href="https://blog.cloudflare.com/introducing-http2/">released HTTP/2 support</a> for all customers on December 3rd, 2015. Now, two months later, it's time to take a look at the impact of this release on the HTTP/2 "universe" and also at what has changed from a HTTP/2 vs. SPDY vs. HTTP 1.1 traffic ratio perspective.</p>
+	<p>CloudFlare <a href="https://blog.cloudflare.com/introducing-http2">released HTTP/2 support</a> for all customers on December 3rd, 2015. Now, two months later, it's time to take a look at the impact of this release on the HTTP/2 "universe" and also at what has changed from a HTTP/2 vs. SPDY vs. HTTP 1.1 traffic ratio perspective.</p>
 	<h3 id="http2usage">HTTP/2 Usage</h3>
 	<p>Previously, we showcased browser market share data from our <a href="https://www.cloudflare.com" target="_blank">own website</a>. Using these numbers, we predicted the ratio of HTTP/2 traffic that we expected to see once enabled. Now, we can compare this original data set with updated data from the last 48 hours.</p>
 	<p>Below is the market share of HTTP/2 capable browsers that we saw on our website during a 48 hour period. The first one was before our HTTP/2 launch, the other one was last week. Both data sets were pulled from Google Analytics, and user agents were analyzed for HTTP/2 support.</p>
@@ -71,8 +71,8 @@
 		</tbody>
 	</table>
 	<p>Since November, the number of browsers visiting CloudFlare.com that support HTTP/2 has more than doubled. In particular, notice how the market share of Chrome and Firefox versions that support HTTP/2 increased dramatically within the last 2 months.</p>
-	<p>The reason for this is, that even with Auto-Update functionality in modern browsers, new versions are not adopted instantaneous. We had documented the <a href="https://blog.cloudflare.com/ios-9-how-did-the-launch-really-go/">release of iOS 9</a>, which is an example for a quite swift adoption.<br>
-		Looking at the challenges around the <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind/">SHA-1 deprecation</a>, we can see that some really old OS and browser version are still around.</p>
+	<p>The reason for this is, that even with Auto-Update functionality in modern browsers, new versions are not adopted instantaneous. We had documented the <a href="https://blog.cloudflare.com/ios-9-how-did-the-launch-really-go">release of iOS 9</a>, which is an example for a quite swift adoption.<br>
+		Looking at the challenges around the <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind">SHA-1 deprecation</a>, we can see that some really old OS and browser version are still around.</p>
 	<p>Keep in mind that we still see a larger number of non-browsers that don’t fall into any of the above buckets on our edge network. This is due to bots, crawlers, scrapers, and the like. The numbers above represent typical website traffic after it has been sanitized by CloudFlare.</p>
 	<h3 id="reallifenumbers">Real-Life Numbers</h3>
 	<p>With the promising browser market share data above, we can now compare the ratio of traffic served via the different HTTP versions on www.cloudflare.com.</p>
@@ -108,7 +108,7 @@
 		Therefore it was a good choice to keep supporting this protocol version.</p>
 	<h3 id="numberofhttp2poweredwebsites">Number of HTTP/2-Powered Websites</h3>
 	<p>So far, we have looked at what an individual HTTP/2 enabled site on CloudFlare could expect to see with regards to traffic and different browser versions. Let’s shift gears a bit and have a look at how many websites we have actually enabled with HTTP/2 so far:</p>
-	<p>The website <a href="http://isthewebhttp2yet.com/about.html" target="_blank">isthewebhttp2yet.com</a> is a great tool for finding an answer to this question. It is created and maintained by researchers at <a href="http://tid.es/" target="_blank">Telefónica Research</a>, <a href="http://www.case.edu/" target="_blank">Case Western Reserve University</a>, and <a href="http://www.cmu.edu/" target="_blank">Carnegie Mellon University</a>, and provides an overview of how many websites from the <a href="http://www.alexa.com/" target="_blank">Alexa</a> 1M list are enabled with HTTP/2.</p>
+	<p>The website <a href="http://isthewebhttp2yet.com/about.html" target="_blank">isthewebhttp2yet.com</a> is a great tool for finding an answer to this question. It is created and maintained by researchers at <a href="http://tid.es" target="_blank">Telefónica Research</a>, <a href="http://www.case.edu" target="_blank">Case Western Reserve University</a>, and <a href="http://www.cmu.edu" target="_blank">Carnegie Mellon University</a>, and provides an overview of how many websites from the <a href="http://www.alexa.com" target="_blank">Alexa</a> 1M list are enabled with HTTP/2.</p>
 	<p>The website differentiates between:</p>
 	<ul>
 		<li>
@@ -138,7 +138,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2016/02/image_2.png" alt="HTTP/2 vs SPDY market share" loading="lazy"><br>
 		<small><a href="http://w3techs.com/technologies/details/ce-http2/all/all" target="_blank">Source</a></small>
 	</p>
-	<p>Want to help us grow our software engineering team and increase our protocol support? Check out our <a href="https://www.cloudflare.com/join-our-team/" target="_blank">available roles</a>.</p>
+	<p>Want to help us grow our software engineering team and increase our protocol support? Check out our <a href="https://www.cloudflare.com/join-our-team" target="_blank">available roles</a>.</p>
 	<h3 id="enablinghttp2">Enabling HTTP/2</h3>
 	<p>As a reminder, if you are a customer on the Free or Pro plan, there is no need to do anything at all. Both SPDY and HTTP/2 are already enabled for you. With this improvement, your website’s audience will always use the fastest protocol version when accessing your site over TLS/SSL.</p>
 	<p>Customers on Business and Enterprise plans can enable HTTP/2 within the "Network" application of the CloudFlare Dashboard. In the last two months, the web still hasn't exploded while running HTTP/2. With that in mind, it's probably safe for you to head over an enable HTTP/2 now. You will be in great company with many other sites.</p>

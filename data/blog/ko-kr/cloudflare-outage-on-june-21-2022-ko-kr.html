@@ -10,7 +10,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-27.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>이 새로운 아키텍처는 안정성을 크게 높일 뿐만 아니라, 데이터 센터에서 고객 트래픽을 방해하지 않고도 유지 관리를 실행할 수 있게 해줍니다. 이와 같은 데이터 센터는 Cloudflare 트래픽의 상당 부분을 처리하기 때문에 이곳에서 문제가 발생한다면 어떤 문제든 매우 광범위하게 영향을 미칠 수 있습니다. 이로 인해 오늘 중단이 발생하게 되었습니다.</p>
 	<h3 id="-utc-">사고 타임라인(UTC) 및 영향</h3>
-	<p>Cloudflare와 같은 네트워크는 인터넷으로 연결할 수 있도록 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a>라는 프로토콜을 사용합니다. 이 프로토콜의 일환으로 운영자는 피어(연결하려는 다른 네트워크)에 알릴 접두사(인접한 IP 주소 모음)나 피어에서 수락하게 될 피어를 결정하는 정책을 정의합니다. </p>
+	<p>Cloudflare와 같은 네트워크는 인터넷으로 연결할 수 있도록 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp" target="_blank">BGP</a>라는 프로토콜을 사용합니다. 이 프로토콜의 일환으로 운영자는 피어(연결하려는 다른 네트워크)에 알릴 접두사(인접한 IP 주소 모음)나 피어에서 수락하게 될 피어를 결정하는 정책을 정의합니다. </p>
 	<p>이러한 정책에는 순차적 방식으로 평가하는 개별 구성 요소가 있습니다.주어진 접두사를 알리거나 알리지 않는 것으로 최종 결과가 나타납니다. 정책을 변경하면 이전에 알리던 접두사를 더 이상 알리지 않게 될 수 있습니다. &nbsp;이 경우 접두사를 철회하며 해당 IP 주소에 인터넷으로 연결할 수 없게 됩니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-27.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>접두사 알림 정책에 대한 변경 사항을 배포하는 동안, 항을 재정렬하면서 접두사의 필수 하위 집합을 철회하게 되었습니다.</p>
@@ -85,7 +85,7 @@ community delete NO-EXPORT { ... }
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>이 항이 사이트 로컬 항 앞에 위치하게 되었으므로, Cloudflare에서는 즉시 사이트 로컬 접두사 알림을 중단하고 영향을 받는 모든 데이터 센터 위치에 직접 액세스를 신속히 제거했으며 서버가 원본에 도달하는 기능을 없앴습니다.</p>
-	<p>원본에 도달할 수도 없지만, 이러한 사이트 로컬 접두사를 제거하면 내부 로드 밸런싱 시스템인 Multimog(Cloudflare의 <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/">Unimog 로드 밸런서</a> 변형 시스템)가 MCP에서 서버 간에 요청을 전달할 수 없게 되기 때문에 작동이 중지됩니다. 즉, MCP의 작은 컴퓨팅 클러스터가 가장 큰 클러스터와 같은 양으로 트래픽을 수신하므로 작은 클러스터에 과부하가 발생하는 것입니다.</p>
+	<p>원본에 도달할 수도 없지만, 이러한 사이트 로컬 접두사를 제거하면 내부 로드 밸런싱 시스템인 Multimog(Cloudflare의 <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog 로드 밸런서</a> 변형 시스템)가 MCP에서 서버 간에 요청을 전달할 수 없게 되기 때문에 작동이 중지됩니다. 즉, MCP의 작은 컴퓨팅 클러스터가 가장 큰 클러스터와 같은 양으로 트래픽을 수신하므로 작은 클러스터에 과부하가 발생하는 것입니다.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-15.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--3">복원 및 후속 조치</h3>
 	<p>이 사고는 광범위한 영향을 미쳤으며 Cloudflare는 가용성을 아주 중요하게 생각합니다. 개선 영역을 몇 가지 확인했고, 재발을 초래할 수 있는 또 다른 허점을 찾을 수 있도록 계속 노력할 것입니다. </p>

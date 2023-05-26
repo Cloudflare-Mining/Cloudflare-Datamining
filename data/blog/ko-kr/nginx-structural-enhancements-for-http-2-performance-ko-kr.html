@@ -1,13 +1,13 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><small><em>This is a Korean translation of an <a href="https://blog.cloudflare.com/nginx-structural-enhancements-for-http-2-performance/">existing post</a> by <a href="https://blog.cloudflare.com/author/nick-jones/">Nick Jones</a>, translated by <a href="https://blog.cloudflare.com/author/junho/">Junho Choi</a>.</em></small></p>
+	<p><small><em>This is a Korean translation of an <a href="https://blog.cloudflare.com/nginx-structural-enhancements-for-http-2-performance">existing post</a> by <a href="https://blog.cloudflare.com/author/nick-jones">Nick Jones</a>, translated by <a href="https://blog.cloudflare.com/author/junho">Junho Choi</a>.</em></small></p>
 	<!--kg-card-end: markdown-->
 	<hr><!--kg-card-begin: markdown-->
 	<p><img src="https://blog.cloudflare.com/content/images/2019/05/http2prioritization-copy@2x-4.png" alt="" loading="lazy"></p>
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<h3 id="-">소개</h3>
-	<p>우리 Cloudflare 프로토콜 팀은 Cloudflare 네트워크의 엣지서버에서 HTTP 트래픽을 처리하는 일을 맡고 있습니다. 우리는 TCP, QUIC, TLS, 안전한 인증서 관리, HTTP/1 과 HTTP/2 에 관련된 기능을 담당하고 있습니다. 지난 1분기에는 Speed Week 기간 동안 발표된 <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web/">HTTP/2 우선순위 지정 방법 개선</a>을 맡고 있었습니다.</p>
+	<p>우리 Cloudflare 프로토콜 팀은 Cloudflare 네트워크의 엣지서버에서 HTTP 트래픽을 처리하는 일을 맡고 있습니다. 우리는 TCP, QUIC, TLS, 안전한 인증서 관리, HTTP/1 과 HTTP/2 에 관련된 기능을 담당하고 있습니다. 지난 1분기에는 Speed Week 기간 동안 발표된 <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">HTTP/2 우선순위 지정 방법 개선</a>을 맡고 있었습니다.</p>
 	<p>이 프로젝트를 진행하게 되어 매우 흥분되었고 그 결과를 보고 더 즐거웠습니다. 프로젝트를 진행하는 동안 Cloudflare가 현재 운영중인 HTTP 서버 NGINX에 관련된 몇가지 흥미로운 점을 깨닫게 되었습니다. HTTP/2 우선순위 지정 방법 개선 프로젝트를 시작한 후 얼마 되지 않아 NGINX의 내부 동작 방식을 바꾸지 않으면 이 프로젝트를 성공적으로 달성할 수 없다는 사실을 확신하게 된 것입니다.</p>
 	<p>이러한 인식을 바탕으로 핵심인 우선순위 지정 제품과 더불어 NGINX의 내부 구조를 바꾸는 몇가지 중요한 변경에 착수하였습니다. 이 블로그 글에서는 구조 변경의 동기, 접근 방법 및 미치는 영향에 대해서 설명합니다. 또한 우리는 추후의 더 나은 성능 개선을 기대하며 로드맵에 추가할 몇가지 변경 사항도 찾아 내었습니다.</p>
 	<h3 id="--1">배경</h3>
@@ -109,5 +109,5 @@
 	<p>우리는 이러한 NGINX 변경점을 커뮤니티와 같이 공유하고자 하며 이 <a href="https://trac.nginx.org/nginx/ticket/1763" target="_blank">티켓</a>을 만들었고 이를 통해서 이벤트 순서 변경과 버퍼 일부 재사용을 NGINX에 어떻게 반영할 지 NGINX 팀과 논의하고자 합니다.</p>
 	<p>Cloudflare가 성장함에 따라 우리의 소프트웨어 인프라의 요구사항도 변화 합니다. Cloudflare는 이미 TCP상의 HTTP/1 전송 프록시 및 UDP, TCP 트래픽의 레이어 3, 4의 공격 방어 단계를 넘어서 나아가고 있습니다. 이제 QUIC과 HTTP/3과 같은 새로운 기술과 더불어 메시징이나 스트리밍 미디어와 같은 폭 넓은 프로토콜의 프록시로 나아가고 있습니다.</p>
 	<p>이러한 노력 속에서 확장성, 지역적인 성능, 전체 성능, 내부 모니터링, 디버깅, 빠른 릴리즈, 유지보수 등과 같은 의문에 답할 수 있는 새로운 방법을 찾고 있습니다.</p>
-	<p>여러분이 이러한 질문에 답할 수 있도록 돕고 싶고 하드웨어, 소프트웨어 확장성, 네트워크 프로그래밍, 비동기 이벤트 및 퓨처 기반 소프트웨어 설계, TCP, TLS, QUIC, HTTP, RPC 프로토콜, Rust 등등에 대해서 잘 아신다면 <a href="https://www.cloudflare.com/careers/" target="_blank">여기</a>를 봐 주세요.</p>
+	<p>여러분이 이러한 질문에 답할 수 있도록 돕고 싶고 하드웨어, 소프트웨어 확장성, 네트워크 프로그래밍, 비동기 이벤트 및 퓨처 기반 소프트웨어 설계, TCP, TLS, QUIC, HTTP, RPC 프로토콜, Rust 등등에 대해서 잘 아신다면 <a href="https://www.cloudflare.com/careers" target="_blank">여기</a>를 봐 주세요.</p>
 </div>

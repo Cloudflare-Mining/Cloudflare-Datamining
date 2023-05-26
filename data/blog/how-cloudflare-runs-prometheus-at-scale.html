@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image6-1.png" class="kg-image" alt="How Cloudflare runs Prometheus at scale" loading="lazy"></figure>
-	<p>We use <a href="https://prometheus.io/" target="_blank">Prometheus</a> to gain insight into all the different pieces of hardware and software that make up our global network. Prometheus allows us to measure health &amp; performance over time and, if there’s anything wrong with any service, let our team know before it becomes a problem.</p>
+	<p>We use <a href="https://prometheus.io" target="_blank">Prometheus</a> to gain insight into all the different pieces of hardware and software that make up our global network. Prometheus allows us to measure health &amp; performance over time and, if there’s anything wrong with any service, let our team know before it becomes a problem.</p>
 	<p>At the moment of writing this post we run 916 Prometheus instances with a total of around 4.9 billion time series. Here’s a screenshot that shows exact numbers:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>That’s an average of around 5 million time series per instance, but in reality we have a mixture of very tiny and very large instances, with the biggest instances storing around 30 million time series each.</p>
@@ -8,7 +8,7 @@
 	<h2 id="metrics-cardinality">Metrics cardinality</h2>
 	<p>One of the first problems you’re likely to hear about when you start running your own Prometheus instances is <a href="https://en.wikipedia.org/wiki/Cardinality" target="_blank">cardinality</a>, with the most dramatic cases of this problem being referred to as “cardinality explosion”.</p>
 	<p>So let’s start by looking at what cardinality means from Prometheus' perspective, when it can be a problem and some of the ways to deal with it.</p>
-	<p>Let’s say we have an application which we want to <a href="https://prometheus.io/docs/instrumenting/clientlibs/" target="_blank">instrument</a>, which means add some observable properties in the form of <a href="https://prometheus.io/docs/concepts/metric_types/" target="_blank">metrics</a> that Prometheus can read from our application. A metric can be anything that you can express as a number, for example:</p>
+	<p>Let’s say we have an application which we want to <a href="https://prometheus.io/docs/instrumenting/clientlibs" target="_blank">instrument</a>, which means add some observable properties in the form of <a href="https://prometheus.io/docs/concepts/metric_types" target="_blank">metrics</a> that Prometheus can read from our application. A metric can be anything that you can express as a number, for example:</p>
 	<ul>
 		<li>The speed at which a vehicle is traveling.</li>
 		<li>Current temperature.</li>
@@ -35,7 +35,7 @@ mugs_of_beverage_total 2
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>This format and underlying data model are both covered extensively in Prometheus' own documentation.</p>
-	<p>Please see <a href="https://prometheus.io/docs/concepts/data_model/" target="_blank">data model</a> and <a href="https://prometheus.io/docs/instrumenting/exposition_formats/" target="_blank">exposition format</a> pages for more details.</p>
+	<p>Please see <a href="https://prometheus.io/docs/concepts/data_model" target="_blank">data model</a> and <a href="https://prometheus.io/docs/instrumenting/exposition_formats" target="_blank">exposition format</a> pages for more details.</p>
 	<p>We can add more metrics if we like and they will all appear in the HTTP response to the metrics endpoint.</p>
 	<p>Prometheus metrics can have extra dimensions in form of labels. We can use these to add more information to our metrics so that we can better understand what’s going on.</p>
 	<p>With our example metric we know how many mugs were consumed, but what if we also want to know what kind of beverage it was? Or maybe we want to know if it was a cold drink or a hot one? Adding labels is very easy and all we need to do is specify their names. Once we do that we need to pass label values (in the same order as label names were specified) when incrementing our counter to pass this extra information.</p>
@@ -280,7 +280,7 @@ errors_total{error="read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"} 1
 	<!--kg-card-end: markdown-->
 	<p>Note that your Prometheus server must be configured to scrape itself for this to work.</p>
 	<p>Secondly this calculation is based on all memory used by Prometheus, not only time series data, so it’s just an approximation. Use it to get a rough idea of how much memory is used per time series and don’t assume it’s that exact number.</p>
-	<p>Thirdly Prometheus is written in <a href="https://go.dev/" target="_blank">Golang</a> which is a language with garbage collection. The actual amount of physical memory needed by Prometheus will usually be higher as a result, since it will include unused (garbage) memory that needs to be freed by Go runtime.</p>
+	<p>Thirdly Prometheus is written in <a href="https://go.dev" target="_blank">Golang</a> which is a language with garbage collection. The actual amount of physical memory needed by Prometheus will usually be higher as a result, since it will include unused (garbage) memory that needs to be freed by Go runtime.</p>
 	<h2 id="protecting-prometheus-from-cardinality-explosions">Protecting Prometheus from cardinality explosions</h2>
 	<p>Prometheus does offer some options for dealing with high cardinality problems. There are a <a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config" target="_blank">number of options</a> you can set in your scrape configuration block. Here is the extract of the relevant options from Prometheus documentation:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-python"># An uncompressed response body larger than this many bytes will cause the
@@ -383,7 +383,7 @@ errors_total{error="read udp 127.0.0.1:14743-&gt;127.0.0.2:443: i/o timeout"} 1
 	<p>Prometheus and PromQL (Prometheus Query Language) are conceptually very simple, but this means that all the complexity is hidden in the interactions between different elements of the whole metrics pipeline.</p>
 	<p>Managing the entire lifecycle of a metric from an engineering perspective is a complex process.</p>
 	<p>You must define your metrics in your application, with names and labels that will allow you to work with resulting time series easily. Then you must configure Prometheus scrapes in the correct way and deploy that to the right Prometheus server. Next you will likely need to create recording and/or alerting rules to make use of your time series. Finally you will want to create a dashboard to visualize all your metrics and be able to spot trends.</p>
-	<p>There will be traps and room for mistakes at all stages of this process. We covered some of the most basic pitfalls in our previous blog post on Prometheus - <a href="https://blog.cloudflare.com/monitoring-our-monitoring/">Monitoring our monitoring</a>. In the same blog post we also mention one of the tools we use to help our engineers write valid Prometheus alerting rules.</p>
+	<p>There will be traps and room for mistakes at all stages of this process. We covered some of the most basic pitfalls in our previous blog post on Prometheus - <a href="https://blog.cloudflare.com/monitoring-our-monitoring">Monitoring our monitoring</a>. In the same blog post we also mention one of the tools we use to help our engineers write valid Prometheus alerting rules.</p>
 	<p>Having good internal documentation that covers all of the basics specific for our environment and most common tasks is very important. Being able to answer <em>“How do I X?”</em> yourself without having to wait for a subject matter expert allows everyone to be more productive and move faster, while also avoiding Prometheus experts from answering the same questions over and over again.</p>
 	<h2 id="closing-thoughts">Closing thoughts</h2>
 	<p>Prometheus is a great and reliable tool, but dealing with high cardinality issues, especially in an environment where a lot of different applications are scraped by the same Prometheus server, can be challenging.</p>

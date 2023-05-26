@@ -3,7 +3,7 @@
 	<h2 id="reliability-model-of-services-running-in-each-data-center">Reliability model of services running in each data center</h2>
 	<p>For this blog post, we will distinguish between two different categories of services running in each data center:</p><!--kg-card-begin: markdown-->
 	<ul>
-		<li><strong>Customer-facing services</strong>: all of our stack of products that our customers use, such as caching, <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">WAF</a>, DDoS protection, rate-limiting, load-balancing, etc.</li>
+		<li><strong>Customer-facing services</strong>: all of our stack of products that our customers use, such as caching, <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank">WAF</a>, DDoS protection, rate-limiting, load-balancing, etc.</li>
 		<li><strong>Management services</strong>: software required to operate the data center, that is not in the direct request path of customer traffic.</li>
 	</ul>
 	<!--kg-card-end: markdown-->
@@ -38,7 +38,7 @@
 	<p>Customer-facing services run on all machines in each data center and do not need to be onboarded to that new system. On the other hand, services currently running on a fixed subset of machines with sub-optimal reliability guarantees and services which don’t need to run on all machines are good candidates for onboarding.</p>
 	<h3 id="our-pick-hashicorp-nomad">Our pick: HashiCorp Nomad</h3>
 	<p>Armed with our set of requirements, we conducted some research on candidate solutions.</p>
-	<p>While Kubernetes was another option, we decided to use HashiCorp’s <a href="https://www.nomadproject.io/" target="_blank">Nomad</a> for the following reasons:</p>
+	<p>While Kubernetes was another option, we decided to use HashiCorp’s <a href="https://www.nomadproject.io" target="_blank">Nomad</a> for the following reasons:</p>
 	<ul>
 		<li>Satisfies our initial requirement, which was reliably running a single instance of a binary with resource isolation in each data center.</li>
 		<li>Has few dependencies and a straightforward integration with Consul. Consul is another piece of HashiCorp software we had already deployed in each datacenter. It provides distributed key-value storage and service discovery capabilities.</li>
@@ -64,8 +64,8 @@
 	<p>Additionally, because server expansions and decommissions affect a subset of racks at a time and the Nomad Server role assignment logic provides rack-diversity guarantees, the cluster stays healthy as quorum is kept at all times.</p>
 	<h3 id="job-files">Job files</h3>
 	<p>Nomad job files are templated and checked into a git repository. Our configuration management tool then ensures the jobs are scheduled in every data center. From there, Nomad takes over and ensures the jobs are running at all times in each data center.</p>
-	<p>By exposing rack <a href="https://www.nomadproject.io/docs/job-specification/meta/" target="_blank">metadata</a> to each Nomad Client, we are able to make sure each instance of a particular service runs in a different rack and is tied to a different failure domain. This way we make sure that the failure of one rack of servers won’t impact the service health as the service is also running in a different rack, unaffected by the failure.</p>
-	<p>We achieve this with the following job file <a href="https://www.nomadproject.io/docs/job-specification/constraint/" target="_blank">constraint</a>:</p><!--kg-card-begin: markdown-->
+	<p>By exposing rack <a href="https://www.nomadproject.io/docs/job-specification/meta" target="_blank">metadata</a> to each Nomad Client, we are able to make sure each instance of a particular service runs in a different rack and is tied to a different failure domain. This way we make sure that the failure of one rack of servers won’t impact the service health as the service is also running in a different rack, unaffected by the failure.</p>
+	<p>We achieve this with the following job file <a href="https://www.nomadproject.io/docs/job-specification/constraint" target="_blank">constraint</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">constraint {
   attribute = "${meta.rack}"
   operator  = "distinct_property"
@@ -96,7 +96,7 @@
 	<p>When starting to use the <code>exec</code> driver to run binaries isolated in a <code>chroot</code> environment, we noticed our stateless root partition running on <a href="https://www.kernel.org/doc/Documentation/filesystems/ramfs-rootfs-initramfs.txt" target="_blank">initramfs</a> was not supported as the task would not start and we got this error message in our logs:</p>
 	<p><code>Feb 12 19:49:03 machine nomad-client[258433]: 2020-02-12T19:49:03.332Z [ERROR] client.alloc_runner.task_runner: running driver failed: alloc_id=fa202-63b-33f-924-42cbd5 task=server error="failed to launch command with executor: rpc error: code = Unknown desc = container_linux.go:346: starting container process caused "process_linux.go:449: container init caused \"rootfs_linux.go:109: jailing process inside rootfs caused \\\"pivot_root invalid argument\\\"\"""</code></p>
 	<p>We filed a GitHub <a href="https://github.com/hashicorp/nomad/issues/7136" target="_blank">issue</a> and submitted a workaround <a href="https://github.com/hashicorp/nomad/pull/7149" target="_blank">pull request</a> which was promptly reviewed and merged upstream.</p>
-	<p>In parallel, for maximum isolation security, we worked on enabling <code>pivot_root</code> in our setup by modifying our boot process and other team members developed and proposed a patch to the <a href="https://lore.kernel.org/linux-fsdevel/20200305193511.28621-1-ignat@cloudflare.com/" target="_blank">kernel mailing list</a> to make it easier in the future.</p>
+	<p>In parallel, for maximum isolation security, we worked on enabling <code>pivot_root</code> in our setup by modifying our boot process and other team members developed and proposed a patch to the <a href="https://lore.kernel.org/linux-fsdevel/20200305193511.28621-1-ignat@cloudflare.com" target="_blank">kernel mailing list</a> to make it easier in the future.</p>
 	<h3 id="resource-usage-containment">Resource usage containment</h3>
 	<p>One very important aspect was to make sure the resource usage of tasks running on Nomad would not disrupt other services colocated on the same machine.</p>
 	<p>Disk space is a shared resource on every machine and being able to set a quota for Nomad was a must. We achieved this by isolating the Nomad data directory to a dedicated fixed-size mount point on each machine. Limiting disk bandwidth and IOPS, however, is not currently supported out of the box by Nomad.</p>

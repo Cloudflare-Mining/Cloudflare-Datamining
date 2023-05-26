@@ -4,7 +4,7 @@
 	<p>Some users were unable to download a binary file a few megabytes in length. The story was simple—the download connection was abruptly terminated even though the file was in the process of being downloaded. After a brief investigation we confirmed the problem: somewhere in our stack there was a bug.</p>
 	<p>Describing the problem was simple, reproducing the problem was easy with a single <code>curl</code> command, but fixing it took surprising amount of effort.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/03/6784957048_4661ea7dfc_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jonicdao/6784957048/" target="_blank">image</a> by <a href="https://www.flickr.com/photos/jonicdao" target="_blank">jojo nicdao</a></small>
+		<small><a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jonicdao/6784957048" target="_blank">image</a> by <a href="https://www.flickr.com/photos/jonicdao" target="_blank">jojo nicdao</a></small>
 	</p>
 	<p>In this article I'll describe the symptoms we saw, how we reproduced it and how we fixed it. Hopefully, by sharing our experiences we will save others from the tedious debugging we went through.</p>
 	<h3 id="failingdownloads">Failing downloads</h3>
@@ -78,13 +78,13 @@ net.ipv4.tcp_wmem = 4096 5242880 33554432
 	<p>In order for <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp.c?v=4.5#L1167" target="_blank"><code>send()</code></a> to succeed two conditions must be met:</p>
 	<ul>
 		<li>There must be <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v=4.5#L1070" target="_blank">some space available in the send buffer</a>.</li>
-		<li>The amount of enqueued, not sent, data <a href="http://lxr.free-electrons.com/source/include/net/tcp.h?v=4.5#L1691" target="_blank">must be lower than the LOWAT setting</a>. We will ignore the <a href="https://lwn.net/Articles/560082/" target="_blank">LOWAT setting</a> in this blog post.</li>
+		<li>The amount of enqueued, not sent, data <a href="http://lxr.free-electrons.com/source/include/net/tcp.h?v=4.5#L1691" target="_blank">must be lower than the LOWAT setting</a>. We will ignore the <a href="https://lwn.net/Articles/560082" target="_blank">LOWAT setting</a> in this blog post.</li>
 	</ul>
 	<p>On the other hand, the conditions for a socket to be reported as <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp.c?v=4.5#L519" target="_blank">"writeable" by <code>poll</code></a> are slightly narrower:</p>
 	<ul>
 		<li>There must be some space available in the send buffer.</li>
 		<li>The amount of enqueued, not sent, data must be lower than the LOWAT setting.</li>
-		<li>The amount of <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v4.5#L1079" target="_blank">free buffer space</a> in the send buffer must be greater than <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v.4.5#L785" target="_blank">half of the used send buffer space</a>.</li>
+		<li>The amount of <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v4.5=#L1079" target="_blank">free buffer space</a> in the send buffer must be greater than <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v.4.5=#L785" target="_blank">half of the used send buffer space</a>.</li>
 	</ul>
 	<p>The last condition is critical. This means that after you fill the socket send buffer to 100%, the socket will become writeable again only when it's drained below 66% of send buffer size.</p>
 	<p>Going back to our NGINX trace, the second <code>sendfile</code> we saw:</p>
@@ -113,7 +113,7 @@ net.ipv4.tcp_wmem = 4096 5242880 33554432
 	<h3 id="summary">Summary</h3>
 	<p>The Linux networking stack is very complex. While it usually works really well, sometimes it gives us a surprise. Even very experienced programmers don't fully understand all the corner cases. During debugging we learned that setting timeouts in the "write" path of the code requires special attention. You can't just treat the "write" timeouts in the same way as "read" timeouts.</p>
 	<p>It was a surprise to me that the semantics of a socket being "writeable" are not symmetrical to the "readable" state.</p>
-	<p>In past <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike/">we found that raising receive buffers</a> can have unexpected consequences. Now we know tweaking <code>wmem</code> values can affect something totally different—NGINX send timeouts.</p>
-	<p>Tuning a CDN to work well for all the users takes a lot of work. This write up is a result of hard work done by four engineers (special thanks to Chris Branch!). If this sounds interesting, <a href="https://www.cloudflare.com/join-our-team/" target="_blank">consider applying</a>!</p>
+	<p>In past <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">we found that raising receive buffers</a> can have unexpected consequences. Now we know tweaking <code>wmem</code> values can affect something totally different—NGINX send timeouts.</p>
+	<p>Tuning a CDN to work well for all the users takes a lot of work. This write up is a result of hard work done by four engineers (special thanks to Chris Branch!). If this sounds interesting, <a href="https://www.cloudflare.com/join-our-team" target="_blank">consider applying</a>!</p>
 	<!--kg-card-end: markdown-->
 </div>

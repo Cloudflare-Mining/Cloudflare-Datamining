@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-22.png" class="kg-image" alt="Servicesの紹介：Cloudflare Workersに構成可能な分散型アプリケーションを構築" loading="lazy"></figure>
 	<p>まず、Workerのスクリプトです。これは、シンプルかつエレガントなものでした。わずか数行のコードで、HTTPリクエストを書き換えたり、ヘッダーを追加したり、Webサイトを素早く修正することができます。</p>
-	<p>ですが、Workersでアプリケーション全体を構築したい場合はどうでしょうか？開発者用ツールボックスには、さらに多くのツールが必要になります。このような理由から、当社の分散キーバリューストアである<a href="https://blog.cloudflare.com/ja-jp/workers-kv-is-ga-ja-jp/">KV </a>などのWorkersプラットフォーム、強固な一貫性があるオブジェクト指向データーベースの<a href="https://blog.cloudflare.com/durable-objects-open-beta/">Durable Objects</a>への拡張を導入してきました。まもなくエグレスのないオブジェクトストレージ<a href="https://blog.cloudflare.com/ja-jp/introducing-r2-object-storage-ja-jp/">R2</a>への拡張も予定しています。これらのツールで、より堅牢なアプリケーションを構築することができますが、<em>多くの</em>アプリケーションやサービスを構成するシステムアーキテクチャの構築に関しては、いまだにギャップがあります。</p>
+	<p>ですが、Workersでアプリケーション全体を構築したい場合はどうでしょうか？開発者用ツールボックスには、さらに多くのツールが必要になります。このような理由から、当社の分散キーバリューストアである<a href="https://blog.cloudflare.com/ja-jp/workers-kv-is-ga-ja-jp">KV </a>などのWorkersプラットフォーム、強固な一貫性があるオブジェクト指向データーベースの<a href="https://blog.cloudflare.com/durable-objects-open-beta">Durable Objects</a>への拡張を導入してきました。まもなくエグレスのないオブジェクトストレージ<a href="https://blog.cloudflare.com/ja-jp/introducing-r2-object-storage-ja-jp">R2</a>への拡張も予定しています。これらのツールで、より堅牢なアプリケーションを構築することができますが、<em>多くの</em>アプリケーションやサービスを構成するシステムアーキテクチャの構築に関しては、いまだにギャップがあります。</p>
 	<p>APIへのリクエストを認証する認証サービスを構築したとします。そのロジックを他のすべてのサービスで再利用したい、さらに、その認証サービスに変更を加える際には、運用中の他のサービスに影響を与えないように管理された環境でテストしたいと考えるでしょう。ですが、もう想像する必要はありません。</p>
 	<h3 id="services-">Servicesの紹介</h3>
 	<p><strong>Services</strong>は、Cloudflare Workersにアプリケーションをデプロイするための新しいビルディングブロックです。スクリプトとは異なり、一つのServiceはコンポーザブル（組み立て可能）であるため、Services同士の連携が可能です。また、Servicesは複数の環境をサポートしているため、プレビュー環境で変更をテストし、動作に問題がなければ本番環境に移行することができます。</p>
@@ -57,8 +57,8 @@
 	<p>また、オープンベータの開始に伴い、複数の「プレビュー」環境にコードを作成してデプロイすることもできます。サービスバインディングやバージョニングについてはまだ検討中ですが、使用可能になり次第、最新情報をお知らせします。</p>
 	<p>Servicesの詳細については、以下の資料をご覧ください。</p>
 	<ul>
-		<li><a href="https://workers.new/" target="_blank">ダッシュボード</a>に移動して最初のサービスを作成しましょう！</li>
-		<li>サービスバインディングへの<a href="https://www.cloudflare.com/ja-jp/service-bindings-closed-beta-sign-up/" target="_blank">アーリーアクセスのために</a>サインアップしましょう。</li>
+		<li><a href="https://workers.new" target="_blank">ダッシュボード</a>に移動して最初のサービスを作成しましょう！</li>
+		<li>サービスバインディングへの<a href="https://www.cloudflare.com/ja-jp/service-bindings-closed-beta-sign-up" target="_blank">アーリーアクセスのために</a>サインアップしましょう。</li>
 	</ul>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/Lego.png" class="kg-image" alt="" loading="lazy"></figure>
 </div>

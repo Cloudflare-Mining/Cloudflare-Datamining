@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image2-32.png" class="kg-image" alt="Cloudflare is joining the AS112 project to help the Internet deal with misdirected DNS queries" loading="lazy"></figure>
-	<p>今天，我们隆重宣布加入 <a href="https://www.as112.net/" target="_blank">AS112 项目</a>，成为这个由社区运营、松散协调的任播 DNS 服务器部署的运营商，这些 DNS 服务器主要应答被错误定向并在互联网上造成大量不必要负载的反向 DNS 查找查询。</p>
+	<p>今天，我们隆重宣布加入 <a href="https://www.as112.net" target="_blank">AS112 项目</a>，成为这个由社区运营、松散协调的任播 DNS 服务器部署的运营商，这些 DNS 服务器主要应答被错误定向并在互联网上造成大量不必要负载的反向 DNS 查找查询。</p>
 	<p>随着 Cloudflare 全球网络的加入，我们可以极大地提升这个分布式公共服务的稳定性、可靠性和性能。</p>
 	<h2 id="-as112">什么是 AS112</h2>
 	<p>AS112 项目是一个社区运营的重要网络服务，旨在处理私有使用地址的反向 DNS 查询（这些地址永远不会出现在公共 DNS 系统中）。例如，在这篇博客文章发表之前的 7 天里，Cloudflare 的 1.1.1.1 解析器收到了超过 980 亿次此类查询—— <em>这些查询在域名系统中都没有有用的应答</em>。</p>
@@ -36,8 +36,8 @@
 	<center><small>(保留的私有 IPv4 网络地址范围)</small></center><!--kg-card-end: html-->
 	<p>尽管保留的地址本身被屏蔽，永远不会出现在公共互联网上，但私有环境中的设备和程序偶尔也会发起与这些地址对应的 DNS 查询。这种查询被称为“反向查找”，因为它们在询问 DNS 是否存在一个与某个地址相关的名称。</p>
 	<h3 id="-dns-">反向 DNS 查找</h3>
-	<p>反向 DNS 查找是与更常用的 DNS 查找相反的过程(后者每天被用于将 <a href="https://www.cloudflare.com/" target="_blank">www.cloudflare.com</a> 这样的地址转换为对应的 IP 地址)。这种查询用于查找与给定 IP 地址相关联的域名，特别是与路由器和交换机相关联的那些地址。例如，网络管理员和研究人员使用反向查找来帮助理解数据包在网络中经过的路径，而理解有意义的名称比理解无意义的数字要容易得多。</p>
-	<p>反向查找是通过向 DNS 服务器查询指针记录 (<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/" target="_blank">PTR</a>)来完成的。PTR 记录中，IP 地址的各段被反向存储 ，并在末尾加上“.in-addr.arpa”。例如，IP 地址 192.0.2.1 会有一个以 1.2.0.192.in-addr.arpa 形式存储的 PTR 记录。在 IPv6 中，PTR 记录存储在 “.ip6.arpa”域内，而不是“.in-addr. Arpa”。下面是使用 dig 命令行工具进行的一些查询示例。</p><!--kg-card-begin: markdown-->
+	<p>反向 DNS 查找是与更常用的 DNS 查找相反的过程(后者每天被用于将 <a href="https://www.cloudflare.com" target="_blank">www.cloudflare.com</a> 这样的地址转换为对应的 IP 地址)。这种查询用于查找与给定 IP 地址相关联的域名，特别是与路由器和交换机相关联的那些地址。例如，网络管理员和研究人员使用反向查找来帮助理解数据包在网络中经过的路径，而理解有意义的名称比理解无意义的数字要容易得多。</p>
+	<p>反向查找是通过向 DNS 服务器查询指针记录 (<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record" target="_blank">PTR</a>)来完成的。PTR 记录中，IP 地址的各段被反向存储 ，并在末尾加上“.in-addr.arpa”。例如，IP 地址 192.0.2.1 会有一个以 1.2.0.192.in-addr.arpa 形式存储的 PTR 记录。在 IPv6 中，PTR 记录存储在 “.ip6.arpa”域内，而不是“.in-addr. Arpa”。下面是使用 dig 命令行工具进行的一些查询示例。</p><!--kg-card-begin: markdown-->
 	<pre><code># 查找与 IPv4 地址 172.64.35.46 关联的域名
 # “+short” 选项使其仅输出简短的结果
 $ dig @1.1.1.1 PTR 46.35.64.172.in-addr.arpa +short
@@ -307,9 +307,9 @@ router = [
 fallback_action = "fail"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>然后，客户应用程序及其清单文件将通过部署管道进行编译和部署，后者利用 <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a> 在全球范围内存储和复制资产。</p>
-	<p>访客应用程序现在已经启动并运行，但是指向新 IP 前缀的 DNS 查询流量如何到达 DNS 服务器呢？每次添加新的访客应用程序时都必须重启 DNS 服务器吗？当然不必。我们使用之前开发和部署的一个软件，叫做 <a href="https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf/">Tubular</a>。它允许我们动态更改服务的地址。借助 Tubular，目的地为 AS112 业务 IP 地址前缀的传入数据包被分配到正确的 DNS 服务器进程，而不需要对 DNS 服务器本身进行任何更改或发布。</p>
-	<p>同时，为了让错误定向的 DNS 查询到达 Cloudflare 网络，我们使用 <a href="https://developers.cloudflare.com/byoip/" target="_blank">BYOIP</a> (自带 IP 到 Cloudflare，这是一个 Cloudflare 产品，允许在 Cloudflare 的所有地点宣告客户自己的 IP)。4 个 AS112 IP 前缀被加入到 BYOIP 系统，并由它宣告到全球。</p>
+	<p>然后，客户应用程序及其清单文件将通过部署管道进行编译和部署，后者利用 <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> 在全球范围内存储和复制资产。</p>
+	<p>访客应用程序现在已经启动并运行，但是指向新 IP 前缀的 DNS 查询流量如何到达 DNS 服务器呢？每次添加新的访客应用程序时都必须重启 DNS 服务器吗？当然不必。我们使用之前开发和部署的一个软件，叫做 <a href="https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf">Tubular</a>。它允许我们动态更改服务的地址。借助 Tubular，目的地为 AS112 业务 IP 地址前缀的传入数据包被分配到正确的 DNS 服务器进程，而不需要对 DNS 服务器本身进行任何更改或发布。</p>
+	<p>同时，为了让错误定向的 DNS 查询到达 Cloudflare 网络，我们使用 <a href="https://developers.cloudflare.com/byoip" target="_blank">BYOIP</a> (自带 IP 到 Cloudflare，这是一个 Cloudflare 产品，允许在 Cloudflare 的所有地点宣告客户自己的 IP)。4 个 AS112 IP 前缀被加入到 BYOIP 系统，并由它宣告到全球。</p>
 	<h3 id="--3">测试</h3>
 	<p>在向公共互联网宣告之前，我们如何确保我们建立的服务正确运行呢？1.1.1.1 每天处理超过 130 亿个这样的错误定向查询，并实施了逻辑直接在本地为它们返回 NXDOMAIN，这是 <a href="https://www.rfc-editor.org/rfc/rfc7534" target="_blank">RFC 7534</a>的推荐做法。</p>
 	<p>但是，我们可以使用动态规则来改变 Cloudflare 测试位置中处理错误定向查询的方式。例如，类似如下的规则：</p><!--kg-card-begin: markdown-->
@@ -331,7 +331,7 @@ fallback_action = "fail"
 		<li>有 DNSSEC 支持的查询数量</li>
 		<li>按 ASN/数据中心分的查询数量</li>
 	</ul>
-	<p>我们将在 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 网站上提供以上公共统计页面。我们仍在努力实现页面所需的后端 API 和前端——一旦可用，我们将分享到此页面的链接。</p>
+	<p>我们将在 <a href="https://radar.cloudflare.com" target="_blank">Cloudflare Radar</a> 网站上提供以上公共统计页面。我们仍在努力实现页面所需的后端 API 和前端——一旦可用，我们将分享到此页面的链接。</p>
 	<h2 id="--5">接下来？</h2>
 	<p>我们将从 2022 年 12 月 15 日开始宣告 AS112 前缀。</p>
 	<p>该服务启动后，您可以运行一个 dig 命令来检查是否到达了 Cloudflare 运行的一个 AS112 节点上，例如：</p><!--kg-card-begin: markdown-->

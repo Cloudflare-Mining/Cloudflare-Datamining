@@ -175,7 +175,7 @@
 	<p>除了按功能分类的目录外，我们还有一个公共目录文件来保存在整个应用程序中重复使用的字符串。这样，我们不仅可以使 ID 保持简短（common.delete与 some_page.some_tab.some_feature.thing.delete相比），而且降低了重复工作的可能性，因为开发人员在添加新字符串之前会习惯性地检查公共目录。</p>
 	<h3 id="--3">库</h3>
 	<p>到目前为止，我们已经详细讨论了 &lt;Trans&gt; 组件及其功能。现在，我们来谈谈它的构建方式。</p>
-	<p>或许不足为奇，我们不想徒劳无功，从头开始提供基本的 i18n 库。由于先前为使用 Backbone 编写的应用程序的旧版部分进行了国际化工作，我们已经在使用 Airbnb 的 <a href="https://airbnb.io/polyglot.js/" target="_blank">Polyglot 库</a>，它是一个“用 JavaScript 编写的微小 I18n 帮助程序库”，除了其他优点外，还“基于 Airbnb 在其 Backbone.js 和 Node 应用中添加 I18n 功能的经验，提供一种简单的插值和复数解决方案”。</p>
+	<p>或许不足为奇，我们不想徒劳无功，从头开始提供基本的 i18n 库。由于先前为使用 Backbone 编写的应用程序的旧版部分进行了国际化工作，我们已经在使用 Airbnb 的 <a href="https://airbnb.io/polyglot.js" target="_blank">Polyglot 库</a>，它是一个“用 JavaScript 编写的微小 I18n 帮助程序库”，除了其他优点外，还“基于 Airbnb 在其 Backbone.js 和 Node 应用中添加 I18n 功能的经验，提供一种简单的插值和复数解决方案”。</p>
 	<p>我们看了一些专门为国际化 React 应用程序而开发的最热门库，但最终决定继续使用 Polyglot。我们创建了 &lt;Trans&gt;组件，以填补与 React 之间的空白。我们选择此方向的原因有几个：</p>
 	<ul>
 		<li>不想为了迁移到新的i18n 支持库而重新国际化应用程序中的旧代码。</li>
@@ -443,7 +443,7 @@
 	<!--kg-card-end: markdown-->
 	<h3 id="--5">用于处理数字、日期和时间的库</h3>
 	<p>确保所有受支持的区域设置中所有这些类型的数据都使用正确的格式不是一件容易的事。幸运的是，有许多发展成熟并经过考验的库可以为您提供帮助。</p>
-	<p>在项目启动时，我们广泛使用 <a href="https://momentjs.com/" target="_blank">Moment.js</a> 库来设定日期和时间格式。这个实用库将格式日期的详细信息抽象化为不同的长度（“Jul 9th 20”、“July 9th 2020”和“Thursday”），显示相对的日期（“2 days ago”），以及其他内容。我们使用的日期几乎都通过 Moment.js 进行格式化来提高可读性，并且 Moment.js 已经对大量区域设置有相应的 i18n 支持，我们只需拨动几个开关就能正确格式化日期，投入的工作量极少。</p>
+	<p>在项目启动时，我们广泛使用 <a href="https://momentjs.com" target="_blank">Moment.js</a> 库来设定日期和时间格式。这个实用库将格式日期的详细信息抽象化为不同的长度（“Jul 9th 20”、“July 9th 2020”和“Thursday”），显示相对的日期（“2 days ago”），以及其他内容。我们使用的日期几乎都通过 Moment.js 进行格式化来提高可读性，并且 Moment.js 已经对大量区域设置有相应的 i18n 支持，我们只需拨动几个开关就能正确格式化日期，投入的工作量极少。</p>
 	<p>有一些针对 Moment.js 的强烈批评（主要是它很臃肿），但与重做每个日期和时间所花费的成本相比，改换成占用空间较小的替代方案所能实现的好处并不划算。</p>
 	<p>数字是一个截然不同的故事。正如您可能想象的那样，整个仪表板中显示成千上万未经格式化的原始数字。寻找它们是一件费力的事，常常是手动过程。</p>
 	<p>为了真正对数字进行格式化，我们使用了 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl" target="_blank">Intl API</a>（根据 ECMAScript 标准定义的国际化库）：</p>
@@ -452,7 +452,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 // This probably works in the browser you're using right now!</code></pre>
 	<p>幸运的是，浏览器对 Intl 支持近年来有了长足进步，所有现代浏览器都提供全面支持。</p>
 	<p>诸如 V8 之类的一些现代 JavaScript 引擎甚至已经告别这些库的自托管 JavaScript 实现，转而使用基于 C++ 的内置函数，<a href="https://v8.dev/blog/intl" target="_blank">大大加快了速度</a>。</p>
-	<p>不过，对旧版浏览器的支持可能有所欠缺。这里有一个<a href="https://intl-formatting.jculvey.workers.dev/" target="_blank">简单的演示站点</a>（<a href="https://github.com/jculvey/intl-formatting-worker" target="_blank">源代码</a>），它使用 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> 构建，可以显示日期、时间和数字在若干种区域设置中的呈现。</p>
+	<p>不过，对旧版浏览器的支持可能有所欠缺。这里有一个<a href="https://intl-formatting.jculvey.workers.dev" target="_blank">简单的演示站点</a>（<a href="https://github.com/jculvey/intl-formatting-worker" target="_blank">源代码</a>），它使用 <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a> 构建，可以显示日期、时间和数字在若干种区域设置中的呈现。</p>
 	<p>一些旧浏览器和操作系统组合产生的结果或许不尽人意。例如，如下是与上方相同的日期和时间在 Windows 8 加 IE 10 组合中的呈现：</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
@@ -496,8 +496,8 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 	<p>一些应用程序的回退行为略有不同：显示原始翻译键（也许您在使用的应用中看到过 <em>some.funny.dot.delimited.string</em>）。这里要在速度和正确性之间权衡，而我们选择针对速度和最小开销进行优化。在某些应用中，正确性的重要程度足以减慢 i18n 的节奏，而我们并未发生这种情况。</p>
 	<h3 id="--8">尽善尽美</h3>
 	<p>在我们新近本地化的应用程序中，还可以做些事情来优化用户体验。</p>
-	<p>首先，确保没有任何性能衰退。如果应用程序让用户在呈现页面之前获取所有翻译字符串，则肯定会发生这种衰退。因此，为了使所有内容顺畅运行，仅当应用程序需要在页面上呈现某些内容时，才异步获取相应翻译目录。如今这很容易实现，借助支持动态导入语句的模块捆绑器中提供的代码拆分功能便可，如 <a href="https://parceljs.org/code_splitting.html" target="_blank">Parcel</a> 或 <a href="https://webpack.js.org/guides/code-splitting/" target="_blank">Webpack</a>。</p>
-	<p>我们还希望消除用户在访问不同 Cloudflare 资产时必须不断选择所需语言所带来的不畅。为此，我们确保用户在我们<a href="https://www.cloudflare.com/fr-fr/" target="_blank">营销网站</a>或<a href="https://support.cloudflare.com/hc/fr-fr" target="_blank">支持网站</a>上做出的任何语言偏好选择会在浏览到<a href="https://dash.cloudflare.com/login?lang=fr-fr" target="_blank">仪表板</a>或离开之时依然保留（为了充分说明这一点，所有链接都是法语链接）。</p>
+	<p>首先，确保没有任何性能衰退。如果应用程序让用户在呈现页面之前获取所有翻译字符串，则肯定会发生这种衰退。因此，为了使所有内容顺畅运行，仅当应用程序需要在页面上呈现某些内容时，才异步获取相应翻译目录。如今这很容易实现，借助支持动态导入语句的模块捆绑器中提供的代码拆分功能便可，如 <a href="https://parceljs.org/code_splitting.html" target="_blank">Parcel</a> 或 <a href="https://webpack.js.org/guides/code-splitting" target="_blank">Webpack</a>。</p>
+	<p>我们还希望消除用户在访问不同 Cloudflare 资产时必须不断选择所需语言所带来的不畅。为此，我们确保用户在我们<a href="https://www.cloudflare.com/fr-fr" target="_blank">营销网站</a>或<a href="https://support.cloudflare.com/hc/fr-fr" target="_blank">支持网站</a>上做出的任何语言偏好选择会在浏览到<a href="https://dash.cloudflare.com/login?lang=fr-fr" target="_blank">仪表板</a>或离开之时依然保留（为了充分说明这一点，所有链接都是法语链接）。</p>
 	<h3 id="--9">下一步是什么？</h3>
 	<p>这是一段精彩纷呈的旅程，其过程带给我们很多收获。很难（也许不可能）说一个 i18n 项目真正宣告结束。扩展到新语言时会冒出狡猾的错误，暴露新的挑战。预算压力会迫使您寻找削减成本和提升效率的方法。此外，您还会发现可以为用户进一步增强本地化体验的方法。</p>
 	<p>我们有许多方面需要改进，但是这里有一些要点：</p>
@@ -508,5 +508,5 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 		<li>本地化地图。我们将努力确保基于地图的可视化呈现中的所有内容都得到翻译。</li>
 		<li>机器翻译在最近几年有了很大发展，但还不足以在无人监督前提下搅动我们的翻译。不过，我们希望进行更多的尝试，将机器翻译作为第一阶段，然后由翻译审阅人员进行编辑以确保正确性和基调。</li>
 	</ul>
-	<p>希望您喜欢这篇关于 Cloudflare 如何国际化和本地化我们仪表板的概述。欢迎您访问<a href="https://www.cloudflare.com/careers/jobs/" target="_blank">我们的事业发展页面</a>，了解有关全球全职职位和实习岗位的更多信息。</p>
+	<p>希望您喜欢这篇关于 Cloudflare 如何国际化和本地化我们仪表板的概述。欢迎您访问<a href="https://www.cloudflare.com/careers/jobs" target="_blank">我们的事业发展页面</a>，了解有关全球全职职位和实习岗位的更多信息。</p>
 </div>

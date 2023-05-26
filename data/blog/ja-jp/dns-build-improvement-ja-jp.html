@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-20.png" class="kg-image" alt="How we improved DNS record build speed by more than 4,000x" loading="lazy"></figure>
-	<p>以前、私がセカンダリDNSについての<a href="https://blog.cloudflare.com/secondary-dns-deep-dive/">ブログ</a>を書いて以来、CloudflareのDNSトラフィックは、月間15.8兆DNSクエリーから38.7兆へと倍以上に増加しています。当社のネットワークは現在、100カ国以上270都市以上に広がり、世界中で10,000万以上のネットワークと相互接続しています。<a href="https://w3techs.com/technologies/overview/dns_server" target="_blank">w3 stats</a>によると、「Cloudflareは全Webサイトの15.3%にDNSサーバープロバイダーとして利用されている」とのことです。これは、可能な限り最速かつ最も信頼性の高い方法でDNSを提供するために、当社が大きな責任を担っていることを意味しています。<br></p>
+	<p>以前、私がセカンダリDNSについての<a href="https://blog.cloudflare.com/secondary-dns-deep-dive">ブログ</a>を書いて以来、CloudflareのDNSトラフィックは、月間15.8兆DNSクエリーから38.7兆へと倍以上に増加しています。当社のネットワークは現在、100カ国以上270都市以上に広がり、世界中で10,000万以上のネットワークと相互接続しています。<a href="https://w3techs.com/technologies/overview/dns_server" target="_blank">w3 stats</a>によると、「Cloudflareは全Webサイトの15.3%にDNSサーバープロバイダーとして利用されている」とのことです。これは、可能な限り最速かつ最も信頼性の高い方法でDNSを提供するために、当社が大きな責任を担っていることを意味しています。<br></p>
 	<p>DNSクエリーの応答時間は最も重要なパフォーマンス指標ですが、時として注目されない別の指標があります。DNSレコードの伝達時間は、当社のAPIに送信された変更が当社のDNSクエリーの応答に反映されるまでの時間です。DNSレコードの伝達時間は、お客様が素早く設定を変更し、システムをより俊敏にするために、1ミリ秒単位で重要視されます。当社のDNS伝達パイプラインはすでに非常に高速であることが知られていましたが、実装すればパフォーマンスを大幅に改善できるいくつかの改善点を特定しました。このブログでは、DNSレコードの伝達速度を劇的に改善した方法と、それがお客様に与える影響について説明します。<br></p>
 	<h3 id="dns-">DNSレコードの伝達方法</h3>
 	<p>Cloudflareは、お客様のDNSレコードの変更を多段階のパイプラインで受け取り、当社のグローバルネットワークにプッシュするため、世界中で利用することができます。</p>
@@ -17,7 +17,7 @@
 	<p>もちろん、これは起きていることを簡略化したものです。実際には、当社のAPIは1秒間に何千ものリクエストを受け取っています。すべてのPOST/PUT/PATCH/DELETEリクエストは、最終的にDNSレコードの変更につながります。APIやCloudflareダッシュボードに表示される情報が、DNSクエリーに応答するために使用する情報と最終的に一致するように、これらの各変更を処理する必要があります。 <br></p>
 	<p>これまで、DNSの伝達パイプラインにおける最大のボトルネックの1つは、上記の手順4で示したZone Builderでした。グローバルネットワークに書き込まれるレコードの収集と整理を担うZone Builderは、特に大きなゾーンの伝達時間の大半を占めていました。スケールを拡大していく上で、システムに存在する可能性のあるボトルネックを取り除くことは重要であり、これはそのようなボトルネックの1つとして明確に認識されていました。</p>
 	<h3 id="-">産みの苦しみ</h3>
-	<p>上記のパイプラインが<a href="https://blog.cloudflare.com/how-we-made-our-dns-stack-3x-faster/">最初に発表された</a>とき、Zone Builderは1秒間におよそ5から10件のDNSレコードの変更を受け取っていました。当時のZone Builderは以前のシステムより大幅に改善されましたが、Cloudflareが経験していた成長および今なお経験している成長を考えると、長く続くことはありませんでした。現在では、1秒間に平均250件のDNSレコードが変更されており、これはZone Builderが最初に発表されたときの25倍という驚異的な伸びを示しています。<br></p>
+	<p>上記のパイプラインが<a href="https://blog.cloudflare.com/how-we-made-our-dns-stack-3x-faster">最初に発表された</a>とき、Zone Builderは1秒間におよそ5から10件のDNSレコードの変更を受け取っていました。当時のZone Builderは以前のシステムより大幅に改善されましたが、Cloudflareが経験していた成長および今なお経験している成長を考えると、長く続くことはありませんでした。現在では、1秒間に平均250件のDNSレコードが変更されており、これはZone Builderが最初に発表されたときの25倍という驚異的な伸びを示しています。<br></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-30.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>Zone Builderが最初に設計された方法は、非常にシンプルなものでした。ゾーンが変更されると、Zone Builderはそのゾーンのデータベースからすべてのレコードを取得し、Quicksilverに保存されているレコードと比較します。違いがあれば修正し、データベースとQuicksilverの間の一貫性を維持します。<br></p>
@@ -40,7 +40,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image6-20.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><br></p>
 	<p>この2つのスケジューラ間でロックをかけることは非常に重要です。そうしないと、フルビルドスケジューラがレコード単位のスケジューラの変更を古いデータで上書きしてしまう可能性があるからです。<br></p>
-	<p>このレコード単位のアーキテクチャは、DNSSECによる否定的回答に対するCloudflareの<a href="https://blog.cloudflare.com/black-lies/">ブラック・ライ・アプローチ</a>を使用しなければ、何も実現できないことに注意することが重要です。通常、DNSSECによる否定的回答を適切に提供するためには、ゾーン内のすべてのレコードが正規にソートされていなければなりません。これはApexレコードからゾーン内の全レコードへの参照リストを維持するために必要です。否定的回答に対するこの通常のアプローチでは、ゾーンに追加された単一のレコードは、このソートされた名前のリスト内での挿入ポイントを決定するために全てのレコードを収集する必要があります。</p>
+	<p>このレコード単位のアーキテクチャは、DNSSECによる否定的回答に対するCloudflareの<a href="https://blog.cloudflare.com/black-lies">ブラック・ライ・アプローチ</a>を使用しなければ、何も実現できないことに注意することが重要です。通常、DNSSECによる否定的回答を適切に提供するためには、ゾーン内のすべてのレコードが正規にソートされていなければなりません。これはApexレコードからゾーン内の全レコードへの参照リストを維持するために必要です。否定的回答に対するこの通常のアプローチでは、ゾーンに追加された単一のレコードは、このソートされた名前のリスト内での挿入ポイントを決定するために全てのレコードを収集する必要があります。</p>
 	<h3 id="--2">バグ</h3>
 	<p>すべてが順調に進んだCloudflareブログを書ければいいのですが、決してそうはいきません。バグは起こるものですから、それに対応し、次回はこの特定のバグが起こらないように自分自身をセットアップする準備が必要です。<br></p>
 	<p>今回発見された大きなバグは、Quicksilverの古いレコードのクリーンアップに関連するものでした。Zone Builderをフル活用すれば、データベースとQuicksilverの両方に存在するレコードを正確に把握できる贅沢があります。このため、書き込みとクリーンアップがかなり簡単な作業になります。 <br></p>
@@ -112,5 +112,5 @@
 	<h3 id="--4">次のステップ</h3>
 	<p>この結果は非常にインパクトのあるものでしたが、当社はさらに良い結果を出すことができると考えています。将来的には、フルビルドを完全に排除し、ゾーン設定のビルドに置き換えることを計画しています。すべてのレコードに加えてゾーン設定を取得する代わりに、ゾーン設定ビルダーはゾーンの設定を取得し、それをQuicksilver経由でグローバルネットワークに伝達させるだけでよいのです。レコード単位のビルドと同様に、ゾーン設定の複雑さとそれに触れるアクターの数のために、これは困難な課題です。最終的にこれが実現できれば、フルビルドを正式に引き上げて、当社が長年にわたって成長させてきたスケールのgitの履歴にリマインダーとしてそれを残すことができます。 <br></p>
 	<p>また、レコードの変更をグループにまとめて、データベースやQuicksilverに問い合わせる回数を最小限にするバッチシステムを導入する予定です。 <br></p>
-	<p>このような技術的・運用的な課題を解決することにワクワクするでしょうか？Cloudflareは<a href="https://www.cloudflare.com/ja-jp/careers/jobs/?department=Engineering&amp;amp;location=default" target="_blank">エンジニアリング</a>や<a href="https://www.cloudflare.com/ja-jp/careers/" target="_blank">他のチーム</a>において常に才能あるスペシャリストやゼネラリストを採用しています。</p>
+	<p>このような技術的・運用的な課題を解決することにワクワクするでしょうか？Cloudflareは<a href="https://www.cloudflare.com/ja-jp/careers/jobs/?department=Engineering&amp;amp%3Blocation=default" target="_blank">エンジニアリング</a>や<a href="https://www.cloudflare.com/ja-jp/careers" target="_blank">他のチーム</a>において常に才能あるスペシャリストやゼネラリストを採用しています。</p>
 </div>

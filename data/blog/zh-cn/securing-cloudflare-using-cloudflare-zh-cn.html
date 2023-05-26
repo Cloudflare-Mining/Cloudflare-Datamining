@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Securing-Cloudflare-with-Cloudflare.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>在出现新的安全威胁时——一个被公开利用的漏洞（例如 <a href="https://blog.cloudflare.com/zh-cn/">log4j</a>），从企业控制的环境转移到远程办公时，或一个潜在的威胁行为者——保护 Cloudflare 网络、客户和员工的职责落在安全团队身上。随着安全威胁演变，我们的防御系统也应该随之发展。Cloudflare 致力于使用一流解决方案来加强我们的安全态势。因此，我们常常会像其他 Cloudflare 客户一样求助于我们自己的产品。</p>
-	<p>我们已经写过，使用 <a href="https://blog.cloudflare.com/dogfooding-from-home/">Cloudflare Access 来替代我们的 VPN</a>，使用 <a href="https://blog.cloudflare.com/access-purpose-justification/">Purpose Justification</a> 来实现细粒度控制，使用 <a href="https://blog.cloudflare.com/using-cloudflare-one-to-secure-iot-devices/">Magic + Gateway</a> 来防范内部的横向移动。和世界各地企业团队一样，我们有相同的安全需求和担忧，因此我们依赖于信任 Cloudflare 的财富 500 强公司所用的相同解决方案，以改善安全、性能和速度。使用自己的产品植根于我们团队的文化中。</p>
+	<p>在出现新的安全威胁时——一个被公开利用的漏洞（例如 <a href="https://blog.cloudflare.com/zh-cn">log4j</a>），从企业控制的环境转移到远程办公时，或一个潜在的威胁行为者——保护 Cloudflare 网络、客户和员工的职责落在安全团队身上。随着安全威胁演变，我们的防御系统也应该随之发展。Cloudflare 致力于使用一流解决方案来加强我们的安全态势。因此，我们常常会像其他 Cloudflare 客户一样求助于我们自己的产品。</p>
+	<p>我们已经写过，使用 <a href="https://blog.cloudflare.com/dogfooding-from-home">Cloudflare Access 来替代我们的 VPN</a>，使用 <a href="https://blog.cloudflare.com/access-purpose-justification">Purpose Justification</a> 来实现细粒度控制，使用 <a href="https://blog.cloudflare.com/using-cloudflare-one-to-secure-iot-devices">Magic + Gateway</a> 来防范内部的横向移动。和世界各地企业团队一样，我们有相同的安全需求和担忧，因此我们依赖于信任 Cloudflare 的财富 500 强公司所用的相同解决方案，以改善安全、性能和速度。使用自己的产品植根于我们团队的文化中。</p>
 	<h3 id="-cloudflare-">安全挑战，Cloudflare 解决方案</h3>
 	<p>我们形成了一种强大的能力，在遇到安全威胁时会首先考虑 Cloudflare。事实上，我们遇到的很多安全问题都有 Cloudflare 解决方案。</p>
 	<ul>
@@ -45,7 +45,7 @@
   }
 }
 </code></pre>
-	<p><code>require</code> 部分要求 Cloudflare 员工使用他们受 FIDO2 支持的安全密钥来访问我们受 Access 保护的所有内部和外部应用程序。auth_method（在 <a href="https://datatracker.ietf.org/doc/rfc8176/" target="_blank">RFC8176</a> 有更深入描述）要求从我们在 <code>amr</code> 字段内的 OIDC 提供者在登录流中返回特定的值。强制的 <code>swk</code> 是 “持有软件安全密钥的证明” ，对应于使用安全密钥的登录。</p>
+	<p><code>require</code> 部分要求 Cloudflare 员工使用他们受 FIDO2 支持的安全密钥来访问我们受 Access 保护的所有内部和外部应用程序。auth_method（在 <a href="https://datatracker.ietf.org/doc/rfc8176" target="_blank">RFC8176</a> 有更深入描述）要求从我们在 <code>amr</code> 字段内的 OIDC 提供者在登录流中返回特定的值。强制的 <code>swk</code> 是 “持有软件安全密钥的证明” ，对应于使用安全密钥的登录。</p>
 	<p>访问内部站点时强制使用安全密钥的能力显著改善了我们的安全态势。实施这一改变前，对于我们很多内部服务，我们允许同时使用软令牌（例如 Google Authenticator 的 TOTP）和 WebAuthn，因为有一小部分系统依然不支持 FIDO2。在实施以上变化后，您会看到我们的软令牌使用降至接近零。</p>
 	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/QyHA5DUMOGgeLpD3qvfe-Qr4OnMSMi8n6-hbaeWVvsgZx6ZN0OpDtf72CwAbNY1t1Q1RrRgCdsHuFhJjfkX9WXYr8IM2ctzZPqFVz1o6zGMpCou2bH8l6Ze0ijoXGk0QSNxLapxK" class="kg-image" alt="This image shows webauthn and &quot;soft token&quot; (totp) usage as a second factor, with soft token reaching zero usage when we enforced webauthn only." loading="lazy" title="Webauthn usage at Cloudflare"></figure>
 	<h3 id="-">持续实践</h3>

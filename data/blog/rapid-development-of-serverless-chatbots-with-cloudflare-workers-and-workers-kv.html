@@ -62,7 +62,7 @@ x 260 work days
 			<p>Download the private key json file</p>
 		</li>
 		<li>
-			<p>Go to the <a href="https://console.developers.google.com/" target="_blank">API Console</a></p>
+			<p>Go to the <a href="https://console.developers.google.com" target="_blank">API Console</a></p>
 		</li>
 		<li>
 			<p>Search for the <strong>Hangouts Chat API</strong> (<em>Note: not the Google+ Hangouts API</em>) <br><br><br>
@@ -73,7 +73,7 @@ x 260 work days
 			<p>Click <strong>Configuration</strong> onthe left menu</p>
 		</li>
 		<li>
-			<p>Fill out the form as per below <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+			<p>Fill out the form as per below <sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup></p>
 			<ul>
 				<li>Use a hard to guess URL. I <a href="https://www.guidgenerator.com/online-guid-generator.aspx" target="_blank">generate a guid</a> and use that in the url.</li>
 				<li>The URL will be the route you associate with your Worker in the Dashboard<br>
@@ -89,7 +89,7 @@ x 260 work days
 	<p><img src="https://blog.cloudflare.com/content/images/2019/04/message-a-bot.png" alt="message-a-bot" loading="lazy"></p>
 	<p>It won't be too useful just yet, as we need to create our Worker to receive the messages and respond!</p>
 	<h3 id="theworker">The Worker</h3>
-	<p>In the Workers dashboard, create a script and associate with the route you defined in step #7 (the one with the guid). It should look something like below. <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
+	<p>In the Workers dashboard, create a script and associate with the route you defined in step #7 (the one with the guid). It should look something like below. <sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn2" id="fnref2">[2]</a></sup></p>
 	<p><img src="https://blog.cloudflare.com/content/images/2019/04/route.png" alt="route" loading="lazy"></p>
 	<p>The Google Chatbot interface is pretty simple, but weirdly obfuscated in the Hangouts API guide IMHO. You have to reverse engineer the python example.</p>
 	<p>Basically, if we message our bot like <code>@ownerbot-blog Kibana</code>, we'll get a message like this:</p>
@@ -255,10 +255,10 @@ function process(request) {
 	<section class="footnotes">
 		<ol class="footnotes-list">
 			<li id="fn1" class="footnote-item">
-				<p>For simplicity, I'm going to use a static shared key, but Google have recently rolled out a more <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?hl=en_US#verifying_bot_authenticity" target="_blank">secure method</a> for verifying the caller's authenticity, which we'll expand on in Part 2. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+				<p>For simplicity, I'm going to use a static shared key, but Google have recently rolled out a more <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?hl=en_US#verifying_bot_authenticity" target="_blank">secure method</a> for verifying the caller's authenticity, which we'll expand on in Part 2. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
 			</li>
 			<li id="fn2" class="footnote-item">
-				<p>This UI is the multiscript version available to Enterprise customers. You can still implement the bot with a single Worker, you'll just need to recognize and route requests to your chatbot code. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+				<p>This UI is the multiscript version available to Enterprise customers. You can still implement the bot with a single Worker, you'll just need to recognize and route requests to your chatbot code. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
 			</li>
 		</ol>
 	</section>

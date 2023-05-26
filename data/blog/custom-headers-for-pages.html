@@ -40,7 +40,7 @@
 </code></pre>
 	<h2 id="how-we-built-support-for-custom-headers">How we built support for custom headers</h2>
 	<p>To support all these use cases for custom headers, we had to build a new engine to determine which rules to apply for each incoming request. Backed, of course, by Workers, this engine supports splats and placeholders, and allows you to include those matched values in your headers.</p>
-	<p>Although we don't support all of its features, we've modeled this matching engine after the <a href="https://wicg.github.io/urlpattern/" target="_blank">URLPattern specification</a> which was recently shipped with Chrome 95. We plan to be able to fully implement this specification for custom headers once URLPattern lands in the Workers runtime, and there should hopefully be no breaking changes to migrate.</p>
+	<p>Although we don't support all of its features, we've modeled this matching engine after the <a href="https://wicg.github.io/urlpattern" target="_blank">URLPattern specification</a> which was recently shipped with Chrome 95. We plan to be able to fully implement this specification for custom headers once URLPattern lands in the Workers runtime, and there should hopefully be no breaking changes to migrate.</p>
 	<h2 id="enhanced-support-for-redirects">Enhanced support for redirects</h2>
 	<p>With this same engine, we’re bringing these features to your <code>_redirects</code> file as well. You can now configure your redirects with splats, placeholders and status codes as shown in the example below: </p>
 	<pre><code class="language-txt">/blog/* https://blog.example.com/:splat 301

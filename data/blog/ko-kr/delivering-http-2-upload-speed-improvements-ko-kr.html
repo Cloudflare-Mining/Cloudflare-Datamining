@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/Speed-header@2x-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Cloudflare는 HTTP/2 클라이언트들이 우리 네트워크에 <em>업로드</em>하는 속도를 향상하였습니다. 이 글에서는 문제를 찾아내는 방법에서 시작하여 이를 수정하고 글로벌 인터넷의 업로드 속도 향상이 되기까지의 과정에 대해 설명하겠습니다.</p>
-	<p>우리는 사용자 네트워크의 성능 측정을 위해 2020년 5월에 <a href="https://blog.cloudflare.com/test-your-home-network-performance/">speed.cloudflare.com을 런칭</a>하였습니다. 이 사이트는 다운로드, 업로드와 지연 시간 테스트를 제공 합니다. 릴리즈 직후 몇몇 사용자에게서 업로드 속도가 낮게 표시된다는 리포트를 받았습니다. 조사 결과 고속의 업로드 대역폭을 가진 고객 (수백Mbps 업로드 속도가 가능한 케이블이나 파이버 서비스)에게서 발생하는 것으로 보였습니다. 우리의 속도 측정은 브라우저 자바스크립트로 동작하며 대부분의 브라우저는 HTTP/2 를 기본 사용하고 있습니다. 이후 사용자가 매우 빠른 업로드 대역폭을 갖고 있는 경우 HTTP/2 업로드 속도가 HTTP/1.1 (모두 TLS라 가정 합니다)보다 매우 느린 경우가 있는 것을 알게 되었습니다.</p>
+	<p>우리는 사용자 네트워크의 성능 측정을 위해 2020년 5월에 <a href="https://blog.cloudflare.com/test-your-home-network-performance">speed.cloudflare.com을 런칭</a>하였습니다. 이 사이트는 다운로드, 업로드와 지연 시간 테스트를 제공 합니다. 릴리즈 직후 몇몇 사용자에게서 업로드 속도가 낮게 표시된다는 리포트를 받았습니다. 조사 결과 고속의 업로드 대역폭을 가진 고객 (수백Mbps 업로드 속도가 가능한 케이블이나 파이버 서비스)에게서 발생하는 것으로 보였습니다. 우리의 속도 측정은 브라우저 자바스크립트로 동작하며 대부분의 브라우저는 HTTP/2 를 기본 사용하고 있습니다. 이후 사용자가 매우 빠른 업로드 대역폭을 갖고 있는 경우 HTTP/2 업로드 속도가 HTTP/1.1 (모두 TLS라 가정 합니다)보다 매우 느린 경우가 있는 것을 알게 되었습니다.</p>
 	<p>업로드 속도는 가정용 브로드밴드 연결을 사용하고 있는 사람들에게 예전보다 더 중요해 졌습니다. 많은 사람들이 예전과는 다르게 집에서 가정용 회선으로 재택 근무를 할 수 밖에 없는 상황이 되었기 때문입니다. 코로나 대유행 이전의 브로드밴드 트래픽은 매우 비대칭적이었습니다만 (다운로드 속도가 업로드보다 매우 빠릅니다... 음악을 듣거나 영화를 스트리밍으로 보는 경우를 생각해 보세요) 이제 사용자들이 가정에서 비디오 컨퍼런스에 참여하거나 컨텐츠를 만들어 올리는 일을 많이 보게 되었습니다.</p>
 	<h3 id="-">초기 테스트</h3>
-	<p>고객의 리포트는 주로 빠른 가정용 네트워크에 집중되었으므로, 제어된 환경에서 업로드 속도를 테스트할 수 있도록 <code>dummynet</code> 네트워크 시뮬레이터를 설정 하였습니다. 맥북 프로 안에 회사 코드를 실행할 수 있도록 리눅스 VM을 만들고 <a href="https://www.saturnsoft.net/tech/2020/06/07/macosx-dummynet/" target="_blank">맥북 호스트와 VM간에 <code>dummynet</code>을 구성</a> 하였습니다. 업로드 속도를 측정하는 것은 간단합니다 - 파일을 만들어서 요청 본문을 받아들일 수 있는 종착점으로 curl을 사용해서 업로드하면 됩니다. 동일한 테스트를 20회 수행하여 중간값을 측정 하였습니다(Mbps). </p>
+	<p>고객의 리포트는 주로 빠른 가정용 네트워크에 집중되었으므로, 제어된 환경에서 업로드 속도를 테스트할 수 있도록 <code>dummynet</code> 네트워크 시뮬레이터를 설정 하였습니다. 맥북 프로 안에 회사 코드를 실행할 수 있도록 리눅스 VM을 만들고 <a href="https://www.saturnsoft.net/tech/2020/06/07/macosx-dummynet" target="_blank">맥북 호스트와 VM간에 <code>dummynet</code>을 구성</a> 하였습니다. 업로드 속도를 측정하는 것은 간단합니다 - 파일을 만들어서 요청 본문을 받아들일 수 있는 종착점으로 curl을 사용해서 업로드하면 됩니다. 동일한 테스트를 20회 수행하여 중간값을 측정 하였습니다(Mbps). </p>
 	<pre><code class="language-shell">% dd if=/dev/urandom of=test.dat bs=1M count=10
 % curl --http1.1 -w '%{speed_upload}\n' -sf -o/dev/null --data-binary @test.dat https://edge/upload-endpoint
 % curl --http2 -w '%{speed_upload}\n' -sf -o/dev/null --data-binary @test.dat https://edge/upload-endpoint</code></pre>
@@ -55,7 +55,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/download--2-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>두가지 모두 현재의 128KB보다는 더 낫고 HTTP/1.1 과 동등하거나 때로는 더 나은 성능을 보여주고 있습니다. 하지만 최적의 버퍼 크기는 경우에 따라 다르며, 단순히 큰 버퍼 크기를 선택하게 되면 오히려 성능에 악영향을 미치게 됩니다. 따라서 최적의 버퍼 크기를 찾기 위한 똑똑한 방법이 필요합니다.</p>
 	<h3 id="--3">요청 본문 버퍼 크기 자동 조정</h3>
-	<p>이런 경우에 도움이 되는 아이디어 중 하나는 자동 조정입니다. 가령 최근의 TCP 스택은 수신 버퍼 크기를 자동 조정합니다. 우리의 엣지 서버에서도 <a href="https://sysctl-explorer.net/net/ipv4/tcp_moderate_rcvbuf/" target="_blank">TCP 수신 버퍼 자동 조정</a>은 기본으로 설정되어 있습니다.</p>
+	<p>이런 경우에 도움이 되는 아이디어 중 하나는 자동 조정입니다. 가령 최근의 TCP 스택은 수신 버퍼 크기를 자동 조정합니다. 우리의 엣지 서버에서도 <a href="https://sysctl-explorer.net/net/ipv4/tcp_moderate_rcvbuf" target="_blank">TCP 수신 버퍼 자동 조정</a>은 기본으로 설정되어 있습니다.</p>
 	<pre><code>net.ipv4.tcp_moderate_rcvbuf = 1</code></pre>
 	<p>하지만 HTTP/2 의 경우, HTTP/2 계층에서 직접 수신 흐름 제어를 하고 있고 기존의 128KB 는 큰 BDP 에서는 너무 작은 값이므로 TCP 버퍼 자동 조정은 그리 효과적이지 않습니다. 이런 이유로 TCP가 하는 것 처럼 HTTP/2 수신 버퍼 자동 조정을 시도해 보기로 하였습니다.</p>
 	<p>기본적인 아이디어는 BDP를 측정하여 그 값에 맞게 HTTP/2 요청 본문 버퍼 크기를 두배씩 늘리는 것입니다. 다음은 현재 우리의 NGINX에 구현된 알고리즘입니다:</p>
@@ -77,6 +77,6 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/download--6-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--7">요약</h3>
 	<p>HTTP/2 업로드 버퍼 자동 조정 기능은 현재 Cloudflare 엣지 서버에 기본 적용되어 있습니다. <a href="https://speed.cloudflare.com" target="_blank">speed.cloudflare.com</a> 을 포함하여 고객은 HTTP/2 연결을 통한 업로드 속도의 향상을 기대할 수 있습니다. 업로드 버퍼 크기를 자동 조정하는 것은 대부분의 경우에 잘 동작 하며 이제 HTTP/2 업로드는 예전보다 더 빠릅니다! 성능이라고 하면 다운로드 속도나 지연 시간의 개선을 생각하기 쉽습니다만, 대량의 데이터 업로드가 필요한 재택 근무자에게 빠른 업로드도 도움을 줄 수 있습니다. 가령 사진/비디오 공유, 콘텐츠 제작, 비디오 회의나 라이브 방송과 같은 경우입니다.</p>
-	<p>이 글 작성에 많은 도움을 준 <a href="https://blog.cloudflare.com/author/lucas/">Lucas Pardue</a>와 <a href="https://blog.cloudflare.com/author/rustam-lalkaka/">Rustam Lalkaka</a>에게 감사드립니다. </p>
+	<p>이 글 작성에 많은 도움을 준 <a href="https://blog.cloudflare.com/author/lucas">Lucas Pardue</a>와 <a href="https://blog.cloudflare.com/author/rustam-lalkaka">Rustam Lalkaka</a>에게 감사드립니다. </p>
 	<p>추신: 패치를 공개하고 NGINX 개발자에게 보냈습니다. <a href="http://mailman.nginx.org/pipermail/nginx-devel/2020-August/013436.html" target="_blank">다음 링크</a>에서 찾아 볼 수 있습니다.</p>
 </div>

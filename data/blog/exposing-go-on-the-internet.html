@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><em>This piece was <a href="https://blog.gopheracademy.com/advent-2016/exposing-go-on-the-internet/" target="_blank">originally written</a> for the Gopher Academy advent series. We are grateful to them for allowing us to republish it here.</em></p>
+	<p><em>This piece was <a href="https://blog.gopheracademy.com/advent-2016/exposing-go-on-the-internet" target="_blank">originally written</a> for the Gopher Academy advent series. We are grateful to them for allowing us to republish it here.</em></p>
 	<p>Back when <code>crypto/tls</code> was slow and <code>net/http</code> young, the general wisdom was to always put Go servers behind a reverse proxy like NGINX. That's not necessary anymore!</p>
 	<p>At Cloudflare we recently experimented with exposing pure Go services to the hostile wide area network. With the Go 1.8 release, <code>net/http</code> and <code>crypto/tls</code> proved to be stable, performant and flexible.</p>
 	<p>However, the defaults are tuned for local services. In this articles we'll see how to tune and harden a Go server for Internet exposure.</p>
 	<h3 id="cryptotls"><code>crypto/tls</code></h3>
-	<p>You're not running an insecure HTTP server on the Internet in 2016. So you need <code>crypto/tls</code>. The good news is that it's <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap/">now really fast</a> (as you've seen in a <a href="https://blog.gopheracademy.com/advent-2016/tls-termination-bench/" target="_blank">previous advent article</a>), and its security track record so far is excellent.</p>
+	<p>You're not running an insecure HTTP server on the Internet in 2016. So you need <code>crypto/tls</code>. The good news is that it's <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">now really fast</a> (as you've seen in a <a href="https://blog.gopheracademy.com/advent-2016/tls-termination-bench" target="_blank">previous advent article</a>), and its security track record so far is excellent.</p>
 	<p>The default settings resemble the <em>Intermediate</em> recommended configuration of the <a href="https://wiki.mozilla.org/Security/Server_Side_TLS" target="_blank">Mozilla guidelines</a>. However, you should still set <code>PreferServerCipherSuites</code> to ensure safer and faster cipher suites are preferred, and <code>CurvePreferences</code> to avoid unoptimized curves: a client using <code>CurveP384</code> would cause up to a second of CPU to be consumed on our machines.</p>
 	<pre><code class="language-go">&amp;tls.Config{
 	// Causes servers to use Go's default ciphersuite preferences,
@@ -35,7 +35,7 @@
 	},
 </code></pre>
 	<p>Be aware that the Go implementation of the CBC cipher suites (the ones we disabled in <em>Modern</em> mode above) is vulnerable to the <a href="https://www.imperialviolet.org/2013/02/04/luckythirteen.html" target="_blank">Lucky13 attack</a>, even if <a href="https://github.com/golang/go/commit/f28cf8346c4ce7cb74bf97c7c69da21c43a78034" target="_blank">partial countermeasures were merged in 1.8</a>.</p>
-	<p>Final caveat, all these recommendations apply only to the amd64 architecture, for which <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap/">fast, constant time implementations</a> of the crypto primitives (AES-GCM, ChaCha20-Poly1305, P256) are available. Other architectures are probably not fit for production use.</p>
+	<p>Final caveat, all these recommendations apply only to the amd64 architecture, for which <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">fast, constant time implementations</a> of the crypto primitives (AES-GCM, ChaCha20-Poly1305, P256) are available. Other architectures are probably not fit for production use.</p>
 	<p>Since this server will be exposed to the Internet, it will need a publicly trusted certificate. You can get one easily and for free thanks to Let's Encrypt and the <a href="https://godoc.org/golang.org/x/crypto/acme/autocert" target="_blank"><code>golang.org/x/crypto/acme/autocert</code></a> package’s <code>GetCertificate</code> function.</p>
 	<p>Don't forget to redirect HTTP page loads to HTTPS, and consider <a href="https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet" target="_blank">HSTS</a> if your clients are browsers.</p>
 	<pre><code class="language-go">srv := &amp;http.Server{
@@ -49,7 +49,7 @@
 }
 go func() { log.Fatal(srv.ListenAndServe()) }()
 </code></pre>
-	<p>You can use the <a href="https://www.ssllabs.com/ssltest/" target="_blank">SSL Labs test</a> to check that everything is configured correctly.</p>
+	<p>You can use the <a href="https://www.ssllabs.com/ssltest" target="_blank">SSL Labs test</a> to check that everything is configured correctly.</p>
 	<h3 id="nethttp"><code>net/http</code></h3>
 	<p><code>net/http</code> is a mature HTTP/1.1 and HTTP/2 stack. You probably know how (and have opinions about how) to use the Handler side of it, so that's not what we'll talk about. We will instead talk about the Server side and what goes on behind the scenes.</p>
 	<h3 id="timeouts">Timeouts</h3>
@@ -77,7 +77,7 @@ log.Println(srv.ListenAndServeTLS("", ""))
 	<p>Similarly to <code>ReadTimeout</code>, <code>WriteTimeout</code> is absolute, with no way to manipulate it from a Handler (<a href="https://golang.org/issue/16100" target="_blank">#16100</a>).</p>
 	<p>Finally, Go 1.8 <a href="https://github.com/golang/go/issues/14204" target="_blank">introduces <code>IdleTimeout</code></a> which limits server-side the amount of time a Keep-Alive connection will be kept idle before being reused. Before Go 1.8, the <code>ReadTimeout</code> would start ticking again immediately after a request completed, making it very hostile to Keep-Alive connections: the idle time would consume time the client should have been allowed to send the request, causing unexpected timeouts also for fast clients.</p>
 	<p>You should set <code>Read</code>, <code>Write</code> and <code>Idle</code> timeouts when dealing with untrusted clients and/or networks, so that a client can't hold up a connection by being slow to write or read.</p>
-	<p>For detailed background on HTTP/1.1 timeouts (up to Go 1.7) read <a href="https://blog.cloudflare.com/the-complete-guide-to-golang-net-http-timeouts/">my post on the Cloudflare blog</a>.</p>
+	<p>For detailed background on HTTP/1.1 timeouts (up to Go 1.7) read <a href="https://blog.cloudflare.com/the-complete-guide-to-golang-net-http-timeouts">my post on the Cloudflare blog</a>.</p>
 	<h4 id="http2">HTTP/2</h4>
 	<p>HTTP/2 is enabled automatically on any Go 1.6+ server if:</p>
 	<ul>

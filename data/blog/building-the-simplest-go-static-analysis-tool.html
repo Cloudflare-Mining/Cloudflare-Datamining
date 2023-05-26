@@ -66,6 +66,6 @@ for _, pi := range prog.AllPackages {
 	<h3 id="furtherreading">Further reading</h3>
 	<p><a href="https://github.com/golang/example/tree/master/gotypes#gotypes-the-go-type-checker" target="_blank">This document</a> maintained by Alan Donovan will tell you more than I'll ever know about the static analysis tooling.</p>
 	<p>Note that you might be tempted to use <code>go/importer</code> and <code>types.Importer[From]</code> instead of <code>x/go/loader</code>. Don't do that. That doesn't load the source but reads compiled <code>.a</code> files, which <strong>can be stale or missing</strong>. Static analysis tools that spit out "package not found" for existing packages or, worse, incorrect results because of this are a pet peeve of mine.</p>
-	<p><em>If you now feel the urge to write static analysis tools, know that the CloudFlare Go team <a href="https://www.cloudflare.com/join-our-team/" target="_blank">is hiring in London, San Francisco and Singapore</a>!</em></p>
+	<p><em>If you now feel the urge to write static analysis tools, know that the CloudFlare Go team <a href="https://www.cloudflare.com/join-our-team" target="_blank">is hiring in London, San Francisco and Singapore</a>!</em></p>
 	<!--kg-card-end: markdown-->
 </div>

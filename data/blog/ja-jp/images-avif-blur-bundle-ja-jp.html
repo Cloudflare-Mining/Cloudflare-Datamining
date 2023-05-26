@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-29.png" class="kg-image" alt="Store, resize and deliver images with Cloudflare Images" loading="lazy"></figure>
-	<p>Cloudflare Imagesの一般公開を<a href="https://blog.cloudflare.com/announcing-cloudflare-images/">開始して</a>から2か月が経過し、これまでのご利用状況、皆さまから寄せられたフィードバックを大変喜ばしく思っています。</p>
+	<p>Cloudflare Imagesの一般公開を<a href="https://blog.cloudflare.com/announcing-cloudflare-images">開始して</a>から2か月が経過し、これまでのご利用状況、皆さまから寄せられたフィードバックを大変喜ばしく思っています。</p>
 	<p>いくつかの数字から見ていきましょう：</p>
 	<p>11月5日から12日の週に、1日あたり平均7,000万枚以上の画像が配信されました。</p>
 	<p>これまでに150万枚以上の画像がアップロードされており、日々急速に増えています。</p>
@@ -9,10 +9,10 @@
 	<p>多くのお客様にとって、imagedelivery.netだけでなく、独自のドメインから画像を提供できることが重要です。ここでは、カスタムWorkersまたは特別なURLを使用した画像提供の簡単なソリューションを示します。</p>
 	<p>最後に大事なこととして、Cloudflare ImagesとStreamの両方で魅力的な価格の新しいバンドルの発売についてお知らせします。</p>
 	<h3 id="avif-"><strong>AVIFに対応した画像</strong></h3>
-	<p>昨年、Image Resizing製品での新しいAVIF画像形式の<a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/">サポートを発表</a>しました。</p>
+	<p>昨年、Image Resizing製品での新しいAVIF画像形式の<a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing">サポートを発表</a>しました。</p>
 	<p>先月、私たちはCloudflare ImagesにAVIFのサポートを追加しました。WebPやJPEGなどの旧世代の形式よりもはるかによりよく画像を圧縮します。現在、AVIF画像形式はChromeとFirefoxの両方でサポートされています。<a href="https://caniuse.com/avif" target="_blank">世界中で、ユーザーのほぼ70％</a>がAVIFをサポートするWebブラウザを使用しています。</p>
 	<h3 id="avif--1"><strong>AVIFとは</strong></h3>
-	<p><a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">以前ご説明したように</a>、AVIFは、HEIF ISO規格と、<a href="https://aomedia.org/" target="_blank">Mozilla、Xiph、Google、Cisco、およびその他多くの</a>ロイヤリティフリーのAV1コーデックを組み合わせたものです。</p>
+	<p><a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">以前ご説明したように</a>、AVIFは、HEIF ISO規格と、<a href="https://aomedia.org" target="_blank">Mozilla、Xiph、Google、Cisco、およびその他多くの</a>ロイヤリティフリーのAV1コーデックを組み合わせたものです。</p>
 	<p>「現在、JPEGはウェブ上で最も人気のある画像形式です。古くから非常に好調で、互換性に優れているため、今後も人気が続くと思われます。JPEG 2000、JPEG XR、WebPなど、JPEGに置き換わる試みはこれまで多くありました。しかし、これらの形式による圧縮の改善はささやかなもので、画質で必ずしもJPEGに勝るとは限りませんでした。 <a href="https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4" target="_blank">AVIFの圧縮と画質は、それらすべてよりも大幅に優れています</a>。」1</p>
 	<h3 id="cloudflare-images-avif-"><strong>Cloudflare ImagesでAVIFをサポートする方法</strong></h3>
 	<p>注意事項として、<a href="https://blog.cloudflare.com/building-cloudflare-images-in-rust-and-cloudflare-workers/#image-delivery">画像配信</a>はCloudflareが管理するimagedelivery.netドメインを介して行われます。それはCloudflare Workersを活用します。AcceptHTTPリクエストヘッダーに基づいてAVIFフォーマットをリクエストするロジックは次のとおりです。</p><!--kg-card-begin: markdown-->

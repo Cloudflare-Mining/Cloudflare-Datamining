@@ -13,7 +13,7 @@
 	<p>In this blog post I'm going to talk about the exciting evolution of the Cloudflare analytics pipeline over the last year. I'll start with a description of the old pipeline and the challenges that we experienced with it. Then, I'll describe how we leveraged ClickHouse to form the basis of a new and improved pipeline. In the process, I'll share details about how we went about schema design and performance tuning for ClickHouse. Finally, I'll look forward to what the Data team is thinking of providing in the future.</p>
 	<p>Let's start with the old data pipeline.</p>
 	<h3 id="olddatapipeline">Old data pipeline</h3>
-	<p>The previous pipeline was built in 2014. It has been mentioned previously in <a href="https://blog.cloudflare.com/scaling-out-postgresql-for-cloudflare-analytics-using-citusdb/">Scaling out PostgreSQL for CloudFlare Analytics using CitusDB</a> and <a href="https://blog.cloudflare.com/more-data-more-data/">More data, more data</a> blog posts from the Data team.<br>
+	<p>The previous pipeline was built in 2014. It has been mentioned previously in <a href="https://blog.cloudflare.com/scaling-out-postgresql-for-cloudflare-analytics-using-citusdb">Scaling out PostgreSQL for CloudFlare Analytics using CitusDB</a> and <a href="https://blog.cloudflare.com/more-data-more-data">More data, more data</a> blog posts from the Data team.<br>
 		<a href="https://blog.cloudflare.com/content/images/2018/03/Old-system-architecture.jpg"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/Old-system-architecture.jpg"></a><br>
 		It had following components:
 	</p>
@@ -44,8 +44,8 @@
 		<li><strong>High maintenance cost</strong> - due to its complex architecture and codebase, there were frequent incidents, which sometimes took engineers from the Data team and other teams many hours to mitigate.</li>
 	</ul>
 	<p>Over time, as our request volume grew, the challenges of operating this pipeline became more apparent, and we realized that this system was being pushed to its limits. This realization inspired us to think about which components would be ideal candidates for replacement, and led us to build new data pipeline.</p>
-	<p>Our first design of an improved analytics pipeline centred around the use of the <a href="https://flink.apache.org/" target="_blank">Apache Flink</a> stream processing system. We had previously used Flink for other data pipelines, so it was a natural choice for us. However, these pipelines had been at a much lower rate than the 6M requests per second we needed to process for HTTP Analytics, and we struggled to get Flink to scale to this volume - it just couldn't keep up with ingestion rate per partition on all 6M HTTP requests per second.</p>
-	<p>Our colleagues on our DNS team had already built and productionized DNS analytics pipeline atop ClickHouse. They wrote about it in <a href="https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/">"How Cloudflare analyzes 1M DNS queries per second"</a> blog post. So, we decided to take a deeper look at ClickHouse.</p>
+	<p>Our first design of an improved analytics pipeline centred around the use of the <a href="https://flink.apache.org" target="_blank">Apache Flink</a> stream processing system. We had previously used Flink for other data pipelines, so it was a natural choice for us. However, these pipelines had been at a much lower rate than the 6M requests per second we needed to process for HTTP Analytics, and we struggled to get Flink to scale to this volume - it just couldn't keep up with ingestion rate per partition on all 6M HTTP requests per second.</p>
+	<p>Our colleagues on our DNS team had already built and productionized DNS analytics pipeline atop ClickHouse. They wrote about it in <a href="https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second">"How Cloudflare analyzes 1M DNS queries per second"</a> blog post. So, we decided to take a deeper look at ClickHouse.</p>
 	<h3 id="clickhouse">ClickHouse</h3>
 	<blockquote>
 		<p>"ClickHouse не тормозит."<br>
@@ -53,7 +53,7 @@
 			© ClickHouse core developers</p>
 	</blockquote>
 	<p>When exploring additional candidates for replacing some of the key infrastructure of our old pipeline, we realized that using a column oriented database might be well suited to our analytics workloads. We wanted to identify a column oriented database that was horizontally scalable and fault tolerant to help us deliver good uptime guarantees, and extremely performant and space efficient such that it could handle our scale. We quickly realized that ClickHouse could satisfy these criteria, and then some.</p>
-	<p><a href="https://clickhouse.yandex/" target="_blank">ClickHouse</a> is an open source column-oriented database management system capable of real time generation of analytical data reports using SQL queries. It is blazing fast, linearly scalable, hardware efficient, fault tolerant, feature rich, highly reliable, simple and handy. ClickHouse core developers provide great help on solving issues, merging and maintaining our PRs into ClickHouse. For example, engineers from Cloudflare have contributed a whole bunch of code back upstream:</p>
+	<p><a href="https://clickhouse.yandex" target="_blank">ClickHouse</a> is an open source column-oriented database management system capable of real time generation of analytical data reports using SQL queries. It is blazing fast, linearly scalable, hardware efficient, fault tolerant, feature rich, highly reliable, simple and handy. ClickHouse core developers provide great help on solving issues, merging and maintaining our PRs into ClickHouse. For example, engineers from Cloudflare have contributed a whole bunch of code back upstream:</p>
 	<ul>
 		<li>Aggregate function <a href="https://clickhouse.yandex/docs/en/single/index.html#topk" target="_blank">topK</a> by <a href="https://github.com/vavrusa" target="_blank">Marek Vavruša</a></li>
 		<li>IP prefix dictionary by Marek Vavruša</li>
@@ -178,7 +178,7 @@
 	<p>As you can see the architecture of new pipeline is much simpler and fault-tolerant. It provides Analytics for all our 7M+ customers' domains totalling more than 2.5 billion monthly unique visitors and over 1.5 trillion monthly page views.</p>
 	<p>On average we process 6M HTTP requests per second, with peaks of upto 8M requests per second.<br>
 		<a href="https://blog.cloudflare.com/content/images/2018/03/HTTP-Logfwdr-throughput.png"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/HTTP-Logfwdr-throughput.png"></a><br>
-		Average log message size in <a href="https://capnproto.org/" target="_blank">Cap’n Proto</a> format used to be ~1630B, but thanks to amazing job on Kafka compression by our Platform Operations Team, it decreased significantly. Please see <a href="https://blog.cloudflare.com/squeezing-the-firehose/">"Squeezing the firehose: getting the most from Kafka compression"</a> blog post with deeper dive into those optimisations.
+		Average log message size in <a href="https://capnproto.org" target="_blank">Cap’n Proto</a> format used to be ~1630B, but thanks to amazing job on Kafka compression by our Platform Operations Team, it decreased significantly. Please see <a href="https://blog.cloudflare.com/squeezing-the-firehose">"Squeezing the firehose: getting the most from Kafka compression"</a> blog post with deeper dive into those optimisations.
 	</p>
 	<h4 id="benefitsofnewpipeline">Benefits of new pipeline</h4>
 	<ul>

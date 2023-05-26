@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/API-tokens@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="cloudflare-api">Cloudflare的API</h2>
-	<p>今天，我们宣布我们的API Token普遍可用了——这是一种可扩展的，更安全的与Cloudflare API交互的方式。作为致力于让互联网变得更好的一份子，Cloudflare努力简化客户在边缘的可管理性。我们做到这一点的方法之一是确保我们所有的产品和服务都可以通过API进行配置。从合作伙伴到企业再到开发人员，客户都希望实现Cloudflare的自动化管理。有时候这（自动化管理）可以通过我们的<a href="https://api.cloudflare.com/" target="_blank">API直接完成</a>，有时是通过我们帮助维护的开源软件完成的，比如我们的<a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">Terraform提供程序</a>或<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Go库</a>。自动化Cloudflare管理的客户必须保持其Cloudflare服务尽可能安全，这一点至关重要。</p>
+	<p>今天，我们宣布我们的API Token普遍可用了——这是一种可扩展的，更安全的与Cloudflare API交互的方式。作为致力于让互联网变得更好的一份子，Cloudflare努力简化客户在边缘的可管理性。我们做到这一点的方法之一是确保我们所有的产品和服务都可以通过API进行配置。从合作伙伴到企业再到开发人员，客户都希望实现Cloudflare的自动化管理。有时候这（自动化管理）可以通过我们的<a href="https://api.cloudflare.com" target="_blank">API直接完成</a>，有时是通过我们帮助维护的开源软件完成的，比如我们的<a href="https://www.terraform.io/docs/providers/cloudflare" target="_blank">Terraform提供程序</a>或<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Go库</a>。自动化Cloudflare管理的客户必须保持其Cloudflare服务尽可能安全，这一点至关重要。</p>
 	<h2 id="-">最小权限及其重要性</h2>
 	<p>保护软件系统很难。限制软件的功能是一种很好的防御措施，可以防止错误或恶意行为造成的影响超出其范围。<a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank">最小权限原则</a>有助于指导给定系统应该具有多少访问权限才能执行操作。这一原则最初由Jerome Saltzer提出，“系统的每个程序和每个特权用户都应该使用最少的权限来完成工作。” 就Cloudflare而言，许多客户拥有利用各种服务来路由流量的不同域。如果一个不良行为者获得了对系统未经授权的访问权，他们就可以使用该系统拥有的任何权限来造成进一步的破坏或窃取额外的信息。</p>
 	<p>让我们看看API Token的功能如何适应最小特权原则。</p>
@@ -75,6 +75,6 @@
   ]
 }</code></pre>
 	<h2 id="--1">接下来还有什么？</h2>
-	<p>对于使用Cloudflare API的每个人，我们建议从先前使用的API秘钥转到使用API Token。随着这一公告的发出，我们的<a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">Terraform provider</a>，<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Go library</a>以及<a href="https://github.com/cloudflare/Cloudflare-WordPress" target="_blank">WordPress plugin</a>均已更新，以实现API Token的兼容性。其他的函数库也将很快更新。API Token以及API秘钥都将暂时被支持，以便客户能够安全地进行迁移。我们还有更多API Token的计划功能，以进一步保护token的使用，敬请期待将来的公告吧！</p>
-	<p>请让我们知悉您在<a href="https://community.cloudflare.com/" target="_blank">Cloudflare社区</a>中对API安全的想法以及接下来您想看到的内容。</p>
+	<p>对于使用Cloudflare API的每个人，我们建议从先前使用的API秘钥转到使用API Token。随着这一公告的发出，我们的<a href="https://www.terraform.io/docs/providers/cloudflare" target="_blank">Terraform provider</a>，<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Go library</a>以及<a href="https://github.com/cloudflare/Cloudflare-WordPress" target="_blank">WordPress plugin</a>均已更新，以实现API Token的兼容性。其他的函数库也将很快更新。API Token以及API秘钥都将暂时被支持，以便客户能够安全地进行迁移。我们还有更多API Token的计划功能，以进一步保护token的使用，敬请期待将来的公告吧！</p>
+	<p>请让我们知悉您在<a href="https://community.cloudflare.com" target="_blank">Cloudflare社区</a>中对API安全的想法以及接下来您想看到的内容。</p>
 </div>

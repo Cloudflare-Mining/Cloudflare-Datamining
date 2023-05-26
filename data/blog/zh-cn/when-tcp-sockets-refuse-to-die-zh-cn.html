@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<p>在我们的<a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum服务器</a>上工作时，我们注意到了一些奇怪的现象：我们认为应该关闭了的TCP套接字一直在徘徊。我们意识到我们并不真正了解TCP套接字何时应该超时！</p>
+	<p>在我们的<a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank">Spectrum服务器</a>上工作时，我们注意到了一些奇怪的现象：我们认为应该关闭了的TCP套接字一直在徘徊。我们意识到我们并不真正了解TCP套接字何时应该超时！</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/01/Tcp_state_diagram_fixed_new.svga.png" class="kg-image" alt="" loading="lazy">
 		<figcaption><a href="https://commons.wikimedia.org/wiki/File:Tcp_state_diagram_fixed_new.svg" target="_blank">图像</a> 来自 Sergiodc2 CC BY SA 3.0</figcaption>
 	</figure>
@@ -258,7 +258,7 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)</code></pre>
 	<h2 id="--2">关于使用应用程序超时设定的注意事项</h2>
 	<p>过去，我们分享了一个有趣的“战斗”故事：</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/the-curious-case-of-slow-downloads/">下载缓慢的奇怪情况</a></li>
+		<li><a href="https://blog.cloudflare.com/the-curious-case-of-slow-downloads">下载缓慢的奇怪情况</a></li>
 	</ul>
 	<p>在应用程序管理的超时触发后，我们的HTTP服务器将放弃连接。这是一个bug——慢速连接可能正确地缓慢耗尽了发送缓冲区，但是应用程序服务器没有注意到这一点。</p>
 	<p>我们突然放弃了缓慢的下载，即使这不是我们的意图。我们只想确保客户端连接仍然健康。使用TCP_USER_TIMEOUT比依靠应用程序管理的超时更好。</p>
@@ -284,7 +284,7 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)</code></pre>
     else:
         # socket is too slow...</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>有很多方法可以进一步改进这个逻辑。我们可以使用<a href="https://lwn.net/Articles/560082/" target="_blank">TCP_NOTSENT_LOWAT</a>，尽管它通常只在发送缓冲区相对为空的情况下有用。然后，我们可以使用<a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank">SO_TIMESTAMPING</a>接口来通知何时交付数据。最后，如果我们完成了向套接字发送数据的工作，那么只需调用close()并将套接字的处理推延到操作系统即可。这样的套接字将被卡在FIN-WAIT-1或LAST-ACK状态，直至正确释放。</p>
+	<p>有很多方法可以进一步改进这个逻辑。我们可以使用<a href="https://lwn.net/Articles/560082" target="_blank">TCP_NOTSENT_LOWAT</a>，尽管它通常只在发送缓冲区相对为空的情况下有用。然后，我们可以使用<a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank">SO_TIMESTAMPING</a>接口来通知何时交付数据。最后，如果我们完成了向套接字发送数据的工作，那么只需调用close()并将套接字的处理推延到操作系统即可。这样的套接字将被卡在FIN-WAIT-1或LAST-ACK状态，直至正确释放。</p>
 	<h2 id="--3">总结</h2>
 	<p>在本文中，我们讨论了TCP连接可能会注意到另一方离线的五种情况：</p>
 	<ul>

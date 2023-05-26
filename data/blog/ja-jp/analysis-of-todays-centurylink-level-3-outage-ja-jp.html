@@ -32,13 +32,13 @@
 	<p>CenturyLink/Level(3)が障害報告書を発行するまで何が起こったのか正確にはわかりませんが、BGPアナウンスメントと、障害発生中にそれらがどのようにインターネット全体に伝達したかから手掛かりを得ることができます。BGPはボーダーゲートウェイプロトコルの略です。どのIPが背後にあるのか、どのようなトラフィックを受信すべきか、インターネット上のルーターが、お互いの経路情報をやり取りするために使われるプロトコルのことです。</p>
 	<p>10:04 UTCから、かなりの数のBGPアップデートがありました。BGPアップデートとは、経路が変更された、または利用できなくなったことをルーターが知らせる信号のことです。通常の状況では、インターネットは約1.5 MB～2 MBのBGPアップデートを15分ごとに確認します。インシデントの開始時には、BGPアップデートの数は15分間に26 MB以上に急増し、インシデント発生中ずっと上昇したままでした。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/6-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>出典：<a href="http://archive.routeviews.org/bgpdata/2020.08/UPDATES/" target="_blank">http://archive.routeviews.org/bgpdata/2020.08/UPDATES/</a></figcaption>
+		<figcaption>出典：<a href="http://archive.routeviews.org/bgpdata/2020.08/UPDATES" target="_blank">http://archive.routeviews.org/bgpdata/2020.08/UPDATES/</a></figcaption>
 	</figure>
 	<p>これらのアップデートは、CenturyLink/Level(3)バックボーン内のBGP経路の不安定性を示しています。問題は、何がこの不安定性を引き起こしたのかということです。CenturyLink/Level(3)のステータスアップデートは、いくつかのヒントとポイントを提供し、根本原因としてFlowspecのアップデートを指摘しています。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/7-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="flowspec-">Flowspecとは？</h3>
 	<p>CenturyLink/Level(3)のステータスアップデートでは、不正なFlowspecルールが問題を引き起こしたことについて言及しています。では、Flowspecとは何でしょうか？FlowspecはBGPの拡張機能であり、これにより、BGPを使用して、ファイアウォールのルールをネットワーク全体、またはネットワーク間で簡単に配布することができます。Flowspecは強力なツールです。これにより、ほぼ瞬時にネットワーク全体に効率的にルールをプッシュすることができます。攻撃のようなものに迅速に対応しようとしている時には素晴らしいのですが、一歩間違えると危険なことがあります。</p>
-	<p>Cloudflareでは、創業当初、大規模なネットワーク層のDDoS攻撃を軽減するために、Flowspecを使用してファイアウォールのルールをプッシュしていました。<a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515/">7年以上前に、Cloudflareでも、Flowspecによって障害が発生しました</a>。Cloudflareでは、もうFlowspecは使用していませんが、ネットワークファイアウォールルールをプッシュするための一般的なプロトコルであることに変わりありません。</p>
+	<p>Cloudflareでは、創業当初、大規模なネットワーク層のDDoS攻撃を軽減するために、Flowspecを使用してファイアウォールのルールをプッシュしていました。<a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">7年以上前に、Cloudflareでも、Flowspecによって障害が発生しました</a>。Cloudflareでは、もうFlowspecは使用していませんが、ネットワークファイアウォールルールをプッシュするための一般的なプロトコルであることに変わりありません。</p>
 	<p>CenturyLink/Level(3)で何が起こったのかを推測するしかありませんが、もっともらしいシナリオの1つは、ネットワークへの攻撃やそのほかの不正行為をブロックしようとして、Flowspecコマンドを発行したということです。ステータスレポートは、FlowspecルールによってBGP自体がアナウンスされないようになったことを示しています。そのFlowspecルールが何であるかを知る術はありませんが、ネットワーク全体のすべてのBGP通信をブロックした可能性があるJuniper形式のFlowspecルールを以下に示します。</p>
 	<pre><code>route DISCARD-BGP {
    match {
@@ -57,5 +57,5 @@
 	<p>ここでも、推測するしかできません。第1に、Flowspecルールと、大量のBGPアップデートがルーターにかける負荷は大きく、ルーターのインタフェースにログインすることが困難になった可能性があります。ほかのTier-1プロバイダーのいくつかは、CenturyLink/Level(3)の要請により、ネットワーク間のピアリング接続を解除したようです。これにより、CenturyLink/Level(3)ネットワークが受信するBGPアナウンスの数を制限し、CenturyLink/Level(3)ネットワークによる処理が追いつく時間を稼ぐことができました。</p>
 	<p>第2に、FlowspecルールはCenturyLink/Level(3)が発行したものではなく、その顧客が発行した可能性もあります。多くのネットワークプロバイダーは、Flowspecピアリングを許可しています。これは、攻撃トラフィックをブロックしたいダウンストリームの顧客にとって強力なツールになり得ますが、何か問題が発生したときに、問題のあるFlowspecルールの追跡をはるかに困難にする可能性があります。</p>
 	<p>最後に、こうした障害が日曜の早朝に発生することは、問題をさらに厄介にするだけです。CenturyLink/Level(3)ほどの規模のネットワークは非常に複雑です。インシデントは発生するものです。私たちは、インシデントの間、何が起こっていたのかを知らせてくれたCenturyLink/Level(3)のチームに感謝しています。#hugops</p>
-	<p><a href="https://blog.cloudflare.com/tag/outage/">障害</a> <a href="https://blog.cloudflare.com/tag/postmortem/">報告書</a></p>
+	<p><a href="https://blog.cloudflare.com/tag/outage">障害</a> <a href="https://blog.cloudflare.com/tag/postmortem">報告書</a></p>
 </div>

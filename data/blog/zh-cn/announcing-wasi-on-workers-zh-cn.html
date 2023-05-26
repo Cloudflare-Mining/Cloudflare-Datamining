@@ -3,13 +3,13 @@
 	<p>今天，我们宣布 Cloudflare Workers 试验性支持 WASI（WebAssembly 系统接口），并在 wrangler2 中提供支持，以便大幅提升工作便利性。我们一如既往对 Primer 整个 WebAssembly 生态系统充满希望，并十分积极地采纳新开发的标准。</p>
 	<h3 id="webassembly-">WebAssembly 快速入门</h3>
 	<p>那么，WASI 到底是什么呢？若要了解 WASI 以及我们对其充满希望的理由，就有必要快速回顾一下 WebAssembly 以及它周边的生态系统。</p>
-	<p>借助 WebAssembly，使用编译语言编写的代码未来有望能够编译为通用二进制格式并以接近原生速度的速度在安全沙盒中运行。虽然 WebAssembly 是围绕浏览器设计的，但模型迅速扩展到服务器端平台，例如 Cloudflare Workers（自 2017 年以来<a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers/">一直支持 WebAssembly</a>）。</p>
+	<p>借助 WebAssembly，使用编译语言编写的代码未来有望能够编译为通用二进制格式并以接近原生速度的速度在安全沙盒中运行。虽然 WebAssembly 是围绕浏览器设计的，但模型迅速扩展到服务器端平台，例如 Cloudflare Workers（自 2017 年以来<a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">一直支持 WebAssembly</a>）。</p>
 	<p>WebAssembly 最初设计为<em>与</em> Javascript 一起运行，并需要开发人员直接与 Javascript 交互才能访问沙盒之外的内容。换句话说，WebAssembly 并没有为 I/O 任务提供任何标准接口，例如与文件交互、访问网络或读取系统时钟。这意味着，如果要响应外部事件，开发人员需要负责在 JavaScript 中处理该事件，并直接调用从 WebAssembly 模块导出的函数。类似地，如果要从 WebAssembly 中执行 I/O，就需要在 Javascript 中实现该逻辑并将其导入 WebAssembly 模块中。</p>
 	<p>Emscripten 等自定义工具链或 wasm-bindgen 等库应运而生，用于简化这一工作，但它们特定于语言，会带来极大的复杂度，并且使代码显得十分臃肿。我们甚至构建了自己的库 workers-rs，使用 wasm-bindgen 以试图让在 Rust 中编写应用程序感觉就像在 Worker 中原生那样 – 但最后我们发现，这不仅很难维护，而且还需要开发人员编写特定于 Workers 的代码，并且这些代码无法移植到 Workers 生态系统之外。</p>
 	<p>我们需要更强的功能。</p>
 	<h3 id="webassembly-wasi-">WebAssembly 系统接口 (WASI)</h3>
-	<p>WASI 旨在提供任何编译到 WebAssembly 的语言都可以作为目标的标准接口。点击<a href="https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/" target="_blank">此处</a>阅读 Lin Clark 的原创文章，其中很漂亮地做了介绍 – 甚至还做了代码卡通。简而言之，Lin 将 WebAssembly 形容为适合“概念机器”的<em>汇编语言</em>，而 WASI 则是适合“概念操作系统”的<em>系统接口</em>。</p>
-	<p>这种系统接口标准化为现有工具链针对 wasm32-wasi 目标交叉编译现有代码库铺平了道路。通过 <a href="https://github.com/WebAssembly/wasi-sdk" target="_blank">wasi-sdk</a> 和 <a href="https://doc.rust-lang.org/stable/nightly-rustc/rustc_target/spec/wasm32_wasi/index.html" target="_blank">Rust</a> 工具链已经实现了极大进展，尤其是在 Clang/LLVM 中。这些工具链利用某个版本的 <a href="https://github.com/WebAssembly/wasi-libc" target="_blank">Libc</a>，它提供 POSIX 标准 API 调用，这些调用是在 WASI“系统调用”基础上构建的。甚至在 <a href="https://tinygo.org/docs/guides/webassembly/" target="_blank">TinyGo</a> 和 <a href="https://swiftwasm.org/" target="_blank">SwiftWasm</a> 这样更为边缘化的工具链中也有基本实现。</p>
+	<p>WASI 旨在提供任何编译到 WebAssembly 的语言都可以作为目标的标准接口。点击<a href="https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface" target="_blank">此处</a>阅读 Lin Clark 的原创文章，其中很漂亮地做了介绍 – 甚至还做了代码卡通。简而言之，Lin 将 WebAssembly 形容为适合“概念机器”的<em>汇编语言</em>，而 WASI 则是适合“概念操作系统”的<em>系统接口</em>。</p>
+	<p>这种系统接口标准化为现有工具链针对 wasm32-wasi 目标交叉编译现有代码库铺平了道路。通过 <a href="https://github.com/WebAssembly/wasi-sdk" target="_blank">wasi-sdk</a> 和 <a href="https://doc.rust-lang.org/stable/nightly-rustc/rustc_target/spec/wasm32_wasi/index.html" target="_blank">Rust</a> 工具链已经实现了极大进展，尤其是在 Clang/LLVM 中。这些工具链利用某个版本的 <a href="https://github.com/WebAssembly/wasi-libc" target="_blank">Libc</a>，它提供 POSIX 标准 API 调用，这些调用是在 WASI“系统调用”基础上构建的。甚至在 <a href="https://tinygo.org/docs/guides/webassembly" target="_blank">TinyGo</a> 和 <a href="https://swiftwasm.org" target="_blank">SwiftWasm</a> 这样更为边缘化的工具链中也有基本实现。</p>
 	<p>实际说来，这意味着现在可以编写的应用程序不仅能够与实现该标准的任何 WebAssembly 运行时互操作，还能与任何符合 POSIX 标准的系统互操作！这意味着，完全相同的“Hello World!” 可在本地 Linux/Mac/Windows WSL 机器上运行。</p>
 	<h3 id="-">代码细节</h3>
 	<p>WASI 听起来很不错，但它能真正简化编程工作吗？谁用谁知道。我们来看一个例子，看看它如何运用于实践。</p>
@@ -29,7 +29,7 @@ Hello, world!
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>现在，我们针对 wasm32-wasi 目标编译这个程序，并在 <a href="https://wasmtime.dev/" target="_blank">Wasmtime</a> 等“现成”的 wasm 运行时中运行。</p><!--kg-card-begin: markdown-->
+	<p>现在，我们针对 wasm32-wasi 目标编译这个程序，并在 <a href="https://wasmtime.dev" target="_blank">Wasmtime</a> 等“现成”的 wasm 运行时中运行。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">$ npx wrangler@wasm dev target/wasm32-wasi/release/hello_world.wasm
 $ curl http://localhost:8787/
 
@@ -63,7 +63,7 @@ $ echo "Hello, world\!" | curl -X POST --data-binary @- http://localhost:8787
 
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>点击 <a href="https://hexly.examples.workers.dev/" target="_blank">https://hexyl.examples.workers.dev</a>，自己试一试。</p><!--kg-card-begin: markdown-->
+	<p>点击 <a href="https://hexly.examples.workers.dev" target="_blank">https://hexyl.examples.workers.dev</a>，自己试一试。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">echo "Hello world\!" | curl https://hexyl.examples.workers.dev/ -X POST --data-binary @- --output -
 </code></pre>
 	<!--kg-card-end: markdown-->

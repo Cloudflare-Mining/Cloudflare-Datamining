@@ -2,7 +2,7 @@
 	<!--kg-card-begin: markdown-->
 	<p>Rocket Loader is in the news again. One of Cloudflare's earliest web performance products has been re-engineered for contemporary browsers and Web standards.</p>
 	<p>No longer a beta product, Rocket Loader controls the load and execution of your page JavaScript, ensuring useful and meaningful page content is unblocked and displayed sooner.</p>
-	<p>For a high-level discussion of Rocket Loader aims, please refer to our sister post, <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile/">We have lift off - Rocket Loader GA is mobile!</a></p>
+	<p>For a high-level discussion of Rocket Loader aims, please refer to our sister post, <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">We have lift off - Rocket Loader GA is mobile!</a></p>
 	<p>Below, we offer a lower-level outline of how Rocket Loader actually achieves its goals.</p>
 	<h3 id="prehistory">Prehistory</h3>
 	<p>Early humans looked upon Netscape 2.0, with its new ability to script HTML using LiveScript, and <code>&lt;BLINK&gt;</code>ed to ensure themselves they weren’t dreaming. They decided to use this technology, soon to be re-christened JavaScript (a story told often and elsewhere), for everything they didn’t know they needed: form input validation, image substitution, frameset manipulation, popup windows, and more. The sole requirement was a few interpreted commands enclosed in a <code>&lt;script&gt;</code> tag. The possibilities were endless.</p>
@@ -41,7 +41,7 @@
 		<li>
 			<p><span style="color:orange"><em>Cloudflare</em>: Rocket Loader</span><br>
 				It's 2011, and Cloudflare enters the fray, leveraging our network to reduce http requests for 1st party scripts, “bag”ging 3rd party scripts into a single file, and delaying and controlling JS execution.<br>
-				See <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile/">Combining Javascript &amp; CSS, a Better Way</a></p>
+				See <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">Combining Javascript &amp; CSS, a Better Way</a></p>
 		</li>
 		<li>
 			<p><em>Vendor</em>: Use <code>&lt;link rel="preload"&gt;</code> in the <code>&lt;head&gt;</code>.<br>
@@ -49,7 +49,7 @@
 		</li>
 	</ul>
 	<h3 id="rocketloadertheearlyyears">Rocket Loader, The Early Years</h3>
-	<p>Much has been written in this blog space about <a href="https://blog.cloudflare.com/tag/rocketloader/">Rocket Loader</a>, from its <a href="https://blog.cloudflare.com/how-cloudflare-rocket-loader-redefines-the-modern-cdn/">initial launch</a>, to the <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile/">current one</a>.</p>
+	<p>Much has been written in this blog space about <a href="https://blog.cloudflare.com/tag/rocketloader">Rocket Loader</a>, from its <a href="https://blog.cloudflare.com/how-cloudflare-rocket-loader-redefines-the-modern-cdn">initial launch</a>, to the <a href="https://blog.cloudflare.com/we-have-lift-off-rocket-loader-ga-is-mobile">current one</a>.</p>
 	<p>If reading outdated blog posts is not your thing, perhaps watching an extremely short video of a high-profile early Rocket Loader success (June 9, 2011) is:<br>
 		<a href="https://vimeo.com/24900882" target="_blank">CloudFlare Rocket Loader makes the Financial Times website (FT.com) faster</a>
 	</p>
@@ -291,7 +291,7 @@ document.write('"&gt;some content&lt;/div&gt;');
 	<p>As noted, it’s impossible to dynamically create blocking external scripts using DOM APIs such as <code>document.appendChild</code>. However, we have a solution to overcome this limitation.</p>
 	<p>Since the page is still loading, we can <code>document.write</code> the <code>outerHTML</code> of activatable script into the document, forcing the browser to mark it as parser-inserted and, thus, blocking. However, the script will be inserted in a DOM position different from its original, intended, position, which may break traversing of surrounding nodes from within the script (e.g. using <code>document.currentScript</code> as a starting point).</p>
 	<p>There is a trick. We leverage browser behaviour which parses generated content in the same execution tick as the <code>document.write</code> that produced it. We have immediate access to the written element. The <em>execution</em> of the external script is always scheduled for one of the <em>next</em> execution ticks. So, we can just move script to its original position right after we write it and have it in the correct DOM position, awaiting its execution.</p>
-	<h4 id="icanresisteverythingexcepttemptation">"I can resist everything except temptation"<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></h4>
+	<h4 id="icanresisteverythingexcepttemptation">"I can resist everything except temptation"<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup></h4>
 	<p>The need to account for every quirk, every variation in browser parsing, is strong, but implementation would eventually only weaken our product. We've dealt with the best part of browser parser behaviours, enough to benefit the majority of our customers.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/07/rock-house-@4x.png" alt="rock-house-@4x" loading="lazy"></p>
 	<h3 id="whatsnext">What's Next?</h3>
@@ -300,7 +300,7 @@ document.write('"&gt;some content&lt;/div&gt;');
 	<section class="footnotes">
 		<ol class="footnotes-list">
 			<li id="fn1" class="footnote-item">
-				<p>Oscar Wilde, Lady Windermere's Fan (1892), and apologies to <a href="http://jethrotull.com/too-old/" target="_blank">Jethro Tull</a> for the blog post title. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+				<p>Oscar Wilde, Lady Windermere's Fan (1892), and apologies to <a href="http://jethrotull.com/too-old" target="_blank">Jethro Tull</a> for the blog post title. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
 			</li>
 		</ol>
 	</section>

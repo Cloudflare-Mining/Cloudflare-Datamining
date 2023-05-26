@@ -49,7 +49,7 @@
 	<p>The code is partially derived from the Microsoft Research implementation mentioned above. In particular, the field arithmetic is ported from the MSR assembly, and the implementation strategy follows their paper. (I experimented with a prototype implementation of field arithmetic using AVX2 and unsaturated limbs, but decided not to use it, since it got similar performance at the cost of less portability and more power use).</p>
 	<p>The assembly code for the lowest level field arithmetic is oriented around pointers to fixed-size buffers; this is wrapped in a Go API modeled after the <code>big.Int</code> API. To test that the code behaves correctly, I used Go's <code>testing/quick</code> package to write property-based tests, which generate random field elements and compare the results of various operations against the same operations using <code>big.Int</code>.</p>
 	<p>Curve and isogeny functions are implemented using the Go API, and the outer-level SIDH functions achieve comparable performance as compared to the MSR implementation. In rough benchmarks, the Go implementation appears to be within 2-6% of the MSR implementation. The entire implementation is constant-time.</p>
-	<p>Concretely, on a T460s, Skylake i7-6600U @2.6GHz<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>, key generation and shared secret computations take 11-13ms. Note that unlike classic Diffie-Hellman, Alice and Bob's computations are slightly different, so they have different timings.</p>
+	<p>Concretely, on a T460s, Skylake i7-6600U @2.6GHz<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup>, key generation and shared secret computations take 11-13ms. Note that unlike classic Diffie-Hellman, Alice and Bob's computations are slightly different, so they have different timings.</p>
 	<pre><code>BenchmarkAliceKeyGen             	     11,709,778 ns/op
 BenchmarkBobKeyGen               	     13,073,380 ns/op
 BenchmarkSharedSecretAlice       	     11,256,985 ns/op
@@ -95,7 +95,7 @@ BenchmarkSharedSecretBob         	     12,984,817 ns/op
 	<section class="footnotes">
 		<ol class="footnotes-list">
 			<li id="fn1" class="footnote-item">
-				<p>Unfortunately, Lenovo's BIOS does not allow disabling Turbo Boost. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+				<p>Unfortunately, Lenovo's BIOS does not allow disabling Turbo Boost. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
 			</li>
 		</ol>
 	</section>

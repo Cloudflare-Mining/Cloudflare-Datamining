@@ -7,10 +7,10 @@
 	<p>클러스터가 API 서버에 액세스 하려는 경우에도 이와 같이 네트워크 제한이 적용됩니다. Cloudflare의 엔지니어에게 이 액세스 권한이 없으면 kubectl 등의 도구를 사용해 팀 리소스를 직접 살펴볼 수가 없습니다. 지속적으로 배포하고 GitOps 방식을 적용하는 게 가장 좋지만, 개발자가 쿠버네티스 API를 사용할 수 있게 하면 문제를 해결하고 개발자의 속도를 높일 수 있습니다. 액세스할 수 없다면 일이 진행되지 않을 것입니다.</p>
 	<p>Cloudflare는 보안 요구 사항을 충족하기 위해 Cloudflare Zero Trust를 사용하고 있습니다. 당사에서 Zero Trust를 사용하는 방법과 여기까지 온 과정을 나누고 싶었습니다.</p>
 	<h3 id="zero-trust-">Zero Trust 이전</h3>
-	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>가 없었을 때 엔지니어는 VPN 장비에 연결하여 쿠버네티스 API에 액세스할 수 있었습니다. 전체 업계에서 일반적인 방식이고 API 액세스 권한을 부여할 수 있게 되지만, 엔지니어를 클라이언트로 내부 네트워크에 포함시키는 방식이라 필요한 것보다 훨씬 많은 네트워크 액세스 권한이 주어졌습니다.</p>
+	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust</a>가 없었을 때 엔지니어는 VPN 장비에 연결하여 쿠버네티스 API에 액세스할 수 있었습니다. 전체 업계에서 일반적인 방식이고 API 액세스 권한을 부여할 수 있게 되지만, 엔지니어를 클라이언트로 내부 네트워크에 포함시키는 방식이라 필요한 것보다 훨씬 많은 네트워크 액세스 권한이 주어졌습니다.</p>
 	<p>만족스럽지는 않았지만 몇 년 동안 이 상황은 지속되었습니다. 2020년 초 Cloudflare는 VPN 사용을 중지했기 때문에 쿠버네티스 팀은 다른 솔루션을 찾아야 했습니다.</p>
 	<h3 id="cloudflare-tunnel-">Cloudflare Tunnel을 사용한 쿠버네티스</h3>
-	<p>당시, Cloudflare Tunnel 개발 팀과 긴밀히 협력하여 Cloudflare를 적용한 터널과 <a href="https://blog.cloudflare.com/releasing-kubectl-support-in-access/">Access를 사용한 kubectl 연결</a>을 처리하도록 지원을 추가했습니다.</p>
+	<p>당시, Cloudflare Tunnel 개발 팀과 긴밀히 협력하여 Cloudflare를 적용한 터널과 <a href="https://blog.cloudflare.com/releasing-kubectl-support-in-access">Access를 사용한 kubectl 연결</a>을 처리하도록 지원을 추가했습니다.</p>
 	<p>엔지니어링 사용자에게는 괜찮았지만 신입 직원이 온보딩하는 데는 큰 장애물이었습니다. 엔지니어의 장치에서 쿠버네티스 클러스터 각각에 자체적으로 터널을 연결해야 했기 때문에 클러스터 간의 셔플링은 골칫거리가 되었습니다. kubectl에서 SOCKS 프록시를 통해 연결할 수 있긴 했지만 쿠버네티스 생태계 내 모든 도구에 보편적으로 지원되지는 않았습니다.</p>
 	<p>내부적으로 이 솔루션을 계속 이용하며 더 나은 솔루션을 찾아보았습니다.</p>
 	<h2 id="zero-trust--1">Zero Trust를 갖춘 쿠버네티스</h2>
@@ -63,7 +63,7 @@ resource "cloudflare_teams_rule" "k8s_apiserver_zero_trust_http" {
 }
 </code></pre>
 	<p>클라이언트와 API 서버 간에 상호 TLS를 사용하며 kubectl과 API 서버 간의 트래픽이 모두 HTTP인 것은 아니므로 이러한 연결에 대한 HTTP 검사를 비활성화했습니다.</p>
-	<p>이러한 규칙을 <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/" target="_blank">장치 증명</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions/" target="_blank">세션 수명</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors/" target="_blank">사용자 및 그룹</a> 액세스 정책과 같은 추가 Zero Trust 규칙과 연결하여 보안을 더욱 사용자에게 맞출 수 있습니다.</p>
+	<p>이러한 규칙을 <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices" target="_blank">장치 증명</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions" target="_blank">세션 수명</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors" target="_blank">사용자 및 그룹</a> 액세스 정책과 같은 추가 Zero Trust 규칙과 연결하여 보안을 더욱 사용자에게 맞출 수 있습니다.</p>
 	<h3 id="-">터널 배포</h3>
 	<p>터널을 만들고 구성했으면 해당 엔드포인트를 네트워크에 배포할 수 있습니다. Cloudflare는 터널을 포드로 배포하기로 선택했는데, 업그레이드를 롤아웃하고 노드 오류를 처리하는 데 쿠버네티스의 배포 전략을 사용할 수 있기 때문입니다.</p>
 	<pre><code>apiVersion: v1

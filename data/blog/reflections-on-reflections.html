@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Recently <a href="https://www.akamai.com/us/en/about/our-thinking/threat-advisories/connection-less-lightweight-directory-access-protocol-reflection-ddos-threat-advisory.jsp" target="_blank">Akamai published an article about CLDAP</a> reflection attacks. This got us thinking. We saw attacks from <a href="https://ldapscan.shadowserver.org/" target="_blank">Connectionless LDAP</a> servers back in November 2016 but totally ignored them because our systems were automatically dropping the attack traffic without any impact.</p>
+	<p>Recently <a href="https://www.akamai.com/us/en/about/our-thinking/threat-advisories/connection-less-lightweight-directory-access-protocol-reflection-ddos-threat-advisory.jsp" target="_blank">Akamai published an article about CLDAP</a> reflection attacks. This got us thinking. We saw attacks from <a href="https://ldapscan.shadowserver.org" target="_blank">Connectionless LDAP</a> servers back in November 2016 but totally ignored them because our systems were automatically dropping the attack traffic without any impact.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/05/5624068176_547766995c_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/ragez/5624068176" target="_blank">image</a> by <a href="https://www.flickr.com/photos/ragez/" target="_blank">RageZ</a></small>
+		<small><a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/ragez/5624068176" target="_blank">image</a> by <a href="https://www.flickr.com/photos/ragez" target="_blank">RageZ</a></small>
 	</p>
 	<p>We decided to take a second look through our logs and share some statistics about reflection attacks we see regularly. In this blog post, I'll describe popular reflection attacks, explain how to defend against them and why Cloudflare and our customers are immune to most of them.</p>
 	<h2 id="arecipeforreflection">A recipe for reflection</h2>
@@ -25,7 +25,7 @@
 		<li>The response, though, is directed to the victim.</li>
 	</ul>
 	<p>The victim will end up receiving a large volume of response packets it never had requested. With a large enough attack the victim may end up with congested network and <a href="https://en.wikipedia.org/wiki/Interrupt_storm" target="_blank">an interrupt storm</a>.</p>
-	<p>The responses delivered to victim might be larger than the spoofed requests (hence <em>amplification</em>). A carefully mounted attack may amplify the villain's traffic. In the past <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet/">we've documented a 300Gbps attack</a> generated with an estimated 27Gbps of spoofing capacity.</p>
+	<p>The responses delivered to victim might be larger than the spoofed requests (hence <em>amplification</em>). A carefully mounted attack may amplify the villain's traffic. In the past <a href="https://blog.cloudflare.com/the-ddos-that-almost-broke-the-internet">we've documented a 300Gbps attack</a> generated with an estimated 27Gbps of spoofing capacity.</p>
 	<h2 id="popularreflections">Popular reflections</h2>
 	<p>During the last six months our DDoS mitigation system "Gatebot" detected 6,329 simple reflection attacks (that's one every 40 minutes). Here is the list by popularity of different attack vectors. An attack is defined as a large flood of packets identified by a tuple: (Protocol, Source Port, Target IP). Basically - a flood of packets with the same source port to a single target. This notation is pretty accurate - during normal Cloudflare operation, incoming packets rarely share a source port number!</p>
 	<pre><code>  Count  Proto  Src port
@@ -47,9 +47,9 @@
 	<h2 id="sourceport123udpntp">Source port 123/udp NTP</h2>
 	<p>By far the most popular reflection attack vector remains NTP. We have blogged about NTP in the past:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks/">Understanding and mitigating NTP-based DDoS attacks</a></li>
-		<li><a href="https://blog.cloudflare.com/technical-details-behind-a-400Gbps-ntp-amplification-ddos-attack/">Technical Details Behind a 400Gbps NTP Amplification DDoS Attack</a></li>
-		<li><a href="https://blog.cloudflare.com/good-news-vulnerable-ntp-servers-closing-down/">Good News: Vulnerable NTP Servers Closing Down</a></li>
+		<li><a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks">Understanding and mitigating NTP-based DDoS attacks</a></li>
+		<li><a href="https://blog.cloudflare.com/technical-details-behind-a-400Gbps-ntp-amplification-ddos-attack">Technical Details Behind a 400Gbps NTP Amplification DDoS Attack</a></li>
+		<li><a href="https://blog.cloudflare.com/good-news-vulnerable-ntp-servers-closing-down">Good News: Vulnerable NTP Servers Closing Down</a></li>
 	</ul>
 	<p>Over the last six months we've seen 3,374 unique NTP amplification attacks. Most of them were short. The average attack duration was 11 minutes, with the longest lasting 22 hours (1,300 minutes). Here's a histogram showing the distribution of NTP attack duration:</p>
 	<pre><code>Minutes min:1.00 avg:10.51 max:1297.00 dev:35.02 count:3774
@@ -234,9 +234,9 @@ Port 0 packet length:
 	<p>For the record, the particular attack illustrated here used about 17k reflector server IPs, lasted 64 minutes, generated about 6Gbps on the source port 53 strand and 11Gbps of source port 0 fragments.</p>
 	<p>We have blogged about DNS reflection attacks in the past:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/65Gbps-ddos-no-problem/">How to Launch a 65Gbps DDoS, and How to Stop One</a></li>
-		<li><a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack/">Deep Inside a DNS Amplification DDoS Attack</a></li>
-		<li><a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks/">How the Consumer Product Safety Commission is (Inadvertently) Behind the Internet’s Largest DDoS Attacks</a></li>
+		<li><a href="https://blog.cloudflare.com/65Gbps-ddos-no-problem">How to Launch a 65Gbps DDoS, and How to Stop One</a></li>
+		<li><a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">Deep Inside a DNS Amplification DDoS Attack</a></li>
+		<li><a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">How the Consumer Product Safety Commission is (Inadvertently) Behind the Internet’s Largest DDoS Attacks</a></li>
 	</ul>
 	<h2 id="otherprotocols">Other protocols</h2>
 	<p>We've seen amplification using other protocols such as:</p>
@@ -286,17 +286,17 @@ All attacks in Gbps:
 </code></pre>
 	<p>But not all Cloudflare datacenters have equal sized network connections to the Internet. So how can we manage?</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/05/Untitled-2.001-1.png" alt="" loading="lazy"></p>
-	<p>Cloudflare <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks/">was architected to withstand large attacks</a>. We are able to spread the traffic on two layers:</p>
+	<p>Cloudflare <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">was architected to withstand large attacks</a>. We are able to spread the traffic on two layers:</p>
 	<ul>
-		<li>Our <a href="https://blog.cloudflare.com/a-brief-anycast-primer/">public network</a> uses <a href="https://en.wikipedia.org/wiki/Anycast" target="_blank">Anycast</a>. For certain attack types - like amplification - this allows us <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p/">to split the attack</a> across multiple datacenters avoiding a single choke point.</li>
-		<li>Additionally we use <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice/">ECMP</a> internally to spread a traffic destined to single IP address across multiple physical servers.</li>
+		<li>Our <a href="https://blog.cloudflare.com/a-brief-anycast-primer">public network</a> uses <a href="https://en.wikipedia.org/wiki/Anycast" target="_blank">Anycast</a>. For certain attack types - like amplification - this allows us <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">to split the attack</a> across multiple datacenters avoiding a single choke point.</li>
+		<li>Additionally we use <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">ECMP</a> internally to spread a traffic destined to single IP address across multiple physical servers.</li>
 	</ul>
-	<p>In the examples above, I showed a couple of amplification attacks getting nicely distributed across dozens of datacenters across the globe. In the shown attacks, if our router firewall failed, our physical servers wouldn't receive more than 500kpps of attack data. A well tuned <code>iptables</code> firewall should be able to cope with such a volume without <a href="https://blog.cloudflare.com/kernel-bypass/">a special kernel offload</a> help.</p>
+	<p>In the examples above, I showed a couple of amplification attacks getting nicely distributed across dozens of datacenters across the globe. In the shown attacks, if our router firewall failed, our physical servers wouldn't receive more than 500kpps of attack data. A well tuned <code>iptables</code> firewall should be able to cope with such a volume without <a href="https://blog.cloudflare.com/kernel-bypass">a special kernel offload</a> help.</p>
 	<h2 id="interasflowspecfortherest">Inter-AS Flowspec for the rest</h2>
 	<p>Withstanding reflection attacks requires sufficient network capacity. Internet citizens not having fat network cables should use a good Internet Service Provider supporting <a href="https://tools.ietf.org/html/rfc5575" target="_blank">flowspec</a>.</p>
 	<p>Flowspec can be thought of as a protocol enabling firewall rules to be transmitted over a BGP session. In theory flowspec allows BGP routers on <a href="https://conference.apnic.net/data/41/apricot-ddos-mitigation-using-flowspec_1456208439.pdf" target="_blank">different Autonomous Systems</a> to share firewall rules. The rule can be set up on the attacked router and distributed to the ISP network with the BGP magic. This will stop the packets closer to the source and effectively relieve network congestion.</p>
 	<p>Unfortunately, due to performance and security concerns only a handful of large ISP's allow inter-AS flowspec rules. Still - it's worth a try. Check if your ISP is willing to accept flowspec from your BGP router!</p>
-	<p>At Cloudflare we maintain an intra-AS flowspec infrastructure, <a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515/">and we have plenty of war stories</a> about it.</p>
+	<p>At Cloudflare we maintain an intra-AS flowspec infrastructure, <a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">and we have plenty of war stories</a> about it.</p>
 	<h2 id="summary">Summary</h2>
 	<p>In this blog post we've given details of three popular reflection attack vectors: NTP, SSDP and DNS. We discussed how the Cloudflare Anycast network helps us avoid a single choke point. In most cases dealing with reflection attacks is not rocket science though sufficient network capacity is needed and simple firewall rules are usually enough to cope.</p>
 	<p>The types of DDoS attacks we see from other vectors (such as IoT botnets) are another matter. They tend to be much larger and require specialized, automatic DDoS mitigation. And, of course, there are many DDoS attacks that occur using techniques other than reflection and not just using UDP.</p>

@@ -1,20 +1,20 @@
 <div class="post-content lh-copy gray1">
 	<p>在过去的几天里，我们观察到隐蔽的放大攻击向量的频次大幅增加，这些放大攻击使用了来自UDP端口11211 的<a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt" target="_blank">memcached协议</a>。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/3829936641_f112ed1665_b-1.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a><a href="https://www.flickr.com/photos/trawin/3829936641/" target="_blank">图片</a>来自<a href="https://www.flickr.com/photos/trawin/" target="_blank">David Trawin</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a><a href="https://www.flickr.com/photos/trawin/3829936641" target="_blank">图片</a>来自<a href="https://www.flickr.com/photos/trawin" target="_blank">David Trawin</a></figcaption>
 	</figure>
 	<p>之前我们已经谈论过很多关于互联网上放大攻击的话题。我们最近关于这个主题的两篇博文是：</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/ssdp-100gbps/">SSDP放大超过100Gbps</a>。有趣的是，从那以后我们成为了196Gbps SSDP攻击的目标。</li>
-		<li><a href="https://blog.cloudflare.com/reflections-on-reflections/">关于各种放大攻击的一般统计数据</a>。</li>
+		<li><a href="https://blog.cloudflare.com/ssdp-100gbps">SSDP放大超过100Gbps</a>。有趣的是，从那以后我们成为了196Gbps SSDP攻击的目标。</li>
+		<li><a href="https://blog.cloudflare.com/reflections-on-reflections">关于各种放大攻击的一般统计数据</a>。</li>
 	</ul>
-	<p>所有放大攻击背后的思路都是一样的。 有一定能力的<a href="https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing/" target="_blank">IP欺骗式攻击者</a>将虚假请求发送到易受攻击的UDP服务器。对虚假请求不知情的UDP服务器礼貌地准备响应。当成千上万的响应传递到毫无筛选能力的目标主机时，目标主机网络将因超出承载限度而崩溃。</p>
+	<p>所有放大攻击背后的思路都是一样的。 有一定能力的<a href="https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing" target="_blank">IP欺骗式攻击者</a>将虚假请求发送到易受攻击的UDP服务器。对虚假请求不知情的UDP服务器礼貌地准备响应。当成千上万的响应传递到毫无筛选能力的目标主机时，目标主机网络将因超出承载限度而崩溃。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/spoofing-1-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>放大攻击的效果很明显，因为响应数据包通常比请求数据包大得多。这种技术使得具有有限IP欺骗容量（例如1Gbps）的攻击者能够发起非常大的攻击（达到100s Gbps），从而“放大”攻击者的带宽。</p>
 	<h2 id="memcrashed">Memcrashed</h2>
 	<p>隐蔽的放大攻击一直在发生。我们经常看到“chargen”或“call of duty”数据包袭击我们的服务器。</p>
 	<p>目前很少有新的放大攻击向量能够实现巨大的放大效应，而memcached UDP DDoS就是其中之一。</p>
-	<p><a href="https://ddosmon.net/insight/" target="_blank">Qihoo 360</a>的<a href="https://ddosmon.net/insight/" target="_blank">DDosMon</a>监控着放大攻击向量，此图表展示了最近的memcached / 11211攻击情况：</p>
+	<p><a href="https://ddosmon.net/insight" target="_blank">Qihoo 360</a>的<a href="https://ddosmon.net/insight" target="_blank">DDosMon</a>监控着放大攻击向量，此图表展示了最近的memcached / 11211攻击情况：</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/memcached-ddosmon-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -84,7 +84,7 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 └─────┴─────────┴──────────────────────────────────────────────┘</code></pre>
 	<p></p>
 	<p>我们见到的大多数memcached服务器都来自AS16276 - OVH，AS14061 - Digital Ocean和AS7684 - Sakura。</p>
-	<p>我们总共只看到了5,729个memcached服务器的单一IP源。可以预计我们将在未来看到更大量的攻击，因为<a href="https://www.shodan.io/" target="_blank">Shodan</a>报告了88,000个开放的memcached服务器有：</p>
+	<p>我们总共只看到了5,729个memcached服务器的单一IP源。可以预计我们将在未来看到更大量的攻击，因为<a href="https://www.shodan.io" target="_blank">Shodan</a>报告了88,000个开放的memcached服务器有：</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/memcached-shodan.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>

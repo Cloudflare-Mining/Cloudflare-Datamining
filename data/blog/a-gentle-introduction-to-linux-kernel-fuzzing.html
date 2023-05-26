@@ -2,18 +2,18 @@
 	<!--kg-card-begin: markdown-->
 	<p>For some time I’ve wanted to play with coverage-guided <a href="https://en.wikipedia.org/wiki/Fuzzing" target="_blank">fuzzing</a>. Fuzzing is a powerful testing technique where an automated program feeds semi-random inputs to a tested program. The intention is to find such inputs that trigger bugs. Fuzzing is especially useful in finding memory corruption bugs in C or C++ programs.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2019/07/4152779709_d1ea8dd3b4_z.jpg" alt="4152779709_d1ea8dd3b4_z" loading="lazy"></p>
-	<center><a href="https://www.flickr.com/photos/patrick_s/4152779709" target="_blank">Image</a> by <a href="https://www.flickr.com/photos/patrick_s/" target="_blank">Patrick Shannon</a> CC BY 2.0</center><br>
+	<center><a href="https://www.flickr.com/photos/patrick_s/4152779709" target="_blank">Image</a> by <a href="https://www.flickr.com/photos/patrick_s" target="_blank">Patrick Shannon</a> CC BY 2.0</center><br>
 	<p>Normally it's recommended to pick a well known, but little explored, library that is heavy on parsing. Historically things like libjpeg, libpng and libyaml were perfect targets. Nowadays it's harder to find a good target - everything seems to have been fuzzed to death already. That's a good thing! I guess the software is getting better! Instead of choosing a userspace target I decided to have a go at the Linux Kernel netlink machinery.</p>
 	<p><a href="https://en.wikipedia.org/wiki/Netlink" target="_blank">Netlink is an internal Linux facility</a> used by tools like "ss", "ip", "netstat". It's used for low level networking tasks - configuring network interfaces, IP addresses, routing tables and such. It's a good target: it's an obscure part of kernel, and it's relatively easy to automatically craft valid messages. Most importantly, we can learn a lot about Linux internals in the process. Bugs in netlink aren't going to have security impact though - netlink sockets usually require privileged access anyway.</p>
-	<p>In this post we'll run <a href="http://lcamtuf.coredump.cx/afl/" target="_blank">AFL fuzzer</a>, driving our netlink shim program against a custom Linux kernel. All of this running inside KVM virtualization.</p>
+	<p>In this post we'll run <a href="http://lcamtuf.coredump.cx/afl" target="_blank">AFL fuzzer</a>, driving our netlink shim program against a custom Linux kernel. All of this running inside KVM virtualization.</p>
 	<p>This blog post is a tutorial. With the easy to follow instructions, you should be able to quickly replicate the results. All you need is a machine running Linux and 20 minutes.</p>
 	<h2 id="priorwork">Prior work</h2>
 	<p>The technique we are going to use is formally called "coverage-guided fuzzing". There's a lot of prior literature:</p>
 	<ul>
-		<li><a href="https://blog.trailofbits.com/2017/02/16/the-smart-fuzzer-revolution/" target="_blank">The Smart Fuzzer Revolution</a> by Dan Guido, and <a href="https://lwn.net/Articles/677764/" target="_blank">LWN article</a> about it</li>
-		<li><a href="https://j00ru.vexillium.org/talks/blackhat-eu-effective-file-format-fuzzing-thoughts-techniques-and-results/" target="_blank">Effective file format fuzzing</a> by Mateusz “j00ru” Jurczyk</li>
-		<li><a href="http://honggfuzz.com/" target="_blank">honggfuzz</a> by Robert Swiecki, is a modern, feature-rich coverage-guided fuzzer</li>
-		<li><a href="https://google.github.io/clusterfuzz/" target="_blank">ClusterFuzz</a></li>
+		<li><a href="https://blog.trailofbits.com/2017/02/16/the-smart-fuzzer-revolution" target="_blank">The Smart Fuzzer Revolution</a> by Dan Guido, and <a href="https://lwn.net/Articles/677764" target="_blank">LWN article</a> about it</li>
+		<li><a href="https://j00ru.vexillium.org/talks/blackhat-eu-effective-file-format-fuzzing-thoughts-techniques-and-results" target="_blank">Effective file format fuzzing</a> by Mateusz “j00ru” Jurczyk</li>
+		<li><a href="http://honggfuzz.com" target="_blank">honggfuzz</a> by Robert Swiecki, is a modern, feature-rich coverage-guided fuzzer</li>
+		<li><a href="https://google.github.io/clusterfuzz" target="_blank">ClusterFuzz</a></li>
 		<li><a href="https://github.com/google/fuzzer-test-suite" target="_blank">Fuzzer Test Suite</a></li>
 	</ul>
 	<p>Many people have fuzzed the Linux Kernel in the past. Most importantly:</p>
@@ -21,7 +21,7 @@
 		<li><a href="https://github.com/google/syzkaller/blob/master/docs/syzbot.md" target="_blank">syzkaller (aka syzbot)</a> by Dmitry Vyukov, is a very powerful CI-style continuously running kernel fuzzer, which found hundreds of issues already. It's an awesome machine - it will even report the bugs automatically!</li>
 		<li><a href="https://github.com/kernelslacker/trinity" target="_blank">Trinity fuzzer</a></li>
 	</ul>
-	<p>We'll use <a href="http://lcamtuf.coredump.cx/afl/" target="_blank">the AFL</a>, everyone's favorite fuzzer. AFL was written by <a href="http://lcamtuf.coredump.cx" target="_blank">Michał Zalewski</a>. It's well known for its ease of use, speed and very good mutation logic. It's a perfect choice for people starting their journey into fuzzing!</p>
+	<p>We'll use <a href="http://lcamtuf.coredump.cx/afl" target="_blank">the AFL</a>, everyone's favorite fuzzer. AFL was written by <a href="http://lcamtuf.coredump.cx" target="_blank">Michał Zalewski</a>. It's well known for its ease of use, speed and very good mutation logic. It's a perfect choice for people starting their journey into fuzzing!</p>
 	<p>If you want to read more about AFL, the documentation is in couple of files:</p>
 	<ul>
 		<li><a href="http://lcamtuf.coredump.cx/afl/historical_notes.txt" target="_blank">Historical notes</a></li>
@@ -143,7 +143,7 @@ while(1) {
 	<h2 id="howtorunthecustomkernel">How to run the custom kernel</h2>
 	<p>We're missing one important piece - how to actually run the custom kernel we've built. There are three options:</p>
 	<p><strong>"native"</strong>: You can totally boot the built kernel on your server and fuzz it natively. This is the fastest technique, but pretty problematic. If the fuzzing succeeds in finding a bug you will crash the machine, potentially losing the test data. Cutting the branches we sit on should be avoided.</p>
-	<p><strong>"uml"</strong>: We could configure the kernel to run as <a href="http://user-mode-linux.sourceforge.net/" target="_blank">User Mode Linux</a>. Running a UML kernel requires no privileges. The kernel just runs a user space process. UML is pretty cool, but sadly, it doesn't support KASAN, therefore the chances of finding a memory corruption bug are reduced. Finally, UML is a pretty magic special environment - bugs found in UML may not be relevant on real environments. Interestingly, UML is used by <a href="https://source.android.com/devices/architecture/kernel/network_tests" target="_blank">Android network_tests framework</a>.</p>
+	<p><strong>"uml"</strong>: We could configure the kernel to run as <a href="http://user-mode-linux.sourceforge.net" target="_blank">User Mode Linux</a>. Running a UML kernel requires no privileges. The kernel just runs a user space process. UML is pretty cool, but sadly, it doesn't support KASAN, therefore the chances of finding a memory corruption bug are reduced. Finally, UML is a pretty magic special environment - bugs found in UML may not be relevant on real environments. Interestingly, UML is used by <a href="https://source.android.com/devices/architecture/kernel/network_tests" target="_blank">Android network_tests framework</a>.</p>
 	<p><strong>"kvm"</strong>: we can use kvm to run our custom kernel in a virtualized environment. This is what we'll do.</p>
 	<p>One of the simplest ways to run a custom kernel in a KVM environment is to use <a href="https://github.com/amluto/virtme" target="_blank">"virtme" scripts</a>. With them we can avoid having to create a dedicated disk image or partition, and just share the host file system. This is how we can run our code:</p>
 	<pre><code class="language-sh">virtme-run \

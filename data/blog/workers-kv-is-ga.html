@@ -2,9 +2,9 @@
 	<p>Today, we’re excited to announce Workers KV is entering general availability and is ready for production use!</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Workers-KV-GA@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="what-is-workers-kv">What is Workers KV?</h3>
-	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a> is a highly distributed, eventually consistent, key-value store that spans Cloudflare's global edge. It allows you to store billions of key-value pairs and read them with ultra-low latency anywhere in the world. Now you can build entire applications with the performance of a CDN static cache.</p>
+	<p><a href="https://www.cloudflare.com/products/workers-kv" target="_blank">Workers KV</a> is a highly distributed, eventually consistent, key-value store that spans Cloudflare's global edge. It allows you to store billions of key-value pairs and read them with ultra-low latency anywhere in the world. Now you can build entire applications with the performance of a CDN static cache.</p>
 	<h3 id="why-did-we-build-it">Why did we build it?</h3>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a> is a platform that lets you run JavaScript on Cloudflare's global edge of 175+ data centers. With only a few lines of code, you can route HTTP requests, modify responses, or even create new responses without an origin server.</p><!--kg-card-begin: markdown-->
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank">Workers</a> is a platform that lets you run JavaScript on Cloudflare's global edge of 175+ data centers. With only a few lines of code, you can route HTTP requests, modify responses, or even create new responses without an origin server.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// A Worker that handles a single redirect,
 // such a humble beginning...
 addEventListener("fetch", event =&gt; {
@@ -90,7 +90,7 @@ async function handleBillionsOfRedirects(request) {
 		<li>Step functions - sync state data between multiple APIs functions.</li>
 		<li>Edge file store - host large amounts of small files.</li>
 	</ul>
-	<p>We’ve highlighted several of those use cases in our previous <a href="https://blog.cloudflare.com/building-with-workers-kv/">blog post</a>. We also have some more in-depth code walkthroughs, including a recently published blog post on how to build an online <a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv/">To-do list with Workers KV</a>.</p>
+	<p>We’ve highlighted several of those use cases in our previous <a href="https://blog.cloudflare.com/building-with-workers-kv">blog post</a>. We also have some more in-depth code walkthroughs, including a recently published blog post on how to build an online <a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">To-do list with Workers KV</a>.</p>
 	<figure class="kg-card kg-image-card"><img src="https://i.imgur.com/GQ4hrfQ.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="what-s-new-since-beta">What's new since beta?</h3>
 	<p>By far, our most common request was to make it easier to write data to Workers KV. That's why we're releasing three new ways to make that experience even better:</p>
@@ -109,7 +109,7 @@ async function handleBillionsOfRedirects(request) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Let's walk through an example use case: you want to off-load your website translation to Workers. Since you're reading translation keys frequently and only occasionally updating them, this application works well with the eventual consistency model of Workers KV.</p>
-	<p>In this example, we hook into <a href="https://crowdin.com/" target="_blank">Crowdin</a>, a popular platform to manage translation data. This Worker responds to a <code>/translate</code> endpoint, downloads all your translation keys, and bulk writes them to Workers KV so you can read it later on our edge:</p><!--kg-card-begin: markdown-->
+	<p>In this example, we hook into <a href="https://crowdin.com" target="_blank">Crowdin</a>, a popular platform to manage translation data. This Worker responds to a <code>/translate</code> endpoint, downloads all your translation keys, and bulk writes them to Workers KV so you can read it later on our edge:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
   if (event.request.url.pathname === "/translate") {
     event.respondWith(uploadTranslations())
@@ -278,6 +278,6 @@ async function getGif(username) {
 		<li>Unlimited reads per second per key</li>
 	</ul>
 	<h3 id="try-it-out-now-">Try it out now!</h3>
-	<p>Now open to all customers, you can start using <a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a> today from your Cloudflare dashboard under the Workers tab. You can also look at our updated <a href="https://developers.cloudflare.com/workers/kv/" target="_blank">documentation.</a></p>
+	<p>Now open to all customers, you can start using <a href="https://www.cloudflare.com/products/workers-kv" target="_blank">Workers KV</a> today from your Cloudflare dashboard under the Workers tab. You can also look at our updated <a href="https://developers.cloudflare.com/workers/kv" target="_blank">documentation.</a></p>
 	<p>We're really excited to see what you all can build with Workers KV!</p>
 </div>

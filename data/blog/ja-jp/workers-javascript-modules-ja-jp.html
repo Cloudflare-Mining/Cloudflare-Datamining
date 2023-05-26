@@ -7,7 +7,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>上記の構文は「<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank">Service Worker</a>」APIとして知られており、Webブラウザで使用するために標準化することが提案されました。JavaScriptファイルをWebページにアタッチして、そのHTTP要求と応答を変更し、仮想エンドポイントのように動作させることができます。それはまさにWorkersにとって必要なものであり、 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank"><code>fetch()</code></a>や <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank"><code>caches</code></a>などの標準的なWeb APIともうまく統合されていました。</p>
-	<p>モジュールを導入する前に、サービスWorker APIが引き続きサポートされることを明確にしておきましょう。 「APIまたは機能が非推奨になっているため、<em>あなたの</em>書いたコードを<em>あなた自身で</em>書き直す必要がります」というメールを受け取りたりたい開発者は居ません。あなたは私たちからそれを知らされることはありません。私たちがこの決定を下した理由を知りたい場合は、Workersに向けた<a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers/">下位互換性</a>への取り組みについてご確認ください。</p>
+	<p>モジュールを導入する前に、サービスWorker APIが引き続きサポートされることを明確にしておきましょう。 「APIまたは機能が非推奨になっているため、<em>あなたの</em>書いたコードを<em>あなた自身で</em>書き直す必要がります」というメールを受け取りたりたい開発者は居ません。あなたは私たちからそれを知らされることはありません。私たちがこの決定を下した理由を知りたい場合は、Workersに向けた<a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">下位互換性</a>への取り組みについてご確認ください。</p>
 	<h3 id="javascript-"><strong>JavaScriptモジュールとは</strong></h3>
 	<p>ECMAScript（略称「ES」）モジュールとも呼ばれるJavaScriptモジュールは、JavaScriptでコードをインポートおよびエクスポートするための標準APIです。これは、JavaScriptの「ES6」言語仕様によって導入され、ほとんどのWebブラウザ、Node.js、Deno、そして現在はCloudflare Workersによって実装されています。以下は、これがどのように機能するかを示す例です：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// filename: ./src/util.js
@@ -64,7 +64,7 @@ export default {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>今週初めに<a href="https://blog.cloudflare.com/ja-jp/durable-objects-ga-ja-jp/">一般提供</a>された、クラスもエクスポートできるDurable Objectsをお忘れなく！Durable Objectクラスを定義する方法です。これは増加された値を返す「Counter」Durable Objectの別の例です。</p><!--kg-card-begin: markdown-->
+	<p>今週初めに<a href="https://blog.cloudflare.com/ja-jp/durable-objects-ga-ja-jp">一般提供</a>された、クラスもエクスポートできるDurable Objectsをお忘れなく！Durable Objectクラスを定義する方法です。これは増加された値を返す「Counter」Durable Objectの別の例です。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// filename: ./src/counter.js
 export class Counter {
   value = 0;
@@ -141,7 +141,7 @@ export default {
 	<h3 id="-"><strong>開始方法</strong></h3>
 	<p>モジュールを使い始めるには多くの方法があります。</p>
 	<p>まず、 <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev" target="_blank">プレイグラウンド</a> （アカウントは不要）またはダッシュボードの <a href="https://workers.new" target="_blank">クイックエディタ</a>を使用して、ブラウザでモジュールを試すことができます。ブラウザは、モジュールを使用していることを自動的に検出しサービスWorker APIからシームレスに切り替えることができます。現在のところ、ブラウザで作成できるJavaScriptモジュールは1つだけですが、間もなく複数のモジュールの作成が可能になる予定です。</p>
-	<p>冒険心があり、モジュールを使用して<em>新しい</em> プロジェクトを始めてみたい方は、Workers向けの次世代コマンドラインインターフェイス（CLI）である<a href="https://blog.cloudflare.com/ja-jp/wrangler-v2-beta-ja-jp/">wrangler 2.0</a>のベータリリースをお試しいただけます。</p>
+	<p>冒険心があり、モジュールを使用して<em>新しい</em> プロジェクトを始めてみたい方は、Workers向けの次世代コマンドラインインターフェイス（CLI）である<a href="https://blog.cloudflare.com/ja-jp/wrangler-v2-beta-ja-jp">wrangler 2.0</a>のベータリリースをお試しいただけます。</p>
 	<p>既存のプロジェクトでは、<a href="https://github.com/cloudflare/wrangler" target="_blank">wrangler 1.0</a> （リリース1.17以降）を使用することをお勧めします。モジュールを有効にするには、「<a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules" target="_blank">wrangler.toml</a>」構成を次の例に合わせます：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-toml">name = "my-worker"
 type = "javascript"

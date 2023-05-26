@@ -38,7 +38,7 @@
 	</ol>
 	<p>让我们更深入地研究一下Magic Transit中包含的DDoS缓解机制是如何工作的。</p>
 	<h2 id="magic-transit-ddos-">Magic Transit保护网络免受DDoS攻击</h2>
-	<p>部署Cloudflare Magic Transit的客户可以立即访问在过去9年中保护Cloudflare网络的同一IP层DDoS保护系统。这就是那个可以在几秒钟内阻止942Gbps带宽的攻击的缓解系统。在1.3Tbps攻击导致Github瘫痪的几天前，这个缓解系统就<a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/">知道如何阻止memcached amplification攻击</a>，而当时Github并没有Cloudflare在背后监视。这是我们每天信任的保护Cloudflare的相同缓解措施，现在它保护着您的网络。</p>
+	<p>部署Cloudflare Magic Transit的客户可以立即访问在过去9年中保护Cloudflare网络的同一IP层DDoS保护系统。这就是那个可以在几秒钟内阻止942Gbps带宽的攻击的缓解系统。在1.3Tbps攻击导致Github瘫痪的几天前，这个缓解系统就<a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211">知道如何阻止memcached amplification攻击</a>，而当时Github并没有Cloudflare在背后监视。这是我们每天信任的保护Cloudflare的相同缓解措施，现在它保护着您的网络。</p>
 	<p>Cloudflare历来保护第7层HTTP和HTTPS应用程序免受OSI（开放式系统互联参考模型）层模型的所有层的攻击。我们的客户已经了解并喜爱的DDoS保护依赖于各种技术组合，但可以拆分为几个互补防御来讲：</p>
 	<ol>
 		<li>任播和遍布全球193个城市的网络使我们的网络能够接近用户和攻击者，使我们能够在靠近源的地方吸收流量而不会产生明显的延迟。</li>
@@ -47,7 +47,7 @@
 		<li>第7层缓解和速率限制可以在HTTPS应用程序层阻止洪水攻击。</li>
 	</ol>
 	<p>仔细查看上面的描述，您可能会注意到：我们的反向代理服务器通过终止连接来保护我们的客户，但我们自己的网络和服务器仍然受到我们代表客户停止的L3和L4攻击的冲击。那么我们是如何保护自己的基础设施免受这些攻击的呢？</p>
-	<p><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">进入Gatebot</a>！</p>
+	<p><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">进入Gatebot</a>！</p>
 	<p>Gatebot是一套软件，在我们运营的193个城市的每个数据中心的每台服务器上运行，它可以不断分析和阻止攻击流量。Gatebot的部分魅力在于其简单的架构；它静静地等待着，在数据包从网卡进入内核并进入用户空间时对它们进行采样。Gatebot没有没有学习或预热阶段。一旦检测到攻击，它就会指示正在运行的计算机的内核丢弃数据包，记录其决策并继续运行。</p>
 	<p>从历史上看，如果您想保护您的网络免受DDoS攻击，您可能要购买一个专门的硬件来安装在网络的外围。这个硬件盒（我们称之为“DDoS保护盒”）本来就非常昂贵，非常好看（就像2U硬件盒一样），并需要大量的重复工作和金钱来支持，使其许可证保持最新，并使其攻击检测系统保持准确性和进行训练。</p>
 	<p>首先，它必须被仔细监控，以确保它在阻止攻击，而不是阻止合法的传输。另一方面，如果攻击者设法产生足够的流量来使您的数据中心到Internet的传输链接饱和，那么您就不走运了。数据中心内没有任何盒子可以保护您免受攻击，这种攻击会生成足够的流量来阻塞从外部世界到数据中心本身的链接。</p>
@@ -55,11 +55,11 @@
 	<p>为了使我们缓解DDoS的现代途径有效，我们必须发明一套工具和技术，使我们能够在运行Linux的通用x86服务器上进行超高性能网络连接。</p>
 	<p>我们的网络数据平面的核心是eXpress数据路径（XDP）和扩展的Berkeley数据包过滤器（eBPF），这是一组API，允许我们在Linux内核中构建超高性能网络应用程序。我的同事们已经写了很多关于我们如何使用XDP和eBPF来阻止DDoS攻击的文章：</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop：XDP DDoS缓解措施</a></li>
-		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap：XDP数据包捕获</a></li>
-		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">基于XDP的DoS缓解</a>演示</li>
+		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">L4Drop：XDP DDoS缓解措施</a></li>
+		<li><a href="https://blog.cloudflare.com/xdpcap">xdpcap：XDP数据包捕获</a></li>
+		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation=" target="_blank">基于XDP的DoS缓解</a>演示</li>
 		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">实践中的XDP：将XDP集成到我们的DDoS缓解管道中</a>（PDF）</li>
-		<li><a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world/">Cloudflare架构以及BPF如何吞食世界</a></li>
+		<li><a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world">Cloudflare架构以及BPF如何吞食世界</a></li>
 	</ul>
 	<p>最终，我们得到了一个DDoS缓解系统：</p>
 	<ul>
@@ -93,5 +93,5 @@
 	<h2 id="magic-transit--3">Magic Transit现已面市</h2>
 	<p>在过去的九年里，我们一直在努力使我们的网络、管理工具和网络功能以服务的形式进入今天的状态。我们很高兴能把我们每天使用的工具交到客户手中。</p>
 	<p>这就引出了命名。当我们把这个展示给顾客看时，他们最常用的词是“哇”。当我们追问他们的意思时，他们几乎都说：“这比我们以前见过的任何解决方案都要好得多。像魔术一样！”所以，我们把这个产品命名为“Magic Transit（魔术传输）”，虽然有点俗气，但似乎也很自然。</p>
-	<p>我们认为这一切都很神奇，相信你也如此。快来<a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">联系我们的企业销售团队</a>，来获取Magic Transit吧！</p>
+	<p>我们认为这一切都很神奇，相信你也如此。快来<a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank">联系我们的企业销售团队</a>，来获取Magic Transit吧！</p>
 </div>

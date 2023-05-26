@@ -5,7 +5,7 @@
 	<p>为什么仅缓存资源还不够？是的，缓存提高了性能，但是显著的性能提升也伴随着一系列令人头痛的问题。CDN可以猜测应该缓存哪些资源，但这只是猜测。配置站点以获得最佳性能一直是一个容易出错的过程，需要大量深奥的规则和请求头。即使在完美配置的情况下，几乎也没有什么东西是永久缓存的，宝贵的请求仍然常常需要一直传送到您的原始地址（无论它在哪里）。毕竟，缓存失效是<a href="https://twitter.com/secretgeek/status/7269997868" target="_blank">计算机科学中最困难的问题</a>之一。</p>
 	<p>这就引出了一个问题：与其笨拙地将字节从原点移动到边缘，为什么不将整个原点推到边缘呢？</p>
 	<h2 id="workers-sites-workers-">Workers Sites：扩展Workers平台</h2>
-	<p>两年前的生日周，我们发布了<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>，这是一种让开发者在全球194个城市的网络上编写和运行JavaScript和WebAssembly的方法。一年后，我们发布了Workers KV，这是我们的分布式键值存储，它让开发者能够在这些城市的边缘存储状态。</p>
+	<p>两年前的生日周，我们发布了<a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a>，这是一种让开发者在全球194个城市的网络上编写和运行JavaScript和WebAssembly的方法。一年后，我们发布了Workers KV，这是我们的分布式键值存储，它让开发者能够在这些城市的边缘存储状态。</p>
 	<p>Workers Sites利用Workers和Workers KV的功能，允许开发者直接将他们的网站上传到边缘，并更接近最终用户。我们认为web上的现代开发应该是这样的：天然安全、快速、可大规模扩展。您花在配置上的时间越少，则花在代码和内容本身上的时间就越多。</p>
 	<h2 id="--1">它如何运作</h2>
 	<p>Workers Sites使用一些终端命令进行部署，可以为任何静态站点生成器（如Hugo、Gatsby或Jekyll）生成的站点提供服务。使用<a href="https://github.com/cloudflare/wrangler" target="_blank">Wrangler</a>（我们的命令行界面），您可以将网站的资源直接上传到KV。当请求到达您的Workers站点时，Wrangler生成的Cloudflare Worker将从KV中读取并提供相应的请求头信息（无需担心Content-Type和Cache-Control；我们帮你搞定了）。</p>
@@ -39,7 +39,7 @@ cargo install wrangler</code></pre>
 	<p>我们决定使用一个名为Catchpoint的工具来运行世界各地城市的基准测试。为了进行比对，我们将站点部署到三个不同的静态站点部署平台，包括Workers Sites。</p>
 	<p>由于提供商在美国海岸或中欧提供数据中心区域，因此在北美等地区看到良好的表现是很正常的，我们为您总结的结果如下：</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2019-09-26-at-10.58.41-PM.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>但是你在世界其他地方的用户呢？在这些地区，性能甚至更为关键：第一批用户才不会使用MacBook Pro通过惊人的快速连接访问到您的站点。通过Workers Sites，您可以毫不费力地到达这些地区——每当<a href="https://blog.cloudflare.com/scaling-the-cloudflare-global/">我们的网络地图扩展</a>时，您的全球影响力就会随之增长。</p>
+	<p>但是你在世界其他地方的用户呢？在这些地区，性能甚至更为关键：第一批用户才不会使用MacBook Pro通过惊人的快速连接访问到您的站点。通过Workers Sites，您可以毫不费力地到达这些地区——每当<a href="https://blog.cloudflare.com/scaling-the-cloudflare-global">我们的网络地图扩展</a>时，您的全球影响力就会随之增长。</p>
 	<p>我们在世界各地为您运行了一些基准测试，我们很高兴与您分享测试结果：</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2019-09-26-at-10.58.24-PM.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="--4">最后一件事……</h2>

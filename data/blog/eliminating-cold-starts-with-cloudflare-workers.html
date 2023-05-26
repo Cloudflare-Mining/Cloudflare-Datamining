@@ -7,7 +7,7 @@
 	<p>It’s impractical to keep everyone’s functions warm in memory <em>all</em> the time. Instead, serverless providers only warm up a function after the first request is received. Then, after a period of inactivity, the function becomes cold again and the cycle continues. </p>
 	<p>For Workers, this has never been much of a problem. In contrast to containers that can spend full seconds spinning up a new containerized process for each function, the isolate technology behind Workers allows it to warm up a function in under 5 milliseconds.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/07/isolates-model@2x-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><em>Learn more about how isolates enable Cloudflare Workers to be performant and secure </em><a href="https://blog.cloudflare.com/cloud-computing-without-containers/"><em>here.</em></a></figcaption>
+		<figcaption><em>Learn more about how isolates enable Cloudflare Workers to be performant and secure </em><a href="https://blog.cloudflare.com/cloud-computing-without-containers"><em>here.</em></a></figcaption>
 	</figure>
 	<p>Cold starts are ugly. They’re unexpected, unavoidable, and cause unpredictable code execution times. You shouldn’t have to compromise your customers’ experience to enjoy <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank">the benefits of serverless</a>. In a collaborative effort between our Workers and Protocols teams, we set out to create a solution where you never have to worry about cold starts, warm starts, or pre-warming ever again.</p>
 	<h3 id="how-is-a-zero-cold-start-even-possible">How is a zero cold start even possible?</h3>

@@ -2,9 +2,9 @@
 	<p>El día de hoy nos complace anunciar que Workers KV ya se encuentra disponible y listo para usar.</p>
 	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/xorOprwWd1jQenC2IVLfSZBvJwf9h4u-n2k_mkuL2JW-ueVmvKdjA-IW3fKpARZ13Bf-EvJIRZuIesm1y0E6IJt6D6xCXU2ljAmzMPs5PHo_hWOgp1sGq4u3XtVVLLoO6GSbVSE" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-qu-es-workers-kv"><strong>¿Qué es Workers KV?</strong></h3>
-	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a> es una base de datos de clave-valor, altamente distribuida y de coherencia eventual que amplía el perímetro global de Cloudflare. Permite almacenar miles de millones de pares clave-valor y leerlos en una latencia ultrabaja en cualquier parte del mundo. Ahora puede crear aplicaciones completas con el rendimiento de una memoria caché estática de red de entrega de contenidos (CDN, <em>Content Delivery Networ</em>k).</p>
+	<p><a href="https://www.cloudflare.com/products/workers-kv" target="_blank">Workers KV</a> es una base de datos de clave-valor, altamente distribuida y de coherencia eventual que amplía el perímetro global de Cloudflare. Permite almacenar miles de millones de pares clave-valor y leerlos en una latencia ultrabaja en cualquier parte del mundo. Ahora puede crear aplicaciones completas con el rendimiento de una memoria caché estática de red de entrega de contenidos (CDN, <em>Content Delivery Networ</em>k).</p>
 	<h3 id="-por-qu-la-creamos"><strong>¿Por qué la creamos?</strong></h3>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a> es una plataforma que le permite ejecutar JavaScript en el perímetro global de Cloudflare de más de 175 centros de datos. Con solo unas pocas líneas de código, puede enrutar solicitudes HTTP, modificar respuestas o incluso crear nuevas respuestas sin un servidor de origen.</p><!--kg-card-begin: markdown-->
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank">Workers</a> es una plataforma que le permite ejecutar JavaScript en el perímetro global de Cloudflare de más de 175 centros de datos. Con solo unas pocas líneas de código, puede enrutar solicitudes HTTP, modificar respuestas o incluso crear nuevas respuestas sin un servidor de origen.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// A Worker that handles a single redirect,
 // such a humble beginning...
 addEventListener("fetch", event =&gt; {
@@ -89,7 +89,7 @@ async function handleBillionsOfRedirects(request) {
 		<li>Funciones de paso: sincronice datos de estado entre las funciones de varias API.</li>
 		<li>Almacén de archivos perimetrales: aloje grandes cantidades de archivos pequeños.</li>
 	</ul>
-	<p>Hemos destacado varios de esos casos prácticos en nuestro <a href="https://blog.cloudflare.com/building-with-workers-kv/">blog.post</a> anterior. También tenemos algunos tutoriales de código más detallados, que incluyen un artículo del blog recientemente publicado sobre cómo crear <a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv/">una lista de tareas con Worker KV</a> en línea.</p>
+	<p>Hemos destacado varios de esos casos prácticos en nuestro <a href="https://blog.cloudflare.com/building-with-workers-kv">blog.post</a> anterior. También tenemos algunos tutoriales de código más detallados, que incluyen un artículo del blog recientemente publicado sobre cómo crear <a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">una lista de tareas con Worker KV</a> en línea.</p>
 	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/vXhglioZnK3ge4dEGpcN0Ko3f-gyicq_DqJWo8UzpoFzLZ9UfcXRwkDPEG-M9usInMq8b1h9XnBgjJU75Odn9aFwHSW8B_0BE1pz-eZhAy1-n09unP4x0fFF3WvOoW-tic4DFPc" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-qu-novedades-hay-desde-la-beta"><strong>¿Qué novedades hay desde la beta?</strong></h3>
 	<p>Por lejos, la solicitud más común era facilitar la escritura de datos a Workers KV. Por esa razón, estamos lanzando tres nuevos métodos para mejorar esa experiencia:</p>
@@ -108,7 +108,7 @@ async function handleBillionsOfRedirects(request) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Analicemos un caso práctico de ejemplo: usted desea descargar la traducción de su sitio web a Workers. Como usted lee las claves de traducción con más frecuencia que cuando las actualiza, esta aplicación funciona bien con el modelo de coherencia eventual de Workers KV.</p>
-	<p>En este ejemplo, usamos <a href="https://crowdin.com/" target="_blank">Crowdin</a>, una famosa plataforma para administrar datos de traducción. Worker responde a un punto de conexión /translate, descarga todas sus claves de traducción y las escribe de forma masiva en Worker KV para que usted pueda leerlas más tarde en nuestro centro perimetral:</p><!--kg-card-begin: markdown-->
+	<p>En este ejemplo, usamos <a href="https://crowdin.com" target="_blank">Crowdin</a>, una famosa plataforma para administrar datos de traducción. Worker responde a un punto de conexión /translate, descarga todas sus claves de traducción y las escribe de forma masiva en Worker KV para que usted pueda leerlas más tarde en nuestro centro perimetral:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
   if (event.request.url.pathname === "/translate") {
     event.respondWith(uploadTranslations())
@@ -274,6 +274,6 @@ async function getGif(username) {
 		<li>Lecturas ilimitadas por segundo por clave</li>
 	</ul>
 	<h3 id="-pru-bala-ahora-"><strong>¡Pruébala ahora!</strong></h3>
-	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV </a> ya está abierta a todos los clientes, y puede empezar a usarla hoy mismo desde su panel de control de Cloudflare en la pestaña Workers. También puede consultar nuestra <a href="https://developers.cloudflare.com/workers/kv/" target="_blank">documentación actualizada.</a></p>
+	<p><a href="https://www.cloudflare.com/products/workers-kv" target="_blank">Workers KV </a> ya está abierta a todos los clientes, y puede empezar a usarla hoy mismo desde su panel de control de Cloudflare en la pestaña Workers. También puede consultar nuestra <a href="https://developers.cloudflare.com/workers/kv" target="_blank">documentación actualizada.</a></p>
 	<p>¡Estamos ansiosos por descubrir todo lo que podrán crear los usuarios con Workers KV!</p>
 </div>

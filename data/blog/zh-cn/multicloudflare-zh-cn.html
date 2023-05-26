@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<p>你想在Cloudflare的大厅里开始一场激烈的争论吗，那就试着把我们描述成一个“CDN”吧。CDN通常不提供<a href="https://www.cloudflare.com/load-balancing/" target="_blank">负载平衡</a>，它们不允许部署<a href="https://workers.cloudflare.com/" target="_blank">无服务器的应用程序</a>，当然它们也不会安装到<a href="https://1.1.1.1/" target="_blank">您的手机</a>上。这种混乱的代价之一是，许多人没有意识到Cloudflare可以为那些希望在多个公共云中操作，或者希望同时在云和自己的硬件上操作的人所做的一切。</p>
+	<p>你想在Cloudflare的大厅里开始一场激烈的争论吗，那就试着把我们描述成一个“CDN”吧。CDN通常不提供<a href="https://www.cloudflare.com/load-balancing" target="_blank">负载平衡</a>，它们不允许部署<a href="https://workers.cloudflare.com" target="_blank">无服务器的应用程序</a>，当然它们也不会安装到<a href="https://1.1.1.1" target="_blank">您的手机</a>上。这种混乱的代价之一是，许多人没有意识到Cloudflare可以为那些希望在多个公共云中操作，或者希望同时在云和自己的硬件上操作的人所做的一切。</p>
 	<h2 id="-">负载均衡</h2>
 	<p>Cloudflare在全球180个（目前已有190多个）数据中心中拥有无数的服务器。每一个都可以作为第7层的负载均衡器，在不同的起点之间指挥传入的流量。例如，您可以在AWS的EC2中的一组机器和谷歌云中的另一组机器之间添加负载平衡。</p>
 	<p>这种负载平衡不仅是轮询流量。它支持加权，从而允许您控制去往每个群集的流量。它支持基于延迟的路由，可以自动将流量路由到更近的群集（因此，添加地理分布就像纺纱一样简单）。它甚至支持运行状况检查，使其能够自动将流量定向到当前运行状况良好的云。</p>

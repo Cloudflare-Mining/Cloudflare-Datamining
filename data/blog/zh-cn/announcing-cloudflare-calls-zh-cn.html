@@ -28,7 +28,7 @@
 	<p>如果您运行自己的 WebRTC 服务器，例如 Janus 或 MediaSoup，那么 Cloudflare Calls 是一种很好的解决方案。Cloudflare Calls 还可以替代 Janus 或 MediaSoup 的现有部署，尤其是在您有客户端在全球范围内连接到单个集中式部署的情况下。</p>
 	<h2 id="-">区域：地球</h2>
 	<p>构建并维护您自己的实时基础设施会带来独特的架构和扩展挑战。这需要您在运行自己的 WebRTC 服务器基础设施时，对一些棘手的问题做出回答并不断修正回答，例如：<em>“我们支持哪些区域？”</em>，“<em>用户数需要达到多少，我们才有必要在另一个云区域中新增更多基础设施？</em>”，<em>“如何针对计划外的使用量激增进行扩展？”</em>以及<em>“如何在基础设施使用量很低的时段避免亏损？”</em>。</p>
-	<p>使用 Cloudflare Calls 则可以忽略这些问题。Calls 使用 <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network/" target="_blank">Anycast</a> 建立每个连接，因此每个数据包总是路由到最接近的 Cloudflare 位置。其性质是全球性的：您的用户会自动从靠近的位置获得所需数据。Calls 会随着您的使用而扩展，您的团队也不必构建自己的自动扩展逻辑。</p>
+	<p>使用 Cloudflare Calls 则可以忽略这些问题。Calls 使用 <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank">Anycast</a> 建立每个连接，因此每个数据包总是路由到最接近的 Cloudflare 位置。其性质是全球性的：您的用户会自动从靠近的位置获得所需数据。Calls 会随着您的使用而扩展，您的团队也不必构建自己的自动扩展逻辑。</p>
 	<h2 id="--1">回答“问题出在哪里？”，但是速度更快</h2>
 	<p>我们与处理现有 WebRTC 工作负载的客户交谈时，发现一个共性的主题：客户都希望能够更轻松地对问题进行故障排除。一群人通过视频呼叫交谈时，如果用户遇到问题，风险会显著提高。如果某个网页加载失败，用户常常会在几分钟后直接重试。如果视频呼叫发生中断，往往呼叫就结束了。</p>
 	<p>Cloudflare Calls 专注于可观察性，有助于客户更快找到问题的症结所在。由于 Calls 是基于 Cloudflare 的基础设施构建的，因此我们可以从 OSI 模型的所有层获得端到端可视性。 </p>

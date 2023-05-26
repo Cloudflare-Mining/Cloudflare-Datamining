@@ -17,17 +17,17 @@
 	<p>Cloudflare 数据本地化套件试图回答这些问题。</p>
 	<p>到目前为止，想要本地化数据的客户必须选择将其应用程序限制在一个数据中心或一个云提供商的区域内。这是一种脆弱的方法，充满了性能、可靠性和安全性方面的挑战。Cloudflare 正在创造一个新的范例:客户应该能够从我们的全球网络中获得性能和安全方面的好处，同时毫不费力地将数据保存在本地。</p>
 	<h3 id="--1">加密是隐私的支柱</h3>
-	<p>在讨论数据局部性之前，我们应该讨论一下加密。没有强加密就不可能有<a href="https://www.cloudflare.com/learning/privacy/what-is-data-privacy/" target="_blank">隐私</a>; 否则，任何人都可能窥探客户的数据，而不管数据存储在哪里。</p>
+	<p>在讨论数据局部性之前，我们应该讨论一下加密。没有强加密就不可能有<a href="https://www.cloudflare.com/learning/privacy/what-is-data-privacy" target="_blank">隐私</a>; 否则，任何人都可能窥探客户的数据，而不管数据存储在哪里。</p>
 	<p>数据常被描述为“传输中”和“静止中”。两者都要加密，这一点至关重要。“传输中”的数据指的是在电线上移动的数据，无论是本地网络还是公共互联网。“静止”通常意味着存储在某个磁盘上，无论是旋转的 HDD 还是现代的 SSD。</p>
 	<p>在传输过程中，Cloudflare 可以强制终端用户的所有通信使用现代 TLS ，并获得可能的最高级别加密。我们还可以强制所有返回到客户源服务器的通信总是加密的。我们所有边缘和核心数据中心之间的通信总是加密的。</p>
-	<p>Cloudflare 对我们在静止状态下处理的所有数据进行加密，通常采用磁盘级加密。从边缘网络上的<a href="https://blog.cloudflare.com/speeding-up-linux-disk-encryption/">缓存文件</a>，到核心数据中心数据库中的配置状态—每个字节在静止时都被加密。</p>
+	<p>Cloudflare 对我们在静止状态下处理的所有数据进行加密，通常采用磁盘级加密。从边缘网络上的<a href="https://blog.cloudflare.com/speeding-up-linux-disk-encryption">缓存文件</a>，到核心数据中心数据库中的配置状态—每个字节在静止时都被加密。</p>
 	<h3 id="-tls-">控制可访问TLS私钥的位置</h3>
 	<p>考虑到加密的重要性，我们的客户信任我们来保护的最敏感的数据之一是他们的加密密钥，它使数据能够被解密。Cloudflare 为客户提供了两种方法，以确保他们的私钥只能在指定的位置访问。</p>
-	<p><a href="https://www.cloudflare.com/ssl/keyless-ssl/" target="_blank">无密钥 SSL</a> 允许客户存储和管理他们自己的 SSL 秘钥，以便在他们选择的任何外部基础设施上与 Cloudflare 一起使用。客户可以为其密钥存储库使用各种系统，包括硬件安全模块(“ HSMs ”)、虚拟服务器和运行在客户控制环境中的 Unix/Linux 和Windows 的硬件。Cloudflare 永远无法使用无密钥 SSL 访问私钥。</p>
-	<p><a href="https://blog.cloudflare.com/geo-key-manager-how-it-works/">Geo 密钥管理</a>为客户提供了详细的控制，可以在哪些位置存储密钥。例如，客户可以选择流量检查所需的私钥，使其只能在位于欧盟的数据中心内访问。</p>
+	<p><a href="https://www.cloudflare.com/ssl/keyless-ssl" target="_blank">无密钥 SSL</a> 允许客户存储和管理他们自己的 SSL 秘钥，以便在他们选择的任何外部基础设施上与 Cloudflare 一起使用。客户可以为其密钥存储库使用各种系统，包括硬件安全模块(“ HSMs ”)、虚拟服务器和运行在客户控制环境中的 Unix/Linux 和Windows 的硬件。Cloudflare 永远无法使用无密钥 SSL 访问私钥。</p>
+	<p><a href="https://blog.cloudflare.com/geo-key-manager-how-it-works">Geo 密钥管理</a>为客户提供了详细的控制，可以在哪些位置存储密钥。例如，客户可以选择流量检查所需的私钥，使其只能在位于欧盟的数据中心内访问。</p>
 	<h3 id="-https-">管理检查 HTTPS 请求和响应的位置</h3>
 	<p>为了部署我们的 WAF，或检测恶意的机器人流量，Cloudflare 必须终止我们边缘数据中心的 TLS，并检查 HTTPS 请求和响应有效负载。</p>
-	<p><a href="https://blog.cloudflare.com/introducing-regional-services/">区域服务</a>让组织可以控制他们的流量在哪里检查。启用区域服务后，Cloudflare 的全球 Anycast 网络会在离客户端最近的位置接收流量，我们可以在那里提供 L3 和L4 DDoS 保护。不是在该数据中心的 HTTP 级别进行检查，而是将该流量安全地传输到客户选择的区域内的 Cloudflare 数据中心，并在那里处理。</p>
+	<p><a href="https://blog.cloudflare.com/introducing-regional-services">区域服务</a>让组织可以控制他们的流量在哪里检查。启用区域服务后，Cloudflare 的全球 Anycast 网络会在离客户端最近的位置接收流量，我们可以在那里提供 L3 和L4 DDoS 保护。不是在该数据中心的 HTTP 级别进行检查，而是将该流量安全地传输到客户选择的区域内的 Cloudflare 数据中心，并在那里处理。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--2">控制流量产生的日志和分析</h3>
 	<p>除了使我们客户的基础设施和团队更快、更安全、更可靠之外，我们还提供关于我们的服务功能以及客户如何更好地利用这些服务的见解。我们收集关于通过边缘数据中心的流量的元数据，并利用这些元数据来改善我们自己网络的运行:例如，通过制定 WAF 规则来阻止最新的攻击，或通过开发机器学习模型来检测恶意机器人。我们还以日志和分析的形式向客户提供这些数据。</p>

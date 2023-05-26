@@ -31,7 +31,7 @@
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<h4 id="enforce-maximum-size-without-changing-urls">Enforce Maximum Size Without Changing URLs</h4>
-	<p>Image Resizing is also <a href="https://developers.cloudflare.com/images/worker/" target="_blank">available</a> from within a Cloudflare Worker. <a href="https://developers.cloudflare.com/workers/about/" target="_blank">Workers</a> allow you to write code which runs close to your users all around the world. For example, you might wish to add Image Resizing to your images <strong>while keeping the same URLs</strong>. Your users and client would be able to use the same image URLs as always, but the images will be transparently modified in whatever way you need.</p>
+	<p>Image Resizing is also <a href="https://developers.cloudflare.com/images/worker" target="_blank">available</a> from within a Cloudflare Worker. <a href="https://developers.cloudflare.com/workers/about" target="_blank">Workers</a> allow you to write code which runs close to your users all around the world. For example, you might wish to add Image Resizing to your images <strong>while keeping the same URLs</strong>. Your users and client would be able to use the same image URLs as always, but the images will be transparently modified in whatever way you need.</p>
 	<p>You can install a Worker on a route which matches your image URLs, and resize any images larger than a limit:</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>addEventListener('fetch', event =&gt; {
@@ -53,7 +53,7 @@ async function handleRequest(request) {
 	<p></p>
 	<p>As a Worker is just code, it is also easy to run this worker only on URLs with image extensions, or even to only resize images being delivered to mobile clients.</p>
 	<h3 id="cloudflare-and-images">Cloudflare and Images</h3>
-	<p>Cloudflare has a long history building tools to accelerate images. Our caching has always helped reduce latency by storing a copy of images closer to the user. &nbsp;<a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati/">Polish</a> automates options for both lossless and lossy image compression to remove unnecessary bytes from images. &nbsp;<a href="https://www.cloudflare.com/website-optimization/mirage/" target="_blank">Mirage</a> accelerates image delivery based on device type. We are continuing to invest in all of these tools, as they all serve a unique role in improving the image experience on the web.</p>
+	<p>Cloudflare has a long history building tools to accelerate images. Our caching has always helped reduce latency by storing a copy of images closer to the user. &nbsp;<a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">Polish</a> automates options for both lossless and lossy image compression to remove unnecessary bytes from images. &nbsp;<a href="https://www.cloudflare.com/website-optimization/mirage" target="_blank">Mirage</a> accelerates image delivery based on device type. We are continuing to invest in all of these tools, as they all serve a unique role in improving the image experience on the web.</p>
 	<p>Image Resizing is different because it is the first image product at Cloudflare to give developers full control over how their images would be served. You should choose Image Resizing if you are comfortable defining the sizes you wish your images to be served at in advance or within a Cloudflare Worker.</p>
 	<h3 id="next-steps-and-simple-pricing">Next Steps and Simple Pricing</h3>
 	<p>Image Resizing is available today for Business and Enterprise Customers. &nbsp;To enable it, login to the Cloudflare Dashboard and navigate to the Speed Tab. &nbsp;There you’ll find the section for Image Resizing which you can enable with one click.</p>
@@ -64,5 +64,5 @@ async function handleRequest(request) {
 		<li>Use this URL to resize that image:<br><code>https://yoursite.com/cdn-cgi/image/width=100,height=100,quality=75/images/yourimage.jpg</code></li>
 		<li>Experiment with changing <code>width=</code>, <code>height=</code>, and <code>quality=</code>.</li>
 	</ol>
-	<p>The instructions above use the Default URL Format for Image Resizing. &nbsp;For details on options, uses cases, and compatibility, refer to our <a href="https://developers.cloudflare.com/images/" target="_blank">Developer Documentation</a>.</p>
+	<p>The instructions above use the Default URL Format for Image Resizing. &nbsp;For details on options, uses cases, and compatibility, refer to our <a href="https://developers.cloudflare.com/images" target="_blank">Developer Documentation</a>.</p>
 </div>

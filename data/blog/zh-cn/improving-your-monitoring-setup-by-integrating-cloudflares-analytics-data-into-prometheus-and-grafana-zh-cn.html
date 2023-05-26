@@ -3,7 +3,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image1-7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>在 Labyrinth Labs，我们非常重视监控。拥有有效的监控设置是我们为客户所做工作的关键部分。</p>
 	<p>Cloudflare 的 Analytics 仪表板为我们的客户 Pixel Federation 提供了许多用于调试和分析目的的有用信息。但是，它不会自动与现有的监控工具（例如 Grafana 和 Prometheus）集成，我们的 DevOps 工程师每天都使用它们来监控我们的基础结构。</p>
-	<p>Cloudflare 提供了一个日志 API，但我们需要分析的日志数量非常庞大，这样做效率低下且成本太高。幸运的是，Cloudflare 已经完成了每秒聚合数千个事件并将它们公开在<a href="https://developers.cloudflare.com/analytics/graphql-api/" target="_blank">易于使用的 API 中</a>的艰巨工作。</p>
+	<p>Cloudflare 提供了一个日志 API，但我们需要分析的日志数量非常庞大，这样做效率低下且成本太高。幸运的是，Cloudflare 已经完成了每秒聚合数千个事件并将它们公开在<a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank">易于使用的 API 中</a>的艰巨工作。</p>
 	<p>将来自我们区域的 Cloudflare 数据与其他系统的指标相结合将使我们更好地了解我们的系统，并能够关联指标并创建更有用的警报，从而使我们的第 2 天操作（例如调试事件或分析我们系统的使用情况） 更高效。</p>
 	<p>由于我们的监控堆栈主要基于 Prometheus 和 Grafana，因此我们决定实施我们自己的 Prometheus 导出器，从 Cloudflare 的 GraphQL Analytics API 中提取数据。</p>
 	<h3 id="-"><strong>设计</strong></h3>
@@ -54,10 +54,10 @@ helm install cloudflare-exporter lablabs-cloudflare-exporter/cloudflare-exporter
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image2-5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image3-6.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>为了让运营团队更加受益，您可以使用收集的指标来创建警报。这些可以直接在 Grafana 中创建，也可以使用 Prometheus 警报规则创建。</p>
-	<p>此外，如果您将 <a href="https://github.com/thanos-io/thanos" target="_blank">Thanos</a> 或 <a href="https://grafana.com/oss/cortex/" target="_blank">Cortex</a> 集成到您的监控设置中，您可以无限期地存储这些指标。</p>
+	<p>此外，如果您将 <a href="https://github.com/thanos-io/thanos" target="_blank">Thanos</a> 或 <a href="https://grafana.com/oss/cortex" target="_blank">Cortex</a> 集成到您的监控设置中，您可以无限期地存储这些指标。</p>
 	<h3 id="--3"><strong>未来的工作</strong></h3>
 	<p>我们希望将更多的 Analytics 数据集成到我们的导出器中，最终达到 Cloudflare 的 GraphQL 可以提供的每一个指标。我们计划很快为 Firewall Analytics、DoS Analytics 和网络Analytics 创建新的指标。</p>
 	<p>如果您有任何疑问、问题或建议，请随时创建 GitHub 问题。非常感谢任何拉取请求。</p>
 	<h3 id="--4"><strong>关于我们</strong></h3>
-	<p><a href="https://lablabs.io/" target="_blank">Labyrinth Labs</a> 通过采用正确的技术和原则，帮助公司构建、运行、部署和扩展软件和基础结构。<a href="https://blog.cloudflare.com/tag/analytics/">Analytics</a> <a href="https://blog.cloudflare.com/tag/customers/">顾客</a> <a href="https://blog.cloudflare.com/tag/prometheus/">Prometheus</a> <a href="https://blog.cloudflare.com/tag/grafana/">Grafana</a> <a href="https://blog.cloudflare.com/tag/monitoring/">监控</a></p>
+	<p><a href="https://lablabs.io" target="_blank">Labyrinth Labs</a> 通过采用正确的技术和原则，帮助公司构建、运行、部署和扩展软件和基础结构。<a href="https://blog.cloudflare.com/tag/analytics">Analytics</a> <a href="https://blog.cloudflare.com/tag/customers">顾客</a> <a href="https://blog.cloudflare.com/tag/prometheus">Prometheus</a> <a href="https://blog.cloudflare.com/tag/grafana">Grafana</a> <a href="https://blog.cloudflare.com/tag/monitoring">监控</a></p>
 </div>

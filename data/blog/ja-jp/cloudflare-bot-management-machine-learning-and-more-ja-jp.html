@@ -12,7 +12,7 @@
 	<p>ボット管理 - 不要または悪意のあるインターネットボットトラフィックをブロックする一方で、有用なボットがWebプロパティにアクセスできるようにすること。このためにボットのアクティビティを検出し、ボットの望ましい挙動と望ましくない挙動を識別して望ましくないアクティビティの根源を特定する。</p>
 	<p>WAF -一連のセキュリティ規制に基づいて、ネットワークトラフィックを監視し、制御するセキュリティシステムのこと。</p>
 	<h3 id="--2">要件の収集</h3>
-	<p>Cloudflareは非常に<a href="https://blog.cloudflare.com/cloudflare-uses-intelligent-caching-to-avoid/">早い段階</a>から悪意のあるボットによるWebサイトへのアクセスやAPIの悪用を阻止してきました。それと同時に、ボットによる炭素コストを相殺することで<a href="https://blog.cloudflare.com/cleaning-up-bad-bots/">環境問題に取り組んで</a>きました。時代の流れとともに、ボット問題に取り組む様々なテクニックを統合し、顧客体験を効率化する専用のプラットフォームが必要だということが明らかになってきました。この新しいプラットフォームのデザインの際、次の重要要件を満たすようにしました。</p>
+	<p>Cloudflareは非常に<a href="https://blog.cloudflare.com/cloudflare-uses-intelligent-caching-to-avoid">早い段階</a>から悪意のあるボットによるWebサイトへのアクセスやAPIの悪用を阻止してきました。それと同時に、ボットによる炭素コストを相殺することで<a href="https://blog.cloudflare.com/cleaning-up-bad-bots">環境問題に取り組んで</a>きました。時代の流れとともに、ボット問題に取り組む様々なテクニックを統合し、顧客体験を効率化する専用のプラットフォームが必要だということが明らかになってきました。この新しいプラットフォームのデザインの際、次の重要要件を満たすようにしました。</p>
 	<ul>
 		<li>完全であり単純 - お客様がボタンを一回クリックするだけで、ボット管理をオン/オフでき、webサイトやモバイルアプリケーション、APIの保護ができる。</li>
 		<li>信頼性 - お客様の望みは、webサイトの訪問者が本人であると信頼できるかどうかが分かり、その信頼レベルの確実性インジケーターが提供されること。</li>
@@ -40,10 +40,10 @@
 	<p>当社がトラフィックを分類する際、お客様は処理方法を決定しなければならないのか、またはお客様に代わって決定してもいいのか考えなければなりません。こうした不確実性の問題すべてに対処できて、上記の要件を実現するのに役立つ概念とはなんでしょうか。</p>
 	<p>セクションのタイトルからお分かりかもしれませんが、当社が考えたのは、信用スコアまたは単にスコア<em> - </em>すべてを支配する唯一のもの - という概念でした。これは、0から100までの数値で、リクエストが、人間が生成した（高スコア）か、自律型プログラムが生成した（低スコア）かの可能性を示すものです。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/05/image5-1.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://www.flickr.com/photos/purple-lover/13583362554" target="_blank">「一つの指輪がすべてを統べる」</a> idreamlikecrazy 出典 <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY</a> / 原版を非飽和</figcaption>
+		<figcaption><a href="https://www.flickr.com/photos/purple-lover/13583362554" target="_blank">「一つの指輪がすべてを統べる」</a> idreamlikecrazy 出典 <a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY</a> / 原版を非飽和</figcaption>
 	</figure>
 	<p>では、受信するHTTP/HTTPSリクエストすべてにこのスコアを割り当てられると仮定して、お客様や当社は何をするべきでしょうか。こうしたスコアをログに提供するだけで十分かもしれません。お客様が自分で分析し、最も頻繁に最低スコアがついているIPを見つけ、Cloudflareファイアウォールを使って、こうしたIPをブロックできるかもしれません。このようなプロセスは便利ですが、マニュアルで行うことが多く、エラーが発生しやすいものです。最も重要な点は、お客様のインターネットプロパティを保護するために、リアルタイムで実行することができません。</p>
-	<p>幸運にも、私たちがこのシステム開発に着手したころに、ファイアウォールチームの同僚たちが<a href="https://blog.cloudflare.com/announcing-firewall-rules/">ファイアウォールルールを発表していました</a>。この新しい機能を使い、広く知られているWireshark®言語に触発された、柔軟で直感的な方法でお客様がリクエストを制御することが可能になりました。ファイアウォールルールはさまざまなリクエストフィールドをサポートしていたため、私たちは、スコアをこうしたフィールドの一つすることを考えたのです。そうすると、お客様は詳細なルールを書き込んで特定の攻撃タイプをブロックすることもできます。このように、cf.bot_management.scoreフィールドが誕生しました。</p>
+	<p>幸運にも、私たちがこのシステム開発に着手したころに、ファイアウォールチームの同僚たちが<a href="https://blog.cloudflare.com/announcing-firewall-rules">ファイアウォールルールを発表していました</a>。この新しい機能を使い、広く知られているWireshark®言語に触発された、柔軟で直感的な方法でお客様がリクエストを制御することが可能になりました。ファイアウォールルールはさまざまなリクエストフィールドをサポートしていたため、私たちは、スコアをこうしたフィールドの一つすることを考えたのです。そうすると、お客様は詳細なルールを書き込んで特定の攻撃タイプをブロックすることもできます。このように、cf.bot_management.scoreフィールドが誕生しました。</p>
 	<p>Cloudflareボット管理の中心にスコアを据えることで、一打で複数の製品要件と技術的要件に対応したわけです。シンプルかつ柔軟で、設定可能、さらにお客様はリクエストごとにボットを管理することが可能になります。擬陽性と偽陰性に対する許容度に応じて、お客様はファイアウォールルールにおいてスコアのしきい値を調整できます。さらに、スコアは直感的なため、当社は内部で検出機能を拡張することができ、お客様が設定を調整する必要はありません。</p>
 	<p>それでは、このスコアはどのように作成し、それはどの程度難しいのでしょうか。次のセクションで詳しくみていきましょう。</p>
 	<h3 id="--5">アーキテクチャの概要</h3>
@@ -52,9 +52,9 @@
 	<h3 id="--6">主要なボット管理サービス</h3>
 	<p>手短に言うと、当社のシステムはエッジデータセンターから受信したデータを処理し、後述の技術を使ってボット検出のメカニズムに必要となるデータを生成し、保存します。</p>
 	<ul>
-		<li>データベース &amp; データ保存 - <a href="https://blog.cloudflare.com/squeezing-the-firehose/">Kafka</a>、<a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/">ClickHouse</a>、Postgres、Redis、Ceph。</li>
+		<li>データベース &amp; データ保存 - <a href="https://blog.cloudflare.com/squeezing-the-firehose">Kafka</a>、<a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">ClickHouse</a>、Postgres、Redis、Ceph。</li>
 		<li>プログラミング言語 - Go、Rust、Python、Java、Bash。</li>
-		<li>設定 &amp; テーマ管理 - Salt、<a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a>、<a href="https://capnproto.org/" target="_blank">Cap’n Proto</a>。</li>
+		<li>設定 &amp; テーマ管理 - Salt、<a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a>、<a href="https://capnproto.org" target="_blank">Cap’n Proto</a>。</li>
 		<li>コンテナ化 - Docker、Kubernetes、Helm、Mesos/Marathon</li>
 	</ul>
 	<p>耐障害性、パフォーマンス、可観測性、セキュリティを考慮に入れて、各サービスを構築しています。</p>
@@ -71,7 +71,7 @@
 	<h3 id="--8">ファイアウォールの統合</h3>
 	<p>Cloudflareファイアウォールの直感的なダッシュボードを使えば、ユーザーは強力なルールを数回のクリックで容易に設定でき、Terraformの統合も可能です。ファイアウォールへのリクエストはすべてルールエンジンと照会して検査されます。疑わしいリクエストは、ユーザーのニーズに合わせてブロックされたり、認証または記録することができ、ボット管理モジュールによって作成されたスコアと設定されたしきい値に基づいて、正当なリクエストは、配信先へとルーティングされます。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>ファイアウォールルールでは、次のボット緩和<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/actions/" target="_blank">行動</a>が提供されます。</p>
+	<p>ファイアウォールルールでは、次のボット緩和<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/actions" target="_blank">行動</a>が提供されます。</p>
 	<ul>
 		<li>ログ- 顧客に提供されたCloudflareログのリクエストと一致した記録。</li>
 		<li>バイパス- お客様は特定のリクエストに対してCloudflareのセキュリティ機能を動的に無効にすることができます。</li>
@@ -80,7 +80,7 @@
 		<li>JSチャレンジ- ボットやスパムがリクエストしたリソースにアクセスできないようにします。ただし、ブラウザは自由にチャレンジを自動的に解決できます。</li>
 		<li>ブロック- 一致したリクエストはサイトへのアクセスが拒否されます。</li>
 	</ul>
-	<p>当社の<a href="https://blog.cloudflare.com/updates-to-firewall-analytics/">ファイアウォール Analytics</a>ツールはClickHouseと<a href="https://blog.cloudflare.com/introducing-the-graphql-analytics-api-exactly-the-data-you-need-all-in-one-place/">GraphQL API</a>を基盤とし、お客様は直感的インターフェースを利用してセキュリティ脅威を特定し、調べることができます。Analyticsのほか、当社ではすべてのボット関連アクティビティについての詳細なログを<a href="https://developers.cloudflare.com/logs/logpull-api/" target="_blank">Logpull API</a>および/または<a href="https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage/">LogPush</a>のどちらかを使って提供しており、お客様が自社のログを自社のクラウドストレージに簡単に入れることが可能です。</p>
+	<p>当社の<a href="https://blog.cloudflare.com/updates-to-firewall-analytics">ファイアウォール Analytics</a>ツールはClickHouseと<a href="https://blog.cloudflare.com/introducing-the-graphql-analytics-api-exactly-the-data-you-need-all-in-one-place">GraphQL API</a>を基盤とし、お客様は直感的インターフェースを利用してセキュリティ脅威を特定し、調べることができます。Analyticsのほか、当社ではすべてのボット関連アクティビティについての詳細なログを<a href="https://developers.cloudflare.com/logs/logpull-api" target="_blank">Logpull API</a>および/または<a href="https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage">LogPush</a>のどちらかを使って提供しており、お客様が自社のログを自社のクラウドストレージに簡単に入れることが可能です。</p>
 	<h3 id="cloudflare-workers-">Cloudflare Workersの統合</h3>
 	<p>お客様がスコアに基づくリクエストの処理にさらに柔軟性をご希望の場合、例えば新規のHTMLページコンテンツを挿入したり既存のHTMLページコンテンツを変更する、またはボットに誤ったデータを提供する、特定のリクエストを妨害するなどの希望があれば、Cloudflare Workersはそれを実現します。たとえば、この小さなコードスニペットを使うと、配信元サーバーにスコアを返して、さらに高度なリアルタイム分析、または緩和ができます。</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
@@ -114,7 +114,7 @@ async function handleRequest(request) {
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image9.png" class="kg-image" alt="" loading="lazy" title="Chart"></figure>
 	<p>ここで、Cloudflareボット管理との統合の時系列で、具体的な検出メカニズムを詳しくみていきましょう。</p>
 	<h3 id="--10">機械学習</h3>
-	<p>スコアに関する決定の大半は、当社の機械学習モデルを用いています。このモデルは、2018年に、スコアを生成して顧客に展開した最初の検出メカニズムでもあります。機械学習を成功裏に活用するには、<a href="https://blog.cloudflare.com/stop-the-bots-practical-lessons-in-machine-learning/">量、多様性、質</a>が高いデータを必要とします。そして、無料プランおよび有料プランでご利用くださるお客様のおかげで、Cloudflareはこの三つを備え、当社のすべてのお客様のためにモデルの学習と向上を継続的に行うことができています。</p>
+	<p>スコアに関する決定の大半は、当社の機械学習モデルを用いています。このモデルは、2018年に、スコアを生成して顧客に展開した最初の検出メカニズムでもあります。機械学習を成功裏に活用するには、<a href="https://blog.cloudflare.com/stop-the-bots-practical-lessons-in-machine-learning">量、多様性、質</a>が高いデータを必要とします。そして、無料プランおよび有料プランでご利用くださるお客様のおかげで、Cloudflareはこの三つを備え、当社のすべてのお客様のためにモデルの学習と向上を継続的に行うことができています。</p>
 	<p>機械学習検出メカニズムの中核にあるのは、CatBoostです。これは、勾配ブースティング決定木のための高性能なオープンソースライブラリです。CatBoostは、ライブラリの卓越した機能に基づいて選択されました。</p>
 	<ul>
 		<li>カテゴリ特性の完全サポート - カーディナリティの非常に高い特性であってもトレーニングが可能です。</li>
@@ -123,7 +123,7 @@ async function handleRequest(request) {
 		<li>CとRust API - エッジでの当社のビジネスロジックのほとんどはLua、具体的にはLuaJITで書かれており、モデルに適用できる互換性のあるFFIインターフェイスがあることは、非常に望ましいと言えます。</li>
 	</ul>
 	<p>Cloudflareのエッジでは、複数のCatBoostモデルが、<a href="https://christophergs.com/machine%2520learning/2019/03/30/deploying-machine-learning-applications-in-shadow-mode/#what" target="_blank">シャドーモード</a>で、すべてのリクエストに、すべての機器で、実行されています。これらのモデルの一つはアクティブモードで実行されており、ファイアウォールに送られる最終スコアに影響を及ぼします。すべてのML検出結果と機能はClickHouseに記録されて、さらなる分析、モデル改良、分析や顧客向けのログに記載されます。当社は、カテゴリ特性も数値特性も両方当社のモデルに入力しています。これは、リクエスト属性や、リクエスト属性を使用して構築したリクエスト間特性から抽出したもので、<em>Gagarin</em>のリクエスト間特性プラットフォームにより計算し、提供されています。</p>
-	<p>当社は新しいMLモデルのリリースに非常に信頼性が高く、優れたパフォーマンスの<a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a>構成データベースを用いており、わずか数秒で実行することができます。この同じメカニズムは、特定の顧客向けにアクティブモードで実行するべきMLモデルを設定するのに使えます。</p>
+	<p>当社は新しいMLモデルのリリースに非常に信頼性が高く、優れたパフォーマンスの<a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a>構成データベースを用いており、わずか数秒で実行することができます。この同じメカニズムは、特定の顧客向けにアクティブモードで実行するべきMLモデルを設定するのに使えます。</p>
 	<p>当社の機械学習検出メカニズムをさらに説明するには、それに特化したブログを投稿するだけの価値があります。ブログでは、GPUを活用して何兆ものリクエストを使ってどのように当社のモデルをトレーニングし、検証するか、このモデル機能の配信および抽出がどのように動作するか、どのように内部と外部の両方でモデル予測を説明し、デバッグするのかをご紹介します。</p>
 	<h3 id="--11">ヒューリスティックエンジン</h3>
 	<p>もちろん世界中の問題が、機械学習で解決するのが一番良いというわけではありません。MLモデルを微調整する方法はいろいろありますが、場合によっては基本的なヒューリスティックを下回ることもあります。機械学習で解決しようとしている問題が、目新しいものでないこともあります。ボット管理ソリューションを構築する際、時にリクエストの単一属性からボットであることが発覚することが明らかになりました。つまり、単純な方法でボットを特定できるシンプルなルールをいくつか作成することができると同時に、誤検出を最小限に抑えることができるということです。</p>
@@ -131,7 +131,7 @@ async function handleRequest(request) {
 	<p>エンジンは次のプロパティを備えています。</p>
 	<ul>
 		<li>速度-MLモデルの推論がモデル1つあたり50マイクロ秒未満である場合、数百のヒューリスティックの適用は、なんと20ミリ秒を下回ることもあり得ます。</li>
-		<li>展開力 - ヒューリスティックエンジンのおかげで、<a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a>を使ってほんの数秒で新しいヒューリスティックを追加することが可能となり、すべてのリクエストに適用されます。</li>
+		<li>展開力 - ヒューリスティックエンジンのおかげで、<a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a>を使ってほんの数秒で新しいヒューリスティックを追加することが可能となり、すべてのリクエストに適用されます。</li>
 		<li>広いカバレッジ - シンプルなヒューリスティック一式でグローバルトラフィックは最大15%、ボット管理の顧客のトラフィックは最大30%までボットとして分類できます。簡単な方法で、これだけ見つけられたら十分だと思いませんか。</li>
 		<li>最低限の誤検出 -追加するヒューリスティックについて、当社は強い確信を持っており、慎重でもあるため、この検出メカニズムがすべての検出メカニズムの中でも誤検出を最低限に抑えられています。</li>
 		<li>MLのラベル- MLモデルのトレーニングには、その確度の高さからヒューリスティックを使って分類したリクエストを用いているため、ヒューリスティックから学んだ行動を一般化し、検出精度を向上させることができます。</li>

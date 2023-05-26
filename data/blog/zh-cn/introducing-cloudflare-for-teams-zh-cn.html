@@ -5,7 +5,7 @@
 	<p>我们之所以创立 Cloudflare 是为了解决每个 IT 组织所面临的一半挑战：如何确保向互联网公开的资源和基础架构免受攻击，并且保持快速和可靠。我们发现，人们正在从借助硬件和软件解决这些问题的惯性中走出来，希望拥有一种适用于全球的可扩展服务。</p>
 	<p>为此，我们建设了全球规模最大的网络之一。我们的网络如今已覆盖全球 200 多个城市，对每个连上互联网的人来说，几乎都是几毫秒的距离。我们建立了可抵御国家规模网络攻击的力量，也打造了一个由我们所见的大量互联网流量驱动的威胁情报系统。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image5-2-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>今天，我们将<a href="https://teams.cloudflare.com/" target="_blank">扩充</a> Cloudflare 的产品，解决每个 IT 组织所面临的另一半挑战：确保组织中的人员和团队能够访问其工作所需的工具，并且免受恶意软件和其他网络威胁的侵害。</p>
+	<p>今天，我们将<a href="https://teams.cloudflare.com" target="_blank">扩充</a> Cloudflare 的产品，解决每个 IT 组织所面临的另一半挑战：确保组织中的人员和团队能够访问其工作所需的工具，并且免受恶意软件和其他网络威胁的侵害。</p>
 	<p>我们赋予公共基础设施的速度、可靠性与保护，今天将延伸到您的团队在互联网上所做的一切。</p>
 	<p>除了保护组织的基础架构之外，IT 组织还要负责确保组织的员工能够安全地访问其所需的工具。按照传统，这些问题通过 VPN 和防火墙之类的硬件产品来解决。VPN 使授权用户可以访问他们需要的工具，防火墙则用来阻挡恶意软件。</p>
 	<h3 id="-">城堡与护城河</h3>
@@ -21,19 +21,19 @@
 	<p>时不时会有人给我发送一个内部 Wiki 文章链接，请我帮忙。我几乎肯定是坐在穿梭于不同会议之间的出租车上，用手机工作。我尝试访问这个链接，看到要登录我们旧金山的 VPN 的提示。我的沮丧由此开始。</p>
 	<p>根据我的经验，公司移动 VPN 客户端似乎都由大约 100 面芯片提供支持，只有在您离家庭办公室的里数小于某个数字的 25 倍时，才会允许您进行连接。经过多次挫败和几张 IT 票证，再加上一点运气，我也许能连接上。即使到那时，体验仍然极为缓慢且不可靠。</p>
 	<p>我们审核自己的系统时发现，对流程的不满导致多个团队创造了变通之法，而这实际上是在用心建设的护城河上擅自架设吊桥。而且，随着 Salesforce 和 Workday 之类 SaaS 工具采用率越来越高，我们越来越看不透这些工具的使用方式。</p>
-	<p>我们意识到传统的 IT 安全防护方法对于像 Cloudflare 这样的组织来说是站不住脚的。大约在同样的时间，Google 发表了题为“<a href="https://research.google/pubs/pub43231/" target="_blank">BeyondCorp：一种新的企业安全防护方法</a>”的论文。其核心思想是，公司的内联网不应比互联网更值得信任。而且，不能由单一的护城河来强制分界，每个应用程序和数据源都应在每次访问时对个人和设备进行身份验证。</p>
+	<p>我们意识到传统的 IT 安全防护方法对于像 Cloudflare 这样的组织来说是站不住脚的。大约在同样的时间，Google 发表了题为“<a href="https://research.google/pubs/pub43231" target="_blank">BeyondCorp：一种新的企业安全防护方法</a>”的论文。其核心思想是，公司的内联网不应比互联网更值得信任。而且，不能由单一的护城河来强制分界，每个应用程序和数据源都应在每次访问时对个人和设备进行身份验证。</p>
 	<p>BeyondCorp 理念已被称为 IT 安全防护的零信任模型，它也影响了我们对自有系统的思索。在很大程度上，因为 Cloudflare 具有灵活的全球网络，我们能够在团队访问工具时使用它来执行策略，并在我们工作时保护自己免受恶意软件的侵害。</p>
 	<h3 id="cloudflare-for-teams">Cloudflare for Teams</h3>
-	<p>今天我们很高兴地宣布，<a href="https://teams.cloudflare.com/" target="_blank">Cloudflare for Teams</a>™ 这款我们为保护自己而开发的工具套件，现在可用来帮助任何 IT 组织，不论其规模大小如何。</p>
+	<p>今天我们很高兴地宣布，<a href="https://teams.cloudflare.com" target="_blank">Cloudflare for Teams</a>™ 这款我们为保护自己而开发的工具套件，现在可用来帮助任何 IT 组织，不论其规模大小如何。</p>
 	<p>Cloudflare for Teams 围绕Access 和 Gateway 这两个互补产品构建。 <a href="https://teams.cloudflare.com/access/index.html" target="_blank">Cloudflare Access</a>™ 是现代的 VPN，可以确保您的团队成员快速访问其工作所需的资源，同时又将威胁排除在外。<a href="https://teams.cloudflare.com/gateway/index.html" target="_blank">Cloudflare Gateway</a> ™ 则是新一代的现代防火墙，可确保您的团队成员免受恶意软件侵害，并遵循您组织的政策，而且无论他们从哪里上网。</p>
-	<p>Cloudflare Access 和 Cloudflare Gateway 功能强大，构建于现有的 Cloudflare 网络基础之上。这意味着它们快速、可靠，可扩展到最大的组织，并具有 DDoS 防护能力。不论您的团队成员如今位于何处，前往哪里旅行，都能为其保驾护航。某位高管正在进行摄影之旅，探访肯尼亚的长颈鹿、卢旺达的大猩猩和马达加斯加的狐猴？不用担心，我们在所有这些国家/地区（以及<a href="https://www.cloudflare.com/network/" target="_blank">更多地方</a>）都设有Cloudflare 数据中心，而且全部支持 Cloudflare for Teams。</p>
+	<p>Cloudflare Access 和 Cloudflare Gateway 功能强大，构建于现有的 Cloudflare 网络基础之上。这意味着它们快速、可靠，可扩展到最大的组织，并具有 DDoS 防护能力。不论您的团队成员如今位于何处，前往哪里旅行，都能为其保驾护航。某位高管正在进行摄影之旅，探访肯尼亚的长颈鹿、卢旺达的大猩猩和马达加斯加的狐猴？不用担心，我们在所有这些国家/地区（以及<a href="https://www.cloudflare.com/network" target="_blank">更多地方</a>）都设有Cloudflare 数据中心，而且全部支持 Cloudflare for Teams。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image4-3-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>所有 Cloudflare for Teams 产品都有Cloudflare 产品中全部可见的威胁情报支持。我们可以看到如此丰富多样的互联网流量，所以通常会比别人更快发现新的威胁和恶意软件。在自己的专有数据基础上，我们还有领先安全供应商的额外数据源的补充，确保 Cloudflare for Teams 提供广泛的防护措施来抵御恶意软件和其他网络威胁。</p>
 	<p>此外，由于 Cloudflare for Teams 在我们为基础架构保护产品构建的同一网络上运行，因此可以非常高效地交付。也就是说，我们可以极具竞争力的价格为客户提供这些产品。我们的目标是毫不犹豫地为所有Cloudflare for Teams 客户带来投资回报（ROI）。如果您正在考虑其他解决方案，请<a href="https://teams.cloudflare.com/gateway/index.html#get-notified" target="_blank">在决定之前与我们联系</a>。</p>
-	<p>Cloudflare Access 和 Cloudflare Gateway 也围绕我们已经推出并已经实战测试的产品打造。例如，Gateway 在一定程度上基于我们的 <a href="https://one.one.one.one/" target="_blank">1.1.1.1 公共 DNS 解析器</a>。如今，4000 多万人信赖 1.1.1.1 这款全球最快的公共 DNS 解析器。通过增加恶意软件扫描功能，我们打造了入门级 Cloudflare Gateway 产品。</p>
+	<p>Cloudflare Access 和 Cloudflare Gateway 也围绕我们已经推出并已经实战测试的产品打造。例如，Gateway 在一定程度上基于我们的 <a href="https://one.one.one.one" target="_blank">1.1.1.1 公共 DNS 解析器</a>。如今，4000 多万人信赖 1.1.1.1 这款全球最快的公共 DNS 解析器。通过增加恶意软件扫描功能，我们打造了入门级 Cloudflare Gateway 产品。</p>
 	<p>Cloudflare Access 和 Cloudflare Gateway 在我们的WARP 和 WARP+ 产品基础上开发。我们特意开发了一个消费型移动 VPN 服务，因为我们知道这并非易事。数百万 WARP 和 WARP+ 用户帮助这款产品步入正轨，确保它为走向企业做好准备。仅在 iOS 上，我们就获得了超过 200,000 个 4.5 星评分，这证明了底层 WARP 和 WARP+ 引擎已经变得多么可靠。与这相比，所有企业移动 VPN 客户端的评分无疑糟糕透顶。</p>
 	<p>我们与一些优秀的组织展开了合作，围绕 Cloudflare for Teams 建设一个生态系统。当中包括端点安全解决方案（如 VMWare Carbon Black、Malwarebytes 和 Tanium 等）、SEIM 和分析解决方案（如Datadog、Sumo Logic 和Splunk），以及身份标识平台（如 Okta、OneLogin 和 Ping Identity）。本文末尾可找到这些和其他合作伙伴提供的反馈。</p>
-	<p>如果您有兴趣进一步了解 Cloudflare for Teams 的<a href="https://blog.cloudflare.com/cloudflare-for-teams-products/">技术细节</a>，建议您阅读 Sam Rhea 的帖子。</p>
+	<p>如果您有兴趣进一步了解 Cloudflare for Teams 的<a href="https://blog.cloudflare.com/cloudflare-for-teams-products">技术细节</a>，建议您阅读 Sam Rhea 的帖子。</p>
 	<h3 id="--1">服务所有人</h3>
 	<p>Cloudflare 一直相信为所有人服务的力量。正因为此，我们在 2010 年发布 Cloudflare for Infrastructure 后推出了免费版本。随着我们发布 Cloudflare for Teams，这一信念依然不会改变。对于 Cloudflare Access 和 Cloudflare Gateway，我们都会提供免费版本来保护个人、家庭网络和小型企业。我们记得身为一家初创公司的感受，而且认为每个人都应该安全地上网，不论预算多寡。</p>
 	<p>对于 Cloudflare Access 和 Gateway，产品都按照良好、更好和最佳框架来进行细分。这便划分为 Access Basic、Access Pro 和Access Enterprise 三个等级。您可以从下表中查看各个等级提供的功能，包括未来几个月即将推出的Access Enterprise 功能。</p>
@@ -107,5 +107,5 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/CC-Logo_V1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><em>“组织的敏感数据很容易遭受攻击，不仅是在互联网上传输过程中，也包括存储在公共云、SaaS 应用程序和端点的目标位置时。CipherCloud 很高兴与 Cloudflare 携手确保数据在任何阶段、任何位置都能安全无虞。Cloudflare 的全球网络能够在数据传输过程中为其提供保护，而且不会减慢传输性能。CipherCloud CASB + 为云环境、SaaS 应用程序和 BYOD 端点提供具有端到端数据保护和自适应控制的强大云安全防护平台。借助双方的合作，团队可以依靠Cloudflare 和 CipherCloud 集成解决方案，在不牺牲用户体验的前提下使数据始终受到保护。”— <strong>Pravin Kothari，CipherCloud首席执行官</strong></em></p>
 	<hr>
-	<p><a href="https://blog.cloudflare.com/tag/product-news/">产品资讯</a> &nbsp;<a href="https://blog.cloudflare.com/tag/access/">Cloudflare Access</a> &nbsp;<a href="https://blog.cloudflare.com/tag/security/">安全</a> &nbsp;<a href="https://blog.cloudflare.com/tag/vpn/">VPN</a> &nbsp;<a href="https://blog.cloudflare.com/tag/cloudflare-for-teams/">Cloudflare for Teams</a></p>
+	<p><a href="https://blog.cloudflare.com/tag/product-news">产品资讯</a> &nbsp;<a href="https://blog.cloudflare.com/tag/access">Cloudflare Access</a> &nbsp;<a href="https://blog.cloudflare.com/tag/security">安全</a> &nbsp;<a href="https://blog.cloudflare.com/tag/vpn">VPN</a> &nbsp;<a href="https://blog.cloudflare.com/tag/cloudflare-for-teams">Cloudflare for Teams</a></p>
 </div>

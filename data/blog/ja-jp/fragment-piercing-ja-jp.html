@@ -1,16 +1,16 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-11.png" class="kg-image" alt="Incremental adoption of micro-frontends with Cloudflare Workers" loading="lazy"></figure>
 	<h2 id="-web-">レガシーなWebアプリケーションにマイクロフロントエンドの利点をもたらす</h2>
-	<p>最近、CloudflareはWebアプリケーション構築のための<a href="https://blog.cloudflare.com/better-micro-frontends/">新しいフラグメントアーキテクチャ</a>について書きました。これは高速で費用対効果が高く、大規模なプロジェクトにも拡張でき、かつ高速な反復サイクルを可能にするものです。このアプローチでは、複数のCloudflare Workersを使用して、従来のクライアントサイドのアプローチよりも高速にインタラクティブなアプリケーションにマイクロフロントエンドをレンダリングおよびストリーミングし、より優れたユーザー体験とSEOスコアを実現します。</p>
+	<p>最近、CloudflareはWebアプリケーション構築のための<a href="https://blog.cloudflare.com/better-micro-frontends">新しいフラグメントアーキテクチャ</a>について書きました。これは高速で費用対効果が高く、大規模なプロジェクトにも拡張でき、かつ高速な反復サイクルを可能にするものです。このアプローチでは、複数のCloudflare Workersを使用して、従来のクライアントサイドのアプローチよりも高速にインタラクティブなアプリケーションにマイクロフロントエンドをレンダリングおよびストリーミングし、より優れたユーザー体験とSEOスコアを実現します。</p>
 	<p>この方法は、新しいプロジェクトを始める場合や、現在のアプリケーションをゼロから作り直す余裕がある場合に最適です。しかし、現実にはほとんどのプロジェクトは、ゼロから作り直すには規模が大きすぎ、アーキテクチャの変更を段階的にしか採用できません。</p>
 	<p>この記事では、レガシーなクライアントサイドでレンダリングされるアプリケーションで選択された部分だけを、サーバーサイドでレンダリングされるフラグメントに置き換える方法を提案します。これにより、レガシーコードベースの大規模な書き換えを回避しながら、最も重要なビューがより早くインタラクティブになります。さらに独立して開発が可能で、マイクロフロントエンドアプローチのすべてのメリットを享受できるアプリケーションが完成します。このアプローチはフレームワークに依存しません。この記事では、React、Qwik、およびSolidJSで構築されたフラグメントについて説明します。</p>
 	<h2 id="-">大規模なフロントエンドアプリケーションの問題</h2>
 	<p>現在開発されている多くの大規模なフロントエンドアプリケーションは、良好なユーザー体験を提供できていません。これは、ユーザーがアプリケーションを操作する前に、大量のJavaScriptをダウンロードし、解析し、実行する必要があるアーキテクチャが原因であることが多いためです。レイジーローディングによって重要でないJavaScriptのコードの読み込みを遅延させる努力や、サーバーサイドレンダリングの使用にもかかわらず、これらの大規模なアプリケーションでは、ユーザーの入力に反応してインタラクティブになるまでに時間がかかりすぎています。</p>
 	<p>さらに、大規模なモノリシックアプリケーションは、構築やデプロイが複雑になる可能性があります。複数のチームが1つのコードベースで共同作業することもあり、プロジェクトのテストとデプロイを調整するための努力により、個々の機能の開発、デプロイ、反復が困難になっています。</p>
-	<p><a href="https://blog.cloudflare.com/better-micro-frontends/">以前の記事</a>で説明したように、<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>が提供するマイクロフロントエンドはこれらの問題を解決できますが、アプリケーションのモノリスをマイクロフロントエンドアーキテクチャに変換することは困難で、コストがかかる場合があります。ユーザーや開発者がメリットを感じられるようになるまでに、数か月、あるいは数年の開発時間がかかることもあります。</p>
+	<p><a href="https://blog.cloudflare.com/better-micro-frontends">以前の記事</a>で説明したように、<a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a>が提供するマイクロフロントエンドはこれらの問題を解決できますが、アプリケーションのモノリスをマイクロフロントエンドアーキテクチャに変換することは困難で、コストがかかる場合があります。ユーザーや開発者がメリットを感じられるようになるまでに、数か月、あるいは数年の開発時間がかかることもあります。</p>
 	<p>必要なのは、プロジェクトでアプリケーション全体を一度に書き換えることなく、アプリケーションの最も影響力のある部分に段階的にマイクロフロントエンドを採用できるようなアプローチなのです。</p>
 	<h2 id="--1">フラグメントでレスキュー</h2>
-	<p>フラグメントベースのアーキテクチャの目標は、アプリケーションをCloudflare Workersで迅速にレンダリング（およびキャッシュ）できるマイクロフロントエンドに分割することにより、大規模なWebアプリケーションのロードおよびインタラクションのレイテンシを大幅に削減（<a href="https://web.dev/vitals/" target="_blank">Core Web Vitals</a>で測定されます）することです。課題は、元のプロジェクトにかかるコストを最小限に抑えつつ、レガシーのクライアントサイドでレンダリングされるアプリケーションにマイクロフロントエンドフラグメントを統合する方法です。</p>
+	<p>フラグメントベースのアーキテクチャの目標は、アプリケーションをCloudflare Workersで迅速にレンダリング（およびキャッシュ）できるマイクロフロントエンドに分割することにより、大規模なWebアプリケーションのロードおよびインタラクションのレイテンシを大幅に削減（<a href="https://web.dev/vitals" target="_blank">Core Web Vitals</a>で測定されます）することです。課題は、元のプロジェクトにかかるコストを最小限に抑えつつ、レガシーのクライアントサイドでレンダリングされるアプリケーションにマイクロフロントエンドフラグメントを統合する方法です。</p>
 	<p>Cloudflareが提案する手法では、レガシーアプリケーションのUIで最も価値のある部分を、アプリケーションの他の部分から切り離して変換できます。</p>
 	<p>多くのアプリケーションでは、UIの最も価値のある部分は、ヘッダー、フッター、ナビゲーションの要素を提供するアプリケーションの「シェル」の中にネストされていることが多いことが判明しています。例えば、ログインフォーム、電子商取引アプリケーションの商品詳細パネル、メールクライアントの受信トレイなどです。</p>
 	<p>ログインフォームを例にとって説明します。アプリケーションでログインフォームを表示するのに数秒かかるようでは、ログインするのが手間になり、せっかくのユーザーを逃してしまうかもしれません。ログインフォームをサーバーサイドでレンダリングされるフラグメントに変換すれば、レガシーアプリケーションの残りの部分がバックグラウンドで起動する間に、ログインフォームがすぐに表示され、インタラクティブに動作します。フラグメントはすぐにインタラクティブになるため、レガシーアプリケーションが起動してページの残りをレンダリングする前に、ユーザーが認証情報を送信することも可能です。</p><!--kg-card-begin: html-->
@@ -56,21 +56,21 @@
 	<h2 id="-productivity-suite-">「Productivity Suite」のデモ</h2>
 	<p>フラグメントピアシングと段階的な採用のデモとして、<a href="https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite" target="_blank">「productivity suite」デモ</a>アプリケーションを開発し、ユーザーがToDoリストを管理したり、Hacker Newsを読んだりできるようにしました。このアプリケーションのシェルは、クライアントサイドでレンダリングされるReactアプリケーションとして実装されています。これは、当社の「レガシーアプリケーション」です。このアプリケーションには、マイクロフロントエンドフラグメントを使用するために更新された3つのルートがあります。</p><!--kg-card-begin: markdown-->
 	<ul>
-		<li><code>/login</code> - クライアントサイドの検証を行うシンプルなダミーのログインフォームで、ユーザーが認証されていないときに表示されます（実装は<a href="https://qwik.builder.io/" target="_blank">Qwik</a>）。</li>
+		<li><code>/login</code> - クライアントサイドの検証を行うシンプルなダミーのログインフォームで、ユーザーが認証されていないときに表示されます（実装は<a href="https://qwik.builder.io" target="_blank">Qwik</a>）。</li>
 		<li><code>/todos</code> - 1つまたは複数のToDoリストを管理し、2つの共同作業用フラグメントとして実装されています。
 			<ul>
-				<li>ToDoリストセレクタ - ToDoリストの選択/作成/削除を行うコンポーネント（実装は<a href="https://qwik.builder.io/" target="_blank">Qwik</a>）です。</li>
-				<li>ToDoリストエディタ - <a href="https://todomvc.com/" target="_blank">TodoMVC</a>アプリのクローン（実装は<a href="https://reactjs.org/docs/react-dom-server.html" target="_blank">React</a>）です。</li>
+				<li>ToDoリストセレクタ - ToDoリストの選択/作成/削除を行うコンポーネント（実装は<a href="https://qwik.builder.io" target="_blank">Qwik</a>）です。</li>
+				<li>ToDoリストエディタ - <a href="https://todomvc.com" target="_blank">TodoMVC</a>アプリのクローン（実装は<a href="https://reactjs.org/docs/react-dom-server.html" target="_blank">React</a>）です。</li>
 			</ul>
 		</li>
-		<li><code>/news</code> - <a href="https://github.com/solidjs/solid-hackernews" target="_blank">HackerNews</a> デモのクローン（実装は<a href="https://www.solidjs.com/" target="_blank">SolidJS</a>）です。</li>
+		<li><code>/news</code> - <a href="https://github.com/solidjs/solid-hackernews" target="_blank">HackerNews</a> デモのクローン（実装は<a href="https://www.solidjs.com" target="_blank">SolidJS</a>）です。</li>
 	</ul>
 	<!--kg-card-end: markdown-->
 	<p>このデモでは、レガシーアプリケーションと各フラグメントの両方に異なる独立した技術を使用できることを示しています。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-41.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>レガシーアプリケーションにピアシングされたフラグメントの図</figcaption>
 	</figure>
-	<p>アプリケーションは<a href="https://productivity-suite.web-experiments.workers.dev/" target="_blank">https://productivity-suite.web-experiments.workers.dev/</a> にデプロイされています。</p>
+	<p>アプリケーションは<a href="https://productivity-suite.web-experiments.workers.dev" target="_blank">https://productivity-suite.web-experiments.workers.dev/</a> にデプロイされています。</p>
 	<p>まず、任意のユーザー名でログインします（パスワードは不要です）。ユーザーのデータはCookieに保存されるので、ログアウトして同じユーザー名で再ログインできます。ログイン後、アプリケーションの上部にあるナビゲーションバーを使って、さまざまなページに移動します。特に、「<a href="https://productivity-suite.web-experiments.workers.dev/todos" target="_blank">ToDoリスト</a>」と「<a href="https://productivity-suite.web-experiments.workers.dev/news" target="_blank">ニュース</a>」のページでは、実際のピアシングを見ることができます。</p>
 	<p>ページを再読み込みすると、レガシーアプリケーションがバックグラウンドでゆっくりと読み込まれるのに対して、フラグメントが即座にレンダリングされることを確認できます。レガシーアプリケーションが表示される前に、フラグメントの操作を試してみてください。</p>
 	<p>ページの一番上には、フラグメントピアシングの効果を実際に見ていただくためのコントロールがあります。</p>
@@ -85,7 +85,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/Frame-653.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>連携するWorkerとレガシーアプリケーションホストの概要</figcaption>
 	</figure>
-	<p>デモの<strong>レガシーアプリケーションホスト</strong>は、クライアントサイドのReactアプリケーションを定義するファイル（HTML、JavaScript、スタイルシート）を提供しています。他の技術スタックで構築されたアプリケーションも同様に動作します。<strong>Fragment Workers</strong>は、以前の<a href="https://blog.cloudflare.com/better-micro-frontends/">フラグメントアーキテクチャ</a>の記事で説明したように、マイクロフロントエンドフラグメントをホストしています。<strong>Gateway Worker</strong>はブラウザからのリクエストを処理し、レガシーアプリケーションとマイクロフロントエンドフラグメントからのレスポンスストリームを選択、フェッチ、結合します。</p>
+	<p>デモの<strong>レガシーアプリケーションホスト</strong>は、クライアントサイドのReactアプリケーションを定義するファイル（HTML、JavaScript、スタイルシート）を提供しています。他の技術スタックで構築されたアプリケーションも同様に動作します。<strong>Fragment Workers</strong>は、以前の<a href="https://blog.cloudflare.com/better-micro-frontends">フラグメントアーキテクチャ</a>の記事で説明したように、マイクロフロントエンドフラグメントをホストしています。<strong>Gateway Worker</strong>はブラウザからのリクエストを処理し、レガシーアプリケーションとマイクロフロントエンドフラグメントからのレスポンスストリームを選択、フェッチ、結合します。</p>
 	<p>これらの部品がすべてデプロイされると、それらが連携してブラウザからの各リクエストを処理します。では、「/login」ルートに移動したときに何が起こるかを見てみましょう。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-22.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>ログインページ閲覧時のリクエストのフロー</figcaption>
@@ -138,7 +138,7 @@ export default gateway;
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>フラグメントアウトレットがDOMに追加されると、現在のドキュメントから関連するフラグメントホストを検索します。見つかった場合、フラグメントホストとそのコンテンツはアウトレット内に移動されます。フラグメントホストが見つからない場合、アウトレットはGateway WorkerにリクエストしてフラグメントHTMLを取得し、<a href="https://github.com/marko-js/writable-dom" target="_blank">writable-domライブラリ</a> （<a href="https://markojs.com/" target="_blank">MarkoJS</a>チームが開発した小規模ながらパワフルなライブラリ）を使ってフラグメントアウトレットに直接ストリーミングされます。</p>
+	<p>フラグメントアウトレットがDOMに追加されると、現在のドキュメントから関連するフラグメントホストを検索します。見つかった場合、フラグメントホストとそのコンテンツはアウトレット内に移動されます。フラグメントホストが見つからない場合、アウトレットはGateway WorkerにリクエストしてフラグメントHTMLを取得し、<a href="https://github.com/marko-js/writable-dom" target="_blank">writable-domライブラリ</a> （<a href="https://markojs.com" target="_blank">MarkoJS</a>チームが開発した小規模ながらパワフルなライブラリ）を使ってフラグメントアウトレットに直接ストリーミングされます。</p>
 	<p>このフォールバックメカニズムにより、新しいフラグメントを含むルートへのクライアントサイドナビゲーションが可能になります。フラグメントは、初期（ハード）ナビゲーションとクライアントサイド（ソフト）ナビゲーションの両方によって、ブラウザでレンダリングされるようになります。</p>
 	<h3 id="message-bus">Message Bus</h3>
 	<p>アプリケーションのフラグメントが完全にプレゼンテーショナルまたは自己完結的でない限り、レガシーアプリケーションや他のフラグメントと通信を行う必要があります。<code><a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/piercing-library/src/message-bus/message-bus.ts#L18" target="_blank">MessageBus</a></code>は、レガシーアプリケーションと各フラグメントがアクセスできる、単純な非同期、同型、かつフレームワークに依存しない通信バスです。</p>
@@ -167,7 +167,7 @@ export default gateway;
 	<p>フレームワークに依存せず、サーバーとクライアントの両方でうまく機能するソリューションを必要としていたことが、このメッセージバスの実装にたどり着きました。</p>
 	<h2 id="--6">お試しください</h2>
 	<p>フラグメント、フラグメントピアシング、Cloudflare Workersを使用することで、レガシーなクライアントサイドでレンダリングされるアプリケーションの開発サイクルだけでなく、パフォーマンスも向上させることができます。これらの変更は段階的に採用することが可能であり、任意のWebフレームワークでフラグメントを実装しながら行うこともできます。</p>
-	<p>これらの機能を示す「Productivity Suite」アプリケーションは、<a href="https://productivity-suite.web-experiments.workers.dev/" target="_blank"> https://productivity-suite.web-experiments.workers.dev/</a>でご覧いただけます。</p>
+	<p>これらの機能を示す「Productivity Suite」アプリケーションは、<a href="https://productivity-suite.web-experiments.workers.dev" target="_blank"> https://productivity-suite.web-experiments.workers.dev/</a>でご覧いただけます。</p>
 	<p>今回ご紹介したコードはすべてオープンソースで、Github（<a href="https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite" target="_blank">https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite</a>）に公開されています。</p>
 	<p>リポジトリの複製は自由に行ってください。ローカルで実行するのも簡単ですし、Cloudflareにあなた自身のバージョンを（無料で）デプロイすることも可能です。コードは可能な限り再利用できるようにしています。コアロジックのほとんどは<a href="https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite/piercing-library" target="_blank">ピアシングライブラリ</a>にあり、お客様のプロジェクトでお試しいただけます。フィードバックや提案、あるいは使ってみたいアプリケーションについてお聞かせいただければ幸いです。<a href="https://github.com/cloudflare/workers-web-experiments/discussions/64" target="_blank"> GitHubディスカッション</a>にご参加いただくか、<a href="https://discord.com/channels/595317990191398933/1041751020340002907" target="_blank">discordチャンネル</a>で当社にお問い合わせください。</p>
 	<p>Cloudflare Workersとフレームワークの最新のアイデアを組み合わせることで、Webアプリケーションのユーザーと開発者の両方の体験を向上させるための次の大きな一歩になると確信しています。Webの可能性の限界を押し広げ続けることで、より多くのデモ、ブログ記事、コラボレーションが見られることを期待しています。また、このジャーニーに直接参加されたい場合は、<a href="https://boards.greenhouse.io/cloudflare/jobs/4619341" target="_blank">採用情報</a>をご覧ください。<br></p>

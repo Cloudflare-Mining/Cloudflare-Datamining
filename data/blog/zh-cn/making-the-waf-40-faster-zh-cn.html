@@ -1,15 +1,15 @@
 <div class="post-content lh-copy gray1">
-	<p>Cloudflare 的 <a href="https://www.cloudflare.com/zh-cn/waf/ " target="_blank">应用程序防火墙 (WAF)</a> 可以防止针对 Web 应用程序漏洞的恶意攻击。它不断更新以提供针对最新威胁的全面覆盖，同时确保低误报率。</p>
+	<p>Cloudflare 的 <a href="https://www.cloudflare.com/zh-cn/waf" target="_blank">应用程序防火墙 (WAF)</a> 可以防止针对 Web 应用程序漏洞的恶意攻击。它不断更新以提供针对最新威胁的全面覆盖，同时确保低误报率。</p>
 	<p>与所有 Cloudflare 安全产品一样，WAF 的设计不会为了安全性而牺牲性能，但总是有改进的空间。</p>
-	<p>这篇博客文章简要介绍了我们向客户推出的最新性能改进。访问我们的学习中心，了解更多关于 <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">Web 应用程序防火墙 (WAF) 如何工作</a>的信息。</p>
+	<p>这篇博客文章简要介绍了我们向客户推出的最新性能改进。访问我们的学习中心，了解更多关于 <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank">Web 应用程序防火墙 (WAF) 如何工作</a>的信息。</p>
 	<h3 id="-pcre-re2-">从 PCRE 到 RE2 的过渡</h3>
 	<p>回到 2019 年 7 月，WAF 从使用基于 <a href="https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions" target="_blank">PCRE</a> 的正则表达式引擎转变为受 <a href="https://github.com/rust-lang/regex" target="_blank">RE2 启发</a>的正则表达式引擎，RE2 是基于<a href="https://en.wikipedia.org/wiki/Deterministic_finite_automaton" target="_blank">确定性有限自动机 (DFA)</a> 而不是回溯算法。此更改是由于更新添加了正则表达式而导致的中断，该正则表达式对某些 HTTP 请求进行了大量回溯，导致执行时间呈指数级增长。</p>
 	<p>迁移完成后，我们在边缘处没有看到 CPU 消耗的可测量差异，但注意到第 95 百分位和第 99 百分位的执行时间异常值下降了，这是我们预期的结果，因为 RE2 保证的执行时间与输入的大小是线性的。</p>
-	<p>由于 <a href="https://blog.cloudflare.com/the-problem-with-event-loops/">WAF 引擎使用一个线程池</a>，我们还必须实现和调优线程间共享的 regex 缓存，以避免过度的内存消耗（第一个实现使用了惊人的内存）。</p>
+	<p>由于 <a href="https://blog.cloudflare.com/the-problem-with-event-loops">WAF 引擎使用一个线程池</a>，我们还必须实现和调优线程间共享的 regex 缓存，以避免过度的内存消耗（第一个实现使用了惊人的内存）。</p>
 	<p>这些变化，以及在<a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/#what-s-happened-since-last-tuesday">事后分析博文中概述</a>的其他变化，帮助我们在边缘上提高了可靠性和安全性，并有信心进一步探索性能改进。</p>
 	<p>但是，虽然我们强调了正则表达式，但它们只是 WAF 引擎的众多功能之一。</p>
 	<h3 id="-">匹配阶段</h3>
-	<p>当一个 HTTP 请求到达 WAF 时，它被组织成几个逻辑部分以进行分析：方法、路径、头和主体。这些部分都存储在 <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua/">Lua 变量</a>中。如果您对 WAF 实现本身的更多细节感兴趣，可以<a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">查看这个旧的演示</a>。</p>
+	<p>当一个 HTTP 请求到达 WAF 时，它被组织成几个逻辑部分以进行分析：方法、路径、头和主体。这些部分都存储在 <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Lua 变量</a>中。如果您对 WAF 实现本身的更多细节感兴趣，可以<a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">查看这个旧的演示</a>。</p>
 	<p>在将这些变量与特定的恶意请求签名匹配之前，需要应用一些转换。这些转换的功能范围很广泛，从简单的修改（如小写字符串）到复杂的标记器和解析器，它们试图识别某些恶意有效负载。</p>
 	<p>由于 WAF 目前使用的是 ModSecurity 语法的变体，规则可能是这样的：</p>
 	<pre><code>SecRule REQUEST_BODY "@rx /\x00+evil" "drop, t:urlDecode, t:lowercase"</code></pre>
@@ -46,7 +46,7 @@ rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )</code></pre>
 	</figure>
 	<p> &nbsp;WAF 引擎实现了记忆，规则利用了这一点，但总有增加缓存命中的空间。</p>
 	<h3 id="--2">重写规则和结果</h3>
-	<p>Cloudflare 定期向托管规则集<a href="https://developers.cloudflare.com/waf/change-log/" target="_blank">发布更新和新规则</a>。然而，随着规则的增加和新函数的实现，记忆缓存命中率有下降的趋势。</p>
+	<p>Cloudflare 定期向托管规则集<a href="https://developers.cloudflare.com/waf/change-log" target="_blank">发布更新和新规则</a>。然而，随着规则的增加和新函数的实现，记忆缓存命中率有下降的趋势。</p>
 	<p>为了改进这一点，我们首先使用一些性能指标来研究需要花费<a href="https://en.wikipedia.org/wiki/Elapsed_real_time" target="_blank">大量时间</a>的规则：</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/01/image-10.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Execution time per rule&nbsp;</figcaption>

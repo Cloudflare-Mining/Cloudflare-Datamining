@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<p>A veces, a nivel interno, a nuestro equipo de mitigación de DDoS se lo llama “packet droppers” (eliminadores de paquetes). Cuando otros equipos desarrollan productos interesantes para hacer cosas inteligentes con el tráfico que pasa a través de nuestra red, nos divertimos al tratar de descubrir nuevas formas de descartarlos.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/07/38464589350_d00908ee98_b.jpg" class="kg-image" alt="38464589350_d00908ee98_b" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Imagen</a> <a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank">CC BY-SA 2.0</a> de <a href="https://www.flickr.com/photos/beegee49" target="_blank">Brian Evans</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">Imagen</a> <a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank">CC BY-SA 2.0</a> de <a href="https://www.flickr.com/photos/beegee49" target="_blank">Brian Evans</a></figcaption>
 	</figure>
 	<p>La capacidad de descartar paquetes de manera rápida es muy importante para resistir los ataques DDoS.</p>
 	<p>La eliminación de paquetes que afectan a nuestros servidores, tan simple como suena, se puede hacer en varias capas. Cada técnica tiene sus ventajas y limitaciones. En esta publicación de blog, analizaremos todas las técnicas que hemos probado hasta ahora.</p>
@@ -50,7 +50,7 @@ while True:
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c" target="_blank">Preparamos el código</a> para ejecutarlo:</p>
 	<pre><code>$ ./dropping-packets/recvmmsg-loop
 packets=171261 bytes=1940176</code></pre>
-	<p>Esta configuración permite que el núcleo reciba un escaso 175kpps de la cola de recepción de hardware, medido por ethtooly utilizando nuestra sencilla <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram/">herramienta</a> <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram/">mmwatch</a>:</p>
+	<p>Esta configuración permite que el núcleo reciba un escaso 175kpps de la cola de recepción de hardware, medido por ethtooly utilizando nuestra sencilla <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram">herramienta</a> <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram">mmwatch</a>:</p>
 	<pre><code>$ mmwatch 'ethtool -S ext0|grep rx_2'
  rx2_packets: 174.0k/s</code></pre>
 	<p>El hardware técnicamente quita 14Mpps del cable, pero es imposible pasarlo todo a una sola cola RX administrada por un solo núcleo de CPU que realiza el trabajo del núcleo. mpstat confima esto:</p>
@@ -158,7 +158,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 	<p>Un enlace de entrada de tc que coincide con u32 nos permite eliminar 1.8mpps en una sola CPU. ¡Esto es genial!</p>
 	<p>Pero podemos ir aún más rápido...</p>
 	<h4 id="paso-8-xdp_drop"><strong>Paso 8. XDP_DROP</strong></h4>
-	<p>Por último, el arma fundamental es XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP/" target="_blank">eXpress Data Path</a>. Con XDP podemos ejecutar el código eBPF en el contexto de un controlador de red. Lo más importante, es que esto es anterior a la asignación de memoriaskbuff, lo que permite grandes velocidades.</p>
+	<p>Por último, el arma fundamental es XDP - <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP" target="_blank">eXpress Data Path</a>. Con XDP podemos ejecutar el código eBPF en el contexto de un controlador de red. Lo más importante, es que esto es anterior a la asignación de memoriaskbuff, lo que permite grandes velocidades.</p>
 	<p>Por lo general, los proyectos XDP tienen dos partes:</p>
 	<ul>
 		<li>el código eBPF cargado en el contexto del núcleo</li>
@@ -190,7 +190,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 </code></pre>
 	<p>¡Guau! Con XDP podemos eliminar 10 millones de paquetes por segundo en una sola CPU.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Imagen <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a><a href="https://www.flickr.com/photos/afiler/225821241/" target="_blank"> de </a><a href="https://www.flickr.com/photos/afiler/" target="_blank">Andrew Filer</a></figcaption>
+		<figcaption>Imagen <a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a><a href="https://www.flickr.com/photos/afiler/225821241" target="_blank"> de </a><a href="https://www.flickr.com/photos/afiler" target="_blank">Andrew Filer</a></figcaption>
 	</figure>
 	<h3 id="resumen">Resumen</h3>
 	<p>Repetimos esto para IPv4 e IPv6 y preparamos este gráfico:</p>
@@ -203,7 +203,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 	<p>Para cargas de trabajo aún más exigentes, siempre contamos con XDP. Y vaya si es potente. Este es el mismo gráfico que se mostró anteriormente, pero ahora incluye XDP:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Si desea reproducir estos números, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md" target="_blank">consulte el archivo README donde documentamos todo</a>.</p>
-	<p>Aquí en Cloudflare usamos... casi todas estas técnicas. Algunos de los trucos del espacio de usuario están integrados con nuestras aplicaciones. La capa iptables está administrada por <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">nuestra canalización Gatebot DDoS</a>. Por último, estamos trabajando en el reemplazo de nuestra propia solución de descarga del núcleo con XDP.</p>
+	<p>Aquí en Cloudflare usamos... casi todas estas técnicas. Algunos de los trucos del espacio de usuario están integrados con nuestras aplicaciones. La capa iptables está administrada por <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">nuestra canalización Gatebot DDoS</a>. Por último, estamos trabajando en el reemplazo de nuestra propia solución de descarga del núcleo con XDP.</p>
 	<p>¿Quiere ayudarnos a eliminar más paquetes? ¡Estamos contratando personal para cubrir varios cargos, que incluyen personal encargado de eliminar paquetes, ingenieros de sistemas y más!</p>
 	<p><em>Agradecemos especialmente aJesper Dangaard Brouer</em><a href="https://twitter.com/JesperBrouer" target="_blank"> <em>por su colaboración en este trabajo.</em></a></p>
 </div>

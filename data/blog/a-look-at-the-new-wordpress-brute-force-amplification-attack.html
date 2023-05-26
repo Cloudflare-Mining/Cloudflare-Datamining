@@ -123,7 +123,7 @@
 add_filter( 'xmlrpc_methods', 'mmx_remove_xmlrpc_methods');
 </code></pre>
 	<h3 id="finalthoughts">Final Thoughts</h3>
-	<p>XML-RPC can be a useful tool for making changes to WordPress and other web applications; however, improper implementation of certain features can result in unintended consequences. Default-on methods like <code>system.multicall</code> and <code>pingback.ping</code> (we have a <a href="https://blog.cloudflare.com/wordpress-pingback-attacks-and-our-waf/">WAF rule for that one</a>, too) are just a few examples of possible exploits.</p>
+	<p>XML-RPC can be a useful tool for making changes to WordPress and other web applications; however, improper implementation of certain features can result in unintended consequences. Default-on methods like <code>system.multicall</code> and <code>pingback.ping</code> (we have a <a href="https://blog.cloudflare.com/wordpress-pingback-attacks-and-our-waf">WAF rule for that one</a>, too) are just a few examples of possible exploits.</p>
 	<p>Properly configuring the CloudFlare Web Application Firewall for your Internet facing properties will protect you from such attacks with no changes to your server configuration.</p>
 	<!--kg-card-end: markdown-->
 </div>

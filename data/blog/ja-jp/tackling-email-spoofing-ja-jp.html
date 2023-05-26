@@ -48,7 +48,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>すべての機構を網羅したリストとSPFの詳細については、<a href="https://datatracker.ietf.org/doc/html/rfc7208#section-5" target="_blank">RFC7208</a>をご参照ください。</p>
 	<h3 id="domainkeys-identified-mail-dkim-">DomainKeys Identified Mail（DKIM）</h3>
 	<p>SPFで、許可されたIPアドレスとドメインのみがcloudflare.comに代わってメールを送信できるようにしましたが、あるIPがオーナーを変更し、Cloudflareがそれに気づかずSPFレコードを更新しなかった場合はどうなるでしょう。あるいは、同じIPでGoogleのメールサーバーを使用している別の誰かが、cloudflare.comになりすましてメールを送信しようとしたらどうなるでしょう。</p>
-	<p>こんなときに役立つのがDKIMです。DKIMは、<a href="https://www.cloudflare.com/ja-jp/learning/ssl/how-does-public-key-encryption-work/" target="_blank">公開鍵暗号方式</a>でメールの一部分（通常は本文や特定のヘッダー）に暗号化署名するメカニズムを提供します。この仕組みについて説明する前に、cloudflare.comでDKIMレコードが使われている例についてみていきましょう。</p><!--kg-card-begin: markdown-->
+	<p>こんなときに役立つのがDKIMです。DKIMは、<a href="https://www.cloudflare.com/ja-jp/learning/ssl/how-does-public-key-encryption-work" target="_blank">公開鍵暗号方式</a>でメールの一部分（通常は本文や特定のヘッダー）に暗号化署名するメカニズムを提供します。この仕組みについて説明する前に、cloudflare.comでDKIMレコードが使われている例についてみていきましょう。</p><!--kg-card-begin: markdown-->
 	<pre><code>google._domainkey.cloudflare.com.	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -85,7 +85,7 @@ _dmarc.cloudflare.com.	TXT	"v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudfla
 	<p>他のオプションのタグとDMARCの仕様の詳細は、<a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">RFC7489</a>でご確認いただけます。</p>
 	<h2 id="--1">数字で見る現時点の普及状況</h2>
 	<p>ここまで、問題点や、SPF、DKIM、DMARCを使ってそれを解消する方法について学んできましたので、ここからは、これらがどの程度広く採用されているのかについてみていきます。</p>
-	<p><a href="https://dmarc.org/stats/farsight/dmarc/" target="_blank">Dmarc.org</a>はドメインのDMARCレコードの採用状況を、代表的なデータセットで発表しています。それによれば、2020年末時点でDMARCレコードを有するドメインは依然50%未満に留まっています。DMARCレコードがなければ、SPFおよびDKIMチェックを適切に実行できません。さらにこの調査では、DMARCレコードを有するドメインのうち65%以上が監視のみのポリシー（p=none）を適用しており、採用率引き上げの余地が大いにあることがわかっています。それらのドメインがメールの送信側なのか受信側なのかについての言及はありませんが、いずれにせよ、セキュアな設定にはDMARCレコードが含まれるべきです。（この点に関しては後で詳しくみていきます）。</p>
+	<p><a href="https://dmarc.org/stats/farsight/dmarc" target="_blank">Dmarc.org</a>はドメインのDMARCレコードの採用状況を、代表的なデータセットで発表しています。それによれば、2020年末時点でDMARCレコードを有するドメインは依然50%未満に留まっています。DMARCレコードがなければ、SPFおよびDKIMチェックを適切に実行できません。さらにこの調査では、DMARCレコードを有するドメインのうち65%以上が監視のみのポリシー（p=none）を適用しており、採用率引き上げの余地が大いにあることがわかっています。それらのドメインがメールの送信側なのか受信側なのかについての言及はありませんが、いずれにせよ、セキュアな設定にはDMARCレコードが含まれるべきです。（この点に関しては後で詳しくみていきます）。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>2021年8月1日付の別の<a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank">レポート</a>でも、銀行セクターの事業体のドメインに関して同様の状況を報告しています。米国にある2,881の銀行事業体のうち、ドメインでDMARCレコードを発行しているのは44%に過ぎません。DMARCレコードを有するドメインでも、だいたい5件中2件はDMARCポリシーを「None」に設定していて、8%は「Misconfigured」（不適切な設定）とみなされています。デンマークでは銀行セクターのドメインのDMARC採用率が94%ときわめて高く、日本はそれとは対照的に、DMARCを使用しているドメインはわずか13%に留まります。SPFの採用は平均するとDMARCよりも有意に高くなっています。これは、SPF標準がはじめて<a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank">実験的なRFC</a>として導入されたのが2006年で、DMARCが<a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">標準になったのが</a>2015年だったことに関連しているかもしれません。</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -192,7 +192,7 @@ _dmarc.cloudflare.com.	TXT	"v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudfla
 	<p>この表から、改善の余地がかなりあることがわかります。</p>
 	<h2 id="email-security-dns-wizard-">Email Security DNS Wizardの登場</h2>
 	<p>では、SPF、DKIM、DMARCの採用率を上げ、メールのスプーフィングやフィッシングに対抗するためにCloudflareは何をしているのでしょうか？ その答えは、新しく登場したCloudflare <em>Email Security DNS Wizard</em>です。</p>
-	<p>本日より、Cloudflareダッシュボードの <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns" target="_blank">DNS タブ</a>で、2つの新しい機能をご利用いただけるようになりました。</p>
+	<p>本日より、Cloudflareダッシュボードの <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank">DNS タブ</a>で、2つの新しい機能をご利用いただけるようになりました。</p>
 	<ol>
 		<li>「メールのセキュリティ」という新セクション</li>
 	</ol>
@@ -201,7 +201,7 @@ _dmarc.cloudflare.com.	TXT	"v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudfla
 		<li>セキュアでない設定に関する新たな警告</li>
 	</ol>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/12.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><em>Email Security DNS Wizard</em>を使い始めるには、警告にあるリンクを直接クリックしてWizardの関連セクションにアクセスするか、新しい<a href="https://dash.cloudflare.com/?to=/:account/:zone/dns/wizard" target="_blank">Email Security セクション</a>にある<strong>Configure（設定）</strong> をクリックします。後者の方法では、下記のオプションが利用可能です。</p>
+	<p><em>Email Security DNS Wizard</em>を使い始めるには、警告にあるリンクを直接クリックしてWizardの関連セクションにアクセスするか、新しい<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns%2Fwizard" target="_blank">Email Security セクション</a>にある<strong>Configure（設定）</strong> をクリックします。後者の方法では、下記のオプションが利用可能です。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/13.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>シナリオは2つ。ドメインを使用してメールを送信している場合と、していない場合です。ドメインを使用してメールを送信している場合、いくつかの簡単なステップに従えばSPF、DKIM、DMARCのレコードを設定することができます。SPFのステップは次のとおりです。 </p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 57.28155339805825%;"><iframe src="https://iframe.videodelivery.net/256d8b89df970f4e8157692599e7e81f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
@@ -214,6 +214,6 @@ _dmarc.example.com.		TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="--2">メールのスプーフィングやフィッシングに対する対策</h3>
-	<p>さあ、ドメインがメールのスプーフィングやフィッシングに対して安全であることを確認しましょう。Cloudflareダッシュボードの<a href="https://dash.cloudflare.com/?to=/:account/:zone/dns" target="_blank">DNSタブ</a>にアクセスするか、Cloudflare DNSをまだご利用でない場合は<a href="https://www.cloudflare.com/" target="_blank">cloudflare.com</a>でサインアップしてください。サインアップは無料で、所要時間はわずか数分です。</p>
-	<p>SPF、DKIM、DMARCについての詳細は、<a href="https://www.cloudflare.com/ja-jp/learning/dns/dns-records/dns-txt-record/" target="_blank">新しいラーニングページ</a>にDNS レコードに関連したメールのついての説明がありますので、こちらをご参照ください。</p>
+	<p>さあ、ドメインがメールのスプーフィングやフィッシングに対して安全であることを確認しましょう。Cloudflareダッシュボードの<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank">DNSタブ</a>にアクセスするか、Cloudflare DNSをまだご利用でない場合は<a href="https://www.cloudflare.com" target="_blank">cloudflare.com</a>でサインアップしてください。サインアップは無料で、所要時間はわずか数分です。</p>
+	<p>SPF、DKIM、DMARCについての詳細は、<a href="https://www.cloudflare.com/ja-jp/learning/dns/dns-records/dns-txt-record" target="_blank">新しいラーニングページ</a>にDNS レコードに関連したメールのついての説明がありますので、こちらをご参照ください。</p>
 </div>

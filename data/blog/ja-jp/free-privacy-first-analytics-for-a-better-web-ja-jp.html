@@ -16,7 +16,7 @@
 	<p>特に注目しているのは、時系列チャートの2つの機能です。1つは、より狭い時間範囲にドラッグしてズームする機能であり、もう1つは、複数のディメンションで「グループ化」して別の方法でデータを表示できる機能です。これは、トラフィックの異常を掘り下げ、何が起こっているのかをすばやく確認するとても有力な方法です。たとえば、トラフィックスパイクに気づいたら、その急増にズームインし、別のグルーピングを試して、余分なクリックの要因を確認することができます。ひとつのGIFは、1000語に匹敵します。（百聞は一見にしかず、です。）<br></p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 72.43133265513734%;"><iframe src="https://iframe.videodelivery.net/a922327eb87d7bedbe067367828cee89?preload=true&amp;loop=true&amp;autoplay=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<br><!--kg-card-end: html-->
-	<p>また、<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">ボット管理製品</a>のお客様のために、自動化されたトラフィックを検出（および削除）する機能の開発に取り組んでいます。公開間近ですが、どのボットがWebサイトに到達しているかを確認できるようになります。クリックするだけで、<a href="https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/" target="_blank">ファイアウォールルールを使用してブロックできます </a>。</p>
+	<p>また、<a href="https://www.cloudflare.com/products/bot-management" target="_blank">ボット管理製品</a>のお客様のために、自動化されたトラフィックを検出（および削除）する機能の開発に取り組んでいます。公開間近ですが、どのボットがWebサイトに到達しているかを確認できるようになります。クリックするだけで、<a href="https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules" target="_blank">ファイアウォールルールを使用してブロックできます </a>。</p>
 	<p>これらの成果のすべては、当社のABR分析技術の賜物です。同技術は、大小のWebサイトに対して非常に迅速に分析を提供することができます。この仕組みの詳細については、<a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">ブログ記事</a>をご覧ください。</p>
 	<h3 id="--3">エッジ分析かブラウザ分析か両方ではダメなのか</h3>
 	<p>Web分析データを収集するには、エッジ（またはオリジンサーバー）で収集する方法と、JavaScript ビーコンを使用してクライアントで収集する方法の2つがあります。</p>
@@ -33,14 +33,14 @@
 		<li>クライアント側の JavaScript 実行中のエラーを検出できる</li>
 		<li>JavaScriptフレームワークが送信するカスタムイベントタイプを定義できる</li>
 	</ul>
-	<p>最終的に、お客様には両方のメリットを最大限に活用していただきたいと考えています。エッジから直接Webトラフィック番号を取得することは本当に強力だと思います。また、<a href="https://blog.cloudflare.com/introducing-browser-insights/">Browser Insights</a>を1年前に立ち上げて、既存のエッジ分析をさらにパフォーマンス情報で強化しました。今日、Browser Insightsは <a href="https://blog.cloudflare.com/start-measuring-web-vitals-with-browser-insights">Web Vitals を組み込む</a>ことでさらに大きな一歩を踏み出しています。</p>
+	<p>最終的に、お客様には両方のメリットを最大限に活用していただきたいと考えています。エッジから直接Webトラフィック番号を取得することは本当に強力だと思います。また、<a href="https://blog.cloudflare.com/introducing-browser-insights">Browser Insights</a>を1年前に立ち上げて、既存のエッジ分析をさらにパフォーマンス情報で強化しました。今日、Browser Insightsは <a href="https://blog.cloudflare.com/start-measuring-web-vitals-with-browser-insights">Web Vitals を組み込む</a>ことでさらに大きな一歩を踏み出しています。</p>
 	<p>しかし、Cloudflareのエッジサービスを活用するために、誰もがDNSを変更できるわけではないこともわかっています。だからこそ、今日、すべての人に向けて、無料のスタンドアロン分析製品を発表することになりました。</p>
 	<h3 id="--4">入手方法は？</h3>
 	<p>既にPro、Bisiness、Enterpriseプランをご利用中のCloudflareのお客様は、「Analytics」タブに移動してください！本日から、新しい分析体験をオプトインするバナーが表示されます。(この設定を数週間後にデフォルトにする予定です)。</p>
 	<p>しかし、プライバシーを優先した分析の構築には、現在Cloudflareをご利用でない方もアクセスできるようにすることが重要だと認識するに至りました。DNSサーバーを変更できない場合でも、CloudflareのWeb分析を使用できます。JavaScriptを追加するだけで利用可能です。</p>
 	<p>当社はまだ JavaScript ベースの分析の仕上げを行っている最中ですが、<a href="https://www.cloudflare.com/web-analytics" target="_blank">ここでサインアップ</a>していただければ、準備ができ次第お知らせします。</p>
 	<h3 id="cloudflare-">Cloudflareでの分析の進化</h3>
-	<p>1年以上前、Cloudflare の分析は、キャッシュされたデータとキャッシュされていないデータ転送の比較、またはファイアウォールによってブロックされたリクエストの数など、単純な指標の組み合わせで構成されていました。現在、当社では、柔軟で強力な分析をすべての当社製品に提供しており、これには次のものが含まれます：<a href="https://blog.cloudflare.com/updates-to-firewall-analytics/">ファイアウォール</a>、<a href="https://blog.cloudflare.com/introducing-cache-analytics/">キャッシュ</a>、<a href="https://blog.cloudflare.com/introducing-load-balancing-analytics/">負荷分散</a>、<a href="https://blog.cloudflare.com/announcing-network-analytics/">ネットワークトラフィック</a>。</p>
+	<p>1年以上前、Cloudflare の分析は、キャッシュされたデータとキャッシュされていないデータ転送の比較、またはファイアウォールによってブロックされたリクエストの数など、単純な指標の組み合わせで構成されていました。現在、当社では、柔軟で強力な分析をすべての当社製品に提供しており、これには次のものが含まれます：<a href="https://blog.cloudflare.com/updates-to-firewall-analytics">ファイアウォール</a>、<a href="https://blog.cloudflare.com/introducing-cache-analytics">キャッシュ</a>、<a href="https://blog.cloudflare.com/introducing-load-balancing-analytics">負荷分散</a>、<a href="https://blog.cloudflare.com/announcing-network-analytics">ネットワークトラフィック</a>。</p>
 	<p>当社では、自社製品に関する分析を構築することに重点を置いてきましたが、分析はスタンドアロン製品としても強力であるとの認識に至りました。今日はその旅の第一歩に過ぎません。リアルタイム分析からパフォーマンス分析まで、さらに多くの計画を立てています。さらに、お客様がカスタムイベントを追加できるようにすることも可能になる予定です。</p>
 	<p>分析でお客様が一番希望されるものについてぜひご意見をお聞かせください。次にどんな製品（サービス）を期待されるかをコメントにてお知らせいただければ幸いです。</p>
 </div>

@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-25.png" class="kg-image" alt="介绍 Services：在 Cloudflare Workers 上构建可组合、分布式应用" loading="lazy"></figure>
 	<p>首先是 Worker 脚本。它很简单，但很巧妙。只需几行代码，您就可以重写 HTTP 请求、附加标头或快速修复您的网站。</p>
-	<p>但是，如果您想在 Workers 上构建一个完整的应用程序该怎么办？您的开发人员工具箱中将需要更多工具。这就是我们在 Workers 平台引入扩展的原因，比如我们的分布式键值存储库 <a href="https://blog.cloudflare.com/zh-cn/workers-kv-is-ga-zh-cn/">KV</a>；<a href="https://blog.cloudflare.com/durable-objects-open-beta/">Durable Objects</a> — 一个一致性程度高、面向对象的数据库；很快会引入 <a href="https://blog.cloudflare.com/zh-cn/introducing-r2-object-storage-zh-cn/">R2</a> （无出口对象存储）。虽然这些工具允许您构建更健壮的应用程序，但在构建由<em>许多</em>应用程序或服务组成的系统架构方面仍然存在差距。</p>
+	<p>但是，如果您想在 Workers 上构建一个完整的应用程序该怎么办？您的开发人员工具箱中将需要更多工具。这就是我们在 Workers 平台引入扩展的原因，比如我们的分布式键值存储库 <a href="https://blog.cloudflare.com/zh-cn/workers-kv-is-ga-zh-cn">KV</a>；<a href="https://blog.cloudflare.com/durable-objects-open-beta">Durable Objects</a> — 一个一致性程度高、面向对象的数据库；很快会引入 <a href="https://blog.cloudflare.com/zh-cn/introducing-r2-object-storage-zh-cn">R2</a> （无出口对象存储）。虽然这些工具允许您构建更健壮的应用程序，但在构建由<em>许多</em>应用程序或服务组成的系统架构方面仍然存在差距。</p>
 	<p>假设您已经构建了一个身份验证服务用于授权对您的 API 的请求。您想在您所有的其他服务中重复使用这个逻辑。此外，当您对该身份验证服务进行修改时，您想在受控环境中测试它，而不会影响其他已投入使用的服务。暂时就假设这么多了。</p>
 	<h3 id="-">介绍服务</h3>
 	<p>服务是 Cloudflare Workers 上用于部署应用程序的新构建块。与脚本不同的是，服务是可组合的，这使得服务能够相互对话。服务还支持多个环境，这可让您在预览环境中测试更改，然后在您确信更改可行时再推广到生产环境。</p>
@@ -57,8 +57,8 @@
 	<p>作为公开测试版发布的一部分，您还可以创建代码并将其部署到多个“预览”环境。我们仍在研究服务绑定和版本控制，我们将在您开始使用它们后立即提供更新。</p>
 	<p>有关服务的更多信息，请查看以下任何资源：</p>
 	<ul>
-		<li>进入<a href="https://workers.new/" target="_blank"> 仪表板</a>并创建您的第一个服务！</li>
-		<li>报名参加<a href="https://www.cloudflare.com/zh-cn/service-bindings-closed-beta-sign-up/" target="_blank">抢先访问</a> 服务绑定。</li>
+		<li>进入<a href="https://workers.new" target="_blank"> 仪表板</a>并创建您的第一个服务！</li>
+		<li>报名参加<a href="https://www.cloudflare.com/zh-cn/service-bindings-closed-beta-sign-up" target="_blank">抢先访问</a> 服务绑定。</li>
 	</ul>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/Lego-1.png" class="kg-image" alt="" loading="lazy"></figure>
 </div>

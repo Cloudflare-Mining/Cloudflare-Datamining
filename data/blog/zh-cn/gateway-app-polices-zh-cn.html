@@ -3,8 +3,8 @@
 	<p>大约一年前，我们宣布了 <a href="https://www.cloudflare.com/zh-cn/teams" target="_blank">Cloudflare for Teams</a>，这是 Cloudflare 用于保护用户，设备和数据的平台。借助 Cloudflare for Teams，我们的全局网络成为您团队的网络，并通过一个更贴近您的用户（无论他们在哪里工作）的解决方案来代替本地设备和安全性订阅。Cloudflare for Teams 围绕两个核心产品：Cloudflare Access 和 Cloudflare Gateway。</p>
 	<p>Cloudflare Gateway 保护员工免受 Internet 上的安全性威胁，并强制实施适当的使用策略。我们构建了 Gateway，以帮助客户通过集中式防火墙消除回程用户 Traffic 带来的麻烦。借助 Gateway，用户可以连接到全球 200 个城市的 Cloudflare 数据中心之一，我们的网络可以在其中为所有 Internet 流量应用一致的安全性策略。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>2020 年 3 月，我们推出了 Gateway 的第一个功能，<a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway/">即安全的 DNS 过滤解决方案。</a>借助 Gateway 的 DNS 过滤，管理员可以单击一个按钮来阻止已知威胁，例如恶意软件或网络钓鱼站点。政策也可以用来阻止特定的风险类别，例如赌博或社交媒体。当用户请求过滤的站点时，Gateway 会停止解析 DNS 查询，并防止设备连接到具有被阻止内容的恶意目标或主机名。</p>
-	<p>最近，我们扩展了 Gateway 的安全性过滤功能，通过一个<a href="https://blog.cloudflare.com/zh-cn/gateway-swg-zh-cn/">云 L7 防火墙</a>。L7 防火墙使管理员可以将安全和内容策略应用于 HTTP Traffic。例如，团队可以停止文件上传到某些应用程序，也可以通过 URL 建立规则。</p>
+	<p>2020 年 3 月，我们推出了 Gateway 的第一个功能，<a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">即安全的 DNS 过滤解决方案。</a>借助 Gateway 的 DNS 过滤，管理员可以单击一个按钮来阻止已知威胁，例如恶意软件或网络钓鱼站点。政策也可以用来阻止特定的风险类别，例如赌博或社交媒体。当用户请求过滤的站点时，Gateway 会停止解析 DNS 查询，并防止设备连接到具有被阻止内容的恶意目标或主机名。</p>
+	<p>最近，我们扩展了 Gateway 的安全性过滤功能，通过一个<a href="https://blog.cloudflare.com/zh-cn/gateway-swg-zh-cn">云 L7 防火墙</a>。L7 防火墙使管理员可以将安全和内容策略应用于 HTTP Traffic。例如，团队可以停止文件上传到某些应用程序，也可以通过 URL 建立规则。</p>
 	<h3 id="-"><strong>管理云应用程序的防火墙设置的普通任务</strong></h3>
 	<p>只需单击几下即可为单个主机名或 URL 建立这些规则，但是将这些策略应用于整个 “应用程序” 可能很繁琐。我们经常将流行的应用程序（例如 Microsoft Office 365）视为一个实体。但是在幕后，这些服务依赖于数百个主机名和 IP 地址，这些主机名和 IP 地址共同启用了该应用程序。如果您的团队希望建立一个规则以始终允许文件上传到 Office 365，则必须在其更改列表中查找并输入每个目标。</p>
 	<p>例如，<em>Salesforce</em>不仅是 salesforce.com。截止到今天，Salesforce 使用了 11 个唯一的顶点域（例如，forceusercontent.com 或 sfdcstatic.com），并且该列表还在继续增长。</p>

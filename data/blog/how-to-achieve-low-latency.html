@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>Good morning!</p>
-	<p>In <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets/">a recent blog post</a> we explained how to tweak a simple UDP application to maximize throughput. This time we are going to optimize our UDP application for latency. Fighting with latency is a great excuse to discuss modern features of multiqueue NICs. Some of the techniques covered here are also discussed in the <a href="https://www.kernel.org/doc/Documentation/networking/scaling.txt" target="_blank">scaling.txt kernel document</a>.</p>
+	<p>In <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">a recent blog post</a> we explained how to tweak a simple UDP application to maximize throughput. This time we are going to optimize our UDP application for latency. Fighting with latency is a great excuse to discuss modern features of multiqueue NICs. Some of the techniques covered here are also discussed in the <a href="https://www.kernel.org/doc/Documentation/networking/scaling.txt" target="_blank">scaling.txt kernel document</a>.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/06/queue.jpg" alt="" loading="lazy"><br>
-		<small>CC BY-SA 2.0 <a href="https://www.flickr.com/photos/hktang/4243300265/" target="_blank">image</a> by Xiaojun Deng</small>
+		<small>CC BY-SA 2.0 <a href="https://www.flickr.com/photos/hktang/4243300265" target="_blank">image</a> by Xiaojun Deng</small>
 	</p>
 	<p>Our experiment will be setup up as follows:</p>
 	<ul>
@@ -105,7 +105,7 @@ pps= 26604 avg= 36.149us dev= 11.321us min=30.421us
 </code></pre>
 	<p>This shaved off further 1us. Unfortunately running our applications on a "bad" CPU might actually degrade the numbers. To understand why we need to revisit how the packets are being dispatched across RX queues.</p>
 	<h3 id="rssreceivesidescaling">RSS - Receive Side Scaling</h3>
-	<p>In <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets/">the previous article</a> we mentioned that the NIC hashes packets in order to spread the load across many RX queues. This technique is called RSS - Receive Side Scaling. We can see it in action by observing the <code>/proc/net/softnet_stat</code> file with <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-packet/softnet.sh" target="_blank">the softnet.sh script</a>:</p>
+	<p>In <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">the previous article</a> we mentioned that the NIC hashes packets in order to spread the load across many RX queues. This technique is called RSS - Receive Side Scaling. We can see it in action by observing the <code>/proc/net/softnet_stat</code> file with <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-packet/softnet.sh" target="_blank">the softnet.sh script</a>:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/06/softnet-rx.png" alt="" loading="lazy"></p>
 	<p>This makes sense - since we send only one flow (connection) from the <code>udpclient</code>, all the packets hit the same RX queue. In this case it is RX queue #1, which is bound to CPU #1. Indeed, when we run the client on that very CPU the latency goes up by around 2us:</p>
 	<pre><code class="language-.bash">client$ taskset -c 1 ./udpclient 192.168.254.30:4321  --polling
@@ -114,7 +114,7 @@ pps= 25425 avg= 37.787us dev= 12.090us min=32.119us
 pps= 25279 avg= 38.041us dev= 12.565us min=32.235us
 </code></pre>
 	<p>Turns out that keeping the process on the same core as arriving interrupts slightly degrades the latency. But how can the process know if it's running on the offending CPU?</p>
-	<p>One way is for the application to query the kernel. Kernel 3.19 introduced <a href="https://lwn.net/Articles/619862/" target="_blank"><code>SO_INCOMING_CPU</code></a> socket option. With that the process can figure out to which CPU the packet was originally delivered.</p>
+	<p>One way is for the application to query the kernel. Kernel 3.19 introduced <a href="https://lwn.net/Articles/619862" target="_blank"><code>SO_INCOMING_CPU</code></a> socket option. With that the process can figure out to which CPU the packet was originally delivered.</p>
 	<p>An alternative approach is to ensure the packets will be dispatched only to the CPUs we want. We can do that by adjusting NIC settings with <code>ethtool</code>.</p>
 	<h3 id="indirectiontable">Indirection Table</h3>
 	<p>RSS is intended to distribute the load across RX queues. In our case, a UDP flow, the RX queue is chosen by this formula:</p>
@@ -146,7 +146,7 @@ Added rule with ID 2045
 	<p><img src="https://blog.cloudflare.com/content/images/2015/06/interrupts-client.png" alt="" loading="lazy"></p>
 	<p>We can see the 27k interrupts corresponding to received packets on RX queue #1. But what about these 27k interrupts on RX queue #7? We surely disabled this RX queue with our RSS / indirection table setup.</p>
 	<p>It turns out these interrupts are caused by packet transmissions. As weird as it sounds, Linux has no way of figuring out what is the "correct" transmit queue to send packets on. To avoid packet reordering and to play safe by default, transmissions are distributed based on another flow hash. This pretty much guarantees that the transmissions will be done on a different CPU than the one running our application, therefore increasing the latency.</p>
-	<p>To ensure the transmissions are done on a local TX queue, Linux has a mechanism called <a href="http://patchwork.ozlabs.org/patch/62440/" target="_blank">XFS</a>. To configure it we need to set a CPU mask for every TX queue. It's a bit more complex since we have 24 CPUs and only 11 TX queues:</p>
+	<p>To ensure the transmissions are done on a local TX queue, Linux has a mechanism called <a href="http://patchwork.ozlabs.org/patch/62440" target="_blank">XFS</a>. To configure it we need to set a CPU mask for every TX queue. It's a bit more complex since we have 24 CPUs and only 11 TX queues:</p>
 	<pre><code class="language-.bash">XPS=("0 12" "1 13" "2 14" "3 15" "4 16" "5 17" "6 18" "7 19" "8 20" "9 21" "10 22 11 23");
 (let TX=0; for CPUS in "$XPS[@]"; do
      let mask=0
@@ -187,7 +187,7 @@ client$ for RX in `seq 0 10`; do
      fdir_match: 7169438
      fdir_miss: 128191066
 </code></pre>
-	<p>One more thing - Flow Director is implemented by the NIC driver, and is not integrated with the kernel. It has no way of truly knowing on which core the application actually lives. Instead, it takes a guess by looking at the transmitted packets every now and then. In fact it inspects every 20th (ATR setting) packet or <a href="https://github.com/majek/ixgbe/blob/master/src/ixgbe_main.c#L8568" target="_blank">all packets with a SYN flag set</a>. Furthermore, it <a href="http://arxiv.org/pdf/1106.0443.pdf" target="_blank">may introduce packet reordering</a> and <a href="http://sourceforge.net/p/e1000/mailman/message/27482089/" target="_blank">doesn't support UDP</a>.</p>
+	<p>One more thing - Flow Director is implemented by the NIC driver, and is not integrated with the kernel. It has no way of truly knowing on which core the application actually lives. Instead, it takes a guess by looking at the transmitted packets every now and then. In fact it inspects every 20th (ATR setting) packet or <a href="https://github.com/majek/ixgbe/blob/master/src/ixgbe_main.c#L8568" target="_blank">all packets with a SYN flag set</a>. Furthermore, it <a href="http://arxiv.org/pdf/1106.0443.pdf" target="_blank">may introduce packet reordering</a> and <a href="http://sourceforge.net/p/e1000/mailman/message/27482089" target="_blank">doesn't support UDP</a>.</p>
 	<h3 id="lowleveltweaks">Low level tweaks</h3>
 	<p>Finally, our last resort in fighting the latency is to adjust a series of <a href="http://www.intel.com/content/dam/doc/application-note/82575-82576-82598-82599-ethernet-controllers-latency-appl-note.pdf" target="_blank">low level network card</a> settings. <a href="https://en.wikipedia.org/wiki/Interrupt_coalescing" target="_blank">Interrupt coalescing</a> is often used to reduce the number of interrupts fired by a network card, but as a result it adds some latency to the system. To disable interrupt coalescing:</p>
 	<pre><code class="language-.bash">client$ sudo ethtool -C eth2 rx-usecs 0
@@ -198,7 +198,7 @@ server$ sudo ethtool -C eth3 rx-usecs 0
 pps= 30809 avg= 30.991us dev=  9.065us min=25.833us
 pps= 30179 avg= 31.659us dev=  9.978us min=25.735us
 </code></pre>
-	<p>Further tuning gets more complex. People recommend turning off advanced features like <a href="https://lwn.net/Articles/358910/" target="_blank">GRO</a> or <a href="https://lwn.net/Articles/243949/" target="_blank">LRO</a>, but I don't think they make much difference for our UDP application. Disabling them should improve the latency for TCP streams, but will harm the throughput.</p>
+	<p>Further tuning gets more complex. People recommend turning off advanced features like <a href="https://lwn.net/Articles/358910" target="_blank">GRO</a> or <a href="https://lwn.net/Articles/243949" target="_blank">LRO</a>, but I don't think they make much difference for our UDP application. Disabling them should improve the latency for TCP streams, but will harm the throughput.</p>
 	<p>An even more extreme option is to disable <a href="https://www.myricom.com/software/myri10ge/432-how-do-i-achieve-the-lowest-possible-latency-with-myri10ge.html" target="_blank">C-sleep states</a> of the processor in BIOS.</p>
 	<h3 id="hardwaretimestampswithso_timestampns">Hardware timestamps with SO_TIMESTAMPNS</h3>
 	<p>On Linux we can retrieve a packet hardware timestamp with a <a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank"><code>SO_TIMESTAMPNS</code> socket option</a>. Comparing that value with the wall clock allows us to measure the delay added by the kernel network stack:</p>
@@ -209,7 +209,7 @@ pps=28679 avg=33.282us dev=12.249us min=26.106us packet=4.491us/1.440
 </code></pre>
 	<p>It takes the kernel between 4.3 and 5us to deliver a packet to our busy-polling application.</p>
 	<h3 id="openonloadfortheextreme">OpenOnload for the extreme</h3>
-	<p>Since we have a Solarflare network card handy, we can use the <a href="http://www.openonload.org/" target="_blank">OpenOnload</a> kernel bypass technology to skip the kernel network stack all together:</p>
+	<p>Since we have a Solarflare network card handy, we can use the <a href="http://www.openonload.org" target="_blank">OpenOnload</a> kernel bypass technology to skip the kernel network stack all together:</p>
 	<pre><code class="language-.bash">client$ onload ./udpclient 192.168.254.30:4321 --polling --timestamp
 pps=48881 avg=19.187us dev=1.401us min=17.660us packet=0.470us/0.457
 pps=49733 avg=18.804us dev=1.306us min=17.702us packet=0.487us/0.390

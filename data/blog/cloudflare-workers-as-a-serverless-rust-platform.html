@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<p><em><strong>Update</strong>: Rust Tooling for Workers has improved significantly since this post. Go <a href="https://blog.cloudflare.com/introducing-wrangler-cli/">here</a> to check out Wrangler, our new Rust+Workers cli</em></p>
+	<p><em><strong>Update</strong>: Rust Tooling for Workers has improved significantly since this post. Go <a href="https://blog.cloudflare.com/introducing-wrangler-cli">here</a> to check out Wrangler, our new Rust+Workers cli</em></p>
 	<hr><!--kg-card-begin: markdown-->
-	<p>The Workers team just <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers/">announced support</a> for WebAssembly (WASM) within Workers. If you saw my post on <a href="https://blog.cloudflare.com/internet-native-applications/">Internet Native Apps</a>, you'll know that I believe WebAssembly will play a big part in the apps of the future.</p>
+	<p>The Workers team just <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">announced support</a> for WebAssembly (WASM) within Workers. If you saw my post on <a href="https://blog.cloudflare.com/internet-native-applications">Internet Native Apps</a>, you'll know that I believe WebAssembly will play a big part in the apps of the future.</p>
 	<p>It's exciting times for Rust developers. Cloudflare's Serverless Platform, Cloudflare Workers, allows you to compile your code to WASM, upload to 150+ data centers and invoke those functions just as easily as if they were JavaScript functions. Today I'm going to convert my lipsum generator to use Rust and explore the developer experience (hint: it's already pretty nice).</p>
 	<p>The Workers teams notes in the documentation:</p>
 	<blockquote>
@@ -9,7 +9,7 @@
 	</blockquote>
 	<p>OK, I'm unlikely to gain significant performance improvements on this particular project, but it serves as a good opportunity illustrate the developer experience and tooling. ?</p>
 	<h2 id="setuptheenvironmentwithwasmpack">Setup the environment with wasm-pack</h2>
-	<p>Coding with WASM has been bleeding edge for a while, but Rust's tool for WASM development recently reached a fairly ergonomic state and even got a <a href="https://rustwasm.github.io/wasm-pack/" target="_blank">website</a>. Make sure you have the <a href="https://rustwasm.github.io/wasm-pack/book/prerequisites/index.html" target="_blank">prerequisites</a> installed and then follow the steps below to get started.</p>
+	<p>Coding with WASM has been bleeding edge for a while, but Rust's tool for WASM development recently reached a fairly ergonomic state and even got a <a href="https://rustwasm.github.io/wasm-pack" target="_blank">website</a>. Make sure you have the <a href="https://rustwasm.github.io/wasm-pack/book/prerequisites/index.html" target="_blank">prerequisites</a> installed and then follow the steps below to get started.</p>
 	<p>wasm-pack allows you to compile Rust to WebAssembly, as well as generate bindings between JavaScript objects and Rust objects. We'll talk about why that's important later.</p>
 	<pre><code># Install wasm-pack
 curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
@@ -240,7 +240,7 @@ alert(phraseText);
 	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-random-phrases.png" alt="Generating random phrases" loading="lazy"></p>
 	<p>Huzzah! OK, if my WASM module returns the right output in Chrome, I'm feeling good about it working in Workers.</p>
 	<h2 id="fromlocalbrowserharnesstoworkers">From local browser harness to Workers</h2>
-	<p>You can use the <a href="https://developers.cloudflare.com/workers/api/" target="_blank">API</a> or UI to upload. Below, I upload the .wasm file in my /pkg director and bind it to the global variable BOBROSS_WASM, where it will be available in my Worker.</p>
+	<p>You can use the <a href="https://developers.cloudflare.com/workers/api" target="_blank">API</a> or UI to upload. Below, I upload the .wasm file in my /pkg director and bind it to the global variable BOBROSS_WASM, where it will be available in my Worker.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-upload.png" alt="Rust WASM upload" loading="lazy"></p>
 	<p>If you're following and looked at the output of the <code>wasm-pack build</code> command, you might have noticed it produced a JavaScript glue file in the pkg folder, which is actually what the browser executed.</p>
 	<p>It looks like this:</p>
@@ -350,6 +350,6 @@ async function handleRequest(request) {
 	<p>We can compile Rust to WASM, and call it from Serverless functions woven into the very fabric of the Internet. That's huge and I can't wait to do more of it.</p>
 	<p>There's some wrangling of the generated code required, but the tooling will improve over time. Once you've modified the glue code, calling a function in Rust generated WASM modules is just as simple as JavaScript.</p>
 	<p>Are we Serverless yet? Yes we are.</p>
-	<p>In a future post, I'll extract out the phrases and the UI to the <a href="https://developers.cloudflare.com/workers/kv/" target="_blank">KV store</a> to show a full fledged serverless app powered by Rust and WASM.</p>
+	<p>In a future post, I'll extract out the phrases and the UI to the <a href="https://developers.cloudflare.com/workers/kv" target="_blank">KV store</a> to show a full fledged serverless app powered by Rust and WASM.</p>
 	<!--kg-card-end: markdown-->
 </div>

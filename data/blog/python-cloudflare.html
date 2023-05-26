@@ -63,7 +63,7 @@ $ sudo ./setup.py install
 </code></pre>
 	<h2 id="butwaittheresmore">But wait; there’s more!</h2>
 	<p>Not only do you get the python API calls, you also get a fully functioning CLI (command line interface) that allows quick creation of scripts that interface with CloudFlare.</p>
-	<p>From the CLI command you can call any of the CloudFlare API calls. The command responds with the returned JSON data. If you want to filter the results you possibly also want to install the highly-versatile <a href="https://stedolan.github.io/jq/" target="_blank">jq</a> command. Here’s a command to check the nameservers for a specific domain hosted on CloudFlare and then process it via jq.</p>
+	<p>From the CLI command you can call any of the CloudFlare API calls. The command responds with the returned JSON data. If you want to filter the results you possibly also want to install the highly-versatile <a href="https://stedolan.github.io/jq" target="_blank">jq</a> command. Here’s a command to check the nameservers for a specific domain hosted on CloudFlare and then process it via jq.</p>
 	<pre><code class="language-bash">$ cli4 name=example.com /zones | jq -c '.[]|{"name_servers":.name_servers}'
 {
   "name_servers":[
@@ -73,7 +73,7 @@ $ sudo ./setup.py install
 }
 $
 </code></pre>
-	<p>The CLI command will convert on-the-fly zone names into zone identifiers. For example; if you want to check the <a href="https://blog.cloudflare.com/dnssec-an-introduction/">DNSSEC</a> status on a zone your operate on CloudFlare; then use this command.</p>
+	<p>The CLI command will convert on-the-fly zone names into zone identifiers. For example; if you want to check the <a href="https://blog.cloudflare.com/dnssec-an-introduction">DNSSEC</a> status on a zone your operate on CloudFlare; then use this command.</p>
 	<pre><code class="language-bash">$ cli4 /zones/:example.com/dnssec | jq '{"status":.status,"ds":.ds}'
 {
   "status": "active",
@@ -98,7 +98,7 @@ $
 </code></pre>
 	<p>There are plenty more examples available within the GitHub repo.</p>
 	<h3 id="cloudflareapiviaotherlanguagesalsoavailable">CloudFlare API via other languages also available</h3>
-	<p>Python isn’t the only language you can use to interact with CloudFlare’s API. If you’re a <code>Go</code>, or <code>Node.js</code> user, we also have client libraries you can use to interact with CloudFlare on our <a href="https://github.com/cloudflare/python-cloudflare" target="_blank">GitHub</a>. Find them here <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Go client</a> and here <a href="https://github.com/cloudflare/node-cloudflare" target="_blank">Node.js client</a>. Want to write something in a different language? Feel free to do that. The <a href="https://api.cloudflare.com/" target="_blank">API</a> spec is online and ready for you to code up.</p>
+	<p>Python isn’t the only language you can use to interact with CloudFlare’s API. If you’re a <code>Go</code>, or <code>Node.js</code> user, we also have client libraries you can use to interact with CloudFlare on our <a href="https://github.com/cloudflare/python-cloudflare" target="_blank">GitHub</a>. Find them here <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Go client</a> and here <a href="https://github.com/cloudflare/node-cloudflare" target="_blank">Node.js client</a>. Want to write something in a different language? Feel free to do that. The <a href="https://api.cloudflare.com" target="_blank">API</a> spec is online and ready for you to code up.</p>
 	<p>If you like what you read here today and are interested in joining one of CloudFlare’s software teams, then checkout our <a href="https://www.cloudflare.com/join-our-team" target="_blank">Join Our Team</a> page.</p>
 	<!--kg-card-end: markdown-->
 </div>

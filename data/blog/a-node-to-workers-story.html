@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<p>Node.js allows developers to build web services with JavaScript. However, you're on your own when it comes to registering a domain, setting up DNS, managing the server processes, and setting up builds. </p>
 	<p>There's no reason to manage all these layers on separate platforms. For a site on Cloudflare, these layers can be on a single platform. Serverless technology simplifies developers' lives and reframes our current definition of backend.</p>
-	<p>In this article I will breeze through a simple example of how converting a former Node server into a Worker untangled a part of my teams’ code base. The conversion to Workers for this example can be found at this<a href="https://github.com/cloudflare-apps/spotify-oauth-express/pull/1/files " target="_blank"> PR on Github</a>.</p>
+	<p>In this article I will breeze through a simple example of how converting a former Node server into a Worker untangled a part of my teams’ code base. The conversion to Workers for this example can be found at this<a href="https://github.com/cloudflare-apps/spotify-oauth-express/pull/1/files" target="_blank"> PR on Github</a>.</p>
 	<h3 id="background">Background</h3>
 	<p>Cloudflare Marketplace hosts a variety of apps, most of which are produced by third party developers, but some are produced by Cloudflare employees. </p>
 	<p>The Spotify app is one of those apps that was written by the Cloudflare apps team. This app requires an OAuth flow with Spotify to retrieve the user’s token and gather the playlist, artists, other Spotify profile specific information. While Cloudflare manages the OAuth authentication portion, the app owner - in this case Cloudflare Apps - manages the small integration service that uses the token to call Spotify and formats an appropriate response. Mysteriously, this Spotify OAuth integration broke. </p>
@@ -65,7 +65,7 @@
 </code></pre>
 	<p>Now for the most beautiful part of the transition: delete useless config.</p>
 	<p>Our Express server was set to export app as a module insert credentials so that Heroku or whatever non-serverless server could pick up, run, and build.</p>
-	<p>Though I <em>can</em> import libraries for workers via <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers/">webpack</a>, for this application, it’s unreasoned. Also, I have access to fetch and other native service worker functions.</p>
+	<p>Though I <em>can</em> import libraries for workers via <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">webpack</a>, for this application, it’s unreasoned. Also, I have access to fetch and other native service worker functions.</p>
 	<pre><code class="language-javascript">const {getJson} = require('simple-fetch')
 module.exports = function setRoutes (app) {
 </code></pre>

@@ -4,7 +4,7 @@
 	<p>不幸的是，当大家看到的都是悲剧时，威胁行为者看到的是机会。我们又一次见证了这一点：为了攻破信任防线并诱骗毫无戒备的受害者，绝大多数情况下威胁行为者会使用热门事件作为诱饵。这些都是跟随新闻周期或关注已知的知名事件（例如超级碗、NCAA 一级男子篮球锦标赛、纳税日、黑色星期五促销、新冠疫情，等等），因为无论何时，如果消息中提及了当时的热门话题，用户就更有可能受到吸引。</p>
 	<p>SVB 新闻周期引发了一个万众瞩目的热门话题，可能被威胁行为者利用；而且，组织必须加强意识宣传和技术控制，以帮助应对威胁行为者最终使用这些策略发起攻击，这一点至关重要。可悲的是，尽管 FDIC 承诺保证 SVB 客户的资金安全，但恶意行为者却试图窃取他们的资金！</p>
 	<h3 id="-">先发制人的行动</h3>
-	<p>为了应对未来利用 SVB 事件发起网络钓鱼攻击，从 2023 年 3 月 10 日起，<a href="https://blog.cloudflare.com/zh-cn/introducing-cloudforce-one-threat-operations-and-threat-research-zh-cn/">Cloudforce One</a>（Cloudflare 的威胁运营和研究团队）大大加强了品牌监测，重点关注数字形式存在的 SVB，并推出了几个额外的检测模块来发现 SVB 主题的网络钓鱼活动。使用我们的各种网络钓鱼防护服务的所有客户均会自动获得这些新模块的功能。</p>
+	<p>为了应对未来利用 SVB 事件发起网络钓鱼攻击，从 2023 年 3 月 10 日起，<a href="https://blog.cloudflare.com/zh-cn/introducing-cloudforce-one-threat-operations-and-threat-research-zh-cn">Cloudforce One</a>（Cloudflare 的威胁运营和研究团队）大大加强了品牌监测，重点关注数字形式存在的 SVB，并推出了几个额外的检测模块来发现 SVB 主题的网络钓鱼活动。使用我们的各种网络钓鱼防护服务的所有客户均会自动获得这些新模块的功能。</p>
 	<p>下面说一个涉及 SVB 的示例，这是该银行被 FDIC 接管之后发生的真实事件。</p>
 	<h3 id="kyc-docusign-svb-">KYC 网络钓鱼——以 DocuSign 为主题的 SVB 活动</h3>
 	<p>威胁行为者经常使用的一个策略是模仿持续开展的 KYC（了解您的客户）工作。这是银行为验证客户的身份详情而惯常执行的调查，旨在保护金融机构免受欺诈、洗钱和金融犯罪等活动的影响。</p>
@@ -49,7 +49,7 @@ eaglelodgealaska[.]com	可能入侵了 Wordpress 网站或某个开放式重定�
 			</p>
 		</li>
 		<li>
-			<p>确保您为入站消息适当地执行了 DMARC 策略。对于入站消息的任何 DMARC 故障，Cloudflare 建议至少使用 <strong>[p = quarantine]</strong> 。SVB 的 DMARC 记录 [<code>v=DMARC1; p=reject; pct=100</code>] 明确表示，拒绝任何冒充 SVB 品牌且不是从 SVB 指定的验证发件人列表中发出的消息。Cloudflare Email Security 客户将根据 SVB 分布的 DMARC 记录自动完成执行。对于其他域，或者为了在所有入站消息中应用更广泛的基于 DMARC 的策略，Cloudflare 建议在其 <a href="https://developers.cloudflare.com/email-security/email-configuration/email-policies/" target="_blank">Cloudflare Area 1 仪表板</a>内对所有入站邮件坚持使用“增强型发件人验证”策略。</p>
+			<p>确保您为入站消息适当地执行了 DMARC 策略。对于入站消息的任何 DMARC 故障，Cloudflare 建议至少使用 <strong>[p = quarantine]</strong> 。SVB 的 DMARC 记录 [<code>v=DMARC1; p=reject; pct=100</code>] 明确表示，拒绝任何冒充 SVB 品牌且不是从 SVB 指定的验证发件人列表中发出的消息。Cloudflare Email Security 客户将根据 SVB 分布的 DMARC 记录自动完成执行。对于其他域，或者为了在所有入站消息中应用更广泛的基于 DMARC 的策略，Cloudflare 建议在其 <a href="https://developers.cloudflare.com/email-security/email-configuration/email-policies" target="_blank">Cloudflare Area 1 仪表板</a>内对所有入站邮件坚持使用“增强型发件人验证”策略。</p>
 		</li>
 		<li>
 			<p>Cloudflare Gateway 客户会自动获得保护，免受这些恶意 URL 和域的影响。客户可以检查这些特定 IOC 的日志，确定其组织是否有任何传往这些网站的流量。</p>
@@ -77,5 +77,5 @@ eaglelodgealaska[.]com	可能入侵了 Wordpress 网站或某个开放式重定�
 	<h3 id="--4">先人一步</h3>
 	<p>Cloudforce One（Cloudflare 的威胁运营团队）主动监测即将发生、正在形成阶段的新活动，并发布建议和检测模型更新，确保我们的客户得到妥善保护。虽然这一特定活动主要关注的是 SVB，但所用策略与我们全球网络每天发现的其他类似活动并无二致，我们可以自动阻止这些活动，让它们无法伤害我们的客户。</p>
 	<p>要阻止这些攻击，在多个通信渠道中融合强大的技术控制，同时拥有一支训练有素、警惕性高、了解数字通信的危险的员工队伍至关重要。</p>
-	<p>使用我们的<a href="https://www.cloudflare.com/zero-trust-hub/" target="_blank"> Zero Trust 服务</a>，立即申请<a href="https://www.cloudflare.com/lp/emailsecurity/" target="_blank">免费评估</a>，进一步了解 Cloudflare 如何帮助您获得全面的网络钓鱼防护。</p>
+	<p>使用我们的<a href="https://www.cloudflare.com/zero-trust-hub" target="_blank"> Zero Trust 服务</a>，立即申请<a href="https://www.cloudflare.com/lp/emailsecurity" target="_blank">免费评估</a>，进一步了解 Cloudflare 如何帮助您获得全面的网络钓鱼防护。</p>
 </div>

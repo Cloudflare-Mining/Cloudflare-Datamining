@@ -17,7 +17,7 @@
 	</blockquote>
 	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--kg-card-end: html-->
 	<p>But why does it matter? Let's go through a simple example. </p>
-	<p>Released in April 2021, “<a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge/">Transform Rules</a>” lets users rewrite URLs of HTTP requests as they proxy through their zone — for example, rewriting <code>/login.php</code> to <code>/super/secret/login-page.php</code>, all invisible to the end user.</p>
+	<p>Released in April 2021, “<a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge">Transform Rules</a>” lets users rewrite URLs of HTTP requests as they proxy through their zone — for example, rewriting <code>/login.php</code> to <code>/super/secret/login-page.php</code>, all invisible to the end user.</p>
 	<p>In this scenario, the administrator also has a Firewall Rule blocking requests to the URI Path <code>/login.php</code> when the visitor is coming from a country other than the United States. What they would see, however, is that visitors from these other countries are still reaching the <code>/login.php</code> page on their servers. Why is this?</p>
 	<p>This is because URL rewrites happen <code>before</code> Firewall Rules, meaning the Firewall Rules product won’t see a URI Path of <code>/login.php</code>. Instead it will see HTTP requests with the rewritten URI path of <code>/super/secret/login-page.php</code>. Thus, when Firewall Rules evaluates the customers rule it checks:</p>
 	<ol>
@@ -74,5 +74,5 @@
 	<p>In the future we have aspirations to build “<em>the other side of the coin”</em>. Traffic Sequence provides a simple to understand view of how the products work by default at a high level. We also want to create a detailed, almost traceroute-like feature which allows users to see <em>exactly </em>what happens to their traffic — which products it goes via and what happens within those products, and potentially a lot more. Stay tuned!</p>
 	<h3 id="try-it-now">Try it now</h3>
 	<p>This feature is now enabled by default on all customer zones, and is visible within the dashboard locations outlined above. </p>
-	<p>Please do try it out and let us know what you think via the <a href="https://community.cloudflare.com/" target="_blank">Cloudflare Community</a></p>
+	<p>Please do try it out and let us know what you think via the <a href="https://community.cloudflare.com" target="_blank">Cloudflare Community</a></p>
 </div>

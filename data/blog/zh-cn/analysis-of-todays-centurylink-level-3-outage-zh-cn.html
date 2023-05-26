@@ -32,13 +32,13 @@
 	<p>尽管在 CenturyLink/Level(3) 发布事后调查报告之前，我们都没法确切知道发生了什么情况，但我们可以从 BGP 公告及其于中断期间如何在互联网上传播看到一些端倪。BGP 是边界网关协议的缩写。互联网上的路由器通过 BGP 相互通告位于其后的 IP 以及它们应接收什么流量。</p>
 	<p>世界标准时间 10:04 开始出现大量 BGP 更新。BGP 更新是路由器发出的信号，表示路由已更改或不再可用。在正常情况下，互联网上每 15 分钟发生约 1.5MB-2MB 的 BGP 更新。在本次事件开始时，BGP 更新数量激增至每 15 分钟超过 26MB，并在整个事件中保持较高水平。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/6-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>来源：<a href="http://archive.routeviews.org/bgpdata/2020.08/UPDATES/" target="_blank">http://archive.routeviews.org/bgpdata/2020.08/UPDATES/</a></figcaption>
+		<figcaption>来源：<a href="http://archive.routeviews.org/bgpdata/2020.08/UPDATES" target="_blank">http://archive.routeviews.org/bgpdata/2020.08/UPDATES/</a></figcaption>
 	</figure>
 	<p>这些更新表明 CenturyLink/Level(3) 主干内部的 BGP 路由不稳定。问题是什么导致了这种不稳定。CenturyLink/Level(3) 状态更新提供了一些线索，指出根源是一个 Flowspec 更新。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/7-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="flowspec-">Flowspec 是什么？</h3>
 	<p>CenturyLink/Level(3) 的更新中提到，一条不良 Flowspec 规则导致了此问题。那么，Flowspec 是什么呢？Flowspec 是 BGP 的一个扩展，它允许防火墙规则使用 BGP 在一个网络中甚至多个网络之间轻松分发。Flowspec 是一个功能强大的工具，几乎可以即时在整个网络上有效地推送规则。在您尝试快速响应诸如攻击之类的事件时，这很有帮助，但是如果您犯了错误，就有可能带来危险。</p>
-	<p>Cloudflare 运营初期曾使用 Flowspec 来推送防火墙规则，以减轻例如大型网络层 DDoS 攻击。我们<a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515/">自己在 7 年前遭受过 Flowspec 造成的中断</a>。我们已经不再使用 Flowspec，但它仍然是用于推送网络防火墙规则的通用协议。</p>
+	<p>Cloudflare 运营初期曾使用 Flowspec 来推送防火墙规则，以减轻例如大型网络层 DDoS 攻击。我们<a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">自己在 7 年前遭受过 Flowspec 造成的中断</a>。我们已经不再使用 Flowspec，但它仍然是用于推送网络防火墙规则的通用协议。</p>
 	<p>我们只能推测 CenturyLink/Level(3) 发生了什么，但一个可能的情况是，他们发出了一个 Flowspec 指令来尝试阻止针对其网络的攻击或其他滥用。状态报告显示该 Flowspec 规则阻止了 BGP 自身的宣告。我们无法知道该 Flowspec 规则的具体内容，但下面是一个会阻止其网络上所有 BGP 通信的瞻博（Juniper）格式规则。</p>
 	<pre><code>route DISCARD-BGP {
    match {
@@ -57,5 +57,5 @@
 	<p>同样，我们只能推测其中原因。首先，可能是由于该 Flowspec 规则和大量 BGP 更新对其路由器上造成巨大负载，使他们难以登录自己的接口。另外几家一级提供商似乎按照 CenturyLink/Level(3) 请求采取了行动，取消了网络对等连接。此举应会限制 CenturyLink/Level(3) 网络接收到的 BGP 宣告数量，帮助其争取到一些时间来解决问题。</p>
 	<p>其次，该 Flowspec 规则可能不是由 CenturyLink/Level(3) 自己发布的，而是来自他们的某个客户。许多网络提供商都允许 Flowspec 对等互连。对于希望阻止攻击流量的下游客户来说，这可能是一个强大的工具，但是在出现问题时，要追踪违规的 Flowspec 规则将变得更加困难。</p>
 	<p>最后，这些问题发生于周日的早上，更加令人措手不及。CenturyLink/Level(3) 网络的大小和规模极为复杂，难免发生意外事件。他们的团队让我们了解整个事件的进展情况，对此我们非常感激。#hugops</p>
-	<p><a href="https://blog.cloudflare.com/tag/outage/">中断</a><a href="https://blog.cloudflare.com/tag/postmortem/">事后调查</a></p>
+	<p><a href="https://blog.cloudflare.com/tag/outage">中断</a><a href="https://blog.cloudflare.com/tag/postmortem">事后调查</a></p>
 </div>

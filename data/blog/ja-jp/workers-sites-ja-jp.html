@@ -5,7 +5,7 @@
 	<p>アセットをキャッシュするだけでは十分でないのは、なぜでしょうか？確かにキャッシュすることでパフォーマンスは向上しますが、パフォーマンスを大幅に向上させるには、頭痛が伴います。CDNは、キャッシュする必要があるアセットを推測することはできますが、単なる推測にすぎません。サイトのパフォーマンスを最大限に高めるよう構成するプロセスには常にエラーの発生が付きまとい、多数の難解なルールやヘッダーが必要でした。完璧な構成ができていても、永遠にキャッシュされるものはまずありませんから、貴重なリクエストの多くが、サイトの配信元まで(それがどこであれ)移動する必要があります。キャッシュの無効化は、結局のところ、<a href="https://twitter.com/secretgeek/status/7269997868" target="_blank">コンピュータサイエンスで最も難しい問題の1つ</a>なのです。</p>
 	<p>ここで問題の提起です。バイト(bytes)を配信元からエッジへ少しずつぎこちなく動かすより、配信元を丸ごとエッジへプッシュしてはどうでしょうか？</p>
 	<h2 id="workers-workers-"><strong>Workers サイト:Workers プラットフォームの拡張</strong></h2>
-	<p>2年前のバースデーウィークに発表した<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>は、開発者がJavaScriptとWebAssemblyを当社ネットワーク上で作成して実行できる方法で、世界中の194都市から利用可能です。その1年後、その同じ都市で、開発者がエッジに状態を格納する機能を提供する分散Key-valueストア、Workers KVをリリースしました。</p>
+	<p>2年前のバースデーウィークに発表した<a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a>は、開発者がJavaScriptとWebAssemblyを当社ネットワーク上で作成して実行できる方法で、世界中の194都市から利用可能です。その1年後、その同じ都市で、開発者がエッジに状態を格納する機能を提供する分散Key-valueストア、Workers KVをリリースしました。</p>
 	<p>Workersサイトでは、開発者がサイトをエッジに直接アップロードしてエンドユーザーに近づけることを可能にし、WokersとWorkers KV の機能を活用します。エッジで生まれたWorkersサイトは、まさに当社が考えるウェブ上の現代的展開のあるべき姿で、本質的にセキュアであり高速、そして高い拡張性を持ちます。構成に費やす時間を短縮し、コードやコンテンツ自体に費やす時間をより多く確保できます。</p>
 	<h2 id="--1"><strong>仕組み</strong></h2>
 	<p>Workersサイトは、少数のターミナルコマンドで展開し、Hugo、Gatsby、Jekyllなどの静的サイトジェネレーターの生成するサイトならどれでもサポートできます。<a href="https://github.com/cloudflare/wrangler" target="_blank">Wrangler</a>(当社のCLI)を使用して、サイトのアセットをKVに直接アップロードできます。Workersサイトにリクエストが届くと、Wranglerが生成したCloudflare Workerが適切なヘッダーを使用し、KVからアセットを読み取って提供します(コンテンツタイプやキャッシュコントロールの心配は不要です、当社が対応します）。</p>
@@ -37,7 +37,7 @@ cargo install wrangler</code></pre>
 	<p>世界中の都市からベンチマークを実行するためにCatchpoint と呼ばれるツールを使用することにしました。どのように比較したかを確認するために、Workers サイトを含む 3 つの異なる静的サイト展開プラットフォームにサイトを展開しました。</p>
 	<p>プロバイダーが米国沿岸部または中央ヨーロッパにデータセンターリージョンを置くため、北米などの地域で良好なパフォーマンスを見るのは一般的で、当社もこうした地域に対応しています。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-26-at-10.58.41-PM.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>しかし、世界中のその他の地域のユーザーはどうでしょうか？これらの地域では、パフォーマンスがさらに重要です: 最初のユーザーがMacBook Proを使って超高速接続でサイトにアクセスしてくることはまずないでしょう。Workersサイトを使用すれば、御社側で追加作業をする必要もなく、こうした地域にも浸透することができます。<a href="https://blog.cloudflare.com/scaling-the-cloudflare-global/">当社の地図が広がる</a>たびに、御社の存在感がグローバル規模に拡大していくのです。</p>
+	<p>しかし、世界中のその他の地域のユーザーはどうでしょうか？これらの地域では、パフォーマンスがさらに重要です: 最初のユーザーがMacBook Proを使って超高速接続でサイトにアクセスしてくることはまずないでしょう。Workersサイトを使用すれば、御社側で追加作業をする必要もなく、こうした地域にも浸透することができます。<a href="https://blog.cloudflare.com/scaling-the-cloudflare-global">当社の地図が広がる</a>たびに、御社の存在感がグローバル規模に拡大していくのです。</p>
 	<p>当社では、世界の各地域において各種ベンチマークを調査しており、ここで結果が共有できることを嬉しく思います。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-26-at-10.58.24-PM.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="--4"><strong>最後に...</strong></h2>

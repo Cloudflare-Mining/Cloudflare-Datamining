@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/03/Workers-Illustration--WiP-as-of-2.21.18--copy@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>In today’s post we’re going to talk about building a CI/CD pipeline for Cloudflare Worker’s using Travis CI. If you aren’t yet aware, Cloudflare Workers allow you to run Javascript in all 165 of our data centers, and they deploy globally in about 30 seconds. Learn more <a href="https://developers.cloudflare.com/workers/about/" target="_blank">here</a>. </p>
+	<p>In today’s post we’re going to talk about building a CI/CD pipeline for Cloudflare Worker’s using Travis CI. If you aren’t yet aware, Cloudflare Workers allow you to run Javascript in all 165 of our data centers, and they deploy globally in about 30 seconds. Learn more <a href="https://developers.cloudflare.com/workers/about" target="_blank">here</a>. </p>
 	<p>There are a few steps before we get started. We need to have a Worker script we want to deploy, some optional unit tests for the script, a <code>serverless.yml</code> &nbsp;file to deploy via the Serverless Framework, a <code>.gitignore</code> file to ignore the <code>node_modules</code> folder, and finally, a <code>.travis.yml</code> configuration file. All of these files will live in the same GitHub repository, which should have a final layout like:</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">----- worker.js
@@ -17,7 +17,7 @@
 	<p></p>
 	<h3 id="the-worker-script">The Worker Script</h3>
 	<p></p>
-	<p><a href="https://blog.cloudflare.com/unit-testing-worker-functions/">In a recent post</a> we discussed a method for testing Workers. We’ll reuse this method here to test a really simple Worker script below which simply returns <code>Hello World!</code> in the body of the response. We will name our Worker <code>worker.js</code>.</p>
+	<p><a href="https://blog.cloudflare.com/unit-testing-worker-functions">In a recent post</a> we discussed a method for testing Workers. We’ll reuse this method here to test a really simple Worker script below which simply returns <code>Hello World!</code> in the body of the response. We will name our Worker <code>worker.js</code>.</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
@@ -30,7 +30,7 @@ async function handleRequest(request) {
 	<p></p>
 	<h3 id="the-test">The Test</h3>
 	<p></p>
-	<p>We will create a single test case following the method discussed <a href="https://blog.cloudflare.com/unit-testing-worker-functions/">unit testing blog</a> post.</p>
+	<p>We will create a single test case following the method discussed <a href="https://blog.cloudflare.com/unit-testing-worker-functions">unit testing blog</a> post.</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">before(async function () {
    Object.assign(global, new (require('@dollarshaveclub/cloudworker'))(require('fs').readFileSync('worker.js', ‘utf8’)).context)
@@ -60,9 +60,9 @@ describe('Worker Test', function() {
 	<p></p>
 	<p>And install <code>mocha</code> with <code>npm install mocha --save-dev</code> and <code>cloudworker</code> with <code>npm install @dollarshaveclub/cloudworker --save-dev</code>.</p>
 	<h3 id="serverless-yml">serverless.yml</h3>
-	<p>Next, we’ll need a <code>serverless.yml</code> file to deploy the worker. This is a config file which is used by the <a href="https://serverless.com/framework/docs/providers/cloudflare/" target="_blank">Serverless Framework</a> to deploy serverless apps to supported providers. We became a provider some <a href="https://blog.cloudflare.com/serverless-cloudflare-workers/">time ago</a>, and we will use the framework to deploy our Workers in this example.</p>
+	<p>Next, we’ll need a <code>serverless.yml</code> file to deploy the worker. This is a config file which is used by the <a href="https://serverless.com/framework/docs/providers/cloudflare" target="_blank">Serverless Framework</a> to deploy serverless apps to supported providers. We became a provider some <a href="https://blog.cloudflare.com/serverless-cloudflare-workers">time ago</a>, and we will use the framework to deploy our Workers in this example.</p>
 	<p>We will run the <code>sls deploy</code> command in our Travis config and it will pick up our <code>serverless.yml</code> to deploy the Worker for us. <code>serverless.yml</code> will reference <code>ENV</code> variables which we will pass to Travis in the final section of the post.</p>
-	<p><strong>NOTE</strong>: You can deploy with any arbitrary script. We’re using the Serverless Framework in this example because we already <a href="https://developers.cloudflare.com/workers/deploying-workers/serverless/" target="_blank">integrate</a> with them and getting started is straightforward.</p>
+	<p><strong>NOTE</strong>: You can deploy with any arbitrary script. We’re using the Serverless Framework in this example because we already <a href="https://developers.cloudflare.com/workers/deploying-workers/serverless" target="_blank">integrate</a> with them and getting started is straightforward.</p>
 	<p>Our <code>serverless.yml</code> will look like:</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">service:
@@ -101,7 +101,7 @@ deploy:
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>Before diving in, Travis has some great resources on deploying <code>node.js</code> projects <a href="https://docs.travis-ci.com/user/languages/javascript-with-nodejs/" target="_blank">here</a>. While this isn’t strictly what we’re doing, it’s a great jumping off point.</p>
+	<p>Before diving in, Travis has some great resources on deploying <code>node.js</code> projects <a href="https://docs.travis-ci.com/user/languages/javascript-with-nodejs" target="_blank">here</a>. While this isn’t strictly what we’re doing, it’s a great jumping off point.</p>
 	<p>So what does this <code>.travis.yml</code> mean? First, we’re telling Travis CI to use the most recent <code>node.js</code> image (you have the option to specify). Then we specify the command to run to actually do the deployment, <code>sls deploy</code>, but only when the main branch is involved in the build. Travis will run <code>npm test</code> for us as it’s default for any <code>node.js</code> project, which will execute our unit tests.</p>
 	<p>The <code>skip_cleanup: true</code> prevents any conflicts with <code>git</code> during the test and deploy process. </p>
 	<h3 id="configuring-travis">Configuring Travis</h3>

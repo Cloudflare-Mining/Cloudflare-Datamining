@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Cloudflare-Gateway-now-protects-teams--wherever-they-are-thumbnail-top-page.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams/">2020 年 1 月</a>，我们发布了 Cloudflare for Teams，这是一种在不牺牲性能的前提下保护组织及其遍布全球的员工的新方式。Cloudflare for Teams 内含 Cloudflare Access 和 Cloudflare Gateway 这两大和核心产品。</p>
-	<p><a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway/">2020 年 3 月</a>，Cloudflare 发布了 Cloudflare Gateway 的首个功能 —— 由全球最快 DNS 解析器提供支持的安全 DNS 过滤解决方案。Gateway 的 DNS 过滤功能通过阻止对可能涉及恶意软件、网络钓鱼或勒索软件等威胁的有害目的地的 DNS 查询来确保用户安全。组织只需更改办公室中的路由器设置，便可确保整个团队的安全，用时只需大约五分钟。</p>
+	<p><a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams">2020 年 1 月</a>，我们发布了 Cloudflare for Teams，这是一种在不牺牲性能的前提下保护组织及其遍布全球的员工的新方式。Cloudflare for Teams 内含 Cloudflare Access 和 Cloudflare Gateway 这两大和核心产品。</p>
+	<p><a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">2020 年 3 月</a>，Cloudflare 发布了 Cloudflare Gateway 的首个功能 —— 由全球最快 DNS 解析器提供支持的安全 DNS 过滤解决方案。Gateway 的 DNS 过滤功能通过阻止对可能涉及恶意软件、网络钓鱼或勒索软件等威胁的有害目的地的 DNS 查询来确保用户安全。组织只需更改办公室中的路由器设置，便可确保整个团队的安全，用时只需大约五分钟。</p>
 	<p>发布后不久，许多公司开始全员撤离办公室。用户联网上线的家庭办公室原本是临时使用，在过去几个月中却变为固定办公地点了。保护用户和数据已从单一办公室级设置，变成需要对成百上千个地点的用户和设备进行管理。</p>
 	<p>互联网上的安全威胁也已发生改变。网络钓鱼活动和恶意软件攻击在过去六个月里有所抬头。而要检测这些类型的攻击，需要更加深入的探究，不仅仅是 DNS 查询。</p>
 	<p>我们很高兴宣布，Cloudflare Gateway 如今包含能够攻克这些新挑战的两项功能。首先，Cloudflare Gateway 与 <a href="https://blog.cloudflare.com/warp-for-desktop">Cloudflare WARP 桌面客户端</a>集成。我们的 WARP 围绕 WireGuard 而构建，这是一种新颖且高效的 VPN 协议，比传统 VPN 协议更加有效和灵活。</p>
@@ -10,7 +10,7 @@
 	<p>我们的客户主要采用分布式劳动力，员工分散在公司办公室和自己的家中。鉴于疫情的关系，这将成为他们在短期内的工作环境。</p>
 	<p>用户不处于固定的已知位置（例外允许远程工作），这给已经负担繁重的 IT 人员带来了挑战：</p>
 	<ol>
-		<li>VPN 采用全有或全无方法，提供对内部应用程序的远程访问。我们通过 Cloudflare Access 和零信任方法来解决这个问题，为内部应用程序以及<a href="https://blog.cloudflare.com/cloudflare-access-for-saas/">现在的 SaaS 应用程序</a>提供安全保护。</li>
+		<li>VPN 采用全有或全无方法，提供对内部应用程序的远程访问。我们通过 Cloudflare Access 和零信任方法来解决这个问题，为内部应用程序以及<a href="https://blog.cloudflare.com/cloudflare-access-for-saas">现在的 SaaS 应用程序</a>提供安全保护。</li>
 		<li>VPN 不仅速度慢，成本又高。然而，将流量回传到集中式安全边界一直是实施企业内容与安全策略以保护漫游用户的主要方法。Cloudflare Gateway 因此诞生，为我们的客户解决这一问题。</li>
 	</ol>
 	<p>直到今天，Cloudflare Gateway 一直通过 DNS 过滤为我们的客户提供安全性。尽管这在一定程度上提供了无关应用程序的安全与内容控制，但它依然给客户留下了几个难题：</p>
@@ -36,7 +36,7 @@
 		<tbody>
 			<tr>
 				<td>URL、路径和/或查询字符串</td>
-				<td><a href="https://www.myurl.com/path?query" target="_blank">https://www.myurl.com/path?query</a></td>
+				<td><a href="https://www.myurl.com/path?query=" target="_blank">https://www.myurl.com/path?query</a></td>
 			</tr>
 			<tr>
 				<td>HTTP 方法</td>
@@ -78,7 +78,7 @@
 	<p>为解决这个问题，我们正在努力将 Cloudflare Access 与客户现有的身份提供商集成，以支持基于用户和组身份的规则。这将使管理员能够创建细化的规则，利用与用户相关的上下文，例如：</p>
 	<ul>
 		<li>拒绝所有用户访问社交媒体。但是，如果 John Doe 是营销部门的成员，则被允许访问这些网站以履行其职责。</li>
-		<li>仅允许 Jane Doe 通过 Cloudflare Gateway 连接到特定的 SaaS 应用程序，或者仅允许某一种<a href="https://blog.cloudflare.com/tanium-cloudflare-teams/">设备状态</a>。</li>
+		<li>仅允许 Jane Doe 通过 Cloudflare Gateway 连接到特定的 SaaS 应用程序，或者仅允许某一种<a href="https://blog.cloudflare.com/tanium-cloudflare-teams">设备状态</a>。</li>
 	</ul>
 	<p>由于用户不会固定在已知的工作场所，基于身份的策略实施和日志可见性的需求与日俱增。我们通过使用 Cloudflare for Teams 客户端集成身份识别并且随时随地保护用户来满足这种需求。</p>
 	<h3 id="--2">下一步</h3>

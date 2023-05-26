@@ -11,7 +11,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-12-15-10.png" alt="" loading="lazy"></p>
 	<p>A grey lightning bolt indicates that neither HTTP/2 no SPDY were used. Here the web page was served using HTTP/1.1.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-12-10-18.png" alt="" loading="lazy"></p>
-	<p>There's a similar extension for <a href="https://addons.mozilla.org/en-GB/firefox/addon/spdy-indicator/" target="_blank">Firefox</a>.</p>
+	<p>There's a similar extension for <a href="https://addons.mozilla.org/en-GB/firefox/addon/spdy-indicator" target="_blank">Firefox</a>.</p>
 	<h4 id="onlinetesting">Online testing</h4>
 	<p>There's also a handy <a href="https://tools.keycdn.com/http2-test" target="_blank">online tool</a> to check any individual web site.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-12-22-11.png" alt="" loading="lazy"></p>
@@ -36,7 +36,7 @@ Supported protocols: http/1.1
 </code></pre>
 	<p>The <code>is-http</code> tool is also useful because it gives you a list of the protocols advertised by the server. As you can see www.cloudflare.com supports HTTP/2, HTTP/1.1 and SPDY/3.1.</p>
 	<h4 id="curl">curl</h4>
-	<p>In version 7.43.0 the venerable <code>curl</code> tool got HTTP/2 support when it's linked with the <a href="https://nghttp2.org/" target="_blank">nghttp</a> library. To build <code>curl</code> from sources you'll need OpenSSL, zlib, nghttp2 and libev. I used the following sequence of commands.</p>
+	<p>In version 7.43.0 the venerable <code>curl</code> tool got HTTP/2 support when it's linked with the <a href="https://nghttp2.org" target="_blank">nghttp</a> library. To build <code>curl</code> from sources you'll need OpenSSL, zlib, nghttp2 and libev. I used the following sequence of commands.</p>
 	<pre><code>$ curl -LO http://dist.schmorp.de/libev/libev-4.20.tar.gz
 $ tar zvxf libev-4.20.tar.gz
 $ cd libev-4.20
@@ -84,7 +84,7 @@ $ sudo ldconfig
 [...]
 </code></pre>
 	<h4 id="nghttp2">nghttp2</h4>
-	<p>If you built <code>curl</code> using my instructions above you will have built and installed some tools that come with the <a href="https://nghttp2.org/" target="_blank">nghttp2</a> library. One of those is a command-line client called <code>nghttp</code>. It can be used like <code>curl</code> to download from the web using HTTP/2 but it also has a handy verbose option that shows that actual HTTP/2 frames sent and received.</p>
+	<p>If you built <code>curl</code> using my instructions above you will have built and installed some tools that come with the <a href="https://nghttp2.org" target="_blank">nghttp2</a> library. One of those is a command-line client called <code>nghttp</code>. It can be used like <code>curl</code> to download from the web using HTTP/2 but it also has a handy verbose option that shows that actual HTTP/2 frames sent and received.</p>
 	<p>By running it with <code>-nv</code> you get HTTP/2 and throw away the actual downloaded page. Here's its output when downloading www.cloudflare.com using HTTP/2. On a terminal with color support it uses coloring to highlight different parts of the log.<br>
 		<br>
 	</p>
@@ -92,7 +92,7 @@ $ sudo ldconfig
 	<br>
 	<h4 id="h2c">h2c</h4>
 	<p>Another curl-like command-line tool for HTTP/2 is <a href="https://github.com/fstab/h2c" target="_blank">h2c</a>. It also enables dumping of HTTP/2 frames and has a nice feature that it runs in the background and keeps connections to servers alive and has a useful 'wiretap' feature for intercepting an HTTP/2 for debugging.</p>
-	<p>If you have <a href="https://golang.org/dl/" target="_blank">Go 1.5.1</a> installed then you can download it as follows:</p>
+	<p>If you have <a href="https://golang.org/dl" target="_blank">Go 1.5.1</a> installed then you can download it as follows:</p>
 	<pre><code>$ export GO15VENDOREXPERIMENT=1
 $ go get github.com/fstab/h2c
 </code></pre>
@@ -162,7 +162,7 @@ h2i&gt; headers
 	<p>I ran it against the CloudFlare test server like this:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-16-02-50.png" alt="" loading="lazy"></p>
 	<h3 id="conformance">Conformance</h3>
-	<p>If you are testing an HTTP/2 implementation there's a useful tool called <a href="">h2spec</a> which runs through a conformance test against a real HTTP/2 server. To use it first install <a href="https://golang.org/dl/" target="_blank">Go 1.5.1</a> and then do</p>
+	<p>If you are testing an HTTP/2 implementation there's a useful tool called <a href="https://blog.cloudflare.com">h2spec</a> which runs through a conformance test against a real HTTP/2 server. To use it first install <a href="https://golang.org/dl" target="_blank">Go 1.5.1</a> and then do</p>
 	<pre><code>$ go get github.com/summerwind/h2spec/cmd/h2spec
 </code></pre>
 	<p>I only recommend it for testing locally running HTTP/2 servers. If you built <code>nghttp2</code> above while building <code>curl</code> you will also have the <code>nghttpd</code> HTTP/2 server available. You can run <code>h2spec</code> against it like this:</p>
@@ -183,8 +183,8 @@ www.amazon.com,t,t,t,t,f,f,f,-,-,http/1.1
 www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1 spdy/3 http/1.1 http/1.0
 </code></pre>
 	<h3 id="usefullibraries">Useful Libraries</h3>
-	<p>If you are working in C and need to add HTTP/2 support to a program there's the <a href="https://nghttp2.org/" target="_blank">nghttp2</a> library that is full implementation of HTTP/2 with a simple interface. Their <a href="https://nghttp2.org/documentation/tutorial-client.html#libevent-client-c" target="_blank">HTTP/2 client tutorial</a> explains how to use the library to add HTTP/2 client capabilities. nghttp2 can also be used for <a href="https://nghttp2.org/documentation/tutorial-server.html#libevent-server-c" target="_blank">servers</a>.</p>
-	<p>Go programmers will find full HTTP/2 support will arrive with Go 1.6. If you can't wait until then there's an extension package for HTTP/2 <a href="https://godoc.org/golang.org/x/net/http2" target="_blank">golang.org/x/net/http2</a> . Details <a href="https://http2.golang.org/" target="_blank">here</a>.</p>
+	<p>If you are working in C and need to add HTTP/2 support to a program there's the <a href="https://nghttp2.org" target="_blank">nghttp2</a> library that is full implementation of HTTP/2 with a simple interface. Their <a href="https://nghttp2.org/documentation/tutorial-client.html#libevent-client-c" target="_blank">HTTP/2 client tutorial</a> explains how to use the library to add HTTP/2 client capabilities. nghttp2 can also be used for <a href="https://nghttp2.org/documentation/tutorial-server.html#libevent-server-c" target="_blank">servers</a>.</p>
+	<p>Go programmers will find full HTTP/2 support will arrive with Go 1.6. If you can't wait until then there's an extension package for HTTP/2 <a href="https://godoc.org/golang.org/x/net/http2" target="_blank">golang.org/x/net/http2</a> . Details <a href="https://http2.golang.org" target="_blank">here</a>.</p>
 	<p>There's a pure Ruby implementation of HTTP/2 available from <a href="https://github.com/igrigorik/http-2" target="_blank">Ilya Grigorik</a>.</p>
 	<p>Haskell programmers can use the <a href="https://hackage.haskell.org/package/http2" target="_blank">http2</a> hackage.</p>
 	<h3 id="packetsnooping">Packet Snooping</h3>
@@ -198,7 +198,7 @@ www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1 spdy/3 http/1.1 http/1.0
 	<p><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-15-48-59.png" alt="" loading="lazy"></p>
 	<p>Then I find SSL and set the Pre-Main-Secret log filename to point to the same file.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-15-49-44.png" alt="" loading="lazy"></p>
-	<p>Then Wireshark can decode the TLS connections made by that browser. Here's the beginning of a connection between Google Chrome Canary and the experimental server <a href="https://http2.cloudflare.com/" target="_blank">https://http2.cloudflare.com/</a>.</p>
+	<p>Then Wireshark can decode the TLS connections made by that browser. Here's the beginning of a connection between Google Chrome Canary and the experimental server <a href="https://http2.cloudflare.com" target="_blank">https://http2.cloudflare.com/</a>.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-15-51-04.png" alt="" loading="lazy"></p>
 	<h3 id="chromedeveloperview">Chrome Developer View</h3>
 	<p>Finally, if you are looking at the performance of your own web site it can be handy to understand which parts of the page were downloaded using HTTP/2 and which were not. You can do that pretty easily using the Developer view in Google Chrome. Here's a shot of the CloudFlare blog loaded in Chrome. There's an additional Protocol fields available on the pop-up menu.</p>
@@ -208,13 +208,13 @@ www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1 spdy/3 http/1.1 http/1.0
 	<h3 id="learningabouthttp2">Learning about HTTP/2</h3>
 	<ol start="0">
 		<li>
-			<p>Short <a href="https://www.cloudflare.com/http2/what-is-http2/" target="_blank">introduction to HTTP/2</a> from CloudFlare.</p>
+			<p>Short <a href="https://www.cloudflare.com/http2/what-is-http2" target="_blank">introduction to HTTP/2</a> from CloudFlare.</p>
 		</li>
 		<li>
-			<p><a href="http://daniel.haxx.se/http2/" target="_blank">http2 explained</a> from the creator of <code>curl</code>.</p>
+			<p><a href="http://daniel.haxx.se/http2" target="_blank">http2 explained</a> from the creator of <code>curl</code>.</p>
 		</li>
 		<li>
-			<p>The <a href="http://http2.github.io/" target="_blank">home page</a> of the HTTP/2 working group with lots of information plus a list of useful <a href="https://github.com/http2/http2-spec/wiki/Tools" target="_blank">tools</a>.</p>
+			<p>The <a href="http://http2.github.io" target="_blank">home page</a> of the HTTP/2 working group with lots of information plus a list of useful <a href="https://github.com/http2/http2-spec/wiki/Tools" target="_blank">tools</a>.</p>
 		</li>
 	</ol>
 	<!--kg-card-end: markdown-->

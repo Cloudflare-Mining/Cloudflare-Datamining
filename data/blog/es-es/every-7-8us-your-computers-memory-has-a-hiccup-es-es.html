@@ -3,7 +3,7 @@
 		<figcaption>DDR3 SDRAM moderna. Fuente: BY-SA/4.0 por Kjerish</figcaption>
 	</figure>
 	<p></p>
-	<p>Durante mi reciente visita al <a href="http://www.computerhistory.org/" target="_blank">Computer History Museum (Museo de historia de los ordenadores)</a> en Mountain View, me detuve a contemplar una antigua <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory" target="_blank">memoria de núcleos magnéticos</a>.</p>
+	<p>Durante mi reciente visita al <a href="http://www.computerhistory.org" target="_blank">Computer History Museum (Museo de historia de los ordenadores)</a> en Mountain View, me detuve a contemplar una antigua <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory" target="_blank">memoria de núcleos magnéticos</a>.</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/2.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption>Fuente: BY-SA/3.0 por Konstantin Lanzet</figcaption>
@@ -187,12 +187,12 @@ gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
 	<h2 id="final"><strong>Final</strong></h2>
 	<p>Se pueden sacar dos importantes conclusiones de este trabajo.</p>
 	<p>Hemos visto que los datos de nivel bajo son bastante difíciles de analizar y parecen ser bastante ruidosos. En lugar de tratar de averiguar algo a simple vista, siempre podemos emplear FFT. Se necesita algo de optimismo al preparar los datos.</p>
-	<p>Y lo que es más importante, mostramos que a menudo es posible medir los comportamientos sutiles de hardware de un proceso de espacio de usuario simple. Este tipo de pensamiento condujo al descubrimiento de la vulnerabilidad del <a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html" target="_blank">Rowhammer original</a>, se utilizó en ataques Meltdown/Spectre y se mostró de nuevo en la <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections/" target="_blank">reciente reencarnación de la derrota de ECC de Rowhammer</a>.</p>
+	<p>Y lo que es más importante, mostramos que a menudo es posible medir los comportamientos sutiles de hardware de un proceso de espacio de usuario simple. Este tipo de pensamiento condujo al descubrimiento de la vulnerabilidad del <a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html" target="_blank">Rowhammer original</a>, se utilizó en ataques Meltdown/Spectre y se mostró de nuevo en la <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections" target="_blank">reciente reencarnación de la derrota de ECC de Rowhammer</a>.</p>
 	<p>Queda tanto más por decir. Apenas hemos arañado la superficie del funcionamiento interno del subsistema de la memoria. Recomiendo lecturas adicionales:</p>
 	<ul>
 		<li><a href="https://lackingrhoticity.blogspot.com/2015/04/l3-cache-mapping-on-sandy-bridge-cpus.html" target="_blank">L3 cache mapping on Sandy Bridge CPUs</a></li>
 		<li><a href="https://lackingrhoticity.blogspot.com/2015/05/how-physical-addresses-map-to-rows-and-banks.html" target="_blank">How physical address maps to rows and banks in DRAM</a></li>
-		<li><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd/" target="_blank">Hannu Hartikainen hacking DDR3 SO-DIMM to work... slower</a></li>
+		<li><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd" target="_blank">Hannu Hartikainen hacking DDR3 SO-DIMM to work... slower</a></li>
 	</ul>
 	<p>Finalmente, aquí hay una buena lectura sobre la vieja memoria de núcleo magnético:</p>
 	<ul>

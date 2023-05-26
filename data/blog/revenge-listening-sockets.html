@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Back in November we wrote <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike/">a blog post about one latency spike</a>. Today I'd like to share a continuation of that story. As it turns out, the misconfigured <code>rmem</code> setting wasn't the only source of added latency.</p>
+	<p>Back in November we wrote <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">a blog post about one latency spike</a>. Today I'd like to share a continuation of that story. As it turns out, the misconfigured <code>rmem</code> setting wasn't the only source of added latency.</p>
 	<p>It looked like Mr. Wolf hadn't finished his job.</p>
 	<iframe width="640" height="360" src="https://www.youtube.com/embed/h4WbjwBJXw0?t=33" frameborder="0" allowfullscreen=""></iframe>
 	<br>
@@ -66,7 +66,7 @@ udp   524288  0 173.245.2.3:53  0.0.0.0:*   0
 			<p>For TCP connections our DNS server now binds to ANY_IP address (aka: 0.0.0.0:53, *:53). We call this "bind to star". While binding to specific IP addresses is still necessary for UDP, there is little benefit in doing that for the TCP traffic. For TCP we can bind to star safely, without compromising our DDoS defenses.</p>
 		</li>
 		<li>
-			<p>We increased the <code>LHTABLE</code> size in our kernels. We are not the first to do that: Bill Sommerfeld from Google <a href="http://patchwork.ozlabs.org/patch/79014/" target="_blank">suggested that back in 2011</a>.</p>
+			<p>We increased the <code>LHTABLE</code> size in our kernels. We are not the first to do that: Bill Sommerfeld from Google <a href="http://patchwork.ozlabs.org/patch/79014" target="_blank">suggested that back in 2011</a>.</p>
 		</li>
 	</ul>
 	<p>With these changes deployed the <code>ping</code> times within our datacenter are finally flat, as they should always have been:</p>
@@ -77,6 +77,6 @@ udp   524288  0 173.245.2.3:53  0.0.0.0:*   0
 	<p>Mr Wolf has finally finished his assignment.</p>
 	<iframe width="640" height="360" src="https://www.youtube.com/embed/YgxACD-rL5c" frameborder="0"></iframe>
 	<br>
-	<p>If this sounds interesting, <a href="https://www.cloudflare.com/join-our-team/" target="_blank">consider joining us</a>. We have teams in Singapore, San Francisco and London.</p>
+	<p>If this sounds interesting, <a href="https://www.cloudflare.com/join-our-team" target="_blank">consider joining us</a>. We have teams in Singapore, San Francisco and London.</p>
 	<!--kg-card-end: markdown-->
 </div>

@@ -18,7 +18,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/site-down.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>My guess is the site got popular enough that the VPS wasn't worth paying, or the hosting provider didn't appreciate the traffic. As a well-trained Cloudflarian, my initial response was:</p>
-	<h3 id="i-could-build-one-of-these-in-about-5-minutes-using-workers-">"<em>I could build one of these in about 5 minutes using <a href="https://developers.cloudflare.com/workers/about/" target="_blank">Workers</a>!!</em>"</h3>
+	<h3 id="i-could-build-one-of-these-in-about-5-minutes-using-workers-">"<em>I could build one of these in about 5 minutes using <a href="https://developers.cloudflare.com/workers/about" target="_blank">Workers</a>!!</em>"</h3>
 	<p></p>
 	<p>OK Step 1, stand on the shoulders of giants. Has anyone open sourced a Bob Ross Lorem Ipsum Generator?</p><!--kg-card-begin: markdown-->
 	<pre><code>$npm search "bob ross"
@@ -65,9 +65,9 @@ var phrases = [...elided for clarity...]
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.cloudflarestream.com/embed/r4xu.fla9.latest.js?video=ff08fafbceefdb33aaddf48f3e204026"></script>
 	<!--kg-card-end: html-->
 	<p></p>
-	<p>So it takes about 90 secs to build a basic Worker serving dynamically generated text from the Edge. It blows me away just how productive you can be with Cloudflare Workers. With a few clicks, we have code deployed to 150+ data centers and within 10ms of 90% of the world's Internet population. And it's <em><u><a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda/">fast</a>.</u></em></p>
+	<p>So it takes about 90 secs to build a basic Worker serving dynamically generated text from the Edge. It blows me away just how productive you can be with Cloudflare Workers. With a few clicks, we have code deployed to 150+ data centers and within 10ms of 90% of the world's Internet population. And it's <em><u><a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda">fast</a>.</u></em></p>
 	<p>The more I use it, the more it reminds of Heroku, and how ease-of-deployment and the developer experience really drove adoption of that platform. </p>
-	<p>OK, so generating dynamic text is OK for an MVP, it would be nice if we at least had a UI and some options. You can use <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers/">Webpack to bundle resources</a> in your Workers, but I wanted this app to be as simple as possible, so I created a basic HTML page to capture some options, included my HTML as a string, and served it from the root of my Worker. The full code listing is on &nbsp;<a href="https://github.com/stevenpack/bob-ross-lipsum" target="_blank">Github</a>.</p><!--kg-card-begin: markdown-->
+	<p>OK, so generating dynamic text is OK for an MVP, it would be nice if we at least had a UI and some options. You can use <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">Webpack to bundle resources</a> in your Workers, but I wanted this app to be as simple as possible, so I created a basic HTML page to capture some options, included my HTML as a string, and served it from the root of my Worker. The full code listing is on &nbsp;<a href="https://github.com/stevenpack/bob-ross-lipsum" target="_blank">Github</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const ui = '...basic html page...';
 
 async function handleRequest(request) {
@@ -91,7 +91,7 @@ async function handleRequest(request) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>The team is now unblocked. Development can continue. Here's the full version in action. You can play with it live at: <a href="https://www.bobrossloremipsum.com/" target="_blank">https://www.bobrossloremipsum.com</a></p>
+	<p>The team is now unblocked. Development can continue. Here's the full version in action. You can play with it live at: <a href="https://www.bobrossloremipsum.com" target="_blank">https://www.bobrossloremipsum.com</a></p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/bob-ross-worker-full.gif" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>

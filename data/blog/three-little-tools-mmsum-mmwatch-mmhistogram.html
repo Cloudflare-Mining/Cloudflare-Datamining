@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>In a recent blog post, my colleague <a href="https://blog.cloudflare.com/author/marek-majkowski/">Marek</a> talked about some <a href="https://blog.cloudflare.com/ssdp-100gbps/">SSDP-based DDoS</a> activity we'd been seeing recently. In that blog post he used a tool called <code>mmhistogram</code> to output an ASCII histogram.</p>
+	<p>In a recent blog post, my colleague <a href="https://blog.cloudflare.com/author/marek-majkowski">Marek</a> talked about some <a href="https://blog.cloudflare.com/ssdp-100gbps">SSDP-based DDoS</a> activity we'd been seeing recently. In that blog post he used a tool called <code>mmhistogram</code> to output an ASCII histogram.</p>
 	<p>That tool is part of a small suite of command-line tools that can be handy when messing with data. Since a reader asked for them to be open sourced... here they are.</p>
 	<h3 id="mmhistogram">mmhistogram</h3>
 	<p>Suppose you have the following CSV of the ages of major Star Wars characters at the time of Episode IV:</p>
@@ -43,7 +43,7 @@ Age:
    256 |                                                   0
    512 |                                      ************ 2
 </code></pre>
-	<p>Handy for getting a quick sense of the data. (These charts are inspired by the <a href="https://blog.cloudflare.com/revenge-listening-sockets/">ASCII output from systemtap</a>).</p>
+	<p>Handy for getting a quick sense of the data. (These charts are inspired by the <a href="https://blog.cloudflare.com/revenge-listening-sockets">ASCII output from systemtap</a>).</p>
 	<h3 id="mmwatch">mmwatch</h3>
 	<p>The <code>mmwatch</code> tool is handy if you want to look at output from a command-line tool that provides some snapshot of values, but need to have a rate.</p>
 	<p>For example, here's <code>df -H</code> on my machine:</p>
@@ -67,6 +67,6 @@ map auto_home          0B     0B     0B   100%        0       0  100%   /home
 	<pre><code>$ curl -s 'https://environment.data.gov.uk/flood-monitoring/id/measures?parameter=rainfall' | jq -e '.items[].latestReading.value+0' | ./mmsum
 40.2
 </code></pre>
-	<p>All these tools can be found on the Cloudflare <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-06-29-ssdp/" target="_blank">Github</a>.</p>
+	<p>All these tools can be found on the Cloudflare <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-06-29-ssdp" target="_blank">Github</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>

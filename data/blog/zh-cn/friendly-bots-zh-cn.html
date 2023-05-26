@@ -9,7 +9,7 @@
 	<p><strong>IP 列表</strong></p>
 	<p>给我们发送机器人使用的 IP 地址列表。不一定是静态列表，您可以向我们提供动态变化页面，提供 URL 即可，我们会每天获取更新。这些 IP 必须公开记录并专属于您的机器人。如果您提供共享 IP 地址（例如代理服务使用的 IP 地址），我们的系统会检测到风险并拒绝合作。我们希望避免意外使用其他流量。</p>
 	<p><strong>rDNS</strong></p>
-	<p>这很有趣。您肯定听说过 <a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">DNS</a>：互联网的电话簿，帮助将域名映射到 IP 地址。<a href="https://www.blumira.com/glossary/reverse-dns-rdns/" target="_blank">rDNS</a> 则相反，允许我们利用 IP 地址推断关联的域名。</p>
+	<p>这很有趣。您肯定听说过 <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank">DNS</a>：互联网的电话簿，帮助将域名映射到 IP 地址。<a href="https://www.blumira.com/glossary/reverse-dns-rdns" target="_blank">rDNS</a> 则相反，允许我们利用 IP 地址推断关联的域名。</p>
 	<p>换句话说：给我们一个主机名后缀，在许多情况下，我们都能验证机器人的身份！</p>
 	<p><strong>用户代理 + ASN 验证</strong></p>
 	<p>在一些情况下，我们可以使用相同的用户代理验证来自同一网络（称为“ASN”）的机器人。请注意，我们不能总是这样做，因为流量变得更容易伪造。但我们通常有足够的信心才会使用这种验证方法。</p>
@@ -51,7 +51,7 @@
 	<p>如果您的网站出现爬虫，这是好事吗？对某些人来说，是好事，因为问题得到了暴露。对另一些人来说，则不是好事，因为爬虫可能会获取数据。针对迄今为止的每个机器人验证提交，我们都仔细考虑了这个问题。</p>
 	<p>现在：您需要自己做选择。友好机器人把控制权交到您手中，允许您在域级别对机器人分类。我们将继续在全局级别验证机器人（如果行为在客观上是善意的）。</p>
 	<h2 id="cloudflare-radar">Cloudflare Radar</h2>
-	<p>下面是一个有趣福利：除了今天宣布推出的友好机器人，我们还对 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 进行了一些更改。</p>
+	<p>下面是一个有趣福利：除了今天宣布推出的友好机器人，我们还对 <a href="https://radar.cloudflare.com" target="_blank">Cloudflare Radar</a> 进行了一些更改。</p>
 	<p>您马上就能看到 <a href="https://radar.cloudflare.com/verified-bots" target="_blank">Radar 已验证机器人</a>名单。这令人非常兴奋；我们之前从未发布过如此详细的名单。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-20.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>所有数据实时更新。新的机器人通过验证后，就会显示在 Radar 模块中。</p>

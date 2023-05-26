@@ -3,8 +3,8 @@
 	<p><em>This is an adapted transcript of a talk I gave at Promcon 2018. You can find slides with additional information on our Prometheus deployment and presenter notes <a href="https://docs.google.com/presentation/d/1420m05QANTxrCPvwsLZSHWRTvqOsxCVRzJsVp9awoFg/edit?usp=sharing" target="_blank">here</a>. There's also a <a href="https://www.youtube.com/watch?v=VvJx0WTiGcA&amp;feature=youtu.be&amp;t=1h15m40s" target="_blank">video</a>.</em></p>
 	<p><em>Tip: you can click on the image to see the original large version.</em></p>
 	<p><img src="https://blog.cloudflare.com/content/images/2021/05/1-1.jpeg" alt="1-1" loading="lazy"></p>
-	<p>Here at Cloudflare we use <a href="https://prometheus.io/" target="_blank">Prometheus</a> to collect operational metrics. We run it on hundreds of servers and ingest millions of metrics per second to get insight into our network and provide the best possible service to our customers.</p>
-	<p>Prometheus metric format is popular enough, it's now being standardized as <a href="https://openmetrics.io/" target="_blank">OpenMetrics</a> under Cloud Native Computing Foundation. It's exciting to see convergence in long fragmented metrics landscape.</p>
+	<p>Here at Cloudflare we use <a href="https://prometheus.io" target="_blank">Prometheus</a> to collect operational metrics. We run it on hundreds of servers and ingest millions of metrics per second to get insight into our network and provide the best possible service to our customers.</p>
+	<p>Prometheus metric format is popular enough, it's now being standardized as <a href="https://openmetrics.io" target="_blank">OpenMetrics</a> under Cloud Native Computing Foundation. It's exciting to see convergence in long fragmented metrics landscape.</p>
 	<p>In this blog post we'll talk about how we measure low level metrics and share a tool that can help you to get similar understanding of your systems.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/08/2.jpg" alt="2" loading="lazy"></p>
 	<p>There are two main exporters one can use to get some insight into a Linux system performance.</p>
@@ -37,7 +37,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2018/08/10.jpg" alt="10" loading="lazy"></p>
 	<p>And if you were looking closely at these histograms, you may have noticed values on the Y axis are kind of high. Before the replacement you can see values in 0.5s to 1.0s bucket.</p>
 	<p>Tech specs for the left disk give you 50 microsecond read/write latency and on the right you get a slight decrease to 36 microseconds. That’s not what we see on the histogram at all. Sometimes you can spot this with fio in testing, but production workloads may have patterns that are difficult to replicate and have very different characteristics. Histograms show how it is.</p>
-	<p>Even a few slow requests can hurt overall numbers if you're not careful with IO. We've blogged <a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day/">how this affected our cache latency and how we worked around this</a> recently.</p>
+	<p>Even a few slow requests can hurt overall numbers if you're not careful with IO. We've blogged <a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">how this affected our cache latency and how we worked around this</a> recently.</p>
 	<p>By now you should be convinced that histograms are clearly superior for events where you care about timings of individual events.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/08/11.jpg" alt="11" loading="lazy"></p>
 	<p>And if you wanted to switch all your storage latency measurements to histograms, I have tough news for you: Linux kernel only provides counters for <code>node_exporter</code>.</p>
@@ -59,7 +59,7 @@
 		<li>And finally it has to be safe, we don’t want to crash large chunk of the internet we're responsible for to get some metrics, even if they are interesting</li>
 	</ul>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/08/16.jpg" alt="16" loading="lazy"></p>
-	<p>And it turns out, there’s a solution called eBPF. It’s a low overhead sandboxed user-defined bytecode running in the kernel. It can never crash, hang or interfere with the kernel negatively. That sounds kind of vague, but here are <a href="http://www.brendangregg.com/ebpf.html" target="_blank">two</a> <a href="https://cilium.readthedocs.io/en/v1.1/bpf/" target="_blank">links</a> that dive into the details explaining how this works.</p>
+	<p>And it turns out, there’s a solution called eBPF. It’s a low overhead sandboxed user-defined bytecode running in the kernel. It can never crash, hang or interfere with the kernel negatively. That sounds kind of vague, but here are <a href="http://www.brendangregg.com/ebpf.html" target="_blank">two</a> <a href="https://cilium.readthedocs.io/en/v1.1/bpf" target="_blank">links</a> that dive into the details explaining how this works.</p>
 	<p>The main part is that it’s already included with the Linux kernel. It’s used in networking subsystem and things like seccomp rules, but as a general “run safe code in the kernel” it has many uses beyond that.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/08/17.jpg" alt="17" loading="lazy"></p>
 	<p>We said it’s a bytecode and this is how it looks. The good part is that you never have to write this by hand.</p>
@@ -95,7 +95,7 @@
 	<p>This is objectively quite verbose and perhaps some things can be inferred instead of being explicit.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/08/25.jpg" alt="25" loading="lazy"></p>
 	<p>This is an example graph we can get out of this exporter config.</p>
-	<p>Why can this be useful? You may remember our <a href="https://blog.cloudflare.com/tracing-system-cpu-on-debian-stretch/">blog post about our tracing of a weird bug during OS upgrade from Debian Jessie to Stretch</a>.</p>
+	<p>Why can this be useful? You may remember our <a href="https://blog.cloudflare.com/tracing-system-cpu-on-debian-stretch">blog post about our tracing of a weird bug during OS upgrade from Debian Jessie to Stretch</a>.</p>
 	<p>TL;DR is that systemd bug broke TCP segmentation offload on vlan interface, which increased CPU load 5x and introduced lots of interesting side effects up to memory allocation stalls. You do not want to see that allocating one page takes 12 seconds, but that's exactly what we were seeing.</p>
 	<p>If we had timer metrics enabled, we would have seen the clear change in metrics sooner.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/08/27.jpg" alt="27" loading="lazy"></p>
@@ -118,7 +118,7 @@
 	<p>In <code>cAdvisor</code> you have a counter with this delay, here you have a histogram of actual values of that delay.</p>
 	<p>Understanding of how you can be delayed is important for understanding the causes of externally visible latency. Check out <a href="http://www.brendangregg.com/blog/2017-03-16/perf-sched.html" target="_blank">another blog post by Brendan Gregg</a> to see how you can further trace and understand scheduling delays with Linux perf tool. It's quite surprising how high delay can be on even an even lighty loaded machine.</p>
 	<p>It also helps to have a metrics that you can observe if you change any scheduling sysctls in the kernel. The law is that you can never trust internet or even your own judgement to change any sysctls. If you can’t measure the effects, you are lying to yourself.</p>
-	<p>There’s also <a href="https://www.scylladb.com/2016/06/10/read-latency-and-scylla-jmx-process/" target="_blank">another great post from Scylla people</a> about their finds. We were able to apply their sysctls and observe results, which was quite satisfying.</p>
+	<p>There’s also <a href="https://www.scylladb.com/2016/06/10/read-latency-and-scylla-jmx-process" target="_blank">another great post from Scylla people</a> about their finds. We were able to apply their sysctls and observe results, which was quite satisfying.</p>
 	<p>Things like pinning processes to CPUs also affects scheduling, so this metric is invaluable for such experiments.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/08/33.jpg" alt="33" loading="lazy"></p>
 	<p>The examples we gave are not the only ones possible. In addition to IPC and LLC metrics there are around 500 hardware metrics you can get on a typical server.</p>
@@ -141,10 +141,10 @@
 	<p>GitHub: <a href="https://github.com/cloudflare/ebpf_exporter" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></p>
 	<p>Reading materials on eBPF:</p>
 	<ul>
-		<li><a href="https://iovisor.github.io/bcc/" target="_blank">https://iovisor.github.io/bcc/</a></li>
+		<li><a href="https://iovisor.github.io/bcc" target="_blank">https://iovisor.github.io/bcc/</a></li>
 		<li><a href="https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md" target="_blank">https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md</a></li>
 		<li><a href="http://www.brendangregg.com/ebpf.html" target="_blank">http://www.brendangregg.com/ebpf.html</a></li>
-		<li><a href="http://docs.cilium.io/en/latest/bpf/" target="_blank">http://docs.cilium.io/en/latest/bpf/</a></li>
+		<li><a href="http://docs.cilium.io/en/latest/bpf" target="_blank">http://docs.cilium.io/en/latest/bpf/</a></li>
 	</ul>
 	<p><em>While this post was in drafts, we added another example for <a href="https://github.com/cloudflare/ebpf_exporter/pull/35" target="_blank">tracing port exhaustion issues</a> and that took under 10 minutes to write.</em></p>
 	<!--kg-card-end: markdown-->

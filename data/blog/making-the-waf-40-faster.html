@@ -1,20 +1,20 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/making-the-waf-40-faster-zh-cn/">简体中文</a>.</small></em></p>
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/making-the-waf-40-faster-zh-cn">简体中文</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
-	<p>Cloudflare’s <a href="https://www.cloudflare.com/waf/" target="_blank">Web Application Firewall (WAF)</a> protects against malicious attacks aiming to exploit vulnerabilities in web applications. It is continuously updated to provide comprehensive coverage against the most recent threats while ensuring a low false positive rate.</p>
+	<p>Cloudflare’s <a href="https://www.cloudflare.com/waf" target="_blank">Web Application Firewall (WAF)</a> protects against malicious attacks aiming to exploit vulnerabilities in web applications. It is continuously updated to provide comprehensive coverage against the most recent threats while ensuring a low false positive rate.</p>
 	<p>As with all Cloudflare security products, the WAF is designed to not sacrifice performance for security, but there is always room for improvement.</p>
-	<p>This blog post provides a brief overview of the latest performance improvements that were rolled out to our customers. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">how a Web Application Firewall (WAF) works</a>.</p>
+	<p>This blog post provides a brief overview of the latest performance improvements that were rolled out to our customers. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank">how a Web Application Firewall (WAF) works</a>.</p>
 	<h2 id="transitioning-from-pcre-to-re2">Transitioning from PCRE to RE2</h2>
 	<p>Back in July 2019, the WAF transitioned from using a regular expression engine based on <a href="https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions" target="_blank">PCRE</a> to <a href="https://github.com/rust-lang/regex" target="_blank">one inspired by RE2</a>, which is based around using a <a href="https://en.wikipedia.org/wiki/Deterministic_finite_automaton" target="_blank">deterministic finite automaton (DFA)</a> instead of backtracking algorithms. This change came as a result of an outage where an update added a regular expression which backtracked enormously on certain HTTP requests, resulting in exponential execution time.</p>
 	<p>After the migration was finished, we saw no measurable difference in CPU consumption at the edge, but noticed execution time outliers in the 95th and 99th percentiles decreased, something we expected given RE2's guarantees of a linear time execution with the size of the input.</p>
-	<p>As the <a href="https://blog.cloudflare.com/the-problem-with-event-loops/">WAF engine uses a thread pool</a>, we also had to implement and tune a regex cache shared between the threads to avoid excessive memory consumption (the first implementation turned out to use a staggering amount of memory).</p>
+	<p>As the <a href="https://blog.cloudflare.com/the-problem-with-event-loops">WAF engine uses a thread pool</a>, we also had to implement and tune a regex cache shared between the threads to avoid excessive memory consumption (the first implementation turned out to use a staggering amount of memory).</p>
 	<p>These changes, along with others outlined in the <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/#what-s-happened-since-last-tuesday">postmortem blog post</a>, helped us improve reliability and safety at the edge and have the confidence to explore further performance improvements.</p>
 	<p>But while we’ve highlighted regular expressions, they are only one of the many capabilities of the WAF engine.</p>
 	<h2 id="matching-stages">Matching Stages</h2>
-	<p>When an HTTP request reaches the WAF, it gets organized into several logical sections to be analyzed: method, path, headers, and body. These sections are all stored in <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua/">Lua variables</a>. If you are interested in more detail on the implementation of the WAF itself you can <a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">watch this old presentation</a>.</p>
+	<p>When an HTTP request reaches the WAF, it gets organized into several logical sections to be analyzed: method, path, headers, and body. These sections are all stored in <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Lua variables</a>. If you are interested in more detail on the implementation of the WAF itself you can <a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">watch this old presentation</a>.</p>
 	<p>Before matching these variables against specific malicious request signatures, some transformations are applied. These transformations are functions that range from simple modifications like lowercasing strings to complex tokenizers and parsers looking to fingerprint certain malicious payloads.</p>
-	<p>As the WAF currently uses a variant of the <a href="https://www.modsecurity.org/" target="_blank">ModSecurity</a> syntax, this is what a rule might look like:</p><!--kg-card-begin: markdown-->
+	<p>As the WAF currently uses a variant of the <a href="https://www.modsecurity.org" target="_blank">ModSecurity</a> syntax, this is what a rule might look like:</p><!--kg-card-begin: markdown-->
 	<pre><code>SecRule REQUEST_BODY "@rx /\x00+evil" "drop, t:urlDecode, t:lowercase"
 </code></pre>
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
@@ -62,7 +62,7 @@ rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )
 	</figure>
 	<p>The WAF engine implements memoization and the rules take advantage of it, but there’s always room to increase cache hits.</p>
 	<h2 id="rewriting-rules-and-results">Rewriting Rules and Results</h2>
-	<p>Cloudflare has a <a href="https://developers.cloudflare.com/waf/change-log/" target="_blank">very regular cadence of releasing updates</a> and new rules to the Managed Rulesets. However, as more rules are added and new functions implemented, the memoization cache hit rate tends to decrease.</p>
+	<p>Cloudflare has a <a href="https://developers.cloudflare.com/waf/change-log" target="_blank">very regular cadence of releasing updates</a> and new rules to the Managed Rulesets. However, as more rules are added and new functions implemented, the memoization cache hit rate tends to decrease.</p>
 	<p>To improve this, we first looked into the rules taking the most <a href="https://en.wikipedia.org/wiki/Elapsed_real_time" target="_blank">wall-clock time</a> to execute using some of our performance metrics:</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/06/execution-time.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Execution time per rule</figcaption>

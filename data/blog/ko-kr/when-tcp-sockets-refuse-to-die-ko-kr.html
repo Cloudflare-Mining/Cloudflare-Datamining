@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<p><em>This is a Korean translation of a <a href="https://blog.cloudflare.com/when-tcp-sockets-refuse-to-die/">existing post</a> by <a href="https://blog.cloudflare.com/author/marek-majkowski/">Marek Majkowski</a>, translated by <a href="https://blog.cloudflare.com/author/junho/">Junho Choi</a>.</em></p>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum 서버</a> 작업을 하는 동안 이상한 점을 알게 되었습니다. 닫혔어야 할 TCP 소켓이 계속 남아있는 것이었습니다. 사실 TCP 소켓이 언제 타임아웃되는지 제대로 알고 있지 못하다는 점을 알게 된 것입니다!</p><!--kg-card-begin: markdown-->
+	<p><em>This is a Korean translation of a <a href="https://blog.cloudflare.com/when-tcp-sockets-refuse-to-die">existing post</a> by <a href="https://blog.cloudflare.com/author/marek-majkowski">Marek Majkowski</a>, translated by <a href="https://blog.cloudflare.com/author/junho">Junho Choi</a>.</em></p>
+	<p><a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank">Spectrum 서버</a> 작업을 하는 동안 이상한 점을 알게 되었습니다. 닫혔어야 할 TCP 소켓이 계속 남아있는 것이었습니다. 사실 TCP 소켓이 언제 타임아웃되는지 제대로 알고 있지 못하다는 점을 알게 된 것입니다!</p><!--kg-card-begin: markdown-->
 	<p><img src="https://blog.cloudflare.com/content/images/2019/09/Tcp_state_diagram_fixed_new.svga.png" alt="Tcp_state_diagram_fixed_new.svga" loading="lazy"></p>
 	<center><small><a href="https://commons.wikimedia.org/wiki/File:Tcp_state_diagram_fixed_new.svg" target="_blank">Image</a> by Sergiodc2 CC BY SA 3.0</small></center>
 	<!--kg-card-end: markdown-->
@@ -237,7 +237,7 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)</code></pre>
 	<h2 id="-">어플리케이션 지정 타임아웃에 관하여</h2>
 	<p>예전에 흥미로운 이야기를 공유한 적이 있습니다.</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/the-curious-case-of-slow-downloads/">The curious case of slow downloads</a></li>
+		<li><a href="https://blog.cloudflare.com/the-curious-case-of-slow-downloads">The curious case of slow downloads</a></li>
 	</ul>
 	<p>우리의 HTTP 서버는 어플리케이션이 관리하는 타임아웃이 초과된 뒤에 연결을 끊었습니다. 이것은 버그였습니다 - 느린 연결은 천천히 제대로 송신 버퍼를 비워야 하고 있었을 텐데 어플리케이션 서버가 그것을 알지 못한 것입니다.</p>
 	<p>의도하던 것이 아닐 지라도 우리는 느린 다운로드를 강제로 중단 하였습니다. 우리는 클라이언트 연결이 아직 살아 있는지를 확인하고 싶었을 뿐입니다. 이 경우 어플리케이션이 관리하는 타임아웃에 의존하기 보다는 TCP_USER_TIMEOUT을 쓰는 것이 더 나았을 것입니다.</p>
@@ -262,7 +262,7 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)</code></pre>
         # 전송속도 96Kbps 이상, ok!
     else:
         # 소켓이 너무 느림...</code></pre>
-	<p>이 로직을 개선할 방법이 있을 것입니다. <a href="https://lwn.net/Articles/560082/" target="_blank">TCP_NOTSENT_LOWAT</a>을 사용할 수 있겠지만 송신 버퍼가 상대적으로 비어 있을 경우에만 일반적으로 유용 합니다. 그렇다면 데이터가 송신 되었을 때를 알려 주는 <a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank">SO_TIMESTAMPING</a> 인터페이스를 사용할 수도 있을 것입니다. 마지막으로 소켓에 데이터를 다 보냈다면 그냥 <code>close()</code>를 호출해서 남은 소켓 처리를 운영체제로 넘길 수도 있습니다. 이런 소켓은 완전히 비워질 때 까지 FIN-WAIT-1 이나 LAST-ACK 상태로 남아 있을 것입니다.</p>
+	<p>이 로직을 개선할 방법이 있을 것입니다. <a href="https://lwn.net/Articles/560082" target="_blank">TCP_NOTSENT_LOWAT</a>을 사용할 수 있겠지만 송신 버퍼가 상대적으로 비어 있을 경우에만 일반적으로 유용 합니다. 그렇다면 데이터가 송신 되었을 때를 알려 주는 <a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank">SO_TIMESTAMPING</a> 인터페이스를 사용할 수도 있을 것입니다. 마지막으로 소켓에 데이터를 다 보냈다면 그냥 <code>close()</code>를 호출해서 남은 소켓 처리를 운영체제로 넘길 수도 있습니다. 이런 소켓은 완전히 비워질 때 까지 FIN-WAIT-1 이나 LAST-ACK 상태로 남아 있을 것입니다.</p>
 	<h2 id="--1">끝으로</h2>
 	<p>이 글에서는 TCP 연결에서 상대방이 없어졌는지를 알아보는 다섯가지 방법에 대해서 이야기 하였습니다:</p>
 	<ul>

@@ -51,9 +51,9 @@
 	<p><strong>Next</strong> is IP address obfuscation. You are probably familiar with the IP address as a dotted quad? 123.123.123.123 Well, IP addresses can also be expressed in a number of other formats which browsers will accept. By combining this with the “username:password@” trick above, an attacker can effectively hide his true destination. Below are four different methods for presenting one of Google’s IP addresses -- 74.125.131.105</p>
 	<ul>
 		<li><a href="http://www.safesite.com@74.125.131.105" target="_blank">http://www.safesite.com@74.125.131.105</a></li>
-		<li><a href="http://www.safesite.com@1249739625/" target="_blank">http://www.safesite.com@1249739625/</a></li>
-		<li><a href="http://www.safesite.com@0x4a.0x7d.0x83.0x69/" target="_blank">http://www.safesite.com@0x4a.0x7d.0x83.0x69/</a></li>
-		<li><a href="http://www.safesite.com@0112.0175.0203.0151/" target="_blank">http://www.safesite.com@0112.0175.0203.0151/</a></li>
+		<li><a href="http://www.safesite.com@74.125.131.105" target="_blank">http://www.safesite.com@1249739625/</a></li>
+		<li><a href="http://www.safesite.com@74.125.131.105" target="_blank">http://www.safesite.com@0x4a.0x7d.0x83.0x69/</a></li>
+		<li><a href="http://www.safesite.com@74.125.131.105" target="_blank">http://www.safesite.com@0112.0175.0203.0151/</a></li>
 	</ul>
 	<p>All of these URLs go to 74.125.131.150.</p>
 	<p><strong>Finally</strong> we have Punycode and Homoglyph based obfuscation. Punycode was created as a way for international characters to map to valid characters for DNS, e.g., “café.com”. Using punycode this would be represented as xn--caf-dma.com. As mentioned at the start, homoglyphs are symbols which closely resemble other symbols, like 0 and O, or I and l.</p>
@@ -69,7 +69,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2015/04/Screen-Shot-2015-04-21-at-5-11-55-PM.png" alt="WordPress Security Notice" loading="lazy"></p>
 	<p>While we can’t confirm for certain that this is the vulnerability our phisher was using, it seems highly likely given the version numbers compromised.</p>
 	<p>Over the last few hours, we've worked closely with our friends at Bluehost to identify the remaining affected sites compromised by this phisher so they could take them offline. A quick response like this essentially renders all remaining phishing emails in this current campaign harmless. The need to quickly neutralize Phishing sites is why CloudFlare engineers developed our own process for rapidly identifying and tagging suspected compromised sites. When a site on our network is flagged as phishing site, we impose an interstitial page that serves to both to warn potential visitors and give the site owner time to fix the issue.</p>
-	<p>You can read more about our own process in this <a href="https://blog.cloudflare.com/127760418/">blog post</a>.</p>
+	<p>You can read more about our own process in this <a href="https://blog.cloudflare.com/127760418">blog post</a>.</p>
 	<h3 id="howcustomerscanstaysafe">How customers can stay safe</h3>
 	<p>By enabling the CloudFlare's WAF, CloudFlare customers have some protection against the sort of cross-site scripting vulnerability involved in this attack. However, anyone can still fall victim to a phishing email. Below are 7 tips to help you stay safe:</p>
 	<ul>

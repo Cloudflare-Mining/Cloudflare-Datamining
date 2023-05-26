@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><em>This blog post originally appeared as a <a href="http://www.rackspace.com/blog/protect-your-sites-with-rapidly-deployed-waf-rules/" target="_blank">guest post</a> on the <a href="http://www.rackspace.com/blog/" target="_blank">Rackspace blog</a></em></p>
+	<p><em>This blog post originally appeared as a <a href="http://www.rackspace.com/blog/protect-your-sites-with-rapidly-deployed-waf-rules" target="_blank">guest post</a> on the <a href="http://www.rackspace.com/blog" target="_blank">Rackspace blog</a></em></p>
 	<p>An attack on your site could be catastrophic. Even a small attack can have major implications. Responding quickly to an attack is imperative.</p>
 	<p>In August 2013, we at CloudFlare rolled out a new global <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Web Application Firewall</a> (WAF) that runs common sets of firewall rules such as the open source <a href="https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project" target="_blank">OWASP</a> rules that protect against SQL injection, cross-site scripting and more. But the WAF also has a custom rule language that CloudFlare’s support engineers use to write one-of-a-kind rules to protect specific customers or specific software.</p>
 	<p>Since the deployment of the new WAF we’ve rolled out many global and customer-specific rules to protect websites from attacks. This blog post looks at a few of them and the process of getting a custom rule deployed.</p>
@@ -49,9 +49,9 @@ ion%20Nous%20ne%20pardonnons%20pas%20Nous%20n%E2%80%99oublions%20pas
 	<p>Other attacks are likely to be much more widespread and not focused on a single customer. These attacks are often directed at specific technologies such as WordPress, Joomla or other software.</p>
 	<p>Back in October a <a href="http://blog.whmcs.com/?t=79427" target="_blank">zero-day exploit for WHMCS</a> (the popular web hosting management software) was released. CloudFlare patched that by <a href="https://blog.cloudflare.com/patching-a-whmcs-zero-day-on-day-zero">deploying</a> a complex WAF rule on the day the zero-day became public. The WHMCS maintainers also patched the problem.</p>
 	<p>Shortly after that, two new WHMCS vulnerabilities were found and we patched them as well by deploying or modifying WHMCS WAF rules.</p>
-	<p>We’ve also added custom rules to protect Plone-based web sites, a PHP 5.x <a href="https://www.exploit-db.com/exploits/29290/" target="_blank">remote code execution</a> exploit, and a number of other rules to protect against common botnets and other attack software.</p>
+	<p>We’ve also added custom rules to protect Plone-based web sites, a PHP 5.x <a href="https://www.exploit-db.com/exploits/29290" target="_blank">remote code execution</a> exploit, and a number of other rules to protect against common botnets and other attack software.</p>
 	<p>All those are on top of the generic protection offered by the 2,372 other rules that CloudFlare’s WAF runs to check every request.</p>
 	<h3 id="conclusion">Conclusion</h3>
-	<p>The flexibility of the CloudFlare WAF language and the ability to deploy WAF rules in seconds means we can respond to attacks very rapidly. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">Web Application Firewalls</a>.</p>
+	<p>The flexibility of the CloudFlare WAF language and the ability to deploy WAF rules in seconds means we can respond to attacks very rapidly. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank">Web Application Firewalls</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>

@@ -1,14 +1,14 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/BDES-1018_Cloudflare_Object_Workers_Birthday_Week_Blog_Hero.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>在 <a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">2017 年推出 Cloudflare Workers®</a> 时，我们心怀着一个激进的愿景：在网络边缘运行的代码不仅要能够提高性能，而且比在单个数据中心运行的代码更容易部署，运行成本也要更低。这个愿景意味着，Workers 关乎的不仅是边缘计算，也体现了我们正在重新构想应用程序的构建方式。</p>
-	<p>使用“无服务器”方法让我们能够极大简化部署，使用<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">隔离技术</a>则使我们能够以更低的成本交付无服务器，而且没有令其他提供商却步的<a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/">漫长冷启动</a>。通过 <a href="https://blog.cloudflare.com/workers-kv-is-ga/">Workers KV</a>，我们为平台添加了易于使用并且最终一致的边缘存储。</p>
+	<p>在 <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">2017 年推出 Cloudflare Workers®</a> 时，我们心怀着一个激进的愿景：在网络边缘运行的代码不仅要能够提高性能，而且比在单个数据中心运行的代码更容易部署，运行成本也要更低。这个愿景意味着，Workers 关乎的不仅是边缘计算，也体现了我们正在重新构想应用程序的构建方式。</p>
+	<p>使用“无服务器”方法让我们能够极大简化部署，使用<a href="https://blog.cloudflare.com/cloud-computing-without-containers">隔离技术</a>则使我们能够以更低的成本交付无服务器，而且没有令其他提供商却步的<a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers">漫长冷启动</a>。通过 <a href="https://blog.cloudflare.com/workers-kv-is-ga">Workers KV</a>，我们为平台添加了易于使用并且最终一致的边缘存储。</p>
 	<p>但直到今天，依然无法彻底在边缘管理具有强一致性的状态，或者在多个客户端之间进行实时协调。因此，应用程序的这些部分仍然必须托管在其他位置。</p>
 	<p>Durable Object 为存储和状态带来了一种真正的无服务器方法：具有一致、低延迟和分布式的特点，而且维护和扩展也毫不费力。它们还提供了一种在客户端之间进行协调的简便方法，不论是特定聊天室中的用户、特定文档的编辑器，还是特定智能家居中的 IoT 设备。Durable Object 是 Workers 堆栈中缺少的部分，它使整个应用程序可以完全在边缘上运行，彻底摆脱集中式“源站”服务器。</p>
 	<p>今天，我们将启动 Durable Object 的封闭测试。</p><!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">申请 Beta 测试邀请 » »</a><!--kg-card-end: html-->
 	<h3 id="-durable-object-">什么是“Durable Object”？</h3>
 	<p>坦率地说，为此产品取名颇为棘手，因为它与当今广泛使用的其他任何云技术都不一样。这个众所周知的事物披着许多层外衣，但最终我们决定采用“Unique Durable Object”，或简写为“Durable Object”。我来通过分解进行阐释：</p>
 	<ul>
-		<li>Object：Durable Object 是面向对象编程意义上的对象。Durable Object 是类的实例，也就是用 JavaScript（或<a href="https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support/">您选择的语言</a>）编写的类定义。类具有定义其公共接口的方法，而对象是此类的实例，将代码与某些私有状态结合在一起。</li>
+		<li>Object：Durable Object 是面向对象编程意义上的对象。Durable Object 是类的实例，也就是用 JavaScript（或<a href="https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support">您选择的语言</a>）编写的类定义。类具有定义其公共接口的方法，而对象是此类的实例，将代码与某些私有状态结合在一起。</li>
 		<li>Unique：每个对象具有全局唯一标识符。这个对象一个时间上仅存在于整个世界的一个位置。在世界中任何地方运行并知道该对象 ID 的 Worker 都可以向其发送消息。所有这些消息最终都传递到同一个地方。</li>
 		<li>Durable：与 JavaScript 中的一般对象不同，Durable Object 可以将持久状态存储在磁盘上。每个对象的持久状态都是其私有的，这意味着不仅可以快速访问存储，而且对象甚至可以安全地在内存中维护状态的一致副本，并且毫无延迟地对其进行操作。内存中对象在空闲时关闭，并在以后需要时重新创建。</li>
 	</ul>
@@ -136,7 +136,7 @@ let response = await COUNTER_NAMESPACE.get(id).fetch(request);
 	<p>总之，可以在 Durable Object 基础上使用 CRDT。如果对象的状态适合用 CRDT 来处理，则应用程序可以将该对象复制到为不同区域服务的多个对象中，然后通过 CRDT 同步其状态。如果值得，那么应用程序可以将它作为优化来实施。</p>
 	<h3 id="--8">最后一点，状态变为“无服务器”意味着什么？</h3>
 	<p>传统上看，无服务器专注于无状态计算。在无服务器架构中，计算的逻辑单元简化为一种细粒度的事务：单个事件，例如 HTTP请求。这特别有效，因为事件恰好是我们在设计服务器应用程序时考虑的逻辑工作单元。没有人以“服务器”、“容器”或“进程”为单位来考虑业务逻辑，我们考虑的是事件。正是由于这种语义上的一致，无服务器成功地将维护服务器的大量后勤负担从开发人员转交给云提供商。</p>
-	<p>然而，<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless/" target="_blank">无服务器架构</a>在传统上是无状态的。每个事件都独立执行。如果要存储数据，您必须连接到传统数据库。如果要在请求之间进行协调，您必须连接到提供该功能的其他服务。这些外部服务往往重新带来无服务器原本要避免的运营问题。开发人员和服务运营商不仅要操心扩展数据库以处理不断增加的负载，还要操心如何将其数据库拆分为“区域”以有效处理全局流量。后者可能会特别麻烦。</p>
+	<p>然而，<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank">无服务器架构</a>在传统上是无状态的。每个事件都独立执行。如果要存储数据，您必须连接到传统数据库。如果要在请求之间进行协调，您必须连接到提供该功能的其他服务。这些外部服务往往重新带来无服务器原本要避免的运营问题。开发人员和服务运营商不仅要操心扩展数据库以处理不断增加的负载，还要操心如何将其数据库拆分为“区域”以有效处理全局流量。后者可能会特别麻烦。</p>
 	<p>那么，我们如何将无服务器理念运用到状态呢？正如无服务器计算将计算拆分为细粒度的片段，无服务器状态将状态拆分成细粒度的片段。同样，我们试图寻找一种状态单元来与应用程序中的逻辑单元相对应。应用程序中的逻辑状态单元不是“表”、“集合”或“图形”。相反，它取决于应用程序。聊天应用程序中的逻辑状态单元是聊天室，在线电子表格编辑器中的逻辑状态单元是电子表格，而在线商店中的逻辑状态单元是购物车。通过使存储层提供的物理存储单元与应用程序中固有的逻辑状态单元相匹配，我们可以允许底层存储提供者（Cloudflare）负责处理各种以前属于开发人员职责的诸多后勤问题，包括可扩展性和区域性。</p>
 	<p>这便是 Durable Object 的功用。</p>
 </div>

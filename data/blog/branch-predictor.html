@@ -6,7 +6,7 @@
     	  log("...");
     }
     </code></pre>
-	<p>This got me thinking. This code is in a performance critical loop and it looks like a waste - we never run with the "debug" flag enabled<sup>[<a href="#footnotes">1</a>]</sup>. Is it ok to have <code>if</code> clauses that will basically never be run? Surely, there must be some performance cost to that...</p>
+	<p>This got me thinking. This code is in a performance critical loop and it looks like a waste - we never run with the "debug" flag enabled<sup>[<a href="https://blog.cloudflare.com/#footnotes">1</a>]</sup>. Is it ok to have <code>if</code> clauses that will basically never be run? Surely, there must be some performance cost to that...</p>
 	<h3 id="just-how-bad-is-peppering-the-code-with-avoidable-if-statements">Just how bad is peppering the code with avoidable <code>if</code> statements?</h3>
 	<p>Back in the days the general rule was: a fully predictable branch has close to zero CPU cost.</p>
 	<p>To what extent is this true? If one branch is fine, then how about ten? A hundred? A thousand? When does adding one more <code>if</code> statement become a bad idea?</p>
@@ -31,9 +31,9 @@ const char *getCountry(int cc) {
         return "UNKNOWN";
 }
         </code></pre>
-	<p>Obviously, this code could be improved<sup>[<a href="#footnotes">2</a>]</sup>. But when I thought about it more: <em>should</em> it be improved? Is there an actual performance hit of a code that consists of a series of simple branches?</p>
+	<p>Obviously, this code could be improved<sup>[<a href="https://blog.cloudflare.com/#footnotes">2</a>]</sup>. But when I thought about it more: <em>should</em> it be improved? Is there an actual performance hit of a code that consists of a series of simple branches?</p>
 	<h3 id="understanding-the-cost-of-jump">Understanding the cost of jump</h3>
-	<p>We must start our journey with a bit of theory. We want to figure out if the CPU cost of a branch increases as we add more of them. As it turns out, assessing the cost of a branch is not trivial. On modern processors it takes between one and twenty CPU cycles. There are at least four categories of control flow instructions<sup>[<a href="#footnotes">3</a>]</sup>: unconditional branch (jmp on x86), call/return, conditional branch (e.g. je on x86) taken and conditional branch not taken. The taken branches are especially problematic: without special care they are inherently costly - we'll explain this in the following section. To bring down the cost, modern CPU's try to predict the future and figure out the branch <strong>target</strong> before the branch is actually fully executed! This is done in a special part of the processor called the branch predictor unit (BPU).</p>
+	<p>We must start our journey with a bit of theory. We want to figure out if the CPU cost of a branch increases as we add more of them. As it turns out, assessing the cost of a branch is not trivial. On modern processors it takes between one and twenty CPU cycles. There are at least four categories of control flow instructions<sup>[<a href="https://blog.cloudflare.com/#footnotes">3</a>]</sup>: unconditional branch (jmp on x86), call/return, conditional branch (e.g. je on x86) taken and conditional branch not taken. The taken branches are especially problematic: without special care they are inherently costly - we'll explain this in the following section. To bring down the cost, modern CPU's try to predict the future and figure out the branch <strong>target</strong> before the branch is actually fully executed! This is done in a special part of the processor called the branch predictor unit (BPU).</p>
 	<p>The branch predictor attempts to figure out a destination of a branching instruction very early and with very little context. This magic happens <strong>before</strong> the "decoder" pipeline stage and the predictor has very limited data available. It only has some past history and the address of the current instruction. If you think about it - this is super powerful. Given only current instruction pointer it can assess, with very high confidence, where the target of the jump will be.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/05/pasted-image-0-1.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Source: <a href="https://en.wikipedia.org/wiki/Branch_predictor" target="_blank">https://en.wikipedia.org/wiki/Branch_predictor</a></figcaption>
@@ -75,7 +75,7 @@ label_a:
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/pasted-image-0--5-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Let's bring this experiment forward, what if we took the best times of each run - with a fully primed BTB - for varying values of jmp block sizes and number of blocks - working set size? Here you go:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/pasted-image-0--6-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>This is an astonishing chart. First, it's obvious something happens at the 4096 jmp mark<sup>[<a href="#footnotes">4</a>]</sup> regardless of how large the jmp block sizes - how many nop's we skip over. Reading it aloud:</p>
+	<p>This is an astonishing chart. First, it's obvious something happens at the 4096 jmp mark<sup>[<a href="https://blog.cloudflare.com/#footnotes">4</a>]</sup> regardless of how large the jmp block sizes - how many nop's we skip over. Reading it aloud:</p>
 	<ul>
 		<li>On the far left, we see that if the amount of code is small enough - less than 2048 bytes (256 times a block of 8 bytes) - it's possible to hit some kind of uop/L1 cache and get ~1.5 cycles per fully predicted branch. This is amazing.</li>
 		<li>Otherwise, if you keep your hot loop to 4096 branches then, no matter how dense your code is you are likely to see ~3.4 cycles per fully predicted branch</li>
@@ -146,7 +146,7 @@ label_a:
 	</ul>
 	<!--kg-card-end: markdown-->
 	<h3 id="acknowledgements">Acknowledgements</h3>
-	<p>Thanks to <a href="https://blog.cloudflare.com/author/david-wragg/">David Wragg</a> and <a href="https://twitter.com/danluu" target="_blank">Dan Luu</a> for technical expertise and proofreading help.</p>
+	<p>Thanks to <a href="https://blog.cloudflare.com/author/david-wragg">David Wragg</a> and <a href="https://twitter.com/danluu" target="_blank">Dan Luu</a> for technical expertise and proofreading help.</p>
 	<h3 id="ps">PS</h3>
 	<p>Oh, oh. But this is not the whole story! Similar research was the base to the <a href="https://spectreattack.com/spectre.pdf" target="_blank">Spectre v2</a> attack. The attack was exploiting the little known fact that the BPU state was not cleared between context switches. With the correct technique it was possible to train the BPU - in the case of Spectre it was iBTB - and force a privileged piece of code to be speculatively executed. This, combined with a cache side-channel data leak, allowed an attacker to steal secrets from the privileged kernel. Powerful stuff.</p>
 	<p>A proposed solution was to avoid using shared BTB. This can be done in two ways: make the indirect jumps to always fail to predict, or fix the CPU to avoid sharing BTB state across isolation domains. This is a long story, maybe for another time...</p>

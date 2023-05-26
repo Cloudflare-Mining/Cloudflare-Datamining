@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<p>最近，在布拉格Linux网络会议<a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13</a>上，我做了<a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives" target="_blank">一个简短的演讲，题目是“Cloudflare上的Linux”</a>。<a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">演讲</a>最后主要是关于BPF（柏克莱封包过滤器）的。似乎，不管问题是什么——BPF都是答案。</p>
+	<p>最近，在布拉格Linux网络会议<a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13</a>上，我做了<a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives=" target="_blank">一个简短的演讲，题目是“Cloudflare上的Linux”</a>。<a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">演讲</a>最后主要是关于BPF（柏克莱封包过滤器）的。似乎，不管问题是什么——BPF都是答案。</p>
 	<p>下面是这次演讲的稍作调整的笔录。</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/01_edge-network-locations-100.jpg" class="kg-image" alt="" loading="lazy"></figure>
@@ -38,9 +38,9 @@
 	<p>让我们更详细地讨论DoS处理。如前所述，ECMP路由之后的第一步是Linux的XDP堆栈，其中，我们运行DoS缓解措施。</p>
 	<p>从历史上看，我们对容量攻击的缓解是用经典的BPF和iptables样式的语法表示的。最近，我们对它们进行了调整，从而在XDP eBPF环境中执行，事实证明这非常困难。一起来看看我们冒险的经历吧：</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop: XDP &nbsp; &nbsp; &nbsp;DDoS缓解</a></li>
-		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap: XDP数据包捕获</a></li>
-		<li>Arthur Fabre的演讲：<a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">基于XDP的DoS缓解</a></li>
+		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">L4Drop: XDP &nbsp; &nbsp; &nbsp;DDoS缓解</a></li>
+		<li><a href="https://blog.cloudflare.com/xdpcap">xdpcap: XDP数据包捕获</a></li>
+		<li>Arthur Fabre的演讲：<a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation=" target="_blank">基于XDP的DoS缓解</a></li>
 		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">实践中的XDP：将XDP集成到我们的DDoS缓解通道中</a> (PDF)</li>
 	</ul>
 	<p>在这个项目中，我们遇到了许多eBPF/XDP限制。其中之一是缺乏并发原语。实现无竞争令牌桶之类的东西非常困难。后来，我们发现<a href="http://vger.kernel.org/lpc-bpf2018.html#session-9" target="_blank">Facebook工程师Julia Kartseva</a>遇到了同样的问题。在2月份，这个问题已经通过引入bpf_spin_lock helper得到了解决。</p>
@@ -50,7 +50,7 @@
 	<p>虽然我们现代的容量DoS防御是在XDP层完成的，但我们仍然依赖iptables来减轻应用层（第7层）的影响。在这里，更高级别防火墙的特性起着很大的作用：connlimit、hashlimit和ipset。我们还使用xt_bpf iptables模块在iptables中运行cBPF，从而匹配数据包有效负载。我们以前讨论过这个问题：</p>
 	<ul>
 		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible" target="_blank">抵御不可抗力的经验教训</a> (PPT)</li>
-		<li><a href="https://blog.cloudflare.com/introducing-the-bpf-tools/">介绍BPF工具</a></li>
+		<li><a href="https://blog.cloudflare.com/introducing-the-bpf-tools">介绍BPF工具</a></li>
 	</ul>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-34.png" class="kg-image" alt="" loading="lazy"></figure>
@@ -60,11 +60,11 @@
 	<p>如今，这种架构已不再适用。我们正在运行30,000多个DNS IP，并且运行同样数量的UDP套接字是不可行的。我们现代的解决方案是运行一个带有复杂eBPF套接字过滤器的UDP套接字——使用SO_ATTACH_BPFsocket选项。我们在以前的博客文章中讨论过在网络套接字上运行eBPF：</p>
 	<ul>
 		<li><u>eBPF，套接字，跳段距离，手动编写eBPF程序集</u></li>
-		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP——未来的TCP粘合</a></li>
+		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future">SOCKMAP——未来的TCP粘合</a></li>
 	</ul>
 	<p>上面提到的eBPF速率限制了数据包。它将状态（数据包计数）保存在eBPF映射中。我们可以确保一个被“淹没”的IP不会影响其他流量。这种做法效果很好，尽管在进行此项目期间，我们在eBPF验证程序中发现了一个令人担忧的错误：</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/ebpf-cant-count/">eBPF无法计数</a><u>？！</u></li>
+		<li><a href="https://blog.cloudflare.com/ebpf-cant-count">eBPF无法计数</a><u>？！</u></li>
 	</ul>
 	<p>我猜在UDP套接字上运行eBPF并不如往常般简单。</p>
 	<hr>
@@ -81,10 +81,10 @@
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-29.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>为了解决这个问题，我们开发了一个自定义内核补丁，其中添加了<a href="http://patchwork.ozlabs.org/patch/602916/" target="_blank">一个<code>SO_BINDTOPREFIX</code>socket选项</a>。顾名思义——它允许我们在选定的IP前缀上调用bind()。这解决了多个应用程序共享流行端口（如53或80）的问题。</p>
-	<p>然后我们遇到另一个问题。对于我们的Spectrum产品，我们需要监听所有总共65535个端口。运行这么多监听套接字不是一个好主意（请参阅<a href="https://blog.cloudflare.com/revenge-listening-sockets/">我们过去的战争故事博客</a>），因此我们不得不寻找另一种方法。经过一些实验，我们学会了使用一个鲜有人知的iptables模块——TPROXY——来达到这个目的。点击这里进行阅读：</p>
+	<p>为了解决这个问题，我们开发了一个自定义内核补丁，其中添加了<a href="http://patchwork.ozlabs.org/patch/602916" target="_blank">一个<code>SO_BINDTOPREFIX</code>socket选项</a>。顾名思义——它允许我们在选定的IP前缀上调用bind()。这解决了多个应用程序共享流行端口（如53或80）的问题。</p>
+	<p>然后我们遇到另一个问题。对于我们的Spectrum产品，我们需要监听所有总共65535个端口。运行这么多监听套接字不是一个好主意（请参阅<a href="https://blog.cloudflare.com/revenge-listening-sockets">我们过去的战争故事博客</a>），因此我们不得不寻找另一种方法。经过一些实验，我们学会了使用一个鲜有人知的iptables模块——TPROXY——来达到这个目的。点击这里进行阅读：</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum/">滥用Linux防火墙：允许我们构建Spectrum的黑客行为</a></li>
+		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum">滥用Linux防火墙：允许我们构建Spectrum的黑客行为</a></li>
 	</ul>
 	<p>这个设置起到了作用，但我们不喜欢额外的防火墙规则。我们正在努力正确地解决这个问题——实际上我们扩展了套接字调度逻辑。您猜对了——我们希望利用eBPF扩展套接字分派逻辑。敬请期待我们的一些补丁。</p>
 	<hr>
@@ -92,7 +92,7 @@
 	<p></p>
 	<p>然后还有一种使用eBPF改进应用程序的方法。最近，我们对使用SOCKMAP进行TCP粘合很感兴趣：</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP——未来的TCP粘合</a></li>
+		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future">SOCKMAP——未来的TCP粘合</a></li>
 	</ul>
 	<p>这项技术在改善我们许多软件堆栈的尾部延迟方面具有巨大潜力。当前的SOCKMAP实施尚未准备好完全发挥其作用，但它的潜力是巨大的。</p>
 	<p>同样，新的<a href="https://netdevconf.org/2.2/papers/brakmo-tcpbpf-talk.pdf" target="_blank">TCP-BPF又名BPF_SOCK_OPS</a>挂载为检查TCP流的性能参数提供了一种很好的方法。此功能对我们的性能表现团队非常有用。</p>
@@ -102,7 +102,7 @@
 	<p>一些Linux特性没有很好地发展成熟，我们需要解决它们。例如，我们正在突破网络指标的限制。不要误解我的意思——网络指标非常棒，但遗憾的是它们不够精细。像TcpExtListenDrops和TcpExtListenOverflows之类的事物被称为全局计数器，而我们需要在每个应用程序的基础上了解它。</p>
 	<p>我们的解决方案是使用eBPF探针直接从内核中抽取数字。我的同事Ivan Babrou编写了一个名为“ebpf_exporter”的Prometheus指标导出器，以便进行此操作。了解更多请继续阅读：</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/introducing-ebpf_exporter/">ebpf_exporter简介</a></li>
+		<li><a href="https://blog.cloudflare.com/introducing-ebpf_exporter">ebpf_exporter简介</a></li>
 		<li><a href="https://github.com/cloudflare/ebpf_exporter" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></li>
 	</ul>
 	<p>使用“ebpf_exporter”，我们可以生成所有形式的详细指标。它非常强大，并在许多情况下极大地帮助了我们。</p>

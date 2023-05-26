@@ -5,8 +5,8 @@
 	</figure>
 	<p>Nous avons beaucoup parlé par le passé des attaques par amplification sur internet. Voici nos deux derniers articles à ce sujet :</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/ssdp-100gbps/">Amplifications SSDP dépassant les 100 Gbits/s</a>. Curieusement, depuis lors, nous étions la cible d’une attaque SSDP à 196 Gbits/s.</li>
-		<li><a href="https://blog.cloudflare.com/reflections-on-reflections/">Statistiques générales concernant les différentes attaques par amplification que nous observons</a>.</li>
+		<li><a href="https://blog.cloudflare.com/ssdp-100gbps">Amplifications SSDP dépassant les 100 Gbits/s</a>. Curieusement, depuis lors, nous étions la cible d’une attaque SSDP à 196 Gbits/s.</li>
+		<li><a href="https://blog.cloudflare.com/reflections-on-reflections">Statistiques générales concernant les différentes attaques par amplification que nous observons</a>.</li>
 	</ul>
 	<p>L'idée générale derrière toutes les attaques par amplification est la même. <a href="https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing" target="_blank">Un intrus en mesure d'usurper les adresses IP </a> envoie de fausses requêtes à un serveur UDP vulnérable. Ignorant que la requête est falsifiée, le serveur UDP prépare poliment la réponse. Cela se produit lorsque des milliers de réponses sont envoyées à un hôte cible non averti, ce qui écrase ses ressources, le plus souvent le réseau lui-même.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/spoofing-1.png" class="kg-image" alt="" loading="lazy"></figure>

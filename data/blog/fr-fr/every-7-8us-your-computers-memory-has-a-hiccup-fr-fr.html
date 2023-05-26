@@ -2,7 +2,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/1.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption>SDRAM DDR3 moderne. Source : BY-SA/4.0 par Kjerish</figcaption>
 	</figure>
-	<p>Lors de ma récente visite au <a href="http://www.computerhistory.org/" target="_blank">musée de l'histoire de l'ordinateur</a> de Mountain View, je me suis retrouvé devant <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory" target="_blank">une section d'une mémoire à tores magnétiques</a>.</p>
+	<p>Lors de ma récente visite au <a href="http://www.computerhistory.org" target="_blank">musée de l'histoire de l'ordinateur</a> de Mountain View, je me suis retrouvé devant <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory" target="_blank">une section d'une mémoire à tores magnétiques</a>.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/2.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption>Source : BY-SA/3.0 par Konstantin Lanzet</figcaption>
 	</figure>
@@ -157,12 +157,12 @@ gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
 	<h2 id="conclusion"><strong>Conclusion</strong></h2>
 	<p>IOn peut tirer deux conclusions principales de cette analyse.</p>
 	<p>Nous avons constaté que les données de bas niveau sont assez difficiles à analyser et semblent être assez imprécises. Au lieu d'obtenir un résultat approximatif, nous pouvons recourir à la bonne vieille transformation rapide de Fourier. La préparation des données nécessite une certaine dose d'optimisme.</p>
-	<p>Plus important encore, nous avons montré qu'il est souvent possible de mesurer des comportements matériels complexes à partir d'un simple processus d'espace utilisateur. C’est ce genre de raisonnement qui a mené à la découverte de la vulnérabilité<a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html" target="_blank">du martèlement de mémoire</a>qui a été utilisée lors des attaques Meltdown/Spectre et qui a de nouveau été mis en évidence lors de <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections/" target="_blank">la récente réincarnation du martèlement de mémoire ayant mis à mal la mémoire à code correcteur d'erreur</a>.</p>
+	<p>Plus important encore, nous avons montré qu'il est souvent possible de mesurer des comportements matériels complexes à partir d'un simple processus d'espace utilisateur. C’est ce genre de raisonnement qui a mené à la découverte de la vulnérabilité<a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html" target="_blank">du martèlement de mémoire</a>qui a été utilisée lors des attaques Meltdown/Spectre et qui a de nouveau été mis en évidence lors de <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections" target="_blank">la récente réincarnation du martèlement de mémoire ayant mis à mal la mémoire à code correcteur d'erreur</a>.</p>
 	<p>Il y a davantage à dire. Nous avons à peine abordé en surface le fonctionnement du sous-système mémoire. Je recommande ces lectures complémentaires :</p>
 	<ul>
 		<li><a href="https://lackingrhoticity.blogspot.com/2015/04/l3-cache-mapping-on-sandy-bridge-cpus.html" target="_blank">L3 cache mapping on Sandy Bridge CPUs</a></li>
 		<li><a href="https://lackingrhoticity.blogspot.com/2015/05/how-physical-addresses-map-to-rows-and-banks.html" target="_blank">How physical address maps to rows and banks in DRAM</a></li>
-		<li><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd/" target="_blank">Hannu Hartikainen hacking DDR3 SO-DIMM to work... slower</a></li>
+		<li><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd" target="_blank">Hannu Hartikainen hacking DDR3 SO-DIMM to work... slower</a></li>
 	</ul>
 	<p>Pour finir, voici un document de référence sur l'ancienne mémoire à tores magnétiques :</p>
 	<ul>

@@ -1,14 +1,14 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/dns-record-comments-zh-cn/">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/dns-record-comments-zh-tw/">繁體中文</a>.</small></em></p>
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/dns-record-comments-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/dns-record-comments-zh-tw">繁體中文</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/12/image5-8.png" class="kg-image" alt="One of our most requested features is here: DNS comments and tags" loading="lazy"></figure>
 	<p>Starting today, we’re adding support on all zone plans to add custom comments on your DNS records. Users on the Pro, Business and Enterprise plan will also be able to tag DNS records.</p>
 	<h3 id="dns-records-are-important">DNS records are important</h3>
-	<p><a href="https://www.cloudflare.com/learning/dns/dns-records/" target="_blank">DNS records</a> play an essential role when it comes to operating a website or a web application. In general, they are used to mapping human-readable hostnames to machine-readable information, most commonly IP addresses. Besides mapping hostnames to IP addresses they also fulfill many other use cases like:</p>
+	<p><a href="https://www.cloudflare.com/learning/dns/dns-records" target="_blank">DNS records</a> play an essential role when it comes to operating a website or a web application. In general, they are used to mapping human-readable hostnames to machine-readable information, most commonly IP addresses. Besides mapping hostnames to IP addresses they also fulfill many other use cases like:</p>
 	<ul>
 		<li>Ensuring emails can reach your inbox, by setting up MX records.</li>
-		<li><a href="https://blog.cloudflare.com/tackling-email-spoofing/">Avoiding email spoofing and phishing</a> by configuring <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/" target="_blank">SPF</a>, <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/" target="_blank">DMARC</a> and <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/" target="_blank">DKIM</a> policies as TXT records.</li>
+		<li><a href="https://blog.cloudflare.com/tackling-email-spoofing">Avoiding email spoofing and phishing</a> by configuring <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record" target="_blank">SPF</a>, <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record" target="_blank">DMARC</a> and <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record" target="_blank">DKIM</a> policies as TXT records.</li>
 		<li>Validating a TLS certificate by adding a TXT (or CNAME) record.</li>
 		<li>Specifying allowed certificate authorities that can issue certificates on behalf of your domain by creating a CAA record.</li>
 		<li>Validating ownership of your domain for other web services (website hosting, email hosting, web storage, etc.) - usually by creating a TXT record.</li>
@@ -50,6 +50,6 @@ sub1.mycoolwebpage.xyz.  86400  IN  TXT  "hBeFxN3qZT40" ; Verification record fo
 	<p>The action Dashboard Display Settings allows you to select which special record types are shown in the UI. And there is an option to toggle showing the record tags inline under the respective DNS record or just showing an icon if there are tags present on the record.</p>
 	<p>And last but not least, we increased the width of the DNS record table as part of this release. The new table makes better use of the existing horizontal space and allows you to see more details of your DNS records, especially if you have longer subdomain names or content.</p>
 	<h3 id="try-it-now">Try it now</h3>
-	<p>DNS record comments and tags are available today. Just navigate to the <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns" target="_blank">DNS tab</a> of your zone in the Cloudflare dashboard and create your first comment or tag. If you are not yet using Cloudflare DNS, <a href="https://dash.cloudflare.com/sign-up" target="_blank">sign up for free</a> in just a few minutes.</p>
-	<p>Learn more about DNS record comments and tags on our <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/" target="_blank">developer documentation</a>.</p>
+	<p>DNS record comments and tags are available today. Just navigate to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank">DNS tab</a> of your zone in the Cloudflare dashboard and create your first comment or tag. If you are not yet using Cloudflare DNS, <a href="https://dash.cloudflare.com/sign-up" target="_blank">sign up for free</a> in just a few minutes.</p>
+	<p>Learn more about DNS record comments and tags on our <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes" target="_blank">developer documentation</a>.</p>
 </div>

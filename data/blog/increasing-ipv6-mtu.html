@@ -4,14 +4,14 @@
 	<p>You can think about it as a third layer of load balancing.</p>
 	<ul>
 		<li>First we split the traffic across multiple IP addresses with DNS.</li>
-		<li>Then we split the traffic across <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network/" target="_blank">multiple datacenters with Anycast</a>.</li>
+		<li>Then we split the traffic across <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank">multiple datacenters with Anycast</a>.</li>
 		<li>Finally, we split the traffic across multiple servers with ECMP.</li>
 	</ul>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/09/5799659266_28038df72f_b.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://www.flickr.com/photos/superlatif/5799659266/" target="_blank">photo </a>by <a href="https://www.flickr.com/photos/superlatif/" target="_blank">Sahra</a> by-sa/2.0</figcaption>
+		<figcaption><a href="https://www.flickr.com/photos/superlatif/5799659266" target="_blank">photo </a>by <a href="https://www.flickr.com/photos/superlatif" target="_blank">Sahra</a> by-sa/2.0</figcaption>
 	</figure>
-	<p><br>When deploying ECMP we hit a problem with Path MTU discovery. The ICMP packets destined to our Anycast IP's were being dropped. You can read more about that (and the solution) in the 2015 blog post <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice/">Path MTU Discovery in practice</a>.</p>
+	<p><br>When deploying ECMP we hit a problem with Path MTU discovery. The ICMP packets destined to our Anycast IP's were being dropped. You can read more about that (and the solution) in the 2015 blog post <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">Path MTU Discovery in practice</a>.</p>
 	<p>To solve the problem we created a small piece of software, called <code>pmtud</code> (<a href="https://github.com/cloudflare/pmtud" target="_blank">https://github.com/cloudflare/pmtud</a>). Since deploying <code>pmtud</code>, our ECMP setup has been working smoothly. </p>
 	<h3 id="hardcoding-ipv6-mtu">Hardcoding IPv6 MTU</h3>
 	<p>During that initial ECMP rollout things were broken. To keep services running until <code>pmtud</code> was done, we deployed a quick hack. We reduced the MTU of &nbsp;IPv6 traffic to the minimal possible value: 1280 bytes.</p>
@@ -29,16 +29,16 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280
 	<p>Our "fix" - reducing the MTU to 1280 - was serving us well and we had no pressing reason to revert it.</p>
 	<p>Researchers did notice though. We were caught red-handed twice:</p>
 	<ul>
-		<li><a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system/" target="_blank">In 2017 Geoff Huston noticed (pdf)</a> that we sent DNS fragments of 1280 only (<a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system/" target="_blank">older blog post</a>).</li>
+		<li><a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system" target="_blank">In 2017 Geoff Huston noticed (pdf)</a> that we sent DNS fragments of 1280 only (<a href="https://blog.apnic.net/2016/11/15/scoring-dns-root-server-system" target="_blank">older blog post</a>).</li>
 		<li>In June 2018 the paper <a href="http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper57.pdf" target="_blank">"Exploring usable Path MTU in the Internet" (pdf)</a> mentioned our weird setting - where we can accept 1500 bytes just fine, but transmit is limited to 1280.</li>
 	</ul>
 	<h3 id="when-small-mtu-is-too-small">When small MTU is too small</h3>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/09/6545737741_077583ca1f_b-1.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://www.flickr.com/photos/nh53/6545737741/" target="_blank">photo </a>by <a href="https://www.flickr.com/photos/nh53" target="_blank">NH53</a> by/2.0</figcaption>
+		<figcaption><a href="https://www.flickr.com/photos/nh53/6545737741" target="_blank">photo </a>by <a href="https://www.flickr.com/photos/nh53" target="_blank">NH53</a> by/2.0</figcaption>
 	</figure>
 	<p></p>
-	<p>This changed recently, when we started working on <a href="https://blog.cloudflare.com/spectrum/">Cloudflare Spectrum</a> support for UDP. Spectrum is a terminating proxy, able to handle protocols other than HTTP. Getting Spectrum to <a href="https://blog.cloudflare.com/how-we-built-spectrum/">forward TCP was relatively straightforward</a> (barring couple of <a href="https://blog.cloudflare.com/mmproxy-creative-way-of-preserving-client-ips-in-spectrum/">awesome hacks</a>). UDP is different.</p>
+	<p>This changed recently, when we started working on <a href="https://blog.cloudflare.com/spectrum">Cloudflare Spectrum</a> support for UDP. Spectrum is a terminating proxy, able to handle protocols other than HTTP. Getting Spectrum to <a href="https://blog.cloudflare.com/how-we-built-spectrum">forward TCP was relatively straightforward</a> (barring couple of <a href="https://blog.cloudflare.com/mmproxy-creative-way-of-preserving-client-ips-in-spectrum">awesome hacks</a>). UDP is different.</p>
 	<p>One of the major issues we hit was related to the MTU on our servers.</p>
 	<p>During tests we wanted to forward UDP VPN packets through Spectrum. As you can imagine, any VPN would encapsulate a packet in another packet. Spectrum received packets like this:</p>
 	<pre><code> +---------------------+------------------------------------------------+
@@ -58,7 +58,7 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280
 	<p>I believe Google and Facebook adjust their MTU due to their use of L4 load balancers. Their implementations do IP-in-IP encapsulation so need a bit of space for the header. Read more:</p>
 	<ul>
 		<li>Google - <a href="https://ai.google/research/pubs/pub44824" target="_blank">Maglev</a></li>
-		<li>Facebook - <a href="https://code.fb.com/open-source/open-sourcing-katran-a-scalable-network-load-balancer/" target="_blank">Katran</a></li>
+		<li>Facebook - <a href="https://code.fb.com/open-source/open-sourcing-katran-a-scalable-network-load-balancer" target="_blank">Katran</a></li>
 	</ul>
 	<p>There may be other reasons for having a smaller MTU. A reduced value may decrease the probability of the Path MTU detection algorithm kicking in (ie: relying on ICMP PTB). We can theorize that for the misconfigured eyeballs:</p>
 	<ul>
@@ -97,7 +97,7 @@ default via 2400:xxxx::1 dev eth0 src 2400:xxxx:2  metric 1024  mtu 1280
   1420 |                                                 *  2.02%   64.54%
   1440 |************************************************** 54.31%   54.34%
 </code></pre>
-	<p>On IPv6 87.7% connections had MTU &gt;= 1422 (1362+60). 75% had MTU &gt;= 1450. (See also: <a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6/" target="_blank">MTU distribution of DNS &nbsp;servers</a>).</p>
+	<p>On IPv6 87.7% connections had MTU &gt;= 1422 (1362+60). 75% had MTU &gt;= 1450. (See also: <a href="https://blog.apnic.net/2016/05/19/fragmenting-ipv6" target="_blank">MTU distribution of DNS &nbsp;servers</a>).</p>
 	<h3 id="interpretation">Interpretation</h3>
 	<p>Before we move on it's worth reiterating the original problem. Each connection from an eyeball to our Anycast network has three numbers related to it:</p>
 	<ul>
@@ -148,7 +148,7 @@ IP6 2a02:810d:xx &gt; 2400:xxx ICMP6, packet too big, mtu 1280, length 1240
 IP6 2001:ac8:xxx &gt; 2400:xxx ICMP6, packet too big, mtu 1390, length 1240
 </code></pre>
 	<h3 id="final-thoughts">Final thoughts</h3>
-	<p>Finally, if you are an IPv6 user with a weird MTU and have misconfigured MSS - basically if you are doing tunneling - please let us know of any issues. We know that debugging MTU issues is notoriously hard. To aid that we created <a href="https://blog.cloudflare.com/ip-fragmentation-is-broken/">an online fragmentation and ICMP delivery test</a>. You can run it:</p>
+	<p>Finally, if you are an IPv6 user with a weird MTU and have misconfigured MSS - basically if you are doing tunneling - please let us know of any issues. We know that debugging MTU issues is notoriously hard. To aid that we created <a href="https://blog.cloudflare.com/ip-fragmentation-is-broken">an online fragmentation and ICMP delivery test</a>. You can run it:</p>
 	<ul>
 		<li>IPv6 version: <a href="http://icmpcheckv6.popcount.org" target="_blank">http://icmpcheckv6.popcount.org</a></li>
 		<li>(for completeness, we also have an <a href="http://icmpcheck.popcount.org" target="_blank">IPv4 version</a>)</li>

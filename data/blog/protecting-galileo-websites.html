@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<p>Yesterday, we celebrated the <a href="https://blog.cloudflare.com/project-galileo-fifth-anniversary/">fifth anniversary of Project Galileo</a>. More than 550 websites are part of this program, and they have something in common: each and every one of them has been subject to attacks in the last month. In this blog post, we will look at the security events we observed between the 23 April 2019 and 23 May 2019.</p>
+	<p>Yesterday, we celebrated the <a href="https://blog.cloudflare.com/project-galileo-fifth-anniversary">fifth anniversary of Project Galileo</a>. More than 550 websites are part of this program, and they have something in common: each and every one of them has been subject to attacks in the last month. In this blog post, we will look at the security events we observed between the 23 April 2019 and 23 May 2019.</p>
 	<p>Project Galileo sites are protected by the Cloudflare Firewall and Advanced DDoS Protection which contain a number of features that can be used to detect and mitigate different types of attack and suspicious traffic. The following table shows how each of these features contributed to the protection of sites on Project Galileo.</p>
 	<p></p><!--kg-card-begin: html-->
 	<table class="c58">
@@ -20,7 +20,7 @@
 			</tr>
 			<tr class="c2">
 				<td class="c25" colspan="1" rowspan="1">
-					<p class="c29"><span class="c10"><a class="c21" href="https://blog.cloudflare.com/announcing-firewall-rules/">Firewall
+					<p class="c29"><span class="c10"><a class="c21" href="https://blog.cloudflare.com/announcing-firewall-rules">Firewall
 								Rules</a></span></p>
 				</td>
 				<td class="c44" colspan="1" rowspan="1">
@@ -80,7 +80,7 @@
 			</tr>
 			<tr class="c54">
 				<td class="c25" colspan="1" rowspan="1">
-					<p class="c29"><span class="c10"><a class="c21" href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">WAF</a></span>
+					<p class="c29"><span class="c10"><a class="c21" href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank">WAF</a></span>
 					</p>
 				</td>
 				<td class="c36" colspan="1" rowspan="1">
@@ -125,7 +125,7 @@
 			</tr>
 			<tr class="c2">
 				<td class="c26" colspan="1" rowspan="1">
-					<p class="c29"><span class="c10"><a class="c21" href="https://www.cloudflare.com/learning/ddos/ddos-mitigation/" target="_blank">HTTP
+					<p class="c29"><span class="c10"><a class="c21" href="https://www.cloudflare.com/learning/ddos/ddos-mitigation" target="_blank">HTTP
 								DoS</a></span></p>
 				</td>
 				<td class="c49" colspan="1" rowspan="1">
@@ -172,7 +172,7 @@
 	</table><!--kg-card-end: html-->
 	<p></p>
 	<h3 id="waf-web-application-firewall-">WAF (Web Application Firewall)</h3>
-	<p>Although not the most impressive in terms of blocked requests, the <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">WAF</a> is the most interesting as it identifies and blocks malicious requests, based on heuristics and rules that are the result of seeing attacks across all of our customers and learning from those. The WAF is available to all of our paying customers, protecting them against 0-days, SQL/XSS exploits and more. For the Project Galileo customers the WAF rules blocked more than <strong>4.5</strong> million requests in the month that we looked at, matching over 130 WAF rules and approximately 150k requests per day.</p>
+	<p>Although not the most impressive in terms of blocked requests, the <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank">WAF</a> is the most interesting as it identifies and blocks malicious requests, based on heuristics and rules that are the result of seeing attacks across all of our customers and learning from those. The WAF is available to all of our paying customers, protecting them against 0-days, SQL/XSS exploits and more. For the Project Galileo customers the WAF rules blocked more than <strong>4.5</strong> million requests in the month that we looked at, matching over 130 WAF rules and approximately 150k requests per day.</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-width-full kg-card-hascaption"><img src="https://lh4.googleusercontent.com/AJxk6op83jW6A3LcLLhGJaGFaVpCsBd4ty_K_QhFcnW0_FKXEkJYV6bbIvg7DL-yOtWIfmvlEVChFTmGh8IMjywqn2adoBwb8fmY6-Birvpx43kAgzsjwqx2YmAXb5NFIAAYeOmh" class="kg-image" alt="" loading="lazy">
 		<figcaption>Heat map showing the attacks seen on customer sites (rows) per day (columns)</figcaption>
@@ -188,7 +188,7 @@
 	<p></p>
 	<p>This heat map shows the WAF rules that blocked requests by day. At first, it seems some rules are useless as they never match malicious requests, but this plot makes it obvious that some attack vectors become active all of a sudden (isolated dark cells). This is especially true for 0-days, malicious traffic starts once an exploit is published and is very active on the first few days. The dark active lines are the most common malicious requests, and these WAF rules protect against things like XSS and SQL injection attacks.</p>
 	<h3 id="dos-denial-of-service-">DoS (Denial of Service)</h3>
-	<p>A <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation/" target="_blank"><strong>DoS</strong></a> attack prevents legitimate visitors from accessing a website by flooding it with bad traffic. &nbsp;Due to the way Cloudflare works, websites protected by Cloudflare are immune to many DoS vectors, out of the box. We block layer 3 and 4 attacks, which includes SYN floods and UDP amplifications. DNS nameservers, often described as the Internet’s phone book, are fully managed by Cloudflare, and protected - visitors know how to reach the websites.</p>
+	<p>A <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation" target="_blank"><strong>DoS</strong></a> attack prevents legitimate visitors from accessing a website by flooding it with bad traffic. &nbsp;Due to the way Cloudflare works, websites protected by Cloudflare are immune to many DoS vectors, out of the box. We block layer 3 and 4 attacks, which includes SYN floods and UDP amplifications. DNS nameservers, often described as the Internet’s phone book, are fully managed by Cloudflare, and protected - visitors know how to reach the websites.</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://lh4.googleusercontent.com/QKswAfRZDj8yH9Q6c6sWB0x-KokAOFijKoFRwT6lsE9JYmc6hR9SbVgkvjRdbATfczLZ5ZPLtRzZMEuwximdwmKgPgH7Gno9GHZWL27VX3xSPY0CMI7JRCxLe9M-dgRsRDJmIGXJ" class="kg-image" alt="" loading="lazy">
 		<figcaption>Line plot - requests per second to a website under DoS attack</figcaption>
@@ -198,7 +198,7 @@
 	<p>As for layer 7 attacks (for instance, HTTP floods), we rely on Gatebot, an automated tool to detect, analyse and block DoS attacks, so you can sleep. The graph shows the requests per second we received on a zone, and whether or not it reached the origin server. As you can see, the bad traffic was identified automatically by Gatebot, and more than 1.6 million requests were blocked as a result.</p>
 	<h3 id="firewall-rules">Firewall Rules</h3>
 	<p>For websites with specific requirements we provide tools to allow customers to block traffic to precisely fit their needs. Customers can easily implement complex logic using Firewall Rules to filter out specific chunks of traffic, block IPs / Networks / Countries using Access Rules and Project Galileo sites have done just that. Let’s see a few examples.</p>
-	<p><a href="https://blog.cloudflare.com/announcing-firewall-rules/"><strong>Firewall Rules</strong></a> allows website owners to challenge or block as much or as little traffic as they desire, and this can be done as a surgical tool “block just this request” or as a general tool “challenge every request”.</p>
+	<p><a href="https://blog.cloudflare.com/announcing-firewall-rules"><strong>Firewall Rules</strong></a> allows website owners to challenge or block as much or as little traffic as they desire, and this can be done as a surgical tool “block just this request” or as a general tool “challenge every request”.</p>
 	<p>For instance, a well-known website used <strong>Firewall Rules</strong> to prevent twenty IPs from fetching specific pages. 3 of these IPs were then used to send a total of 4.5 million requests over a short period of time, and the following chart shows the requests seen for this website. When this happened Cloudflare, mitigated the traffic ensuring that the website remains available.</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://lh6.googleusercontent.com/vO5ctEREt3GkkAHbKc3YGsP52-1_G0BEFUgcjL7pvlYGwkjHv5xm5X6QI3yD84bBlArh7hjI-CI2qWZ-pU-DBsF0gBXBMjA0YcLfMVcc2gG__20xRKI86ObNvfjSkV-uIU9LXAg3" class="kg-image" alt="" loading="lazy">

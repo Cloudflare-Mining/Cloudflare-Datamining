@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<p>Last year <a href="https://blog.cloudflare.com/concise-post-christmas-cryptographic-challenges/">we published some crypto challenges</a> to keep you momentarily occupied from the festivities. This year, we're doing the same. Whether you're bored or just want to learn a bit more about the technologies that encrypt the internet, feel free to give these short cryptography quizzes a go.</p>
+	<p>Last year <a href="https://blog.cloudflare.com/concise-post-christmas-cryptographic-challenges">we published some crypto challenges</a> to keep you momentarily occupied from the festivities. This year, we're doing the same. Whether you're bored or just want to learn a bit more about the technologies that encrypt the internet, feel free to give these short cryptography quizzes a go.</p>
 	<p>We're withholding answers until the start of the new year, to give you a chance to solve them without spoilers. Before we reveal the answers; if you manage to solve them, we'll be giving the first 5 people to get the answers right some Cloudflare swag. Fill out your <a href="https://goo.gl/forms/KexYSIfTgVaiPPKK2" target="_blank">answers and details using this form</a> so we know where to send it.</p>
 	<p>Have fun!</p>
 	<p><strong>UPDATE: This quiz is now closed. </strong>Thank you to everyone who's played. We have received many responses, 15 of which got all the answers right; we will shortly be sending out some swag to those who got the answers right. </p>
@@ -21,13 +21,13 @@
 	</ul>
 	<p>What code will be generated at precisely midnight of the 1st of January 2019?</p>
 	<h3 id="rpki">RPKI</h3>
-	<p>At Cloudflare, we just setup <a href="https://blog.cloudflare.com/rpki-details/">RPKI</a>: we signed a few hundred prefixes in order to reduce route leaks. But some of the prefixes hide a secret message. Find the ROAs that look different, decode the word! </p>
+	<p>At Cloudflare, we just setup <a href="https://blog.cloudflare.com/rpki-details">RPKI</a>: we signed a few hundred prefixes in order to reduce route leaks. But some of the prefixes hide a secret message. Find the ROAs that look different, decode the word! </p>
 	<h2 id="hints">Hints</h2>
 	<h3 id="client-says-hello-1">Client says Hello</h3>
 	<p>This challenge has 3 hints, as follows:</p>
 	<ul>
 		<li>Challenge is based on a network capture</li>
-		<li><a href="https://blog.cloudflare.com/encrypted-sni/">https://blog.cloudflare.com/encrypted-sni/</a></li>
+		<li><a href="https://blog.cloudflare.com/encrypted-sni">https://blog.cloudflare.com/encrypted-sni/</a></li>
 		<li>What's weird about the Frame?</li>
 	</ul>
 	<h3 id="totp">TOTP</h3>
@@ -50,7 +50,7 @@
 	<p>There is a string suffixed to this hex stream which shouldn't be there; it's a base64 encoded string <code>R0VUIC8yQWRLemdCClRFWFQgT04gTElORVMgNCBBTkQgNQ==</code>. Decoding this string reveals:</p>
 	<blockquote>GET /2AdKzgB<br>TEXT ON LINES 4 AND 5</blockquote>
 	<p>Accordingly; <a href="https://cfl.re/2AdKzgB" target="_blank">https://cfl.re/2AdKzgB</a> redirects to <a href="https://www.cloudflare.com/robots.txt" target="_blank">https://www.cloudflare.com/robots.txt</a>; on lines 4 and 5 is the phrase: "Dear robot be nice".</p>
-	<p>The GET request would obviously ordinarily not be appended to the Client Hello like this; however SNI information would be. You can find more about the work Cloudflare is doing to encrypt such information, so attackers cannot see which site you're visiting, in the following post: <a href="https://blog.cloudflare.com/esni/">Encrypting SNI: Fixing One of the Core Internet Bugs</a></p>
+	<p>The GET request would obviously ordinarily not be appended to the Client Hello like this; however SNI information would be. You can find more about the work Cloudflare is doing to encrypt such information, so attackers cannot see which site you're visiting, in the following post: <a href="https://blog.cloudflare.com/esni">Encrypting SNI: Fixing One of the Core Internet Bugs</a></p>
 	<h3 id="totp-1">TOTP</h3>
 	<p>For this part, I'm going to use the <a href="https://github.com/pyauth/pyotp" target="_blank">pyotp</a> library to demonstrate how the challenge is set-up: </p>
 	<blockquote>&gt;&gt;&gt; import pyotp<br>&gt;&gt;&gt; totp = pyotp.TOTP('')<br>&gt;&gt;&gt; print totp.at(1545409768)<br>084342<br>&gt;&gt;&gt; print totp.at(1545484313)<br>411907<br>&gt;&gt;&gt; print totp.at(1545740103)<br>617041</blockquote>
@@ -68,5 +68,5 @@
 	</ul>
 	<p>Subtract 4200000000, it will give you one byte for each character of the secret word.</p>
 	<p>Repeat until the word is decoded.</p>
-	<p><em>Interested in helping build a better internet and drive security online? <a href="https://www.cloudflare.com/careers/" target="_blank">Cloudflare is hiring</a>.</em></p>
+	<p><em>Interested in helping build a better internet and drive security online? <a href="https://www.cloudflare.com/careers" target="_blank">Cloudflare is hiring</a>.</em></p>
 </div>

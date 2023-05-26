@@ -10,24 +10,24 @@
 	<p>もともとCAPTCHAはチャレンジ/レスポンス型という性質上、自動化する必要がありました。自動化することで、検証の対象者をボットと人間の両方にスケーリングできるからです。</p>
 	<h3 id="captcha-">CAPTCHA認証をやめる理由は？</h3>
 	<p>簡単に言えば、私たちの誰もが嫌いだからです。</p>
-	<p>これまでに実現できたたことといえば、CAPTCHAを最小限にすることぐらいです。たとえば、Cloudflareでは、いつユーザーにCAPTCHAを課すべきかという情報をスマートな方法で入手するために、継続的に<a href="https://blog.cloudflare.com/ja-jp/cloudflare-bot-management-machine-learning-and-more-ja-jp/">ボット管理ソリューションの改善</a>を行ってきました。しかしここ数年、AIの向上に伴い（<a href="https://arxiv.org/abs/1312.6082" target="_blank">通りの番号（番地）に関するGoogleの論文</a>を参照）、Webでは背景と一緒になったテキストを認識させる単純なCAPTCHAから、古い書籍をOCRで読み取る方法を応用し写真から対象物（文字情報など）を識別するタイプへと移行しました。これにより、人間であるインターネットユーザーが問題に直面することとなったのです：</p>
+	<p>これまでに実現できたたことといえば、CAPTCHAを最小限にすることぐらいです。たとえば、Cloudflareでは、いつユーザーにCAPTCHAを課すべきかという情報をスマートな方法で入手するために、継続的に<a href="https://blog.cloudflare.com/ja-jp/cloudflare-bot-management-machine-learning-and-more-ja-jp">ボット管理ソリューションの改善</a>を行ってきました。しかしここ数年、AIの向上に伴い（<a href="https://arxiv.org/abs/1312.6082" target="_blank">通りの番号（番地）に関するGoogleの論文</a>を参照）、Webでは背景と一緒になったテキストを認識させる単純なCAPTCHAから、古い書籍をOCRで読み取る方法を応用し写真から対象物（文字情報など）を識別するタイプへと移行しました。これにより、人間であるインターネットユーザーが問題に直面することとなったのです：</p>
 	<ol>
 		<li>生産性：時間がムダになる。目の前の現れた「課題」に集中することを強いられ、その結果いらだちが残ることも多くあります。</li>
 		<li>アクセシビリティ：ユーザーはテストを解くために必要な身体能力と認知能力を持っているということが前提となっていますが、そうでない場合もあります。たとえば、視覚障害など、CAPTCHAを解くのが不可能になる可能性もあります。</li>
 		<li>文化的な知識：米国の消火栓を見たことのある外国人は多数派ではありませんし、世界的に見ると誰もが英語を話せるわけでもありません。キャブ（タクシー）の色は、ニューヨークでは黄色で、ロンドンでは黒です。そもそも「キャブ」という呼称を使う地域は限られていて、世界的に見れば、「タクシー」が一般的な言い方です。</li>
 		<li>モバイル端末の利用：世界の大部分でインターネットアクセスの主要な手段は、スマートフォンとモバイル端末です。と言うより、それが唯一のインターネットアクセス手段であることが多いです。CAPTCHAは、小さな画面でクリアするのが難しい上に、データプランやバッテリーにも負荷がかかります。</li>
 	</ol>
-	<p>実際に、ワールドワイドウェブコンソーシアム（W3C）は早くも2003年から複数のドラフトに取り組んでおり、<a href="https://www.w3.org/TR/turingtest/" target="_blank">CAPTCHAの「使いづらさ」</a>を指摘していました。</p>
+	<p>実際に、ワールドワイドウェブコンソーシアム（W3C）は早くも2003年から複数のドラフトに取り組んでおり、<a href="https://www.w3.org/TR/turingtest" target="_blank">CAPTCHAの「使いづらさ」</a>を指摘していました。</p>
 	<p>さて、ここまではユーザー側からの話のみです。こうした「犠牲」のすべてをユーザーに負担させることが、ひいては企業にとっても実に大きな損失となります。Webサイトとアプリケーションのパフォーマンスとレイアウトを最適化するために、企業が多くの時間を費やすのには、理由があります。それは、企業側がユーザーに登録してほしいその時に、ユーザーがそのページから移動してしまうのを防ぐためであり、企業がユーザーに支払いをしてほしいその時に、ショッピングカートを放棄されるのを防ぐためです。要するに、顧客のイライラを防ぎ、次もサービスを利用してもらうためなのです。</p>
 	<p>CAPTCHAを設置することは、実質的にユーザーの前に障害物（ページ離脱の要因）を置くようなもので、オンラインビジネスで高い業績を維持してきた人なら誰もが、やりたいからやっているのではなく、他に選択肢がないからCAPTCHAを使っている、と答えるでしょう。</p>
-	<p>当社がこうした問題に取り組むようになったのは、<a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">Google reCAPTCHAからhCAPTCHAへと移行した</a>時でした。今、さらにそこから前進しています。</p>
+	<p>当社がこうした問題に取り組むようになったのは、<a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">Google reCAPTCHAからhCAPTCHAへと移行した</a>時でした。今、さらにそこから前進しています。</p>
 	<h4 id="-captcha-cryptographic-attestation-of-personhood-">写真がないCAPTCHA：Cryptographic Attestation of Personhood（人間の暗号化証明）</h4>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/05/image4-4.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>ハードウェアのセキュリティキーは、PCやスマートフォンに接続できる秘密が埋め込まれたデバイスです。</figcaption>
 	</figure>
 	<p>ユーザーの観点からお話しすると、Cryptographic Attestation of Personhood（人間の暗号化証明）は、次のように機能します。</p>
 	<ol>
-		<li>ユーザーは<a href="http://cloudflarechallenge.com/" target="_blank">cloudflarechallenge.com</a>のようにCryptographic Attestation of Personhoodで保護されたWebサイトにアクセスします。</li>
+		<li>ユーザーは<a href="http://cloudflarechallenge.com" target="_blank">cloudflarechallenge.com</a>のようにCryptographic Attestation of Personhoodで保護されたWebサイトにアクセスします。</li>
 		<li>Cloudflareは認証のための質問を提示します。</li>
 		<li>ユーザーが「私は人間です」（ベータ）をクリックすると、セキュリティデバイスへの入力を求められます。</li>
 		<li>ユーザーはハードウェアセキュリティキーを使うと決めます。</li>
@@ -118,7 +118,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p><em>*各バッチに100,000個以上のキーがあることが必要です（<a href="https://fidoalliance.org/specs/fido-uaf-v1.1-ps-20170202/fido-uaf-protocol-v1.1-ps-20170202.html#full-basic-attestation" target="_blank">FIDO UAFプロトコル仕様 #4.1.2.1.1</a>）。ただし、自己署名キーと特定メーカーからのキーは<a href="https://www.chromium.org/security-keys" target="_blank">この要件を満たしていない</a>ことがわかっています。</em></p>
-	<p><em>**これには、キーを追跡するために個別かつ独自のCookieを設定することが必要となります。これがインターネット上のプライバシーとこのプロジェクトの目的に反するのです。当社が<a href="https://blog.cloudflare.com/deprecating-cfduid-cookie/">__cfduid</a>のようなCookieをどのように削除しているか、こちらで詳細をお読みください。</em></p>
+	<p><em>**これには、キーを追跡するために個別かつ独自のCookieを設定することが必要となります。これがインターネット上のプライバシーとこのプロジェクトの目的に反するのです。当社が<a href="https://blog.cloudflare.com/deprecating-cfduid-cookie">__cfduid</a>のようなCookieをどのように削除しているか、こちらで詳細をお読みください。</em></p>
 	<h3 id="--4">生体認証を収集しない認証</h3>
 	<p>このプロジェクトの目的：当社は人間だということが分かればいいのです。その人が誰であるかに興味はありません。</p>
 	<p>幸いなことに、これを実現するうえで、WebAuthn APIが大きな役割を担ってくれています。当社が求めているからではなく、WebAuthn APIは指紋など生体認証の収集を妨げているのです。お使いのデバイスが指紋センサーなど、生体認証の証明を求める場合、すべてローカルで行われます。この検証は、プラットフォームに関連付けられた署名を提示するデバイスのセキュアモジュールを解除するためのものです。</p>
@@ -128,7 +128,7 @@
 	<p>Cryptographic Attestation of Personhoodなら、それは起こりません。当社はもうCAPTCHAチャレンジモデルに制約されないため、ユーザーフローの設計に柔軟性が持てます。</p>
 	<h3 id="cloudflare-">Cloudflareがプライバシー保護をさらに推進するために行っていること</h3>
 	<p>Cryptographic Attestation of Personhoodにはプライバシーの面でたくさんの利点があるものの、完璧ではありません。Cloudflareはまだメーカーがその人を認証するかどうかを知る必要があります。WebAuthnはどの証明書でも機能するため、Cloudflareが改ざんされていないハードウェアキーから証明書を受け取ることを確認する必要があります。ユーザーのプライバシーを尊重するためには、そういった情報を持たない方がいいと、当社は考えています。</p>
-	<p>当社はこれまでプライバシーの基準作りに取り組み、Privacy Passなどの開発でリーダー的な役割を果たしてきました。<a href="https://privacypass.cloudflare.com/" target="_blank">Privacy Pass</a>では、一度チャレンジを解いたことがあれば、チャレンジにパスしたという証明を提示できるので、CAPTCHAを繰り返し解く必要がなくなります。これは、他のインターネットユーザーよりも多くの認証が必要なVPNユーザーのユーザーエクスペリエンスを大幅に改善しました。</p>
+	<p>当社はこれまでプライバシーの基準作りに取り組み、Privacy Passなどの開発でリーダー的な役割を果たしてきました。<a href="https://privacypass.cloudflare.com" target="_blank">Privacy Pass</a>では、一度チャレンジを解いたことがあれば、チャレンジにパスしたという証明を提示できるので、CAPTCHAを繰り返し解く必要がなくなります。これは、他のインターネットユーザーよりも多くの認証が必要なVPNユーザーのユーザーエクスペリエンスを大幅に改善しました。</p>
 	<p>Cryptographic Attestation of Personhoodについては、当社では<a href="https://ja.wikipedia.org/wiki/%E3%82%BC%E3%83%AD%E7%9F%A5%E8%AD%98%E8%A8%BC%E6%98%8E" target="_blank">ゼロ知識証明</a>（ZK証明）と呼ばれる暗号化の新しい分野を開始しています。これによって、当社のユーザーは自分のメーカーが、Cloudflareの信頼するメーカーの1つであることを証明できます。ZK証明を使うと、単一メーカーで製造されたデバイス同士だけでなく、他のメーカーのデバイスとの区別もできなくなります。この新しいシステムについてはより技術的な内容が必要となるので、別のブログ記事にまとめたいと思います。今後のブログ記事にご期待ください。</p>
 	<h3 id="--6">終わりのない探求</h3>
 	<p>何百万ものインターネットプロパティの保護を目的としたチャレンジを設計するのは、容易ではありません。現行の環境では、従来のCAPTCHAチャレンジと比較すると、Cryptographic Attestation of Personhoodの方が強力なセキュリティを備え、使いやすいと考えられます。予備的な利用調査では、ユーザーが写真をクリックするよりもハードウェアキーに触れることを強く好むことが明らかになりました。それでも、新しいシステムには改善の余地があることを当社は認識しています。</p>
@@ -138,7 +138,7 @@
 	<p>また、自動的なボタンプレスシステムに直面する可能性についても検討する必要があります。おもちゃの<a href="https://ja.wikipedia.org/wiki/%E6%B0%B4%E9%A3%B2%E3%81%BF%E9%B3%A5" target="_blank">水飲み鳥</a>が、静電容量タッチセンサーを押すことができたら、Cryptographic Attestation of Personhoodを通過することができるでしょう。うまく行けば、水飲み鳥は、ハードウェアが証明書を生成するために必要な時間と同等の時間で課題を解決します。CAPTCHAでは、正当なユーザーが確実に課題を通過できるようにしていますが、現行の信頼されるメーカーでは、専門的なCAPTCHA解決サービスの解決レートよりスピードが遅くなるでしょう。併せて、既存のCloudflareの軽減策の実施を継続し、インターネットプロパティを効率的に保護します。</p>
 	<h3 id="--7">最後に</h3>
 	<p>Cloudflareでは常に、「より良いインターネットの構築」に立ち戻ります。インターネット上で毎日500年に匹敵する時間をムダにしているということ、そして新世紀に入って20年経っても、誰1人としてCAPTCHAの基本的な前提を修正しようとしていないことが理不尽に思えてなりません。</p>
-	<p>Cryptographic Attestation of Personhoodをリリースするために行ってきた仕事を誇りに思っています。この課題は、Cloudflareのグローバルネットワークの後ろにあるインターネットプロパティにアクセスするための高いレベルのセキュリティを維持する中で、ユーザー第一主義のもとに出てきたものです。既存の人判別テストをCryptographic Attestation of Personhoodへと拡張する段階にあります。時間の経過とともに、これについてより頻繁に目にする機会が増えることを期待していただいていいと思います。今すぐ<a href="https://cloudflarechallenge.com/" target="_blank">cloudflarechallenge.com</a>でお試しいただけます。</p>
+	<p>Cryptographic Attestation of Personhoodをリリースするために行ってきた仕事を誇りに思っています。この課題は、Cloudflareのグローバルネットワークの後ろにあるインターネットプロパティにアクセスするための高いレベルのセキュリティを維持する中で、ユーザー第一主義のもとに出てきたものです。既存の人判別テストをCryptographic Attestation of Personhoodへと拡張する段階にあります。時間の経過とともに、これについてより頻繁に目にする機会が増えることを期待していただいていいと思います。今すぐ<a href="https://cloudflarechallenge.com" target="_blank">cloudflarechallenge.com</a>でお試しいただけます。</p>
 	<p>Cloudflareの他のチームの仕事ぶりにも感謝しています。このプロジェクトは、リサーチチームが主導していますが、社全体のサポートを受け、非常に恵まれた環境にあることをここに申し添えておきます。より良いインターネットの構築にご関心がおありでしたら、当社では、<a href="https://www.cloudflare.com/ja-jp/careers/jobs/?department=Technology%2520Research&amp;location=default" target="_blank">人材募集中</a>です。</p>
 	<p>最後になりますが、インターネット上に消火栓が現れるのを終わりにできることを大変うれしく思っています。もはや消火栓は必要ありません。</p>
 	<h3 id="--8">フィードバックとよくあるエラー</h3>

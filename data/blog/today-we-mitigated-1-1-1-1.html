@@ -5,7 +5,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2018/05/gatebot-stats.png" alt="gatebot-stats" loading="lazy"></p>
 	<p>In the past, we have blogged about our systems:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Meet Gatebot, a bot that allows us to sleep</a></li>
+		<li><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Meet Gatebot, a bot that allows us to sleep</a></li>
 	</ul>
 	<p>Today, things didn't go as planned.</p>
 	<h3 id="gatebot">Gatebot</h3>
@@ -16,7 +16,7 @@
 		<li><em>reactive automation</em> - chooses appropriate mitigations</li>
 		<li><em>mitigations</em> - executes mitigation logic on the edge</li>
 	</ul>
-	<p>The benign-sounding "reactive automation" part is actually the most complicated stage in the pipeline. We expected that from the start, which is why we implemented this stage using a custom <a href="https://en.wikipedia.org/wiki/Functional_reactive_programming" target="_blank">Functional Reactive Programming (FRP)</a> framework. If you want to know more about it, see <a href="https://idea.popcount.org/2016-02-01-enigma---building-a-dos-mitigation-pipeline/" target="_blank">the talk</a> and <a href="https://speakerdeck.com/majek04/gatelogic-somewhat-functional-reactive-framework-in-python" target="_blank">the presentation</a>.</p>
+	<p>The benign-sounding "reactive automation" part is actually the most complicated stage in the pipeline. We expected that from the start, which is why we implemented this stage using a custom <a href="https://en.wikipedia.org/wiki/Functional_reactive_programming" target="_blank">Functional Reactive Programming (FRP)</a> framework. If you want to know more about it, see <a href="https://idea.popcount.org/2016-02-01-enigma---building-a-dos-mitigation-pipeline" target="_blank">the talk</a> and <a href="https://speakerdeck.com/majek04/gatelogic-somewhat-functional-reactive-framework-in-python" target="_blank">the presentation</a>.</p>
 	<p>Our mitigation logic often combines multiple inputs from different internal systems, to come up with the best, most appropriate mitigation. One of the most important inputs is the metadata about our IP address allocations: we mitigate attacks hitting HTTP and DNS IP ranges differently. Our FRP framework allows us to express this in clear and readable code. For example, this is part of the code responsible for performing DNS attack mitigation:</p>
 	<pre><code class="language-python">def action_gk_dns(...):
 
@@ -40,7 +40,7 @@
 	<p>This is a relatively new API, and prior to its existence, Gatebot had to figure out which IP addresses were Cloudflare addresses by reading a list of networks from a hard-coded file. In the code snippet above, the <em>ANYCAST_IPS</em> variable is populated using this file.</p>
 	<h3 id="thingswentwrong">Things went wrong</h3>
 	<p>Today, in an effort to reclaim some technical debt, we deployed new code that introduced Gatebot to <em>Provision API</em>.</p>
-	<p>What we did not account for, and what <em>Provision API</em> didn’t know about, was that <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1/">1.1.1.0/24 and 1.0.0.0/24</a> are special IP ranges. Frankly speaking, almost every IP range is "special" for one reason or another, since our IP configuration is rather complex. But our recursive DNS resolver ranges are even more special: they are relatively new, and we're using them in a very unique way. Our hardcoded list of Cloudflare addresses contained a manual exception specifically for these ranges.</p>
+	<p>What we did not account for, and what <em>Provision API</em> didn’t know about, was that <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">1.1.1.0/24 and 1.0.0.0/24</a> are special IP ranges. Frankly speaking, almost every IP range is "special" for one reason or another, since our IP configuration is rather complex. But our recursive DNS resolver ranges are even more special: they are relatively new, and we're using them in a very unique way. Our hardcoded list of Cloudflare addresses contained a manual exception specifically for these ranges.</p>
 	<p>As you might be able to guess by now, we didn't implement this manual exception while we were doing the integration work. Remember, the whole idea of the fix was to remove the hardcoded gotchas!</p>
 	<h3 id="impact">Impact</h3>
 	<p>The effect was that, after pushing the new code release, our systems interpreted the resolver traffic as an attack. The automatic systems deployed DNS mitigations for our DNS resolver IP ranges for 17 minutes, between 17:58 and 18:13 May 31st UTC. This caused 1.1.1.1 DNS resolver to be globally inaccessible.</p>

@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<p>Chances are you might have heard of <code>io_uring</code>. It first appeared in <a href="https://kernelnewbies.org/Linux_5.1#High-performance_asynchronous_I.2FO_with_io_uring" target="_blank">Linux 5.1</a>, back in 2019, and was <a href="https://lwn.net/Articles/776703/" target="_blank">advertised as the new API for asynchronous I/O</a>. Its goal was to be an alternative to the deemed-to-be-broken-beyond-repair <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about/">AIO</a>, the “old” asynchronous I/O API.</p>
+	<p>Chances are you might have heard of <code>io_uring</code>. It first appeared in <a href="https://kernelnewbies.org/Linux_5.1#High-performance_asynchronous_I.2FO_with_io_uring" target="_blank">Linux 5.1</a>, back in 2019, and was <a href="https://lwn.net/Articles/776703" target="_blank">advertised as the new API for asynchronous I/O</a>. Its goal was to be an alternative to the deemed-to-be-broken-beyond-repair <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about">AIO</a>, the “old” asynchronous I/O API.</p>
 	<p>Calling <code>io_uring</code> just an asynchronous I/O API doesn’t do it justice, though. Underneath the API calls, io_uring is a full-blown runtime for processing I/O requests. One that spawns threads, sets up work queues, and dispatches requests for processing. All this happens “in the background” so that the user space process doesn’t have to, but can, block while waiting for its I/O requests to complete.</p>
 	<p>A runtime that spawns threads and manages the worker pool for the developer makes life easier, but using it in a project begs the questions:</p>
 	<p>1. How many threads will be created for my workload by default?</p>
 	<p>2. How can I monitor and control the thread pool size?</p>
-	<p>I could not find the answers to these questions in either the <a href="https://kernel.dk/io_uring.pdf" target="_blank">Efficient I/O with io_uring</a> article, or the <a href="https://unixism.net/loti/" target="_blank">Lord of the io_uring</a> guide – two well-known pieces of available documentation.</p>
+	<p>I could not find the answers to these questions in either the <a href="https://kernel.dk/io_uring.pdf" target="_blank">Efficient I/O with io_uring</a> article, or the <a href="https://unixism.net/loti" target="_blank">Lord of the io_uring</a> guide – two well-known pieces of available documentation.</p>
 	<p>And while a recent enough <a href="https://manpages.debian.org/unstable/liburing-dev/io_uring_register.2.en.html" target="_blank"><code>io_uring</code> man page</a> touches on the topic:</p>
 	<blockquote>By default, <code>io_uring</code> limits the unbounded workers created to the maximum processor count set by <code>RLIMIT_NPROC</code> and the bounded workers is a function of the SQ ring size and the number of CPUs in the system.</blockquote>
 	<p>… it also leads to more questions:</p>
@@ -204,7 +204,7 @@ $
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>By the way, if you would like to grep through the <code>io_uring</code> man pages, they live in the <a href="https://github.com/axboe/liburing" target="_blank">liburing</a> repo maintained by <a href="https://twitter.com/axboe" target="_blank">Jens Axboe</a> – not the go-to repo for Linux API <a href="https://github.com/mkerrisk/man-pages" target="_blank">man-pages</a> maintained by <a href="https://twitter.com/mkerrisk" target="_blank">Michael Kerrisk</a>.</p>
-	<p>Since it is a fresh addition to the <code>io_uring</code> API, the <a href="https://docs.rs/io-uring/latest/io_uring/" target="_blank"><code>io-uring</code></a> Rust library we are using has not caught up yet. But with <a href="https://github.com/tokio-rs/io-uring/pull/121" target="_blank">a bit of patching</a>, we can make it work.</p>
+	<p>Since it is a fresh addition to the <code>io_uring</code> API, the <a href="https://docs.rs/io-uring/latest/io_uring" target="_blank"><code>io-uring</code></a> Rust library we are using has not caught up yet. But with <a href="https://github.com/tokio-rs/io-uring/pull/121" target="_blank">a bit of patching</a>, we can make it work.</p>
 	<p>We can tell our toy program to set <code>IORING_REGISTER_IOWQ_MAX_WORKERS (= 19 = 0x13)</code> by running it with the <code>--workers &lt;N&gt;</code> option:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ strace -o strace.out -e io_uring_register ./udp-read --async --workers 8 &amp;
 [1] 3555377
@@ -366,8 +366,8 @@ $
 	<!--kg-card-end: markdown-->
 	<h2 id="numa-numa-yay">NUMA, NUMA, yay <a href="https://en.wikipedia.org/wiki/Numa_Numa_(video)" target="_blank">?</a></h2>
 	<p>Lastly, there’s the case of NUMA systems with more than one memory node. <code>io_uring</code> documentation clearly says that <code>IORING_REGISTER_IOWQ_MAX_WORKERS</code> configures the maximum number of workers per NUMA node.</p>
-	<p>That is why, as we have seen, <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io-wq.c#L125" target="_blank"><code>io_wq.wqes</code></a> is an array. It contains one entry, struct <code>io_wqe</code>, for each NUMA node. If your servers are NUMA systems like <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server/">Cloudflare</a>, that is something to take into account.</p>
-	<p>Luckily, we don’t need a NUMA machine to experiment. <a href="https://www.qemu.org/" target="_blank">QEMU</a> happily emulates NUMA architectures. If you are hardcore enough, you can configure the NUMA layout with the right combination of <a href="https://www.qemu.org/docs/master/system/qemu-manpage.html" target="_blank"><code>-smp</code> and <code>-numa</code> options</a>.</p>
+	<p>That is why, as we have seen, <a href="https://elixir.bootlin.com/linux/v5.15.16/source/fs/io-wq.c#L125" target="_blank"><code>io_wq.wqes</code></a> is an array. It contains one entry, struct <code>io_wqe</code>, for each NUMA node. If your servers are NUMA systems like <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server">Cloudflare</a>, that is something to take into account.</p>
+	<p>Luckily, we don’t need a NUMA machine to experiment. <a href="https://www.qemu.org" target="_blank">QEMU</a> happily emulates NUMA architectures. If you are hardcore enough, you can configure the NUMA layout with the right combination of <a href="https://www.qemu.org/docs/master/system/qemu-manpage.html" target="_blank"><code>-smp</code> and <code>-numa</code> options</a>.</p>
 	<p>But why bother when the <a href="https://github.com/vagrant-libvirt/vagrant-libvirt" target="_blank"><code>libvirt</code> provider</a> for Vagrant makes it so simple to configure a 2 node / 4 CPU layout:</p><!--kg-card-begin: markdown-->
 	<pre><code>    libvirt.numa_nodes = [
       {:cpus =&gt; "0-1", :memory =&gt; "2048"},
@@ -422,7 +422,7 @@ $
 	<h2 id="outro">Outro</h2>
 	<p>That is all for the very first installment of the Missing Manuals. <code>io_uring</code> has more secrets that deserve a write-up, like request ordering or handling of interrupted syscalls, so Missing Manuals might return soon.</p>
 	<p>In the meantime, please tell us what topic would you nominate to have a Missing Manual written?</p>
-	<p>Oh, and did I mention that if you enjoy putting cutting edge Linux APIs to use, <a href="https://www.cloudflare.com/careers/jobs/" target="_blank">we are hiring</a>? Now also remotely ?.</p>
+	<p>Oh, and did I mention that if you enjoy putting cutting edge Linux APIs to use, <a href="https://www.cloudflare.com/careers/jobs" target="_blank">we are hiring</a>? Now also remotely ?.</p>
 	<p>_____</p><!--kg-card-begin: markdown-->
 	<p><small><sup>1</sup>And it probably does not make the users of runtimes that implement a hybrid threading model, like Golang, too happy.<br>
 			<sup>2</sup>To the Linux kernel, processes and threads are just kinds of tasks, which either share or don’t share some resources.</small></p>

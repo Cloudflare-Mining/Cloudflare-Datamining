@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/API-tokens@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="cloudflare-api">CloudflareのAPI</h2>
-	<p>Cloudflareは本日、Cloudflare APIで使用するスケーラブルで安全性の高いAPIトークンの一般提供を発表します。Cloudflareは、より良いインターネットの実現を目指し、エッジにおける顧客のプレゼンスの管理の簡素化に努めています。その方法の1つが、当社のすべての製品とサービスをAPIで構成可能にすることです。パートナーから企業、開発者まで、さまざまなお客様がCloudflareの管理を自動化したいと考えています。自動化は、<a href="https://api.cloudflare.com/" target="_blank">APIを直接</a>経由して行われる場合と、当社も維持に関わっている<a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">Terraform provider</a>や<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Go library</a>などのオープンソースソフトウェアを経由する場合があります。Cloudflareの管理を自動化されるお客様にとって、Cloudflareサービスを可能な限りセキュアに維持できることが重要です。</p>
+	<p>Cloudflareは本日、Cloudflare APIで使用するスケーラブルで安全性の高いAPIトークンの一般提供を発表します。Cloudflareは、より良いインターネットの実現を目指し、エッジにおける顧客のプレゼンスの管理の簡素化に努めています。その方法の1つが、当社のすべての製品とサービスをAPIで構成可能にすることです。パートナーから企業、開発者まで、さまざまなお客様がCloudflareの管理を自動化したいと考えています。自動化は、<a href="https://api.cloudflare.com" target="_blank">APIを直接</a>経由して行われる場合と、当社も維持に関わっている<a href="https://www.terraform.io/docs/providers/cloudflare" target="_blank">Terraform provider</a>や<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Go library</a>などのオープンソースソフトウェアを経由する場合があります。Cloudflareの管理を自動化されるお客様にとって、Cloudflareサービスを可能な限りセキュアに維持できることが重要です。</p>
 	<h2 id="-">最低限の権限とそれが重要な理由</h2>
 	<p>ソフトウェアシステムのセキュリティ保護は困難な仕事です。ソフトウェアの実行範囲を制限することは、間違いや悪意ある行為による影響の拡大を防ぐ良い防御法です。<a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank">最小権限の原則</a>は、任意のシステムで動作を実行するために必要なアクセス数の指針として役立ちます。これはJerome Saltzerが提唱した、「すべてのプログラムとシステムのすべての権限を持つユーザーが行使する権限は、ジョブ実行のために必要な最小数でなければならない」という原則です。 Cloudflareの場合は、多くのお客様が様々なドメインを持ち、多様なサービスを活用してトラフィックをルーティングしています。悪意ある人がシステムに不正にアクセスした場合、この人はシステムが持つ全てのアクセスを利用することができ、さらなる損害や情報盗難につながります。</p>
 	<p>APIトークンの機能が、この最小権限の原則にどのようにあてはまるのかを見ていきましょう。</p>
@@ -70,6 +70,6 @@
   ]
 }</code></pre>
 	<h2 id="--1"><strong>今後の予定</strong></h2>
-	<p>Cloudflare APIを使用しているユーザーには、前身のAPIキーからAPIトークン使用に移行されることをおすすめします。今回の発表をもって、当社は<a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">Terraformプロバイダー</a>、<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Goライブラリ</a>、および<a href="https://github.com/cloudflare/Cloudflare-WordPress" target="_blank">WordPressプラグイン</a>をすべて、APIトークン互換にアップデートします。他のライブラリにも間もなく更新が届きます。お客様が安全に移行できるように、APIトークンとAPIキーの両方が当分サポートされます。APIトークンには、トークン使用手順や使用時の安全性をより強化するための機能の追加を予定していますので、今後の発表にご期待ください。</p>
-	<p>ご意見や、APIのセキュリティに今後期待されることなど、<a href="https://community.cloudflare.com/" target="_blank">Cloudflareコミュニティ</a>までお寄せください。</p>
+	<p>Cloudflare APIを使用しているユーザーには、前身のAPIキーからAPIトークン使用に移行されることをおすすめします。今回の発表をもって、当社は<a href="https://www.terraform.io/docs/providers/cloudflare" target="_blank">Terraformプロバイダー</a>、<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Goライブラリ</a>、および<a href="https://github.com/cloudflare/Cloudflare-WordPress" target="_blank">WordPressプラグイン</a>をすべて、APIトークン互換にアップデートします。他のライブラリにも間もなく更新が届きます。お客様が安全に移行できるように、APIトークンとAPIキーの両方が当分サポートされます。APIトークンには、トークン使用手順や使用時の安全性をより強化するための機能の追加を予定していますので、今後の発表にご期待ください。</p>
+	<p>ご意見や、APIのセキュリティに今後期待されることなど、<a href="https://community.cloudflare.com" target="_blank">Cloudflareコミュニティ</a>までお寄せください。</p>
 </div>

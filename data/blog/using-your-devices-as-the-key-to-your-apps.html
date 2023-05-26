@@ -126,7 +126,7 @@
 	<pre><code class="language-bash">$ curl -v --cert iphone-client.pem --key iphone-client-key.pem https://money.samrhea.com
 </code></pre>
 	<p>That works, but I'm not done yet. I need to get this client certificate on my iPhone. To do so, I need to convert the certificate and key into a format that my iPhone understands, PKCS #12.</p>
-	<p><a href="https://tools.ietf.org/html/rfc7292" target="_blank">PKCS 12</a> is a file format used for storing cryptographic objects. To convert the two <code>.pem</code> files, the certificate and the key, into PKCS 12, I'm going to use the <a href="https://www.openssl.org/" target="_blank">OpenSSL</a> command-line tool.</p>
+	<p><a href="https://tools.ietf.org/html/rfc7292" target="_blank">PKCS 12</a> is a file format used for storing cryptographic objects. To convert the two <code>.pem</code> files, the certificate and the key, into PKCS 12, I'm going to use the <a href="https://www.openssl.org" target="_blank">OpenSSL</a> command-line tool.</p>
 	<p>OpenSSL is a popular toolkit for TLS and SSL protocols that can solve a wide variety of certificate use cases. In my example, I just need it for one command:</p>
 	<pre><code class="language-bash">$ openssl pkcs12 -export -out sam-iphone.p12 -inkey iphone-client-key.pem -in iphone-client.pem -certfile ../root/ca.pem
 </code></pre>
@@ -145,5 +145,5 @@
 	<h2 id="what-s-next">What's next?</h2>
 	<p>My prototype personal finance app now is only accessible from my iPhone. This also makes it easy to login through Access from my device.</p>
 	<p>Access policies can be pretty flexible. If I want to reach it from a different device, I could build a rule to allow logins through Google as an alternative. I can also create a policy to require <strong>both</strong> a certificate and SSO login.</p>
-	<p>Beyond just authentication, I can also build something with this client cert flow now. Cloudflare Access makes the details from the client cert, the ones I created earlier in this tutorial, <a href="https://developers.cloudflare.com/access/service-auth/mtls-headers/" target="_blank">available</a> to Cloudflare Workers. I can start to create routing rules or trigger actions based on the details about this client cert.</p>
+	<p>Beyond just authentication, I can also build something with this client cert flow now. Cloudflare Access makes the details from the client cert, the ones I created earlier in this tutorial, <a href="https://developers.cloudflare.com/access/service-auth/mtls-headers" target="_blank">available</a> to Cloudflare Workers. I can start to create routing rules or trigger actions based on the details about this client cert.</p>
 </div>

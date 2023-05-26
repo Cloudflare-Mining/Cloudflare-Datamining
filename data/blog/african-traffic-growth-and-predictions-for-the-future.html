@@ -34,12 +34,12 @@
 	<p>Cloudflare’s mission is to help build a better Internet. To do that we operate datacenters across the globe. By having datacenters close to end user we provide a fast, secure experience for everyone. Today I’d like to talk about our datacenters in Africa and our plans to serve a population of 1.2 billion people over 58 countries.</p>
 	<p>Internet penetration in developed countries skyrocketed since the 2000s, Internet usage is growing rapidly across Africa. We are seeing a 4% to 7% increase in traffic month on month. As of July 2018, we have 8 datacenters on the African Continent:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/amsterdam-to-zhuzhou-cloudflare-global-network/">Angola</a></li>
-		<li><a href="https://blog.cloudflare.com/curacao-and-djibouti/">Djibouti</a></li>
-		<li><a href="https://blog.cloudflare.com/cairo/">Egypt</a></li>
-		<li><a href="https://blog.cloudflare.com/mombasa-kenya-cloudflares-43rd-data-center/">Kenya</a></li>
-		<li><a href="https://blog.cloudflare.com/durban-and-port-louis/">Mauritius</a></li>
-		<li>Three in <a href="https://blog.cloudflare.com/cape-town-south-africa/">South Africa</a></li>
+		<li><a href="https://blog.cloudflare.com/amsterdam-to-zhuzhou-cloudflare-global-network">Angola</a></li>
+		<li><a href="https://blog.cloudflare.com/curacao-and-djibouti">Djibouti</a></li>
+		<li><a href="https://blog.cloudflare.com/cairo">Egypt</a></li>
+		<li><a href="https://blog.cloudflare.com/mombasa-kenya-cloudflares-43rd-data-center">Kenya</a></li>
+		<li><a href="https://blog.cloudflare.com/durban-and-port-louis">Mauritius</a></li>
+		<li>Three in <a href="https://blog.cloudflare.com/cape-town-south-africa">South Africa</a></li>
 	</ul>
 	<p>While we see changes on the horizon, the majority of Internet content providers are located in North America and Western Europe. This means that only the billion people living in those areas close to the content they are trying to reach. When it comes to Africa, submarine cables will usually bring back the packets to Europe to hubs like Marseille, Paris, London, Lisbon and sometimes Frankfurt or Amsterdam, adding precious milliseconds, slowing down communications.</p>
 	<p>By setting up datacenters on the African continent, Cloudflare is able to serve content locally, increasing download speed in the region, improving the end-user experience, and ultimately increasing Internet usage.</p>
@@ -88,7 +88,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<p>Cloudflare and many network operators are using extensively RIPE Atlas to determine performance and troubleshoot issues. If you want to help us improve Internet quality in Africa, become a <a href="https://atlas.ripe.net/get-involved/become-a-host/" target="_blank">probe host here</a>.</p>
+	<p>Cloudflare and many network operators are using extensively RIPE Atlas to determine performance and troubleshoot issues. If you want to help us improve Internet quality in Africa, become a <a href="https://atlas.ripe.net/get-involved/become-a-host" target="_blank">probe host here</a>.</p>
 	<p>What you may be wondering is: what are the countries in Europe that route the African traffic? We are using an anycast network ; when a user fetch a website on Cloudflare, the packets will take the shortest path seen by the router to reach its destination. In telecommunications, the shortest path does necessarily mean geographical proximity. The selection metric of a path usually involve cost and performance.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/08/closest-routing-3-01.png" alt="Closest routing diagram" loading="lazy"></p>
 	<p>An anycast address will have the same metric everywhere on our side. This mean a service provider having links to London and Paris will see our IP addresses originating from London datacenter and Paris datacenter. The choice between the two will only be depending on metrics set by the provider: will it cost more to reach London?</p>
@@ -98,7 +98,7 @@
 	<p>As an example case: if Paris is chosen, for the content that can only be found in London, another provider will carry the packets to London from Paris, adding one hop to the path, reducing preference. We will see the landing point in Paris.</p>
 	<p>Why isn’t the provider getting a link to London? On thing to know is any Internet link has a flat rate price plus a variable rate based on consumption.</p>
 	<p>Bandwidth within major European cities is among the cheapest in the world. The flat rate for submarine capacity is high, as a result, the quantity of content that is available from London for cheaper than Paris has to make up the difference.</p>
-	<p>If you are interested to know more about the costs of bandwidth around the world, check out this <a href="https://blog.cloudflare.com/bandwidth-costs-around-the-world/">article</a> by Nitin Rao.</p>
+	<p>If you are interested to know more about the costs of bandwidth around the world, check out this <a href="https://blog.cloudflare.com/bandwidth-costs-around-the-world">article</a> by Nitin Rao.</p>
 	<p>The following map represents the most common Cloudflare datacenter reached for each country. The countries filled with color are where Cloudflare datacenters are. The border color indicates the destination country.</p>
 	<p>As aforementioned, we can notice most of the French-speaking countries will tend to go towards our datacenter in Paris. South Africa remains well connected with its neighbors.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/07/netmap-future-01-02.png" alt="Africa next-hop Cloudflare datacenter" loading="lazy"></p>
@@ -163,6 +163,6 @@
 	<p>Africa is the largest continent on earth, yet it is very lagging behind on Internet connectivity and traffic levels. Historically it's been entirely relying on its European interconnections. However we predict that its traffic will outgrow EU and US by 2027. This will be enabled by the fast deployment of local content, IPv6, and alternative submarine cables.</p>
 	<p>We are working on deploying even more points of presence in Africa and increasing our current capacity in the existing ones. Fifteen new locations in the African continent are part of our global expansion plans. These include: Algeria (Algiers), Cameroon (Yaoundé), Congo (Kinshasa), Côte d’Ivoire (Abidjan), Egypt (Alexandria), Ghana (Accra), Kenya (Nairobi), La Réunion (Sainte-Marie), Madagascar (Antananarivo), Morocco (Casablanca), Nigeria (Lagos), Tanzania (Dar es Salaam), Tunisia (Tunis), Uganda (Kampala), and Zimbabwe (Harare)</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/07/netmap-future-01-03.png" alt="Future Cloudflare Datacenters in Africa" loading="lazy"></p>
-	<p><em>Header image <a href="https://www.flickr.com/photos/south-african-tourism/2418525776/in/photostream/" target="_blank">source</a></em></p>
+	<p><em>Header image <a href="https://www.flickr.com/photos/south-african-tourism/2418525776/in/photostream" target="_blank">source</a></em></p>
 	<!--kg-card-end: markdown-->
 </div>

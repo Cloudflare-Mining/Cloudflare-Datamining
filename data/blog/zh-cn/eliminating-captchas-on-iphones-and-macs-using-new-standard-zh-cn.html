@@ -19,13 +19,13 @@
 	</ul>
 	<h3 id="-private-attestation-token">隆重推出 Private Attestation Token </h3>
 	<p>过去一年来，Cloudflare 与 Apple、Google 等行业领军企业合作扩大了 <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html" target="_blank">Privacy Pass 协议</a>，以支持一种新的加密令牌。这些令牌为开发人员和安全团队简化了应用程序安全性，淘汰了传统上基于第三方 SDK、用于确定使用设备者为人类的方法。它们适用于浏览器、浏览器调用的 API 以及应用内部调用的 API。我们将这些新的令牌称为 Private Attestation Token （PAT）。今天上午，<a href="https://developer.apple.com/wwdc22/10077" target="_blank">Apple 公司宣 PAT 将被集成</a>到 iOS 16、iPad 16 和 macOS 13 中，我们期待在不久的将来会有更多的供应商宣布支持这些令牌。</p>
-	<p>Cloudflare 已将 PAT 集成到自己的 <a href="https://blog.cloudflare.com/end-cloudflare-captcha/">Managed Challenge 平台</a>中，使用这一功能的任何客户都会利用这种新技术，改善受支持设备的浏览体验。</p>
+	<p>Cloudflare 已将 PAT 集成到自己的 <a href="https://blog.cloudflare.com/end-cloudflare-captcha">Managed Challenge 平台</a>中，使用这一功能的任何客户都会利用这种新技术，改善受支持设备的浏览体验。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-pat-">验证码在移动环境中无法工作，PAT 淘汰了验证码</h3>
-	<p>我们已经<a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn/">多</a><a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">次</a><a href="https://blog.cloudflare.com/end-cloudflare-captcha/">写到</a>，验证码是一种非常糟糕的用户体验。然而，我们并没有专门讨论过，在移动设备上的体验如何变得更加糟糕。验证码是为基于浏览器的环境构建和优化的技术，并通过小部件或千篇一律的内联框架部署，导致渲染问题，或输入窗口在设备上无法完整显示。移动设备的屏幕较小，使这种技术更难使用，解决验证码更加困难。同时，渲染 JavaScript 和图像文件减慢图像加载速度，并消耗过多的客户带宽。</p>
+	<p>我们已经<a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn">多</a><a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">次</a><a href="https://blog.cloudflare.com/end-cloudflare-captcha">写到</a>，验证码是一种非常糟糕的用户体验。然而，我们并没有专门讨论过，在移动设备上的体验如何变得更加糟糕。验证码是为基于浏览器的环境构建和优化的技术，并通过小部件或千篇一律的内联框架部署，导致渲染问题，或输入窗口在设备上无法完整显示。移动设备的屏幕较小，使这种技术更难使用，解决验证码更加困难。同时，渲染 JavaScript 和图像文件减慢图像加载速度，并消耗过多的客户带宽。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>除了可用性外，移动环境也带来另一个挑战，因其越来越多地由 API 驱动。在 JavaScript 无法渲染或 WebView 无法调用的 API 环境中，验证码不能工作。因此，在需要质询用户的时候，移动应用开发人员往往没有一个简单的选项。他们有时会使用笨拙的 SDK 来将验证码直接嵌入到应用中。这样做需要嵌入和定制验证码，持续维护和监控，导致更高的放弃率。出于这些原因，当我们的客户今天选择显示验证码的时候，仅 20% 的时间在移动设备上显示。</p>
-	<p>我们最近发文介绍了如何使用我们的 Managed Challenge 平台来<a href="https://blog.cloudflare.com/end-cloudflare-captcha/">将验证码使用减少了 91%</a>。但由于移动设备上的验证码体验要差得多，我们一直另外研究如何进一步削减移动设备上的验证码使用。</p>
+	<p>我们最近发文介绍了如何使用我们的 Managed Challenge 平台来<a href="https://blog.cloudflare.com/end-cloudflare-captcha">将验证码使用减少了 91%</a>。但由于移动设备上的验证码体验要差得多，我们一直另外研究如何进一步削减移动设备上的验证码使用。</p>
 	<h3 id="-">当站点不能质询访问者时，就会收集更多数据</h3>
 	<p>因此，您要么不能使用验证码来保护 API，要么用户体验太糟糕，以至于无法在移动设备上使用。还有什么选项可以用来确认访问者是真实的呢？一个常见的方法是查看特定于客户端的数据，这通常称为指纹识别。 </p>
 	<p>您可以要求提供设备 IMEI 和安全补丁版本，查看屏幕大小或字体，检查是否存在指示人类行为的 API（如交互式触摸屏事件），并将其与所声称的客户端的预期结果进行比较。然而，收集以上所有数据成本都很高，而且归根到底也不尊重最终用户。作为一家非常关心隐私并帮助改善互联网的公司，我们希望在不影响我们所提供服务的安全性的前提下，尽可能少地使用数据。</p>

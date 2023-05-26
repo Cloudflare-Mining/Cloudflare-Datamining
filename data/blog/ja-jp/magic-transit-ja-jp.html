@@ -32,7 +32,7 @@
 	</ol>
 	<p>Magic Transitに含まれる DDoS 軽減策のしくみについて詳しく説明しましょう。</p>
 	<h2 id="magic-transit-ddos-"><strong>Magic TransitでDDoS攻撃からネットワークを保護する</strong></h2>
-	<p>Cloudflareの Magic Transitを導入しているお客様は、過去9年間Cloudflareネットワークを保護してきたのと同じIPレイヤーDDoS保護システムに即座にアクセスしていただけます。これは、942Gbpsの攻撃を数秒で停止させたものと同じ軽減システムです。これは、Cloudflareの保護対象ではなかったGithubが1.3Tbpsで攻撃された<em>数日前</em>に、<a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/">memcached 増幅攻撃を阻止する方法を見つけた</a>システムと同じ軽減システムです<em>。</em>当社が毎日Cloudflareを保護してくれると信頼している軽減システムが、今度はユーザーネットワークを保護するのです。</p>
+	<p>Cloudflareの Magic Transitを導入しているお客様は、過去9年間Cloudflareネットワークを保護してきたのと同じIPレイヤーDDoS保護システムに即座にアクセスしていただけます。これは、942Gbpsの攻撃を数秒で停止させたものと同じ軽減システムです。これは、Cloudflareの保護対象ではなかったGithubが1.3Tbpsで攻撃された<em>数日前</em>に、<a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211">memcached 増幅攻撃を阻止する方法を見つけた</a>システムと同じ軽減システムです<em>。</em>当社が毎日Cloudflareを保護してくれると信頼している軽減システムが、今度はユーザーネットワークを保護するのです。</p>
 	<p>Cloudflareは、OSIレイヤーモデルのすべてのレイヤーにおいて、従来からレイヤー7のHTTPアプリケーションとHTTPSアプリケーションを攻撃から守ってきました。当社のお客様がご理解に知っていただき、がDDoS保護を理解して気に入り、技術のブレンドに依存するようになっていますが、DDos保護はいくつかの補完的な防御に分けることができます。</p>
 	<ol>
 		<li>エニーキャストおよび、世界各地の193都市において利用可能なネットワークは、ユーザーや攻撃者に近づくことによって、大量のレイテンシーを発生させることなく、ソースに近いトラフィックが利用できます。</li>
@@ -41,7 +41,7 @@
 		<li>レイヤー7の軽減とRate Limiting により、HTTPSアプリケーションレイヤーでフラッドを停止します。</li>
 	</ol>
 	<p>前述の説明を注意深く見ると気づいていただけると思いますが、リバースプロキシサーバーは、接続を終了させてお客様を保護します。一方で、ネットワークとサーバーは依然としてお客様に代わって当社が阻止している L3 および L4攻撃に悩まされているのです。これらの攻撃から自社のインフラを保護するにはどうすればよいでしょうか。</p>
-	<p><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebotに入りましょう</a></p>
+	<p><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Gatebotに入りましょう</a></p>
 	<p>Gatebotは、当社が運営する193都市のデータセンター内の各サーバーで実行されるソフトウェア一式で、常に攻撃トラフィックを分析およびブロックしています。Gatebotの美しさの一部は、そのシンプルなアーキテクチャにあります。パケットがネットワークカードからカーネルに渡され、ユーザー空間に向かうのを静かに待ち構えます。Gatebotに学習期間やウォームアップ期間はありません。攻撃を検出するとすぐに、実行中のマシンのカーネルにパケットをドロップし、その決定をログに記録し、次に進むように指示を出します。</p>
 	<p>従来、DDoS 攻撃からネットワークを保護したいときには、専用のハードウェアをネットワークの責任分界点に配置するために購入する場合がありました。このハードウェア機器（「DDoS保護機器」と呼びます)は、とてつもなく高価で、見た目も美しく（2Uハードウェア機器として最高の美）、維持するには絶え間ない労力と投資、最新ライセンスの維持、攻撃検出システムの正確性と訓練を維持することが必要です。</p>
 	<p>まず、攻撃を阻止しながら、正当なトラフィックは停止していないことを確実にするため、注意深く監視する必要がありました。他方で、攻撃者がデータセンターのインターネットへの中継リンクを飽和させるのに十分なトラフィックを発生させてしまうと、運が悪かったということになります。データセンター<em>内に</em>置かれた機器では、外部からデータセンター自体に実行されるリンクを輻輳させる程のトラフィックを生成する攻撃からの保護は不可能です。</p>
@@ -49,11 +49,11 @@
 	<p>DDoS軽減に対する最新のアプローチを実現するために、Linuxを実行する汎用 x86 サーバーで超高性能ネットワーキングを可能にする一連のツールと手法を考え出す必要がありました。</p>
 	<p>ネットワークのデータプレーンの中核となるのは、eXpress Data Path（XDP）と拡張Berkeley Packet Filter（eBPF）で、Linux カーネルで超高性能ネットワーキングアプリケーションを構築できる一連のAPIです。当社のメンバーが、XDPとeBPFを用いてDDoS攻撃を阻止する方法について詳細に記述しています。</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop:XDP DDoS の軽減策</a></li>
-		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap:XDP パケットキャプチャ</a></li>
-		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">XDPベースのDoS 軽減策</a>プレゼンテーション</li>
+		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">L4Drop:XDP DDoS の軽減策</a></li>
+		<li><a href="https://blog.cloudflare.com/xdpcap">xdpcap:XDP パケットキャプチャ</a></li>
+		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation=" target="_blank">XDPベースのDoS 軽減策</a>プレゼンテーション</li>
 		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">実行するXDP: XDPを DDoS 軽減パイプラインに統合する</a>（PDF）</li>
-		<li><a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world/">CloudflareのアーキテクチャとBPFが世界を悩ます方法</a></li>
+		<li><a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world">CloudflareのアーキテクチャとBPFが世界を悩ます方法</a></li>
 	</ul>
 	<p>まとめると、DDoSの軽減システムは次のようになります。</p>
 	<ul>
@@ -85,5 +85,5 @@
 	<h2 id="magic-transit--3"><strong>Magic Transitは今すぐご利用可能です</strong></h2>
 	<p>過去 9 年間、ネットワーク、管理ツール、ネットワーク機能をサービスとして現在の状態にするために懸命に取り組んできました。お客様の手元に毎日当社が使うツールをお届けできて、本当に嬉しく思っています。</p>
 	<p>製品名を決める時、決め手はこれでした。お客様にこの商品をお見せした時、一番多かった反応は「わぁ〜」でした。 どういう意味なのか伺うとほとんどの回答がこうでした。「これまで見たどのソリューションよりもはるかに優れている。魔法（Magic）みたいだ！」 ちょっとベタかもしれませんが、商品名は、自然とこれに落ち着きました。Magic Transitです。</p>
-	<p>当社はかなりマジカルだと思っており、みなさまもそう思われるはずです。今すぐ<a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">エンタープライズセールスチームにお問い合わせ</a>ください。</p>
+	<p>当社はかなりマジカルだと思っており、みなさまもそう思われるはずです。今すぐ<a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank">エンタープライズセールスチームにお問い合わせ</a>ください。</p>
 </div>

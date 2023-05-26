@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image1-6.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>这篇博客帖子是<a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019/">Crypto Week 2019</a>（2019加密周）中的一部分。</p>
+	<p>这篇博客帖子是<a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019">Crypto Week 2019</a>（2019加密周）中的一部分。</p>
 	<p>公众对互联网的信任是以公钥基础设施（PKI）为基础的。PKI通过签发数字证书，授予服务器安全服务网站的能力，为加密和真实的通信提供了基础。</p>
 	<p>证书通过使用其中的公钥来验证服务器身份，从而实现HTTPS加密。HTTPS对于传输敏感数据的网站尤为重要，例如传输银行凭据或私人消息的网站。值得庆幸的是，现代浏览器（例如谷歌浏览器）会通过“不安全”字样来标记未使用HTTPS保护的网站，从而令用户在访问网站中更具安全意识。</p>
 	<p>这篇博文介绍了Cloudflare向CA（证书颁发机构）提供的一种新的免费工具，以便CA能够进一步确保证书颁发安全。但在深入讨论之前，我们先来讨论一下证书的来源。</p>
@@ -55,7 +55,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>互联网上的每个设备都使用IP（互联网协议）地址作为数字标识符。IPv6地址包含128位，并使用斜杠表示法来指示前缀的大小。因此，在网络地址<strong>2001:DB8:1000::/48</strong>中，“/48”表示的是该网络包含的位数。这意味着还剩下80位数字包含着主机地址，总共有10240个主机地址。前缀号越小，网络中剩余的主机地址就越多。</p>
 	<h3 id="--3">攻击一：子前缀攻击</h3>
 	<p>当BGP声明路由时，路由器总是倾向于选择更具体的路由。所以如果<strong>2001:DB8::/32</strong>和<strong>2001:DB8:1000::/48</strong>都被声明，路由器会使用后者，因为后者的前缀更具体。当攻击者使用受害者的域IP地址，让BGP向该特定IP地址声明路由信息时，问题就出现了。让我们设想一下，如果我们的受害者（例如leagueofentropy.com）的IP地址是<strong>2001:DB8:1000::1</strong>，并且被声明为<strong>2001:DB8::/32</strong>。如果攻击者声明的前缀<strong>2001:DB8:1000::/48</strong>，那么他们将可以捕获受害者的流量，并发起<em>子前缀劫持攻击</em>。</p>
-	<p>在IPv4攻击中，比如2018年4月的这次<a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies/">攻击</a>，这个例子中的两个前缀分别是/24和/23声明，更具体的/24前缀是由恶意攻击者声明的。在IPv6中，公告的域名前缀可能是/48和/47。在以上两种情况下，/24和/48都是被允许的全局路由的最小块。在下面的图表中，/47代表德克萨斯州，/48代表更具体的德克萨斯州奥斯汀市。新的（但恶意的）路由覆盖了部分互联网的现有路由。然后攻击者在正常IP地址上运行一个恶意的DNS服务器，DNS记录指向的是一些新的恶意的web服务器，而不是现有的服务器。这吸引（劫持）了前往受害者所有域的流量，同时该域也在传播着恶意信息。此攻击成功的原因是接收路由器总是优先选取更具体的前缀。</p>
+	<p>在IPv4攻击中，比如2018年4月的这次<a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">攻击</a>，这个例子中的两个前缀分别是/24和/23声明，更具体的/24前缀是由恶意攻击者声明的。在IPv6中，公告的域名前缀可能是/48和/47。在以上两种情况下，/24和/48都是被允许的全局路由的最小块。在下面的图表中，/47代表德克萨斯州，/48代表更具体的德克萨斯州奥斯汀市。新的（但恶意的）路由覆盖了部分互联网的现有路由。然后攻击者在正常IP地址上运行一个恶意的DNS服务器，DNS记录指向的是一些新的恶意的web服务器，而不是现有的服务器。这吸引（劫持）了前往受害者所有域的流量，同时该域也在传播着恶意信息。此攻击成功的原因是接收路由器总是优先选取更具体的前缀。</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/1-Traditional-Equally-specific-Sub-Prefix-Attack-KC-0A-@3x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -94,10 +94,10 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>这种方法也可以推广到对DNS记录执行多路径查询，比如证书授权（CAA）记录。CAA记录授权CA为域颁发证书，因此多路径查询可以阻止的另一个攻击向量是欺骗它们（CAA）使未经授权的CA可以颁发证书。</p>
 	<p>在开发多路径检查器时，我们与普林斯顿研究小组进行了交谈，该小组通过BGP劫持攻击引入了证书错误颁发的概念验证（PoC）。Prateek Mittal是BGP paper的<em>Bamboozling证书颁发机构</em>的合著者，他写道:</p>
 	<p>“我们的分析表明，从多个有利位置进行域验证可以显著减轻本地化BGP攻击的影响。我们建议所有证书颁发机构都采用这种方法来增强web安全性。Cloudflare实现这种防御的一个特别吸引人的特性是，Cloudflare可以访问互联网上的大量有利位点，这显著增强了域控制验证的可靠性。”</p>
-	<p>我们的DCV检查器遵循我们的信念，即互联网上的信任必须是分布式的，并且我们能通过第三方分析（如Cloudflare提供的分析）对此进行审查，以确保其一致性和安全性。此工具被作为一项服务加入了我们<a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus/">已有的证书透明度监控器</a>，欢迎各CA使用此工具改进证书颁发的可靠性。</p>
+	<p>我们的DCV检查器遵循我们的信念，即互联网上的信任必须是分布式的，并且我们能通过第三方分析（如Cloudflare提供的分析）对此进行审查，以确保其一致性和安全性。此工具被作为一项服务加入了我们<a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">已有的证书透明度监控器</a>，欢迎各CA使用此工具改进证书颁发的可靠性。</p>
 	<h2 id="--6">内部测试机会</h2>
 	<p>构建我们的多域控制器验证检查器还让我们可以对多个Cloudflare产品进行<a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food" target="_blank"><em>内部测试</em></a>。</p>
-	<p>作为一个简单的获取器和整合器，DCV协调器是<a href="https://developers.cloudflare.com/workers" target="_blank">Cloudflare Workers</a>的应用的绝佳选择。我们以<a href="https://blog.cloudflare.com/generating-documentation-for-typescript-projects/">这篇文章</a>作为指南，在TypeScript中实现了协调器功能，并创建了一个易于部署和迭代的类型化、可靠的协调器服务。太好了，我们不需要维护我们自己的dcv-orchestrator服务器了！</p>
+	<p>作为一个简单的获取器和整合器，DCV协调器是<a href="https://developers.cloudflare.com/workers" target="_blank">Cloudflare Workers</a>的应用的绝佳选择。我们以<a href="https://blog.cloudflare.com/generating-documentation-for-typescript-projects">这篇文章</a>作为指南，在TypeScript中实现了协调器功能，并创建了一个易于部署和迭代的类型化、可靠的协调器服务。太好了，我们不需要维护我们自己的dcv-orchestrator服务器了！</p>
 	<p>我们使用<a href="https://developers.cloudflare.com/argo-tunnel" target="_blank">Argo Tunnel</a>来让Cloudflare Workers接入DCV代理成为可能。Argo Tunnel可以让我们轻松安全地将DCV暴露在Workers环境中。由于Cloudflare有大约175个（截止至2019年9月已有193个）运行DCV代理的数据中心，我们通过Argo Tunnel公开了许多服务，并且有机会将Argo Tunnel视为具有多种来源的高级用户，在其上加载测试。Argo Tunnel很容易就可以处理好这些新来源的涌入！</p>
 	<h2 id="--7">获取多域控制器验证检查器使用资格</h2>
 	<p>如果您和/或您的组织有兴趣尝试我们的DCV检查器，请发送电子邮件至<a href="mailto:dcv@cloudflare.com" target="_blank">dcv@cloudflare.com</a>告诉我们！我们希望了解有关多路径查询和验证如何增强证书颁发安全性的更多信息。</p>

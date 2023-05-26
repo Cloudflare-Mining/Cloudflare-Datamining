@@ -1,13 +1,13 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/de-de/whats-new-with-d1-de-de/">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/whats-new-with-d1-fr-fr/">Français</a>.</small></em></p>
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/de-de/whats-new-with-d1-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/whats-new-with-d1-fr-fr">Français</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/D1-Open-Beta-dark-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>When we announced D1 in May of this year, we knew it would be the start of something new – our first SQL database with Cloudflare Workers. Prior to D1 we’ve announced storage options like KV (key-value store), Durable Objects (single location, strongly consistent data storage) and <a href="https://www.cloudflare.com/learning/cloud/what-is-blob-storage" target="_blank">R2 (blob storage)</a>. But the question always remained “How can I store and query relational data without latency concerns and an easy API?”</p>
 	<p>The long awaited “Cloudflare Database'' was the true missing piece to build your application <strong>entirely </strong>on Cloudflare’s global network, going from a blank canvas in VSCode to a full stack application in seconds. Compatible with the popular SQLite API, D1 empowers developers to build out their databases without getting bogged down by complexity and having to manage every underlying layer.</p>
 	<p>Since our launch announcement in May and private beta in June, we’ve made great strides in building out our vision of a serverless database. With D1 still in <a href="https://www.cloudflare.com/lp/d1" target="_blank">private beta</a> but an open beta on the horizon, we’re excited to show and tell our journey of building D1 and what’s to come.</p>
 	<h2 id="the-d1-experience">The D1 Experience</h2>
-	<p>We knew from Cloudflare Workers feedback that using Wrangler as the mechanism to create and deploy applications is loved and preferred by many. That’s why when <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/">Wrangler 2.0</a> was announced this past May alongside D1, we took advantage of the new and improved CLI for every part of the experience from data creation to every update and iteration. Let’s take a quick look on how to get set up in a few easy steps.</p>
+	<p>We knew from Cloudflare Workers feedback that using Wrangler as the mechanism to create and deploy applications is loved and preferred by many. That’s why when <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler">Wrangler 2.0</a> was announced this past May alongside D1, we took advantage of the new and improved CLI for every part of the experience from data creation to every update and iteration. Let’s take a quick look on how to get set up in a few easy steps.</p>
 	<h3 id="create-your-database">Create your database</h3>
 	<p>With the latest version of <a href="https://github.com/cloudflare/wrangler2" target="_blank">Wrangler</a> installed, you can create an initialized empty database with a quick</p>
 	<p><code>npx wrangler d1 create my_database_name</code></p>
@@ -17,7 +17,7 @@
 	<p><code>wrangler d1 execute my_database-name --file ./filename.sql</code></p>
 	<p>and pass through an existing SQLite .sql file of your choice. Your database is now ready for action.</p>
 	<h3 id="develop-test-locally">Develop &amp; Test Locally</h3>
-	<p>With all the improvements we’ve made to Wrangler since version 2 launched <a href="https://blog.cloudflare.com/wrangler-v2-beta/">a few months ago</a>, we’re pleased to report that D1 has full remote &amp; local wrangler dev support:</p>
+	<p>With all the improvements we’ve made to Wrangler since version 2 launched <a href="https://blog.cloudflare.com/wrangler-v2-beta">a few months ago</a>, we’re pleased to report that D1 has full remote &amp; local wrangler dev support:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-43.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>When running <code>wrangler dev -–local -–persist</code>, an SQLite file will be created inside <code>.wrangler/state</code>. You can then use a local GUI program for managing it, like SQLiteFlow (<a href="https://www.sqliteflow.com" target="_blank">https://www.sqliteflow.com/</a>) or Beekeeper (<a href="https://www.beekeeperstudio.io" target="_blank">https://www.beekeeperstudio.io/</a>).</p>
 	<p>Or you can simply use SQLite directly with the SQLite command line by running <code>sqlite3 .wrangler/state/d1/DB.sqlite3</code>:</p>

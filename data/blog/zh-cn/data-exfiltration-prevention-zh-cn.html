@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-31.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>数据泄露或数据丢失可能是一项严峻考验，非常耗时，成本高昂，会导致经济损失、负面品牌联想和隐私法律的惩罚。例如，<a href="https://www.power-grid.com/td/what-we-learned-from-a-data-exfiltration-incident-at-an-electric-utility/#gref" target="_blank">北美有一家电力公司，其工业控制系统</a>的智能电网和计量研发知识信息疑似因网络内部攻击而泄露。未经授权访问公用事业公司的数据可能破坏智能电网或导致停电。</p>
-	<p>再如，一名安全研究人员发现<a href="https://blog.rapid7.com/2020/11/17/dont-put-it-on-the-internet-tesla-backup-gateway-edition/" target="_blank"> Tesla 的备份网关</a>暴露了未知（未记录）的 API 端点，不法分子可能会利用该端点导出数据或进行未经授权的更改。如果攻击者利用未经验证的 API 端点破坏电池或连接的电网，这将产生非常现实的后果。</p>
+	<p>再如，一名安全研究人员发现<a href="https://blog.rapid7.com/2020/11/17/dont-put-it-on-the-internet-tesla-backup-gateway-edition" target="_blank"> Tesla 的备份网关</a>暴露了未知（未记录）的 API 端点，不法分子可能会利用该端点导出数据或进行未经授权的更改。如果攻击者利用未经验证的 API 端点破坏电池或连接的电网，这将产生非常现实的后果。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-29.png" class="kg-image" alt="来源：Verizon 2020 年数据泄露调查报告" loading="lazy">
 		<figcaption>来源：Verizon 2020 年数据泄露调查报告</figcaption>
 	</figure>
@@ -14,7 +14,7 @@
 	<p>由于有些员工远程工作，公司无法在办公室出口处执行网络政策。通过在用户端点使用我们的 WARP 桌面客户端和 Gateway，安全团队可以查看 DNS 日志，能够执行曾经在公司办公室使用的政策，同时保护隐私。Gateway 相当于公司设备上的 DNS 解析器。这不仅能让团队更有效地响应事件，找到根本原因，还通过识别访问恶意域的受损机器来帮助预防。WARP 可确保 DNS 流量已加密，从而保护用户的隐私。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-30.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>我们的浏览器隔离工具在最接近用户的那一层提供保护，在那一层，用户可能大部分时间都在访问基于云的应用程序。浏览器隔离可以方便地预防和应对攻击。它可以用来删除对某些 SaaS 应用程序的访问权限，防止用户复制/粘贴，限制打印，并阻止文件下载。换句话说，托管在云服务中的数据可以在多个关键点上获得保护，让他们更难泄漏。通过各种政策，可以为单个域、用户或广泛的网站类别配置浏览器隔离。浏览器隔离还可以通过捕捉哪些人通过浏览器访问了已知的恶意网站或下载了某些文件，让响应者快速发现可能已遭入侵的端点。</p>
-	<p>这就是 Zero Trust 模式的真正作用。如果您以前从未听说，请看这里的精彩<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">介绍</a>。Cloudflare Access 属于 Cloudflare One 的一套工具，帮助组织在其网络上实施 Zero Trust 模式。我们使用 Cloudflare Access 来管理内部资源政策的统一方法。作为检测和响应团队的安全工程师，在应对我们必须在全公司范围内更改访问权限的事件时，Cloudflare Access 和 Cloudflare Access for SaaS 应用程序让我们能够有效地推送政策，专注于更重要的事情，而不必担心应用程序层面的更改。在一个中心点管理应用程序的访问权限，而不是单独管理，极大地缩短了我们的响应时间。</p>
+	<p>这就是 Zero Trust 模式的真正作用。如果您以前从未听说，请看这里的精彩<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">介绍</a>。Cloudflare Access 属于 Cloudflare One 的一套工具，帮助组织在其网络上实施 Zero Trust 模式。我们使用 Cloudflare Access 来管理内部资源政策的统一方法。作为检测和响应团队的安全工程师，在应对我们必须在全公司范围内更改访问权限的事件时，Cloudflare Access 和 Cloudflare Access for SaaS 应用程序让我们能够有效地推送政策，专注于更重要的事情，而不必担心应用程序层面的更改。在一个中心点管理应用程序的访问权限，而不是单独管理，极大地缩短了我们的响应时间。</p>
 	<p>再来看 API 层，Cloudflare 的 API Shield 是管理 API 安全控制的第一要点。想想那些经众多 API 暴露的物联网设备，例如 Tesla 的网关。API Shield 提供了一个多层次方法来限制意外的数据暴露。例如，可以使用模式验证，尽量降低下游系统被意外输入破坏的可能性；对终端的请求可以限制为持有有效客户端 SSL/TLS 证书的客户端；可以过滤来自 Open SOCKS 代理等来源的噪音，以及来自 API 不该与之通信的设备或地区的请求。今天的公告包括新的数据混淆功能，以及本周晚些时候，我们将宣布发现安全团队可能不知道的“影子”API、发现异常调用活动的方法。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-39.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>作为一名检测和响应工程师，在许多事件中，一些安全问题要求我们当场了解为何可以访问这些系统。不同系统有不同的管理方式，角色的定义也不总是一致的。因此，我们很难立马响应，大多数情况下，我们需要与系统所有者对话，以更好地了解访问权限。利用 Cloudflare One、浏览器隔离和 API Shield 提供的多层保护，安全团队可以专注于预防而不是响应。</p>

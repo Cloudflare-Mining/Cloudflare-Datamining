@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image11-3.png" class="kg-image" alt="Cloudflare servers don't own IPs anymore – so how do they connect to the Internet?" loading="lazy"></figure>
-	<p>Cloudflare 的很多技术都是有据可查的。例如，我们如何处理眼球（客户）和我们的服务器之间的流量，在这个博客上已经讨论过很多次：“<a href="https://blog.cloudflare.com/a-brief-anycast-primer/">anycast的简单入门(2011)</a>”, "<a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p/">没有负载平衡器的负载平衡(2013)</a>", "<a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice/">实际操作中的路径 MTU 发现(2015)</a>", &nbsp;"<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/">Cloudflare 的边缘负载平衡器(2020)</a>", "<a href="https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf/">我们如何修复 BSD 套接字 API(2022)</a>"。</p>
+	<p>Cloudflare 的很多技术都是有据可查的。例如，我们如何处理眼球（客户）和我们的服务器之间的流量，在这个博客上已经讨论过很多次：“<a href="https://blog.cloudflare.com/a-brief-anycast-primer">anycast的简单入门(2011)</a>”, "<a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">没有负载平衡器的负载平衡(2013)</a>", "<a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">实际操作中的路径 MTU 发现(2015)</a>", &nbsp;"<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Cloudflare 的边缘负载平衡器(2020)</a>", "<a href="https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf">我们如何修复 BSD 套接字 API(2022)</a>"。</p>
 	<p>然而，我们很少谈及我们网络设置的第二部分--我们的服务器如何从互联网上获取内容。 在这篇博客中，我们将介绍这一差距。 我们将讨论我们如何管理用于从互联网检索数据的 Cloudflare IP 地址，我们的出口网络设计是如何发展的，以及我们如何优化它以最佳方式利用可用的 IP 空间。</p>
 	<p>打起精神来。 我们有很多内容要讲。</p>
 	<h3 id="-">术语第一!</h3>
@@ -12,9 +12,9 @@
 	</ul>
 	<p>虽然在这个博客上很少讨论，但出口部分对我们的运作至关重要。 我们的服务器必须启动传出连接来完成它们的工作! 喜欢：</p>
 	<ul>
-		<li>在我们的 CDN 产品中，在缓存内容之前，内容是从源服务器中获取的。参见《 <a href="https://blog.cloudflare.com/zh-cn/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet-zh-cn/">Pingora，将 Cloudflare 连接到互联网的代理（2022）</a> 》、 <a href="https://blog.cloudflare.com/argo-v2/">Argo</a> 和<a href="https://blog.cloudflare.com/tiered-cache-smart-topology/">分层缓存</a> 。</li>
-		<li>对于 <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a> 产品，每个入口 TCP 连接会导致一个出口连接。</li>
-		<li><a href="https://workers.cloudflare.com/" target="_blank">Workers</a> ，经常运行多个子请求来构建一个 HTTP 响应。其中一些可能是对互联网的服务器进行查询。</li>
+		<li>在我们的 CDN 产品中，在缓存内容之前，内容是从源服务器中获取的。参见《 <a href="https://blog.cloudflare.com/zh-cn/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet-zh-cn">Pingora，将 Cloudflare 连接到互联网的代理（2022）</a> 》、 <a href="https://blog.cloudflare.com/argo-v2">Argo</a> 和<a href="https://blog.cloudflare.com/tiered-cache-smart-topology">分层缓存</a> 。</li>
+		<li>对于 <a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank">Spectrum</a> 产品，每个入口 TCP 连接会导致一个出口连接。</li>
+		<li><a href="https://workers.cloudflare.com" target="_blank">Workers</a> ，经常运行多个子请求来构建一个 HTTP 响应。其中一些可能是对互联网的服务器进行查询。</li>
 		<li>我们还运营面向客户的前向代理产品--如 WARP 和 Cloudflare Gateway。这些代理机构处理的是以互联网为目的地的眼球连接。 我们的服务器需要代表我们的用户与互联网建立连接。</li>
 	</ul>
 	<p>等等</p>
@@ -26,7 +26,7 @@
 	<p>由于这个原因，直到最近，我们都是以一种直接和传统的方式建立出口连接：每个服务器都获得自己的单播 IP 地址。 "单播 IP" 意味着世界上只有一个服务器在使用该地址。 返回的数据包将正常工作，并准确地返回到由单播 IP 识别的正确服务器。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-16.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-ip-">根据出口 IP 对流量进行分割</h3>
-	<p>最初，由 Cloudflare 提供的连接主要是前往互联网上的源服务器的HTTP 提取。随着我们产品线的增长，流量的种类也越来越多。最明显的例子是<a href="https://blog.cloudflare.com/zh-cn/1111-warp-better-vpn-zh-cn/">我们的 WARP 应用程序</a>。对于 WARP，我们的服务器运行一个前向代理，并处理由最终用户设备产生的流量。这是在没有与我们的 CDN 产品相同程度的中介的情况下完成的。这就产生了一个问题。互联网上的第三方服务器--如源服务器--必须能够区分来自Cloudflare 服务的连接和我们的 WARP 用户的连接。这种流量细分传统上是通过对不同的流量类型使用不同的IP范围来完成的（尽管最近我们引入了更强大的技术，如 <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/" target="_blank"> Authenticated Origin Pulls</a> ）。</p>
+	<p>最初，由 Cloudflare 提供的连接主要是前往互联网上的源服务器的HTTP 提取。随着我们产品线的增长，流量的种类也越来越多。最明显的例子是<a href="https://blog.cloudflare.com/zh-cn/1111-warp-better-vpn-zh-cn">我们的 WARP 应用程序</a>。对于 WARP，我们的服务器运行一个前向代理，并处理由最终用户设备产生的流量。这是在没有与我们的 CDN 产品相同程度的中介的情况下完成的。这就产生了一个问题。互联网上的第三方服务器--如源服务器--必须能够区分来自Cloudflare 服务的连接和我们的 WARP 用户的连接。这种流量细分传统上是通过对不同的流量类型使用不同的IP范围来完成的（尽管最近我们引入了更强大的技术，如 <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull" target="_blank"> Authenticated Origin Pulls</a> ）。</p>
 	<p>为了解决受信任与不受信任的流量池差异问题，我们在每台服务器上添加了一个不受信任的 WARP IP 地址：</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-30.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="-ip--1">国家标记的出口 IP 地址</h3>
@@ -115,12 +115,12 @@
 	<p>服务器之间共享一个 IP 的想法并不新鲜。传统上，这可以通过路由器上的 Source-NAT 实现。遗憾的是，我们需要的出口 IP 的数量和我们的运行规模，使我们无法在路由器层面上依赖状态防火墙 /NAT。我们也不喜欢共享状态，所以我们并不热衷于分布式 NAT 安装。</p>
 	<p>我们选择的方式是通过<strong>端口范围</strong>将一个出口 IP 分割到各个服务器。对于一个给定的出口 IP，每台服务器都拥有一小部分可用的源端口——一个端口片。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-68.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>当返回的数据包从互联网到达时，我们必须将它们路由回正确的机器。对于这项任务，我们已经自定义 "Unimog" - 我们基于 L4 XDP 的负载平衡器 - ("<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/">Unimog, Cloudflare的负载平衡器(2020)</a> ")，这个方法非常有效。</p>
-	<p>使用 2,048 个端口的端口片，我们可以在 31 个服务器之间共享一个 IP。但是，总是存在端口用完的可能性。为了解决这个问题，我们想尽办法高效地重新利用出口端口。请参阅“<a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections/">如何避免端口不足 (2022)</a> ”、“<a href="https://lpc.events/event/16/contributions/1349/" target="_blank">如何共享 IPv4 地址 (2022)</a> ”和我们的 <a href="https://cloudflare.tv/event/oZKxMJg4" target="_blank">Cloudflare.TV 部分</a>。</p>
+	<p>当返回的数据包从互联网到达时，我们必须将它们路由回正确的机器。对于这项任务，我们已经自定义 "Unimog" - 我们基于 L4 XDP 的负载平衡器 - ("<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog, Cloudflare的负载平衡器(2020)</a> ")，这个方法非常有效。</p>
+	<p>使用 2,048 个端口的端口片，我们可以在 31 个服务器之间共享一个 IP。但是，总是存在端口用完的可能性。为了解决这个问题，我们想尽办法高效地重新利用出口端口。请参阅“<a href="https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections">如何避免端口不足 (2022)</a> ”、“<a href="https://lpc.events/event/16/contributions/1349" target="_blank">如何共享 IPv4 地址 (2022)</a> ”和我们的 <a href="https://cloudflare.tv/event/oZKxMJg4" target="_blank">Cloudflare.TV 部分</a>。</p>
 	<p>基本上就是这样了。每台服务器都知道它拥有哪些 IP 地址和端口片。对于入站路由，Unimog 会检查端口并将数据包分配给适当的机器。</p>
 	<h3 id="--3">数据中心之间共享一个子网</h3>
 	<p>但这并不是故事的结束，我们还没有讨论如何将一个 /32 地址路由到一个数据中心。传统上，在公共互联网上，只能对粒度为 /24 或 256 个 IP 地址的子网进行路由。 在我们的案例中，这将导致 IP 空间的极大浪费。</p>
-	<p>为了解决这个问题并提高我们的IP空间的利用率，我们将我们的出口范围部署为... <strong> anycast</strong> !有了这些，我们自定义了 Unimog，并教它通过我们的<a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane/">骨干网络</a>转发数据包到正确的数据中心。Unimog 可维护这样一个数据库：</p><!--kg-card-begin: markdown-->
+	<p>为了解决这个问题并提高我们的IP空间的利用率，我们将我们的出口范围部署为... <strong> anycast</strong> !有了这些，我们自定义了 Unimog，并教它通过我们的<a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane">骨干网络</a>转发数据包到正确的数据中心。Unimog 可维护这样一个数据库：</p><!--kg-card-begin: markdown-->
 	<pre><code>198.51.100.1 - forward to LHR
 198.51.100.2 - forward to CDG
 198.51.100.3 - forward to MAN
@@ -136,7 +136,7 @@
 		<li>我们能够在<strong>许多服务器</strong>之间共享一个 /32 出口 IP 。</li>
 		<li>我们可以将一个子网分布在<strong>许多数据中心，</strong>并可以很容易地在传输中改变它。这使我们能够充分利用我们的出口 IPv4 范围。</li>
 		<li>我们可以<strong>把类似的 IP 地址归类为一组</strong>。例如，所有被标记为 "UK" 的 IP 地址可能形成一个单一的连续范围。这就减少了发布的地理信息的大小。</li>
-		<li>我们很容易<strong>载入新的出口 IP 范围</strong> ，如客户的 IP。这对我们的一些产品来说非常有用，如 <a href="https://www.cloudflare.com/products/zero-trust/" target="_blank">Cloudflare Zero Trust</a> &nbsp;。</li>
+		<li>我们很容易<strong>载入新的出口 IP 范围</strong> ，如客户的 IP。这对我们的一些产品来说非常有用，如 <a href="https://www.cloudflare.com/products/zero-trust" target="_blank">Cloudflare Zero Trust</a> &nbsp;。</li>
 	</ul>
 	<p>所有这些都可以在合理的成本内完成，而且不会影响性能和可靠性：</p>
 	<ul>
@@ -157,7 +157,7 @@
 	<p>我们的出口地址被标记为 "UK"，这并不总是意味着它实际上是在英国使用。我们已经有过案例，当一个标记为 UK 的 WARP 用户，由于我们的 LHR 数据中心的维护而被路由到巴黎。一个热门 CDN 对我们的出口 IP 进行了反向查询，发现它被标记为 "UK" ，并将用户引导到伦敦的 CDN 服务器。 一般情况下这没什么问题......但我们当时实际上是从巴黎传出的。这个用户最终将数据包从他们在英国的家路由到巴黎，再回到英国。这样做显然没什么性能可言。</p>
 	<p>我们通过在出口数据中心执行 DNS 请求来解决这个问题。对于 DNS，我们使用标有<strong>数据中心</strong>位置的 IP 地址 ，而不是用户的预定地理位置。这通常能解决这个问题，但可悲的是，仍然有一些例外。</p>
 	<h3 id="--6">未来就在这里</h3>
-	<p>我们 2021 年在 <a href="https://blog.cloudflare.com/zh-cn/addressing-agility-zh-cn/">Addressing Agility</a> 的实验证明我们有很多机会对入口寻址进行创新。软单播向我们展示了我们可以在出口端实现巨大的灵活性和密度。</p>
+	<p>我们 2021 年在 <a href="https://blog.cloudflare.com/zh-cn/addressing-agility-zh-cn">Addressing Agility</a> 的实验证明我们有很多机会对入口寻址进行创新。软单播向我们展示了我们可以在出口端实现巨大的灵活性和密度。</p>
 	<p>随着每个新产品的推出，我们在出口处需要的标记数量也在增加--从流量可信度、产品类别到地理位置。 随着可用的 IPv4 地址池的缩小，我们可以肯定在该领域将有更多的创新。 软单播是我们的解决方案，但可以肯定的是，这不会是我们的终点。</p>
 	<p>不过现在看来，我们正在远离传统的单播。 我们的出口 IP 真的不再存在于一个固定的地方，我们的一些服务器现在甚至不拥有一个真正的单播 IP。</p>
 </div>

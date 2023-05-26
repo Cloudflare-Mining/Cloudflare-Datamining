@@ -3,9 +3,9 @@
 		<figcaption>Grant mechanical calculating machine, public domain <a href="https://en.wikipedia.org/wiki/File:Grant_mechanical_calculating_machine_1877.jpg" target="_blank">image</a></figcaption>
 	</figure>
 	<p></p><!--kg-card-begin: markdown-->
-	<p>It is unlikely we can tell you anything new about the extended Berkeley Packet Filter, eBPF for short, if you've read all the great <a href="http://man7.org/linux/man-pages/man2/bpf.2.html" target="_blank">man pages</a>, <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank">docs</a>, <a href="https://cilium.readthedocs.io/en/latest/bpf/" target="_blank">guides</a>, and some of our <a href="https://blog.cloudflare.com/epbf_sockets_hop_distance/">blogs</a> out there.</p>
-	<p>But we can tell you a war story, and who doesn't like those? This one is about how eBPF lost its ability to count for a while<a href="#f1"><sup>1</sup></a>.</p>
-	<p>They say in our Austin, Texas office that all good stories start with "y'all ain't gonna believe this… tale." This one though, starts with a <a href="https://lore.kernel.org/netdev/CAJPywTJqP34cK20iLM5YmUMz9KXQOdu1-+BZrGMAGgLuBWz7fg@mail.gmail.com/" target="_blank">post</a> to Linux netdev mailing list from <a href="https://twitter.com/majek04" target="_blank">Marek Majkowski</a> after what I heard was a long night:</p>
+	<p>It is unlikely we can tell you anything new about the extended Berkeley Packet Filter, eBPF for short, if you've read all the great <a href="http://man7.org/linux/man-pages/man2/bpf.2.html" target="_blank">man pages</a>, <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank">docs</a>, <a href="https://cilium.readthedocs.io/en/latest/bpf" target="_blank">guides</a>, and some of our <a href="https://blog.cloudflare.com/epbf_sockets_hop_distance">blogs</a> out there.</p>
+	<p>But we can tell you a war story, and who doesn't like those? This one is about how eBPF lost its ability to count for a while<a href="https://blog.cloudflare.com/#f1"><sup>1</sup></a>.</p>
+	<p>They say in our Austin, Texas office that all good stories start with "y'all ain't gonna believe this… tale." This one though, starts with a <a href="https://lore.kernel.org/netdev/CAJPywTJqP34cK20iLM5YmUMz9KXQOdu1-+BZrGMAGgLuBWz7fg@mail.gmail.com" target="_blank">post</a> to Linux netdev mailing list from <a href="https://twitter.com/majek04" target="_blank">Marek Majkowski</a> after what I heard was a long night:</p>
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/ebpf_bug_email_netdev.png" class="kg-image" alt="" loading="lazy"></figure>
@@ -35,7 +35,7 @@ diff           4294967295 0x00000000ffffffff
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h3 id="whoismessingwithmyebpf">Who is messing with my eBPF?</h3>
 	<p>When computers stop subtracting, you know something big is up. We called for reinforcements.</p>
-	<p>Our colleague Arthur Fabre <a href="https://lore.kernel.org/netdev/20190301113901.29448-1-afabre@cloudflare.com/" target="_blank">quickly noticed</a> something is off when you examine the eBPF code loaded into the kernel. It turns out kernel doesn't actually run the eBPF it's supplied - it sometimes rewrites it first.</p>
+	<p>Our colleague Arthur Fabre <a href="https://lore.kernel.org/netdev/20190301113901.29448-1-afabre@cloudflare.com" target="_blank">quickly noticed</a> something is off when you examine the eBPF code loaded into the kernel. It turns out kernel doesn't actually run the eBPF it's supplied - it sometimes rewrites it first.</p>
 	<p>Any sane programmer would expect 64-bit subtraction to be expressed as <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.s#L47" target="_blank">a single eBPF instruction</a></p>
 	<pre><code>$ llvm-objdump -S -no-show-raw-insn -section=socket1 bpf/filter.o
 …
@@ -96,7 +96,7 @@ $ sudo bpftool prog dump xlated id 659
 	<p>After our report, <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3612af783cf52c74a031a2f11b82247b2599d3cd" target="_blank">the fix</a> has quickly landed in v5.0 kernel and got backported to stable kernels 4.20.15 and 4.19.28. Kudos to Daniel Borkmann for getting the fix out fast. However, kernel upgrades are hard and in the meantime we were left with code running in production that was not doing what it was supposed to.</p>
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h3 id="32bitalutotherescue">32-bit ALU to the rescue</h3>
-	<p>As one of the eBPF maintainers <a href="https://lore.kernel.org/netdev/af0643e0-08a1-6326-2a80-71892de1bf56@iogearbox.net/" target="_blank">has pointed out</a>, 32-bit arithmetic operations are not affected by the verifier bug. This opens a door for a work-around.</p>
+	<p>As one of the eBPF maintainers <a href="https://lore.kernel.org/netdev/af0643e0-08a1-6326-2a80-71892de1bf56@iogearbox.net" target="_blank">has pointed out</a>, 32-bit arithmetic operations are not affected by the verifier bug. This opens a door for a work-around.</p>
 	<p>eBPF registers, <code>r0</code>..<code>r10</code>, are 64-bits wide, but you can also access just the lower 32 bits, which are exposed as subregisters <code>w0</code>..<code>w10</code>. You can operate on the 32-bit subregisters using BPF ALU32 instruction subset. LLVM 7+ can generate eBPF code that uses this instruction subset. Of course, you need to you ask it nicely with trivial <code>-Xclang -target-feature -Xclang +alu32</code> toggle:</p>
 	<pre><code>$ cat sub32.c
 #include "common.h"
@@ -148,7 +148,7 @@ sub32:
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h3 id="surelyabitofirwilldo">Surely a bit of IR will do?</h3>
 	<p>The problem was in Clang frontend - compiling C to IR. We know that BPF "assembly" backend for LLVM can generate bytecode that uses ALU32 instructions. Maybe if we tweak the Clang compiler's output just a little we can achieve what we want. This means we have to get our hands dirty with the LLVM Intermediate Representation (IR).</p>
-	<p>If you haven't heard of LLVM IR before, now is a good time to do some <a href="http://www.aosabook.org/en/llvm.html" target="_blank">reading</a><a href="#f2"><sup>2</sup></a>. In short the LLVM IR is what Clang produces and LLVM BPF backend consumes.</p>
+	<p>If you haven't heard of LLVM IR before, now is a good time to do some <a href="http://www.aosabook.org/en/llvm.html" target="_blank">reading</a><a href="https://blog.cloudflare.com/#f2"><sup>2</sup></a>. In short the LLVM IR is what Clang produces and LLVM BPF backend consumes.</p>
 	<p>Time to write IR by hand! Here's a hand-tweaked <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.ll#L7" target="_blank">IR variant</a> of our <code>sub64()</code> function:</p>
 	<pre><code>define dso_local i64 @sub64_ir(i64, i64) local_unnamed_addr #0 {
   %3 = trunc i64 %0 to i32      ; xl = (u32) x;
@@ -169,7 +169,7 @@ sub32:
   ret i64 %17
 }
 </code></pre>
-	<p>It may not be pretty but it does produce <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.s#L5" target="_blank">desired BPF code</a> when compiled<a href="#f3"><sup>3</sup></a>. You will likely find the <a href="https://llvm.org/docs/LangRef.html" target="_blank">LLVM IR reference</a> helpful when deciphering it.</p>
+	<p>It may not be pretty but it does produce <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.s#L5" target="_blank">desired BPF code</a> when compiled<a href="https://blog.cloudflare.com/#f3"><sup>3</sup></a>. You will likely find the <a href="https://llvm.org/docs/LangRef.html" target="_blank">LLVM IR reference</a> helpful when deciphering it.</p>
 	<p>And voila! First working solution that produces correct results:</p>
 	<pre><code>$ ./run-bpf -filter ir $[2**32] 1
 arg0           4294967296 0x0000000100000000
@@ -210,7 +210,7 @@ diff           4294967295 0x00000000ffffffff
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/04/poison_bottles-2.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/wiki/File:D-BW-Kressbronn_aB_-_Kl%C3%A4ranlage_067.jpg" target="_blank">image</a> by ANKAWÜ</figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/wiki/File:D-BW-Kressbronn_aB_-_Kl%C3%A4ranlage_067.jpg" target="_blank">image</a> by ANKAWÜ</figcaption>
 	</figure>
 	<p></p><!--kg-card-begin: markdown-->
 	<p>So there you have it - from C, to IR, and back to C to hack around a bug in eBPF verifier and be able to subtract 64-bit integers again. Usually you won't have to dive into LLVM IR or assembly to make use of eBPF. But it does help to know a little about it when things don't work as expected.</p>
@@ -218,7 +218,7 @@ diff           4294967295 0x00000000ffffffff
 	<!--kg-card-end: markdown-->
 	<hr><!--kg-card-begin: markdown-->
 	<p><a name="f1"><sup>1</sup></a> Okay, it was more like 3 months time until the bug was discovered and fixed.</p>
-	<p><a name="f2"><sup>2</sup></a> Some even think that it is <a href="https://idea.popcount.org/2013-07-24-ir-is-better-than-assembly/" target="_blank">better than assembly</a>.</p>
+	<p><a name="f2"><sup>2</sup></a> Some even think that it is <a href="https://idea.popcount.org/2013-07-24-ir-is-better-than-assembly" target="_blank">better than assembly</a>.</p>
 	<p><a name="f3"><sup>3</sup></a> How do we know? The litmus test is to look for statements matching <code>r[0-9] [-+]= r[0-9]</code> in BPF assembly.</p>
 	<!--kg-card-end: markdown-->
 </div>

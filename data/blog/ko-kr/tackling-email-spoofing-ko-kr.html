@@ -48,7 +48,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>전체 메커니즘의 목록과 SPF에 대한 자세한 내용은 <a href="https://datatracker.ietf.org/doc/html/rfc7208#section-5" target="_blank">RFC7208</a>를 참조하시기 바랍니다.</p>
 	<h3 id="dkim-domainkeys-identified-mail-">DKIM (DomainKeys Identified Mail)</h3>
 	<p>이제 SPF를 이용해 허가된 IP 주소 및 도메인만이 cloudflare.com을 대신해 이메일을 보낼 수 있도록 보장했습니다. 하지만 IP 중 하나의 소유자가 변경되었는데 Cloudflare가 알지 못하고 있거나 SPF 레코드가 업데이트되지 않았다면 어떻게 될까요? 또는 동일한 IP에서 Google의 이메일 서버도 이용하는 사람이 cloudflare.com에서 오는 이메일을 스푸핑하려고 한다면 어떻게 될까요?<br></p>
-	<p>여기에 DKIM의 역할이 있습니다. DKIM은 <a href="https://www.cloudflare.com/ko-kr/learning/ssl/how-does-public-key-encryption-work/" target="_blank">공개 키 암호화</a>를 이용해 이메일의 특정 부분(대개는 본문 및 특정 헤더)에 암호로 서명하는 메커니즘을 제공합니다. 작동 방식을 자세히 살펴보기 전에 cloudflare.com에 사용되는 DKIM 레코드를 살펴보겠습니다.</p><!--kg-card-begin: markdown-->
+	<p>여기에 DKIM의 역할이 있습니다. DKIM은 <a href="https://www.cloudflare.com/ko-kr/learning/ssl/how-does-public-key-encryption-work" target="_blank">공개 키 암호화</a>를 이용해 이메일의 특정 부분(대개는 본문 및 특정 헤더)에 암호로 서명하는 메커니즘을 제공합니다. 작동 방식을 자세히 살펴보기 전에 cloudflare.com에 사용되는 DKIM 레코드를 살펴보겠습니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>google._domainkey.cloudflare.com.	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -85,7 +85,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>옵션 사항인 다른 태그 및 DMARC에 대한 전체적인 설명은 <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">RFC7489</a>를 참조하시기 바랍니다.</p>
 	<h2 id="--1">채택에 대한 통계</h2>
 	<p>이제 문제가 무엇이고 SPF, DKIM, DMARC로 이를 해결하는 방법도 알았으니 이들이 얼마나 널리 채택되고 있는지 알아보겠습니다.</p>
-	<p><a href="https://dmarc.org/stats/farsight/dmarc/" target="_blank">Dmarc.org</a>은 대표적인 데이터 세트에서 도메인들의 DMARC 레코드 채택 통계를 발표합니다. 결과를 보면 2020년 말 현재 아직 DMARC 레코드를 갖고 있는 도메인은 50%에 미치지 못합니다. 다시 말씀드리지만, DMARC 레코드가 없다면 SPF와 DKIM 검사를 강제화하지 못합니다. 또한 연구 결과에 따르면 DMARC 레코드를 갖고 있는 도메인 중 65%가 '모니터링만 시행'하는 정책(p=none)을 사용하고 있어 이 채택률을 높일 가능성이 큽니다. 연구에서는 이러한 도메인이 이메일을 발신하는지 수신하는지 언급하고 있지 않지만, 그렇지 않다고 해도 안전한 구성에는 DMARC 레코드가 포함되어야 합니다(여기에 대해서는 추후 다시 살펴보겠습니다).</p>
+	<p><a href="https://dmarc.org/stats/farsight/dmarc" target="_blank">Dmarc.org</a>은 대표적인 데이터 세트에서 도메인들의 DMARC 레코드 채택 통계를 발표합니다. 결과를 보면 2020년 말 현재 아직 DMARC 레코드를 갖고 있는 도메인은 50%에 미치지 못합니다. 다시 말씀드리지만, DMARC 레코드가 없다면 SPF와 DKIM 검사를 강제화하지 못합니다. 또한 연구 결과에 따르면 DMARC 레코드를 갖고 있는 도메인 중 65%가 '모니터링만 시행'하는 정책(p=none)을 사용하고 있어 이 채택률을 높일 가능성이 큽니다. 연구에서는 이러한 도메인이 이메일을 발신하는지 수신하는지 언급하고 있지 않지만, 그렇지 않다고 해도 안전한 구성에는 DMARC 레코드가 포함되어야 합니다(여기에 대해서는 추후 다시 살펴보겠습니다).</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-37.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>2021년 8월 1일에 발표된 또 다른 <a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank">보고서</a>에서도 은행 부문의 조직에 속하는 도메인에 대해 유사한 결과를 제시합니다. 미국 내 2,881개의 은행 조직 중에 44%만이 도메인에 DMARC 레코드를 게시하고 있습니다. DMARC 레코드가 있는 조직 중에는 5개 중 2개가 DMARC 정책을 'None'으로 설정하고 있으며 이외의 8%는 '구성을 잘못'한 것으로 간주됩니다. 덴마크는 은행 부분의 DMARC 채택률이 94%에 이를 정도로 높은 반면, 일본의 경우는 도메인 중 13%만이 DMARC를 이용하고 있습니다. SPF 채택은 평균적으로 DMARC보다 현저하게 높으며 이는 SPF 표준이 2006년에 <a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank">실험적 RFC</a>로 처음 소개되었고 DMARC는 2015년에야 <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">표준이 된</a> 사실과 관계 있는 것으로 보입니다.</p><!--kg-card-begin: html-->
 	<style type="text/css">
@@ -192,12 +192,12 @@ To: &lt;my_personal_email_address&gt;
 	<p>따라서 개선의 여지가 꽤 있음을 알 수 있습니다.</p>
 	<h2 id="-email-security-dns-wizard">새로 도입: Email Security DNS Wizard</h2>
 	<p>그렇다면 SPF, DKIM, DMARC의 채택을 늘리고 이메일 스푸핑과 피싱에 맞서 싸우려면 무엇을 하고 있을까요? 새로운 Cloudflare <em>Email Security DNS Wizard</em>를 시작합니다.</p>
-	<p>오늘부터 Cloudflare Dashboard의 <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns" target="_blank">DNS 탭</a>으로 이동하면 두 가지 새로운 기능이 표시될 것입니다.</p>
+	<p>오늘부터 Cloudflare Dashboard의 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank">DNS 탭</a>으로 이동하면 두 가지 새로운 기능이 표시될 것입니다.</p>
 	<p>1) Email Security이라는 새로운 섹션</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh4.googleusercontent.com/7yW39Yx6BIcxLPOaHCJJkQHMCfihi6ZI1TeIw26hoYNslR0Dpm0E0A2QT7zA-78TWXvK_wAxbxcFdK815bu-2xx8046O5rOgVavTZLPT8k6pWoMMfSvjc0LDN5d8MweayzEuD3fg=s0" class="kg-image" alt="" loading="lazy"></figure>
 	<p>2) 안전하지 않은 구성에 대한 새로운 경고</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><em>Email Security DNS Wizard</em>를 사용하기 시작하려면 경고의 링크를 직접 클릭하여 마법사의 해당 섹션으로 이동하거나 새로운 <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns/wizard" target="_blank">Email Security 섹션</a>에서 <strong>구성</strong>을 클릭하면 됩니다. Email Security 섹션에는 다음의 옵션이 제시됩니다.</p>
+	<p><em>Email Security DNS Wizard</em>를 사용하기 시작하려면 경고의 링크를 직접 클릭하여 마법사의 해당 섹션으로 이동하거나 새로운 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns%2Fwizard" target="_blank">Email Security 섹션</a>에서 <strong>구성</strong>을 클릭하면 됩니다. Email Security 섹션에는 다음의 옵션이 제시됩니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/HTcq6CITW8kzRBSoK23qWiekQRf2cfGwKp_aNoIcIdJOSw7ZeNXAoR3UtJ2-jZ9RDgweHIZQqrpDzLvy210kwRNjRT8lBeS1cUd0D4LLawcOJ_xT-6v4SY81-shQYxUkch2oVOQI=s0" class="kg-image" alt="" loading="lazy"></figure>
 	<p>두 가지 시나리오가 있습니다. 즉 귀사의 도메인을 이용해 이메일을 보내거나 보내지 않는 것입니다. 이메일을 보내는 경우라면 간단한 몇 단계를 거쳐 SPF, DKIM, DMARC 레코드를 구성할 수 있습니다. 여기에서 SPF에 대한 절차를 볼 수 있습니다. </p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 57.28155339805825%;"><iframe src="https://iframe.videodelivery.net/256d8b89df970f4e8157692599e7e81f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
@@ -211,6 +211,6 @@ _dmarc.example.com.		TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h2 id="--2">이메일 스푸핑 및 피싱에 맞서 싸우기 지원</h2>
-	<p>귀사의 도메인이 이메일 스푸핑과 피싱으로부터 보호될 수 있도록 하시기 바랍니다. Cloudflare Dashboard의 <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns" target="_blank">DNS 탭</a>으로 이동하면 되며, 아직 Cloudflare DNS를 이용하지 않고 있다면 <a href="https://www.cloudflare.com/" target="_blank">cloudflare.com</a>에서 바로 무료로 가입할 수 있습니다.</p>
-	<p>SPF, DKIM, DMARC에 대해 자세한 내용을 보고 싶으시면 이메일 관련 DNS 레코드에 대한 <a href="https://www.cloudflare.com/ko-kr/learning/dns/dns-records/dns-txt-record/" target="_blank">새로운 학습 페이지</a>를 참고하시기 바랍니다.</p>
+	<p>귀사의 도메인이 이메일 스푸핑과 피싱으로부터 보호될 수 있도록 하시기 바랍니다. Cloudflare Dashboard의 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank">DNS 탭</a>으로 이동하면 되며, 아직 Cloudflare DNS를 이용하지 않고 있다면 <a href="https://www.cloudflare.com" target="_blank">cloudflare.com</a>에서 바로 무료로 가입할 수 있습니다.</p>
+	<p>SPF, DKIM, DMARC에 대해 자세한 내용을 보고 싶으시면 이메일 관련 DNS 레코드에 대한 <a href="https://www.cloudflare.com/ko-kr/learning/dns/dns-records/dns-txt-record" target="_blank">새로운 학습 페이지</a>를 참고하시기 바랍니다.</p>
 </div>

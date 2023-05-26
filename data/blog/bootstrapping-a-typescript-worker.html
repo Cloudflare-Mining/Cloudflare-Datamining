@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Cloudflare <a href="https://developers.cloudflare.com/workers/about/" target="_blank">Workers</a> allows you to quickly deploy Javascript code to our 150+ data centers around the world and execute very close to your end-user. The edit/compile/debug story is already pretty amazing using the <a href="https://dash.cloudflare.com/workers" target="_blank">Workers IDE</a> with integrated Chrome Dev Tools. However, for those hankering for some <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a> and an IDE with static analysis, autocomplete and that jazz, follow along to see one way to set up a Typescript project with <a href="https://www.jetbrains.com/webstorm/" target="_blank">Webstorm</a> and npm run upload your code straight to the edge.</p>
+	<p>Cloudflare <a href="https://developers.cloudflare.com/workers/about" target="_blank">Workers</a> allows you to quickly deploy Javascript code to our 150+ data centers around the world and execute very close to your end-user. The edit/compile/debug story is already pretty amazing using the <a href="https://dash.cloudflare.com/workers" target="_blank">Workers IDE</a> with integrated Chrome Dev Tools. However, for those hankering for some <a href="https://www.typescriptlang.org" target="_blank">Typescript</a> and an IDE with static analysis, autocomplete and that jazz, follow along to see one way to set up a Typescript project with <a href="https://www.jetbrains.com/webstorm" target="_blank">Webstorm</a> and npm run upload your code straight to the edge.</p>
 	<h3 id="prerequisites">Pre Requisites</h3>
 	<p>My environment looks like this:</p>
 	<ul>
@@ -413,7 +413,7 @@ exports.Worker = Worker;
 </code></pre>
 	<p>Paste that into the Workers IDE... works first time.</p>
 	<h3 id="automatedupload">Automated upload</h3>
-	<p>It's going to get old uploading from our IDE to the Web IDE every time we want to test a change and we're going to want to auto deploy from CI at some point. Thankfully there's <a href="https://developers.cloudflare.com/workers/api/" target="_blank">Workers Configuration API</a>, which makes it very simple to upload a Worker automatically:</p>
+	<p>It's going to get old uploading from our IDE to the Web IDE every time we want to test a change and we're going to want to auto deploy from CI at some point. Thankfully there's <a href="https://developers.cloudflare.com/workers/api" target="_blank">Workers Configuration API</a>, which makes it very simple to upload a Worker automatically:</p>
 	<p><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/:zone_id/workers/script" -H "X-Auth-Email:YOUR_CLOUDFLARE_EMAIL" -H "X-Auth-Key:ACCOUNT_AUTH_KEY" -H "Content-Type:application/javascript" --data-binary "@PATH_TO_YOUR_WORKER_SCRIPT"</code></p>
 	<p>OK, so we need our zone ID, Cloudflare email, auth key and path to the binary. I'm going to create Grunt task that uses the <a href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a> package to load config from a .env file or environment variables.</p>
 	<p>Create a <code>.env</code> file that looks like this:</p>

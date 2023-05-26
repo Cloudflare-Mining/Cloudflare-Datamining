@@ -7,8 +7,8 @@
 	<p>我们努力确保 Page Shield 易于使用：您可在防火墙选项卡下找到该工具，并通过简单的点击将其打开。无需额外配置。可针对一系列不同的事件单独设置警报。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-17.png" class="kg-image" alt="The Page Shield interface showing the list of scripts detected on the zone" loading="lazy"></figure>
 	<h2 id="-page-shield-"><strong>什么是 Page Shield？</strong></h2>
-	<p>早在今年 3 月, <a href="https://blog.cloudflare.com/zh-cn/introducing-page-shield-zh-cn/">我就发布了提前体验版的 Page Shield</a>。该解决方案可防止终端用户的数据受到针对浏览器的攻击。</p>
-	<p>今天早些时候，我们<a href="https://blog.cloudflare.com/zh-cn/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools-zh-cn/">宣布收购一款建立在 Workers 上的工具 Zaraz</a>。该工具方便客户直接通过 Cloudflare UI 加载云端上的第三方工具，而不是在浏览器中加载 JavaScript 代码，这立即提高了性能和安全性。但并非所有应用程序都使用或希望使用第三方管理器。尽管如此，我们已为您提供了保障。</p>
+	<p>早在今年 3 月, <a href="https://blog.cloudflare.com/zh-cn/introducing-page-shield-zh-cn">我就发布了提前体验版的 Page Shield</a>。该解决方案可防止终端用户的数据受到针对浏览器的攻击。</p>
+	<p>今天早些时候，我们<a href="https://blog.cloudflare.com/zh-cn/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools-zh-cn">宣布收购一款建立在 Workers 上的工具 Zaraz</a>。该工具方便客户直接通过 Cloudflare UI 加载云端上的第三方工具，而不是在浏览器中加载 JavaScript 代码，这立即提高了性能和安全性。但并非所有应用程序都使用或希望使用第三方管理器。尽管如此，我们已为您提供了保障。</p>
 	<p>Page Shield 利用我们在网络中作为反向代理的地位，直接通过浏览器接收有关正在加载的 JavaScript 文件和模块的信息。然后，每当 JavaScript 文件出现恶意行为时，我们就会为您提供可见性、分析和警告。</p>
 	<p>遭到破坏的 JavaScript 文件的例子包括 Magecart 攻击、加密挖掘和广告软件。随着基于 SaaS 的应用程序和服务的不断普及，很少有应用程序不利用或不直接通过应用程序所有者控制的第三方工具加载 JavaScript 代码，这使检测和缓解受遭到破坏的文件变得更加困难。</p>
 	<h3 id="-"><strong>实现客户端安全性有多难？</strong></h3>
@@ -22,7 +22,7 @@
 	<pre><code>content-security-policy-report-only: script-src 'none'; report-uri /cdn-cgi/script_monitor/report
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>上述标头告诉浏览器，不应加载任何脚本 <code>(script-src 'none')</code>，并应将任何违规情况报告给提供的端点 <code>(report-uri /cdn-cgi/script_monitor/report)</code>。还请注意，违规报告端点解析为处理违规的 <a href="https://www.cloudflare.com/zh-cn/network/" target="_blank">Cloudflare 网络</a>，因此没有更多流量到达源服务器。</p>
+	<p>上述标头告诉浏览器，不应加载任何脚本 <code>(script-src 'none')</code>，并应将任何违规情况报告给提供的端点 <code>(report-uri /cdn-cgi/script_monitor/report)</code>。还请注意，违规报告端点解析为处理违规的 <a href="https://www.cloudflare.com/zh-cn/network" target="_blank">Cloudflare 网络</a>，因此没有更多流量到达源服务器。</p>
 	<p>浏览器发送的每个违规报告实施为 HTTP POST 请求，向我们提供了有关脚本的信息。下面是一个示例：</p><!--kg-card-begin: markdown-->
 	<pre><code>{
    "csp-report":{
@@ -48,7 +48,7 @@
 		<li>JavaScript 文件的完整链接</li>
 		<li>浏览器在加载文件时收到的响应代码。在上述示例中，响应代码是 200，这表示文件已成功加载。</li>
 	</ul>
-	<p>通过整理报告中提供的所有信息并使用更多数据加以增强，我们能够通过 Cloudflare UI <a href="https://developers.cloudflare.com/page-shield/" target="_blank">和 API</a> 提供有关您应用程序加载的每个脚本的详细信息。</p>
+	<p>通过整理报告中提供的所有信息并使用更多数据加以增强，我们能够通过 Cloudflare UI <a href="https://developers.cloudflare.com/page-shield" target="_blank">和 API</a> 提供有关您应用程序加载的每个脚本的详细信息。</p>
 	<p>所有 Cloudflare Pro 区域都有权访问我们的 Page Shield 脚本报告。此外，Business 和 Enterprise 区域有权访问页面归属信息，允许您快速识别在何处从您的应用程序中加载了脚本。Business 和 Enterprise 区域还可以设置有关一些脚本更改事件的警报。</p>
 	<h3 id="--2"><strong>检测</strong></h3>
 	<p>应用程序所有者可能已经在利用内容安全策略以确保仅加载特定脚本。但是，CSP 通常倾向于过于自由，并且浏览器不提供任何原生机制来检测 JavaScript 文件何时表现出恶意行为。这包括允许根据内容安全策略加载的 JavaScript 代码，从而高度降低其有效性。</p>
@@ -63,13 +63,13 @@
 	<p>随着我们明年进一步构建该产品，我们计划添加更多检测信号，以及改进分类器并检测更多攻击类型，包括广告软件、勒索软件和加密采矿。</p>
 	<p>恶意信号在 JavaScript 文件上触发后，Cloudflare 就能够通过警报通知您，警报可以通过电子邮件、Webhook、PagerDuty 和其他格式进行设置。</p>
 	<h3 id="--3"><strong>防护和缓解</strong></h3>
-	<p>我们许多规模更大的客户已经有内容安全策略，虽然很容易<a href="https://blog.cloudflare.com/zh-cn/transform-http-response-headers-zh-cn/">通过 Cloudflare 添加实施 CSP 的 HTTP 响应标头</a>，但我们还可以做得更好。</p>
+	<p>我们许多规模更大的客户已经有内容安全策略，虽然很容易<a href="https://blog.cloudflare.com/zh-cn/transform-http-response-headers-zh-cn">通过 Cloudflare 添加实施 CSP 的 HTTP 响应标头</a>，但我们还可以做得更好。</p>
 	<p>尽管未包含在此即时版本中，但我们已经在努力设法将防护和缓解选项引入 Page Shield 中：</p>
 	<ul>
 		<li>防护的做法是允许根据观察到的活动脚本轻松生成 CSP，允许根据需要通过仪表板或直接通过 API 作为部署管道的一部分编辑和重新部署策略。</li>
 		<li>阻止的做法是利用我们的代理，允许以内联方式从 HTTP 响应主体中删除恶意脚本。</li>
 	</ul>
 	<h2 id="--4"><strong>立刻开始</strong></h2>
-	<p>如果您已经有网站位于 Cloudflare 上，请升级到我们的任何付费计划，以立即开始利用 Page Shield 功能，而不需要任何额外的配置。您还可以<a href="https://developers.cloudflare.com/page-shield/" target="_blank">使用我们的 API 来利用 Page Shield 功能</a>。</p>
+	<p>如果您已经有网站位于 Cloudflare 上，请升级到我们的任何付费计划，以立即开始利用 Page Shield 功能，而不需要任何额外的配置。您还可以<a href="https://developers.cloudflare.com/page-shield" target="_blank">使用我们的 API 来利用 Page Shield 功能</a>。</p>
 	<p>如果您没有网站位于 Cloudflare 上， <a href="https://dash.cloudflare.com/sign-up" target="_blank">注册</a>只需要 5 分钟！</p>
 </div>

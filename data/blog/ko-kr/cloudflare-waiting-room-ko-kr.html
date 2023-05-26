@@ -10,7 +10,7 @@
 	<p>둘째, 팬데믹과 그로 인한 결과에 따라 전세계의 많은 사람들이 12개월 전에는 필요로 하지 않았던 자원에 의존하게 되었습니다. 구체적으로 건강이나 정부 관련 자원(예: 실업 보험 웹 사이트) 등이 여기에 해당합니다. 이러한 온라인 인프라는 COVID-19의 영향을 예측하지 못한 피크 부하를 처리하도록 설정되었습니다. 백신과 관련된 웹 사이트에서도 유사한 패턴이 보이고 있습니다.</p>
 	<p>과거에는 대기실이 필요한 조직이 많지 않았습니다. 대부분 온라인 비즈니스는 본질적으로 동시에 많은 사람이 몰리기보다는 사용자 부하가 매우 일관적입니다. 이러한 조직들은 자체적으로 대기실을 구축하고 이를 응용 프로그램(예: 티켓 구매) 내에 통합하였습니다. Cloudflare의 대기실을 이용하면 응용 프로그램 코드 변경이 필요하지 않으며 코드를 한 줄 작성하지 않고도 모든 웹 사이트에 몇 분 내로 대기실을 설치할 수 있습니다. </p>
 	<p>엔지니어링 아키텍트이거나 비즈니스 운영 분석가이거나 대기실 설치는 단순합니다. Cloudflare와 함께 하면, 응용 프로그램을 안정적으로 유지하며 예상치 못한 트래픽 급증으로부터 보호하는 일을 빠르고 쉽게 할 수 있습니다. 또한, Cloudflare는 자동 활성화와 동적인 유출이 중요하다고 생각합니다. 즉, 임계값이 초과되면 대기실이 자동으로 작동되어야 하며 사용자가 응용 프로그램에서 작업을 완료하면 사용자의 다양한 크기 버킷을 제거하고 대기 중인 사용자를 받아들여야 합니다. 자동으로 작동해야 하는 것입니다. 마지막으로, 사용자와 기업 모두 COVID-19의 영향을 똑같이 받고 있습니다. 특히 <a href="https://blog.cloudflare.com/project-fair-shot">보건 및 정부 부문</a>이 심각하지만, 이에 국한된 것은 아닙니다. Cloudflare는 이러한 응용 프로그램이 계속 사용 가능하고 기능을 유지함으로써 모든 사용자가 자신의 브라우저 내에서 오류가 아니라 필요한 대우를 받을 수 있게 하고 싶었습니다.</p>
-	<p>Cloudflare 대기실의 작동 방식Cloudflare 대기실은 에지 네트워크와 Worker 제품 위에 구축되었습니다. Cloudflare는 Workers 및 <a href="https://blog.cloudflare.com/introducing-workers-durable-objects/">지속 가능 개체</a> 서비스를 활용함으로써 고객 코딩의 필요성을 제거하고 바로 작동할 수 있는 원활한 제품을 만들 수 있었습니다. 게다가 Workers 제품의 규모와 성능을 최대한 활용하여 대기 시간 오버헤드를 크게 낮추고, 추정 시간을 최대한 정확하게 제공하며, 필요 이상 기다리지 않게 할 수 있었습니다. 하지만 분산된 네트워크에 중앙집중식 시스템을 구축하는 것은 쉬운 일이 아닙니다. 응용 프로그램에 대한 요청이 전세계에서 올 때, 해당 응용 프로그램에 대한 인바운드 및 아웃바운드 트래픽을 광범위하고 정확하게 볼 수 있어야 합니다.</p>
+	<p>Cloudflare 대기실의 작동 방식Cloudflare 대기실은 에지 네트워크와 Worker 제품 위에 구축되었습니다. Cloudflare는 Workers 및 <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">지속 가능 개체</a> 서비스를 활용함으로써 고객 코딩의 필요성을 제거하고 바로 작동할 수 있는 원활한 제품을 만들 수 있었습니다. 게다가 Workers 제품의 규모와 성능을 최대한 활용하여 대기 시간 오버헤드를 크게 낮추고, 추정 시간을 최대한 정확하게 제공하며, 필요 이상 기다리지 않게 할 수 있었습니다. 하지만 분산된 네트워크에 중앙집중식 시스템을 구축하는 것은 쉬운 일이 아닙니다. 응용 프로그램에 대한 요청이 전세계에서 올 때, 해당 응용 프로그램에 대한 인바운드 및 아웃바운드 트래픽을 광범위하고 정확하게 볼 수 있어야 합니다.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/01/image7-10.png" class="kg-image" alt="대기실을 거치지 않고 Cloudflare를 통하는 요청" loading="lazy">
 		<figcaption>대기실을 거치지 않고 Cloudflare를 통하는 요청</figcaption>
 	</figure>
@@ -30,5 +30,5 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image8-12.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>마지막으로, 다양한 대기실을 관리하는 것도 놀랍게 쉽습니다. 대기실 관리 표에서, 고객이 대기 중인 대기실, 대기 고객이 없는 대기실, 비활성화된 대기실을 한 눈에 일목요연하게 알 수 있습니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image5-12.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Clouldflare는 고객이 회사의 사업과 고객에게만 집중할 수 있도록, <a href="https://www.cloudflare.com/waiting-room/" target="_blank">대기실</a>의 강력한 기능을 고객에게 제공해 드릴 수 있어 기쁘게 생각합니다. Enterprise 요금제 고객에 대한 대기실의 주요한 업데이트 사항을 올리는 블로그 게시물도 지켜보시기 바랍니다.</p>
+	<p>Clouldflare는 고객이 회사의 사업과 고객에게만 집중할 수 있도록, <a href="https://www.cloudflare.com/waiting-room" target="_blank">대기실</a>의 강력한 기능을 고객에게 제공해 드릴 수 있어 기쁘게 생각합니다. Enterprise 요금제 고객에 대한 대기실의 주요한 업데이트 사항을 올리는 블로그 게시물도 지켜보시기 바랍니다.</p>
 </div>

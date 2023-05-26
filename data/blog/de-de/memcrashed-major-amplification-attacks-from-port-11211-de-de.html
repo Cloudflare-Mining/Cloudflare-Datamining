@@ -2,15 +2,15 @@
 	<p>In den letzten Tagen haben wir einen großen Anstieg von Amplification-Angriffen (Verstärkungsangriffen) mit einem obskuren Angriffsvektor festgestellt, die unter Nutzung des <a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt" target="_blank">Memcached-Protokolls</a> von UDP-Port 11211 kamen.</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/04/mem1.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/trawin/3829936641/" target="_blank">Foto</a> von David Trawin</figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/trawin/3829936641" target="_blank">Foto</a> von David Trawin</figcaption>
 	</figure>
 	<p></p>
 	<p>Wir haben bereits häufiger über Amplification-Angriffe im Internet gesprochen. Unsere letzten zwei Blogbeiträge zu diesem Thema waren folgende:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/ssdp-100gbps/">SSDP-Verstärkungen überschreiten die 100-Gbit/s-Marke</a>. Ironie am Rande: nach Veröffentlichung dieses Beitrags wurden wir zum Ziel eines SSDP-Angriffs mit 196 Gbit/s.</li>
-		<li><a href="https://blog.cloudflare.com/reflections-on-reflections/">Allgemeine Statistiken über verschiedene von uns beobachtete Amplification-Angriffe</a>.</li>
+		<li><a href="https://blog.cloudflare.com/ssdp-100gbps">SSDP-Verstärkungen überschreiten die 100-Gbit/s-Marke</a>. Ironie am Rande: nach Veröffentlichung dieses Beitrags wurden wir zum Ziel eines SSDP-Angriffs mit 196 Gbit/s.</li>
+		<li><a href="https://blog.cloudflare.com/reflections-on-reflections">Allgemeine Statistiken über verschiedene von uns beobachtete Amplification-Angriffe</a>.</li>
 	</ul>
-	<p>Generell folgen alle Amplification-Angriffe dem gleichen Schema. <a href="https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing/" target="_blank">Ein Angreifer sendet mit Hilfe von IP-Spoofing</a> gefälschte Anfragen an einen verwundbaren UDP-Server. Ohne zu wissen, dass die Anfrage gefälscht ist, bereitet der UDP-Server daraufhin seine Antwort vor. Das Problem tritt auf, wenn Tausende von Antworten an einen ahnungslosen Zielhost gesendet und dessen Ressourcen – in der Regel das Netzwerk selbst – damit komplett überfordert werden.</p>
+	<p>Generell folgen alle Amplification-Angriffe dem gleichen Schema. <a href="https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing" target="_blank">Ein Angreifer sendet mit Hilfe von IP-Spoofing</a> gefälschte Anfragen an einen verwundbaren UDP-Server. Ohne zu wissen, dass die Anfrage gefälscht ist, bereitet der UDP-Server daraufhin seine Antwort vor. Das Problem tritt auf, wenn Tausende von Antworten an einen ahnungslosen Zielhost gesendet und dessen Ressourcen – in der Regel das Netzwerk selbst – damit komplett überfordert werden.</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/spoofing-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -18,7 +18,7 @@
 	<h3 id="memcrashed"><strong>Memcrashed</strong></h3>
 	<p>Verdeckte Amplification-Angriffe finden ständig statt. Wir sehen uns häufig mit "Chargen"- oder "Call of Duty"-Paketen konfrontiert, die auf unsere Server treffen.</p>
 	<p>Die Entdeckung eines neuen Verstärkungsvektors, der eine immense Verstärkung erlaubt, ist jedoch äußerst selten. Dieser neue, auf Memcached-Servern basierende UDP-DDoS-Angriff fällt definitiv in diese Kategorie.</p>
-	<p><a href="https://ddosmon.net/insight/" target="_blank">DDosMon von Qihoo 360</a> überwacht die Vektoren von Amplification-Angriffen. Dieses Diagramm zeigt die letzten Memcached/11211-Angriffe:</p>
+	<p><a href="https://ddosmon.net/insight" target="_blank">DDosMon von Qihoo 360</a> überwacht die Vektoren von Amplification-Angriffen. Dieses Diagramm zeigt die letzten Memcached/11211-Angriffe:</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/memcached-ddosmon.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -96,7 +96,7 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Die meisten Memcached-Server, auf die wir gestoßen sind, kamen von AS16276 – OVH, AS14061 – Digital Ocean und AS7684 – Sakura.</p>
-	<p>Insgesamt konnten wir lediglich 5.729 verschiedene eindeutige Quell-IPs von Memcached-Servern feststellen. Wir erwarten in Zukunft noch viel größere Angriffe, denn <a href="https://www.shodan.io/" target="_blank">Shodan</a> meldet 88.000 offene Memcached-Server:</p>
+	<p>Insgesamt konnten wir lediglich 5.729 verschiedene eindeutige Quell-IPs von Memcached-Servern feststellen. Wir erwarten in Zukunft noch viel größere Angriffe, denn <a href="https://www.shodan.io" target="_blank">Shodan</a> meldet 88.000 offene Memcached-Server:</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/memcached-shodan.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>

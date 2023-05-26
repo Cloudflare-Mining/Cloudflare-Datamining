@@ -10,7 +10,7 @@
 	<p>With OCSP, the browser sends the certificate for the site in question to the CA. The CA then returns good, revoked, or unknown for the particular certificate. OCSP is generally preferable because less data needs to be sent and there's less overhead from the browser having to parse the CRL response. While every browser handles the revocation check process differently, generally modern browsers prefer OCSP to CRL checks.</p>
 	<p><img alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" src="https://blog.cloudflare.com/content/images/guard_dogs.jpg.scaled500.jpg" title="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster"><noscript><img alt="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster" src="http://blog.cloudflare.com/content/images/guard_dogs.jpg.scaled500.jpg" title="OCSP Stapling: How CloudFlare Just Made SSL 30% Faster"></noscript></p>
 	<h3 id="revocationchecks30ofsslslowness">Revocation Checks: 30%+ of SSL Slowness</h3>
-	<p>Regardless of whether the browser performs an OCSP or CRL check, the check adds significant overhead. To give you a sense, the following connection flow is taken from this post on <a href="http://www.belshe.com/2012/02/04/rethinking-ssl-for-mobile-apps/" target="_blank">SSL overhead on mobile devices</a>:</p>
+	<p>Regardless of whether the browser performs an OCSP or CRL check, the check adds significant overhead. To give you a sense, the following connection flow is taken from this post on <a href="http://www.belshe.com/2012/02/04/rethinking-ssl-for-mobile-apps" target="_blank">SSL overhead on mobile devices</a>:</p>
 	<ol>
 		<li>DNS (1334ms)</li>
 		<li>TCP handshake (240ms)</li>

@@ -20,8 +20,8 @@ dig: isc_socket_bind: address in use
 	<h3 id="long-lived-connections">Long-lived connections</h3>
 	<p>Back in 2014 Cloudflare announced support for WebSockets. We wrote two articles about it:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/cloudflare-now-supports-websockets/">Cloudflare Now Supports WebSockets</a></li>
-		<li><a href="https://idea.popcount.org/2014-04-03-bind-before-connect/" target="_blank">Bind before connect</a></li>
+		<li><a href="https://blog.cloudflare.com/cloudflare-now-supports-websockets">Cloudflare Now Supports WebSockets</a></li>
+		<li><a href="https://idea.popcount.org/2014-04-03-bind-before-connect" target="_blank">Bind before connect</a></li>
 	</ul>
 	<p>If you skim these blogs, you'll notice we were totally fine with the WebSocket protocol, framing and operation. What worried us was our capacity to handle large numbers of concurrent outgoing connections towards the origin servers. Since WebSockets are long-lived, allowing them through our servers might greatly increase the concurrent connection count. And this did turn out to be a problem. It was possible to hit a ceiling for a total number of outgoing connections imposed by the Linux networking stack.</p>
 	<p>In a pessimistic case, each Linux connection consumes a local port (ephemeral port), and therefore the total connection count is limited by the size of the ephemeral port range.</p>

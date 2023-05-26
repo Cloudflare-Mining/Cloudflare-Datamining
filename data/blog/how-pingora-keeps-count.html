@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image1-13.png" class="kg-image" alt="How Pingora keeps count" loading="lazy" width="1999" height="1126"></figure>
-	<p>A while ago we shared how we replaced NGINX with our in-house proxy, <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/">Pingora</a>. We promised to share more technical details as well as our open sourcing plan. This blog post will be the first of a series that shares both the code libraries that power Pingora and the ideas behind them.</p>
+	<p>A while ago we shared how we replaced NGINX with our in-house proxy, <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">Pingora</a>. We promised to share more technical details as well as our open sourcing plan. This blog post will be the first of a series that shares both the code libraries that power Pingora and the ideas behind them.</p>
 	<p>Today, we take a look at one of Pingora’s libraries: pingora-limits.</p>
 	<p>pingora-limits provides the functionality to count inflight events and estimate the rate of events over time. These functions are commonly used to protect infrastructure and services from being overwhelmed by certain types of malicious or misbehaving requests.</p>
 	<p>For example, when an origin server becomes slow or unresponsive, requests will accumulate on our servers, which adds pressure on both our servers and our customers’ servers. With this library, we are able to identify which origins have issues, so that action can be taken without affecting other traffic.</p>
@@ -349,7 +349,7 @@ impl Estimator {
 	<p>We compare the design above with the two hash table based approaches.</p>
 	<ol>
 		<li>naive: Mutex&lt;HashMap&lt;u32, usize&gt;&gt;. This approach references the simple hash table approach mentioned above. This design requires a lock on every operation.</li>
-		<li>optimized: DashMap&lt;u32, AtomicUsize&gt;. <a href="https://docs.rs/dashmap/latest/dashmap/" target="_blank">DashMap</a> leverages multiple hash tables in order to shard the keys to reduce contentions across different keys. We also use atomic counters here so that counting existing keys won't need a write lock.</li>
+		<li>optimized: DashMap&lt;u32, AtomicUsize&gt;. <a href="https://docs.rs/dashmap/latest/dashmap" target="_blank">DashMap</a> leverages multiple hash tables in order to shard the keys to reduce contentions across different keys. We also use atomic counters here so that counting existing keys won't need a write lock.</li>
 	</ol>
 	<p>We have two test cases, one that is single threaded and another that is multi-threaded. In both cases, we have one million keys. We generate 100 million events from the keys. The keys are uniformly distributed among the events.</p>
 	<p>The results below are performed on Debian VM running on M1 MacBook Pro.</p>

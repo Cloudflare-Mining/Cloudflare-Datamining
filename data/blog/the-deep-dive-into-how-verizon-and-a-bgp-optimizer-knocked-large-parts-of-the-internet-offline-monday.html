@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<h3 id="a-recap-on-what-happened-monday">A recap on what happened Monday</h3>
-	<p>On Monday we <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/">wrote</a> about a painful Internet wide route leak. We wrote that this should never have happened because Verizon should never have forwarded those routes to the rest of the Internet. That blog entry came out around 19:58 UTC, just over seven hours after the route leak finished (which will we see below was around 12:39 UTC). Today we will dive into the archived routing data and analyze it. The format of the code below is meant to use simple shell commands so that any reader can follow along and, more importantly, do their own investigations on the routing tables.</p>
+	<p>On Monday we <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">wrote</a> about a painful Internet wide route leak. We wrote that this should never have happened because Verizon should never have forwarded those routes to the rest of the Internet. That blog entry came out around 19:58 UTC, just over seven hours after the route leak finished (which will we see below was around 12:39 UTC). Today we will dive into the archived routing data and analyze it. The format of the code below is meant to use simple shell commands so that any reader can follow along and, more importantly, do their own investigations on the routing tables.</p>
 	<p>This was a very public BGP route leak event. It was both reported online via many news outlets and the event’s BGP data was reported via social media as it was happening. Andree Toonk tweeted a quick list of 2,400 ASNs that were affected.</p>
 	<figure class="kg-card kg-embed-card">
 		<blockquote class="twitter-tweet">
@@ -10,7 +10,7 @@
 	</figure>
 	<p>This blog contains a large number of acronyms and those are explained at the end of the blog.</p>
 	<h3 id="using-ripe-ncc-archived-data">Using RIPE NCC archived data</h3>
-	<p>The RIPE NCC operates a very useful archive of BGP routing. It runs collectors globally and provides an API for querying the data. More can be seen at <a href="https://stat.ripe.net/" target="_blank">https://stat.ripe.net/</a>. In the world of BGP all routing is public (within the ability of anyone collecting data to have enough collections points). The archived data is very valuable for research and that’s what we will do in this blog. The site can create some very useful data visualizations.</p>
+	<p>The RIPE NCC operates a very useful archive of BGP routing. It runs collectors globally and provides an API for querying the data. More can be seen at <a href="https://stat.ripe.net" target="_blank">https://stat.ripe.net/</a>. In the world of BGP all routing is public (within the ability of anyone collecting data to have enough collections points). The archived data is very valuable for research and that’s what we will do in this blog. The site can create some very useful data visualizations.</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/06/396531-bgplay-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -33,7 +33,7 @@ $
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>That’s 340MB of data - which seems like a lot, but it contains plenty of white space and plenty of data we just don’t need. Our second task is to reduce this raw data down to just the required data - that’s timestamps, actual routes, and AS-PATH. The third item will be very useful. Note we are using <a href="https://stedolan.github.io/jq/" target="_blank">jq</a>, which can be installed on macOS with the &nbsp;<a href="https://brew.sh/" target="_blank">brew package manager</a>.</p>
+	<p>That’s 340MB of data - which seems like a lot, but it contains plenty of white space and plenty of data we just don’t need. Our second task is to reduce this raw data down to just the required data - that’s timestamps, actual routes, and AS-PATH. The third item will be very useful. Note we are using <a href="https://stedolan.github.io/jq" target="_blank">jq</a>, which can be installed on macOS with the &nbsp;<a href="https://brew.sh" target="_blank">brew package manager</a>.</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>$ # Extract just the times, routes, and AS-PATH
 $ jq -rc '.data.updates[]|.timestamp,.attrs.target_prefix,.attrs.path' &lt; 13335-routes.json | paste - - - &gt; 13335-listing-a.txt
@@ -237,7 +237,7 @@ $
 	<p>Back to the AS-PATH’s. Still reading leftwards, we see 701 (Verizon), which is very very bad and clear evidence of a leak. It’s a leak for two reasons. First, this matches the path when a transit is leaking a non-customer route from a customer. This Verizon customer does not have 13335 (Cloudflare) listed as a customer. Second, the route contains within its path a tier 1 ASN. This is the point where a route leak should have been absolutely squashed by filtering on the customer BGP session. Beyond this point there be dragons.</p>
 	<p>And dragons there be! Everything above is about how Verizon filtered (or didn’t filter) its customer. What follows the 701 (i.e the number to the left of it) is the peers or customers of Verizon that have accepted these leaked routes. They are mainly other tier 1 networks of Verizon in this list: 174 (Cogent), 1239 (Sprint), 1273 (Vodafone), 3320 (DTAG), 3491 (PCCW), 6461 (Zayo), 6762 (Telecom Italia), etc.</p>
 	<p>What’s missing from that list are three networks worthy of mentioning - 1299 (Telia), 2914 (NTT), and 7018 (AT&amp;T). All three implement a very simple AS-PATH filter which saved the day for their network. They do not allow one tier 1 ISP to send them a route which has another tier 1 further down the path. That’s because when that happens, it’s officially a leak as each tier 1 is fully connected to all other tier 1’s (which is part of the definition of a tier 1 network). The topology of the Internet’s global BGP routing tables simply states that if you see another tier 1 in the path, then it’s a bad route and it should be filtered away.</p>
-	<p>Additionally we know that 7018 (AT&amp;T) operates a network which drops RPKI invalids. Because Cloudflare routes are <a href="https://blog.cloudflare.com/rpki-details/">RPKI signed</a>, this also means that AT&amp;T would have dropped these routes when it receives them from Verizon. This shows a clear win for RPKI (and for AT&amp;T when you see their bandwidth graph below)!</p>
+	<p>Additionally we know that 7018 (AT&amp;T) operates a network which drops RPKI invalids. Because Cloudflare routes are <a href="https://blog.cloudflare.com/rpki-details">RPKI signed</a>, this also means that AT&amp;T would have dropped these routes when it receives them from Verizon. This shows a clear win for RPKI (and for AT&amp;T when you see their bandwidth graph below)!</p>
 	<p></p>
 	<figure class="kg-card kg-embed-card">
 		<blockquote class="twitter-tweet">
@@ -298,7 +298,7 @@ $
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>None of these maintainers are directly related to 33154 (DQE Communications). They have been created by other parties and hence they become a dead-end in that search.</p>
-	<p>It’s worth doing a secondary search to see if any as-set object exists with 33154 or 396531 included. We turned to the most excellent <a href="http://irrexplorer.nlnog.net/" target="_blank">IRR Explorer</a> website run by NLNOG. It provides deep insight into the routing registry data. We did a simple search for 33154 using <a href="http://irrexplorer.nlnog.net/search/33154" target="_blank">http://irrexplorer.nlnog.net/search/33154</a> and we found these as-set objects.</p>
+	<p>It’s worth doing a secondary search to see if any as-set object exists with 33154 or 396531 included. We turned to the most excellent <a href="http://irrexplorer.nlnog.net" target="_blank">IRR Explorer</a> website run by NLNOG. It provides deep insight into the routing registry data. We did a simple search for 33154 using <a href="http://irrexplorer.nlnog.net/search/33154" target="_blank">http://irrexplorer.nlnog.net/search/33154</a> and we found these as-set objects.</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/06/as-set-containing-as33154.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -335,10 +335,10 @@ $
 	<p></p>
 	<p>We will be asking Telecom Italia to improve their route filtering as we now have this data.</p>
 	<h3 id="future-work-that-could-have-helped-on-monday">Future work that could have helped on Monday</h3>
-	<p>The IETF is doing work in the area of BGP path protection within the <a href="https://datatracker.ietf.org/wg/sidrops/about/" target="_blank">Secure Inter-Domain Routing Operations Working Group</a> (sidrops) area. The charter of this IETF group is:</p>
+	<p>The IETF is doing work in the area of BGP path protection within the <a href="https://datatracker.ietf.org/wg/sidrops/about" target="_blank">Secure Inter-Domain Routing Operations Working Group</a> (sidrops) area. The charter of this IETF group is:</p>
 	<blockquote>The SIDR Operations Working Group (sidrops) develops guidelines for the operation of SIDR-aware networks, and provides operational guidance on how to deploy and operate SIDR technologies in existing and new networks.</blockquote>
 	<p>One new effort from this group should be called out to show how important the issue of route leaks like today’s event is. The draft document from Alexander Azimov et al named <a href="https://tools.ietf.org/html/draft-ietf-sidrops-aspa-profile-00" target="_blank">draft-ietf-sidrops-aspa-profile</a> (ASPA stands for Autonomous System Provider Authorization) extends the RPKI data structures to handle BGP path information. This in ongoing work and Cloudflare and other companies are clearly interested in seeing it progress further.</p>
-	<p>However, as we said in Monday’s blog and something we should reiterate again and again: Cloudflare encourages all network operators to <a href="https://blog.cloudflare.com/rpki-details/">deploy RPKI</a> now!</p>
+	<p>However, as we said in Monday’s blog and something we should reiterate again and again: Cloudflare encourages all network operators to <a href="https://blog.cloudflare.com/rpki-details">deploy RPKI</a> now!</p>
 	<h3 id="acronyms-used-in-the-blog">Acronyms used in the blog</h3><!--kg-card-begin: markdown-->
 	<ul>
 		<li>API - Application Programming Interface</li>

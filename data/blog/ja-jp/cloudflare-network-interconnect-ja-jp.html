@@ -42,7 +42,7 @@
 	<ul>
 		<li>脅威にさらされるリスクの減少。ネットワークセキュリティの強化のために企業が踏まなければならないステップはたくさんありますが、リスクに敏感な企業の中は、一切エンドポイントをパブリックインターネットにさらさないことを選ぶ企業もあります。CloudflareはCNIを用いることで、リスクを吸収し、完全にプライベートなインターフェースを通じてクリーンなトラフィックを（Magic Transit経由で）転送できます。</li>
 		<li>信頼性の向上。パブリックインターネットを経由するトラフィックは、中間ネットワークにおけるレイテンシーやパケットの損失など、自己管理できる範囲の外にある要因の影響を受けるものです。Cloudflareのネットワークとユーザーの間にあるステップを省くということは、Magic Transitがトラフィックを処理した後に、直接かつ確実にネットワークに転送することを意味します。</li>
-		<li>簡単な設定。近日中に、Magic Transit + CNIのお客様は、オンボーディングの際にMSS（最大セグメントサイズ）の変更をスキップするオプションが提示されるようになります。MSSの変更は、インターネット経由GREが必要になるステップであり、ダウンストリーム顧客のMSSを考慮する必要があるお客様(例：<a href="https://www.cloudflare.com/magic-transit/service-providers/" target="_blank">サービスプロバイダー</a>）にとっては難しいことかもしれません。</li>
+		<li>簡単な設定。近日中に、Magic Transit + CNIのお客様は、オンボーディングの際にMSS（最大セグメントサイズ）の変更をスキップするオプションが提示されるようになります。MSSの変更は、インターネット経由GREが必要になるステップであり、ダウンストリーム顧客のMSSを考慮する必要があるお客様(例：<a href="https://www.cloudflare.com/magic-transit/service-providers" target="_blank">サービスプロバイダー</a>）にとっては難しいことかもしれません。</li>
 	</ul>
 	<h3 id="-penguin-corp-cloudflare-for-teams-magic-transit-cni-">導入例：Penguin Corpは、支社ネットワークとコアネットワーク、従業員の保護のために、Cloudflare for Teams、Magic Transit、CNIを利用しています。</h3>
 	<p>Penguin Corp（架空の企業）は、完全にプライベートMPLSネットワークに接続しています。ネットワークの維持が難しく、ネットワークエンジニアの専門チームが取り組んでいます。現在、多額の費用をかけて、独自のプライベートクラウドを実行しています。コストを最小限にするために、ネットワークとエグレスポイントを世界で２か所に絞りました。これが、ユーザーに大きなパフォーマンス問題を引き起こし、ビットはPenguin社のネットワーク境界を通過しながら、基本的なタスクを達成するために長距離を移動しなければなりません。</p>
@@ -73,7 +73,7 @@
 	<h3 id="--6">インターコネクションプラットフォームパートナー</h3>
 	<p>Cloudflareは、Equinix、Megaport、PCCW ConsoleConnect、PacketFabric、Zayoと<a href="https://blog.cloudflare.com/cloudflare-network-interconnect-partner-program">提携</a>し、事実上、パートナーがサポートするどのロケーションにおいても簡単に接続できる方法を提供することができます。こちらのプロバイダーをすでにご利用の場合、またはセキュアなクラウド体験を迅速かつ簡単な方法でオンボードしたいとお考えの場合、お客様はインターネットコネクションプラットフォームと接続する必要があります。</p>
 	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/Gx7j3XMupKYaPdQoHPaCf7XsWSaQviOz6UM0LXL8USuCWMKLM0hkeCYXJm-8CJNJR73o6CVfTOSJgtlCXvDnGPkUAgQ6ncdWvgniQcdUELOrsZratj3klRo2DWL-dBrSxpIVmnA7" class="kg-image" alt="" loading="lazy"></figure>
-	<p>詳細をさらにお読みになりたい場合は、<a href="https://blog.cloudflare.com/cloudflare-peering-portal-beta/">こちらのブログ記事</a>で、相互接続するための様々な方法についてご紹介しています。どうぞご覧ください。上記のインターコネクト方法すべてに関して、BGPセッションの確立とIPルーティングは同じです。1つ違う点は、他のネットワークとの物理的な相互接続方法だけです。</p>
+	<p>詳細をさらにお読みになりたい場合は、<a href="https://blog.cloudflare.com/cloudflare-peering-portal-beta">こちらのブログ記事</a>で、相互接続するための様々な方法についてご紹介しています。どうぞご覧ください。上記のインターコネクト方法すべてに関して、BGPセッションの確立とIPルーティングは同じです。1つ違う点は、他のネットワークとの物理的な相互接続方法だけです。</p>
 	<h3 id="--7">相互接続する最適な場所を見つける方法</h3>
 	<p>当社のCNIに関連する<a href="https://www.cloudflare.com/network-interconnect" target="_blank">製品ページ</a>には、当社と相互接続するネットワークに最適な場所について、よく理解するためのツールが記載されています。このデータを使うと、一般的に他のクラウドプロバイダーや他のISPと最良の接続性を持つ相互接続に最適な場所を見つけるのに役立ちます。</p>
 	<h3 id="cni--1">CNIとピアリングの違いは？</h3>

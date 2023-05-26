@@ -42,7 +42,7 @@
 	<ul>
 		<li>减少威胁暴露。公司可以采取许多措施来提高网络安全性，但一些对风险敏感的组织还是选择彻底不将端点开放给公共互联网。CNI 使 Cloudflare 能够化解这种风险，并通过真正私密的接口（利用 Magic Transit）仅转发干净流量。</li>
 		<li>提高可靠性。通过公共互联网传输的流量会受到您无法控制的因素的影响，这包括中间网络造成的延迟和数据包丢失。消除 Cloudflare 网络与您的网络之间的步骤意味着，Magic Transit 在处理流量后会将其直接可靠地转发到您的网络。</li>
-		<li>简化配置。不久之后，Magic Transit + CNI 客户将能够选择在引入服务时跳过对 MSS（最大分段大小）的更改，这是 GRE-over-Internet 所必需的步骤，也是需要同时考虑下游客户 MSS 的客户面临的一个挑战（例如，<a href="https://www.cloudflare.com/magic-transit/service-providers/" target="_blank">服务提供商</a>）。</li>
+		<li>简化配置。不久之后，Magic Transit + CNI 客户将能够选择在引入服务时跳过对 MSS（最大分段大小）的更改，这是 GRE-over-Internet 所必需的步骤，也是需要同时考虑下游客户 MSS 的客户面临的一个挑战（例如，<a href="https://www.cloudflare.com/magic-transit/service-providers" target="_blank">服务提供商</a>）。</li>
 	</ul>
 	<h3 id="-penguin-corp-cloudflare-for-teams-magic-transit-cni-"><strong>示例部署：Penguin Corp 使用 Cloudflare for Teams、Magic Transit 和 CNI 来保护分支和核心网络以及员工。</strong></h3>
 	<p>假设有一家虚构的公司 Penguin Corp，他们拥有连接完善的专用 MPLS 网络。维护其网络并非易事，他们组建了一个网络工程师团队来专门负责这项工作。他们目前投入了大量资金来运行自己的私有云。为最大程度降低成本，他们将其网络出口点限制为两个。这给用户造成一个严重的性能问题，他们的数据必须传输很长一段路才能完成基本任务，同时仍然要穿越 Penguin 的网络边界。</p>
@@ -73,7 +73,7 @@
 	<h3 id="--6"><strong>互连平台合作伙伴</strong></h3>
 	<p>Cloudflare 有幸与 Equinix、Megaport、PCCW ConsoleConnect、PacketFabric 和 Zayo <a href="https://blog.cloudflare.com/cloudflare-network-interconnect-partner-program">建立了合作关系</a>，携手为您提供多种便利的方式，协助您在任何合作伙伴支持的地点与我们建立虚拟互连。如果客户已经在使用这些提供商，或者想要一种快速简便的方法来获得安全的云体验，那么应该选择通过互连平台进行连接。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>若有兴趣了解更多信息，请参阅<a href="https://blog.cloudflare.com/cloudflare-peering-portal-beta/">这篇博客文章</a>来了解所有不同的互连方式。对于上述所有互连方法，BGP 会话建立和 IP 路由都是相同的。唯一的区别是我们与其他网络互连的物理方式。</p>
+	<p>若有兴趣了解更多信息，请参阅<a href="https://blog.cloudflare.com/cloudflare-peering-portal-beta">这篇博客文章</a>来了解所有不同的互连方式。对于上述所有互连方法，BGP 会话建立和 IP 路由都是相同的。唯一的区别是我们与其他网络互连的物理方式。</p>
 	<h3 id="--7">如何找到最佳的互连位置？</h3>
 	<p>我们的 CNI <a href="https://www.cloudflare.com/network-interconnect" target="_blank">产品页面</a>上提供了工具，可以协助您更好地了解我们双方网络互连的恰当位置。客户可以使用此数据来帮助确定最优的互连位置，从总体上最佳化与其他云提供商及其他 ISP 的连接。</p>
 	<h3 id="cni--1">CNI 和对等连接之间有何区别？</h3>

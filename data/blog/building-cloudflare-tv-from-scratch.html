@@ -74,7 +74,7 @@ rtmp {
 		<li>pushing the final (“on air feed”) to NGINX <em>every second of the day</em></li>
 	</ol>
 	<h3 id="contentful">Contentful</h3>
-	<p><a href="http://contentful.com/" target="_blank">Contentful</a> is a headless content management platform designed to be API-first; it eliminated the need for a database and helped us build our scheduling feature rapidly. </p>
+	<p><a href="http://contentful.com" target="_blank">Contentful</a> is a headless content management platform designed to be API-first; it eliminated the need for a database and helped us build our scheduling feature rapidly. </p>
 	<p>Most of the necessary fields are pretty straightforward for a CMS: title, presenters, and, of course, the time slot. Each of these is automatically synced with the publicly-facing schedule at <a href="https://cloudflare.tv/schedule" target="_blank">cloudflare.tv/schedule</a>.</p>
 	<p>We are able to use Workers to fetch events from Contentful:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">export async function fetchEventRaw(id: string) {
@@ -150,7 +150,7 @@ rtmp {
 	<!--kg-card-end: markdown-->
 	<p>The other upside to using Contentful is that many members of our team already have familiarity with it, so it reduces the overhead of learning a new tool.</p>
 	<h3 id="workers">Workers</h3>
-	<p>So far, we’ve described the different pieces of the backend (NGINX, Brave, Contentful) that make Cloudflare TV possible. How do we bring them all together? Cloudflare Workers serves as the glue that brings these systems together. The <a href="https://cloudflare.tv/" target="_blank">Cloudflare TV frontend</a> is built on Worker Sites. The frontend calls our Worker endpoints to fetch data, such as the programming calendar.</p>
+	<p>So far, we’ve described the different pieces of the backend (NGINX, Brave, Contentful) that make Cloudflare TV possible. How do we bring them all together? Cloudflare Workers serves as the glue that brings these systems together. The <a href="https://cloudflare.tv" target="_blank">Cloudflare TV frontend</a> is built on Worker Sites. The frontend calls our Worker endpoints to fetch data, such as the programming calendar.</p>
 	<h3 id="thinking-ahead-">Thinking Ahead...</h3>
 	<p>We’re just getting started with Cloudflare TV. We have a long wish list of features we’d really like to see. Here are some of the features we can’t wait to work on:</p>
 	<ul>

@@ -32,7 +32,7 @@
 	</ol>
 	<p>Lassen Sie uns einen genaueren Blick darauf werfen, wie die DDoS-Abwehr in Magic Transit funktioniert.</p>
 	<h2 id="magic-transit-sch-tzt-netzwerke-vor-ddos-angriffen"><strong>Magic Transit schützt Netzwerke vor DDoS-Angriffen</strong></h2>
-	<p>Kunden, die Cloudflare Magic Transit einsetzen, erhalten sofort Zugriff auf dasselbe DDoS-Schutzsystem auf IP-Ebene, das in den letzten 9 Jahren auch das Cloudflare-Netzwerk geschützt hat. Es ist dasselbe Abwehrsystem, das einen 942-Gbit/s-Angriff in Sekundenschnelle gestoppt hat. Es ist dasselbe Abwehrsystem, das <a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/">wusste, wie Memcached-Amplification-Angriffe gestoppt werden können</a>, und zwar schon Tage <em>bevor </em>ein 1,3-Tbit/S-Angriff für den Ausfall von GitHub – das nicht von Cloudflare geschützt wurde – sorgte. Es ist dieselbe Abwehr, der wir jeden Tag vertrauen, um Cloudflare zu schützen, und jetzt schützt sie auch Ihr Netzwerk.</p>
+	<p>Kunden, die Cloudflare Magic Transit einsetzen, erhalten sofort Zugriff auf dasselbe DDoS-Schutzsystem auf IP-Ebene, das in den letzten 9 Jahren auch das Cloudflare-Netzwerk geschützt hat. Es ist dasselbe Abwehrsystem, das einen 942-Gbit/s-Angriff in Sekundenschnelle gestoppt hat. Es ist dasselbe Abwehrsystem, das <a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211">wusste, wie Memcached-Amplification-Angriffe gestoppt werden können</a>, und zwar schon Tage <em>bevor </em>ein 1,3-Tbit/S-Angriff für den Ausfall von GitHub – das nicht von Cloudflare geschützt wurde – sorgte. Es ist dieselbe Abwehr, der wir jeden Tag vertrauen, um Cloudflare zu schützen, und jetzt schützt sie auch Ihr Netzwerk.</p>
 	<p>Cloudflare hat Layer 7 HTTP- und HTTPS-Anwendungen historisch vor Angriffen auf allen Schichten des OSI-Layer-Modells geschützt. Der DDoS-Schutz, den unsere Kunden kennen und lieben, beruht auf einer Kombination von Techniken und kann in einige komplementäre Abwehrmaßnahmen unterteilt werden:</p>
 	<ol>
 		<li>Anycast und eine Netzwerkpräsenz in 193 Städten auf der ganzen Welt ermöglichen es unserem Netzwerk, in die Nähe von Benutzern und Angreifern zu gelangen, sodass wir den Datenverkehr in der Nähe der Quelle aufnehmen können, ohne eine signifikante Latenz zu erzeugen.</li>
@@ -41,7 +41,7 @@
 		<li>Layer-7-Abwehr und Rate Limiting stoppen Angriffswellen auf der HTTPS-Anwendungsschicht.</li>
 	</ol>
 	<p>Wenn Sie sich die obige Beschreibung genau ansehen, fällt Ihnen vielleicht Folgendes auf: Unsere Reverse-Proxy-Server schützen unsere Kunden durch das Trennen von Verbindungen, aber unser Netzwerk und unsere Server werden weiterhin von den L3- und L4-Angriffen getroffen, die wir für unsere Kunden stoppen. Wie schützen wir unsere eigene Infrastruktur vor diesen Angriffen?</p>
-	<p><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Vorhang auf für Gatebot</a>!</p>
+	<p><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Vorhang auf für Gatebot</a>!</p>
 	<p>Gatebot ist eine Software-Suite, die auf jedem unserer Server in jedem unserer Rechenzentren in 193 Städten ausgeführt wird und den Datenverkehr der Angriffe ständig analysiert und blockiert. Ein Teil der Schönheit von Gatebot besteht in dessen einfacher Architektur. Es verharrt ruhig in Wartestellung und erfasst Musterpakete, wenn sie von der Netzwerkkarte in den Kernel und weiter in den Userspace gelangen. Gatebot hat keine Lern- oder Aufwärmphase. Sobald es einen Angriff erkennt, weist es den Kernel des Computers, auf dem es ausgeführt wird, an, das Paket zu löschen, seine Entscheidung zu protokollieren und fortzufahren.</p>
 	<p>Wenn Sie Ihr Netzwerk vor einem DDoS-Angriff schützen wollen, haben Sie bislang möglicherweise eine spezielle Hardware erworben, die am Perimeter Ihres Netzwerks eingesetzt wird. Diese Hardware (nennen wir sie die „Die DDoS-Abwehrbox“) war sehr teuer, ist hübsch anzusehen (so hübsch, wie eine 2U-Hardware nur sein kann) und erfordert viel wiederkehrenden Aufwand und Geld, damit sie funktioniert, ihre Lizenz auf dem neuesten Stand bleibt und ihr Angriffserkennungssystem genau und aktuell gehalten wird.</p>
 	<p>Zum einen müsste sie sorgfältig überwacht werden, um sicherzustellen, dass zwar Angriffe gestoppt werden, nicht aber der legitime Datenverkehr. Zum anderen hätten Sie Pech gehabt, wenn es einem Angreifer gelänge, genügend Datenverkehr zu generieren, um die Transitverbindungen Ihres Rechenzentrums mit dem Internet zu sättigen. Keine Hardware<em> in</em> Ihrem Rechenzentrum kann Sie vor einem Angriff schützen, der genügend Datenverkehr erzeugt, um die Verbindungen von der Außenwelt zum Rechenzentrum selbst zu verstopfen.</p>
@@ -49,11 +49,11 @@
 	<p>Damit unser moderner Ansatz zur DDoS-Abwehr funktioniert, mussten wir eine Reihe von Tools und Techniken entwickeln, um höchst leistungsstarke Netzwerke auf generischen x86-Servern unter Linux zum Laufen zu bringen.</p>
 	<p>Das Herzstück unserer Netzwerkdatenebene bilden der eXpress Data Path (XDP) und der erweiterte Berkeley Packet Filter (eBPF) sowie eine Reihe von APIs, mit denen wir höchst leistungsstarke Netzwerkanwendungen im Linux-Kernel erstellen können. Meine Kollegen haben ausführlich darüber geschrieben, wie wir XDP und eBPF einsetzen, um DDoS-Angriffe zu stoppen:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop: XDP-DDoS-Abwehr</a></li>
-		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap: XDP-Paketerfassung</a></li>
-		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">XDP-basierte DoS-Abwehr</a> (Präsentation)</li>
+		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">L4Drop: XDP-DDoS-Abwehr</a></li>
+		<li><a href="https://blog.cloudflare.com/xdpcap">xdpcap: XDP-Paketerfassung</a></li>
+		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation=" target="_blank">XDP-basierte DoS-Abwehr</a> (Präsentation)</li>
 		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">XDP in der Praxis: Integration von XDP in unsere DDoS-Abwehr-Pipeline</a>(PDF)</li>
-		<li><a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world/">Cloudflare-Architektur und wie BPF die Welt verzehrt</a></li>
+		<li><a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world">Cloudflare-Architektur und wie BPF die Welt verzehrt</a></li>
 	</ul>
 	<p>Schließlich hatten wir ein DDoS-Abwehrsystem entwickelt, das:</p>
 	<ul>
@@ -84,5 +84,5 @@
 	<h2 id="magic-transit-ist-jetzt-verf-gbar"><strong>Magic Transit ist jetzt verfügbar</strong></h2>
 	<p>Wir haben in den letzten neun Jahren hart daran gearbeitet, unsere Netzwerk, die Verwaltungstools und die Netzwerkfunktionen als Service so weit zu bringen, wie sie heute sind. Wir freuen uns, die Tools, die wir jeden Tag verwenden, in die Hände unserer Kunden zu legen.</p>
 	<p>Das bringt uns zur Namensgebung. Als wir es Kunden vorführten, war das am häufigsten zu hörende Wort „Wow“. Als wir nachfragten, was sie damit meinten, sagten fast alle: „Das ist so viel besser als jede Lösung, die wir bisher gesehen haben. Es ist wie Zauberei!“ Also schien es naheliegend, wenn auch ein bisschen kitschig, dass wir dieses Produkt danach benennen, was es ist: Magic Transit.</p>
-	<p>Wir denken, dass das alles ziemlich magisch ist, und wir sind überzeugt, dass es Ihnen auch so gehen wird. <a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">Nehmen Sie heute noch Kontakt mit unserem Enterprise Sales-Team auf:</a></p>
+	<p>Wir denken, dass das alles ziemlich magisch ist, und wir sind überzeugt, dass es Ihnen auch so gehen wird. <a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank">Nehmen Sie heute noch Kontakt mit unserem Enterprise Sales-Team auf:</a></p>
 </div>

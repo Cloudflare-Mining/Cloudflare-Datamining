@@ -9,12 +9,12 @@
 	<h3 id="--1"><strong>密钥泄露</strong></h3>
 	<p>密钥泄露是指未经授权的人或系统获得用于加密和解密信息的私钥，这是安全人员最可怕的噩梦。密钥泄露可能是某个漏洞导致的，例如 Heartbleed，即系统中的某个缺陷造成私钥泄露。恶意行为也可能导致密钥泄露，例如某个流氓员工访问未授权信息。一旦发生密钥泄露，关键在于（1）立即颁发新的私钥，（2）部署新的证书，及（3）撤销旧的证书。</p>
 	<h3 id="heartbleed-"><strong>Heartbleed 漏洞</strong></h3>
-	<p><a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued/">Heartbleed 漏洞</a>于 2014 年曝光。这个漏洞让攻击者能够从运行受影响版本 OpenSSL （一个流行的加密库）的服务器上提取 TLS 证书密钥。我们<a href="https://blog.cloudflare.com/staying-ahead-of-openssl-vulnerabilities/">修补了漏洞</a>，并且作为预防措施，迅速重新颁发了属于我们所有客户的私钥和 TLS 证书，尽管我们的私钥无一被泄露。Cloudflare 快速行动的能力保护了客户的数据免遭泄露。</p>
+	<p><a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued">Heartbleed 漏洞</a>于 2014 年曝光。这个漏洞让攻击者能够从运行受影响版本 OpenSSL （一个流行的加密库）的服务器上提取 TLS 证书密钥。我们<a href="https://blog.cloudflare.com/staying-ahead-of-openssl-vulnerabilities">修补了漏洞</a>，并且作为预防措施，迅速重新颁发了属于我们所有客户的私钥和 TLS 证书，尽管我们的私钥无一被泄露。Cloudflare 快速行动的能力保护了客户的数据免遭泄露。</p>
 	<p>Heartbleed 是一记警钟。当时，Cloudflare 的规模比现在要小一个数量级。按照今天的规模，如果遭遇类似的漏洞，我们重新颁发所有客户的证书将需要花费数周时间，而非数小时。</p>
 	<p>现在，凭借备份证书，我们不需要担心在短时间内启动大规模的重新颁发。相反，客户将已经拥有一个我们能即时部署的证书。不仅如此，备份证书也将使用不同于主证书的密钥来包裹，预防其受到密钥泄露的影响。</p>
 	<p>密钥泄露是证书需要大规模重新颁发的主要原因之一。但其他事件也能引发重新颁发，包括证书机构的大规模撤销。</p>
 	<h3 id="--2"><strong>证书机构的大规模撤销</strong></h3>
-	<p>今天，证书机构/浏览器论坛（CA/B 论坛）是制定证书规则和标准的管理机构。CA/B 论坛设置的<a href="https://cabforum.org/wp-content/uploads/CA-Browser-Forum-BR-1.8.1.pdf" target="_blank">基线要求</a>之一是证书机构必须在 24 小时内撤销密钥有被泄露风险的证书。对不那么紧迫的问题，例如证书滥用或违反 CA 的证书策略，则需要在 <a href="https://cabforum.org/2018/09/14/ballot-sc6-revocation-timeline-extension/" target="_blank">5 天</a>内重新颁发证书。在两种情况下，证书机构都会在短时间内撤销证书并立即重新颁发证书。</p>
+	<p>今天，证书机构/浏览器论坛（CA/B 论坛）是制定证书规则和标准的管理机构。CA/B 论坛设置的<a href="https://cabforum.org/wp-content/uploads/CA-Browser-Forum-BR-1.8.1.pdf" target="_blank">基线要求</a>之一是证书机构必须在 24 小时内撤销密钥有被泄露风险的证书。对不那么紧迫的问题，例如证书滥用或违反 CA 的证书策略，则需要在 <a href="https://cabforum.org/2018/09/14/ballot-sc6-revocation-timeline-extension" target="_blank">5 天</a>内重新颁发证书。在两种情况下，证书机构都会在短时间内撤销证书并立即重新颁发证书。</p>
 	<p>虽然 CA 大规模撤销证书的情况并不常见，但近年来发生过几次。最近，由于在其一项 DCV 质询的实施中发现不合规的情况，Let’s Encrypt 不得不<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1751984#c20" target="_blank">撤销</a>了大约 270 万份证书。在这个案例中，Cloudflare 客户没有受到影响。</p>
 	<p>此外，我们使用的证书机构之一发现，他们正在基于不符合 CA/B 论坛标准的<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1714628" target="_blank">验证令牌来更新证书</a>。这导致他们发起一次大规模撤销，影响了大约 5000 个 Cloudflare 管理的域。我们与客户和该 CA 一起努力在撤销前颁发了新证书，将影响降至最低程度。</p>
 	<p>我们理解错误难免会发生，而且我们足够幸运，在这些问题出现时，我们的工程团队能够迅速进行缓解，让客户不受影响。但那并不足够：我们的系统需要能够经得起未来的考验，以便撤销 4500 万份证书不会对我们的客户造成任何影响。通过备份证书，我们将准备好进行大规模重新颁发，无论规模有多大。</p>
@@ -29,9 +29,9 @@
 	<p>这就是备份证书发挥作用的地方了。从现在起，每次证书颁发都会触发两个订单：一个用于来自主 CA 的证书，一个用于备份证书。当我们能代表客户完成 DCV 时，我们会针对两个 CA 完成操作。</p>
 	<p>今天，我们只为使用 Cloudflare 作为权威 DNS 提供商的域颁发备份证书。将来，我们将为部分区域提交备份证书订单。这意味着，对于我们无法完成 DCV 的域，我们将向客户提供相应的 DCV 记录，以便获得备份证书。</p>
 	<h2 id="--5"><strong>备份证书部署计划</strong></h2>
-	<p>我们很高兴能宣布，Cloudflare 已开始为将 Cloudflare 设为权威 DNS 提供商的 Free 计划客户部署<a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/" target="_blank">通用证书（Universal Certificate）</a>订单的备份证书。我们正在逐步增加备份证书订单的数量，未来几周内，我们预计在 Free、Pro 或 Biz 帐户上触发的每一个新通用证书包订单都会包含一个备份证书——使用不同的私钥包裹并从不同于主证书的另一个 CA 颁发。</p>
+	<p>我们很高兴能宣布，Cloudflare 已开始为将 Cloudflare 设为权威 DNS 提供商的 Free 计划客户部署<a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl" target="_blank">通用证书（Universal Certificate）</a>订单的备份证书。我们正在逐步增加备份证书订单的数量，未来几周内，我们预计在 Free、Pro 或 Biz 帐户上触发的每一个新通用证书包订单都会包含一个备份证书——使用不同的私钥包裹并从不同于主证书的另一个 CA 颁发。</p>
 	<p>到 4 月底，我们将开始为 Enterprise 客户颁发备份证书。如果您是 Enterprise 客户并对备份证书有任何疑问，请联系您的帐户团队。</p>
 	<h2 id="--6"><strong>下一步：备份证书全覆盖</strong></h2>
-	<p>今天，<a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/" target="_blank">通用证书</a>占我们全部证书总量的 72%。但我们希望能实现全覆盖。因此，我们的团队将继续扩展我们的备份证书覆盖范围，以支持高级证书和适用于 SaaS 的 SSL 证书。在将来，我们也将为我们客户自己上传的证书颁发备份证书，以便他们能有一个可以依赖的备份。</p>
-	<p>此外，我们将继续改进，使备份证书的部署即时完成——让我们的客户在紧急情况下能保持安全和在线。Cloudflare 的使命是帮助构建更好的互联网。通过备份证书，我们正在帮助打造安全、可靠的互联网，为任何灾难做好准备。有兴趣助我们一臂之力吗？<a href="https://www.cloudflare.com/careers/jobs/" target="_blank">我们正在招贤纳士</a>。</p>
+	<p>今天，<a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl" target="_blank">通用证书</a>占我们全部证书总量的 72%。但我们希望能实现全覆盖。因此，我们的团队将继续扩展我们的备份证书覆盖范围，以支持高级证书和适用于 SaaS 的 SSL 证书。在将来，我们也将为我们客户自己上传的证书颁发备份证书，以便他们能有一个可以依赖的备份。</p>
+	<p>此外，我们将继续改进，使备份证书的部署即时完成——让我们的客户在紧急情况下能保持安全和在线。Cloudflare 的使命是帮助构建更好的互联网。通过备份证书，我们正在帮助打造安全、可靠的互联网，为任何灾难做好准备。有兴趣助我们一臂之力吗？<a href="https://www.cloudflare.com/careers/jobs" target="_blank">我们正在招贤纳士</a>。</p>
 </div>

@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>While working on our <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum server</a>, we noticed something weird: the TCP sockets which we thought should have been closed were lingering around. We realized we don't really understand when TCP sockets are supposed to time out!</p>
+	<p>While working on our <a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank">Spectrum server</a>, we noticed something weird: the TCP sockets which we thought should have been closed were lingering around. We realized we don't really understand when TCP sockets are supposed to time out!</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2019/09/Tcp_state_diagram_fixed_new.svga.png" alt="Tcp_state_diagram_fixed_new.svga" loading="lazy"></p>
 	<center><small><a href="https://commons.wikimedia.org/wiki/File:Tcp_state_diagram_fixed_new.svg" target="_blank">Image</a> by Sergiodc2 CC BY SA 3.0</small></center>
 	<p>In our code, we wanted to make sure we don't hold connections to dead hosts. In our early code we naively thought enabling TCP keepalives would be enough... but it isn't. It turns out a fairly modern <a href="https://tools.ietf.org/html/rfc5482" target="_blank">TCP_USER_TIMEOUT</a> socket option is equally as important. Furthermore it interacts with TCP keepalives in subtle ways. <a href="http://codearcana.com/posts/2015/08/28/tcp-keepalive-is-a-lie.html" target="_blank">Many people</a> are confused by this.</p>
@@ -48,7 +48,7 @@ SYN-SENT 0      1      host:2     host:1    timer:(on,996ms,0)
 </pre>
 	<p>Even though we set user-timeout to 5s, we still saw the six SYN retries on the wire. This behaviour is probably a bug (as tested on 5.2 kernel): we would expect only two retries to be sent - at 1s and 3s marks and the socket to expire at 5s mark. Instead we saw this, but also we saw further 4 retransmitted SYN packets aligned to 5s mark - which makes no sense. Anyhow, we learned a thing - the TCP_USER_TIMEOUT does affect the behaviour of <code>connect()</code>.</p>
 	<h2 id="synrecv">SYN-RECV</h2>
-	<p>SYN-RECV sockets are usually hidden from the application. They live as mini-sockets on the SYN queue. We wrote about <a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild/">the SYN and Accept queues in the past</a>. Sometimes, when SYN cookies are enabled, the sockets may skip the SYN-RECV state altogether.</p>
+	<p>SYN-RECV sockets are usually hidden from the application. They live as mini-sockets on the SYN queue. We wrote about <a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild">the SYN and Accept queues in the past</a>. Sometimes, when SYN cookies are enabled, the sockets may skip the SYN-RECV state altogether.</p>
 	<p>In SYN-RECV state, the socket will retry sending SYN+ACK 5 times as controlled by:</p>
 	<pre style="font-size:70%">$ sysctl net.ipv4.tcp_synack_retries
 net.ipv4.tcp_synack_retries = 5
@@ -259,7 +259,7 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)
 	<h2 id="noteaboutusingapplicationtimeouts">Note about using application timeouts</h2>
 	<p>In the past we have shared an interesting war story:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/the-curious-case-of-slow-downloads/">The curious case of slow downloads</a></li>
+		<li><a href="https://blog.cloudflare.com/the-curious-case-of-slow-downloads">The curious case of slow downloads</a></li>
 	</ul>
 	<p>Our HTTP server gave up on the connection after an application-managed timeout fired. This was a bug - a slow connection might have correctly slowly drained the send buffer, but the application server didn't notice that.</p>
 	<p>We abruptly dropped slow downloads, even though this wasn't our intention. We just wanted to make sure the client connection was still healthy. It would be better to use TCP_USER_TIMEOUT than rely on application-managed timeouts.</p>
@@ -291,7 +291,7 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)
     else:
         # socket is too slow...
 </pre>
-	<p>There are ways to further improve this logic. We could use <a href="https://lwn.net/Articles/560082/" target="_blank"><code>TCP_NOTSENT_LOWAT</code></a>, although it's generally only useful for situations where the send buffer is relatively empty. Then we could use the <a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank"><code>SO_TIMESTAMPING</code></a> interface for notifications about when data gets delivered. Finally, if we are done sending the data to the socket, it's possible to just call <code>close()</code> and defer handling of the socket to the operating system. Such a socket will be stuck in FIN-WAIT-1 or LAST-ACK state until it correctly drains.</p>
+	<p>There are ways to further improve this logic. We could use <a href="https://lwn.net/Articles/560082" target="_blank"><code>TCP_NOTSENT_LOWAT</code></a>, although it's generally only useful for situations where the send buffer is relatively empty. Then we could use the <a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank"><code>SO_TIMESTAMPING</code></a> interface for notifications about when data gets delivered. Finally, if we are done sending the data to the socket, it's possible to just call <code>close()</code> and defer handling of the socket to the operating system. Such a socket will be stuck in FIN-WAIT-1 or LAST-ACK state until it correctly drains.</p>
 	<h2 id="summary">Summary</h2>
 	<p>In this post we discussed five cases where the TCP connection may notice the other party going away:</p>
 	<ul>

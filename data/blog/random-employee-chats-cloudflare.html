@@ -3,7 +3,7 @@
 	<p>In an attempt to recreate that experience, David Wragg, an engineer at Cloudflare, introduced “Random Engineer Chats” (We’re calling them “Random Employee Chats” here since this can be applied to any team). The idea is that participants are randomly paired, and the pairs then schedule a 30-minute video call. There’s no fixed agenda for these conversations, but the participants might learn what is going on in other teams, gain new perspectives on their own work by discussing it, or meet new people.</p>
 	<p>The first iteration of Random Employee Chats used a shared spreadsheet to coordinate the process. People would sign up by adding themselves to the spreadsheet, and once a week, David would randomly form pairs from the list and send out emails with the results. Then, each pair would schedule a call at their convenience. This process was the minimum viable implementation of the idea, but it meant that the process relied on a single person.</p>
 	<h3 id="moving-to-cloudflare-workers">Moving to Cloudflare Workers</h3>
-	<p>We wanted to automate these repetitive manual tasks, and naturally, we wanted to use <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> to do it. This is a great example of a complete application that runs entirely in Cloudflare Workers on the edge with no backend or origin server.</p>
+	<p>We wanted to automate these repetitive manual tasks, and naturally, we wanted to use <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a> to do it. This is a great example of a complete application that runs entirely in Cloudflare Workers on the edge with no backend or origin server.</p>
 	<p>The technical requirements included:</p>
 	<ul>
 		<li>A user interface so people can sign up</li>

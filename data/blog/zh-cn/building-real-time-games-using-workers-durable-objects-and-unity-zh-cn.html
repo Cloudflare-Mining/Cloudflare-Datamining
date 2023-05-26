@@ -2,9 +2,9 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/1-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank">Durable Objects</a> 是 Workers 开发者生态系统的一个很棒的补充，它允许您在特定的 Worker 中寻址和工作，以提供应用程序的一致性。这听起来很令人兴奋，但如果你像我一样，你可能想知道“好吧，我可以用它做什么？”</p>
 	<p>没有什么比用技术构建真实的东西更能真正理解它了。</p>
-	<p>为了更好地理解为什么 Durable Objects 很重要，以及<a href="https://blog.cloudflare.com/introducing-websockets-in-workers/">像 WebSockets 这样的 Workers 生态系统中的新公告</a>如何与 Durable Objects 一起玩，我转向了我几个月来一直在业余时间构建的一类软件：视频游戏。</p>
-	<p>在过去十年中，游戏的技术方面发生了巨大变化。许多游戏都是默认在线的，而像 <a href="https://unity.com/" target="_blank">Unity</a> 这样无处不在的工具使任何人都可以开始尝试开发游戏。</p>
-	<p>我听说了很多关于 Durable Objects 和 WebSockets 在应用程序中提供实时一致性的能力，为了测试这个用例，我构建了 <a href="https://durable-world.pages.dev/" target="_blank">Durable World</a>：一个简单的 3D 多人游戏世界，完全部署在我们的 Cloudflare 上堆栈：为客户端游戏提供服务的页面，在 Unity 和 WebGL 中运行，Worker 作为协调层，使用 Durable Objects 和 WebSockets 同步玩家位置和其他信息，例如随机生成的用户名。</p>
+	<p>为了更好地理解为什么 Durable Objects 很重要，以及<a href="https://blog.cloudflare.com/introducing-websockets-in-workers">像 WebSockets 这样的 Workers 生态系统中的新公告</a>如何与 Durable Objects 一起玩，我转向了我几个月来一直在业余时间构建的一类软件：视频游戏。</p>
+	<p>在过去十年中，游戏的技术方面发生了巨大变化。许多游戏都是默认在线的，而像 <a href="https://unity.com" target="_blank">Unity</a> 这样无处不在的工具使任何人都可以开始尝试开发游戏。</p>
+	<p>我听说了很多关于 Durable Objects 和 WebSockets 在应用程序中提供实时一致性的能力，为了测试这个用例，我构建了 <a href="https://durable-world.pages.dev" target="_blank">Durable World</a>：一个简单的 3D 多人游戏世界，完全部署在我们的 Cloudflare 上堆栈：为客户端游戏提供服务的页面，在 Unity 和 WebGL 中运行，Worker 作为协调层，使用 Durable Objects 和 WebSockets 同步玩家位置和其他信息，例如随机生成的用户名。</p>
 	<figure class="kg-card kg-embed-card">
 		<blockquote class="twitter-tweet">
 			<p lang="en" dir="ltr">playing multiplayer on the edge with some of my friends from the <a href="https://twitter.com/CloudflareDev?ref_src=twsrc%5Etfw" target="_blank">@cloudflaredev</a> discord?<br><br>client-side:<br>- <a href="https://twitter.com/unity?ref_src=twsrc%5Etfw" target="_blank">@unity</a> webgl + websockets client<br>- hosted on cf pages<br><br>serverless:<br>- cloudflare workers<br>- durable objects<br>- websockets <a href="https://t.co/Ef3nr76D2e" target="_blank">pic.twitter.com/Ef3nr76D2e</a></p>— Kristian Freeman (@signalnerve) <a href="https://twitter.com/signalnerve/status/1384274000986005511?ref_src=twsrc%5Etfw" target="_blank">April 19, 2021</a>
@@ -12,7 +12,7 @@
 		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</figure>
 	<p>3D 游戏往往看起来非常令人印象深刻—它们是伟大的技术演示。即使看到来自世界各地的人员与您联系并与您一起在地图上移动这一“令人惊叹的因素”，您也可能会惊讶于该项目的相应代码是多么简单。让我们深入探讨 Durable World 的客户端和服务器方面，然后我将就这样的项目在未来如何发展以及接下来我想探索的内容提出一些想法。</p>
-	<p>除了这篇博文之外，我们最近还<a href="https://blog.cloudflare.com/doom-multiplayer-workers/">在 Cloudflare 的博客上发表了一篇关于使用 WebAssembly 和 Durable Objects 的 Workers 的文章，展示了多人 Doom 端口。</a>随着 Durable Objects、WebSockets 和 WebAssembly 等工具的添加，无论您是移植现有游戏还是构建全新游戏，Workers 上的游戏用例数量都非常多。</p>
+	<p>除了这篇博文之外，我们最近还<a href="https://blog.cloudflare.com/doom-multiplayer-workers">在 Cloudflare 的博客上发表了一篇关于使用 WebAssembly 和 Durable Objects 的 Workers 的文章，展示了多人 Doom 端口。</a>随着 Durable Objects、WebSockets 和 WebAssembly 等工具的添加，无论您是移植现有游戏还是构建全新游戏，Workers 上的游戏用例数量都非常多。</p>
 	<p>Durable World 是使用<em>权威的客户端</em>模型构建的。客户端直接在浏览器中运行已编译的游戏，内置在 WebAssembly 中，因此无需将特定于平台的客户端下载到本地机器即可运行。该服务器完全运行在 Cloudflare Workers 上，可以通过 WebSockets 进行交互，并使用 Durable Objects 来管理游戏状态。</p>
 	<p>与我们在博客中展示的 Doom 示例非常相似，由 Workers 应用程序管理的 Durable Object 充当消息路由器，接受来自客户端的游戏状态更改，并保留通过 Worker 接收这些更新的活动客户端列表。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/2-1.png" class="kg-image" alt="" loading="lazy"></figure>

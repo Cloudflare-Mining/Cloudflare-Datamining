@@ -11,14 +11,14 @@
 </code></pre>
 	<p>This special code was ugly and error prone. This got us thinking: do we really need it? "ANY" is not a popular query type - no legitimate software uses it (with the notable exception of qmail).</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2019/03/11235945713_5bf22a701d_z.jpg" alt="11235945713_5bf22a701d_z" loading="lazy"></p>
-	<center><small><a href="https://www.flickr.com/photos/cmichel67/11235945713/" target="_blank">Image</a> by <a href="https://www.flickr.com/photos/cmichel67/" target="_blank">Christopher Michel</a>CC BY 2.0</small></center>
+	<center><small><a href="https://www.flickr.com/photos/cmichel67/11235945713" target="_blank">Image</a> by <a href="https://www.flickr.com/photos/cmichel67" target="_blank">Christopher Michel</a>CC BY 2.0</small></center>
 	<h1 id="anyishardformoderndnsservers">ANY is hard for modern DNS servers</h1>
 	<p>"ANY" queries, also called "* queries" in old RFCs, are supposed to return "all records" (citing <a href="https://tools.ietf.org/html/rfc1035" target="_blank">RFC1035</a>). There are two problems with this notion.</p>
 	<p>First, it assumes the server is able to retrieve "all records". In our implementation - we can't. Our DNS server, like many modern implementations, doesn't have a single "zone" file listing all properties of a DNS zone. This design allows us to respond fast and with information always up to date, but it makes it incredibly hard to retrieve "all records". Correct handling of "ANY" adds unreasonable code complexity for an obscure, rarely used query type.</p>
 	<p>Second, many of the DNS responses are generated on-demand. To mention just two use cases:</p>
 	<ul>
-		<li>Some of our DNS responses <a href="https://blog.cloudflare.com/dnssec-done-right/">are based on location</a></li>
-		<li><a href="https://blog.cloudflare.com/black-lies/">We are using black lies and DNS shotgun for DNSSEC</a></li>
+		<li>Some of our DNS responses <a href="https://blog.cloudflare.com/dnssec-done-right">are based on location</a></li>
+		<li><a href="https://blog.cloudflare.com/black-lies">We are using black lies and DNS shotgun for DNSSEC</a></li>
 	</ul>
 	<p>Storing data in modern databases and dynamically generating responses poses a fundamental problem to ANY.</p>
 	<h1 id="anyishardforclients">ANY is hard for clients</h1>
@@ -42,10 +42,10 @@
 	<center><small>A typical 50Gbps DNS amplification targeting one of our customers. The attack lasted about 4 hours.</small></center>
 	<p>Furthermore, since the "ANY" query can generate a large response, they were often used for DNS reflection attacks. Authoritative providers receive a spoofed ANY query and send the large answer to a target, potentially causing DoS damage. We have blogged about that many times:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/the-ddos-that-knocked-spamhaus-offline-and-ho/">The DDoS that knocked Spamhaus offline</a></li>
-		<li><a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack/">Deep inside a DNS amplification attack</a></li>
-		<li><a href="https://blog.cloudflare.com/reflections-on-reflections/">Reflections on reflections</a></li>
-		<li><a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks/">How the CPSC is inadvertently behind the largest attacks</a></li>
+		<li><a href="https://blog.cloudflare.com/the-ddos-that-knocked-spamhaus-offline-and-ho">The DDoS that knocked Spamhaus offline</a></li>
+		<li><a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">Deep inside a DNS amplification attack</a></li>
+		<li><a href="https://blog.cloudflare.com/reflections-on-reflections">Reflections on reflections</a></li>
+		<li><a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">How the CPSC is inadvertently behind the largest attacks</a></li>
 	</ul>
 	<p>The DoS problem with ANY is really old. Here is a discussion about a <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2013-May/010178.html" target="_blank">patch to bind tweaking ANY from 2013</a>.</p>
 	<p>There is also a second angle to the ANY DoS problem. Some reports suggested that performant DNS servers (authoritative or resolvers) <a href="https://fanf.livejournal.com/140566.html" target="_blank">can fill their outbound network capacity</a> with a large number of ANY responses.</p>
@@ -53,11 +53,11 @@
 	<h2 id="terminatingany">Terminating ANY</h2>
 	<p>In 2015 frustrated with the experience we announced we would like to stop giving responses to "ANY" queries and wrote a (controversial at a time) blog post:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/deprecating-dns-any-meta-query-type/">Deprecating DNS ANY meta-query type</a></li>
+		<li><a href="https://blog.cloudflare.com/deprecating-dns-any-meta-query-type">Deprecating DNS ANY meta-query type</a></li>
 	</ul>
 	<p>A year later we followed up explaining possible solutions:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/what-happened-next-the-deprecation-of-any/">What happened next - the deprecation of ANY</a></li>
+		<li><a href="https://blog.cloudflare.com/what-happened-next-the-deprecation-of-any">What happened next - the deprecation of ANY</a></li>
 	</ul>
 	<p>And here we come today! With <a href="https://tools.ietf.org/html/rfc8482" target="_blank">RFC8482</a> we have an RFC proposed standard clarifying that controversial query.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2019/03/Screenshot-from-2019-03-15-13-19-21.png" alt="Screenshot-from-2019-03-15-13-19-21" loading="lazy"></p>

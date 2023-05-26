@@ -8,7 +8,7 @@
 		<li>次要 DNS 使用隐藏主模型 - 注册商处的域名服务器记录仅指向次要服务器，实质上将它们视为主要域名服务器。</li>
 	</ol>
 	<h3 id="-secondary-dns-override-">什么是 Secondary DNS Override？</h3>
-	<p>Secondary DNS Override 基于使用隐藏主模型的次要 DNS 而构建，让我们的客户不仅能够按他们告诉我们的方式提供记录，还可以通过 <a href="https://www.cloudflare.com/en-gb/network/" target="_blank">Cloudflare 的网络</a>代理任何 A/AAAA/CNAME 记录。这与 Cloudflare 当前作为主要 DNS 提供商的工作方式类似。</p>
+	<p>Secondary DNS Override 基于使用隐藏主模型的次要 DNS 而构建，让我们的客户不仅能够按他们告诉我们的方式提供记录，还可以通过 <a href="https://www.cloudflare.com/en-gb/network" target="_blank">Cloudflare 的网络</a>代理任何 A/AAAA/CNAME 记录。这与 Cloudflare 当前作为主要 DNS 提供商的工作方式类似。</p>
 	<p>请思考以下示例：</p>
 	<p>example.com Cloudflare IP - 192.0.2.0</p>
 	<p>example.com 原始 IP - 203.0.113.0</p>
@@ -40,7 +40,7 @@
 	<p>这是不被允许的，因为这意味着将存在至少一个其他 SOA 记录和另一个同名的 NS 记录，而这与上文提到的 RFC 1912 相悖。Cloudflare 可以通过使用 <a href="https://support.cloudflare.com/hc/en-us/articles/200169056-CNAME-Flattening-RFC-compliant-support-for-CNAME-at-the-root" target="_blank">CNAME 拉平</a>来解决这一问题，这是当今主要 DNS 产品中常用的技术。当查询进入我们的权威服务器时，CNAME 拉平允许我们返回地址记录而不是 CNAME 记录。</p>
 	<p>与上文中有关禁止 Secondary DNS Override UI 编辑记录的说法相反，顶端处的 CNAME 是此规则的一个例外。除了常规的次要 DNS 记录，用户还可以在顶端处创建 CNAME，但这里也适用 RFC 1912 中定义的相同规则。这意味着，顶端处的 CNAME 记录可以视为常规 DNS 记录或代理记录，具体取决于用户的决定。不管顶端记录中 CNAME 的代理状态如何，它都将重写从主要 DNS 服务器传送来的所有其他 A/AAAA 记录。</p>
 	<h3 id="-cname-">合并顶端处的次要、重写和 CNAME 记录</h3>
-	<p>在编辑记录时，我们会在顶端处进行次要、重写和 CNAME 记录的所有合并。这意味着，当 DNS 请求进入边缘的权威服务器时，我们仍然可以在<a href="https://www.dnsperf.com/" target="_blank">极快的时间</a>内返回记录。具体工作流程如图 4 所示。</p>
+	<p>在编辑记录时，我们会在顶端处进行次要、重写和 CNAME 记录的所有合并。这意味着，当 DNS 请求进入边缘的权威服务器时，我们仍然可以在<a href="https://www.dnsperf.com" target="_blank">极快的时间</a>内返回记录。具体工作流程如图 4 所示。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/Orange-Clouding-with-Secondary-DNS4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>图 4：记录合并过程</p>
 	<p>在区域构建器中执行如下步骤：</p>

@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>Hi, I'm Filippo and today I managed to surprise myself! (And not in a good way.)</p>
-	<p>I'm developing a new module ("filter" as we call them) for <a href="https://blog.cloudflare.com/tag/rrdns/">RRDNS</a>, CloudFlare's Go DNS server. It's a rewrite of the authoritative module, the one that adds the IP addresses to DNS answers.</p>
+	<p>I'm developing a new module ("filter" as we call them) for <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, CloudFlare's Go DNS server. It's a rewrite of the authoritative module, the one that adds the IP addresses to DNS answers.</p>
 	<p>It has a table of CloudFlare IPs that looks like this:</p>
 	<pre><code class="language-go">type IPMap struct {
 	sync.RWMutex

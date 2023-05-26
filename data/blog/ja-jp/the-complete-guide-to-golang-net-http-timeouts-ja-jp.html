@@ -8,7 +8,7 @@
 	<p><strong>期限はタイムアウトではありません。</strong>一度セットされると、ずっと機能したままになります（または SetDeadlineに次の呼び出しがくるまで)、その間接続が使用されているか、どのように使用されているかは関係ありません。ですから、 SetDeadlineを使ってタイムアウトを構築するには、<em>すべての</em>読み/書き操作の前にそれを呼び出す必要があります。</p>
 	<p>お客様は、おそらく自らSetDeadlineを呼び出したいとは考えないはずです。代わりにnet/httpに、より高いレベルのタイムアウトを使って呼び出してもらうことになるでしょう。しかし、すべてのタイムアウトは期限付きで実装され、データが送受信されるたびにリセットわけではないことに注意してください。</p>
 	<h3 id="-">サーバーのタイムアウト</h3>
-	<p><em>ブログ記事</em><a href="https://blog.cloudflare.com/exposing-go-on-the-internet/"><em>「So you want to expose Go on the Internet」（Goをインターネットで公開する） </em></a><em>では、サーバータイムアウトに関する情報を多く扱っており、特に、HTTP/2 とGo 1.7のバグについての詳細な説明をしています。</em></p>
+	<p><em>ブログ記事</em><a href="https://blog.cloudflare.com/exposing-go-on-the-internet"><em>「So you want to expose Go on the Internet」（Goをインターネットで公開する） </em></a><em>では、サーバータイムアウトに関する情報を多く扱っており、特に、HTTP/2 とGo 1.7のバグについての詳細な説明をしています。</em></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/Timeouts-001.png" class="kg-image" alt="HTTP server phases" loading="lazy"></figure>
 	<p>インターネットに公開されるHTTP サーバーが、クライアント接続でタイムアウトを実行することは重要です。タイムアウトが実行されなければ、クライアントが非常に遅かったり消えたりして、ファイル記述子の漏えいにつながる可能性があり、最終的に次のようなエラーが生じることになります。</p>
 	<p><code>http: Accept error: accept tcp [::]:80: accept4: too many open files; retrying in 5ms</code></p>
@@ -133,5 +133,5 @@ req = req.WithContext(ctx)
 	<!--kg-card-end: markdown-->
 	<p>コンテキストには利点があり、親コンテキスト（我々が<code>context.WithCancel</code>に送信したもの）がキャンセルされると、我々の分もキャンセルされ、コマンドがパイプライン全体に伝達されます。</p>
 	<p>これでおしまいです。読者のみなさまの<code>ReadDeadline</code>を超過していないといいのですが!</p>
-	<p>もし、Goスタンダードライブラリに関する詳細情報などにご関心がおありでしたら、<a href="https://www.cloudflare.com/ja-jp/careers/" target="_blank">当社では新しい人材を、ロンドン、オースティン（TX）、シャンペーン（IL）、サンフランシスコ、シンガポールで募集中です。</a></p>
+	<p>もし、Goスタンダードライブラリに関する詳細情報などにご関心がおありでしたら、<a href="https://www.cloudflare.com/ja-jp/careers" target="_blank">当社では新しい人材を、ロンドン、オースティン（TX）、シャンペーン（IL）、サンフランシスコ、シンガポールで募集中です。</a></p>
 </div>

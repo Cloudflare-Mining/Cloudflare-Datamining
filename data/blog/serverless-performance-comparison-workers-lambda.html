@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>A few months ago we released a new way for people to run serverless Javascript called <a href="https://developers.cloudflare.com/workers/" target="_blank">Cloudflare Workers</a>. We believe Workers is the fastest way to execute serverless functions.</p>
+	<p>A few months ago we released a new way for people to run serverless Javascript called <a href="https://developers.cloudflare.com/workers" target="_blank">Cloudflare Workers</a>. We believe Workers is the fastest way to execute serverless functions.</p>
 	<p>If it is truly the fastest, and it is comparable in price, it should be how every team deploys all of their serverless infrastructure. So I set out to see just how fast Worker execution is and prove it.</p>
 	<p>tl;dr Workers is much faster than Lambda and Lambda@Edge:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-28-at-2.48.05-PM.png" alt="Screen-Shot-2018-06-28-at-2.48.05-PM" loading="lazy"></p>
-	<p>This is a chart showing what percentage of requests to each service were faster than a given number of ms. It is based on thousands of tests from all around the world, evenly sampled over the past 12 hours. <strong>At the 95th percentile, Workers is 441% faster than a Lambda function, and 192% faster than Lambda@Edge.</strong> <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.cloudflare.com%2Fserverless-performance-comparison-workers-lambda%2F&amp;text=%22%40Cloudflare%20Workers%20is%20441%25%20faster%20than%20a%20Lambda%20function%2C%20and%20192%25%20faster%20than%20Lambda%40Edge.%22&amp;hashtags=serverless" class="twitter-icon" target="_blank">&nbsp;</a></p>
-	<p>The functions being tested simply return the current time. All three scripts are available on <a href="https://github.com/cloudflare/worker-performance-examples/tree/master/time" target="_blank">Github</a>. The testing is being done by a service called <a href="http://www.catchpoint.com/" target="_blank">Catchpoint</a> which has hundreds of testing locations around the world.</p>
+	<p>This is a chart showing what percentage of requests to each service were faster than a given number of ms. It is based on thousands of tests from all around the world, evenly sampled over the past 12 hours. <strong>At the 95th percentile, Workers is 441% faster than a Lambda function, and 192% faster than Lambda@Edge.</strong> <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.cloudflare.com%2Fserverless-performance-comparison-workers-lambda%2F&amp;text=%22%40Cloudflare+Workers+is+441%25+faster+than+a+Lambda+function%2C+and+192%25+faster+than+Lambda%40Edge.%22&amp;hashtags=serverless" class="twitter-icon" target="_blank">&nbsp;</a></p>
+	<p>The functions being tested simply return the current time. All three scripts are available on <a href="https://github.com/cloudflare/worker-performance-examples/tree/master/time" target="_blank">Github</a>. The testing is being done by a service called <a href="http://www.catchpoint.com" target="_blank">Catchpoint</a> which has hundreds of testing locations around the world.</p>
 	<h3 id="thegoldcoast">The Gold Coast</h3>
 	<p>This is every test ran in the last hour, with results over 1500ms filtered out:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-28-at-2.59.13-PM.png" alt="Screen-Shot-2018-06-28-at-2.59.13-PM" loading="lazy"></p>
@@ -31,19 +31,19 @@
 	<p>Workers has also been carefully architected to avoid moving memory and blocking when it could be avoided, complete with our own optimized implementations of the Javascript APIs. Finally, Workers runs on the same thousands of machines which serve Cloudflare traffic around the world, benefiting from over half a decade of experience pushing the limits of our hardware.</p>
 	<p>This post has been somewhat self-congratulatory, and I apologize for that. We certainly still have a lot to build and a lot we can still do to improve our performance. It was originally going to be about the power of running your functions distributed all around the world, instead of at a single region. What I'm left with though is the belief that Workers is faster, period.</p>
 	<p>Here is a <a href="https://p.catchpoint.com/ui/Entry/PC/V/ARA-C-D-K3hlIjV3IoXdgAA" target="_blank">full chart</a> for the last hour. I've also exported <a href="http://cloudflare.works/files/PerformanceChart-27062018-060148.csv" target="_blank">a CSV</a> of all the data for the past 12 hours for you to explore.</p>
-	<p>Please reproduce the tests I've done here and share in the comments here or on <a href="http://news.ycombinator.com/" target="_blank">Hacker News</a>. If I've missed anything, we want to hear about it.</p>
-	<p>I'll also be sharing a price comparison between the various systems soon. Please <a href="#mc_embed_signup">subscribe to our blog</a> if you'd like to be notified.</p>
+	<p>Please reproduce the tests I've done here and share in the comments here or on <a href="http://news.ycombinator.com" target="_blank">Hacker News</a>. If I've missed anything, we want to hear about it.</p>
+	<p>I'll also be sharing a price comparison between the various systems soon. Please <a href="https://blog.cloudflare.com/#mc_embed_signup">subscribe to our blog</a> if you'd like to be notified.</p>
 	<p>Finally, please <a href="https://cloudflareworkers.com" target="_blank">try Workers</a>!</p>
 	<p><strong>Additional reading on Cloudflare Workers</strong></p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/cryptocurrency-api-gateway-typescript-workers/">Cryptocurrency API Gateway using Typescript+Workers</a></li>
-		<li><a href="https://blog.cloudflare.com/delivering-a-serverless-api-in-10-minutes-using-workers/">Delivering a Serverless API in 10 minutes using Workers</a></li>
-		<li><a href="https://blog.cloudflare.com/chrome-not-secure-for-http/">T-25 days until Chrome starts flagging HTTP sites as "Not Secure"</a></li>
-		<li><a href="https://blog.cloudflare.com/bootstrapping-a-typescript-worker/">Bootstrapping a Typescript Worker</a></li>
-		<li><a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers/">Using Webpack to bundle your Workers modules</a></li>
-		<li><a href="https://blog.cloudflare.com/building-a-serverless-slack-bot-using-cloudflare-workers/">Building a serverless Slack bot using Cloudflare Workers</a></li>
-		<li><a href="https://blog.cloudflare.com/dronedeploy-and-cloudflare-workers/">DroneDeploy and Cloudflare Workers</a></li>
-		<li><a href="https://blog.cloudflare.com/iterate-quickly-with-cloudflare-workers/">Test New Features and Iterate Quickly with Cloudflare Workers</a></li>
+		<li><a href="https://blog.cloudflare.com/cryptocurrency-api-gateway-typescript-workers">Cryptocurrency API Gateway using Typescript+Workers</a></li>
+		<li><a href="https://blog.cloudflare.com/delivering-a-serverless-api-in-10-minutes-using-workers">Delivering a Serverless API in 10 minutes using Workers</a></li>
+		<li><a href="https://blog.cloudflare.com/chrome-not-secure-for-http">T-25 days until Chrome starts flagging HTTP sites as "Not Secure"</a></li>
+		<li><a href="https://blog.cloudflare.com/bootstrapping-a-typescript-worker">Bootstrapping a Typescript Worker</a></li>
+		<li><a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">Using Webpack to bundle your Workers modules</a></li>
+		<li><a href="https://blog.cloudflare.com/building-a-serverless-slack-bot-using-cloudflare-workers">Building a serverless Slack bot using Cloudflare Workers</a></li>
+		<li><a href="https://blog.cloudflare.com/dronedeploy-and-cloudflare-workers">DroneDeploy and Cloudflare Workers</a></li>
+		<li><a href="https://blog.cloudflare.com/iterate-quickly-with-cloudflare-workers">Test New Features and Iterate Quickly with Cloudflare Workers</a></li>
 	</ul>
 	<!-- submitlink?u=https%3A%2F%2Fblog.cloudflare.com%2Fserverless-performance-comparison-workers-lambda%2F%3Fhn&t=Performance%20Comparison%3A%20Amazon%20Lambda%2C%20Lambda%40Edge%2C%20Cloudflare%20Workers -->
 	<style>

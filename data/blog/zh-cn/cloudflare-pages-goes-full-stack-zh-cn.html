@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-34.png" class="kg-image" alt="Cloudflare Pages Goes Full-Stack" loading="lazy"></figure>
-	<p>今年 4 月，我们宣布 Cloudflare Pages <a href="https://blog.cloudflare.com/cloudflare-pages-ga/#:~:text=In%20December%2C%20we%20announced%20the,powerful%20tool%20in%20developers'%20hands.">全面开放</a>时，我们承诺这只是开始。我们的平台最初支持静态网站，仅有少量动态功能，如设置<a href="https://blog.cloudflare.com/custom-headers-for-pages/">重定向和自定义标头</a>。但我们希望向您和您的团队赋予更多能力，以便构建难以置信的应用。我们对未来的设想是，您的整个应用程序——前端、API、存储、数据——都可以通过一次提交部署，准生产环境中更易测试，一次合并即可部署到生产环境。因此，本着 Full Stack Week 的精神，我们为您带来实现以上这一切的工具。</p>
-	<p>欢迎大家——来到未来。我们要宣布一个激动人心的消息：在 <a href="https://workers.cloudflare.com/?&amp;_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=9067609&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=Cj0KCQiAsqOMBhDFARIsAFBTN3eyQsvbPzy3y3BOeCnYZMDVjSd8QkaoPbOfFiFWxSK8zEm9lSCNAJsaAnfkEALw_wcB&amp;gclsrc=aw.ds" target="_blank">Cloudflare Workers</a>帮助下，Pages 现已成为一个全栈平台！</p>
+	<p>今年 4 月，我们宣布 Cloudflare Pages <a href="https://blog.cloudflare.com/cloudflare-pages-ga/#:~:text=In%20December%2C%20we%20announced%20the,powerful%20tool%20in%20developers'%20hands.">全面开放</a>时，我们承诺这只是开始。我们的平台最初支持静态网站，仅有少量动态功能，如设置<a href="https://blog.cloudflare.com/custom-headers-for-pages">重定向和自定义标头</a>。但我们希望向您和您的团队赋予更多能力，以便构建难以置信的应用。我们对未来的设想是，您的整个应用程序——前端、API、存储、数据——都可以通过一次提交部署，准生产环境中更易测试，一次合并即可部署到生产环境。因此，本着 Full Stack Week 的精神，我们为您带来实现以上这一切的工具。</p>
+	<p>欢迎大家——来到未来。我们要宣布一个激动人心的消息：在 <a href="https://workers.cloudflare.com/?_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=9067609&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=Cj0KCQiAsqOMBhDFARIsAFBTN3eyQsvbPzy3y3BOeCnYZMDVjSd8QkaoPbOfFiFWxSK8zEm9lSCNAJsaAnfkEALw_wcB&amp;gclsrc=aw.ds" target="_blank">Cloudflare Workers</a>帮助下，Pages 现已成为一个全栈平台！</p>
 	<h2 id="-">但如何操作呢？</h2>
-	<p>其工作方式与 Pages 向来的工作方式完全一样：编写代码， <code>git push</code> &nbsp;到您的 git 提供商（<a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab/">现已支持</a> <a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab/">GitLab</a>！），我们就会为您部署整个站点。唯一的区别是，无论是在您的前端，还是后端，都将使用 Cloudflare Workers 来帮助部署无服务器函数。</p>
+	<p>其工作方式与 Pages 向来的工作方式完全一样：编写代码， <code>git push</code> &nbsp;到您的 git 提供商（<a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab">现已支持</a> <a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab">GitLab</a>！），我们就会为您部署整个站点。唯一的区别是，无论是在您的前端，还是后端，都将使用 Cloudflare Workers 来帮助部署无服务器函数。</p>
 	<h3 id="--1">您期待已久的集成</h3>
 	<p>Cloudflare Workers 提供一个无服务器执行环境，允许您创建全新的应用程序或增强现有的应用程序，而无需配置或维护基础设施。 在今天以前，<em>有可能</em>将 Workers 连接到 Pages 项目，做法是安装 Wrangler，并同时在 Pages 和 Workers 中编写代码来手动部署一个 Worker。但我们所要的并不是“可能”，而是某种犹如第二天性的东西，让您在为站点添加动态内容前无需再三考虑。</p>
 	<h2 id="--2">了解详情</h2>
@@ -63,7 +63,7 @@ npx wrangler pages dev -- npx react-scripts start</code></pre>
 	<p>在几个月后宣布全面开放时，我们的账单将会显示为 Workers Bundled 计划的费用——毕竟，完成这些工作的就是 Workers。</p>
 	<h2 id="--11">后续预告：</h2>
 	<p>我们目前宣布的只是一个公测版，而在未来几周和几个月内，我们计划进行一些非常令人兴奋的事情。我们将添加集成日志和对部署函数的更多分析，从而使您已经熟悉的 Pages 开发体验变得甚至更快、更容易。 </p>
-	<p>除此之外，我们还将扩展对下一代前端框架的一流支持。正如我们通过SvelteKit 所展示的那样，Pages 能够无缝地同时部署静态和动态代码，实现无与伦比的最终用户性能和开发便利性，我们很高兴能够为更多人解锁这一功能。类似框架和技术的爱好者，如 NextJS、NuxtJS、React Server Components、Remix 和 Hydrogen 等，请继续关注这个博客的后续发布。更好地是，欢迎<a href="https://www.cloudflare.com/zh-cn/careers/" target="_blank">加入我们</a>并帮助实现它！</p>
+	<p>除此之外，我们还将扩展对下一代前端框架的一流支持。正如我们通过SvelteKit 所展示的那样，Pages 能够无缝地同时部署静态和动态代码，实现无与伦比的最终用户性能和开发便利性，我们很高兴能够为更多人解锁这一功能。类似框架和技术的爱好者，如 NextJS、NuxtJS、React Server Components、Remix 和 Hydrogen 等，请继续关注这个博客的后续发布。更好地是，欢迎<a href="https://www.cloudflare.com/zh-cn/careers" target="_blank">加入我们</a>并帮助实现它！</p>
 	<p>此外，正如我们对 SvelteKit 所做的那样，我们希望包括更多与现有框架的一流集成，以便 Pages 可以成为您首选框架的主要部署目的地。我们正在努力进行有关工作，以便使 NextJS、NuxtJS、React Server Components、Shopify Hydrogen 等框架无缝集成，以更好地帮助您开发全栈应用。 </p>
 	<p>最后，我们正在加速构建时间，以便您能专注于推送更改和快速迭代——无需等待！</p>
 	<h2 id="--12">立即开始</h2>

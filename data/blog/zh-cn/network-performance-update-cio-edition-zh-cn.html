@@ -241,7 +241,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/8.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>在较低延迟范围，Zscaler 和 Cloudflare 的差距确实更加均匀，但 Cloudflare 的响应时间一致程度要高得多，而且可以看到，Zscaler 有接近一半的响应需要接近 1 秒的加载时间。这进一步突显了我们的互连程度有多高：由于覆盖更多地方，我们能提供更佳的应用体验，而且我们在边缘上高延迟和应用性能欠佳的情况也没有那么多。</p>
 	<p>我们希望将这些新会话和现有会话分开，因为查看相似的请求路径以进行适当的比较非常重要。例如，如果我们比较一个现有会话上通过 Zscaler 的请求和一个新会话上通过 Cloudflare 的请求，我们会看到 Cloudflare 比 Zscaler 慢得多，因为需要进行身份验证。所以当我们与第三方签约设计这些测试时，我们确保他们考虑到这一点。</p>
-	<p>对于这些测试，Cloudflare 与第三方 Miercom 签订了合同。Miercom 执行了一组测试，旨在复制终端用户连接到 Cloudflare 或 Zscaler 保护的资源。Miercom 在世界各地的 14 个地方建立了应用实例，并设计了一个测试，可以通过各种 Zero Trust 提供商登录到应用中以访问特定内容。测试方法如下所示，但可以<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">在此</a>查看 Miercom 详细说明其测试方法的完整报告。</p>
+	<p>对于这些测试，Cloudflare 与第三方 Miercom 签订了合同。Miercom 执行了一组测试，旨在复制终端用户连接到 Cloudflare 或 Zscaler 保护的资源。Miercom 在世界各地的 14 个地方建立了应用实例，并设计了一个测试，可以通过各种 Zero Trust 提供商登录到应用中以访问特定内容。测试方法如下所示，但可以<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler" target="_blank">在此</a>查看 Miercom 详细说明其测试方法的完整报告。</p>
 	<ul>
 		<li>用户从一个由 Catchpoint 实例模拟的浏览器连接到应用 —— 新会话</li>
 		<li>用户通过其身份提供商进行身份验证</li>
@@ -301,9 +301,9 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>Cloudflare 的网络在这里表现非常出色，帮助向我们的客户提供最佳的用户体验。因为 Cloudflare 的网络非常接近最终用户设备，我们能够缩短首字节时间和响应时间，帮助改善最终用户体验。</p>
-	<p>为了测量这一点，我们再次联系 Miercom，让 Catchpoint 节点从全球相同的 14 个位置连接到 Cloudflare Browser Isolation 和 Zscaler Cloud Browser Isolation，并让设备模拟客户端在每个位置尝试通过这两个浏览器隔离产品访问应用，帮助我们获得所需的数据。关于测试方法的更多信息，请参考同样的 Miercom 报告，链接<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">见此</a>。</p>
+	<p>为了测量这一点，我们再次联系 Miercom，让 Catchpoint 节点从全球相同的 14 个位置连接到 Cloudflare Browser Isolation 和 Zscaler Cloud Browser Isolation，并让设备模拟客户端在每个位置尝试通过这两个浏览器隔离产品访问应用，帮助我们获得所需的数据。关于测试方法的更多信息，请参考同样的 Miercom 报告，链接<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler" target="_blank">见此</a>。</p>
 	<h3 id="zero-trust-">Zero Trust 世界的下一代性能</h3>
-	<p>在非 Zero Trust 的世界里，您和您的 IT 团队是就是网络运营者——这赋予您控制性能的能力。虽然这种控制令人安心，但对于必须管理办公室和资源之间中间一英里连接的 IT 团队而言，这也是一个巨大的负担。而在 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 世界中，您的网络……嗯，就是公共互联网。这意味着您的团队要做的工作减少了，但 Zero Trust 提供商要承担大得多的责任，它必须为您的每一个用户管理性能。Zero Trust 提供商在提高端到端性能方面做得越好，用户的体验就会越好，您面临的风险也就越小。对于像身份验证和安全 Web 网关这样的实时应用，拥有快速的用户体验是至关重要的。</p>
+	<p>在非 Zero Trust 的世界里，您和您的 IT 团队是就是网络运营者——这赋予您控制性能的能力。虽然这种控制令人安心，但对于必须管理办公室和资源之间中间一英里连接的 IT 团队而言，这也是一个巨大的负担。而在 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust</a> 世界中，您的网络……嗯，就是公共互联网。这意味着您的团队要做的工作减少了，但 Zero Trust 提供商要承担大得多的责任，它必须为您的每一个用户管理性能。Zero Trust 提供商在提高端到端性能方面做得越好，用户的体验就会越好，您面临的风险也就越小。对于像身份验证和安全 Web 网关这样的实时应用，拥有快速的用户体验是至关重要的。</p>
 	<p>Zero Trust 提供商不仅需要在公共互联网上保护您的用户，还需要优化公共互联网，以确保您的用户持续受到保护。转向 Zero Trust 不仅减少了对企业网络的需求，还允许用户流量更自然地流向资源。但是，考虑到 Zero Trust 提供商将成为所有用户和所有应用的守门人，性能需要评估的一个关键方面，以便为用户减少摩擦，降低用户抱怨、效率下降或关闭解决方案的可能性。Cloudflare 正在不断改进我们的网络，以确保用户始终拥有最佳的体验，这不仅来自于路由修复，还来自于扩展对等连接协议和增加新节点。正是这种孜孜不倦的努力，使我们成为最快的Zero Trust 提供商。</p>
-	<p>欢迎访问我们的<a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">比较页面</a>，以了解有关 Cloudflare 网络架构与 Zscaler 对比的更多详情。</p>
+	<p>欢迎访问我们的<a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler" target="_blank">比较页面</a>，以了解有关 Cloudflare 网络架构与 Zscaler 对比的更多详情。</p>
 </div>

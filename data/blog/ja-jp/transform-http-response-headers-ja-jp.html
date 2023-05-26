@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-86.png" class="kg-image" alt="Transform RulesでHTTP応答ヘッダーを変更" loading="lazy"></figure>
 	<p>HTTPヘッダーは、Webの仕組みの中心となるものです。これらは、、クライアントとサーバー間で、適用するセキュリティ権限やクライアントに関する情報などの追加情報を渡し、正しいコンテンツを提供するために使用されます。</p>
-	<p>本日、すべてのCloudflareプランで、提供するTransform Rules内の3番目のアクション「HTTP応答ヘッダーの変更」が利用可能になることを発表します。この新機能により、Cloudflareユーザーは、TrafficがCloudflareを介してクライアントに戻るときに、HTTP応答ヘッダーを設定または削除することができます。これにより、お客様はリクエストがどのように処理されたかという情報、デバッグ情報、さらには<a href="https://frenxi.com/http-headers-you-dont-expect/" target="_blank">リクルートメッセージ</a>などでレスポンスを充実させることができます。</p>
-	<p>以前は、HTTP応答ヘッダーの変更は<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Worker</a>を使用して行われました。本日は、コードを1行も記述せずにこれを行う、さらに簡単な方法を紹介します。</p>
+	<p>本日、すべてのCloudflareプランで、提供するTransform Rules内の3番目のアクション「HTTP応答ヘッダーの変更」が利用可能になることを発表します。この新機能により、Cloudflareユーザーは、TrafficがCloudflareを介してクライアントに戻るときに、HTTP応答ヘッダーを設定または削除することができます。これにより、お客様はリクエストがどのように処理されたかという情報、デバッグ情報、さらには<a href="https://frenxi.com/http-headers-you-dont-expect" target="_blank">リクルートメッセージ</a>などでレスポンスを充実させることができます。</p>
+	<p>以前は、HTTP応答ヘッダーの変更は<a href="https://workers.cloudflare.com" target="_blank">Cloudflare Worker</a>を使用して行われました。本日は、コードを1行も記述せずにこれを行う、さらに簡単な方法を紹介します。</p>
 	<h3 id="world-wide-web-">World Wide Webの荷札</h3>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-47.png" class="kg-image" alt="Image of baggage check-in at an airport." loading="lazy"></figure>
 	<p>HTTPヘッダーを、空港でチェックインするときにバッグに付けられる「荷札」だと考えてください。</p>
@@ -14,10 +14,10 @@
 	<p>HTTP応答ヘッダーは、ブラウザがデータを正しく処理するのに役立つ情報とともに、正しいデータがブラウザに返されるようにするために使用されます。一般的な応答ヘッダーには、返されたコンテンツの種類をブラウザに通知する「Content-Type」が含まれます。例として、「Content-Type: text/html」または「Content-Type: image/png」があります。もう1つの一般的なヘッダーは「Server:」です。これには、HTTP要求の処理などに使用される、ソフトウェアに関する情報が含まれています。例として、「Server: cloudflare」があります。</p>
 	<p>基本的なHTTPのトラフィック処理以外にも、これらの応答ヘッダーには多くの用途があります。その1つが、<em>セキュリティ</em>改善です。コンテンツセキュリティポリシー（CSP）、オリジン間リソース共有（CORS）、HTTP Strict Transport Security（HSTS）などのセキュリティメカニズムはすべて、Webサイト訪問者のセキュリティを向上および強化するための応答ヘッダーとして実装されています。</p>
 	<p>たとえば、CSPの主要な目的は、クロスサイトスクリプティング（XSS）攻撃を軽減して報告することです。XSS攻撃は、悪意のあるスクリプトが信頼できるWebサイトに挿入されたときに発生します。攻撃者がアプリケーションを使用して、ブラウザ側のスクリプトなどの悪意のあるコードを別のエンドユーザーに送信できるようにします。エンドユーザーとWebサイトまたはアプリケーションとのやり取りの安全性が損なわれる、パスワードなどの機密情報を第三者に吸い上げられるといったことが、このスクリプトを使用すると可能になります。</p>
-	<p>これを防止するために、CSPがWebサイト管理者によってHTTP応答ヘッダーとして追加されます。 CSP応答ヘッダーは、ブラウザが実行可能なスクリプトの有効な発行元であると見なすドメインを指定します。<a href="https://content-security-policy.com/" target="_blank">CSP互換ブラウザ</a> は、許可されたドメインから受信したファイルにロードされているスクリプトのみを実行し、他のすべてのスクリプトを無視します。</p>
+	<p>これを防止するために、CSPがWebサイト管理者によってHTTP応答ヘッダーとして追加されます。 CSP応答ヘッダーは、ブラウザが実行可能なスクリプトの有効な発行元であると見なすドメインを指定します。<a href="https://content-security-policy.com" target="_blank">CSP互換ブラウザ</a> は、許可されたドメインから受信したファイルにロードされているスクリプトのみを実行し、他のすべてのスクリプトを無視します。</p>
 	<p>CSPは、値に含まれるポリシーとともに「Content-Security-Policy」ヘッダーを設定することでHTTP応答に追加されます。たとえば、 <a href="https://w3techs.com/technologies/overview/web_server" target="_blank">一般的な</a>WebサーバーであるNGINXを使用する場合、管理者は構成に次のような行を設定します：</p>
 	<p><code>add_header Content-Security-Policy "default-src 'self';" always;</code></p>
-	<p><a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>を使用する場合、コードは次のようになります：</p>
+	<p><a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a>を使用する場合、コードは次のようになります：</p>
 	<p><code>response.headers.set("Content-Security-Policy":"default-src 'self' example.com *.example.com",)</code></p>
 	<p>ブラウザがHTTP応答を受信すると、コンテンツセキュリティポリシーヘッダーの存在を検出し、適切に動作します。</p>
 	<h2 id="http--1">HTTP応答ヘッダーの動的変更</h2>
@@ -48,5 +48,5 @@
 	<p>Transform Rulesを使用すると、管理者は、訪問者の出身国、ボットスコア、ユーザーエージェント、要求されたファイル名やファイル拡張子、リクエスト方法 <a href="https://developers.cloudflare.com/firewall/cf-firewall-language/fields" target="_blank">などの</a>多くのパラメーターに基づいてヘッダーを設定できます。</p>
 	<p>これにより、管理者は、 <a href="https://developers.cloudflare.com/bots/get-started/bm-subscription#verified-bots" target="_blank">認証済み</a> ボットと未検証ボット、低ボットスコアトラフィックに対して、より厳格なコンテンツセキュリティポリシーがセットアップできるようになります。</p>
 	<h2 id="-">今すぐお試しください！</h2>
-	<p>HTTP応答ヘッダーの変更機能は、他の多くのユースケースの中でも、操作の改善、機密データの削除、セキュリティの強化に使用できます。今すぐ、最新の<a href="https://dash.cloudflare.com/" target="_blank">変換ルール</a> をお試しください。</p>
+	<p>HTTP応答ヘッダーの変更機能は、他の多くのユースケースの中でも、操作の改善、機密データの削除、セキュリティの強化に使用できます。今すぐ、最新の<a href="https://dash.cloudflare.com" target="_blank">変換ルール</a> をお試しください。</p>
 </div>

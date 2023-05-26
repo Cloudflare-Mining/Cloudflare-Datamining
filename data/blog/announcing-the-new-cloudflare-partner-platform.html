@@ -2,10 +2,10 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/complaints-@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>When I first started at Cloudflare over two years ago, one of the first things I was tasked with was to help evolve our partner platform to support the changes in our service and the expanding needs of our partners and customers. Cloudflare’s existing partner platform was released in 2010. It is a testament to those who built it, that it was, and still is, in use today—but it was also clear that the landscape had substantially changed. </p>
-	<p>Since the launch of the existing partner platform, we had <a href="https://blog.cloudflare.com/introducing-multi-user-organizations-share-an-account-without-sharing-a-login/">built</a> and <a href="https://blog.cloudflare.com/expanding-multi-user-access/">expanded</a> multi-user access, and launched many new products: Argo, Load Balancing, and Cloudflare Workers, to name a few. Retrofitting the existing offering was not practical. Cloudflare needed a new partner platform that could meet the needs of partners and their customers.</p>
+	<p>Since the launch of the existing partner platform, we had <a href="https://blog.cloudflare.com/introducing-multi-user-organizations-share-an-account-without-sharing-a-login">built</a> and <a href="https://blog.cloudflare.com/expanding-multi-user-access">expanded</a> multi-user access, and launched many new products: Argo, Load Balancing, and Cloudflare Workers, to name a few. Retrofitting the existing offering was not practical. Cloudflare needed a new partner platform that could meet the needs of partners and their customers.</p>
 	<p>As the team started to develop a new solution, we needed to find a partner who could keep us on the right path. The number of hypotheticals were infinite and we needed a first customer to ground ourselves. Lo and behold, not long after I had begun putting pen to paper, we found the perfect partner for the new platform.</p>
 	<h3 id="the-ibm-partnership">The IBM Partnership</h3>
-	<p>IBM was looking for a partner to bring various edge services to market quickly, and our suite of capabilities was what they were looking for. If you are not familiar with our partnership with IBM, you can learn a bit more about it in our <a href="https://blog.cloudflare.com/ibm-cloud-and-cloudflare/">blog post</a> and on the <a href="https://www.ibm.com/cloud/cloud-internet-services" target="_blank">IBM Cloud Internet Services landing page</a>. We signed the contract in November 2017, and we had to be ready to launch by IBM Think the following February. Given that IBM’s engineering team needed time to integrate with us, we were on a tight timeline to deliver.</p>
+	<p>IBM was looking for a partner to bring various edge services to market quickly, and our suite of capabilities was what they were looking for. If you are not familiar with our partnership with IBM, you can learn a bit more about it in our <a href="https://blog.cloudflare.com/ibm-cloud-and-cloudflare">blog post</a> and on the <a href="https://www.ibm.com/cloud/cloud-internet-services" target="_blank">IBM Cloud Internet Services landing page</a>. We signed the contract in November 2017, and we had to be ready to launch by IBM Think the following February. Given that IBM’s engineering team needed time to integrate with us, we were on a tight timeline to deliver.</p>
 	<p>A number of team members and I jumped on a plane and flew to Austin, Texas (Hook ‘em!) to work with IBM and determine the minimum viable product (MVP). Over kolaches (for the Czech readers at home: <a href="https://en.wikipedia.org/wiki/Klob%C3%A1sn%C3%ADk" target="_blank">Klobásník</a>), IBM and Cloudflare nailed down the MVP requirements. Briefly, they were as follows:</p><!--kg-card-begin: html-->
 	<p>
 		<font size="+1">
@@ -68,7 +68,7 @@
 	<p>With subscriptions, this is no longer the case. What started as just a way to provision services for IBM, has now grown into the standard of how all customer services are provisioned at Cloudflare. Whether you purchase services through IBM CIS or buy Cloudflare Workers in our dashboard, behind the scenes, Subscriptions is what ensures you get exactly the right services enabled.</p>
 	<p>Enough talk, let’s show things in action!</p>
 	<h3 id="the-partner-platform-in-action">The Partner Platform in Action</h3>
-	<p>The full details of using the new partner platform can be found in our <a href="https://developers.cloudflare.com/tenant/" target="_blank">Provisioning API docs</a>, but here we provide a walkthrough of a typical use case.</p>
+	<p>The full details of using the new partner platform can be found in our <a href="https://developers.cloudflare.com/tenant" target="_blank">Provisioning API docs</a>, but here we provide a walkthrough of a typical use case.</p>
 	<p>Using the new partner platform involves 4 steps:</p>
 	<ol>
 		<li>Provisioning Customer Accounts</li>
@@ -244,7 +244,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>For this customer we will provision a Pro plan for the newly created zone. If you are not familiar with our zone plans, then you can read about them <a href="https://www.cloudflare.com/plans/" target="_blank">here</a>. For this, we make a call to the subscriptions service.</p>
+	<p>For this customer we will provision a Pro plan for the newly created zone. If you are not familiar with our zone plans, then you can read about them <a href="https://www.cloudflare.com/plans" target="_blank">here</a>. For this, we make a call to the subscriptions service.</p>
 	<p>Request:</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST \
@@ -333,14 +333,14 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/Screen-Shot-2019-06-05-at-10.27.26-AM.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Some of the latest partners using the new partner platform</figcaption>
 	</figure>
-	<p>If you are interested in partnering with Cloudflare, then reach out to <a href="mailto:partners@cloudflare.com" target="_blank">partners@cloudflare.com</a>. If building the future of how Cloudflare’s partners and customers use our service sounds interesting then take a look at our <a href="https://www.cloudflare.com/careers/departments/" target="_blank">career page</a>.</p>
+	<p>If you are interested in partnering with Cloudflare, then reach out to <a href="mailto:partners@cloudflare.com" target="_blank">partners@cloudflare.com</a>. If building the future of how Cloudflare’s partners and customers use our service sounds interesting then take a look at our <a href="https://www.cloudflare.com/careers/departments" target="_blank">career page</a>.</p>
 	<hr>
 	<p>For more information, see the following resources:</p>
 	<ul>
 		<li><a href="https://cloudflare.com/partners" target="_blank">Partner Program Website</a></li>
 		<li><a href="https://cloudflare.com/partners/services" target="_blank">Partner Services Website</a></li>
 		<li>Announcing the new Cloudflare Partner Platform (you are here)</li>
-		<li><a href="https://blog.cloudflare.com/helping-cloudflare-build-its-partnerships-worldwide/">Building Partnerships Worldwide</a></li>
-		<li><a href="https://blog.cloudflare.com/cloudflare-partners-a-new-program-with-new-partners/">The New Partner Program</a></li>
+		<li><a href="https://blog.cloudflare.com/helping-cloudflare-build-its-partnerships-worldwide">Building Partnerships Worldwide</a></li>
+		<li><a href="https://blog.cloudflare.com/cloudflare-partners-a-new-program-with-new-partners">The New Partner Program</a></li>
 	</ul>
 </div>

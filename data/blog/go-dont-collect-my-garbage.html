@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>Not long ago I needed to benchmark the performance of Golang on a many-core machine. I took several of the benchmarks that are bundled with the Go source code, copied them, and modified them to run on all available threads. In that case the machine has 24 cores and 48 threads.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/36963798223_b4da5151aa_k.jpg" alt="" loading="lazy"><small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/147079914@N03/36963798223/in/photolist-ZhPe1A-Yjn8pV-ZhPcm3-YfT3xL-ZkG9kP-qLEURD-4rPJbB-uwsT5-9aWgeA-92n4h-5LWz68-92n6p-5gE7TJ-3Scj6p-duNYgz-4rTMKJ-8P3YZ3-8QLKYc-CHFrLH-MuQT2E" target="_blank">image</a> by <a href="https://www.flickr.com/photos/147079914@N03/" target="_blank">sponki25</a></small></p>
-	<p>I started with ECDSA P256 Sign, probably because I have warm feeling for that function, since I <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap/">optimized it for amd64</a>.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/11/36963798223_b4da5151aa_k.jpg" alt="" loading="lazy"><small><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/147079914@N03/36963798223/in/photolist-ZhPe1A-Yjn8pV-ZhPcm3-YfT3xL-ZkG9kP-qLEURD-4rPJbB-uwsT5-9aWgeA-92n4h-5LWz68-92n6p-5gE7TJ-3Scj6p-duNYgz-4rTMKJ-8P3YZ3-8QLKYc-CHFrLH-MuQT2E" target="_blank">image</a> by <a href="https://www.flickr.com/photos/147079914@N03" target="_blank">sponki25</a></small></p>
+	<p>I started with ECDSA P256 Sign, probably because I have warm feeling for that function, since I <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">optimized it for amd64</a>.</p>
 	<p>First, I ran the benchmark on a single goroutine: <code>ECDSA-P256 Sign,30618.50, op/s</code></p>
 	<p>That looks good; next I ran it on 48 goroutines: <code>ECDSA-P256 Sign,78940.67, op/s</code>.</p>
 	<p>OK, that is not what I expected. Just over 2X speedup, from 24 physical cores? I must be doing something wrong. Maybe Go only uses two cores? I ran <code>top</code>, it showed 2,266% utilization. That is not the 4,800% I expected, but it is also way above 400%.</p>
@@ -74,6 +74,6 @@ gc 6790 @10.000s 12%: 0.086+0.55+0.24 ms clock, 0.78+0.30/4.2/0.043+2.2 ms cpu, 
 	<p>The scaling looks much better, and even past 24 goroutines, when we run out of physical cores, and start sharing cores with hyper-threading, the overall performance improves.</p>
 	<p>The bottom line here is that although this type of benchmarking is definitely an edge case for garbage collection, where 48 threads allocate large amounts of short lived data, this situation can occur in real world scenarios. As many-core CPUs become a commodity, one should be aware of the pitfalls.</p>
 	<p>Most languages with garbage collection offer some sort of garbage collection control. Go has the GOGC variable, that can also be controlled with the SetGCPercent function in the runtime/debug package. Don't be afraid to tune the GC to suit your needs.</p>
-	<p>We're always looking for Go programmers, so if you found this blog post interesting, why not check out our <a href="https://www.cloudflare.com/careers/" target="_blank">jobs page</a>?</p>
+	<p>We're always looking for Go programmers, so if you found this blog post interesting, why not check out our <a href="https://www.cloudflare.com/careers" target="_blank">jobs page</a>?</p>
 	<!--kg-card-end: markdown-->
 </div>

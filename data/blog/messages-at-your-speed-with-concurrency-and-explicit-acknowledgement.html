@@ -24,7 +24,7 @@
 max_concurrency = 7
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>To learn more about concurrency you can check out our developer documentation <a href="https://developers.cloudflare.com/queues/learning/consumer-concurrency/" target="_blank">here</a>.</p>
+	<p>To learn more about concurrency you can check out our developer documentation <a href="https://developers.cloudflare.com/queues/learning/consumer-concurrency" target="_blank">here</a>.</p>
 	<h3 id="concurrency-in-practice">Concurrency in practice</h3>
 	<p>It’s baseball season in the US, and for many of us that means fantasy baseball is back! This year is the year we finally write a program that uses data and statistics to pick a winning team, as opposed to picking players based on “feelings” and “vibes”. We’re engineers after all, and baseball is a game of rules. If the Oakland A’s can do it, so can we!</p>
 	<p>So how do we put this together? We’ll need a few things:</p>
@@ -81,7 +81,7 @@ catch (error) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>ackAll() and retryAll() work similarly, but act on the entire batch of messages instead of individual messages.</p>
-	<p>For more details check out our developer documentation <a href="https://developers.cloudflare.com/queues/learning/batching-retries/" target="_blank">here</a>.</p>
+	<p>For more details check out our developer documentation <a href="https://developers.cloudflare.com/queues/learning/batching-retries" target="_blank">here</a>.</p>
 	<h3 id="explicit-acknowledgment-in-practice">Explicit Acknowledgment in practice</h3>
 	<p>In the course of making our Fantasy Baseball team picker, we notice that data isn’t always sent correctly from the baseball reference API. This results in data not being correctly parsed and rejected from our player heuristics.</p>
 	<p>Without Explicit Acknowledgment, the entire batch of baseball statistics would need to be retried. Thankfully, we can use Explicit Acknowledgment to avoid that, and tell our queue which messages were parsed successfully and which were not.</p><!--kg-card-begin: markdown-->
@@ -116,7 +116,7 @@ export default {
 	<h3 id="always-working-to-be-faster">Always working to be faster</h3>
 	<p>For the Queues team, speed is always our focus, as we understand our customers don't want bottlenecks in the performance of their applications. With this in mind the team will be continuing to look for ways to increase the velocity through which developers can build best in class applications on our developer platform. Whether it's reducing message processing time, the amount of code you need to manage, or giving developers control over their application pipeline, we will continue to implement solutions to allow you to focus on just the important things, while we handle the rest.</p>
 	<p>Cloudflare Queues is currently in Open Beta and ready to power your most complex applications.</p>
-	<p>Check out our getting started <a href="https://developers.cloudflare.com/queues/learning/how-queues-works/" target="_blank">guide</a> and build your service with us today! </p>
+	<p>Check out our getting started <a href="https://developers.cloudflare.com/queues/learning/how-queues-works" target="_blank">guide</a> and build your service with us today! </p>
 	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/56ddbbea460d0e736d45e6b4944c637d/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F56ddbbea460d0e736d45e6b4944c637d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
 </div>

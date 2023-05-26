@@ -3,31 +3,31 @@
 	<p>请选择所有巴士。请点击自行车。这张照片中有交通信号灯吗？类似于这样荒谬的问题，您最近几乎肯定遇见过。这是在线服务用来区分人类和自动程序的一种方法，称为 <a href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA</a>。CAPTCHA 可增强在线服务的安全性。然而，尽管的确有此功用，它们却伴有一个非常现实的代价。</p>
 	<p>我们的数据表明，用户完成 CAPTCHA 质询的平均用时为 32 秒。全球互联网用户多达 46 亿。假设一个典型的互联网用户大约每 10 天看到一次 CAPTCHA。</p>
 	<p>简单估算一下，相当于每一天都要浪费 500 年时间，而这只是为了证明我们是人类而已。</p>
-	<p>我们目前正在启动一项实验，以求结束这样的蠢事。我们希望彻底摆脱 CAPTCHA。想法很简单：真人应该能够通过触摸或查看其设备来证明自己是人类，而无需透露自己的身份。我们希望您能够证明自己是人，但不必透露具体是哪一个人！您可能会问，这有可能吗？答案是肯定的！我们先从受信任 USB 密钥（如 <a href="https://www.yubico.com/" target="_blank">YubiKey</a> ）着手，这种设备已存在了一些时日，而且越来越多的手机和电脑也默认配备这种功能。</p>
+	<p>我们目前正在启动一项实验，以求结束这样的蠢事。我们希望彻底摆脱 CAPTCHA。想法很简单：真人应该能够通过触摸或查看其设备来证明自己是人类，而无需透露自己的身份。我们希望您能够证明自己是人，但不必透露具体是哪一个人！您可能会问，这有可能吗？答案是肯定的！我们先从受信任 USB 密钥（如 <a href="https://www.yubico.com" target="_blank">YubiKey</a> ）着手，这种设备已存在了一些时日，而且越来越多的手机和电脑也默认配备这种功能。</p>
 	<p>今天标志着互联网上消防栓、人行横道和交通信号灯的开始消亡。</p>
 	<h3 id="-captcha-">为什么使用 CAPTCHA？</h3>
 	<p>许多时候，企业需要一种方法来判断在线用户是不是人类，原因通常与安全性或在线服务被滥用有关。CAPTCHA 于世纪之交应运而生。第一个 CAPTCHA <a href="https://en.wikipedia.org/wiki/CAPTCHA#:~:text=The%2520term%2520was%2520coined%2520in,two%2520groups%2520working%2520in%2520parallel." target="_blank">诞生于 1997 年</a>，其术语（“Completely Automated Public Turing test to tell Computers and Humans Apart”，全自动区分计算机与人类的图灵测试）则是 2003 年由 Luis von Ahn、Manuel Blum、Nicholas J. Hopper 和 John Langford 创造的。</p>
 	<p>就其本质而言，CAPTCHA 质询-响应必须是自动化的：这样，它们可以在需要捕获的人类和自动程序之间进行扩展。</p>
 	<h3 id="-captcha--1">为什么弃用 CAPTCHA？</h3>
 	<p>一言以蔽之，没人喜欢它们。</p>
-	<p>迄今为止，我们能够做到最好的就是最大程度减少它们。例如，Cloudflare 正在不断<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more/">改进自动程序管理解决方案</a>，尽可能智能地决定何时向用户提供 CAPTCHA。但多年来，随着人工智能发展，CAPTCHA 已从简单地从背景中识别文字，变成对旧书执行 OCR，到识别图片中的物体（请参阅 <a href="https://arxiv.org/abs/1312.6082" target="_blank">Google 关于门牌号码的论文</a>）。这给互联网上的人类用户带来一些现实问题：</p>
+	<p>迄今为止，我们能够做到最好的就是最大程度减少它们。例如，Cloudflare 正在不断<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">改进自动程序管理解决方案</a>，尽可能智能地决定何时向用户提供 CAPTCHA。但多年来，随着人工智能发展，CAPTCHA 已从简单地从背景中识别文字，变成对旧书执行 OCR，到识别图片中的物体（请参阅 <a href="https://arxiv.org/abs/1312.6082" target="_blank">Google 关于门牌号码的论文</a>）。这给互联网上的人类用户带来一些现实问题：</p>
 	<ol>
 		<li>生产力：浪费时间 — 不能专注于手头的任务 — 常常引起一些挫败感。</li>
 		<li>辅助功能：用户被假定具有解决测试题所需的肢体和认知能力，但并非总是如此。比如，视觉障碍者可能无法完成 CAPTCHA 解题任务。</li>
 		<li>文化知识：地球上见过美国消防栓的人属于少数，正如讲英语的人并非多数一样。出租车在纽约是黄色的，在伦敦则是黑色的。糟糕的是，只有少数地方将出租车称为“Cab”，其他地方都叫做“Taxi”！</li>
 		<li>移动设备上的交互：在世界上大部分地区，手机和移动设备是主要的互联网访问方式，通常也是唯一的方式。除了在小屏幕设备上难度增大外，CAPTCHA 还给用户的数据流量和电池消耗造成压力。</li>
 	</ol>
-	<p>实际上，万维网联盟（W3C）早在 2003 年就研究了多个草案，指出了 <a href="https://www.w3.org/TR/turingtest/" target="_blank">CAPTCHA 的不便性</a>。</p>
+	<p>实际上，万维网联盟（W3C）早在 2003 年就研究了多个草案，指出了 <a href="https://www.w3.org/TR/turingtest" target="_blank">CAPTCHA 的不便性</a>。</p>
 	<p>而且，这只是用户角度的考量。除了给用户造成这些代价外，对于企业来说也有非常现实的成本。企业因为各种原因，花费许多时间去优化其网站和应用程序的性能和布局。这些工作为的是避免用户在您希望他们注册时跳出网站，防止用户在您希望他们结账时丢弃购物车。通常而言，您希望留住客户，让他们不会因为感觉沮丧而一去不回。</p>
 	<p>CAPTCHA 实际上迫使企业将摩擦送到用户面前；正如管理高业绩在线业务的人会告诉您的那样，这是别无选择时的无奈之举。</p>
-	<p>当初<a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">从 Google reCAPTCHA 转向 hCAPTCHA</a>，意味着我们开始踏上解决这些问题的征程。如今，我们将更进一步。</p>
+	<p>当初<a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha">从 Google reCAPTCHA 转向 hCAPTCHA</a>，意味着我们开始踏上解决这些问题的征程。如今，我们将更进一步。</p>
 	<h3 id="-captcha-cryptographic-attestation-of-personhood">无图 CAPTCHA：Cryptographic Attestation of Personhood</h3>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/05/image4-4.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>硬件安全密钥是具有嵌入式密钥的设备，可以连接到电脑或手机上</figcaption>
 	</figure>
 	<p>从用户角度来看，Cryptographic Attestation of Personhood 的工作方式如下：</p>
 	<ol>
-		<li>用户访问受 Cryptographic Attestation of Personhood 保护的网站，例如 <a href="http://cloudflarechallenge.com/" target="_blank">cloudflarechallenge.com</a>。</li>
+		<li>用户访问受 Cryptographic Attestation of Personhood 保护的网站，例如 <a href="http://cloudflarechallenge.com" target="_blank">cloudflarechallenge.com</a>。</li>
 		<li>Cloudflare 提供质询。</li>
 		<li>用户点击“I am human (beta)”，并看到要求插上安全设备的提示。</li>
 		<li>用户决定使用硬件安全密钥。</li>
@@ -118,7 +118,7 @@
 	</table>
 	<!--kg-card-end: markdown-->
 	<p><em>* 每批必须有 100,000 个或更多密钥（<a href="https://fidoalliance.org/specs/fido-uaf-v1.1-ps-20170202/fido-uaf-protocol-v1.1-ps-20170202.html#full-basic-attestation" target="_blank">FIDO UAF 协议规范 ＃4.1.2.1.1</a> ）。但是，已发现自签名密钥和来自某些制造商的密钥<a href="https://www.chromium.org/security-keys" target="_blank">不符合此要求</a>。</em></p>
-	<p><em>** 这要求我们单独设置一个不同的 Cookie 来跟踪您的密钥。这背离了互联网上的隐私要求，也有悖于这个项目的宗旨。您可以从<a href="https://blog.cloudflare.com/deprecating-cfduid-cookie/">此处</a>进一步了解我们如何正在移除 __cfduid 等 Cookie。</em></p>
+	<p><em>** 这要求我们单独设置一个不同的 Cookie 来跟踪您的密钥。这背离了互联网上的隐私要求，也有悖于这个项目的宗旨。您可以从<a href="https://blog.cloudflare.com/deprecating-cfduid-cookie">此处</a>进一步了解我们如何正在移除 __cfduid 等 Cookie。</em></p>
 	<h3 id="--4">无需收集生物特征的认证</h3>
 	<p>项目宗旨：我们想要知道您是人，但不关心您是具体哪一个人。</p>
 	<p>令人高兴的是，WebAuthn API 在很大程度上帮我们解决了这个麻烦。这并不是我们想要的，但 WebAuthn API 会阻止收集生物特征，例如指纹。当您的设备要求进行生物识别身份验证时，例如通过指纹传感器，一切都在本地进行。验证旨在解锁设备的安全模块，该模块提供与您的平台关联的签名。</p>
@@ -128,7 +128,7 @@
 	<p>使用 Cryptographic Attestation of Personhood 时，这样的事不会发生。由于不再受到 CAPTCHA 质询模式的桎梏，我们在设计用户流程方面具有更大的灵活性。</p>
 	<h3 id="cloudflare-">Cloudflare 正在做什么工作来进一步推动隐私保护</h3>
 	<p>虽然 Cryptographic Attestation of Personhood 在隐私保护方面有诸多好处，但其并不完美。Cloudflare 仍然需要知道您的制造商才会授予您权限。由于 WebAuthn 可与任何证书搭配，我们需要确保 Cloudflare 从未经篡改的硬件密钥接收证书。我们希望不必获得这一信息，从而进一步保护您的隐私。</p>
-	<p>过去，我们一直致力于制定隐私标准，例如主导了 Privacy Pass 相关的工作。<a href="https://privacypass.cloudflare.com/" target="_blank">Privacy Pass</a> 允许您一次解决质询并提供已通过质询的证明；也就是说，您不需要解决多个 CAPTCHA。这极大改善了 VPN 用户的用户体验，这些用户比其他互联网用户面临更多的质询。</p>
+	<p>过去，我们一直致力于制定隐私标准，例如主导了 Privacy Pass 相关的工作。<a href="https://privacypass.cloudflare.com" target="_blank">Privacy Pass</a> 允许您一次解决质询并提供已通过质询的证明；也就是说，您不需要解决多个 CAPTCHA。这极大改善了 VPN 用户的用户体验，这些用户比其他互联网用户面临更多的质询。</p>
 	<p>对于 Cryptographic Attestation of Personhood，我们深入挖掘了加密中的一个新兴领域，称为<a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank">零知识证明</a>（ZK 证明）。它使我们的用户能够证明其制造商是 Cloudflare 信任制造商中的一员。使用 ZK 证明时，来自单个制造商的多个设备之间无法彼此区分，也不能与其他制造商的设备区别开来。这一新系统需要更多技术细节，值得专门写一篇博客文章。敬请关注。</p>
 	<h3 id="--6">追求永无止境</h3>
 	<p>设计旨在保护数百万互联网资产的质询绝非易事。在当前环境中，我们认为与传统的 CAPTCHA 质询相比，Cryptographic Attestation of Personhood 可提供强大的安全性和可用性保障。在初步的用户研调中，用户表示触碰硬件按键比点击图片更受他们喜爱。虽说如此，我们知道这是新系统，还有提升的空间。</p>
@@ -138,7 +138,7 @@
 	<p>我们还必须考虑面对自动按键系统的可能性。能够按动电容式触控传感器的<a href="https://en.wikipedia.org/wiki/Drinking_bird" target="_blank">饮水鸟</a>可以通过 Cryptographic Attestation of Personhood 的验证。在最佳情况下，鸟类解题率与硬件生成证明所需的时间相匹配。对于我们当前的受信任制造商集合，其慢于专业 CAPTCHA 解题服务的速度，同时也一定能让合法用户通过认证。此外，现有的 Cloudflare 缓解措施将保留不变，从而有效保护互联网资产。</p>
 	<h3 id="--7">结语</h3>
 	<p>对于 Cloudflare 来说，一切归于帮助建设更加美好的互联网这个使命上。互联网上每天都要浪费 500 年时间，自世纪之交以来没有人重新审视过 CAPTCHA 的基本假设，这对我们来说是荒谬的。</p>
-	<p>对于为发布 Cryptographic Attestation of Personhood 而做的工作，我们倍感自豪。在设计这一质询时，我们采用了以用户为先的方法，确保用户在访问 Cloudflare 全球网络背后的互联网资产时享有高水准的安全性。我们正在借助 Cryptographic Attestation of Personhood 加强我们现有的人类质询。随着时间推移，您应该会更加频繁地看到它。目前，您可以访问 <a href="https://cloudflarechallenge.com/" target="_blank">cloudflarechallenge.com</a> 进行试用。</p>
+	<p>对于为发布 Cryptographic Attestation of Personhood 而做的工作，我们倍感自豪。在设计这一质询时，我们采用了以用户为先的方法，确保用户在访问 Cloudflare 全球网络背后的互联网资产时享有高水准的安全性。我们正在借助 Cryptographic Attestation of Personhood 加强我们现有的人类质询。随着时间推移，您应该会更加频繁地看到它。目前，您可以访问 <a href="https://cloudflarechallenge.com" target="_blank">cloudflarechallenge.com</a> 进行试用。</p>
 	<p>我们想要感谢 Cloudflare 其他团队的付出。这项工作是由研究团队主导的，但我们也非常荣幸获得了公司全体成员的支持。如果您想帮助我们建设更加美好的互联网，欢迎您<a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Technology%2520Research&amp;location=default" target="_blank">加入我们</a>。</p>
 	<p>最后：我们很高兴能够迎来互联网上消防栓的消亡。没人再需要它了。</p>
 	<h3 id="--8">反馈和常见错误</h3>

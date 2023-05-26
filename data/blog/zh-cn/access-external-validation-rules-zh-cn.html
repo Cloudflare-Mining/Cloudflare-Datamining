@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-24.png" class="kg-image" alt="Infinitely extensible Access policies" loading="lazy"></figure>
-	<p>Zero Trust 应用程序安全意味着，对应用程序的每一个请求均需通过一套具体定义的安全策略，否则会遭到拒绝。大多数 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 解决方案均支持使用用户的身份、设备和位置作为变量来定义此类安全策略。</p>
+	<p>Zero Trust 应用程序安全意味着，对应用程序的每一个请求均需通过一套具体定义的安全策略，否则会遭到拒绝。大多数 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust</a> 解决方案均支持使用用户的身份、设备和位置作为变量来定义此类安全策略。</p>
 	<p>客户告诉我们，他们希望在定义其 Zero Trust 策略时有更多控制权，更加可定制。</p>
 	<p>我们很高兴地宣布，从今天起，Access 策略可以在允许用户访问应用程序之前，先行考虑任何信息。我们所谓的任何信息，确实是指绝对意义上的<em>任何信息</em>。您现在可以通过 External Evaluation 规则选项构建无限可定制的策略，可以在评估 Access 策略的过程中调用任何 API。</p>
 	<h3 id="-">为何构建外部评估规则</h3>
@@ -37,5 +37,5 @@ async function externalEvaluation(claims) {
 		<li>等等</li>
 	</ul>
 	<p>关于扩展 Access 政策，我们才刚刚起步。未来，我们希望能更轻松地在允许用户访问应用程序之前，以编程方式决定应该如何对待用户，而不仅仅是允许或拒绝访问。</p>
-	<p>现在，Cloudflare Zero Trust 仪表板上就有这项功能。请按照<a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/" target="_blank">本指南</a>开始使用！</p>
+	<p>现在，Cloudflare Zero Trust 仪表板上就有这项功能。请按照<a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation" target="_blank">本指南</a>开始使用！</p>
 </div>

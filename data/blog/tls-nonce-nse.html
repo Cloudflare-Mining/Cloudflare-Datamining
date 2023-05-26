@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>One of the base principles of cryptography is that you can't <em>just</em> encrypt multiple messages with the same key. At the very least, what will happen is that two messages that have identical plaintext will also have identical ciphertext, which is a dangerous leak. (This is similar to why you can't encrypt blocks with <a href="https://blog.filippo.io/the-ecb-penguin/" target="_blank">ECB</a>.)</p>
+	<p>One of the base principles of cryptography is that you can't <em>just</em> encrypt multiple messages with the same key. At the very least, what will happen is that two messages that have identical plaintext will also have identical ciphertext, which is a dangerous leak. (This is similar to why you can't encrypt blocks with <a href="https://blog.filippo.io/the-ecb-penguin" target="_blank">ECB</a>.)</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/08/19fq1n.jpg" alt="One Does Not Simply" loading="lazy"></p>
 	<p>If you think about it, a pure encryption function is just like any other pure computer function: deterministic. Given the same set of inputs (key and message) it will always return the same output (the encrypted message). And we don't want an attacker to be able to tell that two encrypted messages came from the same plaintext.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/10/Nonces.001-1.png" alt="Same inputs, same output" loading="lazy"></p>
@@ -15,7 +15,7 @@
 	<h4 id="rc4andstreamciphers">RC4 and stream ciphers</h4>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/10/Nonces-RC4-black.png" alt="RC4" loading="lazy"></p>
 	<p>RC4 is a stream cipher, so it doesn't have to treat records separately. The cipher generates a continuous keystream which is XOR'd with the plaintexts as if they were just portions of one big message. Hence, there are no nonces.</p>
-	<p>RC4 <a href="https://blog.cloudflare.com/tag/rc4/">is broken</a> and was removed from TLS 1.3.</p>
+	<p>RC4 <a href="https://blog.cloudflare.com/tag/rc4">is broken</a> and was removed from TLS 1.3.</p>
 	<h4 id="cbcintls10">CBC in TLS 1.0</h4>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/10/Nonces-CBC-1.0-black-1.png" alt="CBC" loading="lazy"></p>
 	<p>CBC in TLS 1.0 works similarly to RC4: the cipher is instantiated once, and then the records are encrypted as part of one continuous message.</p>
@@ -24,10 +24,10 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2016/10/Nonces-CBC-explicit-black.png" alt="CBC 1.1" loading="lazy"></p>
 	<p>TLS 1.1 fixed BEAST by simply making IVs explicit, sending the IV with each record (with the network overhead that comes with that).</p>
 	<p>AES-CBC IVs are 16 bytes (128 bits), so using random bytes is sufficient to prevent collisions.</p>
-	<p>CBC has <a href="https://blog.cloudflare.com/yet-another-padding-oracle-in-openssl-cbc-ciphersuites/">other nasty design issues</a> and has been removed in TLS 1.3.</p>
+	<p>CBC has <a href="https://blog.cloudflare.com/yet-another-padding-oracle-in-openssl-cbc-ciphersuites">other nasty design issues</a> and has been removed in TLS 1.3.</p>
 	<h4 id="tls12gcm">TLS 1.2 GCM</h4>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/10/Nonces-GCM-black-2.png" alt="GCM" loading="lazy"></p>
-	<p>TLS 1.2 inherited the 1.1 explicit IVs. It also introduced <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly/">AEADs</a> like AES-GCM. The record nonce in 1.2 AES-GCM is a concatenation of a fixed per-connection IV (4 bytes, derived at the same time as the key) and an explicit per-record nonce (8 bytes, sent on the wire).</p>
+	<p>TLS 1.2 inherited the 1.1 explicit IVs. It also introduced <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">AEADs</a> like AES-GCM. The record nonce in 1.2 AES-GCM is a concatenation of a fixed per-connection IV (4 bytes, derived at the same time as the key) and an explicit per-record nonce (8 bytes, sent on the wire).</p>
 	<p>Since <a href="https://en.wikipedia.org/wiki/Birthday_problem" target="_blank">8 random bytes is too short to guarantee uniqueness</a>, 1.2 GCM implementations have to use the sequence number or a counter. If you are thinking "but what sense does it make to use an explicit IV, sent on the wire, which is just the sequence number that both parties know anyway", well... yeah.</p>
 	<p>Implementations not using a counter/sequence-based AES-GCM nonce were found to be indeed vulnerable by the "<a href="https://github.com/nonce-disrespect/nonce-disrespect" target="_blank">Nonce-Disrespecting Adversaries</a>" paper.</p>
 	<h4 id="tls13">TLS 1.3</h4>
@@ -35,7 +35,7 @@
 	<p>TLS 1.3 finally took advantage of the sequential nature of TLS records and removed the free-form explicit IVs. It uses instead a combination of a fixed per-connection IV (derived at the same time as the key) and the sequence number, XORed—not concatenated.</p>
 	<p>This way the entire nonce length is random-looking, nonces can never be reused as the sequence number monotonically increases, and there is no network overhead.</p>
 	<h4 id="chacha20poly1305">ChaCha20-Poly1305</h4>
-	<p>The <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography/">ChaCha20-Poly1305 ciphersuite</a> uses the same "fixed IV XORed with the sequence number" scheme of TLS 1.3 even when used in TLS 1.2</p>
+	<p>The <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography">ChaCha20-Poly1305 ciphersuite</a> uses the same "fixed IV XORed with the sequence number" scheme of TLS 1.3 even when used in TLS 1.2</p>
 	<p>While 1.3 AEADs and 1.2 ChaCha20 use the same nonce scheme, when used in 1.2 ChaCha20 still puts the sequence number, type, version and length in the additional authenticated data. 1.3 makes all those either implicit or part of the encrypted payload.</p>
 	<h3 id="torecap">To recap</h3>
 	<ul>
@@ -51,6 +51,6 @@
 	<p>A repeated nonce often breaks entirely the security properties of the connection. For example, AES-GCM <a href="https://github.com/nonce-disrespect/nonce-disrespect" target="_blank">leaks the authentication key altogether</a>, allowing an attacker to fake packets and inject data.</p>
 	<p>As part of the trend of making cryptography primitives less dangerous to use for implementers, the research is focusing on mitigating the adverse consequences of nonce reuse. The property of these new schemes is called <a href="https://www.lvh.io/posts/nonce-misuse-resistance-101.html" target="_blank">Nonce Reuse Resistance</a>.</p>
 	<p>However, they still have to see wider adoption and standardization, which is why a solid protocol design like the one in TLS 1.3 is critical to prevent this class of attacks.</p>
-	<p><em>Does painting overviews of technical topics like this sound satisfying to you? <a href="https://www.cloudflare.com/join-our-team/" target="_blank">We are hiring in London, Austin (TX), Champaign (IL), San Francisco and Singapore</a>!</em></p>
+	<p><em>Does painting overviews of technical topics like this sound satisfying to you? <a href="https://www.cloudflare.com/join-our-team" target="_blank">We are hiring in London, Austin (TX), Champaign (IL), San Francisco and Singapore</a>!</em></p>
 	<!--kg-card-end: markdown-->
 </div>

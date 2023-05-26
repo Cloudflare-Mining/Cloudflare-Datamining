@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<p>Hoy <a href="https://blog.cloudflare.com/spectrum/">presentamos Spectrum:</a>una nueva función de Cloudflare que brinda protección contra ataques DDoS, equilibrio de carga y aceleración de contenido a cualquier protocolo de control de transmisión (TCP).</p>
+	<p>Hoy <a href="https://blog.cloudflare.com/spectrum">presentamos Spectrum:</a>una nueva función de Cloudflare que brinda protección contra ataques DDoS, equilibrio de carga y aceleración de contenido a cualquier protocolo de control de transmisión (TCP).</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image2--1--2.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank">Imagen</a> de <a href="https://www.flickr.com/photos/liftarn" target="_blank">Staffan Vilcans</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank">Imagen</a> de <a href="https://www.flickr.com/photos/liftarn" target="_blank">Staffan Vilcans</a></figcaption>
 	</figure>
 	<p>Apenas empezamos a desarrollar Spectrum, nos topamos con un serio obstáculo técnico: Spectrum exige que aceptemos conexiones en cualquier puerto TCP válido, de 1 a 65535. En nuestros servidores perimetrales Linux es imposible “aceptar conexiones entrantes en <em>ningún </em>número de puerto”. Esta no es una limitación específica de Linux: es una característica de la interfaz de programación de aplicaciones (API) de los <em>socket </em>de BSD, lo esencial para las aplicaciones de red en la mayoría de los sistemas operativos. Debíamos resolver dos problemas subyacentes que se superponen para ofrecer Spectrum:</p>
 	<ul>
@@ -10,7 +10,7 @@
 	</ul>
 	<h3 id="asignaci-n-de-millones-de-ip-a-un-servidor"><strong>Asignación de millones de IP a un servidor</strong></h3>
 	<p>Los servidores perimetrales de Cloudflare tienen una configuración casi idéntica. En nuestros comienzos, solíamos asignar direcciones IP /32 (y /128) específicas para la interfaz de red de bucle invertido<a href="https://blog.cloudflare.com/how-we-built-spectrum/#fn1">[1]</a>. Esto funcionaba bien cuando teníamos solo algunas docenas de direcciones IP, pero no se pudo adaptar a medida que fuimos creciendo.</p>
-	<p>Luego apareció el <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine/" target="_blank">truco “AnyIP”</a>. AnyIP nos permite asignar prefijos IP enteros (subredes) a la interfaz de bucle invertido, expandiéndose desde direcciones IP específicas. Ya existe un uso común de AnyIP: su computadora tiene 127.0.0.0/8 asignado a la interfaz de bucle invertido. Desde el punto de vista de su equipo, todas las direcciones IP de 127.0.0.1 a 127.255.255.254 corresponden a la máquina local.</p>
+	<p>Luego apareció el <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine" target="_blank">truco “AnyIP”</a>. AnyIP nos permite asignar prefijos IP enteros (subredes) a la interfaz de bucle invertido, expandiéndose desde direcciones IP específicas. Ya existe un uso común de AnyIP: su computadora tiene 127.0.0.0/8 asignado a la interfaz de bucle invertido. Desde el punto de vista de su equipo, todas las direcciones IP de 127.0.0.1 a 127.255.255.254 corresponden a la máquina local.</p>
 	<p>Este truco es aplicable más allá del bloque 127.0.0.1/8. Para considerar todo el rango de 192.0.2.0/24 como asignado a nivel local, ejecute:</p>
 	<p><code>ip route add local 192.0.2.0/24 dev lo</code></p>
 	<p>Luego, puede enlazar sin problemas al puerto 8080 en una de estas direcciones IP:</p>
@@ -30,14 +30,14 @@
 	<p>El segundo problema serio es la capacidad de abrir <em>sockets </em>TCP para cualquier número de puerto. En Linux, y por lo general en cualquier sistema compatible con la API de <em>sockets </em>de BSD, solo puede enlazar a un número de puerto TCP específico con una sola llamada al sistema de enlace. No es posible establecer un enlace a varios puertos en una sola operación.</p>
 	<p>Una solución obvia sería establecer 65535 enlaces, uno para cada uno de los 65535 puertos posibles. En realidad, esta podría haber sido una opción, pero con consecuencias terribles:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/revenge-listening-sockets/">La venganza de los <em>sockets </em>de escucha o de servidor</a></li>
+		<li><a href="https://blog.cloudflare.com/revenge-listening-sockets">La venganza de los <em>sockets </em>de escucha o de servidor</a></li>
 	</ul>
 	<p>Internamente, el núcleo Linux almacena <em>sockets </em>de escucha en una tabla <em>hash </em>indexada por números de puerto, <a href="https://elixir.bootlin.com/linux/latest/source/include/net/inet_hashtables.h#L118" target="_blank">LHTABLE</a>, utilizando exactamente 32 cubos:</p>
 	<pre><code>/* Yes, really, this is all you need. */
 #define INET_LHTABLE_SIZE       32</code></pre>
 	<p>Si hubiéramos abierto puertos de 65k, las búsquedas en esta tabla se desacelerarían considerablemente: cada cubo de la tabla <em>hash </em>contendría dos mil elementos.</p>
 	<p>Otra manera de resolver nuestro problema sería utilizar las características de NAT enriquecidas de iptables: podríamos reescribir el destino de los paquetes entrantes en alguna dirección/puerto específico, y nuestra aplicación se enlazaría a eso.</p>
-	<p>Sin embargo, no queríamos hacer esto, ya que para ello se debe activar el módulo conntrack de iptables. Históricamente encontramos algunos <a href="http://patchwork.ozlabs.org/cover/810566/" target="_blank">casos de rendimiento avanzado</a>, y conntrack no puede hacer frente a algunos de los ataques grandes de DDoS a los que nos enfrentamos.</p>
+	<p>Sin embargo, no queríamos hacer esto, ya que para ello se debe activar el módulo conntrack de iptables. Históricamente encontramos algunos <a href="http://patchwork.ozlabs.org/cover/810566" target="_blank">casos de rendimiento avanzado</a>, y conntrack no puede hacer frente a algunos de los ataques grandes de DDoS a los que nos enfrentamos.</p>
 	<p>Además, con el enfoque de NAT perderíamos la información de la dirección IP de destino. Para corregir este inconveniente, hay una opción de socket poco conocida SO_ORIGINAL_DST, pero <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank">el código no parece muy alentador</a>.</p>
 	<p>Afortunadamente, tenemos una manera de lograr nuestros objetivos que no implica el establecimiento de un enlace a todos los puertos de 65k, o la utilización de conntrack.</p>
 	<h3 id="firewall-al-rescate"><strong>Firewall al rescate</strong></h3>
@@ -83,7 +83,7 @@ advanced routing rules. </code></pre>
 	<p>Esta línea asigna un una estructura struct sock de socket a un paquete entrante y completa el envío.</p>
 	<h3 id="sacar-el-conejo-de-la-galera"><strong>Sacar el conejo de la galera</strong></h3>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image4--1-.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank">Imagen</a> de <a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank">Angela Boothroyd</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank">Imagen</a> de <a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank">Angela Boothroyd</a></figcaption>
 	</figure>
 	<p>Armado con TPROXY, podemos hacer fácilmente el truco de enlace a todos los puertos. Esta es la configuración:</p>
 	<pre><code># Set 192.0.2.0/24 to be routed locally with AnyIP.

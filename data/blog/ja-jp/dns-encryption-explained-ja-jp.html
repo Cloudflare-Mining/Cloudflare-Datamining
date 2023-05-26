@@ -7,7 +7,7 @@
 		<figcaption>DNSクエリと応答の概要</figcaption>
 	</figure>
 	<h2 id="-dns-"><strong>外部DNSリゾルバー</strong></h2>
-	<p>オペレーティングシステムは通常、Dynamic Host Configuration Protocol (DHCP) を使用してローカル ネットワークからリゾルバーのアドレスを取得します。ホームネットワークおよびモバイルネットワークでは、通常、インターネットサービスプロバイダー（ISP）のリゾルバーを使用することになります。企業ネットワークでは、リゾルバーの選択は通常、ネットワーク管理者の管理下にあります。必要であれば、そのデバイスを制御できるユーザーは、特定のアドレス、例えばGoogle の 8.8.8.8 や <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1/">Cloudflare の 1.1.1.1</a>などのパブリックリゾルバーアドレスにオーバーライドすることができますが、ほとんどのユーザーは、コーヒーショップや空港で公共の Wi-Fi ホットスポットに接続する際に、リゾルバーを変更する手間をかけることはありません。</p>
+	<p>オペレーティングシステムは通常、Dynamic Host Configuration Protocol (DHCP) を使用してローカル ネットワークからリゾルバーのアドレスを取得します。ホームネットワークおよびモバイルネットワークでは、通常、インターネットサービスプロバイダー（ISP）のリゾルバーを使用することになります。企業ネットワークでは、リゾルバーの選択は通常、ネットワーク管理者の管理下にあります。必要であれば、そのデバイスを制御できるユーザーは、特定のアドレス、例えばGoogle の 8.8.8.8 や <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">Cloudflare の 1.1.1.1</a>などのパブリックリゾルバーアドレスにオーバーライドすることができますが、ほとんどのユーザーは、コーヒーショップや空港で公共の Wi-Fi ホットスポットに接続する際に、リゾルバーを変更する手間をかけることはありません。</p>
 	<p>外部リゾルバーの選択は、エンドユーザーのエクスペリエンスに直接影響を与えます。ほとんどのユーザーはリゾルバーの設定を変更せず、ネットワークプロバイダーのDNSリゾルバーを使用しています。その相違が最も顕著で明白に現れるプロパティは、名前の変換の速度と精度です。プライバシーやセキュリティを向上する機能は、直ちに目には見えない場合があるでしょうが、他のユーザーがブラウジングアクティビティをプロファイリングしたり妨害したりすることを防御するのに役立っています。このことは、物理的に近接する誰もがワイヤレスネットワークトラフィックを捕捉したり復号化し得る公共Wi-Fiネットワークにおいては特に重要です。</p>
 	<h2 id="-dns"><strong>未暗号化状態のDNS</strong></h2>
 	<p>DNSは1987年に作成されて以来、ほとんどの場合未暗号化状態にありました。デバイスとリゾルバーの間に存在するあらゆる任意の人は、DNSクエリや応答をスヌープしたり、改ざんすることも可能です。これには、ローカルWi-Fiネットワーク内の任意の人、インターネットサービスプロバイダー（ISP）、トランジットプロバイダーが含まれます。その結果、あなたがアクセスしているドメイン名があばかれ、プライバシーが侵害される可能性が生じます。</p>
@@ -46,7 +46,7 @@
 		<li>現状：DNS（tcp/53 または udp/53） -&gt; DoT（tcp/853）</li>
 	</ul>
 	<p>新しいポートを導入する際の問題は、既存のファイアウォールがそれをブロックする可能性があることです。その理由は、新しいサービスを明示的に有効にするホワイトリストアプローチを採用しているか、あるいはネットワーク管理者がサービスを明示的にブロックするブロックリストアプローチを採用しているためです。高セキュリティオプション（DoT）が低セキュリティオプションに比較し導入される可能性が低い場合、ユーザーあるいはアプリケーションは未暗号化状態のDNSにフォールバックすることを選択する可能性があります。するとこれに引き続き、攻撃者はユーザーを低セキュリティバージョンに強制的に誘導する可能性が生じます。</p>
-	<p>ただし、このようなフォールバック攻撃はあまり理にかなっているとはいえません。最近ではHTTPSウェブサイトをHTTPにダウングレードする<a href="https://blog.cloudflare.com/performing-preventing-ssl-stripping-a-plain-english-primer/">SSL ストリッピング</a>が使用されつつあります。これは攻撃者がパスワードを盗んだり、アカウントをハイジャックすることを可能にします。</p>
+	<p>ただし、このようなフォールバック攻撃はあまり理にかなっているとはいえません。最近ではHTTPSウェブサイトをHTTPにダウングレードする<a href="https://blog.cloudflare.com/performing-preventing-ssl-stripping-a-plain-english-primer">SSL ストリッピング</a>が使用されつつあります。これは攻撃者がパスワードを盗んだり、アカウントをハイジャックすることを可能にします。</p>
 	<p>もう1つのアプローチであるDNS Queries over HTTPS（DoH）は、次の2つの主要なユースケースをサポートするように<a href="https://tools.ietf.org/html/rfc8484#section-1" target="_blank">設計</a>されています。</p>
 	<ul>
 		<li>オンパスデバイスがDNSと干渉を起こす上記の問題を回避する。これには、上記のポートブロックの問題が含まれます。</li>
@@ -56,7 +56,7 @@
 		<figcaption>DoH：高いセキュリティで保護されたHTTPSストリームを介して転送されるDNSクエリと応答</figcaption>
 	</figure>
 	<p>一部のユーザーは、HTTPS の使用は、それが追跡目的でCookieを使用する可能性があることから、プライバシー保護を弱める可能性があると懸念しています。DoH プロトコルの設計者は、さまざまなプライバシー問題を<a href="https://tools.ietf.org/html/rfc8484#section-8" target="_blank">考慮</a>し、特にトラッキングを避けるためにHTTPクッキーの使用を明示的に非推奨としています。そのことは広く市場から受け入れられています。TLSセッションの再開により、TLS 1.2のハンドシェイクパフォーマンスは向上しました。しかし同時にTLS接続の関連付けに使用される可能性が生じました。幸いにも、TLS 1.3を使用することで、デフォルトでラウンド トリップの数が減ったことにより、関連するプライバシー懸念事項に効果的に対処することが可能となり、TLSセッション再開の必要性を排除することができました。</p>
-	<p>さらに、HTTPSを使用することによりHTTP ロトコルが改善され、そのことがDoHにメリットをもたらす可能性があります。たとえば、開発中の <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/">HTTP/3 プロトコル</a>は、<a href="https://blog.cloudflare.com/the-road-to-quic/">QUIC</a>の上に構築されており、ヘッドオブラインブロックがないために、パケットロスが発生した際のパフォーマンス低下問題を改善する可能性があります。つまり、1つのパケットが失われたときに互いをブロックすることなく、セキュリティで保護されたチャネルを介して複数のDNSクエリを同時に送信することが可能となるのです。</p>
+	<p>さらに、HTTPSを使用することによりHTTP ロトコルが改善され、そのことがDoHにメリットをもたらす可能性があります。たとえば、開発中の <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">HTTP/3 プロトコル</a>は、<a href="https://blog.cloudflare.com/the-road-to-quic">QUIC</a>の上に構築されており、ヘッドオブラインブロックがないために、パケットロスが発生した際のパフォーマンス低下問題を改善する可能性があります。つまり、1つのパケットが失われたときに互いをブロックすることなく、セキュリティで保護されたチャネルを介して複数のDNSクエリを同時に送信することが可能となるのです。</p>
 	<p>また、DNS over QUIC（DNS/QUIC）の<a href="https://tools.ietf.org/html/draft-huitema-quic-dnsoquic" target="_blank">ドラフト</a>も存在します。それは DoT に類似しますが、QUIC の使用によるヘッドオブラインブロックの問題は生じません。ただし、HTTP/3とDNS/QUICの両者は共にアクセス可能なUDPポートを必要とします。理論的には、どちらもそれぞれDoH over HTTP/2かDoTにフォールバックする可能性があります。</p>
 	<h2 id="dot-doh-"><strong>DoTとDoHの展開</strong></h2>
 	<p>DoTとDoHはどちらも比較的新技術であり、まだ汎用化に至っていません。サーバー側では、Cloudflareの1.1.1.1やGoogle DNSなどの主要なパブリックリゾルバーがサポートしています。しかしながら、多くの ISP リゾルバーは未だサポートを提供していません。DoHをサポートするパブリックリゾルバーの一覧表は、<a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/DNS-server-sources" target="_blank">DNSサーバーソース</a>を参照してください。DoTとDoHをサポートする別のパブリックリゾルバーの一覧表は<a href="https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Public+Resolvers" target="_blank">DNSプライバシーパブリックリゾルバー</a>を参照してください。</p>
@@ -75,7 +75,7 @@
 	<ul>
 		<li>Android 9：自身の「プライベートDNS」機能を介してDoTを<a href="https://android-developers.googleblog.com/2018/04/dns-over-tls-support-in-android-p.html" target="_blank">サポート</a>しています。モード：</li>
 		<li>デフォルトで、適時モード（"自動"）が使用されています。ネットワーク設定（通常は DHCP）からのリゾルバーが使用されています。</li>
-		<li>厳密モードは、明示的なホスト名を設定することにより<a href="https://blog.cloudflare.com/enable-private-dns-with-1-1-1-1-on-android-9-pie/">構成</a>が可能です。IP アドレスは許可されず、ホスト名はデフォルトのリゾルバーを使用して変換され、またそれは証明書の検証にも使用されます。（<a href="https://github.com/aosp-mirror/platform_frameworks_base/commit/a24d459a5d60c706472f9b620d079cd0a40a7279" target="_blank">関連するソース コード</a>）</li>
+		<li>厳密モードは、明示的なホスト名を設定することにより<a href="https://blog.cloudflare.com/enable-private-dns-with-1-1-1-1-on-android-9-pie">構成</a>が可能です。IP アドレスは許可されず、ホスト名はデフォルトのリゾルバーを使用して変換され、またそれは証明書の検証にも使用されます。（<a href="https://github.com/aosp-mirror/platform_frameworks_base/commit/a24d459a5d60c706472f9b620d079cd0a40a7279" target="_blank">関連するソース コード</a>）</li>
 		<li>また、iOSおよびAndroidユーザーは、<a href="https://1.1.1.1" target="_blank">1.1.1.1 アプリ</a>をインストールし、厳密モードでDoHまたはDoTのサポートを有効にすることもできる。内部的には、セキュリティで保護されたチャネルを介して転送される前に、 VPNプログラミング インターフェイスを使用し、未暗号化状態のDNSトラフィックの傍受を有効にする。</li>
 		<li>systemd 239によりsystemd変換されたLinux：<a href="https://www.freedesktop.org/software/systemd/man/resolved.conf.html#DNSOverTLS=" target="_blank">DNSOverTLS</a>オプション経由のDoT。</li>
 		<li>デフォルトはオフです。</li>
@@ -94,7 +94,7 @@
 		<li>Opera 65では、Cloudflareの1.1.1.1リゾルバーを介したDoHの有効化がオプションとして<a href="https://blogs.opera.com/desktop/2019/09/opera-65-0-3430-0-developer-update" target="_blank">追加</a>されています。この機能はデフォルトではオフとなっています。これを有効化したとき、適時モード1.1.1.1:443（SNIなし）が使用可能な場合は、適時モードが使用されます。それ以外の場合は、デフォルトリゾルバーである未暗号化状態にフォールバックします。</li>
 	</ul>
 	<p>カールプロジェクトの<a href="https://github.com/curl/curl/wiki/DNS-over-HTTPS" target="_blank">DNS over HTTPS</a>ページで、DoHプロバイダーと追加実装の包括的一覧を参照できます。</p>
-	<p>デバイスと外部DNSリゾルバー間のネットワーク パスを完全に暗号化する方法の代替策として、次のような中間的方策を取ることが可能です。つまり、デバイスとローカルネットワークゲートウェイの間に未暗号化状態のDNSを使用しつつ、ゲートウェイ ルーターと外部DNSリゾルバー間の<a href="https://blog.cloudflare.com/dns-over-tls-built-in/">すべてのDNSトラフィックを暗号化する</a>という方法です。セキュリティで保護された有線または無線ネットワークの場合、この方法はローカル ネットワーク内のすべてのデバイスをスヌーパーISPやその他のインターネット上の敵対者から保護することを可能にします。公共のWi-Fiホットスポットは安全とは見なされないため、この方法はオープンなWi-Fiネットワークでは安全とは言えません。WPA2-PSKでパスワード保護されている場合でも、依然として他者が未暗号化状態のDNSをスヌープして改ざんすることが可能です。</p>
+	<p>デバイスと外部DNSリゾルバー間のネットワーク パスを完全に暗号化する方法の代替策として、次のような中間的方策を取ることが可能です。つまり、デバイスとローカルネットワークゲートウェイの間に未暗号化状態のDNSを使用しつつ、ゲートウェイ ルーターと外部DNSリゾルバー間の<a href="https://blog.cloudflare.com/dns-over-tls-built-in">すべてのDNSトラフィックを暗号化する</a>という方法です。セキュリティで保護された有線または無線ネットワークの場合、この方法はローカル ネットワーク内のすべてのデバイスをスヌーパーISPやその他のインターネット上の敵対者から保護することを可能にします。公共のWi-Fiホットスポットは安全とは見なされないため、この方法はオープンなWi-Fiネットワークでは安全とは言えません。WPA2-PSKでパスワード保護されている場合でも、依然として他者が未暗号化状態のDNSをスヌープして改ざんすることが可能です。</p>
 	<h2 id="-"><strong>その他のセキュリティに関する考慮事項</strong></h2>
 	<p>前のセクションでは、セキュリティで保護されたDNSトランスポート、DoH、およびDoTについて説明しました。これらの方法によってのみ、クライアントがDNSリゾルバーから改ざんされていない応答を受け取ることを保証できます。しかしながらこれらの方法は、リゾルバーが不正な応答（DNSハイジャック攻撃やDNSキャッシュポイゾニング攻撃を介した応答）をした際に防御することはできません。「真実」の応答は、権限のあるネームサーバーの報告により、ドメインまたはゾーンの所有者によって決定されます。<a href="https://www.cloudflare.com/learning/dns/dns-security" target="_blank">DNSSEC</a>により、クライアントは返ってきたDNS応答の整合性を確認することができ、また、クライアントと権限のあるネームサーバー間のパスで生じた不正な改ざんを発見することができます。</p>
 	<p>しかしながらDNSSECの導入は、ミドルボックスが<a href="https://labs.ripe.net/Members/willem_toorop/sunrise-dns-over-tls-sunset-dnssec" target="_blank">誤って</a>DNSメッセージを転送することで妨害されることがあります。そしてさらに、情報が使用可能であったとしても、アプリケーションが使用しているスタブリゾルバーがその結果を検証すらしない場合もあります。2016年の<a href="https://www.internetsociety.org/resources/doc/2016/state-of-dnssec-deployment-2016" target="_blank">報告書</a>によると、DNSSEC検証リゾルバーを使用しているユーザーは 26% に過ぎませんでした。</p>
@@ -118,6 +118,6 @@
 	<p>技術的な観点から評価すると、DoHはHTTPSに非常に類似しており、<a href="https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http" target="_blank">セキュリティを尊重しないオプションが廃止に向かう</a>一般的な業界傾向を踏襲しています。DoTはHTTP層を削除していることから、DoHと比較してより単純なトランスポートモードと言えます。しかしながら、だからこそ故意または事故によりブロックされ易い傾向にあります。</p>
 	<p>高いセキュリティで保護されたトランスポートを実現するための2次的要素は、DNSリゾルバーの選択にあります。一部のベンダーは、ローカルに構成されたDNSリゾルバーを使用しますが、未暗号化状態のトランスポートをより安全なトランスポート（DoTまたはDoH）に適時にアップグレードする方式を試行しています。しかしながら残念なことに、多くの場合安全なトランスポートをサポートしないISPが提供するDNSリゾルバーにデフォルト設定されているのが現状です。</p>
 	<p>Mozillaは異なるアプローチを採用しています。DoHすらサポートしていない可能性があるローカルリゾルバーに依存するのではなく、ユーザーが明示的にリゾルバーを選択できるようにしています。Mozilla が推奨するリゾルバーは、ユーザーのプライバシーを保護するための<a href="https://wiki.mozilla.org/Security/DOH-resolver-policy" target="_blank">高い基準</a>を満たすことが要求されています。DNSに基づく保護者管理制御機能の継続を確保し、かつスプリットホライズンユースケースをサポートするために、MozillaはプライベートリゾルバーがDoHを無効化できるメカニズムを<a href="https://support.mozilla.org/en-US/kb/configuring-networks-disable-dns-over-https" target="_blank">追加</a>しました。</p>
-	<p>DoTおよびDoHトランスポートプロトコルにより、私たちはより安全なインターネットに移行する準備を整えました。前述のパケットトレースで見られるように、これらのプロトコルは、アプリケーショントラフィックをセキュリティで保護する既存のメカニズムに類似しています。このセキュリティとプライバシーの課題が解決を見たとき、そこには<a href="https://arxiv.org/pdf/1906.09682.pdf" target="_blank">より</a><a href="https://blog.cloudflare.com/esni/">多くの</a>が取り組むべき課題が出現することでしょう。</p>
+	<p>DoTおよびDoHトランスポートプロトコルにより、私たちはより安全なインターネットに移行する準備を整えました。前述のパケットトレースで見られるように、これらのプロトコルは、アプリケーショントラフィックをセキュリティで保護する既存のメカニズムに類似しています。このセキュリティとプライバシーの課題が解決を見たとき、そこには<a href="https://arxiv.org/pdf/1906.09682.pdf" target="_blank">より</a><a href="https://blog.cloudflare.com/esni">多くの</a>が取り組むべき課題が出現することでしょう。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/tales-from-the-crypto-team@2x-5.png" class="kg-image" alt="" loading="lazy"></figure>
 </div>

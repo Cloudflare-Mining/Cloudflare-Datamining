@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<p>9年ほど前のCloudflareは小さな会社で、当時私は一顧客であり従業員ではありませんでした。Cloudflareがひと月前に設立されたという時期のある日、私は自分の小さなサイト、<a href="https://jgc.org/" target="_blank">jgc.org</a>のDNSが動作していないという警告を受け取りました。そしてCloudflareは<a href="https://developers.google.com/protocol-buffers/" target="_blank">Protocol Buffers</a>の使用に変更を加えた上でDNSを切断したのです。</p>
+	<p>9年ほど前のCloudflareは小さな会社で、当時私は一顧客であり従業員ではありませんでした。Cloudflareがひと月前に設立されたという時期のある日、私は自分の小さなサイト、<a href="https://jgc.org" target="_blank">jgc.org</a>のDNSが動作していないという警告を受け取りました。そしてCloudflareは<a href="https://developers.google.com/protocol-buffers" target="_blank">Protocol Buffers</a>の使用に変更を加えた上でDNSを切断したのです。</p>
 	<p>私は「私のDNSはどうなったのでしょうか？」という件名のメールを直接Matthew Prince宛に出しました。すると彼は長文かつ詳細な返信をくれたのです。（<a href="https://gist.github.com/jgrahamc/6bb02a6f7c3799a1590b3cdb901f8e08" target="_blank">メールのやり取りの全文はこちら</a>からご覧いただけます）。下記は私のそのメールに対する返信です。</p><!--kg-card-begin: markdown-->
 	<pre><code>From: John Graham-Cumming
 日時：2010/10/7（木）9:14 AM
@@ -35,7 +35,7 @@ To: John Graham-Cumming
 	<!--kg-card-end: markdown-->
 	<p>今日、当時より遥かに大規模になったCloudflareの社員として、私は当社が犯した過ちとその影響、対応内容について明らかにします。</p>
 	<h3 id="7-2-">7月2日の件について</h3>
-	<p>7月2日、CloudflareはWAFマネージドルールに新規ルールを追加したのですが、これが世界中のCloudflareネットワーク上にあるHTTP/HTTPSトラフィックを扱う各CPUコアの<a href="https://blog.cloudflare.com/cloudflare-outage/">CPU枯渇</a>を引き起こしました。Cloudflareでは新たな脆弱性や脅威に対応するため、継続的にWAFマネージドルールを改善しています。たとえば5月には、WAFの更新速度を活用して深刻なSharePointの脆弱性に対する保護を行うための<a href="https://blog.cloudflare.com/stopping-cve-2019-0604/">ルールを追加</a>しました。迅速かつグローバルにルールをリリースできることはCloudflareのWAFにとって重要な機能です。</p>
+	<p>7月2日、CloudflareはWAFマネージドルールに新規ルールを追加したのですが、これが世界中のCloudflareネットワーク上にあるHTTP/HTTPSトラフィックを扱う各CPUコアの<a href="https://blog.cloudflare.com/cloudflare-outage">CPU枯渇</a>を引き起こしました。Cloudflareでは新たな脆弱性や脅威に対応するため、継続的にWAFマネージドルールを改善しています。たとえば5月には、WAFの更新速度を活用して深刻なSharePointの脆弱性に対する保護を行うための<a href="https://blog.cloudflare.com/stopping-cve-2019-0604">ルールを追加</a>しました。迅速かつグローバルにルールをリリースできることはCloudflareのWAFにとって重要な機能です。</p>
 	<p>しかし残念ながら、先週の火曜日に行った更新に莫大なバックトラックを行いHTTP/HTTPS配信用のCPUを枯渇させるような正規表現が含まれてしまい、これによりCloudflareのコアプロキシ、CDN、WAF機能のダウンに繋がる結果となりました。次のグラフはHTTP/HTTPSトラフィックの配信を専門に行うCPUがCloudflareネットワーク内のサーバー全体で100%に近い使用量まで急上昇したことを示しています。</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/cpu-goes-boom.png" class="kg-image" alt="" loading="lazy">
@@ -47,12 +47,12 @@ To: John Graham-Cumming
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/502-bad-gateway.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>Cloudflareは本件がお客様に与えた損害について認識しており、誠に忸怩たる思いでおります。本インシデントの対応中ではありますが、Cloudflareの運営自体にも悪影響が及んでおります。</p>
-	<p>また、お客様におかれましては、多大なストレス、不満、不安を感じられたことと存じます。6年間<a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515/">グローバルな停止</a>がなかったこともあり、動揺はことさら大きいものでした。</p>
+	<p>また、お客様におかれましては、多大なストレス、不満、不安を感じられたことと存じます。6年間<a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">グローバルな停止</a>がなかったこともあり、動揺はことさら大きいものでした。</p>
 	<p>CPUが枯渇した原因は、過剰にバックトラッキングを発生させる不完全な正規表現を記載した1つのWAFルールによるものでした。停止の核心となった正規表現は次の通りです。<code>(?:(?:\"|'|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))</code> </p>
 	<p>多くの方が正規表現そのものに対して関心を抱いておりますが（これについては後ほど詳述します）、Cloudflareのサービスが27分間ダウンしたという実際の出来事は「正規表現の失敗」よりもはるかに複雑なものでした。以降、停止を引き起こし我々の迅速な対応を阻んだ一連の出来事を時系列で説明いたします。正規表現のバックトラッキングやその対応方法について詳しく確認したい場合は、本記事の最後に記載した付録をご覧ください。</p>
 	<h3 id="-">発生内容</h3>
 	<p>まず本件の流れをご説明します。本記事内に記載する時間は全て協定世界時（UTC）表記です。</p>
-	<p>13時42分、ファイアウォールチームに所属する1名のエンジニアが自動プロセスで<a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting/" target="_blank">XSS</a>を検出するためのルールに対する小さな変更をリリースしました。そして、これに対する変更申請チケットが作成されました。Cloudflareではこのようなチケットの管理にJiraを使用しておりますが、以下はそのスクリーンショットです。</p>
+	<p>13時42分、ファイアウォールチームに所属する1名のエンジニアが自動プロセスで<a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting" target="_blank">XSS</a>を検出するためのルールに対する小さな変更をリリースしました。そして、これに対する変更申請チケットが作成されました。Cloudflareではこのようなチケットの管理にJiraを使用しておりますが、以下はそのスクリーンショットです。</p>
 	<p>3分後、1つ目のPagerDutyページがWAFの異常を表示して停止しました。これはCloudflare外からWAFの機能を確認する模擬テストで（このようなテストは数百とあります）、正常動作を確認するためのものでした。そしてすぐにCloudflareサービスのエンドツーエンドテストの失敗、グローバルなトラフィック低下アラート、502エラーの蔓延がページに表示され、世界各都市のPoint of Presence（PoP）からCPU枯渇に関する報告を多数受けました。</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/pager-duty-1345.png" class="kg-image" alt="" loading="lazy"></figure>
@@ -66,7 +66,7 @@ To: John Graham-Cumming
 	<p>CloudflareのSREチームは世界中に配置されており、24時間体制で継続的に対応を行っています。このようなアラート（アラートの大部分が特定の地域の制限された範囲における非常に具体的な問題に言及しているようなもの）は内部のダッシュボードで監視されており、毎日幾度となく対応が行われています。しかしながらこのパターンのページやアラートは非常に深刻な何かが発生しているということを示していたため、SREはすぐにP0インシデントを宣言してエンジニアリーダーおよびシステムエンジニアリングへエスカレーションを行いました。</p>
 	<p>ロンドンのエンジニアリングチームはその時Cloudflareのメインイベントスペースで内部のTechTalkを聞いているところだったのですが、それを中断して全員が大会議室に集まり他の社員も電話接続しました。これはSREが単独で処理できるような通常の問題ではなく、各関連チームがオンラインで一同に会す必要があったのです。</p>
 	<p>14時00分、WAFが問題の原因コンポーネントであることを特定し、攻撃が原因である可能性は却下されました。パフォーマンスチームはマシンから稼働中のCPUデータを取得し、WAFが原因であることを明示しました。他のチームのメンバーがstraceで確認を行い、また別のチームはWAFが問題を起こしているという記載があるエラーログを発見しました。14時02分、私は全チームに対して「global kill」を行う提案をしました。これはCloudflareに組み込まれた仕組みで、世界中の単一コンポーネントを無効とするものです。</p>
-	<p>しかしWAFに対するglobal killの実行も簡単にはいきませんでした。また問題が現れたのです。Cloudflareでは自社製品を使用しているため、<a href="https://www.cloudflare.com/en-gb/products/cloudflare-access/" target="_blank">Access</a>サービスがダウンすると内部のコントロールパネルで認証することができないのです（復旧後、内部コントロールパネルをあまり使用していないメンバーはセキュリティ機能により資格情報が無効になったためアクセスできなくなっていることがわかりました）。</p>
+	<p>しかしWAFに対するglobal killの実行も簡単にはいきませんでした。また問題が現れたのです。Cloudflareでは自社製品を使用しているため、<a href="https://www.cloudflare.com/en-gb/products/cloudflare-access" target="_blank">Access</a>サービスがダウンすると内部のコントロールパネルで認証することができないのです（復旧後、内部コントロールパネルをあまり使用していないメンバーはセキュリティ機能により資格情報が無効になったためアクセスできなくなっていることがわかりました）。</p>
 	<p>さらにJiraやビルドシステムのような他の内部サービスも利用できなくなりました。利用できるようにするにはあまり使っていないバイパスの仕組みを使う必要がありました（これも本件の後で検討すべき項目です）。最終的にチームメンバーがWAFのglobal killを14時07分に実行し、14時09分までに世界中のトラフィックレベルおよびCPUが想定状態にまで戻りました。その他のCloudflareの保護の仕組みは継続して運用できています。</p>
 	<p>その後我々はWAF機能の復旧に取り掛かりました。微妙な状況だったこともあり、Cloudflareの有料プランのお客様のトラフィックを退避した後で一部のトラフィックを使って1つの都市内で異常系テスト（「この変更が本当に本件の原因なのか」を確認するもの）も正常系テスト（ロールバックの動作検証）も両方実施しました。</p>
 	<p>14時52分、原因の把握および適切な箇所への修正を行ったということに100%の確信を持てたため、WAFをグローバルに再度有効化しました。</p>
@@ -89,14 +89,14 @@ To: John Graham-Cumming
 	<p></p>
 	<p>カナリアで正常に動作すると、コードの公開ができるようになります。DOG、PIG、カナリア、グローバル手順の完了には、コード変更の種類にもよりますが数時間から数日ほどかかります。Cloudflareのネットワークやお客様が多様であるおかげで、Cloudflareではリリース内容を世界中の全てのお客様に公開する前に徹底的にコードをテストすることができるのです。しかし、設計上WAFにはこの手順を採用していません。それは脅威に迅速に対応する必要があるからです。</p>
 	<h3 id="waf-">WAFの脅威</h3>
-	<p>過去数年で一般的なアプリケーションにおける脆弱性は大幅に増加しています。これは、ファジングなどといったソフトウェアテストツールの可用性が増加したためです（ファジングに関する新規ブログ記事は<a href="https://blog.cloudflare.com/a-gentle-introduction-to-linux-kernel-fuzzing/">こちら</a>）。</p>
+	<p>過去数年で一般的なアプリケーションにおける脆弱性は大幅に増加しています。これは、ファジングなどといったソフトウェアテストツールの可用性が増加したためです（ファジングに関する新規ブログ記事は<a href="https://blog.cloudflare.com/a-gentle-introduction-to-linux-kernel-fuzzing">こちら</a>）。</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/Number-of-CVEs-per-year.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>出典：https://cvedetails.com/</figcaption>
 	</figure>
 	<p></p>
 	<p>十分な保護ができているかどうかをアプリケーションの実行や維持を行うチームがテストできるよう、概念実証（PoC）が作成されすぐにGithubに公開されるのをよく見かけます。そのため、お客様がこういったソフトウェアに対してパッチを当てられるよう、新たな攻撃にできるだけ早く対応することがCloudflareにとっては必須なのです。</p>
-	<p>5月にSharePointの脆弱性に対する保護を展開した件はCloudflareが事前にこのような保護を提供できた好例です（<a href="https://blog.cloudflare.com/stopping-cve-2019-0604/">ブログはこちら</a>）。発表の公表から間もなく、Cloudflareはお客様のSharePointインストールを悪用しようとする動きが急増したことを確認しました。Cloudflareチームは日々新たな脅威を監視し、お客様のために脅威を軽減するためのルールを記載しています。</p>
+	<p>5月にSharePointの脆弱性に対する保護を展開した件はCloudflareが事前にこのような保護を提供できた好例です（<a href="https://blog.cloudflare.com/stopping-cve-2019-0604">ブログはこちら</a>）。発表の公表から間もなく、Cloudflareはお客様のSharePointインストールを悪用しようとする動きが急増したことを確認しました。Cloudflareチームは日々新たな脅威を監視し、お客様のために脅威を軽減するためのルールを記載しています。</p>
 	<p>先週の火曜日の停止を引き起こしたルールはクロスサイトスクリプティング（XSS）攻撃を対象としたものでした。この攻撃は近年劇的に増加しているものです。</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/Number-of-XSS-CVEs-by-year.png" class="kg-image" alt="" loading="lazy">
@@ -114,10 +114,10 @@ To: John Graham-Cumming
 	<p></p>
 	<h3 id="quicksilver">Quicksilver</h3>
 	<p>WAFルールは新たな脅威に対応する必要があるため、数秒で世界中に変更を適用することのできるCloudflareの分散型Key-Value Store（KVS）、Quicksilverを使用してリリースしています。この技術はCloudflareのダッシュボード内やAPI経由での設定変更時にCloudflareの全てのお客様が使用しているもので、Cloudflareが変更に対して非常に迅速に処理できる理由でもあります。</p>
-	<p>Quicksilverについてはこれまであまり言及したことがありませんでした。以前Cloudflareでは<a href="https://fallabs.com/kyototycoon/" target="_blank">Kyoto Tycoon</a>を分散型Key-Value Storeとしてグローバルに採用しておりましたが、運用上の問題が発生したため独自KVSを構築して180以上の都市に複製していました。Quicksilverはお客様の設定に変更を加えたり、WAFルールを更新したり、Cloudflare Workersを使用して書いたJavaScriptコードを配信したりするための手段です。</p>
+	<p>Quicksilverについてはこれまであまり言及したことがありませんでした。以前Cloudflareでは<a href="https://fallabs.com/kyototycoon" target="_blank">Kyoto Tycoon</a>を分散型Key-Value Storeとしてグローバルに採用しておりましたが、運用上の問題が発生したため独自KVSを構築して180以上の都市に複製していました。Quicksilverはお客様の設定に変更を加えたり、WAFルールを更新したり、Cloudflare Workersを使用して書いたJavaScriptコードを配信したりするための手段です。</p>
 	<p>ダッシュボードのボタンをクリックまたはAPI呼び出しを行うことで、変更内容は数秒で世界中に適用されます。お客様にはこの高速に実施できる設定を気に入って頂いておりました。Workersを利用するとほぼ瞬時にグローバルなソフトウェアリリースが行えます。平均的ではQuicksilverは1秒あたりおよそ350件の変更を配信します。</p>
 	<p>さらに、Quicksilverは非常に高速です。 平均では2.29秒で世界中のマシンへ1つの変更を配信することができます。通常、このスピードは素晴らしいことです。要するに、機能を有効にしたりキャッシュをパージしたりする際、世界中に一瞬で稼働させられるのです。Cloudflare Workersでコードをプッシュすると、同じ速度でプッシュすることができます。これは必要なときに高速で更新ができるという、Cloudflareのお約束の1つです。</p>
-	<p>しかしながら今回はこのスピードがあることでルール変更が世界中に数秒で適用されたということを意味します。また、WAFコードにLuaを採用していることにお気づきの方もいるかもしれません。Cloudflareの製品には広くLuaを採用しておりますが、<a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua/">WAFのLua</a>に関する詳細は<a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">以前ご説明</a>した通りです。WAFのLuaでは内部的に<a href="https://www.pcre.org/" target="_blank">PCRE</a>を利用しているのですが、このPCREがマッチングにバックトラッキングを採用しており正規表現の暴走から保護する手段がありません。これに関する詳細や対策を以下に説明します。</p>
+	<p>しかしながら今回はこのスピードがあることでルール変更が世界中に数秒で適用されたということを意味します。また、WAFコードにLuaを採用していることにお気づきの方もいるかもしれません。Cloudflareの製品には広くLuaを採用しておりますが、<a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">WAFのLua</a>に関する詳細は<a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">以前ご説明</a>した通りです。WAFのLuaでは内部的に<a href="https://www.pcre.org" target="_blank">PCRE</a>を利用しているのですが、このPCREがマッチングにバックトラッキングを採用しており正規表現の暴走から保護する手段がありません。これに関する詳細や対策を以下に説明します。</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/rule-deployment.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -147,12 +147,12 @@ To: John Graham-Cumming
 		<li>過度のCPU利用を行う保護を取り除いた上での再導入（完了）</li>
 		<li>WAFマネージドルールにある全3,868件のルールを手動にて調査し、過度のバックトラッキングが発生する可能性があるその他のインスタンスを検出、修正（検査は完了）</li>
 		<li>全ルールに対するパフォーマンスプロファイリングをテストスイートに導入（完了予定： 7月19日）</li>
-		<li>正規表現エンジンを<a href="https://github.com/google/re2" target="_blank">re2</a>または<a href="https://docs.rs/regex/1.1.9/regex/" target="_blank">Rust</a>に切り替え（どちらもランタイム保証搭載）（完了予定：7月31日）</li>
+		<li>正規表現エンジンを<a href="https://github.com/google/re2" target="_blank">re2</a>または<a href="https://docs.rs/regex/1.1.9/regex" target="_blank">Rust</a>に切り替え（どちらもランタイム保証搭載）（完了予定：7月31日）</li>
 		<li>進行中の攻撃に対する緊急かつグローバルなリリースを実施できる点を保持しつつ、Cloudflareの他のソフトウェアと同じ方法でルールを段階的ロールアウトするようSOPを変更</li>
 		<li>CloudflareのダッシュボードやAPIをCloudflareのエッジから外すための緊急機能を設置</li>
-		<li><a href="https://www.cloudflarestatus.com/" target="_blank">Cloudflareステータス</a>ページへの更新の自動化</li>
+		<li><a href="https://www.cloudflarestatus.com" target="_blank">Cloudflareステータス</a>ページへの更新の自動化</li>
 	</ol>
-	<p>長期的には、Cloudflareは数年前に私が記述したLuaによるWAFから離脱していく予定です。そして<a href="https://blog.cloudflare.com/how-we-made-firewall-rules/">新規ファイアウォールエンジン</a>を採用するようWAFを移植していきます。これによりWAFがより高速になり保護層を追加することができます。</p>
+	<p>長期的には、Cloudflareは数年前に私が記述したLuaによるWAFから離脱していく予定です。そして<a href="https://blog.cloudflare.com/how-we-made-firewall-rules">新規ファイアウォールエンジン</a>を採用するようWAFを移植していきます。これによりWAFがより高速になり保護層を追加することができます。</p>
 	<h3 id="--3">まとめ</h3>
 	<p>本件はお客様にとってもCloudflareチームにとっても大きな混乱を招いた停止でした。我々は事態の収拾のため迅速に対応し、現在は停止を発生させてしまった手順の欠陥を修正し、正規表現に使われている技術を置き換えることでさらなる潜在的問題の防止により一層取り組んでおります。</p>
 	<p>今回の停止については忸怩たる思いであり、お客様に影響を出してしまったことをお詫び申し上げます。今回の変更により、このような停止が今後再発生しないものと考えております。</p>

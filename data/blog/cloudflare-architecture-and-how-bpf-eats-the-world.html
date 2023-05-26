@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<p>Recently at <a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13</a>, the Conference on Linux Networking in Prague, I gave <a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives" target="_blank">a short talk titled "Linux at Cloudflare"</a>. The <a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">talk</a> ended up being mostly about BPF. It seems, no matter the question - BPF is the answer.</p>
+	<p>Recently at <a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13</a>, the Conference on Linux Networking in Prague, I gave <a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives=" target="_blank">a short talk titled "Linux at Cloudflare"</a>. The <a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">talk</a> ended up being mostly about BPF. It seems, no matter the question - BPF is the answer.</p>
 	<p>Here is a transcript of a slightly adjusted version of that talk.</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/01_edge-network-locations-100.jpg" class="kg-image" alt="" loading="lazy"></figure>
@@ -33,9 +33,9 @@
 	<p>Let's discuss DoS handling in more detail. As mentioned earlier, the first step after ECMP routing is Linux's XDP stack where, among other things, we run DoS mitigations.</p>
 	<p>Historically our mitigations for volumetric attacks were expressed in classic BPF and iptables-style grammar. Recently we adapted them to execute in the XDP eBPF context, which turned out to be surprisingly hard. Read on about our adventures:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop: XDP DDoS Mitigations</a></li>
-		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap: XDP Packet Capture</a></li>
-		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">XDP based DoS mitigation</a> talk by Arthur Fabre</li>
+		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">L4Drop: XDP DDoS Mitigations</a></li>
+		<li><a href="https://blog.cloudflare.com/xdpcap">xdpcap: XDP Packet Capture</a></li>
+		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation=" target="_blank">XDP based DoS mitigation</a> talk by Arthur Fabre</li>
 		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">XDP in practice: integrating XDP into our DDoS mitigation pipeline</a> (PDF)</li>
 	</ul>
 	<p>During this project we encountered a number of eBPF/XDP limitations. One of them was the lack of concurrency primitives. It was very hard to implement things like race-free token buckets. Later we found that <a href="http://vger.kernel.org/lpc-bpf2018.html#session-9" target="_blank">Facebook engineer Julia Kartseva</a> had the same issues. In February this problem has been addressed with the introduction of <code>bpf_spin_lock</code> helper.</p>
@@ -44,7 +44,7 @@
 	<p>While our modern volumetric DoS defenses are done in XDP layer, we still rely on <code>iptables</code> for application layer 7 mitigations. Here, a higher level firewall’s features are useful: connlimit, hashlimits and ipsets. We also use the <code>xt_bpf</code> iptables module to run cBPF in iptables to match on packet payloads. We talked about this in the past:</p>
 	<ul>
 		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible" target="_blank">Lessons from defending the indefensible</a> (PPT)</li>
-		<li><a href="https://blog.cloudflare.com/introducing-the-bpf-tools/">Introducing the BPF tools</a></li>
+		<li><a href="https://blog.cloudflare.com/introducing-the-bpf-tools">Introducing the BPF tools</a></li>
 	</ul>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-34.png" class="kg-image" alt="" loading="lazy"></figure>
@@ -52,12 +52,12 @@
 	<p>Consider a situation when our UDP mitigations fail. In such case we might be left with a flood of packets hitting our application UDP socket. This might overflow the socket causing packet loss. This is problematic - both good and bad packets will be dropped indiscriminately. For applications like DNS it's catastrophic. In the past to reduce the harm, we ran one UDP socket per IP address. An unmitigated flood was bad, but at least it didn't affect the traffic to other server IP addresses.</p>
 	<p>Nowadays that architecture is no longer suitable. We are running more than 30,000 DNS IP's and running that number of UDP sockets is not optimal. Our modern solution is to run a single UDP socket with a complex eBPF socket filter on it - using the <code>SO_ATTACH_BPF</code> socket option. We talked about running eBPF on network sockets in past blog posts:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/epbf_sockets_hop_distance/">eBPF, Sockets, Hop Distance and manually writing eBPF assembly</a></li>
-		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP - TCP splicing of the future</a></li>
+		<li><a href="https://blog.cloudflare.com/epbf_sockets_hop_distance">eBPF, Sockets, Hop Distance and manually writing eBPF assembly</a></li>
+		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future">SOCKMAP - TCP splicing of the future</a></li>
 	</ul>
 	<p>The mentioned eBPF rate limits the packets. It keeps the state - packet counts - in an eBPF map. We can be sure that a single flooded IP won't affect other traffic. This works well, though during work on this project we found a rather worrying bug in the eBPF verifier:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/ebpf-cant-count/">eBPF can't count?!</a></li>
+		<li><a href="https://blog.cloudflare.com/ebpf-cant-count">eBPF can't count?!</a></li>
 	</ul>
 	<p>I guess running eBPF on a UDP socket is not a common thing to do.</p>
 	<hr>
@@ -72,17 +72,17 @@
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-29.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>In order to fix this, we developed a custom kernel patch which adds <a href="http://patchwork.ozlabs.org/patch/602916/" target="_blank">a <code>SO_BINDTOPREFIX</code> socket option</a>. As the name suggests - it allows us to call <code>bind()</code> on a selected IP prefix. This solves the problem of multiple applications sharing popular ports like 53 or 80.</p>
-	<p>Then we run into another problem. For our Spectrum product we need to listen on all 65535 ports. Running so many listen sockets is not a good idea (see <a href="https://blog.cloudflare.com/revenge-listening-sockets/">our old war story blog</a>), so we had to find another way. After some experiments we learned to utilize an obscure iptables module - TPROXY - for this purpose. Read about it here:</p>
+	<p>In order to fix this, we developed a custom kernel patch which adds <a href="http://patchwork.ozlabs.org/patch/602916" target="_blank">a <code>SO_BINDTOPREFIX</code> socket option</a>. As the name suggests - it allows us to call <code>bind()</code> on a selected IP prefix. This solves the problem of multiple applications sharing popular ports like 53 or 80.</p>
+	<p>Then we run into another problem. For our Spectrum product we need to listen on all 65535 ports. Running so many listen sockets is not a good idea (see <a href="https://blog.cloudflare.com/revenge-listening-sockets">our old war story blog</a>), so we had to find another way. After some experiments we learned to utilize an obscure iptables module - TPROXY - for this purpose. Read about it here:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum/">Abusing Linux's firewall: the hack that allowed us to build Spectrum</a></li>
+		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum">Abusing Linux's firewall: the hack that allowed us to build Spectrum</a></li>
 	</ul>
 	<p>This setup is working, but we don't like the extra firewall rules. We are working on solving this problem correctly - actually extending the socket dispatch logic. You guessed it - we want to extend socket dispatch logic by utilizing eBPF. Expect some patches from us.</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-32.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Then there is a way to use eBPF to improve applications. Recently we got excited about doing TCP splicing with SOCKMAP:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP - TCP splicing of the future</a></li>
+		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future">SOCKMAP - TCP splicing of the future</a></li>
 	</ul>
 	<p>This technique has a great potential for improving tail latency across many pieces of our software stack. The current SOCKMAP implementation is not quite ready for prime time yet, but the potential is vast.</p>
 	<p>Similarly, the new <a href="https://netdevconf.org/2.2/papers/brakmo-tcpbpf-talk.pdf" target="_blank">TCP-BPF aka BPF_SOCK_OPS</a> hooks provide a great way of inspecting performance parameters of TCP flows. This functionality is super useful for our performance team.</p>
@@ -92,7 +92,7 @@
 	<p>Some Linux features didn't age well and we need to work around them. For example, we are hitting limitations of networking metrics. Don't get me wrong - the networking metrics are awesome, but sadly they are not granular enough. Things like <code>TcpExtListenDrops</code> and <code>TcpExtListenOverflows</code> are reported as global counters, while we need to know it on a per-application basis.</p>
 	<p>Our solution is to use eBPF probes to extract the numbers directly from the kernel. My colleague Ivan Babrou wrote a Prometheus metrics exporter called "ebpf_exporter" to facilitate this. Read on:</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/introducing-ebpf_exporter/">Introducing ebpf_exporter</a></li>
+		<li><a href="https://blog.cloudflare.com/introducing-ebpf_exporter">Introducing ebpf_exporter</a></li>
 		<li><a href="https://github.com/cloudflare/ebpf_exporter" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></li>
 	</ul>
 	<p>With "ebpf_exporter" we can generate all manner of detailed metrics. It is very powerful and saved us on many occasions.</p>

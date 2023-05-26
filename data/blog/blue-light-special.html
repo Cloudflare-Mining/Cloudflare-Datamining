@@ -5,7 +5,7 @@
 	<p>CloudFlare is highly customisable. Each customer has a unique configuration consisting of DNS records, all manner of settings (such as minification, image recompression, IP-based blocking, which individual WAF rules to execute) and per-URL rules. And the configuration changes constantly.</p>
 	<h3 id="warpspeedconfiguration">Warp speed configuration</h3>
 	<p>We offer almost instant configuration changes. If a user adds a DNS record it should be globally resolvable in seconds. If a user enables a CloudFlare WAF rule it should happen very, very fast to protect a site. This presents a challenge because those configuration changes need to be pushed across the globe very quickly.</p>
-	<p>We've written in the past about the underlying technology we use: <a href="https://blog.cloudflare.com/kyoto-tycoon-secure-replication/">Kyoto Tycoon</a> and how we secured it from eavesdroppers. We also monitor its performance.</p>
+	<p>We've written in the past about the underlying technology we use: <a href="https://blog.cloudflare.com/kyoto-tycoon-secure-replication">Kyoto Tycoon</a> and how we secured it from eavesdroppers. We also monitor its performance.</p>
 	<p>DNS records are currently changing at a rate of around 40 per second, 24 hours a day. All those changes need to be propagated in seconds.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/07/fakeip.jpg" alt="" loading="lazy"></p>
 	<p>So we take propagation times very seriously.</p>

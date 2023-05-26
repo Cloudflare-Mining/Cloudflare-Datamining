@@ -10,7 +10,7 @@
 	<p>其次，疫情及其连带后果意味着，一年前人们不需要的资源如今受到了世界各地许多人的依赖。具体而言，这些资源通常是与卫生或政府相关的资源，例如失业保险网站。现有的在线基础结构已准备好应对峰值负载，但并没有预见到 COVID-19 的影响。与疫苗相关的网站也出现了类似的情形。</p>
 	<p>需要设立等候室的组织曾经寥寥无几。大多数在线业务的本质决定了其涉及的用户负载通常更为一致，而不是大量人员一次性涌入。这些组织构建了专门的等候室，并深度集成到购票等应用程序中。利用 Cloudflare 的等候室，无需对应用程序代码进行任何更改，并且无需编写任何代码即可在几分钟内为任何网站建立一个等候室。 </p>
 	<p>无论您是工程架构师还是业务运营分析师，设置等候室都很简单。我们可以快速轻松地做到这一点，确保您的应用程序可靠运行并免受意外流量激增的影响。其他我们认为重要的功能包括等候室自动启用以及人员动态流出。换句话说，当超过阈值时，等候室应自动开启；当用户完成应用程序中的任务时，应动态放掉一定数量的用户，并将已经在队列中的新用户放进来。这种方案的效果非常好。最后，我们看到 COVID-19 对用户和在线业务都造成了重大影响，尤其是<a href="https://blog.cloudflare.com/project-fair-shot">卫生和政府部门</a>。我们希望提供新的方式来确保这些应用程序继续正常运行，使所有用户都能获得所需的照顾，而不是一用浏览器就出错。</p>
-	<p>Cloudflare 等候室的工作原理是什么？我们基于边缘网络和 Workers 产品构建了等候室。我们充分利用 Workers 和全新的 <a href="https://blog.cloudflare.com/introducing-workers-durable-objects/">Durable Objects</a> 产品，得以消除客户编码需求，并提供可以“正常工作”的开箱即用的无缝产品。除此之外，我们发挥了 Workers 产品的规模和性能优势，确保我们的延迟开销极低，并使最终用户能够看到尽可能准确的预估时间，不会让任何用户增加不必要的排队时间。然而，在分散的网络中建立集中式系统绝非易事。当来自世界各地的请求进入应用程序时，我们需要获得视野广阔的精准视图，能够看到该负载传入和传出应用程序时的实际情况。</p>
+	<p>Cloudflare 等候室的工作原理是什么？我们基于边缘网络和 Workers 产品构建了等候室。我们充分利用 Workers 和全新的 <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects</a> 产品，得以消除客户编码需求，并提供可以“正常工作”的开箱即用的无缝产品。除此之外，我们发挥了 Workers 产品的规模和性能优势，确保我们的延迟开销极低，并使最终用户能够看到尽可能准确的预估时间，不会让任何用户增加不必要的排队时间。然而，在分散的网络中建立集中式系统绝非易事。当来自世界各地的请求进入应用程序时，我们需要获得视野广阔的精准视图，能够看到该负载传入和传出应用程序时的实际情况。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/01/image7-12.png" class="kg-image" alt="通过 Cloudflare 的请求（不设等候室）" loading="lazy">
 		<figcaption>通过 Cloudflare 的请求（不设等候室）</figcaption>
 	</figure>
@@ -30,5 +30,5 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image8-14.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>最后，管理多个不同的等候室也十分轻松。查阅我们的“管理等候室”表格，哪些房间排队人多、哪些房间没人排队和/或已禁用，全都一目了然。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image5-14.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>我们非常高兴能将功能强大的<a href="https://www.cloudflare.com/waiting-room/" target="_blank">等候室</a>交到客户手中，以确保他们继续专注于自身的业务和客户。请留意我们即将发布的另一篇博客文章，其中介绍了 Enterprise 版等候室产品的重大更新！</p>
+	<p>我们非常高兴能将功能强大的<a href="https://www.cloudflare.com/waiting-room" target="_blank">等候室</a>交到客户手中，以确保他们继续专注于自身的业务和客户。请留意我们即将发布的另一篇博客文章，其中介绍了 Enterprise 版等候室产品的重大更新！</p>
 </div>

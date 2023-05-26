@@ -7,12 +7,12 @@
 	<h2 id="-">网络钓鱼攻击的挑战</h2>
 	<p>网络钓鱼攻击也许是过去几个月内最广为人知的威胁手段。这些攻击非常复杂，难以察觉，越来越频繁，可能给成为受害企业带来毁灭性的后果。</p>
 	<p>防止网络钓鱼攻击的最大挑战之一是庞大的数量，而且难以区分合法和欺诈性的电子邮件和网站。攻击者制作的钓鱼邮件和网站几可乱真，即使用户保持警惕，也不一定能够发现。</p>
-	<p>例如，去年 7 月，我们使用 Cloudflare One 产品套件和物理安全密钥 <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks/">挫败了一次针对 Cloudflare 员工的复杂 “Oktapus” 攻击 </a>。这次 “Oktapus” 攻击成功入侵了<a href="https://www.theregister.com/2022/08/25/twilio_cloudflare_oktapus_phishing/" target="_blank"> 100 多家公司</a>，其攻击者将 “cloudflare-okta.com” 发送给我们的员工前 40 分钟才注册该域名。</p>
-	<p>当时，我们的<a href="https://www.cloudflare.com/products/registrar/custom-domain-protection/" target="_blank">安全域名产品</a>发现了这些钓鱼域名——但是，在收到用于监测的新注册域名列表前存在一定延迟。今天，通过流式传送 Cloudflare <a href="https://blog.cloudflare.com/announcing-1111/">1.1.1.1 解析器</a> (及其他解析器) 解析的新域名，我们能够几乎即时检测到钓鱼域名。这让我们取得了先机，从而能够在网络钓鱼企图发生之前予以阻止。</p>
+	<p>例如，去年 7 月，我们使用 Cloudflare One 产品套件和物理安全密钥 <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">挫败了一次针对 Cloudflare 员工的复杂 “Oktapus” 攻击 </a>。这次 “Oktapus” 攻击成功入侵了<a href="https://www.theregister.com/2022/08/25/twilio_cloudflare_oktapus_phishing" target="_blank"> 100 多家公司</a>，其攻击者将 “cloudflare-okta.com” 发送给我们的员工前 40 分钟才注册该域名。</p>
+	<p>当时，我们的<a href="https://www.cloudflare.com/products/registrar/custom-domain-protection" target="_blank">安全域名产品</a>发现了这些钓鱼域名——但是，在收到用于监测的新注册域名列表前存在一定延迟。今天，通过流式传送 Cloudflare <a href="https://blog.cloudflare.com/announcing-1111">1.1.1.1 解析器</a> (及其他解析器) 解析的新域名，我们能够几乎即时检测到钓鱼域名。这让我们取得了先机，从而能够在网络钓鱼企图发生之前予以阻止。</p>
 	<p>我们希望将内部使用的同一工具提供给客户，以帮助客户应对当前挑战。</p>
 	<h2 id="cloudflare-">Cloudflare 安全中心的全新品牌保护和防钓鱼工具</h2>
 	<p>我们正在通过自动识别并屏蔽所谓的“易混淆”域名，扩大为 Cloudflare One 客户提供的防钓鱼保护。攻击者往往会注册常见错误拼写(cloudfalre.com)和服务连接(cloudflare-okta.com)，旨在欺骗毫无防备的受害者提交密码等隐私信息。这些新工具提供额外的一层保护来防范此类企图。</p>
-	<p>全新品牌和钓鱼防护工具位于 Cloudflare 安全中心，向客户提供<a href="https://developers.cloudflare.com/security-center/tasks/" target="_blank">更多控制</a> (例如自定义监控字符串，可搜索的历史域名列表，等)。Cloudflare One 计划可使用该工具，其控制、可见性和自动化级别因计划类型而有所不同。</p>
+	<p>全新品牌和钓鱼防护工具位于 Cloudflare 安全中心，向客户提供<a href="https://developers.cloudflare.com/security-center/tasks" target="_blank">更多控制</a> (例如自定义监控字符串，可搜索的历史域名列表，等)。Cloudflare One 计划可使用该工具，其控制、可见性和自动化级别因计划类型而有所不同。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/image3-6.png" class="kg-image" alt="我们的全新品牌保护界面" loading="lazy"></figure>
 	<h3 id="--1">全新域名品牌匹配和警报</h3>
 	<p>全新品牌保护功能的核心是我们检测专门为钓鱼合法品牌而创建的主机名这一能力。首先，通过筛查每日对 Cloudflare 公共 DNS 解析器 1.1.1.1 发出的数万亿 DNS 查询，我们监测某个域或子域的首次使用，从而编制一个首次使用的主机名列表。</p>
@@ -344,11 +344,11 @@
 	<h2 id="--4">未来增强</h2>
 	<p>这个新功能只是我们更广泛的品牌保护和防钓鱼安全产品组合的开始。</p>
 	<h3 id="-ssl-tls-">匹配 SSL/TLS 证书</h3>
-	<p>除了与域进行匹配之外，我们还计划与记录在 <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus/">我们的 Certificate Transparency (CT) 日志 —— Nimbus </a>中的新 SSL/TLS 证书进行匹配。通过分析 CT 日志，我们可以识别可能用于钓鱼攻击的潜在欺诈证书。这是有帮助的，因为证书通常是在域名注册后不久创建的，试图通过支持 HTTPS 为钓鱼网站提供更多合法性。</p>
+	<p>除了与域进行匹配之外，我们还计划与记录在 <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">我们的 Certificate Transparency (CT) 日志 —— Nimbus </a>中的新 SSL/TLS 证书进行匹配。通过分析 CT 日志，我们可以识别可能用于钓鱼攻击的潜在欺诈证书。这是有帮助的，因为证书通常是在域名注册后不久创建的，试图通过支持 HTTPS 为钓鱼网站提供更多合法性。</p>
 	<h3 id="--5">托管列表的自动填充</h3>
 	<p>虽然现在客户可以通过脚本更新 Zero Trust 阻止规则中引用的自定义列表，但正如上面提到的，我们计划自动将域添加到动态更新的列表。此外，我们将自动将匹配的域添加到可以在 Zero Trust 规则中使用的列表中，例如：从 Gateway 阻止。</p>
 	<h3 id="--6">域所有权和其他元数据的变化</h3>
 	<p>最后，我们计划提供监视域所有权或其他元数据(如注册者、名称服务器或解析的 IP 地址)变化的能力。这将使客户能够跟踪与他们的域相关的关键信息的变化，并在必要时采取适当的行动。</p>
 	<h2 id="--7">立即开始</h2>
-	<p>如果您是 Enterprise 客户，欢迎立刻<a href="https://www.cloudflare.com/lp/brandprotection/" target="_blank">注册品牌保护的测试版</a>，获得对自有域名的专门扫描，保存查询并为匹配域名设置警报。</p>
+	<p>如果您是 Enterprise 客户，欢迎立刻<a href="https://www.cloudflare.com/lp/brandprotection" target="_blank">注册品牌保护的测试版</a>，获得对自有域名的专门扫描，保存查询并为匹配域名设置警报。</p>
 </div>

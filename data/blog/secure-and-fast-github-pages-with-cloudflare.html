@@ -8,16 +8,16 @@
 	<p>Static site generators avoid repetitive update tasks of updating “latest posts” feeds, pagination or sitemaps; whilst generating static HTML that can be uploaded to any web hosting service without a scripting engine. Unlike ancient desktop tools like FrontPage and Dreamweaver which lacked a content model, modern static site generators have the design decisively separate from content.</p>
 	<p>Typically, CMS-based sites must query a database for content, then render the HTML to be served to the end user; all this to serve the same content for request after request. Even with caching this combination is hardly elegant for sites where only the administrator changes the content.</p>
 	<p>With static sites the web server merely needs to serve static HTML to an end user. This has profound performance benefits; static sites walk whilst dynamic sites crawl. Above this, the ability to track all site changes in a Git repository adds better control when it comes to collaborative editing.</p>
-	<p>With static sites there is no CMS, no database; just HTML. No need to worry about <a href="https://bugs.php.net/bug.php?id=71105" target="_blank">patching PHP</a> or plugins with <a href="https://blog.cloudflare.com/the-sleepy-user-agent/">insecure database queries</a>.</p>
+	<p>With static sites there is no CMS, no database; just HTML. No need to worry about <a href="https://bugs.php.net/bug.php?id=71105" target="_blank">patching PHP</a> or plugins with <a href="https://blog.cloudflare.com/the-sleepy-user-agent">insecure database queries</a>.</p>
 	<p>Clearly static sites can’t do everything, namely anything that’s dynamic; though you can utilise JavaScript APIs to add some dynamic functionality if that's a route you want to pursue.</p>
 	<h3 id="step0preparingyoursite">Step 0: Preparing your site</h3>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/06/1280px-Dr_Jekyll_and_Mr_Hyde_poster_edit2-1.jpg" alt="Dr. Jekyll and Mr. Hyde" loading="lazy"><br>
 		<em><a href="https://en.wikipedia.org/wiki/Strange_Case_of_Dr_Jekyll_and_Mr_Hyde#/media/File:Dr_Jekyll_and_Mr_Hyde_poster_edit2.jpg" target="_blank">Chicago: National Prtg. &amp; Engr. Co.</a></em>
 	</p>
 	<p>For this tutorial, I will be using Jekyll as a static static site generator. Jekyll works by taking a bunch of markdown files and outputting the HTML necessary for a static blog.</p>
-	<p>There is a great list of generators on a site called <a href="http://www.staticgen.com" target="_blank">StaticGen</a>, including a static site generator written in Go called <a href="https://gohugo.io" target="_blank">Hugo</a>. I’m using Jekyll here due to the <a href="https://jekyllrb.com/docs/github-pages/" target="_blank">integration with GitHub Pages</a>.</p>
+	<p>There is a great list of generators on a site called <a href="http://www.staticgen.com" target="_blank">StaticGen</a>, including a static site generator written in Go called <a href="https://gohugo.io" target="_blank">Hugo</a>. I’m using Jekyll here due to the <a href="https://jekyllrb.com/docs/github-pages" target="_blank">integration with GitHub Pages</a>.</p>
 	<p>If you want to host a JavaScript app or a simple static site, just skip this step.</p>
-	<p>Assuming you have a Ruby version greater than 2.0.0, then you can just <a href="https://jekyllrb.com/docs/installation/" target="_blank">install Jekyll</a> by running:</p>
+	<p>Assuming you have a Ruby version greater than 2.0.0, then you can just <a href="https://jekyllrb.com/docs/installation" target="_blank">install Jekyll</a> by running:</p>
 	<pre><code>gem install jekyll
 </code></pre>
 	<p>For this example I’m going to be creating a blog about about plants using Jekyll. To create the blog simply run:</p>
@@ -63,10 +63,10 @@ git add -A
 git commit -m “Added CNAME file.”
 git push origin master
 </code></pre>
-	<p>We can add the records to point our DNS records to our GitHub Pages account (we can use a CNAME at the root thanks to <a href="https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/">CNAME Flattening</a>:<br>
+	<p>We can add the records to point our DNS records to our GitHub Pages account (we can use a CNAME at the root thanks to <a href="https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root">CNAME Flattening</a>:<br>
 		<img src="https://blog.cloudflare.com/content/images/2016/06/Yn1pLtu.png" alt="GitHub Pages DNS CloudFlare" loading="lazy">
 	</p>
-	<p>You can find <a href="https://help.github.com/articles/setting-up-an-apex-domain/" target="_blank">the most up-to-date IP Addresses</a> from the GitHub Pages documentation.</p>
+	<p>You can find <a href="https://help.github.com/articles/setting-up-an-apex-domain" target="_blank">the most up-to-date IP Addresses</a> from the GitHub Pages documentation.</p>
 	<h3 id="step3timeforssl">Step 3: Time for SSL</h3>
 	<p>Unfortunately GitHub Pages doesn’t yet support SSL on GitHub Pages for custom domains which would ordinarily rule out using HTTP/2. Whilst the HTTP/2 specification (<a href="https://tools.ietf.org/html/rfc7540" target="_blank">RFC 7540</a>) allows for HTTP/2 over plain-text HTTP/2, all popular browsers require HTTP/2 to run on top of Transport Layer Security; meaning HTTP/2 only being able to run over HTTPS is the de-facto standard.</p>
 	<p>Fortunately, CloudFlare’s Universal SSL option allows us provide a signed SSL certificate to site visitors. This allows us to gain the performance benefits of HTTP/2 and <a href="https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html" target="_blank">potentially improve search engine rankings</a>.</p>
@@ -89,7 +89,7 @@ git push origin master
 	<p><img src="https://blog.cloudflare.com/content/images/2016/06/mind_the_gap.png" alt="Mind the Gap" loading="lazy"><br>
 		<em><a href="https://commons.wikimedia.org/wiki/File:MindTheGapVictoria.jpg" target="_blank">WillMcC on WikiMedia</a></em>
 	</p>
-	<p>Firstly a word on security. If you are deploying a JavaScript app which communicates with remote APIs, be sure not to use this for sensitive data submissions. As <a href="https://help.github.com/articles/what-are-github-pages/" target="_blank">GitHub themselves put it</a>: “GitHub Pages sites shouldn't be used for sensitive transactions like sending passwords or credit card numbers.” Also bear in mind your website source files are publicly accessible in a Git repository, so be extra careful about what you put there.</p>
+	<p>Firstly a word on security. If you are deploying a JavaScript app which communicates with remote APIs, be sure not to use this for sensitive data submissions. As <a href="https://help.github.com/articles/what-are-github-pages" target="_blank">GitHub themselves put it</a>: “GitHub Pages sites shouldn't be used for sensitive transactions like sending passwords or credit card numbers.” Also bear in mind your website source files are publicly accessible in a Git repository, so be extra careful about what you put there.</p>
 	<p>There are some things we can’t do; GitHub Pages doesn’t let us set custom headers, which unfortunately means we can’t do HTTP/2 Server Push right now.</p>
 	<h3 id="conclusion">Conclusion</h3>
 	<p>GitHub Pages, CloudFlare and a static site generator combine to create fast, secure, free hosting for static sites.</p>

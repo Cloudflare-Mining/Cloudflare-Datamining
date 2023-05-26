@@ -11,7 +11,7 @@
 	<p>大约在那个时候，谷歌发布了其BeyondCorp论文，概述了一种被称为零信任安全的模型。零信任边界不信任专用网络上的任何用户，而会评估每个请求和连接的用户身份和其他变量。</p>
 	<p>我们决定在Cloudflare之上构建自己的实现。尽管BeyondCorp是一个新概念，但我们在这一领域有经验。近十年来，Cloudflare的全球网络一直像互联网上的应用程序的零信任边界一样运行——我们只是没有这样称呼。例如，诸如我们的WAF之类的产品评估了对面向公众的应用程序的请求。我们可以将身份添加为新的评估层，并使用相同的网络来保护团队内部使用的应用程序。</p>
 	<p>我们开始将自托管应用程序移至该新项目。用户可以从任何网络或位置通过我们的SSO提供程序登录，体验就像任何其他SaaS应用一样。我们的安全团队获得了所需的控制权和可见性，我们的IT团队变得更加高效。具体来说，我们的IT团队<a href="https://www.cloudflare.com/case-studies/how-cloudflare-uses-cloudflare-access-to-secure-our-global-team" target="_blank">在维修与VPN相关的工单上所花费的时间减少了约80％</a>，每年可节省超过10万美元的服务台效率。在2018年晚些时候，我们将该产品作为客户也可以使用的产品推出。</p>
-	<p>通过将安全性转移到Cloudflare的网络，我们还可以使外围更智能。我们可能要求用户<a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access/">使用硬键登录</a>，而这是我们的身份提供商不支持的。我们可以限制与<a href="https://blog.cloudflare.com/two-clicks-to-enable-regional-zero-trust-compliance/">特定国家/地区</a>的应用程序的连接。我们添加了<a href="https://blog.cloudflare.com/tanium-cloudflare-teams/">设备状态</a>集成。Cloudflare Access在这种零信任模式下成为了身份信号的聚合器。</p>
+	<p>通过将安全性转移到Cloudflare的网络，我们还可以使外围更智能。我们可能要求用户<a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access">使用硬键登录</a>，而这是我们的身份提供商不支持的。我们可以限制与<a href="https://blog.cloudflare.com/two-clicks-to-enable-regional-zero-trust-compliance">特定国家/地区</a>的应用程序的连接。我们添加了<a href="https://blog.cloudflare.com/tanium-cloudflare-teams">设备状态</a>集成。Cloudflare Access在这种零信任模式下成为了身份信号的聚合器。</p>
 	<p>结果，我们的内部工具突然变得比我们使用的SaaS应用程序更安全。我们只能将规则添加到我们可以放置在Cloudflare反向代理上的应用程序中。当用户连接到流行的SaaS工具时，他们没有通过Cloudflare的网络。我们在所有应用程序中缺乏一致的可见性和安全性。我们的客户也是如此。</p>
 	<p>从今天开始，我们的团队和您的团队都可以解决此问题。我们很高兴地宣布，您现在可以将Cloudflare Access的零信任安全功能引入您的SaaS应用程序。您可以使用Cloudflare Access保护可以与SAML身份提供程序集成的任何SaaS应用程序。</p>
 	<p>即使SaaS应用程序未部署在Cloudflare上，我们仍然可以向每个登录添加安全规则。您可以从今天开始使用此功能，在接下来的几个月中，您将能够确保流向这些SaaS应用程序的所有流量都通过Cloudflare Gateway进行连接。</p>
@@ -36,7 +36,7 @@
 		<li><strong>Audience</strong>：您试图访问的应用程序的域。</li>
 		<li><strong>Expiration</strong>：token失效时间。</li>
 	</ul>
-	<p>某些应用程序本身就为SSO支持JWT。我们可以将token发送到应用程序，并且用户可以登录。在其他情况下，我们已经为<a href="https://blog.cloudflare.com/cloudflare-access-sharing-our-single-sign-on-plugin-for-atlassian/">Atlassian</a>和<a href="https://blog.cloudflare.com/open-sourcing-our-sentry-sso-plugin/">Sentry</a>等受欢迎的提供商发布了插件。但是，大多数应用程序缺少JWT支持，并且依赖于一个不同的标准：SAML。</p>
+	<p>某些应用程序本身就为SSO支持JWT。我们可以将token发送到应用程序，并且用户可以登录。在其他情况下，我们已经为<a href="https://blog.cloudflare.com/cloudflare-access-sharing-our-single-sign-on-plugin-for-atlassian">Atlassian</a>和<a href="https://blog.cloudflare.com/open-sourcing-our-sentry-sso-plugin">Sentry</a>等受欢迎的提供商发布了插件。但是，大多数应用程序缺少JWT支持，并且依赖于一个不同的标准：SAML。</p>
 	<h3 id="-cloudflare-workers-jwt-saml">使用Cloudflare Workers将JWT转换为SAML</h3>
 	<p>您可以部署Cloudflare的反向代理来保护您托管的应用程序，这使Cloudflare Access可以在这些请求到达边缘时添加身份检查。但是，您使用的SaaS应用程序由供应商自己托管和管理，这是它们提供的价值的一部分。就像我无法决定谁可以走进楼下面包店的前门一样，您也无法为应允许和不应允许的请求制定规则。</p>
 	<p>当这些应用程序支持与您的SSO提供程序集成时，您就可以控制登录流程。许多应用程序依靠流行的标准SAML在两个系统之间安全地交换身份数据和用户属性。SaaS应用程序不需要知道身份提供者的规则的详细信息。</p>
@@ -56,13 +56,13 @@
 	<p>在过去十年中，其他应用程序开始信任这些公共身份提供者的登录。您可以使用您的谷歌帐户登录到一个新闻阅读器和您的GitHub帐户认证到DigitalOcean。谷歌和Facebook等服务成为每个人的SSO选择。然而，大多数企业应用程序只支持与单一SAML提供者的集成，而公共身份提供程序不提供这一点。要将SSO作为一个团队来依赖，您仍然需要一个企业身份提供程序。</p>
 	<p>Cloudflare Access将用户登录从任何身份提供程序转换为JWT。在这个版本中，我们还生成了一个标准SAML断言。您的团队现在可以与LinkedIn或GitHub等公共提供商一起使用企业身份提供程序的SAML SSO特性。</p>
 	<h3 id="multi-sso-saas-">Multi-SSO迎合SaaS应用</h3>
-	<p>我们<a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams/">将Cloudflare Access描述为一种Multi-SSO</a>服务，因为您可以将多个身份提供程序及其SSO流集成到Cloudflare的零信任网络中。现在，该功能可以扩展到将多个身份提供程序与单个SaaS应用程序集成在一起。</p>
+	<p>我们<a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams">将Cloudflare Access描述为一种Multi-SSO</a>服务，因为您可以将多个身份提供程序及其SSO流集成到Cloudflare的零信任网络中。现在，该功能可以扩展到将多个身份提供程序与单个SaaS应用程序集成在一起。</p>
 	<p>大多数SaaS应用程序仅与单个身份提供程序集成，从而限制了您的团队只有一个选项。我们知道，我们的客户与合作伙伴、承包商或收购方合作，这使得SaaS登录很难标准化单一身份选项。</p>
 	<p>Cloudflare Access可以同时连接多个身份提供程序，包括同一提供程序的多个实例。当用户被提示登录时，他们可以选择其特定团队使用的选项。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-96.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>我们已经采用了该功能，并将其扩展到Access for SaaS功能。Access可以从任意提供程序那里生成一致的身份，我们现在可以将其扩展到SaaS应用程序来用作SSO。即使应用程序仅支持单个身份提供程序，您仍然可以集成Cloudflare Access并跨多个源合并身份。现在，使用Okta实例的团队成员和使用LinkedIn的承包商都可以将SSO都集成到Atlassian套件中。</p>
 	<h3 id="-">一个地方包含您的所有应用</h3>
-	<p>Cloudflare Access发布了<a href="https://blog.cloudflare.com/announcing-the-cloudflare-access-app-launch/">Access App Launch</a>作为您所有内部应用程序的单一目的地。您的团队成员只需访问您组织的唯一URL，App Launch会显示他们可以访问的所有应用。该功能不需要其他管理配置。Cloudflare Access会读取用户的JWT，并仅返回允许他们访问的应用程序。</p>
+	<p>Cloudflare Access发布了<a href="https://blog.cloudflare.com/announcing-the-cloudflare-access-app-launch">Access App Launch</a>作为您所有内部应用程序的单一目的地。您的团队成员只需访问您组织的唯一URL，App Launch会显示他们可以访问的所有应用。该功能不需要其他管理配置。Cloudflare Access会读取用户的JWT，并仅返回允许他们访问的应用程序。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-97.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>现在，这种经验已扩展到您组织中的所有应用程序。当您将SaaS应用程序与Cloudflare Access集成时，您的用户将能够在App Launch中发现它们。就像内部应用程序的流程一样，这不需要其他配置。</p>
 	<h3 id="--1">如何开始</h3>
@@ -70,6 +70,6 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-98.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>您是否有其他需要额外配置的应用程序？请告诉我们。</p>
 	<h3 id="-cloudflare-for-teams-saas-">立即使用Cloudflare for Teams保护SaaS应用程序</h3>
-	<p>所有Cloudflare for Teams客户（包括免费计划的组织）都可使用Cloudflare Access for SaaS。<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">注册一个Cloudflare for Teams帐户</a>，然后<a href="https://developers.cloudflare.com/access/setting-up-access/access-applications/connecting-saas-apps/" target="_blank">按照文档中的步骤</a>即可开始使用。</p>
+	<p>所有Cloudflare for Teams客户（包括免费计划的组织）都可使用Cloudflare Access for SaaS。<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">注册一个Cloudflare for Teams帐户</a>，然后<a href="https://developers.cloudflare.com/access/setting-up-access/access-applications/connecting-saas-apps" target="_blank">按照文档中的步骤</a>即可开始使用。</p>
 	<p>我们将在年底之前开始扩展Gateway beta程序，从而将Gateway的日志记录和Web过滤与Access for SaaS功能集成在一起。</p>
 </div>

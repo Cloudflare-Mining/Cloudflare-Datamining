@@ -1,16 +1,16 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-11.png" class="kg-image" alt="Incremental adoption of micro-frontends with Cloudflare Workers" loading="lazy"></figure>
 	<h2 id="-web-">将微前端的优势引入旧版 Web 应用程序</h2>
-	<p>最近，我们介绍了<a href="https://blog.cloudflare.com/zh-cn/better-micro-frontends-zh-cn/">一种新的片段架构</a>，用于快速构建 Web 应用程序，这种方法成本效益高，可扩展到最大型的项目，还可实现快速迭代。该方法使用多个协作的 Cloudflare Worker 来渲染微前端，并注入一个比旧版客户端更快交互的应用程序中，从而改善用户体验，提高搜索引擎优化得分。</p>
+	<p>最近，我们介绍了<a href="https://blog.cloudflare.com/zh-cn/better-micro-frontends-zh-cn">一种新的片段架构</a>，用于快速构建 Web 应用程序，这种方法成本效益高，可扩展到最大型的项目，还可实现快速迭代。该方法使用多个协作的 Cloudflare Worker 来渲染微前端，并注入一个比旧版客户端更快交互的应用程序中，从而改善用户体验，提高搜索引擎优化得分。</p>
 	<p>如果您正在开始一个新项目，或能够从头开始重写现有应用程序，这是一个不错的方法。但现实情况中，大多数项目都过于庞大，无法从头开始重新构建，只能逐步更改架构。</p>
 	<p>本文我们建议的方法是，使用服务器端渲染的片段进行替换，但仅替换客户端渲染的旧版应用程序中的所选部分。其结果是，应用程序最重要的视图交互时间更早，可以独立开发，并获得微前端方法的所有优势，同时无需大量重写旧版代码库。这种方法与框架无关；本文展示了使用 React、Qwik 和 SolidJS 构建的片段。</p>
 	<h2 id="-">大型前端应用程序的痛点</h2>
 	<p>现在开发的许多大型前端应用程序的用户体验并不好。这通常是因为需要下载、解析和执行大量 JavaScript 后，用户才能与应用程序互动。虽然通过延迟加载推迟了不重要的 JavaScript 代码，并使用了服务器端渲染，这些大型应用程序仍然需要太长时间才能交互，才能响应用户的输入。</p>
 	<p>此外，大型单体应用程序的构建和部署可能很复杂。可能由多个团队合作构建代码库，努力协调项目的测试和部署，因此，单项功能的开发、部署和迭代都会很困难。</p>
-	<p>正如<a href="https://blog.cloudflare.com/zh-cn/better-micro-frontends-zh-cn/">上一篇文章</a>所述，由 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> 提供支持的微前端可以解决这些问题，但是将应用程序单体转换为微前端架构可能比较困难，而且成本高昂。可能需要数月甚至数年的开发时间，用户或开发人员才能感受到一些优势。</p>
+	<p>正如<a href="https://blog.cloudflare.com/zh-cn/better-micro-frontends-zh-cn">上一篇文章</a>所述，由 <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a> 提供支持的微前端可以解决这些问题，但是将应用程序单体转换为微前端架构可能比较困难，而且成本高昂。可能需要数月甚至数年的开发时间，用户或开发人员才能感受到一些优势。</p>
 	<p>我们需要的方法是，可以逐步将应用程序中最具影响力的部分采用微前端，而不需要一次性重写整个应用程序。</p>
 	<h2 id="--1">片段营救</h2>
-	<p>基于片段的架构旨在通过将应用程序分解为可在 Cloudflare Workers 中快速渲染（和缓存）的多个微前端，大幅降低大型 Web 应用程序的加载和交互延迟（如 <a href="https://web.dev/vitals/" target="_blank">Core Web Vitals</a> 评估所示）。问题是如何将微前端片段集成到客户端渲染的旧版应用程序中，并将原始项目的成本降到最低。</p>
+	<p>基于片段的架构旨在通过将应用程序分解为可在 Cloudflare Workers 中快速渲染（和缓存）的多个微前端，大幅降低大型 Web 应用程序的加载和交互延迟（如 <a href="https://web.dev/vitals" target="_blank">Core Web Vitals</a> 评估所示）。问题是如何将微前端片段集成到客户端渲染的旧版应用程序中，并将原始项目的成本降到最低。</p>
 	<p>利用我们提出的这项技术，可以转换旧版应用程序的用户界面中最有价值的部分，并与应用程序的其他部分隔离。</p>
 	<p>事实证明，在许多应用程序中，用户界面最有价值的部分往往嵌套在提供页眉、页脚和导航元素的应用程序“外壳”中。这类示例包括登录表单、电子商务应用程序中的产品详情面板、电子邮件客户端的收件箱等。</p>
 	<p>我们以登录表单为例。如果我们的应用程序需要花几秒钟才能显示登录表单，用户会害怕登录，我们可能就会失去用户。但我们可以将登录表单转换为服务器端渲染的片段，这样便可立即显示并交互，而旧版应用程序的其他部分则在后台启动。由于该片段会提前交互，用户甚至可以在旧版应用程序开始并渲染页面的其余部分之前提交凭证。</p><!--kg-card-begin: html-->
@@ -56,21 +56,21 @@
 	<h2 id="-productivity-suite-">“Productivity Suite”演示</h2>
 	<p>为演示片段穿透和逐步采用，我们开发了一个<a href="https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite" target="_blank">“Productivity Suite”演示</a>应用程序，让用户管理待办事项列表、阅读黑客新闻等。我们将这个应用程序的外壳实施为客户端渲染的 React 应用程序——企业应用程序中常见的技术选择。这是我们的“旧版应用程序”。该应用程序中有三条路由已经更新为使用微前端片段：</p><!--kg-card-begin: markdown-->
 	<ul>
-		<li><code>/login</code>：一个简单的带客户端验证的虚拟登录表单，在未验证用户身份时显示（在 <a href="https://qwik.builder.io/" target="_blank">Qwik</a> 中实施）。</li>
+		<li><code>/login</code>：一个简单的带客户端验证的虚拟登录表单，在未验证用户身份时显示（在 <a href="https://qwik.builder.io" target="_blank">Qwik</a> 中实施）。</li>
 		<li><code>/todos</code>：管理一个或多个待办事项列表，以两个协作片段的形式实施。
 			<ul>
-				<li>待办事项列表选择器：用于选择/创建/删除待办事项列表的组件（在 <a href="https://qwik.builder.io/" target="_blank">Qwik</a> 中实施）。</li>
-				<li>待办事项列表编辑器：<a href="https://todomvc.com/" target="_blank">TodoMVC</a> 应用程序的克隆（在 <a href="https://reactjs.org/docs/react-dom-server.html" target="_blank">React</a> 中实施）。</li>
+				<li>待办事项列表选择器：用于选择/创建/删除待办事项列表的组件（在 <a href="https://qwik.builder.io" target="_blank">Qwik</a> 中实施）。</li>
+				<li>待办事项列表编辑器：<a href="https://todomvc.com" target="_blank">TodoMVC</a> 应用程序的克隆（在 <a href="https://reactjs.org/docs/react-dom-server.html" target="_blank">React</a> 中实施）。</li>
 			</ul>
 		</li>
-		<li><code>/news</code>：<a href="https://github.com/solidjs/solid-hackernews" target="_blank">HackerNews</a> 试用应用程序的克隆（在 <a href="https://www.solidjs.com/" target="_blank">SolidJS</a> 中实施）。</li>
+		<li><code>/news</code>：<a href="https://github.com/solidjs/solid-hackernews" target="_blank">HackerNews</a> 试用应用程序的克隆（在 <a href="https://www.solidjs.com" target="_blank">SolidJS</a> 中实施）。</li>
 	</ul>
 	<!--kg-card-end: markdown-->
 	<p>该演示展示了不同的独立技术既可用于旧版应用程序，也可用于每个片段。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-41.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>将穿透到旧版应用程序中的片段可视化</figcaption>
 	</figure>
-	<p>该应用程序部署在 <a href="https://productivity-suite.web-experiments.workers.dev/" target="_blank"> https://productivity-suite.web-experiments.workers.dev/</a>。</p>
+	<p>该应用程序部署在 <a href="https://productivity-suite.web-experiments.workers.dev" target="_blank"> https://productivity-suite.web-experiments.workers.dev/</a>。</p>
 	<p>如需试用，您必须先登录，使用自己喜欢的任何用户名即可（不需要密码）。用户的数据将保存在 cookie 中，因此您可以在退出后使用相同的用户名重新登录。登录后，使用应用程序顶部的导航栏浏览各个页面。特别注意看一下“<a href="https://productivity-suite.web-experiments.workers.dev/todos" target="_blank">待办事项列表</a>”和“<a href="https://productivity-suite.web-experiments.workers.dev/news" target="_blank">新闻</a>”页面，检验穿透的实际效果。</p>
 	<p>您可随时尝试重新加载页面，看看旧版应用程序在后台缓慢加载时，片段是否会立即渲染。试着在旧版应用程序出现之前就与片段互动！</p>
 	<p>页面最上方有一些控件，可用来检验片段穿透的实际效果。</p>
@@ -85,7 +85,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/Frame-653.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Workers 协作和旧版应用程序主机概述</figcaption>
 	</figure>
-	<p>在我们的演示中，<strong>旧版应用程序主机</strong>提供定义客户端 React 应用程序的文件（HTML、JavaScript 和样式表）。使用其他技术栈构建的应用程序也可以一样运行。<strong>片段 Workers</strong> 托管微前端片段，我们在以前的<a href="https://blog.cloudflare.com/zh-cn/better-micro-frontends-zh-cn/">片段架构</a>文章中介绍过。<strong>网关 Worker</strong> 处理来自浏览器的请求，选择、获取并合并来自旧版应用程序和微前端片段的响应流。</p>
+	<p>在我们的演示中，<strong>旧版应用程序主机</strong>提供定义客户端 React 应用程序的文件（HTML、JavaScript 和样式表）。使用其他技术栈构建的应用程序也可以一样运行。<strong>片段 Workers</strong> 托管微前端片段，我们在以前的<a href="https://blog.cloudflare.com/zh-cn/better-micro-frontends-zh-cn">片段架构</a>文章中介绍过。<strong>网关 Worker</strong> 处理来自浏览器的请求，选择、获取并合并来自旧版应用程序和微前端片段的响应流。</p>
 	<p>这些部分全部部署完毕后，它们就会共同合作，处理来自浏览器的每个请求。我们来看看进入“/login”路由时会发生什么。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-22.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>查看登录页面时的请求流</figcaption>
@@ -138,7 +138,7 @@ export default gateway;
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>片段出口添加到 DOM 时，会在当前文档中搜索其关联的片段主机。如果找到了片段主机，则将片段主机及其内容移动到出口内。如果未找到片段主机，出口将向网关 Worker 请求片段 HTML，然后使用 <a href="https://github.com/marko-js/writable-dom" target="_blank">writable-dom 库</a>（由 <a href="https://markojs.com/" target="_blank">MarkoJS</a> 团队开发的一个强大的小型库）将其直接流式传输到片段出口。</p>
+	<p>片段出口添加到 DOM 时，会在当前文档中搜索其关联的片段主机。如果找到了片段主机，则将片段主机及其内容移动到出口内。如果未找到片段主机，出口将向网关 Worker 请求片段 HTML，然后使用 <a href="https://github.com/marko-js/writable-dom" target="_blank">writable-dom 库</a>（由 <a href="https://markojs.com" target="_blank">MarkoJS</a> 团队开发的一个强大的小型库）将其直接流式传输到片段出口。</p>
 	<p>这种后备机制支持客户端导航到包含新片段的路由。这样便可通过初始（硬）导航和客户端（软）导航在浏览器中渲染片段。</p>
 	<h3 id="--6">消息总线</h3>
 	<p>除非应用程序中的片段已完全呈现或完全独立，否则它们也需要与旧版应用程序和其他片段通信。<code><a href="https://github.com/cloudflare/workers-web-experiments/blob/df50b60cfff7bc299cf70ecfe8f7826ec9313b84/productivity-suite/piercing-library/src/message-bus/message-bus.ts#L18" target="_blank">MessageBus</a></code> 是一个简单的异步同构、与框架无关的通信总线，旧版应用程序和每个片段均可访问。</p>
@@ -167,7 +167,7 @@ export default gateway;
 	<p>我们决定采用这个消息总线实施，因为我们需要一个与框架无关的解决方案，而且在服务器和客户端都能良好运行。</p>
 	<h2 id="--7">不妨试试看！</h2>
 	<p>利用片段、片段穿透和 Cloudflare Workers，您可以改善性能，缩短传统客户端渲染应用程序的开发周期。可以逐步采用这些更改，您甚至可以同时使用所选 Web 框架实施片段。</p>
-	<p>展示这些功能的“Productivity Suite应”用程序下载地址：<a href="https://productivity-suite.web-experiments.workers.dev/" target="_blank">https://productivity-suite.web-experiments.workers.dev/</a>。</p>
+	<p>展示这些功能的“Productivity Suite应”用程序下载地址：<a href="https://productivity-suite.web-experiments.workers.dev" target="_blank">https://productivity-suite.web-experiments.workers.dev/</a>。</p>
 	<p>我们展示的所有代码均为开源代码，已发布在 Github 上：<a href="https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite" target="_blank">https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite</a>。</p>
 	<p>您可随意克隆该存储库。您可轻松在本地运行该库，甚至可以将您自己的版本（免费）部署到 Cloudflare。我们尽力让代码可重复。大部分核心逻辑都在<a href="https://github.com/cloudflare/workers-web-experiments/tree/main/productivity-suite/piercing-library" target="_blank">穿透库</a>中，您可以在自己的项目中尝试。如果能收到您的反馈和建议，或听说您想使用它构建应用程序，我们将会备感荣幸。加入我们的 <a href="https://github.com/cloudflare/workers-web-experiments/discussions/64" target="_blank">GitHub 讨论</a>，或在我们的 <a href="https://discord.com/channels/595317990191398933/1041751020340002907" target="_blank">Discord 频道上联系我们</a>。</p>
 	<p>我们相信，结合 Cloudflare Workers 与框架的最新理念，Web 应用程序的用户和开发人员的体验将会大幅提升。随着我们继续突破 Web 产品的界限，我们将推出更多演示和博客文章，并加强各项合作。如果您也想直接参与这一提升过程，请加入我们：<a href="https://boards.greenhouse.io/cloudflare/jobs/4619341" target="_blank">我们正在招聘</a>！<br></p>

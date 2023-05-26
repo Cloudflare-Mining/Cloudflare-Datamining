@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<p>At Cloudflare we handle a lot of traffic on behalf of our customers. Something we all see and hear a lot about at this time of year are Black Friday (23 November this year) and Cyber Monday (26 November) - but just how important are these days on the Internet?</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/12/15894285291_b73d2af904_k-2.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption>Black Friday by <a href="https://www.flickr.com/photos/perolofforsberg/" target="_blank">Per-Olof Forsberg</a>, license: <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a></figcaption>
+		<figcaption>Black Friday by <a href="https://www.flickr.com/photos/perolofforsberg" target="_blank">Per-Olof Forsberg</a>, license: <a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a></figcaption>
 	</figure>
 	<p>To try and answer this question, we took a look at anonymised samples of HTTP requests crossing our network. First of all, let’s look at total page views from across our global network from the last few weeks and see if we can spot Black Friday and Cyber Monday:</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/12/all_page_views_black_friday_cyber_monday_utc-1.png" class="kg-image" alt="" loading="lazy">
@@ -9,7 +9,7 @@
 	</figure>
 	<p>So this is total page views by day (UTC) from November 19 (a week before Cyber Monday) until Monday December 3. Other than follow-the-sun fluctuations in a repeating daily pattern, each whole day is pretty similar in shape and size compared to the last. Black Friday and Cyber Monday aren’t visible in overall traffic patterns.</p>
 	<h2 id="get-specific">Get specific</h2>
-	<p>We have a very diverse set of customers across 12 million domain names and not all of them are selling products or doing so directly online. To identify those websites that are, I used metadata from the wonderful <a href="https://httparchive.org/" target="_blank">HTTP Archive</a> project to export a list of domains using Cloudflare that were also running ecommerce software.</p>
+	<p>We have a very diverse set of customers across 12 million domain names and not all of them are selling products or doing so directly online. To identify those websites that are, I used metadata from the wonderful <a href="https://httparchive.org" target="_blank">HTTP Archive</a> project to export a list of domains using Cloudflare that were also running ecommerce software.</p>
 	<p>Here are the page views for these ecommerce sites over the same time period:</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/12/ecommerce_page_views_black_friday_cyber_monday_utc.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Ecommerce page views</figcaption>

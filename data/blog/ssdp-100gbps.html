@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Last month we <a href="https://blog.cloudflare.com/reflections-on-reflections/">shared statistics on some popular reflection</a> attacks. Back then the average SSDP attack size was ~12 Gbps and largest SSDP reflection we recorded was:</p>
+	<p>Last month we <a href="https://blog.cloudflare.com/reflections-on-reflections">shared statistics on some popular reflection</a> attacks. Back then the average SSDP attack size was ~12 Gbps and largest SSDP reflection we recorded was:</p>
 	<ul>
 		<li>30 Mpps (millions of packets per second)</li>
 		<li>80 Gbps (billions of bits per second)</li>
@@ -66,7 +66,7 @@ USER-AGENT: Google Chrome/58.0.3029.110 Windows
 		<li><code>upnp:rootdevice</code>: search for root devices</li>
 		<li><code>ssdp:all</code>: search for all UPnP devices and services</li>
 	</ul>
-	<p>To emulate these queries you can run this python script (based on <a href="https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python/" target="_blank">this work</a>):</p>
+	<p>To emulate these queries you can run this python script (based on <a href="https://www.electricmonk.nl/log/2016/07/05/exploring-upnp-with-python" target="_blank">this work</a>):</p>
 	<pre><code class="language-.py">#!/usr/bin/env python2
 import socket
 import sys
@@ -309,11 +309,11 @@ Response packets per IP:
 	</ul>
 	<p>Furthermore, we prepared on online checking website. Click if you want to know if your public IP address has a vulnerable SSDP service:</p>
 	<ul>
-		<li><a href="https://badupnp.benjojo.co.uk/" target="_blank">https://badupnp.benjojo.co.uk/</a></li>
+		<li><a href="https://badupnp.benjojo.co.uk" target="_blank">https://badupnp.benjojo.co.uk/</a></li>
 	</ul>
 	<p>Sadly, the most unprotected routers we saw in the described attack were from China, Russia and Argentina, places not historically known for the most agile internet service providers.</p>
 	<h3 id="summary">Summary</h3>
-	<p>Cloudflare customers are fully protected from SSDP and other L3 amplification attacks. These attacks are nicely deflected by <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks/">Cloudflare anycast</a> infrastructure and require no special action. Unfortunately the raising of SSDP attack sizes might be a tough problem for other Internet citizens. We should encourage our ISPs to stop IP spoofing within their network, support BGP flowspec and configure in netflow collection.</p>
+	<p>Cloudflare customers are fully protected from SSDP and other L3 amplification attacks. These attacks are nicely deflected by <a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks">Cloudflare anycast</a> infrastructure and require no special action. Unfortunately the raising of SSDP attack sizes might be a tough problem for other Internet citizens. We should encourage our ISPs to stop IP spoofing within their network, support BGP flowspec and configure in netflow collection.</p>
 	<p><em>This article is a joint work of Marek Majkowski and Ben Cartwright-Cox.</em></p>
 	<p>Dealing with large attacks sounds like fun? <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank">Join our world famous DDoS team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland.</p>
 	<!--kg-card-end: markdown-->

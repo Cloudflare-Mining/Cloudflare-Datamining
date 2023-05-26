@@ -38,7 +38,7 @@
 </code></pre>
 	<p>That is all there is to it. You can modify the example to make it send whatever email you want.</p>
 	<p>The MailChannels integration makes it easy to send emails to and from anywhere with Workers. However, we also wanted to make it easier to send emails to yourself from a form on your website. This is perfect for quickly and painlessly setting up pages such as “Contact Us” forms, landing pages, and sales inquiries.</p>
-	<p>The <a href="https://blog.cloudflare.com/cloudflare-pages-plugins/">Pages Plugin Framework</a> that we announced earlier this week allows other people to email you without exposing your email address. </p>
+	<p>The <a href="https://blog.cloudflare.com/cloudflare-pages-plugins">Pages Plugin Framework</a> that we announced earlier this week allows other people to email you without exposing your email address. </p>
 	<p>The only thing you need to do is copy and paste the following code snippet in your <code>/functions/_middleware.ts</code> file. Now, every form that has the <code>data-static-form-name</code> attribute will automatically be emailed to you. </p>
 	<pre><code class="language-typescript">import mailchannelsPlugin from "@cloudflare/pages-plugin-mailchannels";
 

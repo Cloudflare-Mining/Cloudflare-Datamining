@@ -5,7 +5,7 @@
 	<p>速率限制旨在阻止请求导致服务器负荷过重。它依赖于规则。速率限制规则由一个过滤器（通常是一个路径、例如/login）和一段时间内每个用户允许的最大请求数来定义。当这个阈值被超过时，同一用户在一段时间内的后续请求将触发一个操作（通常是阻止）。传统的限流解决方案将相同 IP 的请求集中在一起，因为它们遵循“来自相同 IP 的请求来自相同用户”的逻辑。然而，我们听到客户反映，使用基于 IP 的速率限制来保护流量效果欠佳，对验证 API 而言尤其如此。</p>
 	<p>我们隆重推出高级速率限制，这是限流技术的一个飞跃。这种技术允许根据 HTTP 请求的几乎任何特征来计数请求，无论 IP 地址是什么。速率限制是针对暴力破解、内容爬取或针对性 DDoS 攻击的优秀防御手段。这些攻击的后果包括敏感数据泄露、帐户接管或后端资源耗尽。对于每个请求都会在服务器源上触发昂贵计算的 API 而言，控制请求的速率尤为重要。</p>
 	<h2 id="-">限流技术的变革性创新</h2>
-	<p>高级速率限制现已成为 <a href="https://blog.cloudflare.com/zh-cn/new-waf-experience-zh-cn/">Web 应用程序防火墙</a>（WAF）的一部分。它与 Firewall Rules 集成，允许基于特征而非 IP 来计数请求。</p>
+	<p>高级速率限制现已成为 <a href="https://blog.cloudflare.com/zh-cn/new-waf-experience-zh-cn">Web 应用程序防火墙</a>（WAF）的一部分。它与 Firewall Rules 集成，允许基于特征而非 IP 来计数请求。</p>
 	<p>通过高级速率限制限制，您能：</p>
 	<ol>
 		<li>使用所有 HTTP 请求特征来定义规则过滤器，例如 URI、方法、标头、cookie 和正文字段。使用 Bot Management 计划的客户也能利用机器人分数动态字段。您也能使用 HTTP 请求的两个特征来触发速率限制：状态码和响应标头。</li>
@@ -19,7 +19,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-19.png" class="kg-image" alt="With Advanced Rate Limiting you get access to all HTTP request fields available in the rule builder." loading="lazy"></figure>
 	<p><strong>独立的缓解表达式。</strong> 您现在能将缓解表达式和计数表达式分开。如此一来，您可以定义在阈值达到时阻止用户访问网站的哪一个部分，以及请求（和响应）需要满足什么条件来增加计数。例如，您可以计数对您 /login 端点发出的请求，然后阻止同一用户对整个站点的访问。当您要在计数表达式中包含响应字段时，这是特别有用的，例如仅计数返回特定响应码的请求，但阻止更大部分的流量。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-40.png" class="kg-image" alt="With Advanced Rate Limiting you can count on a path and block across your whole website." loading="lazy"></figure>
-	<p><strong>使用动态字段。</strong> 客户现在能将速率限制和检测已知漏洞的规则（例如 <a href="https://blog.cloudflare.com/waf-ml/">WAF 机器学习分数</a>） 结合起来使用。例如，您可以在标记为 SQLi 的多个连续请求到达您的站点后阻止访问。另一个用例是，仅对可能来自机器人的请求触发某一条规则（通过使用规则过滤器中的机器人分数），或在多个使用被盗凭据的登录尝试发生后（<a href="https://developers.cloudflare.com/waf/managed-rulesets/exposed-credentials-check" target="_blank">link</a>）触发某一条规则。您也可以将 JA3 指纹用作计数依据，从而利用我们的机器人机器学习算法来归类来自同一指纹的机器人。</p>
+	<p><strong>使用动态字段。</strong> 客户现在能将速率限制和检测已知漏洞的规则（例如 <a href="https://blog.cloudflare.com/waf-ml">WAF 机器学习分数</a>） 结合起来使用。例如，您可以在标记为 SQLi 的多个连续请求到达您的站点后阻止访问。另一个用例是，仅对可能来自机器人的请求触发某一条规则（通过使用规则过滤器中的机器人分数），或在多个使用被盗凭据的登录尝试发生后（<a href="https://developers.cloudflare.com/waf/managed-rulesets/exposed-credentials-check" target="_blank">link</a>）触发某一条规则。您也可以将 JA3 指纹用作计数依据，从而利用我们的机器人机器学习算法来归类来自同一指纹的机器人。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-4.png" class="kg-image" alt="With Advanced Rate Limiting you can use dynamic fields in the rule filter." loading="lazy"></figure>
 	<h3 id="-api">用例 —— 将速率限制与应用程序集成来保护 API</h3>
 	<p><strong>基于会话 ID 来计数请求。</strong> API 流量往往经过验证，会话可以通过 cookie、标头（例如 x-api-key）或查询值来跟踪。高级速率限制允许您定义包含该 ID 的请求 ，并跟踪请求相对同一会话的数量，而无论 IP 地址是什么。对于抓取敏感数据（如产品价格或航班乘客数据）的分布式机器人攻击而言，这是一个有效的防御手段。</p>

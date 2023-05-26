@@ -10,7 +10,7 @@
 	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust</a>以前の世界では、エンジニアはVPNアプライアンスに接続することでKubernetes APIにアクセスできました。これは、業界では一般的な手法であり、APIへのアクセスを許可するものですが、エンジニアをクライアントとして内部ネットワークに落とし込んでしまい、必要以上にネットワークにアクセスすることになっていました。</p>
 	<p>この状況に満足していたわけではありませんが、数年間はこの状態が続いていました。2020年初頭にVPNを廃止したため、Kubernetesチームは別のソリューションを見つける必要がありました。</p>
 	<h3 id="cloudflare-tunnel-kubernetes">Cloudflare Tunnelを利用したKubernetes</h3>
-	<p>当時、私たちはCloudflare Tunnelの開発チームと密接に協力し、<a href="https://blog.cloudflare.com/releasing-kubectl-support-in-access/">Accessを使用したkubectl接続</a>とCloudflareトンネルの処理のサポートを追加しました。</p>
+	<p>当時、私たちはCloudflare Tunnelの開発チームと密接に協力し、<a href="https://blog.cloudflare.com/releasing-kubectl-support-in-access">Accessを使用したkubectl接続</a>とCloudflareトンネルの処理のサポートを追加しました。</p>
 	<p>これは、当社のエンジニアにとっては機能しましたが、新入社員のオンボーディングの際には大きなハードルとなっていました。Kubernetesのクラスターごとに、エンジニアのデバイスからの独自のトンネル接続が必要で、クラスター間のシャッフルが煩わしかったのです。kubectlはSOCKSプロキシ経由の接続をサポートしていましたが、このサポートはKubernetesエコシステムのすべてのツールに普遍的なものではありませんでした。</p>
 	<p>このソリューションを社内で使い続けながら、より良いソリューションの実現に向けて取り組んできたのです。</p>
 	<h2 id="zero-trust-kubernetes">Zero Trustを使用したKubernetes</h2>

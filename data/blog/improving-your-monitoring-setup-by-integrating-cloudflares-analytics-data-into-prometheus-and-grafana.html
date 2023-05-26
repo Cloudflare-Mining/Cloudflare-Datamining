@@ -3,7 +3,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image1-7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Here at Labyrinth Labs, we put great emphasis on monitoring. Having a working monitoring setup is a critical part of the work we do for our clients.</p>
 	<p>Cloudflare's Analytics dashboard provides a lot of useful information for debugging and analytics purposes for our customer Pixel Federation. However, it doesn’t automatically integrate with existing monitoring tools such as Grafana and Prometheus, which our DevOps engineers use every day to monitor our infrastructure.</p>
-	<p>Cloudflare provides a Logs API, but the amount of logs we’d need to analyze is so vast, it would be simply inefficient and too pricey to do so. Luckily, Cloudflare already does the hard work of aggregating our thousands of events per second and exposes them in an <a href="https://developers.cloudflare.com/analytics/graphql-api/" target="_blank">easy-to-use API</a>.</p>
+	<p>Cloudflare provides a Logs API, but the amount of logs we’d need to analyze is so vast, it would be simply inefficient and too pricey to do so. Luckily, Cloudflare already does the hard work of aggregating our thousands of events per second and exposes them in an <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank">easy-to-use API</a>.</p>
 	<p>Having Cloudflare’s data from our zones integrated with other systems’ metrics would give us a better understanding of our systems and the ability to correlate metrics and create more useful alerts, making our Day-2 operations (e.g. debugging incidents or analyzing the usage of our systems) more efficient.</p>
 	<p>Since our monitoring stack is primarily based on Prometheus and Grafana, we decided to implement our own Prometheus exporter that pulls data from Cloudflare’s GraphQL Analytics API.</p>
 	<h3 id="design">Design</h3>
@@ -54,10 +54,10 @@ helm install cloudflare-exporter lablabs-cloudflare-exporter/cloudflare-exporter
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image2-5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image3-6.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>To make things even more beneficial for the operations team, you can use the gathered metrics to create alerts. These can be created either in Grafana directly or using Prometheus alert rules.</p>
-	<p>Furthermore, if you integrate <a href="https://github.com/thanos-io/thanos" target="_blank">Thanos</a> or <a href="https://grafana.com/oss/cortex/" target="_blank">Cortex</a> into your monitoring setup, you can store these metrics indefinitely.</p>
+	<p>Furthermore, if you integrate <a href="https://github.com/thanos-io/thanos" target="_blank">Thanos</a> or <a href="https://grafana.com/oss/cortex" target="_blank">Cortex</a> into your monitoring setup, you can store these metrics indefinitely.</p>
 	<h3 id="future-work">Future work</h3>
 	<p>We’d like to integrate even more analytics data into our exporters, eventually reaching every metric that Cloudflare’s GraphQL can provide. We plan on creating new metrics for firewall analytics, DoS analytics, and Network analytics soon.</p>
 	<p>Feel free to create a GitHub issue if you have any questions, problems, or suggestions. Any pull request is greatly appreciated.</p>
 	<h3 id="about-us">About us</h3>
-	<p><a href="https://lablabs.io/" target="_blank">Labyrinth Labs</a> helps companies build, run, deploy and scale software and infrastructure by embracing the right technologies and principles.</p>
+	<p><a href="https://lablabs.io" target="_blank">Labyrinth Labs</a> helps companies build, run, deploy and scale software and infrastructure by embracing the right technologies and principles.</p>
 </div>

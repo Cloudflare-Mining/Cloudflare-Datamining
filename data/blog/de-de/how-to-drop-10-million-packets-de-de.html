@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<p>Intern wird unser DDoS-Abwehrteam manchmal „the packet droppers“ („die Paketverwerfer“) genannt. Während andere Teams aufregende Produkte entwickeln, um intelligente Dinge mit dem Datenverkehr zu tun, der durch unser Netzwerk fließt, freuen wir uns, wenn wir neue Wege finden, ihn zu entsorgen.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/07/38464589350_d00908ee98_b.jpg" class="kg-image" alt="38464589350_d00908ee98_b" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/beegee49" target="_blank">Brian Evans</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/beegee49" target="_blank">Brian Evans</a></figcaption>
 	</figure>
 	<p>Die Möglichkeit, Pakete schnell zu verwerfen, ist sehr wichtig, um DDoS-Angriffen standzuhalten.</p>
 	<p>Das Verwerfen von Paketen, die auf unsere Server gelangen, kann auf mehreren Ebenen durchgeführt werden. Jede Technik hat ihre Vor- und Nachteile. In diesem Blogbeitrag besprechen wir alle Techniken, die wir bisher ausprobiert haben.</p>
@@ -50,7 +50,7 @@ while True:
 	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c" target="_blank">Wir haben den Code vorbereitet</a>, um ihn auszuführen:</p>
 	<pre><code>$ ./dropping-packets/recvmmsg-loop
 packets=171261 bytes=1940176</code></pre>
-	<p>Dieses Setup ermöglicht es dem Kernel, magere 175 kpps aus der Hardware-Empfangsqueue zu erhalten, gemessen mit ethtool und mit unserem einfachen <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram/">mmwatch-Tool</a>:</p>
+	<p>Dieses Setup ermöglicht es dem Kernel, magere 175 kpps aus der Hardware-Empfangsqueue zu erhalten, gemessen mit ethtool und mit unserem einfachen <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram">mmwatch-Tool</a>:</p>
 	<pre><code>$ mmwatch 'ethtool -S ext0|grep rx_2'
  rx2_packets: 174.0k/s</code></pre>
 	<p>Die Hardware erhält technisch gesehen 14 Mpps übertragen. Aber es ist unmöglich, das alles an eine einzige RX-Warteschlange zu übergeben, die von nur einem CPU-Kern verarbeitet wird, der Kernelarbeit leistet. mpstat bestätigt das:</p>
@@ -158,7 +158,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 	<p>Ein tc-Ingress-Hook mit u32-Match ermöglicht es uns, 1,8 mpps auf einer einzelnen CPU zu verwerfen. Das ist genial!</p>
 	<p>Aber wir können noch schneller werden ...</p>
 	<h4 id="schritt-8-xdp_drop"><strong>Schritt 8: XDP_DROP</strong></h4>
-	<p>Zu guter Letzt die ultimative Waffe: XDP – der <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP/" target="_blank">eXpress Data Path</a>. Mit XDP können wir eBPF-Code im Kontext eines Netzwerktreibers ausführen. Am wichtigsten ist, dass dies vor der skbuff-Speicherzuweisung erfolgt, was hohe Geschwindigkeiten ermöglicht.</p>
+	<p>Zu guter Letzt die ultimative Waffe: XDP – der <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP" target="_blank">eXpress Data Path</a>. Mit XDP können wir eBPF-Code im Kontext eines Netzwerktreibers ausführen. Am wichtigsten ist, dass dies vor der skbuff-Speicherzuweisung erfolgt, was hohe Geschwindigkeiten ermöglicht.</p>
 	<p>In der Regel bestehen XDP-Projekte aus zwei Teilen:</p>
 	<ul>
 		<li>dem eBPF-Code, der in den Kernelkontext geladen wurde,</li>
@@ -190,7 +190,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 </code></pre>
 	<p>Wow! Mit XDP können wir 10 Millionen Pakete pro Sekunde auf einer einzelnen CPU verwerfen.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241/" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/afiler/" target="_blank">Andrew Filer</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/afiler" target="_blank">Andrew Filer</a></figcaption>
 	</figure>
 	<h3 id="zusammenfassung"><strong>Zusammenfassung</strong></h3>
 	<p>Wir haben das für IPv4 und IPv6 wiederholt und dieses Diagramm erstellt:</p>
@@ -203,7 +203,7 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 	<p>Für noch anspruchsvollere Workloads haben wir immer XDP. Und Junge, ist der stark. Hier ist das gleiche Diagramm wie oben, aber mit XDP:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Wenn Sie diese Zahlen reproduzieren möchten, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md" target="_blank">lesen Sie die README-Datei, in der wir alles dokumentiert haben</a>.</p>
-	<p>Hier bei Cloudflare verwenden wir ... fast alle diese Techniken. Einige der Userspace-Tricks sind in unsere Anwendungen integriert. Der iptables-Layer wird von <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">unserer Gatebot DDoS-Pipeline</a> verwaltet. Außerdem arbeiten wir daran, unsere proprietäre Kernel-Offload-Lösung durch XDP zu ersetzen.</p>
+	<p>Hier bei Cloudflare verwenden wir ... fast alle diese Techniken. Einige der Userspace-Tricks sind in unsere Anwendungen integriert. Der iptables-Layer wird von <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">unserer Gatebot DDoS-Pipeline</a> verwaltet. Außerdem arbeiten wir daran, unsere proprietäre Kernel-Offload-Lösung durch XDP zu ersetzen.</p>
 	<p>Möchten Sie uns helfen, noch mehr Pakete zu verwerfen? Wir stellen für viele Aufgaben ein, darunter Paketverwerfer, Systemingenieure und mehr!</p>
 	<p><em>Ein besonderer Dank für die Unterstützung bei dieser Arbeit geht an</em><a href="https://twitter.com/JesperBrouer" target="_blank"><em>Jesper Dangaard Brouer</em></a><em>.</em></p>
 </div>

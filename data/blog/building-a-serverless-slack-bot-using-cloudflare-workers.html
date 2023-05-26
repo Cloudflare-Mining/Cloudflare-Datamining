@@ -1,13 +1,13 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Our <a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers platform</a> can be used for a ton of useful purposes: for A/B (multivariate) testing, storage bucket authentication, coalescing responses from multiple APIs, and more. But Workers can also be put to use beyond "HTTP middleware": a Worker can effectively be a web application in its own right. Given the rise of 'chatbots', we can also build a <a href="https://api.slack.com/slack-apps" target="_blank">Slack app</a> using Cloudflare Workers, with no servers required (well, at least not yours!).</p>
+	<p>Our <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank">Workers platform</a> can be used for a ton of useful purposes: for A/B (multivariate) testing, storage bucket authentication, coalescing responses from multiple APIs, and more. But Workers can also be put to use beyond "HTTP middleware": a Worker can effectively be a web application in its own right. Given the rise of 'chatbots', we can also build a <a href="https://api.slack.com/slack-apps" target="_blank">Slack app</a> using Cloudflare Workers, with no servers required (well, at least not yours!).</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/workers_slack_bot2-1.jpg" alt="workers_slack_bot2-1" loading="lazy"></p>
 	<h3 id="whatarewebuilding">What are we Building?</h3>
 	<p>We're going to build a <a href="https://api.slack.com/slash-commands" target="_blank">Slack bot</a> (as an external webhook) for fetching the latest stock prices.</p>
-	<p>This Worker could also be adapted to fetch <a href="https://developer.github.com/v3/issues/" target="_blank">open issues</a> from GitHub's API; to <a href="https://www.themoviedb.org/documentation/api/discover" target="_blank">discover what movie to watch</a> after work; anything with a REST API you can make query against.</p>
+	<p>This Worker could also be adapted to fetch <a href="https://developer.github.com/v3/issues" target="_blank">open issues</a> from GitHub's API; to <a href="https://www.themoviedb.org/documentation/api/discover" target="_blank">discover what movie to watch</a> after work; anything with a REST API you can make query against.</p>
 	<p>Nevertheless, our "stock prices bot":</p>
 	<ul>
-		<li>Uses the <a href="https://www.alphavantage.co/" target="_blank">Alpha Vantage Open Stock API</a> to fetch stock prices. Alpha Vantage is a finance API that provides free cloud-based access to the global financial market.</li>
+		<li>Uses the <a href="https://www.alphavantage.co" target="_blank">Alpha Vantage Open Stock API</a> to fetch stock prices. Alpha Vantage is a finance API that provides free cloud-based access to the global financial market.</li>
 		<li>Caches a map of the top equities to their public identifiers, so you can request <code>/stocks MSFT</code> as a shorthand.</li>
 		<li>Leverages Cloudflare's cache to minimize the need to hit the API on every invocation, whilst still serving recent price data.</li>
 	</ul>

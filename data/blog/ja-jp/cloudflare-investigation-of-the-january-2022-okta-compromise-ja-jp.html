@@ -20,7 +20,7 @@
 	<p>06:40 - Matthew Princeから、パスワードリセットについて<a href="https://twitter.com/eastdakota/status/1506158901078618118" target="_blank">ツイート</a></p>
 	<p>07:57 - Oktaから、Cloudflareインスタンスのサポートコンソールには悪意あるアクティビティを示すようなイベントが検出されなかった旨の確認連絡が入る</p>
 	<h3 id="cloudflare-okta-">CloudflareのOkta利用方法</h3>
-	<p>Cloudflareでは社内のIDプロバイダーとしてOkta利用しています。当社のユーザーが安全に社内リソースへアクセスできるようCloudflare Accessと統合しています。前回のブログ記事にて、<a href="https://blog.cloudflare.com/dogfooding-from-home/">社内リソースを保護するためのAccessの使用方法</a>と、<a href="https://blog.cloudflare.com/securing-cloudflare-using-cloudflare/">当社のユーザー認証プロセスの耐障害性を高めるためのハードウェアトークンの強化方法</a>、<a href="https://blog.cloudflare.com/account-compromise-security-overview/">アカウント乗っ取りに対する防衛方法</a>についてご紹介しました。</p>
+	<p>Cloudflareでは社内のIDプロバイダーとしてOkta利用しています。当社のユーザーが安全に社内リソースへアクセスできるようCloudflare Accessと統合しています。前回のブログ記事にて、<a href="https://blog.cloudflare.com/dogfooding-from-home">社内リソースを保護するためのAccessの使用方法</a>と、<a href="https://blog.cloudflare.com/securing-cloudflare-using-cloudflare">当社のユーザー認証プロセスの耐障害性を高めるためのハードウェアトークンの強化方法</a>、<a href="https://blog.cloudflare.com/account-compromise-security-overview">アカウント乗っ取りに対する防衛方法</a>についてご紹介しました。</p>
 	<p>Oktaでセキュリティ侵害が生じれば、ユーザーのパスワードを変更するだけでは不十分でしょう。攻撃者も、そのユーザー用に設定されたハードウェア（FIDO）トークンを変更する必要があります。そのため、関係するハードウェアキーをもとに侵害されたアカウントを見つけるのはさほど困難ではありません。</p>
 	<p>ログはOktaのコンソールで見ることができますが、当社では独自にシステム上でも保存しています。これは、セキュリティレイヤーをさらに1つ追加することになります。Cloudflareでは、Oktaのコンソールよりも長期間ログを保存できるからです。別途保存することで、Oktaプラットフォームのセキュリティが侵害されても、当社で先に収集、保存した証拠は改ざんを免れます。</p>
 	<p>Oktaは、当社システムでの顧客認証には使われておらず、顧客データをOktaに保存することは一切ありません。Oktaはあくまで、当社従業員のアカウントの管理にのみ使用されています。</p>
@@ -28,7 +28,7 @@
 	<ol>
 		<li>Oktaに連絡し、攻撃に関する詳細な情報を収集。</li>
 		<li>スクリーンショットで見えていたCloudflareアカウント1件を停止。</li>
-		<li>不正アクセスによるセキュリティ侵害の痕跡（パスワード変更、ハードウェアトークンの変更など）がないか、<a href="https://developer.okta.com/docs/reference/api/system-log/" target="_blank">Oktaのシステムログ</a>を調査。CloudflareではOktaのシステムログを5分毎に読み、自社のSIEMに保存します。そうすることで、今回のようなインシデントが当社に起きた場合に、Oktaのダッシュボードで閲覧可能な90日分より前に遡ってログ記録を検証できます。当社がOkta内で探したイベントのタイプは、<code>user.account.reset_password</code>、<code>user.mfa.factor.update</code>、<code>system.mfa.factor.deactivate</code> 、 <code>user.mfa.attempt_bypass</code>、 <code>user.session.impersonation.initiate</code>などです。これまでにOktaから受け取った情報を見る限り、Oktaのサポートスタッフのセキュリティ侵害で、当社の推定する<a href="https://developer.okta.com/docs/reference/api/system-log/#actor-object" target="_blank">システムログアクター</a>に該当するものは不明です。</li>
+		<li>不正アクセスによるセキュリティ侵害の痕跡（パスワード変更、ハードウェアトークンの変更など）がないか、<a href="https://developer.okta.com/docs/reference/api/system-log" target="_blank">Oktaのシステムログ</a>を調査。CloudflareではOktaのシステムログを5分毎に読み、自社のSIEMに保存します。そうすることで、今回のようなインシデントが当社に起きた場合に、Oktaのダッシュボードで閲覧可能な90日分より前に遡ってログ記録を検証できます。当社がOkta内で探したイベントのタイプは、<code>user.account.reset_password</code>、<code>user.mfa.factor.update</code>、<code>system.mfa.factor.deactivate</code> 、 <code>user.mfa.attempt_bypass</code>、 <code>user.session.impersonation.initiate</code>などです。これまでにOktaから受け取った情報を見る限り、Oktaのサポートスタッフのセキュリティ侵害で、当社の推定する<a href="https://developer.okta.com/docs/reference/api/system-log/#actor-object" target="_blank">システムログアクター</a>に該当するものは不明です。</li>
 		<li><a href="https://support.google.com/a/answer/11479100?ref_topic=11479095" target="_blank">Google Workplaceのメールログ</a>でパスワードリセットを検索。Oktaに不正アクセスがあったと考えられること、また、Oktaのログがどの程度信頼できるか確信が持てなかったことから、別のソースを使ってパスワードリセットがOktaのシステムログと一致することを確認しました。</li>
 		<li>過去3か月にパスワードを変更したCloudflare従業員のアカウントをリスト化し、該当者全員に新しいパスワードへのリセットを義務づけ。アカウント復元の一環として、各ユーザーはCloudflare ITチームとのビデオ通話を通じて本人確認を行ったのち、アカウントを再有効化しました。</li>
 	</ol>

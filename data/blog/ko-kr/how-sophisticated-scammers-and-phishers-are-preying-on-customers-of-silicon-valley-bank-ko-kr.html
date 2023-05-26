@@ -4,7 +4,7 @@
 	<p>안타깝게도 모두가 비극을 바라볼 때 위협 행위자는 기회를 봅니다. 위협 행위자들은 신뢰를 깨고 순진한 피해자를 속이기 위해 화제의 사건을 미끼로 삼는 경우가 압도적으로 많다는 사실을 여러 차례 확인했습니다. 이는 뉴스 주기 또는 유명 이벤트(슈퍼볼, 3월의 광란, 납세일, 블랙 프라이데이 세일, 코로나19 등)를 따르는데, 이는 사용자가 특정 시점에 가장 관심 있는 내용을 언급하는 메시지에 넘어갈 가능성이 높기 때문입니다.</p>
 	<p>SVB 뉴스 주기는 위협 공격자들이 활용할 수 있는 매우 매력적인 화제성 이벤트이며, 조직은 향후 공격에서 결국 이러한 전술이 사용될 것에 대응할 수 있도록 인식 캠페인과 기술적인 제어력을 강화하는 것이 중요합니다. FDIC가 SVB 고객의 자금이 안전하다고 보장하고 있음에도 불구하고 악의적인 행위자들이 바로 그 돈을 훔치려고 시도하고 있다는 것은 비극이 아닐 수 없습니다!</p>
 	<h3 id="-">선제적 조치</h3>
-	<p>향후 SVB 브랜드를 악용하는 피싱 공격이 예상됨에 따라,<a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research/"> Cloudforce One</a>(Cloudflare의 위협 운영 및 연구팀)은 2023년 3월 10일부터 SVB의 디지털 프레즌스에 초점을 맞춘 브랜드 모니터링을 대폭 강화했으며, SVB 테마 피싱 캠페인을 발견하기 위한 몇 가지 추가 탐지 모듈을 출시했습니다. 다양한 피싱 방지 서비스를 이용하는 모든 고객은 이러한 새로운 모델의 혜택을 자동으로 받게 됩니다.</p>
+	<p>향후 SVB 브랜드를 악용하는 피싱 공격이 예상됨에 따라,<a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research"> Cloudforce One</a>(Cloudflare의 위협 운영 및 연구팀)은 2023년 3월 10일부터 SVB의 디지털 프레즌스에 초점을 맞춘 브랜드 모니터링을 대폭 강화했으며, SVB 테마 피싱 캠페인을 발견하기 위한 몇 가지 추가 탐지 모듈을 출시했습니다. 다양한 피싱 방지 서비스를 이용하는 모든 고객은 이러한 새로운 모델의 혜택을 자동으로 받게 됩니다.</p>
 	<p>다음은 FDIC가 실리콘밸리뱅크를 인수한 이후 SVB와 관련하여 실제 발생했던 캠페인의 예입니다.</p>
 	<h3 id="kyc-docusign-svb-">KYC 피싱 - DocuSign을 테마로 한 SVB 캠페인</h3>
 	<p>위협 행위자가 자주 사용하는 전술은 은행이 고객에 대한 세부 정보를 확인하기 위해 일상적으로 수행하는 지속적인 KYC(Know Your Customer) 노력을 모방하는 것입니다. 이는 무엇보다도 사기, 자금 세탁 및 금융 범죄로부터 금융 기관을 보호하기 위한 것입니다.</p>
@@ -49,7 +49,7 @@ eaglelodgealaska[.]com	손상되었을 수 있는 Wordpress 웹사이트 또는 
 			</p>
 		</li>
 		<li>
-			<p>인바운드 메시지에 대해 적절한 DMARC 정책을 적용하고 있는지 확인하십시오. Cloudflare는 최소한 수신 메시지의 DMARC 실패에 대해서라도 <strong>[p = quarantine]</strong> 을 권장합니다. SVB의 DMARC 레코드 [<code>v=DMARC1; p=reject; pct=100</code>] 은 브랜드를 사칭하고 SVB의 지정 및 확인된 발신자 목록에서 전송되지 않은 모든 메시지를 거부한다고 명시적으로 밝히고 있습니다. Cloudflare Email Security 고객은 SVB의 게시된 DMARC 레코드를 기반으로 이 정책이 자동으로 시행됩니다. 다른 도메인의 경우 또는 모든 인바운드 메시지에 대해 더 광범위한 DMARC 기반 정책을 적용하려면 <a href="https://developers.cloudflare.com/email-security/email-configuration/email-policies/" target="_blank">Cloudflare Area 1 대시보드</a>에서 모든 인바운드 이메일에 대해 '향상된 발신자 확인' 정책을 준수할 것을 권장합니다.</p>
+			<p>인바운드 메시지에 대해 적절한 DMARC 정책을 적용하고 있는지 확인하십시오. Cloudflare는 최소한 수신 메시지의 DMARC 실패에 대해서라도 <strong>[p = quarantine]</strong> 을 권장합니다. SVB의 DMARC 레코드 [<code>v=DMARC1; p=reject; pct=100</code>] 은 브랜드를 사칭하고 SVB의 지정 및 확인된 발신자 목록에서 전송되지 않은 모든 메시지를 거부한다고 명시적으로 밝히고 있습니다. Cloudflare Email Security 고객은 SVB의 게시된 DMARC 레코드를 기반으로 이 정책이 자동으로 시행됩니다. 다른 도메인의 경우 또는 모든 인바운드 메시지에 대해 더 광범위한 DMARC 기반 정책을 적용하려면 <a href="https://developers.cloudflare.com/email-security/email-configuration/email-policies" target="_blank">Cloudflare Area 1 대시보드</a>에서 모든 인바운드 이메일에 대해 '향상된 발신자 확인' 정책을 준수할 것을 권장합니다.</p>
 		</li>
 		<li>
 			<p>Cloudflare Gateway 고객은 이러한 악성 URL 및 도메인으로부터 자동으로 보호됩니다. 고객은 이러한 특정 IOC에 대한 로그를 확인하여 조직에서 이러한 사이트로의 트래픽이 발생했는지 확인할 수 있습니다.</p>
@@ -77,5 +77,5 @@ eaglelodgealaska[.]com	손상되었을 수 있는 Wordpress 웹사이트 또는 
 	<h3 id="--4">앞서 나가기</h3>
 	<p>Cloudflare의 위협 운영팀인 Cloudforce One은 새로운 캠페인이 형성되는 단계에서 선제적으로 모니터링하고 고객을 보호하기 위해 권고 및 탐지 모델 업데이트를 게시합니다. 이 특정 캠페인은 SVB에 초점을 맞추고 있지만, 발견된 수법은 전 세계 네트워크에서 매일 발견하여 고객에게 영향을 미치기 전에 자동으로 차단하는 다른 유사한 캠페인과 다르지 않습니다.</p>
 	<p>여러 커뮤니케이션 채널에 걸쳐 강력한 기술적 통제와 함께 디지털 커뮤니케이션의 위험성을 인지하고 있는 숙련되고 경계심이 높은 인력을 배치하는 것은 이러한 공격을 차단하는 데 매우 중요합니다.</p>
-	<p>Cloudflare가<a href="https://www.cloudflare.com/zero-trust-hub/" target="_blank"> Zero Trust 서비스</a>를 이용하여 포괄적인 피싱 방어 체계를 구축하는 데 어떤 도움을 줄 수 있는지 알아보고<a href="https://www.cloudflare.com/lp/emailsecurity/" target="_blank"> 지금 바로 무료 평가</a>도 받아보십시오.</p>
+	<p>Cloudflare가<a href="https://www.cloudflare.com/zero-trust-hub" target="_blank"> Zero Trust 서비스</a>를 이용하여 포괄적인 피싱 방어 체계를 구축하는 데 어떤 도움을 줄 수 있는지 알아보고<a href="https://www.cloudflare.com/lp/emailsecurity" target="_blank"> 지금 바로 무료 평가</a>도 받아보십시오.</p>
 </div>

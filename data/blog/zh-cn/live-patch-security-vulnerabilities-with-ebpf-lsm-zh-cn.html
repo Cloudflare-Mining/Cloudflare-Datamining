@@ -18,7 +18,7 @@ uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
 	<!--kg-card-end: markdown-->
 	<p>在大部分情况下，使用 unshare 没有损害，而且预定以较低特权运行。但是，此 syscall 已被发现用于<a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0492" target="_blank">提升特权</a>。</p>
 	<p>Syscall<em> clone</em> 和 <em>clone3</em> 值得仔细考虑，因为它们还能够 <em>CLONE_NEWUSER</em>。但就本文而言，我们将专注于 unshare。</p>
-	<p>Debian 使用这个<a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch/" target="_blank">“add sysctl to disallow unprivileged CLONE_NEWUSER by default”</a>（添加 sysctl 以在默认情况下不允许无特权的 CLONE_NEWUSER）补丁解决了该问题，但这不是主流做法。另一个类似补丁<a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org/" target="_blank">“sysctl: allow CLONE_NEWUSER to be disabled”</a>（sysctl：允许禁用 CLONE_NEWUSER）试图成为主流，但遭到了排挤。一种批评意见是针对特定应用程序<a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org/" target="_blank">无法切换此功能</a>。在文章<a href="https://lwn.net/Articles/673597/" target="_blank">《控制对用户命名空间的访问》</a>中，作者写道：“...现行补丁似乎很难成为主流。”显然，这些补丁最终并未包含在 vanilla 内核中。</p>
+	<p>Debian 使用这个<a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch" target="_blank">“add sysctl to disallow unprivileged CLONE_NEWUSER by default”</a>（添加 sysctl 以在默认情况下不允许无特权的 CLONE_NEWUSER）补丁解决了该问题，但这不是主流做法。另一个类似补丁<a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org" target="_blank">“sysctl: allow CLONE_NEWUSER to be disabled”</a>（sysctl：允许禁用 CLONE_NEWUSER）试图成为主流，但遭到了排挤。一种批评意见是针对特定应用程序<a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org" target="_blank">无法切换此功能</a>。在文章<a href="https://lwn.net/Articles/673597" target="_blank">《控制对用户命名空间的访问》</a>中，作者写道：“...现行补丁似乎很难成为主流。”显然，这些补丁最终并未包含在 vanilla 内核中。</p>
 	<h2 id="-lsm-bpf">我们的解决方案 - LSM BPF</h2>
 	<p>由于限制 USER 命名空间的上游代码似乎行不通，我们决定使用 LSM BPF 来规避这些问题。这样做并不需要修改内核，而且我们可以制定守护访问权限的复杂规则。</p>
 	<h3 id="-hook-">找到合适的 hook 候选项</h3>
@@ -35,7 +35,7 @@ rc = call_int_hook(cred_prepare, 0, new, old, gfp);
 	<!--kg-card-end: markdown-->
 	<p>不必进一步详细探究细节，我们知道这个 hook 很适合使用，因为 <em>prepare_creds()</em> 刚好就在 <em>create_user_ns()</em>（位于 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181" target="_blank"><em>unshare_userns()</em></a> 中）之前调用，后者是我们试图阻止的操作。</p>
 	<h3 id="lsm-bpf-">LSM BPF 解决方案</h3>
-	<p>我们打算使用 <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions" target="_blank">eBPF compile once-run everywhere (CO-RE)</a> 方法进行编译。这样一来，我们就可以在一个架构上编译，而在另一个架构上加载。但我们打算专门以 x86_64 为目标。适用于 ARM64 的 LSM BPF 仍在开发中，以下代码将无法在该架构上运行。敬请留意 <a href="https://lore.kernel.org/bpf/" target="_blank">BPF 邮寄列表</a>以关注进展。</p>
+	<p>我们打算使用 <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions" target="_blank">eBPF compile once-run everywhere (CO-RE)</a> 方法进行编译。这样一来，我们就可以在一个架构上编译，而在另一个架构上加载。但我们打算专门以 x86_64 为目标。适用于 ARM64 的 LSM BPF 仍在开发中，以下代码将无法在该架构上运行。敬请留意 <a href="https://lore.kernel.org/bpf" target="_blank">BPF 邮寄列表</a>以关注进展。</p>
 	<p>测试该解决方案时采用的内核版本不低于 5.15，且配置了以下内容：</p><!--kg-card-begin: markdown-->
 	<pre><code>BPF_EVENTS
 BPF_JIT
@@ -141,7 +141,7 @@ int BPF_PROG(handle_cred_prepare, struct cred *new, const struct cred *old,
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>第一步是创建程序，第二步是加载程序并附加到我们所需的 hook。有几种方式可实现这一目的：<a href="https://github.com/cilium/ebpf" target="_blank">Cilium ebpf</a> 项目，<a href="https://github.com/libbpf/libbpf-rs" target="_blank">Rust 绑定</a>，以及 <a href="https://ebpf.io/projects/" target="_blank">ebpf.io</a> 项目环境页面上的其他几项。我们打算使用原生 libbpf。</p>
+	<p>第一步是创建程序，第二步是加载程序并附加到我们所需的 hook。有几种方式可实现这一目的：<a href="https://github.com/cilium/ebpf" target="_blank">Cilium ebpf</a> 项目，<a href="https://github.com/libbpf/libbpf-rs" target="_blank">Rust 绑定</a>，以及 <a href="https://ebpf.io/projects" target="_blank">ebpf.io</a> 项目环境页面上的其他几项。我们打算使用原生 libbpf。</p>
 	<p><em>deny_unshare.c</em>：</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-c">#include &lt;bpf/libbpf.h&gt;
 #include &lt;unistd.h&gt;
@@ -306,5 +306,5 @@ uid=0(root) gid=0(root) groups=0(root)
 	<p>这些数字是针对单个 syscall 的情况，调用代码越频繁，这些数字也会相应累加。Unshare 通常在创建任务时调用，而在程序正常执行期间不会重复调用。需要对您的用例进行仔细考虑和测量。</p>
 	<h2 id="--3">结尾</h2>
 	<p>我们大致了解了 LSM BPF 的基本概念，如何使用 unshare 将用户映射到根，以及如何通过在 eBPF 中实现解决方案来解决现实问题。找到合适的 hook 并不容易，需要开展一些试验，还要编写大量内核代码。幸运的是，其他部分都比较简单。由于策略是采用 C 语言编写的，我们可以通过精细调整策略来解决我们的问题。这意味着，可以使用允许列表扩展该策略，允许特定程序或用户继续使用无特权的 unshare。最后，我们考察了该程序的性能影响，并发现阻止攻击手段所需的开销是值得的。</p>
-	<p>“Cannot allocate memory”（无法分配内存）并不是拒绝权限的明确错误消息。我们提议了一个<a href="https://lore.kernel.org/all/20220608150942.776446-1-fred@cloudflare.com/" target="_blank">补丁</a>，用于在调用堆栈中从 <em>cred_prepare</em> hook 向上传播错误代码。最终，我们得出结论，新的 hook 更适合解决该问题。敬请关注！</p>
+	<p>“Cannot allocate memory”（无法分配内存）并不是拒绝权限的明确错误消息。我们提议了一个<a href="https://lore.kernel.org/all/20220608150942.776446-1-fred@cloudflare.com" target="_blank">补丁</a>，用于在调用堆栈中从 <em>cred_prepare</em> hook 向上传播错误代码。最终，我们得出结论，新的 hook 更适合解决该问题。敬请关注！</p>
 </div>

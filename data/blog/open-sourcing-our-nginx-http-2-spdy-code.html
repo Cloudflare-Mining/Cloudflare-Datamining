@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>In December, we <a href="https://blog.cloudflare.com/introducing-http2/">released HTTP/2 support</a> for all customers and on April 28 we released <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2/">HTTP/2 Server Push</a> support as well.</p>
-	<p>The release of HTTP/2 by CloudFlare had a <a href="https://blog.cloudflare.com/cloudflares-impact-on-the-http-2-universe/">huge impact</a> on the number of sites supporting and using the protocol. Today, <a href="http://isthewebhttp2yet.com/measurements/adoption.html#organization" target="_blank">50%</a> of sites that use HTTP/2 are served via CloudFlare.</p>
+	<p>In December, we <a href="https://blog.cloudflare.com/introducing-http2">released HTTP/2 support</a> for all customers and on April 28 we released <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2">HTTP/2 Server Push</a> support as well.</p>
+	<p>The release of HTTP/2 by CloudFlare had a <a href="https://blog.cloudflare.com/cloudflares-impact-on-the-http-2-universe">huge impact</a> on the number of sites supporting and using the protocol. Today, <a href="http://isthewebhttp2yet.com/measurements/adoption.html#organization" target="_blank">50%</a> of sites that use HTTP/2 are served via CloudFlare.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/05/4950445842_daabb0ae20_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jdhancock/4950445842/in/photolist-8xsk5w-cp4c1Q-g1SjoM-o6zhX1-eZbScr-pWSwPv-rafHbb-qEjnf2-dJ9WCw-eZbRVa-gJeKqf-ef7sWH-augo8B-5BNSQM-8eyuUM-5iBMWY-6tQ5es-74BxiW-bnh8zK-Attqbq-eZbTGp-eZbTy4-7TRcLo-8FuDVS-8xWVkW-rcVTV9-8j5QDB-eZoiTE-eZbQUz-oQHS69-eZohaG-o2rMkj-eZbSiz-eZo5ww-eZofqb-eZbQMD-eZbUc6-eZo5Tf-eZbTaV-eZoeAW-ifNAyH-eZohG3-eZbJoT-qhNbsA-eZoaKJ-eZbQm6-eZbTXn-eZbYdF-6JAeef-eZbXpT" target="_blank">image</a> by <a href="https://www.flickr.com/photos/jdhancock/" target="_blank">JD Hancock</a></small>
+		<small><a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jdhancock/4950445842/in/photolist-8xsk5w-cp4c1Q-g1SjoM-o6zhX1-eZbScr-pWSwPv-rafHbb-qEjnf2-dJ9WCw-eZbRVa-gJeKqf-ef7sWH-augo8B-5BNSQM-8eyuUM-5iBMWY-6tQ5es-74BxiW-bnh8zK-Attqbq-eZbTGp-eZbTy4-7TRcLo-8FuDVS-8xWVkW-rcVTV9-8j5QDB-eZoiTE-eZbQUz-oQHS69-eZohaG-o2rMkj-eZbSiz-eZo5ww-eZofqb-eZbQMD-eZbUc6-eZo5Tf-eZbTaV-eZoeAW-ifNAyH-eZohG3-eZbJoT-qhNbsA-eZoaKJ-eZbQm6-eZbTXn-eZbYdF-6JAeef-eZbXpT" target="_blank">image</a> by <a href="https://www.flickr.com/photos/jdhancock" target="_blank">JD Hancock</a></small>
 	</p>
 	<p>When we released HTTP/2 support we decided not to deprecate SPDY immediately because it was still in widespread use and we <a href="https://blog.cloudflare.com/introducing-http2/#comment-2391853103">promised</a> to open source our modifications to NGINX as it was not possible to support both SPDY and HTTP/2 together with the standard release of NGINX.</p>
 	<p>We've extracted our changes and they are available as a <a href="https://github.com/cloudflare/sslconfig/tree/master/patches" target="_blank">patch here</a>. This patch should build cleanly against NGINX 1.9.7.</p>
@@ -31,7 +31,7 @@
 CONNECTED(00000003)
 Protocols advertised by server: h2, spdy/3.1, http/1.1
 </code></pre>
-	<p>Many other tools for testing and debugging HTTP/2 connections can be found <a href="https://blog.cloudflare.com/tools-for-debugging-testing-and-using-http-2/">here</a>.</p>
+	<p>Many other tools for testing and debugging HTTP/2 connections can be found <a href="https://blog.cloudflare.com/tools-for-debugging-testing-and-using-http-2">here</a>.</p>
 	<p>The patch puts HTTP/2 before SPDY/3.1 and will prefer HTTP/2 over SPDY/3.1. If a web browser offers both, HTTP/2 will be preferred and used for the connection.</p>
 	<p>We continue to support SPDY and HTTP/2 across all CloudFlare sites and will keep an eye on the percentage of connections that use SPDY before making a decision on its eventual deprecation.</p>
 	<!--kg-card-end: markdown-->

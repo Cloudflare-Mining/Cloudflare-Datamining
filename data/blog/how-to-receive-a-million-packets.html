@@ -5,7 +5,7 @@
 	<p><em>On Linux, how hard is it to write a program that receives 1 million UDP packets per second?</em></p>
 	<p>Hopefully, answering this question will be a good lesson about the design of a modern networking stack.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/06/3208129302_7e14f00492_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/mccaffrey_uk/3208129302" target="_blank">image</a> by <a href="https://www.flickr.com/photos/mccaffrey_uk" target="_blank">Bob McCaffrey</a></small>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/mccaffrey_uk/3208129302" target="_blank">image</a> by <a href="https://www.flickr.com/photos/mccaffrey_uk" target="_blank">Bob McCaffrey</a></small>
 	</p>
 	<p>First, let us assume:</p>
 	<ul>
@@ -213,7 +213,7 @@ receiver$ taskset -c 1,2 ./udpreceiver1 0.0.0.0:4321 2
 		<li>SO_REUSEPORT</li>
 	</ol>
 	<hr>
-	<p>Fortunately, there is a workaround recently added to Linux: <a href="https://lwn.net/Articles/542629/" target="_blank">the SO_REUSEPORT flag</a>. When this flag is set on a socket descriptor, Linux will allow many processes to bind to the same port. In fact, any number of processes will be allowed to bind and the load will be spread across them.</p>
+	<p>Fortunately, there is a workaround recently added to Linux: <a href="https://lwn.net/Articles/542629" target="_blank">the SO_REUSEPORT flag</a>. When this flag is set on a socket descriptor, Linux will allow many processes to bind to the same port. In fact, any number of processes will be allowed to bind and the load will be spread across them.</p>
 	<p>With <code>SO_REUSEPORT</code> each of the processes will have a separate socket descriptor. Therefore each will own a dedicated UDP receive buffer. This avoids the contention issues previously encountered:</p>
 	<pre><code class="language-.bash">receiver$ taskset -c 1,2,3,4 ./udpreceiver1 0.0.0.0:4321 4 1
   1.114M pps  34.007MiB / 285.271Mb

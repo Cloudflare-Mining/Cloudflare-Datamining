@@ -2,7 +2,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-9.png" class="kg-image" alt="Version and Stage Configuration Changes with HTTP Applications in Beta" loading="lazy"></figure>
 	<p>本日、HTTPアプリケーションのクローズドベータ版を発表します。これは、HTTPトラフィックへの変更を安全にテストおよびデプロイするための新しい方法です。HTTPアプリケーションは、設定のバージョン管理およびCloudflareのグローバルエッジネットワーク上のHTTPトラフィックへの変更のロールアウトを制御する機能を提供します。より高度な制御を必要とする企業のお客様は、アクセス取得のためにCustomer Successマネージャーにお問い合わせください。</p>
 	<h3 id="-"><strong>設定を管理する上での問題点</strong></h3>
-	<p>Cloudflareの最初の頃から、WebサイトやWebアプリケーションの管理は、私たちがゾーンと呼ぶものを通して行われてきました。これは、<a href="https://www.cloudflare.com/learning/dns/glossary/dns-zone/" target="_blank">DNSゾーン</a>の概念に由来しています。このモデルは長年にわたってお客様に貢献してきましたが、エッジ設定を管理する上で、次のような困難が生じます。</p>
+	<p>Cloudflareの最初の頃から、WebサイトやWebアプリケーションの管理は、私たちがゾーンと呼ぶものを通して行われてきました。これは、<a href="https://www.cloudflare.com/learning/dns/glossary/dns-zone" target="_blank">DNSゾーン</a>の概念に由来しています。このモデルは長年にわたってお客様に貢献してきましたが、エッジ設定を管理する上で、次のような困難が生じます。</p>
 	<ol>
 		<li>ステージング環境のセットアップにお客様の手作業が必要。</li>
 		<li>本番とステージングで設定がずれるリスク。</li>
@@ -13,8 +13,8 @@
 	<h3 id="http-"><strong>HTTPアプリケーション</strong></h3>
 	<p>HTTPアプリケーションは、エッジ設定をホスト名ではなく、ユースケースごとに管理する方法です。各HTTPアプリケーションには、マーケティングWebサイトや内部アプリケーションの設定を処理するなどの目的があります。各HTTPアプリケーションは、ページルール、ファイアウォールルール、キャッシュ設定など、トラフィックを管理するための設定のスナップショットを示す設定のバージョンで構成されています。HTTPアプリケーション内の各バージョンの設定は、他のバージョンとは独立していますが、新しいバージョンが作成されると、その前のバージョンのコピーとして初期化されます。</p>
 	<h3 id="--1"><strong>ルーティングルール</strong></h3>
-	<p>ゾーンとは異なり、HTTPアプリケーションの各バージョンは、特定のホスト名から独立しています。では、ゾーンのようにバージョンがホスト名に縛られない場合、HTTPアプリケーションのどのバージョンが特定のトラフィックセットに影響を与えるかをどのように決定するのでしょうか。その答えがルーティングルールです。ルーティングルールでは、HTTPアプリケーションのどのバージョンをどのトラフィック、すなわちホスト名に適用するかを決めることができます。ルーティングルールはCloudflareの<a href="https://developers.cloudflare.com/ruleset-engine/" target="_blank">ルールセットエンジン</a>によって提供されており、Cloudflareアカウントで管理されているホスト名を設定のバージョンにマッピングする条件付き「if then」ルールの使用に依存しています。例として、リクエストのホスト名が「www.example.com」にマッチした場合、マーケティングHTTPアプリケーションのバージョン2を適用します。このルールがエッジで実行されると、通常のゾーン設定である<a href="http://www.example.com/" target="_blank">www.example.com</a>の代わりに、HTTPアプリケーションのバージョン2で定義された設定がエッジで使用されることになります。</p>
-	<p>ルーティングルールは、ステージングルールと本番ルールの2種類のルールをサポートしています。記述されているように、どちらもホスト名のリストを取りますが、ステージングルールを作成するときに、エッジの特定のIPにトラフィックが送られたときにのみルールが実行されるように、追加でフィルタを適用します。つまり、ステージングIPの<a href="http://www.example.com/" target="_blank">www.example.com</a>にトラフィックを送ることで安全に変更をテストすることができ、顧客は影響を受けないということです。さらに、本番用ルーティングルールを作成して変更を検証すると、まったく同じ設定がすべてのお客様に本番で適用されます。</p>
+	<p>ゾーンとは異なり、HTTPアプリケーションの各バージョンは、特定のホスト名から独立しています。では、ゾーンのようにバージョンがホスト名に縛られない場合、HTTPアプリケーションのどのバージョンが特定のトラフィックセットに影響を与えるかをどのように決定するのでしょうか。その答えがルーティングルールです。ルーティングルールでは、HTTPアプリケーションのどのバージョンをどのトラフィック、すなわちホスト名に適用するかを決めることができます。ルーティングルールはCloudflareの<a href="https://developers.cloudflare.com/ruleset-engine" target="_blank">ルールセットエンジン</a>によって提供されており、Cloudflareアカウントで管理されているホスト名を設定のバージョンにマッピングする条件付き「if then」ルールの使用に依存しています。例として、リクエストのホスト名が「www.example.com」にマッチした場合、マーケティングHTTPアプリケーションのバージョン2を適用します。このルールがエッジで実行されると、通常のゾーン設定である<a href="http://www.example.com" target="_blank">www.example.com</a>の代わりに、HTTPアプリケーションのバージョン2で定義された設定がエッジで使用されることになります。</p>
+	<p>ルーティングルールは、ステージングルールと本番ルールの2種類のルールをサポートしています。記述されているように、どちらもホスト名のリストを取りますが、ステージングルールを作成するときに、エッジの特定のIPにトラフィックが送られたときにのみルールが実行されるように、追加でフィルタを適用します。つまり、ステージングIPの<a href="http://www.example.com" target="_blank">www.example.com</a>にトラフィックを送ることで安全に変更をテストすることができ、顧客は影響を受けないということです。さらに、本番用ルーティングルールを作成して変更を検証すると、まったく同じ設定がすべてのお客様に本番で適用されます。</p>
 	<p>しかし、話はこれくらいにして、実際の活用例を見てみましょう！</p>
 	<h3 id="http--1"><strong>HTTPアプリケーションを使用した安全なテストと変更のデプロイ</strong></h3>
 	<p>このウォークスルーでは、私は既存の顧客の役を演じるつもりです。私は顧客にサービスを提供する既存のゾーンを持っており、アセットの場所を書き換えることができるように、変換ルールをいくつか変更したいと思います。しかし、私は正規表現があまり得意ではないので、ミスをするとすべての顧客のサイトを壊してしまいそうです！ゾーンに直接変更を加えるのではなく、HTTPアプリケーションとルーティングルールを使って、変更を行い、テストし、ロールアウトする予定です。</p>
@@ -33,7 +33,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image8-8.png" class="kg-image" alt="Transform rules of Version 1 showing no rules have been created." loading="lazy">
 		<figcaption>ルールが作成されていないことを示すバージョン1のTransform rules。</figcaption>
 	</figure>
-	<p><a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge/">Transform Rules</a>下のルールセクションに、アセットのパスを正しい場所に書き換えるための新しいルールを作成します。example.com/assets/*へのあらゆるリクエストに対して、example.com/internal/files/assets/*となるようパスを書き換えます。</p>
+	<p><a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge">Transform Rules</a>下のルールセクションに、アセットのパスを正しい場所に書き換えるための新しいルールを作成します。example.com/assets/*へのあらゆるリクエストに対して、example.com/internal/files/assets/*となるようパスを書き換えます。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image13.png" class="kg-image" alt="Creating a transform rule for Version 1 named “Rewrite Assets”. This rule replaces the path for requests starting with “/assets/*” with “internal/files/assets/*”." loading="lazy">
 		<figcaption>「Rewrite Assets」という名前のバージョン1の変換ルールを作成します。このルールは、「/assets/*」で始まるリクエストのパスを「internal/files/assets/*」に置き換えます。</figcaption>
 	</figure>
@@ -47,7 +47,7 @@
 	</figure>
 	<p>私は、顧客に影響を与えることなく、この変更をテストする唯一の存在になりたいので、ステージングルールを作成することにします。ステージングルールを作成すると、このバージョンをテストするために使用できるIPがルール作成画面に表示されることに注意してください。</p>
 	<p>リクエストがexample.comに一致し、エッジIPが192.168.1.1または192.168.2.2のときに一致するステージングのルーティングルールを作成し、バージョン1の設定を適用します</p>
-	<p>ルールを作成したら、example.comのリクエストをこれらのIPに送信するよう、自分のコンピュータを設定することができます。Rackspaceでは、<a href="https://docs.rackspace.com/support/how-to/modify-your-hosts-file/" target="_blank">総合ガイド</a>に、ローカルマシンのホストファイルを変更してこれを行う方法が紹介されています。さて、私がexample.comにアクセスすると新しい変換ルールが実行されますが、このサイトを訪れる他の人たちに対しては、何も変化がありません。</p>
+	<p>ルールを作成したら、example.comのリクエストをこれらのIPに送信するよう、自分のコンピュータを設定することができます。Rackspaceでは、<a href="https://docs.rackspace.com/support/how-to/modify-your-hosts-file" target="_blank">総合ガイド</a>に、ローカルマシンのホストファイルを変更してこれを行う方法が紹介されています。さて、私がexample.comにアクセスすると新しい変換ルールが実行されますが、このサイトを訪れる他の人たちに対しては、何も変化がありません。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image10-3.png" class="kg-image" alt="Routing Rules for the Example Application showing one rule for staging has been created." loading="lazy">
 		<figcaption>ステージング用のルールが1つ作成されたことを示す、アプリケーション例のルーティングルール。</figcaption>
 	</figure>

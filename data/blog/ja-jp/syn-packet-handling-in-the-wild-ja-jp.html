@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<p>Cloudflareは、インターネットの未知の領域でのサーバー運用に関して豊富な経験があります。それでも、常にこの黒魔術の腕に磨きをかけています。まさにこのブログで、<a href="https://blog.cloudflare.com/this-is-strictly-a-violation-of-the-tcp-specification/">FIN-WAIT-2の理解</a>や<a href="https://blog.cloudflare.com/the-story-of-one-latency-spike/">バッファチューニングを受ける</a>といったインターネットプロトコルの影の部分についてこれまで言及してきました。</p>
+	<p>Cloudflareは、インターネットの未知の領域でのサーバー運用に関して豊富な経験があります。それでも、常にこの黒魔術の腕に磨きをかけています。まさにこのブログで、<a href="https://blog.cloudflare.com/this-is-strictly-a-violation-of-the-tcp-specification">FIN-WAIT-2の理解</a>や<a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">バッファチューニングを受ける</a>といったインターネットプロトコルの影の部分についてこれまで言及してきました。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/01/1471936772_652043cb6c_b.jpg" class="kg-image" alt="1471936772_652043cb6c_b" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/isaimoreno/1471936772/in/photolist-3f54wd-6mweJG-maUn5T-2tgqad-6YuCuM-pZ7r8T-Sa3LQ9-adTFS2-qSLQzk-sJ66Lq-71cJPS-oFU9rf-mbom12-23fVpJW-71ciCN-718DHR-j4VCQQ-71chKo-5DMBr4-5DLQFK-71cG4s-qQFjhZ-2RMBP6-718KWR-71cAFA-fAr8Ri-pe5zev-8TtDbQ-b6p5gk-qAdMqQ-qSBvUZ-qyg7oz-o5yof6-adTGvc-718xp4-5XQgJZ-bgGiwk-kf7aMc-qAjY14-718uti-smXfxF-8Kdnpx-nVVy8a-cmMJGb-puizaG-qP18i9-71cu1E-nYNfjq-718CjH-qyQM72" target="_blank">イメージ</a> 作成者 <a href="https://www.flickr.com/photos/isaimoreno/" target="_blank">Isaí Moreno</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/isaimoreno/1471936772/in/photolist-3f54wd-6mweJG-maUn5T-2tgqad-6YuCuM-pZ7r8T-Sa3LQ9-adTFS2-qSLQzk-sJ66Lq-71cJPS-oFU9rf-mbom12-23fVpJW-71ciCN-718DHR-j4VCQQ-71chKo-5DMBr4-5DLQFK-71cG4s-qQFjhZ-2RMBP6-718KWR-71cAFA-fAr8Ri-pe5zev-8TtDbQ-b6p5gk-qAdMqQ-qSBvUZ-qyg7oz-o5yof6-adTGvc-718xp4-5XQgJZ-bgGiwk-kf7aMc-qAjY14-718uti-smXfxF-8Kdnpx-nVVy8a-cmMJGb-puizaG-qP18i9-71cu1E-nYNfjq-718CjH-qyQM72" target="_blank">イメージ</a> 作成者 <a href="https://www.flickr.com/photos/isaimoreno" target="_blank">Isaí Moreno</a></figcaption>
 	</figure>
 	<p>ただし、これまで十分注目されてこなかったテーマが一つあります。それがSYNフラッドです。当社はLinuxを使用しており、LinuxのSYNパケット処理は実に複雑です。今回はこれをテーマに取り上げます。</p>
 	<h3 id="2-"><strong>2列の物語</strong></h3>
@@ -68,7 +68,7 @@ $ ss -n state syn-recv sport = :443 | wc -l
 	</ul>
 	<p><em>インバウンド</em>パケットをドロップすることに関する強い論理的根拠は、プッシュバックメカニズムです。相手は、遅かれ早かれSYNパケットかACKパケットを再送信しますし、その時点では、遅いアプリケーションが回復していると期待されます。</p>
 	<p>これは、ほぼすべてのサーバーにとって望ましい動作です。補足：グローバルな <code>net.ipv4.tcp_abort_on_overflow</code>トグルで調整はできますが、触らない方が良いです。</p>
-	<p>サーバーが多数の受信接続を処理する必要があり、accept <code>()</code> スループットに苦労している場合は、<a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">Nginx チューニング/Epoll 作業の配分</a>の記事と<a href="https://blog.cloudflare.com/perfect-locality-and-three-epic-systemtap-scripts/">有用な SystemTapスクリプトを説明したフォローアップ記事</a>をご参照ください。</p>
+	<p>サーバーが多数の受信接続を処理する必要があり、accept <code>()</code> スループットに苦労している場合は、<a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">Nginx チューニング/Epoll 作業の配分</a>の記事と<a href="https://blog.cloudflare.com/perfect-locality-and-three-epic-systemtap-scripts">有用な SystemTapスクリプトを説明したフォローアップ記事</a>をご参照ください。</p>
 	<p>nstat カウンターを調ベると、Acceptキューのオーバーフロー統計を追跡することができます。</p>
 	<pre><code>$ nstat -az TcpExtListenDrops
 TcpExtListenDrops     49199     0.0</code></pre>
@@ -86,13 +86,13 @@ time (us)        acceptq qmax  local addr    remote_addr
 ...</code></pre>
 	<p>ここでは、どのSYNパケットがListenDropsの影響を受けたかを正確にみることができます。このスクリプトでは、どのアプリケーションが接続を切断しているかを理解することは些末な情報です。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/01/3713965419_20388fb368_b.jpg" class="kg-image" alt="3713965419_20388fb368_b" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/16339684@N00/3713965419/in/photolist-6Ec3wx-5jhnwn-bfyTRX-5jhnCa-phYcey-dxZ95n-egkTN-kwT1YH-k22LWZ-5jBUiy-bzvDWx-5jBV31-5jhnr8-5jBTkq-5jxzHk-4K3cbP-9EePyg-4e5XNt-4e5XNn-dxZ8Tn-dy5A89-dxZ6GH-cztXcJ-gF7oY-dxZ9jv-dxZ7qM-ZvSPCv-dxZ6YV-5jBTqs-5jxzaP-MvuyK-nmVwP1-5jBRhY-dxZ7YF-5jxAc2-5jBU9U-5jBTEy-ejbWe6-5jxBc6-99ENZW-99KUsi-9bWScw-5jBRow-5jxzmx-5jBTfw-r6HcW-dy5zXE-5jxzg4-5jxBYR-5jxA2B" target="_blank">イメージ</a>作成者 <a href="https://www.flickr.com/photos/16339684@N00/" target="_blank">internets_dairy</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/16339684@N00/3713965419/in/photolist-6Ec3wx-5jhnwn-bfyTRX-5jhnCa-phYcey-dxZ95n-egkTN-kwT1YH-k22LWZ-5jBUiy-bzvDWx-5jBV31-5jhnr8-5jBTkq-5jxzHk-4K3cbP-9EePyg-4e5XNt-4e5XNn-dxZ8Tn-dy5A89-dxZ6GH-cztXcJ-gF7oY-dxZ9jv-dxZ7qM-ZvSPCv-dxZ6YV-5jBTqs-5jxzaP-MvuyK-nmVwP1-5jBRhY-dxZ7YF-5jxAc2-5jBU9U-5jBTEy-ejbWe6-5jxBc6-99ENZW-99KUsi-9bWScw-5jBRow-5jxzmx-5jBTfw-r6HcW-dy5zXE-5jxzg4-5jxBYR-5jxA2B" target="_blank">イメージ</a>作成者 <a href="https://www.flickr.com/photos/16339684@N00" target="_blank">internets_dairy</a></figcaption>
 	</figure>
 	<h3 id="syn--1"><strong>SYNフラッド</strong></h3>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/01/full-syn-1.jpeg" class="kg-image" alt="full-syn-1" loading="lazy"></figure>
 	<p>Acceptキューをオーバーフローできる場合は、SYNキューもオーバーフローできるはずです。その場合、どうなりますか?</p>
 	<p>これが<a href="https://en.wikipedia.org/wiki/SYN_flood" target="_blank">SYNフラッド攻撃</a>です。過去には、なりすましSYNパケットによるSYNキューへのフラッド攻撃は、深刻な問題でした。1996年以前は、SYNキューをいっぱいにするだけで、帯域幅の少ないTCPサーバーのほとんどすべてにおいて、サービス拒否ができました。</p>
-	<p>解決策は、<a href="https://lwn.net/Articles/277146/" target="_blank">SYN Cookie</a>です。SYN Cookieは、実際にインバウンドSYNを保存してシステムメモリを浪費することをせずにSYN+ACKをステートレスに生成できるようにする構成されています。SYN Cookieは正当なトラフィックを中断させません。相手が実在する場合は、反映されたシーケンス番号を含む有効なACKパケットで応答し、これは暗号的に検証可能です。</p>
+	<p>解決策は、<a href="https://lwn.net/Articles/277146" target="_blank">SYN Cookie</a>です。SYN Cookieは、実際にインバウンドSYNを保存してシステムメモリを浪費することをせずにSYN+ACKをステートレスに生成できるようにする構成されています。SYN Cookieは正当なトラフィックを中断させません。相手が実在する場合は、反映されたシーケンス番号を含む有効なACKパケットで応答し、これは暗号的に検証可能です。</p>
 	<p>デフォルトで、SYNキューがいっぱいになったソケットに対して、SYN Cookieは必要に応じて有効になります。Linuxは SYN Cookieのカウンターをいくつか更新します。SYN Cookieが送信される場合:</p>
 	<ul>
 		<li>TcpExtTCPReqQFullDoCookies / <code>LINUX_MIB_TCPREQQFULLDOCOOKIES</code> がインクリメントされます。</li>
@@ -124,15 +124,15 @@ time (us)        acceptq qmax  local addr    remote_addr
 	<ul>
 		<li>過去のタイムスタンプでは、サーバーの稼働時間が漏れました（それが重要かどうかは別の議論です）。これは<a href="https://github.com/torvalds/linux/commit/95a22caee396cef0bb2ca8fafdd82966a49367bb" target="_blank">8ヶ月前に修正済み</a>です。</li>
 		<li>TCPタイムスタンプは、各パケット12バイトの<a href="http://highscalability.com/blog/2015/10/14/save-some-bandwidth-by-turning-off-tcp-timestamps.html" target="_blank">少なくない帯域幅</a>を使用します。</li>
-		<li><a href="https://www.snellman.net/blog/archive/2017-07-20-s3-mystery/" target="_blank">特定の破損したハードウェアに役立つ</a>パケットチェックサムに追加のランダム性を追加することができます。</li>
+		<li><a href="https://www.snellman.net/blog/archive/2017-07-20-s3-mystery" target="_blank">特定の破損したハードウェアに役立つ</a>パケットチェックサムに追加のランダム性を追加することができます。</li>
 		<li>前述のように、TCPタイムスタンプは、SYN Cookieが使用されている場合に TCP接続のパフォーマンスを向上させることができます。</li>
 	</ul>
 	<p>現在Cloudflareでは、TCPタイムスタンプが無効になっています。</p>
-	<p>最後に、SYN Cookieが使用されると、<a href="https://lwn.net/Articles/645128/" target="_blank">TCP_SAVED_SYN</a>、TCP_DEFER_ACCEPTやTCP_FAST_OPENといったクールな機能が動作しなくなります。</p>
+	<p>最後に、SYN Cookieが使用されると、<a href="https://lwn.net/Articles/645128" target="_blank">TCP_SAVED_SYN</a>、TCP_DEFER_ACCEPTやTCP_FAST_OPENといったクールな機能が動作しなくなります。</p>
 	<h3 id="cloudflare-syn-"><strong>Cloudflare規模のSYNフラッド</strong></h3>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/01/Screen-Shot-2016-12-02-at-10.53.27-1.png" class="kg-image" alt="Screen-Shot-2016-12-02-at-10.53.27-1" loading="lazy"></figure>
-	<p>SYN Cookieは偉大な発明であり、より小規模のSYNフラッドの問題を解決します。ですが、Cloudflareでは、可能であれば利用を避けるようにしています。1 秒間に数千個の暗号検証可能な SYN+ACK パケットを送信することに問題はありませんが、<a href="https://blog.cloudflare.com/the-daily-ddos-ten-days-of-massive-attacks/">1 秒あたり 2 億パケットを超える攻撃</a>が見られます。この規模では、当社のSYN+ACK応答はインターネットにごみを散らかすだけで、まったくメリットがありません。</p>
-	<p>代わりに、ファイアウォール層に悪意のある SYNパケットをドロップしようと思っています。BPF にコンパイルされた p0f SYN フィンガープリントを使用します。<a href="https://blog.cloudflare.com/introducing-the-p0f-bpf-compiler/">p0f BPFコンパイラの紹介</a>に関するこのブログ記事を参照してください。軽減策を検出して展開するために、当社は「Gatebot」と呼ぶ自動化システムを開発しました。<a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebotの紹介-ボットのおかげで、安心して夜寝られる</a>の中で説明をしています。</p>
+	<p>SYN Cookieは偉大な発明であり、より小規模のSYNフラッドの問題を解決します。ですが、Cloudflareでは、可能であれば利用を避けるようにしています。1 秒間に数千個の暗号検証可能な SYN+ACK パケットを送信することに問題はありませんが、<a href="https://blog.cloudflare.com/the-daily-ddos-ten-days-of-massive-attacks">1 秒あたり 2 億パケットを超える攻撃</a>が見られます。この規模では、当社のSYN+ACK応答はインターネットにごみを散らかすだけで、まったくメリットがありません。</p>
+	<p>代わりに、ファイアウォール層に悪意のある SYNパケットをドロップしようと思っています。BPF にコンパイルされた p0f SYN フィンガープリントを使用します。<a href="https://blog.cloudflare.com/introducing-the-p0f-bpf-compiler">p0f BPFコンパイラの紹介</a>に関するこのブログ記事を参照してください。軽減策を検出して展開するために、当社は「Gatebot」と呼ぶ自動化システムを開発しました。<a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Gatebotの紹介-ボットのおかげで、安心して夜寝られる</a>の中で説明をしています。</p>
 	<h3 id="--3"><strong>進化する風景</strong></h3>
 	<p>この件についてのデータに関しては、（多少古いですが）<a href="https://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html" target="_blank">2015年のAndreas Veithen執筆による優れた説明</a>と<a href="https://www.giac.org/paper/gsec/2013/syn-cookies-exploration/103486" target="_blank">2013年のGerald W.Gordon執筆の包括的論文</a>をお読みください。</p>
 	<p>Linux SYNパケット処理状況は常に進化しています。最近まで、SYN Cookieは低速で、これはカーネルの古いロックのためでした。これが4.4 では修正され、今はカーネルを使用して毎秒数百万のSYN Cookieを送信できるようになったため、ほとんどのユーザーにとって SYNフラッドの問題は事実上解決できています。適切なチューニングにより、正当な接続のパフォーマンスに影響を与えることなく、最も厄介なSYNフラッドでも軽減することができます。</p>

@@ -5,7 +5,7 @@
 	<p>An initial patch was made available on October 4 with an update to 2.4.50, however, this was found to be insufficient resulting in an additional patch bumping the version number to 2.4.51 on October 7th (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42013" target="_blank">CVE-2021-42013</a>).</p>
 	<p>Customers using Apache HTTP Server versions 2.4.49 and 2.4.50 should immediately update to version 2.4.51 to mitigate the vulnerability. Details on how to update can be found on the <a href="https://httpd.apache.org/security/vulnerabilities_24.html" target="_blank">official Apache HTTP Server project site</a>.</p>
 	<p>Any Cloudflare customer with the setting <a href="https://developers.cloudflare.com/rules/normalization/manage" target="_blank">normalize URLs to origin</a> turned on have always been protected against this vulnerability.</p>
-	<p>Additionally, customers who have access to the <a href="https://www.cloudflare.com/waf/" target="_blank">Cloudflare Web Application Firewall</a> (WAF), receive additional protection by turning on the rules with the following IDs:</p>
+	<p>Additionally, customers who have access to the <a href="https://www.cloudflare.com/waf" target="_blank">Cloudflare Web Application Firewall</a> (WAF), receive additional protection by turning on the rules with the following IDs:</p>
 	<ul>
 		<li><code>1c3d3022129c48e9bb52e953fe8ceb2f</code> and <code>ca955959c4ab4b1f84f681a4d0a5c982</code> (for our new WAF)</li>
 		<li><code>100045</code> and <code>100045A</code> (for our legacy WAF)</li>
@@ -34,6 +34,6 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="conclusion">Conclusion</h3>
-	<p>Keeping web environments safe is not an easy task. Attackers will normally gain access and try to exploit vulnerabilities even before PoCs become widely available — we reported such a case not too long ago with <a href="https://blog.cloudflare.com/how-cloudflare-helped-mitigate-the-atlassian-confluence-ognl-vulnerability-before-the-poc-was-released/">Atlassian’s Confluence OGNL vulnerability</a>.</p>
-	<p>It is vital to employ all security measures available. Cloudflare features such as our <a href="https://developers.cloudflare.com/rules/normalization" target="_blank">URL normalization</a> and the <a href="https://www.cloudflare.com/waf/" target="_blank">WAF</a>, are easy to implement and can buy time to deploy any relevant patches offered by the affected software vendors.</p>
+	<p>Keeping web environments safe is not an easy task. Attackers will normally gain access and try to exploit vulnerabilities even before PoCs become widely available — we reported such a case not too long ago with <a href="https://blog.cloudflare.com/how-cloudflare-helped-mitigate-the-atlassian-confluence-ognl-vulnerability-before-the-poc-was-released">Atlassian’s Confluence OGNL vulnerability</a>.</p>
+	<p>It is vital to employ all security measures available. Cloudflare features such as our <a href="https://developers.cloudflare.com/rules/normalization" target="_blank">URL normalization</a> and the <a href="https://www.cloudflare.com/waf" target="_blank">WAF</a>, are easy to implement and can buy time to deploy any relevant patches offered by the affected software vendors.</p>
 </div>

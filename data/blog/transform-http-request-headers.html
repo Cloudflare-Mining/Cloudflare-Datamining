@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image2-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>HTTP headers are central to how the web works. They are used for passing additional information between the client and server, such as which security permissions to apply and information about the client, allowing the correct content to be served.</p>
-	<p>Today we are announcing the immediate availability of the second action within Transform Rules, “<strong>HTTP Request Header Modification</strong>”, available for all Cloudflare plans. This new functionality provides Cloudflare administrators with the ability to easily set or remove HTTP request headers as traffic flows through Cloudflare. This allows customers to enrich requests with information such as the <a href="https://www.cloudflare.com/en-gb/products/bot-management/" target="_blank">Cloudflare Bot Management</a> ‘<strong>Bot Score</strong>’<strong> </strong>prior to being sent to their servers. Previously, HTTP request header modification was done using a <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Worker</a>. Today we’re introducing an easier way to do this without writing a single line of code.</p>
+	<p>Today we are announcing the immediate availability of the second action within Transform Rules, “<strong>HTTP Request Header Modification</strong>”, available for all Cloudflare plans. This new functionality provides Cloudflare administrators with the ability to easily set or remove HTTP request headers as traffic flows through Cloudflare. This allows customers to enrich requests with information such as the <a href="https://www.cloudflare.com/en-gb/products/bot-management" target="_blank">Cloudflare Bot Management</a> ‘<strong>Bot Score</strong>’<strong> </strong>prior to being sent to their servers. Previously, HTTP request header modification was done using a <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Worker</a>. Today we’re introducing an easier way to do this without writing a single line of code.</p>
 	<h3 id="luggage-tags-of-the-world-wide-web">Luggage tags of the World Wide Web</h3>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/markus-spiske-pMxKbn5ucZs-unsplash.jpeg" class="kg-image" alt="" loading="lazy">
 		<figcaption>Photo by <a href="https://unsplash.com/@markusspiske?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Markus Spiske</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Unsplash</a></figcaption>
@@ -19,7 +19,7 @@
 	<pre><code>proxy_set_header X-Header-Name "custom";
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>When using &nbsp;<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>, the code would be similar to:</p><!--kg-card-begin: markdown-->
+	<p>When using &nbsp;<a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a>, the code would be similar to:</p><!--kg-card-begin: markdown-->
 	<pre><code>request.headers.set("X-Header-Name", "custom")
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -46,5 +46,5 @@
 	<p>An example where functions are commonly used is concat() and to_string() used to take a list of different data types and concatenate to form a single header value. For example, <strong><code>concat(“score=”,to_string(cf.bot_management.score))</code></strong> would result in a header value of ‘score=85’.</p>
 	<p>Note: regular expression functions are only available for customers on Business and Enterprise plans.</p>
 	<h3 id="try-it-now">Try it now</h3>
-	<p>HTTP Request Header Modification can be used to improve operations, remove sensitive data, and increase security, amongst many other use cases. Try out the latest <a href="https://dash.cloudflare.com/" target="_blank">Transform Rule</a> yourself today.</p>
+	<p>HTTP Request Header Modification can be used to improve operations, remove sensitive data, and increase security, amongst many other use cases. Try out the latest <a href="https://dash.cloudflare.com" target="_blank">Transform Rule</a> yourself today.</p>
 </div>

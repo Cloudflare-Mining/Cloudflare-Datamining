@@ -19,14 +19,14 @@
 	</ol>
 	<p><a href="https://slate.com/technology/2016/12/how-the-2011-hack-of-diginotar-changed-the-internets-infrastructure.html" target="_blank">这种攻击<em>确实</em>会发生</a>，因此我们有充分的理由关注证书。更常见的情况是，域的所有者在发现意外的证书时不会去跟踪证书来源，并且感到恐慌。我们需要一种方法来防止这些情况破坏整个系统。</p>
 	<h2 id="--2">证书透明度</h2>
-	<p>啊，证书透明度（CT）。CT通过让所有证书公开且易于审核，解决了我刚才描述的问题。当CA颁发证书时，它们必须向至少两个“公共日志”提交证书。这意味着，总的来说，日志携带着关于互联网上所有可信证书的重要数据。现有多家公司提供了CT日志——谷歌也推出了自己的一些。<a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus/">去年，我们发布了Cloudflare的Nimbus日志</a>。</p>
+	<p>啊，证书透明度（CT）。CT通过让所有证书公开且易于审核，解决了我刚才描述的问题。当CA颁发证书时，它们必须向至少两个“公共日志”提交证书。这意味着，总的来说，日志携带着关于互联网上所有可信证书的重要数据。现有多家公司提供了CT日志——谷歌也推出了自己的一些。<a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">去年，我们发布了Cloudflare的Nimbus日志</a>。</p>
 	<p>日志非常非常大，通常包含了数亿个证书记录。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>日志基础结构可帮助浏览器验证网站身份。当您在Safari或谷歌Chrome中请求访问cloudflare.com时，浏览器实际上需要Cloudflare的证书被注册到一个CT日志中。如果日志中没有这个证书，那么地址栏旁边就不会显示锁图标。相反，浏览器会告诉你，你试图访问的网站是不安全的。你会愿意访问一个有“不安全”标记的网站吗？应该不会吧。</p>
 	<p>有一些系统可以审核CT日志并报告非法证书。因此，如果浏览器在日志中找到同样受信任的有效证书，那么一切都是安全的。</p>
 	<h2 id="--3">我们今天公布的是</h2>
-	<p>Cloudflare一直是CT行业的领导者。除了Nimbus，<a href="https://blog.cloudflare.com/a-tour-through-merkle-town-cloudflares-ct-ecosystem-dashboard/">我们还推出了一个名为Merkle Town的CT控制面板，并说明了我们是如何研发的。</a>今天，我们将发布证书透明度监控的公共测试版。</p>
+	<p>Cloudflare一直是CT行业的领导者。除了Nimbus，<a href="https://blog.cloudflare.com/a-tour-through-merkle-town-cloudflares-ct-ecosystem-dashboard">我们还推出了一个名为Merkle Town的CT控制面板，并说明了我们是如何研发的。</a>今天，我们将发布证书透明度监控的公共测试版。</p>
 	<p>如果您选择使用CT监控，我们将在您的某个域名获得证书时发送电子邮件给您。当你接到警报时，不要惊慌；无论何时，只要发现可能的域名匹配，我们都会发出警告，这是出于谨慎的考虑。有时您可能会注意到可疑的证书。可能您不认识发布方，或者子域名不是您提供的（例如slowinternet.cloudflare.com）。警报很快就会被发送给您，因此如果出现问题，您可以联系CA。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image6.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -40,7 +40,7 @@
 	<h2 id="--4">实际的工作原理是什么</h2>
 	<p>我们的密码学和SSL团队为此付出了巨大的努力；他们在前面提到的一些聪明工具的基础上创建了这一功能：</p>
 	<ul>
-		<li><a href="https://ct.cloudflare.com/" target="_blank">Merkle Town</a>是CT数据的枢纽。我们处理<em>所有</em>受信任的证书，并在我们的网站上显示相关统计信息。这意味着，Internet上发布的每个证书都将通过Cloudflare，并且所有数据都是公开的（因此此处不涉及隐私问题）。</li>
+		<li><a href="https://ct.cloudflare.com" target="_blank">Merkle Town</a>是CT数据的枢纽。我们处理<em>所有</em>受信任的证书，并在我们的网站上显示相关统计信息。这意味着，Internet上发布的每个证书都将通过Cloudflare，并且所有数据都是公开的（因此此处不涉及隐私问题）。</li>
 		<li>Cloudflare Nimbus是我们自己的CT日志。它包含了4亿多个证书。</li>
 	</ul>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/image11.png" class="kg-image" alt="" loading="lazy">
@@ -65,6 +65,6 @@
 	<h2 id="--6">未来</h2>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image2-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>Cloudflare博客定期就会提到证书透明性。为什么？这是Chrome和Safari所要求的，它们<a href="http://gs.statcounter.com/" target="_blank">主导着浏览器市场</a>，并<a href="https://github.com/chromium/ct-policy" target="_blank">为互联网安全树立了先例</a>。但更重要的是，CT可以帮助我们在恶意证书被用于攻击之前发现它们。这就是为什么我们还将继续完善和改进证书检测的方法。</p>
+	<p>Cloudflare博客定期就会提到证书透明性。为什么？这是Chrome和Safari所要求的，它们<a href="http://gs.statcounter.com" target="_blank">主导着浏览器市场</a>，并<a href="https://github.com/chromium/ct-policy" target="_blank">为互联网安全树立了先例</a>。但更重要的是，CT可以帮助我们在恶意证书被用于攻击之前发现它们。这就是为什么我们还将继续完善和改进证书检测的方法。</p>
 	<p>你还在等什么？快来启用<a href="https://dash.cloudflare.com/?zone=crypto" target="_blank">证书透明性监控</a>吧！</p>
 </div>

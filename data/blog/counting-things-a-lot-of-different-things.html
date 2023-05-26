@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Back in April we announced <a href="https://blog.cloudflare.com/rate-limiting/">Rate Limiting</a> of requests for every Cloudflare customer. Being able to rate limit at the edge of the network has many advantages: it’s easier for customers to set up and operate, their origin servers are not bothered by excessive traffic or layer 7 attacks, the performance and memory cost of rate limiting is offloaded to the edge, and more.</p>
+	<p>Back in April we announced <a href="https://blog.cloudflare.com/rate-limiting">Rate Limiting</a> of requests for every Cloudflare customer. Being able to rate limit at the edge of the network has many advantages: it’s easier for customers to set up and operate, their origin servers are not bothered by excessive traffic or layer 7 attacks, the performance and memory cost of rate limiting is offloaded to the edge, and more.</p>
 	<p>In a nutshell, rate limiting works like this:</p>
 	<ul>
 		<li>
@@ -34,10 +34,10 @@
 	<p>Since Cloudflare has a vast and diverse network, reporting all counters to a single central point is not a realistic solution as the latency is far too high and guaranteeing the availability of the central service causes more challenges.</p>
 	<p>First let’s take a look at how the traffic is routed in the Cloudflare network. All the traffic going to our edge servers is <a href="https://en.wikipedia.org/wiki/Anycast" target="_blank">anycast</a> traffic. This means that we announce the same IP address for a given web application, site or API worldwide, and traffic will be automatically and consistently routed to the closest live data center.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/06/world.png" alt="Anycast routing example" loading="lazy"></p>
-	<p>This property is extremely valuable: we are sure that, under normal conditions<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>, the traffic from a single IP address will always reach the same PoP. Unfortunately each new TCP connection might hit a different server inside that PoP. But we can still narrow down our problem: we can actually create an isolated counting system inside each PoP. This mostly solves the latency problem and greatly improves the availability as well.</p>
+	<p>This property is extremely valuable: we are sure that, under normal conditions<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup>, the traffic from a single IP address will always reach the same PoP. Unfortunately each new TCP connection might hit a different server inside that PoP. But we can still narrow down our problem: we can actually create an isolated counting system inside each PoP. This mostly solves the latency problem and greatly improves the availability as well.</p>
 	<h3 id="storingcounters">Storing counters</h3>
 	<p>At Cloudflare, each server in our edge network is as independent as possible to make their administration simple. Unfortunately for rate limiting, we saw that we do need to share data across many different servers.</p>
-	<p>We actually had a similar problem in the past with <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Session_IDs" target="_blank">SSL session IDs</a>: each server needed to fetch TLS connection data about past connections. To solve that problem we created a <a href="https://github.com/twitter/twemproxy" target="_blank">Twemproxy</a> cluster inside each of our PoPs: this allows us to split a memcache<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> database across many servers. A <a href="https://en.wikipedia.org/wiki/Consistent_hashing" target="_blank">consistent hashing</a> algorithm ensures that when the cluster is resized, only a few number of keys are hashed differently.</p>
+	<p>We actually had a similar problem in the past with <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Session_IDs" target="_blank">SSL session IDs</a>: each server needed to fetch TLS connection data about past connections. To solve that problem we created a <a href="https://github.com/twitter/twemproxy" target="_blank">Twemproxy</a> cluster inside each of our PoPs: this allows us to split a memcache<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn2" id="fnref2">[2]</a></sup> database across many servers. A <a href="https://en.wikipedia.org/wiki/Consistent_hashing" target="_blank">consistent hashing</a> algorithm ensures that when the cluster is resized, only a few number of keys are hashed differently.</p>
 	<p>In our architecture, each server hosts a shard of the database. As we already had experience with this system, we wanted to leverage it for the rate limit as well.</p>
 	<h3 id="algorithms">Algorithms</h3>
 	<p>Now let’s take a deeper look at how the different rate limit algorithms work. What we call the <em>sampling period</em> in the next paragraph is the reference unit of time for the counter (1 second for a 10 req/sec rule, 1 minute for a 600 req/min rule, ...).</p>
@@ -48,11 +48,11 @@
 	<p>However, in our case, this approach has two drawbacks:</p>
 	<ul>
 		<li>It has two parameters (average rate and burst) that are not always easy to tune properly</li>
-		<li>We were constrained to use the memcached protocol and this algorithm requires multiple distinct operations that we cannot do atomically<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></li>
+		<li>We were constrained to use the memcached protocol and this algorithm requires multiple distinct operations that we cannot do atomically<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn3" id="fnref3">[3]</a></sup></li>
 	</ul>
 	<p>So the situation was that the only operations available were <code>GET</code>, <code>SET</code> and <code>INCR</code> (atomic increment).</p>
 	<h3 id="slidingwindowstotherescue">Sliding windows to the rescue</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/06/14247536929_1a6315311d_z.jpg" alt="" loading="lazy"><small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/halfrain/14247536929/" target="_blank">image</a> by <a href="https://www.flickr.com/photos/halfrain/" target="_blank">halfrain</a></small></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/06/14247536929_1a6315311d_z.jpg" alt="" loading="lazy"><small><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/halfrain/14247536929" target="_blank">image</a> by <a href="https://www.flickr.com/photos/halfrain" target="_blank">halfrain</a></small></p>
 	<p>The naive fixed window algorithm is actually not that bad: we just have to solve the problem of completely resetting the counter for each sampling period. But actually, can’t we just use the information from the previous counter in order to extrapolate an accurate approximation of the request rate?</p>
 	<p>Let’s say I set a limit of 50 requests per minute on an API endpoint. The counter can be thought of like this:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/06/sliding.svg.png" alt="Sliding window example" loading="lazy"></p>
@@ -89,7 +89,7 @@
 			<p>Incrementing a counter can be done by sending a single <code>INCR</code> command</p>
 		</li>
 		<li>
-			<p>Calculating the rate is reasonably easy: one GET command<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup> and some very simple, fast math</p>
+			<p>Calculating the rate is reasonably easy: one GET command<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn4" id="fnref4">[4]</a></sup> and some very simple, fast math</p>
 		</li>
 	</ul>
 	<p>So here we are: we can finally implement a good counting system using only a few memcache primitives and without much contention. Still we were not happy with that: it requires a memcached query to get the rate. At Cloudflare we’ve seen a few of the largest L7 attacks ever. We knew that large scale attacks would have crushed the memcached cluster like this. More importantly, such operations would slow down legitimate requests a little, even under normal conditions. This is not acceptable.</p>
@@ -100,22 +100,22 @@
 	<h3 id="conclusion">Conclusion</h3>
 	<p>Despite being a young product, the rate limiter is already being used by many customers to control the rate of requests that their origin servers receive. The rate limiter already handles several billion requests per day and we recently mitigated attacks with as many as 400,000 requests per second to a single domain without degrading service for legitimate users.</p>
 	<p>We just started to explore how we can efficiently protect our customers with this new tool. We are looking into more advanced optimizations and create new features on the top of the existing work.</p>
-	<p>Interested in working on high-performance code running on thousands of servers at the edge of the network? Consider <a href="https://www.cloudflare.com/careers/" target="_blank">applying</a> to one of our open positions!</p>
+	<p>Interested in working on high-performance code running on thousands of servers at the edge of the network? Consider <a href="https://www.cloudflare.com/careers" target="_blank">applying</a> to one of our open positions!</p>
 	<hr>
 	<hr class="footnotes-sep">
 	<section class="footnotes">
 		<ol class="footnotes-list">
 			<li id="fn1" class="footnote-item">
-				<p>The inner workings of anycast route changes are outside of the scope of this article, but we can assume that they are rare enough in this case. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+				<p>The inner workings of anycast route changes are outside of the scope of this article, but we can assume that they are rare enough in this case. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
 			</li>
 			<li id="fn2" class="footnote-item">
-				<p>Twemproxy also supports Redis, but our existing infrastructure was backed by <a href="https://github.com/twitter/twemcache" target="_blank">Twemcache</a> (a Memcached fork) <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+				<p>Twemproxy also supports Redis, but our existing infrastructure was backed by <a href="https://github.com/twitter/twemcache" target="_blank">Twemcache</a> (a Memcached fork) <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
 			</li>
 			<li id="fn3" class="footnote-item">
-				<p>Memcache does support <a href="https://github.com/memcached/memcached/wiki/Commands#cas" target="_blank">CAS</a> (Compare-And-Set) operations and so optimistic transactions are possible, but it is hard to use in our case: during attacks, we will have a lot of requests, creating a lot of contention, in turn resulting in a lot of CAS transactions failing. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+				<p>Memcache does support <a href="https://github.com/memcached/memcached/wiki/Commands#cas" target="_blank">CAS</a> (Compare-And-Set) operations and so optimistic transactions are possible, but it is hard to use in our case: during attacks, we will have a lot of requests, creating a lot of contention, in turn resulting in a lot of CAS transactions failing. <a href="https://blog.cloudflare.com/#fnref3" class="footnote-backref">↩︎</a></p>
 			</li>
 			<li id="fn4" class="footnote-item">
-				<p>The counters for the previous and current minute can be retrieved with a single GET command <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+				<p>The counters for the previous and current minute can be retrieved with a single GET command <a href="https://blog.cloudflare.com/#fnref4" class="footnote-backref">↩︎</a></p>
 			</li>
 		</ol>
 	</section>

@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/image5-8.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>数年前、より高速で効率の良いインターネットの実現に向けて、<a href="https://blog.cloudflare.com/argo/">Argo</a>をリリースしました。Argoはネットワーク状態を監視し、オリジンサーバーリクエストのためのインターネット上の最適なルートを検出し、途中で輻輳を回避します。</p>
+	<p>数年前、より高速で効率の良いインターネットの実現に向けて、<a href="https://blog.cloudflare.com/argo">Argo</a>をリリースしました。Argoはネットワーク状態を監視し、オリジンサーバーリクエストのためのインターネット上の最適なルートを検出し、途中で輻輳を回避します。</p>
 	<p>Tiered Cacheは、オリジンからアセットを要求するデータセンターの数を減らすArgoの一機能です。Tiered Cacheを有効にすると、南アフリカのリクエストは北米のオリジンに直接送信する代わりに、近くにある大規模なデータセンターを調べて、リクエストされたデータが最初にそこでキャッシュされているかどうかを確認します。Tiered Cacheで使用されるデータセンターの数と場所は、トポロジーと呼ばれる構成によって制御されます。デフォルトでは、キャッシュヒット率と遅延のバランスを取る汎用トポロジーをすべての顧客に使用していますが、これはほとんどのユーザーに適するものです。</p>
 	<p>今回は、Smart Topologyをご紹介します。これは、Argoの内部インフラストラクチャ上に構築することによってオリジンにリクエストを行うための最適なデータセンターを特定することで、キャッシュヒット率を最大化するものです。</p>
 	<h2 id="-cache">標準的なCache</h2>

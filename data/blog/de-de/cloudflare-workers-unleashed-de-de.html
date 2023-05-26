@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Workers-General-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Vor genau vor einem Jahr gab mir Cloudflare einen Auftrag: Mach es möglich, dass man an Cloudflares Edge Code ausführen kann. Damals wussten wir noch nicht, wie das aussehen würde. Würde es Container-basiert sein? Eine neue Turing-unvollständige, domänenspezifische Sprache? Lua? „Funktionen“? Wir hatten viele Ideen.</p>
-	<p>Schließlich entschieden wir uns für das, was im Nachhinein als die naheliegende Wahl erscheint: JavaScript, das unter Verwendung der standardmäßigen Service Workers-API in einer neuen, auf V8 basierenden Umgebung läuft. Vor fünf Monaten haben wir Ihnen <a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">eine Vorschau</a> auf das gegeben, was wir gebaut hatten, und die Beta gestartet.</p>
+	<p>Schließlich entschieden wir uns für das, was im Nachhinein als die naheliegende Wahl erscheint: JavaScript, das unter Verwendung der standardmäßigen Service Workers-API in einer neuen, auf V8 basierenden Umgebung läuft. Vor fünf Monaten haben wir Ihnen <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">eine Vorschau</a> auf das gegeben, was wir gebaut hatten, und die Beta gestartet.</p>
 	<p>Heute, mit Tausenden von bereitgestellten Skripten und vielen Milliarden von abgewickelten Anfragen, ist Cloudflare Workers für jeden zugänglich.</p>
 	<blockquote><em>„Der Wechsel von VCL zu Cloudflare Workers wird uns ein kreatives Routing gestatten, mit dem wir JavaScript für die Millionen von Benutzern von npm noch schneller als bisher bereitstellen können. Wir werden unsere nächste Generation von Diensten auf der Plattform von Cloudflare erstellen, und zwar in JavaScript!“</em></blockquote>
 	<blockquote>–<em> CJ Silverio, CTO, npm, Inc.</em></blockquote>
@@ -95,9 +95,9 @@ async function handle(request) {
 	<h3 id="erste-schritte"><strong>Erste Schritte</strong></h3>
 	<ul>
 		<li><a href="https://www.cloudflare.com/a/overview" target="_blank">Melden Sie sich in Ihrem Cloudflare-Konto an</a> und besuchen Sie den Bereich „Workers“, um Workers zu konfigurieren.</li>
-		<li><a href="https://cloudflareworkers.com/" target="_blank">Experimentieren Sie mit Workers im Playground</a> (kein Konto erforderlich).</li>
-		<li><a href="https://developers.cloudflare.com/workers/" target="_blank">Lesen Sie die Dokumentation</a>, um zu erfahren, wie Worker geschrieben werden.</li>
-		<li><a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">Schauen Sie sich den ursprünglichen Blogbeitrag mit der Ankündigung an</a>, um weitere technische Details zu erfahren.</li>
+		<li><a href="https://cloudflareworkers.com" target="_blank">Experimentieren Sie mit Workers im Playground</a> (kein Konto erforderlich).</li>
+		<li><a href="https://developers.cloudflare.com/workers" target="_blank">Lesen Sie die Dokumentation</a>, um zu erfahren, wie Worker geschrieben werden.</li>
+		<li><a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Schauen Sie sich den ursprünglichen Blogbeitrag mit der Ankündigung an</a>, um weitere technische Details zu erfahren.</li>
 		<li><a href="https://community.cloudflare.com/c/developers/workers" target="_blank">Diskutieren Sie über Workers in der Cloudflare-Community.</a></li>
 	</ul>
 	<blockquote><em>„Cloudflare Workers spart uns viel Zeit. Die Verwaltung des Bot-Traffics ohne Workers würde wertvolle Entwicklungs- und Serverressourcen beanspruchen, die anderswo besser eingesetzt werden.“</em></blockquote>

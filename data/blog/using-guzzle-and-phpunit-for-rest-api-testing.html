@@ -10,7 +10,7 @@
 $ composer require guzzlehttp/guzzle
 $ composer update
 </code></pre>
-	<p>When we ran <code>composer require</code> for each of the two packages, Composer went ahead and actually downloaded the packages we want, these are stored in the <code>vendor</code> directory. Additionally when we ran <code>composer update</code>, Composer updated it’s <a href="http://www.php-fig.org/psr/psr-4/" target="_blank">PSR-4</a> autoload script that allows us to pull in all the dependencies we’ve required with one file include, you can find this in <code>vendor/autoload.php</code>.</p>
+	<p>When we ran <code>composer require</code> for each of the two packages, Composer went ahead and actually downloaded the packages we want, these are stored in the <code>vendor</code> directory. Additionally when we ran <code>composer update</code>, Composer updated it’s <a href="http://www.php-fig.org/psr/psr-4" target="_blank">PSR-4</a> autoload script that allows us to pull in all the dependencies we’ve required with one file include, you can find this in <code>vendor/autoload.php</code>.</p>
 	<p>With our dependencies in place, we can now configure PHPUnit to use Guzzle. In order to do this, we need to tell PHPUnit where our Composer autoload file is, but also where our tests are located. We can do this through writing a <code>phpunit.xml</code> in the root directory of our project:</p>
 	<pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;phpunit bootstrap="vendor/autoload.php"&gt;

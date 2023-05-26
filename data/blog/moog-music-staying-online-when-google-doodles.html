@@ -5,7 +5,7 @@
 	<h3 id="youregoingtoseesometraffic">You're Going to See Some Traffic</h3>
 	<p>The top result when you <a href="https://www.google.com/search?q=moog" target="_blank">search for Moog on Google</a> is MoogMusic.com. The site celebrates Bob Moog's legacy and sells versions of his keyboards and other devices (including a <a href="http://www.moogmusic.com/products/apps/animoog-iphone-99-until-5292012" target="_blank">pretty sweet iPhone<br>
 			app</a>). Google contacted the site owners to give them notice that there was going to be a doodle four days ago. The only catch, they had to keep the information strictly confidential until the doodle went live in Australia (the first region to see new doodles every day). Oh, and, by the way, Google noted, they should prepare for a crushing load of traffic to their website.</p>
-	<p>That presented a bit of a conundrum. Moog Music turned to their web developers, a technically savvy shop called <a href="http://purplecat.net/" target="_blank">PurpleCat.net</a>. The site was designed to handle half a million hits a day, so the team at PurpleCat spent the next three<br>
+	<p>That presented a bit of a conundrum. Moog Music turned to their web developers, a technically savvy shop called <a href="http://purplecat.net" target="_blank">PurpleCat.net</a>. The site was designed to handle half a million hits a day, so the team at PurpleCat spent the next three<br>
 		days making several improvements to the site to increase its capacity. They migrated the site to new hardware, secured a dedicated gigabit port, migrated the mysql database to its own server, upgraded the backend of the site replacing Apache with NGINX and added layers of caching and optimizations. Needless to say, it was a busy three days for the PurpleCat team while they did all the upgrades to prepare for the traffic surge. The site, however, was on a single virtual private server (VPS) with limited resources and it didn't make sense to upgrade the whole infrastructure for a one-day spike in traffic.</p>
 	<h3 id="turningtocloudflaretohelp">Turning to CloudFlare to Help</h3>
 	<p>As soon as the doodle went live in Australia and the embargo was lifted, PurpleCat called us at CloudFlare and explained what was about to happen. We were happy to help having had a lot of experience dealing with floods of traffic from <a href="https://blog.cloudflare.com/today-show-traffic-spike-no-problem-for-khata">events</a> <a href="https://blog.cloudflare.com/cloudflare-saves-groundhog-day">like</a> <a href="https://blog.cloudflare.com/tales-from-the-pumpkin-patch">these</a>. The MoogMusic.com site went live behind CloudFlare and we saw the traffic<br>
@@ -24,7 +24,7 @@ you" src="http://blog.cloudflare.com/content/images/moogmusic_requests_bandwidth
 	</p>
 	<blockquote>
 		your ceo will like this.we built a separate server to just serve this page up:
-		<p><a href="http://190-2.purplecat.net/" target="_blank">http://190-2.purplecat.net/</a></p>
+		<p><a href="http://190-2.purplecat.net" target="_blank">http://190-2.purplecat.net/</a></p>
 		<p>But thanks to cloudflare, we never had to put it up.</p>
 		<p>He's right, I do love that. And so does everyone else at CloudFlare. It's exactly why our <a href="https://www.cloudflare.com/people" target="_blank">whole team</a> comes to work every day excited to solve what seem like impossible challenges... like scaling a single VPS to deal with the traffic from the Google doodle.</p>
 	</blockquote>

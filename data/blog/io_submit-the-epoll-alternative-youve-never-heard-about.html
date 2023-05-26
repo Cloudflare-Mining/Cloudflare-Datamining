@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>My curiosity was piqued by an LWN article about <a href="https://lwn.net/Articles/743714/" target="_blank">IOCB_CMD_POLL - A new kernel polling interface</a>. It discusses an addition of a new polling mechanism to Linux AIO API, which was merged in 4.18 kernel. The whole idea is rather intriguing. The author of the patch is proposing to use the Linux AIO API with things like network sockets.</p>
+	<p>My curiosity was piqued by an LWN article about <a href="https://lwn.net/Articles/743714" target="_blank">IOCB_CMD_POLL - A new kernel polling interface</a>. It discusses an addition of a new polling mechanism to Linux AIO API, which was merged in 4.18 kernel. The whole idea is rather intriguing. The author of the patch is proposing to use the Linux AIO API with things like network sockets.</p>
 	<p>Hold on. The Linux AIO is designed for, well, <strong>A</strong>synchronous disk <strong>IO</strong>! Disk files are not the same thing as network sockets! Is it even possible to use the Linux AIO API with network sockets in the first place?</p>
 	<p>The answer turns out to be a strong YES! In this article I'll explain how to use the strengths of Linux AIO API to write better and faster network servers.</p>
 	<p>But before we start, what is Linux AIO anyway?</p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/6891085910_3390ebe29f_k.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://www.flickr.com/photos/schill/6891085910/" target="_blank">Photo </a>by <a href="https://www.flickr.com/photos/schill" target="_blank">Scott Schiller </a>CC/BY/2.0</figcaption>
+		<figcaption><a href="https://www.flickr.com/photos/schill/6891085910" target="_blank">Photo </a>by <a href="https://www.flickr.com/photos/schill" target="_blank">Scott Schiller </a>CC/BY/2.0</figcaption>
 	</figure>
 	<p></p><!--kg-card-begin: markdown-->
 	<h2 id="introductiontolinuxaio">Introduction to Linux AIO</h2>
@@ -14,10 +14,10 @@
 	<p>Historically on Linux, all disk operations were blocking. Whether you did <code>open()</code>, <code>read()</code>, <code>write()</code> or <code>fsync()</code>, you could be sure your thread would stall if the needed data and meta-data was not ready in disk cache. This usually isn't a problem. If you do small amount of IO or have plenty of memory, the disk syscalls would gradually fill the cache and on average be rather fast.</p>
 	<p>The IO operation performance drops for IO-heavy workloads, like databases or caching web proxies. In such applications it would be tragic if a whole server stalled, just because some odd <code>read()</code> syscall had to wait for disk.</p>
 	<p>To work around this problem, applications use one of the three approaches:</p>
-	<p>(1) Use thread pools and offload blocking syscalls to worker threads. This is what glibc POSIX AIO (not to be confused with Linux AIO) wrapper does. (See: <a href="https://www.ibm.com/developerworks/linux/library/l-async/" target="_blank">IBM's documentation</a>). This is also what we ended up doing in our application at Cloudflare - <a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day/">we offloaded read() and open() calls to a thread pool</a>.</p>
+	<p>(1) Use thread pools and offload blocking syscalls to worker threads. This is what glibc POSIX AIO (not to be confused with Linux AIO) wrapper does. (See: <a href="https://www.ibm.com/developerworks/linux/library/l-async" target="_blank">IBM's documentation</a>). This is also what we ended up doing in our application at Cloudflare - <a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">we offloaded read() and open() calls to a thread pool</a>.</p>
 	<p>(2) Pre-warm the disk cache with <code>posix_fadvise(2)</code> and hope for the best.</p>
-	<p>(3) Use Linux AIO with XFS filesystem, <a href="https://lwn.net/Articles/671649/" target="_blank">file opened with O_DIRECT</a>, and <a href="https://www.scylladb.com/2016/02/09/qualifying-filesystems/" target="_blank">avoid the undocumented pitfalls</a>.</p>
-	<p>None of these methods is perfect. Even the Linux AIO if used carelessly, could still block in the <code>io_submit()</code> call. This was recently mentioned <a href="https://lwn.net/Articles/724198/" target="_blank">in another LWN article</a>:</p>
+	<p>(3) Use Linux AIO with XFS filesystem, <a href="https://lwn.net/Articles/671649" target="_blank">file opened with O_DIRECT</a>, and <a href="https://www.scylladb.com/2016/02/09/qualifying-filesystems" target="_blank">avoid the undocumented pitfalls</a>.</p>
+	<p>None of these methods is perfect. Even the Linux AIO if used carelessly, could still block in the <code>io_submit()</code> call. This was recently mentioned <a href="https://lwn.net/Articles/724198" target="_blank">in another LWN article</a>:</p>
 	<blockquote>
 		<p>The Linux asynchronous I/O (AIO) layer tends to have many critics and few defenders, but most people at least expect it to actually be asynchronous. In truth, an AIO operation can block in the kernel for a number of reasons, making AIO difficult to use in situations where the calling thread truly cannot afford to block.</p>
 	</blockquote>
@@ -206,7 +206,7 @@ do_syscall:
 	<p>With this code fixing the <code>io_getevents</code> function, our Linux AIO version of the TCP proxy needs only one syscall per loop, and indeed is a tiny bit faster than the read+write code.</p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/16026681353_90b26e0731_z.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://www.flickr.com/photos/99279135@N05/16026681353/" target="_blank">Photo </a>by <a href="https://www.flickr.com/photos/99279135@N05/" target="_blank">Train Photos </a>CC/BY-SA/2.0</figcaption>
+		<figcaption><a href="https://www.flickr.com/photos/99279135@N05/16026681353" target="_blank">Photo </a>by <a href="https://www.flickr.com/photos/99279135@N05" target="_blank">Train Photos </a>CC/BY-SA/2.0</figcaption>
 	</figure><!--kg-card-begin: markdown-->
 	<h2 id="epollalternative">Epoll alternative</h2>
 	<p>With the addition of IOCB_CMD_POLL in kernel 4.18, one could use <code>io_submit</code> also as select/poll/epoll equivalent. For example, here's some code waiting for data on a socket:</p>
@@ -231,7 +231,7 @@ io_getevents(0x7fe44bddd000, 1, 1, [{data=0, obj=0x7ffef65c11a8, res=1, res2=0}]
 	<p>In this blog post we reviewed the Linux AIO API. While initially conceived to be a disk-only API, it seems to be working in the same way as normal read/write syscalls on network sockets. But as opposed to read/write <code>io_submit</code> allows syscall batching, potentially improving performance.</p>
 	<p>Since kernel 4.18 <code>io_submit</code> and <code>io_getevents</code> can be used to wait for events like POLLIN and POLLOUT on network sockets. This is great, and could be used as a replacement for <code>epoll()</code> in the event loop.</p>
 	<p>I can imagine a network server that could just be doing <code>io_submit</code> and <code>io_getevents</code> syscalls, as opposed to the usual mix of <code>read</code>, <code>write</code>, <code>epoll_ctl</code> and <code>epoll_wait</code>. With such design the syscall batching aspect of <code>io_submit</code> could really shine. Such a server would be meaningfully faster.</p>
-	<p>Sadly, even with recent Linux AIO API improvements, the larger discussion remains. Famously, <a href="https://lwn.net/Articles/671657/" target="_blank">Linus hates it</a>:</p>
+	<p>Sadly, even with recent Linux AIO API improvements, the larger discussion remains. Famously, <a href="https://lwn.net/Articles/671657" target="_blank">Linus hates it</a>:</p>
 	<blockquote>
 		<p>AIO is a horrible ad-hoc design, with the main excuse being "other, less gifted people, made that design, and we are implementing it for compatibility because database people - who seldom have any shred of taste - actually use it". But AIO was always really really ugly.</p>
 	</blockquote>

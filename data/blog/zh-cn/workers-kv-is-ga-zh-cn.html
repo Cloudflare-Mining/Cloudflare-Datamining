@@ -2,9 +2,9 @@
 	<p>今天，我们很高兴地宣布Workers KV即将普遍可用并为生产使用做好了准备！</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Workers-KV-GA@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="-workers-kv-">什么是Workers KV？</h2>
-	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a>是一个高度分布、终极一致的键值存储数据库，跨越Cloudflare的全球边缘网络。它允许您存储数十亿个键值对，并且您在世界各地都能以极低的延迟读取它们。现在，您可以构建整个拥有CDN静态缓存性能的应用程序。</p>
+	<p><a href="https://www.cloudflare.com/products/workers-kv" target="_blank">Workers KV</a>是一个高度分布、终极一致的键值存储数据库，跨越Cloudflare的全球边缘网络。它允许您存储数十亿个键值对，并且您在世界各地都能以极低的延迟读取它们。现在，您可以构建整个拥有CDN静态缓存性能的应用程序。</p>
 	<h2 id="-">我们为什么要构建它？</h2>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a>是一个平台，允许您在Cloudflare全球175+个（直至2019年9月已经扩展为193个）数据中心的边缘运行JavaScript。只需几行代码，您就可以路由HTTP请求，更改响应，甚至可以在没有原始服务器的情况下创建新的响应。</p>
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank">Workers</a>是一个平台，允许您在Cloudflare全球175+个（直至2019年9月已经扩展为193个）数据中心的边缘运行JavaScript。只需几行代码，您就可以路由HTTP请求，更改响应，甚至可以在没有原始服务器的情况下创建新的响应。</p>
 	<pre><code class="language-javascript">// A Worker that handles a single redirect,
 // such a humble beginning...
 addEventListener("fetch", event =&gt; {
@@ -86,7 +86,7 @@ async function handleBillionsOfRedirects(request) {
 		<li>阶跃函数——在多个API函数之间同步状态数据。</li>
 		<li>边缘文件存储——托管大量小文件。</li>
 	</ul>
-	<p>在之前发布的<a href="https://blog.cloudflare.com/building-with-workers-kv/">博客</a>中，我们已经强调了其中的几个用例。我们还有一些更深入的代码演练，包括最近发布的一篇关于如何<a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv/">使用Workers KV构建在线待办事项列表</a>的博客。</p>
+	<p>在之前发布的<a href="https://blog.cloudflare.com/building-with-workers-kv">博客</a>中，我们已经强调了其中的几个用例。我们还有一些更深入的代码演练，包括最近发布的一篇关于如何<a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">使用Workers KV构建在线待办事项列表</a>的博客。</p>
 	<h2 id="--4">测试版之后更新了什么新的内容？</h2>
 	<p>到目前为止，我们最常见的需求是使向Workers KV让写入数据变得更容易。这就是为什么我们发布了三种新方法来让这种体验变得更好：</p>
 	<h3 id="1-">1.批量写入</h3>
@@ -102,7 +102,7 @@ async function handleBillionsOfRedirects(request) {
     {"key": "approved_by", value: "steve"}
   ]'</code></pre>
 	<p>让我们来看一个用例：您希望将网站翻译任务离线到Workers上进行。由于您经常需要读取翻译键，并且只是偶尔更新它们，因此该应用程序与Workers KV的终极一致性模型可以很好地配合。</p>
-	<p>在本例中，我们看到<a href="https://crowdin.com/" target="_blank">Crowdin</a>，这是一个流行的管理翻译数据的平台。这个Worker模型可以对一个/translate端点做出响应，下载你所有的翻译键，并批量写入Workers KV，以便您以后可以在我们的边缘网络读取它：</p>
+	<p>在本例中，我们看到<a href="https://crowdin.com" target="_blank">Crowdin</a>，这是一个流行的管理翻译数据的平台。这个Worker模型可以对一个/translate端点做出响应，下载你所有的翻译键，并批量写入Workers KV，以便您以后可以在我们的边缘网络读取它：</p>
 	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
   if (event.request.url.pathname === "/translate") {
     event.respondWith(uploadTranslations())
@@ -257,7 +257,7 @@ async function getGif(username) {
 		<li>每个键每秒无限次读取</li>
 	</ul>
 	<h2 id="--7">现在就来试试吧！</h2>
-	<p>Workers KV现在对所有客户开放，您现在可以在Cloudflare控制面板中Workers选项卡下启用<a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a>。您还可以查看我们的更新<a href="https://developers.cloudflare.com/workers/kv/" target="_blank">文档</a>。</p>
+	<p>Workers KV现在对所有客户开放，您现在可以在Cloudflare控制面板中Workers选项卡下启用<a href="https://www.cloudflare.com/products/workers-kv" target="_blank">Workers KV</a>。您还可以查看我们的更新<a href="https://developers.cloudflare.com/workers/kv" target="_blank">文档</a>。</p>
 	<p>看到你们都可以用Workers KV构建应用程序，我们真的很高兴！</p>
-	<p><a href="https://blog.cloudflare.com/tag/serverless/">无服务器</a> <a href="https://blog.cloudflare.com/tag/workers/">Workers</a> <a href="https://blog.cloudflare.com/tag/workers-kv/">Workers KV</a> <a href="https://blog.cloudflare.com/tag/javascript/">JavaScript</a> <a href="https://blog.cloudflare.com/tag/bash/">Bash</a></p>
+	<p><a href="https://blog.cloudflare.com/tag/serverless">无服务器</a> <a href="https://blog.cloudflare.com/tag/workers">Workers</a> <a href="https://blog.cloudflare.com/tag/workers-kv">Workers KV</a> <a href="https://blog.cloudflare.com/tag/javascript">JavaScript</a> <a href="https://blog.cloudflare.com/tag/bash">Bash</a></p>
 </div>

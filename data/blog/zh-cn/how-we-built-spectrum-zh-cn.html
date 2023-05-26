@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<p>今天，我们将<a href="https://blog.cloudflare.com/spectrum/">介绍Spectrum</a>：一个可为任意基于TCP的协议提供DDoS保护、负载均衡和内容加速的Cloudflare新特性。</p>
+	<p>今天，我们将<a href="https://blog.cloudflare.com/spectrum">介绍Spectrum</a>：一个可为任意基于TCP的协议提供DDoS保护、负载均衡和内容加速的Cloudflare新特性。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/13334109713_0b32435032_z.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank">图片</a>由<a href="https://www.flickr.com/photos/liftarn" target="_blank">Staffan Vilcans提供</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank">图片</a>由<a href="https://www.flickr.com/photos/liftarn" target="_blank">Staffan Vilcans提供</a></figcaption>
 	</figure>
 	<p></p>
 	<p>在开始构建Spectrum之后不久，我们就遇到了一个主要的技术障碍：Spectrum要求我们可以在任何有效的TCP端口（从1到65535）上接受连接。在我们的Linux边缘服务器上，我们不可能实现“在任何端口上接受入站连接”。这不是特定于Linux的限制：这是BSD sockets API的一个特性，它是大多数操作系统上网络应用程序的基础。为了能够交付Spectrum，我们需要解决两个重叠的问题：</p>
@@ -11,7 +11,7 @@
 	</ul>
 	<h2 id="-ip">为服务器分配数百万个IP</h2>
 	<p>Cloudflare的边缘服务器拥有几乎相同的配置。在早期，我们通常将特定的/32（和/128）IP地址分配给环回网络接口[1]。当我们有几十个IP地址时，这种方法效果甚好。但随着我们的发展，这种方法却无法扩展。</p>
-	<p>随之而来的是<a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine/" target="_blank">“AnyIP”技巧</a>。AnyIP允许我们将整个IP前缀（子网）分配给环回接口，扩展特定的IP地址。AnyIP的应用已经非常普遍了：您的计算机就已将127.0.0.0/8分配给了环回接口。从您的计算机的角度来看，从127.0.0.1到127.255.255.254的所有IP地址都属于本地计算机。</p>
+	<p>随之而来的是<a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine" target="_blank">“AnyIP”技巧</a>。AnyIP允许我们将整个IP前缀（子网）分配给环回接口，扩展特定的IP地址。AnyIP的应用已经非常普遍了：您的计算机就已将127.0.0.0/8分配给了环回接口。从您的计算机的角度来看，从127.0.0.1到127.255.255.254的所有IP地址都属于本地计算机。</p>
 	<p>此技巧不仅仅适用于127.0.0.1/8的块。要在本地分配整个192.0.2.0/24范围，只需要运行：</p>
 	<pre><code>ip route add local 192.0.2.0/24 dev lo</code></pre>
 	<p>然后，您可以将以下IP地址之一绑定到端口8080：</p>
@@ -31,14 +31,14 @@
 	<p>第二个主要问题是为任意端口号开启TCP套接字。在Linux中，通常在任意支持BSD sockets API的系统中，您只能通过一个bind系统调用绑定特定的TCP端口号。在一个操作中不可能绑定到多个端口。</p>
 	<p>一个简单的解决方案是绑定65535次，在每个可能的端口都绑定一次。事实上，这可能是一个解决方案，但这会带来可怕的后果：</p>
 	<ul>
-		<li><a href="https://blog.cloudflare.com/revenge-listening-sockets/">监听套接字的“复仇</a>”</li>
+		<li><a href="https://blog.cloudflare.com/revenge-listening-sockets">监听套接字的“复仇</a>”</li>
 	</ul>
 	<p>在内部，Linux内核将监听套接字存储在一个按端口号LHTABLE索引的哈希表中，使用了32个bucket（存储桶）：</p>
 	<pre><code>/* Yes, really, this is all you need. */
 #define INET_LHTABLE_SIZE       32</code></pre>
 	<p>如果我们打开65k个端口，那么对该表的查找将大大减慢：每个哈希表存储桶将包含2000个项目。</p>
 	<p>解决这个问题的另一种方法是使用iptables丰富的NAT特性：我们可以将入站数据包的目的地重写为某个特定的地址/端口，我们的应用程序将绑定到这个地址/端口。</p>
-	<p>但我们不想这样做，因为这需要启用iptables conntrack模块。从历史上看，我们发现了一些<a href="http://patchwork.ozlabs.org/cover/810566/" target="_blank">性能边缘情况</a>，conntrack无法应对我们遇到的一些大型DDoS攻击。</p>
+	<p>但我们不想这样做，因为这需要启用iptables conntrack模块。从历史上看，我们发现了一些<a href="http://patchwork.ozlabs.org/cover/810566" target="_blank">性能边缘情况</a>，conntrack无法应对我们遇到的一些大型DDoS攻击。</p>
 	<p>另外，使用NAT方法，我们会丢失目标IP地址信息。为了解决这个问题，还有一个鲜为人知的SO_ORIGINAL_DST套接字选项，但是<a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank">代码看起来并不令人鼓舞</a>。</p>
 	<p>幸运的是，有一种方法可以实现我们的目标，而不涉及绑定到所有65k个端口或使用conntrack。</p>
 	<h2 id="--1">防火墙援助</h2>
@@ -85,7 +85,7 @@ advanced routing rules. </code></pre>
 	<p>这一行将一个套接字struct sock分配给一个入站包——完成调度。</p>
 	<h2 id="--4">从帽子里变出兔子</h2>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/3649474619_3b800400e9_z-1.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank">图片</a>由<a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank">Angela Boothroyd提供</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank">图片</a>由<a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank">Angela Boothroyd提供</a></figcaption>
 	</figure>
 	<p>有了TPROXY，我们可以非常轻松地执行“绑定到所有端口”的技巧。配置如下：</p>
 	<pre><code># Set 192.0.2.0/24 to be routed locally with AnyIP.

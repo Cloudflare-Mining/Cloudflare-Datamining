@@ -4,10 +4,10 @@
 	<p>许多系统仍然提供这种第二因素方法。Cloudflare One 客户可以在 Zero Trust 模型中使用一个专用的出口 IP 来达到这一目的。与其他解决方案不同，使用该方案的客户不需要自己部署任何基础设施。然而，并非所有流量都需要使用这些专用的出口 IP。</p>
 	<p>今天，我们宣布了一些政策，支持管理员能够控制 Cloudflare 何时使用其专用出口 IP。具体而言，管理员可以使用 Cloudflare 仪表板中的规则构建器，根据身份、应用程序、IP 地址和地理位置等属性，确定何时使用哪个出口 IP。任何企业合同级别客户，只要在他们的 Zero Trust 套餐中增加专用的出口 IP，就可以使用这一功能。</p>
 	<h3 id="-">我们为什么构建这一功能？</h3>
-	<p>在如今多元化的工作环境中，组织渴望获得更一致的安全和 IT 体验，以管理他们的员工从办公室、数据中心和漫游用户中流出的流量。为了提供更加精简的体验，许多组织正在采用由云提供的现代代理服务，如<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">安全 Web 网关</a> (SWG)，并不再选择复杂的内部设备组合。</p>
+	<p>在如今多元化的工作环境中，组织渴望获得更一致的安全和 IT 体验，以管理他们的员工从办公室、数据中心和漫游用户中流出的流量。为了提供更加精简的体验，许多组织正在采用由云提供的现代代理服务，如<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank">安全 Web 网关</a> (SWG)，并不再选择复杂的内部设备组合。</p>
 	<p>这些老工具的一个传统便利是能够根据静态源 IP 创建允许列表策略。当用户主要在一个地方时，根据出口位置验证流量将相当简单而可靠。许多组织希望或被要求保留这种流量验证方法，即使他们的用户已经不在一个地方了，也是如此。</p>
-	<p>到目前为止，Cloudflare 已经为这些组织提供了专用的出口 IP，作为我们的代理<a href="https://www.cloudflare.com/products/zero-trust/" target="_blank"> Zero Trust 服务</a>的附加功能。与默认的出口 IP 不同，这些专用的出口 IP 不在任何其他 Gateway 帐户之间共享，只用于流出指定帐户的代理流量。</p>
-	<p>正如<a href="https://blog.cloudflare.com/zh-cn/gateway-dedicated-egress-policies-zh-cn/">在以前的博文中所述</a>，客户已经在使用 Cloudflare 的专用出口 IP，通过使用这些 IP 来识别其用户的代理流量，或将这些 IP 添加到第三方供应商的允许列表中，从而消除了 VPN 的使用需求。这些组织享受到了仍然使用固定已知 IP 的简单便利，同时还能避免他们的流量遇到本地设备的瓶颈和回传。</p>
+	<p>到目前为止，Cloudflare 已经为这些组织提供了专用的出口 IP，作为我们的代理<a href="https://www.cloudflare.com/products/zero-trust" target="_blank"> Zero Trust 服务</a>的附加功能。与默认的出口 IP 不同，这些专用的出口 IP 不在任何其他 Gateway 帐户之间共享，只用于流出指定帐户的代理流量。</p>
+	<p>正如<a href="https://blog.cloudflare.com/zh-cn/gateway-dedicated-egress-policies-zh-cn">在以前的博文中所述</a>，客户已经在使用 Cloudflare 的专用出口 IP，通过使用这些 IP 来识别其用户的代理流量，或将这些 IP 添加到第三方供应商的允许列表中，从而消除了 VPN 的使用需求。这些组织享受到了仍然使用固定已知 IP 的简单便利，同时还能避免他们的流量遇到本地设备的瓶颈和回传。</p>
 	<h3 id="--1">何时使用出口政策</h3>
 	<p>Gateway 出口策略构建器使管理员能够根据用户的身份、设备状况、源/目的 IP 地址等，增强出口流量的灵活性和特殊性。</p>
 	<p>从特定地理位置流出的流量为选定用户组提供了特定于地理位置的体验（例如语言格式、地区性页面差异），这是一个常见的用例。例如，Cloudflare 目前正在与一家全球媒体集团的营销部门合作。他们设在印度的设计师和网络专家经常需要核实在不同国家运行的广告和网站的布局。</p>
@@ -26,5 +26,5 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image1-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--3">后续步骤</h3>
 	<p>我们意识到，随着组织脱离本地设备，他们会希望在通过云安全堆栈代理更多流量的同时，能够继续保持简单性和有效的控制。凭借 Gateway 出口策略，管理员如今可以为他们越来越多分散开来的员工控制流量。</p>
-	<p>如果您想要对 Cloudflare 专用出口 IP 建立策略，可以将它们添加到 <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">Cloudflare Zero Trust Enterprise 计划</a>或联系您的客户经理。</p>
+	<p>如果您想要对 Cloudflare 专用出口 IP 建立策略，可以将它们添加到 <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us" target="_blank">Cloudflare Zero Trust Enterprise 计划</a>或联系您的客户经理。</p>
 </div>

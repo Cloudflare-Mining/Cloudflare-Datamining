@@ -4,7 +4,7 @@
 	<p>从 2015 年开始，一个名为 <a href="https://sansec.io/what-is-magecart" target="_blank">Magecart</a> 的黑客组织通过用恶意代码感染第三方依赖的方式窃取网上商店的支付凭证。被感染代码被最终用户浏览器请求，在其中执行并获得网页上的用户数据。在获取到这些信息后，被感染代码将其发送给黑客，供其转卖或者用于发动进一步攻击，例如信用卡欺诈和身份盗用。</p>
 	<p>自那时起，遭到此类<a href="https://en.wikipedia.org/wiki/Supply_chain_attack" target="_blank">供应链攻击</a>的其他目标包括 Ticketmaster、新蛋（Newegg）、英国航空（British Airways) 等。针对英国航空的攻击源于该公司一个自托管 JavaScript 遭到破坏，将接近 50 万名客户的数据泄漏给黑客。这次攻击招致 GDPR 罚款和<a href="https://www.bloomberg.com/news/articles/2021-01-12/british-airways-faces-biggest-class-action-suit-over-data-breach" target="_blank">英国历史上最大规模的集体诉讼</a>。共计数百万用户受到这些攻击的影响。</p>
 	<p>即使不用担心第三方供应商，在组织内部编写安全的代码就已经不是容易的事情。很多 SaaS 平台向数以百万计的网站提供第三方代码，意味着一次破坏就能带来毁灭性的后果。Page Shield 帮助客户监控这些潜在的攻击手段，阻止保密用户信息落入黑客手中。</p>
-	<p>本周初， <a href="https://blog.cloudflare.com/zh-cn/browser-isolation-for-teams-of-all-sizes-zh-cn/">我们宣布了远程浏览器隔离（Remote Browser Isolation）</a>，作为缓解员工浏览器中客户端攻击的一个方法。Page Shield 延续 Cloudflare 在客户端安全的努力，帮助缓解针对贵组织客户的攻击。</p>
+	<p>本周初， <a href="https://blog.cloudflare.com/zh-cn/browser-isolation-for-teams-of-all-sizes-zh-cn">我们宣布了远程浏览器隔离（Remote Browser Isolation）</a>，作为缓解员工浏览器中客户端攻击的一个方法。Page Shield 延续 Cloudflare 在客户端安全的努力，帮助缓解针对贵组织客户的攻击。</p>
 	<h3 id="-">背景</h3>
 	<p>Magecart 式攻击是在用户浏览器中执行的一种软件供应链攻击。攻击者瞄准存放第三方 JavaScript 依赖的主机，控制向浏览器提供的源代码。当被感染代码运行时，其往往尝试盗取最终用户输入到网站的敏感数据，例如支付过程中的信用卡信息。</p>
 	<p>这些攻击难以检测，因为很多应用程序所有者都信任第三方 JavaScript 会按照预期运行。由于这种信任，应用程序所有者极少对第三方代码进行审计。很多情况下，Magecart 攻击持续数月才被发现。</p>
@@ -29,5 +29,5 @@
 	<p>代码变化检测之后将是 JavaScript 文件的智能分析。在应用程序的依赖发生变化时向应用程序所有者发出警告可以提供针对所关注文件的洞察，但我们可以更进一步。我们已经与我们的安全合作伙伴合作，获取了 Magecart JavaScript 的样本，并已证明我们可以准确地对恶意 JavaScript样本进行分类。我们计划进一步改进我们的技术，最终将开始在我们认为 Page Shield 客户的依赖是恶意的时候向其发出警告。</p>
 	<p>我们已经和我们的客户谈过，了解到维护 CSP 允许列表在操作上是并非易事。如果部署了新的客户端 JavaScript 但没有将其添加到允许列表中，那么新代码将被浏览器阻止。因此，我们将利用我们做为反向代理的地位来部署负面安全模型阻止（negative security model blocking）。如此一来，应用程序所有者不需要维护允许列表就能阻止个别脚本，确保客户能在无繁琐开销的前提下发布新代码。</p>
 	<h3 id="-beta-">申请加入 beta 测试</h3>
-	<p>今天开始，所有 Business 和 Enterprise 客户都可以在<a href="https://www.cloudflare.com/zh-cn/waf/page-shield/" target="_blank">这里</a>申请加入 Page Shield 的封闭测试。加入beta 测试后，客户将能激活脚本监测器并开始监控其站点的 JavaScript。</p>
+	<p>今天开始，所有 Business 和 Enterprise 客户都可以在<a href="https://www.cloudflare.com/zh-cn/waf/page-shield" target="_blank">这里</a>申请加入 Page Shield 的封闭测试。加入beta 测试后，客户将能激活脚本监测器并开始监控其站点的 JavaScript。</p>
 </div>

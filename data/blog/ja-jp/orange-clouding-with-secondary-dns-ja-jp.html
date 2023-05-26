@@ -8,7 +8,7 @@
 		<li>隠れプライマリを持つセカンダリDNS - セカンダリサーバーにのみ対象とするregistrarポイントでネームサーバーが記録し、基本的にセカンダリをプライマリネームサーバーとして扱います。</li>
 	</ol>
 	<h3 id="-dns--1">セカンダリDNSのオーバーライドとは？</h3>
-	<p>セカンダリDNSオーバーライドは、隠れプライマリモデルを持つセカンダリDNS上で構築されます。これは、お客様の指示通りにレコードを処理するだけでなく、お客様が<a href="https://www.cloudflare.com/en-gb/network/" target="_blank">Cloudflareのネットワーク</a>を介して、あらゆるA/AAAA/CNAMEレコードをプロキシできるように許可することで実現します。これは、現在CloudflareがプライマリDNSプロバイダーとして機能する方法と似ています。</p>
+	<p>セカンダリDNSオーバーライドは、隠れプライマリモデルを持つセカンダリDNS上で構築されます。これは、お客様の指示通りにレコードを処理するだけでなく、お客様が<a href="https://www.cloudflare.com/en-gb/network" target="_blank">Cloudflareのネットワーク</a>を介して、あらゆるA/AAAA/CNAMEレコードをプロキシできるように許可することで実現します。これは、現在CloudflareがプライマリDNSプロバイダーとして機能する方法と似ています。</p>
 	<p>次の例を考えてみてください。</p>
 	<p>example.com Cloudflare IP - 192.0.2.0</p>
 	<p>example.com origin IP - 203.0.113.0</p>
@@ -40,7 +40,7 @@
 	<p>前述の通り、RFC1912に従わず、少なくとも1つ、別のSOAレコードとNSレコードが同じネームを持っているということを意味するため、これは許可されません。Cloudflareは<a href="https://support.cloudflare.com/hc/en-us/articles/200169056-CNAME-Flattening-RFC-compliant-support-for-CNAME-at-the-root" target="_blank">CNAME Flattening</a>を使用することで解決できます。CNAME FlatteningはプライマリDNSプロダクト内で一般的に用いられるテクニックです。権威サーバーにクエリが来たときに、CNAMEレコードの代わりにアドレスレコードを返すことができます。</p>
 	<p>セカンダリDNSオーバーライドUIを介したレコードの編集防止に関する前述の説明とは反対に、ApexのCNAMEはこの規則の例外です。ユーザーは、通常のセカンダリ DNSレコードに加えて、ApexでCNAMEを作成することができますが、RFC1912で定義された同じ規則も適用されます。つまり、ユーザーの決定内容に応じて、ApexレコードのCNAMEは通常のDNSレコードまたはプロキシされたレコードとして扱うことができるということです。ApexレコードのCNAMEのプロキシステータスに関わらず、プライマリDNSサーバーから転送されたその他のA/AAAレコードにオーバーライドします。</p>
 	<h3 id="apex-cname-">Apexレコードでセカンダリ、オーバーライド、CNAMEのマージ</h3>
-	<p>レコード編集時間に、Apexレコードでセカンダリ、オーバーライド、CNAMEのマージをすべて行います。つまり、DNSリクエストがエッジの権威サーバーに送信された時、<a href="https://www.dnsperf.com/" target="_blank">超高速時間</a>でレコードを戻すことができます。このワークフローは、図4で示されています。</p>
+	<p>レコード編集時間に、Apexレコードでセカンダリ、オーバーライド、CNAMEのマージをすべて行います。つまり、DNSリクエストがエッジの権威サーバーに送信された時、<a href="https://www.dnsperf.com" target="_blank">超高速時間</a>でレコードを戻すことができます。このワークフローは、図4で示されています。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image4-6-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>図4：レコードのマージ処理</p>
 	<p>ゾーンビルダー内でのステップは以下の通りです。</p>

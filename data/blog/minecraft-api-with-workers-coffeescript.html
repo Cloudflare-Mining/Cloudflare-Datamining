@@ -57,7 +57,7 @@
 	<p>Yikes, that's 5 complex operations required to render a single avatar! But that's not all, in my example profile, there are 49 avatars, which would require a total of <code>5 * 49 = 245</code> operations.</p>
 	<p>And that's just <em>fetching</em> the data, we haven't even started to serve it to players! Then you have to setup a host to serve the web traffic, ensure that the service scales with demand, handle cache expiration of assets, and deploy across multiple regions. Then you have to deploy There has to be a better way!</p>
 	<h3 id="prototypingwithworkers">Prototyping with Workers</h3>
-	<p>I'm a strong believer in the future of serverless computing. So naturally, when I learned how <a href="https://developers.cloudflare.com/workers/about/" target="_blank">Cloudflare Workers</a> allow you to run JavaScript code in 150+ points of presence, I started to tinker with the possibilities of solving this problem. After looking at the documentation and using the <a href="https://cloudflareworkers.com" target="_blank">Workers playground</a>, I quickly put together some JavaScript code that aggregated all that profile complexity into a single request.</p>
+	<p>I'm a strong believer in the future of serverless computing. So naturally, when I learned how <a href="https://developers.cloudflare.com/workers/about" target="_blank">Cloudflare Workers</a> allow you to run JavaScript code in 150+ points of presence, I started to tinker with the possibilities of solving this problem. After looking at the documentation and using the <a href="https://cloudflareworkers.com" target="_blank">Workers playground</a>, I quickly put together some JavaScript code that aggregated all that profile complexity into a single request.</p>
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
   event.respondWith(renderPlayerBitmap(event.request))
 })
@@ -289,7 +289,7 @@ export coerce = (code) -&gt;
     when 429 then tooManyRequests()
     else error("Unknown Response", code: code)
 </code></pre>
-	<p>The <code>cf</code> key can be used to control various Cloudflare features, including how sub-requests are cached. See the <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features/" target="_blank">Workers documentation</a> for a more in-depth explanation.</p>
+	<p>The <code>cf</code> key can be used to control various Cloudflare features, including how sub-requests are cached. See the <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features" target="_blank">Workers documentation</a> for a more in-depth explanation.</p>
 	<pre><code class="language-coffeescript">cf:
   cacheTtl: 120 # Cache for 2 mins.
   # Pro+ only.

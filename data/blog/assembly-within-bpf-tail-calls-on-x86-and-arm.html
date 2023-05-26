@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/unnamed-3.png" class="kg-image" alt="Assembly within! BPF tail calls on x86 and ARM" loading="lazy"></figure>
-	<p>Early on when we learn to program, we get introduced to the concept of <a href="https://ocw.mit.edu/courses/6-00sc-introduction-to-computer-science-and-programming-spring-2011/resources/lecture-6-recursion/" target="_blank">recursion</a>. And that it is handy for computing, among other things, sequences defined in terms of recurrences. Such as the famous <a href="https://en.wikipedia.org/wiki/Fibonacci_number" target="_blank">Fibonnaci numbers</a> - <em>Fn = Fn-1 + Fn-2</em>.</p>
+	<p>Early on when we learn to program, we get introduced to the concept of <a href="https://ocw.mit.edu/courses/6-00sc-introduction-to-computer-science-and-programming-spring-2011/resources/lecture-6-recursion" target="_blank">recursion</a>. And that it is handy for computing, among other things, sequences defined in terms of recurrences. Such as the famous <a href="https://en.wikipedia.org/wiki/Fibonacci_number" target="_blank">Fibonnaci numbers</a> - <em>Fn = Fn-1 + Fn-2</em>.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/Screenshot-2022-10-10-at-10.13.32.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Later on, perhaps when diving into multithreaded programming, we come to terms with the fact that <a href="https://textbook.cs161.org/memory-safety/x86.html#26-stack-pushing-and-popping" target="_blank">the stack space</a> for call frames is finite. And that there is an “okay” way and a “cool” way to calculate the Fibonacci numbers using recursion:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-C">// fib_okay.c
@@ -89,9 +89,9 @@ $
 	<h2 id="wheredidthecallsgo">Where did the <code>calls</code> go?</h2>
 	<!--kg-card-end: markdown-->
 	<p>The smart compiler turned the last function call in the body into a regular jump. Why was it allowed to do that?</p>
-	<p>It is the last instruction in the function body we are talking about. The caller stack frame is going to be destroyed right after we return anyway. So why keep it around when we can reuse it for the callee’s <a href="https://eli.thegreenplace.net/2011/02/04/where-the-top-of-the-stack-is-on-x86/" target="_blank">stack frame</a>?</p>
+	<p>It is the last instruction in the function body we are talking about. The caller stack frame is going to be destroyed right after we return anyway. So why keep it around when we can reuse it for the callee’s <a href="https://eli.thegreenplace.net/2011/02/04/where-the-top-of-the-stack-is-on-x86" target="_blank">stack frame</a>?</p>
 	<p>This optimization, known as <a href="https://en.wikipedia.org/wiki/Tail_call#In_assembly" target="_blank">tail call elimination</a>, leaves us with no function calls in the “cool” variant of our fib implementation. There was only one call to eliminate - right at the end.</p>
-	<p>Once applied, the call becomes a jump (loop). If assembly is not your second language, decompiling the fib_cool.o object file with <a href="https://ghidra-sre.org/" target="_blank">Ghidra</a> helps see the transformation:</p><!--kg-card-begin: markdown-->
+	<p>Once applied, the call becomes a jump (loop). If assembly is not your second language, decompiling the fib_cool.o object file with <a href="https://ghidra-sre.org" target="_blank">Ghidra</a> helps see the transformation:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-C">long fib(ulong param_1)
 
 {
@@ -125,9 +125,9 @@ $
 	<h2 id="tail-calls-in-bpf">Tail calls in BPF</h2>
 	<p>The concept of tail call elimination made its way into the BPF world. Although not in the way you might expect. Yes, the LLVM compiler does get rid of the trailing function calls when building for -target bpf. The transformation happens at the intermediate representation level, so it is backend agnostic. This can save you some <a href="https://docs.cilium.io/en/stable/bpf/#bpf-to-bpf-calls" target="_blank">BPF-to-BPF function calls</a>, which you can spot by looking for call -N instructions in the BPF assembly.</p>
 	<p>However, when we talk about tail calls in the BPF context, we usually have something else in mind. And that is a mechanism, built into the BPF JIT compiler, for <a href="https://docs.cilium.io/en/stable/bpf/#tail-calls" target="_blank">chaining BPF programs</a>.</p>
-	<p>We first adopted BPF tail calls when building our <a href="https://legacy.netdevconf.info/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">XDP-based packet processing pipeline</a>. Thanks to it, we were able to divide the processing logic into several XDP programs. Each responsible for doing one thing.</p>
+	<p>We first adopted BPF tail calls when building our <a href="https://legacy.netdevconf.info/0x13/session.html?talk-XDP-based-DDoS-mitigation=" target="_blank">XDP-based packet processing pipeline</a>. Thanks to it, we were able to divide the processing logic into several XDP programs. Each responsible for doing one thing.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image8.png" class="kg-image" alt="Slide from “XDP based DDoS Mitigation” talk by Arthur Fabre" loading="lazy">
-		<figcaption>Slide from “<a href="https://legacy.netdevconf.info/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">XDP based DDoS Mitigation</a>” talk by <a href="https://blog.cloudflare.com/author/arthur/">Arthur Fabre</a></figcaption>
+		<figcaption>Slide from “<a href="https://legacy.netdevconf.info/0x13/session.html?talk-XDP-based-DDoS-mitigation=" target="_blank">XDP based DDoS Mitigation</a>” talk by <a href="https://blog.cloudflare.com/author/arthur">Arthur Fabre</a></figcaption>
 	</figure>
 	<p>BPF tail calls have served us well since then. But they do have their caveats. Until recently it was impossible to have both BPF tails calls and BPF-to-BPF function calls in the same XDP program on arm64, which is one of the supported architectures for us.</p>
 	<p>Why? Before we get to that, we have to clarify what a BPF tail call actually does.</p>
@@ -449,7 +449,7 @@ Core was generated by `earlyprintk=serial,ttyS0,115200 console=ttyS0 psmouse.pro
 	<p>④ load the tail call count from stack,<br>⑤ unwind the BPF stack, but keep the current subprogram’s stack frame in tact, and<br>⑥ jump to the target BPF program.</p>
 	<p>Now we have seen how all the pieces of the puzzle fit together to make BPF tail work on x86-64 safely. The only open question is does it work the same way on other platforms like arm64? Time to shift gears and dive into a completely different BPF JIT implementation.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image10.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption>Based on an image by <a href="https://www.flickr.com/photos/pockethifi/48303582037/" target="_blank">Wutthichai Charoenburi</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a></figcaption>
+		<figcaption>Based on an image by <a href="https://www.flickr.com/photos/pockethifi/48303582037" target="_blank">Wutthichai Charoenburi</a>, <a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a></figcaption>
 	</figure>
 	<h2 id="tail-calls-on-arm64">Tail calls on arm64</h2>
 	<p>If you try loading a BPF program that uses both BPF function calls (aka BPF to BPF calls) and BPF tail calls on an arm64 machine running the latest 5.15 LTS kernel, or even the latest 5.19 stable kernel, the BPF verifier will kindly ask you to reconsider your choice:</p><!--kg-card-begin: markdown-->
@@ -584,7 +584,7 @@ processed 4 insns (limit 1000000) max_states_per_insn 0 total_states 0 peak_stat
 	</table><!--kg-card-end: html-->
 	<p>Now let’s try to understand the state of things by looking at the JIT’s input and output for two particular scenarios: (1) a BPF tail call, and (2) a BPF to BPF call.</p>
 	<p>It is hard to read assembly code selectively. We will have to go through all instructions one by one, and understand what each one is doing.</p>
-	<p>⚠ Brace yourself. Time to decipher a bit of ARM64 assembly. If this will be your first time reading ARM64 assembly, you might want to at least skim through this <a href="https://modexp.wordpress.com/2018/10/30/arm64-assembly/" target="_blank">Guide to ARM64 / AArch64 Assembly on Linux</a> before diving in.</p>
+	<p>⚠ Brace yourself. Time to decipher a bit of ARM64 assembly. If this will be your first time reading ARM64 assembly, you might want to at least skim through this <a href="https://modexp.wordpress.com/2018/10/30/arm64-assembly" target="_blank">Guide to ARM64 / AArch64 Assembly on Linux</a> before diving in.</p>
 	<p>Scenario #1: A single BPF tail call - <a href="https://github.com/jsitnicki/cloudflare-blog/blob/jakub/2022-10-bpf-tail-calls/2022-10-bpf-tail-call/tail_call_ex1.bpf.c" target="_blank"><code>tail_call_ex1.bpf.c</code></a></p>
 	<p>Input: BPF assembly (<code>bpftool prog dump xlated</code>)</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-TXT">   0: (18) r2 = map[id:4]           // jmp_table map
@@ -743,6 +743,6 @@ bpf_prog_a84919ecd878b8f3_sub_func:   | |
 	<p>From recursion to tweaking the BPF JIT. How did we get here? Not important. It’s all about the journey.</p>
 	<p>Along the way we have unveiled a few secrets behind BPF tails calls, and hopefully quenched your thirst for low-level programming. At least for today.</p>
 	<p>All that is left is to sit back and watch the fruits of our work. With GDB hooked up to a VM, we can observe how a BPF program calls into a BPF function, and from there tail calls to another BPF program:</p>
-	<p><a href="https://demo-gdb-step-thru-bpf.pages.dev/" target="_blank">https://demo-gdb-step-thru-bpf.pages.dev/</a></p>
+	<p><a href="https://demo-gdb-step-thru-bpf.pages.dev" target="_blank">https://demo-gdb-step-thru-bpf.pages.dev/</a></p>
 	<p>Until next time ?.</p>
 </div>

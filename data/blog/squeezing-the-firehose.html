@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>We at Cloudflare are long time <a href="https://kafka.apache.org/" target="_blank">Kafka</a> users, first mentions of it date back to beginning of 2014 when the most recent version was 0.8.0. We use Kafka as a log to power analytics (both HTTP and DNS), DDOS mitigation, logging and metrics.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-05-at-12.09.12-PM.png" alt="Screen-Shot-2018-03-05-at-12.09.12-PM" loading="lazy"><small>Firehose <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://flic.kr/p/xeocpX" target="_blank">image</a> by <a href="https://www.flickr.com/photos/134584268@N04/" target="_blank">RSLab</a></small></p>
+	<p>We at Cloudflare are long time <a href="https://kafka.apache.org" target="_blank">Kafka</a> users, first mentions of it date back to beginning of 2014 when the most recent version was 0.8.0. We use Kafka as a log to power analytics (both HTTP and DNS), DDOS mitigation, logging and metrics.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-05-at-12.09.12-PM.png" alt="Screen-Shot-2018-03-05-at-12.09.12-PM" loading="lazy"><small>Firehose <a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a> <a href="https://flic.kr/p/xeocpX" target="_blank">image</a> by <a href="https://www.flickr.com/photos/134584268@N04" target="_blank">RSLab</a></small></p>
 	<p>While the idea of unifying abstraction of the log remained the same since then (<a href="https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying" target="_blank">read this classic blog post</a> from Jay Kreps if you haven't), Kafka evolved in other areas since then. One of these improved areas was compression support. Back in the old days we've tried enabling it a few times and ultimately gave up on the idea because of <a href="https://github.com/Shopify/sarama/issues/805" target="_blank">unresolved</a> <a href="https://issues.apache.org/jira/browse/KAFKA-1718" target="_blank">issues</a> in the protocol.</p>
 	<h3 id="kafkacompressionoverview">Kafka compression overview</h3>
 	<p>Just last year Kafka 0.11.0 came out with the new improved protocol and log format.</p>
@@ -15,7 +15,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-05-at-12.10.19-PM.png" alt="Screen-Shot-2018-03-05-at-12.10.19-PM" loading="lazy"></p>
 	<p>On the receiving side of the log only consumers need to decompress messages:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-05-at-12.10.25-PM.png" alt="Screen-Shot-2018-03-05-at-12.10.25-PM" loading="lazy"></p>
-	<p>In reality, if you don't use encryption, data can be copied between NIC and disks with <a href="https://www.ibm.com/developerworks/linux/library/j-zerocopy/" target="_blank">zero copies to user space</a>, lowering the cost to some degree.</p>
+	<p>In reality, if you don't use encryption, data can be copied between NIC and disks with <a href="https://www.ibm.com/developerworks/linux/library/j-zerocopy" target="_blank">zero copies to user space</a>, lowering the cost to some degree.</p>
 	<h3 id="kafkabottlenecksatcloudflare">Kafka bottlenecks at Cloudflare</h3>
 	<p>Having less network and disk usage was a big selling point for us. Back in 2014 we started with spinning disks under Kafka and never had issues with disk space. However, at some point we started having issues with random io. Most of the time consumers and replicas (which are just another type of consumer) read from the very tip of the log, and that data resides in page cache meaning you don't need to read from disks at all:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-01-at-13.59.06.png" alt="Screen-Shot-2018-03-01-at-13.59.06" loading="lazy"></p>
@@ -39,7 +39,7 @@
 	<p><a href="https://blog.cloudflare.com/content/images/2018/03/3.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/3.png"></a></p>
 	<p>To make it even more obvious, this was the disk usage of these topics:</p>
 	<p><a href="https://blog.cloudflare.com/content/images/2018/03/4.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/4.png"></a></p>
-	<p>This looked amazing, but it was rather low throughput nginx errors topic, containing literally string error messages from nginx. Our main target was <code>requests</code> HTTP log topic with <a href="https://capnproto.org/" target="_blank">capnp</a> encoded messages that are much harder to compress. Naturally, we moved on to try out one <code>partition</code> of requests topic. First results were insanely good:</p>
+	<p>This looked amazing, but it was rather low throughput nginx errors topic, containing literally string error messages from nginx. Our main target was <code>requests</code> HTTP log topic with <a href="https://capnproto.org" target="_blank">capnp</a> encoded messages that are much harder to compress. Naturally, we moved on to try out one <code>partition</code> of requests topic. First results were insanely good:</p>
 	<p><a href="https://blog.cloudflare.com/content/images/2018/03/5.png" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/03/5.png"></a></p>
 	<p>They were so good, because they were lies. If with nginx error logs we were pushing under 20Mbps of uncompressed logs, here we jumped 30x to 600Mbps and compression wasn't able to keep up. Still, as a starting point, this experiment gave us some expectations in terms of compression ratios for the main target.</p>
 	<table>
@@ -312,7 +312,7 @@ zstd 1.3.3 -3             242 MB/s   899 MB/s      232057  23.58
 zstd 1.3.3 -4             240 MB/s   910 MB/s      230936  23.47
 zstd 1.3.3 -5             154 MB/s   891 MB/s      226798  23.04
 </code></pre>
-	<p>This looked too good to be true. <a href="https://facebook.github.io/zstd/" target="_blank">Zstandard</a> is a fairly new (released 1.5 years ago) compression algorithm from Facebook. In benchmarks on the project's home page you can see this:</p>
+	<p>This looked too good to be true. <a href="https://facebook.github.io/zstd" target="_blank">Zstandard</a> is a fairly new (released 1.5 years ago) compression algorithm from Facebook. In benchmarks on the project's home page you can see this:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/zstd.png" alt="zstd" loading="lazy"></p>
 	<p>In our case we were getting this:</p>
 	<table>
@@ -396,6 +396,6 @@ zlib 1.2.11 -9           3.63 MB/s   446 MB/s      235604  25.41 rrdns.recordbat
 	<p>We hope that the data we gathered can be a catalyst to making Zstandard an official compression codec in Kafka to benefit other people. There are 3 bits allocated for codec type and only 2 are used so far, which means there are 4 more vacant places.</p>
 	<p>If you were skeptical of compression benefits in Kafka because of old flaws in Kafka protocol, this may be the time to reconsider.</p>
 	<hr>
-	<p>If you enjoy benchmarking, profiling and optimizing large scale services, come <a href="https://www.cloudflare.com/careers/" target="_blank">join us</a>.</p>
+	<p>If you enjoy benchmarking, profiling and optimizing large scale services, come <a href="https://www.cloudflare.com/careers" target="_blank">join us</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>

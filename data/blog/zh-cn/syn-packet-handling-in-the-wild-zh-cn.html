@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<p>在Cloudflare，我们有很多在“野外”互联网上操作服务器的经验。但我们一直在提高我们对这种“妖术”的掌握。在这篇博客中，我们触及了互联网协议的多个黑暗角落：比如<a href="https://blog.cloudflare.com/this-is-strictly-a-violation-of-the-tcp-specification/">理解FIN-WAIT-2</a>或<a href="https://blog.cloudflare.com/the-story-of-one-latency-spike/">接收缓冲区调优</a>。</p>
+	<p>在Cloudflare，我们有很多在“野外”互联网上操作服务器的经验。但我们一直在提高我们对这种“妖术”的掌握。在这篇博客中，我们触及了互联网协议的多个黑暗角落：比如<a href="https://blog.cloudflare.com/this-is-strictly-a-violation-of-the-tcp-specification">理解FIN-WAIT-2</a>或<a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">接收缓冲区调优</a>。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/1471936772_652043cb6c_b.jpg" class="kg-image" alt="CC BY 2.0 图片，作者：Isaí Moreno" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/isaimoreno/1471936772/in/photolist-3f54wd-6mweJG-maUn5T-2tgqad-6YuCuM-pZ7r8T-Sa3LQ9-adTFS2-qSLQzk-sJ66Lq-71cJPS-oFU9rf-mbom12-23fVpJW-71ciCN-718DHR-j4VCQQ-71chKo-5DMBr4-5DLQFK-71cG4s-qQFjhZ-2RMBP6-718KWR-71cAFA-fAr8Ri-pe5zev-8TtDbQ-b6p5gk-qAdMqQ-qSBvUZ-qyg7oz-o5yof6-adTGvc-718xp4-5XQgJZ-bgGiwk-kf7aMc-qAjY14-718uti-smXfxF-8Kdnpx-nVVy8a-cmMJGb-puizaG-qP18i9-71cu1E-nYNfjq-718CjH-qyQM72" target="_blank">图片</a>，作者：<a href="https://www.flickr.com/photos/isaimoreno/" target="_blank">Isaí Moreno</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/isaimoreno/1471936772/in/photolist-3f54wd-6mweJG-maUn5T-2tgqad-6YuCuM-pZ7r8T-Sa3LQ9-adTFS2-qSLQzk-sJ66Lq-71cJPS-oFU9rf-mbom12-23fVpJW-71ciCN-718DHR-j4VCQQ-71chKo-5DMBr4-5DLQFK-71cG4s-qQFjhZ-2RMBP6-718KWR-71cAFA-fAr8Ri-pe5zev-8TtDbQ-b6p5gk-qAdMqQ-qSBvUZ-qyg7oz-o5yof6-adTGvc-718xp4-5XQgJZ-bgGiwk-kf7aMc-qAjY14-718uti-smXfxF-8Kdnpx-nVVy8a-cmMJGb-puizaG-qP18i9-71cu1E-nYNfjq-718CjH-qyQM72" target="_blank">图片</a>，作者：<a href="https://www.flickr.com/photos/isaimoreno" target="_blank">Isaí Moreno</a></figcaption>
 	</figure>
 	<p>然而，有一个话题没有得到足够的重视——SYN洪水。我们使用Linux系统，事实证明Linux中的SYN包处理非常复杂。在这篇文章中，我们将对这个问题做一些阐述。</p>
 	<h2 id="-">有关两个队列的故事</h2>
@@ -66,7 +66,7 @@ $ ss -n state syn-recv sport = :443 | wc -l
 	</ul>
 	<p>丢弃入站数据包有一个强有力的理由：这是一个回推机制。另一方迟早会重新发送SYN或ACK包，这是希望，慢速的应用程序将得以恢复。</p>
 	<p>对于几乎所有的服务器来说，这都是一种可取的行为。为了完整起见：我们可以使用全局net.ipv4.tcp_abort_on_overflow toggle进行调整，但最好还是不用它。</p>
-	<p>如果您的服务器需要处理大量的入站连接，并且难以处理accept()吞吐量，请考虑阅读我们的<a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">Nginx调整/ Epoll工作分发</a>文章以及<a href="https://blog.cloudflare.com/perfect-locality-and-three-epic-systemtap-scripts/">显示有用的SystemTap脚本的后续文章</a>。</p>
+	<p>如果您的服务器需要处理大量的入站连接，并且难以处理accept()吞吐量，请考虑阅读我们的<a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">Nginx调整/ Epoll工作分发</a>文章以及<a href="https://blog.cloudflare.com/perfect-locality-and-three-epic-systemtap-scripts">显示有用的SystemTap脚本的后续文章</a>。</p>
 	<p>您可以通过查看nstat计数器来跟踪Accept队列的溢出状态：</p>
 	<pre><code>$ nstat -az TcpExtListenDrops
 TcpExtListenDrops     49199     0.0</code></pre>
@@ -84,14 +84,14 @@ time (us)        acceptq qmax  local addr    remote_addr
 ...</code></pre>
 	<p>在这里，您可以精确地看到哪些SYN数据包受到了ListenDrops的影响。使用此脚本，我们很容易就可以了解哪个应用程序断开了连接。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/3713965419_20388fb368_b.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0 </a><a href="https://www.flickr.com/photos/16339684@N00/3713965419/in/photolist-6Ec3wx-5jhnwn-bfyTRX-5jhnCa-phYcey-dxZ95n-egkTN-kwT1YH-k22LWZ-5jBUiy-bzvDWx-5jBV31-5jhnr8-5jBTkq-5jxzHk-4K3cbP-9EePyg-4e5XNt-4e5XNn-dxZ8Tn-dy5A89-dxZ6GH-cztXcJ-gF7oY-dxZ9jv-dxZ7qM-ZvSPCv-dxZ6YV-5jBTqs-5jxzaP-MvuyK-nmVwP1-5jBRhY-dxZ7YF-5jxAc2-5jBU9U-5jBTEy-ejbWe6-5jxBc6-99ENZW-99KUsi-9bWScw-5jBRow-5jxzmx-5jBTfw-r6HcW-dy5zXE-5jxzg4-5jxBYR-5jxA2B" target="_blank">图片</a>来自<a href="https://www.flickr.com/photos/16339684@N00/" target="_blank">internets_dairy</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0 </a><a href="https://www.flickr.com/photos/16339684@N00/3713965419/in/photolist-6Ec3wx-5jhnwn-bfyTRX-5jhnCa-phYcey-dxZ95n-egkTN-kwT1YH-k22LWZ-5jBUiy-bzvDWx-5jBV31-5jhnr8-5jBTkq-5jxzHk-4K3cbP-9EePyg-4e5XNt-4e5XNn-dxZ8Tn-dy5A89-dxZ6GH-cztXcJ-gF7oY-dxZ9jv-dxZ7qM-ZvSPCv-dxZ6YV-5jBTqs-5jxzaP-MvuyK-nmVwP1-5jBRhY-dxZ7YF-5jxAc2-5jBU9U-5jBTEy-ejbWe6-5jxBc6-99ENZW-99KUsi-9bWScw-5jBRow-5jxzmx-5jBTfw-r6HcW-dy5zXE-5jxzg4-5jxBYR-5jxA2B" target="_blank">图片</a>来自<a href="https://www.flickr.com/photos/16339684@N00" target="_blank">internets_dairy</a></figcaption>
 	</figure>
 	<h2 id="syn--1">SYN洪水</h2>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/full-syn-1.jpeg" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>如果Accept队列有可能会溢出，那么SYN队列必然也存在溢出的可能。在这种情况下会发生什么？</p>
 	<p>这就是<a href="https://en.wikipedia.org/wiki/SYN_flood" target="_blank">SYN洪水攻击</a>的全部目的。过去，用伪造的SYN数据包充满SYN队列是一个真正的问题。在1996年之前，只要填满SYN队列，就可以用很少的带宽成功地拒绝几乎所有TCP服务器的服务。</p>
-	<p>解决之道是<a href="https://lwn.net/Articles/277146/" target="_blank">SYN Cookies</a>。SYN Cookies是一种允许无状态生成SYN + ACK的结构，实际上不需要保存入站SYN并浪费系统内存。SYN Cookies不会破坏合法流量。当另一方真实存在时，它将以有效的ACK数据包进行响应，其中包括反射的序列号，该序列号可以通过密码验证。</p>
+	<p>解决之道是<a href="https://lwn.net/Articles/277146" target="_blank">SYN Cookies</a>。SYN Cookies是一种允许无状态生成SYN + ACK的结构，实际上不需要保存入站SYN并浪费系统内存。SYN Cookies不会破坏合法流量。当另一方真实存在时，它将以有效的ACK数据包进行响应，其中包括反射的序列号，该序列号可以通过密码验证。</p>
 	<p>默认情况下，SYN Cookie仅在需要时启用——用于SYN队列已满的套接字。Linux更新了SYN Cookie上的几个计数器。发送SYN Cookie时：</p>
 	<ul>
 		<li>TcpExtTCPReqQFullDoCookies &nbsp; &nbsp; &nbsp;/ LINUX_MIB_TCPREQQFULLDOCOOKIES递增。</li>
@@ -123,16 +123,16 @@ net.ipv4.tcp_timestamps = 1</code></pre>
 	<ul>
 		<li>在过去，时间戳会泄露服务器运行时间（这是否重要又是另一个讨论了）。这<a href="https://github.com/torvalds/linux/commit/95a22caee396cef0bb2ca8fafdd82966a49367bb" target="_blank">在8个月前就被修复了</a>。</li>
 		<li>TCP时间戳占用<a href="http://highscalability.com/blog/2015/10/14/save-some-bandwidth-by-turning-off-tcp-timestamps.html" target="_blank">大量的带宽</a>——每个数据包12字节。</li>
-		<li>它们可以为数据包校验增添额外的随机性，这<a href="https://www.snellman.net/blog/archive/2017-07-20-s3-mystery/" target="_blank">可以帮助解决某些损坏的硬件</a>。</li>
+		<li>它们可以为数据包校验增添额外的随机性，这<a href="https://www.snellman.net/blog/archive/2017-07-20-s3-mystery" target="_blank">可以帮助解决某些损坏的硬件</a>。</li>
 		<li>如上所述，如果启用了SYN Cookies，则TCP时间戳可以提高TCP连接的性能。</li>
 	</ul>
 	<p>目前在Cloudflare，我们禁用了TCP时间戳。</p>
-	<p>最后，使用SYN Cookie时，一些很酷的特性将不起作用，比如<a href="https://lwn.net/Articles/645128/" target="_blank">TCP_SAVED_SYN</a>、TCP_DEFER_ACCEPT或TCP_FAST_OPEN。</p>
+	<p>最后，使用SYN Cookie时，一些很酷的特性将不起作用，比如<a href="https://lwn.net/Articles/645128" target="_blank">TCP_SAVED_SYN</a>、TCP_DEFER_ACCEPT或TCP_FAST_OPEN。</p>
 	<h2 id="cloudflare-syn-">Cloudflare规模的SYN洪水</h2>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/Screen-Shot-2016-12-02-at-10.53.27-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>SYN Cookie是一项伟大的发明，它解决了SYN小洪水的问题。但在Cloudflare，我们尽可能避免使用它们。虽然每秒发送几千个可加密验证的SYN+ACK包是可行的，但我们看到的是<a href="https://blog.cloudflare.com/the-daily-ddos-ten-days-of-massive-attacks/">每秒超过2亿个包的攻击</a>。在这种规模下，我们的SYN+ACK响应就相当于在互联网上乱扔垃圾，不会带来任何好处。</p>
-	<p>相反，我们尝试在防火墙层上丢弃恶意的SYN数据包。我们使用编译到BPF（柏克莱封包过滤器）的p0f SYN指纹。您可以阅读这篇<a href="https://blog.cloudflare.com/introducing-the-p0f-bpf-compiler/">介绍p0f BPF编译器</a>的博文，了解更多信息。为了检测和部署缓解措施，我们开发了一个自动化系统，称为“Gatebot（网关机器人）”。这里有我们对它的描述：<a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">认识Gatebot——让我们能够安然入睡的机器人</a>。</p>
+	<p>SYN Cookie是一项伟大的发明，它解决了SYN小洪水的问题。但在Cloudflare，我们尽可能避免使用它们。虽然每秒发送几千个可加密验证的SYN+ACK包是可行的，但我们看到的是<a href="https://blog.cloudflare.com/the-daily-ddos-ten-days-of-massive-attacks">每秒超过2亿个包的攻击</a>。在这种规模下，我们的SYN+ACK响应就相当于在互联网上乱扔垃圾，不会带来任何好处。</p>
+	<p>相反，我们尝试在防火墙层上丢弃恶意的SYN数据包。我们使用编译到BPF（柏克莱封包过滤器）的p0f SYN指纹。您可以阅读这篇<a href="https://blog.cloudflare.com/introducing-the-p0f-bpf-compiler">介绍p0f BPF编译器</a>的博文，了解更多信息。为了检测和部署缓解措施，我们开发了一个自动化系统，称为“Gatebot（网关机器人）”。这里有我们对它的描述：<a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">认识Gatebot——让我们能够安然入睡的机器人</a>。</p>
 	<h2 id="--3">不断变化的景观</h2>
 	<p>有关该主题的数据稍有些过时，想要了解更多，请阅读<a href="https://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html" target="_blank">Andreas Veithen在2015年</a>给出<a href="https://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html" target="_blank">的出色解释</a>和<a href="https://www.giac.org/paper/gsec/2013/syn-cookies-exploration/103486" target="_blank">Gerald W. Gordon在2013年发布的综合论文</a>。</p>
 	<p>Linux SYN数据包处理技术的景观在不断发展。直到最近，由于内核中的老式锁，SYN Cookies仍然很慢。这个问题在4.4中已得到解决，现在您可以依赖内核每秒发送数百万个SYN Cookie，这实际上解决了大多数用户的SYN洪水问题。通过适当的调优，我们甚至可以在不影响合法连接性能的情况下减轻最烦人的SYN洪水。</p>

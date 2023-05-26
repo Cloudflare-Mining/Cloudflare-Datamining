@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/workers-javascript-modules-zh-cn/">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/workers-javascript-modules-ja-jp/">日本語</a>.</small></em></p>
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/workers-javascript-modules-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/workers-javascript-modules-ja-jp">日本語</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-27.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>We’re excited to announce that JavaScript modules are now supported on Cloudflare Workers. If you’ve ever taken look at an example Worker written in JavaScript, you might recognize the following code snippet that has been floating around the Internet the past few years:</p><!--kg-card-begin: markdown-->
@@ -10,7 +10,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The above syntax is known as the “<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank">Service Worker</a>” API, and it was proposed to be standardized for use in web browsers. The idea is that you can attach a JavaScript file to a web page to modify its HTTP requests and responses, acting like a virtual endpoint. It was exactly what we needed for Workers, and it even integrated well with standard Web APIs like <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank"><code>fetch()</code></a> and <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank"><code>caches</code></a>.</p>
-	<p>Before introducing modules, we want to make it clear that we will continue to support the Service Worker API. No developer wants to get an email saying that <em>you</em> need to rewrite <em>your</em> code because an API or feature is being deprecated; and you won’t be getting one from us. If you’re interested in learning why we made this decision, you can read about our commitment to <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers/">backwards-compatibility</a> for Workers.</p>
+	<p>Before introducing modules, we want to make it clear that we will continue to support the Service Worker API. No developer wants to get an email saying that <em>you</em> need to rewrite <em>your</em> code because an API or feature is being deprecated; and you won’t be getting one from us. If you’re interested in learning why we made this decision, you can read about our commitment to <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">backwards-compatibility</a> for Workers.</p>
 	<h3 id="what-are-javascript-modules">What are JavaScript modules?</h3>
 	<p>JavaScript modules, also known as ECMAScript (abbreviated. “ES”) modules, is the standard API for importing and exporting code in JavaScript. It was introduced by the “ES6” language specification for JavaScript, and has been implemented by most Web browsers, Node.js, Deno, and now Cloudflare Workers. Here’s an example to demonstrate how it works:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// filename: ./src/util.js
@@ -26,7 +26,7 @@ import { getDate } from "./util.js"
 console.log("Today’s date:", getDate());
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Those are the basics, but there’s a lot more you can do with modules. It allows you to organize, maintain, and re-use your code elegantly that just works. While we can’t go over <em>every</em> aspect of modules here, if you’d like to learn more we’d encourage you to read the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank">MDN guide</a> on modules, or a more <a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/" target="_blank">technical deep-dive</a> by Lin Clark.</p>
+	<p>Those are the basics, but there’s a lot more you can do with modules. It allows you to organize, maintain, and re-use your code elegantly that just works. While we can’t go over <em>every</em> aspect of modules here, if you’d like to learn more we’d encourage you to read the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank">MDN guide</a> on modules, or a more <a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive" target="_blank">technical deep-dive</a> by Lin Clark.</p>
 	<h3 id="how-can-i-use-modules-in-workers">How can I use modules in Workers?</h3>
 	<p>You can export a default module, which will represent your Worker. Instead of using "addEventListener," each event handler is defined as a function on that module. Today, we support "<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank">fetch</a>" for HTTP and WebSocket requests and "<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker" target="_blank">scheduled</a>" for cron triggers.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export default {
@@ -162,7 +162,7 @@ globs = ["**/*.js"]
 # command = "npm run build"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>We’ve updated our <a href="https://developers.cloudflare.com/workers/" target="_blank">documentation</a> to provide more details about <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank">modules</a>, though some examples will still be using the Service Worker API as we transition to showing both formats. (and TypeScript as a bonus!)</p>
+	<p>We’ve updated our <a href="https://developers.cloudflare.com/workers" target="_blank">documentation</a> to provide more details about <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank">modules</a>, though some examples will still be using the Service Worker API as we transition to showing both formats. (and TypeScript as a bonus!)</p>
 	<p>If you experience an issue or notice something strange with modules, please <a href="mailto:workers-modules@cloudflare.com" target="_blank">let us know</a>, and we’ll take a look. Happy coding, and we’re excited to see what you build with modules!</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-11.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3><!--kg-card-begin: html-->

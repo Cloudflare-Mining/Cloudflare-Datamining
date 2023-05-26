@@ -2,7 +2,7 @@
 	<!--kg-card-begin: markdown-->
 	<p>A friend gave me an interesting task: extract IP TTL values from TCP connections established by a userspace program. This seemingly simple task quickly exploded into an epic Linux system programming hack. The result code is grossly over engineered, but boy, did we learn plenty in the process!</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/3845353725_7d7c624f34_z.jpg" alt="3845353725_7d7c624f34_z" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/paulmiller/3845353725/" target="_blank">image</a> by <a href="https://www.flickr.com/photos/paulmiller" target="_blank">Paul Miller</a></small>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/paulmiller/3845353725" target="_blank">image</a> by <a href="https://www.flickr.com/photos/paulmiller" target="_blank">Paul Miller</a></small>
 	</p>
 	<h3 id="context">Context</h3>
 	<p>You may wonder why she wanted to inspect the TTL packet field (formally known as "IP Time To Live (TTL)" in IPv4, or "Hop Count" in IPv6)? The reason is simple - she wanted to ensure that the connections are routed outside of our datacenter. The "Hop Distance" - the difference between the TTL value set by the originating machine and the TTL value in the packet received at its destination - shows how many routers the packet crossed. If a packet crossed two or more routers, we know it indeed came from outside of our datacenter.</p>
@@ -29,7 +29,7 @@
 	<p>Extracting the TTL is not so easy.</p>
 	<h3 id="so_attach_filtertoruletheworld">SO_ATTACH_FILTER to rule the world!</h3>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/315128991_d49c312fbc_z.jpg" alt="315128991_d49c312fbc_z" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/leejordan/315128991/" target="_blank">image</a> by <a href="https://www.flickr.com/photos/leejordan/" target="_blank">Lee Jordan</a></small>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/leejordan/315128991" target="_blank">image</a> by <a href="https://www.flickr.com/photos/leejordan" target="_blank">Lee Jordan</a></small>
 	</p>
 	<p>Wait, there is a third way!</p>
 	<p>You see, for quite some time it has been possible to attach a BPF filtering program to a socket. See <a href="http://man7.org/linux/man-pages/man7/socket.7.html" target="_blank"><code>socket(7)</code></a></p>
@@ -45,14 +45,14 @@
     fied.
 </code></pre>
 	<p>You probably take advantage of SO_ATTACH_FILTER already: This is how tcpdump/wireshark does filtering when you're dumping packets off the wire.</p>
-	<p>How does it work? Depending on the result of a <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode/">BPF program</a>, packets can be filtered, truncated or passed to the socket without modification. Normally SO_ATTACH_FILTER is used for RAW sockets, but surprisingly, BPF filters can also be attached to normal SOCK_STREAM and SOCK_DGRAM sockets!</p>
+	<p>How does it work? Depending on the result of a <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode">BPF program</a>, packets can be filtered, truncated or passed to the socket without modification. Normally SO_ATTACH_FILTER is used for RAW sockets, but surprisingly, BPF filters can also be attached to normal SOCK_STREAM and SOCK_DGRAM sockets!</p>
 	<p>We don't want to truncate packets though - we want to extract the TTL. Unfortunately with Classical BPF (cBPF) it's impossible to extract any data from a running BPF filter program.</p>
 	<h3 id="ebpfandmaps">eBPF and maps</h3>
 	<p>This changed with modern BPF machinery, which includes:</p>
 	<ul>
 		<li>modernised eBPF bytecode</li>
 		<li>eBPF maps</li>
-		<li><a href="man7.org/linux/man-pages/man2/bpf.2.html"><code>bpf()</code> syscall</a></li>
+		<li><a href="https://blog.cloudflare.com/man7.org/linux/man-pages/man2/bpf.2.html"><code>bpf()</code> syscall</a></li>
 		<li>SO_ATTACH_BPF socket option</li>
 	</ul>
 	<p>eBPF bytecode can be thought of as an extension to Classical BPF, but it's the extra features that really let it shine.</p>
@@ -189,7 +189,7 @@ for {
 	<p>In this blog post we dived into the new eBPF machinery, including the <code>bpf()</code> syscall, maps and SO_ATTACH_BPF. This work allowed me to realize the potential of running SO_ATTACH_BPF on fully established TCP sockets. Undoubtedly, eBPF still requires plenty of love and documentation, but it seems to be a perfect bridge to expose low level toggles to userspace applications.</p>
 	<p>I highly recommend keeping the dependencies small. For small BPF programs, like the one shown, there is little need for complex clang compilation and ELF loading. Don't be afraid of the eBPF bytecode!</p>
 	<p>We only touched on SO_ATTACH_BPF, where we analyzed network packets with BPF running on network sockets. There is more! First, you can attach BPFs to a dozen "things", XDP being the most obvious example. <a href="https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/bpf.h#L119" target="_blank">Full list</a>. Then, it's possible to actually affect kernel packet processing, here is a <a href="https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/bpf.h#L318" target="_blank">full list of helper functions</a>, some of which can modify kernel data structures.</p>
-	<p>In February <a href="https://lwn.net/Articles/747551/" target="_blank">LWN jokingly wrote</a>:</p>
+	<p>In February <a href="https://lwn.net/Articles/747551" target="_blank">LWN jokingly wrote</a>:</p>
 	<pre><code>Developers should be careful, though; this could
 prove to be a slippery slope leading toward something 
 that starts to look like a microkernel architecture.

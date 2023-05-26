@@ -8,7 +8,7 @@
 	<p>The configurable parameters for HSTS are:</p>
 	<ul>
 		<li>Enable HSTS (Strict-Transport-Security): On/Off.</li>
-		<li>Max Age (max-age): This is essentially a "time to live" field for the HSTS header. We recommend 6 months in order to earn an A+ rating from <a href="https://www.ssllabs.com/ssltest/" target="_blank">Qualys SSL Labs</a>. Web browsers will cache and enforce HSTS policy for the duration of this value. A value of "0" will disable HSTS.</li>
+		<li>Max Age (max-age): This is essentially a "time to live" field for the HSTS header. We recommend 6 months in order to earn an A+ rating from <a href="https://www.ssllabs.com/ssltest" target="_blank">Qualys SSL Labs</a>. Web browsers will cache and enforce HSTS policy for the duration of this value. A value of "0" will disable HSTS.</li>
 		<li>Apply HSTS Policy to subdomains (includeSubDomains): Applies HSTS policy to every host in a domain.</li>
 	</ul>
 	<p>There is one caveat to HSTS: it's a policy cached in each browser. If you configure HSTS settings, browsers will cache those settings for the duration of max-age. We recommend 6 months. If your site becomes inaccessible over strongly-configured HTTPS, web browsers will refuse to connect to the site on HTTP until the policy expires in the browser. Therefore, it's important that you set up HSTS only <strong>after</strong> establishing a stable SSL configuration. Fortunately, CloudFlare's default SSL settings are perfectly compatible with HSTS.</p>

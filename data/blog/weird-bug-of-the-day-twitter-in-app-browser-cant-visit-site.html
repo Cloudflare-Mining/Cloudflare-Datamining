@@ -17,7 +17,7 @@
 		</li>
 	</ol>
 	<p>That explained why this happened very rarely, but the question became... why did it happen at all? After some debugging it appeared to happen in recent versions of both iOS and the Twitter app (including the iOS 9 beta).</p>
-	<p>To figure out what was going on I turned to <a href="http://www.charlesproxy.com/" target="_blank">Charles Proxy</a> and used it to intercept the communication between my iPhone and CloudFlare. Happily, Charles Proxy can <a href="http://www.charlesproxy.com/documentation/faqs/ssl-connections-from-within-iphone-applications/" target="_blank">intercept SSL connections</a> by installing a custom certificate on a phone. I ran Charles Proxy on my laptop, pointed my iPhone it at (to use it as a proxy) and clicked on a tweet to a site that I had set up specially for testing.</p>
+	<p>To figure out what was going on I turned to <a href="http://www.charlesproxy.com" target="_blank">Charles Proxy</a> and used it to intercept the communication between my iPhone and CloudFlare. Happily, Charles Proxy can <a href="http://www.charlesproxy.com/documentation/faqs/ssl-connections-from-within-iphone-applications" target="_blank">intercept SSL connections</a> by installing a custom certificate on a phone. I ran Charles Proxy on my laptop, pointed my iPhone it at (to use it as a proxy) and clicked on a tweet to a site that I had set up specially for testing.</p>
 	<p>Charles Proxy showed that the request that generated an error looked like this:</p>
 	<pre><code>GET /test HTTP/1.1\r\n
 Host: www.example.com\r\n

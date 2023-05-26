@@ -2,7 +2,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/http2prioritization-copy@2x-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<h2 id="-">介绍</h2>
-	<p>我的团队：Cloudflare PROTOCOLS（协议）团队负责终止Cloudflare网络边缘的HTTP流量。我们处理与以下内容相关的特性：TCP、QUIC、TLS和安全证书管理、HTTP/1和HTTP/2。在第一季度，我们负责实现Cloudflare在速度周期间发布的<a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web/">增强型HTTP/2优先级</a>产品。</p>
+	<p>我的团队：Cloudflare PROTOCOLS（协议）团队负责终止Cloudflare网络边缘的HTTP流量。我们处理与以下内容相关的特性：TCP、QUIC、TLS和安全证书管理、HTTP/1和HTTP/2。在第一季度，我们负责实现Cloudflare在速度周期间发布的<a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">增强型HTTP/2优先级</a>产品。</p>
 	<p>这是一个非常令人兴奋的项目的一部分，更令人兴奋的是看到其结果，但在这个项目的过程中，我们对NGINX有很多有趣的认识：HTTP面向Cloudflare目前部署其软件基础架构的服务器。我们很快就确定，如果不改变NGINX的内部工作方式，我们的增强型HTTP/2优先级项目就完全谈不上成功。</p>
 	<p>由于这些认识，与核心优先级产品的工作并行，我们对NGINX的内部结构进行了许多重大更改。这篇博客文章描述了结构性变化背后的动机，我们如何应对这些变化以及它们产生了什么影响。我们还确定了计划添加到路线图中的其他更改，我们希望这些更改将进一步提高性能。</p>
 	<h2 id="--1">背景</h2>
@@ -116,5 +116,5 @@
 	<p>我们渴望与社区分享我们对NGINX的修改，因此我们已打开<a href="https://trac.nginx.org/nginx/ticket/1763" target="_blank">此</a>工单，通过此工单，我们将与NGINX团队讨论上游事件重排序更改和缓冲区部分重用更改。</p>
 	<p>随着Cloudflare的持续增长，我们对软件基础架构的需求也在发生变化。Cloudflare已经超越了HTTP/1 over TCP代理以支持终端和对任意UDP及TCP流量的第3、4层保护。现在，我们正在转向其他技术和协议，例如QUIC和HTTP / 3，以及对各种其他协议（例如消息传递和流媒体）的完全代理。</p>
 	<p>对于这些努力，我们正在寻找新的方法来回答有关以下主题的问题：可扩展性、局部性能、大范围性能、自省和可调试性、释放敏捷性、可维护性。</p>
-	<p>如果你乐于帮助我们回答这些问题，并了解一些：硬件和软件的可扩展性，网络编程，异步事件和基于未来的软件设计，TCP，TLS，QUIC，HTTP，RPC协议，Rust或其他的一些内容，请到<a href="https://www.cloudflare.com/careers/" target="_blank">这里</a>看看。</p>
+	<p>如果你乐于帮助我们回答这些问题，并了解一些：硬件和软件的可扩展性，网络编程，异步事件和基于未来的软件设计，TCP，TLS，QUIC，HTTP，RPC协议，Rust或其他的一些内容，请到<a href="https://www.cloudflare.com/careers" target="_blank">这里</a>看看。</p>
 </div>
