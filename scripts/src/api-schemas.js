@@ -24,7 +24,6 @@ function findAndReplaceSchema(schema, schemas) {
 					const schemaName = ref.replace('#/components/schemas/', '');
 					const fixedSchema = schemas[schemaName];
 					if(fixedSchema) {
-						console.log('fixing', schemaName, schema);
 						schema = fixedSchema;
 					}
 				}
@@ -64,11 +63,12 @@ async function run() {
 		for(const [method, methodData] of Object.entries(pathData)) {
 			if(methodData.tags) {
 				for(const tag of methodData.tags) {
-					if(!byTag[tag]) {
-						byTag[tag] = {};
-					}
+					byTag[tag] ??= {};
 					byTag[tag][`${method.toUpperCase()} ${path}`] = methodData;
 				}
+			}else{
+				byTag.Untagged ??= {};
+				byTag.Untagged[`${method.toUpperCase()} ${path}`] = methodData;
 			}
 		}
 	}
