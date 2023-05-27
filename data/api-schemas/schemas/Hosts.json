@@ -1,10 +1,15 @@
 {
-	"items": {
-		"description": "The valid hosts for the certificates.",
-		"example": "example.com",
-		"maxLength": 253,
-		"readOnly": true,
-		"type": "string"
+	"properties": {
+		"hosts": {
+			"example": [
+				"www.example.com",
+				"images.example.com"
+			],
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
+		}
 	},
-	"type": "array"
+	"type": "object"
 }

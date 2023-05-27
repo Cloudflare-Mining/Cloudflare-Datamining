@@ -1,17 +1,30 @@
 {
-	"allOf": [
-		{
-			"$ref": "#/components/schemas/api-response-collection"
-		},
-		{
-			"properties": {
-				"result": {
-					"items": {
-						"$ref": "#/components/schemas/domain-history-SdDV3v35"
-					},
-					"type": "array"
+	"properties": {
+		"errors": {
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/Errors"
+				},
+				{
+					"example": []
 				}
-			}
+			]
+		},
+		"messages": {
+			"$ref": "#/components/schemas/Messages"
+		},
+		"result": {},
+		"success": {
+			"description": "Whether the API call was successful.",
+			"example": true,
+			"type": "boolean"
 		}
-	]
+	},
+	"required": [
+		"result",
+		"success",
+		"errors",
+		"messages"
+	],
+	"type": "object"
 }

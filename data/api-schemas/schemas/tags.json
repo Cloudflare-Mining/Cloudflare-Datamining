@@ -1,0 +1,9 @@
+{
+	"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+	"items": {
+		"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+		"example": "owner:dns-team",
+		"type": "string"
+	},
+	"type": "array"
+}

@@ -1,7 +1,8 @@
 {
-	"description": "The keyless SSL name.",
-	"example": "example.com",
-	"format": "hostname",
-	"maxLength": 253,
-	"type": "string"
+	"description": "The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.",
+	"items": {
+		"example": "example.com",
+		"type": "string"
+	},
+	"type": "array"
 }

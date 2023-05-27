@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/domain-history-SdDV3v35"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

@@ -1,20 +1,7 @@
 {
+	"description": "A list of error messages.",
 	"items": {
-		"properties": {
-			"code": {
-				"minimum": 1000,
-				"type": "integer"
-			},
-			"message": {
-				"type": "string"
-			}
-		},
-		"required": [
-			"code",
-			"message"
-		],
-		"type": "object",
-		"uniqueItems": true
+		"$ref": "#/components/schemas/Message"
 	},
 	"type": "array"
 }
