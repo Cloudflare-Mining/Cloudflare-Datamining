@@ -1,0 +1,28 @@
+{
+	"description": "This is a record which can be placed to activate a hostname.",
+	"oneOf": [
+		{
+			"properties": {
+				"name": {
+					"description": "DNS Name for record.",
+					"example": "_cf-custom-hostname.app.example.com",
+					"type": "string"
+				},
+				"type": {
+					"description": "DNS Record type.",
+					"enum": [
+						"txt"
+					],
+					"example": "txt"
+				},
+				"value": {
+					"description": "Content for the record.",
+					"example": "5cc07c04-ea62-4a5a-95f0-419334a875a4",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		}
+	],
+	"type": "object"
+}

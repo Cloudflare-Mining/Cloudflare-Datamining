@@ -1,0 +1,9 @@
+{
+	"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
+	"enum": [
+		"on",
+		"off"
+	],
+	"example": "on",
+	"type": "string"
+}

@@ -1,0 +1,24 @@
+{
+	"example": [
+		"192.0.2.1",
+		"198.51.100.1",
+		"2001:DB8:100::CF"
+	],
+	"items": {
+		"anyOf": [
+			{
+				"description": "Upstream DNS Server IPv4 Address.",
+				"example": "192.0.2.1",
+				"format": "ipv4",
+				"type": "string"
+			},
+			{
+				"description": "Upstream DNS Server IPv6 Address.",
+				"example": "2001:DB8:100::CF",
+				"format": "ipv6",
+				"type": "string"
+			}
+		]
+	},
+	"type": "array"
+}

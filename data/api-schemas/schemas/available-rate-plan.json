@@ -1,0 +1,35 @@
+{
+	"properties": {
+		"can_subscribe": {
+			"$ref": "#/components/schemas/can_subscribe"
+		},
+		"currency": {
+			"$ref": "#/components/schemas/currency"
+		},
+		"externally_managed": {
+			"$ref": "#/components/schemas/externally_managed"
+		},
+		"frequency": {
+			"$ref": "#/components/schemas/schemas-frequency"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier"
+		},
+		"is_subscribed": {
+			"$ref": "#/components/schemas/is_subscribed"
+		},
+		"legacy_discount": {
+			"$ref": "#/components/schemas/legacy_discount"
+		},
+		"legacy_id": {
+			"$ref": "#/components/schemas/legacy_id"
+		},
+		"name": {
+			"$ref": "#/components/schemas/schemas-name-H5QNtW41"
+		},
+		"price": {
+			"$ref": "#/components/schemas/schemas-price"
+		}
+	},
+	"type": "object"
+}

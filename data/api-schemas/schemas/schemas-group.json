@@ -1,0 +1,25 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/group"
+		},
+		{
+			"properties": {
+				"allowed_modes": {
+					"$ref": "#/components/schemas/allowed_modes"
+				},
+				"mode": {
+					"$ref": "#/components/schemas/mode-1WbFm7cv"
+				}
+			}
+		}
+	],
+	"required": [
+		"id",
+		"name",
+		"description",
+		"mode",
+		"rules_count"
+	],
+	"type": "object"
+}

@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"opportunistic_onion"
+					],
+					"example": "opportunistic_onion"
+				},
+				"value": {
+					"$ref": "#/components/schemas/opportunistic_onion_value"
+				}
+			}
+		}
+	],
+	"default": "off",
+	"description": "Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes.",
+	"title": "Zone Enable Onion Routing"
+}

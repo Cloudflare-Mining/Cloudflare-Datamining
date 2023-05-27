@@ -1,0 +1,30 @@
+{
+	"description": "A ruleset object.",
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/RulesetDescription"
+		},
+		"id": {
+			"$ref": "#/components/schemas/RulesetId"
+		},
+		"kind": {
+			"$ref": "#/components/schemas/RulesetKind"
+		},
+		"name": {
+			"$ref": "#/components/schemas/RulesetName"
+		},
+		"phase": {
+			"$ref": "#/components/schemas/RulesetPhase"
+		},
+		"rules": {
+			"$ref": "#/components/schemas/RulesRequest"
+		},
+		"version": {
+			"$ref": "#/components/schemas/RulesetVersion"
+		}
+	},
+	"required": [
+		"rules"
+	],
+	"type": "object"
+}

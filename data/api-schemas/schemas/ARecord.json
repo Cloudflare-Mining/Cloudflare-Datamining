@@ -1,0 +1,37 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "A valid IPv4 address.",
+					"example": "198.51.100.4",
+					"format": "ipv4",
+					"type": "string"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"proxied": {
+					"$ref": "#/components/schemas/proxied-zlRtDkv6"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"A"
+					],
+					"example": "A",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"content"
+	],
+	"title": "A Record"
+}

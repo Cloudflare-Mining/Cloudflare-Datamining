@@ -1,0 +1,35 @@
+{
+	"properties": {
+		"operating_system": {
+			"description": "Operating system",
+			"enum": [
+				"windows",
+				"linux",
+				"mac"
+			],
+			"example": "mac",
+			"type": "string"
+		},
+		"path": {
+			"description": "File path.",
+			"example": "/bin/cat",
+			"type": "string"
+		},
+		"sha256": {
+			"description": "SHA-256.",
+			"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+			"type": "string"
+		},
+		"thumbprint": {
+			"description": "Signing certificate thumbprint.",
+			"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
+			"type": "string"
+		}
+	},
+	"required": [
+		"path",
+		"operating_system"
+	],
+	"title": "Sentinelone",
+	"type": "object"
+}

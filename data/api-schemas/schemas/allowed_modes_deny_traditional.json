@@ -1,0 +1,15 @@
+{
+	"description": "The list of possible actions of the WAF rule when it is triggered.",
+	"example": [
+		"default",
+		"disable",
+		"simulate",
+		"block",
+		"challenge"
+	],
+	"items": {
+		"$ref": "#/components/schemas/mode_deny_traditional"
+	},
+	"readOnly": true,
+	"type": "array"
+}

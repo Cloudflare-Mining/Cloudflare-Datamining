@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/keyless-certificate-U9Kr3m3G"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

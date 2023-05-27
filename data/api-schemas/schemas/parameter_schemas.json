@@ -1,0 +1,21 @@
+{
+	"properties": {
+		"parameter_schemas": {
+			"properties": {
+				"last_updated": {
+					"$ref": "#/components/schemas/timestamp"
+				},
+				"parameter_schemas": {
+					"$ref": "#/components/schemas/parameter_schemas_definition"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"readOnly": true,
+	"required": [
+		"parameter_schemas",
+		"last_updated"
+	],
+	"type": "object"
+}

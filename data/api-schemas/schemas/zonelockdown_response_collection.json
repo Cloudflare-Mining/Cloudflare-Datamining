@@ -1,0 +1,21 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/zonelockdown"
+					},
+					"type": "array"
+				}
+			},
+			"required": [
+				"result"
+			],
+			"type": "object"
+		}
+	]
+}

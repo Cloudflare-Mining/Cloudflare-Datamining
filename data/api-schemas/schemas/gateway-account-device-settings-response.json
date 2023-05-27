@@ -1,0 +1,15 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-IKr3W3bC"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/gateway-account-device-settings"
+				}
+			}
+		}
+	],
+	"type": "object"
+}

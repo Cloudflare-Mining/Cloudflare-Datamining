@@ -1,0 +1,32 @@
+{
+	"properties": {
+		"action": {
+			"$ref": "#/components/schemas/action-GFDgdZAo"
+		},
+		"allowed": {
+			"$ref": "#/components/schemas/allowed-OfSGNrfh"
+		},
+		"app_domain": {
+			"$ref": "#/components/schemas/app_domain"
+		},
+		"app_uid": {
+			"$ref": "#/components/schemas/app_uid"
+		},
+		"connection": {
+			"$ref": "#/components/schemas/connection-53h0Vvlv"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"ip_address": {
+			"$ref": "#/components/schemas/ip-s46BGZ01"
+		},
+		"ray_id": {
+			"$ref": "#/components/schemas/ray_id"
+		},
+		"user_email": {
+			"$ref": "#/components/schemas/email-MPb4lieV"
+		}
+	},
+	"type": "object"
+}

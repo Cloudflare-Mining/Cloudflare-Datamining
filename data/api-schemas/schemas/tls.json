@@ -1,0 +1,11 @@
+{
+	"description": "The type of TLS termination associated with the application.",
+	"enum": [
+		"off",
+		"flexible",
+		"full",
+		"strict"
+	],
+	"example": "full",
+	"type": "string"
+}

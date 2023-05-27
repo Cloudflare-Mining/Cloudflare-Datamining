@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"filter_v1": {
+			"$ref": "#/components/schemas/pcaps_filter_v1"
+		},
+		"packet_limit": {
+			"$ref": "#/components/schemas/pcaps_packet_limit"
+		},
+		"system": {
+			"$ref": "#/components/schemas/pcaps_system"
+		},
+		"time_limit": {
+			"$ref": "#/components/schemas/pcaps_time_limit"
+		},
+		"type": {
+			"$ref": "#/components/schemas/pcaps_type"
+		}
+	},
+	"required": [
+		"time_limit",
+		"packet_limit",
+		"type",
+		"system"
+	],
+	"type": "object"
+}

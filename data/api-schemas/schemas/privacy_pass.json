@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"privacy_pass"
+					],
+					"example": "privacy_pass"
+				},
+				"value": {
+					"$ref": "#/components/schemas/privacy_pass_value"
+				}
+			}
+		}
+	],
+	"description": "Privacy Pass is a browser extension developed by the Privacy Pass Team to improve the browsing experience for your visitors. Enabling Privacy Pass will reduce the number of CAPTCHAs shown to your visitors. (https://support.cloudflare.com/hc/en-us/articles/115001992652-Privacy-Pass).",
+	"title": "Privacy Pass"
+}

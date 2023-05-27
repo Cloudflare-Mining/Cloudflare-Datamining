@@ -1,0 +1,17 @@
+{
+	"properties": {
+		"profiles": {
+			"items": {
+				"$ref": "#/components/schemas/new_custom_profile"
+			},
+			"required": [
+				"name",
+				"entries"
+			],
+			"type": "array"
+		}
+	},
+	"required": [
+		"profiles"
+	]
+}

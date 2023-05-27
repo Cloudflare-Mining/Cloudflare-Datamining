@@ -1,0 +1,22 @@
+{
+	"description": "Client IP restrictions.",
+	"example": {
+		"in": [
+			"123.123.123.0/24",
+			"2606:4700::/32"
+		],
+		"not_in": [
+			"123.123.123.100/24",
+			"2606:4700:4700::/48"
+		]
+	},
+	"properties": {
+		"in": {
+			"$ref": "#/components/schemas/cidr_list"
+		},
+		"not_in": {
+			"$ref": "#/components/schemas/cidr_list"
+		}
+	},
+	"type": "object"
+}

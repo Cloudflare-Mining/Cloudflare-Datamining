@@ -1,0 +1,1323 @@
+{
+	"DELETE /accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}": {
+		"description": "Delete a deployment.",
+		"operationId": "pages-deployment-delete-deployment",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "deployment_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [],
+								"messages": [],
+								"result": null,
+								"success": true
+							}
+						}
+					}
+				},
+				"description": "Delete deployment response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"example": {
+										"errors": [],
+										"messages": [],
+										"result": null,
+										"success": true
+									}
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete deployment response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete deployment",
+		"tags": [
+			"Pages Deployment"
+		]
+	},
+	"GET /accounts/{account_identifier}/pages/projects/{project_name}/deployments": {
+		"description": "Fetch a list of project deployments.",
+		"operationId": "pages-deployment-get-deployments",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 1
+												},
+												"page": {
+													"example": 1
+												},
+												"per_page": {
+													"example": 100
+												},
+												"total_count": {
+													"example": 1
+												}
+											},
+											"type": "object"
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/deployments"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get deployments response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"example": 1
+														},
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 100
+														},
+														"total_count": {
+															"example": 1
+														}
+													},
+													"type": "object"
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/deployments"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get deployments response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get deployments",
+		"tags": [
+			"Pages Deployment"
+		]
+	},
+	"GET /accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}": {
+		"description": "Fetch information about a deployment.",
+		"operationId": "pages-deployment-get-deployment-info",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "deployment_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/deployments"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get deployment info response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/deployments"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get deployment info response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get deployment info",
+		"tags": [
+			"Pages Deployment"
+		]
+	},
+	"GET /accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/history/logs": {
+		"description": "Fetch deployment logs for a project.",
+		"operationId": "pages-deployment-get-deployment-logs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "deployment_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": {
+												"data": [
+													{
+														"line": "Cloning repository...",
+														"ts": "2021-04-20T19:35:29.0749819Z"
+													},
+													{
+														"line": "From https://github.com/cloudflare/example",
+														"ts": "2021-04-20T19:35:30.0749819Z"
+													},
+													{
+														"line": " * branch            209c5bb11d89533f426b2f8469bcae12fdccf71b -> FETCH_HEAD",
+														"ts": "2021-04-20T19:35:30.0749819Z"
+													},
+													{
+														"line": "",
+														"ts": "2021-04-20T19:35:30.0749819Z"
+													},
+													{
+														"line": "HEAD is now at 209c5bb Update index.html",
+														"ts": "2021-04-20T19:35:30.0749819Z"
+													},
+													{
+														"line": "",
+														"ts": "2021-04-20T19:35:30.0749819Z"
+													},
+													{
+														"line": "",
+														"ts": "2021-04-20T19:35:30.0749819Z"
+													},
+													{
+														"line": "Success: Finished cloning repository files",
+														"ts": "2021-04-20T19:35:30.0749819Z"
+													},
+													{
+														"line": "Installing dependencies",
+														"ts": "2021-04-20T19:35:59.0749819Z"
+													},
+													{
+														"line": "Python version set to 2.7",
+														"ts": "2021-04-20T19:35:59.0931208Z"
+													},
+													{
+														"line": "v12.18.0 is already installed.",
+														"ts": "2021-04-20T19:36:02.2369501Z"
+													},
+													{
+														"line": "Now using node v12.18.0 (npm v6.14.4)",
+														"ts": "2021-04-20T19:36:02.6028886Z"
+													},
+													{
+														"line": "Started restoring cached build plugins",
+														"ts": "2021-04-20T19:36:02.624555Z"
+													},
+													{
+														"line": "Finished restoring cached build plugins",
+														"ts": "2021-04-20T19:36:02.6340688Z"
+													},
+													{
+														"line": "Attempting ruby version 2.7.1, read from environment",
+														"ts": "2021-04-20T19:36:02.963095Z"
+													},
+													{
+														"line": "Using ruby version 2.7.1",
+														"ts": "2021-04-20T19:36:04.2236084Z"
+													},
+													{
+														"line": "Using PHP version 5.6",
+														"ts": "2021-04-20T19:36:04.5450152Z"
+													},
+													{
+														"line": "5.2 is already installed.",
+														"ts": "2021-04-20T19:36:04.5740509Z"
+													},
+													{
+														"line": "Using Swift version 5.2",
+														"ts": "2021-04-20T19:36:04.577035Z"
+													},
+													{
+														"line": "Installing Hugo 0.54.0",
+														"ts": "2021-04-20T19:36:04.5771615Z"
+													},
+													{
+														"line": "Hugo Static Site Generator v0.54.0-B1A82C61A/extended linux/amd64 BuildDate: 2019-02-01T10:04:38Z",
+														"ts": "2021-04-20T19:36:05.4786868Z"
+													},
+													{
+														"line": "Started restoring cached go cache",
+														"ts": "2021-04-20T19:36:05.4794366Z"
+													},
+													{
+														"line": "Finished restoring cached go cache",
+														"ts": "2021-04-20T19:36:05.481977Z"
+													},
+													{
+														"line": "go version go1.14.4 linux/amd64",
+														"ts": "2021-04-20T19:36:05.9049776Z"
+													},
+													{
+														"line": "go version go1.14.4 linux/amd64",
+														"ts": "2021-04-20T19:36:05.9086053Z"
+													},
+													{
+														"line": "Installing missing commands",
+														"ts": "2021-04-20T19:36:05.9163568Z"
+													},
+													{
+														"line": "Verify run directory",
+														"ts": "2021-04-20T19:36:05.9163934Z"
+													},
+													{
+														"line": "Executing user command: echo \"skipping build step: no build command specified\"",
+														"ts": "2021-04-20T19:36:05.9164636Z"
+													},
+													{
+														"line": "skipping build step: no build command specified",
+														"ts": "2021-04-20T19:36:05.9165087Z"
+													},
+													{
+														"line": "Finished",
+														"ts": "2021-04-20T19:36:05.917412Z"
+													}
+												],
+												"includes_container_logs": true,
+												"total": 30
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get deployment logs response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": {
+														"data": [
+															{
+																"line": "Cloning repository...",
+																"ts": "2021-04-20T19:35:29.0749819Z"
+															},
+															{
+																"line": "From https://github.com/cloudflare/example",
+																"ts": "2021-04-20T19:35:30.0749819Z"
+															},
+															{
+																"line": " * branch            209c5bb11d89533f426b2f8469bcae12fdccf71b -> FETCH_HEAD",
+																"ts": "2021-04-20T19:35:30.0749819Z"
+															},
+															{
+																"line": "",
+																"ts": "2021-04-20T19:35:30.0749819Z"
+															},
+															{
+																"line": "HEAD is now at 209c5bb Update index.html",
+																"ts": "2021-04-20T19:35:30.0749819Z"
+															},
+															{
+																"line": "",
+																"ts": "2021-04-20T19:35:30.0749819Z"
+															},
+															{
+																"line": "",
+																"ts": "2021-04-20T19:35:30.0749819Z"
+															},
+															{
+																"line": "Success: Finished cloning repository files",
+																"ts": "2021-04-20T19:35:30.0749819Z"
+															},
+															{
+																"line": "Installing dependencies",
+																"ts": "2021-04-20T19:35:59.0749819Z"
+															},
+															{
+																"line": "Python version set to 2.7",
+																"ts": "2021-04-20T19:35:59.0931208Z"
+															},
+															{
+																"line": "v12.18.0 is already installed.",
+																"ts": "2021-04-20T19:36:02.2369501Z"
+															},
+															{
+																"line": "Now using node v12.18.0 (npm v6.14.4)",
+																"ts": "2021-04-20T19:36:02.6028886Z"
+															},
+															{
+																"line": "Started restoring cached build plugins",
+																"ts": "2021-04-20T19:36:02.624555Z"
+															},
+															{
+																"line": "Finished restoring cached build plugins",
+																"ts": "2021-04-20T19:36:02.6340688Z"
+															},
+															{
+																"line": "Attempting ruby version 2.7.1, read from environment",
+																"ts": "2021-04-20T19:36:02.963095Z"
+															},
+															{
+																"line": "Using ruby version 2.7.1",
+																"ts": "2021-04-20T19:36:04.2236084Z"
+															},
+															{
+																"line": "Using PHP version 5.6",
+																"ts": "2021-04-20T19:36:04.5450152Z"
+															},
+															{
+																"line": "5.2 is already installed.",
+																"ts": "2021-04-20T19:36:04.5740509Z"
+															},
+															{
+																"line": "Using Swift version 5.2",
+																"ts": "2021-04-20T19:36:04.577035Z"
+															},
+															{
+																"line": "Installing Hugo 0.54.0",
+																"ts": "2021-04-20T19:36:04.5771615Z"
+															},
+															{
+																"line": "Hugo Static Site Generator v0.54.0-B1A82C61A/extended linux/amd64 BuildDate: 2019-02-01T10:04:38Z",
+																"ts": "2021-04-20T19:36:05.4786868Z"
+															},
+															{
+																"line": "Started restoring cached go cache",
+																"ts": "2021-04-20T19:36:05.4794366Z"
+															},
+															{
+																"line": "Finished restoring cached go cache",
+																"ts": "2021-04-20T19:36:05.481977Z"
+															},
+															{
+																"line": "go version go1.14.4 linux/amd64",
+																"ts": "2021-04-20T19:36:05.9049776Z"
+															},
+															{
+																"line": "go version go1.14.4 linux/amd64",
+																"ts": "2021-04-20T19:36:05.9086053Z"
+															},
+															{
+																"line": "Installing missing commands",
+																"ts": "2021-04-20T19:36:05.9163568Z"
+															},
+															{
+																"line": "Verify run directory",
+																"ts": "2021-04-20T19:36:05.9163934Z"
+															},
+															{
+																"line": "Executing user command: echo \"skipping build step: no build command specified\"",
+																"ts": "2021-04-20T19:36:05.9164636Z"
+															},
+															{
+																"line": "skipping build step: no build command specified",
+																"ts": "2021-04-20T19:36:05.9165087Z"
+															},
+															{
+																"line": "Finished",
+																"ts": "2021-04-20T19:36:05.917412Z"
+															}
+														],
+														"includes_container_logs": true,
+														"total": 30
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get deployment logs response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get deployment logs",
+		"tags": [
+			"Pages Deployment"
+		]
+	},
+	"POST /accounts/{account_identifier}/pages/projects/{project_name}/deployments": {
+		"description": "Start a new deployment from production. The repository and account must have already been authorized on the Cloudflare Pages dashboard.",
+		"operationId": "pages-deployment-create-deployment",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"schema": {
+						"properties": {
+							"branch": {
+								"description": "The branch to build the new deployment from. The `HEAD` of the branch will be used. If omitted, the production branch will be used by default.",
+								"example": "staging",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/deployments"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create deployment response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/deployments"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create deployment response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create deployment",
+		"tags": [
+			"Pages Deployment"
+		]
+	},
+	"POST /accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/retry": {
+		"description": "Retry a previous deployment.",
+		"operationId": "pages-deployment-retry-deployment",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "deployment_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/deployments"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Retry deployment response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/deployments"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Retry deployment response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Retry deployment",
+		"tags": [
+			"Pages Deployment"
+		]
+	},
+	"POST /accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/rollback": {
+		"description": "Rollback the production deployment to a previous deployment. You can only rollback to succesful builds on production.",
+		"operationId": "pages-deployment-rollback-deployment",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "deployment_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/deployments"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Rollback deployment response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/deployments"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Rollback deployment response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Rollback deployment",
+		"tags": [
+			"Pages Deployment"
+		]
+	}
+}

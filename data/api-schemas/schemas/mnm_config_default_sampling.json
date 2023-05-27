@@ -1,0 +1,6 @@
+{
+	"default": 1,
+	"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+	"minimum": 1,
+	"type": "number"
+}

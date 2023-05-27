@@ -1,0 +1,31 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/filter-rule-response"
+							},
+							{
+								"required": [
+									"id"
+								],
+								"type": "object"
+							}
+						]
+					},
+					"type": "array"
+				}
+			},
+			"required": [
+				"result"
+			],
+			"type": "object"
+		}
+	]
+}

@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"advanced_ddos"
+					],
+					"example": "advanced_ddos"
+				},
+				"value": {
+					"$ref": "#/components/schemas/advanced_ddos_value"
+				}
+			}
+		}
+	],
+	"description": "Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones.",
+	"title": "Advanced DDoS Protection"
+}

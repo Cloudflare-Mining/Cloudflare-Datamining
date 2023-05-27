@@ -1,0 +1,28 @@
+{
+	"description": "Statuses for domain transfers into Cloudflare Registrar.",
+	"properties": {
+		"accept_foa": {
+			"description": "Form of authorization has been accepted by the registrant.",
+			"example": "needed"
+		},
+		"approve_transfer": {
+			"description": "Shows transfer status with the registry.",
+			"example": "unknown"
+		},
+		"can_cancel_transfer": {
+			"description": "Indicates if cancellation is still possible.",
+			"example": true,
+			"type": "boolean"
+		},
+		"disable_privacy": {
+			"description": "Privacy guards are disabled at the foreign registrar."
+		},
+		"enter_auth_code": {
+			"description": "Auth code has been entered and verified.",
+			"example": "needed"
+		},
+		"unlock_domain": {
+			"description": "Domain is unlocked at the foreign registrar."
+		}
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"description": "Allowed HTTP request methods.",
+	"example": [
+		"GET"
+	],
+	"items": {
+		"enum": [
+			"GET",
+			"POST",
+			"HEAD",
+			"PUT",
+			"DELETE",
+			"CONNECT",
+			"OPTIONS",
+			"TRACE",
+			"PATCH"
+		],
+		"type": "string"
+	},
+	"type": "array"
+}

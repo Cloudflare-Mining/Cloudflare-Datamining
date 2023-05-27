@@ -1,0 +1,53 @@
+{
+	"properties": {
+		"allow_insecure": {
+			"$ref": "#/components/schemas/allow_insecure"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"description": {
+			"$ref": "#/components/schemas/description-UgYlsM8m"
+		},
+		"expected_body": {
+			"$ref": "#/components/schemas/expected_body"
+		},
+		"expected_codes": {
+			"$ref": "#/components/schemas/expected_codes"
+		},
+		"follow_redirects": {
+			"$ref": "#/components/schemas/follow_redirects"
+		},
+		"header": {
+			"$ref": "#/components/schemas/header"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier-Gsh6hrUK"
+		},
+		"interval": {
+			"$ref": "#/components/schemas/interval-0f28dY4Z"
+		},
+		"method": {
+			"$ref": "#/components/schemas/method-bce4Ubr4"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"path": {
+			"$ref": "#/components/schemas/path-YfIU1s1d"
+		},
+		"port": {
+			"$ref": "#/components/schemas/port-oZnTjnsO"
+		},
+		"retries": {
+			"$ref": "#/components/schemas/retries"
+		},
+		"timeout": {
+			"$ref": "#/components/schemas/timeout"
+		},
+		"type": {
+			"$ref": "#/components/schemas/type-2gjH9pMQ"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,11 @@
+{
+	"properties": {
+		"id": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		},
+		"name": {
+			"$ref": "#/components/schemas/zone-properties-name"
+		}
+	},
+	"type": "object"
+}

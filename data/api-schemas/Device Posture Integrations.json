@@ -1,0 +1,780 @@
+{
+	"DELETE /accounts/{identifier}/devices/posture/integration/{uuid}": {
+		"description": "Delete a Device Posture Integration.",
+		"operationId": "device-posture-integrations-delete-device-posture-integration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "API uuid tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Device Posture Integration response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Device Posture Integration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete Device Posture Integration",
+		"tags": [
+			"Device Posture Integrations"
+		]
+	},
+	"GET /accounts/{identifier}/devices/posture/integration": {
+		"description": "List Device Posture Integrations for an account.",
+		"operationId": "device-posture-integrations-list-device-posture-integrations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Device Posture Integrations response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Device Posture Integrations response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List Device Posture Integrations",
+		"tags": [
+			"Device Posture Integrations"
+		]
+	},
+	"GET /accounts/{identifier}/devices/posture/integration/{uuid}": {
+		"description": "Fetch a single Device Posture Integration.",
+		"operationId": "device-posture-integrations-device-posture-integration-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "API uuid tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Device Posture Integration Details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Device Posture Integration Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Device Posture Integration Details",
+		"tags": [
+			"Device Posture Integrations"
+		]
+	},
+	"PATCH /accounts/{identifier}/devices/posture/integration/{uuid}": {
+		"description": "Update a Device Posture Integration.",
+		"operationId": "device-posture-integrations-update-device-posture-integration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "API uuid tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"config": {
+								"description": "The configuration object containing third party integration information.",
+								"example": {
+									"api_url": "https://as123.awmdm.com/API",
+									"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+									"client_id": "example client id",
+									"client_secret": "example client secret"
+								},
+								"oneOf": [
+									{
+										"$ref": "#/components/schemas/workspace_one_config_request-7ccaWKKu"
+									},
+									{
+										"$ref": "#/components/schemas/crowdstrike_config_request-ChCiehcW"
+									},
+									{
+										"$ref": "#/components/schemas/uptycs_config_request-X9HEl5cN"
+									},
+									{
+										"$ref": "#/components/schemas/intune_config_request-zWrA6yqc"
+									}
+								],
+								"type": "object"
+							},
+							"interval": {
+								"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+								"example": "10m",
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the Device Posture Integration.",
+								"example": "My Workspace One Integration",
+								"type": "string"
+							},
+							"type": {
+								"description": "The type of Device Posture Integration.",
+								"enum": [
+									"workspace_one",
+									"crowdstrike_s2s",
+									"uptycs",
+									"intune"
+								],
+								"example": "workspace_one",
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Device Posture Integration response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Device Posture Integration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update Device Posture Integration",
+		"tags": [
+			"Device Posture Integrations"
+		]
+	},
+	"POST /accounts/{identifier}/devices/posture/integration": {
+		"description": "Create a new Device Posture Integration.",
+		"operationId": "device-posture-integrations-create-device-posture-integration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"config": {
+								"description": "The configuration object containing third party integration information.",
+								"example": {
+									"api_url": "https://as123.awmdm.com/API",
+									"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+									"client_id": "example client id",
+									"client_secret": "example client secret"
+								},
+								"oneOf": [
+									{
+										"$ref": "#/components/schemas/workspace_one_config_request-7ccaWKKu"
+									},
+									{
+										"$ref": "#/components/schemas/crowdstrike_config_request-ChCiehcW"
+									},
+									{
+										"$ref": "#/components/schemas/uptycs_config_request-X9HEl5cN"
+									},
+									{
+										"$ref": "#/components/schemas/intune_config_request-zWrA6yqc"
+									}
+								],
+								"type": "object"
+							},
+							"interval": {
+								"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+								"example": "10m",
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the Device Posture Integration.",
+								"example": "My Workspace One Integration",
+								"type": "string"
+							},
+							"type": {
+								"description": "The type of Device Posture Integration.",
+								"enum": [
+									"workspace_one",
+									"crowdstrike_s2s",
+									"uptycs",
+									"intune"
+								],
+								"example": "workspace_one",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"type",
+							"interval",
+							"config"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Device Posture Integration response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Device Posture Integration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create Device Posture Integration",
+		"tags": [
+			"Device Posture Integrations"
+		]
+	}
+}

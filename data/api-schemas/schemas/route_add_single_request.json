@@ -1,0 +1,28 @@
+{
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/description-fRiDjwo8"
+		},
+		"nexthop": {
+			"$ref": "#/components/schemas/nexthop"
+		},
+		"prefix": {
+			"$ref": "#/components/schemas/prefix"
+		},
+		"priority": {
+			"$ref": "#/components/schemas/priority-jjmXW5gw"
+		},
+		"scope": {
+			"$ref": "#/components/schemas/scope"
+		},
+		"weight": {
+			"$ref": "#/components/schemas/weight"
+		}
+	},
+	"required": [
+		"prefix",
+		"nexthop",
+		"priority"
+	],
+	"type": "object"
+}

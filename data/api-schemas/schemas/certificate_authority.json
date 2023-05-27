@@ -1,0 +1,10 @@
+{
+	"description": "The Certificate Authority that will issue the certificate",
+	"enum": [
+		"digicert",
+		"google",
+		"lets_encrypt"
+	],
+	"example": "google",
+	"type": "string"
+}

@@ -1,0 +1,15 @@
+{
+	"properties": {
+		"mode": {
+			"description": "The mode to run the WARP client under.",
+			"example": "proxy",
+			"type": "string"
+		},
+		"port": {
+			"description": "The port number when used with proxy mode.",
+			"example": 3000,
+			"type": "number"
+		}
+	},
+	"type": "object"
+}

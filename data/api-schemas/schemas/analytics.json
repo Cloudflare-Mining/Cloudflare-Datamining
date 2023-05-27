@@ -1,0 +1,39 @@
+{
+	"properties": {
+		"id": {
+			"default": 1,
+			"type": "integer"
+		},
+		"origins": {
+			"example": [
+				{
+					"address": "198.51.100.4",
+					"changed": true,
+					"enabled": true,
+					"failure_reason": "No failures",
+					"healthy": true,
+					"ip": "198.51.100.4",
+					"name": "some-origin"
+				}
+			],
+			"items": {},
+			"type": "array"
+		},
+		"pool": {
+			"example": {
+				"changed": true,
+				"healthy": true,
+				"id": "74bc6a8b9b0dda3d651707a2928bad0c",
+				"minimum_origins": 1,
+				"name": "some-pool"
+			},
+			"type": "object"
+		},
+		"timestamp": {
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

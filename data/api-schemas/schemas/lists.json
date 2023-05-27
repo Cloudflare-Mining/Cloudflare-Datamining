@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"count": {
+			"$ref": "#/components/schemas/count"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"description": {
+			"$ref": "#/components/schemas/description-NQNM0TJC"
+		},
+		"id": {
+			"$ref": "#/components/schemas/uuid-WUOe8ECN"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-qxCd13OZ"
+		},
+		"type": {
+			"$ref": "#/components/schemas/type-jn3zv8hQ"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"type": "object"
+}

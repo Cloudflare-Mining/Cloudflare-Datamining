@@ -1,0 +1,40 @@
+{
+	"properties": {
+		"exists": {
+			"description": "Whether or not file exists",
+			"example": true,
+			"type": "boolean"
+		},
+		"operating_system": {
+			"description": "Operating system",
+			"enum": [
+				"windows",
+				"linux",
+				"mac"
+			],
+			"example": "mac",
+			"type": "string"
+		},
+		"path": {
+			"description": "File path.",
+			"example": "/bin/cat",
+			"type": "string"
+		},
+		"sha256": {
+			"description": "SHA-256.",
+			"example": "https://api.us-2.crowdstrike.com",
+			"type": "string"
+		},
+		"thumbprint": {
+			"description": "Signing certificate thumbprint.",
+			"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
+			"type": "string"
+		}
+	},
+	"required": [
+		"path",
+		"operating_system"
+	],
+	"title": "File Check",
+	"type": "object"
+}

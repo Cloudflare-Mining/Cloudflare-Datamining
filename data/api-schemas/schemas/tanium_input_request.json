@@ -1,0 +1,33 @@
+{
+	"properties": {
+		"connection_id": {
+			"description": "Posture Integration ID.",
+			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+			"type": "string"
+		},
+		"scoreOperator": {
+			"description": "Score Operator",
+			"enum": [
+				"<",
+				"<=",
+				">",
+				">=",
+				"=="
+			],
+			"example": ">",
+			"type": "string"
+		},
+		"total_score": {
+			"description": "Total Score.",
+			"example": 1,
+			"type": "string"
+		}
+	},
+	"required": [
+		"connection_id",
+		"scoreOperator",
+		"total_score"
+	],
+	"title": "Tanium S2S Input",
+	"type": "object"
+}

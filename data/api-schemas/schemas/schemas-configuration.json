@@ -1,0 +1,21 @@
+{
+	"description": "The rule configuration.",
+	"oneOf": [
+		{
+			"$ref": "#/components/schemas/ip_configuration"
+		},
+		{
+			"$ref": "#/components/schemas/ipv6_configuration"
+		},
+		{
+			"$ref": "#/components/schemas/cidr_configuration"
+		},
+		{
+			"$ref": "#/components/schemas/asn_configuration"
+		},
+		{
+			"$ref": "#/components/schemas/country_configuration"
+		}
+	],
+	"type": "object"
+}

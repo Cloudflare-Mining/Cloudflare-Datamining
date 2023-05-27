@@ -1,0 +1,58 @@
+{
+	"properties": {
+		"activated_on": {
+			"$ref": "#/components/schemas/activated_on"
+		},
+		"activation_key": {
+			"$ref": "#/components/schemas/activation_key"
+		},
+		"build": {
+			"$ref": "#/components/schemas/build"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/components-schemas-created_on"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/railgun_components-schemas-enabled"
+		},
+		"id": {
+			"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/railgun_components-schemas-modified_on"
+		},
+		"name": {
+			"$ref": "#/components/schemas/railgun_components-schemas-name"
+		},
+		"revision": {
+			"$ref": "#/components/schemas/revision"
+		},
+		"status": {
+			"$ref": "#/components/schemas/railgun_components-schemas-status"
+		},
+		"upgrade_info": {
+			"$ref": "#/components/schemas/upgrade_info"
+		},
+		"version": {
+			"$ref": "#/components/schemas/components-schemas-version"
+		},
+		"zones_connected": {
+			"$ref": "#/components/schemas/zones_connected"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"status",
+		"enabled",
+		"zones_connected",
+		"build",
+		"version",
+		"revision",
+		"activation_key",
+		"activated_on",
+		"created_on",
+		"modified_on"
+	],
+	"type": "object"
+}

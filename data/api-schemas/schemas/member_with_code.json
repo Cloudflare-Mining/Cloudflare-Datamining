@@ -1,0 +1,15 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/member"
+		},
+		{
+			"properties": {
+				"code": {
+					"$ref": "#/components/schemas/code"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

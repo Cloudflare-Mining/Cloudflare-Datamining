@@ -1,0 +1,46 @@
+{
+	"properties": {
+		"operating_system": {
+			"description": "Operating System",
+			"enum": [
+				"windows"
+			],
+			"example": "windows",
+			"type": "string"
+		},
+		"operator": {
+			"description": "Operator",
+			"enum": [
+				"<",
+				"<=",
+				">",
+				">=",
+				"=="
+			],
+			"example": "13.3.0",
+			"type": "string"
+		},
+		"os_distro_name": {
+			"description": "Operating System Distribution Name (linux only)",
+			"example": "ubuntu",
+			"type": "string"
+		},
+		"os_distro_revision": {
+			"description": "Version of OS Distribution (linux only)",
+			"example": "11.3.1",
+			"type": "string"
+		},
+		"version": {
+			"description": "Version of OS",
+			"example": "13.3.0",
+			"type": "string"
+		}
+	},
+	"required": [
+		"operating_system",
+		"version",
+		"operator"
+	],
+	"title": "OS Version",
+	"type": "object"
+}

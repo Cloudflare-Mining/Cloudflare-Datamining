@@ -1,0 +1,33 @@
+{
+	"properties": {
+		"allowedOrigins": {
+			"$ref": "#/components/schemas/allowedOrigins"
+		},
+		"creator": {
+			"$ref": "#/components/schemas/creator"
+		},
+		"expiry": {
+			"default": "Now + 30 minutes",
+			"description": "The date and time after upload when videos will not be accepted.",
+			"example": "2021-01-02T02:20:00Z",
+			"format": "date-time",
+			"type": "string"
+		},
+		"maxDurationSeconds": {
+			"$ref": "#/components/schemas/maxDurationSeconds"
+		},
+		"requireSignedURLs": {
+			"$ref": "#/components/schemas/requireSignedURLs"
+		},
+		"thumbnailTimestampPct": {
+			"$ref": "#/components/schemas/thumbnailTimestampPct"
+		},
+		"watermark": {
+			"$ref": "#/components/schemas/watermark_at_upload"
+		}
+	},
+	"required": [
+		"maxDurationSeconds"
+	],
+	"type": "object"
+}

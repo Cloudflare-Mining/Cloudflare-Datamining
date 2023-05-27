@@ -1,0 +1,37 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "A valid IPv6 address.",
+					"example": "2400:cb00:2049::1",
+					"format": "ipv6",
+					"type": "string"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"proxied": {
+					"$ref": "#/components/schemas/proxied-zlRtDkv6"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"AAAA"
+					],
+					"example": "AAAA",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"content"
+	],
+	"title": "AAAA Record"
+}

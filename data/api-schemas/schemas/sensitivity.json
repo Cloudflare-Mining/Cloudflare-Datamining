@@ -1,0 +1,11 @@
+{
+	"default": "high",
+	"description": "The sensitivity of the WAF package.",
+	"enum": [
+		"high",
+		"medium",
+		"low",
+		"off"
+	],
+	"type": "string"
+}

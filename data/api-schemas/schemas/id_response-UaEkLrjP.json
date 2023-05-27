@@ -1,0 +1,19 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"id": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,25 @@
+{
+	"description": "String constraint.",
+	"properties": {
+		"operator": {
+			"default": "contains",
+			"description": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
+			"enum": [
+				"matches",
+				"contains",
+				"equals",
+				"not_equal",
+				"not_contain"
+			]
+		},
+		"value": {
+			"description": "The value to apply the operator to.",
+			"type": "string"
+		}
+	},
+	"required": [
+		"operator",
+		"value"
+	],
+	"type": "object"
+}

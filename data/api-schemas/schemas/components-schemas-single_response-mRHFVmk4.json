@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-v8pKH3yx"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/passive-dns-by-ip"
+				}
+			}
+		}
+	]
+}

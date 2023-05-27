@@ -1,0 +1,9 @@
+{
+	"description": "The hostnames of the applications that will use this certificate.",
+	"items": {
+		"description": "A fully-qualified domain name (FQDN).",
+		"example": "admin.example.com",
+		"type": "string"
+	},
+	"type": "array"
+}

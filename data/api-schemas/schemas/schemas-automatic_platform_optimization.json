@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"automatic_platform_optimization"
+					],
+					"example": "automatic_platform_optimization"
+				},
+				"value": {
+					"$ref": "#/components/schemas/automatic_platform_optimization"
+				}
+			}
+		}
+	],
+	"description": "[Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts.",
+	"title": "Automatic Platform Optimization for WordPress"
+}

@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone's security header.",
+					"enum": [
+						"security_header"
+					],
+					"example": "security_header"
+				},
+				"value": {
+					"$ref": "#/components/schemas/security_header_value"
+				}
+			}
+		}
+	],
+	"description": "Cloudflare security header for a zone.",
+	"title": "Security Header"
+}

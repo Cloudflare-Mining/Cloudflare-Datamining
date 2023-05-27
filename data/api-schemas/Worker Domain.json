@@ -1,0 +1,549 @@
+{
+	"DELETE /accounts/{account_identifier}/workers/domains/{domain_identifier}": {
+		"description": "Detaches a worker from a zone and hostname.",
+		"operationId": "worker-domain-detach-from-domain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "domain_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifer of the Worker Domain.",
+					"example": "dbe10b4bc17c295377eabd600e1787fd"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "9a7806061c88ada191ed06f989cc3dac"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {}
+				},
+				"description": "Detach from Domain response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {}
+				},
+				"description": "Detach from Domain response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Detach from Domain",
+		"tags": [
+			"Worker Domain"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.domain.delete"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/workers/domains": {
+		"description": "Lists all Worker Domains.",
+		"operationId": "worker-domain-list-domains",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "9a7806061c88ada191ed06f989cc3dac"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_name",
+				"schema": {
+					"description": "Name of the zone.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "service",
+				"schema": {
+					"description": "Worker service associated with the zone and hostname.",
+					"example": "foo",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone_identifier",
+				"schema": {
+					"description": "Identifier of the zone.",
+					"example": "593c9c94de529bbbfaac7c53ced0447d"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hostname",
+				"schema": {
+					"description": "Hostname of the Worker Domain.",
+					"example": "foo.example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "environment",
+				"schema": {
+					"description": "Worker environment associated with the zone and hostname.",
+					"example": "production",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/domain-dK90PDsh"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Domains response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/domain-dK90PDsh"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Domains response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List Domains",
+		"tags": [
+			"Worker Domain"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.domain.list"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/workers/domains/{domain_identifier}": {
+		"description": "Gets a Worker Domain.",
+		"operationId": "worker-domain-get-a-domain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "domain_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifer of the Worker Domain.",
+					"example": "dbe10b4bc17c295377eabd600e1787fd"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "9a7806061c88ada191ed06f989cc3dac"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/domain-dK90PDsh"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Domain response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/domain-dK90PDsh"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Domain response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get a Domain",
+		"tags": [
+			"Worker Domain"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.domain.read"
+			]
+		}
+	},
+	"PUT /accounts/{account_identifier}/workers/domains": {
+		"description": "Attaches a worker to a zone and hostname.",
+		"operationId": "worker-domain-attach-to-domain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "9a7806061c88ada191ed06f989cc3dac"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"environment": {
+								"description": "Worker environment associated with the zone and hostname.",
+								"example": "production",
+								"type": "string"
+							},
+							"hostname": {
+								"description": "Hostname of the Worker Domain.",
+								"example": "foo.example.com",
+								"type": "string"
+							},
+							"service": {
+								"description": "Worker service associated with the zone and hostname.",
+								"example": "foo",
+								"type": "string"
+							},
+							"zone_id": {
+								"description": "Identifier of the zone.",
+								"example": "593c9c94de529bbbfaac7c53ced0447d"
+							}
+						},
+						"required": [
+							"zone_id",
+							"hostname",
+							"service",
+							"environment"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/domain-dK90PDsh"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Attach to Domain response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/domain-dK90PDsh"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Attach to Domain response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Attach to Domain",
+		"tags": [
+			"Worker Domain"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.domain.update"
+			]
+		}
+	}
+}

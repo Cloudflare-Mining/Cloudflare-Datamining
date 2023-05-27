@@ -1,0 +1,14 @@
+{
+	"description": "Certificate Authority used to issue the Client Certificate",
+	"properties": {
+		"id": {
+			"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
+			"type": "string"
+		},
+		"name": {
+			"example": "Cloudflare Managed CA for account",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

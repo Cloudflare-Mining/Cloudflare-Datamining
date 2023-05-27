@@ -1,0 +1,21 @@
+{
+	"nullable": true,
+	"properties": {
+		"destination_conf": {
+			"$ref": "#/components/schemas/schemas-destination_conf"
+		},
+		"fields": {
+			"$ref": "#/components/schemas/fields"
+		},
+		"filter": {
+			"$ref": "#/components/schemas/filter"
+		},
+		"sample": {
+			"$ref": "#/components/schemas/sample-7BGvf9Us"
+		},
+		"session_id": {
+			"$ref": "#/components/schemas/session_id"
+		}
+	},
+	"type": "object"
+}

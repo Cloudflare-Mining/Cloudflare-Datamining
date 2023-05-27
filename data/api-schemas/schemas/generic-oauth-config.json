@@ -1,0 +1,15 @@
+{
+	"properties": {
+		"client_id": {
+			"description": "Your OAuth Client ID",
+			"example": "<your client id>",
+			"type": "string"
+		},
+		"client_secret": {
+			"description": "Your OAuth Client Secret",
+			"example": "<your client secret>",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

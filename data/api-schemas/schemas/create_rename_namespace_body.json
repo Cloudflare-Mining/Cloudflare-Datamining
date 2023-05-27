@@ -1,0 +1,11 @@
+{
+	"properties": {
+		"title": {
+			"$ref": "#/components/schemas/namespace_title"
+		}
+	},
+	"required": [
+		"title"
+	],
+	"type": "object"
+}

@@ -1,0 +1,26 @@
+{
+	"description": "The configuration object which contains the details for the WARP client to conduct the test.",
+	"example": {
+		"host": "https://dash.cloudflare.com",
+		"kind": "http",
+		"method": "GET"
+	},
+	"properties": {
+		"host": {
+			"description": "The desired endpoint to test.",
+			"example": "https://dash.cloudflare.com",
+			"type": "string"
+		},
+		"kind": {
+			"description": "The type of test.",
+			"example": "http",
+			"type": "string"
+		},
+		"method": {
+			"description": "The HTTP request method type.",
+			"example": "GET",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

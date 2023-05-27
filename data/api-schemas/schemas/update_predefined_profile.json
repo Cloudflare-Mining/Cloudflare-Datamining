@@ -1,0 +1,25 @@
+{
+	"properties": {
+		"allowed_match_count": {
+			"$ref": "#/components/schemas/allowed_match_count"
+		},
+		"entries": {
+			"description": "The entries for this profile.",
+			"items": {
+				"properties": {
+					"enabled": {
+						"description": "Wheter the entry is enabled or not.",
+						"example": true,
+						"type": "boolean"
+					},
+					"id": {
+						"$ref": "#/components/schemas/entry_id"
+					}
+				}
+			},
+			"type": "array"
+		}
+	},
+	"title": "Update predefined profile",
+	"type": "object"
+}

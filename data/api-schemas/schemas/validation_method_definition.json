@@ -1,0 +1,11 @@
+{
+	"description": "Desired validation method.",
+	"enum": [
+		"http",
+		"cname",
+		"txt",
+		"email"
+	],
+	"example": "txt",
+	"type": "string"
+}

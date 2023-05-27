@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"proxy_read_timeout"
+					],
+					"example": "proxy_read_timeout"
+				},
+				"value": {
+					"$ref": "#/components/schemas/proxy_read_timeout_value"
+				}
+			}
+		}
+	],
+	"description": "Maximum time between two read operations from origin.",
+	"title": "Proxy Read Timeout"
+}

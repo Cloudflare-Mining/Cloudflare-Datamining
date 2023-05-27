@@ -1,0 +1,30 @@
+{
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/package_components-schemas-description"
+		},
+		"detection_mode": {
+			"$ref": "#/components/schemas/detection_mode"
+		},
+		"id": {
+			"$ref": "#/components/schemas/package_components-schemas-identifier"
+		},
+		"name": {
+			"$ref": "#/components/schemas/package_components-schemas-name"
+		},
+		"status": {
+			"$ref": "#/components/schemas/package_components-schemas-status"
+		},
+		"zone_id": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"description",
+		"detection_mode",
+		"zone_id"
+	],
+	"title": "Traditional WAF package"
+}

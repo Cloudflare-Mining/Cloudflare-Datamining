@@ -1,0 +1,60 @@
+{
+	"items": {
+		"description": "List of steps acting on request/response",
+		"properties": {
+			"action": {
+				"description": "If step type is rule, then action performed by this rule",
+				"example": "execute",
+				"pattern": "^[a-z_]+$",
+				"type": "string"
+			},
+			"action_parameters": {
+				"description": "If step type is rule, then action parameters of this rule as JSON",
+				"example": {
+					"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+				},
+				"type": "object"
+			},
+			"description": {
+				"description": "If step type is rule or ruleset, the description of this entity",
+				"example": "some rule",
+				"type": "string"
+			},
+			"expression": {
+				"description": "If step type is rule, then expression used to match for this rule",
+				"example": "ip.src ne 1.1.1.1",
+				"type": "string"
+			},
+			"kind": {
+				"description": "If step type is ruleset, then kind of this ruleset",
+				"example": "zone",
+				"type": "string"
+			},
+			"matched": {
+				"description": "Whether tracing step affected tracing request/response",
+				"example": true,
+				"type": "boolean"
+			},
+			"name": {
+				"description": "If step type is ruleset, then name of this ruleset",
+				"example": "some ruleset name",
+				"type": "string"
+			},
+			"step_name": {
+				"description": "Tracing step identifying name",
+				"example": "rule_id01",
+				"type": "string"
+			},
+			"trace": {
+				"$ref": "#/components/schemas/trace"
+			},
+			"type": {
+				"description": "Tracing step type",
+				"example": "rule",
+				"type": "string"
+			}
+		},
+		"type": "object"
+	},
+	"type": "array"
+}

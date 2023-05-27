@@ -1,0 +1,20 @@
+{
+	"description": "A name for a value. A value stored under a given key may be retrieved via the same key.",
+	"properties": {
+		"expiration": {
+			"description": "The time, measured in number of seconds since the UNIX epoch, at which the key will expire. This property is omitted for keys that will not expire.",
+			"example": 1577836800,
+			"type": "number"
+		},
+		"metadata": {
+			"$ref": "#/components/schemas/list_metadata"
+		},
+		"name": {
+			"$ref": "#/components/schemas/key_name"
+		}
+	},
+	"required": [
+		"name"
+	],
+	"type": "object"
+}

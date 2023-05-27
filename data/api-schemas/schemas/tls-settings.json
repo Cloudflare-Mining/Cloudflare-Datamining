@@ -1,0 +1,11 @@
+{
+	"description": "TLS interception settings.",
+	"properties": {
+		"enabled": {
+			"description": "Enable inspecting encrypted HTTP traffic.",
+			"example": true,
+			"type": "boolean"
+		}
+	},
+	"type": "object"
+}

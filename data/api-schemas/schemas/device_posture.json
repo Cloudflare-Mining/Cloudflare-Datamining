@@ -1,0 +1,5 @@
+{
+	"description": "The wirefilter expression to be used for device posture check matching.",
+	"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+	"type": "string"
+}

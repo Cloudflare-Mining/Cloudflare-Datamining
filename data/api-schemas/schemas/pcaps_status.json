@@ -1,0 +1,15 @@
+{
+	"description": "The status of the packet capture request.",
+	"enum": [
+		"unknown",
+		"success",
+		"pending",
+		"running",
+		"conversion_pending",
+		"conversion_running",
+		"complete",
+		"failed"
+	],
+	"example": "success",
+	"type": "string"
+}

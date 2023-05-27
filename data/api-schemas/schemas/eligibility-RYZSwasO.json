@@ -1,0 +1,14 @@
+{
+	"properties": {
+		"eligible": {
+			"$ref": "#/components/schemas/eligible"
+		},
+		"ready": {
+			"$ref": "#/components/schemas/ready"
+		},
+		"type": {
+			"$ref": "#/components/schemas/eligibility_components-schemas-type"
+		}
+	},
+	"type": "object"
+}

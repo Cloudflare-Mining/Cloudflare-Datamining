@@ -1,0 +1,12 @@
+{
+	"properties": {
+		"resources": {
+			"description": "A list of resources matching the search query.",
+			"items": {
+				"$ref": "#/components/schemas/resource_reference"
+			},
+			"type": "array"
+		}
+	},
+	"type": "object"
+}

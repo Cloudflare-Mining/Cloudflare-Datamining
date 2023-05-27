@@ -1,0 +1,25 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/feature_app_props-01MoMwtV"
+		},
+		{
+			"properties": {
+				"domain": {
+					"example": "authdomain.cloudflareaccess.com",
+					"readOnly": true
+				},
+				"name": {
+					"default": "App Launcher",
+					"example": "App Launcher",
+					"readOnly": true
+				},
+				"type": {
+					"description": "The application type.",
+					"example": "app_launcher",
+					"type": "string"
+				}
+			}
+		}
+	]
+}

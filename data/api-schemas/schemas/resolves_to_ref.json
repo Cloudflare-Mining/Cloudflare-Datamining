@@ -1,0 +1,13 @@
+{
+	"properties": {
+		"id": {
+			"$ref": "#/components/schemas/stix_identifier"
+		},
+		"value": {
+			"description": "IP address or domain name.",
+			"example": "192.0.2.0",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

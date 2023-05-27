@@ -1,0 +1,24 @@
+{
+	"description": "The type of Device Posture Rule.",
+	"enum": [
+		"file",
+		"application",
+		"tanium",
+		"gateway",
+		"warp",
+		"disk_encryption",
+		"sentinelone",
+		"carbonblack",
+		"firewall",
+		"os_version",
+		"domain_joined",
+		"unique_client_id",
+		"kolide",
+		"tanium_s2s",
+		"crowdstrike_s2s",
+		"intune",
+		"workspace_one"
+	],
+	"example": "file",
+	"type": "string"
+}

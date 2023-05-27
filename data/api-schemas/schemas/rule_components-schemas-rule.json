@@ -1,0 +1,41 @@
+{
+	"oneOf": [
+		{
+			"$ref": "#/components/schemas/email_rule"
+		},
+		{
+			"$ref": "#/components/schemas/domain_rule"
+		},
+		{
+			"$ref": "#/components/schemas/everyone_rule"
+		},
+		{
+			"$ref": "#/components/schemas/ip_rule"
+		},
+		{
+			"$ref": "#/components/schemas/ip_list_rule"
+		},
+		{
+			"$ref": "#/components/schemas/certificate_rule"
+		},
+		{
+			"$ref": "#/components/schemas/access_group_rule"
+		},
+		{
+			"$ref": "#/components/schemas/azure_group_rule"
+		},
+		{
+			"$ref": "#/components/schemas/github_organization_rule"
+		},
+		{
+			"$ref": "#/components/schemas/gsuite_group_rule"
+		},
+		{
+			"$ref": "#/components/schemas/okta_group_rule"
+		},
+		{
+			"$ref": "#/components/schemas/saml_group_rule"
+		}
+	],
+	"type": "object"
+}

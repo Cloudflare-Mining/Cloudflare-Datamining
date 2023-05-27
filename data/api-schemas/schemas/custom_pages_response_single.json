@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-IsyMaPh6"
+		},
+		{
+			"properties": {
+				"result": {
+					"type": "object"
+				}
+			}
+		}
+	]
+}

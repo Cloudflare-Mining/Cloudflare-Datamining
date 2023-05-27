@@ -1,0 +1,24 @@
+{
+	"properties": {
+		"condition": {
+			"$ref": "#/components/schemas/condition"
+		},
+		"expires_on": {
+			"$ref": "#/components/schemas/expires_on-IOq5ICFo"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-Aq8KLPDe"
+		},
+		"not_before": {
+			"$ref": "#/components/schemas/not_before"
+		},
+		"policies": {
+			"$ref": "#/components/schemas/policies-3VenXwxj"
+		}
+	},
+	"required": [
+		"name",
+		"policies"
+	],
+	"type": "object"
+}

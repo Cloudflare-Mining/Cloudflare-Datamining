@@ -1,0 +1,41 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/rule-kEZkSqab"
+		},
+		{
+			"properties": {
+				"scope": {
+					"description": "All zones owned by the user will have the rule applied.",
+					"properties": {
+						"email": {
+							"$ref": "#/components/schemas/email"
+						},
+						"id": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						},
+						"type": {
+							"description": "The scope of the rule.",
+							"enum": [
+								"user",
+								"organization"
+							],
+							"example": "user",
+							"readOnly": true
+						}
+					},
+					"readOnly": true,
+					"type": "object"
+				}
+			}
+		}
+	],
+	"required": [
+		"id",
+		"mode",
+		"allowed_modes",
+		"configuration",
+		"scope"
+	],
+	"type": "object"
+}

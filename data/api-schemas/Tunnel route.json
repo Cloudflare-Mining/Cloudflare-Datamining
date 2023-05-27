@@ -1,0 +1,820 @@
+{
+	"DELETE /accounts/{account_identifier}/teamnet/routes/network/{ip_network_encoded}": {
+		"description": "Deletes a private network route from an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
+		"operationId": "tunnel-route-delete-a-tunnel-route",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ip_network_encoded",
+				"required": true,
+				"schema": {
+					"description": "IP/CIDR range in URL-encoded format",
+					"example": "172.16.0.0%2F16",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"virtual_network_id": {
+								"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a tunnel route response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a tunnel route response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a tunnel route",
+		"tags": [
+			"Tunnel route"
+		]
+	},
+	"GET /accounts/{account_identifier}/teamnet/routes": {
+		"description": "Lists and filters private network routes in an account.",
+		"operationId": "tunnel-route-list-tunnel-routes",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment",
+				"schema": {
+					"description": "Optional remark describing the route.",
+					"example": "Example comment for this route.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "is_deleted",
+				"schema": {
+					"description": "If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included."
+				}
+			},
+			{
+				"in": "query",
+				"name": "network_subset",
+				"schema": {
+					"description": "If set, only list routes that are contained within this IP range."
+				}
+			},
+			{
+				"in": "query",
+				"name": "network_superset",
+				"schema": {
+					"description": "If set, only list routes that contain this IP range."
+				}
+			},
+			{
+				"in": "query",
+				"name": "existed_at",
+				"schema": {
+					"description": "If provided, include only routes that were created (and not deleted) before this time."
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"description": "Number of results to display.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tunnel_id",
+				"schema": {
+					"description": "UUID of the Cloudflare Tunnel serving the route."
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "virtual_network_id",
+				"schema": {
+					"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/teamnet-MzNT1l3J"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List tunnel routes response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/teamnet-MzNT1l3J"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List tunnel routes response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List tunnel routes",
+		"tags": [
+			"Tunnel route"
+		]
+	},
+	"GET /accounts/{account_identifier}/teamnet/routes/ip/{ip}": {
+		"description": "Fetches routes that contain the given IP address.",
+		"operationId": "tunnel-route-get-tunnel-route-by-ip",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ip",
+				"required": true,
+				"schema": {
+					"example": "10.1.0.137",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "virtual_network_id",
+				"schema": {
+					"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get tunnel route by IP response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get tunnel route by IP response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get tunnel route by IP",
+		"tags": [
+			"Tunnel route"
+		]
+	},
+	"PATCH /accounts/{account_identifier}/teamnet/routes/network/{ip_network_encoded}": {
+		"description": "Updates an existing private network route in an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
+		"operationId": "tunnel-route-update-a-tunnel-route",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ip_network_encoded",
+				"required": true,
+				"schema": {
+					"description": "IP/CIDR range in URL-encoded format",
+					"example": "172.16.0.0%2F16",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"comment": {
+								"description": "Optional remark describing the route.",
+								"example": "Example comment for this route.",
+								"type": "string"
+							},
+							"network": {
+								"description": "The new IPv4 or IPv6 range of this route, in CIDR notation."
+							},
+							"tunnel_id": {
+								"description": "UUID of the tunnel this route should belong to."
+							},
+							"virtual_network_id": {
+								"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a tunnel route response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a tunnel route response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a tunnel route",
+		"tags": [
+			"Tunnel route"
+		]
+	},
+	"POST /accounts/{account_identifier}/teamnet/routes/network/{ip_network_encoded}": {
+		"description": "Routes a private network through a Cloudflare Tunnel. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
+		"operationId": "tunnel-route-create-a-tunnel-route",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ip_network_encoded",
+				"required": true,
+				"schema": {
+					"description": "IP/CIDR range in URL-encoded format",
+					"example": "172.16.0.0%2F16",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"comment": {
+								"description": "Optional remark describing the route.",
+								"example": "Example comment for this route.",
+								"type": "string"
+							},
+							"tunnel_id": {
+								"description": "UUID of the tunnel.",
+								"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+								"maxLength": 36,
+								"readOnly": true,
+								"type": "string"
+							},
+							"virtual_network_id": {
+								"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
+							}
+						},
+						"required": [
+							"tunnel_id"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a tunnel route response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a tunnel route response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a tunnel route",
+		"tags": [
+			"Tunnel route"
+		]
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"description": "The fit property describes how the width and height dimensions should be interpreted.",
+	"enum": [
+		"scale-down",
+		"contain",
+		"cover",
+		"crop",
+		"pad"
+	],
+	"example": "scale-down",
+	"type": "string"
+}

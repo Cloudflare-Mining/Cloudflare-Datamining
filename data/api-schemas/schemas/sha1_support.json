@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "Zone setting identifier.",
+					"enum": [
+						"sha1_support"
+					],
+					"example": "sha1_support"
+				},
+				"value": {
+					"$ref": "#/components/schemas/sha1_support_value"
+				}
+			}
+		}
+	],
+	"description": "Allow SHA1 support.",
+	"title": "Toggle SHA1 support"
+}

@@ -1,0 +1,15 @@
+{
+	"description": "Details for streaming to a live input using SRT.",
+	"properties": {
+		"passphrase": {
+			"$ref": "#/components/schemas/input_srt_stream_passphrase"
+		},
+		"streamId": {
+			"$ref": "#/components/schemas/input_srt_stream_id"
+		},
+		"url": {
+			"$ref": "#/components/schemas/input_srt_url"
+		}
+	},
+	"type": "object"
+}

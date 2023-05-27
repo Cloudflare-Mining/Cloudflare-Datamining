@@ -1,0 +1,5 @@
+{
+	"default": false,
+	"description": "If `invalidate_immediately` is set to `false`, the previous secret will\nremain valid for two hours. Otherwise, the secret is immediately\ninvalidated, and requests using it will be rejected.\n",
+	"type": "boolean"
+}

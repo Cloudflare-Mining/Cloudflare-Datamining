@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"tls_1_3"
+					],
+					"example": "tls_1_3"
+				},
+				"value": {
+					"$ref": "#/components/schemas/tls_1_3_value"
+				}
+			}
+		}
+	],
+	"default": "off",
+	"description": "Enables Crypto TLS 1.3 feature for a zone.",
+	"title": "Enable TLS 1.3 value for a zone"
+}

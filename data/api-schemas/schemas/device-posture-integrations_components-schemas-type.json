@@ -1,0 +1,11 @@
+{
+	"description": "The type of Device Posture Integration.",
+	"enum": [
+		"workspace_one",
+		"crowdstrike_s2s",
+		"uptycs",
+		"intune"
+	],
+	"example": "workspace_one",
+	"type": "string"
+}

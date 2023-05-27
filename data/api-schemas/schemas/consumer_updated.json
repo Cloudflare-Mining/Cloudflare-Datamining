@@ -1,0 +1,35 @@
+{
+	"properties": {
+		"created_on": {
+			"readOnly": true
+		},
+		"dead_letter_queue": {
+			"example": "updated-example-dlq"
+		},
+		"environment": {
+			"readOnly": true
+		},
+		"queue_name": {
+			"readOnly": true
+		},
+		"script_name": {
+			"readOnly": true
+		},
+		"settings": {
+			"properties": {
+				"batch_size": {
+					"example": 100,
+					"type": "number"
+				},
+				"max_retries": {
+					"$ref": "#/components/schemas/max_retries"
+				},
+				"max_wait_time_ms": {
+					"$ref": "#/components/schemas/max_wait_time_ms"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

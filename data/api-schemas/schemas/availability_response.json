@@ -1,0 +1,22 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"description": "Name of zone based on which account custom nameservers can be created. For example, if example.com is returned, then ns1.example.com can be used as an account custom nameserver.",
+						"example": "example.com",
+						"format": "hostname",
+						"readOnly": true,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

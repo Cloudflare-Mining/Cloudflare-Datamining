@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"response_buffering"
+					],
+					"example": "response_buffering"
+				},
+				"value": {
+					"$ref": "#/components/schemas/response_buffering_value"
+				}
+			}
+		}
+	],
+	"default": "off",
+	"description": "Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones.",
+	"title": "Response Buffering"
+}

@@ -1,0 +1,42 @@
+{
+	"properties": {
+		"app": {
+			"properties": {
+				"install_id": {
+					"$ref": "#/components/schemas/install_id"
+				}
+			}
+		},
+		"component_values": {
+			"$ref": "#/components/schemas/component_values"
+		},
+		"currency": {
+			"$ref": "#/components/schemas/currency"
+		},
+		"current_period_end": {
+			"$ref": "#/components/schemas/current_period_end"
+		},
+		"current_period_start": {
+			"$ref": "#/components/schemas/current_period_start"
+		},
+		"frequency": {
+			"$ref": "#/components/schemas/frequency"
+		},
+		"id": {
+			"$ref": "#/components/schemas/subscription-v2_components-schemas-identifier"
+		},
+		"price": {
+			"$ref": "#/components/schemas/price"
+		},
+		"rate_plan": {
+			"$ref": "#/components/schemas/rate_plan"
+		},
+		"state": {
+			"$ref": "#/components/schemas/state-PZrswFC4"
+		},
+		"zone": {
+			"$ref": "#/components/schemas/zone-tfWHfwX1"
+		}
+	},
+	"type": "object"
+}

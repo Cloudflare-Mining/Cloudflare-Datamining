@@ -1,0 +1,17 @@
+{
+	"properties": {
+		"config": {
+			"$ref": "#/components/schemas/schemas-config"
+		},
+		"id": {
+			"$ref": "#/components/schemas/uuid"
+		},
+		"name": {
+			"$ref": "#/components/schemas/identity-providers_components-schemas-name"
+		},
+		"type": {
+			"$ref": "#/components/schemas/identity-providers_components-schemas-type"
+		}
+	},
+	"type": "object"
+}

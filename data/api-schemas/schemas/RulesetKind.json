@@ -1,0 +1,11 @@
+{
+	"description": "The kind of the ruleset.",
+	"enum": [
+		"managed",
+		"custom",
+		"root",
+		"zone"
+	],
+	"example": "root",
+	"type": "string"
+}

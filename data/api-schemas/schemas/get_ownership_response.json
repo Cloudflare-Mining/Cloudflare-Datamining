@@ -1,0 +1,29 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"nullable": true,
+					"properties": {
+						"filename": {
+							"example": "logs/challenge-filename.txt",
+							"type": "string"
+						},
+						"message": {
+							"example": "",
+							"type": "string"
+						},
+						"valid": {
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,78 @@
+{
+	"description": "Breakdown of totals for bandwidth in the form of bytes.",
+	"properties": {
+		"all": {
+			"description": "The total number of bytes served within the time frame.",
+			"type": "integer"
+		},
+		"cached": {
+			"description": "The number of bytes that were cached (and served) by Cloudflare.",
+			"type": "integer"
+		},
+		"content_type": {
+			"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number in bytes served.",
+			"example": {
+				"css": 237421,
+				"gif": 1234242,
+				"html": 1231290,
+				"javascript": 123245,
+				"jpeg": 784278
+			},
+			"type": "object"
+		},
+		"country": {
+			"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of bytes served to that country.",
+			"example": {
+				"AG": 2342483,
+				"GI": 984753,
+				"US": 123145433
+			},
+			"type": "object"
+		},
+		"ssl": {
+			"description": "A break down of bytes served over HTTPS.",
+			"properties": {
+				"encrypted": {
+					"description": "The number of bytes served over HTTPS.",
+					"type": "integer"
+				},
+				"unencrypted": {
+					"description": "The number of bytes served over HTTP.",
+					"type": "integer"
+				}
+			},
+			"type": "object"
+		},
+		"ssl_protocols": {
+			"description": "A breakdown of requests by their SSL protocol.",
+			"properties": {
+				"TLSv1": {
+					"description": "The number of requests served over TLS v1.0.",
+					"type": "integer"
+				},
+				"TLSv1.1": {
+					"description": "The number of requests served over TLS v1.1.",
+					"type": "integer"
+				},
+				"TLSv1.2": {
+					"description": "The number of requests served over TLS v1.2.",
+					"type": "integer"
+				},
+				"TLSv1.3": {
+					"description": "The number of requests served over TLS v1.3.",
+					"type": "integer"
+				},
+				"none": {
+					"description": "The number of requests served over HTTP.",
+					"type": "integer"
+				}
+			},
+			"type": "object"
+		},
+		"uncached": {
+			"description": "The number of bytes that were fetched and served from the origin server.",
+			"type": "integer"
+		}
+	},
+	"type": "object"
+}

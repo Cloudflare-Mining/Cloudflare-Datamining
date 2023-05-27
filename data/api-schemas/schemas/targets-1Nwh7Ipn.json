@@ -1,0 +1,16 @@
+{
+	"description": "The rule targets to evaluate on each request.",
+	"example": [
+		{
+			"constraint": {
+				"operator": "matches",
+				"value": "*example.com/images/*"
+			},
+			"target": "url"
+		}
+	],
+	"items": {
+		"$ref": "#/components/schemas/target-Jxu9micH"
+	},
+	"type": "array"
+}

@@ -1,0 +1,17 @@
+{
+	"description": "Matches any valid client certificate.",
+	"example": {
+		"certificate": {}
+	},
+	"properties": {
+		"certificate": {
+			"example": {},
+			"type": "object"
+		}
+	},
+	"required": [
+		"certificate"
+	],
+	"title": "Valid certificate",
+	"type": "object"
+}

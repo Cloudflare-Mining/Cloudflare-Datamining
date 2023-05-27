@@ -1,0 +1,420 @@
+{
+	"GET /radar/annotations/outages": {
+		"operationId": "radar_get_Ga",
+		"parameters": [
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 5,
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of objects to skip before grabbing results.",
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": 0,
+					"description": "Number of objects to skip before grabbing results.",
+					"example": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"enum": [
+						"1d",
+						"2d",
+						"7d",
+						"14d",
+						"28d",
+						"12w",
+						"24w",
+						"52w",
+						"1dControl",
+						"2dControl",
+						"7dControl",
+						"14dControl",
+						"28dControl",
+						"12wControl",
+						"24wControl"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Start of the date range (inclusive).",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"example": "2022-09-15T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"example": "2022-09-15T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"annotations": {
+											"items": {
+												"properties": {
+													"asns": {
+														"items": {
+															"example": 189,
+															"type": "integer"
+														},
+														"type": "array"
+													},
+													"asnsDetails": {
+														"items": {
+															"properties": {
+																"asn": {
+																	"example": "189",
+																	"type": "string"
+																},
+																"locations": {
+																	"properties": {
+																		"asn": {
+																			"example": "US",
+																			"type": "string"
+																		},
+																		"name": {
+																			"example": "United States",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"asn",
+																		"name"
+																	],
+																	"type": "object"
+																},
+																"name": {
+																	"example": "LUMEN-LEGACY-L3-PARTITION",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"asn",
+																"name"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"dataSource": {
+														"example": "ALL",
+														"type": "string"
+													},
+													"description": {
+														"example": "example",
+														"type": "string"
+													},
+													"endDate": {
+														"example": "2022-09-08T10:00:28Z",
+														"type": "string"
+													},
+													"eventType": {
+														"example": "OUTAGE",
+														"type": "string"
+													},
+													"linkedUrl": {
+														"example": "http://example.com",
+														"type": "string"
+													},
+													"locations": {
+														"items": {
+															"example": "US",
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"locationsDetails": {
+														"items": {
+															"properties": {
+																"code": {
+																	"example": "US",
+																	"type": "string"
+																},
+																"name": {
+																	"example": "United States",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"code",
+																"name"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"outage": {
+														"properties": {
+															"outageCause": {
+																"example": "CABLE_CUT",
+																"type": "string"
+															},
+															"outageType": {
+																"example": "NATIONWIDE",
+																"type": "string"
+															}
+														},
+														"required": [
+															"outageCause",
+															"outageType"
+														],
+														"type": "object"
+													},
+													"scope": {
+														"example": "Colima, Michoacán, México",
+														"type": "string"
+													},
+													"startDate": {
+														"example": "2022-09-06T10:00:28Z",
+														"type": "string"
+													}
+												},
+												"required": [
+													"dataSource",
+													"startDate",
+													"asns",
+													"asnsDetails",
+													"locations",
+													"locationsDetails",
+													"eventType",
+													"outage"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"annotations"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get latest internet outages and anomalies.",
+		"tags": [
+			"Radar Annotations"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/annotations/outages/locations": {
+		"operationId": "radar_get_Oa",
+		"parameters": [
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 5,
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"enum": [
+						"1d",
+						"2d",
+						"7d",
+						"14d",
+						"28d",
+						"12w",
+						"24w",
+						"52w",
+						"1dControl",
+						"2dControl",
+						"7dControl",
+						"14dControl",
+						"28dControl",
+						"12wControl",
+						"24wControl"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Start of the date range (inclusive).",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"example": "2022-09-15T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"example": "2022-09-15T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"annotations": {
+											"items": {
+												"properties": {
+													"clientCountryAlpha2": {
+														"example": "PT",
+														"type": "string"
+													},
+													"clientCountryName": {
+														"example": "Portugal",
+														"type": "string"
+													},
+													"value": {
+														"example": "5",
+														"type": "string"
+													}
+												},
+												"required": [
+													"clientCountryAlpha2",
+													"clientCountryName",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"annotations"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get the number of outages for locations.",
+		"tags": [
+			"Radar Annotations"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

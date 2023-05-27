@@ -1,0 +1,900 @@
+{
+	"DELETE /zones/{zone_identifier}/secondary_dns/incoming": {
+		"description": "Delete secondary zone configuration for incoming zone transfers.",
+		"operationId": "secondary-dns-(-secondary-zone)-delete-secondary-zone-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/identifier-rjmAAZUp"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Secondary Zone Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/identifier-rjmAAZUp"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Secondary Zone Configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Secondary Zone Configuration",
+		"tags": [
+			"Secondary DNS (Secondary Zone)"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/secondary_dns/incoming": {
+		"description": "Get secondary zone configuration for incoming zone transfers.",
+		"operationId": "secondary-dns-(-secondary-zone)-secondary-zone-configuration-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"auto_refresh_seconds": {
+													"$ref": "#/components/schemas/auto_refresh_seconds"
+												},
+												"checked_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"created_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier-rjmAAZUp"
+												},
+												"modified_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-HHsROM8p"
+												},
+												"peers": {
+													"$ref": "#/components/schemas/peers"
+												},
+												"soa_serial": {
+													"$ref": "#/components/schemas/soa_serial"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Secondary Zone Configuration Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"auto_refresh_seconds": {
+															"$ref": "#/components/schemas/auto_refresh_seconds"
+														},
+														"checked_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"created_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier-rjmAAZUp"
+														},
+														"modified_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-HHsROM8p"
+														},
+														"peers": {
+															"$ref": "#/components/schemas/peers"
+														},
+														"soa_serial": {
+															"$ref": "#/components/schemas/soa_serial"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Secondary Zone Configuration Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Secondary Zone Configuration Details",
+		"tags": [
+			"Secondary DNS (Secondary Zone)"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_identifier}/secondary_dns/force_axfr": {
+		"description": "Sends AXFR zone transfer request to primary nameserver(s).",
+		"operationId": "secondary-dns-(-secondary-zone)-force-axfr",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/force_result"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Force AXFR response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/force_result"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Force AXFR response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Force AXFR",
+		"tags": [
+			"Secondary DNS (Secondary Zone)"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_identifier}/secondary_dns/incoming": {
+		"description": "Create secondary zone configuration for incoming zone transfers.",
+		"operationId": "secondary-dns-(-secondary-zone)-create-secondary-zone-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"auto_refresh_seconds": {
+								"$ref": "#/components/schemas/auto_refresh_seconds"
+							},
+							"id": {
+								"$ref": "#/components/schemas/identifier-rjmAAZUp"
+							},
+							"name": {
+								"$ref": "#/components/schemas/name-HHsROM8p"
+							},
+							"peers": {
+								"$ref": "#/components/schemas/peers"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"peers",
+							"auto_refresh_seconds"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"auto_refresh_seconds": {
+													"$ref": "#/components/schemas/auto_refresh_seconds"
+												},
+												"checked_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"created_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier-rjmAAZUp"
+												},
+												"modified_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-HHsROM8p"
+												},
+												"peers": {
+													"$ref": "#/components/schemas/peers"
+												},
+												"soa_serial": {
+													"$ref": "#/components/schemas/soa_serial"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Secondary Zone Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"auto_refresh_seconds": {
+															"$ref": "#/components/schemas/auto_refresh_seconds"
+														},
+														"checked_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"created_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier-rjmAAZUp"
+														},
+														"modified_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-HHsROM8p"
+														},
+														"peers": {
+															"$ref": "#/components/schemas/peers"
+														},
+														"soa_serial": {
+															"$ref": "#/components/schemas/soa_serial"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Secondary Zone Configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Secondary Zone Configuration",
+		"tags": [
+			"Secondary DNS (Secondary Zone)"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /zones/{zone_identifier}/secondary_dns/incoming": {
+		"description": "Update secondary zone configuration for incoming zone transfers.",
+		"operationId": "secondary-dns-(-secondary-zone)-update-secondary-zone-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"auto_refresh_seconds": {
+								"$ref": "#/components/schemas/auto_refresh_seconds"
+							},
+							"id": {
+								"$ref": "#/components/schemas/identifier-rjmAAZUp"
+							},
+							"name": {
+								"$ref": "#/components/schemas/name-HHsROM8p"
+							},
+							"peers": {
+								"$ref": "#/components/schemas/peers"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"peers",
+							"auto_refresh_seconds"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"auto_refresh_seconds": {
+													"$ref": "#/components/schemas/auto_refresh_seconds"
+												},
+												"checked_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"created_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier-rjmAAZUp"
+												},
+												"modified_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-HHsROM8p"
+												},
+												"peers": {
+													"$ref": "#/components/schemas/peers"
+												},
+												"soa_serial": {
+													"$ref": "#/components/schemas/soa_serial"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Secondary Zone Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"auto_refresh_seconds": {
+															"$ref": "#/components/schemas/auto_refresh_seconds"
+														},
+														"checked_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"created_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier-rjmAAZUp"
+														},
+														"modified_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-HHsROM8p"
+														},
+														"peers": {
+															"$ref": "#/components/schemas/peers"
+														},
+														"soa_serial": {
+															"$ref": "#/components/schemas/soa_serial"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Secondary Zone Configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Secondary Zone Configuration",
+		"tags": [
+			"Secondary DNS (Secondary Zone)"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

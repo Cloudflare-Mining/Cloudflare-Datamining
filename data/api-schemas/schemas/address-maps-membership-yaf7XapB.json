@@ -1,0 +1,17 @@
+{
+	"properties": {
+		"can_delete": {
+			"$ref": "#/components/schemas/schemas-can_delete"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/created-on"
+		},
+		"identifier": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		},
+		"kind": {
+			"$ref": "#/components/schemas/components-schemas-kind"
+		}
+	},
+	"type": "object"
+}

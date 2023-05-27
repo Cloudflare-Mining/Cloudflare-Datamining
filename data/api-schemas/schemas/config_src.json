@@ -1,0 +1,10 @@
+{
+	"default": "local",
+	"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using the [Cloudflare Tunnel configuration](https://api.cloudflare.com/#cloudflare-tunnel-configuration-properties) endpoint.",
+	"enum": [
+		"local",
+		"cloudflare"
+	],
+	"example": "cloudflare",
+	"type": "string"
+}

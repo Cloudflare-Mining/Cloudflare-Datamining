@@ -1,0 +1,20 @@
+{
+	"properties": {
+		"cidr": {
+			"$ref": "#/components/schemas/cidr"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier"
+		},
+		"provisioning": {
+			"$ref": "#/components/schemas/provisioning"
+		},
+		"service_id": {
+			"$ref": "#/components/schemas/service_identifier"
+		},
+		"service_name": {
+			"$ref": "#/components/schemas/service_name"
+		}
+	},
+	"type": "object"
+}

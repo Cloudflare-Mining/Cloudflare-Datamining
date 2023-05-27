@@ -1,0 +1,32 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"schedules": {
+							"items": {
+								"properties": {
+									"created_on": {
+										"readOnly": true
+									},
+									"cron": {
+										"readOnly": true
+									},
+									"modified_on": {
+										"readOnly": true
+									}
+								}
+							},
+							"type": "array"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

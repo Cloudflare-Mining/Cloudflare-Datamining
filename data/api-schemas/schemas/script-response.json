@@ -1,0 +1,28 @@
+{
+	"properties": {
+		"created_on": {
+			"$ref": "#/components/schemas/created_on"
+		},
+		"etag": {
+			"$ref": "#/components/schemas/etag-gMfCSIfb"
+		},
+		"id": {
+			"description": "The id of the script in the Workers system. Usually the script name.",
+			"example": "my-workers-script",
+			"readOnly": true,
+			"type": "string"
+		},
+		"logpush": {
+			"$ref": "#/components/schemas/logpush"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/modified_on-1lYCId8U"
+		},
+		"placement_mode": {
+			"$ref": "#/components/schemas/placement_mode"
+		},
+		"usage_model": {
+			"$ref": "#/components/schemas/usage_model"
+		}
+	}
+}

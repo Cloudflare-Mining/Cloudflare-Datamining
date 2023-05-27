@@ -1,0 +1,48 @@
+{
+	"properties": {
+		"address": {
+			"$ref": "#/components/schemas/address"
+		},
+		"check_regions": {
+			"$ref": "#/components/schemas/check_regions"
+		},
+		"consecutive_fails": {
+			"$ref": "#/components/schemas/consecutive_fails"
+		},
+		"consecutive_successes": {
+			"$ref": "#/components/schemas/consecutive_successes"
+		},
+		"description": {
+			"$ref": "#/components/schemas/description-xEj7VJc8"
+		},
+		"http_config": {
+			"$ref": "#/components/schemas/http_config"
+		},
+		"interval": {
+			"$ref": "#/components/schemas/interval"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name"
+		},
+		"retries": {
+			"$ref": "#/components/schemas/retries"
+		},
+		"suspended": {
+			"$ref": "#/components/schemas/suspended"
+		},
+		"tcp_config": {
+			"$ref": "#/components/schemas/tcp_config"
+		},
+		"timeout": {
+			"$ref": "#/components/schemas/timeout"
+		},
+		"type": {
+			"$ref": "#/components/schemas/type"
+		}
+	},
+	"required": [
+		"name",
+		"address"
+	],
+	"type": "object"
+}

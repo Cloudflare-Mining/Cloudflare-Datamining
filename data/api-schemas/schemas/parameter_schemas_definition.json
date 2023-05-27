@@ -1,0 +1,47 @@
+{
+	"description": "An operation schema object containing a response.",
+	"example": {
+		"parameters": [
+			{
+				"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
+				"in": "path",
+				"name": "var1",
+				"required": true,
+				"schema": {
+					"maximum": 10,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": null
+	},
+	"properties": {
+		"parameters": {
+			"description": "An array containing the learned parameter schemas.",
+			"example": [
+				{
+					"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.",
+					"in": "path",
+					"name": "var1",
+					"required": true,
+					"schema": {
+						"maximum": 10,
+						"minimum": 1,
+						"type": "integer"
+					}
+				}
+			],
+			"items": {},
+			"readOnly": true,
+			"type": "array"
+		},
+		"responses": {
+			"description": "An empty response object. This field is required to yield a valid operation schema.",
+			"readOnly": true,
+			"type": "object"
+		}
+	},
+	"readOnly": true,
+	"type": "object"
+}

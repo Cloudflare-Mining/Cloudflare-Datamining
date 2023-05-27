@@ -1,0 +1,16 @@
+{
+	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+	"properties": {
+		"private_ip": {
+			"$ref": "#/components/schemas/keyless_private_ip"
+		},
+		"vnet_id": {
+			"$ref": "#/components/schemas/keyless_vnet_id"
+		}
+	},
+	"required": [
+		"private_ip",
+		"vnet_id"
+	],
+	"type": "object"
+}

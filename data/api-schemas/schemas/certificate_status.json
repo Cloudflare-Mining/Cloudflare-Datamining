@@ -1,0 +1,14 @@
+{
+	"description": "Current status of certificate.",
+	"enum": [
+		"initializing",
+		"authorizing",
+		"active",
+		"expired",
+		"issuing",
+		"timing_out",
+		"pending_deployment"
+	],
+	"example": "active",
+	"type": "string"
+}

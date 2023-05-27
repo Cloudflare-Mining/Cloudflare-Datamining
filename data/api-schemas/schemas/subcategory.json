@@ -1,0 +1,20 @@
+{
+	"properties": {
+		"beta": {
+			"$ref": "#/components/schemas/beta"
+		},
+		"class": {
+			"$ref": "#/components/schemas/class"
+		},
+		"description": {
+			"$ref": "#/components/schemas/components-schemas-description"
+		},
+		"id": {
+			"$ref": "#/components/schemas/id"
+		},
+		"name": {
+			"$ref": "#/components/schemas/categories_components-schemas-name"
+		}
+	},
+	"type": "object"
+}

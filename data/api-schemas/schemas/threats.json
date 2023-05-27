@@ -1,0 +1,29 @@
+{
+	"description": "Breakdown of totals for threats.",
+	"properties": {
+		"all": {
+			"description": "The total number of identifiable threats received over the time frame.",
+			"type": "integer"
+		},
+		"country": {
+			"description": "A list of key/value pairs where the key is a two-digit country code and the value is the number of malicious requests received from that country.",
+			"example": {
+				"AU": 91,
+				"CN": 523423,
+				"US": 123
+			},
+			"type": "object"
+		},
+		"type": {
+			"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests.",
+			"example": {
+				"hot.ban.unknown": 5324,
+				"macro.chl.captchaErr": 1341,
+				"macro.chl.jschlErr": 5323,
+				"user.ban.ip": 123
+			},
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

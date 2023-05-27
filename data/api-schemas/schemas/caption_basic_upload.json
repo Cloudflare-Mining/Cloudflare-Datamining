@@ -1,0 +1,13 @@
+{
+	"properties": {
+		"file": {
+			"description": "The WebVTT file containing the caption or subtitle content.",
+			"example": "@/Users/kyle/Desktop/tr.vtt",
+			"type": "string"
+		}
+	},
+	"required": [
+		"file"
+	],
+	"type": "object"
+}

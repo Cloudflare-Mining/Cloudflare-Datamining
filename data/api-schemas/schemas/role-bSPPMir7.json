@@ -1,0 +1,30 @@
+{
+	"properties": {
+		"description": {
+			"description": "Description of role's permissions.",
+			"example": "Administrative access to the entire Account",
+			"readOnly": true,
+			"type": "string"
+		},
+		"id": {
+			"$ref": "#/components/schemas/role_components-schemas-identifier-4tZFrP7P"
+		},
+		"name": {
+			"description": "Role name.",
+			"example": "Account Administrator",
+			"maxLength": 120,
+			"readOnly": true,
+			"type": "string"
+		},
+		"permissions": {
+			"$ref": "#/components/schemas/permissions"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"description",
+		"permissions"
+	],
+	"type": "object"
+}

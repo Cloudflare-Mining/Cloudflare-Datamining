@@ -1,0 +1,11 @@
+{
+	"properties": {
+		"validation_method": {
+			"$ref": "#/components/schemas/validation_method_definition"
+		}
+	},
+	"required": [
+		"validation_method"
+	],
+	"type": "object"
+}

@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "Zone setting identifier.",
+					"enum": [
+						"nel"
+					],
+					"example": "nel"
+				},
+				"value": {
+					"$ref": "#/components/schemas/nel_value"
+				}
+			}
+		}
+	],
+	"description": "Enable Network Error Logging reporting on your zone. (Beta) ",
+	"title": "Network Error Logging"
+}

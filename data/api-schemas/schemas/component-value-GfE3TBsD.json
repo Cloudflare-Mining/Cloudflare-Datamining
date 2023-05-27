@@ -1,0 +1,14 @@
+{
+	"properties": {
+		"default": {
+			"$ref": "#/components/schemas/default"
+		},
+		"name": {
+			"$ref": "#/components/schemas/component-value_components-schemas-name"
+		},
+		"unit_price": {
+			"$ref": "#/components/schemas/unit_price"
+		}
+	},
+	"type": "object"
+}

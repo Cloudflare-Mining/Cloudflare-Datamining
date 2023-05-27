@@ -1,0 +1,31 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/identity-provider"
+		},
+		{
+			"properties": {
+				"config": {
+					"allOf": [
+						{
+							"$ref": "#/components/schemas/generic-oauth-config"
+						},
+						{
+							"properties": {
+								"apps_domain": {
+									"description": "Your companies TLD",
+									"example": "mycompany.com",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					]
+				}
+			},
+			"type": "object"
+		}
+	],
+	"title": "Google Workspace",
+	"type": "object"
+}

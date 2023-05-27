@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"origin_error_page_pass_thru"
+					],
+					"example": "origin_error_page_pass_thru"
+				},
+				"value": {
+					"$ref": "#/components/schemas/origin_error_page_pass_thru_value"
+				}
+			}
+		}
+	],
+	"default": "off",
+	"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
+	"title": "Error Pages On"
+}

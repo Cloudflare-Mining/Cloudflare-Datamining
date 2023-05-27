@@ -1,0 +1,7 @@
+{
+	"description": "Unique WebSocket address that will receive messages from Cloudflare’s edge.",
+	"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
+	"format": "uri",
+	"maxLength": 4096,
+	"type": "string"
+}

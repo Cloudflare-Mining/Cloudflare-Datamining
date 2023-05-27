@@ -1,0 +1,27 @@
+{
+	"description": "A ruleset object.",
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/RulesetDescription"
+		},
+		"kind": {
+			"$ref": "#/components/schemas/RulesetKind"
+		},
+		"name": {
+			"$ref": "#/components/schemas/RulesetName"
+		},
+		"phase": {
+			"$ref": "#/components/schemas/RulesetPhase"
+		},
+		"rules": {
+			"$ref": "#/components/schemas/RulesRequest"
+		}
+	},
+	"required": [
+		"name",
+		"kind",
+		"phase",
+		"rules"
+	],
+	"type": "object"
+}

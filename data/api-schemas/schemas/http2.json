@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"http2"
+					],
+					"example": "http2"
+				},
+				"value": {
+					"$ref": "#/components/schemas/http2_value"
+				}
+			}
+		}
+	],
+	"description": "HTTP2 enabled for this zone.",
+	"title": "HTTP2 Value"
+}

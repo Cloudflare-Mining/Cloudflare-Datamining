@@ -1,0 +1,11 @@
+{
+	"properties": {
+		"allowed": {
+			"$ref": "#/components/schemas/allowed"
+		},
+		"current": {
+			"$ref": "#/components/schemas/current"
+		}
+	},
+	"type": "object"
+}

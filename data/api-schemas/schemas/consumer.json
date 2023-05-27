@@ -1,0 +1,31 @@
+{
+	"properties": {
+		"created_on": {
+			"readOnly": true
+		},
+		"environment": {
+			"readOnly": true
+		},
+		"queue_name": {
+			"readOnly": true
+		},
+		"service": {
+			"readOnly": true
+		},
+		"settings": {
+			"properties": {
+				"batch_size": {
+					"$ref": "#/components/schemas/batch_size"
+				},
+				"max_retries": {
+					"$ref": "#/components/schemas/max_retries"
+				},
+				"max_wait_time_ms": {
+					"$ref": "#/components/schemas/max_wait_time_ms"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

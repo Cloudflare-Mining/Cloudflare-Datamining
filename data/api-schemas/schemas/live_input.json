@@ -1,0 +1,42 @@
+{
+	"description": "Details about a live input.",
+	"properties": {
+		"created": {
+			"$ref": "#/components/schemas/live_input_created"
+		},
+		"meta": {
+			"$ref": "#/components/schemas/live_input_metadata"
+		},
+		"modified": {
+			"$ref": "#/components/schemas/live_input_modified"
+		},
+		"recording": {
+			"$ref": "#/components/schemas/live_input_recording_settings"
+		},
+		"rtmps": {
+			"$ref": "#/components/schemas/input_rtmps"
+		},
+		"rtmpsPlayback": {
+			"$ref": "#/components/schemas/playback_rtmps"
+		},
+		"srt": {
+			"$ref": "#/components/schemas/input_srt"
+		},
+		"srtPlayback": {
+			"$ref": "#/components/schemas/playback_srt"
+		},
+		"status": {
+			"$ref": "#/components/schemas/live_input_status"
+		},
+		"uid": {
+			"$ref": "#/components/schemas/live_input_identifier"
+		},
+		"webRTC": {
+			"$ref": "#/components/schemas/input_webrtc"
+		},
+		"webRTCPlayback": {
+			"$ref": "#/components/schemas/playback_webrtc"
+		}
+	},
+	"type": "object"
+}

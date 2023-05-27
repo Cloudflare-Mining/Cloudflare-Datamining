@@ -1,0 +1,15 @@
+{
+	"description": "Matches everyone.",
+	"properties": {
+		"everyone": {
+			"description": "An empty object which matches on all users.",
+			"example": {},
+			"type": "object"
+		}
+	},
+	"required": [
+		"everyone"
+	],
+	"title": "Everyone",
+	"type": "object"
+}

@@ -1,0 +1,10 @@
+{
+	"default": "challenge",
+	"description": "The default action performed by the rules in the WAF package.",
+	"enum": [
+		"simulate",
+		"block",
+		"challenge"
+	],
+	"type": "string"
+}

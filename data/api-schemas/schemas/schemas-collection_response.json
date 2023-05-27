@@ -1,0 +1,39 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"properties": {
+							"additional_information": {
+								"$ref": "#/components/schemas/additional_information"
+							},
+							"application": {
+								"$ref": "#/components/schemas/application-6K1LgoB5"
+							},
+							"content_categories": {
+								"$ref": "#/components/schemas/content_categories"
+							},
+							"domain": {
+								"$ref": "#/components/schemas/schemas-domain_name"
+							},
+							"popularity_rank": {
+								"$ref": "#/components/schemas/popularity_rank"
+							},
+							"risk_score": {
+								"$ref": "#/components/schemas/risk_score"
+							},
+							"risk_types": {
+								"$ref": "#/components/schemas/risk_types"
+							}
+						}
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

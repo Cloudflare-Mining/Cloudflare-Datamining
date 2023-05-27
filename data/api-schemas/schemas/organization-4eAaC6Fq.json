@@ -1,0 +1,27 @@
+{
+	"properties": {
+		"id": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		},
+		"name": {
+			"$ref": "#/components/schemas/schemas-name-gAEhWo4a"
+		},
+		"permissions": {
+			"$ref": "#/components/schemas/schemas-permissions"
+		},
+		"roles": {
+			"description": "List of roles that a user has within an organization.",
+			"items": {
+				"example": "All Privileges - Super Administrator",
+				"maxLength": 120,
+				"type": "string"
+			},
+			"readOnly": true,
+			"type": "array"
+		},
+		"status": {
+			"$ref": "#/components/schemas/components-schemas-status-yHCl7ACv"
+		}
+	},
+	"type": "object"
+}

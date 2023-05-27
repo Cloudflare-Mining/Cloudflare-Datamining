@@ -1,0 +1,13 @@
+{
+	"properties": {
+		"defaultCreator": {
+			"$ref": "#/components/schemas/live_input_default_creator"
+		},
+		"meta": {
+			"$ref": "#/components/schemas/live_input_metadata"
+		},
+		"recording": {
+			"$ref": "#/components/schemas/live_input_recording_settings"
+		}
+	}
+}

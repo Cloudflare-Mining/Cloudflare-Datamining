@@ -1,0 +1,25 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/default_response-CKdfA3zT"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"schemas": {
+							"items": {
+								"$ref": "#/components/schemas/openapiwiththresholds"
+							},
+							"type": "array"
+						},
+						"timestamp": {
+							"type": "string"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,7 @@
+{
+	"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+	"example": "s3://mybucket/logs?region=us-west-2",
+	"format": "uri",
+	"maxLength": 4096,
+	"type": "string"
+}

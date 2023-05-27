@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"cidr": {
+			"$ref": "#/components/schemas/cidr"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"delegated_account_id": {
+			"$ref": "#/components/schemas/delegated_account_identifier"
+		},
+		"id": {
+			"$ref": "#/components/schemas/delegation_identifier"
+		},
+		"modified_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"parent_prefix_id": {
+			"$ref": "#/components/schemas/identifier"
+		}
+	},
+	"type": "object"
+}

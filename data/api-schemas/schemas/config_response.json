@@ -1,0 +1,14 @@
+{
+	"description": "The configuration object containing third party integration information.",
+	"example": {
+		"api_url": "https://as123.awmdm.com/API",
+		"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+		"client_id": "example client id"
+	},
+	"oneOf": [
+		{
+			"$ref": "#/components/schemas/workspace_one_config_response"
+		}
+	],
+	"type": "object"
+}

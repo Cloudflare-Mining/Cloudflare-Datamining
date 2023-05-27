@@ -1,0 +1,12 @@
+{
+	"description": "Status of the hostname's activation.",
+	"enum": [
+		"active",
+		"pending",
+		"deleting",
+		"error"
+	],
+	"example": "active",
+	"readOnly": true,
+	"type": "string"
+}

@@ -1,0 +1,9 @@
+{
+	"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+	"enum": [
+		"simple",
+		"full"
+	],
+	"example": "simple",
+	"type": "string"
+}

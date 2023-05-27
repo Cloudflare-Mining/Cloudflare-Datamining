@@ -1,0 +1,1190 @@
+{
+	"DELETE /organizations/{organization_identifier}/railguns/{identifier}": {
+		"deprecated": true,
+		"description": "Disable and delete a Railgun. This will immediately disable the Railgun for any connected zones.",
+		"operationId": "organization-railgun-delete-railgun",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Railgun identifier tag.",
+					"example": "e928d310693a83094309acf9ead50448",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "organization_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/railgun_response_single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Railgun response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/railgun_response_single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Railgun response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete Railgun",
+		"tags": [
+			"Organization Railgun"
+		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+			"display": true,
+			"eol": "2020-02-04",
+			"id": "org_deprecation"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /organizations/{organization_identifier}/railguns": {
+		"deprecated": true,
+		"description": "List, search, sort and filter your Railguns.",
+		"operationId": "organization-railgun-list-railguns",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "organization_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Number of items per page.",
+					"maximum": 50,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"description": "Sort Railguns in ascending or descending order.",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "desc"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/railgun"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Railguns response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/railgun"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Railguns response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List Railguns",
+		"tags": [
+			"Organization Railgun"
+		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+			"display": true,
+			"eol": "2020-02-04",
+			"id": "org_deprecation"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /organizations/{organization_identifier}/railguns/{identifier}": {
+		"deprecated": true,
+		"operationId": "organization-railgun-railgun-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Railgun identifier tag.",
+					"example": "e928d310693a83094309acf9ead50448",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "organization_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Railgun details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Railgun details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Railgun details",
+		"tags": [
+			"Organization Railgun"
+		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+			"display": true,
+			"eol": "2020-02-04",
+			"id": "org_deprecation"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /organizations/{organization_identifier}/railguns/{identifier}/zones": {
+		"deprecated": true,
+		"description": "Lists the zones that are currently using this Railgun.",
+		"operationId": "organization-railgun-get-railgun-zones",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Railgun identifier tag.",
+					"example": "e928d310693a83094309acf9ead50448",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "organization_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"activated_on": {
+														"description": "The last time proof of ownership was detected and the zone was made\nactive",
+														"example": "2014-01-02T00:01:00.12345Z",
+														"format": "date-time",
+														"nullable": true,
+														"readOnly": true,
+														"type": "string"
+													},
+													"created_on": {
+														"description": "When the zone was created",
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"development_mode": {
+														"description": "The interval (in seconds) from when development mode expires\n(positive integer) or last expired (negative integer) for the\ndomain. If development mode has never been enabled, this value is 0.",
+														"example": 7200,
+														"readOnly": true,
+														"type": "number"
+													},
+													"id": {
+														"$ref": "#/components/schemas/common_components-schemas-identifier"
+													},
+													"modified_on": {
+														"description": "When the zone was last modified",
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"description": "The domain name",
+														"example": "example.com",
+														"maxLength": 253,
+														"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+														"readOnly": true,
+														"type": "string"
+													},
+													"original_dnshost": {
+														"description": "DNS host at the time of switching to Cloudflare",
+														"example": "NameCheap",
+														"maxLength": 50,
+														"nullable": true,
+														"readOnly": true,
+														"type": "string"
+													},
+													"original_name_servers": {
+														"description": "Original name servers before moving to Cloudflare\nNotes: Is this only available for full zones?",
+														"example": [
+															"ns1.originaldnshost.com",
+															"ns2.originaldnshost.com"
+														],
+														"items": {
+															"format": "hostname",
+															"type": "string"
+														},
+														"nullable": true,
+														"readOnly": true,
+														"type": "array"
+													},
+													"original_registrar": {
+														"description": "Registrar for the domain at the time of switching to Cloudflare",
+														"example": "GoDaddy",
+														"nullable": true,
+														"readOnly": true,
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"development_mode",
+													"owner",
+													"account",
+													"meta",
+													"original_name_servers",
+													"original_registrar",
+													"original_dnshost",
+													"created_on",
+													"modified_on",
+													"activated_on"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Railgun zones response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"activated_on": {
+																"description": "The last time proof of ownership was detected and the zone was made\nactive",
+																"example": "2014-01-02T00:01:00.12345Z",
+																"format": "date-time",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"created_on": {
+																"description": "When the zone was created",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"development_mode": {
+																"description": "The interval (in seconds) from when development mode expires\n(positive integer) or last expired (negative integer) for the\ndomain. If development mode has never been enabled, this value is 0.",
+																"example": 7200,
+																"readOnly": true,
+																"type": "number"
+															},
+															"id": {
+																"$ref": "#/components/schemas/common_components-schemas-identifier"
+															},
+															"modified_on": {
+																"description": "When the zone was last modified",
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "The domain name",
+																"example": "example.com",
+																"maxLength": 253,
+																"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+																"readOnly": true,
+																"type": "string"
+															},
+															"original_dnshost": {
+																"description": "DNS host at the time of switching to Cloudflare",
+																"example": "NameCheap",
+																"maxLength": 50,
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"original_name_servers": {
+																"description": "Original name servers before moving to Cloudflare\nNotes: Is this only available for full zones?",
+																"example": [
+																	"ns1.originaldnshost.com",
+																	"ns2.originaldnshost.com"
+																],
+																"items": {
+																	"format": "hostname",
+																	"type": "string"
+																},
+																"nullable": true,
+																"readOnly": true,
+																"type": "array"
+															},
+															"original_registrar": {
+																"description": "Registrar for the domain at the time of switching to Cloudflare",
+																"example": "GoDaddy",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"development_mode",
+															"owner",
+															"account",
+															"meta",
+															"original_name_servers",
+															"original_registrar",
+															"original_dnshost",
+															"created_on",
+															"modified_on",
+															"activated_on"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Railgun zones response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Railgun zones",
+		"tags": [
+			"Organization Railgun"
+		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+			"display": true,
+			"eol": "2020-02-04",
+			"id": "org_deprecation"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /organizations/{organization_identifier}/railguns/{identifier}": {
+		"deprecated": true,
+		"description": "Enable or disable a Railgun for all zones connected to it.",
+		"operationId": "organization-railgun-enable-or-disable-a-railgun",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Railgun identifier tag.",
+					"example": "e928d310693a83094309acf9ead50448",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "organization_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enabled": {
+								"default": false,
+								"description": "Flag to determine if the Railgun is accepting connections.",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"enabled"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Enable or disable a Railgun response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Enable or disable a Railgun response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Enable or disable a Railgun",
+		"tags": [
+			"Organization Railgun"
+		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+			"display": true,
+			"eol": "2020-02-04",
+			"id": "org_deprecation"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /organizations/{organization_identifier}/railguns": {
+		"deprecated": true,
+		"operationId": "organization-railgun-create-railgun",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "organization_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"name": {
+								"description": "Readable identifier of the Railgun.",
+								"example": "My Railgun.",
+								"maxLength": 160,
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Railgun response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Railgun response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create Railgun",
+		"tags": [
+			"Organization Railgun"
+		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+			"display": true,
+			"eol": "2020-02-04",
+			"id": "org_deprecation"
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

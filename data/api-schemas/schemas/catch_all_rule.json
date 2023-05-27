@@ -1,0 +1,20 @@
+{
+	"properties": {
+		"actions": {
+			"$ref": "#/components/schemas/rule_catchall-actions"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/rule_enabled"
+		},
+		"matchers": {
+			"$ref": "#/components/schemas/rule_catchall-matchers"
+		},
+		"name": {
+			"$ref": "#/components/schemas/rule_name"
+		},
+		"tag": {
+			"$ref": "#/components/schemas/rule_identifier"
+		}
+	},
+	"type": "object"
+}

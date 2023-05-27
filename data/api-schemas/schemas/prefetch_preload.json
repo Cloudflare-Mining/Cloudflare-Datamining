@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"prefetch_preload"
+					],
+					"example": "prefetch_preload"
+				},
+				"value": {
+					"$ref": "#/components/schemas/prefetch_preload_value"
+				}
+			}
+		}
+	],
+	"default": "off",
+	"description": "Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones.",
+	"title": "Prefetch preload"
+}

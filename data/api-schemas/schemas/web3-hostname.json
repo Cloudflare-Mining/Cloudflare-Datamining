@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"created_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"description": {
+			"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+		},
+		"dnslink": {
+			"$ref": "#/components/schemas/dnslink"
+		},
+		"id": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"name": {
+			"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+		},
+		"status": {
+			"$ref": "#/components/schemas/web3-hostname_components-schemas-status"
+		},
+		"target": {
+			"$ref": "#/components/schemas/schemas-target"
+		}
+	},
+	"type": "object"
+}

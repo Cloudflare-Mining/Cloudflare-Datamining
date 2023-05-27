@@ -1,0 +1,49 @@
+{
+	"properties": {
+		"allowedOrigins": {
+			"$ref": "#/components/schemas/allowedOrigins"
+		},
+		"clippedFromVideoUID": {
+			"$ref": "#/components/schemas/clipped_from_video_uid"
+		},
+		"created": {
+			"$ref": "#/components/schemas/clipping_created"
+		},
+		"creator": {
+			"$ref": "#/components/schemas/creator"
+		},
+		"endTimeSeconds": {
+			"$ref": "#/components/schemas/end_time_seconds"
+		},
+		"maxDurationSeconds": {
+			"$ref": "#/components/schemas/maxDurationSeconds"
+		},
+		"meta": {
+			"$ref": "#/components/schemas/media_metadata"
+		},
+		"modified": {
+			"$ref": "#/components/schemas/live_input_modified"
+		},
+		"playback": {
+			"$ref": "#/components/schemas/playback"
+		},
+		"preview": {
+			"$ref": "#/components/schemas/preview"
+		},
+		"requireSignedURLs": {
+			"$ref": "#/components/schemas/requireSignedURLs"
+		},
+		"startTimeSeconds": {
+			"$ref": "#/components/schemas/start_time_seconds"
+		},
+		"status": {
+			"$ref": "#/components/schemas/media_state"
+		},
+		"thumbnailTimestampPct": {
+			"$ref": "#/components/schemas/thumbnailTimestampPct"
+		},
+		"watermark": {
+			"$ref": "#/components/schemas/watermarkAtUpload"
+		}
+	}
+}

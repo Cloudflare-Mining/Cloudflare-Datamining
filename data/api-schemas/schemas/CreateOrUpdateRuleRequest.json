@@ -1,0 +1,44 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/RuleRequest"
+		},
+		{
+			"properties": {
+				"position": {
+					"description": "An object configuring where the rule will be placed.",
+					"oneOf": [
+						{
+							"properties": {
+								"before": {
+									"description": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top.",
+									"example": "da5e8e506c8e7877fe06cdf4c41add54",
+									"type": "string"
+								}
+							}
+						},
+						{
+							"properties": {
+								"after": {
+									"description": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom.",
+									"example": "5bccdbb2a5142cd25cad8591255bd209",
+									"type": "string"
+								}
+							}
+						},
+						{
+							"properties": {
+								"index": {
+									"description": "An index at which to place the rule, where index 1 is the first rule.",
+									"example": 1,
+									"type": "number"
+								}
+							}
+						}
+					],
+					"type": "object"
+				}
+			}
+		}
+	]
+}

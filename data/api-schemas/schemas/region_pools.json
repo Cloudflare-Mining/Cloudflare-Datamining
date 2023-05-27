@@ -1,0 +1,13 @@
+{
+	"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
+	"example": {
+		"ENAM": [
+			"00920f38ce07c2e2f4df50b1f61d4194"
+		],
+		"WNAM": [
+			"de90f38ced07c2e2f4df50b1f61d4194",
+			"9290f38c5d07c2e2f4df57b1f61d4196"
+		]
+	},
+	"type": "object"
+}

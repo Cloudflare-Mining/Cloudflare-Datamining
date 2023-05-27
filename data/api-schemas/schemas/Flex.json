@@ -1,0 +1,13 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/components/schemas/Tags"
+		},
+		{
+			"$ref": "#/components/schemas/Hosts"
+		},
+		{
+			"$ref": "#/components/schemas/Prefixes"
+		}
+	]
+}

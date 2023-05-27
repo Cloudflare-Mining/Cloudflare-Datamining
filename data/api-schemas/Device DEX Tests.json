@@ -1,0 +1,710 @@
+{
+	"DELETE /accounts/{identifier}/devices/dex_tests/{uuid}": {
+		"description": "Delete a Device DEX test. Returns the remaining device dex tests for the account.",
+		"operationId": "device-dex-test-delete-device-dex-test",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "API uuid tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/device-dex-test-schemas-http"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Device DEX test response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/device-dex-test-schemas-http"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete DEX test response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Device DEX test",
+		"tags": [
+			"Device DEX Tests"
+		]
+	},
+	"GET /accounts/{identifier}/devices/dex_tests": {
+		"description": "Fetch all DEX tests.",
+		"operationId": "device-dex-test-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/device-dex-test-schemas-http"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Device DEX test details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-IKr3W3bC"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/device-dex-test-schemas-http"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Device DEX test response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Device DEX tests",
+		"tags": [
+			"Device DEX Tests"
+		]
+	},
+	"GET /accounts/{identifier}/devices/dex_tests/{uuid}": {
+		"description": "Fetch a single DEX test.",
+		"operationId": "device-dex-test-get-device-dex-test",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "API uuid tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-IKr3W3bC"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/device-dex-test-schemas-http"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Device DEX test details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-IKr3W3bC"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/device-dex-test-schemas-http"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Device DEX test response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Device DEX test",
+		"tags": [
+			"Device DEX Tests"
+		]
+	},
+	"POST /accounts/{identifier}/devices/dex_tests": {
+		"description": "Create a DEX test.",
+		"operationId": "device-dex-test-create-device-dex-test",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"data": {
+								"$ref": "#/components/schemas/device-dex-test-schemas-data"
+							},
+							"description": {
+								"$ref": "#/components/schemas/device-dex-test-schemas-description"
+							},
+							"enabled": {
+								"$ref": "#/components/schemas/device-dex-test-schemas-enabled"
+							},
+							"interval": {
+								"$ref": "#/components/schemas/device-dex-test-schemas-interval"
+							},
+							"name": {
+								"$ref": "#/components/schemas/device-dex-test-schemas-name"
+							}
+						},
+						"required": [
+							"name",
+							"interval",
+							"enabled",
+							"data"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-IKr3W3bC"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/device-dex-test-schemas-http"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Dex test response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-IKr3W3bC"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/device-dex-test-schemas-http"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Dex test response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Device DEX test",
+		"tags": [
+			"Device DEX Tests"
+		]
+	},
+	"PUT /accounts/{identifier}/devices/dex_tests/{uuid}": {
+		"description": "Update a DEX test.",
+		"operationId": "device-dex-test-update-device-dex-test",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "API uuid tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"data": {
+								"$ref": "#/components/schemas/device-dex-test-schemas-data"
+							},
+							"description": {
+								"$ref": "#/components/schemas/device-dex-test-schemas-description"
+							},
+							"enabled": {
+								"$ref": "#/components/schemas/device-dex-test-schemas-enabled"
+							},
+							"interval": {
+								"$ref": "#/components/schemas/device-dex-test-schemas-interval"
+							},
+							"name": {
+								"$ref": "#/components/schemas/device-dex-test-schemas-name"
+							}
+						},
+						"required": [
+							"name",
+							"interval",
+							"enabled",
+							"data"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-IKr3W3bC"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/device-dex-test-schemas-http"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Dex test response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-IKr3W3bC"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/device-dex-test-schemas-http"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Dex test response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Device DEX test",
+		"tags": [
+			"Device DEX Tests"
+		]
+	}
+}

@@ -1,0 +1,75 @@
+{
+	"properties": {
+		"consumer_service_url": {
+			"description": "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.",
+			"example": "https://example.com",
+			"type": "string"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"custom_attributes": {
+			"properties": {
+				"name": {
+					"description": "The name of the attribute.",
+					"example": "family_name",
+					"type": "string"
+				},
+				"name_format": {
+					"description": "A globally unique name for an identity or service provider.",
+					"enum": [
+						"urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+						"urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+						"urn:oasis:names:tc:SAML:2.0:attrname-format:uri"
+					],
+					"example": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+					"type": "string"
+				},
+				"source": {
+					"properties": {
+						"name": {
+							"description": "The name of the IdP attribute.",
+							"example": "last_name",
+							"type": "string"
+						}
+					},
+					"type": "object"
+				}
+			},
+			"type": "object"
+		},
+		"idp_entity_id": {
+			"description": "The unique identifier for your SaaS application.",
+			"example": "https://example.cloudflareaccess.com",
+			"type": "string"
+		},
+		"name_id_format": {
+			"description": "The format of the name identifier sent to the SaaS application.",
+			"enum": [
+				"id",
+				"email"
+			],
+			"example": "id",
+			"type": "string"
+		},
+		"public_key": {
+			"description": "The Access public certificate that will be used to verify your identity.",
+			"example": "example unique name",
+			"type": "string"
+		},
+		"sp_entity_id": {
+			"description": "A globally unique name for an identity or service provider.",
+			"example": "example unique name",
+			"type": "string"
+		},
+		"sso_endpoint": {
+			"description": "The endpoint where your SaaS application will send login requests.",
+			"example": "https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd",
+			"type": "string"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"type": "object"
+}

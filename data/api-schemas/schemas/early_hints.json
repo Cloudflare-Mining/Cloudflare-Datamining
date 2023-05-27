@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"early_hints"
+					],
+					"example": "early_hints"
+				},
+				"value": {
+					"$ref": "#/components/schemas/early_hints_value"
+				}
+			}
+		}
+	],
+	"description": "When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information.",
+	"title": "Early Hints"
+}

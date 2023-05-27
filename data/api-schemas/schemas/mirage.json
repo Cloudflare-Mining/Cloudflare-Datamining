@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"mirage"
+					],
+					"example": "mirage"
+				},
+				"value": {
+					"$ref": "#/components/schemas/mirage_value"
+				}
+			}
+		}
+	],
+	"description": "Automatically optimize image loading for website visitors on mobile\ndevices. Refer to [our blog post](http://blog.cloudflare.com/mirage2-solving-mobile-speed)\nfor more information.\n",
+	"title": "Mirage Image Optimization"
+}

@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/healthchecks"
+				}
+			}
+		}
+	]
+}

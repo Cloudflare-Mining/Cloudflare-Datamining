@@ -1,0 +1,635 @@
+{
+	"GET /zones/{zone_identifier}/available_plans": {
+		"description": "Lists available plans the zone can subscribe to.",
+		"operationId": "zone-rate-plan-list-available-plans",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"can_subscribe": {
+														"$ref": "#/components/schemas/can_subscribe"
+													},
+													"currency": {
+														"$ref": "#/components/schemas/currency"
+													},
+													"externally_managed": {
+														"$ref": "#/components/schemas/externally_managed"
+													},
+													"frequency": {
+														"$ref": "#/components/schemas/schemas-frequency"
+													},
+													"id": {
+														"$ref": "#/components/schemas/identifier"
+													},
+													"is_subscribed": {
+														"$ref": "#/components/schemas/is_subscribed"
+													},
+													"legacy_discount": {
+														"$ref": "#/components/schemas/legacy_discount"
+													},
+													"legacy_id": {
+														"$ref": "#/components/schemas/legacy_id"
+													},
+													"name": {
+														"$ref": "#/components/schemas/schemas-name-H5QNtW41"
+													},
+													"price": {
+														"$ref": "#/components/schemas/schemas-price"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Available Plans response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"can_subscribe": {
+																"$ref": "#/components/schemas/can_subscribe"
+															},
+															"currency": {
+																"$ref": "#/components/schemas/currency"
+															},
+															"externally_managed": {
+																"$ref": "#/components/schemas/externally_managed"
+															},
+															"frequency": {
+																"$ref": "#/components/schemas/schemas-frequency"
+															},
+															"id": {
+																"$ref": "#/components/schemas/identifier"
+															},
+															"is_subscribed": {
+																"$ref": "#/components/schemas/is_subscribed"
+															},
+															"legacy_discount": {
+																"$ref": "#/components/schemas/legacy_discount"
+															},
+															"legacy_id": {
+																"$ref": "#/components/schemas/legacy_id"
+															},
+															"name": {
+																"$ref": "#/components/schemas/schemas-name-H5QNtW41"
+															},
+															"price": {
+																"$ref": "#/components/schemas/schemas-price"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Available Plans response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Available Plans",
+		"tags": [
+			"Zone Rate Plan"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/available_plans/{plan_identifier}": {
+		"description": "Details of the available plan that the zone can subscribe to.",
+		"operationId": "zone-rate-plan-available-plan-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "plan_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"can_subscribe": {
+													"$ref": "#/components/schemas/can_subscribe"
+												},
+												"currency": {
+													"$ref": "#/components/schemas/currency"
+												},
+												"externally_managed": {
+													"$ref": "#/components/schemas/externally_managed"
+												},
+												"frequency": {
+													"$ref": "#/components/schemas/schemas-frequency"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier"
+												},
+												"is_subscribed": {
+													"$ref": "#/components/schemas/is_subscribed"
+												},
+												"legacy_discount": {
+													"$ref": "#/components/schemas/legacy_discount"
+												},
+												"legacy_id": {
+													"$ref": "#/components/schemas/legacy_id"
+												},
+												"name": {
+													"$ref": "#/components/schemas/schemas-name-H5QNtW41"
+												},
+												"price": {
+													"$ref": "#/components/schemas/schemas-price"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Available Plan Details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"can_subscribe": {
+															"$ref": "#/components/schemas/can_subscribe"
+														},
+														"currency": {
+															"$ref": "#/components/schemas/currency"
+														},
+														"externally_managed": {
+															"$ref": "#/components/schemas/externally_managed"
+														},
+														"frequency": {
+															"$ref": "#/components/schemas/schemas-frequency"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"is_subscribed": {
+															"$ref": "#/components/schemas/is_subscribed"
+														},
+														"legacy_discount": {
+															"$ref": "#/components/schemas/legacy_discount"
+														},
+														"legacy_id": {
+															"$ref": "#/components/schemas/legacy_id"
+														},
+														"name": {
+															"$ref": "#/components/schemas/schemas-name-H5QNtW41"
+														},
+														"price": {
+															"$ref": "#/components/schemas/schemas-price"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Available Plan Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Available Plan Details",
+		"tags": [
+			"Zone Rate Plan"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/available_rate_plans": {
+		"description": "Lists all rate plans the zone can subscribe to.",
+		"operationId": "zone-rate-plan-list-available-rate-plans",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/schemas-rate-plan"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Available Rate Plans response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/schemas-rate-plan"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Available Rate Plans response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Available Rate Plans",
+		"tags": [
+			"Zone Rate Plan"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

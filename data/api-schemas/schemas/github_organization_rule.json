@@ -1,0 +1,29 @@
+{
+	"description": "Matches a Github organization.\nRequires a Github identity provider.",
+	"properties": {
+		"github-organization": {
+			"properties": {
+				"connection_id": {
+					"description": "The ID of your Github identity provider.",
+					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+					"type": "string"
+				},
+				"name": {
+					"description": "The name of the organization.",
+					"example": "cloudflare",
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"connection_id"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"github-organization"
+	],
+	"title": "Github organization",
+	"type": "object"
+}

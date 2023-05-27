@@ -1,0 +1,15 @@
+{
+	"additionalProperties": false,
+	"properties": {
+		"deleted": {
+			"$ref": "#/components/schemas/deleted-sigTQae5"
+		},
+		"id": {
+			"$ref": "#/components/schemas/filters_components-schemas-id"
+		}
+	},
+	"required": [
+		"id",
+		"deleted"
+	]
+}

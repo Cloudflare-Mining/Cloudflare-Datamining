@@ -1,0 +1,399 @@
+{
+	"GET /ips": {
+		"description": "Get IPs used on the Cloudflare network, see https://www.cloudflare.com/ips.",
+		"operationId": "cloudflare-i-ps-cloudflare-ip-details",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"etag": {
+													"description": "A digest of the IP data. Useful for determining if the data has changed.",
+													"example": "a8e453d9d129a3769407127936edfdb0",
+													"type": "string"
+												},
+												"ipv4_cidrs": {
+													"description": "List of Cloudflare IPv4 CIDR addresses.",
+													"items": {
+														"description": "IPv4 CIDR.",
+														"example": "199.27.128.0/21",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"ipv6_cidrs": {
+													"description": "List of Cloudflare IPv6 CIDR addresses.",
+													"items": {
+														"description": "IPv6 CIDR.",
+														"example": "2400:cb00::/32",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Cloudflare IP Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"etag": {
+															"description": "A digest of the IP data. Useful for determining if the data has changed.",
+															"example": "a8e453d9d129a3769407127936edfdb0",
+															"type": "string"
+														},
+														"ipv4_cidrs": {
+															"description": "List of Cloudflare IPv4 CIDR addresses.",
+															"items": {
+																"description": "IPv4 CIDR.",
+																"example": "199.27.128.0/21",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"ipv6_cidrs": {
+															"description": "List of Cloudflare IPv6 CIDR addresses.",
+															"items": {
+																"description": "IPv6 CIDR.",
+																"example": "2400:cb00::/32",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Cloudflare IP Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Cloudflare IP Details",
+		"tags": [
+			"Cloudflare IPs"
+		]
+	},
+	"GET /ips?networks=jdcloud": {
+		"description": "Get IPs used by JD Cloud data centers in China, see https://developers.cloudflare.com/china-network/reference/infrastructure/.",
+		"operationId": "cloudflare-i-ps-cloudflare-ip-details-jdcloud",
+		"parameters": [
+			{
+				"description": "Specified as `jdcloud` to list IPs used by JD Cloud data centers.",
+				"in": "query",
+				"name": "networks",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"etag": {
+													"$ref": "#/components/schemas/etag"
+												},
+												"ipv4_cidrs": {
+													"$ref": "#/components/schemas/ipv4_cidrs"
+												},
+												"ipv6_cidrs": {
+													"$ref": "#/components/schemas/ipv6_cidrs"
+												},
+												"jdcloud_cidrs": {
+													"description": "List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used.",
+													"items": {
+														"description": "IPv4 or IPv6 CIDR.",
+														"example": "199.27.128.0/21",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "JD Cloud IP Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"etag": {
+															"$ref": "#/components/schemas/etag"
+														},
+														"ipv4_cidrs": {
+															"$ref": "#/components/schemas/ipv4_cidrs"
+														},
+														"ipv6_cidrs": {
+															"$ref": "#/components/schemas/ipv6_cidrs"
+														},
+														"jdcloud_cidrs": {
+															"description": "List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used.",
+															"items": {
+																"description": "IPv4 or IPv6 CIDR.",
+																"example": "199.27.128.0/21",
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "JD Cloud IP Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "JD Cloud IP Details",
+		"tags": [
+			"Cloudflare IPs"
+		]
+	}
+}

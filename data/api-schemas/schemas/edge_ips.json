@@ -1,0 +1,57 @@
+{
+	"default": {
+		"connectivity": "all",
+		"type": "dynamic"
+	},
+	"description": "The anycast edge IP configuration for the hostname of this application.",
+	"oneOf": [
+		{
+			"properties": {
+				"connectivity": {
+					"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+					"enum": [
+						"all",
+						"ipv4",
+						"ipv6"
+					],
+					"example": "all",
+					"type": "string"
+				},
+				"type": {
+					"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+					"enum": [
+						"dynamic"
+					],
+					"example": "dynamic",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		{
+			"properties": {
+				"ips": {
+					"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
+					"example": [
+						"192.0.2.1"
+					],
+					"items": {
+						"description": "Edge anycast IPs.",
+						"example": "192.0.2.1",
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"type": {
+					"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+					"enum": [
+						"static"
+					],
+					"example": "static",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

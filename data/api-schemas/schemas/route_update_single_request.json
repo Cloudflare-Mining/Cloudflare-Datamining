@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"id": {
+					"$ref": "#/components/schemas/identifier"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		{
+			"$ref": "#/components/schemas/route_add_single_request"
+		}
+	]
+}

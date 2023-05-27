@@ -1,0 +1,14 @@
+{
+	"description": "An object configuring the rule's logging behavior.",
+	"example": {
+		"enabled": true
+	},
+	"properties": {
+		"enabled": {
+			"description": "Whether to generate a log when the rule matches.",
+			"example": true,
+			"type": "boolean"
+		}
+	},
+	"type": "object"
+}

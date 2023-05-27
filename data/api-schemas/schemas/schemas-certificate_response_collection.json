@@ -1,0 +1,18 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/certificates-GJonPsBy"
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

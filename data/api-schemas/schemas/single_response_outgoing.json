@@ -1,0 +1,37 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"checked_time": {
+							"$ref": "#/components/schemas/time"
+						},
+						"created_time": {
+							"$ref": "#/components/schemas/time"
+						},
+						"id": {
+							"$ref": "#/components/schemas/identifier-rjmAAZUp"
+						},
+						"last_transferred_time": {
+							"$ref": "#/components/schemas/time"
+						},
+						"name": {
+							"$ref": "#/components/schemas/name-HHsROM8p"
+						},
+						"peers": {
+							"$ref": "#/components/schemas/peers"
+						},
+						"soa_serial": {
+							"$ref": "#/components/schemas/soa_serial"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

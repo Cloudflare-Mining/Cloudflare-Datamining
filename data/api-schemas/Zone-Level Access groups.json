@@ -1,0 +1,750 @@
+{
+	"DELETE /zones/{identifier}/access/groups/{uuid}": {
+		"description": "Deletes an Access group.",
+		"operationId": "zone-level-access-groups-delete-an-access-group",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the Access group."
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/schemas-uuid-wVhAJMvq"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete an Access group response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/schemas-uuid-wVhAJMvq"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete an Access group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete an Access group",
+		"tags": [
+			"Zone-Level Access groups"
+		]
+	},
+	"GET /zones/{identifier}/access/groups": {
+		"description": "Lists all Access groups.",
+		"operationId": "zone-level-access-groups-list-access-groups",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/groups"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Access groups response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/groups"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Access groups response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Access groups",
+		"tags": [
+			"Zone-Level Access groups"
+		]
+	},
+	"GET /zones/{identifier}/access/groups/{uuid}": {
+		"description": "Fetches a single Access group.",
+		"operationId": "zone-level-access-groups-get-an-access-group",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the Access group."
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/groups"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get an Access group response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/groups"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get an Access group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get an Access group",
+		"tags": [
+			"Zone-Level Access groups"
+		]
+	},
+	"POST /zones/{identifier}/access/groups": {
+		"description": "Creates a new Access group.",
+		"operationId": "zone-level-access-groups-create-an-access-group",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"exclude": {
+								"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
+								"items": {
+									"$ref": "#/components/schemas/rule-cepHFsll"
+								},
+								"type": "array"
+							},
+							"include": {
+								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
+								"items": {
+									"$ref": "#/components/schemas/rule-cepHFsll"
+								},
+								"type": "array"
+							},
+							"name": {
+								"description": "The name of the Access group.",
+								"example": "Allow devs",
+								"type": "string"
+							},
+							"require": {
+								"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
+								"items": {
+									"$ref": "#/components/schemas/rule-cepHFsll"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"include"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/groups"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create an Access group response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/groups"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create an Access group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create an Access group",
+		"tags": [
+			"Zone-Level Access groups"
+		]
+	},
+	"PUT /zones/{identifier}/access/groups/{uuid}": {
+		"description": "Updates a configured Access group.",
+		"operationId": "zone-level-access-groups-update-an-access-group",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for the Access group."
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"exclude": {
+								"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
+								"items": {
+									"$ref": "#/components/schemas/rule-cepHFsll"
+								},
+								"type": "array"
+							},
+							"include": {
+								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
+								"items": {
+									"$ref": "#/components/schemas/rule-cepHFsll"
+								},
+								"type": "array"
+							},
+							"name": {
+								"description": "The name of the Access group.",
+								"example": "Allow devs",
+								"type": "string"
+							},
+							"require": {
+								"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
+								"items": {
+									"$ref": "#/components/schemas/rule-cepHFsll"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"include"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/groups"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update an Access group response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/groups"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update an Access group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update an Access group",
+		"tags": [
+			"Zone-Level Access groups"
+		]
+	}
+}

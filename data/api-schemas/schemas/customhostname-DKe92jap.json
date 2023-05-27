@@ -1,0 +1,37 @@
+{
+	"properties": {
+		"created_at": {
+			"$ref": "#/components/schemas/created_at"
+		},
+		"custom_metadata": {
+			"$ref": "#/components/schemas/custom_metadata"
+		},
+		"custom_origin_server": {
+			"$ref": "#/components/schemas/custom_origin_server"
+		},
+		"custom_origin_sni": {
+			"$ref": "#/components/schemas/custom_origin_sni"
+		},
+		"hostname": {
+			"$ref": "#/components/schemas/hostname"
+		},
+		"id": {
+			"$ref": "#/components/schemas/custom-hostname_components-schemas-identifier"
+		},
+		"ownership_verification": {
+			"$ref": "#/components/schemas/ownership_verification"
+		},
+		"ownership_verification_http": {
+			"$ref": "#/components/schemas/ownership_verification_http"
+		},
+		"ssl": {
+			"$ref": "#/components/schemas/ssl-uDucdR0J"
+		},
+		"status": {
+			"$ref": "#/components/schemas/custom-hostname_components-schemas-status"
+		},
+		"verification_errors": {
+			"$ref": "#/components/schemas/verification_errors"
+		}
+	}
+}

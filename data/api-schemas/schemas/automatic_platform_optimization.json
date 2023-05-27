@@ -1,0 +1,55 @@
+{
+	"properties": {
+		"cache_by_device_type": {
+			"description": "Indicates whether or not [cache by device type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/) is enabled.",
+			"example": false,
+			"type": "boolean"
+		},
+		"cf": {
+			"default": false,
+			"description": "Indicates whether or not Cloudflare proxy is enabled.",
+			"example": true,
+			"type": "boolean"
+		},
+		"enabled": {
+			"default": false,
+			"description": "Indicates whether or not Automatic Platform Optimization is enabled.",
+			"example": true,
+			"type": "boolean"
+		},
+		"hostnames": {
+			"description": "An array of hostnames where Automatic Platform Optimization for WordPress is activated.",
+			"example": [
+				"www.example.com",
+				"example.com",
+				"shop.example.com"
+			],
+			"items": {
+				"format": "hostname",
+				"type": "string"
+			},
+			"type": "array"
+		},
+		"wordpress": {
+			"default": false,
+			"description": "Indicates whether or not site is powered by WordPress.",
+			"example": true,
+			"type": "boolean"
+		},
+		"wp_plugin": {
+			"default": false,
+			"description": "Indicates whether or not [Cloudflare for WordPress plugin](https://wordpress.org/plugins/cloudflare/) is installed.",
+			"example": true,
+			"type": "boolean"
+		}
+	},
+	"required": [
+		"enabled",
+		"cf",
+		"wordpress",
+		"wp_plugin",
+		"hostnames",
+		"cache_by_device_type"
+	],
+	"type": "object"
+}

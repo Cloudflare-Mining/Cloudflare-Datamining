@@ -1,0 +1,50 @@
+{
+	"description": "Determines which traffic the rate limit counts towards the threshold.",
+	"oneOf": [
+		{
+			"properties": {
+				"headers": {
+					"items": {
+						"properties": {
+							"name": {
+								"$ref": "#/components/schemas/header_name"
+							},
+							"op": {
+								"$ref": "#/components/schemas/header_op"
+							},
+							"value": {
+								"$ref": "#/components/schemas/header_value"
+							}
+						},
+						"type": "object"
+					},
+					"type": "array"
+				},
+				"request": {
+					"properties": {
+						"methods": {
+							"$ref": "#/components/schemas/methods"
+						},
+						"schemes": {
+							"$ref": "#/components/schemas/schemes"
+						},
+						"url": {
+							"$ref": "#/components/schemas/schemas-url"
+						}
+					},
+					"type": "object"
+				},
+				"response": {
+					"properties": {
+						"origin_traffic": {
+							"$ref": "#/components/schemas/origin_traffic"
+						}
+					},
+					"type": "object"
+				}
+			},
+			"type": "object"
+		}
+	],
+	"type": "object"
+}

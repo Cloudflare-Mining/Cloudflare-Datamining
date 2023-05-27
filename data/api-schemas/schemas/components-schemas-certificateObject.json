@@ -1,0 +1,31 @@
+{
+	"properties": {
+		"ca": {
+			"$ref": "#/components/schemas/ca"
+		},
+		"certificates": {
+			"$ref": "#/components/schemas/schemas-certificates"
+		},
+		"expires_on": {
+			"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier"
+		},
+		"issuer": {
+			"$ref": "#/components/schemas/schemas-issuer"
+		},
+		"name": {
+			"$ref": "#/components/schemas/schemas-name"
+		},
+		"serial_number": {
+			"$ref": "#/components/schemas/schemas-serial_number"
+		},
+		"signature": {
+			"$ref": "#/components/schemas/signature"
+		},
+		"uploaded_on": {
+			"$ref": "#/components/schemas/mtls-management_components-schemas-uploaded_on"
+		}
+	}
+}

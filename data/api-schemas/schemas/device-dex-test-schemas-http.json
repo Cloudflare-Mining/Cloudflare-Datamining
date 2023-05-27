@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"data": {
+			"$ref": "#/components/schemas/device-dex-test-schemas-data"
+		},
+		"description": {
+			"$ref": "#/components/schemas/device-dex-test-schemas-description"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/device-dex-test-schemas-enabled"
+		},
+		"interval": {
+			"$ref": "#/components/schemas/device-dex-test-schemas-interval"
+		},
+		"name": {
+			"$ref": "#/components/schemas/device-dex-test-schemas-name"
+		}
+	},
+	"required": [
+		"name",
+		"interval",
+		"enabled",
+		"data"
+	],
+	"type": "object"
+}

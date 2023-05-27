@@ -1,0 +1,11 @@
+{
+	"description": "Status of DNSSEC, based on user-desired state and presence of necessary records.",
+	"enum": [
+		"active",
+		"pending",
+		"disabled",
+		"pending-disabled",
+		"error"
+	],
+	"example": "active"
+}

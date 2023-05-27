@@ -1,0 +1,28 @@
+{
+	"properties": {
+		"asn": {
+			"$ref": "#/components/schemas/asn-ct6kmJuT"
+		},
+		"country": {
+			"$ref": "#/components/schemas/asn_country"
+		},
+		"description": {
+			"$ref": "#/components/schemas/asn_description"
+		},
+		"domain_count": {
+			"type": "integer"
+		},
+		"top_domains": {
+			"example": [
+				"example.com"
+			],
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
+		},
+		"type": {
+			"$ref": "#/components/schemas/asn_type"
+		}
+	}
+}

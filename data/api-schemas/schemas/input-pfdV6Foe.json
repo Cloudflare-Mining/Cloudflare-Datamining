@@ -1,0 +1,53 @@
+{
+	"description": "The value to be checked against.",
+	"example": {
+		"operating_system": "linux",
+		"path": "/bin/cat",
+		"thumbprint": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e"
+	},
+	"oneOf": [
+		{
+			"$ref": "#/components/schemas/file_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/unique_client_id_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/domain_joined_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/os_version_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/firewall_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/sentinelone_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/carbonblack_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/disk_encryption_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/application_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/workspace_one_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/crowdstrike_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/intune_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/kolide_input_request"
+		},
+		{
+			"$ref": "#/components/schemas/tanium_input_request"
+		}
+	],
+	"type": "object"
+}

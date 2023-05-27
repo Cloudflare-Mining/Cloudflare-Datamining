@@ -1,0 +1,43 @@
+{
+	"properties": {
+		"allowed_match_count": {
+			"$ref": "#/components/schemas/allowed_match_count"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"description": {
+			"description": "The description of the profile.",
+			"example": "A standard CVV card number",
+			"type": "string"
+		},
+		"entries": {
+			"description": "The entries for this profile.",
+			"items": {
+				"$ref": "#/components/schemas/custom_entry-Z9cEs0S3"
+			},
+			"type": "array"
+		},
+		"id": {
+			"$ref": "#/components/schemas/profile_id"
+		},
+		"name": {
+			"description": "The name of the profile.",
+			"example": "Generic CVV Card Number",
+			"type": "string"
+		},
+		"type": {
+			"description": "The type of the profile.",
+			"enum": [
+				"custom"
+			],
+			"example": "custom",
+			"type": "string"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"title": "Custom profile",
+	"type": "object"
+}

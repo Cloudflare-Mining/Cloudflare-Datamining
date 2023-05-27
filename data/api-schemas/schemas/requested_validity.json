@@ -1,0 +1,15 @@
+{
+	"default": 5475,
+	"description": "The number of days for which the certificate should be valid.",
+	"enum": [
+		7,
+		30,
+		90,
+		365,
+		730,
+		1095,
+		5475
+	],
+	"example": 5475,
+	"type": "number"
+}

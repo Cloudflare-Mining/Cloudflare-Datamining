@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QtgvcrF1"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"ipsec_tunnel_id": {
+							"$ref": "#/components/schemas/identifier"
+						},
+						"psk": {
+							"$ref": "#/components/schemas/psk"
+						},
+						"psk_metadata": {
+							"$ref": "#/components/schemas/psk_metadata"
+						}
+					}
+				}
+			}
+		}
+	]
+}

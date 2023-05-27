@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"created_at": {
+			"$ref": "#/components/schemas/created_at-Jt0XbvMD"
+		},
+		"id": {
+			"$ref": "#/components/schemas/uuid"
+		},
+		"last_failure": {
+			"$ref": "#/components/schemas/last_failure"
+		},
+		"last_success": {
+			"$ref": "#/components/schemas/last_success"
+		},
+		"name": {
+			"$ref": "#/components/schemas/components-schemas-name-QvcpfM5W"
+		},
+		"secret": {
+			"$ref": "#/components/schemas/secret-Z7aP0dwx"
+		},
+		"type": {
+			"$ref": "#/components/schemas/components-schemas-type"
+		},
+		"url": {
+			"$ref": "#/components/schemas/url-8aNYHrDL"
+		}
+	},
+	"type": "object"
+}

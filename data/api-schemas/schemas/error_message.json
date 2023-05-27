@@ -1,0 +1,6 @@
+{
+	"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+	"format": "date-time",
+	"nullable": true,
+	"type": "string"
+}

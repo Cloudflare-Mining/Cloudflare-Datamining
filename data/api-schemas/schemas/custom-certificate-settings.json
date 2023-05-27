@@ -1,0 +1,30 @@
+{
+	"description": "Custom certificate settings for BYO-PKI.",
+	"properties": {
+		"binding_status": {
+			"description": "Certificate status (internal)",
+			"example": "pending_deployment",
+			"readOnly": true,
+			"type": "string"
+		},
+		"enabled": {
+			"description": "Enable use of custom certificate authority for signing Gateway traffic",
+			"example": true,
+			"type": "boolean"
+		},
+		"id": {
+			"description": "UUID of certificate (ID from MTLS certificate store)",
+			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+			"type": "string"
+		},
+		"updated_at": {
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		}
+	},
+	"required": [
+		"enabled"
+	],
+	"type": "object"
+}

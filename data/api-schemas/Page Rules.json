@@ -1,0 +1,1135 @@
+{
+	"DELETE /zones/{zone_identifier}/pagerules/{identifier}": {
+		"description": "Deletes an existing Page Rule.",
+		"operationId": "page-rules-delete-a-page-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/schemas-api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/schemas-identifier-cy9ANXxl"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete a Page Rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/schemas-api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-cy9ANXxl"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a Page Rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a Page Rule",
+		"tags": [
+			"Page Rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/pagerules": {
+		"description": "Fetches Page Rules in a zone.",
+		"operationId": "page-rules-list-page-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "priority",
+					"description": "The field used to sort returned Page Rules.",
+					"enum": [
+						"status",
+						"priority"
+					],
+					"example": "status",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "desc",
+					"description": "The direction used to sort returned Page Rules.",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "match",
+				"schema": {
+					"default": "all",
+					"description": "When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
+					"enum": [
+						"any",
+						"all"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"default": "disabled",
+					"description": "The status of the Page Rule.",
+					"enum": [
+						"active",
+						"disabled"
+					],
+					"example": "active",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/schemas-api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/page-rule"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Page Rules response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/schemas-api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/page-rule"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Page Rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Page Rules",
+		"tags": [
+			"Page Rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/pagerules/{identifier}": {
+		"description": "Fetches the details of a Page Rule.",
+		"operationId": "page-rules-get-a-page-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Page Rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Page Rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a Page Rule",
+		"tags": [
+			"Page Rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_identifier}/pagerules/{identifier}": {
+		"description": "Updates one or more fields of an existing Page Rule.",
+		"operationId": "page-rules-edit-a-page-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"actions": {
+								"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
+								"example": [
+									{
+										"id": "browser_check",
+										"value": "on"
+									}
+								],
+								"items": {
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/route-rEaaiAX3"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"priority": {
+								"default": 1,
+								"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
+								"type": "integer"
+							},
+							"status": {
+								"default": "disabled",
+								"description": "The status of the Page Rule.",
+								"enum": [
+									"active",
+									"disabled"
+								],
+								"example": "active",
+								"type": "string"
+							},
+							"targets": {
+								"description": "The rule targets to evaluate on each request.",
+								"example": [
+									{
+										"constraint": {
+											"operator": "matches",
+											"value": "*example.com/images/*"
+										},
+										"target": "url"
+									}
+								],
+								"items": {
+									"$ref": "#/components/schemas/target-Jxu9micH"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Edit a Page Rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Edit a Page Rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Edit a Page Rule",
+		"tags": [
+			"Page Rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_identifier}/pagerules": {
+		"description": "Creates a new Page Rule.",
+		"operationId": "page-rules-create-a-page-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"actions": {
+								"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
+								"example": [
+									{
+										"id": "browser_check",
+										"value": "on"
+									}
+								],
+								"items": {
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/route-rEaaiAX3"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"priority": {
+								"default": 1,
+								"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
+								"type": "integer"
+							},
+							"status": {
+								"default": "disabled",
+								"description": "The status of the Page Rule.",
+								"enum": [
+									"active",
+									"disabled"
+								],
+								"example": "active",
+								"type": "string"
+							},
+							"targets": {
+								"description": "The rule targets to evaluate on each request.",
+								"example": [
+									{
+										"constraint": {
+											"operator": "matches",
+											"value": "*example.com/images/*"
+										},
+										"target": "url"
+									}
+								],
+								"items": {
+									"$ref": "#/components/schemas/target-Jxu9micH"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"targets",
+							"actions"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a Page Rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a Page Rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a Page Rule",
+		"tags": [
+			"Page Rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_identifier}/pagerules/{identifier}": {
+		"description": "Replaces the configuration of an existing Page Rule. The configuration of the updated Page Rule will exactly match the data passed in the API request.",
+		"operationId": "page-rules-update-a-page-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"actions": {
+								"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
+								"example": [
+									{
+										"id": "browser_check",
+										"value": "on"
+									}
+								],
+								"items": {
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/route-rEaaiAX3"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"priority": {
+								"default": 1,
+								"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
+								"type": "integer"
+							},
+							"status": {
+								"default": "disabled",
+								"description": "The status of the Page Rule.",
+								"enum": [
+									"active",
+									"disabled"
+								],
+								"example": "active",
+								"type": "string"
+							},
+							"targets": {
+								"description": "The rule targets to evaluate on each request.",
+								"example": [
+									{
+										"constraint": {
+											"operator": "matches",
+											"value": "*example.com/images/*"
+										},
+										"target": "url"
+									}
+								],
+								"items": {
+									"$ref": "#/components/schemas/target-Jxu9micH"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"targets",
+							"actions"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a Page Rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a Page Rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a Page Rule",
+		"tags": [
+			"Page Rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

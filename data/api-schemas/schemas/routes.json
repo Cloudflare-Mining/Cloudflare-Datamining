@@ -1,0 +1,19 @@
+{
+	"properties": {
+		"id": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		},
+		"pattern": {
+			"$ref": "#/components/schemas/pattern-ujWtg5ic"
+		},
+		"script": {
+			"$ref": "#/components/schemas/schemas-script_name"
+		}
+	},
+	"required": [
+		"id",
+		"pattern",
+		"script"
+	],
+	"type": "object"
+}

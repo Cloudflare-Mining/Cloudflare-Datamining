@@ -1,0 +1,17 @@
+{
+	"properties": {
+		"hasStoredData": {
+			"description": "Whether the Durable Object has stored data.",
+			"example": true,
+			"readOnly": true,
+			"type": "boolean"
+		},
+		"id": {
+			"description": "ID of the Durable Object.",
+			"example": "fe7803fc55b964e09d94666545aab688d360c6bda69ba349ced1e5f28d2fc2c8",
+			"readOnly": true,
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

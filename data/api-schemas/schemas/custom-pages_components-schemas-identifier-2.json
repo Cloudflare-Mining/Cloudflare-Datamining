@@ -1,0 +1,16 @@
+{
+	"description": "The name of the custom page type.",
+	"enum": [
+		"basic_challenge",
+		"managed_challenge",
+		"waf_block",
+		"country_challenge",
+		"ip_block",
+		"under_attack",
+		"ratelimit_block",
+		"500_errors",
+		"1000_errors"
+	],
+	"example": "basic_challenge",
+	"readOnly": true
+}

@@ -1,0 +1,35 @@
+{
+	"additionalProperties": false,
+	"properties": {
+		"configurations": {
+			"$ref": "#/components/schemas/configurations"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/created_on-HFkgzJlt"
+		},
+		"description": {
+			"$ref": "#/components/schemas/lockdowns_components-schemas-description"
+		},
+		"id": {
+			"$ref": "#/components/schemas/lockdowns_components-schemas-id"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/components-schemas-modified_on"
+		},
+		"paused": {
+			"$ref": "#/components/schemas/schemas-paused"
+		},
+		"urls": {
+			"$ref": "#/components/schemas/schemas-urls"
+		}
+	},
+	"required": [
+		"id",
+		"created_on",
+		"modified_on",
+		"paused",
+		"description",
+		"urls",
+		"configurations"
+	]
+}

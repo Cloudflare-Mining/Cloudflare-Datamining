@@ -1,0 +1,18 @@
+{
+	"properties": {
+		"files": {
+			"items": {
+				"anyOf": [
+					{
+						"$ref": "#/components/schemas/File"
+					},
+					{
+						"$ref": "#/components/schemas/UrlAndHeaders"
+					}
+				]
+			},
+			"type": "array"
+		}
+	},
+	"type": "object"
+}

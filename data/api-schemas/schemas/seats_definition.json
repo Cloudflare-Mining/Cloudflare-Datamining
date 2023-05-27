@@ -1,0 +1,11 @@
+{
+	"items": {
+		"$ref": "#/components/schemas/seat"
+	},
+	"required": [
+		"seat_uid",
+		"gateway_seat",
+		"access_seat"
+	],
+	"type": "array"
+}

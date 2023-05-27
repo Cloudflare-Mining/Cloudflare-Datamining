@@ -1,0 +1,13 @@
+{
+	"description": "Show the state of your account, and the type or configuration error.",
+	"enum": [
+		"ready",
+		"unconfigured",
+		"misconfigured",
+		"misconfigured/locked",
+		"unlocked"
+	],
+	"example": "ready",
+	"readOnly": true,
+	"type": "string"
+}

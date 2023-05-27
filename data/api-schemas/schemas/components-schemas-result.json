@@ -1,0 +1,48 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/result-dFvHiS1t"
+		},
+		{
+			"properties": {
+				"data": {
+					"example": [
+						{
+							"metrics": [
+								[
+									2,
+									4
+								],
+								[
+									16,
+									32
+								]
+							]
+						}
+					]
+				},
+				"max": {
+					"example": {
+						"storedBytes": 32,
+						"storedKeys": 4
+					}
+				},
+				"min": {
+					"example": {
+						"storedBytes": 16,
+						"storedKeys": 2
+					}
+				},
+				"query": {
+					"$ref": "#/components/schemas/query-zVd1m946"
+				},
+				"totals": {
+					"example": {
+						"storedBytes": 48,
+						"storedKeys": 6
+					}
+				}
+			}
+		}
+	]
+}

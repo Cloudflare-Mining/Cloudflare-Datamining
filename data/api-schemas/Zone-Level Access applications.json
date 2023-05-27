@@ -1,0 +1,1662 @@
+{
+	"DELETE /zones/{identifier}/access/apps/{app_id}": {
+		"description": "Deletes an application from Access.",
+		"operationId": "zone-level-access-applications-delete-an-access-application",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/uuid"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete an Access application response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/uuid"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete an Access application response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete an Access application",
+		"tags": [
+			"Zone-Level Access applications"
+		]
+	},
+	"GET /zones/{identifier}/access/apps": {
+		"description": "List all Access Applications in a zone.",
+		"operationId": "zone-level-access-applications-list-access-applications",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/schemas-apps-aabIumOU"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Access Applications response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/schemas-apps-aabIumOU"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Access Applications response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Access Applications",
+		"tags": [
+			"Zone-Level Access applications"
+		]
+	},
+	"GET /zones/{identifier}/access/apps/{app_id}": {
+		"description": "Fetches information about an Access application.",
+		"operationId": "zone-level-access-applications-get-an-access-application",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/schemas-apps-aabIumOU"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get an Access application response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/schemas-apps-aabIumOU"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get an Access application response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get an Access application",
+		"tags": [
+			"Zone-Level Access applications"
+		]
+	},
+	"GET /zones/{identifier}/access/apps/{app_id}/user_policy_checks": {
+		"description": "Tests if a specific user has permission to access an application.",
+		"operationId": "zone-level-access-applications-test-access-policies",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"app_state": {
+													"properties": {
+														"app_uid": {
+															"$ref": "#/components/schemas/uuid"
+														},
+														"aud": {
+															"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe389",
+															"type": "string"
+														},
+														"hostname": {
+															"example": "test.com",
+															"type": "string"
+														},
+														"name": {
+															"example": "Test App",
+															"type": "string"
+														},
+														"policies": {
+															"example": [
+																{
+																	"decision": "allow",
+																	"exclude": [],
+																	"include": [
+																		{
+																			"_type": "email",
+																			"email": "testuser@gmail.com"
+																		}
+																	],
+																	"precedence": 0,
+																	"require": [],
+																	"status": "Success"
+																}
+															],
+															"items": {},
+															"type": "array"
+														},
+														"status": {
+															"example": "Success",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"user_identity": {
+													"properties": {
+														"account_id": {
+															"example": "41ecfbb341f033e52b46742756aabb8b",
+															"type": "string"
+														},
+														"device_sessions": {
+															"example": {},
+															"type": "object"
+														},
+														"email": {
+															"example": "testuser@gmail.com",
+															"type": "string"
+														},
+														"geo": {
+															"properties": {
+																"country": {
+																	"example": "US",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"iat": {
+															"type": "integer"
+														},
+														"id": {
+															"example": "1164449231815010287495",
+															"type": "string"
+														},
+														"is_gateway": {
+															"example": false,
+															"type": "boolean"
+														},
+														"is_warp": {
+															"example": false,
+															"type": "boolean"
+														},
+														"name": {
+															"example": "Test User",
+															"type": "string"
+														},
+														"user_uuid": {
+															"$ref": "#/components/schemas/uuid"
+														},
+														"version": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Test Access policies response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"app_state": {
+															"properties": {
+																"app_uid": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"aud": {
+																	"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe389",
+																	"type": "string"
+																},
+																"hostname": {
+																	"example": "test.com",
+																	"type": "string"
+																},
+																"name": {
+																	"example": "Test App",
+																	"type": "string"
+																},
+																"policies": {
+																	"example": [
+																		{
+																			"decision": "allow",
+																			"exclude": [],
+																			"include": [
+																				{
+																					"_type": "email",
+																					"email": "testuser@gmail.com"
+																				}
+																			],
+																			"precedence": 0,
+																			"require": [],
+																			"status": "Success"
+																		}
+																	],
+																	"items": {},
+																	"type": "array"
+																},
+																"status": {
+																	"example": "Success",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"user_identity": {
+															"properties": {
+																"account_id": {
+																	"example": "41ecfbb341f033e52b46742756aabb8b",
+																	"type": "string"
+																},
+																"device_sessions": {
+																	"example": {},
+																	"type": "object"
+																},
+																"email": {
+																	"example": "testuser@gmail.com",
+																	"type": "string"
+																},
+																"geo": {
+																	"properties": {
+																		"country": {
+																			"example": "US",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"iat": {
+																	"type": "integer"
+																},
+																"id": {
+																	"example": "1164449231815010287495",
+																	"type": "string"
+																},
+																"is_gateway": {
+																	"example": false,
+																	"type": "boolean"
+																},
+																"is_warp": {
+																	"example": false,
+																	"type": "boolean"
+																},
+																"name": {
+																	"example": "Test User",
+																	"type": "string"
+																},
+																"user_uuid": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"version": {
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Test Access policies response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Test Access policies",
+		"tags": [
+			"Zone-Level Access applications"
+		]
+	},
+	"POST /zones/{identifier}/access/apps": {
+		"description": "Adds a new application to Access.",
+		"operationId": "zone-level-access-applications-add-a-bookmark-application",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"anyOf": [
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-self_hosted_props"
+									}
+								],
+								"title": "Self Hosted Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/saas_props"
+									}
+								],
+								"title": "SaaS Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-ssh_props"
+									}
+								],
+								"title": "Browser SSH Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-vnc_props"
+									}
+								],
+								"title": "Browser VNC Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-app_launcher_props"
+									}
+								],
+								"title": "App Launcher Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-warp_props"
+									}
+								],
+								"title": "Device Enrollment Permissions Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-biso_props"
+									}
+								],
+								"title": "Browser Isolation Permissions Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-bookmark_props"
+									}
+								],
+								"title": "Bookmark application",
+								"type": "object"
+							}
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/schemas-apps-aabIumOU"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-self_hosted_props"
+														}
+													],
+													"title": "Self Hosted Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/saas_props"
+														}
+													],
+													"title": "SaaS Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-ssh_props"
+														}
+													],
+													"title": "Browser SSH Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-vnc_props"
+														}
+													],
+													"title": "Browser VNC Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-app_launcher_props"
+														}
+													],
+													"title": "App Launcher Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-warp_props"
+														}
+													],
+													"title": "Device Enrollment Permissions Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-biso_props"
+														}
+													],
+													"title": "Browser Isolation Permissions Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-bookmark_props"
+														}
+													],
+													"title": "Bookmark application",
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Add an Access application response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+												},
+												{
+													"properties": {
+														"result": {
+															"$ref": "#/components/schemas/schemas-apps-aabIumOU"
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"app_launcher_visible": {
+																	"default": true
+																},
+																"domain": {
+																	"description": "The URL or domain of the bookmark.",
+																	"example": "https://mybookmark.com"
+																},
+																"logo_url": {
+																	"$ref": "#/components/schemas/logo_url"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/apps_components-schemas-name"
+																},
+																"type": {
+																	"description": "The application type.",
+																	"example": "bookmark",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"domain"
+															],
+															"title": "Bookmark Application",
+															"type": "object"
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Add an Access application response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Add an Access application",
+		"tags": [
+			"Zone-Level Access applications"
+		]
+	},
+	"POST /zones/{identifier}/access/apps/{app_id}/revoke_tokens": {
+		"description": "Revokes all service tokens used by an application.",
+		"operationId": "zone-level-access-applications-revoke-service-tokens",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"enum": [
+												true,
+												false
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Revoke service tokens response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												},
+												"success": {
+													"enum": [
+														true,
+														false
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Revoke service tokens response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Revoke service tokens",
+		"tags": [
+			"Zone-Level Access applications"
+		]
+	},
+	"PUT /zones/{identifier}/access/apps/{app_id}": {
+		"description": "Updates an Access application.",
+		"operationId": "zone-level-access-applications-update-a-bookmark-application",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"anyOf": [
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-self_hosted_props"
+									}
+								],
+								"title": "Self Hosted Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/saas_props"
+									}
+								],
+								"title": "SaaS Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-ssh_props"
+									}
+								],
+								"title": "Browser SSH Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-vnc_props"
+									}
+								],
+								"title": "Browser VNC Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-app_launcher_props"
+									}
+								],
+								"title": "App Launcher Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-warp_props"
+									}
+								],
+								"title": "Device Enrollment Permissions Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-biso_props"
+									}
+								],
+								"title": "Browser Isolation Permissions Application",
+								"type": "object"
+							},
+							{
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/basic_app_response_props"
+									},
+									{
+										"$ref": "#/components/schemas/schemas-bookmark_props"
+									}
+								],
+								"title": "Bookmark application",
+								"type": "object"
+							}
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/schemas-apps-aabIumOU"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-self_hosted_props"
+														}
+													],
+													"title": "Self Hosted Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/saas_props"
+														}
+													],
+													"title": "SaaS Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-ssh_props"
+														}
+													],
+													"title": "Browser SSH Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-vnc_props"
+														}
+													],
+													"title": "Browser VNC Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-app_launcher_props"
+														}
+													],
+													"title": "App Launcher Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-warp_props"
+														}
+													],
+													"title": "Device Enrollment Permissions Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-biso_props"
+														}
+													],
+													"title": "Browser Isolation Permissions Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-bookmark_props"
+														}
+													],
+													"title": "Bookmark application",
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update an Access application response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+												},
+												{
+													"properties": {
+														"result": {
+															"$ref": "#/components/schemas/schemas-apps-aabIumOU"
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"app_launcher_visible": {
+																	"default": true
+																},
+																"domain": {
+																	"description": "The URL or domain of the bookmark.",
+																	"example": "https://mybookmark.com"
+																},
+																"logo_url": {
+																	"$ref": "#/components/schemas/logo_url"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/apps_components-schemas-name"
+																},
+																"type": {
+																	"description": "The application type.",
+																	"example": "bookmark",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"domain"
+															],
+															"title": "Bookmark Application",
+															"type": "object"
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update an Access application response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update an Access application",
+		"tags": [
+			"Zone-Level Access applications"
+		]
+	}
+}

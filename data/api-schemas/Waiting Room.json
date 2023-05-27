@@ -1,0 +1,3847 @@
+{
+	"DELETE /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}": {
+		"description": "Deletes a waiting room.",
+		"operationId": "waiting-room-delete-waiting-room",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/waiting_room_id"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete waiting room response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/waiting_room_id"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete waiting room response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete waiting room",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"DELETE /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/events/{event_id}": {
+		"description": "Deletes an event for a waiting room.",
+		"operationId": "waiting-room-delete-event",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "event_id",
+				"required": true,
+				"schema": {
+					"example": "25756b2dfe6e378a06b033b670413757"
+				}
+			},
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/event_id"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete event response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/event_id"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete event response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete event",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"DELETE /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/rules/{rule_id}": {
+		"description": "Deletes a rule for a waiting room.",
+		"operationId": "waiting-room-delete-waiting-room-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "The ID of the rule.",
+					"example": "25756b2dfe6e378a06b033b670413757",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/rule_result"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Waiting Room Rule response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/rule_result"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Waiting Room Rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Waiting Room Rule",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/waiting_rooms": {
+		"description": "Lists waiting rooms.",
+		"operationId": "waiting-room-list-waiting-rooms",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/waitingroom"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List waiting rooms response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/waitingroom"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List waiting rooms response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List waiting rooms",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}": {
+		"description": "Fetches a single configured waiting room.",
+		"operationId": "waiting-room-waiting-room-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/waitingroom"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Waiting room details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/waitingroom"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Waiting room details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Waiting room details",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/events": {
+		"description": "Lists events for a waiting room.",
+		"operationId": "waiting-room-list-events",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/event_result"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List events response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/event_result"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List events response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List events",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/events/{event_id}": {
+		"description": "Fetches a single configured event for a waiting room.",
+		"operationId": "waiting-room-event-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "event_id",
+				"required": true,
+				"schema": {
+					"example": "25756b2dfe6e378a06b033b670413757"
+				}
+			},
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/event_result"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Event details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/event_result"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Event details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Event details",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/events/{event_id}/details": {
+		"description": "Previews an event's configuration as if it was active. Inherited fields from the waiting room will be displayed with their current values.",
+		"operationId": "waiting-room-preview-active-event-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "event_id",
+				"required": true,
+				"schema": {
+					"example": "25756b2dfe6e378a06b033b670413757"
+				}
+			},
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/event_details_result"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Preview active event details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/event_details_result"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Preview active event details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Preview active event details",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/rules": {
+		"description": "Lists rules for a waiting room.",
+		"operationId": "waiting-room-list-waiting-room-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/rule_result"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Waiting Room Rules response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/rule_result"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Waiting Room Rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Waiting Room Rules",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/status": {
+		"description": "Fetches the status of a configured waiting room. Response fields include:\n1. `status`: String indicating the status of the waiting room. The possible status are:\n\t- **not_queueing** indicates that the configured thresholds have not been met and all users are going through to the origin.\n\t- **queueing** indicates that the thresholds have been met and some users are held in the waiting room.\n\t- **event_prequeueing** indicates that an event is active and is currently prequeueing users before it starts.\n2. `event_id`: String of the current event's `id` if an event is active, otherwise an empty string.\n3. `estimated_queued_users`: Integer of the estimated number of users currently waiting in the queue.\n4. `estimated_total_active_users`: Integer of the estimated number of users currently active on the origin.\n5. `max_estimated_time_minutes`: Integer of the maximum estimated time currently presented to the users.",
+		"operationId": "waiting-room-get-waiting-room-status",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"estimated_queued_users": {
+													"$ref": "#/components/schemas/estimated_queued_users"
+												},
+												"estimated_total_active_users": {
+													"$ref": "#/components/schemas/estimated_total_active_users"
+												},
+												"event_id": {
+													"$ref": "#/components/schemas/status_event_id"
+												},
+												"max_estimated_time_minutes": {
+													"$ref": "#/components/schemas/max_estimated_time_minutes"
+												},
+												"status": {
+													"$ref": "#/components/schemas/status-2k8omc7B"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get waiting room status response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"estimated_queued_users": {
+															"$ref": "#/components/schemas/estimated_queued_users"
+														},
+														"estimated_total_active_users": {
+															"$ref": "#/components/schemas/estimated_total_active_users"
+														},
+														"event_id": {
+															"$ref": "#/components/schemas/status_event_id"
+														},
+														"max_estimated_time_minutes": {
+															"$ref": "#/components/schemas/max_estimated_time_minutes"
+														},
+														"status": {
+															"$ref": "#/components/schemas/status-2k8omc7B"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get waiting room status response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get waiting room status",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/waiting_rooms/settings": {
+		"operationId": "waiting-room-get-zone-settings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"search_engine_crawler_bypass": {
+													"$ref": "#/components/schemas/search_engine_crawler_bypass"
+												}
+											},
+											"required": [
+												"search_engine_crawler_bypass"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "The current zone-level Waiting Room settings"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"search_engine_crawler_bypass": {
+															"$ref": "#/components/schemas/search_engine_crawler_bypass"
+														}
+													},
+													"required": [
+														"search_engine_crawler_bypass"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"result"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get zone-level Waiting Room settings",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}": {
+		"description": "Patches a configured waiting room.",
+		"operationId": "waiting-room-patch-waiting-room",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"cookie_attributes": {
+								"$ref": "#/components/schemas/cookie_attributes"
+							},
+							"custom_page_html": {
+								"$ref": "#/components/schemas/custom_page_html"
+							},
+							"default_template_language": {
+								"$ref": "#/components/schemas/default_template_language"
+							},
+							"description": {
+								"$ref": "#/components/schemas/description-l6WrHymK"
+							},
+							"disable_session_renewal": {
+								"$ref": "#/components/schemas/disable_session_renewal"
+							},
+							"host": {
+								"$ref": "#/components/schemas/host-G3Fn5G1V"
+							},
+							"json_response_enabled": {
+								"$ref": "#/components/schemas/json_response_enabled"
+							},
+							"name": {
+								"$ref": "#/components/schemas/name-VYCKKs7l"
+							},
+							"new_users_per_minute": {
+								"$ref": "#/components/schemas/new_users_per_minute"
+							},
+							"path": {
+								"$ref": "#/components/schemas/path"
+							},
+							"queue_all": {
+								"$ref": "#/components/schemas/queue_all"
+							},
+							"queueing_method": {
+								"$ref": "#/components/schemas/queueing_method"
+							},
+							"session_duration": {
+								"$ref": "#/components/schemas/session_duration"
+							},
+							"suspended": {
+								"$ref": "#/components/schemas/suspended-7x9ZtH6I"
+							},
+							"total_active_users": {
+								"$ref": "#/components/schemas/total_active_users"
+							}
+						},
+						"required": [
+							"name",
+							"host",
+							"new_users_per_minute",
+							"total_active_users"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/waitingroom"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch waiting room response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/waitingroom"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch waiting room response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch waiting room",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/events/{event_id}": {
+		"description": "Patches a configured event for a waiting room.",
+		"operationId": "waiting-room-patch-event",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "event_id",
+				"required": true,
+				"schema": {
+					"example": "25756b2dfe6e378a06b033b670413757"
+				}
+			},
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"custom_page_html": {
+								"$ref": "#/components/schemas/event_custom_page_html"
+							},
+							"description": {
+								"$ref": "#/components/schemas/event_description"
+							},
+							"disable_session_renewal": {
+								"$ref": "#/components/schemas/event_disable_session_renewal"
+							},
+							"event_end_time": {
+								"$ref": "#/components/schemas/event_end_time"
+							},
+							"event_start_time": {
+								"$ref": "#/components/schemas/event_start_time"
+							},
+							"name": {
+								"$ref": "#/components/schemas/event_name"
+							},
+							"new_users_per_minute": {
+								"$ref": "#/components/schemas/event_new_users_per_minute"
+							},
+							"prequeue_start_time": {
+								"$ref": "#/components/schemas/event_prequeue_start_time"
+							},
+							"queueing_method": {
+								"$ref": "#/components/schemas/event_queueing_method"
+							},
+							"session_duration": {
+								"$ref": "#/components/schemas/event_session_duration"
+							},
+							"shuffle_at_event_start": {
+								"$ref": "#/components/schemas/event_shuffle_at_event_start"
+							},
+							"suspended": {
+								"$ref": "#/components/schemas/event_suspended"
+							},
+							"total_active_users": {
+								"$ref": "#/components/schemas/event_total_active_users"
+							}
+						},
+						"required": [
+							"name",
+							"event_start_time",
+							"event_end_time"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/event_result"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch event response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/event_result"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch event response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch event",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/rules/{rule_id}": {
+		"description": "Patches a rule for a waiting room.",
+		"operationId": "waiting-room-patch-waiting-room-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "The ID of the rule.",
+					"example": "25756b2dfe6e378a06b033b670413757",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"action": {
+								"$ref": "#/components/schemas/rule_action-nxvxw7gh"
+							},
+							"description": {
+								"$ref": "#/components/schemas/rule_description"
+							},
+							"enabled": {
+								"$ref": "#/components/schemas/rule_enabled-qKeHHIaa"
+							},
+							"expression": {
+								"$ref": "#/components/schemas/rule_expression"
+							},
+							"position": {
+								"$ref": "#/components/schemas/rule_position"
+							}
+						},
+						"required": [
+							"action",
+							"expression"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/rule_result"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch Waiting Room Rule response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/rule_result"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch Waiting Room Rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch Waiting Room Rule",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /zones/{zone_identifier}/waiting_rooms/settings": {
+		"operationId": "waiting-room-patch-zone-settings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"search_engine_crawler_bypass": {
+								"$ref": "#/components/schemas/search_engine_crawler_bypass"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"search_engine_crawler_bypass": {
+													"$ref": "#/components/schemas/search_engine_crawler_bypass"
+												}
+											},
+											"required": [
+												"search_engine_crawler_bypass"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "The updated zone-level Waiting Room settings"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"search_engine_crawler_bypass": {
+															"$ref": "#/components/schemas/search_engine_crawler_bypass"
+														}
+													},
+													"required": [
+														"search_engine_crawler_bypass"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"result"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch zone-level Waiting Room settings",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_identifier}/waiting_rooms": {
+		"description": "Creates a new waiting room.",
+		"operationId": "waiting-room-create-waiting-room",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"cookie_attributes": {
+								"$ref": "#/components/schemas/cookie_attributes"
+							},
+							"custom_page_html": {
+								"$ref": "#/components/schemas/custom_page_html"
+							},
+							"default_template_language": {
+								"$ref": "#/components/schemas/default_template_language"
+							},
+							"description": {
+								"$ref": "#/components/schemas/description-l6WrHymK"
+							},
+							"disable_session_renewal": {
+								"$ref": "#/components/schemas/disable_session_renewal"
+							},
+							"host": {
+								"$ref": "#/components/schemas/host-G3Fn5G1V"
+							},
+							"json_response_enabled": {
+								"$ref": "#/components/schemas/json_response_enabled"
+							},
+							"name": {
+								"$ref": "#/components/schemas/name-VYCKKs7l"
+							},
+							"new_users_per_minute": {
+								"$ref": "#/components/schemas/new_users_per_minute"
+							},
+							"path": {
+								"$ref": "#/components/schemas/path"
+							},
+							"queue_all": {
+								"$ref": "#/components/schemas/queue_all"
+							},
+							"queueing_method": {
+								"$ref": "#/components/schemas/queueing_method"
+							},
+							"session_duration": {
+								"$ref": "#/components/schemas/session_duration"
+							},
+							"suspended": {
+								"$ref": "#/components/schemas/suspended-7x9ZtH6I"
+							},
+							"total_active_users": {
+								"$ref": "#/components/schemas/total_active_users"
+							}
+						},
+						"required": [
+							"name",
+							"host",
+							"new_users_per_minute",
+							"total_active_users"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/waitingroom"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create waiting room response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/waitingroom"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create waiting room response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create waiting room",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/events": {
+		"description": "Only available for the Waiting Room Advanced subscription. Creates an event for a waiting room. An event takes place during a specified period of time, temporarily changing the behavior of a waiting room. While the event is active, some of the properties in the event's configuration may either override or inherit from the waiting room's configuration. Note that events cannot overlap with each other, so only one event can be active at a time.",
+		"operationId": "waiting-room-create-event",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"custom_page_html": {
+								"$ref": "#/components/schemas/event_custom_page_html"
+							},
+							"description": {
+								"$ref": "#/components/schemas/event_description"
+							},
+							"disable_session_renewal": {
+								"$ref": "#/components/schemas/event_disable_session_renewal"
+							},
+							"event_end_time": {
+								"$ref": "#/components/schemas/event_end_time"
+							},
+							"event_start_time": {
+								"$ref": "#/components/schemas/event_start_time"
+							},
+							"name": {
+								"$ref": "#/components/schemas/event_name"
+							},
+							"new_users_per_minute": {
+								"$ref": "#/components/schemas/event_new_users_per_minute"
+							},
+							"prequeue_start_time": {
+								"$ref": "#/components/schemas/event_prequeue_start_time"
+							},
+							"queueing_method": {
+								"$ref": "#/components/schemas/event_queueing_method"
+							},
+							"session_duration": {
+								"$ref": "#/components/schemas/event_session_duration"
+							},
+							"shuffle_at_event_start": {
+								"$ref": "#/components/schemas/event_shuffle_at_event_start"
+							},
+							"suspended": {
+								"$ref": "#/components/schemas/event_suspended"
+							},
+							"total_active_users": {
+								"$ref": "#/components/schemas/event_total_active_users"
+							}
+						},
+						"required": [
+							"name",
+							"event_start_time",
+							"event_end_time"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/event_result"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create event response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/event_result"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create event response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create event",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/rules": {
+		"description": "Only available for the Waiting Room Advanced subscription. Creates a rule for a waiting room.",
+		"operationId": "waiting-room-create-waiting-room-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"action": {
+								"$ref": "#/components/schemas/rule_action-nxvxw7gh"
+							},
+							"description": {
+								"$ref": "#/components/schemas/rule_description"
+							},
+							"enabled": {
+								"$ref": "#/components/schemas/rule_enabled-qKeHHIaa"
+							},
+							"expression": {
+								"$ref": "#/components/schemas/rule_expression"
+							}
+						},
+						"required": [
+							"action",
+							"expression"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/rule_result"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Waiting Room Rule response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/rule_result"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Waiting Room Rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Waiting Room Rule",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_identifier}/waiting_rooms/preview": {
+		"description": "Creates a waiting room page preview. Upload a custom waiting room page for preview. You will receive a preview URL in the form `http://waitingrooms.dev/preview/<uuid>`. You can use the following query parameters to change the state of the preview:\n1. `force_queue`: Boolean indicating if all users will be queued in the waiting room and no one will be let into the origin website (also known as queueAll).\n2. `queue_is_full`: Boolean indicating if the waiting room's queue is currently full and not accepting new users at the moment.\n3. `queueing_method`: The queueing method currently used by the waiting room.\n\t- **fifo** indicates a FIFO queue.\n\t- **random** indicates a Random queue.\n\t- **passthrough** indicates a Passthrough queue. Keep in mind that the waiting room page will only be displayed if `force_queue=true` or `event=prequeueing` — for other cases the request will pass through to the origin. For our preview, this will be a fake origin website returning \"Welcome\". \n\t- **reject** indicates a Reject queue.\n4. `event`: Used to preview a waiting room event.\n\t- **none** indicates no event is occurring.\n\t- **prequeueing** indicates that an event is prequeueing (between `prequeue_start_time` and `event_start_time`).\n\t- **started** indicates that an event has started (between `event_start_time` and `event_end_time`).\n5. `shuffle_at_event_start`: Boolean indicating if the event will shuffle users in the prequeue when it starts. This can only be set to **true** if an event is active (`event` is not **none**).\n\nFor example, you can make a request to `http://waitingrooms.dev/preview/<uuid>?force_queue=false&queue_is_full=false&queueing_method=random&event=started&shuffle_at_event_start=true`\n6. `waitTime`: Non-zero, positive integer indicating the estimated wait time in minutes. The default value is 10 minutes.\n\nFor example, you can make a request to `http://waitingrooms.dev/preview/<uuid>?waitTime=50` to configure the estimated wait time as 50 minutes.",
+		"operationId": "waiting-room-create-a-custom-waiting-room-page-preview",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"custom_html": {
+								"$ref": "#/components/schemas/custom_page_html"
+							}
+						},
+						"required": [
+							"custom_html"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"preview_url": {
+													"$ref": "#/components/schemas/preview_url"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a custom waiting room page preview response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"preview_url": {
+															"$ref": "#/components/schemas/preview_url"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a custom waiting room page preview response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a custom waiting room page preview",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}": {
+		"description": "Updates a configured waiting room.",
+		"operationId": "waiting-room-update-waiting-room",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"cookie_attributes": {
+								"$ref": "#/components/schemas/cookie_attributes"
+							},
+							"custom_page_html": {
+								"$ref": "#/components/schemas/custom_page_html"
+							},
+							"default_template_language": {
+								"$ref": "#/components/schemas/default_template_language"
+							},
+							"description": {
+								"$ref": "#/components/schemas/description-l6WrHymK"
+							},
+							"disable_session_renewal": {
+								"$ref": "#/components/schemas/disable_session_renewal"
+							},
+							"host": {
+								"$ref": "#/components/schemas/host-G3Fn5G1V"
+							},
+							"json_response_enabled": {
+								"$ref": "#/components/schemas/json_response_enabled"
+							},
+							"name": {
+								"$ref": "#/components/schemas/name-VYCKKs7l"
+							},
+							"new_users_per_minute": {
+								"$ref": "#/components/schemas/new_users_per_minute"
+							},
+							"path": {
+								"$ref": "#/components/schemas/path"
+							},
+							"queue_all": {
+								"$ref": "#/components/schemas/queue_all"
+							},
+							"queueing_method": {
+								"$ref": "#/components/schemas/queueing_method"
+							},
+							"session_duration": {
+								"$ref": "#/components/schemas/session_duration"
+							},
+							"suspended": {
+								"$ref": "#/components/schemas/suspended-7x9ZtH6I"
+							},
+							"total_active_users": {
+								"$ref": "#/components/schemas/total_active_users"
+							}
+						},
+						"required": [
+							"name",
+							"host",
+							"new_users_per_minute",
+							"total_active_users"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/waitingroom"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update waiting room response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/waitingroom"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update waiting room response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update waiting room",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/events/{event_id}": {
+		"description": "Updates a configured event for a waiting room.",
+		"operationId": "waiting-room-update-event",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "event_id",
+				"required": true,
+				"schema": {
+					"example": "25756b2dfe6e378a06b033b670413757"
+				}
+			},
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"custom_page_html": {
+								"$ref": "#/components/schemas/event_custom_page_html"
+							},
+							"description": {
+								"$ref": "#/components/schemas/event_description"
+							},
+							"disable_session_renewal": {
+								"$ref": "#/components/schemas/event_disable_session_renewal"
+							},
+							"event_end_time": {
+								"$ref": "#/components/schemas/event_end_time"
+							},
+							"event_start_time": {
+								"$ref": "#/components/schemas/event_start_time"
+							},
+							"name": {
+								"$ref": "#/components/schemas/event_name"
+							},
+							"new_users_per_minute": {
+								"$ref": "#/components/schemas/event_new_users_per_minute"
+							},
+							"prequeue_start_time": {
+								"$ref": "#/components/schemas/event_prequeue_start_time"
+							},
+							"queueing_method": {
+								"$ref": "#/components/schemas/event_queueing_method"
+							},
+							"session_duration": {
+								"$ref": "#/components/schemas/event_session_duration"
+							},
+							"shuffle_at_event_start": {
+								"$ref": "#/components/schemas/event_shuffle_at_event_start"
+							},
+							"suspended": {
+								"$ref": "#/components/schemas/event_suspended"
+							},
+							"total_active_users": {
+								"$ref": "#/components/schemas/event_total_active_users"
+							}
+						},
+						"required": [
+							"name",
+							"event_start_time",
+							"event_end_time"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/event_result"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update event response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/event_result"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update event response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update event",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/rules": {
+		"description": "Only available for the Waiting Room Advanced subscription. Replaces all rules for a waiting room.",
+		"operationId": "waiting-room-replace-waiting-room-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "waiting_room_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"items": {
+							"$ref": "#/components/schemas/create_rule"
+						},
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/rule_result"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Replace Waiting Room Rules response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/rule_result"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Replace Waiting Room Rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Replace Waiting Room Rules",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /zones/{zone_identifier}/waiting_rooms/settings": {
+		"operationId": "waiting-room-update-zone-settings",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"search_engine_crawler_bypass": {
+								"$ref": "#/components/schemas/search_engine_crawler_bypass"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"search_engine_crawler_bypass": {
+													"$ref": "#/components/schemas/search_engine_crawler_bypass"
+												}
+											},
+											"required": [
+												"search_engine_crawler_bypass"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									]
+								}
+							]
+						}
+					}
+				},
+				"description": "The updated zone-level Waiting Room settings"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"search_engine_crawler_bypass": {
+															"$ref": "#/components/schemas/search_engine_crawler_bypass"
+														}
+													},
+													"required": [
+														"search_engine_crawler_bypass"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"result"
+											]
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update zone-level Waiting Room settings",
+		"tags": [
+			"Waiting Room"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

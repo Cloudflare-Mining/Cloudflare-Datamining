@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/zone-authenticated-origin-pull-XIsi2H7R"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

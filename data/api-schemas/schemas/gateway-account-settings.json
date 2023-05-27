@@ -1,0 +1,36 @@
+{
+	"description": "account settings.",
+	"properties": {
+		"settings": {
+			"description": "account settings.",
+			"properties": {
+				"activity_log": {
+					"$ref": "#/components/schemas/activity-log-settings"
+				},
+				"antivirus": {
+					"$ref": "#/components/schemas/anti-virus-settings"
+				},
+				"block_page": {
+					"$ref": "#/components/schemas/block-page-settings"
+				},
+				"body_scanning": {
+					"$ref": "#/components/schemas/body-scanning-settings"
+				},
+				"browser_isolation": {
+					"$ref": "#/components/schemas/browser-isolation-settings"
+				},
+				"custom_certificate": {
+					"$ref": "#/components/schemas/custom-certificate-settings"
+				},
+				"fips": {
+					"$ref": "#/components/schemas/fips-settings"
+				},
+				"tls_decrypt": {
+					"$ref": "#/components/schemas/tls-settings"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

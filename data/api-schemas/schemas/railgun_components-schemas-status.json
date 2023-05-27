@@ -1,0 +1,10 @@
+{
+	"description": "Status of the Railgun.",
+	"enum": [
+		"initializing",
+		"active"
+	],
+	"example": "active",
+	"readOnly": true,
+	"type": "string"
+}

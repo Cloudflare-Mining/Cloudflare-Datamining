@@ -1,0 +1,21 @@
+{
+	"additionalProperties": false,
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/filters_components-schemas-description"
+		},
+		"expression": {
+			"$ref": "#/components/schemas/expression"
+		},
+		"id": {
+			"$ref": "#/components/schemas/filters_components-schemas-id"
+		},
+		"paused": {
+			"$ref": "#/components/schemas/filters_components-schemas-paused"
+		},
+		"ref": {
+			"$ref": "#/components/schemas/schemas-ref"
+		}
+	},
+	"type": "object"
+}

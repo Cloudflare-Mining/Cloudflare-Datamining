@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"components": {
+			"$ref": "#/components/schemas/schemas-component_values"
+		},
+		"currency": {
+			"$ref": "#/components/schemas/currency"
+		},
+		"duration": {
+			"$ref": "#/components/schemas/duration-uwlyWThK"
+		},
+		"frequency": {
+			"$ref": "#/components/schemas/schemas-frequency"
+		},
+		"id": {
+			"$ref": "#/components/schemas/rate-plan_components-schemas-identifier"
+		},
+		"name": {
+			"$ref": "#/components/schemas/rate-plan_components-schemas-name"
+		}
+	},
+	"type": "object"
+}

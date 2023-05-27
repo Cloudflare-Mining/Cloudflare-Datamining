@@ -1,0 +1,59 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"anyOf": [
+							{
+								"$ref": "#/components/schemas/schemas-azureAD"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-centrify"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-facebook"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-github"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-google"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-google-apps"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-linkedin"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-oidc"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-okta"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-onelogin"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-pingone"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-saml"
+							},
+							{
+								"$ref": "#/components/schemas/schemas-yandex"
+							}
+						]
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
+		}
+	],
+	"type": "object"
+}

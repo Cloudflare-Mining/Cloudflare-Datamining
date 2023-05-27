@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"allowed_idps": {
+			"$ref": "#/components/schemas/allowed_idps"
+		},
+		"auto_redirect_to_identity": {
+			"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+		},
+		"domain": {
+			"$ref": "#/components/schemas/components-schemas-domain"
+		},
+		"name": {
+			"$ref": "#/components/schemas/apps_components-schemas-name"
+		},
+		"session_duration": {
+			"$ref": "#/components/schemas/session_duration-b8kVW3WO"
+		},
+		"type": {
+			"$ref": "#/components/schemas/type-VIrlBvaP"
+		}
+	},
+	"required": [
+		"type"
+	],
+	"type": "object"
+}

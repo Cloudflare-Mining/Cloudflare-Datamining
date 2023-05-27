@@ -1,0 +1,31 @@
+{
+	"properties": {
+		"strict_transport_security": {
+			"description": "Strict Transport Security.",
+			"properties": {
+				"enabled": {
+					"description": "Whether or not strict transport security is enabled.",
+					"example": true,
+					"type": "boolean"
+				},
+				"include_subdomains": {
+					"description": "Include all subdomains for strict transport security.",
+					"example": true,
+					"type": "boolean"
+				},
+				"max_age": {
+					"description": "Max age in seconds of the strict transport security.",
+					"example": 86400,
+					"type": "number"
+				},
+				"nosniff": {
+					"description": "Whether or not to include 'X-Content-Type-Options: nosniff' header.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

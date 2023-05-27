@@ -1,0 +1,33 @@
+{
+	"properties": {
+		"client_id": {
+			"description": "UUID of the cloudflared instance."
+		},
+		"client_version": {
+			"$ref": "#/components/schemas/version"
+		},
+		"colo_name": {
+			"$ref": "#/components/schemas/colo_name"
+		},
+		"id": {
+			"$ref": "#/components/schemas/connection_id"
+		},
+		"is_pending_reconnect": {
+			"$ref": "#/components/schemas/is_pending_reconnect"
+		},
+		"opened_at": {
+			"description": "Timestamp of when the connection was established.",
+			"example": "2021-01-25T18:22:34.317854Z",
+			"format": "date-time",
+			"type": "string"
+		},
+		"origin_ip": {
+			"description": "The public IP address of the host running cloudflared.",
+			"example": "85.12.78.6",
+			"type": "string"
+		},
+		"uuid": {
+			"$ref": "#/components/schemas/connection_id"
+		}
+	}
+}

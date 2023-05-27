@@ -1,0 +1,10 @@
+{
+	"description": "Determines type of delivery mechanism.",
+	"enum": [
+		"email",
+		"pagerduty",
+		"webhook"
+	],
+	"example": "email",
+	"type": "string"
+}

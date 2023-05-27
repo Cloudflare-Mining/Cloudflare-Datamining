@@ -1,0 +1,25 @@
+{
+	"example": [
+		"203.0.113.1",
+		"203.0.113.254",
+		"2001:DB8:AB::CF",
+		"2001:DB8:CD::CF"
+	],
+	"items": {
+		"anyOf": [
+			{
+				"description": "Cloudflare-assigned DNS IPv4 Address.",
+				"example": "203.0.113.1",
+				"format": "ipv4",
+				"type": "string"
+			},
+			{
+				"description": "Cloudflare-assigned DNS IPv6 Address.",
+				"example": "2001:DB8:ab::CF",
+				"format": "ipv6",
+				"type": "string"
+			}
+		]
+	},
+	"type": "array"
+}

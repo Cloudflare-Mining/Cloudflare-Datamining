@@ -1,0 +1,35 @@
+{
+	"properties": {
+		"colo_name": {
+			"$ref": "#/components/schemas/components-schemas-name-zAH1VBx1"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/schemas-created_on"
+		},
+		"description": {
+			"$ref": "#/components/schemas/interconnect_components-schemas-description"
+		},
+		"gre": {
+			"$ref": "#/components/schemas/gre"
+		},
+		"health_check": {
+			"$ref": "#/components/schemas/schemas-health_check"
+		},
+		"id": {
+			"$ref": "#/components/schemas/schemas-identifier-f6OedUt6"
+		},
+		"interface_address": {
+			"$ref": "#/components/schemas/interface_address"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/schemas-modified_on"
+		},
+		"mtu": {
+			"$ref": "#/components/schemas/schemas-mtu"
+		},
+		"name": {
+			"$ref": "#/components/schemas/components-schemas-name-zAH1VBx1"
+		}
+	},
+	"type": "object"
+}

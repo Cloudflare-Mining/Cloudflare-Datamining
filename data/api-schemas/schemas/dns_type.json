@@ -1,0 +1,9 @@
+{
+	"description": "The type of DNS record associated with the application.",
+	"enum": [
+		"CNAME",
+		"ADDRESS"
+	],
+	"example": "CNAME",
+	"type": "string"
+}

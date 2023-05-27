@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"created": {
+			"$ref": "#/components/schemas/email-setting_created"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/email-setting_enabled"
+		},
+		"modified": {
+			"$ref": "#/components/schemas/email-setting_modified"
+		},
+		"name": {
+			"$ref": "#/components/schemas/email-setting_name"
+		},
+		"skip_wizard": {
+			"$ref": "#/components/schemas/email-setting_skip-wizard"
+		},
+		"status": {
+			"$ref": "#/components/schemas/email-setting_status"
+		},
+		"tag": {
+			"$ref": "#/components/schemas/email-setting_identifier"
+		}
+	},
+	"type": "object"
+}

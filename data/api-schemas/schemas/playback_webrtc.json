@@ -1,0 +1,9 @@
+{
+	"description": "Details for playback from a live input using WebRTC.",
+	"properties": {
+		"url": {
+			"$ref": "#/components/schemas/playback_webrtc_url"
+		}
+	},
+	"type": "object"
+}

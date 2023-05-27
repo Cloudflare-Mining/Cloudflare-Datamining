@@ -1,0 +1,9 @@
+{
+	"description": "Certificate's signature algorithm.",
+	"enum": [
+		"ECDSAWithSHA256",
+		"SHA1WithRSA",
+		"SHA256WithRSA"
+	],
+	"type": "string"
+}

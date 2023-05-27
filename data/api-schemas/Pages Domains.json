@@ -1,0 +1,765 @@
+{
+	"DELETE /accounts/{account_identifier}/pages/projects/{project_name}/domains/{domain_name}": {
+		"description": "Delete a Pages project's domain.",
+		"operationId": "pages-domains-delete-domain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "domain_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the domain.",
+					"example": "this-is-my-domain-01.com",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [],
+								"messages": [],
+								"result": null,
+								"success": true
+							}
+						}
+					}
+				},
+				"description": "Delete domain response."
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"example": {
+										"errors": [],
+										"messages": [],
+										"result": null,
+										"success": true
+									}
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete domain response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete domain",
+		"tags": [
+			"Pages Domains"
+		]
+	},
+	"GET /accounts/{account_identifier}/pages/projects/{project_name}/domains": {
+		"description": "Fetch a list of all domains associated with a Pages project.",
+		"operationId": "pages-domains-get-domains",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 1
+												},
+												"page": {
+													"example": 1
+												},
+												"per_page": {
+													"example": 100
+												},
+												"total_count": {
+													"example": 1
+												}
+											},
+											"type": "object"
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get domains response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"example": 1
+														},
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 100
+														},
+														"total_count": {
+															"example": 1
+														}
+													},
+													"type": "object"
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get domains response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get domains",
+		"tags": [
+			"Pages Domains"
+		]
+	},
+	"GET /accounts/{account_identifier}/pages/projects/{project_name}/domains/{domain_name}": {
+		"description": "Fetch a single domain.",
+		"operationId": "pages-domains-get-domain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "domain_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the domain.",
+					"example": "this-is-my-domain-01.com",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-3ioGagYz"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get domain response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-3ioGagYz"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get domain response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get domain",
+		"tags": [
+			"Pages Domains"
+		]
+	},
+	"PATCH /accounts/{account_identifier}/pages/projects/{project_name}/domains/{domain_name}": {
+		"description": "Retry the validation status of a single domain.",
+		"operationId": "pages-domains-patch-domain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "domain_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the domain.",
+					"example": "this-is-my-domain-01.com",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-3ioGagYz"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch domain response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-3ioGagYz"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch domain response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch domain",
+		"tags": [
+			"Pages Domains"
+		]
+	},
+	"POST /accounts/{account_identifier}/pages/projects/{project_name}/domains": {
+		"description": "Add a new domain for the Pages project.",
+		"operationId": "pages-domains-add-domain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": {
+							"name": "example.com"
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-3ioGagYz"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Add domain response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-3ioGagYz"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Add domain response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Add domain",
+		"tags": [
+			"Pages Domains"
+		]
+	}
+}

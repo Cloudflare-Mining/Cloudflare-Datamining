@@ -1,0 +1,173 @@
+{
+	"oneOf": [
+		{
+			"$ref": "#/components/schemas/0rtt"
+		},
+		{
+			"$ref": "#/components/schemas/advanced_ddos"
+		},
+		{
+			"$ref": "#/components/schemas/always_online"
+		},
+		{
+			"$ref": "#/components/schemas/always_use_https"
+		},
+		{
+			"$ref": "#/components/schemas/automatic_https_rewrites"
+		},
+		{
+			"$ref": "#/components/schemas/brotli"
+		},
+		{
+			"$ref": "#/components/schemas/browser_cache_ttl"
+		},
+		{
+			"$ref": "#/components/schemas/browser_check"
+		},
+		{
+			"$ref": "#/components/schemas/cache_level"
+		},
+		{
+			"$ref": "#/components/schemas/challenge_ttl"
+		},
+		{
+			"$ref": "#/components/schemas/ciphers"
+		},
+		{
+			"$ref": "#/components/schemas/cname_flattening"
+		},
+		{
+			"$ref": "#/components/schemas/development_mode"
+		},
+		{
+			"$ref": "#/components/schemas/early_hints"
+		},
+		{
+			"$ref": "#/components/schemas/edge_cache_ttl"
+		},
+		{
+			"$ref": "#/components/schemas/email_obfuscation"
+		},
+		{
+			"$ref": "#/components/schemas/h2_prioritization"
+		},
+		{
+			"$ref": "#/components/schemas/hotlink_protection"
+		},
+		{
+			"$ref": "#/components/schemas/http2"
+		},
+		{
+			"$ref": "#/components/schemas/http3"
+		},
+		{
+			"$ref": "#/components/schemas/image_resizing"
+		},
+		{
+			"$ref": "#/components/schemas/ip_geolocation"
+		},
+		{
+			"$ref": "#/components/schemas/ipv6-nyX6d196"
+		},
+		{
+			"$ref": "#/components/schemas/max_upload"
+		},
+		{
+			"$ref": "#/components/schemas/min_tls_version"
+		},
+		{
+			"$ref": "#/components/schemas/minify"
+		},
+		{
+			"$ref": "#/components/schemas/mirage"
+		},
+		{
+			"$ref": "#/components/schemas/mobile_redirect"
+		},
+		{
+			"$ref": "#/components/schemas/nel"
+		},
+		{
+			"$ref": "#/components/schemas/opportunistic_encryption"
+		},
+		{
+			"$ref": "#/components/schemas/opportunistic_onion"
+		},
+		{
+			"$ref": "#/components/schemas/orange_to_orange"
+		},
+		{
+			"$ref": "#/components/schemas/origin_error_page_pass_thru"
+		},
+		{
+			"$ref": "#/components/schemas/origin_max_http_version"
+		},
+		{
+			"$ref": "#/components/schemas/polish"
+		},
+		{
+			"$ref": "#/components/schemas/prefetch_preload"
+		},
+		{
+			"$ref": "#/components/schemas/privacy_pass"
+		},
+		{
+			"$ref": "#/components/schemas/proxy_read_timeout"
+		},
+		{
+			"$ref": "#/components/schemas/pseudo_ipv4"
+		},
+		{
+			"$ref": "#/components/schemas/response_buffering"
+		},
+		{
+			"$ref": "#/components/schemas/rocket_loader"
+		},
+		{
+			"$ref": "#/components/schemas/schemas-automatic_platform_optimization"
+		},
+		{
+			"$ref": "#/components/schemas/security_header"
+		},
+		{
+			"$ref": "#/components/schemas/security_level"
+		},
+		{
+			"$ref": "#/components/schemas/server_side_exclude"
+		},
+		{
+			"$ref": "#/components/schemas/sha1_support"
+		},
+		{
+			"$ref": "#/components/schemas/sort_query_string_for_cache"
+		},
+		{
+			"$ref": "#/components/schemas/ssl-txUgXFHd"
+		},
+		{
+			"$ref": "#/components/schemas/ssl_recommender"
+		},
+		{
+			"$ref": "#/components/schemas/tls_1_2_only"
+		},
+		{
+			"$ref": "#/components/schemas/tls_1_3"
+		},
+		{
+			"$ref": "#/components/schemas/tls_client_auth"
+		},
+		{
+			"$ref": "#/components/schemas/true_client_ip_header"
+		},
+		{
+			"$ref": "#/components/schemas/waf"
+		},
+		{
+			"$ref": "#/components/schemas/webp"
+		},
+		{
+			"$ref": "#/components/schemas/websockets"
+		}
+	],
+	"type": "object"
+}

@@ -1,0 +1,318 @@
+{
+	"GET /accounts/{account_identifier}/intel/domain": {
+		"operationId": "domain-intelligence-get-domain-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "domain",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/domain_components-schemas-domain"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Domain Details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/domain_components-schemas-domain"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Domain Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Domain Details",
+		"tags": [
+			"Domain Intelligence"
+		]
+	},
+	"GET /accounts/{account_identifier}/intel/domain/bulk": {
+		"operationId": "domain-intelligence-get-multiple-domain-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "domain",
+				"schema": {
+					"description": "Accepts multiple values, i.e. `?domain=cloudflare.com&domain=example.com`."
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"additional_information": {
+														"$ref": "#/components/schemas/additional_information"
+													},
+													"application": {
+														"$ref": "#/components/schemas/application-6K1LgoB5"
+													},
+													"content_categories": {
+														"$ref": "#/components/schemas/content_categories"
+													},
+													"domain": {
+														"$ref": "#/components/schemas/schemas-domain_name"
+													},
+													"popularity_rank": {
+														"$ref": "#/components/schemas/popularity_rank"
+													},
+													"risk_score": {
+														"$ref": "#/components/schemas/risk_score"
+													},
+													"risk_types": {
+														"$ref": "#/components/schemas/risk_types"
+													}
+												}
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Multiple Domain Details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"additional_information": {
+																"$ref": "#/components/schemas/additional_information"
+															},
+															"application": {
+																"$ref": "#/components/schemas/application-6K1LgoB5"
+															},
+															"content_categories": {
+																"$ref": "#/components/schemas/content_categories"
+															},
+															"domain": {
+																"$ref": "#/components/schemas/schemas-domain_name"
+															},
+															"popularity_rank": {
+																"$ref": "#/components/schemas/popularity_rank"
+															},
+															"risk_score": {
+																"$ref": "#/components/schemas/risk_score"
+															},
+															"risk_types": {
+																"$ref": "#/components/schemas/risk_types"
+															}
+														}
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Multiple Domain Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Multiple Domain Details",
+		"tags": [
+			"Domain Intelligence"
+		]
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"description": "The connection status of a live input.",
+	"enum": [
+		null,
+		"connected",
+		"reconnected",
+		"reconnecting",
+		"client_disconnect",
+		"ttl_exceeded",
+		"failed_to_connect",
+		"failed_to_reconnect",
+		"new_configuration_accepted"
+	],
+	"nullable": true,
+	"type": "string"
+}

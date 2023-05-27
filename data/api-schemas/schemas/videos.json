@@ -1,0 +1,68 @@
+{
+	"properties": {
+		"allowedOrigins": {
+			"$ref": "#/components/schemas/allowedOrigins"
+		},
+		"created": {
+			"$ref": "#/components/schemas/created"
+		},
+		"creator": {
+			"$ref": "#/components/schemas/creator"
+		},
+		"duration": {
+			"$ref": "#/components/schemas/duration"
+		},
+		"input": {
+			"$ref": "#/components/schemas/input"
+		},
+		"liveInput": {
+			"$ref": "#/components/schemas/liveInput"
+		},
+		"maxDurationSeconds": {
+			"$ref": "#/components/schemas/maxDurationSeconds"
+		},
+		"meta": {
+			"$ref": "#/components/schemas/media_metadata"
+		},
+		"modified": {
+			"$ref": "#/components/schemas/modified"
+		},
+		"playback": {
+			"$ref": "#/components/schemas/playback"
+		},
+		"preview": {
+			"$ref": "#/components/schemas/preview"
+		},
+		"readyToStream": {
+			"$ref": "#/components/schemas/readyToStream"
+		},
+		"requireSignedURLs": {
+			"$ref": "#/components/schemas/requireSignedURLs"
+		},
+		"size": {
+			"$ref": "#/components/schemas/size"
+		},
+		"status": {
+			"$ref": "#/components/schemas/media_status"
+		},
+		"thumbnail": {
+			"$ref": "#/components/schemas/thumbnail_url"
+		},
+		"thumbnailTimestampPct": {
+			"$ref": "#/components/schemas/thumbnailTimestampPct"
+		},
+		"uid": {
+			"$ref": "#/components/schemas/identifier-X6d0M4JV"
+		},
+		"uploadExpiry": {
+			"$ref": "#/components/schemas/oneTimeUploadExpiry"
+		},
+		"uploaded": {
+			"$ref": "#/components/schemas/uploaded"
+		},
+		"watermark": {
+			"$ref": "#/components/schemas/watermarks"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,15 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/mnm_rule_advertisable_response"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

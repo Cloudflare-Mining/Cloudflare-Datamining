@@ -1,0 +1,1949 @@
+{
+	"DELETE /zones/{zone_identifier}/dns_records/{identifier}": {
+		"operationId": "dns-records-for-a-zone-delete-dns-record",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"id": {
+											"description": "Identifier",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"readOnly": true,
+											"type": "string"
+										}
+									}
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete DNS Record response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												}
+											}
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete DNS Record response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete DNS Record",
+		"tags": [
+			"DNS Records for a Zone"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/dns_records": {
+		"description": "List, search, sort, and filter a zones' DNS records.",
+		"operationId": "dns-records-for-a-zone-list-dns-records",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "DNS record name (or @ for the zone apex) in Punycode.",
+					"example": "example.com",
+					"maxLength": 255,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "type",
+				"schema": {
+					"description": "Record type.",
+					"enum": [
+						"A",
+						"AAAA",
+						"CAA",
+						"CERT",
+						"CNAME",
+						"DNSKEY",
+						"DS",
+						"HTTPS",
+						"LOC",
+						"MX",
+						"NAPTR",
+						"NS",
+						"PTR",
+						"SMIMEA",
+						"SRV",
+						"SSHFP",
+						"SVCB",
+						"TLSA",
+						"TXT",
+						"URI"
+					],
+					"example": "A",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "content",
+				"schema": {
+					"description": "DNS record content.",
+					"example": "127.0.0.1",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "proxied",
+				"schema": {
+					"description": "Whether the record is receiving the performance and security benefits of Cloudflare.",
+					"example": false,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "match",
+				"schema": {
+					"default": "all",
+					"description": "Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.\n",
+					"enum": [
+						"any",
+						"all"
+					],
+					"example": "any",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment",
+				"schema": {
+					"description": "Exact value of the DNS record comment. This is a convenience alias for `comment.exact`.\n",
+					"example": "Hello, world",
+					"type": "string"
+				}
+			},
+			{
+				"description": "If this parameter is present, only records *with* a comment are returned.",
+				"in": "query",
+				"name": "comment.present"
+			},
+			{
+				"description": "If this parameter is present, only records *without* a comment are returned.",
+				"in": "query",
+				"name": "comment.absent"
+			},
+			{
+				"in": "query",
+				"name": "comment.exact",
+				"schema": {
+					"description": "Exact value of the DNS record comment. Comment filters are case-insensitive.\n",
+					"example": "Hello, world",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment.contains",
+				"schema": {
+					"description": "Substring of the DNS record comment. Comment filters are case-insensitive.\n",
+					"example": "ello, worl",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment.startswith",
+				"schema": {
+					"description": "Prefix of the DNS record comment. Comment filters are case-insensitive.\n",
+					"example": "Hello, w",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "comment.endswith",
+				"schema": {
+					"description": "Suffix of the DNS record comment. Comment filters are case-insensitive.\n",
+					"example": "o, world",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag",
+				"schema": {
+					"description": "Condition on the DNS record tag.\n\nParameter values can be of the form `<tag-name>:<tag-value>` to search for an exact `name:value` pair, or just `<tag-name>` to search for records with a specific tag name regardless of its value.\n\nThis is a convenience shorthand for the more powerful `tag.<predicate>` parameters.\nExamples:\n- `tag=important` is equivalent to `tag.present=important`\n- `tag=team:DNS` is equivalent to `tag.exact=team:DNS`\n",
+					"examples": [
+						"important",
+						"team:DNS"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.present",
+				"schema": {
+					"description": "Name of a tag which must be present on the DNS record. Tag filters are case-insensitive.\n",
+					"example": "important",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.absent",
+				"schema": {
+					"description": "Name of a tag which must *not* be present on the DNS record. Tag filters are case-insensitive.\n",
+					"example": "important",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.exact",
+				"schema": {
+					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value is `<tag-value>`. Tag filters are case-insensitive.\n",
+					"example": "greeting:Hello, world",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.contains",
+				"schema": {
+					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value contains `<tag-value>`. Tag filters are case-insensitive.\n",
+					"example": "greeting:ello, worl",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.startswith",
+				"schema": {
+					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value starts with `<tag-value>`. Tag filters are case-insensitive.\n",
+					"example": "greeting:Hello, w",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag.endswith",
+				"schema": {
+					"description": "A tag and value, of the form `<tag-name>:<tag-value>`. The API will only return DNS records that have a tag named `<tag-name>` whose value ends with `<tag-value>`. Tag filters are case-insensitive.\n",
+					"example": "greeting:o, world",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.\n",
+					"example": "www.cloudflare.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tag_match",
+				"schema": {
+					"default": "all",
+					"description": "Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.\n",
+					"enum": [
+						"any",
+						"all"
+					],
+					"example": "any",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 100,
+					"description": "Number of DNS records per page.",
+					"maximum": 50000,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "type",
+					"description": "Field to order DNS records by.",
+					"enum": [
+						"type",
+						"name",
+						"content",
+						"ttl",
+						"proxied"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "asc",
+					"description": "Direction to order DNS records in.",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/dns-record-REkjIMhc"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List DNS Records response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/dns-record-REkjIMhc"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List DNS Records response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List DNS Records",
+		"tags": [
+			"DNS Records for a Zone"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/dns_records/{identifier}": {
+		"operationId": "dns-records-for-a-zone-dns-record-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/dns-record-REkjIMhc"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DNS Record Details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/dns-record-REkjIMhc"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DNS Record Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "DNS Record Details",
+		"tags": [
+			"DNS Records for a Zone"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/dns_records/export": {
+		"description": "You can export your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint.\n\nSee [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information.",
+		"operationId": "dns-records-for-a-zone-export-dns-records",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"text/plain": {
+						"schema": {
+							"description": "Exported BIND zone file.",
+							"example": "www.example.com. 300 IN  A 127.0.0.1\n",
+							"type": "string"
+						}
+					}
+				},
+				"description": "Export DNS Records response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Export DNS Records response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Export DNS Records",
+		"tags": [
+			"DNS Records for a Zone"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_identifier}/dns_records/{identifier}": {
+		"operationId": "dns-records-for-a-zone-patch-dns-record",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"$ref": "#/components/schemas/ARecord"
+							},
+							{
+								"$ref": "#/components/schemas/AAAARecord"
+							},
+							{
+								"$ref": "#/components/schemas/CAARecord"
+							},
+							{
+								"$ref": "#/components/schemas/CERTRecord"
+							},
+							{
+								"$ref": "#/components/schemas/CNAMERecord"
+							},
+							{
+								"$ref": "#/components/schemas/DNSKEYRecord"
+							},
+							{
+								"$ref": "#/components/schemas/DSRecord"
+							},
+							{
+								"$ref": "#/components/schemas/HTTPSRecord"
+							},
+							{
+								"$ref": "#/components/schemas/LOCRecord"
+							},
+							{
+								"$ref": "#/components/schemas/MXRecord"
+							},
+							{
+								"$ref": "#/components/schemas/NAPTRRecord"
+							},
+							{
+								"$ref": "#/components/schemas/NSRecord"
+							},
+							{
+								"$ref": "#/components/schemas/PTRRecord"
+							},
+							{
+								"$ref": "#/components/schemas/SMIMEARecord"
+							},
+							{
+								"$ref": "#/components/schemas/SRVRecord"
+							},
+							{
+								"$ref": "#/components/schemas/SSHFPRecord"
+							},
+							{
+								"$ref": "#/components/schemas/SVCBRecord"
+							},
+							{
+								"$ref": "#/components/schemas/TLSARecord"
+							},
+							{
+								"$ref": "#/components/schemas/TXTRecord"
+							},
+							{
+								"$ref": "#/components/schemas/URIRecord"
+							}
+						],
+						"required": [
+							"id",
+							"type",
+							"name",
+							"content",
+							"proxiable",
+							"locked",
+							"zone_name",
+							"created_on",
+							"modified_on"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/dns-record-REkjIMhc"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch DNS Record response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/dns-record-REkjIMhc"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch DNS Record response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch DNS Record",
+		"tags": [
+			"DNS Records for a Zone"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_identifier}/dns_records": {
+		"description": "Create a new DNS record for a zone.\n\nNotes:\n- A/AAAA records cannot exist on the same name as CNAME records.\n- NS records cannot exist on the same name as any other record type.\n- Domain names are always represented in Punycode, even if Unicode\n  characters were used when creating the record.\n",
+		"operationId": "dns-records-for-a-zone-create-dns-record",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"$ref": "#/components/schemas/ARecord"
+							},
+							{
+								"$ref": "#/components/schemas/AAAARecord"
+							},
+							{
+								"$ref": "#/components/schemas/CAARecord"
+							},
+							{
+								"$ref": "#/components/schemas/CERTRecord"
+							},
+							{
+								"$ref": "#/components/schemas/CNAMERecord"
+							},
+							{
+								"$ref": "#/components/schemas/DNSKEYRecord"
+							},
+							{
+								"$ref": "#/components/schemas/DSRecord"
+							},
+							{
+								"$ref": "#/components/schemas/HTTPSRecord"
+							},
+							{
+								"$ref": "#/components/schemas/LOCRecord"
+							},
+							{
+								"$ref": "#/components/schemas/MXRecord"
+							},
+							{
+								"$ref": "#/components/schemas/NAPTRRecord"
+							},
+							{
+								"$ref": "#/components/schemas/NSRecord"
+							},
+							{
+								"$ref": "#/components/schemas/PTRRecord"
+							},
+							{
+								"$ref": "#/components/schemas/SMIMEARecord"
+							},
+							{
+								"$ref": "#/components/schemas/SRVRecord"
+							},
+							{
+								"$ref": "#/components/schemas/SSHFPRecord"
+							},
+							{
+								"$ref": "#/components/schemas/SVCBRecord"
+							},
+							{
+								"$ref": "#/components/schemas/TLSARecord"
+							},
+							{
+								"$ref": "#/components/schemas/TXTRecord"
+							},
+							{
+								"$ref": "#/components/schemas/URIRecord"
+							}
+						],
+						"required": [
+							"id",
+							"type",
+							"name",
+							"content",
+							"proxiable",
+							"locked",
+							"zone_name",
+							"created_on",
+							"modified_on"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/dns-record-REkjIMhc"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create DNS Record response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/dns-record-REkjIMhc"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create DNS Record response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create DNS Record",
+		"tags": [
+			"DNS Records for a Zone"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_identifier}/dns_records/import": {
+		"description": "You can upload your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint. It assumes that cURL is called from a location with bind_config.txt (valid BIND config) present.\n\nSee [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information.",
+		"operationId": "dns-records-for-a-zone-import-dns-records",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"schema": {
+						"properties": {
+							"file": {
+								"description": "BIND config to import.\n\n**Tip:** When using cURL, a file can be uploaded using `--form 'file=@bind_config.txt'`.\n",
+								"example": "www.example.com. 300 IN  A 127.0.0.1\n",
+								"type": "string"
+							},
+							"proxied": {
+								"default": "false",
+								"description": "Whether or not proxiable records should receive the performance and security benefits of Cloudflare.\n\nThe value should be either `true` or `false`.",
+								"example": "true",
+								"type": "string"
+							}
+						},
+						"required": [
+							"file"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"recs_added": {
+													"description": "Number of DNS records added.",
+													"example": 5,
+													"type": "number"
+												},
+												"total_records_parsed": {
+													"description": "Total number of DNS records parsed.",
+													"example": 5,
+													"type": "number"
+												}
+											},
+											"type": "object"
+										},
+										"timing": {
+											"properties": {
+												"end_time": {
+													"description": "When the file parsing ended.",
+													"example": "2014-03-01T12:20:01Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"process_time": {
+													"description": "Processing time of the file in seconds.",
+													"example": 1,
+													"type": "number"
+												},
+												"start_time": {
+													"description": "When the file parsing started.",
+													"example": "2014-03-01T12:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Import DNS Records response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"recs_added": {
+															"description": "Number of DNS records added.",
+															"example": 5,
+															"type": "number"
+														},
+														"total_records_parsed": {
+															"description": "Total number of DNS records parsed.",
+															"example": 5,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"timing": {
+													"properties": {
+														"end_time": {
+															"description": "When the file parsing ended.",
+															"example": "2014-03-01T12:20:01Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"process_time": {
+															"description": "Processing time of the file in seconds.",
+															"example": 1,
+															"type": "number"
+														},
+														"start_time": {
+															"description": "When the file parsing started.",
+															"example": "2014-03-01T12:20:00Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Import DNS Records response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Import DNS Records",
+		"tags": [
+			"DNS Records for a Zone"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_identifier}/dns_records/scan": {
+		"description": "Scan for common DNS records on your domain and automatically add them to your zone. Useful if you haven't updated your nameservers yet.",
+		"operationId": "dns-records-for-a-zone-scan-dns-records",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"recs_added": {
+													"description": "Number of DNS records added.",
+													"example": 5,
+													"type": "number"
+												},
+												"total_records_parsed": {
+													"description": "Total number of DNS records parsed.",
+													"example": 5,
+													"type": "number"
+												}
+											},
+											"type": "object"
+										},
+										"timing": {
+											"properties": {
+												"end_time": {
+													"description": "When the file parsing ended.",
+													"example": "2014-03-01T12:20:01Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"process_time": {
+													"description": "Processing time of the file in seconds.",
+													"example": 1,
+													"type": "number"
+												},
+												"start_time": {
+													"description": "When the file parsing started.",
+													"example": "2014-03-01T12:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Scan DNS Records response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"recs_added": {
+															"description": "Number of DNS records added.",
+															"example": 5,
+															"type": "number"
+														},
+														"total_records_parsed": {
+															"description": "Total number of DNS records parsed.",
+															"example": 5,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"timing": {
+													"properties": {
+														"end_time": {
+															"description": "When the file parsing ended.",
+															"example": "2014-03-01T12:20:01Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"process_time": {
+															"description": "Processing time of the file in seconds.",
+															"example": 1,
+															"type": "number"
+														},
+														"start_time": {
+															"description": "When the file parsing started.",
+															"example": "2014-03-01T12:20:00Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Scan DNS Records response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Scan DNS Records",
+		"tags": [
+			"DNS Records for a Zone"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_identifier}/dns_records/{identifier}": {
+		"description": "Update an existing DNS record.\n\nNotes:\n- A/AAAA records cannot exist on the same name as CNAME records.\n- NS records cannot exist on the same name as any other record type.\n- Domain names are always represented in Punycode, even if Unicode\n  characters were used when creating the record.\n",
+		"operationId": "dns-records-for-a-zone-update-dns-record",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"$ref": "#/components/schemas/ARecord"
+							},
+							{
+								"$ref": "#/components/schemas/AAAARecord"
+							},
+							{
+								"$ref": "#/components/schemas/CAARecord"
+							},
+							{
+								"$ref": "#/components/schemas/CERTRecord"
+							},
+							{
+								"$ref": "#/components/schemas/CNAMERecord"
+							},
+							{
+								"$ref": "#/components/schemas/DNSKEYRecord"
+							},
+							{
+								"$ref": "#/components/schemas/DSRecord"
+							},
+							{
+								"$ref": "#/components/schemas/HTTPSRecord"
+							},
+							{
+								"$ref": "#/components/schemas/LOCRecord"
+							},
+							{
+								"$ref": "#/components/schemas/MXRecord"
+							},
+							{
+								"$ref": "#/components/schemas/NAPTRRecord"
+							},
+							{
+								"$ref": "#/components/schemas/NSRecord"
+							},
+							{
+								"$ref": "#/components/schemas/PTRRecord"
+							},
+							{
+								"$ref": "#/components/schemas/SMIMEARecord"
+							},
+							{
+								"$ref": "#/components/schemas/SRVRecord"
+							},
+							{
+								"$ref": "#/components/schemas/SSHFPRecord"
+							},
+							{
+								"$ref": "#/components/schemas/SVCBRecord"
+							},
+							{
+								"$ref": "#/components/schemas/TLSARecord"
+							},
+							{
+								"$ref": "#/components/schemas/TXTRecord"
+							},
+							{
+								"$ref": "#/components/schemas/URIRecord"
+							}
+						],
+						"required": [
+							"id",
+							"type",
+							"name",
+							"content",
+							"proxiable",
+							"locked",
+							"zone_name",
+							"created_on",
+							"modified_on"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/dns-record-REkjIMhc"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update DNS Record response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/dns-record-REkjIMhc"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update DNS Record response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update DNS Record",
+		"tags": [
+			"DNS Records for a Zone"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

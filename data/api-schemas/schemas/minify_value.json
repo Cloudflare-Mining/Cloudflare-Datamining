@@ -1,0 +1,30 @@
+{
+	"description": "Value of the zone setting.",
+	"properties": {
+		"css": {
+			"default": "off",
+			"description": "Automatically minify all CSS files for your website.",
+			"enum": [
+				"on",
+				"off"
+			]
+		},
+		"html": {
+			"default": "off",
+			"description": "Automatically minify all HTML files for your website.",
+			"enum": [
+				"on",
+				"off"
+			]
+		},
+		"js": {
+			"default": "off",
+			"description": "Automatically minify all JavaScript files for your website.",
+			"enum": [
+				"on",
+				"off"
+			]
+		}
+	},
+	"type": "object"
+}

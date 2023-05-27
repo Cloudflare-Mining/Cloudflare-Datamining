@@ -1,0 +1,32 @@
+{
+	"properties": {
+		"allowed_match_count": {
+			"$ref": "#/components/schemas/allowed_match_count"
+		},
+		"entries": {
+			"description": "The entries for this profile.",
+			"items": {
+				"$ref": "#/components/schemas/predefined_entry"
+			},
+			"type": "array"
+		},
+		"id": {
+			"$ref": "#/components/schemas/profile_id"
+		},
+		"name": {
+			"description": "The name of the profile.",
+			"example": "Generic CVV Card Number",
+			"type": "string"
+		},
+		"type": {
+			"description": "The type of the profile.",
+			"enum": [
+				"predefined"
+			],
+			"example": "predefined",
+			"type": "string"
+		}
+	},
+	"title": "Predefined profile",
+	"type": "object"
+}

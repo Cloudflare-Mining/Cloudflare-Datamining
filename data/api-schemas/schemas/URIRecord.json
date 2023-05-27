@@ -1,0 +1,55 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "Formatted URI content. See 'data' to set URI properties.",
+					"readOnly": true,
+					"type": "string"
+				},
+				"data": {
+					"description": "Components of a URI record.",
+					"properties": {
+						"content": {
+							"description": "The record content.",
+							"example": "http://example.com/example.html",
+							"type": "string"
+						},
+						"weight": {
+							"description": "The record weight.",
+							"example": 20,
+							"maximum": 65535,
+							"minimum": 0,
+							"type": "number"
+						}
+					},
+					"type": "object"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"priority": {
+					"$ref": "#/components/schemas/priority-f4OwASYt"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"URI"
+					],
+					"example": "URI",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"data",
+		"priority"
+	],
+	"title": "URI Record"
+}

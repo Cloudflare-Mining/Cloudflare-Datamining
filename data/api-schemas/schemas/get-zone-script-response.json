@@ -1,0 +1,25 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/script"
+		},
+		{
+			"properties": {
+				"versions": {
+					"example": [
+						{
+							"fetched_at": "2021-08-18T10:51:08Z",
+							"hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b423",
+							"js_integrity_score": 2
+						}
+					],
+					"items": {
+						"$ref": "#/components/schemas/version-MdOsYCjy"
+					},
+					"nullable": true,
+					"type": "array"
+				}
+			}
+		}
+	]
+}

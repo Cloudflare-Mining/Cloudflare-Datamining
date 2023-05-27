@@ -1,0 +1,39 @@
+{
+	"properties": {
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"description": {
+			"description": "The description of the profile.",
+			"type": "string"
+		},
+		"entries": {
+			"description": "The entries for this profile.",
+			"items": {
+				"$ref": "#/components/schemas/integration_entry"
+			},
+			"type": "array"
+		},
+		"id": {
+			"$ref": "#/components/schemas/profile_id"
+		},
+		"name": {
+			"description": "The name of the profile.",
+			"example": "MIP Sensitivity Labels: Profile 1",
+			"type": "string"
+		},
+		"type": {
+			"description": "The type of the profile.",
+			"enum": [
+				"integration"
+			],
+			"example": "integration",
+			"type": "string"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"title": "Integration profile",
+	"type": "object"
+}

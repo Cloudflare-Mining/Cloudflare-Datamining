@@ -1,0 +1,31 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/identity-provider"
+		},
+		{
+			"properties": {
+				"config": {
+					"allOf": [
+						{
+							"$ref": "#/components/schemas/generic-oauth-config"
+						},
+						{
+							"properties": {
+								"onelogin_account": {
+									"description": "Your OneLogin account url",
+									"example": "https://mycompany.onelogin.com",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					]
+				}
+			},
+			"type": "object"
+		}
+	],
+	"title": "OneLogin",
+	"type": "object"
+}

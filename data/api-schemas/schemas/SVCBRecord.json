@@ -1,0 +1,56 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "Formatted SVCB content. See 'data' to set SVCB properties.",
+					"readOnly": true,
+					"type": "string"
+				},
+				"data": {
+					"description": "Components of a SVCB record.",
+					"properties": {
+						"priority": {
+							"description": "priority.",
+							"example": 1,
+							"maximum": 65535,
+							"minimum": 0,
+							"type": "number"
+						},
+						"target": {
+							"description": "target.",
+							"example": ".",
+							"type": "string"
+						},
+						"value": {
+							"description": "value.",
+							"example": "alpn=\"h3,h2\" ipv4hint=\"127.0.0.1\" ipv6hint=\"::1\"",
+							"type": "string"
+						}
+					},
+					"type": "object"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"SVCB"
+					],
+					"example": "SVCB",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"data"
+	],
+	"title": "SVCB Record"
+}

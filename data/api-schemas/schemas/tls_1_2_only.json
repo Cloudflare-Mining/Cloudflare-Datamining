@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "Zone setting identifier.",
+					"enum": [
+						"tls_1_2_only"
+					],
+					"example": "tls_1_2_only"
+				},
+				"value": {
+					"$ref": "#/components/schemas/tls_1_2_only_value"
+				}
+			}
+		}
+	],
+	"description": "Only allows TLS1.2.",
+	"title": "TLS1.2 only"
+}

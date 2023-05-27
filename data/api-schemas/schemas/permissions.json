@@ -1,0 +1,51 @@
+{
+	"example": {
+		"analytics": {
+			"read": true,
+			"write": false
+		},
+		"zones": {
+			"read": true,
+			"write": true
+		}
+	},
+	"properties": {
+		"analytics": {
+			"$ref": "#/components/schemas/grants"
+		},
+		"billing": {
+			"$ref": "#/components/schemas/grants"
+		},
+		"cache_purge": {
+			"$ref": "#/components/schemas/grants"
+		},
+		"dns": {
+			"$ref": "#/components/schemas/grants"
+		},
+		"dns_records": {
+			"$ref": "#/components/schemas/grants"
+		},
+		"lb": {
+			"$ref": "#/components/schemas/grants"
+		},
+		"logs": {
+			"$ref": "#/components/schemas/grants"
+		},
+		"organization": {
+			"$ref": "#/components/schemas/grants"
+		},
+		"ssl": {
+			"$ref": "#/components/schemas/grants"
+		},
+		"waf": {
+			"$ref": "#/components/schemas/grants"
+		},
+		"zone_settings": {
+			"$ref": "#/components/schemas/grants"
+		},
+		"zones": {
+			"$ref": "#/components/schemas/grants"
+		}
+	},
+	"type": "object"
+}

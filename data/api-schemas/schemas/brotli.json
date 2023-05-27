@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"brotli"
+					],
+					"example": "brotli"
+				},
+				"value": {
+					"$ref": "#/components/schemas/brotli_value"
+				}
+			}
+		}
+	],
+	"description": "When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset.",
+	"title": "Brotli Compression"
+}

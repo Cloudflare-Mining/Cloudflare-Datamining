@@ -1,0 +1,17 @@
+{
+	"properties": {
+		"created_on": {
+			"readOnly": true
+		},
+		"modified_on": {
+			"readOnly": true
+		},
+		"queue_id": {
+			"readOnly": true
+		},
+		"queue_name": {
+			"$ref": "#/components/schemas/renamed_name"
+		}
+	},
+	"type": "object"
+}

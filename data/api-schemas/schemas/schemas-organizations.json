@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"auth_domain": {
+			"$ref": "#/components/schemas/auth_domain"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"is_ui_read_only": {
+			"$ref": "#/components/schemas/is_ui_read_only"
+		},
+		"login_design": {
+			"$ref": "#/components/schemas/login_design"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-1XvLkO96"
+		},
+		"ui_read_only_toggle_reason": {
+			"$ref": "#/components/schemas/ui_read_only_toggle_reason"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"user_seat_expiration_inactive_time": {
+			"$ref": "#/components/schemas/user_seat_expiration_inactive_time"
+		}
+	},
+	"type": "object"
+}

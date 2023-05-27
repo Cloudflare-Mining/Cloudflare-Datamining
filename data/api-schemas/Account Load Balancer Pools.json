@@ -1,0 +1,2055 @@
+{
+	"DELETE /accounts/{account_identifier}/load_balancers/pools/{identifier}": {
+		"description": "Delete a configured pool.",
+		"operationId": "account-load-balancer-pools-delete-pool",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "17b5962d775c646f3f9725cbc7a53df4"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/schemas-identifier-0DiQOHIL"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Pool response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-0DiQOHIL"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Pool response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Pool",
+		"tags": [
+			"Account Load Balancer Pools"
+		]
+	},
+	"GET /accounts/{account_identifier}/load_balancers/pools": {
+		"description": "List configured pools.",
+		"operationId": "account-load-balancer-pools-list-pools",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "monitor",
+				"schema": {
+					"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/pool"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Pools response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/pool"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Pools response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Pools",
+		"tags": [
+			"Account Load Balancer Pools"
+		]
+	},
+	"GET /accounts/{account_identifier}/load_balancers/pools/{identifier}": {
+		"description": "Fetch a single configured pool.",
+		"operationId": "account-load-balancer-pools-pool-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "17b5962d775c646f3f9725cbc7a53df4"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/pool"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Pool Details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/pool"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Pool Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Pool Details",
+		"tags": [
+			"Account Load Balancer Pools"
+		]
+	},
+	"GET /accounts/{account_identifier}/load_balancers/pools/{identifier}/health": {
+		"description": "Fetch the latest pool health status for a single pool.",
+		"operationId": "account-load-balancer-pools-pool-health-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "17b5962d775c646f3f9725cbc7a53df4"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
+											"example": {
+												"pool_id": "17b5962d775c646f3f9725cbc7a53df4",
+												"pop_health": {
+													"Amsterdam, NL": {
+														"healthy": true,
+														"origins": [
+															{
+																"2001:DB8::5": {
+																	"failure_reason": "No failures",
+																	"healthy": true,
+																	"response_code": 401,
+																	"rtt": "12.1ms"
+																}
+															}
+														]
+													}
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Pool Health Details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
+													"example": {
+														"pool_id": "17b5962d775c646f3f9725cbc7a53df4",
+														"pop_health": {
+															"Amsterdam, NL": {
+																"healthy": true,
+																"origins": [
+																	{
+																		"2001:DB8::5": {
+																			"failure_reason": "No failures",
+																			"healthy": true,
+																			"response_code": 401,
+																			"rtt": "12.1ms"
+																		}
+																	}
+																]
+															}
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Pool Health Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Pool Health Details",
+		"tags": [
+			"Account Load Balancer Pools"
+		]
+	},
+	"GET /accounts/{account_identifier}/load_balancers/pools/{identifier}/references": {
+		"description": "Get the list of resources that reference the provided pool.",
+		"operationId": "account-load-balancer-pools-list-pool-references",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "17b5962d775c646f3f9725cbc7a53df4"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "List of resources that reference a given pool.",
+											"example": [
+												{
+													"reference_type": "referrer",
+													"resource_id": "699d98642c564d2e855e9661899b7252",
+													"resource_name": "www.example.com",
+													"resource_type": "load_balancer"
+												},
+												{
+													"reference_type": "referral",
+													"resource_id": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+													"resource_name": "Login page monitor",
+													"resource_type": "monitor"
+												}
+											],
+											"items": {
+												"properties": {
+													"reference_type": {
+														"enum": [
+															"*",
+															"referral",
+															"referrer"
+														],
+														"type": "string"
+													},
+													"resource_id": {
+														"type": "string"
+													},
+													"resource_name": {
+														"type": "string"
+													},
+													"resource_type": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Pool References response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "List of resources that reference a given pool.",
+													"example": [
+														{
+															"reference_type": "referrer",
+															"resource_id": "699d98642c564d2e855e9661899b7252",
+															"resource_name": "www.example.com",
+															"resource_type": "load_balancer"
+														},
+														{
+															"reference_type": "referral",
+															"resource_id": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+															"resource_name": "Login page monitor",
+															"resource_type": "monitor"
+														}
+													],
+													"items": {
+														"properties": {
+															"reference_type": {
+																"enum": [
+																	"*",
+																	"referral",
+																	"referrer"
+																],
+																"type": "string"
+															},
+															"resource_id": {
+																"type": "string"
+															},
+															"resource_name": {
+																"type": "string"
+															},
+															"resource_type": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Pool References response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Pool References",
+		"tags": [
+			"Account Load Balancer Pools"
+		]
+	},
+	"PATCH /accounts/{account_identifier}/load_balancers/pools": {
+		"description": "Apply changes to a number of existing pools, overwriting the supplied properties. Pools are ordered by ascending `name`. Returns the list of affected pools. Supports the standard pagination query parameters, either `limit`/`offset` or `per_page`/`page`.",
+		"operationId": "account-load-balancer-pools-patch-pools",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"notification_email": {
+								"description": "The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `\"\"` is accepted.",
+								"enum": [
+									"\"\""
+								],
+								"example": "",
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/pool"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch Pools response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/pool"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch Pools response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch Pools",
+		"tags": [
+			"Account Load Balancer Pools"
+		]
+	},
+	"PATCH /accounts/{account_identifier}/load_balancers/pools/{identifier}": {
+		"description": "Apply changes to an existing pool, overwriting the supplied properties.",
+		"operationId": "account-load-balancer-pools-patch-pool",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "17b5962d775c646f3f9725cbc7a53df4"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"check_regions": {
+								"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
+								"example": [
+									"WEU",
+									"ENAM"
+								],
+								"items": {
+									"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (ENTERPRISE customers only).",
+									"enum": [
+										"WNAM",
+										"ENAM",
+										"WEU",
+										"EEU",
+										"NSAM",
+										"SSAM",
+										"OC",
+										"ME",
+										"NAF",
+										"SAF",
+										"SAS",
+										"SEAS",
+										"NEAS",
+										"ALL_REGIONS"
+									],
+									"type": "string"
+								},
+								"nullable": true,
+								"type": "array"
+							},
+							"description": {
+								"description": "A human-readable description of the pool.",
+								"example": "Primary data center - Provider XYZ",
+								"type": "string"
+							},
+							"disabled_at": {
+								"description": "This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"enabled": {
+								"default": true,
+								"description": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).",
+								"example": false,
+								"type": "boolean"
+							},
+							"latitude": {
+								"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
+								"type": "number"
+							},
+							"load_shedding": {
+								"description": "Configures load shedding policies and percentages for the pool.",
+								"properties": {
+									"default_percent": {
+										"default": 0,
+										"description": "The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.",
+										"maximum": 100,
+										"minimum": 0,
+										"type": "number"
+									},
+									"default_policy": {
+										"default": "random",
+										"description": "The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.",
+										"enum": [
+											"random",
+											"hash"
+										],
+										"type": "string"
+									},
+									"session_percent": {
+										"default": 0,
+										"description": "The percent of existing sessions to shed from the pool, according to the session policy.",
+										"maximum": 100,
+										"minimum": 0,
+										"type": "number"
+									},
+									"session_policy": {
+										"default": "hash",
+										"description": "Only the hash policy is supported for existing sessions (to avoid exponential decay).",
+										"enum": [
+											"hash"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"longitude": {
+								"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
+								"type": "number"
+							},
+							"minimum_origins": {
+								"default": 1,
+								"description": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.",
+								"type": "integer"
+							},
+							"monitor": {
+								"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+							},
+							"name": {
+								"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
+								"example": "primary-dc-1",
+								"type": "string"
+							},
+							"notification_email": {
+								"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
+								"example": "someone@example.com,sometwo@example.com",
+								"type": "string"
+							},
+							"notification_filter": {
+								"description": "Filter pool and origin health notifications by resource type or health status. Use null to reset.",
+								"example": {
+									"origin": {
+										"disable": true
+									},
+									"pool": {
+										"healthy": false
+									}
+								},
+								"nullable": true,
+								"properties": {
+									"origin": {
+										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+									},
+									"pool": {
+										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+									}
+								},
+								"type": "object"
+							},
+							"origin_steering": {
+								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+								"properties": {
+									"policy": {
+										"default": "random",
+										"description": "The type of origin steering policy to use, either \"random\" or \"hash\" (based on CF-Connecting-IP).",
+										"enum": [
+											"random",
+											"hash"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"origins": {
+								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
+								"items": {
+									"$ref": "#/components/schemas/origin-CvlVjxij"
+								},
+								"type": "array"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/pool"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch Pool response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/pool"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch Pool response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch Pool",
+		"tags": [
+			"Account Load Balancer Pools"
+		]
+	},
+	"POST /accounts/{account_identifier}/load_balancers/pools": {
+		"description": "Create a new pool.",
+		"operationId": "account-load-balancer-pools-create-pool",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"description": "A human-readable description of the pool.",
+								"example": "Primary data center - Provider XYZ",
+								"type": "string"
+							},
+							"enabled": {
+								"default": true,
+								"description": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).",
+								"example": false,
+								"type": "boolean"
+							},
+							"latitude": {
+								"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
+								"type": "number"
+							},
+							"load_shedding": {
+								"description": "Configures load shedding policies and percentages for the pool.",
+								"properties": {
+									"default_percent": {
+										"default": 0,
+										"description": "The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.",
+										"maximum": 100,
+										"minimum": 0,
+										"type": "number"
+									},
+									"default_policy": {
+										"default": "random",
+										"description": "The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.",
+										"enum": [
+											"random",
+											"hash"
+										],
+										"type": "string"
+									},
+									"session_percent": {
+										"default": 0,
+										"description": "The percent of existing sessions to shed from the pool, according to the session policy.",
+										"maximum": 100,
+										"minimum": 0,
+										"type": "number"
+									},
+									"session_policy": {
+										"default": "hash",
+										"description": "Only the hash policy is supported for existing sessions (to avoid exponential decay).",
+										"enum": [
+											"hash"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"longitude": {
+								"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
+								"type": "number"
+							},
+							"minimum_origins": {
+								"default": 1,
+								"description": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.",
+								"type": "integer"
+							},
+							"monitor": {
+								"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+							},
+							"name": {
+								"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
+								"example": "primary-dc-1",
+								"type": "string"
+							},
+							"notification_email": {
+								"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
+								"example": "someone@example.com,sometwo@example.com",
+								"type": "string"
+							},
+							"notification_filter": {
+								"description": "Filter pool and origin health notifications by resource type or health status. Use null to reset.",
+								"example": {
+									"origin": {
+										"disable": true
+									},
+									"pool": {
+										"healthy": false
+									}
+								},
+								"nullable": true,
+								"properties": {
+									"origin": {
+										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+									},
+									"pool": {
+										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+									}
+								},
+								"type": "object"
+							},
+							"origin_steering": {
+								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+								"properties": {
+									"policy": {
+										"default": "random",
+										"description": "The type of origin steering policy to use, either \"random\" or \"hash\" (based on CF-Connecting-IP).",
+										"enum": [
+											"random",
+											"hash"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"origins": {
+								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
+								"items": {
+									"$ref": "#/components/schemas/origin-CvlVjxij"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"origins",
+							"name"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/pool"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Pool response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/pool"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Pool response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Pool",
+		"tags": [
+			"Account Load Balancer Pools"
+		]
+	},
+	"POST /accounts/{account_identifier}/load_balancers/pools/{identifier}/preview": {
+		"description": "Preview pool health using provided monitor details. The returned preview_id can be used in the preview endpoint to retrieve the results.",
+		"operationId": "account-load-balancer-pools-preview-pool",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "17b5962d775c646f3f9725cbc7a53df4"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"allow_insecure": {
+								"default": false,
+								"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
+								"example": true,
+								"type": "boolean"
+							},
+							"expected_body": {
+								"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "alive",
+								"type": "string"
+							},
+							"expected_codes": {
+								"default": "200",
+								"description": "The expected HTTP response codes or code ranges of the health check, comma-separated. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "2xx",
+								"type": "string"
+							},
+							"follow_redirects": {
+								"default": false,
+								"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": true,
+								"type": "boolean"
+							},
+							"header": {
+								"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": {
+									"Host": [
+										"example.com"
+									],
+									"X-App-ID": [
+										"abc123"
+									]
+								},
+								"type": "object"
+							},
+							"method": {
+								"default": "GET",
+								"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
+								"example": "GET",
+								"type": "string"
+							},
+							"path": {
+								"default": "/",
+								"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "/health",
+								"type": "string"
+							},
+							"port": {
+								"default": 0,
+								"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+								"type": "integer"
+							},
+							"probe_zone": {
+								"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "example.com",
+								"type": "string"
+							},
+							"retries": {
+								"default": 2,
+								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+								"type": "integer"
+							},
+							"timeout": {
+								"default": 5,
+								"description": "The timeout (in seconds) before marking the health check as failed.",
+								"type": "integer"
+							},
+							"type": {
+								"default": "http",
+								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
+								"enum": [
+									"http",
+									"https",
+									"tcp",
+									"udp_icmp",
+									"icmp_ping",
+									"smtp"
+								],
+								"example": "https",
+								"type": "string"
+							}
+						},
+						"required": [
+							"expected_codes"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"pools": {
+													"additionalProperties": {
+														"description": "The pool name associated with the pool ID.",
+														"type": "string"
+													},
+													"description": "Monitored pool IDs mapped to their respective names.",
+													"example": {
+														"abwlnp5jbqn45ecgxd03erbgtxtqai0d": "WNAM Datacenter",
+														"ve8h9lrcip5n5bbga9yqmdws28ay5d0l": "EEU Datacenter"
+													},
+													"type": "object"
+												},
+												"preview_id": {
+													"$ref": "#/components/schemas/identifier-Gsh6hrUK"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Preview Pool response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"pools": {
+															"additionalProperties": {
+																"description": "The pool name associated with the pool ID.",
+																"type": "string"
+															},
+															"description": "Monitored pool IDs mapped to their respective names.",
+															"example": {
+																"abwlnp5jbqn45ecgxd03erbgtxtqai0d": "WNAM Datacenter",
+																"ve8h9lrcip5n5bbga9yqmdws28ay5d0l": "EEU Datacenter"
+															},
+															"type": "object"
+														},
+														"preview_id": {
+															"$ref": "#/components/schemas/identifier-Gsh6hrUK"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Preview Pool response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Preview Pool",
+		"tags": [
+			"Account Load Balancer Pools"
+		]
+	},
+	"PUT /accounts/{account_identifier}/load_balancers/pools/{identifier}": {
+		"description": "Modify a configured pool.",
+		"operationId": "account-load-balancer-pools-update-pool",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "17b5962d775c646f3f9725cbc7a53df4"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"check_regions": {
+								"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
+								"example": [
+									"WEU",
+									"ENAM"
+								],
+								"items": {
+									"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (ENTERPRISE customers only).",
+									"enum": [
+										"WNAM",
+										"ENAM",
+										"WEU",
+										"EEU",
+										"NSAM",
+										"SSAM",
+										"OC",
+										"ME",
+										"NAF",
+										"SAF",
+										"SAS",
+										"SEAS",
+										"NEAS",
+										"ALL_REGIONS"
+									],
+									"type": "string"
+								},
+								"nullable": true,
+								"type": "array"
+							},
+							"description": {
+								"description": "A human-readable description of the pool.",
+								"example": "Primary data center - Provider XYZ",
+								"type": "string"
+							},
+							"disabled_at": {
+								"description": "This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"enabled": {
+								"default": true,
+								"description": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).",
+								"example": false,
+								"type": "boolean"
+							},
+							"latitude": {
+								"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
+								"type": "number"
+							},
+							"load_shedding": {
+								"description": "Configures load shedding policies and percentages for the pool.",
+								"properties": {
+									"default_percent": {
+										"default": 0,
+										"description": "The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity.",
+										"maximum": 100,
+										"minimum": 0,
+										"type": "number"
+									},
+									"default_policy": {
+										"default": "random",
+										"description": "The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs.",
+										"enum": [
+											"random",
+											"hash"
+										],
+										"type": "string"
+									},
+									"session_percent": {
+										"default": 0,
+										"description": "The percent of existing sessions to shed from the pool, according to the session policy.",
+										"maximum": 100,
+										"minimum": 0,
+										"type": "number"
+									},
+									"session_policy": {
+										"default": "hash",
+										"description": "Only the hash policy is supported for existing sessions (to avoid exponential decay).",
+										"enum": [
+											"hash"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"longitude": {
+								"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
+								"type": "number"
+							},
+							"minimum_origins": {
+								"default": 1,
+								"description": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.",
+								"type": "integer"
+							},
+							"monitor": {
+								"description": "The ID of the Monitor to use for checking the health of origins within this pool."
+							},
+							"name": {
+								"description": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
+								"example": "primary-dc-1",
+								"type": "string"
+							},
+							"notification_email": {
+								"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
+								"example": "someone@example.com,sometwo@example.com",
+								"type": "string"
+							},
+							"notification_filter": {
+								"description": "Filter pool and origin health notifications by resource type or health status. Use null to reset.",
+								"example": {
+									"origin": {
+										"disable": true
+									},
+									"pool": {
+										"healthy": false
+									}
+								},
+								"nullable": true,
+								"properties": {
+									"origin": {
+										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+									},
+									"pool": {
+										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+									}
+								},
+								"type": "object"
+							},
+							"origin_steering": {
+								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+								"properties": {
+									"policy": {
+										"default": "random",
+										"description": "The type of origin steering policy to use, either \"random\" or \"hash\" (based on CF-Connecting-IP).",
+										"enum": [
+											"random",
+											"hash"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"origins": {
+								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
+								"items": {
+									"$ref": "#/components/schemas/origin-CvlVjxij"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"origins",
+							"name"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/pool"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Pool response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/pool"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Pool response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Pool",
+		"tags": [
+			"Account Load Balancer Pools"
+		]
+	}
+}

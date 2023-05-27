@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/access-requests-Kg2nOG2C"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

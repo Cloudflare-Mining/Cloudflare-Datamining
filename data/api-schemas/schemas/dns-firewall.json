@@ -1,0 +1,59 @@
+{
+	"properties": {
+		"attack_mitigation": {
+			"$ref": "#/components/schemas/attack_mitigation"
+		},
+		"deprecate_any_requests": {
+			"$ref": "#/components/schemas/deprecate_any_requests"
+		},
+		"dns_firewall_ips": {
+			"$ref": "#/components/schemas/dns_firewall_ips"
+		},
+		"ecs_fallback": {
+			"$ref": "#/components/schemas/ecs_fallback"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier"
+		},
+		"maximum_cache_ttl": {
+			"$ref": "#/components/schemas/maximum_cache_ttl"
+		},
+		"minimum_cache_ttl": {
+			"$ref": "#/components/schemas/minimum_cache_ttl"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/modified_on-6DzOaO8g"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-pyjdz4R0"
+		},
+		"negative_cache_ttl": {
+			"$ref": "#/components/schemas/negative_cache_ttl"
+		},
+		"origin_ips": {
+			"deprecated": true,
+			"description": "Deprecated alias for \"upstream_ips\"."
+		},
+		"ratelimit": {
+			"$ref": "#/components/schemas/ratelimit"
+		},
+		"retries": {
+			"$ref": "#/components/schemas/retries-lsDHzA1H"
+		},
+		"upstream_ips": {
+			"$ref": "#/components/schemas/upstream_ips"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"upstream_ips",
+		"dns_firewall_ips",
+		"minimum_cache_ttl",
+		"maximum_cache_ttl",
+		"deprecate_any_requests",
+		"ecs_fallback",
+		"modified_on"
+	],
+	"type": "object"
+}

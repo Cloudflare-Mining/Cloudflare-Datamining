@@ -1,0 +1,32 @@
+{
+	"properties": {
+		"brand_check": {
+			"$ref": "#/components/schemas/brand_check"
+		},
+		"cert_pack_uuid": {
+			"$ref": "#/components/schemas/cert_pack_uuid"
+		},
+		"certificate_status": {
+			"$ref": "#/components/schemas/certificate_status"
+		},
+		"signature": {
+			"$ref": "#/components/schemas/schemas-signature"
+		},
+		"validation_method": {
+			"$ref": "#/components/schemas/schemas-validation_method"
+		},
+		"verification_info": {
+			"$ref": "#/components/schemas/verification_info"
+		},
+		"verification_status": {
+			"$ref": "#/components/schemas/verification_status"
+		},
+		"verification_type": {
+			"$ref": "#/components/schemas/verification_type"
+		}
+	},
+	"required": [
+		"certificate_status"
+	],
+	"type": "object"
+}

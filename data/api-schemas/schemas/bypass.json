@@ -1,0 +1,21 @@
+{
+	"description": "Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.",
+	"items": {
+		"properties": {
+			"name": {
+				"enum": [
+					"url"
+				],
+				"example": "url",
+				"type": "string"
+			},
+			"value": {
+				"description": "The URL to bypass.",
+				"example": "api.example.com/*",
+				"type": "string"
+			}
+		},
+		"type": "object"
+	},
+	"type": "array"
+}

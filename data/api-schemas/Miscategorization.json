@@ -1,0 +1,198 @@
+{
+	"POST /accounts/{account_identifier}/intel/miscategorization": {
+		"operationId": "miscategorization-create-miscategorization",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"content_adds": {
+								"description": "Content category IDs to add.",
+								"example": [
+									82
+								]
+							},
+							"content_removes": {
+								"description": "Content category IDs to remove.",
+								"example": [
+									155
+								]
+							},
+							"indicator_type": {
+								"enum": [
+									"domain",
+									"ipv4",
+									"ipv6",
+									"url"
+								],
+								"example": "domain"
+							},
+							"ip": {
+								"description": "Provide only if indicator_type is `ipv4` or `ipv6`."
+							},
+							"security_adds": {
+								"description": "Security category IDs to add.",
+								"example": [
+									117,
+									131
+								]
+							},
+							"security_removes": {
+								"description": "Security category IDs to remove.",
+								"example": [
+									83
+								]
+							},
+							"url": {
+								"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`.",
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"type": "string"
+												}
+											],
+											"nullable": true
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create Miscategorization response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Miscategorization response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create Miscategorization",
+		"tags": [
+			"Miscategorization"
+		]
+	}
+}

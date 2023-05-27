@@ -1,0 +1,8 @@
+{
+	"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+	"example": 600,
+	"maximum": 1000000000,
+	"minimum": 100,
+	"nullable": true,
+	"type": "number"
+}

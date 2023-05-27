@@ -1,0 +1,15 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/schemas-operation"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

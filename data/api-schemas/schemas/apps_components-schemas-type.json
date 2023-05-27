@@ -1,0 +1,16 @@
+{
+	"description": "The application type.",
+	"enum": [
+		"self_hosted",
+		"saas",
+		"ssh",
+		"vnc",
+		"app_launcher",
+		"warp",
+		"biso",
+		"bookmark",
+		"dash_sso"
+	],
+	"example": "self_hosted",
+	"type": "string"
+}

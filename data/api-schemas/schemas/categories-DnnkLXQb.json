@@ -1,0 +1,11 @@
+{
+	"description": "The categories of the rule.",
+	"example": [
+		"directory-traversal",
+		"header"
+	],
+	"items": {
+		"$ref": "#/components/schemas/category"
+	},
+	"type": "array"
+}

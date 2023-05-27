@@ -1,0 +1,601 @@
+{
+	"GET /radar/ranking/domain/{domain}": {
+		"description": "Gets Domains Rank details.",
+		"operationId": "radar_get_ha",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "domain",
+				"required": true,
+				"schema": {
+					"example": "google.com",
+					"format": "hostname",
+					"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 5,
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"items": {
+						"description": "Array of names that will be used to name the series in responses.",
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of dates to filter the ranking.",
+				"in": "query",
+				"name": "date",
+				"schema": {
+					"items": {
+						"description": "Array of dates to filter the ranking.",
+						"example": "2022-09-19",
+						"format": "date",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"details_0": {
+											"properties": {
+												"bucket": {
+													"example": "2000",
+													"type": "string"
+												},
+												"categories": {
+													"items": {
+														"properties": {
+															"id": {
+																"example": 81,
+																"type": "number"
+															},
+															"name": {
+																"example": "Content Servers",
+																"type": "string"
+															},
+															"superCategoryId": {
+																"example": 26,
+																"type": "number"
+															}
+														},
+														"required": [
+															"superCategoryId",
+															"name",
+															"id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"rank": {
+													"example": 3,
+													"type": "integer"
+												},
+												"top_locations": {
+													"items": {
+														"properties": {
+															"locationCode": {
+																"example": "US",
+																"type": "string"
+															},
+															"locationName": {
+																"example": "United States",
+																"type": "string"
+															},
+															"rank": {
+																"example": 1,
+																"type": "integer"
+															}
+														},
+														"required": [
+															"rank",
+															"locationName",
+															"locationCode"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"bucket",
+												"categories",
+												"top_locations"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"details_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Domains Rank details",
+		"tags": [
+			"Radar Ranking"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/ranking/timeseries": {
+		"description": "Gets Domains Rank updates change over time. Raw values are returned.",
+		"operationId": "radar_get_ya",
+		"parameters": [
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 5,
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"items": {
+						"description": "Array of names that will be used to name the series in responses.",
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of locations (alpha-2 country codes).",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"items": {
+						"description": "Array of locations (alpha-2 country codes).",
+						"example": "US",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of domains names.",
+				"in": "query",
+				"name": "domains",
+				"schema": {
+					"items": {
+						"description": "Array of comma separated list of domains names.",
+						"example": "google.com,facebook.com",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the start of a series.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the end of a series.",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"dateRange": {
+													"properties": {
+														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"required": [
+														"startTime",
+														"endTime"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"dateRange"
+											],
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"<domain name>": {
+													"items": {
+														"example": 2,
+														"type": "integer"
+													},
+													"type": "array"
+												},
+												"timestamps": {
+													"items": {
+														"example": "2022-09-02",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"<domain name>"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Domains Rank time series",
+		"tags": [
+			"Radar Ranking"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/ranking/top": {
+		"description": "Get top domains based on their rank. Rank is determined by various factors, for more information see https://blog.cloudflare.com/radar-domain-rankings/",
+		"operationId": "radar_get_fa",
+		"parameters": [
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 5,
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"items": {
+						"description": "Array of names that will be used to name the series in responses.",
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of locations (alpha-2 country codes).",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"items": {
+						"description": "Array of locations (alpha-2 country codes).",
+						"example": "US",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of dates to filter the ranking.",
+				"in": "query",
+				"name": "date",
+				"schema": {
+					"items": {
+						"description": "Array of dates to filter the ranking.",
+						"example": "2022-09-19",
+						"format": "date",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"top_0": {
+													"properties": {
+														"date": {
+															"example": "2022-09-19",
+															"type": "string"
+														}
+													},
+													"required": [
+														"date"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"top_0"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"categories": {
+														"items": {
+															"properties": {
+																"id": {
+																	"example": 81,
+																	"type": "number"
+																},
+																"name": {
+																	"example": "Content Servers",
+																	"type": "string"
+																},
+																"superCategoryId": {
+																	"example": 26,
+																	"type": "number"
+																}
+															},
+															"required": [
+																"superCategoryId",
+																"name",
+																"id"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"domain": {
+														"example": "google.com",
+														"type": "string"
+													},
+													"rank": {
+														"example": 1,
+														"type": "integer"
+													}
+												},
+												"required": [
+													"rank",
+													"domain",
+													"categories"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Top Domains",
+		"tags": [
+			"Radar Ranking"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

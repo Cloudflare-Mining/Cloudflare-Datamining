@@ -1,0 +1,58 @@
+{
+	"properties": {
+		"connection_id": {
+			"description": "Posture Integration ID.",
+			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+			"type": "string"
+		},
+		"operator": {
+			"description": "Operator",
+			"enum": [
+				"<",
+				"<=",
+				">",
+				">=",
+				"=="
+			],
+			"example": ">",
+			"type": "string"
+		},
+		"os": {
+			"description": "Os Version",
+			"example": "13.3.0",
+			"type": "string"
+		},
+		"overall": {
+			"description": "overall",
+			"example": 90,
+			"type": "string"
+		},
+		"sensor_config": {
+			"description": "SensorConfig",
+			"example": 90,
+			"type": "string"
+		},
+		"version": {
+			"description": "Version",
+			"example": "13.3.0",
+			"type": "string"
+		},
+		"versionOperator": {
+			"description": "Version Operator",
+			"enum": [
+				"<",
+				"<=",
+				">",
+				">=",
+				"=="
+			],
+			"example": ">",
+			"type": "string"
+		}
+	},
+	"required": [
+		"connection_id"
+	],
+	"title": "Crowdstrike S2S Input",
+	"type": "object"
+}

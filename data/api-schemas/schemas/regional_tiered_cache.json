@@ -1,0 +1,20 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-bIOqsc1z"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"tc_regional"
+					],
+					"example": "tc_regional"
+				}
+			}
+		}
+	],
+	"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
+	"title": "Regional Tiered Cache"
+}

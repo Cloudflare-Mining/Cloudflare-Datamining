@@ -1,0 +1,38 @@
+{
+	"properties": {
+		"created": {
+			"$ref": "#/components/schemas/watermark_created"
+		},
+		"downloadedFrom": {
+			"$ref": "#/components/schemas/downloadedFrom"
+		},
+		"height": {
+			"$ref": "#/components/schemas/height"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-G14N3kZY"
+		},
+		"opacity": {
+			"$ref": "#/components/schemas/opacity"
+		},
+		"padding": {
+			"$ref": "#/components/schemas/padding"
+		},
+		"position": {
+			"$ref": "#/components/schemas/position"
+		},
+		"scale": {
+			"$ref": "#/components/schemas/scale"
+		},
+		"size": {
+			"$ref": "#/components/schemas/watermark_size"
+		},
+		"uid": {
+			"$ref": "#/components/schemas/watermark_identifier"
+		},
+		"width": {
+			"$ref": "#/components/schemas/width"
+		}
+	},
+	"type": "object"
+}

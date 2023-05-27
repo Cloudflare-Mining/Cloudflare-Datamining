@@ -1,0 +1,43 @@
+{
+	"properties": {
+		"allow_null_cipher": {
+			"$ref": "#/components/schemas/allow_null_cipher"
+		},
+		"cloudflare_endpoint": {
+			"$ref": "#/components/schemas/cloudflare_ipsec_endpoint"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/schemas-created_on"
+		},
+		"customer_endpoint": {
+			"$ref": "#/components/schemas/customer_ipsec_endpoint"
+		},
+		"description": {
+			"$ref": "#/components/schemas/components-schemas-description-pE9WAdDi"
+		},
+		"id": {
+			"$ref": "#/components/schemas/schemas-identifier-f6OedUt6"
+		},
+		"interface_address": {
+			"$ref": "#/components/schemas/interface_address"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/schemas-modified_on"
+		},
+		"name": {
+			"$ref": "#/components/schemas/schemas-name-2PI2cMZj"
+		},
+		"psk_metadata": {
+			"$ref": "#/components/schemas/psk_metadata"
+		},
+		"tunnel_health_check": {
+			"$ref": "#/components/schemas/tunnel_health_check"
+		}
+	},
+	"required": [
+		"name",
+		"cloudflare_endpoint",
+		"interface_address"
+	],
+	"type": "object"
+}

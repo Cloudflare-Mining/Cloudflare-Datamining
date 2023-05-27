@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"effect": {
+			"$ref": "#/components/schemas/effect"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier-8uEzGU2l"
+		},
+		"permission_groups": {
+			"$ref": "#/components/schemas/permission_groups"
+		},
+		"resources": {
+			"$ref": "#/components/schemas/resources"
+		}
+	},
+	"required": [
+		"id",
+		"effect",
+		"resources",
+		"permission_groups"
+	],
+	"title": "policy_with_permission_groups"
+}

@@ -1,0 +1,12 @@
+{
+	"description": "The frequency at which you will be billed for this plan.",
+	"enum": [
+		"weekly",
+		"monthly",
+		"quarterly",
+		"yearly"
+	],
+	"example": "monthly",
+	"readOnly": true,
+	"type": "string"
+}

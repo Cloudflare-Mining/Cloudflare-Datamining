@@ -1,0 +1,32 @@
+{
+	"properties": {
+		"activated_on": {
+			"$ref": "#/components/schemas/activated_on"
+		},
+		"key": {
+			"$ref": "#/components/schemas/activation_key"
+		},
+		"version": {
+			"properties": {
+				"build": {
+					"$ref": "#/components/schemas/build"
+				},
+				"number": {
+					"$ref": "#/components/schemas/components-schemas-version"
+				},
+				"revision": {
+					"$ref": "#/components/schemas/revision"
+				}
+			},
+			"required": [
+				"number"
+			],
+			"type": "object"
+		}
+	},
+	"readOnly": true,
+	"required": [
+		"key"
+	],
+	"type": "object"
+}

@@ -1,0 +1,31 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/identity-provider"
+		},
+		{
+			"properties": {
+				"config": {
+					"allOf": [
+						{
+							"$ref": "#/components/schemas/generic-oauth-config"
+						},
+						{
+							"properties": {
+								"ping_env_id": {
+									"description": "Your PingOne environment identifier",
+									"example": "342b5660-0c32-4936-a5a4-ce21fae57b0a",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					]
+				}
+			},
+			"type": "object"
+		}
+	],
+	"title": "PingOne",
+	"type": "object"
+}

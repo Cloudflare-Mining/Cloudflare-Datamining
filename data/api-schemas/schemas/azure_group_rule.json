@@ -1,0 +1,29 @@
+{
+	"description": "Matches an Azure group.\nRequires an Azure identity provider.",
+	"properties": {
+		"azureAD": {
+			"properties": {
+				"connection_id": {
+					"description": "The ID of your Azure identity provider.",
+					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+					"type": "string"
+				},
+				"id": {
+					"description": "The ID of an Azure group.",
+					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+					"type": "string"
+				}
+			},
+			"required": [
+				"id",
+				"connection_id"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"azureAD"
+	],
+	"title": "Azure group",
+	"type": "object"
+}

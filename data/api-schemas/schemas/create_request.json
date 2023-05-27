@@ -1,0 +1,21 @@
+{
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+		},
+		"dnslink": {
+			"$ref": "#/components/schemas/dnslink"
+		},
+		"name": {
+			"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+		},
+		"target": {
+			"$ref": "#/components/schemas/schemas-target"
+		}
+	},
+	"required": [
+		"name",
+		"target"
+	],
+	"type": "object"
+}

@@ -1,0 +1,443 @@
+{
+	"DELETE /user/subscriptions/{identifier}": {
+		"description": "Deletes a user's subscription.",
+		"operationId": "user-subscription-delete-user-subscription",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Subscription identifier tag.",
+					"example": "506e3185e9c882d175a2d0cb0093d9f2",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"subscription_id": {
+									"description": "Subscription identifier tag.",
+									"example": "506e3185e9c882d175a2d0cb0093d9f2",
+									"maxLength": 32,
+									"readOnly": true,
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete User Subscription response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"subscription_id": {
+											"description": "Subscription identifier tag.",
+											"example": "506e3185e9c882d175a2d0cb0093d9f2",
+											"maxLength": 32,
+											"readOnly": true,
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete User Subscription response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete User Subscription",
+		"tags": [
+			"User Subscription"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:edit"
+			]
+		}
+	},
+	"GET /user/subscriptions": {
+		"description": "Lists all of a user's subscriptions.",
+		"operationId": "user-subscription-get-user-subscriptions",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/subscription"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get User Subscriptions response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/subscription"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get User Subscriptions response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get User Subscriptions",
+		"tags": [
+			"User Subscription"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:read"
+			]
+		}
+	},
+	"PUT /user/subscriptions/{identifier}": {
+		"description": "Updates a user's subscriptions.",
+		"operationId": "user-subscription-update-user-subscription",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Subscription identifier tag.",
+					"example": "506e3185e9c882d175a2d0cb0093d9f2",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"app": {
+								"properties": {
+									"install_id": {
+										"$ref": "#/components/schemas/install_id"
+									}
+								}
+							},
+							"component_values": {
+								"$ref": "#/components/schemas/component_values"
+							},
+							"currency": {
+								"$ref": "#/components/schemas/currency"
+							},
+							"current_period_end": {
+								"$ref": "#/components/schemas/current_period_end"
+							},
+							"current_period_start": {
+								"$ref": "#/components/schemas/current_period_start"
+							},
+							"frequency": {
+								"$ref": "#/components/schemas/frequency"
+							},
+							"id": {
+								"$ref": "#/components/schemas/schemas-identifier-SgTi3Oi0"
+							},
+							"price": {
+								"$ref": "#/components/schemas/price"
+							},
+							"rate_plan": {
+								"$ref": "#/components/schemas/rate_plan"
+							},
+							"state": {
+								"$ref": "#/components/schemas/state-evXmhX2L"
+							},
+							"zone": {
+								"$ref": "#/components/schemas/zone"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-WRl2jXYN"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update User Subscription response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-WRl2jXYN"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update User Subscription response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update User Subscription",
+		"tags": [
+			"User Subscription"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#billing:read",
+				"#billing:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

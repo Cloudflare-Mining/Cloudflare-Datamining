@@ -1,0 +1,18 @@
+{
+	"properties": {
+		"content": {
+			"$ref": "#/components/schemas/content_list_entry_content"
+		},
+		"description": {
+			"$ref": "#/components/schemas/content_list_entry_description"
+		},
+		"type": {
+			"$ref": "#/components/schemas/content_list_entry_type"
+		}
+	},
+	"required": [
+		"type",
+		"content"
+	],
+	"type": "object"
+}

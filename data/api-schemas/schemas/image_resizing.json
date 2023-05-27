@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"image_resizing"
+					],
+					"example": "image_resizing"
+				},
+				"value": {
+					"$ref": "#/components/schemas/image_resizing_value"
+				}
+			}
+		}
+	],
+	"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. Refer to the [Image Resizing documentation](https://developers.cloudflare.com/images/) for more information.",
+	"title": "Image Resizing"
+}

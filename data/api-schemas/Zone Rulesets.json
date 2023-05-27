@@ -1,0 +1,2577 @@
+{
+	"DELETE /zones/{zone_id}/rulesets/{ruleset_id}": {
+		"description": "Deletes all versions of an existing zone ruleset.",
+		"operationId": "deleteZoneRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "Delete a zone ruleset response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/Errors"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a zone ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Delete a zone ruleset",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"DELETE /zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
+		"description": "Deletes an existing rule from a zone ruleset.",
+		"operationId": "deleteZoneRulesetRule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the rule.",
+					"example": "3a03d665bac047339bb530ecb439a90d",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a zone ruleset rule response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete a zone ruleset rule failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Delete a zone ruleset rule",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"DELETE /zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
+		"description": "Deletes an existing version of a zone ruleset.",
+		"operationId": "deleteZoneRulesetVersion",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_version",
+				"required": true,
+				"schema": {
+					"description": "The version of the ruleset.",
+					"example": "1",
+					"pattern": "^[0-9]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "Delete a zone ruleset version response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/Errors"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a zone ruleset version failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Delete a zone ruleset version",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/rulesets": {
+		"description": "Fetches all rulesets at the zone level.",
+		"operationId": "listZoneRulesets",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A list of rulesets. The returned information will not include the rules in each ruleset.",
+											"items": {
+												"description": "A ruleset object.",
+												"properties": {
+													"description": {
+														"$ref": "#/components/schemas/RulesetDescription"
+													},
+													"id": {
+														"$ref": "#/components/schemas/RulesetId"
+													},
+													"kind": {
+														"$ref": "#/components/schemas/RulesetKind"
+													},
+													"last_updated": {
+														"$ref": "#/components/schemas/RulesetLastUpdated"
+													},
+													"name": {
+														"$ref": "#/components/schemas/RulesetName"
+													},
+													"phase": {
+														"$ref": "#/components/schemas/RulesetPhase"
+													},
+													"version": {
+														"$ref": "#/components/schemas/RulesetVersion"
+													}
+												},
+												"required": [
+													"id",
+													"version",
+													"name",
+													"kind",
+													"phase",
+													"last_updated"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List zone rulesets response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List zone rulesets failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "List zone rulesets",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/rulesets/{ruleset_id}": {
+		"description": "Fetches the latest version of a zone ruleset.",
+		"operationId": "getZoneRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a zone ruleset response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get a zone ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Get a zone ruleset",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/rulesets/{ruleset_id}/versions": {
+		"description": "Fetches the versions of a zone ruleset.",
+		"operationId": "listZoneRulesetVersions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A list of rulesets. The returned information will not include the rules in each ruleset.",
+											"items": {
+												"description": "A ruleset object.",
+												"properties": {
+													"description": {
+														"$ref": "#/components/schemas/RulesetDescription"
+													},
+													"id": {
+														"$ref": "#/components/schemas/RulesetId"
+													},
+													"kind": {
+														"$ref": "#/components/schemas/RulesetKind"
+													},
+													"last_updated": {
+														"$ref": "#/components/schemas/RulesetLastUpdated"
+													},
+													"name": {
+														"$ref": "#/components/schemas/RulesetName"
+													},
+													"phase": {
+														"$ref": "#/components/schemas/RulesetPhase"
+													},
+													"version": {
+														"$ref": "#/components/schemas/RulesetVersion"
+													}
+												},
+												"required": [
+													"id",
+													"version",
+													"name",
+													"kind",
+													"phase",
+													"last_updated"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List a zone ruleset's versions response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List a zone ruleset's versions failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "List a zone ruleset's versions",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
+		"description": "Fetches a specific version of a zone ruleset.",
+		"operationId": "getZoneRulesetVersions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_version",
+				"required": true,
+				"schema": {
+					"description": "The version of the ruleset.",
+					"example": "1",
+					"pattern": "^[0-9]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a zone ruleset version response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get a zone ruleset version failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Get a zone ruleset version",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
+		"description": "Fetches the latest version of the zone entry point ruleset for a given phase.",
+		"operationId": "getZoneEntrypointRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_phase",
+				"required": true,
+				"schema": {
+					"description": "The phase of the ruleset.",
+					"example": "http_request_firewall_managed",
+					"pattern": "^[a-z_]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a zone entry point ruleset response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get a zone entry point ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Get a zone entry point ruleset",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions": {
+		"description": "Fetches the versions of a zone entry point ruleset.",
+		"operationId": "listZoneEntrypointRulesetVersions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_phase",
+				"required": true,
+				"schema": {
+					"description": "The phase of the ruleset.",
+					"example": "http_request_firewall_managed",
+					"pattern": "^[a-z_]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A list of rulesets. The returned information will not include the rules in each ruleset.",
+											"items": {
+												"description": "A ruleset object.",
+												"properties": {
+													"description": {
+														"$ref": "#/components/schemas/RulesetDescription"
+													},
+													"id": {
+														"$ref": "#/components/schemas/RulesetId"
+													},
+													"kind": {
+														"$ref": "#/components/schemas/RulesetKind"
+													},
+													"last_updated": {
+														"$ref": "#/components/schemas/RulesetLastUpdated"
+													},
+													"name": {
+														"$ref": "#/components/schemas/RulesetName"
+													},
+													"phase": {
+														"$ref": "#/components/schemas/RulesetPhase"
+													},
+													"version": {
+														"$ref": "#/components/schemas/RulesetVersion"
+													}
+												},
+												"required": [
+													"id",
+													"version",
+													"name",
+													"kind",
+													"phase",
+													"last_updated"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List a zone entry point ruleset's versions response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List a zone entry point ruleset's versions failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "List a zone entry point ruleset's versions",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}": {
+		"description": "Fetches a specific version of a zone entry point ruleset.",
+		"operationId": "getZoneEntrypointRulesetVersion",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_version",
+				"required": true,
+				"schema": {
+					"description": "The version of the ruleset.",
+					"example": "1",
+					"pattern": "^[0-9]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_phase",
+				"required": true,
+				"schema": {
+					"description": "The phase of the ruleset.",
+					"example": "http_request_firewall_managed",
+					"pattern": "^[a-z_]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a zone entry point ruleset version response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get a zone entry point ruleset version failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Get a zone entry point ruleset version",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
+		"description": "Updates an existing rule in a zone ruleset.",
+		"operationId": "updateZoneRulesetRule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the rule.",
+					"example": "3a03d665bac047339bb530ecb439a90d",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/RuleRequest"
+							},
+							{
+								"properties": {
+									"position": {
+										"description": "An object configuring where the rule will be placed.",
+										"oneOf": [
+											{
+												"properties": {
+													"before": {
+														"description": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top.",
+														"example": "da5e8e506c8e7877fe06cdf4c41add54",
+														"type": "string"
+													}
+												}
+											},
+											{
+												"properties": {
+													"after": {
+														"description": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom.",
+														"example": "5bccdbb2a5142cd25cad8591255bd209",
+														"type": "string"
+													}
+												}
+											},
+											{
+												"properties": {
+													"index": {
+														"description": "An index at which to place the rule, where index 1 is the first rule.",
+														"example": 1,
+														"type": "number"
+													}
+												}
+											}
+										],
+										"type": "object"
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a zone ruleset rule response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update a zone ruleset rule failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Update a zone ruleset rule",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_id}/rulesets": {
+		"description": "Creates a ruleset at the zone level.",
+		"operationId": "createZoneRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A ruleset object.",
+						"properties": {
+							"description": {
+								"$ref": "#/components/schemas/RulesetDescription"
+							},
+							"kind": {
+								"$ref": "#/components/schemas/RulesetKind"
+							},
+							"name": {
+								"$ref": "#/components/schemas/RulesetName"
+							},
+							"phase": {
+								"$ref": "#/components/schemas/RulesetPhase"
+							},
+							"rules": {
+								"$ref": "#/components/schemas/RulesRequest"
+							}
+						},
+						"required": [
+							"name",
+							"kind",
+							"phase",
+							"rules"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a zone ruleset response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create a zone ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Create a zone ruleset",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_id}/rulesets/{ruleset_id}/rules": {
+		"description": "Adds a new rule to a zone ruleset. The rule will be added to the end of the existing list of rules in the ruleset by default.",
+		"operationId": "createZoneRulesetRule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/RuleRequest"
+							},
+							{
+								"properties": {
+									"position": {
+										"description": "An object configuring where the rule will be placed.",
+										"oneOf": [
+											{
+												"properties": {
+													"before": {
+														"description": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top.",
+														"example": "da5e8e506c8e7877fe06cdf4c41add54",
+														"type": "string"
+													}
+												}
+											},
+											{
+												"properties": {
+													"after": {
+														"description": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom.",
+														"example": "5bccdbb2a5142cd25cad8591255bd209",
+														"type": "string"
+													}
+												}
+											},
+											{
+												"properties": {
+													"index": {
+														"description": "An index at which to place the rule, where index 1 is the first rule.",
+														"example": 1,
+														"type": "number"
+													}
+												}
+											}
+										],
+										"type": "object"
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a zone ruleset rule response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create a zone ruleset rule failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Create a zone ruleset rule",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_id}/rulesets/{ruleset_id}": {
+		"description": "Updates a zone ruleset, creating a new version.",
+		"operationId": "updateZoneRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A ruleset object.",
+						"properties": {
+							"description": {
+								"$ref": "#/components/schemas/RulesetDescription"
+							},
+							"id": {
+								"$ref": "#/components/schemas/RulesetId"
+							},
+							"kind": {
+								"$ref": "#/components/schemas/RulesetKind"
+							},
+							"name": {
+								"$ref": "#/components/schemas/RulesetName"
+							},
+							"phase": {
+								"$ref": "#/components/schemas/RulesetPhase"
+							},
+							"rules": {
+								"$ref": "#/components/schemas/RulesRequest"
+							},
+							"version": {
+								"$ref": "#/components/schemas/RulesetVersion"
+							}
+						},
+						"required": [
+							"rules"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a zone ruleset response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update a zone ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Update a zone ruleset",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
+		"description": "Updates a zone entry point ruleset, creating a new version.",
+		"operationId": "updateZoneEntrypointRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_phase",
+				"required": true,
+				"schema": {
+					"description": "The phase of the ruleset.",
+					"example": "http_request_firewall_managed",
+					"pattern": "^[a-z_]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the zone.",
+					"example": "9f1839b6152d298aca64c4e906b6d074",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A ruleset object.",
+						"properties": {
+							"description": {
+								"$ref": "#/components/schemas/RulesetDescription"
+							},
+							"id": {
+								"$ref": "#/components/schemas/RulesetId"
+							},
+							"kind": {
+								"$ref": "#/components/schemas/RulesetKind"
+							},
+							"name": {
+								"$ref": "#/components/schemas/RulesetName"
+							},
+							"phase": {
+								"$ref": "#/components/schemas/RulesetPhase"
+							},
+							"rules": {
+								"$ref": "#/components/schemas/RulesRequest"
+							},
+							"version": {
+								"$ref": "#/components/schemas/RulesetVersion"
+							}
+						},
+						"required": [
+							"rules"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a zone entry point ruleset response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update a zone entry point ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Update a zone entry point ruleset",
+		"tags": [
+			"Zone Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

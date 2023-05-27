@@ -1,0 +1,36 @@
+{
+	"description": "The status of the deployment.",
+	"properties": {
+		"ended_on": {
+			"description": "When the stage ended.",
+			"example": "2021-03-09T00:58:59.045655",
+			"format": "date-time",
+			"nullable": true,
+			"readOnly": true,
+			"type": "string"
+		},
+		"name": {
+			"description": "The current build stage.",
+			"example": "deploy",
+			"pattern": "queued|initialize|clone_repo|build|deploy",
+			"type": "string"
+		},
+		"started_on": {
+			"description": "When the stage started.",
+			"example": "2021-03-09T00:55:03.923456Z",
+			"format": "date-time",
+			"nullable": true,
+			"readOnly": true,
+			"type": "string"
+		},
+		"status": {
+			"description": "State of the current stage.",
+			"example": "success",
+			"pattern": "success|idle|active|failure|canceled",
+			"readOnly": true,
+			"type": "string"
+		}
+	},
+	"readOnly": true,
+	"type": "object"
+}

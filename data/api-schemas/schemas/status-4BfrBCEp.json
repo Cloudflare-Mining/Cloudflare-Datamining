@@ -1,0 +1,10 @@
+{
+	"description": "Status of the token.",
+	"enum": [
+		"active",
+		"disabled",
+		"expired"
+	],
+	"example": "active",
+	"type": "string"
+}

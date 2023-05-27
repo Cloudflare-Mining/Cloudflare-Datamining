@@ -1,0 +1,2764 @@
+{
+	"DELETE /accounts/{account_id}/rulesets/{ruleset_id}": {
+		"description": "Deletes all versions of an existing account ruleset.",
+		"operationId": "deleteAccountRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "Delete an account ruleset response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/Errors"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete an account ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Delete an account ruleset",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"DELETE /accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
+		"description": "Deletes an existing rule from an account ruleset.",
+		"operationId": "deleteAccountRulesetRule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the rule.",
+					"example": "3a03d665bac047339bb530ecb439a90d",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete an account ruleset rule response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete an account ruleset rule failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Delete an account ruleset rule",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"DELETE /accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
+		"description": "Deletes an existing version of an account ruleset.",
+		"operationId": "deleteAccountRulesetVersion",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_version",
+				"required": true,
+				"schema": {
+					"description": "The version of the ruleset.",
+					"example": "1",
+					"pattern": "^[0-9]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"204": {
+				"description": "Delete an account ruleset version response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/Errors"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete an account ruleset version failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Delete an account ruleset version",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/rulesets": {
+		"description": "Fetches all rulesets at the account level.",
+		"operationId": "listAccountRulesets",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A list of rulesets. The returned information will not include the rules in each ruleset.",
+											"items": {
+												"description": "A ruleset object.",
+												"properties": {
+													"description": {
+														"$ref": "#/components/schemas/RulesetDescription"
+													},
+													"id": {
+														"$ref": "#/components/schemas/RulesetId"
+													},
+													"kind": {
+														"$ref": "#/components/schemas/RulesetKind"
+													},
+													"last_updated": {
+														"$ref": "#/components/schemas/RulesetLastUpdated"
+													},
+													"name": {
+														"$ref": "#/components/schemas/RulesetName"
+													},
+													"phase": {
+														"$ref": "#/components/schemas/RulesetPhase"
+													},
+													"version": {
+														"$ref": "#/components/schemas/RulesetVersion"
+													}
+												},
+												"required": [
+													"id",
+													"version",
+													"name",
+													"kind",
+													"phase",
+													"last_updated"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List account rulesets response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List account rulesets failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "List account rulesets",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/rulesets/{ruleset_id}": {
+		"description": "Fetches the latest version of an account ruleset.",
+		"operationId": "getAccountRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get an account ruleset response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get an account ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Get an account ruleset",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/rulesets/{ruleset_id}/versions": {
+		"description": "Fetches the versions of an account ruleset.",
+		"operationId": "listAccountRulesetVersions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A list of rulesets. The returned information will not include the rules in each ruleset.",
+											"items": {
+												"description": "A ruleset object.",
+												"properties": {
+													"description": {
+														"$ref": "#/components/schemas/RulesetDescription"
+													},
+													"id": {
+														"$ref": "#/components/schemas/RulesetId"
+													},
+													"kind": {
+														"$ref": "#/components/schemas/RulesetKind"
+													},
+													"last_updated": {
+														"$ref": "#/components/schemas/RulesetLastUpdated"
+													},
+													"name": {
+														"$ref": "#/components/schemas/RulesetName"
+													},
+													"phase": {
+														"$ref": "#/components/schemas/RulesetPhase"
+													},
+													"version": {
+														"$ref": "#/components/schemas/RulesetVersion"
+													}
+												},
+												"required": [
+													"id",
+													"version",
+													"name",
+													"kind",
+													"phase",
+													"last_updated"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List an account ruleset's versions response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List an account ruleset's versions failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "List an account ruleset's versions",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
+		"description": "Fetches a specific version of an account ruleset.",
+		"operationId": "getAccountRulesetVersions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_version",
+				"required": true,
+				"schema": {
+					"description": "The version of the ruleset.",
+					"example": "1",
+					"pattern": "^[0-9]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get an account ruleset version response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get an account ruleset version failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Get an account ruleset version",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}/by_tag/{rule_tag}": {
+		"description": "Fetches the rules of a managed account ruleset version for a given tag.",
+		"operationId": "listAccountRulesetVersionRulesByTag",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_tag",
+				"required": true,
+				"schema": {
+					"description": "A category of the rule.",
+					"example": "directory-traversal",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_version",
+				"required": true,
+				"schema": {
+					"description": "The version of the ruleset.",
+					"example": "1",
+					"pattern": "^[0-9]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List an account ruleset version's rules by tag response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List an account ruleset version's rules by tag failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "List an account ruleset version's rules by tag",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
+		"description": "Fetches the latest version of the account entry point ruleset for a given phase.",
+		"operationId": "getAccountEntrypointRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_phase",
+				"required": true,
+				"schema": {
+					"description": "The phase of the ruleset.",
+					"example": "http_request_firewall_managed",
+					"pattern": "^[a-z_]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get an account entry point ruleset response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get an account entry point ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Get an account entry point ruleset",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions": {
+		"description": "Fetches the versions of an account entry point ruleset.",
+		"operationId": "listAccountEntrypointRulesetVersions",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_phase",
+				"required": true,
+				"schema": {
+					"description": "The phase of the ruleset.",
+					"example": "http_request_firewall_managed",
+					"pattern": "^[a-z_]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A list of rulesets. The returned information will not include the rules in each ruleset.",
+											"items": {
+												"description": "A ruleset object.",
+												"properties": {
+													"description": {
+														"$ref": "#/components/schemas/RulesetDescription"
+													},
+													"id": {
+														"$ref": "#/components/schemas/RulesetId"
+													},
+													"kind": {
+														"$ref": "#/components/schemas/RulesetKind"
+													},
+													"last_updated": {
+														"$ref": "#/components/schemas/RulesetLastUpdated"
+													},
+													"name": {
+														"$ref": "#/components/schemas/RulesetName"
+													},
+													"phase": {
+														"$ref": "#/components/schemas/RulesetPhase"
+													},
+													"version": {
+														"$ref": "#/components/schemas/RulesetVersion"
+													}
+												},
+												"required": [
+													"id",
+													"version",
+													"name",
+													"kind",
+													"phase",
+													"last_updated"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List an account entry point ruleset's versions response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List an account entry point ruleset's versions failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "List an account entry point ruleset's versions",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}": {
+		"description": "Fetches a specific version of an account entry point ruleset.",
+		"operationId": "getAccountEntrypointRulesetVersion",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_version",
+				"required": true,
+				"schema": {
+					"description": "The version of the ruleset.",
+					"example": "1",
+					"pattern": "^[0-9]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_phase",
+				"required": true,
+				"schema": {
+					"description": "The phase of the ruleset.",
+					"example": "http_request_firewall_managed",
+					"pattern": "^[a-z_]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get an account entry point ruleset version response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get an account entry point ruleset version failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Get an account entry point ruleset version",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
+		"description": "Updates an existing rule in an account ruleset.",
+		"operationId": "updateAccountRulesetRule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the rule.",
+					"example": "3a03d665bac047339bb530ecb439a90d",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/RuleRequest"
+							},
+							{
+								"properties": {
+									"position": {
+										"description": "An object configuring where the rule will be placed.",
+										"oneOf": [
+											{
+												"properties": {
+													"before": {
+														"description": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top.",
+														"example": "da5e8e506c8e7877fe06cdf4c41add54",
+														"type": "string"
+													}
+												}
+											},
+											{
+												"properties": {
+													"after": {
+														"description": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom.",
+														"example": "5bccdbb2a5142cd25cad8591255bd209",
+														"type": "string"
+													}
+												}
+											},
+											{
+												"properties": {
+													"index": {
+														"description": "An index at which to place the rule, where index 1 is the first rule.",
+														"example": 1,
+														"type": "number"
+													}
+												}
+											}
+										],
+										"type": "object"
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update an account ruleset rule response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update an account ruleset rule failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Update an account ruleset rule",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/rulesets": {
+		"description": "Creates a ruleset at the account level.",
+		"operationId": "createAccountRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A ruleset object.",
+						"properties": {
+							"description": {
+								"$ref": "#/components/schemas/RulesetDescription"
+							},
+							"kind": {
+								"$ref": "#/components/schemas/RulesetKind"
+							},
+							"name": {
+								"$ref": "#/components/schemas/RulesetName"
+							},
+							"phase": {
+								"$ref": "#/components/schemas/RulesetPhase"
+							},
+							"rules": {
+								"$ref": "#/components/schemas/RulesRequest"
+							}
+						},
+						"required": [
+							"name",
+							"kind",
+							"phase",
+							"rules"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create an account ruleset response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create an account ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Create an account ruleset",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/rulesets/{ruleset_id}/rules": {
+		"description": "Adds a new rule to an account ruleset. The rule will be added to the end of the existing list of rules in the ruleset by default.",
+		"operationId": "createAccountRulesetRule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/RuleRequest"
+							},
+							{
+								"properties": {
+									"position": {
+										"description": "An object configuring where the rule will be placed.",
+										"oneOf": [
+											{
+												"properties": {
+													"before": {
+														"description": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top.",
+														"example": "da5e8e506c8e7877fe06cdf4c41add54",
+														"type": "string"
+													}
+												}
+											},
+											{
+												"properties": {
+													"after": {
+														"description": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom.",
+														"example": "5bccdbb2a5142cd25cad8591255bd209",
+														"type": "string"
+													}
+												}
+											},
+											{
+												"properties": {
+													"index": {
+														"description": "An index at which to place the rule, where index 1 is the first rule.",
+														"example": 1,
+														"type": "number"
+													}
+												}
+											}
+										],
+										"type": "object"
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create an account ruleset rule response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create an account ruleset rule failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Create an account ruleset rule",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/rulesets/{ruleset_id}": {
+		"description": "Updates an account ruleset, creating a new version.",
+		"operationId": "updateAccountRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the ruleset.",
+					"example": "2f2feab2026849078ba485f918791bdc",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A ruleset object.",
+						"properties": {
+							"description": {
+								"$ref": "#/components/schemas/RulesetDescription"
+							},
+							"id": {
+								"$ref": "#/components/schemas/RulesetId"
+							},
+							"kind": {
+								"$ref": "#/components/schemas/RulesetKind"
+							},
+							"name": {
+								"$ref": "#/components/schemas/RulesetName"
+							},
+							"phase": {
+								"$ref": "#/components/schemas/RulesetPhase"
+							},
+							"rules": {
+								"$ref": "#/components/schemas/RulesRequest"
+							},
+							"version": {
+								"$ref": "#/components/schemas/RulesetVersion"
+							}
+						},
+						"required": [
+							"rules"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update an account ruleset response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update an account ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Update an account ruleset",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
+		"description": "Updates an account entry point ruleset, creating a new version.",
+		"operationId": "updateAccountEntrypointRuleset",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "ruleset_phase",
+				"required": true,
+				"schema": {
+					"description": "The phase of the ruleset.",
+					"example": "http_request_firewall_managed",
+					"pattern": "^[a-z_]+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique ID of the account.",
+					"example": "abf9b32d38c5f572afde3336ec0ce302",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "A ruleset object.",
+						"properties": {
+							"description": {
+								"$ref": "#/components/schemas/RulesetDescription"
+							},
+							"id": {
+								"$ref": "#/components/schemas/RulesetId"
+							},
+							"kind": {
+								"$ref": "#/components/schemas/RulesetKind"
+							},
+							"name": {
+								"$ref": "#/components/schemas/RulesetName"
+							},
+							"phase": {
+								"$ref": "#/components/schemas/RulesetPhase"
+							},
+							"rules": {
+								"$ref": "#/components/schemas/RulesRequest"
+							},
+							"version": {
+								"$ref": "#/components/schemas/RulesetVersion"
+							}
+						},
+						"required": [
+							"rules"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/Errors"
+												},
+												{
+													"example": []
+												}
+											]
+										},
+										"messages": {
+											"$ref": "#/components/schemas/Messages"
+										},
+										"result": {},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"result",
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A ruleset object.",
+											"properties": {
+												"description": {
+													"$ref": "#/components/schemas/RulesetDescription"
+												},
+												"id": {
+													"$ref": "#/components/schemas/RulesetId"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/RulesetKind"
+												},
+												"last_updated": {
+													"$ref": "#/components/schemas/RulesetLastUpdated"
+												},
+												"name": {
+													"$ref": "#/components/schemas/RulesetName"
+												},
+												"phase": {
+													"$ref": "#/components/schemas/RulesetPhase"
+												},
+												"rules": {
+													"$ref": "#/components/schemas/RulesResponse"
+												},
+												"version": {
+													"$ref": "#/components/schemas/RulesetVersion"
+												}
+											},
+											"required": [
+												"id",
+												"version",
+												"name",
+												"kind",
+												"phase",
+												"rules",
+												"last_updated"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update an account entry point ruleset response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/Errors"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/Messages"
+								},
+								"result": {},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update an account entry point ruleset failure response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_key": []
+			},
+			{
+				"api_email": []
+			}
+		],
+		"summary": "Update an account entry point ruleset",
+		"tags": [
+			"Account Rulesets"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"anyOf": [
+						{
+							"items": {
+								"properties": {
+									"count": {
+										"example": 1,
+										"type": "integer"
+									},
+									"value": {
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"type": "array"
+						}
+					]
+				}
+			}
+		}
+	]
+}

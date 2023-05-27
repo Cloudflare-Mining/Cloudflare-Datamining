@@ -1,0 +1,790 @@
+{
+	"GET /zones/{zone_id}/firewall/waf/packages/{package_id}/rules": {
+		"description": "Fetches WAF rules in a WAF package.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"operationId": "waf-rules-list-waf-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "package_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a WAF package.",
+					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "mode",
+				"schema": {
+					"description": "The action/mode a rule has been overridden to perform.",
+					"enum": [
+						"DIS",
+						"CHL",
+						"BLK",
+						"SIM"
+					],
+					"example": "CHL",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "group_id",
+				"schema": {
+					"description": "The unique identifier of the rule group.",
+					"example": "de677e5818985db1285d0e80225f06e5",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "The page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 50,
+					"description": "The number of rules per page.",
+					"maximum": 100,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"description": "The field used to sort returned rules.",
+					"enum": [
+						"priority",
+						"group_id",
+						"description"
+					],
+					"example": "status",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"description": "The direction used to sort returned rules.",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "match",
+				"schema": {
+					"default": "all",
+					"description": "When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
+					"enum": [
+						"any",
+						"all"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "description",
+				"schema": {
+					"description": "The public description of the WAF rule.",
+					"example": "SQL injection prevention for SELECT statements",
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "priority",
+				"schema": {
+					"description": "The order in which the individual WAF rule is executed within its rule group.",
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/rule"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List WAF rules response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/rule"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List WAF rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List WAF rules",
+		"tags": [
+			"WAF rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{identifier}": {
+		"description": "Fetches the details of a WAF rule in a WAF package.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"operationId": "waf-rules-get-a-waf-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a WAF package.",
+					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "package_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a WAF package.",
+					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-adHwCNoM"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a WAF rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-adHwCNoM"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a WAF rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a WAF rule",
+		"tags": [
+			"WAF rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{identifier}": {
+		"description": "Updates a WAF rule. You can only update the mode/action of the rule.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"operationId": "waf-rules-update-a-waf-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a WAF package.",
+					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "package_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a WAF package.",
+					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"mode": {
+								"description": "The mode/action of the rule when triggered. You must use a value from the `allowed_modes` array of the current rule.",
+								"enum": [
+									"default",
+									"disable",
+									"simulate",
+									"block",
+									"challenge",
+									"on",
+									"off"
+								],
+								"example": "on"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-adHwCNoM"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/schemas-base"
+														},
+														{
+															"properties": {
+																"allowed_modes": {
+																	"$ref": "#/components/schemas/allowed_modes_anomaly"
+																},
+																"mode": {
+																	"$ref": "#/components/schemas/mode_anomaly"
+																}
+															}
+														}
+													],
+													"description": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
+													"required": [
+														"id",
+														"description",
+														"priority",
+														"allowed_modes",
+														"mode",
+														"group",
+														"package_id"
+													],
+													"title": "Anomaly detection WAF rule"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/base-jhPS91vo"
+														},
+														{
+															"properties": {
+																"allowed_modes": {
+																	"$ref": "#/components/schemas/allowed_modes_deny_traditional"
+																},
+																"default_mode": {
+																	"$ref": "#/components/schemas/default_mode"
+																},
+																"mode": {
+																	"$ref": "#/components/schemas/mode_deny_traditional"
+																}
+															}
+														}
+													],
+													"description": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
+													"required": [
+														"id",
+														"description",
+														"priority",
+														"allowed_modes",
+														"default_mode",
+														"mode",
+														"group",
+														"package_id"
+													],
+													"title": "Traditional (deny) WAF rule"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/base-jhPS91vo"
+														},
+														{
+															"properties": {
+																"allowed_modes": {
+																	"$ref": "#/components/schemas/allowed_modes_allow_traditional"
+																},
+																"mode": {
+																	"$ref": "#/components/schemas/mode_allow_traditional"
+																}
+															}
+														}
+													],
+													"description": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
+													"required": [
+														"id",
+														"description",
+														"priority",
+														"allowed_modes",
+														"default_mode",
+														"mode",
+														"group",
+														"package_id"
+													],
+													"title": "Traditional (allow) WAF rule"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a WAF rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-single-adHwCNoM"
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object"
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"oneOf": [
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/schemas-base"
+																},
+																{
+																	"properties": {
+																		"allowed_modes": {
+																			"$ref": "#/components/schemas/allowed_modes_anomaly"
+																		},
+																		"mode": {
+																			"$ref": "#/components/schemas/mode_anomaly"
+																		}
+																	}
+																}
+															],
+															"description": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
+															"required": [
+																"id",
+																"description",
+																"priority",
+																"allowed_modes",
+																"mode",
+																"group",
+																"package_id"
+															],
+															"title": "Anomaly detection WAF rule"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/base-jhPS91vo"
+																},
+																{
+																	"properties": {
+																		"allowed_modes": {
+																			"$ref": "#/components/schemas/allowed_modes_deny_traditional"
+																		},
+																		"default_mode": {
+																			"$ref": "#/components/schemas/default_mode"
+																		},
+																		"mode": {
+																			"$ref": "#/components/schemas/mode_deny_traditional"
+																		}
+																	}
+																}
+															],
+															"description": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
+															"required": [
+																"id",
+																"description",
+																"priority",
+																"allowed_modes",
+																"default_mode",
+																"mode",
+																"group",
+																"package_id"
+															],
+															"title": "Traditional (deny) WAF rule"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/base-jhPS91vo"
+																},
+																{
+																	"properties": {
+																		"allowed_modes": {
+																			"$ref": "#/components/schemas/allowed_modes_allow_traditional"
+																		},
+																		"mode": {
+																			"$ref": "#/components/schemas/mode_allow_traditional"
+																		}
+																	}
+																}
+															],
+															"description": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
+															"required": [
+																"id",
+																"description",
+																"priority",
+																"allowed_modes",
+																"default_mode",
+																"mode",
+																"group",
+																"package_id"
+															],
+															"title": "Traditional (allow) WAF rule"
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a WAF rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a WAF rule",
+		"tags": [
+			"WAF rules"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	}
+}

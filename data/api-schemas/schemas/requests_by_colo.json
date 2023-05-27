@@ -1,0 +1,39 @@
+{
+	"description": "Breakdown of totals for requests.",
+	"properties": {
+		"all": {
+			"description": "Total number of requests served.",
+			"type": "integer"
+		},
+		"cached": {
+			"description": "Total number of cached requests served.",
+			"type": "integer"
+		},
+		"country": {
+			"additionalProperties": true,
+			"description": "Key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country.",
+			"example": {
+				"AG": 37298,
+				"GI": 293846,
+				"US": 4181364
+			},
+			"type": "object"
+		},
+		"http_status": {
+			"description": "A variable list of key/value pairs where the key is a HTTP status code and the value is the number of requests with that code served.",
+			"example": {
+				"200": 13496983,
+				"301": 283,
+				"400": 187936,
+				"402": 1828,
+				"404": 1293
+			},
+			"type": "object"
+		},
+		"uncached": {
+			"description": "Total number of requests served from the origin.",
+			"type": "integer"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,11 @@
+{
+	"description": "The default action/mode of a rule.",
+	"enum": [
+		"disable",
+		"simulate",
+		"block",
+		"challenge"
+	],
+	"example": "block",
+	"readOnly": true
+}

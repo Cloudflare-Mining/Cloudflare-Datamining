@@ -1,0 +1,1041 @@
+{
+	"DELETE /accounts/{account_identifier}/challenges/widgets/{sitekey}": {
+		"description": "Destroy a Turnstile Widget.",
+		"operationId": "accounts-turnstile-widget-delete",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The target hostname, IPv6, or IPv6 address.",
+											"properties": {
+												"bot_fight_mode": {
+													"$ref": "#/components/schemas/bot_fight_mode"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/created_on-AXK2YWMo"
+												},
+												"domains": {
+													"$ref": "#/components/schemas/domains"
+												},
+												"mode": {
+													"$ref": "#/components/schemas/mode"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified_on-Rf20g85w"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-GSwgoBqD"
+												},
+												"offlabel": {
+													"$ref": "#/components/schemas/offlabel"
+												},
+												"region": {
+													"$ref": "#/components/schemas/region"
+												},
+												"secret": {
+													"$ref": "#/components/schemas/secret-gf3wb5cw"
+												},
+												"sitekey": {
+													"$ref": "#/components/schemas/sitekey"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Turnstile Widget Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Turnstile Widget Response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a Turnstile Widget",
+		"tags": [
+			"Turnstile"
+		]
+	},
+	"GET /accounts/{account_identifier}/challenges/widgets": {
+		"description": "Lists all turnstile widgets of an account.",
+		"operationId": "accounts-turnstile-widgets-list",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result_info": {
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service",
+													"example": 1,
+													"type": "number"
+												},
+												"page": {
+													"description": "Current page within paginated list of results",
+													"example": 1,
+													"type": "number"
+												},
+												"per_page": {
+													"description": "Number of results per page of results",
+													"example": 20,
+													"type": "number"
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters",
+													"example": 2000,
+													"type": "number"
+												}
+											},
+											"type": "object"
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "The target hostname, IPv6, or IPv6 address.",
+												"properties": {
+													"bot_fight_mode": {
+														"$ref": "#/components/schemas/bot_fight_mode"
+													},
+													"created_on": {
+														"$ref": "#/components/schemas/created_on-AXK2YWMo"
+													},
+													"domains": {
+														"$ref": "#/components/schemas/domains"
+													},
+													"mode": {
+														"$ref": "#/components/schemas/mode"
+													},
+													"modified_on": {
+														"$ref": "#/components/schemas/modified_on-Rf20g85w"
+													},
+													"name": {
+														"$ref": "#/components/schemas/name-GSwgoBqD"
+													},
+													"offlabel": {
+														"$ref": "#/components/schemas/offlabel"
+													},
+													"region": {
+														"$ref": "#/components/schemas/region"
+													},
+													"secret": {
+														"$ref": "#/components/schemas/secret-gf3wb5cw"
+													},
+													"sitekey": {
+														"$ref": "#/components/schemas/sitekey"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Turnstile Widgets"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List Turnstile Widgets Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Turnstile Widgets",
+		"tags": [
+			"Turnstile"
+		]
+	},
+	"GET /accounts/{account_identifier}/challenges/widgets/{sitekey}": {
+		"description": "Show a single challenge widget configuration.",
+		"operationId": "accounts-turnstile-widget-get",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The target hostname, IPv6, or IPv6 address.",
+											"properties": {
+												"bot_fight_mode": {
+													"$ref": "#/components/schemas/bot_fight_mode"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/created_on-AXK2YWMo"
+												},
+												"domains": {
+													"$ref": "#/components/schemas/domains"
+												},
+												"mode": {
+													"$ref": "#/components/schemas/mode"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified_on-Rf20g85w"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-GSwgoBqD"
+												},
+												"offlabel": {
+													"$ref": "#/components/schemas/offlabel"
+												},
+												"region": {
+													"$ref": "#/components/schemas/region"
+												},
+												"secret": {
+													"$ref": "#/components/schemas/secret-gf3wb5cw"
+												},
+												"sitekey": {
+													"$ref": "#/components/schemas/sitekey"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Turnstile Widget Details Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Turnstile Widget Details Response Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Turnstile Widget Details",
+		"tags": [
+			"Turnstile"
+		]
+	},
+	"POST /accounts/{account_identifier}/challenges/widgets": {
+		"description": "Lists challenge widgets.",
+		"operationId": "accounts-turnstile-widget-create",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"bot_fight_mode": {
+								"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
+								"example": true,
+								"type": "boolean"
+							},
+							"domains": {
+								"example": [
+									"203.0.113.1",
+									"cloudflare.com",
+									"blog.example.com"
+								],
+								"items": {
+									"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
+									"example": "203.0.113.1",
+									"type": "string"
+								},
+								"maxLength": 10,
+								"type": "array"
+							},
+							"mode": {
+								"description": "Widget Mode",
+								"enum": [
+									"non-interactive",
+									"invisible",
+									"managed"
+								],
+								"example": "invisible",
+								"type": "string"
+							},
+							"name": {
+								"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+								"example": "blog.cloudflare.com login form",
+								"maxLength": 254,
+								"minLength": 1,
+								"type": "string"
+							},
+							"offlabel": {
+								"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
+								"example": true,
+								"type": "boolean"
+							},
+							"region": {
+								"default": "world",
+								"description": "Region where this widget can be used.",
+								"enum": [
+									"world"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"mode",
+							"domains"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result_info": {
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service",
+													"example": 1,
+													"type": "number"
+												},
+												"page": {
+													"description": "Current page within paginated list of results",
+													"example": 1,
+													"type": "number"
+												},
+												"per_page": {
+													"description": "Number of results per page of results",
+													"example": 20,
+													"type": "number"
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters",
+													"example": 2000,
+													"type": "number"
+												}
+											},
+											"type": "object"
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The target hostname, IPv6, or IPv6 address.",
+											"properties": {
+												"bot_fight_mode": {
+													"$ref": "#/components/schemas/bot_fight_mode"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/created_on-AXK2YWMo"
+												},
+												"domains": {
+													"$ref": "#/components/schemas/domains"
+												},
+												"mode": {
+													"$ref": "#/components/schemas/mode"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified_on-Rf20g85w"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-GSwgoBqD"
+												},
+												"offlabel": {
+													"$ref": "#/components/schemas/offlabel"
+												},
+												"region": {
+													"$ref": "#/components/schemas/region"
+												},
+												"secret": {
+													"$ref": "#/components/schemas/secret-gf3wb5cw"
+												},
+												"sitekey": {
+													"$ref": "#/components/schemas/sitekey"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Turnstile Widget Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create Turnstile Widget Response Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a Turnstile Widget",
+		"tags": [
+			"Turnstile"
+		]
+	},
+	"POST /accounts/{account_identifier}/challenges/widgets/{sitekey}/rotate_secret": {
+		"description": "Generate a new secret key for this widget. If `invalidate_immediately`\nis set to `false`, the previous secret remains valid for 2 hours.\n\nNote that secrets cannot be rotated again during the grace period.\n",
+		"operationId": "accounts-turnstile-widget-rotate-secret",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"invalidate_immediately": {
+								"default": false,
+								"description": "If `invalidate_immediately` is set to `false`, the previous secret will\nremain valid for two hours. Otherwise, the secret is immediately\ninvalidated, and requests using it will be rejected.\n",
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The target hostname, IPv6, or IPv6 address.",
+											"properties": {
+												"bot_fight_mode": {
+													"$ref": "#/components/schemas/bot_fight_mode"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/created_on-AXK2YWMo"
+												},
+												"domains": {
+													"$ref": "#/components/schemas/domains"
+												},
+												"mode": {
+													"$ref": "#/components/schemas/mode"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified_on-Rf20g85w"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-GSwgoBqD"
+												},
+												"offlabel": {
+													"$ref": "#/components/schemas/offlabel"
+												},
+												"region": {
+													"$ref": "#/components/schemas/region"
+												},
+												"secret": {
+													"$ref": "#/components/schemas/secret-gf3wb5cw"
+												},
+												"sitekey": {
+													"$ref": "#/components/schemas/sitekey"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Rotate Secret Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Rotate Secret Response Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Rotate Secret for a Turnstile Widget",
+		"tags": [
+			"Turnstile"
+		]
+	},
+	"PUT /accounts/{account_identifier}/challenges/widgets/{sitekey}": {
+		"description": "Update the configuration of a widget.",
+		"operationId": "accounts-turnstile-widget-update",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"bot_fight_mode": {
+								"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
+								"example": true,
+								"type": "boolean"
+							},
+							"domains": {
+								"example": [
+									"203.0.113.1",
+									"cloudflare.com",
+									"blog.example.com"
+								],
+								"items": {
+									"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
+									"example": "203.0.113.1",
+									"type": "string"
+								},
+								"maxLength": 10,
+								"type": "array"
+							},
+							"mode": {
+								"description": "Widget Mode",
+								"enum": [
+									"non-interactive",
+									"invisible",
+									"managed"
+								],
+								"example": "invisible",
+								"type": "string"
+							},
+							"name": {
+								"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+								"example": "blog.cloudflare.com login form",
+								"maxLength": 254,
+								"minLength": 1,
+								"type": "string"
+							},
+							"offlabel": {
+								"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"name",
+							"mode",
+							"domains"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The target hostname, IPv6, or IPv6 address.",
+											"properties": {
+												"bot_fight_mode": {
+													"$ref": "#/components/schemas/bot_fight_mode"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/created_on-AXK2YWMo"
+												},
+												"domains": {
+													"$ref": "#/components/schemas/domains"
+												},
+												"mode": {
+													"$ref": "#/components/schemas/mode"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified_on-Rf20g85w"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-GSwgoBqD"
+												},
+												"offlabel": {
+													"$ref": "#/components/schemas/offlabel"
+												},
+												"region": {
+													"$ref": "#/components/schemas/region"
+												},
+												"secret": {
+													"$ref": "#/components/schemas/secret-gf3wb5cw"
+												},
+												"sitekey": {
+													"$ref": "#/components/schemas/sitekey"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Turnstile Widget Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update Turnstile Widget Response Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a Turnstile Widget",
+		"tags": [
+			"Turnstile"
+		]
+	}
+}

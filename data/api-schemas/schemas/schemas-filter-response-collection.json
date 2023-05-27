@@ -1,0 +1,30 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/filter-QeTRQ44g"
+							},
+							{
+								"required": [
+									"id",
+									"expression",
+									"paused"
+								],
+								"type": "object"
+							}
+						]
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

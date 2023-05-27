@@ -1,0 +1,10 @@
+{
+	"default": "off",
+	"description": "Value of the Pseudo IPv4 setting.",
+	"enum": [
+		"off",
+		"add_header",
+		"overwrite_header"
+	],
+	"type": "string"
+}

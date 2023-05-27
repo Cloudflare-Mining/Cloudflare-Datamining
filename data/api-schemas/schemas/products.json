@@ -1,0 +1,17 @@
+{
+	"items": {
+		"description": "A list of products to bypass for a request when using the `bypass` action.",
+		"enum": [
+			"zoneLockdown",
+			"uaBlock",
+			"bic",
+			"hot",
+			"securityLevel",
+			"rateLimit",
+			"waf"
+		],
+		"example": "waf",
+		"type": "string"
+	},
+	"type": "array"
+}

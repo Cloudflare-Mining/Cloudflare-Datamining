@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/verification"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

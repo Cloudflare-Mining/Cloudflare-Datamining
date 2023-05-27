@@ -1,0 +1,10 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"$ref": "#/components/schemas/zone_metadata"
+		}
+	]
+}

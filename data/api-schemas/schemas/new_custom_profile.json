@@ -1,0 +1,25 @@
+{
+	"properties": {
+		"allowed_match_count": {
+			"$ref": "#/components/schemas/allowed_match_count"
+		},
+		"description": {
+			"description": "The description of the profile.",
+			"example": "A standard CVV card number",
+			"type": "string"
+		},
+		"entries": {
+			"description": "The entries for this profile.",
+			"items": {
+				"$ref": "#/components/schemas/new_custom_entry"
+			},
+			"type": "array"
+		},
+		"name": {
+			"description": "The name of the profile.",
+			"example": "Generic CVV Card Number",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

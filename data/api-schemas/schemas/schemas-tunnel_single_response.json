@@ -1,0 +1,18 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QtgvcrF1"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"ipsec_tunnel": {
+							"type": "object"
+						}
+					}
+				}
+			}
+		}
+	]
+}

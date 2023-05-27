@@ -1,0 +1,50 @@
+{
+	"description": "Block page layout settings.",
+	"properties": {
+		"background_color": {
+			"description": "Block page background color in #rrggbb format.",
+			"type": "string"
+		},
+		"enabled": {
+			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+			"example": true,
+			"type": "boolean"
+		},
+		"footer_text": {
+			"description": "Block page footer text.",
+			"example": "--footer--",
+			"type": "string"
+		},
+		"header_text": {
+			"description": "Block page header text.",
+			"example": "--header--",
+			"type": "string"
+		},
+		"logo_path": {
+			"description": "Full URL to the logo file.",
+			"example": "https://logos.com/a.png",
+			"type": "string"
+		},
+		"mailto_address": {
+			"description": "Admin email for users to contact.",
+			"example": "admin@example.com",
+			"type": "string"
+		},
+		"mailto_subject": {
+			"description": "Subject line for emails created from block page.",
+			"example": "Blocked User Inquiry",
+			"type": "string"
+		},
+		"name": {
+			"description": "Block page title.",
+			"example": "Cloudflare",
+			"type": "string"
+		},
+		"suppress_footer": {
+			"description": "Suppress detailed info at the bottom of the block page.",
+			"example": false,
+			"type": "boolean"
+		}
+	},
+	"type": "object"
+}

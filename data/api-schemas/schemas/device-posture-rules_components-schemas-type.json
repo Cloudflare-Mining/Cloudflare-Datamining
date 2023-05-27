@@ -1,0 +1,13 @@
+{
+	"description": "The type of Device Posture Rule.",
+	"enum": [
+		"file",
+		"application",
+		"serial_number",
+		"tanium",
+		"gateway",
+		"warp"
+	],
+	"example": "file",
+	"type": "string"
+}

@@ -1,0 +1,24 @@
+{
+	"description": "Configs for deployments in a project.",
+	"properties": {
+		"preview": {
+			"anyOf": [
+				{
+					"$ref": "#/components/schemas/deployment_configs_values"
+				}
+			],
+			"description": "Configs for preview deploys.",
+			"type": "object"
+		},
+		"production": {
+			"anyOf": [
+				{
+					"$ref": "#/components/schemas/deployment_configs_values"
+				}
+			],
+			"description": "Configs for production deploys.",
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

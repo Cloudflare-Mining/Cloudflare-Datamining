@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"auth_domain": {
+			"$ref": "#/components/schemas/auth_domain"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"is_ui_read_only": {
+			"$ref": "#/components/schemas/is_ui_read_only"
+		},
+		"login_design": {
+			"$ref": "#/components/schemas/login_design"
+		},
+		"name": {
+			"$ref": "#/components/schemas/organizations_components-schemas-name"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"type": "object"
+}

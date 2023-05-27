@@ -1,0 +1,9 @@
+{
+	"description": "The Certificate Authority that Total TLS certificates will be issued through.",
+	"enum": [
+		"google",
+		"lets_encrypt"
+	],
+	"example": "google",
+	"type": "string"
+}

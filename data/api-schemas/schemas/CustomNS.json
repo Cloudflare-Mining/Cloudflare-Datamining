@@ -1,0 +1,51 @@
+{
+	"description": "A single account custom nameserver.",
+	"properties": {
+		"dns_records": {
+			"description": "A and AAAA records associated with the nameserver.",
+			"items": {
+				"properties": {
+					"type": {
+						"description": "DNS record type.",
+						"enum": [
+							"A",
+							"AAAA"
+						],
+						"example": "A",
+						"type": "string"
+					},
+					"value": {
+						"description": "DNS record contents (an IPv4 or IPv6 address).",
+						"example": "1.1.1.1",
+						"type": "string"
+					}
+				}
+			},
+			"type": "array"
+		},
+		"ns_name": {
+			"$ref": "#/components/schemas/ns_name"
+		},
+		"status": {
+			"deprecated": true,
+			"description": "Verification status of the nameserver.",
+			"enum": [
+				"moved",
+				"pending",
+				"verified"
+			],
+			"example": "verified",
+			"type": "string"
+		},
+		"zone_tag": {
+			"$ref": "#/components/schemas/schemas-identifier-Xegj0wo3"
+		}
+	},
+	"required": [
+		"dns_records",
+		"ns_name",
+		"status",
+		"zone_tag"
+	],
+	"title": "Custom NS"
+}

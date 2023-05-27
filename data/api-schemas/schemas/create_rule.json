@@ -1,0 +1,20 @@
+{
+	"properties": {
+		"action": {
+			"$ref": "#/components/schemas/rule_action-nxvxw7gh"
+		},
+		"description": {
+			"$ref": "#/components/schemas/rule_description"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/rule_enabled-qKeHHIaa"
+		},
+		"expression": {
+			"$ref": "#/components/schemas/rule_expression"
+		}
+	},
+	"required": [
+		"action",
+		"expression"
+	]
+}

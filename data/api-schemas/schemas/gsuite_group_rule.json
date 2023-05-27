@@ -1,0 +1,29 @@
+{
+	"description": "Matches a group in Google Workspace.\nRequires a Google Workspace identity provider.",
+	"properties": {
+		"gsuite": {
+			"properties": {
+				"connection_id": {
+					"description": "The ID of your Google Workspace identity provider.",
+					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+					"type": "string"
+				},
+				"email": {
+					"description": "The email of the Google Workspace group.",
+					"example": "devs@cloudflare.com",
+					"type": "string"
+				}
+			},
+			"required": [
+				"email",
+				"connection_id"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"gsuite"
+	],
+	"title": "Google Workspace group",
+	"type": "object"
+}

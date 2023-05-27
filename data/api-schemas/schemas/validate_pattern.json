@@ -1,0 +1,15 @@
+{
+	"description": "A request to validate a pattern",
+	"properties": {
+		"regex": {
+			"description": "The regex pattern.",
+			"example": "^4[0-9]{6,}$",
+			"type": "string"
+		}
+	},
+	"required": [
+		"regex"
+	],
+	"title": "Pattern",
+	"type": "object"
+}

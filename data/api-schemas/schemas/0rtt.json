@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"0rtt"
+					],
+					"example": "0rtt"
+				},
+				"value": {
+					"$ref": "#/components/schemas/0rtt_value"
+				}
+			}
+		}
+	],
+	"description": "0-RTT session resumption enabled for this zone.",
+	"title": "0-RTT Value"
+}

@@ -1,0 +1,21 @@
+{
+	"properties": {
+		"errors": {
+			"$ref": "#/components/schemas/messages"
+		},
+		"messages": {
+			"$ref": "#/components/schemas/messages"
+		},
+		"success": {
+			"description": "Whether the API call was successful",
+			"example": true,
+			"type": "boolean"
+		}
+	},
+	"required": [
+		"success",
+		"errors",
+		"messages"
+	],
+	"type": "object"
+}

@@ -1,0 +1,13 @@
+{
+	"default": "medium",
+	"description": "Value of the zone setting.",
+	"enum": [
+		"off",
+		"essentially_off",
+		"low",
+		"medium",
+		"high",
+		"under_attack"
+	],
+	"type": "string"
+}

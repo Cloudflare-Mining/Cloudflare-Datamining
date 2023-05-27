@@ -1,0 +1,48 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/result-evGgUF8l"
+		},
+		{
+			"properties": {
+				"data": {
+					"example": [
+						{
+							"metrics": [
+								[
+									2,
+									4
+								],
+								[
+									16,
+									32
+								]
+							]
+						}
+					]
+				},
+				"max": {
+					"example": {
+						"readKiB": 32,
+						"requests": 4
+					}
+				},
+				"min": {
+					"example": {
+						"readKiB": 16,
+						"requests": 2
+					}
+				},
+				"query": {
+					"$ref": "#/components/schemas/query-iSAjw3gt"
+				},
+				"totals": {
+					"example": {
+						"readKiB": 48,
+						"requests": 6
+					}
+				}
+			}
+		}
+	]
+}

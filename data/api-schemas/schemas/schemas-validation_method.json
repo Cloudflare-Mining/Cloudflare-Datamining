@@ -1,0 +1,10 @@
+{
+	"description": "Validation method in use for a certificate pack order.",
+	"enum": [
+		"http",
+		"cname",
+		"txt"
+	],
+	"example": "txt",
+	"type": "string"
+}

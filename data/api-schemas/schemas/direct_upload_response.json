@@ -1,0 +1,26 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"uid": {
+							"$ref": "#/components/schemas/identifier-X6d0M4JV"
+						},
+						"uploadURL": {
+							"description": "The URL an unauthenticated upload can use for a single `HTTP POST multipart/form-data` request.",
+							"example": "www.example.com/samplepath",
+							"type": "string"
+						},
+						"watermark": {
+							"$ref": "#/components/schemas/watermarks"
+						}
+					}
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,12 @@
+{
+	"nullable": true,
+	"properties": {
+		"automatic_advertisement": {
+			"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+		}
+	},
+	"required": [
+		"automatic_advertisement"
+	],
+	"type": "object"
+}

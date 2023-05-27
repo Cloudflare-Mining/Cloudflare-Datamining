@@ -1,0 +1,9 @@
+{
+	"default": "active",
+	"description": "When set to `active`, indicates that the WAF package will be applied to the zone.",
+	"enum": [
+		"active"
+	],
+	"readOnly": true,
+	"type": "string"
+}

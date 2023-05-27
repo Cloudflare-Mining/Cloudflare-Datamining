@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"alert_body": {
+			"$ref": "#/components/schemas/alert_body"
+		},
+		"alert_type": {
+			"$ref": "#/components/schemas/schemas-alert_type"
+		},
+		"description": {
+			"$ref": "#/components/schemas/history_components-schemas-description"
+		},
+		"id": {
+			"$ref": "#/components/schemas/uuid"
+		},
+		"mechanism": {
+			"$ref": "#/components/schemas/mechanism"
+		},
+		"mechanism_type": {
+			"$ref": "#/components/schemas/mechanism_type"
+		},
+		"name": {
+			"$ref": "#/components/schemas/history_components-schemas-name"
+		},
+		"sent": {
+			"$ref": "#/components/schemas/sent"
+		}
+	},
+	"type": "object"
+}

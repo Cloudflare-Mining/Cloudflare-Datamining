@@ -1,0 +1,18 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/schemas-certificate_response_single-VmENOQwk"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"id": {
+							"$ref": "#/components/schemas/certificates_components-schemas-identifier"
+						}
+					}
+				}
+			}
+		}
+	]
+}

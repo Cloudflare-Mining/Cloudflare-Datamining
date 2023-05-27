@@ -1,0 +1,6 @@
+{
+	"description": "If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.",
+	"example": "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}",
+	"nullable": true,
+	"type": "string"
+}

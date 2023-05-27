@@ -1,0 +1,64 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "Formatted TLSA content. See 'data' to set TLSA properties.",
+					"readOnly": true,
+					"type": "string"
+				},
+				"data": {
+					"description": "Components of a TLSA record.",
+					"properties": {
+						"certificate": {
+							"description": "certificate.",
+							"type": "string"
+						},
+						"matching_type": {
+							"description": "Matching Type.",
+							"example": 1,
+							"maximum": 255,
+							"minimum": 0,
+							"type": "number"
+						},
+						"selector": {
+							"description": "Selector.",
+							"example": 0,
+							"maximum": 255,
+							"minimum": 0,
+							"type": "number"
+						},
+						"usage": {
+							"description": "Usage.",
+							"example": 0,
+							"maximum": 255,
+							"minimum": 0,
+							"type": "number"
+						}
+					},
+					"type": "object"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"TLSA"
+					],
+					"example": "TLSA",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"data"
+	],
+	"title": "TLSA Record"
+}

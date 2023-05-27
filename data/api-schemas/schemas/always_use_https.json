@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"always_use_https"
+					],
+					"example": "always_use_https"
+				},
+				"value": {
+					"$ref": "#/components/schemas/always_use_https_value"
+				}
+			}
+		}
+	],
+	"default": "off",
+	"description": "Reply to all requests for URLs that use \"http\" with a 301 redirect to the equivalent \"https\" URL. If you only want to redirect for a subset of requests, consider creating an \"Always use HTTPS\" page rule.",
+	"title": "Zone Enable Always Use HTTPS"
+}

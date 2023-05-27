@@ -1,0 +1,64 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "Formatted SMIMEA content. See 'data' to set SMIMEA properties.",
+					"readOnly": true,
+					"type": "string"
+				},
+				"data": {
+					"description": "Components of a SMIMEA record.",
+					"properties": {
+						"certificate": {
+							"description": "Certificate.",
+							"type": "string"
+						},
+						"matching_type": {
+							"description": "Matching Type.",
+							"example": 0,
+							"maximum": 255,
+							"minimum": 0,
+							"type": "number"
+						},
+						"selector": {
+							"description": "Selector.",
+							"example": 0,
+							"maximum": 255,
+							"minimum": 0,
+							"type": "number"
+						},
+						"usage": {
+							"description": "Usage.",
+							"example": 3,
+							"maximum": 255,
+							"minimum": 0,
+							"type": "number"
+						}
+					},
+					"type": "object"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"SMIMEA"
+					],
+					"example": "SMIMEA",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"data"
+	],
+	"title": "SMIMEA Record"
+}

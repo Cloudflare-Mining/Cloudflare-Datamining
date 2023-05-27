@@ -1,0 +1,34 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "A valid hostname. Must not match the record's name."
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"proxied": {
+					"$ref": "#/components/schemas/proxied-zlRtDkv6"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"CNAME"
+					],
+					"example": "CNAME",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"content"
+	],
+	"title": "CNAME Record"
+}

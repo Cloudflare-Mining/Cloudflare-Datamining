@@ -1,0 +1,7 @@
+{
+	"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
+	"example": 1,
+	"maximum": 1000000000,
+	"minimum": -1000000000,
+	"type": "number"
+}

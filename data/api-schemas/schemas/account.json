@@ -1,0 +1,41 @@
+{
+	"properties": {
+		"created_on": {
+			"description": "Timestamp for the creation of the account",
+			"example": "2014-03-01T12:21:02.0000Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"id": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		},
+		"name": {
+			"description": "Account name",
+			"example": "Demo Account",
+			"maxLength": 100,
+			"type": "string"
+		},
+		"settings": {
+			"description": "Account settings",
+			"properties": {
+				"enforce_twofactor": {
+					"default": false,
+					"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
+					"type": "boolean"
+				},
+				"use_account_custom_ns_by_default": {
+					"default": false,
+					"description": "Indicates whether new zones should use the account-level custom\nnameservers by default",
+					"type": "boolean"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"required": [
+		"id",
+		"name"
+	],
+	"type": "object"
+}

@@ -1,0 +1,36 @@
+{
+	"description": "The target hostname, IPv6, or IPv6 address.",
+	"properties": {
+		"bot_fight_mode": {
+			"$ref": "#/components/schemas/bot_fight_mode"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/created_on-AXK2YWMo"
+		},
+		"domains": {
+			"$ref": "#/components/schemas/domains"
+		},
+		"mode": {
+			"$ref": "#/components/schemas/mode"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/modified_on-Rf20g85w"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-GSwgoBqD"
+		},
+		"offlabel": {
+			"$ref": "#/components/schemas/offlabel"
+		},
+		"region": {
+			"$ref": "#/components/schemas/region"
+		},
+		"secret": {
+			"$ref": "#/components/schemas/secret-gf3wb5cw"
+		},
+		"sitekey": {
+			"$ref": "#/components/schemas/sitekey"
+		}
+	},
+	"type": "object"
+}

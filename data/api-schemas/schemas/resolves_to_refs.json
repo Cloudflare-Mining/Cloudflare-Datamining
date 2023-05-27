@@ -1,0 +1,7 @@
+{
+	"description": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to.",
+	"items": {
+		"$ref": "#/components/schemas/resolves_to_ref"
+	},
+	"type": "array"
+}

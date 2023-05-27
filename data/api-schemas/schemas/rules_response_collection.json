@@ -1,0 +1,34 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/rules-gtWHEClq"
+					},
+					"type": "array"
+				},
+				"result_info": {
+					"properties": {
+						"count": {
+							"example": 1
+						},
+						"page": {
+							"example": 1
+						},
+						"per_page": {
+							"example": 20
+						},
+						"total_count": {
+							"example": 1
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

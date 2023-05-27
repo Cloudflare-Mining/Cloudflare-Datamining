@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"edge_cache_ttl"
+					],
+					"example": "edge_cache_ttl"
+				},
+				"value": {
+					"$ref": "#/components/schemas/edge_cache_ttl_value"
+				}
+			}
+		}
+	],
+	"description": "Time (in seconds) that a resource will be ensured to remain on Cloudflare's cache servers.",
+	"title": "Edge Cache TTL"
+}

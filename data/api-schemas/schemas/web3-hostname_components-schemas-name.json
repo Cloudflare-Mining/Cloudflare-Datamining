@@ -1,0 +1,7 @@
+{
+	"description": "The hostname that will point to the target gateway via CNAME.",
+	"example": "gateway.example.com",
+	"maxLength": 255,
+	"readOnly": true,
+	"type": "string"
+}

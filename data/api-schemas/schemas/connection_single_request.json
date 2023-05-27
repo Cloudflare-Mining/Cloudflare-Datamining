@@ -1,0 +1,18 @@
+{
+	"properties": {
+		"enabled": {
+			"$ref": "#/components/schemas/connection_components-schemas-enabled"
+		},
+		"zone": {
+			"properties": {
+				"id": {
+					"$ref": "#/components/schemas/common_components-schemas-identifier"
+				}
+			}
+		}
+	},
+	"required": [
+		"zone"
+	],
+	"type": "object"
+}

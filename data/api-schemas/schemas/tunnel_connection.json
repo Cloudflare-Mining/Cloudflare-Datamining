@@ -1,0 +1,27 @@
+{
+	"description": "A connection between cloudflared and a Cloudflare data center.",
+	"properties": {
+		"arch": {
+			"$ref": "#/components/schemas/arch"
+		},
+		"config_version": {
+			"$ref": "#/components/schemas/config_version"
+		},
+		"conns": {
+			"$ref": "#/components/schemas/connections-NBNUmkpZ"
+		},
+		"features": {
+			"$ref": "#/components/schemas/schemas-features"
+		},
+		"id": {
+			"$ref": "#/components/schemas/connection_id"
+		},
+		"run_at": {
+			"$ref": "#/components/schemas/run_at"
+		},
+		"version": {
+			"$ref": "#/components/schemas/cloudflare-tunnel_components-schemas-version"
+		}
+	},
+	"type": "object"
+}

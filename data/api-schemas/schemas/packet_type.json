@@ -1,0 +1,13 @@
+{
+	"default": "icmp",
+	"description": "Type of packet sent.",
+	"enum": [
+		"icmp",
+		"tcp",
+		"udp",
+		"gre",
+		"gre+icmp"
+	],
+	"example": "icmp",
+	"type": "string"
+}

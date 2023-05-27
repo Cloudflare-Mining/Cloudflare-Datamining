@@ -1,0 +1,41 @@
+{
+	"properties": {
+		"available": {
+			"$ref": "#/components/schemas/schemas-available"
+		},
+		"can_register": {
+			"$ref": "#/components/schemas/can_register"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/components-schemas-created_at"
+		},
+		"current_registrar": {
+			"$ref": "#/components/schemas/current_registrar"
+		},
+		"expires_at": {
+			"$ref": "#/components/schemas/expires_at"
+		},
+		"id": {
+			"$ref": "#/components/schemas/schemas-domain_identifier"
+		},
+		"locked": {
+			"$ref": "#/components/schemas/locked"
+		},
+		"registrant_contact": {
+			"$ref": "#/components/schemas/registrant_contact"
+		},
+		"registry_statuses": {
+			"$ref": "#/components/schemas/registry_statuses"
+		},
+		"supported_tld": {
+			"$ref": "#/components/schemas/supported_tld"
+		},
+		"transfer_in": {
+			"$ref": "#/components/schemas/transfer_in"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/components-schemas-updated_at"
+		}
+	},
+	"type": "object"
+}

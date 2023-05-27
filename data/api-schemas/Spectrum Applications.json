@@ -1,0 +1,1291 @@
+{
+	"DELETE /zones/{zone}/spectrum/apps/{app_id}": {
+		"description": "Deletes a previously existing application.",
+		"operationId": "spectrum-applications-delete-spectrum-application",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "Application identifier.",
+					"example": "ea95132c15732412d22c1476fa83f27a",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Application identifier.",
+													"example": "ea95132c15732412d22c1476fa83f27a",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Spectrum application response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"description": "Application identifier.",
+															"example": "ea95132c15732412d22c1476fa83f27a",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Spectrum application response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete Spectrum application",
+		"tags": [
+			"Spectrum Applications"
+		]
+	},
+	"GET /zones/{zone}/spectrum/apps": {
+		"description": "Retrieves a list of currently existing Spectrum applications inside a zone.",
+		"operationId": "spectrum-applications-list-spectrum-applications",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"description": "Page number of paginated results. This parameter is required in order to use other pagination parameters. If included in the query, `result_info` will be present in the response.",
+					"example": 1,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Sets the maximum number of results per page.",
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "asc",
+					"description": "Sets the direction by which results are ordered.",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "dns",
+					"description": "Application field by which results are ordered.",
+					"enum": [
+						"protocol",
+						"app_id",
+						"created_on",
+						"modified_on",
+						"dns"
+					],
+					"example": "protocol",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Spectrum applications response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Spectrum applications response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List Spectrum applications",
+		"tags": [
+			"Spectrum Applications"
+		]
+	},
+	"GET /zones/{zone}/spectrum/apps/{app_id}": {
+		"description": "Gets the application configuration of a specific application inside a zone.",
+		"operationId": "spectrum-applications-get-spectrum-application-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "Application identifier.",
+					"example": "ea95132c15732412d22c1476fa83f27a",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Spectrum application configuration response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Spectrum application configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Spectrum application configuration",
+		"tags": [
+			"Spectrum Applications"
+		]
+	},
+	"POST /zones/{zone}/spectrum/apps": {
+		"description": "Creates a new Spectrum application from a configuration using a name for the origin.",
+		"operationId": "spectrum-applications-create-spectrum-application-using-a-name-for-the-origin",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"argo_smart_routing": {
+								"default": false,
+								"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP applications with traffic_type set to \"direct\".",
+								"example": true,
+								"type": "boolean"
+							},
+							"dns": {
+								"description": "The name and type of DNS record for the Spectrum application.",
+								"properties": {
+									"name": {
+										"$ref": "#/components/schemas/dns_name"
+									},
+									"type": {
+										"$ref": "#/components/schemas/dns_type"
+									}
+								},
+								"type": "object"
+							},
+							"edge_ips": {
+								"default": {
+									"connectivity": "all",
+									"type": "dynamic"
+								},
+								"description": "The anycast edge IP configuration for the hostname of this application.",
+								"oneOf": [
+									{
+										"properties": {
+											"connectivity": {
+												"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+												"enum": [
+													"all",
+													"ipv4",
+													"ipv6"
+												],
+												"example": "all",
+												"type": "string"
+											},
+											"type": {
+												"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+												"enum": [
+													"dynamic"
+												],
+												"example": "dynamic",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"ips": {
+												"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
+												"example": [
+													"192.0.2.1"
+												],
+												"items": {
+													"description": "Edge anycast IPs.",
+													"example": "192.0.2.1",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"type": {
+												"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+												"enum": [
+													"static"
+												],
+												"example": "static",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								]
+							},
+							"ip_firewall": {
+								"description": "Enables IP Access Rules for this application.\nNotes: Only available for TCP applications.",
+								"example": true,
+								"type": "boolean"
+							},
+							"origin_dns": {
+								"description": "The name and type of DNS record for the Spectrum application.",
+								"properties": {
+									"name": {
+										"$ref": "#/components/schemas/origin_dns_name"
+									},
+									"ttl": {
+										"$ref": "#/components/schemas/dns_ttl"
+									},
+									"type": {
+										"$ref": "#/components/schemas/origin_dns_type"
+									}
+								},
+								"type": "object"
+							},
+							"origin_port": {
+								"anyOf": [
+									{
+										"type": "integer"
+									},
+									{
+										"type": "string"
+									}
+								],
+								"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
+								"example": 22,
+								"maximum": 65535,
+								"minimum": 1
+							},
+							"protocol": {
+								"description": "The port configuration at Cloudflare’s edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
+								"example": "tcp/22",
+								"type": "string"
+							},
+							"proxy_protocol": {
+								"default": "off",
+								"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+								"enum": [
+									"off",
+									"v1",
+									"v2",
+									"simple"
+								],
+								"example": "off",
+								"type": "string"
+							},
+							"tls": {
+								"description": "The type of TLS termination associated with the application.",
+								"enum": [
+									"off",
+									"flexible",
+									"full",
+									"strict"
+								],
+								"example": "full",
+								"type": "string"
+							},
+							"traffic_type": {
+								"default": "direct",
+								"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+								"enum": [
+									"direct",
+									"http",
+									"https"
+								],
+								"example": "direct",
+								"type": "string"
+							}
+						},
+						"required": [
+							"protocol",
+							"dns",
+							"origin_dns",
+							"origin_port"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"argo_smart_routing": {
+													"$ref": "#/components/schemas/argo_smart_routing"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/created-g1WX3wAw"
+												},
+												"dns": {
+													"$ref": "#/components/schemas/dns"
+												},
+												"edge_ips": {
+													"$ref": "#/components/schemas/edge_ips"
+												},
+												"id": {
+													"$ref": "#/components/schemas/app_id-ub5dDM7R"
+												},
+												"ip_firewall": {
+													"$ref": "#/components/schemas/ip_firewall"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified-5Zi1BTkE"
+												},
+												"origin_dns": {
+													"$ref": "#/components/schemas/origin_dns"
+												},
+												"origin_port": {
+													"$ref": "#/components/schemas/origin_port"
+												},
+												"protocol": {
+													"$ref": "#/components/schemas/protocol"
+												},
+												"proxy_protocol": {
+													"$ref": "#/components/schemas/proxy_protocol"
+												},
+												"tls": {
+													"$ref": "#/components/schemas/tls"
+												},
+												"traffic_type": {
+													"$ref": "#/components/schemas/traffic_type"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Spectrum application using a name for the origin response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"argo_smart_routing": {
+															"$ref": "#/components/schemas/argo_smart_routing"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/created-g1WX3wAw"
+														},
+														"dns": {
+															"$ref": "#/components/schemas/dns"
+														},
+														"edge_ips": {
+															"$ref": "#/components/schemas/edge_ips"
+														},
+														"id": {
+															"$ref": "#/components/schemas/app_id-ub5dDM7R"
+														},
+														"ip_firewall": {
+															"$ref": "#/components/schemas/ip_firewall"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/modified-5Zi1BTkE"
+														},
+														"origin_dns": {
+															"$ref": "#/components/schemas/origin_dns"
+														},
+														"origin_port": {
+															"$ref": "#/components/schemas/origin_port"
+														},
+														"protocol": {
+															"$ref": "#/components/schemas/protocol"
+														},
+														"proxy_protocol": {
+															"$ref": "#/components/schemas/proxy_protocol"
+														},
+														"tls": {
+															"$ref": "#/components/schemas/tls"
+														},
+														"traffic_type": {
+															"$ref": "#/components/schemas/traffic_type"
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Spectrum application using a name for the origin response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create Spectrum application using a name for the origin",
+		"tags": [
+			"Spectrum Applications"
+		]
+	},
+	"PUT /zones/{zone}/spectrum/apps/{app_id}": {
+		"description": "Updates a previously existing application's configuration that uses a name for the origin.",
+		"operationId": "spectrum-applications-update-spectrum-application-configuration-using-a-name-for-the-origin",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "Application identifier.",
+					"example": "ea95132c15732412d22c1476fa83f27a",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"argo_smart_routing": {
+								"default": false,
+								"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP applications with traffic_type set to \"direct\".",
+								"example": true,
+								"type": "boolean"
+							},
+							"dns": {
+								"description": "The name and type of DNS record for the Spectrum application.",
+								"properties": {
+									"name": {
+										"$ref": "#/components/schemas/dns_name"
+									},
+									"type": {
+										"$ref": "#/components/schemas/dns_type"
+									}
+								},
+								"type": "object"
+							},
+							"edge_ips": {
+								"default": {
+									"connectivity": "all",
+									"type": "dynamic"
+								},
+								"description": "The anycast edge IP configuration for the hostname of this application.",
+								"oneOf": [
+									{
+										"properties": {
+											"connectivity": {
+												"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+												"enum": [
+													"all",
+													"ipv4",
+													"ipv6"
+												],
+												"example": "all",
+												"type": "string"
+											},
+											"type": {
+												"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+												"enum": [
+													"dynamic"
+												],
+												"example": "dynamic",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"ips": {
+												"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
+												"example": [
+													"192.0.2.1"
+												],
+												"items": {
+													"description": "Edge anycast IPs.",
+													"example": "192.0.2.1",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"type": {
+												"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+												"enum": [
+													"static"
+												],
+												"example": "static",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								]
+							},
+							"ip_firewall": {
+								"description": "Enables IP Access Rules for this application.\nNotes: Only available for TCP applications.",
+								"example": true,
+								"type": "boolean"
+							},
+							"origin_dns": {
+								"description": "The name and type of DNS record for the Spectrum application.",
+								"properties": {
+									"name": {
+										"$ref": "#/components/schemas/origin_dns_name"
+									},
+									"ttl": {
+										"$ref": "#/components/schemas/dns_ttl"
+									},
+									"type": {
+										"$ref": "#/components/schemas/origin_dns_type"
+									}
+								},
+								"type": "object"
+							},
+							"origin_port": {
+								"anyOf": [
+									{
+										"type": "integer"
+									},
+									{
+										"type": "string"
+									}
+								],
+								"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`.\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
+								"example": 22,
+								"maximum": 65535,
+								"minimum": 1
+							},
+							"protocol": {
+								"description": "The port configuration at Cloudflare’s edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
+								"example": "tcp/22",
+								"type": "string"
+							},
+							"proxy_protocol": {
+								"default": "off",
+								"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+								"enum": [
+									"off",
+									"v1",
+									"v2",
+									"simple"
+								],
+								"example": "off",
+								"type": "string"
+							},
+							"tls": {
+								"description": "The type of TLS termination associated with the application.",
+								"enum": [
+									"off",
+									"flexible",
+									"full",
+									"strict"
+								],
+								"example": "full",
+								"type": "string"
+							},
+							"traffic_type": {
+								"default": "direct",
+								"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+								"enum": [
+									"direct",
+									"http",
+									"https"
+								],
+								"example": "direct",
+								"type": "string"
+							}
+						},
+						"required": [
+							"protocol",
+							"dns",
+							"origin_dns",
+							"origin_port"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"argo_smart_routing": {
+													"$ref": "#/components/schemas/argo_smart_routing"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/created-g1WX3wAw"
+												},
+												"dns": {
+													"$ref": "#/components/schemas/dns"
+												},
+												"edge_ips": {
+													"$ref": "#/components/schemas/edge_ips"
+												},
+												"id": {
+													"$ref": "#/components/schemas/app_id-ub5dDM7R"
+												},
+												"ip_firewall": {
+													"$ref": "#/components/schemas/ip_firewall"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified-5Zi1BTkE"
+												},
+												"origin_dns": {
+													"$ref": "#/components/schemas/origin_dns"
+												},
+												"origin_port": {
+													"$ref": "#/components/schemas/origin_port"
+												},
+												"protocol": {
+													"$ref": "#/components/schemas/protocol"
+												},
+												"proxy_protocol": {
+													"$ref": "#/components/schemas/proxy_protocol"
+												},
+												"tls": {
+													"$ref": "#/components/schemas/tls"
+												},
+												"traffic_type": {
+													"$ref": "#/components/schemas/traffic_type"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Spectrum application configuration using a name for the origin response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"argo_smart_routing": {
+															"$ref": "#/components/schemas/argo_smart_routing"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/created-g1WX3wAw"
+														},
+														"dns": {
+															"$ref": "#/components/schemas/dns"
+														},
+														"edge_ips": {
+															"$ref": "#/components/schemas/edge_ips"
+														},
+														"id": {
+															"$ref": "#/components/schemas/app_id-ub5dDM7R"
+														},
+														"ip_firewall": {
+															"$ref": "#/components/schemas/ip_firewall"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/modified-5Zi1BTkE"
+														},
+														"origin_dns": {
+															"$ref": "#/components/schemas/origin_dns"
+														},
+														"origin_port": {
+															"$ref": "#/components/schemas/origin_port"
+														},
+														"protocol": {
+															"$ref": "#/components/schemas/protocol"
+														},
+														"proxy_protocol": {
+															"$ref": "#/components/schemas/proxy_protocol"
+														},
+														"tls": {
+															"$ref": "#/components/schemas/tls"
+														},
+														"traffic_type": {
+															"$ref": "#/components/schemas/traffic_type"
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Spectrum application configuration using a name for the origin response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update Spectrum application configuration using a name for the origin",
+		"tags": [
+			"Spectrum Applications"
+		]
+	}
+}

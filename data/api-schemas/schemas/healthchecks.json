@@ -1,0 +1,59 @@
+{
+	"properties": {
+		"address": {
+			"$ref": "#/components/schemas/address"
+		},
+		"check_regions": {
+			"$ref": "#/components/schemas/check_regions"
+		},
+		"consecutive_fails": {
+			"$ref": "#/components/schemas/consecutive_fails"
+		},
+		"consecutive_successes": {
+			"$ref": "#/components/schemas/consecutive_successes"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"description": {
+			"$ref": "#/components/schemas/description-xEj7VJc8"
+		},
+		"failure_reason": {
+			"$ref": "#/components/schemas/failure_reason"
+		},
+		"http_config": {
+			"$ref": "#/components/schemas/http_config"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier"
+		},
+		"interval": {
+			"$ref": "#/components/schemas/interval"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name"
+		},
+		"retries": {
+			"$ref": "#/components/schemas/retries"
+		},
+		"status": {
+			"$ref": "#/components/schemas/status"
+		},
+		"suspended": {
+			"$ref": "#/components/schemas/suspended"
+		},
+		"tcp_config": {
+			"$ref": "#/components/schemas/tcp_config"
+		},
+		"timeout": {
+			"$ref": "#/components/schemas/timeout"
+		},
+		"type": {
+			"$ref": "#/components/schemas/type"
+		}
+	},
+	"type": "object"
+}

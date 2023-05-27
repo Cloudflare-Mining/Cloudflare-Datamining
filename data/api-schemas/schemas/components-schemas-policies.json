@@ -1,0 +1,32 @@
+{
+	"properties": {
+		"alert_type": {
+			"$ref": "#/components/schemas/alert_type"
+		},
+		"created": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"description": {
+			"$ref": "#/components/schemas/policies_components-schemas-description"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/policies_components-schemas-enabled"
+		},
+		"filters": {
+			"$ref": "#/components/schemas/components-schemas-filters"
+		},
+		"id": {
+			"$ref": "#/components/schemas/uuid"
+		},
+		"mechanisms": {
+			"$ref": "#/components/schemas/mechanisms"
+		},
+		"modified": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"name": {
+			"$ref": "#/components/schemas/policies_components-schemas-name-2"
+		}
+	},
+	"type": "object"
+}

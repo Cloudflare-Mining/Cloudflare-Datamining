@@ -1,0 +1,12 @@
+{
+	"default": "type",
+	"description": "Field to order DNS records by.",
+	"enum": [
+		"type",
+		"name",
+		"content",
+		"ttl",
+		"proxied"
+	],
+	"type": "string"
+}

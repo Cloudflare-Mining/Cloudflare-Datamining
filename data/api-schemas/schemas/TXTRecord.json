@@ -1,0 +1,33 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "Text content for the record.",
+					"example": "example text content",
+					"type": "string"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"TXT"
+					],
+					"example": "TXT",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"content"
+	],
+	"title": "TXT Record"
+}

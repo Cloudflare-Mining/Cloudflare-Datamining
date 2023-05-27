@@ -1,0 +1,805 @@
+{
+	"DELETE /accounts/{account_identifier}/workers/scripts/{script_name}": {
+		"description": "Delete your worker. This call has no response body on a successful delete.",
+		"operationId": "worker-script-delete-worker",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "If set to true, delete will not be stopped by associated service binding, durable object, or other binding. Any of these associated bindings/durable objects will be deleted along with the script.",
+				"in": "query",
+				"name": "force",
+				"schema": {
+					"type": "boolean"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {}
+				},
+				"description": "Delete Worker response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {}
+				},
+				"description": "Delete Worker response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Worker",
+		"tags": [
+			"Worker Script"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.delete"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/workers/scripts": {
+		"description": "Fetch a list of uploaded workers.",
+		"operationId": "worker-script-list-workers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/script-response"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Workers response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/script-response"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Workers response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Workers",
+		"tags": [
+			"Worker Script"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.list"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/workers/scripts/{script_name}": {
+		"description": "Fetch raw script content for your worker. Note this is the original script content, not JSON encoded.",
+		"operationId": "worker-script-download-worker",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"undefined": {
+						"schema": {
+							"example": "addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })"
+						}
+					}
+				},
+				"description": "Download Worker response"
+			},
+			"4XX": {
+				"content": {
+					"undefined": {
+						"schema": {
+							"example": "addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })"
+						}
+					}
+				},
+				"description": "Download Worker response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Download Worker",
+		"tags": [
+			"Worker Script"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.read"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/workers/scripts/{script_name}/usage-model": {
+		"description": "Fetches the Usage Model for a given Worker.",
+		"operationId": "worker-script-fetch-usage-model",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"usage_model": {
+													"readOnly": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Fetch Usage Model response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"usage_model": {
+															"readOnly": true
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Fetch Usage Model response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Fetch Usage Model",
+		"tags": [
+			"Worker Script"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.read"
+			]
+		}
+	},
+	"PUT /accounts/{account_identifier}/workers/scripts/{script_name}": {
+		"description": "Upload a worker module.",
+		"operationId": "worker-script-upload-worker-module",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Rollback to provided deployment based on deployment ID. Request body will be ignored. You can learn more about deployments [here](https://developers.cloudflare.com/workers/platform/deployments/).",
+				"in": "query",
+				"name": "rollback_to",
+				"schema": {
+					"type": "uuid"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"multipart/form-data": {
+					"schema": {
+						"properties": {
+							"\"message\"": {
+								"description": "Rollback message to be associated with deployment. Only parsed with `rollback_to` query parameter"
+							},
+							"\"second-file.js\"": {
+								"description": "Worker script.",
+								"example": "@second-file.js;type=application/javascript+module",
+								"type": "string"
+							},
+							"\"worker.js\"": {
+								"description": "Worker script.",
+								"example": "@worker.js;type=application/javascript+module",
+								"type": "string"
+							},
+							"metadata": {
+								"description": "Metadata for script such as bindings in JSON format. Main module needs to be specified with `main_module`.",
+								"example": "{\"main_module\": \"worker.js\", \"some_binding\": \"stuff\"}",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/script-response"
+												}
+											},
+											"x-cfLinkErrors": {
+												"10001": "Unsupported or unexpected Content Type",
+												"10002": "Unexpected internal server error",
+												"10003": "Missing required URL parameter",
+												"10004": "Malformed URL parameter",
+												"10006": "Unparseable script body",
+												"10007": "Resource not found (similar to HTTP 404)",
+												"10014": "Internal error while attempting authorization checks",
+												"10015": "The current account is not authorized to use workers",
+												"10018": "Attempted to update a script where the e-tag does not match",
+												"10021": "Script content failed validation checks, but was otherwise parseable",
+												"10023": "Unauthorized access attempt",
+												"10027": "Script body was too large",
+												"10075": "Requires a Workers Paid plan"
+											}
+										}
+									]
+								},
+								{
+									"example": {
+										"errors": [],
+										"messages": [],
+										"result": {
+											"created_on": "2022-05-05T05:15:11.602148Z",
+											"etag": "777f24a43bef5f69174aa69ceaf1dea67968d510a31d1vw3e49d34a0187c06d1",
+											"handlers": [
+												"fetch"
+											],
+											"id": "this-is_my_script-01",
+											"logpush": false,
+											"modified_on": "2022-05-20T19:02:56.446492Z",
+											"placement_mode": "smart",
+											"usage_model": "bundled"
+										},
+										"success": true
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Upload Worker Module response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"example": {
+										"errors": [],
+										"messages": [],
+										"result": {
+											"created_on": "2022-05-05T05:15:11.602148Z",
+											"etag": "777f24a43bef5f69174aa69ceaf1dea67968d510a31d1vw3e49d34a0187c06d1",
+											"handlers": [
+												"fetch"
+											],
+											"id": "this-is_my_script-01",
+											"logpush": false,
+											"modified_on": "2022-05-20T19:02:56.446492Z",
+											"usage_model": "bundled"
+										},
+										"success": true
+									}
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Upload Worker Module response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Upload Worker Module",
+		"tags": [
+			"Worker Script"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.create"
+			]
+		}
+	},
+	"PUT /accounts/{account_identifier}/workers/scripts/{script_name}/usage-model": {
+		"description": "Updates the Usage Model for a given Worker. Requires a Workers Paid subscription.",
+		"operationId": "worker-script-update-usage-model",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": "{'usage_model': 'unbound'}"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"usage_model": {
+													"readOnly": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Usage Model response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"usage_model": {
+															"readOnly": true
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Usage Model response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Usage Model",
+		"tags": [
+			"Worker Script"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.create"
+			]
+		}
+	}
+}

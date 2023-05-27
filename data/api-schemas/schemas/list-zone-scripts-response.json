@@ -1,0 +1,21 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/script"
+					},
+					"type": "array"
+				},
+				"result_info": {
+					"$ref": "#/components/schemas/result_info"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

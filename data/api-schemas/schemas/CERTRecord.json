@@ -1,0 +1,64 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "Formatted CERT content. See 'data' to set CERT properties.",
+					"readOnly": true,
+					"type": "string"
+				},
+				"data": {
+					"description": "Components of a CERT record.",
+					"properties": {
+						"algorithm": {
+							"description": "Algorithm.",
+							"example": 8,
+							"maximum": 255,
+							"minimum": 0,
+							"type": "number"
+						},
+						"certificate": {
+							"description": "Certificate.",
+							"type": "string"
+						},
+						"key_tag": {
+							"description": "Key Tag.",
+							"example": 1,
+							"maximum": 65535,
+							"minimum": 0,
+							"type": "number"
+						},
+						"type": {
+							"description": "Type.",
+							"example": 9,
+							"maximum": 65535,
+							"minimum": 0,
+							"type": "number"
+						}
+					},
+					"type": "object"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"CERT"
+					],
+					"example": "CERT",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"data"
+	],
+	"title": "CERT Record"
+}

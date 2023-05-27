@@ -1,0 +1,11 @@
+{
+	"properties": {
+		"custom_html": {
+			"$ref": "#/components/schemas/custom_page_html"
+		}
+	},
+	"required": [
+		"custom_html"
+	],
+	"type": "object"
+}

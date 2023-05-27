@@ -1,0 +1,28 @@
+{
+	"properties": {
+		"redact_pii": {
+			"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
+			"example": true,
+			"type": "boolean"
+		},
+		"settings_by_rule_type": {
+			"description": "Logging settings by rule type.",
+			"properties": {
+				"dns": {
+					"description": "Logging settings for DNS firewall.",
+					"type": "object"
+				},
+				"http": {
+					"description": "Logging settings for HTTP/HTTPS firewall.",
+					"type": "object"
+				},
+				"l4": {
+					"description": "Logging settings for Network firewall.",
+					"type": "object"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

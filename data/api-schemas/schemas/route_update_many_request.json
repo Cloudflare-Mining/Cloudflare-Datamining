@@ -1,0 +1,14 @@
+{
+	"properties": {
+		"routes": {
+			"items": {
+				"$ref": "#/components/schemas/route_update_single_request"
+			},
+			"type": "array"
+		}
+	},
+	"required": [
+		"routes"
+	],
+	"type": "object"
+}

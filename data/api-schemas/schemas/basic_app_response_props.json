@@ -1,0 +1,17 @@
+{
+	"properties": {
+		"aud": {
+			"$ref": "#/components/schemas/schemas-aud"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"id": {
+			"$ref": "#/components/schemas/uuid"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"type": "object"
+}

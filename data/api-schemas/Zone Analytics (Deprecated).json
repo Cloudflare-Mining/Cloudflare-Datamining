@@ -1,0 +1,384 @@
+{
+	"GET /zones/{zone_identifier}/analytics/colos": {
+		"deprecated": true,
+		"description": "This view provides a breakdown of analytics data by datacenter. Note: This is available to Enterprise customers only.",
+		"operationId": "zone-analytics-(-deprecated)-get-analytics-by-co-locations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "until",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "integer"
+						}
+					],
+					"default": 0,
+					"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+					"example": "2015-01-02T12:23:00Z"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "integer"
+						}
+					],
+					"default": -10080,
+					"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+					"example": "2015-01-01T12:23:00Z"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continuous",
+				"schema": {
+					"default": true,
+					"description": "When set to true, the API will move the requested time window backward, until it finds a region with completely aggregated data.\n\nThe API response _may not represent the requested time window_.",
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-4E3xSwyV"
+								},
+								{
+									"properties": {
+										"query": {
+											"$ref": "#/components/schemas/query_response"
+										},
+										"result": {
+											"$ref": "#/components/schemas/datacenters"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get analytics by Co-locations response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-4E3xSwyV"
+										},
+										{
+											"properties": {
+												"query": {
+													"$ref": "#/components/schemas/query_response"
+												},
+												"result": {
+													"$ref": "#/components/schemas/datacenters"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get analytics by Co-locations response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get analytics by Co-locations",
+		"tags": [
+			"Zone Analytics (Deprecated)"
+		],
+		"x-cfDeprecation": {
+			"description": "Please use the new GraphQL Analytics API instead: https://developers.cloudflare.com/analytics/graphql-api/. It provides equivalent data and more features, including the ability to select only the metrics you need. Migration guide: https://developers.cloudflare.com/analytics/migration-guides/zone-analytics/.",
+			"display": true,
+			"eol": "2021-03-01",
+			"id": "zone_analytics_deprecation"
+		},
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#analytics:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/analytics/dashboard": {
+		"deprecated": true,
+		"description": "The dashboard view provides both totals and timeseries data for the given zone and time period across the entire Cloudflare network.",
+		"operationId": "zone-analytics-(-deprecated)-get-dashboard",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "until",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "integer"
+						}
+					],
+					"default": 0,
+					"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+					"example": "2015-01-02T12:23:00Z"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "integer"
+						}
+					],
+					"default": -10080,
+					"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution.",
+					"example": "2015-01-01T12:23:00Z"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continuous",
+				"schema": {
+					"default": true,
+					"description": "When set to true, the API will move the requested time window backward, until it finds a region with completely aggregated data.\n\nThe API response _may not represent the requested time window_.",
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-4E3xSwyV"
+								},
+								{
+									"properties": {
+										"query": {
+											"$ref": "#/components/schemas/query_response"
+										},
+										"result": {
+											"$ref": "#/components/schemas/dashboard"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get dashboard response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-4E3xSwyV"
+										},
+										{
+											"properties": {
+												"query": {
+													"$ref": "#/components/schemas/query_response"
+												},
+												"result": {
+													"$ref": "#/components/schemas/dashboard"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get dashboard response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get dashboard",
+		"tags": [
+			"Zone Analytics (Deprecated)"
+		],
+		"x-cfDeprecation": {
+			"description": "Please use the new GraphQL Analytics API instead: https://developers.cloudflare.com/analytics/graphql-api/. It provides equivalent data and more features, including the ability to select only the metrics you need. Migration guide: https://developers.cloudflare.com/analytics/migration-guides/zone-analytics/.",
+			"display": true,
+			"eol": "2021-03-01",
+			"id": "zone_analytics_deprecation"
+		},
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#analytics:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

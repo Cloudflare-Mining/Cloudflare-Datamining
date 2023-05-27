@@ -1,0 +1,17 @@
+{
+	"description": "Unit of time to group data by.",
+	"enum": [
+		"all",
+		"auto",
+		"year",
+		"quarter",
+		"month",
+		"week",
+		"day",
+		"hour",
+		"dekaminute",
+		"minute"
+	],
+	"example": "hour",
+	"type": "string"
+}

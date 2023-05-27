@@ -1,0 +1,37 @@
+{
+	"properties": {
+		"enabled": {
+			"default": true,
+			"description": "Determines whether to run healthchecks for a tunnel.",
+			"example": true,
+			"type": "boolean"
+		},
+		"rate": {
+			"default": "mid",
+			"description": "How frequent the health check is run. The default value is `mid`.",
+			"enum": [
+				"low",
+				"mid",
+				"high"
+			],
+			"example": "low",
+			"type": "string"
+		},
+		"target": {
+			"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`.",
+			"example": "203.0.113.1",
+			"type": "string"
+		},
+		"type": {
+			"default": "reply",
+			"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+			"enum": [
+				"reply",
+				"request"
+			],
+			"example": "request",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

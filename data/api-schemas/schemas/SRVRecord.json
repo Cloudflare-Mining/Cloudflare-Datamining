@@ -1,0 +1,82 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "Priority, weight, port, and SRV target. See 'data' for setting the individual component values.",
+					"example": "10 IN SRV 5 8806 example.com.",
+					"readOnly": true,
+					"type": "string"
+				},
+				"data": {
+					"description": "Components of a SRV record.",
+					"properties": {
+						"name": {
+							"description": "A valid hostname.",
+							"example": "example.com",
+							"format": "hostname",
+							"type": "string"
+						},
+						"port": {
+							"description": "The port of the service.",
+							"example": 8806,
+							"maximum": 65535,
+							"minimum": 0,
+							"type": "number"
+						},
+						"priority": {
+							"$ref": "#/components/schemas/priority-f4OwASYt"
+						},
+						"proto": {
+							"description": "A valid protocol.",
+							"example": "_tcp",
+							"type": "string"
+						},
+						"service": {
+							"description": "A service type, prefixed with an underscore.",
+							"example": "_sip",
+							"type": "string"
+						},
+						"target": {
+							"description": "A valid hostname.",
+							"example": "example.com",
+							"format": "hostname",
+							"type": "string"
+						},
+						"weight": {
+							"description": "The record weight.",
+							"example": 5,
+							"maximum": 65535,
+							"minimum": 0,
+							"type": "number"
+						}
+					},
+					"type": "object"
+				},
+				"name": {
+					"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+					"example": "_sip._tcp.example.com",
+					"maxLength": 255,
+					"readOnly": true,
+					"type": "string"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"SRV"
+					],
+					"example": "SRV",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"data"
+	],
+	"title": "SRV Record"
+}

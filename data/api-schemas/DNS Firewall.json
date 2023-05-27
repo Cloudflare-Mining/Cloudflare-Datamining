@@ -1,0 +1,936 @@
+{
+	"DELETE /accounts/{account_identifier}/dns_firewall/{identifier}": {
+		"description": "Delete a configured DNS Firewall Cluster.",
+		"operationId": "dns-firewall-delete-dns-firewall-cluster",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete DNS Firewall Cluster response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete DNS Firewall Cluster response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete DNS Firewall Cluster",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_identifier}/dns_firewall": {
+		"description": "List configured DNS Firewall clusters for an account.",
+		"operationId": "dns-firewall-list-dns-firewall-clusters",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Number of clusters per page.",
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/dns-firewall"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List DNS Firewall Clusters response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/dns-firewall"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List DNS Firewall Clusters response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List DNS Firewall Clusters",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_identifier}/dns_firewall/{identifier}": {
+		"description": "Show a single configured DNS Firewall cluster for an account.",
+		"operationId": "dns-firewall-dns-firewall-cluster-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/dns-firewall"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "DNS Firewall Cluster Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/dns-firewall"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DNS Firewall Cluster Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "DNS Firewall Cluster Details",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /accounts/{account_identifier}/dns_firewall/{identifier}": {
+		"description": "Modify a DNS Firewall Cluster configuration.",
+		"operationId": "dns-firewall-update-dns-firewall-cluster",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/dns-firewall"
+							}
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/dns-firewall"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update DNS Firewall Cluster response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/dns-firewall"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update DNS Firewall Cluster response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update DNS Firewall Cluster",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_identifier}/dns_firewall": {
+		"description": "Create a configured DNS Firewall Cluster.",
+		"operationId": "dns-firewall-create-dns-firewall-cluster",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"attack_mitigation": {
+								"description": "Attack mitigation settings.",
+								"nullable": true,
+								"properties": {
+									"enabled": {
+										"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+										"example": true,
+										"type": "boolean"
+									},
+									"only_when_origin_unhealthy": {
+										"deprecated": true,
+										"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
+									},
+									"only_when_upstream_unhealthy": {
+										"default": true,
+										"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+										"example": false,
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"deprecate_any_requests": {
+								"description": "Deprecate the response to ANY requests.",
+								"example": true,
+								"type": "boolean"
+							},
+							"ecs_fallback": {
+								"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
+								"example": false,
+								"type": "boolean"
+							},
+							"maximum_cache_ttl": {
+								"default": 900,
+								"description": "Maximum DNS Cache TTL.",
+								"example": 900,
+								"maximum": 36000,
+								"minimum": 30,
+								"type": "number"
+							},
+							"minimum_cache_ttl": {
+								"default": 60,
+								"description": "Minimum DNS Cache TTL.",
+								"example": 60,
+								"maximum": 36000,
+								"minimum": 30,
+								"type": "number"
+							},
+							"name": {
+								"description": "DNS Firewall Cluster Name.",
+								"example": "My Awesome DNS Firewall cluster",
+								"maxLength": 160,
+								"type": "string"
+							},
+							"negative_cache_ttl": {
+								"description": "Negative DNS Cache TTL.",
+								"example": 900,
+								"maximum": 36000,
+								"minimum": 30,
+								"nullable": true,
+								"type": "number"
+							},
+							"origin_ips": {
+								"deprecated": true,
+								"description": "Deprecated alias for \"upstream_ips\"."
+							},
+							"ratelimit": {
+								"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+								"example": 600,
+								"maximum": 1000000000,
+								"minimum": 100,
+								"nullable": true,
+								"type": "number"
+							},
+							"retries": {
+								"default": 2,
+								"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
+								"example": 2,
+								"maximum": 2,
+								"minimum": 0,
+								"type": "number"
+							},
+							"upstream_ips": {
+								"example": [
+									"192.0.2.1",
+									"198.51.100.1",
+									"2001:DB8:100::CF"
+								],
+								"items": {
+									"anyOf": [
+										{
+											"description": "Upstream DNS Server IPv4 Address.",
+											"example": "192.0.2.1",
+											"format": "ipv4",
+											"type": "string"
+										},
+										{
+											"description": "Upstream DNS Server IPv6 Address.",
+											"example": "2001:DB8:100::CF",
+											"format": "ipv6",
+											"type": "string"
+										}
+									]
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"name",
+							"upstream_ips"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/dns-firewall"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create DNS Firewall Cluster response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/dns-firewall"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create DNS Firewall Cluster response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create DNS Firewall Cluster",
+		"tags": [
+			"DNS Firewall"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dns_records:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
+	"properties": {
+		"default_weight": {
+			"default": 1,
+			"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+			"example": 0.2,
+			"maximum": 1,
+			"minimum": 0,
+			"multipleOf": 0.1,
+			"type": "number"
+		},
+		"pool_weights": {
+			"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
+			"example": {
+				"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+				"de90f38ced07c2e2f4df50b1f61d4194": 0.3
+			},
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

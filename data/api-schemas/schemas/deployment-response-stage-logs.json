@@ -1,0 +1,135 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"example": {
+						"data": [
+							{
+								"id": 15,
+								"message": "Installing dependencies",
+								"timestamp": "2021-04-20T19:35:59.0749819Z"
+							},
+							{
+								"id": 16,
+								"message": "Python version set to 2.7",
+								"timestamp": "2021-04-20T19:35:59.0931208Z"
+							},
+							{
+								"id": 17,
+								"message": "v12.18.0 is already installed.",
+								"timestamp": "2021-04-20T19:36:02.2369501Z"
+							},
+							{
+								"id": 18,
+								"message": "Now using node v12.18.0 (npm v6.14.4)",
+								"timestamp": "2021-04-20T19:36:02.6028886Z"
+							},
+							{
+								"id": 19,
+								"message": "Started restoring cached build plugins",
+								"timestamp": "2021-04-20T19:36:02.624555Z"
+							},
+							{
+								"id": 20,
+								"message": "Finished restoring cached build plugins",
+								"timestamp": "2021-04-20T19:36:02.6340688Z"
+							},
+							{
+								"id": 21,
+								"message": "Attempting ruby version 2.7.1, read from environment",
+								"timestamp": "2021-04-20T19:36:02.963095Z"
+							},
+							{
+								"id": 22,
+								"message": "Using ruby version 2.7.1",
+								"timestamp": "2021-04-20T19:36:04.2236084Z"
+							},
+							{
+								"id": 23,
+								"message": "Using PHP version 5.6",
+								"timestamp": "2021-04-20T19:36:04.5450152Z"
+							},
+							{
+								"id": 24,
+								"message": "5.2 is already installed.",
+								"timestamp": "2021-04-20T19:36:04.5740509Z"
+							},
+							{
+								"id": 25,
+								"message": "Using Swift version 5.2",
+								"timestamp": "2021-04-20T19:36:04.577035Z"
+							},
+							{
+								"id": 26,
+								"message": "Installing Hugo 0.54.0",
+								"timestamp": "2021-04-20T19:36:04.5771615Z"
+							},
+							{
+								"id": 27,
+								"message": "Hugo Static Site Generator v0.54.0-B1A82C61A/extended linux/amd64 BuildDate: 2019-02-01T10:04:38Z",
+								"timestamp": "2021-04-20T19:36:05.4786868Z"
+							},
+							{
+								"id": 28,
+								"message": "Started restoring cached go cache",
+								"timestamp": "2021-04-20T19:36:05.4794366Z"
+							},
+							{
+								"id": 29,
+								"message": "Finished restoring cached go cache",
+								"timestamp": "2021-04-20T19:36:05.481977Z"
+							},
+							{
+								"id": 30,
+								"message": "go version go1.14.4 linux/amd64",
+								"timestamp": "2021-04-20T19:36:05.9049776Z"
+							},
+							{
+								"id": 31,
+								"message": "go version go1.14.4 linux/amd64",
+								"timestamp": "2021-04-20T19:36:05.9086053Z"
+							},
+							{
+								"id": 32,
+								"message": "Installing missing commands",
+								"timestamp": "2021-04-20T19:36:05.9163568Z"
+							},
+							{
+								"id": 33,
+								"message": "Verify run directory",
+								"timestamp": "2021-04-20T19:36:05.9163934Z"
+							},
+							{
+								"id": 34,
+								"message": "Executing user command: echo \"skipping build step: no build command specified\"",
+								"timestamp": "2021-04-20T19:36:05.9164636Z"
+							},
+							{
+								"id": 35,
+								"message": "skipping build step: no build command specified",
+								"timestamp": "2021-04-20T19:36:05.9165087Z"
+							},
+							{
+								"id": 36,
+								"message": "Finished",
+								"timestamp": "2021-04-20T19:36:05.917412Z"
+							}
+						],
+						"end": 37,
+						"ended_on": "2021-04-20T19:36:06.38889Z",
+						"name": "build",
+						"start": 0,
+						"started_on": "2021-04-20T19:35:58.238757Z",
+						"status": "success",
+						"total": 37
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

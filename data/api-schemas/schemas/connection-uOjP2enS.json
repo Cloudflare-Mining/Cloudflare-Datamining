@@ -1,0 +1,25 @@
+{
+	"properties": {
+		"created_on": {
+			"$ref": "#/components/schemas/connection_components-schemas-created_on"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/connection_components-schemas-enabled"
+		},
+		"id": {
+			"$ref": "#/components/schemas/connection_components-schemas-identifier"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/connection_components-schemas-modified_on"
+		},
+		"zone": {
+			"$ref": "#/components/schemas/connection_components-schemas-zone"
+		}
+	},
+	"required": [
+		"id",
+		"zone",
+		"enabled"
+	],
+	"type": "object"
+}

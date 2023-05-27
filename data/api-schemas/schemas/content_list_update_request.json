@@ -1,0 +1,15 @@
+{
+	"properties": {
+		"action": {
+			"$ref": "#/components/schemas/content_list_action"
+		},
+		"entries": {
+			"$ref": "#/components/schemas/content_list_entries"
+		}
+	},
+	"required": [
+		"action",
+		"entries"
+	],
+	"type": "object"
+}

@@ -1,0 +1,32 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"liveInputs": {
+							"items": {
+								"$ref": "#/components/schemas/live_input_object_without_url"
+							},
+							"type": "array"
+						},
+						"range": {
+							"description": "The total number of remaining live inputs based on cursor position.",
+							"example": 1000,
+							"type": "integer"
+						},
+						"total": {
+							"description": "The total number of live inputs that match the provided filters.",
+							"example": 35586,
+							"type": "integer"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

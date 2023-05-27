@@ -1,0 +1,35 @@
+{
+	"properties": {
+		"cloudflare_gre_endpoint": {
+			"$ref": "#/components/schemas/cloudflare_gre_endpoint"
+		},
+		"customer_gre_endpoint": {
+			"$ref": "#/components/schemas/customer_gre_endpoint"
+		},
+		"description": {
+			"$ref": "#/components/schemas/schemas-description-REceAhVc"
+		},
+		"health_check": {
+			"$ref": "#/components/schemas/health_check"
+		},
+		"interface_address": {
+			"$ref": "#/components/schemas/interface_address"
+		},
+		"mtu": {
+			"$ref": "#/components/schemas/mtu"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-HKQUsnZT"
+		},
+		"ttl": {
+			"$ref": "#/components/schemas/ttl"
+		}
+	},
+	"required": [
+		"name",
+		"customer_gre_endpoint",
+		"cloudflare_gre_endpoint",
+		"interface_address"
+	],
+	"type": "object"
+}

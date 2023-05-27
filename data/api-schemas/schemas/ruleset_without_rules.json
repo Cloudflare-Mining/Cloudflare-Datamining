@@ -1,0 +1,27 @@
+{
+	"description": "A ruleset object.",
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/rulesets_components-schemas-description"
+		},
+		"id": {
+			"$ref": "#/components/schemas/rulesets_components-schemas-id"
+		},
+		"kind": {
+			"$ref": "#/components/schemas/schemas-kind"
+		},
+		"last_updated": {
+			"$ref": "#/components/schemas/last_updated"
+		},
+		"name": {
+			"$ref": "#/components/schemas/rulesets_components-schemas-name"
+		},
+		"phase": {
+			"$ref": "#/components/schemas/phase"
+		},
+		"version": {
+			"$ref": "#/components/schemas/version-mnPBM1AP"
+		}
+	},
+	"type": "object"
+}

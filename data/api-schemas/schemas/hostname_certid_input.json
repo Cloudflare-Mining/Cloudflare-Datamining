@@ -1,0 +1,14 @@
+{
+	"properties": {
+		"cert_id": {
+			"$ref": "#/components/schemas/cert_id"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-enabled"
+		},
+		"hostname": {
+			"$ref": "#/components/schemas/schemas-hostname"
+		}
+	},
+	"type": "object"
+}

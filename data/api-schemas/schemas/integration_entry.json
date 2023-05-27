@@ -1,0 +1,29 @@
+{
+	"description": "An entry derived from an integration",
+	"properties": {
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"enabled": {
+			"description": "Whether the entry is enabled or not.",
+			"example": true,
+			"type": "boolean"
+		},
+		"id": {
+			"$ref": "#/components/schemas/entry_id"
+		},
+		"name": {
+			"description": "The name of the entry.",
+			"example": "Top Secret",
+			"type": "string"
+		},
+		"profile_id": {
+			"description": "ID of the parent profile"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"title": "Integration entry",
+	"type": "object"
+}

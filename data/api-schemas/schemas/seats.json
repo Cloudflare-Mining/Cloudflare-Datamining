@@ -1,0 +1,20 @@
+{
+	"properties": {
+		"access_seat": {
+			"$ref": "#/components/schemas/access_seat"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"gateway_seat": {
+			"$ref": "#/components/schemas/gateway_seat"
+		},
+		"seat_uid": {
+			"$ref": "#/components/schemas/seat_uid"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"type": "object"
+}

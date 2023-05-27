@@ -1,0 +1,45 @@
+{
+	"properties": {
+		"content_adds": {
+			"description": "Content category IDs to add.",
+			"example": [
+				82
+			]
+		},
+		"content_removes": {
+			"description": "Content category IDs to remove.",
+			"example": [
+				155
+			]
+		},
+		"indicator_type": {
+			"enum": [
+				"domain",
+				"ipv4",
+				"ipv6",
+				"url"
+			],
+			"example": "domain"
+		},
+		"ip": {
+			"description": "Provide only if indicator_type is `ipv4` or `ipv6`."
+		},
+		"security_adds": {
+			"description": "Security category IDs to add.",
+			"example": [
+				117,
+				131
+			]
+		},
+		"security_removes": {
+			"description": "Security category IDs to remove.",
+			"example": [
+				83
+			]
+		},
+		"url": {
+			"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`.",
+			"type": "string"
+		}
+	}
+}

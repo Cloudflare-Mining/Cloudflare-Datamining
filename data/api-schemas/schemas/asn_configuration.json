@@ -1,0 +1,17 @@
+{
+	"properties": {
+		"target": {
+			"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
+			"enum": [
+				"asn"
+			],
+			"example": "asn"
+		},
+		"value": {
+			"description": "The AS number to match.",
+			"example": "AS12345",
+			"type": "string"
+		}
+	},
+	"title": "An ASN configuration."
+}

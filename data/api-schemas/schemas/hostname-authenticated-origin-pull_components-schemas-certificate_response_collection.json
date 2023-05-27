@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/hostname-authenticated-origin-pull-88o60dAH"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

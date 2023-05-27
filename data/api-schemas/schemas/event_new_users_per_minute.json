@@ -1,0 +1,7 @@
+{
+	"description": "If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.",
+	"maximum": 2147483647,
+	"minimum": 200,
+	"nullable": true,
+	"type": "integer"
+}

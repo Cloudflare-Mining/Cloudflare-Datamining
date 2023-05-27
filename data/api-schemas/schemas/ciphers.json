@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"ciphers"
+					],
+					"example": "ciphers"
+				},
+				"value": {
+					"$ref": "#/components/schemas/ciphers_value"
+				}
+			}
+		}
+	],
+	"default": [],
+	"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+	"title": "Zone ciphers allowed for TLS termination"
+}

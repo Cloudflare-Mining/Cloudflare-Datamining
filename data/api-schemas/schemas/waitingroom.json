@@ -1,0 +1,65 @@
+{
+	"properties": {
+		"cookie_attributes": {
+			"$ref": "#/components/schemas/cookie_attributes"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"custom_page_html": {
+			"$ref": "#/components/schemas/custom_page_html"
+		},
+		"default_template_language": {
+			"$ref": "#/components/schemas/default_template_language"
+		},
+		"description": {
+			"$ref": "#/components/schemas/description-l6WrHymK"
+		},
+		"disable_session_renewal": {
+			"$ref": "#/components/schemas/disable_session_renewal"
+		},
+		"host": {
+			"$ref": "#/components/schemas/host-G3Fn5G1V"
+		},
+		"id": {
+			"$ref": "#/components/schemas/waiting_room_id"
+		},
+		"json_response_enabled": {
+			"$ref": "#/components/schemas/json_response_enabled"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-VYCKKs7l"
+		},
+		"new_users_per_minute": {
+			"$ref": "#/components/schemas/new_users_per_minute"
+		},
+		"next_event_prequeue_start_time": {
+			"$ref": "#/components/schemas/next_event_prequeue_start_time"
+		},
+		"next_event_start_time": {
+			"$ref": "#/components/schemas/next_event_start_time"
+		},
+		"path": {
+			"$ref": "#/components/schemas/path"
+		},
+		"queue_all": {
+			"$ref": "#/components/schemas/queue_all"
+		},
+		"queueing_method": {
+			"$ref": "#/components/schemas/queueing_method"
+		},
+		"session_duration": {
+			"$ref": "#/components/schemas/session_duration"
+		},
+		"suspended": {
+			"$ref": "#/components/schemas/suspended-7x9ZtH6I"
+		},
+		"total_active_users": {
+			"$ref": "#/components/schemas/total_active_users"
+		}
+	},
+	"type": "object"
+}

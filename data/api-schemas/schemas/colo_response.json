@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-4E3xSwyV"
+		},
+		{
+			"properties": {
+				"query": {
+					"$ref": "#/components/schemas/query_response"
+				},
+				"result": {
+					"$ref": "#/components/schemas/datacenters"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,30 @@
+{
+	"description": "A rule object.",
+	"properties": {
+		"action": {
+			"$ref": "#/components/schemas/RuleAction"
+		},
+		"action_parameters": {
+			"$ref": "#/components/schemas/RuleActionParameters"
+		},
+		"description": {
+			"$ref": "#/components/schemas/RuleDescription"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/RuleEnabled"
+		},
+		"expression": {
+			"$ref": "#/components/schemas/RuleExpression"
+		},
+		"id": {
+			"$ref": "#/components/schemas/RuleId"
+		},
+		"logging": {
+			"$ref": "#/components/schemas/RuleLogging"
+		},
+		"ref": {
+			"$ref": "#/components/schemas/RuleRef"
+		}
+	},
+	"type": "object"
+}

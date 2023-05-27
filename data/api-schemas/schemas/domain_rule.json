@@ -1,0 +1,23 @@
+{
+	"description": "Match an entire email domain.",
+	"properties": {
+		"email_domain": {
+			"properties": {
+				"domain": {
+					"description": "The email domain to match.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			"required": [
+				"domain"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"email_domain"
+	],
+	"title": "Email domain",
+	"type": "object"
+}

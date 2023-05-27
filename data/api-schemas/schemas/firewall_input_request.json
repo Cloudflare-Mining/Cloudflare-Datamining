@@ -1,0 +1,24 @@
+{
+	"properties": {
+		"enabled": {
+			"description": "Enabled",
+			"example": true,
+			"type": "boolean"
+		},
+		"operating_system": {
+			"description": "Operating System",
+			"enum": [
+				"windows",
+				"mac"
+			],
+			"example": "windows",
+			"type": "string"
+		}
+	},
+	"required": [
+		"operating_system",
+		"enabled"
+	],
+	"title": "Firewall",
+	"type": "object"
+}

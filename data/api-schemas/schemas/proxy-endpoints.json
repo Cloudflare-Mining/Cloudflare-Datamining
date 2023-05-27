@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"id": {
+			"$ref": "#/components/schemas/schemas-uuid"
+		},
+		"ips": {
+			"$ref": "#/components/schemas/ips-EpthZ0nG"
+		},
+		"name": {
+			"$ref": "#/components/schemas/proxy-endpoints_components-schemas-name"
+		},
+		"subdomain": {
+			"$ref": "#/components/schemas/schemas-subdomain"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"type": "object"
+}

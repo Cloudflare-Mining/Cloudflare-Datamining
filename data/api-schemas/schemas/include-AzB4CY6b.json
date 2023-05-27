@@ -1,0 +1,7 @@
+{
+	"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
+	"items": {
+		"$ref": "#/components/schemas/rule_components-schemas-rule"
+	},
+	"type": "array"
+}

@@ -1,0 +1,10 @@
+{
+	"default": 100,
+	"description": "Value of the zone setting.\nNotes: The size depends on the plan level of the zone. (Enterprise = 500, Business = 200, Pro = 100, Free = 100)",
+	"enum": [
+		100,
+		200,
+		500
+	],
+	"type": "number"
+}

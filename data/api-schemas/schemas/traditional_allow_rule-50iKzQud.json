@@ -1,0 +1,29 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/rule_components-schemas-base-2"
+		},
+		{
+			"properties": {
+				"allowed_modes": {
+					"$ref": "#/components/schemas/allowed_modes_allow_traditional"
+				},
+				"mode": {
+					"$ref": "#/components/schemas/mode_allow_traditional"
+				}
+			}
+		}
+	],
+	"description": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
+	"required": [
+		"id",
+		"description",
+		"priority",
+		"allowed_modes",
+		"default_mode",
+		"mode",
+		"group",
+		"package_id"
+	],
+	"title": "Traditional (allow) WAF rule"
+}

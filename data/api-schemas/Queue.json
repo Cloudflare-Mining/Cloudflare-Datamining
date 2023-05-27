@@ -1,0 +1,2317 @@
+{
+	"DELETE /accounts/{account_identifier}/workers/queues/{name}": {
+		"description": "Deletes a queue.",
+		"operationId": "queue-delete-queue",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "name",
+				"required": true,
+				"schema": {
+					"example": "example-queue",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"nullable": true,
+									"properties": {
+										"result": {
+											"nullable": true
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Queue response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"nullable": true,
+											"properties": {
+												"result": {
+													"nullable": true
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Queue response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete Queue",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.delete"
+			]
+		}
+	},
+	"DELETE /accounts/{account_identifier}/workers/queues/{name}/consumers/{consumer_name}": {
+		"description": "Deletes the consumer for a queue.",
+		"operationId": "queue-delete-queue-consumer",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "consumer_name",
+				"required": true,
+				"schema": {
+					"example": "example-consumer",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "name",
+				"required": true,
+				"schema": {
+					"example": "example-queue",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"nullable": true,
+									"properties": {
+										"result": {
+											"nullable": true
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Queue Consumer response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"nullable": true,
+											"properties": {
+												"result": {
+													"nullable": true
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Queue Consumer response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete Queue Consumer",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.delete"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/workers/queues": {
+		"description": "Returns the queues owned by an account.",
+		"operationId": "queue-list-queues",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"nullable": true
+										}
+									}
+								},
+								{
+									"properties": {
+										"messages": {
+											"nullable": true
+										}
+									}
+								},
+								{
+									"properties": {
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 1
+												},
+												"page": {
+													"example": 1
+												},
+												"per_page": {
+													"example": 100
+												},
+												"total_count": {
+													"example": 1
+												},
+												"total_pages": {
+													"example": 1
+												}
+											},
+											"type": "object"
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"consumers": {
+														"readOnly": true
+													},
+													"consumers_total_count": {
+														"readOnly": true
+													},
+													"created_on": {
+														"readOnly": true
+													},
+													"modified_on": {
+														"readOnly": true
+													},
+													"producers": {
+														"readOnly": true
+													},
+													"producers_total_count": {
+														"readOnly": true
+													},
+													"queue_id": {
+														"readOnly": true
+													},
+													"queue_name": {
+														"$ref": "#/components/schemas/queues_components-schemas-name"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"queue_id",
+										"queue_name",
+										"created_on",
+										"modified_on",
+										"producers_total_count",
+										"producers",
+										"consumers_total_count",
+										"consumers"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Queues response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"errors": {
+													"nullable": true
+												}
+											}
+										},
+										{
+											"properties": {
+												"messages": {
+													"nullable": true
+												}
+											}
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"example": 1
+														},
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 100
+														},
+														"total_count": {
+															"example": 1
+														},
+														"total_pages": {
+															"example": 1
+														}
+													},
+													"type": "object"
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"consumers": {
+																"readOnly": true
+															},
+															"consumers_total_count": {
+																"readOnly": true
+															},
+															"created_on": {
+																"readOnly": true
+															},
+															"modified_on": {
+																"readOnly": true
+															},
+															"producers": {
+																"readOnly": true
+															},
+															"producers_total_count": {
+																"readOnly": true
+															},
+															"queue_id": {
+																"readOnly": true
+															},
+															"queue_name": {
+																"$ref": "#/components/schemas/queues_components-schemas-name"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"queue_id",
+												"queue_name",
+												"created_on",
+												"modified_on",
+												"producers_total_count",
+												"producers",
+												"consumers_total_count",
+												"consumers"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Queues response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List Queues",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.list"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/workers/queues/{name}": {
+		"description": "Get information about a specific queue.",
+		"operationId": "queue-queue-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "name",
+				"required": true,
+				"schema": {
+					"example": "example-queue",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"consumers": {
+															"readOnly": true
+														},
+														"consumers_total_count": {
+															"readOnly": true
+														},
+														"created_on": {
+															"readOnly": true
+														},
+														"modified_on": {
+															"readOnly": true
+														},
+														"producers": {
+															"readOnly": true
+														},
+														"producers_total_count": {
+															"readOnly": true
+														},
+														"queue_id": {
+															"readOnly": true
+														},
+														"queue_name": {
+															"$ref": "#/components/schemas/queues_components-schemas-name"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"queue_id",
+										"queue_name",
+										"created_on",
+										"modified_on"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Queue Details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"consumers": {
+																	"readOnly": true
+																},
+																"consumers_total_count": {
+																	"readOnly": true
+																},
+																"created_on": {
+																	"readOnly": true
+																},
+																"modified_on": {
+																	"readOnly": true
+																},
+																"producers": {
+																	"readOnly": true
+																},
+																"producers_total_count": {
+																	"readOnly": true
+																},
+																"queue_id": {
+																	"readOnly": true
+																},
+																"queue_name": {
+																	"$ref": "#/components/schemas/queues_components-schemas-name"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"queue_id",
+												"queue_name",
+												"created_on",
+												"modified_on"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Queue Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Queue Details",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.read"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/workers/queues/{name}/consumers": {
+		"description": "Returns the consumers for a queue.",
+		"operationId": "queue-list-queue-consumers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "name",
+				"required": true,
+				"schema": {
+					"example": "example-queue",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"nullable": true
+										}
+									}
+								},
+								{
+									"properties": {
+										"messages": {
+											"nullable": true
+										}
+									}
+								},
+								{
+									"properties": {
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 1
+												},
+												"page": {
+													"example": 1
+												},
+												"per_page": {
+													"example": 100
+												},
+												"total_count": {
+													"example": 1
+												},
+												"total_pages": {
+													"example": 1
+												}
+											},
+											"type": "object"
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created_on": {
+														"readOnly": true
+													},
+													"environment": {
+														"readOnly": true
+													},
+													"queue_name": {
+														"readOnly": true
+													},
+													"service": {
+														"readOnly": true
+													},
+													"settings": {
+														"properties": {
+															"batch_size": {
+																"$ref": "#/components/schemas/batch_size"
+															},
+															"max_retries": {
+																"$ref": "#/components/schemas/max_retries"
+															},
+															"max_wait_time_ms": {
+																"$ref": "#/components/schemas/max_wait_time_ms"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"queue_name",
+										"created_on",
+										"settings"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Queue Consumers response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"errors": {
+													"nullable": true
+												}
+											}
+										},
+										{
+											"properties": {
+												"messages": {
+													"nullable": true
+												}
+											}
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"example": 1
+														},
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 100
+														},
+														"total_count": {
+															"example": 1
+														},
+														"total_pages": {
+															"example": 1
+														}
+													},
+													"type": "object"
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"created_on": {
+																"readOnly": true
+															},
+															"environment": {
+																"readOnly": true
+															},
+															"queue_name": {
+																"readOnly": true
+															},
+															"service": {
+																"readOnly": true
+															},
+															"settings": {
+																"properties": {
+																	"batch_size": {
+																		"$ref": "#/components/schemas/batch_size"
+																	},
+																	"max_retries": {
+																		"$ref": "#/components/schemas/max_retries"
+																	},
+																	"max_wait_time_ms": {
+																		"$ref": "#/components/schemas/max_wait_time_ms"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"queue_name",
+												"created_on",
+												"settings"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Queue Consumers response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List Queue Consumers",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.list"
+			]
+		}
+	},
+	"POST /accounts/{account_identifier}/workers/queues": {
+		"description": "Creates a new queue.",
+		"operationId": "queue-create-queue",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": {
+							"queue_name": "example-queue"
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"readOnly": true
+														},
+														"modified_on": {
+															"readOnly": true
+														},
+														"queue_id": {
+															"readOnly": true
+														},
+														"queue_name": {
+															"$ref": "#/components/schemas/queues_components-schemas-name"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"queue_id",
+										"queue_name",
+										"created_on",
+										"modified_on"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Queue response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"readOnly": true
+																},
+																"modified_on": {
+																	"readOnly": true
+																},
+																"queue_id": {
+																	"readOnly": true
+																},
+																"queue_name": {
+																	"$ref": "#/components/schemas/queues_components-schemas-name"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"queue_id",
+												"queue_name",
+												"created_on",
+												"modified_on"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Queue response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create Queue",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.create"
+			]
+		}
+	},
+	"POST /accounts/{account_identifier}/workers/queues/{name}/consumers": {
+		"description": "Creates a new consumer for a queue.",
+		"operationId": "queue-create-queue-consumer",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "name",
+				"required": true,
+				"schema": {
+					"example": "example-queue",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": {
+							"dead_letter_queue": "example-dlq",
+							"environment": "production",
+							"script_name": "example-consumer",
+							"settings": {
+								"batch_size": 10,
+								"max_retries": 3,
+								"max_wait_time_ms": 5000
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"readOnly": true
+														},
+														"dead_letter_queue": {
+															"$ref": "#/components/schemas/dlq_name"
+														},
+														"environment": {
+															"readOnly": true
+														},
+														"queue_name": {
+															"readOnly": true
+														},
+														"script_name": {
+															"readOnly": true
+														},
+														"settings": {
+															"properties": {
+																"batch_size": {
+																	"$ref": "#/components/schemas/batch_size"
+																},
+																"max_retries": {
+																	"$ref": "#/components/schemas/max_retries"
+																},
+																"max_wait_time_ms": {
+																	"$ref": "#/components/schemas/max_wait_time_ms"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"queue_name",
+										"script_name",
+										"settings",
+										"dead_letter_queue",
+										"created_on"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Queue Consumer response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"readOnly": true
+																},
+																"dead_letter_queue": {
+																	"$ref": "#/components/schemas/dlq_name"
+																},
+																"environment": {
+																	"readOnly": true
+																},
+																"queue_name": {
+																	"readOnly": true
+																},
+																"script_name": {
+																	"readOnly": true
+																},
+																"settings": {
+																	"properties": {
+																		"batch_size": {
+																			"$ref": "#/components/schemas/batch_size"
+																		},
+																		"max_retries": {
+																			"$ref": "#/components/schemas/max_retries"
+																		},
+																		"max_wait_time_ms": {
+																			"$ref": "#/components/schemas/max_wait_time_ms"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"queue_name",
+												"script_name",
+												"settings",
+												"dead_letter_queue",
+												"created_on"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Queue Consumer response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create Queue Consumer",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.create"
+			]
+		}
+	},
+	"PUT /accounts/{account_identifier}/workers/queues/{name}": {
+		"description": "Updates a queue.",
+		"operationId": "queue-update-queue",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "name",
+				"required": true,
+				"schema": {
+					"example": "example-queue",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": {
+							"queue_name": "renamed-example-queue"
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"readOnly": true
+														},
+														"modified_on": {
+															"readOnly": true
+														},
+														"queue_id": {
+															"readOnly": true
+														},
+														"queue_name": {
+															"$ref": "#/components/schemas/renamed_name"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"queue_id",
+										"queue_name",
+										"created_on",
+										"modified_on"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Queue response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"readOnly": true
+																},
+																"modified_on": {
+																	"readOnly": true
+																},
+																"queue_id": {
+																	"readOnly": true
+																},
+																"queue_name": {
+																	"$ref": "#/components/schemas/renamed_name"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"queue_id",
+												"queue_name",
+												"created_on",
+												"modified_on"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Queue response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update Queue",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.update"
+			]
+		}
+	},
+	"PUT /accounts/{account_identifier}/workers/queues/{name}/consumers/{consumer_name}": {
+		"description": "Updates the consumer for a queue, or creates one if it does not exist.",
+		"operationId": "queue-update-queue-consumer",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "consumer_name",
+				"required": true,
+				"schema": {
+					"example": "example-consumer",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "name",
+				"required": true,
+				"schema": {
+					"example": "example-queue",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": {
+							"dead_letter_queue": "updated-example-dlq",
+							"environment": "production",
+							"script_name": "example-consumer",
+							"settings": {
+								"batch_size": 100
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"readOnly": true
+														},
+														"dead_letter_queue": {
+															"example": "updated-example-dlq"
+														},
+														"environment": {
+															"readOnly": true
+														},
+														"queue_name": {
+															"readOnly": true
+														},
+														"script_name": {
+															"readOnly": true
+														},
+														"settings": {
+															"properties": {
+																"batch_size": {
+																	"example": 100,
+																	"type": "number"
+																},
+																"max_retries": {
+																	"$ref": "#/components/schemas/max_retries"
+																},
+																"max_wait_time_ms": {
+																	"$ref": "#/components/schemas/max_wait_time_ms"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"queue_name",
+										"script_name",
+										"settings",
+										"dead_letter_queue",
+										"created_on"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Queue Consumer response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"readOnly": true
+																},
+																"dead_letter_queue": {
+																	"example": "updated-example-dlq"
+																},
+																"environment": {
+																	"readOnly": true
+																},
+																"queue_name": {
+																	"readOnly": true
+																},
+																"script_name": {
+																	"readOnly": true
+																},
+																"settings": {
+																	"properties": {
+																		"batch_size": {
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"max_retries": {
+																			"$ref": "#/components/schemas/max_retries"
+																		},
+																		"max_wait_time_ms": {
+																			"$ref": "#/components/schemas/max_wait_time_ms"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"queue_name",
+												"script_name",
+												"settings",
+												"dead_letter_queue",
+												"created_on"
+											],
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Queue Consumer response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update Queue Consumer",
+		"tags": [
+			"Queue"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.update"
+			]
+		}
+	}
+}

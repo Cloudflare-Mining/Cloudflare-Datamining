@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"cache_level"
+					],
+					"example": "cache_level"
+				},
+				"value": {
+					"$ref": "#/components/schemas/cache_level_value"
+				}
+			}
+		}
+	],
+	"description": "Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256).",
+	"title": "Cloudflare Cache Level"
+}

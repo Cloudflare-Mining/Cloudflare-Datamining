@@ -1,0 +1,24 @@
+{
+	"description": "Content list entry to be blocked.",
+	"properties": {
+		"content": {
+			"$ref": "#/components/schemas/content_list_entry_content"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"description": {
+			"$ref": "#/components/schemas/content_list_entry_description"
+		},
+		"id": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"type": {
+			"$ref": "#/components/schemas/content_list_entry_type"
+		}
+	},
+	"type": "object"
+}

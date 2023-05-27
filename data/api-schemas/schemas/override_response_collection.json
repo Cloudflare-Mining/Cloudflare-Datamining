@@ -1,0 +1,34 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/override"
+							},
+							{
+								"required": [
+									"id",
+									"paused",
+									"urls",
+									"priority"
+								],
+								"type": "object"
+							}
+						]
+					},
+					"type": "array"
+				}
+			},
+			"required": [
+				"result"
+			],
+			"type": "object"
+		}
+	]
+}

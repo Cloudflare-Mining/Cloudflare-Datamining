@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-IKr3W3bC"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/device-managed-networks"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"description": "DLP body scanning setting",
+	"properties": {
+		"inspection_mode": {
+			"description": "Inspection mode. One of deep or shallow",
+			"example": "deep",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

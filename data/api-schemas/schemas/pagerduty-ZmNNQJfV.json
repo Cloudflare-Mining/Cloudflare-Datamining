@@ -1,0 +1,11 @@
+{
+	"properties": {
+		"id": {
+			"$ref": "#/components/schemas/uuid"
+		},
+		"name": {
+			"$ref": "#/components/schemas/pagerduty_components-schemas-name"
+		}
+	},
+	"type": "object"
+}

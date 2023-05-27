@@ -1,0 +1,24 @@
+{
+	"description": "Matches a specific email.",
+	"properties": {
+		"email": {
+			"properties": {
+				"email": {
+					"description": "The email of the user.",
+					"example": "test@example.com",
+					"format": "email",
+					"type": "string"
+				}
+			},
+			"required": [
+				"email"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"email"
+	],
+	"title": "Email",
+	"type": "object"
+}

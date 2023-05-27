@@ -1,0 +1,347 @@
+{
+	"GET /zones/{zone_identifier}/acm/total_tls": {
+		"description": "Get Total TLS Settings for a Zone.",
+		"operationId": "total-tls-total-tls-settings-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"certificate_authority": {
+													"$ref": "#/components/schemas/schemas-certificate_authority-ZvpvCdQh"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/components-schemas-enabled"
+												},
+												"validity_days": {
+													"$ref": "#/components/schemas/schemas-validity_days"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Total TLS Settings Details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"certificate_authority": {
+															"$ref": "#/components/schemas/schemas-certificate_authority-ZvpvCdQh"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/components-schemas-enabled"
+														},
+														"validity_days": {
+															"$ref": "#/components/schemas/schemas-validity_days"
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Total TLS Settings Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Total TLS Settings Details",
+		"tags": [
+			"Total TLS"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_identifier}/acm/total_tls": {
+		"description": "Set Total TLS Settings or disable the feature for a Zone.",
+		"operationId": "total-tls-enable-or-disable-total-tls",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"certificate_authority": {
+								"description": "The Certificate Authority that Total TLS certificates will be issued through.",
+								"enum": [
+									"google",
+									"lets_encrypt"
+								],
+								"example": "google",
+								"type": "string"
+							},
+							"enabled": {
+								"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"required": [
+							"enabled"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"certificate_authority": {
+													"$ref": "#/components/schemas/schemas-certificate_authority-ZvpvCdQh"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/components-schemas-enabled"
+												},
+												"validity_days": {
+													"$ref": "#/components/schemas/schemas-validity_days"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Enable or Disable Total TLS response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"certificate_authority": {
+															"$ref": "#/components/schemas/schemas-certificate_authority-ZvpvCdQh"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/components-schemas-enabled"
+														},
+														"validity_days": {
+															"$ref": "#/components/schemas/schemas-validity_days"
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Enable or Disable Total TLS response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Enable or Disable Total TLS",
+		"tags": [
+			"Total TLS"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read",
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

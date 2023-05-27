@@ -1,0 +1,110 @@
+{
+	"description": "BETA Field Not General Access: A list of rules for this load balancer to execute.",
+	"items": {
+		"additionalProperties": false,
+		"description": "A rule object containing conditions and overrides for this load balancer to evaluate.",
+		"properties": {
+			"condition": {
+				"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.",
+				"example": "http.request.uri.path contains \"/testing\"",
+				"type": "string"
+			},
+			"disabled": {
+				"default": false,
+				"description": "Disable this specific rule. It will no longer be evaluated by this load balancer.",
+				"type": "boolean"
+			},
+			"fixed_response": {
+				"description": "A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates.",
+				"properties": {
+					"content_type": {
+						"description": "The http 'Content-Type' header to include in the response.",
+						"example": "application/json",
+						"maxLength": 32,
+						"type": "string"
+					},
+					"location": {
+						"description": "The http 'Location' header to include in the response.",
+						"example": "www.example.com",
+						"maxLength": 2048,
+						"type": "string"
+					},
+					"message_body": {
+						"description": "Text to include as the http body.",
+						"example": "Testing Hello",
+						"maxLength": 1024,
+						"type": "string"
+					},
+					"status_code": {
+						"description": "The http status code to respond with.",
+						"type": "integer"
+					}
+				},
+				"type": "object"
+			},
+			"name": {
+				"description": "Name of this rule. Only used for human readability.",
+				"example": "route the path /testing to testing datacenter.",
+				"maxLength": 200,
+				"type": "string"
+			},
+			"overrides": {
+				"description": "A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional.",
+				"properties": {
+					"adaptive_routing": {
+						"$ref": "#/components/schemas/adaptive_routing"
+					},
+					"country_pools": {
+						"$ref": "#/components/schemas/country_pools"
+					},
+					"default_pools": {
+						"$ref": "#/components/schemas/default_pools"
+					},
+					"fallback_pool": {
+						"$ref": "#/components/schemas/fallback_pool"
+					},
+					"location_strategy": {
+						"$ref": "#/components/schemas/location_strategy"
+					},
+					"pop_pools": {
+						"$ref": "#/components/schemas/pop_pools"
+					},
+					"random_steering": {
+						"$ref": "#/components/schemas/random_steering"
+					},
+					"region_pools": {
+						"$ref": "#/components/schemas/region_pools"
+					},
+					"session_affinity": {
+						"$ref": "#/components/schemas/session_affinity"
+					},
+					"session_affinity_attributes": {
+						"$ref": "#/components/schemas/session_affinity_attributes"
+					},
+					"session_affinity_ttl": {
+						"$ref": "#/components/schemas/session_affinity_ttl"
+					},
+					"steering_policy": {
+						"$ref": "#/components/schemas/steering_policy"
+					},
+					"ttl": {
+						"$ref": "#/components/schemas/ttl-lReRioZw"
+					}
+				},
+				"type": "object"
+			},
+			"priority": {
+				"default": 0,
+				"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+				"type": "integer"
+			},
+			"terminates": {
+				"default": false,
+				"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
+				"type": "boolean"
+			}
+		},
+		"type": "object"
+	},
+	"type": "array"
+}

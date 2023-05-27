@@ -1,0 +1,13 @@
+{
+	"description": "Specifies the processing status of the video.",
+	"enum": [
+		"pendingupload",
+		"downloading",
+		"queued",
+		"inprogress",
+		"ready",
+		"error"
+	],
+	"example": "inprogress",
+	"type": "string"
+}

@@ -1,0 +1,9 @@
+{
+	"description": "The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.",
+	"properties": {
+		"Host": {
+			"$ref": "#/components/schemas/Host"
+		}
+	},
+	"type": "object"
+}

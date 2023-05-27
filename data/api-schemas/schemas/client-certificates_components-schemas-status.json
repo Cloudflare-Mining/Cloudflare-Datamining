@@ -1,0 +1,10 @@
+{
+	"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+	"enum": [
+		"active",
+		"pending_reactivation",
+		"pending_revocation",
+		"revoked"
+	],
+	"example": "active"
+}

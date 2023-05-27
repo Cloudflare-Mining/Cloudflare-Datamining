@@ -1,0 +1,12 @@
+{
+	"description": "List of domains that Access will secure.",
+	"example": [
+		"test.example.com/admin",
+		"test.anotherexample.com/staff"
+	],
+	"items": {
+		"description": "A domain that Access will secure.",
+		"type": "string"
+	},
+	"type": "array"
+}

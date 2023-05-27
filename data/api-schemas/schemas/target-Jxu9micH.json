@@ -1,0 +1,12 @@
+{
+	"description": "A request condition target.",
+	"oneOf": [
+		{
+			"$ref": "#/components/schemas/url_target"
+		}
+	],
+	"required": [
+		"target",
+		"constraint"
+	]
+}

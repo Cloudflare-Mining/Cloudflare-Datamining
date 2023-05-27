@@ -1,0 +1,11 @@
+{
+	"description": "Target gateway of the hostname.",
+	"enum": [
+		"ethereum",
+		"ipfs",
+		"ipfs_universal_path",
+		"polygon"
+	],
+	"example": "ipfs",
+	"type": "string"
+}

@@ -1,0 +1,27 @@
+{
+	"description": "A client (typically cloudflared) that maintains connections to a Cloudflare data center.",
+	"properties": {
+		"arch": {
+			"$ref": "#/components/schemas/arch"
+		},
+		"config_version": {
+			"$ref": "#/components/schemas/config_version"
+		},
+		"conns": {
+			"$ref": "#/components/schemas/connections"
+		},
+		"features": {
+			"$ref": "#/components/schemas/features-sjHYfsUa"
+		},
+		"id": {
+			"$ref": "#/components/schemas/connection_id"
+		},
+		"run_at": {
+			"$ref": "#/components/schemas/run_at"
+		},
+		"version": {
+			"$ref": "#/components/schemas/version"
+		}
+	},
+	"type": "object"
+}

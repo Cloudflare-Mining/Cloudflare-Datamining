@@ -1,0 +1,9 @@
+{
+	"description": "The PSK metadata that includes when the PSK was generated.",
+	"properties": {
+		"last_generated_on": {
+			"$ref": "#/components/schemas/schemas-modified_on"
+		}
+	},
+	"type": "object"
+}

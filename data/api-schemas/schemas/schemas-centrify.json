@@ -1,0 +1,36 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/schemas-identity-provider"
+		},
+		{
+			"properties": {
+				"config": {
+					"allOf": [
+						{
+							"$ref": "#/components/schemas/generic-oauth-config"
+						},
+						{
+							"properties": {
+								"centrify_account": {
+									"description": "Your centrify account url",
+									"example": "https://abc123.my.centrify.com/",
+									"type": "string"
+								},
+								"centrify_app_id": {
+									"description": "Your centrify app id",
+									"example": "exampleapp",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					]
+				}
+			},
+			"type": "object"
+		}
+	],
+	"title": "Centrify",
+	"type": "object"
+}

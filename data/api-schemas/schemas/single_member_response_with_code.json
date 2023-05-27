@@ -1,0 +1,15 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-lOEXq4i2"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/member_with_code"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

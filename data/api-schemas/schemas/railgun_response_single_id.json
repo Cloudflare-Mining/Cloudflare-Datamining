@@ -1,0 +1,18 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/railgun_response_single"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"id": {
+							"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+						}
+					}
+				}
+			}
+		}
+	]
+}

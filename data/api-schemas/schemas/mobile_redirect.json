@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "Identifier of the zone setting.",
+					"enum": [
+						"mobile_redirect"
+					],
+					"example": "mobile_redirect"
+				},
+				"value": {
+					"$ref": "#/components/schemas/mobile_redirect_value"
+				}
+			}
+		}
+	],
+	"description": "Automatically redirect visitors on mobile devices to a mobile-optimized subdomain. Refer to [Understanding Cloudflare Mobile Redirect](https://support.cloudflare.com/hc/articles/200168336) for more information.",
+	"title": "Mobile Redirect"
+}

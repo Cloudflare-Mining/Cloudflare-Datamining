@@ -1,0 +1,12 @@
+{
+	"description": "If no source colo names specified, all colos will be used. China colos are unavailable for traceroutes.",
+	"example": [
+		"den",
+		"sin"
+	],
+	"items": {
+		"description": "Source colo name.",
+		"type": "string"
+	},
+	"type": "array"
+}

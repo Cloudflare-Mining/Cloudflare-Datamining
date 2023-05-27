@@ -1,0 +1,54 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"argo_smart_routing": {
+							"$ref": "#/components/schemas/argo_smart_routing"
+						},
+						"created_on": {
+							"$ref": "#/components/schemas/created-g1WX3wAw"
+						},
+						"dns": {
+							"$ref": "#/components/schemas/dns"
+						},
+						"edge_ips": {
+							"$ref": "#/components/schemas/edge_ips"
+						},
+						"id": {
+							"$ref": "#/components/schemas/app_id-ub5dDM7R"
+						},
+						"ip_firewall": {
+							"$ref": "#/components/schemas/ip_firewall"
+						},
+						"modified_on": {
+							"$ref": "#/components/schemas/modified-5Zi1BTkE"
+						},
+						"origin_dns": {
+							"$ref": "#/components/schemas/origin_dns"
+						},
+						"origin_port": {
+							"$ref": "#/components/schemas/origin_port"
+						},
+						"protocol": {
+							"$ref": "#/components/schemas/protocol"
+						},
+						"proxy_protocol": {
+							"$ref": "#/components/schemas/proxy_protocol"
+						},
+						"tls": {
+							"$ref": "#/components/schemas/tls"
+						},
+						"traffic_type": {
+							"$ref": "#/components/schemas/traffic_type"
+						}
+					}
+				}
+			}
+		}
+	]
+}

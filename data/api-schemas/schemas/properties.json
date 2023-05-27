@@ -1,0 +1,15 @@
+{
+	"description": "Requests information about certain properties.",
+	"example": [
+		"auth_id_characteristics"
+	],
+	"items": {
+		"enum": [
+			"auth_id_characteristics"
+		],
+		"example": "auth_id_characteristics",
+		"type": "string"
+	},
+	"type": "array",
+	"uniqueItems": true
+}

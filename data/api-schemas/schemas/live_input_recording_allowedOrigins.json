@@ -1,0 +1,10 @@
+{
+	"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
+	"example": [
+		"example.com"
+	],
+	"items": {
+		"type": "string"
+	},
+	"type": "array"
+}

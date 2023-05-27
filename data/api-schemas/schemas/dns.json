@@ -1,0 +1,12 @@
+{
+	"description": "The name and type of DNS record for the Spectrum application.",
+	"properties": {
+		"name": {
+			"$ref": "#/components/schemas/dns_name"
+		},
+		"type": {
+			"$ref": "#/components/schemas/dns_type"
+		}
+	},
+	"type": "object"
+}

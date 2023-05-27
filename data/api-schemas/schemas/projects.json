@@ -1,0 +1,77 @@
+{
+	"properties": {
+		"build_config": {
+			"$ref": "#/components/schemas/build_config"
+		},
+		"canonical_deployment": {
+			"description": "Most recent deployment to the repo.",
+			"oneOf": [
+				{
+					"nullable": true
+				},
+				{
+					"$ref": "#/components/schemas/deployments"
+				}
+			],
+			"readOnly": true
+		},
+		"created_on": {
+			"description": "When the project was created.",
+			"example": "2017-01-01T00:00:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"deployment_configs": {
+			"$ref": "#/components/schemas/deployment_configs"
+		},
+		"domains": {
+			"description": "A list of associated custom domains for the project.",
+			"example": [
+				"customdomain.com",
+				"customdomain.org"
+			],
+			"items": {},
+			"readOnly": true,
+			"type": "array"
+		},
+		"id": {
+			"description": "Id of the project.",
+			"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+			"readOnly": true,
+			"type": "string"
+		},
+		"latest_deployment": {
+			"description": "Most recent deployment to the repo.",
+			"oneOf": [
+				{
+					"nullable": true
+				},
+				{
+					"$ref": "#/components/schemas/deployments"
+				}
+			],
+			"readOnly": true
+		},
+		"name": {
+			"description": "Name of the project.",
+			"example": "NextJS Blog",
+			"type": "string"
+		},
+		"production_branch": {
+			"description": "Production branch of the project. Used to identify production deployments.",
+			"example": "main",
+			"type": "string"
+		},
+		"source": {
+			"readOnly": true
+		},
+		"subdomain": {
+			"description": "The Cloudflare subdomain associated with the project.",
+			"example": "helloworld.pages.dev",
+			"readOnly": true,
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

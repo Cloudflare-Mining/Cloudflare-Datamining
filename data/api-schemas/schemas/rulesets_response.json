@@ -1,0 +1,19 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"description": "A list of rulesets. The returned information will not include the rules in each ruleset.",
+					"items": {
+						"$ref": "#/components/schemas/ruleset_without_rules"
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"id": {
+					"$ref": "#/components/schemas/identifier"
+				}
+			},
+			"required": [
+				"id"
+			]
+		}
+	]
+}

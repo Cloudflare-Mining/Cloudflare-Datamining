@@ -1,0 +1,8 @@
+{
+	"description": "Specifies the TUS protocol version. This value must be included in every upload request.\nNotes: The only supported version of TUS protocol is 1.0.0.",
+	"enum": [
+		"1.0.0"
+	],
+	"example": "1.0.0",
+	"type": "string"
+}

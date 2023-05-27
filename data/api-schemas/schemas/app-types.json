@@ -1,0 +1,12 @@
+{
+	"oneOf": [
+		{
+			"$ref": "#/components/schemas/application"
+		},
+		{
+			"$ref": "#/components/schemas/application_type"
+		}
+	],
+	"readOnly": true,
+	"type": "object"
+}

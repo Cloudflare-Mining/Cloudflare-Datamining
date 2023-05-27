@@ -1,0 +1,35 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/identity-provider"
+		},
+		{
+			"properties": {
+				"config": {
+					"allOf": [
+						{
+							"$ref": "#/components/schemas/generic-oauth-config"
+						},
+						{
+							"properties": {
+								"directory_id": {
+									"description": "Your Azure directory uuid",
+									"example": "<your azure directory uuid>",
+									"type": "string"
+								},
+								"support_groups": {
+									"description": "Should Cloudflare try to load groups from your account",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					]
+				}
+			},
+			"type": "object"
+		}
+	],
+	"title": "Azure AD",
+	"type": "object"
+}

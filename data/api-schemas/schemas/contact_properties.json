@@ -1,0 +1,55 @@
+{
+	"properties": {
+		"address": {
+			"$ref": "#/components/schemas/schemas-address"
+		},
+		"address2": {
+			"$ref": "#/components/schemas/address2"
+		},
+		"city": {
+			"$ref": "#/components/schemas/city"
+		},
+		"country": {
+			"$ref": "#/components/schemas/country-yZy6MfsL"
+		},
+		"email": {
+			"$ref": "#/components/schemas/email"
+		},
+		"fax": {
+			"$ref": "#/components/schemas/fax"
+		},
+		"first_name": {
+			"$ref": "#/components/schemas/first_name"
+		},
+		"id": {
+			"$ref": "#/components/schemas/contact_identifier"
+		},
+		"last_name": {
+			"$ref": "#/components/schemas/last_name"
+		},
+		"organization": {
+			"$ref": "#/components/schemas/schemas-organization"
+		},
+		"phone": {
+			"$ref": "#/components/schemas/telephone"
+		},
+		"state": {
+			"$ref": "#/components/schemas/contacts_components-schemas-state"
+		},
+		"zip": {
+			"$ref": "#/components/schemas/zipcode"
+		}
+	},
+	"required": [
+		"first_name",
+		"last_name",
+		"address",
+		"city",
+		"state",
+		"zip",
+		"country",
+		"phone",
+		"organization"
+	],
+	"type": "object"
+}

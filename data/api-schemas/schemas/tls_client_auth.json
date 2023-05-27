@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"tls_client_auth"
+					],
+					"example": "tls_client_auth"
+				},
+				"value": {
+					"$ref": "#/components/schemas/tls_client_auth_value"
+				}
+			}
+		}
+	],
+	"description": "TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only).",
+	"title": "TLS Client Authentication"
+}

@@ -1,0 +1,32 @@
+{
+	"description": "A custom entry that matches a profile",
+	"properties": {
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"enabled": {
+			"description": "Whether the entry is enabled or not.",
+			"example": true,
+			"type": "boolean"
+		},
+		"id": {
+			"$ref": "#/components/schemas/entry_id"
+		},
+		"name": {
+			"description": "The name of the entry.",
+			"example": "Credit card (Visa)",
+			"type": "string"
+		},
+		"pattern": {
+			"$ref": "#/components/schemas/pattern"
+		},
+		"profile_id": {
+			"description": "ID of the parent profile"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"title": "Custom entry",
+	"type": "object"
+}

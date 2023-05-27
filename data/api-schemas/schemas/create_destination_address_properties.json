@@ -1,0 +1,11 @@
+{
+	"properties": {
+		"email": {
+			"$ref": "#/components/schemas/email"
+		}
+	},
+	"required": [
+		"email"
+	],
+	"type": "object"
+}

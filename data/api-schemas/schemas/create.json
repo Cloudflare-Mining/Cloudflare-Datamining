@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"email": {
+			"$ref": "#/components/schemas/email"
+		},
+		"roles": {
+			"description": "Array of roles associated with this member.",
+			"items": {
+				"$ref": "#/components/schemas/role_components-schemas-identifier"
+			},
+			"type": "array"
+		},
+		"status": {
+			"default": "pending",
+			"enum": [
+				"accepted",
+				"pending"
+			]
+		}
+	},
+	"required": [
+		"email",
+		"roles"
+	],
+	"type": "object"
+}

@@ -1,0 +1,41 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/components-schemas-certificateObject-drByrF3o"
+					},
+					"type": "array"
+				}
+			}
+		},
+		{
+			"properties": {
+				"result_info": {
+					"properties": {
+						"count": {
+							"example": 1
+						},
+						"page": {
+							"example": 1
+						},
+						"per_page": {
+							"example": 50
+						},
+						"total_count": {
+							"example": 1
+						},
+						"total_pages": {
+							"example": 1
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,17 @@
+{
+	"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
+	"example": {
+		"LAX": [
+			"de90f38ced07c2e2f4df50b1f61d4194",
+			"9290f38c5d07c2e2f4df57b1f61d4196"
+		],
+		"LHR": [
+			"abd90f38ced07c2e2f4df50b1f61d4194",
+			"f9138c5d07c2e2f4df57b1f61d4196"
+		],
+		"SJC": [
+			"00920f38ce07c2e2f4df50b1f61d4194"
+		]
+	},
+	"type": "object"
+}

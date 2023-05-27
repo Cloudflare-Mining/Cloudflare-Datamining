@@ -1,0 +1,1572 @@
+{
+	"DELETE /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}": {
+		"description": "Deletes a Cloudflare Tunnel from an account.",
+		"operationId": "cloudflare-tunnel-delete-a-cloudflare-tunnel",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "tunnel_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/tunnel"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a Cloudflare Tunnel response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/tunnel"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a Cloudflare Tunnel response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a Cloudflare Tunnel",
+		"tags": [
+			"Cloudflare Tunnel"
+		]
+	},
+	"DELETE /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/connections": {
+		"description": "Removes connections that are in a disconnected or pending reconnect state. We recommend running this command after shutting down a tunnel.",
+		"operationId": "cloudflare-tunnel-clean-up-cloudflare-tunnel-connections",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "tunnel_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Clean up Cloudflare Tunnel connections response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Clean up Cloudflare Tunnel connections response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Clean up Cloudflare Tunnel connections",
+		"tags": [
+			"Cloudflare Tunnel"
+		]
+	},
+	"GET /accounts/{account_identifier}/cfd_tunnel": {
+		"description": "Lists and filters Cloudflare Tunnels in an account.",
+		"operationId": "cloudflare-tunnel-list-cloudflare-tunnels",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "A user-friendly name for the tunnel.",
+					"example": "blog",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "is_deleted",
+				"schema": {
+					"description": "If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "existed_at",
+				"schema": {
+					"description": "If provided, include only tunnels that were created (and not deleted) before this time.",
+					"example": "2019-10-12T07:20:50.52Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "uuid",
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "was_active_at",
+				"schema": {
+					"example": "2009-11-10T23:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "was_inactive_at",
+				"schema": {
+					"example": "2009-11-10T23:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "include_prefix",
+				"schema": {
+					"example": "vpc1-",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "exclude_prefix",
+				"schema": {
+					"example": "vpc1-",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"description": "Number of results to display.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/tunnel"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Cloudflare Tunnels response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/tunnel"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Cloudflare Tunnels response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Cloudflare Tunnels",
+		"tags": [
+			"Cloudflare Tunnel"
+		]
+	},
+	"GET /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}": {
+		"description": "Fetches a single Cloudflare Tunnel.",
+		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "tunnel_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/tunnel"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Cloudflare Tunnel response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/tunnel"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Cloudflare Tunnel response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a Cloudflare Tunnel",
+		"tags": [
+			"Cloudflare Tunnel"
+		]
+	},
+	"GET /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/connections": {
+		"description": "Fetches connection details for a Cloudflare Tunnel.",
+		"operationId": "cloudflare-tunnel-list-cloudflare-tunnel-connections",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "tunnel_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/tunnel_client"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Cloudflare Tunnel connections response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/tunnel_client"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Cloudflare Tunnel connections response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Cloudflare Tunnel connections",
+		"tags": [
+			"Cloudflare Tunnel"
+		]
+	},
+	"GET /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/connectors/{connector_id}": {
+		"description": "Fetches connector and connection details for a Cloudflare Tunnel.",
+		"operationId": "cloudflare-tunnel-get-cloudflare-tunnel-connector",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "tunnel_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "connector_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the Cloudflare Tunnel client.",
+					"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/tunnel_client"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Cloudflare Tunnel connector response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/tunnel_client"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Cloudflare Tunnel connector response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Cloudflare Tunnel connector",
+		"tags": [
+			"Cloudflare Tunnel"
+		]
+	},
+	"GET /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/token": {
+		"description": "Gets the token used to associate cloudflared with a specific tunnel.",
+		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel-token",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "tunnel_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": "eyJhIjoiNWFiNGU5Z...",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Cloudflare Tunnel token response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": "eyJhIjoiNWFiNGU5Z...",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Cloudflare Tunnel token response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a Cloudflare Tunnel token",
+		"tags": [
+			"Cloudflare Tunnel"
+		]
+	},
+	"PATCH /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}": {
+		"description": "Updates an existing Cloudflare Tunnel.",
+		"operationId": "cloudflare-tunnel-update-a-cloudflare-tunnel",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "tunnel_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"name": {
+								"description": "A user-friendly name for the tunnel.",
+								"example": "blog",
+								"type": "string"
+							},
+							"tunnel_secret": {
+								"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
+								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/tunnel"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a Cloudflare Tunnel response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/tunnel"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a Cloudflare Tunnel response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a Cloudflare Tunnel",
+		"tags": [
+			"Cloudflare Tunnel"
+		]
+	},
+	"POST /accounts/{account_identifier}/cfd_tunnel": {
+		"description": "Creates a new Cloudflare Tunnel in an account.",
+		"operationId": "cloudflare-tunnel-create-a-cloudflare-tunnel",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"config_src": {
+								"default": "local",
+								"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using the [Cloudflare Tunnel configuration](https://api.cloudflare.com/#cloudflare-tunnel-configuration-properties) endpoint.",
+								"enum": [
+									"local",
+									"cloudflare"
+								],
+								"example": "cloudflare",
+								"type": "string"
+							},
+							"name": {
+								"description": "A user-friendly name for the tunnel.",
+								"example": "blog",
+								"type": "string"
+							},
+							"tunnel_secret": {
+								"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
+								"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"tunnel_secret"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/tunnel"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a Cloudflare Tunnel response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/tunnel"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a Cloudflare Tunnel response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a Cloudflare Tunnel",
+		"tags": [
+			"Cloudflare Tunnel"
+		]
+	},
+	"POST /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/management": {
+		"description": "Gets a management token used to access the management resources (i.e. Streaming Logs) of a tunnel.",
+		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel-management-token",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "tunnel_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID",
+					"example": "699d98642c564d2e855e9661899b7252",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"resources": {
+								"items": {
+									"description": "Management resources the token will have access to.",
+									"enum": [
+										"logs"
+									],
+									"example": "logs",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"resources"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": "eyJhIjoiNWFiNGU5Z...",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Cloudflare Tunnel management token response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-vpZfbaKK"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": "eyJhIjoiNWFiNGU5Z...",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Cloudflare API response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a Cloudflare Tunnel management token",
+		"tags": [
+			"Cloudflare Tunnel"
+		]
+	}
+}

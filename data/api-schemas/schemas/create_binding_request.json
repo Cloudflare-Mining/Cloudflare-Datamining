@@ -1,0 +1,11 @@
+{
+	"properties": {
+		"cidr": {
+			"$ref": "#/components/schemas/cidr"
+		},
+		"service_id": {
+			"$ref": "#/components/schemas/service_identifier"
+		}
+	},
+	"type": "object"
+}

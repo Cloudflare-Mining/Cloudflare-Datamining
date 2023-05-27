@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"colo": {
+			"$ref": "#/components/schemas/colo-DR2Yw6lU"
+		},
+		"error": {
+			"$ref": "#/components/schemas/error"
+		},
+		"hops": {
+			"items": {
+				"$ref": "#/components/schemas/hop_result"
+			},
+			"type": "array"
+		},
+		"target_summary": {
+			"$ref": "#/components/schemas/target_summary"
+		},
+		"traceroute_time_ms": {
+			"$ref": "#/components/schemas/traceroute_time_ms"
+		}
+	},
+	"type": "object"
+}

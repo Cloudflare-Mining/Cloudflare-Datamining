@@ -1,0 +1,11 @@
+{
+	"description": "The action Access will take if a user matches this policy.",
+	"enum": [
+		"allow",
+		"deny",
+		"non_identity",
+		"bypass"
+	],
+	"example": "allow",
+	"type": "string"
+}

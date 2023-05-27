@@ -1,0 +1,850 @@
+{
+	"GET /radar/entities/asns": {
+		"description": "Gets a list of autonomous systems (AS).",
+		"operationId": "radar_get_oa",
+		"parameters": [
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 5,
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of objects to skip before grabbing results.",
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": 0,
+					"description": "Number of objects to skip before grabbing results.",
+					"example": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Comma separated list of ASNs.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Comma separated list of ASNs.",
+					"example": "174,7922",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"asns": {
+											"items": {
+												"properties": {
+													"aka": {
+														"type": "string"
+													},
+													"asn": {
+														"example": 714,
+														"type": "integer"
+													},
+													"country": {
+														"example": "GB",
+														"type": "string"
+													},
+													"countryName": {
+														"example": "United Kingdom",
+														"type": "string"
+													},
+													"name": {
+														"example": "Apple Inc.",
+														"type": "string"
+													},
+													"nameLong": {
+														"type": "string"
+													},
+													"orgName": {
+														"type": "string"
+													},
+													"website": {
+														"example": "https://www.apple.com/support/systemstatus/",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"nameLong",
+													"aka",
+													"asn",
+													"website",
+													"country",
+													"countryName",
+													"orgName"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"asns"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get autonomous systems",
+		"tags": [
+			"Radar Entities"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/entities/asns/{asn}": {
+		"description": "Get the requested autonomous system information. A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this AS). Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
+		"operationId": "radar_get_ca",
+		"parameters": [
+			{
+				"description": "Autonomous System Number (ASN).",
+				"in": "path",
+				"name": "asn",
+				"required": true,
+				"schema": {
+					"description": "Autonomous System Number (ASN).",
+					"example": 3,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"asn": {
+											"properties": {
+												"aka": {
+													"type": "string"
+												},
+												"asn": {
+													"example": 714,
+													"type": "integer"
+												},
+												"confidenceLevel": {
+													"example": 5,
+													"type": "integer"
+												},
+												"country": {
+													"example": "GB",
+													"type": "string"
+												},
+												"countryName": {
+													"example": "United Kingdom",
+													"type": "string"
+												},
+												"estimatedUsers": {
+													"properties": {
+														"estimatedUsers": {
+															"description": "Total estimated users",
+															"example": 86099,
+															"type": "integer"
+														},
+														"locations": {
+															"items": {
+																"properties": {
+																	"estimatedUsers": {
+																		"description": "Estimated users per location",
+																		"example": 16710,
+																		"type": "integer"
+																	},
+																	"locationAlpha2": {
+																		"example": "US",
+																		"type": "string"
+																	},
+																	"locationName": {
+																		"example": "United States",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"locationName",
+																	"locationAlpha2"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"locations"
+													],
+													"type": "object"
+												},
+												"name": {
+													"example": "Apple Inc.",
+													"type": "string"
+												},
+												"nameLong": {
+													"type": "string"
+												},
+												"orgName": {
+													"type": "string"
+												},
+												"related": {
+													"items": {
+														"properties": {
+															"aka": {
+																"example": "",
+																"type": "string"
+															},
+															"asn": {
+																"example": 174,
+																"type": "integer"
+															},
+															"estimatedUsers": {
+																"description": "Total estimated users",
+																"example": 65345,
+																"type": "integer"
+															},
+															"name": {
+																"example": "Cogent-174",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"aka",
+															"asn"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"website": {
+													"example": "https://www.apple.com/support/systemstatus/",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"nameLong",
+												"aka",
+												"country",
+												"countryName",
+												"confidenceLevel",
+												"related",
+												"asn",
+												"website",
+												"orgName",
+												"estimatedUsers"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"asn"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get autonomous system information by AS number",
+		"tags": [
+			"Radar Entities"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/entities/asns/ip": {
+		"description": "Get the requested autonomous system information based on IP address. Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
+		"operationId": "radar_get_ma",
+		"parameters": [
+			{
+				"description": "IP address.",
+				"in": "query",
+				"name": "ip",
+				"required": true,
+				"schema": {
+					"description": "IP address.",
+					"example": "8.8.8.8",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"asn": {
+											"properties": {
+												"aka": {
+													"type": "string"
+												},
+												"asn": {
+													"example": 714,
+													"type": "integer"
+												},
+												"country": {
+													"example": "GB",
+													"type": "string"
+												},
+												"countryName": {
+													"example": "United Kingdom",
+													"type": "string"
+												},
+												"estimatedUsers": {
+													"properties": {
+														"estimatedUsers": {
+															"description": "Total estimated users",
+															"example": 86099,
+															"type": "integer"
+														},
+														"locations": {
+															"items": {
+																"properties": {
+																	"estimatedUsers": {
+																		"description": "Estimated users per location",
+																		"example": 16710,
+																		"type": "integer"
+																	},
+																	"locationAlpha2": {
+																		"example": "US",
+																		"type": "string"
+																	},
+																	"locationName": {
+																		"example": "United States",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"locationName",
+																	"locationAlpha2"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"locations"
+													],
+													"type": "object"
+												},
+												"name": {
+													"example": "Apple Inc.",
+													"type": "string"
+												},
+												"nameLong": {
+													"type": "string"
+												},
+												"orgName": {
+													"type": "string"
+												},
+												"related": {
+													"items": {
+														"properties": {
+															"aka": {
+																"type": "string"
+															},
+															"asn": {
+																"type": "integer"
+															},
+															"estimatedUsers": {
+																"description": "Total estimated users",
+																"example": 65345,
+																"type": "integer"
+															},
+															"name": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"aka",
+															"asn"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"website": {
+													"example": "https://www.apple.com/support/systemstatus/",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"nameLong",
+												"aka",
+												"country",
+												"countryName",
+												"related",
+												"asn",
+												"website",
+												"orgName",
+												"estimatedUsers"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"asn"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get autonomous system information by IP address",
+		"tags": [
+			"Radar Entities"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/entities/locations": {
+		"description": "Get a list of locations.",
+		"operationId": "radar_get_na",
+		"parameters": [
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 5,
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of objects to skip before grabbing results.",
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": 0,
+					"description": "Number of objects to skip before grabbing results.",
+					"example": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Comma separated list of locations.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Comma separated list of locations.",
+					"example": "US,CA",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"locations": {
+											"items": {
+												"properties": {
+													"alpha2": {
+														"example": "AF",
+														"type": "string"
+													},
+													"latitude": {
+														"example": 33.939116,
+														"type": "string"
+													},
+													"longitude": {
+														"example": 67.709953,
+														"type": "string"
+													},
+													"name": {
+														"example": "Afghanistan",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"latitude",
+													"longitude",
+													"alpha2"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"locations"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get locations",
+		"tags": [
+			"Radar Entities"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/entities/locations/{location}": {
+		"description": "Get the requested location information. A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this location).",
+		"operationId": "radar_get_ia",
+		"parameters": [
+			{
+				"description": "Alpha-2 country code.",
+				"in": "path",
+				"name": "location",
+				"required": true,
+				"schema": {
+					"description": "Alpha-2 country code.",
+					"example": "US",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"location": {
+											"properties": {
+												"alpha2": {
+													"example": "AF",
+													"type": "string"
+												},
+												"confidenceLevel": {
+													"example": 5,
+													"type": "integer"
+												},
+												"latitude": {
+													"example": 33.939116,
+													"type": "string"
+												},
+												"longitude": {
+													"example": 67.709953,
+													"type": "string"
+												},
+												"name": {
+													"example": "Afghanistan",
+													"type": "string"
+												},
+												"region": {
+													"example": "Middle East",
+													"type": "string"
+												},
+												"subregion": {
+													"example": "Southern Asia",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"region",
+												"subregion",
+												"latitude",
+												"longitude",
+												"alpha2",
+												"confidenceLevel"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"location"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get location",
+		"tags": [
+			"Radar Entities"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

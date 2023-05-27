@@ -1,0 +1,6 @@
+{
+	"default": "200",
+	"description": "The expected HTTP response codes or code ranges of the health check, comma-separated. This parameter is only valid for HTTP and HTTPS monitors.",
+	"example": "2xx",
+	"type": "string"
+}

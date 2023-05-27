@@ -1,0 +1,12 @@
+{
+	"description": "Defines the available modes for the current WAF rule.",
+	"example": [
+		"on",
+		"off"
+	],
+	"items": {
+		"$ref": "#/components/schemas/mode_allow_traditional"
+	},
+	"readOnly": true,
+	"type": "array"
+}

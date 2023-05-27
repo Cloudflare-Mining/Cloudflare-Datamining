@@ -1,0 +1,36 @@
+{
+	"properties": {
+		"byte_limit": {
+			"$ref": "#/components/schemas/pcaps_byte_limit"
+		},
+		"colo_name": {
+			"$ref": "#/components/schemas/pcaps_colo_name"
+		},
+		"destination_conf": {
+			"$ref": "#/components/schemas/pcaps_destination_conf"
+		},
+		"filter_v1": {
+			"$ref": "#/components/schemas/pcaps_filter_v1"
+		},
+		"packet_limit": {
+			"$ref": "#/components/schemas/pcaps_packet_limit"
+		},
+		"system": {
+			"$ref": "#/components/schemas/pcaps_system"
+		},
+		"time_limit": {
+			"$ref": "#/components/schemas/pcaps_time_limit"
+		},
+		"type": {
+			"$ref": "#/components/schemas/pcaps_type"
+		}
+	},
+	"required": [
+		"time_limit",
+		"type",
+		"system",
+		"colo_name",
+		"destination_conf"
+	],
+	"type": "object"
+}

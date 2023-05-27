@@ -1,0 +1,7 @@
+{
+	"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
+	"items": {
+		"$ref": "#/components/schemas/rule_components-schemas-rule"
+	},
+	"type": "array"
+}

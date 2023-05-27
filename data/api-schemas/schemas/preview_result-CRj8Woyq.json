@@ -1,0 +1,17 @@
+{
+	"additionalProperties": true,
+	"description": "Resulting health data from a preview operation.",
+	"example": {
+		"abwlnp5jbqn45ecgxd03erbgtxtqai0d": {
+			"healthy": true,
+			"origins": [
+				{
+					"originone.example.com.": {
+						"$ref": "#/components/schemas/origin_health_data/example"
+					}
+				}
+			]
+		}
+	},
+	"type": "object"
+}

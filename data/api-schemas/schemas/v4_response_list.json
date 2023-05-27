@@ -1,0 +1,15 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/v4_response"
+		},
+		{
+			"properties": {
+				"result_info": {
+					"$ref": "#/components/schemas/result_info-gED80V6Y"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

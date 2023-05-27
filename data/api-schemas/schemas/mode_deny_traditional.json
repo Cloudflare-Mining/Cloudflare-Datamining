@@ -1,0 +1,12 @@
+{
+	"description": "The action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
+	"enum": [
+		"default",
+		"disable",
+		"simulate",
+		"block",
+		"challenge"
+	],
+	"example": "block",
+	"type": "string"
+}

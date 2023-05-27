@@ -1,0 +1,28 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/rule_components-schemas-base-2"
+		},
+		{
+			"properties": {
+				"allowed_modes": {
+					"$ref": "#/components/schemas/allowed_modes_anomaly"
+				},
+				"mode": {
+					"$ref": "#/components/schemas/mode_anomaly"
+				}
+			}
+		}
+	],
+	"description": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
+	"required": [
+		"id",
+		"description",
+		"priority",
+		"allowed_modes",
+		"mode",
+		"group",
+		"package_id"
+	],
+	"title": "Anomaly detection WAF rule"
+}

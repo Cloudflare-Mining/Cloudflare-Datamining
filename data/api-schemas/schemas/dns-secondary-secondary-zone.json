@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"auto_refresh_seconds": {
+			"$ref": "#/components/schemas/auto_refresh_seconds"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier-rjmAAZUp"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-HHsROM8p"
+		},
+		"peers": {
+			"$ref": "#/components/schemas/peers"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"peers",
+		"auto_refresh_seconds"
+	],
+	"type": "object"
+}

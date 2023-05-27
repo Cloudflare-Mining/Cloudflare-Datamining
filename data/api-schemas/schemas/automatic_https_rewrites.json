@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"automatic_https_rewrites"
+					],
+					"example": "automatic_https_rewrites"
+				},
+				"value": {
+					"$ref": "#/components/schemas/automatic_https_rewrites_value"
+				}
+			}
+		}
+	],
+	"default": "off",
+	"description": "Enable the Automatic HTTPS Rewrites feature for this zone.",
+	"title": "Zone Enable Automatic HTTPS Rewrites"
+}

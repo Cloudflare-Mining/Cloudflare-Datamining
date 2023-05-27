@@ -1,0 +1,37 @@
+{
+	"properties": {
+		"allowedOrigins": {
+			"$ref": "#/components/schemas/allowedOrigins"
+		},
+		"clippedFromVideoUID": {
+			"$ref": "#/components/schemas/clipped_from_video_uid"
+		},
+		"creator": {
+			"$ref": "#/components/schemas/creator"
+		},
+		"endTimeSeconds": {
+			"$ref": "#/components/schemas/end_time_seconds"
+		},
+		"maxDurationSeconds": {
+			"$ref": "#/components/schemas/maxDurationSeconds"
+		},
+		"requireSignedURLs": {
+			"$ref": "#/components/schemas/requireSignedURLs"
+		},
+		"startTimeSeconds": {
+			"$ref": "#/components/schemas/start_time_seconds"
+		},
+		"thumbnailTimestampPct": {
+			"$ref": "#/components/schemas/thumbnailTimestampPct"
+		},
+		"watermark": {
+			"$ref": "#/components/schemas/watermarkAtUpload"
+		}
+	},
+	"required": [
+		"clippedFromVideoUID",
+		"startTimeSeconds",
+		"endTimeSeconds"
+	],
+	"type": "object"
+}

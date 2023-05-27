@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/schemas-api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/settings-MXdgkChH"
+				}
+			}
+		}
+	]
+}

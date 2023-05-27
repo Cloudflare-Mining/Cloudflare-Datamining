@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"result": {
+					"enum": [
+						true,
+						false
+					],
+					"example": true,
+					"type": "boolean"
+				},
+				"success": {
+					"enum": [
+						true,
+						false
+					],
+					"example": true,
+					"type": "boolean"
+				}
+			}
+		}
+	]
+}

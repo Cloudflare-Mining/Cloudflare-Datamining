@@ -1,0 +1,32 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-jhPS91vo"
+		},
+		{
+			"properties": {
+				"allowed_modes": {
+					"$ref": "#/components/schemas/allowed_modes_deny_traditional"
+				},
+				"default_mode": {
+					"$ref": "#/components/schemas/default_mode"
+				},
+				"mode": {
+					"$ref": "#/components/schemas/mode_deny_traditional"
+				}
+			}
+		}
+	],
+	"description": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
+	"required": [
+		"id",
+		"description",
+		"priority",
+		"allowed_modes",
+		"default_mode",
+		"mode",
+		"group",
+		"package_id"
+	],
+	"title": "Traditional (deny) WAF rule"
+}

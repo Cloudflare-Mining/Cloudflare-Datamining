@@ -1,0 +1,24 @@
+{
+	"description": "The configuration object containing third party integration information.",
+	"example": {
+		"api_url": "https://as123.awmdm.com/API",
+		"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+		"client_id": "example client id",
+		"client_secret": "example client secret"
+	},
+	"oneOf": [
+		{
+			"$ref": "#/components/schemas/workspace_one_config_request-7ccaWKKu"
+		},
+		{
+			"$ref": "#/components/schemas/crowdstrike_config_request-ChCiehcW"
+		},
+		{
+			"$ref": "#/components/schemas/uptycs_config_request-X9HEl5cN"
+		},
+		{
+			"$ref": "#/components/schemas/intune_config_request-zWrA6yqc"
+		}
+	],
+	"type": "object"
+}

@@ -1,0 +1,23 @@
+{
+	"description": "Matches an IP address from a list.",
+	"properties": {
+		"ip_list": {
+			"properties": {
+				"id": {
+					"description": "The ID of a previously created IP list.",
+					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+					"type": "string"
+				}
+			},
+			"required": [
+				"id"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"ip_list"
+	],
+	"title": "IP list",
+	"type": "object"
+}

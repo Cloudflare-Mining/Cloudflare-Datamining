@@ -1,0 +1,20 @@
+{
+	"items": {
+		"properties": {
+			"name": {
+				"$ref": "#/components/schemas/name-Eecflq51"
+			},
+			"type": {
+				"$ref": "#/components/schemas/type-pppUiRJN"
+			}
+		},
+		"required": [
+			"type",
+			"name"
+		],
+		"type": "object"
+	},
+	"maxItems": 10,
+	"type": "array",
+	"uniqueItems": true
+}

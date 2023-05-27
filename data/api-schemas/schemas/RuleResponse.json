@@ -1,0 +1,48 @@
+{
+	"description": "A rule object.",
+	"properties": {
+		"action": {
+			"$ref": "#/components/schemas/RuleAction"
+		},
+		"action_parameters": {
+			"$ref": "#/components/schemas/RuleActionParameters"
+		},
+		"categories": {
+			"$ref": "#/components/schemas/RuleCategories"
+		},
+		"description": {
+			"$ref": "#/components/schemas/RuleDescription"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/RuleEnabled"
+		},
+		"expression": {
+			"$ref": "#/components/schemas/RuleExpression"
+		},
+		"id": {
+			"$ref": "#/components/schemas/RuleId"
+		},
+		"last_updated": {
+			"$ref": "#/components/schemas/RuleLastUpdated"
+		},
+		"logging": {
+			"$ref": "#/components/schemas/RuleLogging"
+		},
+		"ref": {
+			"$ref": "#/components/schemas/RuleRef"
+		},
+		"version": {
+			"$ref": "#/components/schemas/RuleVersion"
+		}
+	},
+	"required": [
+		"id",
+		"version",
+		"expression",
+		"action",
+		"ref",
+		"enabled",
+		"last_updated"
+	],
+	"type": "object"
+}

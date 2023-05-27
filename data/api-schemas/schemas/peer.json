@@ -1,0 +1,27 @@
+{
+	"properties": {
+		"id": {
+			"$ref": "#/components/schemas/components-schemas-identifier"
+		},
+		"ip": {
+			"$ref": "#/components/schemas/ip-0iBNchqY"
+		},
+		"ixfr_enable": {
+			"$ref": "#/components/schemas/ixfr_enable"
+		},
+		"name": {
+			"$ref": "#/components/schemas/components-schemas-name-ZYOwFS66"
+		},
+		"port": {
+			"$ref": "#/components/schemas/port-GTFApXx7"
+		},
+		"tsig_id": {
+			"$ref": "#/components/schemas/tsig_id"
+		}
+	},
+	"required": [
+		"id",
+		"name"
+	],
+	"type": "object"
+}

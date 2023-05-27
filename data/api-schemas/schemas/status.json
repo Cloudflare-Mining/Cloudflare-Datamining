@@ -1,0 +1,12 @@
+{
+	"description": "The current status of the origin server according to the health check.",
+	"enum": [
+		"unknown",
+		"healthy",
+		"unhealthy",
+		"suspended"
+	],
+	"example": "healthy",
+	"readOnly": true,
+	"type": "string"
+}

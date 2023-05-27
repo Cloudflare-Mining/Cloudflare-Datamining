@@ -1,0 +1,1178 @@
+{
+	"DELETE /zones/{zone_id}/api_gateway/operations/{operation_id}": {
+		"operationId": "api-shield-endpoint-management-delete-an-operation",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "operation_id",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-BwwtXWtG"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete an operation response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-BwwtXWtG"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete an operation response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete an operation",
+		"tags": [
+			"API Shield Endpoint Management"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.api-gateway.delete"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/api_gateway/discovery": {
+		"description": "Retrieve the most up to date view of API Discovery on a zone.",
+		"operationId": "api-shield-endpoint-management-retrieve-api-discovery-results-for-a-zone",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/default_response-CKdfA3zT"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"schemas": {
+													"items": {
+														"$ref": "#/components/schemas/openapi"
+													},
+													"type": "array"
+												},
+												"timestamp": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Retrieve API Discovery results for a zone response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/default_response-CKdfA3zT"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"schemas": {
+															"items": {
+																"$ref": "#/components/schemas/openapi"
+															},
+															"type": "array"
+														},
+														"timestamp": {
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Retrieve API Discovery results for a zone response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Retrieve API Discovery results for a zone",
+		"tags": [
+			"API Shield Endpoint Management"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.api-gateway.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/api_gateway/operations": {
+		"operationId": "api-shield-endpoint-management-retrieve-information-about-all-operations-on-a-zone",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Maximum number of results per page.",
+					"maximum": 50,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"description": "Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., thresholds.suggested_threshold.",
+					"enum": [
+						"method",
+						"host",
+						"endpoint",
+						"thresholds.$key"
+					],
+					"example": "method",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "host",
+				"schema": {
+					"description": "Filter results to only include the specified hosts.",
+					"items": {
+						"example": "api.cloudflare.com",
+						"type": "string"
+					},
+					"type": "array",
+					"uniqueItems": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "method",
+				"schema": {
+					"description": "Filter results to only include the specified HTTP methods.",
+					"items": {
+						"example": "GET",
+						"type": "string"
+					},
+					"type": "array",
+					"uniqueItems": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "endpoint",
+				"schema": {
+					"description": "Filter results to only include endpoints containing this pattern.",
+					"example": "/api/v1",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "feature",
+				"schema": {
+					"description": "Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.",
+					"example": [
+						"thresholds"
+					],
+					"items": {
+						"enum": [
+							"thresholds",
+							"parameter_schemas"
+						],
+						"example": "thresholds",
+						"type": "string"
+					},
+					"type": "array",
+					"uniqueItems": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"description": "Direction to order results.",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"anyOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/collection_response"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total results returned based on your search parameters.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 500,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/api-shield"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"$ref": "#/components/schemas/collection_response"
+								}
+							]
+						}
+					}
+				},
+				"description": "Retrieve information about all operations on a zone response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"anyOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/collection_response"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total results returned based on your search parameters.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters.",
+																	"example": 500,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {
+																"$ref": "#/components/schemas/api-shield"
+															},
+															"type": "array"
+														}
+													}
+												}
+											]
+										},
+										{
+											"$ref": "#/components/schemas/collection_response"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Retrieve information about all operations on a zone response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Retrieve information about all operations on a zone",
+		"tags": [
+			"API Shield Endpoint Management"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.api-gateway.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}": {
+		"operationId": "api-shield-endpoint-management-retrieve-information-about-an-operation",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "operation_id",
+				"required": true,
+				"schema": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "feature",
+				"schema": {
+					"description": "Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.",
+					"example": [
+						"thresholds"
+					],
+					"items": {
+						"enum": [
+							"thresholds",
+							"parameter_schemas"
+						],
+						"example": "thresholds",
+						"type": "string"
+					},
+					"type": "array",
+					"uniqueItems": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-BwwtXWtG"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/api-shield"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Retrieve information about an operation response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-BwwtXWtG"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/api-shield"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Retrieve information about an operation response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Retrieve information about an operation",
+		"tags": [
+			"API Shield Endpoint Management"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.api-gateway.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_id}/api_gateway/schemas": {
+		"operationId": "api-shield-endpoint-management-retrieve-operations-and-features-as-open-api-schemas",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "host",
+				"schema": {
+					"description": "Receive schema only for the given host(s).",
+					"items": {
+						"example": "www.example.com",
+						"type": "string"
+					},
+					"type": "array",
+					"uniqueItems": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "feature",
+				"schema": {
+					"description": "Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.",
+					"example": [
+						"thresholds"
+					],
+					"items": {
+						"enum": [
+							"thresholds",
+							"parameter_schemas"
+						],
+						"example": "thresholds",
+						"type": "string"
+					},
+					"type": "array",
+					"uniqueItems": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/default_response-CKdfA3zT"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"schemas": {
+													"items": {
+														"$ref": "#/components/schemas/openapiwiththresholds"
+													},
+													"type": "array"
+												},
+												"timestamp": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Retrieve operations and features as OpenAPI schemas response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/default_response-CKdfA3zT"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"schemas": {
+															"items": {
+																"$ref": "#/components/schemas/openapiwiththresholds"
+															},
+															"type": "array"
+														},
+														"timestamp": {
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Retrieve operations and features as OpenAPI schemas response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Retrieve operations and features as OpenAPI schemas",
+		"tags": [
+			"API Shield Endpoint Management"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.api-gateway.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_id}/api_gateway/operations": {
+		"description": "Add one or more operations to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date.",
+		"operationId": "api-shield-endpoint-management-add-operations-to-a-zone",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"items": {
+							"properties": {
+								"endpoint": {
+									"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+									"example": "/api/v1/users/{var1}",
+									"format": "uri-template",
+									"maxLength": 4096,
+									"pattern": "^/.*$",
+									"type": "string"
+								},
+								"host": {
+									"description": "RFC3986-compliant host.",
+									"example": "www.example.com",
+									"format": "hostname",
+									"maxLength": 255,
+									"type": "string"
+								},
+								"method": {
+									"description": "The HTTP method used to access the endpoint.",
+									"enum": [
+										"GET",
+										"POST",
+										"HEAD",
+										"OPTIONS",
+										"PUT",
+										"DELETE",
+										"CONNECT",
+										"PATCH",
+										"TRACE"
+									],
+									"example": "GET",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"required": [
+							"host",
+							"method",
+							"endpoint"
+						],
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"$ref": "#/components/schemas/api-shield"
+													},
+													{
+														"properties": {
+															"features": {}
+														}
+													}
+												]
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Add operations to a zone response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/api-shield"
+															},
+															{
+																"properties": {
+																	"features": {}
+																}
+															}
+														]
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Add operations to a zone response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Add operations to a zone",
+		"tags": [
+			"API Shield Endpoint Management"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.api-gateway.create"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

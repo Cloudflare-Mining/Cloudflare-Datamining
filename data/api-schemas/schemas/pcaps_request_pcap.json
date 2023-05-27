@@ -1,0 +1,10 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/components/schemas/pcaps_request_simple"
+		},
+		{
+			"$ref": "#/components/schemas/pcaps_request_full"
+		}
+	]
+}

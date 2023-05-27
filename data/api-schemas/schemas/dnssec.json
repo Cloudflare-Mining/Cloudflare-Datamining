@@ -1,0 +1,44 @@
+{
+	"properties": {
+		"algorithm": {
+			"$ref": "#/components/schemas/algorithm"
+		},
+		"digest": {
+			"$ref": "#/components/schemas/digest"
+		},
+		"digest_algorithm": {
+			"$ref": "#/components/schemas/digest_algorithm"
+		},
+		"digest_type": {
+			"$ref": "#/components/schemas/digest_type"
+		},
+		"dnssec_multi_signer": {
+			"$ref": "#/components/schemas/dnssec_multi_signer"
+		},
+		"dnssec_presigned": {
+			"$ref": "#/components/schemas/dnssec_presigned"
+		},
+		"ds": {
+			"$ref": "#/components/schemas/ds"
+		},
+		"flags": {
+			"$ref": "#/components/schemas/flags"
+		},
+		"key_tag": {
+			"$ref": "#/components/schemas/key_tag"
+		},
+		"key_type": {
+			"$ref": "#/components/schemas/key_type"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/modified_on-6sefwWA2"
+		},
+		"public_key": {
+			"$ref": "#/components/schemas/public_key"
+		},
+		"status": {
+			"$ref": "#/components/schemas/status-j4iNDIx6"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,74 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/identity-provider"
+		},
+		{
+			"properties": {
+				"config": {
+					"properties": {
+						"attributes": {
+							"description": "A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.",
+							"example": [
+								"group",
+								"department_code",
+								"divison"
+							],
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
+						},
+						"email_attribute_name": {
+							"description": "The attribute name for email in the SAML response.",
+							"example": "Email",
+							"type": "string"
+						},
+						"header_attributes": {
+							"description": "Add a list of attribute names that will be returned in the response header from the Access callback.",
+							"items": {
+								"properties": {
+									"attribute_name": {
+										"description": "attribute name from the IDP",
+										"type": "string"
+									},
+									"header_name": {
+										"description": "header that will be added on the request to the origin",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"idp_public_certs": {
+							"description": "X509 certificate to verify the signature in the SAML authentication response",
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
+						},
+						"issuer_url": {
+							"description": "IdP Entity ID or Issuer URL",
+							"example": "https://whoami.com",
+							"type": "string"
+						},
+						"sign_request": {
+							"description": "Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.",
+							"type": "boolean"
+						},
+						"sso_target_url": {
+							"description": "URL to send the SAML authentication requests to",
+							"example": "https://edgeaccess.org/idp/saml/login",
+							"type": "string"
+						}
+					},
+					"type": "object"
+				}
+			},
+			"type": "object"
+		}
+	],
+	"title": "Generic SAML",
+	"type": "object"
+}

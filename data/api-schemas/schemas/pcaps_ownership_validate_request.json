@@ -1,0 +1,15 @@
+{
+	"properties": {
+		"destination_conf": {
+			"$ref": "#/components/schemas/pcaps_destination_conf"
+		},
+		"ownership_challenge": {
+			"$ref": "#/components/schemas/pcaps_ownership_challenge"
+		}
+	},
+	"required": [
+		"destination_conf",
+		"ownership_challenge"
+	],
+	"type": "object"
+}

@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"action": {
+			"$ref": "#/components/schemas/components-schemas-action"
+		},
+		"description": {
+			"$ref": "#/components/schemas/firewall-rules_components-schemas-description"
+		},
+		"id": {
+			"$ref": "#/components/schemas/firewall-rules_components-schemas-id"
+		},
+		"paused": {
+			"$ref": "#/components/schemas/components-schemas-paused"
+		},
+		"priority": {
+			"$ref": "#/components/schemas/firewall-rules_components-schemas-priority"
+		},
+		"products": {
+			"$ref": "#/components/schemas/products"
+		},
+		"ref": {
+			"$ref": "#/components/schemas/ref"
+		}
+	},
+	"type": "object"
+}

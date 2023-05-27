@@ -1,0 +1,44 @@
+{
+	"properties": {
+		"cloudflare_gre_endpoint": {
+			"$ref": "#/components/schemas/cloudflare_gre_endpoint"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/schemas-created_on"
+		},
+		"customer_gre_endpoint": {
+			"$ref": "#/components/schemas/customer_gre_endpoint"
+		},
+		"description": {
+			"$ref": "#/components/schemas/schemas-description-REceAhVc"
+		},
+		"health_check": {
+			"$ref": "#/components/schemas/health_check"
+		},
+		"id": {
+			"$ref": "#/components/schemas/schemas-identifier-f6OedUt6"
+		},
+		"interface_address": {
+			"$ref": "#/components/schemas/interface_address"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/schemas-modified_on"
+		},
+		"mtu": {
+			"$ref": "#/components/schemas/mtu"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-HKQUsnZT"
+		},
+		"ttl": {
+			"$ref": "#/components/schemas/ttl"
+		}
+	},
+	"required": [
+		"name",
+		"customer_gre_endpoint",
+		"cloudflare_gre_endpoint",
+		"interface_address"
+	],
+	"type": "object"
+}

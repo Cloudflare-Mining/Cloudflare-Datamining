@@ -1,0 +1,35 @@
+{
+	"properties": {
+		"actions": {
+			"$ref": "#/components/schemas/actions"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/created_on-GsCLWTlV"
+		},
+		"id": {
+			"$ref": "#/components/schemas/schemas-identifier-cy9ANXxl"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/schemas-modified_on-8yClPluv"
+		},
+		"priority": {
+			"$ref": "#/components/schemas/priority-5jpYSKfk"
+		},
+		"status": {
+			"$ref": "#/components/schemas/status-fvzwksQk"
+		},
+		"targets": {
+			"$ref": "#/components/schemas/targets-1Nwh7Ipn"
+		}
+	},
+	"required": [
+		"id",
+		"targets",
+		"actions",
+		"priority",
+		"status",
+		"modified_on",
+		"created_on"
+	],
+	"type": "object"
+}

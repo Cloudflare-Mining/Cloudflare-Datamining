@@ -1,0 +1,22 @@
+{
+	"description": "The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.",
+	"example": [
+		"GET",
+		"POST"
+	],
+	"items": {
+		"description": "An HTTP method or `_ALL_` to indicate all methods.",
+		"enum": [
+			"GET",
+			"POST",
+			"PUT",
+			"DELETE",
+			"PATCH",
+			"HEAD",
+			"_ALL_"
+		],
+		"example": "GET",
+		"type": "string"
+	},
+	"type": "array"
+}

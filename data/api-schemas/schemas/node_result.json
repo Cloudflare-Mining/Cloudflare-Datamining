@@ -1,0 +1,42 @@
+{
+	"example": {
+		"asn": "AS13335",
+		"ip": "1.1.1.1",
+		"max_latency_ms": 0.034,
+		"mean_latency_ms": 0.021,
+		"min_latency_ms": 0.014,
+		"name": "one.one.one.one",
+		"packet_count": 3,
+		"std_dev_latency_ms": 0.011269427669584647
+	},
+	"properties": {
+		"asn": {
+			"$ref": "#/components/schemas/asn-O3qZBTkz"
+		},
+		"ip": {
+			"$ref": "#/components/schemas/ip-rN9aOqxg"
+		},
+		"labels": {
+			"$ref": "#/components/schemas/labels"
+		},
+		"max_rtt_ms": {
+			"$ref": "#/components/schemas/max_rtt_ms"
+		},
+		"mean_rtt_ms": {
+			"$ref": "#/components/schemas/mean_rtt_ms"
+		},
+		"min_rtt_ms": {
+			"$ref": "#/components/schemas/min_rtt_ms"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-HArHQfND"
+		},
+		"packet_count": {
+			"$ref": "#/components/schemas/packet_count"
+		},
+		"std_dev_rtt_ms": {
+			"$ref": "#/components/schemas/std_dev_rtt_ms"
+		}
+	},
+	"type": "object"
+}

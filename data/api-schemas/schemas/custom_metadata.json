@@ -1,0 +1,16 @@
+{
+	"anyOf": [
+		{
+			"properties": {
+				"key": {
+					"description": "Unique metadata for this hostname.",
+					"example": "value",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		}
+	],
+	"description": "These are per-hostname (customer) settings.",
+	"type": "object"
+}

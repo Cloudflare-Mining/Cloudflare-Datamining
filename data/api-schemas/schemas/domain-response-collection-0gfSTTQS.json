@@ -1,0 +1,18 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/domain-dK90PDsh"
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

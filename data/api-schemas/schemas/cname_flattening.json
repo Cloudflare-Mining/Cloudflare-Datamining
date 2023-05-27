@@ -1,0 +1,22 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "How to flatten the cname destination.",
+					"enum": [
+						"cname_flattening"
+					]
+				},
+				"value": {
+					"$ref": "#/components/schemas/cname_flattening_value"
+				}
+			}
+		}
+	],
+	"description": "Whether or not cname flattening is on.",
+	"title": "Cloudflare CNAME Flattening"
+}

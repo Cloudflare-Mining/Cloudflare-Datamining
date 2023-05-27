@@ -1,0 +1,40 @@
+{
+	"properties": {
+		"activation": {
+			"$ref": "#/components/schemas/activation"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/components-schemas-created_on"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/railgun_components-schemas-enabled"
+		},
+		"id": {
+			"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/railgun_components-schemas-modified_on"
+		},
+		"name": {
+			"$ref": "#/components/schemas/railgun_components-schemas-name"
+		},
+		"status": {
+			"$ref": "#/components/schemas/railgun_components-schemas-status"
+		},
+		"upgrade_info": {
+			"$ref": "#/components/schemas/upgrade_info"
+		},
+		"zones_connected": {
+			"$ref": "#/components/schemas/zones_connected"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"status",
+		"enabled",
+		"zones_connected",
+		"activation"
+	],
+	"type": "object"
+}

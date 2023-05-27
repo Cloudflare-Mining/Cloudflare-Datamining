@@ -1,0 +1,11 @@
+{
+	"properties": {
+		"name": {
+			"$ref": "#/components/schemas/keys_components-schemas-name"
+		},
+		"value": {
+			"$ref": "#/components/schemas/keys_components-schemas-value"
+		}
+	},
+	"type": "object"
+}

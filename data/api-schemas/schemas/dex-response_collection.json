@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/device-dex-test-schemas-http"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

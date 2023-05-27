@@ -1,0 +1,64 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "Formatted DNSKEY content. See 'data' to set DNSKEY properties.",
+					"readOnly": true,
+					"type": "string"
+				},
+				"data": {
+					"description": "Components of a DNSKEY record.",
+					"properties": {
+						"algorithm": {
+							"description": "Algorithm.",
+							"example": 5,
+							"maximum": 255,
+							"minimum": 0,
+							"type": "number"
+						},
+						"flags": {
+							"description": "Flags.",
+							"example": 1,
+							"maximum": 65535,
+							"minimum": 0,
+							"type": "number"
+						},
+						"protocol": {
+							"description": "Protocol.",
+							"example": 3,
+							"maximum": 255,
+							"minimum": 0,
+							"type": "number"
+						},
+						"public_key": {
+							"description": "Public Key.",
+							"type": "string"
+						}
+					},
+					"type": "object"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"DNSKEY"
+					],
+					"example": "DNSKEY",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"data"
+	],
+	"title": "DNSKEY Record"
+}

@@ -1,0 +1,1582 @@
+{
+	"DELETE /user/load_balancers/monitors/{identifier}": {
+		"description": "Delete a configured monitor.",
+		"operationId": "load-balancer-monitors-delete-monitor",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/identifier-Gsh6hrUK"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Monitor response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/identifier-Gsh6hrUK"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Monitor response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Monitor",
+		"tags": [
+			"Load Balancer Monitors"
+		]
+	},
+	"GET /user/load_balancers/monitors": {
+		"description": "List configured monitors for a user.",
+		"operationId": "load-balancer-monitors-list-monitors",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/monitor"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Monitors response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/monitor"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Monitors response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Monitors",
+		"tags": [
+			"Load Balancer Monitors"
+		]
+	},
+	"GET /user/load_balancers/monitors/{identifier}": {
+		"description": "List a single configured monitor for a user.",
+		"operationId": "load-balancer-monitors-monitor-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/monitor"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Monitor Details response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/monitor"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Monitor Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Monitor Details",
+		"tags": [
+			"Load Balancer Monitors"
+		]
+	},
+	"GET /user/load_balancers/monitors/{identifier}/references": {
+		"description": "Get the list of resources that reference the provided monitor.",
+		"operationId": "load-balancer-monitors-list-monitor-references",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "List of resources that reference a given monitor.",
+											"example": [
+												{
+													"reference_type": "referrer",
+													"resource_id": "17b5962d775c646f3f9725cbc7a53df4",
+													"resource_name": "primary-dc-1",
+													"resource_type": "pool"
+												}
+											],
+											"items": {
+												"properties": {
+													"reference_type": {
+														"enum": [
+															"*",
+															"referral",
+															"referrer"
+														],
+														"type": "string"
+													},
+													"resource_id": {
+														"type": "string"
+													},
+													"resource_name": {
+														"type": "string"
+													},
+													"resource_type": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Monitor References response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "List of resources that reference a given monitor.",
+													"example": [
+														{
+															"reference_type": "referrer",
+															"resource_id": "17b5962d775c646f3f9725cbc7a53df4",
+															"resource_name": "primary-dc-1",
+															"resource_type": "pool"
+														}
+													],
+													"items": {
+														"properties": {
+															"reference_type": {
+																"enum": [
+																	"*",
+																	"referral",
+																	"referrer"
+																],
+																"type": "string"
+															},
+															"resource_id": {
+																"type": "string"
+															},
+															"resource_name": {
+																"type": "string"
+															},
+															"resource_type": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Monitor References response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Monitor References",
+		"tags": [
+			"Load Balancer Monitors"
+		]
+	},
+	"GET /user/load_balancers/preview/{preview_id}": {
+		"description": "Get the result of a previous preview operation using the provided preview_id.",
+		"operationId": "load-balancer-monitors-preview-result",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "preview_id",
+				"required": true,
+				"schema": {
+					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/preview_result"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Preview Result response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/preview_result"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Preview Result response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Preview Result",
+		"tags": [
+			"Load Balancer Monitors"
+		]
+	},
+	"PATCH /user/load_balancers/monitors/{identifier}": {
+		"description": "Apply changes to an existing monitor, overwriting the supplied properties.",
+		"operationId": "load-balancer-monitors-patch-monitor",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"allow_insecure": {
+								"default": false,
+								"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
+								"example": true,
+								"type": "boolean"
+							},
+							"description": {
+								"description": "Object description.",
+								"example": "Login page monitor",
+								"type": "string"
+							},
+							"expected_body": {
+								"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "alive",
+								"type": "string"
+							},
+							"expected_codes": {
+								"default": "200",
+								"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "2xx",
+								"type": "string"
+							},
+							"follow_redirects": {
+								"default": false,
+								"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": true,
+								"type": "boolean"
+							},
+							"header": {
+								"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": {
+									"Host": [
+										"example.com"
+									],
+									"X-App-ID": [
+										"abc123"
+									]
+								},
+								"type": "object"
+							},
+							"interval": {
+								"default": 60,
+								"description": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.",
+								"type": "integer"
+							},
+							"method": {
+								"default": "GET",
+								"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
+								"example": "GET",
+								"type": "string"
+							},
+							"path": {
+								"default": "/",
+								"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "/health",
+								"type": "string"
+							},
+							"port": {
+								"default": 0,
+								"description": "Port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+								"type": "integer"
+							},
+							"probe_zone": {
+								"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "example.com",
+								"type": "string"
+							},
+							"retries": {
+								"default": 2,
+								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+								"type": "integer"
+							},
+							"timeout": {
+								"default": 5,
+								"description": "The timeout (in seconds) before marking the health check as failed.",
+								"type": "integer"
+							},
+							"type": {
+								"default": "http",
+								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
+								"enum": [
+									"http",
+									"https",
+									"tcp",
+									"udp_icmp",
+									"icmp_ping",
+									"smtp"
+								],
+								"example": "https",
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/monitor"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch Monitor response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/monitor"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch Monitor response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch Monitor",
+		"tags": [
+			"Load Balancer Monitors"
+		]
+	},
+	"POST /user/load_balancers/monitors": {
+		"description": "Create a configured monitor.",
+		"operationId": "load-balancer-monitors-create-monitor",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"allow_insecure": {
+								"default": false,
+								"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
+								"example": true,
+								"type": "boolean"
+							},
+							"description": {
+								"description": "Object description.",
+								"example": "Login page monitor",
+								"type": "string"
+							},
+							"expected_body": {
+								"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "alive",
+								"type": "string"
+							},
+							"expected_codes": {
+								"default": "200",
+								"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "2xx",
+								"type": "string"
+							},
+							"follow_redirects": {
+								"default": false,
+								"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": true,
+								"type": "boolean"
+							},
+							"header": {
+								"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": {
+									"Host": [
+										"example.com"
+									],
+									"X-App-ID": [
+										"abc123"
+									]
+								},
+								"type": "object"
+							},
+							"interval": {
+								"default": 60,
+								"description": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.",
+								"type": "integer"
+							},
+							"method": {
+								"default": "GET",
+								"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
+								"example": "GET",
+								"type": "string"
+							},
+							"path": {
+								"default": "/",
+								"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "/health",
+								"type": "string"
+							},
+							"port": {
+								"default": 0,
+								"description": "Port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+								"type": "integer"
+							},
+							"probe_zone": {
+								"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "example.com",
+								"type": "string"
+							},
+							"retries": {
+								"default": 2,
+								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+								"type": "integer"
+							},
+							"timeout": {
+								"default": 5,
+								"description": "The timeout (in seconds) before marking the health check as failed.",
+								"type": "integer"
+							},
+							"type": {
+								"default": "http",
+								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
+								"enum": [
+									"http",
+									"https",
+									"tcp",
+									"udp_icmp",
+									"icmp_ping",
+									"smtp"
+								],
+								"example": "https",
+								"type": "string"
+							}
+						},
+						"required": [
+							"expected_codes"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/monitor"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Monitor response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/monitor"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Monitor response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Monitor",
+		"tags": [
+			"Load Balancer Monitors"
+		]
+	},
+	"POST /user/load_balancers/monitors/{identifier}/preview": {
+		"description": "Preview pools using the specified monitor with provided monitor details. The returned preview_id can be used in the preview endpoint to retrieve the results.",
+		"operationId": "load-balancer-monitors-preview-monitor",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"allow_insecure": {
+								"default": false,
+								"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
+								"example": true,
+								"type": "boolean"
+							},
+							"expected_body": {
+								"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "alive",
+								"type": "string"
+							},
+							"expected_codes": {
+								"default": "200",
+								"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "2xx",
+								"type": "string"
+							},
+							"follow_redirects": {
+								"default": false,
+								"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": true,
+								"type": "boolean"
+							},
+							"header": {
+								"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": {
+									"Host": [
+										"example.com"
+									],
+									"X-App-ID": [
+										"abc123"
+									]
+								},
+								"type": "object"
+							},
+							"method": {
+								"default": "GET",
+								"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
+								"example": "GET",
+								"type": "string"
+							},
+							"path": {
+								"default": "/",
+								"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "/health",
+								"type": "string"
+							},
+							"port": {
+								"default": 0,
+								"description": "Port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+								"type": "integer"
+							},
+							"retries": {
+								"default": 2,
+								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+								"type": "integer"
+							},
+							"timeout": {
+								"default": 5,
+								"description": "The timeout (in seconds) before marking the health check as failed.",
+								"type": "integer"
+							},
+							"type": {
+								"default": "http",
+								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
+								"enum": [
+									"http",
+									"https",
+									"tcp",
+									"udp_icmp",
+									"icmp_ping",
+									"smtp"
+								],
+								"example": "https",
+								"type": "string"
+							}
+						},
+						"required": [
+							"expected_codes"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"pools": {
+													"additionalProperties": {
+														"description": "The pool name associated with the pool ID.",
+														"type": "string"
+													},
+													"description": "Monitored pool IDs mapped to their respective names.",
+													"example": {
+														"abwlnp5jbqn45ecgxd03erbgtxtqai0d": "WNAM Datacenter",
+														"ve8h9lrcip5n5bbga9yqmdws28ay5d0l": "EEU Datacenter"
+													},
+													"type": "object"
+												},
+												"preview_id": {
+													"$ref": "#/components/schemas/identifier-Gsh6hrUK"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Preview Monitor response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"pools": {
+															"additionalProperties": {
+																"description": "The pool name associated with the pool ID.",
+																"type": "string"
+															},
+															"description": "Monitored pool IDs mapped to their respective names.",
+															"example": {
+																"abwlnp5jbqn45ecgxd03erbgtxtqai0d": "WNAM Datacenter",
+																"ve8h9lrcip5n5bbga9yqmdws28ay5d0l": "EEU Datacenter"
+															},
+															"type": "object"
+														},
+														"preview_id": {
+															"$ref": "#/components/schemas/identifier-Gsh6hrUK"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Preview Monitor response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Preview Monitor",
+		"tags": [
+			"Load Balancer Monitors"
+		]
+	},
+	"PUT /user/load_balancers/monitors/{identifier}": {
+		"description": "Modify a configured monitor.",
+		"operationId": "load-balancer-monitors-update-monitor",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"allow_insecure": {
+								"default": false,
+								"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
+								"example": true,
+								"type": "boolean"
+							},
+							"description": {
+								"description": "Object description.",
+								"example": "Login page monitor",
+								"type": "string"
+							},
+							"expected_body": {
+								"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "alive",
+								"type": "string"
+							},
+							"expected_codes": {
+								"default": "200",
+								"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "2xx",
+								"type": "string"
+							},
+							"follow_redirects": {
+								"default": false,
+								"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": true,
+								"type": "boolean"
+							},
+							"header": {
+								"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": {
+									"Host": [
+										"example.com"
+									],
+									"X-App-ID": [
+										"abc123"
+									]
+								},
+								"type": "object"
+							},
+							"interval": {
+								"default": 60,
+								"description": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.",
+								"type": "integer"
+							},
+							"method": {
+								"default": "GET",
+								"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
+								"example": "GET",
+								"type": "string"
+							},
+							"path": {
+								"default": "/",
+								"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "/health",
+								"type": "string"
+							},
+							"port": {
+								"default": 0,
+								"description": "Port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+								"type": "integer"
+							},
+							"probe_zone": {
+								"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "example.com",
+								"type": "string"
+							},
+							"retries": {
+								"default": 2,
+								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+								"type": "integer"
+							},
+							"timeout": {
+								"default": 5,
+								"description": "The timeout (in seconds) before marking the health check as failed.",
+								"type": "integer"
+							},
+							"type": {
+								"default": "http",
+								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
+								"enum": [
+									"http",
+									"https",
+									"tcp",
+									"udp_icmp",
+									"icmp_ping",
+									"smtp"
+								],
+								"example": "https",
+								"type": "string"
+							}
+						},
+						"required": [
+							"expected_codes"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/monitor"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Monitor response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/monitor"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Monitor response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Monitor",
+		"tags": [
+			"Load Balancer Monitors"
+		]
+	}
+}

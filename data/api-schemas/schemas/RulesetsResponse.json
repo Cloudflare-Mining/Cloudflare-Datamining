@@ -1,0 +1,39 @@
+{
+	"description": "A list of rulesets. The returned information will not include the rules in each ruleset.",
+	"items": {
+		"description": "A ruleset object.",
+		"properties": {
+			"description": {
+				"$ref": "#/components/schemas/RulesetDescription"
+			},
+			"id": {
+				"$ref": "#/components/schemas/RulesetId"
+			},
+			"kind": {
+				"$ref": "#/components/schemas/RulesetKind"
+			},
+			"last_updated": {
+				"$ref": "#/components/schemas/RulesetLastUpdated"
+			},
+			"name": {
+				"$ref": "#/components/schemas/RulesetName"
+			},
+			"phase": {
+				"$ref": "#/components/schemas/RulesetPhase"
+			},
+			"version": {
+				"$ref": "#/components/schemas/RulesetVersion"
+			}
+		},
+		"required": [
+			"id",
+			"version",
+			"name",
+			"kind",
+			"phase",
+			"last_updated"
+		],
+		"type": "object"
+	},
+	"type": "array"
+}

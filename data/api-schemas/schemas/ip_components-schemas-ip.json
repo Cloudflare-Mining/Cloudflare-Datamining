@@ -1,0 +1,46 @@
+{
+	"properties": {
+		"belongs_to_ref": {
+			"description": "Specifies a reference to the autonomous systems (AS) that the IP address belongs to.",
+			"properties": {
+				"country": {
+					"example": "US",
+					"type": "string"
+				},
+				"description": {
+					"example": "CLOUDFLARENET",
+					"type": "string"
+				},
+				"id": {
+					"example": "autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8"
+				},
+				"type": {
+					"description": "Infrastructure type of this ASN.",
+					"enum": [
+						"hosting_provider",
+						"isp",
+						"organization"
+					],
+					"example": "hosting_provider",
+					"type": "string"
+				},
+				"value": {
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"ip": {
+			"$ref": "#/components/schemas/common_components-schemas-ip"
+		},
+		"risk_types": {
+			"example": [
+				{
+					"id": 131,
+					"name": "Phishing",
+					"super_category_id": 21
+				}
+			]
+		}
+	}
+}

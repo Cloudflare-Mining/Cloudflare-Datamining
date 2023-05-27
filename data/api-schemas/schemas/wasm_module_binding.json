@@ -1,0 +1,20 @@
+{
+	"properties": {
+		"name": {
+			"$ref": "#/components/schemas/binding_name"
+		},
+		"type": {
+			"description": "The class of resource that the binding provides.",
+			"enum": [
+				"wasm_module"
+			],
+			"example": "wasm_module",
+			"type": "string"
+		}
+	},
+	"required": [
+		"name",
+		"type"
+	],
+	"type": "object"
+}

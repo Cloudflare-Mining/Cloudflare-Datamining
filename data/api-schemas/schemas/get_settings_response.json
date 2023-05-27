@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-ETsedwH0"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"public_key": {
+							"example": "EmpOvSXw8BfbrGCi0fhGiD/3yXk2SiV1Nzg2lru3oj0=",
+							"nullable": true,
+							"type": "string"
+						}
+					},
+					"required": [
+						"public_key"
+					]
+				}
+			}
+		}
+	]
+}

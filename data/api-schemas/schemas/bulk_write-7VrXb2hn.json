@@ -1,0 +1,35 @@
+{
+	"items": {
+		"properties": {
+			"base64": {
+				"default": false,
+				"description": "Whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images.",
+				"type": "boolean"
+			},
+			"expiration": {
+				"$ref": "#/components/schemas/expiration"
+			},
+			"expiration_ttl": {
+				"$ref": "#/components/schemas/expiration_ttl"
+			},
+			"key": {
+				"$ref": "#/components/schemas/key_name_bulk"
+			},
+			"metadata": {
+				"$ref": "#/components/schemas/list_metadata"
+			},
+			"value": {
+				"description": "A UTF-8 encoded string to be stored, up to 10 MB in length.",
+				"example": "Some string",
+				"maxLength": 10485760,
+				"type": "string"
+			}
+		},
+		"type": "object"
+	},
+	"required": [
+		"key",
+		"value"
+	],
+	"type": "array"
+}

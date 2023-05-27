@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"query": {
+			"default": "",
+			"description": "Search query term.",
+			"example": "primary",
+			"type": "string"
+		},
+		"references": {
+			"default": "",
+			"description": "The type of references to include (\"*\" for all).",
+			"enum": [
+				"",
+				"*",
+				"referral",
+				"referrer"
+			],
+			"example": "*",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

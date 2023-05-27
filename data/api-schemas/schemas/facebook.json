@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/identity-provider"
+		},
+		{
+			"properties": {
+				"config": {
+					"$ref": "#/components/schemas/generic-oauth-config"
+				}
+			},
+			"type": "object"
+		}
+	],
+	"title": "Facebook",
+	"type": "object"
+}

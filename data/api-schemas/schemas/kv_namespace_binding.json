@@ -1,0 +1,24 @@
+{
+	"properties": {
+		"name": {
+			"$ref": "#/components/schemas/binding_name"
+		},
+		"namespace_id": {
+			"$ref": "#/components/schemas/namespace_identifier"
+		},
+		"type": {
+			"description": "The class of resource that the binding provides.",
+			"enum": [
+				"kv_namespace"
+			],
+			"example": "kv_namespace",
+			"type": "string"
+		}
+	},
+	"required": [
+		"name",
+		"type",
+		"namespace_id"
+	],
+	"type": "object"
+}

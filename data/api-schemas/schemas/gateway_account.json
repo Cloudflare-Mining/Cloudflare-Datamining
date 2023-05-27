@@ -1,0 +1,26 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"gateway_tag": {
+							"$ref": "#/components/schemas/gateway_tag"
+						},
+						"id": {
+							"$ref": "#/components/schemas/cf_account_id"
+						},
+						"provider_name": {
+							"$ref": "#/components/schemas/provider_name"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	],
+	"type": "object"
+}

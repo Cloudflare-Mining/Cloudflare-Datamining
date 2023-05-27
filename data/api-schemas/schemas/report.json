@@ -1,0 +1,31 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/result"
+		},
+		{
+			"properties": {
+				"data": {
+					"items": {
+						"properties": {
+							"metrics": {
+								"description": "Array with one item per requested metric. Each item is a single value.",
+								"items": {
+									"description": "Nominal metric value.",
+									"type": "number"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"metrics"
+						]
+					}
+				}
+			},
+			"required": [
+				"data"
+			]
+		}
+	]
+}

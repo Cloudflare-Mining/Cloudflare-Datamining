@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"allowedOrigins": {
+			"$ref": "#/components/schemas/allowedOrigins"
+		},
+		"creator": {
+			"$ref": "#/components/schemas/creator"
+		},
+		"maxDurationSeconds": {
+			"$ref": "#/components/schemas/maxDurationSeconds"
+		},
+		"meta": {
+			"$ref": "#/components/schemas/media_metadata"
+		},
+		"requireSignedURLs": {
+			"$ref": "#/components/schemas/requireSignedURLs"
+		},
+		"thumbnailTimestampPct": {
+			"$ref": "#/components/schemas/thumbnailTimestampPct"
+		},
+		"uploadExpiry": {
+			"$ref": "#/components/schemas/oneTimeUploadExpiry"
+		}
+	},
+	"type": "object"
+}

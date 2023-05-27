@@ -1,0 +1,12 @@
+{
+	"description": "The available states for the rule group.",
+	"example": [
+		"on",
+		"off"
+	],
+	"items": {
+		"$ref": "#/components/schemas/components-schemas-mode"
+	},
+	"readOnly": true,
+	"type": "array"
+}

@@ -1,0 +1,20 @@
+{
+	"description": "Parameters specific to TCP health check.",
+	"nullable": true,
+	"properties": {
+		"method": {
+			"default": "connection_established",
+			"description": "The TCP connection method to use for the health check.",
+			"enum": [
+				"connection_established"
+			],
+			"type": "string"
+		},
+		"port": {
+			"default": 80,
+			"description": "Port number to connect to for the health check. Defaults to 80.",
+			"type": "integer"
+		}
+	},
+	"type": "object"
+}

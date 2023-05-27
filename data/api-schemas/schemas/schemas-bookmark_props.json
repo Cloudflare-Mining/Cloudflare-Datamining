@@ -1,0 +1,28 @@
+{
+	"properties": {
+		"app_launcher_visible": {
+			"default": true
+		},
+		"domain": {
+			"description": "The URL or domain of the bookmark.",
+			"example": "https://mybookmark.com"
+		},
+		"logo_url": {
+			"$ref": "#/components/schemas/logo_url"
+		},
+		"name": {
+			"$ref": "#/components/schemas/apps_components-schemas-name"
+		},
+		"type": {
+			"description": "The application type.",
+			"example": "bookmark",
+			"type": "string"
+		}
+	},
+	"required": [
+		"type",
+		"domain"
+	],
+	"title": "Bookmark Application",
+	"type": "object"
+}

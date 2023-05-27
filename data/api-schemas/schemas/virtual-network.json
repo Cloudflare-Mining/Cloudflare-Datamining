@@ -1,0 +1,30 @@
+{
+	"properties": {
+		"comment": {
+			"$ref": "#/components/schemas/schemas-comment"
+		},
+		"created_at": {
+			"description": "Timestamp of when the virtual network was created."
+		},
+		"deleted_at": {
+			"description": "Timestamp of when the virtual network was deleted. If `null`, the virtual network has not been deleted."
+		},
+		"id": {
+			"$ref": "#/components/schemas/vnet_id"
+		},
+		"is_default_network": {
+			"$ref": "#/components/schemas/is_default_network"
+		},
+		"name": {
+			"$ref": "#/components/schemas/vnet_name"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"is_default_network",
+		"comment",
+		"created_at"
+	],
+	"type": "object"
+}

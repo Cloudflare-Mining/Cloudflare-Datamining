@@ -1,0 +1,805 @@
+{
+	"DELETE /accounts/{account_identifier}/pages/projects/{project_name}": {
+		"description": "Delete a project by name.",
+		"operationId": "pages-project-delete-project",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"example": {
+								"errors": [],
+								"messages": [],
+								"result": null,
+								"success": true
+							}
+						}
+					}
+				},
+				"description": "Delete project response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"example": {
+										"errors": [],
+										"messages": [],
+										"result": null,
+										"success": true
+									}
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete project response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete project",
+		"tags": [
+			"Pages Project"
+		]
+	},
+	"GET /accounts/{account_identifier}/pages/projects": {
+		"description": "Fetch a list of all user projects.",
+		"operationId": "pages-project-get-projects",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 1
+												},
+												"page": {
+													"example": 1
+												},
+												"per_page": {
+													"example": 100
+												},
+												"total_count": {
+													"example": 1
+												}
+											},
+											"type": "object"
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/deployments"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get projects response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"example": 1
+														},
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 100
+														},
+														"total_count": {
+															"example": 1
+														}
+													},
+													"type": "object"
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/deployments"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get projects response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get projects",
+		"tags": [
+			"Pages Project"
+		]
+	},
+	"GET /accounts/{account_identifier}/pages/projects/{project_name}": {
+		"description": "Fetch a project by name.",
+		"operationId": "pages-project-get-project",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/projects"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get project response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/projects"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get project response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get project",
+		"tags": [
+			"Pages Project"
+		]
+	},
+	"PATCH /accounts/{account_identifier}/pages/projects/{project_name}": {
+		"description": "Set new attributes for an existing project. Modify environment variables. To delete an environment variable, set the key to null.",
+		"operationId": "pages-project-update-project",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": {
+							"deployment_configs": {
+								"production": {
+									"compatibility_date": "2022-01-01",
+									"compatibility_flags": [
+										"url_standard"
+									],
+									"env_vars": {
+										"BUILD_VERSION": {
+											"value": "3.3"
+										},
+										"delete_this_env_var": null,
+										"secret_var": {
+											"type": "secret_text",
+											"value": "A_CMS_API_TOKEN"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update project response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update project response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update project",
+		"tags": [
+			"Pages Project"
+		]
+	},
+	"POST /accounts/{account_identifier}/pages/projects": {
+		"description": "Create a new project.",
+		"operationId": "pages-project-create-project",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"build_config": {
+								"$ref": "#/components/schemas/build_config"
+							},
+							"canonical_deployment": {
+								"description": "Most recent deployment to the repo.",
+								"oneOf": [
+									{
+										"nullable": true
+									},
+									{
+										"$ref": "#/components/schemas/deployments"
+									}
+								],
+								"readOnly": true
+							},
+							"created_on": {
+								"description": "When the project was created.",
+								"example": "2017-01-01T00:00:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"deployment_configs": {
+								"$ref": "#/components/schemas/deployment_configs"
+							},
+							"domains": {
+								"description": "A list of associated custom domains for the project.",
+								"example": [
+									"customdomain.com",
+									"customdomain.org"
+								],
+								"items": {},
+								"readOnly": true,
+								"type": "array"
+							},
+							"id": {
+								"description": "Id of the project.",
+								"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+								"readOnly": true,
+								"type": "string"
+							},
+							"latest_deployment": {
+								"description": "Most recent deployment to the repo.",
+								"oneOf": [
+									{
+										"nullable": true
+									},
+									{
+										"$ref": "#/components/schemas/deployments"
+									}
+								],
+								"readOnly": true
+							},
+							"name": {
+								"description": "Name of the project.",
+								"example": "NextJS Blog",
+								"type": "string"
+							},
+							"production_branch": {
+								"description": "Production branch of the project. Used to identify production deployments.",
+								"example": "main",
+								"type": "string"
+							},
+							"source": {
+								"readOnly": true
+							},
+							"subdomain": {
+								"description": "The Cloudflare subdomain associated with the project.",
+								"example": "helloworld.pages.dev",
+								"readOnly": true,
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create project response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI."
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create project response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create project",
+		"tags": [
+			"Pages Project"
+		]
+	}
+}

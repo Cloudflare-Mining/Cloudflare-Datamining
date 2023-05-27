@@ -1,0 +1,28 @@
+{
+	"properties": {
+		"compliance_status": {
+			"description": "Compliance Status",
+			"enum": [
+				"compliant",
+				"noncompliant",
+				"unknown",
+				"notapplicable",
+				"ingraceperiod",
+				"error"
+			],
+			"example": "compliant",
+			"type": "string"
+		},
+		"connection_id": {
+			"description": "Posture Integration ID.",
+			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+			"type": "string"
+		}
+	},
+	"required": [
+		"connection_id",
+		"compliance_status"
+	],
+	"title": "Intune S2S Input",
+	"type": "object"
+}

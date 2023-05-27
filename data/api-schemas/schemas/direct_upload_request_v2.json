@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"expiry": {
+			"default": "Now + 30 minutes",
+			"description": "The date after which the upload will not be accepted. Minimum: Now + 2 minutes. Maximum: Now + 6 hours.",
+			"example": "2021-01-02T02:20:00Z",
+			"format": "date-time",
+			"type": "string"
+		},
+		"id": {
+			"description": "Optional Image Custom ID. Up to 1024 chars. Can include any number of subpaths, and utf8 characters. Cannot start nor end with a / (forward slash). Cannot be a UUID.",
+			"example": "this/is/my-customid",
+			"maxLength": 1024,
+			"readOnly": true,
+			"type": "string"
+		},
+		"metadata": {
+			"description": "User modifiable key-value store. Can be used for keeping references to another system of record, for managing images.",
+			"type": "object"
+		},
+		"requireSignedURLs": {
+			"default": false,
+			"description": "Indicates whether the image requires a signature token to be accessed.",
+			"example": true,
+			"type": "boolean"
+		}
+	},
+	"type": "object"
+}

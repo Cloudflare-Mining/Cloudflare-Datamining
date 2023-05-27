@@ -1,0 +1,19 @@
+{
+	"properties": {
+		"enabled": {
+			"$ref": "#/components/schemas/filters_components-schemas-enabled"
+		},
+		"id": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		},
+		"pattern": {
+			"$ref": "#/components/schemas/schemas-pattern"
+		}
+	},
+	"required": [
+		"id",
+		"pattern",
+		"enabled"
+	],
+	"type": "object"
+}

@@ -1,0 +1,16 @@
+{
+	"description": "Defined when the Railgun version is out of date from the latest release from Cloudflare.",
+	"properties": {
+		"download_link": {
+			"description": "An HTTP link to download the latest Railgun binary.",
+			"example": "https://www.cloudflare.com/downloads/railgun",
+			"type": "string"
+		},
+		"latest_version": {
+			"description": "Latest version of the Railgun receiver available to install.",
+			"example": "1.0.0",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

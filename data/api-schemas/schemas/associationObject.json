@@ -1,0 +1,10 @@
+{
+	"properties": {
+		"service": {
+			"$ref": "#/components/schemas/service"
+		},
+		"status": {
+			"$ref": "#/components/schemas/mtls-management_components-schemas-status"
+		}
+	}
+}

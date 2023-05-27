@@ -1,0 +1,12 @@
+{
+	"description": "Details for playback from an live input using RTMPS.",
+	"properties": {
+		"streamKey": {
+			"$ref": "#/components/schemas/playback_rtmps_stream_key"
+		},
+		"url": {
+			"$ref": "#/components/schemas/playback_rtmps_url"
+		}
+	},
+	"type": "object"
+}

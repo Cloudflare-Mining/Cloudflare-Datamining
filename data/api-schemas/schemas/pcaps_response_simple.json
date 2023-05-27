@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"filter_v1": {
+			"$ref": "#/components/schemas/pcaps_filter_v1"
+		},
+		"id": {
+			"$ref": "#/components/schemas/pcaps_id"
+		},
+		"status": {
+			"$ref": "#/components/schemas/pcaps_status"
+		},
+		"submitted": {
+			"$ref": "#/components/schemas/pcaps_submitted"
+		},
+		"system": {
+			"$ref": "#/components/schemas/pcaps_system"
+		},
+		"time_limit": {
+			"$ref": "#/components/schemas/pcaps_time_limit"
+		},
+		"type": {
+			"$ref": "#/components/schemas/pcaps_type"
+		}
+	},
+	"type": "object"
+}

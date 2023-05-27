@@ -1,0 +1,16 @@
+{
+	"description": "A single R2 bucket",
+	"properties": {
+		"creation_date": {
+			"description": "Creation timestamp",
+			"type": "string"
+		},
+		"location": {
+			"$ref": "#/components/schemas/bucket_location"
+		},
+		"name": {
+			"$ref": "#/components/schemas/bucket_name"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,14 @@
+{
+	"properties": {
+		"enabled": {
+			"$ref": "#/components/schemas/filters_components-schemas-enabled"
+		},
+		"pattern": {
+			"$ref": "#/components/schemas/schemas-pattern"
+		}
+	},
+	"required": [
+		"pattern",
+		"enabled"
+	]
+}

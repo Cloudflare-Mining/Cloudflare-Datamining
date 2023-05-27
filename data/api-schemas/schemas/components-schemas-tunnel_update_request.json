@@ -1,0 +1,20 @@
+{
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/interconnect_components-schemas-description"
+		},
+		"gre": {
+			"$ref": "#/components/schemas/gre"
+		},
+		"health_check": {
+			"$ref": "#/components/schemas/schemas-health_check"
+		},
+		"interface_address": {
+			"$ref": "#/components/schemas/interface_address"
+		},
+		"mtu": {
+			"$ref": "#/components/schemas/schemas-mtu"
+		}
+	},
+	"type": "object"
+}

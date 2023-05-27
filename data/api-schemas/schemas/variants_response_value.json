@@ -1,0 +1,21 @@
+{
+	"properties": {
+		"result": {
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/variants-leITR2zA"
+				},
+				{
+					"properties": {
+						"value": {
+							"$ref": "#/components/schemas/variants_value"
+						}
+					},
+					"required": [
+						"value"
+					]
+				}
+			]
+		}
+	}
+}

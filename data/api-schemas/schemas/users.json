@@ -1,0 +1,38 @@
+{
+	"properties": {
+		"access_seat": {
+			"$ref": "#/components/schemas/schemas-access_seat"
+		},
+		"active_device_count": {
+			"$ref": "#/components/schemas/active_device_count"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"email": {
+			"$ref": "#/components/schemas/schemas-email"
+		},
+		"gateway_seat": {
+			"$ref": "#/components/schemas/schemas-gateway_seat"
+		},
+		"id": {
+			"$ref": "#/components/schemas/schemas-id"
+		},
+		"last_successful_login": {
+			"$ref": "#/components/schemas/last_successful_login"
+		},
+		"name": {
+			"$ref": "#/components/schemas/users_components-schemas-name"
+		},
+		"seat_uid": {
+			"$ref": "#/components/schemas/seat_uid"
+		},
+		"uid": {
+			"$ref": "#/components/schemas/uid"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"type": "object"
+}

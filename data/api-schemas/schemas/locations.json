@@ -1,0 +1,32 @@
+{
+	"properties": {
+		"client_default": {
+			"$ref": "#/components/schemas/client-default"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"doh_subdomain": {
+			"$ref": "#/components/schemas/subdomain"
+		},
+		"ecs_support": {
+			"$ref": "#/components/schemas/ecs-support"
+		},
+		"id": {
+			"$ref": "#/components/schemas/schemas-uuid"
+		},
+		"ip": {
+			"$ref": "#/components/schemas/ip-Ga1DcnGO"
+		},
+		"name": {
+			"$ref": "#/components/schemas/schemas-name-SHSW3ZhE"
+		},
+		"networks": {
+			"$ref": "#/components/schemas/network"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,14 @@
+{
+	"properties": {
+		"routes": {
+			"items": {
+				"$ref": "#/components/schemas/route_delete_id"
+			},
+			"type": "array"
+		}
+	},
+	"required": [
+		"routes"
+	],
+	"type": "object"
+}

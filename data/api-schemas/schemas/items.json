@@ -1,0 +1,15 @@
+{
+	"description": "The items in the List.",
+	"items": {
+		"properties": {
+			"created_at": {
+				"$ref": "#/components/schemas/timestamp"
+			},
+			"value": {
+				"$ref": "#/components/schemas/value-2KK0P1rM"
+			}
+		},
+		"type": "object"
+	},
+	"type": "array"
+}

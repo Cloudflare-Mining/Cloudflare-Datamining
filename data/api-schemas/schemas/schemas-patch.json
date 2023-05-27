@@ -1,0 +1,12 @@
+{
+	"description": "Update enablement of Smart Tiered Cache",
+	"properties": {
+		"value": {
+			"$ref": "#/components/schemas/schemas-value"
+		}
+	},
+	"required": [
+		"value"
+	],
+	"type": "object"
+}

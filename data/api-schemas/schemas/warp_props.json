@@ -1,0 +1,25 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/feature_app_props-01MoMwtV"
+		},
+		{
+			"properties": {
+				"domain": {
+					"example": "authdomain.cloudflareaccess.com/warp",
+					"readOnly": true
+				},
+				"name": {
+					"default": "Warp Login App",
+					"example": "Warp Login App",
+					"readOnly": true
+				},
+				"type": {
+					"description": "The application type.",
+					"example": "warp",
+					"type": "string"
+				}
+			}
+		}
+	]
+}

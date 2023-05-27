@@ -1,0 +1,188 @@
+{
+	"GET /user/load_balancing_analytics/events": {
+		"description": "List origin health changes.",
+		"operationId": "load-balancer-healthcheck-events-list-healthcheck-events",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "until",
+				"schema": {
+					"description": "End date and time of requesting data period in the ISO8601 format.",
+					"example": "2016-11-11T13:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pool_name",
+				"schema": {
+					"description": "The name for the pool to filter.",
+					"example": "primary-dc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "origin_healthy",
+				"schema": {
+					"default": true,
+					"description": "If true, filter events where the origin status is healthy. If false, filter events where the origin status is unhealthy.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "identifier",
+				"schema": {
+					"example": "17b5962d775c646f3f9725cbc7a53df4"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"description": "Start date and time of requesting data period in the ISO8601 format.",
+					"example": "2016-11-11T12:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "origin_name",
+				"schema": {
+					"description": "The name for the origin to filter.",
+					"example": "primary-dc-1",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pool_healthy",
+				"schema": {
+					"default": true,
+					"description": "If true, filter events where the pool status is healthy. If false, filter events where the pool status is unhealthy.",
+					"example": true,
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/analytics"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Healthcheck Events response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/analytics"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Healthcheck Events response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List Healthcheck Events",
+		"tags": [
+			"Load Balancer Healthcheck Events"
+		]
+	}
+}

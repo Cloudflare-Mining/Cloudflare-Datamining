@@ -1,0 +1,17 @@
+{
+	"properties": {
+		"auto_renew": {
+			"$ref": "#/components/schemas/auto_renew"
+		},
+		"locked": {
+			"$ref": "#/components/schemas/locked"
+		},
+		"name_servers": {
+			"$ref": "#/components/schemas/name_servers"
+		},
+		"privacy": {
+			"$ref": "#/components/schemas/privacy"
+		}
+	},
+	"type": "object"
+}

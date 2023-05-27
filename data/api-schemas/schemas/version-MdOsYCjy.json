@@ -1,0 +1,15 @@
+{
+	"description": "The version of the analyzed script.",
+	"properties": {
+		"fetched_at": {
+			"$ref": "#/components/schemas/fetched_at"
+		},
+		"hash": {
+			"$ref": "#/components/schemas/hash"
+		},
+		"js_integrity_score": {
+			"$ref": "#/components/schemas/js_integrity_score"
+		}
+	},
+	"type": "object"
+}

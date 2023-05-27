@@ -1,0 +1,22 @@
+{
+	"properties": {
+		"domain": {
+			"description": "Domain",
+			"example": "example.com",
+			"type": "string"
+		},
+		"operating_system": {
+			"description": "Operating System",
+			"enum": [
+				"windows"
+			],
+			"example": "windows",
+			"type": "string"
+		}
+	},
+	"required": [
+		"operating_system"
+	],
+	"title": "Domain Joined",
+	"type": "object"
+}

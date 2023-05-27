@@ -1,0 +1,12 @@
+{
+	"description": "The action to apply to a matched request.",
+	"enum": [
+		"block",
+		"challenge",
+		"whitelist",
+		"js_challenge",
+		"managed_challenge"
+	],
+	"example": "challenge",
+	"type": "string"
+}

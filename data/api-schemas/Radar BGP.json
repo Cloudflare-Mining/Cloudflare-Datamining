@@ -1,0 +1,1450 @@
+{
+	"GET /radar/bgp/hijacks/events": {
+		"description": "Get the BGP hijack events. (Beta)",
+		"operationId": "radar_get_Us",
+		"parameters": [
+			{
+				"description": "Current page number, starting from 1",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Current page number, starting from 1",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of entries per page",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 50,
+					"description": "Number of entries per page",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The unique identifier of a event",
+				"in": "query",
+				"name": "eventId",
+				"schema": {
+					"description": "The unique identifier of a event",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The potential hijacker AS of a BGP hijack event",
+				"in": "query",
+				"name": "hijackerAsn",
+				"schema": {
+					"description": "The potential hijacker AS of a BGP hijack event",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The potential victim AS of a BGP hijack event",
+				"in": "query",
+				"name": "victimAsn",
+				"schema": {
+					"description": "The potential victim AS of a BGP hijack event",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The potential hijacker or victim AS of a BGP hijack event",
+				"in": "query",
+				"name": "involvedAsn",
+				"schema": {
+					"description": "The potential hijacker or victim AS of a BGP hijack event",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The prefix hijacked during a BGP hijack event",
+				"in": "query",
+				"name": "prefix",
+				"schema": {
+					"description": "The prefix hijacked during a BGP hijack event",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The minimum confidence score to filter events (1-4 low, 5-7 mid, 8+ high)",
+				"in": "query",
+				"name": "minConfidence",
+				"schema": {
+					"description": "The minimum confidence score to filter events (1-4 low, 5-7 mid, 8+ high)",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The maximum confidence score to filter events (1-4 low, 5-7 mid, 8+ high)",
+				"in": "query",
+				"name": "maxConfidence",
+				"schema": {
+					"description": "The maximum confidence score to filter events (1-4 low, 5-7 mid, 8+ high)",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"enum": [
+						"1d",
+						"2d",
+						"7d",
+						"14d",
+						"28d",
+						"12w",
+						"24w",
+						"52w",
+						"1dControl",
+						"2dControl",
+						"7dControl",
+						"14dControl",
+						"28dControl",
+						"12wControl",
+						"24wControl"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Start of the date range (inclusive).",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"example": "2022-09-15T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"example": "2022-09-15T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Sort events by field",
+				"in": "query",
+				"name": "sortBy",
+				"schema": {
+					"enum": [
+						"ID",
+						"TIME",
+						"CONFIDENCE"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Sort order",
+				"in": "query",
+				"name": "sortOrder",
+				"schema": {
+					"enum": [
+						"ASC",
+						"DESC"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"asn_info": {
+											"items": {
+												"properties": {
+													"asn": {
+														"type": "integer"
+													},
+													"country_code": {
+														"type": "string"
+													},
+													"org_name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"asn",
+													"org_name",
+													"country_code"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"events": {
+											"items": {
+												"properties": {
+													"confidence_score": {
+														"type": "integer"
+													},
+													"duration": {
+														"type": "integer"
+													},
+													"event_type": {
+														"type": "integer"
+													},
+													"hijack_msgs_count": {
+														"type": "integer"
+													},
+													"hijacker_asn": {
+														"type": "integer"
+													},
+													"id": {
+														"type": "integer"
+													},
+													"is_stale": {
+														"type": "boolean"
+													},
+													"max_hijack_ts": {
+														"type": "string"
+													},
+													"max_msg_ts": {
+														"type": "string"
+													},
+													"min_hijack_ts": {
+														"type": "string"
+													},
+													"on_going_count": {
+														"type": "integer"
+													},
+													"peer_asns": {
+														"items": {
+															"type": "integer"
+														},
+														"type": "array"
+													},
+													"peer_ip_count": {
+														"type": "integer"
+													},
+													"prefixes": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"tags": {
+														"items": {
+															"properties": {
+																"name": {
+																	"type": "string"
+																},
+																"score": {
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"name",
+																"score"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"victim_asns": {
+														"items": {
+															"type": "integer"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"duration",
+													"event_type",
+													"hijack_msgs_count",
+													"hijacker_asn",
+													"victim_asns",
+													"id",
+													"is_stale",
+													"max_hijack_ts",
+													"min_hijack_ts",
+													"max_msg_ts",
+													"on_going_count",
+													"peer_asns",
+													"peer_ip_count",
+													"prefixes",
+													"confidence_score",
+													"tags"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"total_monitors": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"asn_info",
+										"events",
+										"total_monitors"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"count",
+										"total_count",
+										"page",
+										"per_page"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"result_info",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get BGP hijack events",
+		"tags": [
+			"Radar BGP"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/bgp/leaks/events": {
+		"description": "Get the BGP route leak events (Beta).",
+		"operationId": "radar_get_Os",
+		"parameters": [
+			{
+				"description": "Current page number, starting from 1",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Current page number, starting from 1",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of entries per page",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 50,
+					"description": "Number of entries per page",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The unique identifier of a event",
+				"in": "query",
+				"name": "eventId",
+				"schema": {
+					"description": "The unique identifier of a event",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The leaking AS of a route leak event",
+				"in": "query",
+				"name": "leakAsn",
+				"schema": {
+					"description": "The leaking AS of a route leak event",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "ASN that is causing or affected by a route leak event",
+				"in": "query",
+				"name": "involvedAsn",
+				"schema": {
+					"description": "ASN that is causing or affected by a route leak event",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"enum": [
+						"1d",
+						"2d",
+						"7d",
+						"14d",
+						"28d",
+						"12w",
+						"24w",
+						"52w",
+						"1dControl",
+						"2dControl",
+						"7dControl",
+						"14dControl",
+						"28dControl",
+						"12wControl",
+						"24wControl"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Start of the date range (inclusive).",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"example": "2022-09-15T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End of the date range (inclusive).",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"example": "2022-09-15T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Sort events by field",
+				"in": "query",
+				"name": "sortBy",
+				"schema": {
+					"enum": [
+						"ID",
+						"LEAKS",
+						"PEERS",
+						"PREFIXES",
+						"ORIGINS",
+						"TIME"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Sort order",
+				"in": "query",
+				"name": "sortOrder",
+				"schema": {
+					"enum": [
+						"ASC",
+						"DESC"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"asn_info": {
+											"items": {
+												"properties": {
+													"asn": {
+														"type": "integer"
+													},
+													"country_code": {
+														"type": "string"
+													},
+													"org_name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"asn",
+													"org_name",
+													"country_code"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"events": {
+											"items": {
+												"properties": {
+													"detected_ts": {
+														"type": "string"
+													},
+													"finished": {
+														"type": "boolean"
+													},
+													"id": {
+														"type": "integer"
+													},
+													"leak_asn": {
+														"type": "integer"
+													},
+													"leak_count": {
+														"type": "integer"
+													},
+													"leak_seg": {
+														"items": {
+															"type": "integer"
+														},
+														"type": "array"
+													},
+													"leak_type": {
+														"type": "integer"
+													},
+													"max_ts": {
+														"type": "string"
+													},
+													"min_ts": {
+														"type": "string"
+													},
+													"origin_count": {
+														"type": "integer"
+													},
+													"peer_count": {
+														"type": "integer"
+													},
+													"prefix_count": {
+														"type": "integer"
+													}
+												},
+												"required": [
+													"detected_ts",
+													"finished",
+													"id",
+													"leak_asn",
+													"leak_count",
+													"leak_seg",
+													"leak_type",
+													"max_ts",
+													"min_ts",
+													"origin_count",
+													"peer_count",
+													"prefix_count"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"asn_info",
+										"events"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"count",
+										"total_count",
+										"page",
+										"per_page"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"result_info",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get BGP route leak events",
+		"tags": [
+			"Radar BGP"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/bgp/timeseries": {
+		"description": "Gets BGP updates change over time. Raw values are returned. When requesting updates of an autonomous system (AS), only BGP updates of type announcement are returned.",
+		"operationId": "radar_get_Cs",
+		"parameters": [
+			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"items": {
+						"description": "Array of names that will be used to name the series in responses.",
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the start of a series.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the end of a series.",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Network prefix, IPv4 or IPv6.",
+				"in": "query",
+				"name": "prefix",
+				"schema": {
+					"description": "Network prefix, IPv4 or IPv6.",
+					"example": "1.1.1.0/24",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of BGP update types.",
+				"in": "query",
+				"name": "updateType",
+				"schema": {
+					"items": {
+						"enum": [
+							"ANNOUNCEMENT",
+							"WITHDRAWAL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"items": {
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+						"example": "15169",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"aggInterval": {
+													"example": "1h",
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"example": "2022-09-15T00:00:00Z",
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"example": "2022-09-15T00:00:00Z",
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"startTime",
+																	"endTime",
+																	"linkedUrl",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"required": [
+														"level",
+														"annotations"
+													],
+													"type": "object"
+												},
+												"dateRange": {
+													"properties": {
+														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"required": [
+														"startTime",
+														"endTime"
+													],
+													"type": "object"
+												},
+												"lastUpdated": {
+													"example": "2022-09-15T00:00:00Z",
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"confidenceInfo",
+												"dateRange",
+												"aggInterval",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"timestamps": {
+													"items": {
+														"example": "2022-09-15T00:00:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"values": {
+													"items": {
+														"example": 0.56,
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"values"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get BGP time series",
+		"tags": [
+			"Radar BGP"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/bgp/top/ases": {
+		"description": "Get the top autonomous systems (AS) by BGP updates (announcements only). Values are a percentage out of the total updates.",
+		"operationId": "radar_get_Is",
+		"parameters": [
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 5,
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"items": {
+						"description": "Array of names that will be used to name the series in responses.",
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the start of a series.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the end of a series.",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"items": {
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+						"example": "15169",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of BGP network prefixes.",
+				"in": "query",
+				"name": "prefix",
+				"schema": {
+					"items": {
+						"description": "Array of BGP network prefixes.",
+						"example": "1.1.1.0/24",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of BGP update types.",
+				"in": "query",
+				"name": "updateType",
+				"schema": {
+					"items": {
+						"enum": [
+							"ANNOUNCEMENT",
+							"WITHDRAWAL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"dateRange": {
+													"properties": {
+														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"required": [
+														"startTime",
+														"endTime"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"dateRange"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"ASName": {
+														"example": "Apple-Engineering",
+														"type": "string"
+													},
+													"asn": {
+														"example": 714,
+														"type": "integer"
+													},
+													"value": {
+														"description": "Percentage of updates by this AS out of the total updates by all autonomous systems.",
+														"example": "0.73996",
+														"type": "string"
+													}
+												},
+												"required": [
+													"asn",
+													"ASName",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get top autonomous systems",
+		"tags": [
+			"Radar BGP"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/bgp/top/prefixes": {
+		"description": "Get the top network prefixes by BGP updates. Values are a percentage out of the total BGP updates.",
+		"operationId": "radar_get_Es",
+		"parameters": [
+			{
+				"description": "Limit the number of objects in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 5,
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"items": {
+						"description": "Array of names that will be used to name the series in responses.",
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the start of a series.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the end of a series.",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"items": {
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+						"example": "15169",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of BGP update types.",
+				"in": "query",
+				"name": "updateType",
+				"schema": {
+					"items": {
+						"enum": [
+							"ANNOUNCEMENT",
+							"WITHDRAWAL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"dateRange": {
+													"properties": {
+														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"required": [
+														"startTime",
+														"endTime"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"dateRange"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"prefix": {
+														"example": "2804:77cc:8000::/33",
+														"type": "string"
+													},
+													"value": {
+														"example": "0.73996",
+														"type": "string"
+													}
+												},
+												"required": [
+													"prefix",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get top prefixes",
+		"tags": [
+			"Radar BGP"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

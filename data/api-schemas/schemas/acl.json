@@ -1,0 +1,19 @@
+{
+	"properties": {
+		"id": {
+			"$ref": "#/components/schemas/components-schemas-identifier"
+		},
+		"ip_range": {
+			"$ref": "#/components/schemas/ip_range"
+		},
+		"name": {
+			"$ref": "#/components/schemas/acl_components-schemas-name"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"ip_range"
+	],
+	"type": "object"
+}

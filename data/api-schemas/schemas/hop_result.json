@@ -1,0 +1,21 @@
+{
+	"properties": {
+		"nodes": {
+			"description": "An array of node objects.",
+			"items": {
+				"$ref": "#/components/schemas/node_result-pK0xFqrL"
+			},
+			"type": "array"
+		},
+		"packets_lost": {
+			"$ref": "#/components/schemas/packets_lost"
+		},
+		"packets_sent": {
+			"$ref": "#/components/schemas/packets_sent"
+		},
+		"packets_ttl": {
+			"$ref": "#/components/schemas/packets_ttl"
+		}
+	},
+	"type": "object"
+}

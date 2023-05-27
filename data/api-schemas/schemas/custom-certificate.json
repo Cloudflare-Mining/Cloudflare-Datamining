@@ -1,0 +1,60 @@
+{
+	"properties": {
+		"bundle_method": {
+			"$ref": "#/components/schemas/bundle_method"
+		},
+		"expires_on": {
+			"$ref": "#/components/schemas/expires_on"
+		},
+		"geo_restrictions": {
+			"$ref": "#/components/schemas/geo_restrictions"
+		},
+		"hosts": {
+			"$ref": "#/components/schemas/hosts"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier"
+		},
+		"issuer": {
+			"$ref": "#/components/schemas/issuer"
+		},
+		"keyless_server": {
+			"$ref": "#/components/schemas/keyless-certificate"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/modified_on"
+		},
+		"policy": {
+			"$ref": "#/components/schemas/policy"
+		},
+		"priority": {
+			"$ref": "#/components/schemas/priority"
+		},
+		"signature": {
+			"$ref": "#/components/schemas/signature"
+		},
+		"status": {
+			"$ref": "#/components/schemas/status-v8hncLO5"
+		},
+		"uploaded_on": {
+			"$ref": "#/components/schemas/uploaded_on"
+		},
+		"zone_id": {
+			"$ref": "#/components/schemas/identifier"
+		}
+	},
+	"required": [
+		"id",
+		"hosts",
+		"issuer",
+		"signature",
+		"status",
+		"bundle_method",
+		"zone_id",
+		"uploaded_on",
+		"modified_on",
+		"expires_on",
+		"priority"
+	],
+	"type": "object"
+}

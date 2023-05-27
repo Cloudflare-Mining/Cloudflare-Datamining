@@ -1,0 +1,25 @@
+{
+	"properties": {
+		"id": {
+			"description": "List ID.",
+			"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
+			"type": "string"
+		},
+		"operating_system": {
+			"description": "Operating System",
+			"enum": [
+				"android",
+				"ios",
+				"chromeos"
+			],
+			"example": "android",
+			"type": "string"
+		}
+	},
+	"required": [
+		"operating_system",
+		"id"
+	],
+	"title": "Unique Client ID",
+	"type": "object"
+}

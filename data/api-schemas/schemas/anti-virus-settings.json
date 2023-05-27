@@ -1,0 +1,15 @@
+{
+	"description": "Anti virus settings.",
+	"properties": {
+		"enabled_download_phase": {
+			"$ref": "#/components/schemas/enabled_download_phase"
+		},
+		"enabled_upload_phase": {
+			"$ref": "#/components/schemas/enabled_upload_phase"
+		},
+		"fail_closed": {
+			"$ref": "#/components/schemas/fail_closed"
+		}
+	},
+	"type": "object"
+}

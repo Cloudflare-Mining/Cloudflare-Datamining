@@ -1,0 +1,29 @@
+{
+	"oneOf": [
+		{
+			"properties": {
+				"errors": {
+					"nullable": true
+				},
+				"messages": {
+					"example": [],
+					"items": {},
+					"type": "array"
+				},
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/audit-logs"
+					},
+					"type": "array"
+				},
+				"success": {
+					"example": true,
+					"type": "boolean"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		}
+	]
+}

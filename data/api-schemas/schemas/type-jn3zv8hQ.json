@@ -1,0 +1,12 @@
+{
+	"description": "The type of List.",
+	"enum": [
+		"SERIAL",
+		"URL",
+		"DOMAIN",
+		"EMAIL",
+		"IP"
+	],
+	"example": "SERIAL",
+	"type": "string"
+}

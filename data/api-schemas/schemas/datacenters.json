@@ -1,0 +1,21 @@
+{
+	"description": "A breakdown of all dashboard analytics data by co-locations. This is limited to Enterprise zones only.",
+	"items": {
+		"properties": {
+			"colo_id": {
+				"description": "The airport code identifer for the co-location.",
+				"example": "SFO",
+				"type": "string"
+			},
+			"timeseries": {
+				"$ref": "#/components/schemas/timeseries_by_colo-iwvqq1l3"
+			},
+			"totals": {
+				"$ref": "#/components/schemas/totals_by_colo-v3Mhnb0p"
+			}
+		},
+		"type": "object"
+	},
+	"title": "Analytics data by datacenter",
+	"type": "array"
+}

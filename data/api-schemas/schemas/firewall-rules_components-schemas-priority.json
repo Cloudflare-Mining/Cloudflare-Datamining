@@ -1,0 +1,7 @@
+{
+	"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+	"example": 50,
+	"maximum": 2147483647,
+	"minimum": 0,
+	"type": "number"
+}

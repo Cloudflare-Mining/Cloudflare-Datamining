@@ -1,0 +1,33 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/list"
+							},
+							{
+								"required": [
+									"id",
+									"name",
+									"kind",
+									"num_items",
+									"created_on",
+									"modified_on"
+								],
+								"type": "object"
+							}
+						]
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

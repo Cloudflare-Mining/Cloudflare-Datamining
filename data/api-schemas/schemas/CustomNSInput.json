@@ -1,0 +1,11 @@
+{
+	"properties": {
+		"ns_name": {
+			"$ref": "#/components/schemas/ns_name"
+		}
+	},
+	"required": [
+		"ns_name"
+	],
+	"title": "Custom NS Input"
+}

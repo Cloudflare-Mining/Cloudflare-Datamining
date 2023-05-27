@@ -1,0 +1,36 @@
+{
+	"description": "Configs for the project build process.",
+	"properties": {
+		"build_command": {
+			"description": "Command used to build project.",
+			"example": "npm run build",
+			"nullable": true,
+			"type": "string"
+		},
+		"destination_dir": {
+			"description": "Output directory of the build.",
+			"example": "build",
+			"nullable": true,
+			"type": "string"
+		},
+		"root_dir": {
+			"description": "Directory to run the command.",
+			"example": "/",
+			"nullable": true,
+			"type": "string"
+		},
+		"web_analytics_tag": {
+			"description": "The classifying tag for analytics.",
+			"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+			"nullable": true,
+			"type": "string"
+		},
+		"web_analytics_token": {
+			"description": "The auth token for analytics.",
+			"example": "021e1057c18547eca7b79f2516f06o7x",
+			"nullable": true,
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

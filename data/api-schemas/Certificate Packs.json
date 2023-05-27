@@ -1,0 +1,1103 @@
+{
+	"DELETE /zones/{zone_identifier}/ssl/certificate_packs/{identifier}": {
+		"description": "For a given zone, delete an advanced certificate pack.",
+		"operationId": "certificate-packs-delete-advanced-certificate-manager-certificate-pack",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for a certificate_pack.",
+					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Advanced Certificate Manager Certificate Pack response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Advanced Certificate Manager Certificate Pack response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete Advanced Certificate Manager Certificate Pack",
+		"tags": [
+			"Certificate Packs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read",
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/ssl/certificate_packs": {
+		"description": "For a given zone, list all active certificate packs.",
+		"operationId": "certificate-packs-list-certificate-packs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"description": "Include Certificate Packs of all statuses, not just active ones.",
+					"enum": [
+						"all"
+					],
+					"example": "all"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Certificate Packs response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Certificate Packs response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List Certificate Packs",
+		"tags": [
+			"Certificate Packs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/ssl/certificate_packs/{identifier}": {
+		"description": "For a given zone, get a certificate pack.",
+		"operationId": "certificate-packs-get-certificate-pack",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for a certificate_pack.",
+					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Certificate Pack response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Certificate Pack response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Certificate Pack",
+		"tags": [
+			"Certificate Packs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/ssl/certificate_packs/quota": {
+		"description": "For a given zone, list certificate pack quotas.",
+		"operationId": "certificate-packs-get-certificate-pack-quotas",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"advanced": {
+													"$ref": "#/components/schemas/quota"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Certificate Pack Quotas response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"advanced": {
+															"$ref": "#/components/schemas/quota"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Certificate Pack Quotas response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Certificate Pack Quotas",
+		"tags": [
+			"Certificate Packs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_identifier}/ssl/certificate_packs/{identifier}": {
+		"description": "For a given zone, restart validation for an advanced certificate pack.  This is only a validation operation for a Certificate Pack in a validation_timed_out status.",
+		"operationId": "certificate-packs-restart-validation-for-advanced-certificate-manager-certificate-pack",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for a certificate_pack.",
+					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"certificate_authority": {
+													"$ref": "#/components/schemas/certificate_authority-kYJyuqS2"
+												},
+												"cloudflare_branding": {
+													"$ref": "#/components/schemas/cloudflare_branding"
+												},
+												"hosts": {
+													"$ref": "#/components/schemas/schemas-hosts"
+												},
+												"id": {
+													"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+												},
+												"status": {
+													"$ref": "#/components/schemas/certificate-packs_components-schemas-status"
+												},
+												"type": {
+													"$ref": "#/components/schemas/advanced_type"
+												},
+												"validation_method": {
+													"$ref": "#/components/schemas/validation_method"
+												},
+												"validity_days": {
+													"$ref": "#/components/schemas/validity_days"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Restart Validation for Advanced Certificate Manager Certificate Pack response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"certificate_authority": {
+															"$ref": "#/components/schemas/certificate_authority-kYJyuqS2"
+														},
+														"cloudflare_branding": {
+															"$ref": "#/components/schemas/cloudflare_branding"
+														},
+														"hosts": {
+															"$ref": "#/components/schemas/schemas-hosts"
+														},
+														"id": {
+															"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+														},
+														"status": {
+															"$ref": "#/components/schemas/certificate-packs_components-schemas-status"
+														},
+														"type": {
+															"$ref": "#/components/schemas/advanced_type"
+														},
+														"validation_method": {
+															"$ref": "#/components/schemas/validation_method"
+														},
+														"validity_days": {
+															"$ref": "#/components/schemas/validity_days"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Restart Validation for Advanced Certificate Manager Certificate Pack response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Restart Validation for Advanced Certificate Manager Certificate Pack",
+		"tags": [
+			"Certificate Packs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read",
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_identifier}/ssl/certificate_packs/order": {
+		"description": "For a given zone, order an advanced certificate pack.",
+		"operationId": "certificate-packs-order-advanced-certificate-manager-certificate-pack",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"certificate_authority": {
+								"description": "Certificate Authority selected for the order.  Selecting Let's Encrypt will reduce customization of other fields: validation_method must be 'txt', validity_days must be 90, cloudflare_branding must be omitted, and hosts must contain only 2 entries, one for the zone name and one for the subdomain wildcard of the zone name (e.g. example.com, *.example.com).",
+								"enum": [
+									"digicert",
+									"google",
+									"lets_encrypt"
+								],
+								"example": "digicert",
+								"type": "string"
+							},
+							"cloudflare_branding": {
+								"description": "Whether or not to add Cloudflare Branding for the order.  This will add sni.cloudflaressl.com as the Common Name if set true.",
+								"example": false,
+								"type": "boolean"
+							},
+							"hosts": {
+								"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
+								"example": [
+									"example.com",
+									"*.example.com",
+									"www.example.com"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"type": {
+								"description": "Type of certificate pack.",
+								"enum": [
+									"advanced"
+								],
+								"example": "advanced",
+								"type": "string"
+							},
+							"validation_method": {
+								"description": "Validation Method selected for the order.",
+								"enum": [
+									"txt",
+									"http",
+									"email"
+								],
+								"example": "txt",
+								"type": "string"
+							},
+							"validity_days": {
+								"description": "Validity Days selected for the order.",
+								"enum": [
+									14,
+									30,
+									90,
+									365
+								],
+								"type": "integer"
+							}
+						},
+						"required": [
+							"type",
+							"hosts",
+							"validation_method",
+							"validity_days",
+							"certificate_authority"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"certificate_authority": {
+													"$ref": "#/components/schemas/certificate_authority-kYJyuqS2"
+												},
+												"cloudflare_branding": {
+													"$ref": "#/components/schemas/cloudflare_branding"
+												},
+												"hosts": {
+													"$ref": "#/components/schemas/schemas-hosts"
+												},
+												"id": {
+													"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+												},
+												"status": {
+													"$ref": "#/components/schemas/certificate-packs_components-schemas-status"
+												},
+												"type": {
+													"$ref": "#/components/schemas/advanced_type"
+												},
+												"validation_method": {
+													"$ref": "#/components/schemas/validation_method"
+												},
+												"validity_days": {
+													"$ref": "#/components/schemas/validity_days"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Order Advanced Certificate Manager Certificate Pack response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"certificate_authority": {
+															"$ref": "#/components/schemas/certificate_authority-kYJyuqS2"
+														},
+														"cloudflare_branding": {
+															"$ref": "#/components/schemas/cloudflare_branding"
+														},
+														"hosts": {
+															"$ref": "#/components/schemas/schemas-hosts"
+														},
+														"id": {
+															"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+														},
+														"status": {
+															"$ref": "#/components/schemas/certificate-packs_components-schemas-status"
+														},
+														"type": {
+															"$ref": "#/components/schemas/advanced_type"
+														},
+														"validation_method": {
+															"$ref": "#/components/schemas/validation_method"
+														},
+														"validity_days": {
+															"$ref": "#/components/schemas/validity_days"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Order Advanced Certificate Manager Certificate Pack response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Order Advanced Certificate Manager Certificate Pack",
+		"tags": [
+			"Certificate Packs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#ssl:read",
+				"#ssl:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

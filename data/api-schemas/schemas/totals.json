@@ -1,0 +1,27 @@
+{
+	"description": "Breakdown of totals by data type.",
+	"properties": {
+		"bandwidth": {
+			"$ref": "#/components/schemas/bandwidth"
+		},
+		"pageviews": {
+			"$ref": "#/components/schemas/pageviews"
+		},
+		"requests": {
+			"$ref": "#/components/schemas/requests-PbcHi0Fc"
+		},
+		"since": {
+			"$ref": "#/components/schemas/since-qnxlN7Aj"
+		},
+		"threats": {
+			"$ref": "#/components/schemas/threats"
+		},
+		"uniques": {
+			"$ref": "#/components/schemas/uniques"
+		},
+		"until": {
+			"$ref": "#/components/schemas/until-Q9VrsGmT"
+		}
+	},
+	"type": "object"
+}

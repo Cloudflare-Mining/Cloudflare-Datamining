@@ -1,0 +1,174 @@
+{
+	"GET /accounts/{account_identifier}/intel/dns": {
+		"operationId": "passive-dns-by-ip-get-passive-dns-by-ip",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "start_end_params",
+				"schema": {
+					"properties": {
+						"end": {
+							"description": "Defaults to the current date.",
+							"example": "2021-04-30",
+							"format": "date",
+							"type": "string"
+						},
+						"start": {
+							"description": "Defaults to 30 days before the end parameter value.",
+							"example": "2021-04-01",
+							"format": "date",
+							"type": "string"
+						}
+					},
+					"type": "object"
+				}
+			},
+			{
+				"in": "query",
+				"name": "ipv4",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"description": "Requested page within paginated list of results.",
+					"example": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"description": "Maximum number of results requested.",
+					"example": 20,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/passive-dns-by-ip"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Passive DNS by IP response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/passive-dns-by-ip"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Passive DNS by IP response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Passive DNS by IP",
+		"tags": [
+			"Passive DNS by IP"
+		]
+	}
+}

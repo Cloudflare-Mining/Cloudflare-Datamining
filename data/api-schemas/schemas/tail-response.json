@@ -1,0 +1,25 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"expires_at": {
+							"readOnly": true
+						},
+						"id": {
+							"readOnly": true
+						},
+						"url": {
+							"readOnly": true
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,28 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"id": {
+					"description": "Identifier of the zone setting.",
+					"enum": [
+						"origin_max_http_version"
+					],
+					"example": "origin_max_http_version"
+				},
+				"modified_on": {
+					"description": "last time this setting was modified.",
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"nullable": true,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			"required": [
+				"id"
+			]
+		}
+	],
+	"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.).",
+	"title": "Origin Max HTTP version"
+}

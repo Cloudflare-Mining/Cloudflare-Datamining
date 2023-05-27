@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "identifier of the zone setting.",
+					"enum": [
+						"max_upload"
+					],
+					"example": "max_upload"
+				},
+				"value": {
+					"$ref": "#/components/schemas/max_upload_value"
+				}
+			}
+		}
+	],
+	"description": "Maximum size of an allowable upload.",
+	"title": "Max Upload"
+}

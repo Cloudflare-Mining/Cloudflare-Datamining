@@ -1,0 +1,29 @@
+{
+	"description": "Matches a SAML group.\nRequires a SAML identity provider.",
+	"properties": {
+		"saml": {
+			"properties": {
+				"attribute_name": {
+					"description": "The name of the SAML attribute.",
+					"example": "group",
+					"type": "string"
+				},
+				"attribute_value": {
+					"description": "The SAML attribute value to look for.",
+					"example": "devs@cloudflare.com",
+					"type": "string"
+				}
+			},
+			"required": [
+				"attribute_name",
+				"attribute_value"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"saml"
+	],
+	"title": "SAML group",
+	"type": "object"
+}

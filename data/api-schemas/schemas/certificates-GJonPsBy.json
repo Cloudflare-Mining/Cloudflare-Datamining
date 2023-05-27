@@ -1,0 +1,32 @@
+{
+	"properties": {
+		"certificate": {
+			"$ref": "#/components/schemas/components-schemas-certificate"
+		},
+		"csr": {
+			"$ref": "#/components/schemas/csr"
+		},
+		"expires_on": {
+			"$ref": "#/components/schemas/certificates_components-schemas-expires_on"
+		},
+		"hostnames": {
+			"$ref": "#/components/schemas/hostnames"
+		},
+		"id": {
+			"$ref": "#/components/schemas/certificates_components-schemas-identifier"
+		},
+		"request_type": {
+			"$ref": "#/components/schemas/request_type"
+		},
+		"requested_validity": {
+			"$ref": "#/components/schemas/requested_validity"
+		}
+	},
+	"required": [
+		"hostnames",
+		"csr",
+		"requested_validity",
+		"request_type"
+	],
+	"type": "object"
+}

@@ -1,0 +1,17 @@
+{
+	"properties": {
+		"target": {
+			"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
+			"enum": [
+				"ip_range"
+			],
+			"example": "ip_range"
+		},
+		"value": {
+			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
+			"example": "198.51.100.4/16",
+			"type": "string"
+		}
+	},
+	"title": "An IP address range configuration."
+}

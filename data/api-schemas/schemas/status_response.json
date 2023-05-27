@@ -1,0 +1,31 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"estimated_queued_users": {
+							"$ref": "#/components/schemas/estimated_queued_users"
+						},
+						"estimated_total_active_users": {
+							"$ref": "#/components/schemas/estimated_total_active_users"
+						},
+						"event_id": {
+							"$ref": "#/components/schemas/status_event_id"
+						},
+						"max_estimated_time_minutes": {
+							"$ref": "#/components/schemas/max_estimated_time_minutes"
+						},
+						"status": {
+							"$ref": "#/components/schemas/status-2k8omc7B"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"properties": {
+		"alert_type": {
+			"$ref": "#/components/schemas/alert_type"
+		},
+		"created": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"description": {
+			"$ref": "#/components/schemas/schemas-description-1acBX4Qv"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/enabled-grE0SjzV"
+		},
+		"filters": {
+			"$ref": "#/components/schemas/filters-QPz0buC5"
+		},
+		"id": {
+			"$ref": "#/components/schemas/uuid"
+		},
+		"mechanisms": {
+			"$ref": "#/components/schemas/mechanisms"
+		},
+		"modified": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"name": {
+			"$ref": "#/components/schemas/schemas-name-EUpfo1I7"
+		}
+	},
+	"type": "object"
+}

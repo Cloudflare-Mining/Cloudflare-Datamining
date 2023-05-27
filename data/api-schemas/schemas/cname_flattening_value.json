@@ -1,0 +1,9 @@
+{
+	"default": "flatten_at_root",
+	"description": "Value of the cname flattening setting.",
+	"enum": [
+		"flatten_at_root",
+		"flatten_all"
+	],
+	"type": "string"
+}

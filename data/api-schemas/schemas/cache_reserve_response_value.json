@@ -1,0 +1,21 @@
+{
+	"properties": {
+		"result": {
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/cache_reserve"
+				},
+				{
+					"properties": {
+						"value": {
+							"$ref": "#/components/schemas/cache_reserve_value"
+						}
+					},
+					"required": [
+						"value"
+					]
+				}
+			]
+		}
+	}
+}

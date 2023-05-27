@@ -1,0 +1,45 @@
+{
+	"properties": {
+		"destination_conf": {
+			"$ref": "#/components/schemas/pcaps_destination_conf"
+		},
+		"filename": {
+			"$ref": "#/components/schemas/pcaps_ownership_challenge"
+		},
+		"id": {
+			"description": "The bucket ID associated with the packet captures API.",
+			"example": "9883874ecac311ec8475433579a6bf5f",
+			"maxLength": 32,
+			"minLength": 32,
+			"type": "string"
+		},
+		"status": {
+			"description": "The status of the ownership challenge. Can be pending, success or failed.",
+			"enum": [
+				"pending",
+				"success",
+				"failed"
+			],
+			"example": "success",
+			"type": "string"
+		},
+		"submitted": {
+			"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
+			"example": "2020-01-01T08:00:00Z",
+			"type": "string"
+		},
+		"validated": {
+			"description": "The RFC 3339 timestamp when the bucket was validated.",
+			"example": "2020-01-01T08:00:00Z",
+			"type": "string"
+		}
+	},
+	"required": [
+		"id",
+		"status",
+		"submitted",
+		"destination_conf",
+		"filename"
+	],
+	"type": "object"
+}

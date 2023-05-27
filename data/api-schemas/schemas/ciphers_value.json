@@ -1,0 +1,13 @@
+{
+	"default": [],
+	"description": "Value of the zone setting.",
+	"example": [
+		"ECDHE-RSA-AES128-GCM-SHA256",
+		"AES128-SHA"
+	],
+	"items": {
+		"type": "string"
+	},
+	"type": "array",
+	"uniqueItems": true
+}

@@ -1,0 +1,18 @@
+{
+	"properties": {
+		"id": {
+			"$ref": "#/components/schemas/identifier-rjmAAZUp"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-HHsROM8p"
+		},
+		"peers": {
+			"$ref": "#/components/schemas/peers"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"peers"
+	]
+}

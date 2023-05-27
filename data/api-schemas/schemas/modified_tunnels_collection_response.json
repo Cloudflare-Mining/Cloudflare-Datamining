@@ -1,0 +1,25 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QtgvcrF1"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"modified": {
+							"example": true,
+							"type": "boolean"
+						},
+						"modified_gre_tunnels": {
+							"items": {
+								"$ref": "#/components/schemas/gre-tunnel"
+							},
+							"type": "array"
+						}
+					}
+				}
+			}
+		}
+	]
+}

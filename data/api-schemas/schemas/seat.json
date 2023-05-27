@@ -1,0 +1,19 @@
+{
+	"properties": {
+		"access_seat": {
+			"$ref": "#/components/schemas/access_seat"
+		},
+		"gateway_seat": {
+			"$ref": "#/components/schemas/gateway_seat"
+		},
+		"seat_uid": {
+			"$ref": "#/components/schemas/seat_uid"
+		}
+	},
+	"required": [
+		"seat_uid",
+		"gateway_seat",
+		"access_seat"
+	],
+	"type": "object"
+}

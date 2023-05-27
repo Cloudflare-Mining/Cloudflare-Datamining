@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"app_launcher_visible": {
+			"$ref": "#/components/schemas/schemas-app_launcher_visible"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"domain": {
+			"$ref": "#/components/schemas/components-schemas-domain-MTGse3rN"
+		},
+		"id": {
+			"description": "The unique identifier for the Bookmark application."
+		},
+		"logo_url": {
+			"$ref": "#/components/schemas/logo_url"
+		},
+		"name": {
+			"$ref": "#/components/schemas/bookmarks_components-schemas-name"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"type": "object"
+}

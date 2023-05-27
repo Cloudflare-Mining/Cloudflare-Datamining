@@ -1,0 +1,16 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/self_hosted_props-KOqN0fiK"
+		},
+		{
+			"properties": {
+				"type": {
+					"description": "The application type.",
+					"example": "vnc",
+					"type": "string"
+				}
+			}
+		}
+	]
+}

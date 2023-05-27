@@ -1,0 +1,22 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/filter-rule-base"
+		},
+		{
+			"properties": {
+				"filter": {
+					"oneOf": [
+						{
+							"$ref": "#/components/schemas/filter-QeTRQ44g"
+						},
+						{
+							"$ref": "#/components/schemas/deleted-filter"
+						}
+					]
+				}
+			}
+		}
+	],
+	"type": "object"
+}

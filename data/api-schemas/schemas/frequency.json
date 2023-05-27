@@ -1,0 +1,11 @@
+{
+	"description": "How often the subscription is renewed automatically.",
+	"enum": [
+		"weekly",
+		"monthly",
+		"quarterly",
+		"yearly"
+	],
+	"example": "monthly",
+	"type": "string"
+}

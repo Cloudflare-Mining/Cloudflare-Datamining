@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"actions": {
+			"$ref": "#/components/schemas/rule_actions"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/rule_enabled"
+		},
+		"matchers": {
+			"$ref": "#/components/schemas/rule_matchers"
+		},
+		"name": {
+			"$ref": "#/components/schemas/rule_name"
+		},
+		"priority": {
+			"$ref": "#/components/schemas/rule_priority"
+		},
+		"tag": {
+			"$ref": "#/components/schemas/rule_identifier"
+		}
+	},
+	"type": "object"
+}

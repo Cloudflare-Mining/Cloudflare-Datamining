@@ -1,0 +1,20 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"enabled": {
+					"$ref": "#/components/schemas/ssl_recommender_enabled"
+				},
+				"id": {
+					"description": "Enrollment value for SSL/TLS Recommender.",
+					"enum": [
+						"ssl_recommender"
+					],
+					"example": "ssl_recommender"
+				}
+			}
+		}
+	],
+	"description": "Enrollment in the SSL/TLS Recommender service which tries to detect and recommend (by sending periodic emails) the most secure SSL/TLS setting your origin servers support.",
+	"title": "SSL/TLS Recommender"
+}

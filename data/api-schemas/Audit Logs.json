@@ -1,0 +1,849 @@
+{
+	"GET /accounts/{account_identifier}/audit_logs": {
+		"description": "Gets a list of audit logs for an account. The list can be filtered by who made the change, which zone was the change made on, and the timeframe of the change.",
+		"operationId": "audit-logs-get-account-audit-logs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"description": "Finds a specific log by its ID.",
+					"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "export",
+				"schema": {
+					"description": "Indicates that this request is an export of logs in CSV format.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action.type",
+				"schema": {
+					"description": "Filters by the action type.",
+					"example": "add",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor.ip",
+				"schema": {
+					"description": "Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range.",
+					"example": "17.168.228.63",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor.email",
+				"schema": {
+					"description": "Filters by the email address of the actor that made the change.",
+					"example": "alice@example.com",
+					"format": "email",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"description": "Limits the returned results to logs newer than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
+					"example": "2019-04-30T01:12:20Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "before",
+				"schema": {
+					"description": "Limits the returned results to logs older than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
+					"example": "2019-04-30T01:12:20Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone.name",
+				"schema": {
+					"description": "Filters by the name of the zone associated to the change.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "desc",
+					"description": "Changes the direction of the chronological sorting.",
+					"enum": [
+						"desc",
+						"asc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 100,
+					"description": "Sets the number of results to return per page.",
+					"example": 25,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Defines which page of results to return.",
+					"example": 50,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hide_user_logs",
+				"schema": {
+					"default": false,
+					"description": "Indicates whether or not to hide user level audit logs.",
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"oneOf": [
+								{
+									"properties": {
+										"errors": {
+											"nullable": true
+										},
+										"messages": {
+											"example": [],
+											"items": {},
+											"type": "array"
+										},
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/audit-logs"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									}
+								},
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get account audit logs response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"oneOf": [
+										{
+											"properties": {
+												"errors": {
+													"nullable": true
+												},
+												"messages": {
+													"example": [],
+													"items": {},
+													"type": "array"
+												},
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/audit-logs"
+													},
+													"type": "array"
+												},
+												"success": {
+													"example": true,
+													"type": "boolean"
+												}
+											}
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get account audit logs response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get account audit logs",
+		"tags": [
+			"Audit Logs"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /organizations/{organization_identifier}/audit_logs": {
+		"deprecated": true,
+		"description": "Gets a list of audit logs for an organization. The list can be filtered by who made the change, which zone was the change made on, and the timeframe of the change.",
+		"operationId": "audit-logs-get-organization-audit-logs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "organization_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"description": "Finds a specific log by its ID.",
+					"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "export",
+				"schema": {
+					"description": "Indicates that this request is an export of logs in CSV format.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action.type",
+				"schema": {
+					"description": "Filters by the action type.",
+					"example": "add",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor.ip",
+				"schema": {
+					"description": "Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range.",
+					"example": "17.168.228.63",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor.email",
+				"schema": {
+					"description": "Filters by the email address of the actor that made the change.",
+					"example": "alice@example.com",
+					"format": "email",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"description": "Limits the returned results to logs newer than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
+					"example": "2019-04-30T01:12:20Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "before",
+				"schema": {
+					"description": "Limits the returned results to logs older than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
+					"example": "2019-04-30T01:12:20Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone.name",
+				"schema": {
+					"description": "Filters by the name of the zone associated to the change.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "desc",
+					"description": "Changes the direction of the chronological sorting.",
+					"enum": [
+						"desc",
+						"asc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 100,
+					"description": "Sets the number of results to return per page.",
+					"example": 25,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Defines which page of results to return.",
+					"example": 50,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hide_user_logs",
+				"schema": {
+					"default": false,
+					"description": "Indicates whether or not to hide user level audit logs.",
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"oneOf": [
+								{
+									"properties": {
+										"errors": {
+											"nullable": true
+										},
+										"messages": {
+											"example": [],
+											"items": {},
+											"type": "array"
+										},
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/audit-logs"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									}
+								},
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get organization audit logs response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"oneOf": [
+										{
+											"properties": {
+												"errors": {
+													"nullable": true
+												},
+												"messages": {
+													"example": [],
+													"items": {},
+													"type": "array"
+												},
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/audit-logs"
+													},
+													"type": "array"
+												},
+												"success": {
+													"example": true,
+													"type": "boolean"
+												}
+											}
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get organization audit logs response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get organization audit logs",
+		"tags": [
+			"Audit Logs"
+		],
+		"x-cfDeprecation": {
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+			"display": true,
+			"eol": "2020-02-04",
+			"id": "org_deprecation"
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /user/audit_logs": {
+		"description": "Gets a list of audit logs for a user account. The list can be filtered by who made the change, which zone was the change made on, and the timeframe of the change.",
+		"operationId": "audit-logs-get-user-audit-logs",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "id",
+				"schema": {
+					"description": "Finds a specific log by its ID.",
+					"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "export",
+				"schema": {
+					"description": "Indicates that this request is an export of logs in CSV format.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action.type",
+				"schema": {
+					"description": "Filters by the action type.",
+					"example": "add",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor.ip",
+				"schema": {
+					"description": "Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range.",
+					"example": "17.168.228.63",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "actor.email",
+				"schema": {
+					"description": "Filters by the email address of the actor that made the change.",
+					"example": "alice@example.com",
+					"format": "email",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"description": "Limits the returned results to logs newer than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
+					"example": "2019-04-30T01:12:20Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "before",
+				"schema": {
+					"description": "Limits the returned results to logs older than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339.",
+					"example": "2019-04-30T01:12:20Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "zone.name",
+				"schema": {
+					"description": "Filters by the name of the zone associated to the change.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "desc",
+					"description": "Changes the direction of the chronological sorting.",
+					"enum": [
+						"desc",
+						"asc"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 100,
+					"description": "Sets the number of results to return per page.",
+					"example": 25,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Defines which page of results to return.",
+					"example": 50,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hide_user_logs",
+				"schema": {
+					"default": false,
+					"description": "Indicates whether or not to hide user level audit logs.",
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"oneOf": [
+								{
+									"properties": {
+										"errors": {
+											"nullable": true
+										},
+										"messages": {
+											"example": [],
+											"items": {},
+											"type": "array"
+										},
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/audit-logs"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									}
+								},
+								{
+									"$ref": "#/components/schemas/api-response-common"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get user audit logs response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"oneOf": [
+										{
+											"properties": {
+												"errors": {
+													"nullable": true
+												},
+												"messages": {
+													"example": [],
+													"items": {},
+													"type": "array"
+												},
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/audit-logs"
+													},
+													"type": "array"
+												},
+												"success": {
+													"example": true,
+													"type": "boolean"
+												}
+											}
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get user audit logs response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get user audit logs",
+		"tags": [
+			"Audit Logs"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"description": "A rule object.",
+	"properties": {
+		"action": {
+			"$ref": "#/components/schemas/rules_components-schemas-action"
+		},
+		"action_parameters": {
+			"$ref": "#/components/schemas/action_parameters"
+		},
+		"categories": {
+			"$ref": "#/components/schemas/categories-DnnkLXQb"
+		},
+		"description": {
+			"$ref": "#/components/schemas/rules_components-schemas-description"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/rules_components-schemas-enabled"
+		},
+		"expression": {
+			"$ref": "#/components/schemas/schemas-expression"
+		},
+		"id": {
+			"$ref": "#/components/schemas/rules_components-schemas-id"
+		},
+		"last_updated": {
+			"$ref": "#/components/schemas/schemas-last_updated"
+		},
+		"logging": {
+			"$ref": "#/components/schemas/logging"
+		},
+		"ref": {
+			"$ref": "#/components/schemas/components-schemas-ref"
+		},
+		"version": {
+			"$ref": "#/components/schemas/schemas-version"
+		}
+	},
+	"type": "object"
+}

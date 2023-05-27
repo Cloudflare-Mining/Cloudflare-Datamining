@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "Zone setting identifier.",
+					"enum": [
+						"minify"
+					],
+					"example": "minify"
+				},
+				"value": {
+					"$ref": "#/components/schemas/minify_value"
+				}
+			}
+		}
+	],
+	"description": "Automatically minify certain assets for your website. Refer to [Using Cloudflare Auto Minify](https://support.cloudflare.com/hc/en-us/articles/200168196) for more information.",
+	"title": "Auto-Minify Assets"
+}

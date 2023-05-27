@@ -1,0 +1,19 @@
+{
+	"properties": {
+		"configuration": {
+			"$ref": "#/components/schemas/components-schemas-configuration"
+		},
+		"description": {
+			"$ref": "#/components/schemas/ua-rules_components-schemas-description"
+		},
+		"id": {
+			"$ref": "#/components/schemas/ua-rules_components-schemas-id"
+		},
+		"mode": {
+			"$ref": "#/components/schemas/ua-rules_components-schemas-mode"
+		},
+		"paused": {
+			"$ref": "#/components/schemas/schemas-paused"
+		}
+	}
+}

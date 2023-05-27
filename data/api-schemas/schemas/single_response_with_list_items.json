@@ -1,0 +1,36 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"created_at": {
+							"$ref": "#/components/schemas/timestamp"
+						},
+						"description": {
+							"$ref": "#/components/schemas/description-NQNM0TJC"
+						},
+						"id": {
+							"$ref": "#/components/schemas/uuid-WUOe8ECN"
+						},
+						"items": {
+							"$ref": "#/components/schemas/items"
+						},
+						"name": {
+							"$ref": "#/components/schemas/name-qxCd13OZ"
+						},
+						"type": {
+							"$ref": "#/components/schemas/type-jn3zv8hQ"
+						},
+						"updated_at": {
+							"$ref": "#/components/schemas/timestamp"
+						}
+					}
+				}
+			}
+		}
+	]
+}

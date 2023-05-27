@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"default": "pseudo_ipv4",
+					"description": "Value of the Pseudo IPv4 setting.",
+					"enum": [
+						"pseudo_ipv4"
+					]
+				},
+				"value": {
+					"$ref": "#/components/schemas/pseudo_ipv4_value"
+				}
+			}
+		}
+	],
+	"description": "The value set for the Pseudo IPv4 setting.",
+	"title": "Pseudo IPv4 Value"
+}

@@ -1,0 +1,23 @@
+{
+	"description": "Matches an IP address block.",
+	"properties": {
+		"ip": {
+			"properties": {
+				"ip": {
+					"description": "An IPv4 or IPv6 CIDR block.",
+					"example": "2400:cb00:21:10a::/64",
+					"type": "string"
+				}
+			},
+			"required": [
+				"ip"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"ip"
+	],
+	"title": "IP ranges",
+	"type": "object"
+}

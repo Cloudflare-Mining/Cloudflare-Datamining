@@ -1,0 +1,28 @@
+{
+	"properties": {
+		"cloudflare_endpoint": {
+			"$ref": "#/components/schemas/cloudflare_ipsec_endpoint"
+		},
+		"customer_endpoint": {
+			"$ref": "#/components/schemas/customer_ipsec_endpoint"
+		},
+		"description": {
+			"$ref": "#/components/schemas/components-schemas-description-pE9WAdDi"
+		},
+		"interface_address": {
+			"$ref": "#/components/schemas/interface_address"
+		},
+		"name": {
+			"$ref": "#/components/schemas/schemas-name-2PI2cMZj"
+		},
+		"psk": {
+			"$ref": "#/components/schemas/psk"
+		}
+	},
+	"required": [
+		"name",
+		"cloudflare_endpoint",
+		"interface_address"
+	],
+	"type": "object"
+}

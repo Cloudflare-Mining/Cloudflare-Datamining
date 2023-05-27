@@ -1,0 +1,18 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-ETsedwH0"
+		},
+		{
+			"properties": {
+				"result": {
+					"allOf": [
+						{
+							"$ref": "#/components/schemas/predefined_profile"
+						}
+					]
+				}
+			}
+		}
+	]
+}

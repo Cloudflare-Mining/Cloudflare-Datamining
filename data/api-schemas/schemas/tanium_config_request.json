@@ -1,0 +1,20 @@
+{
+	"properties": {
+		"api_url": {
+			"description": "The Tanium API URL.",
+			"example": "https://dummy-tanium-graphql-api.cloudflare.com",
+			"type": "string"
+		},
+		"client_secret": {
+			"description": "The Tanium client secret.",
+			"example": "example client secret",
+			"type": "string"
+		}
+	},
+	"required": [
+		"client_id",
+		"client_secret"
+	],
+	"title": "Tanium Config",
+	"type": "object"
+}

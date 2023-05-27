@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/event_result"
+				}
+			}
+		}
+	]
+}

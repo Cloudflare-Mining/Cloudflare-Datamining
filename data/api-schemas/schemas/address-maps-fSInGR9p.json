@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"can_delete": {
+			"$ref": "#/components/schemas/can_delete"
+		},
+		"can_modify_ips": {
+			"$ref": "#/components/schemas/can_modify_ips"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"default_sni": {
+			"$ref": "#/components/schemas/default_sni"
+		},
+		"description": {
+			"$ref": "#/components/schemas/address-maps_components-schemas-description"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/address-maps_components-schemas-enabled"
+		},
+		"id": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		},
+		"modified_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"type": "object"
+}

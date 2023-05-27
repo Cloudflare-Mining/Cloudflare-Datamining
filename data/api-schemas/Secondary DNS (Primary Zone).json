@@ -1,0 +1,1240 @@
+{
+	"DELETE /zones/{zone_identifier}/secondary_dns/outgoing": {
+		"description": "Delete primary zone configuration for outgoing zone transfers.",
+		"operationId": "secondary-dns-(-primary-zone)-delete-primary-zone-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/identifier-rjmAAZUp"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Primary Zone Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/identifier-rjmAAZUp"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete Primary Zone Configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Primary Zone Configuration",
+		"tags": [
+			"Secondary DNS (Primary Zone)"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/secondary_dns/outgoing": {
+		"description": "Get primary zone configuration for outgoing zone transfers.",
+		"operationId": "secondary-dns-(-primary-zone)-primary-zone-configuration-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"checked_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"created_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier-rjmAAZUp"
+												},
+												"last_transferred_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-HHsROM8p"
+												},
+												"peers": {
+													"$ref": "#/components/schemas/peers"
+												},
+												"soa_serial": {
+													"$ref": "#/components/schemas/soa_serial"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Primary Zone Configuration Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"checked_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"created_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier-rjmAAZUp"
+														},
+														"last_transferred_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-HHsROM8p"
+														},
+														"peers": {
+															"$ref": "#/components/schemas/peers"
+														},
+														"soa_serial": {
+															"$ref": "#/components/schemas/soa_serial"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Primary Zone Configuration Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Primary Zone Configuration Details",
+		"tags": [
+			"Secondary DNS (Primary Zone)"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /zones/{zone_identifier}/secondary_dns/outgoing/status": {
+		"description": "Get primary zone transfer status.",
+		"operationId": "secondary-dns-(-primary-zone)-get-outgoing-zone-transfer-status",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/enable_transfer_result"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Outgoing Zone Transfer Status response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/enable_transfer_result"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Outgoing Zone Transfer Status response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Outgoing Zone Transfer Status",
+		"tags": [
+			"Secondary DNS (Primary Zone)"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_identifier}/secondary_dns/outgoing": {
+		"description": "Create primary zone configuration for outgoing zone transfers.",
+		"operationId": "secondary-dns-(-primary-zone)-create-primary-zone-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"id": {
+								"$ref": "#/components/schemas/identifier-rjmAAZUp"
+							},
+							"name": {
+								"$ref": "#/components/schemas/name-HHsROM8p"
+							},
+							"peers": {
+								"$ref": "#/components/schemas/peers"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"peers"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"checked_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"created_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier-rjmAAZUp"
+												},
+												"last_transferred_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-HHsROM8p"
+												},
+												"peers": {
+													"$ref": "#/components/schemas/peers"
+												},
+												"soa_serial": {
+													"$ref": "#/components/schemas/soa_serial"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Primary Zone Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"checked_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"created_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier-rjmAAZUp"
+														},
+														"last_transferred_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-HHsROM8p"
+														},
+														"peers": {
+															"$ref": "#/components/schemas/peers"
+														},
+														"soa_serial": {
+															"$ref": "#/components/schemas/soa_serial"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create Primary Zone Configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Primary Zone Configuration",
+		"tags": [
+			"Secondary DNS (Primary Zone)"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_identifier}/secondary_dns/outgoing/disable": {
+		"description": "Disable outgoing zone transfers for primary zone and clears IXFR backlog of primary zone.",
+		"operationId": "secondary-dns-(-primary-zone)-disable-outgoing-zone-transfers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/disable_transfer_result"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Disable Outgoing Zone Transfers response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/disable_transfer_result"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Disable Outgoing Zone Transfers response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Disable Outgoing Zone Transfers",
+		"tags": [
+			"Secondary DNS (Primary Zone)"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_identifier}/secondary_dns/outgoing/enable": {
+		"description": "Enable outgoing zone transfers for primary zone.",
+		"operationId": "secondary-dns-(-primary-zone)-enable-outgoing-zone-transfers",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/enable_transfer_result"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Enable Outgoing Zone Transfers response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/enable_transfer_result"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Enable Outgoing Zone Transfers response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Enable Outgoing Zone Transfers",
+		"tags": [
+			"Secondary DNS (Primary Zone)"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_identifier}/secondary_dns/outgoing/force_notify": {
+		"description": "Notifies the secondary nameserver(s) and clears IXFR backlog of primary zone.",
+		"operationId": "secondary-dns-(-primary-zone)-force-dns-notify",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/schemas-force_result"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Force DNS NOTIFY response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/components/schemas/schemas-force_result"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Force DNS NOTIFY response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Force DNS NOTIFY",
+		"tags": [
+			"Secondary DNS (Primary Zone)"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PUT /zones/{zone_identifier}/secondary_dns/outgoing": {
+		"description": "Update primary zone configuration for outgoing zone transfers.",
+		"operationId": "secondary-dns-(-primary-zone)-update-primary-zone-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"example": "269d8f4853475ca241c4e730be286b20",
+					"readOnly": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"id": {
+								"$ref": "#/components/schemas/identifier-rjmAAZUp"
+							},
+							"name": {
+								"$ref": "#/components/schemas/name-HHsROM8p"
+							},
+							"peers": {
+								"$ref": "#/components/schemas/peers"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"peers"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"checked_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"created_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier-rjmAAZUp"
+												},
+												"last_transferred_time": {
+													"$ref": "#/components/schemas/time"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-HHsROM8p"
+												},
+												"peers": {
+													"$ref": "#/components/schemas/peers"
+												},
+												"soa_serial": {
+													"$ref": "#/components/schemas/soa_serial"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Primary Zone Configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"checked_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"created_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier-rjmAAZUp"
+														},
+														"last_transferred_time": {
+															"$ref": "#/components/schemas/time"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-HHsROM8p"
+														},
+														"peers": {
+															"$ref": "#/components/schemas/peers"
+														},
+														"soa_serial": {
+															"$ref": "#/components/schemas/soa_serial"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Primary Zone Configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Primary Zone Configuration",
+		"tags": [
+			"Secondary DNS (Primary Zone)"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

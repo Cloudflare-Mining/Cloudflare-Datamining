@@ -1,0 +1,25 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/feature_app_props-01MoMwtV"
+		},
+		{
+			"properties": {
+				"domain": {
+					"example": "authdomain.cloudflareaccess.com/browser",
+					"readOnly": true
+				},
+				"name": {
+					"default": "Clientless Web Isolation",
+					"example": "Clientless Web Isolation",
+					"readOnly": true
+				},
+				"type": {
+					"description": "The application type.",
+					"example": "biso",
+					"type": "string"
+				}
+			}
+		}
+	]
+}

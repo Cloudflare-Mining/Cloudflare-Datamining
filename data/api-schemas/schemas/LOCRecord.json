@@ -1,0 +1,133 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "Formatted LOC content. See 'data' to set LOC properties.",
+					"example": "IN LOC 37 46 46 N 122 23 35 W 0m 100m 0m 0m",
+					"readOnly": true,
+					"type": "string"
+				},
+				"data": {
+					"description": "Components of a LOC record.",
+					"properties": {
+						"altitude": {
+							"description": "Altitude of location in meters.",
+							"example": 0,
+							"maximum": 42849672.95,
+							"minimum": -100000,
+							"type": "number"
+						},
+						"lat_degrees": {
+							"description": "Degrees of latitude.",
+							"example": 37,
+							"maximum": 90,
+							"minimum": 0,
+							"type": "number"
+						},
+						"lat_direction": {
+							"description": "Latitude direction.",
+							"enum": [
+								"N",
+								"S"
+							],
+							"example": "N"
+						},
+						"lat_minutes": {
+							"default": 0,
+							"description": "Minutes of latitude.",
+							"example": 46,
+							"maximum": 59,
+							"minimum": 0,
+							"type": "number"
+						},
+						"lat_seconds": {
+							"default": 0,
+							"description": "Seconds of latitude.",
+							"example": 46,
+							"maximum": 59.999,
+							"minimum": 0,
+							"type": "number"
+						},
+						"long_degrees": {
+							"description": "Degrees of longitude.",
+							"example": 122,
+							"maximum": 180,
+							"minimum": 0,
+							"type": "number"
+						},
+						"long_direction": {
+							"description": "Longitude direction.",
+							"enum": [
+								"E",
+								"W"
+							],
+							"example": "W"
+						},
+						"long_minutes": {
+							"default": 0,
+							"description": "Minutes of longitude.",
+							"example": 23,
+							"maximum": 59,
+							"minimum": 0,
+							"type": "number"
+						},
+						"long_seconds": {
+							"default": 0,
+							"description": "Seconds of longitude.",
+							"example": 35,
+							"maximum": 59.999,
+							"minimum": 0,
+							"type": "number"
+						},
+						"precision_horz": {
+							"default": 0,
+							"description": "Horizontal precision of location.",
+							"example": 0,
+							"maximum": 90000000,
+							"minimum": 0,
+							"type": "number"
+						},
+						"precision_vert": {
+							"default": 0,
+							"description": "Vertical precision of location.",
+							"example": 0,
+							"maximum": 90000000,
+							"minimum": 0,
+							"type": "number"
+						},
+						"size": {
+							"default": 0,
+							"description": "Size of location in meters.",
+							"example": 100,
+							"maximum": 90000000,
+							"minimum": 0,
+							"type": "number"
+						}
+					},
+					"type": "object"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"LOC"
+					],
+					"example": "LOC",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"data"
+	],
+	"title": "LOC Record"
+}

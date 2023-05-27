@@ -1,0 +1,37 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"example": [
+						{
+							"alert_body": "SSL certificate has expired",
+							"alert_type": "universal_ssl_event_type",
+							"description": "Universal Certificate validation status, issuance, renewal, and expiration notices.",
+							"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"mechanism": "test@example.com",
+							"mechanism_type": "email",
+							"name": "SSL Notification Event Policy",
+							"sent": "2021-10-08T17:52:17.571336Z"
+						}
+					],
+					"items": {
+						"$ref": "#/components/schemas/history-WBMkMHc6"
+					},
+					"type": "array"
+				},
+				"result_info": {
+					"example": {
+						"count": 1,
+						"page": 1,
+						"per_page": 20
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

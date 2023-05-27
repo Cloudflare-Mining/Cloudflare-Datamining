@@ -1,0 +1,28 @@
+{
+	"properties": {
+		"file": {
+			"description": "The image file to upload.",
+			"example": "@/Users/rchen/Downloads/watermark.png",
+			"type": "string"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-G14N3kZY"
+		},
+		"opacity": {
+			"$ref": "#/components/schemas/opacity"
+		},
+		"padding": {
+			"$ref": "#/components/schemas/padding"
+		},
+		"position": {
+			"$ref": "#/components/schemas/position"
+		},
+		"scale": {
+			"$ref": "#/components/schemas/scale"
+		}
+	},
+	"required": [
+		"file"
+	],
+	"type": "object"
+}

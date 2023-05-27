@@ -1,0 +1,38 @@
+{
+	"items": {
+		"allOf": [
+			{
+				"oneOf": [
+					{
+						"required": [
+							"ip"
+						]
+					},
+					{
+						"required": [
+							"redirect"
+						]
+					},
+					{
+						"required": [
+							"hostname"
+						]
+					}
+				],
+				"properties": {
+					"comment": {
+						"$ref": "#/components/schemas/item_comment"
+					},
+					"ip": {
+						"$ref": "#/components/schemas/item_ip"
+					},
+					"redirect": {
+						"$ref": "#/components/schemas/item_redirect"
+					}
+				},
+				"type": "object"
+			}
+		]
+	},
+	"type": "array"
+}

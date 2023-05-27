@@ -1,0 +1,29 @@
+{
+	"description": "Matches an Okta group.\nRequires an Okta identity provider.",
+	"properties": {
+		"okta": {
+			"properties": {
+				"connection_id": {
+					"description": "The ID of your Okta identity provider.",
+					"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+					"type": "string"
+				},
+				"email": {
+					"description": "The email of the Okta group.",
+					"example": "devs@cloudflare.com",
+					"type": "string"
+				}
+			},
+			"required": [
+				"email",
+				"connection_id"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"okta"
+	],
+	"title": "Okta group",
+	"type": "object"
+}

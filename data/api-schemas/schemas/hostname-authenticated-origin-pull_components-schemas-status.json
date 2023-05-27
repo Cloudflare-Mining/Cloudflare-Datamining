@@ -1,0 +1,14 @@
+{
+	"description": "Status of the certificate or the association.",
+	"enum": [
+		"initializing",
+		"pending_deployment",
+		"pending_deletion",
+		"active",
+		"deleted",
+		"deployment_timed_out",
+		"deletion_timed_out"
+	],
+	"example": "active",
+	"readOnly": true
+}

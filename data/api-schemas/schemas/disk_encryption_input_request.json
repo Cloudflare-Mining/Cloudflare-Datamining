@@ -1,0 +1,12 @@
+{
+	"properties": {
+		"checkDisks": {
+			"$ref": "#/components/schemas/checkDisks"
+		},
+		"requireAll": {
+			"$ref": "#/components/schemas/requireAll"
+		}
+	},
+	"title": "Disk Encryption",
+	"type": "object"
+}

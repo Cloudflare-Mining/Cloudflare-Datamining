@@ -1,0 +1,22 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QtgvcrF1"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"deleted": {
+							"example": true,
+							"type": "boolean"
+						},
+						"deleted_ipsec_tunnel": {
+							"type": "object"
+						}
+					}
+				}
+			}
+		}
+	]
+}

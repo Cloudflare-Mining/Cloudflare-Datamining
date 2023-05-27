@@ -1,0 +1,152 @@
+{
+	"POST /accounts/{account_identifier}/stream/clip": {
+		"description": "Clips a video based on the specified start and end times provided in seconds.",
+		"operationId": "stream-video-clipping-clip-videos-given-a-start-and-end-time",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"allowedOrigins": {
+								"$ref": "#/components/schemas/allowedOrigins"
+							},
+							"clippedFromVideoUID": {
+								"$ref": "#/components/schemas/clipped_from_video_uid"
+							},
+							"creator": {
+								"$ref": "#/components/schemas/creator"
+							},
+							"endTimeSeconds": {
+								"$ref": "#/components/schemas/end_time_seconds"
+							},
+							"maxDurationSeconds": {
+								"$ref": "#/components/schemas/maxDurationSeconds"
+							},
+							"requireSignedURLs": {
+								"$ref": "#/components/schemas/requireSignedURLs"
+							},
+							"startTimeSeconds": {
+								"$ref": "#/components/schemas/start_time_seconds"
+							},
+							"thumbnailTimestampPct": {
+								"$ref": "#/components/schemas/thumbnailTimestampPct"
+							},
+							"watermark": {
+								"$ref": "#/components/schemas/watermarkAtUpload"
+							}
+						},
+						"required": [
+							"clippedFromVideoUID",
+							"startTimeSeconds",
+							"endTimeSeconds"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/clipping"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Clip videos given a start and end time response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/messages"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Clip videos given a start and end time response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Clip videos given a start and end time",
+		"tags": [
+			"Stream Video Clipping"
+		]
+	}
+}

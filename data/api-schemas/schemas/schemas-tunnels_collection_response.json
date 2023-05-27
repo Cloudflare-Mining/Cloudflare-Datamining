@@ -1,0 +1,21 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QtgvcrF1"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"ipsec_tunnels": {
+							"items": {
+								"$ref": "#/components/schemas/ipsec-tunnel"
+							},
+							"type": "array"
+						}
+					}
+				}
+			}
+		}
+	]
+}

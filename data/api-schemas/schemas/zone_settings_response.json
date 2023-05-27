@@ -1,0 +1,25 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"search_engine_crawler_bypass": {
+							"$ref": "#/components/schemas/search_engine_crawler_bypass"
+						}
+					},
+					"required": [
+						"search_engine_crawler_bypass"
+					],
+					"type": "object"
+				}
+			},
+			"required": [
+				"result"
+			]
+		}
+	]
+}

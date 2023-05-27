@@ -1,0 +1,22 @@
+{
+	"example": {
+		"deployment_configs": {
+			"production": {
+				"compatibility_date": "2022-01-01",
+				"compatibility_flags": [
+					"url_standard"
+				],
+				"env_vars": {
+					"BUILD_VERSION": {
+						"value": "3.3"
+					},
+					"delete_this_env_var": null,
+					"secret_var": {
+						"type": "secret_text",
+						"value": "A_CMS_API_TOKEN"
+					}
+				}
+			}
+		}
+	}
+}

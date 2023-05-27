@@ -1,0 +1,16 @@
+{
+	"properties": {
+		"created": {
+			"$ref": "#/components/schemas/live_input_created"
+		},
+		"meta": {
+			"$ref": "#/components/schemas/live_input_metadata"
+		},
+		"modified": {
+			"$ref": "#/components/schemas/live_input_modified"
+		},
+		"uid": {
+			"$ref": "#/components/schemas/live_input_identifier"
+		}
+	}
+}

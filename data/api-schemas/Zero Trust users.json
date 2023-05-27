@@ -1,0 +1,337 @@
+{
+	"GET /accounts/{identifier}/access/users": {
+		"description": "Gets a list of users for an account.",
+		"operationId": "zero-trust-users-get-users",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 1
+												},
+												"page": {
+													"example": 1
+												},
+												"per_page": {
+													"example": 100
+												},
+												"total_count": {
+													"example": 1
+												}
+											},
+											"type": "object"
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/users-xUKI7kPR"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get users response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"example": 1
+														},
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 100
+														},
+														"total_count": {
+															"example": 1
+														}
+													},
+													"type": "object"
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"$ref": "#/components/schemas/users-xUKI7kPR"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get users response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get users",
+		"tags": [
+			"Zero Trust users"
+		]
+	},
+	"GET /accounts/{identifier}/access/users/{id}/failed_logins": {
+		"description": "Get all failed login attempts for a single user.",
+		"operationId": "zero-trust-users-get-failed-logins",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "The ID of the user.",
+					"example": "f3b12456-80dd-4e89-9f5f-ba3dfff12365"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"expiration": {
+														"type": "integer"
+													},
+													"metadata": {
+														"example": {
+															"app_name": "Test App",
+															"aud": "39691c1480a2352a18ece567debc2b32552686cbd38eec0887aa18d5d3f00c04",
+															"datetime": "2022-02-02T21:54:34.914Z",
+															"ray_id": "6d76a8a42ead4133",
+															"user_email": "test@cloudflare.com",
+															"user_uuid": "57171132-e453-4ee8-b2a5-8cbaad333207"
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get failed logins response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"expiration": {
+																"type": "integer"
+															},
+															"metadata": {
+																"example": {
+																	"app_name": "Test App",
+																	"aud": "39691c1480a2352a18ece567debc2b32552686cbd38eec0887aa18d5d3f00c04",
+																	"datetime": "2022-02-02T21:54:34.914Z",
+																	"ray_id": "6d76a8a42ead4133",
+																	"user_email": "test@cloudflare.com",
+																	"user_uuid": "57171132-e453-4ee8-b2a5-8cbaad333207"
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get failed logins response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get failed logins",
+		"tags": [
+			"Zero Trust users"
+		]
+	}
+}

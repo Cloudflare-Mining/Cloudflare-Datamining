@@ -1,0 +1,58 @@
+{
+	"properties": {
+		"certificate": {
+			"$ref": "#/components/schemas/client-certificates_components-schemas-certificate"
+		},
+		"certificate_authority": {
+			"$ref": "#/components/schemas/client-certificates_components-schemas-certificate_authority"
+		},
+		"common_name": {
+			"$ref": "#/components/schemas/common_name"
+		},
+		"country": {
+			"$ref": "#/components/schemas/country"
+		},
+		"csr": {
+			"$ref": "#/components/schemas/schemas-csr"
+		},
+		"expires_on": {
+			"$ref": "#/components/schemas/expired_on"
+		},
+		"fingerprint_sha256": {
+			"$ref": "#/components/schemas/fingerprint_sha256"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier"
+		},
+		"issued_on": {
+			"$ref": "#/components/schemas/issued_on"
+		},
+		"location": {
+			"$ref": "#/components/schemas/location"
+		},
+		"organization": {
+			"$ref": "#/components/schemas/organization"
+		},
+		"organizational_unit": {
+			"$ref": "#/components/schemas/organizational_unit"
+		},
+		"serial_number": {
+			"$ref": "#/components/schemas/components-schemas-serial_number"
+		},
+		"signature": {
+			"$ref": "#/components/schemas/components-schemas-signature"
+		},
+		"ski": {
+			"$ref": "#/components/schemas/ski"
+		},
+		"state": {
+			"$ref": "#/components/schemas/state"
+		},
+		"status": {
+			"$ref": "#/components/schemas/client-certificates_components-schemas-status"
+		},
+		"validity_days": {
+			"$ref": "#/components/schemas/components-schemas-validity_days"
+		}
+	}
+}

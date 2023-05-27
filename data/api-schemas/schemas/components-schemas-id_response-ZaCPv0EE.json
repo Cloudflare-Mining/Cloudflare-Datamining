@@ -1,0 +1,19 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"id": {
+							"$ref": "#/components/schemas/load-balancer_components-schemas-identifier"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

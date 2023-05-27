@@ -1,0 +1,11 @@
+{
+	"default": "off",
+	"description": "Value of the zone setting.\nNotes: Depends on the zone's plan level",
+	"enum": [
+		"off",
+		"flexible",
+		"full",
+		"strict"
+	],
+	"type": "string"
+}

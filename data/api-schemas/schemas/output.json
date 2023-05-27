@@ -1,0 +1,16 @@
+{
+	"properties": {
+		"enabled": {
+			"$ref": "#/components/schemas/output_enabled"
+		},
+		"streamKey": {
+			"$ref": "#/components/schemas/output_streamKey"
+		},
+		"uid": {
+			"$ref": "#/components/schemas/output_identifier"
+		},
+		"url": {
+			"$ref": "#/components/schemas/output_url"
+		}
+	}
+}

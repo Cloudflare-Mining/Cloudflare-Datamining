@@ -1,0 +1,10 @@
+{
+	"oneOf": [
+		{
+			"$ref": "#/components/schemas/kv_namespace_binding"
+		},
+		{
+			"$ref": "#/components/schemas/wasm_module_binding"
+		}
+	]
+}

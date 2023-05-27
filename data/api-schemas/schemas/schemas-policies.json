@@ -1,0 +1,44 @@
+{
+	"properties": {
+		"approval_groups": {
+			"$ref": "#/components/schemas/approval_groups"
+		},
+		"approval_required": {
+			"$ref": "#/components/schemas/approval_required"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"decision": {
+			"$ref": "#/components/schemas/decision"
+		},
+		"exclude": {
+			"$ref": "#/components/schemas/schemas-exclude-4s8Obtwo"
+		},
+		"id": {
+			"$ref": "#/components/schemas/components-schemas-uuid"
+		},
+		"include": {
+			"$ref": "#/components/schemas/include-AzB4CY6b"
+		},
+		"name": {
+			"$ref": "#/components/schemas/policies_components-schemas-name"
+		},
+		"precedence": {
+			"$ref": "#/components/schemas/precedence-0RR90ksq"
+		},
+		"purpose_justification_prompt": {
+			"$ref": "#/components/schemas/purpose_justification_prompt"
+		},
+		"purpose_justification_required": {
+			"$ref": "#/components/schemas/purpose_justification_required"
+		},
+		"require": {
+			"$ref": "#/components/schemas/schemas-require-YaJarm9P"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
+		}
+	},
+	"type": "object"
+}

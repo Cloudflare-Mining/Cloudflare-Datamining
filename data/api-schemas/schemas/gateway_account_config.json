@@ -1,0 +1,30 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single"
+		},
+		{
+			"properties": {
+				"result": {
+					"allOf": [
+						{
+							"$ref": "#/components/schemas/gateway-account-settings"
+						},
+						{
+							"properties": {
+								"created_at": {
+									"$ref": "#/components/schemas/timestamp"
+								},
+								"updated_at": {
+									"$ref": "#/components/schemas/timestamp"
+								}
+							}
+						}
+					],
+					"type": "object"
+				}
+			}
+		}
+	],
+	"type": "object"
+}

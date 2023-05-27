@@ -1,0 +1,11 @@
+{
+	"description": "FIPS settings.",
+	"properties": {
+		"tls": {
+			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+			"example": true,
+			"type": "boolean"
+		}
+	},
+	"type": "object"
+}

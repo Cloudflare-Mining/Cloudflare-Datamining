@@ -1,0 +1,21 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QtgvcrF1"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"interconnects": {
+							"items": {
+								"$ref": "#/components/schemas/interconnect"
+							},
+							"type": "array"
+						}
+					}
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,36 @@
+{
+	"properties": {
+		"completed": {
+			"description": "The RFC 3339 timestamp of when the operation was completed.",
+			"example": "2020-01-01T08:00:00Z",
+			"readOnly": true,
+			"type": "string"
+		},
+		"error": {
+			"description": "A message describing the error when the status is `failed`.",
+			"example": "This list is at the maximum number of items",
+			"readOnly": true,
+			"type": "string"
+		},
+		"id": {
+			"$ref": "#/components/schemas/operation_id"
+		},
+		"status": {
+			"description": "The current status of the asynchronous operation.",
+			"enum": [
+				"pending",
+				"running",
+				"completed",
+				"failed"
+			],
+			"example": "failed",
+			"readOnly": true,
+			"type": "string"
+		}
+	},
+	"required": [
+		"id",
+		"status"
+	],
+	"type": "object"
+}

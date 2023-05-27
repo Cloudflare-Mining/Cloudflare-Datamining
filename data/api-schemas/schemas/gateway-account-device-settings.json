@@ -1,0 +1,15 @@
+{
+	"properties": {
+		"gateway_proxy_enabled": {
+			"description": "Enable gateway proxy filtering on TCP.",
+			"example": true,
+			"type": "boolean"
+		},
+		"gateway_udp_proxy_enabled": {
+			"description": "Enable gateway proxy filtering on UDP.",
+			"example": true,
+			"type": "boolean"
+		}
+	},
+	"type": "object"
+}

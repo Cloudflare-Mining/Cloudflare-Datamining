@@ -1,0 +1,11 @@
+{
+	"oneOf": [
+		{
+			"$ref": "#/components/schemas/package_definition"
+		},
+		{
+			"$ref": "#/components/schemas/anomaly_package"
+		}
+	],
+	"type": "object"
+}

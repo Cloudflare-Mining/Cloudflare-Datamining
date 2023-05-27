@@ -1,0 +1,10 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/components/schemas/predefined_profile"
+		},
+		{
+			"$ref": "#/components/schemas/custom_profile"
+		}
+	]
+}

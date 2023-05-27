@@ -1,0 +1,35 @@
+{
+	"description": "Certificate's required validation record.",
+	"properties": {
+		"emails": {
+			"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+			"example": [
+				"administrator@example.com",
+				"webmaster@example.com"
+			],
+			"items": {},
+			"type": "array"
+		},
+		"http_body": {
+			"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+			"example": "ca3-574923932a82475cb8592200f1a2a23d",
+			"type": "string"
+		},
+		"http_url": {
+			"description": "The url that will be checked during domain validation.",
+			"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+			"type": "string"
+		},
+		"txt_name": {
+			"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+			"example": "_acme-challenge.app.example.com",
+			"type": "string"
+		},
+		"txt_value": {
+			"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+			"example": "810b7d5f01154524b961ba0cd578acc2",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,42 @@
+{
+	"description": "The rate plan applied to the subscription.",
+	"properties": {
+		"currency": {
+			"description": "The currency applied to the rate plan subscription.",
+			"example": "USD",
+			"type": "string"
+		},
+		"externally_managed": {
+			"description": "Whether this rate plan is managed externally from Cloudflare.",
+			"example": false,
+			"type": "boolean"
+		},
+		"id": {
+			"description": "The ID of the rate plan.",
+			"example": "free"
+		},
+		"is_contract": {
+			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
+			"example": false,
+			"type": "boolean"
+		},
+		"public_name": {
+			"description": "The full name of the rate plan.",
+			"example": "Business Plan",
+			"type": "string"
+		},
+		"scope": {
+			"description": "The scope that this rate plan applies to.",
+			"example": "zone",
+			"type": "string"
+		},
+		"sets": {
+			"description": "The list of sets this rate plan applies to.",
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
+		}
+	},
+	"type": "object"
+}

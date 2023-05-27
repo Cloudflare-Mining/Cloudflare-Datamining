@@ -1,0 +1,216 @@
+{
+	"GET /accounts/{identifier}/alerting/v3/history": {
+		"description": "Gets a list of history records for notifications sent to an account. The records are displayed for last `x` number of days based on the zone plan (free = 30, pro = 30, biz = 30, ent = 90).",
+		"operationId": "notification-history-list-history",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 25,
+					"description": "Number of items per page.",
+					"maximum": 1000,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "before",
+				"schema": {
+					"description": "Limit the returned results to history records older than the specified date. This must be a timestamp that conforms to RFC3339.",
+					"example": "2022-05-20T20:29:58.679897Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since",
+				"schema": {
+					"description": "Limit the returned results to history records newer than the specified date. This must be a timestamp that conforms to RFC3339.",
+					"example": "2022-05-19T20:29:58.679897Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": [
+												{
+													"alert_body": "SSL certificate has expired",
+													"alert_type": "universal_ssl_event_type",
+													"description": "Universal Certificate validation status, issuance, renewal, and expiration notices.",
+													"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"mechanism": "test@example.com",
+													"mechanism_type": "email",
+													"name": "SSL Notification Event Policy",
+													"sent": "2021-10-08T17:52:17.571336Z"
+												}
+											],
+											"items": {
+												"$ref": "#/components/schemas/history-WBMkMHc6"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"example": {
+												"count": 1,
+												"page": 1,
+												"per_page": 20
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List History response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": [
+														{
+															"alert_body": "SSL certificate has expired",
+															"alert_type": "universal_ssl_event_type",
+															"description": "Universal Certificate validation status, issuance, renewal, and expiration notices.",
+															"id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"mechanism": "test@example.com",
+															"mechanism_type": "email",
+															"name": "SSL Notification Event Policy",
+															"sent": "2021-10-08T17:52:17.571336Z"
+														}
+													],
+													"items": {
+														"$ref": "#/components/schemas/history-WBMkMHc6"
+													},
+													"type": "array"
+												},
+												"result_info": {
+													"example": {
+														"count": 1,
+														"page": 1,
+														"per_page": 20
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/messages"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List History response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List History",
+		"tags": [
+			"Notification History"
+		]
+	}
+}

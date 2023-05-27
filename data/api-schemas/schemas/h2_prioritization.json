@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"h2_prioritization"
+					],
+					"example": "h2_prioritization"
+				},
+				"value": {
+					"$ref": "#/components/schemas/h2_prioritization_value"
+				}
+			}
+		}
+	],
+	"description": "HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers.",
+	"title": "HTTP/2 Edge Prioritization"
+}

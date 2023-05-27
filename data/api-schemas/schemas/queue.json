@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"consumers": {
+			"readOnly": true
+		},
+		"consumers_total_count": {
+			"readOnly": true
+		},
+		"created_on": {
+			"readOnly": true
+		},
+		"modified_on": {
+			"readOnly": true
+		},
+		"producers": {
+			"readOnly": true
+		},
+		"producers_total_count": {
+			"readOnly": true
+		},
+		"queue_id": {
+			"readOnly": true
+		},
+		"queue_name": {
+			"$ref": "#/components/schemas/queues_components-schemas-name"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,20 @@
+{
+	"description": "Breakdown of totals for pageviews.",
+	"properties": {
+		"all": {
+			"description": "The total number of pageviews served within the time range.",
+			"type": "integer"
+		},
+		"search_engine": {
+			"description": "A variable list of key/value pairs representing the search engine and number of hits.",
+			"example": {
+				"baidubot": 1345,
+				"bingbot": 5372,
+				"googlebot": 35272,
+				"pingdom": 13435
+			},
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,38 @@
+{
+	"additionalProperties": {
+		"properties": {
+			"healthy": {
+				"type": "boolean"
+			},
+			"origins": {
+				"items": {
+					"additionalProperties": {
+						"$ref": "#/components/schemas/origin_health_data"
+					},
+					"maxProperties": 1,
+					"minProperties": 1,
+					"type": "object"
+				},
+				"type": "array"
+			}
+		},
+		"type": "object"
+	},
+	"description": "Resulting health data from a preview operation.",
+	"example": {
+		"abwlnp5jbqn45ecgxd03erbgtxtqai0d": {
+			"healthy": true,
+			"origins": [
+				{
+					"originone.example.com.": {
+						"failure_reason": "No failures",
+						"healthy": true,
+						"response_code": 200,
+						"rtt": "66ms"
+					}
+				}
+			]
+		}
+	},
+	"type": "object"
+}

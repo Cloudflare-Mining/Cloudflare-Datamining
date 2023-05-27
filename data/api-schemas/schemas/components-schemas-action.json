@@ -1,0 +1,14 @@
+{
+	"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+	"enum": [
+		"block",
+		"challenge",
+		"js_challenge",
+		"managed_challenge",
+		"allow",
+		"log",
+		"bypass"
+	],
+	"example": "block",
+	"type": "string"
+}

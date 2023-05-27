@@ -1,0 +1,21 @@
+{
+	"properties": {
+		"result": {
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/regional_tiered_cache"
+				},
+				{
+					"properties": {
+						"value": {
+							"$ref": "#/components/schemas/regional_tiered_cache"
+						}
+					},
+					"required": [
+						"value"
+					]
+				}
+			]
+		}
+	}
+}

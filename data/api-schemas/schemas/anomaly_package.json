@@ -1,0 +1,36 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/package_definition"
+		},
+		{
+			"properties": {
+				"action_mode": {
+					"$ref": "#/components/schemas/action_mode"
+				},
+				"description": {
+					"$ref": "#/components/schemas/anomaly_description"
+				},
+				"detection_mode": {
+					"$ref": "#/components/schemas/anomaly_detection_mode"
+				},
+				"name": {
+					"$ref": "#/components/schemas/anomaly_name"
+				},
+				"sensitivity": {
+					"$ref": "#/components/schemas/sensitivity"
+				}
+			}
+		}
+	],
+	"required": [
+		"id",
+		"name",
+		"description",
+		"zone_id",
+		"detection_mode",
+		"sensitivity",
+		"action_mode"
+	],
+	"title": "Anomaly detection WAF package (OWASP)"
+}

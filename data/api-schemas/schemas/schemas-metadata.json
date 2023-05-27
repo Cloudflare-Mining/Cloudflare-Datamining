@@ -1,0 +1,10 @@
+{
+	"description": "What EXIF data should be preserved in the output image.",
+	"enum": [
+		"keep",
+		"copyright",
+		"none"
+	],
+	"example": "none",
+	"type": "string"
+}

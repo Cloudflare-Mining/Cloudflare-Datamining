@@ -1,0 +1,33 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"content": {
+					"description": "Domain name pointing to the address.",
+					"example": "example.com",
+					"type": "string"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-cuJsFvy7"
+				},
+				"type": {
+					"description": "Record type.",
+					"enum": [
+						"PTR"
+					],
+					"example": "PTR",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"$ref": "#/components/schemas/base-196y7u4w"
+		}
+	],
+	"required": [
+		"type",
+		"name",
+		"content"
+	],
+	"title": "PTR Record"
+}

@@ -1,0 +1,33 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/items-wJNXEihr"
+				},
+				"result_info": {
+					"properties": {
+						"cursors": {
+							"properties": {
+								"after": {
+									"example": "yyy",
+									"type": "string"
+								},
+								"before": {
+									"example": "xxx",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"type": "object"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

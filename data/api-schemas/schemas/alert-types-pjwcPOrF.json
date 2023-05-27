@@ -1,0 +1,17 @@
+{
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/alert-types_components-schemas-description"
+		},
+		"display_name": {
+			"$ref": "#/components/schemas/display_name"
+		},
+		"filter_options": {
+			"$ref": "#/components/schemas/schemas-filter_options"
+		},
+		"type": {
+			"$ref": "#/components/schemas/alert-types_components-schemas-type"
+		}
+	},
+	"type": "object"
+}

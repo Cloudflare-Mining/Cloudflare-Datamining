@@ -1,0 +1,31 @@
+{
+	"description": "The packet capture filter. When this field is empty, all packets are captured.",
+	"properties": {
+		"destination_address": {
+			"description": "The destination IP address of the packet.",
+			"example": "1.2.3.4",
+			"type": "string"
+		},
+		"destination_port": {
+			"description": "The destination port of the packet.",
+			"example": 80,
+			"type": "number"
+		},
+		"protocol": {
+			"description": "The protocol number of the packet.",
+			"example": 6,
+			"type": "number"
+		},
+		"source_address": {
+			"description": "The source IP address of the packet.",
+			"example": "1.2.3.4",
+			"type": "string"
+		},
+		"source_port": {
+			"description": "The source port of the packet.",
+			"example": 123,
+			"type": "number"
+		}
+	},
+	"type": "object"
+}

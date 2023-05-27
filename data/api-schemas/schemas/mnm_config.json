@@ -1,0 +1,19 @@
+{
+	"properties": {
+		"default_sampling": {
+			"$ref": "#/components/schemas/mnm_config_default_sampling"
+		},
+		"name": {
+			"$ref": "#/components/schemas/mnm_config_name"
+		},
+		"router_ips": {
+			"$ref": "#/components/schemas/mnm_config_router_ips"
+		}
+	},
+	"required": [
+		"name",
+		"default_sampling",
+		"router_ips"
+	],
+	"type": "object"
+}

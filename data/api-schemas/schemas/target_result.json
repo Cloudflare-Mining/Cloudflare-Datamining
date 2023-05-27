@@ -1,0 +1,14 @@
+{
+	"properties": {
+		"colos": {
+			"items": {
+				"$ref": "#/components/schemas/colo_result"
+			},
+			"type": "array"
+		},
+		"target": {
+			"$ref": "#/components/schemas/target"
+		}
+	},
+	"type": "object"
+}

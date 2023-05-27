@@ -1,0 +1,47 @@
+{
+	"properties": {
+		"dismissed": {
+			"example": false,
+			"type": "boolean"
+		},
+		"id": {
+			"type": "string"
+		},
+		"issue_class": {
+			"$ref": "#/components/schemas/issueClass"
+		},
+		"issue_type": {
+			"$ref": "#/components/schemas/issueType"
+		},
+		"payload": {
+			"type": "object"
+		},
+		"resolve_link": {
+			"type": "string"
+		},
+		"resolve_text": {
+			"type": "string"
+		},
+		"severity": {
+			"enum": [
+				"Low",
+				"Moderate",
+				"Critical"
+			],
+			"type": "string"
+		},
+		"since": {
+			"format": "date-time",
+			"type": "string"
+		},
+		"subject": {
+			"example": "example.com",
+			"type": "string"
+		},
+		"timestamp": {
+			"format": "date-time",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,20 @@
+{
+	"anyOf": [
+		{
+			"properties": {
+				"mode": {
+					"$ref": "#/components/schemas/mode-dxYwnN6a"
+				},
+				"response": {
+					"$ref": "#/components/schemas/custom_response"
+				},
+				"timeout": {
+					"$ref": "#/components/schemas/timeout-cx0wkfr1"
+				}
+			},
+			"type": "object"
+		}
+	],
+	"description": "The action to perform when the threshold of matched traffic within the configured period is exceeded.",
+	"type": "object"
+}

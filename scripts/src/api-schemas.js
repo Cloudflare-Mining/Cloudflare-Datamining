@@ -4,75 +4,89 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import fetch from 'node-fetch';
-import {parseDocument} from 'htmlparser2';
-import {selectOne} from 'css-select';
-import {parse} from 'acorn';
-import {fullAncestor} from 'acorn-walk';
+import filenamify from 'filenamify';
+import {rimraf} from 'rimraf';
 
 import {tryAndPush, sortObjectByKeys} from './utils.js';
 
-const API_DOCS_URL = 'https://api.cloudflare.com/';
-const SCHEMAS_URL = `${API_DOCS_URL}schemas/v4/`;
+function findAndReplaceSchema(schema, schemas) {
+	// loop through object/array recursively and replace $ref with actual schema
+	if(Array.isArray(schema)) {
+		for(const arrayKey in schema) {
+			const schemaItem = schema[arrayKey];
+			schema[arrayKey] = findAndReplaceSchema(schemaItem, schemas);
+		}
+	}else if(typeof schema === 'object' && schema !== null) {
+		for(const key in schema) {
+			if(key === '$ref') {
+				const ref = schema[key];
+				if(ref.startsWith('#/components/schemas/')) {
+					const schemaName = ref.replace('#/components/schemas/', '');
+					const fixedSchema = schemas[schemaName];
+					if(fixedSchema) {
+						console.log('fixing', schemaName, schema);
+						schema = fixedSchema;
+					}
+				}
+			}else{
+				schema[key] = findAndReplaceSchema(schema[key], schemas);
+			}
+		}
+	}
+	return schema;
+}
 
 async function run() {
-	console.log('Ignoring API schemas for now...');
-	return;
-	/* eslint-disable no-unreachable */
 	console.log('Fetching API Schemas...');
 
-	// // first do it the hacky way
-	// const docs = await fetch(API_DOCS_URL);
-	// const html = await docs.text();
-	// const parsed = new parseDocument(html);
-	// const docsScriptAttr = selectOne('script[src*=apidocs-static]', parsed);
-	// if(!docsScriptAttr) {
-	// 	return console.log('No docs script found, exiting');
-	// }
+	// cleanup previous files
+	rimraf('../data/api-schemas/*.json', {
+		glob: true,
+	});
+	await fs.ensureDir(path.resolve('../data/api-schemas/schemas'));
+	await fs.emptyDir(path.resolve('../data/api-schemas/schemas'));
 
-	// const docsScriptReq = await fetch(`${API_DOCS_URL}/${docsScriptAttr.attribs.src}`);
-	// const docsScript = await docsScriptReq.text();
-	// const docsScriptParsed = parse(docsScript, {
-	// 	sourceType: 'script',
-	// 	ecmaVersion: 2020,
-	// });
-	// const schemas = {};
-	// fullAncestor(docsScriptParsed, (node, ancestors) => {
-	// 	if(node.type === 'Literal' && node.value?.includes?.(SCHEMAS_URL)) {
-	// 		// assume that 3 from the last ancestor is the schema
-	// 		const schema = ancestors.at(-3);
-	// 		if(!schema || schema.type !== 'ObjectExpression') { return; }
-	// 		// this is a massive hack. TODO: find a better way to do this
-	// 		// eslint-disable-next-line no-eval
-	// 		const realschema = eval('(function run(){return ' + docsScript.slice(schema.start, schema.end) + '})()');
-	// 		schemas[node.value] = realschema;
-	// 	}
-	// });
-	// for(const [url, schema] of Object.entries(schemas)) {
-	// 	let schemaname = url.replace(SCHEMAS_URL, '');
-	// 	if(!schemaname) { continue; }
-	// 	if(!schemaname.endsWith('.json')) {
-	// 		schemaname = `${schemaname}.json`;
-	// 	}
-	// 	const filename = path.resolve(`../data/api-schemas/${schemaname}`);
-	// 	console.log('Writing API schema', schemaname);
-	// 	await fs.ensureFile(filename);
-	// 	await fs.writeFile(filename, JSON.stringify(schema, null, '\t'));
-	// }
+	// query schemas from git
+	const schemasRes = await fetch('https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.json');
+	if(!schemasRes.ok) {
+		throw new Error('Failed to fetch schemas');
+	}
+	const schemasJson = sortObjectByKeys(await schemasRes.json());
 
+	const pruned = structuredClone(schemasJson);
+	delete pruned.components;
+	delete pruned.paths;
+	await fs.writeFile(path.resolve('../data/api-schemas/_info.json'), JSON.stringify(pruned, null, '\t'));
 
-	// then query the schemas endpoint
-	const schemasReq = await fetch('https://api.cloudflare.com/schemas.json');
-	const schemasJson = sortObjectByKeys(await schemasReq.json());
-	if(schemasJson?.info) {
-		delete schemasJson.info['x-buildDate']; // changes frequently even without any functional changes. Remove to generate more useful diffs
-		await fs.writeFile(path.resolve('../data/api-schemas/schemas.json'), JSON.stringify(schemasJson, null, '\t'));
+	let byTag = {};
+	// loop over paths and assign to byTag
+	for(const [path, pathData] of Object.entries(schemasJson.paths)) {
+		for(const [method, methodData] of Object.entries(pathData)) {
+			if(methodData.tags) {
+				for(const tag of methodData.tags) {
+					if(!byTag[tag]) {
+						byTag[tag] = {};
+					}
+					byTag[tag][`${method.toUpperCase()} ${path}`] = methodData;
+				}
+			}
+		}
 	}
 
-	// and then query the schemas.yml from git
-	const schemasReqYml = await fetch('https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml');
-	const schemasYml = await schemasReqYml.text();
-	if(schemasReqYml.ok && schemasYml) {
-		await fs.writeFile(path.resolve('../data/api-schemas/openapi.yaml'), schemasYml);
+	byTag = findAndReplaceSchema(byTag, schemasJson.components.schemas);
+
+	// write to folderes by tag
+	for(const [tag, tagData] of Object.entries(byTag)) {
+		const tagName = filenamify(tag, {replacement: '-'});
+		const file = path.resolve(`../data/api-schemas/${tagName}.json`);
+		await fs.writeFile(file, JSON.stringify(sortObjectByKeys(tagData), null, '\t'));
+	}
+
+	const schemas = schemasJson.components.schemas;
+	for(const [schemaName, schema] of Object.entries(schemas)) {
+		const schemaFilename = filenamify(schemaName, {replacement: '-'});
+		const file = path.resolve(`../data/api-schemas/schemas/${schemaFilename}.json`);
+		await fs.writeFile(file, JSON.stringify(sortObjectByKeys(schema), null, '\t'));
 	}
 
 	console.log('Pushing!');
@@ -80,8 +94,7 @@ async function run() {
 	await tryAndPush(
 		[
 			'data/api-schemas/*.json',
-			'data/api-schemas/*.yaml',
-			'data/api-schemas/**/*.json',
+			'data/api-schemas/schemas/*.json',
 		],
 		`${prefix} - API Schemas were updated! [skip ci]`,
 		'CFData - API Schema Data Update',

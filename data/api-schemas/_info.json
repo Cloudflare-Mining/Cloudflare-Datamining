@@ -1,0 +1,18 @@
+{
+	"info": {
+		"description": "Interact with Cloudflare's products and services via the Cloudflare API.\n\nUsing the Cloudflare API requires authentication so that Cloudflare knows who is making requests and what permissions you have. Create an API token to grant access to the API to perform actions.\n\nTo create an API token, from the Cloudflare dashboard, go to My Profile > API Tokens and select Create Token. For more information on how to create and troubleshoot API tokens, refer to\nour [API fundamentals](https://developers.cloudflare.com/fundamentals/api/).\n\nTotally new to Cloudflare? [Start here](https://developers.cloudflare.com/fundamentals/get-started/).",
+		"license": {
+			"name": "BSD-3-Clause",
+			"url": "https://opensource.org/licenses/BSD-3-Clause"
+		},
+		"title": "Cloudflare API",
+		"version": "4.0.0"
+	},
+	"openapi": "3.0.3",
+	"servers": [
+		{
+			"description": "Client API",
+			"url": "https://api.cloudflare.com/client/v4"
+		}
+	]
+}

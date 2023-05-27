@@ -1,0 +1,6 @@
+{
+	"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
+	"example": "this-is_my_script-01",
+	"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+	"type": "string"
+}

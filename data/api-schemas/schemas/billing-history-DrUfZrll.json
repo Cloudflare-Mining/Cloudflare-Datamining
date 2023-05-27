@@ -1,0 +1,39 @@
+{
+	"properties": {
+		"action": {
+			"$ref": "#/components/schemas/action-Cs3zNLor"
+		},
+		"amount": {
+			"$ref": "#/components/schemas/amount"
+		},
+		"currency": {
+			"$ref": "#/components/schemas/currency"
+		},
+		"description": {
+			"$ref": "#/components/schemas/schemas-description-cUW1EHKz"
+		},
+		"id": {
+			"$ref": "#/components/schemas/billing-history_components-schemas-identifier"
+		},
+		"occurred_at": {
+			"$ref": "#/components/schemas/occurred_at"
+		},
+		"type": {
+			"$ref": "#/components/schemas/type-gn5VqL6y"
+		},
+		"zone": {
+			"$ref": "#/components/schemas/schemas-zone"
+		}
+	},
+	"required": [
+		"id",
+		"type",
+		"action",
+		"description",
+		"occurred_at",
+		"amount",
+		"currency",
+		"zone"
+	],
+	"type": "object"
+}

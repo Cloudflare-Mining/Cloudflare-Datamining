@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"sort_query_string_for_cache"
+					],
+					"example": "sort_query_string_for_cache"
+				},
+				"value": {
+					"$ref": "#/components/schemas/sort_query_string_for_cache_value"
+				}
+			}
+		}
+	],
+	"default": "off",
+	"description": "Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones.",
+	"title": "Get String Sort"
+}

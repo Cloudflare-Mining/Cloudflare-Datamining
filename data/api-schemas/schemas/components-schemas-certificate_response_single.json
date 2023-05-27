@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-gF4eeS8E"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/schemas-certificateObject"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"properties": {
+		"destination_conf": {
+			"$ref": "#/components/schemas/pcaps_destination_conf"
+		}
+	},
+	"required": [
+		"destination_conf"
+	],
+	"type": "object"
+}

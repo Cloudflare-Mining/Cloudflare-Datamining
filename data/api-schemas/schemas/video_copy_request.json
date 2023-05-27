@@ -1,0 +1,28 @@
+{
+	"properties": {
+		"allowedOrigins": {
+			"$ref": "#/components/schemas/allowedOrigins"
+		},
+		"creator": {
+			"$ref": "#/components/schemas/creator"
+		},
+		"requireSignedURLs": {
+			"$ref": "#/components/schemas/requireSignedURLs"
+		},
+		"thumbnailTimestampPct": {
+			"$ref": "#/components/schemas/thumbnailTimestampPct"
+		},
+		"url": {
+			"description": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file.",
+			"example": "https://example.com/myvideo.mp4",
+			"format": "uri",
+			"type": "string"
+		},
+		"watermark": {
+			"$ref": "#/components/schemas/watermark_at_upload"
+		}
+	},
+	"required": [
+		"url"
+	]
+}

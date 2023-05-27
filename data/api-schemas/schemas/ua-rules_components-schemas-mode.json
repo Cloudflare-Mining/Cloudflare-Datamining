@@ -1,0 +1,11 @@
+{
+	"description": "The action to apply to a matched request.",
+	"enum": [
+		"block",
+		"challenge",
+		"js_challenge",
+		"managed_challenge"
+	],
+	"example": "js_challenge",
+	"maxLength": 12
+}

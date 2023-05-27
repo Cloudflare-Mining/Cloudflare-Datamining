@@ -1,0 +1,22 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/certificateObject-YMbt7SgQ"
+		}
+	],
+	"properties": {
+		"certificate": {
+			"$ref": "#/components/schemas/zone-authenticated-origin-pull_components-schemas-certificate"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/zone-authenticated-origin-pull_components-schemas-enabled"
+		},
+		"id": {
+			"$ref": "#/components/schemas/zone-authenticated-origin-pull_components-schemas-identifier"
+		},
+		"private_key": {
+			"$ref": "#/components/schemas/private_key"
+		}
+	},
+	"type": "object"
+}

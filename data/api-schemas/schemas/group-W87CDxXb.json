@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/group_components-schemas-description"
+		},
+		"id": {
+			"$ref": "#/components/schemas/group_components-schemas-identifier"
+		},
+		"modified_rules_count": {
+			"$ref": "#/components/schemas/modified_rules_count"
+		},
+		"name": {
+			"$ref": "#/components/schemas/group_components-schemas-name"
+		},
+		"package_id": {
+			"$ref": "#/components/schemas/package_components-schemas-identifier"
+		},
+		"rules_count": {
+			"$ref": "#/components/schemas/rules_count"
+		}
+	},
+	"type": "object"
+}

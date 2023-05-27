@@ -1,0 +1,28 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+		},
+		{
+			"properties": {
+				"result": {
+					"allOf": [
+						{
+							"$ref": "#/components/schemas/filter-rule-response"
+						},
+						{
+							"required": [
+								"id"
+							],
+							"type": "object"
+						}
+					]
+				}
+			},
+			"required": [
+				"result"
+			],
+			"type": "object"
+		}
+	]
+}

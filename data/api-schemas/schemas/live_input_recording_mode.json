@@ -1,0 +1,10 @@
+{
+	"default": "off",
+	"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
+	"enum": [
+		"off",
+		"automatic"
+	],
+	"example": "automatic",
+	"type": "string"
+}

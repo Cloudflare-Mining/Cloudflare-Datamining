@@ -1,0 +1,28 @@
+{
+	"default": 7200,
+	"description": "Value of the zone setting.\nNotes: The minimum TTL available depends on the plan level of the zone. (Enterprise = 30, Business = 1800, Pro = 3600, Free = 7200)",
+	"enum": [
+		30,
+		60,
+		300,
+		1200,
+		1800,
+		3600,
+		7200,
+		10800,
+		14400,
+		18000,
+		28800,
+		43200,
+		57600,
+		72000,
+		86400,
+		172800,
+		259200,
+		345600,
+		432000,
+		518400,
+		604800
+	],
+	"type": "number"
+}

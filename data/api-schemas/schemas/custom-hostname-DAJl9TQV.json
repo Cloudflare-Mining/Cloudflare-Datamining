@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/customhostname-DKe92jap"
+		}
+	],
+	"properties": {
+		"hostname": {
+			"$ref": "#/components/schemas/hostname"
+		},
+		"id": {
+			"$ref": "#/components/schemas/custom-hostname_components-schemas-identifier"
+		},
+		"ssl": {
+			"$ref": "#/components/schemas/ssl-uDucdR0J"
+		}
+	},
+	"required": [
+		"id",
+		"hostname",
+		"ssl"
+	],
+	"type": "object"
+}

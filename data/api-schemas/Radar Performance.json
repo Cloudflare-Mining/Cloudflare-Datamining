@@ -1,0 +1,473 @@
+{
+	"GET /radar/performance/iqi/summary": {
+		"description": "Percentiles for the specified metric from the Radar Internet Quality Index (IQI).",
+		"operationId": "radar_get_Za",
+		"parameters": [
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"items": {
+						"description": "Array of names that will be used to name the series in responses.",
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the start of a series.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the end of a series.",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"items": {
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+						"example": "15169",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"items": {
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+						"example": "US,CA",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"items": {
+						"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+						"example": "EU,NA",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Which metric to return: Bandwidth, Latency or DNS response time.",
+				"in": "query",
+				"name": "metric",
+				"required": true,
+				"schema": {
+					"enum": [
+						"BANDWIDTH",
+						"DNS",
+						"LATENCY"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"summary_0": {
+											"properties": {
+												"p25": {
+													"example": "32.20938",
+													"type": "string"
+												},
+												"p50": {
+													"example": "61.819881",
+													"type": "string"
+												},
+												"p75": {
+													"example": "133.813087",
+													"type": "string"
+												}
+											},
+											"required": [
+												"p75",
+												"p50",
+												"p25"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"summary_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a summary of Bandwidth, Latency or DNS response time percentiles from the Radar Internet Quality Index (IQI)",
+		"tags": [
+			"Radar Performance"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/performance/iqi/timeseries_groups": {
+		"description": "Percentiles for the specified metric from the Radar Internet Quality Index (IQI).",
+		"operationId": "radar_get_er",
+		"parameters": [
+			{
+				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of names that will be used to name the series in responses.",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"items": {
+						"description": "Array of names that will be used to name the series in responses.",
+						"example": "main_series",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the start of a series.",
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of datetimes to filter the end of a series.",
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"items": {
+						"example": "2022-09-15T00:00:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"items": {
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+						"example": "15169",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"items": {
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+						"example": "US,CA",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"items": {
+						"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+						"example": "EU,NA",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Enable interpolation for all series (using the average).",
+				"in": "query",
+				"name": "interpolation",
+				"schema": {
+					"default": true,
+					"description": "Enable interpolation for all series (using the average).",
+					"type": "boolean"
+				}
+			},
+			{
+				"description": "Which metric to return: Bandwidth, Latency or DNS response time.",
+				"in": "query",
+				"name": "metric",
+				"required": true,
+				"schema": {
+					"enum": [
+						"BANDWIDTH",
+						"DNS",
+						"LATENCY"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"p25": {
+													"items": {
+														"example": "31.253439",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"p50": {
+													"items": {
+														"example": "60.337738",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"p75": {
+													"items": {
+														"example": "125.940175",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"timestamps": {
+													"items": {
+														"example": "2023-04-17T00:00:00Z",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"p75",
+												"p50",
+												"p25"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a time series of Bandwidth, Latency or DNS response time percentiles from the Radar Internet Quality Index (IQI)",
+		"tags": [
+			"Radar Performance"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

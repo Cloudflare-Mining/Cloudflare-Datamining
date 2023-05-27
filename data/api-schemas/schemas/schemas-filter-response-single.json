@@ -1,0 +1,37 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+		},
+		{
+			"properties": {
+				"result": {
+					"oneOf": [
+						{
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/filter-QeTRQ44g"
+								},
+								{
+									"required": [
+										"id",
+										"expression",
+										"paused"
+									],
+									"type": "object"
+								}
+							]
+						},
+						{
+							"nullable": true
+						}
+					]
+				}
+			},
+			"required": [
+				"result"
+			],
+			"type": "object"
+		}
+	]
+}

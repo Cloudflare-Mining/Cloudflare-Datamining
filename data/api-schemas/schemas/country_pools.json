@@ -1,0 +1,13 @@
+{
+	"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
+	"example": {
+		"GB": [
+			"abd90f38ced07c2e2f4df50b1f61d4194"
+		],
+		"US": [
+			"de90f38ced07c2e2f4df50b1f61d4194",
+			"00920f38ce07c2e2f4df50b1f61d4194"
+		]
+	},
+	"type": "object"
+}

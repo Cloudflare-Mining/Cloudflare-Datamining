@@ -1,0 +1,28 @@
+{
+	"properties": {
+		"created_on": {
+			"$ref": "#/components/schemas/schemas-created_on-11pcBI52"
+		},
+		"description": {
+			"$ref": "#/components/schemas/lists_components-schemas-description"
+		},
+		"id": {
+			"$ref": "#/components/schemas/list_id"
+		},
+		"kind": {
+			"$ref": "#/components/schemas/kind-gc9gb9vO"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/lists_components-schemas-modified_on"
+		},
+		"name": {
+			"$ref": "#/components/schemas/lists_components-schemas-name"
+		},
+		"num_items": {
+			"$ref": "#/components/schemas/num_items"
+		},
+		"num_referencing_filters": {
+			"$ref": "#/components/schemas/num_referencing_filters"
+		}
+	}
+}

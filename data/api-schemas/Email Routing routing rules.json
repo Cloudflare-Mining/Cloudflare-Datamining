@@ -1,0 +1,622 @@
+{
+	"DELETE /zones/{zone_identifier}/email/routing/rules/{rule_identifier}": {
+		"description": "Delete a specific routing rule.",
+		"operationId": "email-routing-routing-rules-delete-routing-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_identifier",
+				"required": true,
+				"schema": {
+					"description": "Routing rule identifier.",
+					"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/rules-gtWHEClq"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete routing rule response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete routing rule",
+		"tags": [
+			"Email Routing routing rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.rule.delete"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/email/routing/rules": {
+		"description": "Lists existing routing rules.",
+		"operationId": "email-routing-routing-rules-list-routing-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Maximum number of results per page.",
+					"maximum": 50,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "enabled",
+				"schema": {
+					"description": "Filter by enabled routing rules.",
+					"enum": [
+						true,
+						false
+					],
+					"example": true,
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-collection"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"$ref": "#/components/schemas/rules-gtWHEClq"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 1
+												},
+												"page": {
+													"example": 1
+												},
+												"per_page": {
+													"example": 20
+												},
+												"total_count": {
+													"example": 1
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List routing rules response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List routing rules",
+		"tags": [
+			"Email Routing routing rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.rule.list"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/email/routing/rules/{rule_identifier}": {
+		"description": "Get information for a specific routing rule already created.",
+		"operationId": "email-routing-routing-rules-get-routing-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_identifier",
+				"required": true,
+				"schema": {
+					"description": "Routing rule identifier.",
+					"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/rules-gtWHEClq"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get routing rule response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get routing rule",
+		"tags": [
+			"Email Routing routing rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.rule.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/email/routing/rules/catch_all": {
+		"description": "Get information on the default catch-all routing rule.",
+		"operationId": "email-routing-routing-rules-get-catch-all-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/catch_all_rule"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get catch-all rule response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get catch-all rule",
+		"tags": [
+			"Email Routing routing rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.rule.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_identifier}/email/routing/rules": {
+		"description": "Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address).",
+		"operationId": "email-routing-routing-rules-create-routing-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"actions": {
+								"$ref": "#/components/schemas/rule_actions"
+							},
+							"enabled": {
+								"$ref": "#/components/schemas/rule_enabled"
+							},
+							"matchers": {
+								"$ref": "#/components/schemas/rule_matchers"
+							},
+							"name": {
+								"$ref": "#/components/schemas/rule_name"
+							},
+							"priority": {
+								"$ref": "#/components/schemas/rule_priority"
+							}
+						},
+						"required": [
+							"actions",
+							"matchers"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/rules-gtWHEClq"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create routing rule response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create routing rule",
+		"tags": [
+			"Email Routing routing rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.rule.create"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_identifier}/email/routing/rules/{rule_identifier}": {
+		"description": "Update actions and matches, or enable/disable specific routing rules.",
+		"operationId": "email-routing-routing-rules-update-routing-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "rule_identifier",
+				"required": true,
+				"schema": {
+					"description": "Routing rule identifier.",
+					"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"actions": {
+								"$ref": "#/components/schemas/rule_actions"
+							},
+							"enabled": {
+								"$ref": "#/components/schemas/rule_enabled"
+							},
+							"matchers": {
+								"$ref": "#/components/schemas/rule_matchers"
+							},
+							"name": {
+								"$ref": "#/components/schemas/rule_name"
+							},
+							"priority": {
+								"$ref": "#/components/schemas/rule_priority"
+							}
+						},
+						"required": [
+							"actions",
+							"matchers"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/rules-gtWHEClq"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update routing rule response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update routing rule",
+		"tags": [
+			"Email Routing routing rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.rule.update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_identifier}/email/routing/rules/catch_all": {
+		"description": "Enable or disable catch-all routing rule, or change action to forward to specific destination address.",
+		"operationId": "email-routing-routing-rules-update-catch-all-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"actions": {
+								"$ref": "#/components/schemas/rule_catchall-actions"
+							},
+							"enabled": {
+								"$ref": "#/components/schemas/rule_enabled"
+							},
+							"matchers": {
+								"$ref": "#/components/schemas/rule_catchall-matchers"
+							},
+							"name": {
+								"$ref": "#/components/schemas/rule_name"
+							}
+						},
+						"required": [
+							"actions",
+							"matchers"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/components/schemas/api-response-single"
+								},
+								{
+									"properties": {
+										"result": {
+											"$ref": "#/components/schemas/catch_all_rule"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update catch-all rule response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update catch-all rule",
+		"tags": [
+			"Email Routing routing rules"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.zone.email.routing.rule.update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"properties": {
+		"description": {
+			"description": "A description of the fallback domain, displayed in the client UI.",
+			"example": "Domain bypass for local development",
+			"maxLength": 100,
+			"type": "string"
+		},
+		"dns_server": {
+			"description": "A list of IP addresses to handle domain resolution.",
+			"items": {},
+			"type": "array"
+		},
+		"suffix": {
+			"description": "The domain suffix to match when resolving locally.",
+			"example": "example.com",
+			"type": "string"
+		}
+	},
+	"required": [
+		"suffix"
+	],
+	"type": "object"
+}

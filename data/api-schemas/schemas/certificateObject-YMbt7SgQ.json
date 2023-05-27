@@ -1,0 +1,25 @@
+{
+	"properties": {
+		"certificate": {
+			"$ref": "#/components/schemas/zone-authenticated-origin-pull_components-schemas-certificate"
+		},
+		"expires_on": {
+			"$ref": "#/components/schemas/zone-authenticated-origin-pull_components-schemas-expires_on"
+		},
+		"id": {
+			"$ref": "#/components/schemas/zone-authenticated-origin-pull_components-schemas-identifier"
+		},
+		"issuer": {
+			"$ref": "#/components/schemas/issuer"
+		},
+		"signature": {
+			"$ref": "#/components/schemas/signature"
+		},
+		"status": {
+			"$ref": "#/components/schemas/zone-authenticated-origin-pull_components-schemas-status"
+		},
+		"uploaded_on": {
+			"$ref": "#/components/schemas/schemas-uploaded_on"
+		}
+	}
+}

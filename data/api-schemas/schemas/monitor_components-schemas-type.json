@@ -1,0 +1,14 @@
+{
+	"default": "http",
+	"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
+	"enum": [
+		"http",
+		"https",
+		"tcp",
+		"udp_icmp",
+		"icmp_ping",
+		"smtp"
+	],
+	"example": "https",
+	"type": "string"
+}

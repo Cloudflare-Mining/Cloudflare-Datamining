@@ -1,0 +1,34 @@
+{
+	"properties": {
+		"created_on": {
+			"readOnly": true
+		},
+		"dead_letter_queue": {
+			"$ref": "#/components/schemas/dlq_name"
+		},
+		"environment": {
+			"readOnly": true
+		},
+		"queue_name": {
+			"readOnly": true
+		},
+		"script_name": {
+			"readOnly": true
+		},
+		"settings": {
+			"properties": {
+				"batch_size": {
+					"$ref": "#/components/schemas/batch_size"
+				},
+				"max_retries": {
+					"$ref": "#/components/schemas/max_retries"
+				},
+				"max_wait_time_ms": {
+					"$ref": "#/components/schemas/max_wait_time_ms"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,10 @@
+{
+	"default": "off",
+	"description": "Whether the feature is enabled, disabled, or enabled in `open proxy` mode.",
+	"enum": [
+		"on",
+		"off",
+		"open"
+	],
+	"type": "string"
+}

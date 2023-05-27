@@ -1,0 +1,13 @@
+{
+	"description": "Totals and timeseries data.",
+	"properties": {
+		"timeseries": {
+			"$ref": "#/components/schemas/timeseries-H4yd3Mrp"
+		},
+		"totals": {
+			"$ref": "#/components/schemas/totals-SAbYrKWl"
+		}
+	},
+	"title": "Dashboard response",
+	"type": "object"
+}

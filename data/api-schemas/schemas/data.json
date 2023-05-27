@@ -1,0 +1,21 @@
+{
+	"description": "Array with one row per combination of dimension values.",
+	"items": {
+		"properties": {
+			"dimensions": {
+				"description": "Array of dimension values, representing the combination of dimension values corresponding to this row.",
+				"items": {
+					"description": "Dimension value.",
+					"example": "NODATA",
+					"type": "string"
+				},
+				"type": "array"
+			}
+		},
+		"required": [
+			"dimensions"
+		],
+		"type": "object"
+	},
+	"type": "array"
+}

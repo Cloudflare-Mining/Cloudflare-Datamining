@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"opportunistic_encryption"
+					],
+					"example": "opportunistic_encryption"
+				},
+				"value": {
+					"$ref": "#/components/schemas/opportunistic_encryption_value"
+				}
+			}
+		}
+	],
+	"description": "Enables the Opportunistic Encryption feature for a zone.",
+	"title": "Enable Opportunistic Encryption for a zone"
+}

@@ -1,0 +1,15 @@
+{
+	"description": "Properties of a predefined entry in a custom profile",
+	"properties": {
+		"enabled": {
+			"description": "Whether the entry is enabled or not.",
+			"example": true,
+			"type": "boolean"
+		},
+		"entry_id": {
+			"$ref": "#/components/schemas/entry_id"
+		}
+	},
+	"title": "Update predefined entry",
+	"type": "object"
+}

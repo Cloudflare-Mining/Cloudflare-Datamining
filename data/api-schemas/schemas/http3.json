@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base-5HnG7VSW"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"http3"
+					],
+					"example": "http3"
+				},
+				"value": {
+					"$ref": "#/components/schemas/http3_value"
+				}
+			}
+		}
+	],
+	"description": "HTTP3 enabled for this zone.",
+	"title": "HTTP3 Value"
+}

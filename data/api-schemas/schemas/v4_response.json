@@ -1,0 +1,27 @@
+{
+	"properties": {
+		"errors": {
+			"$ref": "#/components/schemas/errors"
+		},
+		"messages": {
+			"$ref": "#/components/schemas/messages-QRMoVfN3"
+		},
+		"result": {
+			"type": "object"
+		},
+		"success": {
+			"description": "Whether the API call was successful",
+			"enum": [
+				true
+			],
+			"type": "boolean"
+		}
+	},
+	"required": [
+		"success",
+		"errors",
+		"messages",
+		"result"
+	],
+	"type": "object"
+}

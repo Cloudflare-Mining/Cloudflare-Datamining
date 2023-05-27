@@ -1,0 +1,13 @@
+{
+	"properties": {
+		"headers": {
+			"example": "{\n    \"Origin\": \"https://www.cloudflare.com\",\n    \"CF-IPCountry\": \"US\",\n    \"CF-Device-Type\": \"desktop\"\n}",
+			"type": "object"
+		},
+		"url": {
+			"example": "http://www.example.com/cat_picture.jpg",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

@@ -1,0 +1,6 @@
+{
+	"description": "Deployment stage name.",
+	"example": "deploy",
+	"pattern": "queued|initialize|clone_repo|build|deploy",
+	"type": "string"
+}
