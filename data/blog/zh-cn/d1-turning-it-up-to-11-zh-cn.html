@@ -6,12 +6,12 @@
 	<!--kg-card-end: markdown-->
 	<p>在接下来的几周内，它将成为每个人的默认体验，但我们希望邀请开发人员立即开始尝试新版本的 D1。我们也将进一步分享如何构建 D1 新存储子系统以及它如何从 Cloudflare 的分布式网络中受益。。</p>
 	<h3 id="%E6%8F%90%E9%86%92%E6%88%91%E4%B8%80%E4%B8%8B%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AF-d1%EF%BC%9F">提醒我一下：什么是 D1？</h3>
-	<p>D1 是 Cloudflare 的原生无服务器数据库，在去年 11 月 <a href="https://blog.cloudflare.com/d1-open-alpha/">发布 Alpha 版</a>。开发人员一直在使用 Workers、KV、Durable Objects 等构建复杂的应用程序，但是他们一致要求我们做一件事情：一个可以查询的数据库。</p>
+	<p>D1 是 Cloudflare 的原生无服务器数据库，在去年 11 月 <a href="https://blog.cloudflare.com/d1-open-alpha">发布 Alpha 版</a>。开发人员一直在使用 Workers、KV、Durable Objects 等构建复杂的应用程序，但是他们一致要求我们做一件事情：一个可以查询的数据库。</p>
 	<p>我们还收到一致的反馈：这个数据库应该基于 SQL，自动缩放，并且(和 Workers 本身一样)，采用全球(“Region: Earth”)复制方式。因此，我们接受了这些反馈并开始构建 D1，SQLite 为我们提供了一种熟悉的 SQL 方言、强大的查询引擎和经过最充分实战考验的代码库之一。</p>
 	<p>我们将 D1 的第一个版本以“真正的” alpha 版发布：这是我们公开开发的一种方式，可以直接从开发人员那里收集反馈，并更好地优先考虑重要的事情。名副其实，这个 alpha 版存在 bug 和性能问题，而且“理想路径”相当狭窄。</p>
 	<p>尽管如此，我们已经看到开发人员启动了数千个数据库，进行了数十亿次查询，流行的 ORM(例如 <a href="https://github.com/drizzle-team/drizzle-orm" target="_blank">Drizzle</a> 和 <a href="https://github.com/kysely-org/kysely" target="_blank">Kysely</a>)增加对 D1 的支持(已经!)，且 <a href="https://github.com/jose-donato/race-stack" target="_blank">Remix</a> 和 <a href="https://github.com/Atinux/nuxt-todos-edge" target="_blank">Nuxt</a> 模板直接围绕它构建。</p>
 	<h3 id="%E4%B8%8D%E6%96%AD%E5%AE%8C%E5%96%84">不断完善</h3>
-	<p>如果您使用了迄今为止的 alpha 版 D1：请忘记您所知道的一切。D1 现已显著提速，我们刚将著名的 <a href="https://github.com/cloudflare/d1-northwind" target="_blank">Northwind Traders 演示数据库</a> <a href="https://northwind.d1sql.com/" target="_blank">迁移</a>到使用我们的全新存储后端，速度提高了 20 倍：</p>
+	<p>如果您使用了迄今为止的 alpha 版 D1：请忘记您所知道的一切。D1 现已显著提速，我们刚将著名的 <a href="https://github.com/cloudflare/d1-northwind" target="_blank">Northwind Traders 演示数据库</a> <a href="https://northwind.d1sql.com" target="_blank">迁移</a>到使用我们的全新存储后端，速度提高了 20 倍：</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image5-12.png" class="kg-image" alt="" loading="lazy" width="1226" height="402"></figure>
 	<p>我们的新架构还提高了写入性能：一个插入 1000 行（每行约 200 字节宽）的简单基准测试比先前版本的 D1 快大约 6.8 倍。</p>
 	<p>更大的批次(每批 1 万行，每行约 200 字节宽)看到更大的改进：达到 10-11 倍，而且新存储后端的延迟也明显更加一致。我们还没有开始优化总体写吞吐量，因此 D1 只会变得更快。</p>
@@ -23,8 +23,8 @@
 	<p>我们还一直在努力改进 D1 的开发人员体验：</p>
 	<ul>
 		<li>新增控制台界面，可直接从仪表板发出查询，更易开始使用和/或发出一次性查询。</li>
-		<li>正式<a href="https://developers.cloudflare.com/d1/learning/querying-json/" target="_blank">支持 JSON 函数</a>，通过 JSON 在数据库中直接查询。</li>
-		<li><a href="https://developers.cloudflare.com/d1/learning/data-location/" target="_blank">Location Hints</a>，允许影响 leader(负责写入)在全球范围内的位置。</li>
+		<li>正式<a href="https://developers.cloudflare.com/d1/learning/querying-json" target="_blank">支持 JSON 函数</a>，通过 JSON 在数据库中直接查询。</li>
+		<li><a href="https://developers.cloudflare.com/d1/learning/data-location" target="_blank">Location Hints</a>，允许影响 leader(负责写入)在全球范围内的位置。</li>
 	</ul>
 	<p>尽管 D1 是专为在 Cloudflare Workers 内原生运行而设计的，但我们意识到，在进行原型设计或仅探索一个数据库时，通常需要快速通过 CLI 或 Web 编辑器发出一次性查询。除了<a href="https://developers.cloudflare.com/workers/wrangler/commands/#execute" target="_blank">支持在 wrangler 内支持执行查询</a> (和文件)外，我们还引入了控制台编辑器，用于发出查询、检查表格，甚至可以实时编辑数据：</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image3-20.png" class="kg-image" alt="" loading="lazy" width="1999" height="960"></figure>
@@ -43,9 +43,9 @@ $ wrangler d1 create user-prod-db --experimental-backend
 $ wrangler d1 create eu-users-db --location=weur --experimental-backend
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><a href="https://developers.cloudflare.com/d1/learning/data-location/" target="_blank">Location Hints</a> 也可通过 Cloudflare 仪表板使用：</p>
+	<p><a href="https://developers.cloudflare.com/d1/learning/data-location" target="_blank">Location Hints</a> 也可通过 Cloudflare 仪表板使用：</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image4-20.png" class="kg-image" alt="" loading="lazy" width="1988" height="1802"></figure>
-	<p>我们还发布了<a href="https://developers.cloudflare.com/d1/" target="_blank">更多文档</a>，不仅能帮助开发人员入门， 还能利用 D1 的高级特性。未来几个月内，预计 D1 的文档将继续大幅增加。 </p>
+	<p>我们还发布了<a href="https://developers.cloudflare.com/d1" target="_blank">更多文档</a>，不仅能帮助开发人员入门， 还能利用 D1 的高级特性。未来几个月内，预计 D1 的文档将继续大幅增加。 </p>
 	<h3 id="%E5%AE%9A%E4%BB%B7%E4%B8%8D%E4%BC%9A%E8%BF%87%E9%AB%98">定价不会过高</h3>
 	<p>自从宣布 alpha 版以来，已经有许多开发人员问到 D1 价格的问题，现在我们准备介绍一下定价。我们知道，在开始使用某个产品进行构建<em>之前</em>了解其定价很重要，这样您就不会在 6 个月后感到吃惊了。</p>
 	<p>简而言之：</p>
@@ -59,7 +59,7 @@ $ wrangler d1 create eu-users-db --location=weur --experimental-backend
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/Screenshot-2023-05-19-at-10.14.58.png" class="kg-image" alt="" loading="lazy" width="1584" height="488"></figure>
 	<p>重要的是， <strong>当我们启用全球读取复制时，您将不需要支付额外费用，复制也不会使您的您的存储消耗倍增</strong>。我们认为内置、自动的复制很重要，并不认为开发人员应该支付倍乘费用 (副本 x 存储费)，以便使其数据库在<em>每一个地方</em>都能快速运行。</p>
 	<p>除此之外，我们希望确保 D1 具有无服务器产品定价的优点 —— 可以根据需求进行自动缩放和按使用量付费，这样您就不需要尝试确定工作负载所需的 CPU 和/或内存数量，也不需要编写脚本在负载较低的时间段缩小基础架构规模。</p>
-	<p>D1 的读取定价基于“读取单位”（每 4KB 读取）和“写入单位”（每 1KB 写入）的熟悉概念。查询（扫描）大约 10000 行，每行 64个字节，将消耗 160 个读取单位。在“blog_posts” 表中写入一个大的 3KB 行，其中包含大量 Markdown，这将消耗 3 个写入单位。如果您<a href="https://developers.cloudflare.com/d1/learning/using-indexes/" target="_blank">如果您为最常用的查询创建索引</a>以提高性能并减少这些查询需要扫描的数据量，您还将减少我们对您的计费。我们认为通过默认使快速路径更具成本效益是正确的方法。</p>
+	<p>D1 的读取定价基于“读取单位”（每 4KB 读取）和“写入单位”（每 1KB 写入）的熟悉概念。查询（扫描）大约 10000 行，每行 64个字节，将消耗 160 个读取单位。在“blog_posts” 表中写入一个大的 3KB 行，其中包含大量 Markdown，这将消耗 3 个写入单位。如果您<a href="https://developers.cloudflare.com/d1/learning/using-indexes" target="_blank">如果您为最常用的查询创建索引</a>以提高性能并减少这些查询需要扫描的数据量，您还将减少我们对您的计费。我们认为通过默认使快速路径更具成本效益是正确的方法。</p>
 	<p>重要的是：在开始收费前，我们将继续接受有关定价的反馈。</p>
 	<h3 id="time-travel">Time Travel</h3>
 	<p>我们还引入了新的备份功能：时间点恢复，并将其称为“Time Travel(时间旅行)”，因为这就是它给人的感觉。 <strong>Time Travel 允许您将 D1 数据库恢复到过去 30 天内的任何一分钟，并且将内置于使用我们新存储系统的 D1 数据库中</strong>。我们预计在不久的将来为新的 D1 数据库开启 Time Travel 功能。</p>
@@ -85,8 +85,8 @@ UPDATE users SET email = 'matt@example.com' -- missing: WHERE id = "abc123"
 	<ul>
 		<li><strong>开放 beta</strong>：我们正在确保，在将新的存储子系统作为所有“d1 create”命令的默认设置之前，在负载（和实际使用）下观察它的表现。即使是“beta”，我们对耐久性和可用性也有很高的要求，并且我们还意识到备份功能（Time Travel）对于人们信任一个新数据库是很重要的。接下来的几周内，欢迎关注 Cloudflare 博客以获取更多相关消息！</li>
 		<li><strong>更大的数据库</strong>：这是很多人的重大要求，我们已经非常接近实现了。使用 <a href="https://developers.cloudflare.com/workers/platform/pricing/#workers" target="_blank">Workers Paid 计划</a> 的开发人员将在不久的将来获得 1 GB 数据库的使用权限，我们也将继续提升每个数据库的最大大小。</li>
-		<li><strong>指标和可观察性</strong>：您将能够通过 D1 仪表板和<a href="https://developers.cloudflare.com/analytics/graphql-api/" target="_blank">我们的 GraphQL API</a>检查每个数据库的总体查询量、失败查询、消耗的存储空间以及读/写单位数，以便更轻松地调试问题和跟踪支出。</li>
+		<li><strong>指标和可观察性</strong>：您将能够通过 D1 仪表板和<a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank">我们的 GraphQL API</a>检查每个数据库的总体查询量、失败查询、消耗的存储空间以及读/写单位数，以便更轻松地调试问题和跟踪支出。</li>
 		<li><strong>自动读取复制</strong>：我们的新存储子系统在构建时就考虑到了复制，并且我们正在努力确保复制层快速和可靠，然后才提供给开发人员使用。读取复制不仅旨在通过在接近用户的多个地点存储副本来改善查询延迟，还将允许我们横向扩展具有更大工作负载的 D1 数据库。</li>
 	</ul>
-	<p>与此同时，您可以立即<a href="https://developers.cloudflare.com/d1/get-started/" target="_blank">开始使用 D1 构建原型和进行试验</a>，探索我们的 D1 + Drizzle + Remix <a href="https://github.com/rozenmd/d1-drizzle-remix-example" target="_blank">示例项目</a>，或加入 Cloudflare Developers Discord 服务器上的 <a href="https://discord.cloudflare.com/" target="_blank">#d1 频道</a> ，与 D1 团队和其他正在利用 D1 构建的人进行直接交流。</p>
+	<p>与此同时，您可以立即<a href="https://developers.cloudflare.com/d1/get-started" target="_blank">开始使用 D1 构建原型和进行试验</a>，探索我们的 D1 + Drizzle + Remix <a href="https://github.com/rozenmd/d1-drizzle-remix-example" target="_blank">示例项目</a>，或加入 Cloudflare Developers Discord 服务器上的 <a href="https://discord.cloudflare.com" target="_blank">#d1 频道</a> ，与 D1 团队和其他正在利用 D1 构建的人进行直接交流。</p>
 </div>
