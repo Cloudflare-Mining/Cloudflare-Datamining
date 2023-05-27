@@ -35,7 +35,7 @@
 <p>&nbsp;</p>
 <p><span style="font-weight: 400;">Requirements</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelors or equivalent experience plus 5+ years of experience in data center mechanical and electrical design and operations/deployment/installation, P.E. certification or equivalent a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelors or equivalent experience plus 5+ years of experience in data center mechanical and electrical design and operations/deployment/installation, P.E. or CEng certification or equivalent a plus</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in HVAC, Chilled Water Systems, Condenser Water Systems, Pump controls, Glycool/Glycols, AHU units (DX, split, RTU, CRAC, etc.), CRAH, Raised Floor Systems, HOT/COLD aisle containment and Building Management Systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of basic electrical theory, circuit design &amp; analysis, and single- and three-phase power systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent verbal, written communication and presentation skills</span></li>
