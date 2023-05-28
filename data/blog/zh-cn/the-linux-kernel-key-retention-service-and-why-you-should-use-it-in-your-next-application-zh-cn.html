@@ -47,7 +47,7 @@ not important, just fyi: hunter2
 	<p>操作系统为每个进程分配了一块连续的虚拟内存，让内核在几个同时运行的进程之间共享有限的计算机资源。这种方法称为<a href="https://en.wikipedia.org/wiki/Virtual_memory" target="_blank">虚拟内存管理</a>。在虚拟内存中，每个进程都有自己的地址空间，无法访问其他进程的内存，但可以访问其地址空间内的任何内存。我们的示例中讨论的是称为“栈”的一块进程内存。</p>
 	<p>栈由栈帧组成。栈帧是为当前运行的函数动态分配的空间。它包含函数的局部变量、参数和返回地址。编译一个函数时，编译器会计算需要分配多少内存，并请求一个相应大小的栈帧。函数执行完毕后，就会将栈帧标记为自由，可以再次使用。栈帧是一个逻辑块，不提供任何边界检查，不会被删除，而只是标记为自由。此外，虚拟内存是一块连续的地址。这两种陈述都让恶意软件/存在缺陷的代码有可能从虚拟内存的任何位置访问数据。</p>
 	<p>我们的程序 <code>broken.c</code> 的栈如图所示：</p><!--kg-card-begin: html-->
-	<center><img src="https://imagedelivery.net/52R3oh4H-57qkVChwuo3Ag/3526edee-ce7e-4f98-a2bf-ff1efd2fc800/public"></center><!--kg-card-end: html-->
+	<center><img src="https://imagedelivery.net/52R3oh4H-57qkVChwuo3Ag/3526edee-ce7e-4f98-a2bf-ff1efd2fc800/public" alt=""></center><!--kg-card-end: html-->
 	<p>开始时，我们有一个主函数的栈帧。然后，<code>main()</code> 函数调用 <code>encrypt()</code>，将它放在栈中，紧挨在 <code>main()</code> 下方（代码栈向下增长）。在 <code>encrypt()</code> 内，编译器为<code>key</code>变量请求 8 个字节（7 个字节的数据和 C-空字符）。<code>encrypt()</code> 执行完毕后，同样的内存地址被 <code>log_completion()</code> 占用。在 <code>log_completion()</code> 中，编译器为 <code>msg</code> 变量分配了八个字节。意外的是，它竟然放在了栈中我们之前存放私钥的位置。只是为 <code>msg</code> 分配了内存，但没有初始化，前一个函数的数据保持原样。</p>
 	<p>除代码错误，编程语言还提供因内存安全漏洞而闻名的不安全函数。例如，对于 C 语言来说，此类函数有 <code>printf()</code>、<code>strcpy()</code>、<code>gets()</code>。函数 <code>printf()</code> 没有检查必须传递多少参数来替换格式字符串中的所有占位符。函数参数放在函数栈帧之上，<code>printf()</code> 根据占位符的数量和类型来获取参数，可轻松放弃其参数，从前一个函数的栈帧中获取数据。</p>
 	<p>NSA 建议我们使用内存安全语言，例如 Python、Go、Rust。但它们能完全保护我们吗？</p>

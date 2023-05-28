@@ -17,7 +17,7 @@
 	<iframe src="https://cloudflareworkers.com/wasm-demo/index.html" style="width: 420px; height: 330px"></iframe>
 	<h3 id="howtousewebassemblywithcloudflareworkers">How to use WebAssembly with Cloudflare Workers</h3>
 	<p>WASM used in a Worker must be deployed together with the Worker. When editing a script in the online Workers editor, click on the "Resources" tab. Here, you can add a WebAssembly module.</p>
-	<p style="text-align: center"><img src="https://blog.cloudflare.com/content/images/2018/09/resources-tab.png" style="width: 498px; max-width: 100%"></p>
+	<p style="text-align: center"><img src="https://blog.cloudflare.com/content/images/2018/09/resources-tab.png" style="width: 498px; max-width: 100%" alt=""></p>
 	<p>You will be prompted to upload your WASM module file and assign it a global variable name. Once uploaded, your module will appear as a global variable of type <code>WebAssembly.Module</code> in your worker script. You can then instantiate it like this:</p>
 	<pre><code class="language-javascript">// Define imported functions that your WASM can call.
 const imports = { exampleImport(a, b) { return a + b; } }

@@ -40,11 +40,11 @@
 	<p>In some voting systems the operators of the voting center certify every ballot before sending them to be counted. This is to prevent people from adding fraudulent ballots while the ballots are being transferred from where the vote takes place to where the vote is counted.</p>
 	<p>An obvious mechanism would be to have the certifier sign every ballot that a voter submits. However, this would mean that the certifier, having just seen the person that handed them a ballot, would know how each person voted. Instead, we can use a better mechanism that preserves voters’ privacy using an envelope and some carbon paper.</p>
 	<ol>
-		<li>The voter fills out their ballot <br><img src="https://blog.cloudflare.com/content/images/2017/11/image6.png" width="50%"></li>
-		<li>The voter puts their ballot into an envelope along with a piece of carbon paper, and seals the envelope <br><img src="https://blog.cloudflare.com/content/images/2017/11/image1.png" width="50%"></li>
-		<li>The sealed envelope is given to the certifier <br><img src="https://blog.cloudflare.com/content/images/2017/11/image3.png" width="50%"></li>
-		<li>The certifier signs the outside of the envelope. The pressure of the signature transfers the signature from the carbon paper to the ballot itself, effectively signing the ballot. <br><img src="https://blog.cloudflare.com/content/images/2017/11/image8.png" width="50%"></li>
-		<li>Later, when the ballot counter unseals the envelope, they see the certifier’s signature on the ballot.<br><img src="https://blog.cloudflare.com/content/images/2017/11/image4.png" width="50%"></li>
+		<li>The voter fills out their ballot <br><img src="https://blog.cloudflare.com/content/images/2017/11/image6.png" width="50%" alt=""></li>
+		<li>The voter puts their ballot into an envelope along with a piece of carbon paper, and seals the envelope <br><img src="https://blog.cloudflare.com/content/images/2017/11/image1.png" width="50%" alt=""></li>
+		<li>The sealed envelope is given to the certifier <br><img src="https://blog.cloudflare.com/content/images/2017/11/image3.png" width="50%" alt=""></li>
+		<li>The certifier signs the outside of the envelope. The pressure of the signature transfers the signature from the carbon paper to the ballot itself, effectively signing the ballot. <br><img src="https://blog.cloudflare.com/content/images/2017/11/image8.png" width="50%" alt=""></li>
+		<li>Later, when the ballot counter unseals the envelope, they see the certifier’s signature on the ballot.<br><img src="https://blog.cloudflare.com/content/images/2017/11/image4.png" width="50%" alt=""></li>
 	</ol>
 	<p>With this system, a voting administrator can authenticate a ballot without knowing its content, and then the ballot can be verified by an independent assessor.</p>
 	<p>Privacy Pass is like vote certification for the Internet. In this analogy, Cloudflare’s challenge checking service is the vote certifier, Cloudflare’s bot detection service is the vote counter and the anonymous visitor is the voter. When a user encounters a challenge on site A, they put a ballot into a sealed envelope and send it to the server along with the challenge solution. The server then signs the envelope and returns it to the client. Since the server is effectively signing the ballot without knowing its contents, this is called a <em>blind signature</em>.</p>

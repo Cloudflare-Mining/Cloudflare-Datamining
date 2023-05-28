@@ -239,6 +239,16 @@ for(const url of [...blogURLs].sort()) {
 			});
 		}
 
+		// normalise image alts
+		const images = dom('img');
+		if(images) {
+			images.each((i, image) => {
+				const el = dom(image);
+				const alt = el.attr('alt') ?? '';
+				el.attr('alt', alt);
+			});
+		}
+
 		// get application/ld+json
 		const rawDom = cheerio.load(data.body);
 		const ldJson = rawDom('script[type="application/ld+json"]');

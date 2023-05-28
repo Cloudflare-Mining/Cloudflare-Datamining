@@ -19,7 +19,7 @@
 	<p>CloudFlare also has a Google Chrome extension called <a href="https://chrome.google.com/webstore/detail/claire/fgbpcgddpmjmamlibbaobboigaijnmkl" target="_blank">Claire</a> that gives information about how a web page was loaded. For example here's the information that Claire shows for a site using CloudFlare that uses <a href="https://www.cloudflare.com/ipv6" target="_blank">IPv6</a>, <a href="https://www.cloudflare.com/railgun" target="_blank">Railgun</a>, and HTTP/2.<br>
 		<br>
 	</p>
-	<div align="center"><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-17-12-50.png" width="300px"></div>
+	<div align="center"><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-17-12-50.png" width="300px" alt=""></div>
 	<br>
 	<h3 id="commandlinetools">Command-line Tools</h3>
 	<p>There's a handy command-line tool called <a href="https://github.com/stefanjudis/is-http2-cli" target="_blank">is-http</a> which is installed using npm as follows:</p>
@@ -88,7 +88,7 @@ $ sudo ldconfig
 	<p>By running it with <code>-nv</code> you get HTTP/2 and throw away the actual downloaded page. Here's its output when downloading www.cloudflare.com using HTTP/2. On a terminal with color support it uses coloring to highlight different parts of the log.<br>
 		<br>
 	</p>
-	<div align="center"><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-13-24-46.png" style="width: 300px"></div>
+	<div align="center"><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-13-24-46.png" style="width: 300px" alt=""></div>
 	<br>
 	<h4 id="h2c">h2c</h4>
 	<p>Another curl-like command-line tool for HTTP/2 is <a href="https://github.com/fstab/h2c" target="_blank">h2c</a>. It also enables dumping of HTTP/2 frames and has a nice feature that it runs in the background and keeps connections to servers alive and has a useful 'wiretap' feature for intercepting an HTTP/2 for debugging.</p>
@@ -107,7 +107,7 @@ $ go get github.com/fstab/h2c
 	<p>You will then get detailed output dumped by that process, in color, of the HTTP/2 frames being used.<br>
 		<br>
 	</p>
-	<div align="center"><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-13-11-19.png" style="width: 300px"></div>
+	<div align="center"><img src="https://blog.cloudflare.com/content/images/2015/12/Screen-Shot-2015-12-03-at-13-11-19.png" style="width: 300px" alt=""></div>
 	<br>
 	Details of the wiretap feature are in [this blog post](http://unrestful.io/2015/08/28/wiretap.html).
 	<h4 id="openssls_client">openssl s_client</h4>

@@ -29,14 +29,14 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/sp-direct2.png" alt="sp-direct2" loading="lazy"></p>
 	<p>In direct attacks the traffic is sent directly towards the victim. There is a bright side of this - the target can investigate the source IPs! Since Cloudflare is often a target of such attacks, occasionally we look at the data and have some fun.</p>
 	<p>To visualize the source IPs of the attacks, it's best to use <a href="https://en.wikipedia.org/wiki/Hilbert_curve" target="_blank">Hilbert Curves</a>. Randall Munroe popularized this technique <a href="https://www.xkcd.com/195" target="_blank">in this famous XKCD</a>. The general idea is great - draw all 2**32 IPs on a two dimensional map by employing fancy math.</p>
-	<p><br><a href="https://www.xkcd.com/195" target="_blank"><img src="https://imgs.xkcd.com/comics/map_of_the_internet.jpg" style="height:500px"></a><br>
+	<p><br><a href="https://www.xkcd.com/195" target="_blank"><img src="https://imgs.xkcd.com/comics/map_of_the_internet.jpg" style="height:500px" alt=""></a><br>
 		<small><a href="https://creativecommons.org/licenses/by-nc/2.5" target="_blank">CC BY-NC 2.5</a> <a href="https://www.xkcd.com/195" target="_blank">image</a> by Randall Munroe</small>
 	</p>
 	<p>Here are a couple of direct attacks doing IP spoofing that we saw in past.</p>
 	<p><br><a href="https://blog.cloudflare.com/content/images/2018/03/sp-all.png"><img alt="all" src="https://blog.cloudflare.com/content/images/2018/03/sp-all.png" style="width:250px; height:250px"></a></p>
 	<p>In the first one, the attacker was spoofing indiscriminately all over the IP space, including multicast IP ranges, reserved blocks, and military prefixes.</p>
 	<p>What's even more funny, the attacker even spoofed the 127.0.0.0/8 range. Indeed, we can confirm the dreadful source of attacks - 127.0.0.1 - hits on regular basis.</p>
-	<p><br><a href="https://www.xkcd.com/742" target="_blank"><img src="https://imgs.xkcd.com/comics/campfire.png" style="height:500px"></a><br>
+	<p><br><a href="https://www.xkcd.com/742" target="_blank"><img src="https://imgs.xkcd.com/comics/campfire.png" style="height:500px" alt=""></a><br>
 		<small><a href="https://creativecommons.org/licenses/by-nc/2.5" target="_blank">CC BY-NC 2.5</a> <a href="https://www.xkcd.com/742" target="_blank">image</a> by Randall Munroe</small>
 	</p>
 	<p>Here is another example. During this one some IP ranges - reserved multicast and 127.0.0.0/8 - were not used:</p>
