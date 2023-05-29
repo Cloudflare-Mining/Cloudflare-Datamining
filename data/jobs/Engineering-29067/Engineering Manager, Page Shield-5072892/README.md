@@ -5,35 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About Us</strong></p>
-<p><span style="font-weight: 400;">At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</span></p>
-<p><span style="font-weight: 400;">The security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The security operations team is responsible for helping keep all the moving parts in order while we work towards that goal.&nbsp;</span></p>
-<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</span></p>
-<h4><strong>What you'll do</strong></h4>
-<h4><span style="font-weight: 400;">The security operations team collaborates with all parts of the security organization, helping the department operate smoothly and efficiently. This growing team, based in our Lisbon office, works with the product security, infrastructure security, Detection and Response, Governance Risk &amp; Compliance, and Strategic Programs teams to ensure all of the tooling, software, and services necessary for a security team are operating efficiently, kept up to date, and providing value to the organization.&nbsp;</span></h4>
-<h4><span style="font-weight: 400;">A security operations engineer’s work includes triaging incoming reports from various programs (Incident Response, Vulnerability Management, Bug Bounty, Vendor Compliance), managing and configuring automated tooling (network scanners, code scanners, fuzzers, etc.), deploying changes with configuration management, and building automations for the team's processes.&nbsp;</span></h4>
+<p><strong>About The Team</strong></p>
+<p><span style="font-weight: 400;">Page Shield is a client side security product that aims to detect malicious behaviour and compromises that affect the browser environment directly, such as those that exploit vulnerabilities in third party JavaScript libraries. We use </span><strong>CSP</strong><span style="font-weight: 400;"> (Content Security Policy) to leverage and report what resources are loaded by the client. One of our biggest challenges is designing a system that can scale our existing software to meet the challenges of a massively growing customer traffic.&nbsp;&nbsp;</span></p>
+<p><strong>What you'll do</strong></p>
+<p><span style="font-weight: 400;">We are looking for an Engineering Manager to join our team. You will be working in the security portfolio, leading a team of passionate, talented engineers that are building innovative products on the client security domain. You will make sure our company hits our ambitious goals from an engineering standpoint.</span></p>
+<p><span style="font-weight: 400;">We announced Page Shield in March 2021 and we made it globally available in December of that same year. Since then, the project has played a major role in providing </span><strong>visibility</strong><span style="font-weight: 400;"> to customers about resources loaded by the browsers accessing their page. As with many security products, we can think of Page Shield providing </span><strong>visibility</strong><span style="font-weight: 400;">, </span><strong>detection</strong><span style="font-weight: 400;">, </span><strong>mitigation</strong><span style="font-weight: 400;"> and </span><strong>prevention</strong><span style="font-weight: 400;">.</span></p>
+<p><span style="font-weight: 400;">After securing the first visibility step, we are moving forward and focusing on detection, mitigation and prevention. As an example, the last major feature we released, </span><strong>positive blocking policies</strong><span style="font-weight: 400;">, provides the ability to enforce client browsers to load and execute JavaScript libraries only from a pre-approved list of allowed resources implementing a positive security model, by leveraging our position in the network stack as a reverse proxy.</span></p>
+<p><span style="font-weight: 400;">In this role, you will manage and lead those projects, you will be expected to continue implementing new feature requests and you will be helping to define and build the future of Page Shield.</span></p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p><span style="font-weight: 400;">Security operations engineers take part in a wide variety of tasks and projects across the broader security team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Bug bounty systems, including triage, validation, and impact assessment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Vulnerability report validation, criticality scoring, triage, and follow up as required</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Automated scanner configuration and report triage and validation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Incident response, including triage and investigation of security incidents</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Workflow automation with tools like Jira</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Scripting experience (Bash, Python, Golang)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">DevOps and configuration management with tools like Terraform, Ansible, etc.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Security testing web-based applications</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience leading a team, including hiring, onboarding and mentoring.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Effective communication skills, verbal and written</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Empathetic, with emotional intelligence and proactive</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Very solid software engineering or computer science skills. With a focus on software design</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building APIs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with distributed event streaming platforms such as Apache Kafka</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable in a fast pace environment</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness, curiosity, and enthusiasm to learn new technologies and systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience of working with Product teams</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A strong grasp of security issues and a very solid understanding of HTTP</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven ability to grow and develop people through mentoring and effective feedback</span></li>
 </ul>
-<p><span style="font-weight: 400;">We are looking for security operations engineers with hands-on experience in a SOC-like (Security Operations Center) environment and the ability to act as a squad leader.</span></p>
-<p><span style="font-weight: 400;">We are seeking a candidate who can exhibit leadership skills such as:</span></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to prioritize and monitor tasks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Coaching skills to support and nurture junior team members</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good communication skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness to learn collaboratively with the team</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on, people-first approach to leadership</span></li>
-</ul>
-<p><span style="font-weight: 400;">The successful candidate will be self-motivated and results-driven, able to work independently and to collaborate with other teams, and capable of working in a fast-paced, high-volume environment.</span></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
