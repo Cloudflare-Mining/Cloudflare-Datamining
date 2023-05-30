@@ -1,14 +1,4 @@
 {
-	"anyOf": [
-		{
-			"example": "192.0.2.0",
-			"format": "ipv4",
-			"type": "string"
-		},
-		{
-			"example": "2001:0DB8::",
-			"format": "ipv6",
-			"type": "string"
-		}
-	]
+	"description": "IP address of the node.",
+	"type": "string"
 }

@@ -1,5 +1,7 @@
 {
-	"description": "Describes the alert type.",
-	"example": "High levels of 5xx HTTP errors at your origin",
+	"description": "The billing item description.",
+	"example": "The billing item description",
+	"maxLength": 255,
+	"readOnly": true,
 	"type": "string"
 }

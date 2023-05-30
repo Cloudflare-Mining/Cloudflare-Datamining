@@ -1,5 +1,7 @@
 {
-	"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
-	"example": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+	"description": "UUID of the Cloudflare Tunnel client.",
+	"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+	"maxLength": 36,
+	"readOnly": true,
 	"type": "string"
 }

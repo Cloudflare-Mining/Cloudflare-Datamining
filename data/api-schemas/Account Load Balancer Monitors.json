@@ -284,7 +284,7 @@
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"description": {
-														"$ref": "#/components/schemas/description-UizC5p5I"
+														"$ref": "#/components/schemas/description-rZPqZEBm"
 													},
 													"expected_body": {
 														"$ref": "#/components/schemas/expected_body"
@@ -299,34 +299,34 @@
 														"$ref": "#/components/schemas/header"
 													},
 													"id": {
-														"$ref": "#/components/schemas/identifier-4j17Z0yI"
+														"$ref": "#/components/schemas/identifier-bMwkHozm"
 													},
 													"interval": {
-														"$ref": "#/components/schemas/interval"
+														"$ref": "#/components/schemas/interval-lSFN6e1U"
 													},
 													"method": {
-														"$ref": "#/components/schemas/method-pqFoohDI"
+														"$ref": "#/components/schemas/method"
 													},
 													"modified_on": {
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"path": {
-														"$ref": "#/components/schemas/path-es0gewsu"
+														"$ref": "#/components/schemas/path-uMiCd2Tp"
 													},
 													"port": {
-														"$ref": "#/components/schemas/schemas-port-VVW6Tctl"
+														"$ref": "#/components/schemas/schemas-port"
 													},
 													"probe_zone": {
 														"$ref": "#/components/schemas/probe_zone"
 													},
 													"retries": {
-														"$ref": "#/components/schemas/retries-Xr6abGaN"
+														"$ref": "#/components/schemas/retries"
 													},
 													"timeout": {
-														"$ref": "#/components/schemas/timeout-KUAHA1Ck"
+														"$ref": "#/components/schemas/timeout"
 													},
 													"type": {
-														"$ref": "#/components/schemas/type-V7RRWNu3"
+														"$ref": "#/components/schemas/type-zvjaXEvF"
 													}
 												},
 												"type": "object"
@@ -386,7 +386,7 @@
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"description": {
-																"$ref": "#/components/schemas/description-UizC5p5I"
+																"$ref": "#/components/schemas/description-rZPqZEBm"
 															},
 															"expected_body": {
 																"$ref": "#/components/schemas/expected_body"
@@ -401,34 +401,34 @@
 																"$ref": "#/components/schemas/header"
 															},
 															"id": {
-																"$ref": "#/components/schemas/identifier-4j17Z0yI"
+																"$ref": "#/components/schemas/identifier-bMwkHozm"
 															},
 															"interval": {
-																"$ref": "#/components/schemas/interval"
+																"$ref": "#/components/schemas/interval-lSFN6e1U"
 															},
 															"method": {
-																"$ref": "#/components/schemas/method-pqFoohDI"
+																"$ref": "#/components/schemas/method"
 															},
 															"modified_on": {
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"path": {
-																"$ref": "#/components/schemas/path-es0gewsu"
+																"$ref": "#/components/schemas/path-uMiCd2Tp"
 															},
 															"port": {
-																"$ref": "#/components/schemas/schemas-port-VVW6Tctl"
+																"$ref": "#/components/schemas/schemas-port"
 															},
 															"probe_zone": {
 																"$ref": "#/components/schemas/probe_zone"
 															},
 															"retries": {
-																"$ref": "#/components/schemas/retries-Xr6abGaN"
+																"$ref": "#/components/schemas/retries"
 															},
 															"timeout": {
-																"$ref": "#/components/schemas/timeout-KUAHA1Ck"
+																"$ref": "#/components/schemas/timeout"
 															},
 															"type": {
-																"$ref": "#/components/schemas/type-V7RRWNu3"
+																"$ref": "#/components/schemas/type-zvjaXEvF"
 															}
 														},
 														"type": "object"
@@ -612,7 +612,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-UizC5p5I"
+													"$ref": "#/components/schemas/monitor_components-schemas-description"
 												},
 												"expected_body": {
 													"$ref": "#/components/schemas/expected_body"
@@ -627,34 +627,34 @@
 													"$ref": "#/components/schemas/header"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-4j17Z0yI"
+													"$ref": "#/components/schemas/monitor_components-schemas-identifier"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/interval"
+													"$ref": "#/components/schemas/interval-Py6QUZgz"
 												},
 												"method": {
-													"$ref": "#/components/schemas/method-pqFoohDI"
+													"$ref": "#/components/schemas/schemas-method"
 												},
 												"modified_on": {
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"path": {
-													"$ref": "#/components/schemas/path-es0gewsu"
+													"$ref": "#/components/schemas/path-eR6sUC6s"
 												},
 												"port": {
-													"$ref": "#/components/schemas/schemas-port-VVW6Tctl"
+													"$ref": "#/components/schemas/components-schemas-port"
 												},
 												"probe_zone": {
 													"$ref": "#/components/schemas/probe_zone"
 												},
 												"retries": {
-													"$ref": "#/components/schemas/retries-Xr6abGaN"
+													"$ref": "#/components/schemas/retries"
 												},
 												"timeout": {
-													"$ref": "#/components/schemas/timeout-KUAHA1Ck"
+													"$ref": "#/components/schemas/schemas-timeout"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-V7RRWNu3"
+													"$ref": "#/components/schemas/monitor_components-schemas-type"
 												}
 											},
 											"type": "object"
@@ -714,7 +714,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-UizC5p5I"
+															"$ref": "#/components/schemas/monitor_components-schemas-description"
 														},
 														"expected_body": {
 															"$ref": "#/components/schemas/expected_body"
@@ -729,34 +729,34 @@
 															"$ref": "#/components/schemas/header"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-4j17Z0yI"
+															"$ref": "#/components/schemas/monitor_components-schemas-identifier"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/interval"
+															"$ref": "#/components/schemas/interval-Py6QUZgz"
 														},
 														"method": {
-															"$ref": "#/components/schemas/method-pqFoohDI"
+															"$ref": "#/components/schemas/schemas-method"
 														},
 														"modified_on": {
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"path": {
-															"$ref": "#/components/schemas/path-es0gewsu"
+															"$ref": "#/components/schemas/path-eR6sUC6s"
 														},
 														"port": {
-															"$ref": "#/components/schemas/schemas-port-VVW6Tctl"
+															"$ref": "#/components/schemas/components-schemas-port"
 														},
 														"probe_zone": {
 															"$ref": "#/components/schemas/probe_zone"
 														},
 														"retries": {
-															"$ref": "#/components/schemas/retries-Xr6abGaN"
+															"$ref": "#/components/schemas/retries"
 														},
 														"timeout": {
-															"$ref": "#/components/schemas/timeout-KUAHA1Ck"
+															"$ref": "#/components/schemas/schemas-timeout"
 														},
 														"type": {
-															"$ref": "#/components/schemas/type-V7RRWNu3"
+															"$ref": "#/components/schemas/monitor_components-schemas-type"
 														}
 													},
 													"type": "object"
@@ -1592,7 +1592,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-UizC5p5I"
+													"$ref": "#/components/schemas/monitor_components-schemas-description"
 												},
 												"expected_body": {
 													"$ref": "#/components/schemas/expected_body"
@@ -1607,34 +1607,34 @@
 													"$ref": "#/components/schemas/header"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-4j17Z0yI"
+													"$ref": "#/components/schemas/monitor_components-schemas-identifier"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/interval"
+													"$ref": "#/components/schemas/interval-Py6QUZgz"
 												},
 												"method": {
-													"$ref": "#/components/schemas/method-pqFoohDI"
+													"$ref": "#/components/schemas/schemas-method"
 												},
 												"modified_on": {
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"path": {
-													"$ref": "#/components/schemas/path-es0gewsu"
+													"$ref": "#/components/schemas/path-eR6sUC6s"
 												},
 												"port": {
-													"$ref": "#/components/schemas/schemas-port-VVW6Tctl"
+													"$ref": "#/components/schemas/components-schemas-port"
 												},
 												"probe_zone": {
 													"$ref": "#/components/schemas/probe_zone"
 												},
 												"retries": {
-													"$ref": "#/components/schemas/retries-Xr6abGaN"
+													"$ref": "#/components/schemas/retries"
 												},
 												"timeout": {
-													"$ref": "#/components/schemas/timeout-KUAHA1Ck"
+													"$ref": "#/components/schemas/schemas-timeout"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-V7RRWNu3"
+													"$ref": "#/components/schemas/monitor_components-schemas-type"
 												}
 											},
 											"type": "object"
@@ -1694,7 +1694,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-UizC5p5I"
+															"$ref": "#/components/schemas/monitor_components-schemas-description"
 														},
 														"expected_body": {
 															"$ref": "#/components/schemas/expected_body"
@@ -1709,34 +1709,34 @@
 															"$ref": "#/components/schemas/header"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-4j17Z0yI"
+															"$ref": "#/components/schemas/monitor_components-schemas-identifier"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/interval"
+															"$ref": "#/components/schemas/interval-Py6QUZgz"
 														},
 														"method": {
-															"$ref": "#/components/schemas/method-pqFoohDI"
+															"$ref": "#/components/schemas/schemas-method"
 														},
 														"modified_on": {
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"path": {
-															"$ref": "#/components/schemas/path-es0gewsu"
+															"$ref": "#/components/schemas/path-eR6sUC6s"
 														},
 														"port": {
-															"$ref": "#/components/schemas/schemas-port-VVW6Tctl"
+															"$ref": "#/components/schemas/components-schemas-port"
 														},
 														"probe_zone": {
 															"$ref": "#/components/schemas/probe_zone"
 														},
 														"retries": {
-															"$ref": "#/components/schemas/retries-Xr6abGaN"
+															"$ref": "#/components/schemas/retries"
 														},
 														"timeout": {
-															"$ref": "#/components/schemas/timeout-KUAHA1Ck"
+															"$ref": "#/components/schemas/schemas-timeout"
 														},
 														"type": {
-															"$ref": "#/components/schemas/type-V7RRWNu3"
+															"$ref": "#/components/schemas/monitor_components-schemas-type"
 														}
 													},
 													"type": "object"
@@ -2025,7 +2025,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-UizC5p5I"
+													"$ref": "#/components/schemas/monitor_components-schemas-description"
 												},
 												"expected_body": {
 													"$ref": "#/components/schemas/expected_body"
@@ -2040,34 +2040,34 @@
 													"$ref": "#/components/schemas/header"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-4j17Z0yI"
+													"$ref": "#/components/schemas/monitor_components-schemas-identifier"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/interval"
+													"$ref": "#/components/schemas/interval-Py6QUZgz"
 												},
 												"method": {
-													"$ref": "#/components/schemas/method-pqFoohDI"
+													"$ref": "#/components/schemas/schemas-method"
 												},
 												"modified_on": {
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"path": {
-													"$ref": "#/components/schemas/path-es0gewsu"
+													"$ref": "#/components/schemas/path-eR6sUC6s"
 												},
 												"port": {
-													"$ref": "#/components/schemas/schemas-port-VVW6Tctl"
+													"$ref": "#/components/schemas/components-schemas-port"
 												},
 												"probe_zone": {
 													"$ref": "#/components/schemas/probe_zone"
 												},
 												"retries": {
-													"$ref": "#/components/schemas/retries-Xr6abGaN"
+													"$ref": "#/components/schemas/retries"
 												},
 												"timeout": {
-													"$ref": "#/components/schemas/timeout-KUAHA1Ck"
+													"$ref": "#/components/schemas/schemas-timeout"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-V7RRWNu3"
+													"$ref": "#/components/schemas/monitor_components-schemas-type"
 												}
 											},
 											"type": "object"
@@ -2127,7 +2127,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-UizC5p5I"
+															"$ref": "#/components/schemas/monitor_components-schemas-description"
 														},
 														"expected_body": {
 															"$ref": "#/components/schemas/expected_body"
@@ -2142,34 +2142,34 @@
 															"$ref": "#/components/schemas/header"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-4j17Z0yI"
+															"$ref": "#/components/schemas/monitor_components-schemas-identifier"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/interval"
+															"$ref": "#/components/schemas/interval-Py6QUZgz"
 														},
 														"method": {
-															"$ref": "#/components/schemas/method-pqFoohDI"
+															"$ref": "#/components/schemas/schemas-method"
 														},
 														"modified_on": {
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"path": {
-															"$ref": "#/components/schemas/path-es0gewsu"
+															"$ref": "#/components/schemas/path-eR6sUC6s"
 														},
 														"port": {
-															"$ref": "#/components/schemas/schemas-port-VVW6Tctl"
+															"$ref": "#/components/schemas/components-schemas-port"
 														},
 														"probe_zone": {
 															"$ref": "#/components/schemas/probe_zone"
 														},
 														"retries": {
-															"$ref": "#/components/schemas/retries-Xr6abGaN"
+															"$ref": "#/components/schemas/retries"
 														},
 														"timeout": {
-															"$ref": "#/components/schemas/timeout-KUAHA1Ck"
+															"$ref": "#/components/schemas/schemas-timeout"
 														},
 														"type": {
-															"$ref": "#/components/schemas/type-V7RRWNu3"
+															"$ref": "#/components/schemas/monitor_components-schemas-type"
 														}
 													},
 													"type": "object"
@@ -2803,7 +2803,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-UizC5p5I"
+													"$ref": "#/components/schemas/monitor_components-schemas-description"
 												},
 												"expected_body": {
 													"$ref": "#/components/schemas/expected_body"
@@ -2818,34 +2818,34 @@
 													"$ref": "#/components/schemas/header"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-4j17Z0yI"
+													"$ref": "#/components/schemas/monitor_components-schemas-identifier"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/interval"
+													"$ref": "#/components/schemas/interval-Py6QUZgz"
 												},
 												"method": {
-													"$ref": "#/components/schemas/method-pqFoohDI"
+													"$ref": "#/components/schemas/schemas-method"
 												},
 												"modified_on": {
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"path": {
-													"$ref": "#/components/schemas/path-es0gewsu"
+													"$ref": "#/components/schemas/path-eR6sUC6s"
 												},
 												"port": {
-													"$ref": "#/components/schemas/schemas-port-VVW6Tctl"
+													"$ref": "#/components/schemas/components-schemas-port"
 												},
 												"probe_zone": {
 													"$ref": "#/components/schemas/probe_zone"
 												},
 												"retries": {
-													"$ref": "#/components/schemas/retries-Xr6abGaN"
+													"$ref": "#/components/schemas/retries"
 												},
 												"timeout": {
-													"$ref": "#/components/schemas/timeout-KUAHA1Ck"
+													"$ref": "#/components/schemas/schemas-timeout"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-V7RRWNu3"
+													"$ref": "#/components/schemas/monitor_components-schemas-type"
 												}
 											},
 											"type": "object"
@@ -2905,7 +2905,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-UizC5p5I"
+															"$ref": "#/components/schemas/monitor_components-schemas-description"
 														},
 														"expected_body": {
 															"$ref": "#/components/schemas/expected_body"
@@ -2920,34 +2920,34 @@
 															"$ref": "#/components/schemas/header"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-4j17Z0yI"
+															"$ref": "#/components/schemas/monitor_components-schemas-identifier"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/interval"
+															"$ref": "#/components/schemas/interval-Py6QUZgz"
 														},
 														"method": {
-															"$ref": "#/components/schemas/method-pqFoohDI"
+															"$ref": "#/components/schemas/schemas-method"
 														},
 														"modified_on": {
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"path": {
-															"$ref": "#/components/schemas/path-es0gewsu"
+															"$ref": "#/components/schemas/path-eR6sUC6s"
 														},
 														"port": {
-															"$ref": "#/components/schemas/schemas-port-VVW6Tctl"
+															"$ref": "#/components/schemas/components-schemas-port"
 														},
 														"probe_zone": {
 															"$ref": "#/components/schemas/probe_zone"
 														},
 														"retries": {
-															"$ref": "#/components/schemas/retries-Xr6abGaN"
+															"$ref": "#/components/schemas/retries"
 														},
 														"timeout": {
-															"$ref": "#/components/schemas/timeout-KUAHA1Ck"
+															"$ref": "#/components/schemas/schemas-timeout"
 														},
 														"type": {
-															"$ref": "#/components/schemas/type-V7RRWNu3"
+															"$ref": "#/components/schemas/monitor_components-schemas-type"
 														}
 													},
 													"type": "object"

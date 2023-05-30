@@ -710,7 +710,7 @@
 										"result": {
 											"properties": {
 												"created_at": {
-													"$ref": "#/components/schemas/created_at"
+													"$ref": "#/components/schemas/created_at-7WkH7SCa"
 												},
 												"id": {
 													"$ref": "#/components/schemas/uuid"
@@ -722,7 +722,7 @@
 													"$ref": "#/components/schemas/last_success"
 												},
 												"name": {
-													"$ref": "#/components/schemas/components-schemas-name"
+													"$ref": "#/components/schemas/components-schemas-name-kQLphiI3"
 												},
 												"secret": {
 													"$ref": "#/components/schemas/secret"
@@ -731,7 +731,7 @@
 													"$ref": "#/components/schemas/components-schemas-type"
 												},
 												"url": {
-													"$ref": "#/components/schemas/url-3D4bOySF"
+													"$ref": "#/components/schemas/url"
 												}
 											},
 											"type": "object"
@@ -779,7 +779,7 @@
 												"result": {
 													"properties": {
 														"created_at": {
-															"$ref": "#/components/schemas/created_at"
+															"$ref": "#/components/schemas/created_at-7WkH7SCa"
 														},
 														"id": {
 															"$ref": "#/components/schemas/uuid"
@@ -791,7 +791,7 @@
 															"$ref": "#/components/schemas/last_success"
 														},
 														"name": {
-															"$ref": "#/components/schemas/components-schemas-name"
+															"$ref": "#/components/schemas/components-schemas-name-kQLphiI3"
 														},
 														"secret": {
 															"$ref": "#/components/schemas/secret"
@@ -800,7 +800,7 @@
 															"$ref": "#/components/schemas/components-schemas-type"
 														},
 														"url": {
-															"$ref": "#/components/schemas/url-3D4bOySF"
+															"$ref": "#/components/schemas/url"
 														}
 													},
 													"type": "object"
@@ -1000,9 +1000,10 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "API uuid tag.",
+													"description": "UUID",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
+													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -1051,9 +1052,10 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "API uuid tag.",
+															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
+															"readOnly": true,
 															"type": "string"
 														}
 													},
@@ -1266,9 +1268,10 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "API uuid tag.",
+													"description": "UUID",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
+													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -1317,9 +1320,10 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "API uuid tag.",
+															"description": "UUID",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
+															"readOnly": true,
 															"type": "string"
 														}
 													},

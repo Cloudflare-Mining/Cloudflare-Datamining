@@ -1,0 +1,154 @@
+{
+	"allOf": [
+		{
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"created_date": {
+							"example": "2009-02-17",
+							"format": "date",
+							"type": "string"
+						},
+						"domain": {
+							"example": "cloudflare.com",
+							"type": "string"
+						},
+						"nameservers": {
+							"example": [
+								"ns3.cloudflare.com",
+								"ns4.cloudflare.com",
+								"ns5.cloudflare.com",
+								"ns6.cloudflare.com",
+								"ns7.cloudflare.com"
+							],
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
+						},
+						"registrant": {
+							"example": "DATA REDACTED",
+							"type": "string"
+						},
+						"registrant_country": {
+							"example": "United States",
+							"type": "string"
+						},
+						"registrant_email": {
+							"example": "https://domaincontact.cloudflareregistrar.com/cloudflare.com",
+							"type": "string"
+						},
+						"registrant_org": {
+							"example": "DATA REDACTED",
+							"type": "string"
+						},
+						"registrar": {
+							"example": "Cloudflare, Inc.",
+							"type": "string"
+						},
+						"updated_date": {
+							"example": "2017-05-24",
+							"format": "date",
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	]
+}

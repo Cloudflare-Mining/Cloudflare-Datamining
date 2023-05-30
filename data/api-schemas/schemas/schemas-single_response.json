@@ -99,54 +99,60 @@
 			"properties": {
 				"result": {
 					"properties": {
-						"created_date": {
-							"example": "2009-02-17",
-							"format": "date",
+						"created_at": {
+							"description": "Timestamp of when the webhook destination was created.",
+							"example": "2020-10-26T18:25:04.532316Z",
+							"format": "date-time",
+							"readOnly": true,
 							"type": "string"
 						},
-						"domain": {
-							"example": "cloudflare.com",
+						"id": {
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
 							"type": "string"
 						},
-						"nameservers": {
-							"example": [
-								"ns3.cloudflare.com",
-								"ns4.cloudflare.com",
-								"ns5.cloudflare.com",
-								"ns6.cloudflare.com",
-								"ns7.cloudflare.com"
+						"last_failure": {
+							"description": "Timestamp of the last time an attempt to dispatch a notification to this webhook failed.",
+							"example": "2020-10-26T18:25:04.532316Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"last_success": {
+							"description": "Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.",
+							"example": "2020-10-26T18:25:04.532316Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"name": {
+							"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
+							"example": "Slack Webhook",
+							"type": "string"
+						},
+						"secret": {
+							"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body.",
+							"type": "string"
+						},
+						"type": {
+							"description": "Type of webhook endpoint.",
+							"enum": [
+								"slack",
+								"generic",
+								"gchat"
 							],
-							"items": {
-								"type": "string"
-							},
-							"type": "array"
-						},
-						"registrant": {
-							"example": "DATA REDACTED",
+							"example": "slack",
 							"type": "string"
 						},
-						"registrant_country": {
-							"example": "United States",
-							"type": "string"
-						},
-						"registrant_email": {
-							"example": "https://domaincontact.cloudflareregistrar.com/cloudflare.com",
-							"type": "string"
-						},
-						"registrant_org": {
-							"example": "DATA REDACTED",
-							"type": "string"
-						},
-						"registrar": {
-							"example": "Cloudflare, Inc.",
-							"type": "string"
-						},
-						"updated_date": {
-							"example": "2017-05-24",
-							"format": "date",
+						"url": {
+							"description": "The POST endpoint to call when dispatching a notification.",
+							"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
 							"type": "string"
 						}
-					}
+					},
+					"type": "object"
 				}
 			}
 		}

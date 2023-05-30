@@ -1,5 +1,7 @@
 {
-	"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
-	"example": "shop.example.com",
+	"description": "The keyless SSL name.",
+	"example": "example.com",
+	"format": "hostname",
+	"maxLength": 253,
 	"type": "string"
 }

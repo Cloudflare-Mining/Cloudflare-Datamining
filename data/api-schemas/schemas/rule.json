@@ -7,16 +7,16 @@
 						{
 							"properties": {
 								"description": {
-									"$ref": "#/components/schemas/schemas-description-adBeS0lI"
+									"$ref": "#/components/schemas/schemas-description"
 								},
 								"group": {
 									"description": "The rule group to which the current WAF rule belongs.",
 									"properties": {
 										"id": {
-											"$ref": "#/components/schemas/components-schemas-identifier-bPFkt9Zm"
+											"$ref": "#/components/schemas/components-schemas-identifier-8YmxyRVg"
 										},
 										"name": {
-											"$ref": "#/components/schemas/name-C3iO4uQT"
+											"$ref": "#/components/schemas/name-OthkmuBE"
 										}
 									},
 									"readOnly": true,
@@ -26,10 +26,10 @@
 									"$ref": "#/components/schemas/rule_components-schemas-identifier"
 								},
 								"package_id": {
-									"$ref": "#/components/schemas/identifier-i6wDkTSU"
+									"$ref": "#/components/schemas/identifier-0Hj4d14q"
 								},
 								"priority": {
-									"$ref": "#/components/schemas/priority-2kh95swM"
+									"$ref": "#/components/schemas/priority"
 								}
 							}
 						}

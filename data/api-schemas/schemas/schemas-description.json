@@ -1,5 +1,6 @@
 {
-	"description": "Optional description for the Notification policy.",
-	"example": "Something describing the policy.",
+	"description": "The public description of the WAF rule.",
+	"example": "SQL injection prevention for SELECT statements",
+	"readOnly": true,
 	"type": "string"
 }

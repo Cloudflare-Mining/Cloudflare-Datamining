@@ -1,9 +1,12 @@
 {
+	"description": "The current status of the origin server according to the health check.",
 	"enum": [
-		"event_prequeueing",
-		"not_queueing",
-		"queueing"
+		"unknown",
+		"healthy",
+		"unhealthy",
+		"suspended"
 	],
-	"example": "queueing",
+	"example": "healthy",
+	"readOnly": true,
 	"type": "string"
 }

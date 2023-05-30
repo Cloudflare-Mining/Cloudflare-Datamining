@@ -117,29 +117,25 @@
 		{
 			"properties": {
 				"result": {
-					"properties": {
-						"keys": {
-							"items": {
-								"properties": {
-									"name": {
-										"description": "Key name.",
-										"example": "default",
-										"readOnly": true,
-										"type": "string"
-									},
-									"value": {
-										"description": "Key value.",
-										"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
-										"readOnly": true,
-										"type": "string"
-									}
-								},
-								"type": "object"
+					"items": {
+						"properties": {
+							"created": {
+								"description": "The date and time a signing key was created.",
+								"example": "2014-01-02T02:20:00Z",
+								"format": "date-time",
+								"type": "string"
 							},
-							"type": "array"
-						}
+							"id": {
+								"description": "Identifier",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							}
+						},
+						"type": "object"
 					},
-					"type": "object"
+					"type": "array"
 				}
 			}
 		}

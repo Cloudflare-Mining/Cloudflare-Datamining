@@ -118,7 +118,7 @@
 			"properties": {
 				"result": {
 					"items": {
-						"description": "A connection between cloudflared and a Cloudflare data center.",
+						"description": "A client (typically cloudflared) that maintains connections to a Cloudflare data center.",
 						"properties": {
 							"arch": {
 								"description": "The cloudflared OS architecture used to establish this connection.",
@@ -137,10 +137,10 @@
 											"description": "UUID of the cloudflared instance."
 										},
 										"client_version": {
-											"$ref": "#/components/schemas/cloudflare-tunnel_components-schemas-version"
+											"$ref": "#/components/schemas/version-QfSuvscP"
 										},
 										"colo_name": {
-											"$ref": "#/components/schemas/schemas-colo_name"
+											"$ref": "#/components/schemas/colo_name-YtsWnDd3"
 										},
 										"id": {
 											"$ref": "#/components/schemas/connection_id"

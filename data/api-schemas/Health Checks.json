@@ -68,11 +68,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
 												}
 											},
 											"type": "object"
@@ -120,11 +116,7 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
 														}
 													},
 													"type": "object"
@@ -313,11 +305,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
 												}
 											},
 											"type": "object"
@@ -365,11 +353,7 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
 														}
 													},
 													"type": "object"
@@ -538,10 +522,10 @@
 											"items": {
 												"properties": {
 													"address": {
-														"$ref": "#/components/schemas/address-D6nD1o6E"
+														"$ref": "#/components/schemas/address"
 													},
 													"check_regions": {
-														"$ref": "#/components/schemas/check_regions-A5w57jQk"
+														"$ref": "#/components/schemas/check_regions"
 													},
 													"consecutive_fails": {
 														"$ref": "#/components/schemas/consecutive_fails"
@@ -553,7 +537,7 @@
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"description": {
-														"$ref": "#/components/schemas/description-f431lbVt"
+														"$ref": "#/components/schemas/description-TvOR2GBM"
 													},
 													"failure_reason": {
 														"$ref": "#/components/schemas/failure_reason"
@@ -565,31 +549,31 @@
 														"$ref": "#/components/schemas/identifier"
 													},
 													"interval": {
-														"$ref": "#/components/schemas/interval-ho4f0qLH"
+														"$ref": "#/components/schemas/interval"
 													},
 													"modified_on": {
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"name": {
-														"$ref": "#/components/schemas/name-VZuVAJXO"
+														"$ref": "#/components/schemas/name-dOBhsToM"
 													},
 													"retries": {
-														"$ref": "#/components/schemas/retries-oS9jO0dE"
+														"$ref": "#/components/schemas/retries"
 													},
 													"status": {
-														"$ref": "#/components/schemas/status-7i0UfIl7"
+														"$ref": "#/components/schemas/status"
 													},
 													"suspended": {
-														"$ref": "#/components/schemas/suspended-TugncCHZ"
+														"$ref": "#/components/schemas/suspended"
 													},
 													"tcp_config": {
 														"$ref": "#/components/schemas/tcp_config"
 													},
 													"timeout": {
-														"$ref": "#/components/schemas/timeout-Wd86PFi9"
+														"$ref": "#/components/schemas/timeout"
 													},
 													"type": {
-														"$ref": "#/components/schemas/type-KdLuoH70"
+														"$ref": "#/components/schemas/type-C3Pxnzz6"
 													}
 												},
 												"type": "object"
@@ -637,10 +621,10 @@
 													"items": {
 														"properties": {
 															"address": {
-																"$ref": "#/components/schemas/address-D6nD1o6E"
+																"$ref": "#/components/schemas/address"
 															},
 															"check_regions": {
-																"$ref": "#/components/schemas/check_regions-A5w57jQk"
+																"$ref": "#/components/schemas/check_regions"
 															},
 															"consecutive_fails": {
 																"$ref": "#/components/schemas/consecutive_fails"
@@ -652,7 +636,7 @@
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"description": {
-																"$ref": "#/components/schemas/description-f431lbVt"
+																"$ref": "#/components/schemas/description-TvOR2GBM"
 															},
 															"failure_reason": {
 																"$ref": "#/components/schemas/failure_reason"
@@ -664,31 +648,31 @@
 																"$ref": "#/components/schemas/identifier"
 															},
 															"interval": {
-																"$ref": "#/components/schemas/interval-ho4f0qLH"
+																"$ref": "#/components/schemas/interval"
 															},
 															"modified_on": {
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"name": {
-																"$ref": "#/components/schemas/name-VZuVAJXO"
+																"$ref": "#/components/schemas/name-dOBhsToM"
 															},
 															"retries": {
-																"$ref": "#/components/schemas/retries-oS9jO0dE"
+																"$ref": "#/components/schemas/retries"
 															},
 															"status": {
-																"$ref": "#/components/schemas/status-7i0UfIl7"
+																"$ref": "#/components/schemas/status"
 															},
 															"suspended": {
-																"$ref": "#/components/schemas/suspended-TugncCHZ"
+																"$ref": "#/components/schemas/suspended"
 															},
 															"tcp_config": {
 																"$ref": "#/components/schemas/tcp_config"
 															},
 															"timeout": {
-																"$ref": "#/components/schemas/timeout-Wd86PFi9"
+																"$ref": "#/components/schemas/timeout"
 															},
 															"type": {
-																"$ref": "#/components/schemas/type-KdLuoH70"
+																"$ref": "#/components/schemas/type-C3Pxnzz6"
 															}
 														},
 														"type": "object"
@@ -873,10 +857,10 @@
 										"result": {
 											"properties": {
 												"address": {
-													"$ref": "#/components/schemas/address-D6nD1o6E"
+													"$ref": "#/components/schemas/address"
 												},
 												"check_regions": {
-													"$ref": "#/components/schemas/check_regions-A5w57jQk"
+													"$ref": "#/components/schemas/check_regions"
 												},
 												"consecutive_fails": {
 													"$ref": "#/components/schemas/consecutive_fails"
@@ -888,7 +872,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-f431lbVt"
+													"$ref": "#/components/schemas/description-TvOR2GBM"
 												},
 												"failure_reason": {
 													"$ref": "#/components/schemas/failure_reason"
@@ -900,31 +884,31 @@
 													"$ref": "#/components/schemas/identifier"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/interval-ho4f0qLH"
+													"$ref": "#/components/schemas/interval"
 												},
 												"modified_on": {
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-VZuVAJXO"
+													"$ref": "#/components/schemas/name-dOBhsToM"
 												},
 												"retries": {
-													"$ref": "#/components/schemas/retries-oS9jO0dE"
+													"$ref": "#/components/schemas/retries"
 												},
 												"status": {
-													"$ref": "#/components/schemas/status-7i0UfIl7"
+													"$ref": "#/components/schemas/status"
 												},
 												"suspended": {
-													"$ref": "#/components/schemas/suspended-TugncCHZ"
+													"$ref": "#/components/schemas/suspended"
 												},
 												"tcp_config": {
 													"$ref": "#/components/schemas/tcp_config"
 												},
 												"timeout": {
-													"$ref": "#/components/schemas/timeout-Wd86PFi9"
+													"$ref": "#/components/schemas/timeout"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-KdLuoH70"
+													"$ref": "#/components/schemas/type-C3Pxnzz6"
 												}
 											},
 											"type": "object"
@@ -972,10 +956,10 @@
 												"result": {
 													"properties": {
 														"address": {
-															"$ref": "#/components/schemas/address-D6nD1o6E"
+															"$ref": "#/components/schemas/address"
 														},
 														"check_regions": {
-															"$ref": "#/components/schemas/check_regions-A5w57jQk"
+															"$ref": "#/components/schemas/check_regions"
 														},
 														"consecutive_fails": {
 															"$ref": "#/components/schemas/consecutive_fails"
@@ -987,7 +971,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-f431lbVt"
+															"$ref": "#/components/schemas/description-TvOR2GBM"
 														},
 														"failure_reason": {
 															"$ref": "#/components/schemas/failure_reason"
@@ -999,31 +983,31 @@
 															"$ref": "#/components/schemas/identifier"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/interval-ho4f0qLH"
+															"$ref": "#/components/schemas/interval"
 														},
 														"modified_on": {
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-VZuVAJXO"
+															"$ref": "#/components/schemas/name-dOBhsToM"
 														},
 														"retries": {
-															"$ref": "#/components/schemas/retries-oS9jO0dE"
+															"$ref": "#/components/schemas/retries"
 														},
 														"status": {
-															"$ref": "#/components/schemas/status-7i0UfIl7"
+															"$ref": "#/components/schemas/status"
 														},
 														"suspended": {
-															"$ref": "#/components/schemas/suspended-TugncCHZ"
+															"$ref": "#/components/schemas/suspended"
 														},
 														"tcp_config": {
 															"$ref": "#/components/schemas/tcp_config"
 														},
 														"timeout": {
-															"$ref": "#/components/schemas/timeout-Wd86PFi9"
+															"$ref": "#/components/schemas/timeout"
 														},
 														"type": {
-															"$ref": "#/components/schemas/type-KdLuoH70"
+															"$ref": "#/components/schemas/type-C3Pxnzz6"
 														}
 													},
 													"type": "object"
@@ -1206,10 +1190,10 @@
 										"result": {
 											"properties": {
 												"address": {
-													"$ref": "#/components/schemas/address-D6nD1o6E"
+													"$ref": "#/components/schemas/address"
 												},
 												"check_regions": {
-													"$ref": "#/components/schemas/check_regions-A5w57jQk"
+													"$ref": "#/components/schemas/check_regions"
 												},
 												"consecutive_fails": {
 													"$ref": "#/components/schemas/consecutive_fails"
@@ -1221,7 +1205,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-f431lbVt"
+													"$ref": "#/components/schemas/description-TvOR2GBM"
 												},
 												"failure_reason": {
 													"$ref": "#/components/schemas/failure_reason"
@@ -1233,31 +1217,31 @@
 													"$ref": "#/components/schemas/identifier"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/interval-ho4f0qLH"
+													"$ref": "#/components/schemas/interval"
 												},
 												"modified_on": {
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-VZuVAJXO"
+													"$ref": "#/components/schemas/name-dOBhsToM"
 												},
 												"retries": {
-													"$ref": "#/components/schemas/retries-oS9jO0dE"
+													"$ref": "#/components/schemas/retries"
 												},
 												"status": {
-													"$ref": "#/components/schemas/status-7i0UfIl7"
+													"$ref": "#/components/schemas/status"
 												},
 												"suspended": {
-													"$ref": "#/components/schemas/suspended-TugncCHZ"
+													"$ref": "#/components/schemas/suspended"
 												},
 												"tcp_config": {
 													"$ref": "#/components/schemas/tcp_config"
 												},
 												"timeout": {
-													"$ref": "#/components/schemas/timeout-Wd86PFi9"
+													"$ref": "#/components/schemas/timeout"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-KdLuoH70"
+													"$ref": "#/components/schemas/type-C3Pxnzz6"
 												}
 											},
 											"type": "object"
@@ -1305,10 +1289,10 @@
 												"result": {
 													"properties": {
 														"address": {
-															"$ref": "#/components/schemas/address-D6nD1o6E"
+															"$ref": "#/components/schemas/address"
 														},
 														"check_regions": {
-															"$ref": "#/components/schemas/check_regions-A5w57jQk"
+															"$ref": "#/components/schemas/check_regions"
 														},
 														"consecutive_fails": {
 															"$ref": "#/components/schemas/consecutive_fails"
@@ -1320,7 +1304,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-f431lbVt"
+															"$ref": "#/components/schemas/description-TvOR2GBM"
 														},
 														"failure_reason": {
 															"$ref": "#/components/schemas/failure_reason"
@@ -1332,31 +1316,31 @@
 															"$ref": "#/components/schemas/identifier"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/interval-ho4f0qLH"
+															"$ref": "#/components/schemas/interval"
 														},
 														"modified_on": {
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-VZuVAJXO"
+															"$ref": "#/components/schemas/name-dOBhsToM"
 														},
 														"retries": {
-															"$ref": "#/components/schemas/retries-oS9jO0dE"
+															"$ref": "#/components/schemas/retries"
 														},
 														"status": {
-															"$ref": "#/components/schemas/status-7i0UfIl7"
+															"$ref": "#/components/schemas/status"
 														},
 														"suspended": {
-															"$ref": "#/components/schemas/suspended-TugncCHZ"
+															"$ref": "#/components/schemas/suspended"
 														},
 														"tcp_config": {
 															"$ref": "#/components/schemas/tcp_config"
 														},
 														"timeout": {
-															"$ref": "#/components/schemas/timeout-Wd86PFi9"
+															"$ref": "#/components/schemas/timeout"
 														},
 														"type": {
-															"$ref": "#/components/schemas/type-KdLuoH70"
+															"$ref": "#/components/schemas/type-C3Pxnzz6"
 														}
 													},
 													"type": "object"
@@ -1723,10 +1707,10 @@
 										"result": {
 											"properties": {
 												"address": {
-													"$ref": "#/components/schemas/address-D6nD1o6E"
+													"$ref": "#/components/schemas/address"
 												},
 												"check_regions": {
-													"$ref": "#/components/schemas/check_regions-A5w57jQk"
+													"$ref": "#/components/schemas/check_regions"
 												},
 												"consecutive_fails": {
 													"$ref": "#/components/schemas/consecutive_fails"
@@ -1738,7 +1722,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-f431lbVt"
+													"$ref": "#/components/schemas/description-TvOR2GBM"
 												},
 												"failure_reason": {
 													"$ref": "#/components/schemas/failure_reason"
@@ -1750,31 +1734,31 @@
 													"$ref": "#/components/schemas/identifier"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/interval-ho4f0qLH"
+													"$ref": "#/components/schemas/interval"
 												},
 												"modified_on": {
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-VZuVAJXO"
+													"$ref": "#/components/schemas/name-dOBhsToM"
 												},
 												"retries": {
-													"$ref": "#/components/schemas/retries-oS9jO0dE"
+													"$ref": "#/components/schemas/retries"
 												},
 												"status": {
-													"$ref": "#/components/schemas/status-7i0UfIl7"
+													"$ref": "#/components/schemas/status"
 												},
 												"suspended": {
-													"$ref": "#/components/schemas/suspended-TugncCHZ"
+													"$ref": "#/components/schemas/suspended"
 												},
 												"tcp_config": {
 													"$ref": "#/components/schemas/tcp_config"
 												},
 												"timeout": {
-													"$ref": "#/components/schemas/timeout-Wd86PFi9"
+													"$ref": "#/components/schemas/timeout"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-KdLuoH70"
+													"$ref": "#/components/schemas/type-C3Pxnzz6"
 												}
 											},
 											"type": "object"
@@ -1822,10 +1806,10 @@
 												"result": {
 													"properties": {
 														"address": {
-															"$ref": "#/components/schemas/address-D6nD1o6E"
+															"$ref": "#/components/schemas/address"
 														},
 														"check_regions": {
-															"$ref": "#/components/schemas/check_regions-A5w57jQk"
+															"$ref": "#/components/schemas/check_regions"
 														},
 														"consecutive_fails": {
 															"$ref": "#/components/schemas/consecutive_fails"
@@ -1837,7 +1821,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-f431lbVt"
+															"$ref": "#/components/schemas/description-TvOR2GBM"
 														},
 														"failure_reason": {
 															"$ref": "#/components/schemas/failure_reason"
@@ -1849,31 +1833,31 @@
 															"$ref": "#/components/schemas/identifier"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/interval-ho4f0qLH"
+															"$ref": "#/components/schemas/interval"
 														},
 														"modified_on": {
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-VZuVAJXO"
+															"$ref": "#/components/schemas/name-dOBhsToM"
 														},
 														"retries": {
-															"$ref": "#/components/schemas/retries-oS9jO0dE"
+															"$ref": "#/components/schemas/retries"
 														},
 														"status": {
-															"$ref": "#/components/schemas/status-7i0UfIl7"
+															"$ref": "#/components/schemas/status"
 														},
 														"suspended": {
-															"$ref": "#/components/schemas/suspended-TugncCHZ"
+															"$ref": "#/components/schemas/suspended"
 														},
 														"tcp_config": {
 															"$ref": "#/components/schemas/tcp_config"
 														},
 														"timeout": {
-															"$ref": "#/components/schemas/timeout-Wd86PFi9"
+															"$ref": "#/components/schemas/timeout"
 														},
 														"type": {
-															"$ref": "#/components/schemas/type-KdLuoH70"
+															"$ref": "#/components/schemas/type-C3Pxnzz6"
 														}
 													},
 													"type": "object"
@@ -2228,10 +2212,10 @@
 										"result": {
 											"properties": {
 												"address": {
-													"$ref": "#/components/schemas/address-D6nD1o6E"
+													"$ref": "#/components/schemas/address"
 												},
 												"check_regions": {
-													"$ref": "#/components/schemas/check_regions-A5w57jQk"
+													"$ref": "#/components/schemas/check_regions"
 												},
 												"consecutive_fails": {
 													"$ref": "#/components/schemas/consecutive_fails"
@@ -2243,7 +2227,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-f431lbVt"
+													"$ref": "#/components/schemas/description-TvOR2GBM"
 												},
 												"failure_reason": {
 													"$ref": "#/components/schemas/failure_reason"
@@ -2255,31 +2239,31 @@
 													"$ref": "#/components/schemas/identifier"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/interval-ho4f0qLH"
+													"$ref": "#/components/schemas/interval"
 												},
 												"modified_on": {
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-VZuVAJXO"
+													"$ref": "#/components/schemas/name-dOBhsToM"
 												},
 												"retries": {
-													"$ref": "#/components/schemas/retries-oS9jO0dE"
+													"$ref": "#/components/schemas/retries"
 												},
 												"status": {
-													"$ref": "#/components/schemas/status-7i0UfIl7"
+													"$ref": "#/components/schemas/status"
 												},
 												"suspended": {
-													"$ref": "#/components/schemas/suspended-TugncCHZ"
+													"$ref": "#/components/schemas/suspended"
 												},
 												"tcp_config": {
 													"$ref": "#/components/schemas/tcp_config"
 												},
 												"timeout": {
-													"$ref": "#/components/schemas/timeout-Wd86PFi9"
+													"$ref": "#/components/schemas/timeout"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-KdLuoH70"
+													"$ref": "#/components/schemas/type-C3Pxnzz6"
 												}
 											},
 											"type": "object"
@@ -2327,10 +2311,10 @@
 												"result": {
 													"properties": {
 														"address": {
-															"$ref": "#/components/schemas/address-D6nD1o6E"
+															"$ref": "#/components/schemas/address"
 														},
 														"check_regions": {
-															"$ref": "#/components/schemas/check_regions-A5w57jQk"
+															"$ref": "#/components/schemas/check_regions"
 														},
 														"consecutive_fails": {
 															"$ref": "#/components/schemas/consecutive_fails"
@@ -2342,7 +2326,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-f431lbVt"
+															"$ref": "#/components/schemas/description-TvOR2GBM"
 														},
 														"failure_reason": {
 															"$ref": "#/components/schemas/failure_reason"
@@ -2354,31 +2338,31 @@
 															"$ref": "#/components/schemas/identifier"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/interval-ho4f0qLH"
+															"$ref": "#/components/schemas/interval"
 														},
 														"modified_on": {
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-VZuVAJXO"
+															"$ref": "#/components/schemas/name-dOBhsToM"
 														},
 														"retries": {
-															"$ref": "#/components/schemas/retries-oS9jO0dE"
+															"$ref": "#/components/schemas/retries"
 														},
 														"status": {
-															"$ref": "#/components/schemas/status-7i0UfIl7"
+															"$ref": "#/components/schemas/status"
 														},
 														"suspended": {
-															"$ref": "#/components/schemas/suspended-TugncCHZ"
+															"$ref": "#/components/schemas/suspended"
 														},
 														"tcp_config": {
 															"$ref": "#/components/schemas/tcp_config"
 														},
 														"timeout": {
-															"$ref": "#/components/schemas/timeout-Wd86PFi9"
+															"$ref": "#/components/schemas/timeout"
 														},
 														"type": {
-															"$ref": "#/components/schemas/type-KdLuoH70"
+															"$ref": "#/components/schemas/type-C3Pxnzz6"
 														}
 													},
 													"type": "object"
@@ -2733,10 +2717,10 @@
 										"result": {
 											"properties": {
 												"address": {
-													"$ref": "#/components/schemas/address-D6nD1o6E"
+													"$ref": "#/components/schemas/address"
 												},
 												"check_regions": {
-													"$ref": "#/components/schemas/check_regions-A5w57jQk"
+													"$ref": "#/components/schemas/check_regions"
 												},
 												"consecutive_fails": {
 													"$ref": "#/components/schemas/consecutive_fails"
@@ -2748,7 +2732,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-f431lbVt"
+													"$ref": "#/components/schemas/description-TvOR2GBM"
 												},
 												"failure_reason": {
 													"$ref": "#/components/schemas/failure_reason"
@@ -2760,31 +2744,31 @@
 													"$ref": "#/components/schemas/identifier"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/interval-ho4f0qLH"
+													"$ref": "#/components/schemas/interval"
 												},
 												"modified_on": {
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-VZuVAJXO"
+													"$ref": "#/components/schemas/name-dOBhsToM"
 												},
 												"retries": {
-													"$ref": "#/components/schemas/retries-oS9jO0dE"
+													"$ref": "#/components/schemas/retries"
 												},
 												"status": {
-													"$ref": "#/components/schemas/status-7i0UfIl7"
+													"$ref": "#/components/schemas/status"
 												},
 												"suspended": {
-													"$ref": "#/components/schemas/suspended-TugncCHZ"
+													"$ref": "#/components/schemas/suspended"
 												},
 												"tcp_config": {
 													"$ref": "#/components/schemas/tcp_config"
 												},
 												"timeout": {
-													"$ref": "#/components/schemas/timeout-Wd86PFi9"
+													"$ref": "#/components/schemas/timeout"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-KdLuoH70"
+													"$ref": "#/components/schemas/type-C3Pxnzz6"
 												}
 											},
 											"type": "object"
@@ -2832,10 +2816,10 @@
 												"result": {
 													"properties": {
 														"address": {
-															"$ref": "#/components/schemas/address-D6nD1o6E"
+															"$ref": "#/components/schemas/address"
 														},
 														"check_regions": {
-															"$ref": "#/components/schemas/check_regions-A5w57jQk"
+															"$ref": "#/components/schemas/check_regions"
 														},
 														"consecutive_fails": {
 															"$ref": "#/components/schemas/consecutive_fails"
@@ -2847,7 +2831,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-f431lbVt"
+															"$ref": "#/components/schemas/description-TvOR2GBM"
 														},
 														"failure_reason": {
 															"$ref": "#/components/schemas/failure_reason"
@@ -2859,31 +2843,31 @@
 															"$ref": "#/components/schemas/identifier"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/interval-ho4f0qLH"
+															"$ref": "#/components/schemas/interval"
 														},
 														"modified_on": {
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-VZuVAJXO"
+															"$ref": "#/components/schemas/name-dOBhsToM"
 														},
 														"retries": {
-															"$ref": "#/components/schemas/retries-oS9jO0dE"
+															"$ref": "#/components/schemas/retries"
 														},
 														"status": {
-															"$ref": "#/components/schemas/status-7i0UfIl7"
+															"$ref": "#/components/schemas/status"
 														},
 														"suspended": {
-															"$ref": "#/components/schemas/suspended-TugncCHZ"
+															"$ref": "#/components/schemas/suspended"
 														},
 														"tcp_config": {
 															"$ref": "#/components/schemas/tcp_config"
 														},
 														"timeout": {
-															"$ref": "#/components/schemas/timeout-Wd86PFi9"
+															"$ref": "#/components/schemas/timeout"
 														},
 														"type": {
-															"$ref": "#/components/schemas/type-KdLuoH70"
+															"$ref": "#/components/schemas/type-C3Pxnzz6"
 														}
 													},
 													"type": "object"
@@ -3250,10 +3234,10 @@
 										"result": {
 											"properties": {
 												"address": {
-													"$ref": "#/components/schemas/address-D6nD1o6E"
+													"$ref": "#/components/schemas/address"
 												},
 												"check_regions": {
-													"$ref": "#/components/schemas/check_regions-A5w57jQk"
+													"$ref": "#/components/schemas/check_regions"
 												},
 												"consecutive_fails": {
 													"$ref": "#/components/schemas/consecutive_fails"
@@ -3265,7 +3249,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-f431lbVt"
+													"$ref": "#/components/schemas/description-TvOR2GBM"
 												},
 												"failure_reason": {
 													"$ref": "#/components/schemas/failure_reason"
@@ -3277,31 +3261,31 @@
 													"$ref": "#/components/schemas/identifier"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/interval-ho4f0qLH"
+													"$ref": "#/components/schemas/interval"
 												},
 												"modified_on": {
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-VZuVAJXO"
+													"$ref": "#/components/schemas/name-dOBhsToM"
 												},
 												"retries": {
-													"$ref": "#/components/schemas/retries-oS9jO0dE"
+													"$ref": "#/components/schemas/retries"
 												},
 												"status": {
-													"$ref": "#/components/schemas/status-7i0UfIl7"
+													"$ref": "#/components/schemas/status"
 												},
 												"suspended": {
-													"$ref": "#/components/schemas/suspended-TugncCHZ"
+													"$ref": "#/components/schemas/suspended"
 												},
 												"tcp_config": {
 													"$ref": "#/components/schemas/tcp_config"
 												},
 												"timeout": {
-													"$ref": "#/components/schemas/timeout-Wd86PFi9"
+													"$ref": "#/components/schemas/timeout"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-KdLuoH70"
+													"$ref": "#/components/schemas/type-C3Pxnzz6"
 												}
 											},
 											"type": "object"
@@ -3349,10 +3333,10 @@
 												"result": {
 													"properties": {
 														"address": {
-															"$ref": "#/components/schemas/address-D6nD1o6E"
+															"$ref": "#/components/schemas/address"
 														},
 														"check_regions": {
-															"$ref": "#/components/schemas/check_regions-A5w57jQk"
+															"$ref": "#/components/schemas/check_regions"
 														},
 														"consecutive_fails": {
 															"$ref": "#/components/schemas/consecutive_fails"
@@ -3364,7 +3348,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-f431lbVt"
+															"$ref": "#/components/schemas/description-TvOR2GBM"
 														},
 														"failure_reason": {
 															"$ref": "#/components/schemas/failure_reason"
@@ -3376,31 +3360,31 @@
 															"$ref": "#/components/schemas/identifier"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/interval-ho4f0qLH"
+															"$ref": "#/components/schemas/interval"
 														},
 														"modified_on": {
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-VZuVAJXO"
+															"$ref": "#/components/schemas/name-dOBhsToM"
 														},
 														"retries": {
-															"$ref": "#/components/schemas/retries-oS9jO0dE"
+															"$ref": "#/components/schemas/retries"
 														},
 														"status": {
-															"$ref": "#/components/schemas/status-7i0UfIl7"
+															"$ref": "#/components/schemas/status"
 														},
 														"suspended": {
-															"$ref": "#/components/schemas/suspended-TugncCHZ"
+															"$ref": "#/components/schemas/suspended"
 														},
 														"tcp_config": {
 															"$ref": "#/components/schemas/tcp_config"
 														},
 														"timeout": {
-															"$ref": "#/components/schemas/timeout-Wd86PFi9"
+															"$ref": "#/components/schemas/timeout"
 														},
 														"type": {
-															"$ref": "#/components/schemas/type-KdLuoH70"
+															"$ref": "#/components/schemas/type-C3Pxnzz6"
 														}
 													},
 													"type": "object"

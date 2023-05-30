@@ -1,5 +1,7 @@
 {
-	"description": "Name of the policy.",
-	"example": "SSL Notification Event Policy",
+	"description": "The plan name.",
+	"example": "Free Plan",
+	"maxLength": 80,
+	"readOnly": true,
 	"type": "string"
 }

@@ -48,10 +48,10 @@
 										},
 										"properties": {
 											"asn": {
-												"$ref": "#/components/schemas/asn-ARDK33ME"
+												"$ref": "#/components/schemas/schemas-asn-KHfijIjV"
 											},
 											"ip": {
-												"$ref": "#/components/schemas/ip-K1NNO1L0"
+												"$ref": "#/components/schemas/traceroute_components-schemas-ip"
 											},
 											"labels": {
 												"$ref": "#/components/schemas/labels"
@@ -66,7 +66,7 @@
 												"$ref": "#/components/schemas/min_rtt_ms"
 											},
 											"name": {
-												"$ref": "#/components/schemas/name-nisq5RG7"
+												"$ref": "#/components/schemas/traceroute_components-schemas-name"
 											},
 											"packet_count": {
 												"$ref": "#/components/schemas/packet_count"

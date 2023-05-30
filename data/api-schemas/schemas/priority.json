@@ -1,4 +1,5 @@
 {
-	"description": "Priority of the static route.",
-	"type": "integer"
+	"description": "The order in which the individual WAF rule is executed within its rule group.",
+	"readOnly": true,
+	"type": "string"
 }

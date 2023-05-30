@@ -1,5 +1,10 @@
 {
 	"properties": {
+		"api_url": {
+			"description": "The Uptycs API URL.",
+			"example": "rnd.uptycs.io",
+			"type": "string"
+		},
 		"client_key": {
 			"description": "The Uptycs client secret.",
 			"example": "example client key",
@@ -17,9 +22,11 @@
 		}
 	},
 	"required": [
+		"api_url",
 		"client_key",
 		"customer_id",
 		"client_secret"
 	],
+	"title": "Uptycs Config",
 	"type": "object"
 }

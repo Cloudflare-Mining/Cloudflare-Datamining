@@ -1,6 +1,9 @@
 {
-	"description": "Key value.",
-	"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
-	"readOnly": true,
+	"description": "Enables Argo Smart Routing.",
+	"enum": [
+		"on",
+		"off"
+	],
+	"example": "on",
 	"type": "string"
 }

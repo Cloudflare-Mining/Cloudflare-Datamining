@@ -99,46 +99,56 @@
 			"properties": {
 				"result": {
 					"properties": {
-						"count": {
-							"description": "Total results returned based on your search parameters.",
-							"example": 1,
-							"type": "number"
-						},
-						"page": {
-							"description": "Current page within paginated list of results.",
-							"example": 1,
-							"type": "number"
-						},
-						"per_page": {
-							"description": "Number of results per page of results.",
-							"example": 20,
-							"type": "number"
-						},
-						"reverse_records": {
-							"description": "Reverse DNS look-ups observed during the time period.",
-							"items": {
-								"properties": {
-									"first_seen": {
-										"description": "First seen date of the DNS record during the time period.",
-										"example": "2021-04-01",
-										"format": "date",
-										"type": "string"
-									},
-									"hostname": {
-										"description": "Hostname that the IP was observed resolving to."
-									},
-									"last_seen": {
-										"description": "Last seen date of the DNS record during the time period.",
-										"example": "2021-04-30",
-										"format": "date",
-										"type": "string"
-									}
-								},
-								"type": "object"
+						"config": {
+							"description": "The configuration object containing information for the WARP client to detect the managed network.",
+							"example": {
+								"sha256": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+								"tls_sockaddr": "foo.bar:1234"
 							},
-							"type": "array"
+							"oneOf": [
+								{
+									"description": "The Managed Network TLS Config Response.",
+									"properties": {
+										"sha256": {
+											"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
+											"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+											"type": "string"
+										},
+										"tls_sockaddr": {
+											"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
+											"example": "foobar:1234",
+											"type": "string"
+										}
+									},
+									"required": [
+										"tls_sockaddr"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						},
+						"name": {
+							"description": "The name of the Device Managed Network. Must be unique.",
+							"example": "managed-network-1",
+							"type": "string"
+						},
+						"network_id": {
+							"description": "API uuid tag.",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"type": "string"
+						},
+						"type": {
+							"description": "The type of Device Managed Network.",
+							"enum": [
+								"tls"
+							],
+							"example": "tls",
+							"type": "string"
 						}
-					}
+					},
+					"type": "object"
 				}
 			}
 		}

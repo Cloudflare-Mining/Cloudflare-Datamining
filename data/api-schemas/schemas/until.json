@@ -1,6 +1,13 @@
 {
-	"description": "End date and time of requesting data period in ISO 8601 format.",
-	"example": "2023-11-11T13:00:00Z",
-	"format": "date-time",
-	"type": "string"
+	"anyOf": [
+		{
+			"type": "string"
+		},
+		{
+			"type": "integer"
+		}
+	],
+	"default": 0,
+	"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+	"example": "2015-01-02T12:23:00Z"
 }

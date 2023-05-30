@@ -161,9 +161,10 @@
 										"type": "string"
 									},
 									"id": {
-										"description": "Identifier",
-										"example": "023e105f4ecef8ad9ca31a8372d0c353",
-										"maxLength": 32,
+										"description": "Custom hostname identifier tag.",
+										"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+										"maxLength": 36,
+										"minLength": 36,
 										"readOnly": true,
 										"type": "string"
 									},
@@ -233,7 +234,14 @@
 														"type": "string"
 													},
 													"certificate_authority": {
-														"$ref": "#/components/schemas/certificate_authority-KGr6sByk"
+														"description": "The Certificate Authority that has issued this certificate.",
+														"enum": [
+															"digicert",
+															"google",
+															"lets_encrypt"
+														],
+														"example": "digicert",
+														"type": "string"
 													},
 													"custom_certificate": {
 														"description": "If a custom uploaded certificate is used.",
@@ -414,9 +422,10 @@
 								"type": "string"
 							},
 							"id": {
-								"description": "Identifier",
-								"example": "023e105f4ecef8ad9ca31a8372d0c353",
-								"maxLength": 32,
+								"description": "Custom hostname identifier tag.",
+								"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
+								"maxLength": 36,
+								"minLength": 36,
 								"readOnly": true,
 								"type": "string"
 							},
@@ -437,13 +446,13 @@
 												"type": "string"
 											},
 											"certificate_authority": {
-												"description": "The Certificate Authority that will issue the certificate",
+												"description": "The Certificate Authority that has issued this certificate.",
 												"enum": [
 													"digicert",
 													"google",
 													"lets_encrypt"
 												],
-												"example": "google",
+												"example": "digicert",
 												"type": "string"
 											},
 											"custom_certificate": {

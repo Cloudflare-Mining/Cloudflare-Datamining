@@ -162,9 +162,9 @@
 								"type": "array"
 							},
 							"id": {
-								"description": "Identifier",
-								"example": "023e105f4ecef8ad9ca31a8372d0c353",
-								"maxLength": 32,
+								"description": "Custom certificate identifier tag.",
+								"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+								"maxLength": 36,
 								"readOnly": true,
 								"type": "string"
 							},
@@ -186,13 +186,13 @@
 												"type": "string"
 											},
 											"enabled": {
-												"$ref": "#/components/schemas/enabled-gAzGmGOE"
+												"$ref": "#/components/schemas/enabled"
 											},
 											"host": {
-												"$ref": "#/components/schemas/host-4ln2EL78"
+												"$ref": "#/components/schemas/schemas-host"
 											},
 											"id": {
-												"$ref": "#/components/schemas/schemas-identifier-5hbyPebE"
+												"$ref": "#/components/schemas/keyless-certificate_components-schemas-identifier"
 											},
 											"modified_on": {
 												"description": "When the Keyless SSL was last modified.",
@@ -202,7 +202,7 @@
 												"type": "string"
 											},
 											"name": {
-												"$ref": "#/components/schemas/name-HuCAJ3vv"
+												"$ref": "#/components/schemas/keyless-certificate_components-schemas-name"
 											},
 											"permissions": {
 												"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
@@ -215,13 +215,10 @@
 												"type": "array"
 											},
 											"port": {
-												"$ref": "#/components/schemas/port-rIoiEWGQ"
+												"$ref": "#/components/schemas/port-VQEETSR0"
 											},
 											"status": {
-												"$ref": "#/components/schemas/schemas-status-yW1SgRqo"
-											},
-											"tunnel": {
-												"$ref": "#/components/schemas/keyless_tunnel"
+												"$ref": "#/components/schemas/keyless-certificate_components-schemas-status"
 											}
 										},
 										"required": [

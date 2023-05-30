@@ -1,9 +1,15 @@
 {
-	"description": "The custom page state.",
+	"description": "The state that the subscription is in.",
 	"enum": [
-		"default",
-		"customized"
+		"Trial",
+		"Provisioned",
+		"Paid",
+		"AwaitingPayment",
+		"Cancelled",
+		"Failed",
+		"Expired"
 	],
-	"example": "default",
+	"example": "Paid",
+	"readOnly": true,
 	"type": "string"
 }

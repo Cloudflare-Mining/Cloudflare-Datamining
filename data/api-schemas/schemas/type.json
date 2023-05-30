@@ -1,5 +1,7 @@
 {
-	"description": "Use this value when creating and updating a notification policy.",
-	"example": "http_alert_origin_error",
+	"description": "The billing item type.",
+	"example": "charge",
+	"maxLength": 30,
+	"readOnly": true,
 	"type": "string"
 }

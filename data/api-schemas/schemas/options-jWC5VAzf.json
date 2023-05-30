@@ -1,0 +1,46 @@
+{
+	"description": "Allows you to define image resizing sizes for different use cases.",
+	"properties": {
+		"fit": {
+			"description": "The fit property describes how the width and height dimensions should be interpreted.",
+			"enum": [
+				"scale-down",
+				"contain",
+				"cover",
+				"crop",
+				"pad"
+			],
+			"example": "scale-down",
+			"type": "string"
+		},
+		"height": {
+			"description": "Maximum height in image pixels.",
+			"example": 768,
+			"minimum": 1,
+			"type": "number"
+		},
+		"metadata": {
+			"description": "What EXIF data should be preserved in the output image.",
+			"enum": [
+				"keep",
+				"copyright",
+				"none"
+			],
+			"example": "none",
+			"type": "string"
+		},
+		"width": {
+			"description": "Maximum width in image pixels.",
+			"example": 1366,
+			"minimum": 1,
+			"type": "number"
+		}
+	},
+	"required": [
+		"fit",
+		"metadata",
+		"width",
+		"height"
+	],
+	"type": "object"
+}

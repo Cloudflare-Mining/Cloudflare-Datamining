@@ -1,0 +1,57 @@
+{
+	"properties": {
+		"created_on": {
+			"description": "When the connection was created.",
+			"example": "2017-06-14T00:00:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"enabled": {
+			"default": false,
+			"description": "A value indicating whether the connection is enabled or not.",
+			"example": true,
+			"type": "boolean"
+		},
+		"id": {
+			"description": "Connection identifier tag.",
+			"example": "c4a7362d577a6c3019a474fd6f485821",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
+		},
+		"modified_on": {
+			"description": "When the connection was last modified.",
+			"example": "2017-06-14T05:20:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"zone": {
+			"properties": {
+				"id": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				},
+				"name": {
+					"description": "The domain name",
+					"example": "example.com",
+					"maxLength": 253,
+					"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"required": [
+		"id",
+		"zone",
+		"enabled"
+	],
+	"type": "object"
+}
