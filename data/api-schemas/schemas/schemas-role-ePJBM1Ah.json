@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/description-DwslhIak"
+		},
+		"id": {
+			"$ref": "#/components/schemas/role_components-schemas-identifier-Xb2b5bDB"
+		},
+		"name": {
+			"$ref": "#/components/schemas/components-schemas-name-MN8uSyiP"
+		},
+		"permissions": {
+			"$ref": "#/components/schemas/schemas-permissions"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"description",
+		"permissions"
+	],
+	"type": "object"
+}

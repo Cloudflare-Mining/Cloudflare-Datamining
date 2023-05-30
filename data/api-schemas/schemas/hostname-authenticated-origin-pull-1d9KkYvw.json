@@ -1,0 +1,28 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/hostname_certid_object-7zqBuohG"
+		}
+	],
+	"properties": {
+		"cert_id": {
+			"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+		},
+		"certificate": {
+			"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-enabled"
+		},
+		"hostname": {
+			"$ref": "#/components/schemas/schemas-hostname"
+		},
+		"id": {
+			"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+		},
+		"private_key": {
+			"$ref": "#/components/schemas/schemas-private_key"
+		}
+	},
+	"type": "object"
+}

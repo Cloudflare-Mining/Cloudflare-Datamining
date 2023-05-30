@@ -6,18 +6,7 @@
 		{
 			"properties": {
 				"result": {
-					"items": {
-						"properties": {
-							"created": {
-								"$ref": "#/components/schemas/signing_key_created"
-							},
-							"id": {
-								"$ref": "#/components/schemas/schemas-identifier-Hs82UeHK"
-							}
-						},
-						"type": "object"
-					},
-					"type": "array"
+					"$ref": "#/components/schemas/keys_response"
 				}
 			}
 		}

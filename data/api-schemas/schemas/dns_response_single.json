@@ -1,12 +1,12 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"$ref": "#/components/schemas/api-response-single-ARhOevUA"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/dns-record-REkjIMhc"
+					"$ref": "#/components/schemas/dns-record"
 				}
 			},
 			"type": "object"

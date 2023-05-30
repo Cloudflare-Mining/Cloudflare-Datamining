@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"created_at": {
+			"$ref": "#/components/schemas/webhooks_components-schemas-created_at"
+		},
+		"id": {
+			"$ref": "#/components/schemas/uuid"
+		},
+		"last_failure": {
+			"$ref": "#/components/schemas/last_failure"
+		},
+		"last_success": {
+			"$ref": "#/components/schemas/last_success"
+		},
+		"name": {
+			"$ref": "#/components/schemas/webhooks_components-schemas-name"
+		},
+		"secret": {
+			"$ref": "#/components/schemas/secret"
+		},
+		"type": {
+			"$ref": "#/components/schemas/webhooks_components-schemas-type"
+		},
+		"url": {
+			"$ref": "#/components/schemas/webhooks_components-schemas-url"
+		}
+	},
+	"type": "object"
+}

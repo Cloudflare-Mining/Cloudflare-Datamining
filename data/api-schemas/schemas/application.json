@@ -1,16 +1,12 @@
 {
+	"description": "Application that the hostname belongs to.",
 	"properties": {
-		"application_type_id": {
-			"$ref": "#/components/schemas/app_type_id"
-		},
-		"created_at": {
-			"$ref": "#/components/schemas/timestamp"
-		},
 		"id": {
-			"$ref": "#/components/schemas/app_id"
+			"type": "integer"
 		},
 		"name": {
-			"$ref": "#/components/schemas/app-types_components-schemas-name"
+			"example": "CLOUDFLARE",
+			"type": "string"
 		}
 	},
 	"type": "object"

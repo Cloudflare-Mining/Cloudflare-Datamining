@@ -1,0 +1,32 @@
+{
+	"properties": {
+		"account": {
+			"$ref": "#/components/schemas/schemas-account"
+		},
+		"api_access_enabled": {
+			"$ref": "#/components/schemas/api_access_enabled"
+		},
+		"code": {
+			"$ref": "#/components/schemas/code"
+		},
+		"id": {
+			"$ref": "#/components/schemas/membership_components-schemas-identifier"
+		},
+		"permissions": {
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/permissions"
+				}
+			],
+			"description": "All access permissions for the user at the account.",
+			"readOnly": true
+		},
+		"roles": {
+			"$ref": "#/components/schemas/roles"
+		},
+		"status": {
+			"$ref": "#/components/schemas/schemas-status-q7sXurUj"
+		}
+	},
+	"type": "object"
+}

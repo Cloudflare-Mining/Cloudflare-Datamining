@@ -41,12 +41,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/service-tokens-vp0f0CUN"
+											"$ref": "#/components/schemas/service-tokens"
 										}
 									}
 								}
@@ -64,12 +64,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/service-tokens-vp0f0CUN"
+													"$ref": "#/components/schemas/service-tokens"
 												}
 											}
 										}
@@ -314,14 +314,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"client_id": {
-													"$ref": "#/components/schemas/client_id-PuYugzV2"
+													"$ref": "#/components/schemas/client_id"
 												},
 												"client_secret": {
 													"$ref": "#/components/schemas/client_secret"
@@ -356,14 +356,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"client_id": {
-															"$ref": "#/components/schemas/client_id-PuYugzV2"
+															"$ref": "#/components/schemas/client_id"
 														},
 														"client_secret": {
 															"$ref": "#/components/schemas/client_secret"
@@ -504,12 +504,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/service-tokens-vp0f0CUN"
+											"$ref": "#/components/schemas/service-tokens"
 										}
 									}
 								}
@@ -527,12 +527,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/service-tokens-vp0f0CUN"
+													"$ref": "#/components/schemas/service-tokens"
 												}
 											}
 										}

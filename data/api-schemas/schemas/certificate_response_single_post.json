@@ -1,14 +1,14 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-gF4eeS8E"
+			"$ref": "#/components/schemas/api-response-single"
 		},
 		{
 			"properties": {
 				"result": {
 					"allOf": [
 						{
-							"$ref": "#/components/schemas/certificateObjectPost"
+							"$ref": "#/components/schemas/certificateObjectPost-95Yjf006"
 						}
 					],
 					"type": "object"

@@ -1,0 +1,32 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"pools": {
+							"additionalProperties": true,
+							"example": {
+								"abwlnp5jbqn45ecgxd03erbgtxtqai0d": "WNAM Datacenter",
+								"ve8h9lrcip5n5bbga9yqmdws28ay5d0l": "EEU Datacenter"
+							},
+							"type": "object",
+							"x-patternProperties": {
+								"^[a-z0-9]{32}$": {
+									"type": "string"
+								}
+							}
+						},
+						"preview_id": {
+							"$ref": "#/components/schemas/monitor_components-schemas-identifier"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

@@ -298,7 +298,7 @@
 								"$ref": "#/components/schemas/frequency"
 							},
 							"id": {
-								"$ref": "#/components/schemas/schemas-identifier-SgTi3Oi0"
+								"$ref": "#/components/schemas/schemas-identifier-Dn1beitM"
 							},
 							"price": {
 								"$ref": "#/components/schemas/price"
@@ -307,10 +307,10 @@
 								"$ref": "#/components/schemas/rate_plan"
 							},
 							"state": {
-								"$ref": "#/components/schemas/state-evXmhX2L"
+								"$ref": "#/components/schemas/state"
 							},
 							"zone": {
-								"$ref": "#/components/schemas/zone"
+								"$ref": "#/components/schemas/zone-bexpalPS"
 							}
 						},
 						"type": "object"
@@ -326,7 +326,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-WRl2jXYN"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -350,7 +350,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-WRl2jXYN"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {

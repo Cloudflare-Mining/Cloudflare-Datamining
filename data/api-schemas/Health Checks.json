@@ -41,14 +41,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+									"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/identifier"
+													"$ref": "#/components/schemas/identifier-vEAdcV7Y"
 												}
 											},
 											"type": "object"
@@ -69,14 +69,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+											"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier"
+															"$ref": "#/components/schemas/identifier-vEAdcV7Y"
 														}
 													},
 													"type": "object"
@@ -202,14 +202,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+									"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/identifier"
+													"$ref": "#/components/schemas/identifier-vEAdcV7Y"
 												}
 											},
 											"type": "object"
@@ -230,14 +230,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+											"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier"
+															"$ref": "#/components/schemas/identifier-vEAdcV7Y"
 														}
 													},
 													"type": "object"
@@ -496,7 +496,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -519,7 +519,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -641,7 +641,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -664,7 +664,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -797,7 +797,7 @@
 								"$ref": "#/components/schemas/consecutive_successes"
 							},
 							"description": {
-								"$ref": "#/components/schemas/description-xEj7VJc8"
+								"$ref": "#/components/schemas/description"
 							},
 							"http_config": {
 								"$ref": "#/components/schemas/http_config"
@@ -841,7 +841,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -864,7 +864,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -985,7 +985,7 @@
 								"$ref": "#/components/schemas/consecutive_successes"
 							},
 							"description": {
-								"$ref": "#/components/schemas/description-xEj7VJc8"
+								"$ref": "#/components/schemas/description"
 							},
 							"http_config": {
 								"$ref": "#/components/schemas/http_config"
@@ -1029,7 +1029,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -1052,7 +1052,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -1173,7 +1173,7 @@
 								"$ref": "#/components/schemas/consecutive_successes"
 							},
 							"description": {
-								"$ref": "#/components/schemas/description-xEj7VJc8"
+								"$ref": "#/components/schemas/description"
 							},
 							"http_config": {
 								"$ref": "#/components/schemas/http_config"
@@ -1217,7 +1217,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -1240,7 +1240,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -1373,7 +1373,7 @@
 								"$ref": "#/components/schemas/consecutive_successes"
 							},
 							"description": {
-								"$ref": "#/components/schemas/description-xEj7VJc8"
+								"$ref": "#/components/schemas/description"
 							},
 							"http_config": {
 								"$ref": "#/components/schemas/http_config"
@@ -1417,7 +1417,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -1440,7 +1440,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-lNLgmMMv"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {

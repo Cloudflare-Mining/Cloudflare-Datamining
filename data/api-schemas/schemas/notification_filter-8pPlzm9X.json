@@ -1,0 +1,21 @@
+{
+	"description": "Filter pool and origin health notifications by resource type or health status. Use null to reset.",
+	"example": {
+		"origin": {
+			"disable": true
+		},
+		"pool": {
+			"healthy": false
+		}
+	},
+	"nullable": true,
+	"properties": {
+		"origin": {
+			"$ref": "#/components/schemas/filter_options-8BF5a9Hx"
+		},
+		"pool": {
+			"$ref": "#/components/schemas/filter_options-8BF5a9Hx"
+		}
+	},
+	"type": "object"
+}

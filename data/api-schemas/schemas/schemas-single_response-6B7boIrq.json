@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-ch9cW5fX"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/locations"
+				}
+			}
+		}
+	]
+}

@@ -36,7 +36,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -59,7 +59,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -165,7 +165,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+												"$ref": "#/components/schemas/device-posture-integrations-pXL5TiKu"
 											},
 											"type": "array"
 										}
@@ -191,7 +191,7 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+														"$ref": "#/components/schemas/device-posture-integrations-pXL5TiKu"
 													},
 													"type": "array"
 												}
@@ -299,12 +299,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+											"$ref": "#/components/schemas/device-posture-integrations-pXL5TiKu"
 										}
 									}
 								}
@@ -322,12 +322,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+													"$ref": "#/components/schemas/device-posture-integrations-pXL5TiKu"
 												}
 											}
 										}
@@ -441,16 +441,16 @@
 								},
 								"oneOf": [
 									{
-										"$ref": "#/components/schemas/workspace_one_config_request-7ccaWKKu"
+										"$ref": "#/components/schemas/workspace_one_config_request-zdqVhxMQ"
 									},
 									{
-										"$ref": "#/components/schemas/crowdstrike_config_request-ChCiehcW"
+										"$ref": "#/components/schemas/crowdstrike_config_request-mz19YPsA"
 									},
 									{
-										"$ref": "#/components/schemas/uptycs_config_request-X9HEl5cN"
+										"$ref": "#/components/schemas/uptycs_config_request-TEI7CAa1"
 									},
 									{
-										"$ref": "#/components/schemas/intune_config_request-zWrA6yqc"
+										"$ref": "#/components/schemas/intune_config_request-8rczvxaV"
 									}
 								],
 								"type": "object"
@@ -489,12 +489,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+											"$ref": "#/components/schemas/device-posture-integrations-pXL5TiKu"
 										}
 									}
 								}
@@ -512,12 +512,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+													"$ref": "#/components/schemas/device-posture-integrations-pXL5TiKu"
 												}
 											}
 										}
@@ -620,16 +620,16 @@
 								},
 								"oneOf": [
 									{
-										"$ref": "#/components/schemas/workspace_one_config_request-7ccaWKKu"
+										"$ref": "#/components/schemas/workspace_one_config_request-zdqVhxMQ"
 									},
 									{
-										"$ref": "#/components/schemas/crowdstrike_config_request-ChCiehcW"
+										"$ref": "#/components/schemas/crowdstrike_config_request-mz19YPsA"
 									},
 									{
-										"$ref": "#/components/schemas/uptycs_config_request-X9HEl5cN"
+										"$ref": "#/components/schemas/uptycs_config_request-TEI7CAa1"
 									},
 									{
-										"$ref": "#/components/schemas/intune_config_request-zWrA6yqc"
+										"$ref": "#/components/schemas/intune_config_request-8rczvxaV"
 									}
 								],
 								"type": "object"
@@ -674,12 +674,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+											"$ref": "#/components/schemas/device-posture-integrations-pXL5TiKu"
 										}
 									}
 								}
@@ -697,12 +697,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-posture-integrations-BXwY1dPf"
+													"$ref": "#/components/schemas/device-posture-integrations-pXL5TiKu"
 												}
 											}
 										}

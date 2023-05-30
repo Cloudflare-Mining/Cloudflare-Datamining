@@ -49,7 +49,7 @@
 											"nullable": true,
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/schemas-identifier-cy9ANXxl"
+													"$ref": "#/components/schemas/schemas-identifier"
 												}
 											},
 											"required": [
@@ -82,7 +82,7 @@
 													"nullable": true,
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/schemas-identifier-cy9ANXxl"
+															"$ref": "#/components/schemas/schemas-identifier"
 														}
 													},
 													"required": [
@@ -404,7 +404,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+									"$ref": "#/components/schemas/api-response-single-jTUMAqNM"
 								},
 								{
 									"properties": {
@@ -427,7 +427,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+											"$ref": "#/components/schemas/api-response-single-jTUMAqNM"
 										},
 										{
 											"properties": {
@@ -560,7 +560,7 @@
 								"items": {
 									"oneOf": [
 										{
-											"$ref": "#/components/schemas/route-rEaaiAX3"
+											"$ref": "#/components/schemas/route"
 										}
 									]
 								},
@@ -593,7 +593,7 @@
 									}
 								],
 								"items": {
-									"$ref": "#/components/schemas/target-Jxu9micH"
+									"$ref": "#/components/schemas/target"
 								},
 								"type": "array"
 							}
@@ -611,7 +611,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+									"$ref": "#/components/schemas/api-response-single-jTUMAqNM"
 								},
 								{
 									"properties": {
@@ -634,7 +634,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+											"$ref": "#/components/schemas/api-response-single-jTUMAqNM"
 										},
 										{
 											"properties": {
@@ -755,7 +755,7 @@
 								"items": {
 									"oneOf": [
 										{
-											"$ref": "#/components/schemas/route-rEaaiAX3"
+											"$ref": "#/components/schemas/route"
 										}
 									]
 								},
@@ -788,7 +788,7 @@
 									}
 								],
 								"items": {
-									"$ref": "#/components/schemas/target-Jxu9micH"
+									"$ref": "#/components/schemas/target"
 								},
 								"type": "array"
 							}
@@ -810,7 +810,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+									"$ref": "#/components/schemas/api-response-single-jTUMAqNM"
 								},
 								{
 									"properties": {
@@ -833,7 +833,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+											"$ref": "#/components/schemas/api-response-single-jTUMAqNM"
 										},
 										{
 											"properties": {
@@ -966,7 +966,7 @@
 								"items": {
 									"oneOf": [
 										{
-											"$ref": "#/components/schemas/route-rEaaiAX3"
+											"$ref": "#/components/schemas/route"
 										}
 									]
 								},
@@ -999,7 +999,7 @@
 									}
 								],
 								"items": {
-									"$ref": "#/components/schemas/target-Jxu9micH"
+									"$ref": "#/components/schemas/target"
 								},
 								"type": "array"
 							}
@@ -1021,7 +1021,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+									"$ref": "#/components/schemas/api-response-single-jTUMAqNM"
 								},
 								{
 									"properties": {
@@ -1044,7 +1044,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-nzjgxUwy"
+											"$ref": "#/components/schemas/api-response-single-jTUMAqNM"
 										},
 										{
 											"properties": {

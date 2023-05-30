@@ -1,10 +1,10 @@
 {
 	"properties": {
 		"action": {
-			"$ref": "#/components/schemas/action-GFDgdZAo"
+			"$ref": "#/components/schemas/action"
 		},
 		"allowed": {
-			"$ref": "#/components/schemas/allowed-OfSGNrfh"
+			"$ref": "#/components/schemas/allowed"
 		},
 		"app_domain": {
 			"$ref": "#/components/schemas/app_domain"
@@ -13,19 +13,19 @@
 			"$ref": "#/components/schemas/app_uid"
 		},
 		"connection": {
-			"$ref": "#/components/schemas/connection-53h0Vvlv"
+			"$ref": "#/components/schemas/connection"
 		},
 		"created_at": {
 			"$ref": "#/components/schemas/timestamp"
 		},
 		"ip_address": {
-			"$ref": "#/components/schemas/ip-s46BGZ01"
+			"$ref": "#/components/schemas/ip-UkRNioAm"
 		},
 		"ray_id": {
 			"$ref": "#/components/schemas/ray_id"
 		},
 		"user_email": {
-			"$ref": "#/components/schemas/email-MPb4lieV"
+			"$ref": "#/components/schemas/email"
 		}
 	},
 	"type": "object"

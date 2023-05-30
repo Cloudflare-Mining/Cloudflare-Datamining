@@ -1,0 +1,61 @@
+{
+	"properties": {
+		"created_on": {
+			"description": "When the Keyless SSL was created.",
+			"example": "2014-01-01T05:20:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/enabled-9Ay41wiJ"
+		},
+		"host": {
+			"$ref": "#/components/schemas/host-iYz14ANv"
+		},
+		"id": {
+			"$ref": "#/components/schemas/schemas-identifier-0TlPcVdS"
+		},
+		"modified_on": {
+			"description": "When the Keyless SSL was last modified.",
+			"example": "2014-01-01T05:20:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-caxUh0UI"
+		},
+		"permissions": {
+			"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+			"example": [
+				"#ssl:read",
+				"#ssl:edit"
+			],
+			"items": {},
+			"readOnly": true,
+			"type": "array"
+		},
+		"port": {
+			"$ref": "#/components/schemas/port-2AJY1MKX"
+		},
+		"status": {
+			"$ref": "#/components/schemas/schemas-status"
+		},
+		"tunnel": {
+			"$ref": "#/components/schemas/keyless_tunnel"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"host",
+		"port",
+		"status",
+		"enabled",
+		"permissions",
+		"created_on",
+		"modified_on"
+	],
+	"type": "object"
+}

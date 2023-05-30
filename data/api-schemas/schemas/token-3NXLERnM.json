@@ -1,0 +1,38 @@
+{
+	"properties": {
+		"condition": {
+			"$ref": "#/components/schemas/condition"
+		},
+		"expires_on": {
+			"$ref": "#/components/schemas/expires_on-Rlh27i55"
+		},
+		"id": {
+			"$ref": "#/components/schemas/components-schemas-identifier-1uF7sH1a"
+		},
+		"issued_on": {
+			"$ref": "#/components/schemas/issued_on-zQV8TjwO"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/modified_on-0hDm9E3S"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-ta99g9nL"
+		},
+		"not_before": {
+			"$ref": "#/components/schemas/not_before"
+		},
+		"policies": {
+			"$ref": "#/components/schemas/policies-iggCmBUE"
+		},
+		"status": {
+			"$ref": "#/components/schemas/status-oUta7Myi"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"status",
+		"policies"
+	],
+	"type": "object"
+}

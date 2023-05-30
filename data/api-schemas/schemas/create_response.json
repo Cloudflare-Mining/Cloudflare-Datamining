@@ -1,14 +1,14 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
 						"client_id": {
-							"$ref": "#/components/schemas/client_id-PuYugzV2"
+							"$ref": "#/components/schemas/client_id"
 						},
 						"client_secret": {
 							"$ref": "#/components/schemas/client_secret"

@@ -1,0 +1,16 @@
+{
+	"properties": {
+		"email": {
+			"$ref": "#/components/schemas/email-quiivW1U"
+		},
+		"id": {
+			"$ref": "#/components/schemas/uuid"
+		},
+		"name": {
+			"description": "The enrolled device user's name.",
+			"example": "John Appleseed",
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

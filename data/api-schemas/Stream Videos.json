@@ -290,7 +290,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-zdszEzxt"
 								},
 								{
 									"properties": {
@@ -605,7 +605,7 @@
 								"$ref": "#/components/schemas/media_metadata"
 							},
 							"requireSignedURLs": {
-								"$ref": "#/components/schemas/requireSignedURLs"
+								"$ref": "#/components/schemas/requireSignedURLs-CqudcD1m"
 							},
 							"thumbnailTimestampPct": {
 								"$ref": "#/components/schemas/thumbnailTimestampPct"
@@ -627,7 +627,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-zdszEzxt"
 								},
 								{
 									"properties": {
@@ -808,7 +808,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-zdszEzxt"
 								},
 								{
 									"properties": {
@@ -935,7 +935,7 @@
 								"$ref": "#/components/schemas/creator"
 							},
 							"requireSignedURLs": {
-								"$ref": "#/components/schemas/requireSignedURLs"
+								"$ref": "#/components/schemas/requireSignedURLs-CqudcD1m"
 							},
 							"thumbnailTimestampPct": {
 								"$ref": "#/components/schemas/thumbnailTimestampPct"
@@ -965,7 +965,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-zdszEzxt"
 								},
 								{
 									"properties": {
@@ -1096,7 +1096,7 @@
 								"$ref": "#/components/schemas/maxDurationSeconds"
 							},
 							"requireSignedURLs": {
-								"$ref": "#/components/schemas/requireSignedURLs"
+								"$ref": "#/components/schemas/requireSignedURLs-CqudcD1m"
 							},
 							"thumbnailTimestampPct": {
 								"$ref": "#/components/schemas/thumbnailTimestampPct"
@@ -1121,14 +1121,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-zdszEzxt"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"uid": {
-													"$ref": "#/components/schemas/identifier-X6d0M4JV"
+													"$ref": "#/components/schemas/identifier-X5FiHS0P"
 												},
 												"uploadURL": {
 													"description": "The URL an unauthenticated upload can use for a single `HTTP POST multipart/form-data` request.",

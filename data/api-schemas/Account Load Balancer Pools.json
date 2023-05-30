@@ -37,14 +37,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/schemas-identifier-0DiQOHIL"
+													"$ref": "#/components/schemas/schemas-identifier-WjQDGAkS"
 												}
 											},
 											"type": "object"
@@ -65,14 +65,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/schemas-identifier-0DiQOHIL"
+															"$ref": "#/components/schemas/schemas-identifier-WjQDGAkS"
 														}
 													},
 													"type": "object"
@@ -316,7 +316,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -339,7 +339,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -448,7 +448,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -490,7 +490,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -1093,10 +1093,10 @@
 								"nullable": true,
 								"properties": {
 									"origin": {
-										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+										"$ref": "#/components/schemas/filter_options-uKPFZR4O"
 									},
 									"pool": {
-										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+										"$ref": "#/components/schemas/filter_options-uKPFZR4O"
 									}
 								},
 								"type": "object"
@@ -1119,7 +1119,7 @@
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
 								"items": {
-									"$ref": "#/components/schemas/origin-CvlVjxij"
+									"$ref": "#/components/schemas/origin"
 								},
 								"type": "array"
 							}
@@ -1136,7 +1136,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -1159,7 +1159,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -1345,10 +1345,10 @@
 								"nullable": true,
 								"properties": {
 									"origin": {
-										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+										"$ref": "#/components/schemas/filter_options-uKPFZR4O"
 									},
 									"pool": {
-										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+										"$ref": "#/components/schemas/filter_options-uKPFZR4O"
 									}
 								},
 								"type": "object"
@@ -1371,7 +1371,7 @@
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
 								"items": {
-									"$ref": "#/components/schemas/origin-CvlVjxij"
+									"$ref": "#/components/schemas/origin"
 								},
 								"type": "array"
 							}
@@ -1392,7 +1392,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -1415,7 +1415,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -1619,7 +1619,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -1638,7 +1638,7 @@
 													"type": "object"
 												},
 												"preview_id": {
-													"$ref": "#/components/schemas/identifier-Gsh6hrUK"
+													"$ref": "#/components/schemas/identifier-4hprbTMg"
 												}
 											},
 											"type": "object"
@@ -1659,7 +1659,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -1678,7 +1678,7 @@
 															"type": "object"
 														},
 														"preview_id": {
-															"$ref": "#/components/schemas/identifier-Gsh6hrUK"
+															"$ref": "#/components/schemas/identifier-4hprbTMg"
 														}
 													},
 													"type": "object"
@@ -1905,10 +1905,10 @@
 								"nullable": true,
 								"properties": {
 									"origin": {
-										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+										"$ref": "#/components/schemas/filter_options-uKPFZR4O"
 									},
 									"pool": {
-										"$ref": "#/components/schemas/filter_options-0jd3PlK8"
+										"$ref": "#/components/schemas/filter_options-uKPFZR4O"
 									}
 								},
 								"type": "object"
@@ -1931,7 +1931,7 @@
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
 								"items": {
-									"$ref": "#/components/schemas/origin-CvlVjxij"
+									"$ref": "#/components/schemas/origin"
 								},
 								"type": "array"
 							}
@@ -1952,7 +1952,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -1975,7 +1975,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {

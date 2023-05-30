@@ -1,0 +1,36 @@
+{
+	"properties": {
+		"email": {
+			"$ref": "#/components/schemas/email-quiivW1U"
+		},
+		"id": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		},
+		"name": {
+			"$ref": "#/components/schemas/member_components-schemas-name"
+		},
+		"roles": {
+			"description": "Roles assigned to this Member.",
+			"items": {
+				"$ref": "#/components/schemas/schemas-role-ePJBM1Ah"
+			},
+			"type": "array"
+		},
+		"status": {
+			"description": "A member's status in the organization.",
+			"enum": [
+				"accepted",
+				"invited"
+			],
+			"example": "accepted"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"email",
+		"status",
+		"roles"
+	],
+	"type": "object"
+}

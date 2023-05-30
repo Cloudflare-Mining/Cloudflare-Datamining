@@ -37,14 +37,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/schemas-uuid-wVhAJMvq"
+													"$ref": "#/components/schemas/schemas-uuid"
 												}
 											},
 											"type": "object"
@@ -65,14 +65,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/schemas-uuid-wVhAJMvq"
+															"$ref": "#/components/schemas/schemas-uuid"
 														}
 													},
 													"type": "object"
@@ -309,7 +309,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
@@ -332,7 +332,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
@@ -434,14 +434,14 @@
 							"exclude": {
 								"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-cepHFsll"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							},
 							"include": {
 								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-cepHFsll"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							},
@@ -453,7 +453,7 @@
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-cepHFsll"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							}
@@ -474,7 +474,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
@@ -497,7 +497,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
@@ -607,14 +607,14 @@
 							"exclude": {
 								"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-cepHFsll"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							},
 							"include": {
 								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-cepHFsll"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							},
@@ -626,7 +626,7 @@
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-cepHFsll"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							}
@@ -647,7 +647,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
@@ -670,7 +670,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {

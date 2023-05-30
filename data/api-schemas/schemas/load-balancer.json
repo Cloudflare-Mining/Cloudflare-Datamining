@@ -13,10 +13,10 @@
 			"$ref": "#/components/schemas/default_pools"
 		},
 		"description": {
-			"$ref": "#/components/schemas/components-schemas-description-39RbqJAC"
+			"$ref": "#/components/schemas/components-schemas-description-yBxW1VOz"
 		},
 		"enabled": {
-			"$ref": "#/components/schemas/components-schemas-enabled-fmqTscmC"
+			"$ref": "#/components/schemas/components-schemas-enabled"
 		},
 		"fallback_pool": {
 			"$ref": "#/components/schemas/fallback_pool"
@@ -31,13 +31,13 @@
 			"$ref": "#/components/schemas/timestamp"
 		},
 		"name": {
-			"$ref": "#/components/schemas/components-schemas-name-ytPpvlEw"
+			"$ref": "#/components/schemas/components-schemas-name-KJy54IFT"
 		},
 		"pop_pools": {
 			"$ref": "#/components/schemas/pop_pools"
 		},
 		"proxied": {
-			"$ref": "#/components/schemas/proxied"
+			"$ref": "#/components/schemas/proxied-SnzF4xT7"
 		},
 		"random_steering": {
 			"$ref": "#/components/schemas/random_steering"
@@ -46,7 +46,7 @@
 			"$ref": "#/components/schemas/region_pools"
 		},
 		"rules": {
-			"$ref": "#/components/schemas/rules-M1LFD6SI"
+			"$ref": "#/components/schemas/rules-dxqM0hug"
 		},
 		"session_affinity": {
 			"$ref": "#/components/schemas/session_affinity"
@@ -61,7 +61,7 @@
 			"$ref": "#/components/schemas/steering_policy"
 		},
 		"ttl": {
-			"$ref": "#/components/schemas/ttl-lReRioZw"
+			"$ref": "#/components/schemas/ttl-7jDirSbw"
 		}
 	},
 	"type": "object"

@@ -1,21 +1,5 @@
 {
-	"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to 'true'.",
-	"enum": [
-		"on",
-		"off",
-		"allow",
-		"block",
-		"scan",
-		"noscan",
-		"safesearch",
-		"ytrestricted",
-		"isolate",
-		"noisolate",
-		"override",
-		"l4_override",
-		"egress",
-		"audit_ssh"
-	],
-	"example": "allow",
+	"description": "The event that occurred, such as a login attempt.",
+	"example": "login",
 	"type": "string"
 }

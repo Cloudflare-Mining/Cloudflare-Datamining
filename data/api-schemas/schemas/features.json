@@ -1,12 +1,8 @@
 {
-	"anyOf": [
-		{
-			"$ref": "#/components/schemas/thresholds"
-		},
-		{
-			"$ref": "#/components/schemas/parameter_schemas"
-		}
-	],
-	"readOnly": true,
-	"type": "object"
+	"description": "Features enabled for the Cloudflare Tunnel.",
+	"items": {
+		"example": "ha-origin",
+		"type": "string"
+	},
+	"type": "array"
 }

@@ -1,61 +1,35 @@
 {
 	"properties": {
-		"created_on": {
-			"description": "When the Keyless SSL was created.",
-			"example": "2014-01-01T05:20:00Z",
-			"format": "date-time",
+		"editable": {
+			"default": true,
+			"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+			"enum": [
+				true,
+				false
+			],
 			"readOnly": true,
-			"type": "string"
-		},
-		"enabled": {
-			"$ref": "#/components/schemas/enabled-WP0IgeQ1"
-		},
-		"host": {
-			"$ref": "#/components/schemas/host"
+			"type": "boolean"
 		},
 		"id": {
-			"$ref": "#/components/schemas/schemas-identifier"
+			"description": "Identifier of the zone setting.",
+			"example": "development_mode",
+			"type": "string"
 		},
 		"modified_on": {
-			"description": "When the Keyless SSL was last modified.",
-			"example": "2014-01-01T05:20:00Z",
+			"description": "last time this setting was modified.",
+			"example": "2014-01-01T05:20:00.12345Z",
 			"format": "date-time",
+			"nullable": true,
 			"readOnly": true,
 			"type": "string"
 		},
-		"name": {
-			"$ref": "#/components/schemas/name-klmP32pV"
-		},
-		"permissions": {
-			"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
-			"example": [
-				"#ssl:read",
-				"#ssl:edit"
-			],
-			"items": {},
-			"readOnly": true,
-			"type": "array"
-		},
-		"port": {
-			"$ref": "#/components/schemas/port"
-		},
-		"status": {
-			"$ref": "#/components/schemas/schemas-status"
-		},
-		"tunnel": {
-			"$ref": "#/components/schemas/keyless_tunnel"
+		"value": {
+			"description": "Current value of the zone setting.",
+			"example": "on"
 		}
 	},
 	"required": [
 		"id",
-		"name",
-		"host",
-		"port",
-		"status",
-		"enabled",
-		"permissions",
-		"created_on",
-		"modified_on"
-	],
-	"type": "object"
+		"value"
+	]
 }

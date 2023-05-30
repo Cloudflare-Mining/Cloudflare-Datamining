@@ -1,28 +1,5 @@
 {
-	"properties": {
-		"additional_information": {
-			"$ref": "#/components/schemas/additional_information"
-		},
-		"application": {
-			"$ref": "#/components/schemas/application-sFKWpl5O"
-		},
-		"content_categories": {
-			"$ref": "#/components/schemas/content_categories"
-		},
-		"domain": {
-			"$ref": "#/components/schemas/domain_name"
-		},
-		"popularity_rank": {
-			"$ref": "#/components/schemas/popularity_rank"
-		},
-		"resolves_to_refs": {
-			"$ref": "#/components/schemas/resolves_to_refs"
-		},
-		"risk_score": {
-			"$ref": "#/components/schemas/risk_score"
-		},
-		"risk_types": {
-			"$ref": "#/components/schemas/risk_types"
-		}
-	}
+	"description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.",
+	"example": "test.example.com/admin",
+	"type": "string"
 }

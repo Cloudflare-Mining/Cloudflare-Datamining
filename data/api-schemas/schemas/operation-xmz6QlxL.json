@@ -1,0 +1,30 @@
+{
+	"properties": {
+		"endpoint": {
+			"$ref": "#/components/schemas/endpoint"
+		},
+		"features": {
+			"$ref": "#/components/schemas/features-cWow81sK"
+		},
+		"host": {
+			"$ref": "#/components/schemas/host"
+		},
+		"last_updated": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"method": {
+			"$ref": "#/components/schemas/method-mUYK3Lye"
+		},
+		"operation_id": {
+			"$ref": "#/components/schemas/uuid"
+		}
+	},
+	"required": [
+		"operation_id",
+		"method",
+		"host",
+		"endpoint",
+		"last_updated"
+	],
+	"type": "object"
+}

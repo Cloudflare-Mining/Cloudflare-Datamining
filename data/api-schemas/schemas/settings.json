@@ -1,8 +1,27 @@
 {
-	"allOf": [
-		{
-			"$ref": "#/components/schemas/email-settings_properties"
+	"additionalProperties": false,
+	"properties": {
+		"china_network": {
+			"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
+			"example": false,
+			"type": "boolean"
+		},
+		"client_certificate_forwarding": {
+			"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
+			"example": true,
+			"type": "boolean"
+		},
+		"hostname": {
+			"description": "The hostname that these settings apply to.",
+			"example": "admin.example.com",
+			"type": "string"
 		}
+	},
+	"required": [
+		"hostname",
+		"china_network",
+		"client_certificate_forwarding"
 	],
+	"title": "Hostname Settings",
 	"type": "object"
 }

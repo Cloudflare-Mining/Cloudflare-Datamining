@@ -41,7 +41,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
@@ -69,7 +69,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
@@ -181,7 +181,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/certificates-QJ8Ffq9P"
+												"$ref": "#/components/schemas/certificates"
 											},
 											"type": "array"
 										}
@@ -207,7 +207,7 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/certificates-QJ8Ffq9P"
+														"$ref": "#/components/schemas/certificates"
 													},
 													"type": "array"
 												}
@@ -317,12 +317,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/certificates-QJ8Ffq9P"
+											"$ref": "#/components/schemas/certificates"
 										}
 									}
 								}
@@ -340,12 +340,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/certificates-QJ8Ffq9P"
+													"$ref": "#/components/schemas/certificates"
 												}
 											}
 										}
@@ -447,7 +447,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/settings-rB1OjBdd"
+												"$ref": "#/components/schemas/settings"
 											},
 											"type": "array"
 										}
@@ -473,7 +473,7 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/settings-rB1OjBdd"
+														"$ref": "#/components/schemas/settings"
 													},
 													"type": "array"
 												}
@@ -605,12 +605,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/certificates-QJ8Ffq9P"
+											"$ref": "#/components/schemas/certificates"
 										}
 									}
 								}
@@ -628,12 +628,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/certificates-QJ8Ffq9P"
+													"$ref": "#/components/schemas/certificates"
 												}
 											}
 										}
@@ -770,12 +770,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/certificates-QJ8Ffq9P"
+											"$ref": "#/components/schemas/certificates"
 										}
 									}
 								}
@@ -793,12 +793,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/certificates-QJ8Ffq9P"
+													"$ref": "#/components/schemas/certificates"
 												}
 											}
 										}
@@ -939,12 +939,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/settings-rB1OjBdd"
+											"$ref": "#/components/schemas/settings"
 										}
 									}
 								}
@@ -962,12 +962,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/settings-rB1OjBdd"
+													"$ref": "#/components/schemas/settings"
 												}
 											}
 										}

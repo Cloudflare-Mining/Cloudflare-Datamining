@@ -67,12 +67,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-4E3xSwyV"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"query": {
-											"$ref": "#/components/schemas/query_response"
+											"$ref": "#/components/schemas/query_response-ohZn6hCj"
 										},
 										"result": {
 											"$ref": "#/components/schemas/datacenters"
@@ -93,12 +93,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-4E3xSwyV"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"query": {
-													"$ref": "#/components/schemas/query_response"
+													"$ref": "#/components/schemas/query_response-ohZn6hCj"
 												},
 												"result": {
 													"$ref": "#/components/schemas/datacenters"
@@ -258,12 +258,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-4E3xSwyV"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"query": {
-											"$ref": "#/components/schemas/query_response"
+											"$ref": "#/components/schemas/query_response-ohZn6hCj"
 										},
 										"result": {
 											"$ref": "#/components/schemas/dashboard"
@@ -284,12 +284,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-4E3xSwyV"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"query": {
-													"$ref": "#/components/schemas/query_response"
+													"$ref": "#/components/schemas/query_response-ohZn6hCj"
 												},
 												"result": {
 													"$ref": "#/components/schemas/dashboard"

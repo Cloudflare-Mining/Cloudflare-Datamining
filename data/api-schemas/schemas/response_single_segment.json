@@ -1,23 +1,23 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-lOEXq4i2"
+			"$ref": "#/components/schemas/api-response-single"
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
 						"expires_on": {
-							"$ref": "#/components/schemas/expires_on-IOq5ICFo"
+							"$ref": "#/components/schemas/expires_on-yW9gRpHi"
 						},
 						"id": {
-							"$ref": "#/components/schemas/components-schemas-identifier-KoAd2pmi"
+							"$ref": "#/components/schemas/components-schemas-identifier-11Hr5nwr"
 						},
 						"not_before": {
 							"$ref": "#/components/schemas/not_before"
 						},
 						"status": {
-							"$ref": "#/components/schemas/status-4BfrBCEp"
+							"$ref": "#/components/schemas/status-cBG1sgcu"
 						}
 					},
 					"required": [

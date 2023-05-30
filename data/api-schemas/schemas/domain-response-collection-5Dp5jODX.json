@@ -1,0 +1,18 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/domain-XMDu59Wr"
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

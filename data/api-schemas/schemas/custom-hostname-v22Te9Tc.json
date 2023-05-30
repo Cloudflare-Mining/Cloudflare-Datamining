@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/customhostname-LqJZbcjb"
+		}
+	],
+	"properties": {
+		"hostname": {
+			"$ref": "#/components/schemas/hostname"
+		},
+		"id": {
+			"$ref": "#/components/schemas/custom-hostname_components-schemas-identifier"
+		},
+		"ssl": {
+			"$ref": "#/components/schemas/ssl-14V2QGGM"
+		}
+	},
+	"required": [
+		"id",
+		"hostname",
+		"ssl"
+	],
+	"type": "object"
+}

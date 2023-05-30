@@ -1,7 +1,7 @@
 {
 	"properties": {
 		"email": {
-			"$ref": "#/components/schemas/email"
+			"$ref": "#/components/schemas/email-v9Dpm0FM"
 		},
 		"id": {
 			"$ref": "#/components/schemas/common_components-schemas-identifier"
@@ -12,7 +12,7 @@
 		"roles": {
 			"description": "Roles assigned to this Member.",
 			"items": {
-				"$ref": "#/components/schemas/schemas-role-2YxwBEa4"
+				"$ref": "#/components/schemas/schemas-role"
 			},
 			"type": "array"
 		},

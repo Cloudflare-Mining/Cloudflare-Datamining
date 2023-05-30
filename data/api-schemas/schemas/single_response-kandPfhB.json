@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/organizations"
+				}
+			}
+		}
+	]
+}

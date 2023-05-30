@@ -1,5 +1,7 @@
 {
-	"description": "Arbitrary JSON to be associated with a key/value pair.",
-	"example": "{\"someMetadataKey\": \"someMetadataValue\"}",
-	"type": "string"
+	"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
+	"example": {
+		"key": "value"
+	},
+	"type": "object"
 }

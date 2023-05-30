@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"allowed_idps": {
+			"$ref": "#/components/schemas/allowed_idps"
+		},
+		"app_launcher_visible": {
+			"$ref": "#/components/schemas/app_launcher_visible"
+		},
+		"auto_redirect_to_identity": {
+			"$ref": "#/components/schemas/auto_redirect_to_identity-WC0wZt0C"
+		},
+		"logo_url": {
+			"$ref": "#/components/schemas/logo_url"
+		},
+		"name": {
+			"$ref": "#/components/schemas/apps_components-schemas-name"
+		},
+		"saas_app": {
+			"$ref": "#/components/schemas/saas_app"
+		},
+		"type": {
+			"description": "The application type.",
+			"example": "saas",
+			"type": "string"
+		}
+	},
+	"title": "SaaS Application",
+	"type": "object"
+}

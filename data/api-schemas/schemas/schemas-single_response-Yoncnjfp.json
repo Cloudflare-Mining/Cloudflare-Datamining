@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/whois"
+				}
+			}
+		}
+	]
+}

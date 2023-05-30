@@ -41,14 +41,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/id-sa31z9mO"
+													"$ref": "#/components/schemas/id"
 												}
 											},
 											"type": "object"
@@ -69,14 +69,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/id-sa31z9mO"
+															"$ref": "#/components/schemas/id"
 														}
 													},
 													"type": "object"
@@ -187,7 +187,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
@@ -210,7 +210,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {
@@ -317,7 +317,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/ca-QPx7XSbK"
+												"$ref": "#/components/schemas/ca"
 											},
 											"type": "array"
 										}
@@ -343,7 +343,7 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/ca-QPx7XSbK"
+														"$ref": "#/components/schemas/ca"
 													},
 													"type": "array"
 												}
@@ -459,7 +459,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 								},
 								{
 									"properties": {
@@ -482,7 +482,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 										},
 										{
 											"properties": {

@@ -1,7 +1,7 @@
 {
-	"description": "The keyless SSL name.",
-	"example": "example.com",
+	"description": "RFC3986-compliant host.",
+	"example": "www.example.com",
 	"format": "hostname",
-	"maxLength": 253,
+	"maxLength": 255,
 	"type": "string"
 }

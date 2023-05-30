@@ -1,0 +1,15 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-zdszEzxt"
+		},
+		{
+			"properties": {
+				"result": {
+					"example": "ok",
+					"type": "string"
+				}
+			}
+		}
+	]
+}

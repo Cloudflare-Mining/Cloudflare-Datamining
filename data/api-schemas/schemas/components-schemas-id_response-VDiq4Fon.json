@@ -1,0 +1,19 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"id": {
+							"$ref": "#/components/schemas/components-schemas-identifier-DxCQo3VQ"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

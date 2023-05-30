@@ -1,0 +1,30 @@
+{
+	"description": "Time deltas containing metadata about each bucket of time. The number of buckets (resolution) is determined by the amount of time between the since and until parameters.",
+	"items": {
+		"properties": {
+			"bandwidth": {
+				"$ref": "#/components/schemas/bandwidth"
+			},
+			"pageviews": {
+				"$ref": "#/components/schemas/pageviews"
+			},
+			"requests": {
+				"$ref": "#/components/schemas/schemas-requests"
+			},
+			"since": {
+				"$ref": "#/components/schemas/since-GIJIR7Qk"
+			},
+			"threats": {
+				"$ref": "#/components/schemas/threats"
+			},
+			"uniques": {
+				"$ref": "#/components/schemas/uniques"
+			},
+			"until": {
+				"$ref": "#/components/schemas/until-NgIF9ar8"
+			}
+		},
+		"type": "object"
+	},
+	"type": "array"
+}

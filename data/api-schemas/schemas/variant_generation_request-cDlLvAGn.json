@@ -1,0 +1,18 @@
+{
+	"properties": {
+		"id": {
+			"$ref": "#/components/schemas/variants_components-schemas-identifier"
+		},
+		"neverRequireSignedURLs": {
+			"$ref": "#/components/schemas/neverRequireSignedURLs"
+		},
+		"options": {
+			"$ref": "#/components/schemas/options"
+		}
+	},
+	"required": [
+		"id",
+		"options"
+	],
+	"type": "object"
+}

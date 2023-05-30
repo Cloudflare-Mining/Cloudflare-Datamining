@@ -199,7 +199,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/filters-NDu6QMco"
+												"$ref": "#/components/schemas/filters-KyFChcbL"
 											},
 											"type": "array"
 										}
@@ -225,7 +225,7 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/filters-NDu6QMco"
+														"$ref": "#/components/schemas/filters-KyFChcbL"
 													},
 													"type": "array"
 												}
@@ -537,12 +537,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/filters-NDu6QMco"
+											"$ref": "#/components/schemas/filters-KyFChcbL"
 										}
 									}
 								}
@@ -560,12 +560,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/filters-NDu6QMco"
+													"$ref": "#/components/schemas/filters-KyFChcbL"
 												}
 											}
 										}

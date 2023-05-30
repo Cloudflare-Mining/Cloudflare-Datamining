@@ -33,7 +33,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -61,7 +61,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -169,7 +169,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/load-balancer-MXytDQgm"
+												"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
 											},
 											"type": "array"
 										}
@@ -195,7 +195,7 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/load-balancer-MXytDQgm"
+														"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
 													},
 													"type": "array"
 												}
@@ -297,12 +297,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/load-balancer"
+											"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
 										}
 									}
 								}
@@ -320,12 +320,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/load-balancer"
+													"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
 												}
 											}
 										}
@@ -657,7 +657,7 @@
 													"$ref": "#/components/schemas/steering_policy"
 												},
 												"ttl": {
-													"$ref": "#/components/schemas/ttl-lReRioZw"
+													"$ref": "#/components/schemas/ttl-7jDirSbw"
 												}
 											},
 											"type": "object"
@@ -771,12 +771,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/load-balancer"
+											"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
 										}
 									}
 								}
@@ -794,12 +794,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/load-balancer"
+													"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
 												}
 											}
 										}
@@ -1117,7 +1117,7 @@
 													"$ref": "#/components/schemas/steering_policy"
 												},
 												"ttl": {
-													"$ref": "#/components/schemas/ttl-lReRioZw"
+													"$ref": "#/components/schemas/ttl-7jDirSbw"
 												}
 											},
 											"type": "object"
@@ -1236,12 +1236,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/load-balancer"
+											"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
 										}
 									}
 								}
@@ -1259,12 +1259,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/load-balancer"
+													"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
 												}
 											}
 										}
@@ -1596,7 +1596,7 @@
 													"$ref": "#/components/schemas/steering_policy"
 												},
 												"ttl": {
-													"$ref": "#/components/schemas/ttl-lReRioZw"
+													"$ref": "#/components/schemas/ttl-7jDirSbw"
 												}
 											},
 											"type": "object"
@@ -1715,12 +1715,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/load-balancer"
+											"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
 										}
 									}
 								}
@@ -1738,12 +1738,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u6h1GAZR"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/load-balancer"
+													"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
 												}
 											}
 										}

@@ -1,23 +1,17 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-common"
+			"$ref": "#/components/schemas/api-response-single"
 		},
 		{
 			"properties": {
 				"result": {
-					"nullable": true,
 					"properties": {
-						"message": {
-							"example": "",
-							"type": "string"
-						},
 						"valid": {
 							"example": true,
 							"type": "boolean"
 						}
-					},
-					"type": "object"
+					}
 				}
 			}
 		}

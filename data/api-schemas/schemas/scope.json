@@ -1,12 +1,5 @@
 {
-	"description": "Used only for ECMP routes.",
-	"properties": {
-		"colo_names": {
-			"$ref": "#/components/schemas/colo_names"
-		},
-		"colo_regions": {
-			"$ref": "#/components/schemas/colo_regions"
-		}
-	},
-	"type": "object"
+	"description": "The scope of the URL normalization.",
+	"example": "incoming",
+	"type": "string"
 }

@@ -1,5 +1,23 @@
 {
-	"example": "2001:0DB8::",
-	"format": "ipv6",
-	"type": "string"
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/base"
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"ipv6"
+					],
+					"example": "ipv6"
+				},
+				"value": {
+					"$ref": "#/components/schemas/ipv6_value"
+				}
+			}
+		}
+	],
+	"description": "Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.cloudflare.com/hc/en-us/articles/200168586).",
+	"title": "IPv6"
 }

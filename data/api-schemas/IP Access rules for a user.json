@@ -29,14 +29,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/rule_components-schemas-identifier-Mo7wgQbL"
+													"$ref": "#/components/schemas/rule_components-schemas-identifier-3lc3RcvK"
 												}
 											},
 											"type": "object"
@@ -57,14 +57,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/rule_components-schemas-identifier-Mo7wgQbL"
+															"$ref": "#/components/schemas/rule_components-schemas-identifier-3lc3RcvK"
 														}
 													},
 													"type": "object"
@@ -275,7 +275,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/rule-kEZkSqab"
+												"$ref": "#/components/schemas/rule-SXs9cJRE"
 											},
 											"type": "array"
 										}
@@ -301,7 +301,7 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/rule-kEZkSqab"
+														"$ref": "#/components/schemas/rule-SXs9cJRE"
 													},
 													"type": "array"
 												}
@@ -436,12 +436,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rule-kEZkSqab"
+											"$ref": "#/components/schemas/rule-SXs9cJRE"
 										}
 									}
 								}
@@ -459,12 +459,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/rule-kEZkSqab"
+													"$ref": "#/components/schemas/rule-SXs9cJRE"
 												}
 											}
 										}
@@ -608,12 +608,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rule-kEZkSqab"
+											"$ref": "#/components/schemas/rule-SXs9cJRE"
 										}
 									}
 								}
@@ -631,12 +631,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/rule-kEZkSqab"
+													"$ref": "#/components/schemas/rule-SXs9cJRE"
 												}
 											}
 										}

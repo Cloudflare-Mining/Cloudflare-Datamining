@@ -28,7 +28,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/schemas-certificate_response_single-VmENOQwk"
+									"$ref": "#/components/schemas/schemas-certificate_response_single"
 								},
 								{
 									"properties": {
@@ -55,7 +55,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/schemas-certificate_response_single-VmENOQwk"
+											"$ref": "#/components/schemas/schemas-certificate_response_single"
 										},
 										{
 											"properties": {
@@ -185,7 +185,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/certificates-GJonPsBy"
+												"$ref": "#/components/schemas/certificates-3crjeoBm"
 											},
 											"type": "array"
 										}
@@ -212,7 +212,7 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/certificates-GJonPsBy"
+														"$ref": "#/components/schemas/certificates-3crjeoBm"
 													},
 													"type": "array"
 												}
@@ -318,7 +318,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -342,7 +342,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -489,7 +489,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -513,7 +513,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Yfs5AMey"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {

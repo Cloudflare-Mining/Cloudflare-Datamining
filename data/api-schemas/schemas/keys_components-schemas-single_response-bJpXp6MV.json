@@ -1,0 +1,10 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single"
+		},
+		{
+			"$ref": "#/components/schemas/key_config"
+		}
+	]
+}

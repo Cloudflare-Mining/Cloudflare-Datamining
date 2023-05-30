@@ -1,5 +1,6 @@
 {
-	"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
+	"default": true,
+	"description": "Whether to enable (the default) this load balancer.",
 	"example": true,
 	"type": "boolean"
 }

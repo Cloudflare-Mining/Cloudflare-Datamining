@@ -1,13 +1,5 @@
 {
-	"properties": {
-		"colo_name": {
-			"$ref": "#/components/schemas/colo_name"
-		},
-		"is_pending_reconnect": {
-			"$ref": "#/components/schemas/is_pending_reconnect"
-		},
-		"uuid": {
-			"$ref": "#/components/schemas/connection_id"
-		}
-	}
+	"description": "The IdP used to authenticate.",
+	"example": "saml",
+	"type": "string"
 }

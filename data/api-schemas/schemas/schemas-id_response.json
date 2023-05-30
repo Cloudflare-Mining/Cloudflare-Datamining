@@ -1,14 +1,14 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"$ref": "#/components/schemas/api-response-single-axFuEkyU"
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
 						"id": {
-							"$ref": "#/components/schemas/schemas-identifier-f3fh6Ze8"
+							"$ref": "#/components/schemas/id"
 						}
 					},
 					"type": "object"

@@ -1,0 +1,21 @@
+{
+	"description": "Breakdown of totals by data type.",
+	"properties": {
+		"bandwidth": {
+			"$ref": "#/components/schemas/bandwidth_by_colo"
+		},
+		"requests": {
+			"$ref": "#/components/schemas/requests_by_colo"
+		},
+		"since": {
+			"$ref": "#/components/schemas/since-GIJIR7Qk"
+		},
+		"threats": {
+			"$ref": "#/components/schemas/threats"
+		},
+		"until": {
+			"$ref": "#/components/schemas/until-NgIF9ar8"
+		}
+	},
+	"type": "object"
+}

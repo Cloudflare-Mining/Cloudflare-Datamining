@@ -1,0 +1,56 @@
+{
+	"properties": {
+		"check_regions": {
+			"$ref": "#/components/schemas/check_regions-bsI8YzEM"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"description": {
+			"$ref": "#/components/schemas/pool_components-schemas-description"
+		},
+		"disabled_at": {
+			"$ref": "#/components/schemas/schemas-disabled_at"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/pool_components-schemas-enabled"
+		},
+		"id": {
+			"$ref": "#/components/schemas/pool_components-schemas-identifier"
+		},
+		"latitude": {
+			"$ref": "#/components/schemas/latitude"
+		},
+		"load_shedding": {
+			"$ref": "#/components/schemas/load_shedding"
+		},
+		"longitude": {
+			"$ref": "#/components/schemas/longitude"
+		},
+		"minimum_origins": {
+			"$ref": "#/components/schemas/minimum_origins"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"monitor": {
+			"$ref": "#/components/schemas/schemas-monitor"
+		},
+		"name": {
+			"$ref": "#/components/schemas/pool_components-schemas-name"
+		},
+		"notification_email": {
+			"$ref": "#/components/schemas/notification_email-c9NJpKix"
+		},
+		"notification_filter": {
+			"$ref": "#/components/schemas/notification_filter-8pPlzm9X"
+		},
+		"origin_steering": {
+			"$ref": "#/components/schemas/origin_steering"
+		},
+		"origins": {
+			"$ref": "#/components/schemas/origins-CYdY4uLk"
+		}
+	},
+	"type": "object"
+}

@@ -22,7 +22,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-OkAn0Bdh"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -46,7 +46,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-OkAn0Bdh"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -162,7 +162,7 @@
 						"description": "Update enablement of Argo Smart Routing",
 						"properties": {
 							"value": {
-								"$ref": "#/components/schemas/value"
+								"$ref": "#/components/schemas/value-0mtepvc3"
 							}
 						},
 						"required": [
@@ -181,7 +181,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-OkAn0Bdh"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -205,7 +205,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-OkAn0Bdh"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {

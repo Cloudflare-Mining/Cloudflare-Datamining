@@ -35,14 +35,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/components-schemas-identifier"
+													"$ref": "#/components/schemas/components-schemas-identifier-DxCQo3VQ"
 												}
 											},
 											"type": "object"
@@ -63,14 +63,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/components-schemas-identifier"
+															"$ref": "#/components/schemas/components-schemas-identifier-DxCQo3VQ"
 														}
 													},
 													"type": "object"
@@ -326,7 +326,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 								},
 								{
 									"properties": {
@@ -349,7 +349,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 										},
 										{
 											"properties": {
@@ -471,7 +471,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 								},
 								{
 									"properties": {
@@ -494,7 +494,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 										},
 										{
 											"properties": {
@@ -612,19 +612,19 @@
 					"schema": {
 						"properties": {
 							"id": {
-								"$ref": "#/components/schemas/components-schemas-identifier"
+								"$ref": "#/components/schemas/components-schemas-identifier-DxCQo3VQ"
 							},
 							"ip": {
-								"$ref": "#/components/schemas/ip-0iBNchqY"
+								"$ref": "#/components/schemas/ip-nCrjaISY"
 							},
 							"ixfr_enable": {
 								"$ref": "#/components/schemas/ixfr_enable"
 							},
 							"name": {
-								"$ref": "#/components/schemas/components-schemas-name-ZYOwFS66"
+								"$ref": "#/components/schemas/components-schemas-name-wUy0TsgL"
 							},
 							"port": {
-								"$ref": "#/components/schemas/port-GTFApXx7"
+								"$ref": "#/components/schemas/port"
 							},
 							"tsig_id": {
 								"$ref": "#/components/schemas/tsig_id"
@@ -647,7 +647,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 								},
 								{
 									"properties": {
@@ -670,7 +670,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-IKbaaBZt"
 										},
 										{
 											"properties": {
