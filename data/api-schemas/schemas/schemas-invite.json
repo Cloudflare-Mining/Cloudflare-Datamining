@@ -1,7 +1,113 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/user_invite-D2G6xuT1"
+			"allOf": [
+				{
+					"properties": {
+						"expires_on": {
+							"description": "When the invite is no longer active.",
+							"example": "2014-01-01T05:20:00Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"id": {
+							"description": "Invite identifier tag.",
+							"example": "4f5f0c14a2a41d5063dd301b2f829f04",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						},
+						"invited_by": {
+							"description": "The email address of the user who created the invite.",
+							"example": "user@example.com",
+							"maxLength": 90,
+							"type": "string"
+						},
+						"invited_member_email": {
+							"description": "Email address of the user to add to the organization.",
+							"example": "user@example.com",
+							"maxLength": 90,
+							"type": "string"
+						},
+						"invited_member_id": {
+							"description": "ID of the user to add to the organization.",
+							"example": "5a7805061c76ada191ed06f989cc3dac",
+							"maxLength": 32,
+							"nullable": true,
+							"readOnly": true,
+							"type": "string"
+						},
+						"invited_on": {
+							"description": "When the invite was sent.",
+							"example": "2014-01-01T05:20:00Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"organization_id": {
+							"description": "ID of the organization the user will be added to.",
+							"example": "5a7805061c76ada191ed06f989cc3dac",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						},
+						"organization_name": {
+							"description": "Organization name.",
+							"example": "Cloudflare, Inc.",
+							"maxLength": 100,
+							"readOnly": true,
+							"type": "string"
+						},
+						"roles": {
+							"description": "Roles to be assigned to this user.",
+							"items": {
+								"properties": {
+									"description": {
+										"$ref": "#/components/schemas/description-rFA4VIAE"
+									},
+									"id": {
+										"$ref": "#/components/schemas/role_components-schemas-identifier-ug0kxHuG"
+									},
+									"name": {
+										"$ref": "#/components/schemas/components-schemas-name-CqmpW9OV"
+									},
+									"permissions": {
+										"$ref": "#/components/schemas/schemas-permissions"
+									}
+								},
+								"required": [
+									"id",
+									"name",
+									"description",
+									"permissions"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					},
+					"required": [
+						"invited_member_id",
+						"organization_id"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"status": {
+							"description": "Current status of the invitation.",
+							"enum": [
+								"pending",
+								"accepted",
+								"rejected",
+								"expired"
+							],
+							"example": "accepted"
+						}
+					}
+				}
+			]
 		}
 	],
 	"type": "object"

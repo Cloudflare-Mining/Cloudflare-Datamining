@@ -8,7 +8,15 @@
 			"type": "string"
 		},
 		"kind": {
-			"$ref": "#/components/schemas/RulesetKind"
+			"description": "The kind of the ruleset.",
+			"enum": [
+				"managed",
+				"custom",
+				"root",
+				"zone"
+			],
+			"example": "root",
+			"type": "string"
 		},
 		"name": {
 			"description": "The human-readable name of the ruleset.",
@@ -16,7 +24,10 @@
 			"type": "string"
 		},
 		"phase": {
-			"$ref": "#/components/schemas/RulesetPhase"
+			"description": "The phase of the ruleset.",
+			"example": "http_request_firewall_managed",
+			"pattern": "^[a-z_]+$",
+			"type": "string"
 		}
 	},
 	"type": "object"

@@ -29,7 +29,26 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -53,7 +72,26 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -70,7 +108,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -84,7 +140,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -166,12 +240,72 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/dnssec"
+											"properties": {
+												"algorithm": {
+													"$ref": "#/components/schemas/algorithm"
+												},
+												"digest": {
+													"$ref": "#/components/schemas/digest"
+												},
+												"digest_algorithm": {
+													"$ref": "#/components/schemas/digest_algorithm"
+												},
+												"digest_type": {
+													"$ref": "#/components/schemas/digest_type"
+												},
+												"dnssec_multi_signer": {
+													"$ref": "#/components/schemas/dnssec_multi_signer"
+												},
+												"dnssec_presigned": {
+													"$ref": "#/components/schemas/dnssec_presigned"
+												},
+												"ds": {
+													"$ref": "#/components/schemas/ds"
+												},
+												"flags": {
+													"$ref": "#/components/schemas/flags"
+												},
+												"key_tag": {
+													"$ref": "#/components/schemas/key_tag"
+												},
+												"key_type": {
+													"$ref": "#/components/schemas/key_type"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified_on-Ft8yxzkn"
+												},
+												"public_key": {
+													"$ref": "#/components/schemas/public_key-efMq4GzR"
+												},
+												"status": {
+													"$ref": "#/components/schemas/status-zaRUaRyT"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -189,12 +323,72 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/dnssec"
+													"properties": {
+														"algorithm": {
+															"$ref": "#/components/schemas/algorithm"
+														},
+														"digest": {
+															"$ref": "#/components/schemas/digest"
+														},
+														"digest_algorithm": {
+															"$ref": "#/components/schemas/digest_algorithm"
+														},
+														"digest_type": {
+															"$ref": "#/components/schemas/digest_type"
+														},
+														"dnssec_multi_signer": {
+															"$ref": "#/components/schemas/dnssec_multi_signer"
+														},
+														"dnssec_presigned": {
+															"$ref": "#/components/schemas/dnssec_presigned"
+														},
+														"ds": {
+															"$ref": "#/components/schemas/ds"
+														},
+														"flags": {
+															"$ref": "#/components/schemas/flags"
+														},
+														"key_tag": {
+															"$ref": "#/components/schemas/key_tag"
+														},
+														"key_type": {
+															"$ref": "#/components/schemas/key_type"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/modified_on-Ft8yxzkn"
+														},
+														"public_key": {
+															"$ref": "#/components/schemas/public_key-efMq4GzR"
+														},
+														"status": {
+															"$ref": "#/components/schemas/status-zaRUaRyT"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -205,7 +399,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -219,7 +431,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -330,12 +560,72 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/dnssec"
+											"properties": {
+												"algorithm": {
+													"$ref": "#/components/schemas/algorithm"
+												},
+												"digest": {
+													"$ref": "#/components/schemas/digest"
+												},
+												"digest_algorithm": {
+													"$ref": "#/components/schemas/digest_algorithm"
+												},
+												"digest_type": {
+													"$ref": "#/components/schemas/digest_type"
+												},
+												"dnssec_multi_signer": {
+													"$ref": "#/components/schemas/dnssec_multi_signer"
+												},
+												"dnssec_presigned": {
+													"$ref": "#/components/schemas/dnssec_presigned"
+												},
+												"ds": {
+													"$ref": "#/components/schemas/ds"
+												},
+												"flags": {
+													"$ref": "#/components/schemas/flags"
+												},
+												"key_tag": {
+													"$ref": "#/components/schemas/key_tag"
+												},
+												"key_type": {
+													"$ref": "#/components/schemas/key_type"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified_on-Ft8yxzkn"
+												},
+												"public_key": {
+													"$ref": "#/components/schemas/public_key-efMq4GzR"
+												},
+												"status": {
+													"$ref": "#/components/schemas/status-zaRUaRyT"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -353,12 +643,72 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/dnssec"
+													"properties": {
+														"algorithm": {
+															"$ref": "#/components/schemas/algorithm"
+														},
+														"digest": {
+															"$ref": "#/components/schemas/digest"
+														},
+														"digest_algorithm": {
+															"$ref": "#/components/schemas/digest_algorithm"
+														},
+														"digest_type": {
+															"$ref": "#/components/schemas/digest_type"
+														},
+														"dnssec_multi_signer": {
+															"$ref": "#/components/schemas/dnssec_multi_signer"
+														},
+														"dnssec_presigned": {
+															"$ref": "#/components/schemas/dnssec_presigned"
+														},
+														"ds": {
+															"$ref": "#/components/schemas/ds"
+														},
+														"flags": {
+															"$ref": "#/components/schemas/flags"
+														},
+														"key_tag": {
+															"$ref": "#/components/schemas/key_tag"
+														},
+														"key_type": {
+															"$ref": "#/components/schemas/key_type"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/modified_on-Ft8yxzkn"
+														},
+														"public_key": {
+															"$ref": "#/components/schemas/public_key-efMq4GzR"
+														},
+														"status": {
+															"$ref": "#/components/schemas/status-zaRUaRyT"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -369,7 +719,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -383,7 +751,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

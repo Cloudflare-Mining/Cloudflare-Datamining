@@ -1,18 +1,185 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/connection-dEF0PuRD"
+						"properties": {
+							"added_at": {
+								"example": "2021-08-18T10:51:10.09615Z"
+							},
+							"domain_reported_malicious": {
+								"example": false
+							},
+							"first_page_url": {
+								"example": "blog.cloudflare.com/page"
+							},
+							"first_seen_at": {
+								"example": "2021-08-18T10:51:08Z"
+							},
+							"host": {
+								"example": "blog.cloudflare.com"
+							},
+							"id": {
+								"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+							},
+							"last_seen_at": {
+								"example": "2021-09-02T09:57:54Z"
+							},
+							"page_urls": {
+								"example": [
+									"blog.cloudflare.com/page1",
+									"blog.cloudflare.com/page2"
+								]
+							},
+							"url": {
+								"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+							},
+							"url_contains_cdn_cgi_path": {
+								"example": false
+							}
+						}
 					},
 					"type": "array"
 				},
 				"result_info": {
-					"$ref": "#/components/schemas/result_info"
+					"properties": {
+						"count": {
+							"description": "Total number of results for the requested service",
+							"example": 1,
+							"type": "number"
+						},
+						"page": {
+							"description": "Current page within paginated list of results",
+							"example": 1,
+							"type": "number"
+						},
+						"per_page": {
+							"description": "Number of results per page of results",
+							"example": 20,
+							"type": "number"
+						},
+						"total_count": {
+							"description": "Total results available without any search parameters",
+							"example": 2000,
+							"type": "number"
+						}
+					},
+					"type": "object"
 				}
 			},
 			"type": "object"

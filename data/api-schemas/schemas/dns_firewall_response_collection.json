@@ -1,13 +1,282 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/dns-firewall"
+						"properties": {
+							"attack_mitigation": {
+								"description": "Attack mitigation settings.",
+								"nullable": true,
+								"properties": {
+									"enabled": {
+										"description": "When enabled, random-prefix attacks are automatically mitigated and the upstream DNS servers protected.",
+										"example": true,
+										"type": "boolean"
+									},
+									"only_when_origin_unhealthy": {
+										"deprecated": true,
+										"description": "Deprecated alias for \"only_when_upstream_unhealthy\"."
+									},
+									"only_when_upstream_unhealthy": {
+										"default": true,
+										"description": "Only mitigate attacks when upstream servers seem unhealthy.",
+										"example": false,
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"deprecate_any_requests": {
+								"description": "Deprecate the response to ANY requests.",
+								"example": true,
+								"type": "boolean"
+							},
+							"dns_firewall_ips": {
+								"example": [
+									"203.0.113.1",
+									"203.0.113.254",
+									"2001:DB8:AB::CF",
+									"2001:DB8:CD::CF"
+								],
+								"items": {
+									"anyOf": [
+										{
+											"description": "Cloudflare-assigned DNS IPv4 Address.",
+											"example": "203.0.113.1",
+											"format": "ipv4",
+											"type": "string"
+										},
+										{
+											"description": "Cloudflare-assigned DNS IPv6 Address.",
+											"example": "2001:DB8:ab::CF",
+											"format": "ipv6",
+											"type": "string"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"ecs_fallback": {
+								"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent.",
+								"example": false,
+								"type": "boolean"
+							},
+							"id": {
+								"description": "Identifier",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							},
+							"maximum_cache_ttl": {
+								"default": 900,
+								"description": "Maximum DNS Cache TTL.",
+								"example": 900,
+								"maximum": 36000,
+								"minimum": 30,
+								"type": "number"
+							},
+							"minimum_cache_ttl": {
+								"default": 60,
+								"description": "Minimum DNS Cache TTL.",
+								"example": 60,
+								"maximum": 36000,
+								"minimum": 30,
+								"type": "number"
+							},
+							"modified_on": {
+								"description": "Last modification of DNS Firewall cluster.",
+								"example": "2014-01-01T05:20:00.12345Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"name": {
+								"description": "DNS Firewall Cluster Name.",
+								"example": "My Awesome DNS Firewall cluster",
+								"maxLength": 160,
+								"type": "string"
+							},
+							"negative_cache_ttl": {
+								"description": "Negative DNS Cache TTL.",
+								"example": 900,
+								"maximum": 36000,
+								"minimum": 30,
+								"nullable": true,
+								"type": "number"
+							},
+							"origin_ips": {
+								"deprecated": true,
+								"description": "Deprecated alias for \"upstream_ips\"."
+							},
+							"ratelimit": {
+								"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster).",
+								"example": 600,
+								"maximum": 1000000000,
+								"minimum": 100,
+								"nullable": true,
+								"type": "number"
+							},
+							"retries": {
+								"default": 2,
+								"description": "Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt).",
+								"example": 2,
+								"maximum": 2,
+								"minimum": 0,
+								"type": "number"
+							},
+							"upstream_ips": {
+								"example": [
+									"192.0.2.1",
+									"198.51.100.1",
+									"2001:DB8:100::CF"
+								],
+								"items": {
+									"anyOf": [
+										{
+											"description": "Upstream DNS Server IPv4 Address.",
+											"example": "192.0.2.1",
+											"format": "ipv4",
+											"type": "string"
+										},
+										{
+											"description": "Upstream DNS Server IPv6 Address.",
+											"example": "2001:DB8:100::CF",
+											"format": "ipv6",
+											"type": "string"
+										}
+									]
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"upstream_ips",
+							"dns_firewall_ips",
+							"minimum_cache_ttl",
+							"maximum_cache_ttl",
+							"deprecate_any_requests",
+							"ecs_fallback",
+							"modified_on"
+						],
+						"type": "object"
 					},
 					"type": "array"
 				}

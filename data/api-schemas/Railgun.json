@@ -29,14 +29,29 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/railgun_response_single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+													"description": "Railgun identifier tag.",
+													"example": "e928d310693a83094309acf9ead50448",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											}
 										}
@@ -56,14 +71,29 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/railgun_response_single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object"
+														}
+													}
+												}
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+															"description": "Railgun identifier tag.",
+															"example": "e928d310693a83094309acf9ead50448",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													}
 												}
@@ -76,7 +106,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -90,7 +138,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -192,13 +258,85 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/railgun"
+												"properties": {
+													"activated_on": {
+														"$ref": "#/components/schemas/activated_on"
+													},
+													"activation_key": {
+														"$ref": "#/components/schemas/activation_key"
+													},
+													"build": {
+														"$ref": "#/components/schemas/build"
+													},
+													"created_on": {
+														"$ref": "#/components/schemas/components-schemas-created_on"
+													},
+													"enabled": {
+														"$ref": "#/components/schemas/railgun_components-schemas-enabled"
+													},
+													"id": {
+														"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+													},
+													"modified_on": {
+														"$ref": "#/components/schemas/railgun_components-schemas-modified_on"
+													},
+													"name": {
+														"$ref": "#/components/schemas/railgun_components-schemas-name"
+													},
+													"revision": {
+														"$ref": "#/components/schemas/revision"
+													},
+													"status": {
+														"$ref": "#/components/schemas/railgun_components-schemas-status"
+													},
+													"upgrade_info": {
+														"$ref": "#/components/schemas/upgrade_info"
+													},
+													"version": {
+														"$ref": "#/components/schemas/components-schemas-version"
+													},
+													"zones_connected": {
+														"$ref": "#/components/schemas/zones_connected"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"status",
+													"enabled",
+													"zones_connected",
+													"build",
+													"version",
+													"revision",
+													"activation_key",
+													"activated_on",
+													"created_on",
+													"modified_on"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -218,13 +356,85 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/railgun"
+														"properties": {
+															"activated_on": {
+																"$ref": "#/components/schemas/activated_on"
+															},
+															"activation_key": {
+																"$ref": "#/components/schemas/activation_key"
+															},
+															"build": {
+																"$ref": "#/components/schemas/build"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/components-schemas-created_on"
+															},
+															"enabled": {
+																"$ref": "#/components/schemas/railgun_components-schemas-enabled"
+															},
+															"id": {
+																"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/railgun_components-schemas-modified_on"
+															},
+															"name": {
+																"$ref": "#/components/schemas/railgun_components-schemas-name"
+															},
+															"revision": {
+																"$ref": "#/components/schemas/revision"
+															},
+															"status": {
+																"$ref": "#/components/schemas/railgun_components-schemas-status"
+															},
+															"upgrade_info": {
+																"$ref": "#/components/schemas/upgrade_info"
+															},
+															"version": {
+																"$ref": "#/components/schemas/components-schemas-version"
+															},
+															"zones_connected": {
+																"$ref": "#/components/schemas/zones_connected"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"status",
+															"enabled",
+															"zones_connected",
+															"build",
+															"version",
+															"revision",
+															"activation_key",
+															"activated_on",
+															"created_on",
+															"modified_on"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -237,7 +447,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -251,7 +479,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -330,7 +576,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -353,7 +619,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -369,7 +655,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -383,7 +687,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -465,7 +787,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -475,7 +869,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -509,7 +925,11 @@
 														"type": "number"
 													},
 													"id": {
-														"$ref": "#/components/schemas/common_components-schemas-identifier"
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
 													},
 													"modified_on": {
 														"description": "When the zone was last modified",
@@ -592,7 +1012,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -602,7 +1094,29 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -636,7 +1150,11 @@
 																"type": "number"
 															},
 															"id": {
-																"$ref": "#/components/schemas/common_components-schemas-identifier"
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
 															},
 															"modified_on": {
 																"description": "When the zone was last modified",
@@ -710,7 +1228,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -724,7 +1260,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -824,7 +1378,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -847,7 +1421,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -863,7 +1457,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -877,7 +1489,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -963,7 +1593,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -986,7 +1636,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1002,7 +1672,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1016,7 +1704,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

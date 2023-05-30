@@ -1,28 +1,64 @@
 {
 	"properties": {
 		"created_on": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"description": {
-			"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+			"description": "An optional description of the hostname.",
+			"example": "This is my IPFS gateway.",
+			"maxLength": 500,
+			"type": "string"
 		},
 		"dnslink": {
-			"$ref": "#/components/schemas/dnslink"
+			"description": "DNSLink value used if the target is ipfs.",
+			"example": "/ipns/onboarding.ipfs.cloudflare.com",
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/common_components-schemas-identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"modified_on": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+			"description": "The hostname that will point to the target gateway via CNAME.",
+			"example": "gateway.example.com",
+			"maxLength": 255,
+			"readOnly": true,
+			"type": "string"
 		},
 		"status": {
-			"$ref": "#/components/schemas/web3-hostname_components-schemas-status"
+			"description": "Status of the hostname's activation.",
+			"enum": [
+				"active",
+				"pending",
+				"deleting",
+				"error"
+			],
+			"example": "active",
+			"readOnly": true,
+			"type": "string"
 		},
 		"target": {
-			"$ref": "#/components/schemas/schemas-target"
+			"description": "Target gateway of the hostname.",
+			"enum": [
+				"ethereum",
+				"ipfs",
+				"ipfs_universal_path",
+				"polygon"
+			],
+			"example": "ipfs",
+			"type": "string"
 		}
 	},
 	"type": "object"

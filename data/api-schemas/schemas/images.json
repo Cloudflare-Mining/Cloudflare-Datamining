@@ -1,22 +1,73 @@
 {
 	"properties": {
 		"filename": {
-			"$ref": "#/components/schemas/filename"
+			"description": "Image file name.",
+			"example": "logo.png",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/identifier-6cRtdofQ"
+			"description": "Image unique identifier.",
+			"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"metadata": {
-			"$ref": "#/components/schemas/metadata-CmZPcPKI"
+			"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
+			"example": {
+				"key": "value"
+			},
+			"type": "object"
 		},
 		"requireSignedURLs": {
-			"$ref": "#/components/schemas/requireSignedURLs-WOMVPtbI"
+			"default": false,
+			"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
+			"example": true,
+			"type": "boolean"
 		},
 		"uploaded": {
-			"$ref": "#/components/schemas/uploaded-exBhh2H3"
+			"description": "When the media item was uploaded.",
+			"example": "2014-01-02T02:20:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"variants": {
-			"$ref": "#/components/schemas/variants-PuIYaocG"
+			"description": "Object specifying available variants for an image.",
+			"example": [
+				"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
+				"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
+				"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original"
+			],
+			"items": {
+				"anyOf": [
+					{
+						"description": "URI to thumbnail variant for an image.",
+						"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
+						"format": "uri",
+						"readOnly": true,
+						"type": "string"
+					},
+					{
+						"description": "URI to hero variant for an image.",
+						"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
+						"format": "uri",
+						"readOnly": true,
+						"type": "string"
+					},
+					{
+						"description": "URI to original variant for an image.",
+						"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
+						"format": "uri",
+						"readOnly": true,
+						"type": "string"
+					}
+				]
+			},
+			"readOnly": true,
+			"type": "array"
 		}
 	},
 	"type": "object"

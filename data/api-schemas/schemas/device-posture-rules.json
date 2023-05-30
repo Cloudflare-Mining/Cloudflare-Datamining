@@ -1,28 +1,75 @@
 {
 	"properties": {
 		"description": {
-			"$ref": "#/components/schemas/device-posture-rules_components-schemas-description"
+			"description": "The description of the Device Posture Rule.",
+			"example": "The rule for admin serial numbers",
+			"type": "string"
 		},
 		"expiration": {
-			"$ref": "#/components/schemas/schemas-expiration"
+			"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
+			"example": "1h",
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
+			"description": "API uuid tag.",
+			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"maxLength": 36,
+			"type": "string"
 		},
 		"input": {
-			"$ref": "#/components/schemas/input-TwxwKaBP"
+			"description": "The value to be checked against.",
+			"properties": {
+				"id": {
+					"description": "API uuid tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			"type": "object"
 		},
 		"match": {
-			"$ref": "#/components/schemas/schemas-match"
+			"description": "The conditions that the client must match to run the rule.",
+			"items": {
+				"properties": {
+					"platform": {
+						"enum": [
+							"windows",
+							"mac",
+							"linux",
+							"android",
+							"ios"
+						],
+						"example": "windows",
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
+			"type": "array"
 		},
 		"name": {
-			"$ref": "#/components/schemas/device-posture-rules_components-schemas-name"
+			"description": "The name of the Device Posture Rule.",
+			"example": "Admin Serial Numbers",
+			"type": "string"
 		},
 		"schedule": {
-			"$ref": "#/components/schemas/schedule-WBx5Q0nA"
+			"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
+			"example": "1h",
+			"type": "string"
 		},
 		"type": {
-			"$ref": "#/components/schemas/device-posture-rules_components-schemas-type"
+			"description": "The type of Device Posture Rule.",
+			"enum": [
+				"file",
+				"application",
+				"serial_number",
+				"tanium",
+				"gateway",
+				"warp"
+			],
+			"example": "file",
+			"type": "string"
 		}
 	},
 	"type": "object"

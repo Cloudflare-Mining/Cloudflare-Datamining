@@ -8,13 +8,24 @@
 			"type": "string"
 		},
 		"enabled": {
-			"$ref": "#/components/schemas/enabled-L5QC2wT6"
+			"description": "Whether or not the Keyless SSL is on or off.",
+			"example": false,
+			"readOnly": true,
+			"type": "boolean"
 		},
 		"host": {
-			"$ref": "#/components/schemas/host"
+			"description": "The keyless SSL name.",
+			"example": "example.com",
+			"format": "hostname",
+			"maxLength": 253,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/schemas-identifier-UA7ugJzy"
+			"description": "Keyless certificate identifier tag.",
+			"example": "4d2844d2ce78891c34d0b6c0535a291e",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"modified_on": {
 			"description": "When the Keyless SSL was last modified.",
@@ -24,7 +35,11 @@
 			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/name-8AeeaOZN"
+			"description": "The keyless SSL name.",
+			"example": "example.com Keyless SSL",
+			"maxLength": 180,
+			"readOnly": true,
+			"type": "string"
 		},
 		"permissions": {
 			"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
@@ -37,13 +52,41 @@
 			"type": "array"
 		},
 		"port": {
-			"$ref": "#/components/schemas/port"
+			"default": 24008,
+			"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+			"example": 24008,
+			"maxLength": 65535,
+			"type": "number"
 		},
 		"status": {
-			"$ref": "#/components/schemas/schemas-status"
+			"description": "Status of the Keyless SSL.",
+			"enum": [
+				"active",
+				"deleted"
+			],
+			"example": "active",
+			"readOnly": true,
+			"type": "string"
 		},
 		"tunnel": {
-			"$ref": "#/components/schemas/keyless_tunnel"
+			"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+			"properties": {
+				"private_ip": {
+					"description": "Private IP of the Key Server Host",
+					"example": "10.0.0.1",
+					"type": "string"
+				},
+				"vnet_id": {
+					"description": "Cloudflare Tunnel Virtual Network ID",
+					"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+					"type": "string"
+				}
+			},
+			"required": [
+				"private_ip",
+				"vnet_id"
+			],
+			"type": "object"
 		}
 	},
 	"required": [

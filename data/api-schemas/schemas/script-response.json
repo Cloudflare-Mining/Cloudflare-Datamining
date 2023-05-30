@@ -1,10 +1,17 @@
 {
 	"properties": {
 		"created_on": {
-			"$ref": "#/components/schemas/created_on-BXkF5Jno"
+			"description": "When the script was created.",
+			"example": "2017-01-01T00:00:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"etag": {
-			"$ref": "#/components/schemas/etag-apmdDdGT"
+			"description": "Hashed script content, can be used in a If-None-Match header when updating.",
+			"example": "ea95132c15732412d22c1476fa83f27a",
+			"readOnly": true,
+			"type": "string"
 		},
 		"id": {
 			"description": "The id of the script in the Workers system. Usually the script name.",
@@ -13,16 +20,27 @@
 			"type": "string"
 		},
 		"logpush": {
-			"$ref": "#/components/schemas/logpush"
+			"description": "Whether Logpush is turned on for the Worker.",
+			"example": false,
+			"type": "boolean"
 		},
 		"modified_on": {
-			"$ref": "#/components/schemas/modified_on-JBbpQM85"
+			"description": "When the script was last modified.",
+			"example": "2017-01-01T00:00:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"placement_mode": {
-			"$ref": "#/components/schemas/placement_mode"
+			"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
+			"example": "smart",
+			"type": "string"
 		},
 		"usage_model": {
-			"$ref": "#/components/schemas/usage_model"
+			"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
+			"example": "unbound",
+			"pattern": "^(bundled|unbound)$",
+			"type": "string"
 		}
 	}
 }

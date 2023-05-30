@@ -35,14 +35,34 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/components-schemas-identifier"
+													"example": "23ff594956f20c2a721606e94745a8aa",
+													"readOnly": true
 												}
 											},
 											"type": "object"
@@ -63,14 +83,34 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/components-schemas-identifier"
+															"example": "23ff594956f20c2a721606e94745a8aa",
+															"readOnly": true
 														}
 													},
 													"type": "object"
@@ -84,7 +124,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -98,7 +156,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -178,13 +254,46 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/acl"
+												"properties": {
+													"id": {
+														"$ref": "#/components/schemas/components-schemas-identifier"
+													},
+													"ip_range": {
+														"$ref": "#/components/schemas/ip_range"
+													},
+													"name": {
+														"$ref": "#/components/schemas/acl_components-schemas-name"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"ip_range"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -204,13 +313,46 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/acl"
+														"properties": {
+															"id": {
+																"$ref": "#/components/schemas/components-schemas-identifier"
+															},
+															"ip_range": {
+																"$ref": "#/components/schemas/ip_range"
+															},
+															"name": {
+																"$ref": "#/components/schemas/acl_components-schemas-name"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"ip_range"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -223,7 +365,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -237,7 +397,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -325,12 +503,47 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/acl"
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/components-schemas-identifier"
+												},
+												"ip_range": {
+													"$ref": "#/components/schemas/ip_range"
+												},
+												"name": {
+													"$ref": "#/components/schemas/acl_components-schemas-name"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"ip_range"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -348,12 +561,47 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/acl"
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/components-schemas-identifier"
+														},
+														"ip_range": {
+															"$ref": "#/components/schemas/ip_range"
+														},
+														"name": {
+															"$ref": "#/components/schemas/acl_components-schemas-name"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"ip_range"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -364,7 +612,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -378,7 +644,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -470,12 +754,47 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/acl"
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/components-schemas-identifier"
+												},
+												"ip_range": {
+													"$ref": "#/components/schemas/ip_range"
+												},
+												"name": {
+													"$ref": "#/components/schemas/acl_components-schemas-name"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"ip_range"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -493,12 +812,47 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/acl"
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/components-schemas-identifier"
+														},
+														"ip_range": {
+															"$ref": "#/components/schemas/ip_range"
+														},
+														"name": {
+															"$ref": "#/components/schemas/acl_components-schemas-name"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"ip_range"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -509,7 +863,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -523,7 +895,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -611,13 +1001,18 @@
 					"schema": {
 						"properties": {
 							"id": {
-								"$ref": "#/components/schemas/components-schemas-identifier"
+								"example": "23ff594956f20c2a721606e94745a8aa",
+								"readOnly": true
 							},
 							"ip_range": {
-								"$ref": "#/components/schemas/ip_range"
+								"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
+								"example": "192.0.2.53/28",
+								"type": "string"
 							},
 							"name": {
-								"$ref": "#/components/schemas/acl_components-schemas-name"
+								"description": "The name of the acl.",
+								"example": "my-acl-1",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -638,12 +1033,47 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/acl"
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/components-schemas-identifier"
+												},
+												"ip_range": {
+													"$ref": "#/components/schemas/ip_range"
+												},
+												"name": {
+													"$ref": "#/components/schemas/acl_components-schemas-name"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"ip_range"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -661,12 +1091,47 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/acl"
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/components-schemas-identifier"
+														},
+														"ip_range": {
+															"$ref": "#/components/schemas/ip_range"
+														},
+														"name": {
+															"$ref": "#/components/schemas/acl_components-schemas-name"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"ip_range"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -677,7 +1142,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -691,7 +1174,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

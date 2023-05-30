@@ -1,20 +1,119 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							]
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
 						"gateway_tag": {
-							"$ref": "#/components/schemas/gateway_tag"
+							"description": "Gateway internal id.",
+							"example": "f174e90afafe4643bbbc4a0ed4fc8415",
+							"maxLength": 32,
+							"type": "string"
 						},
 						"id": {
-							"$ref": "#/components/schemas/cf_account_id"
+							"description": "Cloudflare account ID",
+							"example": "699d98642c564d2e855e9661899b7252",
+							"maxLength": 32,
+							"type": "string"
 						},
 						"provider_name": {
-							"$ref": "#/components/schemas/provider_name"
+							"description": "The name of provider. Usually cloudflare.",
+							"example": "Cloudflare",
+							"type": "string"
 						}
 					},
 					"type": "object"

@@ -35,14 +35,34 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+													"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
+													"readOnly": true
 												}
 											},
 											"type": "object"
@@ -63,14 +83,34 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+															"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
+															"readOnly": true
 														}
 													},
 													"type": "object"
@@ -84,7 +124,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -98,7 +156,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -178,13 +254,50 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/tsig"
+												"properties": {
+													"algo": {
+														"$ref": "#/components/schemas/algo"
+													},
+													"id": {
+														"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+													},
+													"name": {
+														"$ref": "#/components/schemas/schemas-name-ZbE7CIpb"
+													},
+													"secret": {
+														"$ref": "#/components/schemas/secret-ilPuaBUb"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"secret",
+													"algo"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -204,13 +317,50 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/tsig"
+														"properties": {
+															"algo": {
+																"$ref": "#/components/schemas/algo"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+															},
+															"name": {
+																"$ref": "#/components/schemas/schemas-name-ZbE7CIpb"
+															},
+															"secret": {
+																"$ref": "#/components/schemas/secret-ilPuaBUb"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"secret",
+															"algo"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -223,7 +373,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -237,7 +405,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -326,12 +512,51 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/tsig"
+											"properties": {
+												"algo": {
+													"$ref": "#/components/schemas/algo"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+												},
+												"name": {
+													"$ref": "#/components/schemas/schemas-name-ZbE7CIpb"
+												},
+												"secret": {
+													"$ref": "#/components/schemas/secret-ilPuaBUb"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"secret",
+												"algo"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -349,12 +574,51 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/tsig"
+													"properties": {
+														"algo": {
+															"$ref": "#/components/schemas/algo"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+														},
+														"name": {
+															"$ref": "#/components/schemas/schemas-name-ZbE7CIpb"
+														},
+														"secret": {
+															"$ref": "#/components/schemas/secret-ilPuaBUb"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"secret",
+														"algo"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -365,7 +629,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -379,7 +661,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -458,16 +758,23 @@
 					"schema": {
 						"properties": {
 							"algo": {
-								"$ref": "#/components/schemas/algo"
+								"description": "TSIG algorithm.",
+								"example": "hmac-sha512.",
+								"type": "string"
 							},
 							"id": {
-								"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+								"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
+								"readOnly": true
 							},
 							"name": {
-								"$ref": "#/components/schemas/schemas-name-ZbE7CIpb"
+								"description": "TSIG key name.",
+								"example": "tsig.customer.cf.",
+								"type": "string"
 							},
 							"secret": {
-								"$ref": "#/components/schemas/secret-ilPuaBUb"
+								"description": "TSIG secret.",
+								"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -489,12 +796,51 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/tsig"
+											"properties": {
+												"algo": {
+													"$ref": "#/components/schemas/algo"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+												},
+												"name": {
+													"$ref": "#/components/schemas/schemas-name-ZbE7CIpb"
+												},
+												"secret": {
+													"$ref": "#/components/schemas/secret-ilPuaBUb"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"secret",
+												"algo"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -512,12 +858,51 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/tsig"
+													"properties": {
+														"algo": {
+															"$ref": "#/components/schemas/algo"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+														},
+														"name": {
+															"$ref": "#/components/schemas/schemas-name-ZbE7CIpb"
+														},
+														"secret": {
+															"$ref": "#/components/schemas/secret-ilPuaBUb"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"secret",
+														"algo"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -528,7 +913,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -542,7 +945,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -630,16 +1051,23 @@
 					"schema": {
 						"properties": {
 							"algo": {
-								"$ref": "#/components/schemas/algo"
+								"description": "TSIG algorithm.",
+								"example": "hmac-sha512.",
+								"type": "string"
 							},
 							"id": {
-								"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+								"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
+								"readOnly": true
 							},
 							"name": {
-								"$ref": "#/components/schemas/schemas-name-ZbE7CIpb"
+								"description": "TSIG key name.",
+								"example": "tsig.customer.cf.",
+								"type": "string"
 							},
 							"secret": {
-								"$ref": "#/components/schemas/secret-ilPuaBUb"
+								"description": "TSIG secret.",
+								"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -661,12 +1089,51 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/tsig"
+											"properties": {
+												"algo": {
+													"$ref": "#/components/schemas/algo"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+												},
+												"name": {
+													"$ref": "#/components/schemas/schemas-name-ZbE7CIpb"
+												},
+												"secret": {
+													"$ref": "#/components/schemas/secret-ilPuaBUb"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"secret",
+												"algo"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -684,12 +1151,51 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/tsig"
+													"properties": {
+														"algo": {
+															"$ref": "#/components/schemas/algo"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+														},
+														"name": {
+															"$ref": "#/components/schemas/schemas-name-ZbE7CIpb"
+														},
+														"secret": {
+															"$ref": "#/components/schemas/secret-ilPuaBUb"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"secret",
+														"algo"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -700,7 +1206,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -714,7 +1238,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

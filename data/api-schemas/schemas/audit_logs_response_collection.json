@@ -12,7 +12,118 @@
 				},
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/audit-logs"
+						"properties": {
+							"action": {
+								"properties": {
+									"result": {
+										"description": "A boolean that indicates if the action attempted was successful.",
+										"example": true,
+										"type": "boolean"
+									},
+									"type": {
+										"description": "A short string that describes the action that was performed.",
+										"example": "change_setting",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"actor": {
+								"properties": {
+									"email": {
+										"description": "The email of the user that performed the action.",
+										"example": "michelle@example.com",
+										"format": "email",
+										"type": "string"
+									},
+									"id": {
+										"description": "The ID of the actor that performed the action. If a user performed the action, this will be their User ID.",
+										"example": "f6b5de0326bb5182b8a4840ee01ec774",
+										"type": "string"
+									},
+									"ip": {
+										"description": "The IP address of the request that performed the action.",
+										"example": "198.41.129.166",
+										"type": "string"
+									},
+									"type": {
+										"description": "The type of actor, whether a User, Cloudflare Admin, or an Automated System.",
+										"enum": [
+											"user",
+											"admin",
+											"Cloudflare"
+										],
+										"example": "user",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"id": {
+								"description": "A string that uniquely identifies the audit log.",
+								"example": "d5b0f326-1232-4452-8858-1089bd7168ef",
+								"type": "string"
+							},
+							"interface": {
+								"description": "The source of the event.",
+								"example": "API",
+								"type": "string"
+							},
+							"metadata": {
+								"description": "An object which can lend more context to the action being logged. This is a flexible value and varies between different actions.",
+								"example": {
+									"name": "security_level",
+									"type": "firewall",
+									"value": "high",
+									"zone_name": "example.com"
+								},
+								"type": "object"
+							},
+							"newValue": {
+								"description": "The new value of the resource that was modified.",
+								"example": "low",
+								"type": "string"
+							},
+							"oldValue": {
+								"description": "The value of the resource before it was modified.",
+								"example": "high",
+								"type": "string"
+							},
+							"owner": {
+								"properties": {
+									"id": {
+										"description": "Identifier",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"maxLength": 32,
+										"readOnly": true,
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"resource": {
+								"properties": {
+									"id": {
+										"description": "An identifier for the resource that was affected by the action.",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"type": "string"
+									},
+									"type": {
+										"description": "A short string that describes the resource that was affected by the action.",
+										"example": "zone",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"when": {
+								"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured.",
+								"example": "2017-04-26T17:31:07Z",
+								"format": "date-time",
+								"type": "string"
+							}
+						},
+						"type": "object"
 					},
 					"type": "array"
 				},
@@ -23,7 +134,79 @@
 			}
 		},
 		{
-			"$ref": "#/components/schemas/api-response-common"
+			"properties": {
+				"errors": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"messages": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"result": {
+					"anyOf": [
+						{
+							"type": "object"
+						},
+						{
+							"items": {},
+							"type": "array"
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"success": {
+					"description": "Whether the API call was successful",
+					"enum": [
+						true
+					],
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"success",
+				"errors",
+				"messages",
+				"result"
+			],
+			"type": "object"
 		}
 	]
 }

@@ -4,7 +4,10 @@
 			"description": "The account the zone belongs to",
 			"properties": {
 				"id": {
-					"$ref": "#/components/schemas/identifier-Du4NGw7E"
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
 				},
 				"name": {
 					"description": "The name of the account",
@@ -36,7 +39,10 @@
 			"type": "number"
 		},
 		"id": {
-			"$ref": "#/components/schemas/identifier-Du4NGw7E"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"type": "string"
 		},
 		"meta": {
 			"description": "Metadata about the zone",
@@ -125,7 +131,10 @@
 			"description": "The owner of the zone",
 			"properties": {
 				"id": {
-					"$ref": "#/components/schemas/identifier-Du4NGw7E"
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
 				},
 				"name": {
 					"description": "Name of the owner",

@@ -92,13 +92,38 @@
 						"schema": {
 							"anyOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/package"
+												"oneOf": [
+													{
+														"$ref": "#/components/schemas/package_definition"
+													},
+													{
+														"$ref": "#/components/schemas/anomaly_package"
+													}
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -118,13 +143,38 @@
 								{
 									"anyOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/package"
+														"oneOf": [
+															{
+																"$ref": "#/components/schemas/package_definition"
+															},
+															{
+																"$ref": "#/components/schemas/anomaly_package"
+															}
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -137,7 +187,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -151,7 +219,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -243,7 +329,27 @@
 						"schema": {
 							"oneOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -266,7 +372,27 @@
 								{
 									"oneOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -282,7 +408,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -296,7 +440,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -423,7 +585,27 @@
 								{
 									"oneOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -439,24 +621,75 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/package_definition"
+													"properties": {
+														"description": {
+															"$ref": "#/components/schemas/package_components-schemas-description"
+														},
+														"detection_mode": {
+															"$ref": "#/components/schemas/detection_mode"
+														},
+														"id": {
+															"$ref": "#/components/schemas/package_components-schemas-identifier"
+														},
+														"name": {
+															"$ref": "#/components/schemas/package_components-schemas-name"
+														},
+														"status": {
+															"$ref": "#/components/schemas/package_components-schemas-status"
+														},
+														"zone_id": {
+															"$ref": "#/components/schemas/common_components-schemas-identifier"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"description",
+														"detection_mode",
+														"zone_id"
+													],
+													"title": "Traditional WAF package"
 												},
 												{
 													"properties": {
 														"action_mode": {
-															"$ref": "#/components/schemas/action_mode"
+															"default": "challenge",
+															"description": "The default action performed by the rules in the WAF package.",
+															"enum": [
+																"simulate",
+																"block",
+																"challenge"
+															],
+															"type": "string"
 														},
 														"description": {
-															"$ref": "#/components/schemas/anomaly_description"
+															"description": "A summary of the purpose/function of the WAF package.",
+															"example": "Covers OWASP Top 10 vulnerabilities and more.",
+															"readOnly": true,
+															"type": "string"
 														},
 														"detection_mode": {
-															"$ref": "#/components/schemas/anomaly_detection_mode"
+															"description": "When a WAF package uses anomaly detection, each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined on the WAF package, the action defined on the package will be taken.",
+															"example": "anomaly",
+															"readOnly": true,
+															"type": "string"
 														},
 														"name": {
-															"$ref": "#/components/schemas/anomaly_name"
+															"description": "The name of the WAF package.",
+															"example": "OWASP ModSecurity Core Rule Set",
+															"readOnly": true,
+															"type": "string"
 														},
 														"sensitivity": {
-															"$ref": "#/components/schemas/sensitivity"
+															"default": "high",
+															"description": "The sensitivity of the WAF package.",
+															"enum": [
+																"high",
+																"medium",
+																"low",
+																"off"
+															],
+															"type": "string"
 														}
 													}
 												}
@@ -490,7 +723,27 @@
 										{
 											"oneOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	],
+																	"nullable": true
+																}
+															}
+														}
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -506,24 +759,75 @@
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/package_definition"
+															"properties": {
+																"description": {
+																	"$ref": "#/components/schemas/package_components-schemas-description"
+																},
+																"detection_mode": {
+																	"$ref": "#/components/schemas/detection_mode"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/package_components-schemas-identifier"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/package_components-schemas-name"
+																},
+																"status": {
+																	"$ref": "#/components/schemas/package_components-schemas-status"
+																},
+																"zone_id": {
+																	"$ref": "#/components/schemas/common_components-schemas-identifier"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"description",
+																"detection_mode",
+																"zone_id"
+															],
+															"title": "Traditional WAF package"
 														},
 														{
 															"properties": {
 																"action_mode": {
-																	"$ref": "#/components/schemas/action_mode"
+																	"default": "challenge",
+																	"description": "The default action performed by the rules in the WAF package.",
+																	"enum": [
+																		"simulate",
+																		"block",
+																		"challenge"
+																	],
+																	"type": "string"
 																},
 																"description": {
-																	"$ref": "#/components/schemas/anomaly_description"
+																	"description": "A summary of the purpose/function of the WAF package.",
+																	"example": "Covers OWASP Top 10 vulnerabilities and more.",
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"detection_mode": {
-																	"$ref": "#/components/schemas/anomaly_detection_mode"
+																	"description": "When a WAF package uses anomaly detection, each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined on the WAF package, the action defined on the package will be taken.",
+																	"example": "anomaly",
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"name": {
-																	"$ref": "#/components/schemas/anomaly_name"
+																	"description": "The name of the WAF package.",
+																	"example": "OWASP ModSecurity Core Rule Set",
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"sensitivity": {
-																	"$ref": "#/components/schemas/sensitivity"
+																	"default": "high",
+																	"description": "The sensitivity of the WAF package.",
+																	"enum": [
+																		"high",
+																		"medium",
+																		"low",
+																		"off"
+																	],
+																	"type": "string"
 																}
 															}
 														}
@@ -548,7 +852,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -562,7 +884,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

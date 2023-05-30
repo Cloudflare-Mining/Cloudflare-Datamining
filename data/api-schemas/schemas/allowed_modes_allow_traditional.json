@@ -5,7 +5,13 @@
 		"off"
 	],
 	"items": {
-		"$ref": "#/components/schemas/mode_allow_traditional"
+		"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
+		"enum": [
+			"on",
+			"off"
+		],
+		"example": "on",
+		"type": "string"
 	},
 	"readOnly": true,
 	"type": "array"

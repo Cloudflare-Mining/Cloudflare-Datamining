@@ -2,13 +2,19 @@
 	"description": "Details for playback from an live input using SRT.",
 	"properties": {
 		"passphrase": {
-			"$ref": "#/components/schemas/playback_srt_stream_passphrase"
+			"description": "The secret key to use for playback via SRT.",
+			"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+			"type": "string"
 		},
 		"streamId": {
-			"$ref": "#/components/schemas/playback_srt_stream_id"
+			"description": "The identifier of the live input to use for playback via SRT.",
+			"example": "f256e6ea9341d51eea64c9454659e576",
+			"type": "string"
 		},
 		"url": {
-			"$ref": "#/components/schemas/playback_srt_url"
+			"description": "The URL used to play live video over SRT.",
+			"example": "rtmps://live.cloudflare.com:443/live/",
+			"type": "string"
 		}
 	},
 	"type": "object"

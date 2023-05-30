@@ -1,7 +1,12 @@
 {
 	"properties": {
 		"allowed_match_count": {
-			"$ref": "#/components/schemas/allowed_match_count"
+			"default": 0,
+			"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+			"example": 5,
+			"maximum": 1000,
+			"minimum": 0,
+			"type": "number"
 		},
 		"description": {
 			"description": "The description of the profile.",
@@ -11,7 +16,49 @@
 		"entries": {
 			"description": "The entries for this profile.",
 			"items": {
-				"$ref": "#/components/schemas/new_custom_entry"
+				"description": "A custom entry create payload",
+				"properties": {
+					"enabled": {
+						"description": "Whether the entry is enabled or not.",
+						"example": true,
+						"type": "boolean"
+					},
+					"name": {
+						"description": "The name of the entry.",
+						"example": "Credit card (Visa)",
+						"type": "string"
+					},
+					"pattern": {
+						"description": "A pattern that matches an entry",
+						"properties": {
+							"regex": {
+								"description": "The regex pattern.",
+								"example": "^4[0-9]{6,14}$",
+								"type": "string"
+							},
+							"validation": {
+								"description": "Validation algorithm for the pattern. This algorithm will get run on potential matches, and if it returns false, the entry will not be matched.",
+								"enum": [
+									"luhn"
+								],
+								"example": "luhn",
+								"type": "string"
+							}
+						},
+						"required": [
+							"regex"
+						],
+						"title": "Pattern",
+						"type": "object"
+					}
+				},
+				"required": [
+					"name",
+					"enabled",
+					"pattern"
+				],
+				"title": "Custom entry",
+				"type": "object"
 			},
 			"type": "array"
 		},

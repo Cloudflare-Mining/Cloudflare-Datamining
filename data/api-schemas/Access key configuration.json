@@ -19,10 +19,41 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
-									"$ref": "#/components/schemas/key_config"
+									"properties": {
+										"days_until_next_rotation": {
+											"$ref": "#/components/schemas/days_until_next_rotation"
+										},
+										"key_rotation_interval_days": {
+											"$ref": "#/components/schemas/key_rotation_interval_days"
+										},
+										"last_key_rotation_at": {
+											"$ref": "#/components/schemas/last_key_rotation_at"
+										}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -38,10 +69,41 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
-											"$ref": "#/components/schemas/key_config"
+											"properties": {
+												"days_until_next_rotation": {
+													"$ref": "#/components/schemas/days_until_next_rotation"
+												},
+												"key_rotation_interval_days": {
+													"$ref": "#/components/schemas/key_rotation_interval_days"
+												},
+												"last_key_rotation_at": {
+													"$ref": "#/components/schemas/last_key_rotation_at"
+												}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -50,7 +112,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -64,7 +144,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -137,10 +235,41 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
-									"$ref": "#/components/schemas/key_config"
+									"properties": {
+										"days_until_next_rotation": {
+											"$ref": "#/components/schemas/days_until_next_rotation"
+										},
+										"key_rotation_interval_days": {
+											"$ref": "#/components/schemas/key_rotation_interval_days"
+										},
+										"last_key_rotation_at": {
+											"$ref": "#/components/schemas/last_key_rotation_at"
+										}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -156,10 +285,41 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
-											"$ref": "#/components/schemas/key_config"
+											"properties": {
+												"days_until_next_rotation": {
+													"$ref": "#/components/schemas/days_until_next_rotation"
+												},
+												"key_rotation_interval_days": {
+													"$ref": "#/components/schemas/key_rotation_interval_days"
+												},
+												"last_key_rotation_at": {
+													"$ref": "#/components/schemas/last_key_rotation_at"
+												}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -168,7 +328,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -182,7 +360,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -270,10 +466,41 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
-									"$ref": "#/components/schemas/key_config"
+									"properties": {
+										"days_until_next_rotation": {
+											"$ref": "#/components/schemas/days_until_next_rotation"
+										},
+										"key_rotation_interval_days": {
+											"$ref": "#/components/schemas/key_rotation_interval_days"
+										},
+										"last_key_rotation_at": {
+											"$ref": "#/components/schemas/last_key_rotation_at"
+										}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -289,10 +516,41 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
-											"$ref": "#/components/schemas/key_config"
+											"properties": {
+												"days_until_next_rotation": {
+													"$ref": "#/components/schemas/days_until_next_rotation"
+												},
+												"key_rotation_interval_days": {
+													"$ref": "#/components/schemas/key_rotation_interval_days"
+												},
+												"last_key_rotation_at": {
+													"$ref": "#/components/schemas/last_key_rotation_at"
+												}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -301,7 +559,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -315,7 +591,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

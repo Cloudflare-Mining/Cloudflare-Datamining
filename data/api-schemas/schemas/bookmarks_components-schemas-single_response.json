@@ -1,12 +1,141 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/bookmarks-DdRknSVg"
+					"properties": {
+						"app_launcher_visible": {
+							"description": "Displays the application in the App Launcher.",
+							"example": true,
+							"type": "boolean"
+						},
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"domain": {
+							"description": "The domain of the Bookmark application.",
+							"example": "example.com",
+							"type": "string"
+						},
+						"id": {
+							"description": "The unique identifier for the Bookmark application."
+						},
+						"logo_url": {
+							"description": "The image URL for the logo shown in the App Launcher dashboard.",
+							"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
+							"type": "string"
+						},
+						"name": {
+							"description": "The name of the Bookmark application.",
+							"example": "My Website",
+							"type": "string"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

@@ -53,14 +53,37 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/delegation_identifier"
+													"description": "Delegation identifier tag.",
+													"example": "d933b1530bc56c9953cf8ce166da8004",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -81,14 +104,37 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/delegation_identifier"
+															"description": "Delegation identifier tag.",
+															"example": "d933b1530bc56c9953cf8ce166da8004",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -102,7 +148,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -116,7 +180,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -199,13 +281,50 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/ipam-delegations"
+												"properties": {
+													"cidr": {
+														"$ref": "#/components/schemas/cidr"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"delegated_account_id": {
+														"$ref": "#/components/schemas/delegated_account_identifier"
+													},
+													"id": {
+														"$ref": "#/components/schemas/delegation_identifier"
+													},
+													"modified_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"parent_prefix_id": {
+														"$ref": "#/components/schemas/identifier"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -225,13 +344,50 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/ipam-delegations"
+														"properties": {
+															"cidr": {
+																"$ref": "#/components/schemas/cidr"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"delegated_account_id": {
+																"$ref": "#/components/schemas/delegated_account_identifier"
+															},
+															"id": {
+																"$ref": "#/components/schemas/delegation_identifier"
+															},
+															"modified_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"parent_prefix_id": {
+																"$ref": "#/components/schemas/identifier"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -244,7 +400,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -258,7 +432,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -367,12 +559,51 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/ipam-delegations"
+											"properties": {
+												"cidr": {
+													"$ref": "#/components/schemas/cidr"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"delegated_account_id": {
+													"$ref": "#/components/schemas/delegated_account_identifier"
+												},
+												"id": {
+													"$ref": "#/components/schemas/delegation_identifier"
+												},
+												"modified_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"parent_prefix_id": {
+													"$ref": "#/components/schemas/identifier"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -390,12 +621,51 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/ipam-delegations"
+													"properties": {
+														"cidr": {
+															"$ref": "#/components/schemas/cidr"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"delegated_account_id": {
+															"$ref": "#/components/schemas/delegated_account_identifier"
+														},
+														"id": {
+															"$ref": "#/components/schemas/delegation_identifier"
+														},
+														"modified_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"parent_prefix_id": {
+															"$ref": "#/components/schemas/identifier"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -406,7 +676,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -420,7 +708,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

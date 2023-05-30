@@ -21,13 +21,58 @@
 				],
 				"properties": {
 					"comment": {
-						"$ref": "#/components/schemas/item_comment"
+						"description": "An informative summary of the list item.",
+						"example": "Private IP address",
+						"type": "string"
 					},
 					"ip": {
-						"$ref": "#/components/schemas/item_ip"
+						"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
+						"example": "10.0.0.1",
+						"type": "string"
 					},
 					"redirect": {
-						"$ref": "#/components/schemas/item_redirect"
+						"description": "The definition of the redirect.",
+						"properties": {
+							"include_subdomains": {
+								"default": false,
+								"type": "boolean"
+							},
+							"preserve_path_suffix": {
+								"default": true,
+								"type": "boolean"
+							},
+							"preserve_query_string": {
+								"default": false,
+								"type": "boolean"
+							},
+							"source_url": {
+								"example": "example.com/arch",
+								"type": "string"
+							},
+							"status_code": {
+								"default": 301,
+								"enum": [
+									301,
+									302,
+									307,
+									308
+								],
+								"type": "integer"
+							},
+							"subpath_matching": {
+								"default": false,
+								"type": "boolean"
+							},
+							"target_url": {
+								"example": "https://archlinux.org/",
+								"type": "string"
+							}
+						},
+						"required": [
+							"source_url",
+							"target_url"
+						],
+						"type": "object"
 					}
 				},
 				"type": "object"

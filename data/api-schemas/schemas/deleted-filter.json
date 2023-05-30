@@ -2,10 +2,17 @@
 	"additionalProperties": false,
 	"properties": {
 		"deleted": {
-			"$ref": "#/components/schemas/deleted"
+			"description": "When true, indicates that the firewall rule was deleted.",
+			"example": true,
+			"type": "boolean"
 		},
 		"id": {
-			"$ref": "#/components/schemas/filters_components-schemas-id"
+			"description": "The unique identifier of the filter.",
+			"example": "372e67954025e0ba6aaa6d586b9e0b61",
+			"maxLength": 32,
+			"minLength": 32,
+			"readOnly": true,
+			"type": "string"
 		}
 	},
 	"required": [

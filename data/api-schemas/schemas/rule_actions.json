@@ -1,7 +1,32 @@
 {
 	"description": "List actions patterns.",
 	"items": {
-		"$ref": "#/components/schemas/rule_action"
+		"description": "Actions pattern.",
+		"properties": {
+			"type": {
+				"description": "Type of supported action.",
+				"enum": [
+					"forward",
+					"worker"
+				],
+				"example": "forward",
+				"type": "string"
+			},
+			"value": {
+				"items": {
+					"description": "Value for action.",
+					"example": "destinationaddress@example.net",
+					"maxLength": 90,
+					"type": "string"
+				},
+				"type": "array"
+			}
+		},
+		"required": [
+			"type",
+			"value"
+		],
+		"type": "object"
 	},
 	"type": "array"
 }

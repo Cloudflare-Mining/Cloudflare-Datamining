@@ -41,14 +41,62 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
+													"properties": {
+														"ca": {
+															"$ref": "#/components/schemas/ca-6968yTTj"
+														},
+														"certificates": {
+															"$ref": "#/components/schemas/schemas-certificates"
+														},
+														"expires_on": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
+														},
+														"id": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+														},
+														"issuer": {
+															"$ref": "#/components/schemas/schemas-issuer"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+														},
+														"serial_number": {
+															"$ref": "#/components/schemas/schemas-serial_number"
+														},
+														"signature": {
+															"$ref": "#/components/schemas/signature"
+														},
+														"uploaded_on": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-uploaded_on"
+														}
+													}
 												}
 											],
 											"type": "object"
@@ -69,14 +117,62 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
+															"properties": {
+																"ca": {
+																	"$ref": "#/components/schemas/ca-6968yTTj"
+																},
+																"certificates": {
+																	"$ref": "#/components/schemas/schemas-certificates"
+																},
+																"expires_on": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+																},
+																"issuer": {
+																	"$ref": "#/components/schemas/schemas-issuer"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+																},
+																"serial_number": {
+																	"$ref": "#/components/schemas/schemas-serial_number"
+																},
+																"signature": {
+																	"$ref": "#/components/schemas/signature"
+																},
+																"uploaded_on": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-uploaded_on"
+																}
+															}
 														}
 													],
 													"type": "object"
@@ -90,7 +186,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -104,7 +218,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -189,13 +321,58 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
+												"properties": {
+													"ca": {
+														"$ref": "#/components/schemas/ca-6968yTTj"
+													},
+													"certificates": {
+														"$ref": "#/components/schemas/schemas-certificates"
+													},
+													"expires_on": {
+														"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
+													},
+													"id": {
+														"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+													},
+													"issuer": {
+														"$ref": "#/components/schemas/schemas-issuer"
+													},
+													"name": {
+														"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+													},
+													"serial_number": {
+														"$ref": "#/components/schemas/schemas-serial_number"
+													},
+													"signature": {
+														"$ref": "#/components/schemas/signature"
+													},
+													"uploaded_on": {
+														"$ref": "#/components/schemas/mtls-management_components-schemas-uploaded_on"
+													}
+												}
 											},
 											"type": "array"
 										}
@@ -239,13 +416,58 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
+														"properties": {
+															"ca": {
+																"$ref": "#/components/schemas/ca-6968yTTj"
+															},
+															"certificates": {
+																"$ref": "#/components/schemas/schemas-certificates"
+															},
+															"expires_on": {
+																"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
+															},
+															"id": {
+																"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+															},
+															"issuer": {
+																"$ref": "#/components/schemas/schemas-issuer"
+															},
+															"name": {
+																"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+															},
+															"serial_number": {
+																"$ref": "#/components/schemas/schemas-serial_number"
+															},
+															"signature": {
+																"$ref": "#/components/schemas/signature"
+															},
+															"uploaded_on": {
+																"$ref": "#/components/schemas/mtls-management_components-schemas-uploaded_on"
+															}
+														}
 													},
 													"type": "array"
 												}
@@ -282,7 +504,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -296,7 +536,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -393,14 +651,62 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
+													"properties": {
+														"ca": {
+															"$ref": "#/components/schemas/ca-6968yTTj"
+														},
+														"certificates": {
+															"$ref": "#/components/schemas/schemas-certificates"
+														},
+														"expires_on": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
+														},
+														"id": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+														},
+														"issuer": {
+															"$ref": "#/components/schemas/schemas-issuer"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+														},
+														"serial_number": {
+															"$ref": "#/components/schemas/schemas-serial_number"
+														},
+														"signature": {
+															"$ref": "#/components/schemas/signature"
+														},
+														"uploaded_on": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-uploaded_on"
+														}
+													}
 												}
 											],
 											"type": "object"
@@ -421,14 +727,62 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
+															"properties": {
+																"ca": {
+																	"$ref": "#/components/schemas/ca-6968yTTj"
+																},
+																"certificates": {
+																	"$ref": "#/components/schemas/schemas-certificates"
+																},
+																"expires_on": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+																},
+																"issuer": {
+																	"$ref": "#/components/schemas/schemas-issuer"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+																},
+																"serial_number": {
+																	"$ref": "#/components/schemas/schemas-serial_number"
+																},
+																"signature": {
+																	"$ref": "#/components/schemas/signature"
+																},
+																"uploaded_on": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-uploaded_on"
+																}
+															}
 														}
 													],
 													"type": "object"
@@ -442,7 +796,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -456,7 +828,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -553,13 +943,37 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/associationObject"
+												"properties": {
+													"service": {
+														"$ref": "#/components/schemas/service"
+													},
+													"status": {
+														"$ref": "#/components/schemas/mtls-management_components-schemas-status"
+													}
+												}
 											},
 											"type": "array"
 										}
@@ -579,13 +993,37 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/associationObject"
+														"properties": {
+															"service": {
+																"$ref": "#/components/schemas/service"
+															},
+															"status": {
+																"$ref": "#/components/schemas/mtls-management_components-schemas-status"
+															}
+														}
 													},
 													"type": "array"
 												}
@@ -598,7 +1036,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -612,7 +1068,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -734,14 +1208,65 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/certificateObjectPost-OiSASIp0"
+													"properties": {
+														"ca": {
+															"$ref": "#/components/schemas/ca-6968yTTj"
+														},
+														"certificates": {
+															"$ref": "#/components/schemas/schemas-certificates"
+														},
+														"expires_on": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
+														},
+														"id": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+														},
+														"issuer": {
+															"$ref": "#/components/schemas/schemas-issuer"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+														},
+														"serial_number": {
+															"$ref": "#/components/schemas/schemas-serial_number"
+														},
+														"signature": {
+															"$ref": "#/components/schemas/signature"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/schemas-updated_at"
+														},
+														"uploaded_on": {
+															"$ref": "#/components/schemas/mtls-management_components-schemas-uploaded_on"
+														}
+													}
 												}
 											],
 											"type": "object"
@@ -762,14 +1287,65 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/certificateObjectPost-OiSASIp0"
+															"properties": {
+																"ca": {
+																	"$ref": "#/components/schemas/ca-6968yTTj"
+																},
+																"certificates": {
+																	"$ref": "#/components/schemas/schemas-certificates"
+																},
+																"expires_on": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+																},
+																"issuer": {
+																	"$ref": "#/components/schemas/schemas-issuer"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+																},
+																"serial_number": {
+																	"$ref": "#/components/schemas/schemas-serial_number"
+																},
+																"signature": {
+																	"$ref": "#/components/schemas/signature"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/schemas-updated_at"
+																},
+																"uploaded_on": {
+																	"$ref": "#/components/schemas/mtls-management_components-schemas-uploaded_on"
+																}
+															}
 														}
 													],
 													"type": "object"
@@ -783,7 +1359,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -797,7 +1391,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

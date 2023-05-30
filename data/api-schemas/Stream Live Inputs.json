@@ -154,7 +154,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -162,7 +179,20 @@
 											"properties": {
 												"liveInputs": {
 													"items": {
-														"$ref": "#/components/schemas/live_input_object_without_url"
+														"properties": {
+															"created": {
+																"$ref": "#/components/schemas/live_input_created"
+															},
+															"meta": {
+																"$ref": "#/components/schemas/live_input_metadata"
+															},
+															"modified": {
+																"$ref": "#/components/schemas/live_input_modified"
+															},
+															"uid": {
+																"$ref": "#/components/schemas/live_input_identifier"
+															}
+														}
 													},
 													"type": "array"
 												},
@@ -195,7 +225,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -209,7 +257,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -290,12 +356,70 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/live_input"
+											"description": "Details about a live input.",
+											"properties": {
+												"created": {
+													"$ref": "#/components/schemas/live_input_created"
+												},
+												"meta": {
+													"$ref": "#/components/schemas/live_input_metadata"
+												},
+												"modified": {
+													"$ref": "#/components/schemas/live_input_modified"
+												},
+												"recording": {
+													"$ref": "#/components/schemas/live_input_recording_settings"
+												},
+												"rtmps": {
+													"$ref": "#/components/schemas/input_rtmps"
+												},
+												"rtmpsPlayback": {
+													"$ref": "#/components/schemas/playback_rtmps"
+												},
+												"srt": {
+													"$ref": "#/components/schemas/input_srt"
+												},
+												"srtPlayback": {
+													"$ref": "#/components/schemas/playback_srt"
+												},
+												"status": {
+													"$ref": "#/components/schemas/live_input_status"
+												},
+												"uid": {
+													"$ref": "#/components/schemas/live_input_identifier"
+												},
+												"webRTC": {
+													"$ref": "#/components/schemas/input_webrtc"
+												},
+												"webRTCPlayback": {
+													"$ref": "#/components/schemas/playback_webrtc"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -313,7 +437,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -327,7 +469,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -408,13 +568,43 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/output"
+												"properties": {
+													"enabled": {
+														"$ref": "#/components/schemas/output_enabled"
+													},
+													"streamKey": {
+														"$ref": "#/components/schemas/output_streamKey"
+													},
+													"uid": {
+														"$ref": "#/components/schemas/output_identifier"
+													},
+													"url": {
+														"$ref": "#/components/schemas/output_url"
+													}
+												}
 											},
 											"type": "array"
 										}
@@ -434,7 +624,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -448,7 +656,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -517,13 +743,38 @@
 					"schema": {
 						"properties": {
 							"defaultCreator": {
-								"$ref": "#/components/schemas/live_input_default_creator"
+								"description": "Sets the creator ID asssociated with this live input.",
+								"type": "string"
 							},
 							"meta": {
-								"$ref": "#/components/schemas/live_input_metadata"
+								"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+								"example": {
+									"name": "test stream 1"
+								},
+								"type": "object"
 							},
 							"recording": {
-								"$ref": "#/components/schemas/live_input_recording_settings"
+								"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+								"example": {
+									"mode": "off",
+									"requireSignedURLs": false,
+									"timeoutSeconds": 0
+								},
+								"properties": {
+									"allowedOrigins": {
+										"$ref": "#/components/schemas/live_input_recording_allowedOrigins"
+									},
+									"mode": {
+										"$ref": "#/components/schemas/live_input_recording_mode"
+									},
+									"requireSignedURLs": {
+										"$ref": "#/components/schemas/live_input_recording_requireSignedURLs"
+									},
+									"timeoutSeconds": {
+										"$ref": "#/components/schemas/live_input_recording_timeoutSeconds"
+									}
+								},
+								"type": "object"
 							}
 						}
 					}
@@ -538,12 +789,70 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/live_input"
+											"description": "Details about a live input.",
+											"properties": {
+												"created": {
+													"$ref": "#/components/schemas/live_input_created"
+												},
+												"meta": {
+													"$ref": "#/components/schemas/live_input_metadata"
+												},
+												"modified": {
+													"$ref": "#/components/schemas/live_input_modified"
+												},
+												"recording": {
+													"$ref": "#/components/schemas/live_input_recording_settings"
+												},
+												"rtmps": {
+													"$ref": "#/components/schemas/input_rtmps"
+												},
+												"rtmpsPlayback": {
+													"$ref": "#/components/schemas/playback_rtmps"
+												},
+												"srt": {
+													"$ref": "#/components/schemas/input_srt"
+												},
+												"srtPlayback": {
+													"$ref": "#/components/schemas/playback_srt"
+												},
+												"status": {
+													"$ref": "#/components/schemas/live_input_status"
+												},
+												"uid": {
+													"$ref": "#/components/schemas/live_input_identifier"
+												},
+												"webRTC": {
+													"$ref": "#/components/schemas/input_webrtc"
+												},
+												"webRTCPlayback": {
+													"$ref": "#/components/schemas/playback_webrtc"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -561,7 +870,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -575,7 +902,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -655,13 +1000,20 @@
 					"schema": {
 						"properties": {
 							"enabled": {
-								"$ref": "#/components/schemas/output_enabled"
+								"default": true,
+								"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
+								"example": true,
+								"type": "boolean"
 							},
 							"streamKey": {
-								"$ref": "#/components/schemas/output_streamKey"
+								"description": "The streamKey used to authenticate against an output's target.",
+								"example": "uzya-f19y-g2g9-a2ee-51j2",
+								"type": "string"
 							},
 							"url": {
-								"$ref": "#/components/schemas/output_url"
+								"description": "The URL an output uses to restream.",
+								"example": "rtmp://a.rtmp.youtube.com/live2",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -680,12 +1032,44 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/output"
+											"properties": {
+												"enabled": {
+													"$ref": "#/components/schemas/output_enabled"
+												},
+												"streamKey": {
+													"$ref": "#/components/schemas/output_streamKey"
+												},
+												"uid": {
+													"$ref": "#/components/schemas/output_identifier"
+												},
+												"url": {
+													"$ref": "#/components/schemas/output_url"
+												}
+											}
 										}
 									}
 								}
@@ -703,7 +1087,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -717,7 +1119,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -797,13 +1217,38 @@
 					"schema": {
 						"properties": {
 							"defaultCreator": {
-								"$ref": "#/components/schemas/live_input_default_creator"
+								"description": "Sets the creator ID asssociated with this live input.",
+								"type": "string"
 							},
 							"meta": {
-								"$ref": "#/components/schemas/live_input_metadata"
+								"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+								"example": {
+									"name": "test stream 1"
+								},
+								"type": "object"
 							},
 							"recording": {
-								"$ref": "#/components/schemas/live_input_recording_settings"
+								"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+								"example": {
+									"mode": "off",
+									"requireSignedURLs": false,
+									"timeoutSeconds": 0
+								},
+								"properties": {
+									"allowedOrigins": {
+										"$ref": "#/components/schemas/live_input_recording_allowedOrigins"
+									},
+									"mode": {
+										"$ref": "#/components/schemas/live_input_recording_mode"
+									},
+									"requireSignedURLs": {
+										"$ref": "#/components/schemas/live_input_recording_requireSignedURLs"
+									},
+									"timeoutSeconds": {
+										"$ref": "#/components/schemas/live_input_recording_timeoutSeconds"
+									}
+								},
+								"type": "object"
 							}
 						}
 					}
@@ -818,12 +1263,70 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/live_input"
+											"description": "Details about a live input.",
+											"properties": {
+												"created": {
+													"$ref": "#/components/schemas/live_input_created"
+												},
+												"meta": {
+													"$ref": "#/components/schemas/live_input_metadata"
+												},
+												"modified": {
+													"$ref": "#/components/schemas/live_input_modified"
+												},
+												"recording": {
+													"$ref": "#/components/schemas/live_input_recording_settings"
+												},
+												"rtmps": {
+													"$ref": "#/components/schemas/input_rtmps"
+												},
+												"rtmpsPlayback": {
+													"$ref": "#/components/schemas/playback_rtmps"
+												},
+												"srt": {
+													"$ref": "#/components/schemas/input_srt"
+												},
+												"srtPlayback": {
+													"$ref": "#/components/schemas/playback_srt"
+												},
+												"status": {
+													"$ref": "#/components/schemas/live_input_status"
+												},
+												"uid": {
+													"$ref": "#/components/schemas/live_input_identifier"
+												},
+												"webRTC": {
+													"$ref": "#/components/schemas/input_webrtc"
+												},
+												"webRTCPlayback": {
+													"$ref": "#/components/schemas/playback_webrtc"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -841,7 +1344,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -855,7 +1376,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -946,7 +1485,10 @@
 					"schema": {
 						"properties": {
 							"enabled": {
-								"$ref": "#/components/schemas/output_enabled"
+								"default": true,
+								"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
+								"example": true,
+								"type": "boolean"
 							}
 						},
 						"required": [
@@ -964,12 +1506,44 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/output"
+											"properties": {
+												"enabled": {
+													"$ref": "#/components/schemas/output_enabled"
+												},
+												"streamKey": {
+													"$ref": "#/components/schemas/output_streamKey"
+												},
+												"uid": {
+													"$ref": "#/components/schemas/output_identifier"
+												},
+												"url": {
+													"$ref": "#/components/schemas/output_url"
+												}
+											}
 										}
 									}
 								}
@@ -987,7 +1561,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -1001,7 +1593,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []

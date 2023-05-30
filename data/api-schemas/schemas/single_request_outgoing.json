@@ -1,13 +1,22 @@
 {
 	"properties": {
 		"id": {
-			"$ref": "#/components/schemas/identifier-Cj5BSFjh"
+			"example": "269d8f4853475ca241c4e730be286b20",
+			"readOnly": true
 		},
 		"name": {
-			"$ref": "#/components/schemas/name-dgRN4lh1"
+			"description": "Zone name.",
+			"example": "www.example.com.",
+			"type": "string"
 		},
 		"peers": {
-			"$ref": "#/components/schemas/peers"
+			"description": "A list of peer tags.",
+			"example": [
+				"23ff594956f20c2a721606e94745a8aa",
+				"00920f38ce07c2e2f4df50b1f61d4194"
+			],
+			"items": {},
+			"type": "array"
 		}
 	},
 	"required": [

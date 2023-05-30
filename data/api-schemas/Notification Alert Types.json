@@ -23,14 +23,45 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"additionalProperties": {
 												"items": {
-													"$ref": "#/components/schemas/alert-types"
+													"properties": {
+														"description": {
+															"$ref": "#/components/schemas/description-fZI4QXRj"
+														},
+														"display_name": {
+															"$ref": "#/components/schemas/display_name"
+														},
+														"filter_options": {
+															"$ref": "#/components/schemas/filter_options"
+														},
+														"type": {
+															"$ref": "#/components/schemas/type"
+														}
+													},
+													"type": "object"
 												},
 												"type": "array"
 											},
@@ -73,14 +104,45 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"additionalProperties": {
 														"items": {
-															"$ref": "#/components/schemas/alert-types"
+															"properties": {
+																"description": {
+																	"$ref": "#/components/schemas/description-fZI4QXRj"
+																},
+																"display_name": {
+																	"$ref": "#/components/schemas/display_name"
+																},
+																"filter_options": {
+																	"$ref": "#/components/schemas/filter_options"
+																},
+																"type": {
+																	"$ref": "#/components/schemas/type"
+																}
+															},
+															"type": "object"
 														},
 														"type": "array"
 													},
@@ -116,7 +178,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -130,7 +210,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

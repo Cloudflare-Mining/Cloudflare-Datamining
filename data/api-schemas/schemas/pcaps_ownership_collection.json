@@ -1,13 +1,170 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/pcaps_ownership_response"
+						"properties": {
+							"destination_conf": {
+								"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
+								"example": "s3://pcaps-bucket?region=us-east-1",
+								"type": "string"
+							},
+							"filename": {
+								"description": "The ownership challenge filename stored in the bucket.",
+								"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
+								"type": "string"
+							},
+							"id": {
+								"description": "The bucket ID associated with the packet captures API.",
+								"example": "9883874ecac311ec8475433579a6bf5f",
+								"maxLength": 32,
+								"minLength": 32,
+								"type": "string"
+							},
+							"status": {
+								"description": "The status of the ownership challenge. Can be pending, success or failed.",
+								"enum": [
+									"pending",
+									"success",
+									"failed"
+								],
+								"example": "success",
+								"type": "string"
+							},
+							"submitted": {
+								"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
+								"example": "2020-01-01T08:00:00Z",
+								"type": "string"
+							},
+							"validated": {
+								"description": "The RFC 3339 timestamp when the bucket was validated.",
+								"example": "2020-01-01T08:00:00Z",
+								"type": "string"
+							}
+						},
+						"required": [
+							"id",
+							"status",
+							"submitted",
+							"destination_conf",
+							"filename"
+						],
+						"type": "object"
 					},
 					"nullable": true,
 					"type": "array"

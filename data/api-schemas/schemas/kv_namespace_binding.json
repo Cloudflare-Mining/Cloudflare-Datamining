@@ -1,10 +1,17 @@
 {
 	"properties": {
 		"name": {
-			"$ref": "#/components/schemas/binding_name"
+			"description": "A JavaScript variable name for the binding.",
+			"example": "myBinding",
+			"readOnly": true,
+			"type": "string"
 		},
 		"namespace_id": {
-			"$ref": "#/components/schemas/namespace_identifier"
+			"description": "Namespace identifier tag.",
+			"example": "0f2ac74b498b48028cb68387c421e279",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"type": {
 			"description": "The class of resource that the binding provides.",

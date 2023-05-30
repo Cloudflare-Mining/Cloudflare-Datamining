@@ -11,31 +11,43 @@
 	},
 	"properties": {
 		"asn": {
-			"$ref": "#/components/schemas/schemas-asn-1DUgFCrt"
+			"description": "AS number associated with the node object.",
+			"type": "string"
 		},
 		"ip": {
-			"$ref": "#/components/schemas/traceroute_components-schemas-ip"
+			"description": "IP address of the node.",
+			"type": "string"
 		},
 		"labels": {
-			"$ref": "#/components/schemas/labels"
+			"description": "Field appears if there is an additional annotation printed when the probe returns. Field also appears when running a GRE+ICMP traceroute to denote which traceroute a node comes from.",
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
 		},
 		"max_rtt_ms": {
-			"$ref": "#/components/schemas/max_rtt_ms"
+			"description": "Maximum RTT in ms.",
+			"type": "number"
 		},
 		"mean_rtt_ms": {
-			"$ref": "#/components/schemas/mean_rtt_ms"
+			"description": "Mean RTT in ms.",
+			"type": "number"
 		},
 		"min_rtt_ms": {
-			"$ref": "#/components/schemas/min_rtt_ms"
+			"description": "Minimum RTT in ms.",
+			"type": "number"
 		},
 		"name": {
-			"$ref": "#/components/schemas/traceroute_components-schemas-name"
+			"description": "Host name of the address, this may be the same as the IP address.",
+			"type": "string"
 		},
 		"packet_count": {
-			"$ref": "#/components/schemas/packet_count"
+			"description": "Number of packets with a response from this node.",
+			"type": "integer"
 		},
 		"std_dev_rtt_ms": {
-			"$ref": "#/components/schemas/std_dev_rtt_ms"
+			"description": "Standard deviation of the RTTs in ms.",
+			"type": "number"
 		}
 	},
 	"type": "object"

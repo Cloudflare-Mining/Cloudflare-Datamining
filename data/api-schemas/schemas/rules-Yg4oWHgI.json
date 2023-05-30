@@ -2,7 +2,14 @@
 	"additionalProperties": {
 		"allOf": [
 			{
-				"$ref": "#/components/schemas/waf_action"
+				"description": "The WAF rule action to apply.",
+				"enum": [
+					"challenge",
+					"block",
+					"simulate",
+					"disable",
+					"default"
+				]
 			}
 		],
 		"example": "default"

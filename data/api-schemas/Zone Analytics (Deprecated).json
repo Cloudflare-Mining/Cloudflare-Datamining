@@ -67,15 +67,67 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-EyqFSgcs"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"query": {
-											"$ref": "#/components/schemas/query_response"
+											"description": "The exact parameters/timestamps the analytics service used to return data.",
+											"properties": {
+												"since": {
+													"$ref": "#/components/schemas/since"
+												},
+												"time_delta": {
+													"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
+													"type": "integer"
+												},
+												"until": {
+													"$ref": "#/components/schemas/until"
+												}
+											},
+											"readOnly": true,
+											"type": "object"
 										},
 										"result": {
-											"$ref": "#/components/schemas/datacenters"
+											"description": "A breakdown of all dashboard analytics data by co-locations. This is limited to Enterprise zones only.",
+											"items": {
+												"properties": {
+													"colo_id": {
+														"description": "The airport code identifer for the co-location.",
+														"example": "SFO",
+														"type": "string"
+													},
+													"timeseries": {
+														"$ref": "#/components/schemas/timeseries_by_colo"
+													},
+													"totals": {
+														"$ref": "#/components/schemas/totals_by_colo"
+													}
+												},
+												"type": "object"
+											},
+											"title": "Analytics data by datacenter",
+											"type": "array"
 										}
 									}
 								}
@@ -93,15 +145,67 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-EyqFSgcs"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"query": {
-													"$ref": "#/components/schemas/query_response"
+													"description": "The exact parameters/timestamps the analytics service used to return data.",
+													"properties": {
+														"since": {
+															"$ref": "#/components/schemas/since"
+														},
+														"time_delta": {
+															"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
+															"type": "integer"
+														},
+														"until": {
+															"$ref": "#/components/schemas/until"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
 												},
 												"result": {
-													"$ref": "#/components/schemas/datacenters"
+													"description": "A breakdown of all dashboard analytics data by co-locations. This is limited to Enterprise zones only.",
+													"items": {
+														"properties": {
+															"colo_id": {
+																"description": "The airport code identifer for the co-location.",
+																"example": "SFO",
+																"type": "string"
+															},
+															"timeseries": {
+																"$ref": "#/components/schemas/timeseries_by_colo"
+															},
+															"totals": {
+																"$ref": "#/components/schemas/totals_by_colo"
+															}
+														},
+														"type": "object"
+													},
+													"title": "Analytics data by datacenter",
+													"type": "array"
 												}
 											}
 										}
@@ -112,7 +216,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -126,7 +248,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -258,15 +398,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-EyqFSgcs"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"query": {
-											"$ref": "#/components/schemas/query_response"
+											"description": "The exact parameters/timestamps the analytics service used to return data.",
+											"properties": {
+												"since": {
+													"$ref": "#/components/schemas/since"
+												},
+												"time_delta": {
+													"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
+													"type": "integer"
+												},
+												"until": {
+													"$ref": "#/components/schemas/until"
+												}
+											},
+											"readOnly": true,
+											"type": "object"
 										},
 										"result": {
-											"$ref": "#/components/schemas/dashboard"
+											"description": "Totals and timeseries data.",
+											"properties": {
+												"timeseries": {
+													"$ref": "#/components/schemas/timeseries-5bYR0hwN"
+												},
+												"totals": {
+													"$ref": "#/components/schemas/totals-EyNdKyfM"
+												}
+											},
+											"title": "Dashboard response",
+											"type": "object"
 										}
 									}
 								}
@@ -284,15 +468,59 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-EyqFSgcs"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"query": {
-													"$ref": "#/components/schemas/query_response"
+													"description": "The exact parameters/timestamps the analytics service used to return data.",
+													"properties": {
+														"since": {
+															"$ref": "#/components/schemas/since"
+														},
+														"time_delta": {
+															"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
+															"type": "integer"
+														},
+														"until": {
+															"$ref": "#/components/schemas/until"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
 												},
 												"result": {
-													"$ref": "#/components/schemas/dashboard"
+													"description": "Totals and timeseries data.",
+													"properties": {
+														"timeseries": {
+															"$ref": "#/components/schemas/timeseries-5bYR0hwN"
+														},
+														"totals": {
+															"$ref": "#/components/schemas/totals-EyNdKyfM"
+														}
+													},
+													"title": "Dashboard response",
+													"type": "object"
 												}
 											}
 										}
@@ -303,7 +531,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -317,7 +563,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

@@ -1,12 +1,188 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/test_connection_properties"
+					"properties": {
+						"body_hash": {
+							"description": "Hash version of body.",
+							"example": "be27f2429421e12f200cab1da43ba301bdc70e1d",
+							"type": "string"
+						},
+						"body_size": {
+							"description": "Size of the body in bytes.",
+							"example": "63910 bytes",
+							"type": "string"
+						},
+						"cf-cache-status": {
+							"description": "Lists any `cf-cache-status` present.",
+							"type": "string"
+						},
+						"cf-ray": {
+							"description": "Lists any `cf-ray` present.",
+							"example": "1ddd7570575207d9-LAX",
+							"type": "string"
+						},
+						"cf-wan-error": {
+							"description": "Lists any `cf-wan-error` present.",
+							"type": "string"
+						},
+						"cloudflare": {
+							"description": "Whether Cloudflare is enabled on the host.",
+							"example": "on",
+							"type": "string"
+						},
+						"connection_close": {
+							"default": true,
+							"description": "Connection closed or open.",
+							"example": false,
+							"type": "boolean"
+						},
+						"elapsed_time": {
+							"description": "Amount of seconds that the test lasted.",
+							"example": "0.239013s",
+							"type": "string"
+						},
+						"host_name": {
+							"description": "The hostname queried.",
+							"example": "www.example.com",
+							"type": "string"
+						},
+						"http_status": {
+							"description": "The HTTP status response code.",
+							"example": 200,
+							"type": "number"
+						},
+						"method": {
+							"description": "HTTP Method used to test the connection.",
+							"enum": [
+								"GET",
+								"POST"
+							],
+							"example": "GET"
+						},
+						"missing_headers": {
+							"description": "What headers are missing.",
+							"example": "No Content-Length or Transfer-Encoding.",
+							"type": "string"
+						},
+						"protocol": {
+							"description": "Protocol used to test the connection.",
+							"example": "HTTP/1.1",
+							"type": "string"
+						},
+						"railgun": {
+							"description": "Indicates if Railgun is enabled on the queried hostname.",
+							"example": "on",
+							"type": "string"
+						},
+						"response_status": {
+							"description": "HTTP Status code.",
+							"example": "200 OK",
+							"type": "string"
+						},
+						"url": {
+							"description": "Url of the domain you can compare the connection to.",
+							"example": "https://www.cloudflare.com",
+							"type": "string"
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

@@ -25,12 +25,48 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_config"
+											"properties": {
+												"default_sampling": {
+													"$ref": "#/components/schemas/mnm_config_default_sampling"
+												},
+												"name": {
+													"$ref": "#/components/schemas/mnm_config_name"
+												},
+												"router_ips": {
+													"$ref": "#/components/schemas/mnm_config_router_ips"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -49,12 +85,48 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_config"
+													"properties": {
+														"default_sampling": {
+															"$ref": "#/components/schemas/mnm_config_default_sampling"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mnm_config_name"
+														},
+														"router_ips": {
+															"$ref": "#/components/schemas/mnm_config_router_ips"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -66,7 +138,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -80,7 +170,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -150,12 +258,48 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_config"
+											"properties": {
+												"default_sampling": {
+													"$ref": "#/components/schemas/mnm_config_default_sampling"
+												},
+												"name": {
+													"$ref": "#/components/schemas/mnm_config_name"
+												},
+												"router_ips": {
+													"$ref": "#/components/schemas/mnm_config_router_ips"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -174,12 +318,48 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_config"
+													"properties": {
+														"default_sampling": {
+															"$ref": "#/components/schemas/mnm_config_default_sampling"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mnm_config_name"
+														},
+														"router_ips": {
+															"$ref": "#/components/schemas/mnm_config_router_ips"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -191,7 +371,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -205,7 +403,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -275,12 +491,48 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_config"
+											"properties": {
+												"default_sampling": {
+													"$ref": "#/components/schemas/mnm_config_default_sampling"
+												},
+												"name": {
+													"$ref": "#/components/schemas/mnm_config_name"
+												},
+												"router_ips": {
+													"$ref": "#/components/schemas/mnm_config_router_ips"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -299,12 +551,48 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_config"
+													"properties": {
+														"default_sampling": {
+															"$ref": "#/components/schemas/mnm_config_default_sampling"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mnm_config_name"
+														},
+														"router_ips": {
+															"$ref": "#/components/schemas/mnm_config_router_ips"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -316,7 +604,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -330,7 +636,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -406,12 +730,48 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_config"
+											"properties": {
+												"default_sampling": {
+													"$ref": "#/components/schemas/mnm_config_default_sampling"
+												},
+												"name": {
+													"$ref": "#/components/schemas/mnm_config_name"
+												},
+												"router_ips": {
+													"$ref": "#/components/schemas/mnm_config_router_ips"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -430,12 +790,48 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_config"
+													"properties": {
+														"default_sampling": {
+															"$ref": "#/components/schemas/mnm_config_default_sampling"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mnm_config_name"
+														},
+														"router_ips": {
+															"$ref": "#/components/schemas/mnm_config_router_ips"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -447,7 +843,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -461,7 +875,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -537,12 +969,48 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_config"
+											"properties": {
+												"default_sampling": {
+													"$ref": "#/components/schemas/mnm_config_default_sampling"
+												},
+												"name": {
+													"$ref": "#/components/schemas/mnm_config_name"
+												},
+												"router_ips": {
+													"$ref": "#/components/schemas/mnm_config_router_ips"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -561,12 +1029,48 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_config"
+													"properties": {
+														"default_sampling": {
+															"$ref": "#/components/schemas/mnm_config_default_sampling"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mnm_config_name"
+														},
+														"router_ips": {
+															"$ref": "#/components/schemas/mnm_config_router_ips"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -578,7 +1082,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -592,7 +1114,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -668,12 +1208,48 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_config"
+											"properties": {
+												"default_sampling": {
+													"$ref": "#/components/schemas/mnm_config_default_sampling"
+												},
+												"name": {
+													"$ref": "#/components/schemas/mnm_config_name"
+												},
+												"router_ips": {
+													"$ref": "#/components/schemas/mnm_config_router_ips"
+												}
+											},
+											"required": [
+												"name",
+												"default_sampling",
+												"router_ips"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -692,12 +1268,48 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_config"
+													"properties": {
+														"default_sampling": {
+															"$ref": "#/components/schemas/mnm_config_default_sampling"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mnm_config_name"
+														},
+														"router_ips": {
+															"$ref": "#/components/schemas/mnm_config_router_ips"
+														}
+													},
+													"required": [
+														"name",
+														"default_sampling",
+														"router_ips"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -709,7 +1321,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -723,7 +1353,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

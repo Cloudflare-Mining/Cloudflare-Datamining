@@ -5,7 +5,9 @@
 		"header"
 	],
 	"items": {
-		"$ref": "#/components/schemas/category"
+		"description": "A category of the rule.",
+		"example": "directory-traversal",
+		"type": "string"
 	},
 	"type": "array"
 }

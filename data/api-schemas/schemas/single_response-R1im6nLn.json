@@ -1,12 +1,135 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/configuration"
+					"properties": {
+						"auth_id_characteristics": {
+							"items": {
+								"properties": {
+									"name": {
+										"description": "The name of the characteristic field, i.e., the header or cookie name.",
+										"example": "authorization",
+										"maxLength": 128,
+										"type": "string"
+									},
+									"type": {
+										"description": "The type of characteristic.",
+										"enum": [
+											"header",
+											"cookie"
+										],
+										"example": "header",
+										"type": "string"
+									}
+								},
+								"required": [
+									"type",
+									"name"
+								],
+								"type": "object"
+							},
+							"maxItems": 10,
+							"type": "array",
+							"uniqueItems": true
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

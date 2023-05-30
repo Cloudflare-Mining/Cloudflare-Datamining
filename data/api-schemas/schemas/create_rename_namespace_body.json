@@ -1,7 +1,9 @@
 {
 	"properties": {
 		"title": {
-			"$ref": "#/components/schemas/namespace_title"
+			"description": "A human-readable string name for a Namespace.",
+			"example": "My Own Namespace",
+			"type": "string"
 		}
 	},
 	"required": [

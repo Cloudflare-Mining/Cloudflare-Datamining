@@ -3,12 +3,160 @@
 		"result": {
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/variants"
+					"allOf": [
+						{
+							"properties": {
+								"id": {
+									"description": "Identifier of the zone setting.",
+									"example": "development_mode",
+									"type": "string"
+								},
+								"modified_on": {
+									"description": "last time this setting was modified.",
+									"example": "2014-01-01T05:20:00.12345Z",
+									"format": "date-time",
+									"nullable": true,
+									"readOnly": true,
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"modified_on"
+							]
+						},
+						{
+							"properties": {
+								"id": {
+									"description": "ID of the zone setting.",
+									"enum": [
+										"variants"
+									],
+									"example": "variants"
+								}
+							}
+						}
+					],
+					"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
+					"title": "Variants Caching"
 				},
 				{
 					"properties": {
 						"value": {
-							"$ref": "#/components/schemas/variants_value"
+							"description": "Value of the zone setting.",
+							"properties": {
+								"avif": {
+									"description": "List of strings with the MIME types of all the variants that should be served for avif.",
+									"example": [
+										"image/webp",
+										"image/jpeg"
+									],
+									"items": {},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"bmp": {
+									"description": "List of strings with the MIME types of all the variants that should be served for bmp.",
+									"example": [
+										"image/webp",
+										"image/jpeg"
+									],
+									"items": {},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"gif": {
+									"description": "List of strings with the MIME types of all the variants that should be served for gif.",
+									"example": [
+										"image/webp",
+										"image/jpeg"
+									],
+									"items": {},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"jp2": {
+									"description": "List of strings with the MIME types of all the variants that should be served for jp2.",
+									"example": [
+										"image/webp",
+										"image/avif"
+									],
+									"items": {},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"jpeg": {
+									"description": "List of strings with the MIME types of all the variants that should be served for jpeg.",
+									"example": [
+										"image/webp",
+										"image/avif"
+									],
+									"items": {},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"jpg": {
+									"description": "List of strings with the MIME types of all the variants that should be served for jpg.",
+									"example": [
+										"image/webp",
+										"image/avif"
+									],
+									"items": {},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"jpg2": {
+									"description": "List of strings with the MIME types of all the variants that should be served for jpg2.",
+									"example": [
+										"image/webp",
+										"image/avif"
+									],
+									"items": {},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"png": {
+									"description": "List of strings with the MIME types of all the variants that should be served for png.",
+									"example": [
+										"image/webp",
+										"image/avif"
+									],
+									"items": {},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"tif": {
+									"description": "List of strings with the MIME types of all the variants that should be served for tif.",
+									"example": [
+										"image/webp",
+										"image/avif"
+									],
+									"items": {},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"tiff": {
+									"description": "List of strings with the MIME types of all the variants that should be served for tiff.",
+									"example": [
+										"image/webp",
+										"image/avif"
+									],
+									"items": {},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"webp": {
+									"description": "List of strings with the MIME types of all the variants that should be served for webp.",
+									"example": [
+										"image/jpeg",
+										"image/avif"
+									],
+									"items": {},
+									"type": "array",
+									"uniqueItems": true
+								}
+							},
+							"type": "object"
 						}
 					},
 					"required": [

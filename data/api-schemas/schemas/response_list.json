@@ -1,6 +1,23 @@
 {
 	"items": {
-		"$ref": "#/components/schemas/response_model"
+		"properties": {
+			"available": {
+				"description": "When true, the Managed Transform is available in the current Cloudflare plan.",
+				"example": true,
+				"type": "boolean"
+			},
+			"enabled": {
+				"description": "When true, the Managed Transform is enabled.",
+				"example": true,
+				"type": "boolean"
+			},
+			"id": {
+				"description": "Human-readable identifier of the Managed Transform.",
+				"example": "add_cf-bot-score_header",
+				"type": "string"
+			}
+		},
+		"type": "object"
 	},
 	"type": "array"
 }

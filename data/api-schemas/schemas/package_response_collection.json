@@ -1,13 +1,270 @@
 {
 	"anyOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/package"
+						"oneOf": [
+							{
+								"properties": {
+									"description": {
+										"description": "A summary of the purpose/function of the WAF package.",
+										"example": "null",
+										"readOnly": true,
+										"type": "string"
+									},
+									"detection_mode": {
+										"description": "The mode that defines how rules within the package are evaluated during the course of a request. When a package uses anomaly detection mode (`anomaly` value), each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined in the WAF package, the action configured in the package will be performed. Traditional detection mode (`traditional` value) will decide the action to take when it is triggered by the request. If multiple rules are triggered, the action providing the highest protection will be applied (for example, a 'block' action will win over a 'challenge' action).",
+										"enum": [
+											"anomaly",
+											"traditional"
+										],
+										"example": "traditional",
+										"readOnly": true,
+										"type": "string"
+									},
+									"id": {
+										"description": "The unique identifier of a WAF package.",
+										"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+										"maxLength": 32,
+										"readOnly": true,
+										"type": "string"
+									},
+									"name": {
+										"description": "The name of the WAF package.",
+										"example": "USER",
+										"readOnly": true,
+										"type": "string"
+									},
+									"status": {
+										"default": "active",
+										"description": "When set to `active`, indicates that the WAF package will be applied to the zone.",
+										"enum": [
+											"active"
+										],
+										"readOnly": true,
+										"type": "string"
+									},
+									"zone_id": {
+										"description": "Identifier",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"maxLength": 32,
+										"readOnly": true,
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"name",
+									"description",
+									"detection_mode",
+									"zone_id"
+								],
+								"title": "Traditional WAF package"
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"description": {
+												"$ref": "#/components/schemas/package_components-schemas-description"
+											},
+											"detection_mode": {
+												"$ref": "#/components/schemas/detection_mode"
+											},
+											"id": {
+												"$ref": "#/components/schemas/package_components-schemas-identifier"
+											},
+											"name": {
+												"$ref": "#/components/schemas/package_components-schemas-name"
+											},
+											"status": {
+												"$ref": "#/components/schemas/package_components-schemas-status"
+											},
+											"zone_id": {
+												"$ref": "#/components/schemas/common_components-schemas-identifier"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"description",
+											"detection_mode",
+											"zone_id"
+										],
+										"title": "Traditional WAF package"
+									},
+									{
+										"properties": {
+											"action_mode": {
+												"default": "challenge",
+												"description": "The default action performed by the rules in the WAF package.",
+												"enum": [
+													"simulate",
+													"block",
+													"challenge"
+												],
+												"type": "string"
+											},
+											"description": {
+												"description": "A summary of the purpose/function of the WAF package.",
+												"example": "Covers OWASP Top 10 vulnerabilities and more.",
+												"readOnly": true,
+												"type": "string"
+											},
+											"detection_mode": {
+												"description": "When a WAF package uses anomaly detection, each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined on the WAF package, the action defined on the package will be taken.",
+												"example": "anomaly",
+												"readOnly": true,
+												"type": "string"
+											},
+											"name": {
+												"description": "The name of the WAF package.",
+												"example": "OWASP ModSecurity Core Rule Set",
+												"readOnly": true,
+												"type": "string"
+											},
+											"sensitivity": {
+												"default": "high",
+												"description": "The sensitivity of the WAF package.",
+												"enum": [
+													"high",
+													"medium",
+													"low",
+													"off"
+												],
+												"type": "string"
+											}
+										}
+									}
+								],
+								"required": [
+									"id",
+									"name",
+									"description",
+									"zone_id",
+									"detection_mode",
+									"sensitivity",
+									"action_mode"
+								],
+								"title": "Anomaly detection WAF package (OWASP)"
+							}
+						],
+						"type": "object"
 					},
 					"type": "array"
 				}

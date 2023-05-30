@@ -38,10 +38,18 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/Errors"
+											"description": "A list of error messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -135,7 +143,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -143,7 +155,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -165,21 +181,53 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Ruleset"
+													"description": "A ruleset object.",
+													"properties": {
+														"description": {
+															"default": "",
+															"description": "An informative description of the ruleset.",
+															"example": "My ruleset to execute managed rulesets",
+															"type": "string"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/RulesetKind"
+														},
+														"name": {
+															"description": "The human-readable name of the ruleset.",
+															"example": "My ruleset",
+															"type": "string"
+														},
+														"phase": {
+															"$ref": "#/components/schemas/RulesetPhase"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/RulesetId"
+															"description": "The unique ID of the ruleset.",
+															"example": "2f2feab2026849078ba485f918791bdc",
+															"pattern": "^[0-9a-f]{32}$",
+															"type": "string"
 														},
 														"last_updated": {
-															"$ref": "#/components/schemas/RulesetLastUpdated"
+															"description": "The timestamp of when the ruleset was last modified.",
+															"example": "2000-01-01T00:00:00.000000Z",
+															"type": "string"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/RulesResponse"
+															"description": "The list of rules in the ruleset.",
+															"items": {
+																"$ref": "#/components/schemas/RuleResponse"
+															},
+															"type": "array"
 														},
 														"version": {
-															"$ref": "#/components/schemas/RulesetVersion"
+															"description": "The version of the ruleset.",
+															"example": "1",
+															"pattern": "^[0-9]+$",
+															"type": "string"
 														}
 													},
 													"required": [
@@ -209,10 +257,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -306,10 +362,18 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/Errors"
+											"description": "A list of error messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -382,7 +446,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -390,7 +458,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -414,18 +486,46 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/Ruleset"
+														"description": "A ruleset object.",
+														"properties": {
+															"description": {
+																"default": "",
+																"description": "An informative description of the ruleset.",
+																"example": "My ruleset to execute managed rulesets",
+																"type": "string"
+															},
+															"kind": {
+																"$ref": "#/components/schemas/RulesetKind"
+															},
+															"name": {
+																"description": "The human-readable name of the ruleset.",
+																"example": "My ruleset",
+																"type": "string"
+															},
+															"phase": {
+																"$ref": "#/components/schemas/RulesetPhase"
+															}
+														},
+														"type": "object"
 													},
 													{
 														"properties": {
 															"id": {
-																"$ref": "#/components/schemas/RulesetId"
+																"description": "The unique ID of the ruleset.",
+																"example": "2f2feab2026849078ba485f918791bdc",
+																"pattern": "^[0-9a-f]{32}$",
+																"type": "string"
 															},
 															"last_updated": {
-																"$ref": "#/components/schemas/RulesetLastUpdated"
+																"description": "The timestamp of when the ruleset was last modified.",
+																"example": "2000-01-01T00:00:00.000000Z",
+																"type": "string"
 															},
 															"version": {
-																"$ref": "#/components/schemas/RulesetVersion"
+																"description": "The version of the ruleset.",
+																"example": "1",
+																"pattern": "^[0-9]+$",
+																"type": "string"
 															}
 														},
 														"required": [
@@ -456,10 +556,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -541,7 +649,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -549,7 +661,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -571,21 +687,53 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Ruleset"
+													"description": "A ruleset object.",
+													"properties": {
+														"description": {
+															"default": "",
+															"description": "An informative description of the ruleset.",
+															"example": "My ruleset to execute managed rulesets",
+															"type": "string"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/RulesetKind"
+														},
+														"name": {
+															"description": "The human-readable name of the ruleset.",
+															"example": "My ruleset",
+															"type": "string"
+														},
+														"phase": {
+															"$ref": "#/components/schemas/RulesetPhase"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/RulesetId"
+															"description": "The unique ID of the ruleset.",
+															"example": "2f2feab2026849078ba485f918791bdc",
+															"pattern": "^[0-9a-f]{32}$",
+															"type": "string"
 														},
 														"last_updated": {
-															"$ref": "#/components/schemas/RulesetLastUpdated"
+															"description": "The timestamp of when the ruleset was last modified.",
+															"example": "2000-01-01T00:00:00.000000Z",
+															"type": "string"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/RulesResponse"
+															"description": "The list of rules in the ruleset.",
+															"items": {
+																"$ref": "#/components/schemas/RuleResponse"
+															},
+															"type": "array"
 														},
 														"version": {
-															"$ref": "#/components/schemas/RulesetVersion"
+															"description": "The version of the ruleset.",
+															"example": "1",
+															"pattern": "^[0-9]+$",
+															"type": "string"
 														}
 													},
 													"required": [
@@ -615,10 +763,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -700,7 +856,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -708,7 +868,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -732,18 +896,46 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/Ruleset"
+														"description": "A ruleset object.",
+														"properties": {
+															"description": {
+																"default": "",
+																"description": "An informative description of the ruleset.",
+																"example": "My ruleset to execute managed rulesets",
+																"type": "string"
+															},
+															"kind": {
+																"$ref": "#/components/schemas/RulesetKind"
+															},
+															"name": {
+																"description": "The human-readable name of the ruleset.",
+																"example": "My ruleset",
+																"type": "string"
+															},
+															"phase": {
+																"$ref": "#/components/schemas/RulesetPhase"
+															}
+														},
+														"type": "object"
 													},
 													{
 														"properties": {
 															"id": {
-																"$ref": "#/components/schemas/RulesetId"
+																"description": "The unique ID of the ruleset.",
+																"example": "2f2feab2026849078ba485f918791bdc",
+																"pattern": "^[0-9a-f]{32}$",
+																"type": "string"
 															},
 															"last_updated": {
-																"$ref": "#/components/schemas/RulesetLastUpdated"
+																"description": "The timestamp of when the ruleset was last modified.",
+																"example": "2000-01-01T00:00:00.000000Z",
+																"type": "string"
 															},
 															"version": {
-																"$ref": "#/components/schemas/RulesetVersion"
+																"description": "The version of the ruleset.",
+																"example": "1",
+																"pattern": "^[0-9]+$",
+																"type": "string"
 															}
 														},
 														"required": [
@@ -774,10 +966,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -870,7 +1070,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -878,7 +1082,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -900,21 +1108,53 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Ruleset"
+													"description": "A ruleset object.",
+													"properties": {
+														"description": {
+															"default": "",
+															"description": "An informative description of the ruleset.",
+															"example": "My ruleset to execute managed rulesets",
+															"type": "string"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/RulesetKind"
+														},
+														"name": {
+															"description": "The human-readable name of the ruleset.",
+															"example": "My ruleset",
+															"type": "string"
+														},
+														"phase": {
+															"$ref": "#/components/schemas/RulesetPhase"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/RulesetId"
+															"description": "The unique ID of the ruleset.",
+															"example": "2f2feab2026849078ba485f918791bdc",
+															"pattern": "^[0-9a-f]{32}$",
+															"type": "string"
 														},
 														"last_updated": {
-															"$ref": "#/components/schemas/RulesetLastUpdated"
+															"description": "The timestamp of when the ruleset was last modified.",
+															"example": "2000-01-01T00:00:00.000000Z",
+															"type": "string"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/RulesResponse"
+															"description": "The list of rules in the ruleset.",
+															"items": {
+																"$ref": "#/components/schemas/RuleResponse"
+															},
+															"type": "array"
 														},
 														"version": {
-															"$ref": "#/components/schemas/RulesetVersion"
+															"description": "The version of the ruleset.",
+															"example": "1",
+															"pattern": "^[0-9]+$",
+															"type": "string"
 														}
 													},
 													"required": [
@@ -944,10 +1184,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -1029,7 +1277,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -1037,7 +1289,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -1059,21 +1315,53 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Ruleset"
+													"description": "A ruleset object.",
+													"properties": {
+														"description": {
+															"default": "",
+															"description": "An informative description of the ruleset.",
+															"example": "My ruleset to execute managed rulesets",
+															"type": "string"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/RulesetKind"
+														},
+														"name": {
+															"description": "The human-readable name of the ruleset.",
+															"example": "My ruleset",
+															"type": "string"
+														},
+														"phase": {
+															"$ref": "#/components/schemas/RulesetPhase"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/RulesetId"
+															"description": "The unique ID of the ruleset.",
+															"example": "2f2feab2026849078ba485f918791bdc",
+															"pattern": "^[0-9a-f]{32}$",
+															"type": "string"
 														},
 														"last_updated": {
-															"$ref": "#/components/schemas/RulesetLastUpdated"
+															"description": "The timestamp of when the ruleset was last modified.",
+															"example": "2000-01-01T00:00:00.000000Z",
+															"type": "string"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/RulesResponse"
+															"description": "The list of rules in the ruleset.",
+															"items": {
+																"$ref": "#/components/schemas/RuleResponse"
+															},
+															"type": "array"
 														},
 														"version": {
-															"$ref": "#/components/schemas/RulesetVersion"
+															"description": "The version of the ruleset.",
+															"example": "1",
+															"pattern": "^[0-9]+$",
+															"type": "string"
 														}
 													},
 													"required": [
@@ -1103,10 +1391,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -1188,7 +1484,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -1196,7 +1496,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -1220,18 +1524,46 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/Ruleset"
+														"description": "A ruleset object.",
+														"properties": {
+															"description": {
+																"default": "",
+																"description": "An informative description of the ruleset.",
+																"example": "My ruleset to execute managed rulesets",
+																"type": "string"
+															},
+															"kind": {
+																"$ref": "#/components/schemas/RulesetKind"
+															},
+															"name": {
+																"description": "The human-readable name of the ruleset.",
+																"example": "My ruleset",
+																"type": "string"
+															},
+															"phase": {
+																"$ref": "#/components/schemas/RulesetPhase"
+															}
+														},
+														"type": "object"
 													},
 													{
 														"properties": {
 															"id": {
-																"$ref": "#/components/schemas/RulesetId"
+																"description": "The unique ID of the ruleset.",
+																"example": "2f2feab2026849078ba485f918791bdc",
+																"pattern": "^[0-9a-f]{32}$",
+																"type": "string"
 															},
 															"last_updated": {
-																"$ref": "#/components/schemas/RulesetLastUpdated"
+																"description": "The timestamp of when the ruleset was last modified.",
+																"example": "2000-01-01T00:00:00.000000Z",
+																"type": "string"
 															},
 															"version": {
-																"$ref": "#/components/schemas/RulesetVersion"
+																"description": "The version of the ruleset.",
+																"example": "1",
+																"pattern": "^[0-9]+$",
+																"type": "string"
 															}
 														},
 														"required": [
@@ -1262,10 +1594,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -1358,7 +1698,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -1366,7 +1710,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -1388,21 +1736,53 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Ruleset"
+													"description": "A ruleset object.",
+													"properties": {
+														"description": {
+															"default": "",
+															"description": "An informative description of the ruleset.",
+															"example": "My ruleset to execute managed rulesets",
+															"type": "string"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/RulesetKind"
+														},
+														"name": {
+															"description": "The human-readable name of the ruleset.",
+															"example": "My ruleset",
+															"type": "string"
+														},
+														"phase": {
+															"$ref": "#/components/schemas/RulesetPhase"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/RulesetId"
+															"description": "The unique ID of the ruleset.",
+															"example": "2f2feab2026849078ba485f918791bdc",
+															"pattern": "^[0-9a-f]{32}$",
+															"type": "string"
 														},
 														"last_updated": {
-															"$ref": "#/components/schemas/RulesetLastUpdated"
+															"description": "The timestamp of when the ruleset was last modified.",
+															"example": "2000-01-01T00:00:00.000000Z",
+															"type": "string"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/RulesResponse"
+															"description": "The list of rules in the ruleset.",
+															"items": {
+																"$ref": "#/components/schemas/RuleResponse"
+															},
+															"type": "array"
 														},
 														"version": {
-															"$ref": "#/components/schemas/RulesetVersion"
+															"description": "The version of the ruleset.",
+															"example": "1",
+															"pattern": "^[0-9]+$",
+															"type": "string"
 														}
 													},
 													"required": [
@@ -1432,10 +1812,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -1522,7 +1910,62 @@
 					"schema": {
 						"allOf": [
 							{
-								"$ref": "#/components/schemas/RuleRequest"
+								"description": "A rule object.",
+								"properties": {
+									"action": {
+										"description": "The action to perform when the rule matches.",
+										"example": "execute",
+										"pattern": "^[a-z_]+$",
+										"type": "string"
+									},
+									"action_parameters": {
+										"description": "The parameters configuring the rule action.",
+										"example": {
+											"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+										},
+										"type": "object"
+									},
+									"description": {
+										"default": "",
+										"description": "An informative description of the rule.",
+										"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1",
+										"type": "string"
+									},
+									"enabled": {
+										"default": true,
+										"description": "Whether the rule should be executed.",
+										"example": true,
+										"type": "boolean"
+									},
+									"expression": {
+										"description": "The expression defining which traffic will match the rule.",
+										"example": "ip.src ne 1.1.1.1",
+										"type": "string"
+									},
+									"id": {
+										"$ref": "#/components/schemas/RuleId"
+									},
+									"logging": {
+										"description": "An object configuring the rule's logging behavior.",
+										"example": {
+											"enabled": true
+										},
+										"properties": {
+											"enabled": {
+												"description": "Whether to generate a log when the rule matches.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"ref": {
+										"description": "The reference of the rule (the rule ID by default).",
+										"example": "my_ref",
+										"type": "string"
+									}
+								},
+								"type": "object"
 							},
 							{
 								"properties": {
@@ -1578,7 +2021,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -1586,7 +2033,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -1608,21 +2059,53 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Ruleset"
+													"description": "A ruleset object.",
+													"properties": {
+														"description": {
+															"default": "",
+															"description": "An informative description of the ruleset.",
+															"example": "My ruleset to execute managed rulesets",
+															"type": "string"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/RulesetKind"
+														},
+														"name": {
+															"description": "The human-readable name of the ruleset.",
+															"example": "My ruleset",
+															"type": "string"
+														},
+														"phase": {
+															"$ref": "#/components/schemas/RulesetPhase"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/RulesetId"
+															"description": "The unique ID of the ruleset.",
+															"example": "2f2feab2026849078ba485f918791bdc",
+															"pattern": "^[0-9a-f]{32}$",
+															"type": "string"
 														},
 														"last_updated": {
-															"$ref": "#/components/schemas/RulesetLastUpdated"
+															"description": "The timestamp of when the ruleset was last modified.",
+															"example": "2000-01-01T00:00:00.000000Z",
+															"type": "string"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/RulesResponse"
+															"description": "The list of rules in the ruleset.",
+															"items": {
+																"$ref": "#/components/schemas/RuleResponse"
+															},
+															"type": "array"
 														},
 														"version": {
-															"$ref": "#/components/schemas/RulesetVersion"
+															"description": "The version of the ruleset.",
+															"example": "1",
+															"pattern": "^[0-9]+$",
+															"type": "string"
 														}
 													},
 													"required": [
@@ -1652,10 +2135,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -1721,12 +2212,36 @@
 					"schema": {
 						"allOf": [
 							{
-								"$ref": "#/components/schemas/Ruleset"
+								"description": "A ruleset object.",
+								"properties": {
+									"description": {
+										"default": "",
+										"description": "An informative description of the ruleset.",
+										"example": "My ruleset to execute managed rulesets",
+										"type": "string"
+									},
+									"kind": {
+										"$ref": "#/components/schemas/RulesetKind"
+									},
+									"name": {
+										"description": "The human-readable name of the ruleset.",
+										"example": "My ruleset",
+										"type": "string"
+									},
+									"phase": {
+										"$ref": "#/components/schemas/RulesetPhase"
+									}
+								},
+								"type": "object"
 							},
 							{
 								"properties": {
 									"rules": {
-										"$ref": "#/components/schemas/RulesRequest"
+										"description": "The list of rules in the ruleset.",
+										"items": {
+											"$ref": "#/components/schemas/RuleRequest"
+										},
+										"type": "array"
 									}
 								},
 								"required": [
@@ -1753,7 +2268,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -1761,7 +2280,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -1783,21 +2306,53 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Ruleset"
+													"description": "A ruleset object.",
+													"properties": {
+														"description": {
+															"default": "",
+															"description": "An informative description of the ruleset.",
+															"example": "My ruleset to execute managed rulesets",
+															"type": "string"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/RulesetKind"
+														},
+														"name": {
+															"description": "The human-readable name of the ruleset.",
+															"example": "My ruleset",
+															"type": "string"
+														},
+														"phase": {
+															"$ref": "#/components/schemas/RulesetPhase"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/RulesetId"
+															"description": "The unique ID of the ruleset.",
+															"example": "2f2feab2026849078ba485f918791bdc",
+															"pattern": "^[0-9a-f]{32}$",
+															"type": "string"
 														},
 														"last_updated": {
-															"$ref": "#/components/schemas/RulesetLastUpdated"
+															"description": "The timestamp of when the ruleset was last modified.",
+															"example": "2000-01-01T00:00:00.000000Z",
+															"type": "string"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/RulesResponse"
+															"description": "The list of rules in the ruleset.",
+															"items": {
+																"$ref": "#/components/schemas/RuleResponse"
+															},
+															"type": "array"
 														},
 														"version": {
-															"$ref": "#/components/schemas/RulesetVersion"
+															"description": "The version of the ruleset.",
+															"example": "1",
+															"pattern": "^[0-9]+$",
+															"type": "string"
 														}
 													},
 													"required": [
@@ -1827,10 +2382,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -1907,7 +2470,62 @@
 					"schema": {
 						"allOf": [
 							{
-								"$ref": "#/components/schemas/RuleRequest"
+								"description": "A rule object.",
+								"properties": {
+									"action": {
+										"description": "The action to perform when the rule matches.",
+										"example": "execute",
+										"pattern": "^[a-z_]+$",
+										"type": "string"
+									},
+									"action_parameters": {
+										"description": "The parameters configuring the rule action.",
+										"example": {
+											"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+										},
+										"type": "object"
+									},
+									"description": {
+										"default": "",
+										"description": "An informative description of the rule.",
+										"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1",
+										"type": "string"
+									},
+									"enabled": {
+										"default": true,
+										"description": "Whether the rule should be executed.",
+										"example": true,
+										"type": "boolean"
+									},
+									"expression": {
+										"description": "The expression defining which traffic will match the rule.",
+										"example": "ip.src ne 1.1.1.1",
+										"type": "string"
+									},
+									"id": {
+										"$ref": "#/components/schemas/RuleId"
+									},
+									"logging": {
+										"description": "An object configuring the rule's logging behavior.",
+										"example": {
+											"enabled": true
+										},
+										"properties": {
+											"enabled": {
+												"description": "Whether to generate a log when the rule matches.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"ref": {
+										"description": "The reference of the rule (the rule ID by default).",
+										"example": "my_ref",
+										"type": "string"
+									}
+								},
+								"type": "object"
 							},
 							{
 								"properties": {
@@ -1963,7 +2581,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -1971,7 +2593,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -1993,21 +2619,53 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Ruleset"
+													"description": "A ruleset object.",
+													"properties": {
+														"description": {
+															"default": "",
+															"description": "An informative description of the ruleset.",
+															"example": "My ruleset to execute managed rulesets",
+															"type": "string"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/RulesetKind"
+														},
+														"name": {
+															"description": "The human-readable name of the ruleset.",
+															"example": "My ruleset",
+															"type": "string"
+														},
+														"phase": {
+															"$ref": "#/components/schemas/RulesetPhase"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/RulesetId"
+															"description": "The unique ID of the ruleset.",
+															"example": "2f2feab2026849078ba485f918791bdc",
+															"pattern": "^[0-9a-f]{32}$",
+															"type": "string"
 														},
 														"last_updated": {
-															"$ref": "#/components/schemas/RulesetLastUpdated"
+															"description": "The timestamp of when the ruleset was last modified.",
+															"example": "2000-01-01T00:00:00.000000Z",
+															"type": "string"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/RulesResponse"
+															"description": "The list of rules in the ruleset.",
+															"items": {
+																"$ref": "#/components/schemas/RuleResponse"
+															},
+															"type": "array"
 														},
 														"version": {
-															"$ref": "#/components/schemas/RulesetVersion"
+															"description": "The version of the ruleset.",
+															"example": "1",
+															"pattern": "^[0-9]+$",
+															"type": "string"
 														}
 													},
 													"required": [
@@ -2037,10 +2695,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -2117,18 +2783,48 @@
 					"schema": {
 						"allOf": [
 							{
-								"$ref": "#/components/schemas/Ruleset"
+								"description": "A ruleset object.",
+								"properties": {
+									"description": {
+										"default": "",
+										"description": "An informative description of the ruleset.",
+										"example": "My ruleset to execute managed rulesets",
+										"type": "string"
+									},
+									"kind": {
+										"$ref": "#/components/schemas/RulesetKind"
+									},
+									"name": {
+										"description": "The human-readable name of the ruleset.",
+										"example": "My ruleset",
+										"type": "string"
+									},
+									"phase": {
+										"$ref": "#/components/schemas/RulesetPhase"
+									}
+								},
+								"type": "object"
 							},
 							{
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/RulesetId"
+										"description": "The unique ID of the ruleset.",
+										"example": "2f2feab2026849078ba485f918791bdc",
+										"pattern": "^[0-9a-f]{32}$",
+										"type": "string"
 									},
 									"rules": {
-										"$ref": "#/components/schemas/RulesRequest"
+										"description": "The list of rules in the ruleset.",
+										"items": {
+											"$ref": "#/components/schemas/RuleRequest"
+										},
+										"type": "array"
 									},
 									"version": {
-										"$ref": "#/components/schemas/RulesetVersion"
+										"description": "The version of the ruleset.",
+										"example": "1",
+										"pattern": "^[0-9]+$",
+										"type": "string"
 									}
 								},
 								"required": [
@@ -2152,7 +2848,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -2160,7 +2860,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -2182,21 +2886,53 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Ruleset"
+													"description": "A ruleset object.",
+													"properties": {
+														"description": {
+															"default": "",
+															"description": "An informative description of the ruleset.",
+															"example": "My ruleset to execute managed rulesets",
+															"type": "string"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/RulesetKind"
+														},
+														"name": {
+															"description": "The human-readable name of the ruleset.",
+															"example": "My ruleset",
+															"type": "string"
+														},
+														"phase": {
+															"$ref": "#/components/schemas/RulesetPhase"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/RulesetId"
+															"description": "The unique ID of the ruleset.",
+															"example": "2f2feab2026849078ba485f918791bdc",
+															"pattern": "^[0-9a-f]{32}$",
+															"type": "string"
 														},
 														"last_updated": {
-															"$ref": "#/components/schemas/RulesetLastUpdated"
+															"description": "The timestamp of when the ruleset was last modified.",
+															"example": "2000-01-01T00:00:00.000000Z",
+															"type": "string"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/RulesResponse"
+															"description": "The list of rules in the ruleset.",
+															"items": {
+																"$ref": "#/components/schemas/RuleResponse"
+															},
+															"type": "array"
 														},
 														"version": {
-															"$ref": "#/components/schemas/RulesetVersion"
+															"description": "The version of the ruleset.",
+															"example": "1",
+															"pattern": "^[0-9]+$",
+															"type": "string"
 														}
 													},
 													"required": [
@@ -2226,10 +2962,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {
@@ -2306,18 +3050,48 @@
 					"schema": {
 						"allOf": [
 							{
-								"$ref": "#/components/schemas/Ruleset"
+								"description": "A ruleset object.",
+								"properties": {
+									"description": {
+										"default": "",
+										"description": "An informative description of the ruleset.",
+										"example": "My ruleset to execute managed rulesets",
+										"type": "string"
+									},
+									"kind": {
+										"$ref": "#/components/schemas/RulesetKind"
+									},
+									"name": {
+										"description": "The human-readable name of the ruleset.",
+										"example": "My ruleset",
+										"type": "string"
+									},
+									"phase": {
+										"$ref": "#/components/schemas/RulesetPhase"
+									}
+								},
+								"type": "object"
 							},
 							{
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/RulesetId"
+										"description": "The unique ID of the ruleset.",
+										"example": "2f2feab2026849078ba485f918791bdc",
+										"pattern": "^[0-9a-f]{32}$",
+										"type": "string"
 									},
 									"rules": {
-										"$ref": "#/components/schemas/RulesRequest"
+										"description": "The list of rules in the ruleset.",
+										"items": {
+											"$ref": "#/components/schemas/RuleRequest"
+										},
+										"type": "array"
 									},
 									"version": {
-										"$ref": "#/components/schemas/RulesetVersion"
+										"description": "The version of the ruleset.",
+										"example": "1",
+										"pattern": "^[0-9]+$",
+										"type": "string"
 									}
 								},
 								"required": [
@@ -2341,7 +3115,11 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Errors"
+													"description": "A list of error messages.",
+													"items": {
+														"$ref": "#/components/schemas/Message"
+													},
+													"type": "array"
 												},
 												{
 													"example": []
@@ -2349,7 +3127,11 @@
 											]
 										},
 										"messages": {
-											"$ref": "#/components/schemas/Messages"
+											"description": "A list of warning messages.",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											},
+											"type": "array"
 										},
 										"result": {},
 										"success": {
@@ -2371,21 +3153,53 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Ruleset"
+													"description": "A ruleset object.",
+													"properties": {
+														"description": {
+															"default": "",
+															"description": "An informative description of the ruleset.",
+															"example": "My ruleset to execute managed rulesets",
+															"type": "string"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/RulesetKind"
+														},
+														"name": {
+															"description": "The human-readable name of the ruleset.",
+															"example": "My ruleset",
+															"type": "string"
+														},
+														"phase": {
+															"$ref": "#/components/schemas/RulesetPhase"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/RulesetId"
+															"description": "The unique ID of the ruleset.",
+															"example": "2f2feab2026849078ba485f918791bdc",
+															"pattern": "^[0-9a-f]{32}$",
+															"type": "string"
 														},
 														"last_updated": {
-															"$ref": "#/components/schemas/RulesetLastUpdated"
+															"description": "The timestamp of when the ruleset was last modified.",
+															"example": "2000-01-01T00:00:00.000000Z",
+															"type": "string"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/RulesResponse"
+															"description": "The list of rules in the ruleset.",
+															"items": {
+																"$ref": "#/components/schemas/RuleResponse"
+															},
+															"type": "array"
 														},
 														"version": {
-															"$ref": "#/components/schemas/RulesetVersion"
+															"description": "The version of the ruleset.",
+															"example": "1",
+															"pattern": "^[0-9]+$",
+															"type": "string"
 														}
 													},
 													"required": [
@@ -2415,10 +3229,18 @@
 						"schema": {
 							"properties": {
 								"errors": {
-									"$ref": "#/components/schemas/Errors"
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"messages": {
-									"$ref": "#/components/schemas/Messages"
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"type": "array"
 								},
 								"result": {},
 								"success": {

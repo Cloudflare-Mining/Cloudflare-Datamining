@@ -79,7 +79,11 @@
 		"owner": {
 			"properties": {
 				"id": {
-					"$ref": "#/components/schemas/identifier"
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			"type": "object"

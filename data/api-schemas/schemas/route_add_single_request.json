@@ -1,22 +1,51 @@
 {
 	"properties": {
 		"description": {
-			"$ref": "#/components/schemas/description-9MckVeBT"
+			"description": "An optional human provided description of the static route.",
+			"example": "New route for new prefix 203.0.113.1",
+			"type": "string"
 		},
 		"nexthop": {
-			"$ref": "#/components/schemas/nexthop"
+			"description": "The next-hop IP Address for the static route.",
+			"example": "203.0.113.1",
+			"type": "string"
 		},
 		"prefix": {
-			"$ref": "#/components/schemas/prefix"
+			"description": "IP Prefix in Classless Inter-Domain Routing format.",
+			"example": "192.0.2.0/24",
+			"type": "string"
 		},
 		"priority": {
-			"$ref": "#/components/schemas/priority"
+			"description": "Priority of the static route.",
+			"type": "integer"
 		},
 		"scope": {
-			"$ref": "#/components/schemas/scope"
+			"description": "Used only for ECMP routes.",
+			"properties": {
+				"colo_names": {
+					"description": "List of colo names for the ECMP scope.",
+					"items": {
+						"description": "Scope colo name.",
+						"example": "den01",
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"colo_regions": {
+					"description": "List of colo regions for the ECMP scope.",
+					"items": {
+						"description": "Scope colo region.",
+						"example": "APAC",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
 		},
 		"weight": {
-			"$ref": "#/components/schemas/weight"
+			"description": "Optional weight of the ECMP scope - if provided.",
+			"type": "integer"
 		}
 	},
 	"required": [

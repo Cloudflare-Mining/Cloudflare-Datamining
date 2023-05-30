@@ -1,12 +1,153 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							]
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/rules-m5DNBz8A"
+					"allOf": [
+						{
+							"properties": {
+								"actions": {
+									"description": "List actions patterns.",
+									"items": {
+										"$ref": "#/components/schemas/rule_action"
+									},
+									"type": "array"
+								},
+								"enabled": {
+									"default": true,
+									"description": "Routing rule status.",
+									"enum": [
+										true,
+										false
+									],
+									"example": true,
+									"type": "boolean"
+								},
+								"matchers": {
+									"description": "Matching patterns to forward to your actions.",
+									"items": {
+										"$ref": "#/components/schemas/rule_matcher"
+									},
+									"type": "array"
+								},
+								"name": {
+									"description": "Routing rule name.",
+									"example": "Send to user@example.net rule.",
+									"maxLength": 256,
+									"type": "string"
+								},
+								"priority": {
+									"default": 0,
+									"description": "Priority of the routing rule.",
+									"minimum": 0,
+									"type": "number"
+								},
+								"tag": {
+									"description": "Routing rule identifier.",
+									"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+									"maxLength": 32,
+									"readOnly": true,
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					],
+					"type": "object"
 				}
 			}
 		}

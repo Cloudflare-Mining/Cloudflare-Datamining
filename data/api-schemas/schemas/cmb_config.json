@@ -2,7 +2,11 @@
 	"nullable": true,
 	"properties": {
 		"regions": {
-			"$ref": "#/components/schemas/regions"
+			"description": "Comma-separated list of regions.",
+			"example": "eu",
+			"maxLength": 256,
+			"pattern": "^[a-z,]*$",
+			"type": "string"
 		}
 	},
 	"type": "object"

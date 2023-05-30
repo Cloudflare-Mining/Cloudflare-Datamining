@@ -1,10 +1,15 @@
 {
 	"properties": {
 		"description": {
-			"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+			"description": "An optional description of the hostname.",
+			"example": "This is my IPFS gateway.",
+			"maxLength": 500,
+			"type": "string"
 		},
 		"dnslink": {
-			"$ref": "#/components/schemas/dnslink"
+			"description": "DNSLink value used if the target is ipfs.",
+			"example": "/ipns/onboarding.ipfs.cloudflare.com",
+			"type": "string"
 		}
 	},
 	"type": "object"

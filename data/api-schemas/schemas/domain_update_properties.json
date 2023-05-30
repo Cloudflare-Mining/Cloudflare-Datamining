@@ -1,16 +1,30 @@
 {
 	"properties": {
 		"auto_renew": {
-			"$ref": "#/components/schemas/auto_renew"
+			"description": "Auto-renew controls whether subscription is automatically renewed upon domain expiration.",
+			"example": true,
+			"type": "boolean"
 		},
 		"locked": {
-			"$ref": "#/components/schemas/locked"
+			"description": "Shows whether a registrar lock is in place for a domain.",
+			"example": false,
+			"type": "boolean"
 		},
 		"name_servers": {
-			"$ref": "#/components/schemas/name_servers"
+			"description": "List of name servers.",
+			"example": [
+				"preston.ns.cloudflare.com",
+				"oli.ns.cloudflare.com"
+			],
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
 		},
 		"privacy": {
-			"$ref": "#/components/schemas/privacy"
+			"description": "Privacy option controls redacting WHOIS information.",
+			"example": true,
+			"type": "boolean"
 		}
 	},
 	"type": "object"

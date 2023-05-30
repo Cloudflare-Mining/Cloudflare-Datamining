@@ -1,10 +1,14 @@
 {
 	"properties": {
 		"label": {
-			"$ref": "#/components/schemas/label"
+			"description": "The language label displayed in the native language to users.",
+			"example": "Türkçe",
+			"type": "string"
 		},
 		"language": {
-			"$ref": "#/components/schemas/language"
+			"description": "The language tag in BCP 47 format.",
+			"example": "tr",
+			"type": "string"
 		}
 	},
 	"type": "object"

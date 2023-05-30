@@ -28,14 +28,29 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/schemas-certificate_response_single-1d4SdIyP"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/certificates_components-schemas-identifier"
+													"description": "The x509 serial number of the Origin CA certificate.",
+													"example": "328578533902268680212849205732770752308931942346",
+													"readOnly": true,
+													"type": "string"
 												}
 											}
 										}
@@ -55,14 +70,29 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/schemas-certificate_response_single-1d4SdIyP"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/certificates_components-schemas-identifier"
+															"description": "The x509 serial number of the Origin CA certificate.",
+															"example": "328578533902268680212849205732770752308931942346",
+															"readOnly": true,
+															"type": "string"
 														}
 													}
 												}
@@ -75,7 +105,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -89,7 +137,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -179,13 +245,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/certificates-PnQZrwOK"
+												"properties": {
+													"certificate": {
+														"$ref": "#/components/schemas/components-schemas-certificate"
+													},
+													"csr": {
+														"$ref": "#/components/schemas/csr"
+													},
+													"expires_on": {
+														"$ref": "#/components/schemas/certificates_components-schemas-expires_on"
+													},
+													"hostnames": {
+														"$ref": "#/components/schemas/hostnames"
+													},
+													"id": {
+														"$ref": "#/components/schemas/certificates_components-schemas-identifier"
+													},
+													"request_type": {
+														"$ref": "#/components/schemas/request_type"
+													},
+													"requested_validity": {
+														"$ref": "#/components/schemas/requested_validity"
+													}
+												},
+												"required": [
+													"hostnames",
+													"csr",
+													"requested_validity",
+													"request_type"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -206,13 +318,59 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/certificates-PnQZrwOK"
+														"properties": {
+															"certificate": {
+																"$ref": "#/components/schemas/components-schemas-certificate"
+															},
+															"csr": {
+																"$ref": "#/components/schemas/csr"
+															},
+															"expires_on": {
+																"$ref": "#/components/schemas/certificates_components-schemas-expires_on"
+															},
+															"hostnames": {
+																"$ref": "#/components/schemas/hostnames"
+															},
+															"id": {
+																"$ref": "#/components/schemas/certificates_components-schemas-identifier"
+															},
+															"request_type": {
+																"$ref": "#/components/schemas/request_type"
+															},
+															"requested_validity": {
+																"$ref": "#/components/schemas/requested_validity"
+															}
+														},
+														"required": [
+															"hostnames",
+															"csr",
+															"requested_validity",
+															"request_type"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -226,7 +384,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -240,7 +416,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -318,7 +512,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -342,7 +556,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -359,7 +593,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -373,7 +625,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -489,7 +759,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -513,7 +803,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -530,7 +840,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -544,7 +872,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

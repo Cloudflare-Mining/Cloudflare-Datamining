@@ -1,14 +1,80 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/identity-provider"
+			"properties": {
+				"config": {
+					"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+					"type": "object"
+				},
+				"id": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				},
+				"name": {
+					"description": "The name of the identity provider, shown to users on the login page.",
+					"example": "Widget Corps IDP",
+					"type": "string"
+				},
+				"scim_config": {
+					"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
+					"properties": {
+						"enabled": {
+							"description": "A flag to enable or disable SCIM for the identity provider.",
+							"type": "boolean"
+						},
+						"group_member_deprovision": {
+							"description": "A flag to revoke a user's session in Access and force a reauthentication on the user's Gateway session when they have been added or removed from a group in the Identity Provider.",
+							"type": "boolean"
+						},
+						"seat_deprovision": {
+							"description": "A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.",
+							"type": "boolean"
+						},
+						"secret": {
+							"description": "A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.",
+							"type": "string"
+						},
+						"user_deprovision": {
+							"description": "A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.",
+							"type": "boolean"
+						}
+					},
+					"type": "object"
+				},
+				"type": {
+					"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+					"example": "onetimepin",
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"type",
+				"config"
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"config": {
 					"allOf": [
 						{
-							"$ref": "#/components/schemas/generic-oauth-config"
+							"properties": {
+								"client_id": {
+									"description": "Your OAuth Client ID",
+									"example": "<your client id>",
+									"type": "string"
+								},
+								"client_secret": {
+									"description": "Your OAuth Client Secret",
+									"example": "<your client secret>",
+									"type": "string"
+								}
+							},
+							"type": "object"
 						},
 						{
 							"properties": {

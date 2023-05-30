@@ -1,22 +1,32 @@
 {
 	"properties": {
 		"environment": {
-			"$ref": "#/components/schemas/environment"
+			"description": "Worker environment associated with the zone and hostname.",
+			"example": "production",
+			"type": "string"
 		},
 		"hostname": {
-			"$ref": "#/components/schemas/components-schemas-hostname"
+			"description": "Hostname of the Worker Domain.",
+			"example": "foo.example.com",
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/domain_identifier"
+			"description": "Identifer of the Worker Domain.",
+			"example": "dbe10b4bc17c295377eabd600e1787fd"
 		},
 		"service": {
-			"$ref": "#/components/schemas/schemas-service"
+			"description": "Worker service associated with the zone and hostname.",
+			"example": "foo",
+			"type": "string"
 		},
 		"zone_id": {
-			"$ref": "#/components/schemas/zone_identifier-oBRZr7hd"
+			"description": "Identifier of the zone.",
+			"example": "593c9c94de529bbbfaac7c53ced0447d"
 		},
 		"zone_name": {
-			"$ref": "#/components/schemas/zone_name"
+			"description": "Name of the zone.",
+			"example": "example.com",
+			"type": "string"
 		}
 	},
 	"type": "object"

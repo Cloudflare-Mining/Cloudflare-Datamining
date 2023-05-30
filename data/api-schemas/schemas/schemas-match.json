@@ -1,7 +1,20 @@
 {
 	"description": "The conditions that the client must match to run the rule.",
 	"items": {
-		"$ref": "#/components/schemas/match_item"
+		"properties": {
+			"platform": {
+				"enum": [
+					"windows",
+					"mac",
+					"linux",
+					"android",
+					"ios"
+				],
+				"example": "windows",
+				"type": "string"
+			}
+		},
+		"type": "object"
 	},
 	"type": "array"
 }

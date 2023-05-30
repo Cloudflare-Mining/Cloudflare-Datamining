@@ -37,14 +37,33 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/schemas-uuid"
+													"description": "The unique identifier for the Access group."
 												}
 											},
 											"type": "object"
@@ -65,14 +84,33 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/schemas-uuid"
+															"description": "The unique identifier for the Access group."
 														}
 													},
 													"type": "object"
@@ -86,7 +124,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -100,7 +156,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -171,13 +245,53 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/groups"
+												"properties": {
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"exclude": {
+														"$ref": "#/components/schemas/exclude"
+													},
+													"id": {
+														"$ref": "#/components/schemas/schemas-uuid"
+													},
+													"include": {
+														"$ref": "#/components/schemas/include"
+													},
+													"name": {
+														"$ref": "#/components/schemas/components-schemas-name-pkKJNwK4"
+													},
+													"require": {
+														"$ref": "#/components/schemas/require"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -197,13 +311,53 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/groups"
+														"properties": {
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"exclude": {
+																"$ref": "#/components/schemas/exclude"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-uuid"
+															},
+															"include": {
+																"$ref": "#/components/schemas/include"
+															},
+															"name": {
+																"$ref": "#/components/schemas/components-schemas-name-pkKJNwK4"
+															},
+															"require": {
+																"$ref": "#/components/schemas/require"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -216,7 +370,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -230,7 +402,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -309,12 +499,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/groups"
+											"properties": {
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"exclude": {
+													"$ref": "#/components/schemas/exclude"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-uuid"
+												},
+												"include": {
+													"$ref": "#/components/schemas/include"
+												},
+												"name": {
+													"$ref": "#/components/schemas/components-schemas-name-pkKJNwK4"
+												},
+												"require": {
+													"$ref": "#/components/schemas/require"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -332,12 +564,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/groups"
+													"properties": {
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"exclude": {
+															"$ref": "#/components/schemas/exclude"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-uuid"
+														},
+														"include": {
+															"$ref": "#/components/schemas/include"
+														},
+														"name": {
+															"$ref": "#/components/schemas/components-schemas-name-pkKJNwK4"
+														},
+														"require": {
+															"$ref": "#/components/schemas/require"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -348,7 +622,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -362,7 +654,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -434,14 +744,90 @@
 							"exclude": {
 								"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
 							"include": {
 								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -453,7 +839,45 @@
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -474,12 +898,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/groups"
+											"properties": {
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"exclude": {
+													"$ref": "#/components/schemas/exclude"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-uuid"
+												},
+												"include": {
+													"$ref": "#/components/schemas/include"
+												},
+												"name": {
+													"$ref": "#/components/schemas/components-schemas-name-pkKJNwK4"
+												},
+												"require": {
+													"$ref": "#/components/schemas/require"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -497,12 +963,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/groups"
+													"properties": {
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"exclude": {
+															"$ref": "#/components/schemas/exclude"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-uuid"
+														},
+														"include": {
+															"$ref": "#/components/schemas/include"
+														},
+														"name": {
+															"$ref": "#/components/schemas/components-schemas-name-pkKJNwK4"
+														},
+														"require": {
+															"$ref": "#/components/schemas/require"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -513,7 +1021,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -527,7 +1053,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -607,14 +1151,90 @@
 							"exclude": {
 								"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
 							"include": {
 								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -626,7 +1246,45 @@
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -647,12 +1305,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/groups"
+											"properties": {
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"exclude": {
+													"$ref": "#/components/schemas/exclude"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-uuid"
+												},
+												"include": {
+													"$ref": "#/components/schemas/include"
+												},
+												"name": {
+													"$ref": "#/components/schemas/components-schemas-name-pkKJNwK4"
+												},
+												"require": {
+													"$ref": "#/components/schemas/require"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -670,12 +1370,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/groups"
+													"properties": {
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"exclude": {
+															"$ref": "#/components/schemas/exclude"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-uuid"
+														},
+														"include": {
+															"$ref": "#/components/schemas/include"
+														},
+														"name": {
+															"$ref": "#/components/schemas/components-schemas-name-pkKJNwK4"
+														},
+														"require": {
+															"$ref": "#/components/schemas/require"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -686,7 +1428,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -700,7 +1460,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

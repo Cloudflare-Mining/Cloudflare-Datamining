@@ -1,7 +1,9 @@
 {
 	"description": "List of colo regions for the ECMP scope.",
 	"items": {
-		"$ref": "#/components/schemas/colo_region"
+		"description": "Scope colo region.",
+		"example": "APAC",
+		"type": "string"
 	},
 	"type": "array"
 }

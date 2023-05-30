@@ -36,13 +36,100 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/device_settings_policy-uz4qPy1N"
+												"properties": {
+													"allow_mode_switch": {
+														"$ref": "#/components/schemas/allow_mode_switch"
+													},
+													"allow_updates": {
+														"$ref": "#/components/schemas/allow_updates"
+													},
+													"allowed_to_leave": {
+														"$ref": "#/components/schemas/allowed_to_leave"
+													},
+													"auto_connect": {
+														"$ref": "#/components/schemas/auto_connect"
+													},
+													"captive_portal": {
+														"$ref": "#/components/schemas/captive_portal"
+													},
+													"default": {
+														"$ref": "#/components/schemas/default-ZbfwlZZ8"
+													},
+													"description": {
+														"$ref": "#/components/schemas/schemas-description-gQQMQ8ze"
+													},
+													"disable_auto_fallback": {
+														"$ref": "#/components/schemas/disable_auto_fallback"
+													},
+													"enabled": {
+														"description": "Whether the policy will be applied to matching devices.",
+														"example": true,
+														"type": "boolean"
+													},
+													"exclude": {
+														"$ref": "#/components/schemas/exclude-iLhLWdq0"
+													},
+													"exclude_office_ips": {
+														"$ref": "#/components/schemas/exclude_office_ips"
+													},
+													"fallback_domains": {
+														"$ref": "#/components/schemas/fallback_domains"
+													},
+													"gateway_unique_id": {
+														"$ref": "#/components/schemas/gateway_unique_id"
+													},
+													"include": {
+														"$ref": "#/components/schemas/include-87hBtzfZ"
+													},
+													"match": {
+														"$ref": "#/components/schemas/schemas-match-ABjPzoPO"
+													},
+													"name": {
+														"description": "The name of the device settings policy.",
+														"example": "Allow Developers",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"policy_id": {
+														"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+													},
+													"precedence": {
+														"$ref": "#/components/schemas/precedence-xykUhVyt"
+													},
+													"service_mode_v2": {
+														"$ref": "#/components/schemas/service_mode_v2"
+													},
+													"support_url": {
+														"$ref": "#/components/schemas/support_url"
+													},
+													"switch_locked": {
+														"$ref": "#/components/schemas/switch_locked"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -62,13 +149,100 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/device_settings_policy-uz4qPy1N"
+														"properties": {
+															"allow_mode_switch": {
+																"$ref": "#/components/schemas/allow_mode_switch"
+															},
+															"allow_updates": {
+																"$ref": "#/components/schemas/allow_updates"
+															},
+															"allowed_to_leave": {
+																"$ref": "#/components/schemas/allowed_to_leave"
+															},
+															"auto_connect": {
+																"$ref": "#/components/schemas/auto_connect"
+															},
+															"captive_portal": {
+																"$ref": "#/components/schemas/captive_portal"
+															},
+															"default": {
+																"$ref": "#/components/schemas/default-ZbfwlZZ8"
+															},
+															"description": {
+																"$ref": "#/components/schemas/schemas-description-gQQMQ8ze"
+															},
+															"disable_auto_fallback": {
+																"$ref": "#/components/schemas/disable_auto_fallback"
+															},
+															"enabled": {
+																"description": "Whether the policy will be applied to matching devices.",
+																"example": true,
+																"type": "boolean"
+															},
+															"exclude": {
+																"$ref": "#/components/schemas/exclude-iLhLWdq0"
+															},
+															"exclude_office_ips": {
+																"$ref": "#/components/schemas/exclude_office_ips"
+															},
+															"fallback_domains": {
+																"$ref": "#/components/schemas/fallback_domains"
+															},
+															"gateway_unique_id": {
+																"$ref": "#/components/schemas/gateway_unique_id"
+															},
+															"include": {
+																"$ref": "#/components/schemas/include-87hBtzfZ"
+															},
+															"match": {
+																"$ref": "#/components/schemas/schemas-match-ABjPzoPO"
+															},
+															"name": {
+																"description": "The name of the device settings policy.",
+																"example": "Allow Developers",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"policy_id": {
+																"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+															},
+															"precedence": {
+																"$ref": "#/components/schemas/precedence-xykUhVyt"
+															},
+															"service_mode_v2": {
+																"$ref": "#/components/schemas/service_mode_v2"
+															},
+															"support_url": {
+																"$ref": "#/components/schemas/support_url"
+															},
+															"switch_locked": {
+																"$ref": "#/components/schemas/switch_locked"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -81,7 +255,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -95,7 +287,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -162,13 +372,92 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/devices-lzhA2BKS"
+												"properties": {
+													"created": {
+														"$ref": "#/components/schemas/created-IOD0c8ln"
+													},
+													"deleted": {
+														"$ref": "#/components/schemas/deleted-4AxPTGqE"
+													},
+													"device_type": {
+														"$ref": "#/components/schemas/platform"
+													},
+													"id": {
+														"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+													},
+													"ip": {
+														"$ref": "#/components/schemas/ip-RBfVe6i5"
+													},
+													"key": {
+														"$ref": "#/components/schemas/key-Hmbw4Ck9"
+													},
+													"last_seen": {
+														"$ref": "#/components/schemas/last_seen"
+													},
+													"mac_address": {
+														"$ref": "#/components/schemas/mac_address"
+													},
+													"manufacturer": {
+														"$ref": "#/components/schemas/manufacturer"
+													},
+													"model": {
+														"$ref": "#/components/schemas/model"
+													},
+													"name": {
+														"$ref": "#/components/schemas/schemas-name-aa0fcjyL"
+													},
+													"os_distro_name": {
+														"$ref": "#/components/schemas/os_distro_name"
+													},
+													"os_distro_revision": {
+														"$ref": "#/components/schemas/os_distro_revision"
+													},
+													"os_version": {
+														"$ref": "#/components/schemas/os_version"
+													},
+													"os_version_extra": {
+														"$ref": "#/components/schemas/os_version_extra"
+													},
+													"revoked_at": {
+														"$ref": "#/components/schemas/revoked_at"
+													},
+													"serial_number": {
+														"$ref": "#/components/schemas/serial_number-t0gAi5Yg"
+													},
+													"updated": {
+														"$ref": "#/components/schemas/updated"
+													},
+													"user": {
+														"$ref": "#/components/schemas/user-O0AxHZuY"
+													},
+													"version": {
+														"$ref": "#/components/schemas/version-yflX8VYD"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -188,13 +477,92 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/devices-lzhA2BKS"
+														"properties": {
+															"created": {
+																"$ref": "#/components/schemas/created-IOD0c8ln"
+															},
+															"deleted": {
+																"$ref": "#/components/schemas/deleted-4AxPTGqE"
+															},
+															"device_type": {
+																"$ref": "#/components/schemas/platform"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+															},
+															"ip": {
+																"$ref": "#/components/schemas/ip-RBfVe6i5"
+															},
+															"key": {
+																"$ref": "#/components/schemas/key-Hmbw4Ck9"
+															},
+															"last_seen": {
+																"$ref": "#/components/schemas/last_seen"
+															},
+															"mac_address": {
+																"$ref": "#/components/schemas/mac_address"
+															},
+															"manufacturer": {
+																"$ref": "#/components/schemas/manufacturer"
+															},
+															"model": {
+																"$ref": "#/components/schemas/model"
+															},
+															"name": {
+																"$ref": "#/components/schemas/schemas-name-aa0fcjyL"
+															},
+															"os_distro_name": {
+																"$ref": "#/components/schemas/os_distro_name"
+															},
+															"os_distro_revision": {
+																"$ref": "#/components/schemas/os_distro_revision"
+															},
+															"os_version": {
+																"$ref": "#/components/schemas/os_version"
+															},
+															"os_version_extra": {
+																"$ref": "#/components/schemas/os_version_extra"
+															},
+															"revoked_at": {
+																"$ref": "#/components/schemas/revoked_at"
+															},
+															"serial_number": {
+																"$ref": "#/components/schemas/serial_number-t0gAi5Yg"
+															},
+															"updated": {
+																"$ref": "#/components/schemas/updated"
+															},
+															"user": {
+																"$ref": "#/components/schemas/user-O0AxHZuY"
+															},
+															"version": {
+																"$ref": "#/components/schemas/version-yflX8VYD"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -207,7 +575,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -221,7 +607,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -299,7 +703,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -322,7 +746,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -338,7 +782,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -352,7 +814,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -430,14 +910,53 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"disable_for_time": {
-													"$ref": "#/components/schemas/disable_for_time"
+													"properties": {
+														"1": {
+															"description": "Override code that is valid for 1 hour.",
+															"example": "9106681"
+														},
+														"3": {
+															"description": "Override code that is valid for 3 hours.",
+															"example": "5356247"
+														},
+														"6": {
+															"description": "Override code that is valid for 6 hours.",
+															"example": "9478972"
+														},
+														"12": {
+															"description": "Override code that is valid for 12 hour2.",
+															"example": "3424359"
+														},
+														"24": {
+															"description": "Override code that is valid for 24 hour.2.",
+															"example": "2887634"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -458,14 +977,53 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"disable_for_time": {
-															"$ref": "#/components/schemas/disable_for_time"
+															"properties": {
+																"1": {
+																	"description": "Override code that is valid for 1 hour.",
+																	"example": "9106681"
+																},
+																"3": {
+																	"description": "Override code that is valid for 3 hours.",
+																	"example": "5356247"
+																},
+																"6": {
+																	"description": "Override code that is valid for 6 hours.",
+																	"example": "9478972"
+																},
+																"12": {
+																	"description": "Override code that is valid for 12 hour2.",
+																	"example": "3424359"
+																},
+																"24": {
+																	"description": "Override code that is valid for 24 hour.2.",
+																	"example": "2887634"
+																}
+															},
+															"type": "object"
 														}
 													},
 													"type": "object"
@@ -479,7 +1037,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -493,7 +1069,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -560,13 +1154,100 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/device_settings_policy-uz4qPy1N"
+												"properties": {
+													"allow_mode_switch": {
+														"$ref": "#/components/schemas/allow_mode_switch"
+													},
+													"allow_updates": {
+														"$ref": "#/components/schemas/allow_updates"
+													},
+													"allowed_to_leave": {
+														"$ref": "#/components/schemas/allowed_to_leave"
+													},
+													"auto_connect": {
+														"$ref": "#/components/schemas/auto_connect"
+													},
+													"captive_portal": {
+														"$ref": "#/components/schemas/captive_portal"
+													},
+													"default": {
+														"$ref": "#/components/schemas/default-ZbfwlZZ8"
+													},
+													"description": {
+														"$ref": "#/components/schemas/schemas-description-gQQMQ8ze"
+													},
+													"disable_auto_fallback": {
+														"$ref": "#/components/schemas/disable_auto_fallback"
+													},
+													"enabled": {
+														"description": "Whether the policy will be applied to matching devices.",
+														"example": true,
+														"type": "boolean"
+													},
+													"exclude": {
+														"$ref": "#/components/schemas/exclude-iLhLWdq0"
+													},
+													"exclude_office_ips": {
+														"$ref": "#/components/schemas/exclude_office_ips"
+													},
+													"fallback_domains": {
+														"$ref": "#/components/schemas/fallback_domains"
+													},
+													"gateway_unique_id": {
+														"$ref": "#/components/schemas/gateway_unique_id"
+													},
+													"include": {
+														"$ref": "#/components/schemas/include-87hBtzfZ"
+													},
+													"match": {
+														"$ref": "#/components/schemas/schemas-match-ABjPzoPO"
+													},
+													"name": {
+														"description": "The name of the device settings policy.",
+														"example": "Allow Developers",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"policy_id": {
+														"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+													},
+													"precedence": {
+														"$ref": "#/components/schemas/precedence-xykUhVyt"
+													},
+													"service_mode_v2": {
+														"$ref": "#/components/schemas/service_mode_v2"
+													},
+													"support_url": {
+														"$ref": "#/components/schemas/support_url"
+													},
+													"switch_locked": {
+														"$ref": "#/components/schemas/switch_locked"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -586,13 +1267,100 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/device_settings_policy-uz4qPy1N"
+														"properties": {
+															"allow_mode_switch": {
+																"$ref": "#/components/schemas/allow_mode_switch"
+															},
+															"allow_updates": {
+																"$ref": "#/components/schemas/allow_updates"
+															},
+															"allowed_to_leave": {
+																"$ref": "#/components/schemas/allowed_to_leave"
+															},
+															"auto_connect": {
+																"$ref": "#/components/schemas/auto_connect"
+															},
+															"captive_portal": {
+																"$ref": "#/components/schemas/captive_portal"
+															},
+															"default": {
+																"$ref": "#/components/schemas/default-ZbfwlZZ8"
+															},
+															"description": {
+																"$ref": "#/components/schemas/schemas-description-gQQMQ8ze"
+															},
+															"disable_auto_fallback": {
+																"$ref": "#/components/schemas/disable_auto_fallback"
+															},
+															"enabled": {
+																"description": "Whether the policy will be applied to matching devices.",
+																"example": true,
+																"type": "boolean"
+															},
+															"exclude": {
+																"$ref": "#/components/schemas/exclude-iLhLWdq0"
+															},
+															"exclude_office_ips": {
+																"$ref": "#/components/schemas/exclude_office_ips"
+															},
+															"fallback_domains": {
+																"$ref": "#/components/schemas/fallback_domains"
+															},
+															"gateway_unique_id": {
+																"$ref": "#/components/schemas/gateway_unique_id"
+															},
+															"include": {
+																"$ref": "#/components/schemas/include-87hBtzfZ"
+															},
+															"match": {
+																"$ref": "#/components/schemas/schemas-match-ABjPzoPO"
+															},
+															"name": {
+																"description": "The name of the device settings policy.",
+																"example": "Allow Developers",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"policy_id": {
+																"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+															},
+															"precedence": {
+																"$ref": "#/components/schemas/precedence-xykUhVyt"
+															},
+															"service_mode_v2": {
+																"$ref": "#/components/schemas/service_mode_v2"
+															},
+															"support_url": {
+																"$ref": "#/components/schemas/support_url"
+															},
+															"switch_locked": {
+																"$ref": "#/components/schemas/switch_locked"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -605,7 +1373,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -619,7 +1405,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -686,12 +1490,83 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/default_device_settings_policy-JeEasFNr"
+											"properties": {
+												"allow_mode_switch": {
+													"$ref": "#/components/schemas/allow_mode_switch"
+												},
+												"allow_updates": {
+													"$ref": "#/components/schemas/allow_updates"
+												},
+												"allowed_to_leave": {
+													"$ref": "#/components/schemas/allowed_to_leave"
+												},
+												"auto_connect": {
+													"$ref": "#/components/schemas/auto_connect"
+												},
+												"captive_portal": {
+													"$ref": "#/components/schemas/captive_portal"
+												},
+												"default": {
+													"description": "Whether the policy will be applied to matching devices.",
+													"example": true,
+													"type": "boolean"
+												},
+												"disable_auto_fallback": {
+													"$ref": "#/components/schemas/disable_auto_fallback"
+												},
+												"enabled": {
+													"description": "Whether the policy will be applied to matching devices.",
+													"example": true,
+													"type": "boolean"
+												},
+												"exclude": {
+													"$ref": "#/components/schemas/exclude-iLhLWdq0"
+												},
+												"exclude_office_ips": {
+													"$ref": "#/components/schemas/exclude_office_ips"
+												},
+												"fallback_domains": {
+													"$ref": "#/components/schemas/fallback_domains"
+												},
+												"gateway_unique_id": {
+													"$ref": "#/components/schemas/gateway_unique_id"
+												},
+												"include": {
+													"$ref": "#/components/schemas/include-87hBtzfZ"
+												},
+												"service_mode_v2": {
+													"$ref": "#/components/schemas/service_mode_v2"
+												},
+												"support_url": {
+													"$ref": "#/components/schemas/support_url"
+												},
+												"switch_locked": {
+													"$ref": "#/components/schemas/switch_locked"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -709,12 +1584,83 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/default_device_settings_policy-JeEasFNr"
+													"properties": {
+														"allow_mode_switch": {
+															"$ref": "#/components/schemas/allow_mode_switch"
+														},
+														"allow_updates": {
+															"$ref": "#/components/schemas/allow_updates"
+														},
+														"allowed_to_leave": {
+															"$ref": "#/components/schemas/allowed_to_leave"
+														},
+														"auto_connect": {
+															"$ref": "#/components/schemas/auto_connect"
+														},
+														"captive_portal": {
+															"$ref": "#/components/schemas/captive_portal"
+														},
+														"default": {
+															"description": "Whether the policy will be applied to matching devices.",
+															"example": true,
+															"type": "boolean"
+														},
+														"disable_auto_fallback": {
+															"$ref": "#/components/schemas/disable_auto_fallback"
+														},
+														"enabled": {
+															"description": "Whether the policy will be applied to matching devices.",
+															"example": true,
+															"type": "boolean"
+														},
+														"exclude": {
+															"$ref": "#/components/schemas/exclude-iLhLWdq0"
+														},
+														"exclude_office_ips": {
+															"$ref": "#/components/schemas/exclude_office_ips"
+														},
+														"fallback_domains": {
+															"$ref": "#/components/schemas/fallback_domains"
+														},
+														"gateway_unique_id": {
+															"$ref": "#/components/schemas/gateway_unique_id"
+														},
+														"include": {
+															"$ref": "#/components/schemas/include-87hBtzfZ"
+														},
+														"service_mode_v2": {
+															"$ref": "#/components/schemas/service_mode_v2"
+														},
+														"support_url": {
+															"$ref": "#/components/schemas/support_url"
+														},
+														"switch_locked": {
+															"$ref": "#/components/schemas/switch_locked"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -725,7 +1671,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -739,7 +1703,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -817,12 +1799,99 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device_settings_policy-uz4qPy1N"
+											"properties": {
+												"allow_mode_switch": {
+													"$ref": "#/components/schemas/allow_mode_switch"
+												},
+												"allow_updates": {
+													"$ref": "#/components/schemas/allow_updates"
+												},
+												"allowed_to_leave": {
+													"$ref": "#/components/schemas/allowed_to_leave"
+												},
+												"auto_connect": {
+													"$ref": "#/components/schemas/auto_connect"
+												},
+												"captive_portal": {
+													"$ref": "#/components/schemas/captive_portal"
+												},
+												"default": {
+													"$ref": "#/components/schemas/default-ZbfwlZZ8"
+												},
+												"description": {
+													"$ref": "#/components/schemas/schemas-description-gQQMQ8ze"
+												},
+												"disable_auto_fallback": {
+													"$ref": "#/components/schemas/disable_auto_fallback"
+												},
+												"enabled": {
+													"description": "Whether the policy will be applied to matching devices.",
+													"example": true,
+													"type": "boolean"
+												},
+												"exclude": {
+													"$ref": "#/components/schemas/exclude-iLhLWdq0"
+												},
+												"exclude_office_ips": {
+													"$ref": "#/components/schemas/exclude_office_ips"
+												},
+												"fallback_domains": {
+													"$ref": "#/components/schemas/fallback_domains"
+												},
+												"gateway_unique_id": {
+													"$ref": "#/components/schemas/gateway_unique_id"
+												},
+												"include": {
+													"$ref": "#/components/schemas/include-87hBtzfZ"
+												},
+												"match": {
+													"$ref": "#/components/schemas/schemas-match-ABjPzoPO"
+												},
+												"name": {
+													"description": "The name of the device settings policy.",
+													"example": "Allow Developers",
+													"maxLength": 100,
+													"type": "string"
+												},
+												"policy_id": {
+													"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+												},
+												"precedence": {
+													"$ref": "#/components/schemas/precedence-xykUhVyt"
+												},
+												"service_mode_v2": {
+													"$ref": "#/components/schemas/service_mode_v2"
+												},
+												"support_url": {
+													"$ref": "#/components/schemas/support_url"
+												},
+												"switch_locked": {
+													"$ref": "#/components/schemas/switch_locked"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -840,12 +1909,99 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device_settings_policy-uz4qPy1N"
+													"properties": {
+														"allow_mode_switch": {
+															"$ref": "#/components/schemas/allow_mode_switch"
+														},
+														"allow_updates": {
+															"$ref": "#/components/schemas/allow_updates"
+														},
+														"allowed_to_leave": {
+															"$ref": "#/components/schemas/allowed_to_leave"
+														},
+														"auto_connect": {
+															"$ref": "#/components/schemas/auto_connect"
+														},
+														"captive_portal": {
+															"$ref": "#/components/schemas/captive_portal"
+														},
+														"default": {
+															"$ref": "#/components/schemas/default-ZbfwlZZ8"
+														},
+														"description": {
+															"$ref": "#/components/schemas/schemas-description-gQQMQ8ze"
+														},
+														"disable_auto_fallback": {
+															"$ref": "#/components/schemas/disable_auto_fallback"
+														},
+														"enabled": {
+															"description": "Whether the policy will be applied to matching devices.",
+															"example": true,
+															"type": "boolean"
+														},
+														"exclude": {
+															"$ref": "#/components/schemas/exclude-iLhLWdq0"
+														},
+														"exclude_office_ips": {
+															"$ref": "#/components/schemas/exclude_office_ips"
+														},
+														"fallback_domains": {
+															"$ref": "#/components/schemas/fallback_domains"
+														},
+														"gateway_unique_id": {
+															"$ref": "#/components/schemas/gateway_unique_id"
+														},
+														"include": {
+															"$ref": "#/components/schemas/include-87hBtzfZ"
+														},
+														"match": {
+															"$ref": "#/components/schemas/schemas-match-ABjPzoPO"
+														},
+														"name": {
+															"description": "The name of the device settings policy.",
+															"example": "Allow Developers",
+															"maxLength": 100,
+															"type": "string"
+														},
+														"policy_id": {
+															"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+														},
+														"precedence": {
+															"$ref": "#/components/schemas/precedence-xykUhVyt"
+														},
+														"service_mode_v2": {
+															"$ref": "#/components/schemas/service_mode_v2"
+														},
+														"support_url": {
+															"$ref": "#/components/schemas/support_url"
+														},
+														"switch_locked": {
+															"$ref": "#/components/schemas/switch_locked"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -856,7 +2012,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -870,7 +2044,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -948,13 +2140,52 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/split_tunnel"
+												"properties": {
+													"address": {
+														"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+														"example": "192.0.2.0/24",
+														"type": "string"
+													},
+													"description": {
+														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"example": "Exclude testing domains from the tunnel",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"host": {
+														"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+														"example": "*.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"address",
+													"description"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -974,13 +2205,52 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/split_tunnel"
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"address",
+															"description"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -993,7 +2263,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1007,7 +2295,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1085,13 +2391,51 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/fallback_domain"
+												"properties": {
+													"description": {
+														"description": "A description of the fallback domain, displayed in the client UI.",
+														"example": "Domain bypass for local development",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"dns_server": {
+														"description": "A list of IP addresses to handle domain resolution.",
+														"items": {},
+														"type": "array"
+													},
+													"suffix": {
+														"description": "The domain suffix to match when resolving locally.",
+														"example": "example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"suffix"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -1111,13 +2455,51 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/fallback_domain"
+														"properties": {
+															"description": {
+																"description": "A description of the fallback domain, displayed in the client UI.",
+																"example": "Domain bypass for local development",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"dns_server": {
+																"description": "A list of IP addresses to handle domain resolution.",
+																"items": {},
+																"type": "array"
+															},
+															"suffix": {
+																"description": "The domain suffix to match when resolving locally.",
+																"example": "example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"suffix"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -1130,7 +2512,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1144,7 +2544,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1222,13 +2640,52 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/split_tunnel_include"
+												"properties": {
+													"address": {
+														"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
+														"example": "192.0.2.0/24",
+														"type": "string"
+													},
+													"description": {
+														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"example": "Include testing domains from the tunnel",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"host": {
+														"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
+														"example": "*.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"address",
+													"description"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -1248,13 +2705,52 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/split_tunnel_include"
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"example": "Include testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"address",
+															"description"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -1267,7 +2763,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1281,7 +2795,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1348,13 +2880,52 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/split_tunnel"
+												"properties": {
+													"address": {
+														"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+														"example": "192.0.2.0/24",
+														"type": "string"
+													},
+													"description": {
+														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"example": "Exclude testing domains from the tunnel",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"host": {
+														"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+														"example": "*.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"address",
+													"description"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -1374,13 +2945,52 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/split_tunnel"
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"address",
+															"description"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -1393,7 +3003,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1407,7 +3035,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1474,13 +3120,51 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/fallback_domain"
+												"properties": {
+													"description": {
+														"description": "A description of the fallback domain, displayed in the client UI.",
+														"example": "Domain bypass for local development",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"dns_server": {
+														"description": "A list of IP addresses to handle domain resolution.",
+														"items": {},
+														"type": "array"
+													},
+													"suffix": {
+														"description": "The domain suffix to match when resolving locally.",
+														"example": "example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"suffix"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -1500,13 +3184,51 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/fallback_domain"
+														"properties": {
+															"description": {
+																"description": "A description of the fallback domain, displayed in the client UI.",
+																"example": "Domain bypass for local development",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"dns_server": {
+																"description": "A list of IP addresses to handle domain resolution.",
+																"items": {},
+																"type": "array"
+															},
+															"suffix": {
+																"description": "The domain suffix to match when resolving locally.",
+																"example": "example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"suffix"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -1519,7 +3241,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1533,7 +3273,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1600,13 +3358,52 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/split_tunnel_include"
+												"properties": {
+													"address": {
+														"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
+														"example": "192.0.2.0/24",
+														"type": "string"
+													},
+													"description": {
+														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"example": "Include testing domains from the tunnel",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"host": {
+														"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
+														"example": "*.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"address",
+													"description"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -1626,13 +3423,52 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/split_tunnel_include"
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"example": "Include testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"address",
+															"description"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -1645,7 +3481,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1659,7 +3513,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1797,12 +3669,83 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/default_device_settings_policy-JeEasFNr"
+											"properties": {
+												"allow_mode_switch": {
+													"$ref": "#/components/schemas/allow_mode_switch"
+												},
+												"allow_updates": {
+													"$ref": "#/components/schemas/allow_updates"
+												},
+												"allowed_to_leave": {
+													"$ref": "#/components/schemas/allowed_to_leave"
+												},
+												"auto_connect": {
+													"$ref": "#/components/schemas/auto_connect"
+												},
+												"captive_portal": {
+													"$ref": "#/components/schemas/captive_portal"
+												},
+												"default": {
+													"description": "Whether the policy will be applied to matching devices.",
+													"example": true,
+													"type": "boolean"
+												},
+												"disable_auto_fallback": {
+													"$ref": "#/components/schemas/disable_auto_fallback"
+												},
+												"enabled": {
+													"description": "Whether the policy will be applied to matching devices.",
+													"example": true,
+													"type": "boolean"
+												},
+												"exclude": {
+													"$ref": "#/components/schemas/exclude-iLhLWdq0"
+												},
+												"exclude_office_ips": {
+													"$ref": "#/components/schemas/exclude_office_ips"
+												},
+												"fallback_domains": {
+													"$ref": "#/components/schemas/fallback_domains"
+												},
+												"gateway_unique_id": {
+													"$ref": "#/components/schemas/gateway_unique_id"
+												},
+												"include": {
+													"$ref": "#/components/schemas/include-87hBtzfZ"
+												},
+												"service_mode_v2": {
+													"$ref": "#/components/schemas/service_mode_v2"
+												},
+												"support_url": {
+													"$ref": "#/components/schemas/support_url"
+												},
+												"switch_locked": {
+													"$ref": "#/components/schemas/switch_locked"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1820,12 +3763,83 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/default_device_settings_policy-JeEasFNr"
+													"properties": {
+														"allow_mode_switch": {
+															"$ref": "#/components/schemas/allow_mode_switch"
+														},
+														"allow_updates": {
+															"$ref": "#/components/schemas/allow_updates"
+														},
+														"allowed_to_leave": {
+															"$ref": "#/components/schemas/allowed_to_leave"
+														},
+														"auto_connect": {
+															"$ref": "#/components/schemas/auto_connect"
+														},
+														"captive_portal": {
+															"$ref": "#/components/schemas/captive_portal"
+														},
+														"default": {
+															"description": "Whether the policy will be applied to matching devices.",
+															"example": true,
+															"type": "boolean"
+														},
+														"disable_auto_fallback": {
+															"$ref": "#/components/schemas/disable_auto_fallback"
+														},
+														"enabled": {
+															"description": "Whether the policy will be applied to matching devices.",
+															"example": true,
+															"type": "boolean"
+														},
+														"exclude": {
+															"$ref": "#/components/schemas/exclude-iLhLWdq0"
+														},
+														"exclude_office_ips": {
+															"$ref": "#/components/schemas/exclude_office_ips"
+														},
+														"fallback_domains": {
+															"$ref": "#/components/schemas/fallback_domains"
+														},
+														"gateway_unique_id": {
+															"$ref": "#/components/schemas/gateway_unique_id"
+														},
+														"include": {
+															"$ref": "#/components/schemas/include-87hBtzfZ"
+														},
+														"service_mode_v2": {
+															"$ref": "#/components/schemas/service_mode_v2"
+														},
+														"support_url": {
+															"$ref": "#/components/schemas/support_url"
+														},
+														"switch_locked": {
+															"$ref": "#/components/schemas/switch_locked"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1836,7 +3850,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1850,7 +3882,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -2027,12 +4077,99 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device_settings_policy-uz4qPy1N"
+											"properties": {
+												"allow_mode_switch": {
+													"$ref": "#/components/schemas/allow_mode_switch"
+												},
+												"allow_updates": {
+													"$ref": "#/components/schemas/allow_updates"
+												},
+												"allowed_to_leave": {
+													"$ref": "#/components/schemas/allowed_to_leave"
+												},
+												"auto_connect": {
+													"$ref": "#/components/schemas/auto_connect"
+												},
+												"captive_portal": {
+													"$ref": "#/components/schemas/captive_portal"
+												},
+												"default": {
+													"$ref": "#/components/schemas/default-ZbfwlZZ8"
+												},
+												"description": {
+													"$ref": "#/components/schemas/schemas-description-gQQMQ8ze"
+												},
+												"disable_auto_fallback": {
+													"$ref": "#/components/schemas/disable_auto_fallback"
+												},
+												"enabled": {
+													"description": "Whether the policy will be applied to matching devices.",
+													"example": true,
+													"type": "boolean"
+												},
+												"exclude": {
+													"$ref": "#/components/schemas/exclude-iLhLWdq0"
+												},
+												"exclude_office_ips": {
+													"$ref": "#/components/schemas/exclude_office_ips"
+												},
+												"fallback_domains": {
+													"$ref": "#/components/schemas/fallback_domains"
+												},
+												"gateway_unique_id": {
+													"$ref": "#/components/schemas/gateway_unique_id"
+												},
+												"include": {
+													"$ref": "#/components/schemas/include-87hBtzfZ"
+												},
+												"match": {
+													"$ref": "#/components/schemas/schemas-match-ABjPzoPO"
+												},
+												"name": {
+													"description": "The name of the device settings policy.",
+													"example": "Allow Developers",
+													"maxLength": 100,
+													"type": "string"
+												},
+												"policy_id": {
+													"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+												},
+												"precedence": {
+													"$ref": "#/components/schemas/precedence-xykUhVyt"
+												},
+												"service_mode_v2": {
+													"$ref": "#/components/schemas/service_mode_v2"
+												},
+												"support_url": {
+													"$ref": "#/components/schemas/support_url"
+												},
+												"switch_locked": {
+													"$ref": "#/components/schemas/switch_locked"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -2050,12 +4187,99 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device_settings_policy-uz4qPy1N"
+													"properties": {
+														"allow_mode_switch": {
+															"$ref": "#/components/schemas/allow_mode_switch"
+														},
+														"allow_updates": {
+															"$ref": "#/components/schemas/allow_updates"
+														},
+														"allowed_to_leave": {
+															"$ref": "#/components/schemas/allowed_to_leave"
+														},
+														"auto_connect": {
+															"$ref": "#/components/schemas/auto_connect"
+														},
+														"captive_portal": {
+															"$ref": "#/components/schemas/captive_portal"
+														},
+														"default": {
+															"$ref": "#/components/schemas/default-ZbfwlZZ8"
+														},
+														"description": {
+															"$ref": "#/components/schemas/schemas-description-gQQMQ8ze"
+														},
+														"disable_auto_fallback": {
+															"$ref": "#/components/schemas/disable_auto_fallback"
+														},
+														"enabled": {
+															"description": "Whether the policy will be applied to matching devices.",
+															"example": true,
+															"type": "boolean"
+														},
+														"exclude": {
+															"$ref": "#/components/schemas/exclude-iLhLWdq0"
+														},
+														"exclude_office_ips": {
+															"$ref": "#/components/schemas/exclude_office_ips"
+														},
+														"fallback_domains": {
+															"$ref": "#/components/schemas/fallback_domains"
+														},
+														"gateway_unique_id": {
+															"$ref": "#/components/schemas/gateway_unique_id"
+														},
+														"include": {
+															"$ref": "#/components/schemas/include-87hBtzfZ"
+														},
+														"match": {
+															"$ref": "#/components/schemas/schemas-match-ABjPzoPO"
+														},
+														"name": {
+															"description": "The name of the device settings policy.",
+															"example": "Allow Developers",
+															"maxLength": 100,
+															"type": "string"
+														},
+														"policy_id": {
+															"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+														},
+														"precedence": {
+															"$ref": "#/components/schemas/precedence-xykUhVyt"
+														},
+														"service_mode_v2": {
+															"$ref": "#/components/schemas/service_mode_v2"
+														},
+														"support_url": {
+															"$ref": "#/components/schemas/support_url"
+														},
+														"switch_locked": {
+															"$ref": "#/components/schemas/switch_locked"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -2066,7 +4290,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -2080,7 +4322,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -2251,12 +4511,99 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device_settings_policy-uz4qPy1N"
+											"properties": {
+												"allow_mode_switch": {
+													"$ref": "#/components/schemas/allow_mode_switch"
+												},
+												"allow_updates": {
+													"$ref": "#/components/schemas/allow_updates"
+												},
+												"allowed_to_leave": {
+													"$ref": "#/components/schemas/allowed_to_leave"
+												},
+												"auto_connect": {
+													"$ref": "#/components/schemas/auto_connect"
+												},
+												"captive_portal": {
+													"$ref": "#/components/schemas/captive_portal"
+												},
+												"default": {
+													"$ref": "#/components/schemas/default-ZbfwlZZ8"
+												},
+												"description": {
+													"$ref": "#/components/schemas/schemas-description-gQQMQ8ze"
+												},
+												"disable_auto_fallback": {
+													"$ref": "#/components/schemas/disable_auto_fallback"
+												},
+												"enabled": {
+													"description": "Whether the policy will be applied to matching devices.",
+													"example": true,
+													"type": "boolean"
+												},
+												"exclude": {
+													"$ref": "#/components/schemas/exclude-iLhLWdq0"
+												},
+												"exclude_office_ips": {
+													"$ref": "#/components/schemas/exclude_office_ips"
+												},
+												"fallback_domains": {
+													"$ref": "#/components/schemas/fallback_domains"
+												},
+												"gateway_unique_id": {
+													"$ref": "#/components/schemas/gateway_unique_id"
+												},
+												"include": {
+													"$ref": "#/components/schemas/include-87hBtzfZ"
+												},
+												"match": {
+													"$ref": "#/components/schemas/schemas-match-ABjPzoPO"
+												},
+												"name": {
+													"description": "The name of the device settings policy.",
+													"example": "Allow Developers",
+													"maxLength": 100,
+													"type": "string"
+												},
+												"policy_id": {
+													"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+												},
+												"precedence": {
+													"$ref": "#/components/schemas/precedence-xykUhVyt"
+												},
+												"service_mode_v2": {
+													"$ref": "#/components/schemas/service_mode_v2"
+												},
+												"support_url": {
+													"$ref": "#/components/schemas/support_url"
+												},
+												"switch_locked": {
+													"$ref": "#/components/schemas/switch_locked"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -2274,12 +4621,99 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device_settings_policy-uz4qPy1N"
+													"properties": {
+														"allow_mode_switch": {
+															"$ref": "#/components/schemas/allow_mode_switch"
+														},
+														"allow_updates": {
+															"$ref": "#/components/schemas/allow_updates"
+														},
+														"allowed_to_leave": {
+															"$ref": "#/components/schemas/allowed_to_leave"
+														},
+														"auto_connect": {
+															"$ref": "#/components/schemas/auto_connect"
+														},
+														"captive_portal": {
+															"$ref": "#/components/schemas/captive_portal"
+														},
+														"default": {
+															"$ref": "#/components/schemas/default-ZbfwlZZ8"
+														},
+														"description": {
+															"$ref": "#/components/schemas/schemas-description-gQQMQ8ze"
+														},
+														"disable_auto_fallback": {
+															"$ref": "#/components/schemas/disable_auto_fallback"
+														},
+														"enabled": {
+															"description": "Whether the policy will be applied to matching devices.",
+															"example": true,
+															"type": "boolean"
+														},
+														"exclude": {
+															"$ref": "#/components/schemas/exclude-iLhLWdq0"
+														},
+														"exclude_office_ips": {
+															"$ref": "#/components/schemas/exclude_office_ips"
+														},
+														"fallback_domains": {
+															"$ref": "#/components/schemas/fallback_domains"
+														},
+														"gateway_unique_id": {
+															"$ref": "#/components/schemas/gateway_unique_id"
+														},
+														"include": {
+															"$ref": "#/components/schemas/include-87hBtzfZ"
+														},
+														"match": {
+															"$ref": "#/components/schemas/schemas-match-ABjPzoPO"
+														},
+														"name": {
+															"description": "The name of the device settings policy.",
+															"example": "Allow Developers",
+															"maxLength": 100,
+															"type": "string"
+														},
+														"policy_id": {
+															"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+														},
+														"precedence": {
+															"$ref": "#/components/schemas/precedence-xykUhVyt"
+														},
+														"service_mode_v2": {
+															"$ref": "#/components/schemas/service_mode_v2"
+														},
+														"support_url": {
+															"$ref": "#/components/schemas/support_url"
+														},
+														"switch_locked": {
+															"$ref": "#/components/schemas/switch_locked"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -2290,7 +4724,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -2304,7 +4756,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -2370,7 +4840,10 @@
 					"schema": {
 						"description": "A list of device ids to revoke.",
 						"items": {
-							"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+							"description": "Device ID.",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"type": "string"
 						},
 						"maxLength": 200,
 						"type": "array"
@@ -2386,7 +4859,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -2418,7 +4963,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -2443,7 +5060,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -2457,7 +5092,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -2523,7 +5176,10 @@
 					"schema": {
 						"description": "A list of device ids to unrevoke.",
 						"items": {
-							"$ref": "#/components/schemas/schemas-uuid-tt9rNp9C"
+							"description": "Device ID.",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"type": "string"
 						},
 						"maxLength": 200,
 						"type": "array"
@@ -2539,7 +5195,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -2571,7 +5299,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -2596,7 +5396,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -2610,7 +5428,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -2723,13 +5559,52 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/split_tunnel"
+												"properties": {
+													"address": {
+														"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+														"example": "192.0.2.0/24",
+														"type": "string"
+													},
+													"description": {
+														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"example": "Exclude testing domains from the tunnel",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"host": {
+														"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+														"example": "*.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"address",
+													"description"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -2749,13 +5624,52 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/split_tunnel"
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"address",
+															"description"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -2768,7 +5682,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -2782,7 +5714,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -2894,13 +5844,51 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/fallback_domain"
+												"properties": {
+													"description": {
+														"description": "A description of the fallback domain, displayed in the client UI.",
+														"example": "Domain bypass for local development",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"dns_server": {
+														"description": "A list of IP addresses to handle domain resolution.",
+														"items": {},
+														"type": "array"
+													},
+													"suffix": {
+														"description": "The domain suffix to match when resolving locally.",
+														"example": "example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"suffix"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -2920,13 +5908,51 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/fallback_domain"
+														"properties": {
+															"description": {
+																"description": "A description of the fallback domain, displayed in the client UI.",
+																"example": "Domain bypass for local development",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"dns_server": {
+																"description": "A list of IP addresses to handle domain resolution.",
+																"items": {},
+																"type": "array"
+															},
+															"suffix": {
+																"description": "The domain suffix to match when resolving locally.",
+																"example": "example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"suffix"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -2939,7 +5965,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -2953,7 +5997,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -3066,13 +6128,52 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/split_tunnel_include"
+												"properties": {
+													"address": {
+														"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
+														"example": "192.0.2.0/24",
+														"type": "string"
+													},
+													"description": {
+														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"example": "Include testing domains from the tunnel",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"host": {
+														"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
+														"example": "*.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"address",
+													"description"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -3092,13 +6193,52 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/split_tunnel_include"
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"example": "Include testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"address",
+															"description"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -3111,7 +6251,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -3125,7 +6283,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -3227,13 +6403,52 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/split_tunnel"
+												"properties": {
+													"address": {
+														"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+														"example": "192.0.2.0/24",
+														"type": "string"
+													},
+													"description": {
+														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"example": "Exclude testing domains from the tunnel",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"host": {
+														"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+														"example": "*.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"address",
+													"description"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -3253,13 +6468,52 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/split_tunnel"
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"example": "Exclude testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"address",
+															"description"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -3272,7 +6526,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -3286,7 +6558,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -3387,13 +6677,51 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/fallback_domain"
+												"properties": {
+													"description": {
+														"description": "A description of the fallback domain, displayed in the client UI.",
+														"example": "Domain bypass for local development",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"dns_server": {
+														"description": "A list of IP addresses to handle domain resolution.",
+														"items": {},
+														"type": "array"
+													},
+													"suffix": {
+														"description": "The domain suffix to match when resolving locally.",
+														"example": "example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"suffix"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -3413,13 +6741,51 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/fallback_domain"
+														"properties": {
+															"description": {
+																"description": "A description of the fallback domain, displayed in the client UI.",
+																"example": "Domain bypass for local development",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"dns_server": {
+																"description": "A list of IP addresses to handle domain resolution.",
+																"items": {},
+																"type": "array"
+															},
+															"suffix": {
+																"description": "The domain suffix to match when resolving locally.",
+																"example": "example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"suffix"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -3432,7 +6798,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -3446,7 +6830,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -3548,13 +6950,52 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/split_tunnel_include"
+												"properties": {
+													"address": {
+														"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
+														"example": "192.0.2.0/24",
+														"type": "string"
+													},
+													"description": {
+														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"example": "Include testing domains from the tunnel",
+														"maxLength": 100,
+														"type": "string"
+													},
+													"host": {
+														"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
+														"example": "*.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"address",
+													"description"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -3574,13 +7015,52 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/split_tunnel_include"
+														"properties": {
+															"address": {
+																"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"example": "Include testing domains from the tunnel",
+																"maxLength": 100,
+																"type": "string"
+															},
+															"host": {
+																"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
+																"example": "*.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"address",
+															"description"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -3593,7 +7073,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -3607,7 +7105,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

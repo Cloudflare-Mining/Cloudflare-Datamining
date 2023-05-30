@@ -141,13 +141,41 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/rule-7ClZuANd"
+												"oneOf": [
+													{
+														"$ref": "#/components/schemas/anomaly_rule"
+													},
+													{
+														"$ref": "#/components/schemas/traditional_deny_rule"
+													},
+													{
+														"$ref": "#/components/schemas/traditional_allow_rule"
+													}
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -167,13 +195,41 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/rule-7ClZuANd"
+														"oneOf": [
+															{
+																"$ref": "#/components/schemas/anomaly_rule"
+															},
+															{
+																"$ref": "#/components/schemas/traditional_deny_rule"
+															},
+															{
+																"$ref": "#/components/schemas/traditional_allow_rule"
+															}
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -186,7 +242,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -200,7 +274,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -301,7 +393,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-NblIDYzC"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -324,7 +436,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-NblIDYzC"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -340,7 +472,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -354,7 +504,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -481,7 +649,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-NblIDYzC"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -499,15 +687,34 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/schemas-base"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/base-Tzp0ercv"
+																}
+															]
 														},
 														{
 															"properties": {
 																"allowed_modes": {
-																	"$ref": "#/components/schemas/allowed_modes_anomaly"
+																	"description": "Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules.",
+																	"example": [
+																		"on",
+																		"off"
+																	],
+																	"items": {
+																		"$ref": "#/components/schemas/mode_anomaly"
+																	},
+																	"readOnly": true,
+																	"type": "array"
 																},
 																"mode": {
-																	"$ref": "#/components/schemas/mode_anomaly"
+																	"description": "When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
+																	"enum": [
+																		"on",
+																		"off"
+																	],
+																	"example": "on",
+																	"type": "string"
 																}
 															}
 														}
@@ -527,18 +734,73 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/base-Tzp0ercv"
+															"properties": {
+																"description": {
+																	"$ref": "#/components/schemas/schemas-description-Z2qcIYlv"
+																},
+																"group": {
+																	"description": "The rule group to which the current WAF rule belongs.",
+																	"properties": {
+																		"id": {
+																			"$ref": "#/components/schemas/components-schemas-identifier-n53VvE1w"
+																		},
+																		"name": {
+																			"$ref": "#/components/schemas/name-357GgD0r"
+																		}
+																	},
+																	"readOnly": true,
+																	"type": "object"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/rule_components-schemas-identifier"
+																},
+																"package_id": {
+																	"$ref": "#/components/schemas/identifier-XhlQKFJj"
+																},
+																"priority": {
+																	"$ref": "#/components/schemas/priority-5Diyp27X"
+																}
+															}
 														},
 														{
 															"properties": {
 																"allowed_modes": {
-																	"$ref": "#/components/schemas/allowed_modes_deny_traditional"
+																	"description": "The list of possible actions of the WAF rule when it is triggered.",
+																	"example": [
+																		"default",
+																		"disable",
+																		"simulate",
+																		"block",
+																		"challenge"
+																	],
+																	"items": {
+																		"$ref": "#/components/schemas/mode_deny_traditional"
+																	},
+																	"readOnly": true,
+																	"type": "array"
 																},
 																"default_mode": {
-																	"$ref": "#/components/schemas/default_mode"
+																	"description": "The default action/mode of a rule.",
+																	"enum": [
+																		"disable",
+																		"simulate",
+																		"block",
+																		"challenge"
+																	],
+																	"example": "block",
+																	"readOnly": true
 																},
 																"mode": {
-																	"$ref": "#/components/schemas/mode_deny_traditional"
+																	"description": "The action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
+																	"enum": [
+																		"default",
+																		"disable",
+																		"simulate",
+																		"block",
+																		"challenge"
+																	],
+																	"example": "block",
+																	"type": "string"
 																}
 															}
 														}
@@ -559,15 +821,56 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/base-Tzp0ercv"
+															"properties": {
+																"description": {
+																	"$ref": "#/components/schemas/schemas-description-Z2qcIYlv"
+																},
+																"group": {
+																	"description": "The rule group to which the current WAF rule belongs.",
+																	"properties": {
+																		"id": {
+																			"$ref": "#/components/schemas/components-schemas-identifier-n53VvE1w"
+																		},
+																		"name": {
+																			"$ref": "#/components/schemas/name-357GgD0r"
+																		}
+																	},
+																	"readOnly": true,
+																	"type": "object"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/rule_components-schemas-identifier"
+																},
+																"package_id": {
+																	"$ref": "#/components/schemas/identifier-XhlQKFJj"
+																},
+																"priority": {
+																	"$ref": "#/components/schemas/priority-5Diyp27X"
+																}
+															}
 														},
 														{
 															"properties": {
 																"allowed_modes": {
-																	"$ref": "#/components/schemas/allowed_modes_allow_traditional"
+																	"description": "Defines the available modes for the current WAF rule.",
+																	"example": [
+																		"on",
+																		"off"
+																	],
+																	"items": {
+																		"$ref": "#/components/schemas/mode_allow_traditional"
+																	},
+																	"readOnly": true,
+																	"type": "array"
 																},
 																"mode": {
-																	"$ref": "#/components/schemas/mode_allow_traditional"
+																	"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
+																	"enum": [
+																		"on",
+																		"off"
+																	],
+																	"example": "on",
+																	"type": "string"
 																}
 															}
 														}
@@ -605,7 +908,27 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-NblIDYzC"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	],
+																	"nullable": true
+																}
+															}
+														}
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -623,15 +946,34 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/schemas-base"
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/base-Tzp0ercv"
+																		}
+																	]
 																},
 																{
 																	"properties": {
 																		"allowed_modes": {
-																			"$ref": "#/components/schemas/allowed_modes_anomaly"
+																			"description": "Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules.",
+																			"example": [
+																				"on",
+																				"off"
+																			],
+																			"items": {
+																				"$ref": "#/components/schemas/mode_anomaly"
+																			},
+																			"readOnly": true,
+																			"type": "array"
 																		},
 																		"mode": {
-																			"$ref": "#/components/schemas/mode_anomaly"
+																			"description": "When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string"
 																		}
 																	}
 																}
@@ -651,18 +993,73 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/base-Tzp0ercv"
+																	"properties": {
+																		"description": {
+																			"$ref": "#/components/schemas/schemas-description-Z2qcIYlv"
+																		},
+																		"group": {
+																			"description": "The rule group to which the current WAF rule belongs.",
+																			"properties": {
+																				"id": {
+																					"$ref": "#/components/schemas/components-schemas-identifier-n53VvE1w"
+																				},
+																				"name": {
+																					"$ref": "#/components/schemas/name-357GgD0r"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		},
+																		"id": {
+																			"$ref": "#/components/schemas/rule_components-schemas-identifier"
+																		},
+																		"package_id": {
+																			"$ref": "#/components/schemas/identifier-XhlQKFJj"
+																		},
+																		"priority": {
+																			"$ref": "#/components/schemas/priority-5Diyp27X"
+																		}
+																	}
 																},
 																{
 																	"properties": {
 																		"allowed_modes": {
-																			"$ref": "#/components/schemas/allowed_modes_deny_traditional"
+																			"description": "The list of possible actions of the WAF rule when it is triggered.",
+																			"example": [
+																				"default",
+																				"disable",
+																				"simulate",
+																				"block",
+																				"challenge"
+																			],
+																			"items": {
+																				"$ref": "#/components/schemas/mode_deny_traditional"
+																			},
+																			"readOnly": true,
+																			"type": "array"
 																		},
 																		"default_mode": {
-																			"$ref": "#/components/schemas/default_mode"
+																			"description": "The default action/mode of a rule.",
+																			"enum": [
+																				"disable",
+																				"simulate",
+																				"block",
+																				"challenge"
+																			],
+																			"example": "block",
+																			"readOnly": true
 																		},
 																		"mode": {
-																			"$ref": "#/components/schemas/mode_deny_traditional"
+																			"description": "The action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
+																			"enum": [
+																				"default",
+																				"disable",
+																				"simulate",
+																				"block",
+																				"challenge"
+																			],
+																			"example": "block",
+																			"type": "string"
 																		}
 																	}
 																}
@@ -683,15 +1080,56 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/base-Tzp0ercv"
+																	"properties": {
+																		"description": {
+																			"$ref": "#/components/schemas/schemas-description-Z2qcIYlv"
+																		},
+																		"group": {
+																			"description": "The rule group to which the current WAF rule belongs.",
+																			"properties": {
+																				"id": {
+																					"$ref": "#/components/schemas/components-schemas-identifier-n53VvE1w"
+																				},
+																				"name": {
+																					"$ref": "#/components/schemas/name-357GgD0r"
+																				}
+																			},
+																			"readOnly": true,
+																			"type": "object"
+																		},
+																		"id": {
+																			"$ref": "#/components/schemas/rule_components-schemas-identifier"
+																		},
+																		"package_id": {
+																			"$ref": "#/components/schemas/identifier-XhlQKFJj"
+																		},
+																		"priority": {
+																			"$ref": "#/components/schemas/priority-5Diyp27X"
+																		}
+																	}
 																},
 																{
 																	"properties": {
 																		"allowed_modes": {
-																			"$ref": "#/components/schemas/allowed_modes_allow_traditional"
+																			"description": "Defines the available modes for the current WAF rule.",
+																			"example": [
+																				"on",
+																				"off"
+																			],
+																			"items": {
+																				"$ref": "#/components/schemas/mode_allow_traditional"
+																			},
+																			"readOnly": true,
+																			"type": "array"
 																		},
 																		"mode": {
-																			"$ref": "#/components/schemas/mode_allow_traditional"
+																			"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string"
 																		}
 																	}
 																}
@@ -720,7 +1158,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -734,7 +1190,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

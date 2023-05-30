@@ -1,7 +1,99 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
@@ -10,7 +102,11 @@
 						"app_state": {
 							"properties": {
 								"app_uid": {
-									"$ref": "#/components/schemas/uuid"
+									"description": "UUID",
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+									"maxLength": 36,
+									"readOnly": true,
+									"type": "string"
 								},
 								"aud": {
 									"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe389",
@@ -93,7 +189,11 @@
 									"type": "string"
 								},
 								"user_uuid": {
-									"$ref": "#/components/schemas/uuid"
+									"description": "UUID",
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+									"maxLength": 36,
+									"readOnly": true,
+									"type": "string"
 								},
 								"version": {
 									"type": "integer"

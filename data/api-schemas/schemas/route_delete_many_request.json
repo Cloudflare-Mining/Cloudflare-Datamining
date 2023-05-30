@@ -2,7 +2,22 @@
 	"properties": {
 		"routes": {
 			"items": {
-				"$ref": "#/components/schemas/route_delete_id"
+				"allOf": [
+					{
+						"properties": {
+							"id": {
+								"description": "Identifier",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							}
+						},
+						"required": [
+							"id"
+						]
+					}
+				]
 			},
 			"type": "array"
 		}

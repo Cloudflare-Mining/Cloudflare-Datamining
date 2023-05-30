@@ -41,7 +41,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -51,7 +123,29 @@
 											"type": "array"
 										},
 										"result_info": {
-											"$ref": "#/components/schemas/result_info"
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service",
+													"example": 1,
+													"type": "number"
+												},
+												"page": {
+													"description": "Current page within paginated list of results",
+													"example": 1,
+													"type": "number"
+												},
+												"per_page": {
+													"description": "Number of results per page of results",
+													"example": 20,
+													"type": "number"
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters",
+													"example": 2000,
+													"type": "number"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -70,7 +164,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -80,7 +246,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -92,7 +280,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -106,7 +312,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -186,13 +410,56 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/webhooks-IRSyVhj7"
+												"properties": {
+													"created_at": {
+														"$ref": "#/components/schemas/webhooks_components-schemas-created_at"
+													},
+													"id": {
+														"$ref": "#/components/schemas/uuid"
+													},
+													"last_failure": {
+														"$ref": "#/components/schemas/last_failure"
+													},
+													"last_success": {
+														"$ref": "#/components/schemas/last_success"
+													},
+													"name": {
+														"$ref": "#/components/schemas/webhooks_components-schemas-name"
+													},
+													"secret": {
+														"$ref": "#/components/schemas/secret"
+													},
+													"type": {
+														"$ref": "#/components/schemas/webhooks_components-schemas-type"
+													},
+													"url": {
+														"$ref": "#/components/schemas/webhooks_components-schemas-url"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -212,13 +479,56 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/webhooks-IRSyVhj7"
+														"properties": {
+															"created_at": {
+																"$ref": "#/components/schemas/webhooks_components-schemas-created_at"
+															},
+															"id": {
+																"$ref": "#/components/schemas/uuid"
+															},
+															"last_failure": {
+																"$ref": "#/components/schemas/last_failure"
+															},
+															"last_success": {
+																"$ref": "#/components/schemas/last_success"
+															},
+															"name": {
+																"$ref": "#/components/schemas/webhooks_components-schemas-name"
+															},
+															"secret": {
+																"$ref": "#/components/schemas/secret"
+															},
+															"type": {
+																"$ref": "#/components/schemas/webhooks_components-schemas-type"
+															},
+															"url": {
+																"$ref": "#/components/schemas/webhooks_components-schemas-url"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -231,7 +541,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -245,7 +573,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -337,12 +683,58 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/webhooks"
+											"properties": {
+												"created_at": {
+													"$ref": "#/components/schemas/created_at"
+												},
+												"id": {
+													"$ref": "#/components/schemas/uuid"
+												},
+												"last_failure": {
+													"$ref": "#/components/schemas/last_failure"
+												},
+												"last_success": {
+													"$ref": "#/components/schemas/last_success"
+												},
+												"name": {
+													"$ref": "#/components/schemas/components-schemas-name"
+												},
+												"secret": {
+													"$ref": "#/components/schemas/secret"
+												},
+												"type": {
+													"$ref": "#/components/schemas/components-schemas-type"
+												},
+												"url": {
+													"$ref": "#/components/schemas/url"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -360,12 +752,58 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/webhooks"
+													"properties": {
+														"created_at": {
+															"$ref": "#/components/schemas/created_at"
+														},
+														"id": {
+															"$ref": "#/components/schemas/uuid"
+														},
+														"last_failure": {
+															"$ref": "#/components/schemas/last_failure"
+														},
+														"last_success": {
+															"$ref": "#/components/schemas/last_success"
+														},
+														"name": {
+															"$ref": "#/components/schemas/components-schemas-name"
+														},
+														"secret": {
+															"$ref": "#/components/schemas/secret"
+														},
+														"type": {
+															"$ref": "#/components/schemas/components-schemas-type"
+														},
+														"url": {
+															"$ref": "#/components/schemas/url"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -376,7 +814,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -390,7 +846,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -499,14 +973,38 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/uuid"
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -527,14 +1025,38 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/uuid"
+															"description": "UUID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -548,7 +1070,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -562,7 +1102,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -683,14 +1241,38 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/uuid"
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -711,14 +1293,38 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/uuid"
+															"description": "UUID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -732,7 +1338,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -746,7 +1370,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

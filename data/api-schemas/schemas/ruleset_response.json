@@ -1,12 +1,174 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-common"
+			"properties": {
+				"errors": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"messages": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"result": {
+					"anyOf": [
+						{
+							"type": "object"
+						},
+						{
+							"items": {},
+							"type": "array"
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"success": {
+					"description": "Whether the API call was successful",
+					"enum": [
+						true
+					],
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"success",
+				"errors",
+				"messages",
+				"result"
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/ruleset"
+					"description": "A ruleset object.",
+					"properties": {
+						"description": {
+							"default": "",
+							"description": "An informative description of the ruleset.",
+							"example": "My ruleset to execute managed rulesets",
+							"type": "string"
+						},
+						"id": {
+							"description": "The unique ID of the ruleset.",
+							"example": "2f2feab2026849078ba485f918791bdc",
+							"pattern": "^[0-9a-f]{32}$",
+							"type": "string"
+						},
+						"kind": {
+							"description": "The kind of the ruleset.",
+							"enum": [
+								"custom",
+								"root",
+								"zone"
+							],
+							"example": "root",
+							"type": "string"
+						},
+						"last_updated": {
+							"description": "The timestamp of when the ruleset was last modified.",
+							"example": "2000-01-01T00:00:00.000000Z",
+							"type": "string"
+						},
+						"name": {
+							"description": "The human-readable name of the ruleset.",
+							"example": "My ruleset",
+							"type": "string"
+						},
+						"phase": {
+							"description": "The phase of the ruleset.",
+							"example": "http_request_firewall_managed",
+							"pattern": "^[a-z_]+$",
+							"type": "string"
+						},
+						"rules": {
+							"description": "The list of rules in the ruleset.",
+							"items": {
+								"description": "A rule object.",
+								"properties": {
+									"action": {
+										"$ref": "#/components/schemas/rules_components-schemas-action"
+									},
+									"action_parameters": {
+										"$ref": "#/components/schemas/action_parameters"
+									},
+									"categories": {
+										"$ref": "#/components/schemas/categories-uRVTluua"
+									},
+									"description": {
+										"$ref": "#/components/schemas/rules_components-schemas-description"
+									},
+									"enabled": {
+										"$ref": "#/components/schemas/rules_components-schemas-enabled"
+									},
+									"expression": {
+										"$ref": "#/components/schemas/schemas-expression"
+									},
+									"id": {
+										"$ref": "#/components/schemas/rules_components-schemas-id"
+									},
+									"last_updated": {
+										"$ref": "#/components/schemas/schemas-last_updated"
+									},
+									"logging": {
+										"$ref": "#/components/schemas/logging"
+									},
+									"ref": {
+										"$ref": "#/components/schemas/components-schemas-ref"
+									},
+									"version": {
+										"$ref": "#/components/schemas/schemas-version"
+									}
+								},
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"version": {
+							"description": "The version of the ruleset.",
+							"example": "1",
+							"pattern": "^[0-9]+$",
+							"type": "string"
+						}
+					},
+					"type": "object"
 				}
 			},
 			"type": "object"

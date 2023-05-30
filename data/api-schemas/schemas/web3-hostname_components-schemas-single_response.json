@@ -1,12 +1,166 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/web3-hostname"
+					"properties": {
+						"created_on": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"description": {
+							"description": "An optional description of the hostname.",
+							"example": "This is my IPFS gateway.",
+							"maxLength": 500,
+							"type": "string"
+						},
+						"dnslink": {
+							"description": "DNSLink value used if the target is ipfs.",
+							"example": "/ipns/onboarding.ipfs.cloudflare.com",
+							"type": "string"
+						},
+						"id": {
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						},
+						"modified_on": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"name": {
+							"description": "The hostname that will point to the target gateway via CNAME.",
+							"example": "gateway.example.com",
+							"maxLength": 255,
+							"readOnly": true,
+							"type": "string"
+						},
+						"status": {
+							"description": "Status of the hostname's activation.",
+							"enum": [
+								"active",
+								"pending",
+								"deleting",
+								"error"
+							],
+							"example": "active",
+							"readOnly": true,
+							"type": "string"
+						},
+						"target": {
+							"description": "Target gateway of the hostname.",
+							"enum": [
+								"ethereum",
+								"ipfs",
+								"ipfs_universal_path",
+								"polygon"
+							],
+							"example": "ipfs",
+							"type": "string"
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

@@ -1,7 +1,32 @@
 {
 	"description": "List actions for the catch-all routing rule.",
 	"items": {
-		"$ref": "#/components/schemas/rule_catchall-action"
+		"description": "Action for the catch-all routing rule.",
+		"properties": {
+			"type": {
+				"description": "Type of action for catch-all rule.",
+				"enum": [
+					"drop",
+					"forward",
+					"worker"
+				],
+				"example": "forward",
+				"type": "string"
+			},
+			"value": {
+				"items": {
+					"description": "Input value for action.",
+					"example": "destinationaddress@example.net",
+					"maxLength": 90,
+					"type": "string"
+				},
+				"type": "array"
+			}
+		},
+		"required": [
+			"type"
+		],
+		"type": "object"
 	},
 	"type": "array"
 }

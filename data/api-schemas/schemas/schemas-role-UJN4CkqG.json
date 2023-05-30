@@ -1,16 +1,34 @@
 {
 	"properties": {
 		"description": {
-			"$ref": "#/components/schemas/description-rFA4VIAE"
+			"description": "Description of role's permissions.",
+			"example": "Administrative access to the entire Organization",
+			"readOnly": true,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/role_components-schemas-identifier-ug0kxHuG"
+			"description": "Role identifier tag.",
+			"example": "3536bcfad5faccb999b47003c79917fb",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/components-schemas-name-CqmpW9OV"
+			"description": "Role Name.",
+			"example": "Organization Admin",
+			"maxLength": 120,
+			"readOnly": true,
+			"type": "string"
 		},
 		"permissions": {
-			"$ref": "#/components/schemas/schemas-permissions"
+			"description": "Access permissions for this User.",
+			"items": {
+				"example": "#zones:read",
+				"maxLength": 160,
+				"type": "string"
+			},
+			"readOnly": true,
+			"type": "array"
 		}
 	},
 	"required": [

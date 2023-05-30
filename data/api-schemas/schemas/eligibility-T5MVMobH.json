@@ -1,13 +1,24 @@
 {
 	"properties": {
 		"eligible": {
-			"$ref": "#/components/schemas/eligible"
+			"description": "Determines whether or not the account is eligible for the delivery mechanism.",
+			"example": true,
+			"type": "boolean"
 		},
 		"ready": {
-			"$ref": "#/components/schemas/ready"
+			"description": "Beta flag. Users can create a policy with a mechanism that is not ready, but we cannot guarantee successful delivery of notifications.",
+			"example": true,
+			"type": "boolean"
 		},
 		"type": {
-			"$ref": "#/components/schemas/eligibility_components-schemas-type"
+			"description": "Determines type of delivery mechanism.",
+			"enum": [
+				"email",
+				"pagerduty",
+				"webhook"
+			],
+			"example": "email",
+			"type": "string"
 		}
 	},
 	"type": "object"

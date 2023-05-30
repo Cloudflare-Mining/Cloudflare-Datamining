@@ -40,7 +40,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -50,7 +122,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -81,7 +175,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -91,7 +257,29 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -113,7 +301,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -127,7 +333,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -232,7 +456,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -242,7 +538,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -273,7 +591,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -283,7 +673,29 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -305,7 +717,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -319,7 +749,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -400,7 +848,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -410,7 +930,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -482,7 +1024,8 @@
 														"readOnly": true
 													},
 													"queue_name": {
-														"$ref": "#/components/schemas/queues_components-schemas-name"
+														"example": "example-queue",
+														"type": "string"
 													}
 												},
 												"type": "object"
@@ -518,7 +1061,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -528,7 +1143,29 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -600,7 +1237,8 @@
 																"readOnly": true
 															},
 															"queue_name": {
-																"$ref": "#/components/schemas/queues_components-schemas-name"
+																"example": "example-queue",
+																"type": "string"
 															}
 														},
 														"type": "object"
@@ -627,7 +1265,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -641,7 +1297,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -731,7 +1405,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -741,7 +1487,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -776,7 +1544,8 @@
 															"readOnly": true
 														},
 														"queue_name": {
-															"$ref": "#/components/schemas/queues_components-schemas-name"
+															"example": "example-queue",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -809,7 +1578,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -819,7 +1660,29 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -854,7 +1717,8 @@
 																	"readOnly": true
 																},
 																"queue_name": {
-																	"$ref": "#/components/schemas/queues_components-schemas-name"
+																	"example": "example-queue",
+																	"type": "string"
 																}
 															},
 															"type": "object"
@@ -878,7 +1742,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -892,7 +1774,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -982,7 +1882,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -992,7 +1964,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1057,13 +2051,16 @@
 													"settings": {
 														"properties": {
 															"batch_size": {
-																"$ref": "#/components/schemas/batch_size"
+																"example": 10,
+																"type": "number"
 															},
 															"max_retries": {
-																"$ref": "#/components/schemas/max_retries"
+																"example": 3,
+																"type": "number"
 															},
 															"max_wait_time_ms": {
-																"$ref": "#/components/schemas/max_wait_time_ms"
+																"example": 5000,
+																"type": "number"
 															}
 														},
 														"type": "object"
@@ -1097,7 +2094,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -1107,7 +2176,29 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -1172,13 +2263,16 @@
 															"settings": {
 																"properties": {
 																	"batch_size": {
-																		"$ref": "#/components/schemas/batch_size"
+																		"example": 10,
+																		"type": "number"
 																	},
 																	"max_retries": {
-																		"$ref": "#/components/schemas/max_retries"
+																		"example": 3,
+																		"type": "number"
 																	},
 																	"max_wait_time_ms": {
-																		"$ref": "#/components/schemas/max_wait_time_ms"
+																		"example": 5000,
+																		"type": "number"
 																	}
 																},
 																"type": "object"
@@ -1203,7 +2297,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1217,7 +2329,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1310,7 +2440,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1320,7 +2522,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1343,7 +2567,8 @@
 															"readOnly": true
 														},
 														"queue_name": {
-															"$ref": "#/components/schemas/queues_components-schemas-name"
+															"example": "example-queue",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -1376,7 +2601,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -1386,7 +2683,29 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -1409,7 +2728,8 @@
 																	"readOnly": true
 																},
 																"queue_name": {
-																	"$ref": "#/components/schemas/queues_components-schemas-name"
+																	"example": "example-queue",
+																	"type": "string"
 																}
 															},
 															"type": "object"
@@ -1433,7 +2753,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1447,7 +2785,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1556,7 +2912,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1566,7 +2994,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1583,7 +3033,8 @@
 															"readOnly": true
 														},
 														"dead_letter_queue": {
-															"$ref": "#/components/schemas/dlq_name"
+															"example": "example-dlq",
+															"type": "string"
 														},
 														"environment": {
 															"readOnly": true
@@ -1597,13 +3048,16 @@
 														"settings": {
 															"properties": {
 																"batch_size": {
-																	"$ref": "#/components/schemas/batch_size"
+																	"example": 10,
+																	"type": "number"
 																},
 																"max_retries": {
-																	"$ref": "#/components/schemas/max_retries"
+																	"example": 3,
+																	"type": "number"
 																},
 																"max_wait_time_ms": {
-																	"$ref": "#/components/schemas/max_wait_time_ms"
+																	"example": 5000,
+																	"type": "number"
 																}
 															},
 															"type": "object"
@@ -1640,7 +3094,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -1650,7 +3176,29 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -1667,7 +3215,8 @@
 																	"readOnly": true
 																},
 																"dead_letter_queue": {
-																	"$ref": "#/components/schemas/dlq_name"
+																	"example": "example-dlq",
+																	"type": "string"
 																},
 																"environment": {
 																	"readOnly": true
@@ -1681,13 +3230,16 @@
 																"settings": {
 																	"properties": {
 																		"batch_size": {
-																			"$ref": "#/components/schemas/batch_size"
+																			"example": 10,
+																			"type": "number"
 																		},
 																		"max_retries": {
-																			"$ref": "#/components/schemas/max_retries"
+																			"example": 3,
+																			"type": "number"
 																		},
 																		"max_wait_time_ms": {
-																			"$ref": "#/components/schemas/max_wait_time_ms"
+																			"example": 5000,
+																			"type": "number"
 																		}
 																	},
 																	"type": "object"
@@ -1715,7 +3267,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1729,7 +3299,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1831,7 +3419,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1841,7 +3501,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1864,7 +3546,8 @@
 															"readOnly": true
 														},
 														"queue_name": {
-															"$ref": "#/components/schemas/renamed_name"
+															"example": "renamed-example-queue",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -1897,7 +3580,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -1907,7 +3662,29 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -1930,7 +3707,8 @@
 																	"readOnly": true
 																},
 																"queue_name": {
-																	"$ref": "#/components/schemas/renamed_name"
+																	"example": "renamed-example-queue",
+																	"type": "string"
 																}
 															},
 															"type": "object"
@@ -1954,7 +3732,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1968,7 +3764,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -2084,7 +3898,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -2094,7 +3980,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -2129,10 +4037,12 @@
 																	"type": "number"
 																},
 																"max_retries": {
-																	"$ref": "#/components/schemas/max_retries"
+																	"example": 3,
+																	"type": "number"
 																},
 																"max_wait_time_ms": {
-																	"$ref": "#/components/schemas/max_wait_time_ms"
+																	"example": 5000,
+																	"type": "number"
 																}
 															},
 															"type": "object"
@@ -2169,7 +4079,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -2179,7 +4161,29 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -2214,10 +4218,12 @@
 																			"type": "number"
 																		},
 																		"max_retries": {
-																			"$ref": "#/components/schemas/max_retries"
+																			"example": 3,
+																			"type": "number"
 																		},
 																		"max_wait_time_ms": {
-																			"$ref": "#/components/schemas/max_wait_time_ms"
+																			"example": 5000,
+																			"type": "number"
 																		}
 																	},
 																	"type": "object"
@@ -2245,7 +4251,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -2259,7 +4283,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

@@ -1,7 +1,12 @@
 {
 	"properties": {
 		"variants": {
-			"$ref": "#/components/schemas/variant_public_request"
+			"properties": {
+				"hero": {
+					"type": "object"
+				}
+			},
+			"type": "object"
 		}
 	},
 	"type": "object"

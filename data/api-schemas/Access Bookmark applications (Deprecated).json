@@ -38,14 +38,37 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/uuid"
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -66,14 +89,37 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/uuid"
+															"description": "UUID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -87,7 +133,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -101,7 +165,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -175,13 +257,53 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/bookmarks-DdRknSVg"
+												"properties": {
+													"app_launcher_visible": {
+														"$ref": "#/components/schemas/schemas-app_launcher_visible"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"domain": {
+														"$ref": "#/components/schemas/components-schemas-domain-yR7HnXJp"
+													},
+													"id": {
+														"description": "The unique identifier for the Bookmark application."
+													},
+													"logo_url": {
+														"$ref": "#/components/schemas/logo_url"
+													},
+													"name": {
+														"$ref": "#/components/schemas/bookmarks_components-schemas-name"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -201,13 +323,53 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/bookmarks-DdRknSVg"
+														"properties": {
+															"app_launcher_visible": {
+																"$ref": "#/components/schemas/schemas-app_launcher_visible"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"domain": {
+																"$ref": "#/components/schemas/components-schemas-domain-yR7HnXJp"
+															},
+															"id": {
+																"description": "The unique identifier for the Bookmark application."
+															},
+															"logo_url": {
+																"$ref": "#/components/schemas/logo_url"
+															},
+															"name": {
+																"$ref": "#/components/schemas/bookmarks_components-schemas-name"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -220,7 +382,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -234,7 +414,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -320,12 +518,55 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/bookmarks-DdRknSVg"
+											"properties": {
+												"app_launcher_visible": {
+													"$ref": "#/components/schemas/schemas-app_launcher_visible"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"domain": {
+													"$ref": "#/components/schemas/components-schemas-domain-yR7HnXJp"
+												},
+												"id": {
+													"description": "The unique identifier for the Bookmark application."
+												},
+												"logo_url": {
+													"$ref": "#/components/schemas/logo_url"
+												},
+												"name": {
+													"$ref": "#/components/schemas/bookmarks_components-schemas-name"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -343,12 +584,55 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/bookmarks-DdRknSVg"
+													"properties": {
+														"app_launcher_visible": {
+															"$ref": "#/components/schemas/schemas-app_launcher_visible"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"domain": {
+															"$ref": "#/components/schemas/components-schemas-domain-yR7HnXJp"
+														},
+														"id": {
+															"description": "The unique identifier for the Bookmark application."
+														},
+														"logo_url": {
+															"$ref": "#/components/schemas/logo_url"
+														},
+														"name": {
+															"$ref": "#/components/schemas/bookmarks_components-schemas-name"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -359,7 +643,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -373,7 +675,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -465,12 +785,55 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/bookmarks-DdRknSVg"
+											"properties": {
+												"app_launcher_visible": {
+													"$ref": "#/components/schemas/schemas-app_launcher_visible"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"domain": {
+													"$ref": "#/components/schemas/components-schemas-domain-yR7HnXJp"
+												},
+												"id": {
+													"description": "The unique identifier for the Bookmark application."
+												},
+												"logo_url": {
+													"$ref": "#/components/schemas/logo_url"
+												},
+												"name": {
+													"$ref": "#/components/schemas/bookmarks_components-schemas-name"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -488,12 +851,55 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/bookmarks-DdRknSVg"
+													"properties": {
+														"app_launcher_visible": {
+															"$ref": "#/components/schemas/schemas-app_launcher_visible"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"domain": {
+															"$ref": "#/components/schemas/components-schemas-domain-yR7HnXJp"
+														},
+														"id": {
+															"description": "The unique identifier for the Bookmark application."
+														},
+														"logo_url": {
+															"$ref": "#/components/schemas/logo_url"
+														},
+														"name": {
+															"$ref": "#/components/schemas/bookmarks_components-schemas-name"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -504,7 +910,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -518,7 +942,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -610,12 +1052,55 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/bookmarks-DdRknSVg"
+											"properties": {
+												"app_launcher_visible": {
+													"$ref": "#/components/schemas/schemas-app_launcher_visible"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"domain": {
+													"$ref": "#/components/schemas/components-schemas-domain-yR7HnXJp"
+												},
+												"id": {
+													"description": "The unique identifier for the Bookmark application."
+												},
+												"logo_url": {
+													"$ref": "#/components/schemas/logo_url"
+												},
+												"name": {
+													"$ref": "#/components/schemas/bookmarks_components-schemas-name"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -633,12 +1118,55 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/bookmarks-DdRknSVg"
+													"properties": {
+														"app_launcher_visible": {
+															"$ref": "#/components/schemas/schemas-app_launcher_visible"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"domain": {
+															"$ref": "#/components/schemas/components-schemas-domain-yR7HnXJp"
+														},
+														"id": {
+															"description": "The unique identifier for the Bookmark application."
+														},
+														"logo_url": {
+															"$ref": "#/components/schemas/logo_url"
+														},
+														"name": {
+															"$ref": "#/components/schemas/bookmarks_components-schemas-name"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -649,7 +1177,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -663,7 +1209,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

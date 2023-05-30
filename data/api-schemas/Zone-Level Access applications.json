@@ -33,14 +33,37 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/uuid"
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -61,14 +84,37 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/uuid"
+															"description": "UUID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -82,7 +128,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -96,7 +160,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -163,13 +245,128 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/schemas-apps-EL7gdLPm"
+												"anyOf": [
+													{
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/basic_app_response_props"
+															},
+															{
+																"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+															}
+														],
+														"title": "Self Hosted Application",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/basic_app_response_props"
+															},
+															{
+																"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+															}
+														],
+														"title": "SaaS Application",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/basic_app_response_props"
+															},
+															{
+																"$ref": "#/components/schemas/ssh_props"
+															}
+														],
+														"title": "Browser SSH Application",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/basic_app_response_props"
+															},
+															{
+																"$ref": "#/components/schemas/vnc_props"
+															}
+														],
+														"title": "Browser VNC Application",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/basic_app_response_props"
+															},
+															{
+																"$ref": "#/components/schemas/app_launcher_props"
+															}
+														],
+														"title": "App Launcher Application",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/basic_app_response_props"
+															},
+															{
+																"$ref": "#/components/schemas/warp_props"
+															}
+														],
+														"title": "Device Enrollment Permissions Application",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/basic_app_response_props"
+															},
+															{
+																"$ref": "#/components/schemas/biso_props"
+															}
+														],
+														"title": "Browser Isolation Permissions Application",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/basic_app_response_props"
+															},
+															{
+																"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+															}
+														],
+														"title": "Bookmark application",
+														"type": "object"
+													}
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -189,13 +386,128 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/schemas-apps-EL7gdLPm"
+														"anyOf": [
+															{
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/basic_app_response_props"
+																	},
+																	{
+																		"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																	}
+																],
+																"title": "Self Hosted Application",
+																"type": "object"
+															},
+															{
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/basic_app_response_props"
+																	},
+																	{
+																		"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																	}
+																],
+																"title": "SaaS Application",
+																"type": "object"
+															},
+															{
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/basic_app_response_props"
+																	},
+																	{
+																		"$ref": "#/components/schemas/ssh_props"
+																	}
+																],
+																"title": "Browser SSH Application",
+																"type": "object"
+															},
+															{
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/basic_app_response_props"
+																	},
+																	{
+																		"$ref": "#/components/schemas/vnc_props"
+																	}
+																],
+																"title": "Browser VNC Application",
+																"type": "object"
+															},
+															{
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/basic_app_response_props"
+																	},
+																	{
+																		"$ref": "#/components/schemas/app_launcher_props"
+																	}
+																],
+																"title": "App Launcher Application",
+																"type": "object"
+															},
+															{
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/basic_app_response_props"
+																	},
+																	{
+																		"$ref": "#/components/schemas/warp_props"
+																	}
+																],
+																"title": "Device Enrollment Permissions Application",
+																"type": "object"
+															},
+															{
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/basic_app_response_props"
+																	},
+																	{
+																		"$ref": "#/components/schemas/biso_props"
+																	}
+																],
+																"title": "Browser Isolation Permissions Application",
+																"type": "object"
+															},
+															{
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/basic_app_response_props"
+																	},
+																	{
+																		"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																	}
+																],
+																"title": "Bookmark application",
+																"type": "object"
+															}
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -208,7 +520,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -222,7 +552,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -297,12 +645,130 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/schemas-apps-EL7gdLPm"
+											"anyOf": [
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+														}
+													],
+													"title": "Self Hosted Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+														}
+													],
+													"title": "SaaS Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/ssh_props"
+														}
+													],
+													"title": "Browser SSH Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/vnc_props"
+														}
+													],
+													"title": "Browser VNC Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/app_launcher_props"
+														}
+													],
+													"title": "App Launcher Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/warp_props"
+														}
+													],
+													"title": "Device Enrollment Permissions Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/biso_props"
+														}
+													],
+													"title": "Browser Isolation Permissions Application",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/basic_app_response_props"
+														},
+														{
+															"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+														}
+													],
+													"title": "Bookmark application",
+													"type": "object"
+												}
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -320,12 +786,130 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/schemas-apps-EL7gdLPm"
+													"anyOf": [
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																}
+															],
+															"title": "Self Hosted Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																}
+															],
+															"title": "SaaS Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/ssh_props"
+																}
+															],
+															"title": "Browser SSH Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/vnc_props"
+																}
+															],
+															"title": "Browser VNC Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/app_launcher_props"
+																}
+															],
+															"title": "App Launcher Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/warp_props"
+																}
+															],
+															"title": "Device Enrollment Permissions Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/biso_props"
+																}
+															],
+															"title": "Browser Isolation Permissions Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																}
+															],
+															"title": "Bookmark application",
+															"type": "object"
+														}
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -336,7 +920,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -350,7 +952,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -425,7 +1045,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -434,7 +1074,11 @@
 												"app_state": {
 													"properties": {
 														"app_uid": {
-															"$ref": "#/components/schemas/uuid"
+															"description": "UUID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														},
 														"aud": {
 															"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe389",
@@ -517,7 +1161,11 @@
 															"type": "string"
 														},
 														"user_uuid": {
-															"$ref": "#/components/schemas/uuid"
+															"description": "UUID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														},
 														"version": {
 															"type": "integer"
@@ -544,7 +1192,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -553,7 +1221,11 @@
 														"app_state": {
 															"properties": {
 																"app_uid": {
-																	"$ref": "#/components/schemas/uuid"
+																	"description": "UUID",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"aud": {
 																	"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe389",
@@ -636,7 +1308,11 @@
 																	"type": "string"
 																},
 																"user_uuid": {
-																	"$ref": "#/components/schemas/uuid"
+																	"description": "UUID",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"version": {
 																	"type": "integer"
@@ -656,7 +1332,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -670,7 +1364,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -738,10 +1450,81 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-self_hosted_props"
+										"properties": {
+											"allowed_idps": {
+												"$ref": "#/components/schemas/allowed_idps"
+											},
+											"app_launcher_visible": {
+												"$ref": "#/components/schemas/app_launcher_visible"
+											},
+											"auto_redirect_to_identity": {
+												"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+											},
+											"cors_headers": {
+												"$ref": "#/components/schemas/cors_headers"
+											},
+											"custom_deny_message": {
+												"$ref": "#/components/schemas/custom_deny_message"
+											},
+											"custom_deny_url": {
+												"$ref": "#/components/schemas/custom_deny_url"
+											},
+											"domain": {
+												"$ref": "#/components/schemas/components-schemas-domain"
+											},
+											"enable_binding_cookie": {
+												"$ref": "#/components/schemas/enable_binding_cookie"
+											},
+											"http_only_cookie_attribute": {
+												"$ref": "#/components/schemas/http_only_cookie_attribute"
+											},
+											"logo_url": {
+												"$ref": "#/components/schemas/logo_url"
+											},
+											"name": {
+												"$ref": "#/components/schemas/apps_components-schemas-name"
+											},
+											"same_site_cookie_attribute": {
+												"$ref": "#/components/schemas/same_site_cookie_attribute"
+											},
+											"service_auth_401_redirect": {
+												"$ref": "#/components/schemas/service_auth_401_redirect"
+											},
+											"session_duration": {
+												"$ref": "#/components/schemas/session_duration"
+											},
+											"skip_interstitial": {
+												"$ref": "#/components/schemas/skip_interstitial"
+											},
+											"type": {
+												"description": "The application type.",
+												"example": "self_hosted",
+												"type": "string"
+											}
+										},
+										"required": [
+											"type",
+											"domain"
+										],
+										"title": "Self Hosted Application",
+										"type": "object"
 									}
 								],
 								"title": "Self Hosted Application",
@@ -750,10 +1533,50 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/saas_props"
+										"properties": {
+											"allowed_idps": {
+												"$ref": "#/components/schemas/allowed_idps"
+											},
+											"app_launcher_visible": {
+												"$ref": "#/components/schemas/app_launcher_visible"
+											},
+											"auto_redirect_to_identity": {
+												"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+											},
+											"logo_url": {
+												"$ref": "#/components/schemas/logo_url"
+											},
+											"name": {
+												"$ref": "#/components/schemas/apps_components-schemas-name"
+											},
+											"saas_app": {
+												"$ref": "#/components/schemas/saas_app"
+											},
+											"type": {
+												"description": "The application type.",
+												"example": "saas",
+												"type": "string"
+											}
+										},
+										"title": "SaaS Application",
+										"type": "object"
 									}
 								],
 								"title": "SaaS Application",
@@ -762,10 +1585,37 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-ssh_props"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/schemas-self_hosted_props"
+											},
+											{
+												"properties": {
+													"type": {
+														"description": "The application type.",
+														"example": "ssh",
+														"type": "string"
+													}
+												}
+											}
+										]
 									}
 								],
 								"title": "Browser SSH Application",
@@ -774,10 +1624,37 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-vnc_props"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/schemas-self_hosted_props"
+											},
+											{
+												"properties": {
+													"type": {
+														"description": "The application type.",
+														"example": "vnc",
+														"type": "string"
+													}
+												}
+											}
+										]
 									}
 								],
 								"title": "Browser VNC Application",
@@ -786,10 +1663,46 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-app_launcher_props"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/schemas-feature_app_props"
+											},
+											{
+												"properties": {
+													"domain": {
+														"example": "authdomain.cloudflareaccess.com",
+														"readOnly": true
+													},
+													"name": {
+														"default": "App Launcher",
+														"example": "App Launcher",
+														"readOnly": true
+													},
+													"type": {
+														"description": "The application type.",
+														"example": "app_launcher",
+														"type": "string"
+													}
+												}
+											}
+										]
 									}
 								],
 								"title": "App Launcher Application",
@@ -798,10 +1711,46 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-warp_props"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/schemas-feature_app_props"
+											},
+											{
+												"properties": {
+													"domain": {
+														"example": "authdomain.cloudflareaccess.com/warp",
+														"readOnly": true
+													},
+													"name": {
+														"default": "Warp Login App",
+														"example": "Warp Login App",
+														"readOnly": true
+													},
+													"type": {
+														"description": "The application type.",
+														"example": "warp",
+														"type": "string"
+													}
+												}
+											}
+										]
 									}
 								],
 								"title": "Device Enrollment Permissions Application",
@@ -810,10 +1759,46 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-biso_props"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/schemas-feature_app_props"
+											},
+											{
+												"properties": {
+													"domain": {
+														"example": "authdomain.cloudflareaccess.com/browser",
+														"readOnly": true
+													},
+													"name": {
+														"default": "Clientless Web Isolation",
+														"example": "Clientless Web Isolation",
+														"readOnly": true
+													},
+													"type": {
+														"description": "The application type.",
+														"example": "biso",
+														"type": "string"
+													}
+												}
+											}
+										]
 									}
 								],
 								"title": "Browser Isolation Permissions Application",
@@ -822,10 +1807,49 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-bookmark_props"
+										"properties": {
+											"app_launcher_visible": {
+												"default": true
+											},
+											"domain": {
+												"description": "The URL or domain of the bookmark.",
+												"example": "https://mybookmark.com"
+											},
+											"logo_url": {
+												"$ref": "#/components/schemas/logo_url"
+											},
+											"name": {
+												"$ref": "#/components/schemas/apps_components-schemas-name"
+											},
+											"type": {
+												"description": "The application type.",
+												"example": "bookmark",
+												"type": "string"
+											}
+										},
+										"required": [
+											"type",
+											"domain"
+										],
+										"title": "Bookmark Application",
+										"type": "object"
 									}
 								],
 								"title": "Bookmark application",
@@ -847,12 +1871,130 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/schemas-apps-EL7gdLPm"
+													"anyOf": [
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																}
+															],
+															"title": "Self Hosted Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																}
+															],
+															"title": "SaaS Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/ssh_props"
+																}
+															],
+															"title": "Browser SSH Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/vnc_props"
+																}
+															],
+															"title": "Browser VNC Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/app_launcher_props"
+																}
+															],
+															"title": "App Launcher Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/warp_props"
+																}
+															],
+															"title": "Device Enrollment Permissions Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/biso_props"
+																}
+															],
+															"title": "Browser Isolation Permissions Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																}
+															],
+															"title": "Bookmark application",
+															"type": "object"
+														}
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -865,10 +2007,81 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-self_hosted_props"
+															"properties": {
+																"allowed_idps": {
+																	"$ref": "#/components/schemas/allowed_idps"
+																},
+																"app_launcher_visible": {
+																	"$ref": "#/components/schemas/app_launcher_visible"
+																},
+																"auto_redirect_to_identity": {
+																	"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+																},
+																"cors_headers": {
+																	"$ref": "#/components/schemas/cors_headers"
+																},
+																"custom_deny_message": {
+																	"$ref": "#/components/schemas/custom_deny_message"
+																},
+																"custom_deny_url": {
+																	"$ref": "#/components/schemas/custom_deny_url"
+																},
+																"domain": {
+																	"$ref": "#/components/schemas/components-schemas-domain"
+																},
+																"enable_binding_cookie": {
+																	"$ref": "#/components/schemas/enable_binding_cookie"
+																},
+																"http_only_cookie_attribute": {
+																	"$ref": "#/components/schemas/http_only_cookie_attribute"
+																},
+																"logo_url": {
+																	"$ref": "#/components/schemas/logo_url"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/apps_components-schemas-name"
+																},
+																"same_site_cookie_attribute": {
+																	"$ref": "#/components/schemas/same_site_cookie_attribute"
+																},
+																"service_auth_401_redirect": {
+																	"$ref": "#/components/schemas/service_auth_401_redirect"
+																},
+																"session_duration": {
+																	"$ref": "#/components/schemas/session_duration"
+																},
+																"skip_interstitial": {
+																	"$ref": "#/components/schemas/skip_interstitial"
+																},
+																"type": {
+																	"description": "The application type.",
+																	"example": "self_hosted",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"domain"
+															],
+															"title": "Self Hosted Application",
+															"type": "object"
 														}
 													],
 													"title": "Self Hosted Application",
@@ -877,10 +2090,50 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/saas_props"
+															"properties": {
+																"allowed_idps": {
+																	"$ref": "#/components/schemas/allowed_idps"
+																},
+																"app_launcher_visible": {
+																	"$ref": "#/components/schemas/app_launcher_visible"
+																},
+																"auto_redirect_to_identity": {
+																	"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+																},
+																"logo_url": {
+																	"$ref": "#/components/schemas/logo_url"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/apps_components-schemas-name"
+																},
+																"saas_app": {
+																	"$ref": "#/components/schemas/saas_app"
+																},
+																"type": {
+																	"description": "The application type.",
+																	"example": "saas",
+																	"type": "string"
+																}
+															},
+															"title": "SaaS Application",
+															"type": "object"
 														}
 													],
 													"title": "SaaS Application",
@@ -889,10 +2142,37 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-ssh_props"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/schemas-self_hosted_props"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"description": "The application type.",
+																			"example": "ssh",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
 														}
 													],
 													"title": "Browser SSH Application",
@@ -901,10 +2181,37 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-vnc_props"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/schemas-self_hosted_props"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"description": "The application type.",
+																			"example": "vnc",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
 														}
 													],
 													"title": "Browser VNC Application",
@@ -913,10 +2220,46 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-app_launcher_props"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/schemas-feature_app_props"
+																},
+																{
+																	"properties": {
+																		"domain": {
+																			"example": "authdomain.cloudflareaccess.com",
+																			"readOnly": true
+																		},
+																		"name": {
+																			"default": "App Launcher",
+																			"example": "App Launcher",
+																			"readOnly": true
+																		},
+																		"type": {
+																			"description": "The application type.",
+																			"example": "app_launcher",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
 														}
 													],
 													"title": "App Launcher Application",
@@ -925,10 +2268,46 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-warp_props"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/schemas-feature_app_props"
+																},
+																{
+																	"properties": {
+																		"domain": {
+																			"example": "authdomain.cloudflareaccess.com/warp",
+																			"readOnly": true
+																		},
+																		"name": {
+																			"default": "Warp Login App",
+																			"example": "Warp Login App",
+																			"readOnly": true
+																		},
+																		"type": {
+																			"description": "The application type.",
+																			"example": "warp",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
 														}
 													],
 													"title": "Device Enrollment Permissions Application",
@@ -937,62 +2316,52 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-biso_props"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/schemas-feature_app_props"
+																},
+																{
+																	"properties": {
+																		"domain": {
+																			"example": "authdomain.cloudflareaccess.com/browser",
+																			"readOnly": true
+																		},
+																		"name": {
+																			"default": "Clientless Web Isolation",
+																			"example": "Clientless Web Isolation",
+																			"readOnly": true
+																		},
+																		"type": {
+																			"description": "The application type.",
+																			"example": "biso",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
 														}
 													],
 													"title": "Browser Isolation Permissions Application",
 													"type": "object"
 												},
 												{
-													"allOf": [
-														{
-															"$ref": "#/components/schemas/basic_app_response_props"
-														},
-														{
-															"$ref": "#/components/schemas/schemas-bookmark_props"
-														}
-													],
-													"title": "Bookmark application",
-													"type": "object"
-												}
-											],
-											"type": "object"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "Add an Access application response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"$ref": "#/components/schemas/api-response-single-QvsTOTie"
-												},
-												{
-													"properties": {
-														"result": {
-															"$ref": "#/components/schemas/schemas-apps-EL7gdLPm"
-														}
-													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
 													"allOf": [
 														{
 															"properties": {
@@ -1039,6 +2408,227 @@
 															"title": "Bookmark Application",
 															"type": "object"
 														}
+													],
+													"title": "Bookmark application",
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Add an Access application response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	],
+																	"nullable": true
+																}
+															}
+														}
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																		}
+																	],
+																	"title": "Self Hosted Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																		}
+																	],
+																	"title": "SaaS Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/ssh_props"
+																		}
+																	],
+																	"title": "Browser SSH Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/vnc_props"
+																		}
+																	],
+																	"title": "Browser VNC Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/app_launcher_props"
+																		}
+																	],
+																	"title": "App Launcher Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/warp_props"
+																		}
+																	],
+																	"title": "Device Enrollment Permissions Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/biso_props"
+																		}
+																	],
+																	"title": "Browser Isolation Permissions Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																		}
+																	],
+																	"title": "Bookmark application",
+																	"type": "object"
+																}
+															],
+															"type": "object"
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"aud": {
+																	"description": "Audience tag.",
+																	"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+																	"maxLength": 64,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"created_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"id": {
+																	"description": "UUID",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"updated_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"app_launcher_visible": {
+																	"default": true
+																},
+																"domain": {
+																	"description": "The URL or domain of the bookmark.",
+																	"example": "https://mybookmark.com"
+																},
+																"logo_url": {
+																	"description": "The image URL for the logo shown in the App Launcher dashboard.",
+																	"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the application.",
+																	"example": "Admin Site",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The application type.",
+																	"example": "bookmark",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"domain"
+															],
+															"title": "Bookmark Application",
+															"type": "object"
+														}
 													]
 												}
 											}
@@ -1050,7 +2640,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1064,7 +2672,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1196,7 +2822,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1210,7 +2854,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1286,10 +2948,81 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-self_hosted_props"
+										"properties": {
+											"allowed_idps": {
+												"$ref": "#/components/schemas/allowed_idps"
+											},
+											"app_launcher_visible": {
+												"$ref": "#/components/schemas/app_launcher_visible"
+											},
+											"auto_redirect_to_identity": {
+												"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+											},
+											"cors_headers": {
+												"$ref": "#/components/schemas/cors_headers"
+											},
+											"custom_deny_message": {
+												"$ref": "#/components/schemas/custom_deny_message"
+											},
+											"custom_deny_url": {
+												"$ref": "#/components/schemas/custom_deny_url"
+											},
+											"domain": {
+												"$ref": "#/components/schemas/components-schemas-domain"
+											},
+											"enable_binding_cookie": {
+												"$ref": "#/components/schemas/enable_binding_cookie"
+											},
+											"http_only_cookie_attribute": {
+												"$ref": "#/components/schemas/http_only_cookie_attribute"
+											},
+											"logo_url": {
+												"$ref": "#/components/schemas/logo_url"
+											},
+											"name": {
+												"$ref": "#/components/schemas/apps_components-schemas-name"
+											},
+											"same_site_cookie_attribute": {
+												"$ref": "#/components/schemas/same_site_cookie_attribute"
+											},
+											"service_auth_401_redirect": {
+												"$ref": "#/components/schemas/service_auth_401_redirect"
+											},
+											"session_duration": {
+												"$ref": "#/components/schemas/session_duration"
+											},
+											"skip_interstitial": {
+												"$ref": "#/components/schemas/skip_interstitial"
+											},
+											"type": {
+												"description": "The application type.",
+												"example": "self_hosted",
+												"type": "string"
+											}
+										},
+										"required": [
+											"type",
+											"domain"
+										],
+										"title": "Self Hosted Application",
+										"type": "object"
 									}
 								],
 								"title": "Self Hosted Application",
@@ -1298,10 +3031,50 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/saas_props"
+										"properties": {
+											"allowed_idps": {
+												"$ref": "#/components/schemas/allowed_idps"
+											},
+											"app_launcher_visible": {
+												"$ref": "#/components/schemas/app_launcher_visible"
+											},
+											"auto_redirect_to_identity": {
+												"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+											},
+											"logo_url": {
+												"$ref": "#/components/schemas/logo_url"
+											},
+											"name": {
+												"$ref": "#/components/schemas/apps_components-schemas-name"
+											},
+											"saas_app": {
+												"$ref": "#/components/schemas/saas_app"
+											},
+											"type": {
+												"description": "The application type.",
+												"example": "saas",
+												"type": "string"
+											}
+										},
+										"title": "SaaS Application",
+										"type": "object"
 									}
 								],
 								"title": "SaaS Application",
@@ -1310,10 +3083,37 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-ssh_props"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/schemas-self_hosted_props"
+											},
+											{
+												"properties": {
+													"type": {
+														"description": "The application type.",
+														"example": "ssh",
+														"type": "string"
+													}
+												}
+											}
+										]
 									}
 								],
 								"title": "Browser SSH Application",
@@ -1322,10 +3122,37 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-vnc_props"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/schemas-self_hosted_props"
+											},
+											{
+												"properties": {
+													"type": {
+														"description": "The application type.",
+														"example": "vnc",
+														"type": "string"
+													}
+												}
+											}
+										]
 									}
 								],
 								"title": "Browser VNC Application",
@@ -1334,10 +3161,46 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-app_launcher_props"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/schemas-feature_app_props"
+											},
+											{
+												"properties": {
+													"domain": {
+														"example": "authdomain.cloudflareaccess.com",
+														"readOnly": true
+													},
+													"name": {
+														"default": "App Launcher",
+														"example": "App Launcher",
+														"readOnly": true
+													},
+													"type": {
+														"description": "The application type.",
+														"example": "app_launcher",
+														"type": "string"
+													}
+												}
+											}
+										]
 									}
 								],
 								"title": "App Launcher Application",
@@ -1346,10 +3209,46 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-warp_props"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/schemas-feature_app_props"
+											},
+											{
+												"properties": {
+													"domain": {
+														"example": "authdomain.cloudflareaccess.com/warp",
+														"readOnly": true
+													},
+													"name": {
+														"default": "Warp Login App",
+														"example": "Warp Login App",
+														"readOnly": true
+													},
+													"type": {
+														"description": "The application type.",
+														"example": "warp",
+														"type": "string"
+													}
+												}
+											}
+										]
 									}
 								],
 								"title": "Device Enrollment Permissions Application",
@@ -1358,10 +3257,46 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-biso_props"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/schemas-feature_app_props"
+											},
+											{
+												"properties": {
+													"domain": {
+														"example": "authdomain.cloudflareaccess.com/browser",
+														"readOnly": true
+													},
+													"name": {
+														"default": "Clientless Web Isolation",
+														"example": "Clientless Web Isolation",
+														"readOnly": true
+													},
+													"type": {
+														"description": "The application type.",
+														"example": "biso",
+														"type": "string"
+													}
+												}
+											}
+										]
 									}
 								],
 								"title": "Browser Isolation Permissions Application",
@@ -1370,10 +3305,49 @@
 							{
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/basic_app_response_props"
+										"properties": {
+											"aud": {
+												"$ref": "#/components/schemas/schemas-aud"
+											},
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"id": {
+												"$ref": "#/components/schemas/uuid"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/schemas-bookmark_props"
+										"properties": {
+											"app_launcher_visible": {
+												"default": true
+											},
+											"domain": {
+												"description": "The URL or domain of the bookmark.",
+												"example": "https://mybookmark.com"
+											},
+											"logo_url": {
+												"$ref": "#/components/schemas/logo_url"
+											},
+											"name": {
+												"$ref": "#/components/schemas/apps_components-schemas-name"
+											},
+											"type": {
+												"description": "The application type.",
+												"example": "bookmark",
+												"type": "string"
+											}
+										},
+										"required": [
+											"type",
+											"domain"
+										],
+										"title": "Bookmark Application",
+										"type": "object"
 									}
 								],
 								"title": "Bookmark application",
@@ -1395,12 +3369,130 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/schemas-apps-EL7gdLPm"
+													"anyOf": [
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																}
+															],
+															"title": "Self Hosted Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																}
+															],
+															"title": "SaaS Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/ssh_props"
+																}
+															],
+															"title": "Browser SSH Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/vnc_props"
+																}
+															],
+															"title": "Browser VNC Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/app_launcher_props"
+																}
+															],
+															"title": "App Launcher Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/warp_props"
+																}
+															],
+															"title": "Device Enrollment Permissions Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/biso_props"
+																}
+															],
+															"title": "Browser Isolation Permissions Application",
+															"type": "object"
+														},
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/basic_app_response_props"
+																},
+																{
+																	"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																}
+															],
+															"title": "Bookmark application",
+															"type": "object"
+														}
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -1413,10 +3505,81 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-self_hosted_props"
+															"properties": {
+																"allowed_idps": {
+																	"$ref": "#/components/schemas/allowed_idps"
+																},
+																"app_launcher_visible": {
+																	"$ref": "#/components/schemas/app_launcher_visible"
+																},
+																"auto_redirect_to_identity": {
+																	"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+																},
+																"cors_headers": {
+																	"$ref": "#/components/schemas/cors_headers"
+																},
+																"custom_deny_message": {
+																	"$ref": "#/components/schemas/custom_deny_message"
+																},
+																"custom_deny_url": {
+																	"$ref": "#/components/schemas/custom_deny_url"
+																},
+																"domain": {
+																	"$ref": "#/components/schemas/components-schemas-domain"
+																},
+																"enable_binding_cookie": {
+																	"$ref": "#/components/schemas/enable_binding_cookie"
+																},
+																"http_only_cookie_attribute": {
+																	"$ref": "#/components/schemas/http_only_cookie_attribute"
+																},
+																"logo_url": {
+																	"$ref": "#/components/schemas/logo_url"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/apps_components-schemas-name"
+																},
+																"same_site_cookie_attribute": {
+																	"$ref": "#/components/schemas/same_site_cookie_attribute"
+																},
+																"service_auth_401_redirect": {
+																	"$ref": "#/components/schemas/service_auth_401_redirect"
+																},
+																"session_duration": {
+																	"$ref": "#/components/schemas/session_duration"
+																},
+																"skip_interstitial": {
+																	"$ref": "#/components/schemas/skip_interstitial"
+																},
+																"type": {
+																	"description": "The application type.",
+																	"example": "self_hosted",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"domain"
+															],
+															"title": "Self Hosted Application",
+															"type": "object"
 														}
 													],
 													"title": "Self Hosted Application",
@@ -1425,10 +3588,50 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/saas_props"
+															"properties": {
+																"allowed_idps": {
+																	"$ref": "#/components/schemas/allowed_idps"
+																},
+																"app_launcher_visible": {
+																	"$ref": "#/components/schemas/app_launcher_visible"
+																},
+																"auto_redirect_to_identity": {
+																	"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+																},
+																"logo_url": {
+																	"$ref": "#/components/schemas/logo_url"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/apps_components-schemas-name"
+																},
+																"saas_app": {
+																	"$ref": "#/components/schemas/saas_app"
+																},
+																"type": {
+																	"description": "The application type.",
+																	"example": "saas",
+																	"type": "string"
+																}
+															},
+															"title": "SaaS Application",
+															"type": "object"
 														}
 													],
 													"title": "SaaS Application",
@@ -1437,10 +3640,37 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-ssh_props"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/schemas-self_hosted_props"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"description": "The application type.",
+																			"example": "ssh",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
 														}
 													],
 													"title": "Browser SSH Application",
@@ -1449,10 +3679,37 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-vnc_props"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/schemas-self_hosted_props"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"description": "The application type.",
+																			"example": "vnc",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
 														}
 													],
 													"title": "Browser VNC Application",
@@ -1461,10 +3718,46 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-app_launcher_props"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/schemas-feature_app_props"
+																},
+																{
+																	"properties": {
+																		"domain": {
+																			"example": "authdomain.cloudflareaccess.com",
+																			"readOnly": true
+																		},
+																		"name": {
+																			"default": "App Launcher",
+																			"example": "App Launcher",
+																			"readOnly": true
+																		},
+																		"type": {
+																			"description": "The application type.",
+																			"example": "app_launcher",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
 														}
 													],
 													"title": "App Launcher Application",
@@ -1473,10 +3766,46 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-warp_props"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/schemas-feature_app_props"
+																},
+																{
+																	"properties": {
+																		"domain": {
+																			"example": "authdomain.cloudflareaccess.com/warp",
+																			"readOnly": true
+																		},
+																		"name": {
+																			"default": "Warp Login App",
+																			"example": "Warp Login App",
+																			"readOnly": true
+																		},
+																		"type": {
+																			"description": "The application type.",
+																			"example": "warp",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
 														}
 													],
 													"title": "Device Enrollment Permissions Application",
@@ -1485,62 +3814,52 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"properties": {
+																"aud": {
+																	"$ref": "#/components/schemas/schemas-aud"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/uuid"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-biso_props"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/schemas-feature_app_props"
+																},
+																{
+																	"properties": {
+																		"domain": {
+																			"example": "authdomain.cloudflareaccess.com/browser",
+																			"readOnly": true
+																		},
+																		"name": {
+																			"default": "Clientless Web Isolation",
+																			"example": "Clientless Web Isolation",
+																			"readOnly": true
+																		},
+																		"type": {
+																			"description": "The application type.",
+																			"example": "biso",
+																			"type": "string"
+																		}
+																	}
+																}
+															]
 														}
 													],
 													"title": "Browser Isolation Permissions Application",
 													"type": "object"
 												},
 												{
-													"allOf": [
-														{
-															"$ref": "#/components/schemas/basic_app_response_props"
-														},
-														{
-															"$ref": "#/components/schemas/schemas-bookmark_props"
-														}
-													],
-													"title": "Bookmark application",
-													"type": "object"
-												}
-											],
-											"type": "object"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "Update an Access application response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"$ref": "#/components/schemas/api-response-single-QvsTOTie"
-												},
-												{
-													"properties": {
-														"result": {
-															"$ref": "#/components/schemas/schemas-apps-EL7gdLPm"
-														}
-													}
-												}
-											]
-										},
-										{
-											"properties": {
-												"result": {
 													"allOf": [
 														{
 															"properties": {
@@ -1587,6 +3906,227 @@
 															"title": "Bookmark Application",
 															"type": "object"
 														}
+													],
+													"title": "Bookmark application",
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update an Access application response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	],
+																	"nullable": true
+																}
+															}
+														}
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																		}
+																	],
+																	"title": "Self Hosted Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																		}
+																	],
+																	"title": "SaaS Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/ssh_props"
+																		}
+																	],
+																	"title": "Browser SSH Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/vnc_props"
+																		}
+																	],
+																	"title": "Browser VNC Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/app_launcher_props"
+																		}
+																	],
+																	"title": "App Launcher Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/warp_props"
+																		}
+																	],
+																	"title": "Device Enrollment Permissions Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/biso_props"
+																		}
+																	],
+																	"title": "Browser Isolation Permissions Application",
+																	"type": "object"
+																},
+																{
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/basic_app_response_props"
+																		},
+																		{
+																			"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																		}
+																	],
+																	"title": "Bookmark application",
+																	"type": "object"
+																}
+															],
+															"type": "object"
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"aud": {
+																	"description": "Audience tag.",
+																	"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+																	"maxLength": 64,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"created_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"id": {
+																	"description": "UUID",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"updated_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"app_launcher_visible": {
+																	"default": true
+																},
+																"domain": {
+																	"description": "The URL or domain of the bookmark.",
+																	"example": "https://mybookmark.com"
+																},
+																"logo_url": {
+																	"description": "The image URL for the logo shown in the App Launcher dashboard.",
+																	"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the application.",
+																	"example": "Admin Site",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The application type.",
+																	"example": "bookmark",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"domain"
+															],
+															"title": "Bookmark Application",
+															"type": "object"
+														}
 													]
 												}
 											}
@@ -1598,7 +4138,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1612,7 +4170,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

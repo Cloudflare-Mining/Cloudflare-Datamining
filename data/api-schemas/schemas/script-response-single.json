@@ -1,12 +1,146 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							]
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/script-response"
+					"properties": {
+						"created_on": {
+							"description": "When the script was created.",
+							"example": "2017-01-01T00:00:00Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"etag": {
+							"description": "Hashed script content, can be used in a If-None-Match header when updating.",
+							"example": "ea95132c15732412d22c1476fa83f27a",
+							"readOnly": true,
+							"type": "string"
+						},
+						"id": {
+							"description": "The id of the script in the Workers system. Usually the script name.",
+							"example": "my-workers-script",
+							"readOnly": true,
+							"type": "string"
+						},
+						"logpush": {
+							"description": "Whether Logpush is turned on for the Worker.",
+							"example": false,
+							"type": "boolean"
+						},
+						"modified_on": {
+							"description": "When the script was last modified.",
+							"example": "2017-01-01T00:00:00Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"placement_mode": {
+							"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
+							"example": "smart",
+							"type": "string"
+						},
+						"usage_model": {
+							"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
+							"example": "unbound",
+							"pattern": "^(bundled|unbound)$",
+							"type": "string"
+						}
+					}
 				}
 			},
 			"x-cfLinkErrors": {

@@ -1,7 +1,39 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/base-tXNt8ANy"
+			"properties": {
+				"editable": {
+					"default": true,
+					"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+					"enum": [
+						true,
+						false
+					],
+					"readOnly": true,
+					"type": "boolean"
+				},
+				"id": {
+					"description": "Identifier of the zone setting.",
+					"example": "development_mode",
+					"type": "string"
+				},
+				"modified_on": {
+					"description": "last time this setting was modified.",
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"nullable": true,
+					"readOnly": true,
+					"type": "string"
+				},
+				"value": {
+					"description": "Current value of the zone setting.",
+					"example": "on"
+				}
+			},
+			"required": [
+				"id",
+				"value"
+			]
 		},
 		{
 			"properties": {
@@ -13,7 +45,59 @@
 					"example": "automatic_platform_optimization"
 				},
 				"value": {
-					"$ref": "#/components/schemas/automatic_platform_optimization"
+					"properties": {
+						"cache_by_device_type": {
+							"description": "Indicates whether or not [cache by device type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/) is enabled.",
+							"example": false,
+							"type": "boolean"
+						},
+						"cf": {
+							"default": false,
+							"description": "Indicates whether or not Cloudflare proxy is enabled.",
+							"example": true,
+							"type": "boolean"
+						},
+						"enabled": {
+							"default": false,
+							"description": "Indicates whether or not Automatic Platform Optimization is enabled.",
+							"example": true,
+							"type": "boolean"
+						},
+						"hostnames": {
+							"description": "An array of hostnames where Automatic Platform Optimization for WordPress is activated.",
+							"example": [
+								"www.example.com",
+								"example.com",
+								"shop.example.com"
+							],
+							"items": {
+								"format": "hostname",
+								"type": "string"
+							},
+							"type": "array"
+						},
+						"wordpress": {
+							"default": false,
+							"description": "Indicates whether or not site is powered by WordPress.",
+							"example": true,
+							"type": "boolean"
+						},
+						"wp_plugin": {
+							"default": false,
+							"description": "Indicates whether or not [Cloudflare for WordPress plugin](https://wordpress.org/plugins/cloudflare/) is installed.",
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"enabled",
+						"cf",
+						"wordpress",
+						"wp_plugin",
+						"hostnames",
+						"cache_by_device_type"
+					],
+					"type": "object"
 				}
 			}
 		}

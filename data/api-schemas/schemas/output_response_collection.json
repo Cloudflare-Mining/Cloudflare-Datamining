@@ -1,13 +1,147 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/output"
+						"properties": {
+							"enabled": {
+								"default": true,
+								"description": "When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch.",
+								"example": true,
+								"type": "boolean"
+							},
+							"streamKey": {
+								"description": "The streamKey used to authenticate against an output's target.",
+								"example": "uzya-f19y-g2g9-a2ee-51j2",
+								"type": "string"
+							},
+							"uid": {
+								"description": "A unique identifier for the output.",
+								"example": "baea4d9c515887b80289d5c33cf01145",
+								"maxLength": 32,
+								"type": "string"
+							},
+							"url": {
+								"description": "The URL an output uses to restream.",
+								"example": "rtmp://a.rtmp.youtube.com/live2",
+								"type": "string"
+							}
+						}
 					},
 					"type": "array"
 				}

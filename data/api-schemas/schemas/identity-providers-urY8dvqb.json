@@ -1,16 +1,25 @@
 {
 	"properties": {
 		"config": {
-			"$ref": "#/components/schemas/schemas-config"
+			"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+			"type": "object"
 		},
 		"id": {
-			"$ref": "#/components/schemas/uuid"
+			"description": "UUID",
+			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"maxLength": 36,
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/identity-providers_components-schemas-name"
+			"description": "The name of the identity provider, shown to users on the login page.",
+			"example": "Widget Corps OTP",
+			"type": "string"
 		},
 		"type": {
-			"$ref": "#/components/schemas/identity-providers_components-schemas-type"
+			"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
+			"example": "onetimepin",
+			"type": "string"
 		}
 	},
 	"type": "object"

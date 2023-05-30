@@ -47,14 +47,37 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/components-schemas-uuid"
+													"description": "The policy ID.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -75,14 +98,37 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/components-schemas-uuid"
+															"description": "The policy ID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -96,7 +142,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -110,7 +174,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -188,13 +270,74 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/policies-L7Qxgeee"
+												"properties": {
+													"approval_groups": {
+														"$ref": "#/components/schemas/approval_groups"
+													},
+													"approval_required": {
+														"$ref": "#/components/schemas/approval_required"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"decision": {
+														"$ref": "#/components/schemas/decision"
+													},
+													"exclude": {
+														"$ref": "#/components/schemas/schemas-exclude"
+													},
+													"id": {
+														"$ref": "#/components/schemas/components-schemas-uuid"
+													},
+													"include": {
+														"$ref": "#/components/schemas/include"
+													},
+													"isolation_required": {
+														"$ref": "#/components/schemas/isolation_required"
+													},
+													"name": {
+														"$ref": "#/components/schemas/policies_components-schemas-name"
+													},
+													"precedence": {
+														"$ref": "#/components/schemas/precedence"
+													},
+													"purpose_justification_prompt": {
+														"$ref": "#/components/schemas/purpose_justification_prompt"
+													},
+													"purpose_justification_required": {
+														"$ref": "#/components/schemas/purpose_justification_required"
+													},
+													"require": {
+														"$ref": "#/components/schemas/schemas-require"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -214,13 +357,74 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/policies-L7Qxgeee"
+														"properties": {
+															"approval_groups": {
+																"$ref": "#/components/schemas/approval_groups"
+															},
+															"approval_required": {
+																"$ref": "#/components/schemas/approval_required"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"decision": {
+																"$ref": "#/components/schemas/decision"
+															},
+															"exclude": {
+																"$ref": "#/components/schemas/schemas-exclude"
+															},
+															"id": {
+																"$ref": "#/components/schemas/components-schemas-uuid"
+															},
+															"include": {
+																"$ref": "#/components/schemas/include"
+															},
+															"isolation_required": {
+																"$ref": "#/components/schemas/isolation_required"
+															},
+															"name": {
+																"$ref": "#/components/schemas/policies_components-schemas-name"
+															},
+															"precedence": {
+																"$ref": "#/components/schemas/precedence"
+															},
+															"purpose_justification_prompt": {
+																"$ref": "#/components/schemas/purpose_justification_prompt"
+															},
+															"purpose_justification_required": {
+																"$ref": "#/components/schemas/purpose_justification_required"
+															},
+															"require": {
+																"$ref": "#/components/schemas/schemas-require"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -233,7 +437,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -247,7 +469,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -336,12 +576,75 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/policies-L7Qxgeee"
+											"properties": {
+												"approval_groups": {
+													"$ref": "#/components/schemas/approval_groups"
+												},
+												"approval_required": {
+													"$ref": "#/components/schemas/approval_required"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"decision": {
+													"$ref": "#/components/schemas/decision"
+												},
+												"exclude": {
+													"$ref": "#/components/schemas/schemas-exclude"
+												},
+												"id": {
+													"$ref": "#/components/schemas/components-schemas-uuid"
+												},
+												"include": {
+													"$ref": "#/components/schemas/include"
+												},
+												"isolation_required": {
+													"$ref": "#/components/schemas/isolation_required"
+												},
+												"name": {
+													"$ref": "#/components/schemas/policies_components-schemas-name"
+												},
+												"precedence": {
+													"$ref": "#/components/schemas/precedence"
+												},
+												"purpose_justification_prompt": {
+													"$ref": "#/components/schemas/purpose_justification_prompt"
+												},
+												"purpose_justification_required": {
+													"$ref": "#/components/schemas/purpose_justification_required"
+												},
+												"require": {
+													"$ref": "#/components/schemas/schemas-require"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -359,12 +662,75 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/policies-L7Qxgeee"
+													"properties": {
+														"approval_groups": {
+															"$ref": "#/components/schemas/approval_groups"
+														},
+														"approval_required": {
+															"$ref": "#/components/schemas/approval_required"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"decision": {
+															"$ref": "#/components/schemas/decision"
+														},
+														"exclude": {
+															"$ref": "#/components/schemas/schemas-exclude"
+														},
+														"id": {
+															"$ref": "#/components/schemas/components-schemas-uuid"
+														},
+														"include": {
+															"$ref": "#/components/schemas/include"
+														},
+														"isolation_required": {
+															"$ref": "#/components/schemas/isolation_required"
+														},
+														"name": {
+															"$ref": "#/components/schemas/policies_components-schemas-name"
+														},
+														"precedence": {
+															"$ref": "#/components/schemas/precedence"
+														},
+														"purpose_justification_prompt": {
+															"$ref": "#/components/schemas/purpose_justification_prompt"
+														},
+														"purpose_justification_required": {
+															"$ref": "#/components/schemas/purpose_justification_required"
+														},
+														"require": {
+															"$ref": "#/components/schemas/schemas-require"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -375,7 +741,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -389,7 +773,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -481,7 +883,32 @@
 									}
 								],
 								"items": {
-									"$ref": "#/components/schemas/approval_group"
+									"description": "A group of email addresses that can approve a temporary authentication request.",
+									"properties": {
+										"approvals_needed": {
+											"description": "The number of approvals needed to obtain access.",
+											"example": 1,
+											"minimum": 0,
+											"type": "number"
+										},
+										"email_addresses": {
+											"description": "A list of emails that can approve the access request.",
+											"example": [
+												"test@cloudflare.com",
+												"test2@cloudflare.com"
+											],
+											"items": {},
+											"type": "array"
+										},
+										"email_list_uuid": {
+											"description": "The UUID of an re-usable email list.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"approvals_needed"
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -505,14 +932,90 @@
 							"exclude": {
 								"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
 							"include": {
 								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -545,7 +1048,45 @@
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -567,12 +1108,75 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/policies-L7Qxgeee"
+											"properties": {
+												"approval_groups": {
+													"$ref": "#/components/schemas/approval_groups"
+												},
+												"approval_required": {
+													"$ref": "#/components/schemas/approval_required"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"decision": {
+													"$ref": "#/components/schemas/decision"
+												},
+												"exclude": {
+													"$ref": "#/components/schemas/schemas-exclude"
+												},
+												"id": {
+													"$ref": "#/components/schemas/components-schemas-uuid"
+												},
+												"include": {
+													"$ref": "#/components/schemas/include"
+												},
+												"isolation_required": {
+													"$ref": "#/components/schemas/isolation_required"
+												},
+												"name": {
+													"$ref": "#/components/schemas/policies_components-schemas-name"
+												},
+												"precedence": {
+													"$ref": "#/components/schemas/precedence"
+												},
+												"purpose_justification_prompt": {
+													"$ref": "#/components/schemas/purpose_justification_prompt"
+												},
+												"purpose_justification_required": {
+													"$ref": "#/components/schemas/purpose_justification_required"
+												},
+												"require": {
+													"$ref": "#/components/schemas/schemas-require"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -590,12 +1194,75 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/policies-L7Qxgeee"
+													"properties": {
+														"approval_groups": {
+															"$ref": "#/components/schemas/approval_groups"
+														},
+														"approval_required": {
+															"$ref": "#/components/schemas/approval_required"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"decision": {
+															"$ref": "#/components/schemas/decision"
+														},
+														"exclude": {
+															"$ref": "#/components/schemas/schemas-exclude"
+														},
+														"id": {
+															"$ref": "#/components/schemas/components-schemas-uuid"
+														},
+														"include": {
+															"$ref": "#/components/schemas/include"
+														},
+														"isolation_required": {
+															"$ref": "#/components/schemas/isolation_required"
+														},
+														"name": {
+															"$ref": "#/components/schemas/policies_components-schemas-name"
+														},
+														"precedence": {
+															"$ref": "#/components/schemas/precedence"
+														},
+														"purpose_justification_prompt": {
+															"$ref": "#/components/schemas/purpose_justification_prompt"
+														},
+														"purpose_justification_required": {
+															"$ref": "#/components/schemas/purpose_justification_required"
+														},
+														"require": {
+															"$ref": "#/components/schemas/schemas-require"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -606,7 +1273,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -620,7 +1305,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -723,7 +1426,32 @@
 									}
 								],
 								"items": {
-									"$ref": "#/components/schemas/approval_group"
+									"description": "A group of email addresses that can approve a temporary authentication request.",
+									"properties": {
+										"approvals_needed": {
+											"description": "The number of approvals needed to obtain access.",
+											"example": 1,
+											"minimum": 0,
+											"type": "number"
+										},
+										"email_addresses": {
+											"description": "A list of emails that can approve the access request.",
+											"example": [
+												"test@cloudflare.com",
+												"test2@cloudflare.com"
+											],
+											"items": {},
+											"type": "array"
+										},
+										"email_list_uuid": {
+											"description": "The UUID of an re-usable email list.",
+											"type": "string"
+										}
+									},
+									"required": [
+										"approvals_needed"
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -747,14 +1475,90 @@
 							"exclude": {
 								"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
 							"include": {
 								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -787,7 +1591,45 @@
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/email_rule"
+										},
+										{
+											"$ref": "#/components/schemas/domain_rule"
+										},
+										{
+											"$ref": "#/components/schemas/everyone_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_rule"
+										},
+										{
+											"$ref": "#/components/schemas/ip_list_rule"
+										},
+										{
+											"$ref": "#/components/schemas/certificate_rule"
+										},
+										{
+											"$ref": "#/components/schemas/access_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/azure_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/github_organization_rule"
+										},
+										{
+											"$ref": "#/components/schemas/gsuite_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/okta_group_rule"
+										},
+										{
+											"$ref": "#/components/schemas/saml_group_rule"
+										}
+									],
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -809,12 +1651,75 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/policies-L7Qxgeee"
+											"properties": {
+												"approval_groups": {
+													"$ref": "#/components/schemas/approval_groups"
+												},
+												"approval_required": {
+													"$ref": "#/components/schemas/approval_required"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"decision": {
+													"$ref": "#/components/schemas/decision"
+												},
+												"exclude": {
+													"$ref": "#/components/schemas/schemas-exclude"
+												},
+												"id": {
+													"$ref": "#/components/schemas/components-schemas-uuid"
+												},
+												"include": {
+													"$ref": "#/components/schemas/include"
+												},
+												"isolation_required": {
+													"$ref": "#/components/schemas/isolation_required"
+												},
+												"name": {
+													"$ref": "#/components/schemas/policies_components-schemas-name"
+												},
+												"precedence": {
+													"$ref": "#/components/schemas/precedence"
+												},
+												"purpose_justification_prompt": {
+													"$ref": "#/components/schemas/purpose_justification_prompt"
+												},
+												"purpose_justification_required": {
+													"$ref": "#/components/schemas/purpose_justification_required"
+												},
+												"require": {
+													"$ref": "#/components/schemas/schemas-require"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -832,12 +1737,75 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/policies-L7Qxgeee"
+													"properties": {
+														"approval_groups": {
+															"$ref": "#/components/schemas/approval_groups"
+														},
+														"approval_required": {
+															"$ref": "#/components/schemas/approval_required"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"decision": {
+															"$ref": "#/components/schemas/decision"
+														},
+														"exclude": {
+															"$ref": "#/components/schemas/schemas-exclude"
+														},
+														"id": {
+															"$ref": "#/components/schemas/components-schemas-uuid"
+														},
+														"include": {
+															"$ref": "#/components/schemas/include"
+														},
+														"isolation_required": {
+															"$ref": "#/components/schemas/isolation_required"
+														},
+														"name": {
+															"$ref": "#/components/schemas/policies_components-schemas-name"
+														},
+														"precedence": {
+															"$ref": "#/components/schemas/precedence"
+														},
+														"purpose_justification_prompt": {
+															"$ref": "#/components/schemas/purpose_justification_prompt"
+														},
+														"purpose_justification_required": {
+															"$ref": "#/components/schemas/purpose_justification_required"
+														},
+														"require": {
+															"$ref": "#/components/schemas/schemas-require"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -848,7 +1816,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -862,7 +1848,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

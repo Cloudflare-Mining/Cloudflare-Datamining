@@ -1,13 +1,115 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-common"
+			"properties": {
+				"errors": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"messages": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"result": {
+					"anyOf": [
+						{
+							"type": "object"
+						},
+						{
+							"items": {},
+							"type": "array"
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"success": {
+					"description": "Whether the API call was successful",
+					"enum": [
+						true
+					],
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"success",
+				"errors",
+				"messages",
+				"result"
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/instant_logs_job"
+						"nullable": true,
+						"properties": {
+							"destination_conf": {
+								"description": "Unique WebSocket address that will receive messages from Cloudflare’s edge.",
+								"example": "wss://logs.cloudflare.com/instant-logs/ws/sessions/99d471b1ca3c23cc8e30b6acec5db987",
+								"format": "uri",
+								"maxLength": 4096,
+								"type": "string"
+							},
+							"fields": {
+								"description": "Comma-separated list of fields.",
+								"example": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestURI,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
+								"type": "string"
+							},
+							"filter": {
+								"description": "Filters to drill down into specific events.",
+								"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
+								"type": "string"
+							},
+							"sample": {
+								"description": "The sample parameter is the sample rate of the records set by the client: \"sample\": 1 is 100% of records \"sample\": 10 is 10% and so on.",
+								"example": 1,
+								"type": "integer"
+							},
+							"session_id": {
+								"description": "Unique session id of the job.",
+								"example": "99d471b1ca3c23cc8e30b6acec5db987",
+								"type": "string"
+							}
+						},
+						"type": "object"
 					},
 					"type": "array"
 				}

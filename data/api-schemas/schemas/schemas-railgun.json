@@ -1,31 +1,117 @@
 {
 	"properties": {
 		"activation": {
-			"$ref": "#/components/schemas/activation"
+			"properties": {
+				"activated_on": {
+					"description": "When the Railgun was activated.",
+					"example": "2014-01-02T02:20:00Z",
+					"format": "date-time",
+					"readOnly": true,
+					"type": "string"
+				},
+				"key": {
+					"example": "e4edc00281cb56ebac22c81be9bac8f3",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				},
+				"version": {
+					"properties": {
+						"build": {
+							"description": "The build identifier for the Railgun receiver.",
+							"example": "b1234",
+							"readOnly": true,
+							"type": "string"
+						},
+						"number": {
+							"description": "The version of the Railgun receiver.",
+							"example": "2.1",
+							"readOnly": true,
+							"type": "string"
+						},
+						"revision": {
+							"description": "The revision of the Railgun receiver.",
+							"example": "123",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"required": [
+						"number"
+					],
+					"type": "object"
+				}
+			},
+			"readOnly": true,
+			"required": [
+				"key"
+			],
+			"type": "object"
 		},
 		"created_on": {
-			"$ref": "#/components/schemas/components-schemas-created_on"
+			"description": "When the Railgun was created.",
+			"example": "2014-01-01T05:20:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"enabled": {
-			"$ref": "#/components/schemas/railgun_components-schemas-enabled"
+			"default": false,
+			"description": "Flag to determine if the Railgun is accepting connections.",
+			"example": true,
+			"type": "boolean"
 		},
 		"id": {
-			"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+			"description": "Railgun identifier tag.",
+			"example": "e928d310693a83094309acf9ead50448",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"modified_on": {
-			"$ref": "#/components/schemas/railgun_components-schemas-modified_on"
+			"description": "When the Railgun was last modified.",
+			"example": "2014-01-01T05:20:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/railgun_components-schemas-name"
+			"description": "Readable identifier of the Railgun.",
+			"example": "My Railgun.",
+			"maxLength": 160,
+			"type": "string"
 		},
 		"status": {
-			"$ref": "#/components/schemas/railgun_components-schemas-status"
+			"description": "Status of the Railgun.",
+			"enum": [
+				"initializing",
+				"active"
+			],
+			"example": "active",
+			"readOnly": true,
+			"type": "string"
 		},
 		"upgrade_info": {
-			"$ref": "#/components/schemas/upgrade_info"
+			"description": "Defined when the Railgun version is out of date from the latest release from Cloudflare.",
+			"properties": {
+				"download_link": {
+					"description": "An HTTP link to download the latest Railgun binary.",
+					"example": "https://www.cloudflare.com/downloads/railgun",
+					"type": "string"
+				},
+				"latest_version": {
+					"description": "Latest version of the Railgun receiver available to install.",
+					"example": "1.0.0",
+					"type": "string"
+				}
+			},
+			"type": "object"
 		},
 		"zones_connected": {
-			"$ref": "#/components/schemas/zones_connected"
+			"description": "The number of zones using this Railgun.",
+			"example": 2,
+			"readOnly": true,
+			"type": "number"
 		}
 	},
 	"required": [

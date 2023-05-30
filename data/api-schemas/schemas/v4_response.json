@@ -1,10 +1,30 @@
 {
 	"properties": {
 		"errors": {
-			"$ref": "#/components/schemas/errors"
+			"items": {
+				"properties": {
+					"code": {
+						"minimum": 1000,
+						"type": "integer"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"code",
+					"message"
+				],
+				"type": "object",
+				"uniqueItems": true
+			},
+			"type": "array"
 		},
 		"messages": {
-			"$ref": "#/components/schemas/messages-YLAtN5gA"
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
 		},
 		"result": {
 			"type": "object"

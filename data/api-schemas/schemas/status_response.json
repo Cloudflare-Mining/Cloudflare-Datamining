@@ -1,26 +1,105 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-common"
+			"properties": {
+				"errors": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"messages": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"result": {
+					"anyOf": [
+						{
+							"type": "object"
+						},
+						{
+							"items": {},
+							"type": "array"
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"success": {
+					"description": "Whether the API call was successful",
+					"enum": [
+						true
+					],
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"success",
+				"errors",
+				"messages",
+				"result"
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
 						"estimated_queued_users": {
-							"$ref": "#/components/schemas/estimated_queued_users"
+							"type": "integer"
 						},
 						"estimated_total_active_users": {
-							"$ref": "#/components/schemas/estimated_total_active_users"
+							"type": "integer"
 						},
 						"event_id": {
-							"$ref": "#/components/schemas/status_event_id"
+							"example": "25756b2dfe6e378a06b033b670413757",
+							"type": "string"
 						},
 						"max_estimated_time_minutes": {
-							"$ref": "#/components/schemas/max_estimated_time_minutes"
+							"type": "integer"
 						},
 						"status": {
-							"$ref": "#/components/schemas/status-3heM31JQ"
+							"enum": [
+								"event_prequeueing",
+								"not_queueing",
+								"queueing"
+							],
+							"example": "queueing",
+							"type": "string"
 						}
 					},
 					"type": "object"

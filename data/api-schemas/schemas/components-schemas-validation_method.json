@@ -1,7 +1,15 @@
 {
 	"properties": {
 		"validation_method": {
-			"$ref": "#/components/schemas/validation_method_definition"
+			"description": "Desired validation method.",
+			"enum": [
+				"http",
+				"cname",
+				"txt",
+				"email"
+			],
+			"example": "txt",
+			"type": "string"
 		}
 	},
 	"required": [

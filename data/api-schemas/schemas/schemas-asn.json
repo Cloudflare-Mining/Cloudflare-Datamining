@@ -1,13 +1,15 @@
 {
 	"properties": {
 		"asn": {
-			"$ref": "#/components/schemas/asn-w3nItC84"
+			"type": "integer"
 		},
 		"country": {
-			"$ref": "#/components/schemas/asn_country"
+			"example": "US",
+			"type": "string"
 		},
 		"description": {
-			"$ref": "#/components/schemas/asn_description"
+			"example": "CLOUDFLARENET",
+			"type": "string"
 		},
 		"domain_count": {
 			"type": "integer"
@@ -22,7 +24,14 @@
 			"type": "array"
 		},
 		"type": {
-			"$ref": "#/components/schemas/asn_type"
+			"description": "Infrastructure type of this ASN.",
+			"enum": [
+				"hosting_provider",
+				"isp",
+				"organization"
+			],
+			"example": "hosting_provider",
+			"type": "string"
 		}
 	}
 }

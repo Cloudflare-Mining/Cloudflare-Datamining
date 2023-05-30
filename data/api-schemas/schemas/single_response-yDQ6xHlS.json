@@ -1,12 +1,130 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							]
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/tsig"
+					"properties": {
+						"algo": {
+							"description": "TSIG algorithm.",
+							"example": "hmac-sha512.",
+							"type": "string"
+						},
+						"id": {
+							"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
+							"readOnly": true
+						},
+						"name": {
+							"description": "TSIG key name.",
+							"example": "tsig.customer.cf.",
+							"type": "string"
+						},
+						"secret": {
+							"description": "TSIG secret.",
+							"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
+							"type": "string"
+						}
+					},
+					"required": [
+						"id",
+						"name",
+						"secret",
+						"algo"
+					],
+					"type": "object"
 				}
 			}
 		}

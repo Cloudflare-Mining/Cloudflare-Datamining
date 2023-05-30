@@ -1,10 +1,14 @@
 {
 	"properties": {
 		"enabled": {
-			"$ref": "#/components/schemas/filters_components-schemas-enabled"
+			"example": true,
+			"title": "Whether or not this filter will run a script",
+			"type": "boolean"
 		},
 		"pattern": {
-			"$ref": "#/components/schemas/schemas-pattern"
+			"example": "example.net/*",
+			"title": "Filter pattern",
+			"type": "string"
 		}
 	},
 	"required": [

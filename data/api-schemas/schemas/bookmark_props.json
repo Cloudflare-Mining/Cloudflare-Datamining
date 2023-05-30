@@ -8,10 +8,14 @@
 			"example": "https://mybookmark.com"
 		},
 		"logo_url": {
-			"$ref": "#/components/schemas/logo_url"
+			"description": "The image URL for the logo shown in the App Launcher dashboard.",
+			"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/apps_components-schemas-name"
+			"description": "The name of the application.",
+			"example": "Admin Site",
+			"type": "string"
 		},
 		"type": {
 			"description": "The application type.",

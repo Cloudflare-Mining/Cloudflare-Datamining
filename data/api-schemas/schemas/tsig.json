@@ -1,16 +1,23 @@
 {
 	"properties": {
 		"algo": {
-			"$ref": "#/components/schemas/algo"
+			"description": "TSIG algorithm.",
+			"example": "hmac-sha512.",
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/schemas-identifier-cXkEkZ0q"
+			"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
+			"readOnly": true
 		},
 		"name": {
-			"$ref": "#/components/schemas/schemas-name-ZbE7CIpb"
+			"description": "TSIG key name.",
+			"example": "tsig.customer.cf.",
+			"type": "string"
 		},
 		"secret": {
-			"$ref": "#/components/schemas/secret-ilPuaBUb"
+			"description": "TSIG secret.",
+			"example": "caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c",
+			"type": "string"
 		}
 	},
 	"required": [

@@ -37,14 +37,34 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+													"example": "17b5962d775c646f3f9725cbc7a53df4"
 												}
 											},
 											"type": "object"
@@ -65,14 +85,34 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+															"example": "17b5962d775c646f3f9725cbc7a53df4"
 														}
 													},
 													"type": "object"
@@ -86,7 +126,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -100,7 +158,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -178,13 +254,83 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/pool"
+												"properties": {
+													"check_regions": {
+														"$ref": "#/components/schemas/check_regions-IgGXulGv"
+													},
+													"created_on": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"description": {
+														"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+													},
+													"disabled_at": {
+														"$ref": "#/components/schemas/schemas-disabled_at"
+													},
+													"enabled": {
+														"$ref": "#/components/schemas/enabled-x8uPyg4h"
+													},
+													"id": {
+														"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+													},
+													"latitude": {
+														"$ref": "#/components/schemas/latitude"
+													},
+													"load_shedding": {
+														"$ref": "#/components/schemas/load_shedding"
+													},
+													"longitude": {
+														"$ref": "#/components/schemas/longitude"
+													},
+													"minimum_origins": {
+														"$ref": "#/components/schemas/minimum_origins"
+													},
+													"modified_on": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"monitor": {
+														"$ref": "#/components/schemas/schemas-monitor"
+													},
+													"name": {
+														"$ref": "#/components/schemas/name-LmHm2Lv4"
+													},
+													"notification_email": {
+														"$ref": "#/components/schemas/notification_email"
+													},
+													"notification_filter": {
+														"$ref": "#/components/schemas/notification_filter"
+													},
+													"origin_steering": {
+														"$ref": "#/components/schemas/origin_steering"
+													},
+													"origins": {
+														"$ref": "#/components/schemas/origins"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -204,13 +350,83 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/pool"
+														"properties": {
+															"check_regions": {
+																"$ref": "#/components/schemas/check_regions-IgGXulGv"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"description": {
+																"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+															},
+															"disabled_at": {
+																"$ref": "#/components/schemas/schemas-disabled_at"
+															},
+															"enabled": {
+																"$ref": "#/components/schemas/enabled-x8uPyg4h"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+															},
+															"latitude": {
+																"$ref": "#/components/schemas/latitude"
+															},
+															"load_shedding": {
+																"$ref": "#/components/schemas/load_shedding"
+															},
+															"longitude": {
+																"$ref": "#/components/schemas/longitude"
+															},
+															"minimum_origins": {
+																"$ref": "#/components/schemas/minimum_origins"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"monitor": {
+																"$ref": "#/components/schemas/schemas-monitor"
+															},
+															"name": {
+																"$ref": "#/components/schemas/name-LmHm2Lv4"
+															},
+															"notification_email": {
+																"$ref": "#/components/schemas/notification_email"
+															},
+															"notification_filter": {
+																"$ref": "#/components/schemas/notification_filter"
+															},
+															"origin_steering": {
+																"$ref": "#/components/schemas/origin_steering"
+															},
+															"origins": {
+																"$ref": "#/components/schemas/origins"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -223,7 +439,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -237,7 +471,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -316,12 +568,85 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/pool"
+											"properties": {
+												"check_regions": {
+													"$ref": "#/components/schemas/check_regions-IgGXulGv"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+												},
+												"disabled_at": {
+													"$ref": "#/components/schemas/schemas-disabled_at"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/enabled-x8uPyg4h"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+												},
+												"latitude": {
+													"$ref": "#/components/schemas/latitude"
+												},
+												"load_shedding": {
+													"$ref": "#/components/schemas/load_shedding"
+												},
+												"longitude": {
+													"$ref": "#/components/schemas/longitude"
+												},
+												"minimum_origins": {
+													"$ref": "#/components/schemas/minimum_origins"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"monitor": {
+													"$ref": "#/components/schemas/schemas-monitor"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-LmHm2Lv4"
+												},
+												"notification_email": {
+													"$ref": "#/components/schemas/notification_email"
+												},
+												"notification_filter": {
+													"$ref": "#/components/schemas/notification_filter"
+												},
+												"origin_steering": {
+													"$ref": "#/components/schemas/origin_steering"
+												},
+												"origins": {
+													"$ref": "#/components/schemas/origins"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -339,12 +664,85 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/pool"
+													"properties": {
+														"check_regions": {
+															"$ref": "#/components/schemas/check_regions-IgGXulGv"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+														},
+														"disabled_at": {
+															"$ref": "#/components/schemas/schemas-disabled_at"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/enabled-x8uPyg4h"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+														},
+														"latitude": {
+															"$ref": "#/components/schemas/latitude"
+														},
+														"load_shedding": {
+															"$ref": "#/components/schemas/load_shedding"
+														},
+														"longitude": {
+															"$ref": "#/components/schemas/longitude"
+														},
+														"minimum_origins": {
+															"$ref": "#/components/schemas/minimum_origins"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"monitor": {
+															"$ref": "#/components/schemas/schemas-monitor"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-LmHm2Lv4"
+														},
+														"notification_email": {
+															"$ref": "#/components/schemas/notification_email"
+														},
+														"notification_filter": {
+															"$ref": "#/components/schemas/notification_filter"
+														},
+														"origin_steering": {
+															"$ref": "#/components/schemas/origin_steering"
+														},
+														"origins": {
+															"$ref": "#/components/schemas/origins"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -355,7 +753,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -369,7 +785,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -448,7 +882,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -490,7 +944,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -525,7 +999,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -539,7 +1031,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -618,7 +1128,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -678,7 +1205,24 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -731,7 +1275,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -745,7 +1307,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -835,13 +1415,83 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/pool"
+												"properties": {
+													"check_regions": {
+														"$ref": "#/components/schemas/check_regions-IgGXulGv"
+													},
+													"created_on": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"description": {
+														"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+													},
+													"disabled_at": {
+														"$ref": "#/components/schemas/schemas-disabled_at"
+													},
+													"enabled": {
+														"$ref": "#/components/schemas/enabled-x8uPyg4h"
+													},
+													"id": {
+														"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+													},
+													"latitude": {
+														"$ref": "#/components/schemas/latitude"
+													},
+													"load_shedding": {
+														"$ref": "#/components/schemas/load_shedding"
+													},
+													"longitude": {
+														"$ref": "#/components/schemas/longitude"
+													},
+													"minimum_origins": {
+														"$ref": "#/components/schemas/minimum_origins"
+													},
+													"modified_on": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"monitor": {
+														"$ref": "#/components/schemas/schemas-monitor"
+													},
+													"name": {
+														"$ref": "#/components/schemas/name-LmHm2Lv4"
+													},
+													"notification_email": {
+														"$ref": "#/components/schemas/notification_email"
+													},
+													"notification_filter": {
+														"$ref": "#/components/schemas/notification_filter"
+													},
+													"origin_steering": {
+														"$ref": "#/components/schemas/origin_steering"
+													},
+													"origins": {
+														"$ref": "#/components/schemas/origins"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -861,13 +1511,83 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/pool"
+														"properties": {
+															"check_regions": {
+																"$ref": "#/components/schemas/check_regions-IgGXulGv"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"description": {
+																"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+															},
+															"disabled_at": {
+																"$ref": "#/components/schemas/schemas-disabled_at"
+															},
+															"enabled": {
+																"$ref": "#/components/schemas/enabled-x8uPyg4h"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+															},
+															"latitude": {
+																"$ref": "#/components/schemas/latitude"
+															},
+															"load_shedding": {
+																"$ref": "#/components/schemas/load_shedding"
+															},
+															"longitude": {
+																"$ref": "#/components/schemas/longitude"
+															},
+															"minimum_origins": {
+																"$ref": "#/components/schemas/minimum_origins"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"monitor": {
+																"$ref": "#/components/schemas/schemas-monitor"
+															},
+															"name": {
+																"$ref": "#/components/schemas/name-LmHm2Lv4"
+															},
+															"notification_email": {
+																"$ref": "#/components/schemas/notification_email"
+															},
+															"notification_filter": {
+																"$ref": "#/components/schemas/notification_filter"
+															},
+															"origin_steering": {
+																"$ref": "#/components/schemas/origin_steering"
+															},
+															"origins": {
+																"$ref": "#/components/schemas/origins"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -880,7 +1600,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -894,7 +1632,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1093,10 +1849,38 @@
 								"nullable": true,
 								"properties": {
 									"origin": {
-										"$ref": "#/components/schemas/filter_options-7ixIinqr"
+										"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
+										"nullable": true,
+										"properties": {
+											"disable": {
+												"default": false,
+												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"type": "boolean"
+											},
+											"healthy": {
+												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
+												"nullable": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"pool": {
-										"$ref": "#/components/schemas/filter_options-7ixIinqr"
+										"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
+										"nullable": true,
+										"properties": {
+											"disable": {
+												"default": false,
+												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"type": "boolean"
+											},
+											"healthy": {
+												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
+												"nullable": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									}
 								},
 								"type": "object"
@@ -1119,7 +1903,30 @@
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
 								"items": {
-									"$ref": "#/components/schemas/origin-YENw1A9k"
+									"properties": {
+										"address": {
+											"$ref": "#/components/schemas/address-vnqXpY4v"
+										},
+										"disabled_at": {
+											"$ref": "#/components/schemas/disabled_at"
+										},
+										"enabled": {
+											"$ref": "#/components/schemas/schemas-enabled-bB0yneoJ"
+										},
+										"header": {
+											"$ref": "#/components/schemas/schemas-header"
+										},
+										"name": {
+											"$ref": "#/components/schemas/schemas-name-JBUkEBn7"
+										},
+										"virtual_network_id": {
+											"$ref": "#/components/schemas/virtual_network_id"
+										},
+										"weight": {
+											"$ref": "#/components/schemas/weight-JtSNlUKc"
+										}
+									},
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -1136,12 +1943,85 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/pool"
+											"properties": {
+												"check_regions": {
+													"$ref": "#/components/schemas/check_regions-IgGXulGv"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+												},
+												"disabled_at": {
+													"$ref": "#/components/schemas/schemas-disabled_at"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/enabled-x8uPyg4h"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+												},
+												"latitude": {
+													"$ref": "#/components/schemas/latitude"
+												},
+												"load_shedding": {
+													"$ref": "#/components/schemas/load_shedding"
+												},
+												"longitude": {
+													"$ref": "#/components/schemas/longitude"
+												},
+												"minimum_origins": {
+													"$ref": "#/components/schemas/minimum_origins"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"monitor": {
+													"$ref": "#/components/schemas/schemas-monitor"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-LmHm2Lv4"
+												},
+												"notification_email": {
+													"$ref": "#/components/schemas/notification_email"
+												},
+												"notification_filter": {
+													"$ref": "#/components/schemas/notification_filter"
+												},
+												"origin_steering": {
+													"$ref": "#/components/schemas/origin_steering"
+												},
+												"origins": {
+													"$ref": "#/components/schemas/origins"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1159,12 +2039,85 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/pool"
+													"properties": {
+														"check_regions": {
+															"$ref": "#/components/schemas/check_regions-IgGXulGv"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+														},
+														"disabled_at": {
+															"$ref": "#/components/schemas/schemas-disabled_at"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/enabled-x8uPyg4h"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+														},
+														"latitude": {
+															"$ref": "#/components/schemas/latitude"
+														},
+														"load_shedding": {
+															"$ref": "#/components/schemas/load_shedding"
+														},
+														"longitude": {
+															"$ref": "#/components/schemas/longitude"
+														},
+														"minimum_origins": {
+															"$ref": "#/components/schemas/minimum_origins"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"monitor": {
+															"$ref": "#/components/schemas/schemas-monitor"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-LmHm2Lv4"
+														},
+														"notification_email": {
+															"$ref": "#/components/schemas/notification_email"
+														},
+														"notification_filter": {
+															"$ref": "#/components/schemas/notification_filter"
+														},
+														"origin_steering": {
+															"$ref": "#/components/schemas/origin_steering"
+														},
+														"origins": {
+															"$ref": "#/components/schemas/origins"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1175,7 +2128,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1189,7 +2160,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1345,10 +2334,38 @@
 								"nullable": true,
 								"properties": {
 									"origin": {
-										"$ref": "#/components/schemas/filter_options-7ixIinqr"
+										"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
+										"nullable": true,
+										"properties": {
+											"disable": {
+												"default": false,
+												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"type": "boolean"
+											},
+											"healthy": {
+												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
+												"nullable": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"pool": {
-										"$ref": "#/components/schemas/filter_options-7ixIinqr"
+										"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
+										"nullable": true,
+										"properties": {
+											"disable": {
+												"default": false,
+												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"type": "boolean"
+											},
+											"healthy": {
+												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
+												"nullable": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									}
 								},
 								"type": "object"
@@ -1371,7 +2388,30 @@
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
 								"items": {
-									"$ref": "#/components/schemas/origin-YENw1A9k"
+									"properties": {
+										"address": {
+											"$ref": "#/components/schemas/address-vnqXpY4v"
+										},
+										"disabled_at": {
+											"$ref": "#/components/schemas/disabled_at"
+										},
+										"enabled": {
+											"$ref": "#/components/schemas/schemas-enabled-bB0yneoJ"
+										},
+										"header": {
+											"$ref": "#/components/schemas/schemas-header"
+										},
+										"name": {
+											"$ref": "#/components/schemas/schemas-name-JBUkEBn7"
+										},
+										"virtual_network_id": {
+											"$ref": "#/components/schemas/virtual_network_id"
+										},
+										"weight": {
+											"$ref": "#/components/schemas/weight-JtSNlUKc"
+										}
+									},
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -1392,12 +2432,85 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/pool"
+											"properties": {
+												"check_regions": {
+													"$ref": "#/components/schemas/check_regions-IgGXulGv"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+												},
+												"disabled_at": {
+													"$ref": "#/components/schemas/schemas-disabled_at"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/enabled-x8uPyg4h"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+												},
+												"latitude": {
+													"$ref": "#/components/schemas/latitude"
+												},
+												"load_shedding": {
+													"$ref": "#/components/schemas/load_shedding"
+												},
+												"longitude": {
+													"$ref": "#/components/schemas/longitude"
+												},
+												"minimum_origins": {
+													"$ref": "#/components/schemas/minimum_origins"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"monitor": {
+													"$ref": "#/components/schemas/schemas-monitor"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-LmHm2Lv4"
+												},
+												"notification_email": {
+													"$ref": "#/components/schemas/notification_email"
+												},
+												"notification_filter": {
+													"$ref": "#/components/schemas/notification_filter"
+												},
+												"origin_steering": {
+													"$ref": "#/components/schemas/origin_steering"
+												},
+												"origins": {
+													"$ref": "#/components/schemas/origins"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1415,12 +2528,85 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/pool"
+													"properties": {
+														"check_regions": {
+															"$ref": "#/components/schemas/check_regions-IgGXulGv"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+														},
+														"disabled_at": {
+															"$ref": "#/components/schemas/schemas-disabled_at"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/enabled-x8uPyg4h"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+														},
+														"latitude": {
+															"$ref": "#/components/schemas/latitude"
+														},
+														"load_shedding": {
+															"$ref": "#/components/schemas/load_shedding"
+														},
+														"longitude": {
+															"$ref": "#/components/schemas/longitude"
+														},
+														"minimum_origins": {
+															"$ref": "#/components/schemas/minimum_origins"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"monitor": {
+															"$ref": "#/components/schemas/schemas-monitor"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-LmHm2Lv4"
+														},
+														"notification_email": {
+															"$ref": "#/components/schemas/notification_email"
+														},
+														"notification_filter": {
+															"$ref": "#/components/schemas/notification_filter"
+														},
+														"origin_steering": {
+															"$ref": "#/components/schemas/origin_steering"
+														},
+														"origins": {
+															"$ref": "#/components/schemas/origins"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1431,7 +2617,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1445,7 +2649,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1619,7 +2841,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1638,7 +2880,7 @@
 													"type": "object"
 												},
 												"preview_id": {
-													"$ref": "#/components/schemas/identifier-ALRnvOYm"
+													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
 												}
 											},
 											"type": "object"
@@ -1659,7 +2901,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1678,7 +2940,7 @@
 															"type": "object"
 														},
 														"preview_id": {
-															"$ref": "#/components/schemas/identifier-ALRnvOYm"
+															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
 														}
 													},
 													"type": "object"
@@ -1692,7 +2954,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1706,7 +2986,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1905,10 +3203,38 @@
 								"nullable": true,
 								"properties": {
 									"origin": {
-										"$ref": "#/components/schemas/filter_options-7ixIinqr"
+										"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
+										"nullable": true,
+										"properties": {
+											"disable": {
+												"default": false,
+												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"type": "boolean"
+											},
+											"healthy": {
+												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
+												"nullable": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"pool": {
-										"$ref": "#/components/schemas/filter_options-7ixIinqr"
+										"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
+										"nullable": true,
+										"properties": {
+											"disable": {
+												"default": false,
+												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"type": "boolean"
+											},
+											"healthy": {
+												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
+												"nullable": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									}
 								},
 								"type": "object"
@@ -1931,7 +3257,30 @@
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
 								"items": {
-									"$ref": "#/components/schemas/origin-YENw1A9k"
+									"properties": {
+										"address": {
+											"$ref": "#/components/schemas/address-vnqXpY4v"
+										},
+										"disabled_at": {
+											"$ref": "#/components/schemas/disabled_at"
+										},
+										"enabled": {
+											"$ref": "#/components/schemas/schemas-enabled-bB0yneoJ"
+										},
+										"header": {
+											"$ref": "#/components/schemas/schemas-header"
+										},
+										"name": {
+											"$ref": "#/components/schemas/schemas-name-JBUkEBn7"
+										},
+										"virtual_network_id": {
+											"$ref": "#/components/schemas/virtual_network_id"
+										},
+										"weight": {
+											"$ref": "#/components/schemas/weight-JtSNlUKc"
+										}
+									},
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -1952,12 +3301,85 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/pool"
+											"properties": {
+												"check_regions": {
+													"$ref": "#/components/schemas/check_regions-IgGXulGv"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+												},
+												"disabled_at": {
+													"$ref": "#/components/schemas/schemas-disabled_at"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/enabled-x8uPyg4h"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+												},
+												"latitude": {
+													"$ref": "#/components/schemas/latitude"
+												},
+												"load_shedding": {
+													"$ref": "#/components/schemas/load_shedding"
+												},
+												"longitude": {
+													"$ref": "#/components/schemas/longitude"
+												},
+												"minimum_origins": {
+													"$ref": "#/components/schemas/minimum_origins"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"monitor": {
+													"$ref": "#/components/schemas/schemas-monitor"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-LmHm2Lv4"
+												},
+												"notification_email": {
+													"$ref": "#/components/schemas/notification_email"
+												},
+												"notification_filter": {
+													"$ref": "#/components/schemas/notification_filter"
+												},
+												"origin_steering": {
+													"$ref": "#/components/schemas/origin_steering"
+												},
+												"origins": {
+													"$ref": "#/components/schemas/origins"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1975,12 +3397,85 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-tp4bJ0LW"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/pool"
+													"properties": {
+														"check_regions": {
+															"$ref": "#/components/schemas/check_regions-IgGXulGv"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/schemas-description-H1kpVRhU"
+														},
+														"disabled_at": {
+															"$ref": "#/components/schemas/schemas-disabled_at"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/enabled-x8uPyg4h"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-Ly3FVW7l"
+														},
+														"latitude": {
+															"$ref": "#/components/schemas/latitude"
+														},
+														"load_shedding": {
+															"$ref": "#/components/schemas/load_shedding"
+														},
+														"longitude": {
+															"$ref": "#/components/schemas/longitude"
+														},
+														"minimum_origins": {
+															"$ref": "#/components/schemas/minimum_origins"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"monitor": {
+															"$ref": "#/components/schemas/schemas-monitor"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-LmHm2Lv4"
+														},
+														"notification_email": {
+															"$ref": "#/components/schemas/notification_email"
+														},
+														"notification_filter": {
+															"$ref": "#/components/schemas/notification_filter"
+														},
+														"origin_steering": {
+															"$ref": "#/components/schemas/origin_steering"
+														},
+														"origins": {
+															"$ref": "#/components/schemas/origins"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1991,7 +3486,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -2005,7 +3518,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

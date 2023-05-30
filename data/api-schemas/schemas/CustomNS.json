@@ -24,7 +24,10 @@
 			"type": "array"
 		},
 		"ns_name": {
-			"$ref": "#/components/schemas/ns_name"
+			"description": "The FQDN of the name server.",
+			"example": "ns1.example.com",
+			"format": "hostname",
+			"type": "string"
 		},
 		"status": {
 			"deprecated": true,
@@ -38,7 +41,11 @@
 			"type": "string"
 		},
 		"zone_tag": {
-			"$ref": "#/components/schemas/schemas-identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		}
 	},
 	"required": [

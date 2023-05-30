@@ -1,25 +1,64 @@
 {
 	"properties": {
 		"created": {
-			"$ref": "#/components/schemas/email-setting_created"
+			"description": "The date and time the settings have been created.",
+			"example": "2014-01-02T02:20:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"enabled": {
-			"$ref": "#/components/schemas/email-setting_enabled"
+			"default": true,
+			"description": "State of the zone settings for Email Routing.",
+			"enum": [
+				true,
+				false
+			],
+			"example": true,
+			"type": "boolean"
 		},
 		"modified": {
-			"$ref": "#/components/schemas/email-setting_modified"
+			"description": "The date and time the settings have been modified.",
+			"example": "2014-01-02T02:20:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/email-setting_name"
+			"description": "Domain of your zone.",
+			"example": "example.net",
+			"readOnly": true,
+			"type": "string"
 		},
 		"skip_wizard": {
-			"$ref": "#/components/schemas/email-setting_skip-wizard"
+			"default": true,
+			"description": "Flag to check if the user skipped the configuration wizard.",
+			"enum": [
+				true,
+				false
+			],
+			"example": true,
+			"type": "boolean"
 		},
 		"status": {
-			"$ref": "#/components/schemas/email-setting_status"
+			"description": "Show the state of your account, and the type or configuration error.",
+			"enum": [
+				"ready",
+				"unconfigured",
+				"misconfigured",
+				"misconfigured/locked",
+				"unlocked"
+			],
+			"example": "ready",
+			"readOnly": true,
+			"type": "string"
 		},
 		"tag": {
-			"$ref": "#/components/schemas/email-setting_identifier"
+			"description": "Email Routing settings identifier.",
+			"example": "75610dab9e69410a82cf7e400a09ecec",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		}
 	},
 	"type": "object"

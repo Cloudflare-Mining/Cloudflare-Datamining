@@ -1,7 +1,103 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/token-kk76O5A1"
+			"properties": {
+				"condition": {
+					"properties": {
+						"request.ip": {
+							"description": "Client IP restrictions.",
+							"example": {
+								"in": [
+									"123.123.123.0/24",
+									"2606:4700::/32"
+								],
+								"not_in": [
+									"123.123.123.100/24",
+									"2606:4700:4700::/48"
+								]
+							},
+							"properties": {
+								"in": {
+									"$ref": "#/components/schemas/cidr_list"
+								},
+								"not_in": {
+									"$ref": "#/components/schemas/cidr_list"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"type": "object"
+				},
+				"expires_on": {
+					"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
+					"example": "2020-01-01T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				},
+				"id": {
+					"description": "Token identifier tag.",
+					"example": "ed17574386854bf78a67040be0a770b0",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				},
+				"issued_on": {
+					"description": "The time on which the token was created.",
+					"example": "2018-07-01T05:20:00Z",
+					"format": "date-time",
+					"readOnly": true,
+					"type": "string"
+				},
+				"modified_on": {
+					"description": "Last time the token was modified.",
+					"example": "2018-07-02T05:20:00Z",
+					"format": "date-time",
+					"readOnly": true,
+					"type": "string"
+				},
+				"name": {
+					"description": "Token name.",
+					"example": "readonly token",
+					"maxLength": 120,
+					"type": "string"
+				},
+				"not_before": {
+					"description": "The time before which the token MUST NOT be accepted for processing.",
+					"example": "2018-07-01T05:20:00Z",
+					"format": "date-time",
+					"type": "string"
+				},
+				"policies": {
+					"description": "List of access policies assigned to the token.",
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "#/components/schemas/policy_with_permission_groups-eAE7FwhP"
+							}
+						],
+						"type": "object"
+					},
+					"type": "array"
+				},
+				"status": {
+					"description": "Status of the token.",
+					"enum": [
+						"active",
+						"disabled",
+						"expired"
+					],
+					"example": "active",
+					"type": "string"
+				}
+			},
+			"required": [
+				"id",
+				"name",
+				"status",
+				"policies"
+			],
+			"type": "object"
 		}
 	]
 }

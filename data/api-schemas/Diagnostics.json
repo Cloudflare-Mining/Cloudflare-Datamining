@@ -40,19 +40,45 @@
 								},
 								"properties": {
 									"max_ttl": {
-										"$ref": "#/components/schemas/max_ttl"
+										"default": 15,
+										"description": "Max TTL.",
+										"maximum": 64,
+										"minimum": 0,
+										"type": "integer"
 									},
 									"packet_type": {
-										"$ref": "#/components/schemas/packet_type"
+										"default": "icmp",
+										"description": "Type of packet sent.",
+										"enum": [
+											"icmp",
+											"tcp",
+											"udp",
+											"gre",
+											"gre+icmp"
+										],
+										"example": "icmp",
+										"type": "string"
 									},
 									"packets_per_ttl": {
-										"$ref": "#/components/schemas/packets_per_ttl"
+										"default": 3,
+										"description": "Number of packets sent at each TTL.",
+										"maximum": 10,
+										"minimum": 0,
+										"type": "integer"
 									},
 									"port": {
-										"$ref": "#/components/schemas/traceroute_components-schemas-port"
+										"default": 0,
+										"description": "For UDP and TCP, specifies the destination port. For ICMP, specifies the initial ICMP sequence value. Default value 0 will choose the best value to use for each protocol.",
+										"maximum": 65535,
+										"minimum": 0,
+										"type": "integer"
 									},
 									"wait_time": {
-										"$ref": "#/components/schemas/wait_time"
+										"default": 1,
+										"description": "Set the time (in seconds) to wait for a response to a probe.",
+										"maximum": 5,
+										"minimum": 1,
+										"type": "integer"
 									}
 								}
 							},
@@ -85,13 +111,41 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/target_result"
+												"properties": {
+													"colos": {
+														"items": {
+															"$ref": "#/components/schemas/colo_result"
+														},
+														"type": "array"
+													},
+													"target": {
+														"$ref": "#/components/schemas/target"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -111,13 +165,41 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/target_result"
+														"properties": {
+															"colos": {
+																"items": {
+																	"$ref": "#/components/schemas/colo_result"
+																},
+																"type": "array"
+															},
+															"target": {
+																"$ref": "#/components/schemas/target"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -130,7 +212,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -144,7 +244,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

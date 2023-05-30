@@ -1,22 +1,70 @@
 {
 	"properties": {
 		"components": {
-			"$ref": "#/components/schemas/schemas-component_values"
+			"description": "Array of available components values for the plan.",
+			"items": {
+				"properties": {
+					"default": {
+						"description": "The default amount allocated.",
+						"example": 5,
+						"type": "number"
+					},
+					"name": {
+						"description": "The unique component.",
+						"enum": [
+							"zones",
+							"page_rules",
+							"dedicated_certificates",
+							"dedicated_certificates_custom"
+						],
+						"example": "page_rules"
+					},
+					"unit_price": {
+						"description": "The unit price of the addon.",
+						"example": 1,
+						"readOnly": true,
+						"type": "number"
+					}
+				},
+				"type": "object"
+			},
+			"type": "array"
 		},
 		"currency": {
-			"$ref": "#/components/schemas/currency"
+			"description": "The monetary unit in which pricing information is displayed.",
+			"example": "USD",
+			"readOnly": true,
+			"type": "string"
 		},
 		"duration": {
-			"$ref": "#/components/schemas/duration-e2UIpLkh"
+			"description": "The duration of the plan subscription.",
+			"example": 1,
+			"type": "number"
 		},
 		"frequency": {
-			"$ref": "#/components/schemas/schemas-frequency"
+			"description": "The frequency at which you will be billed for this plan.",
+			"enum": [
+				"weekly",
+				"monthly",
+				"quarterly",
+				"yearly"
+			],
+			"example": "monthly",
+			"readOnly": true,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/rate-plan_components-schemas-identifier"
+			"description": "Plan identifier tag.",
+			"example": "free",
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/rate-plan_components-schemas-name"
+			"description": "The plan name.",
+			"example": "Free Plan",
+			"maxLength": 80,
+			"readOnly": true,
+			"type": "string"
 		}
 	},
 	"type": "object"

@@ -9,7 +9,40 @@
 	"items": {
 		"oneOf": [
 			{
-				"$ref": "#/components/schemas/route-JKAbaKEe"
+				"properties": {
+					"modified_on": {
+						"description": "The timestamp of when the override was last modified.",
+						"example": "2014-01-01T05:20:00.12345Z",
+						"format": "date-time",
+						"readOnly": true,
+						"type": "string"
+					},
+					"name": {
+						"description": "The type of route.",
+						"enum": [
+							"forward_url"
+						],
+						"example": "forward_url"
+					},
+					"value": {
+						"properties": {
+							"type": {
+								"description": "The response type for the URL redirect.",
+								"enum": [
+									"temporary",
+									"permanent"
+								],
+								"example": "temporary"
+							},
+							"url": {
+								"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
+								"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+								"type": "string"
+							}
+						}
+					}
+				},
+				"type": "object"
 			}
 		]
 	},

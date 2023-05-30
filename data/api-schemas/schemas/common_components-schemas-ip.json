@@ -1,10 +1,14 @@
 {
 	"anyOf": [
 		{
-			"$ref": "#/components/schemas/ipv4"
+			"example": "192.0.2.0",
+			"format": "ipv4",
+			"type": "string"
 		},
 		{
-			"$ref": "#/components/schemas/ipv6"
+			"example": "2001:0DB8::",
+			"format": "ipv6",
+			"type": "string"
 		}
 	]
 }

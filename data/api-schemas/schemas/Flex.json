@@ -1,13 +1,49 @@
 {
 	"anyOf": [
 		{
-			"$ref": "#/components/schemas/Tags"
+			"properties": {
+				"tags": {
+					"example": [
+						"some-tag",
+						"another-tag"
+					],
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
 		},
 		{
-			"$ref": "#/components/schemas/Hosts"
+			"properties": {
+				"hosts": {
+					"example": [
+						"www.example.com",
+						"images.example.com"
+					],
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
 		},
 		{
-			"$ref": "#/components/schemas/Prefixes"
+			"properties": {
+				"prefixes": {
+					"example": [
+						"www.example.com/foo",
+						"images.example.com/bar/baz"
+					],
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
 		}
 	]
 }

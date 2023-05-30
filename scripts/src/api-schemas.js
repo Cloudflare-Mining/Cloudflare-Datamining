@@ -73,7 +73,14 @@ async function run() {
 		}
 	}
 
-	byTag = findAndReplaceSchema(byTag, schemasJson.components.schemas);
+	const schemas = findAndReplaceSchema(structuredClone(schemasJson.components.schemas), schemasJson.components.schemas);
+	for(const [schemaName, schema] of Object.entries(schemas)) {
+		const schemaFilename = filenamify(schemaName, {replacement: '-'});
+		const file = path.resolve(`../data/api-schemas/schemas/${schemaFilename}.json`);
+		await fs.writeFile(file, JSON.stringify(sortObjectByKeys(findAndReplaceSchema(structuredClone(schema), schemas)), null, '\t'));
+	}
+
+	byTag = findAndReplaceSchema(byTag, schemas);
 
 	// write to folderes by tag
 	for(const [tag, tagData] of Object.entries(byTag)) {
@@ -82,12 +89,6 @@ async function run() {
 		await fs.writeFile(file, JSON.stringify(sortObjectByKeys(tagData), null, '\t'));
 	}
 
-	const schemas = schemasJson.components.schemas;
-	for(const [schemaName, schema] of Object.entries(schemas)) {
-		const schemaFilename = filenamify(schemaName, {replacement: '-'});
-		const file = path.resolve(`../data/api-schemas/schemas/${schemaFilename}.json`);
-		await fs.writeFile(file, JSON.stringify(sortObjectByKeys(schema), null, '\t'));
-	}
 
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');

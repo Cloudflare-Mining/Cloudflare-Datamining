@@ -1,34 +1,71 @@
 {
 	"properties": {
 		"can_subscribe": {
-			"$ref": "#/components/schemas/can_subscribe"
+			"default": false,
+			"description": "Indicates whether you can subscribe to this plan.",
+			"example": true,
+			"type": "boolean"
 		},
 		"currency": {
-			"$ref": "#/components/schemas/currency"
+			"description": "The monetary unit in which pricing information is displayed.",
+			"example": "USD",
+			"readOnly": true,
+			"type": "string"
 		},
 		"externally_managed": {
-			"$ref": "#/components/schemas/externally_managed"
+			"default": false,
+			"description": "Indicates whether this plan is managed externally.",
+			"example": false,
+			"type": "boolean"
 		},
 		"frequency": {
-			"$ref": "#/components/schemas/schemas-frequency"
+			"description": "The frequency at which you will be billed for this plan.",
+			"enum": [
+				"weekly",
+				"monthly",
+				"quarterly",
+				"yearly"
+			],
+			"example": "monthly",
+			"readOnly": true,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"is_subscribed": {
-			"$ref": "#/components/schemas/is_subscribed"
+			"default": false,
+			"description": "Indicates whether you are currently subscribed to this plan.",
+			"example": false,
+			"type": "boolean"
 		},
 		"legacy_discount": {
-			"$ref": "#/components/schemas/legacy_discount"
+			"default": false,
+			"description": "Indicates whether this plan has a legacy discount applied.",
+			"example": false,
+			"type": "boolean"
 		},
 		"legacy_id": {
-			"$ref": "#/components/schemas/legacy_id"
+			"description": "The legacy identifier for this rate plan, if any.",
+			"example": "free",
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/schemas-name-ZuhJmnoo"
+			"description": "The plan name.",
+			"example": "Free Plan",
+			"maxLength": 80,
+			"readOnly": true,
+			"type": "string"
 		},
 		"price": {
-			"$ref": "#/components/schemas/schemas-price"
+			"description": "The amount you will be billed for this plan.",
+			"example": 0,
+			"type": "number"
 		}
 	},
 	"type": "object"

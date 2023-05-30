@@ -1,7 +1,302 @@
 {
 	"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 	"items": {
-		"$ref": "#/components/schemas/rule_components-schemas-rule"
+		"oneOf": [
+			{
+				"description": "Matches a specific email.",
+				"properties": {
+					"email": {
+						"properties": {
+							"email": {
+								"description": "The email of the user.",
+								"example": "test@example.com",
+								"format": "email",
+								"type": "string"
+							}
+						},
+						"required": [
+							"email"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"email"
+				],
+				"title": "Email",
+				"type": "object"
+			},
+			{
+				"description": "Match an entire email domain.",
+				"properties": {
+					"email_domain": {
+						"properties": {
+							"domain": {
+								"description": "The email domain to match.",
+								"example": "example.com",
+								"type": "string"
+							}
+						},
+						"required": [
+							"domain"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"email_domain"
+				],
+				"title": "Email domain",
+				"type": "object"
+			},
+			{
+				"description": "Matches everyone.",
+				"properties": {
+					"everyone": {
+						"description": "An empty object which matches on all users.",
+						"example": {},
+						"type": "object"
+					}
+				},
+				"required": [
+					"everyone"
+				],
+				"title": "Everyone",
+				"type": "object"
+			},
+			{
+				"description": "Matches an IP address block.",
+				"properties": {
+					"ip": {
+						"properties": {
+							"ip": {
+								"description": "An IPv4 or IPv6 CIDR block.",
+								"example": "2400:cb00:21:10a::/64",
+								"type": "string"
+							}
+						},
+						"required": [
+							"ip"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"ip"
+				],
+				"title": "IP ranges",
+				"type": "object"
+			},
+			{
+				"description": "Matches an IP address from a list.",
+				"properties": {
+					"ip_list": {
+						"properties": {
+							"id": {
+								"description": "The ID of a previously created IP list.",
+								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+								"type": "string"
+							}
+						},
+						"required": [
+							"id"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"ip_list"
+				],
+				"title": "IP list",
+				"type": "object"
+			},
+			{
+				"description": "Matches any valid client certificate.",
+				"example": {
+					"certificate": {}
+				},
+				"properties": {
+					"certificate": {
+						"example": {},
+						"type": "object"
+					}
+				},
+				"required": [
+					"certificate"
+				],
+				"title": "Valid certificate",
+				"type": "object"
+			},
+			{
+				"description": "Matches an Access group.",
+				"properties": {
+					"group": {
+						"properties": {
+							"id": {
+								"description": "The ID of a previously created Access group.",
+								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+								"type": "string"
+							}
+						},
+						"required": [
+							"id"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"group"
+				],
+				"title": "Access groups",
+				"type": "object"
+			},
+			{
+				"description": "Matches an Azure group.\nRequires an Azure identity provider.",
+				"properties": {
+					"azureAD": {
+						"properties": {
+							"connection_id": {
+								"description": "The ID of your Azure identity provider.",
+								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+								"type": "string"
+							},
+							"id": {
+								"description": "The ID of an Azure group.",
+								"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+								"type": "string"
+							}
+						},
+						"required": [
+							"id",
+							"connection_id"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"azureAD"
+				],
+				"title": "Azure group",
+				"type": "object"
+			},
+			{
+				"description": "Matches a Github organization.\nRequires a Github identity provider.",
+				"properties": {
+					"github-organization": {
+						"properties": {
+							"connection_id": {
+								"description": "The ID of your Github identity provider.",
+								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the organization.",
+								"example": "cloudflare",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"connection_id"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"github-organization"
+				],
+				"title": "Github organization",
+				"type": "object"
+			},
+			{
+				"description": "Matches a group in Google Workspace.\nRequires a Google Workspace identity provider.",
+				"properties": {
+					"gsuite": {
+						"properties": {
+							"connection_id": {
+								"description": "The ID of your Google Workspace identity provider.",
+								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+								"type": "string"
+							},
+							"email": {
+								"description": "The email of the Google Workspace group.",
+								"example": "devs@cloudflare.com",
+								"type": "string"
+							}
+						},
+						"required": [
+							"email",
+							"connection_id"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"gsuite"
+				],
+				"title": "Google Workspace group",
+				"type": "object"
+			},
+			{
+				"description": "Matches an Okta group.\nRequires an Okta identity provider.",
+				"properties": {
+					"okta": {
+						"properties": {
+							"connection_id": {
+								"description": "The ID of your Okta identity provider.",
+								"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+								"type": "string"
+							},
+							"email": {
+								"description": "The email of the Okta group.",
+								"example": "devs@cloudflare.com",
+								"type": "string"
+							}
+						},
+						"required": [
+							"email",
+							"connection_id"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"okta"
+				],
+				"title": "Okta group",
+				"type": "object"
+			},
+			{
+				"description": "Matches a SAML group.\nRequires a SAML identity provider.",
+				"properties": {
+					"saml": {
+						"properties": {
+							"attribute_name": {
+								"description": "The name of the SAML attribute.",
+								"example": "group",
+								"type": "string"
+							},
+							"attribute_value": {
+								"description": "The SAML attribute value to look for.",
+								"example": "devs@cloudflare.com",
+								"type": "string"
+							}
+						},
+						"required": [
+							"attribute_name",
+							"attribute_value"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"saml"
+				],
+				"title": "SAML group",
+				"type": "object"
+			}
+		],
+		"type": "object"
 	},
 	"type": "array"
 }

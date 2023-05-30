@@ -8,13 +8,24 @@
 			"type": "string"
 		},
 		"enabled": {
-			"$ref": "#/components/schemas/enabled-SAtHxfZz"
+			"description": "Whether or not the Keyless SSL is on or off.",
+			"example": false,
+			"readOnly": true,
+			"type": "boolean"
 		},
 		"host": {
-			"$ref": "#/components/schemas/schemas-host"
+			"description": "The keyless SSL name.",
+			"example": "example.com",
+			"format": "hostname",
+			"maxLength": 253,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/keyless-certificate_components-schemas-identifier"
+			"description": "Keyless certificate identifier tag.",
+			"example": "4d2844d2ce78891c34d0b6c0535a291e",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"modified_on": {
 			"description": "When the Keyless SSL was last modified.",
@@ -24,7 +35,11 @@
 			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/keyless-certificate_components-schemas-name"
+			"description": "The keyless SSL name.",
+			"example": "example.com Keyless SSL",
+			"maxLength": 180,
+			"readOnly": true,
+			"type": "string"
 		},
 		"permissions": {
 			"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
@@ -37,10 +52,21 @@
 			"type": "array"
 		},
 		"port": {
-			"$ref": "#/components/schemas/port-hkC7bD4n"
+			"default": 24008,
+			"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
+			"example": 24008,
+			"maxLength": 65535,
+			"type": "number"
 		},
 		"status": {
-			"$ref": "#/components/schemas/keyless-certificate_components-schemas-status"
+			"description": "Status of the Keyless SSL.",
+			"enum": [
+				"active",
+				"deleted"
+			],
+			"example": "active",
+			"readOnly": true,
+			"type": "string"
 		}
 	},
 	"required": [

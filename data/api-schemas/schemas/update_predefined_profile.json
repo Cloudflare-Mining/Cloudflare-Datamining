@@ -1,7 +1,12 @@
 {
 	"properties": {
 		"allowed_match_count": {
-			"$ref": "#/components/schemas/allowed_match_count"
+			"default": 0,
+			"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+			"example": 5,
+			"maximum": 1000,
+			"minimum": 0,
+			"type": "number"
 		},
 		"entries": {
 			"description": "The entries for this profile.",
@@ -13,7 +18,17 @@
 						"type": "boolean"
 					},
 					"id": {
-						"$ref": "#/components/schemas/entry_id"
+						"allOf": [
+							{
+								"description": "UUID",
+								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+								"maxLength": 36,
+								"readOnly": true,
+								"type": "string"
+							}
+						],
+						"description": "The ID for this entry",
+						"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 					}
 				}
 			},

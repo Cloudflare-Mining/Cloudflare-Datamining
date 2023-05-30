@@ -1,61 +1,128 @@
 {
 	"properties": {
 		"created": {
-			"$ref": "#/components/schemas/schemas-created"
+			"description": "When the device was created.",
+			"example": "2017-06-14T00:00:00Z",
+			"format": "date-time",
+			"type": "string"
 		},
 		"deleted": {
-			"$ref": "#/components/schemas/schemas-deleted"
+			"description": "True if the device was deleted.",
+			"example": true,
+			"type": "boolean"
 		},
 		"device_type": {
-			"$ref": "#/components/schemas/platform"
+			"enum": [
+				"windows",
+				"mac",
+				"linux",
+				"android",
+				"ios"
+			],
+			"example": "windows",
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/devices_components-schemas-uuid"
+			"description": "Device ID.",
+			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"maxLength": 36,
+			"type": "string"
 		},
 		"ip": {
-			"$ref": "#/components/schemas/components-schemas-ip"
+			"description": "IPv4 or IPv6 address.",
+			"example": "1.1.1.1",
+			"type": "string"
 		},
 		"key": {
-			"$ref": "#/components/schemas/schemas-key"
+			"description": "The device's public key.",
+			"example": "yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=",
+			"type": "string"
 		},
 		"last_seen": {
-			"$ref": "#/components/schemas/last_seen"
+			"description": "When the device last connected to Cloudflare services.",
+			"example": "2017-06-14T00:00:00Z",
+			"format": "date-time",
+			"type": "string"
 		},
 		"mac_address": {
-			"$ref": "#/components/schemas/mac_address"
+			"description": "The device mac address.",
+			"example": "00-00-5E-00-53-00",
+			"type": "string"
 		},
 		"manufacturer": {
-			"$ref": "#/components/schemas/manufacturer"
+			"description": "The device manufacturer name.",
+			"example": "My phone corp",
+			"type": "string"
 		},
 		"model": {
-			"$ref": "#/components/schemas/model"
+			"description": "The device model name.",
+			"example": "MyPhone(pro-X)",
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/devices_components-schemas-name"
+			"description": "The device name.",
+			"example": "My mobile device",
+			"type": "string"
 		},
 		"os_distro_name": {
-			"$ref": "#/components/schemas/os_distro_name"
+			"description": "The Linux distro name.",
+			"example": "ubuntu",
+			"type": "string"
 		},
 		"os_distro_revision": {
-			"$ref": "#/components/schemas/os_distro_revision"
+			"description": "The Linux distro revision.",
+			"example": "1.0.0",
+			"type": "string"
 		},
 		"os_version": {
-			"$ref": "#/components/schemas/os_version"
+			"description": "The operating system version.",
+			"example": "10.0.0",
+			"type": "string"
 		},
 		"revoked_at": {
-			"$ref": "#/components/schemas/revoked_at"
+			"description": "When the device was revoked.",
+			"example": "2017-06-14T00:00:00Z",
+			"format": "date-time",
+			"type": "string"
 		},
 		"serial_number": {
-			"$ref": "#/components/schemas/components-schemas-serial_number-v7ExXmkS"
+			"description": "The device serial number.",
+			"example": "EXAMPLEHMD6R",
+			"type": "string"
 		},
 		"updated": {
-			"$ref": "#/components/schemas/updated"
+			"description": "When the device was updated.",
+			"example": "2017-06-14T00:00:00Z",
+			"format": "date-time",
+			"type": "string"
 		},
 		"user": {
-			"$ref": "#/components/schemas/user"
+			"properties": {
+				"email": {
+					"description": "The contact email address of the user.",
+					"example": "user@example.com",
+					"maxLength": 90,
+					"type": "string"
+				},
+				"id": {
+					"description": "UUID",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				},
+				"name": {
+					"description": "The enrolled device user's name.",
+					"example": "John Appleseed",
+					"type": "string"
+				}
+			},
+			"type": "object"
 		},
 		"version": {
-			"$ref": "#/components/schemas/devices_components-schemas-version"
+			"description": "The WARP client version.",
+			"example": "1.0.0",
+			"type": "string"
 		}
 	},
 	"type": "object"

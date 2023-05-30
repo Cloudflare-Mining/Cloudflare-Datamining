@@ -1,43 +1,79 @@
 {
 	"properties": {
 		"custom_page_html": {
-			"$ref": "#/components/schemas/event_custom_page_html"
+			"description": "If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.",
+			"example": "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}",
+			"nullable": true,
+			"type": "string"
 		},
 		"description": {
-			"$ref": "#/components/schemas/event_description"
+			"default": "",
+			"description": "A note that you can use to add more details about the event.",
+			"example": "Production event - DO NOT MODIFY",
+			"type": "string"
 		},
 		"disable_session_renewal": {
-			"$ref": "#/components/schemas/event_disable_session_renewal"
+			"description": "If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.",
+			"nullable": true,
+			"type": "boolean"
 		},
 		"event_end_time": {
-			"$ref": "#/components/schemas/event_end_time"
+			"description": "An ISO 8601 timestamp that marks the end of the event.",
+			"example": "2021-09-28T17:00:00.000Z",
+			"type": "string"
 		},
 		"event_start_time": {
-			"$ref": "#/components/schemas/event_start_time"
+			"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
+			"example": "2021-09-28T15:30:00.000Z",
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/event_name"
+			"description": "A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.",
+			"example": "production_webinar_event",
+			"type": "string"
 		},
 		"new_users_per_minute": {
-			"$ref": "#/components/schemas/event_new_users_per_minute"
+			"description": "If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.",
+			"maximum": 2147483647,
+			"minimum": 200,
+			"nullable": true,
+			"type": "integer"
 		},
 		"prequeue_start_time": {
-			"$ref": "#/components/schemas/event_prequeue_start_time"
+			"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
+			"example": "2021-09-28T15:00:00.000Z",
+			"nullable": true,
+			"type": "string"
 		},
 		"queueing_method": {
-			"$ref": "#/components/schemas/event_queueing_method"
+			"description": "If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.",
+			"example": "random",
+			"nullable": true,
+			"type": "string"
 		},
 		"session_duration": {
-			"$ref": "#/components/schemas/event_session_duration"
+			"description": "If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.",
+			"maximum": 30,
+			"minimum": 1,
+			"nullable": true,
+			"type": "integer"
 		},
 		"shuffle_at_event_start": {
-			"$ref": "#/components/schemas/event_shuffle_at_event_start"
+			"default": false,
+			"description": "If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.",
+			"type": "boolean"
 		},
 		"suspended": {
-			"$ref": "#/components/schemas/event_suspended"
+			"default": false,
+			"description": "Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.",
+			"type": "boolean"
 		},
 		"total_active_users": {
-			"$ref": "#/components/schemas/event_total_active_users"
+			"description": "If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.",
+			"maximum": 2147483647,
+			"minimum": 200,
+			"nullable": true,
+			"type": "integer"
 		}
 	},
 	"required": [

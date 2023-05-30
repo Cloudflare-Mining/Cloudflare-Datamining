@@ -5,7 +5,13 @@
 		"off"
 	],
 	"items": {
-		"$ref": "#/components/schemas/mode_anomaly"
+		"description": "When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
+		"enum": [
+			"on",
+			"off"
+		],
+		"example": "on",
+		"type": "string"
 	},
 	"readOnly": true,
 	"type": "array"

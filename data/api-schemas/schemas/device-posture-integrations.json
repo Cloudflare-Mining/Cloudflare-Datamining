@@ -1,19 +1,68 @@
 {
 	"properties": {
 		"config": {
-			"$ref": "#/components/schemas/config_response"
+			"description": "The configuration object containing third party integration information.",
+			"example": {
+				"api_url": "https://as123.awmdm.com/API",
+				"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+				"client_id": "example client id"
+			},
+			"oneOf": [
+				{
+					"description": "The Workspace One Config Response.",
+					"properties": {
+						"api_url": {
+							"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard.",
+							"example": "https://as123.awmdm.com/API",
+							"type": "string"
+						},
+						"auth_url": {
+							"description": "The Workspace One Authorization URL depending on your region.",
+							"example": "https://na.uemauth.vmwservices.com/connect/token",
+							"type": "string"
+						},
+						"client_id": {
+							"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard.",
+							"example": "example client id",
+							"type": "string"
+						}
+					},
+					"required": [
+						"api_url",
+						"auth_url",
+						"client_id"
+					],
+					"type": "object"
+				}
+			],
+			"type": "object"
 		},
 		"id": {
-			"$ref": "#/components/schemas/device-posture-integrations_components-schemas-uuid"
+			"description": "API uuid tag.",
+			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"maxLength": 36,
+			"type": "string"
 		},
 		"interval": {
-			"$ref": "#/components/schemas/schemas-interval"
+			"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+			"example": "10m",
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/device-posture-integrations_components-schemas-name"
+			"description": "The name of the Device Posture Integration.",
+			"example": "My Workspace One Integration",
+			"type": "string"
 		},
 		"type": {
-			"$ref": "#/components/schemas/device-posture-integrations_components-schemas-type"
+			"description": "The type of Device Posture Integration.",
+			"enum": [
+				"workspace_one",
+				"crowdstrike_s2s",
+				"uptycs",
+				"intune"
+			],
+			"example": "workspace_one",
+			"type": "string"
 		}
 	},
 	"type": "object"

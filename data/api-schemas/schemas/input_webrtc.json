@@ -2,7 +2,9 @@
 	"description": "Details for streaming to a live input using WebRTC.",
 	"properties": {
 		"url": {
-			"$ref": "#/components/schemas/input_webrtc_url"
+			"description": "The WebRTC URL you provide to the broadcaster, which they stream live video to.",
+			"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/publish",
+			"type": "string"
 		}
 	},
 	"type": "object"

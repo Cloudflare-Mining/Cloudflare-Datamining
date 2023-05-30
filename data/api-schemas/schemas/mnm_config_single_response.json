@@ -1,12 +1,130 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/mnm_config"
+					"properties": {
+						"default_sampling": {
+							"default": 1,
+							"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+							"minimum": 1,
+							"type": "number"
+						},
+						"name": {
+							"description": "The account name.",
+							"example": "cloudflare user's account",
+							"type": "string"
+						},
+						"router_ips": {
+							"items": {
+								"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+								"example": "203.0.113.1/32",
+								"type": "string"
+							},
+							"type": "array"
+						}
+					},
+					"required": [
+						"name",
+						"default_sampling",
+						"router_ips"
+					],
+					"type": "object"
 				}
 			},
 			"type": "object"

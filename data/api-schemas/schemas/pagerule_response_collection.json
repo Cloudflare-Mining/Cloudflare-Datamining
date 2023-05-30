@@ -1,13 +1,207 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/schemas-api-response-common"
+			"properties": {
+				"errors": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"messages": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"result": {
+					"anyOf": [
+						{
+							"type": "object"
+						},
+						{
+							"items": {},
+							"type": "array"
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"success": {
+					"description": "Whether the API call was successful",
+					"enum": [
+						true
+					],
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"success",
+				"errors",
+				"messages",
+				"result"
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/page-rule"
+						"properties": {
+							"actions": {
+								"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
+								"example": [
+									{
+										"id": "browser_check",
+										"value": "on"
+									}
+								],
+								"items": {
+									"oneOf": [
+										{
+											"properties": {
+												"modified_on": {
+													"description": "The timestamp of when the override was last modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "The type of route.",
+													"enum": [
+														"forward_url"
+													],
+													"example": "forward_url"
+												},
+												"value": {
+													"properties": {
+														"type": {
+															"description": "The response type for the URL redirect.",
+															"enum": [
+																"temporary",
+																"permanent"
+															],
+															"example": "temporary"
+														},
+														"url": {
+															"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
+															"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+															"type": "string"
+														}
+													}
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								"type": "array"
+							},
+							"created_on": {
+								"description": "The timestamp of when the Page Rule was created.",
+								"example": "2014-01-01T05:20:00.12345Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"id": {
+								"description": "Identifier",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							},
+							"modified_on": {
+								"description": "The timestamp of when the Page Rule was last modified.",
+								"example": "2014-01-01T05:20:00.12345Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"priority": {
+								"default": 1,
+								"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
+								"type": "integer"
+							},
+							"status": {
+								"default": "disabled",
+								"description": "The status of the Page Rule.",
+								"enum": [
+									"active",
+									"disabled"
+								],
+								"example": "active",
+								"type": "string"
+							},
+							"targets": {
+								"description": "The rule targets to evaluate on each request.",
+								"example": [
+									{
+										"constraint": {
+											"operator": "matches",
+											"value": "*example.com/images/*"
+										},
+										"target": "url"
+									}
+								],
+								"items": {
+									"description": "A request condition target.",
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/url_target"
+										}
+									],
+									"required": [
+										"target",
+										"constraint"
+									]
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"id",
+							"targets",
+							"actions",
+							"priority",
+							"status",
+							"modified_on",
+							"created_on"
+						],
+						"type": "object"
 					},
 					"type": "array"
 				}

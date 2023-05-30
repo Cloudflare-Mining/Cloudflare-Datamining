@@ -1,13 +1,312 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/device_settings_policy-uz4qPy1N"
+						"properties": {
+							"allow_mode_switch": {
+								"description": "Whether to allow the user to switch WARP between modes.",
+								"example": true,
+								"type": "boolean"
+							},
+							"allow_updates": {
+								"description": "Whether to receive update notifications when a new version of the client is available.",
+								"example": true,
+								"type": "boolean"
+							},
+							"allowed_to_leave": {
+								"description": "Whether to allow devices to leave the organization.",
+								"example": true,
+								"type": "boolean"
+							},
+							"auto_connect": {
+								"description": "The amount of time in minutes to reconnect after having been disabled.",
+								"example": 0,
+								"type": "number"
+							},
+							"captive_portal": {
+								"description": "Turn on the captive portal after the specified amount of time.",
+								"example": 180,
+								"type": "number"
+							},
+							"default": {
+								"description": "Whether the policy is the default policy for an account.",
+								"example": false,
+								"type": "boolean"
+							},
+							"description": {
+								"description": "A description of the policy.",
+								"example": "Policy for test teams.",
+								"maxLength": 500,
+								"type": "string"
+							},
+							"disable_auto_fallback": {
+								"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+								"example": true,
+								"type": "boolean"
+							},
+							"enabled": {
+								"description": "Whether the policy will be applied to matching devices.",
+								"example": true,
+								"type": "boolean"
+							},
+							"exclude": {
+								"items": {
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the split tunnel item, displayed in the client UI.",
+											"example": "Exclude testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"address",
+										"description"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"exclude_office_ips": {
+								"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+								"example": true,
+								"type": "boolean"
+							},
+							"fallback_domains": {
+								"items": {
+									"properties": {
+										"description": {
+											"description": "A description of the fallback domain, displayed in the client UI.",
+											"example": "Domain bypass for local development",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"dns_server": {
+											"description": "A list of IP addresses to handle domain resolution.",
+											"items": {},
+											"type": "array"
+										},
+										"suffix": {
+											"description": "The domain suffix to match when resolving locally.",
+											"example": "example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"suffix"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"gateway_unique_id": {
+								"example": "699d98642c564d2e855e9661899b7252",
+								"type": "string"
+							},
+							"include": {
+								"items": {
+									"properties": {
+										"address": {
+											"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description of the split tunnel item, displayed in the client UI.",
+											"example": "Include testing domains from the tunnel",
+											"maxLength": 100,
+											"type": "string"
+										},
+										"host": {
+											"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
+											"example": "*.example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"address",
+										"description"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"match": {
+								"description": "The wirefilter expression to match devices.",
+								"example": "user.identity == \"test@cloudflare.com\"",
+								"maxLength": 500,
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the device settings policy.",
+								"example": "Allow Developers",
+								"maxLength": 100,
+								"type": "string"
+							},
+							"policy_id": {
+								"description": "Device ID.",
+								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+								"maxLength": 36,
+								"type": "string"
+							},
+							"precedence": {
+								"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
+								"example": 100,
+								"type": "number"
+							},
+							"service_mode_v2": {
+								"properties": {
+									"mode": {
+										"description": "The mode to run the WARP client under.",
+										"example": "proxy",
+										"type": "string"
+									},
+									"port": {
+										"description": "The port number when used with proxy mode.",
+										"example": 3000,
+										"type": "number"
+									}
+								},
+								"type": "object"
+							},
+							"support_url": {
+								"description": "The URL to launch when the Send Feedback button is clicked.",
+								"example": "https://1.1.1.1/help",
+								"type": "string"
+							},
+							"switch_locked": {
+								"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
 					},
 					"type": "array"
 				}

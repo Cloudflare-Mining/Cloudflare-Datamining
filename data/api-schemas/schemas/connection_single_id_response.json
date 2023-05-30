@@ -1,14 +1,121 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/connection_single_response"
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"anyOf": [
+										{
+											"type": "object"
+										},
+										{
+											"items": {},
+											"type": "array"
+										},
+										{
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						},
+						{
+							"properties": {
+								"result": {
+									"anyOf": [
+										{
+											"type": "object"
+										},
+										{
+											"type": "string"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"type": "object"
+						}
+					}
+				}
+			]
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
 						"id": {
-							"$ref": "#/components/schemas/connection_components-schemas-identifier"
+							"description": "Connection identifier tag.",
+							"example": "c4a7362d577a6c3019a474fd6f485821",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
 						}
 					}
 				}

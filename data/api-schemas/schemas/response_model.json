@@ -1,13 +1,19 @@
 {
 	"properties": {
 		"available": {
-			"$ref": "#/components/schemas/available"
+			"description": "When true, the Managed Transform is available in the current Cloudflare plan.",
+			"example": true,
+			"type": "boolean"
 		},
 		"enabled": {
-			"$ref": "#/components/schemas/enabled-Di8C0DvI"
+			"description": "When true, the Managed Transform is enabled.",
+			"example": true,
+			"type": "boolean"
 		},
 		"id": {
-			"$ref": "#/components/schemas/id-cEHDmbzG"
+			"description": "Human-readable identifier of the Managed Transform.",
+			"example": "add_cf-bot-score_header",
+			"type": "string"
 		}
 	},
 	"type": "object"

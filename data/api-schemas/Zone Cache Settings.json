@@ -31,7 +31,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-XovesNkX"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -47,7 +67,25 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/base-yRJOdAfT"
+													"properties": {
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"example": "development_mode",
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"modified_on"
+													]
 												},
 												{
 													"properties": {
@@ -82,7 +120,27 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-XovesNkX"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	],
+																	"nullable": true
+																}
+															}
+														}
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -98,7 +156,25 @@
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/base-yRJOdAfT"
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"example": "development_mode",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"modified_on"
+															]
 														},
 														{
 															"properties": {
@@ -124,7 +200,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -138,7 +232,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -225,7 +337,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-XovesNkX"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -241,12 +373,35 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/cache_reserve"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/base-yRJOdAfT"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"cache_reserve"
+																	],
+																	"example": "cache_reserve"
+																}
+															}
+														}
+													],
+													"description": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
+													"title": "Cache Reserve"
 												},
 												{
 													"properties": {
 														"value": {
-															"$ref": "#/components/schemas/cache_reserve_value"
+															"default": "off",
+															"description": "Value of the Cache Reserve zone setting.",
+															"enum": [
+																"on",
+																"off"
+															],
+															"type": "string"
 														}
 													},
 													"required": [
@@ -273,7 +428,27 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-XovesNkX"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	],
+																	"nullable": true
+																}
+															}
+														}
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -289,12 +464,35 @@
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/cache_reserve"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/base-yRJOdAfT"
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "ID of the zone setting.",
+																			"enum": [
+																				"cache_reserve"
+																			],
+																			"example": "cache_reserve"
+																		}
+																	}
+																}
+															],
+															"description": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
+															"title": "Cache Reserve"
 														},
 														{
 															"properties": {
 																"value": {
-																	"$ref": "#/components/schemas/cache_reserve_value"
+																	"default": "off",
+																	"description": "Value of the Cache Reserve zone setting.",
+																	"enum": [
+																		"on",
+																		"off"
+																	],
+																	"type": "string"
 																}
 															},
 															"required": [
@@ -312,7 +510,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -326,7 +542,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -413,7 +647,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-XovesNkX"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -429,12 +683,46 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/regional_tiered_cache"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/base-yRJOdAfT"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"tc_regional"
+																	],
+																	"example": "tc_regional"
+																}
+															}
+														}
+													],
+													"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
+													"title": "Regional Tiered Cache"
 												},
 												{
 													"properties": {
 														"value": {
-															"$ref": "#/components/schemas/regional_tiered_cache"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/base-yRJOdAfT"
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "ID of the zone setting.",
+																			"enum": [
+																				"tc_regional"
+																			],
+																			"example": "tc_regional"
+																		}
+																	}
+																}
+															],
+															"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
+															"title": "Regional Tiered Cache"
 														}
 													},
 													"required": [
@@ -461,7 +749,27 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-XovesNkX"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	],
+																	"nullable": true
+																}
+															}
+														}
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -477,12 +785,46 @@
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/regional_tiered_cache"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/base-yRJOdAfT"
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "ID of the zone setting.",
+																			"enum": [
+																				"tc_regional"
+																			],
+																			"example": "tc_regional"
+																		}
+																	}
+																}
+															],
+															"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
+															"title": "Regional Tiered Cache"
 														},
 														{
 															"properties": {
 																"value": {
-																	"$ref": "#/components/schemas/regional_tiered_cache"
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/base-yRJOdAfT"
+																		},
+																		{
+																			"properties": {
+																				"id": {
+																					"description": "ID of the zone setting.",
+																					"enum": [
+																						"tc_regional"
+																					],
+																					"example": "tc_regional"
+																				}
+																			}
+																		}
+																	],
+																	"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
+																	"title": "Regional Tiered Cache"
 																}
 															},
 															"required": [
@@ -500,7 +842,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -514,7 +874,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -601,7 +979,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-XovesNkX"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -617,12 +1015,142 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/variants"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/base-yRJOdAfT"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"variants"
+																	],
+																	"example": "variants"
+																}
+															}
+														}
+													],
+													"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
+													"title": "Variants Caching"
 												},
 												{
 													"properties": {
 														"value": {
-															"$ref": "#/components/schemas/variants_value"
+															"description": "Value of the zone setting.",
+															"properties": {
+																"avif": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for avif.",
+																	"example": [
+																		"image/webp",
+																		"image/jpeg"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"bmp": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for bmp.",
+																	"example": [
+																		"image/webp",
+																		"image/jpeg"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"gif": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for gif.",
+																	"example": [
+																		"image/webp",
+																		"image/jpeg"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"jp2": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for jp2.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"jpeg": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for jpeg.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"jpg": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for jpg.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"jpg2": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for jpg2.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"png": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for png.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"tif": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for tif.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"tiff": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for tiff.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"webp": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for webp.",
+																	"example": [
+																		"image/jpeg",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																}
+															},
+															"type": "object"
 														}
 													},
 													"required": [
@@ -649,7 +1177,27 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-XovesNkX"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	],
+																	"nullable": true
+																}
+															}
+														}
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -665,12 +1213,142 @@
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/variants"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/base-yRJOdAfT"
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "ID of the zone setting.",
+																			"enum": [
+																				"variants"
+																			],
+																			"example": "variants"
+																		}
+																	}
+																}
+															],
+															"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
+															"title": "Variants Caching"
 														},
 														{
 															"properties": {
 																"value": {
-																	"$ref": "#/components/schemas/variants_value"
+																	"description": "Value of the zone setting.",
+																	"properties": {
+																		"avif": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for avif.",
+																			"example": [
+																				"image/webp",
+																				"image/jpeg"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"bmp": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for bmp.",
+																			"example": [
+																				"image/webp",
+																				"image/jpeg"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"gif": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for gif.",
+																			"example": [
+																				"image/webp",
+																				"image/jpeg"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"jp2": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for jp2.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"jpeg": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for jpeg.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"jpg": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for jpg.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"jpg2": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for jpg2.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"png": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for png.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"tif": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for tif.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"tiff": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for tiff.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"webp": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for webp.",
+																			"example": [
+																				"image/jpeg",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		}
+																	},
+																	"type": "object"
 																}
 															},
 															"required": [
@@ -688,7 +1366,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -702,7 +1398,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -812,7 +1526,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-XovesNkX"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -828,12 +1562,35 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/cache_reserve"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/base-yRJOdAfT"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"cache_reserve"
+																	],
+																	"example": "cache_reserve"
+																}
+															}
+														}
+													],
+													"description": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
+													"title": "Cache Reserve"
 												},
 												{
 													"properties": {
 														"value": {
-															"$ref": "#/components/schemas/cache_reserve_value"
+															"default": "off",
+															"description": "Value of the Cache Reserve zone setting.",
+															"enum": [
+																"on",
+																"off"
+															],
+															"type": "string"
 														}
 													},
 													"required": [
@@ -860,7 +1617,27 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-XovesNkX"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	],
+																	"nullable": true
+																}
+															}
+														}
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -876,12 +1653,35 @@
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/cache_reserve"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/base-yRJOdAfT"
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "ID of the zone setting.",
+																			"enum": [
+																				"cache_reserve"
+																			],
+																			"example": "cache_reserve"
+																		}
+																	}
+																}
+															],
+															"description": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
+															"title": "Cache Reserve"
 														},
 														{
 															"properties": {
 																"value": {
-																	"$ref": "#/components/schemas/cache_reserve_value"
+																	"default": "off",
+																	"description": "Value of the Cache Reserve zone setting.",
+																	"enum": [
+																		"on",
+																		"off"
+																	],
+																	"type": "string"
 																}
 															},
 															"required": [
@@ -899,7 +1699,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -913,7 +1731,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1023,7 +1859,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-XovesNkX"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1039,12 +1895,46 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/regional_tiered_cache"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/base-yRJOdAfT"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"tc_regional"
+																	],
+																	"example": "tc_regional"
+																}
+															}
+														}
+													],
+													"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
+													"title": "Regional Tiered Cache"
 												},
 												{
 													"properties": {
 														"value": {
-															"$ref": "#/components/schemas/regional_tiered_cache"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/base-yRJOdAfT"
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "ID of the zone setting.",
+																			"enum": [
+																				"tc_regional"
+																			],
+																			"example": "tc_regional"
+																		}
+																	}
+																}
+															],
+															"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
+															"title": "Regional Tiered Cache"
 														}
 													},
 													"required": [
@@ -1071,7 +1961,27 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-XovesNkX"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	],
+																	"nullable": true
+																}
+															}
+														}
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -1087,12 +1997,46 @@
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/regional_tiered_cache"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/base-yRJOdAfT"
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "ID of the zone setting.",
+																			"enum": [
+																				"tc_regional"
+																			],
+																			"example": "tc_regional"
+																		}
+																	}
+																}
+															],
+															"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
+															"title": "Regional Tiered Cache"
 														},
 														{
 															"properties": {
 																"value": {
-																	"$ref": "#/components/schemas/regional_tiered_cache"
+																	"allOf": [
+																		{
+																			"$ref": "#/components/schemas/base-yRJOdAfT"
+																		},
+																		{
+																			"properties": {
+																				"id": {
+																					"description": "ID of the zone setting.",
+																					"enum": [
+																						"tc_regional"
+																					],
+																					"example": "tc_regional"
+																				}
+																			}
+																		}
+																	],
+																	"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
+																	"title": "Regional Tiered Cache"
 																}
 															},
 															"required": [
@@ -1110,7 +2054,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1124,7 +2086,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1341,7 +2321,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-XovesNkX"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1357,12 +2357,142 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/variants"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/base-yRJOdAfT"
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"variants"
+																	],
+																	"example": "variants"
+																}
+															}
+														}
+													],
+													"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
+													"title": "Variants Caching"
 												},
 												{
 													"properties": {
 														"value": {
-															"$ref": "#/components/schemas/variants_value"
+															"description": "Value of the zone setting.",
+															"properties": {
+																"avif": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for avif.",
+																	"example": [
+																		"image/webp",
+																		"image/jpeg"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"bmp": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for bmp.",
+																	"example": [
+																		"image/webp",
+																		"image/jpeg"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"gif": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for gif.",
+																	"example": [
+																		"image/webp",
+																		"image/jpeg"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"jp2": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for jp2.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"jpeg": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for jpeg.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"jpg": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for jpg.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"jpg2": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for jpg2.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"png": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for png.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"tif": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for tif.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"tiff": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for tiff.",
+																	"example": [
+																		"image/webp",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																},
+																"webp": {
+																	"description": "List of strings with the MIME types of all the variants that should be served for webp.",
+																	"example": [
+																		"image/jpeg",
+																		"image/avif"
+																	],
+																	"items": {},
+																	"type": "array",
+																	"uniqueItems": true
+																}
+															},
+															"type": "object"
 														}
 													},
 													"required": [
@@ -1389,7 +2519,27 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-XovesNkX"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	],
+																	"nullable": true
+																}
+															}
+														}
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -1405,12 +2555,142 @@
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/variants"
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/base-yRJOdAfT"
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "ID of the zone setting.",
+																			"enum": [
+																				"variants"
+																			],
+																			"example": "variants"
+																		}
+																	}
+																}
+															],
+															"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
+															"title": "Variants Caching"
 														},
 														{
 															"properties": {
 																"value": {
-																	"$ref": "#/components/schemas/variants_value"
+																	"description": "Value of the zone setting.",
+																	"properties": {
+																		"avif": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for avif.",
+																			"example": [
+																				"image/webp",
+																				"image/jpeg"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"bmp": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for bmp.",
+																			"example": [
+																				"image/webp",
+																				"image/jpeg"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"gif": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for gif.",
+																			"example": [
+																				"image/webp",
+																				"image/jpeg"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"jp2": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for jp2.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"jpeg": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for jpeg.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"jpg": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for jpg.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"jpg2": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for jpg2.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"png": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for png.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"tif": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for tif.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"tiff": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for tiff.",
+																			"example": [
+																				"image/webp",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		},
+																		"webp": {
+																			"description": "List of strings with the MIME types of all the variants that should be served for webp.",
+																			"example": [
+																				"image/jpeg",
+																				"image/avif"
+																			],
+																			"items": {},
+																			"type": "array",
+																			"uniqueItems": true
+																		}
+																	},
+																	"type": "object"
 																}
 															},
 															"required": [
@@ -1428,7 +2708,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1442,7 +2740,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

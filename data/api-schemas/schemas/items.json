@@ -3,10 +3,15 @@
 	"items": {
 		"properties": {
 			"created_at": {
-				"$ref": "#/components/schemas/timestamp"
+				"example": "2014-01-01T05:20:00.12345Z",
+				"format": "date-time",
+				"readOnly": true,
+				"type": "string"
 			},
 			"value": {
-				"$ref": "#/components/schemas/value-Ok2P01be"
+				"description": "The value of the item in a List.",
+				"example": "8GE8721REF",
+				"type": "string"
 			}
 		},
 		"type": "object"

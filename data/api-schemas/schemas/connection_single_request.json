@@ -1,12 +1,19 @@
 {
 	"properties": {
 		"enabled": {
-			"$ref": "#/components/schemas/connection_components-schemas-enabled"
+			"default": false,
+			"description": "A value indicating whether the connection is enabled or not.",
+			"example": true,
+			"type": "boolean"
 		},
 		"zone": {
 			"properties": {
 				"id": {
-					"$ref": "#/components/schemas/common_components-schemas-identifier"
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		}

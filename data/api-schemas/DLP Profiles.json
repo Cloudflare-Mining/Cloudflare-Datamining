@@ -10,7 +10,11 @@
 				"schema": {
 					"allOf": [
 						{
-							"$ref": "#/components/schemas/uuid"
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
 						}
 					],
 					"description": "The ID for this profile",
@@ -43,7 +47,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -75,7 +151,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -100,7 +248,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -114,7 +280,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -185,13 +369,40 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/profiles-6Js3vxKL"
+												"anyOf": [
+													{
+														"$ref": "#/components/schemas/predefined_profile"
+													},
+													{
+														"$ref": "#/components/schemas/custom_profile"
+													},
+													{
+														"$ref": "#/components/schemas/integration_profile"
+													}
+												]
 											},
 											"type": "array"
 										}
@@ -211,13 +422,40 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/profiles-6Js3vxKL"
+														"anyOf": [
+															{
+																"$ref": "#/components/schemas/predefined_profile"
+															},
+															{
+																"$ref": "#/components/schemas/custom_profile"
+															},
+															{
+																"$ref": "#/components/schemas/integration_profile"
+															}
+														]
 													},
 													"type": "array"
 												}
@@ -230,7 +468,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -244,7 +500,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -302,7 +576,11 @@
 				"schema": {
 					"allOf": [
 						{
-							"$ref": "#/components/schemas/uuid"
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
 						}
 					],
 					"description": "The ID for this profile",
@@ -329,20 +607,145 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"anyOf": [
 												{
-													"$ref": "#/components/schemas/predefined_profile"
+													"properties": {
+														"allowed_match_count": {
+															"$ref": "#/components/schemas/allowed_match_count"
+														},
+														"entries": {
+															"description": "The entries for this profile.",
+															"items": {
+																"$ref": "#/components/schemas/predefined_entry"
+															},
+															"type": "array"
+														},
+														"id": {
+															"$ref": "#/components/schemas/profile_id"
+														},
+														"name": {
+															"description": "The name of the profile.",
+															"example": "Generic CVV Card Number",
+															"type": "string"
+														},
+														"type": {
+															"description": "The type of the profile.",
+															"enum": [
+																"predefined"
+															],
+															"example": "predefined",
+															"type": "string"
+														}
+													},
+													"title": "Predefined profile",
+													"type": "object"
 												},
 												{
-													"$ref": "#/components/schemas/custom_profile"
+													"properties": {
+														"allowed_match_count": {
+															"$ref": "#/components/schemas/allowed_match_count"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"description": "The description of the profile.",
+															"example": "A standard CVV card number",
+															"type": "string"
+														},
+														"entries": {
+															"description": "The entries for this profile.",
+															"items": {
+																"$ref": "#/components/schemas/custom_entry-sCBawGQf"
+															},
+															"type": "array"
+														},
+														"id": {
+															"$ref": "#/components/schemas/profile_id"
+														},
+														"name": {
+															"description": "The name of the profile.",
+															"example": "Generic CVV Card Number",
+															"type": "string"
+														},
+														"type": {
+															"description": "The type of the profile.",
+															"enum": [
+																"custom"
+															],
+															"example": "custom",
+															"type": "string"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"title": "Custom profile",
+													"type": "object"
 												},
 												{
-													"$ref": "#/components/schemas/integration_profile"
+													"properties": {
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"description": "The description of the profile.",
+															"type": "string"
+														},
+														"entries": {
+															"description": "The entries for this profile.",
+															"items": {
+																"$ref": "#/components/schemas/integration_entry"
+															},
+															"type": "array"
+														},
+														"id": {
+															"$ref": "#/components/schemas/profile_id"
+														},
+														"name": {
+															"description": "The name of the profile.",
+															"example": "MIP Sensitivity Labels: Profile 1",
+															"type": "string"
+														},
+														"type": {
+															"description": "The type of the profile.",
+															"enum": [
+																"integration"
+															],
+															"example": "integration",
+															"type": "string"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"title": "Integration profile",
+													"type": "object"
 												}
 											]
 										}
@@ -362,20 +765,145 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"anyOf": [
 														{
-															"$ref": "#/components/schemas/predefined_profile"
+															"properties": {
+																"allowed_match_count": {
+																	"$ref": "#/components/schemas/allowed_match_count"
+																},
+																"entries": {
+																	"description": "The entries for this profile.",
+																	"items": {
+																		"$ref": "#/components/schemas/predefined_entry"
+																	},
+																	"type": "array"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/profile_id"
+																},
+																"name": {
+																	"description": "The name of the profile.",
+																	"example": "Generic CVV Card Number",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The type of the profile.",
+																	"enum": [
+																		"predefined"
+																	],
+																	"example": "predefined",
+																	"type": "string"
+																}
+															},
+															"title": "Predefined profile",
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/custom_profile"
+															"properties": {
+																"allowed_match_count": {
+																	"$ref": "#/components/schemas/allowed_match_count"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"description": {
+																	"description": "The description of the profile.",
+																	"example": "A standard CVV card number",
+																	"type": "string"
+																},
+																"entries": {
+																	"description": "The entries for this profile.",
+																	"items": {
+																		"$ref": "#/components/schemas/custom_entry-sCBawGQf"
+																	},
+																	"type": "array"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/profile_id"
+																},
+																"name": {
+																	"description": "The name of the profile.",
+																	"example": "Generic CVV Card Number",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The type of the profile.",
+																	"enum": [
+																		"custom"
+																	],
+																	"example": "custom",
+																	"type": "string"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"title": "Custom profile",
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/integration_profile"
+															"properties": {
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"description": {
+																	"description": "The description of the profile.",
+																	"type": "string"
+																},
+																"entries": {
+																	"description": "The entries for this profile.",
+																	"items": {
+																		"$ref": "#/components/schemas/integration_entry"
+																	},
+																	"type": "array"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/profile_id"
+																},
+																"name": {
+																	"description": "The name of the profile.",
+																	"example": "MIP Sensitivity Labels: Profile 1",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The type of the profile.",
+																	"enum": [
+																		"integration"
+																	],
+																	"example": "integration",
+																	"type": "string"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"title": "Integration profile",
+															"type": "object"
 														}
 													]
 												}
@@ -388,7 +916,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -402,7 +948,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -460,7 +1024,11 @@
 				"schema": {
 					"allOf": [
 						{
-							"$ref": "#/components/schemas/uuid"
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
 						}
 					],
 					"description": "The ID for this profile",
@@ -487,14 +1055,74 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/custom_profile"
+													"properties": {
+														"allowed_match_count": {
+															"$ref": "#/components/schemas/allowed_match_count"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"description": "The description of the profile.",
+															"example": "A standard CVV card number",
+															"type": "string"
+														},
+														"entries": {
+															"description": "The entries for this profile.",
+															"items": {
+																"$ref": "#/components/schemas/custom_entry-sCBawGQf"
+															},
+															"type": "array"
+														},
+														"id": {
+															"$ref": "#/components/schemas/profile_id"
+														},
+														"name": {
+															"description": "The name of the profile.",
+															"example": "Generic CVV Card Number",
+															"type": "string"
+														},
+														"type": {
+															"description": "The type of the profile.",
+															"enum": [
+																"custom"
+															],
+															"example": "custom",
+															"type": "string"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"title": "Custom profile",
+													"type": "object"
 												}
 											]
 										}
@@ -514,14 +1142,74 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/custom_profile"
+															"properties": {
+																"allowed_match_count": {
+																	"$ref": "#/components/schemas/allowed_match_count"
+																},
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"description": {
+																	"description": "The description of the profile.",
+																	"example": "A standard CVV card number",
+																	"type": "string"
+																},
+																"entries": {
+																	"description": "The entries for this profile.",
+																	"items": {
+																		"$ref": "#/components/schemas/custom_entry-sCBawGQf"
+																	},
+																	"type": "array"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/profile_id"
+																},
+																"name": {
+																	"description": "The name of the profile.",
+																	"example": "Generic CVV Card Number",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The type of the profile.",
+																	"enum": [
+																		"custom"
+																	],
+																	"example": "custom",
+																	"type": "string"
+																},
+																"updated_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																}
+															},
+															"title": "Custom profile",
+															"type": "object"
 														}
 													]
 												}
@@ -534,7 +1222,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -548,7 +1254,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -606,7 +1330,11 @@
 				"schema": {
 					"allOf": [
 						{
-							"$ref": "#/components/schemas/uuid"
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
 						}
 					],
 					"description": "The ID for this profile",
@@ -633,14 +1361,63 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/predefined_profile"
+													"properties": {
+														"allowed_match_count": {
+															"$ref": "#/components/schemas/allowed_match_count"
+														},
+														"entries": {
+															"description": "The entries for this profile.",
+															"items": {
+																"$ref": "#/components/schemas/predefined_entry"
+															},
+															"type": "array"
+														},
+														"id": {
+															"$ref": "#/components/schemas/profile_id"
+														},
+														"name": {
+															"description": "The name of the profile.",
+															"example": "Generic CVV Card Number",
+															"type": "string"
+														},
+														"type": {
+															"description": "The type of the profile.",
+															"enum": [
+																"predefined"
+															],
+															"example": "predefined",
+															"type": "string"
+														}
+													},
+													"title": "Predefined profile",
+													"type": "object"
 												}
 											]
 										}
@@ -660,14 +1437,63 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/predefined_profile"
+															"properties": {
+																"allowed_match_count": {
+																	"$ref": "#/components/schemas/allowed_match_count"
+																},
+																"entries": {
+																	"description": "The entries for this profile.",
+																	"items": {
+																		"$ref": "#/components/schemas/predefined_entry"
+																	},
+																	"type": "array"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/profile_id"
+																},
+																"name": {
+																	"description": "The name of the profile.",
+																	"example": "Generic CVV Card Number",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The type of the profile.",
+																	"enum": [
+																		"predefined"
+																	],
+																	"example": "predefined",
+																	"type": "string"
+																}
+															},
+															"title": "Predefined profile",
+															"type": "object"
 														}
 													]
 												}
@@ -680,7 +1506,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -694,7 +1538,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -765,7 +1627,29 @@
 						"properties": {
 							"profiles": {
 								"items": {
-									"$ref": "#/components/schemas/new_custom_profile"
+									"properties": {
+										"allowed_match_count": {
+											"$ref": "#/components/schemas/allowed_match_count"
+										},
+										"description": {
+											"description": "The description of the profile.",
+											"example": "A standard CVV card number",
+											"type": "string"
+										},
+										"entries": {
+											"description": "The entries for this profile.",
+											"items": {
+												"$ref": "#/components/schemas/new_custom_entry"
+											},
+											"type": "array"
+										},
+										"name": {
+											"description": "The name of the profile.",
+											"example": "Generic CVV Card Number",
+											"type": "string"
+										}
+									},
+									"type": "object"
 								},
 								"required": [
 									"name",
@@ -789,13 +1673,70 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/custom_profile"
+												"properties": {
+													"allowed_match_count": {
+														"$ref": "#/components/schemas/allowed_match_count"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"description": {
+														"description": "The description of the profile.",
+														"example": "A standard CVV card number",
+														"type": "string"
+													},
+													"entries": {
+														"description": "The entries for this profile.",
+														"items": {
+															"$ref": "#/components/schemas/custom_entry-sCBawGQf"
+														},
+														"type": "array"
+													},
+													"id": {
+														"$ref": "#/components/schemas/profile_id"
+													},
+													"name": {
+														"description": "The name of the profile.",
+														"example": "Generic CVV Card Number",
+														"type": "string"
+													},
+													"type": {
+														"description": "The type of the profile.",
+														"enum": [
+															"custom"
+														],
+														"example": "custom",
+														"type": "string"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"title": "Custom profile",
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -815,13 +1756,70 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/custom_profile"
+														"properties": {
+															"allowed_match_count": {
+																"$ref": "#/components/schemas/allowed_match_count"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"description": {
+																"description": "The description of the profile.",
+																"example": "A standard CVV card number",
+																"type": "string"
+															},
+															"entries": {
+																"description": "The entries for this profile.",
+																"items": {
+																	"$ref": "#/components/schemas/custom_entry-sCBawGQf"
+																},
+																"type": "array"
+															},
+															"id": {
+																"$ref": "#/components/schemas/profile_id"
+															},
+															"name": {
+																"description": "The name of the profile.",
+																"example": "Generic CVV Card Number",
+																"type": "string"
+															},
+															"type": {
+																"description": "The type of the profile.",
+																"enum": [
+																	"custom"
+																],
+																"example": "custom",
+																"type": "string"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
+															}
+														},
+														"title": "Custom profile",
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -834,7 +1832,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -848,7 +1864,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -906,7 +1940,11 @@
 				"schema": {
 					"allOf": [
 						{
-							"$ref": "#/components/schemas/uuid"
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
 						}
 					],
 					"description": "The ID for this profile",
@@ -932,7 +1970,12 @@
 					"schema": {
 						"properties": {
 							"allowed_match_count": {
-								"$ref": "#/components/schemas/allowed_match_count"
+								"default": 0,
+								"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+								"example": 5,
+								"maximum": 1000,
+								"minimum": 0,
+								"type": "number"
 							},
 							"description": {
 								"description": "The description of the profile.",
@@ -942,7 +1985,36 @@
 							"entries": {
 								"description": "The custom entries for this profile. Array elements with IDs are modifying the existing entry with that ID. Elements without ID will create new entries. Any entry not in the list will be deleted.",
 								"items": {
-									"$ref": "#/components/schemas/custom_entry-sCBawGQf"
+									"description": "A custom entry that matches a profile",
+									"properties": {
+										"created_at": {
+											"$ref": "#/components/schemas/timestamp"
+										},
+										"enabled": {
+											"description": "Whether the entry is enabled or not.",
+											"example": true,
+											"type": "boolean"
+										},
+										"id": {
+											"$ref": "#/components/schemas/entry_id"
+										},
+										"name": {
+											"description": "The name of the entry.",
+											"example": "Credit card (Visa)",
+											"type": "string"
+										},
+										"pattern": {
+											"$ref": "#/components/schemas/pattern-HBGUf7tv"
+										},
+										"profile_id": {
+											"description": "ID of the parent profile"
+										},
+										"updated_at": {
+											"$ref": "#/components/schemas/timestamp"
+										}
+									},
+									"title": "Custom entry",
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -956,10 +2028,33 @@
 								"items": {
 									"oneOf": [
 										{
-											"$ref": "#/components/schemas/shared_entry_update_predefined"
+											"description": "Properties of a predefined entry in a custom profile",
+											"properties": {
+												"enabled": {
+													"description": "Whether the entry is enabled or not.",
+													"example": true,
+													"type": "boolean"
+												},
+												"entry_id": {
+													"$ref": "#/components/schemas/entry_id"
+												}
+											},
+											"title": "Update predefined entry",
+											"type": "object"
 										},
 										{
-											"$ref": "#/components/schemas/shared_entry_update_integration"
+											"description": "Properties of an integration entry in a custom profile",
+											"properties": {
+												"enabled": {
+													"description": "Whether the entry is enabled or not.",
+													"type": "boolean"
+												},
+												"entry_id": {
+													"$ref": "#/components/schemas/entry_id"
+												}
+											},
+											"title": "Update integration entry",
+											"type": "object"
 										}
 									]
 								},
@@ -980,10 +2075,18 @@
 						"schema": {
 							"properties": {
 								"allowed_match_count": {
-									"$ref": "#/components/schemas/allowed_match_count"
+									"default": 0,
+									"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+									"example": 5,
+									"maximum": 1000,
+									"minimum": 0,
+									"type": "number"
 								},
 								"created_at": {
-									"$ref": "#/components/schemas/timestamp"
+									"example": "2014-01-01T05:20:00.12345Z",
+									"format": "date-time",
+									"readOnly": true,
+									"type": "string"
 								},
 								"description": {
 									"description": "The description of the profile.",
@@ -993,12 +2096,47 @@
 								"entries": {
 									"description": "The entries for this profile.",
 									"items": {
-										"$ref": "#/components/schemas/custom_entry-sCBawGQf"
+										"description": "A custom entry that matches a profile",
+										"properties": {
+											"created_at": {
+												"$ref": "#/components/schemas/timestamp"
+											},
+											"enabled": {
+												"description": "Whether the entry is enabled or not.",
+												"example": true,
+												"type": "boolean"
+											},
+											"id": {
+												"$ref": "#/components/schemas/entry_id"
+											},
+											"name": {
+												"description": "The name of the entry.",
+												"example": "Credit card (Visa)",
+												"type": "string"
+											},
+											"pattern": {
+												"$ref": "#/components/schemas/pattern-HBGUf7tv"
+											},
+											"profile_id": {
+												"description": "ID of the parent profile"
+											},
+											"updated_at": {
+												"$ref": "#/components/schemas/timestamp"
+											}
+										},
+										"title": "Custom entry",
+										"type": "object"
 									},
 									"type": "array"
 								},
 								"id": {
-									"$ref": "#/components/schemas/profile_id"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/uuid"
+										}
+									],
+									"description": "The ID for this profile",
+									"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 								},
 								"name": {
 									"description": "The name of the profile.",
@@ -1014,7 +2152,10 @@
 									"type": "string"
 								},
 								"updated_at": {
-									"$ref": "#/components/schemas/timestamp"
+									"example": "2014-01-01T05:20:00.12345Z",
+									"format": "date-time",
+									"readOnly": true,
+									"type": "string"
 								}
 							},
 							"title": "Custom profile",
@@ -1032,10 +2173,18 @@
 								{
 									"properties": {
 										"allowed_match_count": {
-											"$ref": "#/components/schemas/allowed_match_count"
+											"default": 0,
+											"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+											"example": 5,
+											"maximum": 1000,
+											"minimum": 0,
+											"type": "number"
 										},
 										"created_at": {
-											"$ref": "#/components/schemas/timestamp"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
 										},
 										"description": {
 											"description": "The description of the profile.",
@@ -1045,12 +2194,47 @@
 										"entries": {
 											"description": "The entries for this profile.",
 											"items": {
-												"$ref": "#/components/schemas/custom_entry-sCBawGQf"
+												"description": "A custom entry that matches a profile",
+												"properties": {
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"enabled": {
+														"description": "Whether the entry is enabled or not.",
+														"example": true,
+														"type": "boolean"
+													},
+													"id": {
+														"$ref": "#/components/schemas/entry_id"
+													},
+													"name": {
+														"description": "The name of the entry.",
+														"example": "Credit card (Visa)",
+														"type": "string"
+													},
+													"pattern": {
+														"$ref": "#/components/schemas/pattern-HBGUf7tv"
+													},
+													"profile_id": {
+														"description": "ID of the parent profile"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"title": "Custom entry",
+												"type": "object"
 											},
 											"type": "array"
 										},
 										"id": {
-											"$ref": "#/components/schemas/profile_id"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/uuid"
+												}
+											],
+											"description": "The ID for this profile",
+											"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 										},
 										"name": {
 											"description": "The name of the profile.",
@@ -1066,7 +2250,10 @@
 											"type": "string"
 										},
 										"updated_at": {
-											"$ref": "#/components/schemas/timestamp"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
 										}
 									},
 									"title": "Custom profile",
@@ -1077,7 +2264,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1091,7 +2296,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1149,7 +2372,11 @@
 				"schema": {
 					"allOf": [
 						{
-							"$ref": "#/components/schemas/uuid"
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
 						}
 					],
 					"description": "The ID for this profile",
@@ -1175,7 +2402,12 @@
 					"schema": {
 						"properties": {
 							"allowed_match_count": {
-								"$ref": "#/components/schemas/allowed_match_count"
+								"default": 0,
+								"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+								"example": 5,
+								"maximum": 1000,
+								"minimum": 0,
+								"type": "number"
 							},
 							"entries": {
 								"description": "The entries for this profile.",
@@ -1187,7 +2419,13 @@
 											"type": "boolean"
 										},
 										"id": {
-											"$ref": "#/components/schemas/entry_id"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/uuid"
+												}
+											],
+											"description": "The ID for this entry",
+											"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
 										}
 									}
 								},
@@ -1208,17 +2446,48 @@
 						"schema": {
 							"properties": {
 								"allowed_match_count": {
-									"$ref": "#/components/schemas/allowed_match_count"
+									"default": 0,
+									"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+									"example": 5,
+									"maximum": 1000,
+									"minimum": 0,
+									"type": "number"
 								},
 								"entries": {
 									"description": "The entries for this profile.",
 									"items": {
-										"$ref": "#/components/schemas/predefined_entry"
+										"description": "A predefined entry that matches a profile",
+										"properties": {
+											"enabled": {
+												"description": "Whether the entry is enabled or not.",
+												"example": true,
+												"type": "boolean"
+											},
+											"id": {
+												"$ref": "#/components/schemas/entry_id"
+											},
+											"name": {
+												"description": "The name of the entry.",
+												"example": "Credit card (Visa)",
+												"type": "string"
+											},
+											"profile_id": {
+												"description": "ID of the parent profile"
+											}
+										},
+										"title": "Predefined entry",
+										"type": "object"
 									},
 									"type": "array"
 								},
 								"id": {
-									"$ref": "#/components/schemas/profile_id"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/uuid"
+										}
+									],
+									"description": "The ID for this profile",
+									"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 								},
 								"name": {
 									"description": "The name of the profile.",
@@ -1249,17 +2518,48 @@
 								{
 									"properties": {
 										"allowed_match_count": {
-											"$ref": "#/components/schemas/allowed_match_count"
+											"default": 0,
+											"description": "Related DLP policies will trigger when the match count exceeds the number set.",
+											"example": 5,
+											"maximum": 1000,
+											"minimum": 0,
+											"type": "number"
 										},
 										"entries": {
 											"description": "The entries for this profile.",
 											"items": {
-												"$ref": "#/components/schemas/predefined_entry"
+												"description": "A predefined entry that matches a profile",
+												"properties": {
+													"enabled": {
+														"description": "Whether the entry is enabled or not.",
+														"example": true,
+														"type": "boolean"
+													},
+													"id": {
+														"$ref": "#/components/schemas/entry_id"
+													},
+													"name": {
+														"description": "The name of the entry.",
+														"example": "Credit card (Visa)",
+														"type": "string"
+													},
+													"profile_id": {
+														"description": "ID of the parent profile"
+													}
+												},
+												"title": "Predefined entry",
+												"type": "object"
 											},
 											"type": "array"
 										},
 										"id": {
-											"$ref": "#/components/schemas/profile_id"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/uuid"
+												}
+											],
+											"description": "The ID for this profile",
+											"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
 										},
 										"name": {
 											"description": "The name of the profile.",
@@ -1283,7 +2583,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1297,7 +2615,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

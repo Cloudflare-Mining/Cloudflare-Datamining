@@ -2,34 +2,74 @@
 	"nullable": true,
 	"properties": {
 		"dataset": {
-			"$ref": "#/components/schemas/dataset"
+			"description": "Name of the dataset.",
+			"example": "http_requests",
+			"maxLength": 256,
+			"nullable": true,
+			"pattern": "^[a-zA-Z0-9_\\-]*$",
+			"type": "string"
 		},
 		"destination_conf": {
-			"$ref": "#/components/schemas/destination_conf"
+			"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+			"example": "s3://mybucket/logs?region=us-west-2",
+			"format": "uri",
+			"maxLength": 4096,
+			"type": "string"
 		},
 		"enabled": {
-			"$ref": "#/components/schemas/enabled-37OuhD4d"
+			"description": "Flag that indicates if the job is enabled.",
+			"example": false,
+			"type": "boolean"
 		},
 		"error_message": {
-			"$ref": "#/components/schemas/error_message"
+			"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+			"format": "date-time",
+			"nullable": true,
+			"type": "string"
 		},
 		"frequency": {
-			"$ref": "#/components/schemas/frequency-M9ez1XVe"
+			"default": "high",
+			"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+			"enum": [
+				"high",
+				"low"
+			],
+			"example": "high",
+			"nullable": true,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/id-PptuYKU8"
+			"description": "Unique id of the job.",
+			"minimum": 1,
+			"type": "integer"
 		},
 		"last_complete": {
-			"$ref": "#/components/schemas/last_complete"
+			"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
+			"format": "date-time",
+			"nullable": true,
+			"type": "string"
 		},
 		"last_error": {
-			"$ref": "#/components/schemas/last_error"
+			"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+			"format": "date-time",
+			"nullable": true,
+			"type": "string"
 		},
 		"logpull_options": {
-			"$ref": "#/components/schemas/logpull_options"
+			"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+			"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+			"format": "uri-reference",
+			"maxLength": 4096,
+			"nullable": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/name-Mq5T9AeP"
+			"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+			"example": "example.com",
+			"maxLength": 512,
+			"nullable": true,
+			"pattern": "^[a-zA-Z0-9\\-\\.]*$",
+			"type": "string"
 		}
 	},
 	"type": "object"

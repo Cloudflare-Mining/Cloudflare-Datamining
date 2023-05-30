@@ -92,7 +92,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -100,10 +117,68 @@
 											"items": {
 												"anyOf": [
 													{
-														"$ref": "#/components/schemas/pcaps_response_simple"
+														"properties": {
+															"filter_v1": {
+																"$ref": "#/components/schemas/pcaps_filter_v1"
+															},
+															"id": {
+																"$ref": "#/components/schemas/pcaps_id"
+															},
+															"status": {
+																"$ref": "#/components/schemas/pcaps_status"
+															},
+															"submitted": {
+																"$ref": "#/components/schemas/pcaps_submitted"
+															},
+															"system": {
+																"$ref": "#/components/schemas/pcaps_system"
+															},
+															"time_limit": {
+																"$ref": "#/components/schemas/pcaps_time_limit"
+															},
+															"type": {
+																"$ref": "#/components/schemas/pcaps_type"
+															}
+														},
+														"type": "object"
 													},
 													{
-														"$ref": "#/components/schemas/pcaps_response_full"
+														"properties": {
+															"byte_limit": {
+																"$ref": "#/components/schemas/pcaps_byte_limit"
+															},
+															"colo_name": {
+																"$ref": "#/components/schemas/pcaps_colo_name"
+															},
+															"destination_conf": {
+																"$ref": "#/components/schemas/pcaps_destination_conf"
+															},
+															"error_message": {
+																"$ref": "#/components/schemas/pcaps_error_message"
+															},
+															"filter_v1": {
+																"$ref": "#/components/schemas/pcaps_filter_v1"
+															},
+															"id": {
+																"$ref": "#/components/schemas/pcaps_id"
+															},
+															"status": {
+																"$ref": "#/components/schemas/pcaps_status"
+															},
+															"submitted": {
+																"$ref": "#/components/schemas/pcaps_submitted"
+															},
+															"system": {
+																"$ref": "#/components/schemas/pcaps_system"
+															},
+															"time_limit": {
+																"$ref": "#/components/schemas/pcaps_time_limit"
+															},
+															"type": {
+																"$ref": "#/components/schemas/pcaps_type"
+															}
+														},
+														"type": "object"
 													}
 												]
 											},
@@ -125,7 +200,24 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -133,10 +225,68 @@
 													"items": {
 														"anyOf": [
 															{
-																"$ref": "#/components/schemas/pcaps_response_simple"
+																"properties": {
+																	"filter_v1": {
+																		"$ref": "#/components/schemas/pcaps_filter_v1"
+																	},
+																	"id": {
+																		"$ref": "#/components/schemas/pcaps_id"
+																	},
+																	"status": {
+																		"$ref": "#/components/schemas/pcaps_status"
+																	},
+																	"submitted": {
+																		"$ref": "#/components/schemas/pcaps_submitted"
+																	},
+																	"system": {
+																		"$ref": "#/components/schemas/pcaps_system"
+																	},
+																	"time_limit": {
+																		"$ref": "#/components/schemas/pcaps_time_limit"
+																	},
+																	"type": {
+																		"$ref": "#/components/schemas/pcaps_type"
+																	}
+																},
+																"type": "object"
 															},
 															{
-																"$ref": "#/components/schemas/pcaps_response_full"
+																"properties": {
+																	"byte_limit": {
+																		"$ref": "#/components/schemas/pcaps_byte_limit"
+																	},
+																	"colo_name": {
+																		"$ref": "#/components/schemas/pcaps_colo_name"
+																	},
+																	"destination_conf": {
+																		"$ref": "#/components/schemas/pcaps_destination_conf"
+																	},
+																	"error_message": {
+																		"$ref": "#/components/schemas/pcaps_error_message"
+																	},
+																	"filter_v1": {
+																		"$ref": "#/components/schemas/pcaps_filter_v1"
+																	},
+																	"id": {
+																		"$ref": "#/components/schemas/pcaps_id"
+																	},
+																	"status": {
+																		"$ref": "#/components/schemas/pcaps_status"
+																	},
+																	"submitted": {
+																		"$ref": "#/components/schemas/pcaps_submitted"
+																	},
+																	"system": {
+																		"$ref": "#/components/schemas/pcaps_system"
+																	},
+																	"time_limit": {
+																		"$ref": "#/components/schemas/pcaps_time_limit"
+																	},
+																	"type": {
+																		"$ref": "#/components/schemas/pcaps_type"
+																	}
+																},
+																"type": "object"
 															}
 														]
 													},
@@ -151,7 +301,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -165,7 +333,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -257,17 +443,95 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"anyOf": [
 												{
-													"$ref": "#/components/schemas/pcaps_response_simple"
+													"properties": {
+														"filter_v1": {
+															"$ref": "#/components/schemas/pcaps_filter_v1"
+														},
+														"id": {
+															"$ref": "#/components/schemas/pcaps_id"
+														},
+														"status": {
+															"$ref": "#/components/schemas/pcaps_status"
+														},
+														"submitted": {
+															"$ref": "#/components/schemas/pcaps_submitted"
+														},
+														"system": {
+															"$ref": "#/components/schemas/pcaps_system"
+														},
+														"time_limit": {
+															"$ref": "#/components/schemas/pcaps_time_limit"
+														},
+														"type": {
+															"$ref": "#/components/schemas/pcaps_type"
+														}
+													},
+													"type": "object"
 												},
 												{
-													"$ref": "#/components/schemas/pcaps_response_full"
+													"properties": {
+														"byte_limit": {
+															"$ref": "#/components/schemas/pcaps_byte_limit"
+														},
+														"colo_name": {
+															"$ref": "#/components/schemas/pcaps_colo_name"
+														},
+														"destination_conf": {
+															"$ref": "#/components/schemas/pcaps_destination_conf"
+														},
+														"error_message": {
+															"$ref": "#/components/schemas/pcaps_error_message"
+														},
+														"filter_v1": {
+															"$ref": "#/components/schemas/pcaps_filter_v1"
+														},
+														"id": {
+															"$ref": "#/components/schemas/pcaps_id"
+														},
+														"status": {
+															"$ref": "#/components/schemas/pcaps_status"
+														},
+														"submitted": {
+															"$ref": "#/components/schemas/pcaps_submitted"
+														},
+														"system": {
+															"$ref": "#/components/schemas/pcaps_system"
+														},
+														"time_limit": {
+															"$ref": "#/components/schemas/pcaps_time_limit"
+														},
+														"type": {
+															"$ref": "#/components/schemas/pcaps_type"
+														}
+													},
+													"type": "object"
 												}
 											]
 										}
@@ -287,17 +551,95 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"anyOf": [
 														{
-															"$ref": "#/components/schemas/pcaps_response_simple"
+															"properties": {
+																"filter_v1": {
+																	"$ref": "#/components/schemas/pcaps_filter_v1"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/pcaps_id"
+																},
+																"status": {
+																	"$ref": "#/components/schemas/pcaps_status"
+																},
+																"submitted": {
+																	"$ref": "#/components/schemas/pcaps_submitted"
+																},
+																"system": {
+																	"$ref": "#/components/schemas/pcaps_system"
+																},
+																"time_limit": {
+																	"$ref": "#/components/schemas/pcaps_time_limit"
+																},
+																"type": {
+																	"$ref": "#/components/schemas/pcaps_type"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/pcaps_response_full"
+															"properties": {
+																"byte_limit": {
+																	"$ref": "#/components/schemas/pcaps_byte_limit"
+																},
+																"colo_name": {
+																	"$ref": "#/components/schemas/pcaps_colo_name"
+																},
+																"destination_conf": {
+																	"$ref": "#/components/schemas/pcaps_destination_conf"
+																},
+																"error_message": {
+																	"$ref": "#/components/schemas/pcaps_error_message"
+																},
+																"filter_v1": {
+																	"$ref": "#/components/schemas/pcaps_filter_v1"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/pcaps_id"
+																},
+																"status": {
+																	"$ref": "#/components/schemas/pcaps_status"
+																},
+																"submitted": {
+																	"$ref": "#/components/schemas/pcaps_submitted"
+																},
+																"system": {
+																	"$ref": "#/components/schemas/pcaps_system"
+																},
+																"time_limit": {
+																	"$ref": "#/components/schemas/pcaps_time_limit"
+																},
+																"type": {
+																	"$ref": "#/components/schemas/pcaps_type"
+																}
+															},
+															"type": "object"
 														}
 													]
 												}
@@ -310,7 +652,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -324,7 +684,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -467,13 +845,72 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/pcaps_ownership_response"
+												"properties": {
+													"destination_conf": {
+														"$ref": "#/components/schemas/pcaps_destination_conf"
+													},
+													"filename": {
+														"$ref": "#/components/schemas/pcaps_ownership_challenge"
+													},
+													"id": {
+														"description": "The bucket ID associated with the packet captures API.",
+														"example": "9883874ecac311ec8475433579a6bf5f",
+														"maxLength": 32,
+														"minLength": 32,
+														"type": "string"
+													},
+													"status": {
+														"description": "The status of the ownership challenge. Can be pending, success or failed.",
+														"enum": [
+															"pending",
+															"success",
+															"failed"
+														],
+														"example": "success",
+														"type": "string"
+													},
+													"submitted": {
+														"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
+														"example": "2020-01-01T08:00:00Z",
+														"type": "string"
+													},
+													"validated": {
+														"description": "The RFC 3339 timestamp when the bucket was validated.",
+														"example": "2020-01-01T08:00:00Z",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"status",
+													"submitted",
+													"destination_conf",
+													"filename"
+												],
+												"type": "object"
 											},
 											"nullable": true,
 											"type": "array"
@@ -494,13 +931,72 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/pcaps_ownership_response"
+														"properties": {
+															"destination_conf": {
+																"$ref": "#/components/schemas/pcaps_destination_conf"
+															},
+															"filename": {
+																"$ref": "#/components/schemas/pcaps_ownership_challenge"
+															},
+															"id": {
+																"description": "The bucket ID associated with the packet captures API.",
+																"example": "9883874ecac311ec8475433579a6bf5f",
+																"maxLength": 32,
+																"minLength": 32,
+																"type": "string"
+															},
+															"status": {
+																"description": "The status of the ownership challenge. Can be pending, success or failed.",
+																"enum": [
+																	"pending",
+																	"success",
+																	"failed"
+																],
+																"example": "success",
+																"type": "string"
+															},
+															"submitted": {
+																"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
+																"example": "2020-01-01T08:00:00Z",
+																"type": "string"
+															},
+															"validated": {
+																"description": "The RFC 3339 timestamp when the bucket was validated.",
+																"example": "2020-01-01T08:00:00Z",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"status",
+															"submitted",
+															"destination_conf",
+															"filename"
+														],
+														"type": "object"
 													},
 													"nullable": true,
 													"type": "array"
@@ -514,7 +1010,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -528,7 +1042,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -607,10 +1139,66 @@
 					"schema": {
 						"anyOf": [
 							{
-								"$ref": "#/components/schemas/pcaps_request_simple"
+								"properties": {
+									"filter_v1": {
+										"$ref": "#/components/schemas/pcaps_filter_v1"
+									},
+									"packet_limit": {
+										"$ref": "#/components/schemas/pcaps_packet_limit"
+									},
+									"system": {
+										"$ref": "#/components/schemas/pcaps_system"
+									},
+									"time_limit": {
+										"$ref": "#/components/schemas/pcaps_time_limit"
+									},
+									"type": {
+										"$ref": "#/components/schemas/pcaps_type"
+									}
+								},
+								"required": [
+									"time_limit",
+									"packet_limit",
+									"type",
+									"system"
+								],
+								"type": "object"
 							},
 							{
-								"$ref": "#/components/schemas/pcaps_request_full"
+								"properties": {
+									"byte_limit": {
+										"$ref": "#/components/schemas/pcaps_byte_limit"
+									},
+									"colo_name": {
+										"$ref": "#/components/schemas/pcaps_colo_name"
+									},
+									"destination_conf": {
+										"$ref": "#/components/schemas/pcaps_destination_conf"
+									},
+									"filter_v1": {
+										"$ref": "#/components/schemas/pcaps_filter_v1"
+									},
+									"packet_limit": {
+										"$ref": "#/components/schemas/pcaps_packet_limit"
+									},
+									"system": {
+										"$ref": "#/components/schemas/pcaps_system"
+									},
+									"time_limit": {
+										"$ref": "#/components/schemas/pcaps_time_limit"
+									},
+									"type": {
+										"$ref": "#/components/schemas/pcaps_type"
+									}
+								},
+								"required": [
+									"time_limit",
+									"type",
+									"system",
+									"colo_name",
+									"destination_conf"
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -625,17 +1213,95 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"anyOf": [
 												{
-													"$ref": "#/components/schemas/pcaps_response_simple"
+													"properties": {
+														"filter_v1": {
+															"$ref": "#/components/schemas/pcaps_filter_v1"
+														},
+														"id": {
+															"$ref": "#/components/schemas/pcaps_id"
+														},
+														"status": {
+															"$ref": "#/components/schemas/pcaps_status"
+														},
+														"submitted": {
+															"$ref": "#/components/schemas/pcaps_submitted"
+														},
+														"system": {
+															"$ref": "#/components/schemas/pcaps_system"
+														},
+														"time_limit": {
+															"$ref": "#/components/schemas/pcaps_time_limit"
+														},
+														"type": {
+															"$ref": "#/components/schemas/pcaps_type"
+														}
+													},
+													"type": "object"
 												},
 												{
-													"$ref": "#/components/schemas/pcaps_response_full"
+													"properties": {
+														"byte_limit": {
+															"$ref": "#/components/schemas/pcaps_byte_limit"
+														},
+														"colo_name": {
+															"$ref": "#/components/schemas/pcaps_colo_name"
+														},
+														"destination_conf": {
+															"$ref": "#/components/schemas/pcaps_destination_conf"
+														},
+														"error_message": {
+															"$ref": "#/components/schemas/pcaps_error_message"
+														},
+														"filter_v1": {
+															"$ref": "#/components/schemas/pcaps_filter_v1"
+														},
+														"id": {
+															"$ref": "#/components/schemas/pcaps_id"
+														},
+														"status": {
+															"$ref": "#/components/schemas/pcaps_status"
+														},
+														"submitted": {
+															"$ref": "#/components/schemas/pcaps_submitted"
+														},
+														"system": {
+															"$ref": "#/components/schemas/pcaps_system"
+														},
+														"time_limit": {
+															"$ref": "#/components/schemas/pcaps_time_limit"
+														},
+														"type": {
+															"$ref": "#/components/schemas/pcaps_type"
+														}
+													},
+													"type": "object"
 												}
 											]
 										}
@@ -655,17 +1321,95 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"anyOf": [
 														{
-															"$ref": "#/components/schemas/pcaps_response_simple"
+															"properties": {
+																"filter_v1": {
+																	"$ref": "#/components/schemas/pcaps_filter_v1"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/pcaps_id"
+																},
+																"status": {
+																	"$ref": "#/components/schemas/pcaps_status"
+																},
+																"submitted": {
+																	"$ref": "#/components/schemas/pcaps_submitted"
+																},
+																"system": {
+																	"$ref": "#/components/schemas/pcaps_system"
+																},
+																"time_limit": {
+																	"$ref": "#/components/schemas/pcaps_time_limit"
+																},
+																"type": {
+																	"$ref": "#/components/schemas/pcaps_type"
+																}
+															},
+															"type": "object"
 														},
 														{
-															"$ref": "#/components/schemas/pcaps_response_full"
+															"properties": {
+																"byte_limit": {
+																	"$ref": "#/components/schemas/pcaps_byte_limit"
+																},
+																"colo_name": {
+																	"$ref": "#/components/schemas/pcaps_colo_name"
+																},
+																"destination_conf": {
+																	"$ref": "#/components/schemas/pcaps_destination_conf"
+																},
+																"error_message": {
+																	"$ref": "#/components/schemas/pcaps_error_message"
+																},
+																"filter_v1": {
+																	"$ref": "#/components/schemas/pcaps_filter_v1"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/pcaps_id"
+																},
+																"status": {
+																	"$ref": "#/components/schemas/pcaps_status"
+																},
+																"submitted": {
+																	"$ref": "#/components/schemas/pcaps_submitted"
+																},
+																"system": {
+																	"$ref": "#/components/schemas/pcaps_system"
+																},
+																"time_limit": {
+																	"$ref": "#/components/schemas/pcaps_time_limit"
+																},
+																"type": {
+																	"$ref": "#/components/schemas/pcaps_type"
+																}
+															},
+															"type": "object"
 														}
 													]
 												}
@@ -678,7 +1422,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -692,7 +1454,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -771,7 +1551,9 @@
 					"schema": {
 						"properties": {
 							"destination_conf": {
-								"$ref": "#/components/schemas/pcaps_destination_conf"
+								"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
+								"example": "s3://pcaps-bucket?region=us-east-1",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -790,12 +1572,126 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/pcaps_ownership_response"
+											"properties": {
+												"destination_conf": {
+													"$ref": "#/components/schemas/pcaps_destination_conf"
+												},
+												"filename": {
+													"$ref": "#/components/schemas/pcaps_ownership_challenge"
+												},
+												"id": {
+													"description": "The bucket ID associated with the packet captures API.",
+													"example": "9883874ecac311ec8475433579a6bf5f",
+													"maxLength": 32,
+													"minLength": 32,
+													"type": "string"
+												},
+												"status": {
+													"description": "The status of the ownership challenge. Can be pending, success or failed.",
+													"enum": [
+														"pending",
+														"success",
+														"failed"
+													],
+													"example": "success",
+													"type": "string"
+												},
+												"submitted": {
+													"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
+													"example": "2020-01-01T08:00:00Z",
+													"type": "string"
+												},
+												"validated": {
+													"description": "The RFC 3339 timestamp when the bucket was validated.",
+													"example": "2020-01-01T08:00:00Z",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"status",
+												"submitted",
+												"destination_conf",
+												"filename"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -813,12 +1709,126 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/pcaps_ownership_response"
+													"properties": {
+														"destination_conf": {
+															"$ref": "#/components/schemas/pcaps_destination_conf"
+														},
+														"filename": {
+															"$ref": "#/components/schemas/pcaps_ownership_challenge"
+														},
+														"id": {
+															"description": "The bucket ID associated with the packet captures API.",
+															"example": "9883874ecac311ec8475433579a6bf5f",
+															"maxLength": 32,
+															"minLength": 32,
+															"type": "string"
+														},
+														"status": {
+															"description": "The status of the ownership challenge. Can be pending, success or failed.",
+															"enum": [
+																"pending",
+																"success",
+																"failed"
+															],
+															"example": "success",
+															"type": "string"
+														},
+														"submitted": {
+															"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
+															"example": "2020-01-01T08:00:00Z",
+															"type": "string"
+														},
+														"validated": {
+															"description": "The RFC 3339 timestamp when the bucket was validated.",
+															"example": "2020-01-01T08:00:00Z",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"status",
+														"submitted",
+														"destination_conf",
+														"filename"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -829,7 +1839,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -843,7 +1871,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -922,10 +1968,14 @@
 					"schema": {
 						"properties": {
 							"destination_conf": {
-								"$ref": "#/components/schemas/pcaps_destination_conf"
+								"description": "The full URI for the bucket. This field only applies to `full` packet captures.",
+								"example": "s3://pcaps-bucket?region=us-east-1",
+								"type": "string"
 							},
 							"ownership_challenge": {
-								"$ref": "#/components/schemas/pcaps_ownership_challenge"
+								"description": "The ownership challenge filename stored in the bucket.",
+								"example": "ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -945,12 +1995,126 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/pcaps_ownership_response"
+											"properties": {
+												"destination_conf": {
+													"$ref": "#/components/schemas/pcaps_destination_conf"
+												},
+												"filename": {
+													"$ref": "#/components/schemas/pcaps_ownership_challenge"
+												},
+												"id": {
+													"description": "The bucket ID associated with the packet captures API.",
+													"example": "9883874ecac311ec8475433579a6bf5f",
+													"maxLength": 32,
+													"minLength": 32,
+													"type": "string"
+												},
+												"status": {
+													"description": "The status of the ownership challenge. Can be pending, success or failed.",
+													"enum": [
+														"pending",
+														"success",
+														"failed"
+													],
+													"example": "success",
+													"type": "string"
+												},
+												"submitted": {
+													"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
+													"example": "2020-01-01T08:00:00Z",
+													"type": "string"
+												},
+												"validated": {
+													"description": "The RFC 3339 timestamp when the bucket was validated.",
+													"example": "2020-01-01T08:00:00Z",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"status",
+												"submitted",
+												"destination_conf",
+												"filename"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -968,12 +2132,126 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/pcaps_ownership_response"
+													"properties": {
+														"destination_conf": {
+															"$ref": "#/components/schemas/pcaps_destination_conf"
+														},
+														"filename": {
+															"$ref": "#/components/schemas/pcaps_ownership_challenge"
+														},
+														"id": {
+															"description": "The bucket ID associated with the packet captures API.",
+															"example": "9883874ecac311ec8475433579a6bf5f",
+															"maxLength": 32,
+															"minLength": 32,
+															"type": "string"
+														},
+														"status": {
+															"description": "The status of the ownership challenge. Can be pending, success or failed.",
+															"enum": [
+																"pending",
+																"success",
+																"failed"
+															],
+															"example": "success",
+															"type": "string"
+														},
+														"submitted": {
+															"description": "The RFC 3339 timestamp when the bucket was added to packet captures API.",
+															"example": "2020-01-01T08:00:00Z",
+															"type": "string"
+														},
+														"validated": {
+															"description": "The RFC 3339 timestamp when the bucket was validated.",
+															"example": "2020-01-01T08:00:00Z",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"status",
+														"submitted",
+														"destination_conf",
+														"filename"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -984,7 +2262,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -998,7 +2294,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

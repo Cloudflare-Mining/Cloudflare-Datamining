@@ -1,13 +1,236 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/railgun"
+						"properties": {
+							"activated_on": {
+								"description": "When the Railgun was activated.",
+								"example": "2014-01-02T02:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"activation_key": {
+								"example": "e4edc00281cb56ebac22c81be9bac8f3",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							},
+							"build": {
+								"description": "The build identifier for the Railgun receiver.",
+								"example": "b1234",
+								"readOnly": true,
+								"type": "string"
+							},
+							"created_on": {
+								"description": "When the Railgun was created.",
+								"example": "2014-01-01T05:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"enabled": {
+								"default": false,
+								"description": "Flag to determine if the Railgun is accepting connections.",
+								"example": true,
+								"type": "boolean"
+							},
+							"id": {
+								"description": "Railgun identifier tag.",
+								"example": "e928d310693a83094309acf9ead50448",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							},
+							"modified_on": {
+								"description": "When the Railgun was last modified.",
+								"example": "2014-01-01T05:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"name": {
+								"description": "Readable identifier of the Railgun.",
+								"example": "My Railgun.",
+								"maxLength": 160,
+								"type": "string"
+							},
+							"revision": {
+								"description": "The revision of the Railgun receiver.",
+								"example": "123",
+								"readOnly": true,
+								"type": "string"
+							},
+							"status": {
+								"description": "Status of the Railgun.",
+								"enum": [
+									"initializing",
+									"active"
+								],
+								"example": "active",
+								"readOnly": true,
+								"type": "string"
+							},
+							"upgrade_info": {
+								"description": "Defined when the Railgun version is out of date from the latest release from Cloudflare.",
+								"properties": {
+									"download_link": {
+										"description": "An HTTP link to download the latest Railgun binary.",
+										"example": "https://www.cloudflare.com/downloads/railgun",
+										"type": "string"
+									},
+									"latest_version": {
+										"description": "Latest version of the Railgun receiver available to install.",
+										"example": "1.0.0",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"version": {
+								"description": "The version of the Railgun receiver.",
+								"example": "2.1",
+								"readOnly": true,
+								"type": "string"
+							},
+							"zones_connected": {
+								"description": "The number of zones using this Railgun.",
+								"example": 2,
+								"readOnly": true,
+								"type": "number"
+							}
+						},
+						"required": [
+							"id",
+							"name",
+							"status",
+							"enabled",
+							"zones_connected",
+							"build",
+							"version",
+							"revision",
+							"activation_key",
+							"activated_on",
+							"created_on",
+							"modified_on"
+						],
+						"type": "object"
 					},
 					"type": "array"
 				}

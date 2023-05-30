@@ -1,12 +1,128 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							]
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/gateway-account-logging-settings"
+					"properties": {
+						"redact_pii": {
+							"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
+							"example": true,
+							"type": "boolean"
+						},
+						"settings_by_rule_type": {
+							"description": "Logging settings by rule type.",
+							"properties": {
+								"dns": {
+									"description": "Logging settings for DNS firewall.",
+									"type": "object"
+								},
+								"http": {
+									"description": "Logging settings for HTTP/HTTPS firewall.",
+									"type": "object"
+								},
+								"l4": {
+									"description": "Logging settings for Network firewall.",
+									"type": "object"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

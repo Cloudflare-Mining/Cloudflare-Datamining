@@ -1,12 +1,260 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							]
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/groups"
+					"properties": {
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"exclude": {
+							"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
+							"items": {
+								"oneOf": [
+									{
+										"$ref": "#/components/schemas/email_rule"
+									},
+									{
+										"$ref": "#/components/schemas/domain_rule"
+									},
+									{
+										"$ref": "#/components/schemas/everyone_rule"
+									},
+									{
+										"$ref": "#/components/schemas/ip_rule"
+									},
+									{
+										"$ref": "#/components/schemas/ip_list_rule"
+									},
+									{
+										"$ref": "#/components/schemas/certificate_rule"
+									},
+									{
+										"$ref": "#/components/schemas/access_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/azure_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/github_organization_rule"
+									},
+									{
+										"$ref": "#/components/schemas/gsuite_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/okta_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/saml_group_rule"
+									}
+								],
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"id": {
+							"description": "The unique identifier for the Access group."
+						},
+						"include": {
+							"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
+							"items": {
+								"oneOf": [
+									{
+										"$ref": "#/components/schemas/email_rule"
+									},
+									{
+										"$ref": "#/components/schemas/domain_rule"
+									},
+									{
+										"$ref": "#/components/schemas/everyone_rule"
+									},
+									{
+										"$ref": "#/components/schemas/ip_rule"
+									},
+									{
+										"$ref": "#/components/schemas/ip_list_rule"
+									},
+									{
+										"$ref": "#/components/schemas/certificate_rule"
+									},
+									{
+										"$ref": "#/components/schemas/access_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/azure_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/github_organization_rule"
+									},
+									{
+										"$ref": "#/components/schemas/gsuite_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/okta_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/saml_group_rule"
+									}
+								],
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"name": {
+							"description": "The name of the Access group.",
+							"example": "Allow devs",
+							"type": "string"
+						},
+						"require": {
+							"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
+							"items": {
+								"oneOf": [
+									{
+										"$ref": "#/components/schemas/email_rule"
+									},
+									{
+										"$ref": "#/components/schemas/domain_rule"
+									},
+									{
+										"$ref": "#/components/schemas/everyone_rule"
+									},
+									{
+										"$ref": "#/components/schemas/ip_rule"
+									},
+									{
+										"$ref": "#/components/schemas/ip_list_rule"
+									},
+									{
+										"$ref": "#/components/schemas/certificate_rule"
+									},
+									{
+										"$ref": "#/components/schemas/access_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/azure_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/github_organization_rule"
+									},
+									{
+										"$ref": "#/components/schemas/gsuite_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/okta_group_rule"
+									},
+									{
+										"$ref": "#/components/schemas/saml_group_rule"
+									}
+								],
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

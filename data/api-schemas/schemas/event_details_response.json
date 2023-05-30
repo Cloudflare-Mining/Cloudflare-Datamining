@@ -1,12 +1,159 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-common"
+			"properties": {
+				"errors": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"messages": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"result": {
+					"anyOf": [
+						{
+							"type": "object"
+						},
+						{
+							"items": {},
+							"type": "array"
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"success": {
+					"description": "Whether the API call was successful",
+					"enum": [
+						true
+					],
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"success",
+				"errors",
+				"messages",
+				"result"
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/event_details_result"
+					"properties": {
+						"created_on": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"custom_page_html": {
+							"example": "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}",
+							"type": "string"
+						},
+						"description": {
+							"default": "",
+							"description": "A note that you can use to add more details about the event.",
+							"example": "Production event - DO NOT MODIFY",
+							"type": "string"
+						},
+						"disable_session_renewal": {
+							"example": false,
+							"type": "boolean"
+						},
+						"event_end_time": {
+							"description": "An ISO 8601 timestamp that marks the end of the event.",
+							"example": "2021-09-28T17:00:00.000Z",
+							"type": "string"
+						},
+						"event_start_time": {
+							"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.",
+							"example": "2021-09-28T15:30:00.000Z",
+							"type": "string"
+						},
+						"id": {
+							"example": "25756b2dfe6e378a06b033b670413757"
+						},
+						"modified_on": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"name": {
+							"description": "A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.",
+							"example": "production_webinar_event",
+							"type": "string"
+						},
+						"new_users_per_minute": {
+							"type": "integer"
+						},
+						"prequeue_start_time": {
+							"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
+							"example": "2021-09-28T15:00:00.000Z",
+							"nullable": true,
+							"type": "string"
+						},
+						"queueing_method": {
+							"example": "random",
+							"type": "string"
+						},
+						"session_duration": {
+							"type": "integer"
+						},
+						"shuffle_at_event_start": {
+							"default": false,
+							"description": "If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.",
+							"type": "boolean"
+						},
+						"suspended": {
+							"default": false,
+							"description": "Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.",
+							"type": "boolean"
+						},
+						"total_active_users": {
+							"type": "integer"
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

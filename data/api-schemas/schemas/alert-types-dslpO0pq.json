@@ -1,16 +1,36 @@
 {
 	"properties": {
 		"description": {
-			"$ref": "#/components/schemas/alert-types_components-schemas-description"
+			"description": "Describes the alert type.",
+			"example": "High levels of 5xx HTTP errors at your origin",
+			"type": "string"
 		},
 		"display_name": {
-			"$ref": "#/components/schemas/display_name"
+			"description": "Alert type name.",
+			"example": "Origin Error Rate Alert",
+			"type": "string"
 		},
 		"filter_options": {
-			"$ref": "#/components/schemas/schemas-filter_options"
+			"description": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings.",
+			"example": [
+				{
+					"ComparisonOperator": "==",
+					"Key": "zones",
+					"Optional": false
+				},
+				{
+					"ComparisonOperator": ">=",
+					"Key": "slo",
+					"Optional": true
+				}
+			],
+			"items": {},
+			"type": "array"
 		},
 		"type": {
-			"$ref": "#/components/schemas/alert-types_components-schemas-type"
+			"description": "Use this value when creating and updating a notification policy.",
+			"example": "http_alert_origin_error",
+			"type": "string"
 		}
 	},
 	"type": "object"

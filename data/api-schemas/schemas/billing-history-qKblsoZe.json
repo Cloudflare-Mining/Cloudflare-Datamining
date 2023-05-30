@@ -1,28 +1,59 @@
 {
 	"properties": {
 		"action": {
-			"$ref": "#/components/schemas/action-6CA9cf6i"
+			"description": "The billing item action.",
+			"example": "subscription",
+			"maxLength": 30,
+			"readOnly": true,
+			"type": "string"
 		},
 		"amount": {
-			"$ref": "#/components/schemas/amount"
+			"description": "The amount associated with this billing item.",
+			"example": 20.99,
+			"readOnly": true,
+			"type": "number"
 		},
 		"currency": {
-			"$ref": "#/components/schemas/currency"
+			"description": "The monetary unit in which pricing information is displayed.",
+			"example": "USD",
+			"readOnly": true,
+			"type": "string"
 		},
 		"description": {
-			"$ref": "#/components/schemas/schemas-description-vhAW39fM"
+			"description": "The billing item description.",
+			"example": "The billing item description",
+			"maxLength": 255,
+			"readOnly": true,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/billing-history_components-schemas-identifier"
+			"description": "Billing item identifier tag.",
+			"example": "b69a9f3492637782896352daae219e7d",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"occurred_at": {
-			"$ref": "#/components/schemas/occurred_at"
+			"description": "When the billing item was created.",
+			"example": "2014-03-01T12:21:59.3456Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"type": {
-			"$ref": "#/components/schemas/type-SQUS157p"
+			"description": "The billing item type.",
+			"example": "charge",
+			"maxLength": 30,
+			"readOnly": true,
+			"type": "string"
 		},
 		"zone": {
-			"$ref": "#/components/schemas/schemas-zone"
+			"properties": {
+				"name": {
+					"readOnly": true
+				}
+			},
+			"type": "object"
 		}
 	},
 	"required": [

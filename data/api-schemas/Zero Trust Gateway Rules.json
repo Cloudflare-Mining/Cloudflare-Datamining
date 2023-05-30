@@ -36,7 +36,26 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -59,7 +78,26 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -75,7 +113,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -89,7 +145,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -156,13 +230,77 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/rules"
+												"properties": {
+													"action": {
+														"$ref": "#/components/schemas/action-xsVTa4z3"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"deleted_at": {
+														"$ref": "#/components/schemas/deleted_at"
+													},
+													"description": {
+														"$ref": "#/components/schemas/schemas-description-I6ewJQi9"
+													},
+													"device_posture": {
+														"$ref": "#/components/schemas/device_posture"
+													},
+													"enabled": {
+														"$ref": "#/components/schemas/enabled-AYr2vLPU"
+													},
+													"filters": {
+														"$ref": "#/components/schemas/filters-Ce5kC9cO"
+													},
+													"id": {
+														"$ref": "#/components/schemas/uuid-3ouIahqd"
+													},
+													"identity": {
+														"$ref": "#/components/schemas/identity"
+													},
+													"name": {
+														"$ref": "#/components/schemas/components-schemas-name-ylIXGUSj"
+													},
+													"precedence": {
+														"$ref": "#/components/schemas/precedence-ES2Ted9t"
+													},
+													"rule_settings": {
+														"$ref": "#/components/schemas/rule-settings"
+													},
+													"schedule": {
+														"$ref": "#/components/schemas/schedule"
+													},
+													"traffic": {
+														"$ref": "#/components/schemas/traffic"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -182,13 +320,77 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/rules"
+														"properties": {
+															"action": {
+																"$ref": "#/components/schemas/action-xsVTa4z3"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"deleted_at": {
+																"$ref": "#/components/schemas/deleted_at"
+															},
+															"description": {
+																"$ref": "#/components/schemas/schemas-description-I6ewJQi9"
+															},
+															"device_posture": {
+																"$ref": "#/components/schemas/device_posture"
+															},
+															"enabled": {
+																"$ref": "#/components/schemas/enabled-AYr2vLPU"
+															},
+															"filters": {
+																"$ref": "#/components/schemas/filters-Ce5kC9cO"
+															},
+															"id": {
+																"$ref": "#/components/schemas/uuid-3ouIahqd"
+															},
+															"identity": {
+																"$ref": "#/components/schemas/identity"
+															},
+															"name": {
+																"$ref": "#/components/schemas/components-schemas-name-ylIXGUSj"
+															},
+															"precedence": {
+																"$ref": "#/components/schemas/precedence-ES2Ted9t"
+															},
+															"rule_settings": {
+																"$ref": "#/components/schemas/rule-settings"
+															},
+															"schedule": {
+																"$ref": "#/components/schemas/schedule"
+															},
+															"traffic": {
+																"$ref": "#/components/schemas/traffic"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -201,7 +403,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -215,7 +435,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -293,12 +531,78 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules"
+											"properties": {
+												"action": {
+													"$ref": "#/components/schemas/action-xsVTa4z3"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"deleted_at": {
+													"$ref": "#/components/schemas/deleted_at"
+												},
+												"description": {
+													"$ref": "#/components/schemas/schemas-description-I6ewJQi9"
+												},
+												"device_posture": {
+													"$ref": "#/components/schemas/device_posture"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/enabled-AYr2vLPU"
+												},
+												"filters": {
+													"$ref": "#/components/schemas/filters-Ce5kC9cO"
+												},
+												"id": {
+													"$ref": "#/components/schemas/uuid-3ouIahqd"
+												},
+												"identity": {
+													"$ref": "#/components/schemas/identity"
+												},
+												"name": {
+													"$ref": "#/components/schemas/components-schemas-name-ylIXGUSj"
+												},
+												"precedence": {
+													"$ref": "#/components/schemas/precedence-ES2Ted9t"
+												},
+												"rule_settings": {
+													"$ref": "#/components/schemas/rule-settings"
+												},
+												"schedule": {
+													"$ref": "#/components/schemas/schedule"
+												},
+												"traffic": {
+													"$ref": "#/components/schemas/traffic"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -316,12 +620,78 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/rules"
+													"properties": {
+														"action": {
+															"$ref": "#/components/schemas/action-xsVTa4z3"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"deleted_at": {
+															"$ref": "#/components/schemas/deleted_at"
+														},
+														"description": {
+															"$ref": "#/components/schemas/schemas-description-I6ewJQi9"
+														},
+														"device_posture": {
+															"$ref": "#/components/schemas/device_posture"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/enabled-AYr2vLPU"
+														},
+														"filters": {
+															"$ref": "#/components/schemas/filters-Ce5kC9cO"
+														},
+														"id": {
+															"$ref": "#/components/schemas/uuid-3ouIahqd"
+														},
+														"identity": {
+															"$ref": "#/components/schemas/identity"
+														},
+														"name": {
+															"$ref": "#/components/schemas/components-schemas-name-ylIXGUSj"
+														},
+														"precedence": {
+															"$ref": "#/components/schemas/precedence-ES2Ted9t"
+														},
+														"rule_settings": {
+															"$ref": "#/components/schemas/rule-settings"
+														},
+														"schedule": {
+															"$ref": "#/components/schemas/schedule"
+														},
+														"traffic": {
+															"$ref": "#/components/schemas/traffic"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -332,7 +702,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -346,7 +734,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -735,12 +1141,78 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules"
+											"properties": {
+												"action": {
+													"$ref": "#/components/schemas/action-xsVTa4z3"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"deleted_at": {
+													"$ref": "#/components/schemas/deleted_at"
+												},
+												"description": {
+													"$ref": "#/components/schemas/schemas-description-I6ewJQi9"
+												},
+												"device_posture": {
+													"$ref": "#/components/schemas/device_posture"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/enabled-AYr2vLPU"
+												},
+												"filters": {
+													"$ref": "#/components/schemas/filters-Ce5kC9cO"
+												},
+												"id": {
+													"$ref": "#/components/schemas/uuid-3ouIahqd"
+												},
+												"identity": {
+													"$ref": "#/components/schemas/identity"
+												},
+												"name": {
+													"$ref": "#/components/schemas/components-schemas-name-ylIXGUSj"
+												},
+												"precedence": {
+													"$ref": "#/components/schemas/precedence-ES2Ted9t"
+												},
+												"rule_settings": {
+													"$ref": "#/components/schemas/rule-settings"
+												},
+												"schedule": {
+													"$ref": "#/components/schemas/schedule"
+												},
+												"traffic": {
+													"$ref": "#/components/schemas/traffic"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -758,12 +1230,78 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/rules"
+													"properties": {
+														"action": {
+															"$ref": "#/components/schemas/action-xsVTa4z3"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"deleted_at": {
+															"$ref": "#/components/schemas/deleted_at"
+														},
+														"description": {
+															"$ref": "#/components/schemas/schemas-description-I6ewJQi9"
+														},
+														"device_posture": {
+															"$ref": "#/components/schemas/device_posture"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/enabled-AYr2vLPU"
+														},
+														"filters": {
+															"$ref": "#/components/schemas/filters-Ce5kC9cO"
+														},
+														"id": {
+															"$ref": "#/components/schemas/uuid-3ouIahqd"
+														},
+														"identity": {
+															"$ref": "#/components/schemas/identity"
+														},
+														"name": {
+															"$ref": "#/components/schemas/components-schemas-name-ylIXGUSj"
+														},
+														"precedence": {
+															"$ref": "#/components/schemas/precedence-ES2Ted9t"
+														},
+														"rule_settings": {
+															"$ref": "#/components/schemas/rule-settings"
+														},
+														"schedule": {
+															"$ref": "#/components/schemas/schedule"
+														},
+														"traffic": {
+															"$ref": "#/components/schemas/traffic"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -774,7 +1312,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -788,7 +1344,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1188,12 +1762,78 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules"
+											"properties": {
+												"action": {
+													"$ref": "#/components/schemas/action-xsVTa4z3"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"deleted_at": {
+													"$ref": "#/components/schemas/deleted_at"
+												},
+												"description": {
+													"$ref": "#/components/schemas/schemas-description-I6ewJQi9"
+												},
+												"device_posture": {
+													"$ref": "#/components/schemas/device_posture"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/enabled-AYr2vLPU"
+												},
+												"filters": {
+													"$ref": "#/components/schemas/filters-Ce5kC9cO"
+												},
+												"id": {
+													"$ref": "#/components/schemas/uuid-3ouIahqd"
+												},
+												"identity": {
+													"$ref": "#/components/schemas/identity"
+												},
+												"name": {
+													"$ref": "#/components/schemas/components-schemas-name-ylIXGUSj"
+												},
+												"precedence": {
+													"$ref": "#/components/schemas/precedence-ES2Ted9t"
+												},
+												"rule_settings": {
+													"$ref": "#/components/schemas/rule-settings"
+												},
+												"schedule": {
+													"$ref": "#/components/schemas/schedule"
+												},
+												"traffic": {
+													"$ref": "#/components/schemas/traffic"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1211,12 +1851,78 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/rules"
+													"properties": {
+														"action": {
+															"$ref": "#/components/schemas/action-xsVTa4z3"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"deleted_at": {
+															"$ref": "#/components/schemas/deleted_at"
+														},
+														"description": {
+															"$ref": "#/components/schemas/schemas-description-I6ewJQi9"
+														},
+														"device_posture": {
+															"$ref": "#/components/schemas/device_posture"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/enabled-AYr2vLPU"
+														},
+														"filters": {
+															"$ref": "#/components/schemas/filters-Ce5kC9cO"
+														},
+														"id": {
+															"$ref": "#/components/schemas/uuid-3ouIahqd"
+														},
+														"identity": {
+															"$ref": "#/components/schemas/identity"
+														},
+														"name": {
+															"$ref": "#/components/schemas/components-schemas-name-ylIXGUSj"
+														},
+														"precedence": {
+															"$ref": "#/components/schemas/precedence-ES2Ted9t"
+														},
+														"rule_settings": {
+															"$ref": "#/components/schemas/rule-settings"
+														},
+														"schedule": {
+															"$ref": "#/components/schemas/schedule"
+														},
+														"traffic": {
+															"$ref": "#/components/schemas/traffic"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1227,7 +1933,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1241,7 +1965,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

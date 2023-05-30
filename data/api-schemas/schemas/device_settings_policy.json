@@ -1,28 +1,45 @@
 {
 	"properties": {
 		"allow_mode_switch": {
-			"$ref": "#/components/schemas/allow_mode_switch"
+			"description": "Whether to allow the user to switch WARP between modes.",
+			"example": true,
+			"type": "boolean"
 		},
 		"allow_updates": {
-			"$ref": "#/components/schemas/allow_updates"
+			"description": "Whether to receive update notifications when a new version of the client is available.",
+			"example": true,
+			"type": "boolean"
 		},
 		"allowed_to_leave": {
-			"$ref": "#/components/schemas/allowed_to_leave"
+			"description": "Whether to allow devices to leave the organization.",
+			"example": true,
+			"type": "boolean"
 		},
 		"auto_connect": {
-			"$ref": "#/components/schemas/auto_connect"
+			"description": "The amount of time in minutes to reconnect after having been disabled.",
+			"example": 0,
+			"type": "number"
 		},
 		"captive_portal": {
-			"$ref": "#/components/schemas/captive_portal"
+			"description": "Turn on the captive portal after the specified amount of time.",
+			"example": 180,
+			"type": "number"
 		},
 		"default": {
-			"$ref": "#/components/schemas/schemas-default"
+			"description": "Whether the policy is the default policy for an account.",
+			"example": false,
+			"type": "boolean"
 		},
 		"description": {
-			"$ref": "#/components/schemas/devices_components-schemas-description"
+			"description": "A description of the policy.",
+			"example": "Policy for test teams.",
+			"maxLength": 500,
+			"type": "string"
 		},
 		"disable_auto_fallback": {
-			"$ref": "#/components/schemas/disable_auto_fallback"
+			"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+			"example": true,
+			"type": "boolean"
 		},
 		"enabled": {
 			"description": "Whether the policy will be applied to matching devices.",
@@ -30,22 +47,102 @@
 			"type": "boolean"
 		},
 		"exclude": {
-			"$ref": "#/components/schemas/components-schemas-exclude"
+			"items": {
+				"properties": {
+					"address": {
+						"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+						"example": "192.0.2.0/24",
+						"type": "string"
+					},
+					"description": {
+						"description": "A description of the split tunnel item, displayed in the client UI.",
+						"example": "Exclude testing domains from the tunnel",
+						"maxLength": 100,
+						"type": "string"
+					},
+					"host": {
+						"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+						"example": "*.example.com",
+						"type": "string"
+					}
+				},
+				"required": [
+					"address",
+					"description"
+				],
+				"type": "object"
+			},
+			"type": "array"
 		},
 		"exclude_office_ips": {
-			"$ref": "#/components/schemas/exclude_office_ips"
+			"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+			"example": true,
+			"type": "boolean"
 		},
 		"fallback_domains": {
-			"$ref": "#/components/schemas/fallback_domains"
+			"items": {
+				"properties": {
+					"description": {
+						"description": "A description of the fallback domain, displayed in the client UI.",
+						"example": "Domain bypass for local development",
+						"maxLength": 100,
+						"type": "string"
+					},
+					"dns_server": {
+						"description": "A list of IP addresses to handle domain resolution.",
+						"items": {},
+						"type": "array"
+					},
+					"suffix": {
+						"description": "The domain suffix to match when resolving locally.",
+						"example": "example.com",
+						"type": "string"
+					}
+				},
+				"required": [
+					"suffix"
+				],
+				"type": "object"
+			},
+			"type": "array"
 		},
 		"gateway_unique_id": {
-			"$ref": "#/components/schemas/gateway_unique_id"
+			"example": "699d98642c564d2e855e9661899b7252",
+			"type": "string"
 		},
 		"include": {
-			"$ref": "#/components/schemas/schemas-include"
+			"items": {
+				"properties": {
+					"address": {
+						"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present.",
+						"example": "192.0.2.0/24",
+						"type": "string"
+					},
+					"description": {
+						"description": "A description of the split tunnel item, displayed in the client UI.",
+						"example": "Include testing domains from the tunnel",
+						"maxLength": 100,
+						"type": "string"
+					},
+					"host": {
+						"description": "The domain name to include in the tunnel. If host is present, address must not be present.",
+						"example": "*.example.com",
+						"type": "string"
+					}
+				},
+				"required": [
+					"address",
+					"description"
+				],
+				"type": "object"
+			},
+			"type": "array"
 		},
 		"match": {
-			"$ref": "#/components/schemas/components-schemas-match"
+			"description": "The wirefilter expression to match devices.",
+			"example": "user.identity == \"test@cloudflare.com\"",
+			"maxLength": 500,
+			"type": "string"
 		},
 		"name": {
 			"description": "The name of the device settings policy.",
@@ -54,19 +151,41 @@
 			"type": "string"
 		},
 		"policy_id": {
-			"$ref": "#/components/schemas/uuid"
+			"description": "UUID",
+			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"maxLength": 36,
+			"readOnly": true,
+			"type": "string"
 		},
 		"precedence": {
-			"$ref": "#/components/schemas/schemas-precedence"
+			"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.",
+			"example": 100,
+			"type": "number"
 		},
 		"service_mode_v2": {
-			"$ref": "#/components/schemas/service_mode_v2"
+			"properties": {
+				"mode": {
+					"description": "The mode to run the WARP client under.",
+					"example": "proxy",
+					"type": "string"
+				},
+				"port": {
+					"description": "The port number when used with proxy mode.",
+					"example": 3000,
+					"type": "number"
+				}
+			},
+			"type": "object"
 		},
 		"support_url": {
-			"$ref": "#/components/schemas/support_url"
+			"description": "The URL to launch when the Send Feedback button is clicked.",
+			"example": "https://1.1.1.1/help",
+			"type": "string"
 		},
 		"switch_locked": {
-			"$ref": "#/components/schemas/switch_locked"
+			"description": "Whether to allow the user to turn off the WARP switch and disconnect the client.",
+			"example": true,
+			"type": "boolean"
 		}
 	},
 	"type": "object"

@@ -19,7 +19,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -46,7 +63,42 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/users-qGbBfKTQ"
+												"properties": {
+													"access_seat": {
+														"$ref": "#/components/schemas/schemas-access_seat"
+													},
+													"active_device_count": {
+														"$ref": "#/components/schemas/active_device_count"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"email": {
+														"$ref": "#/components/schemas/components-schemas-email"
+													},
+													"gateway_seat": {
+														"$ref": "#/components/schemas/schemas-gateway_seat"
+													},
+													"id": {
+														"$ref": "#/components/schemas/users_components-schemas-id"
+													},
+													"last_successful_login": {
+														"$ref": "#/components/schemas/last_successful_login"
+													},
+													"name": {
+														"$ref": "#/components/schemas/users_components-schemas-name"
+													},
+													"seat_uid": {
+														"$ref": "#/components/schemas/seat_uid"
+													},
+													"uid": {
+														"$ref": "#/components/schemas/uid"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -66,7 +118,24 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -93,7 +162,42 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/users-qGbBfKTQ"
+														"properties": {
+															"access_seat": {
+																"$ref": "#/components/schemas/schemas-access_seat"
+															},
+															"active_device_count": {
+																"$ref": "#/components/schemas/active_device_count"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"email": {
+																"$ref": "#/components/schemas/components-schemas-email"
+															},
+															"gateway_seat": {
+																"$ref": "#/components/schemas/schemas-gateway_seat"
+															},
+															"id": {
+																"$ref": "#/components/schemas/users_components-schemas-id"
+															},
+															"last_successful_login": {
+																"$ref": "#/components/schemas/last_successful_login"
+															},
+															"name": {
+																"$ref": "#/components/schemas/users_components-schemas-name"
+															},
+															"seat_uid": {
+																"$ref": "#/components/schemas/seat_uid"
+															},
+															"uid": {
+																"$ref": "#/components/schemas/uid"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -106,7 +210,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -120,7 +242,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -196,7 +336,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -238,7 +395,24 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -273,7 +447,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -287,7 +479,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

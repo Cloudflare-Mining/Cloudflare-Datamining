@@ -41,7 +41,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -72,7 +92,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -96,7 +136,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -110,7 +168,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -187,7 +263,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -195,7 +291,47 @@
 											"properties": {
 												"ipsec_tunnels": {
 													"items": {
-														"$ref": "#/components/schemas/ipsec-tunnel"
+														"properties": {
+															"allow_null_cipher": {
+																"$ref": "#/components/schemas/allow_null_cipher"
+															},
+															"cloudflare_endpoint": {
+																"$ref": "#/components/schemas/cloudflare_ipsec_endpoint"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/schemas-created_on"
+															},
+															"customer_endpoint": {
+																"$ref": "#/components/schemas/customer_ipsec_endpoint"
+															},
+															"description": {
+																"$ref": "#/components/schemas/components-schemas-description-czPo4gG9"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+															},
+															"interface_address": {
+																"$ref": "#/components/schemas/interface_address"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/schemas-modified_on"
+															},
+															"name": {
+																"$ref": "#/components/schemas/schemas-name-hlU9wgas"
+															},
+															"psk_metadata": {
+																"$ref": "#/components/schemas/psk_metadata"
+															},
+															"tunnel_health_check": {
+																"$ref": "#/components/schemas/tunnel_health_check"
+															}
+														},
+														"required": [
+															"name",
+															"cloudflare_endpoint",
+															"interface_address"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -217,7 +353,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -225,7 +381,47 @@
 													"properties": {
 														"ipsec_tunnels": {
 															"items": {
-																"$ref": "#/components/schemas/ipsec-tunnel"
+																"properties": {
+																	"allow_null_cipher": {
+																		"$ref": "#/components/schemas/allow_null_cipher"
+																	},
+																	"cloudflare_endpoint": {
+																		"$ref": "#/components/schemas/cloudflare_ipsec_endpoint"
+																	},
+																	"created_on": {
+																		"$ref": "#/components/schemas/schemas-created_on"
+																	},
+																	"customer_endpoint": {
+																		"$ref": "#/components/schemas/customer_ipsec_endpoint"
+																	},
+																	"description": {
+																		"$ref": "#/components/schemas/components-schemas-description-czPo4gG9"
+																	},
+																	"id": {
+																		"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+																	},
+																	"interface_address": {
+																		"$ref": "#/components/schemas/interface_address"
+																	},
+																	"modified_on": {
+																		"$ref": "#/components/schemas/schemas-modified_on"
+																	},
+																	"name": {
+																		"$ref": "#/components/schemas/schemas-name-hlU9wgas"
+																	},
+																	"psk_metadata": {
+																		"$ref": "#/components/schemas/psk_metadata"
+																	},
+																	"tunnel_health_check": {
+																		"$ref": "#/components/schemas/tunnel_health_check"
+																	}
+																},
+																"required": [
+																	"name",
+																	"cloudflare_endpoint",
+																	"interface_address"
+																],
+																"type": "object"
 															},
 															"type": "array"
 														}
@@ -240,7 +436,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -254,7 +468,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -343,7 +575,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -370,7 +622,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -390,7 +662,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -404,7 +694,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -496,7 +804,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -504,7 +832,47 @@
 											"properties": {
 												"ipsec_tunnels": {
 													"items": {
-														"$ref": "#/components/schemas/ipsec-tunnel"
+														"properties": {
+															"allow_null_cipher": {
+																"$ref": "#/components/schemas/allow_null_cipher"
+															},
+															"cloudflare_endpoint": {
+																"$ref": "#/components/schemas/cloudflare_ipsec_endpoint"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/schemas-created_on"
+															},
+															"customer_endpoint": {
+																"$ref": "#/components/schemas/customer_ipsec_endpoint"
+															},
+															"description": {
+																"$ref": "#/components/schemas/components-schemas-description-czPo4gG9"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+															},
+															"interface_address": {
+																"$ref": "#/components/schemas/interface_address"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/schemas-modified_on"
+															},
+															"name": {
+																"$ref": "#/components/schemas/schemas-name-hlU9wgas"
+															},
+															"psk_metadata": {
+																"$ref": "#/components/schemas/psk_metadata"
+															},
+															"tunnel_health_check": {
+																"$ref": "#/components/schemas/tunnel_health_check"
+															}
+														},
+														"required": [
+															"name",
+															"cloudflare_endpoint",
+															"interface_address"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -526,7 +894,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -534,7 +922,47 @@
 													"properties": {
 														"ipsec_tunnels": {
 															"items": {
-																"$ref": "#/components/schemas/ipsec-tunnel"
+																"properties": {
+																	"allow_null_cipher": {
+																		"$ref": "#/components/schemas/allow_null_cipher"
+																	},
+																	"cloudflare_endpoint": {
+																		"$ref": "#/components/schemas/cloudflare_ipsec_endpoint"
+																	},
+																	"created_on": {
+																		"$ref": "#/components/schemas/schemas-created_on"
+																	},
+																	"customer_endpoint": {
+																		"$ref": "#/components/schemas/customer_ipsec_endpoint"
+																	},
+																	"description": {
+																		"$ref": "#/components/schemas/components-schemas-description-czPo4gG9"
+																	},
+																	"id": {
+																		"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+																	},
+																	"interface_address": {
+																		"$ref": "#/components/schemas/interface_address"
+																	},
+																	"modified_on": {
+																		"$ref": "#/components/schemas/schemas-modified_on"
+																	},
+																	"name": {
+																		"$ref": "#/components/schemas/schemas-name-hlU9wgas"
+																	},
+																	"psk_metadata": {
+																		"$ref": "#/components/schemas/psk_metadata"
+																	},
+																	"tunnel_health_check": {
+																		"$ref": "#/components/schemas/tunnel_health_check"
+																	}
+																},
+																"required": [
+																	"name",
+																	"cloudflare_endpoint",
+																	"interface_address"
+																],
+																"type": "object"
 															},
 															"type": "array"
 														}
@@ -549,7 +977,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -563,7 +1009,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -658,20 +1122,52 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"ipsec_tunnel_id": {
-													"$ref": "#/components/schemas/identifier"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												},
 												"psk": {
-													"$ref": "#/components/schemas/psk"
+													"description": "A randomly generated or provided string for use in the IPsec tunnel.",
+													"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
+													"type": "string"
 												},
 												"psk_metadata": {
-													"$ref": "#/components/schemas/psk_metadata"
+													"description": "The PSK metadata that includes when the PSK was generated.",
+													"properties": {
+														"last_generated_on": {
+															"$ref": "#/components/schemas/schemas-modified_on"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -691,20 +1187,52 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"ipsec_tunnel_id": {
-															"$ref": "#/components/schemas/identifier"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														},
 														"psk": {
-															"$ref": "#/components/schemas/psk"
+															"description": "A randomly generated or provided string for use in the IPsec tunnel.",
+															"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
+															"type": "string"
 														},
 														"psk_metadata": {
-															"$ref": "#/components/schemas/psk_metadata"
+															"description": "The PSK metadata that includes when the PSK was generated.",
+															"properties": {
+																"last_generated_on": {
+																	"$ref": "#/components/schemas/schemas-modified_on"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -717,7 +1245,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -731,7 +1277,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -820,7 +1384,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -832,7 +1416,47 @@
 												},
 												"modified_ipsec_tunnels": {
 													"items": {
-														"$ref": "#/components/schemas/ipsec-tunnel"
+														"properties": {
+															"allow_null_cipher": {
+																"$ref": "#/components/schemas/allow_null_cipher"
+															},
+															"cloudflare_endpoint": {
+																"$ref": "#/components/schemas/cloudflare_ipsec_endpoint"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/schemas-created_on"
+															},
+															"customer_endpoint": {
+																"$ref": "#/components/schemas/customer_ipsec_endpoint"
+															},
+															"description": {
+																"$ref": "#/components/schemas/components-schemas-description-czPo4gG9"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+															},
+															"interface_address": {
+																"$ref": "#/components/schemas/interface_address"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/schemas-modified_on"
+															},
+															"name": {
+																"$ref": "#/components/schemas/schemas-name-hlU9wgas"
+															},
+															"psk_metadata": {
+																"$ref": "#/components/schemas/psk_metadata"
+															},
+															"tunnel_health_check": {
+																"$ref": "#/components/schemas/tunnel_health_check"
+															}
+														},
+														"required": [
+															"name",
+															"cloudflare_endpoint",
+															"interface_address"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -854,7 +1478,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -866,7 +1510,47 @@
 														},
 														"modified_ipsec_tunnels": {
 															"items": {
-																"$ref": "#/components/schemas/ipsec-tunnel"
+																"properties": {
+																	"allow_null_cipher": {
+																		"$ref": "#/components/schemas/allow_null_cipher"
+																	},
+																	"cloudflare_endpoint": {
+																		"$ref": "#/components/schemas/cloudflare_ipsec_endpoint"
+																	},
+																	"created_on": {
+																		"$ref": "#/components/schemas/schemas-created_on"
+																	},
+																	"customer_endpoint": {
+																		"$ref": "#/components/schemas/customer_ipsec_endpoint"
+																	},
+																	"description": {
+																		"$ref": "#/components/schemas/components-schemas-description-czPo4gG9"
+																	},
+																	"id": {
+																		"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+																	},
+																	"interface_address": {
+																		"$ref": "#/components/schemas/interface_address"
+																	},
+																	"modified_on": {
+																		"$ref": "#/components/schemas/schemas-modified_on"
+																	},
+																	"name": {
+																		"$ref": "#/components/schemas/schemas-name-hlU9wgas"
+																	},
+																	"psk_metadata": {
+																		"$ref": "#/components/schemas/psk_metadata"
+																	},
+																	"tunnel_health_check": {
+																		"$ref": "#/components/schemas/tunnel_health_check"
+																	}
+																},
+																"required": [
+																	"name",
+																	"cloudflare_endpoint",
+																	"interface_address"
+																],
+																"type": "object"
 															},
 															"type": "array"
 														}
@@ -881,7 +1565,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -895,7 +1597,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -983,7 +1703,32 @@
 					"schema": {
 						"allOf": [
 							{
-								"$ref": "#/components/schemas/schemas-tunnel_add_single_request"
+								"properties": {
+									"cloudflare_endpoint": {
+										"$ref": "#/components/schemas/cloudflare_ipsec_endpoint"
+									},
+									"customer_endpoint": {
+										"$ref": "#/components/schemas/customer_ipsec_endpoint"
+									},
+									"description": {
+										"$ref": "#/components/schemas/components-schemas-description-czPo4gG9"
+									},
+									"interface_address": {
+										"$ref": "#/components/schemas/interface_address"
+									},
+									"name": {
+										"$ref": "#/components/schemas/schemas-name-hlU9wgas"
+									},
+									"psk": {
+										"$ref": "#/components/schemas/psk"
+									}
+								},
+								"required": [
+									"name",
+									"cloudflare_endpoint",
+									"interface_address"
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -998,7 +1743,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1029,7 +1794,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1053,7 +1838,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1067,7 +1870,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

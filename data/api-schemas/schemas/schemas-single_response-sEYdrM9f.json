@@ -1,12 +1,172 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/device-posture-integrations-GUA4C1T8"
+					"properties": {
+						"config": {
+							"description": "The configuration object containing third party integration information.",
+							"example": {
+								"api_url": "https://as123.awmdm.com/API",
+								"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+								"client_id": "example client id"
+							},
+							"oneOf": [
+								{
+									"description": "The Workspace One Config Response.",
+									"properties": {
+										"api_url": {
+											"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard.",
+											"example": "https://as123.awmdm.com/API",
+											"type": "string"
+										},
+										"auth_url": {
+											"description": "The Workspace One Authorization URL depending on your region.",
+											"example": "https://na.uemauth.vmwservices.com/connect/token",
+											"type": "string"
+										},
+										"client_id": {
+											"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard.",
+											"example": "example client id",
+											"type": "string"
+										}
+									},
+									"required": [
+										"api_url",
+										"auth_url",
+										"client_id"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						},
+						"id": {
+							"description": "API uuid tag.",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"type": "string"
+						},
+						"interval": {
+							"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+							"example": "10m",
+							"type": "string"
+						},
+						"name": {
+							"description": "The name of the Device Posture Integration.",
+							"example": "My Workspace One Integration",
+							"type": "string"
+						},
+						"type": {
+							"description": "The type of Device Posture Integration.",
+							"enum": [
+								"workspace_one",
+								"crowdstrike_s2s",
+								"uptycs",
+								"intune",
+								"kolide",
+								"tanium"
+							],
+							"example": "workspace_one",
+							"type": "string"
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

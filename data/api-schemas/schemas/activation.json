@@ -1,21 +1,37 @@
 {
 	"properties": {
 		"activated_on": {
-			"$ref": "#/components/schemas/activated_on"
+			"description": "When the Railgun was activated.",
+			"example": "2014-01-02T02:20:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"key": {
-			"$ref": "#/components/schemas/activation_key"
+			"example": "e4edc00281cb56ebac22c81be9bac8f3",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"version": {
 			"properties": {
 				"build": {
-					"$ref": "#/components/schemas/build"
+					"description": "The build identifier for the Railgun receiver.",
+					"example": "b1234",
+					"readOnly": true,
+					"type": "string"
 				},
 				"number": {
-					"$ref": "#/components/schemas/components-schemas-version"
+					"description": "The version of the Railgun receiver.",
+					"example": "2.1",
+					"readOnly": true,
+					"type": "string"
 				},
 				"revision": {
-					"$ref": "#/components/schemas/revision"
+					"description": "The revision of the Railgun receiver.",
+					"example": "123",
+					"readOnly": true,
+					"type": "string"
 				}
 			},
 			"required": [

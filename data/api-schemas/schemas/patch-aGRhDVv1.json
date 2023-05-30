@@ -2,7 +2,13 @@
 	"description": "Update enablement of Argo Smart Routing",
 	"properties": {
 		"value": {
-			"$ref": "#/components/schemas/value-JaMgorGM"
+			"description": "Enables Argo Smart Routing.",
+			"enum": [
+				"on",
+				"off"
+			],
+			"example": "on",
+			"type": "string"
 		}
 	},
 	"required": [

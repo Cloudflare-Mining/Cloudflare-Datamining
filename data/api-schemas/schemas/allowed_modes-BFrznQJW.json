@@ -5,7 +5,13 @@
 		"off"
 	],
 	"items": {
-		"$ref": "#/components/schemas/components-schemas-mode"
+		"default": "on",
+		"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+		"enum": [
+			"on",
+			"off"
+		],
+		"type": "string"
 	},
 	"readOnly": true,
 	"type": "array"

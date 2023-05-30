@@ -1,12 +1,221 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/member_with_code"
+					"allOf": [
+						{
+							"properties": {
+								"id": {
+									"description": "Membership identifier tag.",
+									"example": "4536bcfad5faccb111b47003c79917fa",
+									"maxLength": 32,
+									"readOnly": true,
+									"type": "string"
+								},
+								"roles": {
+									"description": "Roles assigned to this member.",
+									"items": {
+										"properties": {
+											"description": {
+												"description": "Description of role's permissions.",
+												"example": "Administrative access to the entire Account",
+												"readOnly": true,
+												"type": "string"
+											},
+											"id": {
+												"$ref": "#/components/schemas/role_components-schemas-identifier"
+											},
+											"name": {
+												"description": "Role name.",
+												"example": "Account Administrator",
+												"maxLength": 120,
+												"readOnly": true,
+												"type": "string"
+											},
+											"permissions": {
+												"allOf": [
+													{
+														"$ref": "#/components/schemas/permissions"
+													},
+													{
+														"readOnly": true
+													}
+												]
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"description",
+											"permissions"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"status": {
+									"readOnly": true
+								},
+								"user": {
+									"properties": {
+										"email": {
+											"description": "The contact email address of the user.",
+											"example": "user@example.com",
+											"maxLength": 90,
+											"type": "string"
+										},
+										"first_name": {
+											"description": "User's first name",
+											"example": "John",
+											"maxLength": 60,
+											"nullable": true,
+											"type": "string"
+										},
+										"id": {
+											"description": "Identifier",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"readOnly": true,
+											"type": "string"
+										},
+										"last_name": {
+											"description": "User's last name",
+											"example": "Appleseed",
+											"maxLength": 60,
+											"nullable": true,
+											"type": "string"
+										},
+										"two_factor_authentication_enabled": {
+											"default": false,
+											"description": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.",
+											"readOnly": true,
+											"type": "boolean"
+										}
+									},
+									"readOnly": true,
+									"required": [
+										"email"
+									],
+									"type": "object"
+								}
+							},
+							"required": [
+								"id",
+								"user",
+								"status",
+								"roles"
+							],
+							"type": "object"
+						},
+						{
+							"properties": {
+								"code": {
+									"description": "The unique activation code for the account membership.",
+									"example": "05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0",
+									"maxLength": 64,
+									"readOnly": true,
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					]
 				}
 			},
 			"type": "object"

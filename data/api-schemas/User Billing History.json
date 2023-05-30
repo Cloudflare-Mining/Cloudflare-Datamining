@@ -91,13 +91,66 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/billing-history-qKblsoZe"
+												"properties": {
+													"action": {
+														"$ref": "#/components/schemas/action-6CA9cf6i"
+													},
+													"amount": {
+														"$ref": "#/components/schemas/amount"
+													},
+													"currency": {
+														"$ref": "#/components/schemas/currency"
+													},
+													"description": {
+														"$ref": "#/components/schemas/schemas-description-vhAW39fM"
+													},
+													"id": {
+														"$ref": "#/components/schemas/billing-history_components-schemas-identifier"
+													},
+													"occurred_at": {
+														"$ref": "#/components/schemas/occurred_at"
+													},
+													"type": {
+														"$ref": "#/components/schemas/type-SQUS157p"
+													},
+													"zone": {
+														"$ref": "#/components/schemas/schemas-zone"
+													}
+												},
+												"required": [
+													"id",
+													"type",
+													"action",
+													"description",
+													"occurred_at",
+													"amount",
+													"currency",
+													"zone"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -117,13 +170,66 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/billing-history-qKblsoZe"
+														"properties": {
+															"action": {
+																"$ref": "#/components/schemas/action-6CA9cf6i"
+															},
+															"amount": {
+																"$ref": "#/components/schemas/amount"
+															},
+															"currency": {
+																"$ref": "#/components/schemas/currency"
+															},
+															"description": {
+																"$ref": "#/components/schemas/schemas-description-vhAW39fM"
+															},
+															"id": {
+																"$ref": "#/components/schemas/billing-history_components-schemas-identifier"
+															},
+															"occurred_at": {
+																"$ref": "#/components/schemas/occurred_at"
+															},
+															"type": {
+																"$ref": "#/components/schemas/type-SQUS157p"
+															},
+															"zone": {
+																"$ref": "#/components/schemas/schemas-zone"
+															}
+														},
+														"required": [
+															"id",
+															"type",
+															"action",
+															"description",
+															"occurred_at",
+															"amount",
+															"currency",
+															"zone"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -136,7 +242,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -150,7 +274,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

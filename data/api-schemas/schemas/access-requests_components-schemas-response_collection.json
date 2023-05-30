@@ -1,13 +1,173 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/access-requests-3peJD2xZ"
+						"properties": {
+							"action": {
+								"description": "The event that occurred, such as a login attempt.",
+								"example": "login",
+								"type": "string"
+							},
+							"allowed": {
+								"default": false,
+								"description": "The result of the authentication event.",
+								"type": "boolean"
+							},
+							"app_domain": {
+								"description": "The URL of the Access application.",
+								"example": "test.example.com/admin",
+								"type": "string"
+							},
+							"app_uid": {
+								"description": "The unique identifier for the Access application.",
+								"example": "df7e2w5f-02b7-4d9d-af26-8d1988fca630"
+							},
+							"connection": {
+								"description": "The IdP used to authenticate.",
+								"example": "saml",
+								"type": "string"
+							},
+							"created_at": {
+								"example": "2014-01-01T05:20:00.12345Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"ip_address": {
+								"description": "The IP address of the authenticating user.",
+								"example": "198.41.129.166",
+								"type": "string"
+							},
+							"ray_id": {
+								"description": "The unique identifier for the request to Cloudflare.",
+								"example": "187d944c61940c77",
+								"maxLength": 16,
+								"type": "string"
+							},
+							"user_email": {
+								"description": "The email address of the authenticating user.",
+								"example": "user@example.com",
+								"format": "email",
+								"type": "string"
+							}
+						},
+						"type": "object"
 					},
 					"type": "array"
 				}

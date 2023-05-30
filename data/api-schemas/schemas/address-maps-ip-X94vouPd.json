@@ -1,10 +1,15 @@
 {
 	"properties": {
 		"created_at": {
-			"$ref": "#/components/schemas/created-on"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"ip": {
-			"$ref": "#/components/schemas/ip"
+			"description": "An IPv4 or IPv6 address.",
+			"example": "192.0.2.1",
+			"type": "string"
 		}
 	},
 	"type": "object"

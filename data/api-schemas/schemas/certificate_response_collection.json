@@ -1,13 +1,307 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/custom-certificate-8ZaTDvLe"
+						"properties": {
+							"bundle_method": {
+								"default": "ubiquitous",
+								"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+								"enum": [
+									"ubiquitous",
+									"optimal",
+									"force"
+								],
+								"example": "ubiquitous",
+								"type": "string"
+							},
+							"expires_on": {
+								"description": "When the certificate from the authority expires.",
+								"example": "2016-01-01T05:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"geo_restrictions": {
+								"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.",
+								"properties": {
+									"label": {
+										"enum": [
+											"us",
+											"eu",
+											"highest_security"
+										],
+										"example": "us"
+									}
+								},
+								"type": "object"
+							},
+							"hosts": {
+								"items": {
+									"description": "The valid hosts for the certificates.",
+									"example": "example.com",
+									"maxLength": 253,
+									"readOnly": true,
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"id": {
+								"description": "Custom certificate identifier tag.",
+								"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+								"maxLength": 36,
+								"readOnly": true,
+								"type": "string"
+							},
+							"issuer": {
+								"description": "The certificate authority that issued the certificate.",
+								"example": "GlobalSign",
+								"readOnly": true,
+								"type": "string"
+							},
+							"keyless_server": {
+								"allOf": [
+									{
+										"properties": {
+											"created_on": {
+												"description": "When the Keyless SSL was created.",
+												"example": "2014-01-01T05:20:00Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
+											"enabled": {
+												"$ref": "#/components/schemas/enabled-SAtHxfZz"
+											},
+											"host": {
+												"$ref": "#/components/schemas/schemas-host"
+											},
+											"id": {
+												"$ref": "#/components/schemas/keyless-certificate_components-schemas-identifier"
+											},
+											"modified_on": {
+												"description": "When the Keyless SSL was last modified.",
+												"example": "2014-01-01T05:20:00Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
+											"name": {
+												"$ref": "#/components/schemas/keyless-certificate_components-schemas-name"
+											},
+											"permissions": {
+												"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+												"example": [
+													"#ssl:read",
+													"#ssl:edit"
+												],
+												"items": {},
+												"readOnly": true,
+												"type": "array"
+											},
+											"port": {
+												"$ref": "#/components/schemas/port-hkC7bD4n"
+											},
+											"status": {
+												"$ref": "#/components/schemas/keyless-certificate_components-schemas-status"
+											}
+										},
+										"required": [
+											"id",
+											"name",
+											"host",
+											"port",
+											"status",
+											"enabled",
+											"permissions",
+											"created_on",
+											"modified_on"
+										],
+										"type": "object"
+									}
+								],
+								"type": "object"
+							},
+							"modified_on": {
+								"description": "When the certificate was last modified.",
+								"example": "2014-01-01T05:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"policy": {
+								"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+								"example": "(country: US) or (region: EU)",
+								"type": "string"
+							},
+							"priority": {
+								"default": 20,
+								"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
+								"example": 1,
+								"type": "number"
+							},
+							"signature": {
+								"description": "The type of hash used for the certificate.",
+								"example": "SHA256WithRSA",
+								"readOnly": true,
+								"type": "string"
+							},
+							"status": {
+								"description": "Status of the zone's custom SSL.",
+								"enum": [
+									"active",
+									"expired",
+									"deleted",
+									"pending",
+									"initializing"
+								],
+								"example": "active",
+								"readOnly": true
+							},
+							"uploaded_on": {
+								"description": "When the certificate was uploaded to Cloudflare.",
+								"example": "2014-01-01T05:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"zone_id": {
+								"description": "Identifier",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							}
+						},
+						"required": [
+							"id",
+							"hosts",
+							"issuer",
+							"signature",
+							"status",
+							"bundle_method",
+							"zone_id",
+							"uploaded_on",
+							"modified_on",
+							"expires_on",
+							"priority"
+						],
+						"type": "object"
 					},
 					"type": "array"
 				}

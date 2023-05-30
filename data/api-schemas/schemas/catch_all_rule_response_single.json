@@ -1,12 +1,181 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							]
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/catch_all_rule"
+					"properties": {
+						"actions": {
+							"description": "List actions for the catch-all routing rule.",
+							"items": {
+								"description": "Action for the catch-all routing rule.",
+								"properties": {
+									"type": {
+										"description": "Type of action for catch-all rule.",
+										"enum": [
+											"drop",
+											"forward",
+											"worker"
+										],
+										"example": "forward",
+										"type": "string"
+									},
+									"value": {
+										"items": {
+											"description": "Input value for action.",
+											"example": "destinationaddress@example.net",
+											"maxLength": 90,
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"type"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"enabled": {
+							"default": true,
+							"description": "Routing rule status.",
+							"enum": [
+								true,
+								false
+							],
+							"example": true,
+							"type": "boolean"
+						},
+						"matchers": {
+							"description": "List of matchers for the catch-all routing rule.",
+							"items": {
+								"description": "Matcher for catch-all routing rule.",
+								"properties": {
+									"type": {
+										"description": "Type of matcher. Default is 'all'.",
+										"enum": [
+											"all"
+										],
+										"example": "all",
+										"type": "string"
+									}
+								},
+								"required": [
+									"type"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"name": {
+							"description": "Routing rule name.",
+							"example": "Send to user@example.net rule.",
+							"maxLength": 256,
+							"type": "string"
+						},
+						"tag": {
+							"description": "Routing rule identifier.",
+							"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

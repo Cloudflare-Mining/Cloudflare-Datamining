@@ -40,7 +40,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								}
 							]
 						}
@@ -56,7 +76,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										}
 									]
 								},
@@ -65,7 +105,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -79,7 +137,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -161,7 +237,11 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/default_response-4A4I6S5Q"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
+										}
+									]
 								},
 								{
 									"properties": {
@@ -169,7 +249,37 @@
 											"properties": {
 												"schemas": {
 													"items": {
-														"$ref": "#/components/schemas/openapi"
+														"description": "A OpenAPI 3.0.0 compliant schema.",
+														"example": {
+															"info": {
+																"title": "OpenAPI JSON schema for www.example.com",
+																"version": "1.0"
+															},
+															"openapi": "3.0.0",
+															"paths": {
+																"... Further paths ...": {},
+																"/api/v1/users/{var1}": {
+																	"get": {
+																		"parameters": [
+																			{
+																				"in": "path",
+																				"name": "var1",
+																				"required": true,
+																				"schema": {
+																					"type": "string"
+																				}
+																			}
+																		]
+																	}
+																}
+															},
+															"servers": [
+																{
+																	"url": "www.example.com"
+																}
+															]
+														},
+														"type": "object"
 													},
 													"type": "array"
 												},
@@ -195,7 +305,11 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/default_response-4A4I6S5Q"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
+												}
+											]
 										},
 										{
 											"properties": {
@@ -203,7 +317,37 @@
 													"properties": {
 														"schemas": {
 															"items": {
-																"$ref": "#/components/schemas/openapi"
+																"description": "A OpenAPI 3.0.0 compliant schema.",
+																"example": {
+																	"info": {
+																		"title": "OpenAPI JSON schema for www.example.com",
+																		"version": "1.0"
+																	},
+																	"openapi": "3.0.0",
+																	"paths": {
+																		"... Further paths ...": {},
+																		"/api/v1/users/{var1}": {
+																			"get": {
+																				"parameters": [
+																					{
+																						"in": "path",
+																						"name": "var1",
+																						"required": true,
+																						"schema": {
+																							"type": "string"
+																						}
+																					}
+																				]
+																			}
+																		}
+																	},
+																	"servers": [
+																		{
+																			"url": "www.example.com"
+																		}
+																	]
+																},
+																"type": "object"
 															},
 															"type": "array"
 														},
@@ -222,7 +366,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -236,7 +398,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -423,7 +603,30 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/collection_response-LAA4mUhR"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-collection"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/api-shield"
+																	},
+																	{
+																		"properties": {
+																			"features": {}
+																		}
+																	}
+																]
+															},
+															"type": "array"
+														}
+													}
+												}
+											]
 										},
 										{
 											"properties": {
@@ -458,7 +661,11 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/api-shield"
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/operation-6SX2TZUB"
+															}
+														]
 													},
 													"type": "array"
 												}
@@ -467,7 +674,30 @@
 									]
 								},
 								{
-									"$ref": "#/components/schemas/collection_response-LAA4mUhR"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/api-shield"
+															},
+															{
+																"properties": {
+																	"features": {}
+																}
+															}
+														]
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
 								}
 							]
 						}
@@ -485,7 +715,30 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/collection_response-LAA4mUhR"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-collection"
+														},
+														{
+															"properties": {
+																"result": {
+																	"items": {
+																		"allOf": [
+																			{
+																				"$ref": "#/components/schemas/api-shield"
+																			},
+																			{
+																				"properties": {
+																					"features": {}
+																				}
+																			}
+																		]
+																	},
+																	"type": "array"
+																}
+															}
+														}
+													]
 												},
 												{
 													"properties": {
@@ -520,7 +773,11 @@
 													"properties": {
 														"result": {
 															"items": {
-																"$ref": "#/components/schemas/api-shield"
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/operation-6SX2TZUB"
+																	}
+																]
 															},
 															"type": "array"
 														}
@@ -529,7 +786,30 @@
 											]
 										},
 										{
-											"$ref": "#/components/schemas/collection_response-LAA4mUhR"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-collection"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/api-shield"
+																	},
+																	{
+																		"properties": {
+																			"features": {}
+																		}
+																	}
+																]
+															},
+															"type": "array"
+														}
+													}
+												}
+											]
 										}
 									]
 								},
@@ -538,7 +818,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -552,7 +850,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -665,12 +981,36 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/api-shield"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/operation-6SX2TZUB"
+												}
+											]
 										}
 									}
 								}
@@ -688,12 +1028,36 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/api-shield"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/operation-6SX2TZUB"
+														}
+													]
 												}
 											}
 										}
@@ -704,7 +1068,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -718,7 +1100,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -832,7 +1232,11 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/default_response-4A4I6S5Q"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
+										}
+									]
 								},
 								{
 									"properties": {
@@ -840,7 +1244,37 @@
 											"properties": {
 												"schemas": {
 													"items": {
-														"$ref": "#/components/schemas/openapiwiththresholds"
+														"description": "A OpenAPI 3.0.0 compliant schema.",
+														"example": {
+															"info": {
+																"title": "OpenAPI JSON schema for www.example.com",
+																"version": "1.0"
+															},
+															"openapi": "3.0.0",
+															"paths": {
+																"... Further paths ...": {},
+																"/api/v1/users/{var1}": {
+																	"get": {
+																		"parameters": [
+																			{
+																				"in": "path",
+																				"name": "var1",
+																				"required": true,
+																				"schema": {
+																					"type": "string"
+																				}
+																			}
+																		]
+																	}
+																}
+															},
+															"servers": [
+																{
+																	"url": "www.example.com"
+																}
+															]
+														},
+														"type": "object"
 													},
 													"type": "array"
 												},
@@ -866,7 +1300,11 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/default_response-4A4I6S5Q"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
+												}
+											]
 										},
 										{
 											"properties": {
@@ -874,7 +1312,37 @@
 													"properties": {
 														"schemas": {
 															"items": {
-																"$ref": "#/components/schemas/openapiwiththresholds"
+																"description": "A OpenAPI 3.0.0 compliant schema.",
+																"example": {
+																	"info": {
+																		"title": "OpenAPI JSON schema for www.example.com",
+																		"version": "1.0"
+																	},
+																	"openapi": "3.0.0",
+																	"paths": {
+																		"... Further paths ...": {},
+																		"/api/v1/users/{var1}": {
+																			"get": {
+																				"parameters": [
+																					{
+																						"in": "path",
+																						"name": "var1",
+																						"required": true,
+																						"schema": {
+																							"type": "string"
+																						}
+																					}
+																				]
+																			}
+																		}
+																	},
+																	"servers": [
+																		{
+																			"url": "www.example.com"
+																		}
+																	]
+																},
+																"type": "object"
 															},
 															"type": "array"
 														},
@@ -893,7 +1361,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -907,7 +1393,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1040,7 +1544,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1048,7 +1569,11 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/api-shield"
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/operation-6SX2TZUB"
+															}
+														]
 													},
 													{
 														"properties": {
@@ -1075,7 +1600,24 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1083,7 +1625,11 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/api-shield"
+																"allOf": [
+																	{
+																		"$ref": "#/components/schemas/operation-6SX2TZUB"
+																	}
+																]
 															},
 															{
 																"properties": {
@@ -1103,7 +1649,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1117,7 +1681,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

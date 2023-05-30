@@ -6,19 +6,40 @@
 			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/name-4XkzORU1"
+			"default": "",
+			"description": "A short description of the watermark profile.",
+			"example": "Marketing Videos",
+			"type": "string"
 		},
 		"opacity": {
-			"$ref": "#/components/schemas/opacity"
+			"default": 1,
+			"description": "The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.",
+			"example": 0.75,
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
 		},
 		"padding": {
-			"$ref": "#/components/schemas/padding"
+			"default": 0.05,
+			"description": "The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.",
+			"example": 0.1,
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
 		},
 		"position": {
-			"$ref": "#/components/schemas/position"
+			"default": "upperRight",
+			"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.",
+			"example": "center",
+			"type": "string"
 		},
 		"scale": {
-			"$ref": "#/components/schemas/scale"
+			"default": 0.15,
+			"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video.",
+			"example": 0.1,
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
 		}
 	},
 	"required": [

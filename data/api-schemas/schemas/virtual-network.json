@@ -1,7 +1,9 @@
 {
 	"properties": {
 		"comment": {
-			"$ref": "#/components/schemas/schemas-comment"
+			"description": "Optional remark describing the virtual network.",
+			"example": "Staging VPC for data science",
+			"type": "string"
 		},
 		"created_at": {
 			"description": "Timestamp of when the virtual network was created."
@@ -10,13 +12,21 @@
 			"description": "Timestamp of when the virtual network was deleted. If `null`, the virtual network has not been deleted."
 		},
 		"id": {
-			"$ref": "#/components/schemas/vnet_id"
+			"description": "UUID of the virtual network.",
+			"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+			"maxLength": 36,
+			"readOnly": true,
+			"type": "string"
 		},
 		"is_default_network": {
-			"$ref": "#/components/schemas/is_default_network"
+			"description": "If `true`, this virtual network is the default for the account.",
+			"example": true,
+			"type": "boolean"
 		},
 		"name": {
-			"$ref": "#/components/schemas/vnet_name"
+			"description": "A user-friendly name for the virtual network.",
+			"example": "us-east-1-vpc",
+			"type": "string"
 		}
 	},
 	"required": [

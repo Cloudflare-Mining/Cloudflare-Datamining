@@ -1,7 +1,44 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/schemas-tunnel_add_single_request"
+			"properties": {
+				"cloudflare_endpoint": {
+					"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel.",
+					"example": "203.0.113.1",
+					"type": "string"
+				},
+				"customer_endpoint": {
+					"description": "The IP address assigned to the customer side of the IPsec tunnel.",
+					"example": "203.0.113.1",
+					"type": "string"
+				},
+				"description": {
+					"description": "An optional description forthe IPsec tunnel.",
+					"example": "Tunnel for ISP X",
+					"type": "string"
+				},
+				"interface_address": {
+					"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
+					"example": "192.0.2.0/31",
+					"type": "string"
+				},
+				"name": {
+					"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
+					"example": "IPsec_1",
+					"type": "string"
+				},
+				"psk": {
+					"description": "A randomly generated or provided string for use in the IPsec tunnel.",
+					"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"cloudflare_endpoint",
+				"interface_address"
+			],
+			"type": "object"
 		}
 	]
 }

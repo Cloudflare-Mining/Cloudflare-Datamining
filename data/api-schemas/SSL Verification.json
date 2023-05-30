@@ -37,7 +37,36 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/verification"
+												"properties": {
+													"brand_check": {
+														"$ref": "#/components/schemas/brand_check"
+													},
+													"cert_pack_uuid": {
+														"$ref": "#/components/schemas/cert_pack_uuid"
+													},
+													"certificate_status": {
+														"$ref": "#/components/schemas/certificate_status"
+													},
+													"signature": {
+														"$ref": "#/components/schemas/schemas-signature"
+													},
+													"validation_method": {
+														"$ref": "#/components/schemas/schemas-validation_method"
+													},
+													"verification_info": {
+														"$ref": "#/components/schemas/verification_info"
+													},
+													"verification_status": {
+														"$ref": "#/components/schemas/verification_status"
+													},
+													"verification_type": {
+														"$ref": "#/components/schemas/verification_type"
+													}
+												},
+												"required": [
+													"certificate_status"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -60,7 +89,36 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/verification"
+														"properties": {
+															"brand_check": {
+																"$ref": "#/components/schemas/brand_check"
+															},
+															"cert_pack_uuid": {
+																"$ref": "#/components/schemas/cert_pack_uuid"
+															},
+															"certificate_status": {
+																"$ref": "#/components/schemas/certificate_status"
+															},
+															"signature": {
+																"$ref": "#/components/schemas/schemas-signature"
+															},
+															"validation_method": {
+																"$ref": "#/components/schemas/schemas-validation_method"
+															},
+															"verification_info": {
+																"$ref": "#/components/schemas/verification_info"
+															},
+															"verification_status": {
+																"$ref": "#/components/schemas/verification_status"
+															},
+															"verification_type": {
+																"$ref": "#/components/schemas/verification_type"
+															}
+														},
+														"required": [
+															"certificate_status"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -73,7 +131,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -87,7 +163,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -181,7 +275,15 @@
 					"schema": {
 						"properties": {
 							"validation_method": {
-								"$ref": "#/components/schemas/validation_method_definition"
+								"description": "Desired validation method.",
+								"enum": [
+									"http",
+									"cname",
+									"txt",
+									"email"
+								],
+								"example": "txt",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -200,17 +302,47 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"status": {
-													"$ref": "#/components/schemas/validation_method_components-schemas-status"
+													"description": "Result status.",
+													"example": "pending_validation",
+													"type": "string"
 												},
 												"validation_method": {
-													"$ref": "#/components/schemas/validation_method_definition"
+													"description": "Desired validation method.",
+													"enum": [
+														"http",
+														"cname",
+														"txt",
+														"email"
+													],
+													"example": "txt",
+													"type": "string"
 												}
 											}
 										}
@@ -230,17 +362,47 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"status": {
-															"$ref": "#/components/schemas/validation_method_components-schemas-status"
+															"description": "Result status.",
+															"example": "pending_validation",
+															"type": "string"
 														},
 														"validation_method": {
-															"$ref": "#/components/schemas/validation_method_definition"
+															"description": "Desired validation method.",
+															"enum": [
+																"http",
+																"cname",
+																"txt",
+																"email"
+															],
+															"example": "txt",
+															"type": "string"
 														}
 													}
 												}
@@ -253,7 +415,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -267,7 +447,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

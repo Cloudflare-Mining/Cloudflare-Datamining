@@ -1,19 +1,42 @@
 {
 	"properties": {
 		"cidr": {
-			"$ref": "#/components/schemas/cidr"
+			"description": "IP Prefix in Classless Inter-Domain Routing format.",
+			"example": "192.0.2.0/24",
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"provisioning": {
-			"$ref": "#/components/schemas/provisioning"
+			"description": "Status of a Service Binding's deployment to the Cloudflare network",
+			"properties": {
+				"state": {
+					"description": "When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active  and can be used with its associated service.\n",
+					"enum": [
+						"provisioning",
+						"active"
+					],
+					"example": "provisioning",
+					"type": "string"
+				}
+			},
+			"type": "object"
 		},
 		"service_id": {
-			"$ref": "#/components/schemas/service_identifier"
+			"description": "Identifier",
+			"example": "2db684ee7ca04e159946fd05b99e1bcd",
+			"maxLength": 32,
+			"type": "string"
 		},
 		"service_name": {
-			"$ref": "#/components/schemas/service_name"
+			"description": "Name of a service running on the Cloudflare network",
+			"example": "Magic Transit",
+			"type": "string"
 		}
 	},
 	"type": "object"

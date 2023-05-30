@@ -1,43 +1,82 @@
 {
 	"properties": {
 		"address": {
-			"$ref": "#/components/schemas/schemas-address"
+			"description": "Address.",
+			"example": "123 Sesame St.",
+			"type": "string"
 		},
 		"address2": {
-			"$ref": "#/components/schemas/address2"
+			"description": "Optional address line for unit, floor, suite, etc.",
+			"example": "Suite 430",
+			"type": "string"
 		},
 		"city": {
-			"$ref": "#/components/schemas/city"
+			"description": "City.",
+			"example": "Austin",
+			"type": "string"
 		},
 		"country": {
-			"$ref": "#/components/schemas/country-f9eOzkhw"
+			"description": "The country in which the user lives.",
+			"example": "US",
+			"maxLength": 30,
+			"nullable": true,
+			"type": "string"
 		},
 		"email": {
-			"$ref": "#/components/schemas/email-DYwLFMwr"
+			"description": "The contact email address of the user.",
+			"example": "user@example.com",
+			"maxLength": 90,
+			"type": "string"
 		},
 		"fax": {
-			"$ref": "#/components/schemas/fax"
+			"description": "Contact fax number.",
+			"example": "123-867-5309",
+			"type": "string"
 		},
 		"first_name": {
-			"$ref": "#/components/schemas/first_name"
+			"description": "User's first name",
+			"example": "John",
+			"maxLength": 60,
+			"nullable": true,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/contact_identifier"
+			"description": "Contact Identifier.",
+			"example": "ea95132c15732412d22c1476fa83f27a",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"last_name": {
-			"$ref": "#/components/schemas/last_name"
+			"description": "User's last name",
+			"example": "Appleseed",
+			"maxLength": 60,
+			"nullable": true,
+			"type": "string"
 		},
 		"organization": {
-			"$ref": "#/components/schemas/schemas-organization"
+			"description": "Name of organization.",
+			"example": "Cloudflare, Inc.",
+			"type": "string"
 		},
 		"phone": {
-			"$ref": "#/components/schemas/telephone"
+			"description": "User's telephone number",
+			"example": "+1 123-123-1234",
+			"maxLength": 20,
+			"nullable": true,
+			"type": "string"
 		},
 		"state": {
-			"$ref": "#/components/schemas/contacts_components-schemas-state"
+			"description": "State.",
+			"example": "TX",
+			"type": "string"
 		},
 		"zip": {
-			"$ref": "#/components/schemas/zipcode"
+			"description": "The zipcode or postal code where the user lives.",
+			"example": "12345",
+			"maxLength": 20,
+			"nullable": true,
+			"type": "string"
 		}
 	},
 	"required": [

@@ -2,10 +2,14 @@
 	"description": "Details for playback from an live input using RTMPS.",
 	"properties": {
 		"streamKey": {
-			"$ref": "#/components/schemas/playback_rtmps_stream_key"
+			"description": "The secret key to use for playback via RTMPS.",
+			"example": "2fb3cb9f17e68a2568d6ebed8d5505eak3ceaf8c9b1f395e1b76b79332497cada",
+			"type": "string"
 		},
 		"url": {
-			"$ref": "#/components/schemas/playback_rtmps_url"
+			"description": "The URL used to play live video over RTMPS.",
+			"example": "rtmps://live.cloudflare.com:443/live/",
+			"type": "string"
 		}
 	},
 	"type": "object"

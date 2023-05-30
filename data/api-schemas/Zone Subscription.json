@@ -23,7 +23,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-geRZwPGh"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -47,7 +67,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-geRZwPGh"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -64,7 +104,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -78,7 +136,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -161,39 +237,130 @@
 							"app": {
 								"properties": {
 									"install_id": {
-										"$ref": "#/components/schemas/install_id"
+										"description": "app install id.",
+										"type": "string"
 									}
 								}
 							},
 							"component_values": {
-								"$ref": "#/components/schemas/component_values"
+								"description": "The list of add-ons subscribed to.",
+								"items": {
+									"$ref": "#/components/schemas/component_value"
+								},
+								"type": "array"
 							},
 							"currency": {
-								"$ref": "#/components/schemas/currency"
+								"description": "The monetary unit in which pricing information is displayed.",
+								"example": "USD",
+								"readOnly": true,
+								"type": "string"
 							},
 							"current_period_end": {
-								"$ref": "#/components/schemas/current_period_end"
+								"description": "The end of the current period and also when the next billing is due.",
+								"example": "2014-03-31T12:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
 							},
 							"current_period_start": {
-								"$ref": "#/components/schemas/current_period_start"
+								"description": "When the current billing period started. May match initial_period_start if this is the first period.",
+								"example": "2014-05-11T12:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
 							},
 							"frequency": {
-								"$ref": "#/components/schemas/frequency"
+								"description": "How often the subscription is renewed automatically.",
+								"enum": [
+									"weekly",
+									"monthly",
+									"quarterly",
+									"yearly"
+								],
+								"example": "monthly",
+								"type": "string"
 							},
 							"id": {
-								"$ref": "#/components/schemas/schemas-identifier-zAK7oz7D"
+								"description": "Subscription identifier tag.",
+								"example": "506e3185e9c882d175a2d0cb0093d9f2",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
 							},
 							"price": {
-								"$ref": "#/components/schemas/price"
+								"description": "The price of the subscription that will be billed, in US dollars.",
+								"example": 20,
+								"readOnly": true,
+								"type": "number"
 							},
 							"rate_plan": {
-								"$ref": "#/components/schemas/rate_plan"
+								"description": "The rate plan applied to the subscription.",
+								"properties": {
+									"currency": {
+										"description": "The currency applied to the rate plan subscription.",
+										"example": "USD",
+										"type": "string"
+									},
+									"externally_managed": {
+										"description": "Whether this rate plan is managed externally from Cloudflare.",
+										"example": false,
+										"type": "boolean"
+									},
+									"id": {
+										"description": "The ID of the rate plan.",
+										"example": "free"
+									},
+									"is_contract": {
+										"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
+										"example": false,
+										"type": "boolean"
+									},
+									"public_name": {
+										"description": "The full name of the rate plan.",
+										"example": "Business Plan",
+										"type": "string"
+									},
+									"scope": {
+										"description": "The scope that this rate plan applies to.",
+										"example": "zone",
+										"type": "string"
+									},
+									"sets": {
+										"description": "The list of sets this rate plan applies to.",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
+								"type": "object"
 							},
 							"state": {
-								"$ref": "#/components/schemas/state-SBycamfZ"
+								"description": "The state that the subscription is in.",
+								"enum": [
+									"Trial",
+									"Provisioned",
+									"Paid",
+									"AwaitingPayment",
+									"Cancelled",
+									"Failed",
+									"Expired"
+								],
+								"example": "Paid",
+								"readOnly": true,
+								"type": "string"
 							},
 							"zone": {
-								"$ref": "#/components/schemas/zone-RSFTD93b"
+								"description": "A simple zone object. May have null properties if not a zone subscription.",
+								"properties": {
+									"id": {
+										"$ref": "#/components/schemas/identifier"
+									},
+									"name": {
+										"$ref": "#/components/schemas/name-wCM7NeGt"
+									}
+								},
+								"type": "object"
 							}
 						},
 						"type": "object"
@@ -209,7 +376,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-geRZwPGh"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -233,7 +420,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-geRZwPGh"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -250,7 +457,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -264,7 +489,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -348,39 +591,130 @@
 							"app": {
 								"properties": {
 									"install_id": {
-										"$ref": "#/components/schemas/install_id"
+										"description": "app install id.",
+										"type": "string"
 									}
 								}
 							},
 							"component_values": {
-								"$ref": "#/components/schemas/component_values"
+								"description": "The list of add-ons subscribed to.",
+								"items": {
+									"$ref": "#/components/schemas/component_value"
+								},
+								"type": "array"
 							},
 							"currency": {
-								"$ref": "#/components/schemas/currency"
+								"description": "The monetary unit in which pricing information is displayed.",
+								"example": "USD",
+								"readOnly": true,
+								"type": "string"
 							},
 							"current_period_end": {
-								"$ref": "#/components/schemas/current_period_end"
+								"description": "The end of the current period and also when the next billing is due.",
+								"example": "2014-03-31T12:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
 							},
 							"current_period_start": {
-								"$ref": "#/components/schemas/current_period_start"
+								"description": "When the current billing period started. May match initial_period_start if this is the first period.",
+								"example": "2014-05-11T12:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
 							},
 							"frequency": {
-								"$ref": "#/components/schemas/frequency"
+								"description": "How often the subscription is renewed automatically.",
+								"enum": [
+									"weekly",
+									"monthly",
+									"quarterly",
+									"yearly"
+								],
+								"example": "monthly",
+								"type": "string"
 							},
 							"id": {
-								"$ref": "#/components/schemas/schemas-identifier-zAK7oz7D"
+								"description": "Subscription identifier tag.",
+								"example": "506e3185e9c882d175a2d0cb0093d9f2",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
 							},
 							"price": {
-								"$ref": "#/components/schemas/price"
+								"description": "The price of the subscription that will be billed, in US dollars.",
+								"example": 20,
+								"readOnly": true,
+								"type": "number"
 							},
 							"rate_plan": {
-								"$ref": "#/components/schemas/rate_plan"
+								"description": "The rate plan applied to the subscription.",
+								"properties": {
+									"currency": {
+										"description": "The currency applied to the rate plan subscription.",
+										"example": "USD",
+										"type": "string"
+									},
+									"externally_managed": {
+										"description": "Whether this rate plan is managed externally from Cloudflare.",
+										"example": false,
+										"type": "boolean"
+									},
+									"id": {
+										"description": "The ID of the rate plan.",
+										"example": "free"
+									},
+									"is_contract": {
+										"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
+										"example": false,
+										"type": "boolean"
+									},
+									"public_name": {
+										"description": "The full name of the rate plan.",
+										"example": "Business Plan",
+										"type": "string"
+									},
+									"scope": {
+										"description": "The scope that this rate plan applies to.",
+										"example": "zone",
+										"type": "string"
+									},
+									"sets": {
+										"description": "The list of sets this rate plan applies to.",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
+								"type": "object"
 							},
 							"state": {
-								"$ref": "#/components/schemas/state-SBycamfZ"
+								"description": "The state that the subscription is in.",
+								"enum": [
+									"Trial",
+									"Provisioned",
+									"Paid",
+									"AwaitingPayment",
+									"Cancelled",
+									"Failed",
+									"Expired"
+								],
+								"example": "Paid",
+								"readOnly": true,
+								"type": "string"
 							},
 							"zone": {
-								"$ref": "#/components/schemas/zone-RSFTD93b"
+								"description": "A simple zone object. May have null properties if not a zone subscription.",
+								"properties": {
+									"id": {
+										"$ref": "#/components/schemas/identifier"
+									},
+									"name": {
+										"$ref": "#/components/schemas/name-wCM7NeGt"
+									}
+								},
+								"type": "object"
 							}
 						},
 						"type": "object"
@@ -396,7 +730,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-geRZwPGh"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -420,7 +774,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-geRZwPGh"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -437,7 +811,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -451,7 +843,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

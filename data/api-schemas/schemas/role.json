@@ -7,7 +7,10 @@
 			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/role_components-schemas-identifier"
+			"description": "Role identifier tag.",
+			"example": "3536bcfad5faccb999b47003c79917fb",
+			"maxLength": 32,
+			"type": "string"
 		},
 		"name": {
 			"description": "Role name.",
@@ -19,7 +22,223 @@
 		"permissions": {
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/permissions"
+					"example": {
+						"analytics": {
+							"read": true,
+							"write": false
+						},
+						"zones": {
+							"read": true,
+							"write": true
+						}
+					},
+					"properties": {
+						"analytics": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						},
+						"billing": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						},
+						"cache_purge": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						},
+						"dns": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						},
+						"dns_records": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						},
+						"lb": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						},
+						"logs": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						},
+						"organization": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						},
+						"ssl": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						},
+						"waf": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						},
+						"zone_settings": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						},
+						"zones": {
+							"example": {
+								"read": true,
+								"write": false
+							},
+							"properties": {
+								"read": {
+									"example": true,
+									"type": "boolean"
+								},
+								"write": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"type": "object"
 				},
 				{
 					"readOnly": true

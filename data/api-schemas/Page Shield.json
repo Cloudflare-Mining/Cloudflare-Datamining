@@ -40,7 +40,42 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/pageshield-policy"
+											"properties": {
+												"action": {
+													"description": "The action to take if the expression matches",
+													"enum": [
+														"allow",
+														"log"
+													],
+													"example": "allow",
+													"type": "string"
+												},
+												"description": {
+													"description": "A description for the policy",
+													"example": "Checkout page CSP policy",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "Whether the policy is enabled",
+													"example": true,
+													"type": "boolean"
+												},
+												"expression": {
+													"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+													"example": "ends_with(http.request.uri.path, \"/checkout\")",
+													"type": "string"
+												},
+												"id": {
+													"description": "The ID of the policy",
+													"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+													"type": "string"
+												},
+												"value": {
+													"description": "The policy which will be applied",
+													"example": "script-src 'none';",
+													"type": "string"
+												}
+											}
 										}
 									]
 								},
@@ -49,7 +84,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -63,7 +116,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -142,7 +213,30 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-cHbpZHlE"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -158,16 +252,24 @@
 										"result": {
 											"properties": {
 												"enabled": {
-													"$ref": "#/components/schemas/enabled-L9acGmWt"
+													"description": "When true, indicates that Page Shield is enabled.",
+													"example": true,
+													"type": "boolean"
 												},
 												"updated_at": {
-													"$ref": "#/components/schemas/updated_at-0pLcukjq"
+													"description": "The timestamp of when Page Shield was last updated.",
+													"example": "2022-10-12T17:56:52.083582+01:00",
+													"type": "string"
 												},
 												"use_cloudflare_reporting_endpoint": {
-													"$ref": "#/components/schemas/use_cloudflare_reporting_endpoint"
+													"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
+													"example": true,
+													"type": "boolean"
 												},
 												"use_connection_url_path": {
-													"$ref": "#/components/schemas/use_connection_url_path"
+													"description": "When true, the paths associated with connections URLs will also be analyzed.",
+													"example": true,
+													"type": "boolean"
 												}
 											}
 										}
@@ -189,7 +291,30 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-cHbpZHlE"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"items": {},
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -205,16 +330,24 @@
 												"result": {
 													"properties": {
 														"enabled": {
-															"$ref": "#/components/schemas/enabled-L9acGmWt"
+															"description": "When true, indicates that Page Shield is enabled.",
+															"example": true,
+															"type": "boolean"
 														},
 														"updated_at": {
-															"$ref": "#/components/schemas/updated_at-0pLcukjq"
+															"description": "The timestamp of when Page Shield was last updated.",
+															"example": "2022-10-12T17:56:52.083582+01:00",
+															"type": "string"
 														},
 														"use_cloudflare_reporting_endpoint": {
-															"$ref": "#/components/schemas/use_cloudflare_reporting_endpoint"
+															"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
+															"example": true,
+															"type": "boolean"
 														},
 														"use_connection_url_path": {
-															"$ref": "#/components/schemas/use_connection_url_path"
+															"description": "When true, the paths associated with connections URLs will also be analyzed.",
+															"example": true,
+															"type": "boolean"
 														}
 													}
 												}
@@ -227,7 +360,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -241,7 +392,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -440,18 +609,91 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/connection-dEF0PuRD"
+												"properties": {
+													"added_at": {
+														"example": "2021-08-18T10:51:10.09615Z"
+													},
+													"domain_reported_malicious": {
+														"example": false
+													},
+													"first_page_url": {
+														"example": "blog.cloudflare.com/page"
+													},
+													"first_seen_at": {
+														"example": "2021-08-18T10:51:08Z"
+													},
+													"host": {
+														"example": "blog.cloudflare.com"
+													},
+													"id": {
+														"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+													},
+													"last_seen_at": {
+														"example": "2021-09-02T09:57:54Z"
+													},
+													"page_urls": {
+														"example": [
+															"blog.cloudflare.com/page1",
+															"blog.cloudflare.com/page2"
+														]
+													},
+													"url": {
+														"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+													},
+													"url_contains_cdn_cgi_path": {
+														"example": false
+													}
+												}
 											},
 											"type": "array"
 										},
 										"result_info": {
-											"$ref": "#/components/schemas/result_info"
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service",
+													"example": 1,
+													"type": "number"
+												},
+												"page": {
+													"description": "Current page within paginated list of results",
+													"example": 1,
+													"type": "number"
+												},
+												"per_page": {
+													"description": "Number of results per page of results",
+													"example": 20,
+													"type": "number"
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters",
+													"example": 2000,
+													"type": "number"
+												}
+											},
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -470,18 +712,91 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/connection-dEF0PuRD"
+														"properties": {
+															"added_at": {
+																"example": "2021-08-18T10:51:10.09615Z"
+															},
+															"domain_reported_malicious": {
+																"example": false
+															},
+															"first_page_url": {
+																"example": "blog.cloudflare.com/page"
+															},
+															"first_seen_at": {
+																"example": "2021-08-18T10:51:08Z"
+															},
+															"host": {
+																"example": "blog.cloudflare.com"
+															},
+															"id": {
+																"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+															},
+															"last_seen_at": {
+																"example": "2021-09-02T09:57:54Z"
+															},
+															"page_urls": {
+																"example": [
+																	"blog.cloudflare.com/page1",
+																	"blog.cloudflare.com/page2"
+																]
+															},
+															"url": {
+																"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+															},
+															"url_contains_cdn_cgi_path": {
+																"example": false
+															}
+														}
 													},
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -493,7 +808,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -507,7 +840,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -596,7 +947,41 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/connection-dEF0PuRD"
+									"properties": {
+										"added_at": {
+											"example": "2021-08-18T10:51:10.09615Z"
+										},
+										"domain_reported_malicious": {
+											"example": false
+										},
+										"first_page_url": {
+											"example": "blog.cloudflare.com/page"
+										},
+										"first_seen_at": {
+											"example": "2021-08-18T10:51:08Z"
+										},
+										"host": {
+											"example": "blog.cloudflare.com"
+										},
+										"id": {
+											"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+										},
+										"last_seen_at": {
+											"example": "2021-09-02T09:57:54Z"
+										},
+										"page_urls": {
+											"example": [
+												"blog.cloudflare.com/page1",
+												"blog.cloudflare.com/page2"
+											]
+										},
+										"url": {
+											"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+										},
+										"url_contains_cdn_cgi_path": {
+											"example": false
+										}
+									}
 								}
 							]
 						}
@@ -612,7 +997,41 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/connection-dEF0PuRD"
+											"properties": {
+												"added_at": {
+													"example": "2021-08-18T10:51:10.09615Z"
+												},
+												"domain_reported_malicious": {
+													"example": false
+												},
+												"first_page_url": {
+													"example": "blog.cloudflare.com/page"
+												},
+												"first_seen_at": {
+													"example": "2021-08-18T10:51:08Z"
+												},
+												"host": {
+													"example": "blog.cloudflare.com"
+												},
+												"id": {
+													"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+												},
+												"last_seen_at": {
+													"example": "2021-09-02T09:57:54Z"
+												},
+												"page_urls": {
+													"example": [
+														"blog.cloudflare.com/page1",
+														"blog.cloudflare.com/page2"
+													]
+												},
+												"url": {
+													"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+												},
+												"url_contains_cdn_cgi_path": {
+													"example": false
+												}
+											}
 										}
 									]
 								},
@@ -621,7 +1040,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -635,7 +1072,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -712,13 +1167,65 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/pageshield-policy"
+												"properties": {
+													"action": {
+														"description": "The action to take if the expression matches",
+														"enum": [
+															"allow",
+															"log"
+														],
+														"example": "allow",
+														"type": "string"
+													},
+													"description": {
+														"description": "A description for the policy",
+														"example": "Checkout page CSP policy",
+														"type": "string"
+													},
+													"enabled": {
+														"description": "Whether the policy is enabled",
+														"example": true,
+														"type": "boolean"
+													},
+													"expression": {
+														"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+														"example": "ends_with(http.request.uri.path, \"/checkout\")",
+														"type": "string"
+													},
+													"id": {
+														"description": "The ID of the policy",
+														"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+														"type": "string"
+													},
+													"value": {
+														"description": "The policy which will be applied",
+														"example": "script-src 'none';",
+														"type": "string"
+													}
+												}
 											},
 											"type": "array"
 										}
@@ -739,13 +1246,65 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/pageshield-policy"
+														"properties": {
+															"action": {
+																"description": "The action to take if the expression matches",
+																"enum": [
+																	"allow",
+																	"log"
+																],
+																"example": "allow",
+																"type": "string"
+															},
+															"description": {
+																"description": "A description for the policy",
+																"example": "Checkout page CSP policy",
+																"type": "string"
+															},
+															"enabled": {
+																"description": "Whether the policy is enabled",
+																"example": true,
+																"type": "boolean"
+															},
+															"expression": {
+																"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+																"example": "ends_with(http.request.uri.path, \"/checkout\")",
+																"type": "string"
+															},
+															"id": {
+																"description": "The ID of the policy",
+																"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+																"type": "string"
+															},
+															"value": {
+																"description": "The policy which will be applied",
+																"example": "script-src 'none';",
+																"type": "string"
+															}
+														}
 													},
 													"type": "array"
 												}
@@ -759,7 +1318,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -773,7 +1350,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -862,7 +1457,42 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/pageshield-policy"
+									"properties": {
+										"action": {
+											"description": "The action to take if the expression matches",
+											"enum": [
+												"allow",
+												"log"
+											],
+											"example": "allow",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description for the policy",
+											"example": "Checkout page CSP policy",
+											"type": "string"
+										},
+										"enabled": {
+											"description": "Whether the policy is enabled",
+											"example": true,
+											"type": "boolean"
+										},
+										"expression": {
+											"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+											"example": "ends_with(http.request.uri.path, \"/checkout\")",
+											"type": "string"
+										},
+										"id": {
+											"description": "The ID of the policy",
+											"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+											"type": "string"
+										},
+										"value": {
+											"description": "The policy which will be applied",
+											"example": "script-src 'none';",
+											"type": "string"
+										}
+									}
 								}
 							]
 						}
@@ -878,7 +1508,42 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/pageshield-policy"
+											"properties": {
+												"action": {
+													"description": "The action to take if the expression matches",
+													"enum": [
+														"allow",
+														"log"
+													],
+													"example": "allow",
+													"type": "string"
+												},
+												"description": {
+													"description": "A description for the policy",
+													"example": "Checkout page CSP policy",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "Whether the policy is enabled",
+													"example": true,
+													"type": "boolean"
+												},
+												"expression": {
+													"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+													"example": "ends_with(http.request.uri.path, \"/checkout\")",
+													"type": "string"
+												},
+												"id": {
+													"description": "The ID of the policy",
+													"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+													"type": "string"
+												},
+												"value": {
+													"description": "The policy which will be applied",
+													"example": "script-src 'none';",
+													"type": "string"
+												}
+											}
 										}
 									]
 								},
@@ -887,7 +1552,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -901,7 +1584,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1100,18 +1801,100 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/script"
+												"properties": {
+													"added_at": {
+														"example": "2021-08-18T10:51:10.09615Z"
+													},
+													"domain_reported_malicious": {
+														"example": false
+													},
+													"fetched_at": {
+														"example": "2021-09-02T10:17:54Z"
+													},
+													"first_page_url": {
+														"example": "blog.cloudflare.com/page"
+													},
+													"first_seen_at": {
+														"example": "2021-08-18T10:51:08Z"
+													},
+													"hash": {
+														"example": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+													},
+													"host": {
+														"example": "blog.cloudflare.com"
+													},
+													"id": {
+														"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+													},
+													"js_integrity_score": {
+														"example": 10
+													},
+													"last_seen_at": {
+														"example": "2021-09-02T09:57:54Z"
+													},
+													"page_urls": {
+														"example": [
+															"blog.cloudflare.com/page1",
+															"blog.cloudflare.com/page2"
+														]
+													},
+													"url": {
+														"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+													},
+													"url_contains_cdn_cgi_path": {
+														"example": false
+													}
+												}
 											},
 											"type": "array"
 										},
 										"result_info": {
-											"$ref": "#/components/schemas/result_info"
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service",
+													"example": 1,
+													"type": "number"
+												},
+												"page": {
+													"description": "Current page within paginated list of results",
+													"example": 1,
+													"type": "number"
+												},
+												"per_page": {
+													"description": "Number of results per page of results",
+													"example": 20,
+													"type": "number"
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters",
+													"example": 2000,
+													"type": "number"
+												}
+											},
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -1130,18 +1913,100 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/script"
+														"properties": {
+															"added_at": {
+																"example": "2021-08-18T10:51:10.09615Z"
+															},
+															"domain_reported_malicious": {
+																"example": false
+															},
+															"fetched_at": {
+																"example": "2021-09-02T10:17:54Z"
+															},
+															"first_page_url": {
+																"example": "blog.cloudflare.com/page"
+															},
+															"first_seen_at": {
+																"example": "2021-08-18T10:51:08Z"
+															},
+															"hash": {
+																"example": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+															},
+															"host": {
+																"example": "blog.cloudflare.com"
+															},
+															"id": {
+																"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+															},
+															"js_integrity_score": {
+																"example": 10
+															},
+															"last_seen_at": {
+																"example": "2021-09-02T09:57:54Z"
+															},
+															"page_urls": {
+																"example": [
+																	"blog.cloudflare.com/page1",
+																	"blog.cloudflare.com/page2"
+																]
+															},
+															"url": {
+																"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+															},
+															"url_contains_cdn_cgi_path": {
+																"example": false
+															}
+														}
 													},
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -1153,7 +2018,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1167,7 +2050,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1256,7 +2157,50 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/script"
+									"properties": {
+										"added_at": {
+											"example": "2021-08-18T10:51:10.09615Z"
+										},
+										"domain_reported_malicious": {
+											"example": false
+										},
+										"fetched_at": {
+											"example": "2021-09-02T10:17:54Z"
+										},
+										"first_page_url": {
+											"example": "blog.cloudflare.com/page"
+										},
+										"first_seen_at": {
+											"example": "2021-08-18T10:51:08Z"
+										},
+										"hash": {
+											"example": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+										},
+										"host": {
+											"example": "blog.cloudflare.com"
+										},
+										"id": {
+											"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+										},
+										"js_integrity_score": {
+											"example": 10
+										},
+										"last_seen_at": {
+											"example": "2021-09-02T09:57:54Z"
+										},
+										"page_urls": {
+											"example": [
+												"blog.cloudflare.com/page1",
+												"blog.cloudflare.com/page2"
+											]
+										},
+										"url": {
+											"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+										},
+										"url_contains_cdn_cgi_path": {
+											"example": false
+										}
+									}
 								},
 								{
 									"properties": {
@@ -1269,7 +2213,19 @@
 												}
 											],
 											"items": {
-												"$ref": "#/components/schemas/version"
+												"description": "The version of the analyzed script.",
+												"properties": {
+													"fetched_at": {
+														"$ref": "#/components/schemas/fetched_at"
+													},
+													"hash": {
+														"$ref": "#/components/schemas/hash"
+													},
+													"js_integrity_score": {
+														"$ref": "#/components/schemas/js_integrity_score"
+													}
+												},
+												"type": "object"
 											},
 											"nullable": true,
 											"type": "array"
@@ -1290,7 +2246,50 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/script"
+											"properties": {
+												"added_at": {
+													"example": "2021-08-18T10:51:10.09615Z"
+												},
+												"domain_reported_malicious": {
+													"example": false
+												},
+												"fetched_at": {
+													"example": "2021-09-02T10:17:54Z"
+												},
+												"first_page_url": {
+													"example": "blog.cloudflare.com/page"
+												},
+												"first_seen_at": {
+													"example": "2021-08-18T10:51:08Z"
+												},
+												"hash": {
+													"example": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+												},
+												"host": {
+													"example": "blog.cloudflare.com"
+												},
+												"id": {
+													"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+												},
+												"js_integrity_score": {
+													"example": 10
+												},
+												"last_seen_at": {
+													"example": "2021-09-02T09:57:54Z"
+												},
+												"page_urls": {
+													"example": [
+														"blog.cloudflare.com/page1",
+														"blog.cloudflare.com/page2"
+													]
+												},
+												"url": {
+													"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+												},
+												"url_contains_cdn_cgi_path": {
+													"example": false
+												}
+											}
 										},
 										{
 											"properties": {
@@ -1303,7 +2302,19 @@
 														}
 													],
 													"items": {
-														"$ref": "#/components/schemas/version"
+														"description": "The version of the analyzed script.",
+														"properties": {
+															"fetched_at": {
+																"$ref": "#/components/schemas/fetched_at"
+															},
+															"hash": {
+																"$ref": "#/components/schemas/hash"
+															},
+															"js_integrity_score": {
+																"$ref": "#/components/schemas/js_integrity_score"
+															}
+														},
+														"type": "object"
 													},
 													"nullable": true,
 													"type": "array"
@@ -1317,7 +2328,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1331,7 +2360,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1434,7 +2481,42 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/pageshield-policy"
+									"properties": {
+										"action": {
+											"description": "The action to take if the expression matches",
+											"enum": [
+												"allow",
+												"log"
+											],
+											"example": "allow",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description for the policy",
+											"example": "Checkout page CSP policy",
+											"type": "string"
+										},
+										"enabled": {
+											"description": "Whether the policy is enabled",
+											"example": true,
+											"type": "boolean"
+										},
+										"expression": {
+											"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+											"example": "ends_with(http.request.uri.path, \"/checkout\")",
+											"type": "string"
+										},
+										"id": {
+											"description": "The ID of the policy",
+											"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+											"type": "string"
+										},
+										"value": {
+											"description": "The policy which will be applied",
+											"example": "script-src 'none';",
+											"type": "string"
+										}
+									}
 								}
 							]
 						}
@@ -1450,7 +2532,42 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/pageshield-policy"
+											"properties": {
+												"action": {
+													"description": "The action to take if the expression matches",
+													"enum": [
+														"allow",
+														"log"
+													],
+													"example": "allow",
+													"type": "string"
+												},
+												"description": {
+													"description": "A description for the policy",
+													"example": "Checkout page CSP policy",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "Whether the policy is enabled",
+													"example": true,
+													"type": "boolean"
+												},
+												"expression": {
+													"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+													"example": "ends_with(http.request.uri.path, \"/checkout\")",
+													"type": "string"
+												},
+												"id": {
+													"description": "The ID of the policy",
+													"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+													"type": "string"
+												},
+												"value": {
+													"description": "The policy which will be applied",
+													"example": "script-src 'none';",
+													"type": "string"
+												}
+											}
 										}
 									]
 								},
@@ -1459,7 +2576,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1473,7 +2608,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1578,7 +2731,30 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-cHbpZHlE"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1594,16 +2770,24 @@
 										"result": {
 											"properties": {
 												"enabled": {
-													"$ref": "#/components/schemas/enabled-L9acGmWt"
+													"description": "When true, indicates that Page Shield is enabled.",
+													"example": true,
+													"type": "boolean"
 												},
 												"updated_at": {
-													"$ref": "#/components/schemas/updated_at-0pLcukjq"
+													"description": "The timestamp of when Page Shield was last updated.",
+													"example": "2022-10-12T17:56:52.083582+01:00",
+													"type": "string"
 												},
 												"use_cloudflare_reporting_endpoint": {
-													"$ref": "#/components/schemas/use_cloudflare_reporting_endpoint"
+													"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
+													"example": true,
+													"type": "boolean"
 												},
 												"use_connection_url_path": {
-													"$ref": "#/components/schemas/use_connection_url_path"
+													"description": "When true, the paths associated with connections URLs will also be analyzed.",
+													"example": true,
+													"type": "boolean"
 												}
 											}
 										}
@@ -1625,7 +2809,30 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-cHbpZHlE"
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/api-response-common"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"items": {},
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -1641,16 +2848,24 @@
 												"result": {
 													"properties": {
 														"enabled": {
-															"$ref": "#/components/schemas/enabled-L9acGmWt"
+															"description": "When true, indicates that Page Shield is enabled.",
+															"example": true,
+															"type": "boolean"
 														},
 														"updated_at": {
-															"$ref": "#/components/schemas/updated_at-0pLcukjq"
+															"description": "The timestamp of when Page Shield was last updated.",
+															"example": "2022-10-12T17:56:52.083582+01:00",
+															"type": "string"
 														},
 														"use_cloudflare_reporting_endpoint": {
-															"$ref": "#/components/schemas/use_cloudflare_reporting_endpoint"
+															"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
+															"example": true,
+															"type": "boolean"
 														},
 														"use_connection_url_path": {
-															"$ref": "#/components/schemas/use_connection_url_path"
+															"description": "When true, the paths associated with connections URLs will also be analyzed.",
+															"example": true,
+															"type": "boolean"
 														}
 													}
 												}
@@ -1663,7 +2878,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1677,7 +2910,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1792,7 +3043,42 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/pageshield-policy"
+									"properties": {
+										"action": {
+											"description": "The action to take if the expression matches",
+											"enum": [
+												"allow",
+												"log"
+											],
+											"example": "allow",
+											"type": "string"
+										},
+										"description": {
+											"description": "A description for the policy",
+											"example": "Checkout page CSP policy",
+											"type": "string"
+										},
+										"enabled": {
+											"description": "Whether the policy is enabled",
+											"example": true,
+											"type": "boolean"
+										},
+										"expression": {
+											"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+											"example": "ends_with(http.request.uri.path, \"/checkout\")",
+											"type": "string"
+										},
+										"id": {
+											"description": "The ID of the policy",
+											"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+											"type": "string"
+										},
+										"value": {
+											"description": "The policy which will be applied",
+											"example": "script-src 'none';",
+											"type": "string"
+										}
+									}
 								}
 							]
 						}
@@ -1808,7 +3094,42 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/pageshield-policy"
+											"properties": {
+												"action": {
+													"description": "The action to take if the expression matches",
+													"enum": [
+														"allow",
+														"log"
+													],
+													"example": "allow",
+													"type": "string"
+												},
+												"description": {
+													"description": "A description for the policy",
+													"example": "Checkout page CSP policy",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "Whether the policy is enabled",
+													"example": true,
+													"type": "boolean"
+												},
+												"expression": {
+													"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+													"example": "ends_with(http.request.uri.path, \"/checkout\")",
+													"type": "string"
+												},
+												"id": {
+													"description": "The ID of the policy",
+													"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+													"type": "string"
+												},
+												"value": {
+													"description": "The policy which will be applied",
+													"example": "script-src 'none';",
+													"type": "string"
+												}
+											}
 										}
 									]
 								},
@@ -1817,7 +3138,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1831,7 +3170,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

@@ -1,12 +1,236 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/item"
+					"example": {
+						"comment": "Private IP address",
+						"created_on": "2020-01-01T08:00:00Z",
+						"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+						"ip": "10.0.0.1",
+						"modified_on": "2020-01-10T14:00:00Z"
+					},
+					"oneOf": [
+						{
+							"required": [
+								"ip"
+							]
+						},
+						{
+							"required": [
+								"redirect"
+							]
+						},
+						{
+							"required": [
+								"hostname"
+							]
+						}
+					],
+					"properties": {
+						"comment": {
+							"description": "An informative summary of the list item.",
+							"example": "Private IP address",
+							"type": "string"
+						},
+						"created_on": {
+							"description": "The RFC 3339 timestamp of when the item was created.",
+							"example": "2020-01-01T08:00:00Z",
+							"readOnly": true,
+							"type": "string"
+						},
+						"hostname": {
+							"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+							"properties": {
+								"url_hostname": {
+									"example": "example.com",
+									"type": "string"
+								}
+							},
+							"required": [
+								"url_hostname"
+							],
+							"type": "string"
+						},
+						"id": {
+							"description": "The unique ID of the list.",
+							"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+							"maxLength": 32,
+							"minLength": 32,
+							"readOnly": true,
+							"type": "string"
+						},
+						"ip": {
+							"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
+							"example": "10.0.0.1",
+							"type": "string"
+						},
+						"modified_on": {
+							"description": "The RFC 3339 timestamp of when the item was last modified.",
+							"example": "2020-01-10T14:00:00Z",
+							"readOnly": true,
+							"type": "string"
+						},
+						"redirect": {
+							"description": "The definition of the redirect.",
+							"properties": {
+								"include_subdomains": {
+									"default": false,
+									"type": "boolean"
+								},
+								"preserve_path_suffix": {
+									"default": true,
+									"type": "boolean"
+								},
+								"preserve_query_string": {
+									"default": false,
+									"type": "boolean"
+								},
+								"source_url": {
+									"example": "example.com/arch",
+									"type": "string"
+								},
+								"status_code": {
+									"default": 301,
+									"enum": [
+										301,
+										302,
+										307,
+										308
+									],
+									"type": "integer"
+								},
+								"subpath_matching": {
+									"default": false,
+									"type": "boolean"
+								},
+								"target_url": {
+									"example": "https://archlinux.org/",
+									"type": "string"
+								}
+							},
+							"required": [
+								"source_url",
+								"target_url"
+							],
+							"type": "object"
+						}
+					},
+					"type": "object"
 				}
 			},
 			"type": "object"

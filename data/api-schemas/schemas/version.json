@@ -2,13 +2,23 @@
 	"description": "The version of the analyzed script.",
 	"properties": {
 		"fetched_at": {
-			"$ref": "#/components/schemas/fetched_at"
+			"description": "The timestamp of when the script was last fetched.",
+			"nullable": true,
+			"type": "string"
 		},
 		"hash": {
-			"$ref": "#/components/schemas/hash"
+			"description": "The computed hash of the analyzed script.",
+			"maxLength": 64,
+			"minLength": 64,
+			"nullable": true,
+			"type": "string"
 		},
 		"js_integrity_score": {
-			"$ref": "#/components/schemas/js_integrity_score"
+			"description": "The integrity score of the JavaScript content.",
+			"maximum": 99,
+			"minimum": 1,
+			"nullable": true,
+			"type": "integer"
 		}
 	},
 	"type": "object"

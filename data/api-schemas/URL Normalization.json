@@ -23,10 +23,14 @@
 						"schema": {
 							"properties": {
 								"scope": {
-									"$ref": "#/components/schemas/scope-l4HKcyav"
+									"description": "The scope of the URL normalization.",
+									"example": "incoming",
+									"type": "string"
 								},
 								"type": {
-									"$ref": "#/components/schemas/type-82yIceOl"
+									"description": "The type of URL normalization performed by Cloudflare.",
+									"example": "cloudflare",
+									"type": "string"
 								}
 							},
 							"type": "object"
@@ -43,10 +47,14 @@
 								{
 									"properties": {
 										"scope": {
-											"$ref": "#/components/schemas/scope-l4HKcyav"
+											"description": "The scope of the URL normalization.",
+											"example": "incoming",
+											"type": "string"
 										},
 										"type": {
-											"$ref": "#/components/schemas/type-82yIceOl"
+											"description": "The type of URL normalization performed by Cloudflare.",
+											"example": "cloudflare",
+											"type": "string"
 										}
 									},
 									"type": "object"
@@ -56,7 +64,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -70,7 +96,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -146,10 +190,14 @@
 					"schema": {
 						"properties": {
 							"scope": {
-								"$ref": "#/components/schemas/scope-l4HKcyav"
+								"description": "The scope of the URL normalization.",
+								"example": "incoming",
+								"type": "string"
 							},
 							"type": {
-								"$ref": "#/components/schemas/type-82yIceOl"
+								"description": "The type of URL normalization performed by Cloudflare.",
+								"example": "cloudflare",
+								"type": "string"
 							}
 						},
 						"type": "object"
@@ -165,10 +213,14 @@
 						"schema": {
 							"properties": {
 								"scope": {
-									"$ref": "#/components/schemas/scope-l4HKcyav"
+									"description": "The scope of the URL normalization.",
+									"example": "incoming",
+									"type": "string"
 								},
 								"type": {
-									"$ref": "#/components/schemas/type-82yIceOl"
+									"description": "The type of URL normalization performed by Cloudflare.",
+									"example": "cloudflare",
+									"type": "string"
 								}
 							},
 							"type": "object"
@@ -185,10 +237,14 @@
 								{
 									"properties": {
 										"scope": {
-											"$ref": "#/components/schemas/scope-l4HKcyav"
+											"description": "The scope of the URL normalization.",
+											"example": "incoming",
+											"type": "string"
 										},
 										"type": {
-											"$ref": "#/components/schemas/type-82yIceOl"
+											"description": "The type of URL normalization performed by Cloudflare.",
+											"example": "cloudflare",
+											"type": "string"
 										}
 									},
 									"type": "object"
@@ -198,7 +254,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -212,7 +286,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

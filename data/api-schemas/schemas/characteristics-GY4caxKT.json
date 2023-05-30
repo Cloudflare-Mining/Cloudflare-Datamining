@@ -2,10 +2,19 @@
 	"items": {
 		"properties": {
 			"name": {
-				"$ref": "#/components/schemas/name-5oTDlc2o"
+				"description": "The name of the characteristic field, i.e., the header or cookie name.",
+				"example": "authorization",
+				"maxLength": 128,
+				"type": "string"
 			},
 			"type": {
-				"$ref": "#/components/schemas/type-i5V8AOli"
+				"description": "The type of characteristic.",
+				"enum": [
+					"header",
+					"cookie"
+				],
+				"example": "header",
+				"type": "string"
 			}
 		},
 		"required": [

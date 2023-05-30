@@ -156,13 +156,95 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/videos"
+												"properties": {
+													"allowedOrigins": {
+														"$ref": "#/components/schemas/allowedOrigins"
+													},
+													"created": {
+														"$ref": "#/components/schemas/created"
+													},
+													"creator": {
+														"$ref": "#/components/schemas/creator"
+													},
+													"duration": {
+														"$ref": "#/components/schemas/duration"
+													},
+													"input": {
+														"$ref": "#/components/schemas/input"
+													},
+													"liveInput": {
+														"$ref": "#/components/schemas/liveInput"
+													},
+													"maxDurationSeconds": {
+														"$ref": "#/components/schemas/maxDurationSeconds"
+													},
+													"meta": {
+														"$ref": "#/components/schemas/media_metadata"
+													},
+													"modified": {
+														"$ref": "#/components/schemas/modified"
+													},
+													"playback": {
+														"$ref": "#/components/schemas/playback"
+													},
+													"preview": {
+														"$ref": "#/components/schemas/preview"
+													},
+													"readyToStream": {
+														"$ref": "#/components/schemas/readyToStream"
+													},
+													"requireSignedURLs": {
+														"$ref": "#/components/schemas/requireSignedURLs"
+													},
+													"size": {
+														"$ref": "#/components/schemas/size"
+													},
+													"status": {
+														"$ref": "#/components/schemas/media_status"
+													},
+													"thumbnail": {
+														"$ref": "#/components/schemas/thumbnail_url"
+													},
+													"thumbnailTimestampPct": {
+														"$ref": "#/components/schemas/thumbnailTimestampPct"
+													},
+													"uid": {
+														"$ref": "#/components/schemas/identifier-f2Fd4Fo5"
+													},
+													"uploadExpiry": {
+														"$ref": "#/components/schemas/oneTimeUploadExpiry"
+													},
+													"uploaded": {
+														"$ref": "#/components/schemas/uploaded"
+													},
+													"watermark": {
+														"$ref": "#/components/schemas/watermarks"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -196,7 +278,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -210,7 +310,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -290,12 +408,96 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/videos"
+											"properties": {
+												"allowedOrigins": {
+													"$ref": "#/components/schemas/allowedOrigins"
+												},
+												"created": {
+													"$ref": "#/components/schemas/created"
+												},
+												"creator": {
+													"$ref": "#/components/schemas/creator"
+												},
+												"duration": {
+													"$ref": "#/components/schemas/duration"
+												},
+												"input": {
+													"$ref": "#/components/schemas/input"
+												},
+												"liveInput": {
+													"$ref": "#/components/schemas/liveInput"
+												},
+												"maxDurationSeconds": {
+													"$ref": "#/components/schemas/maxDurationSeconds"
+												},
+												"meta": {
+													"$ref": "#/components/schemas/media_metadata"
+												},
+												"modified": {
+													"$ref": "#/components/schemas/modified"
+												},
+												"playback": {
+													"$ref": "#/components/schemas/playback"
+												},
+												"preview": {
+													"$ref": "#/components/schemas/preview"
+												},
+												"readyToStream": {
+													"$ref": "#/components/schemas/readyToStream"
+												},
+												"requireSignedURLs": {
+													"$ref": "#/components/schemas/requireSignedURLs"
+												},
+												"size": {
+													"$ref": "#/components/schemas/size"
+												},
+												"status": {
+													"$ref": "#/components/schemas/media_status"
+												},
+												"thumbnail": {
+													"$ref": "#/components/schemas/thumbnail_url"
+												},
+												"thumbnailTimestampPct": {
+													"$ref": "#/components/schemas/thumbnailTimestampPct"
+												},
+												"uid": {
+													"$ref": "#/components/schemas/identifier-f2Fd4Fo5"
+												},
+												"uploadExpiry": {
+													"$ref": "#/components/schemas/oneTimeUploadExpiry"
+												},
+												"uploaded": {
+													"$ref": "#/components/schemas/uploaded"
+												},
+												"watermark": {
+													"$ref": "#/components/schemas/watermarks"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -313,7 +515,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -327,7 +547,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -419,7 +657,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -433,7 +689,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -593,25 +867,53 @@
 					"schema": {
 						"properties": {
 							"allowedOrigins": {
-								"$ref": "#/components/schemas/allowedOrigins"
+								"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
+								"example": [
+									"example.com"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
 							},
 							"creator": {
-								"$ref": "#/components/schemas/creator"
+								"description": "A user-defined identifier for the media creator.",
+								"example": "creator-id_abcde12345",
+								"maxLength": 64,
+								"type": "string"
 							},
 							"maxDurationSeconds": {
-								"$ref": "#/components/schemas/maxDurationSeconds"
+								"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
+								"maximum": 21600,
+								"minimum": 1,
+								"type": "integer"
 							},
 							"meta": {
-								"$ref": "#/components/schemas/media_metadata"
+								"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
+								"example": {
+									"name": "video12345.mp4"
+								},
+								"type": "object"
 							},
 							"requireSignedURLs": {
-								"$ref": "#/components/schemas/requireSignedURLs"
+								"default": false,
+								"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
+								"example": true,
+								"type": "boolean"
 							},
 							"thumbnailTimestampPct": {
-								"$ref": "#/components/schemas/thumbnailTimestampPct"
+								"default": 0,
+								"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
+								"example": 0.529241,
+								"maximum": 1,
+								"minimum": 0,
+								"type": "number"
 							},
 							"uploadExpiry": {
-								"$ref": "#/components/schemas/oneTimeUploadExpiry"
+								"description": "The date and time when the video upload URL is no longer valid for direct user uploads.",
+								"example": "2014-01-02T02:20:00Z",
+								"format": "date-time",
+								"type": "string"
 							}
 						},
 						"type": "object"
@@ -627,12 +929,96 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/videos"
+											"properties": {
+												"allowedOrigins": {
+													"$ref": "#/components/schemas/allowedOrigins"
+												},
+												"created": {
+													"$ref": "#/components/schemas/created"
+												},
+												"creator": {
+													"$ref": "#/components/schemas/creator"
+												},
+												"duration": {
+													"$ref": "#/components/schemas/duration"
+												},
+												"input": {
+													"$ref": "#/components/schemas/input"
+												},
+												"liveInput": {
+													"$ref": "#/components/schemas/liveInput"
+												},
+												"maxDurationSeconds": {
+													"$ref": "#/components/schemas/maxDurationSeconds"
+												},
+												"meta": {
+													"$ref": "#/components/schemas/media_metadata"
+												},
+												"modified": {
+													"$ref": "#/components/schemas/modified"
+												},
+												"playback": {
+													"$ref": "#/components/schemas/playback"
+												},
+												"preview": {
+													"$ref": "#/components/schemas/preview"
+												},
+												"readyToStream": {
+													"$ref": "#/components/schemas/readyToStream"
+												},
+												"requireSignedURLs": {
+													"$ref": "#/components/schemas/requireSignedURLs"
+												},
+												"size": {
+													"$ref": "#/components/schemas/size"
+												},
+												"status": {
+													"$ref": "#/components/schemas/media_status"
+												},
+												"thumbnail": {
+													"$ref": "#/components/schemas/thumbnail_url"
+												},
+												"thumbnailTimestampPct": {
+													"$ref": "#/components/schemas/thumbnailTimestampPct"
+												},
+												"uid": {
+													"$ref": "#/components/schemas/identifier-f2Fd4Fo5"
+												},
+												"uploadExpiry": {
+													"$ref": "#/components/schemas/oneTimeUploadExpiry"
+												},
+												"uploaded": {
+													"$ref": "#/components/schemas/uploaded"
+												},
+												"watermark": {
+													"$ref": "#/components/schemas/watermarks"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -650,7 +1036,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -664,7 +1068,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -767,7 +1189,43 @@
 									}
 								],
 								"items": {
-									"$ref": "#/components/schemas/accessRules"
+									"description": "Defines rules for fine-grained control over content than signed URL tokens alone. Access rules primarily make tokens conditionally valid based on user information. Access Rules are specified on token payloads as the `accessRules` property containing an array of Rule objects.",
+									"properties": {
+										"action": {
+											"description": "The action to take when a request matches a rule. If the action is `block`, the signed token blocks views for viewers matching the rule.",
+											"enum": [
+												"allow",
+												"block"
+											],
+											"example": "allow",
+											"type": "string"
+										},
+										"country": {
+											"description": "An array of 2-letter country codes in ISO 3166-1 Alpha-2 format used to match requests.",
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"ip": {
+											"description": "An array of IPv4 or IPV6 addresses or CIDRs used to match requests.",
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"type": {
+											"description": "Lists available rule types to match for requests. An `any` type matches all requests and can be used as a wildcard to apply default actions after other rules.",
+											"enum": [
+												"any",
+												"ip.src",
+												"ip.geoip.country"
+											],
+											"example": "ip.src",
+											"type": "string"
+										}
+									},
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -808,7 +1266,26 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -837,7 +1314,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -851,7 +1346,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -929,16 +1442,34 @@
 					"schema": {
 						"properties": {
 							"allowedOrigins": {
-								"$ref": "#/components/schemas/allowedOrigins"
+								"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
+								"example": [
+									"example.com"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
 							},
 							"creator": {
-								"$ref": "#/components/schemas/creator"
+								"description": "A user-defined identifier for the media creator.",
+								"example": "creator-id_abcde12345",
+								"maxLength": 64,
+								"type": "string"
 							},
 							"requireSignedURLs": {
-								"$ref": "#/components/schemas/requireSignedURLs"
+								"default": false,
+								"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
+								"example": true,
+								"type": "boolean"
 							},
 							"thumbnailTimestampPct": {
-								"$ref": "#/components/schemas/thumbnailTimestampPct"
+								"default": 0,
+								"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
+								"example": 0.529241,
+								"maximum": 1,
+								"minimum": 0,
+								"type": "number"
 							},
 							"url": {
 								"description": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file.",
@@ -947,7 +1478,15 @@
 								"type": "string"
 							},
 							"watermark": {
-								"$ref": "#/components/schemas/watermark_at_upload"
+								"properties": {
+									"uid": {
+										"description": "The unique identifier for the watermark profile.",
+										"example": "ea95132c15732412d22c1476fa83f27a",
+										"maxLength": 32,
+										"type": "string"
+									}
+								},
+								"type": "object"
 							}
 						},
 						"required": [
@@ -965,12 +1504,96 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/videos"
+											"properties": {
+												"allowedOrigins": {
+													"$ref": "#/components/schemas/allowedOrigins"
+												},
+												"created": {
+													"$ref": "#/components/schemas/created"
+												},
+												"creator": {
+													"$ref": "#/components/schemas/creator"
+												},
+												"duration": {
+													"$ref": "#/components/schemas/duration"
+												},
+												"input": {
+													"$ref": "#/components/schemas/input"
+												},
+												"liveInput": {
+													"$ref": "#/components/schemas/liveInput"
+												},
+												"maxDurationSeconds": {
+													"$ref": "#/components/schemas/maxDurationSeconds"
+												},
+												"meta": {
+													"$ref": "#/components/schemas/media_metadata"
+												},
+												"modified": {
+													"$ref": "#/components/schemas/modified"
+												},
+												"playback": {
+													"$ref": "#/components/schemas/playback"
+												},
+												"preview": {
+													"$ref": "#/components/schemas/preview"
+												},
+												"readyToStream": {
+													"$ref": "#/components/schemas/readyToStream"
+												},
+												"requireSignedURLs": {
+													"$ref": "#/components/schemas/requireSignedURLs"
+												},
+												"size": {
+													"$ref": "#/components/schemas/size"
+												},
+												"status": {
+													"$ref": "#/components/schemas/media_status"
+												},
+												"thumbnail": {
+													"$ref": "#/components/schemas/thumbnail_url"
+												},
+												"thumbnailTimestampPct": {
+													"$ref": "#/components/schemas/thumbnailTimestampPct"
+												},
+												"uid": {
+													"$ref": "#/components/schemas/identifier-f2Fd4Fo5"
+												},
+												"uploadExpiry": {
+													"$ref": "#/components/schemas/oneTimeUploadExpiry"
+												},
+												"uploaded": {
+													"$ref": "#/components/schemas/uploaded"
+												},
+												"watermark": {
+													"$ref": "#/components/schemas/watermarks"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -988,7 +1611,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -1002,7 +1643,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -1080,10 +1739,20 @@
 					"schema": {
 						"properties": {
 							"allowedOrigins": {
-								"$ref": "#/components/schemas/allowedOrigins"
+								"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
+								"example": [
+									"example.com"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
 							},
 							"creator": {
-								"$ref": "#/components/schemas/creator"
+								"description": "A user-defined identifier for the media creator.",
+								"example": "creator-id_abcde12345",
+								"maxLength": 64,
+								"type": "string"
 							},
 							"expiry": {
 								"default": "Now + 30 minutes",
@@ -1093,16 +1762,35 @@
 								"type": "string"
 							},
 							"maxDurationSeconds": {
-								"$ref": "#/components/schemas/maxDurationSeconds"
+								"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
+								"maximum": 21600,
+								"minimum": 1,
+								"type": "integer"
 							},
 							"requireSignedURLs": {
-								"$ref": "#/components/schemas/requireSignedURLs"
+								"default": false,
+								"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
+								"example": true,
+								"type": "boolean"
 							},
 							"thumbnailTimestampPct": {
-								"$ref": "#/components/schemas/thumbnailTimestampPct"
+								"default": 0,
+								"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
+								"example": 0.529241,
+								"maximum": 1,
+								"minimum": 0,
+								"type": "number"
 							},
 							"watermark": {
-								"$ref": "#/components/schemas/watermark_at_upload"
+								"properties": {
+									"uid": {
+										"description": "The unique identifier for the watermark profile.",
+										"example": "ea95132c15732412d22c1476fa83f27a",
+										"maxLength": 32,
+										"type": "string"
+									}
+								},
+								"type": "object"
 							}
 						},
 						"required": [
@@ -1121,14 +1809,36 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"uid": {
-													"$ref": "#/components/schemas/identifier-f2Fd4Fo5"
+													"description": "A Cloudflare-generated unique identifier for a media item.",
+													"example": "ea95132c15732412d22c1476fa83f27a",
+													"maxLength": 32,
+													"type": "string"
 												},
 												"uploadURL": {
 													"description": "The URL an unauthenticated upload can use for a single `HTTP POST multipart/form-data` request.",
@@ -1136,7 +1846,42 @@
 													"type": "string"
 												},
 												"watermark": {
-													"$ref": "#/components/schemas/watermarks"
+													"properties": {
+														"created": {
+															"$ref": "#/components/schemas/watermark_created"
+														},
+														"downloadedFrom": {
+															"$ref": "#/components/schemas/downloadedFrom"
+														},
+														"height": {
+															"$ref": "#/components/schemas/height"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-4XkzORU1"
+														},
+														"opacity": {
+															"$ref": "#/components/schemas/opacity"
+														},
+														"padding": {
+															"$ref": "#/components/schemas/padding"
+														},
+														"position": {
+															"$ref": "#/components/schemas/position"
+														},
+														"scale": {
+															"$ref": "#/components/schemas/scale"
+														},
+														"size": {
+															"$ref": "#/components/schemas/watermark_size"
+														},
+														"uid": {
+															"$ref": "#/components/schemas/watermark_identifier"
+														},
+														"width": {
+															"$ref": "#/components/schemas/width"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1156,7 +1901,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -1170,7 +1933,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []

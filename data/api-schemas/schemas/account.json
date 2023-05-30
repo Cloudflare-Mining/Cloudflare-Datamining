@@ -8,7 +8,11 @@
 			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/common_components-schemas-identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
 			"description": "Account name",

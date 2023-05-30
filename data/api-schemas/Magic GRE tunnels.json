@@ -41,7 +41,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -72,7 +92,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -96,7 +136,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -110,7 +168,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -187,7 +263,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -195,7 +291,48 @@
 											"properties": {
 												"gre_tunnels": {
 													"items": {
-														"$ref": "#/components/schemas/gre-tunnel"
+														"properties": {
+															"cloudflare_gre_endpoint": {
+																"$ref": "#/components/schemas/cloudflare_gre_endpoint"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/schemas-created_on"
+															},
+															"customer_gre_endpoint": {
+																"$ref": "#/components/schemas/customer_gre_endpoint"
+															},
+															"description": {
+																"$ref": "#/components/schemas/schemas-description-0ma25R6r"
+															},
+															"health_check": {
+																"$ref": "#/components/schemas/health_check"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+															},
+															"interface_address": {
+																"$ref": "#/components/schemas/interface_address"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/schemas-modified_on"
+															},
+															"mtu": {
+																"$ref": "#/components/schemas/mtu"
+															},
+															"name": {
+																"$ref": "#/components/schemas/name-flEKtvJP"
+															},
+															"ttl": {
+																"$ref": "#/components/schemas/ttl"
+															}
+														},
+														"required": [
+															"name",
+															"customer_gre_endpoint",
+															"cloudflare_gre_endpoint",
+															"interface_address"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -217,7 +354,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -225,7 +382,48 @@
 													"properties": {
 														"gre_tunnels": {
 															"items": {
-																"$ref": "#/components/schemas/gre-tunnel"
+																"properties": {
+																	"cloudflare_gre_endpoint": {
+																		"$ref": "#/components/schemas/cloudflare_gre_endpoint"
+																	},
+																	"created_on": {
+																		"$ref": "#/components/schemas/schemas-created_on"
+																	},
+																	"customer_gre_endpoint": {
+																		"$ref": "#/components/schemas/customer_gre_endpoint"
+																	},
+																	"description": {
+																		"$ref": "#/components/schemas/schemas-description-0ma25R6r"
+																	},
+																	"health_check": {
+																		"$ref": "#/components/schemas/health_check"
+																	},
+																	"id": {
+																		"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+																	},
+																	"interface_address": {
+																		"$ref": "#/components/schemas/interface_address"
+																	},
+																	"modified_on": {
+																		"$ref": "#/components/schemas/schemas-modified_on"
+																	},
+																	"mtu": {
+																		"$ref": "#/components/schemas/mtu"
+																	},
+																	"name": {
+																		"$ref": "#/components/schemas/name-flEKtvJP"
+																	},
+																	"ttl": {
+																		"$ref": "#/components/schemas/ttl"
+																	}
+																},
+																"required": [
+																	"name",
+																	"customer_gre_endpoint",
+																	"cloudflare_gre_endpoint",
+																	"interface_address"
+																],
+																"type": "object"
 															},
 															"type": "array"
 														}
@@ -240,7 +438,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -254,7 +470,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -343,7 +577,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -370,7 +624,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -390,7 +664,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -404,7 +696,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -496,7 +806,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -504,7 +834,48 @@
 											"properties": {
 												"gre_tunnels": {
 													"items": {
-														"$ref": "#/components/schemas/gre-tunnel"
+														"properties": {
+															"cloudflare_gre_endpoint": {
+																"$ref": "#/components/schemas/cloudflare_gre_endpoint"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/schemas-created_on"
+															},
+															"customer_gre_endpoint": {
+																"$ref": "#/components/schemas/customer_gre_endpoint"
+															},
+															"description": {
+																"$ref": "#/components/schemas/schemas-description-0ma25R6r"
+															},
+															"health_check": {
+																"$ref": "#/components/schemas/health_check"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+															},
+															"interface_address": {
+																"$ref": "#/components/schemas/interface_address"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/schemas-modified_on"
+															},
+															"mtu": {
+																"$ref": "#/components/schemas/mtu"
+															},
+															"name": {
+																"$ref": "#/components/schemas/name-flEKtvJP"
+															},
+															"ttl": {
+																"$ref": "#/components/schemas/ttl"
+															}
+														},
+														"required": [
+															"name",
+															"customer_gre_endpoint",
+															"cloudflare_gre_endpoint",
+															"interface_address"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -526,7 +897,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -534,7 +925,48 @@
 													"properties": {
 														"gre_tunnels": {
 															"items": {
-																"$ref": "#/components/schemas/gre-tunnel"
+																"properties": {
+																	"cloudflare_gre_endpoint": {
+																		"$ref": "#/components/schemas/cloudflare_gre_endpoint"
+																	},
+																	"created_on": {
+																		"$ref": "#/components/schemas/schemas-created_on"
+																	},
+																	"customer_gre_endpoint": {
+																		"$ref": "#/components/schemas/customer_gre_endpoint"
+																	},
+																	"description": {
+																		"$ref": "#/components/schemas/schemas-description-0ma25R6r"
+																	},
+																	"health_check": {
+																		"$ref": "#/components/schemas/health_check"
+																	},
+																	"id": {
+																		"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+																	},
+																	"interface_address": {
+																		"$ref": "#/components/schemas/interface_address"
+																	},
+																	"modified_on": {
+																		"$ref": "#/components/schemas/schemas-modified_on"
+																	},
+																	"mtu": {
+																		"$ref": "#/components/schemas/mtu"
+																	},
+																	"name": {
+																		"$ref": "#/components/schemas/name-flEKtvJP"
+																	},
+																	"ttl": {
+																		"$ref": "#/components/schemas/ttl"
+																	}
+																},
+																"required": [
+																	"name",
+																	"customer_gre_endpoint",
+																	"cloudflare_gre_endpoint",
+																	"interface_address"
+																],
+																"type": "object"
 															},
 															"type": "array"
 														}
@@ -549,7 +981,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -563,7 +1013,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -652,7 +1120,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -664,7 +1152,48 @@
 												},
 												"modified_gre_tunnels": {
 													"items": {
-														"$ref": "#/components/schemas/gre-tunnel"
+														"properties": {
+															"cloudflare_gre_endpoint": {
+																"$ref": "#/components/schemas/cloudflare_gre_endpoint"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/schemas-created_on"
+															},
+															"customer_gre_endpoint": {
+																"$ref": "#/components/schemas/customer_gre_endpoint"
+															},
+															"description": {
+																"$ref": "#/components/schemas/schemas-description-0ma25R6r"
+															},
+															"health_check": {
+																"$ref": "#/components/schemas/health_check"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+															},
+															"interface_address": {
+																"$ref": "#/components/schemas/interface_address"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/schemas-modified_on"
+															},
+															"mtu": {
+																"$ref": "#/components/schemas/mtu"
+															},
+															"name": {
+																"$ref": "#/components/schemas/name-flEKtvJP"
+															},
+															"ttl": {
+																"$ref": "#/components/schemas/ttl"
+															}
+														},
+														"required": [
+															"name",
+															"customer_gre_endpoint",
+															"cloudflare_gre_endpoint",
+															"interface_address"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -686,7 +1215,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -698,7 +1247,48 @@
 														},
 														"modified_gre_tunnels": {
 															"items": {
-																"$ref": "#/components/schemas/gre-tunnel"
+																"properties": {
+																	"cloudflare_gre_endpoint": {
+																		"$ref": "#/components/schemas/cloudflare_gre_endpoint"
+																	},
+																	"created_on": {
+																		"$ref": "#/components/schemas/schemas-created_on"
+																	},
+																	"customer_gre_endpoint": {
+																		"$ref": "#/components/schemas/customer_gre_endpoint"
+																	},
+																	"description": {
+																		"$ref": "#/components/schemas/schemas-description-0ma25R6r"
+																	},
+																	"health_check": {
+																		"$ref": "#/components/schemas/health_check"
+																	},
+																	"id": {
+																		"$ref": "#/components/schemas/schemas-identifier-visGp23A"
+																	},
+																	"interface_address": {
+																		"$ref": "#/components/schemas/interface_address"
+																	},
+																	"modified_on": {
+																		"$ref": "#/components/schemas/schemas-modified_on"
+																	},
+																	"mtu": {
+																		"$ref": "#/components/schemas/mtu"
+																	},
+																	"name": {
+																		"$ref": "#/components/schemas/name-flEKtvJP"
+																	},
+																	"ttl": {
+																		"$ref": "#/components/schemas/ttl"
+																	}
+																},
+																"required": [
+																	"name",
+																	"customer_gre_endpoint",
+																	"cloudflare_gre_endpoint",
+																	"interface_address"
+																],
+																"type": "object"
 															},
 															"type": "array"
 														}
@@ -713,7 +1303,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -727,7 +1335,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -815,7 +1441,39 @@
 					"schema": {
 						"allOf": [
 							{
-								"$ref": "#/components/schemas/tunnel_add_single_request"
+								"properties": {
+									"cloudflare_gre_endpoint": {
+										"$ref": "#/components/schemas/cloudflare_gre_endpoint"
+									},
+									"customer_gre_endpoint": {
+										"$ref": "#/components/schemas/customer_gre_endpoint"
+									},
+									"description": {
+										"$ref": "#/components/schemas/schemas-description-0ma25R6r"
+									},
+									"health_check": {
+										"$ref": "#/components/schemas/health_check"
+									},
+									"interface_address": {
+										"$ref": "#/components/schemas/interface_address"
+									},
+									"mtu": {
+										"$ref": "#/components/schemas/mtu"
+									},
+									"name": {
+										"$ref": "#/components/schemas/name-flEKtvJP"
+									},
+									"ttl": {
+										"$ref": "#/components/schemas/ttl"
+									}
+								},
+								"required": [
+									"name",
+									"customer_gre_endpoint",
+									"cloudflare_gre_endpoint",
+									"interface_address"
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -830,7 +1488,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -861,7 +1539,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Kcd2Kcuw"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -885,7 +1583,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -899,7 +1615,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

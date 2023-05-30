@@ -40,7 +40,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+									"$ref": "#/components/schemas/api-response-common"
 								},
 								{
 									"properties": {
@@ -64,7 +64,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
@@ -81,7 +81,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -95,7 +113,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -208,13 +244,57 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/virtual-network"
+												"properties": {
+													"comment": {
+														"$ref": "#/components/schemas/schemas-comment"
+													},
+													"created_at": {
+														"description": "Timestamp of when the virtual network was created."
+													},
+													"deleted_at": {
+														"description": "Timestamp of when the virtual network was deleted. If `null`, the virtual network has not been deleted."
+													},
+													"id": {
+														"$ref": "#/components/schemas/vnet_id"
+													},
+													"is_default_network": {
+														"$ref": "#/components/schemas/is_default_network"
+													},
+													"name": {
+														"$ref": "#/components/schemas/vnet_name"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"is_default_network",
+													"comment",
+													"created_at"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -235,13 +315,57 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/virtual-network"
+														"properties": {
+															"comment": {
+																"$ref": "#/components/schemas/schemas-comment"
+															},
+															"created_at": {
+																"description": "Timestamp of when the virtual network was created."
+															},
+															"deleted_at": {
+																"description": "Timestamp of when the virtual network was deleted. If `null`, the virtual network has not been deleted."
+															},
+															"id": {
+																"$ref": "#/components/schemas/vnet_id"
+															},
+															"is_default_network": {
+																"$ref": "#/components/schemas/is_default_network"
+															},
+															"name": {
+																"$ref": "#/components/schemas/vnet_name"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"is_default_network",
+															"comment",
+															"created_at"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -255,7 +379,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -269,7 +411,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -378,7 +538,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+									"$ref": "#/components/schemas/api-response-common"
 								},
 								{
 									"properties": {
@@ -402,7 +562,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
@@ -419,7 +579,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -433,7 +611,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -533,7 +729,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+									"$ref": "#/components/schemas/api-response-common"
 								},
 								{
 									"properties": {
@@ -557,7 +753,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
@@ -574,7 +770,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -588,7 +802,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

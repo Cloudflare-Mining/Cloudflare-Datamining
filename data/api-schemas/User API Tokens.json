@@ -23,7 +23,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -31,7 +103,11 @@
 											"nullable": true,
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/common_components-schemas-identifier"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"required": [
@@ -56,7 +132,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -64,7 +212,11 @@
 													"nullable": true,
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/common_components-schemas-identifier"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"required": [
@@ -82,7 +234,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -96,7 +266,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -199,7 +387,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -226,7 +431,24 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -246,7 +468,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -260,7 +500,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -335,7 +593,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -359,7 +637,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -376,7 +674,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -390,7 +706,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -457,23 +791,60 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"expires_on": {
-													"$ref": "#/components/schemas/expires_on-pX9bq9lv"
+													"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
+													"example": "2020-01-01T00:00:00Z",
+													"format": "date-time",
+													"type": "string"
 												},
 												"id": {
-													"$ref": "#/components/schemas/components-schemas-identifier-A8O24ylW"
+													"description": "Token identifier tag.",
+													"example": "ed17574386854bf78a67040be0a770b0",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												},
 												"not_before": {
-													"$ref": "#/components/schemas/not_before"
+													"description": "The time before which the token MUST NOT be accepted for processing.",
+													"example": "2018-07-01T05:20:00Z",
+													"format": "date-time",
+													"type": "string"
 												},
 												"status": {
-													"$ref": "#/components/schemas/status-Qzek6kyP"
+													"description": "Status of the token.",
+													"enum": [
+														"active",
+														"disabled",
+														"expired"
+													],
+													"example": "active",
+													"type": "string"
 												}
 											},
 											"required": [
@@ -498,23 +869,60 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"expires_on": {
-															"$ref": "#/components/schemas/expires_on-pX9bq9lv"
+															"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
+															"example": "2020-01-01T00:00:00Z",
+															"format": "date-time",
+															"type": "string"
 														},
 														"id": {
-															"$ref": "#/components/schemas/components-schemas-identifier-A8O24ylW"
+															"description": "Token identifier tag.",
+															"example": "ed17574386854bf78a67040be0a770b0",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														},
 														"not_before": {
-															"$ref": "#/components/schemas/not_before"
+															"description": "The time before which the token MUST NOT be accepted for processing.",
+															"example": "2018-07-01T05:20:00Z",
+															"format": "date-time",
+															"type": "string"
 														},
 														"status": {
-															"$ref": "#/components/schemas/status-Qzek6kyP"
+															"description": "Status of the token.",
+															"enum": [
+																"active",
+																"disabled",
+																"expired"
+															],
+															"example": "active",
+															"type": "string"
 														}
 													},
 													"required": [
@@ -532,7 +940,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -546,7 +972,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -607,19 +1051,37 @@
 					"schema": {
 						"properties": {
 							"condition": {
-								"$ref": "#/components/schemas/condition"
+								"properties": {
+									"request.ip": {
+										"$ref": "#/components/schemas/request.ip"
+									}
+								},
+								"type": "object"
 							},
 							"expires_on": {
-								"$ref": "#/components/schemas/expires_on-pX9bq9lv"
+								"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
+								"example": "2020-01-01T00:00:00Z",
+								"format": "date-time",
+								"type": "string"
 							},
 							"name": {
-								"$ref": "#/components/schemas/name-xo9KENjJ"
+								"description": "Token name.",
+								"example": "readonly token",
+								"maxLength": 120,
+								"type": "string"
 							},
 							"not_before": {
-								"$ref": "#/components/schemas/not_before"
+								"description": "The time before which the token MUST NOT be accepted for processing.",
+								"example": "2018-07-01T05:20:00Z",
+								"format": "date-time",
+								"type": "string"
 							},
 							"policies": {
-								"$ref": "#/components/schemas/policies-iTfbbNdk"
+								"description": "List of access policies assigned to the token.",
+								"items": {
+									"$ref": "#/components/schemas/access-policy"
+								},
+								"type": "array"
 							}
 						},
 						"required": [
@@ -639,7 +1101,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -651,7 +1133,12 @@
 												{
 													"properties": {
 														"value": {
-															"$ref": "#/components/schemas/value-fjuXyEJ1"
+															"description": "The token value.",
+															"example": "8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T",
+															"maxLength": 80,
+															"minLength": 40,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -675,7 +1162,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -687,7 +1194,12 @@
 														{
 															"properties": {
 																"value": {
-																	"$ref": "#/components/schemas/value-fjuXyEJ1"
+																	"description": "The token value.",
+																	"example": "8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T",
+																	"maxLength": 80,
+																	"minLength": 40,
+																	"readOnly": true,
+																	"type": "string"
 																}
 															},
 															"type": "object"
@@ -704,7 +1216,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -718,7 +1248,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -792,7 +1340,42 @@
 					"schema": {
 						"allOf": [
 							{
-								"$ref": "#/components/schemas/token-kk76O5A1"
+								"properties": {
+									"condition": {
+										"$ref": "#/components/schemas/condition"
+									},
+									"expires_on": {
+										"$ref": "#/components/schemas/expires_on-3KJE1AOU"
+									},
+									"id": {
+										"$ref": "#/components/schemas/components-schemas-identifier-xnDzD3eO"
+									},
+									"issued_on": {
+										"$ref": "#/components/schemas/issued_on-1aIgsHKz"
+									},
+									"modified_on": {
+										"$ref": "#/components/schemas/modified_on-988x2Bll"
+									},
+									"name": {
+										"$ref": "#/components/schemas/name-v6DV61IB"
+									},
+									"not_before": {
+										"$ref": "#/components/schemas/not_before"
+									},
+									"policies": {
+										"$ref": "#/components/schemas/policies-XPBJUG52"
+									},
+									"status": {
+										"$ref": "#/components/schemas/status-cqgDbg4p"
+									}
+								},
+								"required": [
+									"id",
+									"name",
+									"status",
+									"policies"
+								],
+								"type": "object"
 							}
 						]
 					}
@@ -807,7 +1390,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -831,7 +1434,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -848,7 +1471,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -862,7 +1503,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -947,12 +1606,37 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/value-fjuXyEJ1"
+											"description": "The token value.",
+											"example": "8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T",
+											"maxLength": 80,
+											"minLength": 40,
+											"readOnly": true,
+											"type": "string"
 										}
 									},
 									"type": "object"
@@ -971,12 +1655,37 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/value-fjuXyEJ1"
+													"description": "The token value.",
+													"example": "8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T",
+													"maxLength": 80,
+													"minLength": 40,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -988,7 +1697,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1002,7 +1729,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

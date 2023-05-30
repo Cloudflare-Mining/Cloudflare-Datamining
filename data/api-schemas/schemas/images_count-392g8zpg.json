@@ -1,10 +1,16 @@
 {
 	"properties": {
 		"allowed": {
-			"$ref": "#/components/schemas/allowed-bCxW7c7l"
+			"description": "Cloudflare Images allowed usage.",
+			"example": 100000,
+			"readOnly": true,
+			"type": "number"
 		},
 		"current": {
-			"$ref": "#/components/schemas/current"
+			"description": "Cloudflare Images current usage.",
+			"example": 1000,
+			"readOnly": true,
+			"type": "number"
 		}
 	},
 	"type": "object"

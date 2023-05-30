@@ -41,12 +41,36 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/addresses"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/destination_address_properties"
+												}
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -152,13 +176,35 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/addresses"
+												"allOf": [
+													{
+														"$ref": "#/components/schemas/destination_address_properties"
+													}
+												],
+												"type": "object"
 											},
 											"type": "array"
 										},
@@ -246,12 +292,36 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/addresses"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/destination_address_properties"
+												}
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -307,7 +377,10 @@
 					"schema": {
 						"properties": {
 							"email": {
-								"$ref": "#/components/schemas/email-GRKO1h0o"
+								"description": "The contact email address of the user.",
+								"example": "user@example.com",
+								"maxLength": 90,
+								"type": "string"
 							}
 						},
 						"required": [
@@ -326,12 +399,36 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/addresses"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/destination_address_properties"
+												}
+											],
+											"type": "object"
 										}
 									}
 								}

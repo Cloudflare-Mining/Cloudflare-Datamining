@@ -1,7 +1,10 @@
 {
 	"properties": {
 		"created_at": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"description": {
 			"description": "A short summary of applications with this type.",
@@ -9,10 +12,13 @@
 			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/app_type_id"
+			"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of an Application Type that has been returned.",
+			"type": "integer"
 		},
 		"name": {
-			"$ref": "#/components/schemas/app-types_components-schemas-name"
+			"description": "The name of the application or application type.",
+			"example": "Facebook",
+			"type": "string"
 		}
 	},
 	"type": "object"

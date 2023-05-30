@@ -1,12 +1,183 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							]
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/ipam-prefixes"
+					"properties": {
+						"account_id": {
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						},
+						"advertised": {
+							"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+							"example": true,
+							"nullable": true,
+							"type": "boolean"
+						},
+						"advertised_modified_at": {
+							"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"nullable": true,
+							"type": "string"
+						},
+						"approved": {
+							"description": "Approval state of the prefix (P = pending, V = active).",
+							"example": "P",
+							"type": "string"
+						},
+						"asn": {
+							"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+							"example": 209242,
+							"nullable": true,
+							"type": "integer"
+						},
+						"cidr": {
+							"description": "IP Prefix in Classless Inter-Domain Routing format.",
+							"example": "192.0.2.0/24",
+							"type": "string"
+						},
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"description": {
+							"description": "Description of the prefix.",
+							"example": "Internal test prefix",
+							"maxLength": 1000,
+							"type": "string"
+						},
+						"id": {
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						},
+						"loa_document_id": {
+							"description": "Identifier for the uploaded LOA document.",
+							"example": "d933b1530bc56c9953cf8ce166da8004",
+							"maxLength": 32,
+							"nullable": true,
+							"type": "string"
+						},
+						"modified_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"on_demand_enabled": {
+							"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
+							"example": true,
+							"type": "boolean"
+						},
+						"on_demand_locked": {
+							"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+							"example": false,
+							"type": "boolean"
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

@@ -1,10 +1,21 @@
 {
 	"properties": {
 		"checkDisks": {
-			"$ref": "#/components/schemas/checkDisks"
+			"description": "List of volume names to be checked for encryption.",
+			"example": [
+				"C",
+				"D",
+				"G"
+			],
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
 		},
 		"requireAll": {
-			"$ref": "#/components/schemas/requireAll"
+			"description": "Whether to check all disks for encryption.",
+			"example": true,
+			"type": "boolean"
 		}
 	},
 	"title": "Disk Encryption",

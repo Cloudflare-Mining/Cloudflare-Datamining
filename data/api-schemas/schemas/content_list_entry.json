@@ -2,22 +2,44 @@
 	"description": "Content list entry to be blocked.",
 	"properties": {
 		"content": {
-			"$ref": "#/components/schemas/content_list_entry_content"
+			"description": "CID or content path of content to block.",
+			"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
+			"maxLength": 500,
+			"type": "string"
 		},
 		"created_on": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"description": {
-			"$ref": "#/components/schemas/content_list_entry_description"
+			"description": "An optional description of the content list entry.",
+			"example": "this is my content list entry",
+			"maxLength": 500,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/common_components-schemas-identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"modified_on": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"type": {
-			"$ref": "#/components/schemas/content_list_entry_type"
+			"description": "Type of content list entry to block.",
+			"enum": [
+				"cid",
+				"content_path"
+			],
+			"example": "cid",
+			"type": "string"
 		}
 	},
 	"type": "object"

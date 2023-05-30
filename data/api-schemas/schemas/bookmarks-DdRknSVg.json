@@ -1,25 +1,39 @@
 {
 	"properties": {
 		"app_launcher_visible": {
-			"$ref": "#/components/schemas/schemas-app_launcher_visible"
+			"description": "Displays the application in the App Launcher.",
+			"example": true,
+			"type": "boolean"
 		},
 		"created_at": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"domain": {
-			"$ref": "#/components/schemas/components-schemas-domain-yR7HnXJp"
+			"description": "The domain of the Bookmark application.",
+			"example": "example.com",
+			"type": "string"
 		},
 		"id": {
 			"description": "The unique identifier for the Bookmark application."
 		},
 		"logo_url": {
-			"$ref": "#/components/schemas/logo_url"
+			"description": "The image URL for the logo shown in the App Launcher dashboard.",
+			"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/bookmarks_components-schemas-name"
+			"description": "The name of the Bookmark application.",
+			"example": "My Website",
+			"type": "string"
 		},
 		"updated_at": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		}
 	},
 	"type": "object"

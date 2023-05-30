@@ -1,7 +1,9 @@
 {
 	"properties": {
 		"id": {
-			"$ref": "#/components/schemas/stix_identifier"
+			"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c",
+			"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537",
+			"type": "string"
 		},
 		"value": {
 			"description": "IP address or domain name.",

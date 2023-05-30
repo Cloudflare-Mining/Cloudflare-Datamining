@@ -1,13 +1,159 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/pageshield-policy"
+						"properties": {
+							"action": {
+								"description": "The action to take if the expression matches",
+								"enum": [
+									"allow",
+									"log"
+								],
+								"example": "allow",
+								"type": "string"
+							},
+							"description": {
+								"description": "A description for the policy",
+								"example": "Checkout page CSP policy",
+								"type": "string"
+							},
+							"enabled": {
+								"description": "Whether the policy is enabled",
+								"example": true,
+								"type": "boolean"
+							},
+							"expression": {
+								"description": "The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax",
+								"example": "ends_with(http.request.uri.path, \"/checkout\")",
+								"type": "string"
+							},
+							"id": {
+								"description": "The ID of the policy",
+								"example": "c9ef84a6bf5e47138c75d95e2f933e8f",
+								"type": "string"
+							},
+							"value": {
+								"description": "The policy which will be applied",
+								"example": "script-src 'none';",
+								"type": "string"
+							}
+						}
 					},
 					"type": "array"
 				}

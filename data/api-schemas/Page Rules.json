@@ -41,7 +41,43 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/schemas-api-response-common"
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -49,7 +85,11 @@
 											"nullable": true,
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/schemas-identifier"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"required": [
@@ -74,7 +114,43 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/schemas-api-response-common"
+											"properties": {
+												"errors": {
+													"$ref": "#/components/schemas/messages"
+												},
+												"messages": {
+													"$ref": "#/components/schemas/messages"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -82,7 +158,11 @@
 													"nullable": true,
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/schemas-identifier"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"required": [
@@ -100,7 +180,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -114,7 +212,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -251,13 +367,81 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/schemas-api-response-common"
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/page-rule"
+												"properties": {
+													"actions": {
+														"$ref": "#/components/schemas/actions"
+													},
+													"created_on": {
+														"$ref": "#/components/schemas/created_on-PDsoKzpu"
+													},
+													"id": {
+														"$ref": "#/components/schemas/schemas-identifier"
+													},
+													"modified_on": {
+														"$ref": "#/components/schemas/schemas-modified_on-TVpPdkPH"
+													},
+													"priority": {
+														"$ref": "#/components/schemas/priority-SwJR1oSf"
+													},
+													"status": {
+														"$ref": "#/components/schemas/status-HKrkpWhV"
+													},
+													"targets": {
+														"$ref": "#/components/schemas/targets-9KPVgEka"
+													}
+												},
+												"required": [
+													"id",
+													"targets",
+													"actions",
+													"priority",
+													"status",
+													"modified_on",
+													"created_on"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -277,13 +461,81 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/schemas-api-response-common"
+											"properties": {
+												"errors": {
+													"$ref": "#/components/schemas/messages"
+												},
+												"messages": {
+													"$ref": "#/components/schemas/messages"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/page-rule"
+														"properties": {
+															"actions": {
+																"$ref": "#/components/schemas/actions"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/created_on-PDsoKzpu"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-identifier"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/schemas-modified_on-TVpPdkPH"
+															},
+															"priority": {
+																"$ref": "#/components/schemas/priority-SwJR1oSf"
+															},
+															"status": {
+																"$ref": "#/components/schemas/status-HKrkpWhV"
+															},
+															"targets": {
+																"$ref": "#/components/schemas/targets-9KPVgEka"
+															}
+														},
+														"required": [
+															"id",
+															"targets",
+															"actions",
+															"priority",
+															"status",
+															"modified_on",
+															"created_on"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -296,7 +548,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -310,7 +580,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -404,7 +692,26 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-GcIrEjP7"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/schemas-api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -427,7 +734,26 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-GcIrEjP7"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/schemas-api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -443,7 +769,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -457,7 +801,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -560,7 +922,40 @@
 								"items": {
 									"oneOf": [
 										{
-											"$ref": "#/components/schemas/route-JKAbaKEe"
+											"properties": {
+												"modified_on": {
+													"description": "The timestamp of when the override was last modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "The type of route.",
+													"enum": [
+														"forward_url"
+													],
+													"example": "forward_url"
+												},
+												"value": {
+													"properties": {
+														"type": {
+															"description": "The response type for the URL redirect.",
+															"enum": [
+																"temporary",
+																"permanent"
+															],
+															"example": "temporary"
+														},
+														"url": {
+															"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
+															"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+															"type": "string"
+														}
+													}
+												}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -593,7 +988,16 @@
 									}
 								],
 								"items": {
-									"$ref": "#/components/schemas/target-TYFip0ki"
+									"description": "A request condition target.",
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/url_target"
+										}
+									],
+									"required": [
+										"target",
+										"constraint"
+									]
 								},
 								"type": "array"
 							}
@@ -611,7 +1015,26 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-GcIrEjP7"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/schemas-api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -634,7 +1057,26 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-GcIrEjP7"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/schemas-api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -650,7 +1092,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -664,7 +1124,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -755,7 +1233,40 @@
 								"items": {
 									"oneOf": [
 										{
-											"$ref": "#/components/schemas/route-JKAbaKEe"
+											"properties": {
+												"modified_on": {
+													"description": "The timestamp of when the override was last modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "The type of route.",
+													"enum": [
+														"forward_url"
+													],
+													"example": "forward_url"
+												},
+												"value": {
+													"properties": {
+														"type": {
+															"description": "The response type for the URL redirect.",
+															"enum": [
+																"temporary",
+																"permanent"
+															],
+															"example": "temporary"
+														},
+														"url": {
+															"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
+															"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+															"type": "string"
+														}
+													}
+												}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -788,7 +1299,16 @@
 									}
 								],
 								"items": {
-									"$ref": "#/components/schemas/target-TYFip0ki"
+									"description": "A request condition target.",
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/url_target"
+										}
+									],
+									"required": [
+										"target",
+										"constraint"
+									]
 								},
 								"type": "array"
 							}
@@ -810,7 +1330,26 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-GcIrEjP7"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/schemas-api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -833,7 +1372,26 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-GcIrEjP7"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/schemas-api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -849,7 +1407,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -863,7 +1439,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -966,7 +1560,40 @@
 								"items": {
 									"oneOf": [
 										{
-											"$ref": "#/components/schemas/route-JKAbaKEe"
+											"properties": {
+												"modified_on": {
+													"description": "The timestamp of when the override was last modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "The type of route.",
+													"enum": [
+														"forward_url"
+													],
+													"example": "forward_url"
+												},
+												"value": {
+													"properties": {
+														"type": {
+															"description": "The response type for the URL redirect.",
+															"enum": [
+																"temporary",
+																"permanent"
+															],
+															"example": "temporary"
+														},
+														"url": {
+															"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
+															"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
+															"type": "string"
+														}
+													}
+												}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -999,7 +1626,16 @@
 									}
 								],
 								"items": {
-									"$ref": "#/components/schemas/target-TYFip0ki"
+									"description": "A request condition target.",
+									"oneOf": [
+										{
+											"$ref": "#/components/schemas/url_target"
+										}
+									],
+									"required": [
+										"target",
+										"constraint"
+									]
 								},
 								"type": "array"
 							}
@@ -1021,7 +1657,26 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-GcIrEjP7"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/schemas-api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1044,7 +1699,26 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-GcIrEjP7"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/schemas-api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1060,7 +1734,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1074,7 +1766,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

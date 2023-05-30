@@ -1,28 +1,56 @@
 {
 	"properties": {
 		"created_at": {
-			"$ref": "#/components/schemas/webhooks_components-schemas-created_at"
+			"description": "Timestamp of when the webhook destination was created.",
+			"example": "2020-10-26T18:25:04.532316Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/uuid"
+			"description": "UUID",
+			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"maxLength": 36,
+			"readOnly": true,
+			"type": "string"
 		},
 		"last_failure": {
-			"$ref": "#/components/schemas/last_failure"
+			"description": "Timestamp of the last time an attempt to dispatch a notification to this webhook failed.",
+			"example": "2020-10-26T18:25:04.532316Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"last_success": {
-			"$ref": "#/components/schemas/last_success"
+			"description": "Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.",
+			"example": "2020-10-26T18:25:04.532316Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/webhooks_components-schemas-name"
+			"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
+			"example": "Slack Webhook",
+			"type": "string"
 		},
 		"secret": {
-			"$ref": "#/components/schemas/secret"
+			"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body.",
+			"type": "string"
 		},
 		"type": {
-			"$ref": "#/components/schemas/webhooks_components-schemas-type"
+			"description": "Type of webhook endpoint.",
+			"enum": [
+				"slack",
+				"generic",
+				"gchat"
+			],
+			"example": "slack",
+			"type": "string"
 		},
 		"url": {
-			"$ref": "#/components/schemas/webhooks_components-schemas-url"
+			"description": "The POST endpoint to call when dispatching a notification.",
+			"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
+			"type": "string"
 		}
 	},
 	"type": "object"

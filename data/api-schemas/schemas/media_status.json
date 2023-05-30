@@ -2,16 +2,33 @@
 	"description": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.",
 	"properties": {
 		"errorReasonCode": {
-			"$ref": "#/components/schemas/errorReasonCode"
+			"description": "Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use.",
+			"example": "ERR_NON_VIDEO",
+			"type": "string"
 		},
 		"errorReasonText": {
-			"$ref": "#/components/schemas/errorReasonText"
+			"description": "Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state.",
+			"example": "The file was not recognized as a valid video file.",
+			"type": "string"
 		},
 		"pctComplete": {
-			"$ref": "#/components/schemas/pctComplete"
+			"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
+			"maximum": 100,
+			"minimum": 0,
+			"type": "string"
 		},
 		"state": {
-			"$ref": "#/components/schemas/media_state"
+			"description": "Specifies the processing status of the video.",
+			"enum": [
+				"pendingupload",
+				"downloading",
+				"queued",
+				"inprogress",
+				"ready",
+				"error"
+			],
+			"example": "inprogress",
+			"type": "string"
 		}
 	}
 }

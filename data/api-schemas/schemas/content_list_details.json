@@ -1,7 +1,12 @@
 {
 	"properties": {
 		"action": {
-			"$ref": "#/components/schemas/content_list_action"
+			"description": "Behavior of the content list.",
+			"enum": [
+				"block"
+			],
+			"example": "block",
+			"type": "string"
 		}
 	},
 	"type": "object"

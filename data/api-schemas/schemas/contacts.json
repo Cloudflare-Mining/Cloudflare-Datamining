@@ -1,7 +1,98 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/contact_properties"
+			"properties": {
+				"address": {
+					"description": "Address.",
+					"example": "123 Sesame St.",
+					"type": "string"
+				},
+				"address2": {
+					"description": "Optional address line for unit, floor, suite, etc.",
+					"example": "Suite 430",
+					"type": "string"
+				},
+				"city": {
+					"description": "City.",
+					"example": "Austin",
+					"type": "string"
+				},
+				"country": {
+					"description": "The country in which the user lives.",
+					"example": "US",
+					"maxLength": 30,
+					"nullable": true,
+					"type": "string"
+				},
+				"email": {
+					"description": "The contact email address of the user.",
+					"example": "user@example.com",
+					"maxLength": 90,
+					"type": "string"
+				},
+				"fax": {
+					"description": "Contact fax number.",
+					"example": "123-867-5309",
+					"type": "string"
+				},
+				"first_name": {
+					"description": "User's first name",
+					"example": "John",
+					"maxLength": 60,
+					"nullable": true,
+					"type": "string"
+				},
+				"id": {
+					"description": "Contact Identifier.",
+					"example": "ea95132c15732412d22c1476fa83f27a",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				},
+				"last_name": {
+					"description": "User's last name",
+					"example": "Appleseed",
+					"maxLength": 60,
+					"nullable": true,
+					"type": "string"
+				},
+				"organization": {
+					"description": "Name of organization.",
+					"example": "Cloudflare, Inc.",
+					"type": "string"
+				},
+				"phone": {
+					"description": "User's telephone number",
+					"example": "+1 123-123-1234",
+					"maxLength": 20,
+					"nullable": true,
+					"type": "string"
+				},
+				"state": {
+					"description": "State.",
+					"example": "TX",
+					"type": "string"
+				},
+				"zip": {
+					"description": "The zipcode or postal code where the user lives.",
+					"example": "12345",
+					"maxLength": 20,
+					"nullable": true,
+					"type": "string"
+				}
+			},
+			"required": [
+				"first_name",
+				"last_name",
+				"address",
+				"city",
+				"state",
+				"zip",
+				"country",
+				"phone",
+				"organization"
+			],
+			"type": "object"
 		}
 	],
 	"type": "object"

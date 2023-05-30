@@ -26,7 +26,16 @@
 			"type": "string"
 		},
 		"mode": {
-			"$ref": "#/components/schemas/schemas-mode"
+			"description": "The action to apply to a matched request.",
+			"enum": [
+				"block",
+				"challenge",
+				"whitelist",
+				"js_challenge",
+				"managed_challenge"
+			],
+			"example": "challenge",
+			"type": "string"
 		},
 		"notes": {
 			"description": "The string to search for in the notes of existing IP Access rules.\nNotes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.",

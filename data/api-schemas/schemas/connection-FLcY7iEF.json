@@ -1,13 +1,21 @@
 {
 	"properties": {
 		"colo_name": {
-			"$ref": "#/components/schemas/colo_name-z0RHvoYh"
+			"description": "The Cloudflare data center used for this connection.",
+			"example": "DFW",
+			"type": "string"
 		},
 		"is_pending_reconnect": {
-			"$ref": "#/components/schemas/is_pending_reconnect"
+			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+			"example": false,
+			"type": "boolean"
 		},
 		"uuid": {
-			"$ref": "#/components/schemas/connection_id"
+			"description": "UUID of the Cloudflare Tunnel connection.",
+			"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+			"maxLength": 36,
+			"readOnly": true,
+			"type": "string"
 		}
 	}
 }

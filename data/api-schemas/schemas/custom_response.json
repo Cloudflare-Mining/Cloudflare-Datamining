@@ -3,10 +3,16 @@
 		{
 			"properties": {
 				"body": {
-					"$ref": "#/components/schemas/body"
+					"description": "The response body to return. The value must conform to the configured content type.",
+					"example": "<error>This request has been rate-limited.</error>",
+					"maxLength": 10240,
+					"type": "string"
 				},
 				"content_type": {
-					"$ref": "#/components/schemas/content_type"
+					"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
+					"example": "text/xml",
+					"maxLength": 50,
+					"type": "string"
 				}
 			},
 			"type": "object"

@@ -17,7 +17,23 @@
 				"application/json": {
 					"schema": {
 						"items": {
-							"$ref": "#/components/schemas/seat"
+							"properties": {
+								"access_seat": {
+									"$ref": "#/components/schemas/access_seat"
+								},
+								"gateway_seat": {
+									"$ref": "#/components/schemas/gateway_seat"
+								},
+								"seat_uid": {
+									"$ref": "#/components/schemas/seat_uid"
+								}
+							},
+							"required": [
+								"seat_uid",
+								"gateway_seat",
+								"access_seat"
+							],
+							"type": "object"
 						},
 						"required": [
 							"seat_uid",
@@ -37,13 +53,47 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/seats"
+												"properties": {
+													"access_seat": {
+														"$ref": "#/components/schemas/access_seat"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"gateway_seat": {
+														"$ref": "#/components/schemas/gateway_seat"
+													},
+													"seat_uid": {
+														"$ref": "#/components/schemas/seat_uid"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -63,13 +113,47 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/seats"
+														"properties": {
+															"access_seat": {
+																"$ref": "#/components/schemas/access_seat"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"gateway_seat": {
+																"$ref": "#/components/schemas/gateway_seat"
+															},
+															"seat_uid": {
+																"$ref": "#/components/schemas/seat_uid"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -82,7 +166,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -96,7 +198,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

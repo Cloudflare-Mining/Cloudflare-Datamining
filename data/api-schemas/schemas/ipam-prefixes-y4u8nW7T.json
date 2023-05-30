@@ -1,43 +1,82 @@
 {
 	"properties": {
 		"account_id": {
-			"$ref": "#/components/schemas/common_components-schemas-identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"advertised": {
-			"$ref": "#/components/schemas/advertised"
+			"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.",
+			"example": true,
+			"nullable": true,
+			"type": "boolean"
 		},
 		"advertised_modified_at": {
-			"$ref": "#/components/schemas/modified_at_nullable"
+			"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"nullable": true,
+			"type": "string"
 		},
 		"approved": {
-			"$ref": "#/components/schemas/approved"
+			"description": "Approval state of the prefix (P = pending, V = active).",
+			"example": "P",
+			"type": "string"
 		},
 		"asn": {
-			"$ref": "#/components/schemas/asn-rp7jiCVO"
+			"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
+			"nullable": true,
+			"type": "integer"
 		},
 		"cidr": {
-			"$ref": "#/components/schemas/cidr"
+			"description": "IP Prefix in Classless Inter-Domain Routing format.",
+			"example": "192.0.2.0/24",
+			"type": "string"
 		},
 		"created_at": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"description": {
-			"$ref": "#/components/schemas/ipam-prefixes_components-schemas-description"
+			"description": "Description of the prefix.",
+			"example": "Internal test prefix",
+			"maxLength": 1000,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/common_components-schemas-identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"loa_document_id": {
-			"$ref": "#/components/schemas/loa_document_identifier-n6qMlfqv"
+			"description": "Identifier for the uploaded LOA document.",
+			"example": "d933b1530bc56c9953cf8ce166da8004",
+			"maxLength": 32,
+			"nullable": true,
+			"readOnly": true,
+			"type": "string"
 		},
 		"modified_at": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"on_demand_enabled": {
-			"$ref": "#/components/schemas/on_demand_enabled"
+			"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.",
+			"example": true,
+			"type": "boolean"
 		},
 		"on_demand_locked": {
-			"$ref": "#/components/schemas/on_demand_locked"
+			"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+			"example": false,
+			"type": "boolean"
 		}
 	},
 	"type": "object"

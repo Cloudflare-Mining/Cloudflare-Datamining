@@ -1,61 +1,120 @@
 {
 	"properties": {
 		"allow_insecure": {
-			"$ref": "#/components/schemas/allow_insecure"
+			"default": false,
+			"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
+			"example": true,
+			"type": "boolean"
 		},
 		"consecutive_down": {
-			"$ref": "#/components/schemas/consecutive_down"
+			"default": 0,
+			"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
+			"type": "integer"
 		},
 		"consecutive_up": {
-			"$ref": "#/components/schemas/consecutive_up"
+			"default": 0,
+			"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
+			"type": "integer"
 		},
 		"created_on": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"description": {
-			"$ref": "#/components/schemas/monitor_components-schemas-description"
+			"description": "Object description.",
+			"example": "Login page monitor",
+			"type": "string"
 		},
 		"expected_body": {
-			"$ref": "#/components/schemas/expected_body"
+			"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
+			"example": "alive",
+			"type": "string"
 		},
 		"expected_codes": {
-			"$ref": "#/components/schemas/schemas-expected_codes"
+			"default": "200",
+			"description": "The expected HTTP response codes or code ranges of the health check, comma-separated. This parameter is only valid for HTTP and HTTPS monitors.",
+			"example": "2xx",
+			"type": "string"
 		},
 		"follow_redirects": {
-			"$ref": "#/components/schemas/follow_redirects"
+			"default": false,
+			"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
+			"example": true,
+			"type": "boolean"
 		},
 		"header": {
-			"$ref": "#/components/schemas/header"
+			"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
+			"example": {
+				"Host": [
+					"example.com"
+				],
+				"X-App-ID": [
+					"abc123"
+				]
+			},
+			"type": "object"
 		},
 		"id": {
-			"$ref": "#/components/schemas/monitor_components-schemas-identifier"
+			"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
 		},
 		"interval": {
-			"$ref": "#/components/schemas/interval-eXUjnj4P"
+			"default": 60,
+			"description": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.",
+			"type": "integer"
 		},
 		"method": {
-			"$ref": "#/components/schemas/schemas-method"
+			"default": "GET",
+			"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
+			"example": "GET",
+			"type": "string"
 		},
 		"modified_on": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"path": {
-			"$ref": "#/components/schemas/path-OCXvz0S2"
+			"default": "/",
+			"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+			"example": "/health",
+			"type": "string"
 		},
 		"port": {
-			"$ref": "#/components/schemas/components-schemas-port"
+			"default": 0,
+			"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+			"type": "integer"
 		},
 		"probe_zone": {
-			"$ref": "#/components/schemas/probe_zone"
+			"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
+			"example": "example.com",
+			"type": "string"
 		},
 		"retries": {
-			"$ref": "#/components/schemas/retries"
+			"default": 2,
+			"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+			"type": "integer"
 		},
 		"timeout": {
-			"$ref": "#/components/schemas/schemas-timeout"
+			"default": 5,
+			"description": "The timeout (in seconds) before marking the health check as failed.",
+			"type": "integer"
 		},
 		"type": {
-			"$ref": "#/components/schemas/monitor_components-schemas-type"
+			"default": "http",
+			"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
+			"enum": [
+				"http",
+				"https",
+				"tcp",
+				"udp_icmp",
+				"icmp_ping",
+				"smtp"
+			],
+			"example": "https",
+			"type": "string"
 		}
 	},
 	"type": "object"

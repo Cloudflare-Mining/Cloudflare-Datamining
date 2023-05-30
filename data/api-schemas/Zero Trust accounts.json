@@ -19,12 +19,44 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/gateway-account-device-settings"
+											"properties": {
+												"gateway_proxy_enabled": {
+													"description": "Enable gateway proxy filtering on TCP.",
+													"example": true,
+													"type": "boolean"
+												},
+												"gateway_udp_proxy_enabled": {
+													"description": "Enable gateway proxy filtering on UDP.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -43,12 +75,44 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/gateway-account-device-settings"
+													"properties": {
+														"gateway_proxy_enabled": {
+															"description": "Enable gateway proxy filtering on TCP.",
+															"example": true,
+															"type": "boolean"
+														},
+														"gateway_udp_proxy_enabled": {
+															"description": "Enable gateway proxy filtering on UDP.",
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -60,7 +124,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -74,7 +156,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -141,20 +241,47 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"gateway_tag": {
-													"$ref": "#/components/schemas/gateway_tag"
+													"description": "Gateway internal id.",
+													"example": "f174e90afafe4643bbbc4a0ed4fc8415",
+													"maxLength": 32,
+													"type": "string"
 												},
 												"id": {
-													"$ref": "#/components/schemas/cf_account_id"
+													"description": "Cloudflare account ID",
+													"example": "699d98642c564d2e855e9661899b7252",
+													"maxLength": 32,
+													"type": "string"
 												},
 												"provider_name": {
-													"$ref": "#/components/schemas/provider_name"
+													"description": "The name of provider. Usually cloudflare.",
+													"example": "Cloudflare",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -176,20 +303,47 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"gateway_tag": {
-															"$ref": "#/components/schemas/gateway_tag"
+															"description": "Gateway internal id.",
+															"example": "f174e90afafe4643bbbc4a0ed4fc8415",
+															"maxLength": 32,
+															"type": "string"
 														},
 														"id": {
-															"$ref": "#/components/schemas/cf_account_id"
+															"description": "Cloudflare account ID",
+															"example": "699d98642c564d2e855e9661899b7252",
+															"maxLength": 32,
+															"type": "string"
 														},
 														"provider_name": {
-															"$ref": "#/components/schemas/provider_name"
+															"description": "The name of provider. Usually cloudflare.",
+															"example": "Cloudflare",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -204,7 +358,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -218,7 +390,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -285,22 +475,80 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/gateway-account-settings"
+													"description": "account settings.",
+													"properties": {
+														"settings": {
+															"description": "account settings.",
+															"properties": {
+																"activity_log": {
+																	"$ref": "#/components/schemas/activity-log-settings"
+																},
+																"antivirus": {
+																	"$ref": "#/components/schemas/anti-virus-settings"
+																},
+																"block_page": {
+																	"$ref": "#/components/schemas/block-page-settings"
+																},
+																"body_scanning": {
+																	"$ref": "#/components/schemas/body-scanning-settings"
+																},
+																"browser_isolation": {
+																	"$ref": "#/components/schemas/browser-isolation-settings"
+																},
+																"custom_certificate": {
+																	"$ref": "#/components/schemas/custom-certificate-settings"
+																},
+																"fips": {
+																	"$ref": "#/components/schemas/fips-settings"
+																},
+																"tls_decrypt": {
+																	"$ref": "#/components/schemas/tls-settings"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"created_at": {
-															"$ref": "#/components/schemas/timestamp"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
 														},
 														"updated_at": {
-															"$ref": "#/components/schemas/timestamp"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
 														}
 													}
 												}
@@ -324,22 +572,80 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/gateway-account-settings"
+															"description": "account settings.",
+															"properties": {
+																"settings": {
+																	"description": "account settings.",
+																	"properties": {
+																		"activity_log": {
+																			"$ref": "#/components/schemas/activity-log-settings"
+																		},
+																		"antivirus": {
+																			"$ref": "#/components/schemas/anti-virus-settings"
+																		},
+																		"block_page": {
+																			"$ref": "#/components/schemas/block-page-settings"
+																		},
+																		"body_scanning": {
+																			"$ref": "#/components/schemas/body-scanning-settings"
+																		},
+																		"browser_isolation": {
+																			"$ref": "#/components/schemas/browser-isolation-settings"
+																		},
+																		"custom_certificate": {
+																			"$ref": "#/components/schemas/custom-certificate-settings"
+																		},
+																		"fips": {
+																			"$ref": "#/components/schemas/fips-settings"
+																		},
+																		"tls_decrypt": {
+																			"$ref": "#/components/schemas/tls-settings"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
 														},
 														{
 															"properties": {
 																"created_at": {
-																	"$ref": "#/components/schemas/timestamp"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"updated_at": {
-																	"$ref": "#/components/schemas/timestamp"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
 																}
 															}
 														}
@@ -356,7 +662,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -370,7 +694,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -437,12 +779,56 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/gateway-account-logging-settings"
+											"properties": {
+												"redact_pii": {
+													"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
+													"example": true,
+													"type": "boolean"
+												},
+												"settings_by_rule_type": {
+													"description": "Logging settings by rule type.",
+													"properties": {
+														"dns": {
+															"description": "Logging settings for DNS firewall.",
+															"type": "object"
+														},
+														"http": {
+															"description": "Logging settings for HTTP/HTTPS firewall.",
+															"type": "object"
+														},
+														"l4": {
+															"description": "Logging settings for Network firewall.",
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -461,12 +847,56 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/gateway-account-logging-settings"
+													"properties": {
+														"redact_pii": {
+															"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
+															"example": true,
+															"type": "boolean"
+														},
+														"settings_by_rule_type": {
+															"description": "Logging settings by rule type.",
+															"properties": {
+																"dns": {
+																	"description": "Logging settings for DNS firewall.",
+																	"type": "object"
+																},
+																"http": {
+																	"description": "Logging settings for HTTP/HTTPS firewall.",
+																	"type": "object"
+																},
+																"l4": {
+																	"description": "Logging settings for Network firewall.",
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -478,7 +908,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -492,7 +940,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -562,28 +1028,154 @@
 								"description": "account settings.",
 								"properties": {
 									"activity_log": {
-										"$ref": "#/components/schemas/activity-log-settings"
+										"description": "Activity log settings.",
+										"properties": {
+											"enabled": {
+												"description": "Enable activity logging.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"antivirus": {
-										"$ref": "#/components/schemas/anti-virus-settings"
+										"description": "Anti virus settings.",
+										"properties": {
+											"enabled_download_phase": {
+												"$ref": "#/components/schemas/enabled_download_phase"
+											},
+											"enabled_upload_phase": {
+												"$ref": "#/components/schemas/enabled_upload_phase"
+											},
+											"fail_closed": {
+												"$ref": "#/components/schemas/fail_closed"
+											}
+										},
+										"type": "object"
 									},
 									"block_page": {
-										"$ref": "#/components/schemas/block-page-settings"
+										"description": "Block page layout settings.",
+										"properties": {
+											"background_color": {
+												"description": "Block page background color in #rrggbb format.",
+												"type": "string"
+											},
+											"enabled": {
+												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+												"example": true,
+												"type": "boolean"
+											},
+											"footer_text": {
+												"description": "Block page footer text.",
+												"example": "--footer--",
+												"type": "string"
+											},
+											"header_text": {
+												"description": "Block page header text.",
+												"example": "--header--",
+												"type": "string"
+											},
+											"logo_path": {
+												"description": "Full URL to the logo file.",
+												"example": "https://logos.com/a.png",
+												"type": "string"
+											},
+											"mailto_address": {
+												"description": "Admin email for users to contact.",
+												"example": "admin@example.com",
+												"type": "string"
+											},
+											"mailto_subject": {
+												"description": "Subject line for emails created from block page.",
+												"example": "Blocked User Inquiry",
+												"type": "string"
+											},
+											"name": {
+												"description": "Block page title.",
+												"example": "Cloudflare",
+												"type": "string"
+											},
+											"suppress_footer": {
+												"description": "Suppress detailed info at the bottom of the block page.",
+												"example": false,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"body_scanning": {
-										"$ref": "#/components/schemas/body-scanning-settings"
+										"description": "DLP body scanning setting",
+										"properties": {
+											"inspection_mode": {
+												"description": "Inspection mode. One of deep or shallow",
+												"example": "deep",
+												"type": "string"
+											}
+										},
+										"type": "object"
 									},
 									"browser_isolation": {
-										"$ref": "#/components/schemas/browser-isolation-settings"
+										"description": "Browser isolation settings.",
+										"properties": {
+											"url_browser_isolation_enabled": {
+												"description": "Enable Browser Isolation.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"custom_certificate": {
-										"$ref": "#/components/schemas/custom-certificate-settings"
+										"description": "Custom certificate settings for BYO-PKI.",
+										"properties": {
+											"binding_status": {
+												"description": "Certificate status (internal)",
+												"example": "pending_deployment",
+												"readOnly": true,
+												"type": "string"
+											},
+											"enabled": {
+												"description": "Enable use of custom certificate authority for signing Gateway traffic",
+												"example": true,
+												"type": "boolean"
+											},
+											"id": {
+												"description": "UUID of certificate (ID from MTLS certificate store)",
+												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+												"type": "string"
+											},
+											"updated_at": {
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
 									},
 									"fips": {
-										"$ref": "#/components/schemas/fips-settings"
+										"description": "FIPS settings.",
+										"properties": {
+											"tls": {
+												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"tls_decrypt": {
-										"$ref": "#/components/schemas/tls-settings"
+										"description": "TLS interception settings.",
+										"properties": {
+											"enabled": {
+												"description": "Enable inspecting encrypted HTTP traffic.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									}
 								},
 								"type": "object"
@@ -602,22 +1194,80 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/gateway-account-settings"
+													"description": "account settings.",
+													"properties": {
+														"settings": {
+															"description": "account settings.",
+															"properties": {
+																"activity_log": {
+																	"$ref": "#/components/schemas/activity-log-settings"
+																},
+																"antivirus": {
+																	"$ref": "#/components/schemas/anti-virus-settings"
+																},
+																"block_page": {
+																	"$ref": "#/components/schemas/block-page-settings"
+																},
+																"body_scanning": {
+																	"$ref": "#/components/schemas/body-scanning-settings"
+																},
+																"browser_isolation": {
+																	"$ref": "#/components/schemas/browser-isolation-settings"
+																},
+																"custom_certificate": {
+																	"$ref": "#/components/schemas/custom-certificate-settings"
+																},
+																"fips": {
+																	"$ref": "#/components/schemas/fips-settings"
+																},
+																"tls_decrypt": {
+																	"$ref": "#/components/schemas/tls-settings"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"created_at": {
-															"$ref": "#/components/schemas/timestamp"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
 														},
 														"updated_at": {
-															"$ref": "#/components/schemas/timestamp"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
 														}
 													}
 												}
@@ -641,22 +1291,80 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/gateway-account-settings"
+															"description": "account settings.",
+															"properties": {
+																"settings": {
+																	"description": "account settings.",
+																	"properties": {
+																		"activity_log": {
+																			"$ref": "#/components/schemas/activity-log-settings"
+																		},
+																		"antivirus": {
+																			"$ref": "#/components/schemas/anti-virus-settings"
+																		},
+																		"block_page": {
+																			"$ref": "#/components/schemas/block-page-settings"
+																		},
+																		"body_scanning": {
+																			"$ref": "#/components/schemas/body-scanning-settings"
+																		},
+																		"browser_isolation": {
+																			"$ref": "#/components/schemas/browser-isolation-settings"
+																		},
+																		"custom_certificate": {
+																			"$ref": "#/components/schemas/custom-certificate-settings"
+																		},
+																		"fips": {
+																			"$ref": "#/components/schemas/fips-settings"
+																		},
+																		"tls_decrypt": {
+																			"$ref": "#/components/schemas/tls-settings"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
 														},
 														{
 															"properties": {
 																"created_at": {
-																	"$ref": "#/components/schemas/timestamp"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"updated_at": {
-																	"$ref": "#/components/schemas/timestamp"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
 																}
 															}
 														}
@@ -673,7 +1381,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -687,7 +1413,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -774,20 +1518,47 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"gateway_tag": {
-													"$ref": "#/components/schemas/gateway_tag"
+													"description": "Gateway internal id.",
+													"example": "f174e90afafe4643bbbc4a0ed4fc8415",
+													"maxLength": 32,
+													"type": "string"
 												},
 												"id": {
-													"$ref": "#/components/schemas/cf_account_id"
+													"description": "Cloudflare account ID",
+													"example": "699d98642c564d2e855e9661899b7252",
+													"maxLength": 32,
+													"type": "string"
 												},
 												"provider_name": {
-													"$ref": "#/components/schemas/provider_name"
+													"description": "The name of provider. Usually cloudflare.",
+													"example": "Cloudflare",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -809,20 +1580,47 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"gateway_tag": {
-															"$ref": "#/components/schemas/gateway_tag"
+															"description": "Gateway internal id.",
+															"example": "f174e90afafe4643bbbc4a0ed4fc8415",
+															"maxLength": 32,
+															"type": "string"
 														},
 														"id": {
-															"$ref": "#/components/schemas/cf_account_id"
+															"description": "Cloudflare account ID",
+															"example": "699d98642c564d2e855e9661899b7252",
+															"maxLength": 32,
+															"type": "string"
 														},
 														"provider_name": {
-															"$ref": "#/components/schemas/provider_name"
+															"description": "The name of provider. Usually cloudflare.",
+															"example": "Cloudflare",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -837,7 +1635,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -851,7 +1667,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -940,12 +1774,44 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/gateway-account-device-settings"
+											"properties": {
+												"gateway_proxy_enabled": {
+													"description": "Enable gateway proxy filtering on TCP.",
+													"example": true,
+													"type": "boolean"
+												},
+												"gateway_udp_proxy_enabled": {
+													"description": "Enable gateway proxy filtering on UDP.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -964,12 +1830,44 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/gateway-account-device-settings"
+													"properties": {
+														"gateway_proxy_enabled": {
+															"description": "Enable gateway proxy filtering on TCP.",
+															"example": true,
+															"type": "boolean"
+														},
+														"gateway_udp_proxy_enabled": {
+															"description": "Enable gateway proxy filtering on UDP.",
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -981,7 +1879,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -995,7 +1911,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1065,28 +1999,154 @@
 								"description": "account settings.",
 								"properties": {
 									"activity_log": {
-										"$ref": "#/components/schemas/activity-log-settings"
+										"description": "Activity log settings.",
+										"properties": {
+											"enabled": {
+												"description": "Enable activity logging.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"antivirus": {
-										"$ref": "#/components/schemas/anti-virus-settings"
+										"description": "Anti virus settings.",
+										"properties": {
+											"enabled_download_phase": {
+												"$ref": "#/components/schemas/enabled_download_phase"
+											},
+											"enabled_upload_phase": {
+												"$ref": "#/components/schemas/enabled_upload_phase"
+											},
+											"fail_closed": {
+												"$ref": "#/components/schemas/fail_closed"
+											}
+										},
+										"type": "object"
 									},
 									"block_page": {
-										"$ref": "#/components/schemas/block-page-settings"
+										"description": "Block page layout settings.",
+										"properties": {
+											"background_color": {
+												"description": "Block page background color in #rrggbb format.",
+												"type": "string"
+											},
+											"enabled": {
+												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+												"example": true,
+												"type": "boolean"
+											},
+											"footer_text": {
+												"description": "Block page footer text.",
+												"example": "--footer--",
+												"type": "string"
+											},
+											"header_text": {
+												"description": "Block page header text.",
+												"example": "--header--",
+												"type": "string"
+											},
+											"logo_path": {
+												"description": "Full URL to the logo file.",
+												"example": "https://logos.com/a.png",
+												"type": "string"
+											},
+											"mailto_address": {
+												"description": "Admin email for users to contact.",
+												"example": "admin@example.com",
+												"type": "string"
+											},
+											"mailto_subject": {
+												"description": "Subject line for emails created from block page.",
+												"example": "Blocked User Inquiry",
+												"type": "string"
+											},
+											"name": {
+												"description": "Block page title.",
+												"example": "Cloudflare",
+												"type": "string"
+											},
+											"suppress_footer": {
+												"description": "Suppress detailed info at the bottom of the block page.",
+												"example": false,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"body_scanning": {
-										"$ref": "#/components/schemas/body-scanning-settings"
+										"description": "DLP body scanning setting",
+										"properties": {
+											"inspection_mode": {
+												"description": "Inspection mode. One of deep or shallow",
+												"example": "deep",
+												"type": "string"
+											}
+										},
+										"type": "object"
 									},
 									"browser_isolation": {
-										"$ref": "#/components/schemas/browser-isolation-settings"
+										"description": "Browser isolation settings.",
+										"properties": {
+											"url_browser_isolation_enabled": {
+												"description": "Enable Browser Isolation.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"custom_certificate": {
-										"$ref": "#/components/schemas/custom-certificate-settings"
+										"description": "Custom certificate settings for BYO-PKI.",
+										"properties": {
+											"binding_status": {
+												"description": "Certificate status (internal)",
+												"example": "pending_deployment",
+												"readOnly": true,
+												"type": "string"
+											},
+											"enabled": {
+												"description": "Enable use of custom certificate authority for signing Gateway traffic",
+												"example": true,
+												"type": "boolean"
+											},
+											"id": {
+												"description": "UUID of certificate (ID from MTLS certificate store)",
+												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+												"type": "string"
+											},
+											"updated_at": {
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
 									},
 									"fips": {
-										"$ref": "#/components/schemas/fips-settings"
+										"description": "FIPS settings.",
+										"properties": {
+											"tls": {
+												"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"tls_decrypt": {
-										"$ref": "#/components/schemas/tls-settings"
+										"description": "TLS interception settings.",
+										"properties": {
+											"enabled": {
+												"description": "Enable inspecting encrypted HTTP traffic.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									}
 								},
 								"type": "object"
@@ -1105,22 +2165,80 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/gateway-account-settings"
+													"description": "account settings.",
+													"properties": {
+														"settings": {
+															"description": "account settings.",
+															"properties": {
+																"activity_log": {
+																	"$ref": "#/components/schemas/activity-log-settings"
+																},
+																"antivirus": {
+																	"$ref": "#/components/schemas/anti-virus-settings"
+																},
+																"block_page": {
+																	"$ref": "#/components/schemas/block-page-settings"
+																},
+																"body_scanning": {
+																	"$ref": "#/components/schemas/body-scanning-settings"
+																},
+																"browser_isolation": {
+																	"$ref": "#/components/schemas/browser-isolation-settings"
+																},
+																"custom_certificate": {
+																	"$ref": "#/components/schemas/custom-certificate-settings"
+																},
+																"fips": {
+																	"$ref": "#/components/schemas/fips-settings"
+																},
+																"tls_decrypt": {
+																	"$ref": "#/components/schemas/tls-settings"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
 												},
 												{
 													"properties": {
 														"created_at": {
-															"$ref": "#/components/schemas/timestamp"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
 														},
 														"updated_at": {
-															"$ref": "#/components/schemas/timestamp"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
 														}
 													}
 												}
@@ -1144,22 +2262,80 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/gateway-account-settings"
+															"description": "account settings.",
+															"properties": {
+																"settings": {
+																	"description": "account settings.",
+																	"properties": {
+																		"activity_log": {
+																			"$ref": "#/components/schemas/activity-log-settings"
+																		},
+																		"antivirus": {
+																			"$ref": "#/components/schemas/anti-virus-settings"
+																		},
+																		"block_page": {
+																			"$ref": "#/components/schemas/block-page-settings"
+																		},
+																		"body_scanning": {
+																			"$ref": "#/components/schemas/body-scanning-settings"
+																		},
+																		"browser_isolation": {
+																			"$ref": "#/components/schemas/browser-isolation-settings"
+																		},
+																		"custom_certificate": {
+																			"$ref": "#/components/schemas/custom-certificate-settings"
+																		},
+																		"fips": {
+																			"$ref": "#/components/schemas/fips-settings"
+																		},
+																		"tls_decrypt": {
+																			"$ref": "#/components/schemas/tls-settings"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
 														},
 														{
 															"properties": {
 																"created_at": {
-																	"$ref": "#/components/schemas/timestamp"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
 																},
 																"updated_at": {
-																	"$ref": "#/components/schemas/timestamp"
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
 																}
 															}
 														}
@@ -1176,7 +2352,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1190,7 +2384,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1292,12 +2504,56 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/gateway-account-logging-settings"
+											"properties": {
+												"redact_pii": {
+													"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
+													"example": true,
+													"type": "boolean"
+												},
+												"settings_by_rule_type": {
+													"description": "Logging settings by rule type.",
+													"properties": {
+														"dns": {
+															"description": "Logging settings for DNS firewall.",
+															"type": "object"
+														},
+														"http": {
+															"description": "Logging settings for HTTP/HTTPS firewall.",
+															"type": "object"
+														},
+														"l4": {
+															"description": "Logging settings for Network firewall.",
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1316,12 +2572,56 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/gateway-account-logging-settings"
+													"properties": {
+														"redact_pii": {
+															"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).",
+															"example": true,
+															"type": "boolean"
+														},
+														"settings_by_rule_type": {
+															"description": "Logging settings by rule type.",
+															"properties": {
+																"dns": {
+																	"description": "Logging settings for DNS firewall.",
+																	"type": "object"
+																},
+																"http": {
+																	"description": "Logging settings for HTTP/HTTPS firewall.",
+																	"type": "object"
+																},
+																"l4": {
+																	"description": "Logging settings for Network firewall.",
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1333,7 +2633,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1347,7 +2665,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

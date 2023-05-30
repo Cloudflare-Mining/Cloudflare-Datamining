@@ -1,7 +1,11 @@
 {
 	"properties": {
 		"id": {
-			"$ref": "#/components/schemas/namespace_identifier"
+			"description": "Namespace identifier tag.",
+			"example": "0f2ac74b498b48028cb68387c421e279",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"supports_url_encoding": {
 			"description": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\".",
@@ -10,7 +14,9 @@
 			"type": "boolean"
 		},
 		"title": {
-			"$ref": "#/components/schemas/namespace_title"
+			"description": "A human-readable string name for a Namespace.",
+			"example": "My Own Namespace",
+			"type": "string"
 		}
 	},
 	"required": [

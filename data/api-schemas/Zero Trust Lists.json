@@ -36,7 +36,26 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -59,7 +78,26 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -75,7 +113,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -89,7 +145,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -156,13 +230,53 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/lists"
+												"properties": {
+													"count": {
+														"$ref": "#/components/schemas/count-0fjNRmP4"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"description": {
+														"$ref": "#/components/schemas/description-gy0V52hN"
+													},
+													"id": {
+														"$ref": "#/components/schemas/uuid-3ouIahqd"
+													},
+													"name": {
+														"$ref": "#/components/schemas/name-kYxCndJE"
+													},
+													"type": {
+														"$ref": "#/components/schemas/type-kK3CKTvO"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -182,13 +296,53 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/lists"
+														"properties": {
+															"count": {
+																"$ref": "#/components/schemas/count-0fjNRmP4"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"description": {
+																"$ref": "#/components/schemas/description-gy0V52hN"
+															},
+															"id": {
+																"$ref": "#/components/schemas/uuid-3ouIahqd"
+															},
+															"name": {
+																"$ref": "#/components/schemas/name-kYxCndJE"
+															},
+															"type": {
+																"$ref": "#/components/schemas/type-kK3CKTvO"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -201,7 +355,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -215,7 +387,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -293,12 +483,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/lists"
+											"properties": {
+												"count": {
+													"$ref": "#/components/schemas/count-0fjNRmP4"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/description-gy0V52hN"
+												},
+												"id": {
+													"$ref": "#/components/schemas/uuid-3ouIahqd"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-kYxCndJE"
+												},
+												"type": {
+													"$ref": "#/components/schemas/type-kK3CKTvO"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -316,12 +548,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/lists"
+													"properties": {
+														"count": {
+															"$ref": "#/components/schemas/count-0fjNRmP4"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/description-gy0V52hN"
+														},
+														"id": {
+															"$ref": "#/components/schemas/uuid-3ouIahqd"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-kYxCndJE"
+														},
+														"type": {
+															"$ref": "#/components/schemas/type-kK3CKTvO"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -332,7 +606,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -346,7 +638,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -424,13 +734,42 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/items"
+												"description": "The items in the List.",
+												"items": {
+													"properties": {
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"value": {
+															"$ref": "#/components/schemas/value-Ok2P01be"
+														}
+													},
+													"type": "object"
+												},
+												"type": "array"
 											},
 											"type": "array"
 										}
@@ -479,13 +818,42 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/items"
+														"description": "The items in the List.",
+														"items": {
+															"properties": {
+																"created_at": {
+																	"$ref": "#/components/schemas/timestamp"
+																},
+																"value": {
+																	"$ref": "#/components/schemas/value-Ok2P01be"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
 													},
 													"type": "array"
 												}
@@ -527,7 +895,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -541,7 +927,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -622,10 +1026,15 @@
 								"items": {
 									"properties": {
 										"created_at": {
-											"$ref": "#/components/schemas/timestamp"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
 										},
 										"value": {
-											"$ref": "#/components/schemas/value-Ok2P01be"
+											"description": "The value of the item in a List.",
+											"example": "8GE8721REF",
+											"type": "string"
 										}
 									},
 									"type": "object"
@@ -654,12 +1063,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/lists"
+											"properties": {
+												"count": {
+													"$ref": "#/components/schemas/count-0fjNRmP4"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/description-gy0V52hN"
+												},
+												"id": {
+													"$ref": "#/components/schemas/uuid-3ouIahqd"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-kYxCndJE"
+												},
+												"type": {
+													"$ref": "#/components/schemas/type-kK3CKTvO"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -677,12 +1128,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/lists"
+													"properties": {
+														"count": {
+															"$ref": "#/components/schemas/count-0fjNRmP4"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/description-gy0V52hN"
+														},
+														"id": {
+															"$ref": "#/components/schemas/uuid-3ouIahqd"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-kYxCndJE"
+														},
+														"type": {
+															"$ref": "#/components/schemas/type-kK3CKTvO"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -693,7 +1186,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -707,7 +1218,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -782,10 +1311,15 @@
 								"items": {
 									"properties": {
 										"created_at": {
-											"$ref": "#/components/schemas/timestamp"
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
 										},
 										"value": {
-											"$ref": "#/components/schemas/value-Ok2P01be"
+											"description": "The value of the item in a List.",
+											"example": "8GE8721REF",
+											"type": "string"
 										}
 									},
 									"type": "object"
@@ -826,32 +1360,85 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"created_at": {
-													"$ref": "#/components/schemas/timestamp"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-gy0V52hN"
+													"description": "The description of the List.",
+													"example": "The serial numbers for administrators",
+													"type": "string"
 												},
 												"id": {
-													"$ref": "#/components/schemas/uuid-3ouIahqd"
+													"description": "API Resource UUID tag.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
 												},
 												"items": {
-													"$ref": "#/components/schemas/items"
+													"description": "The items in the List.",
+													"items": {
+														"properties": {
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"value": {
+																"$ref": "#/components/schemas/value-Ok2P01be"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-kYxCndJE"
+													"description": "The name of the List.",
+													"example": "Admin Serial Numbers",
+													"type": "string"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-kK3CKTvO"
+													"description": "The type of List.",
+													"enum": [
+														"SERIAL",
+														"URL",
+														"DOMAIN",
+														"EMAIL",
+														"IP"
+													],
+													"example": "SERIAL",
+													"type": "string"
 												},
 												"updated_at": {
-													"$ref": "#/components/schemas/timestamp"
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												}
 											}
 										}
@@ -871,32 +1458,85 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"created_at": {
-															"$ref": "#/components/schemas/timestamp"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-gy0V52hN"
+															"description": "The description of the List.",
+															"example": "The serial numbers for administrators",
+															"type": "string"
 														},
 														"id": {
-															"$ref": "#/components/schemas/uuid-3ouIahqd"
+															"description": "API Resource UUID tag.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
 														},
 														"items": {
-															"$ref": "#/components/schemas/items"
+															"description": "The items in the List.",
+															"items": {
+																"properties": {
+																	"created_at": {
+																		"$ref": "#/components/schemas/timestamp"
+																	},
+																	"value": {
+																		"$ref": "#/components/schemas/value-Ok2P01be"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-kYxCndJE"
+															"description": "The name of the List.",
+															"example": "Admin Serial Numbers",
+															"type": "string"
 														},
 														"type": {
-															"$ref": "#/components/schemas/type-kK3CKTvO"
+															"description": "The type of List.",
+															"enum": [
+																"SERIAL",
+																"URL",
+																"DOMAIN",
+																"EMAIL",
+																"IP"
+															],
+															"example": "SERIAL",
+															"type": "string"
 														},
 														"updated_at": {
-															"$ref": "#/components/schemas/timestamp"
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
 														}
 													}
 												}
@@ -909,7 +1549,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -923,7 +1581,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1025,12 +1701,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/lists"
+											"properties": {
+												"count": {
+													"$ref": "#/components/schemas/count-0fjNRmP4"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/description-gy0V52hN"
+												},
+												"id": {
+													"$ref": "#/components/schemas/uuid-3ouIahqd"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-kYxCndJE"
+												},
+												"type": {
+													"$ref": "#/components/schemas/type-kK3CKTvO"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1048,12 +1766,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/lists"
+													"properties": {
+														"count": {
+															"$ref": "#/components/schemas/count-0fjNRmP4"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/description-gy0V52hN"
+														},
+														"id": {
+															"$ref": "#/components/schemas/uuid-3ouIahqd"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-kYxCndJE"
+														},
+														"type": {
+															"$ref": "#/components/schemas/type-kK3CKTvO"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1064,7 +1824,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1078,7 +1856,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

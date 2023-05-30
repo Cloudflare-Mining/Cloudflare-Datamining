@@ -1,10 +1,15 @@
 {
 	"properties": {
 		"cidr": {
-			"$ref": "#/components/schemas/cidr"
+			"description": "IP Prefix in Classless Inter-Domain Routing format.",
+			"example": "192.0.2.0/24",
+			"type": "string"
 		},
 		"service_id": {
-			"$ref": "#/components/schemas/service_identifier"
+			"description": "Identifier",
+			"example": "2db684ee7ca04e159946fd05b99e1bcd",
+			"maxLength": 32,
+			"type": "string"
 		}
 	},
 	"type": "object"

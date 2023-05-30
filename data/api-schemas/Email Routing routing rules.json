@@ -41,12 +41,36 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-m5DNBz8A"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/rule_properties"
+												}
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -137,13 +161,35 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/rules-m5DNBz8A"
+												"allOf": [
+													{
+														"$ref": "#/components/schemas/rule_properties"
+													}
+												],
+												"type": "object"
 											},
 											"type": "array"
 										},
@@ -231,12 +277,36 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-m5DNBz8A"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/rule_properties"
+												}
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -293,12 +363,48 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/catch_all_rule"
+											"properties": {
+												"actions": {
+													"$ref": "#/components/schemas/rule_catchall-actions"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/rule_enabled"
+												},
+												"matchers": {
+													"$ref": "#/components/schemas/rule_catchall-matchers"
+												},
+												"name": {
+													"$ref": "#/components/schemas/rule_name"
+												},
+												"tag": {
+													"$ref": "#/components/schemas/rule_identifier"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -354,19 +460,40 @@
 					"schema": {
 						"properties": {
 							"actions": {
-								"$ref": "#/components/schemas/rule_actions"
+								"description": "List actions patterns.",
+								"items": {
+									"$ref": "#/components/schemas/rule_action"
+								},
+								"type": "array"
 							},
 							"enabled": {
-								"$ref": "#/components/schemas/rule_enabled"
+								"default": true,
+								"description": "Routing rule status.",
+								"enum": [
+									true,
+									false
+								],
+								"example": true,
+								"type": "boolean"
 							},
 							"matchers": {
-								"$ref": "#/components/schemas/rule_matchers"
+								"description": "Matching patterns to forward to your actions.",
+								"items": {
+									"$ref": "#/components/schemas/rule_matcher"
+								},
+								"type": "array"
 							},
 							"name": {
-								"$ref": "#/components/schemas/rule_name"
+								"description": "Routing rule name.",
+								"example": "Send to user@example.net rule.",
+								"maxLength": 256,
+								"type": "string"
 							},
 							"priority": {
-								"$ref": "#/components/schemas/rule_priority"
+								"default": 0,
+								"description": "Priority of the routing rule.",
+								"minimum": 0,
+								"type": "number"
 							}
 						},
 						"required": [
@@ -386,12 +513,36 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-m5DNBz8A"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/rule_properties"
+												}
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -459,19 +610,40 @@
 					"schema": {
 						"properties": {
 							"actions": {
-								"$ref": "#/components/schemas/rule_actions"
+								"description": "List actions patterns.",
+								"items": {
+									"$ref": "#/components/schemas/rule_action"
+								},
+								"type": "array"
 							},
 							"enabled": {
-								"$ref": "#/components/schemas/rule_enabled"
+								"default": true,
+								"description": "Routing rule status.",
+								"enum": [
+									true,
+									false
+								],
+								"example": true,
+								"type": "boolean"
 							},
 							"matchers": {
-								"$ref": "#/components/schemas/rule_matchers"
+								"description": "Matching patterns to forward to your actions.",
+								"items": {
+									"$ref": "#/components/schemas/rule_matcher"
+								},
+								"type": "array"
 							},
 							"name": {
-								"$ref": "#/components/schemas/rule_name"
+								"description": "Routing rule name.",
+								"example": "Send to user@example.net rule.",
+								"maxLength": 256,
+								"type": "string"
 							},
 							"priority": {
-								"$ref": "#/components/schemas/rule_priority"
+								"default": 0,
+								"description": "Priority of the routing rule.",
+								"minimum": 0,
+								"type": "number"
 							}
 						},
 						"required": [
@@ -491,12 +663,36 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-m5DNBz8A"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/rule_properties"
+												}
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -552,16 +748,34 @@
 					"schema": {
 						"properties": {
 							"actions": {
-								"$ref": "#/components/schemas/rule_catchall-actions"
+								"description": "List actions for the catch-all routing rule.",
+								"items": {
+									"$ref": "#/components/schemas/rule_catchall-action"
+								},
+								"type": "array"
 							},
 							"enabled": {
-								"$ref": "#/components/schemas/rule_enabled"
+								"default": true,
+								"description": "Routing rule status.",
+								"enum": [
+									true,
+									false
+								],
+								"example": true,
+								"type": "boolean"
 							},
 							"matchers": {
-								"$ref": "#/components/schemas/rule_catchall-matchers"
+								"description": "List of matchers for the catch-all routing rule.",
+								"items": {
+									"$ref": "#/components/schemas/rule_catchall-matcher"
+								},
+								"type": "array"
 							},
 							"name": {
-								"$ref": "#/components/schemas/rule_name"
+								"description": "Routing rule name.",
+								"example": "Send to user@example.net rule.",
+								"maxLength": 256,
+								"type": "string"
 							}
 						},
 						"required": [
@@ -581,12 +795,48 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/catch_all_rule"
+											"properties": {
+												"actions": {
+													"$ref": "#/components/schemas/rule_catchall-actions"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/rule_enabled"
+												},
+												"matchers": {
+													"$ref": "#/components/schemas/rule_catchall-matchers"
+												},
+												"name": {
+													"$ref": "#/components/schemas/rule_name"
+												},
+												"tag": {
+													"$ref": "#/components/schemas/rule_identifier"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}

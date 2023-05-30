@@ -3,12 +3,82 @@
 		"result": {
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/regional_tiered_cache"
+					"allOf": [
+						{
+							"properties": {
+								"id": {
+									"description": "Identifier of the zone setting.",
+									"example": "development_mode",
+									"type": "string"
+								},
+								"modified_on": {
+									"description": "last time this setting was modified.",
+									"example": "2014-01-01T05:20:00.12345Z",
+									"format": "date-time",
+									"nullable": true,
+									"readOnly": true,
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"modified_on"
+							]
+						},
+						{
+							"properties": {
+								"id": {
+									"description": "ID of the zone setting.",
+									"enum": [
+										"tc_regional"
+									],
+									"example": "tc_regional"
+								}
+							}
+						}
+					],
+					"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
+					"title": "Regional Tiered Cache"
 				},
 				{
 					"properties": {
 						"value": {
-							"$ref": "#/components/schemas/regional_tiered_cache"
+							"allOf": [
+								{
+									"properties": {
+										"id": {
+											"description": "Identifier of the zone setting.",
+											"example": "development_mode",
+											"type": "string"
+										},
+										"modified_on": {
+											"description": "last time this setting was modified.",
+											"example": "2014-01-01T05:20:00.12345Z",
+											"format": "date-time",
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"modified_on"
+									]
+								},
+								{
+									"properties": {
+										"id": {
+											"description": "ID of the zone setting.",
+											"enum": [
+												"tc_regional"
+											],
+											"example": "tc_regional"
+										}
+									}
+								}
+							],
+							"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
+							"title": "Regional Tiered Cache"
 						}
 					},
 					"required": [

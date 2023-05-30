@@ -41,14 +41,38 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/identifier"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -69,14 +93,38 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -90,7 +138,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -104,7 +170,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -202,14 +286,38 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/identifier"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -230,14 +338,38 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -251,7 +383,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -265,7 +415,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -345,13 +513,86 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/healthchecks"
+												"properties": {
+													"address": {
+														"$ref": "#/components/schemas/address"
+													},
+													"check_regions": {
+														"$ref": "#/components/schemas/check_regions"
+													},
+													"consecutive_fails": {
+														"$ref": "#/components/schemas/consecutive_fails"
+													},
+													"consecutive_successes": {
+														"$ref": "#/components/schemas/consecutive_successes"
+													},
+													"created_on": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"description": {
+														"$ref": "#/components/schemas/description-atgs7kOZ"
+													},
+													"failure_reason": {
+														"$ref": "#/components/schemas/failure_reason"
+													},
+													"http_config": {
+														"$ref": "#/components/schemas/http_config"
+													},
+													"id": {
+														"$ref": "#/components/schemas/identifier"
+													},
+													"interval": {
+														"$ref": "#/components/schemas/interval"
+													},
+													"modified_on": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"name": {
+														"$ref": "#/components/schemas/name-Zw9iJ7ob"
+													},
+													"retries": {
+														"$ref": "#/components/schemas/retries"
+													},
+													"status": {
+														"$ref": "#/components/schemas/status-Hz84qFB5"
+													},
+													"suspended": {
+														"$ref": "#/components/schemas/suspended"
+													},
+													"tcp_config": {
+														"$ref": "#/components/schemas/tcp_config"
+													},
+													"timeout": {
+														"$ref": "#/components/schemas/timeout"
+													},
+													"type": {
+														"$ref": "#/components/schemas/type-F3GDzEpK"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -371,13 +612,86 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/healthchecks"
+														"properties": {
+															"address": {
+																"$ref": "#/components/schemas/address"
+															},
+															"check_regions": {
+																"$ref": "#/components/schemas/check_regions"
+															},
+															"consecutive_fails": {
+																"$ref": "#/components/schemas/consecutive_fails"
+															},
+															"consecutive_successes": {
+																"$ref": "#/components/schemas/consecutive_successes"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"description": {
+																"$ref": "#/components/schemas/description-atgs7kOZ"
+															},
+															"failure_reason": {
+																"$ref": "#/components/schemas/failure_reason"
+															},
+															"http_config": {
+																"$ref": "#/components/schemas/http_config"
+															},
+															"id": {
+																"$ref": "#/components/schemas/identifier"
+															},
+															"interval": {
+																"$ref": "#/components/schemas/interval"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"name": {
+																"$ref": "#/components/schemas/name-Zw9iJ7ob"
+															},
+															"retries": {
+																"$ref": "#/components/schemas/retries"
+															},
+															"status": {
+																"$ref": "#/components/schemas/status-Hz84qFB5"
+															},
+															"suspended": {
+																"$ref": "#/components/schemas/suspended"
+															},
+															"tcp_config": {
+																"$ref": "#/components/schemas/tcp_config"
+															},
+															"timeout": {
+																"$ref": "#/components/schemas/timeout"
+															},
+															"type": {
+																"$ref": "#/components/schemas/type-F3GDzEpK"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -390,7 +704,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -404,7 +736,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -496,12 +846,88 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/healthchecks"
+											"properties": {
+												"address": {
+													"$ref": "#/components/schemas/address"
+												},
+												"check_regions": {
+													"$ref": "#/components/schemas/check_regions"
+												},
+												"consecutive_fails": {
+													"$ref": "#/components/schemas/consecutive_fails"
+												},
+												"consecutive_successes": {
+													"$ref": "#/components/schemas/consecutive_successes"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/description-atgs7kOZ"
+												},
+												"failure_reason": {
+													"$ref": "#/components/schemas/failure_reason"
+												},
+												"http_config": {
+													"$ref": "#/components/schemas/http_config"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier"
+												},
+												"interval": {
+													"$ref": "#/components/schemas/interval"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-Zw9iJ7ob"
+												},
+												"retries": {
+													"$ref": "#/components/schemas/retries"
+												},
+												"status": {
+													"$ref": "#/components/schemas/status-Hz84qFB5"
+												},
+												"suspended": {
+													"$ref": "#/components/schemas/suspended"
+												},
+												"tcp_config": {
+													"$ref": "#/components/schemas/tcp_config"
+												},
+												"timeout": {
+													"$ref": "#/components/schemas/timeout"
+												},
+												"type": {
+													"$ref": "#/components/schemas/type-F3GDzEpK"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -519,12 +945,88 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/healthchecks"
+													"properties": {
+														"address": {
+															"$ref": "#/components/schemas/address"
+														},
+														"check_regions": {
+															"$ref": "#/components/schemas/check_regions"
+														},
+														"consecutive_fails": {
+															"$ref": "#/components/schemas/consecutive_fails"
+														},
+														"consecutive_successes": {
+															"$ref": "#/components/schemas/consecutive_successes"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/description-atgs7kOZ"
+														},
+														"failure_reason": {
+															"$ref": "#/components/schemas/failure_reason"
+														},
+														"http_config": {
+															"$ref": "#/components/schemas/http_config"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"interval": {
+															"$ref": "#/components/schemas/interval"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-Zw9iJ7ob"
+														},
+														"retries": {
+															"$ref": "#/components/schemas/retries"
+														},
+														"status": {
+															"$ref": "#/components/schemas/status-Hz84qFB5"
+														},
+														"suspended": {
+															"$ref": "#/components/schemas/suspended"
+														},
+														"tcp_config": {
+															"$ref": "#/components/schemas/tcp_config"
+														},
+														"timeout": {
+															"$ref": "#/components/schemas/timeout"
+														},
+														"type": {
+															"$ref": "#/components/schemas/type-F3GDzEpK"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -535,7 +1037,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -549,7 +1069,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -641,12 +1179,88 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/healthchecks"
+											"properties": {
+												"address": {
+													"$ref": "#/components/schemas/address"
+												},
+												"check_regions": {
+													"$ref": "#/components/schemas/check_regions"
+												},
+												"consecutive_fails": {
+													"$ref": "#/components/schemas/consecutive_fails"
+												},
+												"consecutive_successes": {
+													"$ref": "#/components/schemas/consecutive_successes"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/description-atgs7kOZ"
+												},
+												"failure_reason": {
+													"$ref": "#/components/schemas/failure_reason"
+												},
+												"http_config": {
+													"$ref": "#/components/schemas/http_config"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier"
+												},
+												"interval": {
+													"$ref": "#/components/schemas/interval"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-Zw9iJ7ob"
+												},
+												"retries": {
+													"$ref": "#/components/schemas/retries"
+												},
+												"status": {
+													"$ref": "#/components/schemas/status-Hz84qFB5"
+												},
+												"suspended": {
+													"$ref": "#/components/schemas/suspended"
+												},
+												"tcp_config": {
+													"$ref": "#/components/schemas/tcp_config"
+												},
+												"timeout": {
+													"$ref": "#/components/schemas/timeout"
+												},
+												"type": {
+													"$ref": "#/components/schemas/type-F3GDzEpK"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -664,12 +1278,88 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/healthchecks"
+													"properties": {
+														"address": {
+															"$ref": "#/components/schemas/address"
+														},
+														"check_regions": {
+															"$ref": "#/components/schemas/check_regions"
+														},
+														"consecutive_fails": {
+															"$ref": "#/components/schemas/consecutive_fails"
+														},
+														"consecutive_successes": {
+															"$ref": "#/components/schemas/consecutive_successes"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/description-atgs7kOZ"
+														},
+														"failure_reason": {
+															"$ref": "#/components/schemas/failure_reason"
+														},
+														"http_config": {
+															"$ref": "#/components/schemas/http_config"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"interval": {
+															"$ref": "#/components/schemas/interval"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-Zw9iJ7ob"
+														},
+														"retries": {
+															"$ref": "#/components/schemas/retries"
+														},
+														"status": {
+															"$ref": "#/components/schemas/status-Hz84qFB5"
+														},
+														"suspended": {
+															"$ref": "#/components/schemas/suspended"
+														},
+														"tcp_config": {
+															"$ref": "#/components/schemas/tcp_config"
+														},
+														"timeout": {
+															"$ref": "#/components/schemas/timeout"
+														},
+														"type": {
+															"$ref": "#/components/schemas/type-F3GDzEpK"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -680,7 +1370,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -694,7 +1402,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -785,43 +1511,172 @@
 					"schema": {
 						"properties": {
 							"address": {
-								"$ref": "#/components/schemas/address"
+								"description": "The hostname or IP address of the origin server to run health checks on.",
+								"example": "www.example.com",
+								"type": "string"
 							},
 							"check_regions": {
-								"$ref": "#/components/schemas/check_regions"
+								"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
+								"example": [
+									"WEU",
+									"ENAM"
+								],
+								"items": {
+									"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
+									"enum": [
+										"WNAM",
+										"ENAM",
+										"WEU",
+										"EEU",
+										"NSAM",
+										"SSAM",
+										"OC",
+										"ME",
+										"NAF",
+										"SAF",
+										"IN",
+										"SEAS",
+										"NEAS",
+										"ALL_REGIONS"
+									],
+									"type": "string"
+								},
+								"nullable": true,
+								"type": "array"
 							},
 							"consecutive_fails": {
-								"$ref": "#/components/schemas/consecutive_fails"
+								"default": 1,
+								"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
+								"type": "integer"
 							},
 							"consecutive_successes": {
-								"$ref": "#/components/schemas/consecutive_successes"
+								"default": 1,
+								"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
+								"type": "integer"
 							},
 							"description": {
-								"$ref": "#/components/schemas/description-atgs7kOZ"
+								"description": "A human-readable description of the health check.",
+								"example": "Health check for www.example.com",
+								"type": "string"
 							},
 							"http_config": {
-								"$ref": "#/components/schemas/http_config"
+								"description": "Parameters specific to an HTTP or HTTPS health check.",
+								"nullable": true,
+								"properties": {
+									"allow_insecure": {
+										"default": false,
+										"description": "Do not validate the certificate when the health check uses HTTPS.",
+										"type": "boolean"
+									},
+									"expected_body": {
+										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
+										"example": "success",
+										"type": "string"
+									},
+									"expected_codes": {
+										"default": "200",
+										"description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check.",
+										"example": [
+											"2xx",
+											"302"
+										],
+										"items": {
+											"type": "string"
+										},
+										"nullable": true,
+										"type": "array"
+									},
+									"follow_redirects": {
+										"default": false,
+										"description": "Follow redirects if the origin returns a 3xx status code.",
+										"type": "boolean"
+									},
+									"header": {
+										"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.",
+										"example": {
+											"Host": [
+												"example.com"
+											],
+											"X-App-ID": [
+												"abc123"
+											]
+										},
+										"nullable": true,
+										"type": "object"
+									},
+									"method": {
+										"default": "GET",
+										"description": "The HTTP method to use for the health check.",
+										"enum": [
+											"GET",
+											"HEAD"
+										],
+										"type": "string"
+									},
+									"path": {
+										"default": "/",
+										"description": "The endpoint path to health check against.",
+										"example": "/health",
+										"type": "string"
+									},
+									"port": {
+										"default": 80,
+										"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
+										"type": "integer"
+									}
+								},
+								"type": "object"
 							},
 							"interval": {
-								"$ref": "#/components/schemas/interval"
+								"default": 60,
+								"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
+								"type": "integer"
 							},
 							"name": {
-								"$ref": "#/components/schemas/name-Zw9iJ7ob"
+								"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
+								"example": "server-1",
+								"type": "string"
 							},
 							"retries": {
-								"$ref": "#/components/schemas/retries"
+								"default": 2,
+								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+								"type": "integer"
 							},
 							"suspended": {
-								"$ref": "#/components/schemas/suspended"
+								"default": false,
+								"description": "If suspended, no health checks are sent to the origin.",
+								"type": "boolean"
 							},
 							"tcp_config": {
-								"$ref": "#/components/schemas/tcp_config"
+								"description": "Parameters specific to TCP health check.",
+								"nullable": true,
+								"properties": {
+									"method": {
+										"default": "connection_established",
+										"description": "The TCP connection method to use for the health check.",
+										"enum": [
+											"connection_established"
+										],
+										"type": "string"
+									},
+									"port": {
+										"default": 80,
+										"description": "Port number to connect to for the health check. Defaults to 80.",
+										"type": "integer"
+									}
+								},
+								"type": "object"
 							},
 							"timeout": {
-								"$ref": "#/components/schemas/timeout"
+								"default": 5,
+								"description": "The timeout (in seconds) before marking the health check as failed.",
+								"type": "integer"
 							},
 							"type": {
-								"$ref": "#/components/schemas/type-F3GDzEpK"
+								"default": "HTTP",
+								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
+								"example": "HTTPS",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -841,12 +1696,88 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/healthchecks"
+											"properties": {
+												"address": {
+													"$ref": "#/components/schemas/address"
+												},
+												"check_regions": {
+													"$ref": "#/components/schemas/check_regions"
+												},
+												"consecutive_fails": {
+													"$ref": "#/components/schemas/consecutive_fails"
+												},
+												"consecutive_successes": {
+													"$ref": "#/components/schemas/consecutive_successes"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/description-atgs7kOZ"
+												},
+												"failure_reason": {
+													"$ref": "#/components/schemas/failure_reason"
+												},
+												"http_config": {
+													"$ref": "#/components/schemas/http_config"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier"
+												},
+												"interval": {
+													"$ref": "#/components/schemas/interval"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-Zw9iJ7ob"
+												},
+												"retries": {
+													"$ref": "#/components/schemas/retries"
+												},
+												"status": {
+													"$ref": "#/components/schemas/status-Hz84qFB5"
+												},
+												"suspended": {
+													"$ref": "#/components/schemas/suspended"
+												},
+												"tcp_config": {
+													"$ref": "#/components/schemas/tcp_config"
+												},
+												"timeout": {
+													"$ref": "#/components/schemas/timeout"
+												},
+												"type": {
+													"$ref": "#/components/schemas/type-F3GDzEpK"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -864,12 +1795,88 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/healthchecks"
+													"properties": {
+														"address": {
+															"$ref": "#/components/schemas/address"
+														},
+														"check_regions": {
+															"$ref": "#/components/schemas/check_regions"
+														},
+														"consecutive_fails": {
+															"$ref": "#/components/schemas/consecutive_fails"
+														},
+														"consecutive_successes": {
+															"$ref": "#/components/schemas/consecutive_successes"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/description-atgs7kOZ"
+														},
+														"failure_reason": {
+															"$ref": "#/components/schemas/failure_reason"
+														},
+														"http_config": {
+															"$ref": "#/components/schemas/http_config"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"interval": {
+															"$ref": "#/components/schemas/interval"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-Zw9iJ7ob"
+														},
+														"retries": {
+															"$ref": "#/components/schemas/retries"
+														},
+														"status": {
+															"$ref": "#/components/schemas/status-Hz84qFB5"
+														},
+														"suspended": {
+															"$ref": "#/components/schemas/suspended"
+														},
+														"tcp_config": {
+															"$ref": "#/components/schemas/tcp_config"
+														},
+														"timeout": {
+															"$ref": "#/components/schemas/timeout"
+														},
+														"type": {
+															"$ref": "#/components/schemas/type-F3GDzEpK"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -880,7 +1887,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -894,7 +1919,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -973,43 +2016,172 @@
 					"schema": {
 						"properties": {
 							"address": {
-								"$ref": "#/components/schemas/address"
+								"description": "The hostname or IP address of the origin server to run health checks on.",
+								"example": "www.example.com",
+								"type": "string"
 							},
 							"check_regions": {
-								"$ref": "#/components/schemas/check_regions"
+								"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
+								"example": [
+									"WEU",
+									"ENAM"
+								],
+								"items": {
+									"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
+									"enum": [
+										"WNAM",
+										"ENAM",
+										"WEU",
+										"EEU",
+										"NSAM",
+										"SSAM",
+										"OC",
+										"ME",
+										"NAF",
+										"SAF",
+										"IN",
+										"SEAS",
+										"NEAS",
+										"ALL_REGIONS"
+									],
+									"type": "string"
+								},
+								"nullable": true,
+								"type": "array"
 							},
 							"consecutive_fails": {
-								"$ref": "#/components/schemas/consecutive_fails"
+								"default": 1,
+								"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
+								"type": "integer"
 							},
 							"consecutive_successes": {
-								"$ref": "#/components/schemas/consecutive_successes"
+								"default": 1,
+								"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
+								"type": "integer"
 							},
 							"description": {
-								"$ref": "#/components/schemas/description-atgs7kOZ"
+								"description": "A human-readable description of the health check.",
+								"example": "Health check for www.example.com",
+								"type": "string"
 							},
 							"http_config": {
-								"$ref": "#/components/schemas/http_config"
+								"description": "Parameters specific to an HTTP or HTTPS health check.",
+								"nullable": true,
+								"properties": {
+									"allow_insecure": {
+										"default": false,
+										"description": "Do not validate the certificate when the health check uses HTTPS.",
+										"type": "boolean"
+									},
+									"expected_body": {
+										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
+										"example": "success",
+										"type": "string"
+									},
+									"expected_codes": {
+										"default": "200",
+										"description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check.",
+										"example": [
+											"2xx",
+											"302"
+										],
+										"items": {
+											"type": "string"
+										},
+										"nullable": true,
+										"type": "array"
+									},
+									"follow_redirects": {
+										"default": false,
+										"description": "Follow redirects if the origin returns a 3xx status code.",
+										"type": "boolean"
+									},
+									"header": {
+										"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.",
+										"example": {
+											"Host": [
+												"example.com"
+											],
+											"X-App-ID": [
+												"abc123"
+											]
+										},
+										"nullable": true,
+										"type": "object"
+									},
+									"method": {
+										"default": "GET",
+										"description": "The HTTP method to use for the health check.",
+										"enum": [
+											"GET",
+											"HEAD"
+										],
+										"type": "string"
+									},
+									"path": {
+										"default": "/",
+										"description": "The endpoint path to health check against.",
+										"example": "/health",
+										"type": "string"
+									},
+									"port": {
+										"default": 80,
+										"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
+										"type": "integer"
+									}
+								},
+								"type": "object"
 							},
 							"interval": {
-								"$ref": "#/components/schemas/interval"
+								"default": 60,
+								"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
+								"type": "integer"
 							},
 							"name": {
-								"$ref": "#/components/schemas/name-Zw9iJ7ob"
+								"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
+								"example": "server-1",
+								"type": "string"
 							},
 							"retries": {
-								"$ref": "#/components/schemas/retries"
+								"default": 2,
+								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+								"type": "integer"
 							},
 							"suspended": {
-								"$ref": "#/components/schemas/suspended"
+								"default": false,
+								"description": "If suspended, no health checks are sent to the origin.",
+								"type": "boolean"
 							},
 							"tcp_config": {
-								"$ref": "#/components/schemas/tcp_config"
+								"description": "Parameters specific to TCP health check.",
+								"nullable": true,
+								"properties": {
+									"method": {
+										"default": "connection_established",
+										"description": "The TCP connection method to use for the health check.",
+										"enum": [
+											"connection_established"
+										],
+										"type": "string"
+									},
+									"port": {
+										"default": 80,
+										"description": "Port number to connect to for the health check. Defaults to 80.",
+										"type": "integer"
+									}
+								},
+								"type": "object"
 							},
 							"timeout": {
-								"$ref": "#/components/schemas/timeout"
+								"default": 5,
+								"description": "The timeout (in seconds) before marking the health check as failed.",
+								"type": "integer"
 							},
 							"type": {
-								"$ref": "#/components/schemas/type-F3GDzEpK"
+								"default": "HTTP",
+								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
+								"example": "HTTPS",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -1029,12 +2201,88 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/healthchecks"
+											"properties": {
+												"address": {
+													"$ref": "#/components/schemas/address"
+												},
+												"check_regions": {
+													"$ref": "#/components/schemas/check_regions"
+												},
+												"consecutive_fails": {
+													"$ref": "#/components/schemas/consecutive_fails"
+												},
+												"consecutive_successes": {
+													"$ref": "#/components/schemas/consecutive_successes"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/description-atgs7kOZ"
+												},
+												"failure_reason": {
+													"$ref": "#/components/schemas/failure_reason"
+												},
+												"http_config": {
+													"$ref": "#/components/schemas/http_config"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier"
+												},
+												"interval": {
+													"$ref": "#/components/schemas/interval"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-Zw9iJ7ob"
+												},
+												"retries": {
+													"$ref": "#/components/schemas/retries"
+												},
+												"status": {
+													"$ref": "#/components/schemas/status-Hz84qFB5"
+												},
+												"suspended": {
+													"$ref": "#/components/schemas/suspended"
+												},
+												"tcp_config": {
+													"$ref": "#/components/schemas/tcp_config"
+												},
+												"timeout": {
+													"$ref": "#/components/schemas/timeout"
+												},
+												"type": {
+													"$ref": "#/components/schemas/type-F3GDzEpK"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1052,12 +2300,88 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/healthchecks"
+													"properties": {
+														"address": {
+															"$ref": "#/components/schemas/address"
+														},
+														"check_regions": {
+															"$ref": "#/components/schemas/check_regions"
+														},
+														"consecutive_fails": {
+															"$ref": "#/components/schemas/consecutive_fails"
+														},
+														"consecutive_successes": {
+															"$ref": "#/components/schemas/consecutive_successes"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/description-atgs7kOZ"
+														},
+														"failure_reason": {
+															"$ref": "#/components/schemas/failure_reason"
+														},
+														"http_config": {
+															"$ref": "#/components/schemas/http_config"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"interval": {
+															"$ref": "#/components/schemas/interval"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-Zw9iJ7ob"
+														},
+														"retries": {
+															"$ref": "#/components/schemas/retries"
+														},
+														"status": {
+															"$ref": "#/components/schemas/status-Hz84qFB5"
+														},
+														"suspended": {
+															"$ref": "#/components/schemas/suspended"
+														},
+														"tcp_config": {
+															"$ref": "#/components/schemas/tcp_config"
+														},
+														"timeout": {
+															"$ref": "#/components/schemas/timeout"
+														},
+														"type": {
+															"$ref": "#/components/schemas/type-F3GDzEpK"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1068,7 +2392,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1082,7 +2424,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1161,43 +2521,172 @@
 					"schema": {
 						"properties": {
 							"address": {
-								"$ref": "#/components/schemas/address"
+								"description": "The hostname or IP address of the origin server to run health checks on.",
+								"example": "www.example.com",
+								"type": "string"
 							},
 							"check_regions": {
-								"$ref": "#/components/schemas/check_regions"
+								"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
+								"example": [
+									"WEU",
+									"ENAM"
+								],
+								"items": {
+									"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
+									"enum": [
+										"WNAM",
+										"ENAM",
+										"WEU",
+										"EEU",
+										"NSAM",
+										"SSAM",
+										"OC",
+										"ME",
+										"NAF",
+										"SAF",
+										"IN",
+										"SEAS",
+										"NEAS",
+										"ALL_REGIONS"
+									],
+									"type": "string"
+								},
+								"nullable": true,
+								"type": "array"
 							},
 							"consecutive_fails": {
-								"$ref": "#/components/schemas/consecutive_fails"
+								"default": 1,
+								"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
+								"type": "integer"
 							},
 							"consecutive_successes": {
-								"$ref": "#/components/schemas/consecutive_successes"
+								"default": 1,
+								"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
+								"type": "integer"
 							},
 							"description": {
-								"$ref": "#/components/schemas/description-atgs7kOZ"
+								"description": "A human-readable description of the health check.",
+								"example": "Health check for www.example.com",
+								"type": "string"
 							},
 							"http_config": {
-								"$ref": "#/components/schemas/http_config"
+								"description": "Parameters specific to an HTTP or HTTPS health check.",
+								"nullable": true,
+								"properties": {
+									"allow_insecure": {
+										"default": false,
+										"description": "Do not validate the certificate when the health check uses HTTPS.",
+										"type": "boolean"
+									},
+									"expected_body": {
+										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
+										"example": "success",
+										"type": "string"
+									},
+									"expected_codes": {
+										"default": "200",
+										"description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check.",
+										"example": [
+											"2xx",
+											"302"
+										],
+										"items": {
+											"type": "string"
+										},
+										"nullable": true,
+										"type": "array"
+									},
+									"follow_redirects": {
+										"default": false,
+										"description": "Follow redirects if the origin returns a 3xx status code.",
+										"type": "boolean"
+									},
+									"header": {
+										"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.",
+										"example": {
+											"Host": [
+												"example.com"
+											],
+											"X-App-ID": [
+												"abc123"
+											]
+										},
+										"nullable": true,
+										"type": "object"
+									},
+									"method": {
+										"default": "GET",
+										"description": "The HTTP method to use for the health check.",
+										"enum": [
+											"GET",
+											"HEAD"
+										],
+										"type": "string"
+									},
+									"path": {
+										"default": "/",
+										"description": "The endpoint path to health check against.",
+										"example": "/health",
+										"type": "string"
+									},
+									"port": {
+										"default": 80,
+										"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
+										"type": "integer"
+									}
+								},
+								"type": "object"
 							},
 							"interval": {
-								"$ref": "#/components/schemas/interval"
+								"default": 60,
+								"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
+								"type": "integer"
 							},
 							"name": {
-								"$ref": "#/components/schemas/name-Zw9iJ7ob"
+								"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
+								"example": "server-1",
+								"type": "string"
 							},
 							"retries": {
-								"$ref": "#/components/schemas/retries"
+								"default": 2,
+								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+								"type": "integer"
 							},
 							"suspended": {
-								"$ref": "#/components/schemas/suspended"
+								"default": false,
+								"description": "If suspended, no health checks are sent to the origin.",
+								"type": "boolean"
 							},
 							"tcp_config": {
-								"$ref": "#/components/schemas/tcp_config"
+								"description": "Parameters specific to TCP health check.",
+								"nullable": true,
+								"properties": {
+									"method": {
+										"default": "connection_established",
+										"description": "The TCP connection method to use for the health check.",
+										"enum": [
+											"connection_established"
+										],
+										"type": "string"
+									},
+									"port": {
+										"default": 80,
+										"description": "Port number to connect to for the health check. Defaults to 80.",
+										"type": "integer"
+									}
+								},
+								"type": "object"
 							},
 							"timeout": {
-								"$ref": "#/components/schemas/timeout"
+								"default": 5,
+								"description": "The timeout (in seconds) before marking the health check as failed.",
+								"type": "integer"
 							},
 							"type": {
-								"$ref": "#/components/schemas/type-F3GDzEpK"
+								"default": "HTTP",
+								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
+								"example": "HTTPS",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -1217,12 +2706,88 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/healthchecks"
+											"properties": {
+												"address": {
+													"$ref": "#/components/schemas/address"
+												},
+												"check_regions": {
+													"$ref": "#/components/schemas/check_regions"
+												},
+												"consecutive_fails": {
+													"$ref": "#/components/schemas/consecutive_fails"
+												},
+												"consecutive_successes": {
+													"$ref": "#/components/schemas/consecutive_successes"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/description-atgs7kOZ"
+												},
+												"failure_reason": {
+													"$ref": "#/components/schemas/failure_reason"
+												},
+												"http_config": {
+													"$ref": "#/components/schemas/http_config"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier"
+												},
+												"interval": {
+													"$ref": "#/components/schemas/interval"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-Zw9iJ7ob"
+												},
+												"retries": {
+													"$ref": "#/components/schemas/retries"
+												},
+												"status": {
+													"$ref": "#/components/schemas/status-Hz84qFB5"
+												},
+												"suspended": {
+													"$ref": "#/components/schemas/suspended"
+												},
+												"tcp_config": {
+													"$ref": "#/components/schemas/tcp_config"
+												},
+												"timeout": {
+													"$ref": "#/components/schemas/timeout"
+												},
+												"type": {
+													"$ref": "#/components/schemas/type-F3GDzEpK"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1240,12 +2805,88 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/healthchecks"
+													"properties": {
+														"address": {
+															"$ref": "#/components/schemas/address"
+														},
+														"check_regions": {
+															"$ref": "#/components/schemas/check_regions"
+														},
+														"consecutive_fails": {
+															"$ref": "#/components/schemas/consecutive_fails"
+														},
+														"consecutive_successes": {
+															"$ref": "#/components/schemas/consecutive_successes"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/description-atgs7kOZ"
+														},
+														"failure_reason": {
+															"$ref": "#/components/schemas/failure_reason"
+														},
+														"http_config": {
+															"$ref": "#/components/schemas/http_config"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"interval": {
+															"$ref": "#/components/schemas/interval"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-Zw9iJ7ob"
+														},
+														"retries": {
+															"$ref": "#/components/schemas/retries"
+														},
+														"status": {
+															"$ref": "#/components/schemas/status-Hz84qFB5"
+														},
+														"suspended": {
+															"$ref": "#/components/schemas/suspended"
+														},
+														"tcp_config": {
+															"$ref": "#/components/schemas/tcp_config"
+														},
+														"timeout": {
+															"$ref": "#/components/schemas/timeout"
+														},
+														"type": {
+															"$ref": "#/components/schemas/type-F3GDzEpK"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1256,7 +2897,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1270,7 +2929,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1361,43 +3038,172 @@
 					"schema": {
 						"properties": {
 							"address": {
-								"$ref": "#/components/schemas/address"
+								"description": "The hostname or IP address of the origin server to run health checks on.",
+								"example": "www.example.com",
+								"type": "string"
 							},
 							"check_regions": {
-								"$ref": "#/components/schemas/check_regions"
+								"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
+								"example": [
+									"WEU",
+									"ENAM"
+								],
+								"items": {
+									"description": "WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, IN: India, SEAS: South East Asia, NEAS: North East Asia, ALL_REGIONS: all regions (BUSINESS and ENTERPRISE customers only).",
+									"enum": [
+										"WNAM",
+										"ENAM",
+										"WEU",
+										"EEU",
+										"NSAM",
+										"SSAM",
+										"OC",
+										"ME",
+										"NAF",
+										"SAF",
+										"IN",
+										"SEAS",
+										"NEAS",
+										"ALL_REGIONS"
+									],
+									"type": "string"
+								},
+								"nullable": true,
+								"type": "array"
 							},
 							"consecutive_fails": {
-								"$ref": "#/components/schemas/consecutive_fails"
+								"default": 1,
+								"description": "The number of consecutive fails required from a health check before changing the health to unhealthy.",
+								"type": "integer"
 							},
 							"consecutive_successes": {
-								"$ref": "#/components/schemas/consecutive_successes"
+								"default": 1,
+								"description": "The number of consecutive successes required from a health check before changing the health to healthy.",
+								"type": "integer"
 							},
 							"description": {
-								"$ref": "#/components/schemas/description-atgs7kOZ"
+								"description": "A human-readable description of the health check.",
+								"example": "Health check for www.example.com",
+								"type": "string"
 							},
 							"http_config": {
-								"$ref": "#/components/schemas/http_config"
+								"description": "Parameters specific to an HTTP or HTTPS health check.",
+								"nullable": true,
+								"properties": {
+									"allow_insecure": {
+										"default": false,
+										"description": "Do not validate the certificate when the health check uses HTTPS.",
+										"type": "boolean"
+									},
+									"expected_body": {
+										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.",
+										"example": "success",
+										"type": "string"
+									},
+									"expected_codes": {
+										"default": "200",
+										"description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check.",
+										"example": [
+											"2xx",
+											"302"
+										],
+										"items": {
+											"type": "string"
+										},
+										"nullable": true,
+										"type": "array"
+									},
+									"follow_redirects": {
+										"default": false,
+										"description": "Follow redirects if the origin returns a 3xx status code.",
+										"type": "boolean"
+									},
+									"header": {
+										"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.",
+										"example": {
+											"Host": [
+												"example.com"
+											],
+											"X-App-ID": [
+												"abc123"
+											]
+										},
+										"nullable": true,
+										"type": "object"
+									},
+									"method": {
+										"default": "GET",
+										"description": "The HTTP method to use for the health check.",
+										"enum": [
+											"GET",
+											"HEAD"
+										],
+										"type": "string"
+									},
+									"path": {
+										"default": "/",
+										"description": "The endpoint path to health check against.",
+										"example": "/health",
+										"type": "string"
+									},
+									"port": {
+										"default": 80,
+										"description": "Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS.",
+										"type": "integer"
+									}
+								},
+								"type": "object"
 							},
 							"interval": {
-								"$ref": "#/components/schemas/interval"
+								"default": 60,
+								"description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.",
+								"type": "integer"
 							},
 							"name": {
-								"$ref": "#/components/schemas/name-Zw9iJ7ob"
+								"description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
+								"example": "server-1",
+								"type": "string"
 							},
 							"retries": {
-								"$ref": "#/components/schemas/retries"
+								"default": 2,
+								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+								"type": "integer"
 							},
 							"suspended": {
-								"$ref": "#/components/schemas/suspended"
+								"default": false,
+								"description": "If suspended, no health checks are sent to the origin.",
+								"type": "boolean"
 							},
 							"tcp_config": {
-								"$ref": "#/components/schemas/tcp_config"
+								"description": "Parameters specific to TCP health check.",
+								"nullable": true,
+								"properties": {
+									"method": {
+										"default": "connection_established",
+										"description": "The TCP connection method to use for the health check.",
+										"enum": [
+											"connection_established"
+										],
+										"type": "string"
+									},
+									"port": {
+										"default": 80,
+										"description": "Port number to connect to for the health check. Defaults to 80.",
+										"type": "integer"
+									}
+								},
+								"type": "object"
 							},
 							"timeout": {
-								"$ref": "#/components/schemas/timeout"
+								"default": 5,
+								"description": "The timeout (in seconds) before marking the health check as failed.",
+								"type": "integer"
 							},
 							"type": {
-								"$ref": "#/components/schemas/type-F3GDzEpK"
+								"default": "HTTP",
+								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
+								"example": "HTTPS",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -1417,12 +3223,88 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/healthchecks"
+											"properties": {
+												"address": {
+													"$ref": "#/components/schemas/address"
+												},
+												"check_regions": {
+													"$ref": "#/components/schemas/check_regions"
+												},
+												"consecutive_fails": {
+													"$ref": "#/components/schemas/consecutive_fails"
+												},
+												"consecutive_successes": {
+													"$ref": "#/components/schemas/consecutive_successes"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/description-atgs7kOZ"
+												},
+												"failure_reason": {
+													"$ref": "#/components/schemas/failure_reason"
+												},
+												"http_config": {
+													"$ref": "#/components/schemas/http_config"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier"
+												},
+												"interval": {
+													"$ref": "#/components/schemas/interval"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-Zw9iJ7ob"
+												},
+												"retries": {
+													"$ref": "#/components/schemas/retries"
+												},
+												"status": {
+													"$ref": "#/components/schemas/status-Hz84qFB5"
+												},
+												"suspended": {
+													"$ref": "#/components/schemas/suspended"
+												},
+												"tcp_config": {
+													"$ref": "#/components/schemas/tcp_config"
+												},
+												"timeout": {
+													"$ref": "#/components/schemas/timeout"
+												},
+												"type": {
+													"$ref": "#/components/schemas/type-F3GDzEpK"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1440,12 +3322,88 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/healthchecks"
+													"properties": {
+														"address": {
+															"$ref": "#/components/schemas/address"
+														},
+														"check_regions": {
+															"$ref": "#/components/schemas/check_regions"
+														},
+														"consecutive_fails": {
+															"$ref": "#/components/schemas/consecutive_fails"
+														},
+														"consecutive_successes": {
+															"$ref": "#/components/schemas/consecutive_successes"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/description-atgs7kOZ"
+														},
+														"failure_reason": {
+															"$ref": "#/components/schemas/failure_reason"
+														},
+														"http_config": {
+															"$ref": "#/components/schemas/http_config"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"interval": {
+															"$ref": "#/components/schemas/interval"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-Zw9iJ7ob"
+														},
+														"retries": {
+															"$ref": "#/components/schemas/retries"
+														},
+														"status": {
+															"$ref": "#/components/schemas/status-Hz84qFB5"
+														},
+														"suspended": {
+															"$ref": "#/components/schemas/suspended"
+														},
+														"tcp_config": {
+															"$ref": "#/components/schemas/tcp_config"
+														},
+														"timeout": {
+															"$ref": "#/components/schemas/timeout"
+														},
+														"type": {
+															"$ref": "#/components/schemas/type-F3GDzEpK"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1456,7 +3414,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1470,7 +3446,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

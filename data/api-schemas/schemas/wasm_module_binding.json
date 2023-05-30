@@ -1,7 +1,10 @@
 {
 	"properties": {
 		"name": {
-			"$ref": "#/components/schemas/binding_name"
+			"description": "A JavaScript variable name for the binding.",
+			"example": "myBinding",
+			"readOnly": true,
+			"type": "string"
 		},
 		"type": {
 			"description": "The class of resource that the binding provides.",

@@ -1,7 +1,39 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/base-tXNt8ANy"
+			"properties": {
+				"editable": {
+					"default": true,
+					"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+					"enum": [
+						true,
+						false
+					],
+					"readOnly": true,
+					"type": "boolean"
+				},
+				"id": {
+					"description": "Identifier of the zone setting.",
+					"example": "development_mode",
+					"type": "string"
+				},
+				"modified_on": {
+					"description": "last time this setting was modified.",
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"nullable": true,
+					"readOnly": true,
+					"type": "string"
+				},
+				"value": {
+					"description": "Current value of the zone setting.",
+					"example": "on"
+				}
+			},
+			"required": [
+				"id",
+				"value"
+			]
 		},
 		{
 			"properties": {
@@ -13,7 +45,34 @@
 					"example": "minify"
 				},
 				"value": {
-					"$ref": "#/components/schemas/minify_value"
+					"description": "Value of the zone setting.",
+					"properties": {
+						"css": {
+							"default": "off",
+							"description": "Automatically minify all CSS files for your website.",
+							"enum": [
+								"on",
+								"off"
+							]
+						},
+						"html": {
+							"default": "off",
+							"description": "Automatically minify all HTML files for your website.",
+							"enum": [
+								"on",
+								"off"
+							]
+						},
+						"js": {
+							"default": "off",
+							"description": "Automatically minify all JavaScript files for your website.",
+							"enum": [
+								"on",
+								"off"
+							]
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

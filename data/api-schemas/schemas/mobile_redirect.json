@@ -1,7 +1,39 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/base-tXNt8ANy"
+			"properties": {
+				"editable": {
+					"default": true,
+					"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+					"enum": [
+						true,
+						false
+					],
+					"readOnly": true,
+					"type": "boolean"
+				},
+				"id": {
+					"description": "Identifier of the zone setting.",
+					"example": "development_mode",
+					"type": "string"
+				},
+				"modified_on": {
+					"description": "last time this setting was modified.",
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"nullable": true,
+					"readOnly": true,
+					"type": "string"
+				},
+				"value": {
+					"description": "Current value of the zone setting.",
+					"example": "on"
+				}
+			},
+			"required": [
+				"id",
+				"value"
+			]
 		},
 		{
 			"properties": {
@@ -13,7 +45,31 @@
 					"example": "mobile_redirect"
 				},
 				"value": {
-					"$ref": "#/components/schemas/mobile_redirect_value"
+					"description": "Value of the zone setting.",
+					"properties": {
+						"mobile_subdomain": {
+							"description": "Which subdomain prefix you wish to redirect visitors on mobile devices to (subdomain must already exist).",
+							"example": "m",
+							"minLength": 1,
+							"nullable": true,
+							"type": "string"
+						},
+						"status": {
+							"default": "off",
+							"description": "Whether or not mobile redirect is enabled.",
+							"enum": [
+								"on",
+								"off"
+							]
+						},
+						"strip_uri": {
+							"default": false,
+							"description": "Whether to drop the current page path and redirect to the mobile subdomain URL root, or keep the path and redirect to the same page on the mobile subdomain.",
+							"example": false,
+							"type": "boolean"
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

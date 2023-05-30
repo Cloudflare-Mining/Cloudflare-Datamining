@@ -14,7 +14,32 @@
 		}
 	],
 	"items": {
-		"$ref": "#/components/schemas/approval_group"
+		"description": "A group of email addresses that can approve a temporary authentication request.",
+		"properties": {
+			"approvals_needed": {
+				"description": "The number of approvals needed to obtain access.",
+				"example": 1,
+				"minimum": 0,
+				"type": "number"
+			},
+			"email_addresses": {
+				"description": "A list of emails that can approve the access request.",
+				"example": [
+					"test@cloudflare.com",
+					"test2@cloudflare.com"
+				],
+				"items": {},
+				"type": "array"
+			},
+			"email_list_uuid": {
+				"description": "The UUID of an re-usable email list.",
+				"type": "string"
+			}
+		},
+		"required": [
+			"approvals_needed"
+		],
+		"type": "object"
 	},
 	"type": "array"
 }

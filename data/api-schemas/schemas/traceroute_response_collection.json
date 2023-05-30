@@ -1,13 +1,204 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/target_result"
+						"properties": {
+							"colos": {
+								"items": {
+									"properties": {
+										"colo": {
+											"properties": {
+												"city": {
+													"$ref": "#/components/schemas/colo_city"
+												},
+												"name": {
+													"$ref": "#/components/schemas/colo_name-rg4psme0"
+												}
+											},
+											"type": "object"
+										},
+										"error": {
+											"description": "Errors resulting from collecting traceroute from colo to target.",
+											"enum": [
+												"",
+												"Could not gather traceroute data: Code 1",
+												"Could not gather traceroute data: Code 2",
+												"Could not gather traceroute data: Code 3",
+												"Could not gather traceroute data: Code 4"
+											],
+											"example": "",
+											"type": "string"
+										},
+										"hops": {
+											"items": {
+												"properties": {
+													"nodes": {
+														"description": "An array of node objects.",
+														"items": {
+															"$ref": "#/components/schemas/node_result-GD28oyU5"
+														},
+														"type": "array"
+													},
+													"packets_lost": {
+														"$ref": "#/components/schemas/packets_lost"
+													},
+													"packets_sent": {
+														"$ref": "#/components/schemas/packets_sent"
+													},
+													"packets_ttl": {
+														"$ref": "#/components/schemas/packets_ttl"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"target_summary": {
+											"description": "Aggregated statistics from all hops about the target.",
+											"example": {
+												"asn": "",
+												"ip": "1.1.1.1",
+												"max_latency_ms": 0.034,
+												"mean_latency_ms": 0.021,
+												"min_latency_ms": 0.014,
+												"name": "1.1.1.1",
+												"packet_count": 3,
+												"std_dev_latency_ms": 0.011269427669584647
+											},
+											"type": "object"
+										},
+										"traceroute_time_ms": {
+											"description": "Total time of traceroute in ms.",
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"target": {
+								"description": "The target hostname, IPv6, or IPv6 address.",
+								"example": "1.1.1.1",
+								"type": "string"
+							}
+						},
+						"type": "object"
 					},
 					"type": "array"
 				}

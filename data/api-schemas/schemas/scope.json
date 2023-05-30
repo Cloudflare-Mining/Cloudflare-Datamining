@@ -2,10 +2,22 @@
 	"description": "Used only for ECMP routes.",
 	"properties": {
 		"colo_names": {
-			"$ref": "#/components/schemas/colo_names"
+			"description": "List of colo names for the ECMP scope.",
+			"items": {
+				"description": "Scope colo name.",
+				"example": "den01",
+				"type": "string"
+			},
+			"type": "array"
 		},
 		"colo_regions": {
-			"$ref": "#/components/schemas/colo_regions"
+			"description": "List of colo regions for the ECMP scope.",
+			"items": {
+				"description": "Scope colo region.",
+				"example": "APAC",
+				"type": "string"
+			},
+			"type": "array"
 		}
 	},
 	"type": "object"

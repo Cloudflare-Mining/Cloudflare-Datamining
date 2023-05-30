@@ -1,13 +1,27 @@
 {
 	"properties": {
 		"id": {
-			"$ref": "#/components/schemas/common_components-schemas-identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/schemas-name-uwVWPN11"
+			"description": "Organization name.",
+			"example": "Cloudflare, Inc.",
+			"maxLength": 100,
+			"type": "string"
 		},
 		"permissions": {
-			"$ref": "#/components/schemas/schemas-permissions"
+			"description": "Access permissions for this User.",
+			"items": {
+				"example": "#zones:read",
+				"maxLength": 160,
+				"type": "string"
+			},
+			"readOnly": true,
+			"type": "array"
 		},
 		"roles": {
 			"description": "List of roles that a user has within an organization.",
@@ -20,7 +34,13 @@
 			"type": "array"
 		},
 		"status": {
-			"$ref": "#/components/schemas/components-schemas-status-TlMeFw40"
+			"description": "Whether the user is a member of the organization or has an inivitation pending.",
+			"enum": [
+				"member",
+				"invited"
+			],
+			"example": "member",
+			"type": "string"
 		}
 	},
 	"type": "object"

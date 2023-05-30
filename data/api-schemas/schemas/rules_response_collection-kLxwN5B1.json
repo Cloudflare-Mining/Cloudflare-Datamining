@@ -1,13 +1,167 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/rule_result"
+						"properties": {
+							"action": {
+								"description": "The action to take when the expression matches.",
+								"enum": [
+									"bypass_waiting_room"
+								],
+								"example": "bypass_waiting_room",
+								"type": "string"
+							},
+							"description": {
+								"default": "",
+								"description": "The description of the rule.",
+								"example": "allow all traffic from 10.20.30.40",
+								"type": "string"
+							},
+							"enabled": {
+								"default": true,
+								"description": "When set to true, the rule is enabled.",
+								"example": true,
+								"type": "boolean"
+							},
+							"expression": {
+								"description": "Criteria defining when there is a match for the current rule.",
+								"example": "ip.src in {10.20.30.40}",
+								"type": "string"
+							},
+							"id": {
+								"description": "The ID of the rule.",
+								"example": "25756b2dfe6e378a06b033b670413757",
+								"type": "string"
+							},
+							"last_updated": {
+								"example": "2014-01-01T05:20:00.12345Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"version": {
+								"description": "The version of the rule.",
+								"example": "1",
+								"type": "string"
+							}
+						},
+						"type": "object"
 					},
 					"type": "array"
 				}

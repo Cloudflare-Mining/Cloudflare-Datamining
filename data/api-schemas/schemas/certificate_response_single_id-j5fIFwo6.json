@@ -1,14 +1,85 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/schemas-certificate_response_single-1d4SdIyP"
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"properties": {
+								"errors": {
+									"$ref": "#/components/schemas/messages"
+								},
+								"messages": {
+									"$ref": "#/components/schemas/messages"
+								},
+								"result": {
+									"anyOf": [
+										{
+											"type": "object"
+										},
+										{
+											"items": {},
+											"type": "array"
+										},
+										{
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						},
+						{
+							"properties": {
+								"result": {
+									"anyOf": [
+										{
+											"type": "object"
+										},
+										{
+											"type": "string"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"type": "object"
+						}
+					},
+					"type": "object"
+				}
+			]
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
 						"id": {
-							"$ref": "#/components/schemas/certificates_components-schemas-identifier"
+							"description": "The x509 serial number of the Origin CA certificate.",
+							"example": "328578533902268680212849205732770752308931942346",
+							"readOnly": true,
+							"type": "string"
 						}
 					}
 				}

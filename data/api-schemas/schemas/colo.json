@@ -1,10 +1,14 @@
 {
 	"properties": {
 		"city": {
-			"$ref": "#/components/schemas/colo_city"
+			"description": "Source colo city.",
+			"example": "Denver, CO, US",
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/colo_name-5vonC9Cw"
+			"description": "Source colo name.",
+			"example": "den01",
+			"type": "string"
 		}
 	},
 	"type": "object"

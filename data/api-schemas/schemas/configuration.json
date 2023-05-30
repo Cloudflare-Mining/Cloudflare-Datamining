@@ -1,7 +1,33 @@
 {
 	"properties": {
 		"auth_id_characteristics": {
-			"$ref": "#/components/schemas/characteristics-GY4caxKT"
+			"items": {
+				"properties": {
+					"name": {
+						"description": "The name of the characteristic field, i.e., the header or cookie name.",
+						"example": "authorization",
+						"maxLength": 128,
+						"type": "string"
+					},
+					"type": {
+						"description": "The type of characteristic.",
+						"enum": [
+							"header",
+							"cookie"
+						],
+						"example": "header",
+						"type": "string"
+					}
+				},
+				"required": [
+					"type",
+					"name"
+				],
+				"type": "object"
+			},
+			"maxItems": 10,
+			"type": "array",
+			"uniqueItems": true
 		}
 	},
 	"type": "object"

@@ -1,19 +1,29 @@
 {
 	"properties": {
 		"access_seat": {
-			"$ref": "#/components/schemas/access_seat"
+			"description": "True if the seat is part of Access.",
+			"example": false,
+			"type": "boolean"
 		},
 		"created_at": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"gateway_seat": {
-			"$ref": "#/components/schemas/gateway_seat"
+			"description": "True if the seat is part of Gateway.",
+			"example": false,
+			"type": "boolean"
 		},
 		"seat_uid": {
-			"$ref": "#/components/schemas/seat_uid"
+			"description": "The unique API identifier for the Zero Trust seat."
 		},
 		"updated_at": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		}
 	},
 	"type": "object"

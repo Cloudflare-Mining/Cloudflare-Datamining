@@ -1,16 +1,29 @@
 {
 	"properties": {
 		"created": {
-			"$ref": "#/components/schemas/live_input_created"
+			"description": "The date and time the live input was created.",
+			"example": "2014-01-02T02:20:00Z",
+			"format": "date-time",
+			"type": "string"
 		},
 		"meta": {
-			"$ref": "#/components/schemas/live_input_metadata"
+			"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+			"example": {
+				"name": "test stream 1"
+			},
+			"type": "object"
 		},
 		"modified": {
-			"$ref": "#/components/schemas/live_input_modified"
+			"description": "The date and time the live input was last modified.",
+			"example": "2014-01-02T02:20:00Z",
+			"format": "date-time",
+			"type": "string"
 		},
 		"uid": {
-			"$ref": "#/components/schemas/live_input_identifier"
+			"description": "A unique identifier for a live input.",
+			"example": "66be4bf738797e01e1fca35a7bdecdcd",
+			"maxLength": 32,
+			"type": "string"
 		}
 	}
 }

@@ -40,12 +40,57 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
+											"properties": {
+												"certificate": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+												},
+												"expires_on": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
+												},
+												"id": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+												},
+												"issuer": {
+													"$ref": "#/components/schemas/issuer"
+												},
+												"serial_number": {
+													"$ref": "#/components/schemas/serial_number"
+												},
+												"signature": {
+													"$ref": "#/components/schemas/signature"
+												},
+												"status": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+												},
+												"uploaded_on": {
+													"$ref": "#/components/schemas/components-schemas-uploaded_on"
+												}
+											}
 										}
 									}
 								}
@@ -63,12 +108,57 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
+													"properties": {
+														"certificate": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+														},
+														"expires_on": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
+														},
+														"id": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+														},
+														"issuer": {
+															"$ref": "#/components/schemas/issuer"
+														},
+														"serial_number": {
+															"$ref": "#/components/schemas/serial_number"
+														},
+														"signature": {
+															"$ref": "#/components/schemas/signature"
+														},
+														"status": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+														},
+														"uploaded_on": {
+															"$ref": "#/components/schemas/components-schemas-uploaded_on"
+														}
+													}
 												}
 											}
 										}
@@ -79,7 +169,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -93,7 +201,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -188,12 +314,75 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/hostname_certid_object-xPSo0L7w"
+											"properties": {
+												"cert_id": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+												},
+												"cert_status": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+												},
+												"cert_updated_at": {
+													"$ref": "#/components/schemas/updated_at"
+												},
+												"cert_uploaded_on": {
+													"$ref": "#/components/schemas/components-schemas-uploaded_on"
+												},
+												"certificate": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/schemas-created_at"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-enabled"
+												},
+												"expires_on": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
+												},
+												"hostname": {
+													"$ref": "#/components/schemas/schemas-hostname"
+												},
+												"issuer": {
+													"$ref": "#/components/schemas/issuer"
+												},
+												"serial_number": {
+													"$ref": "#/components/schemas/serial_number"
+												},
+												"signature": {
+													"$ref": "#/components/schemas/signature"
+												},
+												"status": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/updated_at"
+												}
+											}
 										}
 									}
 								}
@@ -211,12 +400,75 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/hostname_certid_object-xPSo0L7w"
+													"properties": {
+														"cert_id": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+														},
+														"cert_status": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+														},
+														"cert_updated_at": {
+															"$ref": "#/components/schemas/updated_at"
+														},
+														"cert_uploaded_on": {
+															"$ref": "#/components/schemas/components-schemas-uploaded_on"
+														},
+														"certificate": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/schemas-created_at"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-enabled"
+														},
+														"expires_on": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
+														},
+														"hostname": {
+															"$ref": "#/components/schemas/schemas-hostname"
+														},
+														"issuer": {
+															"$ref": "#/components/schemas/issuer"
+														},
+														"serial_number": {
+															"$ref": "#/components/schemas/serial_number"
+														},
+														"signature": {
+															"$ref": "#/components/schemas/signature"
+														},
+														"status": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/updated_at"
+														}
+													}
 												}
 											}
 										}
@@ -227,7 +479,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -241,7 +511,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -325,13 +613,55 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/hostname-authenticated-origin-pull-NPC442KV"
+												"allOf": [
+													{
+														"$ref": "#/components/schemas/hostname_certid_object-xPSo0L7w"
+													}
+												],
+												"properties": {
+													"cert_id": {
+														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+													},
+													"certificate": {
+														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+													},
+													"enabled": {
+														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-enabled"
+													},
+													"hostname": {
+														"$ref": "#/components/schemas/schemas-hostname"
+													},
+													"id": {
+														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+													},
+													"private_key": {
+														"$ref": "#/components/schemas/schemas-private_key"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -351,13 +681,55 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/hostname-authenticated-origin-pull-NPC442KV"
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/hostname_certid_object-xPSo0L7w"
+															}
+														],
+														"properties": {
+															"cert_id": {
+																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+															},
+															"certificate": {
+																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+															},
+															"enabled": {
+																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-enabled"
+															},
+															"hostname": {
+																"$ref": "#/components/schemas/schemas-hostname"
+															},
+															"id": {
+																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+															},
+															"private_key": {
+																"$ref": "#/components/schemas/schemas-private_key"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -370,7 +742,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -384,7 +774,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -481,12 +889,57 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
+											"properties": {
+												"certificate": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+												},
+												"expires_on": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
+												},
+												"id": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+												},
+												"issuer": {
+													"$ref": "#/components/schemas/issuer"
+												},
+												"serial_number": {
+													"$ref": "#/components/schemas/serial_number"
+												},
+												"signature": {
+													"$ref": "#/components/schemas/signature"
+												},
+												"status": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+												},
+												"uploaded_on": {
+													"$ref": "#/components/schemas/components-schemas-uploaded_on"
+												}
+											}
 										}
 									}
 								}
@@ -504,12 +957,57 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
+													"properties": {
+														"certificate": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+														},
+														"expires_on": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
+														},
+														"id": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+														},
+														"issuer": {
+															"$ref": "#/components/schemas/issuer"
+														},
+														"serial_number": {
+															"$ref": "#/components/schemas/serial_number"
+														},
+														"signature": {
+															"$ref": "#/components/schemas/signature"
+														},
+														"status": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+														},
+														"uploaded_on": {
+															"$ref": "#/components/schemas/components-schemas-uploaded_on"
+														}
+													}
 												}
 											}
 										}
@@ -520,7 +1018,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -534,7 +1050,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -645,12 +1179,57 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
+											"properties": {
+												"certificate": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+												},
+												"expires_on": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
+												},
+												"id": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+												},
+												"issuer": {
+													"$ref": "#/components/schemas/issuer"
+												},
+												"serial_number": {
+													"$ref": "#/components/schemas/serial_number"
+												},
+												"signature": {
+													"$ref": "#/components/schemas/signature"
+												},
+												"status": {
+													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+												},
+												"uploaded_on": {
+													"$ref": "#/components/schemas/components-schemas-uploaded_on"
+												}
+											}
 										}
 									}
 								}
@@ -668,12 +1247,57 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
+													"properties": {
+														"certificate": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+														},
+														"expires_on": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
+														},
+														"id": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+														},
+														"issuer": {
+															"$ref": "#/components/schemas/issuer"
+														},
+														"serial_number": {
+															"$ref": "#/components/schemas/serial_number"
+														},
+														"signature": {
+															"$ref": "#/components/schemas/signature"
+														},
+														"status": {
+															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+														},
+														"uploaded_on": {
+															"$ref": "#/components/schemas/components-schemas-uploaded_on"
+														}
+													}
 												}
 											}
 										}
@@ -684,7 +1308,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -698,7 +1340,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -783,7 +1443,18 @@
 						"properties": {
 							"config": {
 								"items": {
-									"$ref": "#/components/schemas/hostname_certid_input-byqlJN1v"
+									"properties": {
+										"cert_id": {
+											"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+										},
+										"enabled": {
+											"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-enabled"
+										},
+										"hostname": {
+											"$ref": "#/components/schemas/schemas-hostname"
+										}
+									},
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -803,13 +1474,55 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/hostname-authenticated-origin-pull-NPC442KV"
+												"allOf": [
+													{
+														"$ref": "#/components/schemas/hostname_certid_object-xPSo0L7w"
+													}
+												],
+												"properties": {
+													"cert_id": {
+														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+													},
+													"certificate": {
+														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+													},
+													"enabled": {
+														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-enabled"
+													},
+													"hostname": {
+														"$ref": "#/components/schemas/schemas-hostname"
+													},
+													"id": {
+														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+													},
+													"private_key": {
+														"$ref": "#/components/schemas/schemas-private_key"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -829,13 +1542,55 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/hostname-authenticated-origin-pull-NPC442KV"
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/hostname_certid_object-xPSo0L7w"
+															}
+														],
+														"properties": {
+															"cert_id": {
+																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+															},
+															"certificate": {
+																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+															},
+															"enabled": {
+																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-enabled"
+															},
+															"hostname": {
+																"$ref": "#/components/schemas/schemas-hostname"
+															},
+															"id": {
+																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+															},
+															"private_key": {
+																"$ref": "#/components/schemas/schemas-private_key"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -848,7 +1603,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -862,7 +1635,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

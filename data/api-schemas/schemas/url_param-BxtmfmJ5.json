@@ -1,7 +1,10 @@
 {
 	"properties": {
 		"url": {
-			"$ref": "#/components/schemas/components-schemas-url"
+			"description": "URL(s) to filter submissions results by",
+			"example": "https://www.cloudflare.com",
+			"format": "uri",
+			"type": "string"
 		}
 	},
 	"type": "object"

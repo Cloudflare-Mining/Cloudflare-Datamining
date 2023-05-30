@@ -21,31 +21,65 @@
 					"schema": {
 						"properties": {
 							"allowedOrigins": {
-								"$ref": "#/components/schemas/allowedOrigins"
+								"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
+								"example": [
+									"example.com"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
 							},
 							"clippedFromVideoUID": {
-								"$ref": "#/components/schemas/clipped_from_video_uid"
+								"description": "The unique video identifier (UID).",
+								"example": "023e105f4ecef8ad9ca31a8372d0c353",
+								"maxLength": 32,
+								"type": "string"
 							},
 							"creator": {
-								"$ref": "#/components/schemas/creator"
+								"description": "A user-defined identifier for the media creator.",
+								"example": "creator-id_abcde12345",
+								"maxLength": 64,
+								"type": "string"
 							},
 							"endTimeSeconds": {
-								"$ref": "#/components/schemas/end_time_seconds"
+								"description": "Specifies the end time for the video clip in seconds.",
+								"type": "integer"
 							},
 							"maxDurationSeconds": {
-								"$ref": "#/components/schemas/maxDurationSeconds"
+								"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
+								"maximum": 21600,
+								"minimum": 1,
+								"type": "integer"
 							},
 							"requireSignedURLs": {
-								"$ref": "#/components/schemas/requireSignedURLs"
+								"default": false,
+								"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
+								"example": true,
+								"type": "boolean"
 							},
 							"startTimeSeconds": {
-								"$ref": "#/components/schemas/start_time_seconds"
+								"description": "Specifies the start time for the video clip in seconds.",
+								"type": "integer"
 							},
 							"thumbnailTimestampPct": {
-								"$ref": "#/components/schemas/thumbnailTimestampPct"
+								"default": 0,
+								"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
+								"example": 0.529241,
+								"maximum": 1,
+								"minimum": 0,
+								"type": "number"
 							},
 							"watermark": {
-								"$ref": "#/components/schemas/watermarkAtUpload"
+								"properties": {
+									"uid": {
+										"description": "The unique identifier for the watermark profile.",
+										"example": "ea95132c15732412d22c1476fa83f27a",
+										"maxLength": 32,
+										"type": "string"
+									}
+								},
+								"type": "object"
 							}
 						},
 						"required": [
@@ -66,12 +100,75 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/clipping"
+											"properties": {
+												"allowedOrigins": {
+													"$ref": "#/components/schemas/allowedOrigins"
+												},
+												"clippedFromVideoUID": {
+													"$ref": "#/components/schemas/clipped_from_video_uid"
+												},
+												"created": {
+													"$ref": "#/components/schemas/clipping_created"
+												},
+												"creator": {
+													"$ref": "#/components/schemas/creator"
+												},
+												"endTimeSeconds": {
+													"$ref": "#/components/schemas/end_time_seconds"
+												},
+												"maxDurationSeconds": {
+													"$ref": "#/components/schemas/maxDurationSeconds"
+												},
+												"meta": {
+													"$ref": "#/components/schemas/media_metadata"
+												},
+												"modified": {
+													"$ref": "#/components/schemas/live_input_modified"
+												},
+												"playback": {
+													"$ref": "#/components/schemas/playback"
+												},
+												"preview": {
+													"$ref": "#/components/schemas/preview"
+												},
+												"requireSignedURLs": {
+													"$ref": "#/components/schemas/requireSignedURLs"
+												},
+												"startTimeSeconds": {
+													"$ref": "#/components/schemas/start_time_seconds"
+												},
+												"status": {
+													"$ref": "#/components/schemas/media_state"
+												},
+												"thumbnailTimestampPct": {
+													"$ref": "#/components/schemas/thumbnailTimestampPct"
+												},
+												"watermark": {
+													"$ref": "#/components/schemas/watermarkAtUpload"
+												}
+											}
 										}
 									}
 								}
@@ -89,7 +186,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -103,7 +218,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []

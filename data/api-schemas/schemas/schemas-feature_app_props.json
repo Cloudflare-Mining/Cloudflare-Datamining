@@ -1,22 +1,50 @@
 {
 	"properties": {
 		"allowed_idps": {
-			"$ref": "#/components/schemas/allowed_idps"
+			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
+			"items": {
+				"description": "The identity providers selected for application.",
+				"example": "699d98642c564d2e855e9661899b7252",
+				"type": "string"
+			},
+			"type": "array"
 		},
 		"auto_redirect_to_identity": {
-			"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+			"default": false,
+			"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
+			"type": "boolean"
 		},
 		"domain": {
-			"$ref": "#/components/schemas/components-schemas-domain"
+			"description": "The domain and path that Access will secure.",
+			"example": "test.example.com/admin",
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/apps_components-schemas-name"
+			"description": "The name of the application.",
+			"example": "Admin Site",
+			"type": "string"
 		},
 		"session_duration": {
-			"$ref": "#/components/schemas/session_duration"
+			"default": "24h",
+			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+			"example": "24h",
+			"type": "string"
 		},
 		"type": {
-			"$ref": "#/components/schemas/type-Cr4GdnUc"
+			"description": "The application type.",
+			"enum": [
+				"self_hosted",
+				"saas",
+				"ssh",
+				"vnc",
+				"app_launcher",
+				"warp",
+				"biso",
+				"bookmark",
+				"dash_sso"
+			],
+			"example": "self_hosted",
+			"type": "string"
 		}
 	},
 	"required": [

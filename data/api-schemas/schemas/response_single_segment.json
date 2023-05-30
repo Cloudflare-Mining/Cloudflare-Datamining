@@ -1,23 +1,132 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
 						"expires_on": {
-							"$ref": "#/components/schemas/expires_on-pX9bq9lv"
+							"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
+							"example": "2020-01-01T00:00:00Z",
+							"format": "date-time",
+							"type": "string"
 						},
 						"id": {
-							"$ref": "#/components/schemas/components-schemas-identifier-A8O24ylW"
+							"description": "Token identifier tag.",
+							"example": "ed17574386854bf78a67040be0a770b0",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
 						},
 						"not_before": {
-							"$ref": "#/components/schemas/not_before"
+							"description": "The time before which the token MUST NOT be accepted for processing.",
+							"example": "2018-07-01T05:20:00Z",
+							"format": "date-time",
+							"type": "string"
 						},
 						"status": {
-							"$ref": "#/components/schemas/status-Qzek6kyP"
+							"description": "Status of the token.",
+							"enum": [
+								"active",
+								"disabled",
+								"expired"
+							],
+							"example": "active",
+							"type": "string"
 						}
 					},
 					"required": [

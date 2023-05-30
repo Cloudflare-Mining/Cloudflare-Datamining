@@ -41,14 +41,37 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/uuid"
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -69,14 +92,37 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/uuid"
+															"description": "UUID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -90,7 +136,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -104,7 +168,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -175,13 +257,53 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/certificates"
+												"properties": {
+													"associated_hostnames": {
+														"$ref": "#/components/schemas/associated_hostnames"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"expires_on": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"fingerprint": {
+														"$ref": "#/components/schemas/fingerprint"
+													},
+													"id": {
+														"description": "The ID of the application that will use this certificate."
+													},
+													"name": {
+														"$ref": "#/components/schemas/certificates_components-schemas-name"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -201,13 +323,53 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/certificates"
+														"properties": {
+															"associated_hostnames": {
+																"$ref": "#/components/schemas/associated_hostnames"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"expires_on": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"fingerprint": {
+																"$ref": "#/components/schemas/fingerprint"
+															},
+															"id": {
+																"description": "The ID of the application that will use this certificate."
+															},
+															"name": {
+																"$ref": "#/components/schemas/certificates_components-schemas-name"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -220,7 +382,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -234,7 +414,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -317,12 +515,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/certificates"
+											"properties": {
+												"associated_hostnames": {
+													"$ref": "#/components/schemas/associated_hostnames"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"expires_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"fingerprint": {
+													"$ref": "#/components/schemas/fingerprint"
+												},
+												"id": {
+													"description": "The ID of the application that will use this certificate."
+												},
+												"name": {
+													"$ref": "#/components/schemas/certificates_components-schemas-name"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -340,12 +580,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/certificates"
+													"properties": {
+														"associated_hostnames": {
+															"$ref": "#/components/schemas/associated_hostnames"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"expires_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"fingerprint": {
+															"$ref": "#/components/schemas/fingerprint"
+														},
+														"id": {
+															"description": "The ID of the application that will use this certificate."
+														},
+														"name": {
+															"$ref": "#/components/schemas/certificates_components-schemas-name"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -356,7 +638,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -370,7 +670,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -441,13 +759,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/settings"
+												"additionalProperties": false,
+												"properties": {
+													"china_network": {
+														"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
+														"example": false,
+														"type": "boolean"
+													},
+													"client_certificate_forwarding": {
+														"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
+														"example": true,
+														"type": "boolean"
+													},
+													"hostname": {
+														"description": "The hostname that these settings apply to.",
+														"example": "admin.example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"hostname",
+													"china_network",
+													"client_certificate_forwarding"
+												],
+												"title": "Hostname Settings",
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -467,13 +826,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/settings"
+														"additionalProperties": false,
+														"properties": {
+															"china_network": {
+																"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
+																"example": false,
+																"type": "boolean"
+															},
+															"client_certificate_forwarding": {
+																"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
+																"example": true,
+																"type": "boolean"
+															},
+															"hostname": {
+																"description": "The hostname that these settings apply to.",
+																"example": "admin.example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"hostname",
+															"china_network",
+															"client_certificate_forwarding"
+														],
+														"title": "Hostname Settings",
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -486,7 +886,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -500,7 +918,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -605,12 +1041,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/certificates"
+											"properties": {
+												"associated_hostnames": {
+													"$ref": "#/components/schemas/associated_hostnames"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"expires_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"fingerprint": {
+													"$ref": "#/components/schemas/fingerprint"
+												},
+												"id": {
+													"description": "The ID of the application that will use this certificate."
+												},
+												"name": {
+													"$ref": "#/components/schemas/certificates_components-schemas-name"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -628,12 +1106,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/certificates"
+													"properties": {
+														"associated_hostnames": {
+															"$ref": "#/components/schemas/associated_hostnames"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"expires_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"fingerprint": {
+															"$ref": "#/components/schemas/fingerprint"
+														},
+														"id": {
+															"description": "The ID of the application that will use this certificate."
+														},
+														"name": {
+															"$ref": "#/components/schemas/certificates_components-schemas-name"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -644,7 +1164,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -658,7 +1196,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -770,12 +1326,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/certificates"
+											"properties": {
+												"associated_hostnames": {
+													"$ref": "#/components/schemas/associated_hostnames"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"expires_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"fingerprint": {
+													"$ref": "#/components/schemas/fingerprint"
+												},
+												"id": {
+													"description": "The ID of the application that will use this certificate."
+												},
+												"name": {
+													"$ref": "#/components/schemas/certificates_components-schemas-name"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -793,12 +1391,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/certificates"
+													"properties": {
+														"associated_hostnames": {
+															"$ref": "#/components/schemas/associated_hostnames"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"expires_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"fingerprint": {
+															"$ref": "#/components/schemas/fingerprint"
+														},
+														"id": {
+															"description": "The ID of the application that will use this certificate."
+														},
+														"name": {
+															"$ref": "#/components/schemas/certificates_components-schemas-name"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -809,7 +1449,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -823,7 +1481,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -939,12 +1615,55 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/settings"
+											"additionalProperties": false,
+											"properties": {
+												"china_network": {
+													"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
+													"example": false,
+													"type": "boolean"
+												},
+												"client_certificate_forwarding": {
+													"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
+													"example": true,
+													"type": "boolean"
+												},
+												"hostname": {
+													"description": "The hostname that these settings apply to.",
+													"example": "admin.example.com",
+													"type": "string"
+												}
+											},
+											"required": [
+												"hostname",
+												"china_network",
+												"client_certificate_forwarding"
+											],
+											"title": "Hostname Settings",
+											"type": "object"
 										}
 									}
 								}
@@ -962,12 +1681,55 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/settings"
+													"additionalProperties": false,
+													"properties": {
+														"china_network": {
+															"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
+															"example": false,
+															"type": "boolean"
+														},
+														"client_certificate_forwarding": {
+															"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
+															"example": true,
+															"type": "boolean"
+														},
+														"hostname": {
+															"description": "The hostname that these settings apply to.",
+															"example": "admin.example.com",
+															"type": "string"
+														}
+													},
+													"required": [
+														"hostname",
+														"china_network",
+														"client_certificate_forwarding"
+													],
+													"title": "Hostname Settings",
+													"type": "object"
 												}
 											}
 										}
@@ -978,7 +1740,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -992,7 +1772,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

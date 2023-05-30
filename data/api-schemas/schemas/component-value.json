@@ -1,13 +1,25 @@
 {
 	"properties": {
 		"default": {
-			"$ref": "#/components/schemas/default"
+			"description": "The default amount allocated.",
+			"example": 5,
+			"type": "number"
 		},
 		"name": {
-			"$ref": "#/components/schemas/components-schemas-name-4PIQbrFl"
+			"description": "The unique component.",
+			"enum": [
+				"zones",
+				"page_rules",
+				"dedicated_certificates",
+				"dedicated_certificates_custom"
+			],
+			"example": "page_rules"
 		},
 		"unit_price": {
-			"$ref": "#/components/schemas/unit_price"
+			"description": "The unit price of the addon.",
+			"example": 1,
+			"readOnly": true,
+			"type": "number"
 		}
 	},
 	"type": "object"

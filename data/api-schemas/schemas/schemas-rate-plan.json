@@ -1,7 +1,63 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/rate-plan-RvYrG8LP"
+			"properties": {
+				"components": {
+					"description": "Array of available components values for the plan.",
+					"items": {
+						"properties": {
+							"default": {
+								"$ref": "#/components/schemas/default"
+							},
+							"name": {
+								"$ref": "#/components/schemas/component-value_components-schemas-name"
+							},
+							"unit_price": {
+								"$ref": "#/components/schemas/unit_price"
+							}
+						},
+						"type": "object"
+					},
+					"type": "array"
+				},
+				"currency": {
+					"description": "The monetary unit in which pricing information is displayed.",
+					"example": "USD",
+					"readOnly": true,
+					"type": "string"
+				},
+				"duration": {
+					"description": "The duration of the plan subscription.",
+					"example": 1,
+					"type": "number"
+				},
+				"frequency": {
+					"description": "The frequency at which you will be billed for this plan.",
+					"enum": [
+						"weekly",
+						"monthly",
+						"quarterly",
+						"yearly"
+					],
+					"example": "monthly",
+					"readOnly": true,
+					"type": "string"
+				},
+				"id": {
+					"description": "Plan identifier tag.",
+					"example": "free",
+					"readOnly": true,
+					"type": "string"
+				},
+				"name": {
+					"description": "The plan name.",
+					"example": "Free Plan",
+					"maxLength": 80,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			"type": "object"
 		}
 	],
 	"type": "object"

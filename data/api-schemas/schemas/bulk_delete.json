@@ -1,6 +1,9 @@
 {
 	"items": {
-		"$ref": "#/components/schemas/key_name_bulk"
+		"description": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.",
+		"example": "My-Key",
+		"maxLength": 512,
+		"type": "string"
 	},
 	"type": "array"
 }

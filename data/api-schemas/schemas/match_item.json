@@ -1,7 +1,15 @@
 {
 	"properties": {
 		"platform": {
-			"$ref": "#/components/schemas/platform"
+			"enum": [
+				"windows",
+				"mac",
+				"linux",
+				"android",
+				"ios"
+			],
+			"example": "windows",
+			"type": "string"
 		}
 	},
 	"type": "object"

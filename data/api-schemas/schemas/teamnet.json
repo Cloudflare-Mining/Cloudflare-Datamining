@@ -1,7 +1,9 @@
 {
 	"properties": {
 		"comment": {
-			"$ref": "#/components/schemas/comment-ZJzeISzu"
+			"description": "Optional remark describing the route.",
+			"example": "Example comment for this route.",
+			"type": "string"
 		},
 		"created_at": {
 			"description": "Timestamp of when the route was created."
@@ -15,16 +17,18 @@
 			"type": "string"
 		},
 		"network": {
-			"$ref": "#/components/schemas/ip_network"
+			"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
+			"example": "172.16.0.0/16",
+			"type": "string"
 		},
 		"tunnel_id": {
-			"$ref": "#/components/schemas/schemas-tunnel_id"
+			"description": "UUID of the Cloudflare Tunnel serving the route."
 		},
 		"tunnel_name": {
-			"$ref": "#/components/schemas/schemas-tunnel_name"
+			"description": "The user-friendly name of the Cloudflare Tunnel serving the route."
 		},
 		"virtual_network_id": {
-			"$ref": "#/components/schemas/virtual_network_id-FC6U9NV8"
+			"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
 		}
 	},
 	"required": [

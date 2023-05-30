@@ -1,13 +1,23 @@
 {
 	"properties": {
 		"default_sampling": {
-			"$ref": "#/components/schemas/mnm_config_default_sampling"
+			"default": 1,
+			"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.",
+			"minimum": 1,
+			"type": "number"
 		},
 		"name": {
-			"$ref": "#/components/schemas/mnm_config_name"
+			"description": "The account name.",
+			"example": "cloudflare user's account",
+			"type": "string"
 		},
 		"router_ips": {
-			"$ref": "#/components/schemas/mnm_config_router_ips"
+			"items": {
+				"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+				"example": "203.0.113.1/32",
+				"type": "string"
+			},
+			"type": "array"
 		}
 	},
 	"required": [

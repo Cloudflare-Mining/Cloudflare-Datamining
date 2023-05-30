@@ -41,14 +41,29 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/railgun_response_single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+													"description": "Railgun identifier tag.",
+													"example": "e928d310693a83094309acf9ead50448",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											}
 										}
@@ -68,14 +83,29 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/railgun_response_single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object"
+														}
+													}
+												}
+											]
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+															"description": "Railgun identifier tag.",
+															"example": "e928d310693a83094309acf9ead50448",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													}
 												}
@@ -88,7 +118,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -102,7 +150,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -220,13 +286,85 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/railgun"
+												"properties": {
+													"activated_on": {
+														"$ref": "#/components/schemas/activated_on"
+													},
+													"activation_key": {
+														"$ref": "#/components/schemas/activation_key"
+													},
+													"build": {
+														"$ref": "#/components/schemas/build"
+													},
+													"created_on": {
+														"$ref": "#/components/schemas/components-schemas-created_on"
+													},
+													"enabled": {
+														"$ref": "#/components/schemas/railgun_components-schemas-enabled"
+													},
+													"id": {
+														"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+													},
+													"modified_on": {
+														"$ref": "#/components/schemas/railgun_components-schemas-modified_on"
+													},
+													"name": {
+														"$ref": "#/components/schemas/railgun_components-schemas-name"
+													},
+													"revision": {
+														"$ref": "#/components/schemas/revision"
+													},
+													"status": {
+														"$ref": "#/components/schemas/railgun_components-schemas-status"
+													},
+													"upgrade_info": {
+														"$ref": "#/components/schemas/upgrade_info"
+													},
+													"version": {
+														"$ref": "#/components/schemas/components-schemas-version"
+													},
+													"zones_connected": {
+														"$ref": "#/components/schemas/zones_connected"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"status",
+													"enabled",
+													"zones_connected",
+													"build",
+													"version",
+													"revision",
+													"activation_key",
+													"activated_on",
+													"created_on",
+													"modified_on"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -246,13 +384,85 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/railgun"
+														"properties": {
+															"activated_on": {
+																"$ref": "#/components/schemas/activated_on"
+															},
+															"activation_key": {
+																"$ref": "#/components/schemas/activation_key"
+															},
+															"build": {
+																"$ref": "#/components/schemas/build"
+															},
+															"created_on": {
+																"$ref": "#/components/schemas/components-schemas-created_on"
+															},
+															"enabled": {
+																"$ref": "#/components/schemas/railgun_components-schemas-enabled"
+															},
+															"id": {
+																"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/railgun_components-schemas-modified_on"
+															},
+															"name": {
+																"$ref": "#/components/schemas/railgun_components-schemas-name"
+															},
+															"revision": {
+																"$ref": "#/components/schemas/revision"
+															},
+															"status": {
+																"$ref": "#/components/schemas/railgun_components-schemas-status"
+															},
+															"upgrade_info": {
+																"$ref": "#/components/schemas/upgrade_info"
+															},
+															"version": {
+																"$ref": "#/components/schemas/components-schemas-version"
+															},
+															"zones_connected": {
+																"$ref": "#/components/schemas/zones_connected"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"status",
+															"enabled",
+															"zones_connected",
+															"build",
+															"version",
+															"revision",
+															"activation_key",
+															"activated_on",
+															"created_on",
+															"modified_on"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -265,7 +475,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -279,7 +507,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -375,7 +621,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -398,7 +664,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -414,7 +700,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -428,7 +732,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -533,7 +855,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -556,7 +898,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -572,7 +934,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -586,7 +966,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -677,31 +1075,101 @@
 					"schema": {
 						"properties": {
 							"activation": {
-								"$ref": "#/components/schemas/activation"
+								"properties": {
+									"activated_on": {
+										"$ref": "#/components/schemas/activated_on"
+									},
+									"key": {
+										"$ref": "#/components/schemas/activation_key"
+									},
+									"version": {
+										"properties": {
+											"build": {
+												"$ref": "#/components/schemas/build"
+											},
+											"number": {
+												"$ref": "#/components/schemas/components-schemas-version"
+											},
+											"revision": {
+												"$ref": "#/components/schemas/revision"
+											}
+										},
+										"required": [
+											"number"
+										],
+										"type": "object"
+									}
+								},
+								"readOnly": true,
+								"required": [
+									"key"
+								],
+								"type": "object"
 							},
 							"created_on": {
-								"$ref": "#/components/schemas/components-schemas-created_on"
+								"description": "When the Railgun was created.",
+								"example": "2014-01-01T05:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
 							},
 							"enabled": {
-								"$ref": "#/components/schemas/railgun_components-schemas-enabled"
+								"default": false,
+								"description": "Flag to determine if the Railgun is accepting connections.",
+								"example": true,
+								"type": "boolean"
 							},
 							"id": {
-								"$ref": "#/components/schemas/railgun_components-schemas-identifier"
+								"description": "Railgun identifier tag.",
+								"example": "e928d310693a83094309acf9ead50448",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
 							},
 							"modified_on": {
-								"$ref": "#/components/schemas/railgun_components-schemas-modified_on"
+								"description": "When the Railgun was last modified.",
+								"example": "2014-01-01T05:20:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
 							},
 							"name": {
-								"$ref": "#/components/schemas/railgun_components-schemas-name"
+								"description": "Readable identifier of the Railgun.",
+								"example": "My Railgun.",
+								"maxLength": 160,
+								"type": "string"
 							},
 							"status": {
-								"$ref": "#/components/schemas/railgun_components-schemas-status"
+								"description": "Status of the Railgun.",
+								"enum": [
+									"initializing",
+									"active"
+								],
+								"example": "active",
+								"readOnly": true,
+								"type": "string"
 							},
 							"upgrade_info": {
-								"$ref": "#/components/schemas/upgrade_info"
+								"description": "Defined when the Railgun version is out of date from the latest release from Cloudflare.",
+								"properties": {
+									"download_link": {
+										"description": "An HTTP link to download the latest Railgun binary.",
+										"example": "https://www.cloudflare.com/downloads/railgun",
+										"type": "string"
+									},
+									"latest_version": {
+										"description": "Latest version of the Railgun receiver available to install.",
+										"example": "1.0.0",
+										"type": "string"
+									}
+								},
+								"type": "object"
 							},
 							"zones_connected": {
-								"$ref": "#/components/schemas/zones_connected"
+								"description": "The number of zones using this Railgun.",
+								"example": 2,
+								"readOnly": true,
+								"type": "number"
 							}
 						},
 						"required": [
@@ -725,7 +1193,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -748,7 +1236,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -764,7 +1272,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -778,7 +1304,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

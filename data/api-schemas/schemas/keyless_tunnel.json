@@ -2,10 +2,14 @@
 	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
 	"properties": {
 		"private_ip": {
-			"$ref": "#/components/schemas/keyless_private_ip"
+			"description": "Private IP of the Key Server Host",
+			"example": "10.0.0.1",
+			"type": "string"
 		},
 		"vnet_id": {
-			"$ref": "#/components/schemas/keyless_vnet_id"
+			"description": "Cloudflare Tunnel Virtual Network ID",
+			"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+			"type": "string"
 		}
 	},
 	"required": [

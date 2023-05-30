@@ -3,7 +3,9 @@
 		{
 			"properties": {
 				"enabled": {
-					"$ref": "#/components/schemas/ssl_recommender_enabled"
+					"default": false,
+					"description": "ssl-recommender enrollment setting.",
+					"type": "boolean"
 				},
 				"id": {
 					"description": "Enrollment value for SSL/TLS Recommender.",

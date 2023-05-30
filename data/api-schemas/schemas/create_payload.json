@@ -1,19 +1,101 @@
 {
 	"properties": {
 		"condition": {
-			"$ref": "#/components/schemas/condition"
+			"properties": {
+				"request.ip": {
+					"description": "Client IP restrictions.",
+					"example": {
+						"in": [
+							"123.123.123.0/24",
+							"2606:4700::/32"
+						],
+						"not_in": [
+							"123.123.123.100/24",
+							"2606:4700:4700::/48"
+						]
+					},
+					"properties": {
+						"in": {
+							"description": "List of IPv4/IPv6 CIDR addresses.",
+							"example": [
+								"199.27.128.0/21",
+								"2400:cb00::/32"
+							],
+							"items": {
+								"description": "IPv4/IPv6 CIDR.",
+								"example": "199.27.128.0/21",
+								"type": "string"
+							},
+							"type": "array"
+						},
+						"not_in": {
+							"description": "List of IPv4/IPv6 CIDR addresses.",
+							"example": [
+								"199.27.128.0/21",
+								"2400:cb00::/32"
+							],
+							"items": {
+								"description": "IPv4/IPv6 CIDR.",
+								"example": "199.27.128.0/21",
+								"type": "string"
+							},
+							"type": "array"
+						}
+					},
+					"type": "object"
+				}
+			},
+			"type": "object"
 		},
 		"expires_on": {
-			"$ref": "#/components/schemas/expires_on-pX9bq9lv"
+			"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
+			"example": "2020-01-01T00:00:00Z",
+			"format": "date-time",
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/name-xo9KENjJ"
+			"description": "Token name.",
+			"example": "readonly token",
+			"maxLength": 120,
+			"type": "string"
 		},
 		"not_before": {
-			"$ref": "#/components/schemas/not_before"
+			"description": "The time before which the token MUST NOT be accepted for processing.",
+			"example": "2018-07-01T05:20:00Z",
+			"format": "date-time",
+			"type": "string"
 		},
 		"policies": {
-			"$ref": "#/components/schemas/policies-iTfbbNdk"
+			"description": "List of access policies assigned to the token.",
+			"items": {
+				"oneOf": [
+					{
+						"properties": {
+							"effect": {
+								"$ref": "#/components/schemas/effect"
+							},
+							"id": {
+								"$ref": "#/components/schemas/identifier-rp9cT6x2"
+							},
+							"permission_groups": {
+								"$ref": "#/components/schemas/permission_groups"
+							},
+							"resources": {
+								"$ref": "#/components/schemas/resources"
+							}
+						},
+						"required": [
+							"id",
+							"effect",
+							"resources",
+							"permission_groups"
+						],
+						"title": "policy_with_permission_groups"
+					}
+				],
+				"type": "object"
+			},
+			"type": "array"
 		}
 	},
 	"required": [

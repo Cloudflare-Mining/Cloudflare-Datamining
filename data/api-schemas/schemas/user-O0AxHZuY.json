@@ -1,10 +1,17 @@
 {
 	"properties": {
 		"email": {
-			"$ref": "#/components/schemas/email-dY0ENYjV"
+			"description": "The contact email address of the user.",
+			"example": "user@example.com",
+			"maxLength": 90,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/components-schemas-uuid-CD9kZ9RF"
+			"description": "UUID",
+			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"maxLength": 36,
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
 			"description": "The enrolled device user's name.",

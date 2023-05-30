@@ -32,7 +32,9 @@
 			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/RuleId"
+			"description": "The unique ID of the rule.",
+			"example": "3a03d665bac047339bb530ecb439a90d",
+			"type": "string"
 		},
 		"logging": {
 			"description": "An object configuring the rule's logging behavior.",

@@ -1,7 +1,25 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/schemas-base-L4ekOLzj"
+			"properties": {
+				"id": {
+					"description": "Identifier of the zone setting.",
+					"example": "development_mode",
+					"type": "string"
+				},
+				"modified_on": {
+					"description": "last time this setting was modified.",
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"nullable": true,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			"required": [
+				"id",
+				"modified_on"
+			]
 		},
 		{
 			"properties": {

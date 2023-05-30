@@ -5,28 +5,160 @@
 			"description": "account settings.",
 			"properties": {
 				"activity_log": {
-					"$ref": "#/components/schemas/activity-log-settings"
+					"description": "Activity log settings.",
+					"properties": {
+						"enabled": {
+							"description": "Enable activity logging.",
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"type": "object"
 				},
 				"antivirus": {
-					"$ref": "#/components/schemas/anti-virus-settings"
+					"description": "Anti virus settings.",
+					"properties": {
+						"enabled_download_phase": {
+							"description": "Set to enable antivirus scan on downloads.",
+							"example": false,
+							"type": "boolean"
+						},
+						"enabled_upload_phase": {
+							"description": "Set to enable antivirus scan on uploads.",
+							"example": false,
+							"type": "boolean"
+						},
+						"fail_closed": {
+							"description": "Block requests for files that cannot be scanned.",
+							"example": false,
+							"type": "boolean"
+						}
+					},
+					"type": "object"
 				},
 				"block_page": {
-					"$ref": "#/components/schemas/block-page-settings"
+					"description": "Block page layout settings.",
+					"properties": {
+						"background_color": {
+							"description": "Block page background color in #rrggbb format.",
+							"type": "string"
+						},
+						"enabled": {
+							"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+							"example": true,
+							"type": "boolean"
+						},
+						"footer_text": {
+							"description": "Block page footer text.",
+							"example": "--footer--",
+							"type": "string"
+						},
+						"header_text": {
+							"description": "Block page header text.",
+							"example": "--header--",
+							"type": "string"
+						},
+						"logo_path": {
+							"description": "Full URL to the logo file.",
+							"example": "https://logos.com/a.png",
+							"type": "string"
+						},
+						"mailto_address": {
+							"description": "Admin email for users to contact.",
+							"example": "admin@example.com",
+							"type": "string"
+						},
+						"mailto_subject": {
+							"description": "Subject line for emails created from block page.",
+							"example": "Blocked User Inquiry",
+							"type": "string"
+						},
+						"name": {
+							"description": "Block page title.",
+							"example": "Cloudflare",
+							"type": "string"
+						},
+						"suppress_footer": {
+							"description": "Suppress detailed info at the bottom of the block page.",
+							"example": false,
+							"type": "boolean"
+						}
+					},
+					"type": "object"
 				},
 				"body_scanning": {
-					"$ref": "#/components/schemas/body-scanning-settings"
+					"description": "DLP body scanning setting",
+					"properties": {
+						"inspection_mode": {
+							"description": "Inspection mode. One of deep or shallow",
+							"example": "deep",
+							"type": "string"
+						}
+					},
+					"type": "object"
 				},
 				"browser_isolation": {
-					"$ref": "#/components/schemas/browser-isolation-settings"
+					"description": "Browser isolation settings.",
+					"properties": {
+						"url_browser_isolation_enabled": {
+							"description": "Enable Browser Isolation.",
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"type": "object"
 				},
 				"custom_certificate": {
-					"$ref": "#/components/schemas/custom-certificate-settings"
+					"description": "Custom certificate settings for BYO-PKI.",
+					"properties": {
+						"binding_status": {
+							"description": "Certificate status (internal)",
+							"example": "pending_deployment",
+							"readOnly": true,
+							"type": "string"
+						},
+						"enabled": {
+							"description": "Enable use of custom certificate authority for signing Gateway traffic",
+							"example": true,
+							"type": "boolean"
+						},
+						"id": {
+							"description": "UUID of certificate (ID from MTLS certificate store)",
+							"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+							"type": "string"
+						},
+						"updated_at": {
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"required": [
+						"enabled"
+					],
+					"type": "object"
 				},
 				"fips": {
-					"$ref": "#/components/schemas/fips-settings"
+					"description": "FIPS settings.",
+					"properties": {
+						"tls": {
+							"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"type": "object"
 				},
 				"tls_decrypt": {
-					"$ref": "#/components/schemas/tls-settings"
+					"description": "TLS interception settings.",
+					"properties": {
+						"enabled": {
+							"description": "Enable inspecting encrypted HTTP traffic.",
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"type": "object"
 				}
 			},
 			"type": "object"

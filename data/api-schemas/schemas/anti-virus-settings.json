@@ -2,13 +2,19 @@
 	"description": "Anti virus settings.",
 	"properties": {
 		"enabled_download_phase": {
-			"$ref": "#/components/schemas/enabled_download_phase"
+			"description": "Set to enable antivirus scan on downloads.",
+			"example": false,
+			"type": "boolean"
 		},
 		"enabled_upload_phase": {
-			"$ref": "#/components/schemas/enabled_upload_phase"
+			"description": "Set to enable antivirus scan on uploads.",
+			"example": false,
+			"type": "boolean"
 		},
 		"fail_closed": {
-			"$ref": "#/components/schemas/fail_closed"
+			"description": "Block requests for files that cannot be scanned.",
+			"example": false,
+			"type": "boolean"
 		}
 	},
 	"type": "object"

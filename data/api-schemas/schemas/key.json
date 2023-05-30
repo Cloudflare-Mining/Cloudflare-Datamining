@@ -7,10 +7,17 @@
 			"type": "number"
 		},
 		"metadata": {
-			"$ref": "#/components/schemas/list_metadata"
+			"description": "Arbitrary JSON that is associated with a key.",
+			"example": {
+				"someMetadataKey": "someMetadataValue"
+			},
+			"type": "object"
 		},
 		"name": {
-			"$ref": "#/components/schemas/key_name"
+			"description": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
+			"example": "My-Key",
+			"maxLength": 512,
+			"type": "string"
 		}
 	},
 	"required": [

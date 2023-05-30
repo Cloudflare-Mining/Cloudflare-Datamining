@@ -2,10 +2,19 @@
 	"description": "The name and type of DNS record for the Spectrum application.",
 	"properties": {
 		"name": {
-			"$ref": "#/components/schemas/dns_name"
+			"description": "The name of the DNS record associated with the application.",
+			"example": "ssh.example.com",
+			"format": "hostname",
+			"type": "string"
 		},
 		"type": {
-			"$ref": "#/components/schemas/dns_type"
+			"description": "The type of DNS record associated with the application.",
+			"enum": [
+				"CNAME",
+				"ADDRESS"
+			],
+			"example": "CNAME",
+			"type": "string"
 		}
 	},
 	"type": "object"

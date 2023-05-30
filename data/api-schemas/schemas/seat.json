@@ -1,13 +1,17 @@
 {
 	"properties": {
 		"access_seat": {
-			"$ref": "#/components/schemas/access_seat"
+			"description": "True if the seat is part of Access.",
+			"example": false,
+			"type": "boolean"
 		},
 		"gateway_seat": {
-			"$ref": "#/components/schemas/gateway_seat"
+			"description": "True if the seat is part of Gateway.",
+			"example": false,
+			"type": "boolean"
 		},
 		"seat_uid": {
-			"$ref": "#/components/schemas/seat_uid"
+			"description": "The unique API identifier for the Zero Trust seat."
 		}
 	},
 	"required": [

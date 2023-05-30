@@ -1,12 +1,68 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/v4_response"
+			"properties": {
+				"errors": {
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"messages": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"result": {
+					"type": "object"
+				},
+				"success": {
+					"description": "Whether the API call was successful",
+					"enum": [
+						true
+					],
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"success",
+				"errors",
+				"messages",
+				"result"
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result_info": {
-					"$ref": "#/components/schemas/result_info-dkJTy4FS"
+					"properties": {
+						"cursor": {
+							"description": "A continuation token that should be used to fetch the next page of results",
+							"example": "1-JTdCJTIydiUyMiUzQTElMkMlMjJzdGFydEFmdGVyJTIyJTNBJTIyZGF2aWRwdWJsaWMlMjIlN0Q=",
+							"type": "string"
+						},
+						"per_page": {
+							"description": "Maximum number of results on this page",
+							"example": 20,
+							"type": "number"
+						}
+					},
+					"type": "object"
 				}
 			},
 			"type": "object"

@@ -43,7 +43,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -93,7 +165,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -134,7 +278,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -148,7 +310,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -251,13 +431,86 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/dns-firewall"
+												"properties": {
+													"attack_mitigation": {
+														"$ref": "#/components/schemas/attack_mitigation"
+													},
+													"deprecate_any_requests": {
+														"$ref": "#/components/schemas/deprecate_any_requests"
+													},
+													"dns_firewall_ips": {
+														"$ref": "#/components/schemas/dns_firewall_ips"
+													},
+													"ecs_fallback": {
+														"$ref": "#/components/schemas/ecs_fallback"
+													},
+													"id": {
+														"$ref": "#/components/schemas/identifier"
+													},
+													"maximum_cache_ttl": {
+														"$ref": "#/components/schemas/maximum_cache_ttl"
+													},
+													"minimum_cache_ttl": {
+														"$ref": "#/components/schemas/minimum_cache_ttl"
+													},
+													"modified_on": {
+														"$ref": "#/components/schemas/modified_on-iJXeY1p1"
+													},
+													"name": {
+														"$ref": "#/components/schemas/name-Ka0NfQ8P"
+													},
+													"negative_cache_ttl": {
+														"$ref": "#/components/schemas/negative_cache_ttl"
+													},
+													"origin_ips": {
+														"deprecated": true,
+														"description": "Deprecated alias for \"upstream_ips\"."
+													},
+													"ratelimit": {
+														"$ref": "#/components/schemas/ratelimit"
+													},
+													"retries": {
+														"$ref": "#/components/schemas/retries-lpuggzpb"
+													},
+													"upstream_ips": {
+														"$ref": "#/components/schemas/upstream_ips"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"upstream_ips",
+													"dns_firewall_ips",
+													"minimum_cache_ttl",
+													"maximum_cache_ttl",
+													"deprecate_any_requests",
+													"ecs_fallback",
+													"modified_on"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -277,13 +530,86 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/dns-firewall"
+														"properties": {
+															"attack_mitigation": {
+																"$ref": "#/components/schemas/attack_mitigation"
+															},
+															"deprecate_any_requests": {
+																"$ref": "#/components/schemas/deprecate_any_requests"
+															},
+															"dns_firewall_ips": {
+																"$ref": "#/components/schemas/dns_firewall_ips"
+															},
+															"ecs_fallback": {
+																"$ref": "#/components/schemas/ecs_fallback"
+															},
+															"id": {
+																"$ref": "#/components/schemas/identifier"
+															},
+															"maximum_cache_ttl": {
+																"$ref": "#/components/schemas/maximum_cache_ttl"
+															},
+															"minimum_cache_ttl": {
+																"$ref": "#/components/schemas/minimum_cache_ttl"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/modified_on-iJXeY1p1"
+															},
+															"name": {
+																"$ref": "#/components/schemas/name-Ka0NfQ8P"
+															},
+															"negative_cache_ttl": {
+																"$ref": "#/components/schemas/negative_cache_ttl"
+															},
+															"origin_ips": {
+																"deprecated": true,
+																"description": "Deprecated alias for \"upstream_ips\"."
+															},
+															"ratelimit": {
+																"$ref": "#/components/schemas/ratelimit"
+															},
+															"retries": {
+																"$ref": "#/components/schemas/retries-lpuggzpb"
+															},
+															"upstream_ips": {
+																"$ref": "#/components/schemas/upstream_ips"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"upstream_ips",
+															"dns_firewall_ips",
+															"minimum_cache_ttl",
+															"maximum_cache_ttl",
+															"deprecate_any_requests",
+															"ecs_fallback",
+															"modified_on"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -296,7 +622,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -310,7 +654,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -404,12 +766,87 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/dns-firewall"
+											"properties": {
+												"attack_mitigation": {
+													"$ref": "#/components/schemas/attack_mitigation"
+												},
+												"deprecate_any_requests": {
+													"$ref": "#/components/schemas/deprecate_any_requests"
+												},
+												"dns_firewall_ips": {
+													"$ref": "#/components/schemas/dns_firewall_ips"
+												},
+												"ecs_fallback": {
+													"$ref": "#/components/schemas/ecs_fallback"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier"
+												},
+												"maximum_cache_ttl": {
+													"$ref": "#/components/schemas/maximum_cache_ttl"
+												},
+												"minimum_cache_ttl": {
+													"$ref": "#/components/schemas/minimum_cache_ttl"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified_on-iJXeY1p1"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-Ka0NfQ8P"
+												},
+												"negative_cache_ttl": {
+													"$ref": "#/components/schemas/negative_cache_ttl"
+												},
+												"origin_ips": {
+													"deprecated": true,
+													"description": "Deprecated alias for \"upstream_ips\"."
+												},
+												"ratelimit": {
+													"$ref": "#/components/schemas/ratelimit"
+												},
+												"retries": {
+													"$ref": "#/components/schemas/retries-lpuggzpb"
+												},
+												"upstream_ips": {
+													"$ref": "#/components/schemas/upstream_ips"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"upstream_ips",
+												"dns_firewall_ips",
+												"minimum_cache_ttl",
+												"maximum_cache_ttl",
+												"deprecate_any_requests",
+												"ecs_fallback",
+												"modified_on"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -427,12 +864,87 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/dns-firewall"
+													"properties": {
+														"attack_mitigation": {
+															"$ref": "#/components/schemas/attack_mitigation"
+														},
+														"deprecate_any_requests": {
+															"$ref": "#/components/schemas/deprecate_any_requests"
+														},
+														"dns_firewall_ips": {
+															"$ref": "#/components/schemas/dns_firewall_ips"
+														},
+														"ecs_fallback": {
+															"$ref": "#/components/schemas/ecs_fallback"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"maximum_cache_ttl": {
+															"$ref": "#/components/schemas/maximum_cache_ttl"
+														},
+														"minimum_cache_ttl": {
+															"$ref": "#/components/schemas/minimum_cache_ttl"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/modified_on-iJXeY1p1"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-Ka0NfQ8P"
+														},
+														"negative_cache_ttl": {
+															"$ref": "#/components/schemas/negative_cache_ttl"
+														},
+														"origin_ips": {
+															"deprecated": true,
+															"description": "Deprecated alias for \"upstream_ips\"."
+														},
+														"ratelimit": {
+															"$ref": "#/components/schemas/ratelimit"
+														},
+														"retries": {
+															"$ref": "#/components/schemas/retries-lpuggzpb"
+														},
+														"upstream_ips": {
+															"$ref": "#/components/schemas/upstream_ips"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"upstream_ips",
+														"dns_firewall_ips",
+														"minimum_cache_ttl",
+														"maximum_cache_ttl",
+														"deprecate_any_requests",
+														"ecs_fallback",
+														"modified_on"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -443,7 +955,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -457,7 +987,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -550,7 +1098,63 @@
 					"schema": {
 						"allOf": [
 							{
-								"$ref": "#/components/schemas/dns-firewall"
+								"properties": {
+									"attack_mitigation": {
+										"$ref": "#/components/schemas/attack_mitigation"
+									},
+									"deprecate_any_requests": {
+										"$ref": "#/components/schemas/deprecate_any_requests"
+									},
+									"dns_firewall_ips": {
+										"$ref": "#/components/schemas/dns_firewall_ips"
+									},
+									"ecs_fallback": {
+										"$ref": "#/components/schemas/ecs_fallback"
+									},
+									"id": {
+										"$ref": "#/components/schemas/identifier"
+									},
+									"maximum_cache_ttl": {
+										"$ref": "#/components/schemas/maximum_cache_ttl"
+									},
+									"minimum_cache_ttl": {
+										"$ref": "#/components/schemas/minimum_cache_ttl"
+									},
+									"modified_on": {
+										"$ref": "#/components/schemas/modified_on-iJXeY1p1"
+									},
+									"name": {
+										"$ref": "#/components/schemas/name-Ka0NfQ8P"
+									},
+									"negative_cache_ttl": {
+										"$ref": "#/components/schemas/negative_cache_ttl"
+									},
+									"origin_ips": {
+										"deprecated": true,
+										"description": "Deprecated alias for \"upstream_ips\"."
+									},
+									"ratelimit": {
+										"$ref": "#/components/schemas/ratelimit"
+									},
+									"retries": {
+										"$ref": "#/components/schemas/retries-lpuggzpb"
+									},
+									"upstream_ips": {
+										"$ref": "#/components/schemas/upstream_ips"
+									}
+								},
+								"required": [
+									"id",
+									"name",
+									"upstream_ips",
+									"dns_firewall_ips",
+									"minimum_cache_ttl",
+									"maximum_cache_ttl",
+									"deprecate_any_requests",
+									"ecs_fallback",
+									"modified_on"
+								],
+								"type": "object"
 							}
 						],
 						"type": "object"
@@ -566,12 +1170,87 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/dns-firewall"
+											"properties": {
+												"attack_mitigation": {
+													"$ref": "#/components/schemas/attack_mitigation"
+												},
+												"deprecate_any_requests": {
+													"$ref": "#/components/schemas/deprecate_any_requests"
+												},
+												"dns_firewall_ips": {
+													"$ref": "#/components/schemas/dns_firewall_ips"
+												},
+												"ecs_fallback": {
+													"$ref": "#/components/schemas/ecs_fallback"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier"
+												},
+												"maximum_cache_ttl": {
+													"$ref": "#/components/schemas/maximum_cache_ttl"
+												},
+												"minimum_cache_ttl": {
+													"$ref": "#/components/schemas/minimum_cache_ttl"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified_on-iJXeY1p1"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-Ka0NfQ8P"
+												},
+												"negative_cache_ttl": {
+													"$ref": "#/components/schemas/negative_cache_ttl"
+												},
+												"origin_ips": {
+													"deprecated": true,
+													"description": "Deprecated alias for \"upstream_ips\"."
+												},
+												"ratelimit": {
+													"$ref": "#/components/schemas/ratelimit"
+												},
+												"retries": {
+													"$ref": "#/components/schemas/retries-lpuggzpb"
+												},
+												"upstream_ips": {
+													"$ref": "#/components/schemas/upstream_ips"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"upstream_ips",
+												"dns_firewall_ips",
+												"minimum_cache_ttl",
+												"maximum_cache_ttl",
+												"deprecate_any_requests",
+												"ecs_fallback",
+												"modified_on"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -589,12 +1268,87 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/dns-firewall"
+													"properties": {
+														"attack_mitigation": {
+															"$ref": "#/components/schemas/attack_mitigation"
+														},
+														"deprecate_any_requests": {
+															"$ref": "#/components/schemas/deprecate_any_requests"
+														},
+														"dns_firewall_ips": {
+															"$ref": "#/components/schemas/dns_firewall_ips"
+														},
+														"ecs_fallback": {
+															"$ref": "#/components/schemas/ecs_fallback"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"maximum_cache_ttl": {
+															"$ref": "#/components/schemas/maximum_cache_ttl"
+														},
+														"minimum_cache_ttl": {
+															"$ref": "#/components/schemas/minimum_cache_ttl"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/modified_on-iJXeY1p1"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-Ka0NfQ8P"
+														},
+														"negative_cache_ttl": {
+															"$ref": "#/components/schemas/negative_cache_ttl"
+														},
+														"origin_ips": {
+															"deprecated": true,
+															"description": "Deprecated alias for \"upstream_ips\"."
+														},
+														"ratelimit": {
+															"$ref": "#/components/schemas/ratelimit"
+														},
+														"retries": {
+															"$ref": "#/components/schemas/retries-lpuggzpb"
+														},
+														"upstream_ips": {
+															"$ref": "#/components/schemas/upstream_ips"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"upstream_ips",
+														"dns_firewall_ips",
+														"minimum_cache_ttl",
+														"maximum_cache_ttl",
+														"deprecate_any_requests",
+														"ecs_fallback",
+														"modified_on"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -605,7 +1359,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -619,7 +1391,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -822,12 +1612,87 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/dns-firewall"
+											"properties": {
+												"attack_mitigation": {
+													"$ref": "#/components/schemas/attack_mitigation"
+												},
+												"deprecate_any_requests": {
+													"$ref": "#/components/schemas/deprecate_any_requests"
+												},
+												"dns_firewall_ips": {
+													"$ref": "#/components/schemas/dns_firewall_ips"
+												},
+												"ecs_fallback": {
+													"$ref": "#/components/schemas/ecs_fallback"
+												},
+												"id": {
+													"$ref": "#/components/schemas/identifier"
+												},
+												"maximum_cache_ttl": {
+													"$ref": "#/components/schemas/maximum_cache_ttl"
+												},
+												"minimum_cache_ttl": {
+													"$ref": "#/components/schemas/minimum_cache_ttl"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/modified_on-iJXeY1p1"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-Ka0NfQ8P"
+												},
+												"negative_cache_ttl": {
+													"$ref": "#/components/schemas/negative_cache_ttl"
+												},
+												"origin_ips": {
+													"deprecated": true,
+													"description": "Deprecated alias for \"upstream_ips\"."
+												},
+												"ratelimit": {
+													"$ref": "#/components/schemas/ratelimit"
+												},
+												"retries": {
+													"$ref": "#/components/schemas/retries-lpuggzpb"
+												},
+												"upstream_ips": {
+													"$ref": "#/components/schemas/upstream_ips"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"upstream_ips",
+												"dns_firewall_ips",
+												"minimum_cache_ttl",
+												"maximum_cache_ttl",
+												"deprecate_any_requests",
+												"ecs_fallback",
+												"modified_on"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -845,12 +1710,87 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/dns-firewall"
+													"properties": {
+														"attack_mitigation": {
+															"$ref": "#/components/schemas/attack_mitigation"
+														},
+														"deprecate_any_requests": {
+															"$ref": "#/components/schemas/deprecate_any_requests"
+														},
+														"dns_firewall_ips": {
+															"$ref": "#/components/schemas/dns_firewall_ips"
+														},
+														"ecs_fallback": {
+															"$ref": "#/components/schemas/ecs_fallback"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"maximum_cache_ttl": {
+															"$ref": "#/components/schemas/maximum_cache_ttl"
+														},
+														"minimum_cache_ttl": {
+															"$ref": "#/components/schemas/minimum_cache_ttl"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/modified_on-iJXeY1p1"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-Ka0NfQ8P"
+														},
+														"negative_cache_ttl": {
+															"$ref": "#/components/schemas/negative_cache_ttl"
+														},
+														"origin_ips": {
+															"deprecated": true,
+															"description": "Deprecated alias for \"upstream_ips\"."
+														},
+														"ratelimit": {
+															"$ref": "#/components/schemas/ratelimit"
+														},
+														"retries": {
+															"$ref": "#/components/schemas/retries-lpuggzpb"
+														},
+														"upstream_ips": {
+															"$ref": "#/components/schemas/upstream_ips"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"upstream_ips",
+														"dns_firewall_ips",
+														"minimum_cache_ttl",
+														"maximum_cache_ttl",
+														"deprecate_any_requests",
+														"ecs_fallback",
+														"modified_on"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -861,7 +1801,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -875,7 +1833,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

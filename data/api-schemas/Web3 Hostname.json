@@ -40,7 +40,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -48,7 +120,11 @@
 											"nullable": true,
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/common_components-schemas-identifier"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"required": [
@@ -73,7 +149,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -81,7 +229,11 @@
 													"nullable": true,
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/common_components-schemas-identifier"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"required": [
@@ -99,7 +251,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -113,7 +283,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -222,7 +410,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -230,7 +490,11 @@
 											"nullable": true,
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/common_components-schemas-identifier"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"required": [
@@ -255,7 +519,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -263,7 +599,11 @@
 													"nullable": true,
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/common_components-schemas-identifier"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"required": [
@@ -281,7 +621,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -295,7 +653,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -374,13 +750,56 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/web3-hostname"
+												"properties": {
+													"created_on": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"description": {
+														"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+													},
+													"dnslink": {
+														"$ref": "#/components/schemas/dnslink"
+													},
+													"id": {
+														"$ref": "#/components/schemas/common_components-schemas-identifier"
+													},
+													"modified_on": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"name": {
+														"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+													},
+													"status": {
+														"$ref": "#/components/schemas/web3-hostname_components-schemas-status"
+													},
+													"target": {
+														"$ref": "#/components/schemas/schemas-target"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -400,13 +819,56 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/web3-hostname"
+														"properties": {
+															"created_on": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"description": {
+																"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+															},
+															"dnslink": {
+																"$ref": "#/components/schemas/dnslink"
+															},
+															"id": {
+																"$ref": "#/components/schemas/common_components-schemas-identifier"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"name": {
+																"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+															},
+															"status": {
+																"$ref": "#/components/schemas/web3-hostname_components-schemas-status"
+															},
+															"target": {
+																"$ref": "#/components/schemas/schemas-target"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -419,7 +881,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -433,7 +913,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -524,12 +1022,58 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/web3-hostname"
+											"properties": {
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+												},
+												"dnslink": {
+													"$ref": "#/components/schemas/dnslink"
+												},
+												"id": {
+													"$ref": "#/components/schemas/common_components-schemas-identifier"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"name": {
+													"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+												},
+												"status": {
+													"$ref": "#/components/schemas/web3-hostname_components-schemas-status"
+												},
+												"target": {
+													"$ref": "#/components/schemas/schemas-target"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -547,12 +1091,58 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/web3-hostname"
+													"properties": {
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+														},
+														"dnslink": {
+															"$ref": "#/components/schemas/dnslink"
+														},
+														"id": {
+															"$ref": "#/components/schemas/common_components-schemas-identifier"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"name": {
+															"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+														},
+														"status": {
+															"$ref": "#/components/schemas/web3-hostname_components-schemas-status"
+														},
+														"target": {
+															"$ref": "#/components/schemas/schemas-target"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -563,7 +1153,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -577,7 +1185,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -668,12 +1294,37 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/content_list_details"
+											"properties": {
+												"action": {
+													"$ref": "#/components/schemas/content_list_action"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -691,12 +1342,37 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/content_list_details"
+													"properties": {
+														"action": {
+															"$ref": "#/components/schemas/content_list_action"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -707,7 +1383,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -721,7 +1415,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -812,14 +1524,35 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"entries": {
-													"$ref": "#/components/schemas/content_list_entries"
+													"description": "Content list entries.",
+													"items": {
+														"$ref": "#/components/schemas/content_list_entry"
+													},
+													"type": "array"
 												}
 											},
 											"type": "object"
@@ -840,14 +1573,35 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"entries": {
-															"$ref": "#/components/schemas/content_list_entries"
+															"description": "Content list entries.",
+															"items": {
+																"$ref": "#/components/schemas/content_list_entry"
+															},
+															"type": "array"
 														}
 													},
 													"type": "object"
@@ -861,7 +1615,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -875,7 +1647,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -978,12 +1768,53 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/content_list_entry"
+											"description": "Content list entry to be blocked.",
+											"properties": {
+												"content": {
+													"$ref": "#/components/schemas/content_list_entry_content"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/content_list_entry_description"
+												},
+												"id": {
+													"$ref": "#/components/schemas/common_components-schemas-identifier"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"type": {
+													"$ref": "#/components/schemas/content_list_entry_type"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1001,12 +1832,53 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/content_list_entry"
+													"description": "Content list entry to be blocked.",
+													"properties": {
+														"content": {
+															"$ref": "#/components/schemas/content_list_entry_content"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/content_list_entry_description"
+														},
+														"id": {
+															"$ref": "#/components/schemas/common_components-schemas-identifier"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"type": {
+															"$ref": "#/components/schemas/content_list_entry_type"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1017,7 +1889,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1031,7 +1921,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1121,10 +2029,15 @@
 					"schema": {
 						"properties": {
 							"description": {
-								"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+								"description": "An optional description of the hostname.",
+								"example": "This is my IPFS gateway.",
+								"maxLength": 500,
+								"type": "string"
 							},
 							"dnslink": {
-								"$ref": "#/components/schemas/dnslink"
+								"description": "DNSLink value used if the target is ipfs.",
+								"example": "/ipns/onboarding.ipfs.cloudflare.com",
+								"type": "string"
 							}
 						},
 						"type": "object"
@@ -1140,12 +2053,58 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/web3-hostname"
+											"properties": {
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+												},
+												"dnslink": {
+													"$ref": "#/components/schemas/dnslink"
+												},
+												"id": {
+													"$ref": "#/components/schemas/common_components-schemas-identifier"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"name": {
+													"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+												},
+												"status": {
+													"$ref": "#/components/schemas/web3-hostname_components-schemas-status"
+												},
+												"target": {
+													"$ref": "#/components/schemas/schemas-target"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1163,12 +2122,58 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/web3-hostname"
+													"properties": {
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+														},
+														"dnslink": {
+															"$ref": "#/components/schemas/dnslink"
+														},
+														"id": {
+															"$ref": "#/components/schemas/common_components-schemas-identifier"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"name": {
+															"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+														},
+														"status": {
+															"$ref": "#/components/schemas/web3-hostname_components-schemas-status"
+														},
+														"target": {
+															"$ref": "#/components/schemas/schemas-target"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1179,7 +2184,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1193,7 +2216,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1271,16 +2312,33 @@
 					"schema": {
 						"properties": {
 							"description": {
-								"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+								"description": "An optional description of the hostname.",
+								"example": "This is my IPFS gateway.",
+								"maxLength": 500,
+								"type": "string"
 							},
 							"dnslink": {
-								"$ref": "#/components/schemas/dnslink"
+								"description": "DNSLink value used if the target is ipfs.",
+								"example": "/ipns/onboarding.ipfs.cloudflare.com",
+								"type": "string"
 							},
 							"name": {
-								"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+								"description": "The hostname that will point to the target gateway via CNAME.",
+								"example": "gateway.example.com",
+								"maxLength": 255,
+								"readOnly": true,
+								"type": "string"
 							},
 							"target": {
-								"$ref": "#/components/schemas/schemas-target"
+								"description": "Target gateway of the hostname.",
+								"enum": [
+									"ethereum",
+									"ipfs",
+									"ipfs_universal_path",
+									"polygon"
+								],
+								"example": "ipfs",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -1300,12 +2358,58 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/web3-hostname"
+											"properties": {
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+												},
+												"dnslink": {
+													"$ref": "#/components/schemas/dnslink"
+												},
+												"id": {
+													"$ref": "#/components/schemas/common_components-schemas-identifier"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"name": {
+													"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+												},
+												"status": {
+													"$ref": "#/components/schemas/web3-hostname_components-schemas-status"
+												},
+												"target": {
+													"$ref": "#/components/schemas/schemas-target"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1323,12 +2427,58 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/web3-hostname"
+													"properties": {
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+														},
+														"dnslink": {
+															"$ref": "#/components/schemas/dnslink"
+														},
+														"id": {
+															"$ref": "#/components/schemas/common_components-schemas-identifier"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"name": {
+															"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+														},
+														"status": {
+															"$ref": "#/components/schemas/web3-hostname_components-schemas-status"
+														},
+														"target": {
+															"$ref": "#/components/schemas/schemas-target"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1339,7 +2489,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1353,7 +2521,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1443,13 +2629,25 @@
 					"schema": {
 						"properties": {
 							"content": {
-								"$ref": "#/components/schemas/content_list_entry_content"
+								"description": "CID or content path of content to block.",
+								"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
+								"maxLength": 500,
+								"type": "string"
 							},
 							"description": {
-								"$ref": "#/components/schemas/content_list_entry_description"
+								"description": "An optional description of the content list entry.",
+								"example": "this is my content list entry",
+								"maxLength": 500,
+								"type": "string"
 							},
 							"type": {
-								"$ref": "#/components/schemas/content_list_entry_type"
+								"description": "Type of content list entry to block.",
+								"enum": [
+									"cid",
+									"content_path"
+								],
+								"example": "cid",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -1469,12 +2667,53 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/content_list_entry"
+											"description": "Content list entry to be blocked.",
+											"properties": {
+												"content": {
+													"$ref": "#/components/schemas/content_list_entry_content"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/content_list_entry_description"
+												},
+												"id": {
+													"$ref": "#/components/schemas/common_components-schemas-identifier"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"type": {
+													"$ref": "#/components/schemas/content_list_entry_type"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1492,12 +2731,53 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/content_list_entry"
+													"description": "Content list entry to be blocked.",
+													"properties": {
+														"content": {
+															"$ref": "#/components/schemas/content_list_entry_content"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/content_list_entry_description"
+														},
+														"id": {
+															"$ref": "#/components/schemas/common_components-schemas-identifier"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"type": {
+															"$ref": "#/components/schemas/content_list_entry_type"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1508,7 +2788,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1522,7 +2820,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1612,10 +2928,19 @@
 					"schema": {
 						"properties": {
 							"action": {
-								"$ref": "#/components/schemas/content_list_action"
+								"description": "Behavior of the content list.",
+								"enum": [
+									"block"
+								],
+								"example": "block",
+								"type": "string"
 							},
 							"entries": {
-								"$ref": "#/components/schemas/content_list_entries"
+								"description": "Content list entries.",
+								"items": {
+									"$ref": "#/components/schemas/content_list_entry"
+								},
+								"type": "array"
 							}
 						},
 						"required": [
@@ -1635,12 +2960,37 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/content_list_details"
+											"properties": {
+												"action": {
+													"$ref": "#/components/schemas/content_list_action"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1658,12 +3008,37 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/content_list_details"
+													"properties": {
+														"action": {
+															"$ref": "#/components/schemas/content_list_action"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1674,7 +3049,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1688,7 +3081,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1790,13 +3201,25 @@
 					"schema": {
 						"properties": {
 							"content": {
-								"$ref": "#/components/schemas/content_list_entry_content"
+								"description": "CID or content path of content to block.",
+								"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
+								"maxLength": 500,
+								"type": "string"
 							},
 							"description": {
-								"$ref": "#/components/schemas/content_list_entry_description"
+								"description": "An optional description of the content list entry.",
+								"example": "this is my content list entry",
+								"maxLength": 500,
+								"type": "string"
 							},
 							"type": {
-								"$ref": "#/components/schemas/content_list_entry_type"
+								"description": "Type of content list entry to block.",
+								"enum": [
+									"cid",
+									"content_path"
+								],
+								"example": "cid",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -1816,12 +3239,53 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/content_list_entry"
+											"description": "Content list entry to be blocked.",
+											"properties": {
+												"content": {
+													"$ref": "#/components/schemas/content_list_entry_content"
+												},
+												"created_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/content_list_entry_description"
+												},
+												"id": {
+													"$ref": "#/components/schemas/common_components-schemas-identifier"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"type": {
+													"$ref": "#/components/schemas/content_list_entry_type"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1839,12 +3303,53 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/content_list_entry"
+													"description": "Content list entry to be blocked.",
+													"properties": {
+														"content": {
+															"$ref": "#/components/schemas/content_list_entry_content"
+														},
+														"created_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/content_list_entry_description"
+														},
+														"id": {
+															"$ref": "#/components/schemas/common_components-schemas-identifier"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"type": {
+															"$ref": "#/components/schemas/content_list_entry_type"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1855,7 +3360,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1869,7 +3392,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

@@ -7,16 +7,35 @@
 	},
 	"properties": {
 		"allowedOrigins": {
-			"$ref": "#/components/schemas/live_input_recording_allowedOrigins"
+			"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
+			"example": [
+				"example.com"
+			],
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
 		},
 		"mode": {
-			"$ref": "#/components/schemas/live_input_recording_mode"
+			"default": "off",
+			"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
+			"enum": [
+				"off",
+				"automatic"
+			],
+			"example": "automatic",
+			"type": "string"
 		},
 		"requireSignedURLs": {
-			"$ref": "#/components/schemas/live_input_recording_requireSignedURLs"
+			"default": false,
+			"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
+			"example": true,
+			"type": "boolean"
 		},
 		"timeoutSeconds": {
-			"$ref": "#/components/schemas/live_input_recording_timeoutSeconds"
+			"default": 0,
+			"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
+			"type": "integer"
 		}
 	},
 	"type": "object"

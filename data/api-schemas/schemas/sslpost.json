@@ -15,7 +15,14 @@
 					"type": "string"
 				},
 				"certificate_authority": {
-					"$ref": "#/components/schemas/certificate_authority"
+					"description": "The Certificate Authority that will issue the certificate",
+					"enum": [
+						"digicert",
+						"google",
+						"lets_encrypt"
+					],
+					"example": "google",
+					"type": "string"
 				},
 				"custom_certificate": {
 					"description": "If a custom uploaded certificate is used.",
@@ -37,7 +44,56 @@
 					"example": "http"
 				},
 				"settings": {
-					"$ref": "#/components/schemas/sslsettings"
+					"description": "SSL specific settings.",
+					"properties": {
+						"ciphers": {
+							"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+							"example": [
+								"ECDHE-RSA-AES128-GCM-SHA256",
+								"AES128-SHA"
+							],
+							"items": {
+								"type": "string"
+							},
+							"type": "array",
+							"uniqueItems": true
+						},
+						"early_hints": {
+							"description": "Whether or not Early Hints is enabled.",
+							"enum": [
+								"on",
+								"off"
+							],
+							"example": "on"
+						},
+						"http2": {
+							"description": "Whether or not HTTP2 is enabled.",
+							"enum": [
+								"on",
+								"off"
+							],
+							"example": "on"
+						},
+						"min_tls_version": {
+							"description": "The minimum TLS version supported.",
+							"enum": [
+								"1.0",
+								"1.1",
+								"1.2",
+								"1.3"
+							],
+							"example": "1.2"
+						},
+						"tls_1_3": {
+							"description": "Whether or not TLS 1.3 is enabled.",
+							"enum": [
+								"on",
+								"off"
+							],
+							"example": "on"
+						}
+					},
+					"type": "object"
 				},
 				"type": {
 					"description": "Level of validation to be used for this hostname. Domain validation (dv) must be used.",

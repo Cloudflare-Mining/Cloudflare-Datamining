@@ -2,7 +2,14 @@
 	"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
 	"properties": {
 		"block": {
-			"$ref": "#/components/schemas/waf_rewrite_action"
+			"description": "The WAF rule action to apply.",
+			"enum": [
+				"challenge",
+				"block",
+				"simulate",
+				"disable",
+				"default"
+			]
 		},
 		"challenge": {
 			"example": "block"
@@ -11,7 +18,14 @@
 			"example": "block"
 		},
 		"disable": {
-			"$ref": "#/components/schemas/waf_rewrite_action"
+			"description": "The WAF rule action to apply.",
+			"enum": [
+				"challenge",
+				"block",
+				"simulate",
+				"disable",
+				"default"
+			]
 		},
 		"simulate": {
 			"example": "disable"

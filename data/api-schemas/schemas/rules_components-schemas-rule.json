@@ -2,37 +2,82 @@
 	"description": "A rule object.",
 	"properties": {
 		"action": {
-			"$ref": "#/components/schemas/rules_components-schemas-action"
+			"description": "The action to perform when the rule matches.",
+			"example": "execute",
+			"pattern": "^[a-z_]+$",
+			"type": "string"
 		},
 		"action_parameters": {
-			"$ref": "#/components/schemas/action_parameters"
+			"description": "The parameters configuring the rule action.",
+			"example": {
+				"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+			},
+			"type": "object"
 		},
 		"categories": {
-			"$ref": "#/components/schemas/categories-uRVTluua"
+			"description": "The categories of the rule.",
+			"example": [
+				"directory-traversal",
+				"header"
+			],
+			"items": {
+				"description": "A category of the rule.",
+				"example": "directory-traversal",
+				"type": "string"
+			},
+			"type": "array"
 		},
 		"description": {
-			"$ref": "#/components/schemas/rules_components-schemas-description"
+			"default": "",
+			"description": "An informative description of the rule.",
+			"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1",
+			"type": "string"
 		},
 		"enabled": {
-			"$ref": "#/components/schemas/rules_components-schemas-enabled"
+			"default": "true",
+			"description": "Whether the rule should be executed.",
+			"example": true,
+			"type": "boolean"
 		},
 		"expression": {
-			"$ref": "#/components/schemas/schemas-expression"
+			"description": "The expression defining which traffic will match the rule.",
+			"example": "ip.src ne 1.1.1.1",
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/rules_components-schemas-id"
+			"description": "The unique ID of the rule.",
+			"example": "3a03d665bac047339bb530ecb439a90d",
+			"type": "string"
 		},
 		"last_updated": {
-			"$ref": "#/components/schemas/schemas-last_updated"
+			"description": "The timestamp of when the rule was last modified.",
+			"example": "2000-01-01T00:00:00.000000Z",
+			"type": "string"
 		},
 		"logging": {
-			"$ref": "#/components/schemas/logging"
+			"description": "An object configuring the rule's logging behavior.",
+			"example": {
+				"enabled": true
+			},
+			"properties": {
+				"enabled": {
+					"description": "Whether to generate a log when the rule matches.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"ref": {
-			"$ref": "#/components/schemas/components-schemas-ref"
+			"description": "The reference of the rule (the rule ID by default).",
+			"example": "my_ref",
+			"type": "string"
 		},
 		"version": {
-			"$ref": "#/components/schemas/schemas-version"
+			"description": "The version of the rule.",
+			"example": "1",
+			"pattern": "^[0-9]+$",
+			"type": "string"
 		}
 	},
 	"type": "object"

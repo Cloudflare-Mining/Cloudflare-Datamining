@@ -2,7 +2,13 @@
 	"description": "Update enablement of Tiered Caching",
 	"properties": {
 		"value": {
-			"$ref": "#/components/schemas/value"
+			"description": "Enables Tiered Caching.",
+			"enum": [
+				"on",
+				"off"
+			],
+			"example": "on",
+			"type": "string"
 		}
 	},
 	"required": [

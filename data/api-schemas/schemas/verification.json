@@ -1,28 +1,89 @@
 {
 	"properties": {
 		"brand_check": {
-			"$ref": "#/components/schemas/brand_check"
+			"description": "Certificate Authority is manually reviewing the order.",
+			"example": false,
+			"type": "boolean"
 		},
 		"cert_pack_uuid": {
-			"$ref": "#/components/schemas/cert_pack_uuid"
+			"description": "Certificate Pack UUID.",
+			"example": "a77f8bd7-3b47-46b4-a6f1-75cf98109948",
+			"type": "string"
 		},
 		"certificate_status": {
-			"$ref": "#/components/schemas/certificate_status"
+			"description": "Current status of certificate.",
+			"enum": [
+				"initializing",
+				"authorizing",
+				"active",
+				"expired",
+				"issuing",
+				"timing_out",
+				"pending_deployment"
+			],
+			"example": "active",
+			"type": "string"
 		},
 		"signature": {
-			"$ref": "#/components/schemas/schemas-signature"
+			"description": "Certificate's signature algorithm.",
+			"enum": [
+				"ECDSAWithSHA256",
+				"SHA1WithRSA",
+				"SHA256WithRSA"
+			],
+			"type": "string"
 		},
 		"validation_method": {
-			"$ref": "#/components/schemas/schemas-validation_method"
+			"description": "Validation method in use for a certificate pack order.",
+			"enum": [
+				"http",
+				"cname",
+				"txt"
+			],
+			"example": "txt",
+			"type": "string"
 		},
 		"verification_info": {
-			"$ref": "#/components/schemas/verification_info"
+			"description": "Certificate's required verification information.",
+			"enum": [
+				"record_name",
+				"record_value",
+				"http_url",
+				"http_body",
+				"cname",
+				"cname_target",
+				"txt_name",
+				"txt_value"
+			],
+			"properties": {
+				"record_name": {
+					"description": "Name of CNAME record.",
+					"example": "b3b90cfedd89a3e487d3e383c56c4267.example.com",
+					"format": "hostname",
+					"type": "string"
+				},
+				"record_target": {
+					"description": "Target of CNAME record.",
+					"example": "6979be7e4cfc9e5c603e31df7efac9cc60fee82d.comodoca.com",
+					"format": "hostname",
+					"type": "string"
+				}
+			},
+			"type": "object"
 		},
 		"verification_status": {
-			"$ref": "#/components/schemas/verification_status"
+			"description": "Status of the required verification information, omitted if verification status is unknown.",
+			"example": true,
+			"type": "boolean"
 		},
 		"verification_type": {
-			"$ref": "#/components/schemas/verification_type"
+			"description": "Method of verification.",
+			"enum": [
+				"cname",
+				"meta tag"
+			],
+			"example": "cname",
+			"type": "string"
 		}
 	},
 	"required": [

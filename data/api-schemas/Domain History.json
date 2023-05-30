@@ -29,13 +29,60 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/domain-history-N6ONQ1Kc"
+												"properties": {
+													"categorizations": {
+														"items": {
+															"properties": {
+																"categories": {
+																	"example": [
+																		{
+																			"id": 155,
+																			"name": "Technology"
+																		}
+																	]
+																},
+																"end": {
+																	"example": "2021-04-30",
+																	"format": "date",
+																	"type": "string"
+																},
+																"start": {
+																	"example": "2021-04-01",
+																	"format": "date",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"domain": {
+														"$ref": "#/components/schemas/schemas-domain_name"
+													}
+												}
 											},
 											"type": "array"
 										}
@@ -55,13 +102,60 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/domain-history-N6ONQ1Kc"
+														"properties": {
+															"categorizations": {
+																"items": {
+																	"properties": {
+																		"categories": {
+																			"example": [
+																				{
+																					"id": 155,
+																					"name": "Technology"
+																				}
+																			]
+																		},
+																		"end": {
+																			"example": "2021-04-30",
+																			"format": "date",
+																			"type": "string"
+																		},
+																		"start": {
+																			"example": "2021-04-01",
+																			"format": "date",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"domain": {
+																"$ref": "#/components/schemas/schemas-domain_name"
+															}
+														}
 													},
 													"type": "array"
 												}
@@ -74,7 +168,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -88,7 +200,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

@@ -1,12 +1,157 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-PMzx1XXd"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/phishing-url-submit"
+					"properties": {
+						"excluded_urls": {
+							"description": "URLs that were excluded from scanning because their domain is in our no-scan list.",
+							"items": {
+								"properties": {
+									"url": {
+										"description": "URL that was excluded.",
+										"example": "https://developers.cloudflare.com",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"skipped_urls": {
+							"description": "URLs that were skipped because the same URL is currently being scanned",
+							"items": {
+								"properties": {
+									"url": {
+										"description": "URL that was skipped.",
+										"example": "https://www.cloudflare.com/developer-week/",
+										"type": "string"
+									},
+									"url_id": {
+										"description": "ID of the submission of that URL that is currently scanning.",
+										"example": 2,
+										"type": "integer"
+									}
+								},
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"submitted_urls": {
+							"description": "URLs that were successfully submitted for scanning.",
+							"items": {
+								"properties": {
+									"url": {
+										"description": "URL that was submitted.",
+										"example": "https://www.cloudflare.com",
+										"type": "string"
+									},
+									"url_id": {
+										"description": "ID assigned to this URL submission. Used to retrieve scanning results.",
+										"example": 1,
+										"type": "integer"
+									}
+								},
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
 				}
 			}
 		}

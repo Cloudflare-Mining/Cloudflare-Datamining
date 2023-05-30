@@ -1,16 +1,31 @@
 {
 	"properties": {
 		"can_delete": {
-			"$ref": "#/components/schemas/schemas-can_delete"
+			"description": "Controls whether the membership can be deleted via the API or not.",
+			"example": true,
+			"type": "boolean"
 		},
 		"created_at": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"identifier": {
-			"$ref": "#/components/schemas/identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"kind": {
-			"$ref": "#/components/schemas/kind"
+			"description": "The type of the membership.",
+			"enum": [
+				"zone",
+				"account"
+			],
+			"example": "zone",
+			"type": "string"
 		}
 	},
 	"type": "object"

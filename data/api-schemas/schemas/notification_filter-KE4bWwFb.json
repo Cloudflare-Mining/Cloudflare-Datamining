@@ -11,10 +11,38 @@
 	"nullable": true,
 	"properties": {
 		"origin": {
-			"$ref": "#/components/schemas/filter_options-XNrEMTN4"
+			"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
+			"nullable": true,
+			"properties": {
+				"disable": {
+					"default": false,
+					"description": "If set true, disable notifications for this type of resource (pool or origin).",
+					"type": "boolean"
+				},
+				"healthy": {
+					"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
+					"nullable": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"pool": {
-			"$ref": "#/components/schemas/filter_options-XNrEMTN4"
+			"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
+			"nullable": true,
+			"properties": {
+				"disable": {
+					"default": false,
+					"description": "If set true, disable notifications for this type of resource (pool or origin).",
+					"type": "boolean"
+				},
+				"healthy": {
+					"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
+					"nullable": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		}
 	},
 	"type": "object"

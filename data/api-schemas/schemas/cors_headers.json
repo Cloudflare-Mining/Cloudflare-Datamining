@@ -1,28 +1,62 @@
 {
 	"properties": {
 		"allow_all_headers": {
-			"$ref": "#/components/schemas/allow_all_headers"
+			"description": "Allows all HTTP request headers.",
+			"example": true,
+			"type": "boolean"
 		},
 		"allow_all_methods": {
-			"$ref": "#/components/schemas/allow_all_methods"
+			"description": "Allows all HTTP request methods.",
+			"type": "boolean"
 		},
 		"allow_all_origins": {
-			"$ref": "#/components/schemas/allow_all_origins"
+			"description": "Allows all origins.",
+			"type": "boolean"
 		},
 		"allow_credentials": {
-			"$ref": "#/components/schemas/allow_credentials"
+			"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.",
+			"type": "boolean"
 		},
 		"allowed_headers": {
-			"$ref": "#/components/schemas/allowed_headers"
+			"description": "Allowed HTTP request headers.",
+			"items": {},
+			"type": "array"
 		},
 		"allowed_methods": {
-			"$ref": "#/components/schemas/allowed_methods"
+			"description": "Allowed HTTP request methods.",
+			"example": [
+				"GET"
+			],
+			"items": {
+				"enum": [
+					"GET",
+					"POST",
+					"HEAD",
+					"PUT",
+					"DELETE",
+					"CONNECT",
+					"OPTIONS",
+					"TRACE",
+					"PATCH"
+				],
+				"type": "string"
+			},
+			"type": "array"
 		},
 		"allowed_origins": {
-			"$ref": "#/components/schemas/allowed_origins"
+			"description": "Allowed origins.",
+			"example": [
+				"https://example.com"
+			],
+			"items": {},
+			"type": "array"
 		},
 		"max_age": {
-			"$ref": "#/components/schemas/max_age"
+			"description": "The maximum number of seconds the results of a preflight request can be cached.",
+			"example": -1,
+			"maximum": 86400,
+			"minimum": -1,
+			"type": "number"
 		}
 	},
 	"type": "object"

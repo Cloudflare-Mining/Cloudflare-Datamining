@@ -42,14 +42,33 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/item_id"
+													"description": "The unique ID of the item in the List.",
+													"example": "34b12448945f11eaa1b71c4d701ab86e",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -71,14 +90,33 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/item_id"
+															"description": "The unique ID of the item in the List.",
+															"example": "34b12448945f11eaa1b71c4d701ab86e",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -93,7 +131,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -107,7 +163,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -225,14 +299,34 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"operation_id": {
-													"$ref": "#/components/schemas/operation_id"
+													"description": "The unique operation ID of the asynchronous action.",
+													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -254,14 +348,34 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"operation_id": {
-															"$ref": "#/components/schemas/operation_id"
+															"description": "The unique operation ID of the asynchronous action.",
+															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -276,7 +390,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -290,7 +422,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -370,7 +520,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -378,7 +545,32 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/list"
+														"properties": {
+															"created_on": {
+																"$ref": "#/components/schemas/schemas-created_on-IfmU8KVz"
+															},
+															"description": {
+																"$ref": "#/components/schemas/lists_components-schemas-description"
+															},
+															"id": {
+																"$ref": "#/components/schemas/list_id"
+															},
+															"kind": {
+																"$ref": "#/components/schemas/kind-CYhezdJb"
+															},
+															"modified_on": {
+																"$ref": "#/components/schemas/lists_components-schemas-modified_on"
+															},
+															"name": {
+																"$ref": "#/components/schemas/lists_components-schemas-name"
+															},
+															"num_items": {
+																"$ref": "#/components/schemas/num_items"
+															},
+															"num_referencing_filters": {
+																"$ref": "#/components/schemas/num_referencing_filters"
+															}
+														}
 													},
 													{
 														"required": [
@@ -412,7 +604,24 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -420,7 +629,32 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/list"
+																"properties": {
+																	"created_on": {
+																		"$ref": "#/components/schemas/schemas-created_on-IfmU8KVz"
+																	},
+																	"description": {
+																		"$ref": "#/components/schemas/lists_components-schemas-description"
+																	},
+																	"id": {
+																		"$ref": "#/components/schemas/list_id"
+																	},
+																	"kind": {
+																		"$ref": "#/components/schemas/kind-CYhezdJb"
+																	},
+																	"modified_on": {
+																		"$ref": "#/components/schemas/lists_components-schemas-modified_on"
+																	},
+																	"name": {
+																		"$ref": "#/components/schemas/lists_components-schemas-name"
+																	},
+																	"num_items": {
+																		"$ref": "#/components/schemas/num_items"
+																	},
+																	"num_referencing_filters": {
+																		"$ref": "#/components/schemas/num_referencing_filters"
+																	}
+																}
 															},
 															{
 																"required": [
@@ -447,7 +681,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -461,7 +713,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -554,12 +824,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/list"
+											"properties": {
+												"created_on": {
+													"$ref": "#/components/schemas/schemas-created_on-IfmU8KVz"
+												},
+												"description": {
+													"$ref": "#/components/schemas/lists_components-schemas-description"
+												},
+												"id": {
+													"$ref": "#/components/schemas/list_id"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/kind-CYhezdJb"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/lists_components-schemas-modified_on"
+												},
+												"name": {
+													"$ref": "#/components/schemas/lists_components-schemas-name"
+												},
+												"num_items": {
+													"$ref": "#/components/schemas/num_items"
+												},
+												"num_referencing_filters": {
+													"$ref": "#/components/schemas/num_referencing_filters"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -578,12 +890,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/list"
+													"properties": {
+														"created_on": {
+															"$ref": "#/components/schemas/schemas-created_on-IfmU8KVz"
+														},
+														"description": {
+															"$ref": "#/components/schemas/lists_components-schemas-description"
+														},
+														"id": {
+															"$ref": "#/components/schemas/list_id"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/kind-CYhezdJb"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/lists_components-schemas-modified_on"
+														},
+														"name": {
+															"$ref": "#/components/schemas/lists_components-schemas-name"
+														},
+														"num_items": {
+															"$ref": "#/components/schemas/num_items"
+														},
+														"num_referencing_filters": {
+															"$ref": "#/components/schemas/num_referencing_filters"
+														}
+													}
 												}
 											},
 											"type": "object"
@@ -595,7 +949,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -609,7 +981,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -711,12 +1101,32 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/items-0Yt3wvU9"
+											"items": {
+												"$ref": "#/components/schemas/item"
+											},
+											"type": "array"
 										},
 										"result_info": {
 											"properties": {
@@ -753,12 +1163,32 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/items-0Yt3wvU9"
+													"items": {
+														"$ref": "#/components/schemas/item"
+													},
+													"type": "array"
 												},
 												"result_info": {
 													"properties": {
@@ -788,7 +1218,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -802,7 +1250,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -905,12 +1371,82 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/item"
+											"example": {
+												"comment": "Private IP address",
+												"created_on": "2020-01-01T08:00:00Z",
+												"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+												"ip": "10.0.0.1",
+												"modified_on": "2020-01-10T14:00:00Z"
+											},
+											"oneOf": [
+												{
+													"required": [
+														"ip"
+													]
+												},
+												{
+													"required": [
+														"redirect"
+													]
+												},
+												{
+													"required": [
+														"hostname"
+													]
+												}
+											],
+											"properties": {
+												"comment": {
+													"$ref": "#/components/schemas/item_comment"
+												},
+												"created_on": {
+													"description": "The RFC 3339 timestamp of when the item was created.",
+													"example": "2020-01-01T08:00:00Z",
+													"readOnly": true,
+													"type": "string"
+												},
+												"hostname": {
+													"$ref": "#/components/schemas/item_hostname"
+												},
+												"id": {
+													"$ref": "#/components/schemas/list_id"
+												},
+												"ip": {
+													"$ref": "#/components/schemas/item_ip"
+												},
+												"modified_on": {
+													"description": "The RFC 3339 timestamp of when the item was last modified.",
+													"example": "2020-01-10T14:00:00Z",
+													"readOnly": true,
+													"type": "string"
+												},
+												"redirect": {
+													"$ref": "#/components/schemas/item_redirect"
+												}
+											},
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -929,12 +1465,82 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/item"
+													"example": {
+														"comment": "Private IP address",
+														"created_on": "2020-01-01T08:00:00Z",
+														"id": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+														"ip": "10.0.0.1",
+														"modified_on": "2020-01-10T14:00:00Z"
+													},
+													"oneOf": [
+														{
+															"required": [
+																"ip"
+															]
+														},
+														{
+															"required": [
+																"redirect"
+															]
+														},
+														{
+															"required": [
+																"hostname"
+															]
+														}
+													],
+													"properties": {
+														"comment": {
+															"$ref": "#/components/schemas/item_comment"
+														},
+														"created_on": {
+															"description": "The RFC 3339 timestamp of when the item was created.",
+															"example": "2020-01-01T08:00:00Z",
+															"readOnly": true,
+															"type": "string"
+														},
+														"hostname": {
+															"$ref": "#/components/schemas/item_hostname"
+														},
+														"id": {
+															"$ref": "#/components/schemas/list_id"
+														},
+														"ip": {
+															"$ref": "#/components/schemas/item_ip"
+														},
+														"modified_on": {
+															"description": "The RFC 3339 timestamp of when the item was last modified.",
+															"example": "2020-01-10T14:00:00Z",
+															"readOnly": true,
+															"type": "string"
+														},
+														"redirect": {
+															"$ref": "#/components/schemas/item_redirect"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -946,7 +1552,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -960,7 +1584,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1051,12 +1693,62 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/schemas-operation"
+											"properties": {
+												"completed": {
+													"description": "The RFC 3339 timestamp of when the operation was completed.",
+													"example": "2020-01-01T08:00:00Z",
+													"readOnly": true,
+													"type": "string"
+												},
+												"error": {
+													"description": "A message describing the error when the status is `failed`.",
+													"example": "This list is at the maximum number of items",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"$ref": "#/components/schemas/operation_id"
+												},
+												"status": {
+													"description": "The current status of the asynchronous operation.",
+													"enum": [
+														"pending",
+														"running",
+														"completed",
+														"failed"
+													],
+													"example": "failed",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"status"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -1075,12 +1767,62 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/schemas-operation"
+													"properties": {
+														"completed": {
+															"description": "The RFC 3339 timestamp of when the operation was completed.",
+															"example": "2020-01-01T08:00:00Z",
+															"readOnly": true,
+															"type": "string"
+														},
+														"error": {
+															"description": "A message describing the error when the status is `failed`.",
+															"example": "This list is at the maximum number of items",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"$ref": "#/components/schemas/operation_id"
+														},
+														"status": {
+															"description": "The current status of the asynchronous operation.",
+															"enum": [
+																"pending",
+																"running",
+																"completed",
+																"failed"
+															],
+															"example": "failed",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"id",
+														"status"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -1092,7 +1834,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1106,7 +1866,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1225,12 +2003,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/list"
+											"properties": {
+												"created_on": {
+													"$ref": "#/components/schemas/schemas-created_on-IfmU8KVz"
+												},
+												"description": {
+													"$ref": "#/components/schemas/lists_components-schemas-description"
+												},
+												"id": {
+													"$ref": "#/components/schemas/list_id"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/kind-CYhezdJb"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/lists_components-schemas-modified_on"
+												},
+												"name": {
+													"$ref": "#/components/schemas/lists_components-schemas-name"
+												},
+												"num_items": {
+													"$ref": "#/components/schemas/num_items"
+												},
+												"num_referencing_filters": {
+													"$ref": "#/components/schemas/num_referencing_filters"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -1249,12 +2069,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/list"
+													"properties": {
+														"created_on": {
+															"$ref": "#/components/schemas/schemas-created_on-IfmU8KVz"
+														},
+														"description": {
+															"$ref": "#/components/schemas/lists_components-schemas-description"
+														},
+														"id": {
+															"$ref": "#/components/schemas/list_id"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/kind-CYhezdJb"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/lists_components-schemas-modified_on"
+														},
+														"name": {
+															"$ref": "#/components/schemas/lists_components-schemas-name"
+														},
+														"num_items": {
+															"$ref": "#/components/schemas/num_items"
+														},
+														"num_referencing_filters": {
+															"$ref": "#/components/schemas/num_referencing_filters"
+														}
+													}
 												}
 											},
 											"type": "object"
@@ -1266,7 +2128,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1280,7 +2160,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1392,13 +2290,58 @@
 									],
 									"properties": {
 										"comment": {
-											"$ref": "#/components/schemas/item_comment"
+											"description": "An informative summary of the list item.",
+											"example": "Private IP address",
+											"type": "string"
 										},
 										"ip": {
-											"$ref": "#/components/schemas/item_ip"
+											"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
+											"example": "10.0.0.1",
+											"type": "string"
 										},
 										"redirect": {
-											"$ref": "#/components/schemas/item_redirect"
+											"description": "The definition of the redirect.",
+											"properties": {
+												"include_subdomains": {
+													"default": false,
+													"type": "boolean"
+												},
+												"preserve_path_suffix": {
+													"default": true,
+													"type": "boolean"
+												},
+												"preserve_query_string": {
+													"default": false,
+													"type": "boolean"
+												},
+												"source_url": {
+													"example": "example.com/arch",
+													"type": "string"
+												},
+												"status_code": {
+													"default": 301,
+													"enum": [
+														301,
+														302,
+														307,
+														308
+													],
+													"type": "integer"
+												},
+												"subpath_matching": {
+													"default": false,
+													"type": "boolean"
+												},
+												"target_url": {
+													"example": "https://archlinux.org/",
+													"type": "string"
+												}
+											},
+											"required": [
+												"source_url",
+												"target_url"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -1418,14 +2361,34 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"operation_id": {
-													"$ref": "#/components/schemas/operation_id"
+													"description": "The unique operation ID of the asynchronous action.",
+													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -1447,14 +2410,34 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"operation_id": {
-															"$ref": "#/components/schemas/operation_id"
+															"description": "The unique operation ID of the asynchronous action.",
+															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -1469,7 +2452,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1483,7 +2484,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1594,12 +2613,54 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/list"
+											"properties": {
+												"created_on": {
+													"$ref": "#/components/schemas/schemas-created_on-IfmU8KVz"
+												},
+												"description": {
+													"$ref": "#/components/schemas/lists_components-schemas-description"
+												},
+												"id": {
+													"$ref": "#/components/schemas/list_id"
+												},
+												"kind": {
+													"$ref": "#/components/schemas/kind-CYhezdJb"
+												},
+												"modified_on": {
+													"$ref": "#/components/schemas/lists_components-schemas-modified_on"
+												},
+												"name": {
+													"$ref": "#/components/schemas/lists_components-schemas-name"
+												},
+												"num_items": {
+													"$ref": "#/components/schemas/num_items"
+												},
+												"num_referencing_filters": {
+													"$ref": "#/components/schemas/num_referencing_filters"
+												}
+											}
 										}
 									},
 									"type": "object"
@@ -1618,12 +2679,54 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/list"
+													"properties": {
+														"created_on": {
+															"$ref": "#/components/schemas/schemas-created_on-IfmU8KVz"
+														},
+														"description": {
+															"$ref": "#/components/schemas/lists_components-schemas-description"
+														},
+														"id": {
+															"$ref": "#/components/schemas/list_id"
+														},
+														"kind": {
+															"$ref": "#/components/schemas/kind-CYhezdJb"
+														},
+														"modified_on": {
+															"$ref": "#/components/schemas/lists_components-schemas-modified_on"
+														},
+														"name": {
+															"$ref": "#/components/schemas/lists_components-schemas-name"
+														},
+														"num_items": {
+															"$ref": "#/components/schemas/num_items"
+														},
+														"num_referencing_filters": {
+															"$ref": "#/components/schemas/num_referencing_filters"
+														}
+													}
 												}
 											},
 											"type": "object"
@@ -1635,7 +2738,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1649,7 +2770,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1761,13 +2900,58 @@
 									],
 									"properties": {
 										"comment": {
-											"$ref": "#/components/schemas/item_comment"
+											"description": "An informative summary of the list item.",
+											"example": "Private IP address",
+											"type": "string"
 										},
 										"ip": {
-											"$ref": "#/components/schemas/item_ip"
+											"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
+											"example": "10.0.0.1",
+											"type": "string"
 										},
 										"redirect": {
-											"$ref": "#/components/schemas/item_redirect"
+											"description": "The definition of the redirect.",
+											"properties": {
+												"include_subdomains": {
+													"default": false,
+													"type": "boolean"
+												},
+												"preserve_path_suffix": {
+													"default": true,
+													"type": "boolean"
+												},
+												"preserve_query_string": {
+													"default": false,
+													"type": "boolean"
+												},
+												"source_url": {
+													"example": "example.com/arch",
+													"type": "string"
+												},
+												"status_code": {
+													"default": 301,
+													"enum": [
+														301,
+														302,
+														307,
+														308
+													],
+													"type": "integer"
+												},
+												"subpath_matching": {
+													"default": false,
+													"type": "boolean"
+												},
+												"target_url": {
+													"example": "https://archlinux.org/",
+													"type": "string"
+												}
+											},
+											"required": [
+												"source_url",
+												"target_url"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -1787,14 +2971,34 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"operation_id": {
-													"$ref": "#/components/schemas/operation_id"
+													"description": "The unique operation ID of the asynchronous action.",
+													"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -1816,14 +3020,34 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"operation_id": {
-															"$ref": "#/components/schemas/operation_id"
+															"description": "The unique operation ID of the asynchronous action.",
+															"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -1838,7 +3062,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1852,7 +3094,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

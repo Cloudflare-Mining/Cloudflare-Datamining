@@ -1,10 +1,14 @@
 {
 	"properties": {
 		"service": {
-			"$ref": "#/components/schemas/service"
+			"description": "The service using the certificate.",
+			"example": "gateway",
+			"type": "string"
 		},
 		"status": {
-			"$ref": "#/components/schemas/mtls-management_components-schemas-status"
+			"description": "Certificate deployment status for the given service.",
+			"example": "pending_deployment",
+			"type": "string"
 		}
 	}
 }

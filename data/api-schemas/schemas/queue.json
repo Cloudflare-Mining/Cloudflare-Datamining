@@ -22,7 +22,8 @@
 			"readOnly": true
 		},
 		"queue_name": {
-			"$ref": "#/components/schemas/queues_components-schemas-name"
+			"example": "example-queue",
+			"type": "string"
 		}
 	},
 	"type": "object"

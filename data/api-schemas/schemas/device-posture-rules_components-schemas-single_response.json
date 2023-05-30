@@ -1,12 +1,169 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/device-posture-rules"
+					"properties": {
+						"description": {
+							"description": "The description of the Device Posture Rule.",
+							"example": "The rule for admin serial numbers",
+							"type": "string"
+						},
+						"expiration": {
+							"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
+							"example": "1h",
+							"type": "string"
+						},
+						"id": {
+							"description": "API uuid tag.",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"type": "string"
+						},
+						"input": {
+							"description": "The value to be checked against.",
+							"properties": {
+								"id": {
+									"description": "API uuid tag.",
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+									"maxLength": 36,
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"match": {
+							"description": "The conditions that the client must match to run the rule.",
+							"items": {
+								"properties": {
+									"platform": {
+										"$ref": "#/components/schemas/platform"
+									}
+								},
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"name": {
+							"description": "The name of the Device Posture Rule.",
+							"example": "Admin Serial Numbers",
+							"type": "string"
+						},
+						"schedule": {
+							"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
+							"example": "1h",
+							"type": "string"
+						},
+						"type": {
+							"description": "The type of Device Posture Rule.",
+							"enum": [
+								"file",
+								"application",
+								"serial_number",
+								"tanium",
+								"gateway",
+								"warp"
+							],
+							"example": "file",
+							"type": "string"
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

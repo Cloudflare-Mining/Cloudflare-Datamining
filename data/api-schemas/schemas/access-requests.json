@@ -1,31 +1,51 @@
 {
 	"properties": {
 		"action": {
-			"$ref": "#/components/schemas/action"
+			"description": "The event that occurred, such as a login attempt.",
+			"example": "login",
+			"type": "string"
 		},
 		"allowed": {
-			"$ref": "#/components/schemas/allowed"
+			"default": false,
+			"description": "The result of the authentication event.",
+			"type": "boolean"
 		},
 		"app_domain": {
-			"$ref": "#/components/schemas/app_domain"
+			"description": "The URL of the Access application.",
+			"example": "test.example.com/admin",
+			"type": "string"
 		},
 		"app_uid": {
-			"$ref": "#/components/schemas/app_uid"
+			"description": "The unique identifier for the Access application.",
+			"example": "df7e2w5f-02b7-4d9d-af26-8d1988fca630"
 		},
 		"connection": {
-			"$ref": "#/components/schemas/connection"
+			"description": "The IdP used to authenticate.",
+			"example": "saml",
+			"type": "string"
 		},
 		"created_at": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"ip_address": {
-			"$ref": "#/components/schemas/ip-3NaIBBpu"
+			"description": "The IP address of the authenticating user.",
+			"example": "198.41.129.166",
+			"type": "string"
 		},
 		"ray_id": {
-			"$ref": "#/components/schemas/ray_id"
+			"description": "The unique identifier for the request to Cloudflare.",
+			"example": "187d944c61940c77",
+			"maxLength": 16,
+			"type": "string"
 		},
 		"user_email": {
-			"$ref": "#/components/schemas/email"
+			"description": "The email address of the authenticating user.",
+			"example": "user@example.com",
+			"format": "email",
+			"type": "string"
 		}
 	},
 	"type": "object"

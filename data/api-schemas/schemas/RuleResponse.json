@@ -1,7 +1,64 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/RuleRequest"
+			"description": "A rule object.",
+			"properties": {
+				"action": {
+					"description": "The action to perform when the rule matches.",
+					"example": "execute",
+					"pattern": "^[a-z_]+$",
+					"type": "string"
+				},
+				"action_parameters": {
+					"description": "The parameters configuring the rule action.",
+					"example": {
+						"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+					},
+					"type": "object"
+				},
+				"description": {
+					"default": "",
+					"description": "An informative description of the rule.",
+					"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1",
+					"type": "string"
+				},
+				"enabled": {
+					"default": true,
+					"description": "Whether the rule should be executed.",
+					"example": true,
+					"type": "boolean"
+				},
+				"expression": {
+					"description": "The expression defining which traffic will match the rule.",
+					"example": "ip.src ne 1.1.1.1",
+					"type": "string"
+				},
+				"id": {
+					"description": "The unique ID of the rule.",
+					"example": "3a03d665bac047339bb530ecb439a90d",
+					"type": "string"
+				},
+				"logging": {
+					"description": "An object configuring the rule's logging behavior.",
+					"example": {
+						"enabled": true
+					},
+					"properties": {
+						"enabled": {
+							"description": "Whether to generate a log when the rule matches.",
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"type": "object"
+				},
+				"ref": {
+					"description": "The reference of the rule (the rule ID by default).",
+					"example": "my_ref",
+					"type": "string"
+				}
+			},
+			"type": "object"
 		},
 		{
 			"properties": {
@@ -12,7 +69,9 @@
 						"header"
 					],
 					"items": {
-						"$ref": "#/components/schemas/RuleCategory"
+						"description": "A category of the rule.",
+						"example": "directory-traversal",
+						"type": "string"
 					},
 					"type": "array"
 				},

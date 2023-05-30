@@ -19,12 +19,60 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/organizations"
+											"properties": {
+												"auth_domain": {
+													"$ref": "#/components/schemas/auth_domain"
+												},
+												"auto_redirect_to_identity": {
+													"$ref": "#/components/schemas/auto_redirect_to_identity"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"is_ui_read_only": {
+													"$ref": "#/components/schemas/is_ui_read_only"
+												},
+												"login_design": {
+													"$ref": "#/components/schemas/login_design"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-KJnykN6w"
+												},
+												"ui_read_only_toggle_reason": {
+													"$ref": "#/components/schemas/ui_read_only_toggle_reason"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"user_seat_expiration_inactive_time": {
+													"$ref": "#/components/schemas/user_seat_expiration_inactive_time"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -42,12 +90,60 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/organizations"
+													"properties": {
+														"auth_domain": {
+															"$ref": "#/components/schemas/auth_domain"
+														},
+														"auto_redirect_to_identity": {
+															"$ref": "#/components/schemas/auto_redirect_to_identity"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"is_ui_read_only": {
+															"$ref": "#/components/schemas/is_ui_read_only"
+														},
+														"login_design": {
+															"$ref": "#/components/schemas/login_design"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-KJnykN6w"
+														},
+														"ui_read_only_toggle_reason": {
+															"$ref": "#/components/schemas/ui_read_only_toggle_reason"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"user_seat_expiration_inactive_time": {
+															"$ref": "#/components/schemas/user_seat_expiration_inactive_time"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -58,7 +154,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -72,7 +186,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -213,12 +345,60 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/organizations"
+											"properties": {
+												"auth_domain": {
+													"$ref": "#/components/schemas/auth_domain"
+												},
+												"auto_redirect_to_identity": {
+													"$ref": "#/components/schemas/auto_redirect_to_identity"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"is_ui_read_only": {
+													"$ref": "#/components/schemas/is_ui_read_only"
+												},
+												"login_design": {
+													"$ref": "#/components/schemas/login_design"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-KJnykN6w"
+												},
+												"ui_read_only_toggle_reason": {
+													"$ref": "#/components/schemas/ui_read_only_toggle_reason"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"user_seat_expiration_inactive_time": {
+													"$ref": "#/components/schemas/user_seat_expiration_inactive_time"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -236,12 +416,60 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/organizations"
+													"properties": {
+														"auth_domain": {
+															"$ref": "#/components/schemas/auth_domain"
+														},
+														"auto_redirect_to_identity": {
+															"$ref": "#/components/schemas/auto_redirect_to_identity"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"is_ui_read_only": {
+															"$ref": "#/components/schemas/is_ui_read_only"
+														},
+														"login_design": {
+															"$ref": "#/components/schemas/login_design"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-KJnykN6w"
+														},
+														"ui_read_only_toggle_reason": {
+															"$ref": "#/components/schemas/ui_read_only_toggle_reason"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"user_seat_expiration_inactive_time": {
+															"$ref": "#/components/schemas/user_seat_expiration_inactive_time"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -252,7 +480,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -266,7 +512,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -411,7 +675,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -425,7 +707,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -562,12 +862,60 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/organizations"
+											"properties": {
+												"auth_domain": {
+													"$ref": "#/components/schemas/auth_domain"
+												},
+												"auto_redirect_to_identity": {
+													"$ref": "#/components/schemas/auto_redirect_to_identity"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"is_ui_read_only": {
+													"$ref": "#/components/schemas/is_ui_read_only"
+												},
+												"login_design": {
+													"$ref": "#/components/schemas/login_design"
+												},
+												"name": {
+													"$ref": "#/components/schemas/name-KJnykN6w"
+												},
+												"ui_read_only_toggle_reason": {
+													"$ref": "#/components/schemas/ui_read_only_toggle_reason"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"user_seat_expiration_inactive_time": {
+													"$ref": "#/components/schemas/user_seat_expiration_inactive_time"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -585,12 +933,60 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/organizations"
+													"properties": {
+														"auth_domain": {
+															"$ref": "#/components/schemas/auth_domain"
+														},
+														"auto_redirect_to_identity": {
+															"$ref": "#/components/schemas/auto_redirect_to_identity"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"is_ui_read_only": {
+															"$ref": "#/components/schemas/is_ui_read_only"
+														},
+														"login_design": {
+															"$ref": "#/components/schemas/login_design"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-KJnykN6w"
+														},
+														"ui_read_only_toggle_reason": {
+															"$ref": "#/components/schemas/ui_read_only_toggle_reason"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"user_seat_expiration_inactive_time": {
+															"$ref": "#/components/schemas/user_seat_expiration_inactive_time"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -601,7 +997,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -615,7 +1029,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

@@ -5,10 +5,16 @@
 			"type": "object"
 		},
 		"id": {
-			"$ref": "#/components/schemas/uuid"
+			"description": "UUID",
+			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"maxLength": 36,
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/schemas-name-LaMtSE0y"
+			"description": "The name of the identity provider, shown to users on the login page.",
+			"example": "Widget Corps IDP",
+			"type": "string"
 		},
 		"scim_config": {
 			"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",

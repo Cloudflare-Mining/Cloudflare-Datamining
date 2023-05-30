@@ -10,7 +10,8 @@
 			"readOnly": true
 		},
 		"queue_name": {
-			"$ref": "#/components/schemas/renamed_name"
+			"example": "renamed-example-queue",
+			"type": "string"
 		}
 	},
 	"type": "object"

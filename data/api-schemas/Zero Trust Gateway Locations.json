@@ -33,7 +33,26 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -56,7 +75,26 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -72,7 +110,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -86,7 +142,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -153,13 +227,59 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/locations"
+												"properties": {
+													"client_default": {
+														"$ref": "#/components/schemas/client-default"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"doh_subdomain": {
+														"$ref": "#/components/schemas/subdomain"
+													},
+													"ecs_support": {
+														"$ref": "#/components/schemas/ecs-support"
+													},
+													"id": {
+														"$ref": "#/components/schemas/schemas-uuid-1LNjuYsy"
+													},
+													"ip": {
+														"$ref": "#/components/schemas/ip-4W2lWSwM"
+													},
+													"name": {
+														"$ref": "#/components/schemas/schemas-name-3rTDOBBn"
+													},
+													"networks": {
+														"$ref": "#/components/schemas/network"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -179,13 +299,59 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/locations"
+														"properties": {
+															"client_default": {
+																"$ref": "#/components/schemas/client-default"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"doh_subdomain": {
+																"$ref": "#/components/schemas/subdomain"
+															},
+															"ecs_support": {
+																"$ref": "#/components/schemas/ecs-support"
+															},
+															"id": {
+																"$ref": "#/components/schemas/schemas-uuid-1LNjuYsy"
+															},
+															"ip": {
+																"$ref": "#/components/schemas/ip-4W2lWSwM"
+															},
+															"name": {
+																"$ref": "#/components/schemas/schemas-name-3rTDOBBn"
+															},
+															"networks": {
+																"$ref": "#/components/schemas/network"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -198,7 +364,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -212,7 +396,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -287,12 +489,60 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/locations"
+											"properties": {
+												"client_default": {
+													"$ref": "#/components/schemas/client-default"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"doh_subdomain": {
+													"$ref": "#/components/schemas/subdomain"
+												},
+												"ecs_support": {
+													"$ref": "#/components/schemas/ecs-support"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-uuid-1LNjuYsy"
+												},
+												"ip": {
+													"$ref": "#/components/schemas/ip-4W2lWSwM"
+												},
+												"name": {
+													"$ref": "#/components/schemas/schemas-name-3rTDOBBn"
+												},
+												"networks": {
+													"$ref": "#/components/schemas/network"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -310,12 +560,60 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/locations"
+													"properties": {
+														"client_default": {
+															"$ref": "#/components/schemas/client-default"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"doh_subdomain": {
+															"$ref": "#/components/schemas/subdomain"
+														},
+														"ecs_support": {
+															"$ref": "#/components/schemas/ecs-support"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-uuid-1LNjuYsy"
+														},
+														"ip": {
+															"$ref": "#/components/schemas/ip-4W2lWSwM"
+														},
+														"name": {
+															"$ref": "#/components/schemas/schemas-name-3rTDOBBn"
+														},
+														"networks": {
+															"$ref": "#/components/schemas/network"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -326,7 +624,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -340,7 +656,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -445,12 +779,60 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/locations"
+											"properties": {
+												"client_default": {
+													"$ref": "#/components/schemas/client-default"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"doh_subdomain": {
+													"$ref": "#/components/schemas/subdomain"
+												},
+												"ecs_support": {
+													"$ref": "#/components/schemas/ecs-support"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-uuid-1LNjuYsy"
+												},
+												"ip": {
+													"$ref": "#/components/schemas/ip-4W2lWSwM"
+												},
+												"name": {
+													"$ref": "#/components/schemas/schemas-name-3rTDOBBn"
+												},
+												"networks": {
+													"$ref": "#/components/schemas/network"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -468,12 +850,60 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/locations"
+													"properties": {
+														"client_default": {
+															"$ref": "#/components/schemas/client-default"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"doh_subdomain": {
+															"$ref": "#/components/schemas/subdomain"
+														},
+														"ecs_support": {
+															"$ref": "#/components/schemas/ecs-support"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-uuid-1LNjuYsy"
+														},
+														"ip": {
+															"$ref": "#/components/schemas/ip-4W2lWSwM"
+														},
+														"name": {
+															"$ref": "#/components/schemas/schemas-name-3rTDOBBn"
+														},
+														"networks": {
+															"$ref": "#/components/schemas/network"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -484,7 +914,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -498,7 +946,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -611,12 +1077,60 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/locations"
+											"properties": {
+												"client_default": {
+													"$ref": "#/components/schemas/client-default"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"doh_subdomain": {
+													"$ref": "#/components/schemas/subdomain"
+												},
+												"ecs_support": {
+													"$ref": "#/components/schemas/ecs-support"
+												},
+												"id": {
+													"$ref": "#/components/schemas/schemas-uuid-1LNjuYsy"
+												},
+												"ip": {
+													"$ref": "#/components/schemas/ip-4W2lWSwM"
+												},
+												"name": {
+													"$ref": "#/components/schemas/schemas-name-3rTDOBBn"
+												},
+												"networks": {
+													"$ref": "#/components/schemas/network"
+												},
+												"updated_at": {
+													"$ref": "#/components/schemas/timestamp"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -634,12 +1148,60 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/locations"
+													"properties": {
+														"client_default": {
+															"$ref": "#/components/schemas/client-default"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"doh_subdomain": {
+															"$ref": "#/components/schemas/subdomain"
+														},
+														"ecs_support": {
+															"$ref": "#/components/schemas/ecs-support"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-uuid-1LNjuYsy"
+														},
+														"ip": {
+															"$ref": "#/components/schemas/ip-4W2lWSwM"
+														},
+														"name": {
+															"$ref": "#/components/schemas/schemas-name-3rTDOBBn"
+														},
+														"networks": {
+															"$ref": "#/components/schemas/network"
+														},
+														"updated_at": {
+															"$ref": "#/components/schemas/timestamp"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -650,7 +1212,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -664,7 +1244,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

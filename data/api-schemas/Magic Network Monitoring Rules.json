@@ -33,12 +33,62 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_rule"
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+												},
+												"bandwidth_threshold": {
+													"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+												},
+												"duration": {
+													"$ref": "#/components/schemas/mnm_rule_duration"
+												},
+												"id": {
+													"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+												},
+												"name": {
+													"$ref": "#/components/schemas/mnm_rule_name"
+												},
+												"packet_threshold": {
+													"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+												},
+												"prefixes": {
+													"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+												}
+											},
+											"required": [
+												"name",
+												"prefixes",
+												"automatic_advertisement",
+												"duration"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -57,12 +107,62 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_rule"
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+														},
+														"bandwidth_threshold": {
+															"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+														},
+														"duration": {
+															"$ref": "#/components/schemas/mnm_rule_duration"
+														},
+														"id": {
+															"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mnm_rule_name"
+														},
+														"packet_threshold": {
+															"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+														},
+														"prefixes": {
+															"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+														}
+													},
+													"required": [
+														"name",
+														"prefixes",
+														"automatic_advertisement",
+														"duration"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -74,7 +174,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -88,7 +206,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -158,13 +294,60 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/mnm_rule"
+												"nullable": true,
+												"properties": {
+													"automatic_advertisement": {
+														"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+													},
+													"bandwidth_threshold": {
+														"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+													},
+													"duration": {
+														"$ref": "#/components/schemas/mnm_rule_duration"
+													},
+													"id": {
+														"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+													},
+													"name": {
+														"$ref": "#/components/schemas/mnm_rule_name"
+													},
+													"packet_threshold": {
+														"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+													},
+													"prefixes": {
+														"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+													}
+												},
+												"required": [
+													"name",
+													"prefixes",
+													"automatic_advertisement",
+													"duration"
+												],
+												"type": "object"
 											},
 											"nullable": true,
 											"type": "array"
@@ -185,13 +368,60 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/mnm_rule"
+														"nullable": true,
+														"properties": {
+															"automatic_advertisement": {
+																"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+															},
+															"bandwidth_threshold": {
+																"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+															},
+															"duration": {
+																"$ref": "#/components/schemas/mnm_rule_duration"
+															},
+															"id": {
+																"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+															},
+															"name": {
+																"$ref": "#/components/schemas/mnm_rule_name"
+															},
+															"packet_threshold": {
+																"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+															},
+															"prefixes": {
+																"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+															}
+														},
+														"required": [
+															"name",
+															"prefixes",
+															"automatic_advertisement",
+															"duration"
+														],
+														"type": "object"
 													},
 													"nullable": true,
 													"type": "array"
@@ -205,7 +435,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -219,7 +467,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -297,12 +563,62 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_rule"
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+												},
+												"bandwidth_threshold": {
+													"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+												},
+												"duration": {
+													"$ref": "#/components/schemas/mnm_rule_duration"
+												},
+												"id": {
+													"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+												},
+												"name": {
+													"$ref": "#/components/schemas/mnm_rule_name"
+												},
+												"packet_threshold": {
+													"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+												},
+												"prefixes": {
+													"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+												}
+											},
+											"required": [
+												"name",
+												"prefixes",
+												"automatic_advertisement",
+												"duration"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -321,12 +637,62 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_rule"
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+														},
+														"bandwidth_threshold": {
+															"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+														},
+														"duration": {
+															"$ref": "#/components/schemas/mnm_rule_duration"
+														},
+														"id": {
+															"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mnm_rule_name"
+														},
+														"packet_threshold": {
+															"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+														},
+														"prefixes": {
+															"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+														}
+													},
+													"required": [
+														"name",
+														"prefixes",
+														"automatic_advertisement",
+														"duration"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -338,7 +704,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -352,7 +736,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -436,12 +838,62 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_rule"
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+												},
+												"bandwidth_threshold": {
+													"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+												},
+												"duration": {
+													"$ref": "#/components/schemas/mnm_rule_duration"
+												},
+												"id": {
+													"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+												},
+												"name": {
+													"$ref": "#/components/schemas/mnm_rule_name"
+												},
+												"packet_threshold": {
+													"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+												},
+												"prefixes": {
+													"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+												}
+											},
+											"required": [
+												"name",
+												"prefixes",
+												"automatic_advertisement",
+												"duration"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -460,12 +912,62 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_rule"
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+														},
+														"bandwidth_threshold": {
+															"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+														},
+														"duration": {
+															"$ref": "#/components/schemas/mnm_rule_duration"
+														},
+														"id": {
+															"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mnm_rule_name"
+														},
+														"packet_threshold": {
+															"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+														},
+														"prefixes": {
+															"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+														}
+													},
+													"required": [
+														"name",
+														"prefixes",
+														"automatic_advertisement",
+														"duration"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -477,7 +979,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -491,7 +1011,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -575,12 +1113,41 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_rule_advertisable_response"
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+												}
+											},
+											"required": [
+												"automatic_advertisement"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -599,12 +1166,41 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_rule_advertisable_response"
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+														}
+													},
+													"required": [
+														"automatic_advertisement"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -616,7 +1212,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -630,7 +1244,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -706,12 +1338,62 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_rule"
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+												},
+												"bandwidth_threshold": {
+													"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+												},
+												"duration": {
+													"$ref": "#/components/schemas/mnm_rule_duration"
+												},
+												"id": {
+													"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+												},
+												"name": {
+													"$ref": "#/components/schemas/mnm_rule_name"
+												},
+												"packet_threshold": {
+													"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+												},
+												"prefixes": {
+													"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+												}
+											},
+											"required": [
+												"name",
+												"prefixes",
+												"automatic_advertisement",
+												"duration"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -730,12 +1412,62 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_rule"
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+														},
+														"bandwidth_threshold": {
+															"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+														},
+														"duration": {
+															"$ref": "#/components/schemas/mnm_rule_duration"
+														},
+														"id": {
+															"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mnm_rule_name"
+														},
+														"packet_threshold": {
+															"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+														},
+														"prefixes": {
+															"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+														}
+													},
+													"required": [
+														"name",
+														"prefixes",
+														"automatic_advertisement",
+														"duration"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -747,7 +1479,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -761,7 +1511,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -837,12 +1605,62 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/mnm_rule"
+											"nullable": true,
+											"properties": {
+												"automatic_advertisement": {
+													"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+												},
+												"bandwidth_threshold": {
+													"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+												},
+												"duration": {
+													"$ref": "#/components/schemas/mnm_rule_duration"
+												},
+												"id": {
+													"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+												},
+												"name": {
+													"$ref": "#/components/schemas/mnm_rule_name"
+												},
+												"packet_threshold": {
+													"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+												},
+												"prefixes": {
+													"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+												}
+											},
+											"required": [
+												"name",
+												"prefixes",
+												"automatic_advertisement",
+												"duration"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -861,12 +1679,62 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/mnm_rule"
+													"nullable": true,
+													"properties": {
+														"automatic_advertisement": {
+															"$ref": "#/components/schemas/mnm_rule_automatic_advertisement"
+														},
+														"bandwidth_threshold": {
+															"$ref": "#/components/schemas/mnm_rule_bandwidth_threshold"
+														},
+														"duration": {
+															"$ref": "#/components/schemas/mnm_rule_duration"
+														},
+														"id": {
+															"$ref": "#/components/schemas/rule_identifier-EwGTnb4e"
+														},
+														"name": {
+															"$ref": "#/components/schemas/mnm_rule_name"
+														},
+														"packet_threshold": {
+															"$ref": "#/components/schemas/mnm_rule_packet_threshold"
+														},
+														"prefixes": {
+															"$ref": "#/components/schemas/mnm_rule_ip_prefixes"
+														}
+													},
+													"required": [
+														"name",
+														"prefixes",
+														"automatic_advertisement",
+														"duration"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -878,7 +1746,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -892,7 +1778,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

@@ -1,16 +1,33 @@
 {
 	"properties": {
 		"description": {
-			"$ref": "#/components/schemas/web3-hostname_components-schemas-description"
+			"description": "An optional description of the hostname.",
+			"example": "This is my IPFS gateway.",
+			"maxLength": 500,
+			"type": "string"
 		},
 		"dnslink": {
-			"$ref": "#/components/schemas/dnslink"
+			"description": "DNSLink value used if the target is ipfs.",
+			"example": "/ipns/onboarding.ipfs.cloudflare.com",
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/web3-hostname_components-schemas-name"
+			"description": "The hostname that will point to the target gateway via CNAME.",
+			"example": "gateway.example.com",
+			"maxLength": 255,
+			"readOnly": true,
+			"type": "string"
 		},
 		"target": {
-			"$ref": "#/components/schemas/schemas-target"
+			"description": "Target gateway of the hostname.",
+			"enum": [
+				"ethereum",
+				"ipfs",
+				"ipfs_universal_path",
+				"polygon"
+			],
+			"example": "ipfs",
+			"type": "string"
 		}
 	},
 	"required": [

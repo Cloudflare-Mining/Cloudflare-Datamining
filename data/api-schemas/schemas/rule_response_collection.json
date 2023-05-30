@@ -1,13 +1,330 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/rule-7ClZuANd"
+						"oneOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/base-Tzp0ercv"
+											}
+										]
+									},
+									{
+										"properties": {
+											"allowed_modes": {
+												"description": "Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules.",
+												"example": [
+													"on",
+													"off"
+												],
+												"items": {
+													"$ref": "#/components/schemas/mode_anomaly"
+												},
+												"readOnly": true,
+												"type": "array"
+											},
+											"mode": {
+												"description": "When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
+												"enum": [
+													"on",
+													"off"
+												],
+												"example": "on",
+												"type": "string"
+											}
+										}
+									}
+								],
+								"description": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
+								"required": [
+									"id",
+									"description",
+									"priority",
+									"allowed_modes",
+									"mode",
+									"group",
+									"package_id"
+								],
+								"title": "Anomaly detection WAF rule"
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"description": {
+												"$ref": "#/components/schemas/schemas-description-Z2qcIYlv"
+											},
+											"group": {
+												"description": "The rule group to which the current WAF rule belongs.",
+												"properties": {
+													"id": {
+														"$ref": "#/components/schemas/components-schemas-identifier-n53VvE1w"
+													},
+													"name": {
+														"$ref": "#/components/schemas/name-357GgD0r"
+													}
+												},
+												"readOnly": true,
+												"type": "object"
+											},
+											"id": {
+												"$ref": "#/components/schemas/rule_components-schemas-identifier"
+											},
+											"package_id": {
+												"$ref": "#/components/schemas/identifier-XhlQKFJj"
+											},
+											"priority": {
+												"$ref": "#/components/schemas/priority-5Diyp27X"
+											}
+										}
+									},
+									{
+										"properties": {
+											"allowed_modes": {
+												"description": "The list of possible actions of the WAF rule when it is triggered.",
+												"example": [
+													"default",
+													"disable",
+													"simulate",
+													"block",
+													"challenge"
+												],
+												"items": {
+													"$ref": "#/components/schemas/mode_deny_traditional"
+												},
+												"readOnly": true,
+												"type": "array"
+											},
+											"default_mode": {
+												"description": "The default action/mode of a rule.",
+												"enum": [
+													"disable",
+													"simulate",
+													"block",
+													"challenge"
+												],
+												"example": "block",
+												"readOnly": true
+											},
+											"mode": {
+												"description": "The action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
+												"enum": [
+													"default",
+													"disable",
+													"simulate",
+													"block",
+													"challenge"
+												],
+												"example": "block",
+												"type": "string"
+											}
+										}
+									}
+								],
+								"description": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
+								"required": [
+									"id",
+									"description",
+									"priority",
+									"allowed_modes",
+									"default_mode",
+									"mode",
+									"group",
+									"package_id"
+								],
+								"title": "Traditional (deny) WAF rule"
+							},
+							{
+								"allOf": [
+									{
+										"properties": {
+											"description": {
+												"$ref": "#/components/schemas/schemas-description-Z2qcIYlv"
+											},
+											"group": {
+												"description": "The rule group to which the current WAF rule belongs.",
+												"properties": {
+													"id": {
+														"$ref": "#/components/schemas/components-schemas-identifier-n53VvE1w"
+													},
+													"name": {
+														"$ref": "#/components/schemas/name-357GgD0r"
+													}
+												},
+												"readOnly": true,
+												"type": "object"
+											},
+											"id": {
+												"$ref": "#/components/schemas/rule_components-schemas-identifier"
+											},
+											"package_id": {
+												"$ref": "#/components/schemas/identifier-XhlQKFJj"
+											},
+											"priority": {
+												"$ref": "#/components/schemas/priority-5Diyp27X"
+											}
+										}
+									},
+									{
+										"properties": {
+											"allowed_modes": {
+												"description": "Defines the available modes for the current WAF rule.",
+												"example": [
+													"on",
+													"off"
+												],
+												"items": {
+													"$ref": "#/components/schemas/mode_allow_traditional"
+												},
+												"readOnly": true,
+												"type": "array"
+											},
+											"mode": {
+												"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
+												"enum": [
+													"on",
+													"off"
+												],
+												"example": "on",
+												"type": "string"
+											}
+										}
+									}
+								],
+								"description": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
+								"required": [
+									"id",
+									"description",
+									"priority",
+									"allowed_modes",
+									"default_mode",
+									"mode",
+									"group",
+									"package_id"
+								],
+								"title": "Traditional (allow) WAF rule"
+							}
+						],
+						"type": "object"
 					},
 					"type": "array"
 				}

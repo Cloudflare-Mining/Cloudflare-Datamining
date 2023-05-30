@@ -2,25 +2,122 @@
 	"additionalProperties": false,
 	"properties": {
 		"configurations": {
-			"$ref": "#/components/schemas/configurations"
+			"anyOf": [
+				{
+					"properties": {
+						"target": {
+							"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+							"enum": [
+								"ip"
+							],
+							"example": "ip"
+						},
+						"value": {
+							"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
+							"example": "198.51.100.4",
+							"type": "string"
+						}
+					},
+					"title": "An IP address configuration."
+				},
+				{
+					"properties": {
+						"target": {
+							"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+							"enum": [
+								"ip_range"
+							],
+							"example": "ip_range"
+						},
+						"value": {
+							"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
+							"example": "198.51.100.4/16",
+							"type": "string"
+						}
+					},
+					"title": "An IP address range configuration."
+				}
+			],
+			"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+			"items": {
+				"anyOf": [
+					{
+						"properties": {
+							"target": {
+								"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
+								"enum": [
+									"ip"
+								],
+								"example": "ip"
+							},
+							"value": {
+								"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
+								"example": "198.51.100.4",
+								"type": "string"
+							}
+						},
+						"title": "An IP address configuration."
+					},
+					{
+						"properties": {
+							"target": {
+								"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
+								"enum": [
+									"ip_range"
+								],
+								"example": "ip_range"
+							},
+							"value": {
+								"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
+								"example": "198.51.100.4/16",
+								"type": "string"
+							}
+						},
+						"title": "An IP address range configuration."
+					}
+				]
+			},
+			"type": "array"
 		},
 		"created_on": {
-			"$ref": "#/components/schemas/created_on-yoNz3uZY"
+			"description": "The timestamp of when the rule was created.",
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"description": {
-			"$ref": "#/components/schemas/lockdowns_components-schemas-description"
+			"description": "An informative summary of the rule.",
+			"example": "Restrict access to these endpoints to requests from a known IP address",
+			"maxLength": 1024,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/lockdowns_components-schemas-id"
+			"description": "The unique identifier of the Zone Lockdown rule.",
+			"example": "372e67954025e0ba6aaa6d586b9e0b59",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"modified_on": {
-			"$ref": "#/components/schemas/components-schemas-modified_on"
+			"description": "The timestamp of when the rule was last modified.",
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"paused": {
-			"$ref": "#/components/schemas/schemas-paused"
+			"description": "When true, indicates that the rule is currently paused.",
+			"example": false,
+			"type": "boolean"
 		},
 		"urls": {
-			"$ref": "#/components/schemas/schemas-urls"
+			"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+			"items": {
+				"example": "api.mysite.com/some/endpoint*",
+				"type": "string"
+			},
+			"type": "array"
 		}
 	},
 	"required": [

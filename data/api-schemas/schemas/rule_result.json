@@ -1,25 +1,45 @@
 {
 	"properties": {
 		"action": {
-			"$ref": "#/components/schemas/rule_action-o0ZcsQCS"
+			"description": "The action to take when the expression matches.",
+			"enum": [
+				"bypass_waiting_room"
+			],
+			"example": "bypass_waiting_room",
+			"type": "string"
 		},
 		"description": {
-			"$ref": "#/components/schemas/rule_description"
+			"default": "",
+			"description": "The description of the rule.",
+			"example": "allow all traffic from 10.20.30.40",
+			"type": "string"
 		},
 		"enabled": {
-			"$ref": "#/components/schemas/rule_enabled-9kW9bBCz"
+			"default": true,
+			"description": "When set to true, the rule is enabled.",
+			"example": true,
+			"type": "boolean"
 		},
 		"expression": {
-			"$ref": "#/components/schemas/rule_expression"
+			"description": "Criteria defining when there is a match for the current rule.",
+			"example": "ip.src in {10.20.30.40}",
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/rule_id"
+			"description": "The ID of the rule.",
+			"example": "25756b2dfe6e378a06b033b670413757",
+			"type": "string"
 		},
 		"last_updated": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"version": {
-			"$ref": "#/components/schemas/rule_version"
+			"description": "The version of the rule.",
+			"example": "1",
+			"type": "string"
 		}
 	},
 	"type": "object"

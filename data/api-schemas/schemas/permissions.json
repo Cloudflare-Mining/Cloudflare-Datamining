@@ -11,40 +11,208 @@
 	},
 	"properties": {
 		"analytics": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"billing": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"cache_purge": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"dns": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"dns_records": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"lb": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"logs": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"organization": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"ssl": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"waf": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"zone_settings": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		},
 		"zones": {
-			"$ref": "#/components/schemas/grants"
+			"example": {
+				"read": true,
+				"write": false
+			},
+			"properties": {
+				"read": {
+					"example": true,
+					"type": "boolean"
+				},
+				"write": {
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"type": "object"
 		}
 	},
 	"type": "object"

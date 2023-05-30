@@ -1,19 +1,49 @@
 {
 	"properties": {
 		"configuration": {
-			"$ref": "#/components/schemas/components-schemas-configuration"
+			"description": "The configuration object for the current rule.",
+			"properties": {
+				"target": {
+					"description": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules.",
+					"example": "ua",
+					"type": "string"
+				},
+				"value": {
+					"description": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value.",
+					"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4",
+					"type": "string"
+				}
+			},
+			"type": "object"
 		},
 		"description": {
-			"$ref": "#/components/schemas/ua-rules_components-schemas-description"
+			"description": "An informative summary of the rule.",
+			"example": "Prevent access from abusive clients identified by this User Agent to mitigate a DDoS attack",
+			"maxLength": 1024,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/ua-rules_components-schemas-id"
+			"description": "The unique identifier of the User Agent Blocking rule.",
+			"example": "372e67954025e0ba6aaa6d586b9e0b59",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"mode": {
-			"$ref": "#/components/schemas/ua-rules_components-schemas-mode"
+			"description": "The action to apply to a matched request.",
+			"enum": [
+				"block",
+				"challenge",
+				"js_challenge",
+				"managed_challenge"
+			],
+			"example": "js_challenge",
+			"maxLength": 12
 		},
 		"paused": {
-			"$ref": "#/components/schemas/schemas-paused"
+			"description": "When true, indicates that the rule is currently paused.",
+			"example": false,
+			"type": "boolean"
 		}
 	}
 }

@@ -13,7 +13,10 @@
 			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/operation_id"
+			"description": "The unique operation ID of the asynchronous action.",
+			"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+			"readOnly": true,
+			"type": "string"
 		},
 		"status": {
 			"description": "The current status of the asynchronous operation.",

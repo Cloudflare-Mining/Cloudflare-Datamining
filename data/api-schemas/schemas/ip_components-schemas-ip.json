@@ -31,7 +31,18 @@
 			"type": "object"
 		},
 		"ip": {
-			"$ref": "#/components/schemas/common_components-schemas-ip"
+			"anyOf": [
+				{
+					"example": "192.0.2.0",
+					"format": "ipv4",
+					"type": "string"
+				},
+				{
+					"example": "2001:0DB8::",
+					"format": "ipv6",
+					"type": "string"
+				}
+			]
 		},
 		"risk_types": {
 			"example": [

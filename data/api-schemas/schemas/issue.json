@@ -8,10 +8,18 @@
 			"type": "string"
 		},
 		"issue_class": {
-			"$ref": "#/components/schemas/issueClass"
+			"example": "always_use_https_not_enabled",
+			"type": "string"
 		},
 		"issue_type": {
-			"$ref": "#/components/schemas/issueType"
+			"enum": [
+				"compliance_violation",
+				"email_security",
+				"exposed_infrastructure",
+				"insecure_configuration",
+				"weak_authentication"
+			],
+			"type": "string"
 		},
 		"payload": {
 			"type": "object"

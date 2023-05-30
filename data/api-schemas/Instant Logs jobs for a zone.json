@@ -23,13 +23,103 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/instant_logs_job"
+												"nullable": true,
+												"properties": {
+													"destination_conf": {
+														"$ref": "#/components/schemas/schemas-destination_conf"
+													},
+													"fields": {
+														"$ref": "#/components/schemas/fields"
+													},
+													"filter": {
+														"$ref": "#/components/schemas/filter-daMQHZbE"
+													},
+													"sample": {
+														"$ref": "#/components/schemas/sample-SHpDTSZl"
+													},
+													"session_id": {
+														"$ref": "#/components/schemas/session_id"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -49,13 +139,103 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/instant_logs_job"
+														"nullable": true,
+														"properties": {
+															"destination_conf": {
+																"$ref": "#/components/schemas/schemas-destination_conf"
+															},
+															"fields": {
+																"$ref": "#/components/schemas/fields"
+															},
+															"filter": {
+																"$ref": "#/components/schemas/filter-daMQHZbE"
+															},
+															"sample": {
+																"$ref": "#/components/schemas/sample-SHpDTSZl"
+															},
+															"session_id": {
+																"$ref": "#/components/schemas/session_id"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -68,7 +248,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -82,7 +280,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -190,12 +406,49 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/instant_logs_job"
+											"nullable": true,
+											"properties": {
+												"destination_conf": {
+													"$ref": "#/components/schemas/schemas-destination_conf"
+												},
+												"fields": {
+													"$ref": "#/components/schemas/fields"
+												},
+												"filter": {
+													"$ref": "#/components/schemas/filter-daMQHZbE"
+												},
+												"sample": {
+													"$ref": "#/components/schemas/sample-SHpDTSZl"
+												},
+												"session_id": {
+													"$ref": "#/components/schemas/session_id"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -213,12 +466,49 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/instant_logs_job"
+													"nullable": true,
+													"properties": {
+														"destination_conf": {
+															"$ref": "#/components/schemas/schemas-destination_conf"
+														},
+														"fields": {
+															"$ref": "#/components/schemas/fields"
+														},
+														"filter": {
+															"$ref": "#/components/schemas/filter-daMQHZbE"
+														},
+														"sample": {
+															"$ref": "#/components/schemas/sample-SHpDTSZl"
+														},
+														"session_id": {
+															"$ref": "#/components/schemas/session_id"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -229,7 +519,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -243,7 +551,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

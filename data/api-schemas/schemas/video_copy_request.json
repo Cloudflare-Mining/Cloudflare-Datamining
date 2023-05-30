@@ -1,16 +1,34 @@
 {
 	"properties": {
 		"allowedOrigins": {
-			"$ref": "#/components/schemas/allowedOrigins"
+			"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
+			"example": [
+				"example.com"
+			],
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
 		},
 		"creator": {
-			"$ref": "#/components/schemas/creator"
+			"description": "A user-defined identifier for the media creator.",
+			"example": "creator-id_abcde12345",
+			"maxLength": 64,
+			"type": "string"
 		},
 		"requireSignedURLs": {
-			"$ref": "#/components/schemas/requireSignedURLs"
+			"default": false,
+			"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
+			"example": true,
+			"type": "boolean"
 		},
 		"thumbnailTimestampPct": {
-			"$ref": "#/components/schemas/thumbnailTimestampPct"
+			"default": 0,
+			"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
+			"example": 0.529241,
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
 		},
 		"url": {
 			"description": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file.",
@@ -19,7 +37,15 @@
 			"type": "string"
 		},
 		"watermark": {
-			"$ref": "#/components/schemas/watermark_at_upload"
+			"properties": {
+				"uid": {
+					"description": "The unique identifier for the watermark profile.",
+					"example": "ea95132c15732412d22c1476fa83f27a",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			"type": "object"
 		}
 	},
 	"required": [

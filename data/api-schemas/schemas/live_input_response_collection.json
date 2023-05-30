@@ -1,7 +1,118 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
@@ -9,7 +120,33 @@
 					"properties": {
 						"liveInputs": {
 							"items": {
-								"$ref": "#/components/schemas/live_input_object_without_url"
+								"properties": {
+									"created": {
+										"description": "The date and time the live input was created.",
+										"example": "2014-01-02T02:20:00Z",
+										"format": "date-time",
+										"type": "string"
+									},
+									"meta": {
+										"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
+										"example": {
+											"name": "test stream 1"
+										},
+										"type": "object"
+									},
+									"modified": {
+										"description": "The date and time the live input was last modified.",
+										"example": "2014-01-02T02:20:00Z",
+										"format": "date-time",
+										"type": "string"
+									},
+									"uid": {
+										"description": "A unique identifier for a live input.",
+										"example": "66be4bf738797e01e1fca35a7bdecdcd",
+										"maxLength": 32,
+										"type": "string"
+									}
+								}
 							},
 							"type": "array"
 						},

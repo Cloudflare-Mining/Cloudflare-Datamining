@@ -1,13 +1,252 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/rate-limits"
+						"allOf": [
+							{
+								"properties": {
+									"action": {
+										"anyOf": [
+											{
+												"properties": {
+													"mode": {
+														"$ref": "#/components/schemas/mode-tbOSsoAf"
+													},
+													"response": {
+														"$ref": "#/components/schemas/custom_response"
+													},
+													"timeout": {
+														"$ref": "#/components/schemas/timeout-QXlkgP1Y"
+													}
+												},
+												"type": "object"
+											}
+										],
+										"description": "The action to perform when the threshold of matched traffic within the configured period is exceeded.",
+										"type": "object"
+									},
+									"bypass": {
+										"description": "Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.",
+										"items": {
+											"properties": {
+												"name": {
+													"enum": [
+														"url"
+													],
+													"example": "url",
+													"type": "string"
+												},
+												"value": {
+													"description": "The URL to bypass.",
+													"example": "api.example.com/*",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"description": {
+										"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
+										"example": "Prevent multiple login failures to mitigate brute force attacks",
+										"maxLength": 1024,
+										"type": "string"
+									},
+									"disabled": {
+										"description": "When true, indicates that the rate limit is currently disabled.",
+										"example": false,
+										"type": "boolean"
+									},
+									"id": {
+										"description": "The unique identifier of the rate limit.",
+										"example": "372e67954025e0ba6aaa6d586b9e0b59",
+										"maxLength": 32,
+										"readOnly": true,
+										"type": "string"
+									},
+									"match": {
+										"description": "Determines which traffic the rate limit counts towards the threshold.",
+										"oneOf": [
+											{
+												"properties": {
+													"headers": {
+														"items": {
+															"properties": {
+																"name": {
+																	"$ref": "#/components/schemas/header_name"
+																},
+																"op": {
+																	"$ref": "#/components/schemas/header_op"
+																},
+																"value": {
+																	"$ref": "#/components/schemas/header_value"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"request": {
+														"properties": {
+															"methods": {
+																"$ref": "#/components/schemas/methods"
+															},
+															"schemes": {
+																"$ref": "#/components/schemas/schemes"
+															},
+															"url": {
+																"$ref": "#/components/schemas/schemas-url"
+															}
+														},
+														"type": "object"
+													},
+													"response": {
+														"properties": {
+															"origin_traffic": {
+																"$ref": "#/components/schemas/origin_traffic"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											}
+										],
+										"type": "object"
+									},
+									"period": {
+										"description": "The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.",
+										"example": 900,
+										"maximum": 86400,
+										"minimum": 10,
+										"type": "number"
+									},
+									"threshold": {
+										"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
+										"example": 60,
+										"minimum": 1,
+										"type": "number"
+									}
+								}
+							}
+						],
+						"type": "object"
 					},
 					"type": "array"
 				}

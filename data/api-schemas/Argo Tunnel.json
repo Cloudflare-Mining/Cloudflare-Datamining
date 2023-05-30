@@ -45,12 +45,39 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+									"$ref": "#/components/schemas/api-response-common"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/argo-tunnel"
+											"properties": {
+												"connections": {
+													"description": "The tunnel connections between your origin and Cloudflare's edge.",
+													"items": {
+														"$ref": "#/components/schemas/connection-FLcY7iEF"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/created_at-q9fD87p6"
+												},
+												"deleted_at": {
+													"$ref": "#/components/schemas/deleted_at-srtogKYf"
+												},
+												"id": {
+													"$ref": "#/components/schemas/tunnel_id"
+												},
+												"name": {
+													"$ref": "#/components/schemas/tunnel_name"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_at",
+												"connections"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -69,12 +96,39 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/argo-tunnel"
+													"properties": {
+														"connections": {
+															"description": "The tunnel connections between your origin and Cloudflare's edge.",
+															"items": {
+																"$ref": "#/components/schemas/connection-FLcY7iEF"
+															},
+															"type": "array"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/created_at-q9fD87p6"
+														},
+														"deleted_at": {
+															"$ref": "#/components/schemas/deleted_at-srtogKYf"
+														},
+														"id": {
+															"$ref": "#/components/schemas/tunnel_id"
+														},
+														"name": {
+															"$ref": "#/components/schemas/tunnel_name"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"created_at",
+														"connections"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -86,7 +140,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -100,7 +172,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -199,7 +289,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -223,7 +385,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -240,7 +474,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -254,7 +506,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -381,13 +651,57 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/argo-tunnel"
+												"properties": {
+													"connections": {
+														"description": "The tunnel connections between your origin and Cloudflare's edge.",
+														"items": {
+															"$ref": "#/components/schemas/connection-FLcY7iEF"
+														},
+														"type": "array"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/created_at-q9fD87p6"
+													},
+													"deleted_at": {
+														"$ref": "#/components/schemas/deleted_at-srtogKYf"
+													},
+													"id": {
+														"$ref": "#/components/schemas/tunnel_id"
+													},
+													"name": {
+														"$ref": "#/components/schemas/tunnel_name"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"created_at",
+													"connections"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -408,13 +722,57 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/argo-tunnel"
+														"properties": {
+															"connections": {
+																"description": "The tunnel connections between your origin and Cloudflare's edge.",
+																"items": {
+																	"$ref": "#/components/schemas/connection-FLcY7iEF"
+																},
+																"type": "array"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/created_at-q9fD87p6"
+															},
+															"deleted_at": {
+																"$ref": "#/components/schemas/deleted_at-srtogKYf"
+															},
+															"id": {
+																"$ref": "#/components/schemas/tunnel_id"
+															},
+															"name": {
+																"$ref": "#/components/schemas/tunnel_name"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"created_at",
+															"connections"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -428,7 +786,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -442,7 +818,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -531,12 +925,39 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+									"$ref": "#/components/schemas/api-response-common"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/argo-tunnel"
+											"properties": {
+												"connections": {
+													"description": "The tunnel connections between your origin and Cloudflare's edge.",
+													"items": {
+														"$ref": "#/components/schemas/connection-FLcY7iEF"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/created_at-q9fD87p6"
+												},
+												"deleted_at": {
+													"$ref": "#/components/schemas/deleted_at-srtogKYf"
+												},
+												"id": {
+													"$ref": "#/components/schemas/tunnel_id"
+												},
+												"name": {
+													"$ref": "#/components/schemas/tunnel_name"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_at",
+												"connections"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -555,12 +976,39 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/argo-tunnel"
+													"properties": {
+														"connections": {
+															"description": "The tunnel connections between your origin and Cloudflare's edge.",
+															"items": {
+																"$ref": "#/components/schemas/connection-FLcY7iEF"
+															},
+															"type": "array"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/created_at-q9fD87p6"
+														},
+														"deleted_at": {
+															"$ref": "#/components/schemas/deleted_at-srtogKYf"
+														},
+														"id": {
+															"$ref": "#/components/schemas/tunnel_id"
+														},
+														"name": {
+															"$ref": "#/components/schemas/tunnel_name"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"created_at",
+														"connections"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -572,7 +1020,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -586,7 +1052,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -687,12 +1171,39 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+									"$ref": "#/components/schemas/api-response-common"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/argo-tunnel"
+											"properties": {
+												"connections": {
+													"description": "The tunnel connections between your origin and Cloudflare's edge.",
+													"items": {
+														"$ref": "#/components/schemas/connection-FLcY7iEF"
+													},
+													"type": "array"
+												},
+												"created_at": {
+													"$ref": "#/components/schemas/created_at-q9fD87p6"
+												},
+												"deleted_at": {
+													"$ref": "#/components/schemas/deleted_at-srtogKYf"
+												},
+												"id": {
+													"$ref": "#/components/schemas/tunnel_id"
+												},
+												"name": {
+													"$ref": "#/components/schemas/tunnel_name"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"created_at",
+												"connections"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -711,12 +1222,39 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-oZz8S4ab"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/argo-tunnel"
+													"properties": {
+														"connections": {
+															"description": "The tunnel connections between your origin and Cloudflare's edge.",
+															"items": {
+																"$ref": "#/components/schemas/connection-FLcY7iEF"
+															},
+															"type": "array"
+														},
+														"created_at": {
+															"$ref": "#/components/schemas/created_at-q9fD87p6"
+														},
+														"deleted_at": {
+															"$ref": "#/components/schemas/deleted_at-srtogKYf"
+														},
+														"id": {
+															"$ref": "#/components/schemas/tunnel_id"
+														},
+														"name": {
+															"$ref": "#/components/schemas/tunnel_name"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"created_at",
+														"connections"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -728,7 +1266,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -742,7 +1298,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

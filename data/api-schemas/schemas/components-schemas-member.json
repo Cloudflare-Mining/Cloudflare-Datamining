@@ -1,18 +1,66 @@
 {
 	"properties": {
 		"email": {
-			"$ref": "#/components/schemas/email-kUU80fv1"
+			"description": "The contact email address of the user.",
+			"example": "user@example.com",
+			"maxLength": 90,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/common_components-schemas-identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"name": {
-			"$ref": "#/components/schemas/member_components-schemas-name"
+			"description": "Member Name.",
+			"example": "John Smith",
+			"maxLength": 100,
+			"nullable": true,
+			"type": "string"
 		},
 		"roles": {
 			"description": "Roles assigned to this Member.",
 			"items": {
-				"$ref": "#/components/schemas/schemas-role"
+				"properties": {
+					"description": {
+						"description": "Description of role's permissions.",
+						"example": "Administrative access to the entire Organization",
+						"readOnly": true,
+						"type": "string"
+					},
+					"id": {
+						"description": "Role identifier tag.",
+						"example": "3536bcfad5faccb999b47003c79917fb",
+						"maxLength": 32,
+						"type": "string"
+					},
+					"name": {
+						"description": "Role Name.",
+						"example": "Organization Admin",
+						"maxLength": 120,
+						"readOnly": true,
+						"type": "string"
+					},
+					"permissions": {
+						"description": "Access permissions for this User.",
+						"items": {
+							"example": "#zones:read",
+							"maxLength": 160,
+							"type": "string"
+						},
+						"readOnly": true,
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"description",
+					"permissions"
+				],
+				"type": "object"
 			},
 			"type": "array"
 		},

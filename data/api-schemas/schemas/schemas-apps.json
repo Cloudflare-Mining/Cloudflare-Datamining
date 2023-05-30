@@ -3,10 +3,188 @@
 		{
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/basic_app_response_props"
+					"properties": {
+						"aud": {
+							"description": "Audience tag.",
+							"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+							"maxLength": 64,
+							"readOnly": true,
+							"type": "string"
+						},
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"id": {
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"type": "object"
 				},
 				{
-					"$ref": "#/components/schemas/schemas-self_hosted_props"
+					"properties": {
+						"allowed_idps": {
+							"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
+							"items": {
+								"description": "The identity providers selected for application.",
+								"example": "699d98642c564d2e855e9661899b7252",
+								"type": "string"
+							},
+							"type": "array"
+						},
+						"app_launcher_visible": {
+							"default": true,
+							"description": "Displays the application in the App Launcher.",
+							"example": true,
+							"type": "boolean"
+						},
+						"auto_redirect_to_identity": {
+							"default": false,
+							"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
+							"type": "boolean"
+						},
+						"cors_headers": {
+							"properties": {
+								"allow_all_headers": {
+									"description": "Allows all HTTP request headers.",
+									"example": true,
+									"type": "boolean"
+								},
+								"allow_all_methods": {
+									"description": "Allows all HTTP request methods.",
+									"type": "boolean"
+								},
+								"allow_all_origins": {
+									"description": "Allows all origins.",
+									"type": "boolean"
+								},
+								"allow_credentials": {
+									"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.",
+									"type": "boolean"
+								},
+								"allowed_headers": {
+									"description": "Allowed HTTP request headers.",
+									"items": {},
+									"type": "array"
+								},
+								"allowed_methods": {
+									"description": "Allowed HTTP request methods.",
+									"example": [
+										"GET"
+									],
+									"items": {
+										"enum": [
+											"GET",
+											"POST",
+											"HEAD",
+											"PUT",
+											"DELETE",
+											"CONNECT",
+											"OPTIONS",
+											"TRACE",
+											"PATCH"
+										],
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"allowed_origins": {
+									"description": "Allowed origins.",
+									"example": [
+										"https://example.com"
+									],
+									"items": {},
+									"type": "array"
+								},
+								"max_age": {
+									"description": "The maximum number of seconds the results of a preflight request can be cached.",
+									"example": -1,
+									"maximum": 86400,
+									"minimum": -1,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						},
+						"custom_deny_message": {
+							"description": "The custom error message shown to a user when they are denied access to the application.",
+							"type": "string"
+						},
+						"custom_deny_url": {
+							"description": "The custom URL a user is redirected to when they are denied access to the application.",
+							"type": "string"
+						},
+						"domain": {
+							"description": "The domain and path that Access will secure.",
+							"example": "test.example.com/admin",
+							"type": "string"
+						},
+						"enable_binding_cookie": {
+							"default": false,
+							"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
+							"type": "boolean"
+						},
+						"http_only_cookie_attribute": {
+							"default": true,
+							"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
+							"example": true,
+							"type": "boolean"
+						},
+						"logo_url": {
+							"description": "The image URL for the logo shown in the App Launcher dashboard.",
+							"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
+							"type": "string"
+						},
+						"name": {
+							"description": "The name of the application.",
+							"example": "Admin Site",
+							"type": "string"
+						},
+						"same_site_cookie_attribute": {
+							"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
+							"example": "strict",
+							"type": "string"
+						},
+						"service_auth_401_redirect": {
+							"description": "Returns a 401 status code when the request is blocked by a Service Auth policy.",
+							"example": true,
+							"type": "boolean"
+						},
+						"session_duration": {
+							"default": "24h",
+							"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+							"example": "24h",
+							"type": "string"
+						},
+						"skip_interstitial": {
+							"description": "Enables automatic authentication through cloudflared.",
+							"example": true,
+							"type": "boolean"
+						},
+						"type": {
+							"description": "The application type.",
+							"example": "self_hosted",
+							"type": "string"
+						}
+					},
+					"required": [
+						"type",
+						"domain"
+					],
+					"title": "Self Hosted Application",
+					"type": "object"
 				}
 			],
 			"title": "Self Hosted Application",
@@ -15,10 +193,157 @@
 		{
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/basic_app_response_props"
+					"properties": {
+						"aud": {
+							"description": "Audience tag.",
+							"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+							"maxLength": 64,
+							"readOnly": true,
+							"type": "string"
+						},
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"id": {
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"type": "object"
 				},
 				{
-					"$ref": "#/components/schemas/saas_props"
+					"properties": {
+						"allowed_idps": {
+							"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
+							"items": {
+								"description": "The identity providers selected for application.",
+								"example": "699d98642c564d2e855e9661899b7252",
+								"type": "string"
+							},
+							"type": "array"
+						},
+						"app_launcher_visible": {
+							"default": true,
+							"description": "Displays the application in the App Launcher.",
+							"example": true,
+							"type": "boolean"
+						},
+						"auto_redirect_to_identity": {
+							"default": false,
+							"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
+							"type": "boolean"
+						},
+						"logo_url": {
+							"description": "The image URL for the logo shown in the App Launcher dashboard.",
+							"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
+							"type": "string"
+						},
+						"name": {
+							"description": "The name of the application.",
+							"example": "Admin Site",
+							"type": "string"
+						},
+						"saas_app": {
+							"properties": {
+								"consumer_service_url": {
+									"description": "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.",
+									"example": "https://example.com",
+									"type": "string"
+								},
+								"created_at": {
+									"example": "2014-01-01T05:20:00.12345Z",
+									"format": "date-time",
+									"readOnly": true,
+									"type": "string"
+								},
+								"custom_attributes": {
+									"properties": {
+										"name": {
+											"description": "The name of the attribute.",
+											"example": "family_name",
+											"type": "string"
+										},
+										"name_format": {
+											"description": "A globally unique name for an identity or service provider.",
+											"enum": [
+												"urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+												"urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+												"urn:oasis:names:tc:SAML:2.0:attrname-format:uri"
+											],
+											"example": "urn:oasis:names:tc:SAML:2.0:attrname-format:basic",
+											"type": "string"
+										},
+										"source": {
+											"properties": {
+												"name": {
+													"description": "The name of the IdP attribute.",
+													"example": "last_name",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"idp_entity_id": {
+									"description": "The unique identifier for your SaaS application.",
+									"example": "https://example.cloudflareaccess.com",
+									"type": "string"
+								},
+								"name_id_format": {
+									"description": "The format of the name identifier sent to the SaaS application.",
+									"enum": [
+										"id",
+										"email"
+									],
+									"example": "id",
+									"type": "string"
+								},
+								"public_key": {
+									"description": "The Access public certificate that will be used to verify your identity.",
+									"example": "example unique name",
+									"type": "string"
+								},
+								"sp_entity_id": {
+									"description": "A globally unique name for an identity or service provider.",
+									"example": "example unique name",
+									"type": "string"
+								},
+								"sso_endpoint": {
+									"description": "The endpoint where your SaaS application will send login requests.",
+									"example": "https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd",
+									"type": "string"
+								},
+								"updated_at": {
+									"example": "2014-01-01T05:20:00.12345Z",
+									"format": "date-time",
+									"readOnly": true,
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"type": {
+							"description": "The application type.",
+							"example": "saas",
+							"type": "string"
+						}
+					},
+					"title": "SaaS Application",
+					"type": "object"
 				}
 			],
 			"title": "SaaS Application",
@@ -27,10 +352,167 @@
 		{
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/basic_app_response_props"
+					"properties": {
+						"aud": {
+							"description": "Audience tag.",
+							"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+							"maxLength": 64,
+							"readOnly": true,
+							"type": "string"
+						},
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"id": {
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"type": "object"
 				},
 				{
-					"$ref": "#/components/schemas/schemas-ssh_props"
+					"allOf": [
+						{
+							"properties": {
+								"allowed_idps": {
+									"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
+									"items": {
+										"description": "The identity providers selected for application.",
+										"example": "699d98642c564d2e855e9661899b7252",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"app_launcher_visible": {
+									"default": true,
+									"description": "Displays the application in the App Launcher.",
+									"example": true,
+									"type": "boolean"
+								},
+								"auto_redirect_to_identity": {
+									"default": false,
+									"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
+									"type": "boolean"
+								},
+								"cors_headers": {
+									"properties": {
+										"allow_all_headers": {
+											"$ref": "#/components/schemas/allow_all_headers"
+										},
+										"allow_all_methods": {
+											"$ref": "#/components/schemas/allow_all_methods"
+										},
+										"allow_all_origins": {
+											"$ref": "#/components/schemas/allow_all_origins"
+										},
+										"allow_credentials": {
+											"$ref": "#/components/schemas/allow_credentials"
+										},
+										"allowed_headers": {
+											"$ref": "#/components/schemas/allowed_headers"
+										},
+										"allowed_methods": {
+											"$ref": "#/components/schemas/allowed_methods"
+										},
+										"allowed_origins": {
+											"$ref": "#/components/schemas/allowed_origins"
+										},
+										"max_age": {
+											"$ref": "#/components/schemas/max_age"
+										}
+									},
+									"type": "object"
+								},
+								"custom_deny_message": {
+									"description": "The custom error message shown to a user when they are denied access to the application.",
+									"type": "string"
+								},
+								"custom_deny_url": {
+									"description": "The custom URL a user is redirected to when they are denied access to the application.",
+									"type": "string"
+								},
+								"domain": {
+									"description": "The domain and path that Access will secure.",
+									"example": "test.example.com/admin",
+									"type": "string"
+								},
+								"enable_binding_cookie": {
+									"default": false,
+									"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
+									"type": "boolean"
+								},
+								"http_only_cookie_attribute": {
+									"default": true,
+									"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
+									"example": true,
+									"type": "boolean"
+								},
+								"logo_url": {
+									"description": "The image URL for the logo shown in the App Launcher dashboard.",
+									"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
+									"type": "string"
+								},
+								"name": {
+									"description": "The name of the application.",
+									"example": "Admin Site",
+									"type": "string"
+								},
+								"same_site_cookie_attribute": {
+									"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
+									"example": "strict",
+									"type": "string"
+								},
+								"service_auth_401_redirect": {
+									"description": "Returns a 401 status code when the request is blocked by a Service Auth policy.",
+									"example": true,
+									"type": "boolean"
+								},
+								"session_duration": {
+									"default": "24h",
+									"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+									"example": "24h",
+									"type": "string"
+								},
+								"skip_interstitial": {
+									"description": "Enables automatic authentication through cloudflared.",
+									"example": true,
+									"type": "boolean"
+								},
+								"type": {
+									"description": "The application type.",
+									"example": "self_hosted",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"domain"
+							],
+							"title": "Self Hosted Application",
+							"type": "object"
+						},
+						{
+							"properties": {
+								"type": {
+									"description": "The application type.",
+									"example": "ssh",
+									"type": "string"
+								}
+							}
+						}
+					]
 				}
 			],
 			"title": "Browser SSH Application",
@@ -39,10 +521,167 @@
 		{
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/basic_app_response_props"
+					"properties": {
+						"aud": {
+							"description": "Audience tag.",
+							"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+							"maxLength": 64,
+							"readOnly": true,
+							"type": "string"
+						},
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"id": {
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"type": "object"
 				},
 				{
-					"$ref": "#/components/schemas/schemas-vnc_props"
+					"allOf": [
+						{
+							"properties": {
+								"allowed_idps": {
+									"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
+									"items": {
+										"description": "The identity providers selected for application.",
+										"example": "699d98642c564d2e855e9661899b7252",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"app_launcher_visible": {
+									"default": true,
+									"description": "Displays the application in the App Launcher.",
+									"example": true,
+									"type": "boolean"
+								},
+								"auto_redirect_to_identity": {
+									"default": false,
+									"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
+									"type": "boolean"
+								},
+								"cors_headers": {
+									"properties": {
+										"allow_all_headers": {
+											"$ref": "#/components/schemas/allow_all_headers"
+										},
+										"allow_all_methods": {
+											"$ref": "#/components/schemas/allow_all_methods"
+										},
+										"allow_all_origins": {
+											"$ref": "#/components/schemas/allow_all_origins"
+										},
+										"allow_credentials": {
+											"$ref": "#/components/schemas/allow_credentials"
+										},
+										"allowed_headers": {
+											"$ref": "#/components/schemas/allowed_headers"
+										},
+										"allowed_methods": {
+											"$ref": "#/components/schemas/allowed_methods"
+										},
+										"allowed_origins": {
+											"$ref": "#/components/schemas/allowed_origins"
+										},
+										"max_age": {
+											"$ref": "#/components/schemas/max_age"
+										}
+									},
+									"type": "object"
+								},
+								"custom_deny_message": {
+									"description": "The custom error message shown to a user when they are denied access to the application.",
+									"type": "string"
+								},
+								"custom_deny_url": {
+									"description": "The custom URL a user is redirected to when they are denied access to the application.",
+									"type": "string"
+								},
+								"domain": {
+									"description": "The domain and path that Access will secure.",
+									"example": "test.example.com/admin",
+									"type": "string"
+								},
+								"enable_binding_cookie": {
+									"default": false,
+									"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
+									"type": "boolean"
+								},
+								"http_only_cookie_attribute": {
+									"default": true,
+									"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
+									"example": true,
+									"type": "boolean"
+								},
+								"logo_url": {
+									"description": "The image URL for the logo shown in the App Launcher dashboard.",
+									"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
+									"type": "string"
+								},
+								"name": {
+									"description": "The name of the application.",
+									"example": "Admin Site",
+									"type": "string"
+								},
+								"same_site_cookie_attribute": {
+									"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
+									"example": "strict",
+									"type": "string"
+								},
+								"service_auth_401_redirect": {
+									"description": "Returns a 401 status code when the request is blocked by a Service Auth policy.",
+									"example": true,
+									"type": "boolean"
+								},
+								"session_duration": {
+									"default": "24h",
+									"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+									"example": "24h",
+									"type": "string"
+								},
+								"skip_interstitial": {
+									"description": "Enables automatic authentication through cloudflared.",
+									"example": true,
+									"type": "boolean"
+								},
+								"type": {
+									"description": "The application type.",
+									"example": "self_hosted",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"domain"
+							],
+							"title": "Self Hosted Application",
+							"type": "object"
+						},
+						{
+							"properties": {
+								"type": {
+									"description": "The application type.",
+									"example": "vnc",
+									"type": "string"
+								}
+							}
+						}
+					]
 				}
 			],
 			"title": "Browser VNC Application",
@@ -51,10 +690,111 @@
 		{
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/basic_app_response_props"
+					"properties": {
+						"aud": {
+							"description": "Audience tag.",
+							"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+							"maxLength": 64,
+							"readOnly": true,
+							"type": "string"
+						},
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"id": {
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"type": "object"
 				},
 				{
-					"$ref": "#/components/schemas/schemas-app_launcher_props"
+					"allOf": [
+						{
+							"properties": {
+								"allowed_idps": {
+									"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
+									"items": {
+										"description": "The identity providers selected for application.",
+										"example": "699d98642c564d2e855e9661899b7252",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"auto_redirect_to_identity": {
+									"default": false,
+									"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
+									"type": "boolean"
+								},
+								"domain": {
+									"description": "The domain and path that Access will secure.",
+									"example": "test.example.com/admin",
+									"type": "string"
+								},
+								"name": {
+									"description": "The name of the application.",
+									"example": "Admin Site",
+									"type": "string"
+								},
+								"session_duration": {
+									"default": "24h",
+									"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+									"example": "24h",
+									"type": "string"
+								},
+								"type": {
+									"description": "The application type.",
+									"enum": [
+										"self_hosted",
+										"saas",
+										"ssh",
+										"vnc",
+										"app_launcher",
+										"warp",
+										"biso",
+										"bookmark",
+										"dash_sso"
+									],
+									"example": "self_hosted",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type"
+							],
+							"type": "object"
+						},
+						{
+							"properties": {
+								"domain": {
+									"example": "authdomain.cloudflareaccess.com",
+									"readOnly": true
+								},
+								"name": {
+									"default": "App Launcher",
+									"example": "App Launcher",
+									"readOnly": true
+								},
+								"type": {
+									"description": "The application type.",
+									"example": "app_launcher",
+									"type": "string"
+								}
+							}
+						}
+					]
 				}
 			],
 			"title": "App Launcher Application",
@@ -63,10 +803,111 @@
 		{
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/basic_app_response_props"
+					"properties": {
+						"aud": {
+							"description": "Audience tag.",
+							"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+							"maxLength": 64,
+							"readOnly": true,
+							"type": "string"
+						},
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"id": {
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"type": "object"
 				},
 				{
-					"$ref": "#/components/schemas/schemas-warp_props"
+					"allOf": [
+						{
+							"properties": {
+								"allowed_idps": {
+									"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
+									"items": {
+										"description": "The identity providers selected for application.",
+										"example": "699d98642c564d2e855e9661899b7252",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"auto_redirect_to_identity": {
+									"default": false,
+									"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
+									"type": "boolean"
+								},
+								"domain": {
+									"description": "The domain and path that Access will secure.",
+									"example": "test.example.com/admin",
+									"type": "string"
+								},
+								"name": {
+									"description": "The name of the application.",
+									"example": "Admin Site",
+									"type": "string"
+								},
+								"session_duration": {
+									"default": "24h",
+									"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+									"example": "24h",
+									"type": "string"
+								},
+								"type": {
+									"description": "The application type.",
+									"enum": [
+										"self_hosted",
+										"saas",
+										"ssh",
+										"vnc",
+										"app_launcher",
+										"warp",
+										"biso",
+										"bookmark",
+										"dash_sso"
+									],
+									"example": "self_hosted",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type"
+							],
+							"type": "object"
+						},
+						{
+							"properties": {
+								"domain": {
+									"example": "authdomain.cloudflareaccess.com/warp",
+									"readOnly": true
+								},
+								"name": {
+									"default": "Warp Login App",
+									"example": "Warp Login App",
+									"readOnly": true
+								},
+								"type": {
+									"description": "The application type.",
+									"example": "warp",
+									"type": "string"
+								}
+							}
+						}
+					]
 				}
 			],
 			"title": "Device Enrollment Permissions Application",
@@ -75,10 +916,111 @@
 		{
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/basic_app_response_props"
+					"properties": {
+						"aud": {
+							"description": "Audience tag.",
+							"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+							"maxLength": 64,
+							"readOnly": true,
+							"type": "string"
+						},
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"id": {
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"type": "object"
 				},
 				{
-					"$ref": "#/components/schemas/schemas-biso_props"
+					"allOf": [
+						{
+							"properties": {
+								"allowed_idps": {
+									"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
+									"items": {
+										"description": "The identity providers selected for application.",
+										"example": "699d98642c564d2e855e9661899b7252",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"auto_redirect_to_identity": {
+									"default": false,
+									"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
+									"type": "boolean"
+								},
+								"domain": {
+									"description": "The domain and path that Access will secure.",
+									"example": "test.example.com/admin",
+									"type": "string"
+								},
+								"name": {
+									"description": "The name of the application.",
+									"example": "Admin Site",
+									"type": "string"
+								},
+								"session_duration": {
+									"default": "24h",
+									"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+									"example": "24h",
+									"type": "string"
+								},
+								"type": {
+									"description": "The application type.",
+									"enum": [
+										"self_hosted",
+										"saas",
+										"ssh",
+										"vnc",
+										"app_launcher",
+										"warp",
+										"biso",
+										"bookmark",
+										"dash_sso"
+									],
+									"example": "self_hosted",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type"
+							],
+							"type": "object"
+						},
+						{
+							"properties": {
+								"domain": {
+									"example": "authdomain.cloudflareaccess.com/browser",
+									"readOnly": true
+								},
+								"name": {
+									"default": "Clientless Web Isolation",
+									"example": "Clientless Web Isolation",
+									"readOnly": true
+								},
+								"type": {
+									"description": "The application type.",
+									"example": "biso",
+									"type": "string"
+								}
+							}
+						}
+					]
 				}
 			],
 			"title": "Browser Isolation Permissions Application",
@@ -87,10 +1029,67 @@
 		{
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/basic_app_response_props"
+					"properties": {
+						"aud": {
+							"description": "Audience tag.",
+							"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+							"maxLength": 64,
+							"readOnly": true,
+							"type": "string"
+						},
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"id": {
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						}
+					},
+					"type": "object"
 				},
 				{
-					"$ref": "#/components/schemas/schemas-bookmark_props"
+					"properties": {
+						"app_launcher_visible": {
+							"default": true
+						},
+						"domain": {
+							"description": "The URL or domain of the bookmark.",
+							"example": "https://mybookmark.com"
+						},
+						"logo_url": {
+							"description": "The image URL for the logo shown in the App Launcher dashboard.",
+							"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
+							"type": "string"
+						},
+						"name": {
+							"description": "The name of the application.",
+							"example": "Admin Site",
+							"type": "string"
+						},
+						"type": {
+							"description": "The application type.",
+							"example": "bookmark",
+							"type": "string"
+						}
+					},
+					"required": [
+						"type",
+						"domain"
+					],
+					"title": "Bookmark Application",
+					"type": "object"
 				}
 			],
 			"title": "Bookmark application",

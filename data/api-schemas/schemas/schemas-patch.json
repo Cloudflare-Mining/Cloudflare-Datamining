@@ -2,7 +2,13 @@
 	"description": "Update enablement of Smart Tiered Cache",
 	"properties": {
 		"value": {
-			"$ref": "#/components/schemas/schemas-value"
+			"description": "Enables Tiered Cache.",
+			"enum": [
+				"on",
+				"off"
+			],
+			"example": "on",
+			"type": "string"
 		}
 	},
 	"required": [

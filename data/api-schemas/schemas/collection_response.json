@@ -1,7 +1,118 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
@@ -9,25 +120,53 @@
 					"items": {
 						"properties": {
 							"additional_information": {
-								"$ref": "#/components/schemas/additional_information"
+								"description": "Additional information related to the host name.",
+								"properties": {
+									"suspected_malware_family": {
+										"description": "Suspected DGA malware family.",
+										"example": "",
+										"type": "string"
+									}
+								},
+								"type": "object"
 							},
 							"application": {
-								"$ref": "#/components/schemas/application"
+								"description": "Application that the hostname belongs to.",
+								"properties": {
+									"id": {
+										"type": "integer"
+									},
+									"name": {
+										"example": "CLOUDFLARE",
+										"type": "string"
+									}
+								},
+								"type": "object"
 							},
 							"content_categories": {
-								"$ref": "#/components/schemas/content_categories"
+								"description": "Current content categories.",
+								"example": [
+									{
+										"id": 155,
+										"name": "Technology",
+										"super_category_id": 26
+									}
+								]
 							},
 							"domain": {
-								"$ref": "#/components/schemas/domain_name"
+								"example": "cloudflare.com",
+								"type": "string"
 							},
 							"popularity_rank": {
-								"$ref": "#/components/schemas/popularity_rank"
+								"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
+								"type": "integer"
 							},
 							"risk_score": {
-								"$ref": "#/components/schemas/risk_score"
+								"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk).",
+								"type": "number"
 							},
 							"risk_types": {
-								"$ref": "#/components/schemas/risk_types"
+								"example": []
 							}
 						}
 					},

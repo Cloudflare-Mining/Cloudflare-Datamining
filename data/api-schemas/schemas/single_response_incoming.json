@@ -1,35 +1,145 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							]
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
 						"auto_refresh_seconds": {
-							"$ref": "#/components/schemas/auto_refresh_seconds"
+							"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
+							"example": 86400,
+							"type": "number"
 						},
 						"checked_time": {
-							"$ref": "#/components/schemas/time"
+							"description": "The time for a specific event.",
+							"example": "2019-10-24T17:09:42.883908+01:00",
+							"type": "string"
 						},
 						"created_time": {
-							"$ref": "#/components/schemas/time"
+							"description": "The time for a specific event.",
+							"example": "2019-10-24T17:09:42.883908+01:00",
+							"type": "string"
 						},
 						"id": {
-							"$ref": "#/components/schemas/identifier-Cj5BSFjh"
+							"example": "269d8f4853475ca241c4e730be286b20",
+							"readOnly": true
 						},
 						"modified_time": {
-							"$ref": "#/components/schemas/time"
+							"description": "The time for a specific event.",
+							"example": "2019-10-24T17:09:42.883908+01:00",
+							"type": "string"
 						},
 						"name": {
-							"$ref": "#/components/schemas/name-dgRN4lh1"
+							"description": "Zone name.",
+							"example": "www.example.com.",
+							"type": "string"
 						},
 						"peers": {
-							"$ref": "#/components/schemas/peers"
+							"description": "A list of peer tags.",
+							"example": [
+								"23ff594956f20c2a721606e94745a8aa",
+								"00920f38ce07c2e2f4df50b1f61d4194"
+							],
+							"items": {},
+							"type": "array"
 						},
 						"soa_serial": {
-							"$ref": "#/components/schemas/soa_serial"
+							"description": "The serial number of the SOA for the given zone.",
+							"example": 2019102400,
+							"type": "number"
 						}
 					},
 					"type": "object"

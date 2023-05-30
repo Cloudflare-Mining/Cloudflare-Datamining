@@ -1,13 +1,159 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/peer"
+						"properties": {
+							"id": {
+								"example": "23ff594956f20c2a721606e94745a8aa",
+								"readOnly": true
+							},
+							"ip": {
+								"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.",
+								"example": "192.0.2.53",
+								"type": "string"
+							},
+							"ixfr_enable": {
+								"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.",
+								"example": false,
+								"type": "boolean"
+							},
+							"name": {
+								"description": "The name of the peer.",
+								"example": "my-peer-1",
+								"type": "string"
+							},
+							"port": {
+								"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.",
+								"example": 53,
+								"type": "number"
+							},
+							"tsig_id": {
+								"description": "TSIG authentication will be used for zone transfer if configured.",
+								"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
+								"type": "string"
+							}
+						},
+						"required": [
+							"id",
+							"name"
+						],
+						"type": "object"
 					},
 					"type": "array"
 				}

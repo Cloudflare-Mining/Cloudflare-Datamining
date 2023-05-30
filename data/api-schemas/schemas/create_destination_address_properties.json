@@ -1,7 +1,10 @@
 {
 	"properties": {
 		"email": {
-			"$ref": "#/components/schemas/email-GRKO1h0o"
+			"description": "The contact email address of the user.",
+			"example": "user@example.com",
+			"maxLength": 90,
+			"type": "string"
 		}
 	},
 	"required": [

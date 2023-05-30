@@ -79,7 +79,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -93,7 +111,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -174,7 +210,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -201,7 +309,176 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/deployments"
+												"properties": {
+													"aliases": {
+														"description": "A list of alias URLs pointing to this deployment.",
+														"example": [
+															"https://branchname.projectname.pages.dev"
+														],
+														"items": {},
+														"nullable": true,
+														"readOnly": true,
+														"type": "array"
+													},
+													"build_config": {
+														"readOnly": true
+													},
+													"created_on": {
+														"description": "When the deployment was created.",
+														"example": "2021-03-09T00:55:03.923456Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"deployment_trigger": {
+														"description": "Info about what caused the deployment.",
+														"properties": {
+															"metadata": {
+																"description": "Additional info about the trigger.",
+																"properties": {
+																	"branch": {
+																		"description": "Where the trigger happened.",
+																		"example": "main",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"commit_hash": {
+																		"description": "Hash of the deployment trigger commit.",
+																		"example": "ad9ccd918a81025731e10e40267e11273a263421",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"commit_message": {
+																		"description": "Message of the deployment trigger commit.",
+																		"example": "Update index.html",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": {
+																"description": "What caused the deployment.",
+																"example": "ad_hoc",
+																"pattern": "push|ad_hoc",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"readOnly": true,
+														"type": "object"
+													},
+													"env_vars": {
+														"description": "A dict of env variables to build this deploy.",
+														"example": {
+															"BUILD_VERSION": {
+																"value": "3.3"
+															},
+															"ENV": {
+																"value": "STAGING"
+															}
+														},
+														"readOnly": true,
+														"type": "object"
+													},
+													"environment": {
+														"description": "Type of deploy.",
+														"example": "preview",
+														"pattern": "preview|production",
+														"readOnly": true,
+														"type": "string"
+													},
+													"id": {
+														"description": "Id of the deployment.",
+														"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
+														"readOnly": true,
+														"type": "string"
+													},
+													"is_skipped": {
+														"description": "If the deployment has been skipped.",
+														"example": true,
+														"readOnly": true,
+														"type": "boolean"
+													},
+													"latest_stage": {
+														"readOnly": true
+													},
+													"modified_on": {
+														"description": "When the deployment was last modified.",
+														"example": "2021-03-09T00:58:59.045655",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"project_id": {
+														"description": "Id of the project.",
+														"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+														"readOnly": true,
+														"type": "string"
+													},
+													"project_name": {
+														"description": "Name of the project.",
+														"example": "ninjakittens",
+														"readOnly": true,
+														"type": "string"
+													},
+													"short_id": {
+														"description": "Short Id (8 character) of the deployment.",
+														"example": "f64788e9",
+														"readOnly": true,
+														"type": "string"
+													},
+													"source": {
+														"readOnly": true
+													},
+													"stages": {
+														"description": "List of past stages.",
+														"example": [
+															{
+																"ended_on": "2021-06-03T15:39:03.134378Z",
+																"name": "queued",
+																"started_on": "2021-06-03T15:38:15.608194Z",
+																"status": "active"
+															},
+															{
+																"ended_on": null,
+																"name": "initialize",
+																"started_on": null,
+																"status": "idle"
+															},
+															{
+																"ended_on": null,
+																"name": "clone_repo",
+																"started_on": null,
+																"status": "idle"
+															},
+															{
+																"ended_on": null,
+																"name": "build",
+																"started_on": null,
+																"status": "idle"
+															},
+															{
+																"ended_on": null,
+																"name": "deploy",
+																"started_on": null,
+																"status": "idle"
+															}
+														],
+														"items": {
+															"$ref": "#/components/schemas/stage"
+														},
+														"readOnly": true,
+														"type": "array"
+													},
+													"url": {
+														"description": "The live URL to view this deployment.",
+														"example": "https://f64788e9.ninjakittens.pages.dev",
+														"readOnly": true,
+														"type": "string"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -221,7 +498,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -248,7 +597,176 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/deployments"
+														"properties": {
+															"aliases": {
+																"description": "A list of alias URLs pointing to this deployment.",
+																"example": [
+																	"https://branchname.projectname.pages.dev"
+																],
+																"items": {},
+																"nullable": true,
+																"readOnly": true,
+																"type": "array"
+															},
+															"build_config": {
+																"readOnly": true
+															},
+															"created_on": {
+																"description": "When the deployment was created.",
+																"example": "2021-03-09T00:55:03.923456Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"deployment_trigger": {
+																"description": "Info about what caused the deployment.",
+																"properties": {
+																	"metadata": {
+																		"description": "Additional info about the trigger.",
+																		"properties": {
+																			"branch": {
+																				"description": "Where the trigger happened.",
+																				"example": "main",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"commit_hash": {
+																				"description": "Hash of the deployment trigger commit.",
+																				"example": "ad9ccd918a81025731e10e40267e11273a263421",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"commit_message": {
+																				"description": "Message of the deployment trigger commit.",
+																				"example": "Update index.html",
+																				"readOnly": true,
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"description": "What caused the deployment.",
+																		"example": "ad_hoc",
+																		"pattern": "push|ad_hoc",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"readOnly": true,
+																"type": "object"
+															},
+															"env_vars": {
+																"description": "A dict of env variables to build this deploy.",
+																"example": {
+																	"BUILD_VERSION": {
+																		"value": "3.3"
+																	},
+																	"ENV": {
+																		"value": "STAGING"
+																	}
+																},
+																"readOnly": true,
+																"type": "object"
+															},
+															"environment": {
+																"description": "Type of deploy.",
+																"example": "preview",
+																"pattern": "preview|production",
+																"readOnly": true,
+																"type": "string"
+															},
+															"id": {
+																"description": "Id of the deployment.",
+																"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
+																"readOnly": true,
+																"type": "string"
+															},
+															"is_skipped": {
+																"description": "If the deployment has been skipped.",
+																"example": true,
+																"readOnly": true,
+																"type": "boolean"
+															},
+															"latest_stage": {
+																"readOnly": true
+															},
+															"modified_on": {
+																"description": "When the deployment was last modified.",
+																"example": "2021-03-09T00:58:59.045655",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"project_id": {
+																"description": "Id of the project.",
+																"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+																"readOnly": true,
+																"type": "string"
+															},
+															"project_name": {
+																"description": "Name of the project.",
+																"example": "ninjakittens",
+																"readOnly": true,
+																"type": "string"
+															},
+															"short_id": {
+																"description": "Short Id (8 character) of the deployment.",
+																"example": "f64788e9",
+																"readOnly": true,
+																"type": "string"
+															},
+															"source": {
+																"readOnly": true
+															},
+															"stages": {
+																"description": "List of past stages.",
+																"example": [
+																	{
+																		"ended_on": "2021-06-03T15:39:03.134378Z",
+																		"name": "queued",
+																		"started_on": "2021-06-03T15:38:15.608194Z",
+																		"status": "active"
+																	},
+																	{
+																		"ended_on": null,
+																		"name": "initialize",
+																		"started_on": null,
+																		"status": "idle"
+																	},
+																	{
+																		"ended_on": null,
+																		"name": "clone_repo",
+																		"started_on": null,
+																		"status": "idle"
+																	},
+																	{
+																		"ended_on": null,
+																		"name": "build",
+																		"started_on": null,
+																		"status": "idle"
+																	},
+																	{
+																		"ended_on": null,
+																		"name": "deploy",
+																		"started_on": null,
+																		"status": "idle"
+																	}
+																],
+																"items": {
+																	"$ref": "#/components/schemas/stage"
+																},
+																"readOnly": true,
+																"type": "array"
+															},
+															"url": {
+																"description": "The live URL to view this deployment.",
+																"example": "https://f64788e9.ninjakittens.pages.dev",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -261,7 +779,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -275,7 +811,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -368,12 +922,253 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/deployments"
+											"properties": {
+												"aliases": {
+													"description": "A list of alias URLs pointing to this deployment.",
+													"example": [
+														"https://branchname.projectname.pages.dev"
+													],
+													"items": {},
+													"nullable": true,
+													"readOnly": true,
+													"type": "array"
+												},
+												"build_config": {
+													"readOnly": true
+												},
+												"created_on": {
+													"description": "When the deployment was created.",
+													"example": "2021-03-09T00:55:03.923456Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"deployment_trigger": {
+													"description": "Info about what caused the deployment.",
+													"properties": {
+														"metadata": {
+															"description": "Additional info about the trigger.",
+															"properties": {
+																"branch": {
+																	"description": "Where the trigger happened.",
+																	"example": "main",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"commit_hash": {
+																	"description": "Hash of the deployment trigger commit.",
+																	"example": "ad9ccd918a81025731e10e40267e11273a263421",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"commit_message": {
+																	"description": "Message of the deployment trigger commit.",
+																	"example": "Update index.html",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": {
+															"description": "What caused the deployment.",
+															"example": "ad_hoc",
+															"pattern": "push|ad_hoc",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"env_vars": {
+													"description": "A dict of env variables to build this deploy.",
+													"example": {
+														"BUILD_VERSION": {
+															"value": "3.3"
+														},
+														"ENV": {
+															"value": "STAGING"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"environment": {
+													"description": "Type of deploy.",
+													"example": "preview",
+													"pattern": "preview|production",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Id of the deployment.",
+													"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
+													"readOnly": true,
+													"type": "string"
+												},
+												"is_skipped": {
+													"description": "If the deployment has been skipped.",
+													"example": true,
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"latest_stage": {
+													"readOnly": true
+												},
+												"modified_on": {
+													"description": "When the deployment was last modified.",
+													"example": "2021-03-09T00:58:59.045655",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"project_id": {
+													"description": "Id of the project.",
+													"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+													"readOnly": true,
+													"type": "string"
+												},
+												"project_name": {
+													"description": "Name of the project.",
+													"example": "ninjakittens",
+													"readOnly": true,
+													"type": "string"
+												},
+												"short_id": {
+													"description": "Short Id (8 character) of the deployment.",
+													"example": "f64788e9",
+													"readOnly": true,
+													"type": "string"
+												},
+												"source": {
+													"readOnly": true
+												},
+												"stages": {
+													"description": "List of past stages.",
+													"example": [
+														{
+															"ended_on": "2021-06-03T15:39:03.134378Z",
+															"name": "queued",
+															"started_on": "2021-06-03T15:38:15.608194Z",
+															"status": "active"
+														},
+														{
+															"ended_on": null,
+															"name": "initialize",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "clone_repo",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "build",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "deploy",
+															"started_on": null,
+															"status": "idle"
+														}
+													],
+													"items": {
+														"$ref": "#/components/schemas/stage"
+													},
+													"readOnly": true,
+													"type": "array"
+												},
+												"url": {
+													"description": "The live URL to view this deployment.",
+													"example": "https://f64788e9.ninjakittens.pages.dev",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -391,12 +1186,253 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/deployments"
+													"properties": {
+														"aliases": {
+															"description": "A list of alias URLs pointing to this deployment.",
+															"example": [
+																"https://branchname.projectname.pages.dev"
+															],
+															"items": {},
+															"nullable": true,
+															"readOnly": true,
+															"type": "array"
+														},
+														"build_config": {
+															"readOnly": true
+														},
+														"created_on": {
+															"description": "When the deployment was created.",
+															"example": "2021-03-09T00:55:03.923456Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"deployment_trigger": {
+															"description": "Info about what caused the deployment.",
+															"properties": {
+																"metadata": {
+																	"description": "Additional info about the trigger.",
+																	"properties": {
+																		"branch": {
+																			"description": "Where the trigger happened.",
+																			"example": "main",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"commit_hash": {
+																			"description": "Hash of the deployment trigger commit.",
+																			"example": "ad9ccd918a81025731e10e40267e11273a263421",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"commit_message": {
+																			"description": "Message of the deployment trigger commit.",
+																			"example": "Update index.html",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"description": "What caused the deployment.",
+																	"example": "ad_hoc",
+																	"pattern": "push|ad_hoc",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"env_vars": {
+															"description": "A dict of env variables to build this deploy.",
+															"example": {
+																"BUILD_VERSION": {
+																	"value": "3.3"
+																},
+																"ENV": {
+																	"value": "STAGING"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"environment": {
+															"description": "Type of deploy.",
+															"example": "preview",
+															"pattern": "preview|production",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"description": "Id of the deployment.",
+															"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
+															"readOnly": true,
+															"type": "string"
+														},
+														"is_skipped": {
+															"description": "If the deployment has been skipped.",
+															"example": true,
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"latest_stage": {
+															"readOnly": true
+														},
+														"modified_on": {
+															"description": "When the deployment was last modified.",
+															"example": "2021-03-09T00:58:59.045655",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"project_id": {
+															"description": "Id of the project.",
+															"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+															"readOnly": true,
+															"type": "string"
+														},
+														"project_name": {
+															"description": "Name of the project.",
+															"example": "ninjakittens",
+															"readOnly": true,
+															"type": "string"
+														},
+														"short_id": {
+															"description": "Short Id (8 character) of the deployment.",
+															"example": "f64788e9",
+															"readOnly": true,
+															"type": "string"
+														},
+														"source": {
+															"readOnly": true
+														},
+														"stages": {
+															"description": "List of past stages.",
+															"example": [
+																{
+																	"ended_on": "2021-06-03T15:39:03.134378Z",
+																	"name": "queued",
+																	"started_on": "2021-06-03T15:38:15.608194Z",
+																	"status": "active"
+																},
+																{
+																	"ended_on": null,
+																	"name": "initialize",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "clone_repo",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "build",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "deploy",
+																	"started_on": null,
+																	"status": "idle"
+																}
+															],
+															"items": {
+																"$ref": "#/components/schemas/stage"
+															},
+															"readOnly": true,
+															"type": "array"
+														},
+														"url": {
+															"description": "The live URL to view this deployment.",
+															"example": "https://f64788e9.ninjakittens.pages.dev",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -407,7 +1443,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -421,7 +1475,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -514,7 +1586,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -663,7 +1807,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -805,7 +2021,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -819,7 +2053,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -917,12 +2169,253 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/deployments"
+											"properties": {
+												"aliases": {
+													"description": "A list of alias URLs pointing to this deployment.",
+													"example": [
+														"https://branchname.projectname.pages.dev"
+													],
+													"items": {},
+													"nullable": true,
+													"readOnly": true,
+													"type": "array"
+												},
+												"build_config": {
+													"readOnly": true
+												},
+												"created_on": {
+													"description": "When the deployment was created.",
+													"example": "2021-03-09T00:55:03.923456Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"deployment_trigger": {
+													"description": "Info about what caused the deployment.",
+													"properties": {
+														"metadata": {
+															"description": "Additional info about the trigger.",
+															"properties": {
+																"branch": {
+																	"description": "Where the trigger happened.",
+																	"example": "main",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"commit_hash": {
+																	"description": "Hash of the deployment trigger commit.",
+																	"example": "ad9ccd918a81025731e10e40267e11273a263421",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"commit_message": {
+																	"description": "Message of the deployment trigger commit.",
+																	"example": "Update index.html",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": {
+															"description": "What caused the deployment.",
+															"example": "ad_hoc",
+															"pattern": "push|ad_hoc",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"env_vars": {
+													"description": "A dict of env variables to build this deploy.",
+													"example": {
+														"BUILD_VERSION": {
+															"value": "3.3"
+														},
+														"ENV": {
+															"value": "STAGING"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"environment": {
+													"description": "Type of deploy.",
+													"example": "preview",
+													"pattern": "preview|production",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Id of the deployment.",
+													"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
+													"readOnly": true,
+													"type": "string"
+												},
+												"is_skipped": {
+													"description": "If the deployment has been skipped.",
+													"example": true,
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"latest_stage": {
+													"readOnly": true
+												},
+												"modified_on": {
+													"description": "When the deployment was last modified.",
+													"example": "2021-03-09T00:58:59.045655",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"project_id": {
+													"description": "Id of the project.",
+													"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+													"readOnly": true,
+													"type": "string"
+												},
+												"project_name": {
+													"description": "Name of the project.",
+													"example": "ninjakittens",
+													"readOnly": true,
+													"type": "string"
+												},
+												"short_id": {
+													"description": "Short Id (8 character) of the deployment.",
+													"example": "f64788e9",
+													"readOnly": true,
+													"type": "string"
+												},
+												"source": {
+													"readOnly": true
+												},
+												"stages": {
+													"description": "List of past stages.",
+													"example": [
+														{
+															"ended_on": "2021-06-03T15:39:03.134378Z",
+															"name": "queued",
+															"started_on": "2021-06-03T15:38:15.608194Z",
+															"status": "active"
+														},
+														{
+															"ended_on": null,
+															"name": "initialize",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "clone_repo",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "build",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "deploy",
+															"started_on": null,
+															"status": "idle"
+														}
+													],
+													"items": {
+														"$ref": "#/components/schemas/stage"
+													},
+													"readOnly": true,
+													"type": "array"
+												},
+												"url": {
+													"description": "The live URL to view this deployment.",
+													"example": "https://f64788e9.ninjakittens.pages.dev",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -940,12 +2433,253 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/deployments"
+													"properties": {
+														"aliases": {
+															"description": "A list of alias URLs pointing to this deployment.",
+															"example": [
+																"https://branchname.projectname.pages.dev"
+															],
+															"items": {},
+															"nullable": true,
+															"readOnly": true,
+															"type": "array"
+														},
+														"build_config": {
+															"readOnly": true
+														},
+														"created_on": {
+															"description": "When the deployment was created.",
+															"example": "2021-03-09T00:55:03.923456Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"deployment_trigger": {
+															"description": "Info about what caused the deployment.",
+															"properties": {
+																"metadata": {
+																	"description": "Additional info about the trigger.",
+																	"properties": {
+																		"branch": {
+																			"description": "Where the trigger happened.",
+																			"example": "main",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"commit_hash": {
+																			"description": "Hash of the deployment trigger commit.",
+																			"example": "ad9ccd918a81025731e10e40267e11273a263421",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"commit_message": {
+																			"description": "Message of the deployment trigger commit.",
+																			"example": "Update index.html",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"description": "What caused the deployment.",
+																	"example": "ad_hoc",
+																	"pattern": "push|ad_hoc",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"env_vars": {
+															"description": "A dict of env variables to build this deploy.",
+															"example": {
+																"BUILD_VERSION": {
+																	"value": "3.3"
+																},
+																"ENV": {
+																	"value": "STAGING"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"environment": {
+															"description": "Type of deploy.",
+															"example": "preview",
+															"pattern": "preview|production",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"description": "Id of the deployment.",
+															"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
+															"readOnly": true,
+															"type": "string"
+														},
+														"is_skipped": {
+															"description": "If the deployment has been skipped.",
+															"example": true,
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"latest_stage": {
+															"readOnly": true
+														},
+														"modified_on": {
+															"description": "When the deployment was last modified.",
+															"example": "2021-03-09T00:58:59.045655",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"project_id": {
+															"description": "Id of the project.",
+															"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+															"readOnly": true,
+															"type": "string"
+														},
+														"project_name": {
+															"description": "Name of the project.",
+															"example": "ninjakittens",
+															"readOnly": true,
+															"type": "string"
+														},
+														"short_id": {
+															"description": "Short Id (8 character) of the deployment.",
+															"example": "f64788e9",
+															"readOnly": true,
+															"type": "string"
+														},
+														"source": {
+															"readOnly": true
+														},
+														"stages": {
+															"description": "List of past stages.",
+															"example": [
+																{
+																	"ended_on": "2021-06-03T15:39:03.134378Z",
+																	"name": "queued",
+																	"started_on": "2021-06-03T15:38:15.608194Z",
+																	"status": "active"
+																},
+																{
+																	"ended_on": null,
+																	"name": "initialize",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "clone_repo",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "build",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "deploy",
+																	"started_on": null,
+																	"status": "idle"
+																}
+															],
+															"items": {
+																"$ref": "#/components/schemas/stage"
+															},
+															"readOnly": true,
+															"type": "array"
+														},
+														"url": {
+															"description": "The live URL to view this deployment.",
+															"example": "https://f64788e9.ninjakittens.pages.dev",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -956,7 +2690,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -970,7 +2722,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1069,12 +2839,253 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/deployments"
+											"properties": {
+												"aliases": {
+													"description": "A list of alias URLs pointing to this deployment.",
+													"example": [
+														"https://branchname.projectname.pages.dev"
+													],
+													"items": {},
+													"nullable": true,
+													"readOnly": true,
+													"type": "array"
+												},
+												"build_config": {
+													"readOnly": true
+												},
+												"created_on": {
+													"description": "When the deployment was created.",
+													"example": "2021-03-09T00:55:03.923456Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"deployment_trigger": {
+													"description": "Info about what caused the deployment.",
+													"properties": {
+														"metadata": {
+															"description": "Additional info about the trigger.",
+															"properties": {
+																"branch": {
+																	"description": "Where the trigger happened.",
+																	"example": "main",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"commit_hash": {
+																	"description": "Hash of the deployment trigger commit.",
+																	"example": "ad9ccd918a81025731e10e40267e11273a263421",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"commit_message": {
+																	"description": "Message of the deployment trigger commit.",
+																	"example": "Update index.html",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": {
+															"description": "What caused the deployment.",
+															"example": "ad_hoc",
+															"pattern": "push|ad_hoc",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"env_vars": {
+													"description": "A dict of env variables to build this deploy.",
+													"example": {
+														"BUILD_VERSION": {
+															"value": "3.3"
+														},
+														"ENV": {
+															"value": "STAGING"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"environment": {
+													"description": "Type of deploy.",
+													"example": "preview",
+													"pattern": "preview|production",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Id of the deployment.",
+													"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
+													"readOnly": true,
+													"type": "string"
+												},
+												"is_skipped": {
+													"description": "If the deployment has been skipped.",
+													"example": true,
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"latest_stage": {
+													"readOnly": true
+												},
+												"modified_on": {
+													"description": "When the deployment was last modified.",
+													"example": "2021-03-09T00:58:59.045655",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"project_id": {
+													"description": "Id of the project.",
+													"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+													"readOnly": true,
+													"type": "string"
+												},
+												"project_name": {
+													"description": "Name of the project.",
+													"example": "ninjakittens",
+													"readOnly": true,
+													"type": "string"
+												},
+												"short_id": {
+													"description": "Short Id (8 character) of the deployment.",
+													"example": "f64788e9",
+													"readOnly": true,
+													"type": "string"
+												},
+												"source": {
+													"readOnly": true
+												},
+												"stages": {
+													"description": "List of past stages.",
+													"example": [
+														{
+															"ended_on": "2021-06-03T15:39:03.134378Z",
+															"name": "queued",
+															"started_on": "2021-06-03T15:38:15.608194Z",
+															"status": "active"
+														},
+														{
+															"ended_on": null,
+															"name": "initialize",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "clone_repo",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "build",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "deploy",
+															"started_on": null,
+															"status": "idle"
+														}
+													],
+													"items": {
+														"$ref": "#/components/schemas/stage"
+													},
+													"readOnly": true,
+													"type": "array"
+												},
+												"url": {
+													"description": "The live URL to view this deployment.",
+													"example": "https://f64788e9.ninjakittens.pages.dev",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1092,12 +3103,253 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/deployments"
+													"properties": {
+														"aliases": {
+															"description": "A list of alias URLs pointing to this deployment.",
+															"example": [
+																"https://branchname.projectname.pages.dev"
+															],
+															"items": {},
+															"nullable": true,
+															"readOnly": true,
+															"type": "array"
+														},
+														"build_config": {
+															"readOnly": true
+														},
+														"created_on": {
+															"description": "When the deployment was created.",
+															"example": "2021-03-09T00:55:03.923456Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"deployment_trigger": {
+															"description": "Info about what caused the deployment.",
+															"properties": {
+																"metadata": {
+																	"description": "Additional info about the trigger.",
+																	"properties": {
+																		"branch": {
+																			"description": "Where the trigger happened.",
+																			"example": "main",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"commit_hash": {
+																			"description": "Hash of the deployment trigger commit.",
+																			"example": "ad9ccd918a81025731e10e40267e11273a263421",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"commit_message": {
+																			"description": "Message of the deployment trigger commit.",
+																			"example": "Update index.html",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"description": "What caused the deployment.",
+																	"example": "ad_hoc",
+																	"pattern": "push|ad_hoc",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"env_vars": {
+															"description": "A dict of env variables to build this deploy.",
+															"example": {
+																"BUILD_VERSION": {
+																	"value": "3.3"
+																},
+																"ENV": {
+																	"value": "STAGING"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"environment": {
+															"description": "Type of deploy.",
+															"example": "preview",
+															"pattern": "preview|production",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"description": "Id of the deployment.",
+															"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
+															"readOnly": true,
+															"type": "string"
+														},
+														"is_skipped": {
+															"description": "If the deployment has been skipped.",
+															"example": true,
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"latest_stage": {
+															"readOnly": true
+														},
+														"modified_on": {
+															"description": "When the deployment was last modified.",
+															"example": "2021-03-09T00:58:59.045655",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"project_id": {
+															"description": "Id of the project.",
+															"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+															"readOnly": true,
+															"type": "string"
+														},
+														"project_name": {
+															"description": "Name of the project.",
+															"example": "ninjakittens",
+															"readOnly": true,
+															"type": "string"
+														},
+														"short_id": {
+															"description": "Short Id (8 character) of the deployment.",
+															"example": "f64788e9",
+															"readOnly": true,
+															"type": "string"
+														},
+														"source": {
+															"readOnly": true
+														},
+														"stages": {
+															"description": "List of past stages.",
+															"example": [
+																{
+																	"ended_on": "2021-06-03T15:39:03.134378Z",
+																	"name": "queued",
+																	"started_on": "2021-06-03T15:38:15.608194Z",
+																	"status": "active"
+																},
+																{
+																	"ended_on": null,
+																	"name": "initialize",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "clone_repo",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "build",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "deploy",
+																	"started_on": null,
+																	"status": "idle"
+																}
+															],
+															"items": {
+																"$ref": "#/components/schemas/stage"
+															},
+															"readOnly": true,
+															"type": "array"
+														},
+														"url": {
+															"description": "The live URL to view this deployment.",
+															"example": "https://f64788e9.ninjakittens.pages.dev",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1108,7 +3360,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1122,7 +3392,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -1221,12 +3509,253 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/deployments"
+											"properties": {
+												"aliases": {
+													"description": "A list of alias URLs pointing to this deployment.",
+													"example": [
+														"https://branchname.projectname.pages.dev"
+													],
+													"items": {},
+													"nullable": true,
+													"readOnly": true,
+													"type": "array"
+												},
+												"build_config": {
+													"readOnly": true
+												},
+												"created_on": {
+													"description": "When the deployment was created.",
+													"example": "2021-03-09T00:55:03.923456Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"deployment_trigger": {
+													"description": "Info about what caused the deployment.",
+													"properties": {
+														"metadata": {
+															"description": "Additional info about the trigger.",
+															"properties": {
+																"branch": {
+																	"description": "Where the trigger happened.",
+																	"example": "main",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"commit_hash": {
+																	"description": "Hash of the deployment trigger commit.",
+																	"example": "ad9ccd918a81025731e10e40267e11273a263421",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"commit_message": {
+																	"description": "Message of the deployment trigger commit.",
+																	"example": "Update index.html",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": {
+															"description": "What caused the deployment.",
+															"example": "ad_hoc",
+															"pattern": "push|ad_hoc",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"env_vars": {
+													"description": "A dict of env variables to build this deploy.",
+													"example": {
+														"BUILD_VERSION": {
+															"value": "3.3"
+														},
+														"ENV": {
+															"value": "STAGING"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"environment": {
+													"description": "Type of deploy.",
+													"example": "preview",
+													"pattern": "preview|production",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Id of the deployment.",
+													"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
+													"readOnly": true,
+													"type": "string"
+												},
+												"is_skipped": {
+													"description": "If the deployment has been skipped.",
+													"example": true,
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"latest_stage": {
+													"readOnly": true
+												},
+												"modified_on": {
+													"description": "When the deployment was last modified.",
+													"example": "2021-03-09T00:58:59.045655",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"project_id": {
+													"description": "Id of the project.",
+													"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+													"readOnly": true,
+													"type": "string"
+												},
+												"project_name": {
+													"description": "Name of the project.",
+													"example": "ninjakittens",
+													"readOnly": true,
+													"type": "string"
+												},
+												"short_id": {
+													"description": "Short Id (8 character) of the deployment.",
+													"example": "f64788e9",
+													"readOnly": true,
+													"type": "string"
+												},
+												"source": {
+													"readOnly": true
+												},
+												"stages": {
+													"description": "List of past stages.",
+													"example": [
+														{
+															"ended_on": "2021-06-03T15:39:03.134378Z",
+															"name": "queued",
+															"started_on": "2021-06-03T15:38:15.608194Z",
+															"status": "active"
+														},
+														{
+															"ended_on": null,
+															"name": "initialize",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "clone_repo",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "build",
+															"started_on": null,
+															"status": "idle"
+														},
+														{
+															"ended_on": null,
+															"name": "deploy",
+															"started_on": null,
+															"status": "idle"
+														}
+													],
+													"items": {
+														"$ref": "#/components/schemas/stage"
+													},
+													"readOnly": true,
+													"type": "array"
+												},
+												"url": {
+													"description": "The live URL to view this deployment.",
+													"example": "https://f64788e9.ninjakittens.pages.dev",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -1244,12 +3773,253 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/deployments"
+													"properties": {
+														"aliases": {
+															"description": "A list of alias URLs pointing to this deployment.",
+															"example": [
+																"https://branchname.projectname.pages.dev"
+															],
+															"items": {},
+															"nullable": true,
+															"readOnly": true,
+															"type": "array"
+														},
+														"build_config": {
+															"readOnly": true
+														},
+														"created_on": {
+															"description": "When the deployment was created.",
+															"example": "2021-03-09T00:55:03.923456Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"deployment_trigger": {
+															"description": "Info about what caused the deployment.",
+															"properties": {
+																"metadata": {
+																	"description": "Additional info about the trigger.",
+																	"properties": {
+																		"branch": {
+																			"description": "Where the trigger happened.",
+																			"example": "main",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"commit_hash": {
+																			"description": "Hash of the deployment trigger commit.",
+																			"example": "ad9ccd918a81025731e10e40267e11273a263421",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"commit_message": {
+																			"description": "Message of the deployment trigger commit.",
+																			"example": "Update index.html",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": {
+																	"description": "What caused the deployment.",
+																	"example": "ad_hoc",
+																	"pattern": "push|ad_hoc",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"env_vars": {
+															"description": "A dict of env variables to build this deploy.",
+															"example": {
+																"BUILD_VERSION": {
+																	"value": "3.3"
+																},
+																"ENV": {
+																	"value": "STAGING"
+																}
+															},
+															"readOnly": true,
+															"type": "object"
+														},
+														"environment": {
+															"description": "Type of deploy.",
+															"example": "preview",
+															"pattern": "preview|production",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"description": "Id of the deployment.",
+															"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
+															"readOnly": true,
+															"type": "string"
+														},
+														"is_skipped": {
+															"description": "If the deployment has been skipped.",
+															"example": true,
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"latest_stage": {
+															"readOnly": true
+														},
+														"modified_on": {
+															"description": "When the deployment was last modified.",
+															"example": "2021-03-09T00:58:59.045655",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"project_id": {
+															"description": "Id of the project.",
+															"example": "7b162ea7-7367-4d67-bcde-1160995d5",
+															"readOnly": true,
+															"type": "string"
+														},
+														"project_name": {
+															"description": "Name of the project.",
+															"example": "ninjakittens",
+															"readOnly": true,
+															"type": "string"
+														},
+														"short_id": {
+															"description": "Short Id (8 character) of the deployment.",
+															"example": "f64788e9",
+															"readOnly": true,
+															"type": "string"
+														},
+														"source": {
+															"readOnly": true
+														},
+														"stages": {
+															"description": "List of past stages.",
+															"example": [
+																{
+																	"ended_on": "2021-06-03T15:39:03.134378Z",
+																	"name": "queued",
+																	"started_on": "2021-06-03T15:38:15.608194Z",
+																	"status": "active"
+																},
+																{
+																	"ended_on": null,
+																	"name": "initialize",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "clone_repo",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "build",
+																	"started_on": null,
+																	"status": "idle"
+																},
+																{
+																	"ended_on": null,
+																	"name": "deploy",
+																	"started_on": null,
+																	"status": "idle"
+																}
+															],
+															"items": {
+																"$ref": "#/components/schemas/stage"
+															},
+															"readOnly": true,
+															"type": "array"
+														},
+														"url": {
+															"description": "The live URL to view this deployment.",
+															"example": "https://f64788e9.ninjakittens.pages.dev",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -1260,7 +4030,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1274,7 +4062,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

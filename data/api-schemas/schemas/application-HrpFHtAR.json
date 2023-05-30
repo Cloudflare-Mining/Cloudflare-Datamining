@@ -1,16 +1,23 @@
 {
 	"properties": {
 		"application_type_id": {
-			"$ref": "#/components/schemas/app_type_id"
+			"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of an Application Type that has been returned.",
+			"type": "integer"
 		},
 		"created_at": {
-			"$ref": "#/components/schemas/timestamp"
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/app_id-DJDTR6rb"
+			"description": "The identifier for this application. There is only one application per id.",
+			"type": "integer"
 		},
 		"name": {
-			"$ref": "#/components/schemas/app-types_components-schemas-name"
+			"description": "The name of the application or application type.",
+			"example": "Facebook",
+			"type": "string"
 		}
 	},
 	"type": "object"

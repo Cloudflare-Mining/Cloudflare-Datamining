@@ -1,13 +1,22 @@
 {
 	"properties": {
 		"id": {
-			"$ref": "#/components/schemas/common_components-schemas-identifier"
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"pattern": {
-			"$ref": "#/components/schemas/pattern"
+			"example": "example.net/*",
+			"title": "Route pattern",
+			"type": "string"
 		},
 		"script": {
-			"$ref": "#/components/schemas/schemas-script_name"
+			"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
+			"example": "this-is_my_script-01",
+			"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+			"type": "string"
 		}
 	},
 	"required": [

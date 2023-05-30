@@ -1,12 +1,238 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/clipping"
+					"properties": {
+						"allowedOrigins": {
+							"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
+							"example": [
+								"example.com"
+							],
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
+						},
+						"clippedFromVideoUID": {
+							"description": "The unique video identifier (UID).",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"type": "string"
+						},
+						"created": {
+							"description": "The date and time the clip was created.",
+							"example": "2014-01-02T02:20:00Z",
+							"format": "date-time",
+							"type": "string"
+						},
+						"creator": {
+							"description": "A user-defined identifier for the media creator.",
+							"example": "creator-id_abcde12345",
+							"maxLength": 64,
+							"type": "string"
+						},
+						"endTimeSeconds": {
+							"description": "Specifies the end time for the video clip in seconds.",
+							"type": "integer"
+						},
+						"maxDurationSeconds": {
+							"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
+							"maximum": 21600,
+							"minimum": 1,
+							"type": "integer"
+						},
+						"meta": {
+							"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
+							"example": {
+								"name": "video12345.mp4"
+							},
+							"type": "object"
+						},
+						"modified": {
+							"description": "The date and time the live input was last modified.",
+							"example": "2014-01-02T02:20:00Z",
+							"format": "date-time",
+							"type": "string"
+						},
+						"playback": {
+							"properties": {
+								"dash": {
+									"description": "DASH Media Presentation Description for the video.",
+									"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd",
+									"type": "string"
+								},
+								"hls": {
+									"description": "The HLS manifest for the video.",
+									"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8",
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"preview": {
+							"description": "The video's preview page URI. This field is omitted until encoding is complete.",
+							"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/watch",
+							"format": "uri",
+							"type": "string"
+						},
+						"requireSignedURLs": {
+							"default": false,
+							"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
+							"example": true,
+							"type": "boolean"
+						},
+						"startTimeSeconds": {
+							"description": "Specifies the start time for the video clip in seconds.",
+							"type": "integer"
+						},
+						"status": {
+							"description": "Specifies the processing status of the video.",
+							"enum": [
+								"pendingupload",
+								"downloading",
+								"queued",
+								"inprogress",
+								"ready",
+								"error"
+							],
+							"example": "inprogress",
+							"type": "string"
+						},
+						"thumbnailTimestampPct": {
+							"default": 0,
+							"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
+							"example": 0.529241,
+							"maximum": 1,
+							"minimum": 0,
+							"type": "number"
+						},
+						"watermark": {
+							"properties": {
+								"uid": {
+									"description": "The unique identifier for the watermark profile.",
+									"example": "ea95132c15732412d22c1476fa83f27a",
+									"maxLength": 32,
+									"type": "string"
+								}
+							},
+							"type": "object"
+						}
+					}
 				}
 			}
 		}

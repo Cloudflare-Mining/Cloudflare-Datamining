@@ -11,10 +11,46 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -35,34 +71,78 @@
 											"description": "The target hostname, IPv6, or IPv6 address.",
 											"properties": {
 												"bot_fight_mode": {
-													"$ref": "#/components/schemas/bot_fight_mode"
+													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
+													"example": true,
+													"type": "boolean"
 												},
 												"created_on": {
-													"$ref": "#/components/schemas/created_on-L2ajGDt4"
+													"description": "When the widget was created.",
+													"example": "2014-01-01T05:20:00.123123Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"domains": {
-													"$ref": "#/components/schemas/domains"
+													"example": [
+														"203.0.113.1",
+														"cloudflare.com",
+														"blog.example.com"
+													],
+													"items": {
+														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
+														"example": "203.0.113.1",
+														"type": "string"
+													},
+													"maxLength": 10,
+													"type": "array"
 												},
 												"mode": {
-													"$ref": "#/components/schemas/mode-EPXWU87y"
+													"description": "Widget Mode",
+													"enum": [
+														"non-interactive",
+														"invisible",
+														"managed"
+													],
+													"example": "invisible",
+													"type": "string"
 												},
 												"modified_on": {
-													"$ref": "#/components/schemas/modified_on-83dcOBho"
+													"description": "When the widget was modified.",
+													"example": "2014-01-01T05:20:00.123123Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-oRuUYCrc"
+													"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+													"example": "blog.cloudflare.com login form",
+													"maxLength": 254,
+													"minLength": 1,
+													"type": "string"
 												},
 												"offlabel": {
-													"$ref": "#/components/schemas/offlabel"
+													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
+													"example": true,
+													"type": "boolean"
 												},
 												"region": {
-													"$ref": "#/components/schemas/region"
+													"default": "world",
+													"description": "Region where this widget can be used.",
+													"enum": [
+														"world"
+													],
+													"type": "string"
 												},
 												"secret": {
-													"$ref": "#/components/schemas/secret-t4UsWSDk"
+													"description": "Secret key for this widget.",
+													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
+													"type": "string"
 												},
 												"sitekey": {
-													"$ref": "#/components/schemas/sitekey"
+													"description": "Widget item identifier tag.",
+													"example": "0x4AAF00AAAABn0R22HWm-YUc",
+													"maxLength": 32,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -83,7 +163,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -97,7 +195,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -151,10 +267,46 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -205,34 +357,78 @@
 												"description": "The target hostname, IPv6, or IPv6 address.",
 												"properties": {
 													"bot_fight_mode": {
-														"$ref": "#/components/schemas/bot_fight_mode"
+														"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
+														"example": true,
+														"type": "boolean"
 													},
 													"created_on": {
-														"$ref": "#/components/schemas/created_on-L2ajGDt4"
+														"description": "When the widget was created.",
+														"example": "2014-01-01T05:20:00.123123Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
 													},
 													"domains": {
-														"$ref": "#/components/schemas/domains"
+														"example": [
+															"203.0.113.1",
+															"cloudflare.com",
+															"blog.example.com"
+														],
+														"items": {
+															"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
+															"example": "203.0.113.1",
+															"type": "string"
+														},
+														"maxLength": 10,
+														"type": "array"
 													},
 													"mode": {
-														"$ref": "#/components/schemas/mode-EPXWU87y"
+														"description": "Widget Mode",
+														"enum": [
+															"non-interactive",
+															"invisible",
+															"managed"
+														],
+														"example": "invisible",
+														"type": "string"
 													},
 													"modified_on": {
-														"$ref": "#/components/schemas/modified_on-83dcOBho"
+														"description": "When the widget was modified.",
+														"example": "2014-01-01T05:20:00.123123Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
 													},
 													"name": {
-														"$ref": "#/components/schemas/name-oRuUYCrc"
+														"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+														"example": "blog.cloudflare.com login form",
+														"maxLength": 254,
+														"minLength": 1,
+														"type": "string"
 													},
 													"offlabel": {
-														"$ref": "#/components/schemas/offlabel"
+														"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
+														"example": true,
+														"type": "boolean"
 													},
 													"region": {
-														"$ref": "#/components/schemas/region"
+														"default": "world",
+														"description": "Region where this widget can be used.",
+														"enum": [
+															"world"
+														],
+														"type": "string"
 													},
 													"secret": {
-														"$ref": "#/components/schemas/secret-t4UsWSDk"
+														"description": "Secret key for this widget.",
+														"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
+														"type": "string"
 													},
 													"sitekey": {
-														"$ref": "#/components/schemas/sitekey"
+														"description": "Widget item identifier tag.",
+														"example": "0x4AAF00AAAABn0R22HWm-YUc",
+														"maxLength": 32,
+														"type": "string"
 													}
 												},
 												"type": "object"
@@ -255,7 +451,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -269,7 +483,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -323,10 +555,46 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -347,34 +615,78 @@
 											"description": "The target hostname, IPv6, or IPv6 address.",
 											"properties": {
 												"bot_fight_mode": {
-													"$ref": "#/components/schemas/bot_fight_mode"
+													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
+													"example": true,
+													"type": "boolean"
 												},
 												"created_on": {
-													"$ref": "#/components/schemas/created_on-L2ajGDt4"
+													"description": "When the widget was created.",
+													"example": "2014-01-01T05:20:00.123123Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"domains": {
-													"$ref": "#/components/schemas/domains"
+													"example": [
+														"203.0.113.1",
+														"cloudflare.com",
+														"blog.example.com"
+													],
+													"items": {
+														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
+														"example": "203.0.113.1",
+														"type": "string"
+													},
+													"maxLength": 10,
+													"type": "array"
 												},
 												"mode": {
-													"$ref": "#/components/schemas/mode-EPXWU87y"
+													"description": "Widget Mode",
+													"enum": [
+														"non-interactive",
+														"invisible",
+														"managed"
+													],
+													"example": "invisible",
+													"type": "string"
 												},
 												"modified_on": {
-													"$ref": "#/components/schemas/modified_on-83dcOBho"
+													"description": "When the widget was modified.",
+													"example": "2014-01-01T05:20:00.123123Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-oRuUYCrc"
+													"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+													"example": "blog.cloudflare.com login form",
+													"maxLength": 254,
+													"minLength": 1,
+													"type": "string"
 												},
 												"offlabel": {
-													"$ref": "#/components/schemas/offlabel"
+													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
+													"example": true,
+													"type": "boolean"
 												},
 												"region": {
-													"$ref": "#/components/schemas/region"
+													"default": "world",
+													"description": "Region where this widget can be used.",
+													"enum": [
+														"world"
+													],
+													"type": "string"
 												},
 												"secret": {
-													"$ref": "#/components/schemas/secret-t4UsWSDk"
+													"description": "Secret key for this widget.",
+													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
+													"type": "string"
 												},
 												"sitekey": {
-													"$ref": "#/components/schemas/sitekey"
+													"description": "Widget item identifier tag.",
+													"example": "0x4AAF00AAAABn0R22HWm-YUc",
+													"maxLength": 32,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -395,7 +707,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -409,7 +739,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -528,10 +876,46 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -581,34 +965,78 @@
 											"description": "The target hostname, IPv6, or IPv6 address.",
 											"properties": {
 												"bot_fight_mode": {
-													"$ref": "#/components/schemas/bot_fight_mode"
+													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
+													"example": true,
+													"type": "boolean"
 												},
 												"created_on": {
-													"$ref": "#/components/schemas/created_on-L2ajGDt4"
+													"description": "When the widget was created.",
+													"example": "2014-01-01T05:20:00.123123Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"domains": {
-													"$ref": "#/components/schemas/domains"
+													"example": [
+														"203.0.113.1",
+														"cloudflare.com",
+														"blog.example.com"
+													],
+													"items": {
+														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
+														"example": "203.0.113.1",
+														"type": "string"
+													},
+													"maxLength": 10,
+													"type": "array"
 												},
 												"mode": {
-													"$ref": "#/components/schemas/mode-EPXWU87y"
+													"description": "Widget Mode",
+													"enum": [
+														"non-interactive",
+														"invisible",
+														"managed"
+													],
+													"example": "invisible",
+													"type": "string"
 												},
 												"modified_on": {
-													"$ref": "#/components/schemas/modified_on-83dcOBho"
+													"description": "When the widget was modified.",
+													"example": "2014-01-01T05:20:00.123123Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-oRuUYCrc"
+													"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+													"example": "blog.cloudflare.com login form",
+													"maxLength": 254,
+													"minLength": 1,
+													"type": "string"
 												},
 												"offlabel": {
-													"$ref": "#/components/schemas/offlabel"
+													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
+													"example": true,
+													"type": "boolean"
 												},
 												"region": {
-													"$ref": "#/components/schemas/region"
+													"default": "world",
+													"description": "Region where this widget can be used.",
+													"enum": [
+														"world"
+													],
+													"type": "string"
 												},
 												"secret": {
-													"$ref": "#/components/schemas/secret-t4UsWSDk"
+													"description": "Secret key for this widget.",
+													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
+													"type": "string"
 												},
 												"sitekey": {
-													"$ref": "#/components/schemas/sitekey"
+													"description": "Widget item identifier tag.",
+													"example": "0x4AAF00AAAABn0R22HWm-YUc",
+													"maxLength": 32,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -629,7 +1057,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -643,7 +1089,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -713,10 +1177,46 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -737,34 +1237,78 @@
 											"description": "The target hostname, IPv6, or IPv6 address.",
 											"properties": {
 												"bot_fight_mode": {
-													"$ref": "#/components/schemas/bot_fight_mode"
+													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
+													"example": true,
+													"type": "boolean"
 												},
 												"created_on": {
-													"$ref": "#/components/schemas/created_on-L2ajGDt4"
+													"description": "When the widget was created.",
+													"example": "2014-01-01T05:20:00.123123Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"domains": {
-													"$ref": "#/components/schemas/domains"
+													"example": [
+														"203.0.113.1",
+														"cloudflare.com",
+														"blog.example.com"
+													],
+													"items": {
+														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
+														"example": "203.0.113.1",
+														"type": "string"
+													},
+													"maxLength": 10,
+													"type": "array"
 												},
 												"mode": {
-													"$ref": "#/components/schemas/mode-EPXWU87y"
+													"description": "Widget Mode",
+													"enum": [
+														"non-interactive",
+														"invisible",
+														"managed"
+													],
+													"example": "invisible",
+													"type": "string"
 												},
 												"modified_on": {
-													"$ref": "#/components/schemas/modified_on-83dcOBho"
+													"description": "When the widget was modified.",
+													"example": "2014-01-01T05:20:00.123123Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-oRuUYCrc"
+													"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+													"example": "blog.cloudflare.com login form",
+													"maxLength": 254,
+													"minLength": 1,
+													"type": "string"
 												},
 												"offlabel": {
-													"$ref": "#/components/schemas/offlabel"
+													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
+													"example": true,
+													"type": "boolean"
 												},
 												"region": {
-													"$ref": "#/components/schemas/region"
+													"default": "world",
+													"description": "Region where this widget can be used.",
+													"enum": [
+														"world"
+													],
+													"type": "string"
 												},
 												"secret": {
-													"$ref": "#/components/schemas/secret-t4UsWSDk"
+													"description": "Secret key for this widget.",
+													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
+													"type": "string"
 												},
 												"sitekey": {
-													"$ref": "#/components/schemas/sitekey"
+													"description": "Widget item identifier tag.",
+													"example": "0x4AAF00AAAABn0R22HWm-YUc",
+													"maxLength": 32,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -785,7 +1329,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -799,7 +1361,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -910,10 +1490,46 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -934,34 +1550,78 @@
 											"description": "The target hostname, IPv6, or IPv6 address.",
 											"properties": {
 												"bot_fight_mode": {
-													"$ref": "#/components/schemas/bot_fight_mode"
+													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
+													"example": true,
+													"type": "boolean"
 												},
 												"created_on": {
-													"$ref": "#/components/schemas/created_on-L2ajGDt4"
+													"description": "When the widget was created.",
+													"example": "2014-01-01T05:20:00.123123Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"domains": {
-													"$ref": "#/components/schemas/domains"
+													"example": [
+														"203.0.113.1",
+														"cloudflare.com",
+														"blog.example.com"
+													],
+													"items": {
+														"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
+														"example": "203.0.113.1",
+														"type": "string"
+													},
+													"maxLength": 10,
+													"type": "array"
 												},
 												"mode": {
-													"$ref": "#/components/schemas/mode-EPXWU87y"
+													"description": "Widget Mode",
+													"enum": [
+														"non-interactive",
+														"invisible",
+														"managed"
+													],
+													"example": "invisible",
+													"type": "string"
 												},
 												"modified_on": {
-													"$ref": "#/components/schemas/modified_on-83dcOBho"
+													"description": "When the widget was modified.",
+													"example": "2014-01-01T05:20:00.123123Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-oRuUYCrc"
+													"description": "Human readable widget name. Not unique. Cloudflare suggests that you\nset this to a meaningful string to make it easier to identify your\nwidget, and where it is used.\n",
+													"example": "blog.cloudflare.com login form",
+													"maxLength": 254,
+													"minLength": 1,
+													"type": "string"
 												},
 												"offlabel": {
-													"$ref": "#/components/schemas/offlabel"
+													"description": "Do not show any Cloudflare branding on the widget (ENT only).\n",
+													"example": true,
+													"type": "boolean"
 												},
 												"region": {
-													"$ref": "#/components/schemas/region"
+													"default": "world",
+													"description": "Region where this widget can be used.",
+													"enum": [
+														"world"
+													],
+													"type": "string"
 												},
 												"secret": {
-													"$ref": "#/components/schemas/secret-t4UsWSDk"
+													"description": "Secret key for this widget.",
+													"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
+													"type": "string"
 												},
 												"sitekey": {
-													"$ref": "#/components/schemas/sitekey"
+													"description": "Widget item identifier tag.",
+													"example": "0x4AAF00AAAABn0R22HWm-YUc",
+													"maxLength": 32,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -982,7 +1642,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -996,7 +1674,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []

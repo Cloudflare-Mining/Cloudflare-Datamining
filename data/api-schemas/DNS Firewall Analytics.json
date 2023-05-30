@@ -103,7 +103,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -127,7 +199,48 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/result-0S66foep"
+													"properties": {
+														"data": {
+															"$ref": "#/components/schemas/data"
+														},
+														"data_lag": {
+															"description": "Number of seconds between current time and last processed event, in another words how many seconds of data could be missing.",
+															"example": 60,
+															"minimum": 0,
+															"type": "number"
+														},
+														"max": {
+															"description": "Maximum results for each metric (object mapping metric names to values). Currently always an empty object.",
+															"type": "object"
+														},
+														"min": {
+															"description": "Minimum results for each metric (object mapping metric names to values). Currently always an empty object.",
+															"type": "object"
+														},
+														"query": {
+															"$ref": "#/components/schemas/query-h6wfialn"
+														},
+														"rows": {
+															"description": "Total number of rows in the result.",
+															"example": 100,
+															"minimum": 0,
+															"type": "number"
+														},
+														"totals": {
+															"description": "Total results for metrics across all data (object mapping metric names to values).",
+															"type": "object"
+														}
+													},
+													"required": [
+														"rows",
+														"totals",
+														"min",
+														"max",
+														"data_lag",
+														"query",
+														"data"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -174,7 +287,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -198,7 +383,48 @@
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/result-0S66foep"
+															"properties": {
+																"data": {
+																	"$ref": "#/components/schemas/data"
+																},
+																"data_lag": {
+																	"description": "Number of seconds between current time and last processed event, in another words how many seconds of data could be missing.",
+																	"example": 60,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"max": {
+																	"description": "Maximum results for each metric (object mapping metric names to values). Currently always an empty object.",
+																	"type": "object"
+																},
+																"min": {
+																	"description": "Minimum results for each metric (object mapping metric names to values). Currently always an empty object.",
+																	"type": "object"
+																},
+																"query": {
+																	"$ref": "#/components/schemas/query-h6wfialn"
+																},
+																"rows": {
+																	"description": "Total number of rows in the result.",
+																	"example": 100,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"totals": {
+																	"description": "Total results for metrics across all data (object mapping metric names to values).",
+																	"type": "object"
+																}
+															},
+															"required": [
+																"rows",
+																"totals",
+																"min",
+																"max",
+																"data_lag",
+																"query",
+																"data"
+															],
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -236,7 +462,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -250,7 +494,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -427,7 +689,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -451,7 +785,48 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/result-0S66foep"
+													"properties": {
+														"data": {
+															"$ref": "#/components/schemas/data"
+														},
+														"data_lag": {
+															"description": "Number of seconds between current time and last processed event, in another words how many seconds of data could be missing.",
+															"example": 60,
+															"minimum": 0,
+															"type": "number"
+														},
+														"max": {
+															"description": "Maximum results for each metric (object mapping metric names to values). Currently always an empty object.",
+															"type": "object"
+														},
+														"min": {
+															"description": "Minimum results for each metric (object mapping metric names to values). Currently always an empty object.",
+															"type": "object"
+														},
+														"query": {
+															"$ref": "#/components/schemas/query-h6wfialn"
+														},
+														"rows": {
+															"description": "Total number of rows in the result.",
+															"example": 100,
+															"minimum": 0,
+															"type": "number"
+														},
+														"totals": {
+															"description": "Total results for metrics across all data (object mapping metric names to values).",
+															"type": "object"
+														}
+													},
+													"required": [
+														"rows",
+														"totals",
+														"min",
+														"max",
+														"data_lag",
+														"query",
+														"data"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -481,7 +856,21 @@
 														"query": {
 															"properties": {
 																"time_delta": {
-																	"$ref": "#/components/schemas/time_delta"
+																	"description": "Unit of time to group data by.",
+																	"enum": [
+																		"all",
+																		"auto",
+																		"year",
+																		"quarter",
+																		"month",
+																		"week",
+																		"day",
+																		"hour",
+																		"dekaminute",
+																		"minute"
+																	],
+																	"example": "hour",
+																	"type": "string"
 																}
 															},
 															"required": [
@@ -531,7 +920,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -555,7 +1016,48 @@
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/result-0S66foep"
+															"properties": {
+																"data": {
+																	"$ref": "#/components/schemas/data"
+																},
+																"data_lag": {
+																	"description": "Number of seconds between current time and last processed event, in another words how many seconds of data could be missing.",
+																	"example": 60,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"max": {
+																	"description": "Maximum results for each metric (object mapping metric names to values). Currently always an empty object.",
+																	"type": "object"
+																},
+																"min": {
+																	"description": "Minimum results for each metric (object mapping metric names to values). Currently always an empty object.",
+																	"type": "object"
+																},
+																"query": {
+																	"$ref": "#/components/schemas/query-h6wfialn"
+																},
+																"rows": {
+																	"description": "Total number of rows in the result.",
+																	"example": 100,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"totals": {
+																	"description": "Total results for metrics across all data (object mapping metric names to values).",
+																	"type": "object"
+																}
+															},
+															"required": [
+																"rows",
+																"totals",
+																"min",
+																"max",
+																"data_lag",
+																"query",
+																"data"
+															],
+															"type": "object"
 														},
 														{
 															"properties": {
@@ -585,7 +1087,21 @@
 																"query": {
 																	"properties": {
 																		"time_delta": {
-																			"$ref": "#/components/schemas/time_delta"
+																			"description": "Unit of time to group data by.",
+																			"enum": [
+																				"all",
+																				"auto",
+																				"year",
+																				"quarter",
+																				"month",
+																				"week",
+																				"day",
+																				"hour",
+																				"dekaminute",
+																				"minute"
+																			],
+																			"example": "hour",
+																			"type": "string"
 																		}
 																	},
 																	"required": [
@@ -626,7 +1142,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -640,7 +1174,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

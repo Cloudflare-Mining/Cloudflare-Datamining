@@ -25,7 +25,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -35,7 +107,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -48,34 +142,71 @@
 											"items": {
 												"properties": {
 													"can_subscribe": {
-														"$ref": "#/components/schemas/can_subscribe"
+														"default": false,
+														"description": "Indicates whether you can subscribe to this plan.",
+														"example": true,
+														"type": "boolean"
 													},
 													"currency": {
-														"$ref": "#/components/schemas/currency"
+														"description": "The monetary unit in which pricing information is displayed.",
+														"example": "USD",
+														"readOnly": true,
+														"type": "string"
 													},
 													"externally_managed": {
-														"$ref": "#/components/schemas/externally_managed"
+														"default": false,
+														"description": "Indicates whether this plan is managed externally.",
+														"example": false,
+														"type": "boolean"
 													},
 													"frequency": {
-														"$ref": "#/components/schemas/schemas-frequency"
+														"description": "The frequency at which you will be billed for this plan.",
+														"enum": [
+															"weekly",
+															"monthly",
+															"quarterly",
+															"yearly"
+														],
+														"example": "monthly",
+														"readOnly": true,
+														"type": "string"
 													},
 													"id": {
-														"$ref": "#/components/schemas/identifier"
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"readOnly": true,
+														"type": "string"
 													},
 													"is_subscribed": {
-														"$ref": "#/components/schemas/is_subscribed"
+														"default": false,
+														"description": "Indicates whether you are currently subscribed to this plan.",
+														"example": false,
+														"type": "boolean"
 													},
 													"legacy_discount": {
-														"$ref": "#/components/schemas/legacy_discount"
+														"default": false,
+														"description": "Indicates whether this plan has a legacy discount applied.",
+														"example": false,
+														"type": "boolean"
 													},
 													"legacy_id": {
-														"$ref": "#/components/schemas/legacy_id"
+														"description": "The legacy identifier for this rate plan, if any.",
+														"example": "free",
+														"readOnly": true,
+														"type": "string"
 													},
 													"name": {
-														"$ref": "#/components/schemas/schemas-name-ZuhJmnoo"
+														"description": "The plan name.",
+														"example": "Free Plan",
+														"maxLength": 80,
+														"readOnly": true,
+														"type": "string"
 													},
 													"price": {
-														"$ref": "#/components/schemas/schemas-price"
+														"description": "The amount you will be billed for this plan.",
+														"example": 0,
+														"type": "number"
 													}
 												},
 												"type": "object"
@@ -100,7 +231,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -110,7 +313,29 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
 														}
 													}
 												}
@@ -123,34 +348,71 @@
 													"items": {
 														"properties": {
 															"can_subscribe": {
-																"$ref": "#/components/schemas/can_subscribe"
+																"default": false,
+																"description": "Indicates whether you can subscribe to this plan.",
+																"example": true,
+																"type": "boolean"
 															},
 															"currency": {
-																"$ref": "#/components/schemas/currency"
+																"description": "The monetary unit in which pricing information is displayed.",
+																"example": "USD",
+																"readOnly": true,
+																"type": "string"
 															},
 															"externally_managed": {
-																"$ref": "#/components/schemas/externally_managed"
+																"default": false,
+																"description": "Indicates whether this plan is managed externally.",
+																"example": false,
+																"type": "boolean"
 															},
 															"frequency": {
-																"$ref": "#/components/schemas/schemas-frequency"
+																"description": "The frequency at which you will be billed for this plan.",
+																"enum": [
+																	"weekly",
+																	"monthly",
+																	"quarterly",
+																	"yearly"
+																],
+																"example": "monthly",
+																"readOnly": true,
+																"type": "string"
 															},
 															"id": {
-																"$ref": "#/components/schemas/identifier"
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
 															},
 															"is_subscribed": {
-																"$ref": "#/components/schemas/is_subscribed"
+																"default": false,
+																"description": "Indicates whether you are currently subscribed to this plan.",
+																"example": false,
+																"type": "boolean"
 															},
 															"legacy_discount": {
-																"$ref": "#/components/schemas/legacy_discount"
+																"default": false,
+																"description": "Indicates whether this plan has a legacy discount applied.",
+																"example": false,
+																"type": "boolean"
 															},
 															"legacy_id": {
-																"$ref": "#/components/schemas/legacy_id"
+																"description": "The legacy identifier for this rate plan, if any.",
+																"example": "free",
+																"readOnly": true,
+																"type": "string"
 															},
 															"name": {
-																"$ref": "#/components/schemas/schemas-name-ZuhJmnoo"
+																"description": "The plan name.",
+																"example": "Free Plan",
+																"maxLength": 80,
+																"readOnly": true,
+																"type": "string"
 															},
 															"price": {
-																"$ref": "#/components/schemas/schemas-price"
+																"description": "The amount you will be billed for this plan.",
+																"example": 0,
+																"type": "number"
 															}
 														},
 														"type": "object"
@@ -166,7 +428,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -180,7 +460,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -276,7 +574,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -301,34 +671,71 @@
 										"result": {
 											"properties": {
 												"can_subscribe": {
-													"$ref": "#/components/schemas/can_subscribe"
+													"default": false,
+													"description": "Indicates whether you can subscribe to this plan.",
+													"example": true,
+													"type": "boolean"
 												},
 												"currency": {
-													"$ref": "#/components/schemas/currency"
+													"description": "The monetary unit in which pricing information is displayed.",
+													"example": "USD",
+													"readOnly": true,
+													"type": "string"
 												},
 												"externally_managed": {
-													"$ref": "#/components/schemas/externally_managed"
+													"default": false,
+													"description": "Indicates whether this plan is managed externally.",
+													"example": false,
+													"type": "boolean"
 												},
 												"frequency": {
-													"$ref": "#/components/schemas/schemas-frequency"
+													"description": "The frequency at which you will be billed for this plan.",
+													"enum": [
+														"weekly",
+														"monthly",
+														"quarterly",
+														"yearly"
+													],
+													"example": "monthly",
+													"readOnly": true,
+													"type": "string"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												},
 												"is_subscribed": {
-													"$ref": "#/components/schemas/is_subscribed"
+													"default": false,
+													"description": "Indicates whether you are currently subscribed to this plan.",
+													"example": false,
+													"type": "boolean"
 												},
 												"legacy_discount": {
-													"$ref": "#/components/schemas/legacy_discount"
+													"default": false,
+													"description": "Indicates whether this plan has a legacy discount applied.",
+													"example": false,
+													"type": "boolean"
 												},
 												"legacy_id": {
-													"$ref": "#/components/schemas/legacy_id"
+													"description": "The legacy identifier for this rate plan, if any.",
+													"example": "free",
+													"readOnly": true,
+													"type": "string"
 												},
 												"name": {
-													"$ref": "#/components/schemas/schemas-name-ZuhJmnoo"
+													"description": "The plan name.",
+													"example": "Free Plan",
+													"maxLength": 80,
+													"readOnly": true,
+													"type": "string"
 												},
 												"price": {
-													"$ref": "#/components/schemas/schemas-price"
+													"description": "The amount you will be billed for this plan.",
+													"example": 0,
+													"type": "number"
 												}
 											},
 											"type": "object"
@@ -351,7 +758,79 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
 												},
 												{
 													"properties": {
@@ -376,34 +855,71 @@
 												"result": {
 													"properties": {
 														"can_subscribe": {
-															"$ref": "#/components/schemas/can_subscribe"
+															"default": false,
+															"description": "Indicates whether you can subscribe to this plan.",
+															"example": true,
+															"type": "boolean"
 														},
 														"currency": {
-															"$ref": "#/components/schemas/currency"
+															"description": "The monetary unit in which pricing information is displayed.",
+															"example": "USD",
+															"readOnly": true,
+															"type": "string"
 														},
 														"externally_managed": {
-															"$ref": "#/components/schemas/externally_managed"
+															"default": false,
+															"description": "Indicates whether this plan is managed externally.",
+															"example": false,
+															"type": "boolean"
 														},
 														"frequency": {
-															"$ref": "#/components/schemas/schemas-frequency"
+															"description": "The frequency at which you will be billed for this plan.",
+															"enum": [
+																"weekly",
+																"monthly",
+																"quarterly",
+																"yearly"
+															],
+															"example": "monthly",
+															"readOnly": true,
+															"type": "string"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														},
 														"is_subscribed": {
-															"$ref": "#/components/schemas/is_subscribed"
+															"default": false,
+															"description": "Indicates whether you are currently subscribed to this plan.",
+															"example": false,
+															"type": "boolean"
 														},
 														"legacy_discount": {
-															"$ref": "#/components/schemas/legacy_discount"
+															"default": false,
+															"description": "Indicates whether this plan has a legacy discount applied.",
+															"example": false,
+															"type": "boolean"
 														},
 														"legacy_id": {
-															"$ref": "#/components/schemas/legacy_id"
+															"description": "The legacy identifier for this rate plan, if any.",
+															"example": "free",
+															"readOnly": true,
+															"type": "string"
 														},
 														"name": {
-															"$ref": "#/components/schemas/schemas-name-ZuhJmnoo"
+															"description": "The plan name.",
+															"example": "Free Plan",
+															"maxLength": 80,
+															"readOnly": true,
+															"type": "string"
 														},
 														"price": {
-															"$ref": "#/components/schemas/schemas-price"
+															"description": "The amount you will be billed for this plan.",
+															"example": 0,
+															"type": "number"
 														}
 													},
 													"type": "object"
@@ -417,7 +933,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -431,7 +965,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -513,13 +1065,35 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/schemas-rate-plan"
+												"allOf": [
+													{
+														"$ref": "#/components/schemas/rate-plan-RvYrG8LP"
+													}
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -540,13 +1114,35 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/schemas-rate-plan"
+														"allOf": [
+															{
+																"$ref": "#/components/schemas/rate-plan-RvYrG8LP"
+															}
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -560,7 +1156,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -574,7 +1188,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

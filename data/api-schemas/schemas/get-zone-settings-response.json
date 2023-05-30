@@ -1,16 +1,24 @@
 {
 	"properties": {
 		"enabled": {
-			"$ref": "#/components/schemas/enabled-L9acGmWt"
+			"description": "When true, indicates that Page Shield is enabled.",
+			"example": true,
+			"type": "boolean"
 		},
 		"updated_at": {
-			"$ref": "#/components/schemas/updated_at-0pLcukjq"
+			"description": "The timestamp of when Page Shield was last updated.",
+			"example": "2022-10-12T17:56:52.083582+01:00",
+			"type": "string"
 		},
 		"use_cloudflare_reporting_endpoint": {
-			"$ref": "#/components/schemas/use_cloudflare_reporting_endpoint"
+			"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
+			"example": true,
+			"type": "boolean"
 		},
 		"use_connection_url_path": {
-			"$ref": "#/components/schemas/use_connection_url_path"
+			"description": "When true, the paths associated with connections URLs will also be analyzed.",
+			"example": true,
+			"type": "boolean"
 		}
 	}
 }

@@ -39,7 +39,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -65,7 +82,24 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -84,7 +118,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -98,7 +150,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -183,13 +253,78 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/CustomNS"
+												"description": "A single account custom nameserver.",
+												"properties": {
+													"dns_records": {
+														"description": "A and AAAA records associated with the nameserver.",
+														"items": {
+															"properties": {
+																"type": {
+																	"description": "DNS record type.",
+																	"enum": [
+																		"A",
+																		"AAAA"
+																	],
+																	"example": "A",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "DNS record contents (an IPv4 or IPv6 address).",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																}
+															}
+														},
+														"type": "array"
+													},
+													"ns_name": {
+														"$ref": "#/components/schemas/ns_name"
+													},
+													"status": {
+														"deprecated": true,
+														"description": "Verification status of the nameserver.",
+														"enum": [
+															"moved",
+															"pending",
+															"verified"
+														],
+														"example": "verified",
+														"type": "string"
+													},
+													"zone_tag": {
+														"$ref": "#/components/schemas/schemas-identifier"
+													}
+												},
+												"required": [
+													"dns_records",
+													"ns_name",
+													"status",
+													"zone_tag"
+												],
+												"title": "Custom NS"
 											},
 											"type": "array"
 										}
@@ -210,13 +345,78 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/CustomNS"
+														"description": "A single account custom nameserver.",
+														"properties": {
+															"dns_records": {
+																"description": "A and AAAA records associated with the nameserver.",
+																"items": {
+																	"properties": {
+																		"type": {
+																			"description": "DNS record type.",
+																			"enum": [
+																				"A",
+																				"AAAA"
+																			],
+																			"example": "A",
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "DNS record contents (an IPv4 or IPv6 address).",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		}
+																	}
+																},
+																"type": "array"
+															},
+															"ns_name": {
+																"$ref": "#/components/schemas/ns_name"
+															},
+															"status": {
+																"deprecated": true,
+																"description": "Verification status of the nameserver.",
+																"enum": [
+																	"moved",
+																	"pending",
+																	"verified"
+																],
+																"example": "verified",
+																"type": "string"
+															},
+															"zone_tag": {
+																"$ref": "#/components/schemas/schemas-identifier"
+															}
+														},
+														"required": [
+															"dns_records",
+															"ns_name",
+															"status",
+															"zone_tag"
+														],
+														"title": "Custom NS"
 													},
 													"type": "array"
 												}
@@ -230,7 +430,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -244,7 +462,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -328,7 +564,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -359,7 +612,24 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -383,7 +653,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -397,7 +685,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -480,7 +786,10 @@
 					"schema": {
 						"properties": {
 							"ns_name": {
-								"$ref": "#/components/schemas/ns_name"
+								"description": "The FQDN of the name server.",
+								"example": "ns1.example.com",
+								"format": "hostname",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -499,12 +808,80 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-00isTURn"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/CustomNS"
+											"description": "A single account custom nameserver.",
+											"properties": {
+												"dns_records": {
+													"description": "A and AAAA records associated with the nameserver.",
+													"items": {
+														"properties": {
+															"type": {
+																"description": "DNS record type.",
+																"enum": [
+																	"A",
+																	"AAAA"
+																],
+																"example": "A",
+																"type": "string"
+															},
+															"value": {
+																"description": "DNS record contents (an IPv4 or IPv6 address).",
+																"example": "1.1.1.1",
+																"type": "string"
+															}
+														}
+													},
+													"type": "array"
+												},
+												"ns_name": {
+													"$ref": "#/components/schemas/ns_name"
+												},
+												"status": {
+													"deprecated": true,
+													"description": "Verification status of the nameserver.",
+													"enum": [
+														"moved",
+														"pending",
+														"verified"
+													],
+													"example": "verified",
+													"type": "string"
+												},
+												"zone_tag": {
+													"$ref": "#/components/schemas/schemas-identifier"
+												}
+											},
+											"required": [
+												"dns_records",
+												"ns_name",
+												"status",
+												"zone_tag"
+											],
+											"title": "Custom NS"
 										}
 									},
 									"type": "object"
@@ -523,12 +900,80 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-00isTURn"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/CustomNS"
+													"description": "A single account custom nameserver.",
+													"properties": {
+														"dns_records": {
+															"description": "A and AAAA records associated with the nameserver.",
+															"items": {
+																"properties": {
+																	"type": {
+																		"description": "DNS record type.",
+																		"enum": [
+																			"A",
+																			"AAAA"
+																		],
+																		"example": "A",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "DNS record contents (an IPv4 or IPv6 address).",
+																		"example": "1.1.1.1",
+																		"type": "string"
+																	}
+																}
+															},
+															"type": "array"
+														},
+														"ns_name": {
+															"$ref": "#/components/schemas/ns_name"
+														},
+														"status": {
+															"deprecated": true,
+															"description": "Verification status of the nameserver.",
+															"enum": [
+																"moved",
+																"pending",
+																"verified"
+															],
+															"example": "verified",
+															"type": "string"
+														},
+														"zone_tag": {
+															"$ref": "#/components/schemas/schemas-identifier"
+														}
+													},
+													"required": [
+														"dns_records",
+														"ns_name",
+														"status",
+														"zone_tag"
+													],
+													"title": "Custom NS"
 												}
 											},
 											"type": "object"
@@ -540,7 +985,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -554,7 +1017,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -645,13 +1126,78 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/CustomNS"
+												"description": "A single account custom nameserver.",
+												"properties": {
+													"dns_records": {
+														"description": "A and AAAA records associated with the nameserver.",
+														"items": {
+															"properties": {
+																"type": {
+																	"description": "DNS record type.",
+																	"enum": [
+																		"A",
+																		"AAAA"
+																	],
+																	"example": "A",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "DNS record contents (an IPv4 or IPv6 address).",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																}
+															}
+														},
+														"type": "array"
+													},
+													"ns_name": {
+														"$ref": "#/components/schemas/ns_name"
+													},
+													"status": {
+														"deprecated": true,
+														"description": "Verification status of the nameserver.",
+														"enum": [
+															"moved",
+															"pending",
+															"verified"
+														],
+														"example": "verified",
+														"type": "string"
+													},
+													"zone_tag": {
+														"$ref": "#/components/schemas/schemas-identifier"
+													}
+												},
+												"required": [
+													"dns_records",
+													"ns_name",
+													"status",
+													"zone_tag"
+												],
+												"title": "Custom NS"
 											},
 											"type": "array"
 										}
@@ -672,13 +1218,78 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/CustomNS"
+														"description": "A single account custom nameserver.",
+														"properties": {
+															"dns_records": {
+																"description": "A and AAAA records associated with the nameserver.",
+																"items": {
+																	"properties": {
+																		"type": {
+																			"description": "DNS record type.",
+																			"enum": [
+																				"A",
+																				"AAAA"
+																			],
+																			"example": "A",
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "DNS record contents (an IPv4 or IPv6 address).",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		}
+																	}
+																},
+																"type": "array"
+															},
+															"ns_name": {
+																"$ref": "#/components/schemas/ns_name"
+															},
+															"status": {
+																"deprecated": true,
+																"description": "Verification status of the nameserver.",
+																"enum": [
+																	"moved",
+																	"pending",
+																	"verified"
+																],
+																"example": "verified",
+																"type": "string"
+															},
+															"zone_tag": {
+																"$ref": "#/components/schemas/schemas-identifier"
+															}
+														},
+														"required": [
+															"dns_records",
+															"ns_name",
+															"status",
+															"zone_tag"
+														],
+														"title": "Custom NS"
 													},
 													"type": "array"
 												}
@@ -692,7 +1303,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -706,7 +1335,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

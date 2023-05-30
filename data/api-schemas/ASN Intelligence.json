@@ -9,13 +9,15 @@
 				"schema": {
 					"properties": {
 						"asn": {
-							"$ref": "#/components/schemas/components-schemas-asn"
+							"type": "integer"
 						},
 						"country": {
-							"$ref": "#/components/schemas/asn_country"
+							"example": "US",
+							"type": "string"
 						},
 						"description": {
-							"$ref": "#/components/schemas/asn_description"
+							"example": "CLOUDFLARENET",
+							"type": "string"
 						},
 						"domain_count": {
 							"type": "integer"
@@ -30,7 +32,14 @@
 							"type": "array"
 						},
 						"type": {
-							"$ref": "#/components/schemas/asn_type"
+							"description": "Infrastructure type of this ASN.",
+							"enum": [
+								"hosting_provider",
+								"isp",
+								"organization"
+							],
+							"example": "hosting_provider",
+							"type": "string"
 						}
 					}
 				}
@@ -55,12 +64,57 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/asn_components-schemas-asn"
+											"properties": {
+												"asn": {
+													"$ref": "#/components/schemas/components-schemas-asn"
+												},
+												"country": {
+													"$ref": "#/components/schemas/asn_country"
+												},
+												"description": {
+													"$ref": "#/components/schemas/asn_description"
+												},
+												"domain_count": {
+													"type": "integer"
+												},
+												"top_domains": {
+													"example": [
+														"example.com"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"type": {
+													"$ref": "#/components/schemas/asn_type"
+												}
+											}
 										}
 									}
 								}
@@ -78,12 +132,57 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/asn_components-schemas-asn"
+													"properties": {
+														"asn": {
+															"$ref": "#/components/schemas/components-schemas-asn"
+														},
+														"country": {
+															"$ref": "#/components/schemas/asn_country"
+														},
+														"description": {
+															"$ref": "#/components/schemas/asn_description"
+														},
+														"domain_count": {
+															"type": "integer"
+														},
+														"top_domains": {
+															"example": [
+																"example.com"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"type": {
+															"$ref": "#/components/schemas/asn_type"
+														}
+													}
 												}
 											}
 										}
@@ -94,7 +193,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -108,7 +225,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -168,13 +303,15 @@
 				"schema": {
 					"properties": {
 						"asn": {
-							"$ref": "#/components/schemas/components-schemas-asn"
+							"type": "integer"
 						},
 						"country": {
-							"$ref": "#/components/schemas/asn_country"
+							"example": "US",
+							"type": "string"
 						},
 						"description": {
-							"$ref": "#/components/schemas/asn_description"
+							"example": "CLOUDFLARENET",
+							"type": "string"
 						},
 						"domain_count": {
 							"type": "integer"
@@ -189,7 +326,14 @@
 							"type": "array"
 						},
 						"type": {
-							"$ref": "#/components/schemas/asn_type"
+							"description": "Infrastructure type of this ASN.",
+							"enum": [
+								"hosting_provider",
+								"isp",
+								"organization"
+							],
+							"example": "hosting_provider",
+							"type": "string"
 						}
 					}
 				}
@@ -297,7 +441,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -311,7 +473,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

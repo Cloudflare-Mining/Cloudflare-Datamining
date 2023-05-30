@@ -6,7 +6,8 @@
 			"type": "string"
 		},
 		"domain": {
-			"$ref": "#/components/schemas/domain_name"
+			"example": "cloudflare.com",
+			"type": "string"
 		},
 		"nameservers": {
 			"example": [

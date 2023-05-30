@@ -36,13 +36,44 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
+												"properties": {
+													"config": {
+														"$ref": "#/components/schemas/schemas-config_response"
+													},
+													"name": {
+														"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
+													},
+													"network_id": {
+														"$ref": "#/components/schemas/uuid-yfW7gvSJ"
+													},
+													"type": {
+														"$ref": "#/components/schemas/components-schemas-type-XMk8177B"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -62,13 +93,44 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
+														"properties": {
+															"config": {
+																"$ref": "#/components/schemas/schemas-config_response"
+															},
+															"name": {
+																"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
+															},
+															"network_id": {
+																"$ref": "#/components/schemas/uuid-yfW7gvSJ"
+															},
+															"type": {
+																"$ref": "#/components/schemas/components-schemas-type-XMk8177B"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -81,7 +143,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -95,7 +175,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -162,13 +260,44 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
+												"properties": {
+													"config": {
+														"$ref": "#/components/schemas/schemas-config_response"
+													},
+													"name": {
+														"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
+													},
+													"network_id": {
+														"$ref": "#/components/schemas/uuid-yfW7gvSJ"
+													},
+													"type": {
+														"$ref": "#/components/schemas/components-schemas-type-XMk8177B"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -188,13 +317,44 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
+														"properties": {
+															"config": {
+																"$ref": "#/components/schemas/schemas-config_response"
+															},
+															"name": {
+																"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
+															},
+															"network_id": {
+																"$ref": "#/components/schemas/uuid-yfW7gvSJ"
+															},
+															"type": {
+																"$ref": "#/components/schemas/components-schemas-type-XMk8177B"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -207,7 +367,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -221,7 +399,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -299,12 +495,46 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
+											"properties": {
+												"config": {
+													"$ref": "#/components/schemas/schemas-config_response"
+												},
+												"name": {
+													"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
+												},
+												"network_id": {
+													"$ref": "#/components/schemas/uuid-yfW7gvSJ"
+												},
+												"type": {
+													"$ref": "#/components/schemas/components-schemas-type-XMk8177B"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -322,12 +552,46 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
+													"properties": {
+														"config": {
+															"$ref": "#/components/schemas/schemas-config_response"
+														},
+														"name": {
+															"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
+														},
+														"network_id": {
+															"$ref": "#/components/schemas/uuid-yfW7gvSJ"
+														},
+														"type": {
+															"$ref": "#/components/schemas/components-schemas-type-XMk8177B"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -338,7 +602,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -352,7 +634,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -425,7 +725,22 @@
 								},
 								"oneOf": [
 									{
-										"$ref": "#/components/schemas/tls_config_request"
+										"properties": {
+											"sha256": {
+												"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
+												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+												"type": "string"
+											},
+											"tls_sockaddr": {
+												"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
+												"example": "foobar:1234",
+												"type": "string"
+											}
+										},
+										"required": [
+											"tls_sockaddr"
+										],
+										"type": "object"
 									}
 								],
 								"type": "object"
@@ -461,12 +776,46 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
+											"properties": {
+												"config": {
+													"$ref": "#/components/schemas/schemas-config_response"
+												},
+												"name": {
+													"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
+												},
+												"network_id": {
+													"$ref": "#/components/schemas/uuid-yfW7gvSJ"
+												},
+												"type": {
+													"$ref": "#/components/schemas/components-schemas-type-XMk8177B"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -484,12 +833,46 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
+													"properties": {
+														"config": {
+															"$ref": "#/components/schemas/schemas-config_response"
+														},
+														"name": {
+															"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
+														},
+														"network_id": {
+															"$ref": "#/components/schemas/uuid-yfW7gvSJ"
+														},
+														"type": {
+															"$ref": "#/components/schemas/components-schemas-type-XMk8177B"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -500,7 +883,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -514,7 +915,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -598,7 +1017,22 @@
 								},
 								"oneOf": [
 									{
-										"$ref": "#/components/schemas/tls_config_request"
+										"properties": {
+											"sha256": {
+												"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.",
+												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+												"type": "string"
+											},
+											"tls_sockaddr": {
+												"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host.",
+												"example": "foobar:1234",
+												"type": "string"
+											}
+										},
+										"required": [
+											"tls_sockaddr"
+										],
+										"type": "object"
 									}
 								],
 								"type": "object"
@@ -629,12 +1063,46 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
+											"properties": {
+												"config": {
+													"$ref": "#/components/schemas/schemas-config_response"
+												},
+												"name": {
+													"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
+												},
+												"network_id": {
+													"$ref": "#/components/schemas/uuid-yfW7gvSJ"
+												},
+												"type": {
+													"$ref": "#/components/schemas/components-schemas-type-XMk8177B"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -652,12 +1120,46 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
+													"properties": {
+														"config": {
+															"$ref": "#/components/schemas/schemas-config_response"
+														},
+														"name": {
+															"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
+														},
+														"network_id": {
+															"$ref": "#/components/schemas/uuid-yfW7gvSJ"
+														},
+														"type": {
+															"$ref": "#/components/schemas/components-schemas-type-XMk8177B"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -668,7 +1170,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -682,7 +1202,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

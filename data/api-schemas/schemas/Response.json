@@ -3,7 +3,38 @@
 		"errors": {
 			"allOf": [
 				{
-					"$ref": "#/components/schemas/Errors"
+					"description": "A list of error messages.",
+					"items": {
+						"description": "A message.",
+						"properties": {
+							"code": {
+								"description": "A unique code for this message.",
+								"example": 10000,
+								"type": "integer"
+							},
+							"message": {
+								"description": "A text description of this message.",
+								"example": "something bad happened",
+								"type": "string"
+							},
+							"source": {
+								"description": "The source of this message.",
+								"properties": {
+									"pointer": {
+										"description": "A JSON pointer to the field that is the source of the message.",
+										"example": "/rules/0/action",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"required": [
+							"message"
+						],
+						"type": "object"
+					},
+					"type": "array"
 				},
 				{
 					"example": []
@@ -11,7 +42,38 @@
 			]
 		},
 		"messages": {
-			"$ref": "#/components/schemas/Messages"
+			"description": "A list of warning messages.",
+			"items": {
+				"description": "A message.",
+				"properties": {
+					"code": {
+						"description": "A unique code for this message.",
+						"example": 10000,
+						"type": "integer"
+					},
+					"message": {
+						"description": "A text description of this message.",
+						"example": "something bad happened",
+						"type": "string"
+					},
+					"source": {
+						"description": "The source of this message.",
+						"properties": {
+							"pointer": {
+								"description": "A JSON pointer to the field that is the source of the message.",
+								"example": "/rules/0/action",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object"
+			},
+			"type": "array"
 		},
 		"result": {},
 		"success": {

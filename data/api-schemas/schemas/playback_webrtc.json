@@ -2,7 +2,9 @@
 	"description": "Details for playback from a live input using WebRTC.",
 	"properties": {
 		"url": {
-			"$ref": "#/components/schemas/playback_webrtc_url"
+			"description": "The URL used to play live video over WebRTC.",
+			"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/b236bde30eb07b9d01318940e5fc3edake34a3efb3896e18f2dc277ce6cc993ad/webRTC/play",
+			"type": "string"
 		}
 	},
 	"type": "object"

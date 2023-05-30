@@ -1,7 +1,21 @@
 {
 	"description": "List of matchers for the catch-all routing rule.",
 	"items": {
-		"$ref": "#/components/schemas/rule_catchall-matcher"
+		"description": "Matcher for catch-all routing rule.",
+		"properties": {
+			"type": {
+				"description": "Type of matcher. Default is 'all'.",
+				"enum": [
+					"all"
+				],
+				"example": "all",
+				"type": "string"
+			}
+		},
+		"required": [
+			"type"
+		],
+		"type": "object"
 	},
 	"type": "array"
 }

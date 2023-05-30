@@ -24,13 +24,29 @@
 							"properties": {
 								"managed_request_headers": {
 									"items": {
-										"$ref": "#/components/schemas/request_model"
+										"properties": {
+											"enabled": {
+												"$ref": "#/components/schemas/enabled-Di8C0DvI"
+											},
+											"id": {
+												"$ref": "#/components/schemas/id-cEHDmbzG"
+											}
+										},
+										"type": "object"
 									},
 									"type": "array"
 								},
 								"managed_response_headers": {
 									"items": {
-										"$ref": "#/components/schemas/request_model"
+										"properties": {
+											"enabled": {
+												"$ref": "#/components/schemas/enabled-Di8C0DvI"
+											},
+											"id": {
+												"$ref": "#/components/schemas/id-cEHDmbzG"
+											}
+										},
+										"type": "object"
 									},
 									"type": "array"
 								}
@@ -50,13 +66,29 @@
 									"properties": {
 										"managed_request_headers": {
 											"items": {
-												"$ref": "#/components/schemas/request_model"
+												"properties": {
+													"enabled": {
+														"$ref": "#/components/schemas/enabled-Di8C0DvI"
+													},
+													"id": {
+														"$ref": "#/components/schemas/id-cEHDmbzG"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										},
 										"managed_response_headers": {
 											"items": {
-												"$ref": "#/components/schemas/request_model"
+												"properties": {
+													"enabled": {
+														"$ref": "#/components/schemas/enabled-Di8C0DvI"
+													},
+													"id": {
+														"$ref": "#/components/schemas/id-cEHDmbzG"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -68,7 +100,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -82,7 +132,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -159,13 +227,29 @@
 						"properties": {
 							"managed_request_headers": {
 								"items": {
-									"$ref": "#/components/schemas/request_model"
+									"properties": {
+										"enabled": {
+											"$ref": "#/components/schemas/enabled-Di8C0DvI"
+										},
+										"id": {
+											"$ref": "#/components/schemas/id-cEHDmbzG"
+										}
+									},
+									"type": "object"
 								},
 								"type": "array"
 							},
 							"managed_response_headers": {
 								"items": {
-									"$ref": "#/components/schemas/request_model"
+									"properties": {
+										"enabled": {
+											"$ref": "#/components/schemas/enabled-Di8C0DvI"
+										},
+										"id": {
+											"$ref": "#/components/schemas/id-cEHDmbzG"
+										}
+									},
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -188,13 +272,35 @@
 							"properties": {
 								"managed_request_headers": {
 									"items": {
-										"$ref": "#/components/schemas/response_model"
+										"properties": {
+											"available": {
+												"$ref": "#/components/schemas/available"
+											},
+											"enabled": {
+												"$ref": "#/components/schemas/enabled-Di8C0DvI"
+											},
+											"id": {
+												"$ref": "#/components/schemas/id-cEHDmbzG"
+											}
+										},
+										"type": "object"
 									},
 									"type": "array"
 								},
 								"managed_response_headers": {
 									"items": {
-										"$ref": "#/components/schemas/response_model"
+										"properties": {
+											"available": {
+												"$ref": "#/components/schemas/available"
+											},
+											"enabled": {
+												"$ref": "#/components/schemas/enabled-Di8C0DvI"
+											},
+											"id": {
+												"$ref": "#/components/schemas/id-cEHDmbzG"
+											}
+										},
+										"type": "object"
 									},
 									"type": "array"
 								}
@@ -214,13 +320,35 @@
 									"properties": {
 										"managed_request_headers": {
 											"items": {
-												"$ref": "#/components/schemas/response_model"
+												"properties": {
+													"available": {
+														"$ref": "#/components/schemas/available"
+													},
+													"enabled": {
+														"$ref": "#/components/schemas/enabled-Di8C0DvI"
+													},
+													"id": {
+														"$ref": "#/components/schemas/id-cEHDmbzG"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										},
 										"managed_response_headers": {
 											"items": {
-												"$ref": "#/components/schemas/response_model"
+												"properties": {
+													"available": {
+														"$ref": "#/components/schemas/available"
+													},
+													"enabled": {
+														"$ref": "#/components/schemas/enabled-Di8C0DvI"
+													},
+													"id": {
+														"$ref": "#/components/schemas/id-cEHDmbzG"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -232,7 +360,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -246,7 +392,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

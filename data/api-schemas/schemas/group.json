@@ -1,22 +1,45 @@
 {
 	"properties": {
 		"description": {
-			"$ref": "#/components/schemas/description-gZ1b5uWm"
+			"description": "An informative summary of what the rule group does.",
+			"example": "Group designed to protect against IP addresses that are a threat and typically used to launch DDoS attacks",
+			"nullable": true,
+			"readOnly": true,
+			"type": "string"
 		},
 		"id": {
-			"$ref": "#/components/schemas/components-schemas-identifier-n53VvE1w"
+			"description": "The unique identifier of the rule group.",
+			"example": "de677e5818985db1285d0e80225f06e5",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"modified_rules_count": {
-			"$ref": "#/components/schemas/modified_rules_count"
+			"default": 0,
+			"description": "The number of rules within the group that have been modified from their default configuration.",
+			"example": 2,
+			"readOnly": true,
+			"type": "number"
 		},
 		"name": {
-			"$ref": "#/components/schemas/name-357GgD0r"
+			"description": "The name of the rule group.",
+			"example": "Project Honey Pot",
+			"readOnly": true,
+			"type": "string"
 		},
 		"package_id": {
-			"$ref": "#/components/schemas/identifier-XhlQKFJj"
+			"description": "The unique identifier of a WAF package.",
+			"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
 		},
 		"rules_count": {
-			"$ref": "#/components/schemas/rules_count"
+			"default": 0,
+			"description": "The number of rules in the current rule group.",
+			"example": 10,
+			"readOnly": true,
+			"type": "number"
 		}
 	},
 	"type": "object"

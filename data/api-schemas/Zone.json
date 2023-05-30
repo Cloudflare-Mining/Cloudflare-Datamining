@@ -28,7 +28,25 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common-Wb5aXfNZ"
+									"properties": {
+										"errors": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"messages": {
+											"$ref": "#/components/schemas/messages"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -36,7 +54,10 @@
 											"nullable": true,
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/identifier-Du4NGw7E"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
 												}
 											},
 											"required": [
@@ -61,7 +82,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -75,7 +114,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -233,10 +290,46 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -289,7 +382,10 @@
 														"description": "The account the zone belongs to",
 														"properties": {
 															"id": {
-																"$ref": "#/components/schemas/identifier-Du4NGw7E"
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string"
 															},
 															"name": {
 																"description": "The name of the account",
@@ -321,7 +417,10 @@
 														"type": "number"
 													},
 													"id": {
-														"$ref": "#/components/schemas/identifier-Du4NGw7E"
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string"
 													},
 													"meta": {
 														"description": "Metadata about the zone",
@@ -410,7 +509,10 @@
 														"description": "The owner of the zone",
 														"properties": {
 															"id": {
-																"$ref": "#/components/schemas/identifier-Du4NGw7E"
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string"
 															},
 															"name": {
 																"description": "Name of the owner",
@@ -473,7 +575,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -487,7 +607,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -550,10 +688,46 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -576,7 +750,10 @@
 													"description": "The account the zone belongs to",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-Du4NGw7E"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
 														},
 														"name": {
 															"description": "The name of the account",
@@ -608,7 +785,10 @@
 													"type": "number"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-Du4NGw7E"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
 												},
 												"meta": {
 													"description": "Metadata about the zone",
@@ -697,7 +877,10 @@
 													"description": "The owner of the zone",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-Du4NGw7E"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
 														},
 														"name": {
 															"description": "Name of the owner",
@@ -759,7 +942,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -773,7 +974,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -903,10 +1122,46 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -929,7 +1184,10 @@
 													"description": "The account the zone belongs to",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-Du4NGw7E"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
 														},
 														"name": {
 															"description": "The name of the account",
@@ -961,7 +1219,10 @@
 													"type": "number"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-Du4NGw7E"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
 												},
 												"meta": {
 													"description": "Metadata about the zone",
@@ -1050,7 +1311,10 @@
 													"description": "The owner of the zone",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-Du4NGw7E"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
 														},
 														"name": {
 															"description": "Name of the owner",
@@ -1112,7 +1376,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -1126,7 +1408,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -1225,10 +1525,46 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -1251,7 +1587,10 @@
 													"description": "The account the zone belongs to",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-Du4NGw7E"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
 														},
 														"name": {
 															"description": "The name of the account",
@@ -1283,7 +1622,10 @@
 													"type": "number"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-Du4NGw7E"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string"
 												},
 												"meta": {
 													"description": "Metadata about the zone",
@@ -1372,7 +1714,10 @@
 													"description": "The owner of the zone",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-Du4NGw7E"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string"
 														},
 														"name": {
 															"description": "Name of the owner",
@@ -1434,7 +1779,25 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": [
@@ -1448,7 +1811,25 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
 									],
 									"example": []
@@ -1508,13 +1889,49 @@
 							{
 								"anyOf": [
 									{
-										"$ref": "#/components/schemas/Tags"
+										"properties": {
+											"tags": {
+												"example": [
+													"some-tag",
+													"another-tag"
+												],
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/Hosts"
+										"properties": {
+											"hosts": {
+												"example": [
+													"www.example.com",
+													"images.example.com"
+												],
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
 									},
 									{
-										"$ref": "#/components/schemas/Prefixes"
+										"properties": {
+											"prefixes": {
+												"example": [
+													"www.example.com/foo",
+													"images.example.com/bar/baz"
+												],
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
 									}
 								]
 							},
@@ -1532,10 +1949,21 @@
 										"items": {
 											"anyOf": [
 												{
-													"$ref": "#/components/schemas/File"
+													"example": "http://www.example.com/css/styles.css",
+													"type": "string"
 												},
 												{
-													"$ref": "#/components/schemas/UrlAndHeaders"
+													"properties": {
+														"headers": {
+															"example": "{\n    \"Origin\": \"https://www.cloudflare.com\",\n    \"CF-IPCountry\": \"US\",\n    \"CF-Device-Type\": \"desktop\"\n}",
+															"type": "object"
+														},
+														"url": {
+															"example": "http://www.example.com/cat_picture.jpg",
+															"type": "string"
+														}
+													},
+													"type": "object"
 												}
 											]
 										},
@@ -1557,7 +1985,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1565,7 +2065,11 @@
 											"nullable": true,
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/schemas-identifier"
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"required": [
@@ -1590,7 +2094,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -1598,7 +2174,11 @@
 													"nullable": true,
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/schemas-identifier"
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"required": [
@@ -1616,7 +2196,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1630,7 +2228,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

@@ -1,7 +1,30 @@
 {
 	"description": "Array of available components values for the plan.",
 	"items": {
-		"$ref": "#/components/schemas/component-value-WYjkQzjk"
+		"properties": {
+			"default": {
+				"description": "The default amount allocated.",
+				"example": 5,
+				"type": "number"
+			},
+			"name": {
+				"description": "The unique component.",
+				"enum": [
+					"zones",
+					"page_rules",
+					"dedicated_certificates",
+					"dedicated_certificates_custom"
+				],
+				"example": "page_rules"
+			},
+			"unit_price": {
+				"description": "The unit price of the addon.",
+				"example": 1,
+				"readOnly": true,
+				"type": "number"
+			}
+		},
+		"type": "object"
 	},
 	"type": "array"
 }

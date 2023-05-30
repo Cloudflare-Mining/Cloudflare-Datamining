@@ -75,7 +75,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -89,7 +107,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -181,13 +217,63 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/components-schemas-member-C4KbOSB6"
+												"properties": {
+													"email": {
+														"$ref": "#/components/schemas/email-DYwLFMwr"
+													},
+													"id": {
+														"$ref": "#/components/schemas/common_components-schemas-identifier"
+													},
+													"name": {
+														"$ref": "#/components/schemas/member_components-schemas-name"
+													},
+													"roles": {
+														"description": "Roles assigned to this Member.",
+														"items": {
+															"$ref": "#/components/schemas/schemas-role-UJN4CkqG"
+														},
+														"type": "array"
+													},
+													"status": {
+														"description": "A member's status in the organization.",
+														"enum": [
+															"accepted",
+															"invited"
+														],
+														"example": "accepted"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"email",
+													"status",
+													"roles"
+												],
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -208,13 +294,63 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/components-schemas-member-C4KbOSB6"
+														"properties": {
+															"email": {
+																"$ref": "#/components/schemas/email-DYwLFMwr"
+															},
+															"id": {
+																"$ref": "#/components/schemas/common_components-schemas-identifier"
+															},
+															"name": {
+																"$ref": "#/components/schemas/member_components-schemas-name"
+															},
+															"roles": {
+																"description": "Roles assigned to this Member.",
+																"items": {
+																	"$ref": "#/components/schemas/schemas-role-UJN4CkqG"
+																},
+																"type": "array"
+															},
+															"status": {
+																"description": "A member's status in the organization.",
+																"enum": [
+																	"accepted",
+																	"invited"
+																],
+																"example": "accepted"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"email",
+															"status",
+															"roles"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -228,7 +364,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -242,7 +396,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -346,12 +518,77 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/member"
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/membership_components-schemas-identifier"
+												},
+												"roles": {
+													"description": "Roles assigned to this member.",
+													"items": {
+														"$ref": "#/components/schemas/role"
+													},
+													"type": "array"
+												},
+												"status": {
+													"readOnly": true
+												},
+												"user": {
+													"properties": {
+														"email": {
+															"$ref": "#/components/schemas/email-kUU80fv1"
+														},
+														"first_name": {
+															"$ref": "#/components/schemas/first_name"
+														},
+														"id": {
+															"$ref": "#/components/schemas/common_components-schemas-identifier"
+														},
+														"last_name": {
+															"$ref": "#/components/schemas/last_name"
+														},
+														"two_factor_authentication_enabled": {
+															"$ref": "#/components/schemas/two_factor_authentication_enabled"
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"email"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"user",
+												"status",
+												"roles"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -370,12 +607,77 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/member"
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/membership_components-schemas-identifier"
+														},
+														"roles": {
+															"description": "Roles assigned to this member.",
+															"items": {
+																"$ref": "#/components/schemas/role"
+															},
+															"type": "array"
+														},
+														"status": {
+															"readOnly": true
+														},
+														"user": {
+															"properties": {
+																"email": {
+																	"$ref": "#/components/schemas/email-kUU80fv1"
+																},
+																"first_name": {
+																	"$ref": "#/components/schemas/first_name"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/common_components-schemas-identifier"
+																},
+																"last_name": {
+																	"$ref": "#/components/schemas/last_name"
+																},
+																"two_factor_authentication_enabled": {
+																	"$ref": "#/components/schemas/two_factor_authentication_enabled"
+																}
+															},
+															"readOnly": true,
+															"required": [
+																"email"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"id",
+														"user",
+														"status",
+														"roles"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -387,7 +689,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -401,7 +721,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -527,12 +865,77 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/member"
+											"properties": {
+												"id": {
+													"$ref": "#/components/schemas/membership_components-schemas-identifier"
+												},
+												"roles": {
+													"description": "Roles assigned to this member.",
+													"items": {
+														"$ref": "#/components/schemas/role"
+													},
+													"type": "array"
+												},
+												"status": {
+													"readOnly": true
+												},
+												"user": {
+													"properties": {
+														"email": {
+															"$ref": "#/components/schemas/email-kUU80fv1"
+														},
+														"first_name": {
+															"$ref": "#/components/schemas/first_name"
+														},
+														"id": {
+															"$ref": "#/components/schemas/common_components-schemas-identifier"
+														},
+														"last_name": {
+															"$ref": "#/components/schemas/last_name"
+														},
+														"two_factor_authentication_enabled": {
+															"$ref": "#/components/schemas/two_factor_authentication_enabled"
+														}
+													},
+													"readOnly": true,
+													"required": [
+														"email"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"user",
+												"status",
+												"roles"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -551,12 +954,77 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/member"
+													"properties": {
+														"id": {
+															"$ref": "#/components/schemas/membership_components-schemas-identifier"
+														},
+														"roles": {
+															"description": "Roles assigned to this member.",
+															"items": {
+																"$ref": "#/components/schemas/role"
+															},
+															"type": "array"
+														},
+														"status": {
+															"readOnly": true
+														},
+														"user": {
+															"properties": {
+																"email": {
+																	"$ref": "#/components/schemas/email-kUU80fv1"
+																},
+																"first_name": {
+																	"$ref": "#/components/schemas/first_name"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/common_components-schemas-identifier"
+																},
+																"last_name": {
+																	"$ref": "#/components/schemas/last_name"
+																},
+																"two_factor_authentication_enabled": {
+																	"$ref": "#/components/schemas/two_factor_authentication_enabled"
+																}
+															},
+															"readOnly": true,
+															"required": [
+																"email"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"id",
+														"user",
+														"status",
+														"roles"
+													],
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -568,7 +1036,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -582,7 +1068,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

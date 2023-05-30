@@ -41,7 +41,79 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -51,7 +123,29 @@
 											"type": "array"
 										},
 										"result_info": {
-											"$ref": "#/components/schemas/result_info"
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service",
+													"example": 1,
+													"type": "number"
+												},
+												"page": {
+													"description": "Current page within paginated list of results",
+													"example": 1,
+													"type": "number"
+												},
+												"per_page": {
+													"description": "Number of results per page of results",
+													"example": 20,
+													"type": "number"
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters",
+													"example": 2000,
+													"type": "number"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -70,7 +164,79 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -80,7 +246,29 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -92,7 +280,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -106,7 +312,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -180,13 +404,74 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/policies-L7Qxgeee"
+												"properties": {
+													"approval_groups": {
+														"$ref": "#/components/schemas/approval_groups"
+													},
+													"approval_required": {
+														"$ref": "#/components/schemas/approval_required"
+													},
+													"created_at": {
+														"$ref": "#/components/schemas/timestamp"
+													},
+													"decision": {
+														"$ref": "#/components/schemas/decision"
+													},
+													"exclude": {
+														"$ref": "#/components/schemas/schemas-exclude"
+													},
+													"id": {
+														"$ref": "#/components/schemas/components-schemas-uuid"
+													},
+													"include": {
+														"$ref": "#/components/schemas/include"
+													},
+													"isolation_required": {
+														"$ref": "#/components/schemas/isolation_required"
+													},
+													"name": {
+														"$ref": "#/components/schemas/policies_components-schemas-name"
+													},
+													"precedence": {
+														"$ref": "#/components/schemas/precedence"
+													},
+													"purpose_justification_prompt": {
+														"$ref": "#/components/schemas/purpose_justification_prompt"
+													},
+													"purpose_justification_required": {
+														"$ref": "#/components/schemas/purpose_justification_required"
+													},
+													"require": {
+														"$ref": "#/components/schemas/schemas-require"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
+													}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
@@ -206,13 +491,74 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/policies-L7Qxgeee"
+														"properties": {
+															"approval_groups": {
+																"$ref": "#/components/schemas/approval_groups"
+															},
+															"approval_required": {
+																"$ref": "#/components/schemas/approval_required"
+															},
+															"created_at": {
+																"$ref": "#/components/schemas/timestamp"
+															},
+															"decision": {
+																"$ref": "#/components/schemas/decision"
+															},
+															"exclude": {
+																"$ref": "#/components/schemas/schemas-exclude"
+															},
+															"id": {
+																"$ref": "#/components/schemas/components-schemas-uuid"
+															},
+															"include": {
+																"$ref": "#/components/schemas/include"
+															},
+															"isolation_required": {
+																"$ref": "#/components/schemas/isolation_required"
+															},
+															"name": {
+																"$ref": "#/components/schemas/policies_components-schemas-name"
+															},
+															"precedence": {
+																"$ref": "#/components/schemas/precedence"
+															},
+															"purpose_justification_prompt": {
+																"$ref": "#/components/schemas/purpose_justification_prompt"
+															},
+															"purpose_justification_required": {
+																"$ref": "#/components/schemas/purpose_justification_required"
+															},
+															"require": {
+																"$ref": "#/components/schemas/schemas-require"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
+															}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
@@ -225,7 +571,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -239,7 +603,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -325,12 +707,61 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/policies"
+											"properties": {
+												"alert_type": {
+													"$ref": "#/components/schemas/alert_type"
+												},
+												"created": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"description": {
+													"$ref": "#/components/schemas/schemas-description-t6WANsWN"
+												},
+												"enabled": {
+													"$ref": "#/components/schemas/enabled-vWmAp0GE"
+												},
+												"filters": {
+													"$ref": "#/components/schemas/filters"
+												},
+												"id": {
+													"$ref": "#/components/schemas/uuid"
+												},
+												"mechanisms": {
+													"$ref": "#/components/schemas/mechanisms"
+												},
+												"modified": {
+													"$ref": "#/components/schemas/timestamp"
+												},
+												"name": {
+													"$ref": "#/components/schemas/schemas-name"
+												}
+											},
+											"type": "object"
 										}
 									}
 								}
@@ -348,12 +779,61 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/policies"
+													"properties": {
+														"alert_type": {
+															"$ref": "#/components/schemas/alert_type"
+														},
+														"created": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"description": {
+															"$ref": "#/components/schemas/schemas-description-t6WANsWN"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/enabled-vWmAp0GE"
+														},
+														"filters": {
+															"$ref": "#/components/schemas/filters"
+														},
+														"id": {
+															"$ref": "#/components/schemas/uuid"
+														},
+														"mechanisms": {
+															"$ref": "#/components/schemas/mechanisms"
+														},
+														"modified": {
+															"$ref": "#/components/schemas/timestamp"
+														},
+														"name": {
+															"$ref": "#/components/schemas/schemas-name"
+														}
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -364,7 +844,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -378,7 +876,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -484,7 +1000,11 @@
 									"items": {
 										"properties": {
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"description": "UUID",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"readOnly": true,
+												"type": "string"
 											}
 										},
 										"type": "object"
@@ -535,14 +1055,38 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/uuid"
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -563,14 +1107,38 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/uuid"
+															"description": "UUID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -584,7 +1152,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -598,7 +1184,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -716,7 +1320,11 @@
 									"items": {
 										"properties": {
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"description": "UUID",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"readOnly": true,
+												"type": "string"
 											}
 										},
 										"type": "object"
@@ -761,14 +1369,38 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/uuid"
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -789,14 +1421,38 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-zBnqYd5x"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/uuid"
+															"description": "UUID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -810,7 +1466,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -824,7 +1498,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

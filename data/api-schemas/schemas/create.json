@@ -1,12 +1,18 @@
 {
 	"properties": {
 		"email": {
-			"$ref": "#/components/schemas/email-kUU80fv1"
+			"description": "The contact email address of the user.",
+			"example": "user@example.com",
+			"maxLength": 90,
+			"type": "string"
 		},
 		"roles": {
 			"description": "Array of roles associated with this member.",
 			"items": {
-				"$ref": "#/components/schemas/role_components-schemas-identifier"
+				"description": "Role identifier tag.",
+				"example": "3536bcfad5faccb999b47003c79917fb",
+				"maxLength": 32,
+				"type": "string"
 			},
 			"type": "array"
 		},

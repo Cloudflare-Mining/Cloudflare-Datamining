@@ -1,6 +1,36 @@
 {
 	"items": {
-		"$ref": "#/components/schemas/create_rule"
+		"properties": {
+			"action": {
+				"description": "The action to take when the expression matches.",
+				"enum": [
+					"bypass_waiting_room"
+				],
+				"example": "bypass_waiting_room",
+				"type": "string"
+			},
+			"description": {
+				"default": "",
+				"description": "The description of the rule.",
+				"example": "allow all traffic from 10.20.30.40",
+				"type": "string"
+			},
+			"enabled": {
+				"default": true,
+				"description": "When set to true, the rule is enabled.",
+				"example": true,
+				"type": "boolean"
+			},
+			"expression": {
+				"description": "Criteria defining when there is a match for the current rule.",
+				"example": "ip.src in {10.20.30.40}",
+				"type": "string"
+			}
+		},
+		"required": [
+			"action",
+			"expression"
+		]
 	},
 	"type": "array"
 }

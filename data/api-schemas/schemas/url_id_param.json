@@ -1,7 +1,8 @@
 {
 	"properties": {
 		"url_id": {
-			"$ref": "#/components/schemas/url_id"
+			"description": "Submission ID(s) to filter submission results by.",
+			"type": "integer"
 		}
 	},
 	"type": "object"

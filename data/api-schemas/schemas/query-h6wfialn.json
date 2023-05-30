@@ -14,10 +14,15 @@
 			"type": "array"
 		},
 		"filters": {
-			"$ref": "#/components/schemas/filters-Htr4OsW3"
+			"description": "Segmentation filter in 'attribute operator value' format.",
+			"example": "responseCode==NOERROR,queryType==A",
+			"type": "string"
 		},
 		"limit": {
-			"$ref": "#/components/schemas/limit"
+			"default": 100000,
+			"description": "Limit number of returned metrics.",
+			"example": 100,
+			"type": "integer"
 		},
 		"metrics": {
 			"description": "Array of metric names.",
@@ -33,7 +38,10 @@
 			"type": "array"
 		},
 		"since": {
-			"$ref": "#/components/schemas/since-mKzZOHZu"
+			"description": "Start date and time of requesting data period in ISO 8601 format.",
+			"example": "2023-11-11T12:00:00Z",
+			"format": "date-time",
+			"type": "string"
 		},
 		"sort": {
 			"description": "Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
@@ -49,7 +57,10 @@
 			"type": "array"
 		},
 		"until": {
-			"$ref": "#/components/schemas/until-1ndxI2Eo"
+			"description": "End date and time of requesting data period in ISO 8601 format.",
+			"example": "2023-11-11T13:00:00Z",
+			"format": "date-time",
+			"type": "string"
 		}
 	},
 	"required": [

@@ -22,10 +22,12 @@
 					"type": "number"
 				},
 				"max_retries": {
-					"$ref": "#/components/schemas/max_retries"
+					"example": 3,
+					"type": "number"
 				},
 				"max_wait_time_ms": {
-					"$ref": "#/components/schemas/max_wait_time_ms"
+					"example": 5000,
+					"type": "number"
 				}
 			},
 			"type": "object"

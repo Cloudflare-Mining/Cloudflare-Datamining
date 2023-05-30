@@ -1,10 +1,14 @@
 {
 	"properties": {
 		"scope": {
-			"$ref": "#/components/schemas/scope-l4HKcyav"
+			"description": "The scope of the URL normalization.",
+			"example": "incoming",
+			"type": "string"
 		},
 		"type": {
-			"$ref": "#/components/schemas/type-82yIceOl"
+			"description": "The type of URL normalization performed by Cloudflare.",
+			"example": "cloudflare",
+			"type": "string"
 		}
 	},
 	"type": "object"

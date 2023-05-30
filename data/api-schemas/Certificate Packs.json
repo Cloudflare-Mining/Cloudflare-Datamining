@@ -40,14 +40,37 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+													"description": "The unique identifier for a certificate_pack.",
+													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -69,14 +92,37 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+															"description": "The unique identifier for a certificate_pack.",
+															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -91,7 +137,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -105,7 +169,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -202,7 +284,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"$ref": "#/components/schemas/result_info"
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -228,7 +327,24 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"$ref": "#/components/schemas/result_info"
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -247,7 +363,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -261,7 +395,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -357,7 +509,27 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -381,7 +553,27 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
@@ -398,7 +590,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -412,7 +622,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -497,14 +725,44 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"advanced": {
-													"$ref": "#/components/schemas/quota"
+													"properties": {
+														"allocated": {
+															"description": "Quantity Allocated.",
+															"type": "integer"
+														},
+														"used": {
+															"description": "Quantity Used.",
+															"type": "integer"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -526,14 +784,44 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"advanced": {
-															"$ref": "#/components/schemas/quota"
+															"properties": {
+																"allocated": {
+																	"description": "Quantity Allocated.",
+																	"type": "integer"
+																},
+																"used": {
+																	"description": "Quantity Used.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
 														}
 													},
 													"type": "object"
@@ -548,7 +836,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -562,7 +868,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -664,35 +988,120 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"certificate_authority": {
-													"$ref": "#/components/schemas/certificate_authority-6oxzIVcT"
+													"description": "Certificate Authority selected for the order.  Selecting Let's Encrypt will reduce customization of other fields: validation_method must be 'txt', validity_days must be 90, cloudflare_branding must be omitted, and hosts must contain only 2 entries, one for the zone name and one for the subdomain wildcard of the zone name (e.g. example.com, *.example.com).",
+													"enum": [
+														"digicert",
+														"google",
+														"lets_encrypt"
+													],
+													"example": "digicert",
+													"type": "string"
 												},
 												"cloudflare_branding": {
-													"$ref": "#/components/schemas/cloudflare_branding"
+													"description": "Whether or not to add Cloudflare Branding for the order.  This will add sni.cloudflaressl.com as the Common Name if set true.",
+													"example": false,
+													"type": "boolean"
 												},
 												"hosts": {
-													"$ref": "#/components/schemas/schemas-hosts"
+													"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
+													"example": [
+														"example.com",
+														"*.example.com",
+														"www.example.com"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
 												},
 												"id": {
-													"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+													"description": "The unique identifier for a certificate_pack.",
+													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+													"readOnly": true,
+													"type": "string"
 												},
 												"status": {
-													"$ref": "#/components/schemas/certificate-packs_components-schemas-status"
+													"description": "Status of certificate pack.",
+													"enum": [
+														"initializing",
+														"pending_validation",
+														"deleted",
+														"pending_issuance",
+														"pending_deployment",
+														"pending_deletion",
+														"pending_expiration",
+														"expired",
+														"active",
+														"initializing_timed_out",
+														"validation_timed_out",
+														"issuance_timed_out",
+														"deployment_timed_out",
+														"deletion_timed_out",
+														"pending_cleanup",
+														"staging_deployment",
+														"staging_active",
+														"deactivating",
+														"inactive",
+														"backup_issued",
+														"holding_deployment"
+													],
+													"example": "initializing",
+													"type": "string"
 												},
 												"type": {
-													"$ref": "#/components/schemas/advanced_type"
+													"description": "Type of certificate pack.",
+													"enum": [
+														"advanced"
+													],
+													"example": "advanced",
+													"type": "string"
 												},
 												"validation_method": {
-													"$ref": "#/components/schemas/validation_method"
+													"description": "Validation Method selected for the order.",
+													"enum": [
+														"txt",
+														"http",
+														"email"
+													],
+													"example": "txt",
+													"type": "string"
 												},
 												"validity_days": {
-													"$ref": "#/components/schemas/validity_days"
+													"description": "Validity Days selected for the order.",
+													"enum": [
+														14,
+														30,
+														90,
+														365
+													],
+													"type": "integer"
 												}
 											},
 											"type": "object"
@@ -714,35 +1123,120 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"certificate_authority": {
-															"$ref": "#/components/schemas/certificate_authority-6oxzIVcT"
+															"description": "Certificate Authority selected for the order.  Selecting Let's Encrypt will reduce customization of other fields: validation_method must be 'txt', validity_days must be 90, cloudflare_branding must be omitted, and hosts must contain only 2 entries, one for the zone name and one for the subdomain wildcard of the zone name (e.g. example.com, *.example.com).",
+															"enum": [
+																"digicert",
+																"google",
+																"lets_encrypt"
+															],
+															"example": "digicert",
+															"type": "string"
 														},
 														"cloudflare_branding": {
-															"$ref": "#/components/schemas/cloudflare_branding"
+															"description": "Whether or not to add Cloudflare Branding for the order.  This will add sni.cloudflaressl.com as the Common Name if set true.",
+															"example": false,
+															"type": "boolean"
 														},
 														"hosts": {
-															"$ref": "#/components/schemas/schemas-hosts"
+															"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
+															"example": [
+																"example.com",
+																"*.example.com",
+																"www.example.com"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
 														},
 														"id": {
-															"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+															"description": "The unique identifier for a certificate_pack.",
+															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+															"readOnly": true,
+															"type": "string"
 														},
 														"status": {
-															"$ref": "#/components/schemas/certificate-packs_components-schemas-status"
+															"description": "Status of certificate pack.",
+															"enum": [
+																"initializing",
+																"pending_validation",
+																"deleted",
+																"pending_issuance",
+																"pending_deployment",
+																"pending_deletion",
+																"pending_expiration",
+																"expired",
+																"active",
+																"initializing_timed_out",
+																"validation_timed_out",
+																"issuance_timed_out",
+																"deployment_timed_out",
+																"deletion_timed_out",
+																"pending_cleanup",
+																"staging_deployment",
+																"staging_active",
+																"deactivating",
+																"inactive",
+																"backup_issued",
+																"holding_deployment"
+															],
+															"example": "initializing",
+															"type": "string"
 														},
 														"type": {
-															"$ref": "#/components/schemas/advanced_type"
+															"description": "Type of certificate pack.",
+															"enum": [
+																"advanced"
+															],
+															"example": "advanced",
+															"type": "string"
 														},
 														"validation_method": {
-															"$ref": "#/components/schemas/validation_method"
+															"description": "Validation Method selected for the order.",
+															"enum": [
+																"txt",
+																"http",
+																"email"
+															],
+															"example": "txt",
+															"type": "string"
 														},
 														"validity_days": {
-															"$ref": "#/components/schemas/validity_days"
+															"description": "Validity Days selected for the order.",
+															"enum": [
+																14,
+																30,
+																90,
+																365
+															],
+															"type": "integer"
 														}
 													},
 													"type": "object"
@@ -757,7 +1251,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -771,7 +1283,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []
@@ -931,35 +1461,120 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"certificate_authority": {
-													"$ref": "#/components/schemas/certificate_authority-6oxzIVcT"
+													"description": "Certificate Authority selected for the order.  Selecting Let's Encrypt will reduce customization of other fields: validation_method must be 'txt', validity_days must be 90, cloudflare_branding must be omitted, and hosts must contain only 2 entries, one for the zone name and one for the subdomain wildcard of the zone name (e.g. example.com, *.example.com).",
+													"enum": [
+														"digicert",
+														"google",
+														"lets_encrypt"
+													],
+													"example": "digicert",
+													"type": "string"
 												},
 												"cloudflare_branding": {
-													"$ref": "#/components/schemas/cloudflare_branding"
+													"description": "Whether or not to add Cloudflare Branding for the order.  This will add sni.cloudflaressl.com as the Common Name if set true.",
+													"example": false,
+													"type": "boolean"
 												},
 												"hosts": {
-													"$ref": "#/components/schemas/schemas-hosts"
+													"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
+													"example": [
+														"example.com",
+														"*.example.com",
+														"www.example.com"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
 												},
 												"id": {
-													"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+													"description": "The unique identifier for a certificate_pack.",
+													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+													"readOnly": true,
+													"type": "string"
 												},
 												"status": {
-													"$ref": "#/components/schemas/certificate-packs_components-schemas-status"
+													"description": "Status of certificate pack.",
+													"enum": [
+														"initializing",
+														"pending_validation",
+														"deleted",
+														"pending_issuance",
+														"pending_deployment",
+														"pending_deletion",
+														"pending_expiration",
+														"expired",
+														"active",
+														"initializing_timed_out",
+														"validation_timed_out",
+														"issuance_timed_out",
+														"deployment_timed_out",
+														"deletion_timed_out",
+														"pending_cleanup",
+														"staging_deployment",
+														"staging_active",
+														"deactivating",
+														"inactive",
+														"backup_issued",
+														"holding_deployment"
+													],
+													"example": "initializing",
+													"type": "string"
 												},
 												"type": {
-													"$ref": "#/components/schemas/advanced_type"
+													"description": "Type of certificate pack.",
+													"enum": [
+														"advanced"
+													],
+													"example": "advanced",
+													"type": "string"
 												},
 												"validation_method": {
-													"$ref": "#/components/schemas/validation_method"
+													"description": "Validation Method selected for the order.",
+													"enum": [
+														"txt",
+														"http",
+														"email"
+													],
+													"example": "txt",
+													"type": "string"
 												},
 												"validity_days": {
-													"$ref": "#/components/schemas/validity_days"
+													"description": "Validity Days selected for the order.",
+													"enum": [
+														14,
+														30,
+														90,
+														365
+													],
+													"type": "integer"
 												}
 											},
 											"type": "object"
@@ -981,35 +1596,120 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"certificate_authority": {
-															"$ref": "#/components/schemas/certificate_authority-6oxzIVcT"
+															"description": "Certificate Authority selected for the order.  Selecting Let's Encrypt will reduce customization of other fields: validation_method must be 'txt', validity_days must be 90, cloudflare_branding must be omitted, and hosts must contain only 2 entries, one for the zone name and one for the subdomain wildcard of the zone name (e.g. example.com, *.example.com).",
+															"enum": [
+																"digicert",
+																"google",
+																"lets_encrypt"
+															],
+															"example": "digicert",
+															"type": "string"
 														},
 														"cloudflare_branding": {
-															"$ref": "#/components/schemas/cloudflare_branding"
+															"description": "Whether or not to add Cloudflare Branding for the order.  This will add sni.cloudflaressl.com as the Common Name if set true.",
+															"example": false,
+															"type": "boolean"
 														},
 														"hosts": {
-															"$ref": "#/components/schemas/schemas-hosts"
+															"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
+															"example": [
+																"example.com",
+																"*.example.com",
+																"www.example.com"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
 														},
 														"id": {
-															"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+															"description": "The unique identifier for a certificate_pack.",
+															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+															"readOnly": true,
+															"type": "string"
 														},
 														"status": {
-															"$ref": "#/components/schemas/certificate-packs_components-schemas-status"
+															"description": "Status of certificate pack.",
+															"enum": [
+																"initializing",
+																"pending_validation",
+																"deleted",
+																"pending_issuance",
+																"pending_deployment",
+																"pending_deletion",
+																"pending_expiration",
+																"expired",
+																"active",
+																"initializing_timed_out",
+																"validation_timed_out",
+																"issuance_timed_out",
+																"deployment_timed_out",
+																"deletion_timed_out",
+																"pending_cleanup",
+																"staging_deployment",
+																"staging_active",
+																"deactivating",
+																"inactive",
+																"backup_issued",
+																"holding_deployment"
+															],
+															"example": "initializing",
+															"type": "string"
 														},
 														"type": {
-															"$ref": "#/components/schemas/advanced_type"
+															"description": "Type of certificate pack.",
+															"enum": [
+																"advanced"
+															],
+															"example": "advanced",
+															"type": "string"
 														},
 														"validation_method": {
-															"$ref": "#/components/schemas/validation_method"
+															"description": "Validation Method selected for the order.",
+															"enum": [
+																"txt",
+																"http",
+																"email"
+															],
+															"example": "txt",
+															"type": "string"
 														},
 														"validity_days": {
-															"$ref": "#/components/schemas/validity_days"
+															"description": "Validity Days selected for the order.",
+															"enum": [
+																14,
+																30,
+																90,
+																365
+															],
+															"type": "integer"
 														}
 													},
 													"type": "object"
@@ -1024,7 +1724,25 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": [
@@ -1038,7 +1756,25 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												}
 											],
 											"example": []

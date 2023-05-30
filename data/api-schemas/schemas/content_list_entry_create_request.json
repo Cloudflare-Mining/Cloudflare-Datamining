@@ -1,13 +1,25 @@
 {
 	"properties": {
 		"content": {
-			"$ref": "#/components/schemas/content_list_entry_content"
+			"description": "CID or content path of content to block.",
+			"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB",
+			"maxLength": 500,
+			"type": "string"
 		},
 		"description": {
-			"$ref": "#/components/schemas/content_list_entry_description"
+			"description": "An optional description of the content list entry.",
+			"example": "this is my content list entry",
+			"maxLength": 500,
+			"type": "string"
 		},
 		"type": {
-			"$ref": "#/components/schemas/content_list_entry_type"
+			"description": "Type of content list entry to block.",
+			"enum": [
+				"cid",
+				"content_path"
+			],
+			"example": "cid",
+			"type": "string"
 		}
 	},
 	"required": [

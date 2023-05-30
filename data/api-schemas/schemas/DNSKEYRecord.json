@@ -39,7 +39,10 @@
 					"type": "object"
 				},
 				"name": {
-					"$ref": "#/components/schemas/name-1TbJ7bqT"
+					"description": "DNS record name (or @ for the zone apex) in Punycode.",
+					"example": "example.com",
+					"maxLength": 255,
+					"type": "string"
 				},
 				"type": {
 					"description": "Record type.",
@@ -52,7 +55,106 @@
 			}
 		},
 		{
-			"$ref": "#/components/schemas/base-sZDWZUEa"
+			"properties": {
+				"comment": {
+					"description": "Comments or notes about the DNS record. This field has no effect on DNS responses.",
+					"example": "Domain verification record",
+					"type": "string"
+				},
+				"created_on": {
+					"description": "When the record was created.",
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"readOnly": true,
+					"type": "string"
+				},
+				"id": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				},
+				"locked": {
+					"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare).",
+					"example": false,
+					"readOnly": true,
+					"type": "boolean"
+				},
+				"meta": {
+					"description": "Extra Cloudflare-specific information about the record.",
+					"properties": {
+						"auto_added": {
+							"description": "Will exist if Cloudflare automatically added this DNS record during initial setup.",
+							"example": true,
+							"type": "boolean"
+						},
+						"source": {
+							"description": "Where the record originated from.",
+							"example": "primary",
+							"type": "string"
+						}
+					},
+					"readOnly": true,
+					"type": "object"
+				},
+				"modified_on": {
+					"description": "When the record was last modified.",
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"readOnly": true,
+					"type": "string"
+				},
+				"proxiable": {
+					"description": "Whether the record can be proxied by Cloudflare or not.",
+					"example": true,
+					"readOnly": true,
+					"type": "boolean"
+				},
+				"tags": {
+					"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+					"items": {
+						"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+						"example": "owner:dns-team",
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"ttl": {
+					"anyOf": [
+						{
+							"example": 3600,
+							"maximum": 86400,
+							"minimum": 30,
+							"type": "number"
+						},
+						{
+							"enum": [
+								1
+							],
+							"type": "number"
+						}
+					],
+					"default": 1,
+					"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.",
+					"example": 3600,
+					"type": "number"
+				},
+				"zone_id": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				},
+				"zone_name": {
+					"description": "The domain of the record.",
+					"example": "example.com",
+					"format": "hostname",
+					"readOnly": true,
+					"type": "string"
+				}
+			}
 		}
 	],
 	"required": [

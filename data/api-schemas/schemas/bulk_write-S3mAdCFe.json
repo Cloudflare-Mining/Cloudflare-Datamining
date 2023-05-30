@@ -7,16 +7,27 @@
 				"type": "boolean"
 			},
 			"expiration": {
-				"$ref": "#/components/schemas/expiration"
+				"description": "The time, measured in number of seconds since the UNIX epoch, at which the key should expire.",
+				"example": 1578435000,
+				"type": "number"
 			},
 			"expiration_ttl": {
-				"$ref": "#/components/schemas/expiration_ttl"
+				"description": "The number of seconds for which the key should be visible before it expires. At least 60.",
+				"example": 300,
+				"type": "number"
 			},
 			"key": {
-				"$ref": "#/components/schemas/key_name_bulk"
+				"description": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.",
+				"example": "My-Key",
+				"maxLength": 512,
+				"type": "string"
 			},
 			"metadata": {
-				"$ref": "#/components/schemas/list_metadata"
+				"description": "Arbitrary JSON that is associated with a key.",
+				"example": {
+					"someMetadataKey": "someMetadataValue"
+				},
+				"type": "object"
 			},
 			"value": {
 				"description": "A UTF-8 encoded string to be stored, up to 10 MB in length.",
