@@ -1308,5 +1308,37 @@
 		"created_date": "2022-11-09T00:29:44.000000",
 		"edited_date": "2022-11-09T00:29:44.000000",
 		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.snippets_rule_max",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1188,
+			"key": "rulesets.snippets_rule_max",
+			"name": "Rulesets - Snippets Rule Max"
+		},
+		"allocation": {
+			"value": 5,
+			"type": "max_count"
+		},
+		"created_date": "2023-05-30T16:57:20.000000",
+		"edited_date": "2023-05-30T16:57:20.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "snippets.max_snippets_allowed",
+		"feature": {
+			"feature_set": "snippets",
+			"id": 1189,
+			"key": "snippets.max_snippets_allowed",
+			"name": "Snippets - Snippets Allowed Max"
+		},
+		"allocation": {
+			"value": 5,
+			"type": "max_count"
+		},
+		"created_date": "2023-05-30T16:57:20.000000",
+		"edited_date": "2023-05-30T16:57:20.000000",
+		"deleted_date": ""
 	}
 ]
