@@ -5,32 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>About Engineering at Cloudflare</strong></h3>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering team is responsible for the software platform that serves 28 million HTTP requests per second on average. We also build and run the tools that empower our colleagues to rapidly deliver products to market, as well as monitor and deploy software updates across the globe to over 200+ data centers. You’ll experience the full breadth of technologies needed to run one of the world’s largest networks serving the world's largest customers such as Shopify and VISA.</span></p>
-<p><strong>About The Team</strong></p>
-<p><span style="font-weight: 400;">Cloudflare’s Front Line (FL) group is responsible for maintaining and developing the main Cloudflare web server, processing over 60 million HTTP requests per second. In other words, we own the largest web server in the world.</span></p>
-<p><span style="font-weight: 400;">The Product Team is responsible for creating new customer-facing features, improving efficiency &amp; safety, and building the next iteration of Cloudflare products. The platform is a mix of open source systems such as NGINX with modules in Lua and Rust, and most of our API is in Golang.</span></p>
-<p><strong>What you'll do</strong></p>
-<p><span style="font-weight: 400;">You will work with a team of talented engineers to create new features to increase the availability, safety &amp; reliability of the edge ecosystem. You will improve current features, create new systems from scratch, and collaborate with platform teams to help to build the best web server in the world.&nbsp;</span></p>
-<p><span style="font-weight: 400;">This is a unique opportunity to be at the nexus of Cloudflare edge applications and operations and to collaborate closely with most other product and engineering teams at Cloudflare.&nbsp;</span></p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h1><span style="font-weight: 400;">Sr. Software Development Engineer in Test (SDET) for Zero Trust Clients</span></h1>
+<h2><span style="font-weight: 400;">What you’ll do</span></h2>
+<p><span style="font-weight: 400;">The Zero Trust team is looking for an SDET/Automation Engineer with a </span><strong>strong experience</strong><span style="font-weight: 400;"> working with </span><strong>desktop and mobile applications</strong><span style="font-weight: 400;">.</span></p>
+<p><span style="font-weight: 400;">As an SDET/Automation Engineer, you will help us set up, improve, and maintain our </span><strong>end-to-end (E2E) testing automation</strong><span style="font-weight: 400;"> frameworks &amp; processes to enable the teams to </span><strong>guarantee the quality and reliability</strong><span style="font-weight: 400;"> of their apps. You will work closely with our client teams to define and refine our </span><strong>approach to testing automation</strong><span style="font-weight: 400;">, and drive the direction of our testing strategy to ensure the reliable and scalable testing of our software.</span></p>
+<p><span style="font-weight: 400;">We expect you to be a T-shaped engineer, who is just as capable of writing high-quality, low-complexity code for test automation (e.g. E2E testing framework), as you are setting up and managing test infrastructure (e.g. integration with CI/CD platforms or VM orchestration). You will also be expected to use your passion and extensive testing experience to advocate for and instill best testing practice in the team.</span></p>
+<h2><span style="font-weight: 400;">Examples of desirable skills, knowledge, and experience</span></h2>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in performance engineering</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Driving communication and consensus across teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A drive for continuous improvement when it comes to both operations and new product development</span></li>
+	<li style="font-weight: 400;"><strong>Excellent</strong><span style="font-weight: 400;"> </span><strong>programming skills</strong><span style="font-weight: 400;">, with experience writing high-quality, highly-documented, low-complexity code</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Empathetic, proactive, and constructive </span><strong>communication skills</strong><span style="font-weight: 400;">, verbal and written</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficiency in one or more common </span><strong>cross-platform scripting</strong><span style="font-weight: 400;"> </span><strong>language</strong><span style="font-weight: 400;"> (Python, PowerShell, etc.)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid experience working on </span><strong>E2E automation frameworks</strong><span style="font-weight: 400;">, as well as automation frameworks (e.g. Robot Framework, Gauge, Appium)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with DevOps, specifically managing</span><strong> CI/CD infrastructure</strong><span style="font-weight: 400;"> and including testing automation in the SDLC process</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with automated </span><strong>E2E testing of network-based apps</strong><span style="font-weight: 400;">, especially VPNs (e.g. DNS, protocols, throttling, packet loss, etc.)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrable experience working on </span><strong>multi-platform client automation</strong></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good knowledge of macOS, Windows, and Linux platforms and their testing technologies (e.g. XCTest, XCUITests, NUnit, WinAppDriver, Appium)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience setting up or working with </span><strong>multi-platform VM orchestration</strong></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience using one or more Mobile Device Management platforms (MDMs)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Bonus: Knowledge of Go and/or Rust</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Bonus: Experience with mobile app automation (iOS and Android)</span></li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
-<p><span style="font-weight: 400;">These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</span></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience of languages: Rust, Go</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of web servers and web protocols</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Web security issues and industry standards</span></li>
-</ul>
-<p><span style="font-weight: 400;">Most importantly, we are looking for people who want to learn something new. We maintain the largest web server in the world, and we face unique challenges. You will be collaborating and designing innovative solutions to improve the life of millions of people around the globe, everywhere they are, whatever their needs are.</span></p>
-<p><span style="font-weight: 400;">Join and help us build a better Internet!</span></p>
-<p><span style="font-weight: 400;">NOTE: We have offices in Paris, Lisbon, Amsterdam, Munich, and London. We are happy with remote working in any of these countries: UK, Portugal, Germany, Netherlands.</span></p>
+<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

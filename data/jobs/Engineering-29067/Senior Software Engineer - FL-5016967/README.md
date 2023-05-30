@@ -8,10 +8,10 @@
 <h3><strong>About Engineering at Cloudflare</strong></h3>
 <p><span style="font-weight: 400;">Cloudflare’s Engineering team is responsible for the software platform that serves 28 million HTTP requests per second on average. We also build and run the tools that empower our colleagues to rapidly deliver products to market, as well as monitor and deploy software updates across the globe to over 200+ data centers. You’ll experience the full breadth of technologies needed to run one of the world’s largest networks serving the world's largest customers such as Shopify and VISA.</span></p>
 <p><strong>About The Team</strong></p>
-<p><span style="font-weight: 400;">Cloudflare’s Front Line (FL) group is responsible for maintaining the main Cloudflare web server, processing over 60 million HTTP requests per second. In other words, we own the largest web server in the world.</span></p>
-<p><span style="font-weight: 400;">The Platform Team is responsible for improving efficiency &amp; safety, deployment frequency and automation &amp; observability. The platform is a mix of open source systems such as NGINX with modules in Lua and Rust.</span></p>
+<p><span style="font-weight: 400;">Cloudflare’s Front Line (FL) group is responsible for maintaining and developing the main Cloudflare web server, processing over 60 million HTTP requests per second. In other words, we own the largest web server in the world.</span></p>
+<p><span style="font-weight: 400;">The Product Team is responsible for creating new customer-facing features, improving efficiency &amp; safety, and building the next iteration of Cloudflare products. The platform is a mix of open source systems such as NGINX with modules in Lua and Rust, and most of our API is in Golang.</span></p>
 <p><strong>What you'll do</strong></p>
-<p><span style="font-weight: 400;">You will work with a team of talented engineers to increase the availability, safety &amp; reliability of the edge ecosystem. You will improve the platform features, increasing reliability, availability, and security increase at the edge and help to build the best web server in the world.&nbsp;</span></p>
+<p><span style="font-weight: 400;">You will work with a team of talented engineers to create new features to increase the availability, safety &amp; reliability of the edge ecosystem. You will improve current features, create new systems from scratch, and collaborate with platform teams to help to build the best web server in the world.&nbsp;</span></p>
 <p><span style="font-weight: 400;">This is a unique opportunity to be at the nexus of Cloudflare edge applications and operations and to collaborate closely with most other product and engineering teams at Cloudflare.&nbsp;</span></p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
@@ -23,8 +23,8 @@
 <h4><strong>Bonus Points</strong></h4>
 <p><span style="font-weight: 400;">These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience of languages: Rust, Go, C, C++</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of web servers (we are currently using NGINX) and web protocols</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience of languages: Rust, Go</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of web servers and web protocols</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Distributed systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Web security issues and industry standards</span></li>
 </ul>

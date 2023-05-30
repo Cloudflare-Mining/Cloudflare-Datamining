@@ -5,32 +5,23 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>About Engineering at Cloudflare</strong></h3>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering team is responsible for the software platform that serves 28 million HTTP requests per second on average. We also build and run the tools that empower our colleagues to rapidly deliver products to market, as well as monitor and deploy software updates across the globe to over 200+ data centers. You’ll experience the full breadth of technologies needed to run one of the world’s largest networks serving the world's largest customers such as Shopify and VISA.</span></p>
-<p><strong>About The Team</strong></p>
-<p><span style="font-weight: 400;">Cloudflare’s Front Line (FL) group is responsible for maintaining and developing the main Cloudflare web server, processing over 60 million HTTP requests per second. In other words, we own the largest web server in the world.</span></p>
-<p><span style="font-weight: 400;">The Product Team is responsible for creating new customer-facing features, improving efficiency &amp; safety, and building the next iteration of Cloudflare products. The platform is a mix of open source systems such as NGINX with modules in Lua and Rust, and most of our API is in Golang.</span></p>
-<p><strong>What you'll do</strong></p>
-<p><span style="font-weight: 400;">You will work with a team of talented engineers to create new features to increase the availability, safety &amp; reliability of the edge ecosystem. You will improve current features, create new systems from scratch, and collaborate with platform teams to help to build the best web server in the world.&nbsp;</span></p>
-<p><span style="font-weight: 400;">This is a unique opportunity to be at the nexus of Cloudflare edge applications and operations and to collaborate closely with most other product and engineering teams at Cloudflare.&nbsp;</span></p>
+<p><strong>About the Department</strong><br>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p><strong>What you'll do</strong><br>This is a newly found team focused on building out new interactions between Cache and Databases at the Cloudflare edge. In this role, you will work with a top-notch engineering team to expand Cloudflare's capabilities by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in performance engineering</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Driving communication and consensus across teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A drive for continuous improvement when it comes to both operations and new product development</span></li>
+	<li>Minimum 5 years experience working with distributed systems or developing on cloud platforms.</li>
+	<li>Experience managing high volume software applications.</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Java, C#, Rust, or C++.</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
-<p><span style="font-weight: 400;">These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</span></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience of languages: Rust, Go</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of web servers and web protocols</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Web security issues and industry standards</span></li>
+	<li>Previous experience working on database internals such as a SQL query planner.</li>
+	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly.</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in a large-scale Linux-based distributed system</li>
 </ul>
-<p><span style="font-weight: 400;">Most importantly, we are looking for people who want to learn something new. We maintain the largest web server in the world, and we face unique challenges. You will be collaborating and designing innovative solutions to improve the life of millions of people around the globe, everywhere they are, whatever their needs are.</span></p>
-<p><span style="font-weight: 400;">Join and help us build a better Internet!</span></p>
-<p><span style="font-weight: 400;">NOTE: We have offices in Paris, Lisbon, Amsterdam, Munich, and London. We are happy with remote working in any of these countries: UK, Portugal, Germany, Netherlands.</span></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
