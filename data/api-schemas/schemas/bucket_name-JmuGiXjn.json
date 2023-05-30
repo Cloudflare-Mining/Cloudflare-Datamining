@@ -1,0 +1,6 @@
+{
+	"description": "Name of the bucket. The name must be greater than 2 and less than 64 characters.",
+	"example": "example-bucket",
+	"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+	"type": "string"
+}

@@ -1,10 +1,10 @@
 {
-	"description": "Type of webhook endpoint.",
+	"default": "legacy_custom",
+	"description": "The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake.",
 	"enum": [
-		"slack",
-		"generic",
-		"gchat"
+		"legacy_custom",
+		"sni_custom"
 	],
-	"example": "slack",
+	"example": "sni_custom",
 	"type": "string"
 }

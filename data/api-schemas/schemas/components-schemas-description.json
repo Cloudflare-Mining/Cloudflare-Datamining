@@ -1,5 +1,6 @@
 {
-	"description": "A short summary of domains in the category.",
-	"example": "Sites related to educational content that are not included in other categories like Science, Technology or Educational institutions.",
+	"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
+	"example": "Prevent multiple login failures to mitigate brute force attacks",
+	"maxLength": 1024,
 	"type": "string"
 }

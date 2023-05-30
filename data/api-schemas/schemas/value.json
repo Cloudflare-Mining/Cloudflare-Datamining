@@ -1,5 +1,9 @@
 {
-	"description": "The value of the item in a List.",
-	"example": "8GE8721REF",
+	"description": "Enables Tiered Caching.",
+	"enum": [
+		"on",
+		"off"
+	],
+	"example": "on",
 	"type": "string"
 }

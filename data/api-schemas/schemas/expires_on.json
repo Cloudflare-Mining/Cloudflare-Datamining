@@ -1,6 +1,7 @@
 {
-	"description": "The expiration time on or after which the JWT MUST NOT be accepted for processing.",
-	"example": "2020-01-01T00:00:00Z",
+	"description": "When the certificate from the authority expires.",
+	"example": "2016-01-01T05:20:00Z",
 	"format": "date-time",
+	"readOnly": true,
 	"type": "string"
 }

@@ -1,10 +1,9 @@
 {
-	"description": "Determines type of delivery mechanism.",
+	"description": "The type of characteristic.",
 	"enum": [
-		"email",
-		"pagerduty",
-		"webhook"
+		"header",
+		"cookie"
 	],
-	"example": "email",
+	"example": "header",
 	"type": "string"
 }

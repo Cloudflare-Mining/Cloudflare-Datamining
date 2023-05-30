@@ -473,7 +473,7 @@
 													"roles": {
 														"description": "Roles assigned to this Member.",
 														"items": {
-															"$ref": "#/components/schemas/schemas-role-OQc7CFLg"
+															"$ref": "#/components/schemas/schemas-role-EWy7iUxM"
 														},
 														"type": "array"
 													},
@@ -724,7 +724,7 @@
 												"roles": {
 													"description": "Roles assigned to this member.",
 													"items": {
-														"$ref": "#/components/schemas/role"
+														"$ref": "#/components/schemas/role-svML2Msq"
 													},
 													"type": "array"
 												},
@@ -1013,7 +1013,7 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/member"
+													"$ref": "#/components/schemas/member-RSLRJptx"
 												},
 												{
 													"properties": {
@@ -1220,16 +1220,13 @@
 						"allOf": [
 							{
 								"properties": {
-									"code": {
-										"$ref": "#/components/schemas/code"
-									},
 									"id": {
 										"$ref": "#/components/schemas/membership_components-schemas-identifier"
 									},
 									"roles": {
 										"description": "Roles assigned to this member.",
 										"items": {
-											"$ref": "#/components/schemas/role-wlPPG5MH"
+											"$ref": "#/components/schemas/role-svML2Msq"
 										},
 										"type": "array"
 									},
@@ -1314,7 +1311,7 @@
 												"roles": {
 													"description": "Roles assigned to this member.",
 													"items": {
-														"$ref": "#/components/schemas/role"
+														"$ref": "#/components/schemas/role-svML2Msq"
 													},
 													"type": "array"
 												},

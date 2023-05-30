@@ -1,5 +1,10 @@
 {
-	"description": "The name of the Rule.",
-	"example": "block bad websites",
-	"type": "string"
+	"description": "The unique component.",
+	"enum": [
+		"zones",
+		"page_rules",
+		"dedicated_certificates",
+		"dedicated_certificates_custom"
+	],
+	"example": "page_rules"
 }

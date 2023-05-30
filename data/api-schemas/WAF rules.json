@@ -166,13 +166,13 @@
 											"items": {
 												"oneOf": [
 													{
-														"$ref": "#/components/schemas/anomaly_rule"
+														"$ref": "#/components/schemas/anomaly_rule-sFzoMuDQ"
 													},
 													{
-														"$ref": "#/components/schemas/traditional_deny_rule"
+														"$ref": "#/components/schemas/traditional_deny_rule-wv6Mr8gh"
 													},
 													{
-														"$ref": "#/components/schemas/traditional_allow_rule"
+														"$ref": "#/components/schemas/traditional_allow_rule-uFh2bu4M"
 													}
 												],
 												"type": "object"
@@ -220,13 +220,13 @@
 													"items": {
 														"oneOf": [
 															{
-																"$ref": "#/components/schemas/anomaly_rule"
+																"$ref": "#/components/schemas/anomaly_rule-sFzoMuDQ"
 															},
 															{
-																"$ref": "#/components/schemas/traditional_deny_rule"
+																"$ref": "#/components/schemas/traditional_deny_rule-wv6Mr8gh"
 															},
 															{
-																"$ref": "#/components/schemas/traditional_allow_rule"
+																"$ref": "#/components/schemas/traditional_allow_rule-uFh2bu4M"
 															}
 														],
 														"type": "object"
@@ -689,7 +689,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/base"
+																	"$ref": "#/components/schemas/base-vF0mTueN"
 																}
 															]
 														},
@@ -736,29 +736,29 @@
 														{
 															"properties": {
 																"description": {
-																	"$ref": "#/components/schemas/schemas-description-E3hK36kP"
+																	"$ref": "#/components/schemas/schemas-description-VmVgRLsp"
 																},
 																"group": {
 																	"description": "The rule group to which the current WAF rule belongs.",
 																	"properties": {
 																		"id": {
-																			"$ref": "#/components/schemas/components-schemas-identifier"
+																			"$ref": "#/components/schemas/components-schemas-identifier-LZNtdN0J"
 																		},
 																		"name": {
-																			"$ref": "#/components/schemas/name-NFzaaQuF"
+																			"$ref": "#/components/schemas/name-s3uzomdR"
 																		}
 																	},
 																	"readOnly": true,
 																	"type": "object"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/rule_components-schemas-identifier"
+																	"$ref": "#/components/schemas/rule_components-schemas-identifier-eugKuaUc"
 																},
 																"package_id": {
-																	"$ref": "#/components/schemas/identifier-pWt55MLP"
+																	"$ref": "#/components/schemas/identifier-ANkAWkSk"
 																},
 																"priority": {
-																	"$ref": "#/components/schemas/priority"
+																	"$ref": "#/components/schemas/priority-po2XZNfs"
 																}
 															}
 														},
@@ -823,29 +823,29 @@
 														{
 															"properties": {
 																"description": {
-																	"$ref": "#/components/schemas/schemas-description-E3hK36kP"
+																	"$ref": "#/components/schemas/schemas-description-VmVgRLsp"
 																},
 																"group": {
 																	"description": "The rule group to which the current WAF rule belongs.",
 																	"properties": {
 																		"id": {
-																			"$ref": "#/components/schemas/components-schemas-identifier"
+																			"$ref": "#/components/schemas/components-schemas-identifier-LZNtdN0J"
 																		},
 																		"name": {
-																			"$ref": "#/components/schemas/name-NFzaaQuF"
+																			"$ref": "#/components/schemas/name-s3uzomdR"
 																		}
 																	},
 																	"readOnly": true,
 																	"type": "object"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/rule_components-schemas-identifier"
+																	"$ref": "#/components/schemas/rule_components-schemas-identifier-eugKuaUc"
 																},
 																"package_id": {
-																	"$ref": "#/components/schemas/identifier-pWt55MLP"
+																	"$ref": "#/components/schemas/identifier-ANkAWkSk"
 																},
 																"priority": {
-																	"$ref": "#/components/schemas/priority"
+																	"$ref": "#/components/schemas/priority-po2XZNfs"
 																}
 															}
 														},
@@ -948,7 +948,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/base"
+																			"$ref": "#/components/schemas/base-vF0mTueN"
 																		}
 																	]
 																},
@@ -995,29 +995,29 @@
 																{
 																	"properties": {
 																		"description": {
-																			"$ref": "#/components/schemas/schemas-description-E3hK36kP"
+																			"$ref": "#/components/schemas/schemas-description-VmVgRLsp"
 																		},
 																		"group": {
 																			"description": "The rule group to which the current WAF rule belongs.",
 																			"properties": {
 																				"id": {
-																					"$ref": "#/components/schemas/components-schemas-identifier"
+																					"$ref": "#/components/schemas/components-schemas-identifier-LZNtdN0J"
 																				},
 																				"name": {
-																					"$ref": "#/components/schemas/name-NFzaaQuF"
+																					"$ref": "#/components/schemas/name-s3uzomdR"
 																				}
 																			},
 																			"readOnly": true,
 																			"type": "object"
 																		},
 																		"id": {
-																			"$ref": "#/components/schemas/rule_components-schemas-identifier"
+																			"$ref": "#/components/schemas/rule_components-schemas-identifier-eugKuaUc"
 																		},
 																		"package_id": {
-																			"$ref": "#/components/schemas/identifier-pWt55MLP"
+																			"$ref": "#/components/schemas/identifier-ANkAWkSk"
 																		},
 																		"priority": {
-																			"$ref": "#/components/schemas/priority"
+																			"$ref": "#/components/schemas/priority-po2XZNfs"
 																		}
 																	}
 																},
@@ -1082,29 +1082,29 @@
 																{
 																	"properties": {
 																		"description": {
-																			"$ref": "#/components/schemas/schemas-description-E3hK36kP"
+																			"$ref": "#/components/schemas/schemas-description-VmVgRLsp"
 																		},
 																		"group": {
 																			"description": "The rule group to which the current WAF rule belongs.",
 																			"properties": {
 																				"id": {
-																					"$ref": "#/components/schemas/components-schemas-identifier"
+																					"$ref": "#/components/schemas/components-schemas-identifier-LZNtdN0J"
 																				},
 																				"name": {
-																					"$ref": "#/components/schemas/name-NFzaaQuF"
+																					"$ref": "#/components/schemas/name-s3uzomdR"
 																				}
 																			},
 																			"readOnly": true,
 																			"type": "object"
 																		},
 																		"id": {
-																			"$ref": "#/components/schemas/rule_components-schemas-identifier"
+																			"$ref": "#/components/schemas/rule_components-schemas-identifier-eugKuaUc"
 																		},
 																		"package_id": {
-																			"$ref": "#/components/schemas/identifier-pWt55MLP"
+																			"$ref": "#/components/schemas/identifier-ANkAWkSk"
 																		},
 																		"priority": {
-																			"$ref": "#/components/schemas/priority"
+																			"$ref": "#/components/schemas/priority-po2XZNfs"
 																		}
 																	}
 																},

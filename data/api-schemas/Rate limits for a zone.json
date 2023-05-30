@@ -338,7 +338,7 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/ratelimit-lafBSIAN"
+														"$ref": "#/components/schemas/ratelimit"
 													}
 												],
 												"type": "object"
@@ -387,7 +387,7 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/ratelimit-lafBSIAN"
+																"$ref": "#/components/schemas/ratelimit"
 															}
 														],
 														"type": "object"

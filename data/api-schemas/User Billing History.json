@@ -116,7 +116,7 @@
 											"items": {
 												"properties": {
 													"action": {
-														"$ref": "#/components/schemas/action-GrisPxOz"
+														"$ref": "#/components/schemas/action"
 													},
 													"amount": {
 														"$ref": "#/components/schemas/amount"
@@ -125,16 +125,16 @@
 														"$ref": "#/components/schemas/currency"
 													},
 													"description": {
-														"$ref": "#/components/schemas/description-vX2NajFV"
+														"$ref": "#/components/schemas/schemas-description"
 													},
 													"id": {
-														"$ref": "#/components/schemas/components-schemas-identifier-X0VgF1L9"
+														"$ref": "#/components/schemas/billing-history_components-schemas-identifier"
 													},
 													"occurred_at": {
 														"$ref": "#/components/schemas/occurred_at"
 													},
 													"type": {
-														"$ref": "#/components/schemas/type-CNmCCOwI"
+														"$ref": "#/components/schemas/type-F9LSLyLi"
 													},
 													"zone": {
 														"$ref": "#/components/schemas/schemas-zone"
@@ -195,7 +195,7 @@
 													"items": {
 														"properties": {
 															"action": {
-																"$ref": "#/components/schemas/action-GrisPxOz"
+																"$ref": "#/components/schemas/action"
 															},
 															"amount": {
 																"$ref": "#/components/schemas/amount"
@@ -204,16 +204,16 @@
 																"$ref": "#/components/schemas/currency"
 															},
 															"description": {
-																"$ref": "#/components/schemas/description-vX2NajFV"
+																"$ref": "#/components/schemas/schemas-description"
 															},
 															"id": {
-																"$ref": "#/components/schemas/components-schemas-identifier-X0VgF1L9"
+																"$ref": "#/components/schemas/billing-history_components-schemas-identifier"
 															},
 															"occurred_at": {
 																"$ref": "#/components/schemas/occurred_at"
 															},
 															"type": {
-																"$ref": "#/components/schemas/type-CNmCCOwI"
+																"$ref": "#/components/schemas/type-F9LSLyLi"
 															},
 															"zone": {
 																"$ref": "#/components/schemas/schemas-zone"

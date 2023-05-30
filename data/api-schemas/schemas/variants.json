@@ -1,35 +1,38 @@
 {
-	"description": "Object specifying available variants for an image.",
-	"example": [
-		"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
-		"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
-		"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original"
-	],
-	"items": {
-		"anyOf": [
-			{
-				"description": "URI to thumbnail variant for an image.",
-				"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
-				"format": "uri",
-				"readOnly": true,
-				"type": "string"
+	"allOf": [
+		{
+			"properties": {
+				"id": {
+					"description": "Identifier of the zone setting.",
+					"example": "development_mode",
+					"type": "string"
+				},
+				"modified_on": {
+					"description": "last time this setting was modified.",
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"nullable": true,
+					"readOnly": true,
+					"type": "string"
+				}
 			},
-			{
-				"description": "URI to hero variant for an image.",
-				"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
-				"format": "uri",
-				"readOnly": true,
-				"type": "string"
-			},
-			{
-				"description": "URI to original variant for an image.",
-				"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
-				"format": "uri",
-				"readOnly": true,
-				"type": "string"
+			"required": [
+				"id",
+				"modified_on"
+			]
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"variants"
+					],
+					"example": "variants"
+				}
 			}
-		]
-	},
-	"readOnly": true,
-	"type": "array"
+		}
+	],
+	"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
+	"title": "Variants Caching"
 }

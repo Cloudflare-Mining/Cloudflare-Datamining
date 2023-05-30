@@ -1,5 +1,7 @@
 {
-	"description": "The description of the Rule.",
-	"example": "Block the bad websites based on host name",
+	"description": "The billing item description.",
+	"example": "The billing item description",
+	"maxLength": 255,
+	"readOnly": true,
 	"type": "string"
 }

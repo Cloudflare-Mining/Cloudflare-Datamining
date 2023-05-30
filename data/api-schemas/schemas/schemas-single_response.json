@@ -87,7 +87,8 @@
 								{
 									"type": "string"
 								}
-							]
+							],
+							"nullable": true
 						}
 					}
 				}
@@ -97,58 +98,76 @@
 		{
 			"properties": {
 				"result": {
-					"properties": {
-						"client_default": {
-							"description": "Set if the location is the default one.",
-							"example": false,
-							"type": "boolean"
-						},
-						"created_at": {
-							"example": "2014-01-01T05:20:00.12345Z",
-							"format": "date-time",
-							"readOnly": true,
-							"type": "string"
-						},
-						"doh_subdomain": {
-							"description": "The DNS Over HTTPS domain to send DNS requests to. (auto-generated).",
-							"example": "oli3n9zkz5",
-							"type": "string"
-						},
-						"ecs_support": {
-							"description": "Set if the location needs to resolve EDNS queries.",
-							"example": false,
-							"type": "boolean"
-						},
-						"id": {
-							"example": "ed35569b41ce4d1facfe683550f54086"
-						},
-						"ip": {
-							"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. (auto-generated).",
-							"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
-							"type": "string"
-						},
-						"name": {
-							"description": "The name of the Location.",
-							"example": "Austin Office Location",
-							"type": "string"
-						},
-						"networks": {
-							"description": "A list of network ranges that requests from this location would originate from.",
-							"items": {
-								"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
-								"example": "192.0.2.1/32",
-								"type": "string"
+					"allOf": [
+						{
+							"properties": {
+								"endpoint": {
+									"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+									"example": "/api/v1/users/{var1}",
+									"format": "uri-template",
+									"maxLength": 4096,
+									"pattern": "^/.*$",
+									"type": "string"
+								},
+								"features": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/thresholds"
+										},
+										{
+											"$ref": "#/components/schemas/parameter_schemas"
+										}
+									],
+									"readOnly": true,
+									"type": "object"
+								},
+								"host": {
+									"description": "RFC3986-compliant host.",
+									"example": "www.example.com",
+									"format": "hostname",
+									"maxLength": 255,
+									"type": "string"
+								},
+								"last_updated": {
+									"example": "2014-01-01T05:20:00.12345Z",
+									"format": "date-time",
+									"readOnly": true,
+									"type": "string"
+								},
+								"method": {
+									"description": "The HTTP method used to access the endpoint.",
+									"enum": [
+										"GET",
+										"POST",
+										"HEAD",
+										"OPTIONS",
+										"PUT",
+										"DELETE",
+										"CONNECT",
+										"PATCH",
+										"TRACE"
+									],
+									"example": "GET",
+									"type": "string"
+								},
+								"operation_id": {
+									"description": "UUID",
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+									"maxLength": 36,
+									"readOnly": true,
+									"type": "string"
+								}
 							},
-							"type": "array"
-						},
-						"updated_at": {
-							"example": "2014-01-01T05:20:00.12345Z",
-							"format": "date-time",
-							"readOnly": true,
-							"type": "string"
+							"required": [
+								"operation_id",
+								"method",
+								"host",
+								"endpoint",
+								"last_updated"
+							],
+							"type": "object"
 						}
-					},
-					"type": "object"
+					]
 				}
 			}
 		}
