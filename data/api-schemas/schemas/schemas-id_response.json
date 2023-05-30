@@ -87,7 +87,8 @@
 								{
 									"type": "string"
 								}
-							]
+							],
+							"nullable": true
 						}
 					}
 				}
@@ -99,11 +100,7 @@
 				"result": {
 					"properties": {
 						"id": {
-							"description": "The ID of the CA.",
-							"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
-							"maxLength": 48,
-							"readOnly": true,
-							"type": "string"
+							"example": "17b5962d775c646f3f9725cbc7a53df4"
 						}
 					},
 					"type": "object"

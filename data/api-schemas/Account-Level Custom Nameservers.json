@@ -208,9 +208,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Account Custom Nameserver",
@@ -303,6 +300,9 @@
 													"ns_name": {
 														"$ref": "#/components/schemas/ns_name"
 													},
+													"ns_set": {
+														"$ref": "#/components/schemas/ns_set"
+													},
 													"status": {
 														"deprecated": true,
 														"description": "Verification status of the nameserver.",
@@ -394,6 +394,9 @@
 															},
 															"ns_name": {
 																"$ref": "#/components/schemas/ns_name"
+															},
+															"ns_set": {
+																"$ref": "#/components/schemas/ns_set"
 															},
 															"status": {
 																"deprecated": true,
@@ -520,9 +523,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Account Custom Nameservers",
@@ -743,9 +743,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Eligible Zones for Account Custom Nameservers",
@@ -790,6 +787,14 @@
 								"example": "ns1.example.com",
 								"format": "hostname",
 								"type": "string"
+							},
+							"ns_set": {
+								"default": 1,
+								"description": "The number of the set that this name server belongs to.",
+								"example": 1,
+								"maximum": 5,
+								"minimum": 1,
+								"type": "number"
 							}
 						},
 						"required": [
@@ -822,8 +827,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -859,6 +863,9 @@
 												},
 												"ns_name": {
 													"$ref": "#/components/schemas/ns_name"
+												},
+												"ns_set": {
+													"$ref": "#/components/schemas/ns_set"
 												},
 												"status": {
 													"deprecated": true,
@@ -914,8 +921,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -951,6 +957,9 @@
 														},
 														"ns_name": {
 															"$ref": "#/components/schemas/ns_name"
+														},
+														"ns_set": {
+															"$ref": "#/components/schemas/ns_set"
 														},
 														"status": {
 															"deprecated": true,
@@ -1075,9 +1084,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Add Account Custom Nameserver",
@@ -1176,6 +1182,9 @@
 													"ns_name": {
 														"$ref": "#/components/schemas/ns_name"
 													},
+													"ns_set": {
+														"$ref": "#/components/schemas/ns_set"
+													},
 													"status": {
 														"deprecated": true,
 														"description": "Verification status of the nameserver.",
@@ -1267,6 +1276,9 @@
 															},
 															"ns_name": {
 																"$ref": "#/components/schemas/ns_name"
+															},
+															"ns_set": {
+																"$ref": "#/components/schemas/ns_set"
 															},
 															"status": {
 																"deprecated": true,
@@ -1393,9 +1405,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Verify Account Custom Nameserver Glue Records",

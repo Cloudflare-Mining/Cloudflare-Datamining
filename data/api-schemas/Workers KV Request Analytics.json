@@ -380,7 +380,7 @@
 				},
 				"description": "Query Request Analytics response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -690,9 +690,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Query Request Analytics",

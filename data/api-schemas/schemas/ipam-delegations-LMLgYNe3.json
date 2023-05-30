@@ -1,0 +1,42 @@
+{
+	"properties": {
+		"cidr": {
+			"description": "IP Prefix in Classless Inter-Domain Routing format.",
+			"example": "192.0.2.0/24",
+			"type": "string"
+		},
+		"created_at": {
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"delegated_account_id": {
+			"description": "Account identifier for the account to which prefix is being delegated.",
+			"example": "b1946ac92492d2347c6235b4d2611184",
+			"maxLength": 32,
+			"type": "string"
+		},
+		"id": {
+			"description": "Delegation identifier tag.",
+			"example": "d933b1530bc56c9953cf8ce166da8004",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
+		},
+		"modified_at": {
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"parent_prefix_id": {
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

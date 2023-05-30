@@ -1,6 +1,6 @@
 {
-	"description": "The email address of the authenticating user.",
+	"description": "The contact email address of the user.",
 	"example": "user@example.com",
-	"format": "email",
+	"maxLength": 90,
 	"type": "string"
 }

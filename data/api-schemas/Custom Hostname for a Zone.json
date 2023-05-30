@@ -7,10 +7,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Custom hostname identifier tag.",
-					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
-					"maxLength": 36,
-					"minLength": 36,
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -41,10 +40,9 @@
 						"schema": {
 							"properties": {
 								"id": {
-									"description": "Custom hostname identifier tag.",
-									"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
-									"maxLength": 36,
-									"minLength": 36,
+									"description": "Identifier",
+									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+									"maxLength": 32,
 									"readOnly": true,
 									"type": "string"
 								}
@@ -63,10 +61,9 @@
 								{
 									"properties": {
 										"id": {
-											"description": "Custom hostname identifier tag.",
-											"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
-											"maxLength": 36,
-											"minLength": 36,
+											"description": "Identifier",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
 											"readOnly": true,
 											"type": "string"
 										}
@@ -317,7 +314,7 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/customhostname-g6zj7hNH"
+														"$ref": "#/components/schemas/customhostname-u2p20gHQ"
 													}
 												],
 												"properties": {
@@ -325,10 +322,10 @@
 														"$ref": "#/components/schemas/hostname"
 													},
 													"id": {
-														"$ref": "#/components/schemas/custom-hostname_components-schemas-identifier"
+														"$ref": "#/components/schemas/identifier"
 													},
 													"ssl": {
-														"$ref": "#/components/schemas/ssl-8N1Ka0hh"
+														"$ref": "#/components/schemas/ssl-uIcTOYSS"
 													}
 												},
 												"required": [
@@ -381,7 +378,7 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/customhostname-g6zj7hNH"
+																"$ref": "#/components/schemas/customhostname-u2p20gHQ"
 															}
 														],
 														"properties": {
@@ -389,10 +386,10 @@
 																"$ref": "#/components/schemas/hostname"
 															},
 															"id": {
-																"$ref": "#/components/schemas/custom-hostname_components-schemas-identifier"
+																"$ref": "#/components/schemas/identifier"
 															},
 															"ssl": {
-																"$ref": "#/components/schemas/ssl-8N1Ka0hh"
+																"$ref": "#/components/schemas/ssl-uIcTOYSS"
 															}
 														},
 														"required": [
@@ -532,10 +529,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Custom hostname identifier tag.",
-					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
-					"maxLength": 36,
-					"minLength": 36,
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -585,6 +581,32 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/customhostname-u2p20gHQ"
+														}
+													],
+													"properties": {
+														"hostname": {
+															"$ref": "#/components/schemas/hostname"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"ssl": {
+															"$ref": "#/components/schemas/ssl-uIcTOYSS"
+														}
+													},
+													"required": [
+														"id",
+														"hostname",
+														"ssl"
+													],
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									}
@@ -628,6 +650,32 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/customhostname-u2p20gHQ"
+																}
+															],
+															"properties": {
+																"hostname": {
+																	"$ref": "#/components/schemas/hostname"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/identifier"
+																},
+																"ssl": {
+																	"$ref": "#/components/schemas/ssl-uIcTOYSS"
+																}
+															},
+															"required": [
+																"id",
+																"hostname",
+																"ssl"
+															],
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											}
@@ -759,10 +807,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Custom hostname identifier tag.",
-					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
-					"maxLength": 36,
-					"minLength": 36,
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -825,6 +872,16 @@
 													"force"
 												],
 												"example": "ubiquitous",
+												"type": "string"
+											},
+											"certificate_authority": {
+												"description": "The Certificate Authority that will issue the certificate",
+												"enum": [
+													"digicert",
+													"google",
+													"lets_encrypt"
+												],
+												"example": "google",
 												"type": "string"
 											},
 											"custom_certificate": {
@@ -903,8 +960,7 @@
 												"enum": [
 													"dv"
 												],
-												"example": "dv",
-												"readOnly": true
+												"example": "dv"
 											},
 											"wildcard": {
 												"description": "Indicates whether the certificate covers a wildcard.",
@@ -956,6 +1012,32 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/customhostname-u2p20gHQ"
+														}
+													],
+													"properties": {
+														"hostname": {
+															"$ref": "#/components/schemas/hostname"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"ssl": {
+															"$ref": "#/components/schemas/ssl-uIcTOYSS"
+														}
+													},
+													"required": [
+														"id",
+														"hostname",
+														"ssl"
+													],
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									}
@@ -999,6 +1081,32 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/customhostname-u2p20gHQ"
+																}
+															],
+															"properties": {
+																"hostname": {
+																	"$ref": "#/components/schemas/hostname"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/identifier"
+																},
+																"ssl": {
+																	"$ref": "#/components/schemas/ssl-uIcTOYSS"
+																}
+															},
+															"required": [
+																"id",
+																"hostname",
+																"ssl"
+															],
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											}
@@ -1163,7 +1271,6 @@
 								"description": "The custom hostname that will point to your hostname via CNAME.",
 								"example": "app.example.com",
 								"maxLength": 255,
-								"readOnly": true,
 								"type": "string"
 							},
 							"ssl": {
@@ -1180,6 +1287,16 @@
 													"force"
 												],
 												"example": "ubiquitous",
+												"type": "string"
+											},
+											"certificate_authority": {
+												"description": "The Certificate Authority that will issue the certificate",
+												"enum": [
+													"digicert",
+													"google",
+													"lets_encrypt"
+												],
+												"example": "google",
 												"type": "string"
 											},
 											"custom_certificate": {
@@ -1258,8 +1375,7 @@
 												"enum": [
 													"dv"
 												],
-												"example": "dv",
-												"readOnly": true
+												"example": "dv"
 											},
 											"wildcard": {
 												"description": "Indicates whether the certificate covers a wildcard.",
@@ -1315,6 +1431,32 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"$ref": "#/components/schemas/customhostname-u2p20gHQ"
+														}
+													],
+													"properties": {
+														"hostname": {
+															"$ref": "#/components/schemas/hostname"
+														},
+														"id": {
+															"$ref": "#/components/schemas/identifier"
+														},
+														"ssl": {
+															"$ref": "#/components/schemas/ssl-uIcTOYSS"
+														}
+													},
+													"required": [
+														"id",
+														"hostname",
+														"ssl"
+													],
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									}
@@ -1358,6 +1500,32 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"$ref": "#/components/schemas/customhostname-u2p20gHQ"
+																}
+															],
+															"properties": {
+																"hostname": {
+																	"$ref": "#/components/schemas/hostname"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/identifier"
+																},
+																"ssl": {
+																	"$ref": "#/components/schemas/ssl-uIcTOYSS"
+																}
+															},
+															"required": [
+																"id",
+																"hostname",
+																"ssl"
+															],
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											}

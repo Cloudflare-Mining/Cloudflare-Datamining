@@ -462,7 +462,7 @@
 											"items": {
 												"properties": {
 													"email": {
-														"$ref": "#/components/schemas/email-DYwLFMwr"
+														"$ref": "#/components/schemas/email"
 													},
 													"id": {
 														"$ref": "#/components/schemas/common_components-schemas-identifier"
@@ -473,7 +473,7 @@
 													"roles": {
 														"description": "Roles assigned to this Member.",
 														"items": {
-															"$ref": "#/components/schemas/schemas-role-UJN4CkqG"
+															"$ref": "#/components/schemas/schemas-role-OQc7CFLg"
 														},
 														"type": "array"
 													},
@@ -734,7 +734,7 @@
 												"user": {
 													"properties": {
 														"email": {
-															"$ref": "#/components/schemas/email-kUU80fv1"
+															"$ref": "#/components/schemas/email"
 														},
 														"first_name": {
 															"$ref": "#/components/schemas/first_name"
@@ -1229,7 +1229,7 @@
 									"roles": {
 										"description": "Roles assigned to this member.",
 										"items": {
-											"$ref": "#/components/schemas/role-y9VVVjol"
+											"$ref": "#/components/schemas/role-wlPPG5MH"
 										},
 										"type": "array"
 									},
@@ -1239,7 +1239,7 @@
 									"user": {
 										"properties": {
 											"email": {
-												"$ref": "#/components/schemas/email-DYwLFMwr"
+												"$ref": "#/components/schemas/email"
 											},
 											"first_name": {
 												"$ref": "#/components/schemas/first_name"
@@ -1324,7 +1324,7 @@
 												"user": {
 													"properties": {
 														"email": {
-															"$ref": "#/components/schemas/email-kUU80fv1"
+															"$ref": "#/components/schemas/email"
 														},
 														"first_name": {
 															"$ref": "#/components/schemas/first_name"

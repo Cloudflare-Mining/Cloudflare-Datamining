@@ -7,8 +7,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Keyless certificate identifier tag.",
-					"example": "4d2844d2ce78891c34d0b6c0535a291e",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
@@ -67,8 +67,8 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Keyless certificate identifier tag.",
-													"example": "4d2844d2ce78891c34d0b6c0535a291e",
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
@@ -119,8 +119,8 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "Keyless certificate identifier tag.",
-															"example": "4d2844d2ce78891c34d0b6c0535a291e",
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
 															"type": "string"
@@ -297,7 +297,7 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/components-schemas-base"
+														"$ref": "#/components/schemas/base-nIM8p9V7"
 													}
 												],
 												"type": "object"
@@ -345,7 +345,7 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/components-schemas-base"
+																"$ref": "#/components/schemas/base-nIM8p9V7"
 															}
 														],
 														"type": "object"
@@ -481,8 +481,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Keyless certificate identifier tag.",
-					"example": "4d2844d2ce78891c34d0b6c0535a291e",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
@@ -533,6 +533,69 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"description": "When the Keyless SSL was created.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/enabled-iCy7y7Rw"
+														},
+														"host": {
+															"$ref": "#/components/schemas/host-WLJbN2jC"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-ihJ1OCuD"
+														},
+														"modified_on": {
+															"description": "When the Keyless SSL was last modified.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-9JnCJSmY"
+														},
+														"permissions": {
+															"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+															"example": [
+																"#ssl:read",
+																"#ssl:edit"
+															],
+															"items": {},
+															"readOnly": true,
+															"type": "array"
+														},
+														"port": {
+															"$ref": "#/components/schemas/port-Ct9N8uYY"
+														},
+														"status": {
+															"$ref": "#/components/schemas/schemas-status-IlSVg0KK"
+														},
+														"tunnel": {
+															"$ref": "#/components/schemas/keyless_tunnel"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"host",
+														"port",
+														"status",
+														"enabled",
+														"permissions",
+														"created_on",
+														"modified_on"
+													],
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									}
@@ -576,6 +639,69 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "When the Keyless SSL was created.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"enabled": {
+																	"$ref": "#/components/schemas/enabled-iCy7y7Rw"
+																},
+																"host": {
+																	"$ref": "#/components/schemas/host-WLJbN2jC"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/schemas-identifier-ihJ1OCuD"
+																},
+																"modified_on": {
+																	"description": "When the Keyless SSL was last modified.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/name-9JnCJSmY"
+																},
+																"permissions": {
+																	"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																	"example": [
+																		"#ssl:read",
+																		"#ssl:edit"
+																	],
+																	"items": {},
+																	"readOnly": true,
+																	"type": "array"
+																},
+																"port": {
+																	"$ref": "#/components/schemas/port-Ct9N8uYY"
+																},
+																"status": {
+																	"$ref": "#/components/schemas/schemas-status-IlSVg0KK"
+																},
+																"tunnel": {
+																	"$ref": "#/components/schemas/keyless_tunnel"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"host",
+																"port",
+																"status",
+																"enabled",
+																"permissions",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											}
@@ -699,7 +825,7 @@
 		}
 	},
 	"PATCH /zones/{zone_identifier}/keyless_certificates/{identifier}": {
-		"description": "This will update attributes of a Keyless SSL. Consists of one or more of the following:  host,name,port,certificate,enabled.",
+		"description": "This will update attributes of a Keyless SSL. Consists of one or more of the following:  host,name,port.",
 		"operationId": "keyless-ssl-for-a-zone-edit-keyless-ssl-configuration",
 		"parameters": [
 			{
@@ -707,8 +833,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Keyless certificate identifier tag.",
-					"example": "4d2844d2ce78891c34d0b6c0535a291e",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
@@ -733,9 +859,10 @@
 					"schema": {
 						"properties": {
 							"enabled": {
+								"deprecated": true,
 								"description": "Whether or not the Keyless SSL is on or off.",
 								"example": false,
-								"readOnly": true,
+								"name": "enabled",
 								"type": "boolean"
 							},
 							"host": {
@@ -749,15 +876,35 @@
 								"description": "The keyless SSL name.",
 								"example": "example.com Keyless SSL",
 								"maxLength": 180,
-								"readOnly": true,
+								"name": "name",
 								"type": "string"
 							},
 							"port": {
 								"default": 24008,
-								"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
+								"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
 								"example": 24008,
 								"maxLength": 65535,
 								"type": "number"
+							},
+							"tunnel": {
+								"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+								"properties": {
+									"private_ip": {
+										"description": "Private IP of the Key Server Host",
+										"example": "10.0.0.1",
+										"type": "string"
+									},
+									"vnet_id": {
+										"description": "Cloudflare Tunnel Virtual Network ID",
+										"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+										"type": "string"
+									}
+								},
+								"required": [
+									"private_ip",
+									"vnet_id"
+								],
+								"type": "object"
 							}
 						},
 						"type": "object"
@@ -798,6 +945,69 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"description": "When the Keyless SSL was created.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/enabled-iCy7y7Rw"
+														},
+														"host": {
+															"$ref": "#/components/schemas/host-WLJbN2jC"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-ihJ1OCuD"
+														},
+														"modified_on": {
+															"description": "When the Keyless SSL was last modified.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-9JnCJSmY"
+														},
+														"permissions": {
+															"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+															"example": [
+																"#ssl:read",
+																"#ssl:edit"
+															],
+															"items": {},
+															"readOnly": true,
+															"type": "array"
+														},
+														"port": {
+															"$ref": "#/components/schemas/port-Ct9N8uYY"
+														},
+														"status": {
+															"$ref": "#/components/schemas/schemas-status-IlSVg0KK"
+														},
+														"tunnel": {
+															"$ref": "#/components/schemas/keyless_tunnel"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"host",
+														"port",
+														"status",
+														"enabled",
+														"permissions",
+														"created_on",
+														"modified_on"
+													],
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									}
@@ -841,6 +1051,69 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "When the Keyless SSL was created.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"enabled": {
+																	"$ref": "#/components/schemas/enabled-iCy7y7Rw"
+																},
+																"host": {
+																	"$ref": "#/components/schemas/host-WLJbN2jC"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/schemas-identifier-ihJ1OCuD"
+																},
+																"modified_on": {
+																	"description": "When the Keyless SSL was last modified.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/name-9JnCJSmY"
+																},
+																"permissions": {
+																	"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																	"example": [
+																		"#ssl:read",
+																		"#ssl:edit"
+																	],
+																	"items": {},
+																	"readOnly": true,
+																	"type": "array"
+																},
+																"port": {
+																	"$ref": "#/components/schemas/port-Ct9N8uYY"
+																},
+																"status": {
+																	"$ref": "#/components/schemas/schemas-status-IlSVg0KK"
+																},
+																"tunnel": {
+																	"$ref": "#/components/schemas/keyless_tunnel"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"host",
+																"port",
+																"status",
+																"enabled",
+																"permissions",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											}
@@ -1011,15 +1284,35 @@
 								"description": "The keyless SSL name.",
 								"example": "example.com Keyless SSL",
 								"maxLength": 180,
-								"readOnly": true,
+								"name": "name",
 								"type": "string"
 							},
 							"port": {
 								"default": 24008,
-								"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
+								"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
 								"example": 24008,
 								"maxLength": 65535,
 								"type": "number"
+							},
+							"tunnel": {
+								"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+								"properties": {
+									"private_ip": {
+										"description": "Private IP of the Key Server Host",
+										"example": "10.0.0.1",
+										"type": "string"
+									},
+									"vnet_id": {
+										"description": "Cloudflare Tunnel Virtual Network ID",
+										"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+										"type": "string"
+									}
+								},
+								"required": [
+									"private_ip",
+									"vnet_id"
+								],
+								"type": "object"
 							}
 						},
 						"required": [
@@ -1065,6 +1358,69 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"description": "When the Keyless SSL was created.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"enabled": {
+															"$ref": "#/components/schemas/enabled-iCy7y7Rw"
+														},
+														"host": {
+															"$ref": "#/components/schemas/host-WLJbN2jC"
+														},
+														"id": {
+															"$ref": "#/components/schemas/schemas-identifier-ihJ1OCuD"
+														},
+														"modified_on": {
+															"description": "When the Keyless SSL was last modified.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"$ref": "#/components/schemas/name-9JnCJSmY"
+														},
+														"permissions": {
+															"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+															"example": [
+																"#ssl:read",
+																"#ssl:edit"
+															],
+															"items": {},
+															"readOnly": true,
+															"type": "array"
+														},
+														"port": {
+															"$ref": "#/components/schemas/port-Ct9N8uYY"
+														},
+														"status": {
+															"$ref": "#/components/schemas/schemas-status-IlSVg0KK"
+														},
+														"tunnel": {
+															"$ref": "#/components/schemas/keyless_tunnel"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"host",
+														"port",
+														"status",
+														"enabled",
+														"permissions",
+														"created_on",
+														"modified_on"
+													],
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									}
@@ -1108,6 +1464,69 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "When the Keyless SSL was created.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"enabled": {
+																	"$ref": "#/components/schemas/enabled-iCy7y7Rw"
+																},
+																"host": {
+																	"$ref": "#/components/schemas/host-WLJbN2jC"
+																},
+																"id": {
+																	"$ref": "#/components/schemas/schemas-identifier-ihJ1OCuD"
+																},
+																"modified_on": {
+																	"description": "When the Keyless SSL was last modified.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"$ref": "#/components/schemas/name-9JnCJSmY"
+																},
+																"permissions": {
+																	"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																	"example": [
+																		"#ssl:read",
+																		"#ssl:edit"
+																	],
+																	"items": {},
+																	"readOnly": true,
+																	"type": "array"
+																},
+																"port": {
+																	"$ref": "#/components/schemas/port-Ct9N8uYY"
+																},
+																"status": {
+																	"$ref": "#/components/schemas/schemas-status-IlSVg0KK"
+																},
+																"tunnel": {
+																	"$ref": "#/components/schemas/keyless_tunnel"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"host",
+																"port",
+																"status",
+																"enabled",
+																"permissions",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											}

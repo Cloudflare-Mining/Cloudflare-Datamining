@@ -272,10 +272,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props"
+																"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 															},
 															{
-																"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																"$ref": "#/components/schemas/schemas-self_hosted_props"
 															}
 														],
 														"title": "Self Hosted Application",
@@ -284,10 +284,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props"
+																"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 															},
 															{
-																"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																"$ref": "#/components/schemas/saas_props-IkJDWVLG"
 															}
 														],
 														"title": "SaaS Application",
@@ -296,10 +296,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props"
+																"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 															},
 															{
-																"$ref": "#/components/schemas/ssh_props"
+																"$ref": "#/components/schemas/schemas-ssh_props"
 															}
 														],
 														"title": "Browser SSH Application",
@@ -308,10 +308,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props"
+																"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 															},
 															{
-																"$ref": "#/components/schemas/vnc_props"
+																"$ref": "#/components/schemas/schemas-vnc_props"
 															}
 														],
 														"title": "Browser VNC Application",
@@ -320,10 +320,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props"
+																"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 															},
 															{
-																"$ref": "#/components/schemas/app_launcher_props"
+																"$ref": "#/components/schemas/schemas-app_launcher_props"
 															}
 														],
 														"title": "App Launcher Application",
@@ -332,10 +332,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props"
+																"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 															},
 															{
-																"$ref": "#/components/schemas/warp_props"
+																"$ref": "#/components/schemas/schemas-warp_props"
 															}
 														],
 														"title": "Device Enrollment Permissions Application",
@@ -344,10 +344,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props"
+																"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 															},
 															{
-																"$ref": "#/components/schemas/biso_props"
+																"$ref": "#/components/schemas/schemas-biso_props"
 															}
 														],
 														"title": "Browser Isolation Permissions Application",
@@ -356,10 +356,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props"
+																"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 															},
 															{
-																"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																"$ref": "#/components/schemas/schemas-bookmark_props-WHibcxdV"
 															}
 														],
 														"title": "Bookmark application",
@@ -413,10 +413,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props"
+																		"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																	},
 																	{
-																		"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																		"$ref": "#/components/schemas/schemas-self_hosted_props"
 																	}
 																],
 																"title": "Self Hosted Application",
@@ -425,10 +425,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props"
+																		"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																	},
 																	{
-																		"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																		"$ref": "#/components/schemas/saas_props-IkJDWVLG"
 																	}
 																],
 																"title": "SaaS Application",
@@ -437,10 +437,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props"
+																		"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																	},
 																	{
-																		"$ref": "#/components/schemas/ssh_props"
+																		"$ref": "#/components/schemas/schemas-ssh_props"
 																	}
 																],
 																"title": "Browser SSH Application",
@@ -449,10 +449,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props"
+																		"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																	},
 																	{
-																		"$ref": "#/components/schemas/vnc_props"
+																		"$ref": "#/components/schemas/schemas-vnc_props"
 																	}
 																],
 																"title": "Browser VNC Application",
@@ -461,10 +461,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props"
+																		"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																	},
 																	{
-																		"$ref": "#/components/schemas/app_launcher_props"
+																		"$ref": "#/components/schemas/schemas-app_launcher_props"
 																	}
 																],
 																"title": "App Launcher Application",
@@ -473,10 +473,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props"
+																		"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																	},
 																	{
-																		"$ref": "#/components/schemas/warp_props"
+																		"$ref": "#/components/schemas/schemas-warp_props"
 																	}
 																],
 																"title": "Device Enrollment Permissions Application",
@@ -485,10 +485,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props"
+																		"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																	},
 																	{
-																		"$ref": "#/components/schemas/biso_props"
+																		"$ref": "#/components/schemas/schemas-biso_props"
 																	}
 																],
 																"title": "Browser Isolation Permissions Application",
@@ -497,10 +497,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props"
+																		"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																	},
 																	{
-																		"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																		"$ref": "#/components/schemas/schemas-bookmark_props-WHibcxdV"
 																	}
 																],
 																"title": "Bookmark application",
@@ -659,8 +659,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -674,10 +673,10 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 														},
 														{
-															"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+															"$ref": "#/components/schemas/schemas-self_hosted_props"
 														}
 													],
 													"title": "Self Hosted Application",
@@ -686,10 +685,10 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 														},
 														{
-															"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+															"$ref": "#/components/schemas/saas_props-IkJDWVLG"
 														}
 													],
 													"title": "SaaS Application",
@@ -698,10 +697,10 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 														},
 														{
-															"$ref": "#/components/schemas/ssh_props"
+															"$ref": "#/components/schemas/schemas-ssh_props"
 														}
 													],
 													"title": "Browser SSH Application",
@@ -710,10 +709,10 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 														},
 														{
-															"$ref": "#/components/schemas/vnc_props"
+															"$ref": "#/components/schemas/schemas-vnc_props"
 														}
 													],
 													"title": "Browser VNC Application",
@@ -722,10 +721,10 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 														},
 														{
-															"$ref": "#/components/schemas/app_launcher_props"
+															"$ref": "#/components/schemas/schemas-app_launcher_props"
 														}
 													],
 													"title": "App Launcher Application",
@@ -734,10 +733,10 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 														},
 														{
-															"$ref": "#/components/schemas/warp_props"
+															"$ref": "#/components/schemas/schemas-warp_props"
 														}
 													],
 													"title": "Device Enrollment Permissions Application",
@@ -746,10 +745,10 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 														},
 														{
-															"$ref": "#/components/schemas/biso_props"
+															"$ref": "#/components/schemas/schemas-biso_props"
 														}
 													],
 													"title": "Browser Isolation Permissions Application",
@@ -758,10 +757,10 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props"
+															"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+															"$ref": "#/components/schemas/schemas-bookmark_props-WHibcxdV"
 														}
 													],
 													"title": "Bookmark application",
@@ -800,8 +799,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -815,10 +813,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																	"$ref": "#/components/schemas/schemas-self_hosted_props"
 																}
 															],
 															"title": "Self Hosted Application",
@@ -827,10 +825,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																	"$ref": "#/components/schemas/saas_props-IkJDWVLG"
 																}
 															],
 															"title": "SaaS Application",
@@ -839,10 +837,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/ssh_props"
+																	"$ref": "#/components/schemas/schemas-ssh_props"
 																}
 															],
 															"title": "Browser SSH Application",
@@ -851,10 +849,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/vnc_props"
+																	"$ref": "#/components/schemas/schemas-vnc_props"
 																}
 															],
 															"title": "Browser VNC Application",
@@ -863,10 +861,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/app_launcher_props"
+																	"$ref": "#/components/schemas/schemas-app_launcher_props"
 																}
 															],
 															"title": "App Launcher Application",
@@ -875,10 +873,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/warp_props"
+																	"$ref": "#/components/schemas/schemas-warp_props"
 																}
 															],
 															"title": "Device Enrollment Permissions Application",
@@ -887,10 +885,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/biso_props"
+																	"$ref": "#/components/schemas/schemas-biso_props"
 																}
 															],
 															"title": "Browser Isolation Permissions Application",
@@ -899,10 +897,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																	"$ref": "#/components/schemas/schemas-bookmark_props-WHibcxdV"
 																}
 															],
 															"title": "Bookmark application",
@@ -1059,8 +1057,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1206,8 +1203,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1458,7 +1454,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1487,7 +1483,7 @@
 												"$ref": "#/components/schemas/custom_deny_url"
 											},
 											"domain": {
-												"$ref": "#/components/schemas/components-schemas-domain"
+												"$ref": "#/components/schemas/components-schemas-domain-SrBaIyBG"
 											},
 											"enable_binding_cookie": {
 												"$ref": "#/components/schemas/enable_binding_cookie"
@@ -1541,7 +1537,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1593,7 +1589,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1632,7 +1628,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1671,7 +1667,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1719,7 +1715,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1767,7 +1763,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1815,7 +1811,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1885,8 +1881,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1900,10 +1895,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																	"$ref": "#/components/schemas/schemas-self_hosted_props"
 																}
 															],
 															"title": "Self Hosted Application",
@@ -1912,10 +1907,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																	"$ref": "#/components/schemas/saas_props-IkJDWVLG"
 																}
 															],
 															"title": "SaaS Application",
@@ -1924,10 +1919,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/ssh_props"
+																	"$ref": "#/components/schemas/schemas-ssh_props"
 																}
 															],
 															"title": "Browser SSH Application",
@@ -1936,10 +1931,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/vnc_props"
+																	"$ref": "#/components/schemas/schemas-vnc_props"
 																}
 															],
 															"title": "Browser VNC Application",
@@ -1948,10 +1943,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/app_launcher_props"
+																	"$ref": "#/components/schemas/schemas-app_launcher_props"
 																}
 															],
 															"title": "App Launcher Application",
@@ -1960,10 +1955,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/warp_props"
+																	"$ref": "#/components/schemas/schemas-warp_props"
 																}
 															],
 															"title": "Device Enrollment Permissions Application",
@@ -1972,10 +1967,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/biso_props"
+																	"$ref": "#/components/schemas/schemas-biso_props"
 																}
 															],
 															"title": "Browser Isolation Permissions Application",
@@ -1984,10 +1979,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																	"$ref": "#/components/schemas/schemas-bookmark_props-WHibcxdV"
 																}
 															],
 															"title": "Bookmark application",
@@ -2015,7 +2010,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2044,7 +2039,7 @@
 																	"$ref": "#/components/schemas/custom_deny_url"
 																},
 																"domain": {
-																	"$ref": "#/components/schemas/components-schemas-domain"
+																	"$ref": "#/components/schemas/components-schemas-domain-SrBaIyBG"
 																},
 																"enable_binding_cookie": {
 																	"$ref": "#/components/schemas/enable_binding_cookie"
@@ -2098,7 +2093,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2150,7 +2145,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2189,7 +2184,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2228,7 +2223,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2276,7 +2271,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2324,7 +2319,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2372,7 +2367,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2447,8 +2442,7 @@
 																		{
 																			"type": "string"
 																		}
-																	],
-																	"nullable": true
+																	]
 																}
 															}
 														}
@@ -2462,10 +2456,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																			"$ref": "#/components/schemas/schemas-self_hosted_props"
 																		}
 																	],
 																	"title": "Self Hosted Application",
@@ -2474,10 +2468,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																			"$ref": "#/components/schemas/saas_props-IkJDWVLG"
 																		}
 																	],
 																	"title": "SaaS Application",
@@ -2486,10 +2480,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/ssh_props"
+																			"$ref": "#/components/schemas/schemas-ssh_props"
 																		}
 																	],
 																	"title": "Browser SSH Application",
@@ -2498,10 +2492,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/vnc_props"
+																			"$ref": "#/components/schemas/schemas-vnc_props"
 																		}
 																	],
 																	"title": "Browser VNC Application",
@@ -2510,10 +2504,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/app_launcher_props"
+																			"$ref": "#/components/schemas/schemas-app_launcher_props"
 																		}
 																	],
 																	"title": "App Launcher Application",
@@ -2522,10 +2516,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/warp_props"
+																			"$ref": "#/components/schemas/schemas-warp_props"
 																		}
 																	],
 																	"title": "Device Enrollment Permissions Application",
@@ -2534,10 +2528,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/biso_props"
+																			"$ref": "#/components/schemas/schemas-biso_props"
 																		}
 																	],
 																	"title": "Browser Isolation Permissions Application",
@@ -2546,10 +2540,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																			"$ref": "#/components/schemas/schemas-bookmark_props-WHibcxdV"
 																		}
 																	],
 																	"title": "Bookmark application",
@@ -2956,7 +2950,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -2985,7 +2979,7 @@
 												"$ref": "#/components/schemas/custom_deny_url"
 											},
 											"domain": {
-												"$ref": "#/components/schemas/components-schemas-domain"
+												"$ref": "#/components/schemas/components-schemas-domain-SrBaIyBG"
 											},
 											"enable_binding_cookie": {
 												"$ref": "#/components/schemas/enable_binding_cookie"
@@ -3039,7 +3033,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3091,7 +3085,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3130,7 +3124,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3169,7 +3163,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3217,7 +3211,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3265,7 +3259,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3313,7 +3307,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid"
+												"$ref": "#/components/schemas/uuid-T95CaRlr"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3383,8 +3377,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -3398,10 +3391,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																	"$ref": "#/components/schemas/schemas-self_hosted_props"
 																}
 															],
 															"title": "Self Hosted Application",
@@ -3410,10 +3403,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																	"$ref": "#/components/schemas/saas_props-IkJDWVLG"
 																}
 															],
 															"title": "SaaS Application",
@@ -3422,10 +3415,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/ssh_props"
+																	"$ref": "#/components/schemas/schemas-ssh_props"
 																}
 															],
 															"title": "Browser SSH Application",
@@ -3434,10 +3427,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/vnc_props"
+																	"$ref": "#/components/schemas/schemas-vnc_props"
 																}
 															],
 															"title": "Browser VNC Application",
@@ -3446,10 +3439,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/app_launcher_props"
+																	"$ref": "#/components/schemas/schemas-app_launcher_props"
 																}
 															],
 															"title": "App Launcher Application",
@@ -3458,10 +3451,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/warp_props"
+																	"$ref": "#/components/schemas/schemas-warp_props"
 																}
 															],
 															"title": "Device Enrollment Permissions Application",
@@ -3470,10 +3463,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/biso_props"
+																	"$ref": "#/components/schemas/schemas-biso_props"
 																}
 															],
 															"title": "Browser Isolation Permissions Application",
@@ -3482,10 +3475,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props"
+																	"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																},
 																{
-																	"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																	"$ref": "#/components/schemas/schemas-bookmark_props-WHibcxdV"
 																}
 															],
 															"title": "Bookmark application",
@@ -3513,7 +3506,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3542,7 +3535,7 @@
 																	"$ref": "#/components/schemas/custom_deny_url"
 																},
 																"domain": {
-																	"$ref": "#/components/schemas/components-schemas-domain"
+																	"$ref": "#/components/schemas/components-schemas-domain-SrBaIyBG"
 																},
 																"enable_binding_cookie": {
 																	"$ref": "#/components/schemas/enable_binding_cookie"
@@ -3596,7 +3589,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3648,7 +3641,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3687,7 +3680,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3726,7 +3719,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3774,7 +3767,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3822,7 +3815,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3870,7 +3863,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid"
+																	"$ref": "#/components/schemas/uuid-T95CaRlr"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3945,8 +3938,7 @@
 																		{
 																			"type": "string"
 																		}
-																	],
-																	"nullable": true
+																	]
 																}
 															}
 														}
@@ -3960,10 +3952,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/self_hosted_props-0MKIjEg4"
+																			"$ref": "#/components/schemas/schemas-self_hosted_props"
 																		}
 																	],
 																	"title": "Self Hosted Application",
@@ -3972,10 +3964,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/saas_props-wjMT7Obf"
+																			"$ref": "#/components/schemas/saas_props-IkJDWVLG"
 																		}
 																	],
 																	"title": "SaaS Application",
@@ -3984,10 +3976,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/ssh_props"
+																			"$ref": "#/components/schemas/schemas-ssh_props"
 																		}
 																	],
 																	"title": "Browser SSH Application",
@@ -3996,10 +3988,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/vnc_props"
+																			"$ref": "#/components/schemas/schemas-vnc_props"
 																		}
 																	],
 																	"title": "Browser VNC Application",
@@ -4008,10 +4000,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/app_launcher_props"
+																			"$ref": "#/components/schemas/schemas-app_launcher_props"
 																		}
 																	],
 																	"title": "App Launcher Application",
@@ -4020,10 +4012,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/warp_props"
+																			"$ref": "#/components/schemas/schemas-warp_props"
 																		}
 																	],
 																	"title": "Device Enrollment Permissions Application",
@@ -4032,10 +4024,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/biso_props"
+																			"$ref": "#/components/schemas/schemas-biso_props"
 																		}
 																	],
 																	"title": "Browser Isolation Permissions Application",
@@ -4044,10 +4036,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props"
+																			"$ref": "#/components/schemas/basic_app_response_props-4qWDt6RL"
 																		},
 																		{
-																			"$ref": "#/components/schemas/schemas-bookmark_props-ln70yVwf"
+																			"$ref": "#/components/schemas/schemas-bookmark_props-WHibcxdV"
 																		}
 																	],
 																	"title": "Bookmark application",

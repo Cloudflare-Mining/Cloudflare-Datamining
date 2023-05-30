@@ -1,0 +1,8 @@
+{
+	"description": "Name of the bucket",
+	"example": "example-bucket",
+	"maxLength": 64,
+	"minLength": 3,
+	"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+	"type": "string"
+}

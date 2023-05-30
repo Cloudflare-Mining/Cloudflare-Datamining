@@ -124,7 +124,7 @@
 									{
 										"allOf": [
 											{
-												"$ref": "#/components/schemas/base-Tzp0ercv"
+												"$ref": "#/components/schemas/base"
 											}
 										]
 									},
@@ -171,16 +171,16 @@
 									{
 										"properties": {
 											"description": {
-												"$ref": "#/components/schemas/schemas-description-Z2qcIYlv"
+												"$ref": "#/components/schemas/schemas-description-E3hK36kP"
 											},
 											"group": {
 												"description": "The rule group to which the current WAF rule belongs.",
 												"properties": {
 													"id": {
-														"$ref": "#/components/schemas/components-schemas-identifier-n53VvE1w"
+														"$ref": "#/components/schemas/components-schemas-identifier"
 													},
 													"name": {
-														"$ref": "#/components/schemas/name-357GgD0r"
+														"$ref": "#/components/schemas/name-NFzaaQuF"
 													}
 												},
 												"readOnly": true,
@@ -190,10 +190,10 @@
 												"$ref": "#/components/schemas/rule_components-schemas-identifier"
 											},
 											"package_id": {
-												"$ref": "#/components/schemas/identifier-XhlQKFJj"
+												"$ref": "#/components/schemas/identifier-pWt55MLP"
 											},
 											"priority": {
-												"$ref": "#/components/schemas/priority-5Diyp27X"
+												"$ref": "#/components/schemas/priority"
 											}
 										}
 									},
@@ -258,16 +258,16 @@
 									{
 										"properties": {
 											"description": {
-												"$ref": "#/components/schemas/schemas-description-Z2qcIYlv"
+												"$ref": "#/components/schemas/schemas-description-E3hK36kP"
 											},
 											"group": {
 												"description": "The rule group to which the current WAF rule belongs.",
 												"properties": {
 													"id": {
-														"$ref": "#/components/schemas/components-schemas-identifier-n53VvE1w"
+														"$ref": "#/components/schemas/components-schemas-identifier"
 													},
 													"name": {
-														"$ref": "#/components/schemas/name-357GgD0r"
+														"$ref": "#/components/schemas/name-NFzaaQuF"
 													}
 												},
 												"readOnly": true,
@@ -277,10 +277,10 @@
 												"$ref": "#/components/schemas/rule_components-schemas-identifier"
 											},
 											"package_id": {
-												"$ref": "#/components/schemas/identifier-XhlQKFJj"
+												"$ref": "#/components/schemas/identifier-pWt55MLP"
 											},
 											"priority": {
-												"$ref": "#/components/schemas/priority-5Diyp27X"
+												"$ref": "#/components/schemas/priority"
 											}
 										}
 									},

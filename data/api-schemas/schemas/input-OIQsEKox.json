@@ -1,0 +1,13 @@
+{
+	"properties": {
+		"height": {
+			"description": "The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.",
+			"type": "integer"
+		},
+		"width": {
+			"description": "The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.",
+			"type": "integer"
+		}
+	},
+	"type": "object"
+}

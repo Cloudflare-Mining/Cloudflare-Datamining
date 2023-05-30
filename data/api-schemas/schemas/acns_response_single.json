@@ -87,8 +87,7 @@
 								{
 									"type": "string"
 								}
-							],
-							"nullable": true
+							]
 						}
 					}
 				}
@@ -127,6 +126,14 @@
 							"example": "ns1.example.com",
 							"format": "hostname",
 							"type": "string"
+						},
+						"ns_set": {
+							"default": 1,
+							"description": "The number of the set that this name server belongs to.",
+							"example": 1,
+							"maximum": 5,
+							"minimum": 1,
+							"type": "number"
 						},
 						"status": {
 							"deprecated": true,

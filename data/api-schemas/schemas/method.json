@@ -1,6 +1,16 @@
 {
-	"default": "GET",
-	"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
+	"description": "The HTTP method used to access the endpoint.",
+	"enum": [
+		"GET",
+		"POST",
+		"HEAD",
+		"OPTIONS",
+		"PUT",
+		"DELETE",
+		"CONNECT",
+		"PATCH",
+		"TRACE"
+	],
 	"example": "GET",
 	"type": "string"
 }

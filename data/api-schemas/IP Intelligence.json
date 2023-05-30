@@ -91,7 +91,7 @@
 														"type": "object"
 													},
 													"ip": {
-														"$ref": "#/components/schemas/common_components-schemas-ip"
+														"$ref": "#/components/schemas/ip-MX6nhAN4"
 													},
 													"risk_types": {
 														"example": [
@@ -114,7 +114,7 @@
 				},
 				"description": "Get IP Overview response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -177,7 +177,7 @@
 																"type": "object"
 															},
 															"ip": {
-																"$ref": "#/components/schemas/common_components-schemas-ip"
+																"$ref": "#/components/schemas/ip-MX6nhAN4"
 															},
 															"risk_types": {
 																"example": [
@@ -291,9 +291,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get IP Overview",

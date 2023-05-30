@@ -1,77 +1,97 @@
 {
 	"allOf": [
 		{
-			"properties": {
-				"errors": {
-					"example": [],
-					"items": {
-						"properties": {
-							"code": {
-								"minimum": 1000,
-								"type": "integer"
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
 							},
-							"message": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"code",
-							"message"
-						],
-						"type": "object",
-						"uniqueItems": true
-					},
-					"type": "array"
-				},
-				"messages": {
-					"example": [],
-					"items": {
-						"properties": {
-							"code": {
-								"minimum": 1000,
-								"type": "integer"
-							},
-							"message": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"code",
-							"message"
-						],
-						"type": "object",
-						"uniqueItems": true
-					},
-					"type": "array"
-				},
-				"result": {
-					"anyOf": [
-						{
-							"type": "object"
-						},
-						{
-							"items": {},
 							"type": "array"
 						},
-						{
-							"type": "string"
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
 						}
-					]
-				},
-				"success": {
-					"description": "Whether the API call was successful",
-					"enum": [
-						true
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
 					],
-					"example": true,
-					"type": "boolean"
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
 				}
-			},
-			"required": [
-				"success",
-				"errors",
-				"messages",
-				"result"
 			],
 			"type": "object"
 		},
@@ -79,10 +99,21 @@
 			"properties": {
 				"result": {
 					"properties": {
-						"preview_url": {
-							"description": "URL where the custom waiting room page can temporarily be previewed.",
-							"example": "http://waitingrooms.dev/preview/35af8c12-6d68-4608-babb-b53435a5ddfb",
-							"type": "string"
+						"pools": {
+							"additionalProperties": true,
+							"example": {
+								"abwlnp5jbqn45ecgxd03erbgtxtqai0d": "WNAM Datacenter",
+								"ve8h9lrcip5n5bbga9yqmdws28ay5d0l": "EEU Datacenter"
+							},
+							"type": "object",
+							"x-patternProperties": {
+								"^[a-z0-9]{32}$": {
+									"type": "string"
+								}
+							}
+						},
+						"preview_id": {
+							"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
 						}
 					},
 					"type": "object"

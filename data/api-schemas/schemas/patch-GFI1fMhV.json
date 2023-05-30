@@ -1,0 +1,18 @@
+{
+	"description": "Update enablement of Tiered Caching",
+	"properties": {
+		"value": {
+			"description": "Enables Tiered Caching.",
+			"enum": [
+				"on",
+				"off"
+			],
+			"example": "on",
+			"type": "string"
+		}
+	},
+	"required": [
+		"value"
+	],
+	"type": "object"
+}

@@ -119,10 +119,10 @@
 				"result": {
 					"items": {
 						"properties": {
-							"cidr": {
-								"description": "IP Prefix in Classless Inter-Domain Routing format.",
-								"example": "192.0.2.0/24",
-								"type": "string"
+							"client_default": {
+								"description": "Set if the location is the default one.",
+								"example": false,
+								"type": "boolean"
 							},
 							"created_at": {
 								"example": "2014-01-01T05:20:00.12345Z",
@@ -130,29 +130,41 @@
 								"readOnly": true,
 								"type": "string"
 							},
-							"delegated_account_id": {
-								"description": "Account identifier for the account to which prefix is being delegated.",
-								"example": "b1946ac92492d2347c6235b4d2611184",
-								"maxLength": 32,
+							"doh_subdomain": {
+								"description": "The DNS Over HTTPS domain to send DNS requests to. (auto-generated).",
+								"example": "oli3n9zkz5",
 								"type": "string"
+							},
+							"ecs_support": {
+								"description": "Set if the location needs to resolve EDNS queries.",
+								"example": false,
+								"type": "boolean"
 							},
 							"id": {
-								"description": "Delegation identifier tag.",
-								"example": "d933b1530bc56c9953cf8ce166da8004",
-								"maxLength": 32,
-								"readOnly": true,
+								"example": "ed35569b41ce4d1facfe683550f54086"
+							},
+							"ip": {
+								"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. (auto-generated).",
+								"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
 								"type": "string"
 							},
-							"modified_at": {
+							"name": {
+								"description": "The name of the Location.",
+								"example": "Austin Office Location",
+								"type": "string"
+							},
+							"networks": {
+								"description": "A list of network ranges that requests from this location would originate from.",
+								"items": {
+									"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+									"example": "192.0.2.1/32",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"updated_at": {
 								"example": "2014-01-01T05:20:00.12345Z",
 								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
-							},
-							"parent_prefix_id": {
-								"description": "Identifier",
-								"example": "023e105f4ecef8ad9ca31a8372d0c353",
-								"maxLength": 32,
 								"readOnly": true,
 								"type": "string"
 							}

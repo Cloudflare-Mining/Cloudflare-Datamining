@@ -1,6 +1,15 @@
 {
-	"description": "State, provided by the CSR",
-	"example": "CA",
+	"description": "The state that the subscription is in.",
+	"enum": [
+		"Trial",
+		"Provisioned",
+		"Paid",
+		"AwaitingPayment",
+		"Cancelled",
+		"Failed",
+		"Expired"
+	],
+	"example": "Paid",
 	"readOnly": true,
 	"type": "string"
 }

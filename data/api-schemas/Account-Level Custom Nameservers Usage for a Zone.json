@@ -48,6 +48,14 @@
 											"description": "Whether zone uses account-level custom nameservers.",
 											"example": true,
 											"type": "boolean"
+										},
+										"ns_set": {
+											"default": 1,
+											"description": "The number of the name server set to assign to the zone.",
+											"example": 1,
+											"maximum": 5,
+											"minimum": 1,
+											"type": "number"
 										}
 									},
 									"type": "object"
@@ -58,7 +66,7 @@
 				},
 				"description": "Get Account Custom Nameserver Related Zone Metadata response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -91,6 +99,14 @@
 													"description": "Whether zone uses account-level custom nameservers.",
 													"example": true,
 													"type": "boolean"
+												},
+												"ns_set": {
+													"default": 1,
+													"description": "The number of the name server set to assign to the zone.",
+													"example": 1,
+													"maximum": 5,
+													"minimum": 1,
+													"type": "number"
 												}
 											},
 											"type": "object"
@@ -192,9 +208,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Account Custom Nameserver Related Zone Metadata",
@@ -239,6 +252,14 @@
 								"description": "Whether zone uses account-level custom nameservers.",
 								"example": true,
 								"type": "boolean"
+							},
+							"ns_set": {
+								"default": 1,
+								"description": "The number of the name server set to assign to the zone.",
+								"example": 1,
+								"maximum": 5,
+								"minimum": 1,
+								"type": "number"
 							}
 						},
 						"type": "object"
@@ -289,7 +310,7 @@
 				},
 				"description": "Set Account Custom Nameserver Related Zone Metadata response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -423,9 +444,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Set Account Custom Nameserver Related Zone Metadata",

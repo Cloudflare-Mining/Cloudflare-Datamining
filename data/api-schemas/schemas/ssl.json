@@ -15,13 +15,13 @@
 					"type": "string"
 				},
 				"certificate_authority": {
-					"description": "The Certificate Authority that will issue the certificate",
+					"description": "The Certificate Authority that has issued this certificate.",
 					"enum": [
 						"digicert",
 						"google",
 						"lets_encrypt"
 					],
-					"example": "google",
+					"example": "digicert",
 					"type": "string"
 				},
 				"custom_certificate": {

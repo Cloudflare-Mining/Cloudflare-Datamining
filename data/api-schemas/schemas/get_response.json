@@ -120,6 +120,14 @@
 					"description": "Whether zone uses account-level custom nameservers.",
 					"example": true,
 					"type": "boolean"
+				},
+				"ns_set": {
+					"default": 1,
+					"description": "The number of the name server set to assign to the zone.",
+					"example": 1,
+					"maximum": 5,
+					"minimum": 1,
+					"type": "number"
 				}
 			},
 			"type": "object"
