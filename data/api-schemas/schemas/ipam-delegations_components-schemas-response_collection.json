@@ -1,13 +1,13 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+			"$ref": "#/components/schemas/api-response-collection"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/ipam-delegations-yqrWEZtP"
+						"$ref": "#/components/schemas/ipam-delegations-GNKr5H5L"
 					},
 					"type": "array"
 				}

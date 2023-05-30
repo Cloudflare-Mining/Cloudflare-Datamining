@@ -1,29 +1,61 @@
 {
 	"properties": {
-		"description": {
-			"$ref": "#/components/schemas/schemas-description-xhyl0Ajv"
-		},
-		"group": {
-			"description": "The rule group to which the current WAF rule belongs.",
-			"properties": {
-				"id": {
-					"$ref": "#/components/schemas/components-schemas-identifier"
-				},
-				"name": {
-					"$ref": "#/components/schemas/name-RwM0LzIe"
-				}
-			},
+		"created_on": {
+			"description": "When the Keyless SSL was created.",
+			"example": "2014-01-01T05:20:00Z",
+			"format": "date-time",
 			"readOnly": true,
-			"type": "object"
+			"type": "string"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/enabled-L5QC2wT6"
+		},
+		"host": {
+			"$ref": "#/components/schemas/host"
 		},
 		"id": {
-			"$ref": "#/components/schemas/rule_components-schemas-identifier"
+			"$ref": "#/components/schemas/schemas-identifier-UA7ugJzy"
 		},
-		"package_id": {
-			"$ref": "#/components/schemas/identifier-dRI3gPZJ"
+		"modified_on": {
+			"description": "When the Keyless SSL was last modified.",
+			"example": "2014-01-01T05:20:00Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
 		},
-		"priority": {
-			"$ref": "#/components/schemas/priority"
+		"name": {
+			"$ref": "#/components/schemas/name-8AeeaOZN"
+		},
+		"permissions": {
+			"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+			"example": [
+				"#ssl:read",
+				"#ssl:edit"
+			],
+			"items": {},
+			"readOnly": true,
+			"type": "array"
+		},
+		"port": {
+			"$ref": "#/components/schemas/port"
+		},
+		"status": {
+			"$ref": "#/components/schemas/schemas-status"
+		},
+		"tunnel": {
+			"$ref": "#/components/schemas/keyless_tunnel"
 		}
-	}
+	},
+	"required": [
+		"id",
+		"name",
+		"host",
+		"port",
+		"status",
+		"enabled",
+		"permissions",
+		"created_on",
+		"modified_on"
+	],
+	"type": "object"
 }

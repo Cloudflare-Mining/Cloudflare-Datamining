@@ -23,10 +23,10 @@
 						"schema": {
 							"properties": {
 								"scope": {
-									"$ref": "#/components/schemas/scope"
+									"$ref": "#/components/schemas/scope-l4HKcyav"
 								},
 								"type": {
-									"$ref": "#/components/schemas/type-tU33xARX"
+									"$ref": "#/components/schemas/type-82yIceOl"
 								}
 							},
 							"type": "object"
@@ -43,10 +43,10 @@
 								{
 									"properties": {
 										"scope": {
-											"$ref": "#/components/schemas/scope"
+											"$ref": "#/components/schemas/scope-l4HKcyav"
 										},
 										"type": {
-											"$ref": "#/components/schemas/type-tU33xARX"
+											"$ref": "#/components/schemas/type-82yIceOl"
 										}
 									},
 									"type": "object"
@@ -56,7 +56,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-aIx0g2bs"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -70,7 +70,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-aIx0g2bs"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -146,10 +146,10 @@
 					"schema": {
 						"properties": {
 							"scope": {
-								"$ref": "#/components/schemas/scope"
+								"$ref": "#/components/schemas/scope-l4HKcyav"
 							},
 							"type": {
-								"$ref": "#/components/schemas/type-tU33xARX"
+								"$ref": "#/components/schemas/type-82yIceOl"
 							}
 						},
 						"type": "object"
@@ -165,10 +165,10 @@
 						"schema": {
 							"properties": {
 								"scope": {
-									"$ref": "#/components/schemas/scope"
+									"$ref": "#/components/schemas/scope-l4HKcyav"
 								},
 								"type": {
-									"$ref": "#/components/schemas/type-tU33xARX"
+									"$ref": "#/components/schemas/type-82yIceOl"
 								}
 							},
 							"type": "object"
@@ -185,10 +185,10 @@
 								{
 									"properties": {
 										"scope": {
-											"$ref": "#/components/schemas/scope"
+											"$ref": "#/components/schemas/scope-l4HKcyav"
 										},
 										"type": {
-											"$ref": "#/components/schemas/type-tU33xARX"
+											"$ref": "#/components/schemas/type-82yIceOl"
 										}
 									},
 									"type": "object"
@@ -198,7 +198,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-aIx0g2bs"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -212,7 +212,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-aIx0g2bs"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

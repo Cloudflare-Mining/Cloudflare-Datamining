@@ -1,5 +1,7 @@
 {
-	"description": "The timestamp of when Page Shield was last updated.",
-	"example": "2022-10-12T17:56:52.083582+01:00",
+	"description": "The time when the certificate was updated.",
+	"example": "2100-01-01T05:20:00Z",
+	"format": "date-time",
+	"readOnly": true,
 	"type": "string"
 }

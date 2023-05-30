@@ -1,0 +1,62 @@
+{
+	"properties": {
+		"allow_insecure": {
+			"$ref": "#/components/schemas/allow_insecure"
+		},
+		"consecutive_down": {
+			"$ref": "#/components/schemas/consecutive_down"
+		},
+		"consecutive_up": {
+			"$ref": "#/components/schemas/consecutive_up"
+		},
+		"created_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"description": {
+			"$ref": "#/components/schemas/monitor_components-schemas-description"
+		},
+		"expected_body": {
+			"$ref": "#/components/schemas/expected_body"
+		},
+		"expected_codes": {
+			"$ref": "#/components/schemas/schemas-expected_codes"
+		},
+		"follow_redirects": {
+			"$ref": "#/components/schemas/follow_redirects"
+		},
+		"header": {
+			"$ref": "#/components/schemas/header"
+		},
+		"id": {
+			"$ref": "#/components/schemas/monitor_components-schemas-identifier"
+		},
+		"interval": {
+			"$ref": "#/components/schemas/interval-eXUjnj4P"
+		},
+		"method": {
+			"$ref": "#/components/schemas/schemas-method"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/timestamp"
+		},
+		"path": {
+			"$ref": "#/components/schemas/path-OCXvz0S2"
+		},
+		"port": {
+			"$ref": "#/components/schemas/components-schemas-port"
+		},
+		"probe_zone": {
+			"$ref": "#/components/schemas/probe_zone"
+		},
+		"retries": {
+			"$ref": "#/components/schemas/retries"
+		},
+		"timeout": {
+			"$ref": "#/components/schemas/schemas-timeout"
+		},
+		"type": {
+			"$ref": "#/components/schemas/monitor_components-schemas-type"
+		}
+	},
+	"type": "object"
+}

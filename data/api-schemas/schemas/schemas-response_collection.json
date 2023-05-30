@@ -6,20 +6,10 @@
 		{
 			"properties": {
 				"result": {
-					"additionalProperties": {
-						"items": {
-							"$ref": "#/components/schemas/eligibility"
-						},
-						"type": "array"
+					"items": {
+						"$ref": "#/components/schemas/ipam-delegations"
 					},
-					"example": {
-						"email": {
-							"eligible": true,
-							"ready": true,
-							"type": "email"
-						}
-					},
-					"type": "object"
+					"type": "array"
 				}
 			}
 		}

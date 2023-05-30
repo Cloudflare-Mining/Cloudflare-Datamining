@@ -22,7 +22,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-sl4OvhAz"
+									"$ref": "#/components/schemas/api-response-single-FpqsQsFD"
 								},
 								{
 									"properties": {
@@ -46,7 +46,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-sl4OvhAz"
+											"$ref": "#/components/schemas/api-response-single-FpqsQsFD"
 										},
 										{
 											"properties": {
@@ -63,7 +63,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-yOy5Mc8w"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -77,7 +77,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-yOy5Mc8w"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

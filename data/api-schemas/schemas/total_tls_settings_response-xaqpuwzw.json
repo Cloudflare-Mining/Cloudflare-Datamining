@@ -1,0 +1,24 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"certificate_authority": {
+							"$ref": "#/components/schemas/schemas-certificate_authority-r1MbeqVx"
+						},
+						"enabled": {
+							"$ref": "#/components/schemas/components-schemas-enabled"
+						},
+						"validity_days": {
+							"$ref": "#/components/schemas/schemas-validity_days"
+						}
+					}
+				}
+			}
+		}
+	]
+}

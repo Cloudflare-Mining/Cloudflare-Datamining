@@ -1,0 +1,57 @@
+{
+	"properties": {
+		"allow_mode_switch": {
+			"$ref": "#/components/schemas/allow_mode_switch"
+		},
+		"allow_updates": {
+			"$ref": "#/components/schemas/allow_updates"
+		},
+		"allowed_to_leave": {
+			"$ref": "#/components/schemas/allowed_to_leave"
+		},
+		"auto_connect": {
+			"$ref": "#/components/schemas/auto_connect"
+		},
+		"captive_portal": {
+			"$ref": "#/components/schemas/captive_portal"
+		},
+		"default": {
+			"description": "Whether the policy will be applied to matching devices.",
+			"example": true,
+			"type": "boolean"
+		},
+		"disable_auto_fallback": {
+			"$ref": "#/components/schemas/disable_auto_fallback"
+		},
+		"enabled": {
+			"description": "Whether the policy will be applied to matching devices.",
+			"example": true,
+			"type": "boolean"
+		},
+		"exclude": {
+			"$ref": "#/components/schemas/exclude-iLhLWdq0"
+		},
+		"exclude_office_ips": {
+			"$ref": "#/components/schemas/exclude_office_ips"
+		},
+		"fallback_domains": {
+			"$ref": "#/components/schemas/fallback_domains"
+		},
+		"gateway_unique_id": {
+			"$ref": "#/components/schemas/gateway_unique_id"
+		},
+		"include": {
+			"$ref": "#/components/schemas/include-87hBtzfZ"
+		},
+		"service_mode_v2": {
+			"$ref": "#/components/schemas/service_mode_v2"
+		},
+		"support_url": {
+			"$ref": "#/components/schemas/support_url"
+		},
+		"switch_locked": {
+			"$ref": "#/components/schemas/switch_locked"
+		}
+	},
+	"type": "object"
+}

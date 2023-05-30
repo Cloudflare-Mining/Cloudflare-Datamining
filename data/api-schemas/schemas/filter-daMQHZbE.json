@@ -1,0 +1,5 @@
+{
+	"description": "Filters to drill down into specific events.",
+	"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
+	"type": "string"
+}

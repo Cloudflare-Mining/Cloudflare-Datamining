@@ -1,0 +1,18 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"enabled": {
+							"$ref": "#/components/schemas/zone-authenticated-origin-pull_components-schemas-enabled"
+						}
+					}
+				}
+			}
+		}
+	]
+}

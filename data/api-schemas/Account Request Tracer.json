@@ -177,10 +177,10 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages-hcQY960j"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages-hcQY960j"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -305,7 +305,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-hcQY960j"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -319,7 +319,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-hcQY960j"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

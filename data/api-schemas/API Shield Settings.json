@@ -41,7 +41,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-7sXMI1BR"
+									"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
 								},
 								{
 									"properties": {
@@ -64,7 +64,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-7sXMI1BR"
+											"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
 										},
 										{
 											"properties": {
@@ -80,7 +80,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-Ka4JoO5k"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -94,7 +94,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-Ka4JoO5k"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -174,7 +174,7 @@
 					"schema": {
 						"properties": {
 							"auth_id_characteristics": {
-								"$ref": "#/components/schemas/characteristics-yvRYv1Pj"
+								"$ref": "#/components/schemas/characteristics-GY4caxKT"
 							}
 						},
 						"type": "object"
@@ -190,7 +190,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-7sXMI1BR"
+									"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
 								}
 							]
 						}
@@ -206,7 +206,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-7sXMI1BR"
+											"$ref": "#/components/schemas/api-response-single-8J2s90Tb"
 										}
 									]
 								},
@@ -215,7 +215,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-Ka4JoO5k"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -229,7 +229,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-Ka4JoO5k"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

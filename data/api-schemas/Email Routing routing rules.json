@@ -41,12 +41,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-DzdnlLp2"
+											"$ref": "#/components/schemas/rules-m5DNBz8A"
 										}
 									}
 								}
@@ -137,13 +137,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-nBnoSyq1"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/rules-DzdnlLp2"
+												"$ref": "#/components/schemas/rules-m5DNBz8A"
 											},
 											"type": "array"
 										},
@@ -231,12 +231,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-DzdnlLp2"
+											"$ref": "#/components/schemas/rules-m5DNBz8A"
 										}
 									}
 								}
@@ -293,7 +293,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -357,7 +357,7 @@
 								"$ref": "#/components/schemas/rule_actions"
 							},
 							"enabled": {
-								"$ref": "#/components/schemas/rule_enabled-6Qw6gZoM"
+								"$ref": "#/components/schemas/rule_enabled"
 							},
 							"matchers": {
 								"$ref": "#/components/schemas/rule_matchers"
@@ -386,12 +386,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-DzdnlLp2"
+											"$ref": "#/components/schemas/rules-m5DNBz8A"
 										}
 									}
 								}
@@ -462,7 +462,7 @@
 								"$ref": "#/components/schemas/rule_actions"
 							},
 							"enabled": {
-								"$ref": "#/components/schemas/rule_enabled-6Qw6gZoM"
+								"$ref": "#/components/schemas/rule_enabled"
 							},
 							"matchers": {
 								"$ref": "#/components/schemas/rule_matchers"
@@ -491,12 +491,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-DzdnlLp2"
+											"$ref": "#/components/schemas/rules-m5DNBz8A"
 										}
 									}
 								}
@@ -555,7 +555,7 @@
 								"$ref": "#/components/schemas/rule_catchall-actions"
 							},
 							"enabled": {
-								"$ref": "#/components/schemas/rule_enabled-6Qw6gZoM"
+								"$ref": "#/components/schemas/rule_enabled"
 							},
 							"matchers": {
 								"$ref": "#/components/schemas/rule_catchall-matchers"
@@ -581,7 +581,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {

@@ -11,7 +11,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common-tL9valdf"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
@@ -78,7 +78,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common-tL9valdf"
+													"$ref": "#/components/schemas/api-response-common"
 												},
 												{
 													"properties": {
@@ -136,7 +136,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-EYAMxK5T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -150,7 +150,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-EYAMxK5T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -220,7 +220,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common-tL9valdf"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
@@ -282,7 +282,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common-tL9valdf"
+													"$ref": "#/components/schemas/api-response-common"
 												},
 												{
 													"properties": {
@@ -335,7 +335,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-EYAMxK5T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -349,7 +349,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-EYAMxK5T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

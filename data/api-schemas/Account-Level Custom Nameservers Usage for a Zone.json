@@ -23,7 +23,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-AiBbhG77"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"$ref": "#/components/schemas/zone_metadata"
@@ -42,7 +42,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-AiBbhG77"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/zone_metadata"
@@ -54,7 +54,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-1X1byXPt"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -68,7 +68,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-1X1byXPt"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -170,7 +170,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-AiBbhG77"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
@@ -196,7 +196,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-AiBbhG77"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -215,7 +215,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-1X1byXPt"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -229,7 +229,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-1X1byXPt"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

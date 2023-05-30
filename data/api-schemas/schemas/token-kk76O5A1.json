@@ -1,0 +1,38 @@
+{
+	"properties": {
+		"condition": {
+			"$ref": "#/components/schemas/condition"
+		},
+		"expires_on": {
+			"$ref": "#/components/schemas/expires_on-3KJE1AOU"
+		},
+		"id": {
+			"$ref": "#/components/schemas/components-schemas-identifier-xnDzD3eO"
+		},
+		"issued_on": {
+			"$ref": "#/components/schemas/issued_on-1aIgsHKz"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/modified_on-988x2Bll"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-v6DV61IB"
+		},
+		"not_before": {
+			"$ref": "#/components/schemas/not_before"
+		},
+		"policies": {
+			"$ref": "#/components/schemas/policies-XPBJUG52"
+		},
+		"status": {
+			"$ref": "#/components/schemas/status-cqgDbg4p"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"status",
+		"policies"
+	],
+	"type": "object"
+}

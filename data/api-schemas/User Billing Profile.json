@@ -10,7 +10,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-0CS0KpHU"
+									"$ref": "#/components/schemas/api-response-single-geRZwPGh"
 								},
 								{
 									"properties": {
@@ -34,7 +34,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-0CS0KpHU"
+											"$ref": "#/components/schemas/api-response-single-geRZwPGh"
 										},
 										{
 											"properties": {
@@ -51,7 +51,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-4ymdSH5U"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -65,7 +65,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-4ymdSH5U"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

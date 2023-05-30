@@ -1,0 +1,28 @@
+{
+	"properties": {
+		"action": {
+			"$ref": "#/components/schemas/schemas-action"
+		},
+		"bypass": {
+			"$ref": "#/components/schemas/bypass"
+		},
+		"description": {
+			"$ref": "#/components/schemas/components-schemas-description-bik3yhyL"
+		},
+		"disabled": {
+			"$ref": "#/components/schemas/disabled"
+		},
+		"id": {
+			"$ref": "#/components/schemas/rate-limits_components-schemas-id"
+		},
+		"match": {
+			"$ref": "#/components/schemas/match-tW1lOBf9"
+		},
+		"period": {
+			"$ref": "#/components/schemas/period"
+		},
+		"threshold": {
+			"$ref": "#/components/schemas/threshold"
+		}
+	}
+}

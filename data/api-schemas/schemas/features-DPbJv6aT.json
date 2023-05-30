@@ -1,0 +1,12 @@
+{
+	"anyOf": [
+		{
+			"$ref": "#/components/schemas/thresholds-DRjRBTdD"
+		},
+		{
+			"$ref": "#/components/schemas/parameter_schemas"
+		}
+	],
+	"readOnly": true,
+	"type": "object"
+}

@@ -1,13 +1,13 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+			"$ref": "#/components/schemas/api-response-collection"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/profiles-i6DGnO04"
+						"$ref": "#/components/schemas/profiles"
 					},
 					"type": "array"
 				}

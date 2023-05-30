@@ -24,13 +24,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-l5xcRuM9"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/schemas-role"
+												"$ref": "#/components/schemas/schemas-role-UJN4CkqG"
 											},
 											"type": "array"
 										}
@@ -51,13 +51,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-l5xcRuM9"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/schemas-role"
+														"$ref": "#/components/schemas/schemas-role-UJN4CkqG"
 													},
 													"type": "array"
 												}
@@ -71,7 +71,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-wTPrzo8T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -85,7 +85,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-wTPrzo8T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -188,7 +188,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-zMeY7txa"
+									"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
 								},
 								{
 									"properties": {
@@ -212,7 +212,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-zMeY7txa"
+											"$ref": "#/components/schemas/api-response-single-FRt8YkFb"
 										},
 										{
 											"properties": {
@@ -229,7 +229,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-wTPrzo8T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -243,7 +243,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-wTPrzo8T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

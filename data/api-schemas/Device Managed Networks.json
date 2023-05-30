@@ -36,13 +36,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-sA9MPCi5"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
+												"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
 											},
 											"type": "array"
 										}
@@ -62,13 +62,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-sA9MPCi5"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
+														"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
 													},
 													"type": "array"
 												}
@@ -81,7 +81,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-3bLwL6pc"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -95,7 +95,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-3bLwL6pc"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -162,13 +162,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-sA9MPCi5"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
+												"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
 											},
 											"type": "array"
 										}
@@ -188,13 +188,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-sA9MPCi5"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
+														"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
 													},
 													"type": "array"
 												}
@@ -207,7 +207,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-3bLwL6pc"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -221,7 +221,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-3bLwL6pc"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -299,12 +299,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
+									"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
+											"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
 										}
 									}
 								}
@@ -322,12 +322,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
+											"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
+													"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
 												}
 											}
 										}
@@ -338,7 +338,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-3bLwL6pc"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -352,7 +352,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-3bLwL6pc"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -461,12 +461,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
+									"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
+											"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
 										}
 									}
 								}
@@ -484,12 +484,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
+											"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
+													"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
 												}
 											}
 										}
@@ -500,7 +500,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-3bLwL6pc"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -514,7 +514,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-3bLwL6pc"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -629,12 +629,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
+									"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
+											"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
 										}
 									}
 								}
@@ -652,12 +652,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
+											"$ref": "#/components/schemas/api-response-single-HwAwbZQx"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
+													"$ref": "#/components/schemas/device-managed-networks-bSkc7ePS"
 												}
 											}
 										}
@@ -668,7 +668,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-3bLwL6pc"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -682,7 +682,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-3bLwL6pc"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

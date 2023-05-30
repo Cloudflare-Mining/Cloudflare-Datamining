@@ -1,0 +1,32 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"expires_on": {
+							"$ref": "#/components/schemas/expires_on-3KJE1AOU"
+						},
+						"id": {
+							"$ref": "#/components/schemas/components-schemas-identifier-xnDzD3eO"
+						},
+						"not_before": {
+							"$ref": "#/components/schemas/not_before"
+						},
+						"status": {
+							"$ref": "#/components/schemas/status-cqgDbg4p"
+						}
+					},
+					"required": [
+						"id",
+						"status"
+					]
+				}
+			},
+			"type": "object"
+		}
+	]
+}

@@ -1,14 +1,14 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+			"$ref": "#/components/schemas/api-response-collection"
 		},
 		{
 			"properties": {
 				"result": {
 					"additionalProperties": {
 						"items": {
-							"$ref": "#/components/schemas/alert-types-JWhhOOYv"
+							"$ref": "#/components/schemas/alert-types-dslpO0pq"
 						},
 						"type": "array"
 					},

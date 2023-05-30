@@ -37,7 +37,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -65,7 +65,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -86,7 +86,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -100,7 +100,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -171,7 +171,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
@@ -197,7 +197,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -216,7 +216,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -230,7 +230,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -309,7 +309,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -332,7 +332,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -348,7 +348,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -362,7 +362,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -434,14 +434,14 @@
 							"exclude": {
 								"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-uWc4OtoY"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							},
 							"include": {
 								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-uWc4OtoY"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							},
@@ -453,7 +453,7 @@
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-uWc4OtoY"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							}
@@ -474,7 +474,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -497,7 +497,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -513,7 +513,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -527,7 +527,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -607,14 +607,14 @@
 							"exclude": {
 								"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-uWc4OtoY"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							},
 							"include": {
 								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-uWc4OtoY"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							},
@@ -626,7 +626,7 @@
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule-uWc4OtoY"
+									"$ref": "#/components/schemas/rule"
 								},
 								"type": "array"
 							}
@@ -647,7 +647,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -670,7 +670,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -686,7 +686,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -700,7 +700,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

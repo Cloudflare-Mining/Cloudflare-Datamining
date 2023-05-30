@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/device-posture-integrations-GUA4C1T8"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

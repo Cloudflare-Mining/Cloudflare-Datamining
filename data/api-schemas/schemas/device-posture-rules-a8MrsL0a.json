@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/description-pS0Pkrjr"
+		},
+		"expiration": {
+			"$ref": "#/components/schemas/expiration-Vs2eEf3F"
+		},
+		"id": {
+			"$ref": "#/components/schemas/uuid-yfW7gvSJ"
+		},
+		"input": {
+			"$ref": "#/components/schemas/input-aCrDY7oP"
+		},
+		"match": {
+			"$ref": "#/components/schemas/match-1ARpkBdf"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-E1ccukv4"
+		},
+		"schedule": {
+			"$ref": "#/components/schemas/schedule-b8myoXPE"
+		},
+		"type": {
+			"$ref": "#/components/schemas/type-ZT3pYcJP"
+		}
+	},
+	"type": "object"
+}

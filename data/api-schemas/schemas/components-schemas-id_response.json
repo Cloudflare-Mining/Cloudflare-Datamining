@@ -1,14 +1,14 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-V6VSWJR4"
+			"$ref": "#/components/schemas/api-response-single"
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
 						"id": {
-							"$ref": "#/components/schemas/load-balancer_components-schemas-identifier"
+							"$ref": "#/components/schemas/uuid"
 						}
 					},
 					"type": "object"

@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"description": {
+			"$ref": "#/components/schemas/schemas-description-Z2qcIYlv"
+		},
+		"group": {
+			"description": "The rule group to which the current WAF rule belongs.",
+			"properties": {
+				"id": {
+					"$ref": "#/components/schemas/components-schemas-identifier-n53VvE1w"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-357GgD0r"
+				}
+			},
+			"readOnly": true,
+			"type": "object"
+		},
+		"id": {
+			"$ref": "#/components/schemas/rule_components-schemas-identifier"
+		},
+		"package_id": {
+			"$ref": "#/components/schemas/identifier-XhlQKFJj"
+		},
+		"priority": {
+			"$ref": "#/components/schemas/priority-5Diyp27X"
+		}
+	}
+}

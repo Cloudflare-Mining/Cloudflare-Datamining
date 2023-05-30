@@ -1,0 +1,24 @@
+{
+	"description": "Allows you to define image resizing sizes for different use cases.",
+	"properties": {
+		"fit": {
+			"$ref": "#/components/schemas/fit"
+		},
+		"height": {
+			"$ref": "#/components/schemas/height-0pZhWXiD"
+		},
+		"metadata": {
+			"$ref": "#/components/schemas/schemas-metadata"
+		},
+		"width": {
+			"$ref": "#/components/schemas/width-LVrY4t4C"
+		}
+	},
+	"required": [
+		"fit",
+		"metadata",
+		"width",
+		"height"
+	],
+	"type": "object"
+}

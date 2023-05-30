@@ -1,0 +1,33 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+		},
+		{
+			"properties": {
+				"result": {
+					"description": "A list of regions from which to run health checks. Null means every Cloudflare data center.",
+					"example": {
+						"pool_id": "17b5962d775c646f3f9725cbc7a53df4",
+						"pop_health": {
+							"Amsterdam, NL": {
+								"healthy": true,
+								"origins": [
+									{
+										"2001:DB8::5": {
+											"failure_reason": "No failures",
+											"healthy": true,
+											"response_code": 401,
+											"rtt": "12.1ms"
+										}
+									}
+								]
+							}
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

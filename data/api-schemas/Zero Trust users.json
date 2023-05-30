@@ -19,7 +19,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
@@ -46,7 +46,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/users"
+												"$ref": "#/components/schemas/users-qGbBfKTQ"
 											},
 											"type": "array"
 										}
@@ -66,7 +66,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -93,7 +93,7 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/users"
+														"$ref": "#/components/schemas/users-qGbBfKTQ"
 													},
 													"type": "array"
 												}
@@ -106,7 +106,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -120,7 +120,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -196,7 +196,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
@@ -238,7 +238,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -273,7 +273,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -287,7 +287,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

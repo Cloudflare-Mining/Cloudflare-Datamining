@@ -1,5 +1,6 @@
 {
-	"description": "Describes the alert type.",
-	"example": "High levels of 5xx HTTP errors at your origin",
+	"description": "Description of the prefix.",
+	"example": "Internal test prefix",
+	"maxLength": 1000,
 	"type": "string"
 }

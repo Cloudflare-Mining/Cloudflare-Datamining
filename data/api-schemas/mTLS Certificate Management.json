@@ -41,14 +41,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/components-schemas-certificateObject-FGjE9z75"
+													"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
 												}
 											],
 											"type": "object"
@@ -69,14 +69,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/components-schemas-certificateObject-FGjE9z75"
+															"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
 														}
 													],
 													"type": "object"
@@ -90,7 +90,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -104,7 +104,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -189,13 +189,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/components-schemas-certificateObject-FGjE9z75"
+												"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
 											},
 											"type": "array"
 										}
@@ -239,13 +239,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/components-schemas-certificateObject-FGjE9z75"
+														"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
 													},
 													"type": "array"
 												}
@@ -282,7 +282,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -296,7 +296,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -393,14 +393,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/components-schemas-certificateObject-FGjE9z75"
+													"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
 												}
 											],
 											"type": "object"
@@ -421,14 +421,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/components-schemas-certificateObject-FGjE9z75"
+															"$ref": "#/components/schemas/components-schemas-certificateObject-ZtPDYUcJ"
 														}
 													],
 													"type": "object"
@@ -442,7 +442,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -456,7 +456,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -553,7 +553,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
@@ -579,7 +579,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -598,7 +598,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -612,7 +612,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -734,14 +734,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/certificateObjectPost-ixBmX8zQ"
+													"$ref": "#/components/schemas/certificateObjectPost-OiSASIp0"
 												}
 											],
 											"type": "object"
@@ -762,14 +762,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
 												"result": {
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/certificateObjectPost-ixBmX8zQ"
+															"$ref": "#/components/schemas/certificateObjectPost-OiSASIp0"
 														}
 													],
 													"type": "object"
@@ -783,7 +783,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -797,7 +797,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

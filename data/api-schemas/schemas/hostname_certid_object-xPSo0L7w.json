@@ -1,0 +1,46 @@
+{
+	"properties": {
+		"cert_id": {
+			"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+		},
+		"cert_status": {
+			"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+		},
+		"cert_updated_at": {
+			"$ref": "#/components/schemas/updated_at"
+		},
+		"cert_uploaded_on": {
+			"$ref": "#/components/schemas/components-schemas-uploaded_on"
+		},
+		"certificate": {
+			"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/schemas-created_at"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-enabled"
+		},
+		"expires_on": {
+			"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
+		},
+		"hostname": {
+			"$ref": "#/components/schemas/schemas-hostname"
+		},
+		"issuer": {
+			"$ref": "#/components/schemas/issuer"
+		},
+		"serial_number": {
+			"$ref": "#/components/schemas/serial_number"
+		},
+		"signature": {
+			"$ref": "#/components/schemas/signature"
+		},
+		"status": {
+			"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
+		},
+		"updated_at": {
+			"$ref": "#/components/schemas/updated_at"
+		}
+	}
+}

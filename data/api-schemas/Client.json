@@ -26,7 +26,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common-ZjOc2IVo"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
@@ -78,7 +78,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-FAo0UJrE"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -92,7 +92,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-FAo0UJrE"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

@@ -43,7 +43,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common-rAzcda9d"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
@@ -96,7 +96,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common-rAzcda9d"
+													"$ref": "#/components/schemas/api-response-common"
 												},
 												{
 													"properties": {
@@ -140,7 +140,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -154,7 +154,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -280,7 +280,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
@@ -306,7 +306,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -325,7 +325,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -339,7 +339,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -425,7 +425,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
@@ -449,7 +449,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
@@ -466,7 +466,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -480,7 +480,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -720,7 +720,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
@@ -730,7 +730,7 @@
 													"$ref": "#/components/schemas/argo_smart_routing"
 												},
 												"created_on": {
-													"$ref": "#/components/schemas/created-F0yIufv1"
+													"$ref": "#/components/schemas/created-K6ptZwjp"
 												},
 												"dns": {
 													"$ref": "#/components/schemas/dns"
@@ -739,13 +739,13 @@
 													"$ref": "#/components/schemas/edge_ips"
 												},
 												"id": {
-													"$ref": "#/components/schemas/app_id-vfjjyBmC"
+													"$ref": "#/components/schemas/app_id-3mBFumKi"
 												},
 												"ip_firewall": {
 													"$ref": "#/components/schemas/ip_firewall"
 												},
 												"modified_on": {
-													"$ref": "#/components/schemas/modified-KWOPfgto"
+													"$ref": "#/components/schemas/modified-yGp8ujRZ"
 												},
 												"origin_dns": {
 													"$ref": "#/components/schemas/origin_dns"
@@ -783,7 +783,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
@@ -793,7 +793,7 @@
 															"$ref": "#/components/schemas/argo_smart_routing"
 														},
 														"created_on": {
-															"$ref": "#/components/schemas/created-F0yIufv1"
+															"$ref": "#/components/schemas/created-K6ptZwjp"
 														},
 														"dns": {
 															"$ref": "#/components/schemas/dns"
@@ -802,13 +802,13 @@
 															"$ref": "#/components/schemas/edge_ips"
 														},
 														"id": {
-															"$ref": "#/components/schemas/app_id-vfjjyBmC"
+															"$ref": "#/components/schemas/app_id-3mBFumKi"
 														},
 														"ip_firewall": {
 															"$ref": "#/components/schemas/ip_firewall"
 														},
 														"modified_on": {
-															"$ref": "#/components/schemas/modified-KWOPfgto"
+															"$ref": "#/components/schemas/modified-yGp8ujRZ"
 														},
 														"origin_dns": {
 															"$ref": "#/components/schemas/origin_dns"
@@ -839,7 +839,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -853,7 +853,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -1105,7 +1105,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
@@ -1115,7 +1115,7 @@
 													"$ref": "#/components/schemas/argo_smart_routing"
 												},
 												"created_on": {
-													"$ref": "#/components/schemas/created-F0yIufv1"
+													"$ref": "#/components/schemas/created-K6ptZwjp"
 												},
 												"dns": {
 													"$ref": "#/components/schemas/dns"
@@ -1124,13 +1124,13 @@
 													"$ref": "#/components/schemas/edge_ips"
 												},
 												"id": {
-													"$ref": "#/components/schemas/app_id-vfjjyBmC"
+													"$ref": "#/components/schemas/app_id-3mBFumKi"
 												},
 												"ip_firewall": {
 													"$ref": "#/components/schemas/ip_firewall"
 												},
 												"modified_on": {
-													"$ref": "#/components/schemas/modified-KWOPfgto"
+													"$ref": "#/components/schemas/modified-yGp8ujRZ"
 												},
 												"origin_dns": {
 													"$ref": "#/components/schemas/origin_dns"
@@ -1168,7 +1168,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
@@ -1178,7 +1178,7 @@
 															"$ref": "#/components/schemas/argo_smart_routing"
 														},
 														"created_on": {
-															"$ref": "#/components/schemas/created-F0yIufv1"
+															"$ref": "#/components/schemas/created-K6ptZwjp"
 														},
 														"dns": {
 															"$ref": "#/components/schemas/dns"
@@ -1187,13 +1187,13 @@
 															"$ref": "#/components/schemas/edge_ips"
 														},
 														"id": {
-															"$ref": "#/components/schemas/app_id-vfjjyBmC"
+															"$ref": "#/components/schemas/app_id-3mBFumKi"
 														},
 														"ip_firewall": {
 															"$ref": "#/components/schemas/ip_firewall"
 														},
 														"modified_on": {
-															"$ref": "#/components/schemas/modified-KWOPfgto"
+															"$ref": "#/components/schemas/modified-yGp8ujRZ"
 														},
 														"origin_dns": {
 															"$ref": "#/components/schemas/origin_dns"
@@ -1224,7 +1224,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -1238,7 +1238,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

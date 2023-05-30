@@ -1,0 +1,19 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"valid": {
+							"example": true,
+							"type": "boolean"
+						}
+					}
+				}
+			}
+		}
+	]
+}

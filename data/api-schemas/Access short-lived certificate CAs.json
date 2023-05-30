@@ -41,14 +41,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/id-KRkC7Kha"
+													"$ref": "#/components/schemas/id"
 												}
 											},
 											"type": "object"
@@ -69,14 +69,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/id-KRkC7Kha"
+															"$ref": "#/components/schemas/id"
 														}
 													},
 													"type": "object"
@@ -90,7 +90,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -104,7 +104,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -187,7 +187,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
@@ -210,7 +210,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
@@ -226,7 +226,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -240,7 +240,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -311,13 +311,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/ca-gONWrP6s"
+												"$ref": "#/components/schemas/ca"
 											},
 											"type": "array"
 										}
@@ -337,13 +337,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/ca-gONWrP6s"
+														"$ref": "#/components/schemas/ca"
 													},
 													"type": "array"
 												}
@@ -356,7 +356,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -370,7 +370,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -459,7 +459,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
@@ -482,7 +482,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
@@ -498,7 +498,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -512,7 +512,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-rMU9b5yV"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

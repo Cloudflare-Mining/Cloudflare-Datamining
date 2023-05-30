@@ -1,26 +1,6 @@
 {
-	"properties": {
-		"address": {
-			"$ref": "#/components/schemas/address-OUJ4i54Q"
-		},
-		"disabled_at": {
-			"$ref": "#/components/schemas/disabled_at"
-		},
-		"enabled": {
-			"$ref": "#/components/schemas/schemas-enabled"
-		},
-		"header": {
-			"$ref": "#/components/schemas/schemas-header"
-		},
-		"name": {
-			"$ref": "#/components/schemas/schemas-name-OqxAVCex"
-		},
-		"virtual_network_id": {
-			"$ref": "#/components/schemas/virtual_network_id-TtczPI3n"
-		},
-		"weight": {
-			"$ref": "#/components/schemas/weight"
-		}
-	},
-	"type": "object"
+	"description": "Your origin hostname that requests to your custom hostnames will be sent to.",
+	"example": "fallback.example.com",
+	"maxLength": 255,
+	"type": "string"
 }

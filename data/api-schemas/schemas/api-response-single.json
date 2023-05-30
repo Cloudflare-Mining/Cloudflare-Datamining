@@ -1,7 +1,7 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-common-Nm8RT30j"
+			"$ref": "#/components/schemas/api-response-common"
 		},
 		{
 			"properties": {
@@ -13,8 +13,7 @@
 						{
 							"type": "string"
 						}
-					],
-					"nullable": true
+					]
 				}
 			}
 		}

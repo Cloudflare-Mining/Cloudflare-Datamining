@@ -53,7 +53,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-TmpfNZWC"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -81,7 +81,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-TmpfNZWC"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -102,7 +102,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-EYAMxK5T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -116,7 +116,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-EYAMxK5T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -199,7 +199,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-Ha8pq0NI"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
@@ -225,7 +225,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-Ha8pq0NI"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -244,7 +244,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-EYAMxK5T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -258,7 +258,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-EYAMxK5T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -367,7 +367,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-TmpfNZWC"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -390,7 +390,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-TmpfNZWC"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -406,7 +406,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-EYAMxK5T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -420,7 +420,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-EYAMxK5T"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

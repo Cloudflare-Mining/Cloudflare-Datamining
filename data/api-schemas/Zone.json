@@ -28,7 +28,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common-h5guMdzs"
+									"$ref": "#/components/schemas/api-response-common-Wb5aXfNZ"
 								},
 								{
 									"properties": {
@@ -36,7 +36,7 @@
 											"nullable": true,
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/identifier-7x8Giq5z"
+													"$ref": "#/components/schemas/identifier-Du4NGw7E"
 												}
 											},
 											"required": [
@@ -61,7 +61,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -75,7 +75,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -233,10 +233,10 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -289,7 +289,7 @@
 														"description": "The account the zone belongs to",
 														"properties": {
 															"id": {
-																"$ref": "#/components/schemas/identifier-7x8Giq5z"
+																"$ref": "#/components/schemas/identifier-Du4NGw7E"
 															},
 															"name": {
 																"description": "The name of the account",
@@ -321,7 +321,7 @@
 														"type": "number"
 													},
 													"id": {
-														"$ref": "#/components/schemas/identifier-7x8Giq5z"
+														"$ref": "#/components/schemas/identifier-Du4NGw7E"
 													},
 													"meta": {
 														"description": "Metadata about the zone",
@@ -410,7 +410,7 @@
 														"description": "The owner of the zone",
 														"properties": {
 															"id": {
-																"$ref": "#/components/schemas/identifier-7x8Giq5z"
+																"$ref": "#/components/schemas/identifier-Du4NGw7E"
 															},
 															"name": {
 																"description": "Name of the owner",
@@ -473,7 +473,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -487,7 +487,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -550,10 +550,10 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -576,7 +576,7 @@
 													"description": "The account the zone belongs to",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-7x8Giq5z"
+															"$ref": "#/components/schemas/identifier-Du4NGw7E"
 														},
 														"name": {
 															"description": "The name of the account",
@@ -608,7 +608,7 @@
 													"type": "number"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-7x8Giq5z"
+													"$ref": "#/components/schemas/identifier-Du4NGw7E"
 												},
 												"meta": {
 													"description": "Metadata about the zone",
@@ -697,7 +697,7 @@
 													"description": "The owner of the zone",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-7x8Giq5z"
+															"$ref": "#/components/schemas/identifier-Du4NGw7E"
 														},
 														"name": {
 															"description": "Name of the owner",
@@ -759,7 +759,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -773,7 +773,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -903,10 +903,10 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -929,7 +929,7 @@
 													"description": "The account the zone belongs to",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-7x8Giq5z"
+															"$ref": "#/components/schemas/identifier-Du4NGw7E"
 														},
 														"name": {
 															"description": "The name of the account",
@@ -961,7 +961,7 @@
 													"type": "number"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-7x8Giq5z"
+													"$ref": "#/components/schemas/identifier-Du4NGw7E"
 												},
 												"meta": {
 													"description": "Metadata about the zone",
@@ -1050,7 +1050,7 @@
 													"description": "The owner of the zone",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-7x8Giq5z"
+															"$ref": "#/components/schemas/identifier-Du4NGw7E"
 														},
 														"name": {
 															"description": "Name of the owner",
@@ -1112,7 +1112,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -1126,7 +1126,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -1225,10 +1225,10 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										},
 										"success": {
 											"description": "Whether the API call was successful",
@@ -1251,7 +1251,7 @@
 													"description": "The account the zone belongs to",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-7x8Giq5z"
+															"$ref": "#/components/schemas/identifier-Du4NGw7E"
 														},
 														"name": {
 															"description": "The name of the account",
@@ -1283,7 +1283,7 @@
 													"type": "number"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-7x8Giq5z"
+													"$ref": "#/components/schemas/identifier-Du4NGw7E"
 												},
 												"meta": {
 													"description": "Metadata about the zone",
@@ -1372,7 +1372,7 @@
 													"description": "The owner of the zone",
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier-7x8Giq5z"
+															"$ref": "#/components/schemas/identifier-Du4NGw7E"
 														},
 														"name": {
 															"description": "Name of the owner",
@@ -1434,7 +1434,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -1448,7 +1448,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-D3af2J3L"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -1557,7 +1557,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common-OFGe2b93"
+									"$ref": "#/components/schemas/api-response-common"
 								},
 								{
 									"properties": {
@@ -1590,7 +1590,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common-OFGe2b93"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
@@ -1616,7 +1616,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-Y6KBrblK"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -1630,7 +1630,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-Y6KBrblK"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

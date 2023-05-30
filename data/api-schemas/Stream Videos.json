@@ -156,7 +156,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-PAmkZGnN"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
@@ -196,7 +196,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -210,7 +210,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -290,7 +290,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-orHM1jWS"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -313,7 +313,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -327,7 +327,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -419,7 +419,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -433,7 +433,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -627,7 +627,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-orHM1jWS"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -650,7 +650,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -664,7 +664,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -808,7 +808,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-orHM1jWS"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -837,7 +837,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -851,7 +851,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -965,7 +965,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-orHM1jWS"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -988,7 +988,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -1002,7 +1002,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -1121,14 +1121,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-orHM1jWS"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"uid": {
-													"$ref": "#/components/schemas/identifier-JoGfHwzz"
+													"$ref": "#/components/schemas/identifier-f2Fd4Fo5"
 												},
 												"uploadURL": {
 													"description": "The URL an unauthenticated upload can use for a single `HTTP POST multipart/form-data` request.",
@@ -1156,7 +1156,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -1170,7 +1170,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []

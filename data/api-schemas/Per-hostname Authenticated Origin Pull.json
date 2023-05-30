@@ -40,12 +40,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/schemas-certificateObject-BGXsoAC8"
+											"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
 										}
 									}
 								}
@@ -63,12 +63,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/schemas-certificateObject-BGXsoAC8"
+													"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
 												}
 											}
 										}
@@ -79,7 +79,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -93,7 +93,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -188,12 +188,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/hostname_certid_object-QMXdQhG7"
+											"$ref": "#/components/schemas/hostname_certid_object-xPSo0L7w"
 										}
 									}
 								}
@@ -211,12 +211,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/hostname_certid_object-QMXdQhG7"
+													"$ref": "#/components/schemas/hostname_certid_object-xPSo0L7w"
 												}
 											}
 										}
@@ -227,7 +227,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -241,7 +241,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -325,13 +325,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/hostname-authenticated-origin-pull-JaJt6qjY"
+												"$ref": "#/components/schemas/hostname-authenticated-origin-pull-NPC442KV"
 											},
 											"type": "array"
 										}
@@ -351,13 +351,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/hostname-authenticated-origin-pull-JaJt6qjY"
+														"$ref": "#/components/schemas/hostname-authenticated-origin-pull-NPC442KV"
 													},
 													"type": "array"
 												}
@@ -370,7 +370,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -384,7 +384,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -481,12 +481,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/schemas-certificateObject-BGXsoAC8"
+											"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
 										}
 									}
 								}
@@ -504,12 +504,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/schemas-certificateObject-BGXsoAC8"
+													"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
 												}
 											}
 										}
@@ -520,7 +520,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -534,7 +534,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -645,12 +645,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+									"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/schemas-certificateObject-BGXsoAC8"
+											"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
 										}
 									}
 								}
@@ -668,12 +668,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+											"$ref": "#/components/schemas/api-response-single-QvsTOTie"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/schemas-certificateObject-BGXsoAC8"
+													"$ref": "#/components/schemas/schemas-certificateObject-k4zbZGYb"
 												}
 											}
 										}
@@ -684,7 +684,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -698,7 +698,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -783,7 +783,7 @@
 						"properties": {
 							"config": {
 								"items": {
-									"$ref": "#/components/schemas/hostname_certid_input-gW6zAXcs"
+									"$ref": "#/components/schemas/hostname_certid_input-byqlJN1v"
 								},
 								"type": "array"
 							}
@@ -803,13 +803,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/hostname-authenticated-origin-pull-JaJt6qjY"
+												"$ref": "#/components/schemas/hostname-authenticated-origin-pull-NPC442KV"
 											},
 											"type": "array"
 										}
@@ -829,13 +829,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/hostname-authenticated-origin-pull-JaJt6qjY"
+														"$ref": "#/components/schemas/hostname-authenticated-origin-pull-NPC442KV"
 													},
 													"type": "array"
 												}
@@ -848,7 +848,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -862,7 +862,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

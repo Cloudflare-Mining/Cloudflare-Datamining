@@ -1,0 +1,30 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+		},
+		{
+			"properties": {
+				"result": {
+					"allOf": [
+						{
+							"$ref": "#/components/schemas/address-maps-iGSrnSwQ"
+						},
+						{
+							"properties": {
+								"ips": {
+									"$ref": "#/components/schemas/ips-XEruFGX6"
+								},
+								"memberships": {
+									"$ref": "#/components/schemas/memberships"
+								}
+							},
+							"type": "object"
+						}
+					]
+				}
+			},
+			"type": "object"
+		}
+	]
+}

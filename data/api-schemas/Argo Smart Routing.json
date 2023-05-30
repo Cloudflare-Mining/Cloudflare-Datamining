@@ -22,7 +22,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-1ynsEkaF"
+									"$ref": "#/components/schemas/api-response-single-oFotLbqf"
 								},
 								{
 									"properties": {
@@ -46,7 +46,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-1ynsEkaF"
+											"$ref": "#/components/schemas/api-response-single-oFotLbqf"
 										},
 										{
 											"properties": {
@@ -63,7 +63,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-uG8HHXmo"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -77,7 +77,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-uG8HHXmo"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -162,7 +162,7 @@
 						"description": "Update enablement of Argo Smart Routing",
 						"properties": {
 							"value": {
-								"$ref": "#/components/schemas/value"
+								"$ref": "#/components/schemas/value-VA8sBaSq"
 							}
 						},
 						"required": [
@@ -181,7 +181,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-1ynsEkaF"
+									"$ref": "#/components/schemas/api-response-single-oFotLbqf"
 								},
 								{
 									"properties": {
@@ -205,7 +205,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-1ynsEkaF"
+											"$ref": "#/components/schemas/api-response-single-oFotLbqf"
 										},
 										{
 											"properties": {
@@ -222,7 +222,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-uG8HHXmo"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -236,7 +236,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-uG8HHXmo"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

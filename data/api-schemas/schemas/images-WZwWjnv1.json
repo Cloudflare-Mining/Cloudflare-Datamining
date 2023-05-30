@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"filename": {
+			"$ref": "#/components/schemas/filename"
+		},
+		"id": {
+			"$ref": "#/components/schemas/images_components-schemas-identifier"
+		},
+		"metadata": {
+			"$ref": "#/components/schemas/metadata-0EIaejqv"
+		},
+		"requireSignedURLs": {
+			"$ref": "#/components/schemas/requireSignedURLs-f1fTk51L"
+		},
+		"uploaded": {
+			"$ref": "#/components/schemas/uploaded-4F4Y8l00"
+		},
+		"variants": {
+			"$ref": "#/components/schemas/schemas-variants"
+		}
+	},
+	"type": "object"
+}

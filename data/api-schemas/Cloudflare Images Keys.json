@@ -23,12 +23,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/keys_response-b4qrZYsF"
+											"$ref": "#/components/schemas/keys_response-VfYosy90"
 										}
 									}
 								}
@@ -46,12 +46,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/keys_response-b4qrZYsF"
+													"$ref": "#/components/schemas/keys_response-VfYosy90"
 												}
 											}
 										}
@@ -62,7 +62,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -76,7 +76,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

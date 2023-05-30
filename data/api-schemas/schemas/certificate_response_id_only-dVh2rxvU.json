@@ -1,0 +1,19 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"id": {
+							"$ref": "#/components/schemas/custom-certificate_components-schemas-identifier"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

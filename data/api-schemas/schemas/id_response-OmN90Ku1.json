@@ -1,0 +1,19 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-Jr7NV91g"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"id": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

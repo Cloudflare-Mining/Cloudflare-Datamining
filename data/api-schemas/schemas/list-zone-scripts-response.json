@@ -1,7 +1,7 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection-A9Ln6IFc"
+			"$ref": "#/components/schemas/api-response-collection"
 		},
 		{
 			"properties": {
@@ -12,7 +12,7 @@
 					"type": "array"
 				},
 				"result_info": {
-					"$ref": "#/components/schemas/result_info-iwuF2NDk"
+					"$ref": "#/components/schemas/result_info"
 				}
 			},
 			"type": "object"

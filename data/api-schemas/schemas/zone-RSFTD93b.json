@@ -1,0 +1,12 @@
+{
+	"description": "A simple zone object. May have null properties if not a zone subscription.",
+	"properties": {
+		"id": {
+			"$ref": "#/components/schemas/identifier"
+		},
+		"name": {
+			"$ref": "#/components/schemas/name-wCM7NeGt"
+		}
+	},
+	"type": "object"
+}

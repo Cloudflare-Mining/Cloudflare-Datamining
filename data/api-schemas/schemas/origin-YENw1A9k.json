@@ -1,0 +1,26 @@
+{
+	"properties": {
+		"address": {
+			"$ref": "#/components/schemas/address-vnqXpY4v"
+		},
+		"disabled_at": {
+			"$ref": "#/components/schemas/disabled_at"
+		},
+		"enabled": {
+			"$ref": "#/components/schemas/schemas-enabled-bB0yneoJ"
+		},
+		"header": {
+			"$ref": "#/components/schemas/schemas-header"
+		},
+		"name": {
+			"$ref": "#/components/schemas/schemas-name-JBUkEBn7"
+		},
+		"virtual_network_id": {
+			"$ref": "#/components/schemas/virtual_network_id"
+		},
+		"weight": {
+			"$ref": "#/components/schemas/weight-JtSNlUKc"
+		}
+	},
+	"type": "object"
+}

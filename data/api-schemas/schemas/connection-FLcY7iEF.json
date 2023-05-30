@@ -1,0 +1,13 @@
+{
+	"properties": {
+		"colo_name": {
+			"$ref": "#/components/schemas/colo_name-z0RHvoYh"
+		},
+		"is_pending_reconnect": {
+			"$ref": "#/components/schemas/is_pending_reconnect"
+		},
+		"uuid": {
+			"$ref": "#/components/schemas/connection_id"
+		}
+	}
+}

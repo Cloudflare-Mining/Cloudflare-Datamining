@@ -41,7 +41,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common-BMfVDG06"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
@@ -82,7 +82,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -96,7 +96,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -165,7 +165,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-PAmkZGnN"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
@@ -191,7 +191,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -205,7 +205,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -285,7 +285,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-orHM1jWS"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -308,7 +308,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -322,7 +322,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []
@@ -395,7 +395,7 @@
 								"type": "string"
 							},
 							"name": {
-								"$ref": "#/components/schemas/name-aa3piG4c"
+								"$ref": "#/components/schemas/name-4XkzORU1"
 							},
 							"opacity": {
 								"$ref": "#/components/schemas/opacity"
@@ -426,7 +426,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-orHM1jWS"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -449,7 +449,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": [
@@ -463,7 +463,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages-KPbOwT6c"
+											"$ref": "#/components/schemas/messages"
 										}
 									],
 									"example": []

@@ -1,5 +1,5 @@
 {
-	"description": "Metadata associated with the tunnel.",
-	"example": {},
-	"type": "object"
+	"description": "Arbitrary JSON to be associated with a key/value pair.",
+	"example": "{\"someMetadataKey\": \"someMetadataValue\"}",
+	"type": "string"
 }

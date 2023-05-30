@@ -28,7 +28,7 @@
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/settings-maRJzVOk"
+											"$ref": "#/components/schemas/settings-tELxK6d2"
 										}
 									}
 								}
@@ -51,7 +51,7 @@
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/settings-maRJzVOk"
+													"$ref": "#/components/schemas/settings-tELxK6d2"
 												}
 											}
 										}
@@ -62,7 +62,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-D3af2J3L"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -76,7 +76,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-D3af2J3L"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

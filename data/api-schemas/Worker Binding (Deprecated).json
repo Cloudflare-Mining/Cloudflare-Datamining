@@ -26,10 +26,10 @@
 								{
 									"properties": {
 										"errors": {
-											"$ref": "#/components/schemas/messages-pTUdXutO"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"$ref": "#/components/schemas/messages-pTUdXutO"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -96,10 +96,10 @@
 										{
 											"properties": {
 												"errors": {
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -157,7 +157,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -171,7 +171,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-pTUdXutO"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

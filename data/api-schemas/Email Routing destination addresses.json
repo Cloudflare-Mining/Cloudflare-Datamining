@@ -41,7 +41,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -152,7 +152,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-nBnoSyq1"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
@@ -246,7 +246,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {
@@ -307,7 +307,7 @@
 					"schema": {
 						"properties": {
 							"email": {
-								"$ref": "#/components/schemas/email"
+								"$ref": "#/components/schemas/email-GRKO1h0o"
 							}
 						},
 						"required": [
@@ -326,7 +326,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
+									"$ref": "#/components/schemas/api-response-single"
 								},
 								{
 									"properties": {

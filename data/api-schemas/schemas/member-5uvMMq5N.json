@@ -1,0 +1,51 @@
+{
+	"properties": {
+		"code": {
+			"$ref": "#/components/schemas/code"
+		},
+		"id": {
+			"$ref": "#/components/schemas/membership_components-schemas-identifier"
+		},
+		"roles": {
+			"description": "Roles assigned to this member.",
+			"items": {
+				"$ref": "#/components/schemas/role-y9VVVjol"
+			},
+			"type": "array"
+		},
+		"status": {
+			"readOnly": true
+		},
+		"user": {
+			"properties": {
+				"email": {
+					"$ref": "#/components/schemas/email-DYwLFMwr"
+				},
+				"first_name": {
+					"$ref": "#/components/schemas/first_name"
+				},
+				"id": {
+					"$ref": "#/components/schemas/common_components-schemas-identifier"
+				},
+				"last_name": {
+					"$ref": "#/components/schemas/last_name"
+				},
+				"two_factor_authentication_enabled": {
+					"$ref": "#/components/schemas/two_factor_authentication_enabled"
+				}
+			},
+			"readOnly": true,
+			"required": [
+				"email"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"id",
+		"user",
+		"status",
+		"roles"
+	],
+	"type": "object"
+}

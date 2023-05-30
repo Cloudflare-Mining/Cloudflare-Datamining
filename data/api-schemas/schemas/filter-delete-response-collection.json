@@ -1,7 +1,7 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+			"$ref": "#/components/schemas/api-response-collection"
 		},
 		{
 			"properties": {
@@ -9,7 +9,7 @@
 					"items": {
 						"allOf": [
 							{
-								"$ref": "#/components/schemas/filter-q8x7PiUI"
+								"$ref": "#/components/schemas/filter"
 							},
 							{
 								"required": [

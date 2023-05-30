@@ -1,0 +1,60 @@
+{
+	"properties": {
+		"bundle_method": {
+			"$ref": "#/components/schemas/bundle_method"
+		},
+		"expires_on": {
+			"$ref": "#/components/schemas/components-schemas-expires_on-HZo1o33B"
+		},
+		"geo_restrictions": {
+			"$ref": "#/components/schemas/geo_restrictions"
+		},
+		"hosts": {
+			"$ref": "#/components/schemas/hosts"
+		},
+		"id": {
+			"$ref": "#/components/schemas/custom-certificate_components-schemas-identifier"
+		},
+		"issuer": {
+			"$ref": "#/components/schemas/issuer"
+		},
+		"keyless_server": {
+			"$ref": "#/components/schemas/keyless-certificate-cmhVJcL2"
+		},
+		"modified_on": {
+			"$ref": "#/components/schemas/schemas-modified_on-qbZDdJaf"
+		},
+		"policy": {
+			"$ref": "#/components/schemas/policy"
+		},
+		"priority": {
+			"$ref": "#/components/schemas/priority-tqhQCfHn"
+		},
+		"signature": {
+			"$ref": "#/components/schemas/signature"
+		},
+		"status": {
+			"$ref": "#/components/schemas/custom-certificate_components-schemas-status"
+		},
+		"uploaded_on": {
+			"$ref": "#/components/schemas/uploaded_on"
+		},
+		"zone_id": {
+			"$ref": "#/components/schemas/common_components-schemas-identifier"
+		}
+	},
+	"required": [
+		"id",
+		"hosts",
+		"issuer",
+		"signature",
+		"status",
+		"bundle_method",
+		"zone_id",
+		"uploaded_on",
+		"modified_on",
+		"expires_on",
+		"priority"
+	],
+	"type": "object"
+}

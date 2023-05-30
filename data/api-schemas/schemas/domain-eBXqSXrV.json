@@ -1,0 +1,23 @@
+{
+	"properties": {
+		"environment": {
+			"$ref": "#/components/schemas/environment"
+		},
+		"hostname": {
+			"$ref": "#/components/schemas/components-schemas-hostname"
+		},
+		"id": {
+			"$ref": "#/components/schemas/domain_identifier"
+		},
+		"service": {
+			"$ref": "#/components/schemas/schemas-service"
+		},
+		"zone_id": {
+			"$ref": "#/components/schemas/zone_identifier-oBRZr7hd"
+		},
+		"zone_name": {
+			"$ref": "#/components/schemas/zone_name"
+		}
+	},
+	"type": "object"
+}

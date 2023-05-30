@@ -1,14 +1,14 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+			"$ref": "#/components/schemas/api-response-collection"
 		},
 		{
 			"properties": {
 				"result": {
 					"additionalProperties": {
 						"items": {
-							"$ref": "#/components/schemas/eligibility-AvodLix7"
+							"$ref": "#/components/schemas/eligibility-T5MVMobH"
 						},
 						"type": "array"
 					},

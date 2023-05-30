@@ -1,32 +1,26 @@
 {
 	"properties": {
-		"certificate": {
-			"$ref": "#/components/schemas/components-schemas-certificate"
+		"associated_hostnames": {
+			"$ref": "#/components/schemas/associated_hostnames"
 		},
-		"csr": {
-			"$ref": "#/components/schemas/csr"
+		"created_at": {
+			"$ref": "#/components/schemas/timestamp"
 		},
 		"expires_on": {
-			"$ref": "#/components/schemas/schemas-expires_on"
+			"$ref": "#/components/schemas/timestamp"
 		},
-		"hostnames": {
-			"$ref": "#/components/schemas/hostnames"
+		"fingerprint": {
+			"$ref": "#/components/schemas/fingerprint"
 		},
 		"id": {
-			"$ref": "#/components/schemas/identifier"
+			"description": "The ID of the application that will use this certificate."
 		},
-		"request_type": {
-			"$ref": "#/components/schemas/request_type"
+		"name": {
+			"$ref": "#/components/schemas/certificates_components-schemas-name"
 		},
-		"requested_validity": {
-			"$ref": "#/components/schemas/requested_validity"
+		"updated_at": {
+			"$ref": "#/components/schemas/timestamp"
 		}
 	},
-	"required": [
-		"hostnames",
-		"csr",
-		"requested_validity",
-		"request_type"
-	],
 	"type": "object"
 }

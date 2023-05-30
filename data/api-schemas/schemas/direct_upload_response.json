@@ -1,14 +1,14 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single-orHM1jWS"
+			"$ref": "#/components/schemas/api-response-single"
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
 						"uid": {
-							"$ref": "#/components/schemas/identifier-JoGfHwzz"
+							"$ref": "#/components/schemas/identifier-f2Fd4Fo5"
 						},
 						"uploadURL": {
 							"description": "The URL an unauthenticated upload can use for a single `HTTP POST multipart/form-data` request.",

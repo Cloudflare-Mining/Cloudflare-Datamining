@@ -1,0 +1,49 @@
+{
+	"properties": {
+		"thresholds": {
+			"properties": {
+				"auth_id_tokens": {
+					"$ref": "#/components/schemas/auth_id_tokens"
+				},
+				"data_points": {
+					"$ref": "#/components/schemas/data_points"
+				},
+				"last_updated": {
+					"$ref": "#/components/schemas/timestamp"
+				},
+				"p50": {
+					"$ref": "#/components/schemas/p50"
+				},
+				"p90": {
+					"$ref": "#/components/schemas/p90"
+				},
+				"p99": {
+					"$ref": "#/components/schemas/p99"
+				},
+				"period_seconds": {
+					"$ref": "#/components/schemas/period_seconds"
+				},
+				"requests": {
+					"$ref": "#/components/schemas/requests-r9MJhlJM"
+				},
+				"suggested_threshold": {
+					"$ref": "#/components/schemas/suggested_threshold"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"readOnly": true,
+	"required": [
+		"period_seconds",
+		"suggested_threshold",
+		"p50",
+		"p90",
+		"p99",
+		"requests",
+		"auth_id_tokens",
+		"data_points",
+		"last_updated"
+	],
+	"type": "object"
+}

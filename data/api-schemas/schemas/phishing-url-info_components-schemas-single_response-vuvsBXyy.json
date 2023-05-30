@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/phishing-url-info"
+				}
+			}
+		}
+	]
+}

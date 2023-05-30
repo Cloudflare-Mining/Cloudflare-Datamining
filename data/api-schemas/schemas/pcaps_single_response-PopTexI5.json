@@ -1,0 +1,21 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-QvsTOTie"
+		},
+		{
+			"properties": {
+				"result": {
+					"anyOf": [
+						{
+							"$ref": "#/components/schemas/pcaps_response_simple"
+						},
+						{
+							"$ref": "#/components/schemas/pcaps_response_full"
+						}
+					]
+				}
+			}
+		}
+	]
+}

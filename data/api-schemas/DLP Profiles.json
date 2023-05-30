@@ -43,7 +43,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common-xCIf8sHY"
+									"$ref": "#/components/schemas/api-response-common"
 								},
 								{
 									"properties": {
@@ -75,7 +75,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common-xCIf8sHY"
+											"$ref": "#/components/schemas/api-response-common"
 										},
 										{
 											"properties": {
@@ -100,7 +100,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -114,7 +114,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -185,13 +185,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-PKpGqsr4"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/profiles"
+												"$ref": "#/components/schemas/profiles-6Js3vxKL"
 											},
 											"type": "array"
 										}
@@ -211,13 +211,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-PKpGqsr4"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/profiles"
+														"$ref": "#/components/schemas/profiles-6Js3vxKL"
 													},
 													"type": "array"
 												}
@@ -230,7 +230,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -244,7 +244,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -329,7 +329,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-c6ts8WtJ"
+									"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
 								},
 								{
 									"properties": {
@@ -362,7 +362,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-c6ts8WtJ"
+											"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
 										},
 										{
 											"properties": {
@@ -388,7 +388,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -402,7 +402,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -487,7 +487,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-c6ts8WtJ"
+									"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
 								},
 								{
 									"properties": {
@@ -514,7 +514,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-c6ts8WtJ"
+											"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
 										},
 										{
 											"properties": {
@@ -534,7 +534,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -548,7 +548,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -633,7 +633,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-c6ts8WtJ"
+									"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
 								},
 								{
 									"properties": {
@@ -660,7 +660,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-c6ts8WtJ"
+											"$ref": "#/components/schemas/api-response-single-IVpnJ2v5"
 										},
 										{
 											"properties": {
@@ -680,7 +680,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -694,7 +694,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -789,7 +789,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection-PKpGqsr4"
+									"$ref": "#/components/schemas/api-response-collection"
 								},
 								{
 									"properties": {
@@ -815,7 +815,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection-PKpGqsr4"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -834,7 +834,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -848,7 +848,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -942,7 +942,7 @@
 							"entries": {
 								"description": "The custom entries for this profile. Array elements with IDs are modifying the existing entry with that ID. Elements without ID will create new entries. Any entry not in the list will be deleted.",
 								"items": {
-									"$ref": "#/components/schemas/custom_entry"
+									"$ref": "#/components/schemas/custom_entry-sCBawGQf"
 								},
 								"type": "array"
 							},
@@ -993,7 +993,7 @@
 								"entries": {
 									"description": "The entries for this profile.",
 									"items": {
-										"$ref": "#/components/schemas/custom_entry-YFMVbkDE"
+										"$ref": "#/components/schemas/custom_entry-sCBawGQf"
 									},
 									"type": "array"
 								},
@@ -1045,7 +1045,7 @@
 										"entries": {
 											"description": "The entries for this profile.",
 											"items": {
-												"$ref": "#/components/schemas/custom_entry-YFMVbkDE"
+												"$ref": "#/components/schemas/custom_entry-sCBawGQf"
 											},
 											"type": "array"
 										},
@@ -1077,7 +1077,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -1091,7 +1091,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []
@@ -1283,7 +1283,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": [
@@ -1297,7 +1297,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages-HKEYVrPi"
+													"$ref": "#/components/schemas/messages"
 												}
 											],
 											"example": []

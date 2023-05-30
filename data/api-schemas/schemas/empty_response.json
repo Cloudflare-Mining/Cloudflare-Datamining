@@ -1,17 +1,24 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection-AiBbhG77"
-		},
-		{
 			"properties": {
 				"result": {
-					"items": {},
-					"maxItems": 0,
-					"type": "array"
+					"enum": [
+						true,
+						false
+					],
+					"example": true,
+					"type": "boolean"
+				},
+				"success": {
+					"enum": [
+						true,
+						false
+					],
+					"example": true,
+					"type": "boolean"
 				}
-			},
-			"type": "object"
+			}
 		}
 	]
 }

@@ -1,0 +1,20 @@
+{
+	"items": {
+		"properties": {
+			"name": {
+				"$ref": "#/components/schemas/name-5oTDlc2o"
+			},
+			"type": {
+				"$ref": "#/components/schemas/type-i5V8AOli"
+			}
+		},
+		"required": [
+			"type",
+			"name"
+		],
+		"type": "object"
+	},
+	"maxItems": 10,
+	"type": "array",
+	"uniqueItems": true
+}
