@@ -1,5 +1,14 @@
 {
-	"description": "An IPv4 or IPv6 address.",
-	"example": "192.0.2.1",
-	"type": "string"
+	"anyOf": [
+		{
+			"example": "192.0.2.0",
+			"format": "ipv4",
+			"type": "string"
+		},
+		{
+			"example": "2001:0DB8::",
+			"format": "ipv6",
+			"type": "string"
+		}
+	]
 }

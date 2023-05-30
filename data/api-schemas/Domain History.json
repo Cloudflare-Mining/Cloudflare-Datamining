@@ -18,7 +18,7 @@
 				"in": "query",
 				"name": "domain",
 				"schema": {
-					"example": "example.com"
+					"type": "string"
 				}
 			}
 		],
@@ -80,7 +80,7 @@
 														"type": "array"
 													},
 													"domain": {
-														"$ref": "#/components/schemas/domain_name-Cg4Spk1E"
+														"$ref": "#/components/schemas/schemas-domain_name"
 													}
 												}
 											},
@@ -94,7 +94,7 @@
 				},
 				"description": "Get Domain History response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -153,7 +153,7 @@
 																"type": "array"
 															},
 															"domain": {
-																"$ref": "#/components/schemas/domain_name-Cg4Spk1E"
+																"$ref": "#/components/schemas/schemas-domain_name"
 															}
 														}
 													},
@@ -258,6 +258,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Get Domain History",

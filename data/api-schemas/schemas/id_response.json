@@ -100,7 +100,10 @@
 				"result": {
 					"properties": {
 						"id": {
-							"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+							"description": "API uuid tag.",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"type": "string"
 						}
 					},
 					"type": "object"

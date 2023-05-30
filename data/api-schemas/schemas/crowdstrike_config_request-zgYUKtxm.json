@@ -1,0 +1,31 @@
+{
+	"properties": {
+		"api_url": {
+			"description": "The Crowdstrike API URL.",
+			"example": "https://api.us-2.crowdstrike.com",
+			"type": "string"
+		},
+		"client_id": {
+			"description": "The Crowdstrike client ID.",
+			"example": "example client id",
+			"type": "string"
+		},
+		"client_secret": {
+			"description": "The Crowdstrike client secret.",
+			"example": "example client secret",
+			"type": "string"
+		},
+		"customer_id": {
+			"description": "The Crowdstrike customer ID.",
+			"example": "example customer id",
+			"type": "string"
+		}
+	},
+	"required": [
+		"api_url",
+		"customer_id",
+		"client_id",
+		"client_secret"
+	],
+	"type": "object"
+}

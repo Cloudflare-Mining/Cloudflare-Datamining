@@ -1,17 +1,17 @@
 {
-	"description": "Filter options for a particular resource type (pool or origin). Use null to reset.",
-	"nullable": true,
-	"properties": {
-		"disable": {
-			"default": false,
-			"description": "If set true, disable notifications for this type of resource (pool or origin).",
-			"type": "boolean"
+	"description": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings.",
+	"example": [
+		{
+			"ComparisonOperator": "==",
+			"Key": "zones",
+			"Optional": false
 		},
-		"healthy": {
-			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
-			"nullable": true,
-			"type": "boolean"
+		{
+			"ComparisonOperator": ">=",
+			"Key": "slo",
+			"Optional": true
 		}
-	},
-	"type": "object"
+	],
+	"items": {},
+	"type": "array"
 }

@@ -1,12 +1,12 @@
 {
-	"description": "The current status of the origin server according to the health check.",
+	"description": "Status of the zone's custom SSL.",
 	"enum": [
-		"unknown",
-		"healthy",
-		"unhealthy",
-		"suspended"
+		"active",
+		"expired",
+		"deleted",
+		"pending",
+		"initializing"
 	],
-	"example": "healthy",
-	"readOnly": true,
-	"type": "string"
+	"example": "active",
+	"readOnly": true
 }

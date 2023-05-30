@@ -1,10 +1,20 @@
 {
-	"default": "all",
-	"description": "Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.\n",
-	"enum": [
-		"any",
-		"all"
-	],
-	"example": "any",
-	"type": "string"
+	"description": "The conditions that the client must match to run the rule.",
+	"items": {
+		"properties": {
+			"platform": {
+				"enum": [
+					"windows",
+					"mac",
+					"linux",
+					"android",
+					"ios"
+				],
+				"example": "windows",
+				"type": "string"
+			}
+		},
+		"type": "object"
+	},
+	"type": "array"
 }

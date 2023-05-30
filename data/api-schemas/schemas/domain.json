@@ -1,33 +1,72 @@
 {
 	"properties": {
-		"environment": {
-			"description": "Worker environment associated with the zone and hostname.",
-			"example": "production",
+		"additional_information": {
+			"description": "Additional information related to the host name.",
+			"properties": {
+				"suspected_malware_family": {
+					"description": "Suspected DGA malware family.",
+					"example": "",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"application": {
+			"description": "Application that the hostname belongs to.",
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"name": {
+					"example": "CLOUDFLARE",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"content_categories": {
+			"description": "Current content categories.",
+			"example": [
+				{
+					"id": 155,
+					"name": "Technology",
+					"super_category_id": 26
+				}
+			]
+		},
+		"domain": {
+			"example": "cloudflare.com",
 			"type": "string"
 		},
-		"hostname": {
-			"description": "Hostname of the Worker Domain.",
-			"example": "foo.example.com",
-			"type": "string"
+		"popularity_rank": {
+			"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
+			"type": "integer"
 		},
-		"id": {
-			"description": "Identifer of the Worker Domain.",
-			"example": "dbe10b4bc17c295377eabd600e1787fd"
+		"resolves_to_refs": {
+			"description": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to.",
+			"items": {
+				"properties": {
+					"id": {
+						"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c",
+						"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537",
+						"type": "string"
+					},
+					"value": {
+						"description": "IP address or domain name.",
+						"example": "192.0.2.0",
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
+			"type": "array"
 		},
-		"service": {
-			"description": "Worker service associated with the zone and hostname.",
-			"example": "foo",
-			"type": "string"
+		"risk_score": {
+			"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk).",
+			"type": "number"
 		},
-		"zone_id": {
-			"description": "Identifier of the zone.",
-			"example": "593c9c94de529bbbfaac7c53ced0447d"
-		},
-		"zone_name": {
-			"description": "Name of the zone.",
-			"example": "example.com",
-			"type": "string"
+		"risk_types": {
+			"example": []
 		}
-	},
-	"type": "object"
+	}
 }

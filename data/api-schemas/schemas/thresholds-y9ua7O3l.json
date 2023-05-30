@@ -1,0 +1,68 @@
+{
+	"properties": {
+		"thresholds": {
+			"properties": {
+				"auth_id_tokens": {
+					"description": "The total number of auth-ids seen across this calculation.",
+					"readOnly": true,
+					"type": "integer"
+				},
+				"data_points": {
+					"description": "The number of data points used for the threshold suggestion calculation.",
+					"readOnly": true,
+					"type": "integer"
+				},
+				"last_updated": {
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"readOnly": true,
+					"type": "string"
+				},
+				"p50": {
+					"description": "The p50 quantile of requests (in period_seconds).",
+					"readOnly": true,
+					"type": "integer"
+				},
+				"p90": {
+					"description": "The p90 quantile of requests (in period_seconds).",
+					"readOnly": true,
+					"type": "integer"
+				},
+				"p99": {
+					"description": "The p99 quantile of requests (in period_seconds).",
+					"readOnly": true,
+					"type": "integer"
+				},
+				"period_seconds": {
+					"description": "The period over which this threshold is suggested.",
+					"readOnly": true,
+					"type": "integer"
+				},
+				"requests": {
+					"description": "The estimated number of requests covered by these calculations.",
+					"readOnly": true,
+					"type": "integer"
+				},
+				"suggested_threshold": {
+					"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
+					"readOnly": true,
+					"type": "integer"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"readOnly": true,
+	"required": [
+		"period_seconds",
+		"suggested_threshold",
+		"p50",
+		"p90",
+		"p99",
+		"requests",
+		"auth_id_tokens",
+		"data_points",
+		"last_updated"
+	],
+	"type": "object"
+}

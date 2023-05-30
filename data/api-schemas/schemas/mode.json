@@ -1,12 +1,9 @@
 {
-	"description": "The action to perform.",
+	"default": "on",
+	"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
 	"enum": [
-		"simulate",
-		"ban",
-		"challenge",
-		"js_challenge",
-		"managed_challenge"
+		"on",
+		"off"
 	],
-	"example": "challenge",
 	"type": "string"
 }

@@ -435,7 +435,7 @@
 											"items": {
 												"properties": {
 													"created_at": {
-														"$ref": "#/components/schemas/created_at-k3E4pOpl"
+														"$ref": "#/components/schemas/webhooks_components-schemas-created_at"
 													},
 													"id": {
 														"$ref": "#/components/schemas/uuid"
@@ -447,16 +447,16 @@
 														"$ref": "#/components/schemas/last_success"
 													},
 													"name": {
-														"$ref": "#/components/schemas/components-schemas-name-PXWVDuNQ"
+														"$ref": "#/components/schemas/webhooks_components-schemas-name"
 													},
 													"secret": {
 														"$ref": "#/components/schemas/secret"
 													},
 													"type": {
-														"$ref": "#/components/schemas/components-schemas-type-J0WJEUvc"
+														"$ref": "#/components/schemas/webhooks_components-schemas-type"
 													},
 													"url": {
-														"$ref": "#/components/schemas/url-UNV2cUrx"
+														"$ref": "#/components/schemas/webhooks_components-schemas-url"
 													}
 												},
 												"type": "object"
@@ -504,7 +504,7 @@
 													"items": {
 														"properties": {
 															"created_at": {
-																"$ref": "#/components/schemas/created_at-k3E4pOpl"
+																"$ref": "#/components/schemas/webhooks_components-schemas-created_at"
 															},
 															"id": {
 																"$ref": "#/components/schemas/uuid"
@@ -516,16 +516,16 @@
 																"$ref": "#/components/schemas/last_success"
 															},
 															"name": {
-																"$ref": "#/components/schemas/components-schemas-name-PXWVDuNQ"
+																"$ref": "#/components/schemas/webhooks_components-schemas-name"
 															},
 															"secret": {
 																"$ref": "#/components/schemas/secret"
 															},
 															"type": {
-																"$ref": "#/components/schemas/components-schemas-type-J0WJEUvc"
+																"$ref": "#/components/schemas/webhooks_components-schemas-type"
 															},
 															"url": {
-																"$ref": "#/components/schemas/url-UNV2cUrx"
+																"$ref": "#/components/schemas/webhooks_components-schemas-url"
 															}
 														},
 														"type": "object"
@@ -710,7 +710,7 @@
 										"result": {
 											"properties": {
 												"created_at": {
-													"$ref": "#/components/schemas/created_at-k3E4pOpl"
+													"$ref": "#/components/schemas/created_at"
 												},
 												"id": {
 													"$ref": "#/components/schemas/uuid"
@@ -722,16 +722,16 @@
 													"$ref": "#/components/schemas/last_success"
 												},
 												"name": {
-													"$ref": "#/components/schemas/components-schemas-name-PXWVDuNQ"
+													"$ref": "#/components/schemas/components-schemas-name"
 												},
 												"secret": {
 													"$ref": "#/components/schemas/secret"
 												},
 												"type": {
-													"$ref": "#/components/schemas/components-schemas-type-J0WJEUvc"
+													"$ref": "#/components/schemas/components-schemas-type"
 												},
 												"url": {
-													"$ref": "#/components/schemas/url-UNV2cUrx"
+													"$ref": "#/components/schemas/url"
 												}
 											},
 											"type": "object"
@@ -779,7 +779,7 @@
 												"result": {
 													"properties": {
 														"created_at": {
-															"$ref": "#/components/schemas/created_at-k3E4pOpl"
+															"$ref": "#/components/schemas/created_at"
 														},
 														"id": {
 															"$ref": "#/components/schemas/uuid"
@@ -791,16 +791,16 @@
 															"$ref": "#/components/schemas/last_success"
 														},
 														"name": {
-															"$ref": "#/components/schemas/components-schemas-name-PXWVDuNQ"
+															"$ref": "#/components/schemas/components-schemas-name"
 														},
 														"secret": {
 															"$ref": "#/components/schemas/secret"
 														},
 														"type": {
-															"$ref": "#/components/schemas/components-schemas-type-J0WJEUvc"
+															"$ref": "#/components/schemas/components-schemas-type"
 														},
 														"url": {
-															"$ref": "#/components/schemas/url-UNV2cUrx"
+															"$ref": "#/components/schemas/url"
 														}
 													},
 													"type": "object"
@@ -1000,10 +1000,9 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "UUID",
+													"description": "API uuid tag.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -1052,10 +1051,9 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "UUID",
+															"description": "API uuid tag.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
 															"type": "string"
 														}
 													},
@@ -1268,10 +1266,9 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "UUID",
+													"description": "API uuid tag.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
-													"readOnly": true,
 													"type": "string"
 												}
 											},
@@ -1320,10 +1317,9 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "UUID",
+															"description": "API uuid tag.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
-															"readOnly": true,
 															"type": "string"
 														}
 													},

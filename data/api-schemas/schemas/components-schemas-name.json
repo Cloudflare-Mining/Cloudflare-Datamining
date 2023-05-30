@@ -1,10 +1,5 @@
 {
-	"description": "The unique component.",
-	"enum": [
-		"zones",
-		"page_rules",
-		"dedicated_certificates",
-		"dedicated_certificates_custom"
-	],
-	"example": "page_rules"
+	"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
+	"example": "Slack Webhook",
+	"type": "string"
 }

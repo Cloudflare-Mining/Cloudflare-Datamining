@@ -1,0 +1,12 @@
+{
+	"description": "The action to perform.",
+	"enum": [
+		"simulate",
+		"ban",
+		"challenge",
+		"js_challenge",
+		"managed_challenge"
+	],
+	"example": "challenge",
+	"type": "string"
+}

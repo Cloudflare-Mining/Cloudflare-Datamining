@@ -1,7 +1,7 @@
 {
-	"default": 100,
-	"description": "Number of DNS records per page.",
-	"maximum": 50000,
+	"default": 25,
+	"description": "Number of items per page.",
+	"maximum": 1000,
 	"minimum": 5,
 	"type": "number"
 }

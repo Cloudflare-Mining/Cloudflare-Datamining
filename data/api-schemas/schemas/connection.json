@@ -1,57 +1,37 @@
 {
 	"properties": {
-		"created_on": {
-			"description": "When the connection was created.",
-			"example": "2017-06-14T00:00:00Z",
-			"format": "date-time",
-			"readOnly": true,
-			"type": "string"
+		"added_at": {
+			"example": "2021-08-18T10:51:10.09615Z"
 		},
-		"enabled": {
-			"default": false,
-			"description": "A value indicating whether the connection is enabled or not.",
-			"example": true,
-			"type": "boolean"
+		"domain_reported_malicious": {
+			"example": false
+		},
+		"first_page_url": {
+			"example": "blog.cloudflare.com/page"
+		},
+		"first_seen_at": {
+			"example": "2021-08-18T10:51:08Z"
+		},
+		"host": {
+			"example": "blog.cloudflare.com"
 		},
 		"id": {
-			"description": "Connection identifier tag.",
-			"example": "c4a7362d577a6c3019a474fd6f485821",
-			"maxLength": 32,
-			"readOnly": true,
-			"type": "string"
+			"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
 		},
-		"modified_on": {
-			"description": "When the connection was last modified.",
-			"example": "2017-06-14T05:20:00Z",
-			"format": "date-time",
-			"readOnly": true,
-			"type": "string"
+		"last_seen_at": {
+			"example": "2021-09-02T09:57:54Z"
 		},
-		"zone": {
-			"properties": {
-				"id": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				},
-				"name": {
-					"description": "The domain name",
-					"example": "example.com",
-					"maxLength": 253,
-					"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			"type": "object"
+		"page_urls": {
+			"example": [
+				"blog.cloudflare.com/page1",
+				"blog.cloudflare.com/page2"
+			]
+		},
+		"url": {
+			"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+		},
+		"url_contains_cdn_cgi_path": {
+			"example": false
 		}
-	},
-	"required": [
-		"id",
-		"zone",
-		"enabled"
-	],
-	"type": "object"
+	}
 }
