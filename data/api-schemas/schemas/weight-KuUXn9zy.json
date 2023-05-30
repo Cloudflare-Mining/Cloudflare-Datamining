@@ -1,0 +1,9 @@
+{
+	"default": 1,
+	"description": "The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.",
+	"example": 0.6,
+	"maximum": 1,
+	"minimum": 0,
+	"multipleOf": 0.01,
+	"type": "number"
+}

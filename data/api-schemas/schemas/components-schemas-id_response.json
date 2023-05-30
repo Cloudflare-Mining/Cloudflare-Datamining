@@ -87,7 +87,8 @@
 								{
 									"type": "string"
 								}
-							]
+							],
+							"nullable": true
 						}
 					}
 				}
@@ -99,8 +100,7 @@
 				"result": {
 					"properties": {
 						"id": {
-							"example": "23ff594956f20c2a721606e94745a8aa",
-							"readOnly": true
+							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					},
 					"type": "object"

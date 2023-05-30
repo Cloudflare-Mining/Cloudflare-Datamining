@@ -1,23 +1,5 @@
 {
-	"description": "A pattern that matches an entry",
-	"properties": {
-		"regex": {
-			"description": "The regex pattern.",
-			"example": "^4[0-9]{6,14}$",
-			"type": "string"
-		},
-		"validation": {
-			"description": "Validation algorithm for the pattern. This algorithm will get run on potential matches, and if it returns false, the entry will not be matched.",
-			"enum": [
-				"luhn"
-			],
-			"example": "luhn",
-			"type": "string"
-		}
-	},
-	"required": [
-		"regex"
-	],
-	"title": "Pattern",
-	"type": "object"
+	"example": "example.net/*",
+	"title": "Route pattern",
+	"type": "string"
 }

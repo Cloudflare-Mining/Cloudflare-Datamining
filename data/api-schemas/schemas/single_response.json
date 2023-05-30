@@ -99,97 +99,73 @@
 			"properties": {
 				"result": {
 					"properties": {
-						"alert_type": {
-							"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
-							"example": "universal_ssl_event_type",
-							"type": "string"
-						},
-						"created": {
-							"example": "2014-01-01T05:20:00.12345Z",
-							"format": "date-time",
-							"readOnly": true,
-							"type": "string"
-						},
-						"description": {
-							"description": "Optional description for the Notification policy.",
-							"example": "Something describing the policy.",
-							"type": "string"
-						},
-						"enabled": {
-							"default": true,
-							"description": "Whether or not the Notification policy is enabled.",
-							"example": true,
-							"type": "boolean"
-						},
-						"filters": {
-							"additionalProperties": {
-								"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
-								"items": {},
-								"type": "array"
-							},
-							"example": {
-								"slo": [
-									"99.9"
-								]
+						"additional_information": {
+							"description": "Additional information related to the host name.",
+							"properties": {
+								"suspected_malware_family": {
+									"description": "Suspected DGA malware family.",
+									"example": "",
+									"type": "string"
+								}
 							},
 							"type": "object"
 						},
-						"id": {
-							"description": "UUID",
-							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-							"maxLength": 36,
-							"readOnly": true,
-							"type": "string"
-						},
-						"mechanisms": {
-							"additionalProperties": {
-								"items": {
-									"properties": {
-										"id": {
-											"description": "UUID",
-											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-											"maxLength": 36,
-											"readOnly": true,
-											"type": "string"
-										}
-									},
-									"type": "object"
+						"application": {
+							"description": "Application that the hostname belongs to.",
+							"properties": {
+								"id": {
+									"type": "integer"
 								},
-								"type": "array"
-							},
-							"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
-							"example": {
-								"email": [
-									{
-										"id": "test@example.com"
-									}
-								],
-								"pagerduty": [
-									{
-										"id": "e8133a15-00a4-4d69-aec1-32f70c51f6e5"
-									}
-								],
-								"webhooks": [
-									{
-										"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
-									}
-								]
+								"name": {
+									"example": "CLOUDFLARE",
+									"type": "string"
+								}
 							},
 							"type": "object"
 						},
-						"modified": {
-							"example": "2014-01-01T05:20:00.12345Z",
-							"format": "date-time",
-							"readOnly": true,
+						"content_categories": {
+							"description": "Current content categories.",
+							"example": [
+								{
+									"id": 155,
+									"name": "Technology",
+									"super_category_id": 26
+								}
+							]
+						},
+						"domain": {
+							"example": "cloudflare.com",
 							"type": "string"
 						},
-						"name": {
-							"description": "Name of the policy.",
-							"example": "SSL Notification Event Policy",
-							"type": "string"
+						"popularity_rank": {
+							"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
+							"type": "integer"
+						},
+						"resolves_to_refs": {
+							"description": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to.",
+							"items": {
+								"properties": {
+									"id": {
+										"$ref": "#/components/schemas/stix_identifier"
+									},
+									"value": {
+										"description": "IP address or domain name.",
+										"example": "192.0.2.0",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"risk_score": {
+							"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk).",
+							"type": "number"
+						},
+						"risk_types": {
+							"example": []
 						}
-					},
-					"type": "object"
+					}
 				}
 			}
 		}

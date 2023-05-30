@@ -1,5 +1,7 @@
 {
-	"description": "The RFC 3339 timestamp of when the list was created.",
-	"example": "2020-01-01T08:00:00Z",
+	"description": "The date and time the tunnel was created.",
+	"example": "2017-06-14T00:00:00Z",
+	"format": "date-time",
+	"readOnly": true,
 	"type": "string"
 }

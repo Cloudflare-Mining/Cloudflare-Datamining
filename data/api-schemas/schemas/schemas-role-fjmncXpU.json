@@ -1,0 +1,41 @@
+{
+	"properties": {
+		"description": {
+			"description": "Description of role's permissions.",
+			"example": "Administrative access to the entire Organization",
+			"readOnly": true,
+			"type": "string"
+		},
+		"id": {
+			"description": "Role identifier tag.",
+			"example": "3536bcfad5faccb999b47003c79917fb",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
+		},
+		"name": {
+			"description": "Role Name.",
+			"example": "Organization Admin",
+			"maxLength": 120,
+			"readOnly": true,
+			"type": "string"
+		},
+		"permissions": {
+			"description": "Access permissions for this User.",
+			"items": {
+				"example": "#zones:read",
+				"maxLength": 160,
+				"type": "string"
+			},
+			"readOnly": true,
+			"type": "array"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"description",
+		"permissions"
+	],
+	"type": "object"
+}

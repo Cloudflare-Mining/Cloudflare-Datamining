@@ -1,12 +1,9 @@
 {
-	"description": "Status of the zone's custom SSL.",
 	"enum": [
-		"active",
-		"expired",
-		"deleted",
-		"pending",
-		"initializing"
+		"event_prequeueing",
+		"not_queueing",
+		"queueing"
 	],
-	"example": "active",
-	"readOnly": true
+	"example": "queueing",
+	"type": "string"
 }

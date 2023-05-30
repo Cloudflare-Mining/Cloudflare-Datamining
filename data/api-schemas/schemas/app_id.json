@@ -1,4 +1,7 @@
 {
-	"description": "The identifier for this application. There is only one application per id.",
-	"type": "integer"
+	"description": "Application identifier.",
+	"example": "ea95132c15732412d22c1476fa83f27a",
+	"maxLength": 32,
+	"readOnly": true,
+	"type": "string"
 }

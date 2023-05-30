@@ -1,9 +1,5 @@
 {
-	"description": "The sort order for the result set; sort fields must be included in `metrics` or `dimensions`.",
-	"example": [
-		"+count",
-		"-bytesIngress"
-	],
-	"items": {},
-	"type": "array"
+	"description": "A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
+	"example": "+responseCode,-queryName",
+	"type": "string"
 }

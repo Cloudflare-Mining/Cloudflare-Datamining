@@ -1,10 +1,10 @@
 {
-	"description": "Status of the Keyless SSL.",
+	"description": "Status of this membership.",
 	"enum": [
-		"active",
-		"deleted"
+		"accepted",
+		"pending",
+		"rejected"
 	],
-	"example": "active",
-	"readOnly": true,
+	"example": "accepted",
 	"type": "string"
 }

@@ -8,10 +8,9 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -77,10 +76,10 @@
 														"$ref": "#/components/schemas/captive_portal"
 													},
 													"default": {
-														"$ref": "#/components/schemas/schemas-default"
+														"$ref": "#/components/schemas/default-ZLmxZ6ah"
 													},
 													"description": {
-														"$ref": "#/components/schemas/devices_components-schemas-description"
+														"$ref": "#/components/schemas/schemas-description-c1Z6vfEr"
 													},
 													"disable_auto_fallback": {
 														"$ref": "#/components/schemas/disable_auto_fallback"
@@ -91,7 +90,7 @@
 														"type": "boolean"
 													},
 													"exclude": {
-														"$ref": "#/components/schemas/components-schemas-exclude"
+														"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 													},
 													"exclude_office_ips": {
 														"$ref": "#/components/schemas/exclude_office_ips"
@@ -103,10 +102,10 @@
 														"$ref": "#/components/schemas/gateway_unique_id"
 													},
 													"include": {
-														"$ref": "#/components/schemas/schemas-include"
+														"$ref": "#/components/schemas/include-U8sVp1yt"
 													},
 													"match": {
-														"$ref": "#/components/schemas/components-schemas-match"
+														"$ref": "#/components/schemas/schemas-match-1QMFDqNu"
 													},
 													"name": {
 														"description": "The name of the device settings policy.",
@@ -115,10 +114,10 @@
 														"type": "string"
 													},
 													"policy_id": {
-														"$ref": "#/components/schemas/uuid"
+														"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 													},
 													"precedence": {
-														"$ref": "#/components/schemas/schemas-precedence"
+														"$ref": "#/components/schemas/precedence-PZa8txMt"
 													},
 													"service_mode_v2": {
 														"$ref": "#/components/schemas/service_mode_v2"
@@ -142,7 +141,7 @@
 				},
 				"description": "Delete Device Settings Policy response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -190,10 +189,10 @@
 																"$ref": "#/components/schemas/captive_portal"
 															},
 															"default": {
-																"$ref": "#/components/schemas/schemas-default"
+																"$ref": "#/components/schemas/default-ZLmxZ6ah"
 															},
 															"description": {
-																"$ref": "#/components/schemas/devices_components-schemas-description"
+																"$ref": "#/components/schemas/schemas-description-c1Z6vfEr"
 															},
 															"disable_auto_fallback": {
 																"$ref": "#/components/schemas/disable_auto_fallback"
@@ -204,7 +203,7 @@
 																"type": "boolean"
 															},
 															"exclude": {
-																"$ref": "#/components/schemas/components-schemas-exclude"
+																"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 															},
 															"exclude_office_ips": {
 																"$ref": "#/components/schemas/exclude_office_ips"
@@ -216,10 +215,10 @@
 																"$ref": "#/components/schemas/gateway_unique_id"
 															},
 															"include": {
-																"$ref": "#/components/schemas/schemas-include"
+																"$ref": "#/components/schemas/include-U8sVp1yt"
 															},
 															"match": {
-																"$ref": "#/components/schemas/components-schemas-match"
+																"$ref": "#/components/schemas/schemas-match-1QMFDqNu"
 															},
 															"name": {
 																"description": "The name of the device settings policy.",
@@ -228,10 +227,10 @@
 																"type": "string"
 															},
 															"policy_id": {
-																"$ref": "#/components/schemas/uuid"
+																"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 															},
 															"precedence": {
-																"$ref": "#/components/schemas/schemas-precedence"
+																"$ref": "#/components/schemas/precedence-PZa8txMt"
 															},
 															"service_mode_v2": {
 																"$ref": "#/components/schemas/service_mode_v2"
@@ -346,9 +345,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Device Settings Policy",
@@ -366,140 +362,6 @@
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
-				}
-			},
-			{
-				"in": "query",
-				"name": "limit",
-				"schema": {
-					"default": 20,
-					"description": "The number of keys to return. The cursor attribute may be used to iterate over the next batch of keys if there are more than the limit.",
-					"maximum": 100,
-					"type": "number"
-				}
-			},
-			{
-				"in": "query",
-				"name": "start_date",
-				"schema": {
-					"description": "The earliest date used to find devices whose last_seen field falls within that date range.",
-					"example": "2017-06-14T00:00:00Z",
-					"format": "date-time",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "end_date",
-				"schema": {
-					"description": "The latest date used to find devices whose last_seen field falls within that date range.",
-					"example": "2017-06-14T00:00:00Z",
-					"format": "date-time",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "order_by",
-				"schema": {
-					"default": "created",
-					"description": "The device field to order by.",
-					"enum": [
-						"id",
-						"userName",
-						"deviceName",
-						"email",
-						"type",
-						"version",
-						"updated",
-						"created",
-						"last_seen"
-					]
-				}
-			},
-			{
-				"in": "query",
-				"name": "direction",
-				"schema": {
-					"default": "desc",
-					"description": "The direction to sort device results.",
-					"enum": [
-						"asc",
-						"desc"
-					]
-				}
-			},
-			{
-				"in": "query",
-				"name": "deviceName",
-				"schema": {
-					"description": "The device name.",
-					"example": "MyPhone",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "userName",
-				"schema": {
-					"description": "The device user's name as defined by the configured Access IDP.",
-					"example": "John",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "email",
-				"schema": {
-					"description": "The contact email address of the user.",
-					"example": "user@example.com",
-					"maxLength": 90,
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "version",
-				"schema": {
-					"description": "The WARP client version.",
-					"example": "1.0.0",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "match",
-				"schema": {
-					"default": "any",
-					"description": "Return results matching any or all of the provided search parameters.",
-					"enum": [
-						"any",
-						"all"
-					]
-				}
-			},
-			{
-				"in": "query",
-				"name": "cursor",
-				"schema": {
-					"description": "Opaque token indicating the position from which to continue when requesting the next set of records if the amount of list results was limited by the limit parameter. A valid value for the cursor can be obtained from the cursors object in the result_info structure.",
-					"example": "MjAyMS0xMC0xOVQyMDo1MDoyNS41NDU5NDda.L2KKczEeEeynSvpH_4kcCQ",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "platform",
-				"schema": {
-					"enum": [
-						"windows",
-						"mac",
-						"linux",
-						"android",
-						"ios"
-					],
-					"example": "windows",
-					"type": "string"
 				}
 			}
 		],
@@ -535,22 +397,22 @@
 											"items": {
 												"properties": {
 													"created": {
-														"$ref": "#/components/schemas/schemas-created"
+														"$ref": "#/components/schemas/created-pmRl8vDf"
 													},
 													"deleted": {
-														"$ref": "#/components/schemas/schemas-deleted"
+														"$ref": "#/components/schemas/deleted-5IbaCbRC"
 													},
 													"device_type": {
 														"$ref": "#/components/schemas/platform"
 													},
 													"id": {
-														"$ref": "#/components/schemas/devices_components-schemas-uuid"
+														"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 													},
 													"ip": {
-														"$ref": "#/components/schemas/components-schemas-ip"
+														"$ref": "#/components/schemas/ip-QFXoUvsK"
 													},
 													"key": {
-														"$ref": "#/components/schemas/schemas-key"
+														"$ref": "#/components/schemas/key-esihZACx"
 													},
 													"last_seen": {
 														"$ref": "#/components/schemas/last_seen"
@@ -565,7 +427,7 @@
 														"$ref": "#/components/schemas/model"
 													},
 													"name": {
-														"$ref": "#/components/schemas/devices_components-schemas-name"
+														"$ref": "#/components/schemas/schemas-name-DglmrziE"
 													},
 													"os_distro_name": {
 														"$ref": "#/components/schemas/os_distro_name"
@@ -576,20 +438,23 @@
 													"os_version": {
 														"$ref": "#/components/schemas/os_version"
 													},
+													"os_version_extra": {
+														"$ref": "#/components/schemas/os_version_extra"
+													},
 													"revoked_at": {
 														"$ref": "#/components/schemas/revoked_at"
 													},
 													"serial_number": {
-														"$ref": "#/components/schemas/components-schemas-serial_number-5JscmgS2"
+														"$ref": "#/components/schemas/serial_number-agWVNEjn"
 													},
 													"updated": {
 														"$ref": "#/components/schemas/updated"
 													},
 													"user": {
-														"$ref": "#/components/schemas/user-khDjtnSn"
+														"$ref": "#/components/schemas/user-q3t9SRZG"
 													},
 													"version": {
-														"$ref": "#/components/schemas/devices_components-schemas-version"
+														"$ref": "#/components/schemas/version-XPj9qXxz"
 													}
 												},
 												"type": "object"
@@ -602,9 +467,9 @@
 						}
 					}
 				},
-				"description": "List Devices response"
+				"description": "List Devices response."
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -637,22 +502,22 @@
 													"items": {
 														"properties": {
 															"created": {
-																"$ref": "#/components/schemas/schemas-created"
+																"$ref": "#/components/schemas/created-pmRl8vDf"
 															},
 															"deleted": {
-																"$ref": "#/components/schemas/schemas-deleted"
+																"$ref": "#/components/schemas/deleted-5IbaCbRC"
 															},
 															"device_type": {
 																"$ref": "#/components/schemas/platform"
 															},
 															"id": {
-																"$ref": "#/components/schemas/devices_components-schemas-uuid"
+																"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 															},
 															"ip": {
-																"$ref": "#/components/schemas/components-schemas-ip"
+																"$ref": "#/components/schemas/ip-QFXoUvsK"
 															},
 															"key": {
-																"$ref": "#/components/schemas/schemas-key"
+																"$ref": "#/components/schemas/key-esihZACx"
 															},
 															"last_seen": {
 																"$ref": "#/components/schemas/last_seen"
@@ -667,7 +532,7 @@
 																"$ref": "#/components/schemas/model"
 															},
 															"name": {
-																"$ref": "#/components/schemas/devices_components-schemas-name"
+																"$ref": "#/components/schemas/schemas-name-DglmrziE"
 															},
 															"os_distro_name": {
 																"$ref": "#/components/schemas/os_distro_name"
@@ -678,20 +543,23 @@
 															"os_version": {
 																"$ref": "#/components/schemas/os_version"
 															},
+															"os_version_extra": {
+																"$ref": "#/components/schemas/os_version_extra"
+															},
 															"revoked_at": {
 																"$ref": "#/components/schemas/revoked_at"
 															},
 															"serial_number": {
-																"$ref": "#/components/schemas/components-schemas-serial_number-5JscmgS2"
+																"$ref": "#/components/schemas/serial_number-agWVNEjn"
 															},
 															"updated": {
 																"$ref": "#/components/schemas/updated"
 															},
 															"user": {
-																"$ref": "#/components/schemas/user-khDjtnSn"
+																"$ref": "#/components/schemas/user-q3t9SRZG"
 															},
 															"version": {
-																"$ref": "#/components/schemas/devices_components-schemas-version"
+																"$ref": "#/components/schemas/version-XPj9qXxz"
 															}
 														},
 														"type": "object"
@@ -790,16 +658,13 @@
 						}
 					}
 				},
-				"description": "List Devices response failure"
+				"description": "List Devices response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Devices",
@@ -816,10 +681,9 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -874,7 +738,7 @@
 				},
 				"description": "Device Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1008,9 +872,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Device Details",
@@ -1027,10 +888,9 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1109,7 +969,7 @@
 				},
 				"description": "List Admin Override code for device response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1267,9 +1127,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Admin Override code for device",
@@ -1337,10 +1194,10 @@
 														"$ref": "#/components/schemas/captive_portal"
 													},
 													"default": {
-														"$ref": "#/components/schemas/schemas-default"
+														"$ref": "#/components/schemas/default-ZLmxZ6ah"
 													},
 													"description": {
-														"$ref": "#/components/schemas/devices_components-schemas-description"
+														"$ref": "#/components/schemas/schemas-description-c1Z6vfEr"
 													},
 													"disable_auto_fallback": {
 														"$ref": "#/components/schemas/disable_auto_fallback"
@@ -1351,7 +1208,7 @@
 														"type": "boolean"
 													},
 													"exclude": {
-														"$ref": "#/components/schemas/components-schemas-exclude"
+														"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 													},
 													"exclude_office_ips": {
 														"$ref": "#/components/schemas/exclude_office_ips"
@@ -1363,10 +1220,10 @@
 														"$ref": "#/components/schemas/gateway_unique_id"
 													},
 													"include": {
-														"$ref": "#/components/schemas/schemas-include"
+														"$ref": "#/components/schemas/include-U8sVp1yt"
 													},
 													"match": {
-														"$ref": "#/components/schemas/components-schemas-match"
+														"$ref": "#/components/schemas/schemas-match-1QMFDqNu"
 													},
 													"name": {
 														"description": "The name of the device settings policy.",
@@ -1375,10 +1232,10 @@
 														"type": "string"
 													},
 													"policy_id": {
-														"$ref": "#/components/schemas/uuid"
+														"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 													},
 													"precedence": {
-														"$ref": "#/components/schemas/schemas-precedence"
+														"$ref": "#/components/schemas/precedence-PZa8txMt"
 													},
 													"service_mode_v2": {
 														"$ref": "#/components/schemas/service_mode_v2"
@@ -1402,7 +1259,7 @@
 				},
 				"description": "List Device Settings Policies response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1450,10 +1307,10 @@
 																"$ref": "#/components/schemas/captive_portal"
 															},
 															"default": {
-																"$ref": "#/components/schemas/schemas-default"
+																"$ref": "#/components/schemas/default-ZLmxZ6ah"
 															},
 															"description": {
-																"$ref": "#/components/schemas/devices_components-schemas-description"
+																"$ref": "#/components/schemas/schemas-description-c1Z6vfEr"
 															},
 															"disable_auto_fallback": {
 																"$ref": "#/components/schemas/disable_auto_fallback"
@@ -1464,7 +1321,7 @@
 																"type": "boolean"
 															},
 															"exclude": {
-																"$ref": "#/components/schemas/components-schemas-exclude"
+																"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 															},
 															"exclude_office_ips": {
 																"$ref": "#/components/schemas/exclude_office_ips"
@@ -1476,10 +1333,10 @@
 																"$ref": "#/components/schemas/gateway_unique_id"
 															},
 															"include": {
-																"$ref": "#/components/schemas/schemas-include"
+																"$ref": "#/components/schemas/include-U8sVp1yt"
 															},
 															"match": {
-																"$ref": "#/components/schemas/components-schemas-match"
+																"$ref": "#/components/schemas/schemas-match-1QMFDqNu"
 															},
 															"name": {
 																"description": "The name of the device settings policy.",
@@ -1488,10 +1345,10 @@
 																"type": "string"
 															},
 															"policy_id": {
-																"$ref": "#/components/schemas/uuid"
+																"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 															},
 															"precedence": {
-																"$ref": "#/components/schemas/schemas-precedence"
+																"$ref": "#/components/schemas/precedence-PZa8txMt"
 															},
 															"service_mode_v2": {
 																"$ref": "#/components/schemas/service_mode_v2"
@@ -1606,9 +1463,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Device Settings Policies",
@@ -1688,7 +1542,7 @@
 													"type": "boolean"
 												},
 												"exclude": {
-													"$ref": "#/components/schemas/components-schemas-exclude"
+													"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 												},
 												"exclude_office_ips": {
 													"$ref": "#/components/schemas/exclude_office_ips"
@@ -1700,7 +1554,7 @@
 													"$ref": "#/components/schemas/gateway_unique_id"
 												},
 												"include": {
-													"$ref": "#/components/schemas/schemas-include"
+													"$ref": "#/components/schemas/include-U8sVp1yt"
 												},
 												"service_mode_v2": {
 													"$ref": "#/components/schemas/service_mode_v2"
@@ -1722,7 +1576,7 @@
 				},
 				"description": "Get Default Device Settings Policy response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1782,7 +1636,7 @@
 															"type": "boolean"
 														},
 														"exclude": {
-															"$ref": "#/components/schemas/components-schemas-exclude"
+															"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 														},
 														"exclude_office_ips": {
 															"$ref": "#/components/schemas/exclude_office_ips"
@@ -1794,7 +1648,7 @@
 															"$ref": "#/components/schemas/gateway_unique_id"
 														},
 														"include": {
-															"$ref": "#/components/schemas/schemas-include"
+															"$ref": "#/components/schemas/include-U8sVp1yt"
 														},
 														"service_mode_v2": {
 															"$ref": "#/components/schemas/service_mode_v2"
@@ -1907,9 +1761,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Default Device Settings Policy",
@@ -1926,10 +1777,9 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1988,10 +1838,10 @@
 													"$ref": "#/components/schemas/captive_portal"
 												},
 												"default": {
-													"$ref": "#/components/schemas/schemas-default"
+													"$ref": "#/components/schemas/default-ZLmxZ6ah"
 												},
 												"description": {
-													"$ref": "#/components/schemas/devices_components-schemas-description"
+													"$ref": "#/components/schemas/schemas-description-c1Z6vfEr"
 												},
 												"disable_auto_fallback": {
 													"$ref": "#/components/schemas/disable_auto_fallback"
@@ -2002,7 +1852,7 @@
 													"type": "boolean"
 												},
 												"exclude": {
-													"$ref": "#/components/schemas/components-schemas-exclude"
+													"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 												},
 												"exclude_office_ips": {
 													"$ref": "#/components/schemas/exclude_office_ips"
@@ -2014,10 +1864,10 @@
 													"$ref": "#/components/schemas/gateway_unique_id"
 												},
 												"include": {
-													"$ref": "#/components/schemas/schemas-include"
+													"$ref": "#/components/schemas/include-U8sVp1yt"
 												},
 												"match": {
-													"$ref": "#/components/schemas/components-schemas-match"
+													"$ref": "#/components/schemas/schemas-match-1QMFDqNu"
 												},
 												"name": {
 													"description": "The name of the device settings policy.",
@@ -2026,10 +1876,10 @@
 													"type": "string"
 												},
 												"policy_id": {
-													"$ref": "#/components/schemas/uuid"
+													"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 												},
 												"precedence": {
-													"$ref": "#/components/schemas/schemas-precedence"
+													"$ref": "#/components/schemas/precedence-PZa8txMt"
 												},
 												"service_mode_v2": {
 													"$ref": "#/components/schemas/service_mode_v2"
@@ -2051,7 +1901,7 @@
 				},
 				"description": "Get Device Settings Policy by ID response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2098,10 +1948,10 @@
 															"$ref": "#/components/schemas/captive_portal"
 														},
 														"default": {
-															"$ref": "#/components/schemas/schemas-default"
+															"$ref": "#/components/schemas/default-ZLmxZ6ah"
 														},
 														"description": {
-															"$ref": "#/components/schemas/devices_components-schemas-description"
+															"$ref": "#/components/schemas/schemas-description-c1Z6vfEr"
 														},
 														"disable_auto_fallback": {
 															"$ref": "#/components/schemas/disable_auto_fallback"
@@ -2112,7 +1962,7 @@
 															"type": "boolean"
 														},
 														"exclude": {
-															"$ref": "#/components/schemas/components-schemas-exclude"
+															"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 														},
 														"exclude_office_ips": {
 															"$ref": "#/components/schemas/exclude_office_ips"
@@ -2124,10 +1974,10 @@
 															"$ref": "#/components/schemas/gateway_unique_id"
 														},
 														"include": {
-															"$ref": "#/components/schemas/schemas-include"
+															"$ref": "#/components/schemas/include-U8sVp1yt"
 														},
 														"match": {
-															"$ref": "#/components/schemas/components-schemas-match"
+															"$ref": "#/components/schemas/schemas-match-1QMFDqNu"
 														},
 														"name": {
 															"description": "The name of the device settings policy.",
@@ -2136,10 +1986,10 @@
 															"type": "string"
 														},
 														"policy_id": {
-															"$ref": "#/components/schemas/uuid"
+															"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 														},
 														"precedence": {
-															"$ref": "#/components/schemas/schemas-precedence"
+															"$ref": "#/components/schemas/precedence-PZa8txMt"
 														},
 														"service_mode_v2": {
 															"$ref": "#/components/schemas/service_mode_v2"
@@ -2252,9 +2102,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Device Settings Policy by ID",
@@ -2271,10 +2118,9 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -2351,7 +2197,7 @@
 				},
 				"description": "Get Split Tunnel Exclude List for a Device Settings Policy response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2507,9 +2353,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Split Tunnel Exclude List for a Device Settings Policy",
@@ -2526,10 +2369,9 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -2605,7 +2447,7 @@
 				},
 				"description": "Get Local Domain Fallback List for a Device Settings Policy response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2760,9 +2602,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Local Domain Fallback List for a Device Settings Policy",
@@ -2779,10 +2618,9 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -2859,7 +2697,7 @@
 				},
 				"description": "Get Split Tunnel Include List for a Device Settings Policy response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3015,9 +2853,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Split Tunnel Include List for a Device Settings Policy",
@@ -3102,7 +2937,7 @@
 				},
 				"description": "Get Split Tunnel Exclude List response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3258,9 +3093,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Split Tunnel Exclude List",
@@ -3344,7 +3176,7 @@
 				},
 				"description": "Get Local Domain Fallback List response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3499,9 +3331,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Local Domain Fallback List",
@@ -3586,7 +3415,7 @@
 				},
 				"description": "Get Split Tunnel Include List response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3742,9 +3571,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Split Tunnel Include List",
@@ -3895,7 +3721,7 @@
 													"type": "boolean"
 												},
 												"exclude": {
-													"$ref": "#/components/schemas/components-schemas-exclude"
+													"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 												},
 												"exclude_office_ips": {
 													"$ref": "#/components/schemas/exclude_office_ips"
@@ -3907,7 +3733,7 @@
 													"$ref": "#/components/schemas/gateway_unique_id"
 												},
 												"include": {
-													"$ref": "#/components/schemas/schemas-include"
+													"$ref": "#/components/schemas/include-U8sVp1yt"
 												},
 												"service_mode_v2": {
 													"$ref": "#/components/schemas/service_mode_v2"
@@ -3929,7 +3755,7 @@
 				},
 				"description": "Update Default Device Settings Policy response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3989,7 +3815,7 @@
 															"type": "boolean"
 														},
 														"exclude": {
-															"$ref": "#/components/schemas/components-schemas-exclude"
+															"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 														},
 														"exclude_office_ips": {
 															"$ref": "#/components/schemas/exclude_office_ips"
@@ -4001,7 +3827,7 @@
 															"$ref": "#/components/schemas/gateway_unique_id"
 														},
 														"include": {
-															"$ref": "#/components/schemas/schemas-include"
+															"$ref": "#/components/schemas/include-U8sVp1yt"
 														},
 														"service_mode_v2": {
 															"$ref": "#/components/schemas/service_mode_v2"
@@ -4114,9 +3940,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update Default Device Settings Policy",
@@ -4133,10 +3956,9 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -4294,10 +4116,10 @@
 													"$ref": "#/components/schemas/captive_portal"
 												},
 												"default": {
-													"$ref": "#/components/schemas/schemas-default"
+													"$ref": "#/components/schemas/default-ZLmxZ6ah"
 												},
 												"description": {
-													"$ref": "#/components/schemas/devices_components-schemas-description"
+													"$ref": "#/components/schemas/schemas-description-c1Z6vfEr"
 												},
 												"disable_auto_fallback": {
 													"$ref": "#/components/schemas/disable_auto_fallback"
@@ -4308,7 +4130,7 @@
 													"type": "boolean"
 												},
 												"exclude": {
-													"$ref": "#/components/schemas/components-schemas-exclude"
+													"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 												},
 												"exclude_office_ips": {
 													"$ref": "#/components/schemas/exclude_office_ips"
@@ -4320,10 +4142,10 @@
 													"$ref": "#/components/schemas/gateway_unique_id"
 												},
 												"include": {
-													"$ref": "#/components/schemas/schemas-include"
+													"$ref": "#/components/schemas/include-U8sVp1yt"
 												},
 												"match": {
-													"$ref": "#/components/schemas/components-schemas-match"
+													"$ref": "#/components/schemas/schemas-match-1QMFDqNu"
 												},
 												"name": {
 													"description": "The name of the device settings policy.",
@@ -4332,10 +4154,10 @@
 													"type": "string"
 												},
 												"policy_id": {
-													"$ref": "#/components/schemas/uuid"
+													"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 												},
 												"precedence": {
-													"$ref": "#/components/schemas/schemas-precedence"
+													"$ref": "#/components/schemas/precedence-PZa8txMt"
 												},
 												"service_mode_v2": {
 													"$ref": "#/components/schemas/service_mode_v2"
@@ -4357,7 +4179,7 @@
 				},
 				"description": "Update Device Settings Policy response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4404,10 +4226,10 @@
 															"$ref": "#/components/schemas/captive_portal"
 														},
 														"default": {
-															"$ref": "#/components/schemas/schemas-default"
+															"$ref": "#/components/schemas/default-ZLmxZ6ah"
 														},
 														"description": {
-															"$ref": "#/components/schemas/devices_components-schemas-description"
+															"$ref": "#/components/schemas/schemas-description-c1Z6vfEr"
 														},
 														"disable_auto_fallback": {
 															"$ref": "#/components/schemas/disable_auto_fallback"
@@ -4418,7 +4240,7 @@
 															"type": "boolean"
 														},
 														"exclude": {
-															"$ref": "#/components/schemas/components-schemas-exclude"
+															"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 														},
 														"exclude_office_ips": {
 															"$ref": "#/components/schemas/exclude_office_ips"
@@ -4430,10 +4252,10 @@
 															"$ref": "#/components/schemas/gateway_unique_id"
 														},
 														"include": {
-															"$ref": "#/components/schemas/schemas-include"
+															"$ref": "#/components/schemas/include-U8sVp1yt"
 														},
 														"match": {
-															"$ref": "#/components/schemas/components-schemas-match"
+															"$ref": "#/components/schemas/schemas-match-1QMFDqNu"
 														},
 														"name": {
 															"description": "The name of the device settings policy.",
@@ -4442,10 +4264,10 @@
 															"type": "string"
 														},
 														"policy_id": {
-															"$ref": "#/components/schemas/uuid"
+															"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 														},
 														"precedence": {
-															"$ref": "#/components/schemas/schemas-precedence"
+															"$ref": "#/components/schemas/precedence-PZa8txMt"
 														},
 														"service_mode_v2": {
 															"$ref": "#/components/schemas/service_mode_v2"
@@ -4558,9 +4380,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update Device Settings Policy",
@@ -4731,10 +4550,10 @@
 													"$ref": "#/components/schemas/captive_portal"
 												},
 												"default": {
-													"$ref": "#/components/schemas/schemas-default"
+													"$ref": "#/components/schemas/default-ZLmxZ6ah"
 												},
 												"description": {
-													"$ref": "#/components/schemas/devices_components-schemas-description"
+													"$ref": "#/components/schemas/schemas-description-c1Z6vfEr"
 												},
 												"disable_auto_fallback": {
 													"$ref": "#/components/schemas/disable_auto_fallback"
@@ -4745,7 +4564,7 @@
 													"type": "boolean"
 												},
 												"exclude": {
-													"$ref": "#/components/schemas/components-schemas-exclude"
+													"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 												},
 												"exclude_office_ips": {
 													"$ref": "#/components/schemas/exclude_office_ips"
@@ -4757,10 +4576,10 @@
 													"$ref": "#/components/schemas/gateway_unique_id"
 												},
 												"include": {
-													"$ref": "#/components/schemas/schemas-include"
+													"$ref": "#/components/schemas/include-U8sVp1yt"
 												},
 												"match": {
-													"$ref": "#/components/schemas/components-schemas-match"
+													"$ref": "#/components/schemas/schemas-match-1QMFDqNu"
 												},
 												"name": {
 													"description": "The name of the device settings policy.",
@@ -4769,10 +4588,10 @@
 													"type": "string"
 												},
 												"policy_id": {
-													"$ref": "#/components/schemas/uuid"
+													"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 												},
 												"precedence": {
-													"$ref": "#/components/schemas/schemas-precedence"
+													"$ref": "#/components/schemas/precedence-PZa8txMt"
 												},
 												"service_mode_v2": {
 													"$ref": "#/components/schemas/service_mode_v2"
@@ -4794,7 +4613,7 @@
 				},
 				"description": "Create Device Settings Policy response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4841,10 +4660,10 @@
 															"$ref": "#/components/schemas/captive_portal"
 														},
 														"default": {
-															"$ref": "#/components/schemas/schemas-default"
+															"$ref": "#/components/schemas/default-ZLmxZ6ah"
 														},
 														"description": {
-															"$ref": "#/components/schemas/devices_components-schemas-description"
+															"$ref": "#/components/schemas/schemas-description-c1Z6vfEr"
 														},
 														"disable_auto_fallback": {
 															"$ref": "#/components/schemas/disable_auto_fallback"
@@ -4855,7 +4674,7 @@
 															"type": "boolean"
 														},
 														"exclude": {
-															"$ref": "#/components/schemas/components-schemas-exclude"
+															"$ref": "#/components/schemas/exclude-d7ZgNZLj"
 														},
 														"exclude_office_ips": {
 															"$ref": "#/components/schemas/exclude_office_ips"
@@ -4867,10 +4686,10 @@
 															"$ref": "#/components/schemas/gateway_unique_id"
 														},
 														"include": {
-															"$ref": "#/components/schemas/schemas-include"
+															"$ref": "#/components/schemas/include-U8sVp1yt"
 														},
 														"match": {
-															"$ref": "#/components/schemas/components-schemas-match"
+															"$ref": "#/components/schemas/schemas-match-1QMFDqNu"
 														},
 														"name": {
 															"description": "The name of the device settings policy.",
@@ -4879,10 +4698,10 @@
 															"type": "string"
 														},
 														"policy_id": {
-															"$ref": "#/components/schemas/uuid"
+															"$ref": "#/components/schemas/schemas-uuid-nT3aSoIS"
 														},
 														"precedence": {
-															"$ref": "#/components/schemas/schemas-precedence"
+															"$ref": "#/components/schemas/precedence-PZa8txMt"
 														},
 														"service_mode_v2": {
 															"$ref": "#/components/schemas/service_mode_v2"
@@ -4995,9 +4814,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Device Settings Policy",
@@ -5024,10 +4840,9 @@
 					"schema": {
 						"description": "A list of device ids to revoke.",
 						"items": {
-							"description": "UUID",
+							"description": "Device ID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"readOnly": true,
 							"type": "string"
 						},
 						"maxLength": 200,
@@ -5140,7 +4955,7 @@
 				},
 				"description": "Revoke Devices response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5335,9 +5150,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Revoke Devices",
@@ -5364,10 +5176,9 @@
 					"schema": {
 						"description": "A list of device ids to unrevoke.",
 						"items": {
-							"description": "UUID",
+							"description": "Device ID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"readOnly": true,
 							"type": "string"
 						},
 						"maxLength": 200,
@@ -5480,7 +5291,7 @@
 				},
 				"description": "Unrevoke Devices response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5675,9 +5486,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Unrevoke Devices",
@@ -5694,10 +5502,9 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -5965,9 +5772,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Set Split Tunnel Exclude List for a Device Settings Policy",
@@ -5984,10 +5788,9 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -6097,7 +5900,7 @@
 				},
 				"description": "Set Local Domain Fallback List for a Device Settings Policy response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -6252,9 +6055,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Set Local Domain Fallback List for a Device Settings Policy",
@@ -6271,10 +6071,9 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "UUID",
+					"description": "Device ID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -6542,9 +6341,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Set Split Tunnel Include List for a Device Settings Policy",
@@ -6820,9 +6616,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Set Split Tunnel Exclude List",
@@ -6940,7 +6733,7 @@
 				},
 				"description": "Set Local Domain Fallback List response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -7095,9 +6888,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Set Local Domain Fallback List",
@@ -7373,9 +7163,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Set Split Tunnel Include List",

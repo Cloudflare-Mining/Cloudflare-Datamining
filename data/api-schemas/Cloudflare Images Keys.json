@@ -48,7 +48,7 @@
 											"properties": {
 												"keys": {
 													"items": {
-														"$ref": "#/components/schemas/keys-Xz7cbwPT"
+														"$ref": "#/components/schemas/keys-j51IVg8I"
 													},
 													"type": "array"
 												}
@@ -63,7 +63,7 @@
 				},
 				"description": "List Signing Keys response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -96,7 +96,7 @@
 													"properties": {
 														"keys": {
 															"items": {
-																"$ref": "#/components/schemas/keys-Xz7cbwPT"
+																"$ref": "#/components/schemas/keys-j51IVg8I"
 															},
 															"type": "array"
 														}
@@ -202,6 +202,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "List Signing Keys",
