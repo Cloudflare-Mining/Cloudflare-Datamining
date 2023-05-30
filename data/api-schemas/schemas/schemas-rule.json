@@ -1,7 +1,7 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/rule-SXs9cJRE"
+			"$ref": "#/components/schemas/rule-QjPCuEZO"
 		},
 		{
 			"properties": {
@@ -9,7 +9,7 @@
 					"description": "All zones owned by the user will have the rule applied.",
 					"properties": {
 						"email": {
-							"$ref": "#/components/schemas/email-quiivW1U"
+							"$ref": "#/components/schemas/email"
 						},
 						"id": {
 							"$ref": "#/components/schemas/common_components-schemas-identifier"

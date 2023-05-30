@@ -1,0 +1,26 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection-2dl2jiBM"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/api-shield"
+							},
+							{
+								"properties": {
+									"features": {}
+								}
+							}
+						]
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

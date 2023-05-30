@@ -1,44 +1,56 @@
 {
+	"description": "Metrics on Workers KV requests.",
 	"properties": {
 		"data": {
-			"$ref": "#/components/schemas/data"
+			"items": {
+				"properties": {
+					"metrics": {
+						"description": "List of metrics returned by the query.",
+						"items": {},
+						"type": "array"
+					}
+				},
+				"required": [
+					"metrics"
+				],
+				"type": "object"
+			},
+			"nullable": true,
+			"type": "array"
 		},
 		"data_lag": {
-			"description": "Number of seconds between current time and last processed event, in another words how many seconds of data could be missing.",
-			"example": 60,
+			"description": "Number of seconds between current time and last processed event, i.e. how many seconds of data could be missing.",
+			"example": 0,
 			"minimum": 0,
 			"type": "number"
 		},
 		"max": {
-			"description": "Maximum results for each metric (object mapping metric names to values). Currently always an empty object.",
-			"type": "object"
+			"description": "Maximum results for each metric."
 		},
 		"min": {
-			"description": "Minimum results for each metric (object mapping metric names to values). Currently always an empty object.",
-			"type": "object"
+			"description": "Minimum results for each metric."
 		},
 		"query": {
 			"$ref": "#/components/schemas/query"
 		},
 		"rows": {
 			"description": "Total number of rows in the result.",
-			"example": 100,
+			"example": 2,
 			"minimum": 0,
 			"type": "number"
 		},
 		"totals": {
-			"description": "Total results for metrics across all data (object mapping metric names to values).",
-			"type": "object"
+			"description": "Total results for metrics across all data."
 		}
 	},
 	"required": [
 		"rows",
-		"totals",
+		"data",
+		"data_lag",
 		"min",
 		"max",
-		"data_lag",
-		"query",
-		"data"
+		"totals",
+		"query"
 	],
 	"type": "object"
 }

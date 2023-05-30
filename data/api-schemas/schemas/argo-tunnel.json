@@ -3,15 +3,15 @@
 		"connections": {
 			"description": "The tunnel connections between your origin and Cloudflare's edge.",
 			"items": {
-				"$ref": "#/components/schemas/connection-ZWNkti80"
+				"$ref": "#/components/schemas/connection"
 			},
 			"type": "array"
 		},
 		"created_at": {
-			"$ref": "#/components/schemas/created_at-jdOuDwMH"
+			"$ref": "#/components/schemas/created_at-9XhzErJW"
 		},
 		"deleted_at": {
-			"$ref": "#/components/schemas/deleted_at-9Hyd0uDF"
+			"$ref": "#/components/schemas/deleted_at"
 		},
 		"id": {
 			"$ref": "#/components/schemas/tunnel_id"

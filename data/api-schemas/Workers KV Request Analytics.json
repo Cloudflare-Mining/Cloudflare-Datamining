@@ -126,7 +126,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-rAzcda9d"
 										},
 										{
 											"properties": {
@@ -151,7 +151,7 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/result-KKaUfoKz"
+													"$ref": "#/components/schemas/result"
 												},
 												{
 													"properties": {
@@ -184,7 +184,7 @@
 															}
 														},
 														"query": {
-															"$ref": "#/components/schemas/query-fOudH9xf"
+															"$ref": "#/components/schemas/query"
 														},
 														"totals": {
 															"example": {
@@ -215,7 +215,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-rAzcda9d"
 												},
 												{
 													"properties": {
@@ -270,7 +270,7 @@
 															"description": "Minimum results for each metric."
 														},
 														"query": {
-															"$ref": "#/components/schemas/query-fOudH9xf"
+															"$ref": "#/components/schemas/query"
 														},
 														"rows": {
 															"description": "Total number of rows in the result.",
@@ -303,7 +303,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": [
@@ -317,7 +317,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": []

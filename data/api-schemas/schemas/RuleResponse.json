@@ -1,48 +1,42 @@
 {
-	"description": "A rule object.",
-	"properties": {
-		"action": {
-			"$ref": "#/components/schemas/RuleAction"
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/RuleRequest"
 		},
-		"action_parameters": {
-			"$ref": "#/components/schemas/RuleActionParameters"
-		},
-		"categories": {
-			"$ref": "#/components/schemas/RuleCategories"
-		},
-		"description": {
-			"$ref": "#/components/schemas/RuleDescription"
-		},
-		"enabled": {
-			"$ref": "#/components/schemas/RuleEnabled"
-		},
-		"expression": {
-			"$ref": "#/components/schemas/RuleExpression"
-		},
-		"id": {
-			"$ref": "#/components/schemas/RuleId"
-		},
-		"last_updated": {
-			"$ref": "#/components/schemas/RuleLastUpdated"
-		},
-		"logging": {
-			"$ref": "#/components/schemas/RuleLogging"
-		},
-		"ref": {
-			"$ref": "#/components/schemas/RuleRef"
-		},
-		"version": {
-			"$ref": "#/components/schemas/RuleVersion"
+		{
+			"properties": {
+				"categories": {
+					"description": "The categories of the rule.",
+					"example": [
+						"directory-traversal",
+						"header"
+					],
+					"items": {
+						"$ref": "#/components/schemas/RuleCategory"
+					},
+					"type": "array"
+				},
+				"last_updated": {
+					"description": "The timestamp of when the rule was last modified.",
+					"example": "2000-01-01T00:00:00.000000Z",
+					"type": "string"
+				},
+				"version": {
+					"description": "The version of the rule.",
+					"example": "1",
+					"pattern": "^[0-9]+$",
+					"type": "string"
+				}
+			},
+			"required": [
+				"id",
+				"version",
+				"expression",
+				"action",
+				"ref",
+				"enabled",
+				"last_updated"
+			]
 		}
-	},
-	"required": [
-		"id",
-		"version",
-		"expression",
-		"action",
-		"ref",
-		"enabled",
-		"last_updated"
-	],
-	"type": "object"
+	]
 }

@@ -1,0 +1,65 @@
+{
+	"properties": {
+		"created": {
+			"$ref": "#/components/schemas/created-ZDP4xYHk"
+		},
+		"deleted": {
+			"$ref": "#/components/schemas/deleted-hOH23VHW"
+		},
+		"device_type": {
+			"$ref": "#/components/schemas/platform"
+		},
+		"id": {
+			"$ref": "#/components/schemas/schemas-uuid-QiZd7LhR"
+		},
+		"ip": {
+			"$ref": "#/components/schemas/ip-4CaLmshK"
+		},
+		"key": {
+			"$ref": "#/components/schemas/key-fDzfBJEG"
+		},
+		"last_seen": {
+			"$ref": "#/components/schemas/last_seen"
+		},
+		"mac_address": {
+			"$ref": "#/components/schemas/mac_address"
+		},
+		"manufacturer": {
+			"$ref": "#/components/schemas/manufacturer"
+		},
+		"model": {
+			"$ref": "#/components/schemas/model"
+		},
+		"name": {
+			"$ref": "#/components/schemas/schemas-name-2p76FI2h"
+		},
+		"os_distro_name": {
+			"$ref": "#/components/schemas/os_distro_name"
+		},
+		"os_distro_revision": {
+			"$ref": "#/components/schemas/os_distro_revision"
+		},
+		"os_version": {
+			"$ref": "#/components/schemas/os_version"
+		},
+		"os_version_extra": {
+			"$ref": "#/components/schemas/os_version_extra"
+		},
+		"revoked_at": {
+			"$ref": "#/components/schemas/revoked_at"
+		},
+		"serial_number": {
+			"$ref": "#/components/schemas/serial_number-466sDzzS"
+		},
+		"updated": {
+			"$ref": "#/components/schemas/updated"
+		},
+		"user": {
+			"$ref": "#/components/schemas/user-BruDhdri"
+		},
+		"version": {
+			"$ref": "#/components/schemas/version-zCq4QcHn"
+		}
+	},
+	"type": "object"
+}

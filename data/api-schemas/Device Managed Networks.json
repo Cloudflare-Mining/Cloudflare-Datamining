@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{identifier}/devices/networks/{uuid}": {
-		"description": "Delete a Device Managed Network. Returns the remaining device managed networks for the account.",
+		"description": "Delete a Device Managed Network. Returns the remaining Device Managed Networks for the account.",
 		"operationId": "device-managed-networks-delete-device-managed-network",
 		"parameters": [
 			{
@@ -36,13 +36,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection-sA9MPCi5"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/device-managed-networks-Kkvh8Z8W"
+												"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
 											},
 											"type": "array"
 										}
@@ -54,7 +54,7 @@
 				},
 				"description": "Delete Device Managed Network response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -62,13 +62,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection-sA9MPCi5"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/device-managed-networks-Kkvh8Z8W"
+														"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
 													},
 													"type": "array"
 												}
@@ -81,7 +81,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": [
@@ -95,7 +95,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": []
@@ -135,9 +135,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Device Managed Network",
@@ -165,13 +162,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection-sA9MPCi5"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/device-managed-networks-Kkvh8Z8W"
+												"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
 											},
 											"type": "array"
 										}
@@ -183,7 +180,7 @@
 				},
 				"description": "List Device Managed Networks response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -191,13 +188,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection-sA9MPCi5"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/device-managed-networks-Kkvh8Z8W"
+														"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
 													},
 													"type": "array"
 												}
@@ -210,7 +207,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": [
@@ -224,7 +221,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": []
@@ -264,9 +261,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Device Managed Networks",
@@ -305,12 +299,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-managed-networks-Kkvh8Z8W"
+											"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
 										}
 									}
 								}
@@ -320,7 +314,7 @@
 				},
 				"description": "Device Managed Network Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -328,12 +322,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-managed-networks-Kkvh8Z8W"
+													"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
 												}
 											}
 										}
@@ -344,7 +338,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": [
@@ -358,7 +352,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": []
@@ -398,9 +392,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Device Managed Network Details",
@@ -470,12 +461,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-managed-networks-Kkvh8Z8W"
+											"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
 										}
 									}
 								}
@@ -485,7 +476,7 @@
 				},
 				"description": "Create Device Managed Network response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -493,12 +484,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-managed-networks-Kkvh8Z8W"
+													"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
 												}
 											}
 										}
@@ -509,7 +500,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": [
@@ -523,7 +514,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": []
@@ -563,9 +554,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Device Managed Network",
@@ -641,12 +629,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-managed-networks-Kkvh8Z8W"
+											"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
 										}
 									}
 								}
@@ -656,7 +644,7 @@
 				},
 				"description": "Update Device Managed Network response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -664,12 +652,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-managed-networks-Kkvh8Z8W"
+													"$ref": "#/components/schemas/device-managed-networks-bOGu6Ks4"
 												}
 											}
 										}
@@ -680,7 +668,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": [
@@ -694,7 +682,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": []
@@ -734,9 +722,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update Device Managed Network",

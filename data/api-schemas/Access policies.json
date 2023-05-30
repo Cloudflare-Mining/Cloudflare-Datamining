@@ -47,7 +47,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 								},
 								{
 									"properties": {
@@ -75,7 +75,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 										},
 										{
 											"properties": {
@@ -96,7 +96,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -110,7 +110,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []
@@ -188,13 +188,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/policies-YF7VPFPR"
+												"$ref": "#/components/schemas/policies-lDwSlU16"
 											},
 											"type": "array"
 										}
@@ -214,13 +214,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/policies-YF7VPFPR"
+														"$ref": "#/components/schemas/policies-lDwSlU16"
 													},
 													"type": "array"
 												}
@@ -233,7 +233,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -247,7 +247,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []
@@ -336,12 +336,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/policies-YF7VPFPR"
+											"$ref": "#/components/schemas/policies-lDwSlU16"
 										}
 									}
 								}
@@ -359,12 +359,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/policies-YF7VPFPR"
+													"$ref": "#/components/schemas/policies-lDwSlU16"
 												}
 											}
 										}
@@ -375,7 +375,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -389,7 +389,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []
@@ -505,14 +505,14 @@
 							"exclude": {
 								"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"$ref": "#/components/schemas/rule-uWc4OtoY"
 								},
 								"type": "array"
 							},
 							"include": {
 								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"$ref": "#/components/schemas/rule-uWc4OtoY"
 								},
 								"type": "array"
 							},
@@ -545,7 +545,7 @@
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"$ref": "#/components/schemas/rule-uWc4OtoY"
 								},
 								"type": "array"
 							}
@@ -567,12 +567,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/policies-YF7VPFPR"
+											"$ref": "#/components/schemas/policies-lDwSlU16"
 										}
 									}
 								}
@@ -590,12 +590,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/policies-YF7VPFPR"
+													"$ref": "#/components/schemas/policies-lDwSlU16"
 												}
 											}
 										}
@@ -606,7 +606,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -620,7 +620,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []
@@ -747,14 +747,14 @@
 							"exclude": {
 								"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"$ref": "#/components/schemas/rule-uWc4OtoY"
 								},
 								"type": "array"
 							},
 							"include": {
 								"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"$ref": "#/components/schemas/rule-uWc4OtoY"
 								},
 								"type": "array"
 							},
@@ -787,7 +787,7 @@
 							"require": {
 								"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 								"items": {
-									"$ref": "#/components/schemas/rule"
+									"$ref": "#/components/schemas/rule-uWc4OtoY"
 								},
 								"type": "array"
 							}
@@ -809,12 +809,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/policies-YF7VPFPR"
+											"$ref": "#/components/schemas/policies-lDwSlU16"
 										}
 									}
 								}
@@ -832,12 +832,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/policies-YF7VPFPR"
+													"$ref": "#/components/schemas/policies-lDwSlU16"
 												}
 											}
 										}
@@ -848,7 +848,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -862,7 +862,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []

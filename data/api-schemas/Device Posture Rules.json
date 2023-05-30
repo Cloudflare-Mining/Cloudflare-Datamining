@@ -36,14 +36,14 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"id": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
+													"$ref": "#/components/schemas/uuid-T87cKV9W"
 												}
 											},
 											"type": "object"
@@ -54,9 +54,9 @@
 						}
 					}
 				},
-				"description": "Delete Device Posture Rule response"
+				"description": "Delete Device Posture Rule response."
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -64,14 +64,14 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
+															"$ref": "#/components/schemas/uuid-T87cKV9W"
 														}
 													},
 													"type": "object"
@@ -85,7 +85,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": [
@@ -99,7 +99,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": []
@@ -132,16 +132,13 @@
 						}
 					}
 				},
-				"description": "Delete Device Posture Rule response failure"
+				"description": "Delete Device Posture Rule response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Device Posture Rule",
@@ -169,13 +166,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection-sA9MPCi5"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/device-posture-rules-o5ONOzuW"
+												"$ref": "#/components/schemas/device-posture-rules-gHj9rt72"
 											},
 											"type": "array"
 										}
@@ -187,7 +184,7 @@
 				},
 				"description": "List Device Posture Rules response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -195,13 +192,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection-sA9MPCi5"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/device-posture-rules-o5ONOzuW"
+														"$ref": "#/components/schemas/device-posture-rules-gHj9rt72"
 													},
 													"type": "array"
 												}
@@ -214,7 +211,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": [
@@ -228,7 +225,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": []
@@ -268,9 +265,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Device Posture Rules",
@@ -309,12 +303,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-posture-rules-o5ONOzuW"
+											"$ref": "#/components/schemas/device-posture-rules-gHj9rt72"
 										}
 									}
 								}
@@ -324,7 +318,7 @@
 				},
 				"description": "Device Posture Rules Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -332,12 +326,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-posture-rules-o5ONOzuW"
+													"$ref": "#/components/schemas/device-posture-rules-gHj9rt72"
 												}
 											}
 										}
@@ -348,7 +342,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": [
@@ -362,7 +356,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": []
@@ -402,9 +396,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Device Posture Rules Details",
@@ -442,11 +433,55 @@
 							},
 							"input": {
 								"description": "The value to be checked against.",
-								"properties": {
-									"id": {
-										"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
-									}
+								"example": {
+									"operating_system": "linux",
+									"path": "/bin/cat",
+									"thumbprint": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e"
 								},
+								"oneOf": [
+									{
+										"$ref": "#/components/schemas/file_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/unique_client_id_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/domain_joined_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/os_version_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/firewall_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/sentinelone_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/carbonblack_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/disk_encryption_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/application_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/workspace_one_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/crowdstrike_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/intune_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/kolide_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/tanium_input_request"
+									}
+								],
 								"type": "object"
 							},
 							"match": {
@@ -471,10 +506,21 @@
 								"enum": [
 									"file",
 									"application",
-									"serial_number",
 									"tanium",
 									"gateway",
-									"warp"
+									"warp",
+									"disk_encryption",
+									"sentinelone",
+									"carbonblack",
+									"firewall",
+									"os_version",
+									"domain_joined",
+									"unique_client_id",
+									"kolide",
+									"tanium_s2s",
+									"crowdstrike_s2s",
+									"intune",
+									"workspace_one"
 								],
 								"example": "file",
 								"type": "string"
@@ -496,12 +542,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-posture-rules-o5ONOzuW"
+											"$ref": "#/components/schemas/device-posture-rules-gHj9rt72"
 										}
 									}
 								}
@@ -511,7 +557,7 @@
 				},
 				"description": "Create Device Posture Rule response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -519,12 +565,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-posture-rules-o5ONOzuW"
+													"$ref": "#/components/schemas/device-posture-rules-gHj9rt72"
 												}
 											}
 										}
@@ -535,7 +581,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": [
@@ -549,7 +595,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": []
@@ -589,9 +635,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Device Posture Rule",
@@ -640,11 +683,55 @@
 							},
 							"input": {
 								"description": "The value to be checked against.",
-								"properties": {
-									"id": {
-										"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
-									}
+								"example": {
+									"operating_system": "linux",
+									"path": "/bin/cat",
+									"thumbprint": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e"
 								},
+								"oneOf": [
+									{
+										"$ref": "#/components/schemas/file_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/unique_client_id_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/domain_joined_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/os_version_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/firewall_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/sentinelone_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/carbonblack_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/disk_encryption_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/application_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/workspace_one_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/crowdstrike_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/intune_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/kolide_input_request"
+									},
+									{
+										"$ref": "#/components/schemas/tanium_input_request"
+									}
+								],
 								"type": "object"
 							},
 							"match": {
@@ -669,10 +756,21 @@
 								"enum": [
 									"file",
 									"application",
-									"serial_number",
 									"tanium",
 									"gateway",
-									"warp"
+									"warp",
+									"disk_encryption",
+									"sentinelone",
+									"carbonblack",
+									"firewall",
+									"os_version",
+									"domain_joined",
+									"unique_client_id",
+									"kolide",
+									"tanium_s2s",
+									"crowdstrike_s2s",
+									"intune",
+									"workspace_one"
 								],
 								"example": "file",
 								"type": "string"
@@ -694,12 +792,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/device-posture-rules-o5ONOzuW"
+											"$ref": "#/components/schemas/device-posture-rules-gHj9rt72"
 										}
 									}
 								}
@@ -709,7 +807,7 @@
 				},
 				"description": "Update Device Posture Rule response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -717,12 +815,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-u1Dv72X0"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/device-posture-rules-o5ONOzuW"
+													"$ref": "#/components/schemas/device-posture-rules-gHj9rt72"
 												}
 											}
 										}
@@ -733,7 +831,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": [
@@ -747,7 +845,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-3bLwL6pc"
 												}
 											],
 											"example": []
@@ -787,9 +885,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update Device Posture Rule",

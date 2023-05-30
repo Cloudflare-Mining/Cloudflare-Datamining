@@ -1,0 +1,21 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"filename": {
+							"description": "Name of LOA document.",
+							"example": "document.pdf",
+							"type": "string"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

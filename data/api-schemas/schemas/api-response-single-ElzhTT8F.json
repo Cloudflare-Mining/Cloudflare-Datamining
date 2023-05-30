@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common-LLig7gPR"
+		},
+		{
+			"properties": {
+				"result": {
+					"anyOf": [
+						{
+							"type": "object"
+						},
+						{
+							"type": "string"
+						}
+					],
+					"nullable": true
+				}
+			}
+		}
+	],
+	"type": "object"
+}

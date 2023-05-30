@@ -1,35 +1,29 @@
 {
 	"properties": {
-		"editable": {
-			"default": true,
-			"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
-			"enum": [
-				true,
-				false
-			],
+		"description": {
+			"$ref": "#/components/schemas/schemas-description-xhyl0Ajv"
+		},
+		"group": {
+			"description": "The rule group to which the current WAF rule belongs.",
+			"properties": {
+				"id": {
+					"$ref": "#/components/schemas/components-schemas-identifier"
+				},
+				"name": {
+					"$ref": "#/components/schemas/name-RwM0LzIe"
+				}
+			},
 			"readOnly": true,
-			"type": "boolean"
+			"type": "object"
 		},
 		"id": {
-			"description": "Identifier of the zone setting.",
-			"example": "development_mode",
-			"type": "string"
+			"$ref": "#/components/schemas/rule_components-schemas-identifier"
 		},
-		"modified_on": {
-			"description": "last time this setting was modified.",
-			"example": "2014-01-01T05:20:00.12345Z",
-			"format": "date-time",
-			"nullable": true,
-			"readOnly": true,
-			"type": "string"
+		"package_id": {
+			"$ref": "#/components/schemas/identifier-dRI3gPZJ"
 		},
-		"value": {
-			"description": "Current value of the zone setting.",
-			"example": "on"
+		"priority": {
+			"$ref": "#/components/schemas/priority"
 		}
-	},
-	"required": [
-		"id",
-		"value"
-	]
+	}
 }

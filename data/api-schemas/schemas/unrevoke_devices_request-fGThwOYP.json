@@ -1,8 +1,0 @@
-{
-	"description": "A list of device ids to unrevoke.",
-	"items": {
-		"$ref": "#/components/schemas/uuid"
-	},
-	"maxLength": 200,
-	"type": "array"
-}

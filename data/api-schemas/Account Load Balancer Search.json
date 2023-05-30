@@ -68,7 +68,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-JNwFvf3e"
 										},
 										{
 											"properties": {
@@ -78,7 +78,7 @@
 													"type": "array"
 												},
 												"result_info": {
-													"$ref": "#/components/schemas/result_info"
+													"$ref": "#/components/schemas/result_info-hQGkfD5l"
 												}
 											}
 										}
@@ -88,7 +88,7 @@
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/search-ubEhvhxR"
+											"$ref": "#/components/schemas/search-jv6DvHE2"
 										}
 									},
 									"type": "object"
@@ -109,7 +109,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-JNwFvf3e"
 												},
 												{
 													"properties": {
@@ -119,7 +119,7 @@
 															"type": "array"
 														},
 														"result_info": {
-															"$ref": "#/components/schemas/result_info"
+															"$ref": "#/components/schemas/result_info-hQGkfD5l"
 														}
 													}
 												}
@@ -129,7 +129,7 @@
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/search-ubEhvhxR"
+													"$ref": "#/components/schemas/search-jv6DvHE2"
 												}
 											},
 											"type": "object"
@@ -141,7 +141,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-bp4UySRp"
 												}
 											],
 											"example": [
@@ -155,7 +155,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-bp4UySRp"
 												}
 											],
 											"example": []

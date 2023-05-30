@@ -1,0 +1,33 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"client_id": {
+							"$ref": "#/components/schemas/client_id-QebHfuD6"
+						},
+						"client_secret": {
+							"$ref": "#/components/schemas/client_secret"
+						},
+						"created_at": {
+							"$ref": "#/components/schemas/timestamp"
+						},
+						"id": {
+							"description": "The ID of the service token."
+						},
+						"name": {
+							"$ref": "#/components/schemas/service-tokens_components-schemas-name"
+						},
+						"updated_at": {
+							"$ref": "#/components/schemas/timestamp"
+						}
+					}
+				}
+			}
+		}
+	]
+}

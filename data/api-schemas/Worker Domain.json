@@ -124,13 +124,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"$ref": "#/components/schemas/api-response-common-rAzcda9d"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/domain-XMDu59Wr"
+												"$ref": "#/components/schemas/domain-b3Ol8yXY"
 											},
 											"type": "array"
 										}
@@ -151,13 +151,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-rAzcda9d"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/domain-XMDu59Wr"
+														"$ref": "#/components/schemas/domain-b3Ol8yXY"
 													},
 													"type": "array"
 												}
@@ -171,7 +171,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": [
@@ -185,7 +185,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": []
@@ -269,12 +269,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"$ref": "#/components/schemas/api-response-common-rAzcda9d"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/domain-XMDu59Wr"
+											"$ref": "#/components/schemas/domain-b3Ol8yXY"
 										}
 									},
 									"type": "object"
@@ -293,12 +293,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-rAzcda9d"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/domain-XMDu59Wr"
+													"$ref": "#/components/schemas/domain-b3Ol8yXY"
 												}
 											},
 											"type": "object"
@@ -310,7 +310,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": [
@@ -324,7 +324,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": []
@@ -436,12 +436,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"$ref": "#/components/schemas/api-response-common-rAzcda9d"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/domain-XMDu59Wr"
+											"$ref": "#/components/schemas/domain-b3Ol8yXY"
 										}
 									},
 									"type": "object"
@@ -460,12 +460,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-rAzcda9d"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/domain-XMDu59Wr"
+													"$ref": "#/components/schemas/domain-b3Ol8yXY"
 												}
 											},
 											"type": "object"
@@ -477,7 +477,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": [
@@ -491,7 +491,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": []

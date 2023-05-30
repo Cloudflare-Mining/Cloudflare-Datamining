@@ -1,0 +1,39 @@
+{
+	"properties": {
+		"errors": {
+			"$ref": "#/components/schemas/messages-4ymdSH5U"
+		},
+		"messages": {
+			"$ref": "#/components/schemas/messages-4ymdSH5U"
+		},
+		"result": {
+			"anyOf": [
+				{
+					"type": "object"
+				},
+				{
+					"items": {},
+					"type": "array"
+				},
+				{
+					"type": "string"
+				}
+			]
+		},
+		"success": {
+			"description": "Whether the API call was successful",
+			"enum": [
+				true
+			],
+			"example": true,
+			"type": "boolean"
+		}
+	},
+	"required": [
+		"success",
+		"errors",
+		"messages",
+		"result"
+	],
+	"type": "object"
+}

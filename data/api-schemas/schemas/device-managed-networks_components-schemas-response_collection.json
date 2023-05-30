@@ -1,13 +1,13 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/device-managed-networks-Kkvh8Z8W"
+						"$ref": "#/components/schemas/device-managed-networks"
 					},
 					"type": "array"
 				}

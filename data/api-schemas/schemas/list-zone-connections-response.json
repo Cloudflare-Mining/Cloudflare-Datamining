@@ -1,18 +1,18 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"$ref": "#/components/schemas/api-response-collection-A9Ln6IFc"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/connection-ul2xcWJ2"
+						"$ref": "#/components/schemas/connection-ni1rR7cj"
 					},
 					"type": "array"
 				},
 				"result_info": {
-					"$ref": "#/components/schemas/result_info"
+					"$ref": "#/components/schemas/result_info-iwuF2NDk"
 				}
 			},
 			"type": "object"

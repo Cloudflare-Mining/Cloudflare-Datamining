@@ -1,0 +1,101 @@
+{
+	"anyOf": [
+		{
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/basic_app_response_props"
+				},
+				{
+					"$ref": "#/components/schemas/self_hosted_props-LrJRY1kh"
+				}
+			],
+			"title": "Self Hosted Application",
+			"type": "object"
+		},
+		{
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/basic_app_response_props"
+				},
+				{
+					"$ref": "#/components/schemas/saas_props-d0TqL6Hy"
+				}
+			],
+			"title": "SaaS Application",
+			"type": "object"
+		},
+		{
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/basic_app_response_props"
+				},
+				{
+					"$ref": "#/components/schemas/ssh_props"
+				}
+			],
+			"title": "Browser SSH Application",
+			"type": "object"
+		},
+		{
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/basic_app_response_props"
+				},
+				{
+					"$ref": "#/components/schemas/vnc_props"
+				}
+			],
+			"title": "Browser VNC Application",
+			"type": "object"
+		},
+		{
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/basic_app_response_props"
+				},
+				{
+					"$ref": "#/components/schemas/app_launcher_props"
+				}
+			],
+			"title": "App Launcher Application",
+			"type": "object"
+		},
+		{
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/basic_app_response_props"
+				},
+				{
+					"$ref": "#/components/schemas/warp_props"
+				}
+			],
+			"title": "Device Enrollment Permissions Application",
+			"type": "object"
+		},
+		{
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/basic_app_response_props"
+				},
+				{
+					"$ref": "#/components/schemas/biso_props"
+				}
+			],
+			"title": "Browser Isolation Permissions Application",
+			"type": "object"
+		},
+		{
+			"allOf": [
+				{
+					"$ref": "#/components/schemas/basic_app_response_props"
+				},
+				{
+					"$ref": "#/components/schemas/schemas-bookmark_props-akxJ0EGM"
+				}
+			],
+			"title": "Bookmark application",
+			"type": "object"
+		}
+	],
+	"type": "object"
+}

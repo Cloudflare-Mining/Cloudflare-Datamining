@@ -1,6 +1,5 @@
 {
-	"default": "HTTP",
-	"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.",
-	"example": "HTTPS",
+	"description": "Use this value when creating and updating a notification policy.",
+	"example": "http_alert_origin_error",
 	"type": "string"
 }

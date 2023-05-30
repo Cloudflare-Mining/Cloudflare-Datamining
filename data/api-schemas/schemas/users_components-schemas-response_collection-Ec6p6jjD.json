@@ -1,0 +1,38 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+		},
+		{
+			"properties": {
+				"result_info": {
+					"properties": {
+						"count": {
+							"example": 1
+						},
+						"page": {
+							"example": 1
+						},
+						"per_page": {
+							"example": 100
+						},
+						"total_count": {
+							"example": 1
+						}
+					},
+					"type": "object"
+				}
+			}
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/users-c1gxGY3s"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

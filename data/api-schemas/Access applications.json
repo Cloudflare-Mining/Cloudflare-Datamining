@@ -33,7 +33,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 								},
 								{
 									"properties": {
@@ -61,7 +61,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 										},
 										{
 											"properties": {
@@ -82,7 +82,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -96,7 +96,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []
@@ -163,7 +163,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
 								},
 								{
 									"properties": {
@@ -189,7 +189,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection-hZQyprcl"
 										},
 										{
 											"properties": {
@@ -208,7 +208,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -222,7 +222,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []
@@ -297,7 +297,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 								},
 								{
 									"properties": {
@@ -320,7 +320,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 										},
 										{
 											"properties": {
@@ -336,7 +336,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -350,7 +350,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []
@@ -425,7 +425,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+									"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 								},
 								{
 									"properties": {
@@ -544,7 +544,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 										},
 										{
 											"properties": {
@@ -656,7 +656,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -670,7 +670,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []
@@ -741,7 +741,7 @@
 										"$ref": "#/components/schemas/basic_app_response_props"
 									},
 									{
-										"$ref": "#/components/schemas/self_hosted_props-AP5cDvp7"
+										"$ref": "#/components/schemas/self_hosted_props-LrJRY1kh"
 									}
 								],
 								"title": "Self Hosted Application",
@@ -753,7 +753,7 @@
 										"$ref": "#/components/schemas/basic_app_response_props"
 									},
 									{
-										"$ref": "#/components/schemas/saas_props-B4pFVRFU"
+										"$ref": "#/components/schemas/saas_props-d0TqL6Hy"
 									}
 								],
 								"title": "SaaS Application",
@@ -846,7 +846,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 										},
 										{
 											"properties": {
@@ -867,7 +867,7 @@
 															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
-															"$ref": "#/components/schemas/self_hosted_props-AP5cDvp7"
+															"$ref": "#/components/schemas/self_hosted_props-LrJRY1kh"
 														}
 													],
 													"title": "Self Hosted Application",
@@ -879,7 +879,7 @@
 															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
-															"$ref": "#/components/schemas/saas_props-B4pFVRFU"
+															"$ref": "#/components/schemas/saas_props-d0TqL6Hy"
 														}
 													],
 													"title": "SaaS Application",
@@ -977,7 +977,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+													"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 												},
 												{
 													"properties": {
@@ -1044,7 +1044,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -1058,7 +1058,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []
@@ -1190,7 +1190,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -1204,7 +1204,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []
@@ -1283,7 +1283,7 @@
 										"$ref": "#/components/schemas/basic_app_response_props"
 									},
 									{
-										"$ref": "#/components/schemas/self_hosted_props-AP5cDvp7"
+										"$ref": "#/components/schemas/self_hosted_props-LrJRY1kh"
 									}
 								],
 								"title": "Self Hosted Application",
@@ -1295,7 +1295,7 @@
 										"$ref": "#/components/schemas/basic_app_response_props"
 									},
 									{
-										"$ref": "#/components/schemas/saas_props-B4pFVRFU"
+										"$ref": "#/components/schemas/saas_props-d0TqL6Hy"
 									}
 								],
 								"title": "SaaS Application",
@@ -1388,7 +1388,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+											"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 										},
 										{
 											"properties": {
@@ -1409,7 +1409,7 @@
 															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
-															"$ref": "#/components/schemas/self_hosted_props-AP5cDvp7"
+															"$ref": "#/components/schemas/self_hosted_props-LrJRY1kh"
 														}
 													],
 													"title": "Self Hosted Application",
@@ -1421,7 +1421,7 @@
 															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
-															"$ref": "#/components/schemas/saas_props-B4pFVRFU"
+															"$ref": "#/components/schemas/saas_props-d0TqL6Hy"
 														}
 													],
 													"title": "SaaS Application",
@@ -1519,7 +1519,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-axFuEkyU"
+													"$ref": "#/components/schemas/api-response-single-VkmFDBIG"
 												},
 												{
 													"properties": {
@@ -1586,7 +1586,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": [
@@ -1600,7 +1600,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-rMU9b5yV"
 												}
 											],
 											"example": []

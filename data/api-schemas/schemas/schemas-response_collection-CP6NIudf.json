@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection-YlUA7tzw"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/pool"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

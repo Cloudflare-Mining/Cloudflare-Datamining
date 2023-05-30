@@ -1,28 +1,28 @@
 {
 	"properties": {
 		"description": {
-			"$ref": "#/components/schemas/description-4nHjHjgt"
+			"$ref": "#/components/schemas/device-posture-rules_components-schemas-description"
 		},
 		"expiration": {
-			"$ref": "#/components/schemas/expiration-J2pErFPa"
+			"$ref": "#/components/schemas/schemas-expiration"
 		},
 		"id": {
-			"$ref": "#/components/schemas/uuid-tfiWSlaQ"
+			"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
 		},
 		"input": {
-			"$ref": "#/components/schemas/input-o13auQlw"
+			"$ref": "#/components/schemas/input-ZlrioLir"
 		},
 		"match": {
-			"$ref": "#/components/schemas/match-mJ2Lmuno"
+			"$ref": "#/components/schemas/schemas-match"
 		},
 		"name": {
-			"$ref": "#/components/schemas/name-KsrxlEkw"
+			"$ref": "#/components/schemas/device-posture-rules_components-schemas-name"
 		},
 		"schedule": {
-			"$ref": "#/components/schemas/schedule-U719T5DK"
+			"$ref": "#/components/schemas/schedule-AGuzu3cR"
 		},
 		"type": {
-			"$ref": "#/components/schemas/type-tEA2cJM8"
+			"$ref": "#/components/schemas/device-posture-rules_components-schemas-type"
 		}
 	},
 	"type": "object"

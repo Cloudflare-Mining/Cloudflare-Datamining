@@ -1,0 +1,23 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common-uaEDgDqH"
+		},
+		{
+			"properties": {
+				"result": {
+					"anyOf": [
+						{
+							"type": "object"
+						},
+						{
+							"type": "string"
+						}
+					],
+					"nullable": true
+				}
+			}
+		}
+	],
+	"type": "object"
+}

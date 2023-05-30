@@ -1,0 +1,18 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/schemas-role-V9GTQ7S7"
+					},
+					"type": "array"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

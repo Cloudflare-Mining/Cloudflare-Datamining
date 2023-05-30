@@ -23,17 +23,17 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"certificate_authority": {
-													"$ref": "#/components/schemas/schemas-certificate_authority-vP8EL3ZY"
+													"$ref": "#/components/schemas/schemas-certificate_authority-om80rJg5"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/components-schemas-enabled-sdrGgrAV"
+													"$ref": "#/components/schemas/components-schemas-enabled-Hl90zsiV"
 												},
 												"validity_days": {
 													"$ref": "#/components/schemas/schemas-validity_days"
@@ -56,17 +56,17 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"certificate_authority": {
-															"$ref": "#/components/schemas/schemas-certificate_authority-vP8EL3ZY"
+															"$ref": "#/components/schemas/schemas-certificate_authority-om80rJg5"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/components-schemas-enabled-sdrGgrAV"
+															"$ref": "#/components/schemas/components-schemas-enabled-Hl90zsiV"
 														},
 														"validity_days": {
 															"$ref": "#/components/schemas/schemas-validity_days"
@@ -82,7 +82,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": [
@@ -96,7 +96,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": []
@@ -209,17 +209,17 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
 								},
 								{
 									"properties": {
 										"result": {
 											"properties": {
 												"certificate_authority": {
-													"$ref": "#/components/schemas/schemas-certificate_authority-vP8EL3ZY"
+													"$ref": "#/components/schemas/schemas-certificate_authority-om80rJg5"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/components-schemas-enabled-sdrGgrAV"
+													"$ref": "#/components/schemas/components-schemas-enabled-Hl90zsiV"
 												},
 												"validity_days": {
 													"$ref": "#/components/schemas/schemas-validity_days"
@@ -242,17 +242,17 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"certificate_authority": {
-															"$ref": "#/components/schemas/schemas-certificate_authority-vP8EL3ZY"
+															"$ref": "#/components/schemas/schemas-certificate_authority-om80rJg5"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/components-schemas-enabled-sdrGgrAV"
+															"$ref": "#/components/schemas/components-schemas-enabled-Hl90zsiV"
 														},
 														"validity_days": {
 															"$ref": "#/components/schemas/schemas-validity_days"
@@ -268,7 +268,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": [
@@ -282,7 +282,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": []

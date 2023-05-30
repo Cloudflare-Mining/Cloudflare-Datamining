@@ -1,0 +1,172 @@
+{
+	"properties": {
+		"account": {
+			"description": "The account the zone belongs to",
+			"properties": {
+				"id": {
+					"$ref": "#/components/schemas/identifier-7x8Giq5z"
+				},
+				"name": {
+					"description": "The name of the account",
+					"example": "Example Account Name",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"activated_on": {
+			"description": "The last time proof of ownership was detected and the zone was made\nactive",
+			"example": "2014-01-02T00:01:00.12345Z",
+			"format": "date-time",
+			"nullable": true,
+			"readOnly": true,
+			"type": "string"
+		},
+		"created_on": {
+			"description": "When the zone was created",
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"development_mode": {
+			"description": "The interval (in seconds) from when development mode expires\n(positive integer) or last expired (negative integer) for the\ndomain. If development mode has never been enabled, this value is 0.",
+			"example": 7200,
+			"readOnly": true,
+			"type": "number"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier-7x8Giq5z"
+		},
+		"meta": {
+			"description": "Metadata about the zone",
+			"properties": {
+				"cdn_only": {
+					"description": "The zone is only configured for CDN",
+					"example": true,
+					"type": "boolean"
+				},
+				"custom_certificate_quota": {
+					"description": "Number of Custom Certificates the zone can have",
+					"example": 1,
+					"type": "integer"
+				},
+				"dns_only": {
+					"description": "The zone is only configured for DNS",
+					"example": true,
+					"type": "boolean"
+				},
+				"foundation_dns": {
+					"description": "The zone is setup with Foundation DNS",
+					"example": true,
+					"type": "boolean"
+				},
+				"page_rule_quota": {
+					"description": "Number of Page Rules a zone can have",
+					"example": 100,
+					"type": "integer"
+				},
+				"phishing_detected": {
+					"description": "The zone has been flagged for phishing",
+					"example": false,
+					"type": "boolean"
+				},
+				"step": {
+					"example": 2,
+					"type": "integer"
+				}
+			},
+			"type": "object"
+		},
+		"modified_on": {
+			"description": "When the zone was last modified",
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"name": {
+			"description": "The domain name",
+			"example": "example.com",
+			"maxLength": 253,
+			"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+			"type": "string"
+		},
+		"original_dnshost": {
+			"description": "DNS host at the time of switching to Cloudflare",
+			"example": "NameCheap",
+			"maxLength": 50,
+			"nullable": true,
+			"readOnly": true,
+			"type": "string"
+		},
+		"original_name_servers": {
+			"description": "Original name servers before moving to Cloudflare\nNotes: Is this only available for full zones?",
+			"example": [
+				"ns1.originaldnshost.com",
+				"ns2.originaldnshost.com"
+			],
+			"items": {
+				"format": "hostname",
+				"type": "string"
+			},
+			"nullable": true,
+			"readOnly": true,
+			"type": "array"
+		},
+		"original_registrar": {
+			"description": "Registrar for the domain at the time of switching to Cloudflare",
+			"example": "GoDaddy",
+			"nullable": true,
+			"readOnly": true,
+			"type": "string"
+		},
+		"owner": {
+			"description": "The owner of the zone",
+			"properties": {
+				"id": {
+					"$ref": "#/components/schemas/identifier-7x8Giq5z"
+				},
+				"name": {
+					"description": "Name of the owner",
+					"example": "Example Org",
+					"type": "string"
+				},
+				"type": {
+					"description": "The type of owner",
+					"example": "organization",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"vanity_name_servers": {
+			"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
+			"example": [
+				"ns1.example.com",
+				"ns2.example.com"
+			],
+			"items": {
+				"format": "hostname",
+				"maxLength": 253,
+				"type": "string"
+			},
+			"type": "array"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"development_mode",
+		"owner",
+		"account",
+		"meta",
+		"original_name_servers",
+		"original_registrar",
+		"original_dnshost",
+		"created_on",
+		"modified_on",
+		"activated_on"
+	],
+	"type": "object"
+}

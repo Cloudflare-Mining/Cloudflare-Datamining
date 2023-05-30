@@ -1,16 +1,13 @@
 {
-	"description": "The rule targets to evaluate on each request.",
 	"example": [
-		{
-			"constraint": {
-				"operator": "matches",
-				"value": "*example.com/images/*"
-			},
-			"target": "url"
-		}
+		"203.0.113.1",
+		"cloudflare.com"
 	],
 	"items": {
-		"$ref": "#/components/schemas/target"
+		"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings.",
+		"example": "203.0.113.1",
+		"type": "string"
 	},
+	"maxLength": 10,
 	"type": "array"
 }

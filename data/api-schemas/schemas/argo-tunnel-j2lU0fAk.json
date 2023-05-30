@@ -1,0 +1,30 @@
+{
+	"properties": {
+		"connections": {
+			"description": "The tunnel connections between your origin and Cloudflare's edge.",
+			"items": {
+				"$ref": "#/components/schemas/components-schemas-connection"
+			},
+			"type": "array"
+		},
+		"created_at": {
+			"$ref": "#/components/schemas/cloudflare-tunnel_components-schemas-created_at"
+		},
+		"deleted_at": {
+			"$ref": "#/components/schemas/deleted_at"
+		},
+		"id": {
+			"$ref": "#/components/schemas/tunnel_id"
+		},
+		"name": {
+			"$ref": "#/components/schemas/tunnel_name"
+		}
+	},
+	"required": [
+		"id",
+		"name",
+		"created_at",
+		"connections"
+	],
+	"type": "object"
+}

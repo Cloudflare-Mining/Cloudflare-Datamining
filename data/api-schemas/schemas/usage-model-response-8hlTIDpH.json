@@ -1,0 +1,19 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common-rAzcda9d"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"usage_model": {
+							"readOnly": true
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

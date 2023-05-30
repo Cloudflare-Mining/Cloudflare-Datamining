@@ -1,0 +1,21 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"status": {
+							"$ref": "#/components/schemas/validation_method_components-schemas-status"
+						},
+						"validation_method": {
+							"$ref": "#/components/schemas/validation_method_definition"
+						}
+					}
+				}
+			}
+		}
+	]
+}

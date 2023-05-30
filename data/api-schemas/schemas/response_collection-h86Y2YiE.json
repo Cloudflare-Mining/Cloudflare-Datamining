@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection-wTToPy6y"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/healthchecks"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

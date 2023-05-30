@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection-sA9MPCi5"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/device-posture-integrations-r8EFukNC"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,41 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"certificate_authority": {
+							"$ref": "#/components/schemas/certificate_authority-UZZ1hAMd"
+						},
+						"cloudflare_branding": {
+							"$ref": "#/components/schemas/cloudflare_branding"
+						},
+						"hosts": {
+							"$ref": "#/components/schemas/schemas-hosts"
+						},
+						"id": {
+							"$ref": "#/components/schemas/certificate-packs_components-schemas-identifier"
+						},
+						"status": {
+							"$ref": "#/components/schemas/certificate-packs_components-schemas-status"
+						},
+						"type": {
+							"$ref": "#/components/schemas/advanced_type"
+						},
+						"validation_method": {
+							"$ref": "#/components/schemas/validation_method"
+						},
+						"validity_days": {
+							"$ref": "#/components/schemas/validity_days"
+						}
+					},
+					"type": "object"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

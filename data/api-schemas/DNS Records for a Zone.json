@@ -83,7 +83,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": [
@@ -97,7 +97,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": []
@@ -446,13 +446,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection-4fEHll8j"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/dns-record"
+												"$ref": "#/components/schemas/dns-record-nYTtxVmk"
 											},
 											"type": "array"
 										}
@@ -473,13 +473,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection-4fEHll8j"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/dns-record"
+														"$ref": "#/components/schemas/dns-record-nYTtxVmk"
 													},
 													"type": "array"
 												}
@@ -493,7 +493,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": [
@@ -507,7 +507,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": []
@@ -600,12 +600,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+									"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/dns-record"
+											"$ref": "#/components/schemas/dns-record-nYTtxVmk"
 										}
 									},
 									"type": "object"
@@ -624,12 +624,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+											"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/dns-record"
+													"$ref": "#/components/schemas/dns-record-nYTtxVmk"
 												}
 											},
 											"type": "object"
@@ -641,7 +641,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": [
@@ -655,7 +655,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": []
@@ -751,7 +751,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"$ref": "#/components/schemas/messages-wQoIcL82"
 										}
 									],
 									"example": [
@@ -765,7 +765,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"$ref": "#/components/schemas/messages-wQoIcL82"
 										}
 									],
 									"example": []
@@ -939,12 +939,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+									"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/dns-record"
+											"$ref": "#/components/schemas/dns-record-nYTtxVmk"
 										}
 									},
 									"type": "object"
@@ -963,12 +963,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+											"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/dns-record"
+													"$ref": "#/components/schemas/dns-record-nYTtxVmk"
 												}
 											},
 											"type": "object"
@@ -980,7 +980,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": [
@@ -994,7 +994,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": []
@@ -1159,12 +1159,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+									"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/dns-record"
+											"$ref": "#/components/schemas/dns-record-nYTtxVmk"
 										}
 									},
 									"type": "object"
@@ -1183,12 +1183,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+											"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/dns-record"
+													"$ref": "#/components/schemas/dns-record-nYTtxVmk"
 												}
 											},
 											"type": "object"
@@ -1200,7 +1200,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": [
@@ -1214,7 +1214,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": []
@@ -1322,7 +1322,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+									"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 								},
 								{
 									"properties": {
@@ -1380,7 +1380,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+											"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 										},
 										{
 											"properties": {
@@ -1431,7 +1431,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": [
@@ -1445,7 +1445,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": []
@@ -1533,7 +1533,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+									"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 								},
 								{
 									"properties": {
@@ -1591,7 +1591,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+											"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 										},
 										{
 											"properties": {
@@ -1642,7 +1642,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": [
@@ -1656,7 +1656,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": []
@@ -1833,12 +1833,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+									"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/dns-record"
+											"$ref": "#/components/schemas/dns-record-nYTtxVmk"
 										}
 									},
 									"type": "object"
@@ -1857,12 +1857,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-ARhOevUA"
+											"$ref": "#/components/schemas/api-response-single-AVEkCKTh"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/dns-record"
+													"$ref": "#/components/schemas/dns-record-nYTtxVmk"
 												}
 											},
 											"type": "object"
@@ -1874,7 +1874,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": [
@@ -1888,7 +1888,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-wQoIcL82"
 												}
 											],
 											"example": []

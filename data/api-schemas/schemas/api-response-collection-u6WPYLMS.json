@@ -1,0 +1,20 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-common-jSigCJ8I"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {},
+					"nullable": true,
+					"type": "array"
+				},
+				"result_info": {
+					"$ref": "#/components/schemas/result_info-iAhumgs7"
+				}
+			}
+		}
+	],
+	"type": "object"
+}

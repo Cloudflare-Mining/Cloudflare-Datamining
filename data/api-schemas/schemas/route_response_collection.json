@@ -1,13 +1,13 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"$ref": "#/components/schemas/api-response-collection-BZZWk6hI"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/teamnet-e52CliWv"
+						"$ref": "#/components/schemas/teamnet"
 					},
 					"type": "array"
 				}

@@ -1,13 +1,13 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"$ref": "#/components/schemas/api-response-collection-UAm6j2aD"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/keyless-certificate-yPinANLs"
+						"$ref": "#/components/schemas/keyless-certificate"
 					},
 					"type": "array"
 				}

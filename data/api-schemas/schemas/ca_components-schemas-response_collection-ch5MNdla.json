@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection-FNAzV3J2"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/schemas-ca"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

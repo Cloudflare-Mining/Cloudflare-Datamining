@@ -1,24 +1,23 @@
 {
-	"description": "Allows you to define image resizing sizes for different use cases.",
-	"properties": {
-		"fit": {
-			"$ref": "#/components/schemas/fit"
-		},
-		"height": {
-			"$ref": "#/components/schemas/height"
-		},
-		"metadata": {
-			"$ref": "#/components/schemas/schemas-metadata"
-		},
-		"width": {
-			"$ref": "#/components/schemas/width"
-		}
+	"example": {
+		"max_ttl": 15,
+		"packet_type": "icmp"
 	},
-	"required": [
-		"fit",
-		"metadata",
-		"width",
-		"height"
-	],
-	"type": "object"
+	"properties": {
+		"max_ttl": {
+			"$ref": "#/components/schemas/max_ttl"
+		},
+		"packet_type": {
+			"$ref": "#/components/schemas/packet_type"
+		},
+		"packets_per_ttl": {
+			"$ref": "#/components/schemas/packets_per_ttl"
+		},
+		"port": {
+			"$ref": "#/components/schemas/port"
+		},
+		"wait_time": {
+			"$ref": "#/components/schemas/wait_time"
+		}
+	}
 }

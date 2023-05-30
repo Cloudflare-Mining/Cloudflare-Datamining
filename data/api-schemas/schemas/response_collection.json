@@ -6,10 +6,34 @@
 		{
 			"properties": {
 				"result": {
-					"items": {
-						"$ref": "#/components/schemas/healthchecks"
+					"additionalProperties": {
+						"items": {
+							"$ref": "#/components/schemas/alert-types"
+						},
+						"type": "array"
 					},
-					"type": "array"
+					"example": {
+						"Origin Monitoring": [
+							{
+								"description": "High levels of 5xx HTTP errors at your origin.",
+								"display_name": "Origin Error Rate Alert",
+								"filter_options": [
+									{
+										"ComparisonOperator": "==",
+										"Key": "zones",
+										"Optional": false
+									},
+									{
+										"ComparisonOperator": ">=",
+										"Key": "slo",
+										"Optional": true
+									}
+								],
+								"type": "http_alert_origin_error"
+							}
+						]
+					},
+					"type": "object"
 				}
 			}
 		}

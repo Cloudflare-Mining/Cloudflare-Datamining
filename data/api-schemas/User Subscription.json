@@ -64,7 +64,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-4ymdSH5U"
 												}
 											],
 											"example": [
@@ -78,7 +78,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-4ymdSH5U"
 												}
 											],
 											"example": []
@@ -140,7 +140,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection-cX15VhWD"
 								},
 								{
 									"properties": {
@@ -167,7 +167,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection-cX15VhWD"
 										},
 										{
 											"properties": {
@@ -187,7 +187,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-4ymdSH5U"
 												}
 											],
 											"example": [
@@ -201,7 +201,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-4ymdSH5U"
 												}
 											],
 											"example": []
@@ -295,10 +295,10 @@
 								"$ref": "#/components/schemas/current_period_start"
 							},
 							"frequency": {
-								"$ref": "#/components/schemas/frequency"
+								"$ref": "#/components/schemas/frequency-ue1VfrzI"
 							},
 							"id": {
-								"$ref": "#/components/schemas/schemas-identifier-Dn1beitM"
+								"$ref": "#/components/schemas/schemas-identifier-yMwDomRp"
 							},
 							"price": {
 								"$ref": "#/components/schemas/price"
@@ -307,10 +307,10 @@
 								"$ref": "#/components/schemas/rate_plan"
 							},
 							"state": {
-								"$ref": "#/components/schemas/state"
+								"$ref": "#/components/schemas/state-eBT6t5Y3"
 							},
 							"zone": {
-								"$ref": "#/components/schemas/zone-bexpalPS"
+								"$ref": "#/components/schemas/zone"
 							}
 						},
 						"type": "object"
@@ -326,7 +326,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-0CS0KpHU"
 								},
 								{
 									"properties": {
@@ -350,7 +350,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-0CS0KpHU"
 										},
 										{
 											"properties": {
@@ -367,7 +367,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-4ymdSH5U"
 												}
 											],
 											"example": [
@@ -381,7 +381,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-4ymdSH5U"
 												}
 											],
 											"example": []

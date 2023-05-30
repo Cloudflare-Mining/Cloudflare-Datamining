@@ -1,0 +1,19 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"valid": {
+							"example": true,
+							"type": "boolean"
+						}
+					}
+				}
+			}
+		}
+	]
+}

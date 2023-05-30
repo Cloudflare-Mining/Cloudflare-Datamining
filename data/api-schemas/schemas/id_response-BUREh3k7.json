@@ -1,0 +1,19 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-V6VSWJR4"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"id": {
+							"$ref": "#/components/schemas/identifier-2VncyMdr"
+						}
+					},
+					"type": "object"
+				}
+			}
+		}
+	]
+}

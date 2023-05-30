@@ -1,10 +1,16 @@
 {
 	"properties": {
-		"name": {
-			"$ref": "#/components/schemas/name-TBNYDMpZ"
+		"created": {
+			"$ref": "#/components/schemas/signing_key_created"
 		},
-		"value": {
-			"$ref": "#/components/schemas/value-pZ6XTH68"
+		"id": {
+			"$ref": "#/components/schemas/schemas-identifier"
+		},
+		"jwk": {
+			"$ref": "#/components/schemas/jwk"
+		},
+		"pem": {
+			"$ref": "#/components/schemas/pem"
 		}
 	},
 	"type": "object"

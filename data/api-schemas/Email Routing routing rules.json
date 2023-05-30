@@ -41,12 +41,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-nlRozJ8I"
+									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-orbwfyDP"
+											"$ref": "#/components/schemas/rules-DzdnlLp2"
 										}
 									}
 								}
@@ -137,13 +137,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection-nBnoSyq1"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/rules-orbwfyDP"
+												"$ref": "#/components/schemas/rules-DzdnlLp2"
 											},
 											"type": "array"
 										},
@@ -231,12 +231,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-nlRozJ8I"
+									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-orbwfyDP"
+											"$ref": "#/components/schemas/rules-DzdnlLp2"
 										}
 									}
 								}
@@ -293,7 +293,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-nlRozJ8I"
+									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
 								},
 								{
 									"properties": {
@@ -357,7 +357,7 @@
 								"$ref": "#/components/schemas/rule_actions"
 							},
 							"enabled": {
-								"$ref": "#/components/schemas/rule_enabled"
+								"$ref": "#/components/schemas/rule_enabled-6Qw6gZoM"
 							},
 							"matchers": {
 								"$ref": "#/components/schemas/rule_matchers"
@@ -386,12 +386,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-nlRozJ8I"
+									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-orbwfyDP"
+											"$ref": "#/components/schemas/rules-DzdnlLp2"
 										}
 									}
 								}
@@ -462,7 +462,7 @@
 								"$ref": "#/components/schemas/rule_actions"
 							},
 							"enabled": {
-								"$ref": "#/components/schemas/rule_enabled"
+								"$ref": "#/components/schemas/rule_enabled-6Qw6gZoM"
 							},
 							"matchers": {
 								"$ref": "#/components/schemas/rule_matchers"
@@ -491,12 +491,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-nlRozJ8I"
+									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/rules-orbwfyDP"
+											"$ref": "#/components/schemas/rules-DzdnlLp2"
 										}
 									}
 								}
@@ -555,7 +555,7 @@
 								"$ref": "#/components/schemas/rule_catchall-actions"
 							},
 							"enabled": {
-								"$ref": "#/components/schemas/rule_enabled"
+								"$ref": "#/components/schemas/rule_enabled-6Qw6gZoM"
 							},
 							"matchers": {
 								"$ref": "#/components/schemas/rule_catchall-matchers"
@@ -581,7 +581,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single-nlRozJ8I"
+									"$ref": "#/components/schemas/api-response-single-FGrpUDrV"
 								},
 								{
 									"properties": {

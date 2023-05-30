@@ -1,13 +1,13 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"$ref": "#/components/schemas/api-response-single-orHM1jWS"
 		},
 		{
 			"properties": {
 				"result": {
-					"example": {},
-					"type": "object"
+					"example": "ok",
+					"type": "string"
 				}
 			}
 		}

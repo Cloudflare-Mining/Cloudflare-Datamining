@@ -16,10 +16,10 @@
 			"$ref": "#/components/schemas/captive_portal"
 		},
 		"default": {
-			"$ref": "#/components/schemas/default-yiMyE5KT"
+			"$ref": "#/components/schemas/schemas-default"
 		},
 		"description": {
-			"$ref": "#/components/schemas/schemas-description-kEM4FUA1"
+			"$ref": "#/components/schemas/devices_components-schemas-description"
 		},
 		"disable_auto_fallback": {
 			"$ref": "#/components/schemas/disable_auto_fallback"
@@ -30,7 +30,7 @@
 			"type": "boolean"
 		},
 		"exclude": {
-			"$ref": "#/components/schemas/exclude-1VIcxk0L"
+			"$ref": "#/components/schemas/components-schemas-exclude"
 		},
 		"exclude_office_ips": {
 			"$ref": "#/components/schemas/exclude_office_ips"
@@ -42,10 +42,10 @@
 			"$ref": "#/components/schemas/gateway_unique_id"
 		},
 		"include": {
-			"$ref": "#/components/schemas/include-h6zHxSYL"
+			"$ref": "#/components/schemas/schemas-include"
 		},
 		"match": {
-			"$ref": "#/components/schemas/schemas-match"
+			"$ref": "#/components/schemas/components-schemas-match"
 		},
 		"name": {
 			"description": "The name of the device settings policy.",
@@ -54,10 +54,10 @@
 			"type": "string"
 		},
 		"policy_id": {
-			"$ref": "#/components/schemas/schemas-uuid-qDBVxnTc"
+			"$ref": "#/components/schemas/uuid"
 		},
 		"precedence": {
-			"$ref": "#/components/schemas/precedence-94daoiZi"
+			"$ref": "#/components/schemas/schemas-precedence"
 		},
 		"service_mode_v2": {
 			"$ref": "#/components/schemas/service_mode_v2"

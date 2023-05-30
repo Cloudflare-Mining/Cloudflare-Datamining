@@ -36,7 +36,7 @@
 								"$ref": "#/components/schemas/maxDurationSeconds"
 							},
 							"requireSignedURLs": {
-								"$ref": "#/components/schemas/requireSignedURLs-CqudcD1m"
+								"$ref": "#/components/schemas/requireSignedURLs"
 							},
 							"startTimeSeconds": {
 								"$ref": "#/components/schemas/start_time_seconds"
@@ -66,7 +66,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection-PAmkZGnN"
 								},
 								{
 									"properties": {
@@ -89,7 +89,7 @@
 								"errors": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"$ref": "#/components/schemas/messages-KPbOwT6c"
 										}
 									],
 									"example": [
@@ -103,7 +103,7 @@
 								"messages": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/messages"
+											"$ref": "#/components/schemas/messages-KPbOwT6c"
 										}
 									],
 									"example": []

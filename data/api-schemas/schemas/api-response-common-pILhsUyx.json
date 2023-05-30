@@ -1,0 +1,39 @@
+{
+	"properties": {
+		"errors": {
+			"$ref": "#/components/schemas/messages-cgWsI0NZ"
+		},
+		"messages": {
+			"$ref": "#/components/schemas/messages-cgWsI0NZ"
+		},
+		"result": {
+			"anyOf": [
+				{
+					"type": "object"
+				},
+				{
+					"items": {},
+					"type": "array"
+				},
+				{
+					"type": "string"
+				}
+			]
+		},
+		"success": {
+			"description": "Whether the API call was successful",
+			"enum": [
+				true
+			],
+			"example": true,
+			"type": "boolean"
+		}
+	},
+	"required": [
+		"success",
+		"errors",
+		"messages",
+		"result"
+	],
+	"type": "object"
+}

@@ -1,0 +1,17 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection-Ha8pq0NI"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"$ref": "#/components/schemas/ipam-delegations"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

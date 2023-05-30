@@ -1,12 +1,12 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"$ref": "#/components/schemas/api-response-single-V6VSWJR4"
 		},
 		{
 			"properties": {
 				"result": {
-					"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
+					"$ref": "#/components/schemas/load-balancer"
 				}
 			}
 		}

@@ -13,10 +13,12 @@
 		},
 		"source": {
 			"description": "The source of this message.",
-			"items": {
-				"description": "A JSON pointer to the field that is the source of the message.",
-				"example": "/rules/0/action",
-				"type": "string"
+			"properties": {
+				"pointer": {
+					"description": "A JSON pointer to the field that is the source of the message.",
+					"example": "/rules/0/action",
+					"type": "string"
+				}
 			},
 			"type": "object"
 		}

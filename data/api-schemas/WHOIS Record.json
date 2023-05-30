@@ -29,12 +29,12 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-single"
+									"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
 								},
 								{
 									"properties": {
 										"result": {
-											"$ref": "#/components/schemas/whois-N5EHVOco"
+											"$ref": "#/components/schemas/whois-XQa510Lo"
 										}
 									}
 								}
@@ -52,12 +52,12 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
 										},
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/components/schemas/whois-N5EHVOco"
+													"$ref": "#/components/schemas/whois-XQa510Lo"
 												}
 											}
 										}
@@ -68,7 +68,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": [
@@ -82,7 +82,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-pTUdXutO"
 												}
 											],
 											"example": []

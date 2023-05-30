@@ -1,26 +1,14 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-single"
+			"$ref": "#/components/schemas/api-response-common-oZt4ppR2"
 		},
 		{
 			"properties": {
 				"result": {
 					"properties": {
-						"pools": {
-							"additionalProperties": {
-								"description": "The pool name associated with the pool ID.",
-								"type": "string"
-							},
-							"description": "Monitored pool IDs mapped to their respective names.",
-							"example": {
-								"abwlnp5jbqn45ecgxd03erbgtxtqai0d": "WNAM Datacenter",
-								"ve8h9lrcip5n5bbga9yqmdws28ay5d0l": "EEU Datacenter"
-							},
-							"type": "object"
-						},
-						"preview_id": {
-							"$ref": "#/components/schemas/identifier-4hprbTMg"
+						"preview_url": {
+							"$ref": "#/components/schemas/preview_url"
 						}
 					},
 					"type": "object"

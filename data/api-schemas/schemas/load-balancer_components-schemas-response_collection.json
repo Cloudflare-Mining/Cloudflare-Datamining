@@ -1,13 +1,13 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"$ref": "#/components/schemas/api-response-collection-YlUA7tzw"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/load-balancer-rCUGOmDR"
+						"$ref": "#/components/schemas/load-balancer"
 					},
 					"type": "array"
 				}

@@ -1,0 +1,23 @@
+{
+	"description": "Object specifying available variants for an image.",
+	"example": [
+		"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
+		"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
+		"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original"
+	],
+	"items": {
+		"anyOf": [
+			{
+				"$ref": "#/components/schemas/thumbnail_url-K6qrjhcb"
+			},
+			{
+				"$ref": "#/components/schemas/hero_url"
+			},
+			{
+				"$ref": "#/components/schemas/original_url"
+			}
+		]
+	},
+	"readOnly": true,
+	"type": "array"
+}

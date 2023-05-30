@@ -1,6 +1,7 @@
 {
-	"description": "The wirefilter expression to match devices.",
-	"example": "user.identity == \"test@cloudflare.com\"",
-	"maxLength": 500,
-	"type": "string"
+	"description": "The conditions that the client must match to run the rule.",
+	"items": {
+		"$ref": "#/components/schemas/match_item"
+	},
+	"type": "array"
 }

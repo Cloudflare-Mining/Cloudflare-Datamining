@@ -1,0 +1,14 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-collection-GHfeKhps"
+		},
+		{
+			"properties": {
+				"result": {
+					"$ref": "#/components/schemas/keys_response"
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,23 @@
+{
+	"description": "A ruleset object.",
+	"properties": {
+		"description": {
+			"default": "",
+			"description": "An informative description of the ruleset.",
+			"example": "My ruleset to execute managed rulesets",
+			"type": "string"
+		},
+		"kind": {
+			"$ref": "#/components/schemas/RulesetKind"
+		},
+		"name": {
+			"description": "The human-readable name of the ruleset.",
+			"example": "My ruleset",
+			"type": "string"
+		},
+		"phase": {
+			"$ref": "#/components/schemas/RulesetPhase"
+		}
+	},
+	"type": "object"
+}

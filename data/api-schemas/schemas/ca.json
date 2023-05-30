@@ -1,14 +1,5 @@
 {
-	"properties": {
-		"aud": {
-			"$ref": "#/components/schemas/aud"
-		},
-		"id": {
-			"$ref": "#/components/schemas/id"
-		},
-		"public_key": {
-			"$ref": "#/components/schemas/public_key"
-		}
-	},
-	"type": "object"
+	"description": "Indicates whether the certificate is a CA or leaf certificate.",
+	"example": true,
+	"type": "boolean"
 }

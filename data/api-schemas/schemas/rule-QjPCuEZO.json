@@ -1,0 +1,52 @@
+{
+	"properties": {
+		"allowed_modes": {
+			"description": "The available actions that a rule can apply to a matched request.",
+			"example": [
+				"whitelist",
+				"block",
+				"challenge",
+				"js_challenge",
+				"managed_challenge"
+			],
+			"items": {
+				"$ref": "#/components/schemas/schemas-mode"
+			},
+			"readOnly": true,
+			"type": "array"
+		},
+		"configuration": {
+			"$ref": "#/components/schemas/schemas-configuration"
+		},
+		"created_on": {
+			"description": "The timestamp of when the rule was created.",
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"id": {
+			"$ref": "#/components/schemas/rule_components-schemas-identifier-JDCswmsJ"
+		},
+		"mode": {
+			"$ref": "#/components/schemas/schemas-mode"
+		},
+		"modified_on": {
+			"description": "The timestamp of when the rule was last modified.",
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"notes": {
+			"$ref": "#/components/schemas/notes"
+		}
+	},
+	"required": [
+		"id",
+		"mode",
+		"allowed_modes",
+		"configuration"
+	],
+	"type": "object"
+}

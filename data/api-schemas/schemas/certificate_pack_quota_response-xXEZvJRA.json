@@ -1,0 +1,20 @@
+{
+	"allOf": [
+		{
+			"$ref": "#/components/schemas/api-response-single-HqDIQvYH"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"advanced": {
+							"$ref": "#/components/schemas/quota"
+						}
+					},
+					"type": "object"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

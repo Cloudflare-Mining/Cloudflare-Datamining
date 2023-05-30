@@ -1,12 +1,5 @@
 {
-	"description": "A request condition target.",
-	"oneOf": [
-		{
-			"$ref": "#/components/schemas/url_target"
-		}
-	],
-	"required": [
-		"target",
-		"constraint"
-	]
+	"description": "The target hostname, IPv6, or IPv6 address.",
+	"example": "1.1.1.1",
+	"type": "string"
 }

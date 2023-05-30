@@ -1,36 +1,37 @@
 {
 	"properties": {
+		"created_on": {
+			"$ref": "#/components/schemas/created_on-f33ZJFgm"
+		},
+		"description": {
+			"$ref": "#/components/schemas/description-DzpUUWLN"
+		},
+		"id": {
+			"$ref": "#/components/schemas/identifier"
+		},
 		"modified_on": {
-			"description": "The timestamp of when the override was last modified.",
-			"example": "2014-01-01T05:20:00.12345Z",
-			"format": "date-time",
-			"readOnly": true,
-			"type": "string"
+			"$ref": "#/components/schemas/modified_on-VGiZORaX"
 		},
-		"name": {
-			"description": "The type of route.",
-			"enum": [
-				"forward_url"
-			],
-			"example": "forward_url"
+		"nexthop": {
+			"$ref": "#/components/schemas/nexthop"
 		},
-		"value": {
-			"properties": {
-				"type": {
-					"description": "The response type for the URL redirect.",
-					"enum": [
-						"temporary",
-						"permanent"
-					],
-					"example": "temporary"
-				},
-				"url": {
-					"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
-					"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
-					"type": "string"
-				}
-			}
+		"prefix": {
+			"$ref": "#/components/schemas/prefix"
+		},
+		"priority": {
+			"$ref": "#/components/schemas/priority-HjU8OAIV"
+		},
+		"scope": {
+			"$ref": "#/components/schemas/scope-I4WmPPnJ"
+		},
+		"weight": {
+			"$ref": "#/components/schemas/weight-uI55RS87"
 		}
 	},
+	"required": [
+		"prefix",
+		"nexthop",
+		"priority"
+	],
 	"type": "object"
 }

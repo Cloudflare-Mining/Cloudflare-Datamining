@@ -1,0 +1,76 @@
+{
+	"oneOf": [
+		{
+			"$ref": "#/components/schemas/ARecord"
+		},
+		{
+			"$ref": "#/components/schemas/AAAARecord"
+		},
+		{
+			"$ref": "#/components/schemas/CAARecord"
+		},
+		{
+			"$ref": "#/components/schemas/CERTRecord"
+		},
+		{
+			"$ref": "#/components/schemas/CNAMERecord"
+		},
+		{
+			"$ref": "#/components/schemas/DNSKEYRecord"
+		},
+		{
+			"$ref": "#/components/schemas/DSRecord"
+		},
+		{
+			"$ref": "#/components/schemas/HTTPSRecord"
+		},
+		{
+			"$ref": "#/components/schemas/LOCRecord"
+		},
+		{
+			"$ref": "#/components/schemas/MXRecord"
+		},
+		{
+			"$ref": "#/components/schemas/NAPTRRecord"
+		},
+		{
+			"$ref": "#/components/schemas/NSRecord"
+		},
+		{
+			"$ref": "#/components/schemas/PTRRecord"
+		},
+		{
+			"$ref": "#/components/schemas/SMIMEARecord"
+		},
+		{
+			"$ref": "#/components/schemas/SRVRecord"
+		},
+		{
+			"$ref": "#/components/schemas/SSHFPRecord"
+		},
+		{
+			"$ref": "#/components/schemas/SVCBRecord"
+		},
+		{
+			"$ref": "#/components/schemas/TLSARecord"
+		},
+		{
+			"$ref": "#/components/schemas/TXTRecord"
+		},
+		{
+			"$ref": "#/components/schemas/URIRecord"
+		}
+	],
+	"required": [
+		"id",
+		"type",
+		"name",
+		"content",
+		"proxiable",
+		"locked",
+		"zone_name",
+		"created_on",
+		"modified_on"
+	],
+	"type": "object"
+}

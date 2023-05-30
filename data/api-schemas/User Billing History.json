@@ -91,13 +91,13 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection-cX15VhWD"
 								},
 								{
 									"properties": {
 										"result": {
 											"items": {
-												"$ref": "#/components/schemas/billing-history-Gtm98PjS"
+												"$ref": "#/components/schemas/billing-history"
 											},
 											"type": "array"
 										}
@@ -117,13 +117,13 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection-cX15VhWD"
 										},
 										{
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/components/schemas/billing-history-Gtm98PjS"
+														"$ref": "#/components/schemas/billing-history"
 													},
 													"type": "array"
 												}
@@ -136,7 +136,7 @@
 										"errors": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-4ymdSH5U"
 												}
 											],
 											"example": [
@@ -150,7 +150,7 @@
 										"messages": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/messages"
+													"$ref": "#/components/schemas/messages-4ymdSH5U"
 												}
 											],
 											"example": []

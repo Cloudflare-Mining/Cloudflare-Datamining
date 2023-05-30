@@ -1,32 +1,15 @@
 {
 	"allOf": [
 		{
-			"$ref": "#/components/schemas/api-response-collection"
+			"$ref": "#/components/schemas/api-response-collection-6cN35h0q"
 		},
 		{
 			"properties": {
 				"result": {
 					"items": {
-						"$ref": "#/components/schemas/rules-orbwfyDP"
+						"$ref": "#/components/schemas/rule_result"
 					},
 					"type": "array"
-				},
-				"result_info": {
-					"properties": {
-						"count": {
-							"example": 1
-						},
-						"page": {
-							"example": 1
-						},
-						"per_page": {
-							"example": 20
-						},
-						"total_count": {
-							"example": 1
-						}
-					},
-					"type": "object"
 				}
 			}
 		}

@@ -1,0 +1,63 @@
+{
+	"properties": {
+		"dimensions": {
+			"description": "Array of dimension names.",
+			"example": [
+				"responseCode",
+				"queryName"
+			],
+			"items": {
+				"description": "Dimension name.",
+				"example": "responseCode",
+				"type": "string"
+			},
+			"type": "array"
+		},
+		"filters": {
+			"$ref": "#/components/schemas/filters-7wsc1ObB"
+		},
+		"limit": {
+			"$ref": "#/components/schemas/limit"
+		},
+		"metrics": {
+			"description": "Array of metric names.",
+			"example": [
+				"queryCount",
+				"responseTimeAvg"
+			],
+			"items": {
+				"description": "Metric name.",
+				"example": "queries",
+				"type": "string"
+			},
+			"type": "array"
+		},
+		"since": {
+			"$ref": "#/components/schemas/since-VFS0BG47"
+		},
+		"sort": {
+			"description": "Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
+			"example": [
+				"+responseCode",
+				"-queryName"
+			],
+			"items": {
+				"description": "Dimension name (may be prefixed by - (descending) or + (ascending).",
+				"example": "+responseCode",
+				"type": "string"
+			},
+			"type": "array"
+		},
+		"until": {
+			"$ref": "#/components/schemas/until-nRionPvi"
+		}
+	},
+	"required": [
+		"dimensions",
+		"metrics",
+		"since",
+		"until",
+		"limit"
+	],
+	"type": "object"
+}
