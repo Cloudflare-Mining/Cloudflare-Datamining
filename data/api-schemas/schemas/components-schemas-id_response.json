@@ -99,8 +99,11 @@
 				"result": {
 					"properties": {
 						"id": {
-							"example": "23ff594956f20c2a721606e94745a8aa",
-							"readOnly": true
+							"description": "UUID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"readOnly": true,
+							"type": "string"
 						}
 					},
 					"type": "object"

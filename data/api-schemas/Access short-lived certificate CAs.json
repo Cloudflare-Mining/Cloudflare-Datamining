@@ -283,7 +283,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -325,7 +326,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -495,7 +497,7 @@
 														"$ref": "#/components/schemas/aud"
 													},
 													"id": {
-														"$ref": "#/components/schemas/id-4uKiuAXz"
+														"$ref": "#/components/schemas/id-Exjkq5vE"
 													},
 													"public_key": {
 														"$ref": "#/components/schemas/public_key"
@@ -549,7 +551,7 @@
 																"$ref": "#/components/schemas/aud"
 															},
 															"id": {
-																"$ref": "#/components/schemas/id-4uKiuAXz"
+																"$ref": "#/components/schemas/id-Exjkq5vE"
 															},
 															"public_key": {
 																"$ref": "#/components/schemas/public_key"
@@ -721,7 +723,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -763,7 +766,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}

@@ -73,7 +73,7 @@
 													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-jdUyzx9A"
+													"$ref": "#/components/schemas/identifier-gxI8qU8C"
 												},
 												"issuer": {
 													"$ref": "#/components/schemas/issuer"
@@ -141,7 +141,7 @@
 															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-jdUyzx9A"
+															"$ref": "#/components/schemas/identifier-gxI8qU8C"
 														},
 														"issuer": {
 															"$ref": "#/components/schemas/issuer"
@@ -341,13 +341,13 @@
 										"result": {
 											"properties": {
 												"cert_id": {
-													"$ref": "#/components/schemas/identifier-jdUyzx9A"
+													"$ref": "#/components/schemas/identifier-gxI8qU8C"
 												},
 												"cert_status": {
 													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
 												},
 												"cert_updated_at": {
-													"$ref": "#/components/schemas/updated_at-iMjJR8Mi"
+													"$ref": "#/components/schemas/updated_at"
 												},
 												"cert_uploaded_on": {
 													"$ref": "#/components/schemas/components-schemas-uploaded_on"
@@ -380,7 +380,7 @@
 													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
 												},
 												"updated_at": {
-													"$ref": "#/components/schemas/updated_at-iMjJR8Mi"
+													"$ref": "#/components/schemas/updated_at"
 												}
 											}
 										}
@@ -427,13 +427,13 @@
 												"result": {
 													"properties": {
 														"cert_id": {
-															"$ref": "#/components/schemas/identifier-jdUyzx9A"
+															"$ref": "#/components/schemas/identifier-gxI8qU8C"
 														},
 														"cert_status": {
 															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
 														},
 														"cert_updated_at": {
-															"$ref": "#/components/schemas/updated_at-iMjJR8Mi"
+															"$ref": "#/components/schemas/updated_at"
 														},
 														"cert_uploaded_on": {
 															"$ref": "#/components/schemas/components-schemas-uploaded_on"
@@ -466,7 +466,7 @@
 															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
 														},
 														"updated_at": {
-															"$ref": "#/components/schemas/updated_at-iMjJR8Mi"
+															"$ref": "#/components/schemas/updated_at"
 														}
 													}
 												}
@@ -638,12 +638,12 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/hostname_certid_object-4badjy1L"
+														"$ref": "#/components/schemas/hostname_certid_object-J1ROD5iG"
 													}
 												],
 												"properties": {
 													"cert_id": {
-														"$ref": "#/components/schemas/identifier-jdUyzx9A"
+														"$ref": "#/components/schemas/identifier-gxI8qU8C"
 													},
 													"certificate": {
 														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
@@ -655,7 +655,7 @@
 														"$ref": "#/components/schemas/schemas-hostname"
 													},
 													"id": {
-														"$ref": "#/components/schemas/identifier-jdUyzx9A"
+														"$ref": "#/components/schemas/identifier-gxI8qU8C"
 													},
 													"private_key": {
 														"$ref": "#/components/schemas/schemas-private_key"
@@ -706,12 +706,12 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/hostname_certid_object-4badjy1L"
+																"$ref": "#/components/schemas/hostname_certid_object-J1ROD5iG"
 															}
 														],
 														"properties": {
 															"cert_id": {
-																"$ref": "#/components/schemas/identifier-jdUyzx9A"
+																"$ref": "#/components/schemas/identifier-gxI8qU8C"
 															},
 															"certificate": {
 																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
@@ -723,7 +723,7 @@
 																"$ref": "#/components/schemas/schemas-hostname"
 															},
 															"id": {
-																"$ref": "#/components/schemas/identifier-jdUyzx9A"
+																"$ref": "#/components/schemas/identifier-gxI8qU8C"
 															},
 															"private_key": {
 																"$ref": "#/components/schemas/schemas-private_key"
@@ -922,7 +922,7 @@
 													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-jdUyzx9A"
+													"$ref": "#/components/schemas/identifier-gxI8qU8C"
 												},
 												"issuer": {
 													"$ref": "#/components/schemas/issuer"
@@ -990,7 +990,7 @@
 															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-jdUyzx9A"
+															"$ref": "#/components/schemas/identifier-gxI8qU8C"
 														},
 														"issuer": {
 															"$ref": "#/components/schemas/issuer"
@@ -1212,7 +1212,7 @@
 													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-jdUyzx9A"
+													"$ref": "#/components/schemas/identifier-gxI8qU8C"
 												},
 												"issuer": {
 													"$ref": "#/components/schemas/issuer"
@@ -1280,7 +1280,7 @@
 															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-jdUyzx9A"
+															"$ref": "#/components/schemas/identifier-gxI8qU8C"
 														},
 														"issuer": {
 															"$ref": "#/components/schemas/issuer"
@@ -1499,12 +1499,12 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/hostname_certid_object-4badjy1L"
+														"$ref": "#/components/schemas/hostname_certid_object-J1ROD5iG"
 													}
 												],
 												"properties": {
 													"cert_id": {
-														"$ref": "#/components/schemas/identifier-jdUyzx9A"
+														"$ref": "#/components/schemas/identifier-gxI8qU8C"
 													},
 													"certificate": {
 														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
@@ -1516,7 +1516,7 @@
 														"$ref": "#/components/schemas/schemas-hostname"
 													},
 													"id": {
-														"$ref": "#/components/schemas/identifier-jdUyzx9A"
+														"$ref": "#/components/schemas/identifier-gxI8qU8C"
 													},
 													"private_key": {
 														"$ref": "#/components/schemas/schemas-private_key"
@@ -1567,12 +1567,12 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/hostname_certid_object-4badjy1L"
+																"$ref": "#/components/schemas/hostname_certid_object-J1ROD5iG"
 															}
 														],
 														"properties": {
 															"cert_id": {
-																"$ref": "#/components/schemas/identifier-jdUyzx9A"
+																"$ref": "#/components/schemas/identifier-gxI8qU8C"
 															},
 															"certificate": {
 																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
@@ -1584,7 +1584,7 @@
 																"$ref": "#/components/schemas/schemas-hostname"
 															},
 															"id": {
-																"$ref": "#/components/schemas/identifier-jdUyzx9A"
+																"$ref": "#/components/schemas/identifier-gxI8qU8C"
 															},
 															"private_key": {
 																"$ref": "#/components/schemas/schemas-private_key"

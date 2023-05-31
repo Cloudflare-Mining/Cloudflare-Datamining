@@ -428,32 +428,47 @@
 										"result": {
 											"items": {
 												"properties": {
-													"alert_type": {
-														"$ref": "#/components/schemas/alert_type"
+													"approval_groups": {
+														"$ref": "#/components/schemas/approval_groups"
 													},
-													"created": {
+													"approval_required": {
+														"$ref": "#/components/schemas/approval_required"
+													},
+													"created_at": {
 														"$ref": "#/components/schemas/timestamp"
 													},
-													"description": {
-														"$ref": "#/components/schemas/schemas-description-dMLHnnE1"
+													"decision": {
+														"$ref": "#/components/schemas/decision"
 													},
-													"enabled": {
-														"$ref": "#/components/schemas/enabled-czzSus9m"
-													},
-													"filters": {
-														"$ref": "#/components/schemas/filters-qsIFeOkD"
+													"exclude": {
+														"$ref": "#/components/schemas/schemas-exclude"
 													},
 													"id": {
-														"$ref": "#/components/schemas/uuid-lUcKZcfo"
+														"$ref": "#/components/schemas/components-schemas-uuid"
 													},
-													"mechanisms": {
-														"$ref": "#/components/schemas/mechanisms"
+													"include": {
+														"$ref": "#/components/schemas/include"
 													},
-													"modified": {
-														"$ref": "#/components/schemas/timestamp"
+													"isolation_required": {
+														"$ref": "#/components/schemas/isolation_required"
 													},
 													"name": {
-														"$ref": "#/components/schemas/schemas-name-SCjKYX0g"
+														"$ref": "#/components/schemas/policies_components-schemas-name"
+													},
+													"precedence": {
+														"$ref": "#/components/schemas/precedence-Z4Xd4xQW"
+													},
+													"purpose_justification_prompt": {
+														"$ref": "#/components/schemas/purpose_justification_prompt"
+													},
+													"purpose_justification_required": {
+														"$ref": "#/components/schemas/purpose_justification_required"
+													},
+													"require": {
+														"$ref": "#/components/schemas/schemas-require"
+													},
+													"updated_at": {
+														"$ref": "#/components/schemas/timestamp"
 													}
 												},
 												"type": "object"
@@ -500,32 +515,47 @@
 												"result": {
 													"items": {
 														"properties": {
-															"alert_type": {
-																"$ref": "#/components/schemas/alert_type"
+															"approval_groups": {
+																"$ref": "#/components/schemas/approval_groups"
 															},
-															"created": {
+															"approval_required": {
+																"$ref": "#/components/schemas/approval_required"
+															},
+															"created_at": {
 																"$ref": "#/components/schemas/timestamp"
 															},
-															"description": {
-																"$ref": "#/components/schemas/schemas-description-dMLHnnE1"
+															"decision": {
+																"$ref": "#/components/schemas/decision"
 															},
-															"enabled": {
-																"$ref": "#/components/schemas/enabled-czzSus9m"
-															},
-															"filters": {
-																"$ref": "#/components/schemas/filters-qsIFeOkD"
+															"exclude": {
+																"$ref": "#/components/schemas/schemas-exclude"
 															},
 															"id": {
-																"$ref": "#/components/schemas/uuid-lUcKZcfo"
+																"$ref": "#/components/schemas/components-schemas-uuid"
 															},
-															"mechanisms": {
-																"$ref": "#/components/schemas/mechanisms"
+															"include": {
+																"$ref": "#/components/schemas/include"
 															},
-															"modified": {
-																"$ref": "#/components/schemas/timestamp"
+															"isolation_required": {
+																"$ref": "#/components/schemas/isolation_required"
 															},
 															"name": {
-																"$ref": "#/components/schemas/schemas-name-SCjKYX0g"
+																"$ref": "#/components/schemas/policies_components-schemas-name"
+															},
+															"precedence": {
+																"$ref": "#/components/schemas/precedence-Z4Xd4xQW"
+															},
+															"purpose_justification_prompt": {
+																"$ref": "#/components/schemas/purpose_justification_prompt"
+															},
+															"purpose_justification_required": {
+																"$ref": "#/components/schemas/purpose_justification_required"
+															},
+															"require": {
+																"$ref": "#/components/schemas/schemas-require"
+															},
+															"updated_at": {
+																"$ref": "#/components/schemas/timestamp"
 															}
 														},
 														"type": "object"
@@ -710,16 +740,16 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/schemas-description-dMLHnnE1"
+													"$ref": "#/components/schemas/schemas-description-AMnXdzC4"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/enabled-czzSus9m"
+													"$ref": "#/components/schemas/enabled-75ILm57z"
 												},
 												"filters": {
-													"$ref": "#/components/schemas/filters-qsIFeOkD"
+													"$ref": "#/components/schemas/filters-CKWoPqBV"
 												},
 												"id": {
-													"$ref": "#/components/schemas/uuid-lUcKZcfo"
+													"$ref": "#/components/schemas/uuid-HxEX7rmJ"
 												},
 												"mechanisms": {
 													"$ref": "#/components/schemas/mechanisms"
@@ -728,7 +758,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/schemas-name-SCjKYX0g"
+													"$ref": "#/components/schemas/schemas-name-r3HOHjPr"
 												}
 											},
 											"type": "object"
@@ -782,16 +812,16 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/schemas-description-dMLHnnE1"
+															"$ref": "#/components/schemas/schemas-description-AMnXdzC4"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/enabled-czzSus9m"
+															"$ref": "#/components/schemas/enabled-75ILm57z"
 														},
 														"filters": {
-															"$ref": "#/components/schemas/filters-qsIFeOkD"
+															"$ref": "#/components/schemas/filters-CKWoPqBV"
 														},
 														"id": {
-															"$ref": "#/components/schemas/uuid-lUcKZcfo"
+															"$ref": "#/components/schemas/uuid-HxEX7rmJ"
 														},
 														"mechanisms": {
 															"$ref": "#/components/schemas/mechanisms"
@@ -800,7 +830,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/schemas-name-SCjKYX0g"
+															"$ref": "#/components/schemas/schemas-name-r3HOHjPr"
 														}
 													},
 													"type": "object"

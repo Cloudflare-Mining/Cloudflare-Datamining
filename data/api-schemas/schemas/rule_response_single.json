@@ -87,7 +87,8 @@
 								{
 									"type": "string"
 								}
-							]
+							],
+							"nullable": true
 						}
 					}
 				}
@@ -97,56 +98,6 @@
 		{
 			"properties": {
 				"result": {
-					"allOf": [
-						{
-							"properties": {
-								"actions": {
-									"description": "List actions patterns.",
-									"items": {
-										"$ref": "#/components/schemas/rule_action-JLg9fkCn"
-									},
-									"type": "array"
-								},
-								"enabled": {
-									"default": true,
-									"description": "Routing rule status.",
-									"enum": [
-										true,
-										false
-									],
-									"example": true,
-									"type": "boolean"
-								},
-								"matchers": {
-									"description": "Matching patterns to forward to your actions.",
-									"items": {
-										"$ref": "#/components/schemas/rule_matcher"
-									},
-									"type": "array"
-								},
-								"name": {
-									"description": "Routing rule name.",
-									"example": "Send to user@example.net rule.",
-									"maxLength": 256,
-									"type": "string"
-								},
-								"priority": {
-									"default": 0,
-									"description": "Priority of the routing rule.",
-									"minimum": 0,
-									"type": "number"
-								},
-								"tag": {
-									"description": "Routing rule identifier.",
-									"example": "a7e6fb77503c41d8a7f3113c6918f10c",
-									"maxLength": 32,
-									"readOnly": true,
-									"type": "string"
-								}
-							},
-							"type": "object"
-						}
-					],
 					"type": "object"
 				}
 			}

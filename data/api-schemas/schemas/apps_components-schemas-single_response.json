@@ -87,7 +87,8 @@
 								{
 									"type": "string"
 								}
-							]
+							],
+							"nullable": true
 						}
 					}
 				}
@@ -447,7 +448,7 @@
 													"$ref": "#/components/schemas/app_launcher_visible"
 												},
 												"auto_redirect_to_identity": {
-													"$ref": "#/components/schemas/auto_redirect_to_identity-PMNh7fHh"
+													"$ref": "#/components/schemas/auto_redirect_to_identity-kqJzldnG"
 												},
 												"cors_headers": {
 													"$ref": "#/components/schemas/cors_headers"
@@ -459,7 +460,7 @@
 													"$ref": "#/components/schemas/custom_deny_url"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/schemas-domain-DTxIZ1ha"
+													"$ref": "#/components/schemas/schemas-domain-q7h7KRXx"
 												},
 												"enable_binding_cookie": {
 													"$ref": "#/components/schemas/enable_binding_cookie"
@@ -480,7 +481,7 @@
 													"$ref": "#/components/schemas/service_auth_401_redirect"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-kFuCQMRA"
+													"$ref": "#/components/schemas/session_duration"
 												},
 												"skip_interstitial": {
 													"$ref": "#/components/schemas/skip_interstitial"
@@ -553,7 +554,7 @@
 													"$ref": "#/components/schemas/app_launcher_visible"
 												},
 												"auto_redirect_to_identity": {
-													"$ref": "#/components/schemas/auto_redirect_to_identity-PMNh7fHh"
+													"$ref": "#/components/schemas/auto_redirect_to_identity-kqJzldnG"
 												},
 												"cors_headers": {
 													"$ref": "#/components/schemas/cors_headers"
@@ -565,7 +566,7 @@
 													"$ref": "#/components/schemas/custom_deny_url"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/schemas-domain-DTxIZ1ha"
+													"$ref": "#/components/schemas/schemas-domain-q7h7KRXx"
 												},
 												"enable_binding_cookie": {
 													"$ref": "#/components/schemas/enable_binding_cookie"
@@ -586,7 +587,7 @@
 													"$ref": "#/components/schemas/service_auth_401_redirect"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-kFuCQMRA"
+													"$ref": "#/components/schemas/session_duration"
 												},
 												"skip_interstitial": {
 													"$ref": "#/components/schemas/skip_interstitial"
@@ -656,16 +657,16 @@
 													"$ref": "#/components/schemas/allowed_idps"
 												},
 												"auto_redirect_to_identity": {
-													"$ref": "#/components/schemas/auto_redirect_to_identity-PMNh7fHh"
+													"$ref": "#/components/schemas/auto_redirect_to_identity-kqJzldnG"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/schemas-domain-DTxIZ1ha"
+													"$ref": "#/components/schemas/schemas-domain-q7h7KRXx"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-kFuCQMRA"
+													"$ref": "#/components/schemas/session_duration"
 												},
 												"type": {
 													"$ref": "#/components/schemas/apps_components-schemas-type"
@@ -738,16 +739,16 @@
 													"$ref": "#/components/schemas/allowed_idps"
 												},
 												"auto_redirect_to_identity": {
-													"$ref": "#/components/schemas/auto_redirect_to_identity-PMNh7fHh"
+													"$ref": "#/components/schemas/auto_redirect_to_identity-kqJzldnG"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/schemas-domain-DTxIZ1ha"
+													"$ref": "#/components/schemas/schemas-domain-q7h7KRXx"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-kFuCQMRA"
+													"$ref": "#/components/schemas/session_duration"
 												},
 												"type": {
 													"$ref": "#/components/schemas/apps_components-schemas-type"
@@ -820,16 +821,16 @@
 													"$ref": "#/components/schemas/allowed_idps"
 												},
 												"auto_redirect_to_identity": {
-													"$ref": "#/components/schemas/auto_redirect_to_identity-PMNh7fHh"
+													"$ref": "#/components/schemas/auto_redirect_to_identity-kqJzldnG"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/schemas-domain-DTxIZ1ha"
+													"$ref": "#/components/schemas/schemas-domain-q7h7KRXx"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-kFuCQMRA"
+													"$ref": "#/components/schemas/session_duration"
 												},
 												"type": {
 													"$ref": "#/components/schemas/apps_components-schemas-type"

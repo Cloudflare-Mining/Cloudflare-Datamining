@@ -51,7 +51,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -98,7 +99,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -287,7 +289,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -334,7 +337,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -800,7 +804,7 @@
 														"$ref": "#/components/schemas/default_template_language"
 													},
 													"description": {
-														"$ref": "#/components/schemas/description-HR2eO542"
+														"$ref": "#/components/schemas/description-ryMeI8c1"
 													},
 													"disable_session_renewal": {
 														"$ref": "#/components/schemas/disable_session_renewal"
@@ -818,7 +822,7 @@
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"name": {
-														"$ref": "#/components/schemas/name-NBQzA57E"
+														"$ref": "#/components/schemas/name-xPIxxJsE"
 													},
 													"new_users_per_minute": {
 														"$ref": "#/components/schemas/new_users_per_minute"
@@ -839,7 +843,7 @@
 														"$ref": "#/components/schemas/queueing_method"
 													},
 													"session_duration": {
-														"$ref": "#/components/schemas/session_duration"
+														"$ref": "#/components/schemas/session_duration-1ubLMKoU"
 													},
 													"suspended": {
 														"$ref": "#/components/schemas/suspended"
@@ -905,7 +909,7 @@
 																"$ref": "#/components/schemas/default_template_language"
 															},
 															"description": {
-																"$ref": "#/components/schemas/description-HR2eO542"
+																"$ref": "#/components/schemas/description-ryMeI8c1"
 															},
 															"disable_session_renewal": {
 																"$ref": "#/components/schemas/disable_session_renewal"
@@ -923,7 +927,7 @@
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"name": {
-																"$ref": "#/components/schemas/name-NBQzA57E"
+																"$ref": "#/components/schemas/name-xPIxxJsE"
 															},
 															"new_users_per_minute": {
 																"$ref": "#/components/schemas/new_users_per_minute"
@@ -944,7 +948,7 @@
 																"$ref": "#/components/schemas/queueing_method"
 															},
 															"session_duration": {
-																"$ref": "#/components/schemas/session_duration"
+																"$ref": "#/components/schemas/session_duration-1ubLMKoU"
 															},
 															"suspended": {
 																"$ref": "#/components/schemas/suspended"
@@ -1115,7 +1119,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -1139,7 +1144,7 @@
 													"$ref": "#/components/schemas/default_template_language"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-HR2eO542"
+													"$ref": "#/components/schemas/description-ryMeI8c1"
 												},
 												"disable_session_renewal": {
 													"$ref": "#/components/schemas/disable_session_renewal"
@@ -1157,7 +1162,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-NBQzA57E"
+													"$ref": "#/components/schemas/name-xPIxxJsE"
 												},
 												"new_users_per_minute": {
 													"$ref": "#/components/schemas/new_users_per_minute"
@@ -1178,7 +1183,7 @@
 													"$ref": "#/components/schemas/queueing_method"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration"
+													"$ref": "#/components/schemas/session_duration-1ubLMKoU"
 												},
 												"suspended": {
 													"$ref": "#/components/schemas/suspended"
@@ -1219,7 +1224,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -1243,7 +1249,7 @@
 															"$ref": "#/components/schemas/default_template_language"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-HR2eO542"
+															"$ref": "#/components/schemas/description-ryMeI8c1"
 														},
 														"disable_session_renewal": {
 															"$ref": "#/components/schemas/disable_session_renewal"
@@ -1261,7 +1267,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-NBQzA57E"
+															"$ref": "#/components/schemas/name-xPIxxJsE"
 														},
 														"new_users_per_minute": {
 															"$ref": "#/components/schemas/new_users_per_minute"
@@ -1282,7 +1288,7 @@
 															"$ref": "#/components/schemas/queueing_method"
 														},
 														"session_duration": {
-															"$ref": "#/components/schemas/session_duration"
+															"$ref": "#/components/schemas/session_duration-1ubLMKoU"
 														},
 														"suspended": {
 															"$ref": "#/components/schemas/suspended"
@@ -1773,7 +1779,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -1865,7 +1872,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -2093,7 +2101,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -2185,7 +2194,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -2665,7 +2675,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -2731,7 +2742,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -2916,7 +2928,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -2972,7 +2985,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -3309,7 +3323,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -3333,7 +3348,7 @@
 													"$ref": "#/components/schemas/default_template_language"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-HR2eO542"
+													"$ref": "#/components/schemas/description-ryMeI8c1"
 												},
 												"disable_session_renewal": {
 													"$ref": "#/components/schemas/disable_session_renewal"
@@ -3351,7 +3366,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-NBQzA57E"
+													"$ref": "#/components/schemas/name-xPIxxJsE"
 												},
 												"new_users_per_minute": {
 													"$ref": "#/components/schemas/new_users_per_minute"
@@ -3372,7 +3387,7 @@
 													"$ref": "#/components/schemas/queueing_method"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration"
+													"$ref": "#/components/schemas/session_duration-1ubLMKoU"
 												},
 												"suspended": {
 													"$ref": "#/components/schemas/suspended"
@@ -3413,7 +3428,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -3437,7 +3453,7 @@
 															"$ref": "#/components/schemas/default_template_language"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-HR2eO542"
+															"$ref": "#/components/schemas/description-ryMeI8c1"
 														},
 														"disable_session_renewal": {
 															"$ref": "#/components/schemas/disable_session_renewal"
@@ -3455,7 +3471,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-NBQzA57E"
+															"$ref": "#/components/schemas/name-xPIxxJsE"
 														},
 														"new_users_per_minute": {
 															"$ref": "#/components/schemas/new_users_per_minute"
@@ -3476,7 +3492,7 @@
 															"$ref": "#/components/schemas/queueing_method"
 														},
 														"session_duration": {
-															"$ref": "#/components/schemas/session_duration"
+															"$ref": "#/components/schemas/session_duration-1ubLMKoU"
 														},
 														"suspended": {
 															"$ref": "#/components/schemas/suspended"
@@ -3745,7 +3761,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -3837,7 +3854,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -4411,7 +4429,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -4467,7 +4486,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -4796,7 +4816,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -4820,7 +4841,7 @@
 													"$ref": "#/components/schemas/default_template_language"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-HR2eO542"
+													"$ref": "#/components/schemas/description-ryMeI8c1"
 												},
 												"disable_session_renewal": {
 													"$ref": "#/components/schemas/disable_session_renewal"
@@ -4838,7 +4859,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-NBQzA57E"
+													"$ref": "#/components/schemas/name-xPIxxJsE"
 												},
 												"new_users_per_minute": {
 													"$ref": "#/components/schemas/new_users_per_minute"
@@ -4859,7 +4880,7 @@
 													"$ref": "#/components/schemas/queueing_method"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration"
+													"$ref": "#/components/schemas/session_duration-1ubLMKoU"
 												},
 												"suspended": {
 													"$ref": "#/components/schemas/suspended"
@@ -4900,7 +4921,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -4924,7 +4946,7 @@
 															"$ref": "#/components/schemas/default_template_language"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-HR2eO542"
+															"$ref": "#/components/schemas/description-ryMeI8c1"
 														},
 														"disable_session_renewal": {
 															"$ref": "#/components/schemas/disable_session_renewal"
@@ -4942,7 +4964,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-NBQzA57E"
+															"$ref": "#/components/schemas/name-xPIxxJsE"
 														},
 														"new_users_per_minute": {
 															"$ref": "#/components/schemas/new_users_per_minute"
@@ -4963,7 +4985,7 @@
 															"$ref": "#/components/schemas/queueing_method"
 														},
 														"session_duration": {
-															"$ref": "#/components/schemas/session_duration"
+															"$ref": "#/components/schemas/session_duration-1ubLMKoU"
 														},
 														"suspended": {
 															"$ref": "#/components/schemas/suspended"
@@ -5224,7 +5246,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -5316,7 +5339,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -5849,7 +5873,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -5898,7 +5923,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -6229,7 +6255,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -6253,7 +6280,7 @@
 													"$ref": "#/components/schemas/default_template_language"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-HR2eO542"
+													"$ref": "#/components/schemas/description-ryMeI8c1"
 												},
 												"disable_session_renewal": {
 													"$ref": "#/components/schemas/disable_session_renewal"
@@ -6271,7 +6298,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-NBQzA57E"
+													"$ref": "#/components/schemas/name-xPIxxJsE"
 												},
 												"new_users_per_minute": {
 													"$ref": "#/components/schemas/new_users_per_minute"
@@ -6292,7 +6319,7 @@
 													"$ref": "#/components/schemas/queueing_method"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration"
+													"$ref": "#/components/schemas/session_duration-1ubLMKoU"
 												},
 												"suspended": {
 													"$ref": "#/components/schemas/suspended"
@@ -6333,7 +6360,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -6357,7 +6385,7 @@
 															"$ref": "#/components/schemas/default_template_language"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-HR2eO542"
+															"$ref": "#/components/schemas/description-ryMeI8c1"
 														},
 														"disable_session_renewal": {
 															"$ref": "#/components/schemas/disable_session_renewal"
@@ -6375,7 +6403,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-NBQzA57E"
+															"$ref": "#/components/schemas/name-xPIxxJsE"
 														},
 														"new_users_per_minute": {
 															"$ref": "#/components/schemas/new_users_per_minute"
@@ -6396,7 +6424,7 @@
 															"$ref": "#/components/schemas/queueing_method"
 														},
 														"session_duration": {
-															"$ref": "#/components/schemas/session_duration"
+															"$ref": "#/components/schemas/session_duration-1ubLMKoU"
 														},
 														"suspended": {
 															"$ref": "#/components/schemas/suspended"
@@ -6665,7 +6693,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -6757,7 +6786,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -7276,7 +7306,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -7332,7 +7363,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}

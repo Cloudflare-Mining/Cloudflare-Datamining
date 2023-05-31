@@ -61,7 +61,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -111,7 +112,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -320,7 +322,7 @@
 														"$ref": "#/components/schemas/policies_components-schemas-name"
 													},
 													"precedence": {
-														"$ref": "#/components/schemas/precedence-wCdxDo2d"
+														"$ref": "#/components/schemas/precedence-Z4Xd4xQW"
 													},
 													"purpose_justification_prompt": {
 														"$ref": "#/components/schemas/purpose_justification_prompt"
@@ -407,7 +409,7 @@
 																"$ref": "#/components/schemas/policies_components-schemas-name"
 															},
 															"precedence": {
-																"$ref": "#/components/schemas/precedence-wCdxDo2d"
+																"$ref": "#/components/schemas/precedence-Z4Xd4xQW"
 															},
 															"purpose_justification_prompt": {
 																"$ref": "#/components/schemas/purpose_justification_prompt"
@@ -627,7 +629,7 @@
 													"$ref": "#/components/schemas/policies_components-schemas-name"
 												},
 												"precedence": {
-													"$ref": "#/components/schemas/precedence-wCdxDo2d"
+													"$ref": "#/components/schemas/precedence-Z4Xd4xQW"
 												},
 												"purpose_justification_prompt": {
 													"$ref": "#/components/schemas/purpose_justification_prompt"
@@ -713,7 +715,7 @@
 															"$ref": "#/components/schemas/policies_components-schemas-name"
 														},
 														"precedence": {
-															"$ref": "#/components/schemas/precedence-wCdxDo2d"
+															"$ref": "#/components/schemas/precedence-Z4Xd4xQW"
 														},
 														"purpose_justification_prompt": {
 															"$ref": "#/components/schemas/purpose_justification_prompt"
@@ -1159,7 +1161,7 @@
 													"$ref": "#/components/schemas/policies_components-schemas-name"
 												},
 												"precedence": {
-													"$ref": "#/components/schemas/precedence-wCdxDo2d"
+													"$ref": "#/components/schemas/precedence-Z4Xd4xQW"
 												},
 												"purpose_justification_prompt": {
 													"$ref": "#/components/schemas/purpose_justification_prompt"
@@ -1245,7 +1247,7 @@
 															"$ref": "#/components/schemas/policies_components-schemas-name"
 														},
 														"precedence": {
-															"$ref": "#/components/schemas/precedence-wCdxDo2d"
+															"$ref": "#/components/schemas/precedence-Z4Xd4xQW"
 														},
 														"purpose_justification_prompt": {
 															"$ref": "#/components/schemas/purpose_justification_prompt"
@@ -1702,7 +1704,7 @@
 													"$ref": "#/components/schemas/policies_components-schemas-name"
 												},
 												"precedence": {
-													"$ref": "#/components/schemas/precedence-wCdxDo2d"
+													"$ref": "#/components/schemas/precedence-Z4Xd4xQW"
 												},
 												"purpose_justification_prompt": {
 													"$ref": "#/components/schemas/purpose_justification_prompt"
@@ -1788,7 +1790,7 @@
 															"$ref": "#/components/schemas/policies_components-schemas-name"
 														},
 														"precedence": {
-															"$ref": "#/components/schemas/precedence-wCdxDo2d"
+															"$ref": "#/components/schemas/precedence-Z4Xd4xQW"
 														},
 														"purpose_justification_prompt": {
 															"$ref": "#/components/schemas/purpose_justification_prompt"

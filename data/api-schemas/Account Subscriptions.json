@@ -433,7 +433,7 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/subscription-v2-X5bUKPKh"
+														"$ref": "#/components/schemas/subscription-v2-iBFML67m"
 													}
 												],
 												"type": "object"
@@ -482,7 +482,7 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/subscription-v2-X5bUKPKh"
+																"$ref": "#/components/schemas/subscription-v2-iBFML67m"
 															}
 														],
 														"type": "object"
@@ -749,10 +749,10 @@
 								"description": "A simple zone object. May have null properties if not a zone subscription.",
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/identifier-bIIZDj3p"
+										"$ref": "#/components/schemas/identifier-pDIAnxcN"
 									},
 									"name": {
-										"$ref": "#/components/schemas/name-bMcsLjZs"
+										"$ref": "#/components/schemas/name-tx95dZaP"
 									}
 								},
 								"type": "object"
@@ -1115,10 +1115,10 @@
 								"description": "A simple zone object. May have null properties if not a zone subscription.",
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/identifier-bIIZDj3p"
+										"$ref": "#/components/schemas/identifier-pDIAnxcN"
 									},
 									"name": {
-										"$ref": "#/components/schemas/name-bMcsLjZs"
+										"$ref": "#/components/schemas/name-tx95dZaP"
 									}
 								},
 								"type": "object"

@@ -30,9 +30,9 @@
 				"type": "object"
 			},
 			"value": {
-				"description": "A UTF-8 encoded string to be stored, up to 25 MiB in length.",
+				"description": "A UTF-8 encoded string to be stored, up to 10 MB in length.",
 				"example": "Some string",
-				"maxLength": 26214400,
+				"maxLength": 10485760,
 				"type": "string"
 			}
 		},

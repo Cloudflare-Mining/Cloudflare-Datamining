@@ -462,7 +462,7 @@
 											"items": {
 												"properties": {
 													"email": {
-														"$ref": "#/components/schemas/email"
+														"$ref": "#/components/schemas/email-UQtxDgem"
 													},
 													"id": {
 														"$ref": "#/components/schemas/common_components-schemas-identifier"
@@ -473,7 +473,7 @@
 													"roles": {
 														"description": "Roles assigned to this Member.",
 														"items": {
-															"$ref": "#/components/schemas/schemas-role"
+															"$ref": "#/components/schemas/schemas-role-KEZfzb3L"
 														},
 														"type": "array"
 													},
@@ -724,7 +724,7 @@
 												"roles": {
 													"description": "Roles assigned to this member.",
 													"items": {
-														"$ref": "#/components/schemas/role"
+														"$ref": "#/components/schemas/role-ASPaSjvX"
 													},
 													"type": "array"
 												},
@@ -734,7 +734,7 @@
 												"user": {
 													"properties": {
 														"email": {
-															"$ref": "#/components/schemas/email"
+															"$ref": "#/components/schemas/email-UQtxDgem"
 														},
 														"first_name": {
 															"$ref": "#/components/schemas/first_name"
@@ -1013,7 +1013,7 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/member"
+													"$ref": "#/components/schemas/member-NsexVpsw"
 												},
 												{
 													"properties": {
@@ -1220,16 +1220,13 @@
 						"allOf": [
 							{
 								"properties": {
-									"code": {
-										"$ref": "#/components/schemas/code"
-									},
 									"id": {
 										"$ref": "#/components/schemas/membership_components-schemas-identifier"
 									},
 									"roles": {
 										"description": "Roles assigned to this member.",
 										"items": {
-											"$ref": "#/components/schemas/role-sc68FuQK"
+											"$ref": "#/components/schemas/role-ASPaSjvX"
 										},
 										"type": "array"
 									},
@@ -1239,7 +1236,7 @@
 									"user": {
 										"properties": {
 											"email": {
-												"$ref": "#/components/schemas/email"
+												"$ref": "#/components/schemas/email-UQtxDgem"
 											},
 											"first_name": {
 												"$ref": "#/components/schemas/first_name"
@@ -1314,7 +1311,7 @@
 												"roles": {
 													"description": "Roles assigned to this member.",
 													"items": {
-														"$ref": "#/components/schemas/role"
+														"$ref": "#/components/schemas/role-ASPaSjvX"
 													},
 													"type": "array"
 												},
@@ -1324,7 +1321,7 @@
 												"user": {
 													"properties": {
 														"email": {
-															"$ref": "#/components/schemas/email"
+															"$ref": "#/components/schemas/email-UQtxDgem"
 														},
 														"first_name": {
 															"$ref": "#/components/schemas/first_name"

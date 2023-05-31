@@ -1,10 +1,9 @@
 {
-	"description": "Status of the token.",
 	"enum": [
-		"active",
-		"disabled",
-		"expired"
+		"event_prequeueing",
+		"not_queueing",
+		"queueing"
 	],
-	"example": "active",
+	"example": "queueing",
 	"type": "string"
 }

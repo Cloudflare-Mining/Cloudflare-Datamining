@@ -1,0 +1,49 @@
+{
+	"example": {
+		"max_ttl": 15,
+		"packet_type": "icmp"
+	},
+	"properties": {
+		"max_ttl": {
+			"default": 15,
+			"description": "Max TTL.",
+			"maximum": 64,
+			"minimum": 0,
+			"type": "integer"
+		},
+		"packet_type": {
+			"default": "icmp",
+			"description": "Type of packet sent.",
+			"enum": [
+				"icmp",
+				"tcp",
+				"udp",
+				"gre",
+				"gre+icmp"
+			],
+			"example": "icmp",
+			"type": "string"
+		},
+		"packets_per_ttl": {
+			"default": 3,
+			"description": "Number of packets sent at each TTL.",
+			"maximum": 10,
+			"minimum": 0,
+			"type": "integer"
+		},
+		"port": {
+			"default": 0,
+			"description": "For UDP and TCP, specifies the destination port. For ICMP, specifies the initial ICMP sequence value. Default value 0 will choose the best value to use for each protocol.",
+			"maximum": 65535,
+			"minimum": 0,
+			"type": "integer"
+		},
+		"wait_time": {
+			"default": 1,
+			"description": "Set the time (in seconds) to wait for a response to a probe.",
+			"maximum": 5,
+			"minimum": 1,
+			"type": "integer"
+		}
+	}
+}

@@ -124,7 +124,7 @@
 									{
 										"allOf": [
 											{
-												"$ref": "#/components/schemas/base-NQ2TANYj"
+												"$ref": "#/components/schemas/rule_components-schemas-base"
 											}
 										]
 									},
@@ -169,33 +169,11 @@
 							{
 								"allOf": [
 									{
-										"properties": {
-											"description": {
-												"$ref": "#/components/schemas/schemas-description-fhmIUvXI"
-											},
-											"group": {
-												"description": "The rule group to which the current WAF rule belongs.",
-												"properties": {
-													"id": {
-														"$ref": "#/components/schemas/components-schemas-identifier-uaLZQbBH"
-													},
-													"name": {
-														"$ref": "#/components/schemas/name-QiCMBi5b"
-													}
-												},
-												"readOnly": true,
-												"type": "object"
-											},
-											"id": {
-												"$ref": "#/components/schemas/rule_components-schemas-identifier"
-											},
-											"package_id": {
-												"$ref": "#/components/schemas/identifier-2KoYNsil"
-											},
-											"priority": {
-												"$ref": "#/components/schemas/priority-EkLnjKhD"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/rule_components-schemas-base"
 											}
-										}
+										]
 									},
 									{
 										"properties": {
@@ -256,33 +234,11 @@
 							{
 								"allOf": [
 									{
-										"properties": {
-											"description": {
-												"$ref": "#/components/schemas/schemas-description-fhmIUvXI"
-											},
-											"group": {
-												"description": "The rule group to which the current WAF rule belongs.",
-												"properties": {
-													"id": {
-														"$ref": "#/components/schemas/components-schemas-identifier-uaLZQbBH"
-													},
-													"name": {
-														"$ref": "#/components/schemas/name-QiCMBi5b"
-													}
-												},
-												"readOnly": true,
-												"type": "object"
-											},
-											"id": {
-												"$ref": "#/components/schemas/rule_components-schemas-identifier"
-											},
-											"package_id": {
-												"$ref": "#/components/schemas/identifier-2KoYNsil"
-											},
-											"priority": {
-												"$ref": "#/components/schemas/priority-EkLnjKhD"
+										"allOf": [
+											{
+												"$ref": "#/components/schemas/rule_components-schemas-base"
 											}
-										}
+										]
 									},
 									{
 										"properties": {

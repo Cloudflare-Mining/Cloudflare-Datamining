@@ -87,7 +87,8 @@
 								{
 									"type": "string"
 								}
-							]
+							],
+							"nullable": true
 						}
 					}
 				}
@@ -243,10 +244,6 @@
 											"type": "string"
 										}
 									},
-									"required": [
-										"type",
-										"domain"
-									],
 									"title": "Self Hosted Application",
 									"type": "object"
 								}
@@ -451,7 +448,7 @@
 													"$ref": "#/components/schemas/app_launcher_visible"
 												},
 												"auto_redirect_to_identity": {
-													"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+													"$ref": "#/components/schemas/auto_redirect_to_identity-kqJzldnG"
 												},
 												"cors_headers": {
 													"$ref": "#/components/schemas/cors_headers"
@@ -463,7 +460,7 @@
 													"$ref": "#/components/schemas/custom_deny_url"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/components-schemas-domain"
+													"$ref": "#/components/schemas/schemas-domain-q7h7KRXx"
 												},
 												"enable_binding_cookie": {
 													"$ref": "#/components/schemas/enable_binding_cookie"
@@ -484,7 +481,7 @@
 													"$ref": "#/components/schemas/service_auth_401_redirect"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-5OEgldNi"
+													"$ref": "#/components/schemas/session_duration"
 												},
 												"skip_interstitial": {
 													"$ref": "#/components/schemas/skip_interstitial"
@@ -495,10 +492,6 @@
 													"type": "string"
 												}
 											},
-											"required": [
-												"type",
-												"domain"
-											],
 											"title": "Self Hosted Application",
 											"type": "object"
 										},
@@ -561,7 +554,7 @@
 													"$ref": "#/components/schemas/app_launcher_visible"
 												},
 												"auto_redirect_to_identity": {
-													"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+													"$ref": "#/components/schemas/auto_redirect_to_identity-kqJzldnG"
 												},
 												"cors_headers": {
 													"$ref": "#/components/schemas/cors_headers"
@@ -573,7 +566,7 @@
 													"$ref": "#/components/schemas/custom_deny_url"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/components-schemas-domain"
+													"$ref": "#/components/schemas/schemas-domain-q7h7KRXx"
 												},
 												"enable_binding_cookie": {
 													"$ref": "#/components/schemas/enable_binding_cookie"
@@ -594,7 +587,7 @@
 													"$ref": "#/components/schemas/service_auth_401_redirect"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-5OEgldNi"
+													"$ref": "#/components/schemas/session_duration"
 												},
 												"skip_interstitial": {
 													"$ref": "#/components/schemas/skip_interstitial"
@@ -605,10 +598,6 @@
 													"type": "string"
 												}
 											},
-											"required": [
-												"type",
-												"domain"
-											],
 											"title": "Self Hosted Application",
 											"type": "object"
 										},
@@ -668,24 +657,21 @@
 													"$ref": "#/components/schemas/allowed_idps"
 												},
 												"auto_redirect_to_identity": {
-													"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+													"$ref": "#/components/schemas/auto_redirect_to_identity-kqJzldnG"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/components-schemas-domain"
+													"$ref": "#/components/schemas/schemas-domain-q7h7KRXx"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-5OEgldNi"
+													"$ref": "#/components/schemas/session_duration"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-ngxmqda1"
+													"$ref": "#/components/schemas/apps_components-schemas-type"
 												}
 											},
-											"required": [
-												"type"
-											],
 											"type": "object"
 										},
 										{
@@ -753,24 +739,21 @@
 													"$ref": "#/components/schemas/allowed_idps"
 												},
 												"auto_redirect_to_identity": {
-													"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+													"$ref": "#/components/schemas/auto_redirect_to_identity-kqJzldnG"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/components-schemas-domain"
+													"$ref": "#/components/schemas/schemas-domain-q7h7KRXx"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-5OEgldNi"
+													"$ref": "#/components/schemas/session_duration"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-ngxmqda1"
+													"$ref": "#/components/schemas/apps_components-schemas-type"
 												}
 											},
-											"required": [
-												"type"
-											],
 											"type": "object"
 										},
 										{
@@ -838,24 +821,21 @@
 													"$ref": "#/components/schemas/allowed_idps"
 												},
 												"auto_redirect_to_identity": {
-													"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+													"$ref": "#/components/schemas/auto_redirect_to_identity-kqJzldnG"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/components-schemas-domain"
+													"$ref": "#/components/schemas/schemas-domain-q7h7KRXx"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-5OEgldNi"
+													"$ref": "#/components/schemas/session_duration"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-ngxmqda1"
+													"$ref": "#/components/schemas/apps_components-schemas-type"
 												}
 											},
-											"required": [
-												"type"
-											],
 											"type": "object"
 										},
 										{
@@ -940,10 +920,6 @@
 											"type": "string"
 										}
 									},
-									"required": [
-										"type",
-										"domain"
-									],
 									"title": "Bookmark Application",
 									"type": "object"
 								}

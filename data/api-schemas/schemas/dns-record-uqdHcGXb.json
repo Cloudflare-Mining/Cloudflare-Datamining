@@ -1,0 +1,69 @@
+{
+	"description": "List of records needed to enable an Email Routing zone.",
+	"properties": {
+		"content": {
+			"description": "DNS record content.",
+			"example": "route1.mx.cloudflare.net",
+			"type": "string"
+		},
+		"name": {
+			"description": "DNS record name (or @ for the zone apex).",
+			"example": "example.com",
+			"maxLength": 255,
+			"type": "string"
+		},
+		"priority": {
+			"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+			"example": 12,
+			"maximum": 65535,
+			"minimum": 0,
+			"type": "number"
+		},
+		"ttl": {
+			"anyOf": [
+				{
+					"example": 3600,
+					"maximum": 86400,
+					"minimum": 1,
+					"type": "number"
+				},
+				{
+					"enum": [
+						1
+					],
+					"type": "number"
+				}
+			],
+			"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+			"example": 1,
+			"type": "number"
+		},
+		"type": {
+			"description": "DNS record type.",
+			"enum": [
+				"A",
+				"AAAA",
+				"CNAME",
+				"HTTPS",
+				"TXT",
+				"SRV",
+				"LOC",
+				"MX",
+				"NS",
+				"CERT",
+				"DNSKEY",
+				"DS",
+				"NAPTR",
+				"SMIMEA",
+				"SSHFP",
+				"SVCB",
+				"TLSA",
+				"URI"
+			],
+			"example": "NS",
+			"readOnly": true,
+			"type": "string"
+		}
+	},
+	"type": "object"
+}
