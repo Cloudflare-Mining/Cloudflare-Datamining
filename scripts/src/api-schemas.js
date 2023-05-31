@@ -36,6 +36,8 @@ function findAndReplaceSchema(schema, schemas) {
 }
 
 async function run() {
+	return; // disabled for now
+	/* eslint-disable no-unreachable */
 	console.log('Fetching API Schemas...');
 
 	// cleanup previous files
