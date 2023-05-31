@@ -7,6 +7,7 @@
 					"default": "",
 					"description": "An informative description of the ruleset.",
 					"example": "My ruleset to execute managed rulesets",
+					"title": "Description",
 					"type": "string"
 				},
 				"kind": {
@@ -18,20 +19,24 @@
 						"zone"
 					],
 					"example": "root",
+					"title": "Kind",
 					"type": "string"
 				},
 				"name": {
 					"description": "The human-readable name of the ruleset.",
 					"example": "My ruleset",
+					"title": "Name",
 					"type": "string"
 				},
 				"phase": {
 					"description": "The phase of the ruleset.",
 					"example": "http_request_firewall_managed",
 					"pattern": "^[a-z_]+$",
+					"title": "Phase",
 					"type": "string"
 				}
 			},
+			"title": "Ruleset",
 			"type": "object"
 		},
 		{
@@ -40,17 +45,18 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				},
 				"rules": {
 					"description": "The list of rules in the ruleset.",
 					"items": {
-						"description": "A rule object.",
 						"properties": {
 							"action": {
 								"description": "The action to perform when the rule matches.",
 								"example": "execute",
 								"pattern": "^[a-z_]+$",
+								"title": "Action",
 								"type": "string"
 							},
 							"action_parameters": {
@@ -58,28 +64,33 @@
 								"example": {
 									"id": "4814384a9e5d4991b9815dcfc25d2f1f"
 								},
+								"title": "Action parameters",
 								"type": "object"
 							},
 							"description": {
 								"default": "",
 								"description": "An informative description of the rule.",
 								"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1",
+								"title": "Description",
 								"type": "string"
 							},
 							"enabled": {
 								"default": true,
 								"description": "Whether the rule should be executed.",
 								"example": true,
+								"title": "Enabled",
 								"type": "boolean"
 							},
 							"expression": {
 								"description": "The expression defining which traffic will match the rule.",
 								"example": "ip.src ne 1.1.1.1",
+								"title": "Expression",
 								"type": "string"
 							},
 							"id": {
 								"description": "The unique ID of the rule.",
 								"example": "3a03d665bac047339bb530ecb439a90d",
+								"title": "ID",
 								"type": "string"
 							},
 							"logging": {
@@ -91,25 +102,31 @@
 									"enabled": {
 										"description": "Whether to generate a log when the rule matches.",
 										"example": true,
+										"title": "Enabled",
 										"type": "boolean"
 									}
 								},
+								"title": "Logging",
 								"type": "object"
 							},
 							"ref": {
 								"description": "The reference of the rule (the rule ID by default).",
 								"example": "my_ref",
+								"title": "Ref",
 								"type": "string"
 							}
 						},
+						"title": "Rule",
 						"type": "object"
 					},
+					"title": "Rules",
 					"type": "array"
 				},
 				"version": {
 					"description": "The version of the ruleset.",
 					"example": "1",
 					"pattern": "^[0-9]+$",
+					"title": "Version",
 					"type": "string"
 				}
 			},

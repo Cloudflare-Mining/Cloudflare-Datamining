@@ -61,7 +61,7 @@
 													"type": "string"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/schemas-domain_name"
+													"$ref": "#/components/schemas/domain_name-8MRLKShT"
 												},
 												"nameservers": {
 													"example": [
@@ -111,7 +111,7 @@
 				},
 				"description": "Get WHOIS Record response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -151,7 +151,7 @@
 															"type": "string"
 														},
 														"domain": {
-															"$ref": "#/components/schemas/schemas-domain_name"
+															"$ref": "#/components/schemas/domain_name-8MRLKShT"
 														},
 														"nameservers": {
 															"example": [
@@ -292,9 +292,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get WHOIS Record",

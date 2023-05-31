@@ -5,6 +5,7 @@
 			"default": "",
 			"description": "An informative description of the ruleset.",
 			"example": "My ruleset to execute managed rulesets",
+			"title": "Description",
 			"type": "string"
 		},
 		"kind": {
@@ -16,19 +17,23 @@
 				"zone"
 			],
 			"example": "root",
+			"title": "Kind",
 			"type": "string"
 		},
 		"name": {
 			"description": "The human-readable name of the ruleset.",
 			"example": "My ruleset",
+			"title": "Name",
 			"type": "string"
 		},
 		"phase": {
 			"description": "The phase of the ruleset.",
 			"example": "http_request_firewall_managed",
 			"pattern": "^[a-z_]+$",
+			"title": "Phase",
 			"type": "string"
 		}
 	},
+	"title": "Ruleset",
 	"type": "object"
 }

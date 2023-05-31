@@ -303,7 +303,7 @@
 											"items": {
 												"properties": {
 													"comment": {
-														"$ref": "#/components/schemas/comment-1nlXrqIc"
+														"$ref": "#/components/schemas/comment"
 													},
 													"created_at": {
 														"description": "Timestamp of when the route was created."
@@ -326,7 +326,7 @@
 														"$ref": "#/components/schemas/schemas-tunnel_name"
 													},
 													"virtual_network_id": {
-														"$ref": "#/components/schemas/schemas-virtual_network_id"
+														"$ref": "#/components/schemas/virtual_network_id-ys49kiQ9"
 													}
 												},
 												"required": [
@@ -381,7 +381,7 @@
 													"items": {
 														"properties": {
 															"comment": {
-																"$ref": "#/components/schemas/comment-1nlXrqIc"
+																"$ref": "#/components/schemas/comment"
 															},
 															"created_at": {
 																"description": "Timestamp of when the route was created."
@@ -404,7 +404,7 @@
 																"$ref": "#/components/schemas/schemas-tunnel_name"
 															},
 															"virtual_network_id": {
-																"$ref": "#/components/schemas/schemas-virtual_network_id"
+																"$ref": "#/components/schemas/virtual_network_id-ys49kiQ9"
 															}
 														},
 														"required": [

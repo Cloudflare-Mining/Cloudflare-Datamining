@@ -1,5 +1,5 @@
 {
-	"description": "The time, measured in number of seconds since the UNIX epoch, at which the key should expire.",
-	"example": 1578435000,
-	"type": "number"
+	"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
+	"example": "1h",
+	"type": "string"
 }

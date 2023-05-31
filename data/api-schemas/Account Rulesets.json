@@ -11,6 +11,7 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -22,6 +23,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -34,39 +36,44 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"description": "A list of error messages.",
-											"items": {
-												"$ref": "#/components/schemas/Message"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"description": "A list of warning messages.",
-											"items": {
-												"$ref": "#/components/schemas/Message"
-											},
-											"type": "array"
-										},
-										"result": {},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"example": false,
-											"type": "boolean"
-										}
+							"description": "A failure response object.",
+							"properties": {
+								"errors": {
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
 									},
-									"required": [
-										"result",
-										"success",
-										"errors",
-										"messages"
-									],
+									"title": "Errors",
+									"type": "array"
+								},
+								"messages": {
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"title": "Messages",
+									"type": "array"
+								},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"title": "Success",
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"title": "Failure response",
+							"type": "object"
 						}
 					}
 				},
@@ -106,6 +113,7 @@
 				"schema": {
 					"description": "The unique ID of the rule.",
 					"example": "3a03d665bac047339bb530ecb439a90d",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -117,6 +125,7 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -128,6 +137,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -139,6 +149,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -147,6 +158,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -159,12 +171,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -174,6 +191,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -187,6 +205,7 @@
 															"default": "",
 															"description": "An informative description of the ruleset.",
 															"example": "My ruleset to execute managed rulesets",
+															"title": "Description",
 															"type": "string"
 														},
 														"kind": {
@@ -195,12 +214,14 @@
 														"name": {
 															"description": "The human-readable name of the ruleset.",
 															"example": "My ruleset",
+															"title": "Name",
 															"type": "string"
 														},
 														"phase": {
 															"$ref": "#/components/schemas/RulesetPhase"
 														}
 													},
+													"title": "Ruleset",
 													"type": "object"
 												},
 												{
@@ -209,11 +230,13 @@
 															"description": "The unique ID of the ruleset.",
 															"example": "2f2feab2026849078ba485f918791bdc",
 															"pattern": "^[0-9a-f]{32}$",
+															"title": "ID",
 															"type": "string"
 														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
+															"title": "Last updated",
 															"type": "string"
 														},
 														"rules": {
@@ -221,12 +244,14 @@
 															"items": {
 																"$ref": "#/components/schemas/RuleResponse"
 															},
+															"title": "Rules",
 															"type": "array"
 														},
 														"version": {
 															"description": "The version of the ruleset.",
 															"example": "1",
 															"pattern": "^[0-9]+$",
+															"title": "Version",
 															"type": "string"
 														}
 													},
@@ -242,8 +267,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -255,12 +279,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -268,12 +294,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -283,6 +315,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -324,6 +357,7 @@
 					"description": "The version of the ruleset.",
 					"example": "1",
 					"pattern": "^[0-9]+$",
+					"title": "Version",
 					"type": "string"
 				}
 			},
@@ -335,6 +369,7 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -346,6 +381,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -358,39 +394,44 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"description": "A list of error messages.",
-											"items": {
-												"$ref": "#/components/schemas/Message"
-											},
-											"type": "array"
-										},
-										"messages": {
-											"description": "A list of warning messages.",
-											"items": {
-												"$ref": "#/components/schemas/Message"
-											},
-											"type": "array"
-										},
-										"result": {},
-										"success": {
-											"description": "Whether the API call was successful.",
-											"example": false,
-											"type": "boolean"
-										}
+							"description": "A failure response object.",
+							"properties": {
+								"errors": {
+									"description": "A list of error messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
 									},
-									"required": [
-										"result",
-										"success",
-										"errors",
-										"messages"
-									],
+									"title": "Errors",
+									"type": "array"
+								},
+								"messages": {
+									"description": "A list of warning messages.",
+									"items": {
+										"$ref": "#/components/schemas/Message"
+									},
+									"title": "Messages",
+									"type": "array"
+								},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": false,
+									"title": "Success",
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"title": "Failure response",
+							"type": "object"
 						}
 					}
 				},
@@ -431,6 +472,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -442,6 +484,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -450,6 +493,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -462,12 +506,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -477,6 +526,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -492,6 +542,7 @@
 																"default": "",
 																"description": "An informative description of the ruleset.",
 																"example": "My ruleset to execute managed rulesets",
+																"title": "Description",
 																"type": "string"
 															},
 															"kind": {
@@ -500,12 +551,14 @@
 															"name": {
 																"description": "The human-readable name of the ruleset.",
 																"example": "My ruleset",
+																"title": "Name",
 																"type": "string"
 															},
 															"phase": {
 																"$ref": "#/components/schemas/RulesetPhase"
 															}
 														},
+														"title": "Ruleset",
 														"type": "object"
 													},
 													{
@@ -514,17 +567,20 @@
 																"description": "The unique ID of the ruleset.",
 																"example": "2f2feab2026849078ba485f918791bdc",
 																"pattern": "^[0-9a-f]{32}$",
+																"title": "ID",
 																"type": "string"
 															},
 															"last_updated": {
 																"description": "The timestamp of when the ruleset was last modified.",
 																"example": "2000-01-01T00:00:00.000000Z",
+																"title": "Last updated",
 																"type": "string"
 															},
 															"version": {
 																"description": "The version of the ruleset.",
 																"example": "1",
 																"pattern": "^[0-9]+$",
+																"title": "Version",
 																"type": "string"
 															}
 														},
@@ -539,10 +595,10 @@
 													}
 												]
 											},
+											"title": "Rulesets",
 											"type": "array"
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -554,12 +610,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -567,12 +625,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -582,6 +646,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -623,6 +688,7 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -634,6 +700,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -645,6 +712,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -653,6 +721,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -665,12 +734,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -680,6 +754,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -693,6 +768,7 @@
 															"default": "",
 															"description": "An informative description of the ruleset.",
 															"example": "My ruleset to execute managed rulesets",
+															"title": "Description",
 															"type": "string"
 														},
 														"kind": {
@@ -701,12 +777,14 @@
 														"name": {
 															"description": "The human-readable name of the ruleset.",
 															"example": "My ruleset",
+															"title": "Name",
 															"type": "string"
 														},
 														"phase": {
 															"$ref": "#/components/schemas/RulesetPhase"
 														}
 													},
+													"title": "Ruleset",
 													"type": "object"
 												},
 												{
@@ -715,11 +793,13 @@
 															"description": "The unique ID of the ruleset.",
 															"example": "2f2feab2026849078ba485f918791bdc",
 															"pattern": "^[0-9a-f]{32}$",
+															"title": "ID",
 															"type": "string"
 														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
+															"title": "Last updated",
 															"type": "string"
 														},
 														"rules": {
@@ -727,12 +807,14 @@
 															"items": {
 																"$ref": "#/components/schemas/RuleResponse"
 															},
+															"title": "Rules",
 															"type": "array"
 														},
 														"version": {
 															"description": "The version of the ruleset.",
 															"example": "1",
 															"pattern": "^[0-9]+$",
+															"title": "Version",
 															"type": "string"
 														}
 													},
@@ -748,8 +830,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -761,12 +842,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -774,12 +857,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -789,6 +878,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -830,6 +920,7 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -841,6 +932,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -852,6 +944,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -860,6 +953,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -872,12 +966,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -887,6 +986,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -902,6 +1002,7 @@
 																"default": "",
 																"description": "An informative description of the ruleset.",
 																"example": "My ruleset to execute managed rulesets",
+																"title": "Description",
 																"type": "string"
 															},
 															"kind": {
@@ -910,12 +1011,14 @@
 															"name": {
 																"description": "The human-readable name of the ruleset.",
 																"example": "My ruleset",
+																"title": "Name",
 																"type": "string"
 															},
 															"phase": {
 																"$ref": "#/components/schemas/RulesetPhase"
 															}
 														},
+														"title": "Ruleset",
 														"type": "object"
 													},
 													{
@@ -924,17 +1027,20 @@
 																"description": "The unique ID of the ruleset.",
 																"example": "2f2feab2026849078ba485f918791bdc",
 																"pattern": "^[0-9a-f]{32}$",
+																"title": "ID",
 																"type": "string"
 															},
 															"last_updated": {
 																"description": "The timestamp of when the ruleset was last modified.",
 																"example": "2000-01-01T00:00:00.000000Z",
+																"title": "Last updated",
 																"type": "string"
 															},
 															"version": {
 																"description": "The version of the ruleset.",
 																"example": "1",
 																"pattern": "^[0-9]+$",
+																"title": "Version",
 																"type": "string"
 															}
 														},
@@ -949,10 +1055,10 @@
 													}
 												]
 											},
+											"title": "Rulesets",
 											"type": "array"
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -964,12 +1070,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -977,12 +1085,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -992,6 +1106,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -1033,6 +1148,7 @@
 					"description": "The version of the ruleset.",
 					"example": "1",
 					"pattern": "^[0-9]+$",
+					"title": "Version",
 					"type": "string"
 				}
 			},
@@ -1044,6 +1160,7 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -1055,6 +1172,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -1066,6 +1184,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -1074,6 +1193,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -1086,12 +1206,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -1101,6 +1226,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -1114,6 +1240,7 @@
 															"default": "",
 															"description": "An informative description of the ruleset.",
 															"example": "My ruleset to execute managed rulesets",
+															"title": "Description",
 															"type": "string"
 														},
 														"kind": {
@@ -1122,12 +1249,14 @@
 														"name": {
 															"description": "The human-readable name of the ruleset.",
 															"example": "My ruleset",
+															"title": "Name",
 															"type": "string"
 														},
 														"phase": {
 															"$ref": "#/components/schemas/RulesetPhase"
 														}
 													},
+													"title": "Ruleset",
 													"type": "object"
 												},
 												{
@@ -1136,11 +1265,13 @@
 															"description": "The unique ID of the ruleset.",
 															"example": "2f2feab2026849078ba485f918791bdc",
 															"pattern": "^[0-9a-f]{32}$",
+															"title": "ID",
 															"type": "string"
 														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
+															"title": "Last updated",
 															"type": "string"
 														},
 														"rules": {
@@ -1148,12 +1279,14 @@
 															"items": {
 																"$ref": "#/components/schemas/RuleResponse"
 															},
+															"title": "Rules",
 															"type": "array"
 														},
 														"version": {
 															"description": "The version of the ruleset.",
 															"example": "1",
 															"pattern": "^[0-9]+$",
+															"title": "Version",
 															"type": "string"
 														}
 													},
@@ -1169,8 +1302,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -1182,12 +1314,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -1195,12 +1329,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -1210,6 +1350,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -1250,6 +1391,7 @@
 				"schema": {
 					"description": "A category of the rule.",
 					"example": "directory-traversal",
+					"title": "Category",
 					"type": "string"
 				}
 			},
@@ -1261,6 +1403,7 @@
 					"description": "The version of the ruleset.",
 					"example": "1",
 					"pattern": "^[0-9]+$",
+					"title": "Version",
 					"type": "string"
 				}
 			},
@@ -1272,6 +1415,7 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -1283,6 +1427,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -1294,6 +1439,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -1302,6 +1448,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -1314,12 +1461,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -1329,6 +1481,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -1342,6 +1495,7 @@
 															"default": "",
 															"description": "An informative description of the ruleset.",
 															"example": "My ruleset to execute managed rulesets",
+															"title": "Description",
 															"type": "string"
 														},
 														"kind": {
@@ -1350,12 +1504,14 @@
 														"name": {
 															"description": "The human-readable name of the ruleset.",
 															"example": "My ruleset",
+															"title": "Name",
 															"type": "string"
 														},
 														"phase": {
 															"$ref": "#/components/schemas/RulesetPhase"
 														}
 													},
+													"title": "Ruleset",
 													"type": "object"
 												},
 												{
@@ -1364,11 +1520,13 @@
 															"description": "The unique ID of the ruleset.",
 															"example": "2f2feab2026849078ba485f918791bdc",
 															"pattern": "^[0-9a-f]{32}$",
+															"title": "ID",
 															"type": "string"
 														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
+															"title": "Last updated",
 															"type": "string"
 														},
 														"rules": {
@@ -1376,12 +1534,14 @@
 															"items": {
 																"$ref": "#/components/schemas/RuleResponse"
 															},
+															"title": "Rules",
 															"type": "array"
 														},
 														"version": {
 															"description": "The version of the ruleset.",
 															"example": "1",
 															"pattern": "^[0-9]+$",
+															"title": "Version",
 															"type": "string"
 														}
 													},
@@ -1397,8 +1557,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -1410,12 +1569,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -1423,12 +1584,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -1438,6 +1605,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -1479,6 +1647,7 @@
 					"description": "The phase of the ruleset.",
 					"example": "http_request_firewall_managed",
 					"pattern": "^[a-z_]+$",
+					"title": "Phase",
 					"type": "string"
 				}
 			},
@@ -1490,6 +1659,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -1501,6 +1671,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -1509,6 +1680,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -1521,12 +1693,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -1536,6 +1713,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -1549,6 +1727,7 @@
 															"default": "",
 															"description": "An informative description of the ruleset.",
 															"example": "My ruleset to execute managed rulesets",
+															"title": "Description",
 															"type": "string"
 														},
 														"kind": {
@@ -1557,12 +1736,14 @@
 														"name": {
 															"description": "The human-readable name of the ruleset.",
 															"example": "My ruleset",
+															"title": "Name",
 															"type": "string"
 														},
 														"phase": {
 															"$ref": "#/components/schemas/RulesetPhase"
 														}
 													},
+													"title": "Ruleset",
 													"type": "object"
 												},
 												{
@@ -1571,11 +1752,13 @@
 															"description": "The unique ID of the ruleset.",
 															"example": "2f2feab2026849078ba485f918791bdc",
 															"pattern": "^[0-9a-f]{32}$",
+															"title": "ID",
 															"type": "string"
 														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
+															"title": "Last updated",
 															"type": "string"
 														},
 														"rules": {
@@ -1583,12 +1766,14 @@
 															"items": {
 																"$ref": "#/components/schemas/RuleResponse"
 															},
+															"title": "Rules",
 															"type": "array"
 														},
 														"version": {
 															"description": "The version of the ruleset.",
 															"example": "1",
 															"pattern": "^[0-9]+$",
+															"title": "Version",
 															"type": "string"
 														}
 													},
@@ -1604,8 +1789,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -1617,12 +1801,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -1630,12 +1816,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -1645,6 +1837,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -1686,6 +1879,7 @@
 					"description": "The phase of the ruleset.",
 					"example": "http_request_firewall_managed",
 					"pattern": "^[a-z_]+$",
+					"title": "Phase",
 					"type": "string"
 				}
 			},
@@ -1697,6 +1891,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -1708,6 +1903,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -1716,6 +1912,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -1728,12 +1925,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -1743,6 +1945,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -1758,6 +1961,7 @@
 																"default": "",
 																"description": "An informative description of the ruleset.",
 																"example": "My ruleset to execute managed rulesets",
+																"title": "Description",
 																"type": "string"
 															},
 															"kind": {
@@ -1766,12 +1970,14 @@
 															"name": {
 																"description": "The human-readable name of the ruleset.",
 																"example": "My ruleset",
+																"title": "Name",
 																"type": "string"
 															},
 															"phase": {
 																"$ref": "#/components/schemas/RulesetPhase"
 															}
 														},
+														"title": "Ruleset",
 														"type": "object"
 													},
 													{
@@ -1780,17 +1986,20 @@
 																"description": "The unique ID of the ruleset.",
 																"example": "2f2feab2026849078ba485f918791bdc",
 																"pattern": "^[0-9a-f]{32}$",
+																"title": "ID",
 																"type": "string"
 															},
 															"last_updated": {
 																"description": "The timestamp of when the ruleset was last modified.",
 																"example": "2000-01-01T00:00:00.000000Z",
+																"title": "Last updated",
 																"type": "string"
 															},
 															"version": {
 																"description": "The version of the ruleset.",
 																"example": "1",
 																"pattern": "^[0-9]+$",
+																"title": "Version",
 																"type": "string"
 															}
 														},
@@ -1805,10 +2014,10 @@
 													}
 												]
 											},
+											"title": "Rulesets",
 											"type": "array"
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -1820,12 +2029,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -1833,12 +2044,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -1848,6 +2065,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -1889,6 +2107,7 @@
 					"description": "The version of the ruleset.",
 					"example": "1",
 					"pattern": "^[0-9]+$",
+					"title": "Version",
 					"type": "string"
 				}
 			},
@@ -1900,6 +2119,7 @@
 					"description": "The phase of the ruleset.",
 					"example": "http_request_firewall_managed",
 					"pattern": "^[a-z_]+$",
+					"title": "Phase",
 					"type": "string"
 				}
 			},
@@ -1911,6 +2131,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -1922,6 +2143,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -1930,6 +2152,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -1942,12 +2165,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -1957,6 +2185,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -1970,6 +2199,7 @@
 															"default": "",
 															"description": "An informative description of the ruleset.",
 															"example": "My ruleset to execute managed rulesets",
+															"title": "Description",
 															"type": "string"
 														},
 														"kind": {
@@ -1978,12 +2208,14 @@
 														"name": {
 															"description": "The human-readable name of the ruleset.",
 															"example": "My ruleset",
+															"title": "Name",
 															"type": "string"
 														},
 														"phase": {
 															"$ref": "#/components/schemas/RulesetPhase"
 														}
 													},
+													"title": "Ruleset",
 													"type": "object"
 												},
 												{
@@ -1992,11 +2224,13 @@
 															"description": "The unique ID of the ruleset.",
 															"example": "2f2feab2026849078ba485f918791bdc",
 															"pattern": "^[0-9a-f]{32}$",
+															"title": "ID",
 															"type": "string"
 														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
+															"title": "Last updated",
 															"type": "string"
 														},
 														"rules": {
@@ -2004,12 +2238,14 @@
 															"items": {
 																"$ref": "#/components/schemas/RuleResponse"
 															},
+															"title": "Rules",
 															"type": "array"
 														},
 														"version": {
 															"description": "The version of the ruleset.",
 															"example": "1",
 															"pattern": "^[0-9]+$",
+															"title": "Version",
 															"type": "string"
 														}
 													},
@@ -2025,8 +2261,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -2038,12 +2273,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -2051,12 +2288,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -2066,6 +2309,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -2106,6 +2350,7 @@
 				"schema": {
 					"description": "The unique ID of the rule.",
 					"example": "3a03d665bac047339bb530ecb439a90d",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -2117,6 +2362,7 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -2128,6 +2374,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -2138,12 +2385,12 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "A rule object.",
 								"properties": {
 									"action": {
 										"description": "The action to perform when the rule matches.",
 										"example": "execute",
 										"pattern": "^[a-z_]+$",
+										"title": "Action",
 										"type": "string"
 									},
 									"action_parameters": {
@@ -2151,23 +2398,27 @@
 										"example": {
 											"id": "4814384a9e5d4991b9815dcfc25d2f1f"
 										},
+										"title": "Action parameters",
 										"type": "object"
 									},
 									"description": {
 										"default": "",
 										"description": "An informative description of the rule.",
 										"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1",
+										"title": "Description",
 										"type": "string"
 									},
 									"enabled": {
 										"default": true,
 										"description": "Whether the rule should be executed.",
 										"example": true,
+										"title": "Enabled",
 										"type": "boolean"
 									},
 									"expression": {
 										"description": "The expression defining which traffic will match the rule.",
 										"example": "ip.src ne 1.1.1.1",
+										"title": "Expression",
 										"type": "string"
 									},
 									"id": {
@@ -2182,53 +2433,88 @@
 											"enabled": {
 												"description": "Whether to generate a log when the rule matches.",
 												"example": true,
+												"title": "Enabled",
 												"type": "boolean"
 											}
 										},
+										"title": "Logging",
 										"type": "object"
 									},
 									"ref": {
 										"description": "The reference of the rule (the rule ID by default).",
 										"example": "my_ref",
+										"title": "Ref",
 										"type": "string"
 									}
 								},
+								"title": "Rule",
 								"type": "object"
 							},
 							{
 								"properties": {
 									"position": {
-										"description": "An object configuring where the rule will be placed.",
 										"oneOf": [
 											{
-												"properties": {
-													"before": {
-														"description": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top.",
-														"example": "da5e8e506c8e7877fe06cdf4c41add54",
-														"type": "string"
+												"allOf": [
+													{
+														"description": "An object configuring where the rule will be placed.",
+														"title": "Position",
+														"type": "object"
+													},
+													{
+														"properties": {
+															"before": {
+																"description": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top.",
+																"example": "da5e8e506c8e7877fe06cdf4c41add54",
+																"title": "Before",
+																"type": "string"
+															}
+														},
+														"title": "Before position"
 													}
-												}
+												]
 											},
 											{
-												"properties": {
-													"after": {
-														"description": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom.",
-														"example": "5bccdbb2a5142cd25cad8591255bd209",
-														"type": "string"
+												"allOf": [
+													{
+														"description": "An object configuring where the rule will be placed.",
+														"title": "Position",
+														"type": "object"
+													},
+													{
+														"properties": {
+															"after": {
+																"description": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom.",
+																"example": "5bccdbb2a5142cd25cad8591255bd209",
+																"title": "After",
+																"type": "string"
+															}
+														},
+														"title": "After position"
 													}
-												}
+												]
 											},
 											{
-												"properties": {
-													"index": {
-														"description": "An index at which to place the rule, where index 1 is the first rule.",
-														"example": 1,
-														"type": "number"
+												"allOf": [
+													{
+														"description": "An object configuring where the rule will be placed.",
+														"title": "Position",
+														"type": "object"
+													},
+													{
+														"properties": {
+															"index": {
+																"description": "An index at which to place the rule, where index 1 is the first rule.",
+																"example": 1,
+																"title": "Index",
+																"type": "number"
+															}
+														},
+														"title": "Index position"
 													}
-												}
+												]
 											}
-										],
-										"type": "object"
+										]
 									}
 								}
 							}
@@ -2245,6 +2531,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -2253,6 +2540,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -2265,12 +2553,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -2280,6 +2573,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -2293,6 +2587,7 @@
 															"default": "",
 															"description": "An informative description of the ruleset.",
 															"example": "My ruleset to execute managed rulesets",
+															"title": "Description",
 															"type": "string"
 														},
 														"kind": {
@@ -2301,12 +2596,14 @@
 														"name": {
 															"description": "The human-readable name of the ruleset.",
 															"example": "My ruleset",
+															"title": "Name",
 															"type": "string"
 														},
 														"phase": {
 															"$ref": "#/components/schemas/RulesetPhase"
 														}
 													},
+													"title": "Ruleset",
 													"type": "object"
 												},
 												{
@@ -2315,11 +2612,13 @@
 															"description": "The unique ID of the ruleset.",
 															"example": "2f2feab2026849078ba485f918791bdc",
 															"pattern": "^[0-9a-f]{32}$",
+															"title": "ID",
 															"type": "string"
 														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
+															"title": "Last updated",
 															"type": "string"
 														},
 														"rules": {
@@ -2327,12 +2626,14 @@
 															"items": {
 																"$ref": "#/components/schemas/RuleResponse"
 															},
+															"title": "Rules",
 															"type": "array"
 														},
 														"version": {
 															"description": "The version of the ruleset.",
 															"example": "1",
 															"pattern": "^[0-9]+$",
+															"title": "Version",
 															"type": "string"
 														}
 													},
@@ -2348,8 +2649,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -2361,12 +2661,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -2374,12 +2676,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -2389,6 +2697,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -2430,6 +2739,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -2446,6 +2756,7 @@
 										"default": "",
 										"description": "An informative description of the ruleset.",
 										"example": "My ruleset to execute managed rulesets",
+										"title": "Description",
 										"type": "string"
 									},
 									"kind": {
@@ -2454,12 +2765,14 @@
 									"name": {
 										"description": "The human-readable name of the ruleset.",
 										"example": "My ruleset",
+										"title": "Name",
 										"type": "string"
 									},
 									"phase": {
 										"$ref": "#/components/schemas/RulesetPhase"
 									}
 								},
+								"title": "Ruleset",
 								"type": "object"
 							},
 							{
@@ -2469,6 +2782,7 @@
 										"items": {
 											"$ref": "#/components/schemas/RuleRequest"
 										},
+										"title": "Rules",
 										"type": "array"
 									}
 								},
@@ -2492,6 +2806,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -2500,6 +2815,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -2512,12 +2828,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -2527,6 +2848,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -2540,6 +2862,7 @@
 															"default": "",
 															"description": "An informative description of the ruleset.",
 															"example": "My ruleset to execute managed rulesets",
+															"title": "Description",
 															"type": "string"
 														},
 														"kind": {
@@ -2548,12 +2871,14 @@
 														"name": {
 															"description": "The human-readable name of the ruleset.",
 															"example": "My ruleset",
+															"title": "Name",
 															"type": "string"
 														},
 														"phase": {
 															"$ref": "#/components/schemas/RulesetPhase"
 														}
 													},
+													"title": "Ruleset",
 													"type": "object"
 												},
 												{
@@ -2562,11 +2887,13 @@
 															"description": "The unique ID of the ruleset.",
 															"example": "2f2feab2026849078ba485f918791bdc",
 															"pattern": "^[0-9a-f]{32}$",
+															"title": "ID",
 															"type": "string"
 														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
+															"title": "Last updated",
 															"type": "string"
 														},
 														"rules": {
@@ -2574,12 +2901,14 @@
 															"items": {
 																"$ref": "#/components/schemas/RuleResponse"
 															},
+															"title": "Rules",
 															"type": "array"
 														},
 														"version": {
 															"description": "The version of the ruleset.",
 															"example": "1",
 															"pattern": "^[0-9]+$",
+															"title": "Version",
 															"type": "string"
 														}
 													},
@@ -2595,8 +2924,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -2608,12 +2936,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -2621,12 +2951,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -2636,6 +2972,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -2677,6 +3014,7 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -2688,6 +3026,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -2698,12 +3037,12 @@
 					"schema": {
 						"allOf": [
 							{
-								"description": "A rule object.",
 								"properties": {
 									"action": {
 										"description": "The action to perform when the rule matches.",
 										"example": "execute",
 										"pattern": "^[a-z_]+$",
+										"title": "Action",
 										"type": "string"
 									},
 									"action_parameters": {
@@ -2711,23 +3050,27 @@
 										"example": {
 											"id": "4814384a9e5d4991b9815dcfc25d2f1f"
 										},
+										"title": "Action parameters",
 										"type": "object"
 									},
 									"description": {
 										"default": "",
 										"description": "An informative description of the rule.",
 										"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1",
+										"title": "Description",
 										"type": "string"
 									},
 									"enabled": {
 										"default": true,
 										"description": "Whether the rule should be executed.",
 										"example": true,
+										"title": "Enabled",
 										"type": "boolean"
 									},
 									"expression": {
 										"description": "The expression defining which traffic will match the rule.",
 										"example": "ip.src ne 1.1.1.1",
+										"title": "Expression",
 										"type": "string"
 									},
 									"id": {
@@ -2742,53 +3085,88 @@
 											"enabled": {
 												"description": "Whether to generate a log when the rule matches.",
 												"example": true,
+												"title": "Enabled",
 												"type": "boolean"
 											}
 										},
+										"title": "Logging",
 										"type": "object"
 									},
 									"ref": {
 										"description": "The reference of the rule (the rule ID by default).",
 										"example": "my_ref",
+										"title": "Ref",
 										"type": "string"
 									}
 								},
+								"title": "Rule",
 								"type": "object"
 							},
 							{
 								"properties": {
 									"position": {
-										"description": "An object configuring where the rule will be placed.",
 										"oneOf": [
 											{
-												"properties": {
-													"before": {
-														"description": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top.",
-														"example": "da5e8e506c8e7877fe06cdf4c41add54",
-														"type": "string"
+												"allOf": [
+													{
+														"description": "An object configuring where the rule will be placed.",
+														"title": "Position",
+														"type": "object"
+													},
+													{
+														"properties": {
+															"before": {
+																"description": "The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top.",
+																"example": "da5e8e506c8e7877fe06cdf4c41add54",
+																"title": "Before",
+																"type": "string"
+															}
+														},
+														"title": "Before position"
 													}
-												}
+												]
 											},
 											{
-												"properties": {
-													"after": {
-														"description": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom.",
-														"example": "5bccdbb2a5142cd25cad8591255bd209",
-														"type": "string"
+												"allOf": [
+													{
+														"description": "An object configuring where the rule will be placed.",
+														"title": "Position",
+														"type": "object"
+													},
+													{
+														"properties": {
+															"after": {
+																"description": "The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom.",
+																"example": "5bccdbb2a5142cd25cad8591255bd209",
+																"title": "After",
+																"type": "string"
+															}
+														},
+														"title": "After position"
 													}
-												}
+												]
 											},
 											{
-												"properties": {
-													"index": {
-														"description": "An index at which to place the rule, where index 1 is the first rule.",
-														"example": 1,
-														"type": "number"
+												"allOf": [
+													{
+														"description": "An object configuring where the rule will be placed.",
+														"title": "Position",
+														"type": "object"
+													},
+													{
+														"properties": {
+															"index": {
+																"description": "An index at which to place the rule, where index 1 is the first rule.",
+																"example": 1,
+																"title": "Index",
+																"type": "number"
+															}
+														},
+														"title": "Index position"
 													}
-												}
+												]
 											}
-										],
-										"type": "object"
+										]
 									}
 								}
 							}
@@ -2805,6 +3183,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -2813,6 +3192,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -2825,12 +3205,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -2840,6 +3225,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -2853,6 +3239,7 @@
 															"default": "",
 															"description": "An informative description of the ruleset.",
 															"example": "My ruleset to execute managed rulesets",
+															"title": "Description",
 															"type": "string"
 														},
 														"kind": {
@@ -2861,12 +3248,14 @@
 														"name": {
 															"description": "The human-readable name of the ruleset.",
 															"example": "My ruleset",
+															"title": "Name",
 															"type": "string"
 														},
 														"phase": {
 															"$ref": "#/components/schemas/RulesetPhase"
 														}
 													},
+													"title": "Ruleset",
 													"type": "object"
 												},
 												{
@@ -2875,11 +3264,13 @@
 															"description": "The unique ID of the ruleset.",
 															"example": "2f2feab2026849078ba485f918791bdc",
 															"pattern": "^[0-9a-f]{32}$",
+															"title": "ID",
 															"type": "string"
 														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
+															"title": "Last updated",
 															"type": "string"
 														},
 														"rules": {
@@ -2887,12 +3278,14 @@
 															"items": {
 																"$ref": "#/components/schemas/RuleResponse"
 															},
+															"title": "Rules",
 															"type": "array"
 														},
 														"version": {
 															"description": "The version of the ruleset.",
 															"example": "1",
 															"pattern": "^[0-9]+$",
+															"title": "Version",
 															"type": "string"
 														}
 													},
@@ -2908,8 +3301,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -2921,12 +3313,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -2934,12 +3328,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -2949,6 +3349,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -2990,6 +3391,7 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			},
@@ -3001,6 +3403,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -3017,6 +3420,7 @@
 										"default": "",
 										"description": "An informative description of the ruleset.",
 										"example": "My ruleset to execute managed rulesets",
+										"title": "Description",
 										"type": "string"
 									},
 									"kind": {
@@ -3025,12 +3429,14 @@
 									"name": {
 										"description": "The human-readable name of the ruleset.",
 										"example": "My ruleset",
+										"title": "Name",
 										"type": "string"
 									},
 									"phase": {
 										"$ref": "#/components/schemas/RulesetPhase"
 									}
 								},
+								"title": "Ruleset",
 								"type": "object"
 							},
 							{
@@ -3039,6 +3445,7 @@
 										"description": "The unique ID of the ruleset.",
 										"example": "2f2feab2026849078ba485f918791bdc",
 										"pattern": "^[0-9a-f]{32}$",
+										"title": "ID",
 										"type": "string"
 									},
 									"rules": {
@@ -3046,12 +3453,14 @@
 										"items": {
 											"$ref": "#/components/schemas/RuleRequest"
 										},
+										"title": "Rules",
 										"type": "array"
 									},
 									"version": {
 										"description": "The version of the ruleset.",
 										"example": "1",
 										"pattern": "^[0-9]+$",
+										"title": "Version",
 										"type": "string"
 									}
 								},
@@ -3072,6 +3481,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -3080,6 +3490,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -3092,12 +3503,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -3107,6 +3523,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -3120,6 +3537,7 @@
 															"default": "",
 															"description": "An informative description of the ruleset.",
 															"example": "My ruleset to execute managed rulesets",
+															"title": "Description",
 															"type": "string"
 														},
 														"kind": {
@@ -3128,12 +3546,14 @@
 														"name": {
 															"description": "The human-readable name of the ruleset.",
 															"example": "My ruleset",
+															"title": "Name",
 															"type": "string"
 														},
 														"phase": {
 															"$ref": "#/components/schemas/RulesetPhase"
 														}
 													},
+													"title": "Ruleset",
 													"type": "object"
 												},
 												{
@@ -3142,11 +3562,13 @@
 															"description": "The unique ID of the ruleset.",
 															"example": "2f2feab2026849078ba485f918791bdc",
 															"pattern": "^[0-9a-f]{32}$",
+															"title": "ID",
 															"type": "string"
 														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
+															"title": "Last updated",
 															"type": "string"
 														},
 														"rules": {
@@ -3154,12 +3576,14 @@
 															"items": {
 																"$ref": "#/components/schemas/RuleResponse"
 															},
+															"title": "Rules",
 															"type": "array"
 														},
 														"version": {
 															"description": "The version of the ruleset.",
 															"example": "1",
 															"pattern": "^[0-9]+$",
+															"title": "Version",
 															"type": "string"
 														}
 													},
@@ -3175,8 +3599,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -3188,12 +3611,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -3201,12 +3626,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -3216,6 +3647,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}
@@ -3257,6 +3689,7 @@
 					"description": "The phase of the ruleset.",
 					"example": "http_request_firewall_managed",
 					"pattern": "^[a-z_]+$",
+					"title": "Phase",
 					"type": "string"
 				}
 			},
@@ -3268,6 +3701,7 @@
 					"description": "The unique ID of the account.",
 					"example": "abf9b32d38c5f572afde3336ec0ce302",
 					"pattern": "^[0-9a-f]{32}$",
+					"title": "ID",
 					"type": "string"
 				}
 			}
@@ -3284,6 +3718,7 @@
 										"default": "",
 										"description": "An informative description of the ruleset.",
 										"example": "My ruleset to execute managed rulesets",
+										"title": "Description",
 										"type": "string"
 									},
 									"kind": {
@@ -3292,12 +3727,14 @@
 									"name": {
 										"description": "The human-readable name of the ruleset.",
 										"example": "My ruleset",
+										"title": "Name",
 										"type": "string"
 									},
 									"phase": {
 										"$ref": "#/components/schemas/RulesetPhase"
 									}
 								},
+								"title": "Ruleset",
 								"type": "object"
 							},
 							{
@@ -3306,6 +3743,7 @@
 										"description": "The unique ID of the ruleset.",
 										"example": "2f2feab2026849078ba485f918791bdc",
 										"pattern": "^[0-9a-f]{32}$",
+										"title": "ID",
 										"type": "string"
 									},
 									"rules": {
@@ -3313,12 +3751,14 @@
 										"items": {
 											"$ref": "#/components/schemas/RuleRequest"
 										},
+										"title": "Rules",
 										"type": "array"
 									},
 									"version": {
 										"description": "The version of the ruleset.",
 										"example": "1",
 										"pattern": "^[0-9]+$",
+										"title": "Version",
 										"type": "string"
 									}
 								},
@@ -3339,6 +3779,7 @@
 						"schema": {
 							"allOf": [
 								{
+									"description": "A response object.",
 									"properties": {
 										"errors": {
 											"allOf": [
@@ -3347,6 +3788,7 @@
 													"items": {
 														"$ref": "#/components/schemas/Message"
 													},
+													"title": "Errors",
 													"type": "array"
 												},
 												{
@@ -3359,12 +3801,17 @@
 											"items": {
 												"$ref": "#/components/schemas/Message"
 											},
+											"title": "Messages",
 											"type": "array"
 										},
-										"result": {},
+										"result": {
+											"description": "A result.",
+											"title": "Result"
+										},
 										"success": {
 											"description": "Whether the API call was successful.",
 											"example": true,
+											"title": "Success",
 											"type": "boolean"
 										}
 									},
@@ -3374,6 +3821,7 @@
 										"errors",
 										"messages"
 									],
+									"title": "Response",
 									"type": "object"
 								},
 								{
@@ -3387,6 +3835,7 @@
 															"default": "",
 															"description": "An informative description of the ruleset.",
 															"example": "My ruleset to execute managed rulesets",
+															"title": "Description",
 															"type": "string"
 														},
 														"kind": {
@@ -3395,12 +3844,14 @@
 														"name": {
 															"description": "The human-readable name of the ruleset.",
 															"example": "My ruleset",
+															"title": "Name",
 															"type": "string"
 														},
 														"phase": {
 															"$ref": "#/components/schemas/RulesetPhase"
 														}
 													},
+													"title": "Ruleset",
 													"type": "object"
 												},
 												{
@@ -3409,11 +3860,13 @@
 															"description": "The unique ID of the ruleset.",
 															"example": "2f2feab2026849078ba485f918791bdc",
 															"pattern": "^[0-9a-f]{32}$",
+															"title": "ID",
 															"type": "string"
 														},
 														"last_updated": {
 															"description": "The timestamp of when the ruleset was last modified.",
 															"example": "2000-01-01T00:00:00.000000Z",
+															"title": "Last updated",
 															"type": "string"
 														},
 														"rules": {
@@ -3421,12 +3874,14 @@
 															"items": {
 																"$ref": "#/components/schemas/RuleResponse"
 															},
+															"title": "Rules",
 															"type": "array"
 														},
 														"version": {
 															"description": "The version of the ruleset.",
 															"example": "1",
 															"pattern": "^[0-9]+$",
+															"title": "Version",
 															"type": "string"
 														}
 													},
@@ -3442,8 +3897,7 @@
 												}
 											]
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -3455,12 +3909,14 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"description": "A failure response object.",
 							"properties": {
 								"errors": {
 									"description": "A list of error messages.",
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Errors",
 									"type": "array"
 								},
 								"messages": {
@@ -3468,12 +3924,18 @@
 									"items": {
 										"$ref": "#/components/schemas/Message"
 									},
+									"title": "Messages",
 									"type": "array"
 								},
-								"result": {},
+								"result": {
+									"description": "A result.",
+									"title": "Result",
+									"type": "object"
+								},
 								"success": {
 									"description": "Whether the API call was successful.",
 									"example": false,
+									"title": "Success",
 									"type": "boolean"
 								}
 							},
@@ -3483,6 +3945,7 @@
 								"errors",
 								"messages"
 							],
+							"title": "Failure response",
 							"type": "object"
 						}
 					}

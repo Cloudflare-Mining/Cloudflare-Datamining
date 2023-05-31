@@ -163,7 +163,7 @@
 																						"$ref": "#/components/schemas/period_seconds"
 																					},
 																					"requests": {
-																						"$ref": "#/components/schemas/requests-RikMxnwM"
+																						"$ref": "#/components/schemas/requests"
 																					},
 																					"suggested_threshold": {
 																						"$ref": "#/components/schemas/suggested_threshold"
@@ -319,7 +319,7 @@
 											"features": {
 												"anyOf": [
 													{
-														"$ref": "#/components/schemas/thresholds-DVk4ZKLh"
+														"$ref": "#/components/schemas/thresholds"
 													},
 													{
 														"$ref": "#/components/schemas/parameter_schemas"
@@ -543,7 +543,7 @@
 																				"$ref": "#/components/schemas/period_seconds"
 																			},
 																			"requests": {
-																				"$ref": "#/components/schemas/requests-RikMxnwM"
+																				"$ref": "#/components/schemas/requests"
 																			},
 																			"suggested_threshold": {
 																				"$ref": "#/components/schemas/suggested_threshold"

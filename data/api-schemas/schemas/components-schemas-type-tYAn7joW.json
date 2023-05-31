@@ -1,0 +1,10 @@
+{
+	"description": "Type of webhook endpoint.",
+	"enum": [
+		"slack",
+		"generic",
+		"gchat"
+	],
+	"example": "slack",
+	"type": "string"
+}

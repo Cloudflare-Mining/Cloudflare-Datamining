@@ -1,5 +1,7 @@
 {
-	"description": "The description of the List.",
-	"example": "The serial numbers for administrators",
+	"description": "An informative summary of what the rule group does.",
+	"example": "Group designed to protect against IP addresses that are a threat and typically used to launch DDoS attacks",
+	"nullable": true,
+	"readOnly": true,
 	"type": "string"
 }

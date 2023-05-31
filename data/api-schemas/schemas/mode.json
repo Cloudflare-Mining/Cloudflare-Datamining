@@ -1,10 +1,9 @@
 {
-	"description": "Widget Mode",
+	"default": "on",
+	"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
 	"enum": [
-		"non-interactive",
-		"invisible",
-		"managed"
+		"on",
+		"off"
 	],
-	"example": "invisible",
 	"type": "string"
 }

@@ -1,297 +1,295 @@
 {
 	"oneOf": [
 		{
-			"description": "Matches a specific email.",
-			"properties": {
-				"email": {
+			"allOf": [
+				{
+					"allOf": [
+						{
+							"properties": {
+								"description": {
+									"$ref": "#/components/schemas/schemas-description"
+								},
+								"group": {
+									"description": "The rule group to which the current WAF rule belongs.",
+									"properties": {
+										"id": {
+											"$ref": "#/components/schemas/components-schemas-identifier"
+										},
+										"name": {
+											"$ref": "#/components/schemas/name"
+										}
+									},
+									"readOnly": true,
+									"type": "object"
+								},
+								"id": {
+									"$ref": "#/components/schemas/rule_components-schemas-identifier"
+								},
+								"package_id": {
+									"$ref": "#/components/schemas/identifier"
+								},
+								"priority": {
+									"$ref": "#/components/schemas/priority"
+								}
+							}
+						}
+					]
+				},
+				{
 					"properties": {
-						"email": {
-							"description": "The email of the user.",
-							"example": "test@example.com",
-							"format": "email",
+						"allowed_modes": {
+							"description": "Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules.",
+							"example": [
+								"on",
+								"off"
+							],
+							"items": {
+								"description": "When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
+								"enum": [
+									"on",
+									"off"
+								],
+								"example": "on",
+								"type": "string"
+							},
+							"readOnly": true,
+							"type": "array"
+						},
+						"mode": {
+							"description": "When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
+							"enum": [
+								"on",
+								"off"
+							],
+							"example": "on",
 							"type": "string"
 						}
-					},
-					"required": [
-						"email"
-					],
-					"type": "object"
+					}
 				}
-			},
-			"required": [
-				"email"
 			],
-			"title": "Email",
-			"type": "object"
+			"description": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
+			"required": [
+				"id",
+				"description",
+				"priority",
+				"allowed_modes",
+				"mode",
+				"group",
+				"package_id"
+			],
+			"title": "Anomaly detection WAF rule"
 		},
 		{
-			"description": "Match an entire email domain.",
-			"properties": {
-				"email_domain": {
+			"allOf": [
+				{
 					"properties": {
-						"domain": {
-							"description": "The email domain to match.",
-							"example": "example.com",
+						"description": {
+							"description": "The public description of the WAF rule.",
+							"example": "SQL injection prevention for SELECT statements",
+							"readOnly": true,
 							"type": "string"
-						}
-					},
-					"required": [
-						"domain"
-					],
-					"type": "object"
-				}
-			},
-			"required": [
-				"email_domain"
-			],
-			"title": "Email domain",
-			"type": "object"
-		},
-		{
-			"description": "Matches everyone.",
-			"properties": {
-				"everyone": {
-					"description": "An empty object which matches on all users.",
-					"example": {},
-					"type": "object"
-				}
-			},
-			"required": [
-				"everyone"
-			],
-			"title": "Everyone",
-			"type": "object"
-		},
-		{
-			"description": "Matches an IP address block.",
-			"properties": {
-				"ip": {
-					"properties": {
-						"ip": {
-							"description": "An IPv4 or IPv6 CIDR block.",
-							"example": "2400:cb00:21:10a::/64",
-							"type": "string"
-						}
-					},
-					"required": [
-						"ip"
-					],
-					"type": "object"
-				}
-			},
-			"required": [
-				"ip"
-			],
-			"title": "IP ranges",
-			"type": "object"
-		},
-		{
-			"description": "Matches an IP address from a list.",
-			"properties": {
-				"ip_list": {
-					"properties": {
-						"id": {
-							"description": "The ID of a previously created IP list.",
-							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-							"type": "string"
-						}
-					},
-					"required": [
-						"id"
-					],
-					"type": "object"
-				}
-			},
-			"required": [
-				"ip_list"
-			],
-			"title": "IP list",
-			"type": "object"
-		},
-		{
-			"description": "Matches any valid client certificate.",
-			"example": {
-				"certificate": {}
-			},
-			"properties": {
-				"certificate": {
-					"example": {},
-					"type": "object"
-				}
-			},
-			"required": [
-				"certificate"
-			],
-			"title": "Valid certificate",
-			"type": "object"
-		},
-		{
-			"description": "Matches an Access group.",
-			"properties": {
-				"group": {
-					"properties": {
-						"id": {
-							"description": "The ID of a previously created Access group.",
-							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-							"type": "string"
-						}
-					},
-					"required": [
-						"id"
-					],
-					"type": "object"
-				}
-			},
-			"required": [
-				"group"
-			],
-			"title": "Access groups",
-			"type": "object"
-		},
-		{
-			"description": "Matches an Azure group.\nRequires an Azure identity provider.",
-			"properties": {
-				"azureAD": {
-					"properties": {
-						"connection_id": {
-							"description": "The ID of your Azure identity provider.",
-							"example": "ea85612a-29c8-46c2-bacb-669d65136971",
-							"type": "string"
+						},
+						"group": {
+							"description": "The rule group to which the current WAF rule belongs.",
+							"properties": {
+								"id": {
+									"description": "The unique identifier of the rule group.",
+									"example": "de677e5818985db1285d0e80225f06e5",
+									"maxLength": 32,
+									"readOnly": true,
+									"type": "string"
+								},
+								"name": {
+									"description": "The name of the rule group.",
+									"example": "Project Honey Pot",
+									"readOnly": true,
+									"type": "string"
+								}
+							},
+							"readOnly": true,
+							"type": "object"
 						},
 						"id": {
-							"description": "The ID of an Azure group.",
-							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
-							"type": "string"
-						}
-					},
-					"required": [
-						"id",
-						"connection_id"
-					],
-					"type": "object"
-				}
-			},
-			"required": [
-				"azureAD"
-			],
-			"title": "Azure group",
-			"type": "object"
-		},
-		{
-			"description": "Matches a Github organization.\nRequires a Github identity provider.",
-			"properties": {
-				"github-organization": {
-					"properties": {
-						"connection_id": {
-							"description": "The ID of your Github identity provider.",
-							"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+							"description": "The unique identifier of the WAF rule.",
+							"example": "f939de3be84e66e757adcdcb87908023",
+							"maxLength": 32,
+							"readOnly": true,
 							"type": "string"
 						},
-						"name": {
-							"description": "The name of the organization.",
-							"example": "cloudflare",
-							"type": "string"
-						}
-					},
-					"required": [
-						"name",
-						"connection_id"
-					],
-					"type": "object"
-				}
-			},
-			"required": [
-				"github-organization"
-			],
-			"title": "Github organization",
-			"type": "object"
-		},
-		{
-			"description": "Matches a group in Google Workspace.\nRequires a Google Workspace identity provider.",
-			"properties": {
-				"gsuite": {
-					"properties": {
-						"connection_id": {
-							"description": "The ID of your Google Workspace identity provider.",
-							"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+						"package_id": {
+							"description": "The unique identifier of a WAF package.",
+							"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+							"maxLength": 32,
+							"readOnly": true,
 							"type": "string"
 						},
-						"email": {
-							"description": "The email of the Google Workspace group.",
-							"example": "devs@cloudflare.com",
+						"priority": {
+							"description": "The order in which the individual WAF rule is executed within its rule group.",
+							"readOnly": true,
 							"type": "string"
 						}
-					},
-					"required": [
-						"email",
-						"connection_id"
-					],
-					"type": "object"
+					}
+				},
+				{
+					"properties": {
+						"allowed_modes": {
+							"description": "The list of possible actions of the WAF rule when it is triggered.",
+							"example": [
+								"default",
+								"disable",
+								"simulate",
+								"block",
+								"challenge"
+							],
+							"items": {
+								"description": "The action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
+								"enum": [
+									"default",
+									"disable",
+									"simulate",
+									"block",
+									"challenge"
+								],
+								"example": "block",
+								"type": "string"
+							},
+							"readOnly": true,
+							"type": "array"
+						},
+						"default_mode": {
+							"description": "The default action/mode of a rule.",
+							"enum": [
+								"disable",
+								"simulate",
+								"block",
+								"challenge"
+							],
+							"example": "block",
+							"readOnly": true
+						},
+						"mode": {
+							"description": "The action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
+							"enum": [
+								"default",
+								"disable",
+								"simulate",
+								"block",
+								"challenge"
+							],
+							"example": "block",
+							"type": "string"
+						}
+					}
 				}
-			},
-			"required": [
-				"gsuite"
 			],
-			"title": "Google Workspace group",
-			"type": "object"
+			"description": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
+			"required": [
+				"id",
+				"description",
+				"priority",
+				"allowed_modes",
+				"default_mode",
+				"mode",
+				"group",
+				"package_id"
+			],
+			"title": "Traditional (deny) WAF rule"
 		},
 		{
-			"description": "Matches an Okta group.\nRequires an Okta identity provider.",
-			"properties": {
-				"okta": {
+			"allOf": [
+				{
 					"properties": {
-						"connection_id": {
-							"description": "The ID of your Okta identity provider.",
-							"example": "ea85612a-29c8-46c2-bacb-669d65136971",
+						"description": {
+							"description": "The public description of the WAF rule.",
+							"example": "SQL injection prevention for SELECT statements",
+							"readOnly": true,
 							"type": "string"
 						},
-						"email": {
-							"description": "The email of the Okta group.",
-							"example": "devs@cloudflare.com",
-							"type": "string"
-						}
-					},
-					"required": [
-						"email",
-						"connection_id"
-					],
-					"type": "object"
-				}
-			},
-			"required": [
-				"okta"
-			],
-			"title": "Okta group",
-			"type": "object"
-		},
-		{
-			"description": "Matches a SAML group.\nRequires a SAML identity provider.",
-			"properties": {
-				"saml": {
-					"properties": {
-						"attribute_name": {
-							"description": "The name of the SAML attribute.",
-							"example": "group",
+						"group": {
+							"description": "The rule group to which the current WAF rule belongs.",
+							"properties": {
+								"id": {
+									"description": "The unique identifier of the rule group.",
+									"example": "de677e5818985db1285d0e80225f06e5",
+									"maxLength": 32,
+									"readOnly": true,
+									"type": "string"
+								},
+								"name": {
+									"description": "The name of the rule group.",
+									"example": "Project Honey Pot",
+									"readOnly": true,
+									"type": "string"
+								}
+							},
+							"readOnly": true,
+							"type": "object"
+						},
+						"id": {
+							"description": "The unique identifier of the WAF rule.",
+							"example": "f939de3be84e66e757adcdcb87908023",
+							"maxLength": 32,
+							"readOnly": true,
 							"type": "string"
 						},
-						"attribute_value": {
-							"description": "The SAML attribute value to look for.",
-							"example": "devs@cloudflare.com",
+						"package_id": {
+							"description": "The unique identifier of a WAF package.",
+							"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						},
+						"priority": {
+							"description": "The order in which the individual WAF rule is executed within its rule group.",
+							"readOnly": true,
 							"type": "string"
 						}
-					},
-					"required": [
-						"attribute_name",
-						"attribute_value"
-					],
-					"type": "object"
+					}
+				},
+				{
+					"properties": {
+						"allowed_modes": {
+							"description": "Defines the available modes for the current WAF rule.",
+							"example": [
+								"on",
+								"off"
+							],
+							"items": {
+								"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
+								"enum": [
+									"on",
+									"off"
+								],
+								"example": "on",
+								"type": "string"
+							},
+							"readOnly": true,
+							"type": "array"
+						},
+						"mode": {
+							"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
+							"enum": [
+								"on",
+								"off"
+							],
+							"example": "on",
+							"type": "string"
+						}
+					}
 				}
-			},
-			"required": [
-				"saml"
 			],
-			"title": "SAML group",
-			"type": "object"
+			"description": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
+			"required": [
+				"id",
+				"description",
+				"priority",
+				"allowed_modes",
+				"default_mode",
+				"mode",
+				"group",
+				"package_id"
+			],
+			"title": "Traditional (allow) WAF rule"
 		}
 	],
 	"type": "object"

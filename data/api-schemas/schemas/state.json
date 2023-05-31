@@ -1,6 +1,9 @@
 {
-	"description": "State, provided by the CSR",
-	"example": "CA",
-	"readOnly": true,
+	"description": "The custom page state.",
+	"enum": [
+		"default",
+		"customized"
+	],
+	"example": "default",
 	"type": "string"
 }

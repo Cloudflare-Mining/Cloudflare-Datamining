@@ -1,0 +1,25 @@
+{
+	"properties": {
+		"client_id": {
+			"description": "The Intune client ID.",
+			"example": "example client id",
+			"type": "string"
+		},
+		"client_secret": {
+			"description": "The Intune client secret.",
+			"example": "example client secret",
+			"type": "string"
+		},
+		"customer_id": {
+			"description": "The Intune customer ID.",
+			"example": "example customer id",
+			"type": "string"
+		}
+	},
+	"required": [
+		"customer_id",
+		"client_id",
+		"client_secret"
+	],
+	"type": "object"
+}

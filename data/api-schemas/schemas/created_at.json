@@ -1,6 +1,7 @@
 {
-	"description": "This is the time the hostname was created.",
-	"example": "2020-02-06T18:11:23.531995Z",
+	"description": "Timestamp of when the webhook destination was created.",
+	"example": "2020-10-26T18:25:04.532316Z",
 	"format": "date-time",
+	"readOnly": true,
 	"type": "string"
 }

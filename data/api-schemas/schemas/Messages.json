@@ -6,11 +6,13 @@
 			"code": {
 				"description": "A unique code for this message.",
 				"example": 10000,
+				"title": "Code",
 				"type": "integer"
 			},
 			"message": {
 				"description": "A text description of this message.",
 				"example": "something bad happened",
+				"title": "Description",
 				"type": "string"
 			},
 			"source": {
@@ -19,16 +21,20 @@
 					"pointer": {
 						"description": "A JSON pointer to the field that is the source of the message.",
 						"example": "/rules/0/action",
+						"title": "Pointer",
 						"type": "string"
 					}
 				},
+				"title": "Source",
 				"type": "object"
 			}
 		},
 		"required": [
 			"message"
 		],
+		"title": "Message",
 		"type": "object"
 	},
+	"title": "Messages",
 	"type": "array"
 }
