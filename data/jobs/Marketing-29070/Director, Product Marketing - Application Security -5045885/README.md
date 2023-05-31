@@ -5,23 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong><br>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>What you'll do</strong><br>This is a newly found team focused on building out new interactions between Cache and Databases at the Cloudflare edge. In this role, you will work with a top-notch engineering team to expand Cloudflare's capabilities by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
-<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><span style="font-weight: 400;">Cloudflare is looking for an experienced product marketer to lead our application security product marketing team. This is a high-impact, results-oriented role, where you will work directly with Sales, Product Management, and Marketing to take new products to market and develop messaging and campaigns that drive acquisition and expansion.</span></p>
+<p><span style="font-weight: 400;">The application security portfolio consists of the web application firewall, rate limiting, bot management, and DDOS protection products. Successful candidates will have a passion for helping to build a better Internet by enabling web properties to improve their security posture. You will have a drive to understand customer needs, dig into product details, and elevate our messaging to deliver solution-oriented, breakthrough initiatives.&nbsp; You will enjoy this role if you like working with fast-paced teams and having autonomy to drive your initiatives.&nbsp;</span></p>
+<p><span style="font-weight: 400;">This role is a part of our Product Marketing team and reports into our Vice President of Product Marketing and Solutions.&nbsp; This will be a highly visible leadership role within the organization, which will have a significant impact on the long-term growth of the fast-growing Cloudflare business.</span></p>
+<p><strong>What You’ll Get To Do In This Role</strong></p>
 <ul>
-	<li>Minimum 5 years experience working with distributed systems or developing on cloud platforms.</li>
-	<li>Experience managing high volume software applications.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Java, C#, Rust, or C++.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Own go-to-market activities for application security products.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand and exploit the weaknesses of both box vendors as well as cloud providers in application security.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Evangelize Cloudflare products to analysts, prospects, and customers—in meetings, webinars, conferences and tradeshows.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Be the voice of the product to the entire marketing team. Be the voice of the marketing team to the product management and CTO organization.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop messaging that proves Cloudflare’s differentiation in application security.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and execute integrated marketing campaigns to drive demand for application security products and solutions.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide support for the field sales teams in the form of sales plays for both mid-market and enterprise.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with our Analyst Relations team to establish Cloudflare as a security leader.</span></li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Qualifications</strong></p>
+<p><span style="font-weight: 400;">What We’re Looking For In You</span></p>
 <ul>
-	<li>Previous experience working on database internals such as a SQL query planner.</li>
-	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly.</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in a large-scale Linux-based distributed system</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 8 years of experience in product marketing/product management with at least 5 years in a security-focused role.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience at one or more cyber security vendors. Knowledge of HTTP, OWASP, Bots.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience positioning technical products to both technical users and economic decision makers.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including product management, sales, comms, and marketing.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to manage ambiguity and navigate unforeseen obstacles gracefully.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">BS/BA degree in Marketing, Business, Engineering, or related field.</span></li>
 </ul>
+<h4>&nbsp;</h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
