@@ -312,7 +312,7 @@
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"delegated_account_id": {
-														"$ref": "#/components/schemas/delegated_account_identifier-FBVVgxfH"
+														"$ref": "#/components/schemas/delegated_account_identifier"
 													},
 													"id": {
 														"$ref": "#/components/schemas/delegation_identifier"
@@ -321,7 +321,7 @@
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"parent_prefix_id": {
-														"$ref": "#/components/schemas/identifier-yp3NPeNB"
+														"$ref": "#/components/schemas/identifier"
 													}
 												},
 												"type": "object"
@@ -375,7 +375,7 @@
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"delegated_account_id": {
-																"$ref": "#/components/schemas/delegated_account_identifier-FBVVgxfH"
+																"$ref": "#/components/schemas/delegated_account_identifier"
 															},
 															"id": {
 																"$ref": "#/components/schemas/delegation_identifier"
@@ -384,7 +384,7 @@
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"parent_prefix_id": {
-																"$ref": "#/components/schemas/identifier-yp3NPeNB"
+																"$ref": "#/components/schemas/identifier"
 															}
 														},
 														"type": "object"
@@ -591,7 +591,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"delegated_account_id": {
-													"$ref": "#/components/schemas/delegated_account_identifier-FBVVgxfH"
+													"$ref": "#/components/schemas/delegated_account_identifier"
 												},
 												"id": {
 													"$ref": "#/components/schemas/delegation_identifier"
@@ -600,7 +600,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"parent_prefix_id": {
-													"$ref": "#/components/schemas/identifier-yp3NPeNB"
+													"$ref": "#/components/schemas/identifier"
 												}
 											},
 											"type": "object"
@@ -653,7 +653,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"delegated_account_id": {
-															"$ref": "#/components/schemas/delegated_account_identifier-FBVVgxfH"
+															"$ref": "#/components/schemas/delegated_account_identifier"
 														},
 														"id": {
 															"$ref": "#/components/schemas/delegation_identifier"
@@ -662,7 +662,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"parent_prefix_id": {
-															"$ref": "#/components/schemas/identifier-yp3NPeNB"
+															"$ref": "#/components/schemas/identifier"
 														}
 													},
 													"type": "object"

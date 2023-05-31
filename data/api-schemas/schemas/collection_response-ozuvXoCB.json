@@ -1,0 +1,206 @@
+{
+	"allOf": [
+		{
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"allOf": [
+							{
+								"allOf": [
+									{
+										"properties": {
+											"endpoint": {
+												"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+												"example": "/api/v1/users/{var1}",
+												"format": "uri-template",
+												"maxLength": 4096,
+												"pattern": "^/.*$",
+												"type": "string"
+											},
+											"features": {
+												"anyOf": [
+													{
+														"$ref": "#/components/schemas/thresholds-42JGUFJK"
+													},
+													{
+														"$ref": "#/components/schemas/parameter_schemas"
+													}
+												],
+												"readOnly": true,
+												"type": "object"
+											},
+											"host": {
+												"description": "RFC3986-compliant host.",
+												"example": "www.example.com",
+												"format": "hostname",
+												"maxLength": 255,
+												"type": "string"
+											},
+											"last_updated": {
+												"example": "2014-01-01T05:20:00.12345Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
+											"method": {
+												"description": "The HTTP method used to access the endpoint.",
+												"enum": [
+													"GET",
+													"POST",
+													"HEAD",
+													"OPTIONS",
+													"PUT",
+													"DELETE",
+													"CONNECT",
+													"PATCH",
+													"TRACE"
+												],
+												"example": "GET",
+												"type": "string"
+											},
+											"operation_id": {
+												"description": "UUID",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"readOnly": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"operation_id",
+											"method",
+											"host",
+											"endpoint",
+											"last_updated"
+										],
+										"type": "object"
+									}
+								]
+							},
+							{
+								"properties": {
+									"features": {}
+								}
+							}
+						]
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

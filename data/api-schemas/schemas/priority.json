@@ -1,6 +1,7 @@
 {
-	"default": 20,
-	"description": "The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.",
-	"example": 1,
+	"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
+	"example": 10,
+	"maximum": 65535,
+	"minimum": 0,
 	"type": "number"
 }

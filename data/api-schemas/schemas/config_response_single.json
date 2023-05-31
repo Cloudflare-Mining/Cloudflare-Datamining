@@ -1,97 +1,77 @@
 {
 	"allOf": [
 		{
-			"allOf": [
-				{
-					"properties": {
-						"errors": {
-							"example": [],
-							"items": {
-								"properties": {
-									"code": {
-										"minimum": 1000,
-										"type": "integer"
-									},
-									"message": {
-										"type": "string"
-									}
-								},
-								"required": [
-									"code",
-									"message"
-								],
-								"type": "object",
-								"uniqueItems": true
+			"properties": {
+				"errors": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
 							},
-							"type": "array"
+							"message": {
+								"type": "string"
+							}
 						},
-						"messages": {
-							"example": [],
-							"items": {
-								"properties": {
-									"code": {
-										"minimum": 1000,
-										"type": "integer"
-									},
-									"message": {
-										"type": "string"
-									}
-								},
-								"required": [
-									"code",
-									"message"
-								],
-								"type": "object",
-								"uniqueItems": true
-							},
-							"type": "array"
-						},
-						"result": {
-							"anyOf": [
-								{
-									"type": "object"
-								},
-								{
-									"items": {},
-									"type": "array"
-								},
-								{
-									"type": "string"
-								}
-							]
-						},
-						"success": {
-							"description": "Whether the API call was successful",
-							"enum": [
-								true
-							],
-							"example": true,
-							"type": "boolean"
-						}
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
 					},
-					"required": [
-						"success",
-						"errors",
-						"messages",
-						"result"
-					],
-					"type": "object"
+					"type": "array"
 				},
-				{
-					"properties": {
-						"result": {
-							"anyOf": [
-								{
-									"type": "object"
-								},
-								{
-									"type": "string"
-								}
-							],
-							"nullable": true
+				"messages": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"result": {
+					"anyOf": [
+						{
+							"type": "object"
+						},
+						{
+							"items": {},
+							"type": "array"
+						},
+						{
+							"type": "string"
 						}
-					}
+					]
+				},
+				"success": {
+					"description": "Whether the API call was successful",
+					"enum": [
+						true
+					],
+					"example": true,
+					"type": "boolean"
 				}
+			},
+			"required": [
+				"success",
+				"errors",
+				"messages",
+				"result"
 			],
 			"type": "object"
 		},

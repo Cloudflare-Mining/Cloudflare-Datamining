@@ -137,7 +137,7 @@
 				},
 				"description": "Remove a Namespace response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -332,6 +332,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Remove a Namespace",
@@ -345,7 +348,7 @@
 		}
 	},
 	"DELETE /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/bulk": {
-		"description": "Remove multiple KV pairs from the namespace. Body should be an array of up to 10,000 keys to be removed.",
+		"description": "Remove multiple KV pairs from the Namespace. Body should be an array of up to 10,000 keys to be removed.",
 		"operationId": "workers-kv-namespace-delete-multiple-key-value-pairs",
 		"parameters": [
 			{
@@ -492,7 +495,7 @@
 				},
 				"description": "Delete multiple key-value pairs response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -687,6 +690,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Delete multiple key-value pairs",
@@ -700,7 +706,7 @@
 		}
 	},
 	"DELETE /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/values/{key_name}": {
-		"description": "Remove a KV pair from the namespace. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name.",
+		"description": "Remove a KV pair from the Namespace. Use URL-encoding to use special characters (e.g. :, !, %) in the key name.",
 		"operationId": "workers-kv-namespace-delete-key-value-pair",
 		"parameters": [
 			{
@@ -848,7 +854,7 @@
 				},
 				"description": "Delete key-value pair response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1043,6 +1049,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Delete key-value pair",
@@ -1278,7 +1287,7 @@
 				},
 				"description": "List Namespaces response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1531,6 +1540,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "List Namespaces",
@@ -1595,7 +1607,7 @@
 				"in": "query",
 				"name": "cursor",
 				"schema": {
-					"description": "Opaque token indicating the position from which to continue when requesting the next set of records if the amount of list results was limited by the limit parameter. A valid value for the cursor can be obtained from the `cursors` object in the `result_info` structure.",
+					"description": "Opaque token indicating the position from which to continue when requesting the next set of records if the amount of list results was limited by the limit parameter. A valid value for the cursor can be obtained from the cursors object in the result_info structure.",
 					"example": "6Ck1la0VxJ0djhidm1MdX2FyDGxLKVeeHZZmORS_8XeSuhz9SjIJRaSa2lnsF01tQOHrfTGAP3R5X1Kv5iVUuMbNKhWNAXHOl6ePB0TUL8nw",
 					"type": "string"
 				}
@@ -1736,7 +1748,7 @@
 				},
 				"description": "List a Namespace's Keys response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1963,6 +1975,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "List a Namespace's Keys",
@@ -1976,7 +1991,7 @@
 		}
 	},
 	"GET /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/metadata/{key_name}": {
-		"description": "Returns the metadata associated with the given key in the given namespace. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name.",
+		"description": "Returns the metadata associated with the given key in the given namespace. Use URL-encoding to use special characters (e.g. :, !, %) in the key name.",
 		"operationId": "workers-kv-namespace-read-the-metadata-for-a-key",
 		"parameters": [
 			{
@@ -2133,7 +2148,7 @@
 				},
 				"description": "Read the metadata for a key response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2343,6 +2358,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Read the metadata for a key",
@@ -2356,7 +2374,7 @@
 		}
 	},
 	"GET /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/values/{key_name}": {
-		"description": "Returns the value associated with the given key in the given namespace. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name. If the KV-pair is set to expire at some point, the expiration time as measured in seconds since the UNIX epoch will be returned in the `expiration` response header.",
+		"description": "Returns the value associated with the given key in the given namespace. Use URL-encoding to use special characters (e.g. :, !, %) in the key name. If the KV-pair is set to expire at some point, the expiration time as measured in seconds since the UNIX epoch will be returned in the \"Expiration\" response header.",
 		"operationId": "workers-kv-namespace-read-key-value-pair",
 		"parameters": [
 			{
@@ -2400,7 +2418,7 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "A byte sequence to be stored, up to 25 MiB in length.",
+							"description": "A byte sequence to be stored, up to 10 MB in length.",
 							"example": "Some Value",
 							"type": "string"
 						}
@@ -2408,13 +2426,13 @@
 				},
 				"description": "Read key-value pair response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
 							"allOf": [
 								{
-									"description": "A byte sequence to be stored, up to 25 MiB in length.",
+									"description": "A byte sequence to be stored, up to 10 MB in length.",
 									"example": "Some Value",
 									"type": "string"
 								},
@@ -2513,6 +2531,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Read key-value pair",
@@ -2526,7 +2547,7 @@
 		}
 	},
 	"POST /accounts/{account_identifier}/storage/kv/namespaces": {
-		"description": "Creates a namespace under the given title. A `400` is returned if the account already owns a namespace with this title. A namespace must be explicitly deleted to be replaced.",
+		"description": "Creates a namespace under the given title. A 400 is returned if the account already owns a namespace with this title. A namespace must be explicitly deleted to be replaced.",
 		"operationId": "workers-kv-namespace-create-a-namespace",
 		"parameters": [
 			{
@@ -2701,7 +2722,7 @@
 				},
 				"description": "Create a Namespace response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2932,6 +2953,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Create a Namespace",
@@ -3291,6 +3315,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Rename a Namespace",
@@ -3304,7 +3331,7 @@
 		}
 	},
 	"PUT /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/bulk": {
-		"description": "Write multiple keys and values at once. Body should be an array of up to 10,000 key-value pairs to be stored, along with optional expiration information. Existing values and expirations will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored. The entire request size must be 100 megabytes or less.",
+		"description": "Write multiple keys and values at once. Body should be an array of up to 10,000 key-value pairs to be stored, along with optional expiration information. Existing values and expirations will be overwritten. If neither expiration nor expiration_ttl is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored. The entire request size must be 100 megabytes or less.",
 		"operationId": "workers-kv-namespace-write-multiple-key-value-pairs",
 		"parameters": [
 			{
@@ -3367,9 +3394,9 @@
 									"type": "object"
 								},
 								"value": {
-									"description": "A UTF-8 encoded string to be stored, up to 25 MiB in length.",
+									"description": "A UTF-8 encoded string to be stored, up to 10 MB in length.",
 									"example": "Some string",
-									"maxLength": 26214400,
+									"maxLength": 10485760,
 									"type": "string"
 								}
 							},
@@ -3488,7 +3515,7 @@
 				},
 				"description": "Write multiple key-value pairs response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3683,6 +3710,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Write multiple key-value pairs",
@@ -3696,7 +3726,7 @@
 		}
 	},
 	"PUT /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/values/{key_name}": {
-		"description": "Write a value identified by a key. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name. Body should be the value to be stored along with JSON metadata to be associated with the key/value pair. Existing values, expirations, and metadata will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored.",
+		"description": "Write a value identified by a key. Use URL-encoding to use special characters (e.g. :, !, %) in the key name. Body should be the value to be stored along with json metadata to be associated with the key/value pair. Existing values, expirations and metadata will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored.",
 		"operationId": "workers-kv-namespace-write-key-value-pair-with-metadata",
 		"parameters": [
 			{
@@ -3746,7 +3776,7 @@
 								"type": "string"
 							},
 							"value": {
-								"description": "A byte sequence to be stored, up to 25 MiB in length.",
+								"description": "A byte sequence to be stored, up to 10 MB in length.",
 								"example": "Some Value",
 								"type": "string"
 							}
@@ -3864,7 +3894,7 @@
 				},
 				"description": "Write key-value pair with metadata response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4059,6 +4089,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Write key-value pair with metadata",

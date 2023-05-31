@@ -1,12 +1,10 @@
 {
-	"description": "The action to perform.",
+	"description": "Widget Mode",
 	"enum": [
-		"simulate",
-		"ban",
-		"challenge",
-		"js_challenge",
-		"managed_challenge"
+		"non-interactive",
+		"invisible",
+		"managed"
 	],
-	"example": "challenge",
+	"example": "invisible",
 	"type": "string"
 }

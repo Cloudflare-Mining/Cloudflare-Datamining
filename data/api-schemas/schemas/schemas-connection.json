@@ -1,5 +1,47 @@
 {
-	"description": "The IdP used to authenticate.",
-	"example": "saml",
-	"type": "string"
+	"properties": {
+		"client_id": {
+			"description": "UUID of the cloudflared instance."
+		},
+		"client_version": {
+			"description": "The cloudflared version used to establish this connection.",
+			"example": "2022.7.1",
+			"type": "string"
+		},
+		"colo_name": {
+			"description": "The Cloudflare data center used for this connection.",
+			"example": "DFW",
+			"type": "string"
+		},
+		"id": {
+			"description": "UUID of the Cloudflare Tunnel connection.",
+			"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+			"maxLength": 36,
+			"readOnly": true,
+			"type": "string"
+		},
+		"is_pending_reconnect": {
+			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
+			"example": false,
+			"type": "boolean"
+		},
+		"opened_at": {
+			"description": "Timestamp of when the connection was established.",
+			"example": "2021-01-25T18:22:34.317854Z",
+			"format": "date-time",
+			"type": "string"
+		},
+		"origin_ip": {
+			"description": "The public IP address of the host running cloudflared.",
+			"example": "85.12.78.6",
+			"type": "string"
+		},
+		"uuid": {
+			"description": "UUID of the Cloudflare Tunnel connection.",
+			"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+			"maxLength": 36,
+			"readOnly": true,
+			"type": "string"
+		}
+	}
 }

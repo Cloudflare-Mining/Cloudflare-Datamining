@@ -1,0 +1,31 @@
+{
+	"properties": {
+		"api_url": {
+			"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard.",
+			"example": "https://as123.awmdm.com/API",
+			"type": "string"
+		},
+		"auth_url": {
+			"description": "The Workspace One Authorization URL depending on your region.",
+			"example": "https://na.uemauth.vmwservices.com/connect/token",
+			"type": "string"
+		},
+		"client_id": {
+			"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard.",
+			"example": "example client id",
+			"type": "string"
+		},
+		"client_secret": {
+			"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard.",
+			"example": "example client secret",
+			"type": "string"
+		}
+	},
+	"required": [
+		"api_url",
+		"auth_url",
+		"client_id",
+		"client_secret"
+	],
+	"type": "object"
+}

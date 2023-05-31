@@ -61,7 +61,7 @@
 													"type": "string"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/domain_name-OgneTNPb"
+													"$ref": "#/components/schemas/schemas-domain_name"
 												},
 												"nameservers": {
 													"example": [
@@ -111,7 +111,7 @@
 				},
 				"description": "Get WHOIS Record response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -151,7 +151,7 @@
 															"type": "string"
 														},
 														"domain": {
-															"$ref": "#/components/schemas/domain_name-OgneTNPb"
+															"$ref": "#/components/schemas/schemas-domain_name"
 														},
 														"nameservers": {
 															"example": [
@@ -292,6 +292,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Get WHOIS Record",

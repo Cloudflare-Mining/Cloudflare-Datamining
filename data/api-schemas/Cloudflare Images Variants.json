@@ -75,7 +75,7 @@
 				},
 				"description": "Delete a variant response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -210,6 +210,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Delete a variant",
@@ -278,7 +281,7 @@
 				},
 				"description": "List variants response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -414,6 +417,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "List variants",
@@ -495,7 +501,7 @@
 				},
 				"description": "Variant details response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -634,6 +640,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Variant details",
@@ -760,7 +769,7 @@
 				},
 				"description": "Update a variant response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -899,6 +908,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Update a variant",
@@ -1021,7 +1033,7 @@
 				},
 				"description": "Create a variant response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1160,6 +1172,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Create a variant",

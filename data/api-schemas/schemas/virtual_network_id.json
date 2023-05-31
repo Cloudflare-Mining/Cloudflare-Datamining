@@ -1,5 +1,3 @@
 {
-	"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
-	"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
-	"type": "string"
+	"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
 }

@@ -118,52 +118,76 @@
 			"properties": {
 				"result": {
 					"items": {
-						"properties": {
-							"action": {
-								"description": "The action to take when the expression matches.",
-								"enum": [
-									"bypass_waiting_room"
-								],
-								"example": "bypass_waiting_room",
-								"type": "string"
-							},
-							"description": {
-								"default": "",
-								"description": "The description of the rule.",
-								"example": "allow all traffic from 10.20.30.40",
-								"type": "string"
-							},
-							"enabled": {
-								"default": true,
-								"description": "When set to true, the rule is enabled.",
-								"example": true,
-								"type": "boolean"
-							},
-							"expression": {
-								"description": "Criteria defining when there is a match for the current rule.",
-								"example": "ip.src in {10.20.30.40}",
-								"type": "string"
-							},
-							"id": {
-								"description": "The ID of the rule.",
-								"example": "25756b2dfe6e378a06b033b670413757",
-								"type": "string"
-							},
-							"last_updated": {
-								"example": "2014-01-01T05:20:00.12345Z",
-								"format": "date-time",
-								"readOnly": true,
-								"type": "string"
-							},
-							"version": {
-								"description": "The version of the rule.",
-								"example": "1",
-								"type": "string"
+						"allOf": [
+							{
+								"properties": {
+									"actions": {
+										"description": "List actions patterns.",
+										"items": {
+											"$ref": "#/components/schemas/rule_action"
+										},
+										"type": "array"
+									},
+									"enabled": {
+										"default": true,
+										"description": "Routing rule status.",
+										"enum": [
+											true,
+											false
+										],
+										"example": true,
+										"type": "boolean"
+									},
+									"matchers": {
+										"description": "Matching patterns to forward to your actions.",
+										"items": {
+											"$ref": "#/components/schemas/rule_matcher"
+										},
+										"type": "array"
+									},
+									"name": {
+										"description": "Routing rule name.",
+										"example": "Send to user@example.net rule.",
+										"maxLength": 256,
+										"type": "string"
+									},
+									"priority": {
+										"default": 0,
+										"description": "Priority of the routing rule.",
+										"minimum": 0,
+										"type": "number"
+									},
+									"tag": {
+										"description": "Routing rule identifier.",
+										"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+										"maxLength": 32,
+										"readOnly": true,
+										"type": "string"
+									}
+								},
+								"type": "object"
 							}
-						},
+						],
 						"type": "object"
 					},
 					"type": "array"
+				},
+				"result_info": {
+					"properties": {
+						"count": {
+							"example": 1
+						},
+						"page": {
+							"example": 1
+						},
+						"per_page": {
+							"example": 20
+						},
+						"total_count": {
+							"example": 1
+						}
+					},
+					"type": "object"
 				}
 			}
 		}

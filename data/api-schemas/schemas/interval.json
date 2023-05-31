@@ -1,5 +1,5 @@
 {
-	"default": 60,
-	"description": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.",
-	"type": "integer"
+	"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+	"example": "10m",
+	"type": "string"
 }

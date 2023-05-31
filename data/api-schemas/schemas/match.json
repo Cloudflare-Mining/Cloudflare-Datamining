@@ -1,93 +1,10 @@
 {
-	"description": "Determines which traffic the rate limit counts towards the threshold.",
-	"oneOf": [
-		{
-			"properties": {
-				"headers": {
-					"items": {
-						"properties": {
-							"name": {
-								"description": "The name of the response header to match.",
-								"example": "Cf-Cache-Status",
-								"type": "string"
-							},
-							"op": {
-								"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
-								"enum": [
-									"eq",
-									"ne"
-								],
-								"example": "ne",
-								"type": "string"
-							},
-							"value": {
-								"description": "The value of the response header, which must match exactly.",
-								"example": "HIT",
-								"type": "string"
-							}
-						},
-						"type": "object"
-					},
-					"type": "array"
-				},
-				"request": {
-					"properties": {
-						"methods": {
-							"description": "The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.",
-							"example": [
-								"GET",
-								"POST"
-							],
-							"items": {
-								"description": "An HTTP method or `_ALL_` to indicate all methods.",
-								"enum": [
-									"GET",
-									"POST",
-									"PUT",
-									"DELETE",
-									"PATCH",
-									"HEAD",
-									"_ALL_"
-								],
-								"example": "GET",
-								"type": "string"
-							},
-							"type": "array"
-						},
-						"schemes": {
-							"description": "The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.",
-							"example": [
-								"HTTP",
-								"HTTPS"
-							],
-							"items": {
-								"description": "An HTTP scheme or `_ALL_` to indicate all schemes.",
-								"example": "HTTPS",
-								"type": "string"
-							},
-							"type": "array"
-						},
-						"url": {
-							"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
-							"example": "*.example.org/path*",
-							"maxLength": 1024,
-							"type": "string"
-						}
-					},
-					"type": "object"
-				},
-				"response": {
-					"properties": {
-						"origin_traffic": {
-							"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property.",
-							"type": "boolean"
-						}
-					},
-					"type": "object"
-				}
-			},
-			"type": "object"
-		}
+	"default": "all",
+	"description": "Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.\n",
+	"enum": [
+		"any",
+		"all"
 	],
-	"type": "object"
+	"example": "any",
+	"type": "string"
 }

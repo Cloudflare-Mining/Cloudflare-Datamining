@@ -1,12 +1,5 @@
 {
-	"description": "The type of List.",
-	"enum": [
-		"SERIAL",
-		"URL",
-		"DOMAIN",
-		"EMAIL",
-		"IP"
-	],
-	"example": "SERIAL",
+	"description": "Use this value when creating and updating a notification policy.",
+	"example": "http_alert_origin_error",
 	"type": "string"
 }

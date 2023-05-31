@@ -77,7 +77,7 @@
 				},
 				"description": "Delete image response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -212,6 +212,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Delete image",
@@ -292,10 +295,10 @@
 														"$ref": "#/components/schemas/filename"
 													},
 													"id": {
-														"$ref": "#/components/schemas/identifier-zoWocf0j"
+														"$ref": "#/components/schemas/images_components-schemas-identifier"
 													},
 													"metadata": {
-														"$ref": "#/components/schemas/metadata"
+														"$ref": "#/components/schemas/metadata-NzR4uFEr"
 													},
 													"requireSignedURLs": {
 														"$ref": "#/components/schemas/requireSignedURLs"
@@ -304,7 +307,7 @@
 														"$ref": "#/components/schemas/uploaded"
 													},
 													"variants": {
-														"$ref": "#/components/schemas/variants-aWWJoBMs"
+														"$ref": "#/components/schemas/schemas-variants"
 													}
 												},
 												"type": "object"
@@ -319,7 +322,7 @@
 				},
 				"description": "List images response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -355,10 +358,10 @@
 																"$ref": "#/components/schemas/filename"
 															},
 															"id": {
-																"$ref": "#/components/schemas/identifier-zoWocf0j"
+																"$ref": "#/components/schemas/images_components-schemas-identifier"
 															},
 															"metadata": {
-																"$ref": "#/components/schemas/metadata"
+																"$ref": "#/components/schemas/metadata-NzR4uFEr"
 															},
 															"requireSignedURLs": {
 																"$ref": "#/components/schemas/requireSignedURLs"
@@ -367,7 +370,7 @@
 																"$ref": "#/components/schemas/uploaded"
 															},
 															"variants": {
-																"$ref": "#/components/schemas/variants-aWWJoBMs"
+																"$ref": "#/components/schemas/schemas-variants"
 															}
 														},
 														"type": "object"
@@ -473,6 +476,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "List images",
@@ -551,7 +557,7 @@
 				},
 				"description": "Image details response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -685,6 +691,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Image details",
@@ -740,7 +749,7 @@
 				},
 				"description": "Base image response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -851,6 +860,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Base image",
@@ -884,7 +896,7 @@
 								"count": {
 									"properties": {
 										"allowed": {
-											"$ref": "#/components/schemas/allowed-KF4ESoLR"
+											"$ref": "#/components/schemas/allowed-plgRoqRf"
 										},
 										"current": {
 											"$ref": "#/components/schemas/current"
@@ -899,7 +911,7 @@
 				},
 				"description": "Images usage statistics response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -909,7 +921,7 @@
 										"count": {
 											"properties": {
 												"allowed": {
-													"$ref": "#/components/schemas/allowed-KF4ESoLR"
+													"$ref": "#/components/schemas/allowed-plgRoqRf"
 												},
 												"current": {
 													"$ref": "#/components/schemas/current"
@@ -1015,6 +1027,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Images usage statistics",
@@ -1114,7 +1129,7 @@
 				},
 				"description": "Update image response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1248,6 +1263,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Update image",
@@ -1344,7 +1362,7 @@
 				},
 				"description": "Upload an image via URL response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1478,6 +1496,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Upload an image via URL",
@@ -1593,7 +1614,7 @@
 				},
 				"description": "Create authenticated direct upload URL V2 response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1740,6 +1761,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Create authenticated direct upload URL V2",
