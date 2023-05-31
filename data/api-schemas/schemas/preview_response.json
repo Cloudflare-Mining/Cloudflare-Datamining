@@ -87,8 +87,7 @@
 								{
 									"type": "string"
 								}
-							],
-							"nullable": true
+							]
 						}
 					}
 				}
@@ -99,20 +98,10 @@
 			"properties": {
 				"result": {
 					"properties": {
-						"pools": {
-							"additionalProperties": {
-								"description": "The pool name associated with the pool ID.",
-								"type": "string"
-							},
-							"description": "Monitored pool IDs mapped to their respective names.",
-							"example": {
-								"abwlnp5jbqn45ecgxd03erbgtxtqai0d": "WNAM Datacenter",
-								"ve8h9lrcip5n5bbga9yqmdws28ay5d0l": "EEU Datacenter"
-							},
-							"type": "object"
-						},
-						"preview_id": {
-							"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+						"preview_url": {
+							"description": "URL where the custom waiting room page can temporarily be previewed.",
+							"example": "http://waitingrooms.dev/preview/35af8c12-6d68-4608-babb-b53435a5ddfb",
+							"type": "string"
 						}
 					},
 					"type": "object"

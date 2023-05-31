@@ -87,7 +87,8 @@
 								{
 									"type": "string"
 								}
-							]
+							],
+							"nullable": true
 						}
 					}
 				}
@@ -97,8 +98,8 @@
 		{
 			"properties": {
 				"result": {
-					"example": "ok",
-					"type": "string"
+					"example": {},
+					"type": "object"
 				}
 			}
 		}

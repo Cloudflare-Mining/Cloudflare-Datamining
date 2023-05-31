@@ -1,5 +1,7 @@
 {
-	"description": "The name of the Rule.",
-	"example": "block bad websites",
+	"description": "Role Name.",
+	"example": "Organization Admin",
+	"maxLength": 120,
+	"readOnly": true,
 	"type": "string"
 }

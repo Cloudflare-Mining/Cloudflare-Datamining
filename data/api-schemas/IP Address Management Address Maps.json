@@ -1606,13 +1606,13 @@
 														"$ref": "#/components/schemas/default_sni"
 													},
 													"description": {
-														"$ref": "#/components/schemas/schemas-description-XsYzEWGZ"
+														"$ref": "#/components/schemas/schemas-description-ZJcfe9RJ"
 													},
 													"enabled": {
-														"$ref": "#/components/schemas/enabled-JI75inEv"
+														"$ref": "#/components/schemas/enabled-Ks1JsGAm"
 													},
 													"id": {
-														"$ref": "#/components/schemas/identifier"
+														"$ref": "#/components/schemas/identifier-Wi0ZcoQm"
 													},
 													"modified_at": {
 														"$ref": "#/components/schemas/timestamp"
@@ -1675,13 +1675,13 @@
 																"$ref": "#/components/schemas/default_sni"
 															},
 															"description": {
-																"$ref": "#/components/schemas/schemas-description-XsYzEWGZ"
+																"$ref": "#/components/schemas/schemas-description-ZJcfe9RJ"
 															},
 															"enabled": {
-																"$ref": "#/components/schemas/enabled-JI75inEv"
+																"$ref": "#/components/schemas/enabled-Ks1JsGAm"
 															},
 															"id": {
-																"$ref": "#/components/schemas/identifier"
+																"$ref": "#/components/schemas/identifier-Wi0ZcoQm"
 															},
 															"modified_at": {
 																"$ref": "#/components/schemas/timestamp"
@@ -1873,13 +1873,13 @@
 															"$ref": "#/components/schemas/default_sni"
 														},
 														"description": {
-															"$ref": "#/components/schemas/schemas-description-XsYzEWGZ"
+															"$ref": "#/components/schemas/schemas-description-ZJcfe9RJ"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/enabled-JI75inEv"
+															"$ref": "#/components/schemas/enabled-Ks1JsGAm"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier"
+															"$ref": "#/components/schemas/identifier-Wi0ZcoQm"
 														},
 														"modified_at": {
 															"$ref": "#/components/schemas/timestamp"
@@ -1892,14 +1892,14 @@
 														"ips": {
 															"description": "The set of IPs on the Address Map.",
 															"items": {
-																"$ref": "#/components/schemas/address-maps-ip-BRGTxjLd"
+																"$ref": "#/components/schemas/address-maps-ip"
 															},
 															"type": "array"
 														},
 														"memberships": {
 															"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
 															"items": {
-																"$ref": "#/components/schemas/address-maps-membership-Y7TrCpO8"
+																"$ref": "#/components/schemas/address-maps-membership-8q3gbhjD"
 															},
 															"type": "array"
 														}
@@ -1965,13 +1965,13 @@
 																	"$ref": "#/components/schemas/default_sni"
 																},
 																"description": {
-																	"$ref": "#/components/schemas/schemas-description-XsYzEWGZ"
+																	"$ref": "#/components/schemas/schemas-description-ZJcfe9RJ"
 																},
 																"enabled": {
-																	"$ref": "#/components/schemas/enabled-JI75inEv"
+																	"$ref": "#/components/schemas/enabled-Ks1JsGAm"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/identifier"
+																	"$ref": "#/components/schemas/identifier-Wi0ZcoQm"
 																},
 																"modified_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -1984,14 +1984,14 @@
 																"ips": {
 																	"description": "The set of IPs on the Address Map.",
 																	"items": {
-																		"$ref": "#/components/schemas/address-maps-ip-BRGTxjLd"
+																		"$ref": "#/components/schemas/address-maps-ip"
 																	},
 																	"type": "array"
 																},
 																"memberships": {
 																	"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
 																	"items": {
-																		"$ref": "#/components/schemas/address-maps-membership-Y7TrCpO8"
+																		"$ref": "#/components/schemas/address-maps-membership-8q3gbhjD"
 																	},
 																	"type": "array"
 																}
@@ -2211,13 +2211,13 @@
 													"$ref": "#/components/schemas/default_sni"
 												},
 												"description": {
-													"$ref": "#/components/schemas/schemas-description-XsYzEWGZ"
+													"$ref": "#/components/schemas/schemas-description-ZJcfe9RJ"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/enabled-JI75inEv"
+													"$ref": "#/components/schemas/enabled-Ks1JsGAm"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier"
+													"$ref": "#/components/schemas/identifier-Wi0ZcoQm"
 												},
 												"modified_at": {
 													"$ref": "#/components/schemas/timestamp"
@@ -2279,13 +2279,13 @@
 															"$ref": "#/components/schemas/default_sni"
 														},
 														"description": {
-															"$ref": "#/components/schemas/schemas-description-XsYzEWGZ"
+															"$ref": "#/components/schemas/schemas-description-ZJcfe9RJ"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/enabled-JI75inEv"
+															"$ref": "#/components/schemas/enabled-Ks1JsGAm"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier"
+															"$ref": "#/components/schemas/identifier-Wi0ZcoQm"
 														},
 														"modified_at": {
 															"$ref": "#/components/schemas/timestamp"
@@ -2487,13 +2487,13 @@
 															"$ref": "#/components/schemas/default_sni"
 														},
 														"description": {
-															"$ref": "#/components/schemas/schemas-description-XsYzEWGZ"
+															"$ref": "#/components/schemas/schemas-description-ZJcfe9RJ"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/enabled-JI75inEv"
+															"$ref": "#/components/schemas/enabled-Ks1JsGAm"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier"
+															"$ref": "#/components/schemas/identifier-Wi0ZcoQm"
 														},
 														"modified_at": {
 															"$ref": "#/components/schemas/timestamp"
@@ -2506,14 +2506,14 @@
 														"ips": {
 															"description": "The set of IPs on the Address Map.",
 															"items": {
-																"$ref": "#/components/schemas/address-maps-ip-BRGTxjLd"
+																"$ref": "#/components/schemas/address-maps-ip"
 															},
 															"type": "array"
 														},
 														"memberships": {
 															"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
 															"items": {
-																"$ref": "#/components/schemas/address-maps-membership-Y7TrCpO8"
+																"$ref": "#/components/schemas/address-maps-membership-8q3gbhjD"
 															},
 															"type": "array"
 														}
@@ -2579,13 +2579,13 @@
 																	"$ref": "#/components/schemas/default_sni"
 																},
 																"description": {
-																	"$ref": "#/components/schemas/schemas-description-XsYzEWGZ"
+																	"$ref": "#/components/schemas/schemas-description-ZJcfe9RJ"
 																},
 																"enabled": {
-																	"$ref": "#/components/schemas/enabled-JI75inEv"
+																	"$ref": "#/components/schemas/enabled-Ks1JsGAm"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/identifier"
+																	"$ref": "#/components/schemas/identifier-Wi0ZcoQm"
 																},
 																"modified_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2598,14 +2598,14 @@
 																"ips": {
 																	"description": "The set of IPs on the Address Map.",
 																	"items": {
-																		"$ref": "#/components/schemas/address-maps-ip-BRGTxjLd"
+																		"$ref": "#/components/schemas/address-maps-ip"
 																	},
 																	"type": "array"
 																},
 																"memberships": {
 																	"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
 																	"items": {
-																		"$ref": "#/components/schemas/address-maps-membership-Y7TrCpO8"
+																		"$ref": "#/components/schemas/address-maps-membership-8q3gbhjD"
 																	},
 																	"type": "array"
 																}

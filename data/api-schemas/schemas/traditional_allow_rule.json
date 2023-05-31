@@ -1,57 +1,53 @@
 {
 	"allOf": [
 		{
-			"allOf": [
-				{
+			"properties": {
+				"description": {
+					"description": "The public description of the WAF rule.",
+					"example": "SQL injection prevention for SELECT statements",
+					"readOnly": true,
+					"type": "string"
+				},
+				"group": {
+					"description": "The rule group to which the current WAF rule belongs.",
 					"properties": {
-						"description": {
-							"description": "The public description of the WAF rule.",
-							"example": "SQL injection prevention for SELECT statements",
-							"readOnly": true,
-							"type": "string"
-						},
-						"group": {
-							"description": "The rule group to which the current WAF rule belongs.",
-							"properties": {
-								"id": {
-									"description": "The unique identifier of the rule group.",
-									"example": "de677e5818985db1285d0e80225f06e5",
-									"maxLength": 32,
-									"readOnly": true,
-									"type": "string"
-								},
-								"name": {
-									"description": "The name of the rule group.",
-									"example": "Project Honey Pot",
-									"readOnly": true,
-									"type": "string"
-								}
-							},
-							"readOnly": true,
-							"type": "object"
-						},
 						"id": {
-							"description": "The unique identifier of the WAF rule.",
-							"example": "f939de3be84e66e757adcdcb87908023",
+							"description": "The unique identifier of the rule group.",
+							"example": "de677e5818985db1285d0e80225f06e5",
 							"maxLength": 32,
 							"readOnly": true,
 							"type": "string"
 						},
-						"package_id": {
-							"description": "The unique identifier of a WAF package.",
-							"example": "a25a9a7e9c00afc1fb2e0245519d725b",
-							"maxLength": 32,
-							"readOnly": true,
-							"type": "string"
-						},
-						"priority": {
-							"description": "The order in which the individual WAF rule is executed within its rule group.",
+						"name": {
+							"description": "The name of the rule group.",
+							"example": "Project Honey Pot",
 							"readOnly": true,
 							"type": "string"
 						}
-					}
+					},
+					"readOnly": true,
+					"type": "object"
+				},
+				"id": {
+					"description": "The unique identifier of the WAF rule.",
+					"example": "f939de3be84e66e757adcdcb87908023",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				},
+				"package_id": {
+					"description": "The unique identifier of a WAF package.",
+					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				},
+				"priority": {
+					"description": "The order in which the individual WAF rule is executed within its rule group.",
+					"readOnly": true,
+					"type": "string"
 				}
-			]
+			}
 		},
 		{
 			"properties": {

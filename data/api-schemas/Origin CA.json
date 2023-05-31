@@ -31,7 +31,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single-r2agNKDm"
+											"$ref": "#/components/schemas/api-response-single"
 										},
 										{
 											"properties": {
@@ -74,7 +74,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single-r2agNKDm"
+													"$ref": "#/components/schemas/api-response-single"
 												},
 												{
 													"properties": {
@@ -267,13 +267,13 @@
 														"$ref": "#/components/schemas/csr"
 													},
 													"expires_on": {
-														"$ref": "#/components/schemas/schemas-expires_on-RnqEbneB"
+														"$ref": "#/components/schemas/schemas-expires_on-6ncSw6Dx"
 													},
 													"hostnames": {
 														"$ref": "#/components/schemas/hostnames"
 													},
 													"id": {
-														"$ref": "#/components/schemas/identifier"
+														"$ref": "#/components/schemas/identifier-jdUyzx9A"
 													},
 													"request_type": {
 														"$ref": "#/components/schemas/request_type"
@@ -340,13 +340,13 @@
 																"$ref": "#/components/schemas/csr"
 															},
 															"expires_on": {
-																"$ref": "#/components/schemas/schemas-expires_on-RnqEbneB"
+																"$ref": "#/components/schemas/schemas-expires_on-6ncSw6Dx"
 															},
 															"hostnames": {
 																"$ref": "#/components/schemas/hostnames"
 															},
 															"id": {
-																"$ref": "#/components/schemas/identifier"
+																"$ref": "#/components/schemas/identifier-jdUyzx9A"
 															},
 															"request_type": {
 																"$ref": "#/components/schemas/request_type"

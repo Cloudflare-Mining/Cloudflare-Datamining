@@ -37,77 +37,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -137,77 +84,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -379,77 +273,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -479,77 +320,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -1012,7 +800,7 @@
 														"$ref": "#/components/schemas/default_template_language"
 													},
 													"description": {
-														"$ref": "#/components/schemas/description-Y8s0NDb2"
+														"$ref": "#/components/schemas/description-HR2eO542"
 													},
 													"disable_session_renewal": {
 														"$ref": "#/components/schemas/disable_session_renewal"
@@ -1030,7 +818,7 @@
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"name": {
-														"$ref": "#/components/schemas/name-oF8cQA5q"
+														"$ref": "#/components/schemas/name-NBQzA57E"
 													},
 													"new_users_per_minute": {
 														"$ref": "#/components/schemas/new_users_per_minute"
@@ -1042,7 +830,7 @@
 														"$ref": "#/components/schemas/next_event_start_time"
 													},
 													"path": {
-														"$ref": "#/components/schemas/path-ipvlKweZ"
+														"$ref": "#/components/schemas/path"
 													},
 													"queue_all": {
 														"$ref": "#/components/schemas/queue_all"
@@ -1117,7 +905,7 @@
 																"$ref": "#/components/schemas/default_template_language"
 															},
 															"description": {
-																"$ref": "#/components/schemas/description-Y8s0NDb2"
+																"$ref": "#/components/schemas/description-HR2eO542"
 															},
 															"disable_session_renewal": {
 																"$ref": "#/components/schemas/disable_session_renewal"
@@ -1135,7 +923,7 @@
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"name": {
-																"$ref": "#/components/schemas/name-oF8cQA5q"
+																"$ref": "#/components/schemas/name-NBQzA57E"
 															},
 															"new_users_per_minute": {
 																"$ref": "#/components/schemas/new_users_per_minute"
@@ -1147,7 +935,7 @@
 																"$ref": "#/components/schemas/next_event_start_time"
 															},
 															"path": {
-																"$ref": "#/components/schemas/path-ipvlKweZ"
+																"$ref": "#/components/schemas/path"
 															},
 															"queue_all": {
 																"$ref": "#/components/schemas/queue_all"
@@ -1313,77 +1101,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -1404,7 +1139,7 @@
 													"$ref": "#/components/schemas/default_template_language"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-Y8s0NDb2"
+													"$ref": "#/components/schemas/description-HR2eO542"
 												},
 												"disable_session_renewal": {
 													"$ref": "#/components/schemas/disable_session_renewal"
@@ -1422,7 +1157,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-oF8cQA5q"
+													"$ref": "#/components/schemas/name-NBQzA57E"
 												},
 												"new_users_per_minute": {
 													"$ref": "#/components/schemas/new_users_per_minute"
@@ -1434,7 +1169,7 @@
 													"$ref": "#/components/schemas/next_event_start_time"
 												},
 												"path": {
-													"$ref": "#/components/schemas/path-ipvlKweZ"
+													"$ref": "#/components/schemas/path"
 												},
 												"queue_all": {
 													"$ref": "#/components/schemas/queue_all"
@@ -1470,77 +1205,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -1561,7 +1243,7 @@
 															"$ref": "#/components/schemas/default_template_language"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-Y8s0NDb2"
+															"$ref": "#/components/schemas/description-HR2eO542"
 														},
 														"disable_session_renewal": {
 															"$ref": "#/components/schemas/disable_session_renewal"
@@ -1579,7 +1261,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-oF8cQA5q"
+															"$ref": "#/components/schemas/name-NBQzA57E"
 														},
 														"new_users_per_minute": {
 															"$ref": "#/components/schemas/new_users_per_minute"
@@ -1591,7 +1273,7 @@
 															"$ref": "#/components/schemas/next_event_start_time"
 														},
 														"path": {
-															"$ref": "#/components/schemas/path-ipvlKweZ"
+															"$ref": "#/components/schemas/path"
 														},
 														"queue_all": {
 															"$ref": "#/components/schemas/queue_all"
@@ -2077,77 +1759,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -2222,77 +1851,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -2503,77 +2079,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -2648,77 +2171,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -3181,77 +2651,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -3300,77 +2717,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -3538,77 +2902,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -3647,77 +2958,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -4037,77 +3295,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -4128,7 +3333,7 @@
 													"$ref": "#/components/schemas/default_template_language"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-Y8s0NDb2"
+													"$ref": "#/components/schemas/description-HR2eO542"
 												},
 												"disable_session_renewal": {
 													"$ref": "#/components/schemas/disable_session_renewal"
@@ -4146,7 +3351,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-oF8cQA5q"
+													"$ref": "#/components/schemas/name-NBQzA57E"
 												},
 												"new_users_per_minute": {
 													"$ref": "#/components/schemas/new_users_per_minute"
@@ -4158,7 +3363,7 @@
 													"$ref": "#/components/schemas/next_event_start_time"
 												},
 												"path": {
-													"$ref": "#/components/schemas/path-ipvlKweZ"
+													"$ref": "#/components/schemas/path"
 												},
 												"queue_all": {
 													"$ref": "#/components/schemas/queue_all"
@@ -4194,77 +3399,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -4285,7 +3437,7 @@
 															"$ref": "#/components/schemas/default_template_language"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-Y8s0NDb2"
+															"$ref": "#/components/schemas/description-HR2eO542"
 														},
 														"disable_session_renewal": {
 															"$ref": "#/components/schemas/disable_session_renewal"
@@ -4303,7 +3455,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-oF8cQA5q"
+															"$ref": "#/components/schemas/name-NBQzA57E"
 														},
 														"new_users_per_minute": {
 															"$ref": "#/components/schemas/new_users_per_minute"
@@ -4315,7 +3467,7 @@
 															"$ref": "#/components/schemas/next_event_start_time"
 														},
 														"path": {
-															"$ref": "#/components/schemas/path-ipvlKweZ"
+															"$ref": "#/components/schemas/path"
 														},
 														"queue_all": {
 															"$ref": "#/components/schemas/queue_all"
@@ -4579,77 +3731,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -4724,77 +3823,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -5351,77 +4397,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -5460,77 +4453,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -5842,77 +4782,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -5933,7 +4820,7 @@
 													"$ref": "#/components/schemas/default_template_language"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-Y8s0NDb2"
+													"$ref": "#/components/schemas/description-HR2eO542"
 												},
 												"disable_session_renewal": {
 													"$ref": "#/components/schemas/disable_session_renewal"
@@ -5951,7 +4838,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-oF8cQA5q"
+													"$ref": "#/components/schemas/name-NBQzA57E"
 												},
 												"new_users_per_minute": {
 													"$ref": "#/components/schemas/new_users_per_minute"
@@ -5963,7 +4850,7 @@
 													"$ref": "#/components/schemas/next_event_start_time"
 												},
 												"path": {
-													"$ref": "#/components/schemas/path-ipvlKweZ"
+													"$ref": "#/components/schemas/path"
 												},
 												"queue_all": {
 													"$ref": "#/components/schemas/queue_all"
@@ -5999,77 +4886,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -6090,7 +4924,7 @@
 															"$ref": "#/components/schemas/default_template_language"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-Y8s0NDb2"
+															"$ref": "#/components/schemas/description-HR2eO542"
 														},
 														"disable_session_renewal": {
 															"$ref": "#/components/schemas/disable_session_renewal"
@@ -6108,7 +4942,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-oF8cQA5q"
+															"$ref": "#/components/schemas/name-NBQzA57E"
 														},
 														"new_users_per_minute": {
 															"$ref": "#/components/schemas/new_users_per_minute"
@@ -6120,7 +4954,7 @@
 															"$ref": "#/components/schemas/next_event_start_time"
 														},
 														"path": {
-															"$ref": "#/components/schemas/path-ipvlKweZ"
+															"$ref": "#/components/schemas/path"
 														},
 														"queue_all": {
 															"$ref": "#/components/schemas/queue_all"
@@ -6376,77 +5210,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -6521,77 +5302,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -7107,77 +5835,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -7209,77 +5884,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -7593,77 +6215,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -7684,7 +6253,7 @@
 													"$ref": "#/components/schemas/default_template_language"
 												},
 												"description": {
-													"$ref": "#/components/schemas/description-Y8s0NDb2"
+													"$ref": "#/components/schemas/description-HR2eO542"
 												},
 												"disable_session_renewal": {
 													"$ref": "#/components/schemas/disable_session_renewal"
@@ -7702,7 +6271,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-oF8cQA5q"
+													"$ref": "#/components/schemas/name-NBQzA57E"
 												},
 												"new_users_per_minute": {
 													"$ref": "#/components/schemas/new_users_per_minute"
@@ -7714,7 +6283,7 @@
 													"$ref": "#/components/schemas/next_event_start_time"
 												},
 												"path": {
-													"$ref": "#/components/schemas/path-ipvlKweZ"
+													"$ref": "#/components/schemas/path"
 												},
 												"queue_all": {
 													"$ref": "#/components/schemas/queue_all"
@@ -7750,77 +6319,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -7841,7 +6357,7 @@
 															"$ref": "#/components/schemas/default_template_language"
 														},
 														"description": {
-															"$ref": "#/components/schemas/description-Y8s0NDb2"
+															"$ref": "#/components/schemas/description-HR2eO542"
 														},
 														"disable_session_renewal": {
 															"$ref": "#/components/schemas/disable_session_renewal"
@@ -7859,7 +6375,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-oF8cQA5q"
+															"$ref": "#/components/schemas/name-NBQzA57E"
 														},
 														"new_users_per_minute": {
 															"$ref": "#/components/schemas/new_users_per_minute"
@@ -7871,7 +6387,7 @@
 															"$ref": "#/components/schemas/next_event_start_time"
 														},
 														"path": {
-															"$ref": "#/components/schemas/path-ipvlKweZ"
+															"$ref": "#/components/schemas/path"
 														},
 														"queue_all": {
 															"$ref": "#/components/schemas/queue_all"
@@ -8135,77 +6651,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -8280,77 +6743,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},
@@ -8852,77 +7262,24 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
 										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
 												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
+											}
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
 									"type": "object"
 								},
@@ -8961,77 +7318,24 @@
 								{
 									"allOf": [
 										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"items": {},
-															"type": "array"
-														},
-														{
-															"type": "string"
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
 														}
-													]
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
+													}
 												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages",
-												"result"
 											],
 											"type": "object"
 										},

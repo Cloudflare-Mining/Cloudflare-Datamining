@@ -272,10 +272,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 															},
 															{
-																"$ref": "#/components/schemas/schemas-self_hosted_props"
+																"$ref": "#/components/schemas/self_hosted_props-RjdsCceL"
 															}
 														],
 														"title": "Self Hosted Application",
@@ -284,10 +284,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 															},
 															{
-																"$ref": "#/components/schemas/saas_props-yfVFOW8L"
+																"$ref": "#/components/schemas/saas_props-F41jtZBR"
 															}
 														],
 														"title": "SaaS Application",
@@ -296,10 +296,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 															},
 															{
-																"$ref": "#/components/schemas/schemas-ssh_props"
+																"$ref": "#/components/schemas/ssh_props"
 															}
 														],
 														"title": "Browser SSH Application",
@@ -308,10 +308,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 															},
 															{
-																"$ref": "#/components/schemas/schemas-vnc_props"
+																"$ref": "#/components/schemas/vnc_props"
 															}
 														],
 														"title": "Browser VNC Application",
@@ -320,10 +320,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 															},
 															{
-																"$ref": "#/components/schemas/schemas-app_launcher_props"
+																"$ref": "#/components/schemas/app_launcher_props"
 															}
 														],
 														"title": "App Launcher Application",
@@ -332,10 +332,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 															},
 															{
-																"$ref": "#/components/schemas/schemas-warp_props"
+																"$ref": "#/components/schemas/warp_props"
 															}
 														],
 														"title": "Device Enrollment Permissions Application",
@@ -344,10 +344,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 															},
 															{
-																"$ref": "#/components/schemas/schemas-biso_props"
+																"$ref": "#/components/schemas/biso_props"
 															}
 														],
 														"title": "Browser Isolation Permissions Application",
@@ -356,10 +356,10 @@
 													{
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 															},
 															{
-																"$ref": "#/components/schemas/schemas-bookmark_props-pNbam0Fl"
+																"$ref": "#/components/schemas/schemas-bookmark_props-P7VRtUWu"
 															}
 														],
 														"title": "Bookmark application",
@@ -413,10 +413,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																		"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 																	},
 																	{
-																		"$ref": "#/components/schemas/schemas-self_hosted_props"
+																		"$ref": "#/components/schemas/self_hosted_props-RjdsCceL"
 																	}
 																],
 																"title": "Self Hosted Application",
@@ -425,10 +425,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																		"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 																	},
 																	{
-																		"$ref": "#/components/schemas/saas_props-yfVFOW8L"
+																		"$ref": "#/components/schemas/saas_props-F41jtZBR"
 																	}
 																],
 																"title": "SaaS Application",
@@ -437,10 +437,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																		"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 																	},
 																	{
-																		"$ref": "#/components/schemas/schemas-ssh_props"
+																		"$ref": "#/components/schemas/ssh_props"
 																	}
 																],
 																"title": "Browser SSH Application",
@@ -449,10 +449,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																		"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 																	},
 																	{
-																		"$ref": "#/components/schemas/schemas-vnc_props"
+																		"$ref": "#/components/schemas/vnc_props"
 																	}
 																],
 																"title": "Browser VNC Application",
@@ -461,10 +461,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																		"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 																	},
 																	{
-																		"$ref": "#/components/schemas/schemas-app_launcher_props"
+																		"$ref": "#/components/schemas/app_launcher_props"
 																	}
 																],
 																"title": "App Launcher Application",
@@ -473,10 +473,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																		"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 																	},
 																	{
-																		"$ref": "#/components/schemas/schemas-warp_props"
+																		"$ref": "#/components/schemas/warp_props"
 																	}
 																],
 																"title": "Device Enrollment Permissions Application",
@@ -485,10 +485,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																		"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 																	},
 																	{
-																		"$ref": "#/components/schemas/schemas-biso_props"
+																		"$ref": "#/components/schemas/biso_props"
 																	}
 																],
 																"title": "Browser Isolation Permissions Application",
@@ -497,10 +497,10 @@
 															{
 																"allOf": [
 																	{
-																		"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																		"$ref": "#/components/schemas/basic_app_response_props-3tLodnM2"
 																	},
 																	{
-																		"$ref": "#/components/schemas/schemas-bookmark_props-pNbam0Fl"
+																		"$ref": "#/components/schemas/schemas-bookmark_props-P7VRtUWu"
 																	}
 																],
 																"title": "Bookmark application",
@@ -673,7 +673,7 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
 															"$ref": "#/components/schemas/schemas-self_hosted_props"
@@ -685,10 +685,10 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
-															"$ref": "#/components/schemas/saas_props-yfVFOW8L"
+															"$ref": "#/components/schemas/saas_props"
 														}
 													],
 													"title": "SaaS Application",
@@ -697,7 +697,7 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
 															"$ref": "#/components/schemas/schemas-ssh_props"
@@ -709,7 +709,7 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
 															"$ref": "#/components/schemas/schemas-vnc_props"
@@ -721,7 +721,7 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
 															"$ref": "#/components/schemas/schemas-app_launcher_props"
@@ -733,7 +733,7 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
 															"$ref": "#/components/schemas/schemas-warp_props"
@@ -745,7 +745,7 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
 															"$ref": "#/components/schemas/schemas-biso_props"
@@ -757,10 +757,10 @@
 												{
 													"allOf": [
 														{
-															"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-bookmark_props-pNbam0Fl"
+															"$ref": "#/components/schemas/schemas-bookmark_props"
 														}
 													],
 													"title": "Bookmark application",
@@ -813,7 +813,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-self_hosted_props"
@@ -825,10 +825,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
-																	"$ref": "#/components/schemas/saas_props-yfVFOW8L"
+																	"$ref": "#/components/schemas/saas_props"
 																}
 															],
 															"title": "SaaS Application",
@@ -837,7 +837,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-ssh_props"
@@ -849,7 +849,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-vnc_props"
@@ -861,7 +861,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-app_launcher_props"
@@ -873,7 +873,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-warp_props"
@@ -885,7 +885,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-biso_props"
@@ -897,10 +897,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
-																	"$ref": "#/components/schemas/schemas-bookmark_props-pNbam0Fl"
+																	"$ref": "#/components/schemas/schemas-bookmark_props"
 																}
 															],
 															"title": "Bookmark application",
@@ -1454,7 +1454,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1483,7 +1483,7 @@
 												"$ref": "#/components/schemas/custom_deny_url"
 											},
 											"domain": {
-												"$ref": "#/components/schemas/components-schemas-domain-YInrc3WX"
+												"$ref": "#/components/schemas/components-schemas-domain"
 											},
 											"enable_binding_cookie": {
 												"$ref": "#/components/schemas/enable_binding_cookie"
@@ -1504,7 +1504,7 @@
 												"$ref": "#/components/schemas/service_auth_401_redirect"
 											},
 											"session_duration": {
-												"$ref": "#/components/schemas/session_duration-Z3zxmAmg"
+												"$ref": "#/components/schemas/session_duration-5OEgldNi"
 											},
 											"skip_interstitial": {
 												"$ref": "#/components/schemas/skip_interstitial"
@@ -1537,7 +1537,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1589,7 +1589,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1628,7 +1628,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1667,7 +1667,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1715,7 +1715,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1763,7 +1763,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1811,7 +1811,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -1895,7 +1895,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-self_hosted_props"
@@ -1907,10 +1907,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
-																	"$ref": "#/components/schemas/saas_props-yfVFOW8L"
+																	"$ref": "#/components/schemas/saas_props"
 																}
 															],
 															"title": "SaaS Application",
@@ -1919,7 +1919,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-ssh_props"
@@ -1931,7 +1931,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-vnc_props"
@@ -1943,7 +1943,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-app_launcher_props"
@@ -1955,7 +1955,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-warp_props"
@@ -1967,7 +1967,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-biso_props"
@@ -1979,10 +1979,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
-																	"$ref": "#/components/schemas/schemas-bookmark_props-pNbam0Fl"
+																	"$ref": "#/components/schemas/schemas-bookmark_props"
 																}
 															],
 															"title": "Bookmark application",
@@ -2010,7 +2010,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2039,7 +2039,7 @@
 																	"$ref": "#/components/schemas/custom_deny_url"
 																},
 																"domain": {
-																	"$ref": "#/components/schemas/components-schemas-domain-YInrc3WX"
+																	"$ref": "#/components/schemas/components-schemas-domain"
 																},
 																"enable_binding_cookie": {
 																	"$ref": "#/components/schemas/enable_binding_cookie"
@@ -2060,7 +2060,7 @@
 																	"$ref": "#/components/schemas/service_auth_401_redirect"
 																},
 																"session_duration": {
-																	"$ref": "#/components/schemas/session_duration-Z3zxmAmg"
+																	"$ref": "#/components/schemas/session_duration-5OEgldNi"
 																},
 																"skip_interstitial": {
 																	"$ref": "#/components/schemas/skip_interstitial"
@@ -2093,7 +2093,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2145,7 +2145,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2184,7 +2184,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2223,7 +2223,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2271,7 +2271,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2319,7 +2319,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2367,7 +2367,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2456,7 +2456,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-self_hosted_props"
@@ -2468,10 +2468,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
-																			"$ref": "#/components/schemas/saas_props-yfVFOW8L"
+																			"$ref": "#/components/schemas/saas_props"
 																		}
 																	],
 																	"title": "SaaS Application",
@@ -2480,7 +2480,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-ssh_props"
@@ -2492,7 +2492,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-vnc_props"
@@ -2504,7 +2504,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-app_launcher_props"
@@ -2516,7 +2516,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-warp_props"
@@ -2528,7 +2528,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-biso_props"
@@ -2540,10 +2540,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
-																			"$ref": "#/components/schemas/schemas-bookmark_props-pNbam0Fl"
+																			"$ref": "#/components/schemas/schemas-bookmark_props"
 																		}
 																	],
 																	"title": "Bookmark application",
@@ -2950,7 +2950,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -2979,7 +2979,7 @@
 												"$ref": "#/components/schemas/custom_deny_url"
 											},
 											"domain": {
-												"$ref": "#/components/schemas/components-schemas-domain-YInrc3WX"
+												"$ref": "#/components/schemas/components-schemas-domain"
 											},
 											"enable_binding_cookie": {
 												"$ref": "#/components/schemas/enable_binding_cookie"
@@ -3000,7 +3000,7 @@
 												"$ref": "#/components/schemas/service_auth_401_redirect"
 											},
 											"session_duration": {
-												"$ref": "#/components/schemas/session_duration-Z3zxmAmg"
+												"$ref": "#/components/schemas/session_duration-5OEgldNi"
 											},
 											"skip_interstitial": {
 												"$ref": "#/components/schemas/skip_interstitial"
@@ -3033,7 +3033,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3085,7 +3085,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3124,7 +3124,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3163,7 +3163,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3211,7 +3211,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3259,7 +3259,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3307,7 +3307,7 @@
 												"$ref": "#/components/schemas/timestamp"
 											},
 											"id": {
-												"$ref": "#/components/schemas/uuid-GdTeBQGe"
+												"$ref": "#/components/schemas/uuid-qoIx3jBx"
 											},
 											"updated_at": {
 												"$ref": "#/components/schemas/timestamp"
@@ -3391,7 +3391,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-self_hosted_props"
@@ -3403,10 +3403,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
-																	"$ref": "#/components/schemas/saas_props-yfVFOW8L"
+																	"$ref": "#/components/schemas/saas_props"
 																}
 															],
 															"title": "SaaS Application",
@@ -3415,7 +3415,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-ssh_props"
@@ -3427,7 +3427,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-vnc_props"
@@ -3439,7 +3439,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-app_launcher_props"
@@ -3451,7 +3451,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-warp_props"
@@ -3463,7 +3463,7 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
 																	"$ref": "#/components/schemas/schemas-biso_props"
@@ -3475,10 +3475,10 @@
 														{
 															"allOf": [
 																{
-																	"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
-																	"$ref": "#/components/schemas/schemas-bookmark_props-pNbam0Fl"
+																	"$ref": "#/components/schemas/schemas-bookmark_props"
 																}
 															],
 															"title": "Bookmark application",
@@ -3506,7 +3506,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3535,7 +3535,7 @@
 																	"$ref": "#/components/schemas/custom_deny_url"
 																},
 																"domain": {
-																	"$ref": "#/components/schemas/components-schemas-domain-YInrc3WX"
+																	"$ref": "#/components/schemas/components-schemas-domain"
 																},
 																"enable_binding_cookie": {
 																	"$ref": "#/components/schemas/enable_binding_cookie"
@@ -3556,7 +3556,7 @@
 																	"$ref": "#/components/schemas/service_auth_401_redirect"
 																},
 																"session_duration": {
-																	"$ref": "#/components/schemas/session_duration-Z3zxmAmg"
+																	"$ref": "#/components/schemas/session_duration-5OEgldNi"
 																},
 																"skip_interstitial": {
 																	"$ref": "#/components/schemas/skip_interstitial"
@@ -3589,7 +3589,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3641,7 +3641,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3680,7 +3680,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3719,7 +3719,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3767,7 +3767,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3815,7 +3815,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3863,7 +3863,7 @@
 																	"$ref": "#/components/schemas/timestamp"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/uuid-GdTeBQGe"
+																	"$ref": "#/components/schemas/uuid-qoIx3jBx"
 																},
 																"updated_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -3952,7 +3952,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-self_hosted_props"
@@ -3964,10 +3964,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
-																			"$ref": "#/components/schemas/saas_props-yfVFOW8L"
+																			"$ref": "#/components/schemas/saas_props"
 																		}
 																	],
 																	"title": "SaaS Application",
@@ -3976,7 +3976,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-ssh_props"
@@ -3988,7 +3988,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-vnc_props"
@@ -4000,7 +4000,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-app_launcher_props"
@@ -4012,7 +4012,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-warp_props"
@@ -4024,7 +4024,7 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
 																			"$ref": "#/components/schemas/schemas-biso_props"
@@ -4036,10 +4036,10 @@
 																{
 																	"allOf": [
 																		{
-																			"$ref": "#/components/schemas/basic_app_response_props-cWsCBHqG"
+																			"$ref": "#/components/schemas/basic_app_response_props"
 																		},
 																		{
-																			"$ref": "#/components/schemas/schemas-bookmark_props-pNbam0Fl"
+																			"$ref": "#/components/schemas/schemas-bookmark_props"
 																		}
 																	],
 																	"title": "Bookmark application",

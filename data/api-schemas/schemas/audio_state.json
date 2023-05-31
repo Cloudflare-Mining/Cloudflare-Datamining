@@ -1,0 +1,9 @@
+{
+	"description": "Specifies the processing status of the video.",
+	"enum": [
+		"queued",
+		"ready",
+		"error"
+	],
+	"type": "string"
+}

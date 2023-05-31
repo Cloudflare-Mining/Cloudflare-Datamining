@@ -1,0 +1,140 @@
+{
+	"allOf": [
+		{
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"asn": {
+							"type": "integer"
+						},
+						"country": {
+							"example": "US",
+							"type": "string"
+						},
+						"description": {
+							"example": "CLOUDFLARENET",
+							"type": "string"
+						},
+						"domain_count": {
+							"type": "integer"
+						},
+						"top_domains": {
+							"example": [
+								"example.com"
+							],
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
+						},
+						"type": {
+							"description": "Infrastructure type of this ASN.",
+							"enum": [
+								"hosting_provider",
+								"isp",
+								"organization"
+							],
+							"example": "hosting_provider",
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	]
+}

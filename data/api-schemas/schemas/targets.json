@@ -1,76 +1,13 @@
 {
-	"description": "The rule targets to evaluate on each request.",
 	"example": [
-		{
-			"constraint": {
-				"operator": "matches",
-				"value": "*example.com/images/*"
-			},
-			"target": "url"
-		}
+		"203.0.113.1",
+		"cloudflare.com"
 	],
 	"items": {
-		"description": "A request condition target.",
-		"oneOf": [
-			{
-				"description": "URL target.",
-				"properties": {
-					"constraint": {
-						"allOf": [
-							{
-								"description": "String constraint.",
-								"properties": {
-									"operator": {
-										"default": "contains",
-										"description": "The matches operator can use asterisks and pipes as wildcard and 'or' operators.",
-										"enum": [
-											"matches",
-											"contains",
-											"equals",
-											"not_equal",
-											"not_contain"
-										]
-									},
-									"value": {
-										"description": "The value to apply the operator to.",
-										"type": "string"
-									}
-								},
-								"required": [
-									"operator",
-									"value"
-								],
-								"type": "object"
-							},
-							{
-								"properties": {
-									"value": {
-										"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
-										"example": "*example.com/images/*",
-										"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-										"type": "string"
-									}
-								}
-							}
-						],
-						"description": "The constraint of a target.",
-						"type": "object"
-					},
-					"target": {
-						"description": "A target based on the URL of the request.",
-						"enum": [
-							"url"
-						],
-						"example": "url"
-					}
-				},
-				"type": "object"
-			}
-		],
-		"required": [
-			"target",
-			"constraint"
-		]
+		"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings.",
+		"example": "203.0.113.1",
+		"type": "string"
 	},
+	"maxLength": 10,
 	"type": "array"
 }

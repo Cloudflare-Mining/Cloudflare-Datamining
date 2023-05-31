@@ -1,0 +1,29 @@
+{
+	"properties": {
+		"default": {
+			"default": false,
+			"description": "Denotes whether the audio track will be played by default in a player.",
+			"type": "boolean"
+		},
+		"label": {
+			"description": "A string to uniquely identify the track amongst other audio track labels for the specified video.",
+			"example": "director commentary",
+			"type": "string"
+		},
+		"status": {
+			"description": "Specifies the processing status of the video.",
+			"enum": [
+				"queued",
+				"ready",
+				"error"
+			],
+			"type": "string"
+		},
+		"uid": {
+			"description": "A Cloudflare-generated unique identifier for a media item.",
+			"example": "ea95132c15732412d22c1476fa83f27a",
+			"maxLength": 32,
+			"type": "string"
+		}
+	}
+}

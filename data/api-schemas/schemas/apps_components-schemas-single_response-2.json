@@ -87,8 +87,7 @@
 								{
 									"type": "string"
 								}
-							],
-							"nullable": true
+							]
 						}
 					}
 				}
@@ -244,6 +243,10 @@
 											"type": "string"
 										}
 									},
+									"required": [
+										"type",
+										"domain"
+									],
 									"title": "Self Hosted Application",
 									"type": "object"
 								}
@@ -460,7 +463,7 @@
 													"$ref": "#/components/schemas/custom_deny_url"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/domain-Hd9n2OIw"
+													"$ref": "#/components/schemas/components-schemas-domain"
 												},
 												"enable_binding_cookie": {
 													"$ref": "#/components/schemas/enable_binding_cookie"
@@ -474,20 +477,14 @@
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
-												"path_cookie_attribute": {
-													"$ref": "#/components/schemas/path_cookie_attribute"
-												},
 												"same_site_cookie_attribute": {
 													"$ref": "#/components/schemas/same_site_cookie_attribute"
-												},
-												"self_hosted_domains": {
-													"$ref": "#/components/schemas/self_hosted_domains"
 												},
 												"service_auth_401_redirect": {
 													"$ref": "#/components/schemas/service_auth_401_redirect"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-Z3zxmAmg"
+													"$ref": "#/components/schemas/session_duration-5OEgldNi"
 												},
 												"skip_interstitial": {
 													"$ref": "#/components/schemas/skip_interstitial"
@@ -576,7 +573,7 @@
 													"$ref": "#/components/schemas/custom_deny_url"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/domain-Hd9n2OIw"
+													"$ref": "#/components/schemas/components-schemas-domain"
 												},
 												"enable_binding_cookie": {
 													"$ref": "#/components/schemas/enable_binding_cookie"
@@ -590,20 +587,14 @@
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
-												"path_cookie_attribute": {
-													"$ref": "#/components/schemas/path_cookie_attribute"
-												},
 												"same_site_cookie_attribute": {
 													"$ref": "#/components/schemas/same_site_cookie_attribute"
-												},
-												"self_hosted_domains": {
-													"$ref": "#/components/schemas/self_hosted_domains"
 												},
 												"service_auth_401_redirect": {
 													"$ref": "#/components/schemas/service_auth_401_redirect"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-Z3zxmAmg"
+													"$ref": "#/components/schemas/session_duration-5OEgldNi"
 												},
 												"skip_interstitial": {
 													"$ref": "#/components/schemas/skip_interstitial"
@@ -680,16 +671,16 @@
 													"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/domain-Hd9n2OIw"
+													"$ref": "#/components/schemas/components-schemas-domain"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-Z3zxmAmg"
+													"$ref": "#/components/schemas/session_duration-5OEgldNi"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-0LU2aC2u"
+													"$ref": "#/components/schemas/type-ngxmqda1"
 												}
 											},
 											"required": [
@@ -765,16 +756,16 @@
 													"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/domain-Hd9n2OIw"
+													"$ref": "#/components/schemas/components-schemas-domain"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-Z3zxmAmg"
+													"$ref": "#/components/schemas/session_duration-5OEgldNi"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-0LU2aC2u"
+													"$ref": "#/components/schemas/type-ngxmqda1"
 												}
 											},
 											"required": [
@@ -850,16 +841,16 @@
 													"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/domain-Hd9n2OIw"
+													"$ref": "#/components/schemas/components-schemas-domain"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
 												"session_duration": {
-													"$ref": "#/components/schemas/session_duration-Z3zxmAmg"
+													"$ref": "#/components/schemas/session_duration-5OEgldNi"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-0LU2aC2u"
+													"$ref": "#/components/schemas/type-ngxmqda1"
 												}
 											},
 											"required": [
@@ -949,6 +940,10 @@
 											"type": "string"
 										}
 									},
+									"required": [
+										"type",
+										"domain"
+									],
 									"title": "Bookmark Application",
 									"type": "object"
 								}

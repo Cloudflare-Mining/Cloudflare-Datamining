@@ -1,0 +1,10 @@
+{
+	"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
+	"enum": [
+		"ip",
+		"redirect",
+		"hostname"
+	],
+	"example": "ip",
+	"type": "string"
+}

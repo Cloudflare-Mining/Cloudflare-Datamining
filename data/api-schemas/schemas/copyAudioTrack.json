@@ -1,0 +1,19 @@
+{
+	"properties": {
+		"label": {
+			"description": "A string to uniquely identify the track amongst other audio track labels for the specified video.",
+			"example": "director commentary",
+			"type": "string"
+		},
+		"url": {
+			"description": "An audio track URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file.",
+			"example": "https://www.examplestorage.com/audio_file.mp3",
+			"format": "uri",
+			"type": "string"
+		}
+	},
+	"required": [
+		"label"
+	],
+	"type": "object"
+}

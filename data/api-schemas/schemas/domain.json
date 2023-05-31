@@ -1,33 +1,5 @@
 {
-	"properties": {
-		"environment": {
-			"description": "Worker environment associated with the zone and hostname.",
-			"example": "production",
-			"type": "string"
-		},
-		"hostname": {
-			"description": "Hostname of the Worker Domain.",
-			"example": "foo.example.com",
-			"type": "string"
-		},
-		"id": {
-			"description": "Identifer of the Worker Domain.",
-			"example": "dbe10b4bc17c295377eabd600e1787fd"
-		},
-		"service": {
-			"description": "Worker service associated with the zone and hostname.",
-			"example": "foo",
-			"type": "string"
-		},
-		"zone_id": {
-			"description": "Identifier of the zone.",
-			"example": "593c9c94de529bbbfaac7c53ced0447d"
-		},
-		"zone_name": {
-			"description": "Name of the zone.",
-			"example": "example.com",
-			"type": "string"
-		}
-	},
-	"type": "object"
+	"description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.",
+	"example": "test.example.com/admin",
+	"type": "string"
 }

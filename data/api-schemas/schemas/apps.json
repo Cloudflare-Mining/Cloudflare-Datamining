@@ -127,7 +127,7 @@
 							"type": "string"
 						},
 						"domain": {
-							"description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.",
+							"description": "The domain and path that Access will secure.",
 							"example": "test.example.com/admin",
 							"type": "string"
 						},
@@ -152,28 +152,10 @@
 							"example": "Admin Site",
 							"type": "string"
 						},
-						"path_cookie_attribute": {
-							"default": false,
-							"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
-							"example": true,
-							"type": "boolean"
-						},
 						"same_site_cookie_attribute": {
 							"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 							"example": "strict",
 							"type": "string"
-						},
-						"self_hosted_domains": {
-							"description": "List of domains that Access will secure.",
-							"example": [
-								"test.example.com/admin",
-								"test.anotherexample.com/staff"
-							],
-							"items": {
-								"description": "A domain that Access will secure.",
-								"type": "string"
-							},
-							"type": "array"
 						},
 						"service_auth_401_redirect": {
 							"description": "Returns a 401 status code when the request is blocked by a Service Auth policy.",
@@ -197,10 +179,6 @@
 							"type": "string"
 						}
 					},
-					"required": [
-						"type",
-						"domain"
-					],
 					"title": "Self Hosted Application",
 					"type": "object"
 				}
@@ -462,7 +440,7 @@
 									"type": "string"
 								},
 								"domain": {
-									"description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.",
+									"description": "The domain and path that Access will secure.",
 									"example": "test.example.com/admin",
 									"type": "string"
 								},
@@ -487,28 +465,10 @@
 									"example": "Admin Site",
 									"type": "string"
 								},
-								"path_cookie_attribute": {
-									"default": false,
-									"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
-									"example": true,
-									"type": "boolean"
-								},
 								"same_site_cookie_attribute": {
 									"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 									"example": "strict",
 									"type": "string"
-								},
-								"self_hosted_domains": {
-									"description": "List of domains that Access will secure.",
-									"example": [
-										"test.example.com/admin",
-										"test.anotherexample.com/staff"
-									],
-									"items": {
-										"description": "A domain that Access will secure.",
-										"type": "string"
-									},
-									"type": "array"
 								},
 								"service_auth_401_redirect": {
 									"description": "Returns a 401 status code when the request is blocked by a Service Auth policy.",
@@ -532,10 +492,6 @@
 									"type": "string"
 								}
 							},
-							"required": [
-								"type",
-								"domain"
-							],
 							"title": "Self Hosted Application",
 							"type": "object"
 						},
@@ -649,7 +605,7 @@
 									"type": "string"
 								},
 								"domain": {
-									"description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.",
+									"description": "The domain and path that Access will secure.",
 									"example": "test.example.com/admin",
 									"type": "string"
 								},
@@ -674,28 +630,10 @@
 									"example": "Admin Site",
 									"type": "string"
 								},
-								"path_cookie_attribute": {
-									"default": false,
-									"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
-									"example": true,
-									"type": "boolean"
-								},
 								"same_site_cookie_attribute": {
 									"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 									"example": "strict",
 									"type": "string"
-								},
-								"self_hosted_domains": {
-									"description": "List of domains that Access will secure.",
-									"example": [
-										"test.example.com/admin",
-										"test.anotherexample.com/staff"
-									],
-									"items": {
-										"description": "A domain that Access will secure.",
-										"type": "string"
-									},
-									"type": "array"
 								},
 								"service_auth_401_redirect": {
 									"description": "Returns a 401 status code when the request is blocked by a Service Auth policy.",
@@ -719,10 +657,6 @@
 									"type": "string"
 								}
 							},
-							"required": [
-								"type",
-								"domain"
-							],
 							"title": "Self Hosted Application",
 							"type": "object"
 						},
@@ -793,7 +727,7 @@
 									"type": "boolean"
 								},
 								"domain": {
-									"description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.",
+									"description": "The domain and path that Access will secure.",
 									"example": "test.example.com/admin",
 									"type": "string"
 								},
@@ -825,9 +759,6 @@
 									"type": "string"
 								}
 							},
-							"required": [
-								"type"
-							],
 							"type": "object"
 						},
 						{
@@ -906,7 +837,7 @@
 									"type": "boolean"
 								},
 								"domain": {
-									"description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.",
+									"description": "The domain and path that Access will secure.",
 									"example": "test.example.com/admin",
 									"type": "string"
 								},
@@ -938,9 +869,6 @@
 									"type": "string"
 								}
 							},
-							"required": [
-								"type"
-							],
 							"type": "object"
 						},
 						{
@@ -1019,7 +947,7 @@
 									"type": "boolean"
 								},
 								"domain": {
-									"description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.",
+									"description": "The domain and path that Access will secure.",
 									"example": "test.example.com/admin",
 									"type": "string"
 								},
@@ -1051,9 +979,6 @@
 									"type": "string"
 								}
 							},
-							"required": [
-								"type"
-							],
 							"type": "object"
 						},
 						{

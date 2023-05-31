@@ -241,10 +241,10 @@
 										"description": "A simple zone object. May have null properties if not a zone subscription.",
 										"properties": {
 											"id": {
-												"$ref": "#/components/schemas/identifier"
+												"$ref": "#/components/schemas/common_components-schemas-identifier"
 											},
 											"name": {
-												"$ref": "#/components/schemas/name-GhwPNCQy"
+												"$ref": "#/components/schemas/zone-properties-name"
 											}
 										},
 										"type": "object"

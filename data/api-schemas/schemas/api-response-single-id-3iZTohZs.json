@@ -1,0 +1,81 @@
+{
+	"allOf": [
+		{
+			"properties": {
+				"errors": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"messages": {
+					"example": [],
+					"items": {
+						"properties": {
+							"code": {
+								"minimum": 1000,
+								"type": "integer"
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"code",
+							"message"
+						],
+						"type": "object",
+						"uniqueItems": true
+					},
+					"type": "array"
+				},
+				"success": {
+					"description": "Whether the API call was successful",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			"required": [
+				"success",
+				"errors",
+				"messages"
+			],
+			"type": "object"
+		},
+		{
+			"properties": {
+				"result": {
+					"nullable": true,
+					"properties": {
+						"id": {
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"type": "string"
+						}
+					},
+					"required": [
+						"id"
+					],
+					"type": "object"
+				}
+			}
+		}
+	],
+	"type": "object"
+}
