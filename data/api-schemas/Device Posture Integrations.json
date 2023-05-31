@@ -71,7 +71,7 @@
 				},
 				"description": "Delete Device Posture Integration response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -205,9 +205,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Device Posture Integration",
@@ -263,16 +260,16 @@
 														"$ref": "#/components/schemas/config_response"
 													},
 													"id": {
-														"$ref": "#/components/schemas/device-posture-integrations_components-schemas-uuid"
+														"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 													},
 													"interval": {
-														"$ref": "#/components/schemas/schemas-interval"
+														"$ref": "#/components/schemas/interval-p3c5VygZ"
 													},
 													"name": {
-														"$ref": "#/components/schemas/device-posture-integrations_components-schemas-name"
+														"$ref": "#/components/schemas/components-schemas-name-FjwzD9fF"
 													},
 													"type": {
-														"$ref": "#/components/schemas/device-posture-integrations_components-schemas-type"
+														"$ref": "#/components/schemas/schemas-type-RLSNLP60"
 													}
 												},
 												"type": "object"
@@ -287,7 +284,7 @@
 				},
 				"description": "List Device Posture Integrations response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -323,16 +320,16 @@
 																"$ref": "#/components/schemas/config_response"
 															},
 															"id": {
-																"$ref": "#/components/schemas/device-posture-integrations_components-schemas-uuid"
+																"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 															},
 															"interval": {
-																"$ref": "#/components/schemas/schemas-interval"
+																"$ref": "#/components/schemas/interval-p3c5VygZ"
 															},
 															"name": {
-																"$ref": "#/components/schemas/device-posture-integrations_components-schemas-name"
+																"$ref": "#/components/schemas/components-schemas-name-FjwzD9fF"
 															},
 															"type": {
-																"$ref": "#/components/schemas/device-posture-integrations_components-schemas-type"
+																"$ref": "#/components/schemas/schemas-type-RLSNLP60"
 															}
 														},
 														"type": "object"
@@ -438,9 +435,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Device Posture Integrations",
@@ -509,16 +503,16 @@
 													"$ref": "#/components/schemas/config_response"
 												},
 												"id": {
-													"$ref": "#/components/schemas/device-posture-integrations_components-schemas-uuid"
+													"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/schemas-interval"
+													"$ref": "#/components/schemas/interval-p3c5VygZ"
 												},
 												"name": {
-													"$ref": "#/components/schemas/device-posture-integrations_components-schemas-name"
+													"$ref": "#/components/schemas/components-schemas-name-FjwzD9fF"
 												},
 												"type": {
-													"$ref": "#/components/schemas/device-posture-integrations_components-schemas-type"
+													"$ref": "#/components/schemas/schemas-type-RLSNLP60"
 												}
 											},
 											"type": "object"
@@ -531,7 +525,7 @@
 				},
 				"description": "Device Posture Integration Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -569,16 +563,16 @@
 															"$ref": "#/components/schemas/config_response"
 														},
 														"id": {
-															"$ref": "#/components/schemas/device-posture-integrations_components-schemas-uuid"
+															"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/schemas-interval"
+															"$ref": "#/components/schemas/interval-p3c5VygZ"
 														},
 														"name": {
-															"$ref": "#/components/schemas/device-posture-integrations_components-schemas-name"
+															"$ref": "#/components/schemas/components-schemas-name-FjwzD9fF"
 														},
 														"type": {
-															"$ref": "#/components/schemas/device-posture-integrations_components-schemas-type"
+															"$ref": "#/components/schemas/schemas-type-RLSNLP60"
 														}
 													},
 													"type": "object"
@@ -682,9 +676,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Device Posture Integration Details",
@@ -759,6 +750,7 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Workspace One Config",
 										"type": "object"
 									},
 									{
@@ -790,10 +782,16 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Crowdstrike Config",
 										"type": "object"
 									},
 									{
 										"properties": {
+											"api_url": {
+												"description": "The Uptycs API URL.",
+												"example": "rnd.uptycs.io",
+												"type": "string"
+											},
 											"client_key": {
 												"description": "The Uptycs client secret.",
 												"example": "example client key",
@@ -811,10 +809,12 @@
 											}
 										},
 										"required": [
+											"api_url",
 											"client_key",
 											"customer_id",
 											"client_secret"
 										],
+										"title": "Uptycs Config",
 										"type": "object"
 									},
 									{
@@ -840,6 +840,47 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Intune Config",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"client_id": {
+												"description": "The Kolide client ID.",
+												"example": "example client id",
+												"type": "string"
+											},
+											"client_secret": {
+												"description": "The Kolide client secret.",
+												"example": "example client secret",
+												"type": "string"
+											}
+										},
+										"required": [
+											"client_id",
+											"client_secret"
+										],
+										"title": "Kolide Config",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"api_url": {
+												"description": "The Tanium API URL.",
+												"example": "https://dummy-tanium-graphql-api.cloudflare.com",
+												"type": "string"
+											},
+											"client_secret": {
+												"description": "The Tanium client secret.",
+												"example": "example client secret",
+												"type": "string"
+											}
+										},
+										"required": [
+											"client_id",
+											"client_secret"
+										],
+										"title": "Tanium Config",
 										"type": "object"
 									}
 								],
@@ -861,7 +902,9 @@
 									"workspace_one",
 									"crowdstrike_s2s",
 									"uptycs",
-									"intune"
+									"intune",
+									"kolide",
+									"tanium"
 								],
 								"example": "workspace_one",
 								"type": "string"
@@ -909,16 +952,16 @@
 													"$ref": "#/components/schemas/config_response"
 												},
 												"id": {
-													"$ref": "#/components/schemas/device-posture-integrations_components-schemas-uuid"
+													"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/schemas-interval"
+													"$ref": "#/components/schemas/interval-p3c5VygZ"
 												},
 												"name": {
-													"$ref": "#/components/schemas/device-posture-integrations_components-schemas-name"
+													"$ref": "#/components/schemas/components-schemas-name-FjwzD9fF"
 												},
 												"type": {
-													"$ref": "#/components/schemas/device-posture-integrations_components-schemas-type"
+													"$ref": "#/components/schemas/schemas-type-RLSNLP60"
 												}
 											},
 											"type": "object"
@@ -931,7 +974,7 @@
 				},
 				"description": "Update Device Posture Integration response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -969,16 +1012,16 @@
 															"$ref": "#/components/schemas/config_response"
 														},
 														"id": {
-															"$ref": "#/components/schemas/device-posture-integrations_components-schemas-uuid"
+															"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/schemas-interval"
+															"$ref": "#/components/schemas/interval-p3c5VygZ"
 														},
 														"name": {
-															"$ref": "#/components/schemas/device-posture-integrations_components-schemas-name"
+															"$ref": "#/components/schemas/components-schemas-name-FjwzD9fF"
 														},
 														"type": {
-															"$ref": "#/components/schemas/device-posture-integrations_components-schemas-type"
+															"$ref": "#/components/schemas/schemas-type-RLSNLP60"
 														}
 													},
 													"type": "object"
@@ -1082,9 +1125,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update Device Posture Integration",
@@ -1148,6 +1188,7 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Workspace One Config",
 										"type": "object"
 									},
 									{
@@ -1179,10 +1220,16 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Crowdstrike Config",
 										"type": "object"
 									},
 									{
 										"properties": {
+											"api_url": {
+												"description": "The Uptycs API URL.",
+												"example": "rnd.uptycs.io",
+												"type": "string"
+											},
 											"client_key": {
 												"description": "The Uptycs client secret.",
 												"example": "example client key",
@@ -1200,10 +1247,12 @@
 											}
 										},
 										"required": [
+											"api_url",
 											"client_key",
 											"customer_id",
 											"client_secret"
 										],
+										"title": "Uptycs Config",
 										"type": "object"
 									},
 									{
@@ -1229,6 +1278,47 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Intune Config",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"client_id": {
+												"description": "The Kolide client ID.",
+												"example": "example client id",
+												"type": "string"
+											},
+											"client_secret": {
+												"description": "The Kolide client secret.",
+												"example": "example client secret",
+												"type": "string"
+											}
+										},
+										"required": [
+											"client_id",
+											"client_secret"
+										],
+										"title": "Kolide Config",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"api_url": {
+												"description": "The Tanium API URL.",
+												"example": "https://dummy-tanium-graphql-api.cloudflare.com",
+												"type": "string"
+											},
+											"client_secret": {
+												"description": "The Tanium client secret.",
+												"example": "example client secret",
+												"type": "string"
+											}
+										},
+										"required": [
+											"client_id",
+											"client_secret"
+										],
+										"title": "Tanium Config",
 										"type": "object"
 									}
 								],
@@ -1250,7 +1340,9 @@
 									"workspace_one",
 									"crowdstrike_s2s",
 									"uptycs",
-									"intune"
+									"intune",
+									"kolide",
+									"tanium"
 								],
 								"example": "workspace_one",
 								"type": "string"
@@ -1304,16 +1396,16 @@
 													"$ref": "#/components/schemas/config_response"
 												},
 												"id": {
-													"$ref": "#/components/schemas/device-posture-integrations_components-schemas-uuid"
+													"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 												},
 												"interval": {
-													"$ref": "#/components/schemas/schemas-interval"
+													"$ref": "#/components/schemas/interval-p3c5VygZ"
 												},
 												"name": {
-													"$ref": "#/components/schemas/device-posture-integrations_components-schemas-name"
+													"$ref": "#/components/schemas/components-schemas-name-FjwzD9fF"
 												},
 												"type": {
-													"$ref": "#/components/schemas/device-posture-integrations_components-schemas-type"
+													"$ref": "#/components/schemas/schemas-type-RLSNLP60"
 												}
 											},
 											"type": "object"
@@ -1326,7 +1418,7 @@
 				},
 				"description": "Create Device Posture Integration response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1364,16 +1456,16 @@
 															"$ref": "#/components/schemas/config_response"
 														},
 														"id": {
-															"$ref": "#/components/schemas/device-posture-integrations_components-schemas-uuid"
+															"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 														},
 														"interval": {
-															"$ref": "#/components/schemas/schemas-interval"
+															"$ref": "#/components/schemas/interval-p3c5VygZ"
 														},
 														"name": {
-															"$ref": "#/components/schemas/device-posture-integrations_components-schemas-name"
+															"$ref": "#/components/schemas/components-schemas-name-FjwzD9fF"
 														},
 														"type": {
-															"$ref": "#/components/schemas/device-posture-integrations_components-schemas-type"
+															"$ref": "#/components/schemas/schemas-type-RLSNLP60"
 														}
 													},
 													"type": "object"
@@ -1477,9 +1569,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Device Posture Integration",

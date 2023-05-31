@@ -283,12 +283,6 @@
 								},
 								"type": "array"
 							},
-							"isolation_required": {
-								"default": false,
-								"description": "Require this application to be served in an isolated browser for users matching this policy.",
-								"example": false,
-								"type": "boolean"
-							},
 							"name": {
 								"description": "The name of the Access policy.",
 								"example": "Allow devs",

@@ -87,7 +87,8 @@
 								{
 									"type": "string"
 								}
-							]
+							],
+							"nullable": true
 						}
 					}
 				}
@@ -243,10 +244,6 @@
 											"type": "string"
 										}
 									},
-									"required": [
-										"type",
-										"domain"
-									],
 									"title": "Self Hosted Application",
 									"type": "object"
 								}
@@ -463,7 +460,7 @@
 													"$ref": "#/components/schemas/custom_deny_url"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/components-schemas-domain"
+													"$ref": "#/components/schemas/domain-iw6sTR0A"
 												},
 												"enable_binding_cookie": {
 													"$ref": "#/components/schemas/enable_binding_cookie"
@@ -477,8 +474,14 @@
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
+												"path_cookie_attribute": {
+													"$ref": "#/components/schemas/path_cookie_attribute"
+												},
 												"same_site_cookie_attribute": {
 													"$ref": "#/components/schemas/same_site_cookie_attribute"
+												},
+												"self_hosted_domains": {
+													"$ref": "#/components/schemas/self_hosted_domains"
 												},
 												"service_auth_401_redirect": {
 													"$ref": "#/components/schemas/service_auth_401_redirect"
@@ -573,7 +576,7 @@
 													"$ref": "#/components/schemas/custom_deny_url"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/components-schemas-domain"
+													"$ref": "#/components/schemas/domain-iw6sTR0A"
 												},
 												"enable_binding_cookie": {
 													"$ref": "#/components/schemas/enable_binding_cookie"
@@ -587,8 +590,14 @@
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
 												},
+												"path_cookie_attribute": {
+													"$ref": "#/components/schemas/path_cookie_attribute"
+												},
 												"same_site_cookie_attribute": {
 													"$ref": "#/components/schemas/same_site_cookie_attribute"
+												},
+												"self_hosted_domains": {
+													"$ref": "#/components/schemas/self_hosted_domains"
 												},
 												"service_auth_401_redirect": {
 													"$ref": "#/components/schemas/service_auth_401_redirect"
@@ -671,7 +680,7 @@
 													"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/components-schemas-domain"
+													"$ref": "#/components/schemas/domain-iw6sTR0A"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
@@ -680,7 +689,7 @@
 													"$ref": "#/components/schemas/session_duration"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-oL7lFij5"
+													"$ref": "#/components/schemas/type-I1FJOpnO"
 												}
 											},
 											"required": [
@@ -756,7 +765,7 @@
 													"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/components-schemas-domain"
+													"$ref": "#/components/schemas/domain-iw6sTR0A"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
@@ -765,7 +774,7 @@
 													"$ref": "#/components/schemas/session_duration"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-oL7lFij5"
+													"$ref": "#/components/schemas/type-I1FJOpnO"
 												}
 											},
 											"required": [
@@ -841,7 +850,7 @@
 													"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/components-schemas-domain"
+													"$ref": "#/components/schemas/domain-iw6sTR0A"
 												},
 												"name": {
 													"$ref": "#/components/schemas/apps_components-schemas-name"
@@ -850,7 +859,7 @@
 													"$ref": "#/components/schemas/session_duration"
 												},
 												"type": {
-													"$ref": "#/components/schemas/type-oL7lFij5"
+													"$ref": "#/components/schemas/type-I1FJOpnO"
 												}
 											},
 											"required": [
@@ -940,10 +949,6 @@
 											"type": "string"
 										}
 									},
-									"required": [
-										"type",
-										"domain"
-									],
 									"title": "Bookmark Application",
 									"type": "object"
 								}

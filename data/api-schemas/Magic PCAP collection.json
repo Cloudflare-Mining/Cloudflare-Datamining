@@ -41,7 +41,7 @@
 				},
 				"description": "Delete buckets for full packet captures response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {}
 				},
@@ -52,9 +52,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete buckets for full packet captures",
@@ -192,7 +189,7 @@
 				},
 				"description": "List packet capture requests response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -391,9 +388,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List packet capture requests",
@@ -543,7 +537,7 @@
 				},
 				"description": "Get PCAP request response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -742,9 +736,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get PCAP request",
@@ -794,7 +785,7 @@
 				},
 				"description": "Download Simple PCAP response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {}
 				},
@@ -805,9 +796,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Download Simple PCAP",
@@ -923,7 +911,7 @@
 				},
 				"description": "List PCAPs Bucket Ownership response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1100,9 +1088,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List PCAPs Bucket Ownership",
@@ -1313,7 +1298,7 @@
 				},
 				"description": "Create PCAP request response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1512,9 +1497,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create PCAP request",
@@ -1701,7 +1683,7 @@
 				},
 				"description": "Add buckets for full packet captures response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1929,9 +1911,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Add buckets for full packet captures",
@@ -2124,7 +2103,7 @@
 				},
 				"description": "Validate buckets for full packet captures response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2352,9 +2331,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Validate buckets for full packet captures",

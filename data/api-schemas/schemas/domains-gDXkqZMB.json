@@ -1,0 +1,14 @@
+{
+	"example": [
+		"203.0.113.1",
+		"cloudflare.com",
+		"blog.example.com"
+	],
+	"items": {
+		"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings. The\nwidget will only work on these domains, and their subdomains.\n",
+		"example": "203.0.113.1",
+		"type": "string"
+	},
+	"maxLength": 10,
+	"type": "array"
+}

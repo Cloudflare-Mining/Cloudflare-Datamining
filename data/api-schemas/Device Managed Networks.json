@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{identifier}/devices/networks/{uuid}": {
-		"description": "Delete a Device Managed Network. Returns the remaining device managed networks for the account.",
+		"description": "Delete a Device Managed Network. Returns the remaining Device Managed Networks for the account.",
 		"operationId": "device-managed-networks-delete-device-managed-network",
 		"parameters": [
 			{
@@ -67,10 +67,10 @@
 														"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
 													},
 													"network_id": {
-														"$ref": "#/components/schemas/device-managed-networks_components-schemas-uuid"
+														"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 													},
 													"type": {
-														"$ref": "#/components/schemas/device-managed-networks_components-schemas-type"
+														"$ref": "#/components/schemas/components-schemas-type-iNqMSxiU"
 													}
 												},
 												"type": "object"
@@ -85,7 +85,7 @@
 				},
 				"description": "Delete Device Managed Network response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -124,10 +124,10 @@
 																"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
 															},
 															"network_id": {
-																"$ref": "#/components/schemas/device-managed-networks_components-schemas-uuid"
+																"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 															},
 															"type": {
-																"$ref": "#/components/schemas/device-managed-networks_components-schemas-type"
+																"$ref": "#/components/schemas/components-schemas-type-iNqMSxiU"
 															}
 														},
 														"type": "object"
@@ -233,9 +233,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Device Managed Network",
@@ -294,10 +291,10 @@
 														"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
 													},
 													"network_id": {
-														"$ref": "#/components/schemas/device-managed-networks_components-schemas-uuid"
+														"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 													},
 													"type": {
-														"$ref": "#/components/schemas/device-managed-networks_components-schemas-type"
+														"$ref": "#/components/schemas/components-schemas-type-iNqMSxiU"
 													}
 												},
 												"type": "object"
@@ -312,7 +309,7 @@
 				},
 				"description": "List Device Managed Networks response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -351,10 +348,10 @@
 																"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
 															},
 															"network_id": {
-																"$ref": "#/components/schemas/device-managed-networks_components-schemas-uuid"
+																"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 															},
 															"type": {
-																"$ref": "#/components/schemas/device-managed-networks_components-schemas-type"
+																"$ref": "#/components/schemas/components-schemas-type-iNqMSxiU"
 															}
 														},
 														"type": "object"
@@ -460,9 +457,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Device Managed Networks",
@@ -534,10 +528,10 @@
 													"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
 												},
 												"network_id": {
-													"$ref": "#/components/schemas/device-managed-networks_components-schemas-uuid"
+													"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 												},
 												"type": {
-													"$ref": "#/components/schemas/device-managed-networks_components-schemas-type"
+													"$ref": "#/components/schemas/components-schemas-type-iNqMSxiU"
 												}
 											},
 											"type": "object"
@@ -550,7 +544,7 @@
 				},
 				"description": "Device Managed Network Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -591,10 +585,10 @@
 															"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
 														},
 														"network_id": {
-															"$ref": "#/components/schemas/device-managed-networks_components-schemas-uuid"
+															"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 														},
 														"type": {
-															"$ref": "#/components/schemas/device-managed-networks_components-schemas-type"
+															"$ref": "#/components/schemas/components-schemas-type-iNqMSxiU"
 														}
 													},
 													"type": "object"
@@ -698,9 +692,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Device Managed Network Details",
@@ -818,10 +809,10 @@
 													"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
 												},
 												"network_id": {
-													"$ref": "#/components/schemas/device-managed-networks_components-schemas-uuid"
+													"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 												},
 												"type": {
-													"$ref": "#/components/schemas/device-managed-networks_components-schemas-type"
+													"$ref": "#/components/schemas/components-schemas-type-iNqMSxiU"
 												}
 											},
 											"type": "object"
@@ -834,7 +825,7 @@
 				},
 				"description": "Create Device Managed Network response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -875,10 +866,10 @@
 															"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
 														},
 														"network_id": {
-															"$ref": "#/components/schemas/device-managed-networks_components-schemas-uuid"
+															"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 														},
 														"type": {
-															"$ref": "#/components/schemas/device-managed-networks_components-schemas-type"
+															"$ref": "#/components/schemas/components-schemas-type-iNqMSxiU"
 														}
 													},
 													"type": "object"
@@ -982,9 +973,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Device Managed Network",
@@ -1108,10 +1096,10 @@
 													"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
 												},
 												"network_id": {
-													"$ref": "#/components/schemas/device-managed-networks_components-schemas-uuid"
+													"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 												},
 												"type": {
-													"$ref": "#/components/schemas/device-managed-networks_components-schemas-type"
+													"$ref": "#/components/schemas/components-schemas-type-iNqMSxiU"
 												}
 											},
 											"type": "object"
@@ -1124,7 +1112,7 @@
 				},
 				"description": "Update Device Managed Network response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1165,10 +1153,10 @@
 															"$ref": "#/components/schemas/device-managed-networks_components-schemas-name"
 														},
 														"network_id": {
-															"$ref": "#/components/schemas/device-managed-networks_components-schemas-uuid"
+															"$ref": "#/components/schemas/uuid-dpJ5M8BH"
 														},
 														"type": {
-															"$ref": "#/components/schemas/device-managed-networks_components-schemas-type"
+															"$ref": "#/components/schemas/components-schemas-type-iNqMSxiU"
 														}
 													},
 													"type": "object"
@@ -1272,9 +1260,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update Device Managed Network",

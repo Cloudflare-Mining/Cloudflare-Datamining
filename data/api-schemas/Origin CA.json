@@ -8,8 +8,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "The x509 serial number of the Origin CA certificate.",
-					"example": "328578533902268680212849205732770752308931942346",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -30,7 +31,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-single"
+											"$ref": "#/components/schemas/api-response-single-b7FoMZ3k"
 										},
 										{
 											"properties": {
@@ -47,8 +48,9 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "The x509 serial number of the Origin CA certificate.",
-													"example": "328578533902268680212849205732770752308931942346",
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
 												}
@@ -72,7 +74,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-single"
+													"$ref": "#/components/schemas/api-response-single-b7FoMZ3k"
 												},
 												{
 													"properties": {
@@ -89,8 +91,9 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "The x509 serial number of the Origin CA certificate.",
-															"example": "328578533902268680212849205732770752308931942346",
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
 															"readOnly": true,
 															"type": "string"
 														}
@@ -216,18 +219,6 @@
 		"parameters": [
 			{
 				"in": "query",
-				"name": "zone_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
 				"name": "identifier",
 				"schema": {
 					"description": "Identifier",
@@ -276,13 +267,13 @@
 														"$ref": "#/components/schemas/csr"
 													},
 													"expires_on": {
-														"$ref": "#/components/schemas/certificates_components-schemas-expires_on"
+														"$ref": "#/components/schemas/schemas-expires_on-cTMxgj4w"
 													},
 													"hostnames": {
 														"$ref": "#/components/schemas/hostnames"
 													},
 													"id": {
-														"$ref": "#/components/schemas/certificates_components-schemas-identifier"
+														"$ref": "#/components/schemas/identifier"
 													},
 													"request_type": {
 														"$ref": "#/components/schemas/request_type"
@@ -349,13 +340,13 @@
 																"$ref": "#/components/schemas/csr"
 															},
 															"expires_on": {
-																"$ref": "#/components/schemas/certificates_components-schemas-expires_on"
+																"$ref": "#/components/schemas/schemas-expires_on-cTMxgj4w"
 															},
 															"hostnames": {
 																"$ref": "#/components/schemas/hostnames"
 															},
 															"id": {
-																"$ref": "#/components/schemas/certificates_components-schemas-identifier"
+																"$ref": "#/components/schemas/identifier"
 															},
 															"request_type": {
 																"$ref": "#/components/schemas/request_type"
@@ -498,8 +489,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "The x509 serial number of the Origin CA certificate.",
-					"example": "328578533902268680212849205732770752308931942346",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}

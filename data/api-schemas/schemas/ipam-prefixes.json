@@ -27,7 +27,6 @@
 		},
 		"asn": {
 			"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-			"example": 209242,
 			"nullable": true,
 			"type": "integer"
 		},
@@ -60,6 +59,7 @@
 			"example": "d933b1530bc56c9953cf8ce166da8004",
 			"maxLength": 32,
 			"nullable": true,
+			"readOnly": true,
 			"type": "string"
 		},
 		"modified_at": {

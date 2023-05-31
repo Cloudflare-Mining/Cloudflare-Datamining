@@ -1,9 +1,10 @@
 {
-	"description": "The type of the membership.",
+	"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
 	"enum": [
-		"zone",
-		"account"
+		"ip",
+		"redirect",
+		"hostname"
 	],
-	"example": "zone",
+	"example": "ip",
 	"type": "string"
 }

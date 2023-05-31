@@ -1,13 +1,9 @@
 {
-	"description": "The type of Device Posture Integration.",
+	"description": "The type of characteristic.",
 	"enum": [
-		"workspace_one",
-		"crowdstrike_s2s",
-		"uptycs",
-		"intune",
-		"kolide",
-		"tanium"
+		"header",
+		"cookie"
 	],
-	"example": "workspace_one",
+	"example": "header",
 	"type": "string"
 }

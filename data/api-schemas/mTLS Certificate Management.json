@@ -8,9 +8,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Certificate identifier tag.",
-					"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
-					"maxLength": 36,
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -70,7 +70,7 @@
 												{
 													"properties": {
 														"ca": {
-															"$ref": "#/components/schemas/ca-u7Lr6DEM"
+															"$ref": "#/components/schemas/ca"
 														},
 														"certificates": {
 															"$ref": "#/components/schemas/schemas-certificates"
@@ -79,13 +79,13 @@
 															"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
 														},
 														"id": {
-															"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+															"$ref": "#/components/schemas/identifier"
 														},
 														"issuer": {
 															"$ref": "#/components/schemas/schemas-issuer"
 														},
 														"name": {
-															"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+															"$ref": "#/components/schemas/schemas-name-Z4idRoeN"
 														},
 														"serial_number": {
 															"$ref": "#/components/schemas/schemas-serial_number"
@@ -146,7 +146,7 @@
 														{
 															"properties": {
 																"ca": {
-																	"$ref": "#/components/schemas/ca-u7Lr6DEM"
+																	"$ref": "#/components/schemas/ca"
 																},
 																"certificates": {
 																	"$ref": "#/components/schemas/schemas-certificates"
@@ -155,13 +155,13 @@
 																	"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+																	"$ref": "#/components/schemas/identifier"
 																},
 																"issuer": {
 																	"$ref": "#/components/schemas/schemas-issuer"
 																},
 																"name": {
-																	"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+																	"$ref": "#/components/schemas/schemas-name-Z4idRoeN"
 																},
 																"serial_number": {
 																	"$ref": "#/components/schemas/schemas-serial_number"
@@ -346,7 +346,7 @@
 											"items": {
 												"properties": {
 													"ca": {
-														"$ref": "#/components/schemas/ca-u7Lr6DEM"
+														"$ref": "#/components/schemas/ca"
 													},
 													"certificates": {
 														"$ref": "#/components/schemas/schemas-certificates"
@@ -355,13 +355,13 @@
 														"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
 													},
 													"id": {
-														"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+														"$ref": "#/components/schemas/identifier"
 													},
 													"issuer": {
 														"$ref": "#/components/schemas/schemas-issuer"
 													},
 													"name": {
-														"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+														"$ref": "#/components/schemas/schemas-name-Z4idRoeN"
 													},
 													"serial_number": {
 														"$ref": "#/components/schemas/schemas-serial_number"
@@ -441,7 +441,7 @@
 													"items": {
 														"properties": {
 															"ca": {
-																"$ref": "#/components/schemas/ca-u7Lr6DEM"
+																"$ref": "#/components/schemas/ca"
 															},
 															"certificates": {
 																"$ref": "#/components/schemas/schemas-certificates"
@@ -450,13 +450,13 @@
 																"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
 															},
 															"id": {
-																"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+																"$ref": "#/components/schemas/identifier"
 															},
 															"issuer": {
 																"$ref": "#/components/schemas/schemas-issuer"
 															},
 															"name": {
-																"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+																"$ref": "#/components/schemas/schemas-name-Z4idRoeN"
 															},
 															"serial_number": {
 																"$ref": "#/components/schemas/schemas-serial_number"
@@ -624,9 +624,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Certificate identifier tag.",
-					"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
-					"maxLength": 36,
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -680,7 +680,7 @@
 												{
 													"properties": {
 														"ca": {
-															"$ref": "#/components/schemas/ca-u7Lr6DEM"
+															"$ref": "#/components/schemas/ca"
 														},
 														"certificates": {
 															"$ref": "#/components/schemas/schemas-certificates"
@@ -689,13 +689,13 @@
 															"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
 														},
 														"id": {
-															"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+															"$ref": "#/components/schemas/identifier"
 														},
 														"issuer": {
 															"$ref": "#/components/schemas/schemas-issuer"
 														},
 														"name": {
-															"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+															"$ref": "#/components/schemas/schemas-name-Z4idRoeN"
 														},
 														"serial_number": {
 															"$ref": "#/components/schemas/schemas-serial_number"
@@ -756,7 +756,7 @@
 														{
 															"properties": {
 																"ca": {
-																	"$ref": "#/components/schemas/ca-u7Lr6DEM"
+																	"$ref": "#/components/schemas/ca"
 																},
 																"certificates": {
 																	"$ref": "#/components/schemas/schemas-certificates"
@@ -765,13 +765,13 @@
 																	"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+																	"$ref": "#/components/schemas/identifier"
 																},
 																"issuer": {
 																	"$ref": "#/components/schemas/schemas-issuer"
 																},
 																"name": {
-																	"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+																	"$ref": "#/components/schemas/schemas-name-Z4idRoeN"
 																},
 																"serial_number": {
 																	"$ref": "#/components/schemas/schemas-serial_number"
@@ -916,9 +916,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Certificate identifier tag.",
-					"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
-					"maxLength": 36,
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -1237,7 +1237,7 @@
 												{
 													"properties": {
 														"ca": {
-															"$ref": "#/components/schemas/ca-u7Lr6DEM"
+															"$ref": "#/components/schemas/ca"
 														},
 														"certificates": {
 															"$ref": "#/components/schemas/schemas-certificates"
@@ -1246,13 +1246,13 @@
 															"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
 														},
 														"id": {
-															"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+															"$ref": "#/components/schemas/identifier"
 														},
 														"issuer": {
 															"$ref": "#/components/schemas/schemas-issuer"
 														},
 														"name": {
-															"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+															"$ref": "#/components/schemas/schemas-name-Z4idRoeN"
 														},
 														"serial_number": {
 															"$ref": "#/components/schemas/schemas-serial_number"
@@ -1316,7 +1316,7 @@
 														{
 															"properties": {
 																"ca": {
-																	"$ref": "#/components/schemas/ca-u7Lr6DEM"
+																	"$ref": "#/components/schemas/ca"
 																},
 																"certificates": {
 																	"$ref": "#/components/schemas/schemas-certificates"
@@ -1325,13 +1325,13 @@
 																	"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+																	"$ref": "#/components/schemas/identifier"
 																},
 																"issuer": {
 																	"$ref": "#/components/schemas/schemas-issuer"
 																},
 																"name": {
-																	"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+																	"$ref": "#/components/schemas/schemas-name-Z4idRoeN"
 																},
 																"serial_number": {
 																	"$ref": "#/components/schemas/schemas-serial_number"

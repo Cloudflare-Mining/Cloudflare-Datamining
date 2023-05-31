@@ -75,7 +75,7 @@
 				},
 				"description": "Delete a variant response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -210,9 +210,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete a variant",
@@ -281,7 +278,7 @@
 				},
 				"description": "List variants response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -417,9 +414,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List variants",
@@ -501,7 +495,7 @@
 				},
 				"description": "Variant details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -640,9 +634,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Variant details",
@@ -695,13 +686,13 @@
 										"$ref": "#/components/schemas/fit"
 									},
 									"height": {
-										"$ref": "#/components/schemas/height"
+										"$ref": "#/components/schemas/height-KyPJNYow"
 									},
 									"metadata": {
 										"$ref": "#/components/schemas/schemas-metadata"
 									},
 									"width": {
-										"$ref": "#/components/schemas/width"
+										"$ref": "#/components/schemas/width-4SfHo0SC"
 									}
 								},
 								"required": [
@@ -769,7 +760,7 @@
 				},
 				"description": "Update a variant response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -908,9 +899,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update a variant",
@@ -958,13 +946,13 @@
 										"$ref": "#/components/schemas/fit"
 									},
 									"height": {
-										"$ref": "#/components/schemas/height"
+										"$ref": "#/components/schemas/height-KyPJNYow"
 									},
 									"metadata": {
 										"$ref": "#/components/schemas/schemas-metadata"
 									},
 									"width": {
-										"$ref": "#/components/schemas/width"
+										"$ref": "#/components/schemas/width-4SfHo0SC"
 									}
 								},
 								"required": [
@@ -1033,7 +1021,7 @@
 				},
 				"description": "Create a variant response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1172,9 +1160,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create a variant",

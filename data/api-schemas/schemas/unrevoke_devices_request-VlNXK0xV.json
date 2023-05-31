@@ -1,0 +1,11 @@
+{
+	"description": "A list of device ids to unrevoke.",
+	"items": {
+		"description": "Device ID.",
+		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+		"maxLength": 36,
+		"type": "string"
+	},
+	"maxLength": 200,
+	"type": "array"
+}

@@ -1,6 +1,47 @@
 {
-	"description": "Organization, provided by the CSR",
-	"example": "Organization",
-	"readOnly": true,
-	"type": "string"
+	"properties": {
+		"id": {
+			"description": "Identifier",
+			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+			"maxLength": 32,
+			"readOnly": true,
+			"type": "string"
+		},
+		"name": {
+			"description": "Organization name.",
+			"example": "Cloudflare, Inc.",
+			"maxLength": 100,
+			"type": "string"
+		},
+		"permissions": {
+			"description": "Access permissions for this User.",
+			"items": {
+				"example": "#zones:read",
+				"maxLength": 160,
+				"type": "string"
+			},
+			"readOnly": true,
+			"type": "array"
+		},
+		"roles": {
+			"description": "List of roles that a user has within an organization.",
+			"items": {
+				"example": "All Privileges - Super Administrator",
+				"maxLength": 120,
+				"type": "string"
+			},
+			"readOnly": true,
+			"type": "array"
+		},
+		"status": {
+			"description": "Whether the user is a member of the organization or has an inivitation pending.",
+			"enum": [
+				"member",
+				"invited"
+			],
+			"example": "member",
+			"type": "string"
+		}
+	},
+	"type": "object"
 }

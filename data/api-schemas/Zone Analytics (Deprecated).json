@@ -95,14 +95,14 @@
 											"description": "The exact parameters/timestamps the analytics service used to return data.",
 											"properties": {
 												"since": {
-													"$ref": "#/components/schemas/since-FXXDKojb"
+													"$ref": "#/components/schemas/since"
 												},
 												"time_delta": {
 													"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
 													"type": "integer"
 												},
 												"until": {
-													"$ref": "#/components/schemas/until-qTiUe0hU"
+													"$ref": "#/components/schemas/until"
 												}
 											},
 											"readOnly": true,
@@ -118,10 +118,10 @@
 														"type": "string"
 													},
 													"timeseries": {
-														"$ref": "#/components/schemas/timeseries_by_colo-IUqs0hY1"
+														"$ref": "#/components/schemas/timeseries_by_colo"
 													},
 													"totals": {
-														"$ref": "#/components/schemas/totals_by_colo-FzxlBhRV"
+														"$ref": "#/components/schemas/totals_by_colo"
 													}
 												},
 												"type": "object"
@@ -173,14 +173,14 @@
 													"description": "The exact parameters/timestamps the analytics service used to return data.",
 													"properties": {
 														"since": {
-															"$ref": "#/components/schemas/since-FXXDKojb"
+															"$ref": "#/components/schemas/since"
 														},
 														"time_delta": {
 															"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
 															"type": "integer"
 														},
 														"until": {
-															"$ref": "#/components/schemas/until-qTiUe0hU"
+															"$ref": "#/components/schemas/until"
 														}
 													},
 													"readOnly": true,
@@ -196,10 +196,10 @@
 																"type": "string"
 															},
 															"timeseries": {
-																"$ref": "#/components/schemas/timeseries_by_colo-IUqs0hY1"
+																"$ref": "#/components/schemas/timeseries_by_colo"
 															},
 															"totals": {
-																"$ref": "#/components/schemas/totals_by_colo-FzxlBhRV"
+																"$ref": "#/components/schemas/totals_by_colo"
 															}
 														},
 														"type": "object"
@@ -426,14 +426,14 @@
 											"description": "The exact parameters/timestamps the analytics service used to return data.",
 											"properties": {
 												"since": {
-													"$ref": "#/components/schemas/since-FXXDKojb"
+													"$ref": "#/components/schemas/since"
 												},
 												"time_delta": {
 													"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
 													"type": "integer"
 												},
 												"until": {
-													"$ref": "#/components/schemas/until-qTiUe0hU"
+													"$ref": "#/components/schemas/until"
 												}
 											},
 											"readOnly": true,
@@ -443,10 +443,10 @@
 											"description": "Totals and timeseries data.",
 											"properties": {
 												"timeseries": {
-													"$ref": "#/components/schemas/timeseries-wLbOhwj0"
+													"$ref": "#/components/schemas/timeseries-XFvAmgK5"
 												},
 												"totals": {
-													"$ref": "#/components/schemas/totals-fyFA960J"
+													"$ref": "#/components/schemas/totals-fLAG6T13"
 												}
 											},
 											"title": "Dashboard response",
@@ -496,14 +496,14 @@
 													"description": "The exact parameters/timestamps the analytics service used to return data.",
 													"properties": {
 														"since": {
-															"$ref": "#/components/schemas/since-FXXDKojb"
+															"$ref": "#/components/schemas/since"
 														},
 														"time_delta": {
 															"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
 															"type": "integer"
 														},
 														"until": {
-															"$ref": "#/components/schemas/until-qTiUe0hU"
+															"$ref": "#/components/schemas/until"
 														}
 													},
 													"readOnly": true,
@@ -513,10 +513,10 @@
 													"description": "Totals and timeseries data.",
 													"properties": {
 														"timeseries": {
-															"$ref": "#/components/schemas/timeseries-wLbOhwj0"
+															"$ref": "#/components/schemas/timeseries-XFvAmgK5"
 														},
 														"totals": {
-															"$ref": "#/components/schemas/totals-fyFA960J"
+															"$ref": "#/components/schemas/totals-fLAG6T13"
 														}
 													},
 													"title": "Dashboard response",

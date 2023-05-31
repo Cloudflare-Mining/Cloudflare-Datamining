@@ -292,7 +292,7 @@
 							"items": {
 								"properties": {
 									"address": {
-										"$ref": "#/components/schemas/address-r9temCLI"
+										"$ref": "#/components/schemas/address"
 									},
 									"disabled_at": {
 										"$ref": "#/components/schemas/disabled_at"
@@ -310,7 +310,7 @@
 										"$ref": "#/components/schemas/virtual_network_id"
 									},
 									"weight": {
-										"$ref": "#/components/schemas/weight-GkflOtlu"
+										"$ref": "#/components/schemas/weight"
 									}
 								},
 								"type": "object"

@@ -1,12 +1,5 @@
 {
-	"description": "The type of List.",
-	"enum": [
-		"SERIAL",
-		"URL",
-		"DOMAIN",
-		"EMAIL",
-		"IP"
-	],
-	"example": "SERIAL",
+	"description": "The type of URL normalization performed by Cloudflare.",
+	"example": "cloudflare",
 	"type": "string"
 }

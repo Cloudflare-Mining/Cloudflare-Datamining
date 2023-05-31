@@ -1,0 +1,32 @@
+{
+	"properties": {
+		"app_launcher_visible": {
+			"default": true
+		},
+		"domain": {
+			"description": "The URL or domain of the bookmark.",
+			"example": "https://mybookmark.com"
+		},
+		"logo_url": {
+			"description": "The image URL for the logo shown in the App Launcher dashboard.",
+			"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
+			"type": "string"
+		},
+		"name": {
+			"description": "The name of the application.",
+			"example": "Admin Site",
+			"type": "string"
+		},
+		"type": {
+			"description": "The application type.",
+			"example": "bookmark",
+			"type": "string"
+		}
+	},
+	"required": [
+		"type",
+		"domain"
+	],
+	"title": "Bookmark Application",
+	"type": "object"
+}

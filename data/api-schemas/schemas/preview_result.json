@@ -1,44 +1,5 @@
 {
-	"additionalProperties": {
-		"properties": {
-			"healthy": {
-				"type": "boolean"
-			},
-			"origins": {
-				"items": {
-					"additionalProperties": {
-						"description": "The origin ipv4/ipv6 address or domain name mapped to it's health data.",
-						"example": {
-							"failure_reason": "No failures",
-							"healthy": true,
-							"response_code": 200,
-							"rtt": "66ms"
-						},
-						"properties": {
-							"failure_reason": {
-								"type": "string"
-							},
-							"healthy": {
-								"type": "boolean"
-							},
-							"response_code": {
-								"type": "number"
-							},
-							"rtt": {
-								"type": "string"
-							}
-						},
-						"type": "object"
-					},
-					"maxProperties": 1,
-					"minProperties": 1,
-					"type": "object"
-				},
-				"type": "array"
-			}
-		},
-		"type": "object"
-	},
+	"additionalProperties": true,
 	"description": "Resulting health data from a preview operation.",
 	"example": {
 		"abwlnp5jbqn45ecgxd03erbgtxtqai0d": {
@@ -46,10 +7,7 @@
 			"origins": [
 				{
 					"originone.example.com.": {
-						"failure_reason": "No failures",
-						"healthy": true,
-						"response_code": 200,
-						"rtt": "66ms"
+						"$ref": "#/components/schemas/origin_health_data/example"
 					}
 				}
 			]
