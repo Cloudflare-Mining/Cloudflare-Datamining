@@ -118,57 +118,85 @@
 			"properties": {
 				"result": {
 					"items": {
-						"properties": {
-							"additional_information": {
-								"description": "Additional information related to the host name.",
-								"properties": {
-									"suspected_malware_family": {
-										"description": "Suspected DGA malware family.",
-										"example": "",
-										"type": "string"
-									}
-								},
-								"type": "object"
-							},
-							"application": {
-								"description": "Application that the hostname belongs to.",
-								"properties": {
-									"id": {
-										"type": "integer"
-									},
-									"name": {
-										"example": "CLOUDFLARE",
-										"type": "string"
-									}
-								},
-								"type": "object"
-							},
-							"content_categories": {
-								"description": "Current content categories.",
-								"example": [
+						"allOf": [
+							{
+								"allOf": [
 									{
-										"id": 155,
-										"name": "Technology",
-										"super_category_id": 26
+										"properties": {
+											"endpoint": {
+												"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+												"example": "/api/v1/users/{var1}",
+												"format": "uri-template",
+												"maxLength": 4096,
+												"pattern": "^/.*$",
+												"type": "string"
+											},
+											"features": {
+												"anyOf": [
+													{
+														"$ref": "#/components/schemas/thresholds"
+													},
+													{
+														"$ref": "#/components/schemas/parameter_schemas"
+													}
+												],
+												"readOnly": true,
+												"type": "object"
+											},
+											"host": {
+												"description": "RFC3986-compliant host.",
+												"example": "www.example.com",
+												"format": "hostname",
+												"maxLength": 255,
+												"type": "string"
+											},
+											"last_updated": {
+												"example": "2014-01-01T05:20:00.12345Z",
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
+											"method": {
+												"description": "The HTTP method used to access the endpoint.",
+												"enum": [
+													"GET",
+													"POST",
+													"HEAD",
+													"OPTIONS",
+													"PUT",
+													"DELETE",
+													"CONNECT",
+													"PATCH",
+													"TRACE"
+												],
+												"example": "GET",
+												"type": "string"
+											},
+											"operation_id": {
+												"description": "UUID",
+												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+												"maxLength": 36,
+												"readOnly": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"operation_id",
+											"method",
+											"host",
+											"endpoint",
+											"last_updated"
+										],
+										"type": "object"
 									}
 								]
 							},
-							"domain": {
-								"example": "cloudflare.com",
-								"type": "string"
-							},
-							"popularity_rank": {
-								"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
-								"type": "integer"
-							},
-							"risk_score": {
-								"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk).",
-								"type": "number"
-							},
-							"risk_types": {
-								"example": []
+							{
+								"properties": {
+									"features": {}
+								}
 							}
-						}
+						]
 					},
 					"type": "array"
 				}

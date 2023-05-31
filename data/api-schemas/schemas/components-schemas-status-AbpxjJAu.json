@@ -1,0 +1,9 @@
+{
+	"description": "Whether the user is a member of the organization or has an inivitation pending.",
+	"enum": [
+		"member",
+		"invited"
+	],
+	"example": "member",
+	"type": "string"
+}

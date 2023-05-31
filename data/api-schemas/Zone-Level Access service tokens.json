@@ -68,7 +68,7 @@
 										"result": {
 											"properties": {
 												"client_id": {
-													"$ref": "#/components/schemas/client_id"
+													"$ref": "#/components/schemas/client_id-ArkHA8A2"
 												},
 												"created_at": {
 													"$ref": "#/components/schemas/timestamp"
@@ -128,7 +128,7 @@
 												"result": {
 													"properties": {
 														"client_id": {
-															"$ref": "#/components/schemas/client_id"
+															"$ref": "#/components/schemas/client_id-ArkHA8A2"
 														},
 														"created_at": {
 															"$ref": "#/components/schemas/timestamp"
@@ -300,7 +300,7 @@
 											"items": {
 												"properties": {
 													"client_id": {
-														"$ref": "#/components/schemas/client_id"
+														"$ref": "#/components/schemas/client_id-1bAXD37z"
 													},
 													"created_at": {
 														"$ref": "#/components/schemas/timestamp"
@@ -360,7 +360,7 @@
 													"items": {
 														"properties": {
 															"client_id": {
-																"$ref": "#/components/schemas/client_id"
+																"$ref": "#/components/schemas/client_id-1bAXD37z"
 															},
 															"created_at": {
 																"$ref": "#/components/schemas/timestamp"
@@ -542,8 +542,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -616,8 +615,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -845,7 +843,7 @@
 										"result": {
 											"properties": {
 												"client_id": {
-													"$ref": "#/components/schemas/client_id"
+													"$ref": "#/components/schemas/client_id-ArkHA8A2"
 												},
 												"created_at": {
 													"$ref": "#/components/schemas/timestamp"
@@ -905,7 +903,7 @@
 												"result": {
 													"properties": {
 														"client_id": {
-															"$ref": "#/components/schemas/client_id"
+															"$ref": "#/components/schemas/client_id-ArkHA8A2"
 														},
 														"created_at": {
 															"$ref": "#/components/schemas/timestamp"

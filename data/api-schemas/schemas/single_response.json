@@ -87,8 +87,7 @@
 								{
 									"type": "string"
 								}
-							],
-							"nullable": true
+							]
 						}
 					}
 				}
@@ -99,93 +98,50 @@
 			"properties": {
 				"result": {
 					"properties": {
-						"alert_type": {
-							"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
-							"example": "universal_ssl_event_type",
-							"type": "string"
+						"count": {
+							"description": "The number of items in the List.",
+							"example": 20,
+							"readOnly": true,
+							"type": "number"
 						},
-						"created": {
+						"created_at": {
 							"example": "2014-01-01T05:20:00.12345Z",
 							"format": "date-time",
 							"readOnly": true,
 							"type": "string"
 						},
 						"description": {
-							"description": "Optional description for the Notification policy.",
-							"example": "Something describing the policy.",
+							"description": "The description of the List.",
+							"example": "The serial numbers for administrators",
 							"type": "string"
-						},
-						"enabled": {
-							"default": true,
-							"description": "Whether or not the Notification policy is enabled.",
-							"example": true,
-							"type": "boolean"
-						},
-						"filters": {
-							"additionalProperties": {
-								"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
-								"items": {},
-								"type": "array"
-							},
-							"example": {
-								"slo": [
-									"99.9"
-								]
-							},
-							"type": "object"
 						},
 						"id": {
-							"description": "UUID",
+							"description": "API Resource UUID tag.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 							"maxLength": 36,
-							"readOnly": true,
-							"type": "string"
-						},
-						"mechanisms": {
-							"additionalProperties": {
-								"items": {
-									"properties": {
-										"id": {
-											"description": "UUID",
-											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-											"maxLength": 36,
-											"readOnly": true,
-											"type": "string"
-										}
-									},
-									"type": "object"
-								},
-								"type": "array"
-							},
-							"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
-							"example": {
-								"email": [
-									{
-										"id": "test@example.com"
-									}
-								],
-								"pagerduty": [
-									{
-										"id": "e8133a15-00a4-4d69-aec1-32f70c51f6e5"
-									}
-								],
-								"webhooks": [
-									{
-										"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
-									}
-								]
-							},
-							"type": "object"
-						},
-						"modified": {
-							"example": "2014-01-01T05:20:00.12345Z",
-							"format": "date-time",
-							"readOnly": true,
 							"type": "string"
 						},
 						"name": {
-							"description": "Name of the policy.",
-							"example": "SSL Notification Event Policy",
+							"description": "The name of the List.",
+							"example": "Admin Serial Numbers",
+							"type": "string"
+						},
+						"type": {
+							"description": "The type of List.",
+							"enum": [
+								"SERIAL",
+								"URL",
+								"DOMAIN",
+								"EMAIL",
+								"IP"
+							],
+							"example": "SERIAL",
+							"type": "string"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
 							"type": "string"
 						}
 					},

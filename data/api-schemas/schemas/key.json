@@ -1,5 +1,27 @@
 {
-	"description": "The device's public key.",
-	"example": "yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=",
-	"type": "string"
+	"description": "A name for a value. A value stored under a given key may be retrieved via the same key.",
+	"properties": {
+		"expiration": {
+			"description": "The time, measured in number of seconds since the UNIX epoch, at which the key will expire. This property is omitted for keys that will not expire.",
+			"example": 1577836800,
+			"type": "number"
+		},
+		"metadata": {
+			"description": "Arbitrary JSON that is associated with a key.",
+			"example": {
+				"someMetadataKey": "someMetadataValue"
+			},
+			"type": "object"
+		},
+		"name": {
+			"description": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.",
+			"example": "My-Key",
+			"maxLength": 512,
+			"type": "string"
+		}
+	},
+	"required": [
+		"name"
+	],
+	"type": "object"
 }

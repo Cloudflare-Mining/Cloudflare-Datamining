@@ -1,10 +1,8 @@
 {
-	"description": "Type of webhook endpoint.",
+	"description": "The type of Device Managed Network.",
 	"enum": [
-		"slack",
-		"generic",
-		"gchat"
+		"tls"
 	],
-	"example": "slack",
+	"example": "tls",
 	"type": "string"
 }

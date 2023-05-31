@@ -1,74 +1,53 @@
 {
+	"description": "For specifying result metrics.",
 	"properties": {
 		"dimensions": {
-			"description": "Array of dimension names.",
-			"example": [
-				"responseCode",
-				"queryName"
-			],
+			"default": "[]",
+			"description": "Can be used to break down the data by given attributes.",
 			"items": {
-				"description": "Dimension name.",
-				"example": "responseCode",
+				"description": "For drilling down on metrics.",
 				"type": "string"
 			},
 			"type": "array"
 		},
 		"filters": {
-			"description": "Segmentation filter in 'attribute operator value' format.",
-			"example": "responseCode==NOERROR,queryType==A",
+			"default": "\"\"",
+			"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: \n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n>                        | Greater Than                    | %3E\n<                         | Less Than                       | %3C\n>=                       | Greater than or equal to        | %3E%3D\n<=                        | Less than or equal to           | %3C%3D     .",
 			"type": "string"
 		},
 		"limit": {
-			"default": 100000,
+			"default": 10000,
 			"description": "Limit number of returned metrics.",
-			"example": 100,
 			"type": "integer"
 		},
 		"metrics": {
-			"description": "Array of metric names.",
-			"example": [
-				"queryCount",
-				"responseTimeAvg"
-			],
+			"description": "One or more metrics to compute.",
 			"items": {
-				"description": "Metric name.",
-				"example": "queries",
+				"description": "A quantitative measurement of KV usage.",
 				"type": "string"
 			},
 			"type": "array"
 		},
 		"since": {
-			"description": "Start date and time of requesting data period in ISO 8601 format.",
-			"example": "2023-11-11T12:00:00Z",
+			"default": "<6 hours ago>",
+			"description": "Start of time interval to query, defaults to 6 hours before request received.",
+			"example": "2019-01-02T02:20:00Z",
 			"format": "date-time",
 			"type": "string"
 		},
 		"sort": {
-			"description": "Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
-			"example": [
-				"+responseCode",
-				"-queryName"
-			],
-			"items": {
-				"description": "Dimension name (may be prefixed by - (descending) or + (ascending).",
-				"example": "+responseCode",
-				"type": "string"
-			},
+			"default": "[]",
+			"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending).",
+			"items": {},
 			"type": "array"
 		},
 		"until": {
-			"description": "End date and time of requesting data period in ISO 8601 format.",
-			"example": "2023-11-11T13:00:00Z",
+			"default": "<now>",
+			"description": "End of time interval to query, defaults to current time.",
+			"example": "2019-01-02T03:20:00Z",
 			"format": "date-time",
 			"type": "string"
 		}
 	},
-	"required": [
-		"dimensions",
-		"metrics",
-		"since",
-		"until",
-		"limit"
-	],
 	"type": "object"
 }

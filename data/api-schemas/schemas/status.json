@@ -1,9 +1,9 @@
 {
-	"description": "Status of the token.",
+	"default": "disabled",
+	"description": "The status of the Page Rule.",
 	"enum": [
 		"active",
-		"disabled",
-		"expired"
+		"disabled"
 	],
 	"example": "active",
 	"type": "string"

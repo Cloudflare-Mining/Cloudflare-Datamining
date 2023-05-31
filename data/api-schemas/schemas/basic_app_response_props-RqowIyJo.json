@@ -1,0 +1,31 @@
+{
+	"properties": {
+		"aud": {
+			"description": "Audience tag.",
+			"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893",
+			"maxLength": 64,
+			"readOnly": true,
+			"type": "string"
+		},
+		"created_at": {
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		},
+		"id": {
+			"description": "UUID",
+			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+			"maxLength": 36,
+			"readOnly": true,
+			"type": "string"
+		},
+		"updated_at": {
+			"example": "2014-01-01T05:20:00.12345Z",
+			"format": "date-time",
+			"readOnly": true,
+			"type": "string"
+		}
+	},
+	"type": "object"
+}

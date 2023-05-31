@@ -201,7 +201,7 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/subscription-v2-aCIwONH6"
+														"$ref": "#/components/schemas/subscription-v2-ZX7w9u3Z"
 													}
 												],
 												"type": "object"
@@ -250,7 +250,7 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/subscription-v2-aCIwONH6"
+																"$ref": "#/components/schemas/subscription-v2-ZX7w9u3Z"
 															}
 														],
 														"type": "object"
@@ -511,10 +511,10 @@
 								"description": "A simple zone object. May have null properties if not a zone subscription.",
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/identifier"
+										"$ref": "#/components/schemas/identifier-vwiNDnyP"
 									},
 									"name": {
-										"$ref": "#/components/schemas/name-St1tGc7K"
+										"$ref": "#/components/schemas/name-zVLbLQxP"
 									}
 								},
 								"type": "object"

@@ -1,70 +1,314 @@
 {
-	"allOf": [
+	"description": "Settings available for the zone.",
+	"example": [
 		{
-			"properties": {
-				"created": {
-					"description": "The date and time the settings have been created.",
-					"example": "2014-01-02T02:20:00Z",
-					"format": "date-time",
-					"readOnly": true,
-					"type": "string"
-				},
-				"enabled": {
-					"default": true,
-					"description": "State of the zone settings for Email Routing.",
-					"enum": [
-						true,
-						false
-					],
-					"example": true,
-					"type": "boolean"
-				},
-				"modified": {
-					"description": "The date and time the settings have been modified.",
-					"example": "2014-01-02T02:20:00Z",
-					"format": "date-time",
-					"readOnly": true,
-					"type": "string"
-				},
-				"name": {
-					"description": "Domain of your zone.",
-					"example": "example.net",
-					"readOnly": true,
-					"type": "string"
-				},
-				"skip_wizard": {
-					"default": true,
-					"description": "Flag to check if the user skipped the configuration wizard.",
-					"enum": [
-						true,
-						false
-					],
-					"example": true,
-					"type": "boolean"
-				},
-				"status": {
-					"description": "Show the state of your account, and the type or configuration error.",
-					"enum": [
-						"ready",
-						"unconfigured",
-						"misconfigured",
-						"misconfigured/locked",
-						"unlocked"
-					],
-					"example": "ready",
-					"readOnly": true,
-					"type": "string"
-				},
-				"tag": {
-					"description": "Email Routing settings identifier.",
-					"example": "75610dab9e69410a82cf7e400a09ecec",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
+			"id": "browser_check",
+			"properties": [
+				{
+					"name": "value",
+					"type": "toggle"
 				}
-			},
-			"type": "object"
+			]
+		},
+		{
+			"id": "browser_cache_ttl",
+			"properties": [
+				{
+					"max": 31536000,
+					"min": 1800,
+					"name": "value",
+					"suggested_values": [
+						1800,
+						3600,
+						7200,
+						10800,
+						14400,
+						18000,
+						28800,
+						43200,
+						57600,
+						72000,
+						86400,
+						172800,
+						259200,
+						345600,
+						432000,
+						691200,
+						1382400,
+						2073600,
+						2678400,
+						5356800,
+						16070400,
+						31536000
+					],
+					"type": "range"
+				}
+			]
+		},
+		{
+			"id": "browser_check",
+			"properties": [
+				{
+					"name": "value",
+					"type": "toggle"
+				}
+			]
+		},
+		{
+			"id": "cache_key_fields",
+			"properties": [
+				{
+					"name": "value",
+					"properties": [
+						{
+							"allowEmpty": true,
+							"choices": [
+								"include",
+								"exclude"
+							],
+							"multiple": false,
+							"name": "query_string",
+							"type": "select"
+						},
+						{
+							"allowEmpty": true,
+							"choices": [
+								"include",
+								"exclude",
+								"check_presence"
+							],
+							"multiple": true,
+							"name": "header",
+							"type": "select"
+						},
+						{
+							"allowEmpty": false,
+							"choices": [
+								"resolved"
+							],
+							"multiple": true,
+							"name": "host",
+							"type": "select"
+						},
+						{
+							"allowEmpty": true,
+							"choices": [
+								"include",
+								"check_presence"
+							],
+							"multiple": true,
+							"name": "cookie",
+							"type": "select"
+						},
+						{
+							"allowEmpty": false,
+							"choices": [
+								"device_type",
+								"geo",
+								"lang"
+							],
+							"multiple": true,
+							"name": "user",
+							"type": "select"
+						}
+					],
+					"type": "object"
+				}
+			]
+		},
+		{
+			"id": "cache_deception_armor",
+			"properties": [
+				{
+					"name": "value",
+					"type": "toggle"
+				}
+			]
+		},
+		{
+			"id": "cache_level",
+			"properties": [
+				{
+					"choices": [
+						"bypass",
+						"basic",
+						"simplified",
+						"aggressive",
+						"cache_everything"
+					],
+					"multiple": false,
+					"name": "value",
+					"type": "select"
+				}
+			]
+		},
+		{
+			"id": "cache_ttl_by_status",
+			"properties": [
+				{
+					"allowEmpty": false,
+					"name": "value",
+					"type": "object"
+				}
+			]
+		},
+		{
+			"id": "disable_apps",
+			"properties": []
+		},
+		{
+			"id": "disable_performance",
+			"properties": []
+		},
+		{
+			"id": "disable_security",
+			"properties": []
+		},
+		{
+			"id": "edge_cache_ttl",
+			"properties": [
+				{
+					"max": 2419200,
+					"min": 7200,
+					"name": "value",
+					"suggested_values": [
+						7200,
+						10800,
+						14400,
+						18000,
+						28800,
+						43200,
+						57600,
+						72000,
+						86400,
+						172800,
+						259200,
+						345600,
+						432000,
+						518400,
+						604800,
+						1209600,
+						2419200
+					],
+					"type": "range"
+				}
+			]
+		},
+		{
+			"id": "email_obfuscation",
+			"properties": [
+				{
+					"name": "value",
+					"type": "toggle"
+				}
+			]
+		},
+		{
+			"id": "forwarding_url",
+			"properties": [
+				{
+					"choices": [
+						301,
+						302
+					],
+					"multiple": false,
+					"name": "status_code",
+					"type": "choice"
+				},
+				{
+					"name": "url",
+					"type": "forwardingUrl"
+				}
+			]
+		},
+		{
+			"id": "ip_geolocation",
+			"properties": [
+				{
+					"name": "value",
+					"type": "toggle"
+				}
+			]
+		},
+		{
+			"id": "minify",
+			"properties": [
+				{
+					"allowEmpty": true,
+					"choices": [
+						"html",
+						"css",
+						"js"
+					],
+					"multiple": true,
+					"name": "value",
+					"type": "select"
+				}
+			]
+		},
+		{
+			"id": "explicit_cache_control",
+			"properties": [
+				{
+					"name": "value",
+					"type": "toggle"
+				}
+			]
+		},
+		{
+			"id": "rocket_loader",
+			"properties": [
+				{
+					"name": "value",
+					"type": "toggle"
+				}
+			]
+		},
+		{
+			"id": "security_level",
+			"properties": [
+				{
+					"choices": [
+						"essentially_off",
+						"low",
+						"medium",
+						"high",
+						"under_attack"
+					],
+					"multiple": false,
+					"name": "value",
+					"type": "select"
+				}
+			]
+		},
+		{
+			"id": "server_side_exclude",
+			"properties": [
+				{
+					"name": "value",
+					"type": "toggle"
+				}
+			]
+		},
+		{
+			"id": "ssl",
+			"properties": [
+				{
+					"choices": [
+						"off",
+						"flexible",
+						"full",
+						"strict"
+					],
+					"multiple": false,
+					"name": "value",
+					"type": "choice"
+				}
+			]
 		}
 	],
-	"type": "object"
+	"items": {
+		"type": "object"
+	},
+	"type": "array"
 }

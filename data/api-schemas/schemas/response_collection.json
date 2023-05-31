@@ -117,68 +117,58 @@
 		{
 			"properties": {
 				"result": {
-					"additionalProperties": {
-						"items": {
-							"properties": {
-								"description": {
-									"description": "Describes the alert type.",
-									"example": "High levels of 5xx HTTP errors at your origin",
-									"type": "string"
-								},
-								"display_name": {
-									"description": "Alert type name.",
-									"example": "Origin Error Rate Alert",
-									"type": "string"
-								},
-								"filter_options": {
-									"description": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings.",
-									"example": [
-										{
-											"ComparisonOperator": "==",
-											"Key": "zones",
-											"Optional": false
-										},
-										{
-											"ComparisonOperator": ">=",
-											"Key": "slo",
-											"Optional": true
-										}
-									],
-									"items": {},
-									"type": "array"
-								},
-								"type": {
-									"description": "Use this value when creating and updating a notification policy.",
-									"example": "http_alert_origin_error",
-									"type": "string"
-								}
+					"items": {
+						"properties": {
+							"count": {
+								"description": "The number of items in the List.",
+								"example": 20,
+								"readOnly": true,
+								"type": "number"
 							},
-							"type": "object"
-						},
-						"type": "array"
-					},
-					"example": {
-						"Origin Monitoring": [
-							{
-								"description": "High levels of 5xx HTTP errors at your origin.",
-								"display_name": "Origin Error Rate Alert",
-								"filter_options": [
-									{
-										"ComparisonOperator": "==",
-										"Key": "zones",
-										"Optional": false
-									},
-									{
-										"ComparisonOperator": ">=",
-										"Key": "slo",
-										"Optional": true
-									}
+							"created_at": {
+								"example": "2014-01-01T05:20:00.12345Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"description": {
+								"description": "The description of the List.",
+								"example": "The serial numbers for administrators",
+								"type": "string"
+							},
+							"id": {
+								"description": "API Resource UUID tag.",
+								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+								"maxLength": 36,
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the List.",
+								"example": "Admin Serial Numbers",
+								"type": "string"
+							},
+							"type": {
+								"description": "The type of List.",
+								"enum": [
+									"SERIAL",
+									"URL",
+									"DOMAIN",
+									"EMAIL",
+									"IP"
 								],
-								"type": "http_alert_origin_error"
+								"example": "SERIAL",
+								"type": "string"
+							},
+							"updated_at": {
+								"example": "2014-01-01T05:20:00.12345Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
 							}
-						]
+						},
+						"type": "object"
 					},
-					"type": "object"
+					"type": "array"
 				}
 			}
 		}

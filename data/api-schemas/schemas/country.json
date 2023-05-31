@@ -1,7 +1,6 @@
 {
-	"description": "The country in which the user lives.",
+	"description": "Country, provided by the CSR",
 	"example": "US",
-	"maxLength": 30,
-	"nullable": true,
+	"readOnly": true,
 	"type": "string"
 }

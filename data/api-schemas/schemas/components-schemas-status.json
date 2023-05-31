@@ -1,9 +1,22 @@
 {
-	"description": "Whether the user is a member of the organization or has an inivitation pending.",
+	"description": "Status of the hostname's activation.",
 	"enum": [
-		"member",
-		"invited"
+		"active",
+		"pending",
+		"active_redeploying",
+		"moved",
+		"pending_deletion",
+		"deleted",
+		"pending_blocked",
+		"pending_migration",
+		"pending_provisioned",
+		"test_pending",
+		"test_active",
+		"test_active_apex",
+		"test_blocked",
+		"test_failed",
+		"provisioned",
+		"blocked"
 	],
-	"example": "member",
-	"type": "string"
+	"example": "pending"
 }

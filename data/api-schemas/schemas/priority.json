@@ -1,7 +1,5 @@
 {
-	"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.",
-	"example": 10,
-	"maximum": 65535,
-	"minimum": 0,
-	"type": "number"
+	"default": 1,
+	"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
+	"type": "integer"
 }

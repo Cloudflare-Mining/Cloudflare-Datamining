@@ -1,10 +1,13 @@
 {
-	"description": "Determines type of delivery mechanism.",
+	"description": "The type of Device Posture Integration.",
 	"enum": [
-		"email",
-		"pagerduty",
-		"webhook"
+		"workspace_one",
+		"crowdstrike_s2s",
+		"uptycs",
+		"intune",
+		"kolide",
+		"tanium"
 	],
-	"example": "email",
+	"example": "workspace_one",
 	"type": "string"
 }
