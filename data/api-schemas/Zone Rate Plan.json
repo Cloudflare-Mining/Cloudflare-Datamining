@@ -27,46 +27,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -233,46 +197,10 @@
 												{
 													"properties": {
 														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"result": {
 															"anyOf": [
@@ -576,46 +504,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -760,46 +652,10 @@
 												{
 													"properties": {
 														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"result": {
 															"anyOf": [
@@ -1067,7 +923,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-rSGSQCCw"
 										},
 										{
 											"properties": {
@@ -1090,7 +946,7 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/rate-plan-iL5yzURr"
+														"$ref": "#/components/schemas/rate-plan-3b3MYEP8"
 													}
 												],
 												"type": "object"
@@ -1116,7 +972,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-rSGSQCCw"
 												},
 												{
 													"properties": {
@@ -1139,7 +995,7 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/rate-plan-iL5yzURr"
+																"$ref": "#/components/schemas/rate-plan-3b3MYEP8"
 															}
 														],
 														"type": "object"

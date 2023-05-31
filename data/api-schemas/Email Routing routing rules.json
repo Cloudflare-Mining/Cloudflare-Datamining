@@ -43,7 +43,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-VqyboqNK"
 										},
 										{
 											"properties": {
@@ -163,7 +163,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-VqyboqNK"
 										},
 										{
 											"properties": {
@@ -279,7 +279,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-VqyboqNK"
 										},
 										{
 											"properties": {
@@ -365,7 +365,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-VqyboqNK"
 										},
 										{
 											"properties": {
@@ -392,7 +392,7 @@
 													"$ref": "#/components/schemas/rule_catchall-actions"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/rule_enabled"
+													"$ref": "#/components/schemas/rule_enabled-kYgsTHiu"
 												},
 												"matchers": {
 													"$ref": "#/components/schemas/rule_catchall-matchers"
@@ -462,7 +462,7 @@
 							"actions": {
 								"description": "List actions patterns.",
 								"items": {
-									"$ref": "#/components/schemas/rule_action"
+									"$ref": "#/components/schemas/rule_action-98UCJh6z"
 								},
 								"type": "array"
 							},
@@ -515,7 +515,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-VqyboqNK"
 										},
 										{
 											"properties": {
@@ -612,7 +612,7 @@
 							"actions": {
 								"description": "List actions patterns.",
 								"items": {
-									"$ref": "#/components/schemas/rule_action"
+									"$ref": "#/components/schemas/rule_action-98UCJh6z"
 								},
 								"type": "array"
 							},
@@ -665,7 +665,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-VqyboqNK"
 										},
 										{
 											"properties": {
@@ -797,7 +797,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-VqyboqNK"
 										},
 										{
 											"properties": {
@@ -824,7 +824,7 @@
 													"$ref": "#/components/schemas/rule_catchall-actions"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/rule_enabled"
+													"$ref": "#/components/schemas/rule_enabled-kYgsTHiu"
 												},
 												"matchers": {
 													"$ref": "#/components/schemas/rule_catchall-matchers"

@@ -140,7 +140,7 @@
 													"type": "boolean"
 												},
 												"id": {
-													"$ref": "#/components/schemas/entry_id-zoeyQM6E"
+													"$ref": "#/components/schemas/entry_id"
 												},
 												"name": {
 													"description": "The name of the entry.",
@@ -159,7 +159,7 @@
 									"id": {
 										"allOf": [
 											{
-												"$ref": "#/components/schemas/uuid-8biwV59l"
+												"$ref": "#/components/schemas/uuid"
 											}
 										],
 										"description": "The ID for this profile",
@@ -217,7 +217,7 @@
 													"type": "boolean"
 												},
 												"id": {
-													"$ref": "#/components/schemas/entry_id-zoeyQM6E"
+													"$ref": "#/components/schemas/entry_id"
 												},
 												"name": {
 													"description": "The name of the entry.",
@@ -242,7 +242,7 @@
 									"id": {
 										"allOf": [
 											{
-												"$ref": "#/components/schemas/uuid-8biwV59l"
+												"$ref": "#/components/schemas/uuid"
 											}
 										],
 										"description": "The ID for this profile",

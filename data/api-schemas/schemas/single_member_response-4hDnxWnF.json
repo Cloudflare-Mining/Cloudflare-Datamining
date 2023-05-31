@@ -1,0 +1,259 @@
+{
+	"allOf": [
+		{
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"type": "string"
+								}
+							],
+							"nullable": true
+						}
+					}
+				}
+			],
+			"type": "object"
+		},
+		{
+			"properties": {
+				"result": {
+					"properties": {
+						"id": {
+							"description": "Membership identifier tag.",
+							"example": "4536bcfad5faccb111b47003c79917fa",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						},
+						"roles": {
+							"description": "Roles assigned to this member.",
+							"items": {
+								"properties": {
+									"description": {
+										"description": "Description of role's permissions.",
+										"example": "Administrative access to the entire Account",
+										"readOnly": true,
+										"type": "string"
+									},
+									"id": {
+										"description": "Role identifier tag.",
+										"example": "3536bcfad5faccb999b47003c79917fb",
+										"maxLength": 32,
+										"type": "string"
+									},
+									"name": {
+										"description": "Role name.",
+										"example": "Account Administrator",
+										"maxLength": 120,
+										"readOnly": true,
+										"type": "string"
+									},
+									"permissions": {
+										"allOf": [
+											{
+												"example": {
+													"analytics": {
+														"read": true,
+														"write": false
+													},
+													"zones": {
+														"read": true,
+														"write": true
+													}
+												},
+												"properties": {
+													"analytics": {
+														"$ref": "#/components/schemas/grants"
+													},
+													"billing": {
+														"$ref": "#/components/schemas/grants"
+													},
+													"cache_purge": {
+														"$ref": "#/components/schemas/grants"
+													},
+													"dns": {
+														"$ref": "#/components/schemas/grants"
+													},
+													"dns_records": {
+														"$ref": "#/components/schemas/grants"
+													},
+													"lb": {
+														"$ref": "#/components/schemas/grants"
+													},
+													"logs": {
+														"$ref": "#/components/schemas/grants"
+													},
+													"organization": {
+														"$ref": "#/components/schemas/grants"
+													},
+													"ssl": {
+														"$ref": "#/components/schemas/grants"
+													},
+													"waf": {
+														"$ref": "#/components/schemas/grants"
+													},
+													"zone_settings": {
+														"$ref": "#/components/schemas/grants"
+													},
+													"zones": {
+														"$ref": "#/components/schemas/grants"
+													}
+												},
+												"type": "object"
+											},
+											{
+												"readOnly": true
+											}
+										]
+									}
+								},
+								"required": [
+									"id",
+									"name",
+									"description",
+									"permissions"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						},
+						"status": {
+							"readOnly": true
+						},
+						"user": {
+							"properties": {
+								"email": {
+									"description": "The contact email address of the user.",
+									"example": "user@example.com",
+									"maxLength": 90,
+									"type": "string"
+								},
+								"first_name": {
+									"description": "User's first name",
+									"example": "John",
+									"maxLength": 60,
+									"nullable": true,
+									"type": "string"
+								},
+								"id": {
+									"description": "Identifier",
+									"example": "023e105f4ecef8ad9ca31a8372d0c353",
+									"maxLength": 32,
+									"readOnly": true,
+									"type": "string"
+								},
+								"last_name": {
+									"description": "User's last name",
+									"example": "Appleseed",
+									"maxLength": 60,
+									"nullable": true,
+									"type": "string"
+								},
+								"two_factor_authentication_enabled": {
+									"default": false,
+									"description": "Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.",
+									"readOnly": true,
+									"type": "boolean"
+								}
+							},
+							"readOnly": true,
+							"required": [
+								"email"
+							],
+							"type": "object"
+						}
+					},
+					"required": [
+						"id",
+						"user",
+						"status",
+						"roles"
+					],
+					"type": "object"
+				}
+			},
+			"type": "object"
+		}
+	]
+}

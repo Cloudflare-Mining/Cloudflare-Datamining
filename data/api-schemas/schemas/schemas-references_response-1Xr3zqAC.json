@@ -1,0 +1,162 @@
+{
+	"allOf": [
+		{
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
+		},
+		{
+			"properties": {
+				"result": {
+					"description": "List of resources that reference a given pool.",
+					"example": [
+						{
+							"reference_type": "referrer",
+							"resource_id": "699d98642c564d2e855e9661899b7252",
+							"resource_name": "www.example.com",
+							"resource_type": "load_balancer"
+						},
+						{
+							"reference_type": "referral",
+							"resource_id": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+							"resource_name": "Login page monitor",
+							"resource_type": "monitor"
+						}
+					],
+					"items": {
+						"properties": {
+							"reference_type": {
+								"enum": [
+									"*",
+									"referral",
+									"referrer"
+								],
+								"type": "string"
+							},
+							"resource_id": {
+								"type": "string"
+							},
+							"resource_name": {
+								"type": "string"
+							},
+							"resource_type": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

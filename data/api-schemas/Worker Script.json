@@ -97,46 +97,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -175,10 +139,10 @@
 											"items": {
 												"properties": {
 													"created_on": {
-														"$ref": "#/components/schemas/created_on-GRHG4GwR"
+														"$ref": "#/components/schemas/created_on-Fg5YN7YS"
 													},
 													"etag": {
-														"$ref": "#/components/schemas/etag"
+														"$ref": "#/components/schemas/etag-0AfAcHUA"
 													},
 													"id": {
 														"description": "The id of the script in the Workers system. Usually the script name.",
@@ -190,7 +154,7 @@
 														"$ref": "#/components/schemas/logpush"
 													},
 													"modified_on": {
-														"$ref": "#/components/schemas/modified_on"
+														"$ref": "#/components/schemas/modified_on-luBjcsUy"
 													},
 													"placement_mode": {
 														"$ref": "#/components/schemas/placement_mode"
@@ -220,46 +184,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -298,10 +226,10 @@
 													"items": {
 														"properties": {
 															"created_on": {
-																"$ref": "#/components/schemas/created_on-GRHG4GwR"
+																"$ref": "#/components/schemas/created_on-Fg5YN7YS"
 															},
 															"etag": {
-																"$ref": "#/components/schemas/etag"
+																"$ref": "#/components/schemas/etag-0AfAcHUA"
 															},
 															"id": {
 																"description": "The id of the script in the Workers system. Usually the script name.",
@@ -313,7 +241,7 @@
 																"$ref": "#/components/schemas/logpush"
 															},
 															"modified_on": {
-																"$ref": "#/components/schemas/modified_on"
+																"$ref": "#/components/schemas/modified_on-luBjcsUy"
 															},
 															"placement_mode": {
 																"$ref": "#/components/schemas/placement_mode"
@@ -539,46 +467,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -639,46 +531,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -909,7 +765,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-ML2Z7VGt"
 												},
 												{
 													"properties": {
@@ -933,10 +789,10 @@
 												"result": {
 													"properties": {
 														"created_on": {
-															"$ref": "#/components/schemas/created_on-GRHG4GwR"
+															"$ref": "#/components/schemas/created_on-Fg5YN7YS"
 														},
 														"etag": {
-															"$ref": "#/components/schemas/etag"
+															"$ref": "#/components/schemas/etag-0AfAcHUA"
 														},
 														"id": {
 															"description": "The id of the script in the Workers system. Usually the script name.",
@@ -948,7 +804,7 @@
 															"$ref": "#/components/schemas/logpush"
 														},
 														"modified_on": {
-															"$ref": "#/components/schemas/modified_on"
+															"$ref": "#/components/schemas/modified_on-luBjcsUy"
 														},
 														"placement_mode": {
 															"$ref": "#/components/schemas/placement_mode"
@@ -1179,46 +1035,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -1279,46 +1099,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [

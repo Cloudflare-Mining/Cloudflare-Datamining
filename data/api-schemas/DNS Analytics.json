@@ -93,46 +93,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -206,7 +170,7 @@
 															"type": "object"
 														},
 														"query": {
-															"$ref": "#/components/schemas/query-SLT8fsMj"
+															"$ref": "#/components/schemas/query"
 														},
 														"rows": {
 															"description": "Total number of rows in the result.",
@@ -277,46 +241,10 @@
 												{
 													"properties": {
 														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"result": {
 															"anyOf": [
@@ -390,7 +318,7 @@
 																	"type": "object"
 																},
 																"query": {
-																	"$ref": "#/components/schemas/query-SLT8fsMj"
+																	"$ref": "#/components/schemas/query"
 																},
 																"rows": {
 																	"description": "Total number of rows in the result.",
@@ -667,46 +595,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -780,7 +672,7 @@
 															"type": "object"
 														},
 														"query": {
-															"$ref": "#/components/schemas/query-SLT8fsMj"
+															"$ref": "#/components/schemas/query"
 														},
 														"rows": {
 															"description": "Total number of rows in the result.",
@@ -898,46 +790,10 @@
 												{
 													"properties": {
 														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"result": {
 															"anyOf": [
@@ -1011,7 +867,7 @@
 																	"type": "object"
 																},
 																"query": {
-																	"$ref": "#/components/schemas/query-SLT8fsMj"
+																	"$ref": "#/components/schemas/query"
 																},
 																"rows": {
 																	"description": "Total number of rows in the result.",

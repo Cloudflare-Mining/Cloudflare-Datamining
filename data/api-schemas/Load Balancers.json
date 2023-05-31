@@ -35,7 +35,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-eatb1gke"
 										},
 										{
 											"properties": {
@@ -83,7 +83,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-eatb1gke"
 												},
 												{
 													"properties": {
@@ -241,7 +241,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-eatb1gke"
 										},
 										{
 											"properties": {
@@ -276,10 +276,10 @@
 														"$ref": "#/components/schemas/default_pools"
 													},
 													"description": {
-														"$ref": "#/components/schemas/load-balancer_components-schemas-description"
+														"$ref": "#/components/schemas/components-schemas-description"
 													},
 													"enabled": {
-														"$ref": "#/components/schemas/load-balancer_components-schemas-enabled"
+														"$ref": "#/components/schemas/components-schemas-enabled"
 													},
 													"fallback_pool": {
 														"$ref": "#/components/schemas/fallback_pool"
@@ -294,13 +294,13 @@
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"name": {
-														"$ref": "#/components/schemas/load-balancer_components-schemas-name"
+														"$ref": "#/components/schemas/components-schemas-name-l93t7VsE"
 													},
 													"pop_pools": {
 														"$ref": "#/components/schemas/pop_pools"
 													},
 													"proxied": {
-														"$ref": "#/components/schemas/proxied-WvzTKDvs"
+														"$ref": "#/components/schemas/proxied"
 													},
 													"random_steering": {
 														"$ref": "#/components/schemas/random_steering"
@@ -309,7 +309,7 @@
 														"$ref": "#/components/schemas/region_pools"
 													},
 													"rules": {
-														"$ref": "#/components/schemas/components-schemas-rules"
+														"$ref": "#/components/schemas/rules"
 													},
 													"session_affinity": {
 														"$ref": "#/components/schemas/session_affinity"
@@ -324,7 +324,7 @@
 														"$ref": "#/components/schemas/steering_policy"
 													},
 													"ttl": {
-														"$ref": "#/components/schemas/ttl-NMrHfxmv"
+														"$ref": "#/components/schemas/ttl"
 													}
 												},
 												"type": "object"
@@ -349,7 +349,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-eatb1gke"
 												},
 												{
 													"properties": {
@@ -384,10 +384,10 @@
 																"$ref": "#/components/schemas/default_pools"
 															},
 															"description": {
-																"$ref": "#/components/schemas/load-balancer_components-schemas-description"
+																"$ref": "#/components/schemas/components-schemas-description"
 															},
 															"enabled": {
-																"$ref": "#/components/schemas/load-balancer_components-schemas-enabled"
+																"$ref": "#/components/schemas/components-schemas-enabled"
 															},
 															"fallback_pool": {
 																"$ref": "#/components/schemas/fallback_pool"
@@ -402,13 +402,13 @@
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"name": {
-																"$ref": "#/components/schemas/load-balancer_components-schemas-name"
+																"$ref": "#/components/schemas/components-schemas-name-l93t7VsE"
 															},
 															"pop_pools": {
 																"$ref": "#/components/schemas/pop_pools"
 															},
 															"proxied": {
-																"$ref": "#/components/schemas/proxied-WvzTKDvs"
+																"$ref": "#/components/schemas/proxied"
 															},
 															"random_steering": {
 																"$ref": "#/components/schemas/random_steering"
@@ -417,7 +417,7 @@
 																"$ref": "#/components/schemas/region_pools"
 															},
 															"rules": {
-																"$ref": "#/components/schemas/components-schemas-rules"
+																"$ref": "#/components/schemas/rules"
 															},
 															"session_affinity": {
 																"$ref": "#/components/schemas/session_affinity"
@@ -432,7 +432,7 @@
 																"$ref": "#/components/schemas/steering_policy"
 															},
 															"ttl": {
-																"$ref": "#/components/schemas/ttl-NMrHfxmv"
+																"$ref": "#/components/schemas/ttl"
 															}
 														},
 														"type": "object"
@@ -575,7 +575,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-eatb1gke"
 										},
 										{
 											"properties": {
@@ -612,10 +612,10 @@
 													"$ref": "#/components/schemas/default_pools"
 												},
 												"description": {
-													"$ref": "#/components/schemas/components-schemas-description-TEP9vEQu"
+													"$ref": "#/components/schemas/components-schemas-description"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/components-schemas-enabled-4fH3nvHg"
+													"$ref": "#/components/schemas/components-schemas-enabled"
 												},
 												"fallback_pool": {
 													"$ref": "#/components/schemas/fallback_pool"
@@ -630,13 +630,13 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/components-schemas-name-dqVPqwmr"
+													"$ref": "#/components/schemas/components-schemas-name-l93t7VsE"
 												},
 												"pop_pools": {
 													"$ref": "#/components/schemas/pop_pools"
 												},
 												"proxied": {
-													"$ref": "#/components/schemas/proxied-uhfqbXxk"
+													"$ref": "#/components/schemas/proxied"
 												},
 												"random_steering": {
 													"$ref": "#/components/schemas/random_steering"
@@ -645,7 +645,7 @@
 													"$ref": "#/components/schemas/region_pools"
 												},
 												"rules": {
-													"$ref": "#/components/schemas/rules-t7cjXjaV"
+													"$ref": "#/components/schemas/rules"
 												},
 												"session_affinity": {
 													"$ref": "#/components/schemas/session_affinity"
@@ -660,7 +660,7 @@
 													"$ref": "#/components/schemas/steering_policy"
 												},
 												"ttl": {
-													"$ref": "#/components/schemas/ttl-UJCgbUVl"
+													"$ref": "#/components/schemas/ttl"
 												}
 											},
 											"type": "object"
@@ -683,7 +683,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-eatb1gke"
 												},
 												{
 													"properties": {
@@ -720,10 +720,10 @@
 															"$ref": "#/components/schemas/default_pools"
 														},
 														"description": {
-															"$ref": "#/components/schemas/components-schemas-description-TEP9vEQu"
+															"$ref": "#/components/schemas/components-schemas-description"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/components-schemas-enabled-4fH3nvHg"
+															"$ref": "#/components/schemas/components-schemas-enabled"
 														},
 														"fallback_pool": {
 															"$ref": "#/components/schemas/fallback_pool"
@@ -738,13 +738,13 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/components-schemas-name-dqVPqwmr"
+															"$ref": "#/components/schemas/components-schemas-name-l93t7VsE"
 														},
 														"pop_pools": {
 															"$ref": "#/components/schemas/pop_pools"
 														},
 														"proxied": {
-															"$ref": "#/components/schemas/proxied-uhfqbXxk"
+															"$ref": "#/components/schemas/proxied"
 														},
 														"random_steering": {
 															"$ref": "#/components/schemas/random_steering"
@@ -753,7 +753,7 @@
 															"$ref": "#/components/schemas/region_pools"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/rules-t7cjXjaV"
+															"$ref": "#/components/schemas/rules"
 														},
 														"session_affinity": {
 															"$ref": "#/components/schemas/session_affinity"
@@ -768,7 +768,7 @@
 															"$ref": "#/components/schemas/steering_policy"
 														},
 														"ttl": {
-															"$ref": "#/components/schemas/ttl-UJCgbUVl"
+															"$ref": "#/components/schemas/ttl"
 														}
 													},
 													"type": "object"
@@ -1419,7 +1419,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-eatb1gke"
 										},
 										{
 											"properties": {
@@ -1456,10 +1456,10 @@
 													"$ref": "#/components/schemas/default_pools"
 												},
 												"description": {
-													"$ref": "#/components/schemas/components-schemas-description-TEP9vEQu"
+													"$ref": "#/components/schemas/components-schemas-description"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/components-schemas-enabled-4fH3nvHg"
+													"$ref": "#/components/schemas/components-schemas-enabled"
 												},
 												"fallback_pool": {
 													"$ref": "#/components/schemas/fallback_pool"
@@ -1474,13 +1474,13 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/components-schemas-name-dqVPqwmr"
+													"$ref": "#/components/schemas/components-schemas-name-l93t7VsE"
 												},
 												"pop_pools": {
 													"$ref": "#/components/schemas/pop_pools"
 												},
 												"proxied": {
-													"$ref": "#/components/schemas/proxied-uhfqbXxk"
+													"$ref": "#/components/schemas/proxied"
 												},
 												"random_steering": {
 													"$ref": "#/components/schemas/random_steering"
@@ -1489,7 +1489,7 @@
 													"$ref": "#/components/schemas/region_pools"
 												},
 												"rules": {
-													"$ref": "#/components/schemas/rules-t7cjXjaV"
+													"$ref": "#/components/schemas/rules"
 												},
 												"session_affinity": {
 													"$ref": "#/components/schemas/session_affinity"
@@ -1504,7 +1504,7 @@
 													"$ref": "#/components/schemas/steering_policy"
 												},
 												"ttl": {
-													"$ref": "#/components/schemas/ttl-UJCgbUVl"
+													"$ref": "#/components/schemas/ttl"
 												}
 											},
 											"type": "object"
@@ -1527,7 +1527,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-eatb1gke"
 												},
 												{
 													"properties": {
@@ -1564,10 +1564,10 @@
 															"$ref": "#/components/schemas/default_pools"
 														},
 														"description": {
-															"$ref": "#/components/schemas/components-schemas-description-TEP9vEQu"
+															"$ref": "#/components/schemas/components-schemas-description"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/components-schemas-enabled-4fH3nvHg"
+															"$ref": "#/components/schemas/components-schemas-enabled"
 														},
 														"fallback_pool": {
 															"$ref": "#/components/schemas/fallback_pool"
@@ -1582,13 +1582,13 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/components-schemas-name-dqVPqwmr"
+															"$ref": "#/components/schemas/components-schemas-name-l93t7VsE"
 														},
 														"pop_pools": {
 															"$ref": "#/components/schemas/pop_pools"
 														},
 														"proxied": {
-															"$ref": "#/components/schemas/proxied-uhfqbXxk"
+															"$ref": "#/components/schemas/proxied"
 														},
 														"random_steering": {
 															"$ref": "#/components/schemas/random_steering"
@@ -1597,7 +1597,7 @@
 															"$ref": "#/components/schemas/region_pools"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/rules-t7cjXjaV"
+															"$ref": "#/components/schemas/rules"
 														},
 														"session_affinity": {
 															"$ref": "#/components/schemas/session_affinity"
@@ -1612,7 +1612,7 @@
 															"$ref": "#/components/schemas/steering_policy"
 														},
 														"ttl": {
-															"$ref": "#/components/schemas/ttl-UJCgbUVl"
+															"$ref": "#/components/schemas/ttl"
 														}
 													},
 													"type": "object"
@@ -2254,7 +2254,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-eatb1gke"
 										},
 										{
 											"properties": {
@@ -2291,10 +2291,10 @@
 													"$ref": "#/components/schemas/default_pools"
 												},
 												"description": {
-													"$ref": "#/components/schemas/components-schemas-description-TEP9vEQu"
+													"$ref": "#/components/schemas/components-schemas-description"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/components-schemas-enabled-4fH3nvHg"
+													"$ref": "#/components/schemas/components-schemas-enabled"
 												},
 												"fallback_pool": {
 													"$ref": "#/components/schemas/fallback_pool"
@@ -2309,13 +2309,13 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/components-schemas-name-dqVPqwmr"
+													"$ref": "#/components/schemas/components-schemas-name-l93t7VsE"
 												},
 												"pop_pools": {
 													"$ref": "#/components/schemas/pop_pools"
 												},
 												"proxied": {
-													"$ref": "#/components/schemas/proxied-uhfqbXxk"
+													"$ref": "#/components/schemas/proxied"
 												},
 												"random_steering": {
 													"$ref": "#/components/schemas/random_steering"
@@ -2324,7 +2324,7 @@
 													"$ref": "#/components/schemas/region_pools"
 												},
 												"rules": {
-													"$ref": "#/components/schemas/rules-t7cjXjaV"
+													"$ref": "#/components/schemas/rules"
 												},
 												"session_affinity": {
 													"$ref": "#/components/schemas/session_affinity"
@@ -2339,7 +2339,7 @@
 													"$ref": "#/components/schemas/steering_policy"
 												},
 												"ttl": {
-													"$ref": "#/components/schemas/ttl-UJCgbUVl"
+													"$ref": "#/components/schemas/ttl"
 												}
 											},
 											"type": "object"
@@ -2362,7 +2362,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-eatb1gke"
 												},
 												{
 													"properties": {
@@ -2399,10 +2399,10 @@
 															"$ref": "#/components/schemas/default_pools"
 														},
 														"description": {
-															"$ref": "#/components/schemas/components-schemas-description-TEP9vEQu"
+															"$ref": "#/components/schemas/components-schemas-description"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/components-schemas-enabled-4fH3nvHg"
+															"$ref": "#/components/schemas/components-schemas-enabled"
 														},
 														"fallback_pool": {
 															"$ref": "#/components/schemas/fallback_pool"
@@ -2417,13 +2417,13 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/components-schemas-name-dqVPqwmr"
+															"$ref": "#/components/schemas/components-schemas-name-l93t7VsE"
 														},
 														"pop_pools": {
 															"$ref": "#/components/schemas/pop_pools"
 														},
 														"proxied": {
-															"$ref": "#/components/schemas/proxied-uhfqbXxk"
+															"$ref": "#/components/schemas/proxied"
 														},
 														"random_steering": {
 															"$ref": "#/components/schemas/random_steering"
@@ -2432,7 +2432,7 @@
 															"$ref": "#/components/schemas/region_pools"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/rules-t7cjXjaV"
+															"$ref": "#/components/schemas/rules"
 														},
 														"session_affinity": {
 															"$ref": "#/components/schemas/session_affinity"
@@ -2447,7 +2447,7 @@
 															"$ref": "#/components/schemas/steering_policy"
 														},
 														"ttl": {
-															"$ref": "#/components/schemas/ttl-UJCgbUVl"
+															"$ref": "#/components/schemas/ttl"
 														}
 													},
 													"type": "object"
@@ -3103,7 +3103,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-eatb1gke"
 										},
 										{
 											"properties": {
@@ -3140,10 +3140,10 @@
 													"$ref": "#/components/schemas/default_pools"
 												},
 												"description": {
-													"$ref": "#/components/schemas/components-schemas-description-TEP9vEQu"
+													"$ref": "#/components/schemas/components-schemas-description"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/components-schemas-enabled-4fH3nvHg"
+													"$ref": "#/components/schemas/components-schemas-enabled"
 												},
 												"fallback_pool": {
 													"$ref": "#/components/schemas/fallback_pool"
@@ -3158,13 +3158,13 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/components-schemas-name-dqVPqwmr"
+													"$ref": "#/components/schemas/components-schemas-name-l93t7VsE"
 												},
 												"pop_pools": {
 													"$ref": "#/components/schemas/pop_pools"
 												},
 												"proxied": {
-													"$ref": "#/components/schemas/proxied-uhfqbXxk"
+													"$ref": "#/components/schemas/proxied"
 												},
 												"random_steering": {
 													"$ref": "#/components/schemas/random_steering"
@@ -3173,7 +3173,7 @@
 													"$ref": "#/components/schemas/region_pools"
 												},
 												"rules": {
-													"$ref": "#/components/schemas/rules-t7cjXjaV"
+													"$ref": "#/components/schemas/rules"
 												},
 												"session_affinity": {
 													"$ref": "#/components/schemas/session_affinity"
@@ -3188,7 +3188,7 @@
 													"$ref": "#/components/schemas/steering_policy"
 												},
 												"ttl": {
-													"$ref": "#/components/schemas/ttl-UJCgbUVl"
+													"$ref": "#/components/schemas/ttl"
 												}
 											},
 											"type": "object"
@@ -3211,7 +3211,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-eatb1gke"
 												},
 												{
 													"properties": {
@@ -3248,10 +3248,10 @@
 															"$ref": "#/components/schemas/default_pools"
 														},
 														"description": {
-															"$ref": "#/components/schemas/components-schemas-description-TEP9vEQu"
+															"$ref": "#/components/schemas/components-schemas-description"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/components-schemas-enabled-4fH3nvHg"
+															"$ref": "#/components/schemas/components-schemas-enabled"
 														},
 														"fallback_pool": {
 															"$ref": "#/components/schemas/fallback_pool"
@@ -3266,13 +3266,13 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/components-schemas-name-dqVPqwmr"
+															"$ref": "#/components/schemas/components-schemas-name-l93t7VsE"
 														},
 														"pop_pools": {
 															"$ref": "#/components/schemas/pop_pools"
 														},
 														"proxied": {
-															"$ref": "#/components/schemas/proxied-uhfqbXxk"
+															"$ref": "#/components/schemas/proxied"
 														},
 														"random_steering": {
 															"$ref": "#/components/schemas/random_steering"
@@ -3281,7 +3281,7 @@
 															"$ref": "#/components/schemas/region_pools"
 														},
 														"rules": {
-															"$ref": "#/components/schemas/rules-t7cjXjaV"
+															"$ref": "#/components/schemas/rules"
 														},
 														"session_affinity": {
 															"$ref": "#/components/schemas/session_affinity"
@@ -3296,7 +3296,7 @@
 															"$ref": "#/components/schemas/steering_policy"
 														},
 														"ttl": {
-															"$ref": "#/components/schemas/ttl-UJCgbUVl"
+															"$ref": "#/components/schemas/ttl"
 														}
 													},
 													"type": "object"

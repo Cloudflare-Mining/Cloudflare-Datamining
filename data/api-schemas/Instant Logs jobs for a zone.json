@@ -25,46 +25,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -113,7 +77,7 @@
 														"$ref": "#/components/schemas/filter"
 													},
 													"sample": {
-														"$ref": "#/components/schemas/sample-2ywNZ0ZI"
+														"$ref": "#/components/schemas/sample"
 													},
 													"session_id": {
 														"$ref": "#/components/schemas/session_id"
@@ -141,46 +105,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -229,7 +157,7 @@
 																"$ref": "#/components/schemas/filter"
 															},
 															"sample": {
-																"$ref": "#/components/schemas/sample-2ywNZ0ZI"
+																"$ref": "#/components/schemas/sample"
 															},
 															"session_id": {
 																"$ref": "#/components/schemas/session_id"
@@ -408,7 +336,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-aMgFCrdd"
 										},
 										{
 											"properties": {
@@ -442,7 +370,7 @@
 													"$ref": "#/components/schemas/filter"
 												},
 												"sample": {
-													"$ref": "#/components/schemas/sample-2ywNZ0ZI"
+													"$ref": "#/components/schemas/sample"
 												},
 												"session_id": {
 													"$ref": "#/components/schemas/session_id"
@@ -468,7 +396,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-aMgFCrdd"
 												},
 												{
 													"properties": {
@@ -502,7 +430,7 @@
 															"$ref": "#/components/schemas/filter"
 														},
 														"sample": {
-															"$ref": "#/components/schemas/sample-2ywNZ0ZI"
+															"$ref": "#/components/schemas/sample"
 														},
 														"session_id": {
 															"$ref": "#/components/schemas/session_id"

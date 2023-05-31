@@ -1,7 +1,5 @@
 {
-	"default": 0,
-	"description": "For UDP and TCP, specifies the destination port. For ICMP, specifies the initial ICMP sequence value. Default value 0 will choose the best value to use for each protocol.",
-	"maximum": 65535,
-	"minimum": 0,
-	"type": "integer"
+	"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.",
+	"example": 53,
+	"type": "number"
 }

@@ -45,46 +45,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -167,46 +131,10 @@
 												{
 													"properties": {
 														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"result": {
 															"anyOf": [
@@ -433,7 +361,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-QVKpu5cp"
 										},
 										{
 											"properties": {
@@ -468,7 +396,7 @@
 														"$ref": "#/components/schemas/ecs_fallback"
 													},
 													"id": {
-														"$ref": "#/components/schemas/identifier-j8NbEerW"
+														"$ref": "#/components/schemas/identifier-mwIv8ckx"
 													},
 													"maximum_cache_ttl": {
 														"$ref": "#/components/schemas/maximum_cache_ttl"
@@ -477,10 +405,10 @@
 														"$ref": "#/components/schemas/minimum_cache_ttl"
 													},
 													"modified_on": {
-														"$ref": "#/components/schemas/modified_on-q5myGGK7"
+														"$ref": "#/components/schemas/modified_on"
 													},
 													"name": {
-														"$ref": "#/components/schemas/name-d7a7Fwuk"
+														"$ref": "#/components/schemas/name-jYkuRXcB"
 													},
 													"negative_cache_ttl": {
 														"$ref": "#/components/schemas/negative_cache_ttl"
@@ -532,7 +460,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-QVKpu5cp"
 												},
 												{
 													"properties": {
@@ -567,7 +495,7 @@
 																"$ref": "#/components/schemas/ecs_fallback"
 															},
 															"id": {
-																"$ref": "#/components/schemas/identifier-j8NbEerW"
+																"$ref": "#/components/schemas/identifier-mwIv8ckx"
 															},
 															"maximum_cache_ttl": {
 																"$ref": "#/components/schemas/maximum_cache_ttl"
@@ -576,10 +504,10 @@
 																"$ref": "#/components/schemas/minimum_cache_ttl"
 															},
 															"modified_on": {
-																"$ref": "#/components/schemas/modified_on-q5myGGK7"
+																"$ref": "#/components/schemas/modified_on"
 															},
 															"name": {
-																"$ref": "#/components/schemas/name-d7a7Fwuk"
+																"$ref": "#/components/schemas/name-jYkuRXcB"
 															},
 															"negative_cache_ttl": {
 																"$ref": "#/components/schemas/negative_cache_ttl"
@@ -768,7 +696,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-QVKpu5cp"
 										},
 										{
 											"properties": {
@@ -804,7 +732,7 @@
 													"$ref": "#/components/schemas/ecs_fallback"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-j8NbEerW"
+													"$ref": "#/components/schemas/identifier-mwIv8ckx"
 												},
 												"maximum_cache_ttl": {
 													"$ref": "#/components/schemas/maximum_cache_ttl"
@@ -813,10 +741,10 @@
 													"$ref": "#/components/schemas/minimum_cache_ttl"
 												},
 												"modified_on": {
-													"$ref": "#/components/schemas/modified_on-q5myGGK7"
+													"$ref": "#/components/schemas/modified_on"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-d7a7Fwuk"
+													"$ref": "#/components/schemas/name-jYkuRXcB"
 												},
 												"negative_cache_ttl": {
 													"$ref": "#/components/schemas/negative_cache_ttl"
@@ -866,7 +794,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-QVKpu5cp"
 												},
 												{
 													"properties": {
@@ -902,7 +830,7 @@
 															"$ref": "#/components/schemas/ecs_fallback"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-j8NbEerW"
+															"$ref": "#/components/schemas/identifier-mwIv8ckx"
 														},
 														"maximum_cache_ttl": {
 															"$ref": "#/components/schemas/maximum_cache_ttl"
@@ -911,10 +839,10 @@
 															"$ref": "#/components/schemas/minimum_cache_ttl"
 														},
 														"modified_on": {
-															"$ref": "#/components/schemas/modified_on-q5myGGK7"
+															"$ref": "#/components/schemas/modified_on"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-d7a7Fwuk"
+															"$ref": "#/components/schemas/name-jYkuRXcB"
 														},
 														"negative_cache_ttl": {
 															"$ref": "#/components/schemas/negative_cache_ttl"
@@ -1112,7 +1040,7 @@
 										"$ref": "#/components/schemas/ecs_fallback"
 									},
 									"id": {
-										"$ref": "#/components/schemas/identifier-j8NbEerW"
+										"$ref": "#/components/schemas/identifier-mwIv8ckx"
 									},
 									"maximum_cache_ttl": {
 										"$ref": "#/components/schemas/maximum_cache_ttl"
@@ -1121,10 +1049,10 @@
 										"$ref": "#/components/schemas/minimum_cache_ttl"
 									},
 									"modified_on": {
-										"$ref": "#/components/schemas/modified_on-q5myGGK7"
+										"$ref": "#/components/schemas/modified_on"
 									},
 									"name": {
-										"$ref": "#/components/schemas/name-d7a7Fwuk"
+										"$ref": "#/components/schemas/name-jYkuRXcB"
 									},
 									"negative_cache_ttl": {
 										"$ref": "#/components/schemas/negative_cache_ttl"
@@ -1172,7 +1100,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-QVKpu5cp"
 										},
 										{
 											"properties": {
@@ -1208,7 +1136,7 @@
 													"$ref": "#/components/schemas/ecs_fallback"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-j8NbEerW"
+													"$ref": "#/components/schemas/identifier-mwIv8ckx"
 												},
 												"maximum_cache_ttl": {
 													"$ref": "#/components/schemas/maximum_cache_ttl"
@@ -1217,10 +1145,10 @@
 													"$ref": "#/components/schemas/minimum_cache_ttl"
 												},
 												"modified_on": {
-													"$ref": "#/components/schemas/modified_on-q5myGGK7"
+													"$ref": "#/components/schemas/modified_on"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-d7a7Fwuk"
+													"$ref": "#/components/schemas/name-jYkuRXcB"
 												},
 												"negative_cache_ttl": {
 													"$ref": "#/components/schemas/negative_cache_ttl"
@@ -1270,7 +1198,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-QVKpu5cp"
 												},
 												{
 													"properties": {
@@ -1306,7 +1234,7 @@
 															"$ref": "#/components/schemas/ecs_fallback"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-j8NbEerW"
+															"$ref": "#/components/schemas/identifier-mwIv8ckx"
 														},
 														"maximum_cache_ttl": {
 															"$ref": "#/components/schemas/maximum_cache_ttl"
@@ -1315,10 +1243,10 @@
 															"$ref": "#/components/schemas/minimum_cache_ttl"
 														},
 														"modified_on": {
-															"$ref": "#/components/schemas/modified_on-q5myGGK7"
+															"$ref": "#/components/schemas/modified_on"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-d7a7Fwuk"
+															"$ref": "#/components/schemas/name-jYkuRXcB"
 														},
 														"negative_cache_ttl": {
 															"$ref": "#/components/schemas/negative_cache_ttl"
@@ -1614,7 +1542,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-QVKpu5cp"
 										},
 										{
 											"properties": {
@@ -1650,7 +1578,7 @@
 													"$ref": "#/components/schemas/ecs_fallback"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-j8NbEerW"
+													"$ref": "#/components/schemas/identifier-mwIv8ckx"
 												},
 												"maximum_cache_ttl": {
 													"$ref": "#/components/schemas/maximum_cache_ttl"
@@ -1659,10 +1587,10 @@
 													"$ref": "#/components/schemas/minimum_cache_ttl"
 												},
 												"modified_on": {
-													"$ref": "#/components/schemas/modified_on-q5myGGK7"
+													"$ref": "#/components/schemas/modified_on"
 												},
 												"name": {
-													"$ref": "#/components/schemas/name-d7a7Fwuk"
+													"$ref": "#/components/schemas/name-jYkuRXcB"
 												},
 												"negative_cache_ttl": {
 													"$ref": "#/components/schemas/negative_cache_ttl"
@@ -1712,7 +1640,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-QVKpu5cp"
 												},
 												{
 													"properties": {
@@ -1748,7 +1676,7 @@
 															"$ref": "#/components/schemas/ecs_fallback"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-j8NbEerW"
+															"$ref": "#/components/schemas/identifier-mwIv8ckx"
 														},
 														"maximum_cache_ttl": {
 															"$ref": "#/components/schemas/maximum_cache_ttl"
@@ -1757,10 +1685,10 @@
 															"$ref": "#/components/schemas/minimum_cache_ttl"
 														},
 														"modified_on": {
-															"$ref": "#/components/schemas/modified_on-q5myGGK7"
+															"$ref": "#/components/schemas/modified_on"
 														},
 														"name": {
-															"$ref": "#/components/schemas/name-d7a7Fwuk"
+															"$ref": "#/components/schemas/name-jYkuRXcB"
 														},
 														"negative_cache_ttl": {
 															"$ref": "#/components/schemas/negative_cache_ttl"

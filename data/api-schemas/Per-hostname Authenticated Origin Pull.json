@@ -7,9 +7,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Certificate identifier tag.",
-					"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
-					"maxLength": 36,
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -42,7 +42,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 										},
 										{
 											"properties": {
@@ -73,13 +73,13 @@
 													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 												},
 												"id": {
-													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+													"$ref": "#/components/schemas/identifier-5SD4XsEB"
 												},
 												"issuer": {
 													"$ref": "#/components/schemas/issuer"
 												},
 												"serial_number": {
-													"$ref": "#/components/schemas/serial_number-bk0IaC9D"
+													"$ref": "#/components/schemas/serial_number-ggJ6Islg"
 												},
 												"signature": {
 													"$ref": "#/components/schemas/signature"
@@ -110,7 +110,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 												},
 												{
 													"properties": {
@@ -141,13 +141,13 @@
 															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 														},
 														"id": {
-															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+															"$ref": "#/components/schemas/identifier-5SD4XsEB"
 														},
 														"issuer": {
 															"$ref": "#/components/schemas/issuer"
 														},
 														"serial_number": {
-															"$ref": "#/components/schemas/serial_number-bk0IaC9D"
+															"$ref": "#/components/schemas/serial_number-ggJ6Islg"
 														},
 														"signature": {
 															"$ref": "#/components/schemas/signature"
@@ -316,7 +316,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 										},
 										{
 											"properties": {
@@ -341,7 +341,7 @@
 										"result": {
 											"properties": {
 												"cert_id": {
-													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+													"$ref": "#/components/schemas/identifier-5SD4XsEB"
 												},
 												"cert_status": {
 													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
@@ -371,7 +371,7 @@
 													"$ref": "#/components/schemas/issuer"
 												},
 												"serial_number": {
-													"$ref": "#/components/schemas/serial_number-bk0IaC9D"
+													"$ref": "#/components/schemas/serial_number-ggJ6Islg"
 												},
 												"signature": {
 													"$ref": "#/components/schemas/signature"
@@ -402,7 +402,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 												},
 												{
 													"properties": {
@@ -427,7 +427,7 @@
 												"result": {
 													"properties": {
 														"cert_id": {
-															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+															"$ref": "#/components/schemas/identifier-5SD4XsEB"
 														},
 														"cert_status": {
 															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-status"
@@ -457,7 +457,7 @@
 															"$ref": "#/components/schemas/issuer"
 														},
 														"serial_number": {
-															"$ref": "#/components/schemas/serial_number-bk0IaC9D"
+															"$ref": "#/components/schemas/serial_number-ggJ6Islg"
 														},
 														"signature": {
 															"$ref": "#/components/schemas/signature"
@@ -615,7 +615,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 										},
 										{
 											"properties": {
@@ -638,12 +638,12 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/hostname_certid_object-RDedVBIy"
+														"$ref": "#/components/schemas/hostname_certid_object-c8DOMgVM"
 													}
 												],
 												"properties": {
 													"cert_id": {
-														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+														"$ref": "#/components/schemas/identifier-5SD4XsEB"
 													},
 													"certificate": {
 														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
@@ -655,7 +655,7 @@
 														"$ref": "#/components/schemas/schemas-hostname"
 													},
 													"id": {
-														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+														"$ref": "#/components/schemas/identifier-5SD4XsEB"
 													},
 													"private_key": {
 														"$ref": "#/components/schemas/schemas-private_key"
@@ -683,7 +683,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 												},
 												{
 													"properties": {
@@ -706,12 +706,12 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/hostname_certid_object-RDedVBIy"
+																"$ref": "#/components/schemas/hostname_certid_object-c8DOMgVM"
 															}
 														],
 														"properties": {
 															"cert_id": {
-																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+																"$ref": "#/components/schemas/identifier-5SD4XsEB"
 															},
 															"certificate": {
 																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
@@ -723,7 +723,7 @@
 																"$ref": "#/components/schemas/schemas-hostname"
 															},
 															"id": {
-																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+																"$ref": "#/components/schemas/identifier-5SD4XsEB"
 															},
 															"private_key": {
 																"$ref": "#/components/schemas/schemas-private_key"
@@ -862,9 +862,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Certificate identifier tag.",
-					"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
-					"maxLength": 36,
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -891,7 +891,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 										},
 										{
 											"properties": {
@@ -922,13 +922,13 @@
 													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 												},
 												"id": {
-													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+													"$ref": "#/components/schemas/identifier-5SD4XsEB"
 												},
 												"issuer": {
 													"$ref": "#/components/schemas/issuer"
 												},
 												"serial_number": {
-													"$ref": "#/components/schemas/serial_number-bk0IaC9D"
+													"$ref": "#/components/schemas/serial_number-ggJ6Islg"
 												},
 												"signature": {
 													"$ref": "#/components/schemas/signature"
@@ -959,7 +959,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 												},
 												{
 													"properties": {
@@ -990,13 +990,13 @@
 															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 														},
 														"id": {
-															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+															"$ref": "#/components/schemas/identifier-5SD4XsEB"
 														},
 														"issuer": {
 															"$ref": "#/components/schemas/issuer"
 														},
 														"serial_number": {
-															"$ref": "#/components/schemas/serial_number-bk0IaC9D"
+															"$ref": "#/components/schemas/serial_number-ggJ6Islg"
 														},
 														"signature": {
 															"$ref": "#/components/schemas/signature"
@@ -1181,7 +1181,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 										},
 										{
 											"properties": {
@@ -1212,13 +1212,13 @@
 													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 												},
 												"id": {
-													"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+													"$ref": "#/components/schemas/identifier-5SD4XsEB"
 												},
 												"issuer": {
 													"$ref": "#/components/schemas/issuer"
 												},
 												"serial_number": {
-													"$ref": "#/components/schemas/serial_number-bk0IaC9D"
+													"$ref": "#/components/schemas/serial_number-ggJ6Islg"
 												},
 												"signature": {
 													"$ref": "#/components/schemas/signature"
@@ -1249,7 +1249,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 												},
 												{
 													"properties": {
@@ -1280,13 +1280,13 @@
 															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-expires_on"
 														},
 														"id": {
-															"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+															"$ref": "#/components/schemas/identifier-5SD4XsEB"
 														},
 														"issuer": {
 															"$ref": "#/components/schemas/issuer"
 														},
 														"serial_number": {
-															"$ref": "#/components/schemas/serial_number-bk0IaC9D"
+															"$ref": "#/components/schemas/serial_number-ggJ6Islg"
 														},
 														"signature": {
 															"$ref": "#/components/schemas/signature"
@@ -1445,7 +1445,7 @@
 								"items": {
 									"properties": {
 										"cert_id": {
-											"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+											"$ref": "#/components/schemas/cert_id"
 										},
 										"enabled": {
 											"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-enabled"
@@ -1476,7 +1476,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 										},
 										{
 											"properties": {
@@ -1499,12 +1499,12 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/hostname_certid_object-RDedVBIy"
+														"$ref": "#/components/schemas/hostname_certid_object-c8DOMgVM"
 													}
 												],
 												"properties": {
 													"cert_id": {
-														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+														"$ref": "#/components/schemas/identifier-5SD4XsEB"
 													},
 													"certificate": {
 														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
@@ -1516,7 +1516,7 @@
 														"$ref": "#/components/schemas/schemas-hostname"
 													},
 													"id": {
-														"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+														"$ref": "#/components/schemas/identifier-5SD4XsEB"
 													},
 													"private_key": {
 														"$ref": "#/components/schemas/schemas-private_key"
@@ -1544,7 +1544,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-9eyhnBkw"
 												},
 												{
 													"properties": {
@@ -1567,12 +1567,12 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/hostname_certid_object-RDedVBIy"
+																"$ref": "#/components/schemas/hostname_certid_object-c8DOMgVM"
 															}
 														],
 														"properties": {
 															"cert_id": {
-																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+																"$ref": "#/components/schemas/identifier-5SD4XsEB"
 															},
 															"certificate": {
 																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-certificate"
@@ -1584,7 +1584,7 @@
 																"$ref": "#/components/schemas/schemas-hostname"
 															},
 															"id": {
-																"$ref": "#/components/schemas/hostname-authenticated-origin-pull_components-schemas-identifier"
+																"$ref": "#/components/schemas/identifier-5SD4XsEB"
 															},
 															"private_key": {
 																"$ref": "#/components/schemas/schemas-private_key"

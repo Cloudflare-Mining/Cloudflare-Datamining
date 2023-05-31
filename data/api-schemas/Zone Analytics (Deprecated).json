@@ -69,7 +69,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-FjTWjZCp"
 										},
 										{
 											"properties": {
@@ -95,14 +95,14 @@
 											"description": "The exact parameters/timestamps the analytics service used to return data.",
 											"properties": {
 												"since": {
-													"$ref": "#/components/schemas/since"
+													"$ref": "#/components/schemas/since-KWGHKM5P"
 												},
 												"time_delta": {
 													"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
 													"type": "integer"
 												},
 												"until": {
-													"$ref": "#/components/schemas/until"
+													"$ref": "#/components/schemas/until-ilAaeRXZ"
 												}
 											},
 											"readOnly": true,
@@ -118,10 +118,10 @@
 														"type": "string"
 													},
 													"timeseries": {
-														"$ref": "#/components/schemas/timeseries_by_colo"
+														"$ref": "#/components/schemas/timeseries_by_colo-X7aPMxmx"
 													},
 													"totals": {
-														"$ref": "#/components/schemas/totals_by_colo"
+														"$ref": "#/components/schemas/totals_by_colo-dTtRwCQa"
 													}
 												},
 												"type": "object"
@@ -147,7 +147,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-FjTWjZCp"
 												},
 												{
 													"properties": {
@@ -173,14 +173,14 @@
 													"description": "The exact parameters/timestamps the analytics service used to return data.",
 													"properties": {
 														"since": {
-															"$ref": "#/components/schemas/since"
+															"$ref": "#/components/schemas/since-KWGHKM5P"
 														},
 														"time_delta": {
 															"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
 															"type": "integer"
 														},
 														"until": {
-															"$ref": "#/components/schemas/until"
+															"$ref": "#/components/schemas/until-ilAaeRXZ"
 														}
 													},
 													"readOnly": true,
@@ -196,10 +196,10 @@
 																"type": "string"
 															},
 															"timeseries": {
-																"$ref": "#/components/schemas/timeseries_by_colo"
+																"$ref": "#/components/schemas/timeseries_by_colo-X7aPMxmx"
 															},
 															"totals": {
-																"$ref": "#/components/schemas/totals_by_colo"
+																"$ref": "#/components/schemas/totals_by_colo-dTtRwCQa"
 															}
 														},
 														"type": "object"
@@ -400,7 +400,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-FjTWjZCp"
 										},
 										{
 											"properties": {
@@ -426,14 +426,14 @@
 											"description": "The exact parameters/timestamps the analytics service used to return data.",
 											"properties": {
 												"since": {
-													"$ref": "#/components/schemas/since"
+													"$ref": "#/components/schemas/since-KWGHKM5P"
 												},
 												"time_delta": {
 													"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
 													"type": "integer"
 												},
 												"until": {
-													"$ref": "#/components/schemas/until"
+													"$ref": "#/components/schemas/until-ilAaeRXZ"
 												}
 											},
 											"readOnly": true,
@@ -443,10 +443,10 @@
 											"description": "Totals and timeseries data.",
 											"properties": {
 												"timeseries": {
-													"$ref": "#/components/schemas/timeseries-HtkJjoL5"
+													"$ref": "#/components/schemas/timeseries-dj87mwUL"
 												},
 												"totals": {
-													"$ref": "#/components/schemas/totals-GO8IxJqd"
+													"$ref": "#/components/schemas/totals-rLHXCr5c"
 												}
 											},
 											"title": "Dashboard response",
@@ -470,7 +470,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-FjTWjZCp"
 												},
 												{
 													"properties": {
@@ -496,14 +496,14 @@
 													"description": "The exact parameters/timestamps the analytics service used to return data.",
 													"properties": {
 														"since": {
-															"$ref": "#/components/schemas/since"
+															"$ref": "#/components/schemas/since-KWGHKM5P"
 														},
 														"time_delta": {
 															"description": "The amount of time (in minutes) that each data point in the timeseries represents. The granularity of the time-series returned (e.g. each bucket in the time series representing 1-minute vs 1-day) is calculated by the API based on the time-range provided to the API.",
 															"type": "integer"
 														},
 														"until": {
-															"$ref": "#/components/schemas/until"
+															"$ref": "#/components/schemas/until-ilAaeRXZ"
 														}
 													},
 													"readOnly": true,
@@ -513,10 +513,10 @@
 													"description": "Totals and timeseries data.",
 													"properties": {
 														"timeseries": {
-															"$ref": "#/components/schemas/timeseries-HtkJjoL5"
+															"$ref": "#/components/schemas/timeseries-dj87mwUL"
 														},
 														"totals": {
-															"$ref": "#/components/schemas/totals-GO8IxJqd"
+															"$ref": "#/components/schemas/totals-rLHXCr5c"
 														}
 													},
 													"title": "Dashboard response",

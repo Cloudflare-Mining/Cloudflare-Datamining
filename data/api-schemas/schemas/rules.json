@@ -1,337 +1,274 @@
 {
-	"properties": {
-		"action": {
-			"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to 'true'.",
-			"enum": [
-				"on",
-				"off",
-				"allow",
-				"block",
-				"scan",
-				"noscan",
-				"safesearch",
-				"ytrestricted",
-				"isolate",
-				"noisolate",
-				"override",
-				"l4_override",
-				"egress",
-				"audit_ssh"
-			],
-			"example": "allow",
-			"type": "string"
-		},
-		"created_at": {
-			"example": "2014-01-01T05:20:00.12345Z",
-			"format": "date-time",
-			"readOnly": true,
-			"type": "string"
-		},
-		"deleted_at": {
-			"description": "Date of deletion, if any.",
-			"format": "date-time",
-			"nullable": true,
-			"readOnly": true,
-			"type": "string"
-		},
-		"description": {
-			"description": "The description of the Rule.",
-			"example": "Block the bad websites based on host name",
-			"type": "string"
-		},
-		"device_posture": {
-			"description": "The wirefilter expression to be used for device posture check matching.",
-			"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
-			"type": "string"
-		},
-		"enabled": {
-			"description": "Set if the rule is enabled.",
-			"example": true,
-			"type": "boolean"
-		},
-		"filters": {
-			"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
-			"example": [
-				"http"
-			],
-			"items": {
-				"description": "The protocol or layer to use.",
-				"enum": [
-					"http",
-					"dns",
-					"l4",
-					"egress"
-				],
-				"example": "http",
+	"description": "BETA Field Not General Access: A list of rules for this load balancer to execute.",
+	"items": {
+		"additionalProperties": false,
+		"description": "A rule object containing conditions and overrides for this load balancer to evaluate.",
+		"properties": {
+			"condition": {
+				"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.",
+				"example": "http.request.uri.path contains \"/testing\"",
 				"type": "string"
 			},
-			"type": "array"
-		},
-		"id": {
-			"description": "API Resource UUID tag.",
-			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-			"maxLength": 36,
-			"type": "string"
-		},
-		"identity": {
-			"description": "The wirefilter expression to be used for identity matching.",
-			"example": "any(identity.groups.name[*] in {\"finance\"})",
-			"type": "string"
-		},
-		"name": {
-			"description": "The name of the Rule.",
-			"example": "block bad websites",
-			"type": "string"
-		},
-		"precedence": {
-			"description": "Precedence sets the ordering of the rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
-			"type": "integer"
-		},
-		"rule_settings": {
-			"description": "Additional settings that modify the rule's action.",
-			"properties": {
-				"add_headers": {
-					"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
-					"example": {
-						"My-Next-Header": [
-							"foo",
-							"bar"
-						],
-						"X-Custom-Header-Name": [
-							"somecustomvalue"
-						]
-					},
-					"type": "object"
-				},
-				"allow_child_bypass": {
-					"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
-					"example": false,
-					"type": "boolean"
-				},
-				"audit_ssh": {
-					"description": "Audit ssh action settings",
-					"properties": {
-						"command_logging": {
-							"description": "Turn on SSH command logging.",
-							"example": false,
-							"type": "boolean"
-						}
-					},
-					"type": "object"
-				},
-				"biso_admin_controls": {
-					"description": "Configure how browser isolation behaves.",
-					"properties": {
-						"dcp": {
-							"description": "Disable copy-paste.",
-							"example": false,
-							"type": "boolean"
-						},
-						"dd": {
-							"description": "Disable download.",
-							"example": false,
-							"type": "boolean"
-						},
-						"dk": {
-							"description": "Disable keyboard usage.",
-							"example": false,
-							"type": "boolean"
-						},
-						"dp": {
-							"description": "Disable printing.",
-							"example": false,
-							"type": "boolean"
-						},
-						"du": {
-							"description": "Disable upload.",
-							"example": false,
-							"type": "boolean"
-						}
-					},
-					"type": "object"
-				},
-				"block_page_enabled": {
-					"description": "Enable the custom block page.",
-					"example": true,
-					"type": "boolean"
-				},
-				"block_reason": {
-					"description": "The text describing why this block occurred that will be displayed on the custom block page (if enabled).",
-					"example": "This website is a security risk",
-					"type": "string"
-				},
-				"bypass_parent_rule": {
-					"description": "Set by children MSP accounts to bypass their parent's rules.",
-					"example": false,
-					"type": "boolean"
-				},
-				"check_session": {
-					"description": "Configure how session check behaves.",
-					"properties": {
-						"duration": {
-							"description": "Configure how fresh the session needs to be to be considered valid.",
-							"example": "300s",
-							"type": "string"
-						},
-						"enforce": {
-							"description": "Enable session enforcement for this fule.",
-							"example": true,
-							"type": "boolean"
-						}
-					},
-					"type": "object"
-				},
-				"egress": {
-					"description": "Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs",
-					"properties": {
-						"ipv4": {
-							"description": "The IPv4 address to be used for egress.",
-							"example": "192.0.2.2",
-							"type": "string"
-						},
-						"ipv4_fallback": {
-							"description": "The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.",
-							"example": "192.0.2.3",
-							"type": "string"
-						},
-						"ipv6": {
-							"description": "The IPv6 range to be used for egress.",
-							"example": "2001:DB8::/64",
-							"type": "string"
-						}
-					},
-					"type": "object"
-				},
-				"insecure_disable_dnssec_validation": {
-					"description": "INSECURE - disable DNSSEC validation (for allow actions).",
-					"example": false,
-					"type": "boolean"
-				},
-				"ip_categories": {
-					"description": "Include IPs in DNS resolver category blocks. By default categories only block on domain names.",
-					"example": true,
-					"type": "boolean"
-				},
-				"l4override": {
-					"description": "Send matching traffic to the supplied destination IP address and port.",
-					"properties": {
-						"ip": {
-							"description": "IPv4 or IPv6 address.",
-							"example": "1.1.1.1",
-							"type": "string"
-						},
-						"port": {
-							"description": "A port number to use for TCP/UDP overrides.",
-							"type": "integer"
-						}
-					},
-					"type": "object"
-				},
-				"override_host": {
-					"description": "Override matching DNS queries with this.",
-					"example": "example.com",
-					"type": "string"
-				},
-				"override_ips": {
-					"description": "Override matching DNS queries with this.",
-					"example": [
-						"1.1.1.1",
-						"2.2.2.2"
-					],
-					"items": {
-						"description": "IPv4 or IPv6 address.",
-						"example": "1.1.1.1",
+			"disabled": {
+				"default": false,
+				"description": "Disable this specific rule. It will no longer be evaluated by this load balancer.",
+				"type": "boolean"
+			},
+			"fixed_response": {
+				"description": "A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates.",
+				"properties": {
+					"content_type": {
+						"description": "The http 'Content-Type' header to include in the response.",
+						"example": "application/json",
+						"maxLength": 32,
 						"type": "string"
 					},
-					"type": "array"
-				},
-				"payload_log": {
-					"description": "Configure DLP payload logging.",
-					"properties": {
-						"enabled": {
-							"description": "Enable DLP payload logging for this rule.",
-							"example": true,
-							"type": "boolean"
-						}
+					"location": {
+						"description": "The http 'Location' header to include in the response.",
+						"example": "www.example.com",
+						"maxLength": 2048,
+						"type": "string"
 					},
-					"type": "object"
+					"message_body": {
+						"description": "Text to include as the http body.",
+						"example": "Testing Hello",
+						"maxLength": 1024,
+						"type": "string"
+					},
+					"status_code": {
+						"description": "The http status code to respond with.",
+						"type": "integer"
+					}
 				},
-				"untrusted_cert": {
-					"description": "Configure behavior when an upstream cert is invalid / an SSL error occurs.",
-					"properties": {
-						"action": {
-							"description": "The action to perform upon seeing an untrusted certificate. Default action is error with HTTP code 526.",
-							"enum": [
-								"pass_through",
-								"block",
-								"error"
+				"type": "object"
+			},
+			"name": {
+				"description": "Name of this rule. Only used for human readability.",
+				"example": "route the path /testing to testing datacenter.",
+				"maxLength": 200,
+				"type": "string"
+			},
+			"overrides": {
+				"description": "A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional.",
+				"properties": {
+					"adaptive_routing": {
+						"description": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.",
+						"properties": {
+							"failover_across_pools": {
+								"default": false,
+								"description": "Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					},
+					"country_pools": {
+						"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
+						"example": {
+							"GB": [
+								"abd90f38ced07c2e2f4df50b1f61d4194"
 							],
-							"example": "error",
-							"type": "string"
-						}
+							"US": [
+								"de90f38ced07c2e2f4df50b1f61d4194",
+								"00920f38ce07c2e2f4df50b1f61d4194"
+							]
+						},
+						"type": "object"
 					},
-					"type": "object"
-				}
+					"default_pools": {
+						"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.",
+						"example": [
+							"17b5962d775c646f3f9725cbc7a53df4",
+							"9290f38c5d07c2e2f4df57b1f61d4196",
+							"00920f38ce07c2e2f4df50b1f61d4194"
+						],
+						"items": {
+							"description": "A pool ID.",
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"fallback_pool": {
+						"description": "The pool ID to use when all other pools are detected as unhealthy."
+					},
+					"location_strategy": {
+						"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
+						"properties": {
+							"mode": {
+								"default": "pop",
+								"description": "Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.\n- `\"pop\"`: Use the Cloudflare PoP location.\n- `\"resolver_ip\"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.",
+								"enum": [
+									"pop",
+									"resolver_ip"
+								],
+								"example": "resolver_ip",
+								"type": "string"
+							},
+							"prefer_ecs": {
+								"default": "proximity",
+								"description": "Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.\n- `\"always\"`: Always prefer ECS.\n- `\"never\"`: Never prefer ECS.\n- `\"proximity\"`: Prefer ECS only when `steering_policy=\"proximity\"`.\n- `\"geo\"`: Prefer ECS only when `steering_policy=\"geo\"`.",
+								"enum": [
+									"always",
+									"never",
+									"proximity",
+									"geo"
+								],
+								"example": "always",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"pop_pools": {
+						"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
+						"example": {
+							"LAX": [
+								"de90f38ced07c2e2f4df50b1f61d4194",
+								"9290f38c5d07c2e2f4df57b1f61d4196"
+							],
+							"LHR": [
+								"abd90f38ced07c2e2f4df50b1f61d4194",
+								"f9138c5d07c2e2f4df57b1f61d4196"
+							],
+							"SJC": [
+								"00920f38ce07c2e2f4df50b1f61d4194"
+							]
+						},
+						"type": "object"
+					},
+					"random_steering": {
+						"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
+						"properties": {
+							"default_weight": {
+								"default": 1,
+								"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+								"example": 0.2,
+								"maximum": 1,
+								"minimum": 0,
+								"multipleOf": 0.1,
+								"type": "number"
+							},
+							"pool_weights": {
+								"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
+								"example": {
+									"9290f38c5d07c2e2f4df57b1f61d4196": 0.5,
+									"de90f38ced07c2e2f4df50b1f61d4194": 0.3
+								},
+								"type": "object"
+							}
+						},
+						"type": "object"
+					},
+					"region_pools": {
+						"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
+						"example": {
+							"ENAM": [
+								"00920f38ce07c2e2f4df50b1f61d4194"
+							],
+							"WNAM": [
+								"de90f38ced07c2e2f4df50b1f61d4194",
+								"9290f38c5d07c2e2f4df57b1f61d4196"
+							]
+						},
+						"type": "object"
+					},
+					"session_affinity": {
+						"default": "\"\"",
+						"description": "The session_affinity specifies the type of session affinity the load balancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+						"enum": [
+							"none",
+							"cookie",
+							"ip_cookie",
+							"\"\""
+						],
+						"example": "cookie",
+						"type": "string"
+					},
+					"session_affinity_attributes": {
+						"description": "Configures cookie attributes for session affinity cookie.",
+						"properties": {
+							"drain_duration": {
+								"description": "Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.",
+								"example": 100,
+								"type": "number"
+							},
+							"samesite": {
+								"default": "Auto",
+								"description": "Configures the SameSite attribute on session affinity cookie. Value \"Auto\" will be translated to \"Lax\" or \"None\" depending if Always Use HTTPS is enabled. Note: when using value \"None\", the secure attribute can not be set to \"Never\".",
+								"enum": [
+									"Auto",
+									"Lax",
+									"None",
+									"Strict"
+								],
+								"example": "Auto",
+								"type": "string"
+							},
+							"secure": {
+								"default": "Auto",
+								"description": "Configures the Secure attribute on session affinity cookie. Value \"Always\" indicates the Secure attribute will be set in the Set-Cookie header, \"Never\" indicates the Secure attribute will not be set, and \"Auto\" will set the Secure attribute depending if Always Use HTTPS is enabled.",
+								"enum": [
+									"Auto",
+									"Always",
+									"Never"
+								],
+								"example": "Auto",
+								"type": "string"
+							},
+							"zero_downtime_failover": {
+								"default": "none",
+								"description": "Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
+								"enum": [
+									"none",
+									"temporary",
+									"sticky"
+								],
+								"example": "sticky",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"session_affinity_ttl": {
+						"description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
+						"example": 5000,
+						"type": "number"
+					},
+					"steering_policy": {
+						"default": "\"\"",
+						"description": "Steering Policy for this load balancer.\n- `\"off\"`: Use `default_pools`.\n- `\"geo\"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.\n- `\"random\"`: Select a pool randomly.\n- `\"dynamic_latency\"`: Use round trip time to select the closest pool in default_pools (requires pool health checks).\n- `\"proximity\"`: Use the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests.\n- `\"\"`: Will map to `\"geo\"` if you use `region_pools`/`country_pools`/`pop_pools` otherwise `\"off\"`.",
+						"enum": [
+							"off",
+							"geo",
+							"random",
+							"dynamic_latency",
+							"proximity",
+							"\"\""
+						],
+						"example": "dynamic_latency",
+						"type": "string"
+					},
+					"ttl": {
+						"description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.",
+						"example": 30,
+						"type": "number"
+					}
+				},
+				"type": "object"
 			},
-			"type": "object"
-		},
-		"schedule": {
-			"description": "Schedule for activating DNS policies. Does not apply to HTTP or network policies.",
-			"properties": {
-				"fri": {
-					"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
-					"example": "08:00-12:30,13:30-17:00",
-					"type": "string"
-				},
-				"mon": {
-					"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
-					"example": "08:00-12:30,13:30-17:00",
-					"type": "string"
-				},
-				"sat": {
-					"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
-					"example": "08:00-12:30,13:30-17:00",
-					"type": "string"
-				},
-				"sun": {
-					"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
-					"example": "08:00-12:30,13:30-17:00",
-					"type": "string"
-				},
-				"thu": {
-					"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
-					"example": "08:00-12:30,13:30-17:00",
-					"type": "string"
-				},
-				"time_zone": {
-					"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then the time zone inferred from the user's source IP is used to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
-					"example": "America/New York",
-					"type": "string"
-				},
-				"tue": {
-					"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
-					"example": "08:00-12:30,13:30-17:00",
-					"type": "string"
-				},
-				"wed": {
-					"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
-					"example": "08:00-12:30,13:30-17:00",
-					"type": "string"
-				}
+			"priority": {
+				"default": 0,
+				"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+				"type": "integer"
 			},
-			"type": "object"
+			"terminates": {
+				"default": false,
+				"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
+				"type": "boolean"
+			}
 		},
-		"traffic": {
-			"description": "The wirefilter expression to be used for traffic matching.",
-			"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
-			"type": "string"
-		},
-		"updated_at": {
-			"example": "2014-01-01T05:20:00.12345Z",
-			"format": "date-time",
-			"readOnly": true,
-			"type": "string"
-		}
+		"type": "object"
 	},
-	"type": "object"
+	"type": "array"
 }

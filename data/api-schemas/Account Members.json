@@ -37,46 +37,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -146,46 +110,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -439,7 +367,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-NmRkOt8p"
 										},
 										{
 											"properties": {
@@ -473,7 +401,7 @@
 													"roles": {
 														"description": "Roles assigned to this Member.",
 														"items": {
-															"$ref": "#/components/schemas/schemas-role-L0BbERkU"
+															"$ref": "#/components/schemas/schemas-role-vrstqraz"
 														},
 														"type": "array"
 													},
@@ -516,7 +444,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-NmRkOt8p"
 												},
 												{
 													"properties": {
@@ -694,7 +622,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-NmRkOt8p"
 										},
 										{
 											"properties": {
@@ -724,7 +652,7 @@
 												"roles": {
 													"description": "Roles assigned to this member.",
 													"items": {
-														"$ref": "#/components/schemas/role"
+														"$ref": "#/components/schemas/role-vohYT4HP"
 													},
 													"type": "array"
 												},
@@ -783,7 +711,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-NmRkOt8p"
 												},
 												{
 													"properties": {
@@ -988,7 +916,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-NmRkOt8p"
 										},
 										{
 											"properties": {
@@ -1013,7 +941,7 @@
 										"result": {
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/member"
+													"$ref": "#/components/schemas/member-2bgUULxw"
 												},
 												{
 													"properties": {
@@ -1044,7 +972,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-NmRkOt8p"
 												},
 												{
 													"properties": {
@@ -1220,16 +1148,13 @@
 						"allOf": [
 							{
 								"properties": {
-									"code": {
-										"$ref": "#/components/schemas/code"
-									},
 									"id": {
 										"$ref": "#/components/schemas/membership_components-schemas-identifier"
 									},
 									"roles": {
 										"description": "Roles assigned to this member.",
 										"items": {
-											"$ref": "#/components/schemas/role-oYaaFt8a"
+											"$ref": "#/components/schemas/role-vohYT4HP"
 										},
 										"type": "array"
 									},
@@ -1284,7 +1209,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-NmRkOt8p"
 										},
 										{
 											"properties": {
@@ -1314,7 +1239,7 @@
 												"roles": {
 													"description": "Roles assigned to this member.",
 													"items": {
-														"$ref": "#/components/schemas/role"
+														"$ref": "#/components/schemas/role-vohYT4HP"
 													},
 													"type": "array"
 												},
@@ -1373,7 +1298,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-NmRkOt8p"
 												},
 												{
 													"properties": {

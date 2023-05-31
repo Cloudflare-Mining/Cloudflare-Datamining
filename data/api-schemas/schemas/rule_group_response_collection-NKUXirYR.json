@@ -1,0 +1,214 @@
+{
+	"allOf": [
+		{
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"allOf": [
+							{
+								"properties": {
+									"description": {
+										"description": "An informative summary of what the rule group does.",
+										"example": "Group designed to protect against IP addresses that are a threat and typically used to launch DDoS attacks",
+										"nullable": true,
+										"readOnly": true,
+										"type": "string"
+									},
+									"id": {
+										"description": "The unique identifier of the rule group.",
+										"example": "de677e5818985db1285d0e80225f06e5",
+										"maxLength": 32,
+										"readOnly": true,
+										"type": "string"
+									},
+									"modified_rules_count": {
+										"default": 0,
+										"description": "The number of rules within the group that have been modified from their default configuration.",
+										"example": 2,
+										"readOnly": true,
+										"type": "number"
+									},
+									"name": {
+										"description": "The name of the rule group.",
+										"example": "Project Honey Pot",
+										"readOnly": true,
+										"type": "string"
+									},
+									"package_id": {
+										"description": "The unique identifier of a WAF package.",
+										"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+										"maxLength": 32,
+										"readOnly": true,
+										"type": "string"
+									},
+									"rules_count": {
+										"default": 0,
+										"description": "The number of rules in the current rule group.",
+										"example": 10,
+										"readOnly": true,
+										"type": "number"
+									}
+								},
+								"type": "object"
+							},
+							{
+								"properties": {
+									"allowed_modes": {
+										"description": "The available states for the rule group.",
+										"example": [
+											"on",
+											"off"
+										],
+										"items": {
+											"default": "on",
+											"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+											"enum": [
+												"on",
+												"off"
+											],
+											"type": "string"
+										},
+										"readOnly": true,
+										"type": "array"
+									},
+									"mode": {
+										"default": "on",
+										"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+										"enum": [
+											"on",
+											"off"
+										],
+										"type": "string"
+									}
+								}
+							}
+						],
+						"required": [
+							"id",
+							"name",
+							"description",
+							"mode",
+							"rules_count"
+						],
+						"type": "object"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

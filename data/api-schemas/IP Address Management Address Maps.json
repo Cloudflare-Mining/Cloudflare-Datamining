@@ -43,46 +43,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -166,46 +130,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -431,46 +359,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -554,46 +446,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -821,46 +677,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -944,46 +764,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -1211,46 +995,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -1334,46 +1082,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -1571,7 +1283,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-FC67FLkU"
 										},
 										{
 											"properties": {
@@ -1606,13 +1318,13 @@
 														"$ref": "#/components/schemas/default_sni"
 													},
 													"description": {
-														"$ref": "#/components/schemas/schemas-description-I8S3WwKa"
+														"$ref": "#/components/schemas/schemas-description"
 													},
 													"enabled": {
-														"$ref": "#/components/schemas/enabled-WlexgyRO"
+														"$ref": "#/components/schemas/enabled-uD3poAhe"
 													},
 													"id": {
-														"$ref": "#/components/schemas/identifier-fWUK5jqP"
+														"$ref": "#/components/schemas/identifier-xtt2SuPj"
 													},
 													"modified_at": {
 														"$ref": "#/components/schemas/timestamp"
@@ -1640,7 +1352,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-FC67FLkU"
 												},
 												{
 													"properties": {
@@ -1675,13 +1387,13 @@
 																"$ref": "#/components/schemas/default_sni"
 															},
 															"description": {
-																"$ref": "#/components/schemas/schemas-description-I8S3WwKa"
+																"$ref": "#/components/schemas/schemas-description"
 															},
 															"enabled": {
-																"$ref": "#/components/schemas/enabled-WlexgyRO"
+																"$ref": "#/components/schemas/enabled-uD3poAhe"
 															},
 															"id": {
-																"$ref": "#/components/schemas/identifier-fWUK5jqP"
+																"$ref": "#/components/schemas/identifier-xtt2SuPj"
 															},
 															"modified_at": {
 																"$ref": "#/components/schemas/timestamp"
@@ -1835,7 +1547,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-FC67FLkU"
 										},
 										{
 											"properties": {
@@ -1873,13 +1585,13 @@
 															"$ref": "#/components/schemas/default_sni"
 														},
 														"description": {
-															"$ref": "#/components/schemas/schemas-description-I8S3WwKa"
+															"$ref": "#/components/schemas/schemas-description"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/enabled-WlexgyRO"
+															"$ref": "#/components/schemas/enabled-uD3poAhe"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-fWUK5jqP"
+															"$ref": "#/components/schemas/identifier-xtt2SuPj"
 														},
 														"modified_at": {
 															"$ref": "#/components/schemas/timestamp"
@@ -1899,7 +1611,7 @@
 														"memberships": {
 															"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
 															"items": {
-																"$ref": "#/components/schemas/address-maps-membership-E1Lb1R1A"
+																"$ref": "#/components/schemas/address-maps-membership-IlcbEK77"
 															},
 															"type": "array"
 														}
@@ -1927,7 +1639,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-FC67FLkU"
 												},
 												{
 													"properties": {
@@ -1965,13 +1677,13 @@
 																	"$ref": "#/components/schemas/default_sni"
 																},
 																"description": {
-																	"$ref": "#/components/schemas/schemas-description-I8S3WwKa"
+																	"$ref": "#/components/schemas/schemas-description"
 																},
 																"enabled": {
-																	"$ref": "#/components/schemas/enabled-WlexgyRO"
+																	"$ref": "#/components/schemas/enabled-uD3poAhe"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/identifier-fWUK5jqP"
+																	"$ref": "#/components/schemas/identifier-xtt2SuPj"
 																},
 																"modified_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -1991,7 +1703,7 @@
 																"memberships": {
 																	"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
 																	"items": {
-																		"$ref": "#/components/schemas/address-maps-membership-E1Lb1R1A"
+																		"$ref": "#/components/schemas/address-maps-membership-IlcbEK77"
 																	},
 																	"type": "array"
 																}
@@ -2175,7 +1887,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-FC67FLkU"
 										},
 										{
 											"properties": {
@@ -2211,13 +1923,13 @@
 													"$ref": "#/components/schemas/default_sni"
 												},
 												"description": {
-													"$ref": "#/components/schemas/schemas-description-I8S3WwKa"
+													"$ref": "#/components/schemas/schemas-description"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/enabled-WlexgyRO"
+													"$ref": "#/components/schemas/enabled-uD3poAhe"
 												},
 												"id": {
-													"$ref": "#/components/schemas/identifier-fWUK5jqP"
+													"$ref": "#/components/schemas/identifier-xtt2SuPj"
 												},
 												"modified_at": {
 													"$ref": "#/components/schemas/timestamp"
@@ -2243,7 +1955,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-FC67FLkU"
 												},
 												{
 													"properties": {
@@ -2279,13 +1991,13 @@
 															"$ref": "#/components/schemas/default_sni"
 														},
 														"description": {
-															"$ref": "#/components/schemas/schemas-description-I8S3WwKa"
+															"$ref": "#/components/schemas/schemas-description"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/enabled-WlexgyRO"
+															"$ref": "#/components/schemas/enabled-uD3poAhe"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-fWUK5jqP"
+															"$ref": "#/components/schemas/identifier-xtt2SuPj"
 														},
 														"modified_at": {
 															"$ref": "#/components/schemas/timestamp"
@@ -2449,7 +2161,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-FC67FLkU"
 										},
 										{
 											"properties": {
@@ -2487,13 +2199,13 @@
 															"$ref": "#/components/schemas/default_sni"
 														},
 														"description": {
-															"$ref": "#/components/schemas/schemas-description-I8S3WwKa"
+															"$ref": "#/components/schemas/schemas-description"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/enabled-WlexgyRO"
+															"$ref": "#/components/schemas/enabled-uD3poAhe"
 														},
 														"id": {
-															"$ref": "#/components/schemas/identifier-fWUK5jqP"
+															"$ref": "#/components/schemas/identifier-xtt2SuPj"
 														},
 														"modified_at": {
 															"$ref": "#/components/schemas/timestamp"
@@ -2513,7 +2225,7 @@
 														"memberships": {
 															"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
 															"items": {
-																"$ref": "#/components/schemas/address-maps-membership-E1Lb1R1A"
+																"$ref": "#/components/schemas/address-maps-membership-IlcbEK77"
 															},
 															"type": "array"
 														}
@@ -2541,7 +2253,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-FC67FLkU"
 												},
 												{
 													"properties": {
@@ -2579,13 +2291,13 @@
 																	"$ref": "#/components/schemas/default_sni"
 																},
 																"description": {
-																	"$ref": "#/components/schemas/schemas-description-I8S3WwKa"
+																	"$ref": "#/components/schemas/schemas-description"
 																},
 																"enabled": {
-																	"$ref": "#/components/schemas/enabled-WlexgyRO"
+																	"$ref": "#/components/schemas/enabled-uD3poAhe"
 																},
 																"id": {
-																	"$ref": "#/components/schemas/identifier-fWUK5jqP"
+																	"$ref": "#/components/schemas/identifier-xtt2SuPj"
 																},
 																"modified_at": {
 																	"$ref": "#/components/schemas/timestamp"
@@ -2605,7 +2317,7 @@
 																"memberships": {
 																	"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
 																	"items": {
-																		"$ref": "#/components/schemas/address-maps-membership-E1Lb1R1A"
+																		"$ref": "#/components/schemas/address-maps-membership-IlcbEK77"
 																	},
 																	"type": "array"
 																}
@@ -2775,46 +2487,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -2898,46 +2574,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -3165,46 +2805,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -3288,46 +2892,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -3555,46 +3123,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -3678,46 +3210,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [

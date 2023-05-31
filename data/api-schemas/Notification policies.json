@@ -43,46 +43,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -166,46 +130,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -406,7 +334,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-M3Tj1Bgg"
 										},
 										{
 											"properties": {
@@ -435,16 +363,16 @@
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"description": {
-														"$ref": "#/components/schemas/schemas-description-ZxdE1wr2"
+														"$ref": "#/components/schemas/schemas-description-vPR0AMaM"
 													},
 													"enabled": {
-														"$ref": "#/components/schemas/enabled-3jDqnqgP"
+														"$ref": "#/components/schemas/enabled-pVi16iwt"
 													},
 													"filters": {
-														"$ref": "#/components/schemas/filters-kQpwmpi5"
+														"$ref": "#/components/schemas/filters-y7WGPrzL"
 													},
 													"id": {
-														"$ref": "#/components/schemas/uuid-gvpC6ian"
+														"$ref": "#/components/schemas/uuid"
 													},
 													"mechanisms": {
 														"$ref": "#/components/schemas/mechanisms"
@@ -453,7 +381,7 @@
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"name": {
-														"$ref": "#/components/schemas/schemas-name-SPOqsW3p"
+														"$ref": "#/components/schemas/schemas-name-RPrGciSD"
 													}
 												},
 												"type": "object"
@@ -478,7 +406,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-M3Tj1Bgg"
 												},
 												{
 													"properties": {
@@ -507,16 +435,16 @@
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"description": {
-																"$ref": "#/components/schemas/schemas-description-ZxdE1wr2"
+																"$ref": "#/components/schemas/schemas-description-vPR0AMaM"
 															},
 															"enabled": {
-																"$ref": "#/components/schemas/enabled-3jDqnqgP"
+																"$ref": "#/components/schemas/enabled-pVi16iwt"
 															},
 															"filters": {
-																"$ref": "#/components/schemas/filters-kQpwmpi5"
+																"$ref": "#/components/schemas/filters-y7WGPrzL"
 															},
 															"id": {
-																"$ref": "#/components/schemas/uuid-gvpC6ian"
+																"$ref": "#/components/schemas/uuid"
 															},
 															"mechanisms": {
 																"$ref": "#/components/schemas/mechanisms"
@@ -525,7 +453,7 @@
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"name": {
-																"$ref": "#/components/schemas/schemas-name-SPOqsW3p"
+																"$ref": "#/components/schemas/schemas-name-RPrGciSD"
 															}
 														},
 														"type": "object"
@@ -679,7 +607,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-M3Tj1Bgg"
 										},
 										{
 											"properties": {
@@ -710,16 +638,16 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/schemas-description-ZxdE1wr2"
+													"$ref": "#/components/schemas/schemas-description-vPR0AMaM"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/enabled-3jDqnqgP"
+													"$ref": "#/components/schemas/enabled-pVi16iwt"
 												},
 												"filters": {
-													"$ref": "#/components/schemas/filters-kQpwmpi5"
+													"$ref": "#/components/schemas/filters-y7WGPrzL"
 												},
 												"id": {
-													"$ref": "#/components/schemas/uuid-gvpC6ian"
+													"$ref": "#/components/schemas/uuid"
 												},
 												"mechanisms": {
 													"$ref": "#/components/schemas/mechanisms"
@@ -728,7 +656,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/schemas-name-SPOqsW3p"
+													"$ref": "#/components/schemas/schemas-name-RPrGciSD"
 												}
 											},
 											"type": "object"
@@ -751,7 +679,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-M3Tj1Bgg"
 												},
 												{
 													"properties": {
@@ -782,16 +710,16 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/schemas-description-ZxdE1wr2"
+															"$ref": "#/components/schemas/schemas-description-vPR0AMaM"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/enabled-3jDqnqgP"
+															"$ref": "#/components/schemas/enabled-pVi16iwt"
 														},
 														"filters": {
-															"$ref": "#/components/schemas/filters-kQpwmpi5"
+															"$ref": "#/components/schemas/filters-y7WGPrzL"
 														},
 														"id": {
-															"$ref": "#/components/schemas/uuid-gvpC6ian"
+															"$ref": "#/components/schemas/uuid"
 														},
 														"mechanisms": {
 															"$ref": "#/components/schemas/mechanisms"
@@ -800,7 +728,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/schemas-name-SPOqsW3p"
+															"$ref": "#/components/schemas/schemas-name-RPrGciSD"
 														}
 													},
 													"type": "object"
@@ -1027,7 +955,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-M3Tj1Bgg"
 										},
 										{
 											"properties": {
@@ -1079,7 +1007,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-M3Tj1Bgg"
 												},
 												{
 													"properties": {
@@ -1341,7 +1269,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-M3Tj1Bgg"
 										},
 										{
 											"properties": {
@@ -1393,7 +1321,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-M3Tj1Bgg"
 												},
 												{
 													"properties": {

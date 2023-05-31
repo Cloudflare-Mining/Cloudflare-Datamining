@@ -1,0 +1,230 @@
+{
+	"allOf": [
+		{
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"allOf": [
+							{
+								"properties": {
+									"created_on": {
+										"description": "When the Keyless SSL was created.",
+										"example": "2014-01-01T05:20:00Z",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string"
+									},
+									"enabled": {
+										"description": "Whether or not the Keyless SSL is on or off.",
+										"example": false,
+										"readOnly": true,
+										"type": "boolean"
+									},
+									"host": {
+										"description": "The keyless SSL name.",
+										"example": "example.com",
+										"format": "hostname",
+										"maxLength": 253,
+										"type": "string"
+									},
+									"id": {
+										"description": "Keyless certificate identifier tag.",
+										"example": "4d2844d2ce78891c34d0b6c0535a291e",
+										"maxLength": 32,
+										"readOnly": true,
+										"type": "string"
+									},
+									"modified_on": {
+										"description": "When the Keyless SSL was last modified.",
+										"example": "2014-01-01T05:20:00Z",
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string"
+									},
+									"name": {
+										"description": "The keyless SSL name.",
+										"example": "example.com Keyless SSL",
+										"maxLength": 180,
+										"readOnly": true,
+										"type": "string"
+									},
+									"permissions": {
+										"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+										"example": [
+											"#ssl:read",
+											"#ssl:edit"
+										],
+										"items": {},
+										"readOnly": true,
+										"type": "array"
+									},
+									"port": {
+										"default": 24008,
+										"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+										"example": 24008,
+										"maxLength": 65535,
+										"type": "number"
+									},
+									"status": {
+										"description": "Status of the Keyless SSL.",
+										"enum": [
+											"active",
+											"deleted"
+										],
+										"example": "active",
+										"readOnly": true,
+										"type": "string"
+									},
+									"tunnel": {
+										"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+										"properties": {
+											"private_ip": {
+												"$ref": "#/components/schemas/keyless_private_ip"
+											},
+											"vnet_id": {
+												"$ref": "#/components/schemas/keyless_vnet_id"
+											}
+										},
+										"required": [
+											"private_ip",
+											"vnet_id"
+										],
+										"type": "object"
+									}
+								},
+								"required": [
+									"id",
+									"name",
+									"host",
+									"port",
+									"status",
+									"enabled",
+									"permissions",
+									"created_on",
+									"modified_on"
+								],
+								"type": "object"
+							}
+						],
+						"type": "object"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

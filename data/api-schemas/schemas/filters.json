@@ -1,18 +1,5 @@
 {
-	"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
-	"example": [
-		"http"
-	],
-	"items": {
-		"description": "The protocol or layer to use.",
-		"enum": [
-			"http",
-			"dns",
-			"l4",
-			"egress"
-		],
-		"example": "http",
-		"type": "string"
-	},
-	"type": "array"
+	"description": "Segmentation filter in 'attribute operator value' format.",
+	"example": "responseCode==NOERROR,queryType==A",
+	"type": "string"
 }

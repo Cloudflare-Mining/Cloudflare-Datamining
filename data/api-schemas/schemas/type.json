@@ -1,12 +1,9 @@
 {
-	"description": "The type of List.",
+	"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.",
 	"enum": [
-		"SERIAL",
-		"URL",
-		"DOMAIN",
-		"EMAIL",
-		"IP"
+		"full",
+		"partial"
 	],
-	"example": "SERIAL",
+	"example": "full",
 	"type": "string"
 }

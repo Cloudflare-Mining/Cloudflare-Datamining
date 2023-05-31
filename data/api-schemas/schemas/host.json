@@ -1,7 +1,5 @@
 {
-	"description": "RFC3986-compliant host.",
-	"example": "www.example.com",
-	"format": "hostname",
-	"maxLength": 255,
+	"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique.",
+	"example": "shop.example.com",
 	"type": "string"
 }

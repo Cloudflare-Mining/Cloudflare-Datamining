@@ -44,7 +44,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 								},
 								{
 									"properties": {
@@ -67,7 +67,7 @@
 													"$ref": "#/components/schemas/created_at"
 												},
 												"deleted_at": {
-													"$ref": "#/components/schemas/deleted_at-fg8mOT65"
+													"$ref": "#/components/schemas/deleted_at-pTbHiAxH"
 												},
 												"id": {
 													"$ref": "#/components/schemas/tunnel_id"
@@ -82,7 +82,7 @@
 													"$ref": "#/components/schemas/remote_config"
 												},
 												"status": {
-													"$ref": "#/components/schemas/status-97f1Mkyx"
+													"$ref": "#/components/schemas/status-pLyZGf7j"
 												},
 												"tun_type": {
 													"$ref": "#/components/schemas/tunnel_type"
@@ -107,7 +107,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 										},
 										{
 											"properties": {
@@ -130,7 +130,7 @@
 															"$ref": "#/components/schemas/created_at"
 														},
 														"deleted_at": {
-															"$ref": "#/components/schemas/deleted_at-fg8mOT65"
+															"$ref": "#/components/schemas/deleted_at-pTbHiAxH"
 														},
 														"id": {
 															"$ref": "#/components/schemas/tunnel_id"
@@ -145,7 +145,7 @@
 															"$ref": "#/components/schemas/remote_config"
 														},
 														"status": {
-															"$ref": "#/components/schemas/status-97f1Mkyx"
+															"$ref": "#/components/schemas/status-pLyZGf7j"
 														},
 														"tun_type": {
 															"$ref": "#/components/schemas/tunnel_type"
@@ -307,46 +307,10 @@
 								{
 									"properties": {
 										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
+											"$ref": "#/components/schemas/messages"
 										},
 										"result": {
 											"anyOf": [
@@ -403,46 +367,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -704,7 +632,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 										},
 										{
 											"properties": {
@@ -743,7 +671,7 @@
 														"$ref": "#/components/schemas/created_at"
 													},
 													"deleted_at": {
-														"$ref": "#/components/schemas/deleted_at-fg8mOT65"
+														"$ref": "#/components/schemas/deleted_at-pTbHiAxH"
 													},
 													"id": {
 														"$ref": "#/components/schemas/tunnel_id"
@@ -758,7 +686,7 @@
 														"$ref": "#/components/schemas/remote_config"
 													},
 													"status": {
-														"$ref": "#/components/schemas/status-97f1Mkyx"
+														"$ref": "#/components/schemas/status-pLyZGf7j"
 													},
 													"tun_type": {
 														"$ref": "#/components/schemas/tunnel_type"
@@ -787,7 +715,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 												},
 												{
 													"properties": {
@@ -826,7 +754,7 @@
 																"$ref": "#/components/schemas/created_at"
 															},
 															"deleted_at": {
-																"$ref": "#/components/schemas/deleted_at-fg8mOT65"
+																"$ref": "#/components/schemas/deleted_at-pTbHiAxH"
 															},
 															"id": {
 																"$ref": "#/components/schemas/tunnel_id"
@@ -841,7 +769,7 @@
 																"$ref": "#/components/schemas/remote_config"
 															},
 															"status": {
-																"$ref": "#/components/schemas/status-97f1Mkyx"
+																"$ref": "#/components/schemas/status-pLyZGf7j"
 															},
 															"tun_type": {
 																"$ref": "#/components/schemas/tunnel_type"
@@ -993,7 +921,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 								},
 								{
 									"properties": {
@@ -1016,7 +944,7 @@
 													"$ref": "#/components/schemas/created_at"
 												},
 												"deleted_at": {
-													"$ref": "#/components/schemas/deleted_at-fg8mOT65"
+													"$ref": "#/components/schemas/deleted_at-pTbHiAxH"
 												},
 												"id": {
 													"$ref": "#/components/schemas/tunnel_id"
@@ -1031,7 +959,7 @@
 													"$ref": "#/components/schemas/remote_config"
 												},
 												"status": {
-													"$ref": "#/components/schemas/status-97f1Mkyx"
+													"$ref": "#/components/schemas/status-pLyZGf7j"
 												},
 												"tun_type": {
 													"$ref": "#/components/schemas/tunnel_type"
@@ -1056,7 +984,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 										},
 										{
 											"properties": {
@@ -1079,7 +1007,7 @@
 															"$ref": "#/components/schemas/created_at"
 														},
 														"deleted_at": {
-															"$ref": "#/components/schemas/deleted_at-fg8mOT65"
+															"$ref": "#/components/schemas/deleted_at-pTbHiAxH"
 														},
 														"id": {
 															"$ref": "#/components/schemas/tunnel_id"
@@ -1094,7 +1022,7 @@
 															"$ref": "#/components/schemas/remote_config"
 														},
 														"status": {
-															"$ref": "#/components/schemas/status-97f1Mkyx"
+															"$ref": "#/components/schemas/status-pLyZGf7j"
 														},
 														"tun_type": {
 															"$ref": "#/components/schemas/tunnel_type"
@@ -1246,7 +1174,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 										},
 										{
 											"properties": {
@@ -1279,7 +1207,7 @@
 														"$ref": "#/components/schemas/connections"
 													},
 													"features": {
-														"$ref": "#/components/schemas/features-8X4Mf5XC"
+														"$ref": "#/components/schemas/features-xeQRRtQj"
 													},
 													"id": {
 														"$ref": "#/components/schemas/connection_id"
@@ -1314,7 +1242,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 												},
 												{
 													"properties": {
@@ -1347,7 +1275,7 @@
 																"$ref": "#/components/schemas/connections"
 															},
 															"features": {
-																"$ref": "#/components/schemas/features-8X4Mf5XC"
+																"$ref": "#/components/schemas/features-xeQRRtQj"
 															},
 															"id": {
 																"$ref": "#/components/schemas/connection_id"
@@ -1517,7 +1445,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 								},
 								{
 									"properties": {
@@ -1534,7 +1462,7 @@
 													"$ref": "#/components/schemas/connections"
 												},
 												"features": {
-													"$ref": "#/components/schemas/features-8X4Mf5XC"
+													"$ref": "#/components/schemas/features-xeQRRtQj"
 												},
 												"id": {
 													"$ref": "#/components/schemas/connection_id"
@@ -1565,7 +1493,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 										},
 										{
 											"properties": {
@@ -1582,7 +1510,7 @@
 															"$ref": "#/components/schemas/connections"
 														},
 														"features": {
-															"$ref": "#/components/schemas/features-8X4Mf5XC"
+															"$ref": "#/components/schemas/features-xeQRRtQj"
 														},
 														"id": {
 															"$ref": "#/components/schemas/connection_id"
@@ -1738,7 +1666,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 								},
 								{
 									"properties": {
@@ -1763,7 +1691,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 										},
 										{
 											"properties": {
@@ -1935,7 +1863,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 								},
 								{
 									"properties": {
@@ -1958,7 +1886,7 @@
 													"$ref": "#/components/schemas/created_at"
 												},
 												"deleted_at": {
-													"$ref": "#/components/schemas/deleted_at-fg8mOT65"
+													"$ref": "#/components/schemas/deleted_at-pTbHiAxH"
 												},
 												"id": {
 													"$ref": "#/components/schemas/tunnel_id"
@@ -1973,7 +1901,7 @@
 													"$ref": "#/components/schemas/remote_config"
 												},
 												"status": {
-													"$ref": "#/components/schemas/status-97f1Mkyx"
+													"$ref": "#/components/schemas/status-pLyZGf7j"
 												},
 												"tun_type": {
 													"$ref": "#/components/schemas/tunnel_type"
@@ -1998,7 +1926,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 										},
 										{
 											"properties": {
@@ -2021,7 +1949,7 @@
 															"$ref": "#/components/schemas/created_at"
 														},
 														"deleted_at": {
-															"$ref": "#/components/schemas/deleted_at-fg8mOT65"
+															"$ref": "#/components/schemas/deleted_at-pTbHiAxH"
 														},
 														"id": {
 															"$ref": "#/components/schemas/tunnel_id"
@@ -2036,7 +1964,7 @@
 															"$ref": "#/components/schemas/remote_config"
 														},
 														"status": {
-															"$ref": "#/components/schemas/status-97f1Mkyx"
+															"$ref": "#/components/schemas/status-pLyZGf7j"
 														},
 														"tun_type": {
 															"$ref": "#/components/schemas/tunnel_type"
@@ -2210,7 +2138,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 								},
 								{
 									"properties": {
@@ -2233,7 +2161,7 @@
 													"$ref": "#/components/schemas/created_at"
 												},
 												"deleted_at": {
-													"$ref": "#/components/schemas/deleted_at-fg8mOT65"
+													"$ref": "#/components/schemas/deleted_at-pTbHiAxH"
 												},
 												"id": {
 													"$ref": "#/components/schemas/tunnel_id"
@@ -2248,7 +2176,7 @@
 													"$ref": "#/components/schemas/remote_config"
 												},
 												"status": {
-													"$ref": "#/components/schemas/status-97f1Mkyx"
+													"$ref": "#/components/schemas/status-pLyZGf7j"
 												},
 												"tun_type": {
 													"$ref": "#/components/schemas/tunnel_type"
@@ -2273,7 +2201,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 										},
 										{
 											"properties": {
@@ -2296,7 +2224,7 @@
 															"$ref": "#/components/schemas/created_at"
 														},
 														"deleted_at": {
-															"$ref": "#/components/schemas/deleted_at-fg8mOT65"
+															"$ref": "#/components/schemas/deleted_at-pTbHiAxH"
 														},
 														"id": {
 															"$ref": "#/components/schemas/tunnel_id"
@@ -2311,7 +2239,7 @@
 															"$ref": "#/components/schemas/remote_config"
 														},
 														"status": {
-															"$ref": "#/components/schemas/status-97f1Mkyx"
+															"$ref": "#/components/schemas/status-pLyZGf7j"
 														},
 														"tun_type": {
 															"$ref": "#/components/schemas/tunnel_type"
@@ -2487,7 +2415,7 @@
 						"schema": {
 							"allOf": [
 								{
-									"$ref": "#/components/schemas/api-response-common"
+									"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 								},
 								{
 									"properties": {
@@ -2512,7 +2440,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-ytH4fTF8"
 										},
 										{
 											"properties": {

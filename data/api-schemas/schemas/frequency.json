@@ -1,11 +1,11 @@
 {
-	"description": "How often the subscription is renewed automatically.",
+	"default": "high",
+	"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 	"enum": [
-		"weekly",
-		"monthly",
-		"quarterly",
-		"yearly"
+		"high",
+		"low"
 	],
-	"example": "monthly",
+	"example": "high",
+	"nullable": true,
 	"type": "string"
 }

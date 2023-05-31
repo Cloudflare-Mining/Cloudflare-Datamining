@@ -1,0 +1,182 @@
+{
+	"allOf": [
+		{
+			"allOf": [
+				{
+					"properties": {
+						"errors": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"messages": {
+							"example": [],
+							"items": {
+								"properties": {
+									"code": {
+										"minimum": 1000,
+										"type": "integer"
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"code",
+									"message"
+								],
+								"type": "object",
+								"uniqueItems": true
+							},
+							"type": "array"
+						},
+						"result": {
+							"anyOf": [
+								{
+									"type": "object"
+								},
+								{
+									"items": {},
+									"type": "array"
+								},
+								{
+									"type": "string"
+								}
+							]
+						},
+						"success": {
+							"description": "Whether the API call was successful",
+							"enum": [
+								true
+							],
+							"example": true,
+							"type": "boolean"
+						}
+					},
+					"required": [
+						"success",
+						"errors",
+						"messages",
+						"result"
+					],
+					"type": "object"
+				},
+				{
+					"properties": {
+						"result": {
+							"items": {},
+							"nullable": true,
+							"type": "array"
+						},
+						"result_info": {
+							"properties": {
+								"count": {
+									"description": "Total number of results for the requested service",
+									"example": 1,
+									"type": "number"
+								},
+								"page": {
+									"description": "Current page within paginated list of results",
+									"example": 1,
+									"type": "number"
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"example": 20,
+									"type": "number"
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"example": 2000,
+									"type": "number"
+								}
+							},
+							"type": "object"
+						}
+					}
+				}
+			],
+			"type": "object"
+		},
+		{
+			"properties": {
+				"result": {
+					"items": {
+						"properties": {
+							"created_at": {
+								"description": "Timestamp of when the webhook destination was created.",
+								"example": "2020-10-26T18:25:04.532316Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"id": {
+								"description": "UUID",
+								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+								"maxLength": 36,
+								"readOnly": true,
+								"type": "string"
+							},
+							"last_failure": {
+								"description": "Timestamp of the last time an attempt to dispatch a notification to this webhook failed.",
+								"example": "2020-10-26T18:25:04.532316Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"last_success": {
+								"description": "Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.",
+								"example": "2020-10-26T18:25:04.532316Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification.",
+								"example": "Slack Webhook",
+								"type": "string"
+							},
+							"secret": {
+								"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body.",
+								"type": "string"
+							},
+							"type": {
+								"description": "Type of webhook endpoint.",
+								"enum": [
+									"slack",
+									"generic",
+									"gchat"
+								],
+								"example": "slack",
+								"type": "string"
+							},
+							"url": {
+								"description": "The POST endpoint to call when dispatching a notification.",
+								"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"type": "array"
+				}
+			}
+		}
+	]
+}

@@ -21,7 +21,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-QtQdaTHh"
 										},
 										{
 											"properties": {
@@ -44,10 +44,10 @@
 											"items": {
 												"properties": {
 													"action": {
-														"$ref": "#/components/schemas/access-requests_components-schemas-action"
+														"$ref": "#/components/schemas/action-pqEFPsqM"
 													},
 													"allowed": {
-														"$ref": "#/components/schemas/schemas-allowed"
+														"$ref": "#/components/schemas/allowed-g3UFOBPv"
 													},
 													"app_domain": {
 														"$ref": "#/components/schemas/app_domain"
@@ -56,19 +56,19 @@
 														"$ref": "#/components/schemas/app_uid"
 													},
 													"connection": {
-														"$ref": "#/components/schemas/schemas-connection-kwHzYrkx"
+														"$ref": "#/components/schemas/connection-lwhms2mg"
 													},
 													"created_at": {
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"ip_address": {
-														"$ref": "#/components/schemas/schemas-ip-Ok2JiPqQ"
+														"$ref": "#/components/schemas/ip-Jjo6ZNjN"
 													},
 													"ray_id": {
 														"$ref": "#/components/schemas/ray_id"
 													},
 													"user_email": {
-														"$ref": "#/components/schemas/schemas-email-pPO5YcOf"
+														"$ref": "#/components/schemas/email-ouXCDQ28"
 													}
 												},
 												"type": "object"
@@ -93,7 +93,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-QtQdaTHh"
 												},
 												{
 													"properties": {
@@ -116,10 +116,10 @@
 													"items": {
 														"properties": {
 															"action": {
-																"$ref": "#/components/schemas/access-requests_components-schemas-action"
+																"$ref": "#/components/schemas/action-pqEFPsqM"
 															},
 															"allowed": {
-																"$ref": "#/components/schemas/schemas-allowed"
+																"$ref": "#/components/schemas/allowed-g3UFOBPv"
 															},
 															"app_domain": {
 																"$ref": "#/components/schemas/app_domain"
@@ -128,19 +128,19 @@
 																"$ref": "#/components/schemas/app_uid"
 															},
 															"connection": {
-																"$ref": "#/components/schemas/schemas-connection-kwHzYrkx"
+																"$ref": "#/components/schemas/connection-lwhms2mg"
 															},
 															"created_at": {
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"ip_address": {
-																"$ref": "#/components/schemas/schemas-ip-Ok2JiPqQ"
+																"$ref": "#/components/schemas/ip-Jjo6ZNjN"
 															},
 															"ray_id": {
 																"$ref": "#/components/schemas/ray_id"
 															},
 															"user_email": {
-																"$ref": "#/components/schemas/schemas-email-pPO5YcOf"
+																"$ref": "#/components/schemas/email-ouXCDQ28"
 															}
 														},
 														"type": "object"

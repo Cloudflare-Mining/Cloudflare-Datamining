@@ -1,5 +1,6 @@
 {
-	"description": "The description of the Rule.",
-	"example": "Block the bad websites based on host name",
+	"description": "An optional description field which may be used to describe the types of IPs or zones on the map.",
+	"example": "My Ecommerce zones",
+	"nullable": true,
 	"type": "string"
 }

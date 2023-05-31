@@ -45,46 +45,10 @@
 										{
 											"properties": {
 												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+													"$ref": "#/components/schemas/messages"
 												},
 												"result": {
 													"anyOf": [
@@ -169,46 +133,10 @@
 												{
 													"properties": {
 														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
+															"$ref": "#/components/schemas/messages"
 														},
 														"result": {
 															"anyOf": [
@@ -410,7 +338,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-rSGSQCCw"
 										},
 										{
 											"properties": {
@@ -433,7 +361,7 @@
 											"items": {
 												"allOf": [
 													{
-														"$ref": "#/components/schemas/subscription-v2-ZX7w9u3Z"
+														"$ref": "#/components/schemas/subscription-v2-39mMf3dn"
 													}
 												],
 												"type": "object"
@@ -459,7 +387,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-rSGSQCCw"
 												},
 												{
 													"properties": {
@@ -482,7 +410,7 @@
 													"items": {
 														"allOf": [
 															{
-																"$ref": "#/components/schemas/subscription-v2-ZX7w9u3Z"
+																"$ref": "#/components/schemas/subscription-v2-39mMf3dn"
 															}
 														],
 														"type": "object"
@@ -749,10 +677,10 @@
 								"description": "A simple zone object. May have null properties if not a zone subscription.",
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/identifier-vwiNDnyP"
+										"$ref": "#/components/schemas/identifier-qPfOA4Ab"
 									},
 									"name": {
-										"$ref": "#/components/schemas/name-zVLbLQxP"
+										"$ref": "#/components/schemas/name-70LHYrvd"
 									}
 								},
 								"type": "object"
@@ -773,7 +701,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-rSGSQCCw"
 										},
 										{
 											"properties": {
@@ -817,7 +745,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-rSGSQCCw"
 												},
 												{
 													"properties": {
@@ -1115,10 +1043,10 @@
 								"description": "A simple zone object. May have null properties if not a zone subscription.",
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/identifier-vwiNDnyP"
+										"$ref": "#/components/schemas/identifier-qPfOA4Ab"
 									},
 									"name": {
-										"$ref": "#/components/schemas/name-zVLbLQxP"
+										"$ref": "#/components/schemas/name-70LHYrvd"
 									}
 								},
 								"type": "object"
@@ -1139,7 +1067,7 @@
 								{
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/api-response-common"
+											"$ref": "#/components/schemas/api-response-common-rSGSQCCw"
 										},
 										{
 											"properties": {
@@ -1183,7 +1111,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/api-response-common"
+													"$ref": "#/components/schemas/api-response-common-rSGSQCCw"
 												},
 												{
 													"properties": {
