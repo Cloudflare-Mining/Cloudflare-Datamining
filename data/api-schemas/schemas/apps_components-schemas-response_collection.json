@@ -212,7 +212,7 @@
 												"type": "string"
 											},
 											"domain": {
-												"description": "The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.",
+												"description": "The domain and path that Access will secure.",
 												"example": "test.example.com/admin",
 												"type": "string"
 											},
@@ -237,28 +237,10 @@
 												"example": "Admin Site",
 												"type": "string"
 											},
-											"path_cookie_attribute": {
-												"default": false,
-												"description": "Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default",
-												"example": true,
-												"type": "boolean"
-											},
 											"same_site_cookie_attribute": {
 												"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 												"example": "strict",
 												"type": "string"
-											},
-											"self_hosted_domains": {
-												"description": "List of domains that Access will secure.",
-												"example": [
-													"test.example.com/admin",
-													"test.anotherexample.com/staff"
-												],
-												"items": {
-													"description": "A domain that Access will secure.",
-													"type": "string"
-												},
-												"type": "array"
 											},
 											"service_auth_401_redirect": {
 												"description": "Returns a 401 status code when the request is blocked by a Service Auth policy.",
@@ -282,10 +264,6 @@
 												"type": "string"
 											}
 										},
-										"required": [
-											"type",
-											"domain"
-										],
 										"title": "Self Hosted Application",
 										"type": "object"
 									}
@@ -490,7 +468,7 @@
 														"$ref": "#/components/schemas/app_launcher_visible"
 													},
 													"auto_redirect_to_identity": {
-														"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+														"$ref": "#/components/schemas/auto_redirect_to_identity-rBAIwcRR"
 													},
 													"cors_headers": {
 														"$ref": "#/components/schemas/cors_headers"
@@ -502,7 +480,7 @@
 														"$ref": "#/components/schemas/custom_deny_url"
 													},
 													"domain": {
-														"$ref": "#/components/schemas/domain-YKaDcjbj"
+														"$ref": "#/components/schemas/schemas-domain-2xTgtBaL"
 													},
 													"enable_binding_cookie": {
 														"$ref": "#/components/schemas/enable_binding_cookie"
@@ -516,20 +494,14 @@
 													"name": {
 														"$ref": "#/components/schemas/apps_components-schemas-name"
 													},
-													"path_cookie_attribute": {
-														"$ref": "#/components/schemas/path_cookie_attribute"
-													},
 													"same_site_cookie_attribute": {
 														"$ref": "#/components/schemas/same_site_cookie_attribute"
-													},
-													"self_hosted_domains": {
-														"$ref": "#/components/schemas/self_hosted_domains"
 													},
 													"service_auth_401_redirect": {
 														"$ref": "#/components/schemas/service_auth_401_redirect"
 													},
 													"session_duration": {
-														"$ref": "#/components/schemas/session_duration-yes2BL9w"
+														"$ref": "#/components/schemas/session_duration"
 													},
 													"skip_interstitial": {
 														"$ref": "#/components/schemas/skip_interstitial"
@@ -540,10 +512,6 @@
 														"type": "string"
 													}
 												},
-												"required": [
-													"type",
-													"domain"
-												],
 												"title": "Self Hosted Application",
 												"type": "object"
 											},
@@ -606,7 +574,7 @@
 														"$ref": "#/components/schemas/app_launcher_visible"
 													},
 													"auto_redirect_to_identity": {
-														"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+														"$ref": "#/components/schemas/auto_redirect_to_identity-rBAIwcRR"
 													},
 													"cors_headers": {
 														"$ref": "#/components/schemas/cors_headers"
@@ -618,7 +586,7 @@
 														"$ref": "#/components/schemas/custom_deny_url"
 													},
 													"domain": {
-														"$ref": "#/components/schemas/domain-YKaDcjbj"
+														"$ref": "#/components/schemas/schemas-domain-2xTgtBaL"
 													},
 													"enable_binding_cookie": {
 														"$ref": "#/components/schemas/enable_binding_cookie"
@@ -632,20 +600,14 @@
 													"name": {
 														"$ref": "#/components/schemas/apps_components-schemas-name"
 													},
-													"path_cookie_attribute": {
-														"$ref": "#/components/schemas/path_cookie_attribute"
-													},
 													"same_site_cookie_attribute": {
 														"$ref": "#/components/schemas/same_site_cookie_attribute"
-													},
-													"self_hosted_domains": {
-														"$ref": "#/components/schemas/self_hosted_domains"
 													},
 													"service_auth_401_redirect": {
 														"$ref": "#/components/schemas/service_auth_401_redirect"
 													},
 													"session_duration": {
-														"$ref": "#/components/schemas/session_duration-yes2BL9w"
+														"$ref": "#/components/schemas/session_duration"
 													},
 													"skip_interstitial": {
 														"$ref": "#/components/schemas/skip_interstitial"
@@ -656,10 +618,6 @@
 														"type": "string"
 													}
 												},
-												"required": [
-													"type",
-													"domain"
-												],
 												"title": "Self Hosted Application",
 												"type": "object"
 											},
@@ -719,24 +677,21 @@
 														"$ref": "#/components/schemas/allowed_idps"
 													},
 													"auto_redirect_to_identity": {
-														"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+														"$ref": "#/components/schemas/auto_redirect_to_identity-rBAIwcRR"
 													},
 													"domain": {
-														"$ref": "#/components/schemas/domain-YKaDcjbj"
+														"$ref": "#/components/schemas/schemas-domain-2xTgtBaL"
 													},
 													"name": {
 														"$ref": "#/components/schemas/apps_components-schemas-name"
 													},
 													"session_duration": {
-														"$ref": "#/components/schemas/session_duration-yes2BL9w"
+														"$ref": "#/components/schemas/session_duration"
 													},
 													"type": {
-														"$ref": "#/components/schemas/type-BpyL7kNC"
+														"$ref": "#/components/schemas/apps_components-schemas-type"
 													}
 												},
-												"required": [
-													"type"
-												],
 												"type": "object"
 											},
 											{
@@ -804,24 +759,21 @@
 														"$ref": "#/components/schemas/allowed_idps"
 													},
 													"auto_redirect_to_identity": {
-														"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+														"$ref": "#/components/schemas/auto_redirect_to_identity-rBAIwcRR"
 													},
 													"domain": {
-														"$ref": "#/components/schemas/domain-YKaDcjbj"
+														"$ref": "#/components/schemas/schemas-domain-2xTgtBaL"
 													},
 													"name": {
 														"$ref": "#/components/schemas/apps_components-schemas-name"
 													},
 													"session_duration": {
-														"$ref": "#/components/schemas/session_duration-yes2BL9w"
+														"$ref": "#/components/schemas/session_duration"
 													},
 													"type": {
-														"$ref": "#/components/schemas/type-BpyL7kNC"
+														"$ref": "#/components/schemas/apps_components-schemas-type"
 													}
 												},
-												"required": [
-													"type"
-												],
 												"type": "object"
 											},
 											{
@@ -889,24 +841,21 @@
 														"$ref": "#/components/schemas/allowed_idps"
 													},
 													"auto_redirect_to_identity": {
-														"$ref": "#/components/schemas/schemas-auto_redirect_to_identity"
+														"$ref": "#/components/schemas/auto_redirect_to_identity-rBAIwcRR"
 													},
 													"domain": {
-														"$ref": "#/components/schemas/domain-YKaDcjbj"
+														"$ref": "#/components/schemas/schemas-domain-2xTgtBaL"
 													},
 													"name": {
 														"$ref": "#/components/schemas/apps_components-schemas-name"
 													},
 													"session_duration": {
-														"$ref": "#/components/schemas/session_duration-yes2BL9w"
+														"$ref": "#/components/schemas/session_duration"
 													},
 													"type": {
-														"$ref": "#/components/schemas/type-BpyL7kNC"
+														"$ref": "#/components/schemas/apps_components-schemas-type"
 													}
 												},
-												"required": [
-													"type"
-												],
 												"type": "object"
 											},
 											{

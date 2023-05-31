@@ -44,10 +44,10 @@
 											"items": {
 												"properties": {
 													"action": {
-														"$ref": "#/components/schemas/action-kHE2ZvNG"
+														"$ref": "#/components/schemas/access-requests_components-schemas-action"
 													},
 													"allowed": {
-														"$ref": "#/components/schemas/allowed-Rc5w0Tj1"
+														"$ref": "#/components/schemas/schemas-allowed"
 													},
 													"app_domain": {
 														"$ref": "#/components/schemas/app_domain"
@@ -56,19 +56,19 @@
 														"$ref": "#/components/schemas/app_uid"
 													},
 													"connection": {
-														"$ref": "#/components/schemas/connection-3xs64Q1W"
+														"$ref": "#/components/schemas/schemas-connection-VR3RiHX3"
 													},
 													"created_at": {
 														"$ref": "#/components/schemas/timestamp"
 													},
 													"ip_address": {
-														"$ref": "#/components/schemas/ip-6pnXiEyI"
+														"$ref": "#/components/schemas/schemas-ip-298I41Wi"
 													},
 													"ray_id": {
 														"$ref": "#/components/schemas/ray_id"
 													},
 													"user_email": {
-														"$ref": "#/components/schemas/email-072FqyA5"
+														"$ref": "#/components/schemas/schemas-email-K1xTUbuu"
 													}
 												},
 												"type": "object"
@@ -116,10 +116,10 @@
 													"items": {
 														"properties": {
 															"action": {
-																"$ref": "#/components/schemas/action-kHE2ZvNG"
+																"$ref": "#/components/schemas/access-requests_components-schemas-action"
 															},
 															"allowed": {
-																"$ref": "#/components/schemas/allowed-Rc5w0Tj1"
+																"$ref": "#/components/schemas/schemas-allowed"
 															},
 															"app_domain": {
 																"$ref": "#/components/schemas/app_domain"
@@ -128,19 +128,19 @@
 																"$ref": "#/components/schemas/app_uid"
 															},
 															"connection": {
-																"$ref": "#/components/schemas/connection-3xs64Q1W"
+																"$ref": "#/components/schemas/schemas-connection-VR3RiHX3"
 															},
 															"created_at": {
 																"$ref": "#/components/schemas/timestamp"
 															},
 															"ip_address": {
-																"$ref": "#/components/schemas/ip-6pnXiEyI"
+																"$ref": "#/components/schemas/schemas-ip-298I41Wi"
 															},
 															"ray_id": {
 																"$ref": "#/components/schemas/ray_id"
 															},
 															"user_email": {
-																"$ref": "#/components/schemas/email-072FqyA5"
+																"$ref": "#/components/schemas/schemas-email-K1xTUbuu"
 															}
 														},
 														"type": "object"

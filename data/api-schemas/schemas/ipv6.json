@@ -1,5 +1,61 @@
 {
-	"example": "2001:0DB8::",
-	"format": "ipv6",
-	"type": "string"
+	"allOf": [
+		{
+			"properties": {
+				"editable": {
+					"default": true,
+					"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+					"enum": [
+						true,
+						false
+					],
+					"readOnly": true,
+					"type": "boolean"
+				},
+				"id": {
+					"description": "Identifier of the zone setting.",
+					"example": "development_mode",
+					"type": "string"
+				},
+				"modified_on": {
+					"description": "last time this setting was modified.",
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"nullable": true,
+					"readOnly": true,
+					"type": "string"
+				},
+				"value": {
+					"description": "Current value of the zone setting.",
+					"example": "on"
+				}
+			},
+			"required": [
+				"id",
+				"value"
+			]
+		},
+		{
+			"properties": {
+				"id": {
+					"description": "ID of the zone setting.",
+					"enum": [
+						"ipv6"
+					],
+					"example": "ipv6"
+				},
+				"value": {
+					"default": "off",
+					"description": "Value of the zone setting.",
+					"enum": [
+						"off",
+						"on"
+					],
+					"type": "string"
+				}
+			}
+		}
+	],
+	"description": "Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.cloudflare.com/hc/en-us/articles/200168586).",
+	"title": "IPv6"
 }

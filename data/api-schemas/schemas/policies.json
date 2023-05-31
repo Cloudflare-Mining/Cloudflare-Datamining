@@ -1,94 +1,60 @@
 {
-	"properties": {
-		"alert_type": {
-			"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
-			"example": "universal_ssl_event_type",
-			"type": "string"
-		},
-		"created": {
-			"example": "2014-01-01T05:20:00.12345Z",
-			"format": "date-time",
-			"readOnly": true,
-			"type": "string"
-		},
-		"description": {
-			"description": "Optional description for the Notification policy.",
-			"example": "Something describing the policy.",
-			"type": "string"
-		},
-		"enabled": {
-			"default": true,
-			"description": "Whether or not the Notification policy is enabled.",
-			"example": true,
-			"type": "boolean"
-		},
-		"filters": {
-			"additionalProperties": {
-				"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
-				"items": {},
-				"type": "array"
-			},
-			"example": {
-				"slo": [
-					"99.9"
-				]
-			},
-			"type": "object"
-		},
-		"id": {
-			"description": "UUID",
-			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-			"maxLength": 36,
-			"readOnly": true,
-			"type": "string"
-		},
-		"mechanisms": {
-			"additionalProperties": {
-				"items": {
-					"properties": {
-						"id": {
-							"description": "UUID",
-							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-							"maxLength": 36,
-							"readOnly": true,
-							"type": "string"
-						}
+	"description": "List of access policies assigned to the token.",
+	"items": {
+		"oneOf": [
+			{
+				"properties": {
+					"effect": {
+						"description": "Allow or deny operations against the resources.",
+						"enum": [
+							"allow",
+							"deny"
+						],
+						"example": "allow",
+						"type": "string"
 					},
-					"type": "object"
+					"id": {
+						"description": "Policy identifier.",
+						"example": "f267e341f3dd4697bd3b9f71dd96247f",
+						"readOnly": true,
+						"type": "string"
+					},
+					"permission_groups": {
+						"description": "A set of permission groups that are specified to the policy.",
+						"example": [
+							{
+								"id": "c8fed203ed3043cba015a93ad1616f1f",
+								"name": "Zone Read"
+							},
+							{
+								"id": "82e64a83756745bbbb1c9c2701bf816b",
+								"name": "DNS Read"
+							}
+						],
+						"items": {
+							"$ref": "#/components/schemas/permission_group"
+						},
+						"type": "array"
+					},
+					"resources": {
+						"description": "A list of resource names that the policy applies to.",
+						"example": {
+							"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*",
+							"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*"
+						},
+						"type": "object"
+					}
 				},
-				"type": "array"
-			},
-			"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
-			"example": {
-				"email": [
-					{
-						"id": "test@example.com"
-					}
+				"required": [
+					"id",
+					"effect",
+					"resources",
+					"permission_groups"
 				],
-				"pagerduty": [
-					{
-						"id": "e8133a15-00a4-4d69-aec1-32f70c51f6e5"
-					}
-				],
-				"webhooks": [
-					{
-						"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
-					}
-				]
-			},
-			"type": "object"
-		},
-		"modified": {
-			"example": "2014-01-01T05:20:00.12345Z",
-			"format": "date-time",
-			"readOnly": true,
-			"type": "string"
-		},
-		"name": {
-			"description": "Name of the policy.",
-			"example": "SSL Notification Event Policy",
-			"type": "string"
-		}
+				"title": "policy_with_permission_groups"
+			}
+		],
+		"type": "object"
 	},
-	"type": "object"
+	"type": "array"
 }

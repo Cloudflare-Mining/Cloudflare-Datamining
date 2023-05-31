@@ -1,0 +1,9 @@
+{
+	"default": "on",
+	"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+	"enum": [
+		"on",
+		"off"
+	],
+	"type": "string"
+}

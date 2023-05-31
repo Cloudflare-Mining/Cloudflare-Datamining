@@ -77,9 +77,9 @@
 						}
 					}
 				},
-				"description": "Delete Device Posture Rule response"
+				"description": "Delete Device Posture Rule response."
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -214,16 +214,13 @@
 						}
 					}
 				},
-				"description": "Delete Device Posture Rule response failure"
+				"description": "Delete Device Posture Rule response failure."
 			}
 		},
 		"security": [
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Device Posture Rule",
@@ -276,28 +273,28 @@
 											"items": {
 												"properties": {
 													"description": {
-														"$ref": "#/components/schemas/device-posture-rules_components-schemas-description"
+														"$ref": "#/components/schemas/description-kd0MjfGN"
 													},
 													"expiration": {
-														"$ref": "#/components/schemas/schemas-expiration"
+														"$ref": "#/components/schemas/expiration-kwRfn5LW"
 													},
 													"id": {
-														"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
+														"$ref": "#/components/schemas/uuid-LZAA1JJg"
 													},
 													"input": {
-														"$ref": "#/components/schemas/input-0014AalI"
+														"$ref": "#/components/schemas/input-KA3p0w5R"
 													},
 													"match": {
-														"$ref": "#/components/schemas/schemas-match-HErC9ztJ"
+														"$ref": "#/components/schemas/match-B4Vf4xUi"
 													},
 													"name": {
-														"$ref": "#/components/schemas/device-posture-rules_components-schemas-name"
+														"$ref": "#/components/schemas/name-z3XfCtp4"
 													},
 													"schedule": {
-														"$ref": "#/components/schemas/schedule"
+														"$ref": "#/components/schemas/schedule-XWghuynt"
 													},
 													"type": {
-														"$ref": "#/components/schemas/device-posture-rules_components-schemas-type"
+														"$ref": "#/components/schemas/type-yqmFeks8"
 													}
 												},
 												"type": "object"
@@ -312,7 +309,7 @@
 				},
 				"description": "List Device Posture Rules response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -345,28 +342,28 @@
 													"items": {
 														"properties": {
 															"description": {
-																"$ref": "#/components/schemas/device-posture-rules_components-schemas-description"
+																"$ref": "#/components/schemas/description-kd0MjfGN"
 															},
 															"expiration": {
-																"$ref": "#/components/schemas/schemas-expiration"
+																"$ref": "#/components/schemas/expiration-kwRfn5LW"
 															},
 															"id": {
-																"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
+																"$ref": "#/components/schemas/uuid-LZAA1JJg"
 															},
 															"input": {
-																"$ref": "#/components/schemas/input-0014AalI"
+																"$ref": "#/components/schemas/input-KA3p0w5R"
 															},
 															"match": {
-																"$ref": "#/components/schemas/schemas-match-HErC9ztJ"
+																"$ref": "#/components/schemas/match-B4Vf4xUi"
 															},
 															"name": {
-																"$ref": "#/components/schemas/device-posture-rules_components-schemas-name"
+																"$ref": "#/components/schemas/name-z3XfCtp4"
 															},
 															"schedule": {
-																"$ref": "#/components/schemas/schedule"
+																"$ref": "#/components/schemas/schedule-XWghuynt"
 															},
 															"type": {
-																"$ref": "#/components/schemas/device-posture-rules_components-schemas-type"
+																"$ref": "#/components/schemas/type-yqmFeks8"
 															}
 														},
 														"type": "object"
@@ -472,9 +469,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Device Posture Rules",
@@ -540,28 +534,28 @@
 										"result": {
 											"properties": {
 												"description": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-description"
+													"$ref": "#/components/schemas/description-kd0MjfGN"
 												},
 												"expiration": {
-													"$ref": "#/components/schemas/schemas-expiration"
+													"$ref": "#/components/schemas/expiration-kwRfn5LW"
 												},
 												"id": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
+													"$ref": "#/components/schemas/uuid-LZAA1JJg"
 												},
 												"input": {
-													"$ref": "#/components/schemas/input-0014AalI"
+													"$ref": "#/components/schemas/input-KA3p0w5R"
 												},
 												"match": {
-													"$ref": "#/components/schemas/schemas-match-HErC9ztJ"
+													"$ref": "#/components/schemas/match-B4Vf4xUi"
 												},
 												"name": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-name"
+													"$ref": "#/components/schemas/name-z3XfCtp4"
 												},
 												"schedule": {
-													"$ref": "#/components/schemas/schedule"
+													"$ref": "#/components/schemas/schedule-XWghuynt"
 												},
 												"type": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-type"
+													"$ref": "#/components/schemas/type-yqmFeks8"
 												}
 											},
 											"type": "object"
@@ -574,7 +568,7 @@
 				},
 				"description": "Device Posture Rules Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -609,28 +603,28 @@
 												"result": {
 													"properties": {
 														"description": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-description"
+															"$ref": "#/components/schemas/description-kd0MjfGN"
 														},
 														"expiration": {
-															"$ref": "#/components/schemas/schemas-expiration"
+															"$ref": "#/components/schemas/expiration-kwRfn5LW"
 														},
 														"id": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
+															"$ref": "#/components/schemas/uuid-LZAA1JJg"
 														},
 														"input": {
-															"$ref": "#/components/schemas/input-0014AalI"
+															"$ref": "#/components/schemas/input-KA3p0w5R"
 														},
 														"match": {
-															"$ref": "#/components/schemas/schemas-match-HErC9ztJ"
+															"$ref": "#/components/schemas/match-B4Vf4xUi"
 														},
 														"name": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-name"
+															"$ref": "#/components/schemas/name-z3XfCtp4"
 														},
 														"schedule": {
-															"$ref": "#/components/schemas/schedule"
+															"$ref": "#/components/schemas/schedule-XWghuynt"
 														},
 														"type": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-type"
+															"$ref": "#/components/schemas/type-yqmFeks8"
 														}
 													},
 													"type": "object"
@@ -734,9 +728,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Device Posture Rules Details",
@@ -774,14 +765,464 @@
 							},
 							"input": {
 								"description": "The value to be checked against.",
-								"properties": {
-									"id": {
-										"description": "API uuid tag.",
-										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-										"maxLength": 36,
-										"type": "string"
-									}
+								"example": {
+									"operating_system": "linux",
+									"path": "/bin/cat",
+									"thumbprint": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e"
 								},
+								"oneOf": [
+									{
+										"properties": {
+											"exists": {
+												"description": "Whether or not file exists",
+												"example": true,
+												"type": "boolean"
+											},
+											"operating_system": {
+												"description": "Operating system",
+												"enum": [
+													"windows",
+													"linux",
+													"mac"
+												],
+												"example": "mac",
+												"type": "string"
+											},
+											"path": {
+												"description": "File path.",
+												"example": "/bin/cat",
+												"type": "string"
+											},
+											"sha256": {
+												"description": "SHA-256.",
+												"example": "https://api.us-2.crowdstrike.com",
+												"type": "string"
+											},
+											"thumbprint": {
+												"description": "Signing certificate thumbprint.",
+												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
+												"type": "string"
+											}
+										},
+										"required": [
+											"path",
+											"operating_system"
+										],
+										"title": "File Check",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"id": {
+												"description": "List ID.",
+												"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
+												"type": "string"
+											},
+											"operating_system": {
+												"description": "Operating System",
+												"enum": [
+													"android",
+													"ios",
+													"chromeos"
+												],
+												"example": "android",
+												"type": "string"
+											}
+										},
+										"required": [
+											"operating_system",
+											"id"
+										],
+										"title": "Unique Client ID",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"domain": {
+												"description": "Domain",
+												"example": "example.com",
+												"type": "string"
+											},
+											"operating_system": {
+												"description": "Operating System",
+												"enum": [
+													"windows"
+												],
+												"example": "windows",
+												"type": "string"
+											}
+										},
+										"required": [
+											"operating_system"
+										],
+										"title": "Domain Joined",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"operating_system": {
+												"description": "Operating System",
+												"enum": [
+													"windows"
+												],
+												"example": "windows",
+												"type": "string"
+											},
+											"operator": {
+												"description": "Operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": "13.3.0",
+												"type": "string"
+											},
+											"os_distro_name": {
+												"description": "Operating System Distribution Name (linux only)",
+												"example": "ubuntu",
+												"type": "string"
+											},
+											"os_distro_revision": {
+												"description": "Version of OS Distribution (linux only)",
+												"example": "11.3.1",
+												"type": "string"
+											},
+											"version": {
+												"description": "Version of OS",
+												"example": "13.3.0",
+												"type": "string"
+											}
+										},
+										"required": [
+											"operating_system",
+											"version",
+											"operator"
+										],
+										"title": "OS Version",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"enabled": {
+												"description": "Enabled",
+												"example": true,
+												"type": "boolean"
+											},
+											"operating_system": {
+												"description": "Operating System",
+												"enum": [
+													"windows",
+													"mac"
+												],
+												"example": "windows",
+												"type": "string"
+											}
+										},
+										"required": [
+											"operating_system",
+											"enabled"
+										],
+										"title": "Firewall",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"operating_system": {
+												"description": "Operating system",
+												"enum": [
+													"windows",
+													"linux",
+													"mac"
+												],
+												"example": "mac",
+												"type": "string"
+											},
+											"path": {
+												"description": "File path.",
+												"example": "/bin/cat",
+												"type": "string"
+											},
+											"sha256": {
+												"description": "SHA-256.",
+												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+												"type": "string"
+											},
+											"thumbprint": {
+												"description": "Signing certificate thumbprint.",
+												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
+												"type": "string"
+											}
+										},
+										"required": [
+											"path",
+											"operating_system"
+										],
+										"title": "Sentinelone",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"operating_system": {
+												"description": "Operating system",
+												"enum": [
+													"windows",
+													"linux",
+													"mac"
+												],
+												"example": "mac",
+												"type": "string"
+											},
+											"path": {
+												"description": "File path.",
+												"example": "/bin/cat",
+												"type": "string"
+											},
+											"sha256": {
+												"description": "SHA-256.",
+												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+												"type": "string"
+											},
+											"thumbprint": {
+												"description": "Signing certificate thumbprint.",
+												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
+												"type": "string"
+											}
+										},
+										"required": [
+											"path",
+											"operating_system"
+										],
+										"title": "Carbonblack",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"checkDisks": {
+												"$ref": "#/components/schemas/checkDisks"
+											},
+											"requireAll": {
+												"$ref": "#/components/schemas/requireAll"
+											}
+										},
+										"title": "Disk Encryption",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"operating_system": {
+												"description": "Operating system",
+												"enum": [
+													"windows",
+													"linux",
+													"mac"
+												],
+												"example": "mac",
+												"type": "string"
+											},
+											"path": {
+												"description": "Path for the application.",
+												"example": "/bin/cat",
+												"type": "string"
+											},
+											"sha256": {
+												"description": "SHA-256.",
+												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+												"type": "string"
+											},
+											"thumbprint": {
+												"description": "Signing certificate thumbprint.",
+												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
+												"type": "string"
+											}
+										},
+										"required": [
+											"path",
+											"operating_system"
+										],
+										"title": "Application",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"compliance_status": {
+												"description": "Compliance Status",
+												"enum": [
+													"compliant",
+													"noncompliant",
+													"unknown"
+												],
+												"example": "compliant",
+												"type": "string"
+											},
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id",
+											"compliance_status"
+										],
+										"title": "Workspace One S2S Input",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											},
+											"operator": {
+												"description": "Operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											},
+											"os": {
+												"description": "Os Version",
+												"example": "13.3.0",
+												"type": "string"
+											},
+											"overall": {
+												"description": "overall",
+												"example": 90,
+												"type": "string"
+											},
+											"sensor_config": {
+												"description": "SensorConfig",
+												"example": 90,
+												"type": "string"
+											},
+											"version": {
+												"description": "Version",
+												"example": "13.3.0",
+												"type": "string"
+											},
+											"versionOperator": {
+												"description": "Version Operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id"
+										],
+										"title": "Crowdstrike S2S Input",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"compliance_status": {
+												"description": "Compliance Status",
+												"enum": [
+													"compliant",
+													"noncompliant",
+													"unknown",
+													"notapplicable",
+													"ingraceperiod",
+													"error"
+												],
+												"example": "compliant",
+												"type": "string"
+											},
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id",
+											"compliance_status"
+										],
+										"title": "Intune S2S Input",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											},
+											"countOperator": {
+												"description": "Count Operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											},
+											"issue_count": {
+												"description": "The Number of Issues.",
+												"example": 1,
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id",
+											"countOperator",
+											"issue_count"
+										],
+										"title": "Kolide S2S Input",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											},
+											"scoreOperator": {
+												"description": "Score Operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											},
+											"total_score": {
+												"description": "Total Score.",
+												"example": 1,
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id",
+											"scoreOperator",
+											"total_score"
+										],
+										"title": "Tanium S2S Input",
+										"type": "object"
+									}
+								],
 								"type": "object"
 							},
 							"match": {
@@ -811,10 +1252,21 @@
 								"enum": [
 									"file",
 									"application",
-									"serial_number",
 									"tanium",
 									"gateway",
-									"warp"
+									"warp",
+									"disk_encryption",
+									"sentinelone",
+									"carbonblack",
+									"firewall",
+									"os_version",
+									"domain_joined",
+									"unique_client_id",
+									"kolide",
+									"tanium_s2s",
+									"crowdstrike_s2s",
+									"intune",
+									"workspace_one"
 								],
 								"example": "file",
 								"type": "string"
@@ -863,28 +1315,28 @@
 										"result": {
 											"properties": {
 												"description": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-description"
+													"$ref": "#/components/schemas/description-kd0MjfGN"
 												},
 												"expiration": {
-													"$ref": "#/components/schemas/schemas-expiration"
+													"$ref": "#/components/schemas/expiration-kwRfn5LW"
 												},
 												"id": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
+													"$ref": "#/components/schemas/uuid-LZAA1JJg"
 												},
 												"input": {
-													"$ref": "#/components/schemas/input-0014AalI"
+													"$ref": "#/components/schemas/input-KA3p0w5R"
 												},
 												"match": {
-													"$ref": "#/components/schemas/schemas-match-HErC9ztJ"
+													"$ref": "#/components/schemas/match-B4Vf4xUi"
 												},
 												"name": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-name"
+													"$ref": "#/components/schemas/name-z3XfCtp4"
 												},
 												"schedule": {
-													"$ref": "#/components/schemas/schedule"
+													"$ref": "#/components/schemas/schedule-XWghuynt"
 												},
 												"type": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-type"
+													"$ref": "#/components/schemas/type-yqmFeks8"
 												}
 											},
 											"type": "object"
@@ -897,7 +1349,7 @@
 				},
 				"description": "Create Device Posture Rule response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -932,28 +1384,28 @@
 												"result": {
 													"properties": {
 														"description": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-description"
+															"$ref": "#/components/schemas/description-kd0MjfGN"
 														},
 														"expiration": {
-															"$ref": "#/components/schemas/schemas-expiration"
+															"$ref": "#/components/schemas/expiration-kwRfn5LW"
 														},
 														"id": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
+															"$ref": "#/components/schemas/uuid-LZAA1JJg"
 														},
 														"input": {
-															"$ref": "#/components/schemas/input-0014AalI"
+															"$ref": "#/components/schemas/input-KA3p0w5R"
 														},
 														"match": {
-															"$ref": "#/components/schemas/schemas-match-HErC9ztJ"
+															"$ref": "#/components/schemas/match-B4Vf4xUi"
 														},
 														"name": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-name"
+															"$ref": "#/components/schemas/name-z3XfCtp4"
 														},
 														"schedule": {
-															"$ref": "#/components/schemas/schedule"
+															"$ref": "#/components/schemas/schedule-XWghuynt"
 														},
 														"type": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-type"
+															"$ref": "#/components/schemas/type-yqmFeks8"
 														}
 													},
 													"type": "object"
@@ -1057,9 +1509,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Device Posture Rule",
@@ -1108,14 +1557,464 @@
 							},
 							"input": {
 								"description": "The value to be checked against.",
-								"properties": {
-									"id": {
-										"description": "API uuid tag.",
-										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-										"maxLength": 36,
-										"type": "string"
-									}
+								"example": {
+									"operating_system": "linux",
+									"path": "/bin/cat",
+									"thumbprint": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e"
 								},
+								"oneOf": [
+									{
+										"properties": {
+											"exists": {
+												"description": "Whether or not file exists",
+												"example": true,
+												"type": "boolean"
+											},
+											"operating_system": {
+												"description": "Operating system",
+												"enum": [
+													"windows",
+													"linux",
+													"mac"
+												],
+												"example": "mac",
+												"type": "string"
+											},
+											"path": {
+												"description": "File path.",
+												"example": "/bin/cat",
+												"type": "string"
+											},
+											"sha256": {
+												"description": "SHA-256.",
+												"example": "https://api.us-2.crowdstrike.com",
+												"type": "string"
+											},
+											"thumbprint": {
+												"description": "Signing certificate thumbprint.",
+												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
+												"type": "string"
+											}
+										},
+										"required": [
+											"path",
+											"operating_system"
+										],
+										"title": "File Check",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"id": {
+												"description": "List ID.",
+												"example": "da3de859-8f6e-47ea-a2b5-b2433858471f",
+												"type": "string"
+											},
+											"operating_system": {
+												"description": "Operating System",
+												"enum": [
+													"android",
+													"ios",
+													"chromeos"
+												],
+												"example": "android",
+												"type": "string"
+											}
+										},
+										"required": [
+											"operating_system",
+											"id"
+										],
+										"title": "Unique Client ID",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"domain": {
+												"description": "Domain",
+												"example": "example.com",
+												"type": "string"
+											},
+											"operating_system": {
+												"description": "Operating System",
+												"enum": [
+													"windows"
+												],
+												"example": "windows",
+												"type": "string"
+											}
+										},
+										"required": [
+											"operating_system"
+										],
+										"title": "Domain Joined",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"operating_system": {
+												"description": "Operating System",
+												"enum": [
+													"windows"
+												],
+												"example": "windows",
+												"type": "string"
+											},
+											"operator": {
+												"description": "Operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": "13.3.0",
+												"type": "string"
+											},
+											"os_distro_name": {
+												"description": "Operating System Distribution Name (linux only)",
+												"example": "ubuntu",
+												"type": "string"
+											},
+											"os_distro_revision": {
+												"description": "Version of OS Distribution (linux only)",
+												"example": "11.3.1",
+												"type": "string"
+											},
+											"version": {
+												"description": "Version of OS",
+												"example": "13.3.0",
+												"type": "string"
+											}
+										},
+										"required": [
+											"operating_system",
+											"version",
+											"operator"
+										],
+										"title": "OS Version",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"enabled": {
+												"description": "Enabled",
+												"example": true,
+												"type": "boolean"
+											},
+											"operating_system": {
+												"description": "Operating System",
+												"enum": [
+													"windows",
+													"mac"
+												],
+												"example": "windows",
+												"type": "string"
+											}
+										},
+										"required": [
+											"operating_system",
+											"enabled"
+										],
+										"title": "Firewall",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"operating_system": {
+												"description": "Operating system",
+												"enum": [
+													"windows",
+													"linux",
+													"mac"
+												],
+												"example": "mac",
+												"type": "string"
+											},
+											"path": {
+												"description": "File path.",
+												"example": "/bin/cat",
+												"type": "string"
+											},
+											"sha256": {
+												"description": "SHA-256.",
+												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+												"type": "string"
+											},
+											"thumbprint": {
+												"description": "Signing certificate thumbprint.",
+												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
+												"type": "string"
+											}
+										},
+										"required": [
+											"path",
+											"operating_system"
+										],
+										"title": "Sentinelone",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"operating_system": {
+												"description": "Operating system",
+												"enum": [
+													"windows",
+													"linux",
+													"mac"
+												],
+												"example": "mac",
+												"type": "string"
+											},
+											"path": {
+												"description": "File path.",
+												"example": "/bin/cat",
+												"type": "string"
+											},
+											"sha256": {
+												"description": "SHA-256.",
+												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+												"type": "string"
+											},
+											"thumbprint": {
+												"description": "Signing certificate thumbprint.",
+												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
+												"type": "string"
+											}
+										},
+										"required": [
+											"path",
+											"operating_system"
+										],
+										"title": "Carbonblack",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"checkDisks": {
+												"$ref": "#/components/schemas/checkDisks"
+											},
+											"requireAll": {
+												"$ref": "#/components/schemas/requireAll"
+											}
+										},
+										"title": "Disk Encryption",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"operating_system": {
+												"description": "Operating system",
+												"enum": [
+													"windows",
+													"linux",
+													"mac"
+												],
+												"example": "mac",
+												"type": "string"
+											},
+											"path": {
+												"description": "Path for the application.",
+												"example": "/bin/cat",
+												"type": "string"
+											},
+											"sha256": {
+												"description": "SHA-256.",
+												"example": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+												"type": "string"
+											},
+											"thumbprint": {
+												"description": "Signing certificate thumbprint.",
+												"example": "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
+												"type": "string"
+											}
+										},
+										"required": [
+											"path",
+											"operating_system"
+										],
+										"title": "Application",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"compliance_status": {
+												"description": "Compliance Status",
+												"enum": [
+													"compliant",
+													"noncompliant",
+													"unknown"
+												],
+												"example": "compliant",
+												"type": "string"
+											},
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id",
+											"compliance_status"
+										],
+										"title": "Workspace One S2S Input",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											},
+											"operator": {
+												"description": "Operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											},
+											"os": {
+												"description": "Os Version",
+												"example": "13.3.0",
+												"type": "string"
+											},
+											"overall": {
+												"description": "overall",
+												"example": 90,
+												"type": "string"
+											},
+											"sensor_config": {
+												"description": "SensorConfig",
+												"example": 90,
+												"type": "string"
+											},
+											"version": {
+												"description": "Version",
+												"example": "13.3.0",
+												"type": "string"
+											},
+											"versionOperator": {
+												"description": "Version Operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id"
+										],
+										"title": "Crowdstrike S2S Input",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"compliance_status": {
+												"description": "Compliance Status",
+												"enum": [
+													"compliant",
+													"noncompliant",
+													"unknown",
+													"notapplicable",
+													"ingraceperiod",
+													"error"
+												],
+												"example": "compliant",
+												"type": "string"
+											},
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id",
+											"compliance_status"
+										],
+										"title": "Intune S2S Input",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											},
+											"countOperator": {
+												"description": "Count Operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											},
+											"issue_count": {
+												"description": "The Number of Issues.",
+												"example": 1,
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id",
+											"countOperator",
+											"issue_count"
+										],
+										"title": "Kolide S2S Input",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											},
+											"scoreOperator": {
+												"description": "Score Operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											},
+											"total_score": {
+												"description": "Total Score.",
+												"example": 1,
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id",
+											"scoreOperator",
+											"total_score"
+										],
+										"title": "Tanium S2S Input",
+										"type": "object"
+									}
+								],
 								"type": "object"
 							},
 							"match": {
@@ -1145,10 +2044,21 @@
 								"enum": [
 									"file",
 									"application",
-									"serial_number",
 									"tanium",
 									"gateway",
-									"warp"
+									"warp",
+									"disk_encryption",
+									"sentinelone",
+									"carbonblack",
+									"firewall",
+									"os_version",
+									"domain_joined",
+									"unique_client_id",
+									"kolide",
+									"tanium_s2s",
+									"crowdstrike_s2s",
+									"intune",
+									"workspace_one"
 								],
 								"example": "file",
 								"type": "string"
@@ -1197,28 +2107,28 @@
 										"result": {
 											"properties": {
 												"description": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-description"
+													"$ref": "#/components/schemas/description-kd0MjfGN"
 												},
 												"expiration": {
-													"$ref": "#/components/schemas/schemas-expiration"
+													"$ref": "#/components/schemas/expiration-kwRfn5LW"
 												},
 												"id": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
+													"$ref": "#/components/schemas/uuid-LZAA1JJg"
 												},
 												"input": {
-													"$ref": "#/components/schemas/input-0014AalI"
+													"$ref": "#/components/schemas/input-KA3p0w5R"
 												},
 												"match": {
-													"$ref": "#/components/schemas/schemas-match-HErC9ztJ"
+													"$ref": "#/components/schemas/match-B4Vf4xUi"
 												},
 												"name": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-name"
+													"$ref": "#/components/schemas/name-z3XfCtp4"
 												},
 												"schedule": {
-													"$ref": "#/components/schemas/schedule"
+													"$ref": "#/components/schemas/schedule-XWghuynt"
 												},
 												"type": {
-													"$ref": "#/components/schemas/device-posture-rules_components-schemas-type"
+													"$ref": "#/components/schemas/type-yqmFeks8"
 												}
 											},
 											"type": "object"
@@ -1231,7 +2141,7 @@
 				},
 				"description": "Update Device Posture Rule response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1266,28 +2176,28 @@
 												"result": {
 													"properties": {
 														"description": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-description"
+															"$ref": "#/components/schemas/description-kd0MjfGN"
 														},
 														"expiration": {
-															"$ref": "#/components/schemas/schemas-expiration"
+															"$ref": "#/components/schemas/expiration-kwRfn5LW"
 														},
 														"id": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-uuid"
+															"$ref": "#/components/schemas/uuid-LZAA1JJg"
 														},
 														"input": {
-															"$ref": "#/components/schemas/input-0014AalI"
+															"$ref": "#/components/schemas/input-KA3p0w5R"
 														},
 														"match": {
-															"$ref": "#/components/schemas/schemas-match-HErC9ztJ"
+															"$ref": "#/components/schemas/match-B4Vf4xUi"
 														},
 														"name": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-name"
+															"$ref": "#/components/schemas/name-z3XfCtp4"
 														},
 														"schedule": {
-															"$ref": "#/components/schemas/schedule"
+															"$ref": "#/components/schemas/schedule-XWghuynt"
 														},
 														"type": {
-															"$ref": "#/components/schemas/device-posture-rules_components-schemas-type"
+															"$ref": "#/components/schemas/type-yqmFeks8"
 														}
 													},
 													"type": "object"
@@ -1391,9 +2301,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update Device Posture Rule",

@@ -428,47 +428,32 @@
 										"result": {
 											"items": {
 												"properties": {
-													"approval_groups": {
-														"$ref": "#/components/schemas/approval_groups"
+													"alert_type": {
+														"$ref": "#/components/schemas/alert_type"
 													},
-													"approval_required": {
-														"$ref": "#/components/schemas/approval_required"
-													},
-													"created_at": {
+													"created": {
 														"$ref": "#/components/schemas/timestamp"
 													},
-													"decision": {
-														"$ref": "#/components/schemas/decision"
+													"description": {
+														"$ref": "#/components/schemas/schemas-description-3iRUSEiw"
 													},
-													"exclude": {
-														"$ref": "#/components/schemas/schemas-exclude-dsblXH5N"
+													"enabled": {
+														"$ref": "#/components/schemas/enabled-8MRKWory"
+													},
+													"filters": {
+														"$ref": "#/components/schemas/filters-n0qlyTdp"
 													},
 													"id": {
-														"$ref": "#/components/schemas/components-schemas-uuid-QfKcK1ny"
+														"$ref": "#/components/schemas/uuid-pTqm3hVF"
 													},
-													"include": {
-														"$ref": "#/components/schemas/include-xtnKSks2"
+													"mechanisms": {
+														"$ref": "#/components/schemas/mechanisms"
 													},
-													"isolation_required": {
-														"$ref": "#/components/schemas/isolation_required"
+													"modified": {
+														"$ref": "#/components/schemas/timestamp"
 													},
 													"name": {
-														"$ref": "#/components/schemas/policies_components-schemas-name"
-													},
-													"precedence": {
-														"$ref": "#/components/schemas/precedence-1ClwHfbV"
-													},
-													"purpose_justification_prompt": {
-														"$ref": "#/components/schemas/purpose_justification_prompt"
-													},
-													"purpose_justification_required": {
-														"$ref": "#/components/schemas/purpose_justification_required"
-													},
-													"require": {
-														"$ref": "#/components/schemas/schemas-require-Ri0bcL85"
-													},
-													"updated_at": {
-														"$ref": "#/components/schemas/timestamp"
+														"$ref": "#/components/schemas/schemas-name-dIHCUk9g"
 													}
 												},
 												"type": "object"
@@ -515,47 +500,32 @@
 												"result": {
 													"items": {
 														"properties": {
-															"approval_groups": {
-																"$ref": "#/components/schemas/approval_groups"
+															"alert_type": {
+																"$ref": "#/components/schemas/alert_type"
 															},
-															"approval_required": {
-																"$ref": "#/components/schemas/approval_required"
-															},
-															"created_at": {
+															"created": {
 																"$ref": "#/components/schemas/timestamp"
 															},
-															"decision": {
-																"$ref": "#/components/schemas/decision"
+															"description": {
+																"$ref": "#/components/schemas/schemas-description-3iRUSEiw"
 															},
-															"exclude": {
-																"$ref": "#/components/schemas/schemas-exclude-dsblXH5N"
+															"enabled": {
+																"$ref": "#/components/schemas/enabled-8MRKWory"
+															},
+															"filters": {
+																"$ref": "#/components/schemas/filters-n0qlyTdp"
 															},
 															"id": {
-																"$ref": "#/components/schemas/components-schemas-uuid-QfKcK1ny"
+																"$ref": "#/components/schemas/uuid-pTqm3hVF"
 															},
-															"include": {
-																"$ref": "#/components/schemas/include-xtnKSks2"
+															"mechanisms": {
+																"$ref": "#/components/schemas/mechanisms"
 															},
-															"isolation_required": {
-																"$ref": "#/components/schemas/isolation_required"
+															"modified": {
+																"$ref": "#/components/schemas/timestamp"
 															},
 															"name": {
-																"$ref": "#/components/schemas/policies_components-schemas-name"
-															},
-															"precedence": {
-																"$ref": "#/components/schemas/precedence-1ClwHfbV"
-															},
-															"purpose_justification_prompt": {
-																"$ref": "#/components/schemas/purpose_justification_prompt"
-															},
-															"purpose_justification_required": {
-																"$ref": "#/components/schemas/purpose_justification_required"
-															},
-															"require": {
-																"$ref": "#/components/schemas/schemas-require-Ri0bcL85"
-															},
-															"updated_at": {
-																"$ref": "#/components/schemas/timestamp"
+																"$ref": "#/components/schemas/schemas-name-dIHCUk9g"
 															}
 														},
 														"type": "object"
@@ -740,16 +710,16 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"description": {
-													"$ref": "#/components/schemas/schemas-description-c7eyOSE7"
+													"$ref": "#/components/schemas/schemas-description-3iRUSEiw"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/enabled-qxmJn7JD"
+													"$ref": "#/components/schemas/enabled-8MRKWory"
 												},
 												"filters": {
-													"$ref": "#/components/schemas/filters"
+													"$ref": "#/components/schemas/filters-n0qlyTdp"
 												},
 												"id": {
-													"$ref": "#/components/schemas/uuid"
+													"$ref": "#/components/schemas/uuid-pTqm3hVF"
 												},
 												"mechanisms": {
 													"$ref": "#/components/schemas/mechanisms"
@@ -758,7 +728,7 @@
 													"$ref": "#/components/schemas/timestamp"
 												},
 												"name": {
-													"$ref": "#/components/schemas/schemas-name-3tDzWKES"
+													"$ref": "#/components/schemas/schemas-name-dIHCUk9g"
 												}
 											},
 											"type": "object"
@@ -812,16 +782,16 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"description": {
-															"$ref": "#/components/schemas/schemas-description-c7eyOSE7"
+															"$ref": "#/components/schemas/schemas-description-3iRUSEiw"
 														},
 														"enabled": {
-															"$ref": "#/components/schemas/enabled-qxmJn7JD"
+															"$ref": "#/components/schemas/enabled-8MRKWory"
 														},
 														"filters": {
-															"$ref": "#/components/schemas/filters"
+															"$ref": "#/components/schemas/filters-n0qlyTdp"
 														},
 														"id": {
-															"$ref": "#/components/schemas/uuid"
+															"$ref": "#/components/schemas/uuid-pTqm3hVF"
 														},
 														"mechanisms": {
 															"$ref": "#/components/schemas/mechanisms"
@@ -830,7 +800,7 @@
 															"$ref": "#/components/schemas/timestamp"
 														},
 														"name": {
-															"$ref": "#/components/schemas/schemas-name-3tDzWKES"
+															"$ref": "#/components/schemas/schemas-name-dIHCUk9g"
 														}
 													},
 													"type": "object"

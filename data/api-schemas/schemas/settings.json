@@ -1,70 +1,27 @@
 {
-	"allOf": [
-		{
-			"properties": {
-				"created": {
-					"description": "The date and time the settings have been created.",
-					"example": "2014-01-02T02:20:00Z",
-					"format": "date-time",
-					"readOnly": true,
-					"type": "string"
-				},
-				"enabled": {
-					"default": true,
-					"description": "State of the zone settings for Email Routing.",
-					"enum": [
-						true,
-						false
-					],
-					"example": true,
-					"type": "boolean"
-				},
-				"modified": {
-					"description": "The date and time the settings have been modified.",
-					"example": "2014-01-02T02:20:00Z",
-					"format": "date-time",
-					"readOnly": true,
-					"type": "string"
-				},
-				"name": {
-					"description": "Domain of your zone.",
-					"example": "example.net",
-					"readOnly": true,
-					"type": "string"
-				},
-				"skip_wizard": {
-					"default": true,
-					"description": "Flag to check if the user skipped the configuration wizard.",
-					"enum": [
-						true,
-						false
-					],
-					"example": true,
-					"type": "boolean"
-				},
-				"status": {
-					"description": "Show the state of your account, and the type or configuration error.",
-					"enum": [
-						"ready",
-						"unconfigured",
-						"misconfigured",
-						"misconfigured/locked",
-						"unlocked"
-					],
-					"example": "ready",
-					"readOnly": true,
-					"type": "string"
-				},
-				"tag": {
-					"description": "Email Routing settings identifier.",
-					"example": "75610dab9e69410a82cf7e400a09ecec",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
-			"type": "object"
+	"additionalProperties": false,
+	"properties": {
+		"china_network": {
+			"description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.",
+			"example": false,
+			"type": "boolean"
+		},
+		"client_certificate_forwarding": {
+			"description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.",
+			"example": true,
+			"type": "boolean"
+		},
+		"hostname": {
+			"description": "The hostname that these settings apply to.",
+			"example": "admin.example.com",
+			"type": "string"
 		}
+	},
+	"required": [
+		"hostname",
+		"china_network",
+		"client_certificate_forwarding"
 	],
+	"title": "Hostname Settings",
 	"type": "object"
 }

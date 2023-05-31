@@ -392,7 +392,7 @@
 													"$ref": "#/components/schemas/rule_catchall-actions"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/rule_enabled-Bq71r5kQ"
+													"$ref": "#/components/schemas/rule_enabled"
 												},
 												"matchers": {
 													"$ref": "#/components/schemas/rule_catchall-matchers"
@@ -462,7 +462,7 @@
 							"actions": {
 								"description": "List actions patterns.",
 								"items": {
-									"$ref": "#/components/schemas/rule_action-Jkk3Mv2M"
+									"$ref": "#/components/schemas/rule_action"
 								},
 								"type": "array"
 							},
@@ -612,7 +612,7 @@
 							"actions": {
 								"description": "List actions patterns.",
 								"items": {
-									"$ref": "#/components/schemas/rule_action-Jkk3Mv2M"
+									"$ref": "#/components/schemas/rule_action"
 								},
 								"type": "array"
 							},
@@ -824,7 +824,7 @@
 													"$ref": "#/components/schemas/rule_catchall-actions"
 												},
 												"enabled": {
-													"$ref": "#/components/schemas/rule_enabled-Bq71r5kQ"
+													"$ref": "#/components/schemas/rule_enabled"
 												},
 												"matchers": {
 													"$ref": "#/components/schemas/rule_catchall-matchers"

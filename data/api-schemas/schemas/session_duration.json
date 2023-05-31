@@ -1,7 +1,6 @@
 {
-	"default": 5,
-	"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
-	"maximum": 30,
-	"minimum": 1,
-	"type": "integer"
+	"default": "24h",
+	"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+	"example": "24h",
+	"type": "string"
 }

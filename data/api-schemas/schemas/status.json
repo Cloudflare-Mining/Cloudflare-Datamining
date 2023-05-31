@@ -1,12 +1,10 @@
 {
-	"description": "The current status of the origin server according to the health check.",
+	"description": "Status of the token.",
 	"enum": [
-		"unknown",
-		"healthy",
-		"unhealthy",
-		"suspended"
+		"active",
+		"disabled",
+		"expired"
 	],
-	"example": "healthy",
-	"readOnly": true,
+	"example": "active",
 	"type": "string"
 }

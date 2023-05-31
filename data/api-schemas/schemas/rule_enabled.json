@@ -1,6 +1,10 @@
 {
 	"default": true,
-	"description": "When set to true, the rule is enabled.",
+	"description": "Routing rule status.",
+	"enum": [
+		true,
+		false
+	],
 	"example": true,
 	"type": "boolean"
 }
