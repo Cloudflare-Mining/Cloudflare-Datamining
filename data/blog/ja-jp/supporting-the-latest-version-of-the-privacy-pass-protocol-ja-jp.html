@@ -38,8 +38,9 @@
 	<p>Cloudflareは特定の種類の要求フローをサポートしていますが、異なるサービスプロバイダーが完全に合致するインタラクション特性に準拠することはおそらく不可能でしょう。拡張版v2.0の主要変更点の 1 つは、中央コンフィグレーションファイルを使用することなく、技術的書き換えで対処することです。拡張機能の<a href="https://github.com/privacypass/challenge-bypass-extension/blob/master/src/ext/config.js" target="_blank">ソースコード</a>でコンフィグレーションが規定されているため、プライバシーパスアクションを開始する際に要求されるブラウジング特性の変更をより簡易にすることが可能となります。これにより、新規プロバイダー用にこのコンフィグレーションを単に複製して適用することで、まったく異なる新しい要求フローを追加することが可能になりました。</p>
 	<p>Cloudflare以外の他のサービスとの間でこのような統合が可能となったことは、CAPTCHAプロバイダーの<a href="https://www.hcaptcha.com" target="_blank">hCaptcha</a>によってサポートされるまったく新しいバージョンの拡張機能が間もなく展開されることで明らかになることでしょう。hCaptchaが要求する一時的な課題に対処する際、ユーザーは、他のhCaptchaの顧客サイトで引き換え可能なプライバシー保護トークンを受けとり、それに対処することが可能になります。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-8-1.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<p><span style="color:grey"><small><em>“「hCaptchaはユーザーのプライバシーに焦点を当てます。そして、プライバシーパスをサポートすることは当社事業領域の自然な延長線上にあります。当社はCloudflareおよびその他のベンダーとの協働により、これを一般的で広範な業界標準にすることを目標に掲げております。また、当社では現在別のアプリケーション開発にも注力しているところです。グローバルに展開しているサービスにプライバシーパスを実装することは比較的直接的で実直な試みです。当社はCloudflareチームとの充実した協働により、オープンソースのChromeブラウザー拡張機能を改善し、当社のユーザー向けに最高のエクスペリエンスを提供することが可能となりました。」 - エリ＝シャドゥル・ケドゥリ、hCaptcha 創設者”</em></small></span></p>
-	<p>— <strong>Eli-Shaoul Khedouri</strong>, founder of hCaptcha</p>
+	<p><span style="color:grey"><small><em>“「hCaptchaはユーザーのプライバシーに焦点を当てます。そして、プライバシーパスをサポートすることは当社事業領域の自然な延長線上にあります。当社はCloudflareおよびその他のベンダーとの協働により、これを一般的で広範な業界標準にすることを目標に掲げております。また、当社では現在別のアプリケーション開発にも注力しているところです。グローバルに展開しているサービスにプライバシーパスを実装することは比較的直接的で実直な試みです。当社はCloudflareチームとの充実した協働により、オープンソースのChromeブラウザー拡張機能を改善し、当社のユーザー向けに最高のエクスペリエンスを提供することが可能となりました。」 - エリ＝シャドゥル・ケドゥリ、hCaptcha 創設者”</em></small></span></p><small>
+	</small>
+	<p><small>— <strong>Eli-Shaoul Khedouri</strong>, founder of hCaptcha</small></p>
 	<!--kg-card-end: markdown-->
 	<p>プライバシーパスブラウザー拡張機能をめぐるこのhCaptcha統合の事例は、新規サービスのサポートを確立する際の概念実証事例と言えるでしょう。新規参入のプロバイダーがプライバシーパスブラウザー拡張機能との統合をしたいときも、単に<a href="https://github.com/privacypass/challenge-bypass-extension" target="_blank">オープンソースリポジトリ</a>にPRを実行することで実現できます。</p>
 	<h2 id="--2"><strong>向上した暗号化機能</strong></h2>
