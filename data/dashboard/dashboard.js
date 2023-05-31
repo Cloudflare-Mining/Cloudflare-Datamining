@@ -2275,12 +2275,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = hn({}, {
-					branch: "release-May.30.2023-1685455442",
+					branch: "hotfix-environment-migration-breaking-ui",
 					isReleaseCandidate: "true",
-					commit: "e1e03801054a92b414c786225bbeab04d75f5d7f",
+					commit: "1a79351c649ab76328fee41bb4bbe4bbd65a644c",
 					env: "production",
-					builtAt: 1685460547947,
-					dashVersion: "573f83cbf202d0b5d2399316caa19d3f59182af2",
+					builtAt: 1685526875591,
+					dashVersion: "ec96636c053bac41f87ad53823321134cb113f13",
 					versions: {
 						"@cloudflare/app-dash": "25.153.0",
 						node: "16.16.0",
@@ -15708,4 +15708,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=c1ef5637bf32f7f362b5.js.map
+//# sourceMappingURL=4005082455f0f0cb9f00.js.map
