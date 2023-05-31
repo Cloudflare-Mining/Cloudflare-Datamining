@@ -201,7 +201,7 @@
 							"type": "integer"
 						},
 						"status": {
-							"description": "Specifies the processing status of the video.",
+							"description": "Specifies the processing status for all quality levels for a video.",
 							"enum": [
 								"pendingupload",
 								"downloading",

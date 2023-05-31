@@ -87,8 +87,7 @@
 								{
 									"type": "string"
 								}
-							],
-							"nullable": true
+							]
 						}
 					}
 				}
@@ -99,73 +98,54 @@
 			"properties": {
 				"result": {
 					"properties": {
-						"additional_information": {
-							"description": "Additional information related to the host name.",
-							"properties": {
-								"suspected_malware_family": {
-									"description": "Suspected DGA malware family.",
-									"example": "",
-									"type": "string"
-								}
-							},
-							"type": "object"
-						},
-						"application": {
-							"description": "Application that the hostname belongs to.",
-							"properties": {
-								"id": {
-									"type": "integer"
-								},
-								"name": {
-									"example": "CLOUDFLARE",
-									"type": "string"
-								}
-							},
-							"type": "object"
-						},
-						"content_categories": {
-							"description": "Current content categories.",
-							"example": [
-								{
-									"id": 155,
-									"name": "Technology",
-									"super_category_id": 26
-								}
-							]
-						},
-						"domain": {
-							"example": "cloudflare.com",
-							"type": "string"
-						},
-						"popularity_rank": {
-							"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
-							"type": "integer"
-						},
-						"resolves_to_refs": {
-							"description": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to.",
-							"items": {
-								"properties": {
-									"id": {
-										"$ref": "#/components/schemas/stix_identifier"
-									},
-									"value": {
-										"description": "IP address or domain name.",
-										"example": "192.0.2.0",
-										"type": "string"
-									}
-								},
-								"type": "object"
-							},
-							"type": "array"
-						},
-						"risk_score": {
-							"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk).",
+						"count": {
+							"description": "The number of items in the List.",
+							"example": 20,
+							"readOnly": true,
 							"type": "number"
 						},
-						"risk_types": {
-							"example": []
+						"created_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
+						},
+						"description": {
+							"description": "The description of the List.",
+							"example": "The serial numbers for administrators",
+							"type": "string"
+						},
+						"id": {
+							"description": "API Resource UUID tag.",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+							"maxLength": 36,
+							"type": "string"
+						},
+						"name": {
+							"description": "The name of the List.",
+							"example": "Admin Serial Numbers",
+							"type": "string"
+						},
+						"type": {
+							"description": "The type of List.",
+							"enum": [
+								"SERIAL",
+								"URL",
+								"DOMAIN",
+								"EMAIL",
+								"IP"
+							],
+							"example": "SERIAL",
+							"type": "string"
+						},
+						"updated_at": {
+							"example": "2014-01-01T05:20:00.12345Z",
+							"format": "date-time",
+							"readOnly": true,
+							"type": "string"
 						}
-					}
+					},
+					"type": "object"
 				}
 			}
 		}

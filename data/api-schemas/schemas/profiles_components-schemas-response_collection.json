@@ -140,7 +140,7 @@
 													"type": "boolean"
 												},
 												"id": {
-													"$ref": "#/components/schemas/entry_id-7jXjPw1V"
+													"$ref": "#/components/schemas/entry_id-tI7SylDo"
 												},
 												"name": {
 													"description": "The name of the entry.",
@@ -159,7 +159,7 @@
 									"id": {
 										"allOf": [
 											{
-												"$ref": "#/components/schemas/uuid-HOoMVreC"
+												"$ref": "#/components/schemas/uuid-18e6GZrS"
 											}
 										],
 										"description": "The ID for this profile",
@@ -217,7 +217,7 @@
 													"type": "boolean"
 												},
 												"id": {
-													"$ref": "#/components/schemas/entry_id-7jXjPw1V"
+													"$ref": "#/components/schemas/entry_id-tI7SylDo"
 												},
 												"name": {
 													"description": "The name of the entry.",
@@ -225,7 +225,7 @@
 													"type": "string"
 												},
 												"pattern": {
-													"$ref": "#/components/schemas/pattern-zCsImBSM"
+													"$ref": "#/components/schemas/pattern-oVlZkaaQ"
 												},
 												"profile_id": {
 													"description": "ID of the parent profile"
@@ -242,7 +242,7 @@
 									"id": {
 										"allOf": [
 											{
-												"$ref": "#/components/schemas/uuid-HOoMVreC"
+												"$ref": "#/components/schemas/uuid-18e6GZrS"
 											}
 										],
 										"description": "The ID for this profile",

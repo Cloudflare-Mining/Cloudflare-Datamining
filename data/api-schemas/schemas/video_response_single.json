@@ -184,7 +184,7 @@
 							"type": "string"
 						},
 						"readyToStream": {
-							"description": "Indicates whether the video is ready for viewing.",
+							"description": "Indicates whether at least one quality level is encoded and the video is ready for viewing.",
 							"example": true,
 							"type": "boolean"
 						},
@@ -219,7 +219,7 @@
 									"type": "string"
 								},
 								"state": {
-									"description": "Specifies the processing status of the video.",
+									"description": "Specifies the processing status for all quality levels for a video.",
 									"enum": [
 										"pendingupload",
 										"downloading",

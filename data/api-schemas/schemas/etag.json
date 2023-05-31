@@ -1,6 +1,5 @@
 {
-	"description": "Hashed script content, can be used in a If-None-Match header when updating.",
-	"example": "ea95132c15732412d22c1476fa83f27a",
-	"readOnly": true,
+	"description": "A digest of the IP data. Useful for determining if the data has changed.",
+	"example": "a8e453d9d129a3769407127936edfdb0",
 	"type": "string"
 }

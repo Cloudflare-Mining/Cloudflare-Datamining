@@ -1,0 +1,18 @@
+{
+	"description": "Update enablement of Argo Smart Routing",
+	"properties": {
+		"value": {
+			"description": "Enables Argo Smart Routing.",
+			"enum": [
+				"on",
+				"off"
+			],
+			"example": "on",
+			"type": "string"
+		}
+	},
+	"required": [
+		"value"
+	],
+	"type": "object"
+}

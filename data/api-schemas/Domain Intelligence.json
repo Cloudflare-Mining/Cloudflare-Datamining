@@ -59,13 +59,13 @@
 													"$ref": "#/components/schemas/additional_information"
 												},
 												"application": {
-													"$ref": "#/components/schemas/application"
+													"$ref": "#/components/schemas/application-DwJiGPEv"
 												},
 												"content_categories": {
 													"$ref": "#/components/schemas/content_categories"
 												},
 												"domain": {
-													"$ref": "#/components/schemas/schemas-domain_name"
+													"$ref": "#/components/schemas/domain_name-ClNT8l5t"
 												},
 												"popularity_rank": {
 													"$ref": "#/components/schemas/popularity_rank"
@@ -89,7 +89,7 @@
 				},
 				"description": "Get Domain Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -127,13 +127,13 @@
 															"$ref": "#/components/schemas/additional_information"
 														},
 														"application": {
-															"$ref": "#/components/schemas/application"
+															"$ref": "#/components/schemas/application-DwJiGPEv"
 														},
 														"content_categories": {
 															"$ref": "#/components/schemas/content_categories"
 														},
 														"domain": {
-															"$ref": "#/components/schemas/schemas-domain_name"
+															"$ref": "#/components/schemas/domain_name-ClNT8l5t"
 														},
 														"popularity_rank": {
 															"$ref": "#/components/schemas/popularity_rank"
@@ -248,9 +248,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Domain Details",
@@ -373,7 +370,7 @@
 				},
 				"description": "Get Multiple Domain Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -557,9 +554,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Multiple Domain Details",

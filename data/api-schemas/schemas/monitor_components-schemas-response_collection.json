@@ -125,6 +125,16 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"consecutive_down": {
+								"default": 0,
+								"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
+								"type": "integer"
+							},
+							"consecutive_up": {
+								"default": 0,
+								"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
+								"type": "integer"
+							},
 							"created_on": {
 								"example": "2014-01-01T05:20:00.12345Z",
 								"format": "date-time",
@@ -143,7 +153,7 @@
 							},
 							"expected_codes": {
 								"default": "200",
-								"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
+								"description": "The expected HTTP response codes or code ranges of the health check, comma-separated. This parameter is only valid for HTTP and HTTPS monitors.",
 								"example": "2xx",
 								"type": "string"
 							},
@@ -193,8 +203,13 @@
 							},
 							"port": {
 								"default": 0,
-								"description": "Port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+								"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 								"type": "integer"
+							},
+							"probe_zone": {
+								"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
+								"example": "example.com",
+								"type": "string"
 							},
 							"retries": {
 								"default": 2,

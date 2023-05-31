@@ -1,14 +1,5 @@
 {
-	"anyOf": [
-		{
-			"example": "192.0.2.0",
-			"format": "ipv4",
-			"type": "string"
-		},
-		{
-			"example": "2001:0DB8::",
-			"format": "ipv6",
-			"type": "string"
-		}
-	]
+	"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. (auto-generated).",
+	"example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+	"type": "string"
 }

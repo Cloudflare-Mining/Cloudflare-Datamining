@@ -1,6 +1,5 @@
 {
-	"description": "URL(s) to filter submissions results by",
-	"example": "https://www.cloudflare.com",
-	"format": "uri",
+	"description": "The POST endpoint to call when dispatching a notification.",
+	"example": "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd",
 	"type": "string"
 }

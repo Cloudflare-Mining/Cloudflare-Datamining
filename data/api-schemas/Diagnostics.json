@@ -142,7 +142,7 @@
 														"type": "array"
 													},
 													"target": {
-														"$ref": "#/components/schemas/target"
+														"$ref": "#/components/schemas/target-HTZjMlLi"
 													}
 												},
 												"type": "object"
@@ -157,7 +157,7 @@
 				},
 				"description": "Traceroute response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -196,7 +196,7 @@
 																"type": "array"
 															},
 															"target": {
-																"$ref": "#/components/schemas/target"
+																"$ref": "#/components/schemas/target-HTZjMlLi"
 															}
 														},
 														"type": "object"
@@ -302,6 +302,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Traceroute",

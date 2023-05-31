@@ -80,34 +80,14 @@
 				{
 					"properties": {
 						"result": {
-							"items": {},
-							"nullable": true,
-							"type": "array"
-						},
-						"result_info": {
-							"properties": {
-								"count": {
-									"description": "Total number of results for the requested service",
-									"example": 1,
-									"type": "number"
+							"anyOf": [
+								{
+									"type": "object"
 								},
-								"page": {
-									"description": "Current page within paginated list of results",
-									"example": 1,
-									"type": "number"
-								},
-								"per_page": {
-									"description": "Number of results per page of results",
-									"example": 20,
-									"type": "number"
-								},
-								"total_count": {
-									"description": "Total results available without any search parameters",
-									"example": 2000,
-									"type": "number"
+								{
+									"type": "string"
 								}
-							},
-							"type": "object"
+							]
 						}
 					}
 				}
@@ -117,12 +97,9 @@
 		{
 			"properties": {
 				"result": {
-					"items": {},
-					"maxItems": 0,
-					"type": "array"
+					"type": "object"
 				}
-			},
-			"type": "object"
+			}
 		}
 	]
 }
