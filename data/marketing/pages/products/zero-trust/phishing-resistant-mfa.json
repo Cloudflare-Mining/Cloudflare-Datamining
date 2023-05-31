@@ -416,7 +416,7 @@
 					{
 						"contentfulId": "3iEP5okS7qiDCcjb93Y7RW",
 						"title": "How we stopped it with security keys",
-						"copy": "Cloudflare's security team received reports of (1) employees receiving legitimate-looking text messages pointing to what appeared to be (2) Cloudflare's Okta login page. While the threat actor attempted to log in with compromised credentials (3-4), they could not get past the security key requirement that Cloudflare Zero Trust activated.\n\nWhile security keys are not a silver bullet against all attacks, they strengthen the barrier and work in conjunction with additional Zero Trust security measures such as DNS filtering, browser isolation, cloud email security, and more.",
+						"copy": "Cloudflare's security team received reports of (1) employees receiving legitimate-looking text messages pointing to what appeared to be (2) Cloudflare's Okta login page. While the threat actor attempted to log in with compromised credentials (3-4), they could not get past the security key requirement that Cloudflare Zero Trust activated.\n\nWhile security keys are not a silver bullet against all attacks, they strengthen the barrier and work in conjunction with additional [Zero Trust security measures](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) such as DNS filtering, [browser isolation](https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/), cloud email security, and more.",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": "http://cfl.re/targeted-SMS-phishing-attack-case-study",
@@ -562,7 +562,7 @@
 					{
 						"contentfulId": "3q6dvSZ7ka0yvtg0604ArZ",
 						"title": "Roll out strong authentication everywhere",
-						"copy": "- Broad MFA support exists for cloud services, but this can be more difficult with legacy or non-web apps\n- ZTNA acts as an aggregation layer around all your SaaS, self-hosted, and non-web resources, which makes strong authentication easier to enforce across all of them\n",
+						"copy": "- Broad MFA support exists for cloud services, but this can be more difficult with legacy or non-web apps\n- [ZTNA](https://www.cloudflare.com/learning/access-management/what-is-ztna/) acts as an aggregation layer around all your SaaS, self-hosted, and non-web resources, which makes strong authentication easier to enforce across all of them\n",
 						"toggleText": "With Zero Trust",
 						"button": null,
 						"learnMoreUrl": null,
