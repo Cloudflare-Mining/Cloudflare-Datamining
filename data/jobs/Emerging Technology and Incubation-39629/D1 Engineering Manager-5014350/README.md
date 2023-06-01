@@ -5,29 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>What You'll Do</strong></p>
-<p><span style="font-weight: 400;">We are looking for a Senior Sales Compensation Analyst to join our team within Global Sales Operations. As a key team member of a high-visibility organization, the Senior Sales Compensation Analyst will provide data analysis, reporting and operational assistance in support of Cloudflare’s Global Sales Compensation Program. Working closely with the existing Sales Compensation team and partnering with Sales Finance, the Senior Sales Compensation Analyst will play an active role in compensation plan administration, including data management within the Anaplan ICM platform, compensation plan distribution, commissions calculations and auditing, performance reporting, and data validation.&nbsp;</span></p>
-<p><span style="font-weight: 400;">This position also offers tremendous growth opportunity, with the successful candidate eventually playing a much larger role in Incentive Compensation Management (ICM) platform administration, process development/refinement,&nbsp; and the ongoing operational execution of Cloudflare’s Sales Compensation Program.&nbsp;</span></p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>About The Role</strong></p>
+<p><span style="font-weight: 400;">We announced Cloudflare Workers in 2017&nbsp; — since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support. Workers has allowed Cloudflare to add programmability to the edge such that developers could have access to writing logic on the edge in their preferred way — through code.&nbsp;</span></p>
+<p><span style="font-weight: 400;">Over the past few years, Workers has grown from a simple functions-as-a-service option into a fully blown full-stack platform. With any application, however, in addition to serverless compute, you need to be able to manage state. =</span></p>
+<p><span style="font-weight: 400;">In 2022, Cloudflare released D1 — built on Durable Objects, D1 is Cloudflare’s first foray into providing a managed database solution.&nbsp;</span></p>
+<p><span style="font-weight: 400;">In this role, you’ll be helping define and build the future of D1, making sure we’re focused on the highest priority projects to enable developers to build full stack applications.&nbsp;</span></p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Data management (data entry, administration, ownership) within Cloudflare’s Incentive Compensation management platform</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee onboarding/off-boarding and change management</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Compensation Plan document distribution and tracking</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Commission and incentive compensation calculations</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Sales performance reporting and visualization</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Data validation and auditing</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">General data analysis</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">General Sales Compensation Program support</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Help drive prioritization of D1, balancing shipping useful features to customers and engineering priorities</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead projects from ideation through launch, and continuing through ongoing maintenance and support</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and nurture relationships with product and coordinate closely to ensure successful delivery</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with other departments such as Product Marketing, Marketing, Community &amp; developer advocacy, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Represent the company externally as needed, including meetings with customers and prospects and analysis</span></li>
 </ul>
-<p><strong>About You</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 8 years of&nbsp;FP&amp;A, Consulting, Investment Banking, Sales Operations, Sales Compensation or Commissions experience. Experience in a growth technology company is a plus.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Firm grasp of the Sales Comp administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly proficient in complex Excel / GoogleSheet files</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficient in additional analytics, reporting and data visualization tools/platforms</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Exceptionally motivated and driven self-starter, with the desire to learn and build a career</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated ability to multitask in a highly deadline-driven environment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong verbal and written communication skills&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience as a manager running technical teams</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of C++, Rust and/or JavaScript, including asynchronous programming</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Great oral and written communications skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Desire to learn and improve</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Willing and eager to share knowledge, and mentor</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with (and love) for distributed systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong systems level programming skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a continuous integration workflow and using source control (we use git)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Unix knowledge</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of security issues and responsibilities</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with monitoring, alerting and debugging high volume production systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluent in analyses of data sets such as logs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience designing and building APIs</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
