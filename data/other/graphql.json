@@ -3014,6 +3014,7 @@
 		"datetimeHour": "Request timestamp, truncated to start of an hour",
 		"datetimeMinute": "Request timestamp, truncated to start of an minute",
 		"httpStatus": "Response status of worker",
+		"isSampled": "1 if the request was sampled to bypass Smart Placement, 0 otherwise",
 		"placementUsed": "1 if the request was processed using Smart Placement, 0 if it was processed in default mode",
 		"requestDurationBucketMin": "Bucket of request duration rounded down to nearest 10*2^n",
 		"requestDurationBucketMin100ms": "Bucket of request duration rounded down to nearest 100ms",
