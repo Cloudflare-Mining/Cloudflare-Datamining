@@ -5,29 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
-<p><span style="font-weight: 400;">The web team builds awareness by sharing how Cloudflare can make a positive impact for customers and prospects. This spans across all channels of customer communication: our website, docs, blog, emails, social media, events, ads, etc. We build the technology that allows internal customers to craft beautiful experiences and tell compelling stories about Cloudflare.</span></p>
-<h4>What you'll do</h4>
-<p><span style="font-weight: 400;">As a Frontend Engineer on the Marketing Engineering team, you will be responsible for working alongside the design team and product owners who maintain our marketing website, blog, and more. You will build Contentful models, expand our e2e testing, and build new features for upcoming client-facing projects. You’ll bring industry best practices for delivering state-of-the-art layouts plus a solid understanding of modern frontend development.</span></p>
+<p><strong>What you'll do</strong><br>We are seeking a highly skilled and motivated GL Accountant to help support the General ledger team. This position is integral to building a world-class organization to support our growing and complex global business. This role requires a highly skilled and ambitious professional who can support various areas within the Accounting team. Examples of desirable skills, knowledge and experience:</p>
+<p><span style="text-decoration: underline;"><strong>Close</strong></span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build tools, frameworks, and libraries to help the front-end team build a better www.cloudflare.com</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Optimize our TypeScript/Gatsby system</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with others on the team to align on design and functionality</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Review work from your peers throughout all stages of the development lifecycle</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Plan and lead engineering work on large projects</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentor team members to help bring out their best work</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Represent the team within the company and externally through blogging and tech talks</span></li>
+	<li>Assists in posting monthly accrual journal entries</li>
+	<li>Assists in recording internally developed software entries</li>
+	<li>Assists in recording and reconciling credit card and accrual activity</li>
+	<li>Prepares various account reconciliations, schedules, exhibits and summaries to support the general ledger balances and investigate variances</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><span style="text-decoration: underline;"><strong>Audit</strong></span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 5 years of experience building and managing high volume software applications; React and Typescript are a plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with A/B testing</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You enjoy getting things done and have a bias for action: you're a builder and a creator and have contributed teams that deliver results</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing or contributing to build systems for large JavaScript projects and have contributed to open-source JavaScript tools and frameworks&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills. Curiosity and empathy are coveted traits here!</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript, and the DOM</span></li>
+	<li>Participate in the interim and annual audits for the Company</li>
+	<li>Support audits and external reporting requirements (year-end audit, interim audit, quarterly reviews, SOX, Internal Audit, SEC Reporting, etc.)&nbsp;</li>
 </ul>
-<p>&nbsp;</p>
+<p><span style="text-decoration: underline;"><strong>Process Improvement</strong></span></p>
+<ol>
+	<li>Participant in various cross-functional projects and initiatives ranging in size and scope (i.e. system implementations, process changes, etc.)</li>
+	<li>Drive continuous process improvement activities (enhanced process documentation, process enhancements, automation, cross-training, etc.)</li>
+</ol>
+<p><span style="text-decoration: underline;"><strong>Various Responsibilities</strong></span></p>
+<ul>
+	<li>Provides support to all areas of the Accounting Department as needed</li>
+	<li>Performs other analysis and special projects as assigned&nbsp;</li>
+</ul>
+<p>Examples of desirable skills, knowledge and experience</p>
+<ul>
+	<li>Bachelor's degree in Accounting or Finance.</li>
+	<li>Sound knowledge of generally accepted accounting principles</li>
+	<li>Experience in SAAS industry</li>
+	<li>Systems savvy candidate required: should possess a solid understanding and application of finance and accounting systems (NetSuite or other accounting system etc).</li>
+	<li>Advanced analytical and information gathering skills; ability to evaluate and prioritize extensive detailed data.</li>
+	<li>Excellent interpersonal and communication skills (written and verbal) with the ability to interface effectively with all levels of the Company.</li>
+	<li>Minimum 3 years of relevant experience</li>
+	<li>Ability to manage multiple priorities to meet established timelines</li>
+	<li>Excel skills including working knowledge of pivot tables, Vlookups, formulas, etc.</li>
+	<li>Must possess excellent written and verbal communication skills and have the ability to interact with peers and senior management.</li>
+	<li>Strong problem-solving and analytical skills</li>
+	<li>Ability to work independently</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

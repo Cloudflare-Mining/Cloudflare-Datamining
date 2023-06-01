@@ -5,33 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About Product Experience(PX) team</strong></p>
-<p><span style="font-weight: 400;">We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Senior Product Designer to join our Product Experience team.</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;"><br></span><strong>About </strong><strong>Emerging Technology and Incubation (ETI)</strong><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</span></p>
-<p><span style="font-weight: 400;">Your work will impact and influence the user experience of a product used by millions of people daily. As a Senior Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Senior Product Designers to lead by example and coach the team into doing their best work.</span></p>
-<p><span style="font-weight: 400;">If you're a systems-thinking Senior Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you. We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
-<p><strong>What you'll do</strong></p>
+<p><strong>About the Team</strong></p>
+<p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the serverless technology that executes billions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to. The Workers team is split into several groups, this group is focused on how we bring state to the edge.</p>
+<p><strong>About the Role</strong></p>
+<p><span style="font-weight: 400;">You'll help design and build </span><a href="https://blog.cloudflare.com/introducing-workers-durable-objects/"><span style="font-weight: 400;">Durable Objects</span></a><span style="font-weight: 400;">, a new approach to stateful serverless computing.</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<ul>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrate talent and passion for designing end-to-end developer experiences.</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Distill complex problems into approachable steps through researching, sketching, and sharing ideas with your cross-functional team.</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with product managers and engineering leaders to work through technical tradeoffs that affect product roadmaps.</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with other designers on the developer platform design team to collaborate on shared patterns, product vision, and design goals.</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Facilitate design reviews with cross-functional teams.</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Share what you learn internally and with the broader public designer, developer, and product communities.</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Influence and contribute to the internal design process and team culture, supporting the team's current and long-term objectives.</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Bring in new tools and techniques to improve workflows, create designs, map out user flows, and share our work.</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Make time to mentor other designers on the team and share your craft, learning as you teach.</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Find ways to grow design's impact within the organization, spending time to share design decisions throughout the organization that would benefit other teams and product areas</span><strong>.</strong></li>
-	</ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep understanding of C++ and JavaScript, including asynchronous programming in both</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with (and love) for distributed systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong systems level programming skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a continuous integration workflow and using source control (we use git)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Unix knowledge</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of security issues and responsibilities</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with monitoring, alerting and debugging high volume production systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluent in analyses of data sets such as logs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Designing and building APIs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Great oral and written communications skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Desire to learn and improve</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Willing and eager to share knowledge, and mentor</span></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep understanding of human-centered design.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">8+ years working in professional UX, product design, or front-end engineering roles.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Effective visual, written, and verbal communication skills.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Technical expertise and an understanding of data science are a plus.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding and interest in developer workflows and tools are a double plus.</span></li>
-</ul>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Job ID #CK_109</span></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
