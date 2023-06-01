@@ -1,0 +1,31 @@
+{
+	"managed_request_headers": [
+		{
+			"id": "add_client_certificate_headers",
+			"enabled": false,
+			"has_conflict": false
+		},
+		{
+			"id": "add_visitor_location_headers",
+			"enabled": false,
+			"has_conflict": false
+		},
+		{
+			"id": "remove_visitor_ip_headers",
+			"enabled": false,
+			"has_conflict": false
+		}
+	],
+	"managed_response_headers": [
+		{
+			"id": "remove_x-powered-by_header",
+			"enabled": false,
+			"has_conflict": false
+		},
+		{
+			"id": "add_security_headers",
+			"enabled": false,
+			"has_conflict": false
+		}
+	]
+}

@@ -68,6 +68,9 @@ async function run() {
 	// API tokens permission groups
 	await fetchAndWrite('/user/tokens/permission_groups', '../data/account/token_permission_groups.json', (itemA, itemB) => (itemA.name + itemA.id).localeCompare(itemB.name + itemB.id));
 
+	// Transforms
+	await fetchAndWrite(`/zones/${process.env.CLOUDFLARE_ZONE_ID}/managed_headers`, '../data/zone_managed_headers.json');
+
 	console.log('Pushing!');
 	await gitPush();
 
