@@ -25,11 +25,11 @@ const formattedReq = {
 	<dl class="divide-y divide-gray-400">
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">TLS Version</dt>
-			<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{cfInfo.tlsVersion}</dd>
+			<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{cfInfo.tlsVersion ?? 'unknown'}</dd>
 		</div>
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">TLS Cipher</dt>
-			<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{cfInfo.tlsCipher}</dd>
+			<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{cfInfo.tlsCipher ?? 'unknown'}</dd>
 		</div>
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">HTTP Protocol</dt>
