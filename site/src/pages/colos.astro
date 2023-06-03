@@ -6,6 +6,7 @@ import {airports} from '../airportsWithLocations.js';
 import {types} from '../coloTypes';
 import MainHeading from '../components/MainHeading.astro';
 import Description from '../components/Description.astro';
+export const prerender = true;
 
 const importFiles = await Astro.glob('../../../data/other/colos-id-map.json');
 const colos = importFiles[0].default;

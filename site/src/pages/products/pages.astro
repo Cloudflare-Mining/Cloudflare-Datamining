@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Table from '../../components/Table.astro';
 import MainHeading from '../../components/MainHeading.astro';
 import SubHeading from '../../components/SubHeading.astro';
+export const prerender = true;
 
 const importFiles = import.meta.glob('../../../../data/products/pages/*.json');
 

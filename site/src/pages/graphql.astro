@@ -4,6 +4,7 @@ import Table from '../components/Table.astro';
 import MainHeading from '../components/MainHeading.astro';
 import SubHeading from '../components/SubHeading.astro';
 import Description from '../components/Description.astro';
+export const prerender = true;
 
 const importFiles = await Astro.glob('../../../data/other/graphql.json');
 const sections = importFiles[0].default;

@@ -7,6 +7,7 @@ import Description from '../components/Description.astro';
 
 import dashGatesImport from '../../../data/gates/dashboard.json';
 import ztGatesImport from '../../../data/gates/zt-dashboard.json';
+export const prerender = true;
 
 interface Gates {
 	[key: string]: {

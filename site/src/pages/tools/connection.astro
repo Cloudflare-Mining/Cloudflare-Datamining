@@ -1,0 +1,99 @@
+---
+import { Code } from 'astro/components';
+
+import Layout from '../../layouts/Layout.astro';
+import MainHeading from '../../components/MainHeading.astro';
+import Description from '../../components/Description.astro';
+import SubHeading from '../../components/SubHeading.astro';
+
+
+const reqInfo = Astro.request;
+// @ts-expect-error cf is define with cloudflare
+const cfInfo = reqInfo?.cf;
+
+const formattedReq = {
+	cf: cfInfo,
+	headers: Object.fromEntries(reqInfo.headers.entries()),
+}
+
+---
+<Layout title="Cloudflare Connection Info - Cloudflare Datamining" description="Get information about your connection, bot score, etc.">
+	<MainHeading title="Cloudflare Connection Info" />
+	<Description>
+		<p>Discover what Cloudflare knows about your connection.</p>
+	</Description>
+
+	<SubHeading category='Connection'></SubHeading>
+	<dl class="divide-y divide-gray-400">
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">TLS Version</dt>
+			<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{cfInfo.tlsVersion}</dd>
+		</div>
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">TLS Cipher</dt>
+			<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{cfInfo.tlsCipher}</dd>
+		</div>
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">HTTP Protocol</dt>
+			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.httpProtocol}</dd>
+		</div>
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">User Agent</dt>
+			<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{reqInfo.headers.get('user-agent')}</dd>
+		</div>
+	</dl>
+
+	<SubHeading category='IP Info'></SubHeading>
+	<dl class="divide-y divide-gray-400">
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">IP</dt>
+			<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{reqInfo.headers.get('cf-connecting-ip') ?? 'unknown'}</dd>
+		</div>
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">Approximate Coordinates</dt>
+			<dd class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0">{cfInfo.latitude}°, {cfInfo.longitude}°</dd>
+		</div>
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">IP Approximate City</dt>
+			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.city}</dd>
+		</div>
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">IP Approximate Region</dt>
+			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.region} ({cfInfo.regionCode})</dd>
+		</div>
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">IP Approximate Postal Code</dt>
+			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.postalCode}</dd>
+		</div>
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">Internet Service Provider (ISP)</dt>
+			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.asOrganization}</dd>
+		</div>
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">Continent</dt>
+			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.continent}</dd>
+		</div>
+	</dl>
+
+	<SubHeading category='Bot Management'></SubHeading>
+	<dl class="divide-y divide-gray-400">
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">Verified Bot</dt>
+			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.botManagement?.verifiedBot && 'yes' || 'no'}</dd>
+		</div>
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">Corporate Proxy</dt>
+			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.botManagement?.botManagement && 'yes' || 'no'}</dd>
+		</div>
+		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+			<dt class="text-sm font-medium leading-6">Human Score</dt>
+			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.botManagement?.score ?? cfInfo.clientTrustScore ?? 'unknown'}% human</dd>
+		</div>
+	</dl>
+
+	<details>
+		<summary>Show Full Request</summary>
+		<pre class="bg-gray-800 text-white p-4 rounded-lg whitespace-pre-wrap"><code class="language-json break-all">{JSON.stringify(formattedReq, null, '\t')}</code></pre>
+	</details>
+</Layout>
+

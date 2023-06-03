@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import FlagsTable from '../../components/FlagsTable.astro';
 import {sortObjectByKeys} from '../../utils.js';
+export const prerender = true;
 
 const importFiles = await Astro.glob('../../../../data/entitlements/account.json');
 const rawCategories:any = {};
