@@ -2377,6 +2377,14 @@
 						"compatEnableDate": "2023-07-01",
 						"compatEnableFlag": "urlsearchparams_delete_has_value_arg"
 					}
+				},
+				{
+					"name": "strictCompression",
+					"annotations": {
+						"compatDisableFlag": "no_strict_compression_checks",
+						"compatEnableDate": "2023-08-01",
+						"compatEnableFlag": "strict_compression_checks"
+					}
 				}
 			]
 		},
