@@ -51,7 +51,15 @@
 				"contentfulId": "2rFsqrsfx3dbpiu6dQPw1P",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "3mO3mT5lRojJdwAGwMMlYa",
+					"text": "Join Cloudflare at Gartner Summit. Booth 319.",
+					"learnMoreText": "Learn more",
+					"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-srm2023/",
+					"backgroundColor": null,
+					"hideCloseButton": null
+				},
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -159,14 +167,14 @@
 							"features": [
 								{
 									"contentTypeId": "feature",
-									"contentfulId": "6ABpqfTamfHBfAYoTUer6F",
-									"title": "Everywhere Security: Cloudflare @ Gartner",
+									"contentfulId": "6ok5GAJ5nbjGBZuRr5CVb1",
+									"title": "Preempt phishing attack damage with Zero Trust",
 									"titleSize": "large",
-									"description": "Join us at Gartner Summit, and discover the advantages of a unified security platform.",
-									"learnMoreUrl": "/lp/gartner-srm2023/",
-									"learnMoreText": "Learn more",
-									"displayBorder": true,
-									"openLinkInNewTab": null,
+									"description": "The root cause of 9 out of 10 cyber attacks can be linked to phishing. Learn how to prevent them from succeeding.",
+									"learnMoreUrl": "/the-net/top-of-mind-security/phishing/",
+									"learnMoreText": "Read the article",
+									"displayBorder": false,
+									"openLinkInNewTab": false,
 									"icon": null,
 									"iconAssetFile": null,
 									"imageAssetFile": null,
@@ -5014,7 +5022,7 @@
 				"ru-RU",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"baseURL": "https://www.cloudflare.com",
 			"staticStrings": {
 				"MB": "MB",
