@@ -2385,6 +2385,14 @@
 						"compatEnableDate": "2023-08-01",
 						"compatEnableFlag": "strict_compression_checks"
 					}
+				},
+				{
+					"name": "brotliContentEncoding",
+					"annotations": {
+						"compatDisableFlag": "no_brotli_content_encoding",
+						"compatEnableFlag": "brotli_content_encoding",
+						"neededByFl": "true"
+					}
 				}
 			]
 		},
