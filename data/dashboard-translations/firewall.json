@@ -1591,5 +1591,9 @@
 	"api_endpoint_management.rate_limiting_recommendation.status.gathering_data.description": "It takes approximately 24 hours of session data to create an accurate rate limiting recommendation. <0>Session identifiers</0> are required for recommendations.",
 	"api_endpoint_management.rate_limiting_recommendation.status.pending_unique_sessions.description": "Creating an accurate recommendation requires a diverse data set with at least 50 unique connections accessing the endpoint.",
 	"api_endpoint_management.rate_limiting_recommendation": "Rate limiting recommendation",
-	"api_endpoint_management.rate_limiting_recommendation.requests_per_10_mins": "requests per 10 minutes"
+	"api_endpoint_management.rate_limiting_recommendation.requests_per_10_mins": "requests per 10 minutes",
+	"api_endpoint_management.rate_limiting_recommendation.high": "High confidence",
+	"api_endpoint_management.rate_limiting_recommendation.medium": "Medium confidence",
+	"api_endpoint_management.rate_limiting_recommendation.low": "Low confidence",
+	"api_endpoint_management.rate_limiting_recommendation.recommendation_based_weekly": "Recommendation based on less than %{value} unique sessions over 7 days"
 }
