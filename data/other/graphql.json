@@ -153,6 +153,44 @@
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
+	"AccountD1AnalyticsAdaptiveGroups": {
+		"__description": "Beta. Aggregated D1 analytics with adaptive sampling",
+		"avg": "The average value for a metric per dimension",
+		"count": "Number of requests to D1 processed (approximation when sampleInterval > 1)",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountD1AnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
+		"queryBatchTimeMs": "Query batch response time in milliseconds (average/mean).",
+		"sampleInterval": "The average value used for sample interval"
+	},
+	"AccountD1AnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"databaseId": "The UUID of a D1 database",
+		"date": "The date the D1 request was received",
+		"datetimeFifteenMinutes": "The date and time the D1 request was received truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time the D1 request was received truncated to five minutes",
+		"datetimeHour": "The date and time the D1 request was received truncated to the hour",
+		"datetimeMinute": "The date and time the D1 request was received truncated to the minute"
+	},
+	"AccountD1AnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountD1AnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountD1AnalyticsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"queryBatchTimeMsP90": "Query batch response time in milliseconds (90th percentile)."
+	},
+	"AccountD1AnalyticsAdaptiveGroupsSum": {
+		"__description": "",
+		"queryBatchResponseBytes": "The total number of bytes in the response, including all returned rows and metadata.",
+		"readQueries": "The number of read queries",
+		"writeQueries": "The number of write queries."
+	},
 	"AccountDosdAttackAnalyticsGroups": {
 		"__description": "Attack analytics metadata for attacks detected by dosd",
 		"attackId": "Unique identifier of the mitigation that matched the packet, if any",
@@ -2624,6 +2662,7 @@
 		"MagicWANConnectorMetricsAdaptiveGroups": "",
 		"accessLoginRequestsAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
+		"d1AnalyticsAdaptiveGroups": "",
 		"dosdAttackAnalyticsGroups": "",
 		"dosdNetworkAnalyticsAdaptiveGroups": "",
 		"durableObjectsInvocationsAdaptiveGroups": "",
@@ -4923,6 +4962,7 @@
 		"accessLoginRequestsAdaptiveGroups": "Access login requests",
 		"accountTag": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
+		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"dosdAttackAnalyticsGroups": "Attack analytics metadata for attacks detected by dosd",
 		"dosdNetworkAnalyticsAdaptiveGroups": "Network analytics data for dosd",
 		"durableObjectsInvocationsAdaptiveGroups": "Durable Objects invocations with adaptive sampling",
