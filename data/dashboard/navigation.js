@@ -13,13 +13,21 @@ const navigation = {
 		iconType: "user-outline"
 	}, {
 		title: "navigation.root.partners",
-		url: "/partners",
+		url: "/partners/tenant",
 		iconType: "user-multi",
 		hasPermission: function(m) {
 			return (0, n.z1)(a.Mr)(m) === !0
 		}
 	}],
-	partners: [],
+	partners: [{
+		title: "navigation.partners.tenant",
+		url: "/partners/tenant",
+		iconType: "lock"
+	}, {
+		title: "navigation.partners.accounts",
+		url: "/partners/account",
+		iconType: "lock"
+	}],
 	profile: [{
 		title: "navigation.profile.preferences",
 		url: "/",
