@@ -9,14 +9,13 @@
 	<tbody>
 		<tr>
 			<td>
-				<p>&nbsp;</p>
-				<p><span style="font-weight: 400;">About the department</span></p>
+				<p><strong>About the department</strong></p>
 				<p><span style="font-weight: 400;">Cloudflare’s CIO organization has an Enterprise Applications Team that operates our enterprise systems end-to-end, providing process cohesiveness across the functional areas. This enables our Cloudflare internal teams to operate efficiently and enable our customers and partners to do business with us.&nbsp;</span></p>
 				<p><span style="font-weight: 400;">Within the Enterprise Applications Team is a Finance &amp; Legal&nbsp; team whose main responsibility is to manage our Finance and Legal platforms in addition to other platforms that support our financial/ legal functional areas.&nbsp;&nbsp;</span></p>
-				<p><span style="font-weight: 400;">About the role</span></p>
+				<p><strong>About the role</strong></p>
 				<p><span style="font-weight: 400;">Cloudflare is looking for an Enterprise IT Admin to help us enhance/support our core Revenue, ERP and P2P systems, as well as peripheral financial systems. In this role you will be supporting the daily inflow of IT Jira tickets and work on resolving them in a timely manner as per SLA defined. Work on Small/Medium size projects for any new features integrations, new sku creation, configuring our&nbsp; financial systems, integrations to NetSuite. The ideal candidate should have a solid analytical mindset, excellent interpersonal communications, diligent time management skills, be team-oriented and have a strong work ethic. This role will assist other core business systems analysts/architects across IT for operational&nbsp; and business as usual day to day support..</span></p>
 				<p><strong>We have 4 roles open for this that will support different platforms based on expertise - NetSuite, Coupa, Concur, Revpro etc</strong></p>
-				<h4><span style="font-weight: 400;">What you'll do</span></h4>
+				<h4><strong>What you'll do</strong></h4>
 				<ul>
 					<li style="font-weight: 400;"><span style="font-weight: 400;">Understand business requirements that span across Order to Cash, Record to Report areas and translate them to technical requirements</span></li>
 				</ul>
@@ -46,8 +45,7 @@
 					<li style="font-weight: 400;"><span style="font-weight: 400;">Manage multiple competing priorities through effective organization and communication.</span></li>
 					<li style="font-weight: 400;"><span style="font-weight: 400;">Working on platforms to build new requirements, troubleshoot issues during month end close.</span></li>
 				</ul>
-				<br>
-				<p><span style="font-weight: 400;">Examples of desirable skills, knowledge and experience</span></p>
+				<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 				<ul>
 					<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of IT Support for platforms Zuora Revenue, NetSuite system (SuiteScript), Concur Highradius, Coupa, Avalara working experience in complex environments with multiple integrations. Any additional system knowledge is positive.</span></li>
 				</ul>
