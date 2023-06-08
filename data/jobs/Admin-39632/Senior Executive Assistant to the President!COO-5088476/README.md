@@ -6,7 +6,7 @@
 	</div>
 </div>
 <h4>What you'll do</h4>
-<p>As the Executive Assistant (EA) to the President/COO,&nbsp; you will work closely with the President/COO and the broader executive team to support all aspects of the President/COO’s work routine.</p>
+<p>As the Senior Executive Assistant (EA) to the President/COO,&nbsp; you will work closely with the President/COO and the broader executive team to support all aspects of the President/COO’s work routine.</p>
 <p>Cloudflare is a global company with roughly 3000+ employees and $1B in revenue. The President/COO travels often to spend time with the team and customers, and has a full schedule. This role requires a tight partnership to make it all happen.&nbsp;</p>
 <p>The ideal candidate has superior attention to detail, great organizational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude. The ideal candidate is a seasoned EA who loves working in a growing company, understands the value in cultivating relationships and prides themselves on being a career EA.</p>
 <p><em>Location: This is a hybrid role based in San Francisco and this person will be expected to come into the office on a weekly basis as needed/requested. Otherwise, this person will work from home.</em></p>
