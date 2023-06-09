@@ -37,7 +37,17 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Platform Week | Cloudflare TV",
+					"metaDescription": "Cloudflare TV Highlights for Platform Week",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/18Eo2SEFPee3uN3yhotCh0/7877c05fcde096308755e5d14ece0d7c/Platform_Week_OG.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
 				"contentfulId": "5iTPMtziBKbxxPjUUT8TD9",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
@@ -47,6 +57,98 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentfulId": "7yFm9cOdWid8W4qNsMdAqX",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Platform Week",
+						"subtitle": null,
+						"copy": "Providing the building blocks for a more programmable, portable, and powerful Internet. ",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": null,
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": null,
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": "tile--no-bottom-padding",
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": null,
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "c68694f4-c7ce-5046-a4da-9dd6d76de203",
+							"altText": "Platform Week Hero Illustration",
+							"title": "Platform Week Hero Illustration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/btjnezEuGX4UPatWcsc1S/6e4b43f3faef4655f21eb565fd1ac9dc/Platform_Week_Hero_Illustration.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "2Hwnyoi1zG0wsrGbpzGtaz",
+						"menuTitle": "Platform Week",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "19nuOPgpPQDNiPyLtXOxv3",
+								"linkText": "Product Updates",
+								"page": null,
+								"url": "platform-week",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "sdmhn9DfrFhHqpuKe2wKb",
+								"linkText": "Developer Speaker Series",
+								"page": null,
+								"url": "developer-speaker-series",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2fx11mO8ho9pxNbz2bFpGy",
+								"linkText": "Cloudflare TV",
+								"page": null,
+								"url": "platform-week/cloudflare-tv",
+								"subMenuItems": null
+							}
+						]
+					},
 					{
 						"contentfulId": "6UqrAx5sdMyy2SdE62r2Dz",
 						"backgroundColor": "white",
@@ -62,6 +164,36 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6aaLJit4QhWG6agNWuLtde",
+								"title": "CFTV: What Launched today at Cloudflare?",
+								"titleSize": null,
+								"description": "__May 9 1:00 PM PDT__\n\nJoin Aly Cabral, James Snell, Rita Kozlov, Yo'av Moshe, and Sunil Pai to hear all the news about what launched today during Platform Week.",
+								"learnMoreUrl": "https://cloudflare.tv/event/1VfQSKm5OeMV5wdK04jezh",
+								"learnMoreText": "Tune In",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
+									"altText": "Cloudflare TV Header",
+									"title": "Cloudflare TV Header",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67dBxmhePWXs6nYFZTOrs9/84bbf4e5a4c2bda4fecd4e09b2c7d02e/CFTV.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4oYJhDAe6PvarGF2Vg2XcW",
@@ -99,6 +231,36 @@
 								"titleSize": null,
 								"description": "__May 11 1:00 PM PDT__\n\nJoin Kristian Freeman, Greg McKeon, Alex Krivit, and Tanushree Sharma to hear all the news about what launched today during Platform Week.",
 								"learnMoreUrl": "https://cloudflare.tv/event/45pDEVTjvPyUWDQZhRpKsV",
+								"learnMoreText": "Tune In",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
+									"altText": "Cloudflare TV Header",
+									"title": "Cloudflare TV Header",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67dBxmhePWXs6nYFZTOrs9/84bbf4e5a4c2bda4fecd4e09b2c7d02e/CFTV.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7fRSkgJ0gMdknlxyit4LV9",
+								"title": "CFTV: What Launched today at Cloudflare?",
+								"titleSize": null,
+								"description": "__May 12 1:00 PM PDT__\n\nJoin Kristian Freeman, Matt Silverlock, Jon Levine, Annika Gargers, Dawn Parzych, Abhi Das, and Kabir Sikand to hear the news about what launched today during Platform Week.",
+								"learnMoreUrl": "https://cloudflare.tv/event/6QstNEGwG9Y9X5yDC4yitB",
 								"learnMoreText": "Tune In",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
