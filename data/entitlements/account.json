@@ -204,6 +204,18 @@
 		}
 	},
 	{
+		"id": "access.max_self_hosted_domains_per_app",
+		"feature": {
+			"feature_set": "access",
+			"id": 1187,
+			"key": "access.max_self_hosted_domains_per_app",
+			"name": "Access - Maximum number of self-hosted domains per application"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "access.max_service_tokens",
 		"feature": {
 			"feature_set": "access",
@@ -492,6 +504,18 @@
 		}
 	},
 	{
+		"id": "constellation.enabled",
+		"feature": {
+			"feature_set": "constellation",
+			"id": 1183,
+			"key": "constellation.enabled",
+			"name": "Constellation AI - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "contract.customer_enabled",
 		"feature": {
 			"feature_set": "contract",
@@ -702,6 +726,30 @@
 			"id": 767,
 			"key": "ctm.rules_per_lb",
 			"name": "CTM Rules Per LB"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ctm.session_affinity.header.max_headers",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 1198,
+			"key": "ctm.session_affinity.header.max_headers",
+			"name": "CTM Max Headers for Session Affinity by Header"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ctm.session_affinity.header.max_ttl",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 1199,
+			"key": "ctm.session_affinity.header.max_ttl",
+			"name": "CTM Max TTL for Session Affinity by Header"
 		},
 		"allocation": {
 			"type": "max_count"
