@@ -67,7 +67,7 @@ const navigation = {
 		url: "/discover",
 		iconType: "discover",
 		hasPermission: function(l) {
-			return (0, n.z1)("dx-product-discovery-page")(l) === "experiment"
+			return (0, n.z1)("dx-discover-page")(l) === "experiment-baseline" || (0, n.z1)("dx-discover-page")(l) === "experiment-personalised"
 		}
 	}, {
 		title: function(l) {
