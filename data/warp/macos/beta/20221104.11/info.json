@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2182,
+	"version": "20221104.11",
+	"short_version": "2022.10.73.1",
+	"size": 52122199,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "7eb3b7e8098be45de576bfecab012b0f",
+	"fingerprint": "65fd03486d94c0ae527b7bcb3fc45c3b",
+	"uploaded_at": "2022-11-07T16:31:22.139Z",
+	"download_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/ae6fced7-be84-49ac-bb16-6cf3c4c7bbd5/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=lfq5Rhp4GNy7m2e4YVK0NK9ZTeAADRqzRLjATKITLkI%3D&se=2023-06-12T17%3A48%3A26Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/ae6fced7-be84-49ac-bb16-6cf3c4c7bbd5/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=lfq5Rhp4GNy7m2e4YVK0NK9ZTeAADRqzRLjATKITLkI%3D&se=2023-06-12T17%3A48%3A26Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release primarily contains bug fixes, no new features are included in this release\n \n## Notable updates\n- Modified behavior of `warp-cli enable-dns-log` to automatically turn off after 7 days (this is the equivalent of manually running `warp-cli disable-dns-log`)\n- Fixed HappyEyeballs search on IPv6 only devices\n- Fixed UI in various states where we would show the wrong text when in various states (ex. Paused when really disabled via Admin Override, etc.)\n- Fixed HappyEyeball issue where Safari users without native IPv6 may see increased captcha challenges\n- Fixed issue where device posture timers were paused while device was asleep. Posture tests are now immediately ran on device wakeup and all timers restarted\n \n \n## Known issues\n- If you are having issues with upgrading to new beta, please uninstall current app, install the GA version from https://1.1.1.1/ and participate in beta program from Preferences->Advanced.\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

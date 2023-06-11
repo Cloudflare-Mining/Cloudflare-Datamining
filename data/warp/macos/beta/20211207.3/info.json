@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 1357,
+	"version": "20211207.3",
+	"short_version": "2021.11.371.1",
+	"size": 41333114,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "2b8fb1bb934d15615fe2268fda0f480a",
+	"fingerprint": "ec2b942ff812fdb7bc7dc9322f132ff0",
+	"uploaded_at": "2021-12-07T01:47:45.274Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/6c77abaf-4973-4ce5-a2e1-c4c904e4b3ce/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=Um4Dz540AdUUvUsshsXFV9BRfeaaVSWUzpWCb0e7XWA%3D&se=2023-06-12T17%3A48%3A28Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/6c77abaf-4973-4ce5-a2e1-c4c904e4b3ce/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=Um4Dz540AdUUvUsshsXFV9BRfeaaVSWUzpWCb0e7XWA%3D&se=2023-06-12T17%3A48%3A28Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last release.\n\n**Notable updates**\n- With this release you can now specify specific DNS servers to use for domains in Local Domain fallback in the Teams Dashboard.\n- Improved reliability of connection between client gui and daemon.\n- Improved the connectivity check to more frequently and consistently check for connectivity.\n- Fixed issue where Split Tunnel UI in Preferences->Advanced of the client did not correctly show include only routes.\n- Fixed reliability issues around waking from sleep.\n\nFor related Cloudflare for Teams documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n\nFor related Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 27,
+	"version": "1.6.28.0",
+	"short_version": "",
+	"size": 87371776,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "5d118e5e90ee82890899f953020de0ae",
+	"fingerprint": "06674d1d07ba1de1b8267b3c59ce3f7b",
+	"uploaded_at": "2021-10-04T20:12:51.028Z",
+	"download_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/679e1e70-a173-4d61-ae69-eeb06e5c9e5f/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=sOEsDXK6VQhP8AJH544aVCTtC%2BvKIVrUf20e%2BrXJnFA%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/679e1e70-a173-4d61-ae69-eeb06e5c9e5f/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=sOEsDXK6VQhP8AJH544aVCTtC%2BvKIVrUf20e%2BrXJnFA%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last release.\n\n**Notable updates**\n- Client now supports include only split tunnel rules while in Teams mode.\n- Improved overall reliability of DNS and general connectivity when in Teams modes.\n- Improved logging and fixed bug where we got incomplete logs from warp-diag.\n- Fixed connectivity issues some users experienced when coming out of sleep.\n- Fixed occasional registration issues when trying to join Teams organization.\n- Fixed issue where clients shows consumer UI when in Teams mode.\n- Fixed issue when joining org with no posture rules.\n- Fixed issue where build over build upgrades could fail.\n- Fixed issue where certain posture checks failed with the default langugage wasn't english.\n- Fixed issue where AAD/AD was no longer seamlessly authenticating.\n- Fixed issue with Teams enrollment when using JumpCloud (now rely on at least version 1.0.902.49 of WebView2).\n- Fixed issue where device posture information would remain even after you left Teams organization.\n- Fixed issues with localhost Proxy mode, is now more robust to network changes and general bug fixes.\n- Fixed dialog boxes not being correctly modal when launched from Preferences.\n\n**Known issues**\n- When auto_connect=0 and switch_locked=false in plist the client no longer starts tunnel immediately, it must be manually toggled on. This is a bug and will be fixed in a future release.\n\nFor related Cloudflare for Teams documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n\nFor related Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"f545566362e0321d795c5ef17b9f9d3ca4a54c7444f63f95447da411cfa7f48f"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

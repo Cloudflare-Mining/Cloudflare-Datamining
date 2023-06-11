@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 34,
+	"version": "2022.2.95.0",
+	"short_version": "",
+	"size": 88379392,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "90388511289521f499716b800f5f6896",
+	"fingerprint": "618aeb04fb407476fd77d258b24d8aba",
+	"uploaded_at": "2022-02-15T17:10:56.241Z",
+	"download_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/b5bb6572-3490-4c2c-bfcc-59cc5149ae91/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=dQ36o4ZgnWZCPhUqMGuUYagabyfMsU%2BPrQXRYDRXu%2Bc%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/b5bb6572-3490-4c2c-bfcc-59cc5149ae91/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=dQ36o4ZgnWZCPhUqMGuUYagabyfMsU%2BPrQXRYDRXu%2Bc%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last release. In particular, we have made significant changes to how local settings (MDM) are processed. Additionally, we added the ability to configure all applicable parameters from the Zero Trust dashboard. This allows admins to more easily control client behavior without having to use a 3rd party tool. \n\n\n\n## Notable updates\n\n- Added support for Gateway session duration enforcement. This allows administrators to force re-authentication after a specified time.\n- The \"enabled\" mdm.xml property has now been completely deprecated and is no longer respected. Please see https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/parameters#switch_locked for switch_locked mechanism that was announced in April 2021\n- Now that settings exist in the Zero Trust Dashboard, the Client UI should behave the same for clients manually joined to a Team and clients forced to by local mdm.xml policy\n- Updated Teams logo in app to Zero Trust\n- Modified GUI exit behavior for users who manually joined their device to a Team. Quitting the app will still keep the service running and enforcing policy for clients that were deployed via mdm/Intune/etc.\n- Reworked some parts of the UI that are not relevant in Zero Trust Mode (consumer-only features in connection tab, quit button that doesn't really do anything, etc.)\n- Improved overall stability of Windows installer\n- Fixed an issue where the Last Seen value was not updated properly in the Zero Trust Dashboard while in Gateway with DoH mode\n- Fixed an issue where the device name was not updated in the Zero Trust Dashboard if the computer name changed after initial registration\n- Fixed various issues with split tunnel support in consumer mode\n- Fixed an issue where the context menu would remain after quitting the GUI\n- Fixed a wake from sleep issue where DNS requests could fail.\n\n\n\n**Known issues** \n- The organization name is case sensitive, which could cause a device to lose registration.\n\n\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"1689c39ed314437a497f49ea5cbc50bcdc5d89917228af4f364f250e4c1334eb"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

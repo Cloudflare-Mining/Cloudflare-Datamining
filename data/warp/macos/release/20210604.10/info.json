@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 24,
+	"version": "20210604.10",
+	"short_version": "1.5.148.0",
+	"size": 32900112,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "5dccab284966006d411e553c7578bca0",
+	"fingerprint": "28ce777a5e515481497bb38dc8819293",
+	"uploaded_at": "2021-06-05T00:05:03.232Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/8791c52c-483e-4b2d-88ec-84558b5e8428/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=FckYUCtYxP8MhgNaZcy26VmxOgGcC4rCztaxvsmzQSc%3D&se=2023-06-12T17%3A48%3A21Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/8791c52c-483e-4b2d-88ec-84558b5e8428/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=FckYUCtYxP8MhgNaZcy26VmxOgGcC4rCztaxvsmzQSc%3D&se=2023-06-12T17%3A48%3A21Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "**Notable Updates**\n\n- Added support for Teams admins to control use of captive portal in their organization.\n- Support for detecting and opening captive portal login page when captive portal network is detected.\n- Show Excluded IPs UI in Teams mode.\n- Added new support for service token-based authentication for managed (MDM) devices.\n- Fixed issue when going between LAN and/or Wi-Fi networks.\n- Clients registered with Teams can now view their local device posture status.\n- Added new WARP proxy mode for advanced users. See Preferences->Advanced->Configure Proxy Mode for more info.\n- Fixed reconnection issue when waking from sleep.\n- Several other bug fixes and improvements.\n\n**Known issues**\n\n- You are unable to subscribe to WARP+ via the Desktop apps. You must subscribe first on your mobile device and then copy/paste your license key into the Accounts page on desktop.\n- Localization parity with mobile is coming in a future update.\n- Wired networks via a USB dongle are not excluded properly.\n\nFor a complete list of known issues please visit https://developers.cloudflare.com/warpclient/known-issues-and-faq",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

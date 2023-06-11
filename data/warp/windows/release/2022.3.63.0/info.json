@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 37,
+	"version": "2022.3.63.0",
+	"short_version": "",
+	"size": 88788992,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "4625daa9a5ca714398f64474efd8c4d9",
+	"fingerprint": "22586a62c68bbc4500be031d2f7d5aa0",
+	"uploaded_at": "2022-03-09T21:04:33.453Z",
+	"download_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/3b7eb277-3a16-4f0f-afd7-25bfd418dbfd/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=pL06zBwMPm%2Fy5qcqnUDCOvDgFNCMZMfDHJmVIP7E0TA%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/3b7eb277-3a16-4f0f-afd7-25bfd418dbfd/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=pL06zBwMPm%2Fy5qcqnUDCOvDgFNCMZMfDHJmVIP7E0TA%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last release. \n \n \n## Notable updates\n \n- Added support for Device Information only mode. This allows for posture to be used for Access policies without Gateway being enabled.\n- Fixed issue where UI would not update immediately based on a dashboard settings change\n- Fixed issue where the client could fail to check for updates\n- Fixed issue for Zero Trust accounts with Captive Portal disabled where they client may not always reconnect when it should\n- Fixed issue where the UI would show disconnected when the client was instead just temporarily paused\n- Fixed issue where serial numbers with spaces in the string were not correctly reported\n \n \n**Known issues** \n- No known issues\n \n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"110532f11c94225753f3f05cd92ecadede2c5b408c1a419768fbe2276c889c13"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

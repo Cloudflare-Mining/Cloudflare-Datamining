@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 30,
+	"version": "2021.11.276.0",
+	"short_version": "",
+	"size": 87826432,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "18b1ad4777c34c94ce6866d1a3923bdb",
+	"fingerprint": "6f1688aa5ca5bbf113f18b40e97c9e09",
+	"uploaded_at": "2021-11-29T21:30:45.443Z",
+	"download_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/aeedf08c-966e-428b-9d25-ec2fe2e35d88/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=gEZ94H%2FyI7YwBE0R9D08FiHEU38PS%2FOtTaW9WMHIcpc%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/aeedf08c-966e-428b-9d25-ec2fe2e35d88/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=gEZ94H%2FyI7YwBE0R9D08FiHEU38PS%2FOtTaW9WMHIcpc%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains minor bug fixes from the last release.\n\n**Notable updates**\n- Fixed issue where warp-diag logs were not included when you used Submit Feedback through the app\n- Fixed issue in re-connection logic where we would not always try to re-connect if there was a network change detected\n\n\nFor related Cloudflare for Teams documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor related Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"0674d1e3bcf9d9b0736f787121b535ff5150b226d6e3db10c8b27994c825e1ae"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

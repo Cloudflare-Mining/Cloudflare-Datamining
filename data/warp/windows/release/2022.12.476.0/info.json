@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 49,
+	"version": "2022.12.476.0",
+	"short_version": "",
+	"size": 105148416,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "6a371307d7e617ca0e61ddfc8ee2f9d9",
+	"fingerprint": "f75d5aa24a40cab7a55d7195cbf78d92",
+	"uploaded_at": "2022-12-29T01:02:38.653Z",
+	"download_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/a398d133-ea8f-4252-af48-980e4404c792/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=bv%2F%2FcQIB1PGGm148N4f3oZnZnIgNzKmooYcK36WZ90g%3D&se=2023-06-12T09%3A09%3A36Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/a398d133-ea8f-4252-af48-980e4404c792/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=bv%2F%2FcQIB1PGGm148N4f3oZnZnIgNzKmooYcK36WZ90g%3D&se=2023-06-12T09%3A09%3A36Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release has support for new Zero Trust network location aware feature and contains improvements to stability and bug fixes. \r\n\r\n## Notable updates\r\n- New `Connectivity` tab in the GUI bubbles up helpful information (Windows only for now). Please let us know how this works for you.\r\n- Added support for new Zero Trust network location aware WARP feature. More info to be released soon on how you can test.\r\n- Improved captive portal handling for some more captive portals.\r\n- Improved reconnect logic when a setting changes to no longer always do a full disconnect->reconnect cycle (for instance when turning on DNS logging).\r\n- Modified initial connectivity check behavior to now validate both IPv4 and IPv6 are working (previously we only checked IPv4). Test will pass if either connects successfully.\r\n- Fixed issue where UI could appear hung.\r\n- Fixed issue where progress bar won't appear during update until update is completed.\r\n- Fixed issue where client could be stuck on `Connecting` if certain DNS checks failed once.\r\n- Fixed DNS issue where TXT records were not being correctly returned when at the end of a CNAME chain.\r\n- Fixed issue where the client may not receive notifications of new settings, re-auth events or posture from the service until reboot.\r\n- Fixed issue where users could be pointing at an old gateway_doh_subdomain if you have `Allowed to Leave` set to true and they've manually joined their client to your organization.\r\n- Fixed slow DNS timeout issue that could occur when IPv6 is enabled and an NXDOMAIN record is returned.\r\n- Fixed issue with `Gateway with DoH` mode could say `Connected` when it wasn't really connected as we could sometimes test the wrong endpoint.\r\n- Fixed issue where our local DNS proxy server could get unset with an overly active DHCP renew time or by plugging in/out a tethered device.\r\n- Fixed issue where if `support_url` doesn't have a protocol definitely we now automatically add `https`.\r\n- Fixed issue where the Cloudflare WARP system Service may crash if a long running child process crashes (such as ipconfig, netsh, etc.).\r\n- Fixed issue where `warp-cli teams-enroll` wouldn't work when an mdm file was present.\r\n- Fixed issue where our localhost dns endpoints (ex. 127.0.2.2) could appear in the fallback configuration potentially causing DNS lookups to fail.\r\n- Fixed issue that could cause the Cloudflare WARP Service to crash (and then potentially the GUI).\r\n- Fixed issue that could cause some DNS queries to take upto 15 seconds to complete.\r\n\r\n## Known issues\r\n- No known issues\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n \r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"1dc1118b6da067fce134326531dfecfb212c3a430c5cee7bd9c618fe620846bc"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

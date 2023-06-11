@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 1992,
+	"version": "2022.7.171.1",
+	"short_version": "",
+	"size": 88604672,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "eafb5bc6a1116513d1cda0a7325e87dd",
+	"fingerprint": "950d12c1916cb8a98bef235c162abd0b",
+	"uploaded_at": "2022-07-14T17:29:46.929Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/d13d0fe6-e88f-4cb6-947b-04eb2f7de058/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=fVf3B6fUVtzdPcKbVbaM3YFEee1XAG%2BzsgJk2n4YMRE%3D&se=2023-06-12T17%3A48%3A31Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/d13d0fe6-e88f-4cb6-947b-04eb2f7de058/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=fVf3B6fUVtzdPcKbVbaM3YFEee1XAG%2BzsgJk2n4YMRE%3D&se=2023-06-12T17%3A48%3A31Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains bug fixes and improvements from the prior beta release. Please note that with this release the authentication flow for users has now moved to the default browser instead of an embedded in-app browser.\r\n \r\n## Notable updates\r\n \r\n- Modified Zero Trust authentication flow to no longer rely on WebView2 embedded experience and use default browser instead\r\n- Fixed major issue introduced with 2022.5.341 where IPv6 traffic was no longer consistently routed through the tunnel\r\n- Fixed issue where warp-svc.exe may not start due to missing VCRUNTIME140.dll on some systems\r\n- Fixed issue that could result in broken DNS for users running WiFi until an admin manually reset DNS back to default\r\n- Removed built in web browser used for Zero Trust Organization log in. Now relies on default web browser on the machine.\r\n \r\n## Known issues\r\n- This version requires at least Windows 10.0.19042. If you are running a prior version of Windows, please delay upgrading.   For Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n \r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"a7863e5fafbe263506b81c99c6dc92441bbf9805e68d084bf8e27186362f08e5"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

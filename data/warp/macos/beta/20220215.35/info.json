@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 1542,
+	"version": "20220215.35",
+	"short_version": "2022.2.115.1",
+	"size": 43872104,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "5371e6d19ad886e47d95408e9df5109c",
+	"fingerprint": "592b5aee2ab138a3fed67959bfef2a05",
+	"uploaded_at": "2022-02-15T22:17:39.580Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/5670112c-c006-4e98-bf25-4c1bfdbe48c3/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=Uj82tf5KHciPqtEPLmPa8MxDU6vDdN%2Fq2n6kQiNpB0M%3D&se=2023-06-12T17%3A48%3A28Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/5670112c-c006-4e98-bf25-4c1bfdbe48c3/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=Uj82tf5KHciPqtEPLmPa8MxDU6vDdN%2Fq2n6kQiNpB0M%3D&se=2023-06-12T17%3A48%3A28Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last beta release. \n\n## Notable updates\n- Added support for Device Information only mode. This allows for posture to be used for Access policies without Gateway being enabled. Please reach out to your Cloudflare rep if you would like to test this feature ahead of release\n\n\n## Known issues\n- The organization name is case sensitive, which could cause a device to lose registration.",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

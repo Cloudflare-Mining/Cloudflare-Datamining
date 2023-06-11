@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 46,
+	"version": "2022.9.383.0",
+	"short_version": "",
+	"size": 103960576,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "ffa383ef5e0ac3f5c81069cabf40e279",
+	"fingerprint": "7ffbad9bffd6c62ca01944d7b533e270",
+	"uploaded_at": "2022-09-30T18:27:45.527Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/bf2b7c43-993e-4c80-97bb-41d8fb9b7165/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Euj9zCJGlP4LSebF6l6oRlkHTiiDBF1KM0qoF%2BmZfP0%3D&se=2023-06-12T17%3A48%3A34Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/bf2b7c43-993e-4c80-97bb-41d8fb9b7165/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Euj9zCJGlP4LSebF6l6oRlkHTiiDBF1KM0qoF%2BmZfP0%3D&se=2023-06-12T17%3A48%3A34Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release primarily contains improvements to stability and bug fixes.\n \n## Notable updates\n\n- Fixed issue where WARP DNS servers stay set after Windows update, causing no network for user\n- Improved connection time on slow network connections\n- Fixed bug where initial teams registration could take awhile to show up on client UI\n- Fixed bug that could cause Teams registration to fail (mostly server side but mentioning here as well) and handoff from the success page in the browser to the client\n- Fixed notification experience so you only recieve a single notification if registration fails instead of hundreds\n- Fixed DNS fallback timeouts and related performance issues\n- Fixed issue where coming out of sleep on some systems could take an unreasonably long time to connect\n- Fixed InvalidPacket error in logs that indicated the client needed to reset its connection\n- Fixed issue where user experienced no network after boot\n- Fixed issue where warp-diag rotated daemon logs did not collect older logs\n\n \n## Known issues\n- Device posture check results stop sending after 24 hours (or possibly even sooner)\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"73ccb1185958b476bdba0d824678415f402729183c8e779028322f57f73ab8f5"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

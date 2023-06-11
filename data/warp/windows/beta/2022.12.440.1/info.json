@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2460,
+	"version": "2022.12.440.1",
+	"short_version": "",
+	"size": 105148416,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "f9e88da5ac3a05dbd548be2aa77c9c00",
+	"fingerprint": "25589782224ade888a8280bcf3a18000",
+	"uploaded_at": "2022-12-21T21:52:17.028Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/6b405278-1098-4f71-a310-119cf20815d4/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=rFwssak83tuN59K%2BUwGR7ZF68KxXWtx0iSg0zGkpgQI%3D&se=2023-06-12T17%3A48%3A30Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/6b405278-1098-4f71-a310-119cf20815d4/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=rFwssak83tuN59K%2BUwGR7ZF68KxXWtx0iSg0zGkpgQI%3D&se=2023-06-12T17%3A48%3A30Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains the following changes since the previous 2022.12 beta release\r\n \r\n## Notable updates\r\n- Added support for new Zero Trust network location aware WARP feature. More info to be released soon on how you can test.\r\n- Fixed issue where `warp-cli teams-enroll` wouldn't work when an mdm file was present\r\n- Fixed issue where our localhost dns endpoints (ex. 127.0.2.2) could appear in the fallback configuration potentially causing DNS lookups to fail\r\n- Fixed issue that could cause the Cloudflare WARP Service to crash (and then potentially the GUI)\r\n- Fixed issue that could cause some DNS queries to take upto 15 seconds to complete\r\n \r\n \r\n## Known issues\r\n- No known issues\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n \r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"84fd000dae148a56ff226848a94c1cdc777713fe375129076f508e462abc2d3e"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

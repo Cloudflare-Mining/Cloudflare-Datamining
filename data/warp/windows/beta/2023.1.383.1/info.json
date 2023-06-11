@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2544,
+	"version": "2023.1.383.1",
+	"short_version": "",
+	"size": 105414656,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "82d82f268197f1d231f29fdf26786fa0",
+	"fingerprint": "c36d25e9a46b4f3564e138b90c5b89a3",
+	"uploaded_at": "2023-02-02T00:33:33.817Z",
+	"download_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/de4581df-04f6-4e15-bac8-fb97ddaaaaa3/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Uh3Q4hxzLxcXG9UbvyJfuLc3u0nSCIilo9tVF0FDyqs%3D&se=2023-06-12T17%3A35%3A23Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/de4581df-04f6-4e15-bac8-fb97ddaaaaa3/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Uh3Q4hxzLxcXG9UbvyJfuLc3u0nSCIilo9tVF0FDyqs%3D&se=2023-06-12T17%3A35%3A23Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release primarily contains bug fixes and improvements, no new features are included in this release.\n \n## Notable updates\n- Improve timeouts with broken CNAME records that could result in very long load times for certain apps (Office 365 apps, etc.)\n- Fixed issue where systems with significantly out of sync system clocks could fail registration\n- Fixed a number of GUI crash bugs that would cause the app to disappear from the system tray\n- Fixed issue that could cause the application to be hidden behind the Windows system tray expanded list UI\n \n## Known issues\n- No known issues\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"30abc95ad6ec27cef751d5c0e3f0661bc5f9598c608c8f0c3bc66b4f84f1a683"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

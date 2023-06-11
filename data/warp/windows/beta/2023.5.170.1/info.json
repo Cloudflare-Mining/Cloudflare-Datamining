@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2772,
+	"version": "2023.5.170.1",
+	"short_version": "",
+	"size": 108167168,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "1c92da486e37dc07fcca013acadc896b",
+	"fingerprint": "a70b2839b9de4d5d68ec31e8804fdca0",
+	"uploaded_at": "2023-05-11T23:21:23.059Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/c7fad4ec-b080-4823-a375-9192c98b0f92/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=eQXFPpJo%2Bj3Ok0y1Z6c%2BZojgjB5kpobu0707wTDGbMc%3D&se=2023-06-12T10%3A48%3A59Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/c7fad4ec-b080-4823-a375-9192c98b0f92/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=eQXFPpJo%2Bj3Ok0y1Z6c%2BZojgjB5kpobu0707wTDGbMc%3D&se=2023-06-12T10%3A48%3A59Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains reliability improvements and general bug fixes. No new features are introduced with this release.\r\n \r\n## Notable updates\r\n- Added more status messages to UI when client is unable to connect\r\n- Improved performance of client when in Proxy Only mode\r\n- Modified `warp-cli settings` to now show if setting came from local (mdm) or network (warp settings profile) policy to make debugging issues easier\r\n- Fixed issue that could result in latency increases every few minutes\r\n- FIxed issue where UI would be in wrong state after entering an admin override code\r\n- Fixed an issue with re-authentication policies that could result in the browser loading a broken url\r\n- Fixed a minor memory leak every time we did a DNS query\r\n- Fixed issue when service token information was removed from mdm.xml the client would not prompt for user authentication as expected\r\n- Fixed issue where localhost DNS proxy could not be set properly in certain VPN and VM configuration\r\n \r\n \r\n \r\n## Known issues\r\n- No known issues\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"f13d6829f7e4a0a250678050893c2e7e5b72e6338540c17c8161f03d4957edd4"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

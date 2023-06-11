@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 43,
+	"version": "20220930.5",
+	"short_version": "2022.9.384.0",
+	"size": 49718631,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "74f7e4c67b40d88afb72a75c6566411e",
+	"fingerprint": "56cfe4d52825385e4b6371e6df5dc0e7",
+	"uploaded_at": "2022-09-30T18:37:22.860Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/09d40c33-da0f-4945-a415-46a708567ffa/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=nXzAdlV1ofPjBC4kqRuhblFGjXVLIcUABXV0cPeDXnU%3D&se=2023-06-12T17%3A48%3A18Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/09d40c33-da0f-4945-a415-46a708567ffa/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=nXzAdlV1ofPjBC4kqRuhblFGjXVLIcUABXV0cPeDXnU%3D&se=2023-06-12T17%3A48%3A18Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release primarily contains improvements to stability and bug fixes.\n \n## Notable updates\n\n- Fixed issue where GUI would show no text and only the toggle after updating mdm.plist file\n- Improved connection time on slow network connections\n- Improved reliability of opening the browser for registration or authentication requests. We now try multiple times and will display an error message if it fails to open\n- Fixed DNS fallback timeouts and related performance issues\n- Fixed issue where coming out of sleep on some systems could take an unreasonably long time to connect\n- Fixed InvalidPacket error in logs that indicated the client needed to reset its connection\n- Fixed issue where user experienced no network after boot\n- Fixed issue where warp-diag rotated daemon logs did not collect older logs\n- Fixed crash in parsing of route changes\n\n \n## Known issues\n- Device posture check results stop sending after 24 hours (or possibly even sooner)\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

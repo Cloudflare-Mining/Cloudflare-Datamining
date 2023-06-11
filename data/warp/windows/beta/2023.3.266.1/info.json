@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2658,
+	"version": "2023.3.266.1",
+	"short_version": "",
+	"size": 106700800,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "eaa8bef475092582fd0995fa3b0e7545",
+	"fingerprint": "67107637f9e7dddb32f7b24f17e2bbd8",
+	"uploaded_at": "2023-03-22T23:15:28.634Z",
+	"download_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/70e495fd-76d8-468e-94a3-89f071feb498/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=iWMBgh1cQ9492orPCDvQESFIFdz5HDw7xMYjbmy3TjM%3D&se=2023-06-12T04%3A27%3A57Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/70e495fd-76d8-468e-94a3-89f071feb498/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=iWMBgh1cQ9492orPCDvQESFIFdz5HDw7xMYjbmy3TjM%3D&se=2023-06-12T04%3A27%3A57Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains only bug fixes from the previous beta release.\r\n \r\nAs stated in the previous beta notes, we are now feature complete for the quarter and will begin focusing exclusively on QA and bug fixes only. We encourage customers to test with this version and report issues ASAP.\r\n  \r\n*Major change*\r\nAs a reminder, starting with the previous beta 2023.1.625.1, WARP On Windows now uses a new tunnel architecture that more closely matches our macOS and Linux implementations. WARP will now create a virtual interface that is visible in your network connections and directly modify the routing table to control where traffic flows. Please thoroughly test this release before deploying in your organization.\r\n  \r\n## Notable updates\r\n- Fix issue where IPv6 being disabled via the registered wasn't properly detected\r\n- Fixed issue introduced in previous beta where client would show unable to connect briefly before connecting properly\r\n- Fixed issue when running in local proxy mode where too many log entries were written\r\n \r\n## Known issues\r\nNo known issues\r\n \r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"911757e2fc57d8b49f69f09dd35f2fde16b1ef2b0802e64fdc35dcdbad377f10"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

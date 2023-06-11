@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2145,
+	"version": "2022.8.624.1",
+	"short_version": "",
+	"size": 105893888,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "b7413ec9101b0fd0d299bce7e1bad019",
+	"fingerprint": "c505ebd46267a685efd7eba906ea6276",
+	"uploaded_at": "2022-09-01T01:04:14.158Z",
+	"download_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/bb8a366e-52b1-4d1f-8310-f6990e683daa/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=1VymR1asss8RhxCNNG9grenel9Z54C0Cv0xhW0pxPaM%3D&se=2023-06-12T17%3A48%3A31Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/bb8a366e-52b1-4d1f-8310-f6990e683daa/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=1VymR1asss8RhxCNNG9grenel9Z54C0Cv0xhW0pxPaM%3D&se=2023-06-12T17%3A48%3A31Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains bug fixes from the previous beta (2022.8.558.1). Please\r\nnote that the issue preventing the client from working with Windows versions\r\nolder than 10.0.19042 is now fixed in this release. We also wanted to call out\r\nthat we've made server side changes to significantly reduce captcha issues for\r\nusers with IPv6 enabled (no client related change but wanted to call out the\r\nwork).\r\n\r\n## Notable updates\r\n \r\n- Fixed crash of daemon after wake from sleeping which could cause loss of\r\n  network connectivity or the GUI to freeze \r\n- Fixed issue with includeonly tunnels reconnecting every ~135 seconds\r\n \r\n## Known issues\r\n- No known issues\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n \r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"80102aae24c25c333dcd3457de4d248a638f45faeaf80c4a5fba16c637ab995b"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

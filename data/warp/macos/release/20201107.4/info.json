@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 14,
+	"version": "20201107.4",
+	"short_version": "1.2.1866",
+	"size": 18893737,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "f8a40ca254ad867e90cf6757694d7612",
+	"fingerprint": "8c25760f21474260f2f23c0134a68a06",
+	"uploaded_at": "2020-11-07T02:06:49.646Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/f053fb43-4524-4b34-9942-8acc184bcefb/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=dXAV3D0o%2BnSaAvY%2FDBVwIUlQ7rVPopzCgeOw%2F9lfXpU%3D&se=2023-06-12T17%3A48%3A22Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/f053fb43-4524-4b34-9942-8acc184bcefb/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=dXAV3D0o%2BnSaAvY%2FDBVwIUlQ7rVPopzCgeOw%2F9lfXpU%3D&se=2023-06-12T17%3A48%3A22Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains many improvements and fixes.\n\n**Notable updates**\n\n- Fix an issue where the check for updates button stopped working after entering certain flows.\n- Added DNS Logs to Preferences UI.\n- View logs now correctly shows the contents of the zip file uploaded when you submit logs (you can manually trigger this by running warp-diag).\n- Submit feedback will cache feedback and send the next time we are able to connect.\n- New Bypass WARP for local network connectivity checkbox added to Preferences→Advanced allowing you to decide if WARP should allow local traffic.\n- A number of High Sierra and Mojave compatibility fixes.\n- DoH Subdomain is now populated by default when registering your device with Cloudflare for Teams (NOTE you can still override this value).\n- Improved handling of plist when changes are made after client is running.\n- 5 Device limit is now enforced when sharing your license key.\n\n**Known issues**\n\n- You are unable to subscribe to WARP+ via the Desktop apps. You must subscribe first on your mobile device and then copy/paste your license key into the Accounts page on desktop.\n- Localization parity with mobile is coming in a future update.\n- Wired networks via a USB dongle are not excluded properly.\n\nFor a complete list of known issues please visit https://developers.cloudflare.com/warpclient/known-issues-and-faq",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

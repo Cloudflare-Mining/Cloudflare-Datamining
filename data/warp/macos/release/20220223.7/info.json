@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 33,
+	"version": "20220223.7",
+	"short_version": "2022.2.248.0",
+	"size": 42949868,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "1eacadf07a776e7a66297428aa2303fc",
+	"fingerprint": "2b498403fc766fe904927b87ce5bc381",
+	"uploaded_at": "2022-02-23T20:58:41.089Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/27cee737-64cc-4c1c-baac-e7423d22b043/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=4Nqh956eV0mnJ6x%2F%2BmqNWHJadRYT5BV9%2FCjEJj6tkN0%3D&se=2023-06-12T17%3A35%3A10Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/27cee737-64cc-4c1c-baac-e7423d22b043/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=4Nqh956eV0mnJ6x%2F%2BmqNWHJadRYT5BV9%2FCjEJj6tkN0%3D&se=2023-06-12T17%3A35%3A10Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release is a minor hotfix over the previous release (2022.2.69.0).\n\n## Notable updates\n- Fixed an issue where the organization name became case sensitive and could cause a device to lose registration.\n\n\n## Known issues\nNo known issues\n\nFor releated Cloudflare for Teams documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor related Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

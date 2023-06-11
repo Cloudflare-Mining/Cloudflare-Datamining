@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2426,
+	"version": "2022.12.268.1",
+	"short_version": "",
+	"size": 105132032,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "db321dd5ad8b50f3f488475e7f51431b",
+	"fingerprint": "a94635d13314c17fd468d389d64c0556",
+	"uploaded_at": "2022-12-06T23:04:22.736Z",
+	"download_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/923daa6c-0c49-4485-bf93-780b1fdcc159/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=m6UHFlNK19XyOu%2Fxv35uCVKKthdQUa0MjMRpLsRW6X4%3D&se=2023-06-12T17%3A48%3A30Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/923daa6c-0c49-4485-bf93-780b1fdcc159/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=m6UHFlNK19XyOu%2Fxv35uCVKKthdQUa0MjMRpLsRW6X4%3D&se=2023-06-12T17%3A48%3A30Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains bug fixes and a new UI `Connectivity` panel in preferences (Windows only at the moment) to assist with debugging. Please give it a try and let us know how it works!\r\n \r\n## Notable updates\r\n- New `Connectivity` tab in the GUI bubbles up helpful information (Windows only for now). Please let us know how this works for you.\r\n- Improved captive portal handling for some more captive portals.\r\n- Improved reconnect logic when a setting changes to no longer always do a full disconnect->reconnect cycle (for instance when turning on DNS logging).\r\n- Modified initial connectivity check behavior to now validate both IPv4 and IPv6 are working (previously we only checked IPv4). Test will pass if either connects successfully.\r\n- Fixed issue where UI could appear hung.\r\n- Fixed issue where progress bar won't appear during update until update is completed.\r\n- Fixed issue where client could be stuck on `Connecting` if certain DNS checks failed once.\r\n- Fixed DNS issue where TXT records were not being correctly returned when at the end of a CNAME chain.\r\n- Fixed issue where the client may not receive notifications of new settings, re-auth events or posture from the service until reboot.\r\n- Fixed issue where users could be pointing at an old gateway_doh_subdomain if you have `Allowed to Leave` set to true and they've manually joined their client to your organization.\r\n- Fixed slow DNS timeout issue that could occur when IPv6 is enabled and an NXDOMAIN record is returned.\r\n- Fixed issue with `Gateway with DoH` mode could say `Connected` when it wasn't really connected as we could sometimes test the wrong endpoint.\r\n- Fixed issue where our local DNS proxy server could get unset with an overly active DHCP renew time or by plugging in/out a tethered device.\r\n- Fixed issue where if `support_url` doesn't have a protocol definitely we now automatically add `https`\r\n- Fixed issue where the Cloudflare WARP system Service may crash if a long running child process crashes (such as ipconfig, netsh, etc.)\r\n \r\n \r\n## Known issues\r\n- No known issues\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n \r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"7341939704ecadcbc59fe38b574c3c25ec631b1bdf82ff06787e2c85ee2c0bb4"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

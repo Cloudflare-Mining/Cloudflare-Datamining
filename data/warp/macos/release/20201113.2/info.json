@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 15,
+	"version": "20201113.2",
+	"short_version": "1.2.1924",
+	"size": 18909506,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "331352074c7ba1990ffce034ab37878e",
+	"fingerprint": "6f748d26ca9ab88cfc208acff5fce412",
+	"uploaded_at": "2020-11-13T04:25:03.928Z",
+	"download_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/954f7d33-499b-4819-8586-0c70a151bfc1/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=7UyT0vFYcn%2BgoPrAixUDFgwejllwYHqsdQnMwF7AeD8%3D&se=2023-06-12T17%3A48%3A22Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/954f7d33-499b-4819-8586-0c70a151bfc1/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=7UyT0vFYcn%2BgoPrAixUDFgwejllwYHqsdQnMwF7AeD8%3D&se=2023-06-12T17%3A48%3A22Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains many improvements and fixes.\n\n**Notable updates**\n\n- Correctly start Teams login when deployed via script/mdm.\n- Fix issue where DoH wouldnt work with WARP.\n- Fix \"No buffer space available\" error.\n- Fixed issue where you could have no internet connectivity after a reboot when trusted networks were configured.\n- Fixed DNS fallback issue.\n\n**Known issues**\n\n- You are unable to subscribe to WARP+ via the Desktop apps. You must subscribe first on your mobile device and then copy/paste your license key into the Accounts page on desktop.\n- Localization parity with mobile is coming in a future update.\n- Wired networks via a USB dongle are not excluded properly.\n- DoH Subdomain value specified in plist may be overwritten with default value.\n\nFor a complete list of known issues please visit https://developers.cloudflare.com/warpclient/known-issues-and-faq",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

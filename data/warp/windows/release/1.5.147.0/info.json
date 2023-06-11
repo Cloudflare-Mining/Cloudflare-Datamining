@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 23,
+	"version": "1.5.147.0",
+	"short_version": "",
+	"size": 83566592,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "e310fb886d443ece8976ee87f184b13c",
+	"fingerprint": "bdf3eddfe0bfb65d779a5234e4a30354",
+	"uploaded_at": "2021-06-04T23:52:20.350Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/f377c479-4e7d-4f47-b268-11c343c895b8/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=ixUxb3s061P1qpGBR%2BHVwIFuUz1yQfxAAY9huusl1a4%3D&se=2023-06-12T17%3A48%3A36Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/f377c479-4e7d-4f47-b268-11c343c895b8/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=ixUxb3s061P1qpGBR%2BHVwIFuUz1yQfxAAY9huusl1a4%3D&se=2023-06-12T17%3A48%3A36Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains several new features and improvements.\r\n\r\n**Notable updates in this release**\r\n- Fixed several issues when upgrading Teams clients\r\n- Fixed issue where new/updated MDM configurations were not honored correctly\r\n- Added support for Teams admins to control use of captive portal in their organization\r\n- Enhanced in-app software update window behavior\r\n- Support for detecting and opening captive portal login page when captive portal network is detected.\r\n- Show Excluded IPs UI in Teams mode.\r\n- Added new support for service token-based authentication for managed (MDM) devices\r\n- No longer display \"Your connection is no longer private\" notifications when client is associated with a Team\r\n- Fixed issue when going between LAN and/or Wi-Fi networks\r\n- Improved accessibility support\r\n- Clients registered with Teams can now view their local device posture status.\r\n- Added new WARP proxy mode for advanced users. See Preferences->Advanced->Configure Proxy Mode for more info.\r\n- Fixed reconnection issue when waking from sleep.\r\n- Fixed issue where users would still be prompted for new updates when deployed via MDM solutions.\r\n- Several other bug fixes and improvements.\r\n\r\n**Known issues**\r\n- You are unable to subscribe to WARP+ via the Desktop apps. You must subscribe first on your mobile device and then copy/paste your license key into the Accounts page on desktop\r\n- To opt-out of the beta please uninstall via the instructions here: https://developers.cloudflare.com/warp-client/warp-for-everyone/setting-up/windows#how-to-remove-application and install from from the link here: https://developers.cloudflare.com/warp-client/warp-for-everyone/setting-up/requirements#windows\r\n\r\nFor a complete list of known issues please visit https://developers.cloudflare.com/warpclient/known-issues-and-faq",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"f87bc6d2e517b0f5dea6c72368a4a8e5c2ce0abbb4965473ff14001b51c4081e"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

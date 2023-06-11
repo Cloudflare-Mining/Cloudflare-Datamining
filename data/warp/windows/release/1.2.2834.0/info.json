@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 16,
+	"version": "1.2.2834.0",
+	"short_version": "",
+	"size": 78643200,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "b210de17b5066f3b93a8ffd39f0c2fb3",
+	"fingerprint": "bb27a8953f4ca02782734b757bd054b4",
+	"uploaded_at": "2020-12-31T00:30:25.057Z",
+	"download_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/df0e2eb9-9971-4c8d-8e95-5856ae924fac/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Y6D9%2FyBvqPksQ788Jw7NO1GJZJKEEB1kAx8dXmGx4uc%3D&se=2023-06-12T17%3A48%3A37Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/df0e2eb9-9971-4c8d-8e95-5856ae924fac/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Y6D9%2FyBvqPksQ788Jw7NO1GJZJKEEB1kAx8dXmGx4uc%3D&se=2023-06-12T17%3A48%3A37Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains some minor improvements and fixes from the last release. \n\n**Notable updates**\n\n- Changes to UI based on feedback\n- Cloudflare for Teams split tunnel support\n- Improved connectivity checks and stabilization. Please let us know if you see any issues connecting to WARP.\n- AT&T Cloudflare for Teams users should be able reliably connect now. This was a backend change but noting here for users who experiences the issue\n- Many localization fixes\n- Added localization for the following languages: EG, DE, ES, FR, ID, IT, JP, KR, NL, PL, BR, RU, TR, CN, TW. If you are native speaker please help us by providing feedback on translations!\n- Updated UI throughout the product\n- Added version number of file properties of .msi so you can more easily see the version\n- Better error handling when too many devices are added to existing WARP+ License\n- Improve waking from sleep connectivity\n- Fixed: Connection timeout issue reported by some users\n- Fixed: Settings Menu does not update after switching OS between light & dark modes\n- Fixed: Home window layout on some languages\n\n**Known issues**\n\n- You are unable to subscribe to WARP+ via the Desktop apps. You must subscribe first on your mobile device and then copy/paste your license key into the Accounts page on desktop\n- To opt-out of the beta please uninstall via the instructions here: https://developers.cloudflare.com/warp-client/warp-for-everyone/setting-up/windows#how-to-remove-application and install from from the link here: https://developers.cloudflare.com/warp-client/warp-for-everyone/setting-up/requirements#windows\n\nFor a complete list of known issues please visit https://developers.cloudflare.com/warpclient/known-issues-and-faq",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"a9c6cee60764606544ec80e1f09c7bf0ca8816680362b223f54578355e40e593"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

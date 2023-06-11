@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 51,
+	"version": "2023.3.381.0",
+	"short_version": "",
+	"size": 106668032,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "5f2611e34b5281fa0a28f2ea30a623f5",
+	"fingerprint": "d778d3a445f11b14f2d743a51dc1e611",
+	"uploaded_at": "2023-04-04T23:03:24.520Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/05baa15b-fda6-47d2-8516-1931f2d62062/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=ZkxihS5JvteowRCtxvd8HCwGG6w5GiewNDp28HuRYLk%3D&se=2023-06-12T13%3A02%3A58Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/05baa15b-fda6-47d2-8516-1931f2d62062/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=ZkxihS5JvteowRCtxvd8HCwGG6w5GiewNDp28HuRYLk%3D&se=2023-06-12T13%3A02%3A58Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "**Major change**\nWARP On Windows now uses a new tunnel architecture that more closely matches our macOS and Linux implementations. WARP will now create a virtual interface that is visible in your network connections and directly modify the routing table to control where traffic flows. Please thoroughly test this release before deploying in your organization.\n  \n## Notable updates\n- Added support for Windows Subsystem for Linux 2 (WSL2)\n- Added support for Zero Trust Digital Experience Monitoring\n- Added new log message to help customers and support identify when a users local network IP space overlaps with a remote network configured to go through the tunnel\n- Added support for Zero Trust customers to opt in to having the WARP Client install the root CA for your organization if TLS Decryption is enabled.\n- Improve timeouts with broken CNAME records that could result in very long load times for certain apps (Office 365 apps, etc.)\n- Improved compatibility with apps like Firefox and Zoom that use custom MTU settings\n- Improved UI states for WARP client\n- Improved user validation logic during manual ZT login\n- Improved logging of application posture checks to understand rationale behind statuses of application checks (file missing, process not found, etc.)\n- Modified behavior of Managed networks tests to always happen outside the tunnel as per original intent\n- Fixed issue where systems with significantly out of sync system clocks could fail registration\n- Fixed a number of GUI crash bugs that would cause the app to disappear from the system tray\n- Fixed issue that could cause the application to be hidden behind the Windows system tray expanded list UI\n- Fixed issue where warp-diag could run traceroutes longer than expected. Traceroute tests will now timeout after 65 seconds.\n- Fixed issue where the WARP service can crash and lose connectivity\n- Fixed issue where manually logging into a ZT org could fail if certificate authentication was used\n- Fixed issue where GUI could miss a status message from the WARP Service resulting in the wrong state being reflected to users. An example is the GUI could show `Connecting` even though device was `Connected`\n- Fix issue where IPv6 being disabled via the registered wasn't properly detected\n- Fixed issue when running in local proxy mode where too many log entries were written\n \n## Known issues\n- Customers who have modified the default split tunnel configuration or use managed networks may find some of the routes that should go through the tunnel are unreachable. This is now fixed in a hotfix release.\n \n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"f636988fa6b25c66dc297b46a3f9dfc004bb4fe716bfec686d16bd5b9a58f237"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

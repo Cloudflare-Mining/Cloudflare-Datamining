@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 48,
+	"version": "2022.10.106.0",
+	"short_version": "",
+	"size": 105852928,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "a017224aa1566856d4d61ebf0ec44dfe",
+	"fingerprint": "91960a78e493467f4633308ab110a8c9",
+	"uploaded_at": "2022-11-16T20:09:44.739Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/36472216-d63f-4a5a-8b09-23b581f46475/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=tmB519vvqXNweCzWLcYqzhrulHRBnYZ6s3fIHwhQ2sU%3D&se=2023-06-12T17%3A35%3A29Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/36472216-d63f-4a5a-8b09-23b581f46475/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=tmB519vvqXNweCzWLcYqzhrulHRBnYZ6s3fIHwhQ2sU%3D&se=2023-06-12T17%3A35%3A29Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release primarily contains bug fixes, no new features are included in this release\r\n \r\n## Notable updates\r\n- Modified installer behavior to now set the following registry key `HKLM\\SOFTWARE\\POLICIES\\MICROSOFT\\Windows\\NetworkConnectivityStatusIndicator\\UseGlobalDNS=1 (REG_DWORD)`. This resolves issues where Windows would think you didn't have a network connection even though you did.\r\n- Modified behavior of warp-diag to now also include 24 hours of Windows system event logs (for Zero Trust customers only).\r\n- Modified behavior of `warp-cli enable-dns-log` to automatically turn off after 7 days (this is the equivalent of manually running `warp-cli disable-dns-log`)\r\n- Fixed HappyEyeballs search on IPv6 only devices\r\n- Fixed UI in various states where we would show the wrong text when in various states (ex. Paused when really disabled via Admin Override, etc.)\r\n- Fixed issue in consumer on mode where you could add a domain based split tunnel rule but you couldn't delete them\r\n- Fixed issue where you could recieve Windows notifications when you weren't supposed to\r\n- Fixed issue where DHCP packets may be blocked when switching from Ethernet to Wifi\r\n- Fixed `System.AggregateException` that on some systems would cause the WARP UI to crash (note even if the UI is not running, the system service is still enforcing policy)\r\n- Fixed issue where the installer would check for an updated version of the app upon install. The installer no longer does this so the client itself can download settings and determine if users should be allowed to self update.\r\n- Fixed issue where GUI may still think user is registered after \"warp-cli delete\" is run\r\n- Decreased warp-diag run times by not resolving traceroute domains\r\n- Decreased warp-diag zip file sizes by 60-80%\r\n \r\n \r\n## Known issues\r\n- No known issues\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n \r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"90848a8ab556b3bc39edffe3a90b7b7dcec311a8ad22880656aff6cc50b64a95"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

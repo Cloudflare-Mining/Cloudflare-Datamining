@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2469,
+	"version": "20230314.13",
+	"short_version": "2023.3.165.1",
+	"size": 49285066,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "2332422f54390d6aebd928deef168dce",
+	"fingerprint": "1a3d4b49f5b548832e73c965d6efe312",
+	"uploaded_at": "2023-03-14T22:08:27.600Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/c70b0bf5-2f32-47eb-a19a-668b308c5d39/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=lZEM5i6RA9SKIOQkANOBpuyHdjP%2Bd9wT1n3gjcv4Z0k%3D&se=2023-06-12T13%3A53%3A05Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/c70b0bf5-2f32-47eb-a19a-668b308c5d39/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=lZEM5i6RA9SKIOQkANOBpuyHdjP%2Bd9wT1n3gjcv4Z0k%3D&se=2023-06-12T13%3A53%3A05Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains bug fixes and new features from the previous Beta release. With this release we are now feature complete for the quarter and will begin focusing exclusively on QA and bug fixes only. We encourage customers to test with this version and report issues ASAP.\n \n## Notable updates \n- Added support for Zero Trust Digital Experience Monitoring. More information coming soon for customers who signed up for the beta\n- Added new log message to help customers and support identify when a users local network IP space overlaps with a remote network configured to go through the tunnel\n- Added support for Zero Trust customers to opt in to having the WARP Client install the root CA for your organization if TLS Decryption is enabled. A new toggle switch will appear in the dashboard under Settings->WARP Client soon to enable this\n- Modified behavior of Managed networks tests to always happen outside the tunnel as per original intent\n- Modified firewall behavior to allow incoming UDP traffic on ports 67-68 over split tunnel routes configured to be protected by Gateway. This change should allow organizations with overlapping networks to an end users local network, to not leave their users in a completely broken state without internet connectivity\n- Fixed issue introduced in previous beta with delays in initial registration and onboarding flows\n- Fixed issue introduced in previous beta where entering the admin override code would not turn off the toggle switch for the user\n- Fixed issue where GUI could miss a status message from the WARP Service resulting in the wrong state being reflected to users. An example is the GUI could show `Connecting` even though device was `Connected`\n \n## Known issues\n- No known issues\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

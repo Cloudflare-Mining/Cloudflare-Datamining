@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 1462,
+	"version": "20220126.23",
+	"short_version": "2022.1.201.1",
+	"size": 42867563,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "090ff0c19e971bd66f7f188239a0d81f",
+	"fingerprint": "c52be6b2486fe174f185d88851740fcf",
+	"uploaded_at": "2022-01-26T23:05:09.539Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/a0153488-f0c4-49c0-8835-4629265089bb/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=%2FhNUPp%2Fqg0dUuTa3L37EV%2FKmF3rYXrm%2BGIK3Jio2ETk%3D&se=2023-06-12T17%3A48%3A28Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/a0153488-f0c4-49c0-8835-4629265089bb/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=%2FhNUPp%2Fqg0dUuTa3L37EV%2FKmF3rYXrm%2BGIK3Jio2ETk%3D&se=2023-06-12T17%3A48%3A28Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last release. In particular, we have made significant changes to how local settings (plist) are processed and how they work with new devices settings in the dashboard.\n\n**Notable updates** \n- Added support for Gateway session duration enforcement allowing you to force re-authentication after a specified time.\n- Fixed issue where local domain fallback list was empty when in consumer WARP mode.\n- Fixed wake from sleep issue where DNS requests could fail.\n\n**Known issues** \n- No known issues\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

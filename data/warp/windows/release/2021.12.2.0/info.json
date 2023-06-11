@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 32,
+	"version": "2021.12.2.0",
+	"short_version": "",
+	"size": 88457216,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "acf5d90b2d952e45352ca14a186eafce",
+	"fingerprint": "460ece8af921cb45d5d509700c897f92",
+	"uploaded_at": "2021-12-10T22:55:24.676Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/6ba0797a-ac18-40cb-935e-2204b289bf5f/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=haHkmWQldUNsUt7U0ccLzkZzI9rtNhWeBhF2vzpeq48%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/6ba0797a-ac18-40cb-935e-2204b289bf5f/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=haHkmWQldUNsUt7U0ccLzkZzI9rtNhWeBhF2vzpeq48%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last release.\n\n**Notable updates**\n- With this release you can now specify specific DNS servers to use for domains in Local Domain fallback in the Teams Dashboard.\n- Added ability for warp-diag to be run from any location (it is now in the default path).\n- Improved the connectivity check to more frequently and consistently check for connectivity.\n- Improved reliability of connection between client gui and daemon.\n- Improved localization throughout product.\n- Fixed issue where Split Tunnel UI in Preferences->Advanced of the client did not correctly show include only routes.\n- Fixed issue where you may not be able to open client UI if preferences was already open and hidden below other windows.\n- Fixed reliability issues around waking from sleep.\n\nFor related Cloudflare for Teams documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor related Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"a7258bd189dfb1e859ed1e68092caa2346af15ec4d37d80c046b5af1420d9cc5"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

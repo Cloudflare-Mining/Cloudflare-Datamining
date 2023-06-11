@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 35,
+	"version": "2022.2.247.0",
+	"short_version": "",
+	"size": 88379392,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "a28d31bc84df7dee9ba61fa58c0f1d75",
+	"fingerprint": "eaced25e906ffe399e32d22a171f8caa",
+	"uploaded_at": "2022-02-23T20:48:31.623Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/2e1e3502-87a8-434d-a6fb-ff5f552e1f92/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=6xT%2FYE49Kh0%2B2KqXRTrpbdRyB9B9SPz2xEPNKZ7aQ6c%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/2e1e3502-87a8-434d-a6fb-ff5f552e1f92/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=6xT%2FYE49Kh0%2B2KqXRTrpbdRyB9B9SPz2xEPNKZ7aQ6c%3D&se=2023-06-12T17%3A48%3A35Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release is a minor hotfix over the previous release (2022.2.95.0).\n\n## Notable updates\n- Fixed an issue where the organization name became case sensitive and could cause a device to lose registration.\n\n\n## Known issues\nNo known issues\n\nFor releated Cloudflare for Teams documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor related Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"4e43c72ecbf303e29a7fdf3279950575d23ed1cd7a133662a83a4b662e25742b"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

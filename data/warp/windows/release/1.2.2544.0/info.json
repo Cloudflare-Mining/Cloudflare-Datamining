@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 15,
+	"version": "1.2.2544.0",
+	"short_version": "",
+	"size": 80068608,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "fdb6169e1296806aa26892f50d3ea4b8",
+	"fingerprint": "1c17993a1236e711a700f4f80afaf8f4",
+	"uploaded_at": "2020-11-17T16:57:10.397Z",
+	"download_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/6a054fcb-9b18-4fde-ae85-19d554d2f424/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=gqYEKQS4yR0MJsUQ5%2FcIxR0K3cdbqF0qFiFGcwruu5Q%3D&se=2023-06-12T17%3A48%3A37Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/6a054fcb-9b18-4fde-ae85-19d554d2f424/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=gqYEKQS4yR0MJsUQ5%2FcIxR0K3cdbqF0qFiFGcwruu5Q%3D&se=2023-06-12T17%3A48%3A37Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This is the latest release for Windows that addresses many issues reported by users.\n\n**Notable improvements in this release:**\n\n- More specific error messages when configuring a license\n- Fixed potential vulnerability with Windows Service component\n- Fixed bug configuring custom gateway with managed Teams clients\n- Fixed issue with incorrect UI after logging out of Teams\n- Fixed issue where UI would not respond correctly to monitor DPI changes\n- Fixed various issues with DNS resolution\n- Other minor performance and bug fixes",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"e23a6b56154c388e4a1509cb47776ee005b0d580037a9a0f12ac5fe0e7f84abe"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

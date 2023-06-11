@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 7,
+	"version": "20201008.7",
+	"short_version": "1.2.1467",
+	"size": 18172011,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "00b1f0790a6c2067bd56099bc5c9b312",
+	"fingerprint": "3775c5f3ce39566c22dc8369356a5ccf",
+	"uploaded_at": "2020-10-08T02:23:37.684Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/1868cc92-94c7-4cf9-b599-8ae6ea5751d1/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=6ReuWc5Ec44kmYNvRM9X6VwqDib1I4HAu9s7fmnGG7k%3D&se=2023-06-12T17%3A48%3A22Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/1868cc92-94c7-4cf9-b599-8ae6ea5751d1/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=6ReuWc5Ec44kmYNvRM9X6VwqDib1I4HAu9s7fmnGG7k%3D&se=2023-06-12T17%3A48%3A22Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "Our initial V1 release of the macOS WARP Client! A huge thank you to all the beta testers who helped us get here.\n\n**Notable V1 features**\n\nSupport for Cloudflare for Teams.\n- All supported modes from our mobile client (1.1.1.1, 1.1.1.1 for Families, WARP, WARP+, WARP Unlimited).\n- Ability to exclude wireless and wired networks from WARP.\n- Ability to copy WARP Unlimited license from your iOS or Android device.\n\n\n**Known issues**\n\n- You are unable to subscribe to WARP+ via the Desktop apps. You must subscribe first on your mobile device and then copy/paste your license key into the Accounts page on desktop.\n- Localization parity with mobile is coming in a future update.\n- DNS Logs are not yet implemented.\n- Wired networks via a USB dongle are not excluded properly.\n\nFor a complete list of known issues please visit https://developers.cloudflare.com/warpclient/known-issues-and-faq",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

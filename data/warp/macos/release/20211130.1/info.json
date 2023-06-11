@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 29,
+	"version": "20211130.1",
+	"short_version": "2021.11.281.0",
+	"size": 40031870,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "be9b34e355f2b3ced10cc65e07709fdd",
+	"fingerprint": "7a063b93a98a6e945ffcd360c9c86ec6",
+	"uploaded_at": "2021-11-30T17:11:42.873Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/f60296e0-f43b-44ea-afdb-ab1cb6af17df/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=PCOLf12uoPg4iHcd0Vk4RWpMFoaTw13WPDeb%2FG6w0V4%3D&se=2023-06-12T17%3A48%3A20Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/f60296e0-f43b-44ea-afdb-ab1cb6af17df/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=PCOLf12uoPg4iHcd0Vk4RWpMFoaTw13WPDeb%2FG6w0V4%3D&se=2023-06-12T17%3A48%3A20Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last release.\n\n- Starting with this release our version number scheme has now changed to YYYY.M.build_number (ex. 2021.11.123).\n- Use timestamps in log file names stored by warp-diag.\n- Added traceroute information to warp-diag for Teams destinations to help debug connectivity issues.\n- warp-diag now reports status when run from terminal so you can see it working.\n- warp-diag now allows for --output flag so you can specify where diagnostics data is stored.\n- Improved general reliability issues by moving DoH requests outside the tunnel\n- Improved overall reliability of daemon/service including how it connects to the GUI (reduce instance of IPC errors).\n- Fixed localhost proxy mode which was broken in last release.\n- Fixed issue where posture checks were not running every 5 minutes like they should.\n- Fixed issue where DNS sockets could sometimes fail to be released, resulting in address in use errors.\n- Fixed issue where auto_connect mdm parameter wasn't working correctly when switch_locked=false.\n- Fixed issue where invalid certificate on device would cause the client to not connect.\n- Fixed issue in re-connection logic where we would not always try to re-connect if there was a network change detected.\n\n\nFor related Cloudflare for Teams documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

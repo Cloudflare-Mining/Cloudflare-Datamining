@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 39,
+	"version": "2022.4.115.0",
+	"short_version": "",
+	"size": 90537984,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "bc599d3b9547e444b2e0a0db4836c747",
+	"fingerprint": "dd826cc5240bece2c115bb12b148dd1e",
+	"uploaded_at": "2022-04-07T22:42:47.370Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/5845d075-745e-4100-8950-0b1396e0522d/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=OVhs3kog7DZO%2F5JvBcYACtquUdPCq2Tql1DxX%2B0Tjvc%3D&se=2023-06-12T17%3A48%3A34Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/5845d075-745e-4100-8950-0b1396e0522d/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=OVhs3kog7DZO%2F5JvBcYACtquUdPCq2Tql1DxX%2B0Tjvc%3D&se=2023-06-12T17%3A48%3A34Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "*PLEASE NOTE* If you are a Zero Trust customer and have strict firewall rules, you must visit https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/firewall/#client-orchestration-api and explicitly allow our new Client Orchestration API Endpoints.\n \nThis release contains new features and improvements from the last release\n \n## Notable updates\n \n- Added support for Cloudflare Tunnels users to route traffic to distinct Virtual Networks with overlapping IP ranges\n- Added ability for users to manually refresh Zero Trust authentication via the Preferences->Account menu\n- Modified Client Orchestration API Endpoint the client connects to in Zero Trust mode\n- Modified warp-cli behavior of \"connect\" and \"disconnect\" to mimic \"enable-always-on\" and \"disable-always-on\" which themselves are copies of how the main toggle switch behaves in the UI\n- Modified client behavior to no longer do periodic tunnel connectivity checks. These checks frequently caused more problems than they solved.\n- Fixed issue where UI would not display correctly for users with multiple monitors or in VMWare [win]\n- Fixed connectivity issues over devices with embedded 4G [win]\n- Fix issue where Windows device could fail to renew IP address when coming out of sleep [win]\n- Fixed issue where Zero Trust users would receive a notification to update the client even though upgrades were disabled in settings\n- Fixed issue where the GUI would show disconnected when it should show Paused\n- Fixed various issues with warp-diag and improve overall stability\n \n \n**Known issues** \n- UI incorrectly Shows Virtual Networks selector when there is only 1 default network. This UI should be hidden unless there are actually multiple networks to choose from.\n \n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"0363569b3fca84c003b580803516ecd5d2f96ba0876d0c0140192a3f0ad6ba97"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

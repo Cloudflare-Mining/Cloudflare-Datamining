@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 1877,
+	"version": "2022.5.44.1",
+	"short_version": "",
+	"size": 90836992,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "0a3ac51d9e4c116d36b438a7f3cca73e",
+	"fingerprint": "c3d9ff6a6c407a261a4ae803661b5a0b",
+	"uploaded_at": "2022-05-10T18:42:54.109Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/f40cd965-047e-4356-9738-afe90f721c7f/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=wDG%2BscrDcUd2j5YHQ64U4%2Fzu16m1ouO14weJHzdpqm8%3D&se=2023-06-12T17%3A48%3A32Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/f40cd965-047e-4356-9738-afe90f721c7f/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=wDG%2BscrDcUd2j5YHQ64U4%2Fzu16m1ouO14weJHzdpqm8%3D&se=2023-06-12T17%3A48%3A32Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains significant improvements to our DNS functionality. In addition to overall improved DNS stability and performance, we now fully support DNS requests over TCP. This also modifies our local DNS proxy to use the internal IPs of 127.0.2.2, 127.0.2.3, fd01:db8:1111::2, and fd01:db8:1111::3.\n \n## Notable updates\n \n- Added support for DNS over TCP\n- Added support for teams-enroll in the warp-cli utility\n- Modified client font to be system default\n- Modified client behavior to no longer show massive upgrade notification when a new build is released, instead you'll now see a change to our system tray icon to indicate a new build is available\n- Fixed issue where the Virtual Network selector would appear for users with only a single network\n- Fixed issue where the Virtual Network selector may not appear after a reboot\n- Fixed issue where the Logout from Zero trust button would remain locked after an mdm.xml file was removed\n- Fixed issue where settings and/or UI may not properly clear when moving from one Zero Trust org to another\n- Fixed issue where device posture checks (Application and File Check) were case sensitive when they shouldn't have been\n- Fixed issue where updating the mdm.xml file would require the user to re-register in cases where it shouldn't (registration would appear missing)\n- Fixed issue when coming out of sleep where it could take 60 seconds to connect while we waited for Apples connectivity checks to finish (and we didn't really need to)\n- Fixed issue where our service could crash and not properly restart\n- Fixed issue where updated posture checks might not take effect until restart\n \n## Known issues\n- Event Viewer will show tcpip errors when multiple clients are on the same network\n- warp-svc does not properly restart when killed\n- Network may take up to 40 seconds to reconnect after pro-longed sleep and/or modern standby\n- Does not work on LTE connections. Disable IPv6 as a workaround.\n- This version requires at least Windows 10.0.19042. If you are running a prior version of Windows, please delay upgrading.\n \n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"21dd76f35adcfa54558fe757eefc1da274f9367461f2e697a8f2e73df416cdc9"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

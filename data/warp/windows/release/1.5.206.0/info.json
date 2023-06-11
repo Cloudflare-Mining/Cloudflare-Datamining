@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 24,
+	"version": "1.5.206.0",
+	"short_version": "",
+	"size": 84258816,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "831023477c0a852986c44660cbf7105b",
+	"fingerprint": "bcb5344715994ab2f16d40b14a43dbfc",
+	"uploaded_at": "2021-06-16T17:40:09.578Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/628683ad-b05d-4760-8425-fde7ea4c0ea2/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=cNKmveMLAReXjUYbSirz6z23WQmR6lmIDDBehVe%2FCpk%3D&se=2023-06-12T17%3A48%3A36Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/628683ad-b05d-4760-8425-fde7ea4c0ea2/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=cNKmveMLAReXjUYbSirz6z23WQmR6lmIDDBehVe%2FCpk%3D&se=2023-06-12T17%3A48%3A36Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains several new features and improvements.\r\n\r\n**Notable updates in this release**\r\n\r\n- Significant improvements to DoH reliability and performance.\r\n- Organization name in MDM file is no longer case sensitive.\r\n- Fixed an issue where config changes in Teams Dashboard don't automatically propagate to the client.\r\n- Fixed an issue where MDM file changes were not picked up correctly by client.\r\n- Fixed issues with local domain fallback not working in all cases.\r\n- Several other bug fixes and improvements.\r\n\r\n**Known issues**\r\n- You are unable to subscribe to WARP+ via the Desktop apps. You must subscribe first on your mobile device and then copy/paste your license key into the Accounts page on desktop\r\n- To opt-out of the beta please uninstall via the instructions here: https://developers.cloudflare.com/warp-client/warp-for-everyone/setting-up/windows#how-to-remove-application and install from from the link here: https://developers.cloudflare.com/warp-client/warp-for-everyone/setting-up/requirements#windows\r\n\r\nFor a complete list of known issues please visit https://developers.cloudflare.com/warpclient/known-issues-and-faq\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"20ea0e6067dee376b2dbea7c4155b01d775652a29d26583bf63492c74f63310f"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

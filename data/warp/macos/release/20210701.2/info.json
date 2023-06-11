@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 26,
+	"version": "20210701.2",
+	"short_version": "1.5.294.0",
+	"size": 34729215,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "64e4b3c39a9780c5323ea732fabcf72b",
+	"fingerprint": "42c5b754b7ea8ca111b7e723807c93d1",
+	"uploaded_at": "2021-07-01T14:46:12.765Z",
+	"download_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/24b73b52-9678-401c-a344-a4a40ec54db3/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=HBL3rzm7VD%2Fq2ykgxJJFBPNRkpq6q%2FlpO5wkjyccRdI%3D&se=2023-06-12T17%3A48%3A20Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/24b73b52-9678-401c-a344-a4a40ec54db3/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=HBL3rzm7VD%2Fq2ykgxJJFBPNRkpq6q%2FlpO5wkjyccRdI%3D&se=2023-06-12T17%3A48%3A20Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "**Notable Updates**\n\n- Add ability for Teams admins to allow users to switch between DoH only and WARP.\n- Improved stability of DoH resolver.\n- Fixed UI bug with admin override where disconnected message would persist when it shouldn't.\n- Several other bug fixes and improvements.\n\n**Known issues**\n\n- You are unable to subscribe to WARP+ via the Desktop apps. You must subscribe first on your mobile device and then copy/paste your license key into the Accounts page on desktop.\n- Localization parity with mobile is coming in a future update.\n- Wired networks via a USB dongle are not excluded properly.\n\nFor a complete list of known issues please visit https://developers.cloudflare.com/warpclient/known-issues-and-faq",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2266,
+	"version": "20221206.15",
+	"short_version": "2022.12.267.1",
+	"size": 47987435,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "31c944ec392defeab22c1f397f91c78f",
+	"fingerprint": "5c7b515baa44ff6241e153db87140b17",
+	"uploaded_at": "2022-12-06T23:13:53.633Z",
+	"download_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/05ad7196-1bf4-48fc-a655-29f750d32226/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=W8HAuyh9Z5tkOhd%2Bm7mchM5jjurYjCHxtKb3cL4vhmA%3D&se=2023-06-12T17%3A48%3A26Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/05ad7196-1bf4-48fc-a655-29f750d32226/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=W8HAuyh9Z5tkOhd%2Bm7mchM5jjurYjCHxtKb3cL4vhmA%3D&se=2023-06-12T17%3A48%3A26Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release primarily contains bug fixes, no new features are included in this release\n \n## Notable updates\n- Improved captive portal handling for some more captive portals.\n- Improved reconnect logic when a setting changes to no longer always do a full disconnect->reconnect cycle (for instance when turning on DNS logging).\n- Modified initial connectivity check behavior to now validate both IPv4 and IPv6 are working (previously we only checked IPv4). Test will pass if either connects successfully. \n- Fixed issue where client could be stuck on `Connecting` if certain DNS checks failed once.\n- Fixed DNS issue where TXT records were not being correctly returned when at the end of a CNAME chain.\n- Fixed issue where the client may not receive notifications of new settings, re-auth events or posture from the service until reboot.\n- Fixed issue where users could be pointing at an old gateway_doh_subdomain if you have `Allowed to Leave` set to true and they've manually joined their client to your organization.\n- Fixed slow DNS timeout issue that could occur when IPv6 is enabled and an NXDOMAIN record is returned.\n- Fixed issue with `Gateway with DoH` mode could say `Connected` when it wasn't really connected as we could sometimes test the wrong endpoint.\n- Fixed issue where our local DNS proxy server could get unset with an overly active DHCP renew time or by plugging in/out a tethered device.\n \n## Known issues\n- There is a race condition that may cause IPv4 traffic to fail after the tunnel starts up. This can be fixed by toggling off then back on the connection. A hotfix is in the works.\n- If you are having issues with upgrading to new beta, please uninstall current app, install the GA version from https://1.1.1.1/ and participate in beta program from Preferences->Advanced.\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

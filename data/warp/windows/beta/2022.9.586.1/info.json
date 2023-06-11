@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2272,
+	"version": "2022.9.586.1",
+	"short_version": "",
+	"size": 103960576,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "378d51f3f4a7f7e16a5cdc63df4a48e1",
+	"fingerprint": "c59a54f973e432a2e2f9b2b3d98b8c6f",
+	"uploaded_at": "2022-10-12T00:36:26.458Z",
+	"download_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/7aa90f1e-413d-4fde-92b6-bcf668edba8a/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=B55MOVlCKXzRslCO3rmNjcuFBv%2FPkEZO3NFinZ2HB7s%3D&se=2023-06-12T17%3A48%3A30Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/7aa90f1e-413d-4fde-92b6-bcf668edba8a/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=B55MOVlCKXzRslCO3rmNjcuFBv%2FPkEZO3NFinZ2HB7s%3D&se=2023-06-12T17%3A48%3A30Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains hotfixes for 2022.9.388.1.\r\n\r\n## Notable updates\r\n- Fix issue where device posture check results stopped sending after 24 hours\r\n  (or possibly even sooner)\r\n\r\n## Known issues\r\n- No known issues\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n \r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"af8ed1f90cf4f20841f67fb53045ef1c6eefe6caedb2e6d09db4f720a803147f"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

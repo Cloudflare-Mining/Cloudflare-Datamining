@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 51,
+	"version": "20230504.7",
+	"short_version": "2023.3.460.0",
+	"size": 49522156,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "42763a073d09b90a823a382fbcd8a5fc",
+	"fingerprint": "22d2357b5297ae6f9550ec62908806b4",
+	"uploaded_at": "2023-05-04T17:36:29.622Z",
+	"download_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/e27c4eba-57d2-4683-bd5e-ff12c8ae8e69/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=Jffyqy2GfulwnMWdmRkfUHq5rT6wLz0IDv8X%2BIQAKOk%3D&se=2023-06-12T09%3A31%3A14Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/e27c4eba-57d2-4683-bd5e-ff12c8ae8e69/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=Jffyqy2GfulwnMWdmRkfUHq5rT6wLz0IDv8X%2BIQAKOk%3D&se=2023-06-12T09%3A31%3A14Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This is a Mac only hotfix from the 2023.3.415.0 release\n \n## Notable updates\n- Fixes an issue where entering team name with case sensitivity would result in a registration error(s).\n \n## Known issues\nNo known issues\n \n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

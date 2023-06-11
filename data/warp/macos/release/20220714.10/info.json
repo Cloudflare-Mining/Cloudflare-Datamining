@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 40,
+	"version": "20220714.10",
+	"short_version": "2022.7.175.0",
+	"size": 45552702,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "ef8afbd0b5588890f73ed3feaceff03e",
+	"fingerprint": "534e289631316456f2dcb073473eefef",
+	"uploaded_at": "2022-07-14T19:12:50.797Z",
+	"download_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/1a54493e-1111-465f-9c3e-ab2910d2f707/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=AFGJBQK3u3qrsCZ36Yu6kyoo9r9wgce7nqx7ybx7T2w%3D&se=2023-06-12T17%3A48%3A19Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/1a54493e-1111-465f-9c3e-ab2910d2f707/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=AFGJBQK3u3qrsCZ36Yu6kyoo9r9wgce7nqx7ybx7T2w%3D&se=2023-06-12T17%3A48%3A19Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release primarily contains improvements to stability and bug fixes. There are no major new features introduced with this release.\n \n## Notable updates\n \n- Added /Library/Application\\ Support/Cloudflare/cfwarp_daemon_dns.txt log file when DNS logging is enabled\n- Added `do not fragment` bit to WARP tunnel traffic\n- Added ability for posture rules that support file paths to use environment variables as part of the path\n- Modified output of `warp-cli account` and `warp-cli settings` to make parsing information easier\n- Modified UI behavior so items not relevant in Zero Trust or Consumer mode are no longer just grayed out, they are hidden completely\n- Fixed issue where warp-cli could be used determine a valid admin override code\n- Fixed issue where warp-cli could be used to enable/disable on wifi networks when in Zero Trust mode\n- Fixed issue where you would receive a notification immediately after install that your internet was no longer private\n- Fixed issue with domain based split tunnels when a wildcard is used. Anything after the `*` was included in the wildcard search so `*.example.com` would include  `badexample.com`\n- Fixed issue where client was sending improper ICMP responses when MTU needed to change\n- Fixed issue where logs could grow too large\n- Fixed issue where user could see an error dialog going between DNS modes\n- Fixed issue where user was reminded to update after just asking to be reminded later\n- Fixed crash in UI when viewing DNS logs and clicking on Resolver tab\n- Fixed issue where UI could sometimes appear not attached to menu bar\n- Fix issue where app UI would not disappear consistently when bringing up preferences\n- Fixed issue where waking from sleep or changing networks may result in the client staying in a broken state\n \n## Known issues\n- No known issues\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 1662,
+	"version": "2022.2.24.1",
+	"short_version": "",
+	"size": 88383488,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "2049f86ca719d0bd511807398f1c008e",
+	"fingerprint": "344a71b8db8d58f91714fd54c47712ea",
+	"uploaded_at": "2022-02-09T20:27:18.482Z",
+	"download_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/86ab3693-59da-40aa-b1b8-fa797e0af31c/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Vf9V3T3SQiKd2CbCxSU3NfH14gywyRve5sMqdJKQjdk%3D&se=2023-06-12T17%3A48%3A32Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/86ab3693-59da-40aa-b1b8-fa797e0af31c/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Vf9V3T3SQiKd2CbCxSU3NfH14gywyRve5sMqdJKQjdk%3D&se=2023-06-12T17%3A48%3A32Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last beta release. In particular this build now supports the ability to configure settings via the Dashboard and not just with a mdm.xml file. Note that settings in your mdm.xml always overrule what comes from the dashboard.\r\n\r\n## Notable updates\r\n- The \"enabled\" mdm.xml property has now been completely deprecated and is no longer read. Please see https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/parameters#switch_locked for the mechanism announced in April 2021\r\n- Now that settings exist in the Zero Trust Dashboard the Client UI should behave the same regardless of if you manually joined to a Team or if you were forced to by local mdm.xml policy\r\n- Updated Teams logo in app to Zero Trust\r\n- Modified GUI exit behavior for users who manually joined their device to a Team. Quiting the app will still keep the service running and enforcing policy as it always has for clients that were reployed via mdm/Intune/etc.\r\n- Removed UI that was not relevant when in Zero Trust Mode (consumer only features in connection tab, quit button that doesnt really do anything, etc.)\r\n- Fixed issue where the WARP Client might not get updated settings when it initial starts\r\n- Fixed issue where the Last Seen value was not updated properly in the Zero Trust Dashboard while in Gateway with DoH mode\r\n- Fixed issue where device name was not updated in the Zero trust Dashboard if the computer name changed after initial registration\r\n- Fixed issue where you could not log out a team after clicking \"Reset Encryption Keys\"\r\n- Fixed various issues with split tunnel support in consumer mode\r\n- Fixed issue where \"warp-cli settings\" showed connection time in settings instead of minutes\r\n\r\n\r\n## Known issues\r\nNo known issues\r\n\r\nFor releated Cloudflare for Teams documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor related Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"b24a8f0bc39ee0acd19d83db66dbdb912dc598371c7a4c4cf0c33ab4b99a8cd8"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

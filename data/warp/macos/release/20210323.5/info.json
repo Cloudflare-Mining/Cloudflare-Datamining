@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 21,
+	"version": "20210323.5",
+	"short_version": "1.4.27",
+	"size": 28445541,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "548bac345510a6c2459a81143ab72a8e",
+	"fingerprint": "c8dc6b2378312685f6addf7fc3591a2e",
+	"uploaded_at": "2021-03-23T03:17:51.701Z",
+	"download_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/356f2f2a-585e-4f0f-92f4-55dd9630f9b2/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=IKkss7%2FyA%2F8UOcveicB9Z%2FNwzaF1nnzKpwxJS5vJkjA%3D&se=2023-06-12T17%3A48%3A21Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/356f2f2a-585e-4f0f-92f4-55dd9630f9b2/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=IKkss7%2FyA%2F8UOcveicB9Z%2FNwzaF1nnzKpwxJS5vJkjA%3D&se=2023-06-12T17%3A48%3A21Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "**Notable Updates**\n  \n  - New support for device posture reporting (Teams accounts only).\n  - New IP exclusion UI so you can now exclude an IP, or IP range from the WARP tunnel.\n  - Fixed: Reconnect DNS when errors are encountered.\n  - Fixed: Gateway users will now see DoH over WARP work correctly.\n  - Fixed an issue with setting up the routing tables.\n  - Other minor bug fixes.\n\n**Known issues**\n\n- You are unable to subscribe to WARP+ via the Desktop apps. You must subscribe first on your mobile device and then copy/paste your license key into the Accounts page on desktop.\n- Localization parity with mobile is coming in a future update.\n- Wired networks via a USB dongle are not excluded properly.\n\nFor a complete list of known issues please visit https://developers.cloudflare.com/warpclient/known-issues-and-faq",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

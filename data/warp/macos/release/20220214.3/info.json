@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 32,
+	"version": "20220214.3",
+	"short_version": "2022.2.69.0",
+	"size": 42940993,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "e67e6f1f0a4e74776008bf59850aeb0d",
+	"fingerprint": "b986e5c1677fc8b3457560c99f9b0e9d",
+	"uploaded_at": "2022-02-14T17:29:49.970Z",
+	"download_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/b39adcdb-356d-4314-b007-8077fddbd3c5/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=8c6Q4ZVZQ3kEoXPEwwDZqGPMBHXS7vKVsnKyTTztzBE%3D&se=2023-06-12T17%3A48%3A20Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/b39adcdb-356d-4314-b007-8077fddbd3c5/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=8c6Q4ZVZQ3kEoXPEwwDZqGPMBHXS7vKVsnKyTTztzBE%3D&se=2023-06-12T17%3A48%3A20Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last release. In particular, we have made significant changes to how local settings (plist) are processed. Additionally, we added the ability to configure all applicable parameters from the Zero Trust dashboard. This allows admins to more easily control client behavior without having to use a 3rd party tool. \n\n## Notable updates\n\n- Added support for Gateway session duration enforcement. This allows administrators to force re-authentication after a specified time.\n- The \"enabled\" plist property has now been completely deprecated and is no longer respected. Please see https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/parameters#switch_locked for switch_locked mechanism that was announced in April 2021\n- Now that settings exist in the Zero Trust Dashboard, the Client UI should behave the same for clients manually joined to a Team and clients forced to by local .plist policy\n- Updated Teams logo in app to Zero Trust\n- Fixed an issue where the Last Seen value was not updated properly in the Zero Trust Dashboard while in Gateway with DoH mode\n- Fixed an issue where the device name was not updated in the Zero trust Dashboard if the computer name changed after initial registration\n- Fixed various issues with split tunnel support in consumer mode\n- Fixed an issue where \"warp-cli settings\" showed connection time in seconds instead of minutes\n- Fixed an issue where the local domain fallback list was empty when in consumer WARP mode.\n- Fixed a wake from sleep issue where DNS requests could fail.\n\n**Known issues** \n- The organization name is case sensitive, which could cause a device to lose registration.\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

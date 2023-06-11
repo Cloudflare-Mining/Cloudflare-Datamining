@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2085,
+	"version": "20220923.16",
+	"short_version": "2022.9.265.1",
+	"size": 49606616,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "d6f82077028a51fb61355ce210b703d8",
+	"fingerprint": "16f952f8a3783f334af4abcb15eb5ea6",
+	"uploaded_at": "2022-09-23T21:10:23.783Z",
+	"download_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/d13075e7-75c4-4c79-86a9-1f96afde6e01/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=MnRwk4fIDHh7e5JalKskWcPegzeoT4VSCysRUtjjALw%3D&se=2023-06-12T17%3A48%3A26Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/d13075e7-75c4-4c79-86a9-1f96afde6e01/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=MnRwk4fIDHh7e5JalKskWcPegzeoT4VSCysRUtjjALw%3D&se=2023-06-12T17%3A48%3A26Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release primarily contains bug fixes for beta release 2022.9.214.1\n \n## Notable updates\n \n-  Fixed issue where GUI would show no text and only the toggle after updating\n   mdm.plist file\n \n## Known issues\n- Device posture check results stop sending after 24 hours (or possibly even sooner)\n- If you are having issues with upgrading to new beta, please uninstall current app, install the GA version from https://1.1.1.1/ and participate in beta program from Preferences->Advanced.\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 1610,
+	"version": "20220310.5",
+	"short_version": "2022.3.73.1",
+	"size": 42640118,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "bca2efd7d8d0bffa6b91176dd9ae8fe1",
+	"fingerprint": "6d5dea308aaad272106688313899d019",
+	"uploaded_at": "2022-03-10T18:54:05.856Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/5c78965f-b54f-4516-9b01-7699d6ac39a1/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=NaMj8Tm9s%2FAP%2FxQT%2BhzNX7rN3gkLOuCGRsbdNXkghvI%3D&se=2023-06-12T17%3A48%3A28Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/5c78965f-b54f-4516-9b01-7699d6ac39a1/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=NaMj8Tm9s%2FAP%2FxQT%2BhzNX7rN3gkLOuCGRsbdNXkghvI%3D&se=2023-06-12T17%3A48%3A28Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last release.\n \n## Notable updates\n \n- Added support for Device Information only mode. This allows for posture to be used for Access policies without Gateway being enabled.\n- Fixed issue for Zero Trust accounts with Captive Portal disabled where they client may not always reconnect when it should\n- Fixed issue where the UI would show disconnected when the client was instead just temporarily paused\n- Fixed issue where serial numbers with spaces in the string were not correctly reported\n \n \n**Known issues** \n- No known issues\n \n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

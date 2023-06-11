@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2014,
+	"version": "20220902.33",
+	"short_version": "2022.8.692.1",
+	"size": 45709826,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "803222d146498ffe625f323923340ecb",
+	"fingerprint": "98eb2da8767174f7fb6bd873c8c5f04d",
+	"uploaded_at": "2022-09-02T19:45:49.653Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/8590a4dd-be54-4fba-91eb-7be2f9684ad9/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=iD9xw4hwUuxXqDBe3CpN5opw0Tb4vFuIcMF9p6DbADg%3D&se=2023-06-12T17%3A48%3A27Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/8590a4dd-be54-4fba-91eb-7be2f9684ad9/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=iD9xw4hwUuxXqDBe3CpN5opw0Tb4vFuIcMF9p6DbADg%3D&se=2023-06-12T17%3A48%3A27Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release primarily contains improvements to stability and bug fixes. There are no major new features introduced with this release. We also wanted to call out that we've made server side changes to significantly reduce captcha issues for users with IPv6 enabled (no client related change but wanted to call out the work).\n \n## Notable updates\n \n- Modified GUI when in Include Only split tunneling mode to correctly state that just the routes included in the split tunnel configuration are protected. This is just a string change.\n- Fixed issue where `warp-cli set-custom-endpoint` could be used by users without local admin rights as a way to bypass Gateway policies.\n- Fixed issue where `warp-cli add-trusted-ssid` worked in Zero Trust mode when it should not have.\n- Fixed issue where `warp-cli teams-enroll` would run even if already joined to an organization and users were not allowed to disconnect or leave.\n- Fixed issue that could result in connection issues coming out of certain sleep states (AddrInUse error or Multiple WARP Connections or NoCurrentSession).\n- Fixed issue that could result in connection flickering between connected/disconnected.\n- Fixed issue where connectivity test could report wrong status in logs when in Include Only split tunnel configuration.\n- Fixed issue where UI would not properly show you were in Proxy mode.\n- Fixed issue where warp-cli could hang if daemon was in a bad state.\n- Fixed issue where sometimes Zero Trust device settings configured in the dash wouldn't take effect for machines in a disconnected state and asleep state.\n- Fixed issue where our DNS proxy wasn't correctly handling EDNS0 requests.\n- Fixed issue where the DNS answer for records at the end of a CNAME chain would appear in the ADDITIONAL response section instead of the ANSWER section. This broke certain connectivity checks for Microsoft and Android studio in particular (probably other things). We now put the IP address found in the ANSWER section.\n- Fixed issue where multiple instances of the service could run at the same time.\n- Fixed issue that could occur during registration if the user clicks on on the Launch Cloudflare WARP button after already registering.\n- Improved performance of warp-diag to now collects logs in parallel and now collect additional routes to help with debugging.\n- Fixed crash of daemon after wake from sleeping which could cause loss of network connectivity or the GUI to freeze.\n- Fixed issue with include-only tunnels reconnecting every ~135 seconds.\n \n## Known issues\n- If you are having issues with upgrading to new beta, please uninstall current app, install the GA version from `https://1.1.1.1/` and participate in beta program from Preferences->Advanced.\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

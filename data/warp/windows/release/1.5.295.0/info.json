@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 25,
+	"version": "1.5.295.0",
+	"short_version": "",
+	"size": 84258816,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "e2dff9e731be487bb22557182fc9dfa8",
+	"fingerprint": "5c3e1671e620b3346176ce4c431b5c20",
+	"uploaded_at": "2021-07-01T14:36:19.064Z",
+	"download_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/3767391a-0ff9-4af7-8ee6-a33e8541ba7f/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Tp8jq07%2BJZGZeYHY2fbWDhvOFz0CpZs%2FfX5RnGkTDy8%3D&se=2023-06-12T17%3A48%3A36Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/3767391a-0ff9-4af7-8ee6-a33e8541ba7f/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Tp8jq07%2BJZGZeYHY2fbWDhvOFz0CpZs%2FfX5RnGkTDy8%3D&se=2023-06-12T17%3A48%3A36Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains several new features and improvements.\n\n**Notable updates in this release**\n\n- Add ability for Teams admins to allow users to switch between DoH only and WARP.\n- Improved stability of DoH resolver.\n- Fixed UI bug with admin override where disconnected message would persist when it shouldn't. \n- Fixed exception when downloading updates.\n- Added ability to resize DNS logs window.\n- Fixed UI issues when in tablet mode.\n\n**Known issues**\n- You are unable to subscribe to WARP+ via the Desktop apps. You must subscribe first on your mobile device and then copy/paste your license key into the Accounts page on desktop.\n\nFor a complete list of known issues please visit https://developers.cloudflare.com/warpclient/known-issues-and-faq\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"bb62764145419317eb91bb29a2bb5538b192c1e2c62868fb79a39a42a6f85657"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

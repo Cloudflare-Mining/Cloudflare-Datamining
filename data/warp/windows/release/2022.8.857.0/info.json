@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 45,
+	"version": "2022.8.857.0",
+	"short_version": "",
+	"size": 106332160,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "e1feb92186dec41e456128415cf6c25e",
+	"fingerprint": "64d1c010ad310b3ff86d9d63ed892394",
+	"uploaded_at": "2022-09-12T17:54:58.402Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/fbff07b9-89d8-4496-98ae-30bc77f979cc/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=n9lugyXNr4gn0MjYAhu7hF9LTfmJGa3MgPDT4idwNSw%3D&se=2023-06-12T17%3A48%3A34Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/fbff07b9-89d8-4496-98ae-30bc77f979cc/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=n9lugyXNr4gn0MjYAhu7hF9LTfmJGa3MgPDT4idwNSw%3D&se=2023-06-12T17%3A48%3A34Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release primarily contains improvements to stability and bug fixes. Please\r\nnote that the issue preventing the client from working with Windows versions\r\nolder than 10.0.19042 is now fixed in this release. We also wanted to call out\r\nthat we've made server side changes to significantly reduce captcha issues for\r\nusers with IPv6 enabled (no client related change but wanted to call out the\r\nwork).\r\n \r\n## Notable updates\r\n \r\n- Added ability for ZT Administrators to specify if they want embedded WebView2 browser to be used instead of the default system browser. See [Deployment documentation](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/#install-warp-on-windows) for more information\r\n- Modified GUI app to now be built on .Net 6.0 as .Net 5.0 is now end of life and upgraded the internal version of our upgrade engine (Sparkle). No user facing changes expected.\r\n- Modified GUI when in Include Only split tunneling mode to correctly state that just the routes included in the split tunnel configuration are protected. This is just a string change.\r\n- Fixed issue where `warp-cli set-custom-endpoint` could be used by users without local admin rights as a way to bypass Gateway policies.\r\n- Fixed issue where `warp-cli add-trusted-ssid` worked in Zero Trust mode when it should not have.\r\n- Fixed issue where `warp-cli teams-enroll` would run even if already joined to an organization and users were not allowed to disconnect or leave.\r\n- Fixed issue that could result in connection issues coming out of certain sleep states (AddrInUse error or Multiple WARP Connections or NoCurrentSession).\r\n- Fixed issue that could result in connection flickering between connected/disconnected.\r\n- Fixed issue where connectivity test could report wrong status in logs when in Include Only split tunnel configuration.\r\n- Fixed issue where warp-cli could hang if service was in a bad state.\r\n- Fixed issue where sometimes Zero Trust device settings configured in the dash wouldn't take effect for machines in a disconnected state and asleep state.\r\n- Fixed issue where our DNS proxy wasn't correctly handling EDNS0 requests.\r\n- Fixed issue preventing the WARP Client from working with Windows versions prior to 10.0.19042 by no longer using SetInterfaceDnsSettings and instead set DNS server config by modifying the following registry key(s) directly for each interface. SYSTEM\\CurrentControlSet\\Services\\{service}\\Parameters\\Interfaces\\{guid}.\r\n- Fixed issue where the DNS Answer for records at the end of a CNAME chain would appear in the ADDITIONAL response section instead of the ANSWER section. This broke certain connectivity checks for Microsoft and Android studio in particular (probably other things). We now put the IP address found in the ANSWER section.\r\n- Fixed issue where multiple instances of the service could run at the same time.\r\n- Fixed issue that could occur during registration if the user clicks on on the Launch Cloudflare WARP button after already registering.\r\n- Fixed issue where the Zero Trust client was starting in connected mode when dash settings `Switched Locked` and `Auto Connect` were turned off/disabled. The client should only ever auto connect when these are enabled.\r\n- Fixed issue where DNS functionality may be in a broken state when device wakes from sleep\r\n- Improved performance of warp-diag to now collects logs in parallel and now collect additional routes to help with debugging.\r\n \r\n## Known issues\r\n- No known issues\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\n \r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"3eadd8cf56b79b85588a5b9d73eeedc54cf4911ce40d9a3bff543324d94d84c3"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 44,
+	"version": "2022.7.421.0",
+	"short_version": "",
+	"size": 103219200,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "5490f09769e22600872f25e0b8872836",
+	"fingerprint": "22042e3a5ee442b5514af0b04adc9fe1",
+	"uploaded_at": "2022-08-01T20:09:23.276Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/bcc94714-29a1-4981-ae78-2b8ef16cc9fb/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=g4suCOUQTHLZ9P0uW4ro0Vz3AezeVU45LyluFMc4eXg%3D&se=2023-06-12T17%3A48%3A34Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/bcc94714-29a1-4981-ae78-2b8ef16cc9fb/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=g4suCOUQTHLZ9P0uW4ro0Vz3AezeVU45LyluFMc4eXg%3D&se=2023-06-12T17%3A48%3A34Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains bug fixes and user experience change for customers using Zero Trust `Enforce WARP session duration` Gateway policies\n \n## Notable updates\n- Modified client behavior to no longer automatically open a new browser tab when user needs to reauthenticate as this was causing some users to return to their devices with 100s of tabs open. Instead the client will now use the built in operating system notification framework to inform users of the need to authenticate.\n- Fixed issue where deployments with .msi command line parameters would result in a broken client state \n- Fixed issues with device registration after logging out/in of the client.\n- Fixed issue where file device posture checks wouldn't work correctly when the file path was changed for an existing rule.\n \n## Known issues\n- This version requires at least Windows 10.0.19042. If you are running a prior version of Windows, please delay upgrading. This will be fixed in the next release.\n- Some Zero Trust customers with Chromium browsers with certain browser management profiles may experience issues completing initial device registration. This will be fixed in the next release.\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"0a3a5df12239db19f47a8dd36aa22a0970c858a74864645e26b0cf92e3204f54"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2,
+	"version": "20201005.8",
+	"short_version": "1.2.1387",
+	"size": 18176715,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "ee8f3e554263421cf8f242e3ad3d160a",
+	"fingerprint": "adec3ecf268400cf5db7367b8ab65128",
+	"uploaded_at": "2020-10-05T11:12:54.139Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/dea0aafa-c613-470d-a3c5-5994ec10b0ad/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=Eyj88u2OfpmRJeMuEJB6MtUF1tqHlbHnCXADBEf9LPQ%3D&se=2023-06-12T17%3A48%3A24Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/dea0aafa-c613-470d-a3c5-5994ec10b0ad/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=Eyj88u2OfpmRJeMuEJB6MtUF1tqHlbHnCXADBEf9LPQ%3D&se=2023-06-12T17%3A48%3A24Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "Latest beta release for macOS with more fixes and improvements. Please make sure to file feedback on any issues you find.\n\n**Notable improvements in this release:**\n\n- Update app icon to Cloudflare logo\n- Rename pkg so macOS Installer will correctly show files being installed\n- Network will correctly revert to previously saved settings when you disable WARP",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 19,
+	"version": "1.3.184.0",
+	"short_version": "",
+	"size": 80990208,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "bc593f41d6a595c669d33dcd431b9c92",
+	"fingerprint": "cb1d2036773ec11ac362cfa8981d310c",
+	"uploaded_at": "2021-03-03T23:25:31.540Z",
+	"download_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/99ed913b-0c62-4cc8-9112-9d7f127ef933/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=PYon95DNStpvE9IbRsxiQ8xWz6K7qbi3s9YpjqXrGV0%3D&se=2023-06-12T17%3A48%3A36Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/99ed913b-0c62-4cc8-9112-9d7f127ef933/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=PYon95DNStpvE9IbRsxiQ8xWz6K7qbi3s9YpjqXrGV0%3D&se=2023-06-12T17%3A48%3A36Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "**Notable updates**\r\n- Fixed DNS issue when Teams Gateway is in use side-by-side with another VPN\r\n- Support for split tunnel and local domain fallback in Cloudflare for Teams\r\n- Improved connection retry logic when coming out of sleep\r\n- Fixed an issue with mdm configs not being applied correctly\r\n- Fixed crashes when in 1.1.1.1 only mode\r\n- Added new onboarding mdm flag to suppress UI during initial client startup when joining a Teams organization\r\n- Fixed UI issues when in a Teams DoH only mode deployment\r\n- Now install Edge Chromium WebView2 runtime for use during Cloudflare for Teams enrollment\r\n\r\n**Known issues**\r\n\r\n- You are unable to subscribe to WARP+ via the Desktop apps. You must subscribe first on your mobile device and then copy/paste your license key into the Accounts page on desktop\r\n- To opt-out of the beta please uninstall via the instructions here: https://developers.cloudflare.com/warp-client/warp-for-everyone/setting-up/windows#how-to-remove-application and install from from the link here: https://developers.cloudflare.com/warp-client/warp-for-everyone/setting-up/requirements#windows\r\n\r\nFor a complete list of known issues please visit https://developers.cloudflare.com/warpclient/known-issues-and-faq",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"4d9271c57a20dc39e3b4a677c8582fc02b1d87d94fcc343761213ea2349e4ae2"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 1936,
+	"version": "2022.5.324.1",
+	"short_version": "",
+	"size": 91086848,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "bbda8fb4b41981f800ba19ef72fdaf82",
+	"fingerprint": "fc8f537aec61be6619e8f6be2bccf287",
+	"uploaded_at": "2022-06-14T00:13:33.701Z",
+	"download_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/d12440f6-5887-4362-b199-be5410645c23/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Jr0ZXBsn0vQsVa7lq4%2Br6Hyqq9YKqqPH8ZNYwyQjPSQ%3D&se=2023-06-12T07%3A50%3A17Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/d12440f6-5887-4362-b199-be5410645c23/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=Jr0ZXBsn0vQsVa7lq4%2Br6Hyqq9YKqqPH8ZNYwyQjPSQ%3D&se=2023-06-12T07%3A50%3A17Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release is a hotfix for 2022.5.226.0.\n## Notable updates\n \n- Fixed false positives when attempting to detect a captive portal\n- Fixed issue where OS version would not be updated in dash after OS update\n- Fixed issue when DNS would not resolve for fallback domains on certain machines\n- Fixed installation failure when a newer version of WebView2 exists\n\n## Known issues\n- This version requires at least Windows 10.0.19042. If you are running a prior version of Windows, please delay upgrading. \n- On an unexpected power loss, the wrong DNS servers maybe set on the machine on subsequent boots. Causing DNS resolution to fail.\n\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"30b00bd972506151e6c07702d5a31b94d7595cdf0372374536322d7c2228c339"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

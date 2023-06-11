@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 1767,
+	"version": "20220524.31",
+	"short_version": "2022.5.201.1",
+	"size": 46880045,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "d6c891d61064af35b177c9bdb546c8f3",
+	"fingerprint": "bf06e90c269c63ddc6d4968cc5d3bff1",
+	"uploaded_at": "2022-05-24T18:39:27.396Z",
+	"download_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/bb40b6ec-fd19-4ea3-ae95-d8f87807682f/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=2YxAvHrMwHSyJuaCxazxNkXnHTThXnJRZXsJZP65lbY%3D&se=2023-06-12T17%3A48%3A27Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib2ede6f06e.azureedge.net/bb40b6ec-fd19-4ea3-ae95-d8f87807682f/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=2YxAvHrMwHSyJuaCxazxNkXnHTThXnJRZXsJZP65lbY%3D&se=2023-06-12T17%3A48%3A27Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains bug fixes from the previous beta release\n \n## Notable updates\n \n- Fixed issue with warp-cli where  enable/disable with wifi was allowed in Zero Trust mode\n \n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

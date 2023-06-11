@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 1527,
+	"version": "20220209.24",
+	"short_version": "2022.2.25.1",
+	"size": 42947573,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "a9011688fcf2b5a686c28c30c791caf0",
+	"fingerprint": "09e6de89d34a1817f0d5f295c914f0bd",
+	"uploaded_at": "2022-02-09T20:48:03.564Z",
+	"download_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/35de76d1-b2cf-4d18-9375-004a6277ebed/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=PZ%2BTXl6PD6C0Jn69HZWcletzx3qkOeVKD%2FsDxQETIJc%3D&se=2023-06-12T17%3A48%3A28Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib4ede6f06e.azureedge.net/35de76d1-b2cf-4d18-9375-004a6277ebed/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=PZ%2BTXl6PD6C0Jn69HZWcletzx3qkOeVKD%2FsDxQETIJc%3D&se=2023-06-12T17%3A48%3A28Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains new features and improvements from the last beta release. In particular this build now supports the ability to configure settings via the Dashboard and not just with a .plist. Note that settings in your .plist always overrule what comes from the dashboard.\n\n## Notable updates\n- The \"enabled\" .plist property has now been completely deprecated and is no longer read. Please see https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/parameters#switch_locked for the mechanism announced in April 2021\n- Now that settings exist in the Zero Trust Dashboard the Client UI should behave the same regardless of if you manually joined to a Team or if you were forced to by local .plist policy\n- Updated Teams logo in app to Zero Trust\n- Fixed issue where the WARP Client might not get updated settings when it initial starts\n- Fixed issue where the Last Seen value was not updated properly in the Zero Trust Dashboard while in Gateway with DoH mode\n- Fixed issue where device name was not updated in the Zero trust Dashboard if the computer name changed after initial registration\n- Fixed issue where you could not log out a team after clicking \"Reset Encryption Keys\"\n- Fixed various issues with split tunnel support in consumer mode\n- Fixed issue where \"warp-cli settings\" showed connection time in settings instead of minutes\n\n\n## Known issues\nNo known issues",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 1902,
+	"version": "2022.5.200.1",
+	"short_version": "",
+	"size": 91090944,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "a78af265ced0c935f522c4e5b4b0bf88",
+	"fingerprint": "99dc9e0f7e077829b706c83402666843",
+	"uploaded_at": "2022-05-24T18:31:28.344Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/42856d63-e14b-42a0-a37c-b233661d331b/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=uRT2vwJvaitsheFAPS86iQ7swdA5N9XZUUUifksYn08%3D&se=2023-06-12T17%3A12%3A42Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/42856d63-e14b-42a0-a37c-b233661d331b/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=uRT2vwJvaitsheFAPS86iQ7swdA5N9XZUUUifksYn08%3D&se=2023-06-12T17%3A12%3A42Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains bug fixes from the previous beta release\n \n## Notable updates\n \n- Fixed issue with warp-cli where enable/disable with wifi was allowed in Zero Trust mode\n- Fixed issue where we would not properly re-enforce the DNS server values we set (127.0.2.2, 127.0.2.3, fd01:db8:1111::2, and fd01:db8:1111::3)\n- Fixed issue where we don't always properly restore the users original DNS server values\n- Fixed issue where we don't properly restore DNS servers values on device shutdown\n- Fixed issue where connection was toggled off after upgrade\n- Fixed issue where we get multiple desktop notifications after wake from sleep\n\n## Known issues\n- This version requires at least Windows 10.0.19042. If you are running a prior version of Windows, please delay upgrading.\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"fa7e62c2970bdcf9820e1810f27cd4f90d90f1ebb9e998b97ccced317f521f8d"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

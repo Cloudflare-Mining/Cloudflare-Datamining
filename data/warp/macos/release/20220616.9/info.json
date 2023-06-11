@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/872a6364-775b-41c7-a47b-aa04e01f2e5f?st=2023-06-06T14%3A28%3A15Z&se=2023-06-20T15%3A28%3A15Z&sp=r&sv=2018-03-28&sr=b&sig=XH51WLTt7OhHpB4OOhjEmFcW8kan0j7vDrvqRc5kEPE%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 39,
+	"version": "20220616.9",
+	"short_version": "2022.5.342.0",
+	"size": 46913974,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "09ce323414462d839f47d39d1405c575",
+	"fingerprint": "55c00bfb605fc3f7bf4db904b269ca17",
+	"uploaded_at": "2022-06-16T22:27:30.715Z",
+	"download_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/224a3fae-7f1d-4bda-bf59-233c53a46ee7/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=8KYFSysw2V%2FWOmE8nAujoGiIpYt2QUG5Aw5Iq4VNbw8%3D&se=2023-06-12T17%3A48%3A19Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib3ede6f06e.azureedge.net/224a3fae-7f1d-4bda-bf59-233c53a46ee7/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=8KYFSysw2V%2FWOmE8nAujoGiIpYt2QUG5Aw5Iq4VNbw8%3D&se=2023-06-12T17%3A48%3A19Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release is a hotfix for 2022.5.310.0.\n## Notable updates\n \n- Fixed a crash from reading /etc/resolv.conf while it was being updated\n- Removed large memory leak causing ~1GB/day memory growth\n- Bug fixes and connection stability improvement\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

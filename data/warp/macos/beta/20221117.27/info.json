@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/0e33d9ad-f2bd-4842-b088-7ee53aa4ec99?st=2023-05-31T04%3A51%3A27Z&se=2023-06-14T05%3A51%3A27Z&sp=r&sv=2018-03-28&sr=b&sig=ksYR5zVWCaG8chMAPJ8ik%2Fv7Gc5fxZxHordAWSYgOfc%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2221,
+	"version": "20221117.27",
+	"short_version": "2022.10.112.1",
+	"size": 52159065,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "2351b78d1846211ef1bbc013803b1b54",
+	"fingerprint": "5a84ad5614ba9dce9621cba27b54ea5b",
+	"uploaded_at": "2022-11-17T06:28:17.592Z",
+	"download_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/2970c021-bd51-408a-80f3-1b8620d41a44/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=DIH6R1%2F8G4Q4YKVxDhYymOYUyxdX65KTVMy8iAkQ%2BEk%3D&se=2023-06-12T17%3A48%3A26Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib5ede6f06e.azureedge.net/2970c021-bd51-408a-80f3-1b8620d41a44/Cloudflare_WARP.zip?sv=2019-02-02&sr=c&sig=DIH6R1%2F8G4Q4YKVxDhYymOYUyxdX65KTVMy8iAkQ%2BEk%3D&se=2023-06-12T17%3A48%3A26Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release is a mirror of GA release 2022.10.107.0\n \n## Notable updates\n- Fixed issue where GUI may still think user is registered after \"warp-cli delete\" is run\n- Decreased warp-diag zip file sizes by 60-80%\n \n \n## Known issues\n- If you are having issues with upgrading to new beta, please uninstall current app, install the GA version from https://1.1.1.1/ and participate in beta program from Preferences->Advanced.\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

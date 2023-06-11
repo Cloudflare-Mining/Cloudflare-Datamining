@@ -1,0 +1,45 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/7edd5fcc-1458-4c87-afd3-16b2cbfd3184?st=2023-06-01T20%3A27%3A21Z&se=2023-06-15T21%3A27%3A21Z&sp=r&sv=2018-03-28&sr=b&sig=N1sSns5fKc6tmxs5HmwsRjS8G%2F3MytU5Vp588OEw170%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 43,
+	"version": "2022.7.174.0",
+	"short_version": "",
+	"size": 88604672,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "e86be4c8b4bba72d4fa8f9d67aa50747",
+	"fingerprint": "56a5753456c7920ef0c41a28bc41a6f0",
+	"uploaded_at": "2022-07-14T18:48:26.264Z",
+	"download_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/25ef0af3-0392-4e37-a9bb-da370f098b72/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=fb%2B7bF6zWWyUsKMlqbPfLsm4Y%2BE%2FqAWmH7%2Fc%2FhKdvkc%3D&se=2023-06-12T17%3A48%3A34Z&sp=r",
+	"install_url": "https://appcenter-filemanagement-distrib1ede6f06e.azureedge.net/25ef0af3-0392-4e37-a9bb-da370f098b72/Cloudflare_WARP_Release-x64.msi?sv=2019-02-02&sr=c&sig=fb%2B7bF6zWWyUsKMlqbPfLsm4Y%2BE%2FqAWmH7%2Fc%2FhKdvkc%3D&se=2023-06-12T17%3A48%3A34Z&sp=r",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains a security fix for IPv6 users introduced in a prior release, major bug fixes and a significant change to the Zero Trust authentication flow.\n\n**NOTE** This release contains a bug that impacts Zero Trust users who deploy with .msi command line parameters that will break clean installs. For clean installs please move forward to 2022.7.421\n \n## Notable updates\n \n- Added C:\\ProgramData\\Cloudflare\\cfwarp_daemon_dns.txt log file when DNS logging is enabled\n- Added `do not fragment` bit to WARP tunnel traffic\n- Added ability for posture rules that support file paths to use environment variables as part of the path\n- Modified Zero Trust authentication flow to no longer rely on WebView2 embedded experience and use default browser instead\n- Modified output of `warp-cli account` and `warp-cli settings` to make parsing information easier\n- Modified client UI during re-authentication flow to always appear as the top most window so it is less likely users will miss it\n- Fixed major issue introduced with 2022.5.341 where IPv6 traffic was no longer consistently routed through the tunnel\n- Fixed issue where warp-svc.exe may not start due to missing VCRUNTIME140.dll on some systems\n- Fixed issue that could result in broken DNS for users running WiFi until an admin manually reset DNS back to default\n- Fixed issue where the UI could appear stretched when using an external monitor\n- Fixed issue where warp-cli could be used determine a valid admin override code\n- Fixed issue where warp-cli could be used to enable/disable on wifi networks when in Zero Trust mode\n- Fixed issue where the UI could get a barrage of notifications when coming out of modern standby\n- Fixed issue where you would receive a notification immediately after install that your internet was no longer private\n- Fixed issue with domain based split tunnels when a wildcard is used. Anything after the `*` was included in the wildcard search so `*.example.com` would include  `badexample.com`\n- Fixed issue where client was sending improper ICMP responses when MTU needed to change\n- Fixed UI issue when going between light/dark modes\n- Fixed issue where logs could grow too large\n \n## Known issues\n- This version requires at least Windows 10.0.19042. If you are running a prior version of Windows, please delay upgrading.\n- Zero Trust users who perform a clean install of the client utilizing msi parameters will result in the GUI being in a broken state and not asking for authentication. This is fixed in 2022.7.421\n\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\n \nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"559d263fde08a132f409d54aff65b3f719ce8283e9eb5bebaf9d1c7775369574"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}
