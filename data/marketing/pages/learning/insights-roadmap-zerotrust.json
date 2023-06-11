@@ -369,7 +369,7 @@
 						"disableEnterpriseEmailNotification": null,
 						"enableRingout": null
 					},
-					"timeDelay": 30000,
+					"timeDelay": 1500,
 					"ctaButton": null
 				},
 				"template": null,
@@ -1807,7 +1807,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "As an added layer of security, internal/private DNS can be leveraged using a Zero Trust Network Access solution.",
+													"value": "As an added layer of security, internal/private DNS can be leveraged using a ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/access-management/what-is-ztna/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Zero Trust Network Access solution",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
 													"marks": [],
 													"content": null
 												}
