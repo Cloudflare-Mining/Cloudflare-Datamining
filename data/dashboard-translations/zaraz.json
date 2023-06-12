@@ -336,6 +336,8 @@
 	"zaraz.consent.customCSS.explain": "The styles will be appended to the modal so you can make it look in line with your brand",
 	"zaraz.consent.customModalIntro": "Consent modal text",
 	"zaraz.consent.customModalIntro.explain": "The HTML code you put in here will be injected at the top of the consent modal. You can use this field to inform the user about your legal identity and link to your Privacy Policy, for example.",
+	"zaraz.consent.defaultLanguage": "Default language",
+	"zaraz.consent.defaultLanguage.explain": "This language is going to be used for the consent modal if the user's prefered language is not present in provided translations",
 	"zaraz.overview.variables.title": "Variables",
 	"zaraz.overview.variables.subtitle": "Variables are reusable blocks you can use when configuring your tools and triggers.",
 	"zaraz.actions.add_new_variable": "Create variable",
@@ -436,5 +438,11 @@
 	"zaraz.settings.reset.button": "Reset",
 	"zaraz.settings.import.modal.description": "Importing a new Zaraz configuration would replace your current one. All your current triggers, tools, variables and settings will be removed and the new configuration will be used instead.",
 	"zaraz.settings.reset.modal.description": "Resetting your Zaraz configuration would erase all of your Zaraz configuration, including your triggers, tools, variables and settings. Zaraz will not work on your website until you reconfigure it.",
-	"zaraz.settings.reset.modal.test": "To confirm, please enter your zone name (%{zone}) and press confirm if you are sure."
+	"zaraz.settings.reset.modal.test": "To confirm, please enter your zone name (%{zone}) and press confirm if you are sure.",
+	"zaraz.consent.translations.validation.missing-translations": "Please enter at least one valid translation",
+	"zaraz.consent.translations.pick-language-placeholder": "Pick language",
+	"zaraz.consent.translations.make-default-translation-placeholder": "Make the %{lang} translation the default one",
+	"zaraz.consent.translations.add-language": "Add language...",
+	"zaraz.consent.translations.default-language-suffix": "Default",
+	"zaraz.consent.translations.delete-a-language": "Remove"
 }
