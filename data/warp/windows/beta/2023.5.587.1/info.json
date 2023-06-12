@@ -1,0 +1,43 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"app_icon_url": "https://coreservicesstorgeprod.blob.core.windows.net/app-avatar-container/ccc0b4bf-bc67-4fb7-bf82-f9f6d26e0cee?st=2023-06-06T14%3A27%3A30Z&se=2023-06-20T15%3A27%3A30Z&sp=r&sv=2018-03-28&sr=b&sig=%2BG7OS8MOLvwAablLoU8M6cHp6v8IwjA%2Ft8jPkefz4fU%3D",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2846,
+	"version": "2023.5.587.1",
+	"short_version": "",
+	"size": 110772224,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "bf94f7b3011e38c7f859202023474842",
+	"fingerprint": "28e192b139706fa508582671c0c2ed91",
+	"uploaded_at": "2023-06-12T16:07:05.431Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains bug fixes and support for a new operating mode called \"Secure Web Gateway without DNS Filtering\". This new mode disabled all DNS functionality of the client while still retaining things such as the WARP Tunnel, DEX and posture support.\r\n \r\n## Notable updates\r\n- Add support for \"SWG without DNS Filtering\" mode. All DNS functionality from the WARP client is disabled.\r\n- Improve performance of domain-based split tunneling when the IP was already split tunneled (seen frequently with Zoom domains and IPs being used)\r\n- Fixed localization issues in en-MX UI that caused longer strings to get clipped\r\n- Fixed issue with certain tools like nslookup that was introduced in previous beta where DNS could appear broken\r\n- Fixed issue where WARP Client wasn't properly detecting if IPv6 was disabled via `HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters`\r\n- Fixed issue where onboarding=false mdm flag did not work if that GUI app started before the service\r\n \r\n \r\n \r\n## Known issues\r\n- If certain deployment parameters (e.g. auth id, secret, etc.) are removed from the MDM file, the GUI will display a registration error. To remediate this, the user will be prompted to login to the Zero Trust organization again.\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"1ab98a9dd96648036c27322d49be35b9f96f2ab3911f579e639cb29089c35a5e"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
