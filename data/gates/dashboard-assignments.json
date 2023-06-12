@@ -88,15 +88,24 @@
 	"domain-connect-sig-and-key-fix": {
 		"false": 100
 	},
+	"dx-discover-page": {
+		"baseline": 89,
+		"experiment-personalised": 6,
+		"experiment-baseline": 5
+	},
 	"dx-persistence-worker": {
 		"true": 100
 	},
-	"dx-product-discovery-page": {
-		"experiment": 50,
-		"baseline": 50
-	},
 	"dx-sign-up-workers-onboarding-path-test-1": {
 		"experiment": 100
+	},
+	"dx-signup-redesign": {
+		"baseline": 95,
+		"content-panel": 5
+	},
+	"dx-welcome-page": {
+		"false": 95,
+		"true": 5
 	},
 	"enable-d1-region-hints-experimental-backend": {
 		"true": 100
@@ -212,10 +221,6 @@
 	},
 	"show-executive-summary": {
 		"true": 100
-	},
-	"signup-form-background-illustration": {
-		"illustration": 50,
-		"baseline": 50
 	},
 	"signup-hide-marketing": {
 		"hide-marketing-content": 100
