@@ -51,7 +51,15 @@
 				"contentfulId": "2rFsqrsfx3dbpiu6dQPw1P",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "41CcjiHJRbncyBCsh8o66i",
+					"text": "Join Cloudflare at AWS re:Inforce 2023. Booth #147",
+					"learnMoreText": null,
+					"learnMoreUrl": "/",
+					"backgroundColor": null,
+					"hideCloseButton": null
+				},
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -5014,7 +5022,7 @@
 				"ru-RU",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"baseURL": "https://www.cloudflare.com",
 			"staticStrings": {
 				"MB": "MB",
