@@ -98,6 +98,8 @@ import Search from './Search';
 import Shield from './Shield';
 import Spectrum from './Spectrum';
 import Speech from './Speech';
+import StarOutline from './StarOutline';
+import Star from './Star';
 import Stream from './Stream';
 import Subtract from './Subtract';
 import TailWorker from './TailWorker';
@@ -229,6 +231,8 @@ export default {
   shield: Shield,
   spectrum: Spectrum,
   speech: Speech,
+  'star-outline': StarOutline,
+  star: Star,
   stream: Stream,
   subtract: Subtract,
   'tail-worker': TailWorker,

@@ -100,6 +100,8 @@ declare const _default: {
     shield: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     spectrum: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     speech: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'star-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    star: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     stream: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     subtract: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'tail-worker': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

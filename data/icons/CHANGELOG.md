@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.5.1
+
+### Patch Changes
+
+- d7f07b4764: Add start & star-outline icons
+
 ## 11.5.0
 
 ### Minor Changes
