@@ -361,14 +361,14 @@
 						"togglesTo": null
 					},
 					{
-						"contentfulId": "21wTipyQ7xMjZ3BgWOfKD1",
-						"backgroundColor": "white",
+						"contentfulId": "13FyYIvWnfTpS4b19uHXlA",
+						"backgroundColor": "light-blue",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"copy": null,
-						"title": "Resources",
+						"copy": "Cloudflare is uniquely architected to deliver integrated network and security services across each of our %{DataCenterCount}+ locations worldwide, eliminating the need for enterprises to run traffic through a centralized data center or manage multiple point solutions in the cloud.",
+						"title": "How Cloudflare delivers SASE",
 						"subtitle": null,
-						"bladeStyle": "Info Blocks",
+						"bladeStyle": null,
 						"bladeBorder": "none",
 						"sectionPadding": null,
 						"carouselSlidesToShow": null,
@@ -377,16 +377,37 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6vhje4wMo1DVnY9daBJoVC",
-								"title": "Succeeding with SASE - Whitepaper",
+								"contentfulId": "19KTpXAnBGP2ypTUswaQma",
+								"title": "Cloudflare Access",
 								"titleSize": null,
-								"description": "Download this white paper to learn what Secure Access Service Edge (SASE) is, how it secures your network, and how Cloudflare delivers SASE with Cloudflare One.",
-								"learnMoreUrl": "https://www.cloudflare.com/static/52527ba193cc7ab0da6c23075d093ab3/Cloudflare_One_SASE_Whitepaper.pdf",
-								"learnMoreText": "Download Whitepaper",
+								"description": "Our Zero Trust access solution enables enterprises to securely access internal applications and data by verifying requests and enforcing policies at our network edge, no matter where users are located in the world.",
+								"learnMoreUrl": "https://www.cloudflare.com/teams-access/",
+								"learnMoreText": "Learn More",
 								"displayBorder": null,
 								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sgC6rxP7ycgFgeiv77RSX/2175da51f43509f0b0989cfe963f0f39/icon-access-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "87f9101d-857c-5202-9a77-f2f35ff7e4a9",
+									"altText": "Cloudflare access blue",
+									"title": "Cloudflare access blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1409,
+										"height": 192,
+										"width": 192,
+										"filename": "cloudflare-access-blue.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/cloudflare-access-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -394,16 +415,37 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7t8BSSjMn3vKV45790Vyw",
-								"title": "Analyst report: Availability and buying options in the emerging SASE market",
+								"contentfulId": "5SnHDYXel1moN3pYnpqWCi",
+								"title": "Cloudflare Gateway",
 								"titleSize": null,
-								"description": "This in-depth research report from Enterprise Management Associates (EMA) reviews packaging, pricing, and security capabilities of nine SASE vendors, including Cloudflare. ",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/ema-sase-report/",
-								"learnMoreText": "Get the report",
+								"description": "Our web filtering and network security service protects users and corporate data by inspecting user traffic, filtering and blocking malicious content, identifying compromised devices, and using browser isolation technology to prevent malicious code from executing on user devices.",
+								"learnMoreUrl": "https://www.cloudflare.com/teams-gateway/",
+								"learnMoreText": "Learn More",
 								"displayBorder": null,
 								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/75kNP6x2YTaXG4nZJU5dSx/8e58dd59a0fd112a44c701d6b9b042e3/icon-browser-integrity-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "128fa0bd-6d49-5037-8a08-fa22ab772b83",
+									"altText": "Cloudflare gateway blue",
+									"title": "Cloudflare gateway blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 487,
+										"height": 192,
+										"width": 192,
+										"filename": "cloudflare-gateway-blue.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/cloudflare-gateway-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -411,16 +453,41 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4QtSjM7KQKYtWTHgMMbIK6",
-								"title": "6 Considerations for Your SASE Setup",
+								"contentfulId": "3eWEwfXwGnggdfgBq2Dugn",
+								"title": "Magic WAN",
 								"titleSize": null,
-								"description": "Secure Access Service Edge (SASE) adoption may seem intimidating, but it doesn't have to be. Read this infographic to learn 6 initial steps you can take.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3r83tZ0bN0EpIVyDIcJPjI/14c9777a2b570b8b8989d348b8e0a9a1/BDES-1389_SASE-Infographic__1_.pdf",
-								"learnMoreText": "View Infographic",
+								"description": "Magic WAN replaces legacy WAN architectures with Cloudflare's network, providing global connectivity, cloud-based security, performance, and control through one simple user interface.",
+								"learnMoreUrl": "https://www.cloudflare.com/magic-wan/",
+								"learnMoreText": "Learn More",
 								"displayBorder": null,
 								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cIJsutxRjqGiQZXydns4z/01044fa82742815100e1ecf93b11edd0/icon-security-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "6a3960ee-a810-5100-a55a-ffcb4d676e43",
+									"altText": "network virtual backbone",
+									"title": "network virtual backbone",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/CkLyY6q1HXN55s43SIWIo/ceecb0811091d5dd70d5f72dcd29ee11/network-virtual-backbone.svg"
+										}
+									},
+									"brandfolderAsset": {
+										"size": 4038,
+										"height": 3264,
+										"width": 3252,
+										"filename": "network-virtual-backbone.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/network-virtual-backbone.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,

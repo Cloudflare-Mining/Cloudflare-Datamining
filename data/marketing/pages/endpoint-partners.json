@@ -810,20 +810,7 @@
 													"name": "Getting Started",
 													"description": null,
 													"mainLink": null,
-													"navigationLinks": [
-														{
-															"contentTypeId": "elementNavLink",
-															"contentfulId": "7dyyhm3ZJu05EeDdbj3QuV",
-															"locale": "en-US",
-															"title": "New to Cloudflare? Start here",
-															"description": null,
-															"url": "https://developers.cloudflare.com/learning-paths/get-started/",
-															"badges": null,
-															"specialLinkType": null,
-															"openInNewWindow": false,
-															"isExternalUrl": true
-														}
-													],
+													"navigationLinks": [],
 													"navIcon": null,
 													"showIconOnly": false,
 													"hideOnChinaSite": false,
@@ -1121,18 +1108,6 @@
 													"description": null,
 													"mainLink": null,
 													"navigationLinks": [
-														{
-															"contentTypeId": "elementNavLink",
-															"contentfulId": "1Ju3iOzFafhq3TaFne7Dhh",
-															"locale": "en-US",
-															"title": "Analytics",
-															"description": null,
-															"url": "https://developers.cloudflare.com/analytics/",
-															"badges": null,
-															"specialLinkType": null,
-															"openInNewWindow": true,
-															"isExternalUrl": null
-														},
 														{
 															"contentTypeId": "elementNavLink",
 															"contentfulId": "2iC4qY12CEQF2X1TibYxug",
@@ -2767,6 +2742,82 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3QXZfMhTFdfph78jhSiTeP",
+								"title": "Global reach",
+								"titleSize": null,
+								"description": "Bring enforcement decisions within %{OperationMilliseconds} ms of 95% of the world's Internet connected population.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5H4T6ndYBoJmUEN0AsA1CI/98fc06d928bb2986b683e94c63a603f6/icon-global-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
+									"altText": "Internet globe blue",
+									"title": "Internet globe blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2017,
+										"height": 192,
+										"width": 192,
+										"filename": "internet-globe-blue.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/internet-globe-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7HkpOHohnYRnMYTj6iqT6v",
+								"title": "Easy setup",
+								"titleSize": null,
+								"description": "Add device posture signals into Cloudflare Zero Trust policies with just a few clicks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ymGzpUdibg8BUc9tbqzBz/c20f4391d97db438b9c5db85f2fabc5e/icon-easy-on-and-off-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
+									"altText": "Ease of use blue",
+									"title": "Ease of use blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1444,
+										"height": 192,
+										"width": 192,
+										"filename": "ease-of-use-blue.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/ease-of-use-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "7Cfamvwf17APnoVEHpY7WN",
