@@ -1,0 +1,1373 @@
+{
+	"GET /user/invites": {
+		"description": "Lists all invitations associated with my user.",
+		"operationId": "user'-s-invites-list-invitations",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"expires_on": {
+																		"description": "When the invite is no longer active.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "Invite identifier tag.",
+																		"example": "4f5f0c14a2a41d5063dd301b2f829f04",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"invited_by": {
+																		"description": "The email address of the user who created the invite.",
+																		"example": "user@example.com",
+																		"maxLength": 90,
+																		"type": "string"
+																	},
+																	"invited_member_email": {
+																		"description": "Email address of the user to add to the organization.",
+																		"example": "user@example.com",
+																		"maxLength": 90,
+																		"type": "string"
+																	},
+																	"invited_member_id": {
+																		"description": "ID of the user to add to the organization.",
+																		"example": "5a7805061c76ada191ed06f989cc3dac",
+																		"maxLength": 32,
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"invited_on": {
+																		"description": "When the invite was sent.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"organization_id": {
+																		"description": "ID of the organization the user will be added to.",
+																		"example": "5a7805061c76ada191ed06f989cc3dac",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"organization_name": {
+																		"description": "Organization name.",
+																		"example": "Cloudflare, Inc.",
+																		"maxLength": 100,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"roles": {
+																		"description": "Roles to be assigned to this user.",
+																		"items": {
+																			"properties": {
+																				"description": {
+																					"description": "Description of role's permissions.",
+																					"example": "Administrative access to the entire Organization",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"id": {
+																					"description": "Role identifier tag.",
+																					"example": "3536bcfad5faccb999b47003c79917fb",
+																					"maxLength": 32,
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"name": {
+																					"description": "Role Name.",
+																					"example": "Organization Admin",
+																					"maxLength": 120,
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"permissions": {
+																					"description": "Access permissions for this User.",
+																					"items": {
+																						"example": "#zones:read",
+																						"maxLength": 160,
+																						"type": "string"
+																					},
+																					"readOnly": true,
+																					"type": "array"
+																				}
+																			},
+																			"required": [
+																				"id",
+																				"name",
+																				"description",
+																				"permissions"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"invited_member_id",
+																	"organization_id"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"status": {
+																		"description": "Current status of the invitation.",
+																		"enum": [
+																			"pending",
+																			"accepted",
+																			"rejected",
+																			"expired"
+																		],
+																		"example": "accepted"
+																	}
+																}
+															}
+														]
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Invitations response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"allOf": [
+															{
+																"allOf": [
+																	{
+																		"properties": {
+																			"expires_on": {
+																				"description": "When the invite is no longer active.",
+																				"example": "2014-01-01T05:20:00Z",
+																				"format": "date-time",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"id": {
+																				"description": "Invite identifier tag.",
+																				"example": "4f5f0c14a2a41d5063dd301b2f829f04",
+																				"maxLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"invited_by": {
+																				"description": "The email address of the user who created the invite.",
+																				"example": "user@example.com",
+																				"maxLength": 90,
+																				"type": "string"
+																			},
+																			"invited_member_email": {
+																				"description": "Email address of the user to add to the organization.",
+																				"example": "user@example.com",
+																				"maxLength": 90,
+																				"type": "string"
+																			},
+																			"invited_member_id": {
+																				"description": "ID of the user to add to the organization.",
+																				"example": "5a7805061c76ada191ed06f989cc3dac",
+																				"maxLength": 32,
+																				"nullable": true,
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"invited_on": {
+																				"description": "When the invite was sent.",
+																				"example": "2014-01-01T05:20:00Z",
+																				"format": "date-time",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"organization_id": {
+																				"description": "ID of the organization the user will be added to.",
+																				"example": "5a7805061c76ada191ed06f989cc3dac",
+																				"maxLength": 32,
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"organization_name": {
+																				"description": "Organization name.",
+																				"example": "Cloudflare, Inc.",
+																				"maxLength": 100,
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"roles": {
+																				"description": "Roles to be assigned to this user.",
+																				"items": {
+																					"properties": {
+																						"description": {
+																							"description": "Description of role's permissions.",
+																							"example": "Administrative access to the entire Organization",
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"id": {
+																							"description": "Role identifier tag.",
+																							"example": "3536bcfad5faccb999b47003c79917fb",
+																							"maxLength": 32,
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"name": {
+																							"description": "Role Name.",
+																							"example": "Organization Admin",
+																							"maxLength": 120,
+																							"readOnly": true,
+																							"type": "string"
+																						},
+																						"permissions": {
+																							"description": "Access permissions for this User.",
+																							"items": {
+																								"example": "#zones:read",
+																								"maxLength": 160,
+																								"type": "string"
+																							},
+																							"readOnly": true,
+																							"type": "array"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"name",
+																						"description",
+																						"permissions"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"invited_member_id",
+																			"organization_id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"status": {
+																				"description": "Current status of the invitation.",
+																				"enum": [
+																					"pending",
+																					"accepted",
+																					"rejected",
+																					"expired"
+																				],
+																				"example": "accepted"
+																			}
+																		}
+																	}
+																]
+															}
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Invitations response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Invitations",
+		"tags": [
+			"User's Invites"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /user/invites/{identifier}": {
+		"description": "Gets the details of an invitation.",
+		"operationId": "user'-s-invites-invitation-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Invite identifier tag.",
+					"example": "4f5f0c14a2a41d5063dd301b2f829f04",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Invitation Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Invitation Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Invitation Details",
+		"tags": [
+			"User's Invites"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /user/invites/{identifier}": {
+		"description": "Responds to an invitation.",
+		"operationId": "user'-s-invites-respond-to-invitation",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "Invite identifier tag.",
+					"example": "4f5f0c14a2a41d5063dd301b2f829f04",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"status": {
+								"description": "Status of your response to the invitation (rejected or accepted).",
+								"enum": [
+									"accepted",
+									"rejected"
+								],
+								"example": "accepted"
+							}
+						},
+						"required": [
+							"status"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Respond to Invitation response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Respond to Invitation response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Respond to Invitation",
+		"tags": [
+			"User's Invites"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

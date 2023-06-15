@@ -1,0 +1,1439 @@
+{
+	"GET /zones/{zone_identifier}/firewall/waf/packages/{package_identifier}/groups": {
+		"description": "Fetches the WAF rule groups in a WAF package.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"operationId": "waf-rule-groups-list-waf-rule-groups",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "package_identifier",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a WAF package.",
+					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "mode",
+				"schema": {
+					"default": "on",
+					"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+					"enum": [
+						"on",
+						"off"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "The page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 50,
+					"description": "The number of rule groups per page.",
+					"maximum": 100,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"description": "The field used to sort returned rule groups.",
+					"enum": [
+						"mode",
+						"rules_count"
+					],
+					"example": "mode"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"description": "The direction used to sort returned rule groups.",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"example": "desc"
+				}
+			},
+			{
+				"in": "query",
+				"name": "match",
+				"schema": {
+					"default": "all",
+					"description": "When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
+					"enum": [
+						"any",
+						"all"
+					]
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "The name of the rule group.",
+					"example": "Project Honey Pot",
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "rules_count",
+				"schema": {
+					"default": 0,
+					"description": "The number of rules in the current rule group.",
+					"example": 10,
+					"readOnly": true,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"description": {
+																"description": "An informative summary of what the rule group does.",
+																"example": "Group designed to protect against IP addresses that are a threat and typically used to launch DDoS attacks",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"id": {
+																"description": "The unique identifier of the rule group.",
+																"example": "de677e5818985db1285d0e80225f06e5",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"modified_rules_count": {
+																"default": 0,
+																"description": "The number of rules within the group that have been modified from their default configuration.",
+																"example": 2,
+																"readOnly": true,
+																"type": "number"
+															},
+															"name": {
+																"description": "The name of the rule group.",
+																"example": "Project Honey Pot",
+																"readOnly": true,
+																"type": "string"
+															},
+															"package_id": {
+																"description": "The unique identifier of a WAF package.",
+																"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"rules_count": {
+																"default": 0,
+																"description": "The number of rules in the current rule group.",
+																"example": 10,
+																"readOnly": true,
+																"type": "number"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"allowed_modes": {
+																"description": "The available states for the rule group.",
+																"example": [
+																	"on",
+																	"off"
+																],
+																"items": {
+																	"default": "on",
+																	"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+																	"enum": [
+																		"on",
+																		"off"
+																	],
+																	"type": "string"
+																},
+																"readOnly": true,
+																"type": "array"
+															},
+															"mode": {
+																"default": "on",
+																"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+																"enum": [
+																	"on",
+																	"off"
+																],
+																"type": "string"
+															}
+														}
+													}
+												],
+												"required": [
+													"id",
+													"name",
+													"description",
+													"mode",
+													"rules_count"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List WAF rule groups response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"allOf": [
+															{
+																"properties": {
+																	"description": {
+																		"description": "An informative summary of what the rule group does.",
+																		"example": "Group designed to protect against IP addresses that are a threat and typically used to launch DDoS attacks",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The unique identifier of the rule group.",
+																		"example": "de677e5818985db1285d0e80225f06e5",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"modified_rules_count": {
+																		"default": 0,
+																		"description": "The number of rules within the group that have been modified from their default configuration.",
+																		"example": 2,
+																		"readOnly": true,
+																		"type": "number"
+																	},
+																	"name": {
+																		"description": "The name of the rule group.",
+																		"example": "Project Honey Pot",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"package_id": {
+																		"description": "The unique identifier of a WAF package.",
+																		"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"rules_count": {
+																		"default": 0,
+																		"description": "The number of rules in the current rule group.",
+																		"example": 10,
+																		"readOnly": true,
+																		"type": "number"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"allowed_modes": {
+																		"description": "The available states for the rule group.",
+																		"example": [
+																			"on",
+																			"off"
+																		],
+																		"items": {
+																			"default": "on",
+																			"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"type": "string"
+																		},
+																		"readOnly": true,
+																		"type": "array"
+																	},
+																	"mode": {
+																		"default": "on",
+																		"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"type": "string"
+																	}
+																}
+															}
+														],
+														"required": [
+															"id",
+															"name",
+															"description",
+															"mode",
+															"rules_count"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List WAF rule groups response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List WAF rule groups",
+		"tags": [
+			"WAF rule groups"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/firewall/waf/packages/{package_identifier}/groups/{identifier}": {
+		"description": "Fetches the details of a WAF rule group.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"operationId": "waf-rule-groups-get-a-waf-rule-group",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a WAF package.",
+					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "package_identifier",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a WAF package.",
+					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a WAF rule group response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a WAF rule group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a WAF rule group",
+		"tags": [
+			"WAF rule groups"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_identifier}/firewall/waf/packages/{package_identifier}/groups/{identifier}": {
+		"description": "Updates a WAF rule group. You can update the state (`mode` parameter) of a rule group.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+		"operationId": "waf-rule-groups-update-a-waf-rule-group",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a WAF package.",
+					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "package_identifier",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a WAF package.",
+					"example": "a25a9a7e9c00afc1fb2e0245519d725b",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"mode": {
+								"default": "on",
+								"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+								"enum": [
+									"on",
+									"off"
+								],
+								"type": "string"
+							}
+						}
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a WAF rule group response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a WAF rule group response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a WAF rule group",
+		"tags": [
+			"WAF rule groups"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	}
+}

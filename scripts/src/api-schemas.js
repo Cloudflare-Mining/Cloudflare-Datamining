@@ -4,6 +4,9 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import fetch from 'node-fetch';
+import filenamify from 'filenamify';
+import {rimraf} from 'rimraf';
+
 import OpenAPIParser from '@readme/openapi-parser';
 import stringify from 'json-stringify-safe';
 
@@ -11,6 +14,11 @@ import {tryAndPush, sortObjectByKeys} from './utils.js';
 
 async function run() {
 	console.log('Fetching API Schemas...');
+
+	// cleanup previous files
+	rimraf('../data/api-schemas/*.json', {
+		glob: true,
+	});
 
 	await fs.ensureDir(path.resolve('../data/api-schemas/schemas'));
 	await fs.emptyDir(path.resolve('../data/api-schemas/schemas'));
@@ -33,11 +41,36 @@ async function run() {
 	};
 	await fs.writeFile(path.resolve('../data/api-schemas/openapi.json'), stringify(toWrite, null, '\t'));
 
+
+	const byTag = {};
+	// loop over paths and assign to byTag
+	for(const [path, pathData] of Object.entries(toWrite.paths)) {
+		for(const [method, methodData] of Object.entries(pathData)) {
+			if(methodData.tags) {
+				for(const tag of methodData.tags) {
+					byTag[tag] ??= {};
+					byTag[tag][`${method.toUpperCase()} ${path}`] = methodData;
+				}
+			}else{
+				byTag.Untagged ??= {};
+				byTag.Untagged[`${method.toUpperCase()} ${path}`] = methodData;
+			}
+		}
+	}
+
+	// write to folders by tag
+	for(const [tag, tagData] of Object.entries(byTag)) {
+		const tagName = filenamify(tag, {replacement: '-'});
+		const file = path.resolve(`../data/api-schemas/schemas/${tagName}.json`);
+		await fs.writeFile(file, stringify(sortObjectByKeys(tagData), null, '\t'));
+	}
+
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
 		[
 			'data/api-schemas/*.json',
+			'data/api-schemas/schemas/*.json',
 		],
 		`${prefix} - API Schemas were updated! [skip ci]`,
 		'CFData - API Schema Data Update',
