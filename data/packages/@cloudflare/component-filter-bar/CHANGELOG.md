@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.1.0
+
+### Minor Changes
+
+- 37b26f3243: This change adds 'in/not-in' operator support for string fields, and improves support for this in 'select' fields
+
 ## 6.0.11
 
 ### Patch Changes
