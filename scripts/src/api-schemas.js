@@ -38,7 +38,6 @@ async function run() {
 	await tryAndPush(
 		[
 			'data/api-schemas/*.json',
-			'data/api-schemas/schemas/*.json',
 		],
 		`${prefix} - API Schemas were updated! [skip ci]`,
 		'CFData - API Schema Data Update',
