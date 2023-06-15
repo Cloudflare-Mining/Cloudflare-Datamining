@@ -38,9 +38,10 @@ async function getWarpVersions(platform, type, baseURL) {
 			throw new Error(`Failed to get ${platform} version info`);
 		}
 		const versionInfoJson = await versionInfo.json();
-		// install_url and download_url include signatures which change every time
+		// some fields include signatures which change every time
 		delete versionInfoJson.install_url;
 		delete versionInfoJson.download_url;
+		delete versionInfoJson.app_icon_url;
 		await fs.writeFile(path.resolve(versionDir, 'info.json'), JSON.stringify(versionInfoJson, null, '\t'));
 	}
 
