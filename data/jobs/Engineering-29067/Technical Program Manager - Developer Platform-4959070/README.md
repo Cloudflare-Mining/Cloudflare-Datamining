@@ -5,39 +5,21 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">Information Security at Cloudflare is a focused team committed to helping secure both Cloudflare and our customers. The Detection and Response team is responsible for engineering the systems and programs needed to protect our company and customer from real world threats.</span></p>
-<p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">We are looking for a Sr. Software engineer to join our team. You will be part of the team responsible for building our next generation Security Platform on Cloudflare's edge to secure Cloudflare customers, products and infrastructure. You’ll be designing and building services to; ingest and manage large datasets, process streaming and batch analytics, enrich and alert on data throughout the pipelines, and incorporate Machine Learning as an integral aspect of the whole system.</span></p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Technical Program Manager - Developer Platform&nbsp;</strong></p>
+<p><span style="font-weight: 400;">Cloudflare is seeking a talented and passionate Technical Program Manager to lead and manage various company-wide initiatives and programs spanning multiple quarters and teams within the ETI (Emerging Technology and Incubation) department, including Developer Platform suite of products. This position will be based in Austin, Tx or Remote, USA. You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</span></p>
+<p><strong>Responsibilities</strong><span style="font-weight: 400;"><br></span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">Your main role will be to partner with product, engineering, </span><span style="font-weight: 400;">design, marketing, and technical operations teams to plan, track, and manage the execution of various ETI related programs and initiatives.&nbsp;</span><span style="font-weight: 400;">Technical Program Management at Cloudflare provides you with a myriad of opportunities to effectively define, scope, and accomplish strategic goals. You will be the driving force to make things happen.&nbsp;</span><span style="font-weight: 400;">You will also be working with various parts of the organization to deliver Cloudflare services to customers around the globe. You will actively partner with various team members on quarterly planning, process improvements, dogfooding cutting edge products, running innovation weeks, and supporting exciting new developments and initiatives, with multiple senior leads to guide you. The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</span></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Experience working with big data pipelines across various stages of processing</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 6-12 years experience in technical program management.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with key decision makers to develop executive reporting materials (e.g., executive steer co, weekly updates, key artifacts, etc.).</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid knowledge in technical program management and a desire for continuous improvement.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent oral and written communication, proven track record of effective communication at various levels including executive level.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong competency with project management tools (admin-level experience strongly preferred for Confluence, JIRA) and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc).</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven track record on creating realistic project plans, and overseeing execution to meet commitments and deliver with predictability.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable managing tight deadlines, changing priorities, and ambiguity.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Role is based in Austin or Remote US, and you will be working with teams in various time zones.</span></li>
 </ul>
-<ul>
-	<li><span style="font-weight: 400;">Understand strategies for large scale streaming and batch log analysis</span></li>
-</ul>
-<ul>
-	<li><span style="font-weight: 400;">Proficiency in programming in Golang, Java, or Rust</span></li>
-</ul>
-<ul>
-	<li><span style="font-weight: 400;">Experience in building highly available distributed systems</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity in continuous integration and Infrastructure as Code</span></li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li><span style="font-weight: 400;">Experience designing, and optimizing high throughput ETL pipelines</span></li>
-	<li><span style="font-weight: 400;">Deep understanding of SIEM, UEBA, and SOAR technologies from an implementers perspective</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building robust and scalable products in public clouds (GCP or AWS)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with CI/CD and a devops mindset</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with Agile Software Development Life Cycle (SDLC) methodologies</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with cloud serverless architectures like Cloudflare Workers, Lambda Functions or Cloud Functions</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with containerization and orchestration tools such as Docker and Kubernetes</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity writing and optimizing advanced SQL queries</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience developing Machine Learning frameworks to enable teams to quickly and efficiently create new ML models</span></li>
-</ul>
-<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

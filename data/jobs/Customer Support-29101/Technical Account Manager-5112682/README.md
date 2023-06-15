@@ -5,21 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Technical Program Manager - Developer Platform&nbsp;</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is seeking a talented and passionate Technical Program Manager to lead and manage various company-wide initiatives and programs spanning multiple quarters and teams within the ETI (Emerging Technology and Incubation) department, including Developer Platform suite of products. This position will be based in Austin, Tx or Remote, USA. You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</span></p>
-<p><strong>Responsibilities</strong><span style="font-weight: 400;"><br></span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">Your main role will be to partner with product, engineering, </span><span style="font-weight: 400;">design, marketing, and technical operations teams to plan, track, and manage the execution of various ETI related programs and initiatives.&nbsp;</span><span style="font-weight: 400;">Technical Program Management at Cloudflare provides you with a myriad of opportunities to effectively define, scope, and accomplish strategic goals. You will be the driving force to make things happen.&nbsp;</span><span style="font-weight: 400;">You will also be working with various parts of the organization to deliver Cloudflare services to customers around the globe. You will actively partner with various team members on quarterly planning, process improvements, dogfooding cutting edge products, running innovation weeks, and supporting exciting new developments and initiatives, with multiple senior leads to guide you. The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</span></p>
-<p><strong>Requirements</strong></p>
+<h4>About the department</h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.&nbsp;&nbsp;</p>
+<h4>What you'll do</h4>
+<p><span style="font-weight: 400;">The Technical Account Manager (TAM) will own the post-contract end-to-end support experience for Cloudflare’s most strategic customers, to unblock post-go-live technical support challenges.</span> <span style="font-weight: 400;">They are a dedicated technical primary point of contact for our top-tier Premium customers. TAM’s responsibilities are to manage and monitor support interactions, serve as an internal advocate for customers, respond to customer escalations, and proactively escalate issues as needed. TAMs meet regularly with the relevant customer and provide proactive recommendations that support customers’ requirements, roadmap, and ongoing technical needs,</span><span style="font-weight: 400;"> partnering with the Customer Success and Account Team members.</span></p>
+<p><span style="font-weight: 400;">To be successful in this role, you must possess strong customer service and leadership skills, be a self-starter, be committed to ongoing self-education, be able to collaborate across organizations and have excellent technical problem-solving skills.</span></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 10 years experience in technical program management.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with key decision makers to develop executive reporting materials (e.g., executive steer co, weekly updates, key artifacts, etc.).</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid knowledge in technical program management and a desire for continuous improvement.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Servant leader who has successfully gained authority with peers by demonstrating empathy, providing support and motivating others.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent oral and written communication, proven track record of effective communication at various levels including executive level.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong competency with project management tools (admin-level experience strongly preferred for Confluence, JIRA) and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc).</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven track record on creating realistic project plans, and overseeing execution to meet commitments and deliver with predictability.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable managing tight deadlines, changing priorities, and ambiguity.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Role is based in Austin or Remote US, and you will be working with teams in various time zones.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Serve as primary technical support contact</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with the Account Team, as well as Engineering and Product, to help ensure high customer satisfaction by providing world-class dedicated support throughout the entire life of the customer partnership.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide product and engineering teams with customer feedback to help identify Support challenges and opportunities.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Have a holistic and dynamic view of customer’s environment and use of Cloudflare products, including the customer deployment topology, expert resolution for all support issues, and proactive advice for long-term improvements.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Create and deliver Quarterly Support Reviews including SLA adherence, top ticket drivers, ticket deep dives, and incident reviews.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to travel up to 25% of the time.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proactively engage with the account team during strategic deal closure and throughout the lifecycle of the customer.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Point of escalation during business hours, and backup point of escalation for Cloudflare TAMs in other regions during their off hours.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand client sentiment, own internal and customer facing escalations, and provide product support</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure support tickets solved in a timely manner</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain and expand working technical knowledge of Cloudflare products&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Single threaded owner of technical support issues, working with backend teams as needed</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with global TAM’s to ensure coverage on critical issues</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure rapid Incident response</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist with preparing and communicating CSRs and formal documentation for incidents and major issues</span></li>
 </ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 8 years of previous experience in a customer-facing team with technical account management responsibilities</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Have the business acumen of working with Fortune 500 companies and their leadership team&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fundamental understanding of how the Internet works, e.g. the OSI Model, Application and Network security, what a proxy is and how it works.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Basic Troubleshooting skills towards identifying and Escalating to the necessary Team to drive a solution</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Passionate about Cloudflare products, helping customers, and building strong relationships across organizations&nbsp;</span></li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/4959070?gh_jid=4959070",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5107496?gh_jid=5107496",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -9,9 +9,9 @@
 			"retention_period": null
 		}
 	],
-	"internal_job_id": 2512660,
+	"internal_job_id": 2564484,
 	"location": {
-		"name": "Austin or Remote US"
+		"name": "Remote US"
 	},
 	"metadata": [
 		{
@@ -23,33 +23,44 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4300 - Systems Engineering",
+			"value": "5700 - Customer Support",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
-			"value": [],
+			"value": [
+				"San Jose, US",
+				"San Francisco, US",
+				"Remote, US"
+			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 4959070,
-	"updated_at": "2023-06-03T18:44:04-04:00",
-	"requisition_id": "TBH_Q223_8247",
-	"title": "Sr. Technical Program Manager - Developer Platform",
+	"id": 5107496,
+	"updated_at": "2023-06-15T11:55:53-04:00",
+	"requisition_id": "258",
+	"title": "Technical Account Manager (PDT Working Hours)",
 	"departments": [
 		{
-			"id": 29067,
-			"name": "Engineering",
+			"id": 29101,
+			"name": "Customer Support",
 			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
-			"id": 19983,
-			"name": "Austin, TX",
-			"location": "Austin, TX, United States",
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 48753,
+			"name": "San Jose, CA",
+			"location": "San Jose, California, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		},
