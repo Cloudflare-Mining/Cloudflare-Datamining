@@ -8,8 +8,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "The unique identifier for a certificate_pack.",
-					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -139,8 +140,9 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "The unique identifier for a certificate_pack.",
-													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
 												}
@@ -263,8 +265,9 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "The unique identifier for a certificate_pack.",
-															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
 															"readOnly": true,
 															"type": "string"
 														}
@@ -815,8 +818,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "The unique identifier for a certificate_pack.",
-					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -1576,8 +1580,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "The unique identifier for a certificate_pack.",
-					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -1734,8 +1739,9 @@
 													"type": "array"
 												},
 												"id": {
-													"description": "The unique identifier for a certificate_pack.",
-													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
 												},
@@ -1941,8 +1947,9 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "The unique identifier for a certificate_pack.",
-															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
 															"readOnly": true,
 															"type": "string"
 														},
@@ -2351,8 +2358,9 @@
 													"type": "array"
 												},
 												"id": {
-													"description": "The unique identifier for a certificate_pack.",
-													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
 												},
@@ -2558,8 +2566,9 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "The unique identifier for a certificate_pack.",
-															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
 															"readOnly": true,
 															"type": "string"
 														},

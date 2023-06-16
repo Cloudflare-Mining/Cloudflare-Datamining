@@ -161,41 +161,7 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"asn": {
-													"type": "integer"
-												},
-												"country": {
-													"example": "US",
-													"type": "string"
-												},
-												"description": {
-													"example": "CLOUDFLARENET",
-													"type": "string"
-												},
-												"domain_count": {
-													"type": "integer"
-												},
-												"top_domains": {
-													"example": [
-														"example.com"
-													],
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"type": {
-													"description": "Infrastructure type of this ASN.",
-													"enum": [
-														"hosting_provider",
-														"isp",
-														"organization"
-													],
-													"example": "hosting_provider",
-													"type": "string"
-												}
-											}
+											"type": "integer"
 										}
 									}
 								}
@@ -205,7 +171,7 @@
 				},
 				"description": "Get ASN Overview response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -310,41 +276,7 @@
 										{
 											"properties": {
 												"result": {
-													"properties": {
-														"asn": {
-															"type": "integer"
-														},
-														"country": {
-															"example": "US",
-															"type": "string"
-														},
-														"description": {
-															"example": "CLOUDFLARENET",
-															"type": "string"
-														},
-														"domain_count": {
-															"type": "integer"
-														},
-														"top_domains": {
-															"example": [
-																"example.com"
-															],
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"type": {
-															"description": "Infrastructure type of this ASN.",
-															"enum": [
-																"hosting_provider",
-																"isp",
-																"organization"
-															],
-															"example": "hosting_provider",
-															"type": "string"
-														}
-													}
+													"type": "integer"
 												}
 											}
 										}
@@ -445,9 +377,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get ASN Overview",
@@ -463,41 +392,7 @@
 				"name": "asn",
 				"required": true,
 				"schema": {
-					"properties": {
-						"asn": {
-							"type": "integer"
-						},
-						"country": {
-							"example": "US",
-							"type": "string"
-						},
-						"description": {
-							"example": "CLOUDFLARENET",
-							"type": "string"
-						},
-						"domain_count": {
-							"type": "integer"
-						},
-						"top_domains": {
-							"example": [
-								"example.com"
-							],
-							"items": {
-								"type": "string"
-							},
-							"type": "array"
-						},
-						"type": {
-							"description": "Infrastructure type of this ASN.",
-							"enum": [
-								"hosting_provider",
-								"isp",
-								"organization"
-							],
-							"example": "hosting_provider",
-							"type": "string"
-						}
-					}
+					"type": "integer"
 				}
 			},
 			{
@@ -557,7 +452,7 @@
 				},
 				"description": "Get ASN Subnets response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -693,9 +588,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get ASN Subnets",
