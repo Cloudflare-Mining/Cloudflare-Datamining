@@ -2393,6 +2393,14 @@
 						"compatEnableFlag": "brotli_content_encoding",
 						"neededByFl": "true"
 					}
+				},
+				{
+					"name": "strictCrypto",
+					"annotations": {
+						"compatDisableFlag": "no_strict_crypto_checks",
+						"compatEnableDate": "2023-08-01",
+						"compatEnableFlag": "strict_crypto_checks"
+					}
 				}
 			]
 		},
