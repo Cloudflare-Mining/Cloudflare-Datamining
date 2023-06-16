@@ -1277,14 +1277,18 @@
 		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to a multiple of 5 minutes",
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
+		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
+		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
+		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"originASN": "",
 		"originASNDescription": "ASN associated with origin",
 		"originIP": "",
+		"originResponseDurationMs": "",
 		"originResponseStatus": "HTTP origin response status code returned to browser",
 		"requestSource": "",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
@@ -1309,11 +1313,15 @@
 		"avg": "The average value used for sample interval",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
 		"ratio": "The ratio of a range of status codes, between 0 and 1",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountHttpRequestsAdaptiveGroupsAvg": {
 		"__description": "",
+		"crossZoneSubrequests": "The proportion of requests that were inititiated by a Cloudflare Worker on another zone",
+		"edgeDnsResponseTimeMs": "",
+		"edgeTimeToFirstByteMs": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
 		"sampleInterval": ""
 	},
@@ -1350,14 +1358,18 @@
 		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to a multiple of 5 minutes",
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
+		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
+		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
+		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"originASN": "",
 		"originASNDescription": "ASN associated with origin",
 		"originIP": "",
+		"originResponseDurationMs": "",
 		"originResponseStatus": "HTTP response status code returned by the origin",
 		"requestSource": "",
 		"sampleInterval": "ABR sample interval",
@@ -1381,6 +1393,18 @@
 	"AccountHttpRequestsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountHttpRequestsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"edgeDnsResponseTimeMsP50": "50th percentile DNS Response Time (milliseconds)",
+		"edgeDnsResponseTimeMsP95": "95th percentile DNS Response Time (milliseconds)",
+		"edgeDnsResponseTimeMsP99": "99th percentile DNS Response Time (milliseconds)",
+		"edgeTimeToFirstByteMsP50": "50th percentile Time To First Byte (milliseconds)",
+		"edgeTimeToFirstByteMsP95": "95th percentile Time To First Byte (milliseconds)",
+		"edgeTimeToFirstByteMsP99": "99th percentile Time To First Byte (milliseconds)",
+		"originResponseDurationMsP50": "50th percentile Origin Response Duration (milliseconds)",
+		"originResponseDurationMsP95": "95th percentile Origin Response Duration (milliseconds)",
+		"originResponseDurationMsP99": "99th percentile Origin Response Duration (milliseconds)"
+	},
 	"AccountHttpRequestsAdaptiveGroupsRatio": {
 		"__description": "",
 		"status4xx": "",
@@ -1388,7 +1412,11 @@
 	},
 	"AccountHttpRequestsAdaptiveGroupsSum": {
 		"__description": "",
+		"crossZoneSubrequests": "The number of requests that were inititiated by a Cloudflare Worker on another zone",
+		"edgeDnsResponseTimeMs": "",
 		"edgeResponseBytes": "",
+		"edgeTimeToFirstByteMs": "",
+		"originResponseDurationMs": "",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
 	"AccountHttpRequestsAdaptiveOrderBy": {
@@ -3584,6 +3612,7 @@
 	},
 	"ZoneCacheReserveStorageAdaptiveGroupsMax": {
 		"__description": "",
+		"objectCount": "Max of object count",
 		"storedBytes": "Payload and metadata size of objects in bucket"
 	},
 	"ZoneCacheReserveStorageAdaptiveGroupsOrderBy": {
@@ -3671,6 +3700,9 @@
 	},
 	"ZoneDmarcReportsSourcesAdaptiveGroupsSum": {
 		"__description": "",
+		"dkimPass": "Total of dkim messages pass",
+		"dmarc": "Total of dmarc messages pass",
+		"spfPass": "Total of spf messages pass",
 		"totalMatchingMessages": "Total matching messages"
 	},
 	"ZoneDmarcReportsSourcesAdaptiveGroupsUniq": {
@@ -4376,14 +4408,18 @@
 		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to a multiple of 5 minutes",
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
+		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
+		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
+		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"originASN": "",
 		"originASNDescription": "ASN associated with origin",
 		"originIP": "",
+		"originResponseDurationMs": "",
 		"originResponseStatus": "HTTP origin response status code returned to browser",
 		"requestSource": "",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
@@ -4407,11 +4443,15 @@
 		"avg": "The average value used for sample interval",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
 		"ratio": "The ratio of a range of status codes, between 0 and 1",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneHttpRequestsAdaptiveGroupsAvg": {
 		"__description": "",
+		"crossZoneSubrequests": "The proportion of requests that were inititiated by a Cloudflare Worker on another zone",
+		"edgeDnsResponseTimeMs": "",
+		"edgeTimeToFirstByteMs": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
 		"sampleInterval": ""
 	},
@@ -4448,14 +4488,18 @@
 		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to a multiple of 5 minutes",
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
+		"edgeDnsResponseTimeMs": "The time elapsed resolving a CNAME if it was required to reach your origin",
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
+		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
+		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"originASN": "",
 		"originASNDescription": "ASN associated with origin",
 		"originIP": "",
+		"originResponseDurationMs": "",
 		"originResponseStatus": "HTTP response status code returned by the origin",
 		"requestSource": "",
 		"sampleInterval": "ABR sample interval",
@@ -4478,6 +4522,18 @@
 	"ZoneHttpRequestsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"ZoneHttpRequestsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"edgeDnsResponseTimeMsP50": "50th percentile DNS Response Time (milliseconds)",
+		"edgeDnsResponseTimeMsP95": "95th percentile DNS Response Time (milliseconds)",
+		"edgeDnsResponseTimeMsP99": "99th percentile DNS Response Time (milliseconds)",
+		"edgeTimeToFirstByteMsP50": "50th percentile Time To First Byte (milliseconds)",
+		"edgeTimeToFirstByteMsP95": "95th percentile Time To First Byte (milliseconds)",
+		"edgeTimeToFirstByteMsP99": "99th percentile Time To First Byte (milliseconds)",
+		"originResponseDurationMsP50": "50th percentile Origin Response Duration (milliseconds)",
+		"originResponseDurationMsP95": "95th percentile Origin Response Duration (milliseconds)",
+		"originResponseDurationMsP99": "99th percentile Origin Response Duration (milliseconds)"
+	},
 	"ZoneHttpRequestsAdaptiveGroupsRatio": {
 		"__description": "",
 		"status4xx": "",
@@ -4485,7 +4541,11 @@
 	},
 	"ZoneHttpRequestsAdaptiveGroupsSum": {
 		"__description": "",
+		"crossZoneSubrequests": "The number of requests that were inititiated by a Cloudflare Worker on another zone",
+		"edgeDnsResponseTimeMs": "",
 		"edgeResponseBytes": "",
+		"edgeTimeToFirstByteMs": "",
+		"originResponseDurationMs": "",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
 	"ZoneHttpRequestsAdaptiveOrderBy": {
