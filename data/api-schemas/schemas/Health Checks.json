@@ -127,7 +127,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -139,8 +140,11 @@
 										"result": {
 											"properties": {
 												"id": {
-													"example": "269d8f4853475ca241c4e730be286b20",
-													"readOnly": true
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -247,7 +251,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -259,8 +264,11 @@
 												"result": {
 													"properties": {
 														"id": {
-															"example": "269d8f4853475ca241c4e730be286b20",
-															"readOnly": true
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -508,7 +516,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -520,8 +529,11 @@
 										"result": {
 											"properties": {
 												"id": {
-													"example": "269d8f4853475ca241c4e730be286b20",
-													"readOnly": true
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -628,7 +640,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -640,8 +653,11 @@
 												"result": {
 													"properties": {
 														"id": {
-															"example": "269d8f4853475ca241c4e730be286b20",
-															"readOnly": true
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
