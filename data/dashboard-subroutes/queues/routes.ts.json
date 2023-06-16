@@ -6,11 +6,11 @@
 	"/[id]/workers/queues/[id]/settings",
 	"/[id]/workers/queues/purchase",
 	"/[id]/workers/queues/verify-email",
+	"/accounts/[id]/queues/[id]/message",
 	"/accounts/[id]/workers/queues",
 	"/accounts/[id]/workers/queues/[id]/*",
 	"/accounts/[id]/workers/queues/[id]/consumers",
 	"/accounts/[id]/workers/queues/[id]/consumers/[id]/*",
 	"/accounts/[id]/workers/queues/[id]/consumers/[id]/environments/[id]/*",
-	"/accounts/[id]/workers/queues/id/[id]/message",
 	"/accounts/[id]/workers/scripts/[id]/queue-consumers"
 ]

@@ -266,7 +266,6 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	onboarding_billing_line_item_1_meta: "New expiration date %{expiration}",
 	onboarding_billing_line_item_2: "ICANN - one time transfer fee",
 	transfer_table_domain_already_paid: "Already paid",
-	search_domain_description: "To find a domain name, use the search above",
 	search_domain_supported_extensions: "Click <0>here</0> to see a list of supported extensions.",
 	search_domain_results_table_domain: "Domain",
 	search_domain_results_table_price: "Price",

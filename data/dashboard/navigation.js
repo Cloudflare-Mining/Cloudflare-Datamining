@@ -268,7 +268,6 @@ const navigation = {
 		title: "navigation.account.ip_addresses",
 		url: "/ip-addresses/ip-prefixes",
 		iconType: "network",
-		labels: ["new"],
 		pages: [{
 			title: "navigation.account.ip_addresses.ip_prefixes",
 			url: "/ip-addresses/ip-prefixes",
@@ -308,7 +307,6 @@ const navigation = {
 		title: "navigation.account.magic_wan",
 		url: "/magic-wan",
 		iconType: "cloudflare-magic-wan",
-		labels: ["new"],
 		hasPermission: function(l) {
 			return (0, i.iY)(l) && !!(0, r.Le)(l, "magic_wan", "mw_home")
 		},
