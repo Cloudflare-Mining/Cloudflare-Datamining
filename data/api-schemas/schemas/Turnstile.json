@@ -68,7 +68,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "The target hostname, IPv6, or IPv6 address.",
+											"description": "A Turnstile widget's detailed configuration",
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
@@ -145,6 +145,18 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"sitekey",
+												"secret",
+												"created_on",
+												"modified_on",
+												"name",
+												"domains",
+												"mode",
+												"region",
+												"bot_fight_mode",
+												"offlabel"
+											],
 											"type": "object"
 										}
 									}
@@ -346,6 +358,12 @@
 													"type": "number"
 												}
 											},
+											"required": [
+												"page",
+												"per_page",
+												"count",
+												"total_count"
+											],
 											"type": "object"
 										}
 									}
@@ -354,7 +372,7 @@
 									"properties": {
 										"result": {
 											"items": {
-												"description": "The target hostname, IPv6, or IPv6 address.",
+												"description": "A Turnstile Widgets configuration as it appears in listings",
 												"properties": {
 													"bot_fight_mode": {
 														"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
@@ -419,11 +437,6 @@
 														],
 														"type": "string"
 													},
-													"secret": {
-														"description": "Secret key for this widget.",
-														"example": "0x4AAF00AAAABn0R22HWm098HVBjhdsYUc",
-														"type": "string"
-													},
 													"sitekey": {
 														"description": "Widget item identifier tag.",
 														"example": "0x4AAF00AAAABn0R22HWm-YUc",
@@ -431,6 +444,17 @@
 														"type": "string"
 													}
 												},
+												"required": [
+													"sitekey",
+													"created_on",
+													"modified_on",
+													"name",
+													"domains",
+													"mode",
+													"region",
+													"bot_fight_mode",
+													"offlabel"
+												],
 												"type": "object"
 											},
 											"type": "array"
@@ -612,7 +636,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "The target hostname, IPv6, or IPv6 address.",
+											"description": "A Turnstile widget's detailed configuration",
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
@@ -689,6 +713,18 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"sitekey",
+												"secret",
+												"created_on",
+												"modified_on",
+												"name",
+												"domains",
+												"mode",
+												"region",
+												"bot_fight_mode",
+												"offlabel"
+											],
 											"type": "object"
 										}
 									}
@@ -955,6 +991,12 @@
 													"type": "number"
 												}
 											},
+											"required": [
+												"page",
+												"per_page",
+												"count",
+												"total_count"
+											],
 											"type": "object"
 										}
 									}
@@ -962,7 +1004,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "The target hostname, IPv6, or IPv6 address.",
+											"description": "A Turnstile widget's detailed configuration",
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
@@ -1039,6 +1081,18 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"sitekey",
+												"secret",
+												"created_on",
+												"modified_on",
+												"name",
+												"domains",
+												"mode",
+												"region",
+												"bot_fight_mode",
+												"offlabel"
+											],
 											"type": "object"
 										}
 									}
@@ -1234,7 +1288,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "The target hostname, IPv6, or IPv6 address.",
+											"description": "A Turnstile widget's detailed configuration",
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
@@ -1311,6 +1365,18 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"sitekey",
+												"secret",
+												"created_on",
+												"modified_on",
+												"name",
+												"domains",
+												"mode",
+												"region",
+												"bot_fight_mode",
+												"offlabel"
+											],
 											"type": "object"
 										}
 									}
@@ -1547,7 +1613,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "The target hostname, IPv6, or IPv6 address.",
+											"description": "A Turnstile widget's detailed configuration",
 											"properties": {
 												"bot_fight_mode": {
 													"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
@@ -1624,6 +1690,18 @@
 													"type": "string"
 												}
 											},
+											"required": [
+												"sitekey",
+												"secret",
+												"created_on",
+												"modified_on",
+												"name",
+												"domains",
+												"mode",
+												"region",
+												"bot_fight_mode",
+												"offlabel"
+											],
 											"type": "object"
 										}
 									}
