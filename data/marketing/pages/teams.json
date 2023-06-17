@@ -373,7 +373,20 @@
 										}
 									],
 									"mainLink": null,
-									"navigationLinks": []
+									"navigationLinks": [
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "56atTa9grHhB7wHsr22uql",
+											"locale": "en-US",
+											"title": "Contact Sales",
+											"description": null,
+											"url": "/plans/enterprise/contact/",
+											"badges": null,
+											"specialLinkType": "CTA",
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										}
+									]
 								},
 								{
 									"contentTypeId": "navNavigationItem",
@@ -578,6 +591,18 @@
 											"specialLinkType": "NAV_BOTTOM_LINK",
 											"openInNewWindow": false,
 											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "56atTa9grHhB7wHsr22uql",
+											"locale": "en-US",
+											"title": "Contact Sales",
+											"description": null,
+											"url": "/plans/enterprise/contact/",
+											"badges": null,
+											"specialLinkType": "CTA",
+											"openInNewWindow": false,
+											"isExternalUrl": null
 										}
 									]
 								},
@@ -728,7 +753,32 @@
 										}
 									],
 									"mainLink": null,
-									"navigationLinks": []
+									"navigationLinks": [
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "ZIQ2hkVLfTaMKIdwobKEB",
+											"locale": "en-US",
+											"title": "View FAQs",
+											"description": null,
+											"url": "plans/faq/",
+											"badges": null,
+											"specialLinkType": "NAV_BOTTOM_LINK",
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "56atTa9grHhB7wHsr22uql",
+											"locale": "en-US",
+											"title": "Contact Sales",
+											"description": null,
+											"url": "/plans/enterprise/contact/",
+											"badges": null,
+											"specialLinkType": "CTA",
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										}
+									]
 								},
 								{
 									"contentTypeId": "navNavigationItem",
@@ -781,6 +831,68 @@
 												},
 												{
 													"contentTypeId": "navNavigationItem",
+													"contentfulId": "17ARM5mMCSAKHWVp2uMMaA",
+													"locale": "en-US",
+													"name": "Application Security",
+													"description": null,
+													"mainLink": null,
+													"navigationLinks": [
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "5PNFO1wFb3CIqgScOMF03C",
+															"locale": "en-US",
+															"title": "Bot Management",
+															"description": null,
+															"url": "https://developers.cloudflare.com/bots/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "2YDP6M4rjvy7ySkW5GYigk",
+															"locale": "en-US",
+															"title": "Firewall Rules",
+															"description": null,
+															"url": "https://developers.cloudflare.com/firewall/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "3pJx4OI3NmXAeirB76Oigb",
+															"locale": "en-US",
+															"title": "SSL",
+															"description": null,
+															"url": "https://developers.cloudflare.com/ssl/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "7xCXEesovV0hR3uuPuvFrx",
+															"locale": "en-US",
+															"title": "WAF",
+															"description": null,
+															"url": "https://developers.cloudflare.com/waf/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														}
+													],
+													"navIcon": null,
+													"showIconOnly": false,
+													"hideOnChinaSite": null,
+													"navigationItems": null
+												},
+												{
+													"contentTypeId": "navNavigationItem",
 													"contentfulId": "6NZ00tbb9QsiqAhP56HgDC",
 													"locale": "en-US",
 													"name": "Application Services",
@@ -789,11 +901,59 @@
 													"navigationLinks": [
 														{
 															"contentTypeId": "elementNavLink",
+															"contentfulId": "6q86AtM22YcnTw7N3wvm8O",
+															"locale": "en-US",
+															"title": "CDN",
+															"description": null,
+															"url": "https://developers.cloudflare.com/cache/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "6HmltYkOClNQkSEjVkGK7s",
+															"locale": "en-US",
+															"title": "DNS",
+															"description": null,
+															"url": "https://developers.cloudflare.com/dns/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": false,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
 															"contentfulId": "5armdRHQJGDNBBEIW1KY2p",
 															"locale": "en-US",
 															"title": "Image Resizing",
 															"description": null,
 															"url": "https://developers.cloudflare.com/images/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "4E0FDSDKxeMticziFyChdT",
+															"locale": "en-US",
+															"title": "Load Balancing",
+															"description": null,
+															"url": "https://developers.cloudflare.com/load-balancing",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "jtV3eZQxL3Q5FqimcuFaR",
+															"locale": "en-US",
+															"title": "Stream (video)",
+															"description": null,
+															"url": "https://developers.cloudflare.com/stream/",
 															"badges": null,
 															"specialLinkType": null,
 															"openInNewWindow": true,
@@ -918,6 +1078,130 @@
 															"title": "Logs",
 															"description": null,
 															"url": "https://developers.cloudflare.com/logs/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														}
+													],
+													"navIcon": null,
+													"showIconOnly": false,
+													"hideOnChinaSite": null,
+													"navigationItems": null
+												},
+												{
+													"contentTypeId": "navNavigationItem",
+													"contentfulId": "5886uVa7aLFvSpmvt51x3f",
+													"locale": "en-US",
+													"name": "Developer Platform",
+													"description": null,
+													"mainLink": null,
+													"navigationLinks": [
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "2osj84l1r7N8suQkWUpNgy",
+															"locale": "en-US",
+															"title": "Workers Quick Start",
+															"description": null,
+															"url": "https://developers.cloudflare.com/workers/learning/getting-started",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "480rnATGJFF7KIFjD5WVYz",
+															"locale": "en-US",
+															"title": "Workers Pages",
+															"description": null,
+															"url": "https://developers.cloudflare.com/pages/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "3SyYEpphf1LOsfdptDFwTq",
+															"locale": "en-US",
+															"title": "Sample Workers Projects",
+															"description": null,
+															"url": "https://developers.cloudflare.com/workers/templates/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "7LxagdywNjCJ22312rCkYR",
+															"locale": "en-US",
+															"title": "Workers Tutorials",
+															"description": null,
+															"url": "https://developers.cloudflare.com/workers/tutorials",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "5LXs7OisUSZsCIpjY2umWJ",
+															"locale": "en-US",
+															"title": "Command-line (Wrangler)",
+															"description": null,
+															"url": "https://developers.cloudflare.com/workers/tooling/wrangler",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "3FCBV0El2HlIgsNVn71GOp",
+															"locale": "en-US",
+															"title": "Runtime",
+															"description": null,
+															"url": "https://developers.cloudflare.com/workers/reference/apis",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														}
+													],
+													"navIcon": null,
+													"showIconOnly": false,
+													"hideOnChinaSite": null,
+													"navigationItems": null
+												},
+												{
+													"contentTypeId": "navNavigationItem",
+													"contentfulId": "7rar0cPpSRnS1iSSSUJxib",
+													"locale": "en-US",
+													"name": "API",
+													"description": null,
+													"mainLink": null,
+													"navigationLinks": [
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "5wg2LaBIcPAaJaArkqXowH",
+															"locale": "en-US",
+															"title": "API Reference",
+															"description": null,
+															"url": "https://developers.cloudflare.com/api",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "5NKAJ5xNecrC3FhsfScjTg",
+															"locale": "en-US",
+															"title": "API Authentication",
+															"description": null,
+															"url": "https://developers.cloudflare.com/fundamentals/api",
 															"badges": null,
 															"specialLinkType": null,
 															"openInNewWindow": true,
@@ -1371,7 +1655,20 @@
 										}
 									],
 									"mainLink": null,
-									"navigationLinks": []
+									"navigationLinks": [
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "56atTa9grHhB7wHsr22uql",
+											"locale": "en-US",
+											"title": "Contact Sales",
+											"description": null,
+											"url": "/plans/enterprise/contact/",
+											"badges": null,
+											"specialLinkType": "CTA",
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										}
+									]
 								},
 								{
 									"contentTypeId": "navNavigationItem",
@@ -1996,7 +2293,18 @@
 											"locale": "en-US",
 											"name": "Enterprise level services",
 											"description": null,
-											"mainLink": null,
+											"mainLink": {
+												"contentTypeId": "elementNavLink",
+												"contentfulId": "59MpacJwSSPibjJiIFU0jh",
+												"locale": "en-US",
+												"title": "Enterprise",
+												"description": null,
+												"url": "/plans/enterprise",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
+											},
 											"navigationLinks": null,
 											"navIcon": null,
 											"showIconOnly": false,
@@ -2029,7 +2337,20 @@
 										}
 									],
 									"mainLink": null,
-									"navigationLinks": []
+									"navigationLinks": [
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "56atTa9grHhB7wHsr22uql",
+											"locale": "en-US",
+											"title": "Contact Sales",
+											"description": null,
+											"url": "/plans/enterprise/contact/",
+											"badges": null,
+											"specialLinkType": "CTA",
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										}
+									]
 								}
 							]
 						},
@@ -2288,6 +2609,13 @@
 						"htmlId": null,
 						"menuItems": [
 							{
+								"contentfulId": "10X0LS8uVJOWBbeZkeI6ah",
+								"linkText": "Overview",
+								"page": null,
+								"url": "/zero-trust",
+								"subMenuItems": null
+							},
+							{
 								"contentfulId": "1km56yP6vf7r4Nx1pgEs9H",
 								"linkText": "Services",
 								"page": null,
@@ -2502,6 +2830,12 @@
 										"linkText": "451 Research Market Insights Report, July 2021",
 										"page": null,
 										"url": "lp/market-insight-report-451-research/"
+									},
+									{
+										"contentfulId": "7aL6MuEN7w1JSPecdcoQ0u",
+										"linkText": "EMA Report: Availability and Buying Options in the Emerging SASE Market",
+										"page": null,
+										"url": "https://www.cloudflare.com/lp/ema-sase-report/"
 									},
 									{
 										"contentfulId": "6abtNwu4GEGUSBgSXsNzbs",
@@ -3091,28 +3425,30 @@
 							},
 							{
 								"contentTypeId": "bladeQuote",
-								"contentfulId": "3IT7MT9bMUSRrnz19tdGor",
-								"quote": "\"Discord is where the world builds relationships. Cloudflare Zero Trust Services helps us deliver on that mission, connecting our internal engineering team to the tools they need. With Cloudflare, we can rest easy knowing every request to our critical apps is evaluated for identity and context - a true Zero Trust approach.\"",
-								"quoteAuthor": "Mark Smith",
-								"quoteTitle": "Director of Infrastructure",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1z5c291RRNylmJt2v4b7sg/09df8721914be268063219bc968285c5/logo_discord_trusted-by_gray.svg"
-									}
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
 								"contentfulId": "2WYT3ojqmGu21lNvikMlrH",
 								"quote": "\"POLITICO needed a way to control access to specific critical resources without the risk and overhead of connecting through a private corporate network. Cloudflare Access aligns with how and where our team works, while helping us embrace a Zero Trust security model, where every request to every app is evaluated for user identity - and no VPN is required.\"",
 								"quoteAuthor": "Michael Irwin",
 								"quoteTitle": "Senior Director, Technology Operations and Cybersecurity",
 								"learnMoreText": null,
 								"learnMoreUrl": null,
-								"imageAssetFile": null,
+								"imageAssetFile": {
+									"id": "489299a8-3a50-58be-86b6-c37dc96f2752",
+									"altText": "Logo politico gray",
+									"title": "Logo politico gray",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 3001,
+										"height": 788,
+										"width": 3979,
+										"filename": "logo_politico_gray.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_politico_gray.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
 								"image": {
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IEd3mUna64stWsTxIq8nf/f6738d8c31d03e2245783e118c0d33df/logo_politico_color.svg"
@@ -3198,6 +3534,27 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7q7oWbMdbTtdo8QPQpz6yI",
+								"title": "30 minutes of setup time to unlock faster, safer Internet and application access.",
+								"titleSize": null,
+								"description": null,
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KU972Hq5LvkZQhRRnd446/61d6f983a75a0f62dc8df9f1df018969/ease-of-use.svg"
+									}
+								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
@@ -3234,6 +3591,47 @@
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"contentfulId": "2GitunUc4oo7oKqGXGVymZ",
+						"title": "One easy-to-use platform",
+						"copy": "- One dashboard unifies 7 formerly-distinct security capabilities: Secure Web Gateway, DNS Filtering, Zero Trust Network Access, VPN, Cloud Access Security Broker, Firewall as-a-service, Browser Isolation \n- Built natively from the ground up with consistent design principles: no lifting, shifting, acquisition or integration involved",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls",
+							"autoplay",
+							"muted"
+						],
+						"streamCaptions": null,
+						"streamVideoId": "0c47055b6a7e50ebdc699e8024cc2ef4",
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": true,
 						"imageSize": null,
 						"imageTextAlignment": null,
 						"togglesTo": null
@@ -3426,25 +3824,25 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3AtMTJYDOfCaT0ThRMjAwn",
-								"title": "Zero Trust Roadmap",
+								"contentfulId": "77IyOZ6d1h7EZo8B3o2gHf",
+								"title": "Cloudflare Zero Trust overview",
 								"titleSize": null,
-								"description": "Learn how to transform your security with Zero Trust with practical steps and implementation timelines in this vendor agnostic roadmap.",
-								"learnMoreUrl": "https://zerotrustroadmap.org/",
-								"learnMoreText": "Start your Zero Trust journey",
+								"description": "Learn more about the benefits, features, and deployment outcomes of Cloudflare's Zero Trust platform.",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oicnCVm9er8tbGgIR3JTV/292a4d7ef97ce11f82d343fd1a1413e8/Product_Brief__Cloudflare_Zero_Trust__2022_Q2_.pdf",
+								"learnMoreText": "Download brief",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageAssetFile": {
-									"id": "d0740fb7-ea9f-5bd1-9abc-5b95fc4ff080",
-									"altText": "Cloudflare Zero Trust, SASE and SSE",
-									"title": "Zero Trust, SASE and SSE Image",
+									"id": "0dd221e8-78f7-5cfa-b0cb-f1c98d71180c",
+									"altText": "A Bridge to Zero Trust",
+									"title": "A Bridge to Zero Trust",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60DQk9cZzrquETYJDbDx8Z/1b29a26449a758147cc1a16090810135/sse-image.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SLvWl1TOahXYcvTzRwIrz/69bf3d8747c634d0512395b88391e1a3/Bridge_to_Zero_Trust_.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -3606,36 +4004,6 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3tJ5CsbhqxQsiJ81tQ5run",
-								"title": "Foundational concepts: Zero Trust, SASE and SSE",
-								"titleSize": null,
-								"description": "Understand the Zero Trust, SASE and SSE capabilities included in the Cloudflare One platform.",
-								"learnMoreUrl": "https://blog.cloudflare.com/zero-trust-sase-and-sse-foundational-concepts-for-your-next-generation-network/",
-								"learnMoreText": "Read blog post",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "d0740fb7-ea9f-5bd1-9abc-5b95fc4ff080",
-									"altText": "Cloudflare Zero Trust, SASE and SSE",
-									"title": "Zero Trust, SASE and SSE Image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/60DQk9cZzrquETYJDbDx8Z/1b29a26449a758147cc1a16090810135/sse-image.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "4ZbgYJMKx2CpPAqEhpXg97",
 								"title": "How to augment or replace your VPN with Cloudflare",
 								"titleSize": null,
@@ -3646,50 +4014,7 @@
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "518a8c0c-13bb-5d6d-bfd0-3a2ead266fa7",
-									"altText": "Zero Trust Login - ZTNA",
-									"title": "Zero Trust Login - ZTNA",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1MmTdbaAniEt5pAE5rDXjS/fcb81292d263bcb302a756381ebf0348/Replace_your_VPN.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3mD2ehFDAs6sIgYKZ7B3mv",
-								"title": "100% year over year customer growth",
-								"titleSize": null,
-								"description": "Continued innovation in our Zero Trust platform to secure a company's applications, devices, and networks",
-								"learnMoreUrl": "https://www.cloudflare.com/press-releases/2022/cloudflare-expands-its-zero-trust-platform/",
-								"learnMoreText": "Read press release",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
-									"altText": "Press Release Header",
-									"title": "Press Release Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/48f28951d657f32a5e6ac453df90af7c/press-releases.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
