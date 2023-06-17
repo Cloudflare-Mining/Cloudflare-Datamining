@@ -1053,6 +1053,68 @@
 												},
 												{
 													"contentTypeId": "navNavigationItem",
+													"contentfulId": "17gVooh39dfRemmSh9KSyK",
+													"locale": "en-US",
+													"name": "Network Services",
+													"description": null,
+													"mainLink": null,
+													"navigationLinks": [
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "6FKNGzfd6ztul6YW2drwPD",
+															"locale": "en-US",
+															"title": "Magic Transit",
+															"description": null,
+															"url": "https://developers.cloudflare.com/magic-transit/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "LC71xLM6HBejqEzaEnkho",
+															"locale": "en-US",
+															"title": "Magic WAN",
+															"description": null,
+															"url": "https://developers.cloudflare.com/magic-wan/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "1NFi9Iri7yY5vLq2PlK4fU",
+															"locale": "en-US",
+															"title": "Magic Firewall",
+															"description": null,
+															"url": "https://developers.cloudflare.com/magic-firewall/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "4wL6hxITkwSdpMToyggJNz",
+															"locale": "en-US",
+															"title": "Spectrum (TCP/UDP)",
+															"description": null,
+															"url": "https://developers.cloudflare.com/spectrum/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": true,
+															"isExternalUrl": null
+														}
+													],
+													"navIcon": null,
+													"showIconOnly": false,
+													"hideOnChinaSite": null,
+													"navigationItems": null
+												},
+												{
+													"contentTypeId": "navNavigationItem",
 													"contentfulId": "4E0JADpOudRkHVrzdai31D",
 													"locale": "en-US",
 													"name": "Insights",
@@ -2779,6 +2841,137 @@
 							},
 							"brandfolderAssetMobile": null
 						}
+					},
+					{
+						"contentfulId": "2Q83cITJssUVR1HhSYOYwl",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Challenges with third party access management",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5jPAuNvTFtevl8NlbcRApG",
+								"title": "Excessive privilege brings excessive risks",
+								"titleSize": null,
+								"description": "Collaborators often need to reach a few critical applications to get their job done. Yet they tend to accrue excessive privileges over time. This excessive privilege can introduce risk.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/52HRlOQUb20zMebvThxRFj/215d96a229ca525ed3f2d7994f6a76b0/icon_user_blue_48px.svg"
+									}
+								},
+								"iconAssetFile": {
+									"id": "d19c09bd-84d4-5ee5-83f6-cb536e5c4227",
+									"altText": "User blue",
+									"title": "User blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1531,
+										"height": 192,
+										"width": 192,
+										"filename": "user-blue.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/user-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7yOgtz8EzP8apWXN9ecdRi",
+								"title": "Onerous to manage",
+								"titleSize": null,
+								"description": "Onboarding external users is often time-consuming and expensive. Many organizations pay for SSO licenses for contractors, and have to manage their access separately.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xbnxzBLH0iZJ18futfvJx/c64c87447781e493e67395422ca03143/icon_server-3_blue_48px.svg"
+									}
+								},
+								"iconAssetFile": {
+									"id": "096de851-410f-5df1-8f9a-58dd4a411b44",
+									"altText": "Server 3 blue",
+									"title": "Server 3 blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2368,
+										"height": 192,
+										"width": 192,
+										"filename": "server-3-blue.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/server-3-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "vvuBXCpfIIP4s9IPxU4w7",
+								"title": "Slower productivity onramp",
+								"titleSize": null,
+								"description": "Because it's harder to manage their access, contractors end up wasting hours or days waiting for the tools they need. ",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1S37cDq0i3ZNu51iqW2BnU/d290286d879b76387556e8efb2f3830f/icon_device-mobile_blue_48px.svg"
+									}
+								},
+								"iconAssetFile": {
+									"id": "c105eba9-14b5-5b6d-9d29-aefcc9064ed6",
+									"altText": "Device mobile blue",
+									"title": "Device mobile blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 242,
+										"height": 192,
+										"width": 192,
+										"filename": "device-mobile-blue.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/device-mobile-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					},
 					{
 						"contentfulId": "2AFfGE36EqG5E0npnk2ror",
