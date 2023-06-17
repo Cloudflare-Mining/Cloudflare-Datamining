@@ -64,6 +64,150 @@
 						"backgroundColor": "blue5"
 					},
 					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "70Il4X62A37cPxf97qmEgo",
+						"menuTitle": "Zero Trust & SASE",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "5yQ7qOG5YMtgCKBnS1dEDF",
+								"linkText": "Pricing",
+								"page": null,
+								"url": "/plans/zero-trust-services/",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "1km56yP6vf7r4Nx1pgEs9H",
+								"linkText": "Services",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "7iTBf8dnqrOhNIlOnhuI68",
+										"linkText": "Access (ZTNA)",
+										"page": null,
+										"url": "/products/zero-trust/access"
+									},
+									{
+										"contentfulId": "67KsgUQP4xNLDqvlRnWfDk",
+										"linkText": "Gateway (SWG)",
+										"page": null,
+										"url": "/products/zero-trust/gateway"
+									},
+									{
+										"contentfulId": "EE4vIuUPld0U1uz8b4KgV",
+										"linkText": "Browser Isolation",
+										"page": null,
+										"url": "/products/zero-trust/browser-isolation"
+									},
+									{
+										"contentfulId": "76s7oENCn73FZhugtuI9c6",
+										"linkText": "CASB",
+										"page": null,
+										"url": "https://www.cloudflare.com/products/zero-trust/casb/"
+									},
+									{
+										"contentfulId": "1aJ424vC1rwgiH4apcJhrr",
+										"linkText": "Data Loss Prevention (DLP)",
+										"page": null,
+										"url": "/products/zero-trust/dlp"
+									},
+									{
+										"contentfulId": "4fqU9qBCakRwiZ1mNr9Yrb",
+										"linkText": "Cloud Email Security",
+										"page": null,
+										"url": "products/zero-trust/email-security/"
+									}
+								]
+							},
+							{
+								"contentfulId": "7etJU93erWBUQPdDbjYBWX",
+								"linkText": "Solutions",
+								"page": null,
+								"url": "/solutions/secure-hybrid-work/",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "7oqf8k1Rn0L1np5ZuVuPDA",
+								"linkText": "Analyst reports",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "7n1SFluiwc5jmELGLrQz6z",
+										"linkText": "Gartner® Market Guide for Email Security, 2023",
+										"page": null,
+										"url": "/lp/gartner-email-security-guide-2023/"
+									},
+									{
+										"contentfulId": "66ZpjOLSKQuzNq0Br8o7i7",
+										"linkText": "KuppingerCole Leadership Compass for ZTNA, 2022",
+										"page": null,
+										"url": "https://www.cloudflare.com/lp/kuppingercole-ztna-report/"
+									},
+									{
+										"contentfulId": "5OJUVGJiDuwGsyiZ29lBYw",
+										"linkText": "451 Research Market Insights Report, July 2021",
+										"page": null,
+										"url": "lp/market-insight-report-451-research/"
+									},
+									{
+										"contentfulId": "6abtNwu4GEGUSBgSXsNzbs",
+										"linkText": "Omdia Market Radar: Zero Trust Access",
+										"page": null,
+										"url": "https://www.cloudflare.com/lp/omdia-zero-trust/"
+									},
+									{
+										"contentfulId": "3cCBOUESQWpQVv236SHc7j",
+										"linkText": "Gartner® Hype Cycle™ for Network Security, 2021",
+										"page": null,
+										"url": "https://www.cloudflare.com/lp/gartner-hype-cycle-for-network-security/"
+									},
+									{
+										"contentfulId": "46nntnGfuOSt63lFxYqbsd",
+										"linkText": "Forrester Opportunity Snapshot: Zero Trust",
+										"page": null,
+										"url": "https://www.cloudflare.com/lp/forrester-opportunity-snapshot-zero-trust/"
+									}
+								]
+							},
+							{
+								"contentfulId": "1MPnz4oklmxIn6d5MfI1x0",
+								"linkText": "Resources",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "3Ko7yh630HKRG9uuKTmq59",
+										"linkText": "Case Studies",
+										"page": null,
+										"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "1w8r7NiYjDJPtNDraIkvhP",
+										"linkText": "Zero Trust integrations",
+										"page": null,
+										"url": "/products/zero-trust/integrations"
+									},
+									{
+										"contentfulId": "KxYYsyoMmFhVrH8ESEj7c",
+										"linkText": "White Papers & Product Guides",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce"
+									},
+									{
+										"contentfulId": "1awgo4XNStilPgkAKZNekC",
+										"linkText": "Documentation",
+										"page": null,
+										"url": "https://developers.cloudflare.com/cloudflare-one/"
+									}
+								]
+							}
+						]
+					},
+					{
 						"contentfulId": "5F7zIZbxV5vOxZr4742XWk",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare DLP",
@@ -508,36 +652,6 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/562EVEt5kDuDVM1m6EjKly/4592971848b06dbe3a14d1b9a25115a3/arrow_shielkd.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "77IyOZ6d1h7EZo8B3o2gHf",
-								"title": "Cloudflare Zero Trust overview",
-								"titleSize": null,
-								"description": "Learn more about the benefits, features, and deployment outcomes of Cloudflare's Zero Trust platform.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oicnCVm9er8tbGgIR3JTV/292a4d7ef97ce11f82d343fd1a1413e8/Product_Brief__Cloudflare_Zero_Trust__2022_Q2_.pdf",
-								"learnMoreText": "Download brief",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "0dd221e8-78f7-5cfa-b0cb-f1c98d71180c",
-									"altText": "A Bridge to Zero Trust",
-									"title": "A Bridge to Zero Trust",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5SLvWl1TOahXYcvTzRwIrz/69bf3d8747c634d0512395b88391e1a3/Bridge_to_Zero_Trust_.png"
 										}
 									},
 									"brandfolderAsset": null,
