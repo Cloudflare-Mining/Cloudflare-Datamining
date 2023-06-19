@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/itty-router-openapi",
 	"dist-tags": {
-		"latest": "0.1.6"
+		"latest": "0.1.7"
 	},
 	"versions": {
 		"0.0.1": {
@@ -907,6 +907,49 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQDQNcoymWnUhDCld1mEQ8Oy7a/5PlwerGoUT7rQ9pL50AIgXCwMIaVXBOCxJJm3roSMORe9iKwuJDSwW+fV/m+c3Jg="
+					}
+				]
+			}
+		},
+		"0.1.7": {
+			"name": "@cloudflare/itty-router-openapi",
+			"version": "0.1.7",
+			"dependencies": {
+				"itty-router": "^4.0.11"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.18.0",
+				"@commitlint/cli": "^13.1.0",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@rollup/plugin-terser": "^0.2.1",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@types/jest": "^29.0.0",
+				"@typescript-eslint/eslint-plugin": "^4.31.1",
+				"@typescript-eslint/parser": "^4.31.1",
+				"eslint": "^7.32.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.2",
+				"isomorphic-fetch": "^3.0.0",
+				"jest": "^29.0.0",
+				"jest-openapi": "^0.14.2",
+				"pinst": "^2.1.6",
+				"prettier": "^2.4.0",
+				"rollup": "^3.8.1",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"ts-jest": "^29.0.0",
+				"typescript": "^4.8.4"
+			},
+			"dist": {
+				"integrity": "sha512-ER4MJw+3K4hgu/aGmA9kYciUdW0cOWsgOJFSOoUzsEhRMckf2pHxggfU8bHjJ3Jw/VySI1kMicDM9LVnHGW/pw==",
+				"shasum": "910d3f44b40a527bc27f63bd0937983b4a2d39a7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.7.tgz",
+				"fileCount": 12,
+				"unpackedSize": 78514,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD4UMXxV3xj9Zf9SNN0CEQ4fp5HfoubZiFOLIAtQaqjFgIhAJa1b3ZCo3GYxg/Qo9Gq3iWB+AAO9pF11E/U88JsE9C8"
 					}
 				]
 			}
