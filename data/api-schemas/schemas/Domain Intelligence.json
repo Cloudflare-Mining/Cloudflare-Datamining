@@ -165,6 +165,9 @@
 													"example": "cloudflare.com",
 													"type": "string"
 												},
+												"inherited_from": {
+													"description": "Domain from which `content_categories` and `risk_types` are inherited, if applicable."
+												},
 												"popularity_rank": {
 													"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
 													"type": "integer"
@@ -205,7 +208,7 @@
 				},
 				"description": "Get Domain Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -349,6 +352,9 @@
 															"example": "cloudflare.com",
 															"type": "string"
 														},
+														"inherited_from": {
+															"description": "Domain from which `content_categories` and `risk_types` are inherited, if applicable."
+														},
 														"popularity_rank": {
 															"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
 															"type": "integer"
@@ -480,9 +486,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Domain Details",
@@ -676,6 +679,9 @@
 														"example": "cloudflare.com",
 														"type": "string"
 													},
+													"inherited_from": {
+														"description": "Domain from which `content_categories` and `risk_types` are inherited, if applicable."
+													},
 													"popularity_rank": {
 														"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
 														"type": "integer"
@@ -699,7 +705,7 @@
 				},
 				"description": "Get Multiple Domain Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -863,6 +869,9 @@
 																"example": "cloudflare.com",
 																"type": "string"
 															},
+															"inherited_from": {
+																"description": "Domain from which `content_categories` and `risk_types` are inherited, if applicable."
+															},
 															"popularity_rank": {
 																"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
 																"type": "integer"
@@ -977,9 +986,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Multiple Domain Details",
