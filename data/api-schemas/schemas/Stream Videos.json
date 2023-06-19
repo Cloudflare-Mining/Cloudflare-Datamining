@@ -1307,6 +1307,15 @@
 				}
 			},
 			{
+				"in": "header",
+				"name": "Upload-Metadata",
+				"schema": {
+					"description": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded.\nSupported keys: name, requiresignedurls, allowedorigins, thumbnailtimestamppct, watermark.",
+					"example": "name aGVsbG8gd29ybGQ=, requiresignedurls, allowedorigins ZXhhbXBsZS5jb20sdGVzdC5jb20=",
+					"type": "string"
+				}
+			},
+			{
 				"in": "path",
 				"name": "account_identifier",
 				"required": true,
