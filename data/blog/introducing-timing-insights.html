@@ -1,0 +1,158 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/xi31J0JmYNP5dcB-gEsTujRYG1gyFUsod_Fx7XPsjPwwxTQBIOFwTy9m0jPNQabe0bi5oUSwJHo5ubAq9rcAhgTXsqlTcoi9rpLM5pwoAwY-Yj8vuothGdHJHJbz4EDjZ_Nb0mzrcpriF7uXrgsP60A" class="kg-image" alt="" loading="lazy" width="624" height="351"></figure>
+	<p>If you care about the performance of your website or APIs, it’s critical to understand why things are slow.</p>
+	<p>Today we're introducing new analytics tools to help you understand what is contributing to "Time to First Byte" (TTFB) of Cloudflare and your origin. TTFB is just a simple timer from when a client sends a request until it receives the first byte in response. Timing Insights breaks down TTFB from the perspective of our servers to help you understand <em>what </em>is slow, so that you can begin addressing it.</p>
+	<p>But wait – maybe you've heard that <a href="https://blog.cloudflare.com/ttfb-time-to-first-byte-considered-meaningles">you should stop worrying about TTFB</a>? Isn't Cloudflare <a href="https://blog.cloudflare.com/ttfb-is-not-what-it-used-to-be">moving away</a> from TTFB as a metric? Read on to understand why there are still situations where TTFB matters.</p>
+	<h3 id="why-you-may-need-to-care-about-ttfb">Why you may need to care about TTFB</h3>
+	<p>It's true that TTFB on its own can be a misleading metric. When measuring web applications, metrics like <a href="https://web.dev/vitals" target="_blank">Web Vitals</a> provide a more holistic view into user experience. That's why we offer Web Analytics and Lighthouse within <a href="https://blog.cloudflare.com/cloudflare-observatory-generally-available">Cloudflare Observatory</a>.</p>
+	<p>But there are two reasons why you still may need to pay attention to TTFB:</p>
+	<p><strong>1. Not all applications are websites</strong><br>More than half of Cloudflare traffic is for APIs, and many customers with API traffic don't control the environments where those endpoints are called. In those cases, there may not be anything you can monitor or improve besides TTFB.</p>
+	<p><strong>2. Sometimes TTFB is the problem</strong><br>Even if you are measuring Web Vitals metrics like LCP, sometimes the reason your site is slow is because TTFB is slow! And when that happens, you need to know why, and what you can do about it.</p>
+	<p>When you need to know why TTFB is slow, we’re here to help.</p>
+	<h3 id="how-timing-insights-can-help">How Timing Insights can help</h3>
+	<p>We now expose performance data through our <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank">GraphQL Analytics API</a> that will let you query TTFB performance, and start to drill into what contributes to TTFB.</p>
+	<p>Specifically, customers on our Pro, Business, and Enterprise plans can now query for the following fields in the <code>httpRequestsAdaptiveGroups</code> dataset:</p>
+	<p><strong>Time to First Byte</strong> (edgeTimeToFirstByteMs)</p>
+	<p>What is the time elapsed between when Cloudflare started processing the first byte of the request received from an end user, until when we started sending a response?</p>
+	<p><strong>Origin DNS lookup time</strong> (edgeDnsResponseTimeMs)</p>
+	<p>If Cloudflare had to <a href="https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup" target="_blank">resolve a CNAME</a> to reach your origin, how long did this take?</p>
+	<p><strong>Origin Response Time </strong>(originResponseDurationMs)</p>
+	<p>How long did it take to reach, and receive a response from your origin?</p>
+	<p>We are exposing each metric as an average, median, 95th, and 99th percentiles (i.e. P50 / P95 / P99).</p>
+	<p>The <code>httpRequestAdaptiveGroups</code> dataset powers the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fanalytics%2Ftraffic" target="_blank">Traffic</a> analytics page in our dashboard, and represents all of the HTTP requests that flow through our network. The upshot is that this dataset gives you the ability to filter and “group by” any aspect of the HTTP request.</p>
+	<h3 id="an-example-of-how-to-use-timing-insights">An example of how to use Timing Insights</h3>
+	<p>Let’s walk through an example of how you’d actually use this data to pin-point a problem.</p>
+	<p>To start with, I want to understand the lay of the land by querying TTFB at various quantiles:</p><!--kg-card-begin: markdown-->
+	<pre><code>query TTFBQuantiles($zoneTag: string) {
+  viewer {
+    zones(filter: {zoneTag: $zoneTag}) {
+      httpRequestsAdaptiveGroups {
+        quantiles {
+          edgeTimeToFirstByteMsP50
+          edgeTimeToFirstByteMsP95
+          edgeTimeToFirstByteMsP99
+        }
+      }
+    }
+  }
+}
+
+Response:
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "httpRequestsAdaptiveGroups": [
+            {
+              "quantiles": {
+                "edgeTimeToFirstByteMsP50": 32,
+                "edgeTimeToFirstByteMsP95": 1392,
+                "edgeTimeToFirstByteMsP99": 3063,
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>This shows that TTFB is over 1.3 seconds at P95 – that’s fairly slow, given that <a href="https://web.dev/lcp" target="_blank">best practices</a> are for 75% of pages to <em>finish rendering</em> within 2.5 seconds, and TTFB is just one component of LCP.</p>
+	<p>If I want to dig into why TTFB, it would be helpful to understand <em>which URLs</em> are slowest. In this query I’ll filter to that slowest 5% of page loads, and now look at the <em>aggregate</em> time taken – this helps me understand which pages contribute most to slow loads:</p><!--kg-card-begin: markdown-->
+	<pre><code>query slowestURLs($zoneTag: string, $filter:filter) {
+  viewer {
+    zones(filter: {zoneTag: $zoneTag}) {
+      httpRequestsAdaptiveGroups(limit: 3, filter: {edgeTimeToFirstByteMs_gt: 1392}, orderBy: [sum_edgeTimeToFirstByteMs_DESC]) {
+        sum {
+          edgeTimeToFirstByteMs
+        }
+        dimensions {
+          clientRequestPath
+        }
+      }
+    }
+  }
+}
+
+Response:
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "httpRequestsAdaptiveGroups": [
+            {
+              "dimensions": {
+                "clientRequestPath": "/api/v2"
+              },
+              "sum": {
+                "edgeTimeToFirstByteMs": 1655952
+              }
+            },
+            {
+              "dimensions": {
+                "clientRequestPath": "/blog"
+              },
+              "sum": {
+                "edgeTimeToFirstByteMs": 167397
+              }
+            },
+            {
+              "dimensions": {
+                "clientRequestPath": "/"
+              },
+              "sum": {
+                "edgeTimeToFirstByteMs": 118542
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Based on this query, it looks like the <code>/api/v2</code> path is most often responsible for these slow requests. In order to know how to fix the problem, we need to know <em>why</em> these pages are slow. To do this, we can query for the average (mean) DNS and origin response time for queries on these paths, where TTFB is above our P95 threshold:</p><!--kg-card-begin: markdown-->
+	<pre><code>query originAndDnsTiming($zoneTag: string, $filter:filter) {
+  viewer {
+    zones(filter: {zoneTag: $zoneTag}) {
+      httpRequestsAdaptiveGroups(filter: {edgeTimeToFirstByteMs_gt: 1392, clientRequestPath_in: [$paths]}) {
+        avg {
+          originResponseDurationMs
+          edgeDnsResponseTimeMs
+        }
+      }
+    }
+}
+
+Response:
+{
+  "data": {
+    "viewer": {
+      "zones": [
+        {
+          "httpRequestsAdaptiveGroups": [
+            {
+              "average": {
+                "originResponseDurationMs": 4955,
+                "edgeDnsResponseTimeMs": 742,
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>According to this, most of the long TTFB values are actually due to resolving DNS! The good news is that’s something we can fix – for example, by setting longer TTLs with my DNS provider.</p>
+	<h3 id="conclusion">Conclusion</h3>
+	<p>Coming soon, we’ll be bringing this to Cloudflare Observatory in the dashboard so that you can easily explore timing data via the UI.</p>
+	<p>And we’ll be adding even more granular metrics so you can see exactly which components are contributing to high TTFB. For example, we plan to separate out the difference between origin “connection time” (how long it took to establish a TCP and/or TLS connection) vs “application response time” (how long it took an HTTP server to respond).</p>
+	<p>We’ll also be making improvements to our GraphQL API to allow more flexible querying – for example, the ability to query arbitrary percentiles, not just 50th, 95th, or 99th.</p>
+	<p>Start using the <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank">GraphQL API</a> today to get Timing Insights, or hop on the discussion about our Analytics products in <a href="https://discord.com/channels/595317990191398933/1115387663982276648" target="_blank">Discord</a>.</p>
+</div>
