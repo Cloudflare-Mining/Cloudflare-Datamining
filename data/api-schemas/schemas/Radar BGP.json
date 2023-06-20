@@ -668,7 +668,7 @@
 		}
 	},
 	"GET /radar/bgp/routes/moas": {
-		"description": "List all Multi-origin AS prefixes on the global routing tables.",
+		"description": "List all Multi-origin AS (MOAS) prefixes on the global routing tables.",
 		"operationId": "radar_get_Ks",
 		"parameters": [
 			{
@@ -790,7 +790,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "List all Multi-origin AS prefixes on the global routing tables.",
+		"summary": "Get MOASes",
 		"tags": [
 			"Radar BGP"
 		],
@@ -932,7 +932,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Lookup prefix-to-origin mapping on global routing tables",
+		"summary": "Get prefix-to-origin mapping",
 		"tags": [
 			"Radar BGP"
 		],
@@ -1125,7 +1125,7 @@
 	},
 	"GET /radar/bgp/timeseries": {
 		"description": "Gets BGP updates change over time. Raw values are returned. When requesting updates of an autonomous system (AS), only BGP updates of type announcement are returned.",
-		"operationId": "radar_get_qs",
+		"operationId": "radar_get_Ns",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",

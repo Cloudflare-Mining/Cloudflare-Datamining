@@ -1391,6 +1391,19 @@
 				}
 			},
 			{
+				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"items": {
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+						"example": "15169",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",

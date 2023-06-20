@@ -1,7 +1,7 @@
 {
-	"GET /radar/performance/iqi/summary": {
+	"GET /radar/quality/iqi/summary": {
 		"description": "Percentiles for the specified metric from the Radar Internet Quality Index (IQI).",
-		"operationId": "radar_get_mr",
+		"operationId": "radar_get__iqi_summary",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -200,7 +200,7 @@
 		],
 		"summary": "Get a summary of Bandwidth, Latency or DNS response time percentiles from the Radar Internet Quality Index (IQI)",
 		"tags": [
-			"Radar Performance"
+			"Radar Quality"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -214,9 +214,9 @@
 			"pro": true
 		}
 	},
-	"GET /radar/performance/iqi/timeseries_groups": {
+	"GET /radar/quality/iqi/timeseries_groups": {
 		"description": "Percentiles for the specified metric from the Radar Internet Quality Index (IQI).",
-		"operationId": "radar_get_pr",
+		"operationId": "radar_get__iqi_timeseries_groups",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -456,7 +456,7 @@
 		],
 		"summary": "Get a time series of Bandwidth, Latency or DNS response time percentiles from the Radar Internet Quality Index (IQI)",
 		"tags": [
-			"Radar Performance"
+			"Radar Quality"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -470,9 +470,9 @@
 			"pro": true
 		}
 	},
-	"GET /radar/performance/speed/histogram": {
+	"GET /radar/quality/speed/histogram": {
 		"description": "Amount of speed tests over a fixed time range, split into fixed bandwidth (Mbps), latency (Ms) or jitter (Ms) buckets.",
-		"operationId": "radar_get_fr",
+		"operationId": "radar_get__speed_histogram",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -634,7 +634,7 @@
 		],
 		"summary": "Get a histogram with the number of speed tests per measured bandwidth, latency or jitter",
 		"tags": [
-			"Radar Performance"
+			"Radar Quality"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -648,9 +648,9 @@
 			"pro": true
 		}
 	},
-	"GET /radar/performance/speed/summary": {
+	"GET /radar/quality/speed/summary": {
 		"description": "Aggregated metrics (weighted averages) from Cloudflare Speed Test data over a fixed time range.",
-		"operationId": "radar_get_lr",
+		"operationId": "radar_get__speed_summary",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -801,7 +801,7 @@
 		],
 		"summary": "Get a summary of Cloudflare Speed Test metrics such as bandwidth, latency, jitter, and packet loss",
 		"tags": [
-			"Radar Performance"
+			"Radar Quality"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -815,9 +815,9 @@
 			"pro": true
 		}
 	},
-	"GET /radar/performance/speed/top/ases": {
+	"GET /radar/quality/speed/top/ases": {
 		"description": "Top autonomous systems over a fixed time range, ordered by the given metric.",
-		"operationId": "radar_get_xr",
+		"operationId": "radar_get__speed_top_ases",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -1112,7 +1112,7 @@
 		],
 		"summary": "Get top autonomous systems from Cloudflare Speed Test data ordered by metrics such as bandwidth, latency, jitter, and packet loss",
 		"tags": [
-			"Radar Performance"
+			"Radar Quality"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
@@ -1126,9 +1126,9 @@
 			"pro": true
 		}
 	},
-	"GET /radar/performance/speed/top/locations": {
+	"GET /radar/quality/speed/top/locations": {
 		"description": "Top locations over a fixed time range, ordered by the given metric.",
-		"operationId": "radar_get_wr",
+		"operationId": "radar_get__speed_top_locations",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -1423,7 +1423,7 @@
 		],
 		"summary": "Get top locations from Cloudflare Speed Test data ordered by metrics such as bandwidth, latency, jitter, and packet loss",
 		"tags": [
-			"Radar Performance"
+			"Radar Quality"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
