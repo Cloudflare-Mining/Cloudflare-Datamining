@@ -247,7 +247,7 @@
 	function Me(e, o, n, s) {
 		var d = "https://challenges.cloudflare.com";
 		if (!1) var h;
-		var f = "h/".concat("g", "/");
+		var f = "h/".concat("b", "/");
 		return "".concat(d, "/cdn-cgi/challenge-platform/").concat(f, "turnstile/if/ov2/av0/rcv").concat(s, "/").concat(e, "/").concat(o, "/").concat(n.theme, "/").concat(n.size)
 	}
 
@@ -562,7 +562,7 @@
 									cData: r.cData,
 									chlPageData: r.chlPageData,
 									rcV: r.rcV,
-									ch: "6cdb09c9",
+									ch: "19ad4730",
 									url: rt(),
 									retry: r.params.retry,
 									"retry-interval": r.params["retry-interval"],
