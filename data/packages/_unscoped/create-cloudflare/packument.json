@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"latest": "2.0.10",
 		"next": "2.0.0",
-		"beta": "0.0.0-436f752d"
+		"beta": "0.0.0-c5f3bf45"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1846,6 +1846,62 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQD7PARy21CeoG8G0/9m2ijPG6YEytPMSKB+JJEw4ijWVQIhAKOX658gQLWrHjPDKHTBPYZezdyp1LVaH3JEuKuJva9a"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13.0"
+			}
+		},
+		"0.0.0-c5f3bf45": {
+			"name": "create-cloudflare",
+			"version": "0.0.0-c5f3bf45",
+			"devDependencies": {
+				"@babel/parser": "^7.21.3",
+				"@babel/types": "^7.21.4",
+				"@clack/prompts": "^0.6.3",
+				"@cloudflare/eslint-config-worker": "*",
+				"@cloudflare/workers-tsconfig": "*",
+				"@cloudflare/workers-types": "^4.20230419.0",
+				"@types/command-exists": "^1.2.0",
+				"@types/cross-spawn": "^6.0.2",
+				"@types/esprima": "^4.0.3",
+				"@types/node": "^18.15.3",
+				"@types/which-pm-runs": "^1.0.0",
+				"@types/yargs": "^17.0.22",
+				"@typescript-eslint/eslint-plugin": "^5.55.0",
+				"@typescript-eslint/parser": "^5.55.0",
+				"chalk": "^5.2.0",
+				"command-exists": "^1.2.9",
+				"cross-spawn": "^7.0.3",
+				"esbuild": "^0.17.12",
+				"execa": "^7.1.1",
+				"haikunator": "^2.1.2",
+				"log-update": "^5.0.1",
+				"open": "^8.4.0",
+				"recast": "^0.22.0",
+				"semver": "^7.5.1",
+				"typescript": "^5.0.2",
+				"undici": "5.20.0",
+				"vite-tsconfig-paths": "^4.0.8",
+				"vitest": "^0.30.0",
+				"which-pm-runs": "^1.1.0",
+				"wrangler": "*",
+				"yargs": "^17.7.1"
+			},
+			"bin": {
+				"create-cloudflare": "dist/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-Tcs++2olvqH7xsPviOulCwvOes8DLucczTyr/THiR0w7/9MvCgg+x3PsCdoahduDZD03FnLThetwrhfs4o8JhQ==",
+				"shasum": "508d3891c0f85f8421a74746c0295cae1d1acea1",
+				"tarball": "https://registry.npmjs.org/create-cloudflare/-/create-cloudflare-0.0.0-c5f3bf45.tgz",
+				"fileCount": 69,
+				"unpackedSize": 2653094,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAzr+aARAvw68K+8rrj5JscsiaFll8LgvhIhzxIgH0lEAiEAr2yPMipPL63qaAoV2YWTgynREJfFLMCRgEK64kuqO/Q="
 					}
 				]
 			},
