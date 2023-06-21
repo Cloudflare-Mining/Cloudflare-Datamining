@@ -16,7 +16,6 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Help guide our overall security and privacy policy and governance architecture</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Have input and contribute to into the overall security compliance strategy and roadmap</span></li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">3 years experience minimum working in Security Compliance</span></li>
@@ -29,40 +28,6 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work efficiently and independently in a fast-paced, high-volume environment</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Some travel may be required to engage with regulators and auditors</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">CISSP, CIPP, CIPM, CIPT is a plus</span></li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
-<ul>
-	<li>For Colorado-based hires: Estimated annual salary of $128,000 - $156,000</li>
-	<li>For New York City-based and California (excluding Bay Area) and Washington hires: Estimated annual salary of $132,000 - $162,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $140,000 - $171,000</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
-<p><strong>Benefits</strong></p>
-<p><span style="font-weight: 400;">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</span></p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Medical/Rx Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Dental Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Vision Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Commuter Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fertility &amp; Family Forming Benefits</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">On-demand mental health support and Employee Assistance Program</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Global Travel Medical Insurance</span></li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Short and Long Term Disability Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Life &amp; Accident Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">401(k) Retirement Savings Plan</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee Stock Participation Plan</span></li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
