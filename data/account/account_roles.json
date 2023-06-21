@@ -1,5 +1,43 @@
 [
 	{
+		"id": "1b20b8701ab8a22f0229ff1c831a9e27",
+		"name": "Page Shield Read",
+		"description": "Grants read access to Page Shield across the whole account",
+		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "344b7dd765da5a9de6230f7540cabb20",
+		"name": "Page Shield",
+		"description": "Grants write access to Page Shield across the whole account",
+		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "9f436dc7d8294a34345b6a8dc83fdf71",
 		"name": "Cloudflare DEX",
 		"description": "Can edit Cloudflare DEX.",
