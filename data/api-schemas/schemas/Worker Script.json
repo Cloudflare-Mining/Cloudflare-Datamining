@@ -210,6 +210,29 @@
 														"example": "smart",
 														"type": "string"
 													},
+													"tail_consumers": {
+														"description": "List of Workers that will consume logs from the attached Worker.",
+														"items": {
+															"description": "A reference to a script that will consume logs from the attached Worker.",
+															"properties": {
+																"environment": {
+																	"description": "Optional environment if the Worker utilizes one.",
+																	"example": "production",
+																	"type": "string"
+																},
+																"service": {
+																	"description": "Name of Worker that is to be the consumer.",
+																	"example": "my-log-consumer",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"service"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
 													"usage_model": {
 														"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
 														"example": "unbound",
@@ -350,6 +373,29 @@
 																"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
 																"example": "smart",
 																"type": "string"
+															},
+															"tail_consumers": {
+																"description": "List of Workers that will consume logs from the attached Worker.",
+																"items": {
+																	"description": "A reference to a script that will consume logs from the attached Worker.",
+																	"properties": {
+																		"environment": {
+																			"description": "Optional environment if the Worker utilizes one.",
+																			"example": "production",
+																			"type": "string"
+																		},
+																		"service": {
+																			"description": "Name of Worker that is to be the consumer.",
+																			"example": "my-log-consumer",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"service"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
 															},
 															"usage_model": {
 																"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
@@ -1076,6 +1122,29 @@
 															"example": "smart",
 															"type": "string"
 														},
+														"tail_consumers": {
+															"description": "List of Workers that will consume logs from the attached Worker.",
+															"items": {
+																"description": "A reference to a script that will consume logs from the attached Worker.",
+																"properties": {
+																	"environment": {
+																		"description": "Optional environment if the Worker utilizes one.",
+																		"example": "production",
+																		"type": "string"
+																	},
+																	"service": {
+																		"description": "Name of Worker that is to be the consumer.",
+																		"example": "my-log-consumer",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"service"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
 														"usage_model": {
 															"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
 															"example": "unbound",
@@ -1117,6 +1186,12 @@
 											"logpush": false,
 											"modified_on": "2022-05-20T19:02:56.446492Z",
 											"placement_mode": "smart",
+											"tail_consumers": [
+												{
+													"environment": "production",
+													"service": "my-log-consumer"
+												}
+											],
 											"usage_model": "bundled"
 										},
 										"success": true
@@ -1146,6 +1221,12 @@
 											"id": "this-is_my_script-01",
 											"logpush": false,
 											"modified_on": "2022-05-20T19:02:56.446492Z",
+											"tail_consumers": [
+												{
+													"environment": "production",
+													"service": "my-log-consumer"
+												}
+											],
 											"usage_model": "bundled"
 										},
 										"success": true
