@@ -11,22 +11,18 @@
 	<h3 id="request-routing-with-workers-kv-and-workers">Request routing with Workers KV and Workers</h3>
 	<p>Every Kinsta-hosted domain is a key, and its value contains at least the core settings, like the origin's IP and port, and a unique random ID. With this data easily available in Workers KV, we can use Workers to analyze, manipulate, and route requests to their expected backend. We also use Workers KV to store customer optimization options like Polish, Image Resizing, and Auto Minify.</p>
 	<p>To route requests to custom IPs and ports, we use resolveOverride, a Cloudflare-specific <a href="https://developers.cloudflare.com/workers/runtime-apis/request/#requestinitcfproperties" target="_blank">Request property</a>. Here's an example:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">&lt;pre&gt;&lt;code class="language-javascript"&gt;
-// Assign KV values to variables
+	<pre><code class="language-javascript">// Assign KV values to variables
 const { customBackend } = kvdata.kinstaConf;
 
 // Override the backend
 cf.resolveOverride = customBackend;
-&lt;/code&gt;&lt;/pre&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>However, while Workers KV worked well to route requests, we soon noticed inconsistent responses in our cache. Sometimes a customer activated Polish and, due to Workers KV's one-minute cache, new requests arrived before Workers KV fully propagated the change, causing us to cache non-optimized assets. When this happened, the client had to clear their cache again manually. Not the ideal scenario. Clients got frustrated, and we wasted API operations and GCP bandwidth, constantly purging caches.</p>
 	<h3 id="cache-key-is-the-key">Cache key is the key</h3>
 	<p>Since we always read the domain's Workers KV data, we realized we could route requests and customize the cache key, appending things like the domain's ID and features that could affect the asset, like Polish. Today, our cache key is heavily customized to quickly reflect every client's change in our panel or API. By modifying the cache key using Workers KV's data, nobody needs to worry about clearing the cache anymore. As soon as Workers KV propagates the changes, the cache key also changes and we request and cache a fresh asset.</p>
 	<p>The easiest way to customize the cache key is to append <code>query params</code> to it. For example:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">&lt;pre&gt;&lt;code class="language-javascript"&gt;
-let cacheKey = `${request.url}?custom-cache-param-polish=lossy`
-&lt;/code&gt;&lt;/pre&gt;
+	<pre><code class="language-javascript">let cacheKey = `${request.url}?custom-cache-param-polish=lossy`
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Of course, you need to check the URL for existing parameters to determine which connector to use — <code>?</code> or <code>&amp;</code> — and ensure you are using a unique identifier.</p>
@@ -39,8 +35,7 @@ let cacheKey = `${request.url}?custom-cache-param-polish=lossy`
 	<p>However, unlike many applications, we can't cache Workers KV for extended periods. Kinsta's customers are constantly trying new features, changing Polish and Auto Minify settings, sometimes excluding pages or extensions from being cached, and they want to see their changes in production as soon as possible.</p>
 	<p>That's when we decided to microcache our Workers KV data — caching dynamic or constantly-changed content for a very short period of time, usually less than 60 seconds.</p>
 	<p>It’s pretty simple to implement your own Workers KV caching logic. For example:</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">&lt;pre&gt;&lt;code class="language-javascript"&gt;
-const handleKVCache = async (event, myCustomDomain) =&gt; {
+	<pre><code class="language-javascript">const handleKVCache = async (event, myCustomDomain) =&gt; {
   // Try to get KV from cache first
   const cache = caches.default;
   let site_data = await cache.match( `https://${myCustomDomain}/some-string-ID-kv-data/` );
@@ -63,7 +58,6 @@ const handleKVCache = async (event, myCustomDomain) =&gt; {
   
   return site_data;
 };
-&lt;/code&gt;&lt;/pre&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>(Optionally, you could use<a href="https://flareutils.pages.dev/betterkv" target="_blank"> FlareUtils' BetterKV</a>.)</p>
