@@ -2,7 +2,7 @@
 	"name": "@cloudflare/next-on-pages",
 	"dist-tags": {
 		"latest": "1.1.0",
-		"beta": "0.0.0-1f930d3",
+		"beta": "0.0.0-14a0e77",
 		"pre-v1": "0.10.2"
 	},
 	"versions": {
@@ -6220,6 +6220,64 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQD7EbuYCrYisf59WBERN+I7G6gAcwpfuhlWEGGfaBoP0wIgP7sn7Iq3oEmAcB/3uahLAivzejHM3uUDBPBfhISAGhw="
+					}
+				]
+			}
+		},
+		"0.0.0-14a0e77": {
+			"name": "@cloudflare/next-on-pages",
+			"version": "0.0.0-14a0e77",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"ast-types": "^0.14.2",
+				"chalk": "^5.2.0",
+				"chokidar": "^3.5.3",
+				"cookie": "^0.5.0",
+				"esbuild": "^0.15.3",
+				"js-yaml": "^4.1.0",
+				"pcre-to-regexp": "^1.1.0",
+				"semver": "^7.5.1",
+				"zod": "^3.21.4",
+				"zodcli": "^0.0.4"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.26.0",
+				"@cloudflare/workers-types": "^4.20230404.0",
+				"@tsconfig/strictest": "^2.0.0",
+				"@types/cookie": "^0.5.1",
+				"@types/js-yaml": "^4.0.5",
+				"@types/mock-fs": "^4.13.1",
+				"@types/node": "^20.1.4",
+				"@typescript-eslint/eslint-plugin": "^5.58.0",
+				"@typescript-eslint/parser": "^5.58.0",
+				"dedent-tabs": "^0.10.3",
+				"eslint": "^8.35.0",
+				"mock-fs": "^5.2.0",
+				"p-limit": "^4.0.0",
+				"prettier": "^2.8.4",
+				"typescript": "^5.0.4",
+				"vitest": "^0.31.0",
+				"vitest-environment-miniflare": "^2.13.0",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"@cloudflare/eslint-config-next-on-pages": "*"
+			},
+			"peerDependencies": {
+				"vercel": "^30.0.0",
+				"wrangler": "^3.0.0"
+			},
+			"bin": {
+				"next-on-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-TKN5YI7R0fVficM3cmv165qsWnl1E/R+5Xfd+RxPjh3ekYwkoXyuk+xUhBYjgFOKtyiv08BjvFeNsLNAggNG8A==",
+				"shasum": "0e0c7f8550a2e4eba9c63f7836599f51306af2ea",
+				"tarball": "https://registry.npmjs.org/@cloudflare/next-on-pages/-/next-on-pages-0.0.0-14a0e77.tgz",
+				"fileCount": 14,
+				"unpackedSize": 560258,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBJvJqUxjgGyMCiNPsz52wWj9gvLAsabPCOoZjFoLRo0AiAG7drs8Hm++26JFHDkB2LDfZVKEFND2RihGj+UQ5rnwg=="
 					}
 				]
 			}
