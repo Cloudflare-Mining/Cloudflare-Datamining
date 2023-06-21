@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.2.15
+
+### Patch Changes
+
+- Updated dependencies [0a5513bf19]
+  - @cloudflare/component-time-period-picker@5.0.10
+
 ## 5.2.14
 
 ### Patch Changes

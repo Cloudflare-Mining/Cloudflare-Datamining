@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.10
+
+### Patch Changes
+
+- 0a5513bf19: Fix issue where custom time period clear button is always disabled
+
 ## 5.0.9
 
 ### Patch Changes
