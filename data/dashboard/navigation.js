@@ -216,7 +216,7 @@ const navigation = {
 		hasPermission: function(l) {
 			return !!(0, i.AB)(l)
 		},
-		tabs: w.DW
+		tabs: j.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -254,7 +254,7 @@ const navigation = {
 		hasPermission: function(l) {
 			return !!(0, i.zJ)(l)
 		},
-		tabs: w.$$
+		tabs: j.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
@@ -263,7 +263,7 @@ const navigation = {
 			var P = !!(0, i.Wq)(l) && !!(0, i.fO)(l);
 			return !!(0, i.Tk)(l) || P
 		},
-		tabs: w.Dn
+		tabs: j.Dn
 	}, {
 		title: "navigation.account.ip_addresses",
 		url: "/ip-addresses/ip-prefixes",
@@ -364,7 +364,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(l) {
 				var P = (0, y.tJ)(l);
-				return !(0, x.ky)(P, [z.uD.UnboundEnterpriseTrial])
+				return !(0, w.ky)(P, [z.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -622,7 +622,7 @@ const navigation = {
 		navigationType: "both",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: L.bB,
+		tabs: N.bB,
 		hasPermission: function(l) {
 			return !(0, u.yD)(l) && (0, M.m7)(l)
 		}
@@ -758,12 +758,12 @@ const navigation = {
 			title: "navigation.zone.security.waf",
 			url: "/security/waf",
 			navigationType: "version",
-			tabs: N.gn
+			tabs: L.gn
 		}, {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
-			tabs: N.mt
+			tabs: L.mt
 		}, {
 			title: "navigation.zone.security.bots",
 			url: "/security/bots",
@@ -784,7 +784,7 @@ const navigation = {
 				var P = (0, s.nA)(l);
 				return P ? !!(0, s.ZB)(l, "firewall", "api_shield_tab") && (0, s.tU)(P, "business") : !1
 			},
-			tabs: N.Dw
+			tabs: L.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
