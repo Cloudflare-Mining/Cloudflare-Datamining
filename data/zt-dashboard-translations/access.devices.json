@@ -241,7 +241,7 @@
 	"profile_name_column_title": "Profile name",
 	"region_specific_token_url_title": "Region-specific token URL",
 	"revoke_button": "Revoke access",
-	"revoke_desc": "This device will no longer be able to connect to Cloudflare Zero Trust, but the owner could still connect from other devices. To prevent that, you must remove the user from your device enrollment policy.",
+	"revoke_desc": "Revoking access will disconnect this device from your Zero Trust organization. The owner can re-enroll this device unless blocked by a device enrollment policy.",
 	"revoke_title": "<b>Revoke access for %{name}?</b>",
 	"revoke_title_no_name": "<b>Revoke access for this device?</b>",
 	"revoked_devices_error": "Error deleting device! %{err}",
