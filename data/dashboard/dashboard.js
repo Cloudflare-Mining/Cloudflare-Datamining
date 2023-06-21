@@ -1253,7 +1253,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				$n = t("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				qn = t("../react/app/components/LoadingSuspense.tsx"),
 				er = u().lazy(function() {
-					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(57217), t.e(60543), t.e(58583), t.e(7953), t.e(51557), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx"))
+					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(57217), t.e(45078), t.e(58583), t.e(7953), t.e(51557), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx"))
 				}),
 				tr = function() {
 					return u().createElement(qn.Z, null, u().createElement(er, null))
@@ -1315,7 +1315,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}, [o.search])
 				},
 				lr = u().lazy(function() {
-					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(57217), t.e(60543), t.e(3058), t.e(72019), t.e(35933), t.e(7953), t.e(51557), t.e(47261), t.e(99820), t.e(77637), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.js"))
+					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(57217), t.e(45078), t.e(3058), t.e(72019), t.e(35933), t.e(7953), t.e(51557), t.e(47261), t.e(99820), t.e(77637), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.js"))
 				}),
 				dr = u().lazy(function() {
 					return Promise.all([t.e(81175), t.e(51167), t.e(3058), t.e(7953), t.e(69088), t.e(99820), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx"))
@@ -2240,12 +2240,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = vn({}, {
-					branch: "cina/DEVX-764-fix-api-tokens-link",
+					branch: "nick/CUSTESC-29392",
 					isReleaseCandidate: "true",
-					commit: "eb259a8cb72c45af9b2e4f44d913ba6f401e7679",
+					commit: "cf6e269d83ff2641d7a3a4a2fd4c440c772aa9f5",
 					env: "production",
-					builtAt: 1687311499435,
-					dashVersion: "0b75c535d64e6c0f82eab8db8f65402648c25f74",
+					builtAt: 1687356545326,
+					dashVersion: "67799d213f61ccc9b7581aa1be33a67d5506076a",
 					versions: {
 						"@cloudflare/app-dash": "25.153.0",
 						node: "16.16.0",
