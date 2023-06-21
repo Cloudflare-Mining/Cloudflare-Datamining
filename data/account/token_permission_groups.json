@@ -72,6 +72,22 @@
 		]
 	},
 	{
+		"id": "08e61dabe81a422dab0dea6fdef1a98a",
+		"name": "Access: Custom Page Read",
+		"description": "Grants read access to Cloudflare Access Custom Pages",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "4e5fd8ac327b4a358e48c66fcbeb856d",
+		"name": "Access: Custom Page Write",
+		"description": "Grants write access to Cloudflare Access Custom Pages",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "0f4841f80adb4bada5a09493300e7f8d",
 		"name": "Access: Device Posture Read",
 		"description": "Grants read access to Cloudflare Access Device Posture",
@@ -123,6 +139,22 @@
 		"id": "a1c0fec57cf94af79479a6d827fa518c",
 		"name": "Access: Service Tokens Write",
 		"description": "Grants write access to Cloudflare Access Service Tokens",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "99ff99e4e30247a99d3777a8c4c18541",
+		"name": "Access: SSH Auditing CA Read",
+		"description": "Grants read access to Cloudflare Access SSH Auditing Certificate Authorities",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "d30c9ad8b5224e7cb8d41bcb4757effc",
+		"name": "Access: SSH Auditing CA Write",
+		"description": "Grants write access to Cloudflare Access SSH Auditing Certificate Authorities",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -608,6 +640,22 @@
 		]
 	},
 	{
+		"id": "945315185a8f40518bf3e9e6d0bee126",
+		"name": "Domain Page Shield Read",
+		"description": "Grants read access to Page Shield",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "6134079371904d8ebd77931c8ca07e50",
+		"name": "Domain Page Shield",
+		"description": "Grants write access to Page Shield",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
 		"id": "d8e12db741544d1586ec1d6f5d3c7786",
 		"name": "Dynamic URL Redirects Read",
 		"description": "Grants read access to Dynamic URL Redirect",
@@ -1050,9 +1098,9 @@
 	{
 		"id": "050531528b044d58bbb71666fef7c07c",
 		"name": "Page Shield Read",
-		"description": "Grants read access to Page Shield",
+		"description": "Grants read access to Page Shield across the whole account",
 		"scopes": [
-			"com.cloudflare.api.account.zone"
+			"com.cloudflare.api.account"
 		]
 	},
 	{
@@ -1061,6 +1109,14 @@
 		"description": "Grants write access to Page Shield",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "440e6958bcc947329f8d56328d7322ce",
+		"name": "Page Shield",
+		"description": "Grants write access to Page Shield",
+		"scopes": [
+			"com.cloudflare.api.account"
 		]
 	},
 	{
@@ -1243,6 +1299,22 @@
 		"id": "755c05aa014b4f9ab263aa80b8167bd8",
 		"name": "Turnstile Sites Write",
 		"description": "Grants write access to Turnstile",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "5d613a610b294788a29572aaac2f254d",
+		"name": "URL Scanner Read",
+		"description": "Grants read access to URL Scanner API",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "2a400bcb29154daab509fe07e3facab0",
+		"name": "URL Scanner Write",
+		"description": "Grants write access to URL Scanner API",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
