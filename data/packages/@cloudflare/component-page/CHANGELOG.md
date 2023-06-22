@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.0.0
+
+### Major Changes
+
+- de7a159611: Remove deprecated subtitle prop, add new navigation prop
+
 ## 7.2.12
 
 ### Patch Changes

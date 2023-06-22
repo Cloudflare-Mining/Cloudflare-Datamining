@@ -1,5 +1,12 @@
 # Change Log
 
+## 4.0.0
+
+### Patch Changes
+
+- Updated dependencies [de7a159611]
+  - @cloudflare/component-page@8.0.0
+
 ## 3.3.14
 
 ### Patch Changes
