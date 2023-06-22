@@ -5,35 +5,53 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>What You’ll Do</strong></h3>
-<p><span style="font-weight: 400;">Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</span></p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's technology and gain a deeper understanding of internet technologies. You will focus on providing support on our Core products: DNS, SSL, CDN, Load Balancing, etc..</p>
+<h3>Examples of desirable skills, knowledge and experience</h3>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-driven and capable of learning new technologies / systems / features with little guidance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fundamental understanding how the Internet works (OSI Model)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Advanced understanding of modern internet protocols like TCP and UDP</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Computer Networking fundamentals, experience with iptables and looking glass</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Packet capture analysis</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in command line and tools, including curl, dig, traceroute, openssl, git</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting DNS, SSL / TLS, HTTP</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience writing scripts in Bash, Python, JavaScript or other scripting language</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in working as part of a team in a customer-facing role</span></li>
+	<li>You have previous experience working as part of a team in a customer-facing role</li>
 </ul>
-<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate with customers via chat, email, and phone&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Product teams to improve the products and tools</span></li>
+	<li>You have experience solving HTTP, DNS and other networking-related problems</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are fluent in German, Japanese, French, Spanish, Portuguese, or Mandarin</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are familiar with Cloudflare and are actively using our platform</span></li>
+	<li>You understand how the Internet works</li>
+</ul>
+<ul>
+	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
+</ul>
+<ul>
+	<li>You are comfortable communicating through various support channels and always put the customer first</li>
+</ul>
+<ul>
+	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
+</ul>
+<h3>Bonus Points</h3>
+<ul>
+	<li>You are fluent in German, Japanese, French, Spanish, Portuguese or Mandarin</li>
+</ul>
+<ul>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+</ul>
+<ul>
+	<li>You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump)</li>
+</ul>
+<ul>
+	<li>You are familiar with Nginx, Apache, IIS or any other web servers</li>
+</ul>
+<ul>
+	<li>You are committed to gaining a deeper understanding of the following technologies: DNS /&nbsp; CDN - Cache / SSL / Cloudflare Workers</li>
+</ul>
+<ul>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+</ul>
+<ul>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+</ul>
+<ul>
+	<li>You have experience with Cloudflare Workers or JavaScript&nbsp;</li>
+</ul>
+<ul>
+	<li>You have experience with Video encoding and streaming solutions</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

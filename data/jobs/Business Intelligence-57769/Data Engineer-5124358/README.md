@@ -5,35 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>What You’ll Do</strong></h3>
-<p><span style="font-weight: 400;">Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</span></p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h4><strong>About the team</strong></h4>
+<p><span style="font-weight: 400;">The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</span></p>
+<h4><strong>About the role</strong></h4>
+<p><span style="font-weight: 400;">We are looking for an experienced Data Engineer to join our Lisbon team to scale our data platform and product insights initiatives. You will work with a wide array of data sources to build integrated data pipelines that process billions of records each day and influence our critical business initiatives.&nbsp;</span></p>
+<p><span style="font-weight: 400;">Success in this role comes from marrying a strong data engineering background with product and business acumen to deliver scalable data pipelines and analytics solutions that can enable advanced analytics via a self-service user interface.</span></p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-driven and capable of learning new technologies / systems / features with little guidance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fundamental understanding how the Internet works (OSI Model)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Advanced understanding of modern internet protocols like TCP and UDP</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Computer Networking fundamentals, experience with iptables and looking glass</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Packet capture analysis</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in command line and tools, including curl, dig, traceroute, openssl, git</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting DNS, SSL / TLS, HTTP</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience writing scripts in Bash, Python, JavaScript or other scripting language</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in working as part of a team in a customer-facing role</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Design, implement and support end to end scalable data pipelines for multiple data products&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with a cross functional team of data scientists and analysts and internal stakeholders on strategic initiatives&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Contribute in improving an evolving data platform for scalability, observability and reliability</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with product and other data engineering teams to extract, transform and load data from various sources using big data technologies</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Build rich data sets that drive innovation in data driven insights at scale within the company</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team in Austin and San Francisco to improve the data collection and quality</span></li>
 </ul>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate with customers via chat, email, and phone&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Product teams to improve the products and tools</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 3 years of industry experience in software engineering, data engineering, data science or related field with a track record of extracting, transforming and loading large datasets&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands on programming experience with Python, Go or any JVM based programming language</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong command in writing advanced SQL queries</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of data management fundamentals and data storage/computing principles</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of big data technologies such as Spark, BigQuery, Kafka etc.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong communication skills</span></li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are fluent in German, Japanese, French, Spanish, Portuguese, or Mandarin</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are familiar with Cloudflare and are actively using our platform</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with container based deployments such as Docker &amp; Kubernetes</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with Google Cloud Platform or something similar</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in building RESTful and microservices applications is a plus</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
