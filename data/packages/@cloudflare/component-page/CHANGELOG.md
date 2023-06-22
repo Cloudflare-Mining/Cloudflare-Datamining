@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.0.1
+
+### Patch Changes
+
+- da7fe8f70b: fix responsive flex display
+
 ## 8.0.0
 
 ### Major Changes
