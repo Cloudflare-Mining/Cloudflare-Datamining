@@ -12,7 +12,7 @@ const cfInfo = reqInfo?.cf;
 const formattedReq = {
 	cf: cfInfo,
 	headers: Object.fromEntries(reqInfo.headers.entries()),
-}
+};
 
 ---
 <Layout title="Cloudflare Connection Info - Cloudflare Datamining" description="Get information about your connection, bot score, etc.">
@@ -33,7 +33,7 @@ const formattedReq = {
 		</div>
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">HTTP Protocol</dt>
-			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.httpProtocol}</dd>
+			<dd class="m:col-span-2 mt-1 text-sm  leading-6 sm:mt-0">{cfInfo.httpProtocol}</dd>
 		</div>
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">User Agent</dt>
@@ -53,23 +53,23 @@ const formattedReq = {
 		</div>
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">IP Approximate City</dt>
-			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.city}</dd>
+			<dd class="m:col-span-2 mt-1 text-sm  leading-6 sm:mt-0">{cfInfo.city}</dd>
 		</div>
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">IP Approximate Region</dt>
-			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.region} ({cfInfo.regionCode})</dd>
+			<dd class="m:col-span-2 mt-1 text-sm  leading-6 sm:mt-0">{cfInfo.region} ({cfInfo.regionCode})</dd>
 		</div>
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">IP Approximate Postal Code</dt>
-			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.postalCode}</dd>
+			<dd class="m:col-span-2 mt-1 text-sm  leading-6 sm:mt-0">{cfInfo.postalCode}</dd>
 		</div>
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">Internet Service Provider (ISP)</dt>
-			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.asOrganization}</dd>
+			<dd class="m:col-span-2 mt-1 text-sm  leading-6 sm:mt-0">{cfInfo.asOrganization}</dd>
 		</div>
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">Continent</dt>
-			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.continent}</dd>
+			<dd class="m:col-span-2 mt-1 text-sm  leading-6 sm:mt-0">{cfInfo.continent}</dd>
 		</div>
 	</dl>
 
@@ -77,21 +77,21 @@ const formattedReq = {
 	<dl class="divide-y divide-gray-400">
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">Verified Bot</dt>
-			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.botManagement?.verifiedBot && 'yes' || 'no'}</dd>
+			<dd class="m:col-span-2 mt-1 text-sm  leading-6 sm:mt-0">{cfInfo.botManagement?.verifiedBot && 'yes' || 'no'}</dd>
 		</div>
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">Corporate Proxy</dt>
-			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.botManagement?.botManagement && 'yes' || 'no'}</dd>
+			<dd class="m:col-span-2 mt-1 text-sm  leading-6 sm:mt-0">{cfInfo.botManagement?.botManagement && 'yes' || 'no'}</dd>
 		</div>
 		<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
 			<dt class="text-sm font-medium leading-6">Human Score</dt>
-			<dd class="mt-1 text-sm leading-6  m:col-span-2 sm:mt-0">{cfInfo.botManagement?.score ?? cfInfo.clientTrustScore ?? 'unknown'}% human</dd>
+			<dd class="m:col-span-2 mt-1 text-sm  leading-6 sm:mt-0">{cfInfo.botManagement?.score ?? cfInfo.clientTrustScore ?? 'unknown'}% human</dd>
 		</div>
 	</dl>
 
 	<details>
 		<summary>Show Full Request</summary>
-		<pre class="bg-gray-800 text-white p-4 rounded-lg whitespace-pre-wrap"><code class="language-json break-all">{JSON.stringify(formattedReq, null, '\t')}</code></pre>
+		<pre class="whitespace-pre-wrap rounded-lg bg-gray-800 p-4 text-white"><code class="language-json break-all">{JSON.stringify(formattedReq, null, '\t')}</code></pre>
 	</details>
 </Layout>
 
