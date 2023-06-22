@@ -143,7 +143,7 @@
 				},
 				"description": "Delete Device Posture Integration response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -349,9 +349,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Device Posture Integration",
@@ -556,7 +553,9 @@
 															"workspace_one",
 															"crowdstrike_s2s",
 															"uptycs",
-															"intune"
+															"intune",
+															"kolide",
+															"tanium"
 														],
 														"example": "workspace_one",
 														"type": "string"
@@ -574,7 +573,7 @@
 				},
 				"description": "List Device Posture Integrations response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -759,7 +758,9 @@
 																	"workspace_one",
 																	"crowdstrike_s2s",
 																	"uptycs",
-																	"intune"
+																	"intune",
+																	"kolide",
+																	"tanium"
 																],
 																"example": "workspace_one",
 																"type": "string"
@@ -868,9 +869,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Device Posture Integrations",
@@ -1066,7 +1064,9 @@
 														"workspace_one",
 														"crowdstrike_s2s",
 														"uptycs",
-														"intune"
+														"intune",
+														"kolide",
+														"tanium"
 													],
 													"example": "workspace_one",
 													"type": "string"
@@ -1082,7 +1082,7 @@
 				},
 				"description": "Device Posture Integration Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1247,7 +1247,9 @@
 																"workspace_one",
 																"crowdstrike_s2s",
 																"uptycs",
-																"intune"
+																"intune",
+																"kolide",
+																"tanium"
 															],
 															"example": "workspace_one",
 															"type": "string"
@@ -1354,9 +1356,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Device Posture Integration Details",
@@ -1431,6 +1430,7 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Workspace One Config",
 										"type": "object"
 									},
 									{
@@ -1462,10 +1462,16 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Crowdstrike Config",
 										"type": "object"
 									},
 									{
 										"properties": {
+											"api_url": {
+												"description": "The Uptycs API URL.",
+												"example": "rnd.uptycs.io",
+												"type": "string"
+											},
 											"client_key": {
 												"description": "The Uptycs client secret.",
 												"example": "example client key",
@@ -1483,10 +1489,12 @@
 											}
 										},
 										"required": [
+											"api_url",
 											"client_key",
 											"customer_id",
 											"client_secret"
 										],
+										"title": "Uptycs Config",
 										"type": "object"
 									},
 									{
@@ -1512,6 +1520,47 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Intune Config",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"client_id": {
+												"description": "The Kolide client ID.",
+												"example": "example client id",
+												"type": "string"
+											},
+											"client_secret": {
+												"description": "The Kolide client secret.",
+												"example": "example client secret",
+												"type": "string"
+											}
+										},
+										"required": [
+											"client_id",
+											"client_secret"
+										],
+										"title": "Kolide Config",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"api_url": {
+												"description": "The Tanium API URL.",
+												"example": "https://dummy-tanium-graphql-api.cloudflare.com",
+												"type": "string"
+											},
+											"client_secret": {
+												"description": "The Tanium client secret.",
+												"example": "example client secret",
+												"type": "string"
+											}
+										},
+										"required": [
+											"client_id",
+											"client_secret"
+										],
+										"title": "Tanium Config",
 										"type": "object"
 									}
 								],
@@ -1533,7 +1582,9 @@
 									"workspace_one",
 									"crowdstrike_s2s",
 									"uptycs",
-									"intune"
+									"intune",
+									"kolide",
+									"tanium"
 								],
 								"example": "workspace_one",
 								"type": "string"
@@ -1708,7 +1759,9 @@
 														"workspace_one",
 														"crowdstrike_s2s",
 														"uptycs",
-														"intune"
+														"intune",
+														"kolide",
+														"tanium"
 													],
 													"example": "workspace_one",
 													"type": "string"
@@ -1724,7 +1777,7 @@
 				},
 				"description": "Update Device Posture Integration response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1889,7 +1942,9 @@
 																"workspace_one",
 																"crowdstrike_s2s",
 																"uptycs",
-																"intune"
+																"intune",
+																"kolide",
+																"tanium"
 															],
 															"example": "workspace_one",
 															"type": "string"
@@ -1996,9 +2051,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update Device Posture Integration",
@@ -2062,6 +2114,7 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Workspace One Config",
 										"type": "object"
 									},
 									{
@@ -2093,10 +2146,16 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Crowdstrike Config",
 										"type": "object"
 									},
 									{
 										"properties": {
+											"api_url": {
+												"description": "The Uptycs API URL.",
+												"example": "rnd.uptycs.io",
+												"type": "string"
+											},
 											"client_key": {
 												"description": "The Uptycs client secret.",
 												"example": "example client key",
@@ -2114,10 +2173,12 @@
 											}
 										},
 										"required": [
+											"api_url",
 											"client_key",
 											"customer_id",
 											"client_secret"
 										],
+										"title": "Uptycs Config",
 										"type": "object"
 									},
 									{
@@ -2143,6 +2204,47 @@
 											"client_id",
 											"client_secret"
 										],
+										"title": "Intune Config",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"client_id": {
+												"description": "The Kolide client ID.",
+												"example": "example client id",
+												"type": "string"
+											},
+											"client_secret": {
+												"description": "The Kolide client secret.",
+												"example": "example client secret",
+												"type": "string"
+											}
+										},
+										"required": [
+											"client_id",
+											"client_secret"
+										],
+										"title": "Kolide Config",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"api_url": {
+												"description": "The Tanium API URL.",
+												"example": "https://dummy-tanium-graphql-api.cloudflare.com",
+												"type": "string"
+											},
+											"client_secret": {
+												"description": "The Tanium client secret.",
+												"example": "example client secret",
+												"type": "string"
+											}
+										},
+										"required": [
+											"client_id",
+											"client_secret"
+										],
+										"title": "Tanium Config",
 										"type": "object"
 									}
 								],
@@ -2164,7 +2266,9 @@
 									"workspace_one",
 									"crowdstrike_s2s",
 									"uptycs",
-									"intune"
+									"intune",
+									"kolide",
+									"tanium"
 								],
 								"example": "workspace_one",
 								"type": "string"
@@ -2345,7 +2449,9 @@
 														"workspace_one",
 														"crowdstrike_s2s",
 														"uptycs",
-														"intune"
+														"intune",
+														"kolide",
+														"tanium"
 													],
 													"example": "workspace_one",
 													"type": "string"
@@ -2361,7 +2467,7 @@
 				},
 				"description": "Create Device Posture Integration response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2526,7 +2632,9 @@
 																"workspace_one",
 																"crowdstrike_s2s",
 																"uptycs",
-																"intune"
+																"intune",
+																"kolide",
+																"tanium"
 															],
 															"example": "workspace_one",
 															"type": "string"
@@ -2633,9 +2741,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Device Posture Integration",
