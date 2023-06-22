@@ -1,5 +1,14 @@
 # @cloudflare/component-code-block
 
+## 4.0.0
+
+### Major Changes
+
+- db791be14b: - Slimmer display for content that is only one line long with inline copy button
+  - Removes "click to copy" text below in favor of a tooltip on the copy button and having it always be visible
+  - Adds `@radix-ui/react-scroll-area` for consistent slim cross platform scrollbars
+  - BREAKING CHANGE: DOM structure changed, so styles applied externally may no longer work as expected.
+
 ## 3.0.8
 
 ### Patch Changes
