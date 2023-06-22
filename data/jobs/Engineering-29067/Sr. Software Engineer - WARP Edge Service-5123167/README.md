@@ -5,43 +5,25 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2>What you'll do</h2>
-<p>We’re looking for a Senior Software Engineer to join our WARP Edge service team. You will be working on our WARP service, which securely terminates tunnelled traffic from millions of devices running <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/">warp client</a>, and uses Cloudflare’s global network to securely route the traffic.&nbsp;</p>
-<p>In your role, you will predominantly be using Rust to implement high-performance networking code that runs on linux. You’ll be expected to improve the code quality and to build solid, testable, and well-documented foundations. You will be most successful in this role if you have a good understanding of operating system concepts (virtual memory, multi-threading, process lifecycle, etc.) and networking protocols (TCP/IP, UDP, DNS, QUIC, H/3, proxying, etc.).&nbsp;</p>
+<h2></h2>
+<p><strong>What you'll do</strong></p>
+<p>We’re looking for a Senior Software Engineer to join our WARP Edge service team. You will be working on our WARP service, which securely terminates tunneled traffic from millions of devices running <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/">warp client</a>, and uses Cloudflare’s global network to securely route the traffic.&nbsp;</p>
+<p>In your role, you will predominantly be using <strong>Rust </strong>to implement high-performance networking code that runs on linux. You’ll be expected to <strong>improve the code quality</strong> and to build solid, <strong>testable</strong>, and <strong>well-documented</strong> foundations. You will be most successful in this role if you have a good understanding of <strong>operating system concepts</strong> (virtual memory, multi-threading, process lifecycle, etc.) and <strong>networking protocols</strong> (TCP/IP, UDP, DNS, QUIC, H/3, proxying, etc.).&nbsp;</p>
 <p>As a Senior Software Engineer, you will be expected to make significant contributions to the design and implementation of major development projects, working closely with our product managers and other teams to implement customer-impacting features. You will work on stimulating problems born out of the scale of our deployment, and the stringent quality, performance, and security requirements of our product.</p>
-<h2>Examples of desirable skills, knowledge, and experience</h2>
+<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>
-		<p>Excellent programming skills, with experience writing very high-quality and low-complexity code with thorough documentation.</p>
-	</li>
-	<li>
-		<p>Strong experience writing easily-testable and thoroughly-tested code (e.g. using dependency injection with the right abstractions)</p>
-	</li>
-	<li>
-		<p>Great experience using lower-level languages, such as Rust, C, C++</p>
-	</li>
-	<li>
-		<p>Very comfortable writing multithreaded, asynchronous code</p>
-	</li>
-	<li>
-		<p>Strong experience with debugging network-related problems</p>
-	</li>
-	<li>
-		<p>An understanding of how VPN technologies work, and the trade-offs between privacy, security, and anonymity</p>
-	</li>
-	<li>
-		<p>Good understanding of, and experience with, security protocols and standards</p>
-	</li>
-	<li>
-		<p>Experience in network performance monitoring and tuning</p>
-	</li>
-	<li>
-		<p>Experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</p>
-	</li>
-	<li>
-		<p>Empathetic, proactive, and constructive communication skills, verbal and written</p>
-	</li>
+	<li>Excellent programming skills, with experience writing very <strong>high-quality</strong> and <strong>low-complexity</strong> code with thorough documentation.</li>
+	<li>Strong experience writing <strong>easily-testable</strong> and<strong> thoroughly-tested code</strong> (e.g. using dependency injection with the right abstractions)</li>
+	<li>Great experience using <strong>lower-level languages</strong>, such as Rust, C, C++</li>
+	<li>Very comfortable writing <strong>multithreaded, asynchronous</strong> code</li>
+	<li>Strong experience with <strong>debugging network-related problems</strong></li>
+	<li>An understanding of how <strong>VPN technologies</strong> work, and the trade-offs between privacy, security, and anonymity</li>
+	<li>Good understanding of, and experience with, <strong>security protocols</strong> and standards</li>
+	<li>Experience in network performance monitoring and tuning</li>
+	<li>Experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</li>
+	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
 </ul>
+<h2> </h2>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
