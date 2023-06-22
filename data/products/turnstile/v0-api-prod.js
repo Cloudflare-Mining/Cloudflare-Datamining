@@ -247,7 +247,7 @@
 	function Me(e, o, n, s) {
 		var d = "https://challenges.cloudflare.com";
 		if (!1) var h;
-		var f = "h/".concat("b", "/");
+		var f = "h/".concat("g", "/");
 		return "".concat(d, "/cdn-cgi/challenge-platform/").concat(f, "turnstile/if/ov2/av0/rcv").concat(s, "/").concat(e, "/").concat(o, "/").concat(n.theme, "/").concat(n.size)
 	}
 
@@ -442,7 +442,7 @@
 							isInitialized: !1,
 							msgQueue: Ee,
 							rcV: D
-						}), T.style.display = "none", T.style.border = "none", T.style.overflow = "hidden", T.setAttribute("src", Me($, m, a, D)), T.setAttribute("allow", "cross-origin-isolated"), T.setAttribute("sandbox", "allow-same-origin allow-scripts"), T.id = V;
+						}), T.style.display = "none", T.style.border = "none", T.style.overflow = "hidden", T.setAttribute("src", Me($, m, a, D)), T.setAttribute("allow", "cross-origin-isolated"), T.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), T.id = V;
 						var ie;
 						T.tabIndex = (ie = a.tabindex) !== null && ie !== void 0 ? ie : 0, T.title = "Widget containing a Cloudflare security challenge", t.appendChild(T);
 						var oe, Fe = (oe = a["response-field"]) !== null && oe !== void 0 ? oe : !0;
@@ -562,7 +562,7 @@
 									cData: r.cData,
 									chlPageData: r.chlPageData,
 									rcV: r.rcV,
-									ch: "19ad4730",
+									ch: "19b997cb",
 									url: rt(),
 									retry: r.params.retry,
 									"retry-interval": r.params["retry-interval"],
