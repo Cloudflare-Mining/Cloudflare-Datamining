@@ -2240,12 +2240,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = vn({}, {
-					branch: "release-Jun.21.2023-1687356332",
+					branch: "release-Jun.22.2023-1687442798",
 					isReleaseCandidate: "true",
-					commit: "1288b34dd368c2df3a16441945e8ef7f90a191a0",
+					commit: "3f4003b87a4e28bb5eeb80d8cbdc10c6ec270457",
 					env: "production",
-					builtAt: 1687366659659,
-					dashVersion: "8612f6dc8a040754701530bcb83e449a567b8756",
+					builtAt: 1687490527006,
+					dashVersion: "a1527444615274f00a2487c639c0523157d036d1",
 					versions: {
 						"@cloudflare/app-dash": "25.153.0",
 						node: "16.16.0",
@@ -5764,6 +5764,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					to: "waitingRoomEvent"
 				}, {
 					entityType: "zoneVersion"
+				}, {
+					entityType: "zoneVersionCompare"
 				}, {
 					entityType: "zoneVersions",
 					to: "zoneVersion"

@@ -478,6 +478,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	wizard_error_unverified_account: "You must verify your account",
 	wizard_error_no_domains: "No domains to transfer",
 	wizard_error_no_auth_key: "All auth codes must be valid to proceed",
+	wizard_error_no_websites: "You currently don't have any websites.",
+	wizard_error_no_websites_description: "Prior to transferring a domain, please add the domain you plan to transfer to Cloudflare. Once the domain is added, you will be able to proceed with the next steps in the transfer process.",
 	wizard_legal_body_one: 'By clicking "Confirm and Finalize Transfer" you agree to purchasing an annual subscription that renews automatically, unless you cancel your subscription(s) through your account dashboard before the next billing period begins. Early cancellation incurs charges for the entire subscription period. Your invoice will include any final sales tax, including state and local taxes when applicable. Visit',
 	wizard_legal_body_two: "for additional information about Cloudflare's billing, renewal, and cancellation policies.",
 	wizard_legal_body_uk: "If you elect to enable DNSSEC for any .uk domain, please note that Nominet, the .UK Registry, accepts no liability in relation to the operation or use of DNSSEC records. They will take reasonable steps to correct any error in the DNSSEC records, where such an error is as a result of a mistake on their part, but will otherwise accept no liability for the error. Registrants accept all risk in relation to the use of DNSSEC in relation to their domain names.",

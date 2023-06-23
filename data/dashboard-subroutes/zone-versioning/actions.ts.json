@@ -10,5 +10,7 @@
 	"/zones/[id]/http_applications/[id]/*",
 	"/zones/[id]/http_applications/[id]/versions",
 	"/zones/[id]/http_applications/[id]/versions/[id]/*",
-	"/zones/[id]/http_applications_v2"
+	"/zones/[id]/http_applications_v2",
+	"/zones/[id]/versions/compare",
+	"/zones/[id]/versions/compare?first_version=&second_version=/*"
 ]
