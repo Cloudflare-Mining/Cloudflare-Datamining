@@ -619,7 +619,7 @@ const navigation = {
 		navigationType: "both",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: w.bB,
+		tabs: S.bB,
 		hasPermission: function(l) {
 			return !(0, u.yD)(l) && (0, T.m7)(l)
 		}
