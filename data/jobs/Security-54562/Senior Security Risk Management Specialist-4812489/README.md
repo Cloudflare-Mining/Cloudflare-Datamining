@@ -5,34 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p></p>
 <p><strong>The Team</strong></p>
 <p><span style="font-weight: 400;">We are looking to hire an experienced Security Risk Management Specialist on our Governance, Risk, and Compliance team. This role will be responsible for identifying and managing security risk across Cloudflare’s production environment and critical business functions.</span></p>
 <p><span style="font-weight: 400;">At Cloudflare, risk management lays the foundation for protecting Cloudflare and our customers. The Risk team identifies risk throughout the company and prioritizes mitigation efforts to drive Security team priorities. We do not believe in tick-box security, so for us risk management is a pathway to doing things right.&nbsp;</span></p>
 <p><span style="font-weight: 400;">This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. We guarantee that you won’t get bored.&nbsp;</span></p>
 <p><strong>What you'll do</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement Cloudflare’s risk management methodology&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead enterprise and targeted risk assessments across the organization&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Identify risk findings through vulnerabilities, security incidents, audits, and other security programs and determine how to integrate these into Cloudflare’s risk register&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement Cloudflare’s new risk calculation formula across the risk register and enterprise risks&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Drive risk treatment by determining risk ownership, recommending mitigation plans, and ensuring risks are included in technical organizations’ roadmaps&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with security managers and technical program managers to develop risk-based roadmaps and support Security Team planning discussions</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement and manage new Risk Governance processes with Security and technical organization leadership</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Support risk updates to Executive leadership and Cloudflare’s Risk and Compliance Committee</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure alignment between security risk and the internal audit and privacy teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain our Security Risk Management Policy, supporting process documentation, and Cloudflare’s risk register</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Support internal and external audits related to Cloudflare’s risk management processes</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Conduct enterprise and targeted risk assessments risk across the organization&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Review and advise on risk findings identified vulnerability scans, security incidents, audits, and other security programs&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Drive risk treatment by determining risk ownership and recommending mitigation plans&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with technical program managers to develop risk-based roadmaps</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Support quarterly risk reviews with security and technical leadership</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain our Security Risk Management Program documentation and Cloudflare’s risk register</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Some travel may be required to engage teammates and stakeholders in San Francisco, Austin, or other global Cloudflare locations.&nbsp;&nbsp;</span></li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Senior level Security Risk Management experience typically gained in 8+ years experience working in GRC&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience communicating, conducting, and managing security risk assessments; recommending mitigating controls; and reporting findings to leadership</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience driving risk remediation and partnering with cross functional teams&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience implementing a security risk methodology including processes for risk identification, prioritization, mitigation, reporting, and monitoring</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Senior level experience typically gained in 5-8 years working in Security Governance, Risk, and Compliance&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience conducting and managing security risk assessments</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience recommending mitigating controls and driving risk remediation</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience reporting on risks and program operations to management</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of security risk and control frameworks such as ISO 27001, NIST SP 800-37, NIST SP 800-30, and NIST SP 800-53</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with Common Vulnerability Scoring System (CVSS), OWASP Risk Rating Methodology, and the MITRE ATT&amp;CK Matrix&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of security risk and control frameworks such as PCI DSS, ISO 27001, NIST SP 800-53, and NIST SP 800-30</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding cloud security architectures, technologies, and security controls&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong analytical and interpersonal skills</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-starter with the ability to work independently with a sense of curiosity</span></li>
