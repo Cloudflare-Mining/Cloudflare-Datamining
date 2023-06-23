@@ -3533,8 +3533,13 @@
 	},
 	"ZoneCacheReserveOperationsAdaptiveGroups": {
 		"__description": "Beta. Cache Reserve operations with adaptive sampling",
+		"avg": "The average value used for sample interval",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
+	},
+	"ZoneCacheReserveOperationsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": ""
 	},
 	"ZoneCacheReserveOperationsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -3593,8 +3598,13 @@
 	},
 	"ZoneCacheReserveStorageAdaptiveGroups": {
 		"__description": "Beta. Cache Reserve storage with adaptive sampling",
+		"avg": "The average value used for sample interval",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max of values for a metric per dimension"
+	},
+	"ZoneCacheReserveStorageAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": ""
 	},
 	"ZoneCacheReserveStorageAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -3624,6 +3634,7 @@
 		"disposition": "DMARC policy disposition",
 		"dkim": "DKIM result",
 		"domain": "Domain to which this report refers to",
+		"envelopeFrom": "Envelope From of emails",
 		"envelopeTo": "Envelope To of emails",
 		"evaluatedReason": "Reason (if any) why the record was evaluated",
 		"headerFrom": "Header From of emails",
@@ -3679,6 +3690,7 @@
 		"disposition": "DMARC policy disposition",
 		"dkim": "DKIM result",
 		"domain": "Domain to which this report refers to",
+		"envelopeFrom": "Envelope From of emails",
 		"envelopeTo": "Envelope To of emails",
 		"evaluatedReason": "Reason (if any) why the record was evaluated",
 		"headerFrom": "Header From of emails",
