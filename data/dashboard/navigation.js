@@ -361,7 +361,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(l) {
 				var N = (0, v.tJ)(l);
-				return !(0, j.ky)(N, [z.uD.UnboundEnterpriseTrial])
+				return !(0, x.ky)(N, [z.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -577,7 +577,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: function(l) {
 				var N = (0, s.nA)(l);
-				return N ? !!(!(0, u.yD)(l) && !!(0, s.ZB)(l, "origin_reachability_dash", "dash_view") && (0, s.tU)(N, "enterprise") && !!(0, _.Ek)(l, "httpRequestsAdaptiveGroups")) : !1
+				return N ? !!(!(0, u.yD)(l) && !!(0, s.ZB)(l, "origin_reachability_dash", "dash_view") && (0, s.tU)(N, "enterprise") && !!(0, M.Ek)(l, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
@@ -585,7 +585,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: function(l) {
 				var N = (0, s.nA)(l);
-				return N ? !!(!(0, u.yD)(l) && !!(0, s.ZB)(l, "edge_reachability_dash", "dash_view") && (0, s.tU)(N, "enterprise") && !!(0, _.Ek)(l, "nelReportsAdaptiveGroups")) : !1
+				return N ? !!(!(0, u.yD)(l) && !!(0, s.ZB)(l, "edge_reachability_dash", "dash_view") && (0, s.tU)(N, "enterprise") && !!(0, M.Ek)(l, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -621,7 +621,7 @@ const navigation = {
 		testId: "zone-navigation-link-zone-versioning",
 		tabs: S.bB,
 		hasPermission: function(l) {
-			return !(0, u.yD)(l) && (0, T.m7)(l)
+			return !(0, u.yD)(l) && (0, _.m7)(l)
 		}
 	}, {
 		title: "navigation.zone.dns",
@@ -686,9 +686,9 @@ const navigation = {
 			var N = (0, s.nA)(l);
 			if ((0, u.yD)(l) || !(0, o.wB)(l, "zone_settings", "spectrum.app") || !N) return !1;
 			var Q = !!((0, W.l8)(l) || (0, s.DQ)(l)),
-				q = !!(0, s.ZB)(l, "spectrum", "enabled"),
-				J = !!(0, s.Ns)(N);
-			return q || Q || !J
+				J = !!(0, s.ZB)(l, "spectrum", "enabled"),
+				X = !!(0, s.Ns)(N);
+			return J || Q || !X
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -832,7 +832,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: G
+			tabs: F
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -894,7 +894,7 @@ const navigation = {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: x
+			tabs: w
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			labels: ["beta"],
@@ -985,7 +985,7 @@ const navigation = {
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
 			hasPermission: function(l) {
-				return !(0, u.yD)(l) && !!(0, _.Ek)(l, "healthCheckEventsAdaptiveGroups")
+				return !(0, u.yD)(l) && !!(0, M.Ek)(l, "healthCheckEventsAdaptiveGroups")
 			}
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
@@ -1080,43 +1080,43 @@ const navigation = {
 	}],
 	zeroTrust: [{
 		url: function() {
-			return (0, M.Uj)("home")
+			return (0, T.Uj)("home")
 		},
 		title: "navigation.account.zero_trust",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, M.Uj)("analytics/access")
+			return (0, T.Uj)("analytics/access")
 		},
 		title: "navigation.account.zero_trust.analytics",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, M.Uj)("gateway/locations")
+			return (0, T.Uj)("gateway/locations")
 		},
 		title: "navigation.account.zero_trust.gateway",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, M.Uj)("access/apps")
+			return (0, T.Uj)("access/apps")
 		},
 		title: "navigation.account.zero_trust.access",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, M.Uj)("team/devices")
+			return (0, T.Uj)("team/devices")
 		},
 		title: "navigation.account.zero_trust.my_team",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, M.Uj)("logs/admin")
+			return (0, T.Uj)("logs/admin")
 		},
 		title: "navigation.account.zero_trust.logs",
 		iconType: "cloudflare-zero-trust"
 	}, {
 		url: function() {
-			return (0, M.Uj)("settings")
+			return (0, T.Uj)("settings")
 		},
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
