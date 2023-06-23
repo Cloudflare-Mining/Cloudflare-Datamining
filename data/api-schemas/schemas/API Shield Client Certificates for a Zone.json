@@ -121,8 +121,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -358,9 +357,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Revoke Client Certificate",
@@ -392,6 +388,17 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "mtls_certificate_id",
+				"schema": {
+					"description": "The UUID to match against for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the results will be the hostnames associated to your active Cloudflare Managed CA.",
+					"example": "b2134436-2555-4acf-be5b-26c48136575e",
+					"maxLength": 36,
+					"minLength": 36,
 					"type": "string"
 				}
 			}
@@ -489,8 +496,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -507,6 +513,12 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"mtls_certificate_id": {
+													"description": "The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the hostnames will be associated to your active Cloudflare Managed CA.",
+													"maxLength": 36,
+													"minLength": 36,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -619,9 +631,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Hostname Associations",
@@ -1067,9 +1076,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Client Certificates",
@@ -1210,8 +1216,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1447,9 +1452,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Client Certificate Details",
@@ -1590,8 +1592,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1827,9 +1828,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Reactivate Client Certificate",
@@ -1984,8 +1982,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -2219,8 +2216,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -2451,9 +2447,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Client Certificate",
@@ -2500,6 +2493,12 @@
 									"type": "string"
 								},
 								"type": "array"
+							},
+							"mtls_certificate_id": {
+								"description": "The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the hostnames will be associated to your active Cloudflare Managed CA.",
+								"maxLength": 36,
+								"minLength": 36,
+								"type": "string"
 							}
 						},
 						"type": "object"
@@ -2601,8 +2600,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -2619,6 +2617,12 @@
 														"type": "string"
 													},
 													"type": "array"
+												},
+												"mtls_certificate_id": {
+													"description": "The UUID for a certificate that was uploaded to the mTLS Certificate Management endpoint. If no mtls_certificate_id is given, the hostnames will be associated to your active Cloudflare Managed CA.",
+													"maxLength": 36,
+													"minLength": 36,
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -2727,9 +2731,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Replace Hostname Associations",
