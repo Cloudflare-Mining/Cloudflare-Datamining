@@ -290,14 +290,20 @@
 				}
 			},
 			{
-				"description": "If this parameter is present, only records *with* a comment are returned.",
 				"in": "query",
-				"name": "comment.present"
+				"name": "comment.present",
+				"schema": {
+					"description": "If this parameter is present, only records *with* a comment are returned.\n",
+					"type": "string"
+				}
 			},
 			{
-				"description": "If this parameter is present, only records *without* a comment are returned.",
 				"in": "query",
-				"name": "comment.absent"
+				"name": "comment.absent",
+				"schema": {
+					"description": "If this parameter is present, only records *without* a comment are returned.\n",
+					"type": "string"
+				}
 			},
 			{
 				"in": "query",
