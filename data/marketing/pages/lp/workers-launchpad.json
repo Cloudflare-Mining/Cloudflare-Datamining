@@ -20,17 +20,17 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": "No Page for Locale",
-					"nbNO": "No Page for Locale"
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
 				"relativePath": "lp/workers-launchpad",
 				"topNavOptions": "default",
@@ -62,7 +62,7 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Workers Launchpad Funding Program",
 						"subtitle": null,
-						"copy": "Find the funding, tools, and community to help scale your startup through the Workers Launchpad. \n\nAny startup currently using Cloudflare Workers or other components of the Cloudflare developer platform is eligible to apply. \n\n__Applications for Cohort #3 are now open!__\n",
+						"copy": "Find the funding, tools, and community to help scale your startup through the Workers Launchpad. \n\nAny startup currently using Cloudflare Workers or other components of the Cloudflare developer platform is eligible to apply. \n\n__Applications for Cohort #3 are now open!__<br>\nApply by September 1, 2023.\n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "Apply today",
@@ -338,7 +338,7 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "6unuTtQiQx2klihPDii6hG",
-						"htmlContent": "<H2><b>Our venture capital partners</b></H2\n\n<p>Cloudflare is proud to partner with leading venture capital firms to help continue to fund more than $2 billion towards Workers-based startups.</p>\n\n<div><div class=\"container\"><div class=\"pt1\"><div class=\"items-center row\"><div class=\"col-12\">\n<div style=\"text-align: center;\" class=\"headline-2 mb1\"><img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/1B4lqEf5bj67GeHKuHPQw4/8cee9e8c57e525becb50c166b08ab50a/Workers_Launchpad_Venture_Capital_Partners-Nov2022.png\" style=\"width: 100%; height: auto; max-width: 3550px;\" /></div></div></div></div></div></div>",
+						"htmlContent": "<H2><b>Our venture capital partners</b></H2>\n\n<p>Cloudflare is proud to partner with leading venture capital firms to help continue to fund more than $2 billion towards Workers-based startups.</p>\n\n<div><div class=\"container\"><div class=\"pt1\"><div class=\"items-center row\"><div class=\"col-12\">\n<div style=\"text-align: center;\" class=\"headline-2 mb1\"><img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/1B4lqEf5bj67GeHKuHPQw4/8cee9e8c57e525becb50c166b08ab50a/Workers_Launchpad_Venture_Capital_Partners-Nov2022.png\" style=\"width: 100%; height: auto; max-width: 3550px;\" /></div></div></div></div></div></div>",
 						"htmlId": null
 					},
 					{
@@ -576,12 +576,36 @@
 						]
 					},
 					{
-						"contentfulId": "29FP4gKcy4pOIc8L4mJAvV",
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "6gGK6y2uQaEMYcsIs17xSw",
+						"menuTitle": "Launchpad cohorts",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": "cohort2",
+						"menuItems": [
+							{
+								"contentfulId": "5hMRezMX6IRMgqPvGJW1kr",
+								"linkText": "Cohort #2",
+								"page": null,
+								"url": "lp/workers-launchpad",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "1dPOjIkhP7szEQTy4CKL2v",
+								"linkText": "Cohort #1",
+								"page": null,
+								"url": "lp/workers-launchpad/cohort1",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
+						"contentfulId": "476nUkAahijOJeMWUNwNEq",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"copy": "Congratulations to the 25 companies selected for the inaugural cohort of Launchpad startups!",
-						"title": "Introducing the first Workers Launchpad cohort",
+						"copy": "Congratulations to the 25 startups selected for the second cohort.",
+						"title": "Inroducing the second Workers Launchpad cohort ",
 						"subtitle": null,
 						"bladeStyle": null,
 						"bladeBorder": "none",
@@ -592,10 +616,10 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5zyejQPjV0PZFsYVL4eKNC",
+								"contentfulId": "3FHQSKHufjNATzp1IiZ9KW",
 								"title": null,
 								"titleSize": null,
-								"description": "- [AIDEM](https://www.aidem.com/)\n- [Apyfy](https://apyfy.com/)\n- [Authdog](https://www.authdog.com/)\n- [Axiom](https://www.axiom.co/)\n- [BlocPal](https://www.blocpal.com/)\n- [COPILOT TRAVEL](https://www.copilottravel.com/)\n- [Data Narratives](https://datanarratives.com/)\n",
+								"description": "- [42able.ai](https://www.42able.ai/)\n- [ai.moda](https://ai.moda/)\n- [Arrive GG](https://arrive.gg/)\n- [Astro](https://astro.build/)\n- [Azule](https://azule.ai/)\n- [Brevity](https://brevity.io/)\n- [Buildless](https://less.build/)",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -609,10 +633,10 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5vf4SLIDUPT2oN9HLvAqX7",
+								"contentfulId": "4dxXlp0axnX5cbi4AwrLAk",
 								"title": null,
 								"titleSize": null,
-								"description": "- [Drivly](https://driv.ly/)\n- [Endear](https://endearhq.com/)\n- [flethy](https://flethy.com/)\n- [GPUX](https://gpux.ai/)\n- [Grafbase](https://grafbase.com/)\n- [JEMPass](https://jempass.com/)\n",
+								"description": "- [ChainFuse](https://chainfuse.com/)\n- [ChatORG](https://www.chatorg.ai/)\n- [Clerk](https://clerk.com/)\n- [contribute.design](https://contribute.design/)\n- [Drifting in Space](https://driftingin.space/)\n- [Eclipse AI](https://eclipse-ai.com/)\n- [Embley](http://embley.com/)",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -626,10 +650,10 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1mGbg4kzpW0u4tDZzprcl8",
+								"contentfulId": "4u9bfXNZgVqzwM6mj2MVd9",
 								"title": null,
 								"titleSize": null,
-								"description": "- [Karambit.AI](https://karambit.ai/)\n- [Kubelt](https://www.kubelt.com/)\n- [Narrative BI](https://www.narrative.bi/)\n- [Ninetailed](https://ninetailed.io/)\n- [Nostra.ai](https://nostra.ai/)\n- [Patr](https://patr.cloud)\n",
+								"description": "- [Fudge](https://www.fudge.ai/)\n- [Mixer](https://www.mixer.rsvp/)\n- [Monosnap](https://monosnap.com/)\n- [Nefeli Networks](http://nefeli.io/)\n- [Smplrspace](https://www.smplrspace.com/)\n- [Speech Labs](https://speechlabs.io/)\n- [TestApp.io](https://testapp.io/)",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -643,10 +667,10 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4nOVKUIMLKynQgPP1YdcSs",
+								"contentfulId": "4IYMAICWds65DAd0RimmJB",
 								"title": null,
 								"titleSize": null,
-								"description": "- [Quest.ai](https://www.quest.ai/)\n- [qxip](https://qryn.dev)\n- [repeat.dev](https://repeat.dev/)\n- [Service Loom](https://serviceloom.com/)\n- [Targum](https://targum.video)\n- [Touchless](http://www.touchless.inc)",
+								"description": "- [Tigris Data](https://www.tigrisdata.com/)\n- [tldraw](http://tldraw.com/)\n- [Vantyr](https://vantyr.com/)\n- [WunderGraph](http://wundergraph.com/)",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,

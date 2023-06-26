@@ -20,17 +20,17 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": "No Page for Locale",
-					"nbNO": "No Page for Locale"
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
 				"relativePath": "lp/workers-launchpad/cohort1",
 				"topNavOptions": null,
@@ -58,67 +58,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "3xmwc5JUWkEUz6Ki4KNyXA",
-						"contentTypeId": "bladeHeroAnimation",
-						"title": "Workers Launchpad Funding Program",
-						"subtitle": null,
-						"copy": "Find the funding, tools, and community to help scale your startup through the Workers Launchpad. \n\nAny startup currently using Cloudflare Workers or other components of the Cloudflare developer platform is eligible to apply. \n\n__Applications for Cohort #3 are now open!__\n",
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"buttonText1": "Apply today",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#form_workerslaunchpad",
-						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": null,
-						"buttonText2": null,
-						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
-						"button2ExtraClass": null,
-						"bladeBorder": "none",
-						"htmlId": null,
-						"textColor": "white",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": [
-							"controls",
-							"captions"
-						],
-						"streamCaptions": "en",
-						"popupStreamId": null,
-						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
-						"streamThumbnails": null,
-						"sectionPadding": null,
-						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": null,
-						"imagePosition": null,
-						"leftLinkUrl": null,
-						"leftLink": null,
-						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "hide",
-						"backgroundColor": "white",
-						"textlayoutMode": "left medium",
-						"backgroundAssetFile": {
-							"id": "8fa11fcf-1ac6-5d43-a7b7-eb81397063c3",
-							"altText": null,
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AeWvmN7NET4mrtrFTzEBh/f7514dc636bb38f0baf6eb49bd82c90b/Workers_Fund.png"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"imageLayout": "background",
-						"image": null,
-						"imageAssetFile": null
-					},
-					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "3z8qZhhKxibQDEfaGO4702",
 						"menuTitle": "Launchpad cohorts",
@@ -127,10 +66,17 @@
 						"htmlId": null,
 						"menuItems": [
 							{
+								"contentfulId": "3v8dnY8g5VP2HiQSHemUzw",
+								"linkText": "Home",
+								"page": null,
+								"url": "lp/workers-launchpad",
+								"subMenuItems": null
+							},
+							{
 								"contentfulId": "1QTFZ7t1xlIDQmlmaW1CgH",
 								"linkText": "Cohort #2",
 								"page": null,
-								"url": "lp/workers-launchpad#cohort2",
+								"url": "lp/workers-launchpad/cohort2",
 								"subMenuItems": null
 							},
 							{

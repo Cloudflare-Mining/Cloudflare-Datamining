@@ -78,6 +78,12 @@
 									"contentfulId": "gNSNOHfDCmgDBpWKgKuiW",
 									"displayText": "What is a cloud API?",
 									"url": "/learning/security/api/what-is-a-cloud-api/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4AdmSqtS8iyTAZp8AC5Oy0",
+									"displayText": "Shadow APIs",
+									"url": "/learning/security/api/what-is-shadow-api/"
 								}
 							]
 						},
@@ -374,6 +380,12 @@
 									"contentfulId": "6fKq1CptS3IBQX4u2H9dhY",
 									"displayText": "How to secure a website",
 									"url": "/learning/security/how-to-secure-a-website/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4tWCs5fNRAk516lnudZDLP",
+									"displayText": "How to improve WordPress security",
+									"url": "/learning/security/how-to-improve-wordpress-security/"
 								}
 							]
 						},
@@ -385,45 +397,9 @@
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5fFLZFiqHTYjdUMQ4wc30f",
-									"displayText": "Attack surface grows with the proliferation of APIs",
-									"url": "https://www.cloudflare.com/insights-api-proliferation/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "7nYhsmOt8j2TMfIi6t2pOG",
-									"displayText": "The future of web application security",
-									"url": "https://www.cloudflare.com/insights-future-web-security/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "22UXessHsWvrAW3d6QdL1i",
-									"displayText": "Securing the post-quantum world",
-									"url": "https://www.cloudflare.com/insights-quantum-computing/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1fudUp354PiIkWi5M2QBuE",
-									"displayText": "The risks smaller DDoS attacks pose to network infrastructure",
-									"url": "https://www.cloudflare.com/insights-small-ddos-attacks/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "Bngdc6ouSn7Q4HEyfH9tZ",
-									"displayText": "Using DDoS threats to extort organizations",
-									"url": "https://www.cloudflare.com/insights-ransom-ddos"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "3prZkikP0WPYdys6s0FypM",
-									"displayText": "Security monitoring fatigue puts organizations at risk",
-									"url": "/learning/insights-security-fatigue/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "3h3E4btP1QgwPPWbyA1fX3",
-									"displayText": "Bypassing multi-factor authentication",
-									"url": "/learning/insights-bypassing-mfa/"
+									"contentfulId": "2Op2roWYABZSvyMX321o1I",
+									"displayText": "API growth parallels attacks",
+									"url": "learning/insights-waap-api-security"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -433,9 +409,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "2Op2roWYABZSvyMX321o1I",
-									"displayText": "API growth parallels attacks",
-									"url": "learning/insights-waap-api-security"
+									"contentfulId": "3h3E4btP1QgwPPWbyA1fX3",
+									"displayText": "Bypassing multi-factor authentication",
+									"url": "/learning/insights-bypassing-mfa/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3prZkikP0WPYdys6s0FypM",
+									"displayText": "Security monitoring fatigue puts organizations at risk",
+									"url": "/learning/insights-security-fatigue/"
 								}
 							]
 						}
@@ -799,9 +781,21 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4AdmSqtS8iyTAZp8AC5Oy0",
+								"displayText": "Shadow APIs",
+								"url": "/learning/security/api/what-is-shadow-api/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "6fKq1CptS3IBQX4u2H9dhY",
 								"displayText": "How to secure a website",
 								"url": "/learning/security/how-to-secure-a-website/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4tWCs5fNRAk516lnudZDLP",
+								"displayText": "How to improve WordPress security",
+								"url": "/learning/security/how-to-improve-wordpress-security/"
 							}
 						]
 					},
@@ -944,10 +938,10 @@
 					"frFR": "English for Locale",
 					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
+					"jaJP": "Translated for Locale",
 					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -974,7 +968,10 @@
 			"pathname": "/learning/security/api/what-is-a-cloud-api/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"ja-JP",
+				"pt-BR",
+				"es-ES"
 			]
 		}
 	}
