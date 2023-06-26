@@ -1,5 +1,13 @@
 # @cloudflare/component-code-block
 
+## 4.1.0
+
+### Minor Changes
+
+- 6d4a6d825f: Added html language support
+
+  Also fixed dark mode issues
+
 ## 4.0.0
 
 ### Major Changes
