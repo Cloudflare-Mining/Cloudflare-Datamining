@@ -35,7 +35,7 @@
 </ul>
 <p><strong>Qualifications:</strong></p>
 <ul>
-	<li>Minimum of 10 years of progressive experience in consulting, internal audit, risk management, or related fields, preferably within the technology industry.</li>
+	<li>Minimum of 10 years of progressive management experience in consulting, internal audit and/or risk management, preferably within the technology industry.</li>
 	<li>Professional certification such as Certified Internal Auditor (CIA), Certified Public Accountant (CPA), or Certified Information Systems Auditor (CISA) is required.</li>
 	<li>Strong knowledge of internal control frameworks, risk assessment methodologies, and industry best practices.</li>
 	<li>Excellent analytical, problem-solving, and decision-making skills.</li>

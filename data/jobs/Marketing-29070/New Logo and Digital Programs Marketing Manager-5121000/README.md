@@ -6,7 +6,7 @@
 	</div>
 </div>
 <h4>What you'll do</h4>
-<p>Cloudflare is looking for a New Logo Program Manager, who is dynamic, motivated, creative and analytical who will lead the charge on new logo acquisition programs in the Americas.&nbsp;</p>
+<p>Cloudflare is looking for a New Logo and Digital Programs Marketing Manager, who is dynamic, motivated, creative and analytical who will lead the charge on new logo acquisition programs in the Americas.&nbsp;</p>
 <p>You will own the list of new logo accounts by segment and work cross-functionally with the global campaigns, product marketing, ABM, and partner marketing teams to build targeted programs for the Enterprise, Mid-Market, and Public Sector teams. You will partner with regional marketing leads to build and execute highly efficient and effective integrated marketing campaigns that deliver strong pipeline for each subregion and segment.&nbsp; You will own the strategy and execution of content syndication and webinar programs in the Americas, and work cross-functionally with the digital marketing team to design and execute the paid search, social and PPC strategy.&nbsp;</p>
 <p>This role is ideal for an experienced B2B marketer who enjoys strategy, execution and measurement. Successful candidates will have the ability to think strategically, orchestrate many moving parts and remain laser focused on delivering highly effective omnichannel marketing programs.&nbsp;<strong><br></strong></p>
 <h4>Responsibilities</h4>
