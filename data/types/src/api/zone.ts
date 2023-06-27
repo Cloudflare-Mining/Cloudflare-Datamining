@@ -93,13 +93,6 @@ export const AbuseUrl = eg.object({
 
 export type AbuseUrl = TypeFromCodec<typeof AbuseUrl>;
 
-export const Unreachability = eg.object({
-  timestamp: eg.string,
-  origins: eg.array(eg.string)
-});
-
-export type Unreachability = TypeFromCodec<typeof Unreachability>;
-
 export const Zone = eg.object({
   id: eg.string,
   name: eg.string,

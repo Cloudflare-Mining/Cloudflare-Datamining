@@ -3,11 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [6.21.13](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.21.11...@cloudflare/types@6.21.13) (2023-05-26)
+## [6.21.14](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.21.11...@cloudflare/types@6.21.14) (2023-06-27)
 
 
 ### Bug Fixes
 
+* **stratus:** UI-0000 update packages with wrong versions ([133a4fe](http://stash.cfops.it:7999/fe/stratus/commits/133a4fe))
 * **stratus:** UI-0000 yarn update-packages-with-wrong-version ([96e6548](http://stash.cfops.it:7999/fe/stratus/commits/96e6548))
 
 

@@ -23,6 +23,8 @@ export type ZoneApplication = TypeFromCodec<typeof ZoneApplication>;
 const ZoneVersion = eg.object({
   version: eg.number,
   id: eg.string,
+  zone_tag: eg.string.optional,
+  zone_name: eg.string.optional,
   cloned_from: eg.string.optional,
   application_id: eg.string,
   description: eg.string,
@@ -32,6 +34,34 @@ const ZoneVersion = eg.object({
 });
 
 export type ZoneVersion = TypeFromCodec<typeof ZoneVersion>;
+
+const ZoneVersionCompare = eg.object({
+  first_version: eg.object({
+    file_data: eg.string,
+    metadata: eg.object({
+      created_on: eg.string,
+      status: eg.string
+    })
+  }),
+  second_version: eg.object({
+    file_data: eg.string,
+    metadata: eg.object({
+      created_on: eg.string,
+      status: eg.string
+    })
+  })
+});
+
+export type ZoneVersionCompare = TypeFromCodec<typeof ZoneVersionCompare>;
+
+const CreateZoneVersionCompare = eg.object({
+  first_version: eg.string,
+  second_version: eg.string
+});
+
+export type CreateZoneVersionCompare = TypeFromCodec<
+  typeof CreateZoneVersionCompare
+>;
 
 const CreateZoneVersion = eg.object({
   version: eg.number,

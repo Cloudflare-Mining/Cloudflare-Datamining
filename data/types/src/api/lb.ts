@@ -66,7 +66,11 @@ export const LoadBalancerPool = eg.object({
       .optional
   }).optional,
   origin_steering: eg.object({
-    policy: eg.union([eg.literal('random'), eg.literal('hash')])
+    policy: eg.union([
+      eg.literal('random'),
+      eg.literal('hash'),
+      eg.literal('least_outstanding_requests')
+    ])
   }).optional,
   notification_email: eg.union([eg.string, eg.array(eg.string)]).optional,
   notification_filter: eg.object({
@@ -89,7 +93,8 @@ const SteeringPolicy = eg.union([
   eg.literal('geo'),
   eg.literal('random'),
   eg.literal('gps'),
-  eg.literal('proximity')
+  eg.literal('proximity'),
+  eg.literal('least_outstanding_requests')
 ]).optional;
 
 export const LoadBalancerRuleOverrides = eg.object({

@@ -11,7 +11,8 @@ export const GraphQLNodeName = eg.union([
   eg.literal('healthCheckEventsAdaptive'),
   eg.literal('healthCheckEventsAdaptiveGroups'),
   eg.literal('nelReportsAdaptiveGroups'),
-  eg.literal('waitingRoomAnalyticsAdaptiveGroups')
+  eg.literal('waitingRoomAnalyticsAdaptiveGroups'),
+  eg.literal('cacheReserveRequestsAdaptiveGroups')
 ]);
 
 export type GraphQLNodeName = TypeFromCodec<typeof GraphQLNodeName>;
