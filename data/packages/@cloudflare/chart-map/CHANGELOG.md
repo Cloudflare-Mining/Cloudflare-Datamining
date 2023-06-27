@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.0.1
+
+### Patch Changes
+
+- fb414fd97a: Fix lng,lat coords order
+
 ## 8.0.0
 
 ### Major Changes
