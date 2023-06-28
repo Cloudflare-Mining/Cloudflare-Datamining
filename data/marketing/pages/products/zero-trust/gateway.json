@@ -60,15 +60,7 @@
 					"linkUrl": "https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/",
 					"desktopText": "What is a Secure Web Gateway (SWG) and what does it do? Read more in our Learning Center."
 				},
-				"psaBanner": {
-					"contentTypeId": "psaBanner",
-					"contentfulId": "47TUqQxRSVeRrYNsFpOYo8",
-					"text": "Cloudflare is the only new vendor to be recognized in the 2023 GartnerⓇ Magic Quadrant™ for Security Service Edge (SSE).",
-					"learnMoreText": "Read the report",
-					"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2023/",
-					"backgroundColor": "blue0",
-					"hideCloseButton": false
-				},
+				"psaBanner": null,
 				"customTopNav": [
 					{
 						"contentTypeId": "navNavigationGroup",
@@ -113,18 +105,6 @@
 													"specialLinkType": null,
 													"openInNewWindow": false,
 													"isExternalUrl": null
-												},
-												{
-													"contentTypeId": "elementNavLink",
-													"contentfulId": "34u8d3IHcqCC0exZwWQzpk",
-													"locale": "en-US",
-													"title": "Protect & accelerate applications",
-													"description": "Combine security with performance to ensure you are protected without compromising user experiences.",
-													"url": "/application-services/solutions/",
-													"badges": null,
-													"specialLinkType": null,
-													"openInNewWindow": false,
-													"isExternalUrl": false
 												},
 												{
 													"contentTypeId": "elementNavLink",
@@ -2529,31 +2509,6 @@
 										"isExternalUrl": null
 									},
 									"navigationLinks": null
-								},
-								{
-									"contentTypeId": "navNavigationItem",
-									"contentfulId": "5RVyDopQTJRcit7qLKguL6",
-									"locale": "en-US",
-									"name": "Log In",
-									"description": null,
-									"navIcon": null,
-									"contentfulButton": null,
-									"showIconOnly": false,
-									"hideOnChinaSite": false,
-									"navigationItems": null,
-									"mainLink": {
-										"contentTypeId": "elementNavLink",
-										"contentfulId": "2lsuZC3aMqjZ8qalaBPUmX",
-										"locale": "en-US",
-										"title": "Log In",
-										"description": null,
-										"url": "https://dash.cloudflare.com/login/",
-										"badges": null,
-										"specialLinkType": "BLUE_CTA",
-										"openInNewWindow": false,
-										"isExternalUrl": null
-									},
-									"navigationLinks": null
 								}
 							]
 						},
@@ -2746,12 +2701,6 @@
 										"linkText": "KuppingerCole Leadership Compass for SASE Integration Suites, 2023",
 										"page": null,
 										"url": "https://www.cloudflare.com/lp/kuppingercole-leadership-compass-for-sase-report/"
-									},
-									{
-										"contentfulId": "7n1SFluiwc5jmELGLrQz6z",
-										"linkText": "Gartner® Market Guide for Email Security, 2023",
-										"page": null,
-										"url": "/lp/gartner-email-security-guide-2023/"
 									},
 									{
 										"contentfulId": "37Zewoa2SB5F8npg8OUDZA",
@@ -3017,36 +2966,6 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4240PZb3bpC5ZrndcMV4nt/ba4fc6174ff1439a4f00ff2e7d763853/Gartner_Logo_SVG_Narrow.svg"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "17G0YOl6ZHpik3DBwOgoMt",
-								"title": "Cloudflare named a \"Leader\" in 2023 KuppingerCole Leadership Compass for SASE",
-								"titleSize": "medium",
-								"description": "Through its 2023 SASE market analysis, KuppingerCole Analysts AG cited several Cloudflare strengths such as our large globally distributed presence and sophisticated traffic acceleration, massive backbone capacity, 100% uptime guarantee, and innovative Remote Browser Isolation.",
-								"learnMoreUrl": "https://www.cloudflare.com/lp/kuppingercole-leadership-compass-for-sase-report/",
-								"learnMoreText": "Read the report",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "837d93d6-fa8b-5dc9-995b-9e109a13171f",
-									"altText": null,
-									"title": "KuppingerCole Logo narrow aspect ratio with space",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wpjwgF59tFkXIL98qqzpi/3766ee269df1f1fe4b5f6e384094dfcc/KuppingerCole_Logo_SVG_Narrow.svg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -12601,7 +12520,7 @@
 				"es-ES",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": true,
+			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
