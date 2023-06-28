@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-types@1.2.0...@cloudflare/intl-types@1.3.0) (2023-06-28)
+
+
+### Features
+
+* **stratus:** DX-571 Remove Country names from Dashboard language selec ([7e2f60d](http://stash.cfops.it:7999/fe/stratus/commits/7e2f60d))
+* **stratus:** DX-571 Remove Country names from Dashboard language selec ([e0192bc](http://stash.cfops.it:7999/fe/stratus/commits/e0192bc))
+
+
+
+
+
 # [1.2.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-types@1.1.1...@cloudflare/intl-types@1.2.0) (2022-07-26)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@4.0.0...@cloudflare/component-payment-form@4.0.1) (2023-06-28)
+
+**Note:** Version bump only for package @cloudflare/component-payment-form
+
+
+
+
+
 # [4.0.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@3.0.5...@cloudflare/component-payment-form@4.0.0) (2023-06-27)
 
 
