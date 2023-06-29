@@ -1,7 +1,7 @@
 {
 	"name": "@cfpreview/pages-e2e-test-runner-cli",
 	"dist-tags": {
-		"latest": "0.0.9"
+		"latest": "0.0.10"
 	},
 	"versions": {
 		"0.0.1": {
@@ -433,6 +433,54 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIF3D3iD+O8boQX/50hyRKweI9nmJb+xddZMoy9y9NMFeAiEA2Qe8kHYxAQs6COF+B6XI/+HhSuMUiYjxlpCHILekOWs="
+					}
+				]
+			}
+		},
+		"0.0.10": {
+			"name": "@cfpreview/pages-e2e-test-runner-cli",
+			"version": "0.0.10",
+			"dependencies": {
+				"dotenv": "^16.3.1",
+				"globby": "^13.2.0",
+				"shellac": "^0.8.0",
+				"strip-json-comments": "^5.0.0",
+				"wrangler": "0.0.0-09f317d4",
+				"zod": "^3.21.4",
+				"zodcli": "^0.0.4"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20230518.0",
+				"@types/node": "^20.3.2",
+				"concurrently": "^8.2.0",
+				"husky": "^8.0.3",
+				"lint-staged": "^13.2.3",
+				"prettier": "^2.8.8",
+				"prettier-plugin-organize-imports": "^3.2.2",
+				"rimraf": "^5.0.1",
+				"typescript": "^5.1.6",
+				"zod-to-json-schema": "^3.21.3"
+			},
+			"peerDependencies": {
+				"@vitest/ui": "^0.29.2",
+				"esbuild": "^0.15.3",
+				"tsm": "^2.3.0",
+				"vitest": "^0.29.2",
+				"vitest-environment-cfpreview-playwright": "*"
+			},
+			"bin": {
+				"pages-e2e-test-runner-cli": "bin/run-test.js"
+			},
+			"dist": {
+				"integrity": "sha512-GrgiWn6OiN5RjlGFq9CBqk9rvcnU+YUn7+I92BgpZAw7VkLZp5SiofqBKlRASLA45dLgNh8Mu0hKdHU6POzEzQ==",
+				"shasum": "185e7c421ba24c01b7582a1c8c37120eb4191d38",
+				"tarball": "https://registry.npmjs.org/@cfpreview/pages-e2e-test-runner-cli/-/pages-e2e-test-runner-cli-0.0.10.tgz",
+				"fileCount": 34,
+				"unpackedSize": 1716377,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEqBqLGjpRfM5lbQbeq1lGumKubc3sW8Ybj0WZP+WEKUAiBo2V9/eoXl6Bt8nYtC5eL207PN5lUjpz/qGYzOfgEMGw=="
 					}
 				]
 			}
