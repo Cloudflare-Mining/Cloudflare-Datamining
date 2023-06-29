@@ -1,7 +1,7 @@
 {
 	"GET /radar/specialevents": {
 		"description": "Get a list of Special Events.",
-		"operationId": "radar_get_Xa",
+		"operationId": "radar-get-special-events",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -116,14 +116,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "List Special Events",
 		"tags": [
 			"Radar Special Events"
@@ -142,7 +174,7 @@
 	},
 	"GET /radar/specialevents/{eventAlias}": {
 		"description": "Get a single Special Event.",
-		"operationId": "radar_get_Ya",
+		"operationId": "radar-get-special-event-by-alias",
 		"parameters": [
 			{
 				"description": "Special Event alias",
@@ -243,14 +275,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a Single Special Events",
 		"tags": [
 			"Radar Special Events"
@@ -268,7 +332,7 @@
 		}
 	},
 	"GET /radar/specialevents/{eventAlias}/{categoryAlias}": {
-		"operationId": "radar_get_Ja",
+		"operationId": "radar-get-special-event-timeseries-by-alias",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -411,14 +475,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get Special Events time series",
 		"tags": [
 			"Radar Special Events"

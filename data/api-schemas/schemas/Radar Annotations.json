@@ -1,6 +1,6 @@
 {
 	"GET /radar/annotations/outages": {
-		"operationId": "radar_get_$a",
+		"operationId": "radar-get-annotations-outages",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -244,14 +244,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get latest internet outages and anomalies.",
 		"tags": [
 			"Radar Annotations"
@@ -269,7 +301,7 @@
 		}
 	},
 	"GET /radar/annotations/outages/locations": {
-		"operationId": "radar_get_Ba",
+		"operationId": "radar-get-annotations-outages-top",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -393,14 +425,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get the number of outages for locations.",
 		"tags": [
 			"Radar Annotations"

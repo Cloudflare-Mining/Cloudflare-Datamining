@@ -1,7 +1,7 @@
 {
 	"GET /radar/verified_bots/top/bots": {
 		"description": "Get top verified bots by HTTP requests, with owner and category.",
-		"operationId": "radar_get__top_bots",
+		"operationId": "radar-get-verified-bots-top-by-http-requests",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -266,14 +266,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top verified bots by HTTP requests",
 		"tags": [
 			"Radar Verified Bots"
@@ -292,7 +324,7 @@
 	},
 	"GET /radar/verified_bots/top/categories": {
 		"description": "Get top verified bot categories by HTTP requests, along with their corresponding percentage, over the total verified bot HTTP requests.",
-		"operationId": "radar_get__top_categories",
+		"operationId": "radar-get-verified-bots-top-categories-by-http-requests",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -547,14 +579,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top verified bot categories by HTTP requests",
 		"tags": [
 			"Radar Verified Bots"

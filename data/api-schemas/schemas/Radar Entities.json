@@ -1,7 +1,7 @@
 {
 	"GET /radar/entities/asns": {
 		"description": "Gets a list of autonomous systems (AS).",
-		"operationId": "radar_get_ha",
+		"operationId": "radar-get-entities-asn-list",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -123,14 +123,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get autonomous systems",
 		"tags": [
 			"Radar Entities"
@@ -149,7 +181,7 @@
 	},
 	"GET /radar/entities/asns/{asn}": {
 		"description": "Get the requested autonomous system information. A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this AS). Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
-		"operationId": "radar_get_Sa",
+		"operationId": "radar-get-entities-asn-by-id",
 		"parameters": [
 			{
 				"description": "Autonomous System Number (ASN).",
@@ -343,13 +375,186 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
+		"summary": "Get autonomous system information by AS number",
+		"tags": [
+			"Radar Entities"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/entities/asns/{asn}/rel": {
+		"description": "Get AS-level relationship for given networks.",
+		"operationId": "radar-get-asns-rel",
+		"parameters": [
 			{
-				"api_email": [],
-				"api_key": []
+				"description": "Get all ASNs with provider-customer or peering relationships with the given ASN",
+				"in": "path",
+				"name": "asn",
+				"required": true,
+				"schema": {
+					"description": "Get all ASNs with provider-customer or peering relationships with the given ASN",
+					"example": 3,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Get the AS relationship of ASN2 with respect to the given ASN",
+				"in": "query",
+				"name": "asn2",
+				"schema": {
+					"description": "Get the AS relationship of ASN2 with respect to the given ASN",
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
 			}
 		],
-		"summary": "Get autonomous system information by AS number",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"data_time": {
+													"type": "string"
+												},
+												"query_time": {
+													"type": "string"
+												},
+												"total_peers": {
+													"type": "integer"
+												}
+											},
+											"required": [
+												"data_time",
+												"query_time",
+												"total_peers"
+											],
+											"type": "object"
+										},
+										"rels": {
+											"items": {
+												"properties": {
+													"asn1": {
+														"type": "integer"
+													},
+													"asn1_country": {
+														"type": "string"
+													},
+													"asn1_name": {
+														"type": "string"
+													},
+													"asn2": {
+														"type": "integer"
+													},
+													"asn2_country": {
+														"type": "string"
+													},
+													"asn2_name": {
+														"type": "string"
+													},
+													"rel": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"asn1",
+													"asn1_country",
+													"asn1_name",
+													"asn2",
+													"asn2_country",
+													"asn2_name",
+													"rel"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"rels",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"summary": "Get AS-level relationships by AS number",
 		"tags": [
 			"Radar Entities"
 		],
@@ -367,7 +572,7 @@
 	},
 	"GET /radar/entities/asns/ip": {
 		"description": "Get the requested autonomous system information based on IP address. Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
-		"operationId": "radar_get_wa",
+		"operationId": "radar-get-entities-asn-by-ip",
 		"parameters": [
 			{
 				"description": "IP address.",
@@ -553,13 +758,147 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
+		"summary": "Get autonomous system information by IP address",
+		"tags": [
+			"Radar Entities"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/entities/ip": {
+		"description": "Get IP address information. ",
+		"operationId": "radar-get-entities-ip",
+		"parameters": [
 			{
-				"api_email": [],
-				"api_key": []
+				"description": "IP address.",
+				"in": "query",
+				"name": "ip",
+				"required": true,
+				"schema": {
+					"description": "IP address.",
+					"example": "8.8.8.8",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
 			}
 		],
-		"summary": "Get autonomous system information by IP address",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"ip": {
+											"properties": {
+												"asn": {
+													"example": "15169",
+													"type": "string"
+												},
+												"asnLocation": {
+													"example": "US",
+													"type": "string"
+												},
+												"asnName": {
+													"example": "GOOGLE",
+													"type": "string"
+												},
+												"asnOrgName": {
+													"example": "Google LLC",
+													"type": "string"
+												},
+												"ip": {
+													"example": "8.8.8.8",
+													"type": "string"
+												},
+												"ipVersion": {
+													"example": "IPv4",
+													"type": "string"
+												},
+												"location": {
+													"example": "GB",
+													"type": "string"
+												},
+												"locationName": {
+													"example": "United Kingdom",
+													"type": "string"
+												}
+											},
+											"required": [
+												"ip",
+												"ipVersion",
+												"location",
+												"locationName",
+												"asn",
+												"asnName",
+												"asnLocation",
+												"asnOrgName"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"ip"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"summary": "Get IP address",
 		"tags": [
 			"Radar Entities"
 		],
@@ -577,7 +916,7 @@
 	},
 	"GET /radar/entities/locations": {
 		"description": "Get a list of locations.",
-		"operationId": "radar_get_ga",
+		"operationId": "radar-get-entities-locations",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -682,14 +1021,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get locations",
 		"tags": [
 			"Radar Entities"
@@ -708,7 +1079,7 @@
 	},
 	"GET /radar/entities/locations/{location}": {
 		"description": "Get the requested location information. A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this location).",
-		"operationId": "radar_get_fa",
+		"operationId": "radar-get-entities-location-by-alpha2",
 		"parameters": [
 			{
 				"description": "Alpha-2 country code.",
@@ -825,12 +1196,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get location",
 		"tags": [
 			"Radar Entities"

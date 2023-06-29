@@ -1,7 +1,7 @@
 {
 	"GET /radar/search/global": {
 		"description": "Lets you search for locations, autonomous systems (AS) and reports.",
-		"operationId": "radar_get_Ma",
+		"operationId": "radar-get-search-global",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -134,14 +134,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Search for locations, autonomous systems (AS) and reports.",
 		"tags": [
 			"Radar Search"

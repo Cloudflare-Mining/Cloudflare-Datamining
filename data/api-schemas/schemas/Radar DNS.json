@@ -1,7 +1,7 @@
 {
 	"GET /radar/dns/top/ases": {
 		"description": "Get top autonomous systems by DNS queries made to Cloudflare's public DNS resolver.",
-		"operationId": "radar_get__top_ases",
+		"operationId": "radar-get-dns-top-ases",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -296,12 +296,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top autonomous systems by DNS queries.",
 		"tags": [
 			"Radar DNS"
@@ -320,7 +314,7 @@
 	},
 	"GET /radar/dns/top/locations": {
 		"description": "Get top locations by DNS queries made to Cloudflare's public DNS resolver.",
-		"operationId": "radar_get__top_locations",
+		"operationId": "radar-get-dns-top-locations",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -615,12 +609,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations by DNS queries",
 		"tags": [
 			"Radar DNS"

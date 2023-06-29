@@ -1,7 +1,7 @@
 {
 	"GET /radar/email/security/summary/arc": {
 		"description": "Percentage distribution of emails classified per Arc validation.",
-		"operationId": "radar_get__security_summary_arc",
+		"operationId": "radar-get-email-security-summary-by-arc",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -211,14 +211,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of ARC validations",
 		"tags": [
 			"Radar Email Security"
@@ -237,7 +269,7 @@
 	},
 	"GET /radar/email/security/summary/dkim": {
 		"description": "Percentage distribution of emails classified per DKIM validation.",
-		"operationId": "radar_get__security_summary_dkim",
+		"operationId": "radar-get-email-security-summary-by-dkim",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -447,14 +479,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of DKIM validations",
 		"tags": [
 			"Radar Email Security"
@@ -473,7 +537,7 @@
 	},
 	"GET /radar/email/security/summary/dmarc": {
 		"description": "Percentage distribution of emails classified per DMARC validation.",
-		"operationId": "radar_get__security_summary_dmarc",
+		"operationId": "radar-get-email-security-summary-by-dmarc",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -683,14 +747,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of DMARC validations",
 		"tags": [
 			"Radar Email Security"
@@ -709,7 +805,7 @@
 	},
 	"GET /radar/email/security/summary/malicious": {
 		"description": "Percentage distribution of emails classified as MALICIOUS.",
-		"operationId": "radar_get__security_summary_malicious",
+		"operationId": "radar-get-email-security-summary-by-malicious",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -930,14 +1026,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of MALICIOUS validations",
 		"tags": [
 			"Radar Email Security"
@@ -956,7 +1084,7 @@
 	},
 	"GET /radar/email/security/summary/spam": {
 		"description": "Proportion of emails categorized as either spam or legitimate (non-spam).",
-		"operationId": "radar_get__security_summary_spam",
+		"operationId": "radar-get-email-security-summary-by-spam",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -1177,14 +1305,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Percentage distribution of emails classified as SPAM.",
 		"tags": [
 			"Radar Email Security"
@@ -1203,7 +1363,7 @@
 	},
 	"GET /radar/email/security/summary/spf": {
 		"description": "Percentage distribution of emails classified per SPF validation.",
-		"operationId": "radar_get__security_summary_spf",
+		"operationId": "radar-get-email-security-summary-by-spf",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -1413,14 +1573,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of SPF validations",
 		"tags": [
 			"Radar Email Security"
@@ -1439,7 +1631,7 @@
 	},
 	"GET /radar/email/security/summary/threat_category": {
 		"description": "Percentage distribution of emails classified in Threat Categories.",
-		"operationId": "radar_get__security_summary_threat_category",
+		"operationId": "radar-get-email-security-summary-by-threat-category",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -1670,14 +1862,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of Threat Categories",
 		"tags": [
 			"Radar Email Security"
@@ -1696,7 +1920,7 @@
 	},
 	"GET /radar/email/security/timeseries/arc": {
 		"description": "Percentage distribution of emails classified per Arc validation over time.",
-		"operationId": "radar_get__security_timeseries_arc",
+		"operationId": "radar-get-email-security-timeseries-group-by-arc",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -1929,14 +2153,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of ARC validations",
 		"tags": [
 			"Radar Email Security"
@@ -1955,7 +2211,7 @@
 	},
 	"GET /radar/email/security/timeseries/dkim": {
 		"description": "Percentage distribution of emails classified per DKIM validation over time.",
-		"operationId": "radar_get__security_timeseries_dkim",
+		"operationId": "radar-get-email-security-timeseries-group-by-dkim",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -2188,14 +2444,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of DKIM validations validations",
 		"tags": [
 			"Radar Email Security"
@@ -2214,7 +2502,7 @@
 	},
 	"GET /radar/email/security/timeseries/dmarc": {
 		"description": "Percentage distribution of emails classified per DMARC validation over time.",
-		"operationId": "radar_get__security_timeseries_dmarc",
+		"operationId": "radar-get-email-security-timeseries-group-by-dmarc",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -2447,14 +2735,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of DMARC validations",
 		"tags": [
 			"Radar Email Security"
@@ -2473,7 +2793,7 @@
 	},
 	"GET /radar/email/security/timeseries/malicious": {
 		"description": "Percentage distribution of emails classified as MALICIOUS over time.",
-		"operationId": "radar_get__security_timeseries_malicious",
+		"operationId": "radar-get-email-security-timeseries-group-by-malicious",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -2714,14 +3034,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of MALICIOUS validations",
 		"tags": [
 			"Radar Email Security"
@@ -2740,7 +3092,7 @@
 	},
 	"GET /radar/email/security/timeseries/spam": {
 		"description": "Percentage distribution of emails classified as SPAM over time.",
-		"operationId": "radar_get__security_timeseries_spam",
+		"operationId": "radar-get-email-security-timeseries-group-by-spam",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -2981,14 +3333,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of SPAM validations",
 		"tags": [
 			"Radar Email Security"
@@ -3007,7 +3391,7 @@
 	},
 	"GET /radar/email/security/timeseries/spf": {
 		"description": "Percentage distribution of emails classified per SPF validation over time.",
-		"operationId": "radar_get__security_timeseries_spf",
+		"operationId": "radar-get-email-security-timeseries-group-by-spf",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -3240,14 +3624,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of SPF validations",
 		"tags": [
 			"Radar Email Security"
@@ -3266,7 +3682,7 @@
 	},
 	"GET /radar/email/security/timeseries/threat_category": {
 		"description": "Percentage distribution of emails classified in Threat Categories over time.",
-		"operationId": "radar_get__security_timeseries_threat_category",
+		"operationId": "radar-get-email-security-timeseries-group-by-threat-category",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -3523,14 +3939,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of Threat Categories",
 		"tags": [
 			"Radar Email Security"
@@ -3549,7 +3997,7 @@
 	},
 	"GET /radar/email/security/top/ases": {
 		"description": "Get the top autonomous systems (AS) by email messages. Values are a percentage out of the total emails.",
-		"operationId": "radar_get__security_top_ases",
+		"operationId": "radar-get-email-security-top-ases-by-messages",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -3881,12 +4329,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top autonomous systems by email messages",
 		"tags": [
 			"Radar Email Security"
@@ -3905,7 +4347,7 @@
 	},
 	"GET /radar/email/security/top/ases/arc/{arc}": {
 		"description": "Get the top autonomous systems (AS), by emails classified, of ARC validations.",
-		"operationId": "radar_get__security_top_ases_arc_:arc",
+		"operationId": "radar-get-email-security-top-ases-by-arc",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -4235,12 +4677,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top autonomous systems by ARC validations",
 		"tags": [
 			"Radar Email Security"
@@ -4259,7 +4695,7 @@
 	},
 	"GET /radar/email/security/top/ases/dkim/{dkim}": {
 		"description": "Get the top autonomous systems (AS), by emails classified, of DKIM validations.",
-		"operationId": "radar_get__security_top_ases_dkim_:dkim",
+		"operationId": "radar-get-email-security-top-ases-by-dkim",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -4589,12 +5025,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top autonomous systems by DKIM validations",
 		"tags": [
 			"Radar Email Security"
@@ -4613,7 +5043,7 @@
 	},
 	"GET /radar/email/security/top/ases/dmarc/{dmarc}": {
 		"description": "Get the top autonomous systems (AS), by emails classified, of DMARC validations.",
-		"operationId": "radar_get__security_top_ases_dmarc_:dmarc",
+		"operationId": "radar-get-email-security-top-ases-by-dmarc",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -4943,12 +5373,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top autonomous systems by DMARC validations",
 		"tags": [
 			"Radar Email Security"
@@ -4967,7 +5391,7 @@
 	},
 	"GET /radar/email/security/top/ases/malicious/{malicious}": {
 		"description": "Get the top autonomous systems (AS), by emails classified, of Malicious validations.",
-		"operationId": "radar_get__security_top_ases_malicious_:malicious",
+		"operationId": "radar-get-email-security-top-ases-by-malicious",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -5312,12 +5736,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top autonomous systems by Malicious validations",
 		"tags": [
 			"Radar Email Security"
@@ -5336,7 +5754,7 @@
 	},
 	"GET /radar/email/security/top/ases/spam/{spam}": {
 		"description": "Get the top autonomous systems (AS), by emails classified, of Spam validations.",
-		"operationId": "radar_get__security_top_ases_spam_:spam",
+		"operationId": "radar-get-email-security-top-ases-by-spam",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -5681,12 +6099,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top autonomous systems by Spam validations",
 		"tags": [
 			"Radar Email Security"
@@ -5705,7 +6117,7 @@
 	},
 	"GET /radar/email/security/top/ases/spf/{spf}": {
 		"description": "Get the top autonomous systems (AS), by emails classified, of SPF validations.",
-		"operationId": "radar_get__security_top_ases_spf_:spf",
+		"operationId": "radar-get-email-security-top-ases-by-spf",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -6035,12 +6447,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top autonomous systems by SPF validations",
 		"tags": [
 			"Radar Email Security"
@@ -6059,7 +6465,7 @@
 	},
 	"GET /radar/email/security/top/locations": {
 		"description": "Get the top locations by email messages. Values are a percentage out of the total emails.",
-		"operationId": "radar_get__security_top_locations",
+		"operationId": "radar-get-email-security-top-locations-by-messages",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -6391,12 +6797,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations by email messages",
 		"tags": [
 			"Radar Email Security"
@@ -6415,7 +6815,7 @@
 	},
 	"GET /radar/email/security/top/locations/arc/{arc}": {
 		"description": "Get the locations, by emails classified, of ARC validations.",
-		"operationId": "radar_get__security_top_locations_arc_:arc",
+		"operationId": "radar-get-email-security-top-locations-by-arc",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -6745,12 +7145,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations by ARC validations",
 		"tags": [
 			"Radar Email Security"
@@ -6769,7 +7163,7 @@
 	},
 	"GET /radar/email/security/top/locations/dkim/{dkim}": {
 		"description": "Get the locations, by emails classified, of DKIM validations.",
-		"operationId": "radar_get__security_top_locations_dkim_:dkim",
+		"operationId": "radar-get-email-security-top-locations-by-dkim",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -7099,12 +7493,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations by DKIM validations",
 		"tags": [
 			"Radar Email Security"
@@ -7123,7 +7511,7 @@
 	},
 	"GET /radar/email/security/top/locations/dmarc/{dmarc}": {
 		"description": "Get the locations, by emails classified, of DMARC validations.",
-		"operationId": "radar_get__security_top_locations_dmarc_:dmarc",
+		"operationId": "radar-get-email-security-top-locations-by-dmarc",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -7453,12 +7841,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations by DMARC validations",
 		"tags": [
 			"Radar Email Security"
@@ -7477,7 +7859,7 @@
 	},
 	"GET /radar/email/security/top/locations/malicious/{malicious}": {
 		"description": "Get the locations, by emails classified, of Malicious validations.",
-		"operationId": "radar_get__security_top_locations_malicious_:malicious",
+		"operationId": "radar-get-email-security-top-locations-by-malicious",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -7822,12 +8204,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations by Malicious validations",
 		"tags": [
 			"Radar Email Security"
@@ -7846,7 +8222,7 @@
 	},
 	"GET /radar/email/security/top/locations/spam/{spam}": {
 		"description": "Get the locations, by emails classified, of Spam validations.",
-		"operationId": "radar_get__security_top_locations_spam_:spam",
+		"operationId": "radar-get-email-security-top-locations-by-spam",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -8191,12 +8567,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations by Spam validations",
 		"tags": [
 			"Radar Email Security"
@@ -8215,7 +8585,7 @@
 	},
 	"GET /radar/email/security/top/locations/spf/{spf}": {
 		"description": "Get the locations, by emails classified, of SPF validations.",
-		"operationId": "radar_get__security_top_locations_spf_:spf",
+		"operationId": "radar-get-email-security-top-locations-by-spf",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -8545,12 +8915,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations by SPF validations",
 		"tags": [
 			"Radar Email Security"

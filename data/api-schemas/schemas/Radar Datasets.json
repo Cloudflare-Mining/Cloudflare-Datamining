@@ -1,7 +1,7 @@
 {
 	"GET /radar/datasets": {
 		"description": "Get a list of datasets.",
-		"operationId": "radar_get_Va",
+		"operationId": "radar-get-reports-datasets",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -120,14 +120,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get Datasets",
 		"tags": [
 			"Radar Datasets"
@@ -146,7 +178,7 @@
 	},
 	"GET /radar/datasets/{alias}": {
 		"description": "Get the csv content of a given dataset by alias or id. When getting the content by alias the latest dataset is returned, optionally filtered by the latest available at a given date.",
-		"operationId": "radar_get_za",
+		"operationId": "radar-get-reports-dataset-download",
 		"parameters": [
 			{
 				"description": "Dataset alias or id",
@@ -181,14 +213,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get Dataset csv Stream",
 		"tags": [
 			"Radar Datasets"
@@ -207,7 +271,7 @@
 	},
 	"POST /radar/datasets/download": {
 		"description": "Get a url to download a single dataset.",
-		"operationId": "radar_post_Ka",
+		"operationId": "radar-post-reports-dataset-download-url",
 		"parameters": [
 			{
 				"description": "Format results are returned in.",
@@ -267,14 +331,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get Dataset download url",
 		"tags": [
 			"Radar Datasets"

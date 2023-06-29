@@ -1,7 +1,7 @@
 {
 	"GET /radar/netflows/timeseries": {
 		"description": "Get network traffic change over time. Values are normalized using min-max by default, with the minimum set to 0. ",
-		"operationId": "radar_get_da",
+		"operationId": "radar-get-netflows-timeseries",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -301,14 +301,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get NetFlow time series",
 		"tags": [
 			"Radar Netflows"
@@ -327,7 +359,7 @@
 	},
 	"GET /radar/netflows/top/ases": {
 		"description": "Get the top autonomous systems (AS) by network traffic. Values are a percentage out of the total network traffic.",
-		"operationId": "radar_get_pa",
+		"operationId": "radar-get-netflows-top-ases",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -499,14 +531,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top autonomous systems",
 		"tags": [
 			"Radar Netflows"
@@ -525,7 +589,7 @@
 	},
 	"GET /radar/netflows/top/locations": {
 		"description": "Get the top locations by network traffic. Values are a percentage out of the total network traffic.",
-		"operationId": "radar_get_ua",
+		"operationId": "radar-get-netflows-top-locations",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -697,14 +761,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations",
 		"tags": [
 			"Radar Netflows"

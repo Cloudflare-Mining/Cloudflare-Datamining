@@ -2,7 +2,7 @@
 	"GET /radar/attacks/layer3/summary": {
 		"deprecated": true,
 		"description": "Percentage distribution of network protocols in layer 3/4 attacks.",
-		"operationId": "radar_get__layer3_summary",
+		"operationId": "radar-get-attacks-layer3-summary",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -253,14 +253,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of layer 3 attacks",
 		"tags": [
 			"Radar Attacks"
@@ -279,7 +311,7 @@
 	},
 	"GET /radar/attacks/layer3/summary/bitrate": {
 		"description": "Percentage distribution of attacks by bitrate.",
-		"operationId": "radar_get__layer3_summary_bitrate",
+		"operationId": "radar-get-attacks-layer3-summary-by-bitrate",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -470,14 +502,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of attack bitrate",
 		"tags": [
 			"Radar Attacks"
@@ -496,7 +560,7 @@
 	},
 	"GET /radar/attacks/layer3/summary/duration": {
 		"description": "Percentage distribution of attacks by duration.",
-		"operationId": "radar_get__layer3_summary_duration",
+		"operationId": "radar-get-attacks-layer3-summary-by-duration",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -692,14 +756,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of attack durations",
 		"tags": [
 			"Radar Attacks"
@@ -718,7 +814,7 @@
 	},
 	"GET /radar/attacks/layer3/summary/ip_version": {
 		"description": "Percentage distribution of attacks by ip version used.",
-		"operationId": "radar_get__layer3_summary_ip_version",
+		"operationId": "radar-get-attacks-layer3-summary-by-ip-version",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -879,14 +975,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of ip versions",
 		"tags": [
 			"Radar Attacks"
@@ -905,7 +1033,7 @@
 	},
 	"GET /radar/attacks/layer3/summary/protocol": {
 		"description": "Percentage distribution of attacks by protocol used.",
-		"operationId": "radar_get__layer3_summary_protocol",
+		"operationId": "radar-get-attacks-layer3-summary-by-protocol",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -1074,14 +1202,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of protocols",
 		"tags": [
 			"Radar Attacks"
@@ -1100,7 +1260,7 @@
 	},
 	"GET /radar/attacks/layer3/summary/vector": {
 		"description": "Percentage distribution of attacks by vector used.",
-		"operationId": "radar_get__layer3_summary_vector",
+		"operationId": "radar-get-attacks-layer3-summary-by-vector",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -1281,14 +1441,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of attack vector",
 		"tags": [
 			"Radar Attacks"
@@ -1307,7 +1499,7 @@
 	},
 	"GET /radar/attacks/layer3/timeseries": {
 		"description": "Get attacks change over time by bytes.",
-		"operationId": "radar_get__layer3_timeseries",
+		"operationId": "radar-get-attacks-layer3-timeseries-by-bytes",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -1537,14 +1729,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of attacks by bytes",
 		"tags": [
 			"Radar Attacks"
@@ -1564,7 +1788,7 @@
 	"GET /radar/attacks/layer3/timeseries_groups": {
 		"deprecated": true,
 		"description": "Get percentage of what type of network protocols are used in layer 3/4 attacks, over time.",
-		"operationId": "radar_get__layer3_timeseries_groups",
+		"operationId": "radar-get-attacks-layer3-timeseries-groups",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -1859,14 +2083,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get layer 3 attacks by network protocol, over time",
 		"tags": [
 			"Radar Attacks"
@@ -1885,7 +2141,7 @@
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/bitrate": {
 		"description": "Percentage distribution of attacks by bitrate over time.",
-		"operationId": "radar_get__layer3_timeseries_groups_bitrate",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-bitrate",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -2119,14 +2375,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of attack bitrate",
 		"tags": [
 			"Radar Attacks"
@@ -2145,7 +2433,7 @@
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/duration": {
 		"description": "Percentage distribution of attacks by duration over time.",
-		"operationId": "radar_get__layer3_timeseries_groups_duration",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-duration",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -2386,14 +2674,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of attack durations",
 		"tags": [
 			"Radar Attacks"
@@ -2412,7 +2732,7 @@
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/industry": {
 		"description": "Percentage distribution of attacks by industry used over time.",
-		"operationId": "radar_get__layer3_timeseries_groups_industry",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-industry",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -2625,14 +2945,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of industries",
 		"tags": [
 			"Radar Attacks"
@@ -2651,7 +3003,7 @@
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/ip_version": {
 		"description": "Percentage distribution of attacks by ip version used over time.",
-		"operationId": "radar_get__layer3_timeseries_groups_ip_version",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-ip-version",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -2849,14 +3201,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of ip versions",
 		"tags": [
 			"Radar Attacks"
@@ -2875,7 +3259,7 @@
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/protocol": {
 		"description": "Percentage distribution of attacks by protocol used over time.",
-		"operationId": "radar_get__layer3_timeseries_groups_protocol",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-protocol",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -3085,14 +3469,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of protocols",
 		"tags": [
 			"Radar Attacks"
@@ -3111,7 +3527,7 @@
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/vector": {
 		"description": "Percentage distribution of attacks by vector used over time.",
-		"operationId": "radar_get__layer3_timeseries_groups_vector",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-vector",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -3341,14 +3757,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of attack vector",
 		"tags": [
 			"Radar Attacks"
@@ -3367,7 +3815,7 @@
 	},
 	"GET /radar/attacks/layer3/timeseries_groups/vertical": {
 		"description": "Percentage distribution of attacks by vertical used over time.",
-		"operationId": "radar_get__layer3_timeseries_groups_vertical",
+		"operationId": "radar-get-attacks-layer3-timeseries-group-by-vertical",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -3580,14 +4028,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of verticals",
 		"tags": [
 			"Radar Attacks"
@@ -3606,7 +4086,7 @@
 	},
 	"GET /radar/attacks/layer3/top/industry": {
 		"description": "Get the Industry of attacks.",
-		"operationId": "radar_get__layer3_top_industry",
+		"operationId": "radar-get-attacks-layer3-top-industries",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -3888,12 +4368,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top Industry of attack",
 		"tags": [
 			"Radar Attacks"
@@ -3912,7 +4386,7 @@
 	},
 	"GET /radar/attacks/layer3/top/vertical": {
 		"description": "Get the Verticals of attacks.",
-		"operationId": "radar_get__layer3_top_vertical",
+		"operationId": "radar-get-attacks-layer3-top-verticals",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -4194,12 +4668,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top Verticals of attack",
 		"tags": [
 			"Radar Attacks"
@@ -4218,7 +4686,7 @@
 	},
 	"GET /radar/attacks/layer7/summary": {
 		"description": "Percentage distribution of mitigation techniques in layer 7 attacks.",
-		"operationId": "radar_get__layer7_summary",
+		"operationId": "radar-get-attacks-layer7-summary",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -4484,14 +4952,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of layer 7 attacks",
 		"tags": [
 			"Radar Attacks"
@@ -4510,7 +5010,7 @@
 	},
 	"GET /radar/attacks/layer7/timeseries": {
 		"description": "Get layer 7 attacks change over time. Values are normalized using min-max by default, with the minimum set to 0. When asking for multiple time series, you can also get the percentage relative change of the first/main series, with respect to the second/control series - for example, to get the relative change of this week from the previous week, the first series would have a date range of `7d`, the second, a date range of `7dControl`, and the normalization would be set to `PERCENTAGE_CHANGE`.",
-		"operationId": "radar_get_Jt",
+		"operationId": "radar-get-attacks-layer7-timeseries",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -4815,14 +5315,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get attacks layer 7 time series",
 		"tags": [
 			"Radar Attacks"
@@ -4841,7 +5373,7 @@
 	},
 	"GET /radar/attacks/layer7/timeseries_groups": {
 		"description": "Get percentage of what type of mitigation techniques are used to block layer 7 attacks, over time.",
-		"operationId": "radar_get__layer7_timeseries_groups",
+		"operationId": "radar-get-attacks-layer7-timeseries-group",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -5162,14 +5694,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get layer 7 attacks by mitigation technique, over time",
 		"tags": [
 			"Radar Attacks"
@@ -5188,7 +5752,7 @@
 	},
 	"GET /radar/attacks/layer7/top/ases/origin": {
 		"description": "Get the top origin ASes by layer 7 attacks. Values are a percentage out of the total layer 7 attacks. The origin location is determined by the client IP.",
-		"operationId": "radar_get_rs",
+		"operationId": "radar-get-attacks-layer7-top-ases",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -5352,14 +5916,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get layer 7 top origin ASes",
 		"tags": [
 			"Radar Attacks"
@@ -5378,7 +5974,7 @@
 	},
 	"GET /radar/attacks/layer7/top/attacks": {
 		"description": "Get the top attacks from origin to target location. Values are a percentage out of the total layer 7 attacks (with billing country). The attack magnitude can be defined by the number of mitigated requests or by the number of zones affected. You can optionally limit the number of attacks per origin/target location (useful if all the top attacks are from or to the same location).",
-		"operationId": "radar_get_ns",
+		"operationId": "radar-get-attacks-layer7-top-attacks",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -5587,14 +6183,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get layer 7 top attack pairs (origin and target locations)",
 		"tags": [
 			"Radar Attacks"
@@ -5613,7 +6241,7 @@
 	},
 	"GET /radar/attacks/layer7/top/locations/origin": {
 		"description": "Get the top origin locations of and by layer 7 attacks. Values are a percentage out of the total layer 7 attacks. The origin location is determined by the client IP.",
-		"operationId": "radar_get_ss",
+		"operationId": "radar-get-attacks-layer7-top-origin-location",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -5777,14 +6405,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get layer 7 top origin locations",
 		"tags": [
 			"Radar Attacks"
@@ -5803,7 +6463,7 @@
 	},
 	"GET /radar/attacks/layer7/top/locations/target": {
 		"description": "Get the top target locations of and by layer 7 attacks. Values are a percentage out of the total layer 7 attacks. The target location is determined by the attacked zone's billing country, when available.",
-		"operationId": "radar_get_as",
+		"operationId": "radar-get-attacks-layer7-top-target-location",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -5954,14 +6614,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get layer 7 top target locations",
 		"tags": [
 			"Radar Attacks"

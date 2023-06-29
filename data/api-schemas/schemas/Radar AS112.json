@@ -1,7 +1,7 @@
 {
 	"GET /radar/as112/summary/dnssec": {
 		"description": "Percentage distribution of AS112 dns requests classified per DNSSEC.",
-		"operationId": "radar_get__summary_dnssec",
+		"operationId": "radar-get-dns-as112-timeseries-by-dnssec",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -158,14 +158,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of AS112 DNSSEC",
 		"tags": [
 			"Radar AS112"
@@ -184,7 +216,7 @@
 	},
 	"GET /radar/as112/summary/edns": {
 		"description": "Percentage distribution of AS112 dns requests classified per EDNS.",
-		"operationId": "radar_get__summary_edns",
+		"operationId": "radar-get-dns-as112-timeseries-by-edns",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -341,14 +373,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of AS112 EDNS",
 		"tags": [
 			"Radar AS112"
@@ -367,7 +431,7 @@
 	},
 	"GET /radar/as112/summary/ip_version": {
 		"description": "Percentage distribution of AS112 dns requests classified per IP Version.",
-		"operationId": "radar_get__summary_ip_version",
+		"operationId": "radar-get-dns-as112-timeseries-by-ip-version",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -524,14 +588,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of AS112 IP Version",
 		"tags": [
 			"Radar AS112"
@@ -550,7 +646,7 @@
 	},
 	"GET /radar/as112/summary/protocol": {
 		"description": "Percentage distribution of AS112 dns requests classified per Protocol.",
-		"operationId": "radar_get__summary_protocol",
+		"operationId": "radar-get-dns-as112-timeseries-by-protocol",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -707,14 +803,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of AS112 Protocol",
 		"tags": [
 			"Radar AS112"
@@ -733,7 +861,7 @@
 	},
 	"GET /radar/as112/summary/query_type": {
 		"description": "Percentage distribution of AS112 dns requests classified per Query Type.",
-		"operationId": "radar_get__summary_query_type",
+		"operationId": "radar-get-dns-as112-timeseries-by-query-type",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -905,14 +1033,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of AS112 Query Type",
 		"tags": [
 			"Radar AS112"
@@ -931,7 +1091,7 @@
 	},
 	"GET /radar/as112/summary/response_codes": {
 		"description": "Percentage distribution of AS112 dns requests classified per Response Codes.",
-		"operationId": "radar_get__summary_response_codes",
+		"operationId": "radar-get-dns-as112-timeseries-by-response-codes",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -1088,14 +1248,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a summary of AS112 Response Codes",
 		"tags": [
 			"Radar AS112"
@@ -1114,7 +1306,7 @@
 	},
 	"GET /radar/as112/timeseries": {
 		"description": "Get AS112 queries change over time.",
-		"operationId": "radar_get__timeseries",
+		"operationId": "radar-get-dns-as112-timeseries",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -1387,14 +1579,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get AS112 time series",
 		"tags": [
 			"Radar AS112"
@@ -1413,7 +1637,7 @@
 	},
 	"GET /radar/as112/timeseries/dnssec": {
 		"description": "Percentage distribution of dns AS112 requests classified per DNSSEC over time.",
-		"operationId": "radar_get__timeseries_dnssec",
+		"operationId": "radar-get-dns-as112-timeseries-group-by-dnssec",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -1590,14 +1814,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of AS112 DNSSEC",
 		"tags": [
 			"Radar AS112"
@@ -1616,7 +1872,7 @@
 	},
 	"GET /radar/as112/timeseries/edns": {
 		"description": "Percentage distribution of AS112 dns requests classified per EDNS over time.",
-		"operationId": "radar_get__timeseries_edns",
+		"operationId": "radar-get-dns-as112-timeseries-group-by-edns",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -1793,14 +2049,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of AS112 EDNS",
 		"tags": [
 			"Radar AS112"
@@ -1819,7 +2107,7 @@
 	},
 	"GET /radar/as112/timeseries/ip_version": {
 		"description": "Percentage distribution of AS112 dns requests classified per IP Version over time.",
-		"operationId": "radar_get__timeseries_ip_version",
+		"operationId": "radar-get-dns-as112-timeseries-group-by-ip-version",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -1996,14 +2284,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of AS112 IP Version",
 		"tags": [
 			"Radar AS112"
@@ -2022,7 +2342,7 @@
 	},
 	"GET /radar/as112/timeseries/protocol": {
 		"description": "Percentage distribution of AS112 dns requests classified per Protocol over time.",
-		"operationId": "radar_get__timeseries_protocol",
+		"operationId": "radar-get-dns-as112-timeseries-group-by-protocol",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -2199,14 +2519,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of AS112 Protocol",
 		"tags": [
 			"Radar AS112"
@@ -2225,7 +2577,7 @@
 	},
 	"GET /radar/as112/timeseries/query_type": {
 		"description": "Percentage distribution of AS112 dns requests classified per Query Type over time.",
-		"operationId": "radar_get__timeseries_query_type",
+		"operationId": "radar-get-dns-as112-timeseries-group-by-query-type",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -2426,14 +2778,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of AS112 Query Type",
 		"tags": [
 			"Radar AS112"
@@ -2452,7 +2836,7 @@
 	},
 	"GET /radar/as112/timeseries/response_codes": {
 		"description": "Percentage distribution of AS112 dns requests classified per Response Codes over time.",
-		"operationId": "radar_get__timeseries_response_codes",
+		"operationId": "radar-get-dns-as112-timeseries-group-by-response-codes",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -2629,14 +3013,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get a time series of AS112 Response Codes",
 		"tags": [
 			"Radar AS112"
@@ -2655,7 +3071,7 @@
 	},
 	"GET /radar/as112/top/locations": {
 		"description": "Get the top locations by AS112 DNS queries. Values are a percentage out of the total queries.",
-		"operationId": "radar_get__top_locations",
+		"operationId": "radar-get-dns-as112-top-locations",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -2923,12 +3339,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top autonomous systems by AS112 DNS queries",
 		"tags": [
 			"Radar AS112"
@@ -2947,7 +3357,7 @@
 	},
 	"GET /radar/as112/top/locations/dnssec/{dnssec}": {
 		"description": "Get the locations, by AS112 DNS queries, of DNSSEC validations.",
-		"operationId": "radar_get__top_locations_dnssec_:dnssec",
+		"operationId": "radar-get-dns-as112-top-locations-by-dnssec",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -3228,12 +3638,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations by AS112 DNSSEC validations",
 		"tags": [
 			"Radar AS112"
@@ -3252,7 +3656,7 @@
 	},
 	"GET /radar/as112/top/locations/edns/{edns}": {
 		"description": "Get the locations, by AS112 DNS queries, of EDNS validations.",
-		"operationId": "radar_get__top_locations_edns_:edns",
+		"operationId": "radar-get-dns-as112-top-locations-by-edns",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -3533,12 +3937,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations by AS112 EDNS validations",
 		"tags": [
 			"Radar AS112"
@@ -3557,7 +3955,7 @@
 	},
 	"GET /radar/as112/top/locations/ip_version/{ip_version}": {
 		"description": "Get the locations, by AS112 DNS queries, of IP version.",
-		"operationId": "radar_get__top_locations_ip_version_:ip_version",
+		"operationId": "radar-get-dns-as112-top-locations-by-ip-version",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -3838,12 +4236,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top locations by AS112 IP version",
 		"tags": [
 			"Radar AS112"

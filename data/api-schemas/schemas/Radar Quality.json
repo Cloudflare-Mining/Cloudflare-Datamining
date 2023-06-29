@@ -1,7 +1,7 @@
 {
 	"GET /radar/quality/iqi/summary": {
 		"description": "Get a summary (percentiles) of bandwidth, latency or DNS response time from the Radar Internet Quality Index (IQI).",
-		"operationId": "radar_get__iqi_summary",
+		"operationId": "radar-get-quality-index-summary",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -190,14 +190,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get IQI Summary",
 		"tags": [
 			"Radar Quality"
@@ -216,7 +248,7 @@
 	},
 	"GET /radar/quality/iqi/timeseries_groups": {
 		"description": "Get a time series (percentiles) of bandwidth, latency or DNS response time from the Radar Internet Quality Index (IQI).",
-		"operationId": "radar_get__iqi_timeseries_groups",
+		"operationId": "radar-get-quality-index-timeseries-group",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -446,14 +478,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get IQI Time Series",
 		"tags": [
 			"Radar Quality"
@@ -472,7 +536,7 @@
 	},
 	"GET /radar/quality/speed/histogram": {
 		"description": "Get an histogram from the previous 90 days of Cloudflare Speed Test data, split into fixed bandwidth (Mbps), latency (ms) or jitter (ms) buckets.",
-		"operationId": "radar_get__speed_histogram",
+		"operationId": "radar-get-quality-speed-histogram",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -624,14 +688,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get Speed Tests Histogram",
 		"tags": [
 			"Radar Quality"
@@ -650,7 +746,7 @@
 	},
 	"GET /radar/quality/speed/summary": {
 		"description": "Get a summary of bandwidth, latency, jitter and packet loss, from the previous 90 days of Cloudflare Speed Test data.",
-		"operationId": "radar_get__speed_summary",
+		"operationId": "radar-get-quality-speed-summary",
 		"parameters": [
 			{
 				"description": "Array of names that will be used to name the series in responses.",
@@ -791,14 +887,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get Speed Tests Summary",
 		"tags": [
 			"Radar Quality"
@@ -817,7 +945,7 @@
 	},
 	"GET /radar/quality/speed/top/ases": {
 		"description": "Get the top autonomous systems by bandwidth, latency, jitter or packet loss, from the previous 90 days of Cloudflare Speed Test data.",
-		"operationId": "radar_get__speed_top_ases",
+		"operationId": "radar-get-quality-speed-top-ases",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -1104,12 +1232,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get Top Speed Test Autonomous Systems",
 		"tags": [
 			"Radar Quality"
@@ -1128,7 +1250,7 @@
 	},
 	"GET /radar/quality/speed/top/locations": {
 		"description": "Get the top locations by bandwidth, latency, jitter or packet loss, from the previous 90 days of Cloudflare Speed Test data.",
-		"operationId": "radar_get__speed_top_locations",
+		"operationId": "radar-get-quality-speed-top-locations",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -1415,12 +1537,6 @@
 				"description": "Not found"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get Top Speed Test Locations",
 		"tags": [
 			"Radar Quality"

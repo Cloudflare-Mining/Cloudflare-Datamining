@@ -1,7 +1,7 @@
 {
 	"GET /radar/ranking/domain/{domain}": {
 		"description": "Gets Domains Rank details.",
-		"operationId": "radar_get_Ca",
+		"operationId": "radar-get-ranking-domain-details",
 		"parameters": [
 			{
 				"in": "path",
@@ -161,14 +161,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get Domains Rank details",
 		"tags": [
 			"Radar Ranking"
@@ -187,7 +219,7 @@
 	},
 	"GET /radar/ranking/timeseries": {
 		"description": "Gets Domains Rank updates change over time. Raw values are returned.",
-		"operationId": "radar_get_Aa",
+		"operationId": "radar-get-ranking-domain-timeseries",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -387,14 +419,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get Domains Rank time series",
 		"tags": [
 			"Radar Ranking"
@@ -413,7 +477,7 @@
 	},
 	"GET /radar/ranking/top": {
 		"description": "Get top domains based on their rank. Rank is determined by various factors, for more information see https://blog.cloudflare.com/radar-domain-rankings/",
-		"operationId": "radar_get__a",
+		"operationId": "radar-get-ranking-top-domains",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -574,14 +638,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get Top Domains",
 		"tags": [
 			"Radar Ranking"

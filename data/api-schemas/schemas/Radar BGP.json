@@ -1,7 +1,7 @@
 {
 	"GET /radar/bgp/hijacks/events": {
 		"description": "Get the BGP hijack events. (Beta)",
-		"operationId": "radar_get_Hs",
+		"operationId": "radar-get-bgp-hijacks-events",
 		"parameters": [
 			{
 				"description": "Current page number, starting from 1",
@@ -346,14 +346,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get BGP hijack events",
 		"tags": [
 			"Radar BGP"
@@ -372,7 +404,7 @@
 	},
 	"GET /radar/bgp/leaks/events": {
 		"description": "Get the BGP route leak events (Beta).",
-		"operationId": "radar_get_Ls",
+		"operationId": "radar-get-bgp-route-leak-events",
 		"parameters": [
 			{
 				"description": "Current page number, starting from 1",
@@ -643,14 +675,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get BGP route leak events",
 		"tags": [
 			"Radar BGP"
@@ -669,7 +733,7 @@
 	},
 	"GET /radar/bgp/routes/moas": {
 		"description": "List all Multi-origin AS (MOAS) prefixes on the global routing tables.",
-		"operationId": "radar_get_Ks",
+		"operationId": "radar-get-bgp-pfx2as-moas",
 		"parameters": [
 			{
 				"description": "Lookup MOASes originated by the given ASN",
@@ -708,23 +772,27 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"meta": {
-									"properties": {
-										"data_time": {
-											"type": "string"
-										},
-										"total_peers": {
-											"type": "integer"
-										}
-									},
-									"required": [
-										"data_time",
-										"total_peers"
-									],
-									"type": "object"
-								},
 								"result": {
 									"properties": {
+										"meta": {
+											"properties": {
+												"data_time": {
+													"type": "string"
+												},
+												"query_time": {
+													"type": "string"
+												},
+												"total_peers": {
+													"type": "integer"
+												}
+											},
+											"required": [
+												"data_time",
+												"query_time",
+												"total_peers"
+											],
+											"type": "object"
+										},
 										"moas": {
 											"items": {
 												"properties": {
@@ -764,7 +832,8 @@
 										}
 									},
 									"required": [
-										"moas"
+										"moas",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -782,14 +851,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get MOASes",
 		"tags": [
 			"Radar BGP"
@@ -808,7 +909,7 @@
 	},
 	"GET /radar/bgp/routes/pfx2as": {
 		"description": "Lookup prefix-to-origin mapping on global routing tables.",
-		"operationId": "radar_get_Vs",
+		"operationId": "radar-get-bgp-pfx2as",
 		"parameters": [
 			{
 				"description": "Lookup prefixes originated by the given ASN",
@@ -861,23 +962,27 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"meta": {
-									"properties": {
-										"data_time": {
-											"type": "string"
-										},
-										"total_peers": {
-											"type": "integer"
-										}
-									},
-									"required": [
-										"data_time",
-										"total_peers"
-									],
-									"type": "object"
-								},
 								"result": {
 									"properties": {
+										"meta": {
+											"properties": {
+												"data_time": {
+													"type": "string"
+												},
+												"query_time": {
+													"type": "string"
+												},
+												"total_peers": {
+													"type": "integer"
+												}
+											},
+											"required": [
+												"data_time",
+												"query_time",
+												"total_peers"
+											],
+											"type": "object"
+										},
 										"prefix_origins": {
 											"items": {
 												"properties": {
@@ -906,7 +1011,8 @@
 										}
 									},
 									"required": [
-										"prefix_origins"
+										"prefix_origins",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -924,14 +1030,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get prefix-to-origin mapping",
 		"tags": [
 			"Radar BGP"
@@ -950,7 +1088,7 @@
 	},
 	"GET /radar/bgp/routes/stats": {
 		"description": "Get the BGP routing table stats (Beta).",
-		"operationId": "radar_get_$s",
+		"operationId": "radar-get-bgp-routes-stats",
 		"parameters": [
 			{
 				"description": "Single ASN as integer.",
@@ -991,97 +1129,110 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"meta": {
-									"properties": {
-										"data_time": {
-											"type": "string"
-										},
-										"total_peers": {
-											"type": "integer"
-										}
-									},
-									"required": [
-										"data_time",
-										"total_peers"
-									],
-									"type": "object"
-								},
 								"result": {
 									"properties": {
-										"distinct_origins": {
-											"type": "integer"
+										"meta": {
+											"properties": {
+												"data_time": {
+													"type": "string"
+												},
+												"query_time": {
+													"type": "string"
+												},
+												"total_peers": {
+													"type": "integer"
+												}
+											},
+											"required": [
+												"data_time",
+												"query_time",
+												"total_peers"
+											],
+											"type": "object"
 										},
-										"distinct_origins_ipv4": {
-											"type": "integer"
-										},
-										"distinct_origins_ipv6": {
-											"type": "integer"
-										},
-										"distinct_prefixes": {
-											"type": "integer"
-										},
-										"distinct_prefixes_ipv4": {
-											"type": "integer"
-										},
-										"distinct_prefixes_ipv6": {
-											"type": "integer"
-										},
-										"routes_invalid": {
-											"type": "integer"
-										},
-										"routes_invalid_ipv4": {
-											"type": "integer"
-										},
-										"routes_invalid_ipv6": {
-											"type": "integer"
-										},
-										"routes_total": {
-											"type": "integer"
-										},
-										"routes_total_ipv4": {
-											"type": "integer"
-										},
-										"routes_total_ipv6": {
-											"type": "integer"
-										},
-										"routes_unknown": {
-											"type": "integer"
-										},
-										"routes_unknown_ipv4": {
-											"type": "integer"
-										},
-										"routes_unknown_ipv6": {
-											"type": "integer"
-										},
-										"routes_valid": {
-											"type": "integer"
-										},
-										"routes_valid_ipv4": {
-											"type": "integer"
-										},
-										"routes_valid_ipv6": {
-											"type": "integer"
+										"stats": {
+											"properties": {
+												"distinct_origins": {
+													"type": "integer"
+												},
+												"distinct_origins_ipv4": {
+													"type": "integer"
+												},
+												"distinct_origins_ipv6": {
+													"type": "integer"
+												},
+												"distinct_prefixes": {
+													"type": "integer"
+												},
+												"distinct_prefixes_ipv4": {
+													"type": "integer"
+												},
+												"distinct_prefixes_ipv6": {
+													"type": "integer"
+												},
+												"routes_invalid": {
+													"type": "integer"
+												},
+												"routes_invalid_ipv4": {
+													"type": "integer"
+												},
+												"routes_invalid_ipv6": {
+													"type": "integer"
+												},
+												"routes_total": {
+													"type": "integer"
+												},
+												"routes_total_ipv4": {
+													"type": "integer"
+												},
+												"routes_total_ipv6": {
+													"type": "integer"
+												},
+												"routes_unknown": {
+													"type": "integer"
+												},
+												"routes_unknown_ipv4": {
+													"type": "integer"
+												},
+												"routes_unknown_ipv6": {
+													"type": "integer"
+												},
+												"routes_valid": {
+													"type": "integer"
+												},
+												"routes_valid_ipv4": {
+													"type": "integer"
+												},
+												"routes_valid_ipv6": {
+													"type": "integer"
+												}
+											},
+											"required": [
+												"distinct_origins",
+												"distinct_origins_ipv4",
+												"distinct_origins_ipv6",
+												"distinct_prefixes",
+												"distinct_prefixes_ipv4",
+												"distinct_prefixes_ipv6",
+												"routes_invalid",
+												"routes_invalid_ipv4",
+												"routes_invalid_ipv6",
+												"routes_total",
+												"routes_total_ipv4",
+												"routes_total_ipv6",
+												"routes_unknown",
+												"routes_unknown_ipv4",
+												"routes_unknown_ipv6",
+												"routes_valid",
+												"routes_valid_ipv4",
+												"routes_valid_ipv6"
+											],
+											"type": "object"
 										}
 									},
 									"required": [
-										"distinct_origins",
-										"distinct_origins_ipv4",
-										"distinct_origins_ipv6",
-										"distinct_prefixes",
-										"distinct_prefixes_ipv4",
-										"distinct_prefixes_ipv6",
-										"routes_invalid",
-										"routes_invalid_ipv4",
-										"routes_invalid_ipv6",
-										"routes_total",
-										"routes_total_ipv4",
-										"routes_total_ipv6",
-										"routes_unknown",
-										"routes_unknown_ipv4",
-										"routes_unknown_ipv6",
-										"routes_valid",
-										"routes_valid_ipv4",
-										"routes_valid_ipv6"
+										"stats",
+										"meta"
 									],
 									"type": "object"
 								},
@@ -1099,14 +1250,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get BGP routing table stats ",
 		"tags": [
 			"Radar BGP"
@@ -1125,7 +1308,7 @@
 	},
 	"GET /radar/bgp/timeseries": {
 		"description": "Gets BGP updates change over time. Raw values are returned. When requesting updates of an autonomous system (AS), only BGP updates of type announcement are returned.",
-		"operationId": "radar_get_Ns",
+		"operationId": "radar-get-bgp-timeseries",
 		"parameters": [
 			{
 				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
@@ -1410,14 +1593,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get BGP time series",
 		"tags": [
 			"Radar BGP"
@@ -1436,7 +1651,7 @@
 	},
 	"GET /radar/bgp/top/ases": {
 		"description": "Get the top autonomous systems (AS) by BGP updates (announcements only). Values are a percentage out of the total updates.",
-		"operationId": "radar_get_ks",
+		"operationId": "radar-get-bgp-top-ases",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -1654,15 +1869,195 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
+		"summary": "Get top autonomous systems",
+		"tags": [
+			"Radar BGP"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/bgp/top/ases/prefixes": {
+		"description": "Get the full list of autonomous systems on the global routing table ordered by announced prefixes count. The data comes from public BGP MRT data archives and updates every 2 hours.",
+		"operationId": "radar-get-bgp-top-asns-by-prefixes",
+		"parameters": [
 			{
-				"api_email": [],
-				"api_key": []
+				"description": "Alpha-2 country code.",
+				"in": "query",
+				"name": "country",
+				"schema": {
+					"description": "Alpha-2 country code.",
+					"example": "NZ",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Maximum number of ASes to return",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Maximum number of ASes to return",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
 			}
 		],
-		"summary": "Get top autonomous systems",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"asns": {
+											"items": {
+												"properties": {
+													"asn": {
+														"type": "integer"
+													},
+													"country": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													},
+													"pfxs_count": {
+														"type": "integer"
+													}
+												},
+												"required": [
+													"asn",
+													"country",
+													"name",
+													"pfxs_count"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"meta": {
+											"properties": {
+												"data_time": {
+													"type": "string"
+												},
+												"query_time": {
+													"type": "string"
+												},
+												"total_peers": {
+													"type": "integer"
+												}
+											},
+											"required": [
+												"data_time",
+												"query_time",
+												"total_peers"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"asns",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"summary": "Get list of ASNs ordered by prefix count",
 		"tags": [
 			"Radar BGP"
 		],
@@ -1680,7 +2075,7 @@
 	},
 	"GET /radar/bgp/top/prefixes": {
 		"description": "Get the top network prefixes by BGP updates. Values are a percentage out of the total BGP updates.",
-		"operationId": "radar_get_Os",
+		"operationId": "radar-get-bgp-top-prefixes",
 		"parameters": [
 			{
 				"description": "Limit the number of objects in the response.",
@@ -1879,14 +2274,46 @@
 					}
 				},
 				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Get top prefixes",
 		"tags": [
 			"Radar BGP"
