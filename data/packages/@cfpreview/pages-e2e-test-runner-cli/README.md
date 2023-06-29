@@ -104,3 +104,5 @@ Additionally, tests in the `/__tests__/` directory are run globally on every fix
 ### Optional nice-to-haves
 
 - [ ] Extend vitest matchers when using Playwright
+
+- VARIANTS
