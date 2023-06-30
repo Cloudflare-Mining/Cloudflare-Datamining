@@ -10,11 +10,11 @@ Fixtures and features can each have their own tests.
 
 ## Adding a new fixture
 
-1.  Create a `/fixtures/<name-of-fixture>/` directory. Populate it with your fixture. You may want to remove any tests and testing config if any came with the project when bootstrapping with something like `create-react-app`.
+1.  Create a `/pages-e2e/fixtures/<name-of-fixture>/` directory. Populate it with your fixture. You may want to remove any tests and testing config if any came with the project when bootstrapping with something like `create-react-app`.
 
 1.  Add any test files to this directory that you want to run against the fixture. More on how to write the tests [below](#writing-a-test).
 
-1.  Create a `/fixtures/<name-of-test>/main.fixture` file:
+1.  Create a `/pages-e2e/fixtures/<name-of-test>/main.fixture` file:
 
     ```jsonc
     {
@@ -34,7 +34,7 @@ Features are given the following environment variables:
 
 - `WORKSPACE_DIR`, the fixture directory that is being used in this test run.
 
-1.  Create a `/features/<name-of-feature>/main.feature` file:
+1.  Create a `/pages-e2e/features/<name-of-feature>/main.feature` file:
 
     ```jsonc
     {
@@ -64,7 +64,7 @@ describe("Simple HTML project", () => {
 });
 ```
 
-Additionally, tests in the `/__tests__/` directory are run globally on every fixture.
+Additionally, tests in the `/pages-e2e/__tests__/` directory are run globally on every fixture.
 
 ## How does this work?
 
