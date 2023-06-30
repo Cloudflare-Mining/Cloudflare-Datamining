@@ -11,7 +11,7 @@
 <h4><strong>About the Role</strong></h4>
 <p><span style="font-weight: 400;">We’re looking for a Product Operations Manager who will play a key role in the Product : Customer connection at Cloudflare and in enabling the next phase of the company’s rapid growth. You will be responsible for making the Product : Customer connection as seamless and nimble as possible, working with our Sales, Marketing, Customer Support, Pricing &amp; Licensing and other functions. Your responsibilities include enhancing how we manage customer feature requests, roadmap commitments, customer sponsorships and helping ensure customer-facing teams are trained on new products and features. You will also help facilitate the creation and sharing of cross-organization plans working closely with leaders in our Go-to-Market, Finance and other functions. </span></p>
 <ul>
-	<li><span style="font-weight: 400;">Act as the Product organization leader and representative, working with Go-to-Market (GTM) functions, continually enhance and optimize the customer-feature-request process and the committed/contracted-feature process.</span></li>
+	<li><span style="color: #000000;">Act as the Product organization leader and representative, working with Go-to-Market (GTM) functions to </span><strong><span style="color: #ff0000;">to</span></strong><span style="color: #000000;">&nbsp;continually enhance and optimize the customer-feature-request process and the committed/contracted-feature process.</span></li>
 	<li><span style="font-weight: 400;">Partner with Sales and Pricing &amp; Licensing to manage deal sponsorships, approvals and escalations designed to streamline engagement with new and existing customers.</span></li>
 	<li><span style="font-weight: 400;">Partner with GTM, build systems and processes to continuously enhance how Cloudflare’s pre and post sales representatives build skills around new products, features and capabilities.</span></li>
 	<li><span style="font-weight: 400;">Facilitate continuous joint-planning across Product, Sales, Marketing, Finance and other functions. </span></li>
@@ -27,7 +27,7 @@
 	<li><span style="font-weight: 400;">A detail-oriented mindset.</span></li>
 	<li><span style="font-weight: 400;">Customer-centric mindset with the capability of translating customer needs and customer experiences into the product development process.</span></li>
 </ul>
-<p><span style="font-weight: 400;"></span></p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
 <ul>
