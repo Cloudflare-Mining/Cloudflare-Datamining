@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.1.2
+
+### Patch Changes
+
+- 84e45881c8: Support validating array values
+
 ## 6.1.1
 
 ### Patch Changes
