@@ -1,0 +1,463 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image1-42.png" class="kg-image" alt="Recapping Speed Week 2023" loading="lazy" width="1999" height="1125"></figure>
+	<p>La Speed Week 2023 ha concluido oficialmente.</p>
+	<p>En la publicación del blog <a href="https://blog.cloudflare.com/welcome-to-speed-week-2023">"Te damos la bienvenida a la Speed Week"</a>, nos marcamos un objetivo claro:</p>
+	<blockquote class="kg-blockquote-alt"><strong><em>"Esta semana te ayudaremos a medir lo que importa, a obtener información sobre tu rendimiento, desde Zero Trust y las API hasta los sitios web y las aplicaciones y, por último, a ser más rápido. Y todo ello, de manera muy sencilla".</em></strong></blockquote>
+	<p>Esta semana hemos publicado cinco entradas sobre cómo medir el rendimiento, qué métricas y enfoques tienen sentido y por qué. Hemos analizado en detalle Core Web Vital, "<a href="https://blog.cloudflare.com/inp-get-ready-for-the-new-core-web-vital">Interactive Next Paint</a>" (INP), qué significa y cómo podemos ayudar. Hemos hablado también sobre el tiempo hasta el primer byte (TTFB) y por qué esta métrica no es una herramienta <a href="https://blog.cloudflare.com/ttfb-is-not-what-it-used-to-be">óptima</a> para medir de forma adecuada el rendimiento web. Además, hemos escrito sobre cómo <a href="https://blog.cloudflare.com/how-we-think-about-zero-trust-performance">medir</a> el rendimiento Zero Trust, y hemos anunciado la página de calidad de <a href="https://blog.cloudflare.com/introducing-radar-internet-quality-page">Internet</a> de Cloudflare Radar, que ofrece a todo el mundo la posibilidad de comparar la calidad de la conexión a Internet entre proveedores de servicios de Internet, países y mucho más. </p>
+	<p>Hemos lanzado nuevos productos como <a href="https://blog.cloudflare.com/cloudflare-observatory-generally-available">Observatory</a>, <a href="https://blog.cloudflare.com/digital-experience-monitoring-beta">Digital Experiencing Monitoring</a> y <a href="https://blog.cloudflare.com/introducing-timing-insights">Timing Insights</a>. Estos productos brindan una ventana increíble sobre el rendimiento de tus aplicaciones y sitios web a través de los ojos de los visitantes del sitio web y tus empleados. </p>
+	<p>Además, hemos podido demostrar cómo seguimos siendo el proveedor más rápido, y hemos escrito nuevas entradas sobre cómo, además de tener la <a href="https://blog.cloudflare.com/speed-week-2023-network-performance-update">red más ágil</a>, contamos con las soluciones más rápidas del sector en materia de <a href="https://blog.cloudflare.com/spotlight-on-zero-trust">puerta de enlace web segura</a>,<a href="https://blog.cloudflare.com/spotlight-on-zero-trust"> acceso a la red Zero Trust</a> y <a href="https://blog.cloudflare.com/spotlight-on-zero-trust">aislamiento remoto del navegador</a>. De hecho, hemos hablado sobre <a href="https://blog.cloudflare.com/cloudflare-connected-in-over-300-cities">cómo nuestra red global abarca ya 300 ciudades</a>. La red de Cloudflare está en el centro de todo lo que hacemos, y cada producto que desarrollamos se beneficia de la velocidad y escala que proporciona y de la proximidad al usuario. </p>
+	<p>Otros de los productos que hemos anunciado durante la semana simplifican la velocidad y aumentan el rendimiento con un solo clic para acelerar tu tráfico. <a href="https://blog.cloudflare.com/smart-hints">Smart Hints</a>, <a href="https://blog.cloudflare.com/better-http-3-prioritization-for-a-faster-web">Priorización HTTP/3,</a> <a href="https://blog.cloudflare.com/turbo-charge-gaming-and-streaming-with-argo-for-udp">Argo para UDP</a>, <a href="https://blog.cloudflare.com/this-is-brotli-from-origin">Brotli de extremo a extremo</a>, <a href="https://blog.cloudflare.com/low-latency-hls-support-for-cloudflare-stream">LL-HLS para Stream</a> y <a href="https://blog.cloudflare.com/speeding-up-apis-ricochet-for-api-gateway">Ricochet para API Gateway</a> simplifican la velocidad para acelerar tu tráfico con una configuración <em>mínima </em>, si la hubiera. </p>
+	<p>También hemos mostrado cómo la inteligencia artificial (IA) y el aprendizaje automático siguen desempeñando un papel importante en Cloudflare, y sobre ello hemos escrito publicaciones en las que explicamos por qué ejecutar la <a href="https://blog.cloudflare.com/globally-distributed-ai-and-a-constellation-update">inferencia de IA en la red de Cloudflare</a> tiene sentido desde el punto de vista del rendimiento, y cómo <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare">escalamos y ejecutamos el</a> aprendizaje automático en <a href="https://blog.cloudflare.com/how-cloudflare-runs-ml-inference-in-microseconds">microsegundos.</a> </p>
+	<p>Por último, hemos escrito sobre cómo estamos facilitando más que nunca a los clientes la migración a Cloudflare desde sus proveedores a través de nuestros programas <a href="https://blog.cloudflare.com/turpentine-v2-migration-program">Turpentine</a> y <a href="https://blog.cloudflare.com/descaler-program-update">Descaler</a>. </p>
+	<p>Nuestra misión es ser los más rápidos en todo lo que hacemos, y conseguir que el rendimiento de nuestros clientes sea el mejor.</p>
+	<p>En caso de que te hayas perdido alguno de nuestros anuncios, echa un vistazo al resumen y a la guía de navegación que encontrarás a continuación.</p>
+	<h3 id="iaaprendizaje-autom%C3%A1tico">IA/Aprendizaje automático</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">de BGP</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Resumen</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/globally-distributed-ai-and-a-constellation-update"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">IA distribuida globalmente y una actualización de Constellation </span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Anunciamos nuevas funciones de Constellation, explicamos por qué es la primera plataforma de IA distribuida globalmente y por qué es beneficioso implementar tus tareas de aprendizaje automático en nuestra red global.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cada solicitud, cada segundo: aprendizaje automático escalable en Cloudflare</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Describimos las estrategias técnicas que nos han permitido ampliar el número de funciones y modelos de aprendizaje automático, todo ello mientras reducimos considerablemente el tiempo de procesamiento de cada solicitud HTTP en nuestra red.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cómo Orpheus enruta automáticamente el tráfico para esquivar las condiciones adversas de Internet</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hace algo menos de dos años, Cloudflare facilitó el acceso automático a Orpheus a todos los clientes de forma gratuita. Desde entonces, Orpheus ha evitado errores en 132 000 millones de solicitudes de Internet mediante el enrutamiento inteligente que permite detectar interrupciones, ha impedido que 50 incidentes de Internet impacten en nuestros clientes y ha hecho que los servidores de origen de nuestros clientes sean más accesibles para todo el mundo en Internet. Analicemos cómo Orpheus consiguió estos logros el año pasado.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/how-cloudflare-runs-ml-inference-in-microseconds"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cómo Cloudflare ejecuta inferencia de aprendizaje automático en microsegundos</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cómo hemos optimizado la ejecución de los modelos de aprendizaje automático de nuestra solución de gestión de bots. Para reducir la latencia del procesamiento, hemos emprendido un proyecto para reescribir nuestra tecnología de gestión de bots gracias a la portabilidad de Lua a Rust, y a través de una serie de optimizaciones de rendimiento. Esta publicación se centra en las optimizaciones aplicadas a las detecciones de aprendizaje automático dentro del módulo de gestión de bots, que representan aproximadamente el 15 % de la latencia añadida por la detección de bots. Con el cambio de un lenguaje de recolección de elementos no utilizados, la eliminación de las asignaciones de memoria y la optimización de nuestros análisis sintácticos, hemos reducido la latencia del percentil 50 del módulo de gestión de bots en 79 μs, una disminución del 20 %.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="zero-trust">Zero Trust</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">de BGP</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Resumen</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/spotlight-on-zero-trust"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Zero Trust: somos los más rápidos y aquí está la prueba</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare prevalece sobre los demás proveedores con la puerta de enlace web segura más rápida en el 42 % de los escenarios de prueba. En los escenarios de acceso a la red Zero Trust, Cloudflare es un 46 % más rápido que Zscaler, un 56 % más rápido que Netskope y un 10 % más rápido que Palo Alto, así como un 64 % más rápido que Zscaler en los escenarios de aislamiento remoto del navegador.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/digital-experience-monitoring-beta"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Conectividad y rendimiento de los usuarios finales con Digital Experience Monitoring. Ya disponible en versión beta. </span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">DEX permite a los administradores supervisar su implementación de WARP y crear pruebas predefinidas de las aplicaciones. Las funciones incluyen análisis en directo de los equipos de trabajo y los dispositivos, pruebas de los servidores y de traceroute, supervisión sintética de las aplicaciones y estado del conjunto de dispositivos para obtener información en tiempo real sobre la implementación de WARP.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/descaler-program-update"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Elimina el riesgo de tu red con nuestro programa Cloudflare optimizado</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">La velocidad a la que los clientes pueden pasar de Zscaler ZIA a Cloudflare Gateway es cada vez mayor. Normalmente lleva más tiempo concertar una reunión con los administradores técnicos adecuados que migrar los ajustes, las configuraciones, las listas, las políticas y demás a Cloudflare.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/masque-building-a-new-protocol-into-cloudflare-warp"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">MASQUE: integramos un nuevo protocolo en Cloudflare WARP</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Anunciamos la compatibilidad con MASQUE, un nuevo protocolo de vanguardia para la versión beta de nuestra aplicación WARP iOS para consumidores.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/how-we-think-about-zero-trust-performance"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cómo pensamos en el rendimiento Zero Trust</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hay muchas formas de ver el rendimiento de la red. Sin embargo, en Cloudflare creemos que la mejor forma de medir el rendimiento es utilizar mediciones de respuesta HTTP de extremo a extremo. En esta publicación, hablamos acerca de por qué el rendimiento de un extremo a otro es la medida más importante a tener en cuenta, por qué otros métodos como la latencia de proxy y los SLA de latencia descifrada no son suficientes para las evaluaciones del rendimiento, y cómo puedes medir tu rendimiento Zero Trust de la misma forma que nosotros.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="c%C3%B3mo-medir-lo-que-importa">Cómo medir lo que importa</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">de BGP</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Resumen</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/introducing-radar-internet-quality-page"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Novedad: la página de medida de la calidad de Internet en Cloudflare Radar</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">La nueva página de calidad de Internet de Cloudflare Radar proporciona información a nivel de país y de red (sistema autónomo) acerca del rendimiento de la conexión a Internet (ancho de banda) y la calidad (latencia, vibración) a lo largo del tiempo. Esta información se basa en los datos de pruebas de referencia y en los resultados de las pruebas de speed.cloudflare.com.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/speed-week-2023-network-performance-update"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Actualización sobre el rendimiento de la red: Speed Week 2023</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Compartimos las actualizaciones más recientes del rendimiento de la red y te informamos sobre nuestras herramientas y procesos que utilizamos para monitorizar y mejorar el rendimiento de nuestra red.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/introducing-timing-insights"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Presentamos Timing Insights: nuevas métricas de rendimiento mediante nuestra API GraphQL</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Si te preocupa el rendimiento de tu sitio web o de las API, es esencial que comprendas qué los ralentiza. Llegan nuevas herramientas de análisis para ayudarte a comprender qué es lo que contribuye al tiempo hasta el primer byte (TTFB) de Cloudflare y de tu servidor de origen. Pero espera, ¿quizá has oído que deberías dejar de preocuparte por el TTFB? ¿No está prescindiendo Cloudflare del TTFB como métrica? Sigue leyendo para entender por qué todavía hay situaciones en las que el TTFB importa.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/ttfb-is-not-what-it-used-to-be"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">¿Mides lo que importa? Una nueva mirada al tiempo hasta el primer byte (TTFB)</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">El tiempo hasta el primer byte (TTFB) no es una métrica adecuada para medir el rendimiento de tus sitios web. En esta publicación explicaremos para qué es un buen indicador TTFB, para qué no lo es, y qué deberías utilizar en su lugar.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/inp-get-ready-for-the-new-core-web-vital"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">INP. Prepárate para la nueva métrica Core Web Vital.</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">El 10 de mayo de 2023, Google anunció que INP reemplazará a FID en las métricas Core Web Vitals en marzo de 2024. Las métricas Core Web Vitals desempeñan una función importante en el algoritmo de búsqueda de Google. Los propietarios de los sitios web a los que les preocupa la optimización del motor de búsqueda (SEO) deben prepararse para el cambio. En esta publicación, explicamos qué es el indicador INP y cómo puedes prepararte.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="velocidad-simplificada">Velocidad simplificada</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-zz9f {
+			color: #15C;
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-c6q4 {
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-3xvn {
+			font-family: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">de BGP</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Resumen</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/cloudflare-observatory-generally-available"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Un sitio web más rápido significa más clientes: Cloudflare Observatory puede ayudarte a impulsar el crecimiento de tu negocio</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Los usuarios de Cloudflare ya pueden monitorizar fácilmente el rendimiento de los sitios web con los datos de la herramienta de Supervisión de usuarios reales (RUM) y las pruebas planificadas de diferentes regiones en un único panel de control. Esta ventaja identificará cualquier problema de rendimiento que pueda tener tu sitio web. Una vez identificado el problema, Observatory destacará recomendaciones personalizadas para resolverlo, todo con un solo clic.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/smart-hints"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Smart Hints simplifica el rendimiento sin código</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nos complace anunciar que estamos automatizando Early Hints y Fetch Priorities, gracias a la potencia de la red de Cloudflare.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/better-http-3-prioritization-for-a-faster-web"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Novedad: Priorización HTTP/3</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Llega la compatibilidad total con HTTP/3 Extensible Priorities, un nuevo estándar que acelera la carga de las páginas web hasta un 37 %.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/turbo-charge-gaming-and-streaming-with-argo-for-udp"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Argo Smart Routing para UDP: acelera los videojuegos y las comunicaciones en tiempo real, entre otras aplicaciones </span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Aceleramos el tráfico UDP de los clientes. Ahora, los usuarios pueden reducir hasta el 17 % la latencia de tus aplicaciones UDP, como los videojuegos, las llamadas de voz y las videoconferencias.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/this-is-brotli-from-origin"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Usamos el nivel 11 de la compresión Brotli desde el servidor de origen e incluimos la función Compression Rules</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Mejoramos la compatibilidad con la compresión Brotli para permitir la compresión Brotli de contenido web de un extremo a otro. La compresión desempeña un papel clave en la reducción de bytes durante las transferencias de datos, ya que garantiza descargas más rápidas y una experiencia de navegación más sencilla.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/performance-experiments-with-cloudflare"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cómo utilizar Cloudflare Observatory para Performance Experiments</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Presentamos Cloudflare Performance Experiments en Observatory: prueba el código con total seguridad, mejora la velocidad de tu sitio web y minimiza el riesgo.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/low-latency-hls-support-for-cloudflare-stream"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Novedad: Compatibilidad de HLS de baja latencia para Cloudflare Stream</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Transmite en directo a sitios web y aplicaciones con una latencia inferior a 10 segundos, con nuestra solución de transmisión en directo HTTP de baja latencia (LL-HLS), ahora en la versión beta con Cloudflare Stream.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/speeding-up-apis-ricochet-for-api-gateway"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">API más rápidas con Ricochet for API Gateway</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Anunciamos Ricochet para API Gateway, la forma más fácil de que los clientes de Cloudflare obtengan respuestas API más rápidas gracias al almacenamiento en caché automático e inteligente de las respuestas API.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="espera-%C2%A1a%C3%BAn-hay-m%C3%A1s">Espera, ¡aún hay más!</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">de BGP</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Resumen</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/cloudflare-snippets-alpha"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare Snippets ya está disponible en la versión alpha</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Snippets ya está disponible en la versión alpha. Snippets constituye una forma sencilla de ejecutar un pequeño fragmento de Javascript en determinadas solicitudes HTTP, utilizando la lógica de filtrado del motor del conjunto de reglas.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/how-we-decreased-pages-latency"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare Pages, la forma más rápida de servir tus sitios</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pages es ahora la forma más rápida de servir tus sitios a través de Netlify, Vercel, entre otros.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/cloudflare-connected-in-over-300-cities"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">La red global de Cloudflare se amplía a 300 ciudades y se acerca a los usuarios finales con conexiones a 12 000 redes</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nos complace anunciar que Cloudflare ahora está conectado a más de 12 000 redes de Internet en más de 300 ciudades en todo el mundo.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/turpentine-v2-migration-program"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Gracias al nuevo Centro de migración de Cloudflare, la migración nunca ha sido tan fácil como ahora </span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Volvemos a lanzar Turpentine, un servicio para dejar de utilizar Varnish Control Language (VCL). Nuevo Centro de migración de Cloudflare. El Centro de migración constituye una solución integral para todas las necesidades relacionadas con la migración. Presenta guías para la migración completamente nuevas que permiten que el proceso resulte más transparente y sencillo.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/rethinking-cache-purge-architecture"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Parte 2: Replantear la purga de caché con una nueva arquitectura</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hablamos de las mejoras de la arquitectura que hemos hecho hasta ahora en la purga de caché, así como de nuestros proyectos actuales.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/speeding-up-your-website-in-a-few-clicks"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Agiliza tu sitio web (WordPress) con solo unos clics</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">En este blog, explicamos qué áreas ofrecen oportunidades de mejora en el rendimiento de sitios web, cómo comprobar si un sitio concreto puede optimizar su rendimiento y, por último, proporcionamos un pequeño fragmento de JavaScript que se puede utilizar con Cloudflare Workers para realizar esta optimización por ti.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/benchmarking-dashboard-performance"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Evaluación del rendimiento del panel de control</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">El panel de control de Cloudflare es una aplicación de una sola página que aloja todas las interfaces de usuario de nuestra amplia cartera de productos disponibles, así como las nuevas funciones que lanzamos a diario.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/faster-workers-kv-architecture"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Workers KV, más rápido que nunca con una nueva arquitectura</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Con la nueva arquitectura en la que se basa Workers KV, nuestro servicio es más rápido y escalable que nunca. Hemos reducido considerablemente la probabilidad de lectura en frío, y activado KV para dar servicio a un billón de solicitudes al mes.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/how-kinsta-used-workers-and-workers-kv-to-improve-cache-hit-rates"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cómo Kinsta ha utilizado Workers y Workers KV para aumentar en un 56 % la tasa de aciertos de caché</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kinsta proporciona soluciones personalizadas de alojamiento en la nube a más de 26 000 empresas de 128 países. Descubre cómo utilizan Workers y Workers KV para mejorar el rendimiento de la caché y de los clientes.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/a-step-by-step-guide-to-transferring-domains-to-cloudflare"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Una guía paso a paso de la transferencia de dominios a Cloudflare</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">La transferencia de tus dominios a un nuevo servidor registrador no es algo que hagas a diario, y equivocarse en algún paso del proceso podría significar tiempo de inactividad e interrupciones. Hemos desarrollado una lista de comprobación para la transferencia de dominios que te ayudará a transferir tus dominios a Cloudflare con rapidez y total seguridad.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/how-cloudflare-scaled-and-protected-eurovision-2023-voting"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cómo hemos ampliado y protegido el sistema de votación de Eurovisión 2023 con Pages y Turnstile </span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Más de 162 millones de fans sintonizaron el Festival de la Canción de Eurovisión en 2023, primer año que los países no participantes también podían votar. Cloudflare ayudó a escalar y proteger la aplicación de votación con nuestra rápida infraestructura DNS, CDN, Cloudflare Pages y Turnstile.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="ver-en-cloudflare-tv">Ver en Cloudflare TV</h3>
+	<p>Aquí puedes ver un resumen de la Speed Week en Cloudflare TV:</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/eeeeba1a5dd19b9e83a198cf867e06f5/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Feeeeba1a5dd19b9e83a198cf867e06f5%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D11s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p><!--kg-card-end: html-->
+</div>

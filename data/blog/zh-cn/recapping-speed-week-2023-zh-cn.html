@@ -1,0 +1,463 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image1-42.png" class="kg-image" alt="Recapping Speed Week 2023" loading="lazy" width="1999" height="1125"></figure>
+	<p>Speed Week 2023 已落下帷幕。</p>
+	<p>在我们的<a href="https://blog.cloudflare.com/welcome-to-speed-week-2023">欢迎来到 Speed Week 2023</a>博客文章中，我们设定了明确的目标：</p>
+	<blockquote class="kg-blockquote-alt"><strong><em>“本周我们将帮助您衡量重要的指标。我们将帮助您深入了解自己的性能，从 Zero Trust 和 API 到网站和应用程序。最后，我们将帮助您提高速度。非常快。”</em></strong></blockquote>
+	<p>本周我们发布了五篇关于如何衡量性能的文章，解释了哪些指标和方法是有意义的，以及为什么。我们深入探讨了最新的核心 Web 指标， “<a href="https://blog.cloudflare.com/inp-get-ready-for-the-new-core-web-vital">Interaction to Next Paint</a>”，其意义以及我们如何提供帮助。我们还发表了一篇关于首字节时间(TTFB)的文章，解释了为什么它不是衡量网站性能的<a href="https://blog.cloudflare.com/ttfb-is-not-what-it-used-to-be">理想</a>方法。我们还讨论了如何<a href="https://blog.cloudflare.com/how-we-think-about-zero-trust-performance">衡量</a> Zero Trust 性能，并宣布了 Cloudflare Radar 的<a href="https://blog.cloudflare.com/introducing-radar-internet-quality-page">互联网</a>质量页面，使每个人都可以针对不同互联网服务提供商、国家等因素比较互联网连接质量。 </p>
+	<p>我们推出了全新产品，例如 <a href="https://blog.cloudflare.com/cloudflare-observatory-generally-available">Observatory</a>、<a href="https://blog.cloudflare.com/digital-experience-monitoring-beta">Digital Experiencing Monitoring</a> 和 <a href="https://blog.cloudflare.com/introducing-timing-insights">Timing Insights</a>。这些产品提供了一个令人难以置信的窗口，从网站访问者和员工的视角了解应用程序和网站的性能。 </p>
+	<p>接下来，展示我们如何继续保持最快的速度，发布了新博客文章来介绍我们如何拥有<a href="https://blog.cloudflare.com/speed-week-2023-network-performance-update">最快的网络</a>、<a href="https://blog.cloudflare.com/spotlight-on-zero-trust">最快的安全 Web 网关</a>、<a href="https://blog.cloudflare.com/spotlight-on-zero-trust">最快的 Zero Trust 网络访问</a> 和<a href="https://blog.cloudflare.com/spotlight-on-zero-trust">最快的远程浏览器隔离</a> 解决方案。我们还发布了有关<a href="https://blog.cloudflare.com/cloudflare-connected-in-over-300-cities">我们的全球网络扩展到 300 个城市</a>的最新消息。Cloudflare 网络在我们一切工作的中心，我们构建的每个产品都受益于它提供的速度和规模以及接近用户的优势。</p>
+	<p>此外，我们还发布了一些重要的产品公告，提供简单、一键式性能提升，以加速您的流量。 <a href="https://blog.cloudflare.com/smart-hints">Smart Hints</a>、<a href="https://blog.cloudflare.com/better-http-3-prioritization-for-a-faster-web">HTTP/3 Prioritization、</a><a href="https://blog.cloudflare.com/turbo-charge-gaming-and-streaming-with-argo-for-udp">Argo for UDP</a>、<a href="https://blog.cloudflare.com/this-is-brotli-from-origin">Brotli 端到端加密</a>、 <a href="https://blog.cloudflare.com/low-latency-hls-support-for-cloudflare-stream">LL-HLS for Stream</a>和<a href="https://blog.cloudflare.com/speeding-up-apis-ricochet-for-api-gateway">Ricochet for API Gateway</a>等产品都使速度成为简单的事情，可在<em>极</em>少甚至零配置的情况下提高流量速度。</p>
+	<p>我们还展示了 AI/机器学习如何在 Cloudflare 继续发挥重要作用，有关文章讨论了为什么<a href="https://blog.cloudflare.com/globally-distributed-ai-and-a-constellation-update">在 Cloudflare 的网络上运行 AI </a>具有性能优势，以及我们如何以<a href="https://blog.cloudflare.com/how-cloudflare-runs-ml-inference-in-microseconds">毫秒级别</a><a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare">扩展和运行</a>机器学习。 </p>
+	<p>最后，我们还写了一篇文章，介绍如何通过我们的 <a href="https://blog.cloudflare.com/turpentine-v2-migration-program">Turpentine</a> 和 <a href="https://blog.cloudflare.com/descaler-program-update">Descaler</a> 计划，使客户比以往任何时候更容易地从传统供应商迁移到 Cloudflare。</p>
+	<p>我们的使命是在我们所做的一切事情上都做到最快，并使我们的客户能够轻松获得最佳性能。</p>
+	<p>如果您错过了任何公告，请查看下面的概要和导航指南。</p>
+	<h3 id="ai-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">AI /机器学习</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">公告</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">摘要</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/globally-distributed-ai-and-a-constellation-update"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">全球分布式 AI 和 Constellation 更新 </span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">宣布全新 Constellation 功能，解释为什么它它是第一个全球分布式 AI 平台，以及为什么在我们的全球网络中部署您的机器学习任务能提供优势。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">每一个请求，每一秒：Cloudflare 上可扩展的机器学习</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">介绍一些技术策略，它们不仅能够扩展机器学习功能以及模型数量，还能显著缩短我们的网络处理每个 HTTP 请求的时间。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Orpheus 如何自动引导流量避开恶劣的互联网环境</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">大约不到两年前，Cloudflare 免费向所有客户自动提供 Orpheus 服务。自那以来，Orpheus 已经通过智能路由以绕过连接中断来避免 1320 亿个互联网请求失败，预防了 50 多个互联网事件影响到客户，并使客户的源更容易被互联网上的所有人访问。让我们深入了解 Orpheus 在过去一年中如何实现这些成就。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/how-cloudflare-runs-ml-inference-in-microseconds"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare 如何运行微秒级机器学习推理</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">我们如何优化机器人管理的机器学习模型执行。为了减少处理延迟，我们启动了一个项目，以重写我们的机器人管理技术，将其从 Lua 移植到 Rust，并应用大量性能优化。本文重点介绍了应用于机器人管理模块内机器学习检测的优化，这在机器人检测增加的延迟中占大约 15%。通过从一种收集垃圾的语言迁移出来，删除内存分配并优化解析器，我们将机器人管理模块的 P50 延迟降低了 79 微秒，降幅达到了 20%。</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="zero-trust">Zero Trust</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">公告</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">摘要</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/spotlight-on-zero-trust"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">聚焦 Zero Trust：我们的速度是最快的，请看真凭实据</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">在 42% 的测试场景中，Cloudflare 是最快速的安全 Web 网关，是所有此类服务提供商中速度最快的。Cloudflare 比 Zscaler 快 46%，比 Netskope 快 56%，比 Palo Alto for ZTNA 快 10%，并且在 RBI 场景下比 Zscaler 快 64%。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/digital-experience-monitoring-beta"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">使用 Digital Experience Monitoring 了解最终用户的连接和性能状况。现在推出 Beta 版。 </span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">DEX 让管理员能够监测其 WARP 部署，并创建预定义的应用程序测试。它的功能包括实时团队和设备分析、服务器和路由跟踪测试、合成应用程序监测，以及设备状态，实时了解 WARP 部署情况。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/descaler-program-update"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">选用 Cloudflare 的升级版 Descaler 计划，清除网络阻滞</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">客户从 Zscaler ZIA 转移到 Cloudflare Gateway 的速度继续变快。通常情况下，与正确的技术管理员安排一次会议的时间比将设定、配置、列表、策略等迁移到 Cloudflare 上需要更多时间。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/masque-building-a-new-protocol-into-cloudflare-warp"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">添加 MASQUE 支持：在 Cloudflare WARP 中构建新协议</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">宣布我们的消费者 WARP iOS 应用 beta 版支持 MASQUE —— 一种先进的新协议。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/how-we-think-about-zero-trust-performance"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">如何看待 Zero Trust 性能</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">查看网络性能有很多方法。然而，在 Cloudflare，我们相信衡量性能的最佳方式是使用端到端的 HTTP 响应测量。在这篇博客中，我们将讨论为什么端对端性能是最重要的、为什么代理延迟和解密延迟 SLA 等其他方法不足以进行性能评估，以及您如何能够像我们一样衡量您的 Zero Trust 性能。</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="%E6%B5%8B%E9%87%8F%E9%87%8D%E8%A6%81%E6%8C%87%E6%A0%87">测量重要指标</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">公告</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">摘要</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/introducing-radar-internet-quality-page"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">推出 Cloudflare Radar 互联网质量页面</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Radar 上的新互联网页面提供基于基准测试数据以及 speed.cloudflare.com 测试结果，对国家和网络(自治系统)级别的互联网连接性能(带宽)和质量(延迟、抖动)随时间变化的洞察。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/speed-week-2023-network-performance-update"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">网络性能更新：2023 年 Speed Week</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">本文分享了最新的网络性能更新，并介绍我们用来监控和改进网络性能的工具和流程。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/introducing-timing-insights"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">隆重推出 Timing Insights：GraphQL API 中的全新性能指标</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">如果您关心网站或 API 的性能，那么至关重要的一件事是要了解运行缓慢的原因。今天，我们推出新的分析工具，帮助您了解影响 Cloudflare“首字节时间”(TTFB) 和源服务器性能的因素。但是等等，也许您已经听说应该不再担心 TTFB 了？Cloudflare 不是正在放弃 TTFB 这个指标了吗？继续阅读以了解为什么依然存在 TTFB 重要的情况。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/ttfb-is-not-what-it-used-to-be"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">您是否在考量最重要的指标是什么？不妨使用全新的眼光看待首字节时间</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">首字节时间 (TTFB) 并不是衡量网站性能的一种好方法。在这篇博客中，我们将介绍 TTFB 指标的优点和缺点，以及可以取而代之的方法。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/inp-get-ready-for-the-new-core-web-vital"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">INP：准备好迎接新的 Core Web Vital</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2023 年 5 月 10 日，Google 宣布 INP 将于 2024 年 3 月正式取代 Core Web Vitals 中的 FID。Core Web Vitals 在 Google 搜索算法中发挥着重要作用。因此，关心搜索引擎优化 (SEO) 的网站所有者应该为这一变化做好准备。本文中，我们将概述 INP 是什么，以及您如何做准备。</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="%E9%80%9F%E5%BA%A6%E5%8F%98%E5%BE%97%E7%AE%80%E5%8D%95">速度变得简单</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-zz9f {
+			color: #15C;
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-c6q4 {
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-3xvn {
+			font-family: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">公告</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">摘要</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/cloudflare-observatory-generally-available"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">更快的网站，更多的客户： Cloudflare Observatory 可帮助业务增长</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 用户现在可以在一个仪表板中使用实时用户监控(RUM)数据以及来自不同区域的定期测试来轻松监控网站性能。这将识别您的网站可能存在的任何性能问题。一旦我们识别出任何问题，Observatory 将突出显示用于解决这些问题的定制建议，全部仅需一次单击。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/smart-hints"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Smart Hints 简化无代码性能</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">我们很高兴地宣布，我们将利用 Cloudflare 强大的网络，实现 Early Hints 和 Fetch Priorities 自动化。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/better-http-3-prioritization-for-a-faster-web"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">隆重推出 HTTP/3 优先级</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">我们宣布全面支持 HTTP/3 可扩展优先级，这是一种新的标准，可以将网页加载速度提升多达 37%。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/turbo-charge-gaming-and-streaming-with-argo-for-udp"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Argo Smart Routing for UDP：提升游戏、实时通信速度等 </span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">我们宣布将流量加速引入客户的 UDP 流量中。现在，您可以将 UDP 应用程序（视频游戏、语音呼叫和视频会议等）的延迟降低多达 17%。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/this-is-brotli-from-origin"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">提升到最高级别: 从源服务器提供 Brotli 压缩，推出"压缩规则"</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">增强对 Brotli 压缩的支持，实现对 Web 内容的端到端 Brotli 压缩。压缩在传输过程中减少字节方面发挥着重要作用，以确保更快的下载速度和丝滑顺畅的浏览体验。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/performance-experiments-with-cloudflare"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">如何使用 Cloudflare Observatory 进行性能实验</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">在 Cloudflare Observatory 中推出性能实验功能：安全地测试代码、提高网站速度并尽可能地降低风险。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-kry2"><a href="https://blog.cloudflare.com/low-latency-hls-support-for-cloudflare-stream"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">推出 Cloudflare Stream 低延迟 HLS 支持功能</span></a></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Stream 的低延迟 HTTP 实时流 (LL-HLS) 功能，可实现网络和应用程序直播的延迟不足 10 秒，目前这一功能正处于测试阶段。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/speeding-up-apis-ricochet-for-api-gateway"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">使用 Ricochet for API Gateway 加快 API 速度</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">推出 Ricochet for API Gateway，这是运用自动化、智能的 API 响应缓存，为 Cloudflare 客户加快 API 响应速度的最简单方法。</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="%E7%AD%89%E7%AD%89%EF%BC%8C%E8%BF%98%E6%9C%89%E6%9B%B4%E5%A4%9A%E5%86%85%E5%AE%B9">等等，还有更多内容</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">公告</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">摘要</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/cloudflare-snippets-alpha"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare Snippets 现开放 Alpha 测试</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Snippets 现开放 Alpha 测试。Snippets 是使用规则集引擎筛选逻辑，对所选 HTTP 请求执行小型 Javascript 片段的简单方式。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/how-we-decreased-pages-latency"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">让 Cloudflare Pages 成为网站提供便捷服务的最快方式</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pages 现已成为 Netlify、Vercel 和许多其他平台上服务网站的最快方式。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/cloudflare-connected-in-over-300-cities"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare 全球网络覆盖范围扩展到 300 个城市的 12,000 个网络连接点，更加接近最终用户</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">我们很高兴地宣布，Cloudflare 现已连接到全球 300 多个城市的 12000 个互联网网络。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/turpentine-v2-migration-program"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">借助 Cloudflare 全新推出的迁移中心，迁移变得前所未有的简单便捷</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">重新推出 Turpentine，用于从 Varnish Control Language (VCL)迁移出来的服务。推出 Cloudflare 的全新 Migration Hub。Migration Hub 将提供一站式服务，以满足各种迁移需求，包含全新的迁移指南，使迁移流程更透明、更简单。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/rethinking-cache-purge-architecture"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">第 2 部分：采用新架构，重新思考缓存清除</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">讨论迄今我们为缓存清除所做的架构改进，以及我们进行中的工作。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/speeding-up-your-website-in-a-few-clicks"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">通过少量单击操作，即可加快网站 WordPress 加载速度</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">本文中，我们将解释有哪些提高网站性能的机会，如何检查特定网站是否可以提高性能，并提供一小段 JavaScript 代码，与 Cloudflare Workers 一起使用，为您进行这种优化。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/benchmarking-dashboard-performance"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">设置仪表板性能基准</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 仪表板是一个单一页面应用程序，其包含可用于我们现有产品组合的所有 UI，以及我们每天发布的新功能。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/faster-workers-kv-architecture"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">采用全新架构，Workers KV 处理请求的速度得到前所未有的提高</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">凭借为 Workers KV 提供支持的全新架构，Cloudflare 服务将变得比以往更快速且更具可扩展性。我们已显著降低了冷数据读取概率，并且使 KV 能够每月处理超过一万亿个请求。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/how-kinsta-used-workers-and-workers-kv-to-improve-cache-hit-rates"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Kinsta 如何使用 Workers 和 Workers KV 将缓存命中率提高 56%</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kinsta 为分布在 128 个国家/地区的 26,000 多家公司提供定制的云托管解决方案。了解他们如何搭配使用 Workers 和 Workers KV 来提高缓存性能和优化客户体验。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/a-step-by-step-guide-to-transferring-domains-to-cloudflare"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">将域转移到 Cloudflare 的分步指南</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">将域转移到一家新的注册服务机构不是一项日常事务，此流程中的任何一个步骤出错，都可能导致停机和服务中断。我们建立了一份域转移检查清单，助您快速安全地将域转移到 Cloudflare。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/how-cloudflare-scaled-and-protected-eurovision-2023-voting"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">了解我们如何使用 Pages 和 Turnstile，扩展和保护 2023 年欧洲歌唱大赛投票安全 </span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">超过 1.62 亿粉丝收看了 2023 年欧洲歌唱大赛，这是第一次非参赛国家也可以投票。Cloudflare 使用我们快速的 DNS 基础设施、CDN、Cloudflare Pages 和 Turnstile，帮助扩展和保护投票应用程序。</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="%E5%9C%A8-cloudflare-tv-%E4%B8%8A%E8%A7%82%E7%9C%8B">在 Cloudflare TV 上观看</h3>
+	<p>以下是 Cloudflare TV 上的 Speed Week 节目摘要</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/eeeeba1a5dd19b9e83a198cf867e06f5/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Feeeeba1a5dd19b9e83a198cf867e06f5%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D11s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p><!--kg-card-end: html-->
+</div>

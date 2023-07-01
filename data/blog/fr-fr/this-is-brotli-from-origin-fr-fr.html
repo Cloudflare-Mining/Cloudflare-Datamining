@@ -1,0 +1,217 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image8-2-4.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<p>Tout au long de la Speed Week, nous avons parlé de l'importance de l'optimisation des performances. La compression joue un rôle crucial en réduisant la taille des fichiers transmis via Internet. La réduction de la taille des fichiers permet des téléchargements plus rapides, accélère le chargement des sites web et offre une meilleure expérience utilisateur.</p>
+	<p>Prenons l'exemple d'un produit d'entretien ménager. <a href="https://ellenmacarthurfoundation.org/circular-examples/replenish" target="_blank">On estime</a> « qu'une bouteille de produit nettoyant habituel contient 90 % d'eau et moins de 10 % d'ingrédients utiles. » Si l'on retire 90 % d'un flacon de 500 ml de nettoyant ménager, on réduit de 600 g à 60 g le poids du flacon. Grâce à cette réduction, il suffit d'expédier à l'utilisateur un colis de 60 g seulement, avec des instructions expliquant comment réhydrater le produit à réception. Si l'on extrapole cet exemple à l'échelle de litres de produit, cette réduction de poids se traduit rapidement, pour le fabricant, par des économies considérables sur les frais d'expédition, sans parler de l'impact sur l'environnement.</p>
+	<p>C'est ainsi que fonctionne la compression. L'expéditeur compresse le fichier jusqu'à ce que sa taille soit aussi réduite que possible, puis il transmet le fichier, devenu plus petit, avec des instructions concernant son traitement à réception. En réduisant la taille des fichiers envoyés, la compression permet de réduire considérablement la bande passante nécessaire à l'envoi de fichiers via Internet. Lorsque les fichiers sont stockés chez d'<a href="https://blog.cloudflare.com/aws-egregious-egress">onéreux fournisseurs de cloud</a> tels qu'AWS, la réduction de la taille des fichiers envoyés peut directement se traduire par des économies de bande passante considérables.</p>
+	<p>La réduction de la taille des fichiers s'avère également particulièrement avantageuse pour les utilisateurs finaux disposant d'une connexion Internet limitée, à l'image des appareils mobiles connectés aux réseaux cellulaires ou des utilisateurs résidant dans des zones desservies par un réseau à faible débit. </p>
+	<p>Cloudflare a toujours pris en charge la compression au format Gzip. Gzip est un algorithme de compression très répandu, qui existe depuis 1992 et assure la compression des fichiers pour tous les utilisateurs de Cloudflare. En 2013, toutefois, Google a inauguré Brotli, qui prend en charge des niveaux de compression plus élevés et offre de meilleures performances globales. La transition de Gzip vers Brotli permet de réduire la taille des fichiers et les temps de chargement des pages web. Nous prenons en charge Brotli depuis 2017 pour la connexion entre Cloudflare et les navigateurs des clients. Nous annonçons aujourd'hui la prise en charge intégrale de Brotli pour les contenus web, c'est-à-dire la prise en charge de la compression Brotli, aux niveaux les plus élevés possibles, depuis le serveur d'origine jusqu'au client. </p>
+	<p>Si votre serveur d'origine prend en charge Brotli, activez la fonctionnalité, augmentez le niveau de compression et profitez de l'augmentation des performances.</p>
+	<h3 id="compression-brotli-jusquau-niveau-11">Compression Brotli jusqu'au niveau 11</h3>
+	<p>Brotli propose 12 niveaux de compression, allant de 0 à 11 ; le niveau 0 offrant la compression la plus rapide, mais également le taux de compression le plus faible, tandis que le niveau 11 offre le taux de compression le plus élevé, mais demande davantage de ressources informatiques et de temps. Lors de la mise en œuvre initiale de Brotli, il y a cinq ans de cela, nous avons constaté que la <a href="https://blog.cloudflare.com/results-experimenting-brotli">compression</a> au <a href="https://blog.cloudflare.com/results-experimenting-brotli">niveau 4</a> offrait un équilibre entre les octets économisés et le temps de compression, sans compromettre les performances.</p>
+	<p>Depuis 2017, Cloudflare utilise une compression Brotli maximale de niveau 4 pour toutes les ressources compressibles, en fonction de l'en-tête Accept-Encoding de l'utilisateur final. Cependant, un problème demeurait : Cloudflare demandait uniquement la compression Gzip au serveur d'origine, même si celui-ci prenait en charge Brotli. Par ailleurs, Cloudflare décompressait toujours les contenus reçus du serveur d'origine avant de les compresser et de les transmettre à l'utilisateur final, ce qui entraînait une augmentation du temps de traitement. Par conséquent, les clients ne pouvaient pas pleinement tirer parti des avantages qu'offre la compression Brotli.</p>
+	<p><strong><strong>L'ancien monde</strong></strong></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/Flow_how-CF-compresses_1.png" class="kg-image" alt="" loading="lazy" width="1600" height="373"></figure>
+	<p>Suite au déploiement de la prise en charge intégrale de Brotli par Cloudflare, les clients commenceront à recevoir notre en-tête Accept-Encoding mis à jour sur leurs serveurs d'origine. Lorsque cet en-tête sera disponible, les clients pourront transférer, mettre en cache et servir directement vers Cloudflare des fichiers Brotli fortement compressés, jusqu'au niveau maximum de 11, ce qui permettra de réduire la <a href="https://www.cloudflare.com/fr-fr/learning/performance/glossary/what-is-latency" target="_blank">latence</a> et la consommation de bande passante. Si l'appareil d'un utilisateur final ne prend pas en charge la compression Brotli, nous décompresserons automatiquement le fichier et le servirons soit dans son format décompressé, soit sous forme de fichier compressé Gzip, en fonction de l'en-tête Accept-Encoding.</p>
+	<p><strong><strong>Prise en charge de la compression Brotli de bout en bout</strong></strong></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/Flow_how-CF-compresses_2.png" class="kg-image" alt="" loading="lazy" width="1600" height="373"></figure>
+	<p><strong><strong>L'appareil de l'utilisateur final ne prend pas en charge la compression Brotli</strong></strong></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/Flow_how-CF-compresses_3.png" class="kg-image" alt="" loading="lazy" width="1600" height="373"></figure>
+	<p>Les clients peuvent mettre en œuvre la compression Brotli sur leur serveur d'origine en se référant aux documents en ligne appropriés. Par exemple, les clients qui utilisent NGINX peuvent mettre en œuvre Brotli en suivant ce <a href="https://github.com/google/ngx_brotli#installation" target="_blank">tutoriel</a> et en configurant la compression au niveau 11 dans le fichier de configuration `nginx.conf`, comme indiqué ici :</p><!--kg-card-begin: markdown-->
+	<pre><code>brotli on;
+brotli_comp_level 11;
+brotli_static on;
+brotli_types text/plain text/css application/javascript application/x-javascript text/xml 
+application/xml application/xml+rss text/javascript image/x-icon 
+image/vnd.microsoft.icon image/bmp image/svg+xml;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Cloudflare servira alors ces ressources au client en utilisant exactement le même niveau de compression (11) pour le fichier brotli_types correspondant. Cela signifie que toutes les images au format SVG ou BMP seront transmises au client après compression au niveau 11 de Brotli.</p>
+	<h3 id="test">Test</h3>
+	<p>Nous avons appliqué la compression à un simple fichier CSS, en mesurant l'impact de différents algorithmes et niveaux de compression. Notre objectif était d'identifier les améliorations potentielles que pourrait offrir l'optimisation des techniques de compression aux utilisateurs. Ces résultats sont présentés dans le tableau suivant :</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-stvh {
+			color: #172B4D;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">test</span></th>
+				<th class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Taille (octets)</span></th>
+				<th class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">% de réduction du fichier original (un % plus élevé est meilleur)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Réponse non compressée (aucune compression utilisée)</span></td>
+				<td class="tg-3xgo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">2 747</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">,</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Compression Gzip (niveau 8) par défaut de Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 121</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">59,21 %</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Compression Brotli (niveau 4) par défaut de Cloudflare</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 110</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">59,58 %</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Compression avec Gzip, niveau max. (niveau 9)</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 121</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">59,21 %</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Compression avec Brotli, niveau max. (niveau 11)</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">909</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">66,94 %</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>L'utilisation de la compression Brotli au niveau 11 permet aux utilisateurs de réduire de 19 % la taille des fichiers par rapport au meilleur niveau de compression Gzip. En outre, le niveau maximal de compression Brotli permet d'obtenir une taille de fichier inférieure d'environ 18 % à celle offerte par le niveau par défaut utilisé par Cloudflare. Ces résultats révèlent que l'utilisation de la compression Brotli permet une réduction significative de la taille des fichiers, notamment aux niveaux les plus élevés, ce qui peut conduire à une amélioration des performances du site web, à une diminution des temps de chargement des pages et à une réduction globale des frais de trafic sortant.</p>
+	<p>Pour obtenir de taux de compression de bout en bout plus élevés, les fonctions suivantes du proxy Cloudflare doivent être désactivées :</p>
+	<ul>
+		<li>obscurcissement de l'adresse e-mail</li>
+		<li>Rocket Loader</li>
+		<li>Server Side Excludes (SSE)</li>
+		<li>Mirage</li>
+		<li>Minimisation HTML – JavaScript et CSS peuvent rester actifs.</li>
+		<li>Réécritures HTTPS automatiques</li>
+	</ul>
+	<p>En effet, Cloudflare doit décompresser le corps d'une réponse et accéder à celui-ci pour appliquer les paramètres demandés. À l'aide de Configuration Rules, le client peut également désactiver ces fonctionnalités pour des chemins spécifiques.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0-3.png" class="kg-image" alt="" loading="lazy" width="1114" height="1518"></figure>
+	<p>Si l'une de ces fonctionnalités de réécriture est activée, le serveur d'origine peut toujours transmettre des données utilisant la compression Brotli à des niveaux plus élevés. Cependant, nous décompresserons les données, appliquerons les fonctionnalités Cloudflare activées et recompresserons les données à la volée au niveau 4 de compression Brotli (c'est-à-dire au niveau par défaut utilisé par Cloudflare) ou au niveau 8 de Gzip, en fonction de l'en-tête Accept-Encoding de l'utilisateur.</p>
+	<p>Pour les navigateurs qui n'acceptent pas la compression Brotli, nous continuerons à décompresser et transmettre des réponses avec la compression Gzip ou sans aucune compression.</p>
+	<h3 id="mise-en-%C5%93uvre">Mise en œuvre</h3>
+	<p>La première étape de la mise en œuvre de la compression Brotli depuis le serveur d'origine a impliqué la construction d'un module de décompression pouvant être intégré dans la pile logicielle de Cloudflare. Celui-ci nous permet de convertir efficacement les bits compressés reçus depuis le serveur d'origine en fichier original non compressé. Cette étape était cruciale, car de nombreuses <a href="https://blog.cloudflare.com/rust-nginx-module">fonctionnalités</a>, telles que la dissimulation des adresses e-mail et Cloudflare Workers Customers, reposent sur l'accès au corps d'une réponse pour l'application des personnalisations.</p>
+	<p>Nous avons intégré le module de décompression au <a href="https://www.cloudflare.com/fr-fr/learning/cdn/glossary/reverse-proxy" target="_blank">proxy web inverse central</a> de Cloudflare. Cette intégration permet à l'ensemble des produits et fonctionnalités de Cloudflare d'accéder facilement à la fonctionnalité de décompression Brotli ; elle a également permis à notre équipe Cloudflare Workers d'incorporer Brotli directement dans Cloudflare Workers, et permet ainsi à nos clients Workers d'interagir avec les réponses renvoyées avec la compression Brotli ou de les transmettre sans modification à l'utilisateur final.</p>
+	<h3 id="pr%C3%A9sentation-de-compression-rules-%E2%80%93-contr%C3%B4le-granulaire-de-la-compression-des-donn%C3%A9es-transmises-aux-utilisateurs-finaux">Présentation de Compression Rules – Contrôle granulaire de la compression des données transmises aux utilisateurs finaux</h3>
+	<p>Par défaut, Cloudflare compresse <a href="https://developers.cloudflare.com/support/speed/optimization-file-size/what-will-cloudflare-compress" target="_blank">certains types de contenu</a>, en fonction de l'en-tête Content-Type du fichier. Aujourd'hui, nous annonçons également Compression Rules pour nos clients Entreprise, qui vous permet de mieux contrôler le choix et la méthode de compression des données par Cloudflare.</p>
+	<p>Aujourd'hui, nous annonçons également l'introduction de Compression Rules pour nos clients Entreprise. Avec Compression Rules, vous bénéficiez d'un contrôle renforcé sur les capacités de compression de Cloudflare, vous permettant de personnaliser le choix des contenus et la méthode de compression utilisée par Cloudflare, afin d'optimiser les performances de votre site web.</p>
+	<p>Par exemple, en utilisant le service Compression Rules de Cloudflare pour les fichiers .ktx, les clients peuvent optimiser la mise en œuvre de textures dans les applications webGL, améliorant ainsi l'expérience utilisateur globale. L'activation de la compression minimise la consommation de bande passante et garantit le chargement rapide et fluide des applications WebGL, même en présence de textures volumineuses et détaillées.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--1--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="1100"></figure>
+	<p>Les clients peuvent également désactiver la compression ou spécifier leur préférence quant à la compression utilisée par Cloudflare. Un autre exemple pourrait être celui d'une société d'infrastructure souhaitant uniquement prendre en charge Gzip pour ses appareils IdO, mais souhaitant également autoriser la compression Brotli pour tous les autres noms d'hôte.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--2--1.png" class="kg-image" alt="" loading="lazy" width="1470" height="1114"></figure>
+	<p>Compression Rules utilise les filtres sur lesquels sont basés nos autres produits <a href="https://developers.cloudflare.com/rules" target="_blank">Rules</a>, avec les champs supplémentaires Media Type et Extension Type. Les utilisateurs peuvent ainsi facilement spécifier le contenu qu'ils souhaitent compresser.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--3--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="406"></figure>
+	<h3 id="d%C3%A9pr%C3%A9ciation-de-la-fonction-dactivationde-d%C3%A9sactivation-de-brotli">Dépréciation de la fonction d'activation/de désactivation de Brotli</h3>
+	<p>Brotli est pris en charge par certains <a href="https://caniuse.com/brotli" target="_blank">navigateurs web</a> depuis 2016, et Cloudflare propose la prise en charge de Brotli depuis 2017. À l'instar de toutes les nouvelles technologies web, Brotli était inconnu, et nous avons offert aux clients la possibilité d'activer ou de désactiver sélectivement Brotli via l'API et notre interface utilisateur.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--4-.png" class="kg-image" alt="" loading="lazy" width="1600" height="339"></figure>
+	<p>Maintenant que la compression Brotli a évolué et est prise en charge par tous les navigateurs, nous prévoyons d'activer Brotli sur toutes les zones par défaut dans les mois à venir. Cette évolution reprendra le comportement de Gzip que nous prenons actuellement en charge et entraînera la suppression de la fonction d'activation/de désactivation de notre tableau de bord. Si les navigateurs ne prennent pas en charge Brotli, Cloudflare continuera à prendre en charge les types d'encodage acceptés, tels que Gzip ou les données non compressées, et les clients Enterprise pourront toujours utiliser Compression Rules pour bénéficier d'un contrôle granulaire de la compression des données transmises à leurs utilisateurs.</p>
+	<h3 id="lavenir-de-la-compression-web">L'avenir de la compression web</h3>
+	<p>Nous avons constaté que Brotli, utilisé en tant que nouvelle technique de compression dédiée au web, a bénéficié d'une large adoption et a donné d'excellents résultats. Pour l'avenir, nous suivons de près les tendances et les nouveaux algorithmes de compression tels que <a href="https://www.rfc-editor.org/rfc/rfc8478" target="_blank">zstd</a>, qui pourrait constituer la prochaine génération d'algorithmes de compression.</p>
+	<p>Dans le même temps, nous cherchons à améliorer Brotli directement là où nous le pouvons. Un développement sur lequel nous nous concentrons particulièrement est celui des dictionnaires partagés avec Brotli. Chaque fois que vous comprimez une ressource, vous utilisez un « dictionnaire » qui améliore l'efficacité de la compression. Une analogie simple est la saisie des premières lettres de l'expression « J'arrive bientôt » (par exemple, « J'arr ») dans un message sur iPhone. L'iPhone traduit automatiquement cette saisie en « J'arrive bientôt » à l'aide de son propre dictionnaire interne.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">O</span></th>
+				<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">M</span></th>
+				<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">W</span></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">O</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">n</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">M</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">y</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">W</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">a</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">y</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Ce dictionnaire interne a analysé quatre caractères et les a transformés en seize caractères (espaces inclus). Le dictionnaire interne a ainsi économisé douze caractères, ce qui se traduit par de meilleures performances pour les utilisateurs. </p>
+	<p>Par défaut, le <a href="https://www.rfc-editor.org/rfc/rfc7932#page-28" target="_blank">document RFC Brotli</a> définit un dictionnaire statique, utilisé par les clients et les serveurs d'origine. Le dictionnaire statique a été conçu pour être d'usage général et applicable à tous les utilisateurs. La taille du dictionnaire a été optimisée, afin qu'il ne soit pas excessivement volumineux, tout en permettant d'obtenir les meilleurs résultats en matière de compression. Mais que se passerait-il si un serveur d'origine pouvait générer un dictionnaire sur mesure, adapté à un site web spécifique ? Par exemple, un dictionnaire spécifique à Cloudflare nous permettrait de compresser les mots et les phrases qui apparaissent à plusieurs reprises sur notre site, à l'image du mot « Cloudflare ». Le dictionnaire sur mesure serait conçu pour compresser ces mots aussi fortement que possible, et le navigateur utilisant le même dictionnaire serait en mesure de les traduire.</p>
+	<p>C'est précisément ce que vise à mettre en œuvre une <a href="https://github.com/wicG/compression-dictionary-transport" target="_blank">nouvelle proposition</a> formulée par la communauté Web Incubator CG, en vous permettant de spécifier vos dictionnaires, que les navigateurs pourront ensuite utiliser pour permettre aux sites web d'optimiser davantage la compression. Nous sommes ravis de contribuer à cette proposition et prévoyons de publier prochainement nos recherches.</p>
+	<h3 id="essayer-maintenant">Essayer maintenant</h3>
+	<p>Compression Rules est disponible maintenant ! La compression Brotli de bout en bout sera, quant à elle, déployée dans les semaines à venir. Elle vous permettra d'améliorer les performances, de réduire la bande passante et de bénéficier d'un contrôle granulaire de la façon dont Cloudflare gère la compression des données transmises à vos utilisateurs finaux.</p>
+</div>
