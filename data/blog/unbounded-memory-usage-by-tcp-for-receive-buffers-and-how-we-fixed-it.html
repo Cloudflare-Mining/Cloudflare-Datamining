@@ -198,10 +198,10 @@ while True:
 	</ul>
 	<p><a href="https://www.rfc-editor.org/rfc/rfc7323#appendix-F" target="_blank">Appendix F</a> of that RFC describes our situation, adding:</p>
 	<ul>
-		<li>“This is a general problem and can happen any time the sender does a write, which is smaller than the window scale factor.”</li>
+		<li>“<em>This is a general problem and can happen any time the sender does a write, which is smaller than the window scale factor.</em>”</li>
 	</ul>
 	<h2 id="kernel-patch">Kernel patch</h2>
-	<p>The Linux kernel patch we wrote to enable TCP window shrinking can be found <a href="https://github.com/cloudflare/linux/blob/master/patches/0020-Add-a-sysctl-to-allow-TCP-window-shrinking-in-order-.patch" target="_blank">here</a>. &nbsp;This patch will also be submitted upstream.</p>
+	<p>The Linux kernel patch we wrote to enable TCP window shrinking has been merged upstream and will be in kernel version 6.5 and later. &nbsp;The commit can be found <a href="https://github.com/torvalds/linux/commit/b650d953cd391595e536153ce30b4aab385643ac" target="_blank">here</a>.</p>
 	<h2 id="rerunning-the-test-above-with-kernel-patch">Rerunning the test above with kernel patch</h2>
 	<p>Here is the test we showed above, but this time using the kernel patch:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/download--8--1.png" class="kg-image" alt="" loading="lazy" width="800" height="900"></figure>
