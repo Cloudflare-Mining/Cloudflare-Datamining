@@ -110,7 +110,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Last updated July 1, 2023",
+													"value": "Last updated July 5, 2023",
 													"marks": [
 														{
 															"type": "bold"
@@ -1488,6 +1488,51 @@
 														"uri": null
 													},
 													"value": "\" is an image variant resulting from a resize or other Customer request (e.g., blur, sharpen, crop/trim, etc.) applied to a source image. For billing purposes, the initial Customer request and resulting image counts as a single Transformation that will be available for a 30-day period following generation. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Zaraz Load",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" means each time the Zaraz script is loaded on a website or application. For Customers with single page applications, each URL navigation (i.e., every time the URL changes) is counted as a new Zaraz Load.",
 													"marks": [],
 													"content": null
 												}
@@ -6810,7 +6855,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "As a Data Localization Suite customer, you may configure Regional Services for Covered Services on your Enterprise subscription that support Regional Services as described on the Data Localization Suite Page. If you have enabled Regional Services for your Domain(s), Cloudflare will terminate TLS and apply application layer services to Customer Content for HTTPS traffic transmitted between End Users and the origin web server(s) for such a Domain only in Cloudflare data centers located in the geographic region you have selected. The geographic regions available for the Regional Service are listed on the Data Localization Suite Page.",
+																	"value": "As a Data Localization Suite customer, you may configure Regional Services for Covered Services on your Enterprise subscription that support Regional Services as described on the Data Localization Suite Page. If you have enabled Regional Services for your Domain(s), Cloudflare will terminate TLS and apply application layer services for HTTPS traffic transmitted between End Users and the origin web server(s) for such a Domain only in Cloudflare data centers located in the geographic region you have selected. The geographic regions available for the Regional Service are listed on the Data Localization Suite Page.",
 																	"marks": [],
 																	"content": null
 																}
