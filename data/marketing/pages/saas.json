@@ -265,6 +265,78 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "5fhCywWt9SDDp68brCXyvM",
+								"title": "SSL for SaaS",
+								"titleSize": null,
+								"description": "Protect your customers' data in transit. Easily enable SSL (TLS) on customers' CNAME vanity domains and let Cloudflare handle SSL certificate management. ",
+								"learnMoreUrl": "https://www.cloudflare.com/ssl-for-saas-providers/",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cIJsutxRjqGiQZXydns4z/01044fa82742815100e1ecf93b11edd0/icon-security-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "c6776679-e543-5a80-9232-26ab70198b70",
+									"altText": "Security lock blue",
+									"title": "Security lock blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1116,
+										"height": 192,
+										"width": 192,
+										"filename": "security-lock-blue.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/security-lock-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2R78Vr5dLHJRJXf8hbsg23",
+								"title": "DDoS Protection",
+								"titleSize": null,
+								"description": "Get powerful DDoS protection for you and your customers with unmetered mitigation on our %{NetworkCapacity} global network.  ",
+								"learnMoreUrl": "https://www.cloudflare.com/ddos/",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5KA7D3Y51QoFVSVS5OyZKo/137a3a7079cb012076913b904a77b188/icon-ddos-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
+									"altText": "Security shield ddos protection blue",
+									"title": "Security shield ddos protection blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Y3kSXK7xp7Cjdqe9IBsNB/1a11b1a9f26fa51562f467eae7027dc0/security-shield-ddos-protection.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "3SmxSDo9n1OiQ2JQ4lq7sz",
 								"title": "Web Application Firewall (WAF)",
 								"titleSize": null,
@@ -302,6 +374,27 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "5im4UlINJRwQZONp2WB3t5",
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": null,
+						"title": "Are you ready to extend Cloudflare benefits to your customers?",
+						"backgroundColor": "blue",
+						"buttonText": "Get Started",
+						"buttonUrl": "https://forms.gle/vK4VNxBU3H92MaxD8",
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null
 					},
 					{
 						"contentfulId": "3uWCY4s52Bzy1ZILsixv5l",
@@ -443,6 +536,44 @@
 										"filename": "analytics-data-blue.svg",
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/analytics-data-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "722NxMIsPZeVi1PqZwh5Zj",
+								"title": "Load Balancing",
+								"titleSize": null,
+								"description": "Reduce latency and improve reliability with local and global load balancing. Cloudflare load balancing solution also includes health checks with fast failover to rapidly route visitors away from failures.",
+								"learnMoreUrl": "https://www.cloudflare.com/load-balancing/",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3EUYBAmrjHZ9wnbqVsOlyY/65aea7e672815381542c87145c565b64/load_balancing_3x.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
+									"altText": "Reliability load balancer blue",
+									"title": "Reliability load balancer blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2275,
+										"height": 192,
+										"width": 192,
+										"filename": "reliability-load-balancer-blue.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/reliability-load-balancer-blue.svg"
 										}
 									},
 									"brandfolderAssetMobile": null
