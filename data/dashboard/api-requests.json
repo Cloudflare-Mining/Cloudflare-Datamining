@@ -65,11 +65,6 @@
 		"id": "purge_cache.api.title.purge_files_by_url"
 	},
 	{
-		"uri": "/zones/:identifier/purge_cache",
-		"method": "POST",
-		"id": "purge_cache.api.title.purge_files_by_tag_or_host"
-	},
-	{
 		"uri": "/zones/:zone_identifier/acm/custom_trust_store",
 		"method": "GET",
 		"id": "ssl_tls.custom_origin_trust_store_drawer_api_get_list"
@@ -318,6 +313,11 @@
 		"uri": "/zones/:zone_identifier/pagerules/:identifier",
 		"method": "DELETE",
 		"id": "page-rules-delete-a-page-rule"
+	},
+	{
+		"uri": "/zones/:zone_identifier/purge_cache",
+		"method": "POST",
+		"id": "purge_cache.api.title.purge_files_by_tag_or_host"
 	},
 	{
 		"uri": "/zones/:zone_identifier/rate_limits",
