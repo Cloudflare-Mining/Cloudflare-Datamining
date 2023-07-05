@@ -30,7 +30,7 @@
 	<p>Although Cloudflare Resolver supports DNS-over-TLS, unfortuantely my router doesn't and will simply send all queries unencrypted.</p>
 	<h3 id="settingupdnsovertls">Setting Up DNS-Over-TLS</h3>
 	<p>By default, LEDE comes pre-installed using Dnsmasq as an internal resolver and therefore doesn't support DNS-over-TLS. So that we can get our requests encrypted, we're going to replace Dnsmasq with Unbound and odhcpd. I've based the steps I'm following from the very useful <a href="https://github.com/openwrt/packages/tree/master/net/unbound/files#unbound-and-odhcpd" target="_blank">OpenWRT Unbound package documentation</a>.</p>
-	<p>Before we can get started, we need to SSH into our router, if you're prompted for a password, this will likely be identical to the one you set up for the web portal:</p>
+	<p>Before we can get started, we need to <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh" target="_blank">SSH</a> into our router, if you're prompted for a password, this will likely be identical to the one you set up for the web portal:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-09-at-13.06.26.png" alt="SSH to Router" loading="lazy"></p>
 	<p>LEDE uses <code>opkg</code> as it's package manager of choice. Firstly, let's update the package list, then we install Unbound with Unbound-Control and the full version of odhcpd:</p>
 	<pre><code>opkg update

@@ -32,7 +32,7 @@
 		<li>The new X-ray machines, enhanced by ACMEDental’s algorithm, prove to be a hit on the market — allowing dentists to offload routine diagnostics to their assistants. </li>
 	</ul>
 	<p>With this framework in mind let’s explore how we’re leveraging machine learning at Cloudflare. </p>
-	<p>To inform our machine learning models, we rely on data from the 13 million domains on Cloudflare’s network, which sees more than 660 billion requests per day serving more than 2.8 billion people per month. We employ this huge volume of data to address one of the most urgent security threats on the web: <strong>bot attacks.</strong></p>
+	<p>To inform our machine learning models, we rely on data from the 13 million domains on Cloudflare’s network, which sees more than 660 billion requests per day serving more than 2.8 billion people per month. We employ this huge volume of data to address one of the most urgent security threats on the web: <strong><a href="https://www.cloudflare.com/learning/bots/what-is-a-bot-attack" target="_blank">bot attacks</a>.</strong></p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/Bot-Attacks.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="business-intelligence-1">Business Intelligence</h3>
@@ -48,7 +48,7 @@
 	<p>Over the course of a week, we deployed our solution to 95 websites with WordPress login pages and found that we issued more than 660,000 challenges, of which only 0.32% were solved — meaning our algorithm detected bots with a 99.68% rate of True Positives. </p>
 	<p>While this work is just beginning, WordPress represents 32.5% of all websites worldwide, so this is a very meaningful step forward. Meanwhile, we found that more than 80% of requests to WordPress login pages are Credential Stuffing attacks, underscoring just how prevalent these attacks are.</p>
 	<h3 id="machine-learning-productization-1">Machine Learning Productization</h3>
-	<p><strong>Deployment</strong>: Once we became sufficiently confident in the accuracy of our algorithm, we deployed it as one of the many security features constantly running across the 165 server facilities worldwide that comprise Cloudflare’s network edge. Today, it evaluates over 660 billion requests per day — learning and improving from each additional attack observed on the network.</p>
+	<p><strong>Deployment</strong>: Once we became sufficiently confident in the accuracy of our algorithm, we deployed it as one of the many <a href="https://www.cloudflare.com/learning/security/how-to-improve-wordpress-security" target="_blank">security features</a> constantly running across the 165 server facilities worldwide that comprise Cloudflare’s network edge. Today, it evaluates over 660 billion requests per day — learning and improving from each additional attack observed on the network.</p>
 	<p>But it wasn’t long before we found ourselves asking: is knowing and stopping credential stuffing attacks in real-time enough? Can we do more? </p>
 	<p>We used our existing data and began thinking of how to develop an algorithm to predict which companies will be attacked next. This would allow us to proactively warn companies before an attack occurs and prepare them for the worst case scenario, even if they aren’t currently on Cloudflare’s network.</p>
 	<p><strong>Training</strong>: We trained our Machine Learning Model with firmographic information like industry type, number of employees, and the revenue amount to predict the percentage of login attacks.</p>
