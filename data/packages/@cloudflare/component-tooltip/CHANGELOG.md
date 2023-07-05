@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.2.0
+
+### Minor Changes
+
+- 0ad1791e8a: Fix/override react-tooltip zIndex rule
+
 ## 4.1.0
 
 ### Minor Changes
