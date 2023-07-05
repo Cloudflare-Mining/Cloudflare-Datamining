@@ -11,7 +11,6 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
-					"readOnly": true,
 					"title": "ID",
 					"type": "string"
 				}
@@ -205,7 +204,6 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
-					"readOnly": true,
 					"title": "ID",
 					"type": "string"
 				}
@@ -368,12 +366,18 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The unique ID of the ruleset.",
-															"example": "2f2feab2026849078ba485f918791bdc",
-															"pattern": "^[0-9a-f]{32}$",
-															"readOnly": true,
-															"title": "ID",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The unique ID of the ruleset.",
+																	"example": "2f2feab2026849078ba485f918791bdc",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																{
+																	"readOnly": true
+																}
+															]
 														},
 														"kind": {
 															"description": "The kind of the ruleset.",
@@ -764,7 +768,6 @@
 																												"description": "The unique ID of the ruleset.",
 																												"example": "2f2feab2026849078ba485f918791bdc",
 																												"pattern": "^[0-9a-f]{32}$",
-																												"readOnly": true,
 																												"title": "ID",
 																												"type": "string"
 																											},
@@ -1393,7 +1396,6 @@
 																													"description": "The unique ID of the ruleset.",
 																													"example": "2f2feab2026849078ba485f918791bdc",
 																													"pattern": "^[0-9a-f]{32}$",
-																													"readOnly": true,
 																													"title": "ID",
 																													"type": "string"
 																												},
@@ -1626,7 +1628,6 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
-					"readOnly": true,
 					"title": "ID",
 					"type": "string"
 				}
@@ -1960,12 +1961,18 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "The unique ID of the ruleset.",
-																"example": "2f2feab2026849078ba485f918791bdc",
-																"pattern": "^[0-9a-f]{32}$",
-																"readOnly": true,
-																"title": "ID",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The unique ID of the ruleset.",
+																		"example": "2f2feab2026849078ba485f918791bdc",
+																		"pattern": "^[0-9a-f]{32}$",
+																		"title": "ID",
+																		"type": "string"
+																	},
+																	{
+																		"readOnly": true
+																	}
+																]
 															},
 															"kind": {
 																"description": "The kind of the ruleset.",
@@ -2222,7 +2229,6 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
-					"readOnly": true,
 					"title": "ID",
 					"type": "string"
 				}
@@ -2385,12 +2391,18 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The unique ID of the ruleset.",
-															"example": "2f2feab2026849078ba485f918791bdc",
-															"pattern": "^[0-9a-f]{32}$",
-															"readOnly": true,
-															"title": "ID",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The unique ID of the ruleset.",
+																	"example": "2f2feab2026849078ba485f918791bdc",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																{
+																	"readOnly": true
+																}
+															]
 														},
 														"kind": {
 															"description": "The kind of the ruleset.",
@@ -2781,7 +2793,6 @@
 																												"description": "The unique ID of the ruleset.",
 																												"example": "2f2feab2026849078ba485f918791bdc",
 																												"pattern": "^[0-9a-f]{32}$",
-																												"readOnly": true,
 																												"title": "ID",
 																												"type": "string"
 																											},
@@ -3410,7 +3421,6 @@
 																													"description": "The unique ID of the ruleset.",
 																													"example": "2f2feab2026849078ba485f918791bdc",
 																													"pattern": "^[0-9a-f]{32}$",
-																													"readOnly": true,
 																													"title": "ID",
 																													"type": "string"
 																												},
@@ -3630,7 +3640,6 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
-					"readOnly": true,
 					"title": "ID",
 					"type": "string"
 				}
@@ -3795,12 +3804,18 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "The unique ID of the ruleset.",
-																"example": "2f2feab2026849078ba485f918791bdc",
-																"pattern": "^[0-9a-f]{32}$",
-																"readOnly": true,
-																"title": "ID",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The unique ID of the ruleset.",
+																		"example": "2f2feab2026849078ba485f918791bdc",
+																		"pattern": "^[0-9a-f]{32}$",
+																		"title": "ID",
+																		"type": "string"
+																	},
+																	{
+																		"readOnly": true
+																	}
+																]
 															},
 															"kind": {
 																"description": "The kind of the ruleset.",
@@ -4047,7 +4062,7 @@
 	},
 	"GET /accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
 		"description": "Fetches a specific version of an account ruleset.",
-		"operationId": "getAccountRulesetVersions",
+		"operationId": "getAccountRulesetVersion",
 		"parameters": [
 			{
 				"in": "path",
@@ -4070,7 +4085,6 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
-					"readOnly": true,
 					"title": "ID",
 					"type": "string"
 				}
@@ -4233,12 +4247,18 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The unique ID of the ruleset.",
-															"example": "2f2feab2026849078ba485f918791bdc",
-															"pattern": "^[0-9a-f]{32}$",
-															"readOnly": true,
-															"title": "ID",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The unique ID of the ruleset.",
+																	"example": "2f2feab2026849078ba485f918791bdc",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																{
+																	"readOnly": true
+																}
+															]
 														},
 														"kind": {
 															"description": "The kind of the ruleset.",
@@ -4629,7 +4649,6 @@
 																												"description": "The unique ID of the ruleset.",
 																												"example": "2f2feab2026849078ba485f918791bdc",
 																												"pattern": "^[0-9a-f]{32}$",
-																												"readOnly": true,
 																												"title": "ID",
 																												"type": "string"
 																											},
@@ -5258,7 +5277,6 @@
 																													"description": "The unique ID of the ruleset.",
 																													"example": "2f2feab2026849078ba485f918791bdc",
 																													"pattern": "^[0-9a-f]{32}$",
-																													"readOnly": true,
 																													"title": "ID",
 																													"type": "string"
 																												},
@@ -5503,7 +5521,6 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
-					"readOnly": true,
 					"title": "ID",
 					"type": "string"
 				}
@@ -5666,12 +5683,18 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The unique ID of the ruleset.",
-															"example": "2f2feab2026849078ba485f918791bdc",
-															"pattern": "^[0-9a-f]{32}$",
-															"readOnly": true,
-															"title": "ID",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The unique ID of the ruleset.",
+																	"example": "2f2feab2026849078ba485f918791bdc",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																{
+																	"readOnly": true
+																}
+															]
 														},
 														"kind": {
 															"description": "The kind of the ruleset.",
@@ -6062,7 +6085,6 @@
 																												"description": "The unique ID of the ruleset.",
 																												"example": "2f2feab2026849078ba485f918791bdc",
 																												"pattern": "^[0-9a-f]{32}$",
-																												"readOnly": true,
 																												"title": "ID",
 																												"type": "string"
 																											},
@@ -6691,7 +6713,6 @@
 																													"description": "The unique ID of the ruleset.",
 																													"example": "2f2feab2026849078ba485f918791bdc",
 																													"pattern": "^[0-9a-f]{32}$",
-																													"readOnly": true,
 																													"title": "ID",
 																													"type": "string"
 																												},
@@ -7097,12 +7118,18 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The unique ID of the ruleset.",
-															"example": "2f2feab2026849078ba485f918791bdc",
-															"pattern": "^[0-9a-f]{32}$",
-															"readOnly": true,
-															"title": "ID",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The unique ID of the ruleset.",
+																	"example": "2f2feab2026849078ba485f918791bdc",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																{
+																	"readOnly": true
+																}
+															]
 														},
 														"kind": {
 															"description": "The kind of the ruleset.",
@@ -7493,7 +7520,6 @@
 																												"description": "The unique ID of the ruleset.",
 																												"example": "2f2feab2026849078ba485f918791bdc",
 																												"pattern": "^[0-9a-f]{32}$",
-																												"readOnly": true,
 																												"title": "ID",
 																												"type": "string"
 																											},
@@ -8122,7 +8148,6 @@
 																													"description": "The unique ID of the ruleset.",
 																													"example": "2f2feab2026849078ba485f918791bdc",
 																													"pattern": "^[0-9a-f]{32}$",
-																													"readOnly": true,
 																													"title": "ID",
 																													"type": "string"
 																												},
@@ -8530,12 +8555,18 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "The unique ID of the ruleset.",
-																"example": "2f2feab2026849078ba485f918791bdc",
-																"pattern": "^[0-9a-f]{32}$",
-																"readOnly": true,
-																"title": "ID",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "The unique ID of the ruleset.",
+																		"example": "2f2feab2026849078ba485f918791bdc",
+																		"pattern": "^[0-9a-f]{32}$",
+																		"title": "ID",
+																		"type": "string"
+																	},
+																	{
+																		"readOnly": true
+																	}
+																]
 															},
 															"kind": {
 																"description": "The kind of the ruleset.",
@@ -8991,12 +9022,18 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The unique ID of the ruleset.",
-															"example": "2f2feab2026849078ba485f918791bdc",
-															"pattern": "^[0-9a-f]{32}$",
-															"readOnly": true,
-															"title": "ID",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The unique ID of the ruleset.",
+																	"example": "2f2feab2026849078ba485f918791bdc",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																{
+																	"readOnly": true
+																}
+															]
 														},
 														"kind": {
 															"description": "The kind of the ruleset.",
@@ -9387,7 +9424,6 @@
 																												"description": "The unique ID of the ruleset.",
 																												"example": "2f2feab2026849078ba485f918791bdc",
 																												"pattern": "^[0-9a-f]{32}$",
-																												"readOnly": true,
 																												"title": "ID",
 																												"type": "string"
 																											},
@@ -10016,7 +10052,6 @@
 																													"description": "The unique ID of the ruleset.",
 																													"example": "2f2feab2026849078ba485f918791bdc",
 																													"pattern": "^[0-9a-f]{32}$",
-																													"readOnly": true,
 																													"title": "ID",
 																													"type": "string"
 																												},
@@ -10248,7 +10283,6 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
-					"readOnly": true,
 					"title": "ID",
 					"type": "string"
 				}
@@ -10579,7 +10613,6 @@
 																		"description": "The unique ID of the ruleset.",
 																		"example": "2f2feab2026849078ba485f918791bdc",
 																		"pattern": "^[0-9a-f]{32}$",
-																		"readOnly": true,
 																		"title": "ID",
 																		"type": "string"
 																	},
@@ -11208,7 +11241,6 @@
 																			"description": "The unique ID of the ruleset.",
 																			"example": "2f2feab2026849078ba485f918791bdc",
 																			"pattern": "^[0-9a-f]{32}$",
-																			"readOnly": true,
 																			"title": "ID",
 																			"type": "string"
 																		},
@@ -11458,12 +11490,18 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The unique ID of the ruleset.",
-															"example": "2f2feab2026849078ba485f918791bdc",
-															"pattern": "^[0-9a-f]{32}$",
-															"readOnly": true,
-															"title": "ID",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The unique ID of the ruleset.",
+																	"example": "2f2feab2026849078ba485f918791bdc",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																{
+																	"readOnly": true
+																}
+															]
 														},
 														"kind": {
 															"description": "The kind of the ruleset.",
@@ -11854,7 +11892,6 @@
 																												"description": "The unique ID of the ruleset.",
 																												"example": "2f2feab2026849078ba485f918791bdc",
 																												"pattern": "^[0-9a-f]{32}$",
-																												"readOnly": true,
 																												"title": "ID",
 																												"type": "string"
 																											},
@@ -12483,7 +12520,6 @@
 																													"description": "The unique ID of the ruleset.",
 																													"example": "2f2feab2026849078ba485f918791bdc",
 																													"pattern": "^[0-9a-f]{32}$",
-																													"readOnly": true,
 																													"title": "ID",
 																													"type": "string"
 																												},
@@ -12724,12 +12760,18 @@
 										"type": "string"
 									},
 									"id": {
-										"description": "The unique ID of the ruleset.",
-										"example": "2f2feab2026849078ba485f918791bdc",
-										"pattern": "^[0-9a-f]{32}$",
-										"readOnly": true,
-										"title": "ID",
-										"type": "string"
+										"allOf": [
+											{
+												"description": "The unique ID of the ruleset.",
+												"example": "2f2feab2026849078ba485f918791bdc",
+												"pattern": "^[0-9a-f]{32}$",
+												"title": "ID",
+												"type": "string"
+											},
+											{
+												"readOnly": true
+											}
+										]
 									},
 									"kind": {
 										"description": "The kind of the ruleset.",
@@ -13118,7 +13160,6 @@
 																					"description": "The unique ID of the ruleset.",
 																					"example": "2f2feab2026849078ba485f918791bdc",
 																					"pattern": "^[0-9a-f]{32}$",
-																					"readOnly": true,
 																					"title": "ID",
 																					"type": "string"
 																				},
@@ -13747,7 +13788,6 @@
 																						"description": "The unique ID of the ruleset.",
 																						"example": "2f2feab2026849078ba485f918791bdc",
 																						"pattern": "^[0-9a-f]{32}$",
-																						"readOnly": true,
 																						"title": "ID",
 																						"type": "string"
 																					},
@@ -13937,12 +13977,18 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The unique ID of the ruleset.",
-															"example": "2f2feab2026849078ba485f918791bdc",
-															"pattern": "^[0-9a-f]{32}$",
-															"readOnly": true,
-															"title": "ID",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The unique ID of the ruleset.",
+																	"example": "2f2feab2026849078ba485f918791bdc",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																{
+																	"readOnly": true
+																}
+															]
 														},
 														"kind": {
 															"description": "The kind of the ruleset.",
@@ -14333,7 +14379,6 @@
 																												"description": "The unique ID of the ruleset.",
 																												"example": "2f2feab2026849078ba485f918791bdc",
 																												"pattern": "^[0-9a-f]{32}$",
-																												"readOnly": true,
 																												"title": "ID",
 																												"type": "string"
 																											},
@@ -14962,7 +15007,6 @@
 																													"description": "The unique ID of the ruleset.",
 																													"example": "2f2feab2026849078ba485f918791bdc",
 																													"pattern": "^[0-9a-f]{32}$",
-																													"readOnly": true,
 																													"title": "ID",
 																													"type": "string"
 																												},
@@ -15182,7 +15226,6 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
-					"readOnly": true,
 					"title": "ID",
 					"type": "string"
 				}
@@ -15513,7 +15556,6 @@
 																		"description": "The unique ID of the ruleset.",
 																		"example": "2f2feab2026849078ba485f918791bdc",
 																		"pattern": "^[0-9a-f]{32}$",
-																		"readOnly": true,
 																		"title": "ID",
 																		"type": "string"
 																	},
@@ -16142,7 +16184,6 @@
 																			"description": "The unique ID of the ruleset.",
 																			"example": "2f2feab2026849078ba485f918791bdc",
 																			"pattern": "^[0-9a-f]{32}$",
-																			"readOnly": true,
 																			"title": "ID",
 																			"type": "string"
 																		},
@@ -16392,12 +16433,18 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The unique ID of the ruleset.",
-															"example": "2f2feab2026849078ba485f918791bdc",
-															"pattern": "^[0-9a-f]{32}$",
-															"readOnly": true,
-															"title": "ID",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The unique ID of the ruleset.",
+																	"example": "2f2feab2026849078ba485f918791bdc",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																{
+																	"readOnly": true
+																}
+															]
 														},
 														"kind": {
 															"description": "The kind of the ruleset.",
@@ -16788,7 +16835,6 @@
 																												"description": "The unique ID of the ruleset.",
 																												"example": "2f2feab2026849078ba485f918791bdc",
 																												"pattern": "^[0-9a-f]{32}$",
-																												"readOnly": true,
 																												"title": "ID",
 																												"type": "string"
 																											},
@@ -17417,7 +17463,6 @@
 																													"description": "The unique ID of the ruleset.",
 																													"example": "2f2feab2026849078ba485f918791bdc",
 																													"pattern": "^[0-9a-f]{32}$",
-																													"readOnly": true,
 																													"title": "ID",
 																													"type": "string"
 																												},
@@ -17637,7 +17682,6 @@
 					"description": "The unique ID of the ruleset.",
 					"example": "2f2feab2026849078ba485f918791bdc",
 					"pattern": "^[0-9a-f]{32}$",
-					"readOnly": true,
 					"title": "ID",
 					"type": "string"
 				}
@@ -17671,12 +17715,18 @@
 										"type": "string"
 									},
 									"id": {
-										"description": "The unique ID of the ruleset.",
-										"example": "2f2feab2026849078ba485f918791bdc",
-										"pattern": "^[0-9a-f]{32}$",
-										"readOnly": true,
-										"title": "ID",
-										"type": "string"
+										"allOf": [
+											{
+												"description": "The unique ID of the ruleset.",
+												"example": "2f2feab2026849078ba485f918791bdc",
+												"pattern": "^[0-9a-f]{32}$",
+												"title": "ID",
+												"type": "string"
+											},
+											{
+												"readOnly": true
+											}
+										]
 									},
 									"kind": {
 										"description": "The kind of the ruleset.",
@@ -18065,7 +18115,6 @@
 																					"description": "The unique ID of the ruleset.",
 																					"example": "2f2feab2026849078ba485f918791bdc",
 																					"pattern": "^[0-9a-f]{32}$",
-																					"readOnly": true,
 																					"title": "ID",
 																					"type": "string"
 																				},
@@ -18694,7 +18743,6 @@
 																						"description": "The unique ID of the ruleset.",
 																						"example": "2f2feab2026849078ba485f918791bdc",
 																						"pattern": "^[0-9a-f]{32}$",
-																						"readOnly": true,
 																						"title": "ID",
 																						"type": "string"
 																					},
@@ -18881,12 +18929,18 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The unique ID of the ruleset.",
-															"example": "2f2feab2026849078ba485f918791bdc",
-															"pattern": "^[0-9a-f]{32}$",
-															"readOnly": true,
-															"title": "ID",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The unique ID of the ruleset.",
+																	"example": "2f2feab2026849078ba485f918791bdc",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																{
+																	"readOnly": true
+																}
+															]
 														},
 														"kind": {
 															"description": "The kind of the ruleset.",
@@ -19277,7 +19331,6 @@
 																												"description": "The unique ID of the ruleset.",
 																												"example": "2f2feab2026849078ba485f918791bdc",
 																												"pattern": "^[0-9a-f]{32}$",
-																												"readOnly": true,
 																												"title": "ID",
 																												"type": "string"
 																											},
@@ -19906,7 +19959,6 @@
 																													"description": "The unique ID of the ruleset.",
 																													"example": "2f2feab2026849078ba485f918791bdc",
 																													"pattern": "^[0-9a-f]{32}$",
-																													"readOnly": true,
 																													"title": "ID",
 																													"type": "string"
 																												},
@@ -20183,12 +20235,18 @@
 										"type": "string"
 									},
 									"id": {
-										"description": "The unique ID of the ruleset.",
-										"example": "2f2feab2026849078ba485f918791bdc",
-										"pattern": "^[0-9a-f]{32}$",
-										"readOnly": true,
-										"title": "ID",
-										"type": "string"
+										"allOf": [
+											{
+												"description": "The unique ID of the ruleset.",
+												"example": "2f2feab2026849078ba485f918791bdc",
+												"pattern": "^[0-9a-f]{32}$",
+												"title": "ID",
+												"type": "string"
+											},
+											{
+												"readOnly": true
+											}
+										]
 									},
 									"kind": {
 										"description": "The kind of the ruleset.",
@@ -20577,7 +20635,6 @@
 																					"description": "The unique ID of the ruleset.",
 																					"example": "2f2feab2026849078ba485f918791bdc",
 																					"pattern": "^[0-9a-f]{32}$",
-																					"readOnly": true,
 																					"title": "ID",
 																					"type": "string"
 																				},
@@ -21206,7 +21263,6 @@
 																						"description": "The unique ID of the ruleset.",
 																						"example": "2f2feab2026849078ba485f918791bdc",
 																						"pattern": "^[0-9a-f]{32}$",
-																						"readOnly": true,
 																						"title": "ID",
 																						"type": "string"
 																					},
@@ -21393,12 +21449,18 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "The unique ID of the ruleset.",
-															"example": "2f2feab2026849078ba485f918791bdc",
-															"pattern": "^[0-9a-f]{32}$",
-															"readOnly": true,
-															"title": "ID",
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "The unique ID of the ruleset.",
+																	"example": "2f2feab2026849078ba485f918791bdc",
+																	"pattern": "^[0-9a-f]{32}$",
+																	"title": "ID",
+																	"type": "string"
+																},
+																{
+																	"readOnly": true
+																}
+															]
 														},
 														"kind": {
 															"description": "The kind of the ruleset.",
@@ -21789,7 +21851,6 @@
 																												"description": "The unique ID of the ruleset.",
 																												"example": "2f2feab2026849078ba485f918791bdc",
 																												"pattern": "^[0-9a-f]{32}$",
-																												"readOnly": true,
 																												"title": "ID",
 																												"type": "string"
 																											},
@@ -22418,7 +22479,6 @@
 																													"description": "The unique ID of the ruleset.",
 																													"example": "2f2feab2026849078ba485f918791bdc",
 																													"pattern": "^[0-9a-f]{32}$",
-																													"readOnly": true,
 																													"title": "ID",
 																													"type": "string"
 																												},
