@@ -1,7 +1,7 @@
 {
 	"name": "wranglerjs-compat-webpack-plugin",
 	"dist-tags": {
-		"latest": "0.0.7"
+		"latest": "0.0.8"
 	},
 	"versions": {
 		"0.0.1": {
@@ -254,6 +254,46 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj4kDsACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqN7A//VrBSA9nKCtFQTkW8HlzuqsdbwXdVS1QhDfW06EBElAhsx9Up\r\nCJpTLtgBFQhifzqVPXa/Lje5DUXbaUGYxKqgkHXGb7Es1gQ0T6eGg1Vv072/\r\n6uTtxGTwtzvQ4hFJfWyQ742unIQ0oQUtLPqB/KAgckErMXuOUDWSsgE9rtbT\r\n3WkJUYzpLr1CEr9CQ4mCaKFIa1+sqsVmSd8MgQ7EhsUpqtzRPg9czpbNFIgX\r\nklglhg+yOGoorefpEsqxKNBkkhAB+bZn0uEsPMyVd/3GxtvDD+VyNPlLxaS+\r\nAqo+S+8uJTDC6z3G33lIjQPsbdRZJPgOoGYWGQnPKYatKkRpSdO30zzUqgcO\r\n0xeVkQWqQb/hxFEwb1ew3UiWyi+dlIrewUZfcRkJefumG/kzffxUxPUAAQNK\r\nJBwiJdMQTzWVp4enH0CWm6DxnR+b4nvu9bT9Wi13EIiNPrWmyOXAMe6eIM/L\r\nqBGcb+KbaMilDOnLqscsmJkJ4UzIoDLkEMeOelsqvHfB8gkoJf1nBld73RvQ\r\nzv5mlWS6Z6yTfDrnzNH8z9wCSaFINU/o/udBi1J95YGqDfxAiNgm5dTajq2U\r\niweMqazFH7P16USafFiySQY/vk8KCmJt4izO+WuTVpvAj1xaz5smDUETc5M0\r\n1g4zl0CfZ6jl2taYXmpmL40Av/SuX91XYyQ=\r\n=jXwB\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.8": {
+			"name": "wranglerjs-compat-webpack-plugin",
+			"version": "0.0.8",
+			"dependencies": {
+				"rimraf": "^5.0.1"
+			},
+			"devDependencies": {
+				"@cloudflare/eslint-config-worker": "*",
+				"@cloudflare/workers-tsconfig": "*",
+				"@octokit/core": "^3.6.0",
+				"@schemastore/package": "^0.0.6",
+				"@types/jest": "^27.4.1",
+				"@types/rimraf": "^3.0.2",
+				"@types/tar": "^6.1.1",
+				"@types/webpack": "^4.41.32",
+				"esbuild": "0.16.3",
+				"execa": "^6.1.0",
+				"jest": "^27.5.1",
+				"jest-fetch-mock": "^3.0.3",
+				"npm-run-all": "^4.1.5",
+				"tar": "^6.1.11",
+				"tosource": "^2.0.0-alpha.3",
+				"typescript": "^4.6.3",
+				"undici": "^5.9.1",
+				"webpack": "^4.46.0"
+			},
+			"dist": {
+				"integrity": "sha512-T/KW450M4ESU0lsPGANAOImjEYY03uxbx0bBtOHfnh8gZqobyxlgj2/oxq3g06natig3hbGnL7qSWtMyMT3HBw==",
+				"shasum": "22ea6f12003d3e59b185057c65b8514eeb94f26f",
+				"tarball": "https://registry.npmjs.org/wranglerjs-compat-webpack-plugin/-/wranglerjs-compat-webpack-plugin-0.0.8.tgz",
+				"fileCount": 25,
+				"unpackedSize": 3210473,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCFyUt/zCniHTyT2/giUtHkmCdPpkZmtb/dfQA7L1F6MgIhAKS8MC0RoO1aLk2uoy5aUbmn0G5nB3oC81HESKHnOTzs"
+					}
+				]
 			}
 		}
 	}
