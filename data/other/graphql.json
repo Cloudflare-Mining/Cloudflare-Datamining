@@ -163,6 +163,7 @@
 	},
 	"AccountD1AnalyticsAdaptiveGroupsAvg": {
 		"__description": "",
+		"queryBatchResponseBytes": "The total number of bytes in the response, including all returned rows and metadata (average/mean).",
 		"queryBatchTimeMs": "Query batch response time in milliseconds (average/mean).",
 		"sampleInterval": "The average value used for sample interval"
 	},
@@ -183,6 +184,9 @@
 	},
 	"AccountD1AnalyticsAdaptiveGroupsQuantiles": {
 		"__description": "",
+		"queryBatchResponseBytesP50": "The total number of bytes in the response, including all returned rows and metadata (50th percentile).",
+		"queryBatchResponseBytesP90": "The total number of bytes in the response, including all returned rows and metadata (90th percentile).",
+		"queryBatchTimeMsP50": "Query batch response time in milliseconds (50th percentile).",
 		"queryBatchTimeMsP90": "Query batch response time in milliseconds (90th percentile)."
 	},
 	"AccountD1AnalyticsAdaptiveGroupsSum": {
@@ -833,11 +837,13 @@
 	"AccountGatewayL4SessionsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"action": "action taken by gateway",
+		"coloCode": "Colo Code of edge server",
 		"datetime": "Datetime that the session was started",
 		"datetimeHour": "Datetime that the session was started truncated to hours",
 		"datetimeMinute": "Datetime that the session was started truncated to minutes",
 		"destinationIp": "The destination IP address for the session",
 		"destinationPort": "The destination port for the session",
+		"detectedProtocol": "The detected protocol of network traffic",
 		"deviceId": "The device ID of the gateway user who initiated the session",
 		"email": "The email address of the gateway user who initiated the session",
 		"sni": "The SNI pulled from the session tls handshake, if present",
@@ -911,6 +917,7 @@
 	"AccountGatewayL7RequestsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"action": "action taken by gateway",
+		"coloCode": "Colo Code of edge server",
 		"datetime": "Datetime that the request happened",
 		"datetimeHour": "Datetime that the request happened truncated to hours",
 		"datetimeMinute": "Datetime that the request happened truncated to minutes",
@@ -948,6 +955,43 @@
 	},
 	"AccountGatewayResolverByCategoryAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroups": {
+		"__description": "Total time spent on executing firewall rules at the edge",
+		"avg": "The average value for a metric per dimension",
+		"count": "The number of Gateway Resolver queries",
+		"dimensions": "List of dimensions to group by",
+		"max": "Maximum execution time",
+		"quantiles": "Quantiles of a rule execution performance"
+	},
+	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsDimensions": {
+		"__description": "",
+		"datetime": "Request timestamp",
+		"datetimeMonth": "Request timestamp month"
+	},
+	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsMax": {
+		"__description": "",
+		"executionTime": "Maximum execution time"
+	},
+	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountGatewayResolverByRuleExecutionPerformanceAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"executionTimeMsP25": "Execution time performance of 25th percentile in milliseconds",
+		"executionTimeMsP50": "Execution time performance of 50th percentile in milliseconds",
+		"executionTimeMsP75": "Execution time performance of 75th percentile in milliseconds",
+		"executionTimeMsP90": "Execution time performance of 90th percentile in milliseconds",
+		"executionTimeMsP95": "Execution time performance of 95th percentile in milliseconds",
+		"executionTimeMsP98": "Execution time performance of 98th percentile in milliseconds",
+		"executionTimeMsP99": "Execution time performance of 99th percentile in milliseconds"
 	},
 	"AccountGatewayResolverQueriesAdaptiveGroups": {
 		"__description": "BETA - Aggregate counts of Gateway Resolver queries with adaptive sampling",
@@ -2199,6 +2243,10 @@
 	},
 	"AccountMagicWANConnectorMetricsAdaptiveGroupsAvg": {
 		"__description": "",
+		"cpuLoadPercentage": "Average CPU load percentage",
+		"cpuTemperature": "Average CPU temperature",
+		"diskUsagePercentage": "Average Disk usage percentage",
+		"memoryUsagePercentage": "Average Memory usage percentage",
 		"rxBitrateFiveMinute": "Rx Bitrate over 5 minutes",
 		"rxBitrateMinute": "Rx Bitrate over 1 minute",
 		"rxPacketrateFiveMinute": "Rx Packet rate over 5 minutes",
@@ -2210,7 +2258,7 @@
 	},
 	"AccountMagicWANConnectorMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
-		"datetime": "",
+		"datetime": "The date and time the event was recorded",
 		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to a multiple of 5 minutes",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"mconnInterfaceName": "Name of connector interface",
@@ -2520,6 +2568,7 @@
 	},
 	"AccountRumPageloadEventsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"bot": "Indicates if the request is likely from a bot (non-human traffic). Returns 1 if from a bot, 0 otherwise.",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"customTagInternalSxg": "Signed Exchange enabled status",
 		"date": "Request date from browser",
@@ -2572,6 +2621,7 @@
 	},
 	"AccountRumPerformanceEventsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"bot": "Indicates if the request is likely from a bot (non-human traffic). Returns 1 if from a bot, 0 otherwise.",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"customTagInternalSxg": "Signed Exchange enabled status",
 		"date": "Request date from browser",
@@ -2642,6 +2692,7 @@
 	},
 	"AccountRumWebVitalsEventsAdaptive": {
 		"__description": "Beta. RUM Web Vitals event metrics with adaptive sampling",
+		"bot": "Indicates if the request is likely from a bot (non-human traffic). Returns 1 if from a bot, 0 otherwise.",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"cumulativeLayoutShift": "Cumulative Layout Shift (Core Web Vitals) (-1 indicates N/A)",
 		"cumulativeLayoutShiftCurrentRect": "Layout values of the rectangular area after the changes",
@@ -2694,6 +2745,7 @@
 	},
 	"AccountRumWebVitalsEventsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"bot": "Indicates if the request is likely from a bot (non-human traffic). Returns 1 if from a bot, 0 otherwise.",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"cumulativeLayoutShiftElement": "DOM selector name of the largest layout shift",
 		"cumulativeLayoutShiftPath": "Observed path of the Cumulative Layout Shift (Core Web Vitals)",
@@ -2822,6 +2874,7 @@
 		"gatewayL4UpstreamSessionsAdaptiveGroups": "",
 		"gatewayL7RequestsAdaptiveGroups": "",
 		"gatewayResolverByCategoryAdaptiveGroups": "",
+		"gatewayResolverByRuleExecutionPerformanceAdaptiveGroups": "",
 		"gatewayResolverQueriesAdaptiveGroups": "",
 		"httpRequests1dGroups": "",
 		"httpRequests1hGroups": "",
@@ -4824,6 +4877,7 @@
 	"ZonePageShieldReportsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"action": "policy action, log | allow",
+		"cspDirective": "csp directive e.g 'script-src'",
 		"date": "",
 		"datetime": "The date and time the event occurred at the edge",
 		"datetimeFifteenMinutes": "Report datetime from edge, truncated to multiple of 15 minutes",
@@ -5167,6 +5221,7 @@
 		"gatewayL4UpstreamSessionsAdaptiveGroups": "Aggregated metrics about upstream (edge to client) L4 Gateway Sessions. Metrics are reported on TCP, QUIC or UDP session close",
 		"gatewayL7RequestsAdaptiveGroups": "BETA - Aggregate counts of Gateway L7 requests with adaptive sampling",
 		"gatewayResolverByCategoryAdaptiveGroups": "BETA - Aggregate counts of Gateway Resolver queries by category with adaptive sampling",
+		"gatewayResolverByRuleExecutionPerformanceAdaptiveGroups": "Total time spent on executing firewall rules at the edge",
 		"gatewayResolverQueriesAdaptiveGroups": "BETA - Aggregate counts of Gateway Resolver queries with adaptive sampling",
 		"httpRequests1dGroups": "Daily rollups of request data",
 		"httpRequests1hGroups": "Hourly rollups of request data",
