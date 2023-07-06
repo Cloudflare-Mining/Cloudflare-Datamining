@@ -1549,13 +1549,6 @@
 		"length": "number",
 		"name": "string"
 	},
-	"WebSocketRequestResponsePair": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": "object",
-		"length": "number",
-		"name": "string"
-	},
 	"WorkerGlobalScope": {
 		"__proto": "function",
 		"__type": "function",
@@ -2543,7 +2536,6 @@
 		"WebAssembly",
 		"WebSocket",
 		"WebSocketPair",
-		"WebSocketRequestResponsePair",
 		"WorkerGlobalScope",
 		"WritableStream",
 		"WritableStreamDefaultController",
@@ -4135,8 +4127,7 @@
 					"name": "undefined",
 					"prototype": "undefined"
 				}
-			},
-			"env": {}
+			}
 		},
 		"stream": {
 			"Stream": {
@@ -8380,6 +8371,24 @@
 				"name": "string"
 			},
 			"getWebSockets": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"setWebSocketAutoResponse": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"getWebSocketAutoResponse": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"getWebSocketAutoResponseTimestamp": {
 				"__proto": "function",
 				"__type": "function",
 				"length": "number",
