@@ -61,7 +61,9 @@
 						"contentfulId": "7c7WX4H1GOIWDmnfZnK3d0",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "The basics you need to protect and accelerate your site",
+						"titleSize": null,
 						"subtitle": null,
+						"subtitleSize": null,
 						"copy": "Our mission is to build a better Internet. We believe every website should have free access to foundational security and performance.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
@@ -174,7 +176,7 @@
 								"openLinkInNewTab": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jxszSMXRhwiwHDa1VPXFw/a7fc773a9bdd5c603af1ac4d51a1b170/_Pangea__network-scale-blue.svg"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jxszSMXRhwiwHDa1VPXFw/cc6439cd93a107bd0986bb6d5dcd8a97/network-scale.svg"
 									}
 								},
 								"iconAssetFile": null,
@@ -609,10 +611,8 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "6TuOdp66LZJIKzvJgFktBO",
-						"buttonExtraClass": null,
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
 						"title": "Get started in 5 min",
+						"titleSize": null,
 						"backgroundColor": "blue",
 						"buttonText": "Sign Up Free",
 						"buttonUrl": "https://dash.cloudflare.com/sign-up",
@@ -621,11 +621,11 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "large",
 						"htmlId": null,
-						"textColor": "white",
 						"bladeBorder": "none",
 						"buttonOne": null,
 						"buttonTwo": null,
-						"sectionPadding": null
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"locale": "en-US",
@@ -652,18 +652,14 @@
 									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
 									"altText": "Reliability load balancer blue",
 									"title": "Reliability load balancer blue",
-									"activeAsset": "Brandfolder Asset",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2275,
-										"height": 192,
-										"width": 192,
-										"filename": "reliability-load-balancer-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/reliability-load-balancer-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PEDzEKI6wwUPTe3RiUqC4/f7af6ded9a2e49325d277e1fa1e442e4/reliability-load-balancer.svg"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"title": "Load Balancing",
@@ -708,8 +704,6 @@
 								},
 								"callToAction": {
 									"buttonAssetFile": null,
-									"buttonWidth": "auto",
-									"buttonColor": "blue",
 									"buttonTextLoggedIn": null,
 									"contentTypeId": "button",
 									"contentfulId": "4rHLtXy296ik2cpAYeMpC9",
@@ -736,7 +730,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/5437c1baccd6966aa4ac245ec8eca8d4/security-shield-ddos-protection-60x60.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -784,8 +778,6 @@
 								},
 								"callToAction": {
 									"buttonAssetFile": null,
-									"buttonWidth": "auto",
-									"buttonColor": "blue",
 									"buttonTextLoggedIn": null,
 									"contentTypeId": "button",
 									"contentfulId": "25nOqVRhO2PRZ3fpqwG8qE",
@@ -808,18 +800,14 @@
 									"id": "d0d91ab6-8531-56fe-89d3-5fe996d9f7bf",
 									"altText": "Performance intelligent routing blue",
 									"title": "Performance intelligent routing blue",
-									"activeAsset": "Brandfolder Asset",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2190,
-										"height": 192,
-										"width": 192,
-										"filename": "performance-intelligent-routing-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/performance-intelligent-routing-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yNR9Xrke2khvXTu9Rpdc3/e659935f9bc695024b5be6fb99900dd3/performance-intelligent-routing.svg"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"title": "Argo Smart Routing",
@@ -864,8 +852,6 @@
 								},
 								"callToAction": {
 									"buttonAssetFile": null,
-									"buttonWidth": "auto",
-									"buttonColor": "blue",
 									"buttonTextLoggedIn": null,
 									"contentTypeId": "button",
 									"contentfulId": "54kJUd2Ah2YIMlZ9ktnlvR",
@@ -888,18 +874,14 @@
 									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
 									"altText": "Cloudflare workers blue",
 									"title": "Cloudflare workers blue",
-									"activeAsset": "Brandfolder Asset",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 493,
-										"height": 192,
-										"width": 192,
-										"filename": "cloudflare-workers-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/cloudflare-workers-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP5LKSCVMZzy2mn0MsQyq/6d0239e7354806aa1b0dfcfec7ac7b6b/cloudflare-workers.svg"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"title": "Workers",
@@ -944,8 +926,6 @@
 								},
 								"callToAction": {
 									"buttonAssetFile": null,
-									"buttonWidth": "auto",
-									"buttonColor": "blue",
 									"buttonTextLoggedIn": null,
 									"contentTypeId": "button",
 									"contentfulId": "3yibLzUww1YcAMJT7TE7WV",
@@ -967,12 +947,12 @@
 								"iconAssetFile": {
 									"id": "87f9101d-857c-5202-9a77-f2f35ff7e4a9",
 									"altText": "Cloudflare One  SASE Solution",
-									"title": "Cloudflare access blue",
+									"title": "Cloudflare Access Orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/64ekoyPlI1bPZ9MvWEuxqu/f64816a2d5bfca83d3491313654b55f3/icon_cloudflare-access_blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/64ekoyPlI1bPZ9MvWEuxqu/9de135bc78a1e1559505fcb8b59788c0/cloudflare-access.svg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -1020,8 +1000,6 @@
 								},
 								"callToAction": {
 									"buttonAssetFile": null,
-									"buttonWidth": "auto",
-									"buttonColor": "blue",
 									"buttonTextLoggedIn": "Activate",
 									"contentTypeId": "button",
 									"contentfulId": "7l3WxO6IFPLt7bDGE3RQx2",
@@ -1042,20 +1020,16 @@
 								"contentTypeId": "elementAddOn",
 								"iconAssetFile": {
 									"id": "354f7679-9260-56e3-8424-c7ab413df9c4",
-									"altText": "Browser video blue",
-									"title": "Browser video blue",
-									"activeAsset": "Brandfolder Asset",
+									"altText": "Browser video ",
+									"title": "Browser video ",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1081,
-										"height": 192,
-										"width": 192,
-										"filename": "browser-video-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/browser-video-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5d6MBxb68TRVNSdYh7HvEC/f0975c8b91fa63e0b1f324c48b88b963/video-browser.svg"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"title": "Video Streaming",
@@ -1100,8 +1074,6 @@
 								},
 								"callToAction": {
 									"buttonAssetFile": null,
-									"buttonWidth": "auto",
-									"buttonColor": "blue",
 									"buttonTextLoggedIn": null,
 									"contentTypeId": "button",
 									"contentfulId": "BzhTYyTCjQM2igJSZ7Nhm",
@@ -1124,18 +1096,14 @@
 									"id": "56e4ad29-94fc-5b3f-92ff-e7e657e886cb",
 									"altText": "Certificate blue",
 									"title": "Certificate blue",
-									"activeAsset": "Brandfolder Asset",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1415,
-										"height": 192,
-										"width": 192,
-										"filename": "certificate-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/certificate-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/kIXFVuqgPdm8v3bindpC7/d2231bb804291cfbd5867e446cf59596/certificate.svg"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"title": "Advanced Certificate Manager",
@@ -1180,8 +1148,6 @@
 								},
 								"callToAction": {
 									"buttonAssetFile": null,
-									"buttonWidth": "auto",
-									"buttonColor": "blue",
 									"buttonTextLoggedIn": null,
 									"contentTypeId": "button",
 									"contentfulId": "2dXiimNvQNb7eubUup5Pfc",
@@ -1276,10 +1242,8 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "7DszJXPifKrKbU6Od6ZPjL",
-						"buttonExtraClass": null,
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
 						"title": "Get started in 5 min",
+						"titleSize": null,
 						"backgroundColor": "blue",
 						"buttonText": "Sign Up Free",
 						"buttonUrl": "https://dash.cloudflare.com/sign-up",
@@ -1288,11 +1252,11 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "large",
 						"htmlId": null,
-						"textColor": "white",
 						"bladeBorder": "none",
 						"buttonOne": null,
 						"buttonTwo": null,
-						"sectionPadding": null
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,

@@ -61,7 +61,9 @@
 						"contentfulId": "5etuxGSTvO6q6c4CaeuQkk",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Accelerate Mobile Experiences",
+						"titleSize": null,
 						"subtitle": "Increase engagement and conversions, regardless of distance to origin servers, device type, or network health",
+						"subtitleSize": null,
 						"copy": "Mobile visitors expect fast, rich online experiences. Mobile device and cellular network limitations can degrade a users mobile experience, resulting in lower conversions, loss of revenue, and degraded brand perception.\n\nMobile applications and web pages require the speed and scale of a global network to combat mobile-induced latencies and globally dispersed users with poor connectivity. Cloudflare optimizes image files for mobile consumption, and provides developers with tools to improve native mobile app performance on challenging networks.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
@@ -150,25 +152,21 @@
 								"openLinkInNewTab": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e2de3ad019ead74bf904e0b49806d8f/icon-scale-aqua.png"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
 									}
 								},
 								"iconAssetFile": {
 									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
 									"altText": "Optimization scale blue",
 									"title": "Optimization scale blue",
-									"activeAsset": "Brandfolder Asset",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 553,
-										"height": 192,
-										"width": 192,
-										"filename": "optimization-scale-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/optimization-scale-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"imageAssetFile": null,
@@ -717,8 +715,6 @@
 															"entry_button": [
 																{
 																	"buttonAssetFile": null,
-																	"buttonWidth": "auto",
-																	"buttonColor": "blue",
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "1xt07uGIY0jTWYkdiCGaPJ",
@@ -892,8 +888,6 @@
 															"entry_button": [
 																{
 																	"buttonAssetFile": null,
-																	"buttonWidth": "auto",
-																	"buttonColor": "blue",
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "39Uo8Nr7eqOHMcgrz9f5yj",
@@ -1185,10 +1179,8 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "2zeK3cpcocmc3AEnjtROky",
-						"buttonExtraClass": null,
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
 						"title": "Get started today",
+						"titleSize": null,
 						"backgroundColor": "blue",
 						"buttonText": "Sign up",
 						"buttonUrl": "https://dash.cloudflare.com/sign-up",
@@ -1197,11 +1189,11 @@
 						"buttonUrl2": "#",
 						"bladeSizeType": "large",
 						"htmlId": null,
-						"textColor": "white",
 						"bladeBorder": "none",
 						"buttonOne": null,
 						"buttonTwo": null,
-						"sectionPadding": null
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,

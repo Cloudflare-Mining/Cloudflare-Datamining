@@ -61,7 +61,9 @@
 						"contentfulId": "5EPJ83ptqmjuvrfxo1n236",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Email Routing",
+						"titleSize": null,
 						"subtitle": "Easily create addresses and route emails for free",
+						"subtitleSize": null,
 						"copy": "Create custom email addresses for your domain. Add an optional catch-all for any address that has not been configured. Route emails to your preferred inbox. All without ever exposing your primary email address.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
@@ -198,20 +200,16 @@
 								"icon": null,
 								"iconAssetFile": {
 									"id": "e06663fb-a656-5e71-86c6-252eccfcc3b8",
-									"altText": "Security fingerprint privacy blue",
-									"title": "Security fingerprint privacy blue",
-									"activeAsset": "Brandfolder Asset",
+									"altText": "Security fingerprint privacy orange",
+									"title": "Security fingerprint privacy orange",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2430,
-										"height": 192,
-										"width": 192,
-										"filename": "security-fingerprint-privacy-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/security-fingerprint-privacy-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3o7wgV3QOT67tMsuQmIMPc/105a1dd4cd229dcee110b92e40e5151a/security-fingerprint-privacy.svg"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"imageAssetFile": null,
@@ -266,13 +264,13 @@
 								"icon": null,
 								"iconAssetFile": {
 									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
-									"altText": "Security shield zero trust blue",
-									"title": "Security shield zero trust blue",
+									"altText": "Security shield zero trust ",
+									"title": "Security shield zero trust ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/cc65f8b540072082ab78537c9132bc82/security-shield-zero-trust-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -330,20 +328,16 @@
 								"icon": null,
 								"iconAssetFile": {
 									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale blue",
-									"title": "Network scale blue",
-									"activeAsset": "Brandfolder Asset",
+									"altText": "Network scale ",
+									"title": "Network scale ",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 5263,
-										"height": 192,
-										"width": 192,
-										"filename": "network-scale-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/network-scale-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25B0tY2bGsZrocxnifpnpx/2a328b9ddf2ec85b6c026f5b2d03ed42/network-scale.svg"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"imageAssetFile": null,
@@ -366,18 +360,14 @@
 									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
 									"altText": "Cloudflare workers blue",
 									"title": "Cloudflare workers blue",
-									"activeAsset": "Brandfolder Asset",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 493,
-										"height": 192,
-										"width": 192,
-										"filename": "cloudflare-workers-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/cloudflare-workers-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP5LKSCVMZzy2mn0MsQyq/6d0239e7354806aa1b0dfcfec7ac7b6b/cloudflare-workers.svg"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"imageAssetFile": null,
@@ -720,10 +710,8 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "7wufmlRlblKzpydtItKFbM",
-						"buttonExtraClass": null,
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
 						"title": "Start creating addresses and routing emails for free.",
+						"titleSize": null,
 						"backgroundColor": "blue",
 						"buttonText": "View docs",
 						"buttonUrl": "https://developers.cloudflare.com/email-routing/",
@@ -732,11 +720,11 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "large",
 						"htmlId": null,
-						"textColor": "white",
 						"bladeBorder": "none",
 						"buttonOne": null,
 						"buttonTwo": null,
-						"sectionPadding": null
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,

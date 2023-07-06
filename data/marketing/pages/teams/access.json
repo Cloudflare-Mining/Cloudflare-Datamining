@@ -2613,7 +2613,9 @@
 						"contentfulId": "5STFUoYNS23xLQh3kCs97",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Access",
+						"titleSize": null,
 						"subtitle": "Augment or replace your traditional VPN.  Modernize application security with Zero Trust.",
+						"subtitleSize": null,
 						"copy": "Enforce default-deny, Zero Trust rules for users accessing any application, in any on-premise private network, public cloud, or SaaS environment.\n\nConnects users faster and more safely than a VPN and integrates flexibly with your identity providers and endpoint protection platforms. Try it forever for up to 50 users with our Free plan.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
@@ -3025,13 +3027,13 @@
 								"iconAssetFile": null,
 								"imageAssetFile": {
 									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
-									"altText": "Security shield zero trust blue",
-									"title": "Security shield zero trust blue",
+									"altText": "Security shield zero trust ",
+									"title": "Security shield zero trust ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/cc65f8b540072082ab78537c9132bc82/security-shield-zero-trust-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -3061,7 +3063,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/5437c1baccd6966aa4ac245ec8eca8d4/security-shield-ddos-protection-60x60.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2oIHOELz7Ir7RtBLpEfWEs/d2ddafe107a6a330ab761b16824a1a03/security-shield-protection-1.svg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -3087,18 +3089,14 @@
 									"id": "b3ff4344-a324-59a0-b8e4-414adc95e7d3",
 									"altText": "User multi blue",
 									"title": "User multi blue",
-									"activeAsset": "Brandfolder Asset",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 4519,
-										"height": 192,
-										"width": 192,
-										"filename": "user-multi-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/user-multi-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oO1wqLlaSM1U8pwMbT3jY/20694e22267c2174ae0fd857cfc3bb39/user-multi.png"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"streamId": null,
@@ -3491,10 +3489,8 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "1iD9ufuTZOUXnWB1zbNaLE",
-						"buttonExtraClass": null,
-						"buttonColor": null,
-						"buttonColor2": null,
 						"title": "Try our free plan and secure access for up to 50 users",
+						"titleSize": null,
 						"backgroundColor": "blue",
 						"buttonText": null,
 						"buttonUrl": null,
@@ -3503,12 +3499,9 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "small",
 						"htmlId": null,
-						"textColor": "white",
 						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
-							"buttonWidth": "narrow",
-							"buttonColor": "orange",
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
 							"contentfulId": "oVEcRqCvOT1NQHEiVxme2",
@@ -3523,8 +3516,6 @@
 						},
 						"buttonTwo": {
 							"buttonAssetFile": null,
-							"buttonWidth": "narrow",
-							"buttonColor": "orange-outline",
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
 							"contentfulId": "4BVQU8BeEAoMYMoJDSCJ8A",
@@ -3576,7 +3567,8 @@
 							"openInNewTab": true,
 							"locale": "en-US"
 						},
-						"sectionPadding": null
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentfulId": "5NeOYagP1sbnUatopPVhyv",
@@ -4039,10 +4031,8 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "NoL8qS3PsFb4vsMdrrkaJ",
-						"buttonExtraClass": null,
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
 						"title": "Secure access to your corporate applications without a VPN.",
+						"titleSize": null,
 						"backgroundColor": "blue",
 						"buttonText": "Get started",
 						"buttonUrl": "https://dash.cloudflare.com/sign-up/teams",
@@ -4051,11 +4041,11 @@
 						"buttonUrl2": "#",
 						"bladeSizeType": "large",
 						"htmlId": null,
-						"textColor": "white",
 						"bladeBorder": "none",
 						"buttonOne": null,
 						"buttonTwo": null,
-						"sectionPadding": null
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeTrustedBy",

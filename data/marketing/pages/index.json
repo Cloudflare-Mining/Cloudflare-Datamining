@@ -61,16 +61,18 @@
 					"name": "Homepage - ENGLISH ONLY",
 					"relatedBlades": [
 						{
-							"contentfulId": "2XzJJYl0D2XyDo1IHYNg6G",
+							"contentfulId": "4QWnRevXgQtsQHAXlsg95x",
 							"contentTypeId": "bladeHeroAnimation",
 							"title": "Security, reliability and speed everywhere",
+							"titleSize": "medium",
 							"subtitle": "...powered by an intelligent global network",
-							"copy": "- Security from the network that blocks 100B threats daily\n- Visibility, control and context in one platform  \n- Serverless applications that take full advantage of our network",
+							"subtitleSize": null,
+							"copy": "- Security from the network that blocks 100B threats daily\n- Visibility, control and context in one platform\n- Serverless applications that take full advantage of our network",
 							"buttonColor": "blue",
 							"buttonColor2": "blue-outline",
 							"buttonText1": "Learn More",
 							"buttonText1LoggedIn": null,
-							"buttonUrl1": "/what-is-cloudflare/",
+							"buttonUrl1": "https://www.cloudflare.com/what-is-cloudflare/",
 							"buttonUrl1LoggedIn": null,
 							"button1ExtraClass": null,
 							"buttonText2": "Get Started Free",
@@ -95,39 +97,28 @@
 							"sectionPadding": null,
 							"streamPosterAssetFile": null,
 							"streamPoster": null,
-							"imageSize": null,
+							"imageSize": "Medium",
 							"imagePosition": null,
 							"leftLinkUrl": null,
 							"leftLink": null,
 							"leftLinkLoggedIn": null,
 							"leftLinkOptions": "hide",
 							"backgroundColor": "white",
-							"textlayoutMode": "left medium",
-							"backgroundAssetFile": {
-								"id": "92292dd5-bd30-54af-9899-8f37e552eedd",
-								"altText": null,
-								"title": "Cloudflare Homepage - Hero Background - Globe",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5NZgvmn3uyoMIk3nwSEqpy/b6750f0cffa0cee5e63eee8d38482fe0/global-network-connection-hero-illustration-01.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
+							"textlayoutMode": null,
+							"backgroundAssetFile": null,
+							"imageLayout": null,
+							"image": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/19osma7KeAmFIQRtUIPRpA/972fcd8ad0c6c868f1f5f9bcefac91f4/HP-Hero-Illustration-July-2023_Speed-Security-Everywhere.svg"
+								}
 							},
-							"imageLayout": "background",
-							"image": null,
 							"imageAssetFile": null
 						},
 						{
 							"contentTypeId": "bladeEnablement",
 							"contentfulId": "4epBNKq4z55hixp60hNx1h",
-							"buttonExtraClass": null,
-							"buttonColor": "orange",
-							"buttonColor2": "orange",
 							"title": "Turn economic uncertainty into opportunity. Regain control with Cloudflare.",
+							"titleSize": "medium",
 							"backgroundColor": "blue",
 							"buttonText": "Talk to an Expert",
 							"buttonUrl": "/plans/enterprise/contact/",
@@ -136,19 +127,797 @@
 							"buttonUrl2": "/take-back-control/",
 							"bladeSizeType": "small",
 							"htmlId": "top-blade",
-							"textColor": "white",
 							"bladeBorder": "none",
 							"buttonOne": null,
 							"buttonTwo": null,
-							"sectionPadding": null
+							"sectionPadding": null,
+							"eyebrow": null
 						},
 						{
-							"contentfulId": "E00cCLibathQ7A5fRKJEI",
+							"contentTypeId": "bladeRichTextColumnGroup",
+							"contentfulId": "75nfghTLztjqJ72hOftEya",
+							"htmlId": null,
+							"mainHeadline": "How we can help",
+							"backgroundColor": "white",
+							"bladeBorder": "none",
+							"sectionPadding": "tile--no-bottom-padding",
+							"columnLayout": "Half & Half",
+							"columns": [
+								{
+									"contentTypeId": "elementRichText",
+									"contentfulId": "dHHkoE9ChGb2MRj6MKnA6",
+									"title": null,
+									"column": {
+										"nodeType": "document",
+										"content": [
+											{
+												"nodeType": "heading-5",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "embedded-entry-inline",
+														"data": {
+															"target": {
+																"sys": {
+																	"id": "15UFopVYohElQUG4ItFdUL",
+																	"type": "Link",
+																	"linkType": "Entry"
+																},
+																"related_asset": [],
+																"entry_elementMarkdown": [],
+																"entry_assetFile": [],
+																"entry_button": [],
+																"entry_elementLink": [],
+																"entry_page": [],
+																"entry_elementIcon": [
+																	{
+																		"locale": "en-US",
+																		"contentfulId": "15UFopVYohElQUG4ItFdUL",
+																		"contentTypeId": "elementIcon",
+																		"icon": "security-lock",
+																		"size": 56,
+																		"color": "orange0"
+																	}
+																],
+																"entry_bladeTable": [],
+																"entry_bladeThreeFeatures": [],
+																"entry_bladeFourFeatures": []
+															},
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": []
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "heading-5",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Secure & Accelerate Applications",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Secure, optimize and accelerate your websites, APIs, and Internet applications.",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "embedded-entry-inline",
+														"data": {
+															"target": {
+																"sys": {
+																	"id": "67xXuVOAQ7yt4bvL75xFZy",
+																	"type": "Link",
+																	"linkType": "Entry"
+																},
+																"related_asset": [],
+																"entry_elementMarkdown": [],
+																"entry_assetFile": [],
+																"entry_button": [],
+																"entry_elementLink": [
+																	{
+																		"contentTypeId": "elementLink",
+																		"contentfulId": "67xXuVOAQ7yt4bvL75xFZy",
+																		"elementName": "HP - Solutions - App Security - Learn More Link",
+																		"standardText": "Learn More",
+																		"text": null,
+																		"url": "application-services/solutions/",
+																		"modal": null,
+																		"openInNewTab": false,
+																		"locale": "en-US"
+																	}
+																],
+																"entry_page": [],
+																"entry_elementIcon": [],
+																"entry_bladeTable": [],
+																"entry_bladeThreeFeatures": [],
+																"entry_bladeFourFeatures": []
+															},
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": []
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											}
+										]
+									}
+								},
+								{
+									"contentTypeId": "elementRichText",
+									"contentfulId": "4TVTjdy1dVXqta1evyGHT6",
+									"title": null,
+									"column": {
+										"nodeType": "document",
+										"content": [
+											{
+												"nodeType": "heading-5",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "embedded-entry-inline",
+														"data": {
+															"target": {
+																"sys": {
+																	"id": "4DfGJCrhIveFmHcPCrW9Bo",
+																	"type": "Link",
+																	"linkType": "Entry"
+																},
+																"related_asset": [],
+																"entry_elementMarkdown": [],
+																"entry_assetFile": [],
+																"entry_button": [],
+																"entry_elementLink": [],
+																"entry_page": [],
+																"entry_elementIcon": [
+																	{
+																		"locale": "en-US",
+																		"contentfulId": "4DfGJCrhIveFmHcPCrW9Bo",
+																		"contentTypeId": "elementIcon",
+																		"icon": "security-fingerprint-privacy",
+																		"size": 56,
+																		"color": "orange0"
+																	}
+																],
+																"entry_bladeTable": [],
+																"entry_bladeThreeFeatures": [],
+																"entry_bladeFourFeatures": []
+															},
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": []
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "heading-5",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Secure Employees & Contractors",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Secure any user accessing any application, on any device, in any location.",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "embedded-entry-inline",
+														"data": {
+															"target": {
+																"sys": {
+																	"id": "1csJUisyPW63SANjaAZYOI",
+																	"type": "Link",
+																	"linkType": "Entry"
+																},
+																"related_asset": [],
+																"entry_elementMarkdown": [],
+																"entry_assetFile": [],
+																"entry_button": [],
+																"entry_elementLink": [
+																	{
+																		"contentTypeId": "elementLink",
+																		"contentfulId": "1csJUisyPW63SANjaAZYOI",
+																		"elementName": "HP - Solutions - Secure Employees & Contractors - Learn More Link",
+																		"standardText": "Learn More",
+																		"text": null,
+																		"url": "zero-trust/solutions/",
+																		"modal": null,
+																		"openInNewTab": false,
+																		"locale": "en-US"
+																	}
+																],
+																"entry_page": [],
+																"entry_elementIcon": [],
+																"entry_bladeTable": [],
+																"entry_bladeThreeFeatures": [],
+																"entry_bladeFourFeatures": []
+															},
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": []
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"contentfulId": "jlzHP1meGBMTp46wKEw6x",
+							"contentTypeId": "bladePadding",
+							"height": 4,
+							"backgroundColor": "white"
+						},
+						{
+							"contentTypeId": "bladeRichTextColumnGroup",
+							"contentfulId": "FsD8RZQZdVS30l5Dc7DKI",
+							"htmlId": null,
+							"mainHeadline": null,
+							"backgroundColor": "white",
+							"bladeBorder": "none",
+							"sectionPadding": "tile--no-top-padding",
+							"columnLayout": "Half & Half",
+							"columns": [
+								{
+									"contentTypeId": "elementRichText",
+									"contentfulId": "27ekAniEsFQL2EeDOxu88s",
+									"title": null,
+									"column": {
+										"nodeType": "document",
+										"content": [
+											{
+												"nodeType": "heading-5",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "embedded-entry-inline",
+														"data": {
+															"target": {
+																"sys": {
+																	"id": "2Xmz4lqDYwfB62a7FjULmn",
+																	"type": "Link",
+																	"linkType": "Entry"
+																},
+																"related_asset": [],
+																"entry_elementMarkdown": [],
+																"entry_assetFile": [],
+																"entry_button": [],
+																"entry_elementLink": [],
+																"entry_page": [],
+																"entry_elementIcon": [
+																	{
+																		"locale": "en-US",
+																		"contentfulId": "2Xmz4lqDYwfB62a7FjULmn",
+																		"contentTypeId": "elementIcon",
+																		"icon": "internet-globe",
+																		"size": 56,
+																		"color": "orange0"
+																	}
+																],
+																"entry_bladeTable": [],
+																"entry_bladeThreeFeatures": [],
+																"entry_bladeFourFeatures": []
+															},
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": []
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "heading-5",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Secure & Accelerate Your Networks",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Network security, performance, & reliability on a global scale.",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "embedded-entry-inline",
+														"data": {
+															"target": {
+																"sys": {
+																	"id": "3GhuqBhJMuDkiO4JoFMH5D",
+																	"type": "Link",
+																	"linkType": "Entry"
+																},
+																"related_asset": [],
+																"entry_elementMarkdown": [],
+																"entry_assetFile": [],
+																"entry_button": [],
+																"entry_elementLink": [
+																	{
+																		"contentTypeId": "elementLink",
+																		"contentfulId": "3GhuqBhJMuDkiO4JoFMH5D",
+																		"elementName": "HP - Solutions - Secure Networks - Learn More Link",
+																		"standardText": "Learn More",
+																		"text": null,
+																		"url": "\\network-services/solutions/",
+																		"modal": null,
+																		"openInNewTab": false,
+																		"locale": "en-US"
+																	}
+																],
+																"entry_page": [],
+																"entry_elementIcon": [],
+																"entry_bladeTable": [],
+																"entry_bladeThreeFeatures": [],
+																"entry_bladeFourFeatures": []
+															},
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": []
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											}
+										]
+									}
+								},
+								{
+									"contentTypeId": "elementRichText",
+									"contentfulId": "5FnFL4gcvtBN4emX6QNZDa",
+									"title": null,
+									"column": {
+										"nodeType": "document",
+										"content": [
+											{
+												"nodeType": "heading-5",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "embedded-entry-inline",
+														"data": {
+															"target": {
+																"sys": {
+																	"id": "XZDydbJIlFA1Kv2MtRUHC",
+																	"type": "Link",
+																	"linkType": "Entry"
+																},
+																"related_asset": [],
+																"entry_elementMarkdown": [],
+																"entry_assetFile": [],
+																"entry_button": [],
+																"entry_elementLink": [],
+																"entry_page": [],
+																"entry_elementIcon": [
+																	{
+																		"locale": "en-US",
+																		"contentfulId": "XZDydbJIlFA1Kv2MtRUHC",
+																		"contentTypeId": "elementIcon",
+																		"icon": "performance-acceleration-bolt",
+																		"size": 56,
+																		"color": "orange0"
+																	}
+																],
+																"entry_bladeTable": [],
+																"entry_bladeThreeFeatures": [],
+																"entry_bladeFourFeatures": []
+															},
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": []
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "heading-5",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Build Serverless Applications",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Write code, test and deploy static and dynamic applications on Cloudflare's global network.",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "embedded-entry-inline",
+														"data": {
+															"target": {
+																"sys": {
+																	"id": "5njlwWqufoatMSHHc4zW6x",
+																	"type": "Link",
+																	"linkType": "Entry"
+																},
+																"related_asset": [],
+																"entry_elementMarkdown": [],
+																"entry_assetFile": [],
+																"entry_button": [],
+																"entry_elementLink": [
+																	{
+																		"contentTypeId": "elementLink",
+																		"contentfulId": "5njlwWqufoatMSHHc4zW6x",
+																		"elementName": "HP - Solutions - Build Serverless Apps - Learn More Link",
+																		"standardText": "Learn More",
+																		"text": null,
+																		"url": "developer-platform/solutions/",
+																		"modal": null,
+																		"openInNewTab": false,
+																		"locale": "en-US"
+																	}
+																],
+																"entry_page": [],
+																"entry_elementIcon": [],
+																"entry_bladeTable": [],
+																"entry_bladeThreeFeatures": [],
+																"entry_bladeFourFeatures": []
+															},
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": []
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						},
+						{
+							"contentfulId": "46IoP5oBHYMzlir5MkKCVd",
 							"backgroundColor": "white",
 							"contentTypeId": "bladeFourFeatures",
 							"htmlId": null,
 							"copy": null,
-							"title": "How we can help",
+							"title": "What's new",
 							"subtitle": null,
 							"bladeStyle": null,
 							"bladeBorder": "none",
@@ -156,171 +925,69 @@
 							"carouselSlidesToShow": null,
 							"carouselSlidesToScroll": null,
 							"locale": "en-US",
-							"features": [
-								{
-									"contentTypeId": "feature",
-									"contentfulId": "6kPFWQKwNiwePHBIetNeUL",
-									"title": "Secure & Accelerate Applications",
-									"titleSize": "small",
-									"description": "Secure, optimize and accelerate your websites, APIs, and Internet applications.",
-									"learnMoreUrl": "application-services/solutions/",
-									"learnMoreText": "Learn more",
-									"displayBorder": false,
-									"openLinkInNewTab": null,
-									"icon": null,
-									"iconAssetFile": {
-										"id": "c6776679-e543-5a80-9232-26ab70198b70",
-										"altText": "Security lock blue",
-										"title": "Security lock blue",
-										"activeAsset": "Brandfolder Asset",
-										"locale": "en-US",
-										"contentfulAsset": null,
-										"brandfolderAsset": {
-											"size": 1116,
-											"height": 192,
-											"width": 192,
-											"filename": "security-lock-blue.svg",
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/security-lock-blue.svg"
-											}
-										},
-										"brandfolderAssetMobile": null
-									},
-									"imageAssetFile": null,
-									"streamId": null,
-									"streamThumbnail": null,
-									"streamThumbnailAssetFile": null
-								},
-								{
-									"contentTypeId": "feature",
-									"contentfulId": "2z7CzxSxydFhaQ9Tj71IaF",
-									"title": "Secure Your Employees and Contractors",
-									"titleSize": "small",
-									"description": "Secure any user accessing any application, on any device, in any location.",
-									"learnMoreUrl": "zero-trust/solutions/",
-									"learnMoreText": "Learn more",
-									"displayBorder": false,
-									"openLinkInNewTab": null,
-									"icon": null,
-									"iconAssetFile": {
-										"id": "e06663fb-a656-5e71-86c6-252eccfcc3b8",
-										"altText": "Security fingerprint privacy blue",
-										"title": "Security fingerprint privacy blue",
-										"activeAsset": "Brandfolder Asset",
-										"locale": "en-US",
-										"contentfulAsset": null,
-										"brandfolderAsset": {
-											"size": 2430,
-											"height": 192,
-											"width": 192,
-											"filename": "security-fingerprint-privacy-blue.svg",
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/security-fingerprint-privacy-blue.svg"
-											}
-										},
-										"brandfolderAssetMobile": null
-									},
-									"imageAssetFile": null,
-									"streamId": null,
-									"streamThumbnail": null,
-									"streamThumbnailAssetFile": null
-								}
-							]
+							"features": null
 						},
 						{
-							"contentfulId": "1FwhTw8b1zIBc9UYezLQPa",
+							"contentfulId": "b2LG488pa2Kq5wv67XtQi",
+							"title": "Cloudflare a Leader in 2023 Forrester Wave™: Enterprise Email Security",
+							"copy": "Cloudflare tied for the top score in the strategy category, and received the highest scores possible in the criteria of vision and innovation.",
+							"toggleText": null,
+							"button": null,
+							"learnMoreUrl": "https://www.cloudflare.com/lp/forrester-wave-email-security-2023/",
+							"learnMoreText": "Read the report",
+							"link": null,
+							"subheadline": null,
+							"button1Text": null,
+							"button1Url": null,
+							"button1Color": null,
+							"button2Text": null,
+							"button2Url": null,
+							"button2Color": null,
+							"streamOptions": [
+								"controls"
+							],
+							"streamCaptions": "en",
+							"streamVideoId": null,
+							"streamThumbnails": null,
+							"streamPoster": null,
+							"streamPosterAssetFile": null,
+							"image": null,
+							"imageAssetFile": {
+								"id": "c1c3599f-6079-5a69-bbfe-09333df5071f",
+								"altText": null,
+								"title": "Cloudflare a Leader in 2023 Forrester Wave™",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/gn4mLwNHToKFjNjVLSWVW/18c7cb686a77ad08a0bcfd8830a31811/Forrester-Wave-Enterprise-Email-Security-Q2-2023.png"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							"featureList": null,
+							"contentTypeId": "bladeImageText",
+							"sectionTitle": null,
+							"htmlId": null,
+							"titleSize": null,
+							"sectionPadding": "tile--no-top-bottom-padding",
+							"backgroundColor": "white",
+							"bladeBorder": "none",
+							"imagePosition": true,
+							"imageSize": "small",
+							"imageTextAlignment": null,
+							"togglesTo": null
+						},
+						{
+							"contentfulId": "6jrsGGT5YNMBTuB9jPkAR7",
 							"backgroundColor": "white",
 							"contentTypeId": "bladeFourFeatures",
 							"htmlId": null,
 							"copy": null,
 							"title": null,
 							"subtitle": null,
-							"bladeStyle": null,
-							"bladeBorder": "none",
-							"sectionPadding": "tile--no-top-padding",
-							"carouselSlidesToShow": null,
-							"carouselSlidesToScroll": null,
-							"locale": "en-US",
-							"features": [
-								{
-									"contentTypeId": "feature",
-									"contentfulId": "4cSdWeUIzl3wEenwF2Hy84",
-									"title": "Secure & Accelerate Your Networks",
-									"titleSize": "small",
-									"description": "Network security, performance, & reliability on a global scale.",
-									"learnMoreUrl": "network-services/solutions/",
-									"learnMoreText": "Learn more",
-									"displayBorder": false,
-									"openLinkInNewTab": null,
-									"icon": null,
-									"iconAssetFile": {
-										"id": "76a11ba2-f049-5af8-803e-8d933358063b",
-										"altText": "Internet globe blue",
-										"title": "Internet globe blue",
-										"activeAsset": "Brandfolder Asset",
-										"locale": "en-US",
-										"contentfulAsset": null,
-										"brandfolderAsset": {
-											"size": 2017,
-											"height": 192,
-											"width": 192,
-											"filename": "internet-globe-blue.svg",
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/internet-globe-blue.svg"
-											}
-										},
-										"brandfolderAssetMobile": null
-									},
-									"imageAssetFile": null,
-									"streamId": null,
-									"streamThumbnail": null,
-									"streamThumbnailAssetFile": null
-								},
-								{
-									"contentTypeId": "feature",
-									"contentfulId": "1XvhrGgfopL2pCC1zUEGlM",
-									"title": "Build Serverless Applications",
-									"titleSize": "small",
-									"description": "Write code, test and deploy static and dynamic applications on Cloudflare's global network.",
-									"learnMoreUrl": "developer-platform/solutions/",
-									"learnMoreText": "Learn more",
-									"displayBorder": false,
-									"openLinkInNewTab": null,
-									"icon": null,
-									"iconAssetFile": {
-										"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
-										"altText": "Performance acceleration bolt blue",
-										"title": "Performance acceleration bolt blue",
-										"activeAsset": "Brandfolder Asset",
-										"locale": "en-US",
-										"contentfulAsset": null,
-										"brandfolderAsset": {
-											"size": 387,
-											"height": 192,
-											"width": 192,
-											"filename": "performance-acceleration-bolt-blue.svg",
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/performance-acceleration-bolt-blue.svg"
-											}
-										},
-										"brandfolderAssetMobile": null
-									},
-									"imageAssetFile": null,
-									"streamId": null,
-									"streamThumbnail": null,
-									"streamThumbnailAssetFile": null
-								}
-							]
-						},
-						{
-							"contentfulId": "5gmMaRdZF4lwe3VH7shnXc",
-							"backgroundColor": "light-blue",
-							"contentTypeId": "bladeFourFeatures",
-							"htmlId": null,
-							"copy": null,
-							"title": "What's new",
-							"subtitle": null,
-							"bladeStyle": "Feature Blocks - 3 columns",
+							"bladeStyle": "Feature Blocks - 2 columns",
 							"bladeBorder": "none",
 							"sectionPadding": null,
 							"carouselSlidesToShow": null,
@@ -329,13 +996,13 @@
 							"features": [
 								{
 									"contentTypeId": "feature",
-									"contentfulId": "7dAF6uk6lASyfOVhvsQui7",
+									"contentfulId": "BMJCGgZ3ovrXmDy6EQhxm",
 									"title": "Cloudflare a Leader in 2023 IDC MarketScape: Zero Trust Network Access",
-									"titleSize": "large",
-									"description": "IDC cites Cloudflare's \"aggressive product strategy to support enterprise security needs.\" ",
-									"learnMoreUrl": "lp/idc-marketscape-ztna-2023/",
+									"titleSize": "medium",
+									"description": "IDC cites Cloudflare's \"aggressive product strategy to support enterprise security needs.\"",
+									"learnMoreUrl": "https://www.cloudflare.com/lp/idc-marketscape-ztna-2023/",
 									"learnMoreText": "Read the report",
-									"displayBorder": true,
+									"displayBorder": false,
 									"openLinkInNewTab": null,
 									"icon": null,
 									"iconAssetFile": null,
@@ -346,30 +1013,13 @@
 								},
 								{
 									"contentTypeId": "feature",
-									"contentfulId": "66IwnewXqVT2vhgrKbIp78",
+									"contentfulId": "2wYuVWc7H34uYdg1LfUcEb",
 									"title": "Every product announcement from Speed Week 2023",
-									"titleSize": "large",
+									"titleSize": "medium",
 									"description": "See the latest product news for accelerating your AI, Zero Trust and networking use cases.",
 									"learnMoreUrl": "https://blog.cloudflare.com/recapping-speed-week-2023/",
 									"learnMoreText": "Read the blog",
-									"displayBorder": true,
-									"openLinkInNewTab": null,
-									"icon": null,
-									"iconAssetFile": null,
-									"imageAssetFile": null,
-									"streamId": null,
-									"streamThumbnail": null,
-									"streamThumbnailAssetFile": null
-								},
-								{
-									"contentTypeId": "feature",
-									"contentfulId": "7hTWnLXleNXO5RQU5bSiFL",
-									"title": "Cloudflare a Leader in 2023 Forrester Wave™: Enterprise Email Security",
-									"titleSize": "large",
-									"description": "Cloudflare tied for the top score in the strategy category, and received the highest scores possible in the criteria of vision and innovation.",
-									"learnMoreUrl": "lp/forrester-wave-email-security-2023/",
-									"learnMoreText": "Read the report",
-									"displayBorder": true,
+									"displayBorder": false,
 									"openLinkInNewTab": null,
 									"icon": null,
 									"iconAssetFile": null,
@@ -383,10 +1033,8 @@
 						{
 							"contentTypeId": "bladeEnablement",
 							"contentfulId": "1DAH4ZsN4SxuHUYMWV2Jdy",
-							"buttonExtraClass": null,
-							"buttonColor": "orange",
-							"buttonColor2": null,
 							"title": "Need help getting started? Get a personalized recommendation.",
+							"titleSize": "medium",
 							"backgroundColor": "blue",
 							"buttonText": "Answer a Few Questions",
 							"buttonUrl": "/about-your-website/",
@@ -395,11 +1043,11 @@
 							"buttonUrl2": null,
 							"bladeSizeType": "small",
 							"htmlId": null,
-							"textColor": "white",
 							"bladeBorder": "none",
 							"buttonOne": null,
 							"buttonTwo": null,
-							"sectionPadding": null
+							"sectionPadding": null,
+							"eyebrow": null
 						},
 						{
 							"contentfulId": "5dlCfrDUxPmgT6mOAFVv45",
@@ -511,7 +1159,7 @@
 						{
 							"contentfulId": "6GjhyU1GiGfyigMMUAb06Y",
 							"title": "Why Cloudflare?",
-							"copy": "__Unified Networking and Security Platform__<br>\nCloudflare's fully cloud native platform improves the security and performance of applications, employees, and networks. This reduces complexity, cost and attack surface while improving security posture.\n\n__Global Scale Network and Data__<br>\nCloudflare protects about 20% of all websites. The scale and variety of our user base, traffic volume, and data sources, deliver deep real-time context on the threat environment.\n\n__Fully Programmable Network__<br>\nCloudflare's intelligent global network is fully programmable, so you can handle tricky use cases and complex requirements with a few API calls. This means you can respond faster to changing business needs.",
+							"copy": "\n<br>\n\n##### __Unified Networking and Security Platform__<br>\nCloudflare's fully cloud native platform improves the security and performance of applications, employees, and networks. This reduces complexity, cost and attack surface while improving security posture.\n\n<br>\n\n##### __Global Scale Network and Data__<br>\nCloudflare protects about 20% of all websites. The scale and variety of our user base, traffic volume, and data sources, deliver deep real-time context on the threat environment.\n\n<br>\n\n##### __Fully Programmable Network__<br>\nCloudflare's intelligent global network is fully programmable, so you can handle tricky use cases and complex requirements with a few API calls. This means you can respond faster to changing business needs.",
 							"toggleText": null,
 							"button": null,
 							"learnMoreUrl": null,
@@ -638,10 +1286,8 @@
 						{
 							"contentTypeId": "bladeEnablement",
 							"contentfulId": "39ujMdI1CXz8YmRZ5I4SXT",
-							"buttonExtraClass": null,
-							"buttonColor": "orange",
-							"buttonColor2": "orange",
 							"title": "Get started free in just 5 minutes. Try Cloudflare today.",
+							"titleSize": "medium",
 							"backgroundColor": "blue",
 							"buttonText": "Get Started",
 							"buttonUrl": "https://dash.cloudflare.com/sign-up",
@@ -650,27 +1296,11 @@
 							"buttonUrl2": "https://www.cloudflare.com/plans/enterprise/contact/",
 							"bladeSizeType": "small",
 							"htmlId": "Enablement-Get-started",
-							"textColor": "white",
 							"bladeBorder": "none",
 							"buttonOne": null,
 							"buttonTwo": null,
-							"sectionPadding": null
-						},
-						{
-							"contentfulId": "5aEC624YHMjytyL74LZN6i",
-							"backgroundColor": "white",
-							"contentTypeId": "bladeFourFeatures",
-							"htmlId": null,
-							"copy": null,
-							"title": "Explore our products",
-							"subtitle": null,
-							"bladeStyle": null,
-							"bladeBorder": "none",
-							"sectionPadding": "tile--no-bottom-padding",
-							"carouselSlidesToShow": null,
-							"carouselSlidesToScroll": null,
-							"locale": "en-US",
-							"features": null
+							"sectionPadding": null,
+							"eyebrow": null
 						},
 						{
 							"locale": "en-US",
@@ -679,12 +1309,12 @@
 							"contentfulId": "cGsGlyCv7MwHalXWBXDDA",
 							"contentTypeId": "bladeAddOns",
 							"caption": null,
-							"title": null,
+							"title": "Explore our products",
 							"grouped": false,
 							"description": null,
 							"variant": null,
 							"callToAction": null,
-							"sectionPadding": "tile--no-top-padding",
+							"sectionPadding": "default",
 							"bladeBorder": "none",
 							"backgroundColor": "white",
 							"addOns": [
@@ -695,20 +1325,16 @@
 									"contentTypeId": "elementAddOn",
 									"iconAssetFile": {
 										"id": "e06663fb-a656-5e71-86c6-252eccfcc3b8",
-										"altText": "Security fingerprint privacy blue",
-										"title": "Security fingerprint privacy blue",
-										"activeAsset": "Brandfolder Asset",
+										"altText": "Security fingerprint privacy orange",
+										"title": "Security fingerprint privacy orange",
+										"activeAsset": "Contentful Asset",
 										"locale": "en-US",
-										"contentfulAsset": null,
-										"brandfolderAsset": {
-											"size": 2430,
-											"height": 192,
-											"width": 192,
-											"filename": "security-fingerprint-privacy-blue.svg",
+										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/security-fingerprint-privacy-blue.svg"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3o7wgV3QOT67tMsuQmIMPc/105a1dd4cd229dcee110b92e40e5151a/security-fingerprint-privacy.svg"
 											}
 										},
+										"brandfolderAsset": null,
 										"brandfolderAssetMobile": null
 									},
 									"title": "Zero Trust Services",
@@ -934,8 +1560,6 @@
 									},
 									"callToAction": {
 										"buttonAssetFile": null,
-										"buttonWidth": "auto",
-										"buttonColor": "blue",
 										"buttonTextLoggedIn": null,
 										"contentTypeId": "button",
 										"contentfulId": "5SyueGx8fkepReLAOlnMcs",
@@ -956,20 +1580,16 @@
 									"contentTypeId": "elementAddOn",
 									"iconAssetFile": {
 										"id": "0b7cd03c-c40f-5158-b2f1-51ebcde92c92",
-										"altText": "Performance cloud speed blue",
-										"title": "Performance cloud speed blue",
-										"activeAsset": "Brandfolder Asset",
+										"altText": "Performance cloud speed orange",
+										"title": "Performance cloud speed orange",
+										"activeAsset": "Contentful Asset",
 										"locale": "en-US",
-										"contentfulAsset": null,
-										"brandfolderAsset": {
-											"size": 1873,
-											"height": 192,
-											"width": 192,
-											"filename": "performance-cloud-speed-blue.svg",
+										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/performance-cloud-speed-blue.svg"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Hrl9MJuJGcsYRLaNNcCpS/3ca96c403b9a0195da1a8502d79ef76c/performance-cloud-speed.svg"
 											}
 										},
+										"brandfolderAsset": null,
 										"brandfolderAssetMobile": null
 									},
 									"title": "Website & App Performance",
@@ -1174,8 +1794,6 @@
 									},
 									"callToAction": {
 										"buttonAssetFile": null,
-										"buttonWidth": "auto",
-										"buttonColor": "blue",
 										"buttonTextLoggedIn": null,
 										"contentTypeId": "button",
 										"contentfulId": "3DEMrRrM2MHtvfIaCztK6e",
@@ -1196,20 +1814,16 @@
 									"contentTypeId": "elementAddOn",
 									"iconAssetFile": {
 										"id": "c6776679-e543-5a80-9232-26ab70198b70",
-										"altText": "Security lock blue",
-										"title": "Security lock blue",
-										"activeAsset": "Brandfolder Asset",
+										"altText": "Security lock Orange",
+										"title": "Security lock Orange",
+										"activeAsset": "Contentful Asset",
 										"locale": "en-US",
-										"contentfulAsset": null,
-										"brandfolderAsset": {
-											"size": 1116,
-											"height": 192,
-											"width": 192,
-											"filename": "security-lock-blue.svg",
+										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/security-lock-blue.svg"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
 											}
 										},
+										"brandfolderAsset": null,
 										"brandfolderAssetMobile": null
 									},
 									"title": "Website & App Security",
@@ -1382,8 +1996,6 @@
 									},
 									"callToAction": {
 										"buttonAssetFile": null,
-										"buttonWidth": "auto",
-										"buttonColor": "blue",
 										"buttonTextLoggedIn": null,
 										"contentTypeId": "button",
 										"contentfulId": "1lWDOMBX4vftSeJuw9zdvy",
@@ -1404,20 +2016,16 @@
 									"contentTypeId": "elementAddOn",
 									"iconAssetFile": {
 										"id": "76a11ba2-f049-5af8-803e-8d933358063b",
-										"altText": "Internet globe blue",
-										"title": "Internet globe blue",
-										"activeAsset": "Brandfolder Asset",
+										"altText": "Internet globe orange",
+										"title": "Internet globe orange",
+										"activeAsset": "Contentful Asset",
 										"locale": "en-US",
-										"contentfulAsset": null,
-										"brandfolderAsset": {
-											"size": 2017,
-											"height": 192,
-											"width": 192,
-											"filename": "internet-globe-blue.svg",
+										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/internet-globe-blue.svg"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
 											}
 										},
+										"brandfolderAsset": null,
 										"brandfolderAssetMobile": null
 									},
 									"title": "Network Security & Performance",
@@ -1622,8 +2230,6 @@
 									},
 									"callToAction": {
 										"buttonAssetFile": null,
-										"buttonWidth": "auto",
-										"buttonColor": "blue",
 										"buttonTextLoggedIn": null,
 										"contentTypeId": "button",
 										"contentfulId": "5CQunkyGTNOeORy8HXjPx2",
@@ -1644,13 +2250,13 @@
 									"contentTypeId": "elementAddOn",
 									"iconAssetFile": {
 										"id": "99203a07-872a-508c-875b-8b2638374506",
-										"altText": "Cloudflare Pages",
-										"title": "Cloudflare Pages",
+										"altText": "Cloudflare Pages Orange",
+										"title": "Cloudflare Pages Orange",
 										"activeAsset": "Contentful Asset",
 										"locale": "en-US",
 										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/48baQGCLJNMN7KP7O7znm7/4e5102942a9fa2e9cad5d50d7cda08ad/cloudflare-pages-48x48.png"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/48baQGCLJNMN7KP7O7znm7/72151fac4b5fdf997178a0ef762363ce/cloudflare-pages.svg"
 											}
 										},
 										"brandfolderAsset": null,
@@ -1858,8 +2464,6 @@
 									},
 									"callToAction": {
 										"buttonAssetFile": null,
-										"buttonWidth": "auto",
-										"buttonColor": "blue",
 										"buttonTextLoggedIn": null,
 										"contentTypeId": "button",
 										"contentfulId": "zsfhWJbOK5XeYwRjYYJ8j",
@@ -1881,12 +2485,12 @@
 									"iconAssetFile": {
 										"id": "87f9101d-857c-5202-9a77-f2f35ff7e4a9",
 										"altText": "Cloudflare One  SASE Solution",
-										"title": "Cloudflare access blue",
+										"title": "Cloudflare Access Orange",
 										"activeAsset": "Contentful Asset",
 										"locale": "en-US",
 										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/64ekoyPlI1bPZ9MvWEuxqu/f64816a2d5bfca83d3491313654b55f3/icon_cloudflare-access_blue.svg"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/64ekoyPlI1bPZ9MvWEuxqu/9de135bc78a1e1559505fcb8b59788c0/cloudflare-access.svg"
 											}
 										},
 										"brandfolderAsset": null,
@@ -1945,8 +2549,6 @@
 									"learnMoreLink": null,
 									"callToAction": {
 										"buttonAssetFile": null,
-										"buttonWidth": "auto",
-										"buttonColor": "blue",
 										"buttonTextLoggedIn": null,
 										"contentTypeId": "button",
 										"contentfulId": "4o05PCaUR1uIx8RlOT41JY",
@@ -1966,13 +2568,13 @@
 							"contentTypeId": "bladeQuote",
 							"contentfulId": "72XQDQWfzBAZbXjTU3SKZR",
 							"quote": "\"Discord is where the world builds relationships. Cloudflare Zero Trust Services helps us deliver on that mission, connecting our internal engineering team to the tools they need. With Cloudflare, we can rest easy knowing every request to our critical apps is evaluated for identity and context - a true Zero Trust approach.\"",
-							"quoteAuthor": "Mark Smith",
-							"quoteTitle": "Director of Infrastructure",
-							"learnMoreText": null,
+							"quoteAuthor": " ",
+							"quoteTitle": " ",
+							"learnMoreText": "Read the full case study",
 							"sectionPadding": null,
 							"backgroundColor": "light-blue",
 							"bladeBorder": "none",
-							"learnMoreUrl": null,
+							"learnMoreUrl": "case-studies/discord/",
 							"htmlId": null,
 							"image": {
 								"file": {
@@ -2001,14 +2603,14 @@
 									"contentTypeId": "bladeQuote",
 									"contentfulId": "1RrMNaQfuwbIAyhSbyggzm",
 									"quote": "\"Cloudflare helps DHL Parcel protect our customer data and client communications, simplifying compliance with data privacy regulations like GDPR.\"",
-									"quoteAuthor": "Jan De Groot",
-									"quoteTitle": "Vice President of Digital and Business Process Optimization",
-									"learnMoreText": "Read more",
-									"learnMoreUrl": "https://www.cloudflare.com/case-studies/dhl-parcel/",
+									"quoteAuthor": " ",
+									"quoteTitle": " ",
+									"learnMoreText": "Read the full case study",
+									"learnMoreUrl": "case-studies/dhl-parcel/",
 									"imageAssetFile": null,
 									"image": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/GUflUdoKWDzDLHBdpI0Qv/1c76a12d25dde493153711d29e902ed4/DHL_logo_rgb_black_small.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5eTyXJ3dLhRZRyc0p0M1xd/29460705dde5c839f165cf4f97fc0d97/DHL_logo_rgb.png"
 										}
 									}
 								},
@@ -2016,26 +2618,22 @@
 									"contentTypeId": "bladeQuote",
 									"contentfulId": "nFCpxv5Y0bB7k8T5zgIqd",
 									"quote": "\"OneTrust relies on Cloudflare to maintain our network perimeter, so we can focus on delivering technology that helps our customers be more trusted. With Cloudflare, we can easily build context-aware Zero Trust policies for secure access to our developer tools. Employees can connect to the tools they need so simply teams don't even know Cloudflare is powering the backend. It just works.\"",
-									"quoteAuthor": "Blake Brannon",
-									"quoteTitle": "CTO",
+									"quoteAuthor": " ",
+									"quoteTitle": " ",
 									"learnMoreText": "Read the full case study",
 									"learnMoreUrl": "https://www.cloudflare.com/case-studies/onetrust/",
 									"imageAssetFile": {
-										"id": "6628a4ed-ec4e-500e-b9a5-5b2941989462",
-										"altText": "Logo onetrust gray",
-										"title": "Logo onetrust gray",
-										"activeAsset": "Brandfolder Asset",
+										"id": "b0533771-1377-54d0-b5fb-24373b391011",
+										"altText": null,
+										"title": null,
+										"activeAsset": "Contentful Asset",
 										"locale": "en-US",
-										"contentfulAsset": null,
-										"brandfolderAsset": {
-											"size": 5277,
-											"height": 696,
-											"width": 3978,
-											"filename": "logo_onetrust_gray.svg",
+										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_onetrust_gray.svg"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5IFOzokqG5k7AgLKPz2ZKh/8f3c76bd541b003d079c37e231304db9/logo_onetrust_color.svg"
 											}
 										},
+										"brandfolderAsset": null,
 										"brandfolderAssetMobile": null
 									},
 									"image": {
@@ -2048,8 +2646,8 @@
 									"contentTypeId": "bladeQuote",
 									"contentfulId": "4cHgZydBLBDxs4mw32oseY",
 									"quote": "\"[We] are pleased to collaborate with Cloudflare to develop solutions that will enable our customers to easily deploy the Aruba EdgeConnect SD-WAN platform, acquired with Silver Peak, as the enterprise connectivity onramp to Cloudflare One.\"",
-									"quoteAuthor": "Fraser Street",
-									"quoteTitle": "Head of WAN Technical Alliances, Aruba",
+									"quoteAuthor": " ",
+									"quoteTitle": " ",
 									"learnMoreText": null,
 									"learnMoreUrl": null,
 									"imageAssetFile": null,

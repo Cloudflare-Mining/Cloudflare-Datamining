@@ -61,7 +61,9 @@
 						"contentfulId": "1C5XE2YoDw8qV2o2I9LV3B",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Network Interconnect Partner Program",
+						"titleSize": null,
 						"subtitle": "Keep even your most sensitive data protected at the network edge, with private, secure, high-performance interconnection",
+						"subtitleSize": null,
 						"copy": "Our network interconnection partnerships allow customers to extend their network to Cloudflare over secure, high performance links with the location and vendor of their choice.\n\nIf you're interested in becoming a partner, please get in touch.",
 						"buttonColor": "orange",
 						"buttonColor2": null,
@@ -277,10 +279,8 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "3NwTOLKd9rRwXOZhNfVMNp",
-						"buttonExtraClass": "interconnect-program-become-a-partner",
-						"buttonColor": "orange",
-						"buttonColor2": null,
 						"title": "Interested in joining this program?",
+						"titleSize": null,
 						"backgroundColor": "blue",
 						"buttonText": "Become an Interconnect partner",
 						"buttonUrl": "#",
@@ -289,11 +289,11 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "small",
 						"htmlId": null,
-						"textColor": "white",
 						"bladeBorder": "none",
 						"buttonOne": null,
 						"buttonTwo": null,
-						"sectionPadding": null
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"backgroundColor": "light-blue",
@@ -331,20 +331,16 @@
 						"image2": null,
 						"imageAssetFile2": {
 							"id": "c6776679-e543-5a80-9232-26ab70198b70",
-							"altText": "Security lock blue",
-							"title": "Security lock blue",
-							"activeAsset": "Brandfolder Asset",
+							"altText": "Security lock Orange",
+							"title": "Security lock Orange",
+							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 1116,
-								"height": 192,
-								"width": 192,
-								"filename": "security-lock-blue.svg",
+							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/security-lock-blue.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
 								}
 							},
+							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"title3": "Software-defined",

@@ -61,7 +61,9 @@
 						"contentfulId": "4hTKQtGE0EcmWM04Uea0y6",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Ensure Application Availability",
+						"titleSize": null,
 						"subtitle": "Improve the availability of applications affected by overloaded or unavailable infrastructure.",
+						"subtitleSize": null,
 						"copy": "Users expect their mission-critical applications to always be online and available. Internet applications deployed on a global scale are highly susceptible to outages or downtime due to spikes in traffic, high network latency or server outages at the origin. Cloudflare improves application availability by monitoring network latency and server health at the origin, identifying the best resource from which to serve user requests for dynamic content.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
@@ -150,25 +152,21 @@
 								"openLinkInNewTab": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e2de3ad019ead74bf904e0b49806d8f/icon-scale-aqua.png"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
 									}
 								},
 								"iconAssetFile": {
 									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
 									"altText": "Optimization scale blue",
 									"title": "Optimization scale blue",
-									"activeAsset": "Brandfolder Asset",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 553,
-										"height": 192,
-										"width": 192,
-										"filename": "optimization-scale-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/optimization-scale-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"imageAssetFile": null,
@@ -701,8 +699,6 @@
 															"entry_button": [
 																{
 																	"buttonAssetFile": null,
-																	"buttonWidth": "auto",
-																	"buttonColor": "blue",
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "1xt07uGIY0jTWYkdiCGaPJ",
@@ -893,8 +889,6 @@
 															"entry_button": [
 																{
 																	"buttonAssetFile": null,
-																	"buttonWidth": "auto",
-																	"buttonColor": "blue",
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "3cQrVgBvGjBpPNi2z4gFfA",
@@ -1186,10 +1180,8 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "5j4Q9nfCvSNHnuoirC0Lf8",
-						"buttonExtraClass": null,
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
 						"title": "Get Started Today",
+						"titleSize": null,
 						"backgroundColor": "blue",
 						"buttonText": "Sign Up",
 						"buttonUrl": "https://dash.cloudflare.com/sign-up",
@@ -1198,11 +1190,11 @@
 						"buttonUrl2": "#",
 						"bladeSizeType": "large",
 						"htmlId": null,
-						"textColor": "white",
 						"bladeBorder": "none",
 						"buttonOne": null,
 						"buttonTwo": null,
-						"sectionPadding": null
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeHtml",

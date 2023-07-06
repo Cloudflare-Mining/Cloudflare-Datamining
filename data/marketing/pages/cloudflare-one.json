@@ -74,7 +74,9 @@
 						"contentfulId": "5iPEbPiC4MbSg2yOHZUYuF",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare One",
+						"titleSize": null,
 						"subtitle": "Secure Access Service Edge",
+						"subtitleSize": null,
 						"copy": "Cloudflare's SASE, Cloudflare One, is a Zero Trust network-as-a-service platform that dynamically connects users to enterprise resources, with identity-based security controls delivered close to users, wherever they are.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
@@ -732,20 +734,16 @@
 								"icon": null,
 								"iconAssetFile": {
 									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
-									"altText": "Internet globe blue",
-									"title": "Internet globe blue",
-									"activeAsset": "Brandfolder Asset",
+									"altText": "Internet globe orange",
+									"title": "Internet globe orange",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2017,
-										"height": 192,
-										"width": 192,
-										"filename": "internet-globe-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/internet-globe-blue.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"imageAssetFile": null,
@@ -1519,8 +1517,8 @@
 								"contentTypeId": "bladeQuote",
 								"contentfulId": "4cHgZydBLBDxs4mw32oseY",
 								"quote": "\"[We] are pleased to collaborate with Cloudflare to develop solutions that will enable our customers to easily deploy the Aruba EdgeConnect SD-WAN platform, acquired with Silver Peak, as the enterprise connectivity onramp to Cloudflare One.\"",
-								"quoteAuthor": "Fraser Street",
-								"quoteTitle": "Head of WAN Technical Alliances, Aruba",
+								"quoteAuthor": " ",
+								"quoteTitle": " ",
 								"learnMoreText": null,
 								"learnMoreUrl": null,
 								"imageAssetFile": null,
@@ -1535,10 +1533,8 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "1d6AnSEskGV9ixHpHbZz1V",
-						"buttonExtraClass": "cloudflare-one-enterprise-inquiry",
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
 						"title": "Start your network transformation journey",
+						"titleSize": null,
 						"backgroundColor": "blue",
 						"buttonText": "Request a consultation",
 						"buttonUrl": "#",
@@ -1547,11 +1543,11 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "large",
 						"htmlId": null,
-						"textColor": "white",
 						"bladeBorder": "none",
 						"buttonOne": null,
 						"buttonTwo": null,
-						"sectionPadding": null
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
