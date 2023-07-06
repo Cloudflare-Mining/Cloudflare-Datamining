@@ -745,6 +745,15 @@
 				}
 			},
 			{
+				"description": "Lookup MOASes by prefix",
+				"in": "query",
+				"name": "prefix",
+				"schema": {
+					"description": "Lookup MOASes by prefix",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Lookup only RPKI invalid MOASes",
 				"in": "query",
 				"name": "invalid_only",
@@ -1392,13 +1401,16 @@
 				}
 			},
 			{
-				"description": "Network prefix, IPv4 or IPv6.",
+				"description": "Array of BGP network prefixes.",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
-					"description": "Network prefix, IPv4 or IPv6.",
-					"example": "1.1.1.0/24",
-					"type": "string"
+					"items": {
+						"description": "Array of BGP network prefixes.",
+						"example": "1.1.1.0/24",
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{
