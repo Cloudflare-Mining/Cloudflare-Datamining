@@ -213,6 +213,7 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   Response: typeof Response;
   WebSocket: typeof WebSocket;
   WebSocketPair: typeof WebSocketPair;
+  WebSocketRequestResponsePair: typeof WebSocketRequestResponsePair;
   AbortController: typeof AbortController;
   AbortSignal: typeof AbortSignal;
   TextDecoder: typeof TextDecoder;
@@ -325,7 +326,7 @@ declare type ExportedHandlerTestHandler<Env = unknown> = (
 ) => void | Promise<void>;
 declare interface ExportedHandler<
   Env = unknown,
-  QueueMessage = unknown,
+  QueueHandlerMessage = unknown,
   CfHostMetadata = unknown
 > {
   fetch?: ExportedHandlerFetchHandler<Env, CfHostMetadata>;
@@ -333,7 +334,8 @@ declare interface ExportedHandler<
   trace?: ExportedHandlerTraceHandler<Env>;
   scheduled?: ExportedHandlerScheduledHandler<Env>;
   test?: ExportedHandlerTestHandler<Env>;
-  queue?: ExportedHandlerQueueHandler<Env, Message>;
+  email?: EmailExportedHandler<Env>;
+  queue?: ExportedHandlerQueueHandler<Env, QueueHandlerMessage>;
 }
 declare interface StructuredSerializeOptions {
   transfer?: any[];
@@ -396,6 +398,9 @@ declare interface DurableObjectState {
   blockConcurrencyWhile<T>(callback: () => Promise<T>): Promise<T>;
   acceptWebSocket(ws: WebSocket, tags?: string[]): void;
   getWebSockets(tag?: string): WebSocket[];
+  setWebSocketAutoResponse(maybeReqResp?: WebSocketRequestResponsePair): void;
+  getWebSocketAutoResponse(): WebSocketRequestResponsePair | null;
+  getWebSocketAutoResponseTimestamp(ws: WebSocket): Date | null;
 }
 declare interface DurableObjectTransaction {
   get<T = unknown>(
@@ -489,6 +494,11 @@ declare interface DurableObjectPutOptions {
 declare interface DurableObjectSetAlarmOptions {
   allowConcurrency?: boolean;
   allowUnconfirmed?: boolean;
+}
+declare class WebSocketRequestResponsePair {
+  constructor(request: string, response: string);
+  get request(): string;
+  get response(): string;
 }
 declare interface AnalyticsEngineDataset {
   writeDataPoint(event?: AnalyticsEngineDataPoint): void;
@@ -1650,6 +1660,7 @@ declare interface TraceItem {
   readonly eventTimestamp: number | null;
   readonly logs: TraceLog[];
   readonly exceptions: TraceException[];
+  readonly diagnosticsChannelEvents: TraceDiagnosticChannelEvent[];
   readonly scriptName: string | null;
   readonly dispatchNamespace?: string;
   readonly scriptTags?: string[];
@@ -1695,6 +1706,11 @@ declare interface TraceException {
   readonly timestamp: number;
   readonly message: string;
   readonly name: string;
+}
+declare interface TraceDiagnosticChannelEvent {
+  readonly timestamp: number;
+  readonly channel: string;
+  readonly message: any;
 }
 declare interface TraceMetrics {
   readonly cpuTime: number;
@@ -2850,22 +2866,27 @@ declare type CfProperties<HostMetadata = unknown> =
   | IncomingRequestCfProperties<HostMetadata>
   | RequestInitCfProperties;
 declare interface D1Result<T = unknown> {
-  results?: T[];
-  success: boolean;
-  error?: string;
+  results: T[];
+  success: true;
   meta: any;
+  error?: never;
+}
+declare interface D1ExecResult {
+  count: number;
+  duration: number;
 }
 declare abstract class D1Database {
   prepare(query: string): D1PreparedStatement;
   dump(): Promise<ArrayBuffer>;
   batch<T = unknown>(statements: D1PreparedStatement[]): Promise<D1Result<T>[]>;
-  exec<T = unknown>(query: string): Promise<D1Result<T>>;
+  exec<T = unknown>(query: string): Promise<D1ExecResult>;
 }
 declare abstract class D1PreparedStatement {
   bind(...values: any[]): D1PreparedStatement;
-  first<T = unknown>(colName?: string): Promise<T>;
+  first<T = unknown>(colName: string): Promise<T | null>;
+  first<T = unknown>(): Promise<Record<string, T> | null>;
   run<T = unknown>(): Promise<D1Result<T>>;
-  all<T = unknown>(): Promise<D1Result<T>>;
+  all<T = unknown>(): Promise<D1Result<T[]>>;
   raw<T = unknown>(): Promise<T[]>;
 }
 /**
