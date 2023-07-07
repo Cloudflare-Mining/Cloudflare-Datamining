@@ -768,6 +768,54 @@
 		}
 	},
 	{
+		"id": "d1.enabled",
+		"feature": {
+			"feature_set": "d1",
+			"id": 1210,
+			"key": "d1.enabled",
+			"name": "D1 - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "d1.max_account_storage_mb",
+		"feature": {
+			"feature_set": "d1",
+			"id": 1211,
+			"key": "d1.max_account_storage_mb",
+			"name": "D1 - Account-wide Storage Limit (MB)"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "d1.max_databases",
+		"feature": {
+			"feature_set": "d1",
+			"id": 1213,
+			"key": "d1.max_databases",
+			"name": "D1 - Databases per Account Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "d1.max_storage_per_db_mb",
+		"feature": {
+			"feature_set": "d1",
+			"id": 1212,
+			"key": "d1.max_storage_per_db_mb",
+			"name": "D1 - Per-Database Storage Limit (MB)"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "ddos.l4_advanced_alerts_allowed",
 		"feature": {
 			"feature_set": "ddos",
@@ -813,6 +861,30 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "dex.enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 1203,
+			"key": "dex.enabled",
+			"name": "DEX - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "dex.max_application_tests",
+		"feature": {
+			"feature_set": "access",
+			"id": 1204,
+			"key": "dex.max_application_tests",
+			"name": "DEX - Maximum number of Application Tests"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
@@ -1014,6 +1086,18 @@
 			"id": 651,
 			"key": "graphql_api_v2.enabled_dos_analytics",
 			"name": "Access to dos_analytics nodes in GraphQL analytics API"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "graphql_api_v2.enabled_network_analytics_magic_ids",
+		"feature": {
+			"feature_set": "graphqlv2",
+			"id": 1208,
+			"key": "graphql_api_v2.enabled_network_analytics_magic_ids",
+			"name": "Access to network_analytics_magic_ids nodes in GraphQL analytics API"
 		},
 		"allocation": {
 			"type": "bool"
@@ -2838,6 +2922,18 @@
 			"id": 886,
 			"key": "workers.unbound_allowed",
 			"name": "Workers Unbound"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "zaraz.enabled",
+		"feature": {
+			"feature_set": "zaraz",
+			"id": 1202,
+			"key": "zaraz.enabled",
+			"name": "Zaraz Enabled"
 		},
 		"allocation": {
 			"type": "bool"

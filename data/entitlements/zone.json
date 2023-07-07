@@ -24,6 +24,18 @@
 		}
 	},
 	{
+		"id": "api_routing.allowed",
+		"feature": {
+			"feature_set": "api_routing",
+			"id": 1205,
+			"key": "api_routing.allowed",
+			"name": "API Routing - Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "argo.allow_smart_routing",
 		"feature": {
 			"feature_set": "argo",
@@ -177,6 +189,18 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "central_endpoint_list.api_gateway_phases_max_ruleset_size",
+		"feature": {
+			"feature_set": "central_endpoint_list",
+			"id": 1200,
+			"key": "central_endpoint_list.api_gateway_phases_max_ruleset_size",
+			"name": "Central Endpoint List - Max number of rules per ruleset in API Gateway early and late phases"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
@@ -2157,6 +2181,18 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "zone_custom_ns.allowed",
+		"feature": {
+			"feature_set": "zone_custom_ns",
+			"id": 1215,
+			"key": "zone_custom_ns.allowed",
+			"name": "Zone Custom NS Allowed"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
