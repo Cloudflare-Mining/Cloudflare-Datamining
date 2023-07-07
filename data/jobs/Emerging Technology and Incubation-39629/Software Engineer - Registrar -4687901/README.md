@@ -5,39 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><span style="font-weight: 400;">Cloudflare’s Infrastructure group is responsible for building our global network. Our Hardware Systems Engineering team helps research, design, test, deploy new equipment and optimize our infrastructure enabling the best use and efficiency of our compute, storage, and network. Deployed across 200+ cities in 100+ countries, the hardware systems optimization we do &amp; select helps improve the security, reliability, and performance of the Internet.</span></h4>
-<h4><strong>What you'll do</strong></h4>
-<p><span style="font-weight: 400;">Cloudflare is a distributed system and provides infrastructure that spans the globe, on a mission to make the internet better, safer, and more performant everyday. As one of the systems optimization engineers working on the Cloudflare Infrastructure team you will need to make thoughtful infrastructure systems, both Hardware (HW) and Software (SW), optimization choices affecting a significant portion of the Internet.</span><strong>&nbsp;</strong></p>
-<p><span style="font-weight: 400;">Our team focuses on evaluating and delivering new infrastructure and optimizing our current/future infrastructure enabling the best use and efficiency of our compute, storage, and network. As an Infrastructure Systems (HW/SW) Optimization Engineer, you will work with colleagues across our Hardware System Engineering team and with our internal partners - Software Engineering, Production/Performance Engineering, Product teams, and Sourcing teams to drive optimization experiments, evaluate and tune our software stack for greater efficiency of our current hardware infrastructure and help and inform decisions, based on software and workload performance, on new hardware/architectures being deployed.</span></p>
-<h4>&nbsp;</h4>
+<p><strong>About the Department</strong></p>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 200+ cities worldwide.</span></p>
+<p><strong>About the Team</strong></p>
+<p><span style="font-weight: 400;">Domain management is the foundation for any online presence and Cloudflare Registrar our answer to a simple and straightforward experience.&nbsp; The Registrar product manages the full lifecycle of the domains, including searching/registering for new domains and transferring/renewing existing ones.&nbsp; Onboarding domains on Cloudflare is the gateway to the vast array of Cloudflare services.</span></p>
+<p><strong>What you'll do</strong></p>
+<p><span style="font-weight: 400;">We are looking for a talented systems engineer to be part of our Lisbon office. Come be part of the team and work with a group of passionate, talented engineers that will be creating innovative products. The amount of requests being processed is massive and we utilize all the latest technology to ensure its scalability and availability.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities:&nbsp;</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Designing, building, running and scaling tools and services that support the full spectrum of domain management.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Analyzing and communicating complex technical requirements and concepts, identifying the highest priority areas, and carving a path to delivery</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborating with product teams to understand goals and develop robust and scalable solutions that align with the customer need</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance concerns</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Working closely with Cloudflare's Trust and Safety team to help make the internet a better place</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ongoing monitoring and maintenance of production services, including participation in oncall rotations</span></li>
+</ul>
+<p><br><br></p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Confidence to work in multiple programming languages - including C/C++, Go, Rust, Java, Python, Lua and other high performance languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working on, and deploying, large scale systems in Go, Ruby/Rails, Java, or other high performance languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Linux &amp; scripting experience</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience (and love) for debugging to ensure the system works in all cases</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong systems level programming skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent Linux operating system knowledge, patches to Operating Systems, and lightweight virtualization/VMM knowledge is a huge plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excited by the idea of optimizing complex distributed systems, discovering system bottlenecks and proposing solutions to solve in current system architecture or to inform future software/hardware development</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a continuous integration workflow and using source control (we use git)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledgeable about compute, storage, network hardware architecture, validation, performance benchmarking, debugging, and edge/datacenter deployment models - experience in serverless a big plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of security issues and responsibilities</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with monitoring, alerting and debugging high volume production systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous experience in testing, measuring, and/or simulating hardware and software performance/benchmarking and an understanding of no-stone-left-unturned experimentation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluent in analyses of data sets such as logs</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent at developing tools and automation to evaluate and optimize system HW/SW performance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Eager to work with internal HW engineering team to help validate, debug and proactively identify opportunities to maintain the most performant, power efficient and cost effective next-generation compute hardware and firmware for Cloudflare’s system software, services and workloads</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excited to drive experiments on different system HW and SW optimizations working cross-functionally with Performance, Software Engineering, Hardware Engineering, Sourcing, and Product teams to deploy your recommendations globally</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of driving engineering projects from idea to experiment to implementation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Great oral and written communications skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Desire to learn and improve</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willing and eager to mentor and share your knowledge internally and externally</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excited by the idea of optimizing complex solutions to general problems that all websites face</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a continuous integration workflow and using source control (we use git)&nbsp;</span></li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Lua, Rust or Go (or a strong desire to learn)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Javascript or Typescript</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a web server / reverse proxy system (NGINX, Apache, Varnish)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in deploying SaaS in different infrastructures at scale (hyperscale cloud, edge/ distributed system infrastructure)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Ruby or Go&nbsp; (or a strong desire to learn)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Kibana, Grafana, and/or Prometheus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with relational databases (e.g. Postgres)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with DNS (and DNSSEC)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in the registry/registrar industry</span></li>
 </ul>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
